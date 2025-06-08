@@ -29,11 +29,11 @@ import static club.doki7.sdl3.SDL3Constants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct SDL_GPUStorageBufferReadWriteBinding {
-///     SDL_GPUBuffer* buffer; // optional // @link substring="SDL_GPUBuffer" target="SDL_GPUBuffer" @link substring="buffer" target="#buffer"
-///     bool cycle; // optional // @link substring="cycle" target="#cycle"
-///     Uint8 padding1; // optional // @link substring="padding1" target="#padding1"
-///     Uint8 padding2; // optional // @link substring="padding2" target="#padding2"
-///     Uint8 padding3; // optional // @link substring="padding3" target="#padding3"
+///     SDL_GPUBuffer* buffer; // @link substring="SDL_GPUBuffer" target="SDL_GPUBuffer" @link substring="buffer" target="#buffer"
+///     bool cycle; // @link substring="cycle" target="#cycle"
+///     Uint8 padding1; // @link substring="padding1" target="#padding1"
+///     Uint8 padding2; // @link substring="padding2" target="#padding2"
+///     Uint8 padding3; // @link substring="padding3" target="#padding3"
 /// } SDL_GPUStorageBufferReadWriteBinding;
 /// }
 ///

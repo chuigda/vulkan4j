@@ -26,22 +26,22 @@ import static club.doki7.sdl3.SDL3Constants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct SDL_PixelFormatDetails {
-///     SDL_PixelFormat format; // optional // @link substring="SDL_PixelFormat" target="SDL_PixelFormat" @link substring="format" target="#format"
-///     Uint8 bits_per_pixel; // optional // @link substring="bits_per_pixel" target="#bits_per_pixel"
-///     Uint8 bytes_per_pixel; // optional // @link substring="bytes_per_pixel" target="#bytes_per_pixel"
-///     Uint8[2] padding; // optional // @link substring="padding" target="#padding"
-///     Uint32 Rmask; // optional // @link substring="Rmask" target="#Rmask"
-///     Uint32 Gmask; // optional // @link substring="Gmask" target="#Gmask"
-///     Uint32 Bmask; // optional // @link substring="Bmask" target="#Bmask"
-///     Uint32 Amask; // optional // @link substring="Amask" target="#Amask"
-///     Uint8 Rbits; // optional // @link substring="Rbits" target="#Rbits"
-///     Uint8 Gbits; // optional // @link substring="Gbits" target="#Gbits"
-///     Uint8 Bbits; // optional // @link substring="Bbits" target="#Bbits"
-///     Uint8 Abits; // optional // @link substring="Abits" target="#Abits"
-///     Uint8 Rshift; // optional // @link substring="Rshift" target="#Rshift"
-///     Uint8 Gshift; // optional // @link substring="Gshift" target="#Gshift"
-///     Uint8 Bshift; // optional // @link substring="Bshift" target="#Bshift"
-///     Uint8 Ashift; // optional // @link substring="Ashift" target="#Ashift"
+///     SDL_PixelFormat format; // @link substring="SDL_PixelFormat" target="SDL_PixelFormat" @link substring="format" target="#format"
+///     Uint8 bits_per_pixel; // @link substring="bits_per_pixel" target="#bits_per_pixel"
+///     Uint8 bytes_per_pixel; // @link substring="bytes_per_pixel" target="#bytes_per_pixel"
+///     Uint8[2] padding; // @link substring="padding" target="#padding"
+///     Uint32 Rmask; // @link substring="Rmask" target="#Rmask"
+///     Uint32 Gmask; // @link substring="Gmask" target="#Gmask"
+///     Uint32 Bmask; // @link substring="Bmask" target="#Bmask"
+///     Uint32 Amask; // @link substring="Amask" target="#Amask"
+///     Uint8 Rbits; // @link substring="Rbits" target="#Rbits"
+///     Uint8 Gbits; // @link substring="Gbits" target="#Gbits"
+///     Uint8 Bbits; // @link substring="Bbits" target="#Bbits"
+///     Uint8 Abits; // @link substring="Abits" target="#Abits"
+///     Uint8 Rshift; // @link substring="Rshift" target="#Rshift"
+///     Uint8 Gshift; // @link substring="Gshift" target="#Gshift"
+///     Uint8 Bshift; // @link substring="Bshift" target="#Bshift"
+///     Uint8 Ashift; // @link substring="Ashift" target="#Ashift"
 /// } SDL_PixelFormatDetails;
 /// }
 ///

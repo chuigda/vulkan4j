@@ -26,13 +26,13 @@ import static club.doki7.sdl3.SDL3Constants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct SDL_MessageBoxData {
-///     SDL_MessageBoxFlags flags; // optional // @link substring="SDL_MessageBoxFlags" target="SDL_MessageBoxFlags" @link substring="flags" target="#flags"
-///     SDL_Window* window; // optional // @link substring="SDL_Window" target="SDL_Window" @link substring="window" target="#window"
-///     char const* title; // optional // @link substring="title" target="#title"
-///     char const* message; // optional // @link substring="message" target="#message"
-///     int numbuttons; // optional // @link substring="numbuttons" target="#numbuttons"
-///     SDL_MessageBoxButtonData const* buttons; // optional // @link substring="SDL_MessageBoxButtonData" target="SDL_MessageBoxButtonData" @link substring="buttons" target="#buttons"
-///     SDL_MessageBoxColorScheme const* colorScheme; // optional // @link substring="SDL_MessageBoxColorScheme" target="SDL_MessageBoxColorScheme" @link substring="colorScheme" target="#colorScheme"
+///     SDL_MessageBoxFlags flags; // @link substring="SDL_MessageBoxFlags" target="SDL_MessageBoxFlags" @link substring="flags" target="#flags"
+///     SDL_Window* window; // @link substring="SDL_Window" target="SDL_Window" @link substring="window" target="#window"
+///     char const* title; // @link substring="title" target="#title"
+///     char const* message; // @link substring="message" target="#message"
+///     int numbuttons; // @link substring="numbuttons" target="#numbuttons"
+///     SDL_MessageBoxButtonData const* buttons; // @link substring="SDL_MessageBoxButtonData" target="SDL_MessageBoxButtonData" @link substring="buttons" target="#buttons"
+///     SDL_MessageBoxColorScheme const* colorScheme; // @link substring="SDL_MessageBoxColorScheme" target="SDL_MessageBoxColorScheme" @link substring="colorScheme" target="#colorScheme"
 /// } SDL_MessageBoxData;
 /// }
 ///

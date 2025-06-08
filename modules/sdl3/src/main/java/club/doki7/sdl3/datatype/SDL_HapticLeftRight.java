@@ -35,10 +35,10 @@ import static club.doki7.sdl3.SDL3Constants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct SDL_HapticLeftRight {
-///     Uint16 type; // optional // @link substring="type" target="#type"
-///     Uint32 length; // optional // @link substring="length" target="#length"
-///     Uint16 large_magnitude; // optional // @link substring="large_magnitude" target="#large_magnitude"
-///     Uint16 small_magnitude; // optional // @link substring="small_magnitude" target="#small_magnitude"
+///     Uint16 type; // @link substring="type" target="#type"
+///     Uint32 length; // @link substring="length" target="#length"
+///     Uint16 large_magnitude; // @link substring="large_magnitude" target="#large_magnitude"
+///     Uint16 small_magnitude; // @link substring="small_magnitude" target="#small_magnitude"
 /// } SDL_HapticLeftRight;
 /// }
 ///

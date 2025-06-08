@@ -32,9 +32,9 @@ import static club.doki7.sdl3.SDL3Constants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct SDL_GPUBufferCreateInfo {
-///     SDL_GPUBufferUsageFlags usage; // optional // @link substring="SDL_GPUBufferUsageFlags" target="SDL_GPUBufferUsageFlags" @link substring="usage" target="#usage"
-///     Uint32 size; // optional // @link substring="size" target="#size"
-///     SDL_PropertiesID props; // optional // @link substring="props" target="#props"
+///     SDL_GPUBufferUsageFlags usage; // @link substring="SDL_GPUBufferUsageFlags" target="SDL_GPUBufferUsageFlags" @link substring="usage" target="#usage"
+///     Uint32 size; // @link substring="size" target="#size"
+///     SDL_PropertiesID props; // @link substring="props" target="#props"
 /// } SDL_GPUBufferCreateInfo;
 /// }
 ///

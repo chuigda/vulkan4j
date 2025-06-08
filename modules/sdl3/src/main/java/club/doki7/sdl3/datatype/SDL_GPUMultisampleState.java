@@ -29,12 +29,12 @@ import static club.doki7.sdl3.SDL3Constants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct SDL_GPUMultisampleState {
-///     SDL_GPUSampleCount sample_count; // optional // @link substring="SDL_GPUSampleCount" target="SDL_GPUSampleCount" @link substring="sample_count" target="#sample_count"
-///     Uint32 sample_mask; // optional // @link substring="sample_mask" target="#sample_mask"
-///     bool enable_mask; // optional // @link substring="enable_mask" target="#enable_mask"
-///     Uint8 padding1; // optional // @link substring="padding1" target="#padding1"
-///     Uint8 padding2; // optional // @link substring="padding2" target="#padding2"
-///     Uint8 padding3; // optional // @link substring="padding3" target="#padding3"
+///     SDL_GPUSampleCount sample_count; // @link substring="SDL_GPUSampleCount" target="SDL_GPUSampleCount" @link substring="sample_count" target="#sample_count"
+///     Uint32 sample_mask; // @link substring="sample_mask" target="#sample_mask"
+///     bool enable_mask; // @link substring="enable_mask" target="#enable_mask"
+///     Uint8 padding1; // @link substring="padding1" target="#padding1"
+///     Uint8 padding2; // @link substring="padding2" target="#padding2"
+///     Uint8 padding3; // @link substring="padding3" target="#padding3"
 /// } SDL_GPUMultisampleState;
 /// }
 ///

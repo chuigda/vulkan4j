@@ -30,10 +30,10 @@ import static club.doki7.sdl3.SDL3Constants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct SDL_GPUTextureTransferInfo {
-///     SDL_GPUTransferBuffer* transfer_buffer; // optional // @link substring="SDL_GPUTransferBuffer" target="SDL_GPUTransferBuffer" @link substring="transfer_buffer" target="#transfer_buffer"
-///     Uint32 offset; // optional // @link substring="offset" target="#offset"
-///     Uint32 pixels_per_row; // optional // @link substring="pixels_per_row" target="#pixels_per_row"
-///     Uint32 rows_per_layer; // optional // @link substring="rows_per_layer" target="#rows_per_layer"
+///     SDL_GPUTransferBuffer* transfer_buffer; // @link substring="SDL_GPUTransferBuffer" target="SDL_GPUTransferBuffer" @link substring="transfer_buffer" target="#transfer_buffer"
+///     Uint32 offset; // @link substring="offset" target="#offset"
+///     Uint32 pixels_per_row; // @link substring="pixels_per_row" target="#pixels_per_row"
+///     Uint32 rows_per_layer; // @link substring="rows_per_layer" target="#rows_per_layer"
 /// } SDL_GPUTextureTransferInfo;
 /// }
 ///

@@ -31,10 +31,10 @@ import static club.doki7.sdl3.SDL3Constants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct SDL_Color {
-///     Uint8 r; // optional // @link substring="r" target="#r"
-///     Uint8 g; // optional // @link substring="g" target="#g"
-///     Uint8 b; // optional // @link substring="b" target="#b"
-///     Uint8 a; // optional // @link substring="a" target="#a"
+///     Uint8 r; // @link substring="r" target="#r"
+///     Uint8 g; // @link substring="g" target="#g"
+///     Uint8 b; // @link substring="b" target="#b"
+///     Uint8 a; // @link substring="a" target="#a"
 /// } SDL_Color;
 /// }
 ///

@@ -26,12 +26,12 @@ import static club.doki7.sdl3.SDL3Constants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct SDL_WindowEvent {
-///     SDL_EventType type; // optional // @link substring="SDL_EventType" target="SDL_EventType" @link substring="type" target="#type"
+///     SDL_EventType type; // @link substring="SDL_EventType" target="SDL_EventType" @link substring="type" target="#type"
 ///     Uint32 reserved;
-///     Uint64 timestamp; // optional // @link substring="timestamp" target="#timestamp"
-///     SDL_WindowID windowID; // optional // @link substring="windowID" target="#windowID"
-///     Sint32 data1; // optional // @link substring="data1" target="#data1"
-///     Sint32 data2; // optional // @link substring="data2" target="#data2"
+///     Uint64 timestamp; // @link substring="timestamp" target="#timestamp"
+///     SDL_WindowID windowID; // @link substring="windowID" target="#windowID"
+///     Sint32 data1; // @link substring="data1" target="#data1"
+///     Sint32 data2; // @link substring="data2" target="#data2"
 /// } SDL_WindowEvent;
 /// }
 ///

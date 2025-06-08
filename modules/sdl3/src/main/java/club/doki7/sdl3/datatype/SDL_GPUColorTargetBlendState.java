@@ -28,17 +28,17 @@ import static club.doki7.sdl3.SDL3Constants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct SDL_GPUColorTargetBlendState {
-///     SDL_GPUBlendFactor src_color_blendfactor; // optional // @link substring="SDL_GPUBlendFactor" target="SDL_GPUBlendFactor" @link substring="src_color_blendfactor" target="#src_color_blendfactor"
-///     SDL_GPUBlendFactor dst_color_blendfactor; // optional // @link substring="SDL_GPUBlendFactor" target="SDL_GPUBlendFactor" @link substring="dst_color_blendfactor" target="#dst_color_blendfactor"
-///     SDL_GPUBlendOp color_blend_op; // optional // @link substring="SDL_GPUBlendOp" target="SDL_GPUBlendOp" @link substring="color_blend_op" target="#color_blend_op"
-///     SDL_GPUBlendFactor src_alpha_blendfactor; // optional // @link substring="SDL_GPUBlendFactor" target="SDL_GPUBlendFactor" @link substring="src_alpha_blendfactor" target="#src_alpha_blendfactor"
-///     SDL_GPUBlendFactor dst_alpha_blendfactor; // optional // @link substring="SDL_GPUBlendFactor" target="SDL_GPUBlendFactor" @link substring="dst_alpha_blendfactor" target="#dst_alpha_blendfactor"
-///     SDL_GPUBlendOp alpha_blend_op; // optional // @link substring="SDL_GPUBlendOp" target="SDL_GPUBlendOp" @link substring="alpha_blend_op" target="#alpha_blend_op"
-///     SDL_GPUColorComponentFlags color_write_mask; // optional // @link substring="SDL_GPUColorComponentFlags" target="SDL_GPUColorComponentFlags" @link substring="color_write_mask" target="#color_write_mask"
-///     bool enable_blend; // optional // @link substring="enable_blend" target="#enable_blend"
-///     bool enable_color_write_mask; // optional // @link substring="enable_color_write_mask" target="#enable_color_write_mask"
-///     Uint8 padding1; // optional // @link substring="padding1" target="#padding1"
-///     Uint8 padding2; // optional // @link substring="padding2" target="#padding2"
+///     SDL_GPUBlendFactor src_color_blendfactor; // @link substring="SDL_GPUBlendFactor" target="SDL_GPUBlendFactor" @link substring="src_color_blendfactor" target="#src_color_blendfactor"
+///     SDL_GPUBlendFactor dst_color_blendfactor; // @link substring="SDL_GPUBlendFactor" target="SDL_GPUBlendFactor" @link substring="dst_color_blendfactor" target="#dst_color_blendfactor"
+///     SDL_GPUBlendOp color_blend_op; // @link substring="SDL_GPUBlendOp" target="SDL_GPUBlendOp" @link substring="color_blend_op" target="#color_blend_op"
+///     SDL_GPUBlendFactor src_alpha_blendfactor; // @link substring="SDL_GPUBlendFactor" target="SDL_GPUBlendFactor" @link substring="src_alpha_blendfactor" target="#src_alpha_blendfactor"
+///     SDL_GPUBlendFactor dst_alpha_blendfactor; // @link substring="SDL_GPUBlendFactor" target="SDL_GPUBlendFactor" @link substring="dst_alpha_blendfactor" target="#dst_alpha_blendfactor"
+///     SDL_GPUBlendOp alpha_blend_op; // @link substring="SDL_GPUBlendOp" target="SDL_GPUBlendOp" @link substring="alpha_blend_op" target="#alpha_blend_op"
+///     SDL_GPUColorComponentFlags color_write_mask; // @link substring="SDL_GPUColorComponentFlags" target="SDL_GPUColorComponentFlags" @link substring="color_write_mask" target="#color_write_mask"
+///     bool enable_blend; // @link substring="enable_blend" target="#enable_blend"
+///     bool enable_color_write_mask; // @link substring="enable_color_write_mask" target="#enable_color_write_mask"
+///     Uint8 padding1; // @link substring="padding1" target="#padding1"
+///     Uint8 padding2; // @link substring="padding2" target="#padding2"
 /// } SDL_GPUColorTargetBlendState;
 /// }
 ///

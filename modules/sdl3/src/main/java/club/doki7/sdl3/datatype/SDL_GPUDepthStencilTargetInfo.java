@@ -65,16 +65,16 @@ import static club.doki7.sdl3.SDL3Constants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct SDL_GPUDepthStencilTargetInfo {
-///     SDL_GPUTexture* texture; // optional // @link substring="SDL_GPUTexture" target="SDL_GPUTexture" @link substring="texture" target="#texture"
-///     float clear_depth; // optional // @link substring="clear_depth" target="#clear_depth"
-///     SDL_GPULoadOp load_op; // optional // @link substring="SDL_GPULoadOp" target="SDL_GPULoadOp" @link substring="load_op" target="#load_op"
-///     SDL_GPUStoreOp store_op; // optional // @link substring="SDL_GPUStoreOp" target="SDL_GPUStoreOp" @link substring="store_op" target="#store_op"
-///     SDL_GPULoadOp stencil_load_op; // optional // @link substring="SDL_GPULoadOp" target="SDL_GPULoadOp" @link substring="stencil_load_op" target="#stencil_load_op"
-///     SDL_GPUStoreOp stencil_store_op; // optional // @link substring="SDL_GPUStoreOp" target="SDL_GPUStoreOp" @link substring="stencil_store_op" target="#stencil_store_op"
-///     bool cycle; // optional // @link substring="cycle" target="#cycle"
-///     Uint8 clear_stencil; // optional // @link substring="clear_stencil" target="#clear_stencil"
-///     Uint8 padding1; // optional // @link substring="padding1" target="#padding1"
-///     Uint8 padding2; // optional // @link substring="padding2" target="#padding2"
+///     SDL_GPUTexture* texture; // @link substring="SDL_GPUTexture" target="SDL_GPUTexture" @link substring="texture" target="#texture"
+///     float clear_depth; // @link substring="clear_depth" target="#clear_depth"
+///     SDL_GPULoadOp load_op; // @link substring="SDL_GPULoadOp" target="SDL_GPULoadOp" @link substring="load_op" target="#load_op"
+///     SDL_GPUStoreOp store_op; // @link substring="SDL_GPUStoreOp" target="SDL_GPUStoreOp" @link substring="store_op" target="#store_op"
+///     SDL_GPULoadOp stencil_load_op; // @link substring="SDL_GPULoadOp" target="SDL_GPULoadOp" @link substring="stencil_load_op" target="#stencil_load_op"
+///     SDL_GPUStoreOp stencil_store_op; // @link substring="SDL_GPUStoreOp" target="SDL_GPUStoreOp" @link substring="stencil_store_op" target="#stencil_store_op"
+///     bool cycle; // @link substring="cycle" target="#cycle"
+///     Uint8 clear_stencil; // @link substring="clear_stencil" target="#clear_stencil"
+///     Uint8 padding1; // @link substring="padding1" target="#padding1"
+///     Uint8 padding2; // @link substring="padding2" target="#padding2"
 /// } SDL_GPUDepthStencilTargetInfo;
 /// }
 ///

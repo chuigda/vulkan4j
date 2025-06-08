@@ -27,14 +27,14 @@ import static club.doki7.sdl3.SDL3Constants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct SDL_DropEvent {
-///     SDL_EventType type; // optional // @link substring="SDL_EventType" target="SDL_EventType" @link substring="type" target="#type"
+///     SDL_EventType type; // @link substring="SDL_EventType" target="SDL_EventType" @link substring="type" target="#type"
 ///     Uint32 reserved;
-///     Uint64 timestamp; // optional // @link substring="timestamp" target="#timestamp"
-///     SDL_WindowID windowID; // optional // @link substring="windowID" target="#windowID"
-///     float x; // optional // @link substring="x" target="#x"
-///     float y; // optional // @link substring="y" target="#y"
-///     char const* source; // optional // @link substring="source" target="#source"
-///     char const* data; // optional // @link substring="data" target="#data"
+///     Uint64 timestamp; // @link substring="timestamp" target="#timestamp"
+///     SDL_WindowID windowID; // @link substring="windowID" target="#windowID"
+///     float x; // @link substring="x" target="#x"
+///     float y; // @link substring="y" target="#y"
+///     char const* source; // @link substring="source" target="#source"
+///     char const* data; // @link substring="data" target="#data"
 /// } SDL_DropEvent;
 /// }
 ///

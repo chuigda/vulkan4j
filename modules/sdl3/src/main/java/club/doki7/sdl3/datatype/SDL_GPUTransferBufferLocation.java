@@ -31,8 +31,8 @@ import static club.doki7.sdl3.SDL3Constants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct SDL_GPUTransferBufferLocation {
-///     SDL_GPUTransferBuffer* transfer_buffer; // optional // @link substring="SDL_GPUTransferBuffer" target="SDL_GPUTransferBuffer" @link substring="transfer_buffer" target="#transfer_buffer"
-///     Uint32 offset; // optional // @link substring="offset" target="#offset"
+///     SDL_GPUTransferBuffer* transfer_buffer; // @link substring="SDL_GPUTransferBuffer" target="SDL_GPUTransferBuffer" @link substring="transfer_buffer" target="#transfer_buffer"
+///     Uint32 offset; // @link substring="offset" target="#offset"
 /// } SDL_GPUTransferBufferLocation;
 /// }
 ///

@@ -29,11 +29,11 @@ import static club.doki7.sdl3.SDL3Constants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct SDL_PathInfo {
-///     SDL_PathType type; // optional // @link substring="SDL_PathType" target="SDL_PathType" @link substring="type" target="#type"
-///     Uint64 size; // optional // @link substring="size" target="#size"
-///     SDL_Time create_time; // optional // @link substring="create_time" target="#create_time"
-///     SDL_Time modify_time; // optional // @link substring="modify_time" target="#modify_time"
-///     SDL_Time access_time; // optional // @link substring="access_time" target="#access_time"
+///     SDL_PathType type; // @link substring="SDL_PathType" target="SDL_PathType" @link substring="type" target="#type"
+///     Uint64 size; // @link substring="size" target="#size"
+///     SDL_Time create_time; // @link substring="create_time" target="#create_time"
+///     SDL_Time modify_time; // @link substring="modify_time" target="#modify_time"
+///     SDL_Time access_time; // @link substring="access_time" target="#access_time"
 /// } SDL_PathInfo;
 /// }
 ///

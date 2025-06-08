@@ -36,15 +36,15 @@ import static club.doki7.sdl3.SDL3Constants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct SDL_GPUTextureCreateInfo {
-///     SDL_GPUTextureType type; // optional // @link substring="SDL_GPUTextureType" target="SDL_GPUTextureType" @link substring="type" target="#type"
-///     SDL_GPUTextureFormat format; // optional // @link substring="SDL_GPUTextureFormat" target="SDL_GPUTextureFormat" @link substring="format" target="#format"
-///     SDL_GPUTextureUsageFlags usage; // optional // @link substring="SDL_GPUTextureUsageFlags" target="SDL_GPUTextureUsageFlags" @link substring="usage" target="#usage"
-///     Uint32 width; // optional // @link substring="width" target="#width"
-///     Uint32 height; // optional // @link substring="height" target="#height"
-///     Uint32 layer_count_or_depth; // optional // @link substring="layer_count_or_depth" target="#layer_count_or_depth"
-///     Uint32 num_levels; // optional // @link substring="num_levels" target="#num_levels"
-///     SDL_GPUSampleCount sample_count; // optional // @link substring="SDL_GPUSampleCount" target="SDL_GPUSampleCount" @link substring="sample_count" target="#sample_count"
-///     SDL_PropertiesID props; // optional // @link substring="props" target="#props"
+///     SDL_GPUTextureType type; // @link substring="SDL_GPUTextureType" target="SDL_GPUTextureType" @link substring="type" target="#type"
+///     SDL_GPUTextureFormat format; // @link substring="SDL_GPUTextureFormat" target="SDL_GPUTextureFormat" @link substring="format" target="#format"
+///     SDL_GPUTextureUsageFlags usage; // @link substring="SDL_GPUTextureUsageFlags" target="SDL_GPUTextureUsageFlags" @link substring="usage" target="#usage"
+///     Uint32 width; // @link substring="width" target="#width"
+///     Uint32 height; // @link substring="height" target="#height"
+///     Uint32 layer_count_or_depth; // @link substring="layer_count_or_depth" target="#layer_count_or_depth"
+///     Uint32 num_levels; // @link substring="num_levels" target="#num_levels"
+///     SDL_GPUSampleCount sample_count; // @link substring="SDL_GPUSampleCount" target="SDL_GPUSampleCount" @link substring="sample_count" target="#sample_count"
+///     SDL_PropertiesID props; // @link substring="props" target="#props"
 /// } SDL_GPUTextureCreateInfo;
 /// }
 ///

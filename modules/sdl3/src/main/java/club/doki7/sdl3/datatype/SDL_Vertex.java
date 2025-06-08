@@ -26,9 +26,9 @@ import static club.doki7.sdl3.SDL3Constants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct SDL_Vertex {
-///     SDL_FPoint position; // optional // @link substring="SDL_FPoint" target="SDL_FPoint" @link substring="position" target="#position"
-///     SDL_FColor color; // optional // @link substring="SDL_FColor" target="SDL_FColor" @link substring="color" target="#color"
-///     SDL_FPoint tex_coord; // optional // @link substring="SDL_FPoint" target="SDL_FPoint" @link substring="tex_coord" target="#tex_coord"
+///     SDL_FPoint position; // @link substring="SDL_FPoint" target="SDL_FPoint" @link substring="position" target="#position"
+///     SDL_FColor color; // @link substring="SDL_FColor" target="SDL_FColor" @link substring="color" target="#color"
+///     SDL_FPoint tex_coord; // @link substring="SDL_FPoint" target="SDL_FPoint" @link substring="tex_coord" target="#tex_coord"
 /// } SDL_Vertex;
 /// }
 ///

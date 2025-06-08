@@ -56,19 +56,19 @@ import static club.doki7.sdl3.SDL3Constants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct SDL_GPUColorTargetInfo {
-///     SDL_GPUTexture* texture; // optional // @link substring="SDL_GPUTexture" target="SDL_GPUTexture" @link substring="texture" target="#texture"
-///     Uint32 mip_level; // optional // @link substring="mip_level" target="#mip_level"
-///     Uint32 layer_or_depth_plane; // optional // @link substring="layer_or_depth_plane" target="#layer_or_depth_plane"
-///     SDL_FColor clear_color; // optional // @link substring="SDL_FColor" target="SDL_FColor" @link substring="clear_color" target="#clear_color"
-///     SDL_GPULoadOp load_op; // optional // @link substring="SDL_GPULoadOp" target="SDL_GPULoadOp" @link substring="load_op" target="#load_op"
-///     SDL_GPUStoreOp store_op; // optional // @link substring="SDL_GPUStoreOp" target="SDL_GPUStoreOp" @link substring="store_op" target="#store_op"
-///     SDL_GPUTexture* resolve_texture; // optional // @link substring="SDL_GPUTexture" target="SDL_GPUTexture" @link substring="resolve_texture" target="#resolve_texture"
-///     Uint32 resolve_mip_level; // optional // @link substring="resolve_mip_level" target="#resolve_mip_level"
-///     Uint32 resolve_layer; // optional // @link substring="resolve_layer" target="#resolve_layer"
-///     bool cycle; // optional // @link substring="cycle" target="#cycle"
-///     bool cycle_resolve_texture; // optional // @link substring="cycle_resolve_texture" target="#cycle_resolve_texture"
-///     Uint8 padding1; // optional // @link substring="padding1" target="#padding1"
-///     Uint8 padding2; // optional // @link substring="padding2" target="#padding2"
+///     SDL_GPUTexture* texture; // @link substring="SDL_GPUTexture" target="SDL_GPUTexture" @link substring="texture" target="#texture"
+///     Uint32 mip_level; // @link substring="mip_level" target="#mip_level"
+///     Uint32 layer_or_depth_plane; // @link substring="layer_or_depth_plane" target="#layer_or_depth_plane"
+///     SDL_FColor clear_color; // @link substring="SDL_FColor" target="SDL_FColor" @link substring="clear_color" target="#clear_color"
+///     SDL_GPULoadOp load_op; // @link substring="SDL_GPULoadOp" target="SDL_GPULoadOp" @link substring="load_op" target="#load_op"
+///     SDL_GPUStoreOp store_op; // @link substring="SDL_GPUStoreOp" target="SDL_GPUStoreOp" @link substring="store_op" target="#store_op"
+///     SDL_GPUTexture* resolve_texture; // @link substring="SDL_GPUTexture" target="SDL_GPUTexture" @link substring="resolve_texture" target="#resolve_texture"
+///     Uint32 resolve_mip_level; // @link substring="resolve_mip_level" target="#resolve_mip_level"
+///     Uint32 resolve_layer; // @link substring="resolve_layer" target="#resolve_layer"
+///     bool cycle; // @link substring="cycle" target="#cycle"
+///     bool cycle_resolve_texture; // @link substring="cycle_resolve_texture" target="#cycle_resolve_texture"
+///     Uint8 padding1; // @link substring="padding1" target="#padding1"
+///     Uint8 padding2; // @link substring="padding2" target="#padding2"
 /// } SDL_GPUColorTargetInfo;
 /// }
 ///

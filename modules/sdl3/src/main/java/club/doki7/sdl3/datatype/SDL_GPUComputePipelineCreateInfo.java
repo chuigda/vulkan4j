@@ -29,20 +29,20 @@ import static club.doki7.sdl3.SDL3Constants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct SDL_GPUComputePipelineCreateInfo {
-///     size_t code_size; // optional // @link substring="code_size" target="#code_size"
-///     Uint8 const* code; // optional // @link substring="code" target="#code"
-///     char const* entrypoint; // optional // @link substring="entrypoint" target="#entrypoint"
-///     SDL_GPUShaderFormat format; // optional // @link substring="SDL_GPUShaderFormat" target="SDL_GPUShaderFormat" @link substring="format" target="#format"
-///     Uint32 num_samplers; // optional // @link substring="num_samplers" target="#num_samplers"
-///     Uint32 num_readonly_storage_textures; // optional // @link substring="num_readonly_storage_textures" target="#num_readonly_storage_textures"
-///     Uint32 num_readonly_storage_buffers; // optional // @link substring="num_readonly_storage_buffers" target="#num_readonly_storage_buffers"
-///     Uint32 num_readwrite_storage_textures; // optional // @link substring="num_readwrite_storage_textures" target="#num_readwrite_storage_textures"
-///     Uint32 num_readwrite_storage_buffers; // optional // @link substring="num_readwrite_storage_buffers" target="#num_readwrite_storage_buffers"
-///     Uint32 num_uniform_buffers; // optional // @link substring="num_uniform_buffers" target="#num_uniform_buffers"
-///     Uint32 threadcount_x; // optional // @link substring="threadcount_x" target="#threadcount_x"
-///     Uint32 threadcount_y; // optional // @link substring="threadcount_y" target="#threadcount_y"
-///     Uint32 threadcount_z; // optional // @link substring="threadcount_z" target="#threadcount_z"
-///     SDL_PropertiesID props; // optional // @link substring="props" target="#props"
+///     size_t code_size; // @link substring="code_size" target="#code_size"
+///     Uint8 const* code; // @link substring="code" target="#code"
+///     char const* entrypoint; // @link substring="entrypoint" target="#entrypoint"
+///     SDL_GPUShaderFormat format; // @link substring="SDL_GPUShaderFormat" target="SDL_GPUShaderFormat" @link substring="format" target="#format"
+///     Uint32 num_samplers; // @link substring="num_samplers" target="#num_samplers"
+///     Uint32 num_readonly_storage_textures; // @link substring="num_readonly_storage_textures" target="#num_readonly_storage_textures"
+///     Uint32 num_readonly_storage_buffers; // @link substring="num_readonly_storage_buffers" target="#num_readonly_storage_buffers"
+///     Uint32 num_readwrite_storage_textures; // @link substring="num_readwrite_storage_textures" target="#num_readwrite_storage_textures"
+///     Uint32 num_readwrite_storage_buffers; // @link substring="num_readwrite_storage_buffers" target="#num_readwrite_storage_buffers"
+///     Uint32 num_uniform_buffers; // @link substring="num_uniform_buffers" target="#num_uniform_buffers"
+///     Uint32 threadcount_x; // @link substring="threadcount_x" target="#threadcount_x"
+///     Uint32 threadcount_y; // @link substring="threadcount_y" target="#threadcount_y"
+///     Uint32 threadcount_z; // @link substring="threadcount_z" target="#threadcount_z"
+///     SDL_PropertiesID props; // @link substring="props" target="#props"
 /// } SDL_GPUComputePipelineCreateInfo;
 /// }
 ///

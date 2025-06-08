@@ -28,16 +28,16 @@ import static club.doki7.sdl3.SDL3Constants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct SDL_GPUShaderCreateInfo {
-///     size_t code_size; // optional // @link substring="code_size" target="#code_size"
-///     Uint8 const* code; // optional // @link substring="code" target="#code"
-///     char const* entrypoint; // optional // @link substring="entrypoint" target="#entrypoint"
-///     SDL_GPUShaderFormat format; // optional // @link substring="SDL_GPUShaderFormat" target="SDL_GPUShaderFormat" @link substring="format" target="#format"
-///     SDL_GPUShaderStage stage; // optional // @link substring="SDL_GPUShaderStage" target="SDL_GPUShaderStage" @link substring="stage" target="#stage"
-///     Uint32 num_samplers; // optional // @link substring="num_samplers" target="#num_samplers"
-///     Uint32 num_storage_textures; // optional // @link substring="num_storage_textures" target="#num_storage_textures"
-///     Uint32 num_storage_buffers; // optional // @link substring="num_storage_buffers" target="#num_storage_buffers"
-///     Uint32 num_uniform_buffers; // optional // @link substring="num_uniform_buffers" target="#num_uniform_buffers"
-///     SDL_PropertiesID props; // optional // @link substring="props" target="#props"
+///     size_t code_size; // @link substring="code_size" target="#code_size"
+///     Uint8 const* code; // @link substring="code" target="#code"
+///     char const* entrypoint; // @link substring="entrypoint" target="#entrypoint"
+///     SDL_GPUShaderFormat format; // @link substring="SDL_GPUShaderFormat" target="SDL_GPUShaderFormat" @link substring="format" target="#format"
+///     SDL_GPUShaderStage stage; // @link substring="SDL_GPUShaderStage" target="SDL_GPUShaderStage" @link substring="stage" target="#stage"
+///     Uint32 num_samplers; // @link substring="num_samplers" target="#num_samplers"
+///     Uint32 num_storage_textures; // @link substring="num_storage_textures" target="#num_storage_textures"
+///     Uint32 num_storage_buffers; // @link substring="num_storage_buffers" target="#num_storage_buffers"
+///     Uint32 num_uniform_buffers; // @link substring="num_uniform_buffers" target="#num_uniform_buffers"
+///     SDL_PropertiesID props; // @link substring="props" target="#props"
 /// } SDL_GPUShaderCreateInfo;
 /// }
 ///

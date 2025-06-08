@@ -26,14 +26,14 @@ import static club.doki7.sdl3.SDL3Constants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct SDL_JoyHatEvent {
-///     SDL_EventType type; // optional // @link substring="SDL_EventType" target="SDL_EventType" @link substring="type" target="#type"
+///     SDL_EventType type; // @link substring="SDL_EventType" target="SDL_EventType" @link substring="type" target="#type"
 ///     Uint32 reserved;
-///     Uint64 timestamp; // optional // @link substring="timestamp" target="#timestamp"
-///     SDL_JoystickID which; // optional // @link substring="which" target="#which"
-///     Uint8 hat; // optional // @link substring="hat" target="#hat"
-///     Uint8 value; // optional // @link substring="value" target="#value"
-///     Uint8 padding1; // optional // @link substring="padding1" target="#padding1"
-///     Uint8 padding2; // optional // @link substring="padding2" target="#padding2"
+///     Uint64 timestamp; // @link substring="timestamp" target="#timestamp"
+///     SDL_JoystickID which; // @link substring="which" target="#which"
+///     Uint8 hat; // @link substring="hat" target="#hat"
+///     Uint8 value; // @link substring="value" target="#value"
+///     Uint8 padding1; // @link substring="padding1" target="#padding1"
+///     Uint8 padding2; // @link substring="padding2" target="#padding2"
 /// } SDL_JoyHatEvent;
 /// }
 ///

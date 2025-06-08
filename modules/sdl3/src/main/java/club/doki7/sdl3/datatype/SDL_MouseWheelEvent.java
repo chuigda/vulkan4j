@@ -26,18 +26,18 @@ import static club.doki7.sdl3.SDL3Constants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct SDL_MouseWheelEvent {
-///     SDL_EventType type; // optional // @link substring="SDL_EventType" target="SDL_EventType" @link substring="type" target="#type"
+///     SDL_EventType type; // @link substring="SDL_EventType" target="SDL_EventType" @link substring="type" target="#type"
 ///     Uint32 reserved;
-///     Uint64 timestamp; // optional // @link substring="timestamp" target="#timestamp"
-///     SDL_WindowID windowID; // optional // @link substring="windowID" target="#windowID"
-///     SDL_MouseID which; // optional // @link substring="which" target="#which"
-///     float x; // optional // @link substring="x" target="#x"
-///     float y; // optional // @link substring="y" target="#y"
-///     SDL_MouseWheelDirection direction; // optional // @link substring="SDL_MouseWheelDirection" target="SDL_MouseWheelDirection" @link substring="direction" target="#direction"
-///     float mouse_x; // optional // @link substring="mouse_x" target="#mouse_x"
-///     float mouse_y; // optional // @link substring="mouse_y" target="#mouse_y"
-///     Sint32 integer_x; // optional // @link substring="integer_x" target="#integer_x"
-///     Sint32 integer_y; // optional // @link substring="integer_y" target="#integer_y"
+///     Uint64 timestamp; // @link substring="timestamp" target="#timestamp"
+///     SDL_WindowID windowID; // @link substring="windowID" target="#windowID"
+///     SDL_MouseID which; // @link substring="which" target="#which"
+///     float x; // @link substring="x" target="#x"
+///     float y; // @link substring="y" target="#y"
+///     SDL_MouseWheelDirection direction; // @link substring="SDL_MouseWheelDirection" target="SDL_MouseWheelDirection" @link substring="direction" target="#direction"
+///     float mouse_x; // @link substring="mouse_x" target="#mouse_x"
+///     float mouse_y; // @link substring="mouse_y" target="#mouse_y"
+///     Sint32 integer_x; // @link substring="integer_x" target="#integer_x"
+///     Sint32 integer_y; // @link substring="integer_y" target="#integer_y"
 /// } SDL_MouseWheelEvent;
 /// }
 ///

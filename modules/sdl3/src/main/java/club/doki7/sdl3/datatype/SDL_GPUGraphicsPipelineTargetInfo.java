@@ -31,13 +31,13 @@ import static club.doki7.sdl3.SDL3Constants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct SDL_GPUGraphicsPipelineTargetInfo {
-///     SDL_GPUColorTargetDescription const* color_target_descriptions; // optional // @link substring="SDL_GPUColorTargetDescription" target="SDL_GPUColorTargetDescription" @link substring="color_target_descriptions" target="#color_target_descriptions"
-///     Uint32 num_color_targets; // optional // @link substring="num_color_targets" target="#num_color_targets"
-///     SDL_GPUTextureFormat depth_stencil_format; // optional // @link substring="SDL_GPUTextureFormat" target="SDL_GPUTextureFormat" @link substring="depth_stencil_format" target="#depth_stencil_format"
-///     bool has_depth_stencil_target; // optional // @link substring="has_depth_stencil_target" target="#has_depth_stencil_target"
-///     Uint8 padding1; // optional // @link substring="padding1" target="#padding1"
-///     Uint8 padding2; // optional // @link substring="padding2" target="#padding2"
-///     Uint8 padding3; // optional // @link substring="padding3" target="#padding3"
+///     SDL_GPUColorTargetDescription const* color_target_descriptions; // @link substring="SDL_GPUColorTargetDescription" target="SDL_GPUColorTargetDescription" @link substring="color_target_descriptions" target="#color_target_descriptions"
+///     Uint32 num_color_targets; // @link substring="num_color_targets" target="#num_color_targets"
+///     SDL_GPUTextureFormat depth_stencil_format; // @link substring="SDL_GPUTextureFormat" target="SDL_GPUTextureFormat" @link substring="depth_stencil_format" target="#depth_stencil_format"
+///     bool has_depth_stencil_target; // @link substring="has_depth_stencil_target" target="#has_depth_stencil_target"
+///     Uint8 padding1; // @link substring="padding1" target="#padding1"
+///     Uint8 padding2; // @link substring="padding2" target="#padding2"
+///     Uint8 padding3; // @link substring="padding3" target="#padding3"
 /// } SDL_GPUGraphicsPipelineTargetInfo;
 /// }
 ///

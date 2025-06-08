@@ -30,12 +30,12 @@ import static club.doki7.sdl3.SDL3Constants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct SDL_GPUTextureLocation {
-///     SDL_GPUTexture* texture; // optional // @link substring="SDL_GPUTexture" target="SDL_GPUTexture" @link substring="texture" target="#texture"
-///     Uint32 mip_level; // optional // @link substring="mip_level" target="#mip_level"
-///     Uint32 layer; // optional // @link substring="layer" target="#layer"
-///     Uint32 x; // optional // @link substring="x" target="#x"
-///     Uint32 y; // optional // @link substring="y" target="#y"
-///     Uint32 z; // optional // @link substring="z" target="#z"
+///     SDL_GPUTexture* texture; // @link substring="SDL_GPUTexture" target="SDL_GPUTexture" @link substring="texture" target="#texture"
+///     Uint32 mip_level; // @link substring="mip_level" target="#mip_level"
+///     Uint32 layer; // @link substring="layer" target="#layer"
+///     Uint32 x; // @link substring="x" target="#x"
+///     Uint32 y; // @link substring="y" target="#y"
+///     Uint32 z; // @link substring="z" target="#z"
 /// } SDL_GPUTextureLocation;
 /// }
 ///

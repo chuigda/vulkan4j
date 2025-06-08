@@ -31,10 +31,10 @@ import static club.doki7.sdl3.SDL3Constants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct SDL_GPUVertexInputState {
-///     SDL_GPUVertexBufferDescription const* vertex_buffer_descriptions; // optional // @link substring="SDL_GPUVertexBufferDescription" target="SDL_GPUVertexBufferDescription" @link substring="vertex_buffer_descriptions" target="#vertex_buffer_descriptions"
-///     Uint32 num_vertex_buffers; // optional // @link substring="num_vertex_buffers" target="#num_vertex_buffers"
-///     SDL_GPUVertexAttribute const* vertex_attributes; // optional // @link substring="SDL_GPUVertexAttribute" target="SDL_GPUVertexAttribute" @link substring="vertex_attributes" target="#vertex_attributes"
-///     Uint32 num_vertex_attributes; // optional // @link substring="num_vertex_attributes" target="#num_vertex_attributes"
+///     SDL_GPUVertexBufferDescription const* vertex_buffer_descriptions; // @link substring="SDL_GPUVertexBufferDescription" target="SDL_GPUVertexBufferDescription" @link substring="vertex_buffer_descriptions" target="#vertex_buffer_descriptions"
+///     Uint32 num_vertex_buffers; // @link substring="num_vertex_buffers" target="#num_vertex_buffers"
+///     SDL_GPUVertexAttribute const* vertex_attributes; // @link substring="SDL_GPUVertexAttribute" target="SDL_GPUVertexAttribute" @link substring="vertex_attributes" target="#vertex_attributes"
+///     Uint32 num_vertex_attributes; // @link substring="num_vertex_attributes" target="#num_vertex_attributes"
 /// } SDL_GPUVertexInputState;
 /// }
 ///

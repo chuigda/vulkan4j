@@ -26,17 +26,17 @@ import static club.doki7.sdl3.SDL3Constants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct SDL_MouseButtonEvent {
-///     SDL_EventType type; // optional // @link substring="SDL_EventType" target="SDL_EventType" @link substring="type" target="#type"
+///     SDL_EventType type; // @link substring="SDL_EventType" target="SDL_EventType" @link substring="type" target="#type"
 ///     Uint32 reserved;
-///     Uint64 timestamp; // optional // @link substring="timestamp" target="#timestamp"
-///     SDL_WindowID windowID; // optional // @link substring="windowID" target="#windowID"
-///     SDL_MouseID which; // optional // @link substring="which" target="#which"
-///     Uint8 button; // optional // @link substring="button" target="#button"
-///     bool down; // optional // @link substring="down" target="#down"
-///     Uint8 clicks; // optional // @link substring="clicks" target="#clicks"
-///     Uint8 padding; // optional // @link substring="padding" target="#padding"
-///     float x; // optional // @link substring="x" target="#x"
-///     float y; // optional // @link substring="y" target="#y"
+///     Uint64 timestamp; // @link substring="timestamp" target="#timestamp"
+///     SDL_WindowID windowID; // @link substring="windowID" target="#windowID"
+///     SDL_MouseID which; // @link substring="which" target="#which"
+///     Uint8 button; // @link substring="button" target="#button"
+///     bool down; // @link substring="down" target="#down"
+///     Uint8 clicks; // @link substring="clicks" target="#clicks"
+///     Uint8 padding; // @link substring="padding" target="#padding"
+///     float x; // @link substring="x" target="#x"
+///     float y; // @link substring="y" target="#y"
 /// } SDL_MouseButtonEvent;
 /// }
 ///

@@ -26,21 +26,21 @@ import static club.doki7.sdl3.SDL3Constants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct SDL_hid_device_info {
-///     char* path; // optional // @link substring="path" target="#path"
-///     short vendor_id; // optional // @link substring="vendor_id" target="#vendor_id"
-///     short product_id; // optional // @link substring="product_id" target="#product_id"
-///     wchar_t* serial_number; // optional // @link substring="serial_number" target="#serial_number"
-///     short release_number; // optional // @link substring="release_number" target="#release_number"
-///     wchar_t* manufacturer_string; // optional // @link substring="manufacturer_string" target="#manufacturer_string"
-///     wchar_t* product_string; // optional // @link substring="product_string" target="#product_string"
-///     short usage_page; // optional // @link substring="usage_page" target="#usage_page"
-///     short usage; // optional // @link substring="usage" target="#usage"
-///     int interface_number; // optional // @link substring="interface_number" target="#interface_number"
-///     int interface_class; // optional // @link substring="interface_class" target="#interface_class"
-///     int interface_subclass; // optional // @link substring="interface_subclass" target="#interface_subclass"
-///     int interface_protocol; // optional // @link substring="interface_protocol" target="#interface_protocol"
-///     SDL_hid_bus_type bus_type; // optional // @link substring="SDL_hid_bus_type" target="SDL_hid_bus_type" @link substring="bus_type" target="#bus_type"
-///     SDL_hid_device_info* next; // optional // @link substring="SDL_hid_device_info" target="SDL_hid_device_info" @link substring="next" target="#next"
+///     char* path; // @link substring="path" target="#path"
+///     short vendor_id; // @link substring="vendor_id" target="#vendor_id"
+///     short product_id; // @link substring="product_id" target="#product_id"
+///     wchar_t* serial_number; // @link substring="serial_number" target="#serial_number"
+///     short release_number; // @link substring="release_number" target="#release_number"
+///     wchar_t* manufacturer_string; // @link substring="manufacturer_string" target="#manufacturer_string"
+///     wchar_t* product_string; // @link substring="product_string" target="#product_string"
+///     short usage_page; // @link substring="usage_page" target="#usage_page"
+///     short usage; // @link substring="usage" target="#usage"
+///     int interface_number; // @link substring="interface_number" target="#interface_number"
+///     int interface_class; // @link substring="interface_class" target="#interface_class"
+///     int interface_subclass; // @link substring="interface_subclass" target="#interface_subclass"
+///     int interface_protocol; // @link substring="interface_protocol" target="#interface_protocol"
+///     SDL_hid_bus_type bus_type; // @link substring="SDL_hid_bus_type" target="SDL_hid_bus_type" @link substring="bus_type" target="#bus_type"
+///     SDL_hid_device_info* next; // @link substring="SDL_hid_device_info" target="SDL_hid_device_info" @link substring="next" target="#next"
 /// } SDL_hid_device_info;
 /// }
 ///

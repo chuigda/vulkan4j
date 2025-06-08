@@ -40,17 +40,17 @@ import static club.doki7.sdl3.SDL3Constants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct SDL_TouchFingerEvent {
-///     SDL_EventType type; // optional // @link substring="SDL_EventType" target="SDL_EventType" @link substring="type" target="#type"
+///     SDL_EventType type; // @link substring="SDL_EventType" target="SDL_EventType" @link substring="type" target="#type"
 ///     Uint32 reserved;
-///     Uint64 timestamp; // optional // @link substring="timestamp" target="#timestamp"
-///     SDL_TouchID touchID; // optional // @link substring="touchID" target="#touchID"
-///     SDL_FingerID fingerID; // optional // @link substring="fingerID" target="#fingerID"
-///     float x; // optional // @link substring="x" target="#x"
-///     float y; // optional // @link substring="y" target="#y"
-///     float dx; // optional // @link substring="dx" target="#dx"
-///     float dy; // optional // @link substring="dy" target="#dy"
-///     float pressure; // optional // @link substring="pressure" target="#pressure"
-///     SDL_WindowID windowID; // optional // @link substring="windowID" target="#windowID"
+///     Uint64 timestamp; // @link substring="timestamp" target="#timestamp"
+///     SDL_TouchID touchID; // @link substring="touchID" target="#touchID"
+///     SDL_FingerID fingerID; // @link substring="fingerID" target="#fingerID"
+///     float x; // @link substring="x" target="#x"
+///     float y; // @link substring="y" target="#y"
+///     float dx; // @link substring="dx" target="#dx"
+///     float dy; // @link substring="dy" target="#dy"
+///     float pressure; // @link substring="pressure" target="#pressure"
+///     SDL_WindowID windowID; // @link substring="windowID" target="#windowID"
 /// } SDL_TouchFingerEvent;
 /// }
 ///

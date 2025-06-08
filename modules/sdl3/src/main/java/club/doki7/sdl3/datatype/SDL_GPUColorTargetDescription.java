@@ -29,8 +29,8 @@ import static club.doki7.sdl3.SDL3Constants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct SDL_GPUColorTargetDescription {
-///     SDL_GPUTextureFormat format; // optional // @link substring="SDL_GPUTextureFormat" target="SDL_GPUTextureFormat" @link substring="format" target="#format"
-///     SDL_GPUColorTargetBlendState blend_state; // optional // @link substring="SDL_GPUColorTargetBlendState" target="SDL_GPUColorTargetBlendState" @link substring="blend_state" target="#blend_state"
+///     SDL_GPUTextureFormat format; // @link substring="SDL_GPUTextureFormat" target="SDL_GPUTextureFormat" @link substring="format" target="#format"
+///     SDL_GPUColorTargetBlendState blend_state; // @link substring="SDL_GPUColorTargetBlendState" target="SDL_GPUColorTargetBlendState" @link substring="blend_state" target="#blend_state"
 /// } SDL_GPUColorTargetDescription;
 /// }
 ///

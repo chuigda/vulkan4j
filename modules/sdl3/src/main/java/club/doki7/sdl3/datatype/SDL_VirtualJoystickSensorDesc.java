@@ -28,8 +28,8 @@ import static club.doki7.sdl3.SDL3Constants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct SDL_VirtualJoystickSensorDesc {
-///     SDL_SensorType type; // optional // @link substring="SDL_SensorType" target="SDL_SensorType" @link substring="type" target="#type"
-///     float rate; // optional // @link substring="rate" target="#rate"
+///     SDL_SensorType type; // @link substring="SDL_SensorType" target="SDL_SensorType" @link substring="type" target="#type"
+///     float rate; // @link substring="rate" target="#rate"
 /// } SDL_VirtualJoystickSensorDesc;
 /// }
 ///

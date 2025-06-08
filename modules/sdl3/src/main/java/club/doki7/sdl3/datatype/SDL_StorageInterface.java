@@ -37,7 +37,7 @@ import static club.doki7.sdl3.SDL3Constants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct SDL_StorageInterface {
-///     Uint32 version; // optional // @link substring="version" target="#version"
+///     Uint32 version; // @link substring="version" target="#version"
 ///     PFN_SDL_StorageInterface_close close; // optional // @link substring="close" target="#close"
 ///     PFN_SDL_StorageInterface_ready ready; // optional // @link substring="ready" target="#ready"
 ///     PFN_SDL_StorageInterface_enumerate enumerate; // optional // @link substring="enumerate" target="#enumerate"

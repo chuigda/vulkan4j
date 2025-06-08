@@ -31,9 +31,9 @@ import static club.doki7.sdl3.SDL3Constants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct SDL_GPUBufferRegion {
-///     SDL_GPUBuffer* buffer; // optional // @link substring="SDL_GPUBuffer" target="SDL_GPUBuffer" @link substring="buffer" target="#buffer"
-///     Uint32 offset; // optional // @link substring="offset" target="#offset"
-///     Uint32 size; // optional // @link substring="size" target="#size"
+///     SDL_GPUBuffer* buffer; // @link substring="SDL_GPUBuffer" target="SDL_GPUBuffer" @link substring="buffer" target="#buffer"
+///     Uint32 offset; // @link substring="offset" target="#offset"
+///     Uint32 size; // @link substring="size" target="#size"
 /// } SDL_GPUBufferRegion;
 /// }
 ///

@@ -29,13 +29,13 @@ import static club.doki7.sdl3.SDL3Constants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct SDL_GPUStorageTextureReadWriteBinding {
-///     SDL_GPUTexture* texture; // optional // @link substring="SDL_GPUTexture" target="SDL_GPUTexture" @link substring="texture" target="#texture"
-///     Uint32 mip_level; // optional // @link substring="mip_level" target="#mip_level"
-///     Uint32 layer; // optional // @link substring="layer" target="#layer"
-///     bool cycle; // optional // @link substring="cycle" target="#cycle"
-///     Uint8 padding1; // optional // @link substring="padding1" target="#padding1"
-///     Uint8 padding2; // optional // @link substring="padding2" target="#padding2"
-///     Uint8 padding3; // optional // @link substring="padding3" target="#padding3"
+///     SDL_GPUTexture* texture; // @link substring="SDL_GPUTexture" target="SDL_GPUTexture" @link substring="texture" target="#texture"
+///     Uint32 mip_level; // @link substring="mip_level" target="#mip_level"
+///     Uint32 layer; // @link substring="layer" target="#layer"
+///     bool cycle; // @link substring="cycle" target="#cycle"
+///     Uint8 padding1; // @link substring="padding1" target="#padding1"
+///     Uint8 padding2; // @link substring="padding2" target="#padding2"
+///     Uint8 padding3; // @link substring="padding3" target="#padding3"
 /// } SDL_GPUStorageTextureReadWriteBinding;
 /// }
 ///

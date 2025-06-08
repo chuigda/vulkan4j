@@ -39,10 +39,10 @@ import static club.doki7.sdl3.SDL3Constants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct SDL_GPUVertexBufferDescription {
-///     Uint32 slot; // optional // @link substring="slot" target="#slot"
-///     Uint32 pitch; // optional // @link substring="pitch" target="#pitch"
-///     SDL_GPUVertexInputRate input_rate; // optional // @link substring="SDL_GPUVertexInputRate" target="SDL_GPUVertexInputRate" @link substring="input_rate" target="#input_rate"
-///     Uint32 instance_step_rate; // optional // @link substring="instance_step_rate" target="#instance_step_rate"
+///     Uint32 slot; // @link substring="slot" target="#slot"
+///     Uint32 pitch; // @link substring="pitch" target="#pitch"
+///     SDL_GPUVertexInputRate input_rate; // @link substring="SDL_GPUVertexInputRate" target="SDL_GPUVertexInputRate" @link substring="input_rate" target="#input_rate"
+///     Uint32 instance_step_rate; // @link substring="instance_step_rate" target="#instance_step_rate"
 /// } SDL_GPUVertexBufferDescription;
 /// }
 ///

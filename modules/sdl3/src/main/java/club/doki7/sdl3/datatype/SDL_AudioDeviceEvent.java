@@ -26,14 +26,14 @@ import static club.doki7.sdl3.SDL3Constants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct SDL_AudioDeviceEvent {
-///     SDL_EventType type; // optional // @link substring="SDL_EventType" target="SDL_EventType" @link substring="type" target="#type"
+///     SDL_EventType type; // @link substring="SDL_EventType" target="SDL_EventType" @link substring="type" target="#type"
 ///     Uint32 reserved;
-///     Uint64 timestamp; // optional // @link substring="timestamp" target="#timestamp"
-///     SDL_AudioDeviceID which; // optional // @link substring="which" target="#which"
-///     bool recording; // optional // @link substring="recording" target="#recording"
-///     Uint8 padding1; // optional // @link substring="padding1" target="#padding1"
-///     Uint8 padding2; // optional // @link substring="padding2" target="#padding2"
-///     Uint8 padding3; // optional // @link substring="padding3" target="#padding3"
+///     Uint64 timestamp; // @link substring="timestamp" target="#timestamp"
+///     SDL_AudioDeviceID which; // @link substring="which" target="#which"
+///     bool recording; // @link substring="recording" target="#recording"
+///     Uint8 padding1; // @link substring="padding1" target="#padding1"
+///     Uint8 padding2; // @link substring="padding2" target="#padding2"
+///     Uint8 padding3; // @link substring="padding3" target="#padding3"
 /// } SDL_AudioDeviceEvent;
 /// }
 ///

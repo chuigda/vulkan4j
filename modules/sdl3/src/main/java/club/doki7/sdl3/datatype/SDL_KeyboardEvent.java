@@ -35,17 +35,17 @@ import static club.doki7.sdl3.SDL3Constants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct SDL_KeyboardEvent {
-///     SDL_EventType type; // optional // @link substring="SDL_EventType" target="SDL_EventType" @link substring="type" target="#type"
+///     SDL_EventType type; // @link substring="SDL_EventType" target="SDL_EventType" @link substring="type" target="#type"
 ///     Uint32 reserved;
-///     Uint64 timestamp; // optional // @link substring="timestamp" target="#timestamp"
-///     SDL_WindowID windowID; // optional // @link substring="windowID" target="#windowID"
-///     SDL_KeyboardID which; // optional // @link substring="which" target="#which"
-///     SDL_Scancode scancode; // optional // @link substring="SDL_Scancode" target="SDL_Scancode" @link substring="scancode" target="#scancode"
-///     SDL_Keycode key; // optional // @link substring="SDL_Keycode" target="SDL_Keycode" @link substring="key" target="#key"
-///     SDL_Keymod mod; // optional // @link substring="SDL_Keymod" target="SDL_Keymod" @link substring="mod" target="#mod"
-///     Uint16 raw; // optional // @link substring="raw" target="#raw"
-///     bool down; // optional // @link substring="down" target="#down"
-///     bool repeat; // optional // @link substring="repeat" target="#repeat"
+///     Uint64 timestamp; // @link substring="timestamp" target="#timestamp"
+///     SDL_WindowID windowID; // @link substring="windowID" target="#windowID"
+///     SDL_KeyboardID which; // @link substring="which" target="#which"
+///     SDL_Scancode scancode; // @link substring="SDL_Scancode" target="SDL_Scancode" @link substring="scancode" target="#scancode"
+///     SDL_Keycode key; // @link substring="SDL_Keycode" target="SDL_Keycode" @link substring="key" target="#key"
+///     SDL_Keymod mod; // @link substring="SDL_Keymod" target="SDL_Keymod" @link substring="mod" target="#mod"
+///     Uint16 raw; // @link substring="raw" target="#raw"
+///     bool down; // @link substring="down" target="#down"
+///     bool repeat; // @link substring="repeat" target="#repeat"
 /// } SDL_KeyboardEvent;
 /// }
 ///

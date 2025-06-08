@@ -17,6 +17,7 @@ internal fun addSDLGamepadBindings(registryBase: RegistryBase) {
 
     // Fuck SDL, why would you do this?
     registryBase.structures.putEntityIfAbsent(sdl_atomic_int)
+    registryBase.structures.putEntityIfAbsent(sdl_atomic_u32)
 }
 
 // typedef struct SDL_GamepadBinding {
@@ -105,6 +106,14 @@ private val sdl_atomic_int = Structure(
     name = "SDL_AtomicInt",
     members = mutableListOf(
         mambo("value", "int")
+    )
+)
+
+// typedef struct SDL_AtomicU32 { Uint32 value; } SDL_AtomicU32;
+private val sdl_atomic_u32 = Structure(
+    name = "SDL_AtomicU32",
+    members = mutableListOf(
+        mambo("value", "Uint32")
     )
 )
 

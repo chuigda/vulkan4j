@@ -32,10 +32,10 @@ import static club.doki7.sdl3.SDL3Constants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct SDL_Finger {
-///     SDL_FingerID id; // optional // @link substring="id" target="#id"
-///     float x; // optional // @link substring="x" target="#x"
-///     float y; // optional // @link substring="y" target="#y"
-///     float pressure; // optional // @link substring="pressure" target="#pressure"
+///     SDL_FingerID id; // @link substring="id" target="#id"
+///     float x; // @link substring="x" target="#x"
+///     float y; // @link substring="y" target="#y"
+///     float pressure; // @link substring="pressure" target="#pressure"
 /// } SDL_Finger;
 /// }
 ///

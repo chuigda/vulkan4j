@@ -28,15 +28,15 @@ import static club.doki7.sdl3.SDL3Constants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct SDL_GPUBlitInfo {
-///     SDL_GPUBlitRegion destination; // optional // @link substring="SDL_GPUBlitRegion" target="SDL_GPUBlitRegion" @link substring="destination" target="#destination"
-///     SDL_GPULoadOp load_op; // optional // @link substring="SDL_GPULoadOp" target="SDL_GPULoadOp" @link substring="load_op" target="#load_op"
-///     SDL_FColor clear_color; // optional // @link substring="SDL_FColor" target="SDL_FColor" @link substring="clear_color" target="#clear_color"
-///     SDL_FlipMode flip_mode; // optional // @link substring="SDL_FlipMode" target="SDL_FlipMode" @link substring="flip_mode" target="#flip_mode"
-///     SDL_GPUFilter filter; // optional // @link substring="SDL_GPUFilter" target="SDL_GPUFilter" @link substring="filter" target="#filter"
-///     bool cycle; // optional // @link substring="cycle" target="#cycle"
-///     Uint8 padding1; // optional // @link substring="padding1" target="#padding1"
-///     Uint8 padding2; // optional // @link substring="padding2" target="#padding2"
-///     Uint8 padding3; // optional // @link substring="padding3" target="#padding3"
+///     SDL_GPUBlitRegion destination; // @link substring="SDL_GPUBlitRegion" target="SDL_GPUBlitRegion" @link substring="destination" target="#destination"
+///     SDL_GPULoadOp load_op; // @link substring="SDL_GPULoadOp" target="SDL_GPULoadOp" @link substring="load_op" target="#load_op"
+///     SDL_FColor clear_color; // @link substring="SDL_FColor" target="SDL_FColor" @link substring="clear_color" target="#clear_color"
+///     SDL_FlipMode flip_mode; // @link substring="SDL_FlipMode" target="SDL_FlipMode" @link substring="flip_mode" target="#flip_mode"
+///     SDL_GPUFilter filter; // @link substring="SDL_GPUFilter" target="SDL_GPUFilter" @link substring="filter" target="#filter"
+///     bool cycle; // @link substring="cycle" target="#cycle"
+///     Uint8 padding1; // @link substring="padding1" target="#padding1"
+///     Uint8 padding2; // @link substring="padding2" target="#padding2"
+///     Uint8 padding3; // @link substring="padding3" target="#padding3"
 /// } SDL_GPUBlitInfo;
 /// }
 ///

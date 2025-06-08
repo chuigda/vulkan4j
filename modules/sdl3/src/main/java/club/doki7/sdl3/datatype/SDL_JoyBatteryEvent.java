@@ -26,12 +26,12 @@ import static club.doki7.sdl3.SDL3Constants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct SDL_JoyBatteryEvent {
-///     SDL_EventType type; // optional // @link substring="SDL_EventType" target="SDL_EventType" @link substring="type" target="#type"
+///     SDL_EventType type; // @link substring="SDL_EventType" target="SDL_EventType" @link substring="type" target="#type"
 ///     Uint32 reserved;
-///     Uint64 timestamp; // optional // @link substring="timestamp" target="#timestamp"
-///     SDL_JoystickID which; // optional // @link substring="which" target="#which"
-///     SDL_PowerState state; // optional // @link substring="SDL_PowerState" target="SDL_PowerState" @link substring="state" target="#state"
-///     int percent; // optional // @link substring="percent" target="#percent"
+///     Uint64 timestamp; // @link substring="timestamp" target="#timestamp"
+///     SDL_JoystickID which; // @link substring="which" target="#which"
+///     SDL_PowerState state; // @link substring="SDL_PowerState" target="SDL_PowerState" @link substring="state" target="#state"
+///     int percent; // @link substring="percent" target="#percent"
 /// } SDL_JoyBatteryEvent;
 /// }
 ///

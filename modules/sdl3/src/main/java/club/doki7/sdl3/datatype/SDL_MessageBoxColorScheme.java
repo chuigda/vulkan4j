@@ -26,7 +26,7 @@ import static club.doki7.sdl3.SDL3Constants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct SDL_MessageBoxColorScheme {
-///     SDL_MessageBoxColor[SDL_MESSAGEBOX_COLOR_COUNT] colors; // optional // @link substring="SDL_MessageBoxColor" target="SDL_MessageBoxColor" @link substring="colors" target="#colors"
+///     SDL_MessageBoxColor[SDL_MESSAGEBOX_COLOR_COUNT] colors; // @link substring="SDL_MessageBoxColor" target="SDL_MessageBoxColor" @link substring="colors" target="#colors"
 /// } SDL_MessageBoxColorScheme;
 /// }
 ///

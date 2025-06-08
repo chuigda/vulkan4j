@@ -124,8 +124,8 @@ import static club.doki7.sdl3.SDL3Constants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct SDL_HapticDirection {
-///     Uint8 type; // optional // @link substring="type" target="#type"
-///     Sint32[3] dir; // optional // @link substring="dir" target="#dir"
+///     Uint8 type; // @link substring="type" target="#type"
+///     Sint32[3] dir; // @link substring="dir" target="#dir"
 /// } SDL_HapticDirection;
 /// }
 ///

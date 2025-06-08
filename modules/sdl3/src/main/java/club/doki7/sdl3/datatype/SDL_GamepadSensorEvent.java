@@ -26,13 +26,13 @@ import static club.doki7.sdl3.SDL3Constants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct SDL_GamepadSensorEvent {
-///     SDL_EventType type; // optional // @link substring="SDL_EventType" target="SDL_EventType" @link substring="type" target="#type"
+///     SDL_EventType type; // @link substring="SDL_EventType" target="SDL_EventType" @link substring="type" target="#type"
 ///     Uint32 reserved;
-///     Uint64 timestamp; // optional // @link substring="timestamp" target="#timestamp"
-///     SDL_JoystickID which; // optional // @link substring="which" target="#which"
-///     Sint32 sensor; // optional // @link substring="sensor" target="#sensor"
-///     float[3] data; // optional // @link substring="data" target="#data"
-///     Uint64 sensor_timestamp; // optional // @link substring="sensor_timestamp" target="#sensor_timestamp"
+///     Uint64 timestamp; // @link substring="timestamp" target="#timestamp"
+///     SDL_JoystickID which; // @link substring="which" target="#which"
+///     Sint32 sensor; // @link substring="sensor" target="#sensor"
+///     float[3] data; // @link substring="data" target="#data"
+///     Uint64 sensor_timestamp; // @link substring="sensor_timestamp" target="#sensor_timestamp"
 /// } SDL_GamepadSensorEvent;
 /// }
 ///

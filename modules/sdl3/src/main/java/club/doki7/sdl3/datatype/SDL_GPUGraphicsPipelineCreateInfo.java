@@ -35,15 +35,15 @@ import static club.doki7.sdl3.SDL3Constants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct SDL_GPUGraphicsPipelineCreateInfo {
-///     SDL_GPUShader* vertex_shader; // optional // @link substring="SDL_GPUShader" target="SDL_GPUShader" @link substring="vertex_shader" target="#vertex_shader"
-///     SDL_GPUShader* fragment_shader; // optional // @link substring="SDL_GPUShader" target="SDL_GPUShader" @link substring="fragment_shader" target="#fragment_shader"
-///     SDL_GPUVertexInputState vertex_input_state; // optional // @link substring="SDL_GPUVertexInputState" target="SDL_GPUVertexInputState" @link substring="vertex_input_state" target="#vertex_input_state"
-///     SDL_GPUPrimitiveType primitive_type; // optional // @link substring="SDL_GPUPrimitiveType" target="SDL_GPUPrimitiveType" @link substring="primitive_type" target="#primitive_type"
-///     SDL_GPURasterizerState rasterizer_state; // optional // @link substring="SDL_GPURasterizerState" target="SDL_GPURasterizerState" @link substring="rasterizer_state" target="#rasterizer_state"
-///     SDL_GPUMultisampleState multisample_state; // optional // @link substring="SDL_GPUMultisampleState" target="SDL_GPUMultisampleState" @link substring="multisample_state" target="#multisample_state"
-///     SDL_GPUDepthStencilState depth_stencil_state; // optional // @link substring="SDL_GPUDepthStencilState" target="SDL_GPUDepthStencilState" @link substring="depth_stencil_state" target="#depth_stencil_state"
-///     SDL_GPUGraphicsPipelineTargetInfo target_info; // optional // @link substring="SDL_GPUGraphicsPipelineTargetInfo" target="SDL_GPUGraphicsPipelineTargetInfo" @link substring="target_info" target="#target_info"
-///     SDL_PropertiesID props; // optional // @link substring="props" target="#props"
+///     SDL_GPUShader* vertex_shader; // @link substring="SDL_GPUShader" target="SDL_GPUShader" @link substring="vertex_shader" target="#vertex_shader"
+///     SDL_GPUShader* fragment_shader; // @link substring="SDL_GPUShader" target="SDL_GPUShader" @link substring="fragment_shader" target="#fragment_shader"
+///     SDL_GPUVertexInputState vertex_input_state; // @link substring="SDL_GPUVertexInputState" target="SDL_GPUVertexInputState" @link substring="vertex_input_state" target="#vertex_input_state"
+///     SDL_GPUPrimitiveType primitive_type; // @link substring="SDL_GPUPrimitiveType" target="SDL_GPUPrimitiveType" @link substring="primitive_type" target="#primitive_type"
+///     SDL_GPURasterizerState rasterizer_state; // @link substring="SDL_GPURasterizerState" target="SDL_GPURasterizerState" @link substring="rasterizer_state" target="#rasterizer_state"
+///     SDL_GPUMultisampleState multisample_state; // @link substring="SDL_GPUMultisampleState" target="SDL_GPUMultisampleState" @link substring="multisample_state" target="#multisample_state"
+///     SDL_GPUDepthStencilState depth_stencil_state; // @link substring="SDL_GPUDepthStencilState" target="SDL_GPUDepthStencilState" @link substring="depth_stencil_state" target="#depth_stencil_state"
+///     SDL_GPUGraphicsPipelineTargetInfo target_info; // @link substring="SDL_GPUGraphicsPipelineTargetInfo" target="SDL_GPUGraphicsPipelineTargetInfo" @link substring="target_info" target="#target_info"
+///     SDL_PropertiesID props; // @link substring="props" target="#props"
 /// } SDL_GPUGraphicsPipelineCreateInfo;
 /// }
 ///

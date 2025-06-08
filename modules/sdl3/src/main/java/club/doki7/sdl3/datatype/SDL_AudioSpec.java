@@ -28,9 +28,9 @@ import static club.doki7.sdl3.SDL3Constants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct SDL_AudioSpec {
-///     SDL_AudioFormat format; // optional // @link substring="SDL_AudioFormat" target="SDL_AudioFormat" @link substring="format" target="#format"
-///     int channels; // optional // @link substring="channels" target="#channels"
-///     int freq; // optional // @link substring="freq" target="#freq"
+///     SDL_AudioFormat format; // @link substring="SDL_AudioFormat" target="SDL_AudioFormat" @link substring="format" target="#format"
+///     int channels; // @link substring="channels" target="#channels"
+///     int freq; // @link substring="freq" target="#freq"
 /// } SDL_AudioSpec;
 /// }
 ///

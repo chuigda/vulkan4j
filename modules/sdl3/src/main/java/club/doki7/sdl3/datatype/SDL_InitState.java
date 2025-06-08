@@ -77,8 +77,8 @@ import static club.doki7.sdl3.SDL3Constants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct SDL_InitState {
-///     SDL_AtomicInt status; // optional // @link substring="SDL_AtomicInt" target="SDL_AtomicInt" @link substring="status" target="#status"
-///     SDL_ThreadID thread; // optional // @link substring="thread" target="#thread"
+///     SDL_AtomicInt status; // @link substring="SDL_AtomicInt" target="SDL_AtomicInt" @link substring="status" target="#status"
+///     SDL_ThreadID thread; // @link substring="thread" target="#thread"
 ///     void* reserved;
 /// } SDL_InitState;
 /// }

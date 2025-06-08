@@ -33,10 +33,10 @@ import static club.doki7.sdl3.SDL3Constants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct SDL_GPUVertexAttribute {
-///     Uint32 location; // optional // @link substring="location" target="#location"
-///     Uint32 buffer_slot; // optional // @link substring="buffer_slot" target="#buffer_slot"
-///     SDL_GPUVertexElementFormat format; // optional // @link substring="SDL_GPUVertexElementFormat" target="SDL_GPUVertexElementFormat" @link substring="format" target="#format"
-///     Uint32 offset; // optional // @link substring="offset" target="#offset"
+///     Uint32 location; // @link substring="location" target="#location"
+///     Uint32 buffer_slot; // @link substring="buffer_slot" target="#buffer_slot"
+///     SDL_GPUVertexElementFormat format; // @link substring="SDL_GPUVertexElementFormat" target="SDL_GPUVertexElementFormat" @link substring="format" target="#format"
+///     Uint32 offset; // @link substring="offset" target="#offset"
 /// } SDL_GPUVertexAttribute;
 /// }
 ///

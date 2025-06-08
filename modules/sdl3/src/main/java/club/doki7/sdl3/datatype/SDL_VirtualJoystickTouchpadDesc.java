@@ -28,8 +28,8 @@ import static club.doki7.sdl3.SDL3Constants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct SDL_VirtualJoystickTouchpadDesc {
-///     Uint16 nfingers; // optional // @link substring="nfingers" target="#nfingers"
-///     Uint16[3] padding; // optional // @link substring="padding" target="#padding"
+///     Uint16 nfingers; // @link substring="nfingers" target="#nfingers"
+///     Uint16[3] padding; // @link substring="padding" target="#padding"
 /// } SDL_VirtualJoystickTouchpadDesc;
 /// }
 ///

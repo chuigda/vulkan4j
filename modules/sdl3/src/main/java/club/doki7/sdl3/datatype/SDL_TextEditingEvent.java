@@ -30,13 +30,13 @@ import static club.doki7.sdl3.SDL3Constants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct SDL_TextEditingEvent {
-///     SDL_EventType type; // optional // @link substring="SDL_EventType" target="SDL_EventType" @link substring="type" target="#type"
+///     SDL_EventType type; // @link substring="SDL_EventType" target="SDL_EventType" @link substring="type" target="#type"
 ///     Uint32 reserved;
-///     Uint64 timestamp; // optional // @link substring="timestamp" target="#timestamp"
-///     SDL_WindowID windowID; // optional // @link substring="windowID" target="#windowID"
-///     char const* text; // optional // @link substring="text" target="#text"
-///     Sint32 start; // optional // @link substring="start" target="#start"
-///     Sint32 length; // optional // @link substring="length" target="#length"
+///     Uint64 timestamp; // @link substring="timestamp" target="#timestamp"
+///     SDL_WindowID windowID; // @link substring="windowID" target="#windowID"
+///     char const* text; // @link substring="text" target="#text"
+///     Sint32 start; // @link substring="start" target="#start"
+///     Sint32 length; // @link substring="length" target="#length"
 /// } SDL_TextEditingEvent;
 /// }
 ///

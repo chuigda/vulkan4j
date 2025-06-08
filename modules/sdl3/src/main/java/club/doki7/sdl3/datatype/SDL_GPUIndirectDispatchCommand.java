@@ -28,9 +28,9 @@ import static club.doki7.sdl3.SDL3Constants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct SDL_GPUIndirectDispatchCommand {
-///     Uint32 groupcount_x; // optional // @link substring="groupcount_x" target="#groupcount_x"
-///     Uint32 groupcount_y; // optional // @link substring="groupcount_y" target="#groupcount_y"
-///     Uint32 groupcount_z; // optional // @link substring="groupcount_z" target="#groupcount_z"
+///     Uint32 groupcount_x; // @link substring="groupcount_x" target="#groupcount_x"
+///     Uint32 groupcount_y; // @link substring="groupcount_y" target="#groupcount_y"
+///     Uint32 groupcount_z; // @link substring="groupcount_z" target="#groupcount_z"
 /// } SDL_GPUIndirectDispatchCommand;
 /// }
 ///

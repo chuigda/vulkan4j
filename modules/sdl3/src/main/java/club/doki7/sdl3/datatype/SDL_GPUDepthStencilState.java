@@ -29,17 +29,17 @@ import static club.doki7.sdl3.SDL3Constants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct SDL_GPUDepthStencilState {
-///     SDL_GPUCompareOp compare_op; // optional // @link substring="SDL_GPUCompareOp" target="SDL_GPUCompareOp" @link substring="compare_op" target="#compare_op"
-///     SDL_GPUStencilOpState back_stencil_state; // optional // @link substring="SDL_GPUStencilOpState" target="SDL_GPUStencilOpState" @link substring="back_stencil_state" target="#back_stencil_state"
-///     SDL_GPUStencilOpState front_stencil_state; // optional // @link substring="SDL_GPUStencilOpState" target="SDL_GPUStencilOpState" @link substring="front_stencil_state" target="#front_stencil_state"
-///     Uint8 compare_mask; // optional // @link substring="compare_mask" target="#compare_mask"
-///     Uint8 write_mask; // optional // @link substring="write_mask" target="#write_mask"
-///     bool enable_depth_test; // optional // @link substring="enable_depth_test" target="#enable_depth_test"
-///     bool enable_depth_write; // optional // @link substring="enable_depth_write" target="#enable_depth_write"
-///     bool enable_stencil_test; // optional // @link substring="enable_stencil_test" target="#enable_stencil_test"
-///     Uint8 padding1; // optional // @link substring="padding1" target="#padding1"
-///     Uint8 padding2; // optional // @link substring="padding2" target="#padding2"
-///     Uint8 padding3; // optional // @link substring="padding3" target="#padding3"
+///     SDL_GPUCompareOp compare_op; // @link substring="SDL_GPUCompareOp" target="SDL_GPUCompareOp" @link substring="compare_op" target="#compare_op"
+///     SDL_GPUStencilOpState back_stencil_state; // @link substring="SDL_GPUStencilOpState" target="SDL_GPUStencilOpState" @link substring="back_stencil_state" target="#back_stencil_state"
+///     SDL_GPUStencilOpState front_stencil_state; // @link substring="SDL_GPUStencilOpState" target="SDL_GPUStencilOpState" @link substring="front_stencil_state" target="#front_stencil_state"
+///     Uint8 compare_mask; // @link substring="compare_mask" target="#compare_mask"
+///     Uint8 write_mask; // @link substring="write_mask" target="#write_mask"
+///     bool enable_depth_test; // @link substring="enable_depth_test" target="#enable_depth_test"
+///     bool enable_depth_write; // @link substring="enable_depth_write" target="#enable_depth_write"
+///     bool enable_stencil_test; // @link substring="enable_stencil_test" target="#enable_stencil_test"
+///     Uint8 padding1; // @link substring="padding1" target="#padding1"
+///     Uint8 padding2; // @link substring="padding2" target="#padding2"
+///     Uint8 padding3; // @link substring="padding3" target="#padding3"
 /// } SDL_GPUDepthStencilState;
 /// }
 ///

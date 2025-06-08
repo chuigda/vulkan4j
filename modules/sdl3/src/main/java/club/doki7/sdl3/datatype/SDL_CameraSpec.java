@@ -32,12 +32,12 @@ import static club.doki7.sdl3.SDL3Constants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct SDL_CameraSpec {
-///     SDL_PixelFormat format; // optional // @link substring="SDL_PixelFormat" target="SDL_PixelFormat" @link substring="format" target="#format"
-///     SDL_Colorspace colorspace; // optional // @link substring="SDL_Colorspace" target="SDL_Colorspace" @link substring="colorspace" target="#colorspace"
-///     int width; // optional // @link substring="width" target="#width"
-///     int height; // optional // @link substring="height" target="#height"
-///     int framerate_numerator; // optional // @link substring="framerate_numerator" target="#framerate_numerator"
-///     int framerate_denominator; // optional // @link substring="framerate_denominator" target="#framerate_denominator"
+///     SDL_PixelFormat format; // @link substring="SDL_PixelFormat" target="SDL_PixelFormat" @link substring="format" target="#format"
+///     SDL_Colorspace colorspace; // @link substring="SDL_Colorspace" target="SDL_Colorspace" @link substring="colorspace" target="#colorspace"
+///     int width; // @link substring="width" target="#width"
+///     int height; // @link substring="height" target="#height"
+///     int framerate_numerator; // @link substring="framerate_numerator" target="#framerate_numerator"
+///     int framerate_denominator; // @link substring="framerate_denominator" target="#framerate_denominator"
 /// } SDL_CameraSpec;
 /// }
 ///

@@ -26,9 +26,9 @@ import static club.doki7.sdl3.SDL3Constants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct SDL_CommonEvent {
-///     Uint32 type; // optional // @link substring="type" target="#type"
+///     Uint32 type; // @link substring="type" target="#type"
 ///     Uint32 reserved;
-///     Uint64 timestamp; // optional // @link substring="timestamp" target="#timestamp"
+///     Uint64 timestamp; // @link substring="timestamp" target="#timestamp"
 /// } SDL_CommonEvent;
 /// }
 ///

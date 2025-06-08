@@ -33,8 +33,8 @@ import static club.doki7.sdl3.SDL3Constants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct SDL_Locale {
-///     char const* language; // optional // @link substring="language" target="#language"
-///     char const* country; // optional // @link substring="country" target="#country"
+///     char const* language; // @link substring="language" target="#language"
+///     char const* country; // @link substring="country" target="#country"
 /// } SDL_Locale;
 /// }
 ///

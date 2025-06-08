@@ -32,15 +32,15 @@ import static club.doki7.sdl3.SDL3Constants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct SDL_DisplayMode {
-///     SDL_DisplayID displayID; // optional // @link substring="displayID" target="#displayID"
-///     SDL_PixelFormat format; // optional // @link substring="SDL_PixelFormat" target="SDL_PixelFormat" @link substring="format" target="#format"
-///     int w; // optional // @link substring="w" target="#w"
-///     int h; // optional // @link substring="h" target="#h"
-///     float pixel_density; // optional // @link substring="pixel_density" target="#pixel_density"
-///     float refresh_rate; // optional // @link substring="refresh_rate" target="#refresh_rate"
-///     int refresh_rate_numerator; // optional // @link substring="refresh_rate_numerator" target="#refresh_rate_numerator"
-///     int refresh_rate_denominator; // optional // @link substring="refresh_rate_denominator" target="#refresh_rate_denominator"
-///     SDL_DisplayModeData* internal; // optional // @link substring="SDL_DisplayModeData" target="SDL_DisplayModeData" @link substring="internal" target="#internal"
+///     SDL_DisplayID displayID; // @link substring="displayID" target="#displayID"
+///     SDL_PixelFormat format; // @link substring="SDL_PixelFormat" target="SDL_PixelFormat" @link substring="format" target="#format"
+///     int w; // @link substring="w" target="#w"
+///     int h; // @link substring="h" target="#h"
+///     float pixel_density; // @link substring="pixel_density" target="#pixel_density"
+///     float refresh_rate; // @link substring="refresh_rate" target="#refresh_rate"
+///     int refresh_rate_numerator; // @link substring="refresh_rate_numerator" target="#refresh_rate_numerator"
+///     int refresh_rate_denominator; // @link substring="refresh_rate_denominator" target="#refresh_rate_denominator"
+///     SDL_DisplayModeData* internal; // @link substring="SDL_DisplayModeData" target="SDL_DisplayModeData" @link substring="internal" target="#internal"
 /// } SDL_DisplayMode;
 /// }
 ///

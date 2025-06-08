@@ -28,9 +28,9 @@ import static club.doki7.sdl3.SDL3Constants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct SDL_GPUTransferBufferCreateInfo {
-///     SDL_GPUTransferBufferUsage usage; // optional // @link substring="SDL_GPUTransferBufferUsage" target="SDL_GPUTransferBufferUsage" @link substring="usage" target="#usage"
-///     Uint32 size; // optional // @link substring="size" target="#size"
-///     SDL_PropertiesID props; // optional // @link substring="props" target="#props"
+///     SDL_GPUTransferBufferUsage usage; // @link substring="SDL_GPUTransferBufferUsage" target="SDL_GPUTransferBufferUsage" @link substring="usage" target="#usage"
+///     Uint32 size; // @link substring="size" target="#size"
+///     SDL_PropertiesID props; // @link substring="props" target="#props"
 /// } SDL_GPUTransferBufferCreateInfo;
 /// }
 ///

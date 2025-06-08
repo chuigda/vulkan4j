@@ -35,7 +35,7 @@ import static club.doki7.sdl3.SDL3Constants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct SDL_IOStreamInterface {
-///     Uint32 version; // optional // @link substring="version" target="#version"
+///     Uint32 version; // @link substring="version" target="#version"
 ///     PFN_SDL_IOStreamInterface_size size; // optional // @link substring="size" target="#size"
 ///     PFN_SDL_IOStreamInterface_seek seek; // optional // @link substring="seek" target="#seek"
 ///     PFN_SDL_IOStreamInterface_read read; // optional // @link substring="read" target="#read"

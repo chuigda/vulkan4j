@@ -28,10 +28,10 @@ import static club.doki7.sdl3.SDL3Constants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct SDL_GPUStencilOpState {
-///     SDL_GPUStencilOp fail_op; // optional // @link substring="SDL_GPUStencilOp" target="SDL_GPUStencilOp" @link substring="fail_op" target="#fail_op"
-///     SDL_GPUStencilOp pass_op; // optional // @link substring="SDL_GPUStencilOp" target="SDL_GPUStencilOp" @link substring="pass_op" target="#pass_op"
-///     SDL_GPUStencilOp depth_fail_op; // optional // @link substring="SDL_GPUStencilOp" target="SDL_GPUStencilOp" @link substring="depth_fail_op" target="#depth_fail_op"
-///     SDL_GPUCompareOp compare_op; // optional // @link substring="SDL_GPUCompareOp" target="SDL_GPUCompareOp" @link substring="compare_op" target="#compare_op"
+///     SDL_GPUStencilOp fail_op; // @link substring="SDL_GPUStencilOp" target="SDL_GPUStencilOp" @link substring="fail_op" target="#fail_op"
+///     SDL_GPUStencilOp pass_op; // @link substring="SDL_GPUStencilOp" target="SDL_GPUStencilOp" @link substring="pass_op" target="#pass_op"
+///     SDL_GPUStencilOp depth_fail_op; // @link substring="SDL_GPUStencilOp" target="SDL_GPUStencilOp" @link substring="depth_fail_op" target="#depth_fail_op"
+///     SDL_GPUCompareOp compare_op; // @link substring="SDL_GPUCompareOp" target="SDL_GPUCompareOp" @link substring="compare_op" target="#compare_op"
 /// } SDL_GPUStencilOpState;
 /// }
 ///

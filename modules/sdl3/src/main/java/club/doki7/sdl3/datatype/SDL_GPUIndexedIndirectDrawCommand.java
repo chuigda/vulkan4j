@@ -35,11 +35,11 @@ import static club.doki7.sdl3.SDL3Constants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct SDL_GPUIndexedIndirectDrawCommand {
-///     Uint32 num_indices; // optional // @link substring="num_indices" target="#num_indices"
-///     Uint32 num_instances; // optional // @link substring="num_instances" target="#num_instances"
-///     Uint32 first_index; // optional // @link substring="first_index" target="#first_index"
-///     Sint32 vertex_offset; // optional // @link substring="vertex_offset" target="#vertex_offset"
-///     Uint32 first_instance; // optional // @link substring="first_instance" target="#first_instance"
+///     Uint32 num_indices; // @link substring="num_indices" target="#num_indices"
+///     Uint32 num_instances; // @link substring="num_instances" target="#num_instances"
+///     Uint32 first_index; // @link substring="first_index" target="#first_index"
+///     Sint32 vertex_offset; // @link substring="vertex_offset" target="#vertex_offset"
+///     Uint32 first_instance; // @link substring="first_instance" target="#first_instance"
 /// } SDL_GPUIndexedIndirectDrawCommand;
 /// }
 ///

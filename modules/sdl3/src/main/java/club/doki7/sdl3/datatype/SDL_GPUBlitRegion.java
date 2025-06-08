@@ -28,13 +28,13 @@ import static club.doki7.sdl3.SDL3Constants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct SDL_GPUBlitRegion {
-///     SDL_GPUTexture* texture; // optional // @link substring="SDL_GPUTexture" target="SDL_GPUTexture" @link substring="texture" target="#texture"
-///     Uint32 mip_level; // optional // @link substring="mip_level" target="#mip_level"
-///     Uint32 layer_or_depth_plane; // optional // @link substring="layer_or_depth_plane" target="#layer_or_depth_plane"
-///     Uint32 x; // optional // @link substring="x" target="#x"
-///     Uint32 y; // optional // @link substring="y" target="#y"
-///     Uint32 w; // optional // @link substring="w" target="#w"
-///     Uint32 h; // optional // @link substring="h" target="#h"
+///     SDL_GPUTexture* texture; // @link substring="SDL_GPUTexture" target="SDL_GPUTexture" @link substring="texture" target="#texture"
+///     Uint32 mip_level; // @link substring="mip_level" target="#mip_level"
+///     Uint32 layer_or_depth_plane; // @link substring="layer_or_depth_plane" target="#layer_or_depth_plane"
+///     Uint32 x; // @link substring="x" target="#x"
+///     Uint32 y; // @link substring="y" target="#y"
+///     Uint32 w; // @link substring="w" target="#w"
+///     Uint32 h; // @link substring="h" target="#h"
 /// } SDL_GPUBlitRegion;
 /// }
 ///

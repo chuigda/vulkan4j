@@ -38,20 +38,20 @@ import static club.doki7.sdl3.SDL3Constants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct SDL_HapticCustom {
-///     Uint16 type; // optional // @link substring="type" target="#type"
-///     SDL_HapticDirection direction; // optional // @link substring="SDL_HapticDirection" target="SDL_HapticDirection" @link substring="direction" target="#direction"
-///     Uint32 length; // optional // @link substring="length" target="#length"
-///     Uint16 delay; // optional // @link substring="delay" target="#delay"
-///     Uint16 button; // optional // @link substring="button" target="#button"
-///     Uint16 interval; // optional // @link substring="interval" target="#interval"
-///     Uint8 channels; // optional // @link substring="channels" target="#channels"
-///     Uint16 period; // optional // @link substring="period" target="#period"
-///     Uint16 samples; // optional // @link substring="samples" target="#samples"
-///     Uint16* data; // optional // @link substring="data" target="#data"
-///     Uint16 attack_length; // optional // @link substring="attack_length" target="#attack_length"
-///     Uint16 attack_level; // optional // @link substring="attack_level" target="#attack_level"
-///     Uint16 fade_length; // optional // @link substring="fade_length" target="#fade_length"
-///     Uint16 fade_level; // optional // @link substring="fade_level" target="#fade_level"
+///     Uint16 type; // @link substring="type" target="#type"
+///     SDL_HapticDirection direction; // @link substring="SDL_HapticDirection" target="SDL_HapticDirection" @link substring="direction" target="#direction"
+///     Uint32 length; // @link substring="length" target="#length"
+///     Uint16 delay; // @link substring="delay" target="#delay"
+///     Uint16 button; // @link substring="button" target="#button"
+///     Uint16 interval; // @link substring="interval" target="#interval"
+///     Uint8 channels; // @link substring="channels" target="#channels"
+///     Uint16 period; // @link substring="period" target="#period"
+///     Uint16 samples; // @link substring="samples" target="#samples"
+///     Uint16* data; // @link substring="data" target="#data"
+///     Uint16 attack_length; // @link substring="attack_length" target="#attack_length"
+///     Uint16 attack_level; // @link substring="attack_level" target="#attack_level"
+///     Uint16 fade_length; // @link substring="fade_length" target="#fade_length"
+///     Uint16 fade_level; // @link substring="fade_level" target="#fade_level"
 /// } SDL_HapticCustom;
 /// }
 ///

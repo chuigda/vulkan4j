@@ -29,8 +29,8 @@ import static club.doki7.sdl3.SDL3Constants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct SDL_GPUTextureSamplerBinding {
-///     SDL_GPUTexture* texture; // optional // @link substring="SDL_GPUTexture" target="SDL_GPUTexture" @link substring="texture" target="#texture"
-///     SDL_GPUSampler* sampler; // optional // @link substring="SDL_GPUSampler" target="SDL_GPUSampler" @link substring="sampler" target="#sampler"
+///     SDL_GPUTexture* texture; // @link substring="SDL_GPUTexture" target="SDL_GPUTexture" @link substring="texture" target="#texture"
+///     SDL_GPUSampler* sampler; // @link substring="SDL_GPUSampler" target="SDL_GPUSampler" @link substring="sampler" target="#sampler"
 /// } SDL_GPUTextureSamplerBinding;
 /// }
 ///

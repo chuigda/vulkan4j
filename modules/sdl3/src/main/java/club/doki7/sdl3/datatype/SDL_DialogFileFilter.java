@@ -40,8 +40,8 @@ import static club.doki7.sdl3.SDL3Constants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct SDL_DialogFileFilter {
-///     char const* name; // optional // @link substring="name" target="#name"
-///     char const* pattern; // optional // @link substring="pattern" target="#pattern"
+///     char const* name; // @link substring="name" target="#name"
+///     char const* pattern; // @link substring="pattern" target="#pattern"
 /// } SDL_DialogFileFilter;
 /// }
 ///

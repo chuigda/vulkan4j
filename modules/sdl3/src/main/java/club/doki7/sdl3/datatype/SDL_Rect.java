@@ -34,10 +34,10 @@ import static club.doki7.sdl3.SDL3Constants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct SDL_Rect {
-///     int x; // optional // @link substring="x" target="#x"
-///     int y; // optional // @link substring="y" target="#y"
-///     int w; // optional // @link substring="w" target="#w"
-///     int h; // optional // @link substring="h" target="#h"
+///     int x; // @link substring="x" target="#x"
+///     int y; // @link substring="y" target="#y"
+///     int w; // @link substring="w" target="#w"
+///     int h; // @link substring="h" target="#h"
 /// } SDL_Rect;
 /// }
 ///

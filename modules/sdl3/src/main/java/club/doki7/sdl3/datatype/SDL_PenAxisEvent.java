@@ -29,16 +29,16 @@ import static club.doki7.sdl3.SDL3Constants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct SDL_PenAxisEvent {
-///     SDL_EventType type; // optional // @link substring="SDL_EventType" target="SDL_EventType" @link substring="type" target="#type"
+///     SDL_EventType type; // @link substring="SDL_EventType" target="SDL_EventType" @link substring="type" target="#type"
 ///     Uint32 reserved;
-///     Uint64 timestamp; // optional // @link substring="timestamp" target="#timestamp"
-///     SDL_WindowID windowID; // optional // @link substring="windowID" target="#windowID"
-///     SDL_PenID which; // optional // @link substring="which" target="#which"
-///     SDL_PenInputFlags pen_state; // optional // @link substring="SDL_PenInputFlags" target="SDL_PenInputFlags" @link substring="pen_state" target="#pen_state"
-///     float x; // optional // @link substring="x" target="#x"
-///     float y; // optional // @link substring="y" target="#y"
-///     SDL_PenAxis axis; // optional // @link substring="SDL_PenAxis" target="SDL_PenAxis" @link substring="axis" target="#axis"
-///     float value; // optional // @link substring="value" target="#value"
+///     Uint64 timestamp; // @link substring="timestamp" target="#timestamp"
+///     SDL_WindowID windowID; // @link substring="windowID" target="#windowID"
+///     SDL_PenID which; // @link substring="which" target="#which"
+///     SDL_PenInputFlags pen_state; // @link substring="SDL_PenInputFlags" target="SDL_PenInputFlags" @link substring="pen_state" target="#pen_state"
+///     float x; // @link substring="x" target="#x"
+///     float y; // @link substring="y" target="#y"
+///     SDL_PenAxis axis; // @link substring="SDL_PenAxis" target="SDL_PenAxis" @link substring="axis" target="#axis"
+///     float value; // @link substring="value" target="#value"
 /// } SDL_PenAxisEvent;
 /// }
 ///

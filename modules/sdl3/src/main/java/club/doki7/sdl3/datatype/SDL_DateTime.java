@@ -27,15 +27,15 @@ import static club.doki7.sdl3.SDL3Constants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct SDL_DateTime {
-///     int year; // optional // @link substring="year" target="#year"
-///     int month; // optional // @link substring="month" target="#month"
-///     int day; // optional // @link substring="day" target="#day"
-///     int hour; // optional // @link substring="hour" target="#hour"
-///     int minute; // optional // @link substring="minute" target="#minute"
-///     int second; // optional // @link substring="second" target="#second"
-///     int nanosecond; // optional // @link substring="nanosecond" target="#nanosecond"
-///     int day_of_week; // optional // @link substring="day_of_week" target="#day_of_week"
-///     int utc_offset; // optional // @link substring="utc_offset" target="#utc_offset"
+///     int year; // @link substring="year" target="#year"
+///     int month; // @link substring="month" target="#month"
+///     int day; // @link substring="day" target="#day"
+///     int hour; // @link substring="hour" target="#hour"
+///     int minute; // @link substring="minute" target="#minute"
+///     int second; // @link substring="second" target="#second"
+///     int nanosecond; // @link substring="nanosecond" target="#nanosecond"
+///     int day_of_week; // @link substring="day_of_week" target="#day_of_week"
+///     int utc_offset; // @link substring="utc_offset" target="#utc_offset"
 /// } SDL_DateTime;
 /// }
 ///

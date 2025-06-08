@@ -27,12 +27,12 @@ import static club.doki7.sdl3.SDL3Constants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct SDL_ClipboardEvent {
-///     SDL_EventType type; // optional // @link substring="SDL_EventType" target="SDL_EventType" @link substring="type" target="#type"
+///     SDL_EventType type; // @link substring="SDL_EventType" target="SDL_EventType" @link substring="type" target="#type"
 ///     Uint32 reserved;
-///     Uint64 timestamp; // optional // @link substring="timestamp" target="#timestamp"
-///     bool owner; // optional // @link substring="owner" target="#owner"
-///     Sint32 num_mime_types; // optional // @link substring="num_mime_types" target="#num_mime_types"
-///     char const** mime_types; // optional // @link substring="mime_types" target="#mime_types"
+///     Uint64 timestamp; // @link substring="timestamp" target="#timestamp"
+///     bool owner; // @link substring="owner" target="#owner"
+///     Sint32 num_mime_types; // @link substring="num_mime_types" target="#num_mime_types"
+///     char const** mime_types; // @link substring="mime_types" target="#mime_types"
 /// } SDL_ClipboardEvent;
 /// }
 ///

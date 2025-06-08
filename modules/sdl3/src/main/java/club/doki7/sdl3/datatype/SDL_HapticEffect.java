@@ -93,13 +93,13 @@ import static club.doki7.sdl3.SDL3Constants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct SDL_HapticEffect {
-///     Uint16 type; // optional // @link substring="type" target="#type"
-///     SDL_HapticConstant constant; // optional // @link substring="SDL_HapticConstant" target="SDL_HapticConstant" @link substring="constant" target="#constant"
-///     SDL_HapticPeriodic periodic; // optional // @link substring="SDL_HapticPeriodic" target="SDL_HapticPeriodic" @link substring="periodic" target="#periodic"
-///     SDL_HapticCondition condition; // optional // @link substring="SDL_HapticCondition" target="SDL_HapticCondition" @link substring="condition" target="#condition"
-///     SDL_HapticRamp ramp; // optional // @link substring="SDL_HapticRamp" target="SDL_HapticRamp" @link substring="ramp" target="#ramp"
-///     SDL_HapticLeftRight leftright; // optional // @link substring="SDL_HapticLeftRight" target="SDL_HapticLeftRight" @link substring="leftright" target="#leftright"
-///     SDL_HapticCustom custom; // optional // @link substring="SDL_HapticCustom" target="SDL_HapticCustom" @link substring="custom" target="#custom"
+///     Uint16 type; // @link substring="type" target="#type"
+///     SDL_HapticConstant constant; // @link substring="SDL_HapticConstant" target="SDL_HapticConstant" @link substring="constant" target="#constant"
+///     SDL_HapticPeriodic periodic; // @link substring="SDL_HapticPeriodic" target="SDL_HapticPeriodic" @link substring="periodic" target="#periodic"
+///     SDL_HapticCondition condition; // @link substring="SDL_HapticCondition" target="SDL_HapticCondition" @link substring="condition" target="#condition"
+///     SDL_HapticRamp ramp; // @link substring="SDL_HapticRamp" target="SDL_HapticRamp" @link substring="ramp" target="#ramp"
+///     SDL_HapticLeftRight leftright; // @link substring="SDL_HapticLeftRight" target="SDL_HapticLeftRight" @link substring="leftright" target="#leftright"
+///     SDL_HapticCustom custom; // @link substring="SDL_HapticCustom" target="SDL_HapticCustom" @link substring="custom" target="#custom"
 /// } SDL_HapticEffect;
 /// }
 ///

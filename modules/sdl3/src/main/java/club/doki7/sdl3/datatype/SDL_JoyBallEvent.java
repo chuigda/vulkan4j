@@ -26,16 +26,16 @@ import static club.doki7.sdl3.SDL3Constants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct SDL_JoyBallEvent {
-///     SDL_EventType type; // optional // @link substring="SDL_EventType" target="SDL_EventType" @link substring="type" target="#type"
+///     SDL_EventType type; // @link substring="SDL_EventType" target="SDL_EventType" @link substring="type" target="#type"
 ///     Uint32 reserved;
-///     Uint64 timestamp; // optional // @link substring="timestamp" target="#timestamp"
-///     SDL_JoystickID which; // optional // @link substring="which" target="#which"
-///     Uint8 ball; // optional // @link substring="ball" target="#ball"
-///     Uint8 padding1; // optional // @link substring="padding1" target="#padding1"
-///     Uint8 padding2; // optional // @link substring="padding2" target="#padding2"
-///     Uint8 padding3; // optional // @link substring="padding3" target="#padding3"
-///     Sint16 xrel; // optional // @link substring="xrel" target="#xrel"
-///     Sint16 yrel; // optional // @link substring="yrel" target="#yrel"
+///     Uint64 timestamp; // @link substring="timestamp" target="#timestamp"
+///     SDL_JoystickID which; // @link substring="which" target="#which"
+///     Uint8 ball; // @link substring="ball" target="#ball"
+///     Uint8 padding1; // @link substring="padding1" target="#padding1"
+///     Uint8 padding2; // @link substring="padding2" target="#padding2"
+///     Uint8 padding3; // @link substring="padding3" target="#padding3"
+///     Sint16 xrel; // @link substring="xrel" target="#xrel"
+///     Sint16 yrel; // @link substring="yrel" target="#yrel"
 /// } SDL_JoyBallEvent;
 /// }
 ///

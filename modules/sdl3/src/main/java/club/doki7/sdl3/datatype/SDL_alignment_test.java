@@ -24,8 +24,8 @@ import static club.doki7.sdl3.SDL3Constants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct SDL_alignment_test {
-///     Uint8 a; // optional // @link substring="a" target="#a"
-///     void* b; // optional // @link substring="b" target="#b"
+///     Uint8 a; // @link substring="a" target="#a"
+///     void* b; // @link substring="b" target="#b"
 /// } SDL_alignment_test;
 /// }
 ///

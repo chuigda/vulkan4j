@@ -28,12 +28,12 @@ import static club.doki7.sdl3.SDL3Constants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct SDL_GPUViewport {
-///     float x; // optional // @link substring="x" target="#x"
-///     float y; // optional // @link substring="y" target="#y"
-///     float w; // optional // @link substring="w" target="#w"
-///     float h; // optional // @link substring="h" target="#h"
-///     float min_depth; // optional // @link substring="min_depth" target="#min_depth"
-///     float max_depth; // optional // @link substring="max_depth" target="#max_depth"
+///     float x; // @link substring="x" target="#x"
+///     float y; // @link substring="y" target="#y"
+///     float w; // @link substring="w" target="#w"
+///     float h; // @link substring="h" target="#h"
+///     float min_depth; // @link substring="min_depth" target="#min_depth"
+///     float max_depth; // @link substring="max_depth" target="#max_depth"
 /// } SDL_GPUViewport;
 /// }
 ///

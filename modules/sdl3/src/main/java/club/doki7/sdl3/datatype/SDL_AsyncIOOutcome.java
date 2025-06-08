@@ -26,14 +26,14 @@ import static club.doki7.sdl3.SDL3Constants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct SDL_AsyncIOOutcome {
-///     SDL_AsyncIO* asyncio; // optional // @link substring="SDL_AsyncIO" target="SDL_AsyncIO" @link substring="asyncio" target="#asyncio"
-///     SDL_AsyncIOTaskType type; // optional // @link substring="SDL_AsyncIOTaskType" target="SDL_AsyncIOTaskType" @link substring="type" target="#type"
-///     SDL_AsyncIOResult result; // optional // @link substring="SDL_AsyncIOResult" target="SDL_AsyncIOResult" @link substring="result" target="#result"
-///     void* buffer; // optional // @link substring="buffer" target="#buffer"
-///     Uint64 offset; // optional // @link substring="offset" target="#offset"
-///     Uint64 bytes_requested; // optional // @link substring="bytes_requested" target="#bytes_requested"
-///     Uint64 bytes_transferred; // optional // @link substring="bytes_transferred" target="#bytes_transferred"
-///     void* userdata; // optional // @link substring="userdata" target="#userdata"
+///     SDL_AsyncIO* asyncio; // @link substring="SDL_AsyncIO" target="SDL_AsyncIO" @link substring="asyncio" target="#asyncio"
+///     SDL_AsyncIOTaskType type; // @link substring="SDL_AsyncIOTaskType" target="SDL_AsyncIOTaskType" @link substring="type" target="#type"
+///     SDL_AsyncIOResult result; // @link substring="SDL_AsyncIOResult" target="SDL_AsyncIOResult" @link substring="result" target="#result"
+///     void* buffer; // @link substring="buffer" target="#buffer"
+///     Uint64 offset; // @link substring="offset" target="#offset"
+///     Uint64 bytes_requested; // @link substring="bytes_requested" target="#bytes_requested"
+///     Uint64 bytes_transferred; // @link substring="bytes_transferred" target="#bytes_transferred"
+///     void* userdata; // @link substring="userdata" target="#userdata"
 /// } SDL_AsyncIOOutcome;
 /// }
 ///

@@ -106,8 +106,13 @@ private val headerParseConfig = ParseConfig<EmptyMergeable>().apply {
     )
     addRule(
         20,
-        { if (it.startsWith("typedef struct") && it.endsWith(";")) ControlFlow.ACCEPT else ControlFlow.NEXT },
+        { if (it.startsWith("typedef struct") && it.endsWith(";") && !it.contains("{") && !it.contains("}")) ControlFlow.ACCEPT else ControlFlow.NEXT },
         ::parseOpaqueTypedef
+    )
+    addRule(
+        20,
+        { if (it.startsWith("typedef struct") && it.endsWith(";") && it.contains("{") && it.contains("}")) ControlFlow.ACCEPT else ControlFlow.NEXT },
+        ::nextLine
     )
     addRule(
         20,
@@ -337,7 +342,7 @@ private fun morphFunctionDecl(functionDecl: FunctionDecl) = Command(
             type = it.type.toType(),
             len = null,
             argLen = null,
-            optional = it.type.trivia.any { trivia -> trivia.startsWith("VMA_NULLABLE") },
+            optional = true,
         )
     },
     result = functionDecl.returnType.toType(),
@@ -464,13 +469,14 @@ private fun parseStructField(
     val (declList, nextIndex) = parseStructFieldDecl(lines, index)
 
     for (decl in declList) {
+        val type = decl.type.toType()
         val member = Member(
             name = decl.name,
-            type = decl.type.toType(),
+            type = type,
             values = null,
             len = null,
             altLen = null,
-            optional = true,
+            optional = false,
             bits = null
         )
 

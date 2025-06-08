@@ -2,12 +2,14 @@ package club.doki7.babel.drv
 
 import club.doki7.babel.codegen.CodegenOptions
 import club.doki7.babel.codegen.generateBitmask
+import club.doki7.babel.codegen.generateCommandFile
 import club.doki7.babel.codegen.generateEnumeration
 import club.doki7.babel.codegen.generateFunctionTypedefs
 import club.doki7.babel.codegen.generateHandle
 import club.doki7.babel.codegen.generateStructure
 import club.doki7.babel.codegen.generateStructureInterface
 import club.doki7.babel.extract.sdl3.extractSDLRegistry
+import club.doki7.babel.registry.IdentifierType
 import club.doki7.babel.registry.OpaqueHandleTypedef
 import club.doki7.babel.util.render
 import club.doki7.babel.util.setupLog
@@ -76,4 +78,24 @@ fun main() {
                 .writeText(render(handleDoc))
         }
     }
+
+    val toGenerateCommands = registry.commands.values
+        .filter {
+            !it.params.any { param ->
+                param.name.original == "..."
+                        || (param.type is IdentifierType && (param.type as IdentifierType).ident.original == "va_list")
+            }
+        }
+        .toList()
+
+    val commandDoc = generateCommandFile(
+        registry,
+        "SDL3",
+        toGenerateCommands,
+        codegenOptions,
+        implConstantClass = true,
+        subpackage = null
+    )
+    File("$packageDir/SDL3.java")
+        .writeText(render(commandDoc))
 }

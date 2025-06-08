@@ -29,8 +29,8 @@ import static club.doki7.sdl3.SDL3Constants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct SDL_FPoint {
-///     float x; // optional // @link substring="x" target="#x"
-///     float y; // optional // @link substring="y" target="#y"
+///     float x; // @link substring="x" target="#x"
+///     float y; // @link substring="y" target="#y"
 /// } SDL_FPoint;
 /// }
 ///

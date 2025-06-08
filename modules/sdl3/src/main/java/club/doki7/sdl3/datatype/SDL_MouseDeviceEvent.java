@@ -26,10 +26,10 @@ import static club.doki7.sdl3.SDL3Constants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct SDL_MouseDeviceEvent {
-///     SDL_EventType type; // optional // @link substring="SDL_EventType" target="SDL_EventType" @link substring="type" target="#type"
+///     SDL_EventType type; // @link substring="SDL_EventType" target="SDL_EventType" @link substring="type" target="#type"
 ///     Uint32 reserved;
-///     Uint64 timestamp; // optional // @link substring="timestamp" target="#timestamp"
-///     SDL_MouseID which; // optional // @link substring="which" target="#which"
+///     Uint64 timestamp; // @link substring="timestamp" target="#timestamp"
+///     SDL_MouseID which; // @link substring="which" target="#which"
 /// } SDL_MouseDeviceEvent;
 /// }
 ///

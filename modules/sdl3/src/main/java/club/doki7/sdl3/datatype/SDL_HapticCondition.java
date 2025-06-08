@@ -48,18 +48,18 @@ import static club.doki7.sdl3.SDL3Constants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct SDL_HapticCondition {
-///     Uint16 type; // optional // @link substring="type" target="#type"
-///     SDL_HapticDirection direction; // optional // @link substring="SDL_HapticDirection" target="SDL_HapticDirection" @link substring="direction" target="#direction"
-///     Uint32 length; // optional // @link substring="length" target="#length"
-///     Uint16 delay; // optional // @link substring="delay" target="#delay"
-///     Uint16 button; // optional // @link substring="button" target="#button"
-///     Uint16 interval; // optional // @link substring="interval" target="#interval"
-///     Uint16[3] right_sat; // optional // @link substring="right_sat" target="#right_sat"
-///     Uint16[3] left_sat; // optional // @link substring="left_sat" target="#left_sat"
-///     Sint16[3] right_coeff; // optional // @link substring="right_coeff" target="#right_coeff"
-///     Sint16[3] left_coeff; // optional // @link substring="left_coeff" target="#left_coeff"
-///     Uint16[3] deadband; // optional // @link substring="deadband" target="#deadband"
-///     Sint16[3] center; // optional // @link substring="center" target="#center"
+///     Uint16 type; // @link substring="type" target="#type"
+///     SDL_HapticDirection direction; // @link substring="SDL_HapticDirection" target="SDL_HapticDirection" @link substring="direction" target="#direction"
+///     Uint32 length; // @link substring="length" target="#length"
+///     Uint16 delay; // @link substring="delay" target="#delay"
+///     Uint16 button; // @link substring="button" target="#button"
+///     Uint16 interval; // @link substring="interval" target="#interval"
+///     Uint16[3] right_sat; // @link substring="right_sat" target="#right_sat"
+///     Uint16[3] left_sat; // @link substring="left_sat" target="#left_sat"
+///     Sint16[3] right_coeff; // @link substring="right_coeff" target="#right_coeff"
+///     Sint16[3] left_coeff; // @link substring="left_coeff" target="#left_coeff"
+///     Uint16[3] deadband; // @link substring="deadband" target="#deadband"
+///     Sint16[3] center; // @link substring="center" target="#center"
 /// } SDL_HapticCondition;
 /// }
 ///

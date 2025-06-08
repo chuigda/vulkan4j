@@ -26,9 +26,9 @@ import static club.doki7.sdl3.SDL3Constants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct SDL_MessageBoxButtonData {
-///     SDL_MessageBoxButtonFlags flags; // optional // @link substring="SDL_MessageBoxButtonFlags" target="SDL_MessageBoxButtonFlags" @link substring="flags" target="#flags"
-///     int buttonID; // optional // @link substring="buttonID" target="#buttonID"
-///     char const* text; // optional // @link substring="text" target="#text"
+///     SDL_MessageBoxButtonFlags flags; // @link substring="SDL_MessageBoxButtonFlags" target="SDL_MessageBoxButtonFlags" @link substring="flags" target="#flags"
+///     int buttonID; // @link substring="buttonID" target="#buttonID"
+///     char const* text; // @link substring="text" target="#text"
 /// } SDL_MessageBoxButtonData;
 /// }
 ///

@@ -32,15 +32,15 @@ import static club.doki7.sdl3.SDL3Constants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct SDL_GPUTextureRegion {
-///     SDL_GPUTexture* texture; // optional // @link substring="SDL_GPUTexture" target="SDL_GPUTexture" @link substring="texture" target="#texture"
-///     Uint32 mip_level; // optional // @link substring="mip_level" target="#mip_level"
-///     Uint32 layer; // optional // @link substring="layer" target="#layer"
-///     Uint32 x; // optional // @link substring="x" target="#x"
-///     Uint32 y; // optional // @link substring="y" target="#y"
-///     Uint32 z; // optional // @link substring="z" target="#z"
-///     Uint32 w; // optional // @link substring="w" target="#w"
-///     Uint32 h; // optional // @link substring="h" target="#h"
-///     Uint32 d; // optional // @link substring="d" target="#d"
+///     SDL_GPUTexture* texture; // @link substring="SDL_GPUTexture" target="SDL_GPUTexture" @link substring="texture" target="#texture"
+///     Uint32 mip_level; // @link substring="mip_level" target="#mip_level"
+///     Uint32 layer; // @link substring="layer" target="#layer"
+///     Uint32 x; // @link substring="x" target="#x"
+///     Uint32 y; // @link substring="y" target="#y"
+///     Uint32 z; // @link substring="z" target="#z"
+///     Uint32 w; // @link substring="w" target="#w"
+///     Uint32 h; // @link substring="h" target="#h"
+///     Uint32 d; // @link substring="d" target="#d"
 /// } SDL_GPUTextureRegion;
 /// }
 ///

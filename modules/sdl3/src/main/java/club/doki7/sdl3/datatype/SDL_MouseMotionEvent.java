@@ -26,16 +26,16 @@ import static club.doki7.sdl3.SDL3Constants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct SDL_MouseMotionEvent {
-///     SDL_EventType type; // optional // @link substring="SDL_EventType" target="SDL_EventType" @link substring="type" target="#type"
+///     SDL_EventType type; // @link substring="SDL_EventType" target="SDL_EventType" @link substring="type" target="#type"
 ///     Uint32 reserved;
-///     Uint64 timestamp; // optional // @link substring="timestamp" target="#timestamp"
-///     SDL_WindowID windowID; // optional // @link substring="windowID" target="#windowID"
-///     SDL_MouseID which; // optional // @link substring="which" target="#which"
-///     SDL_MouseButtonFlags state; // optional // @link substring="SDL_MouseButtonFlags" target="SDL_MouseButtonFlags" @link substring="state" target="#state"
-///     float x; // optional // @link substring="x" target="#x"
-///     float y; // optional // @link substring="y" target="#y"
-///     float xrel; // optional // @link substring="xrel" target="#xrel"
-///     float yrel; // optional // @link substring="yrel" target="#yrel"
+///     Uint64 timestamp; // @link substring="timestamp" target="#timestamp"
+///     SDL_WindowID windowID; // @link substring="windowID" target="#windowID"
+///     SDL_MouseID which; // @link substring="which" target="#which"
+///     SDL_MouseButtonFlags state; // @link substring="SDL_MouseButtonFlags" target="SDL_MouseButtonFlags" @link substring="state" target="#state"
+///     float x; // @link substring="x" target="#x"
+///     float y; // @link substring="y" target="#y"
+///     float xrel; // @link substring="xrel" target="#xrel"
+///     float yrel; // @link substring="yrel" target="#yrel"
 /// } SDL_MouseMotionEvent;
 /// }
 ///

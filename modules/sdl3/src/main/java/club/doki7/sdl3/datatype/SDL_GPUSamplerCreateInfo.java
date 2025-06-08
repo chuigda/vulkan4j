@@ -35,22 +35,22 @@ import static club.doki7.sdl3.SDL3Constants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct SDL_GPUSamplerCreateInfo {
-///     SDL_GPUFilter min_filter; // optional // @link substring="SDL_GPUFilter" target="SDL_GPUFilter" @link substring="min_filter" target="#min_filter"
-///     SDL_GPUFilter mag_filter; // optional // @link substring="SDL_GPUFilter" target="SDL_GPUFilter" @link substring="mag_filter" target="#mag_filter"
-///     SDL_GPUSamplerMipmapMode mipmap_mode; // optional // @link substring="SDL_GPUSamplerMipmapMode" target="SDL_GPUSamplerMipmapMode" @link substring="mipmap_mode" target="#mipmap_mode"
-///     SDL_GPUSamplerAddressMode address_mode_u; // optional // @link substring="SDL_GPUSamplerAddressMode" target="SDL_GPUSamplerAddressMode" @link substring="address_mode_u" target="#address_mode_u"
-///     SDL_GPUSamplerAddressMode address_mode_v; // optional // @link substring="SDL_GPUSamplerAddressMode" target="SDL_GPUSamplerAddressMode" @link substring="address_mode_v" target="#address_mode_v"
-///     SDL_GPUSamplerAddressMode address_mode_w; // optional // @link substring="SDL_GPUSamplerAddressMode" target="SDL_GPUSamplerAddressMode" @link substring="address_mode_w" target="#address_mode_w"
-///     float mip_lod_bias; // optional // @link substring="mip_lod_bias" target="#mip_lod_bias"
-///     float max_anisotropy; // optional // @link substring="max_anisotropy" target="#max_anisotropy"
-///     SDL_GPUCompareOp compare_op; // optional // @link substring="SDL_GPUCompareOp" target="SDL_GPUCompareOp" @link substring="compare_op" target="#compare_op"
-///     float min_lod; // optional // @link substring="min_lod" target="#min_lod"
-///     float max_lod; // optional // @link substring="max_lod" target="#max_lod"
-///     bool enable_anisotropy; // optional // @link substring="enable_anisotropy" target="#enable_anisotropy"
-///     bool enable_compare; // optional // @link substring="enable_compare" target="#enable_compare"
-///     Uint8 padding1; // optional // @link substring="padding1" target="#padding1"
-///     Uint8 padding2; // optional // @link substring="padding2" target="#padding2"
-///     SDL_PropertiesID props; // optional // @link substring="props" target="#props"
+///     SDL_GPUFilter min_filter; // @link substring="SDL_GPUFilter" target="SDL_GPUFilter" @link substring="min_filter" target="#min_filter"
+///     SDL_GPUFilter mag_filter; // @link substring="SDL_GPUFilter" target="SDL_GPUFilter" @link substring="mag_filter" target="#mag_filter"
+///     SDL_GPUSamplerMipmapMode mipmap_mode; // @link substring="SDL_GPUSamplerMipmapMode" target="SDL_GPUSamplerMipmapMode" @link substring="mipmap_mode" target="#mipmap_mode"
+///     SDL_GPUSamplerAddressMode address_mode_u; // @link substring="SDL_GPUSamplerAddressMode" target="SDL_GPUSamplerAddressMode" @link substring="address_mode_u" target="#address_mode_u"
+///     SDL_GPUSamplerAddressMode address_mode_v; // @link substring="SDL_GPUSamplerAddressMode" target="SDL_GPUSamplerAddressMode" @link substring="address_mode_v" target="#address_mode_v"
+///     SDL_GPUSamplerAddressMode address_mode_w; // @link substring="SDL_GPUSamplerAddressMode" target="SDL_GPUSamplerAddressMode" @link substring="address_mode_w" target="#address_mode_w"
+///     float mip_lod_bias; // @link substring="mip_lod_bias" target="#mip_lod_bias"
+///     float max_anisotropy; // @link substring="max_anisotropy" target="#max_anisotropy"
+///     SDL_GPUCompareOp compare_op; // @link substring="SDL_GPUCompareOp" target="SDL_GPUCompareOp" @link substring="compare_op" target="#compare_op"
+///     float min_lod; // @link substring="min_lod" target="#min_lod"
+///     float max_lod; // @link substring="max_lod" target="#max_lod"
+///     bool enable_anisotropy; // @link substring="enable_anisotropy" target="#enable_anisotropy"
+///     bool enable_compare; // @link substring="enable_compare" target="#enable_compare"
+///     Uint8 padding1; // @link substring="padding1" target="#padding1"
+///     Uint8 padding2; // @link substring="padding2" target="#padding2"
+///     SDL_PropertiesID props; // @link substring="props" target="#props"
 /// } SDL_GPUSamplerCreateInfo;
 /// }
 ///

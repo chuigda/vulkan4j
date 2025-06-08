@@ -37,16 +37,16 @@ import static club.doki7.sdl3.SDL3Constants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct SDL_GPURasterizerState {
-///     SDL_GPUFillMode fill_mode; // optional // @link substring="SDL_GPUFillMode" target="SDL_GPUFillMode" @link substring="fill_mode" target="#fill_mode"
-///     SDL_GPUCullMode cull_mode; // optional // @link substring="SDL_GPUCullMode" target="SDL_GPUCullMode" @link substring="cull_mode" target="#cull_mode"
-///     SDL_GPUFrontFace front_face; // optional // @link substring="SDL_GPUFrontFace" target="SDL_GPUFrontFace" @link substring="front_face" target="#front_face"
-///     float depth_bias_constant_factor; // optional // @link substring="depth_bias_constant_factor" target="#depth_bias_constant_factor"
-///     float depth_bias_clamp; // optional // @link substring="depth_bias_clamp" target="#depth_bias_clamp"
-///     float depth_bias_slope_factor; // optional // @link substring="depth_bias_slope_factor" target="#depth_bias_slope_factor"
-///     bool enable_depth_bias; // optional // @link substring="enable_depth_bias" target="#enable_depth_bias"
-///     bool enable_depth_clip; // optional // @link substring="enable_depth_clip" target="#enable_depth_clip"
-///     Uint8 padding1; // optional // @link substring="padding1" target="#padding1"
-///     Uint8 padding2; // optional // @link substring="padding2" target="#padding2"
+///     SDL_GPUFillMode fill_mode; // @link substring="SDL_GPUFillMode" target="SDL_GPUFillMode" @link substring="fill_mode" target="#fill_mode"
+///     SDL_GPUCullMode cull_mode; // @link substring="SDL_GPUCullMode" target="SDL_GPUCullMode" @link substring="cull_mode" target="#cull_mode"
+///     SDL_GPUFrontFace front_face; // @link substring="SDL_GPUFrontFace" target="SDL_GPUFrontFace" @link substring="front_face" target="#front_face"
+///     float depth_bias_constant_factor; // @link substring="depth_bias_constant_factor" target="#depth_bias_constant_factor"
+///     float depth_bias_clamp; // @link substring="depth_bias_clamp" target="#depth_bias_clamp"
+///     float depth_bias_slope_factor; // @link substring="depth_bias_slope_factor" target="#depth_bias_slope_factor"
+///     bool enable_depth_bias; // @link substring="enable_depth_bias" target="#enable_depth_bias"
+///     bool enable_depth_clip; // @link substring="enable_depth_clip" target="#enable_depth_clip"
+///     Uint8 padding1; // @link substring="padding1" target="#padding1"
+///     Uint8 padding2; // @link substring="padding2" target="#padding2"
 /// } SDL_GPURasterizerState;
 /// }
 ///
