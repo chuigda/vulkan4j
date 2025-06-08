@@ -79,6 +79,12 @@ fun main() {
         }
     }
 
+    for (opaqueHandleTypedef in registry.opaqueHandleTypedefs.values) {
+        val handleDoc = generateHandle(registry, opaqueHandleTypedef, codegenOptions)
+        File("$packageDir/handle/${opaqueHandleTypedef.name}.java")
+            .writeText(render(handleDoc))
+    }
+
     val toGenerateCommands = registry.commands.values
         .filter {
             !it.params.any { param ->

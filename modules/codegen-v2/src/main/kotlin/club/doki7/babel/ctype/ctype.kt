@@ -123,9 +123,9 @@ data class CBoolType(
         if (comment != null) {
             append("@Pointer(comment=\"$comment\") ")
         }
-        append("BooleanPtr")
+        append("BytePtr")
     }
-    override val jPtrTypeNoAnnotation: String = "BooleanPtr"
+    override val jPtrTypeNoAnnotation: String = "BytePtr"
 
     override fun copyWithComment(comment: String?): CBoolType {
         return this.copy(comment = comment)
