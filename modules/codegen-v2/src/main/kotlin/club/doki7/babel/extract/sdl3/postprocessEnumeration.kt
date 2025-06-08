@@ -10,9 +10,9 @@ internal fun postprocessEnumeration(enumeration: Enumeration) {
         val variant = enumeration.variants[index]
 
         if (variant.value is Either.Left) {
-            lastEnumValue = variant.value.value + 1
+            lastEnumValue = (variant.value as Either.Left<Long, List<String>>).value + 1
         } else if (variant.value is Either.Right) {
-            if (variant.value.value.isEmpty()) {
+            if ((variant.value as Either.Right<Long, List<String>>).value.isEmpty()) {
                 if (lastEnumValue == null) {
                     if (index == 0) {
                         lastEnumValue = -1
