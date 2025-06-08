@@ -47,7 +47,7 @@ fun renderImpl(sb: StringBuilder, doc: Doc, indent: Int) {
             }
         }
         is DocText -> {
-            for (i in 0 until indent) {
+            for (@Suppress("unused") i in 0 until indent) {
                 sb.append("    ")
             }
             sb.append(doc.text.trim())
@@ -71,3 +71,52 @@ fun String.parseDecOrHex() = when {
     startsWith("0x") -> substring(2).toLong(16)
     else -> toLong()
 }
+
+fun commonPrefix(strings: Collection<String>): String {
+    if (strings.isEmpty()) {
+        return ""
+    }
+    if (strings.size == 1) {
+        return strings.first()
+    }
+
+    val shortest = strings.minByOrNull { it.length } ?: return ""
+    if (shortest.isEmpty()) {
+        return ""
+    }
+
+    for (i in shortest.indices) {
+        val char = shortest[i]
+        for (str in strings) {
+            if (i >= str.length || str[i] != char) {
+                return shortest.substring(0, i)
+            }
+        }
+    }
+    return shortest
+}
+
+fun commonPostfix(strings: Collection<String>): String {
+    if (strings.isEmpty()) {
+        return ""
+    }
+    if (strings.size == 1) {
+        return strings.first()
+    }
+
+    val shortest = strings.minByOrNull { it.length } ?: return ""
+    if (shortest.isEmpty()) {
+        return ""
+    }
+
+    for (i in shortest.indices) {
+        val char = shortest[shortest.length - 1 - i]
+        for (str in strings) {
+            if (i >= str.length || str[str.length - 1 - i] != char) {
+                return shortest.substring(shortest.length - i)
+            }
+        }
+    }
+    return shortest
+}
+

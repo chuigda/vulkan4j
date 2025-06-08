@@ -8,6 +8,7 @@ import club.doki7.babel.cdecl.TokenKind
 import club.doki7.babel.cdecl.Tokenizer
 import club.doki7.babel.cdecl.parseEnumeratorDecl
 import club.doki7.babel.cdecl.parseFunctionDecl
+import club.doki7.babel.cdecl.parseInlineFunctionPointerField
 import club.doki7.babel.cdecl.parseStructFieldDecl
 import club.doki7.babel.cdecl.parseType
 import club.doki7.babel.cdecl.parseTypedefDecl
@@ -112,7 +113,9 @@ class TestParseStructField {
     @Test
     fun test1() {
         val tokenizer = Tokenizer(listOf("PFN_vmaCheckDefragmentationBreakFunction VMA_NULLABLE pfnBreakCallback;"), 0)
-        val structFieldDecl = parseStructFieldDecl(tokenizer)
+        val declList = parseStructFieldDecl(tokenizer)
+        assertEquals(1, declList.size)
+        val structFieldDecl = declList[0]
 
         assertEquals("pfnBreakCallback", structFieldDecl.name)
         assertTrue(structFieldDecl.trivia.isEmpty())
@@ -127,7 +130,9 @@ class TestParseStructField {
     @Test
     fun test2() {
         val tokenizer = Tokenizer(listOf("VmaDetailedStatistics memoryType[VK_MAX_MEMORY_TYPES];"), 0)
-        val structFieldDecl = parseStructFieldDecl(tokenizer)
+        val declList = parseStructFieldDecl(tokenizer)
+        assertEquals(1, declList.size)
+        val structFieldDecl = declList[0]
 
         assertEquals("memoryType", structFieldDecl.name)
         assertTrue(structFieldDecl.trivia.isEmpty())
@@ -139,6 +144,28 @@ class TestParseStructField {
         assertTrue(elementType is RawIdentifierType)
         assertEquals("VmaDetailedStatistics", elementType.ident)
         assertTrue(elementType.trivia.isEmpty())
+    }
+
+    @Test
+    fun test3() {
+        val tokenizer = Tokenizer(listOf("Uint8 r, g, b;"), 0)
+        val declList = parseStructFieldDecl(tokenizer)
+        assertEquals(3, declList.size)
+
+        for (i in 0 until 3) {
+            val structFieldDecl = declList[i]
+            when (i) {
+                0 -> assertEquals("r", structFieldDecl.name)
+                1 -> assertEquals("g", structFieldDecl.name)
+                2 -> assertEquals("b", structFieldDecl.name)
+            }
+            assertTrue(structFieldDecl.trivia.isEmpty())
+            val type = structFieldDecl.type
+            assertTrue(type is RawIdentifierType)
+            assertEquals("Uint8", type.ident)
+            assertFalse(type.unsigned)
+            assertTrue(type.trivia.isEmpty())
+        }
     }
 }
 
@@ -531,6 +558,109 @@ class TestParseTypedef {
         assertEquals("long long int", param1Type.ident)
         assertFalse(param1Type.unsigned)
         assertTrue(param1Type.trivia.isEmpty())
+
+        assertEquals(TokenKind.EOI, tokenizer.next().kind)
+    }
+}
+
+class TestParseInlineFunctionPointerField {
+    @Test
+    fun test1() {
+        val tokenizer = Tokenizer(listOf("Sint64 (SDLCALL *seek)(void *userdata, Sint64 offset, SDL_IOWhence whence);"), 0)
+        val decl = parseInlineFunctionPointerField(tokenizer)
+
+        assertEquals("seek", decl.name)
+        assertEquals(1, decl.trivia.size)
+        assertEquals("SDLCALL", decl.trivia[0])
+
+        val type = decl.type
+        assertTrue(type is RawFunctionType)
+
+        assert(type.returnType is RawIdentifierType)
+        val returnType = type.returnType as RawIdentifierType
+        assertEquals("Sint64", returnType.ident)
+        assertTrue(returnType.trivia.isEmpty())
+
+        assert(type.params.size == 3)
+        assertEquals("userdata", type.params[0].first)
+        assertTrue(type.params[0].second is RawPointerType)
+        val param0Type = type.params[0].second as RawPointerType
+        assertFalse(param0Type.const)
+        assertTrue(param0Type.trivia.isEmpty())
+        assertTrue(param0Type.pointee is RawIdentifierType)
+        val param0Pointee = param0Type.pointee as RawIdentifierType
+        assertEquals("void", param0Pointee.ident)
+        assertTrue(param0Pointee.trivia.isEmpty())
+
+        assertEquals("offset", type.params[1].first)
+        assertTrue(type.params[1].second is RawIdentifierType)
+        val param1Type = type.params[1].second as RawIdentifierType
+        assertEquals("Sint64", param1Type.ident)
+        assertTrue(param1Type.trivia.isEmpty())
+
+        assertEquals("whence", type.params[2].first)
+        assertTrue(type.params[2].second is RawIdentifierType)
+        val param2Type = type.params[2].second as RawIdentifierType
+        assertEquals("SDL_IOWhence", param2Type.ident)
+        assertTrue(param2Type.trivia.isEmpty())
+
+        assertEquals(TokenKind.EOI, tokenizer.next().kind)
+    }
+
+    @Test
+    fun test2() {
+        val tokenizer = Tokenizer(listOf("size_t (SDLCALL *write)(void *userdata, const void *ptr, size_t size, SDL_IOStatus *status);"), 0)
+        val decl = parseInlineFunctionPointerField(tokenizer)
+
+        assertEquals("write", decl.name)
+        assertEquals(1, decl.trivia.size)
+        assertEquals("SDLCALL", decl.trivia[0])
+
+        val type = decl.type
+        assertTrue(type is RawFunctionType)
+
+        assertTrue(type.returnType is RawIdentifierType)
+        val returnType = type.returnType as RawIdentifierType
+        assertEquals("size_t", returnType.ident)
+        assertTrue(returnType.trivia.isEmpty())
+
+        assertEquals(4, type.params.size)
+
+        assertEquals("userdata", type.params[0].first)
+        assertTrue(type.params[0].second is RawPointerType)
+        val param0Type = type.params[0].second as RawPointerType
+        assertFalse(param0Type.const)
+        assertTrue(param0Type.trivia.isEmpty())
+        assertTrue(param0Type.pointee is RawIdentifierType)
+        val param0Pointee = param0Type.pointee as RawIdentifierType
+        assertEquals("void", param0Pointee.ident)
+        assertTrue(param0Pointee.trivia.isEmpty())
+
+        assertEquals("ptr", type.params[1].first)
+        assertTrue(type.params[1].second is RawPointerType)
+        val param1Type = type.params[1].second as RawPointerType
+        assertTrue(param1Type.const)
+        assertTrue(param1Type.trivia.isEmpty())
+        assertTrue(param1Type.pointee is RawIdentifierType)
+        val param1Pointee = param1Type.pointee as RawIdentifierType
+        assertEquals("void", param1Pointee.ident)
+        assertTrue(param1Pointee.trivia.isEmpty())
+
+        assertEquals("size", type.params[2].first)
+        assertTrue(type.params[2].second is RawIdentifierType)
+        val param2Type = type.params[2].second as RawIdentifierType
+        assertEquals("size_t", param2Type.ident)
+        assertTrue(param2Type.trivia.isEmpty())
+
+        assertEquals("status", type.params[3].first)
+        assertTrue(type.params[3].second is RawPointerType)
+        val param3Type = type.params[3].second as RawPointerType
+        assertFalse(param3Type.const)
+        assertTrue(param3Type.trivia.isEmpty())
+        assertTrue(param3Type.pointee is RawIdentifierType)
+        val param3Pointee = param3Type.pointee as RawIdentifierType
+        assertEquals("SDL_IOStatus", param3Pointee.ident)
+        assertTrue(param3Pointee.trivia.isEmpty())
 
         assertEquals(TokenKind.EOI, tokenizer.next().kind)
     }

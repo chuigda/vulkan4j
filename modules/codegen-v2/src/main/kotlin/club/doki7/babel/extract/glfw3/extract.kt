@@ -163,8 +163,11 @@ class Glfw3StructParser<P : HeaderParser<*>>(delegate: P) :
             }
 
             currentLine.endsWith(';') -> {
-                val (decl, newIdx) = parseStructFieldDecl(lines, lineIndex)
+                val (declList, newIdx) = parseStructFieldDecl(lines, lineIndex)
                 lineIndex = newIdx
+                assert(declList.size == 1)
+
+                val decl = declList[0]
 
                 val member = Member(
                     decl.name, decl.type.toType(),

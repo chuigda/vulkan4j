@@ -691,5 +691,5 @@ private fun tryFindRootNonPlainType(cType: CType): String? = when (cType) {
     is CHandleType -> cType.name
     is CEnumType -> cType.name
     is CStructType -> cType.name
-    is CVoidType, is CFixedIntType, is CFloatType, is CPlatformDependentIntType -> null
+    is CVoidType, is CBoolType, is CFixedIntType, is CFloatType, is CPlatformDependentIntType -> null
 }

@@ -106,6 +106,32 @@ sealed interface CFixedSizeType : CNonRefType {
     val byteSize: Int
 }
 
+data class CBoolType(
+    override val cType: String = "bool",
+    override var comment: String? = null
+) : CNonRefType, ICommentable<CBoolType> {
+    override val jType: String get() = buildString {
+        if (comment != null) {
+            append("@NativeType(\"$comment\") ")
+        }
+        append("boolean")
+    }
+    override val jLayout: String = "ValueLayout.JAVA_BOOLEAN"
+    override val jLayoutType: String = "OfBoolean"
+    override val jTypeNoAnnotation: String = "boolean"
+    override val jPtrType: String get() = buildString {
+        if (comment != null) {
+            append("@Pointer(comment=\"$comment\") ")
+        }
+        append("BytePtr")
+    }
+    override val jPtrTypeNoAnnotation: String = "BytePtr"
+
+    override fun copyWithComment(comment: String?): CBoolType {
+        return this.copy(comment = comment)
+    }
+}
+
 data class CFixedIntType(
     override val cType: String,
     override val byteSize: Int,
@@ -254,15 +280,10 @@ data class CEnumType(
     val bitwidth: Int? = null
 ): CFixedSizeType {
     override val jType: String get() = when (bitwidth) {
-        null, 32 -> {
-            "@EnumType($name.class) int"
-        }
-        64 -> {
-            "@EnumType($name.class) long"
-        }
-        else -> {
-            error("unsupported bitwidth: $bitwidth")
-        }
+        null, 32 -> "@EnumType($name.class) int"
+        8 -> "@EnumType($name.class) byte"
+        64 -> "@EnumType($name.class) long"
+        else -> error("unsupported bitwidth: $bitwidth")
     }
 
     override val byteSize: Int get() = when (bitwidth) {
@@ -273,12 +294,14 @@ data class CEnumType(
 
     override val jLayout: String get() = when (bitwidth) {
         null, 32 -> "ValueLayout.JAVA_INT"
+        8 -> "ValueLayout.JAVA_BYTE"
         64 -> "ValueLayout.JAVA_LONG"
         else -> error("unsupported bitwidth: $bitwidth")
     }
 
     override val jLayoutType: String = when (bitwidth) {
         null, 32 -> "OfInt"
+        8 -> "OfByte"
         64 -> "OfLong"
         else -> error("unsupported bitwidth: $bitwidth")
     }
@@ -287,23 +310,27 @@ data class CEnumType(
 
     override val jTypeNoAnnotation: String get() = when (bitwidth) {
         null, 32 -> "int"
+        8 -> "byte"
         64 -> "long"
         else -> error("unsupported bitwidth: $bitwidth")
     }
 
     override val jPtrType: String = when (bitwidth) {
         null, 32 -> "@EnumType($name.class) IntPtr"
+        8 -> "@EnumType($name.class) BytePtr"
         64 -> "@EnumType($name.class) LongPtr"
         else -> error("unsupported bitwidth: $bitwidth")
     }
 
     override val jPtrTypeNoAnnotation: String = when (bitwidth) {
         null, 32 -> "IntPtr"
+        8 -> "BytePtr"
         64 -> "LongPtr"
         else -> error("unsupported bitwidth: $bitwidth")
     }
 }
 
+private val boolType = CBoolType("bool", "boolean")
 private val int8Type = CFixedIntType("int8_t", 1, false)
 private val uint8Type = CFixedIntType("uint8_t", 1, true)
 private val int16Type = CFixedIntType("int16_t", 2, false)
@@ -329,11 +356,18 @@ private val cSizeType = CPlatformDependentIntType(
     jLayout = "NativeLayout.C_SIZE_T",
     jPtrTypeNoAnnotation = "PointerPtr",
 )
+private val cIntPtrType = CPlatformDependentIntType(
+    cType = "intptr_t",
+    jTypeNoAnnotation = "long",
+    jLayout = "NativeLayout.C_SIZE_T",
+    jPtrTypeNoAnnotation = "PointerPtr"
+)
 
 private fun pvoidType(comment: String) = CPointerType(voidType, const = false, pointerToOne = false, comment = comment)
 
 private val knownTypes = mapOf(
     // Fundamental types
+    "bool" to boolType,
     "void" to voidType,
     "int8_t" to int8Type,
     "uint8_t" to uint8Type,
@@ -348,8 +382,11 @@ private val knownTypes = mapOf(
     "int" to cIntType,
     "unsigned" to cUIntType,
     "unsigned int" to cUIntType,
+    "long long" to int64Type,
+
     "long" to cLongType,
     "size_t" to cSizeType,
+    "intptr_t" to cIntPtrType,
 
     "char" to int8Type,
     "unsigned char" to uint8Type,
@@ -439,6 +476,7 @@ private val knownTypes = mapOf(
     "Window" to cLongType.copy(comment = "Window"),
     "GLXContext" to pvoidType("GLXContext"),
     "GLXWindow" to cLongType.copy(comment = "GLXWindow"),
+    "XEvent" to voidType.copy(cType = "XEvent"),
     "xcb_connection_t" to voidType.copy(cType = "xcb_connection_t"),
     "xcb_visualid_t" to uint32Type.copyWithComment(comment = "xcb_visualid_t"),
     "xcb_window_t" to uint32Type.copyWithComment(comment = "xcb_window_t"),
@@ -490,6 +528,11 @@ fun lowerType(registry: RegistryBase, refRegistries: List<RegistryBase>, type: T
                         )
                     }
                 }
+            }
+
+            // TODO future `wchar_t` support?
+            if (type.pointee is IdentifierType && type.pointee.ident.value == "wchar_t") {
+                return pvoidType(comment="wchar_t*")
             }
 
             val pointee = lowerType(registry, refRegistries, type.pointee)

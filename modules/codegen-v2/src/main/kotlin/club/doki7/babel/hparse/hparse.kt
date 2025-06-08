@@ -1,5 +1,6 @@
 package club.doki7.babel.hparse
 
+import club.doki7.babel.cdecl.isIdentChar
 import club.doki7.babel.cdecl.parseBlockDoxygen
 import club.doki7.babel.cdecl.parseTriSlashDoxygen
 import club.doki7.babel.registry.IMergeable
@@ -142,6 +143,42 @@ fun detectPreprocessor(line: String) =
         ControlFlow.NEXT
     }
 
+fun detectFunctionAlikeMacro(line: String): ControlFlow {
+    if (!line.startsWith("#define")) {
+        return ControlFlow.NEXT
+    }
+
+    val trimmed = line.removePrefix("#define").trimStart()
+    var index = 0
+    while (index < trimmed.length && trimmed[index].isIdentChar()) {
+        index++
+    }
+
+    return if (index < trimmed.length && trimmed[index] == '(') {
+        ControlFlow.ACCEPT
+    } else {
+        ControlFlow.NEXT
+    }
+}
+
+fun <E: IMergeable<E>> skipPreprocessor(
+    @Suppress("unused") registry: Registry<E>,
+    @Suppress("unused") cx: MutableMap<String, Any>,
+    lines: List<String>,
+    index: Int
+): Int {
+    assert(lines[index].startsWith("#")) { "Expected preprocessor directive at line $index" }
+    if (!lines[index].endsWith("\\")) {
+        return index + 1
+    }
+
+    var index1 = index
+    while (index1 < lines.size && lines[index1].endsWith("\\")) {
+        index1++
+    }
+    return index1 + 1
+}
+
 fun <E: IMergeable<E>> nextLine(
     @Suppress("unused") registry: Registry<E>,
     @Suppress("unused") cx: MutableMap<String, Any>,
@@ -181,4 +218,28 @@ fun <E: IMergeable<E>> dummyAction(
 ): Int {
     log.warning("dummy operation at line $index called, did you correctly set ControlFlow.RETURN?")
     return index + 1
+}
+
+fun detectIfdefCplusplus(line: String) =
+    if (line.startsWith("#ifdef __cplusplus")) {
+        ControlFlow.ACCEPT
+    } else {
+        ControlFlow.NEXT
+    }
+
+fun <E: IMergeable<E>> skipIfdefCplusplusExternC(
+    @Suppress("unused") registry: Registry<E>,
+    @Suppress("unused") cx: MutableMap<String, Any>,
+    lines: List<String>,
+    index: Int
+): Int {
+    assert(lines[index].startsWith("#ifdef __cplusplus")) { "Expected #ifdef __cplusplus at line $index" }
+    var i = index + 1
+    while (i < lines.size && !lines[i].startsWith("#endif")) {
+        i++
+    }
+    if (i >= lines.size) {
+        log.warning("Unterminated #ifdef __cplusplus starting at line $index")
+    }
+    return i + 1
 }

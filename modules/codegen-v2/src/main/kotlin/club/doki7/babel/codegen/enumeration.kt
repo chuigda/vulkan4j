@@ -48,11 +48,11 @@ fun generateEnumeration(
 
             val value = when (variant.value) {
                 is Either.Left -> {
-                    val hexValue = variant.value.value.toUInt().toString(16)
+                    val hexValue = (variant.value as Either.Left<Long, List<String>>).value.toUInt().toString(16)
                     "0x$hexValue"
                 }
                 is Either.Right -> {
-                    val value = variant.value.value
+                    val value = (variant.value as Either.Right<Long, List<String>>).value
                     if (value.isEmpty()) {
                         "0"
                     } else {
@@ -71,6 +71,9 @@ fun generateEnumeration(
                 +"return switch (value) {"
                 indent {
                     for (variant in variants) {
+                        if (variant.value is Either.Right) {
+                            continue
+                        }
                         +"case ${enumeration.name}.${variant.name} -> \"${variant.name.original}\";"
                     }
                     +"default -> \"UNKNOWN(\" + value + \")\";"

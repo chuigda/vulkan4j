@@ -42,19 +42,7 @@ fun extractVMAHeader(): Registry<EmptyMergeable> {
         .map(String::trim)
         .toList()
 
-    val registry = Registry(
-        aliases = mutableMapOf(),
-        bitmasks = mutableMapOf(),
-        constants = mutableMapOf(),
-        commands = mutableMapOf(),
-        enumerations = mutableMapOf(),
-        functionTypedefs = mutableMapOf(),
-        opaqueHandleTypedefs = mutableMapOf(),
-        opaqueTypedefs = mutableMapOf(),
-        structures = mutableMapOf(),
-        unions = mutableMapOf(),
-        ext = EmptyMergeable()
-    )
+    val registry = Registry(ext = EmptyMergeable())
 
     hparse(
         headerParseConfig,
@@ -207,7 +195,7 @@ private fun parseAndSaveStructure(
     )
     if ("structureDoc" in cx) {
         structure.doc = cx["structureDoc"] as List<String>
-        cx.remove("doxygen")
+        cx.remove("structureDoc")
     }
     registry.structures.putEntityIfAbsent(structure)
 
@@ -238,17 +226,17 @@ private fun parseStructField(
     lines: List<String>,
     index: Int
 ): Int {
-    val parseResult = parseStructFieldDecl(lines, index)
-    val fieldDecl = parseResult.first
-    val nextIndex = parseResult.second
+    val (declList, nextIndex) = parseStructFieldDecl(lines, index)
+    assert(declList.size == 1)
+    val decl = declList[0]
 
     val member = Member(
-        name = fieldDecl.name,
-        type = fieldDecl.type.toType(),
+        name = decl.name,
+        type = decl.type.toType(),
         values = null,
         len = null,
         altLen = null,
-        optional = fieldDecl.type.trivia.any { trivia -> trivia.startsWith("VMA_NULLABLE") },
+        optional = decl.type.trivia.any { trivia -> trivia.startsWith("VMA_NULLABLE") },
         bits = null
     )
     if ("doxygen" in cx) {
@@ -303,10 +291,17 @@ private fun parseAndSaveEnumeration(
         val enumeration = Enumeration(
             name = enumName,
             variants = enumerators.map { (enumDecl, doc) ->
-                val variant = EnumVariant(
-                    name = enumDecl.name,
-                    value = enumDecl.value.split("|").map(String::trim)
-                )
+                val variant = try {
+                    EnumVariant(
+                        name = enumDecl.name,
+                        value = enumDecl.value.parseDecOrHex()
+                    )
+                } catch (_: NumberFormatException) {
+                    EnumVariant(
+                        name = enumDecl.name,
+                        value = enumDecl.value.split("|").map(String::trim)
+                    )
+                }
                 variant.doc = doc
                 variant
             }.toMutableList()

@@ -12,6 +12,8 @@ fun generateBitmask(
 
     val (postfix, bitflagType, bitflagObjectType) = when (bitmask.bitwidth) {
         null, 32 -> listOf("", "int", "Integer")
+        8 -> listOf("", "byte", "Byte")
+        16 -> listOf("", "short", "Short")
         64 -> listOf("L", "long", "Long")
         else -> error("unsupported bitwidth: ${bitmask.bitwidth}")
     }
@@ -65,7 +67,7 @@ fun generateBitmask(
             +when (flag.value) {
                 is Either.Left -> {
                     val bigInt = flag.value.value
-                    val hexValue = bigInt.toString(16)
+                    val hexValue = bigInt.toLong().toULong().toString(16)
                     "public static final $bitflagType ${flag.name} = 0x$hexValue$postfix;"
                 }
                 is Either.Right -> {
@@ -99,7 +101,11 @@ fun generateBitmask(
                 +""
                 +"if (detectedFlagBits.isEmpty()) {"
                 indent {
-                    +"return \"NONE(\" + ${bitflagObjectType}.toBinaryString(flags) + \")\";"
+                    if (bitmask.bitwidth == null || bitmask.bitwidth <= 32) {
+                        +"return \"NONE(\" + Integer.toBinaryString(flags) + \")\";"
+                    } else {
+                        +"return \"NONE(\" + ${bitflagObjectType}.toBinaryString(flags) + \")\";"
+                    }
                 }
                 +"}"
                 +"return String.join(\" | \", detectedFlagBits);"

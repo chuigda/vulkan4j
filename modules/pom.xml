@@ -65,6 +65,7 @@
         <module>tutorial</module>
         <module>opengl</module>
         <module>example</module>
+        <module>sdl3</module>
     </modules>
 
     <build>

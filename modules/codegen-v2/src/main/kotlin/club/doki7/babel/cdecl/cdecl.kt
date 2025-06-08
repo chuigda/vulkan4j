@@ -33,7 +33,7 @@ data class EnumeratorDecl(
     override val trivia: List<String>
 ) : Decl
 
-fun parseStructFieldDecl(lines: List<String>, startLine: Int): Pair<VarDecl, Int> {
+fun parseStructFieldDecl(lines: List<String>, startLine: Int): Pair<List<VarDecl>, Int> {
     val tokenizer = Tokenizer(lines, startLine)
     val decl = parseStructFieldDecl(tokenizer)
     tokenizer.maybeSkipToLineEnd()
@@ -57,6 +57,13 @@ fun parseEnumeratorDecl(lines: List<String>, startLine: Int): Pair<EnumeratorDec
 fun parseTypedefDecl(lines: List<String>, startLine: Int): Pair<TypedefDecl, Int> {
     val tokenizer = Tokenizer(lines, startLine)
     val decl = parseTypedefDecl(tokenizer)
+    tokenizer.maybeSkipToLineEnd()
+    return Pair(decl, tokenizer.curLine)
+}
+
+fun parseInlineFunctionPointerField(lines: List<String>, startLine: Int): Pair<VarDecl, Int> {
+    val tokenizer = Tokenizer(lines, startLine)
+    val decl = parseInlineFunctionPointerField(tokenizer)
     tokenizer.maybeSkipToLineEnd()
     return Pair(decl, tokenizer.curLine)
 }
