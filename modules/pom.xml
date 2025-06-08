@@ -101,7 +101,7 @@
                             <report>aggregate</report>
                         </reports>
                         <configuration>
-                            <skippedModules>codegen-v2,tutorial</skippedModules>
+                            <skippedModules>codegen-v2,tutorial,example</skippedModules>
                             <windowtitle>vulkan4j</windowtitle>
                             <doctitle><![CDATA[<code>vulkan4j</code>: CG library bindings implemented with FFM APIs]]></doctitle>
                             <doclint>none</doclint>
