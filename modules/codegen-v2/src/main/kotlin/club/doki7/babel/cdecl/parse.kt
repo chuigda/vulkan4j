@@ -31,18 +31,44 @@ internal fun skipTrivia(tokenizer: Tokenizer, triviaList: MutableList<String>) {
     }
 }
 
-internal fun parseStructFieldDecl(tokenizer: Tokenizer): VarDecl {
-    var effectiveType = parseType(tokenizer)
-    val varDeclSpecificTrivia = mutableListOf<String>()
-    skipTrivia(tokenizer, varDeclSpecificTrivia)
+internal fun parseStructFieldDecl(tokenizer: Tokenizer): List<VarDecl> {
+    val type = parseType(tokenizer)
+    val ret = mutableListOf<VarDecl>()
+    while (true) {
+        val decl = parseStructFieldDeclarator(tokenizer, type)
+        ret.add(decl)
+
+        val peekToken = tokenizer.peek()
+        // if ';'
+        if (peekToken.kind == TokenKind.SYMBOL && (peekToken.value == ";" || peekToken.value == "}")) {
+            tokenizer.next()
+            break
+        } else if (peekToken.kind == TokenKind.SYMBOL && peekToken.value == ",") {
+            tokenizer.next()
+            // next turn
+        } else {
+            syntaxError("Expected ';' or ',' or '}' after struct field declaration, got ${peekToken.kind}", peekToken)
+        }
+    }
+    return ret
+}
+
+internal fun parseStructFieldDeclarator(tokenizer: Tokenizer, type: RawType): VarDecl {
+    var effectiveType = type
+
+    val triviaList = mutableListOf<String>()
+    skipTrivia(tokenizer, triviaList)
+
     val nameToken = expectAndConsume(TokenKind.IDENT, tokenizer)
+    skipTrivia(tokenizer, triviaList)
+
     while (true) {
         val triviaBeforeBracket = mutableListOf<String>()
         skipTrivia(tokenizer, triviaBeforeBracket)
 
         val peekToken = tokenizer.peek()
         if (peekToken.kind == TokenKind.SYMBOL && peekToken.value == "[") {
-            varDeclSpecificTrivia.addAll(triviaBeforeBracket)
+            triviaList.addAll(triviaBeforeBracket)
             tokenizer.next()
 
             val arrayInternalTrivia = mutableListOf<String>()
@@ -67,18 +93,13 @@ internal fun parseStructFieldDecl(tokenizer: Tokenizer): VarDecl {
 
             effectiveType = RawArrayType(effectiveType, actualArraySize, arrayInternalTrivia)
         } else {
-            varDeclSpecificTrivia.addAll(triviaBeforeBracket)
+            triviaList.addAll(triviaBeforeBracket)
             break
         }
     }
+    skipTrivia(tokenizer, triviaList)
 
-    skipTrivia(tokenizer, varDeclSpecificTrivia)
-    val semicolonToken = expectAndConsume(TokenKind.SYMBOL, tokenizer)
-    if (semicolonToken.value != ";") {
-        syntaxError("Expected ';' after variable declaration", semicolonToken)
-    }
-
-    return VarDecl(nameToken.value, effectiveType, varDeclSpecificTrivia)
+    return VarDecl(nameToken.value, effectiveType, triviaList)
 }
 
 internal fun parseEnumeratorDecl(tokenizer: Tokenizer): EnumeratorDecl {
@@ -154,6 +175,30 @@ internal fun parseTypedefDecl(tokenizer: Tokenizer): TypedefDecl {
 
         return TypedefDecl(nameToken.value, type, triviaList)
     }
+}
+
+internal fun parseInlineFunctionPointerField(tokenizer: Tokenizer): VarDecl {
+    val triviaList = mutableListOf<String>()
+
+    val type = parseType(tokenizer)
+    skipTrivia(tokenizer, triviaList)
+
+    expectAndConsume(TokenKind.SYMBOL, tokenizer, "(")
+    skipTrivia(tokenizer, triviaList)
+    expectAndConsume(TokenKind.SYMBOL, tokenizer, "*")
+    skipTrivia(tokenizer, triviaList)
+
+    val nameToken = expectAndConsume(TokenKind.IDENT, tokenizer)
+    skipTrivia(tokenizer, triviaList)
+    expectAndConsume(TokenKind.SYMBOL, tokenizer, ")")
+
+    val params = parseFunctionParamList(tokenizer)
+    val paramsList = params.map { Pair(it.name, it.type) }
+    skipTrivia(tokenizer, triviaList)
+    expectAndConsume(TokenKind.SYMBOL, tokenizer, ";")
+
+    val functionType = RawFunctionType(type, paramsList, mutableListOf())
+    return VarDecl(nameToken.value, functionType, triviaList)
 }
 
 private fun parseFunctionParamList(tokenizer: Tokenizer): MutableList<VarDecl> {

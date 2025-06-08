@@ -238,17 +238,17 @@ private fun parseStructField(
     lines: List<String>,
     index: Int
 ): Int {
-    val parseResult = parseStructFieldDecl(lines, index)
-    val fieldDecl = parseResult.first
-    val nextIndex = parseResult.second
+    val (declList, nextIndex) = parseStructFieldDecl(lines, index)
+    assert(declList.size == 1)
+    val decl = declList[0]
 
     val member = Member(
-        name = fieldDecl.name,
-        type = fieldDecl.type.toType(),
+        name = decl.name,
+        type = decl.type.toType(),
         values = null,
         len = null,
         altLen = null,
-        optional = fieldDecl.type.trivia.any { trivia -> trivia.startsWith("VMA_NULLABLE") },
+        optional = decl.type.trivia.any { trivia -> trivia.startsWith("VMA_NULLABLE") },
         bits = null
     )
     if ("doxygen" in cx) {

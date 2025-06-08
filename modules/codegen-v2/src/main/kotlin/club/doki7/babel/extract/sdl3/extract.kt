@@ -237,11 +237,9 @@ private fun parseOpaqueTypedef(
     cx.remove("doxygen")
 
     val parts = lines[index].removePrefix("typedef struct").removeSuffix(";").trim().split(" ", limit = 2)
-    val structureName = parts[0].trim()
     val aliasName = parts[1].trim()
-    assert(structureName == aliasName)
 
-    val typedef = OpaqueTypedef(structureName, isHandle=true)
+    val typedef = OpaqueTypedef(aliasName, isHandle=true)
     typedef.doc = doc
     registry.opaqueTypedefs.putEntityIfAbsent(typedef)
     return index + 1
@@ -340,6 +338,7 @@ private val structureParseConfig = ParseConfig<EmptyMergeable>().apply {
     addRule(10, ::detectLineComment, ::nextLine)
     addRule(10, ::detectPreprocessor, ::nextLine)
     addRule(10, ::detectBlockComment, ::skipBlockComment)
+    addRule(50, { if (it.contains("SDLCALL")) ControlFlow.ACCEPT else ControlFlow.NEXT }, ::parseFunctionPointerStructField)
     addRule(99, { _ -> ControlFlow.ACCEPT }, ::parseStructField)
 }
 
@@ -369,6 +368,7 @@ private fun parseAndSaveStructure(
         return index1 + 1
     }
 
+    cx["structureName"] = structureName
     val next = hparse(structureParseConfig, registry, cx, lines, index + 2)
     val fields = cx["fields"] as MutableList<Member>
     cx.remove("fields")
@@ -385,7 +385,42 @@ private fun parseAndSaveStructure(
     }
 
     assert(lines[next].startsWith("}") && lines[next].endsWith(";"))
+    cx.remove("structureName")
     return next + 1
+}
+
+private fun parseFunctionPointerStructField(
+    registry: Registry<EmptyMergeable>,
+    cx: MutableMap<String, Any>,
+    lines: List<String>,
+    index: Int
+): Int {
+    val (varDecl, nextIndex) = parseInlineFunctionPointerField(lines, index)
+    val structureName = cx["structureName"] as String
+
+    val typeName = "PFN_${structureName}_${varDecl.name}"
+    registry.functionTypedefs.putEntityIfAbsent(FunctionTypedef(
+        name = typeName,
+        params = (varDecl.type as RawFunctionType).params.map { it.second.toType() },
+        result = varDecl.type.returnType.toType()
+    ))
+
+    val member = Member(
+        name = varDecl.name,
+        type = IdentifierType(typeName),
+        values = null,
+        len = null,
+        altLen = null,
+        optional = true,
+        bits = null
+    )
+    if ("doxygen" in cx) {
+        member.doc = cx["doxygen"] as List<String>
+        cx.remove("doxygen")
+    }
+    (cx["fields"] as MutableList<Member>).add(member)
+
+    return nextIndex
 }
 
 private fun parseStructField(
@@ -394,25 +429,26 @@ private fun parseStructField(
     lines: List<String>,
     index: Int
 ): Int {
-    val parseResult = parseStructFieldDecl(lines, index)
-    val fieldDecl = parseResult.first
-    val nextIndex = parseResult.second
+    val (declList, nextIndex) = parseStructFieldDecl(lines, index)
 
-    val member = Member(
-        name = fieldDecl.name,
-        type = fieldDecl.type.toType(),
-        values = null,
-        len = null,
-        altLen = null,
-        optional = fieldDecl.type.trivia.any { trivia -> trivia.startsWith("VMA_NULLABLE") },
-        bits = null
-    )
-    if ("doxygen" in cx) {
-        member.doc = cx["doxygen"] as List<String>
-        cx.remove("doxygen")
+    for (decl in declList) {
+        val member = Member(
+            name = decl.name,
+            type = decl.type.toType(),
+            values = null,
+            len = null,
+            altLen = null,
+            optional = true,
+            bits = null
+        )
+
+        if ("doxygen" in cx) {
+            member.doc = cx["doxygen"] as List<String>
+            cx.remove("doxygen")
+        }
+
+        (cx["fields"] as MutableList<Member>).add(member)
     }
-
-    (cx["fields"] as MutableList<Member>).add(member)
     return nextIndex
 }
 
@@ -523,6 +559,7 @@ private fun skipEndiannessSpecific(
 ): Int {
     var index1 = index + 1
     while (index1 < lines.size && !lines[index1].startsWith("#endif")) {
+        log.warning("skipping endianness-specific line at ${index1 + 1}: ${lines[index1]}, remember to check it later")
         index1++
     }
     return index1 + 1
