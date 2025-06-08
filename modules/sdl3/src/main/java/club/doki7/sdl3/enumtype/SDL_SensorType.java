@@ -56,25 +56,25 @@ import club.doki7.ffm.annotation.*;
 /// \sa SDL_GetCurrentDisplayOrientation
 ///
 public final class SDL_SensorType {
-    public static final int SDL_SENSOR_INVALID = 0xffffffff;
-    public static final int SDL_SENSOR_UNKNOWN = 0x1;
-    public static final int SDL_SENSOR_ACCEL = 0x2;
-    public static final int SDL_SENSOR_GYRO = 0x3;
-    public static final int SDL_SENSOR_ACCEL_L = 0x4;
-    public static final int SDL_SENSOR_GYRO_L = 0x5;
-    public static final int SDL_SENSOR_ACCEL_R = 0x6;
-    public static final int SDL_SENSOR_GYRO_R = 0x7;
+    public static final int INVALID = 0xffffffff;
+    public static final int UNKNOWN = 0x1;
+    public static final int ACCEL = 0x2;
+    public static final int GYRO = 0x3;
+    public static final int ACCEL_L = 0x4;
+    public static final int GYRO_L = 0x5;
+    public static final int ACCEL_R = 0x6;
+    public static final int GYRO_R = 0x7;
 
     public static String explain(@EnumType(SDL_SensorType.class) int value) {
         return switch (value) {
-            case SDL_SensorType.SDL_SENSOR_ACCEL -> "SDL_SENSOR_ACCEL";
-            case SDL_SensorType.SDL_SENSOR_ACCEL_L -> "SDL_SENSOR_ACCEL_L";
-            case SDL_SensorType.SDL_SENSOR_ACCEL_R -> "SDL_SENSOR_ACCEL_R";
-            case SDL_SensorType.SDL_SENSOR_GYRO -> "SDL_SENSOR_GYRO";
-            case SDL_SensorType.SDL_SENSOR_GYRO_L -> "SDL_SENSOR_GYRO_L";
-            case SDL_SensorType.SDL_SENSOR_GYRO_R -> "SDL_SENSOR_GYRO_R";
-            case SDL_SensorType.SDL_SENSOR_INVALID -> "SDL_SENSOR_INVALID";
-            case SDL_SensorType.SDL_SENSOR_UNKNOWN -> "SDL_SENSOR_UNKNOWN";
+            case SDL_SensorType.ACCEL -> "SDL_SENSOR_ACCEL";
+            case SDL_SensorType.ACCEL_L -> "SDL_SENSOR_ACCEL_L";
+            case SDL_SensorType.ACCEL_R -> "SDL_SENSOR_ACCEL_R";
+            case SDL_SensorType.GYRO -> "SDL_SENSOR_GYRO";
+            case SDL_SensorType.GYRO_L -> "SDL_SENSOR_GYRO_L";
+            case SDL_SensorType.GYRO_R -> "SDL_SENSOR_GYRO_R";
+            case SDL_SensorType.INVALID -> "SDL_SENSOR_INVALID";
+            case SDL_SensorType.UNKNOWN -> "SDL_SENSOR_UNKNOWN";
             default -> "UNKNOWN(" + value + ")";
         };
     }

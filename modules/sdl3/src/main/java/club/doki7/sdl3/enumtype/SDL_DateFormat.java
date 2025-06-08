@@ -9,15 +9,15 @@ import club.doki7.ffm.annotation.*;
 /// \sa SDL_GetDateTimeLocalePreferences
 ///
 public final class SDL_DateFormat {
-    public static final int SDL_DATE_FORMAT_YYYYMMDD = 0x0;
-    public static final int SDL_DATE_FORMAT_DDMMYYYY = 0x1;
-    public static final int SDL_DATE_FORMAT_MMDDYYYY = 0x2;
+    public static final int YYYYMMDD = 0x0;
+    public static final int DDMMYYYY = 0x1;
+    public static final int MMDDYYYY = 0x2;
 
     public static String explain(@EnumType(SDL_DateFormat.class) int value) {
         return switch (value) {
-            case SDL_DateFormat.SDL_DATE_FORMAT_DDMMYYYY -> "SDL_DATE_FORMAT_DDMMYYYY";
-            case SDL_DateFormat.SDL_DATE_FORMAT_MMDDYYYY -> "SDL_DATE_FORMAT_MMDDYYYY";
-            case SDL_DateFormat.SDL_DATE_FORMAT_YYYYMMDD -> "SDL_DATE_FORMAT_YYYYMMDD";
+            case SDL_DateFormat.DDMMYYYY -> "SDL_DATE_FORMAT_DDMMYYYY";
+            case SDL_DateFormat.MMDDYYYY -> "SDL_DATE_FORMAT_MMDDYYYY";
+            case SDL_DateFormat.YYYYMMDD -> "SDL_DATE_FORMAT_YYYYMMDD";
             default -> "UNKNOWN(" + value + ")";
         };
     }

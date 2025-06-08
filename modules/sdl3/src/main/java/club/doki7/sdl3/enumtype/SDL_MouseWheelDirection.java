@@ -7,13 +7,13 @@ import club.doki7.ffm.annotation.*;
 /// \since This enum is available since SDL 3.2.0.
 ///
 public final class SDL_MouseWheelDirection {
-    public static final int SDL_MOUSEWHEEL_NORMAL = 0x0;
-    public static final int SDL_MOUSEWHEEL_FLIPPED = 0x1;
+    public static final int NORMAL = 0x0;
+    public static final int FLIPPED = 0x1;
 
     public static String explain(@EnumType(SDL_MouseWheelDirection.class) int value) {
         return switch (value) {
-            case SDL_MouseWheelDirection.SDL_MOUSEWHEEL_FLIPPED -> "SDL_MOUSEWHEEL_FLIPPED";
-            case SDL_MouseWheelDirection.SDL_MOUSEWHEEL_NORMAL -> "SDL_MOUSEWHEEL_NORMAL";
+            case SDL_MouseWheelDirection.FLIPPED -> "SDL_MOUSEWHEEL_FLIPPED";
+            case SDL_MouseWheelDirection.NORMAL -> "SDL_MOUSEWHEEL_NORMAL";
             default -> "UNKNOWN(" + value + ")";
         };
     }

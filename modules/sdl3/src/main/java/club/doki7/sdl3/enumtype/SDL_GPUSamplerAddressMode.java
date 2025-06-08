@@ -10,15 +10,15 @@ import club.doki7.ffm.annotation.*;
 /// \sa SDL_CreateGPUSampler
 ///
 public final class SDL_GPUSamplerAddressMode {
-    public static final int SDL_GPU_SAMPLERADDRESSMODE_REPEAT = 0x0;
-    public static final int SDL_GPU_SAMPLERADDRESSMODE_MIRRORED_REPEAT = 0x1;
-    public static final int SDL_GPU_SAMPLERADDRESSMODE_CLAMP_TO_EDGE = 0x2;
+    public static final int REPEAT = 0x0;
+    public static final int MIRRORED_REPEAT = 0x1;
+    public static final int CLAMP_TO_EDGE = 0x2;
 
     public static String explain(@EnumType(SDL_GPUSamplerAddressMode.class) int value) {
         return switch (value) {
-            case SDL_GPUSamplerAddressMode.SDL_GPU_SAMPLERADDRESSMODE_CLAMP_TO_EDGE -> "SDL_GPU_SAMPLERADDRESSMODE_CLAMP_TO_EDGE";
-            case SDL_GPUSamplerAddressMode.SDL_GPU_SAMPLERADDRESSMODE_MIRRORED_REPEAT -> "SDL_GPU_SAMPLERADDRESSMODE_MIRRORED_REPEAT";
-            case SDL_GPUSamplerAddressMode.SDL_GPU_SAMPLERADDRESSMODE_REPEAT -> "SDL_GPU_SAMPLERADDRESSMODE_REPEAT";
+            case SDL_GPUSamplerAddressMode.CLAMP_TO_EDGE -> "SDL_GPU_SAMPLERADDRESSMODE_CLAMP_TO_EDGE";
+            case SDL_GPUSamplerAddressMode.MIRRORED_REPEAT -> "SDL_GPU_SAMPLERADDRESSMODE_MIRRORED_REPEAT";
+            case SDL_GPUSamplerAddressMode.REPEAT -> "SDL_GPU_SAMPLERADDRESSMODE_REPEAT";
             default -> "UNKNOWN(" + value + ")";
         };
     }

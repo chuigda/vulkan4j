@@ -10,15 +10,15 @@ import club.doki7.ffm.annotation.*;
 /// \sa SDL_BeginGPURenderPass
 ///
 public final class SDL_GPULoadOp {
-    public static final int SDL_GPU_LOADOP_LOAD = 0x0;
-    public static final int SDL_GPU_LOADOP_CLEAR = 0x1;
-    public static final int SDL_GPU_LOADOP_DONT_CARE = 0x2;
+    public static final int LOAD = 0x0;
+    public static final int CLEAR = 0x1;
+    public static final int DONT_CARE = 0x2;
 
     public static String explain(@EnumType(SDL_GPULoadOp.class) int value) {
         return switch (value) {
-            case SDL_GPULoadOp.SDL_GPU_LOADOP_CLEAR -> "SDL_GPU_LOADOP_CLEAR";
-            case SDL_GPULoadOp.SDL_GPU_LOADOP_DONT_CARE -> "SDL_GPU_LOADOP_DONT_CARE";
-            case SDL_GPULoadOp.SDL_GPU_LOADOP_LOAD -> "SDL_GPU_LOADOP_LOAD";
+            case SDL_GPULoadOp.CLEAR -> "SDL_GPU_LOADOP_CLEAR";
+            case SDL_GPULoadOp.DONT_CARE -> "SDL_GPU_LOADOP_DONT_CARE";
+            case SDL_GPULoadOp.LOAD -> "SDL_GPU_LOADOP_LOAD";
             default -> "UNKNOWN(" + value + ")";
         };
     }

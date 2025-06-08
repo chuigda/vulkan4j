@@ -9,15 +9,15 @@ import club.doki7.ffm.annotation.*;
 /// \sa SDL_GetCameraPosition
 ///
 public final class SDL_CameraPosition {
-    public static final int SDL_CAMERA_POSITION_UNKNOWN = 0x0;
-    public static final int SDL_CAMERA_POSITION_FRONT_FACING = 0x1;
-    public static final int SDL_CAMERA_POSITION_BACK_FACING = 0x2;
+    public static final int UNKNOWN = 0x0;
+    public static final int FRONT_FACING = 0x1;
+    public static final int BACK_FACING = 0x2;
 
     public static String explain(@EnumType(SDL_CameraPosition.class) int value) {
         return switch (value) {
-            case SDL_CameraPosition.SDL_CAMERA_POSITION_BACK_FACING -> "SDL_CAMERA_POSITION_BACK_FACING";
-            case SDL_CameraPosition.SDL_CAMERA_POSITION_FRONT_FACING -> "SDL_CAMERA_POSITION_FRONT_FACING";
-            case SDL_CameraPosition.SDL_CAMERA_POSITION_UNKNOWN -> "SDL_CAMERA_POSITION_UNKNOWN";
+            case SDL_CameraPosition.BACK_FACING -> "SDL_CAMERA_POSITION_BACK_FACING";
+            case SDL_CameraPosition.FRONT_FACING -> "SDL_CAMERA_POSITION_FRONT_FACING";
+            case SDL_CameraPosition.UNKNOWN -> "SDL_CAMERA_POSITION_UNKNOWN";
             default -> "UNKNOWN(" + value + ")";
         };
     }

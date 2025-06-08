@@ -214,7 +214,7 @@ class Enumeration(
 
 class EnumVariant(
     name: Identifier,
-    val value: Either<Long, List<String>>
+    var value: Either<Long, List<String>>
 ) : Entity(name) {
     constructor(name: String, value: Long) : this(name.intern(), Either.Left(value))
 
@@ -223,8 +223,8 @@ class EnumVariant(
     override fun toStringImpl() = buildString {
         append("EnumVariant(name=$name")
         when (value) {
-            is Either.Left -> append(", value=${value.value}")
-            is Either.Right -> append(", value=(${value.value.joinToString(" | ") { it }}")
+            is Either.Left -> append(", value=${(value as Either.Left<Long, List<String>>).value}")
+            is Either.Right -> append(", value=(${(value as Either.Right<Long, List<String>>).value.joinToString(" | ") { it }}")
         }
     }
 }

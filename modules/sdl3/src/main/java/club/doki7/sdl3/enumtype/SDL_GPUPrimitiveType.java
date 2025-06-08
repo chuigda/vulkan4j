@@ -23,19 +23,19 @@ import club.doki7.ffm.annotation.*;
 /// \sa SDL_CreateGPUGraphicsPipeline
 ///
 public final class SDL_GPUPrimitiveType {
-    public static final int SDL_GPU_PRIMITIVETYPE_TRIANGLELIST = 0x0;
-    public static final int SDL_GPU_PRIMITIVETYPE_TRIANGLESTRIP = 0x1;
-    public static final int SDL_GPU_PRIMITIVETYPE_LINELIST = 0x2;
-    public static final int SDL_GPU_PRIMITIVETYPE_LINESTRIP = 0x3;
-    public static final int SDL_GPU_PRIMITIVETYPE_POINTLIST = 0x4;
+    public static final int TRIANGLELIST = 0x0;
+    public static final int TRIANGLESTRIP = 0x1;
+    public static final int LINELIST = 0x2;
+    public static final int LINESTRIP = 0x3;
+    public static final int POINTLIST = 0x4;
 
     public static String explain(@EnumType(SDL_GPUPrimitiveType.class) int value) {
         return switch (value) {
-            case SDL_GPUPrimitiveType.SDL_GPU_PRIMITIVETYPE_LINELIST -> "SDL_GPU_PRIMITIVETYPE_LINELIST";
-            case SDL_GPUPrimitiveType.SDL_GPU_PRIMITIVETYPE_LINESTRIP -> "SDL_GPU_PRIMITIVETYPE_LINESTRIP";
-            case SDL_GPUPrimitiveType.SDL_GPU_PRIMITIVETYPE_POINTLIST -> "SDL_GPU_PRIMITIVETYPE_POINTLIST";
-            case SDL_GPUPrimitiveType.SDL_GPU_PRIMITIVETYPE_TRIANGLELIST -> "SDL_GPU_PRIMITIVETYPE_TRIANGLELIST";
-            case SDL_GPUPrimitiveType.SDL_GPU_PRIMITIVETYPE_TRIANGLESTRIP -> "SDL_GPU_PRIMITIVETYPE_TRIANGLESTRIP";
+            case SDL_GPUPrimitiveType.LINELIST -> "SDL_GPU_PRIMITIVETYPE_LINELIST";
+            case SDL_GPUPrimitiveType.LINESTRIP -> "SDL_GPU_PRIMITIVETYPE_LINESTRIP";
+            case SDL_GPUPrimitiveType.POINTLIST -> "SDL_GPU_PRIMITIVETYPE_POINTLIST";
+            case SDL_GPUPrimitiveType.TRIANGLELIST -> "SDL_GPU_PRIMITIVETYPE_TRIANGLELIST";
+            case SDL_GPUPrimitiveType.TRIANGLESTRIP -> "SDL_GPU_PRIMITIVETYPE_TRIANGLESTRIP";
             default -> "UNKNOWN(" + value + ")";
         };
     }

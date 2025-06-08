@@ -27,15 +27,15 @@ import club.doki7.ffm.annotation.*;
 /// \sa SDL_WaitAndAcquireGPUSwapchainTexture
 ///
 public final class SDL_GPUPresentMode {
-    public static final int SDL_GPU_PRESENTMODE_VSYNC = 0x0;
-    public static final int SDL_GPU_PRESENTMODE_IMMEDIATE = 0x1;
-    public static final int SDL_GPU_PRESENTMODE_MAILBOX = 0x2;
+    public static final int VSYNC = 0x0;
+    public static final int IMMEDIATE = 0x1;
+    public static final int MAILBOX = 0x2;
 
     public static String explain(@EnumType(SDL_GPUPresentMode.class) int value) {
         return switch (value) {
-            case SDL_GPUPresentMode.SDL_GPU_PRESENTMODE_IMMEDIATE -> "SDL_GPU_PRESENTMODE_IMMEDIATE";
-            case SDL_GPUPresentMode.SDL_GPU_PRESENTMODE_MAILBOX -> "SDL_GPU_PRESENTMODE_MAILBOX";
-            case SDL_GPUPresentMode.SDL_GPU_PRESENTMODE_VSYNC -> "SDL_GPU_PRESENTMODE_VSYNC";
+            case SDL_GPUPresentMode.IMMEDIATE -> "SDL_GPU_PRESENTMODE_IMMEDIATE";
+            case SDL_GPUPresentMode.MAILBOX -> "SDL_GPU_PRESENTMODE_MAILBOX";
+            case SDL_GPUPresentMode.VSYNC -> "SDL_GPU_PRESENTMODE_VSYNC";
             default -> "UNKNOWN(" + value + ")";
         };
     }

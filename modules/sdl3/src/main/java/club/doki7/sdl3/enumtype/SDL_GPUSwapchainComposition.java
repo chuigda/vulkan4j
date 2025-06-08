@@ -28,17 +28,17 @@ import club.doki7.ffm.annotation.*;
 /// \sa SDL_WaitAndAcquireGPUSwapchainTexture
 ///
 public final class SDL_GPUSwapchainComposition {
-    public static final int SDL_GPU_SWAPCHAINCOMPOSITION_SDR = 0x0;
-    public static final int SDL_GPU_SWAPCHAINCOMPOSITION_SDR_LINEAR = 0x1;
-    public static final int SDL_GPU_SWAPCHAINCOMPOSITION_HDR_EXTENDED_LINEAR = 0x2;
-    public static final int SDL_GPU_SWAPCHAINCOMPOSITION_HDR10_ST2084 = 0x3;
+    public static final int SDR = 0x0;
+    public static final int SDR_LINEAR = 0x1;
+    public static final int HDR_EXTENDED_LINEAR = 0x2;
+    public static final int HDR10_ST2084 = 0x3;
 
     public static String explain(@EnumType(SDL_GPUSwapchainComposition.class) int value) {
         return switch (value) {
-            case SDL_GPUSwapchainComposition.SDL_GPU_SWAPCHAINCOMPOSITION_HDR10_ST2084 -> "SDL_GPU_SWAPCHAINCOMPOSITION_HDR10_ST2084";
-            case SDL_GPUSwapchainComposition.SDL_GPU_SWAPCHAINCOMPOSITION_HDR_EXTENDED_LINEAR -> "SDL_GPU_SWAPCHAINCOMPOSITION_HDR_EXTENDED_LINEAR";
-            case SDL_GPUSwapchainComposition.SDL_GPU_SWAPCHAINCOMPOSITION_SDR -> "SDL_GPU_SWAPCHAINCOMPOSITION_SDR";
-            case SDL_GPUSwapchainComposition.SDL_GPU_SWAPCHAINCOMPOSITION_SDR_LINEAR -> "SDL_GPU_SWAPCHAINCOMPOSITION_SDR_LINEAR";
+            case SDL_GPUSwapchainComposition.HDR10_ST2084 -> "SDL_GPU_SWAPCHAINCOMPOSITION_HDR10_ST2084";
+            case SDL_GPUSwapchainComposition.HDR_EXTENDED_LINEAR -> "SDL_GPU_SWAPCHAINCOMPOSITION_HDR_EXTENDED_LINEAR";
+            case SDL_GPUSwapchainComposition.SDR -> "SDL_GPU_SWAPCHAINCOMPOSITION_SDR";
+            case SDL_GPUSwapchainComposition.SDR_LINEAR -> "SDL_GPU_SWAPCHAINCOMPOSITION_SDR_LINEAR";
             default -> "UNKNOWN(" + value + ")";
         };
     }

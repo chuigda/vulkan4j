@@ -9,13 +9,13 @@ import club.doki7.ffm.annotation.*;
 /// \sa SDL_CreateGPUGraphicsPipeline
 ///
 public final class SDL_GPUVertexInputRate {
-    public static final int SDL_GPU_VERTEXINPUTRATE_VERTEX = 0x0;
-    public static final int SDL_GPU_VERTEXINPUTRATE_INSTANCE = 0x1;
+    public static final int VERTEX = 0x0;
+    public static final int INSTANCE = 0x1;
 
     public static String explain(@EnumType(SDL_GPUVertexInputRate.class) int value) {
         return switch (value) {
-            case SDL_GPUVertexInputRate.SDL_GPU_VERTEXINPUTRATE_INSTANCE -> "SDL_GPU_VERTEXINPUTRATE_INSTANCE";
-            case SDL_GPUVertexInputRate.SDL_GPU_VERTEXINPUTRATE_VERTEX -> "SDL_GPU_VERTEXINPUTRATE_VERTEX";
+            case SDL_GPUVertexInputRate.INSTANCE -> "SDL_GPU_VERTEXINPUTRATE_INSTANCE";
+            case SDL_GPUVertexInputRate.VERTEX -> "SDL_GPU_VERTEXINPUTRATE_VERTEX";
             default -> "UNKNOWN(" + value + ")";
         };
     }

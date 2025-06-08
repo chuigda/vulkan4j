@@ -12,13 +12,13 @@ import club.doki7.ffm.annotation.*;
 /// \sa SDL_CreateGPUTransferBuffer
 ///
 public final class SDL_GPUTransferBufferUsage {
-    public static final int SDL_GPU_TRANSFERBUFFERUSAGE_UPLOAD = 0x0;
-    public static final int SDL_GPU_TRANSFERBUFFERUSAGE_DOWNLOAD = 0x1;
+    public static final int UPLOAD = 0x0;
+    public static final int DOWNLOAD = 0x1;
 
     public static String explain(@EnumType(SDL_GPUTransferBufferUsage.class) int value) {
         return switch (value) {
-            case SDL_GPUTransferBufferUsage.SDL_GPU_TRANSFERBUFFERUSAGE_DOWNLOAD -> "SDL_GPU_TRANSFERBUFFERUSAGE_DOWNLOAD";
-            case SDL_GPUTransferBufferUsage.SDL_GPU_TRANSFERBUFFERUSAGE_UPLOAD -> "SDL_GPU_TRANSFERBUFFERUSAGE_UPLOAD";
+            case SDL_GPUTransferBufferUsage.DOWNLOAD -> "SDL_GPU_TRANSFERBUFFERUSAGE_DOWNLOAD";
+            case SDL_GPUTransferBufferUsage.UPLOAD -> "SDL_GPU_TRANSFERBUFFERUSAGE_UPLOAD";
             default -> "UNKNOWN(" + value + ")";
         };
     }

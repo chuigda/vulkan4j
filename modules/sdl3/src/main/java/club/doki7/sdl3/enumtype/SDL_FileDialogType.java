@@ -12,15 +12,15 @@ import club.doki7.ffm.annotation.*;
 /// \sa SDL_ShowFileDialogWithProperties
 ///
 public final class SDL_FileDialogType {
-    public static final int SDL_FILEDIALOG_OPENFILE = 0x0;
-    public static final int SDL_FILEDIALOG_SAVEFILE = 0x1;
-    public static final int SDL_FILEDIALOG_OPENFOLDER = 0x2;
+    public static final int OPENFILE = 0x0;
+    public static final int SAVEFILE = 0x1;
+    public static final int OPENFOLDER = 0x2;
 
     public static String explain(@EnumType(SDL_FileDialogType.class) int value) {
         return switch (value) {
-            case SDL_FileDialogType.SDL_FILEDIALOG_OPENFILE -> "SDL_FILEDIALOG_OPENFILE";
-            case SDL_FileDialogType.SDL_FILEDIALOG_OPENFOLDER -> "SDL_FILEDIALOG_OPENFOLDER";
-            case SDL_FileDialogType.SDL_FILEDIALOG_SAVEFILE -> "SDL_FILEDIALOG_SAVEFILE";
+            case SDL_FileDialogType.OPENFILE -> "SDL_FILEDIALOG_OPENFILE";
+            case SDL_FileDialogType.OPENFOLDER -> "SDL_FILEDIALOG_OPENFOLDER";
+            case SDL_FileDialogType.SAVEFILE -> "SDL_FILEDIALOG_SAVEFILE";
             default -> "UNKNOWN(" + value + ")";
         };
     }

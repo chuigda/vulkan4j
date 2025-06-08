@@ -16,25 +16,25 @@ import club.doki7.ffm.annotation.*;
 /// \since This enum is available since SDL 3.2.0.
 ///
 public final class SDL_GamepadAxis {
-    public static final int SDL_GAMEPAD_AXIS_INVALID = 0xffffffff;
-    public static final int SDL_GAMEPAD_AXIS_LEFTX = 0x1;
-    public static final int SDL_GAMEPAD_AXIS_LEFTY = 0x2;
-    public static final int SDL_GAMEPAD_AXIS_RIGHTX = 0x3;
-    public static final int SDL_GAMEPAD_AXIS_RIGHTY = 0x4;
-    public static final int SDL_GAMEPAD_AXIS_LEFT_TRIGGER = 0x5;
-    public static final int SDL_GAMEPAD_AXIS_RIGHT_TRIGGER = 0x6;
-    public static final int SDL_GAMEPAD_AXIS_COUNT = 0x7;
+    public static final int INVALID = 0xffffffff;
+    public static final int LEFTX = 0x1;
+    public static final int LEFTY = 0x2;
+    public static final int RIGHTX = 0x3;
+    public static final int RIGHTY = 0x4;
+    public static final int LEFT_TRIGGER = 0x5;
+    public static final int RIGHT_TRIGGER = 0x6;
+    public static final int COUNT = 0x7;
 
     public static String explain(@EnumType(SDL_GamepadAxis.class) int value) {
         return switch (value) {
-            case SDL_GamepadAxis.SDL_GAMEPAD_AXIS_COUNT -> "SDL_GAMEPAD_AXIS_COUNT";
-            case SDL_GamepadAxis.SDL_GAMEPAD_AXIS_INVALID -> "SDL_GAMEPAD_AXIS_INVALID";
-            case SDL_GamepadAxis.SDL_GAMEPAD_AXIS_LEFTX -> "SDL_GAMEPAD_AXIS_LEFTX";
-            case SDL_GamepadAxis.SDL_GAMEPAD_AXIS_LEFTY -> "SDL_GAMEPAD_AXIS_LEFTY";
-            case SDL_GamepadAxis.SDL_GAMEPAD_AXIS_LEFT_TRIGGER -> "SDL_GAMEPAD_AXIS_LEFT_TRIGGER";
-            case SDL_GamepadAxis.SDL_GAMEPAD_AXIS_RIGHTX -> "SDL_GAMEPAD_AXIS_RIGHTX";
-            case SDL_GamepadAxis.SDL_GAMEPAD_AXIS_RIGHTY -> "SDL_GAMEPAD_AXIS_RIGHTY";
-            case SDL_GamepadAxis.SDL_GAMEPAD_AXIS_RIGHT_TRIGGER -> "SDL_GAMEPAD_AXIS_RIGHT_TRIGGER";
+            case SDL_GamepadAxis.COUNT -> "SDL_GAMEPAD_AXIS_COUNT";
+            case SDL_GamepadAxis.INVALID -> "SDL_GAMEPAD_AXIS_INVALID";
+            case SDL_GamepadAxis.LEFTX -> "SDL_GAMEPAD_AXIS_LEFTX";
+            case SDL_GamepadAxis.LEFTY -> "SDL_GAMEPAD_AXIS_LEFTY";
+            case SDL_GamepadAxis.LEFT_TRIGGER -> "SDL_GAMEPAD_AXIS_LEFT_TRIGGER";
+            case SDL_GamepadAxis.RIGHTX -> "SDL_GAMEPAD_AXIS_RIGHTX";
+            case SDL_GamepadAxis.RIGHTY -> "SDL_GAMEPAD_AXIS_RIGHTY";
+            case SDL_GamepadAxis.RIGHT_TRIGGER -> "SDL_GAMEPAD_AXIS_RIGHT_TRIGGER";
             default -> "UNKNOWN(" + value + ")";
         };
     }

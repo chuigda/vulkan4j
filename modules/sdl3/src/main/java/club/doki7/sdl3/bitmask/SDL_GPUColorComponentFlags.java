@@ -6,23 +6,23 @@ import java.util.ArrayList;
 import java.util.List;
 
 public final class SDL_GPUColorComponentFlags {
-    public static final byte SDL_GPU_COLORCOMPONENT_A = 0x8;
-    public static final byte SDL_GPU_COLORCOMPONENT_B = 0x4;
-    public static final byte SDL_GPU_COLORCOMPONENT_G = 0x2;
-    public static final byte SDL_GPU_COLORCOMPONENT_R = 0x1;
+    public static final byte A = 0x8;
+    public static final byte B = 0x4;
+    public static final byte G = 0x2;
+    public static final byte R = 0x1;
 
     public static String explain(@EnumType(SDL_GPUColorComponentFlags.class) byte flags) {
         List<String> detectedFlagBits = new ArrayList<>();
-        if ((flags & SDL_GPU_COLORCOMPONENT_A) != 0) {
+        if ((flags & A) != 0) {
             detectedFlagBits.add("SDL_GPU_COLORCOMPONENT_A");
         }
-        if ((flags & SDL_GPU_COLORCOMPONENT_B) != 0) {
+        if ((flags & B) != 0) {
             detectedFlagBits.add("SDL_GPU_COLORCOMPONENT_B");
         }
-        if ((flags & SDL_GPU_COLORCOMPONENT_G) != 0) {
+        if ((flags & G) != 0) {
             detectedFlagBits.add("SDL_GPU_COLORCOMPONENT_G");
         }
-        if ((flags & SDL_GPU_COLORCOMPONENT_R) != 0) {
+        if ((flags & R) != 0) {
             detectedFlagBits.add("SDL_GPU_COLORCOMPONENT_R");
         }
 

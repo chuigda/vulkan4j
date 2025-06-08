@@ -9,13 +9,13 @@ import club.doki7.ffm.annotation.*;
 /// \sa SDL_CreateGPUShader
 ///
 public final class SDL_GPUShaderStage {
-    public static final int SDL_GPU_SHADERSTAGE_VERTEX = 0x0;
-    public static final int SDL_GPU_SHADERSTAGE_FRAGMENT = 0x1;
+    public static final int VERTEX = 0x0;
+    public static final int FRAGMENT = 0x1;
 
     public static String explain(@EnumType(SDL_GPUShaderStage.class) int value) {
         return switch (value) {
-            case SDL_GPUShaderStage.SDL_GPU_SHADERSTAGE_FRAGMENT -> "SDL_GPU_SHADERSTAGE_FRAGMENT";
-            case SDL_GPUShaderStage.SDL_GPU_SHADERSTAGE_VERTEX -> "SDL_GPU_SHADERSTAGE_VERTEX";
+            case SDL_GPUShaderStage.FRAGMENT -> "SDL_GPU_SHADERSTAGE_FRAGMENT";
+            case SDL_GPUShaderStage.VERTEX -> "SDL_GPU_SHADERSTAGE_VERTEX";
             default -> "UNKNOWN(" + value + ")";
         };
     }

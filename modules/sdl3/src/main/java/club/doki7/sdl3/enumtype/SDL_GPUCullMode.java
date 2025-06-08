@@ -9,15 +9,15 @@ import club.doki7.ffm.annotation.*;
 /// \sa SDL_CreateGPUGraphicsPipeline
 ///
 public final class SDL_GPUCullMode {
-    public static final int SDL_GPU_CULLMODE_NONE = 0x0;
-    public static final int SDL_GPU_CULLMODE_FRONT = 0x1;
-    public static final int SDL_GPU_CULLMODE_BACK = 0x2;
+    public static final int NONE = 0x0;
+    public static final int FRONT = 0x1;
+    public static final int BACK = 0x2;
 
     public static String explain(@EnumType(SDL_GPUCullMode.class) int value) {
         return switch (value) {
-            case SDL_GPUCullMode.SDL_GPU_CULLMODE_BACK -> "SDL_GPU_CULLMODE_BACK";
-            case SDL_GPUCullMode.SDL_GPU_CULLMODE_FRONT -> "SDL_GPU_CULLMODE_FRONT";
-            case SDL_GPUCullMode.SDL_GPU_CULLMODE_NONE -> "SDL_GPU_CULLMODE_NONE";
+            case SDL_GPUCullMode.BACK -> "SDL_GPU_CULLMODE_BACK";
+            case SDL_GPUCullMode.FRONT -> "SDL_GPU_CULLMODE_FRONT";
+            case SDL_GPUCullMode.NONE -> "SDL_GPU_CULLMODE_NONE";
             default -> "UNKNOWN(" + value + ")";
         };
     }

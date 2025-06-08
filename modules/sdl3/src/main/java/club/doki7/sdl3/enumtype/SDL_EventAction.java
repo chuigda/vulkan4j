@@ -7,15 +7,15 @@ import club.doki7.ffm.annotation.*;
 /// \since This enum is available since SDL 3.2.0.
 ///
 public final class SDL_EventAction {
-    public static final int SDL_ADDEVENT = 0x0;
-    public static final int SDL_PEEKEVENT = 0x1;
-    public static final int SDL_GETEVENT = 0x2;
+    public static final int ADDEVENT = 0x0;
+    public static final int PEEKEVENT = 0x1;
+    public static final int GETEVENT = 0x2;
 
     public static String explain(@EnumType(SDL_EventAction.class) int value) {
         return switch (value) {
-            case SDL_EventAction.SDL_ADDEVENT -> "SDL_ADDEVENT";
-            case SDL_EventAction.SDL_GETEVENT -> "SDL_GETEVENT";
-            case SDL_EventAction.SDL_PEEKEVENT -> "SDL_PEEKEVENT";
+            case SDL_EventAction.ADDEVENT -> "SDL_ADDEVENT";
+            case SDL_EventAction.GETEVENT -> "SDL_GETEVENT";
+            case SDL_EventAction.PEEKEVENT -> "SDL_PEEKEVENT";
             default -> "UNKNOWN(" + value + ")";
         };
     }

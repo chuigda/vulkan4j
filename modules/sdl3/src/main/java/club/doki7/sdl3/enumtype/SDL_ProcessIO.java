@@ -44,17 +44,17 @@ import club.doki7.ffm.annotation.*;
 /// \sa SDL_GetProcessOutput
 ///
 public final class SDL_ProcessIO {
-    public static final int SDL_PROCESS_STDIO_INHERITED = 0x0;
-    public static final int SDL_PROCESS_STDIO_NULL = 0x1;
-    public static final int SDL_PROCESS_STDIO_APP = 0x2;
-    public static final int SDL_PROCESS_STDIO_REDIRECT = 0x3;
+    public static final int INHERITED = 0x0;
+    public static final int NULL = 0x1;
+    public static final int APP = 0x2;
+    public static final int REDIRECT = 0x3;
 
     public static String explain(@EnumType(SDL_ProcessIO.class) int value) {
         return switch (value) {
-            case SDL_ProcessIO.SDL_PROCESS_STDIO_APP -> "SDL_PROCESS_STDIO_APP";
-            case SDL_ProcessIO.SDL_PROCESS_STDIO_INHERITED -> "SDL_PROCESS_STDIO_INHERITED";
-            case SDL_ProcessIO.SDL_PROCESS_STDIO_NULL -> "SDL_PROCESS_STDIO_NULL";
-            case SDL_ProcessIO.SDL_PROCESS_STDIO_REDIRECT -> "SDL_PROCESS_STDIO_REDIRECT";
+            case SDL_ProcessIO.APP -> "SDL_PROCESS_STDIO_APP";
+            case SDL_ProcessIO.INHERITED -> "SDL_PROCESS_STDIO_INHERITED";
+            case SDL_ProcessIO.NULL -> "SDL_PROCESS_STDIO_NULL";
+            case SDL_ProcessIO.REDIRECT -> "SDL_PROCESS_STDIO_REDIRECT";
             default -> "UNKNOWN(" + value + ")";
         };
     }

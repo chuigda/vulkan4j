@@ -6,39 +6,39 @@ import java.util.ArrayList;
 import java.util.List;
 
 public final class SDL_InitFlags {
-    public static final int SDL_INIT_AUDIO = 0x10;
-    public static final int SDL_INIT_CAMERA = 0x10000;
-    public static final int SDL_INIT_EVENTS = 0x4000;
-    public static final int SDL_INIT_GAMEPAD = 0x2000;
-    public static final int SDL_INIT_HAPTIC = 0x1000;
-    public static final int SDL_INIT_JOYSTICK = 0x200;
-    public static final int SDL_INIT_SENSOR = 0x8000;
-    public static final int SDL_INIT_VIDEO = 0x20;
+    public static final int AUDIO = 0x10;
+    public static final int CAMERA = 0x10000;
+    public static final int EVENTS = 0x4000;
+    public static final int GAMEPAD = 0x2000;
+    public static final int HAPTIC = 0x1000;
+    public static final int JOYSTICK = 0x200;
+    public static final int SENSOR = 0x8000;
+    public static final int VIDEO = 0x20;
 
     public static String explain(@EnumType(SDL_InitFlags.class) int flags) {
         List<String> detectedFlagBits = new ArrayList<>();
-        if ((flags & SDL_INIT_AUDIO) != 0) {
+        if ((flags & AUDIO) != 0) {
             detectedFlagBits.add("SDL_INIT_AUDIO");
         }
-        if ((flags & SDL_INIT_CAMERA) != 0) {
+        if ((flags & CAMERA) != 0) {
             detectedFlagBits.add("SDL_INIT_CAMERA");
         }
-        if ((flags & SDL_INIT_EVENTS) != 0) {
+        if ((flags & EVENTS) != 0) {
             detectedFlagBits.add("SDL_INIT_EVENTS");
         }
-        if ((flags & SDL_INIT_GAMEPAD) != 0) {
+        if ((flags & GAMEPAD) != 0) {
             detectedFlagBits.add("SDL_INIT_GAMEPAD");
         }
-        if ((flags & SDL_INIT_HAPTIC) != 0) {
+        if ((flags & HAPTIC) != 0) {
             detectedFlagBits.add("SDL_INIT_HAPTIC");
         }
-        if ((flags & SDL_INIT_JOYSTICK) != 0) {
+        if ((flags & JOYSTICK) != 0) {
             detectedFlagBits.add("SDL_INIT_JOYSTICK");
         }
-        if ((flags & SDL_INIT_SENSOR) != 0) {
+        if ((flags & SENSOR) != 0) {
             detectedFlagBits.add("SDL_INIT_SENSOR");
         }
-        if ((flags & SDL_INIT_VIDEO) != 0) {
+        if ((flags & VIDEO) != 0) {
             detectedFlagBits.add("SDL_INIT_VIDEO");
         }
 

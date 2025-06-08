@@ -9,13 +9,13 @@ import club.doki7.ffm.annotation.*;
 /// \sa SDL_CreateGPUSampler
 ///
 public final class SDL_GPUSamplerMipmapMode {
-    public static final int SDL_GPU_SAMPLERMIPMAPMODE_NEAREST = 0x0;
-    public static final int SDL_GPU_SAMPLERMIPMAPMODE_LINEAR = 0x1;
+    public static final int NEAREST = 0x0;
+    public static final int LINEAR = 0x1;
 
     public static String explain(@EnumType(SDL_GPUSamplerMipmapMode.class) int value) {
         return switch (value) {
-            case SDL_GPUSamplerMipmapMode.SDL_GPU_SAMPLERMIPMAPMODE_LINEAR -> "SDL_GPU_SAMPLERMIPMAPMODE_LINEAR";
-            case SDL_GPUSamplerMipmapMode.SDL_GPU_SAMPLERMIPMAPMODE_NEAREST -> "SDL_GPU_SAMPLERMIPMAPMODE_NEAREST";
+            case SDL_GPUSamplerMipmapMode.LINEAR -> "SDL_GPU_SAMPLERMIPMAPMODE_LINEAR";
+            case SDL_GPUSamplerMipmapMode.NEAREST -> "SDL_GPU_SAMPLERMIPMAPMODE_NEAREST";
             default -> "UNKNOWN(" + value + ")";
         };
     }

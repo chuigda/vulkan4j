@@ -13,17 +13,17 @@ import club.doki7.ffm.annotation.*;
 /// \sa SDL_GPUTextureSupportsSampleCount
 ///
 public final class SDL_GPUSampleCount {
-    public static final int SDL_GPU_SAMPLECOUNT_1 = 0x0;
-    public static final int SDL_GPU_SAMPLECOUNT_2 = 0x1;
-    public static final int SDL_GPU_SAMPLECOUNT_4 = 0x2;
-    public static final int SDL_GPU_SAMPLECOUNT_8 = 0x3;
+    public static final int _1 = 0x0;
+    public static final int _2 = 0x1;
+    public static final int _4 = 0x2;
+    public static final int _8 = 0x3;
 
     public static String explain(@EnumType(SDL_GPUSampleCount.class) int value) {
         return switch (value) {
-            case SDL_GPUSampleCount.SDL_GPU_SAMPLECOUNT_1 -> "SDL_GPU_SAMPLECOUNT_1";
-            case SDL_GPUSampleCount.SDL_GPU_SAMPLECOUNT_2 -> "SDL_GPU_SAMPLECOUNT_2";
-            case SDL_GPUSampleCount.SDL_GPU_SAMPLECOUNT_4 -> "SDL_GPU_SAMPLECOUNT_4";
-            case SDL_GPUSampleCount.SDL_GPU_SAMPLECOUNT_8 -> "SDL_GPU_SAMPLECOUNT_8";
+            case SDL_GPUSampleCount._1 -> "SDL_GPU_SAMPLECOUNT_1";
+            case SDL_GPUSampleCount._2 -> "SDL_GPU_SAMPLECOUNT_2";
+            case SDL_GPUSampleCount._4 -> "SDL_GPU_SAMPLECOUNT_4";
+            case SDL_GPUSampleCount._8 -> "SDL_GPU_SAMPLECOUNT_8";
             default -> "UNKNOWN(" + value + ")";
         };
     }

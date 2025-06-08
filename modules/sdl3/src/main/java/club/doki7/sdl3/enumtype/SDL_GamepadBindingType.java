@@ -12,17 +12,17 @@ import club.doki7.ffm.annotation.*;
 /// \since This enum is available since SDL 3.2.0.
 ///
 public final class SDL_GamepadBindingType {
-    public static final int SDL_GAMEPAD_BINDTYPE_NONE = 0x0;
-    public static final int SDL_GAMEPAD_BINDTYPE_BUTTON = 0x2;
-    public static final int SDL_GAMEPAD_BINDTYPE_AXIS = 0x3;
-    public static final int SDL_GAMEPAD_BINDTYPE_HAT = 0x4;
+    public static final int NONE = 0x0;
+    public static final int BUTTON = 0x2;
+    public static final int AXIS = 0x3;
+    public static final int HAT = 0x4;
 
     public static String explain(@EnumType(SDL_GamepadBindingType.class) int value) {
         return switch (value) {
-            case SDL_GamepadBindingType.SDL_GAMEPAD_BINDTYPE_AXIS -> "SDL_GAMEPAD_BINDTYPE_AXIS";
-            case SDL_GamepadBindingType.SDL_GAMEPAD_BINDTYPE_BUTTON -> "SDL_GAMEPAD_BINDTYPE_BUTTON";
-            case SDL_GamepadBindingType.SDL_GAMEPAD_BINDTYPE_HAT -> "SDL_GAMEPAD_BINDTYPE_HAT";
-            case SDL_GamepadBindingType.SDL_GAMEPAD_BINDTYPE_NONE -> "SDL_GAMEPAD_BINDTYPE_NONE";
+            case SDL_GamepadBindingType.AXIS -> "SDL_GAMEPAD_BINDTYPE_AXIS";
+            case SDL_GamepadBindingType.BUTTON -> "SDL_GAMEPAD_BINDTYPE_BUTTON";
+            case SDL_GamepadBindingType.HAT -> "SDL_GAMEPAD_BINDTYPE_HAT";
+            case SDL_GamepadBindingType.NONE -> "SDL_GAMEPAD_BINDTYPE_NONE";
             default -> "UNKNOWN(" + value + ")";
         };
     }

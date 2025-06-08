@@ -13,27 +13,27 @@ import club.doki7.ffm.annotation.*;
 /// \sa SDL_StartTextInputWithProperties
 ///
 public final class SDL_TextInputType {
-    public static final int SDL_TEXTINPUT_TYPE_TEXT = 0x0;
-    public static final int SDL_TEXTINPUT_TYPE_TEXT_NAME = 0x1;
-    public static final int SDL_TEXTINPUT_TYPE_TEXT_EMAIL = 0x2;
-    public static final int SDL_TEXTINPUT_TYPE_TEXT_USERNAME = 0x3;
-    public static final int SDL_TEXTINPUT_TYPE_TEXT_PASSWORD_HIDDEN = 0x4;
-    public static final int SDL_TEXTINPUT_TYPE_TEXT_PASSWORD_VISIBLE = 0x5;
-    public static final int SDL_TEXTINPUT_TYPE_NUMBER = 0x6;
-    public static final int SDL_TEXTINPUT_TYPE_NUMBER_PASSWORD_HIDDEN = 0x7;
-    public static final int SDL_TEXTINPUT_TYPE_NUMBER_PASSWORD_VISIBLE = 0x8;
+    public static final int TEXT = 0x0;
+    public static final int TEXT_NAME = 0x1;
+    public static final int TEXT_EMAIL = 0x2;
+    public static final int TEXT_USERNAME = 0x3;
+    public static final int TEXT_PASSWORD_HIDDEN = 0x4;
+    public static final int TEXT_PASSWORD_VISIBLE = 0x5;
+    public static final int NUMBER = 0x6;
+    public static final int NUMBER_PASSWORD_HIDDEN = 0x7;
+    public static final int NUMBER_PASSWORD_VISIBLE = 0x8;
 
     public static String explain(@EnumType(SDL_TextInputType.class) int value) {
         return switch (value) {
-            case SDL_TextInputType.SDL_TEXTINPUT_TYPE_NUMBER -> "SDL_TEXTINPUT_TYPE_NUMBER";
-            case SDL_TextInputType.SDL_TEXTINPUT_TYPE_NUMBER_PASSWORD_HIDDEN -> "SDL_TEXTINPUT_TYPE_NUMBER_PASSWORD_HIDDEN";
-            case SDL_TextInputType.SDL_TEXTINPUT_TYPE_NUMBER_PASSWORD_VISIBLE -> "SDL_TEXTINPUT_TYPE_NUMBER_PASSWORD_VISIBLE";
-            case SDL_TextInputType.SDL_TEXTINPUT_TYPE_TEXT -> "SDL_TEXTINPUT_TYPE_TEXT";
-            case SDL_TextInputType.SDL_TEXTINPUT_TYPE_TEXT_EMAIL -> "SDL_TEXTINPUT_TYPE_TEXT_EMAIL";
-            case SDL_TextInputType.SDL_TEXTINPUT_TYPE_TEXT_NAME -> "SDL_TEXTINPUT_TYPE_TEXT_NAME";
-            case SDL_TextInputType.SDL_TEXTINPUT_TYPE_TEXT_PASSWORD_HIDDEN -> "SDL_TEXTINPUT_TYPE_TEXT_PASSWORD_HIDDEN";
-            case SDL_TextInputType.SDL_TEXTINPUT_TYPE_TEXT_PASSWORD_VISIBLE -> "SDL_TEXTINPUT_TYPE_TEXT_PASSWORD_VISIBLE";
-            case SDL_TextInputType.SDL_TEXTINPUT_TYPE_TEXT_USERNAME -> "SDL_TEXTINPUT_TYPE_TEXT_USERNAME";
+            case SDL_TextInputType.NUMBER -> "SDL_TEXTINPUT_TYPE_NUMBER";
+            case SDL_TextInputType.NUMBER_PASSWORD_HIDDEN -> "SDL_TEXTINPUT_TYPE_NUMBER_PASSWORD_HIDDEN";
+            case SDL_TextInputType.NUMBER_PASSWORD_VISIBLE -> "SDL_TEXTINPUT_TYPE_NUMBER_PASSWORD_VISIBLE";
+            case SDL_TextInputType.TEXT -> "SDL_TEXTINPUT_TYPE_TEXT";
+            case SDL_TextInputType.TEXT_EMAIL -> "SDL_TEXTINPUT_TYPE_TEXT_EMAIL";
+            case SDL_TextInputType.TEXT_NAME -> "SDL_TEXTINPUT_TYPE_TEXT_NAME";
+            case SDL_TextInputType.TEXT_PASSWORD_HIDDEN -> "SDL_TEXTINPUT_TYPE_TEXT_PASSWORD_HIDDEN";
+            case SDL_TextInputType.TEXT_PASSWORD_VISIBLE -> "SDL_TEXTINPUT_TYPE_TEXT_PASSWORD_VISIBLE";
+            case SDL_TextInputType.TEXT_USERNAME -> "SDL_TEXTINPUT_TYPE_TEXT_USERNAME";
             default -> "UNKNOWN(" + value + ")";
         };
     }
