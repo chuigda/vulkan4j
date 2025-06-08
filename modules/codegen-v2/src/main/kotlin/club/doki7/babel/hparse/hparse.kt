@@ -1,5 +1,6 @@
 package club.doki7.babel.hparse
 
+import club.doki7.babel.cdecl.isIdentChar
 import club.doki7.babel.cdecl.parseBlockDoxygen
 import club.doki7.babel.cdecl.parseTriSlashDoxygen
 import club.doki7.babel.registry.IMergeable
@@ -149,7 +150,7 @@ fun detectFunctionAlikeMacro(line: String): ControlFlow {
 
     val trimmed = line.removePrefix("#define").trimStart()
     var index = 0
-    while (index < trimmed.length && trimmed[index].isLetterOrDigit()) {
+    while (index < trimmed.length && trimmed[index].isIdentChar()) {
         index++
     }
 

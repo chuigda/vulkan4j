@@ -21,7 +21,6 @@ import club.doki7.babel.hparse.skipBlockComment
 import club.doki7.babel.hparse.skipIfdefCplusplusExternC
 import club.doki7.babel.hparse.skipPreprocessor
 import club.doki7.babel.registry.*
-import club.doki7.babel.util.isDecOrHexNumber
 import club.doki7.babel.util.parseDecOrHex
 import club.doki7.babel.util.setupLog
 import java.util.logging.Logger
@@ -32,6 +31,15 @@ internal val log = Logger.getLogger("c.d.b.extract.sdl3")
 
 fun main() {
     setupLog()
+    val registry = extractSDLHeaders()
+    println("done")
+
+    val pixelFormat = registry.enumerations["SDL_PixelFormat".intern()]
+    println(pixelFormat)
+}
+
+fun extractSDLHeaders(): Registry<EmptyMergeable> {
+    val registry = Registry(ext = EmptyMergeable())
 
     val indexFileContent = inputDir.resolve("SDL3-3.2.14/include/SDL3/SDL.h")
         .toFile()
@@ -51,12 +59,13 @@ fun main() {
     filesToParse.remove("SDL_oldnames.h")
 
     for (fileName in filesToParse) {
-        log.info("Extracting SDL3 header: $fileName")
-        extractSDL3Header(fileName)
+        val headerRegistry = extractOneSDL3Header(fileName)
+        registry += headerRegistry
     }
+    return registry
 }
 
-fun extractSDL3Header(fileName: String): Registry<EmptyMergeable> {
+private fun extractOneSDL3Header(fileName: String): Registry<EmptyMergeable> {
     val lines = inputDir.resolve("SDL3-3.2.14/include/SDL3/$fileName")
         .toFile()
         .readText()
@@ -64,20 +73,7 @@ fun extractSDL3Header(fileName: String): Registry<EmptyMergeable> {
         .map(String::trim)
         .toList()
 
-    val registry = Registry<EmptyMergeable>(
-        aliases = mutableMapOf(),
-        bitmasks = mutableMapOf(),
-        constants = mutableMapOf(),
-        commands = mutableMapOf(),
-        enumerations = mutableMapOf(),
-        functionTypedefs = mutableMapOf(),
-        opaqueHandleTypedefs = mutableMapOf(),
-        opaqueTypedefs = mutableMapOf(),
-        structures = mutableMapOf(),
-        unions = mutableMapOf(),
-        ext = EmptyMergeable()
-    )
-
+    val registry = Registry(ext = EmptyMergeable())
     hparse(
         config = headerParseConfig,
         registry = registry,
@@ -151,6 +147,11 @@ private val headerParseConfig = ParseConfig<EmptyMergeable>().apply {
     )
 
     addRule(50, ::detectIfdefCplusplus, ::skipIfdefCplusplusExternC)
+    addRule(
+        50,
+        { if (it.startsWith("struct") && !it.endsWith(";")) ControlFlow.ACCEPT else ControlFlow.NEXT},
+        ::skipStructBody
+    )
     addRule(99, ::detectPreprocessor, ::skipPreprocessor)
 }
 
@@ -187,10 +188,17 @@ private fun parseConstDef(
     val enumTypeName = tryFindKnownEnumType(constantName)
     if (enumTypeName != null) {
         val enumType = registry.enumerations[enumTypeName.intern()]!!
-        val variant = EnumVariant(
-            name = constantName,
-            value = listOf(actualConstValue)
-        )
+        val variant = try {
+            EnumVariant(
+                name = constantName,
+                value = actualConstValue.parseDecOrHex()
+            )
+        } catch (_: NumberFormatException) {
+            EnumVariant(
+                name = constantName,
+                value = actualConstValue.split("|").map(String::trim)
+            )
+        }
         variant.doc = doc
         enumType.variants.add(variant)
         return nextLine
@@ -199,10 +207,17 @@ private fun parseConstDef(
     val bitmaskTypeName = tryFindKnownBitmaskType(constantName)
     if (bitmaskTypeName != null) {
         val bitmask = registry.bitmasks[bitmaskTypeName.intern()]!!
-        val bitflag = Bitflag(
-            name = constantName,
-            value = mutableListOf(actualConstValue)
-        )
+        val bitflag = try {
+            Bitflag(
+                name = constantName,
+                value = actualConstValue.parseDecOrHex().toBigInteger()
+            )
+        } catch (_: NumberFormatException) {
+            Bitflag(
+                name = constantName,
+                value = actualConstValue.split("|").map(String::trim).toMutableList()
+            )
+        }
         bitmask.doc = doc
         bitmask.bitflags.add(bitflag)
         registry.bitmasks[bitmaskTypeName.intern()] = bitmask
@@ -246,8 +261,8 @@ private fun parseOpaqueTypedef(
 }
 
 private fun skipInlineFunction(
-    registry: Registry<EmptyMergeable>,
-    cx: MutableMap<String, Any>,
+    @Suppress("unused") registry: Registry<EmptyMergeable>,
+    @Suppress("unused") cx: MutableMap<String, Any>,
     lines: List<String>,
     index: Int
 ): Int {
@@ -468,47 +483,29 @@ private fun parseAndSaveEnumeration(
     val enumerators = cx["enumerators"] as MutableList<Pair<EnumeratorDecl, List<String>?>>
     cx.remove("enumerators")
 
-    val entity = if (enumName.endsWith("FlagBits")) {
-        val actualName = enumName.replace("FlagBits", "Flags")
-        val bitmask = Bitmask(
-            name = actualName,
-            bitwidth = 32,
-            bitflags = enumerators.map { (enumDecl, doc) ->
-                val bitflag = if (enumDecl.value.isDecOrHexNumber()) {
-                    Bitflag(
-                        name = enumDecl.name,
-                        value = enumDecl.value.parseDecOrHex().toBigInteger()
-                    )
-                } else {
-                    Bitflag(
-                        name = enumDecl.name,
-                        value = enumDecl.value.split("|").map(String::trim).toMutableList()
-                    )
-                }
-                bitflag.doc = doc
-                bitflag
-            }.toMutableList()
-        )
-        registry.bitmasks.putEntityIfAbsent(bitmask)
-        bitmask
-    } else {
-        val enumeration = Enumeration(
-            name = enumName,
-            variants = enumerators.map { (enumDecl, doc) ->
-                val variant = EnumVariant(
+    val enumeration = Enumeration(
+        name = enumName,
+        variants = enumerators.map { (enumDecl, doc) ->
+            val variant = try {
+                EnumVariant(
+                    name = enumDecl.name,
+                    value = enumDecl.value.parseDecOrHex()
+                )
+            } catch (_: NumberFormatException) {
+                EnumVariant(
                     name = enumDecl.name,
                     value = enumDecl.value.split("|").map(String::trim)
                 )
-                variant.doc = doc
-                variant
-            }.toMutableList()
-        )
-        registry.enumerations.putEntityIfAbsent(enumeration)
-        enumeration
-    }
+            }
+            variant.doc = doc
+            variant
+        }.toMutableList()
+    )
+    registry.enumerations.putEntityIfAbsent(enumeration)
+    enumeration
 
     if ("enumerationDoxygen" in cx) {
-        entity.doc = cx["enumerationDoxygen"] as List<String>
+        enumeration.doc = cx["enumerationDoxygen"] as List<String>
         cx.remove("enumerationDoxygen")
     }
 
@@ -615,4 +612,20 @@ private fun parseAndSaveTypedef(
     }
 
     return nextIndex
+}
+
+private fun skipStructBody(
+    @Suppress("unused") registry: Registry<EmptyMergeable>,
+    cx: MutableMap<String, Any>,
+    lines: List<String>,
+    index: Int
+): Int {
+    var index1 = index + 1
+    while (index1 < lines.size && !(lines[index1].startsWith("}") && lines[index1].endsWith(";"))) {
+        index1++
+    }
+    if (index1 >= lines.size) {
+        error("Unterminated struct body at line $index")
+    }
+    return index1 + 1
 }

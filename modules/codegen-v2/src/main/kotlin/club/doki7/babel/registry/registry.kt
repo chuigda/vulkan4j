@@ -11,33 +11,33 @@ class EmptyMergeable : IMergeable<EmptyMergeable> {
     override fun merge(other: EmptyMergeable) = this
 }
 
-abstract class RegistryBase {
-    abstract val aliases: MutableMap<Identifier, Typedef>
-    abstract val bitmasks: MutableMap<Identifier, Bitmask>
-    abstract val constants: MutableMap<Identifier, Constant>
-    abstract val commands: MutableMap<Identifier, Command>
-    abstract val enumerations: MutableMap<Identifier, Enumeration>
-    abstract val functionTypedefs: MutableMap<Identifier, FunctionTypedef>
-    abstract val opaqueHandleTypedefs: MutableMap<Identifier, OpaqueHandleTypedef>
-    abstract val opaqueTypedefs: MutableMap<Identifier, OpaqueTypedef>
-    abstract val structures: MutableMap<Identifier, Structure>
-    abstract val unions: MutableMap<Identifier, Structure>
+interface RegistryBase {
+    val aliases: MutableMap<Identifier, Typedef>
+    val bitmasks: MutableMap<Identifier, Bitmask>
+    val constants: MutableMap<Identifier, Constant>
+    val commands: MutableMap<Identifier, Command>
+    val enumerations: MutableMap<Identifier, Enumeration>
+    val functionTypedefs: MutableMap<Identifier, FunctionTypedef>
+    val opaqueHandleTypedefs: MutableMap<Identifier, OpaqueHandleTypedef>
+    val opaqueTypedefs: MutableMap<Identifier, OpaqueTypedef>
+    val structures: MutableMap<Identifier, Structure>
+    val unions: MutableMap<Identifier, Structure>
 }
 
 data class Registry<E: IMergeable<E>>(
-    override val aliases: MutableMap<Identifier, Typedef>,
-    override val bitmasks: MutableMap<Identifier, Bitmask>,
-    override val constants: MutableMap<Identifier, Constant>,
-    override val commands: MutableMap<Identifier, Command>,
-    override val enumerations: MutableMap<Identifier, Enumeration>,
-    override val functionTypedefs: MutableMap<Identifier, FunctionTypedef>,
-    override val opaqueHandleTypedefs: MutableMap<Identifier, OpaqueHandleTypedef>,
-    override val opaqueTypedefs: MutableMap<Identifier, OpaqueTypedef>,
-    override val structures: MutableMap<Identifier, Structure>,
-    override val unions: MutableMap<Identifier, Structure>,
+    override val aliases: MutableMap<Identifier, Typedef> = mutableMapOf(),
+    override val bitmasks: MutableMap<Identifier, Bitmask> = mutableMapOf(),
+    override val constants: MutableMap<Identifier, Constant> = mutableMapOf(),
+    override val commands: MutableMap<Identifier, Command> = mutableMapOf(),
+    override val enumerations: MutableMap<Identifier, Enumeration> = mutableMapOf(),
+    override val functionTypedefs: MutableMap<Identifier, FunctionTypedef> = mutableMapOf(),
+    override val opaqueHandleTypedefs: MutableMap<Identifier, OpaqueHandleTypedef> = mutableMapOf(),
+    override val opaqueTypedefs: MutableMap<Identifier, OpaqueTypedef> = mutableMapOf(),
+    override val structures: MutableMap<Identifier, Structure> = mutableMapOf(),
+    override val unions: MutableMap<Identifier, Structure> = mutableMapOf(),
 
     var ext: E
-) : RegistryBase() {
+) : RegistryBase {
     infix operator fun plus(other: Registry<E>): Registry<E> = Registry(
         aliases = (this.aliases + other.aliases).toMutableMap(),
         bitmasks = (this.bitmasks + other.bitmasks).toMutableMap(),
@@ -51,6 +51,21 @@ data class Registry<E: IMergeable<E>>(
         unions = (this.unions + other.unions).toMutableMap(),
         ext = this.ext.merge(other.ext)
     )
+
+    infix operator fun plusAssign(other: Registry<E>) {
+        this.aliases.putAll(other.aliases)
+        this.bitmasks.putAll(other.bitmasks)
+        this.constants.putAll(other.constants)
+        this.commands.putAll(other.commands)
+        this.enumerations.putAll(other.enumerations)
+        this.functionTypedefs.putAll(other.functionTypedefs)
+        this.opaqueHandleTypedefs.putAll(other.opaqueHandleTypedefs)
+        this.opaqueTypedefs.putAll(other.opaqueTypedefs)
+        this.structures.putAll(other.structures)
+        this.unions.putAll(other.unions)
+
+        this.ext = this.ext.merge(other.ext)
+    }
 }
 
 abstract class Entity(val name: Identifier, var doc: List<String>? = null) {
