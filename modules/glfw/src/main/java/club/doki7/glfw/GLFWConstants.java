@@ -1,7 +1,5 @@
 package club.doki7.glfw;
 
-import club.doki7.ffm.annotation.*;
-
 public interface GLFWConstants {
     int ACCUM_ALPHA_BITS = 0x0002100A;
     int ACCUM_BLUE_BITS = 0x00021009;

@@ -1,7 +1,5 @@
 package club.doki7.vma.enumtype;
 
-import club.doki7.ffm.annotation.*;
-
 /// Intended usage of the allocated memory.
 ///
 public final class VmaMemoryUsage {

@@ -1,7 +1,5 @@
 package club.doki7.vma.enumtype;
 
-import club.doki7.ffm.annotation.*;
-
 /// Operation performed on single defragmentation move. See structure {@code VmaDefragmentationMove}.
 ///
 public final class VmaDefragmentationMoveOperation {

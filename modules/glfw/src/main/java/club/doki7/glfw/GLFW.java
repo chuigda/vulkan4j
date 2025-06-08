@@ -1,19 +1,16 @@
 package club.doki7.glfw;
 
+import club.doki7.ffm.NativeLayout;
+import club.doki7.ffm.RawFunctionLoader;
+import club.doki7.glfw.datatype.*;
+import club.doki7.glfw.handle.GLFWcursor;
+import club.doki7.glfw.handle.GLFWmonitor;
+import club.doki7.glfw.handle.GLFWwindow;
+import org.jetbrains.annotations.Nullable;
+
 import java.lang.foreign.*;
 import java.lang.invoke.MethodHandle;
 import java.util.Objects;
-
-import org.jetbrains.annotations.Nullable;
-import club.doki7.ffm.NativeLayout;
-import club.doki7.ffm.RawFunctionLoader;
-import club.doki7.ffm.annotation.*;
-import club.doki7.ffm.ptr.*;
-import club.doki7.glfw.datatype.*;
-import club.doki7.glfw.handle.*;
-import club.doki7.vulkan.datatype.*;
-import club.doki7.vulkan.enumtype.*;
-import club.doki7.vulkan.handle.*;
 
 public final class GLFW implements GLFWConstants {
     public GLFW(RawFunctionLoader loader) {

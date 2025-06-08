@@ -1,22 +1,14 @@
 package club.doki7.vma;
 
+import club.doki7.ffm.NativeLayout;
+import club.doki7.ffm.RawFunctionLoader;
+import club.doki7.vma.datatype.*;
+import club.doki7.vma.handle.*;
+import org.jetbrains.annotations.Nullable;
+
 import java.lang.foreign.*;
 import java.lang.invoke.MethodHandle;
 import java.util.Objects;
-
-import org.jetbrains.annotations.Nullable;
-import club.doki7.ffm.NativeLayout;
-import club.doki7.ffm.RawFunctionLoader;
-import club.doki7.ffm.annotation.*;
-import club.doki7.ffm.ptr.*;
-import club.doki7.vma.bitmask.*;
-import club.doki7.vma.datatype.*;
-import club.doki7.vma.enumtype.*;
-import club.doki7.vma.handle.*;
-import club.doki7.vulkan.bitmask.*;
-import club.doki7.vulkan.datatype.*;
-import club.doki7.vulkan.enumtype.*;
-import club.doki7.vulkan.handle.*;
 
 public final class VMA {
     public VMA(RawFunctionLoader loader) {

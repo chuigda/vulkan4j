@@ -1,7 +1,5 @@
 package club.doki7.vma.bitmask;
 
-import club.doki7.ffm.annotation.*;
-
 import java.util.ArrayList;
 import java.util.List;
 

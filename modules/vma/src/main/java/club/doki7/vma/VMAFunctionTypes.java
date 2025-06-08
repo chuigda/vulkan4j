@@ -1,8 +1,6 @@
 package club.doki7.vma;
 
 import java.lang.foreign.*;
-import club.doki7.ffm.NativeLayout;
-import club.doki7.vma.datatype.*;
 
 public final class VMAFunctionTypes {
     public static final FunctionDescriptor PFN_vmaAllocateDeviceMemoryFunction = FunctionDescriptor.ofVoid(

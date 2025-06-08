@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
 
+echo Downloading WebGPU webgpu.yml
+curl -o webgpu.yml https://raw.githubusercontent.com/webgpu-native/webgpu-headers/main/webgpu.yml
+
 # Note: we're restricting to GLFW 3.4. Update this when GLFW releases a new version.
 echo Downloading GLFW header files
 curl -o glfw3.h https://raw.githubusercontent.com/glfw/glfw/refs/tags/3.4/include/GLFW/glfw3.h

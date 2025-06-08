@@ -92,5 +92,10 @@
             <version>26.0.2</version>
             <scope>compile</scope>
         </dependency>
+        <dependency>
+            <groupId>org.yaml</groupId>
+            <artifactId>snakeyaml</artifactId>
+            <version>2.4</version>
+        </dependency>
     </dependencies>
 </project>
