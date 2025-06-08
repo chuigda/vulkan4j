@@ -296,6 +296,8 @@ private fun skipInlineFunction(
 ): Int {
     assert(lines[index].startsWith("SDL_FORCE_INLINE")) { "Expected inline function at line $index" }
 
+    log.info("[INLINE-FUNC] skipping inline function at line ${index + 1}: ${lines[index]}")
+
     var index1 = index + 2
     while (index1 < lines.size && lines[index1] != "}") {
         index1++
