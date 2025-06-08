@@ -11,7 +11,7 @@ internal fun postprocessConstant(registry: RegistryBase, constant: Constant): Co
     val (type, finalValue) = if (constantValue.startsWith('"') && constantValue.endsWith('"')) {
         // It's a string constant
         Pair(IdentifierType("CONSTANTS_JavaString"), constantValue)
-    } else if (constantValue.contains("(SDL_") && !constantValue.contains("|")) {
+    } else if (constantValue.startsWith("(SDL_")) {
         // (SDL_TypeName) value, extract the `SDL_TypeName` part, most likely it's an enum or bitmask type
         val parts = constantValue.removePrefix("(")
             .split(")", limit = 2)
@@ -48,11 +48,23 @@ internal fun postprocessConstant(registry: RegistryBase, constant: Constant): Co
             .removeSuffix(")")
             .split("|")
             .map(String::trim)
+            .toMutableList()
         val firstConstant = constants.first()
-        Pair(
-            registry.constants[firstConstant.intern()]!!.type,
-            constants.joinToString(" | ") { it.removePrefix("SDL_") }
-        )
+        val linkedConstant = registry.constants[firstConstant.intern()]!!
+
+        if (linkedConstant.type.ident.original == "INDETERMINATE") {
+            // don't change and wait for next turn
+            Pair(IdentifierType("INDETERMINATE"), constantValue)
+        } else {
+            if (constants.size == 1 && linkedConstant.type.ident.original == "CONSTANTS_JavaString") {
+                Pair(linkedConstant.type, linkedConstant.expr)
+            } else {
+                Pair(
+                    linkedConstant.type,
+                    constants.joinToString(" | ") { it.removePrefix("SDL_") }
+                )
+            }
+        }
     } else if (constantValue.endsWith("f")) {
         Pair(IdentifierType("float"), constantValue)
     } else if (constantValue.endsWith("u")) {

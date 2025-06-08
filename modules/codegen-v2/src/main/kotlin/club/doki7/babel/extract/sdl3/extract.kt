@@ -66,8 +66,12 @@ fun extractSDLRegistry(): Registry<EmptyMergeable> {
         for (constant in postprocessedConstants) {
             registry.constants.putEntityIfAbsent(constant)
         }
+
+        println("Postprocessed constants with indeterminate types:")
+        println(registry.constants.values.filter { it.type.ident.original == "INDETERMINATE" }.joinToString("\n"))
     }
 
+    println(registry.constants["SDL_PROP_GAMEPAD_CAP_MONO_LED_BOOLEAN".intern()])
     return registry
 }
 

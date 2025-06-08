@@ -81,11 +81,6 @@ public interface SDL3Constants {
     long NS_PER_SECOND = 1000000000L;
     int PEN_MOUSEID = -2;
     int PEN_TOUCHID = -2;
-    @Unsigned int PROP_GAMEPAD_CAP_MONO_LED_BOOLEAN = PROP_JOYSTICK_CAP_MONO_LED_BOOLEAN;
-    @Unsigned int PROP_GAMEPAD_CAP_PLAYER_LED_BOOLEAN = PROP_JOYSTICK_CAP_PLAYER_LED_BOOLEAN;
-    @Unsigned int PROP_GAMEPAD_CAP_RGB_LED_BOOLEAN = PROP_JOYSTICK_CAP_RGB_LED_BOOLEAN;
-    @Unsigned int PROP_GAMEPAD_CAP_RUMBLE_BOOLEAN = PROP_JOYSTICK_CAP_RUMBLE_BOOLEAN;
-    @Unsigned int PROP_GAMEPAD_CAP_TRIGGER_RUMBLE_BOOLEAN = PROP_JOYSTICK_CAP_TRIGGER_RUMBLE_BOOLEAN;
     int RENDERER_VSYNC_ADAPTIVE = -1;
     float STANDARD_GRAVITY = 9.80665f;
     int TOUCH_MOUSEID = -1;
@@ -347,6 +342,11 @@ public interface SDL3Constants {
     String PROP_FILE_DIALOG_NFILTERS_NUMBER = "SDL.filedialog.nfilters";
     String PROP_FILE_DIALOG_TITLE_STRING = "SDL.filedialog.title";
     String PROP_FILE_DIALOG_WINDOW_POINTER = "SDL.filedialog.window";
+    String PROP_GAMEPAD_CAP_MONO_LED_BOOLEAN = "SDL.joystick.cap.mono_led";
+    String PROP_GAMEPAD_CAP_PLAYER_LED_BOOLEAN = "SDL.joystick.cap.player_led";
+    String PROP_GAMEPAD_CAP_RGB_LED_BOOLEAN = "SDL.joystick.cap.rgb_led";
+    String PROP_GAMEPAD_CAP_RUMBLE_BOOLEAN = "SDL.joystick.cap.rumble";
+    String PROP_GAMEPAD_CAP_TRIGGER_RUMBLE_BOOLEAN = "SDL.joystick.cap.trigger_rumble";
     String PROP_GLOBAL_VIDEO_WAYLAND_WL_DISPLAY_POINTER = "SDL.video.wayland.wl_display";
     String PROP_GPU_BUFFER_CREATE_NAME_STRING = "SDL.gpu.buffer.create.name";
     String PROP_GPU_COMPUTEPIPELINE_CREATE_NAME_STRING = "SDL.gpu.computepipeline.create.name";
