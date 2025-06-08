@@ -14,6 +14,7 @@ import club.doki7.babel.hparse.detectPreprocessor
 import club.doki7.babel.hparse.detectTriSlashDoxygen
 import club.doki7.babel.hparse.dummyAction
 import club.doki7.babel.hparse.hparse
+import club.doki7.babel.hparse.log
 import club.doki7.babel.hparse.nextLine
 import club.doki7.babel.hparse.parseAndSaveBlockDoxygen
 import club.doki7.babel.hparse.parseAndSaveTriSlashDoxygen
@@ -97,7 +98,7 @@ private val headerParseConfig = ParseConfig<EmptyMergeable>().apply {
 
     addRule(10, ::detectLineComment, ::nextLine)
     addRule(10, ::detectBlockComment, ::skipBlockComment)
-    addRule(10, ::detectFunctionAlikeMacro, ::skipPreprocessor)
+    addRule(10, ::detectFunctionAlikeMacro, ::reportAndSkipPreprocessor)
 
     addRule(
         20,
@@ -164,6 +165,16 @@ private val headerParseConfig = ParseConfig<EmptyMergeable>().apply {
         ::skipStructBody
     )
     addRule(99, ::detectPreprocessor, ::skipPreprocessor)
+}
+
+private fun reportAndSkipPreprocessor(
+    registry: Registry<EmptyMergeable>,
+    cx: MutableMap<String, Any>,
+    lines: List<String>,
+    index: Int
+): Int {
+    log.info("[FUNC-MACRO] skipping function-alike directive at line ${index + 1}: ${lines[index]}")
+    return skipPreprocessor(registry, cx, lines, index)
 }
 
 private fun parseConstDef(

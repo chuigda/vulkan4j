@@ -7,5 +7,7 @@ When updating SDL3 version, please follow these steps:
 - Add them and proper expansion to `knownMacros.kt`;
 - Figure out newly-added troublesome structures (nested structs with anonymous structure names, etc);
 - Add them to `knownTroublesomeStructures.kt` and provide a proper workaround;
+- Uncomment the constant generation logics in `sdl.kt`, re-generate constants and check diff;
+- Fix compilation errors and remove all useless constants from generated `SDLConstants.java`
 
 See the comment in `knownEnumAndBitmask.kt` for more details.

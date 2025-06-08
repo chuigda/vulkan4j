@@ -2,18 +2,15 @@ package club.doki7.sdl3;
 
 import club.doki7.ffm.annotation.*;
 
-// SPECIAL NOTE FOR MAINTAINER:
-// This file is currently semi-automatically generated. YOU are responsible for
-// fixing compilation errors after this file gets re-generated.
 public interface SDL3Constants {
-    float ALPHA_OPAQUE = 0xff;
+    @Unsigned int ALPHA_OPAQUE = 0xff;
     @Unsigned int ALPHA_TRANSPARENT = 0x0;
     @Unsigned int ANDROID_EXTERNAL_STORAGE_READ = 0x1;
     @Unsigned int ANDROID_EXTERNAL_STORAGE_WRITE = 0x2;
     @Unsigned int AUDIO_DEVICE_DEFAULT_PLAYBACK = 0xffffffff;
     @Unsigned int AUDIO_DEVICE_DEFAULT_RECORDING = 0xfffffffe;
     @Unsigned int AUDIO_MASK_BIG_ENDIAN = 0x1000;
-    float AUDIO_MASK_BITSIZE = 0xff;
+    @Unsigned int AUDIO_MASK_BITSIZE = 0xff;
     @Unsigned int AUDIO_MASK_FLOAT = 0x100;
     @Unsigned int AUDIO_MASK_SIGNED = 0x8000;
     @Unsigned int BIG_ENDIAN = 0x10e1;
@@ -24,13 +21,6 @@ public interface SDL3Constants {
     @Unsigned int BUTTON_X2MASK = 0x10;
     @Unsigned int CACHELINE_SIZE = 0x80;
     @Unsigned int DEBUG_TEXT_FONT_CHARACTER_SIZE = 0x8;
-    @Unsigned int GPU_TEXTUREUSAGE_COLOR_TARGET = 0x2;
-    @Unsigned int GPU_TEXTUREUSAGE_COMPUTE_STORAGE_READ = 0x10;
-    @Unsigned int GPU_TEXTUREUSAGE_COMPUTE_STORAGE_SIMULTANEOUS_READ_WRITE = 0x40;
-    @Unsigned int GPU_TEXTUREUSAGE_COMPUTE_STORAGE_WRITE = 0x20;
-    @Unsigned int GPU_TEXTUREUSAGE_DEPTH_STENCIL_TARGET = 0x4;
-    @Unsigned int GPU_TEXTUREUSAGE_GRAPHICS_STORAGE_READ = 0x8;
-    @Unsigned int GPU_TEXTUREUSAGE_SAMPLER = 0x1;
     @Unsigned int HAPTIC_AUTOCENTER = 0x20000;
     @Unsigned int HAPTIC_CARTESIAN = 0x1;
     @Unsigned int HAPTIC_CONSTANT = 0x1;
@@ -62,7 +52,7 @@ public interface SDL3Constants {
     @Unsigned int HAT_RIGHT = 0x2;
     @Unsigned int HAT_UP = 0x1;
     @Unsigned int INVALID_UNICODE_CODEPOINT = 0xfffd;
-    float JOYSTICK_AXIS_MAX = 0x7fff;
+    @Unsigned int JOYSTICK_AXIS_MAX = 0x7fff;
     @Unsigned int LIL_ENDIAN = 0x4d2;
     @Unsigned int MAJOR_VERSION = 0x3;
     @Unsigned int MESSAGEBOX_COLOR_COUNT = 6;
@@ -83,13 +73,14 @@ public interface SDL3Constants {
     @Unsigned int HAT_LEFTUP = HAT_LEFT | HAT_UP;
     @Unsigned int HAT_RIGHTDOWN = HAT_RIGHT | HAT_DOWN;
     @Unsigned int HAT_RIGHTUP = HAT_RIGHT | HAT_UP;
+
     int JOYSTICK_AXIS_MIN = -32768;
     int MOUSE_TOUCHID = -1;
     long NS_PER_SECOND = 1000000000L;
     int PEN_MOUSEID = -2;
     int PEN_TOUCHID = -2;
-    double PI_D = 3.141592653589793238462643383279502884;
-    float PI_F = 3.141592653589793238462643383279502884f;
+    @Unsigned double PI_D = 3.141592653589793238462643383279502884;
+    @Unsigned float PI_F = 3.141592653589793238462643383279502884F;
     int RENDERER_VSYNC_ADAPTIVE = -1;
     float STANDARD_GRAVITY = 9.80665f;
     int TOUCH_MOUSEID = -1;

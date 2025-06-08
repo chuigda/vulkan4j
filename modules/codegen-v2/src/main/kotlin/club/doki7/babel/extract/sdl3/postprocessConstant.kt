@@ -65,7 +65,7 @@ internal fun postprocessConstant(registry: RegistryBase, constant: Constant): Co
                 )
             }
         }
-    } else if (constantValue.endsWith("f")) {
+    } else if (constantValue.endsWith("f") && !constantValue.startsWith("0x")) {
         Pair(IdentifierType("float"), constantValue)
     } else if (constantValue.endsWith("u")) {
         // Unsigned integer constant

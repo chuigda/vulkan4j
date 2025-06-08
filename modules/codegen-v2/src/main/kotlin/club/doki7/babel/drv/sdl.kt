@@ -3,6 +3,7 @@ package club.doki7.babel.drv
 import club.doki7.babel.codegen.CodegenOptions
 import club.doki7.babel.codegen.generateBitmask
 import club.doki7.babel.codegen.generateCommandFile
+import club.doki7.babel.codegen.generateConstants
 import club.doki7.babel.codegen.generateEnumeration
 import club.doki7.babel.codegen.generateFunctionTypedefs
 import club.doki7.babel.codegen.generateHandle
