@@ -6,11 +6,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public final class SDL_GlobFlags {
-    public static final int SDL_GLOB_CASEINSENSITIVE = 0x1;
+    public static final int CASEINSENSITIVE = 0x1;
 
     public static String explain(@EnumType(SDL_GlobFlags.class) int flags) {
         List<String> detectedFlagBits = new ArrayList<>();
-        if ((flags & SDL_GLOB_CASEINSENSITIVE) != 0) {
+        if ((flags & CASEINSENSITIVE) != 0) {
             detectedFlagBits.add("SDL_GLOB_CASEINSENSITIVE");
         }
 

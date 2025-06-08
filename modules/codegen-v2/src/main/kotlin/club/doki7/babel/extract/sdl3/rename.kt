@@ -77,6 +77,9 @@ internal fun Registry<EmptyMergeable>.renameEntities() {
         }
     }
 
+    "SDL_GLOB_CASEINSENSITIVE".intern().rename("CASEINSENSITIVE")
+    renamed.putIfAbsent("SDL_GLOB_CASEINSENSITIVE", "CASEINSENSITIVE")
+
     log.info(" - 重命名完成，重命名了 ${renamed.size} 个项目，完整列表可参见 $renamedEntitiesFile")
     File(renamedEntitiesFile).writeText(buildString {
         appendLine("original,new")
