@@ -35,4 +35,12 @@ modules/vma/src/main/java/club/doki7/vma/datatype/*.java linguist-generated
 modules/vma/src/main/java/club/doki7/vma/enumtype/*.java linguist-generated
 modules/vma/src/main/java/club/doki7/vma/handle/*.java linguist-generated
 
+modules/sdl3/src/main/java/club/doki7/sdl3/SDL3.java linguist-generated
+modules/sdl3/src/main/java/club/doki7/sdl3/SDL3Constants.java linguist-generated
+modules/sdl3/src/main/java/club/doki7/sdl3/SDL3FunctionTypes.java linguist-generated
+modules/sdl3/src/main/java/club/doki7/sdl3/bitmask/*.java linguist-generated
+modules/sdl3/src/main/java/club/doki7/sdl3/datatype/*.java linguist-generated
+modules/sdl3/src/main/java/club/doki7/sdl3/enumtype/*.java linguist-generated
+modules/sdl3/src/main/java/club/doki7/sdl3/handle/*.java linguist-generated
+
 modules/tutorial/src/main/java/**/*.java linguist-documentation
