@@ -23,13 +23,14 @@ import static club.doki7.sdl3.SDL3Constants.*;
 /// Note that mip_lod_bias is a no-op for the Metal driver. For Metal, LOD bias
 /// must be applied via shader instead.
 ///
-/// \since This function is available since SDL 3.2.0.
+/// Since: This function is available since SDL 3.2.0.
 ///
-/// \sa SDL_CreateGPUSampler
-/// \sa SDL_GPUFilter
-/// \sa SDL_GPUSamplerMipmapMode
-/// \sa SDL_GPUSamplerAddressMode
-/// \sa SDL_GPUCompareOp
+/// See also:
+/// - `SDL_CreateGPUSampler`
+/// - `SDL_GPUFilter`
+/// - `SDL_GPUSamplerMipmapMode`
+/// - `SDL_GPUSamplerAddressMode`
+/// - `SDL_GPUCompareOp`
 ///
 /// ## Structure
 ///

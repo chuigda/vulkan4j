@@ -4,9 +4,10 @@ import club.doki7.ffm.annotation.*;
 
 /// Specifies the rate at which vertex attributes are pulled from buffers.
 ///
-/// \since This enum is available since SDL 3.2.0.
+/// Since: This enum is available since SDL 3.2.0.
 ///
-/// \sa SDL_CreateGPUGraphicsPipeline
+/// See also:
+/// - `SDL_CreateGPUGraphicsPipeline`
 ///
 public final class SDL_GPUVertexInputRate {
     public static final int VERTEX = 0x0;

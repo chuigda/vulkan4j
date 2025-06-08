@@ -6,7 +6,7 @@ import club.doki7.ffm.annotation.*;
 ///
 /// These are as described by https://www.itu.int/rec/T-REC-H.273-201612-S/en
 ///
-/// \since This enum is available since SDL 3.2.0.
+/// Since: This enum is available since SDL 3.2.0.
 ///
 public final class SDL_TransferCharacteristics {
     public static final int UNKNOWN = 0x0;

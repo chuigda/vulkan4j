@@ -4,9 +4,10 @@ import club.doki7.ffm.annotation.*;
 
 /// Specifies the type of a texture.
 ///
-/// \since This enum is available since SDL 3.2.0.
+/// Since: This enum is available since SDL 3.2.0.
 ///
-/// \sa SDL_CreateGPUTexture
+/// See also:
+/// - `SDL_CreateGPUTexture`
 ///
 public final class SDL_GPUTextureType {
     public static final int _2D = 0x0;

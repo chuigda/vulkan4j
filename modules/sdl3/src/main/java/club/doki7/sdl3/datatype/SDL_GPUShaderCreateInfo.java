@@ -20,9 +20,10 @@ import static club.doki7.sdl3.SDL3Constants.*;
 
 /// A structure specifying code and metadata for creating a shader object.
 ///
-/// \since This struct is available since SDL 3.2.0.
+/// Since: This struct is available since SDL 3.2.0.
 ///
-/// \sa SDL_CreateGPUShader
+/// See also:
+/// - `SDL_CreateGPUShader`
 ///
 /// ## Structure
 ///

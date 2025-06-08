@@ -22,9 +22,10 @@ import static club.doki7.sdl3.SDL3Constants.*;
 ///
 /// Used when copying data from one texture to another.
 ///
-/// \since This struct is available since SDL 3.2.0.
+/// Since: This struct is available since SDL 3.2.0.
 ///
-/// \sa SDL_CopyGPUTextureToTexture
+/// See also:
+/// - `SDL_CopyGPUTextureToTexture`
 ///
 /// ## Structure
 ///

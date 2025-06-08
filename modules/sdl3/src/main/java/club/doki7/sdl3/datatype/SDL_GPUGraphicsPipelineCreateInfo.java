@@ -20,16 +20,17 @@ import static club.doki7.sdl3.SDL3Constants.*;
 
 /// A structure specifying the parameters of a graphics pipeline state.
 ///
-/// \since This struct is available since SDL 3.2.0.
+/// Since: This struct is available since SDL 3.2.0.
 ///
-/// \sa SDL_CreateGPUGraphicsPipeline
-/// \sa SDL_GPUShader
-/// \sa SDL_GPUVertexInputState
-/// \sa SDL_GPUPrimitiveType
-/// \sa SDL_GPURasterizerState
-/// \sa SDL_GPUMultisampleState
-/// \sa SDL_GPUDepthStencilState
-/// \sa SDL_GPUGraphicsPipelineTargetInfo
+/// See also:
+/// - `SDL_CreateGPUGraphicsPipeline`
+/// - `SDL_GPUShader`
+/// - `SDL_GPUVertexInputState`
+/// - `SDL_GPUPrimitiveType`
+/// - `SDL_GPURasterizerState`
+/// - `SDL_GPUMultisampleState`
+/// - `SDL_GPUDepthStencilState`
+/// - `SDL_GPUGraphicsPipelineTargetInfo`
 ///
 /// ## Structure
 ///

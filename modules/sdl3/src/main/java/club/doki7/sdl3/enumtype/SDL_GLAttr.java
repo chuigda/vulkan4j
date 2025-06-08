@@ -16,7 +16,7 @@ import club.doki7.ffm.annotation.*;
 /// fail if the GL can't provide your requested attributes at a minimum, but
 /// you should check to see exactly what you got.
 ///
-/// \since This enum is available since SDL 3.2.0.
+/// Since: This enum is available since SDL 3.2.0.
 ///
 public final class SDL_GLAttr {
     public static final int RED_SIZE = 0x0;

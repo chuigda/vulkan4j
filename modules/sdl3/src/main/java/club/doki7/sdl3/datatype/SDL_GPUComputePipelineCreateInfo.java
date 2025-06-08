@@ -20,10 +20,11 @@ import static club.doki7.sdl3.SDL3Constants.*;
 
 /// A structure specifying the parameters of a compute pipeline state.
 ///
-/// \since This struct is available since SDL 3.2.0.
+/// Since: This struct is available since SDL 3.2.0.
 ///
-/// \sa SDL_CreateGPUComputePipeline
-/// \sa SDL_GPUShaderFormat
+/// See also:
+/// - `SDL_CreateGPUComputePipeline`
+/// - `SDL_GPUShaderFormat`
 ///
 /// ## Structure
 ///

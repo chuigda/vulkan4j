@@ -12,9 +12,10 @@ import club.doki7.ffm.annotation.*;
 
 /// An opaque handle representing string encoding conversion state.
 ///
-/// \since This datatype is available since SDL 3.2.0.
+/// Since: This datatype is available since SDL 3.2.0.
 ///
-/// \sa SDL_iconv_open
+/// See also:
+/// - `SDL_iconv_open`
 ///
 /// ## Contracts
 ///

@@ -7,7 +7,7 @@ import club.doki7.ffm.annotation.*;
 /// These map to the same "whence" concept that `fseek` or `lseek` use in the
 /// standard C runtime.
 ///
-/// \since This enum is available since SDL 3.2.0.
+/// Since: This enum is available since SDL 3.2.0.
 ///
 public final class SDL_IOWhence {
     public static final int SET = 0x0;

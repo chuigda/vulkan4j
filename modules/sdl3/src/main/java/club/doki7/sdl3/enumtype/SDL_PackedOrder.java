@@ -2,9 +2,9 @@ package club.doki7.sdl3.enumtype;
 
 import club.doki7.ffm.annotation.*;
 
-/// Packed component order, high bit -> low bit.
+/// Packed component order, high bit -&amp;gt; low bit.
 ///
-/// \since This enum is available since SDL 3.2.0.
+/// Since: This enum is available since SDL 3.2.0.
 ///
 public final class SDL_PackedOrder {
     public static final int NONE = 0x0;

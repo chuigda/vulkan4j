@@ -4,7 +4,7 @@ import club.doki7.ffm.annotation.*;
 
 /// Cursor types for SDL_CreateSystemCursor().
 ///
-/// \since This enum is available since SDL 3.2.0.
+/// Since: This enum is available since SDL 3.2.0.
 ///
 public final class SDL_SystemCursor {
     public static final int DEFAULT = 0x0;

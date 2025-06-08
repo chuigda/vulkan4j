@@ -4,11 +4,12 @@ import club.doki7.ffm.annotation.*;
 
 /// Possible return values from the SDL_HitTest callback.
 ///
-/// \threadsafety This function should only be called on the main thread.
+/// @threadsafety This function should only be called on the main thread.
 ///
-/// \since This enum is available since SDL 3.2.0.
+/// Since: This enum is available since SDL 3.2.0.
 ///
-/// \sa SDL_HitTest
+/// See also:
+/// - `SDL_HitTest`
 ///
 public final class SDL_HitTestResult {
     public static final int NORMAL = 0x0;

@@ -24,7 +24,7 @@ import static club.doki7.sdl3.SDL3Constants.*;
 /// will be inserted into the editing text. The length is the number of UTF-8
 /// characters that will be replaced by new typing.
 ///
-/// \since This struct is available since SDL 3.2.0.
+/// Since: This struct is available since SDL 3.2.0.
 ///
 /// ## Structure
 ///

@@ -6,9 +6,10 @@ import club.doki7.ffm.annotation.*;
 ///
 /// Each format corresponds to a specific backend that accepts it.
 ///
-/// \since This datatype is available since SDL 3.2.0.
+/// Since: This datatype is available since SDL 3.2.0.
 ///
-/// \sa SDL_CreateGPUShader
+/// See also:
+/// - `SDL_CreateGPUShader`
 ///
 public final class SDL_GPUShaderFormat {
     public static final int INVALID = 0x0;

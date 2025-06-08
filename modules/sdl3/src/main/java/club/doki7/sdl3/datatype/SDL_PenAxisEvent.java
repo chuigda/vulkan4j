@@ -23,7 +23,7 @@ import static club.doki7.sdl3.SDL3Constants.*;
 /// You might get some of these events even if the pen isn't touching the
 /// tablet.
 ///
-/// \since This struct is available since SDL 3.2.0.
+/// Since: This struct is available since SDL 3.2.0.
 ///
 /// ## Structure
 ///

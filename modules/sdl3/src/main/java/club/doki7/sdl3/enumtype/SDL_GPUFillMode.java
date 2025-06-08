@@ -4,9 +4,10 @@ import club.doki7.ffm.annotation.*;
 
 /// Specifies the fill mode of the graphics pipeline.
 ///
-/// \since This enum is available since SDL 3.2.0.
+/// Since: This enum is available since SDL 3.2.0.
 ///
-/// \sa SDL_CreateGPUGraphicsPipeline
+/// See also:
+/// - `SDL_CreateGPUGraphicsPipeline`
 ///
 public final class SDL_GPUFillMode {
     public static final int FILL = 0x0;

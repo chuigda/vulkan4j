@@ -8,9 +8,10 @@ import club.doki7.ffm.annotation.*;
 ///
 /// Additional values may be obtained from SDL_ComposeCustomBlendMode.
 ///
-/// \since This datatype is available since SDL 3.2.0.
+/// Since: This datatype is available since SDL 3.2.0.
 ///
-/// \sa SDL_ComposeCustomBlendMode
+/// See also:
+/// - `SDL_ComposeCustomBlendMode`
 ///
 public final class SDL_BlendMode {
     public static final int NONE = 0x0;

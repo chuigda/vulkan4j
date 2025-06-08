@@ -13,7 +13,7 @@ import club.doki7.ffm.annotation.*;
 /// pressed) when reported by SDL_GetGamepadAxis(). Note that this is not the
 /// same range that will be reported by the lower-level SDL_GetJoystickAxis().
 ///
-/// \since This enum is available since SDL 3.2.0.
+/// Since: This enum is available since SDL 3.2.0.
 ///
 public final class SDL_GamepadAxis {
     public static final int INVALID = 0xffffffff;

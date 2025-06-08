@@ -2,7 +2,7 @@ package club.doki7.sdl3.enumtype;
 
 import club.doki7.ffm.annotation.*;
 
-///  \cond
+/// \cond
 ///
 public final class SDL_DUMMY_ENUM {
     public static final int DUMMY_ENUM_VALUE = 0x0;

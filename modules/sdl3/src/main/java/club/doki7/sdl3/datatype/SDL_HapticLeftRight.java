@@ -26,10 +26,11 @@ import static club.doki7.sdl3.SDL3Constants.*;
 /// motors, commonly found in modern game controllers. The small (right) motor
 /// is high frequency, and the large (left) motor is low frequency.
 ///
-/// \since This struct is available since SDL 3.2.0.
+/// Since: This struct is available since SDL 3.2.0.
 ///
-/// \sa SDL_HAPTIC_LEFTRIGHT
-/// \sa SDL_HapticEffect
+/// See also:
+/// - `SDL_HAPTIC_LEFTRIGHT`
+/// - `SDL_HapticEffect`
 ///
 /// ## Structure
 ///

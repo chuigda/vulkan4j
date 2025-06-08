@@ -20,9 +20,10 @@ import static club.doki7.sdl3.SDL3Constants.*;
 
 /// A structure specifying the parameters of an indexed dispatch command.
 ///
-/// \since This struct is available since SDL 3.2.0.
+/// Since: This struct is available since SDL 3.2.0.
 ///
-/// \sa SDL_DispatchGPUComputeIndirect
+/// See also:
+/// - `SDL_DispatchGPUComputeIndirect`
 ///
 /// ## Structure
 ///

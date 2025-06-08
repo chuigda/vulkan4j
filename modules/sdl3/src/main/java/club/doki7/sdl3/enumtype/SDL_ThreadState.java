@@ -6,9 +6,10 @@ import club.doki7.ffm.annotation.*;
 ///
 /// The current state of a thread can be checked by calling SDL_GetThreadState.
 ///
-/// \since This enum is available since SDL 3.2.0.
+/// Since: This enum is available since SDL 3.2.0.
 ///
-/// \sa SDL_GetThreadState
+/// See also:
+/// - `SDL_GetThreadState`
 ///
 public final class SDL_ThreadState {
     public static final int UNKNOWN = 0x0;

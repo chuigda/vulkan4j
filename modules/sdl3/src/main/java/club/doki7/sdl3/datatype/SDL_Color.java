@@ -25,7 +25,7 @@ import static club.doki7.sdl3.SDL3Constants.*;
 /// (SDL_PIXELFORMAT_ABGR8888 on little-endian systems and
 /// SDL_PIXELFORMAT_RGBA8888 on big-endian systems).
 ///
-/// \since This struct is available since SDL 3.2.0.
+/// Since: This struct is available since SDL 3.2.0.
 ///
 /// ## Structure
 ///

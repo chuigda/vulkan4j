@@ -8,9 +8,10 @@ import club.doki7.ffm.annotation.*;
 /// The source color is the value written by the fragment shader. The
 /// destination color is the value currently existing in the texture.
 ///
-/// \since This enum is available since SDL 3.2.0.
+/// Since: This enum is available since SDL 3.2.0.
 ///
-/// \sa SDL_CreateGPUGraphicsPipeline
+/// See also:
+/// - `SDL_CreateGPUGraphicsPipeline`
 ///
 public final class SDL_GPUBlendFactor {
     public static final int INVALID = 0x0;

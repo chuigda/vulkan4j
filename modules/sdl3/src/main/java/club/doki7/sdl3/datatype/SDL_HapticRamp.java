@@ -27,10 +27,11 @@ import static club.doki7.sdl3.SDL3Constants.*;
 /// effects get added to the ramp effect making the effect become quadratic
 /// instead of linear.
 ///
-/// \since This struct is available since SDL 3.2.0.
+/// Since: This struct is available since SDL 3.2.0.
 ///
-/// \sa SDL_HAPTIC_RAMP
-/// \sa SDL_HapticEffect
+/// See also:
+/// - `SDL_HAPTIC_RAMP`
+/// - `SDL_HapticEffect`
 ///
 /// ## Structure
 ///

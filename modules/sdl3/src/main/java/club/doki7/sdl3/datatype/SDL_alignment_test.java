@@ -18,7 +18,7 @@ import club.doki7.sdl3.handle.*;
 import club.doki7.sdl3.enumtype.*;
 import static club.doki7.sdl3.SDL3Constants.*;
 
-///  \cond
+/// \cond
 ///
 /// ## Structure
 ///

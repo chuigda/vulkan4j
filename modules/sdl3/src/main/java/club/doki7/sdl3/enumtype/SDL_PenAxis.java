@@ -14,7 +14,7 @@ import club.doki7.ffm.annotation.*;
 ///
 /// `SDL_sinf(xtilt * SDL_PI_F / 180.0)`.
 ///
-/// \since This enum is available since SDL 3.2.0.
+/// Since: This enum is available since SDL 3.2.0.
 ///
 public final class SDL_PenAxis {
     public static final int PRESSURE = 0x0;

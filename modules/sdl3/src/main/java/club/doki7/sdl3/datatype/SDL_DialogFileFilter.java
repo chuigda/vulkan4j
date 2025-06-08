@@ -28,13 +28,14 @@ import static club.doki7.sdl3.SDL3Constants.*;
 /// hyphens, underscores and periods. Alternatively, the whole string can be a
 /// single asterisk ("*"), which serves as an "All files" filter.
 ///
-/// \since This struct is available since SDL 3.2.0.
+/// Since: This struct is available since SDL 3.2.0.
 ///
-/// \sa SDL_DialogFileCallback
-/// \sa SDL_ShowOpenFileDialog
-/// \sa SDL_ShowSaveFileDialog
-/// \sa SDL_ShowOpenFolderDialog
-/// \sa SDL_ShowFileDialogWithProperties
+/// See also:
+/// - `SDL_DialogFileCallback`
+/// - `SDL_ShowOpenFileDialog`
+/// - `SDL_ShowSaveFileDialog`
+/// - `SDL_ShowOpenFolderDialog`
+/// - `SDL_ShowFileDialogWithProperties`
 ///
 /// ## Structure
 ///

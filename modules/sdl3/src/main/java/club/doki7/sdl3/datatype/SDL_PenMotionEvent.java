@@ -23,10 +23,10 @@ import static club.doki7.sdl3.SDL3Constants.*;
 /// Depending on the hardware, you may get motion events when the pen is not
 /// touching a tablet, for tracking a pen even when it isn't drawing. You
 /// should listen for SDL_EVENT_PEN_DOWN and SDL_EVENT_PEN_UP events, or check
-/// `pen_state & SDL_PEN_INPUT_DOWN` to decide if a pen is "drawing" when
+/// `pen_state &amp; SDL_PEN_INPUT_DOWN` to decide if a pen is "drawing" when
 /// dealing with pen motion.
 ///
-/// \since This struct is available since SDL 3.2.0.
+/// Since: This struct is available since SDL 3.2.0.
 ///
 /// ## Structure
 ///

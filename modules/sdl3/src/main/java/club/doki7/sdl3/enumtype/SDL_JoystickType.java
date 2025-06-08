@@ -11,7 +11,7 @@ import club.doki7.ffm.annotation.*;
 /// This is by no means a complete list of everything that can be plugged into
 /// a computer.
 ///
-/// \since This enum is available since SDL 3.2.0.
+/// Since: This enum is available since SDL 3.2.0.
 ///
 public final class SDL_JoystickType {
     public static final int UNKNOWN = 0x0;

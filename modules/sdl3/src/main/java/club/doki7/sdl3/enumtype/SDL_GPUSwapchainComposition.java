@@ -13,19 +13,20 @@ import club.doki7.ffm.annotation.*;
 ///
 /// - SDR: B8G8R8A8 or R8G8B8A8 swapchain. Pixel values are in sRGB encoding.
 /// - SDR_LINEAR: B8G8R8A8_SRGB or R8G8B8A8_SRGB swapchain. Pixel values are
-///   stored in memory in sRGB encoding but accessed in shaders in "linear
-///   sRGB" encoding which is sRGB but with a linear transfer function.
+/// stored in memory in sRGB encoding but accessed in shaders in "linear
+/// sRGB" encoding which is sRGB but with a linear transfer function.
 /// - HDR_EXTENDED_LINEAR: R16G16B16A16_FLOAT swapchain. Pixel values are in
-///   extended linear sRGB encoding and permits values outside of the [0, 1]
-///   range.
+/// extended linear sRGB encoding and permits values outside of the [0, 1]
+/// range.
 /// - HDR10_ST2084: A2R10G10B10 or A2B10G10R10 swapchain. Pixel values are in
-///   BT.2020 ST2084 (PQ) encoding.
+/// BT.2020 ST2084 (PQ) encoding.
 ///
-/// \since This enum is available since SDL 3.2.0.
+/// Since: This enum is available since SDL 3.2.0.
 ///
-/// \sa SDL_SetGPUSwapchainParameters
-/// \sa SDL_WindowSupportsGPUSwapchainComposition
-/// \sa SDL_WaitAndAcquireGPUSwapchainTexture
+/// See also:
+/// - `SDL_SetGPUSwapchainParameters`
+/// - `SDL_WindowSupportsGPUSwapchainComposition`
+/// - `SDL_WaitAndAcquireGPUSwapchainTexture`
 ///
 public final class SDL_GPUSwapchainComposition {
     public static final int SDR = 0x0;

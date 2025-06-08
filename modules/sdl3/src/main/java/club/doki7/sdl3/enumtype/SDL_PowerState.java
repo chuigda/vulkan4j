@@ -6,7 +6,7 @@ import club.doki7.ffm.annotation.*;
 ///
 /// These are results returned by SDL_GetPowerInfo().
 ///
-/// \since This enum is available since SDL 3.2.0.
+/// Since: This enum is available since SDL 3.2.0.
 ///
 public final class SDL_PowerState {
     public static final int ERROR = 0xffffffff;

@@ -35,30 +35,30 @@ import static club.doki7.sdl3.SDL3Constants.*;
 /// The following diagram represents the cardinal directions:
 ///
 /// ```
-///                .--.
-///                |__| .-------.
-///                |=.| |.-----.|
-///                |--| ||     ||
-///                |  | |'-----'|
-///                |__|~')_____('
-///                  [ COMPUTER ]
+/// .--.
+/// |__| .-------.
+/// |=.| |.-----.|
+/// |--| ||     ||
+/// |  | |'-----'|
+/// |__|~')_____('
+/// [ COMPUTER ]
 ///
 ///
-///                    North (0,-1)
-///                        ^
-///                        |
-///                        |
-///  (-1,0)  West <----[ HAPTIC ]----> East (1,0)
-///                        |
-///                        |
-///                        v
-///                     South (0,1)
+/// North (0,-1)
+/// ^
+/// |
+/// |
+/// (-1,0)  West &amp;lt;----[ HAPTIC ]----&amp;gt; East (1,0)
+/// |
+/// |
+/// v
+/// South (0,1)
 ///
 ///
-///                     [ USER ]
-///                       \|||/
-///                       (o o)
-///                 ---ooO-(_)-Ooo---
+/// [ USER ]
+/// \|||/
+/// (o o)
+/// ---ooO-(_)-Ooo---
 /// ```
 ///
 /// If type is SDL_HAPTIC_POLAR, direction is encoded by hundredths of a degree
@@ -94,31 +94,32 @@ import static club.doki7.sdl3.SDL3Constants.*;
 /// from the south means the user will have to pull the stick to counteract):
 ///
 /// ```c
-///  SDL_HapticDirection direction;
+/// SDL_HapticDirection direction;
 ///
-///  // Cartesian directions
-///  direction.type = SDL_HAPTIC_CARTESIAN; // Using cartesian direction encoding.
-///  direction.dir[0] = 0; // X position
-///  direction.dir[1] = 1; // Y position
-///  // Assuming the device has 2 axes, we don't need to specify third parameter.
+/// // Cartesian directions
+/// direction.type = SDL_HAPTIC_CARTESIAN; // Using cartesian direction encoding.
+/// direction.dir[0] = 0; // X position
+/// direction.dir[1] = 1; // Y position
+/// // Assuming the device has 2 axes, we don't need to specify third parameter.
 ///
-///  // Polar directions
-///  direction.type = SDL_HAPTIC_POLAR; // We'll be using polar direction encoding.
-///  direction.dir[0] = 18000; // Polar only uses first parameter
+/// // Polar directions
+/// direction.type = SDL_HAPTIC_POLAR; // We'll be using polar direction encoding.
+/// direction.dir[0] = 18000; // Polar only uses first parameter
 ///
-///  // Spherical coordinates
-///  direction.type = SDL_HAPTIC_SPHERICAL; // Spherical encoding
-///  direction.dir[0] = 9000; // Since we only have two axes we don't need more parameters.
+/// // Spherical coordinates
+/// direction.type = SDL_HAPTIC_SPHERICAL; // Spherical encoding
+/// direction.dir[0] = 9000; // Since we only have two axes we don't need more parameters.
 /// ```
 ///
-/// \since This struct is available since SDL 3.2.0.
+/// Since: This struct is available since SDL 3.2.0.
 ///
-/// \sa SDL_HAPTIC_POLAR
-/// \sa SDL_HAPTIC_CARTESIAN
-/// \sa SDL_HAPTIC_SPHERICAL
-/// \sa SDL_HAPTIC_STEERING_AXIS
-/// \sa SDL_HapticEffect
-/// \sa SDL_GetNumHapticAxes
+/// See also:
+/// - `SDL_HAPTIC_POLAR`
+/// - `SDL_HAPTIC_CARTESIAN`
+/// - `SDL_HAPTIC_SPHERICAL`
+/// - `SDL_HAPTIC_STEERING_AXIS`
+/// - `SDL_HapticEffect`
+/// - `SDL_GetNumHapticAxes`
 ///
 /// ## Structure
 ///

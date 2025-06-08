@@ -5,9 +5,10 @@ import club.doki7.ffm.annotation.*;
 /// Specifies the vertex winding that will cause a triangle to be determined to
 /// be front-facing.
 ///
-/// \since This enum is available since SDL 3.2.0.
+/// Since: This enum is available since SDL 3.2.0.
 ///
-/// \sa SDL_CreateGPUGraphicsPipeline
+/// See also:
+/// - `SDL_CreateGPUGraphicsPipeline`
 ///
 public final class SDL_GPUFrontFace {
     public static final int COUNTER_CLOCKWISE = 0x0;

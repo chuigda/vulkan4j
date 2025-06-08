@@ -6,7 +6,7 @@ import club.doki7.ffm.annotation.*;
 ///
 /// Can be passed in as the layer field in texture-related structs.
 ///
-/// \since This enum is available since SDL 3.2.0.
+/// Since: This enum is available since SDL 3.2.0.
 ///
 public final class SDL_GPUCubeMapFace {
     public static final int POSITIVEX = 0x0;

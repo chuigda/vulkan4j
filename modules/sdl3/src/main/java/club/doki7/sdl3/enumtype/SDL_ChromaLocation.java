@@ -4,7 +4,7 @@ import club.doki7.ffm.annotation.*;
 
 /// Colorspace chroma sample location.
 ///
-/// \since This enum is available since SDL 3.2.0.
+/// Since: This enum is available since SDL 3.2.0.
 ///
 public final class SDL_ChromaLocation {
     public static final int NONE = 0x0;

@@ -44,40 +44,41 @@ import static club.doki7.sdl3.SDL3Constants.*;
 /// Examples:
 ///
 /// ```
-///   SDL_HAPTIC_SINE
-///     __      __      __      __
-///    /  \    /  \    /  \    /
-///   /    \__/    \__/    \__/
+/// SDL_HAPTIC_SINE
+/// __      __      __      __
+/// /  \    /  \    /  \    /
+/// /    \__/    \__/    \__/
 ///
-///   SDL_HAPTIC_SQUARE
-///    __    __    __    __    __
-///   |  |  |  |  |  |  |  |  |  |
-///   |  |__|  |__|  |__|  |__|  |
+/// SDL_HAPTIC_SQUARE
+/// __    __    __    __    __
+/// |  |  |  |  |  |  |  |  |  |
+/// |  |__|  |__|  |__|  |__|  |
 ///
-///   SDL_HAPTIC_TRIANGLE
-///     /\    /\    /\    /\    /\
-///    /  \  /  \  /  \  /  \  /
-///   /    \/    \/    \/    \/
+/// SDL_HAPTIC_TRIANGLE
+/// /\    /\    /\    /\    /\
+/// /  \  /  \  /  \  /  \  /
+/// /    \/    \/    \/    \/
 ///
-///   SDL_HAPTIC_SAWTOOTHUP
-///     /|  /|  /|  /|  /|  /|  /|
-///    / | / | / | / | / | / | / |
-///   /  |/  |/  |/  |/  |/  |/  |
+/// SDL_HAPTIC_SAWTOOTHUP
+/// /|  /|  /|  /|  /|  /|  /|
+/// / | / | / | / | / | / | / |
+/// /  |/  |/  |/  |/  |/  |/  |
 ///
-///   SDL_HAPTIC_SAWTOOTHDOWN
-///   \  |\  |\  |\  |\  |\  |\  |
-///    \ | \ | \ | \ | \ | \ | \ |
-///     \|  \|  \|  \|  \|  \|  \|
+/// SDL_HAPTIC_SAWTOOTHDOWN
+/// \  |\  |\  |\  |\  |\  |\  |
+/// \ | \ | \ | \ | \ | \ | \ |
+/// \|  \|  \|  \|  \|  \|  \|
 /// ```
 ///
-/// \since This struct is available since SDL 3.2.0.
+/// Since: This struct is available since SDL 3.2.0.
 ///
-/// \sa SDL_HAPTIC_SINE
-/// \sa SDL_HAPTIC_SQUARE
-/// \sa SDL_HAPTIC_TRIANGLE
-/// \sa SDL_HAPTIC_SAWTOOTHUP
-/// \sa SDL_HAPTIC_SAWTOOTHDOWN
-/// \sa SDL_HapticEffect
+/// See also:
+/// - `SDL_HAPTIC_SINE`
+/// - `SDL_HAPTIC_SQUARE`
+/// - `SDL_HAPTIC_TRIANGLE`
+/// - `SDL_HAPTIC_SAWTOOTHUP`
+/// - `SDL_HAPTIC_SAWTOOTHDOWN`
+/// - `SDL_HapticEffect`
 ///
 /// ## Structure
 ///

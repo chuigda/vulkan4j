@@ -26,10 +26,11 @@ import static club.doki7.sdl3.SDL3Constants.*;
 /// event scancode and modifiers directly from the keyboard layout, bypassing
 /// SDL_HINT_KEYCODE_OPTIONS, by calling SDL_GetKeyFromScancode().
 ///
-/// \since This struct is available since SDL 3.2.0.
+/// Since: This struct is available since SDL 3.2.0.
 ///
-/// \sa SDL_GetKeyFromScancode
-/// \sa SDL_HINT_KEYCODE_OPTIONS
+/// See also:
+/// - `SDL_GetKeyFromScancode`
+/// - `SDL_HINT_KEYCODE_OPTIONS`
 ///
 /// ## Structure
 ///

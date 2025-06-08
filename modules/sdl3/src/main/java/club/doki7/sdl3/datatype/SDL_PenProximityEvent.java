@@ -30,7 +30,7 @@ import static club.doki7.sdl3.SDL3Constants.*;
 /// is there." The pen touching and lifting off from the tablet while not
 /// leaving the area are handled by SDL_EVENT_PEN_DOWN and SDL_EVENT_PEN_UP.
 ///
-/// \since This struct is available since SDL 3.2.0.
+/// Since: This struct is available since SDL 3.2.0.
 ///
 /// ## Structure
 ///

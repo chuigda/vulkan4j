@@ -4,7 +4,7 @@ import club.doki7.ffm.annotation.*;
 
 /// Packed component layout.
 ///
-/// \since This enum is available since SDL 3.2.0.
+/// Since: This enum is available since SDL 3.2.0.
 ///
 public final class SDL_PackedLayout {
     public static final int NONE = 0x0;

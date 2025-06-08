@@ -23,12 +23,13 @@ import static club.doki7.sdl3.SDL3Constants.*;
 /// This structure should be initialized using SDL_INIT_INTERFACE(). All
 /// elements of this structure are optional.
 ///
-/// \since This struct is available since SDL 3.2.0.
+/// Since: This struct is available since SDL 3.2.0.
 ///
-/// \sa SDL_AttachVirtualJoystick
-/// \sa SDL_INIT_INTERFACE
-/// \sa SDL_VirtualJoystickSensorDesc
-/// \sa SDL_VirtualJoystickTouchpadDesc
+/// See also:
+/// - `SDL_AttachVirtualJoystick`
+/// - `SDL_INIT_INTERFACE`
+/// - `SDL_VirtualJoystickSensorDesc`
+/// - `SDL_VirtualJoystickTouchpadDesc`
 ///
 /// ## Structure
 ///

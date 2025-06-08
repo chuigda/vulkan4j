@@ -7,9 +7,10 @@ import club.doki7.ffm.annotation.*;
 /// This is used by SDL_ShowFileDialogWithProperties() to decide what kind of
 /// dialog to present to the user.
 ///
-/// \since This enum is available since SDL 3.2.0.
+/// Since: This enum is available since SDL 3.2.0.
 ///
-/// \sa SDL_ShowFileDialogWithProperties
+/// See also:
+/// - `SDL_ShowFileDialogWithProperties`
 ///
 public final class SDL_FileDialogType {
     public static final int OPENFILE = 0x0;

@@ -16,10 +16,10 @@ import club.doki7.ffm.annotation.*;
 /// to run.
 ///
 /// See
-/// [Main callbacks in SDL3](https://wiki.libsdl.org/SDL3/README/main-functions#main-callbacks-in-sdl3)
+/// [Main callbacks in SDL3](https://wiki.libsdl.org/SDL3/README/main-functions{@code main}-callbacks-in-sdl3)
 /// for complete details.
 ///
-/// \since This enum is available since SDL 3.2.0.
+/// Since: This enum is available since SDL 3.2.0.
 ///
 public final class SDL_AppResult {
     public static final int CONTINUE = 0x0;

@@ -20,13 +20,14 @@ import static club.doki7.sdl3.SDL3Constants.*;
 
 /// The structure that defines a display mode.
 ///
-/// \since This struct is available since SDL 3.2.0.
+/// Since: This struct is available since SDL 3.2.0.
 ///
-/// \sa SDL_GetFullscreenDisplayModes
-/// \sa SDL_GetDesktopDisplayMode
-/// \sa SDL_GetCurrentDisplayMode
-/// \sa SDL_SetWindowFullscreenMode
-/// \sa SDL_GetWindowFullscreenMode
+/// See also:
+/// - `SDL_GetFullscreenDisplayModes`
+/// - `SDL_GetDesktopDisplayMode`
+/// - `SDL_GetCurrentDisplayMode`
+/// - `SDL_SetWindowFullscreenMode`
+/// - `SDL_GetWindowFullscreenMode`
 ///
 /// ## Structure
 ///

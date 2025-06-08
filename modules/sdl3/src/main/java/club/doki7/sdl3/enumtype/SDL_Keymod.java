@@ -4,7 +4,7 @@ import club.doki7.ffm.annotation.*;
 
 /// Valid key modifiers (possibly OR'd together).
 ///
-/// \since This datatype is available since SDL 3.2.0.
+/// Since: This datatype is available since SDL 3.2.0.
 ///
 public final class SDL_Keymod {
     public static final int NONE = 0x0;

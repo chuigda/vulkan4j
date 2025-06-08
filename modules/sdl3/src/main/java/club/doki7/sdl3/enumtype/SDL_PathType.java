@@ -8,9 +8,10 @@ import club.doki7.ffm.annotation.*;
 /// symlinks, named pipes, etc. They are currently reported as
 /// SDL_PATHTYPE_OTHER.
 ///
-/// \since This enum is available since SDL 3.2.0.
+/// Since: This enum is available since SDL 3.2.0.
 ///
-/// \sa SDL_PathInfo
+/// See also:
+/// - `SDL_PathInfo`
 ///
 public final class SDL_PathType {
     public static final int NONE = 0x0;

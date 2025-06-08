@@ -20,7 +20,7 @@ import static club.doki7.sdl3.SDL3Constants.*;
 
 /// Details about the format of a pixel.
 ///
-/// \since This struct is available since SDL 3.2.0.
+/// Since: This struct is available since SDL 3.2.0.
 ///
 /// ## Structure
 ///

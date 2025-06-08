@@ -4,7 +4,7 @@ import club.doki7.ffm.annotation.*;
 
 /// Display orientation values; the way a display is rotated.
 ///
-/// \since This enum is available since SDL 3.2.0.
+/// Since: This enum is available since SDL 3.2.0.
 ///
 public final class SDL_DisplayOrientation {
     public static final int UNKNOWN = 0x0;

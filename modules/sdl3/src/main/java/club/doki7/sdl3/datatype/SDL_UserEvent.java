@@ -26,7 +26,7 @@ import static club.doki7.sdl3.SDL3Constants.*;
 /// the programmer; the only requirement is that '''type''' is a value obtained
 /// from SDL_RegisterEvents().
 ///
-/// \since This struct is available since SDL 3.2.0.
+/// Since: This struct is available since SDL 3.2.0.
 ///
 /// ## Structure
 ///

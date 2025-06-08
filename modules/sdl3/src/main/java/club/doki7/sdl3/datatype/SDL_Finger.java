@@ -24,9 +24,10 @@ import static club.doki7.sdl3.SDL3Constants.*;
 /// contact with the touch device (so a "touch" can be a "multitouch," in
 /// reality), and this struct reports details of the specific fingers.
 ///
-/// \since This struct is available since SDL 3.2.0.
+/// Since: This struct is available since SDL 3.2.0.
 ///
-/// \sa SDL_GetTouchFingers
+/// See also:
+/// - `SDL_GetTouchFingers`
 ///
 /// ## Structure
 ///

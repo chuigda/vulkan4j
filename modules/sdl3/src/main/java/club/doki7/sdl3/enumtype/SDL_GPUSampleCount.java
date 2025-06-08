@@ -7,10 +7,11 @@ import club.doki7.ffm.annotation.*;
 /// Used in multisampling. Note that this value only applies when the texture
 /// is used as a render target.
 ///
-/// \since This enum is available since SDL 3.2.0.
+/// Since: This enum is available since SDL 3.2.0.
 ///
-/// \sa SDL_CreateGPUTexture
-/// \sa SDL_GPUTextureSupportsSampleCount
+/// See also:
+/// - `SDL_CreateGPUTexture`
+/// - `SDL_GPUTextureSupportsSampleCount`
 ///
 public final class SDL_GPUSampleCount {
     public static final int _1 = 0x0;

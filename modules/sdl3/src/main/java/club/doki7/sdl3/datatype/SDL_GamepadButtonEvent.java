@@ -20,7 +20,7 @@ import static club.doki7.sdl3.SDL3Constants.*;
 
 /// Gamepad button event structure (event.gbutton.*)
 ///
-/// \since This struct is available since SDL 3.2.0.
+/// Since: This struct is available since SDL 3.2.0.
 ///
 /// ## Structure
 ///

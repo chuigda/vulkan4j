@@ -4,7 +4,7 @@ import club.doki7.ffm.annotation.*;
 
 /// Scroll direction types for the Scroll event
 ///
-/// \since This enum is available since SDL 3.2.0.
+/// Since: This enum is available since SDL 3.2.0.
 ///
 public final class SDL_MouseWheelDirection {
     public static final int NORMAL = 0x0;

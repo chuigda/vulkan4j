@@ -8,13 +8,14 @@ import club.doki7.ffm.annotation.*;
 /// function, etc.), this is not an exhaustive list, but rather a
 /// representative sample of the kinds of colorspaces supported in SDL.
 ///
-/// \since This enum is available since SDL 3.2.0.
+/// Since: This enum is available since SDL 3.2.0.
 ///
-/// \sa SDL_ColorPrimaries
-/// \sa SDL_ColorRange
-/// \sa SDL_ColorType
-/// \sa SDL_MatrixCoefficients
-/// \sa SDL_TransferCharacteristics
+/// See also:
+/// - `SDL_ColorPrimaries`
+/// - `SDL_ColorRange`
+/// - `SDL_ColorType`
+/// - `SDL_MatrixCoefficients`
+/// - `SDL_TransferCharacteristics`
 ///
 public final class SDL_Colorspace {
     public static final int UNKNOWN = 0x0;

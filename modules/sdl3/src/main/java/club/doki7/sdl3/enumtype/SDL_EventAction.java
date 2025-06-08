@@ -4,7 +4,7 @@ import club.doki7.ffm.annotation.*;
 
 /// The type of action to request from SDL_PeepEvents().
 ///
-/// \since This enum is available since SDL 3.2.0.
+/// Since: This enum is available since SDL 3.2.0.
 ///
 public final class SDL_EventAction {
     public static final int ADDEVENT = 0x0;

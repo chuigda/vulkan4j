@@ -20,10 +20,11 @@ import static club.doki7.sdl3.SDL3Constants.*;
 
 /// A structure specifying parameters in a buffer binding call.
 ///
-/// \since This struct is available since SDL 3.2.0.
+/// Since: This struct is available since SDL 3.2.0.
 ///
-/// \sa SDL_BindGPUVertexBuffers
-/// \sa SDL_BindGPUIndexBuffer
+/// See also:
+/// - `SDL_BindGPUVertexBuffers`
+/// - `SDL_BindGPUIndexBuffer`
 ///
 /// ## Structure
 ///

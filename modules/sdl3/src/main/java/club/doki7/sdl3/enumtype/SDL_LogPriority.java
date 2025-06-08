@@ -4,7 +4,7 @@ import club.doki7.ffm.annotation.*;
 
 /// The predefined log priorities
 ///
-/// \since This enum is available since SDL 3.2.0.
+/// Since: This enum is available since SDL 3.2.0.
 ///
 public final class SDL_LogPriority {
     public static final int INVALID = 0x0;

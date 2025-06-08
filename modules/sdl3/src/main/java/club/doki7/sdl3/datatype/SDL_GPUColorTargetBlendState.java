@@ -20,9 +20,10 @@ import static club.doki7.sdl3.SDL3Constants.*;
 
 /// A structure specifying the blend state of a color target.
 ///
-/// \since This struct is available since SDL 3.2.0.
+/// Since: This struct is available since SDL 3.2.0.
 ///
-/// \sa SDL_GPUColorTargetDescription
+/// See also:
+/// - `SDL_GPUColorTargetDescription`
 ///
 /// ## Structure
 ///

@@ -4,7 +4,7 @@ import club.doki7.ffm.annotation.*;
 
 /// System theme.
 ///
-/// \since This enum is available since SDL 3.2.0.
+/// Since: This enum is available since SDL 3.2.0.
 ///
 public final class SDL_SystemTheme {
     public static final int UNKNOWN = 0x0;

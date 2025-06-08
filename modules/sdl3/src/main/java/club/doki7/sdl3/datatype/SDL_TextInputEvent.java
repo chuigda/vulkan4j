@@ -23,10 +23,11 @@ import static club.doki7.sdl3.SDL3Constants.*;
 /// This event will never be delivered unless text input is enabled by calling
 /// SDL_StartTextInput(). Text input is disabled by default!
 ///
-/// \since This struct is available since SDL 3.2.0.
+/// Since: This struct is available since SDL 3.2.0.
 ///
-/// \sa SDL_StartTextInput
-/// \sa SDL_StopTextInput
+/// See also:
+/// - `SDL_StartTextInput`
+/// - `SDL_StopTextInput`
 ///
 /// ## Structure
 ///

@@ -5,9 +5,10 @@ import club.doki7.ffm.annotation.*;
 /// Specifies how the contents of a texture attached to a render pass are
 /// treated at the end of the render pass.
 ///
-/// \since This enum is available since SDL 3.2.0.
+/// Since: This enum is available since SDL 3.2.0.
 ///
-/// \sa SDL_BeginGPURenderPass
+/// See also:
+/// - `SDL_BeginGPURenderPass`
 ///
 public final class SDL_GPUStoreOp {
     public static final int STORE = 0x0;

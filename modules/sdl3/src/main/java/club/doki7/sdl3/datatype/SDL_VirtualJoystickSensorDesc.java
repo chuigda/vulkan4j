@@ -20,9 +20,10 @@ import static club.doki7.sdl3.SDL3Constants.*;
 
 /// The structure that describes a virtual joystick sensor.
 ///
-/// \since This struct is available since SDL 3.2.0.
+/// Since: This struct is available since SDL 3.2.0.
 ///
-/// \sa SDL_VirtualJoystickDesc
+/// See also:
+/// - `SDL_VirtualJoystickDesc`
 ///
 /// ## Structure
 ///

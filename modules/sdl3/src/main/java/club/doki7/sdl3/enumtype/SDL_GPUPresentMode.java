@@ -12,19 +12,20 @@ import club.doki7.ffm.annotation.*;
 /// the window if you wish to change the present mode to IMMEDIATE or MAILBOX.
 ///
 /// - VSYNC: Waits for vblank before presenting. No tearing is possible. If
-///   there is a pending image to present, the new image is enqueued for
-///   presentation. Disallows tearing at the cost of visual latency.
+/// there is a pending image to present, the new image is enqueued for
+/// presentation. Disallows tearing at the cost of visual latency.
 /// - IMMEDIATE: Immediately presents. Lowest latency option, but tearing may
-///   occur.
+/// occur.
 /// - MAILBOX: Waits for vblank before presenting. No tearing is possible. If
-///   there is a pending image to present, the pending image is replaced by the
-///   new image. Similar to VSYNC, but with reduced visual latency.
+/// there is a pending image to present, the pending image is replaced by the
+/// new image. Similar to VSYNC, but with reduced visual latency.
 ///
-/// \since This enum is available since SDL 3.2.0.
+/// Since: This enum is available since SDL 3.2.0.
 ///
-/// \sa SDL_SetGPUSwapchainParameters
-/// \sa SDL_WindowSupportsGPUPresentMode
-/// \sa SDL_WaitAndAcquireGPUSwapchainTexture
+/// See also:
+/// - `SDL_SetGPUSwapchainParameters`
+/// - `SDL_WindowSupportsGPUPresentMode`
+/// - `SDL_WaitAndAcquireGPUSwapchainTexture`
 ///
 public final class SDL_GPUPresentMode {
     public static final int VSYNC = 0x0;

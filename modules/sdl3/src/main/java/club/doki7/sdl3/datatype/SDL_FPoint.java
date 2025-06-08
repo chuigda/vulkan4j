@@ -20,10 +20,11 @@ import static club.doki7.sdl3.SDL3Constants.*;
 
 /// The structure that defines a point (using floating point values).
 ///
-/// \since This struct is available since SDL 3.2.0.
+/// Since: This struct is available since SDL 3.2.0.
 ///
-/// \sa SDL_GetRectEnclosingPointsFloat
-/// \sa SDL_PointInRectFloat
+/// See also:
+/// - `SDL_GetRectEnclosingPointsFloat`
+/// - `SDL_PointInRectFloat`
 ///
 /// ## Structure
 ///

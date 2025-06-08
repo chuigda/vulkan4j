@@ -21,11 +21,12 @@ import static club.doki7.sdl3.SDL3Constants.*;
 /// A structure specifying the parameters of a graphics pipeline vertex input
 /// state.
 ///
-/// \since This struct is available since SDL 3.2.0.
+/// Since: This struct is available since SDL 3.2.0.
 ///
-/// \sa SDL_GPUGraphicsPipelineCreateInfo
-/// \sa SDL_GPUVertexBufferDescription
-/// \sa SDL_GPUVertexAttribute
+/// See also:
+/// - `SDL_GPUGraphicsPipelineCreateInfo`
+/// - `SDL_GPUVertexBufferDescription`
+/// - `SDL_GPUVertexAttribute`
 ///
 /// ## Structure
 ///

@@ -20,7 +20,7 @@ import static club.doki7.sdl3.SDL3Constants.*;
 
 /// Information about a connected HID device
 ///
-/// \since This struct is available since SDL 3.2.0.
+/// Since: This struct is available since SDL 3.2.0.
 ///
 /// ## Structure
 ///
@@ -57,32 +57,32 @@ import static club.doki7.sdl3.SDL3Constants.*;
 /// ## Member documentation
 ///
 /// <ul>
-/// <li>{@link #path}  Platform-specific device path </li>
-/// <li>{@link #vendor_id}  Device Vendor ID </li>
-/// <li>{@link #product_id}  Device Product ID </li>
-/// <li>{@link #serial_number}  Serial Number </li>
-/// <li>{@link #release_number}  Device Release Number in binary-coded decimal,
+/// <li>{@link #path} Platform-specific device path</li>
+/// <li>{@link #vendor_id} Device Vendor ID</li>
+/// <li>{@link #product_id} Device Product ID</li>
+/// <li>{@link #serial_number} Serial Number</li>
+/// <li>{@link #release_number} Device Release Number in binary-coded decimal,
 /// also known as Device Version Number
 /// </li>
-/// <li>{@link #manufacturer_string}  Manufacturer String </li>
-/// <li>{@link #product_string}  Product string </li>
-/// <li>{@link #usage_page}  Usage Page for this Device/Interface
+/// <li>{@link #manufacturer_string} Manufacturer String</li>
+/// <li>{@link #product_string} Product string</li>
+/// <li>{@link #usage_page} Usage Page for this Device/Interface
 /// (Windows/Mac/hidraw only)
 /// </li>
-/// <li>{@link #usage}  Usage for this Device/Interface
+/// <li>{@link #usage} Usage for this Device/Interface
 /// (Windows/Mac/hidraw only)
 /// </li>
-/// <li>{@link #interface_number}  The USB interface which this logical device
+/// <li>{@link #interface_number} The USB interface which this logical device
 /// represents.
 ///
 /// Valid only if the device is a USB HID device.
 /// Set to -1 in all other cases.
 /// </li>
-/// <li>{@link #interface_class}  Additional information about the USB interface.
+/// <li>{@link #interface_class} Additional information about the USB interface.
 /// Valid on libusb and Android implementations.
 /// </li>
-/// <li>{@link #bus_type}  Underlying bus type </li>
-/// <li>{@link #next}  Pointer to the next device </li>
+/// <li>{@link #bus_type} Underlying bus type</li>
+/// <li>{@link #next} Pointer to the next device</li>
 /// </ul>
 @ValueBasedCandidate
 @UnsafeConstructor

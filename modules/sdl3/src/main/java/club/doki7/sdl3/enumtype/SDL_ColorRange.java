@@ -5,7 +5,7 @@ import club.doki7.ffm.annotation.*;
 /// Colorspace color range, as described by
 /// https://www.itu.int/rec/R-REC-BT.2100-2-201807-I/en
 ///
-/// \since This enum is available since SDL 3.2.0.
+/// Since: This enum is available since SDL 3.2.0.
 ///
 public final class SDL_ColorRange {
     public static final int UNKNOWN = 0x0;

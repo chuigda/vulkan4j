@@ -4,7 +4,7 @@ import club.doki7.ffm.annotation.*;
 
 /// Possible values to be set for the SDL_GL_CONTEXT_PROFILE_MASK attribute.
 ///
-/// \since This datatype is available since SDL 3.2.0.
+/// Since: This datatype is available since SDL 3.2.0.
 ///
 public final class SDL_GLProfile {
     public static final int CORE = 0x1;

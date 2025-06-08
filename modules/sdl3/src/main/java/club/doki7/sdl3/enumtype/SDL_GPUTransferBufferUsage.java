@@ -7,9 +7,10 @@ import club.doki7.ffm.annotation.*;
 /// Note that mapping and copying FROM an upload transfer buffer or TO a
 /// download transfer buffer is undefined behavior.
 ///
-/// \since This enum is available since SDL 3.2.0.
+/// Since: This enum is available since SDL 3.2.0.
 ///
-/// \sa SDL_CreateGPUTransferBuffer
+/// See also:
+/// - `SDL_CreateGPUTransferBuffer`
 ///
 public final class SDL_GPUTransferBufferUsage {
     public static final int UPLOAD = 0x0;

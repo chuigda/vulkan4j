@@ -35,14 +35,15 @@ import static club.doki7.sdl3.SDL3Constants.*;
 /// SDL_HapticDirection diagram for which side is positive and which is
 /// negative.
 ///
-/// \since This struct is available since SDL 3.2.0.
+/// Since: This struct is available since SDL 3.2.0.
 ///
-/// \sa SDL_HapticDirection
-/// \sa SDL_HAPTIC_SPRING
-/// \sa SDL_HAPTIC_DAMPER
-/// \sa SDL_HAPTIC_INERTIA
-/// \sa SDL_HAPTIC_FRICTION
-/// \sa SDL_HapticEffect
+/// See also:
+/// - `SDL_HapticDirection`
+/// - `SDL_HAPTIC_SPRING`
+/// - `SDL_HAPTIC_DAMPER`
+/// - `SDL_HAPTIC_INERTIA`
+/// - `SDL_HAPTIC_FRICTION`
+/// - `SDL_HapticEffect`
 ///
 /// ## Structure
 ///

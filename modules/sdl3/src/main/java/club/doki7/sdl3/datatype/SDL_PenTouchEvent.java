@@ -23,7 +23,7 @@ import static club.doki7.sdl3.SDL3Constants.*;
 /// These events come when a pen touches a surface (a tablet, etc), or lifts
 /// off from one.
 ///
-/// \since This struct is available since SDL 3.2.0.
+/// Since: This struct is available since SDL 3.2.0.
 ///
 /// ## Structure
 ///

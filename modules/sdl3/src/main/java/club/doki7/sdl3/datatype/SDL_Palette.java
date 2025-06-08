@@ -20,9 +20,10 @@ import static club.doki7.sdl3.SDL3Constants.*;
 
 /// A set of indexed colors representing a palette.
 ///
-/// \since This struct is available since SDL 3.2.0.
+/// Since: This struct is available since SDL 3.2.0.
 ///
-/// \sa SDL_SetPaletteColors
+/// See also:
+/// - `SDL_SetPaletteColors`
 ///
 /// ## Structure
 ///

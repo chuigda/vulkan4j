@@ -20,9 +20,10 @@ import static club.doki7.sdl3.SDL3Constants.*;
 
 /// A structure specifying the stencil operation state of a graphics pipeline.
 ///
-/// \since This struct is available since SDL 3.2.0.
+/// Since: This struct is available since SDL 3.2.0.
 ///
-/// \sa SDL_GPUDepthStencilState
+/// See also:
+/// - `SDL_GPUDepthStencilState`
 ///
 /// ## Structure
 ///

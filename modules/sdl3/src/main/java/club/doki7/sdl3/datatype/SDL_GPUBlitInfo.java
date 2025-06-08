@@ -20,9 +20,10 @@ import static club.doki7.sdl3.SDL3Constants.*;
 
 /// A structure containing parameters for a blit command.
 ///
-/// \since This struct is available since SDL 3.2.0.
+/// Since: This struct is available since SDL 3.2.0.
 ///
-/// \sa SDL_BlitGPUTexture
+/// See also:
+/// - `SDL_BlitGPUTexture`
 ///
 /// ## Structure
 ///

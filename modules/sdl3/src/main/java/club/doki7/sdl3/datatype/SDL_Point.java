@@ -20,10 +20,11 @@ import static club.doki7.sdl3.SDL3Constants.*;
 
 /// The structure that defines a point (using integers).
 ///
-/// \since This struct is available since SDL 3.2.0.
+/// Since: This struct is available since SDL 3.2.0.
 ///
-/// \sa SDL_GetRectEnclosingPoints
-/// \sa SDL_PointInRect
+/// See also:
+/// - `SDL_GetRectEnclosingPoints`
+/// - `SDL_PointInRect`
 ///
 /// ## Structure
 ///

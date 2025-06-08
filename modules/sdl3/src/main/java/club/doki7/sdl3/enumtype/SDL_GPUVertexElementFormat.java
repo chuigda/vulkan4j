@@ -4,9 +4,10 @@ import club.doki7.ffm.annotation.*;
 
 /// Specifies the format of a vertex attribute.
 ///
-/// \since This enum is available since SDL 3.2.0.
+/// Since: This enum is available since SDL 3.2.0.
 ///
-/// \sa SDL_CreateGPUGraphicsPipeline
+/// See also:
+/// - `SDL_CreateGPUGraphicsPipeline`
 ///
 public final class SDL_GPUVertexElementFormat {
     public static final int INVALID = 0x0;

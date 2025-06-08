@@ -5,9 +5,10 @@ import club.doki7.ffm.annotation.*;
 /// Specifies behavior of texture sampling when the coordinates exceed the 0-1
 /// range.
 ///
-/// \since This enum is available since SDL 3.2.0.
+/// Since: This enum is available since SDL 3.2.0.
 ///
-/// \sa SDL_CreateGPUSampler
+/// See also:
+/// - `SDL_CreateGPUSampler`
 ///
 public final class SDL_GPUSamplerAddressMode {
     public static final int REPEAT = 0x0;

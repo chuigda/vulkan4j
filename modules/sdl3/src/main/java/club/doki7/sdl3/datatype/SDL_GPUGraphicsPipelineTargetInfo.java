@@ -21,11 +21,12 @@ import static club.doki7.sdl3.SDL3Constants.*;
 /// A structure specifying the descriptions of render targets used in a
 /// graphics pipeline.
 ///
-/// \since This struct is available since SDL 3.2.0.
+/// Since: This struct is available since SDL 3.2.0.
 ///
-/// \sa SDL_GPUGraphicsPipelineCreateInfo
-/// \sa SDL_GPUColorTargetDescription
-/// \sa SDL_GPUTextureFormat
+/// See also:
+/// - `SDL_GPUGraphicsPipelineCreateInfo`
+/// - `SDL_GPUColorTargetDescription`
+/// - `SDL_GPUTextureFormat`
 ///
 /// ## Structure
 ///

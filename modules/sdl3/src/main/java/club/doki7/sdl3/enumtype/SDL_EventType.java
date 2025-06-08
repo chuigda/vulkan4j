@@ -4,7 +4,7 @@ import club.doki7.ffm.annotation.*;
 
 /// The types of events that can be delivered.
 ///
-/// \since This enum is available since SDL 3.2.0.
+/// Since: This enum is available since SDL 3.2.0.
 ///
 public final class SDL_EventType {
     public static final int FIRST = 0x0;
@@ -123,11 +123,11 @@ public final class SDL_EventType {
     public static final int PRIVATE3 = 0x4004;
     public static final int POLL_SENTINEL = 0x7f00;
 
-    ///  Events SDL_EVENT_USER through SDL_EVENT_LAST are for your use,
-    ///  and should be allocated with SDL_RegisterEvents()
+    /// Events SDL_EVENT_USER through SDL_EVENT_LAST are for your use,
+    /// and should be allocated with SDL_RegisterEvents()
     public static final int USER = 0x8000;
 
-    ///  This last event is only for bounding internal arrays
+    /// This last event is only for bounding internal arrays
     public static final int LAST = 0xffff;
     public static final int ENUM_PADDING = 0x7fffffff;
 

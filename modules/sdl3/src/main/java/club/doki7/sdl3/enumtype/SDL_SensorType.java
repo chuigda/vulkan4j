@@ -8,7 +8,7 @@ import club.doki7.ffm.annotation.*;
 ///
 /// Here are the additional Android sensors:
 ///
-/// https://developer.android.com/reference/android/hardware/SensorEvent.html#values
+/// https://developer.android.com/reference/android/hardware/SensorEvent.html{@code values}
 ///
 /// Accelerometer sensor notes:
 ///
@@ -51,9 +51,10 @@ import club.doki7.ffm.annotation.*;
 ///
 /// The gyroscope axis data is not changed when the device is rotated.
 ///
-/// \since This enum is available since SDL 3.2.0.
+/// Since: This enum is available since SDL 3.2.0.
 ///
-/// \sa SDL_GetCurrentDisplayOrientation
+/// See also:
+/// - `SDL_GetCurrentDisplayOrientation`
 ///
 public final class SDL_SensorType {
     public static final int INVALID = 0xffffffff;

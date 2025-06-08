@@ -4,7 +4,7 @@ import club.doki7.ffm.annotation.*;
 
 /// The flip mode.
 ///
-/// \since This enum is available since SDL 3.2.0.
+/// Since: This enum is available since SDL 3.2.0.
 ///
 public final class SDL_FlipMode {
     public static final int NONE = 0x0;

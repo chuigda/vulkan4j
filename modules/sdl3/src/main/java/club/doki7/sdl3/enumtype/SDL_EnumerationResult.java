@@ -4,9 +4,10 @@ import club.doki7.ffm.annotation.*;
 
 /// Possible results from an enumeration callback.
 ///
-/// \since This enum is available since SDL 3.2.0.
+/// Since: This enum is available since SDL 3.2.0.
 ///
-/// \sa SDL_EnumerateDirectoryCallback
+/// See also:
+/// - `SDL_EnumerateDirectoryCallback`
 ///
 public final class SDL_EnumerationResult {
     public static final int CONTINUE = 0x0;

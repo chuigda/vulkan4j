@@ -4,9 +4,10 @@ import club.doki7.ffm.annotation.*;
 
 /// The position of camera in relation to system device.
 ///
-/// \since This enum is available since SDL 3.2.0.
+/// Since: This enum is available since SDL 3.2.0.
 ///
-/// \sa SDL_GetCameraPosition
+/// See also:
+/// - `SDL_GetCameraPosition`
 ///
 public final class SDL_CameraPosition {
     public static final int UNKNOWN = 0x0;

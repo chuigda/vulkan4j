@@ -20,10 +20,11 @@ import static club.doki7.sdl3.SDL3Constants.*;
 
 /// A structure specifying parameters in a sampler binding call.
 ///
-/// \since This struct is available since SDL 3.2.0.
+/// Since: This struct is available since SDL 3.2.0.
 ///
-/// \sa SDL_BindGPUVertexSamplers
-/// \sa SDL_BindGPUFragmentSamplers
+/// See also:
+/// - `SDL_BindGPUVertexSamplers`
+/// - `SDL_BindGPUFragmentSamplers`
 ///
 /// ## Structure
 ///

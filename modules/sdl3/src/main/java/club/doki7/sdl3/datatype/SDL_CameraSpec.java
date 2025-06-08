@@ -23,10 +23,11 @@ import static club.doki7.sdl3.SDL3Constants.*;
 /// Cameras often support multiple formats; each one will be encapsulated in
 /// this struct.
 ///
-/// \since This struct is available since SDL 3.2.0.
+/// Since: This struct is available since SDL 3.2.0.
 ///
-/// \sa SDL_GetCameraSupportedFormats
-/// \sa SDL_GetCameraFormat
+/// See also:
+/// - `SDL_GetCameraSupportedFormats`
+/// - `SDL_GetCameraFormat`
 ///
 /// ## Structure
 ///

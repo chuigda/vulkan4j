@@ -27,9 +27,10 @@ import static club.doki7.sdl3.SDL3Constants.*;
 /// only way to keep behavior consistent and portable is to always pass 0 for
 /// the correlating parameter in the draw calls.
 ///
-/// \since This struct is available since SDL 3.2.0.
+/// Since: This struct is available since SDL 3.2.0.
 ///
-/// \sa SDL_DrawGPUPrimitivesIndirect
+/// See also:
+/// - `SDL_DrawGPUPrimitivesIndirect`
 ///
 /// ## Structure
 ///

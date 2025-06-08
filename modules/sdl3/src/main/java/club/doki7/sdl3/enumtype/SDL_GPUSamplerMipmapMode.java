@@ -4,9 +4,10 @@ import club.doki7.ffm.annotation.*;
 
 /// Specifies a mipmap mode used by a sampler.
 ///
-/// \since This enum is available since SDL 3.2.0.
+/// Since: This enum is available since SDL 3.2.0.
 ///
-/// \sa SDL_CreateGPUSampler
+/// See also:
+/// - `SDL_CreateGPUSampler`
 ///
 public final class SDL_GPUSamplerMipmapMode {
     public static final int NEAREST = 0x0;

@@ -4,7 +4,7 @@ import club.doki7.ffm.annotation.*;
 
 /// SDL_IOStream status, set by a read or write operation.
 ///
-/// \since This enum is available since SDL 3.2.0.
+/// Since: This enum is available since SDL 3.2.0.
 ///
 public final class SDL_IOStatus {
     public static final int READY = 0x0;

@@ -8,9 +8,10 @@ import club.doki7.ffm.annotation.*;
 /// Not every value is valid on every platform, but where a value isn't
 /// supported, a reasonable fallback will be used.
 ///
-/// \since This enum is available since SDL 3.2.0.
+/// Since: This enum is available since SDL 3.2.0.
 ///
-/// \sa SDL_StartTextInputWithProperties
+/// See also:
+/// - `SDL_StartTextInputWithProperties`
 ///
 public final class SDL_Capitalization {
     public static final int NONE = 0x0;

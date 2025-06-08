@@ -21,17 +21,18 @@ import static club.doki7.sdl3.SDL3Constants.*;
 /// A rectangle, with the origin at the upper left (using floating point
 /// values).
 ///
-/// \since This struct is available since SDL 3.2.0.
+/// Since: This struct is available since SDL 3.2.0.
 ///
-/// \sa SDL_RectEmptyFloat
-/// \sa SDL_RectsEqualFloat
-/// \sa SDL_RectsEqualEpsilon
-/// \sa SDL_HasRectIntersectionFloat
-/// \sa SDL_GetRectIntersectionFloat
-/// \sa SDL_GetRectAndLineIntersectionFloat
-/// \sa SDL_GetRectUnionFloat
-/// \sa SDL_GetRectEnclosingPointsFloat
-/// \sa SDL_PointInRectFloat
+/// See also:
+/// - `SDL_RectEmptyFloat`
+/// - `SDL_RectsEqualFloat`
+/// - `SDL_RectsEqualEpsilon`
+/// - `SDL_HasRectIntersectionFloat`
+/// - `SDL_GetRectIntersectionFloat`
+/// - `SDL_GetRectAndLineIntersectionFloat`
+/// - `SDL_GetRectUnionFloat`
+/// - `SDL_GetRectEnclosingPointsFloat`
+/// - `SDL_PointInRectFloat`
 ///
 /// ## Structure
 ///

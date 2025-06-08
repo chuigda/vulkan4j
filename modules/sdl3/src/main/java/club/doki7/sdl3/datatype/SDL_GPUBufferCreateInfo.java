@@ -23,10 +23,11 @@ import static club.doki7.sdl3.SDL3Constants.*;
 /// Usage flags can be bitwise OR'd together for combinations of usages. Note
 /// that certain combinations are invalid, for example VERTEX and INDEX.
 ///
-/// \since This struct is available since SDL 3.2.0.
+/// Since: This struct is available since SDL 3.2.0.
 ///
-/// \sa SDL_CreateGPUBuffer
-/// \sa SDL_GPUBufferUsageFlags
+/// See also:
+/// - `SDL_CreateGPUBuffer`
+/// - `SDL_GPUBufferUsageFlags`
 ///
 /// ## Structure
 ///

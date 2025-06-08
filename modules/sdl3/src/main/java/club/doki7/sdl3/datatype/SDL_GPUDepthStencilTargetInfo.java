@@ -27,16 +27,16 @@ import static club.doki7.sdl3.SDL3Constants.*;
 /// - LOAD: Loads the depth values currently in the texture.
 /// - CLEAR: Clears the texture to a single depth.
 /// - DONT_CARE: The driver will do whatever it wants with the memory. This is
-///   a good option if you know that every single pixel will be touched in the
-///   render pass.
+/// a good option if you know that every single pixel will be touched in the
+/// render pass.
 ///
 /// The store_op field determines what is done with the depth results of the
 /// render pass.
 ///
 /// - STORE: Stores the depth results in the texture.
 /// - DONT_CARE: The driver will do whatever it wants with the depth results.
-///   This is often a good option for depth/stencil textures that don't need to
-///   be reused again.
+/// This is often a good option for depth/stencil textures that don't need to
+/// be reused again.
 ///
 /// The stencil_load_op field determines what is done with the stencil contents
 /// of the texture at the beginning of the render pass.
@@ -44,22 +44,23 @@ import static club.doki7.sdl3.SDL3Constants.*;
 /// - LOAD: Loads the stencil values currently in the texture.
 /// - CLEAR: Clears the stencil values to a single value.
 /// - DONT_CARE: The driver will do whatever it wants with the memory. This is
-///   a good option if you know that every single pixel will be touched in the
-///   render pass.
+/// a good option if you know that every single pixel will be touched in the
+/// render pass.
 ///
 /// The stencil_store_op field determines what is done with the stencil results
 /// of the render pass.
 ///
 /// - STORE: Stores the stencil results in the texture.
 /// - DONT_CARE: The driver will do whatever it wants with the stencil results.
-///   This is often a good option for depth/stencil textures that don't need to
-///   be reused again.
+/// This is often a good option for depth/stencil textures that don't need to
+/// be reused again.
 ///
 /// Note that depth/stencil targets do not support multisample resolves.
 ///
-/// \since This struct is available since SDL 3.2.0.
+/// Since: This struct is available since SDL 3.2.0.
 ///
-/// \sa SDL_BeginGPURenderPass
+/// See also:
+/// - `SDL_BeginGPURenderPass`
 ///
 /// ## Structure
 ///

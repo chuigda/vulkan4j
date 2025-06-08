@@ -4,7 +4,7 @@ import club.doki7.ffm.annotation.*;
 
 /// The current status of an SDL_InitState structure.
 ///
-/// \since This enum is available since SDL 3.2.0.
+/// Since: This enum is available since SDL 3.2.0.
 ///
 public final class SDL_InitStatus {
     public static final int UNINITIALIZED = 0x0;

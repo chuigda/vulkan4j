@@ -25,10 +25,11 @@ import static club.doki7.sdl3.SDL3Constants.*;
 /// A constant effect applies a constant force in the specified direction to
 /// the joystick.
 ///
-/// \since This struct is available since SDL 3.2.0.
+/// Since: This struct is available since SDL 3.2.0.
 ///
-/// \sa SDL_HAPTIC_CONSTANT
-/// \sa SDL_HapticEffect
+/// See also:
+/// - `SDL_HAPTIC_CONSTANT`
+/// - `SDL_HapticEffect`
 ///
 /// ## Structure
 ///

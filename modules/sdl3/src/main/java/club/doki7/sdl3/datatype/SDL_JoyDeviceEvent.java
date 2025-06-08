@@ -23,9 +23,10 @@ import static club.doki7.sdl3.SDL3Constants.*;
 /// SDL will send JOYSTICK_ADDED events for devices that are already plugged in
 /// during SDL_Init.
 ///
-/// \since This struct is available since SDL 3.2.0.
+/// Since: This struct is available since SDL 3.2.0.
 ///
-/// \sa SDL_GamepadDeviceEvent
+/// See also:
+/// - `SDL_GamepadDeviceEvent`
 ///
 /// ## Structure
 ///

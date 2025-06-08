@@ -4,7 +4,7 @@ import club.doki7.ffm.annotation.*;
 
 /// Possible outcomes of an asynchronous I/O task.
 ///
-/// \since This enum is available since SDL 3.2.0.
+/// Since: This enum is available since SDL 3.2.0.
 ///
 public final class SDL_AsyncIOResult {
     public static final int COMPLETE = 0x0;

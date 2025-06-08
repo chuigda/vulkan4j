@@ -34,7 +34,7 @@ import static club.doki7.sdl3.SDL3Constants.*;
 /// report a touch outside of the window, which will also be outside of the
 /// range.
 ///
-/// \since This struct is available since SDL 3.2.0.
+/// Since: This struct is available since SDL 3.2.0.
 ///
 /// ## Structure
 ///

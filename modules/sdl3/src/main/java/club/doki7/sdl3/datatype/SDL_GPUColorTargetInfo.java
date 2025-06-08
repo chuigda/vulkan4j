@@ -25,32 +25,33 @@ import static club.doki7.sdl3.SDL3Constants.*;
 /// of the render pass.
 ///
 /// - LOAD: Loads the data currently in the texture. Not recommended for
-///   multisample textures as it requires significant memory bandwidth.
+/// multisample textures as it requires significant memory bandwidth.
 /// - CLEAR: Clears the texture to a single color.
 /// - DONT_CARE: The driver will do whatever it wants with the texture memory.
-///   This is a good option if you know that every single pixel will be touched
-///   in the render pass.
+/// This is a good option if you know that every single pixel will be touched
+/// in the render pass.
 ///
 /// The store_op field determines what is done with the color results of the
 /// render pass.
 ///
 /// - STORE: Stores the results of the render pass in the texture. Not
-///   recommended for multisample textures as it requires significant memory
-///   bandwidth.
+/// recommended for multisample textures as it requires significant memory
+/// bandwidth.
 /// - DONT_CARE: The driver will do whatever it wants with the texture memory.
-///   This is often a good option for depth/stencil textures.
+/// This is often a good option for depth/stencil textures.
 /// - RESOLVE: Resolves a multisample texture into resolve_texture, which must
-///   have a sample count of 1. Then the driver may discard the multisample
-///   texture memory. This is the most performant method of resolving a
-///   multisample target.
+/// have a sample count of 1. Then the driver may discard the multisample
+/// texture memory. This is the most performant method of resolving a
+/// multisample target.
 /// - RESOLVE_AND_STORE: Resolves a multisample texture into the
-///   resolve_texture, which must have a sample count of 1. Then the driver
-///   stores the multisample texture's contents. Not recommended as it requires
-///   significant memory bandwidth.
+/// resolve_texture, which must have a sample count of 1. Then the driver
+/// stores the multisample texture's contents. Not recommended as it requires
+/// significant memory bandwidth.
 ///
-/// \since This struct is available since SDL 3.2.0.
+/// Since: This struct is available since SDL 3.2.0.
 ///
-/// \sa SDL_BeginGPURenderPass
+/// See also:
+/// - `SDL_BeginGPURenderPass`
 ///
 /// ## Structure
 ///

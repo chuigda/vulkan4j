@@ -5,7 +5,7 @@ import club.doki7.ffm.annotation.*;
 /// The blend operation used when combining source and destination pixel
 /// components.
 ///
-/// \since This enum is available since SDL 3.2.0.
+/// Since: This enum is available since SDL 3.2.0.
 ///
 public final class SDL_BlendOperation {
     public static final int ADD = 0x1;

@@ -23,11 +23,12 @@ import static club.doki7.sdl3.SDL3Constants.*;
 /// All vertex attribute locations provided to an SDL_GPUVertexInputState must
 /// be unique.
 ///
-/// \since This struct is available since SDL 3.2.0.
+/// Since: This struct is available since SDL 3.2.0.
 ///
-/// \sa SDL_GPUVertexBufferDescription
-/// \sa SDL_GPUVertexInputState
-/// \sa SDL_GPUVertexElementFormat
+/// See also:
+/// - `SDL_GPUVertexBufferDescription`
+/// - `SDL_GPUVertexInputState`
+/// - `SDL_GPUVertexElementFormat`
 ///
 /// ## Structure
 ///

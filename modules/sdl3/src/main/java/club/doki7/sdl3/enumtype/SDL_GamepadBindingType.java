@@ -9,7 +9,7 @@ import club.doki7.ffm.annotation.*;
 /// gamepad. This enum is used as part of SDL_GamepadBinding to specify those
 /// mappings.
 ///
-/// \since This enum is available since SDL 3.2.0.
+/// Since: This enum is available since SDL 3.2.0.
 ///
 public final class SDL_GamepadBindingType {
     public static final int NONE = 0x0;

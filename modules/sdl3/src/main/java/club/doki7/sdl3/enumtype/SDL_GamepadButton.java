@@ -22,7 +22,7 @@ import club.doki7.ffm.annotation.*;
 /// You can query the labels for the face buttons using
 /// SDL_GetGamepadButtonLabel()
 ///
-/// \since This enum is available since SDL 3.2.0.
+/// Since: This enum is available since SDL 3.2.0.
 ///
 public final class SDL_GamepadButton {
     public static final int INVALID = 0xffffffff;

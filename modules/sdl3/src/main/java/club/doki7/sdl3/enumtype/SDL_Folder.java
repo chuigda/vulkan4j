@@ -26,9 +26,10 @@ import club.doki7.ffm.annotation.*;
 ///
 /// Note that on macOS/iOS, the Videos folder is called "Movies".
 ///
-/// \since This enum is available since SDL 3.2.0.
+/// Since: This enum is available since SDL 3.2.0.
 ///
-/// \sa SDL_GetUserFolder
+/// See also:
+/// - `SDL_GetUserFolder`
 ///
 public final class SDL_Folder {
     public static final int HOME = 0x0;

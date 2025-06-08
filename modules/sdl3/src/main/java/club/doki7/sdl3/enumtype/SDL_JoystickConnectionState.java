@@ -7,7 +7,7 @@ import club.doki7.ffm.annotation.*;
 /// This is used by SDL_GetJoystickConnectionState to report how a device is
 /// connected to the system.
 ///
-/// \since This enum is available since SDL 3.2.0.
+/// Since: This enum is available since SDL 3.2.0.
 ///
 public final class SDL_JoystickConnectionState {
     public static final int INVALID = 0xffffffff;

@@ -23,7 +23,7 @@ import static club.doki7.sdl3.SDL3Constants.*;
 /// This is for buttons on the pen itself that the user might click. The pen
 /// itself pressing down to draw triggers a SDL_EVENT_PEN_DOWN event instead.
 ///
-/// \since This struct is available since SDL 3.2.0.
+/// Since: This struct is available since SDL 3.2.0.
 ///
 /// ## Structure
 ///

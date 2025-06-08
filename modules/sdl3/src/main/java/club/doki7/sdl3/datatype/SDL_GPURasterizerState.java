@@ -29,9 +29,10 @@ import static club.doki7.sdl3.SDL3Constants.*;
 /// enabling depth clip and then manually clamping depth in your fragment
 /// shaders on Metal and Vulkan.
 ///
-/// \since This struct is available since SDL 3.2.0.
+/// Since: This struct is available since SDL 3.2.0.
 ///
-/// \sa SDL_GPUGraphicsPipelineCreateInfo
+/// See also:
+/// - `SDL_GPUGraphicsPipelineCreateInfo`
 ///
 /// ## Structure
 ///

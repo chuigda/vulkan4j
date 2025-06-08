@@ -4,7 +4,7 @@ import club.doki7.ffm.annotation.*;
 
 /// Types of asynchronous I/O tasks.
 ///
-/// \since This enum is available since SDL 3.2.0.
+/// Since: This enum is available since SDL 3.2.0.
 ///
 public final class SDL_AsyncIOTaskType {
     public static final int READ = 0x0;

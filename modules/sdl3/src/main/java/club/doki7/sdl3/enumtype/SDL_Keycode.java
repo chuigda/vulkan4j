@@ -15,7 +15,7 @@ import club.doki7.ffm.annotation.*;
 /// Keys with the `SDLK_EXTENDED_MASK` bit set do not map to a scancode or
 /// unicode code point.
 ///
-/// \since This datatype is available since SDL 3.2.0.
+/// Since: This datatype is available since SDL 3.2.0.
 ///
 public final class SDL_Keycode {
     public static final int EXTENDED_MASK = 0x20000000;

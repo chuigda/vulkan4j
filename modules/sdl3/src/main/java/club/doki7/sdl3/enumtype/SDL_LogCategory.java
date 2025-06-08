@@ -8,7 +8,7 @@ import club.doki7.ffm.annotation.*;
 /// level, the assert category is enabled at the WARN level, test is enabled at
 /// the VERBOSE level and all other categories are enabled at the ERROR level.
 ///
-/// \since This enum is available since SDL 3.2.0.
+/// Since: This enum is available since SDL 3.2.0.
 ///
 public final class SDL_LogCategory {
     public static final int APPLICATION = 0x0;

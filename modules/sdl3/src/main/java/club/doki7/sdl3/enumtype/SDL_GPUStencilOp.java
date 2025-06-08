@@ -5,9 +5,10 @@ import club.doki7.ffm.annotation.*;
 /// Specifies what happens to a stored stencil value if stencil tests fail or
 /// pass.
 ///
-/// \since This enum is available since SDL 3.2.0.
+/// Since: This enum is available since SDL 3.2.0.
 ///
-/// \sa SDL_CreateGPUGraphicsPipeline
+/// See also:
+/// - `SDL_CreateGPUGraphicsPipeline`
 ///
 public final class SDL_GPUStencilOp {
     public static final int INVALID = 0x0;

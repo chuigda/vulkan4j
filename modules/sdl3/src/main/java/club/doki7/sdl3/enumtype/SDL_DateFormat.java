@@ -4,9 +4,10 @@ import club.doki7.ffm.annotation.*;
 
 /// The preferred date format of the current system locale.
 ///
-/// \since This enum is available since SDL 3.2.0.
+/// Since: This enum is available since SDL 3.2.0.
 ///
-/// \sa SDL_GetDateTimeLocalePreferences
+/// See also:
+/// - `SDL_GetDateTimeLocalePreferences`
 ///
 public final class SDL_DateFormat {
     public static final int YYYYMMDD = 0x0;

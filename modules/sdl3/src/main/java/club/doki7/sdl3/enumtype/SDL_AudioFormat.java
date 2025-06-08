@@ -4,16 +4,17 @@ import club.doki7.ffm.annotation.*;
 
 /// Audio format.
 ///
-/// \since This enum is available since SDL 3.2.0.
+/// Since: This enum is available since SDL 3.2.0.
 ///
-/// \sa SDL_AUDIO_BITSIZE
-/// \sa SDL_AUDIO_BYTESIZE
-/// \sa SDL_AUDIO_ISINT
-/// \sa SDL_AUDIO_ISFLOAT
-/// \sa SDL_AUDIO_ISBIGENDIAN
-/// \sa SDL_AUDIO_ISLITTLEENDIAN
-/// \sa SDL_AUDIO_ISSIGNED
-/// \sa SDL_AUDIO_ISUNSIGNED
+/// See also:
+/// - `SDL_AUDIO_BITSIZE`
+/// - `SDL_AUDIO_BYTESIZE`
+/// - `SDL_AUDIO_ISINT`
+/// - `SDL_AUDIO_ISFLOAT`
+/// - `SDL_AUDIO_ISBIGENDIAN`
+/// - `SDL_AUDIO_ISLITTLEENDIAN`
+/// - `SDL_AUDIO_ISSIGNED`
+/// - `SDL_AUDIO_ISUNSIGNED`
 ///
 public final class SDL_AudioFormat {
     public static final int UNKNOWN = 0x0;

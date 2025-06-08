@@ -27,9 +27,10 @@ import static club.doki7.sdl3.SDL3Constants.*;
 /// in during SDL_Init() and are recognized as gamepads. It will also send
 /// events for joysticks that get gamepad mappings at runtime.
 ///
-/// \since This struct is available since SDL 3.2.0.
+/// Since: This struct is available since SDL 3.2.0.
 ///
-/// \sa SDL_JoyDeviceEvent
+/// See also:
+/// - `SDL_JoyDeviceEvent`
 ///
 /// ## Structure
 ///

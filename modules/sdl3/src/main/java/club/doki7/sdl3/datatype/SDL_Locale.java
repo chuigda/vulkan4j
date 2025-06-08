@@ -25,9 +25,10 @@ import static club.doki7.sdl3.SDL3Constants.*;
 /// would be "en"), and the country, if not NULL, will be an ISO-3166 country
 /// code (so Canada would be "CA").
 ///
-/// \since This function is available since SDL 3.2.0.
+/// Since: This function is available since SDL 3.2.0.
 ///
-/// \sa SDL_GetPreferredLocales
+/// See also:
+/// - `SDL_GetPreferredLocales`
 ///
 /// ## Structure
 ///

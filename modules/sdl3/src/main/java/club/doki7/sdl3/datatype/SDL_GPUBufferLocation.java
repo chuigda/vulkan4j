@@ -22,9 +22,10 @@ import static club.doki7.sdl3.SDL3Constants.*;
 ///
 /// Used when copying data between buffers.
 ///
-/// \since This struct is available since SDL 3.2.0.
+/// Since: This struct is available since SDL 3.2.0.
 ///
-/// \sa SDL_CopyGPUBufferToBuffer
+/// See also:
+/// - `SDL_CopyGPUBufferToBuffer`
 ///
 /// ## Structure
 ///

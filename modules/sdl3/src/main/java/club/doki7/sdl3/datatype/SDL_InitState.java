@@ -23,47 +23,47 @@ import static club.doki7.sdl3.SDL3Constants.*;
 /// Here is an example of using this:
 ///
 /// ```c
-///    static SDL_AtomicInitState init;
+/// static SDL_AtomicInitState init;
 ///
-///    bool InitSystem(void)
-///    {
-///        if (!SDL_ShouldInit(&init)) {
-///            // The system is initialized
-///            return true;
-///        }
+/// bool InitSystem(void)
+/// {
+/// if (!SDL_ShouldInit(&amp;init)) {
+/// // The system is initialized
+/// return true;
+/// }
 ///
-///        // At this point, you should not leave this function without calling SDL_SetInitialized()
+/// // At this point, you should not leave this function without calling SDL_SetInitialized()
 ///
-///        bool initialized = DoInitTasks();
-///        SDL_SetInitialized(&init, initialized);
-///        return initialized;
-///    }
+/// bool initialized = DoInitTasks();
+/// SDL_SetInitialized(&amp;init, initialized);
+/// return initialized;
+/// }
 ///
-///    bool UseSubsystem(void)
-///    {
-///        if (SDL_ShouldInit(&init)) {
-///            // Error, the subsystem isn't initialized
-///            SDL_SetInitialized(&init, false);
-///            return false;
-///        }
+/// bool UseSubsystem(void)
+/// {
+/// if (SDL_ShouldInit(&amp;init)) {
+/// // Error, the subsystem isn't initialized
+/// SDL_SetInitialized(&amp;init, false);
+/// return false;
+/// }
 ///
-///        // Do work using the initialized subsystem
+/// // Do work using the initialized subsystem
 ///
-///        return true;
-///    }
+/// return true;
+/// }
 ///
-///    void QuitSystem(void)
-///    {
-///        if (!SDL_ShouldQuit(&init)) {
-///            // The system is not initialized
-///            return;
-///        }
+/// void QuitSystem(void)
+/// {
+/// if (!SDL_ShouldQuit(&amp;init)) {
+/// // The system is not initialized
+/// return;
+/// }
 ///
-///        // At this point, you should not leave this function without calling SDL_SetInitialized()
+/// // At this point, you should not leave this function without calling SDL_SetInitialized()
 ///
-///        DoQuitTasks();
-///        SDL_SetInitialized(&init, false);
-///    }
+/// DoQuitTasks();
+/// SDL_SetInitialized(&amp;init, false);
+/// }
 /// ```
 ///
 /// Note that this doesn't protect any resources created during initialization,
@@ -71,7 +71,7 @@ import static club.doki7.sdl3.SDL3Constants.*;
 /// should use other mechanisms to protect those, if that's a concern for your
 /// code.
 ///
-/// \since This struct is available since SDL 3.2.0.
+/// Since: This struct is available since SDL 3.2.0.
 ///
 /// ## Structure
 ///

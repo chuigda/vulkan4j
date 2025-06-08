@@ -32,7 +32,7 @@ import static club.doki7.sdl3.SDL3Constants.*;
 /// GUIDs may be platform-dependent (i.e., the same device may report different
 /// GUIDs on different operating systems).
 ///
-/// \since This struct is available since SDL 3.2.0.
+/// Since: This struct is available since SDL 3.2.0.
 ///
 /// ## Structure
 ///

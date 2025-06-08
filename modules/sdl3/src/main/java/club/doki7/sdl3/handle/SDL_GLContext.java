@@ -12,9 +12,10 @@ import club.doki7.ffm.annotation.*;
 
 /// An opaque handle to an OpenGL context.
 ///
-/// \since This datatype is available since SDL 3.2.0.
+/// Since: This datatype is available since SDL 3.2.0.
 ///
-/// \sa SDL_GL_CreateContext
+/// See also:
+/// - `SDL_GL_CreateContext`
 ///
 /// ## Contracts
 ///

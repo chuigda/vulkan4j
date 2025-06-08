@@ -4,7 +4,7 @@ import club.doki7.ffm.annotation.*;
 
 /// The access pattern allowed for a texture.
 ///
-/// \since This enum is available since SDL 3.2.0.
+/// Since: This enum is available since SDL 3.2.0.
 ///
 public final class SDL_TextureAccess {
     public static final int STATIC = 0x0;

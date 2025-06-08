@@ -4,9 +4,10 @@ import club.doki7.ffm.annotation.*;
 
 /// Specifies the size of elements in an index buffer.
 ///
-/// \since This enum is available since SDL 3.2.0.
+/// Since: This enum is available since SDL 3.2.0.
 ///
-/// \sa SDL_CreateGPUGraphicsPipeline
+/// See also:
+/// - `SDL_CreateGPUGraphicsPipeline`
 ///
 public final class SDL_GPUIndexElementSize {
     public static final int _16BIT = 0x0;

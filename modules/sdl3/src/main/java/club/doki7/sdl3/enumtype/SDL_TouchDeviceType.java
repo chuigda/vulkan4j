@@ -4,7 +4,7 @@ import club.doki7.ffm.annotation.*;
 
 /// An enum that describes the type of a touch device.
 ///
-/// \since This enum is available since SDL 3.2.0.
+/// Since: This enum is available since SDL 3.2.0.
 ///
 public final class SDL_TouchDeviceType {
     public static final int INVALID = 0xffffffff;

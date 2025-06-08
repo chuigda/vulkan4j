@@ -21,9 +21,10 @@ import static club.doki7.sdl3.SDL3Constants.*;
 /// A structure specifying the parameters of the graphics pipeline multisample
 /// state.
 ///
-/// \since This struct is available since SDL 3.2.0.
+/// Since: This struct is available since SDL 3.2.0.
 ///
-/// \sa SDL_GPUGraphicsPipelineCreateInfo
+/// See also:
+/// - `SDL_GPUGraphicsPipelineCreateInfo`
 ///
 /// ## Structure
 ///

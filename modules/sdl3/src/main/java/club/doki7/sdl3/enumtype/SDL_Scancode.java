@@ -13,14 +13,14 @@ import club.doki7.ffm.annotation.*;
 /// The values in this enumeration are based on the USB usage page standard:
 /// https://usb.org/sites/default/files/hut1_5.pdf
 ///
-/// \since This enum is available since SDL 3.2.0.
+/// Since: This enum is available since SDL 3.2.0.
 ///
 public final class SDL_Scancode {
     public static final int UNKNOWN = 0x0;
 
     /// ame Usage page 0x07
     ///
-    ///  These values are from usage page 0x07 (USB keyboard page).
+    /// These values are from usage page 0x07 (USB keyboard page).
     public static final int A = 0x4;
     public static final int B = 0x5;
     public static final int C = 0x6;
@@ -237,11 +237,11 @@ public final class SDL_Scancode {
 
     /// ame Usage page 0x0C
     ///
-    ///  These values are mapped from usage page 0x0C (USB consumer page).
+    /// These values are mapped from usage page 0x0C (USB consumer page).
     ///
-    ///  There are way more keys in the spec than we can represent in the
-    ///  current scancode range, so pick the ones that commonly come up in
-    ///  real world usage.
+    /// There are way more keys in the spec than we can represent in the
+    /// current scancode range, so pick the ones that commonly come up in
+    /// real world usage.
     public static final int SLEEP = 0x102;
     public static final int WAKE = 0x103;
     public static final int CHANNEL_INCREMENT = 0x104;
@@ -274,7 +274,7 @@ public final class SDL_Scancode {
 
     /// ame Mobile keys
     ///
-    ///  These are values that are often used on mobile phones.
+    /// These are values that are often used on mobile phones.
     public static final int SOFTLEFT = 0x11f;
     public static final int SOFTRIGHT = 0x120;
     public static final int CALL = 0x121;

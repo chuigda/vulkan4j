@@ -21,7 +21,7 @@ import static club.doki7.sdl3.SDL3Constants.*;
 /// An event used to drop text or request a file open by the system
 /// (event.drop.*)
 ///
-/// \since This struct is available since SDL 3.2.0.
+/// Since: This struct is available since SDL 3.2.0.
 ///
 /// ## Structure
 ///

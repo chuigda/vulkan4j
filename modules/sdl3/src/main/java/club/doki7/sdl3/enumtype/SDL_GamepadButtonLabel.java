@@ -10,7 +10,7 @@ import club.doki7.ffm.annotation.*;
 /// For a complete set, you should look at the button and gamepad type and have
 /// a set of symbols that work well with your art style.
 ///
-/// \since This enum is available since SDL 3.2.0.
+/// Since: This enum is available since SDL 3.2.0.
 ///
 public final class SDL_GamepadButtonLabel {
     public static final int UNKNOWN = 0x0;

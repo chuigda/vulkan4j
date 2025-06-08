@@ -81,10 +81,11 @@ import club.doki7.ffm.annotation.*;
 /// Unless D16_UNORM is sufficient for your purposes, always check which of
 /// D24/D32 is supported before creating a depth-stencil texture!
 ///
-/// \since This enum is available since SDL 3.2.0.
+/// Since: This enum is available since SDL 3.2.0.
 ///
-/// \sa SDL_CreateGPUTexture
-/// \sa SDL_GPUTextureSupportsFormat
+/// See also:
+/// - `SDL_CreateGPUTexture`
+/// - `SDL_GPUTextureSupportsFormat`
 ///
 public final class SDL_GPUTextureFormat {
     public static final int INVALID = 0x0;

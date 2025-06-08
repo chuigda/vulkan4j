@@ -29,9 +29,10 @@ import static club.doki7.sdl3.SDL3Constants.*;
 ///
 /// This structure should be initialized using SDL_INIT_INTERFACE()
 ///
-/// \since This struct is available since SDL 3.2.0.
+/// Since: This struct is available since SDL 3.2.0.
 ///
-/// \sa SDL_INIT_INTERFACE
+/// See also:
+/// - `SDL_INIT_INTERFACE`
 ///
 /// ## Structure
 ///

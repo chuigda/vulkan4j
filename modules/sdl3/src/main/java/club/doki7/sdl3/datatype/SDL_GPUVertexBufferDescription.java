@@ -30,10 +30,11 @@ import static club.doki7.sdl3.SDL3Constants.*;
 /// SDL_GPUVertexAttribute. For example, if an attribute has a buffer_slot of
 /// 0, then that attribute belongs to the vertex buffer bound at slot 0.
 ///
-/// \since This struct is available since SDL 3.2.0.
+/// Since: This struct is available since SDL 3.2.0.
 ///
-/// \sa SDL_GPUVertexAttribute
-/// \sa SDL_GPUVertexInputRate
+/// See also:
+/// - `SDL_GPUVertexAttribute`
+/// - `SDL_GPUVertexInputRate`
 ///
 /// ## Structure
 ///

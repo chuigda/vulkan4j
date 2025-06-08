@@ -35,13 +35,14 @@ import club.doki7.ffm.annotation.*;
 /// `SDL_PROP_IOSTREAM_FILE_DESCRIPTOR_NUMBER` set. This is true for streams
 /// representing files and process I/O.
 ///
-/// \since This enum is available since SDL 3.2.0.
+/// Since: This enum is available since SDL 3.2.0.
 ///
-/// \sa SDL_CreateProcessWithProperties
-/// \sa SDL_GetProcessProperties
-/// \sa SDL_ReadProcess
-/// \sa SDL_GetProcessInput
-/// \sa SDL_GetProcessOutput
+/// See also:
+/// - `SDL_CreateProcessWithProperties`
+/// - `SDL_GetProcessProperties`
+/// - `SDL_ReadProcess`
+/// - `SDL_GetProcessInput`
+/// - `SDL_GetProcessOutput`
 ///
 public final class SDL_ProcessIO {
     public static final int INHERITED = 0x0;

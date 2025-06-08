@@ -29,10 +29,11 @@ import static club.doki7.sdl3.SDL3Constants.*;
 /// If channels is one, the effect is rotated using the defined direction.
 /// Otherwise it uses the samples in data for the different axes.
 ///
-/// \since This struct is available since SDL 3.2.0.
+/// Since: This struct is available since SDL 3.2.0.
 ///
-/// \sa SDL_HAPTIC_CUSTOM
-/// \sa SDL_HapticEffect
+/// See also:
+/// - `SDL_HAPTIC_CUSTOM`
+/// - `SDL_HapticEffect`
 ///
 /// ## Structure
 ///

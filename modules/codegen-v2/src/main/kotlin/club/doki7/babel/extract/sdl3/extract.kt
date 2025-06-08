@@ -69,6 +69,7 @@ fun extractSDLRegistry(): Registry<EmptyMergeable> {
     ))
 
     registry.renameEntities()
+    postprocessDoc(registry)
     return registry
 }
 

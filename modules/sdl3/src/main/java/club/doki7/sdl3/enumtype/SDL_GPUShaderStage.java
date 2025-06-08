@@ -4,9 +4,10 @@ import club.doki7.ffm.annotation.*;
 
 /// Specifies which stage a shader program corresponds to.
 ///
-/// \since This enum is available since SDL 3.2.0.
+/// Since: This enum is available since SDL 3.2.0.
 ///
-/// \sa SDL_CreateGPUShader
+/// See also:
+/// - `SDL_CreateGPUShader`
 ///
 public final class SDL_GPUShaderStage {
     public static final int VERTEX = 0x0;

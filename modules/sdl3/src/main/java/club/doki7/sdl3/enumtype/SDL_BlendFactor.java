@@ -9,7 +9,7 @@ import club.doki7.ffm.annotation.*;
 /// operation. The comma-separated factors listed above are always applied in
 /// the component order red, green, blue, and alpha.
 ///
-/// \since This enum is available since SDL 3.2.0.
+/// Since: This enum is available since SDL 3.2.0.
 ///
 public final class SDL_BlendFactor {
     public static final int ZERO = 0x1;

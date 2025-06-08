@@ -20,10 +20,11 @@ import static club.doki7.sdl3.SDL3Constants.*;
 
 /// Information about a path on the filesystem.
 ///
-/// \since This datatype is available since SDL 3.2.0.
+/// Since: This datatype is available since SDL 3.2.0.
 ///
-/// \sa SDL_GetPathInfo
-/// \sa SDL_GetStoragePathInfo
+/// See also:
+/// - `SDL_GetPathInfo`
+/// - `SDL_GetStoragePathInfo`
 ///
 /// ## Structure
 ///

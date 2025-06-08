@@ -10,7 +10,7 @@ import club.doki7.ffm.annotation.*;
 /// state. SDL_HINT_THREAD_PRIORITY_POLICY can be used to control aspects of
 /// this behavior.
 ///
-/// \since This enum is available since SDL 3.2.0.
+/// Since: This enum is available since SDL 3.2.0.
 ///
 public final class SDL_ThreadPriority {
     public static final int LOW = 0x0;

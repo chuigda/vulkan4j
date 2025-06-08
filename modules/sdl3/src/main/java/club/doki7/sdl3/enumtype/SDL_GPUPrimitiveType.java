@@ -8,19 +8,20 @@ import club.doki7.ffm.annotation.*;
 /// vertex shader.
 ///
 /// - For HLSL compiling to SPIRV you must decorate a float output with
-///   [[vk::builtin("PointSize")]].
+/// [[vk::builtin("PointSize")]].
 /// - For GLSL you must set the gl_PointSize builtin.
 /// - For MSL you must include a float output with the [[point_size]]
-///   decorator.
+/// decorator.
 ///
 /// Note that sized point topology is totally unsupported on D3D12. Any size
 /// other than 1 will be ignored. In general, you should avoid using point
 /// topology for both compatibility and performance reasons. You WILL regret
 /// using it.
 ///
-/// \since This enum is available since SDL 3.2.0.
+/// Since: This enum is available since SDL 3.2.0.
 ///
-/// \sa SDL_CreateGPUGraphicsPipeline
+/// See also:
+/// - `SDL_CreateGPUGraphicsPipeline`
 ///
 public final class SDL_GPUPrimitiveType {
     public static final int TRIANGLELIST = 0x0;

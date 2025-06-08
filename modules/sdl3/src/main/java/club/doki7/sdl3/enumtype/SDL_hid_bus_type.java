@@ -4,30 +4,30 @@ import club.doki7.ffm.annotation.*;
 
 /// HID underlying bus types.
 ///
-/// \since This enum is available since SDL 3.2.0.
+/// Since: This enum is available since SDL 3.2.0.
 ///
 public final class SDL_hid_bus_type {
-    ///  Unknown bus type
+    /// Unknown bus type
     public static final int UNKNOWN = 0x0;
 
-    ///  USB bus
+    /// USB bus
     /// Specifications:
     /// https://usb.org/hid
     public static final int USB = 0x1;
 
-    ///  Bluetooth or Bluetooth LE bus
+    /// Bluetooth or Bluetooth LE bus
     /// Specifications:
     /// https://www.bluetooth.com/specifications/specs/human-interface-device-profile-1-1-1/
     /// https://www.bluetooth.com/specifications/specs/hid-service-1-0/
     /// https://www.bluetooth.com/specifications/specs/hid-over-gatt-profile-1-0/
     public static final int BLUETOOTH = 0x2;
 
-    ///  I2C bus
+    /// I2C bus
     /// Specifications:
     /// https://docs.microsoft.com/previous-versions/windows/hardware/design/dn642101(v=vs.85)
     public static final int I2C = 0x3;
 
-    ///  SPI bus
+    /// SPI bus
     /// Specifications:
     /// https://www.microsoft.com/download/details.aspx?id=103325
     public static final int SPI = 0x4;

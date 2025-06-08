@@ -24,13 +24,14 @@ import static club.doki7.sdl3.SDL3Constants.*;
 /// that certain usage combinations are invalid, for example SAMPLER and
 /// GRAPHICS_STORAGE.
 ///
-/// \since This struct is available since SDL 3.2.0.
+/// Since: This struct is available since SDL 3.2.0.
 ///
-/// \sa SDL_CreateGPUTexture
-/// \sa SDL_GPUTextureType
-/// \sa SDL_GPUTextureFormat
-/// \sa SDL_GPUTextureUsageFlags
-/// \sa SDL_GPUSampleCount
+/// See also:
+/// - `SDL_CreateGPUTexture`
+/// - `SDL_GPUTextureType`
+/// - `SDL_GPUTextureFormat`
+/// - `SDL_GPUTextureUsageFlags`
+/// - `SDL_GPUSampleCount`
 ///
 /// ## Structure
 ///

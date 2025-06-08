@@ -27,9 +27,10 @@ import static club.doki7.sdl3.SDL3Constants.*;
 ///
 /// This structure should be initialized using SDL_INIT_INTERFACE()
 ///
-/// \since This struct is available since SDL 3.2.0.
+/// Since: This struct is available since SDL 3.2.0.
 ///
-/// \sa SDL_INIT_INTERFACE
+/// See also:
+/// - `SDL_INIT_INTERFACE`
 ///
 /// ## Structure
 ///
@@ -58,50 +59,50 @@ import static club.doki7.sdl3.SDL3Constants.*;
 /// ## Member documentation
 ///
 /// <ul>
-/// <li>{@link #size}  Return the number of bytes in this SDL_IOStream
+/// <li>{@link #size} Return the number of bytes in this SDL_IOStream
 ///
-///  \return the total size of the data stream, or -1 on error.
+/// @return the total size of the data stream, or -1 on error.
 /// </li>
-/// <li>{@link #seek}  Seek to `offset` relative to `whence`, one of stdio's whence values:
-///  SDL_IO_SEEK_SET, SDL_IO_SEEK_CUR, SDL_IO_SEEK_END
+/// <li>{@link #seek} Seek to `offset` relative to `whence`, one of stdio's whence values:
+/// SDL_IO_SEEK_SET, SDL_IO_SEEK_CUR, SDL_IO_SEEK_END
 ///
-///  \return the final offset in the data stream, or -1 on error.
+/// @return the final offset in the data stream, or -1 on error.
 /// </li>
-/// <li>{@link #read}  Read up to `size` bytes from the data stream to the area pointed
-///  at by `ptr`.
+/// <li>{@link #read} Read up to `size` bytes from the data stream to the area pointed
+/// at by `ptr`.
 ///
-///  On an incomplete read, you should set `*status` to a value from the
-///  SDL_IOStatus enum. You do not have to explicitly set this on
-///  a complete, successful read.
+/// On an incomplete read, you should set `*status` to a value from the
+/// SDL_IOStatus enum. You do not have to explicitly set this on
+/// a complete, successful read.
 ///
-///  \return the number of bytes read
+/// @return the number of bytes read
 /// </li>
-/// <li>{@link #write}  Write exactly `size` bytes from the area pointed at by `ptr`
-///  to data stream.
+/// <li>{@link #write} Write exactly `size` bytes from the area pointed at by `ptr`
+/// to data stream.
 ///
-///  On an incomplete write, you should set `*status` to a value from the
-///  SDL_IOStatus enum. You do not have to explicitly set this on
-///  a complete, successful write.
+/// On an incomplete write, you should set `*status` to a value from the
+/// SDL_IOStatus enum. You do not have to explicitly set this on
+/// a complete, successful write.
 ///
-///  \return the number of bytes written
+/// @return the number of bytes written
 /// </li>
-/// <li>{@link #flush}  If the stream is buffering, make sure the data is written out.
+/// <li>{@link #flush} If the stream is buffering, make sure the data is written out.
 ///
-///  On failure, you should set `*status` to a value from the
-///  SDL_IOStatus enum. You do not have to explicitly set this on
-///  a successful flush.
+/// On failure, you should set `*status` to a value from the
+/// SDL_IOStatus enum. You do not have to explicitly set this on
+/// a successful flush.
 ///
-///  \return true if successful or false on write error when flushing data.
+/// @return true if successful or false on write error when flushing data.
 /// </li>
-/// <li>{@link #close}  Close and free any allocated resources.
+/// <li>{@link #close} Close and free any allocated resources.
 ///
-///  This does not guarantee file writes will sync to physical media; they
-///  can be in the system's file cache, waiting to go to disk.
+/// This does not guarantee file writes will sync to physical media; they
+/// can be in the system's file cache, waiting to go to disk.
 ///
-///  The SDL_IOStream is still destroyed even if this fails, so clean up anything
-///  even if flushing buffers, etc, returns an error.
+/// The SDL_IOStream is still destroyed even if this fails, so clean up anything
+/// even if flushing buffers, etc, returns an error.
 ///
-///  \return true if successful or false on write error when flushing data.
+/// @return true if successful or false on write error when flushing data.
 /// </li>
 /// </ul>
 @ValueBasedCandidate
