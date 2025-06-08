@@ -55,6 +55,18 @@ internal class Tokenizer(private val source: List<String>, var curLine: Int) {
             curCol++
         }
 
+        if (curCol + 1 < source[curLine].length
+            && source[curLine][curCol] == '/'
+            && source[curLine][curCol + 1] == '*') {
+            while (curLine < source.size && !source[curLine].endsWith("*/")) {
+                curLine++
+                curCol = 0
+            }
+            curLine++
+            curCol = 0
+            return
+        }
+
         if (curCol + 1 < source[curLine].length && source[curLine][curCol] == '/' && source[curLine][curCol + 1] == '/') {
             curCol = source[curLine].length
         }
@@ -82,6 +94,15 @@ internal class Tokenizer(private val source: List<String>, var curLine: Int) {
             } else {
                 syntaxError("Unexpected character: $c", curLine, curCol)
             }
+        } else if (c == '.') {
+            if (curCol + 2 < line.length && line[curCol + 1] == '.' && line[curCol + 2] == '.') {
+                curCol += 3
+                Token(TokenKind.SYMBOL, "...", curLine, curCol - 3)
+            } else {
+                val token = Token(TokenKind.SYMBOL, c.toString(), curLine, curCol)
+                curCol++
+                token
+            }
         } else if (c.isSymbolChar()) {
             val token = Token(TokenKind.SYMBOL, c.toString(), curLine, curCol)
             curCol++
@@ -93,7 +114,7 @@ internal class Tokenizer(private val source: List<String>, var curLine: Int) {
         } else if (c.isIdentStartingChar()) {
             readIdent().let { token ->
                 when (token.value) {
-                    in knownCallLikeMacros -> {
+                    in knownTriviaCallLikeMacros -> {
                         val internalTokens = mutableListOf<Token>()
                         var internalToken = next()
                         if (internalToken.kind != TokenKind.SYMBOL || internalToken.value != "(") {
@@ -118,7 +139,7 @@ internal class Tokenizer(private val source: List<String>, var curLine: Int) {
                             token.col
                         )
                     }
-                    in knownMacros -> token.copy(kind = TokenKind.TRIVIA)
+                    in knownTriviaMacros -> token.copy(kind = TokenKind.TRIVIA)
                     else -> token
                 }
             }
@@ -201,7 +222,7 @@ internal class Tokenizer(private val source: List<String>, var curLine: Int) {
     }
 }
 
-internal val knownMacros = setOf(
+internal val knownTriviaMacros = setOf(
     "VMA_CALL_PRE",
     "VMA_CALL_POST",
     "VMA_EXTENDS_VK_STRUCT",
@@ -209,8 +230,10 @@ internal val knownMacros = setOf(
     "VMA_NOT_NULL",
     "VMA_NOT_NULL_NON_DISPATCHABLE",
     "VMA_NULLABLE_NON_DISPATCHABLE",
+
     "VKAPI_PTR",
     "GLFWAPI",
+
     "AL_APIENTRY",
     "AL_API_NOEXCEPT17",
     "AL_API",
@@ -218,10 +241,25 @@ internal val knownMacros = setOf(
     "ALC_APIENTRY",
     "ALC_API_NOEXCEPT17",
     "ALC_API",
-    "ALC_API_NOEXCEPT"
+    "ALC_API_NOEXCEPT",
+
+    "SDL_DECLSPEC",
+    "SDLCALL",
+    "SDL_PRINTF_FORMAT_STRING",
+
+    "extern"
 )
 
-private val knownCallLikeMacros = setOf(
+private val knownTriviaCallLikeMacros = setOf(
     "VMA_LEN_IF_NOT_NULL",
-    "VMA_EXTENDS_VK_STRUCT"
+    "VMA_EXTENDS_VK_STRUCT",
+
+    "SDL_PRINTF_VARARG_FUNC",
+    "SDL_PRINTF_VARARG_FUNCV",
+    "SDL_ACQUIRE",
+    "SDL_RELEASE",
+    "SDL_TRY_ACQUIRE",
+    "SDL_ACQUIRE_SHARED",
+    "SDL_TRY_ACQUIRE_SHARED",
+    "SDL_RELEASE_GENERIC"
 )

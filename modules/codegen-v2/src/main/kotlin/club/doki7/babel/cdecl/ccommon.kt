@@ -7,5 +7,5 @@ fun Char.isIdentStartingChar(): Boolean = this.isLetter() || this == '_'
 fun Char.isSymbolChar(): Boolean = this in symbolChars
 
 private val symbolChars = setOf(
-    '{', '}', '[', ']', '(', ')', ',', ';', '=', '*', '|'
+    '{', '}', '[', ']', '(', ')', ',', ';', '=', '*', '|', '-', '+'
 )

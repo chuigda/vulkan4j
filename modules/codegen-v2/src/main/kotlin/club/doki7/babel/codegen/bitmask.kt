@@ -12,6 +12,8 @@ fun generateBitmask(
 
     val (postfix, bitflagType, bitflagObjectType) = when (bitmask.bitwidth) {
         null, 32 -> listOf("", "int", "Integer")
+        8 -> listOf("", "byte", "Byte")
+        16 -> listOf("", "short", "Short")
         64 -> listOf("L", "long", "Long")
         else -> error("unsupported bitwidth: ${bitmask.bitwidth}")
     }

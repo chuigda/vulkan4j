@@ -112,7 +112,9 @@ class TestParseStructField {
     @Test
     fun test1() {
         val tokenizer = Tokenizer(listOf("PFN_vmaCheckDefragmentationBreakFunction VMA_NULLABLE pfnBreakCallback;"), 0)
-        val structFieldDecl = parseStructFieldDecl(tokenizer)
+        val declList = parseStructFieldDecl(tokenizer)
+        assertEquals(1, declList.size)
+        val structFieldDecl = declList[0]
 
         assertEquals("pfnBreakCallback", structFieldDecl.name)
         assertTrue(structFieldDecl.trivia.isEmpty())
@@ -127,7 +129,9 @@ class TestParseStructField {
     @Test
     fun test2() {
         val tokenizer = Tokenizer(listOf("VmaDetailedStatistics memoryType[VK_MAX_MEMORY_TYPES];"), 0)
-        val structFieldDecl = parseStructFieldDecl(tokenizer)
+        val declList = parseStructFieldDecl(tokenizer)
+        assertEquals(1, declList.size)
+        val structFieldDecl = declList[0]
 
         assertEquals("memoryType", structFieldDecl.name)
         assertTrue(structFieldDecl.trivia.isEmpty())
@@ -139,6 +143,28 @@ class TestParseStructField {
         assertTrue(elementType is RawIdentifierType)
         assertEquals("VmaDetailedStatistics", elementType.ident)
         assertTrue(elementType.trivia.isEmpty())
+    }
+
+    @Test
+    fun test3() {
+        val tokenizer = Tokenizer(listOf("Uint8 r, g, b;"), 0)
+        val declList = parseStructFieldDecl(tokenizer)
+        assertEquals(3, declList.size)
+
+        for (i in 0 until 3) {
+            val structFieldDecl = declList[i]
+            when (i) {
+                0 -> assertEquals("r", structFieldDecl.name)
+                1 -> assertEquals("g", structFieldDecl.name)
+                2 -> assertEquals("b", structFieldDecl.name)
+            }
+            assertTrue(structFieldDecl.trivia.isEmpty())
+            val type = structFieldDecl.type
+            assertTrue(type is RawIdentifierType)
+            assertEquals("Uint8", type.ident)
+            assertFalse(type.unsigned)
+            assertTrue(type.trivia.isEmpty())
+        }
     }
 }
 

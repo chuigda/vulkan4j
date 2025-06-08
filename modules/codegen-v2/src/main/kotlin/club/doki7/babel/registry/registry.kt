@@ -230,6 +230,8 @@ class OpaqueTypedef(
 ) : Entity(name) {
     constructor(name: String) : this(name.intern())
 
+    constructor(name: String, isHandle: Boolean) : this(name.intern(), isHandle)
+
     override fun toStringImpl() = "OpaqueTypedef(name=\"$name\""
 }
 
@@ -279,10 +281,7 @@ class Member(
     }
 }
 
-class Typedef(
-    name: String,
-    val type: IdentifierType
-) : Entity(name) {
+class Typedef(name: String, val type: Type) : Entity(name) {
     constructor(name: String, aliasTo: String) : this(name, IdentifierType(aliasTo))
 
     override fun toStringImpl() = "Typedef(name=\"$name\", type=$type"
