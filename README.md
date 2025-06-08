@@ -16,6 +16,10 @@
 - [OpenAL](https://www.openal.org/) ([`openal`](https://github.com/chuigda/vulkan4j/tree/master/modules/openal) module): Generated from OpenAL-soft header files. This module is based on OpenAL-soft 1.2, and provides a complete set of OpenAL features, including all extensions supported by OpenAL-soft.
 - [GLFW](https://www.glfw.org/) ([`glfw`](https://github.com/chuigda/vulkan4j/tree/master/modules/glfw) module): Generated from GLFW header files.
 
+### Experimental Bindings
+
+- [SDL3](https://www.libsdl.org/) ([`sdl3`](https://github.com/chuigda/vulkan4j/tree/master/modules/sdl3) module): Generated from SDL3 header files. This module is still under development, it has unimplemented functionalities, and may contain bugs. Issues and pull requests are welcome.
+
 <details>
 <summary>Obsolete bindings</summary>
 
