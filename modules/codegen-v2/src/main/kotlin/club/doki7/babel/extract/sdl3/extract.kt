@@ -22,21 +22,11 @@ import club.doki7.babel.hparse.skipIfdefCplusplusExternC
 import club.doki7.babel.hparse.skipPreprocessor
 import club.doki7.babel.registry.*
 import club.doki7.babel.util.parseDecOrHex
-import club.doki7.babel.util.setupLog
 import java.util.logging.Logger
 import kotlin.io.path.Path
 
 private val inputDir = Path("codegen-v2/input")
 internal val log = Logger.getLogger("c.d.b.extract.sdl3")
-
-fun main() {
-    setupLog()
-    val registry = extractSDLHeaders()
-    println("done")
-
-    val pixelFormat = registry.enumerations["SDL_PixelFormat".intern()]
-    println(pixelFormat)
-}
 
 fun extractSDLHeaders(): Registry<EmptyMergeable> {
     val registry = Registry(ext = EmptyMergeable())
@@ -62,6 +52,9 @@ fun extractSDLHeaders(): Registry<EmptyMergeable> {
         val headerRegistry = extractOneSDL3Header(fileName)
         registry += headerRegistry
     }
+
+    registry.enumerations.values.forEach(::postprocessEnumeration)
+
     return registry
 }
 
@@ -486,16 +479,23 @@ private fun parseAndSaveEnumeration(
     val enumeration = Enumeration(
         name = enumName,
         variants = enumerators.map { (enumDecl, doc) ->
-            val variant = try {
+            val variant = if (enumDecl.value.isEmpty()) {
                 EnumVariant(
                     name = enumDecl.name,
-                    value = enumDecl.value.parseDecOrHex()
+                    value = emptyList()
                 )
-            } catch (_: NumberFormatException) {
-                EnumVariant(
-                    name = enumDecl.name,
-                    value = enumDecl.value.split("|").map(String::trim)
-                )
+            } else {
+                try {
+                    EnumVariant(
+                        name = enumDecl.name,
+                        value = enumDecl.value.parseDecOrHex()
+                    )
+                } catch (_: NumberFormatException) {
+                    EnumVariant(
+                        name = enumDecl.name,
+                        value = enumDecl.value.split("|").map(String::trim)
+                    )
+                }
             }
             variant.doc = doc
             variant
@@ -550,7 +550,7 @@ private fun parseEnumerator(
 
 private fun skipEndiannessSpecific(
     @Suppress("unused") registry: Registry<EmptyMergeable>,
-    cx: MutableMap<String, Any>,
+    @Suppress("unused") cx: MutableMap<String, Any>,
     lines: List<String>,
     index: Int
 ): Int {
@@ -616,7 +616,7 @@ private fun parseAndSaveTypedef(
 
 private fun skipStructBody(
     @Suppress("unused") registry: Registry<EmptyMergeable>,
-    cx: MutableMap<String, Any>,
+    @Suppress("unused") cx: MutableMap<String, Any>,
     lines: List<String>,
     index: Int
 ): Int {
