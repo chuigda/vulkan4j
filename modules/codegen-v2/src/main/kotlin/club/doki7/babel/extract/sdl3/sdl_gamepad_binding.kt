@@ -14,6 +14,9 @@ internal fun addSDLGamepadBindings(registryBase: RegistryBase) {
 
     registryBase.unions.putEntityIfAbsent(sdl_gamepad_binding_input)
     registryBase.unions.putEntityIfAbsent(sdl_gamepad_binding_output)
+
+    // Fuck SDL, why would you do this?
+    registryBase.structures.putEntityIfAbsent(sdl_atomic_int)
 }
 
 // typedef struct SDL_GamepadBinding {
@@ -94,6 +97,14 @@ private val sdl_gamepad_binding_output_axis = Structure(
         mambo("axis", "SDL_GamepadAxis"), // This is a bit odd, but it is how SDL defines it
         mambo("axis_min", "int"),
         mambo("axis_max", "int")
+    )
+)
+
+// typedef struct SDL_AtomicInt { int value; } SDL_AtomicInt;
+private val sdl_atomic_int = Structure(
+    name = "SDL_AtomicInt",
+    members = mutableListOf(
+        mambo("value", "int")
     )
 )
 

@@ -39,26 +39,19 @@ fun extractSDLRegistry(): Registry<EmptyMergeable> {
         .map { it.removePrefix("#include <SDL3/").removeSuffix(">") }
         .toMutableSet()
 
-    filesToParse.remove("SDL_stdinc.h")
     filesToParse.remove("SDL_assert.h")
-    filesToParse.remove("SDL_atomic.h")
     filesToParse.remove("SDL_bits.h")
     filesToParse.remove("SDL_config.h")
     filesToParse.remove("SDL_oldnames.h")
 
     val registry = Registry(ext = EmptyMergeable())
-    registry.aliases.putEntityIfAbsent(Typedef("Uint64", "uint64_t"))
-    registry.aliases.putEntityIfAbsent(Typedef("Uint32", "uint32_t"))
-    registry.aliases.putEntityIfAbsent(Typedef("Uint16", "uint16_t"))
-    registry.aliases.putEntityIfAbsent(Typedef("Uint8", "uint8_t"))
-
     for (fileName in filesToParse) {
         val headerRegistry = extractOneSDL3Header(fileName)
         registry += headerRegistry
     }
-
     registry.enumerations.values.forEach(::postprocessEnumeration)
-    registry.renameEntities()
+
+    addSDLGamepadBindings(registry)
 
     while (registry.constants.values.any { it.type.ident.original == "INDETERMINATE" }) {
         val postprocessedConstants = registry.constants.values.map { postprocessConstant(registry, it) }
@@ -66,12 +59,15 @@ fun extractSDLRegistry(): Registry<EmptyMergeable> {
         for (constant in postprocessedConstants) {
             registry.constants.putEntityIfAbsent(constant)
         }
-
-        println("Postprocessed constants with indeterminate types:")
-        println(registry.constants.values.filter { it.type.ident.original == "INDETERMINATE" }.joinToString("\n"))
     }
 
-    println(registry.constants["SDL_PROP_GAMEPAD_CAP_MONO_LED_BOOLEAN".intern()])
+    registry.constants.putEntityIfAbsent(Constant(
+        name = "SDL_MESSAGEBOX_COLOR_COUNT",
+        type = IdentifierType("uint32_t"),
+        expr = registry.enumerations["SDL_MessageBoxColorType".intern()]!!.variants.size.toString(),
+    ))
+
+    registry.renameEntities()
     return registry
 }
 
@@ -120,7 +116,7 @@ private val headerParseConfig = ParseConfig<EmptyMergeable>().apply {
     )
     addRule(
         20,
-        { if (it.startsWith("typedef") && it.contains("SDLCALL")) ControlFlow.ACCEPT else ControlFlow.NEXT },
+        { if (it.startsWith("typedef") && (it.contains("SDLCALL") || it.contains("(*SDL_"))) ControlFlow.ACCEPT else ControlFlow.NEXT },
         ::parseCallbackTypedef
     )
     addRule(
@@ -193,6 +189,10 @@ private fun parseConstDef(
         return nextLine
     }
 
+    if (constantName.startsWith("SDL_PRI")) {
+        return nextLine
+    }
+
     val actualConstValue = maybeExpandConstValue(constantValue)
 
     val enumTypeName = tryFindKnownEnumType(constantName)
@@ -260,9 +260,15 @@ private fun parseOpaqueTypedef(
     val parts = lines[index].removePrefix("typedef struct").removeSuffix(";").trim().split(" ", limit = 2)
     val aliasName = parts[1].trim()
 
-    val typedef = OpaqueTypedef(aliasName, isHandle=true)
-    typedef.doc = doc
-    registry.opaqueTypedefs.putEntityIfAbsent(typedef)
+    if (aliasName.startsWith("*")) {
+        val handleTypedef = OpaqueHandleTypedef(name = aliasName.removePrefix("*"))
+        handleTypedef.doc = doc
+        registry.opaqueHandleTypedefs.putEntityIfAbsent(handleTypedef)
+    } else {
+        val typedef = OpaqueTypedef(aliasName, isHandle = true)
+        typedef.doc = doc
+        registry.opaqueTypedefs.putEntityIfAbsent(typedef)
+    }
     return index + 1
 }
 
@@ -375,7 +381,12 @@ private fun parseAndSaveStructure(
         cx.remove("doxygen")
     }
 
-    val structureName = lines[index].removePrefix("typedef struct").trim()
+    val structureName = lines[index]
+        .removePrefix("typedef struct")
+        .removePrefix("typedef union")
+        .removeSuffix("{")
+        .trim()
+
     if (structureName in knownTroublesomeStructures) {
         // directly skip to the `}` + ';' line
         var index1 = index + 1
@@ -484,8 +495,8 @@ private fun parseAndSaveEnumeration(
         cx.remove("doxygen")
     }
 
-    val enumName = lines[index].removePrefix("typedef enum").trim()
-    val next = hparse(enumerationParseConfig, registry, cx, lines, index + 2)
+    val enumName = lines[index].removePrefix("typedef enum").removeSuffix("{").trim()
+    val next = hparse(enumerationParseConfig, registry, cx, lines, if (lines[index].endsWith("{")) index + 1 else index + 2)
     val enumerators = cx["enumerators"] as MutableList<Pair<EnumeratorDecl, List<String>?>>
     cx.remove("enumerators")
 

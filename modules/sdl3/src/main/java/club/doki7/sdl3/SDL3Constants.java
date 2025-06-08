@@ -2,6 +2,9 @@ package club.doki7.sdl3;
 
 import club.doki7.ffm.annotation.*;
 
+// SPECIAL NOTE FOR MAINTAINER:
+// This file is currently semi-automatically generated. YOU are responsible for
+// fixing compilation errors after this file gets re-generated.
 public interface SDL3Constants {
     float ALPHA_OPAQUE = 0xff;
     @Unsigned int ALPHA_TRANSPARENT = 0x0;
@@ -58,12 +61,16 @@ public interface SDL3Constants {
     @Unsigned int HAT_LEFT = 0x8;
     @Unsigned int HAT_RIGHT = 0x2;
     @Unsigned int HAT_UP = 0x1;
+    @Unsigned int INVALID_UNICODE_CODEPOINT = 0xfffd;
     float JOYSTICK_AXIS_MAX = 0x7fff;
     @Unsigned int LIL_ENDIAN = 0x4d2;
     @Unsigned int MAJOR_VERSION = 0x3;
+    @Unsigned int MESSAGEBOX_COLOR_COUNT = 6;
     @Unsigned int MICRO_VERSION = 0xe;
     @Unsigned int MINOR_VERSION = 0x2;
+    @Unsigned int MIN_UINT64 = 0x0;
     @Unsigned int MS_PER_SECOND = 0x3e8;
+    @Unsigned int NOLONGLONG = 0x1;
     @Unsigned int NS_PER_MS = 0xf4240;
     @Unsigned int NS_PER_US = 0x3e8;
     @Unsigned int RENDERER_VSYNC_DISABLED = 0x0;
@@ -81,6 +88,8 @@ public interface SDL3Constants {
     long NS_PER_SECOND = 1000000000L;
     int PEN_MOUSEID = -2;
     int PEN_TOUCHID = -2;
+    double PI_D = 3.141592653589793238462643383279502884;
+    float PI_F = 3.141592653589793238462643383279502884f;
     int RENDERER_VSYNC_ADAPTIVE = -1;
     float STANDARD_GRAVITY = 9.80665f;
     int TOUCH_MOUSEID = -1;

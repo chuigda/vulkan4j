@@ -67,7 +67,7 @@ fun generateBitmask(
             +when (flag.value) {
                 is Either.Left -> {
                     val bigInt = flag.value.value
-                    val hexValue = bigInt.toString(16)
+                    val hexValue = bigInt.toLong().toULong().toString(16)
                     "public static final $bitflagType ${flag.name} = 0x$hexValue$postfix;"
                 }
                 is Either.Right -> {
@@ -101,7 +101,11 @@ fun generateBitmask(
                 +""
                 +"if (detectedFlagBits.isEmpty()) {"
                 indent {
-                    +"return \"NONE(\" + ${bitflagObjectType}.toBinaryString(flags) + \")\";"
+                    if (bitmask.bitwidth == null || bitmask.bitwidth <= 32) {
+                        +"return \"NONE(\" + Integer.toBinaryString(flags) + \")\";"
+                    } else {
+                        +"return \"NONE(\" + ${bitflagObjectType}.toBinaryString(flags) + \")\";"
+                    }
                 }
                 +"}"
                 +"return String.join(\" | \", detectedFlagBits);"

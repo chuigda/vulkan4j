@@ -246,6 +246,8 @@ internal val knownTriviaMacros = setOf(
     "SDL_DECLSPEC",
     "SDLCALL",
     "SDL_PRINTF_FORMAT_STRING",
+    "SDL_SCANF_FORMAT_STRING",
+    "SDL_MALLOC",
 
     "extern"
 )
@@ -256,10 +258,20 @@ private val knownTriviaCallLikeMacros = setOf(
 
     "SDL_PRINTF_VARARG_FUNC",
     "SDL_PRINTF_VARARG_FUNCV",
+    "SDL_SCANF_VARARG_FUNC",
+    "SDL_SCANF_VARARG_FUNCV",
+    "SDL_WPRINTF_VARARG_FUNC",
+    "SDL_WPRINTF_VARARG_FUNCV",
     "SDL_ACQUIRE",
     "SDL_RELEASE",
     "SDL_TRY_ACQUIRE",
     "SDL_ACQUIRE_SHARED",
     "SDL_TRY_ACQUIRE_SHARED",
-    "SDL_RELEASE_GENERIC"
+    "SDL_RELEASE_GENERIC",
+    "SDL_ALLOC_SIZE",
+    "SDL_ALLOC_SIZE2",
+    "SDL_OUT_BYTECAP",
+    "SDL_IN_BYTECAP",
+    "SDL_OUT_Z_CAP",
+    "SDL_INOUT_Z_CAP"
 )

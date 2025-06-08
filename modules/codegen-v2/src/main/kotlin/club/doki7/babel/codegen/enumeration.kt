@@ -71,6 +71,9 @@ fun generateEnumeration(
                 +"return switch (value) {"
                 indent {
                     for (variant in variants) {
+                        if (variant.value is Either.Right) {
+                            continue
+                        }
                         +"case ${enumeration.name}.${variant.name} -> \"${variant.name.original}\";"
                     }
                     +"default -> \"UNKNOWN(\" + value + \")\";"

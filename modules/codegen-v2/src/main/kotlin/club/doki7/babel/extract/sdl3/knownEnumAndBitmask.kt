@@ -9,7 +9,7 @@ internal val knownBitmaskTypes = mapOf(
     "SDL_GlobFlags" to "SDL_GLOB_",
 
     // SDL_gpu.h
-    "SDL_GPUTextureUsageFlags" to "SDL_GPU_TEXTURUSAGE_",
+    "SDL_GPUTextureUsageFlags" to "SDL_GPU_TEXTUREUSAGE_",
     "SDL_GPUBufferUsageFlags" to "SDL_GPU_BUFFERUSAGE_",
     "SDL_GPUColorComponentFlags" to "SDL_GPU_COLORCOMPONENT_",
 

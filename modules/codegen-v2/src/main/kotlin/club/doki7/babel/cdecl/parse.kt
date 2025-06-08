@@ -220,6 +220,12 @@ private fun parseFunctionParamList(tokenizer: Tokenizer): MutableList<VarDecl> {
             return params
         }
 
+        peekedToken = tokenizer.peek()
+        if (peekedToken.kind == TokenKind.SYMBOL && peekedToken.value == ")") {
+            expectAndConsume(TokenKind.SYMBOL, tokenizer, ")")
+            return params
+        }
+
         var paramType = parseType(tokenizer)
         skipTrivia(tokenizer, paramTriviaList)
 
