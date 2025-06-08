@@ -11,6 +11,10 @@ internal val skippedMacroConstants = setOf(
     "SDL_BUTTON_X1",
     "SDL_BUTTON_X2",
     "SDL_VERSION",
+    "SDL_NO_THREAD_SAFETY_ANALYSIS",
+    "SDL_BYTEORDER",
+    "SDL_FLOATWORDORDER",
+    "SDL_SCOPED_CAPABILITY"
 )
 
 internal fun maybeExpandConstValue(value: String): String {
@@ -57,7 +61,9 @@ internal fun maybeExpandConstValue(value: String): String {
 
 internal val knownMacros = mapOf<String, (String) -> String>(
     "SDL_BUTTON_MASK(*)" to ::sdl_button_mask,
-    "SDL_UINT64_C(*)" to ::sdl_uint64_c
+    "SDL_UINT64_C(*)" to ::sdl_uint64_c,
+    "SDL_WINDOWPOS_CENTERED_DISPLAY(*)" to ::sdl_windowpos_centered_display,
+    "SDL_WINDOWPOS_UNDEFINED_DISPLAY(*)" to ::sdl_windowpos_undefined_display
 )
 
 private fun sdl_button_mask(button: String): String =
@@ -72,4 +78,14 @@ private fun sdl_button_mask(button: String): String =
 
 private fun sdl_uint64_c(value: String): String {
     return value.removePrefix("SDL_UINT64_C(").removeSuffix(")").trim()
+}
+
+private fun sdl_windowpos_centered_display(display: String): String {
+    val value = display.removePrefix("SDL_WINDOWPOS_CENTERED_DISPLAY(").removeSuffix(")").trim()
+    return "WINDOWPOS_CENTERED_MASK | ($value)"
+}
+
+private fun sdl_windowpos_undefined_display(display: String): String {
+    val value = display.removePrefix("SDL_WINDOWPOS_UNDEFINED_DISPLAY(").removeSuffix(")").trim()
+    return "WINDOWPOS_UNDEFINED_MASK | ($value)"
 }

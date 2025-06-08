@@ -28,9 +28,7 @@ import kotlin.io.path.Path
 private val inputDir = Path("codegen-v2/input")
 internal val log = Logger.getLogger("c.d.b.extract.sdl3")
 
-fun extractSDLHeaders(): Registry<EmptyMergeable> {
-    val registry = Registry(ext = EmptyMergeable())
-
+fun extractSDLRegistry(): Registry<EmptyMergeable> {
     val indexFileContent = inputDir.resolve("SDL3-3.2.14/include/SDL3/SDL.h")
         .toFile()
         .readText()
@@ -48,12 +46,27 @@ fun extractSDLHeaders(): Registry<EmptyMergeable> {
     filesToParse.remove("SDL_config.h")
     filesToParse.remove("SDL_oldnames.h")
 
+    val registry = Registry(ext = EmptyMergeable())
+    registry.aliases.putEntityIfAbsent(Typedef("Uint64", "uint64_t"))
+    registry.aliases.putEntityIfAbsent(Typedef("Uint32", "uint32_t"))
+    registry.aliases.putEntityIfAbsent(Typedef("Uint16", "uint16_t"))
+    registry.aliases.putEntityIfAbsent(Typedef("Uint8", "uint8_t"))
+
     for (fileName in filesToParse) {
         val headerRegistry = extractOneSDL3Header(fileName)
         registry += headerRegistry
     }
 
     registry.enumerations.values.forEach(::postprocessEnumeration)
+    registry.renameEntities()
+
+    while (registry.constants.values.any { it.type.ident.original == "INDETERMINATE" }) {
+        val postprocessedConstants = registry.constants.values.map { postprocessConstant(registry, it) }
+        registry.constants.clear()
+        for (constant in postprocessedConstants) {
+            registry.constants.putEntityIfAbsent(constant)
+        }
+    }
 
     return registry
 }
@@ -219,12 +232,8 @@ private fun parseConstDef(
 
     val constant = Constant(
         name = constantName,
-        type = if (constantValue.startsWith('"') && constantValue.endsWith('"')) {
-            IdentifierType("CONSTANTS_JavaString")
-        } else {
-            IdentifierType("uint32_t")
-        },
-        expr = actualConstValue,
+        type = IdentifierType("INDETERMINATE"),
+        expr = actualConstValue
     )
     constant.doc = doc
     registry.constants.putEntityIfAbsent(constant)
