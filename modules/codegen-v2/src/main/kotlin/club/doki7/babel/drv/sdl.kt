@@ -54,7 +54,7 @@ fun main() {
         File("$packageDir/datatype/I${union.name}.java")
             .writeText(render(structureInterfaceDoc))
 
-        val structureDoc = generateStructure(registry, union, false, codegenOptions)
+        val structureDoc = generateStructure(registry, union, true, codegenOptions)
         File("$packageDir/datatype/${union.name}.java")
             .writeText(render(structureDoc))
     }

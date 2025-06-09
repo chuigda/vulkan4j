@@ -335,7 +335,7 @@ public record SDL_HapticEffect(@NotNull MemorySegment segment) implements ISDL_H
         return this;
     }
 
-    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+    public static final UnionLayout LAYOUT = NativeLayout.unionLayout(
         ValueLayout.JAVA_SHORT.withName("type"),
         SDL_HapticConstant.LAYOUT.withName("constant"),
         SDL_HapticPeriodic.LAYOUT.withName("periodic"),

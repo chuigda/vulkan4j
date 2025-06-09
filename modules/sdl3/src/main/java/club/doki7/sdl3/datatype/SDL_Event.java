@@ -750,7 +750,7 @@ public record SDL_Event(@NotNull MemorySegment segment) implements ISDL_Event {
         return segment.asSlice(OFFSET$padding, SIZE$padding);
     }
 
-    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+    public static final UnionLayout LAYOUT = NativeLayout.unionLayout(
         ValueLayout.JAVA_INT.withName("type"),
         SDL_CommonEvent.LAYOUT.withName("common"),
         SDL_DisplayEvent.LAYOUT.withName("display"),

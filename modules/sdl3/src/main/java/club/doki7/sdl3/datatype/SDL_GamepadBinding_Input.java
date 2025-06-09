@@ -206,7 +206,7 @@ public record SDL_GamepadBinding_Input(@NotNull MemorySegment segment) implement
         return this;
     }
 
-    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+    public static final UnionLayout LAYOUT = NativeLayout.unionLayout(
         ValueLayout.JAVA_INT.withName("button"),
         SDL_GamepadBinding_Input_Axis.LAYOUT.withName("axis"),
         SDL_GamepadBinding_Input_Hat.LAYOUT.withName("hat")
