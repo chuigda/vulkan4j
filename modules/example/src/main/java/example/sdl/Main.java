@@ -2,23 +2,28 @@ package example.sdl;
 
 import club.doki7.ffm.Loader;
 import club.doki7.ffm.ptr.BytePtr;
+import club.doki7.ffm.ptr.IntPtr;
+import club.doki7.ffm.ptr.PointerPtr;
 import club.doki7.sdl3.SDL3;
 import club.doki7.sdl3.bitmask.SDL_InitFlags;
 import club.doki7.sdl3.bitmask.SDL_WindowFlags;
+import club.doki7.sdl3.datatype.SDL_AudioSpec;
 import club.doki7.sdl3.datatype.SDL_Event;
 import club.doki7.sdl3.datatype.SDL_Vertex;
 import club.doki7.sdl3.enumtype.SDL_EventType;
+import club.doki7.sdl3.handle.SDL_AudioStream;
 import club.doki7.sdl3.handle.SDL_Renderer;
 import club.doki7.sdl3.handle.SDL_Window;
 
 import java.lang.foreign.Arena;
+import java.lang.foreign.MemorySegment;
 
 public final class Main {
     public static void main(String[] args) {
         System.loadLibrary("sdl3");
         SDL3 sdl = new SDL3(Loader::loadFunctionOrNull);
 
-        sdl.init(SDL_InitFlags.VIDEO);
+        sdl.init(SDL_InitFlags.VIDEO | SDL_InitFlags.AUDIO);
 
         try (Arena arena = Arena.ofConfined()) {
             SDL_Window window = sdl.createWindow(
@@ -35,6 +40,24 @@ public final class Main {
             vertices.at(1).position().x(800).y(600);
             vertices.at(2).color().r(0).g(0).b(1.0f).a(1.0f);
             vertices.at(2).position().x(400).y(0);
+
+            SDL_AudioSpec audioSpec = SDL_AudioSpec.allocate(arena);
+            PointerPtr pBuffer = PointerPtr.allocate(arena);
+            IntPtr pLength = IntPtr.allocate(arena);
+            sdl.loadWAV(
+                    BytePtr.allocateString(arena, "example/resc/private-music.wav"),
+                    audioSpec,
+                    pBuffer,
+                    pLength
+            );
+
+            SDL_AudioStream stream = sdl.openAudioDeviceStream(
+                    SDL3.AUDIO_DEVICE_DEFAULT_PLAYBACK,
+                    audioSpec,
+                    MemorySegment.NULL,
+                    MemorySegment.NULL
+            );
+            sdl.resumeAudioStreamDevice(stream);
 
             boolean quit = false;
             SDL_Event event = SDL_Event.allocate(arena);
@@ -55,6 +78,10 @@ public final class Main {
                 sdl.renderClear(renderer);
                 sdl.renderGeometry(renderer, null, vertices, (int) vertices.size(), null, 0);
                 sdl.renderPresent(renderer);
+
+                if (sdl.getAudioStreamQueued(stream) <= pLength.read()) {
+                    sdl.putAudioStreamData(stream, pBuffer.read(), pLength.read());
+                }
             }
 
             sdl.destroyRenderer(renderer);
