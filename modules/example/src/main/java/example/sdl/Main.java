@@ -29,11 +29,11 @@ public final class Main {
             );
             SDL_Renderer renderer = sdl.createRenderer(window, null);
             SDL_Vertex.Ptr vertices = SDL_Vertex.allocate(arena, 3);
-            vertices.at(0).color().r(1.0f).g(0).b(0).a(255);
+            vertices.at(0).color().r(1.0f).g(0).b(0).a(1.0f);
             vertices.at(0).position().x(0).y(600);
-            vertices.at(1).color().r(0).g(1.0f).b(0).a(255);
+            vertices.at(1).color().r(0).g(1.0f).b(0).a(1.0f);
             vertices.at(1).position().x(800).y(600);
-            vertices.at(2).color().r(0).g(0).b(1.0f).a(255);
+            vertices.at(2).color().r(0).g(0).b(1.0f).a(1.0f);
             vertices.at(2).position().x(400).y(0);
 
             boolean quit = false;
