@@ -256,7 +256,7 @@ final class Application {
                 .mipLevels(1)
                 .arrayLayers(1)
                 .samples(VkSampleCountFlags._1)
-                .tiling(VkImageTiling.OPTIMAL)
+                .tiling(VkImageTiling.LINEAR)
                 .usage(VkImageUsageFlags.STORAGE | VkImageUsageFlags.SAMPLED)
                 .sharingMode(VkSharingMode.EXCLUSIVE);
         VmaAllocationCreateInfo allocationCreateInfo = VmaAllocationCreateInfo.allocate(arena)
