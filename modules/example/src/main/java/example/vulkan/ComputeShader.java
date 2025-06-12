@@ -58,8 +58,17 @@ final class Application {
                 .enabledExtensionCount(1)
                 .ppEnabledExtensionNames(PointerPtr.allocateV(arena, BytePtr.allocateString(arena, VkConstants.EXT_DEBUG_UTILS_EXTENSION_NAME)));
 
-        VkDebugUtilsMessengerCreateInfoEXT debugUtilsMessengerCreateInfo = VkDebugUtilsMessengerCreateInfoEXT.allocate(arena);
-        populateDebugMessengerCreateInfo(debugUtilsMessengerCreateInfo);
+        VkDebugUtilsMessengerCreateInfoEXT debugUtilsMessengerCreateInfo = VkDebugUtilsMessengerCreateInfoEXT.allocate(arena)
+                .messageSeverity(
+                        VkDebugUtilsMessageSeverityFlagsEXT.VERBOSE
+                        | VkDebugUtilsMessageSeverityFlagsEXT.WARNING
+                        | VkDebugUtilsMessageSeverityFlagsEXT.ERROR
+                ).messageType(
+                        VkDebugUtilsMessageTypeFlagsEXT.GENERAL
+                        | VkDebugUtilsMessageTypeFlagsEXT.VALIDATION
+                        | VkDebugUtilsMessageTypeFlagsEXT.PERFORMANCE
+                );
+        debugUtilsMessengerCreateInfo.pfnUserCallback(UPCALL_debugCallback);
         instanceCreateInfo.pNext(debugUtilsMessengerCreateInfo);
 
         VkInstance.Ptr pInstance = VkInstance.Ptr.allocate(arena);
@@ -463,18 +472,6 @@ final class Application {
         var callbackData = new VkDebugUtilsMessengerCallbackDataEXT(pCallbackData.reinterpret(VkDebugUtilsMessengerCallbackDataEXT.BYTES));
         System.err.println("Validation layer: " + Objects.requireNonNull(callbackData.pMessage()).readString());
         return VkConstants.FALSE;
-    }
-
-    private static void populateDebugMessengerCreateInfo(VkDebugUtilsMessengerCreateInfoEXT debugUtilsMessengerCreateInfo) {
-        debugUtilsMessengerCreateInfo.messageSeverity(
-                VkDebugUtilsMessageSeverityFlagsEXT.VERBOSE
-                | VkDebugUtilsMessageSeverityFlagsEXT.WARNING
-                | VkDebugUtilsMessageSeverityFlagsEXT.ERROR
-        ).messageType(
-                VkDebugUtilsMessageTypeFlagsEXT.GENERAL
-                | VkDebugUtilsMessageTypeFlagsEXT.VALIDATION
-                | VkDebugUtilsMessageTypeFlagsEXT.PERFORMANCE
-        ).pfnUserCallback(UPCALL_debugCallback);
     }
 
     private static final String VALIDATION_LAYER_NAME = "VK_LAYER_KHRONOS_validation";
