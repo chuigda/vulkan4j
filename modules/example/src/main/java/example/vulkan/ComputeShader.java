@@ -251,7 +251,7 @@ final class Application {
         // mapped between host and device via a VMA flag.
         VkImageCreateInfo imageCreateInfo = VkImageCreateInfo.allocate(arena)
                 .imageType(VkImageType._2D)
-                .format(VkFormat.R8G8B8A8_UNORM)
+                .format(VkFormat.R32G32B32A32_SFLOAT)
                 .extent(VkExtent3D.allocate(arena).width(256).height(256).depth(1))
                 .mipLevels(1)
                 .arrayLayers(1)
@@ -277,12 +277,12 @@ final class Application {
             throw new RuntimeException("Failed to create image: " + VkResult.explain(result));
         }
         VkImage image = Objects.requireNonNull(pImage.read());
-        BytePtr pMappedData = new BytePtr(allocationInfo.pMappedData().reinterpret(256 * 256 * 4));
+        FloatPtr pMappedData = new FloatPtr(allocationInfo.pMappedData().reinterpret(Float.BYTES * 4 * 256 * 256));
 
         VkImageViewCreateInfo imageViewCreateInfo = VkImageViewCreateInfo.allocate(arena)
                 .image(image) // Use the image created in region 10
                 .viewType(VkImageViewType._2D)
-                .format(VkFormat.R8G8B8A8_UNORM)
+                .format(VkFormat.R32G32B32A32_SFLOAT)
                 .components(VkComponentMapping.allocate(arena) // Optional: identity mapping is default
                         .r(VkComponentSwizzle.IDENTITY)
                         .g(VkComponentSwizzle.IDENTITY)
@@ -429,11 +429,12 @@ final class Application {
         BufferedImage bufferedImage = new BufferedImage(256, 256, BufferedImage.TYPE_INT_ARGB);
         for (int y = 0; y < 256; y++) {
             for (int x = 0; x < 256; x++) {
-                int offset = (y * 256 + x) * 4;
-                int r = pMappedData.read(offset) & 0xFF;
-                int g = pMappedData.read(offset + 1) & 0xFF;
-                int b = pMappedData.read(offset + 2) & 0xFF;
-                int a = pMappedData.read(offset + 3) & 0xFF;
+                int offset = (y * 256 + x) * 4; // 4 floats per pixel (R, G, B, A)
+
+                int r = (int)(pMappedData.read(offset) * 255.0f);
+                int g = (int)(pMappedData.read(offset + 1) * 255.0f);
+                int b = (int)(pMappedData.read(offset + 2) * 255.0f);
+                int a = (int)(pMappedData.read(offset + 3) * 255.0f);
                 bufferedImage.setRGB(x, y, (a << 24) | (r << 16) | (g << 8) | b);
             }
         }
