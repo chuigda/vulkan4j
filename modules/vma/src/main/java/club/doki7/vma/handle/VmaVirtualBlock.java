@@ -1,15 +1,14 @@
 package club.doki7.vma.handle;
 
-import club.doki7.ffm.IPointer;
-import club.doki7.ffm.annotation.Unsafe;
-import club.doki7.ffm.annotation.UnsafeConstructor;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
-
 import java.lang.foreign.*;
-import java.util.Iterator;
 import java.util.List;
+import java.util.Iterator;
 import java.util.NoSuchElementException;
+
+import org.jetbrains.annotations.Nullable;
+import org.jetbrains.annotations.NotNull;
+import club.doki7.ffm.IPointer;
+import club.doki7.ffm.annotation.*;
 
 /// Handle to a virtual block object that allows to use core allocation algorithm without allocating any real GPU memory.
 ///

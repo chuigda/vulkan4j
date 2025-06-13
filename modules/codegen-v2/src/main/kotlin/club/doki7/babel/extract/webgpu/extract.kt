@@ -32,23 +32,33 @@ fun extractWebGPURegistry(): Registry<EmptyMergeable> {
         .toFile()
         .readText()
     val parsedYML = ymlString.parseYML()
-    return parsedYML.extractEntities()
+    var r = parsedYML.extractEntities()
+    r.renameEntities()
+    return r
 }
 
 private fun Map<String, Any>.extractEntities(): Registry<EmptyMergeable> {
     val constants = mutableMapOf<Identifier, Constant>()
+
+    constants.putEntityIfAbsent(Constant("TRUE", IdentifierType("int"), "0x1"))
+    constants.putEntityIfAbsent(Constant("FALSE", IdentifierType("int"), "0x0"))
     this.query("constants").forEach {
         val name = it["name"] as String
         val value = it["value"] as String
         val doc = it["doc"] as String
 
-        val expr = value
-
-        val type =  IdentifierType("int32_t")
-
-        val constant = Constant(name.intern(), type, expr)
-
-        constants[name.intern()] = constant
+        val expr = value.uppercase()
+        val mapping =  constantTypeMappings[expr]
+        val mapping_type = mapping?.javaType
+        val mapping_value = mapping?.javaExpression
+        if (mapping_type != null) {
+            val constant = Constant(name.intern(), mapping_type, mapping_value.toString())
+            constants.putEntityIfAbsent(constant)
+        } else {
+            val constant = Constant(name.intern(), IdentifierType("void"), "null")
+            constants.putEntityIfAbsent(constant)
+            println("$expr 没有在映射表中找到，可能是用户自定义宏")
+        }
     }
     return Registry(
         aliases = mutableMapOf(),
@@ -63,4 +73,5 @@ private fun Map<String, Any>.extractEntities(): Registry<EmptyMergeable> {
         unions = mutableMapOf(),
         ext = EmptyMergeable()
     )
+
 }

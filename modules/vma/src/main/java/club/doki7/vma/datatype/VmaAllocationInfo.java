@@ -1,21 +1,26 @@
 package club.doki7.vma.datatype;
 
+import java.lang.foreign.*;
+import static java.lang.foreign.ValueLayout.*;
+import java.util.List;
+import java.util.Iterator;
+import java.util.NoSuchElementException;
+import java.util.function.Consumer;
+
+import org.jetbrains.annotations.Nullable;
+import org.jetbrains.annotations.NotNull;
 import club.doki7.ffm.IPointer;
 import club.doki7.ffm.NativeLayout;
-import club.doki7.ffm.annotation.Unsafe;
-import club.doki7.ffm.annotation.UnsafeConstructor;
-import club.doki7.ffm.ptr.BytePtr;
-import club.doki7.ffm.ptr.IntPtr;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
-
-import java.lang.foreign.*;
-import java.util.Iterator;
-import java.util.List;
-import java.util.NoSuchElementException;
-
+import club.doki7.ffm.annotation.*;
+import club.doki7.ffm.ptr.*;
+import club.doki7.vma.bitmask.*;
+import club.doki7.vma.handle.*;
+import club.doki7.vma.enumtype.*;
+import club.doki7.vulkan.bitmask.*;
+import club.doki7.vulkan.datatype.*;
+import club.doki7.vulkan.enumtype.*;
+import club.doki7.vulkan.handle.*;
 import static club.doki7.vulkan.VkConstants.*;
-import static java.lang.foreign.ValueLayout.*;
 
 /// Parameters of {@code VmaAllocation} objects, that can be retrieved using function vmaGetAllocationInfo().
 ///

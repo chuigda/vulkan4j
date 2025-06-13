@@ -1,8 +1,8 @@
 package club.doki7.glfw;
 
-import club.doki7.ffm.NativeLayout;
-
 import java.lang.foreign.*;
+import club.doki7.ffm.NativeLayout;
+import club.doki7.glfw.datatype.*;
 
 public final class GLFWFunctionTypes {
     public static final FunctionDescriptor GLFWallocatefun = FunctionDescriptor.of(

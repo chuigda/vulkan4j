@@ -1,18 +1,20 @@
 package club.doki7.glfw.datatype;
 
+import java.lang.foreign.*;
+import static java.lang.foreign.ValueLayout.*;
+import java.util.List;
+import java.util.Iterator;
+import java.util.NoSuchElementException;
+import java.util.function.Consumer;
+
+import org.jetbrains.annotations.Nullable;
+import org.jetbrains.annotations.NotNull;
 import club.doki7.ffm.IPointer;
 import club.doki7.ffm.NativeLayout;
-import club.doki7.ffm.annotation.Unsafe;
-import club.doki7.ffm.annotation.UnsafeConstructor;
-import club.doki7.ffm.ptr.IntPtr;
-import org.jetbrains.annotations.NotNull;
-
-import java.lang.foreign.*;
-import java.util.Iterator;
-import java.util.List;
-import java.util.NoSuchElementException;
-
-import static java.lang.foreign.ValueLayout.*;
+import club.doki7.ffm.annotation.*;
+import club.doki7.ffm.ptr.*;
+import club.doki7.glfw.handle.*;
+import static club.doki7.glfw.GLFWConstants.*;
 
 ///  @brief Video mode type.
 ///

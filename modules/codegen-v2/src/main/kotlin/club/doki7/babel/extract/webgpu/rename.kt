@@ -6,7 +6,7 @@ import club.doki7.babel.registry.Entity
 import club.doki7.babel.registry.Registry
 import java.io.File
 
-private const val renamedEntitiesFile = "codegen-v2/output/openal-renamed-entities.csv"
+private const val renamedEntitiesFile = "codegen-v2/output/webgpu-renamed-entities.csv"
 
 internal fun Registry<EmptyMergeable>.renameEntities() {
     val renamed = mutableMapOf<String, String>()
@@ -29,12 +29,7 @@ internal fun Registry<EmptyMergeable>.renameEntities() {
     })
 }
 
-private fun renameConstant(name: String) = name
-    .removePrefix("AL_")
-    .removePrefix("ALC_")
-    .let { if (it[0].isDigit()) "_${it}" else it }
+private fun renameConstant(name: String) = name.uppercase()
 
 private fun renameCommand(name: String) = name
-    .removePrefix("alc")
-    .removePrefix("al")
-    .ensureLowerCamelCase()
+

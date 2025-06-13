@@ -1,15 +1,14 @@
 package club.doki7.glfw.handle;
 
-import club.doki7.ffm.IPointer;
-import club.doki7.ffm.annotation.Unsafe;
-import club.doki7.ffm.annotation.UnsafeConstructor;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
-
 import java.lang.foreign.*;
-import java.util.Iterator;
 import java.util.List;
+import java.util.Iterator;
 import java.util.NoSuchElementException;
+
+import org.jetbrains.annotations.Nullable;
+import org.jetbrains.annotations.NotNull;
+import club.doki7.ffm.IPointer;
+import club.doki7.ffm.annotation.*;
 
 ///  @brief Opaque monitor object.
 ///

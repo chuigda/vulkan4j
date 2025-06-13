@@ -1,16 +1,19 @@
 package club.doki7.glfw;
 
-import club.doki7.ffm.NativeLayout;
-import club.doki7.ffm.RawFunctionLoader;
-import club.doki7.glfw.datatype.*;
-import club.doki7.glfw.handle.GLFWcursor;
-import club.doki7.glfw.handle.GLFWmonitor;
-import club.doki7.glfw.handle.GLFWwindow;
-import org.jetbrains.annotations.Nullable;
-
 import java.lang.foreign.*;
 import java.lang.invoke.MethodHandle;
 import java.util.Objects;
+
+import org.jetbrains.annotations.Nullable;
+import club.doki7.ffm.NativeLayout;
+import club.doki7.ffm.RawFunctionLoader;
+import club.doki7.ffm.annotation.*;
+import club.doki7.ffm.ptr.*;
+import club.doki7.glfw.datatype.*;
+import club.doki7.glfw.handle.*;
+import club.doki7.vulkan.datatype.*;
+import club.doki7.vulkan.enumtype.*;
+import club.doki7.vulkan.handle.*;
 
 public final class GLFW implements GLFWConstants {
     public GLFW(RawFunctionLoader loader) {
@@ -44,20 +47,10 @@ public final class GLFW implements GLFWConstants {
         HANDLE$glfwGetCurrentContext = RawFunctionLoader.link(SEGMENT$glfwGetCurrentContext, Descriptors.DESCRIPTOR$glfwGetCurrentContext);
         SEGMENT$glfwGetCursorPos = loader.apply("glfwGetCursorPos");
         HANDLE$glfwGetCursorPos = RawFunctionLoader.link(SEGMENT$glfwGetCursorPos, Descriptors.DESCRIPTOR$glfwGetCursorPos);
-        SEGMENT$glfwGetEGLContext = loader.apply("glfwGetEGLContext");
-        HANDLE$glfwGetEGLContext = RawFunctionLoader.link(SEGMENT$glfwGetEGLContext, Descriptors.DESCRIPTOR$glfwGetEGLContext);
-        SEGMENT$glfwGetEGLDisplay = loader.apply("glfwGetEGLDisplay");
-        HANDLE$glfwGetEGLDisplay = RawFunctionLoader.link(SEGMENT$glfwGetEGLDisplay, Descriptors.DESCRIPTOR$glfwGetEGLDisplay);
-        SEGMENT$glfwGetEGLSurface = loader.apply("glfwGetEGLSurface");
-        HANDLE$glfwGetEGLSurface = RawFunctionLoader.link(SEGMENT$glfwGetEGLSurface, Descriptors.DESCRIPTOR$glfwGetEGLSurface);
         SEGMENT$glfwGetError = loader.apply("glfwGetError");
         HANDLE$glfwGetError = RawFunctionLoader.link(SEGMENT$glfwGetError, Descriptors.DESCRIPTOR$glfwGetError);
         SEGMENT$glfwGetFramebufferSize = loader.apply("glfwGetFramebufferSize");
         HANDLE$glfwGetFramebufferSize = RawFunctionLoader.link(SEGMENT$glfwGetFramebufferSize, Descriptors.DESCRIPTOR$glfwGetFramebufferSize);
-        SEGMENT$glfwGetGLXContext = loader.apply("glfwGetGLXContext");
-        HANDLE$glfwGetGLXContext = RawFunctionLoader.link(SEGMENT$glfwGetGLXContext, Descriptors.DESCRIPTOR$glfwGetGLXContext);
-        SEGMENT$glfwGetGLXWindow = loader.apply("glfwGetGLXWindow");
-        HANDLE$glfwGetGLXWindow = RawFunctionLoader.link(SEGMENT$glfwGetGLXWindow, Descriptors.DESCRIPTOR$glfwGetGLXWindow);
         SEGMENT$glfwGetGamepadName = loader.apply("glfwGetGamepadName");
         HANDLE$glfwGetGamepadName = RawFunctionLoader.link(SEGMENT$glfwGetGamepadName, Descriptors.DESCRIPTOR$glfwGetGamepadName);
         SEGMENT$glfwGetGamepadState = loader.apply("glfwGetGamepadState");
@@ -104,12 +97,6 @@ public final class GLFW implements GLFWConstants {
         HANDLE$glfwGetMouseButton = RawFunctionLoader.link(SEGMENT$glfwGetMouseButton, Descriptors.DESCRIPTOR$glfwGetMouseButton);
         SEGMENT$glfwGetNSGLContext = loader.apply("glfwGetNSGLContext");
         HANDLE$glfwGetNSGLContext = RawFunctionLoader.link(SEGMENT$glfwGetNSGLContext, Descriptors.DESCRIPTOR$glfwGetNSGLContext);
-        SEGMENT$glfwGetOSMesaColorBuffer = loader.apply("glfwGetOSMesaColorBuffer");
-        HANDLE$glfwGetOSMesaColorBuffer = RawFunctionLoader.link(SEGMENT$glfwGetOSMesaColorBuffer, Descriptors.DESCRIPTOR$glfwGetOSMesaColorBuffer);
-        SEGMENT$glfwGetOSMesaContext = loader.apply("glfwGetOSMesaContext");
-        HANDLE$glfwGetOSMesaContext = RawFunctionLoader.link(SEGMENT$glfwGetOSMesaContext, Descriptors.DESCRIPTOR$glfwGetOSMesaContext);
-        SEGMENT$glfwGetOSMesaDepthBuffer = loader.apply("glfwGetOSMesaDepthBuffer");
-        HANDLE$glfwGetOSMesaDepthBuffer = RawFunctionLoader.link(SEGMENT$glfwGetOSMesaDepthBuffer, Descriptors.DESCRIPTOR$glfwGetOSMesaDepthBuffer);
         SEGMENT$glfwGetPhysicalDevicePresentationSupport = loader.apply("glfwGetPhysicalDevicePresentationSupport");
         HANDLE$glfwGetPhysicalDevicePresentationSupport = RawFunctionLoader.link(SEGMENT$glfwGetPhysicalDevicePresentationSupport, Descriptors.DESCRIPTOR$glfwGetPhysicalDevicePresentationSupport);
         SEGMENT$glfwGetPlatform = loader.apply("glfwGetPlatform");
@@ -136,12 +123,6 @@ public final class GLFW implements GLFWConstants {
         HANDLE$glfwGetVideoModes = RawFunctionLoader.link(SEGMENT$glfwGetVideoModes, Descriptors.DESCRIPTOR$glfwGetVideoModes);
         SEGMENT$glfwGetWGLContext = loader.apply("glfwGetWGLContext");
         HANDLE$glfwGetWGLContext = RawFunctionLoader.link(SEGMENT$glfwGetWGLContext, Descriptors.DESCRIPTOR$glfwGetWGLContext);
-        SEGMENT$glfwGetWaylandDisplay = loader.apply("glfwGetWaylandDisplay");
-        HANDLE$glfwGetWaylandDisplay = RawFunctionLoader.link(SEGMENT$glfwGetWaylandDisplay, Descriptors.DESCRIPTOR$glfwGetWaylandDisplay);
-        SEGMENT$glfwGetWaylandMonitor = loader.apply("glfwGetWaylandMonitor");
-        HANDLE$glfwGetWaylandMonitor = RawFunctionLoader.link(SEGMENT$glfwGetWaylandMonitor, Descriptors.DESCRIPTOR$glfwGetWaylandMonitor);
-        SEGMENT$glfwGetWaylandWindow = loader.apply("glfwGetWaylandWindow");
-        HANDLE$glfwGetWaylandWindow = RawFunctionLoader.link(SEGMENT$glfwGetWaylandWindow, Descriptors.DESCRIPTOR$glfwGetWaylandWindow);
         SEGMENT$glfwGetWin32Adapter = loader.apply("glfwGetWin32Adapter");
         HANDLE$glfwGetWin32Adapter = RawFunctionLoader.link(SEGMENT$glfwGetWin32Adapter, Descriptors.DESCRIPTOR$glfwGetWin32Adapter);
         SEGMENT$glfwGetWin32Monitor = loader.apply("glfwGetWin32Monitor");
@@ -172,10 +153,6 @@ public final class GLFW implements GLFWConstants {
         HANDLE$glfwGetX11Display = RawFunctionLoader.link(SEGMENT$glfwGetX11Display, Descriptors.DESCRIPTOR$glfwGetX11Display);
         SEGMENT$glfwGetX11Monitor = loader.apply("glfwGetX11Monitor");
         HANDLE$glfwGetX11Monitor = RawFunctionLoader.link(SEGMENT$glfwGetX11Monitor, Descriptors.DESCRIPTOR$glfwGetX11Monitor);
-        SEGMENT$glfwGetX11SelectionString = loader.apply("glfwGetX11SelectionString");
-        HANDLE$glfwGetX11SelectionString = RawFunctionLoader.link(SEGMENT$glfwGetX11SelectionString, Descriptors.DESCRIPTOR$glfwGetX11SelectionString);
-        SEGMENT$glfwGetX11Window = loader.apply("glfwGetX11Window");
-        HANDLE$glfwGetX11Window = RawFunctionLoader.link(SEGMENT$glfwGetX11Window, Descriptors.DESCRIPTOR$glfwGetX11Window);
         SEGMENT$glfwHideWindow = loader.apply("glfwHideWindow");
         HANDLE$glfwHideWindow = RawFunctionLoader.link(SEGMENT$glfwHideWindow, Descriptors.DESCRIPTOR$glfwHideWindow);
         SEGMENT$glfwIconifyWindow = loader.apply("glfwIconifyWindow");
@@ -288,8 +265,6 @@ public final class GLFW implements GLFWConstants {
         HANDLE$glfwSetWindowTitle = RawFunctionLoader.link(SEGMENT$glfwSetWindowTitle, Descriptors.DESCRIPTOR$glfwSetWindowTitle);
         SEGMENT$glfwSetWindowUserPointer = loader.apply("glfwSetWindowUserPointer");
         HANDLE$glfwSetWindowUserPointer = RawFunctionLoader.link(SEGMENT$glfwSetWindowUserPointer, Descriptors.DESCRIPTOR$glfwSetWindowUserPointer);
-        SEGMENT$glfwSetX11SelectionString = loader.apply("glfwSetX11SelectionString");
-        HANDLE$glfwSetX11SelectionString = RawFunctionLoader.link(SEGMENT$glfwSetX11SelectionString, Descriptors.DESCRIPTOR$glfwSetX11SelectionString);
         SEGMENT$glfwShowWindow = loader.apply("glfwShowWindow");
         HANDLE$glfwShowWindow = RawFunctionLoader.link(SEGMENT$glfwShowWindow, Descriptors.DESCRIPTOR$glfwShowWindow);
         SEGMENT$glfwSwapBuffers = loader.apply("glfwSwapBuffers");
@@ -1084,86 +1059,6 @@ public final class GLFW implements GLFWConstants {
         }
     }
 
-    ///  @brief Returns the `EGLContext` of the specified window.
-    ///
-    ///  @return The `EGLContext` of the specified window, or `EGL_NO_CONTEXT` if an
-    ///  [error](@ref error_handling) occurred.
-    ///
-    ///  @errors Possible errors include @ref GLFW_NOT_INITIALIZED and @ref
-    ///  GLFW_NO_WINDOW_CONTEXT.
-    ///
-    ///  @thread_safety This function may be called from any thread.  Access is not
-    ///  synchronized.
-    ///
-    ///  @since Added in version 3.0.
-    ///
-    ///  @ingroup native
-    public @Pointer(comment="EGLContext") MemorySegment getEGLContext(
-        @Nullable GLFWwindow window
-    ) {
-        MethodHandle hFunction = Objects.requireNonNull(HANDLE$glfwGetEGLContext);
-        try {
-            return (MemorySegment) hFunction.invokeExact(
-                (MemorySegment) (window != null ? window.segment() : MemorySegment.NULL)
-            );
-        } catch (Throwable e) {
-            throw new RuntimeException(e);
-        }
-    }
-
-    ///  @brief Returns the `EGLDisplay` used by GLFW.
-    ///
-    ///  @return The `EGLDisplay` used by GLFW, or `EGL_NO_DISPLAY` if an
-    ///  [error](@ref error_handling) occurred.
-    ///
-    ///  @errors Possible errors include @ref GLFW_NOT_INITIALIZED.
-    ///
-    ///  @remark Because EGL is initialized on demand, this function will return
-    ///  `EGL_NO_DISPLAY` until the first context has been created via EGL.
-    ///
-    ///  @thread_safety This function may be called from any thread.  Access is not
-    ///  synchronized.
-    ///
-    ///  @since Added in version 3.0.
-    ///
-    ///  @ingroup native
-    public @Pointer(comment="EGLDisplay") MemorySegment getEGLDisplay() {
-        MethodHandle hFunction = Objects.requireNonNull(HANDLE$glfwGetEGLDisplay);
-        try {
-            return (MemorySegment) hFunction.invokeExact(
-            );
-        } catch (Throwable e) {
-            throw new RuntimeException(e);
-        }
-    }
-
-    ///  @brief Returns the `EGLSurface` of the specified window.
-    ///
-    ///  @return The `EGLSurface` of the specified window, or `EGL_NO_SURFACE` if an
-    ///  [error](@ref error_handling) occurred.
-    ///
-    ///  @errors Possible errors include @ref GLFW_NOT_INITIALIZED and @ref
-    ///  GLFW_NO_WINDOW_CONTEXT.
-    ///
-    ///  @thread_safety This function may be called from any thread.  Access is not
-    ///  synchronized.
-    ///
-    ///  @since Added in version 3.0.
-    ///
-    ///  @ingroup native
-    public @Pointer(comment="EGLSurface") MemorySegment getEGLSurface(
-        @Nullable GLFWwindow window
-    ) {
-        MethodHandle hFunction = Objects.requireNonNull(HANDLE$glfwGetEGLSurface);
-        try {
-            return (MemorySegment) hFunction.invokeExact(
-                (MemorySegment) (window != null ? window.segment() : MemorySegment.NULL)
-            );
-        } catch (Throwable e) {
-            throw new RuntimeException(e);
-        }
-    }
-
     ///  @brief Returns and clears the last error for the calling thread.
     ///
     ///  This function returns and clears the [error code](@ref errors) of the last
@@ -1242,60 +1137,6 @@ public final class GLFW implements GLFWConstants {
                 (MemorySegment) (window != null ? window.segment() : MemorySegment.NULL),
                 (MemorySegment) (width != null ? width.segment() : MemorySegment.NULL),
                 (MemorySegment) (height != null ? height.segment() : MemorySegment.NULL)
-            );
-        } catch (Throwable e) {
-            throw new RuntimeException(e);
-        }
-    }
-
-    ///  @brief Returns the `GLXContext` of the specified window.
-    ///
-    ///  @return The `GLXContext` of the specified window, or `NULL` if an
-    ///  [error](@ref error_handling) occurred.
-    ///
-    ///  @errors Possible errors include @ref GLFW_NOT_INITIALIZED, @ref
-    ///  GLFW_NO_WINDOW_CONTEXT and @ref GLFW_PLATFORM_UNAVAILABLE.
-    ///
-    ///  @thread_safety This function may be called from any thread.  Access is not
-    ///  synchronized.
-    ///
-    ///  @since Added in version 3.0.
-    ///
-    ///  @ingroup native
-    public @Pointer(comment="GLXContext") MemorySegment getGLXContext(
-        @Nullable GLFWwindow window
-    ) {
-        MethodHandle hFunction = Objects.requireNonNull(HANDLE$glfwGetGLXContext);
-        try {
-            return (MemorySegment) hFunction.invokeExact(
-                (MemorySegment) (window != null ? window.segment() : MemorySegment.NULL)
-            );
-        } catch (Throwable e) {
-            throw new RuntimeException(e);
-        }
-    }
-
-    ///  @brief Returns the `GLXWindow` of the specified window.
-    ///
-    ///  @return The `GLXWindow` of the specified window, or `None` if an
-    ///  [error](@ref error_handling) occurred.
-    ///
-    ///  @errors Possible errors include @ref GLFW_NOT_INITIALIZED, @ref
-    ///  GLFW_NO_WINDOW_CONTEXT and @ref GLFW_PLATFORM_UNAVAILABLE.
-    ///
-    ///  @thread_safety This function may be called from any thread.  Access is not
-    ///  synchronized.
-    ///
-    ///  @since Added in version 3.2.
-    ///
-    ///  @ingroup native
-    public @NativeType("GLXWindow") long getGLXWindow(
-        @Nullable GLFWwindow window
-    ) {
-        MethodHandle hFunction = Objects.requireNonNull(HANDLE$glfwGetGLXWindow);
-        try {
-            return (long) hFunction.invokeExact(
-                (MemorySegment) (window != null ? window.segment() : MemorySegment.NULL)
             );
         } catch (Throwable e) {
             throw new RuntimeException(e);
@@ -2358,117 +2199,6 @@ public final class GLFW implements GLFWConstants {
         }
     }
 
-    ///  @brief Retrieves the color buffer associated with the specified window.
-    ///
-    ///  @param[in] window The window whose color buffer to retrieve.
-    ///  @param[out] width Where to store the width of the color buffer, or `NULL`.
-    ///  @param[out] height Where to store the height of the color buffer, or `NULL`.
-    ///  @param[out] format Where to store the OSMesa pixel format of the color
-    ///  buffer, or `NULL`.
-    ///  @param[out] buffer Where to store the address of the color buffer, or
-    ///  `NULL`.
-    ///  @return `GLFW_TRUE` if successful, or `GLFW_FALSE` if an
-    ///  [error](@ref error_handling) occurred.
-    ///
-    ///  @errors Possible errors include @ref GLFW_NOT_INITIALIZED and @ref
-    ///  GLFW_NO_WINDOW_CONTEXT.
-    ///
-    ///  @thread_safety This function may be called from any thread.  Access is not
-    ///  synchronized.
-    ///
-    ///  @since Added in version 3.3.
-    ///
-    ///  @ingroup native
-    public int getOSMesaColorBuffer(
-        @Nullable GLFWwindow window,
-        @Nullable IntPtr width,
-        @Nullable IntPtr height,
-        @Nullable IntPtr format,
-        @Nullable PointerPtr buffer
-    ) {
-        MethodHandle hFunction = Objects.requireNonNull(HANDLE$glfwGetOSMesaColorBuffer);
-        try {
-            return (int) hFunction.invokeExact(
-                (MemorySegment) (window != null ? window.segment() : MemorySegment.NULL),
-                (MemorySegment) (width != null ? width.segment() : MemorySegment.NULL),
-                (MemorySegment) (height != null ? height.segment() : MemorySegment.NULL),
-                (MemorySegment) (format != null ? format.segment() : MemorySegment.NULL),
-                (MemorySegment) (buffer != null ? buffer.segment() : MemorySegment.NULL)
-            );
-        } catch (Throwable e) {
-            throw new RuntimeException(e);
-        }
-    }
-
-    ///  @brief Returns the `OSMesaContext` of the specified window.
-    ///
-    ///  @return The `OSMesaContext` of the specified window, or `NULL` if an
-    ///  [error](@ref error_handling) occurred.
-    ///
-    ///  @errors Possible errors include @ref GLFW_NOT_INITIALIZED and @ref
-    ///  GLFW_NO_WINDOW_CONTEXT.
-    ///
-    ///  @thread_safety This function may be called from any thread.  Access is not
-    ///  synchronized.
-    ///
-    ///  @since Added in version 3.3.
-    ///
-    ///  @ingroup native
-    public @Pointer(comment="OSMesaContext") MemorySegment getOSMesaContext(
-        @Nullable GLFWwindow window
-    ) {
-        MethodHandle hFunction = Objects.requireNonNull(HANDLE$glfwGetOSMesaContext);
-        try {
-            return (MemorySegment) hFunction.invokeExact(
-                (MemorySegment) (window != null ? window.segment() : MemorySegment.NULL)
-            );
-        } catch (Throwable e) {
-            throw new RuntimeException(e);
-        }
-    }
-
-    ///  @brief Retrieves the depth buffer associated with the specified window.
-    ///
-    ///  @param[in] window The window whose depth buffer to retrieve.
-    ///  @param[out] width Where to store the width of the depth buffer, or `NULL`.
-    ///  @param[out] height Where to store the height of the depth buffer, or `NULL`.
-    ///  @param[out] bytesPerValue Where to store the number of bytes per depth
-    ///  buffer element, or `NULL`.
-    ///  @param[out] buffer Where to store the address of the depth buffer, or
-    ///  `NULL`.
-    ///  @return `GLFW_TRUE` if successful, or `GLFW_FALSE` if an
-    ///  [error](@ref error_handling) occurred.
-    ///
-    ///  @errors Possible errors include @ref GLFW_NOT_INITIALIZED and @ref
-    ///  GLFW_NO_WINDOW_CONTEXT.
-    ///
-    ///  @thread_safety This function may be called from any thread.  Access is not
-    ///  synchronized.
-    ///
-    ///  @since Added in version 3.3.
-    ///
-    ///  @ingroup native
-    public int getOSMesaDepthBuffer(
-        @Nullable GLFWwindow window,
-        @Nullable IntPtr width,
-        @Nullable IntPtr height,
-        @Nullable IntPtr bytesPerValue,
-        @Nullable PointerPtr buffer
-    ) {
-        MethodHandle hFunction = Objects.requireNonNull(HANDLE$glfwGetOSMesaDepthBuffer);
-        try {
-            return (int) hFunction.invokeExact(
-                (MemorySegment) (window != null ? window.segment() : MemorySegment.NULL),
-                (MemorySegment) (width != null ? width.segment() : MemorySegment.NULL),
-                (MemorySegment) (height != null ? height.segment() : MemorySegment.NULL),
-                (MemorySegment) (bytesPerValue != null ? bytesPerValue.segment() : MemorySegment.NULL),
-                (MemorySegment) (buffer != null ? buffer.segment() : MemorySegment.NULL)
-            );
-        } catch (Throwable e) {
-            throw new RuntimeException(e);
-        }
-    }
-
     ///  @brief Returns whether the specified queue family can present images.
     ///
     ///  This function returns whether the specified queue family of the specified
@@ -2979,86 +2709,6 @@ public final class GLFW implements GLFWConstants {
             return (MemorySegment) hFunction.invokeExact(
                 (MemorySegment) (window != null ? window.segment() : MemorySegment.NULL)
             );
-        } catch (Throwable e) {
-            throw new RuntimeException(e);
-        }
-    }
-
-    ///  @brief Returns the `struct wl_display*` used by GLFW.
-    ///
-    ///  @return The `struct wl_display*` used by GLFW, or `NULL` if an
-    ///  [error](@ref error_handling) occurred.
-    ///
-    ///  @errors Possible errors include @ref GLFW_NOT_INITIALIZED and @ref
-    ///  GLFW_PLATFORM_UNAVAILABLE.
-    ///
-    ///  @thread_safety This function may be called from any thread.  Access is not
-    ///  synchronized.
-    ///
-    ///  @since Added in version 3.2.
-    ///
-    ///  @ingroup native
-    public PointerPtr getWaylandDisplay() {
-        MethodHandle hFunction = Objects.requireNonNull(HANDLE$glfwGetWaylandDisplay);
-        try {
-            MemorySegment s = (MemorySegment) hFunction.invokeExact(
-            );
-            return s.equals(MemorySegment.NULL) ? null : new PointerPtr(s);
-        } catch (Throwable e) {
-            throw new RuntimeException(e);
-        }
-    }
-
-    ///  @brief Returns the `struct wl_output*` of the specified monitor.
-    ///
-    ///  @return The `struct wl_output*` of the specified monitor, or `NULL` if an
-    ///  [error](@ref error_handling) occurred.
-    ///
-    ///  @errors Possible errors include @ref GLFW_NOT_INITIALIZED and @ref
-    ///  GLFW_PLATFORM_UNAVAILABLE.
-    ///
-    ///  @thread_safety This function may be called from any thread.  Access is not
-    ///  synchronized.
-    ///
-    ///  @since Added in version 3.2.
-    ///
-    ///  @ingroup native
-    public @Pointer(comment="void*") MemorySegment getWaylandMonitor(
-        @Nullable GLFWmonitor monitor
-    ) {
-        MethodHandle hFunction = Objects.requireNonNull(HANDLE$glfwGetWaylandMonitor);
-        try {
-            return (MemorySegment) hFunction.invokeExact(
-                (MemorySegment) (monitor != null ? monitor.segment() : MemorySegment.NULL)
-            );
-        } catch (Throwable e) {
-            throw new RuntimeException(e);
-        }
-    }
-
-    ///  @brief Returns the main `struct wl_surface*` of the specified window.
-    ///
-    ///  @return The main `struct wl_surface*` of the specified window, or `NULL` if
-    ///  an [error](@ref error_handling) occurred.
-    ///
-    ///  @errors Possible errors include @ref GLFW_NOT_INITIALIZED and @ref
-    ///  GLFW_PLATFORM_UNAVAILABLE.
-    ///
-    ///  @thread_safety This function may be called from any thread.  Access is not
-    ///  synchronized.
-    ///
-    ///  @since Added in version 3.2.
-    ///
-    ///  @ingroup native
-    public PointerPtr getWaylandWindow(
-        @Nullable GLFWwindow window
-    ) {
-        MethodHandle hFunction = Objects.requireNonNull(HANDLE$glfwGetWaylandWindow);
-        try {
-            MemorySegment s = (MemorySegment) hFunction.invokeExact(
-                (MemorySegment) (window != null ? window.segment() : MemorySegment.NULL)
-            );
-            return s.equals(MemorySegment.NULL) ? null : new PointerPtr(s);
         } catch (Throwable e) {
             throw new RuntimeException(e);
         }
@@ -3615,69 +3265,6 @@ public final class GLFW implements GLFWConstants {
         try {
             return (long) hFunction.invokeExact(
                 (MemorySegment) (monitor != null ? monitor.segment() : MemorySegment.NULL)
-            );
-        } catch (Throwable e) {
-            throw new RuntimeException(e);
-        }
-    }
-
-    ///  @brief Returns the contents of the current primary selection as a string.
-    ///
-    ///  If the selection is empty or if its contents cannot be converted, `NULL`
-    ///  is returned and a @ref GLFW_FORMAT_UNAVAILABLE error is generated.
-    ///
-    ///  @return The contents of the selection as a UTF-8 encoded string, or `NULL`
-    ///  if an [error](@ref error_handling) occurred.
-    ///
-    ///  @errors Possible errors include @ref GLFW_NOT_INITIALIZED, @ref
-    ///  GLFW_PLATFORM_UNAVAILABLE and @ref GLFW_PLATFORM_ERROR.
-    ///
-    ///  @pointer_lifetime The returned string is allocated and freed by GLFW. You
-    ///  should not free it yourself. It is valid until the next call to @ref
-    ///  glfwGetX11SelectionString or @ref glfwSetX11SelectionString, or until the
-    ///  library is terminated.
-    ///
-    ///  @thread_safety This function must only be called from the main thread.
-    ///
-    ///  @sa @ref clipboard
-    ///  @sa glfwSetX11SelectionString
-    ///  @sa glfwGetClipboardString
-    ///
-    ///  @since Added in version 3.3.
-    ///
-    ///  @ingroup native
-    public BytePtr getX11SelectionString() {
-        MethodHandle hFunction = Objects.requireNonNull(HANDLE$glfwGetX11SelectionString);
-        try {
-            MemorySegment s = (MemorySegment) hFunction.invokeExact(
-            );
-            return s.equals(MemorySegment.NULL) ? null : new BytePtr(s);
-        } catch (Throwable e) {
-            throw new RuntimeException(e);
-        }
-    }
-
-    ///  @brief Returns the `Window` of the specified window.
-    ///
-    ///  @return The `Window` of the specified window, or `None` if an
-    ///  [error](@ref error_handling) occurred.
-    ///
-    ///  @errors Possible errors include @ref GLFW_NOT_INITIALIZED and @ref
-    ///  GLFW_PLATFORM_UNAVAILABLE.
-    ///
-    ///  @thread_safety This function may be called from any thread.  Access is not
-    ///  synchronized.
-    ///
-    ///  @since Added in version 3.0.
-    ///
-    ///  @ingroup native
-    public @NativeType("Window") long getX11Window(
-        @Nullable GLFWwindow window
-    ) {
-        MethodHandle hFunction = Objects.requireNonNull(HANDLE$glfwGetX11Window);
-        try {
-            return (long) hFunction.invokeExact(
-                (MemorySegment) (window != null ? window.segment() : MemorySegment.NULL)
             );
         } catch (Throwable e) {
             throw new RuntimeException(e);
@@ -6286,38 +5873,6 @@ public final class GLFW implements GLFWConstants {
         }
     }
 
-    ///  @brief Sets the current primary selection to the specified string.
-    ///
-    ///  @param[in] string A UTF-8 encoded string.
-    ///
-    ///  @errors Possible errors include @ref GLFW_NOT_INITIALIZED, @ref
-    ///  GLFW_PLATFORM_UNAVAILABLE and @ref GLFW_PLATFORM_ERROR.
-    ///
-    ///  @pointer_lifetime The specified string is copied before this function
-    ///  returns.
-    ///
-    ///  @thread_safety This function must only be called from the main thread.
-    ///
-    ///  @sa @ref clipboard
-    ///  @sa glfwGetX11SelectionString
-    ///  @sa glfwSetClipboardString
-    ///
-    ///  @since Added in version 3.3.
-    ///
-    ///  @ingroup native
-    public void setX11SelectionString(
-        @Nullable BytePtr string
-    ) {
-        MethodHandle hFunction = Objects.requireNonNull(HANDLE$glfwSetX11SelectionString);
-        try {
-            hFunction.invokeExact(
-                (MemorySegment) (string != null ? string.segment() : MemorySegment.NULL)
-            );
-        } catch (Throwable e) {
-            throw new RuntimeException(e);
-        }
-    }
-
     ///  @brief Makes the specified window visible.
     ///
     ///  This function makes the specified window visible if it was previously
@@ -6833,13 +6388,8 @@ public final class GLFW implements GLFWConstants {
     public final @Nullable MemorySegment SEGMENT$glfwGetCocoaWindow;
     public final @Nullable MemorySegment SEGMENT$glfwGetCurrentContext;
     public final @Nullable MemorySegment SEGMENT$glfwGetCursorPos;
-    public final @Nullable MemorySegment SEGMENT$glfwGetEGLContext;
-    public final @Nullable MemorySegment SEGMENT$glfwGetEGLDisplay;
-    public final @Nullable MemorySegment SEGMENT$glfwGetEGLSurface;
     public final @Nullable MemorySegment SEGMENT$glfwGetError;
     public final @Nullable MemorySegment SEGMENT$glfwGetFramebufferSize;
-    public final @Nullable MemorySegment SEGMENT$glfwGetGLXContext;
-    public final @Nullable MemorySegment SEGMENT$glfwGetGLXWindow;
     public final @Nullable MemorySegment SEGMENT$glfwGetGamepadName;
     public final @Nullable MemorySegment SEGMENT$glfwGetGamepadState;
     public final @Nullable MemorySegment SEGMENT$glfwGetGammaRamp;
@@ -6863,9 +6413,6 @@ public final class GLFW implements GLFWConstants {
     public final @Nullable MemorySegment SEGMENT$glfwGetMonitors;
     public final @Nullable MemorySegment SEGMENT$glfwGetMouseButton;
     public final @Nullable MemorySegment SEGMENT$glfwGetNSGLContext;
-    public final @Nullable MemorySegment SEGMENT$glfwGetOSMesaColorBuffer;
-    public final @Nullable MemorySegment SEGMENT$glfwGetOSMesaContext;
-    public final @Nullable MemorySegment SEGMENT$glfwGetOSMesaDepthBuffer;
     public final @Nullable MemorySegment SEGMENT$glfwGetPhysicalDevicePresentationSupport;
     public final @Nullable MemorySegment SEGMENT$glfwGetPlatform;
     public final @Nullable MemorySegment SEGMENT$glfwGetPrimaryMonitor;
@@ -6879,9 +6426,6 @@ public final class GLFW implements GLFWConstants {
     public final @Nullable MemorySegment SEGMENT$glfwGetVideoMode;
     public final @Nullable MemorySegment SEGMENT$glfwGetVideoModes;
     public final @Nullable MemorySegment SEGMENT$glfwGetWGLContext;
-    public final @Nullable MemorySegment SEGMENT$glfwGetWaylandDisplay;
-    public final @Nullable MemorySegment SEGMENT$glfwGetWaylandMonitor;
-    public final @Nullable MemorySegment SEGMENT$glfwGetWaylandWindow;
     public final @Nullable MemorySegment SEGMENT$glfwGetWin32Adapter;
     public final @Nullable MemorySegment SEGMENT$glfwGetWin32Monitor;
     public final @Nullable MemorySegment SEGMENT$glfwGetWin32Window;
@@ -6897,8 +6441,6 @@ public final class GLFW implements GLFWConstants {
     public final @Nullable MemorySegment SEGMENT$glfwGetX11Adapter;
     public final @Nullable MemorySegment SEGMENT$glfwGetX11Display;
     public final @Nullable MemorySegment SEGMENT$glfwGetX11Monitor;
-    public final @Nullable MemorySegment SEGMENT$glfwGetX11SelectionString;
-    public final @Nullable MemorySegment SEGMENT$glfwGetX11Window;
     public final @Nullable MemorySegment SEGMENT$glfwHideWindow;
     public final @Nullable MemorySegment SEGMENT$glfwIconifyWindow;
     public final @Nullable MemorySegment SEGMENT$glfwInit;
@@ -6955,7 +6497,6 @@ public final class GLFW implements GLFWConstants {
     public final @Nullable MemorySegment SEGMENT$glfwSetWindowSizeLimits;
     public final @Nullable MemorySegment SEGMENT$glfwSetWindowTitle;
     public final @Nullable MemorySegment SEGMENT$glfwSetWindowUserPointer;
-    public final @Nullable MemorySegment SEGMENT$glfwSetX11SelectionString;
     public final @Nullable MemorySegment SEGMENT$glfwShowWindow;
     public final @Nullable MemorySegment SEGMENT$glfwSwapBuffers;
     public final @Nullable MemorySegment SEGMENT$glfwSwapInterval;
@@ -6982,13 +6523,8 @@ public final class GLFW implements GLFWConstants {
     public final @Nullable MethodHandle HANDLE$glfwGetCocoaWindow;
     public final @Nullable MethodHandle HANDLE$glfwGetCurrentContext;
     public final @Nullable MethodHandle HANDLE$glfwGetCursorPos;
-    public final @Nullable MethodHandle HANDLE$glfwGetEGLContext;
-    public final @Nullable MethodHandle HANDLE$glfwGetEGLDisplay;
-    public final @Nullable MethodHandle HANDLE$glfwGetEGLSurface;
     public final @Nullable MethodHandle HANDLE$glfwGetError;
     public final @Nullable MethodHandle HANDLE$glfwGetFramebufferSize;
-    public final @Nullable MethodHandle HANDLE$glfwGetGLXContext;
-    public final @Nullable MethodHandle HANDLE$glfwGetGLXWindow;
     public final @Nullable MethodHandle HANDLE$glfwGetGamepadName;
     public final @Nullable MethodHandle HANDLE$glfwGetGamepadState;
     public final @Nullable MethodHandle HANDLE$glfwGetGammaRamp;
@@ -7012,9 +6548,6 @@ public final class GLFW implements GLFWConstants {
     public final @Nullable MethodHandle HANDLE$glfwGetMonitors;
     public final @Nullable MethodHandle HANDLE$glfwGetMouseButton;
     public final @Nullable MethodHandle HANDLE$glfwGetNSGLContext;
-    public final @Nullable MethodHandle HANDLE$glfwGetOSMesaColorBuffer;
-    public final @Nullable MethodHandle HANDLE$glfwGetOSMesaContext;
-    public final @Nullable MethodHandle HANDLE$glfwGetOSMesaDepthBuffer;
     public final @Nullable MethodHandle HANDLE$glfwGetPhysicalDevicePresentationSupport;
     public final @Nullable MethodHandle HANDLE$glfwGetPlatform;
     public final @Nullable MethodHandle HANDLE$glfwGetPrimaryMonitor;
@@ -7028,9 +6561,6 @@ public final class GLFW implements GLFWConstants {
     public final @Nullable MethodHandle HANDLE$glfwGetVideoMode;
     public final @Nullable MethodHandle HANDLE$glfwGetVideoModes;
     public final @Nullable MethodHandle HANDLE$glfwGetWGLContext;
-    public final @Nullable MethodHandle HANDLE$glfwGetWaylandDisplay;
-    public final @Nullable MethodHandle HANDLE$glfwGetWaylandMonitor;
-    public final @Nullable MethodHandle HANDLE$glfwGetWaylandWindow;
     public final @Nullable MethodHandle HANDLE$glfwGetWin32Adapter;
     public final @Nullable MethodHandle HANDLE$glfwGetWin32Monitor;
     public final @Nullable MethodHandle HANDLE$glfwGetWin32Window;
@@ -7046,8 +6576,6 @@ public final class GLFW implements GLFWConstants {
     public final @Nullable MethodHandle HANDLE$glfwGetX11Adapter;
     public final @Nullable MethodHandle HANDLE$glfwGetX11Display;
     public final @Nullable MethodHandle HANDLE$glfwGetX11Monitor;
-    public final @Nullable MethodHandle HANDLE$glfwGetX11SelectionString;
-    public final @Nullable MethodHandle HANDLE$glfwGetX11Window;
     public final @Nullable MethodHandle HANDLE$glfwHideWindow;
     public final @Nullable MethodHandle HANDLE$glfwIconifyWindow;
     public final @Nullable MethodHandle HANDLE$glfwInit;
@@ -7104,7 +6632,6 @@ public final class GLFW implements GLFWConstants {
     public final @Nullable MethodHandle HANDLE$glfwSetWindowSizeLimits;
     public final @Nullable MethodHandle HANDLE$glfwSetWindowTitle;
     public final @Nullable MethodHandle HANDLE$glfwSetWindowUserPointer;
-    public final @Nullable MethodHandle HANDLE$glfwSetX11SelectionString;
     public final @Nullable MethodHandle HANDLE$glfwShowWindow;
     public final @Nullable MethodHandle HANDLE$glfwSwapBuffers;
     public final @Nullable MethodHandle HANDLE$glfwSwapInterval;
@@ -7198,20 +6725,6 @@ public final class GLFW implements GLFWConstants {
             ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_DOUBLE)
         );
 
-        public static final FunctionDescriptor DESCRIPTOR$glfwGetEGLContext = FunctionDescriptor.of(
-            ValueLayout.ADDRESS,
-            ValueLayout.ADDRESS
-        );
-
-        public static final FunctionDescriptor DESCRIPTOR$glfwGetEGLDisplay = FunctionDescriptor.of(
-            ValueLayout.ADDRESS
-        );
-
-        public static final FunctionDescriptor DESCRIPTOR$glfwGetEGLSurface = FunctionDescriptor.of(
-            ValueLayout.ADDRESS,
-            ValueLayout.ADDRESS
-        );
-
         public static final FunctionDescriptor DESCRIPTOR$glfwGetError = FunctionDescriptor.of(
             ValueLayout.JAVA_INT,
             ValueLayout.ADDRESS.withTargetLayout(ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_BYTE))
@@ -7221,16 +6734,6 @@ public final class GLFW implements GLFWConstants {
             ValueLayout.ADDRESS,
             ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_INT),
             ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_INT)
-        );
-
-        public static final FunctionDescriptor DESCRIPTOR$glfwGetGLXContext = FunctionDescriptor.of(
-            ValueLayout.ADDRESS,
-            ValueLayout.ADDRESS
-        );
-
-        public static final FunctionDescriptor DESCRIPTOR$glfwGetGLXWindow = FunctionDescriptor.of(
-            NativeLayout.C_LONG,
-            ValueLayout.ADDRESS
         );
 
         public static final FunctionDescriptor DESCRIPTOR$glfwGetGamepadName = FunctionDescriptor.of(
@@ -7363,29 +6866,6 @@ public final class GLFW implements GLFWConstants {
             ValueLayout.ADDRESS
         );
 
-        public static final FunctionDescriptor DESCRIPTOR$glfwGetOSMesaColorBuffer = FunctionDescriptor.of(
-            ValueLayout.JAVA_INT,
-            ValueLayout.ADDRESS,
-            ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_INT),
-            ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_INT),
-            ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_INT),
-            ValueLayout.ADDRESS.withTargetLayout(ValueLayout.ADDRESS)
-        );
-
-        public static final FunctionDescriptor DESCRIPTOR$glfwGetOSMesaContext = FunctionDescriptor.of(
-            ValueLayout.ADDRESS,
-            ValueLayout.ADDRESS
-        );
-
-        public static final FunctionDescriptor DESCRIPTOR$glfwGetOSMesaDepthBuffer = FunctionDescriptor.of(
-            ValueLayout.JAVA_INT,
-            ValueLayout.ADDRESS,
-            ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_INT),
-            ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_INT),
-            ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_INT),
-            ValueLayout.ADDRESS.withTargetLayout(ValueLayout.ADDRESS)
-        );
-
         public static final FunctionDescriptor DESCRIPTOR$glfwGetPhysicalDevicePresentationSupport = FunctionDescriptor.of(
             ValueLayout.JAVA_INT,
             ValueLayout.ADDRESS,
@@ -7446,20 +6926,6 @@ public final class GLFW implements GLFWConstants {
 
         public static final FunctionDescriptor DESCRIPTOR$glfwGetWGLContext = FunctionDescriptor.of(
             ValueLayout.ADDRESS,
-            ValueLayout.ADDRESS
-        );
-
-        public static final FunctionDescriptor DESCRIPTOR$glfwGetWaylandDisplay = FunctionDescriptor.of(
-            ValueLayout.ADDRESS.withTargetLayout(ValueLayout.ADDRESS)
-        );
-
-        public static final FunctionDescriptor DESCRIPTOR$glfwGetWaylandMonitor = FunctionDescriptor.of(
-            ValueLayout.ADDRESS,
-            ValueLayout.ADDRESS
-        );
-
-        public static final FunctionDescriptor DESCRIPTOR$glfwGetWaylandWindow = FunctionDescriptor.of(
-            ValueLayout.ADDRESS.withTargetLayout(ValueLayout.ADDRESS),
             ValueLayout.ADDRESS
         );
 
@@ -7540,15 +7006,6 @@ public final class GLFW implements GLFWConstants {
         );
 
         public static final FunctionDescriptor DESCRIPTOR$glfwGetX11Monitor = FunctionDescriptor.of(
-            NativeLayout.C_LONG,
-            ValueLayout.ADDRESS
-        );
-
-        public static final FunctionDescriptor DESCRIPTOR$glfwGetX11SelectionString = FunctionDescriptor.of(
-            ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_BYTE)
-        );
-
-        public static final FunctionDescriptor DESCRIPTOR$glfwGetX11Window = FunctionDescriptor.of(
             NativeLayout.C_LONG,
             ValueLayout.ADDRESS
         );
@@ -7848,10 +7305,6 @@ public final class GLFW implements GLFWConstants {
         public static final FunctionDescriptor DESCRIPTOR$glfwSetWindowUserPointer = FunctionDescriptor.ofVoid(
             ValueLayout.ADDRESS,
             ValueLayout.ADDRESS
-        );
-
-        public static final FunctionDescriptor DESCRIPTOR$glfwSetX11SelectionString = FunctionDescriptor.ofVoid(
-            ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_BYTE)
         );
 
         public static final FunctionDescriptor DESCRIPTOR$glfwShowWindow = FunctionDescriptor.ofVoid(
