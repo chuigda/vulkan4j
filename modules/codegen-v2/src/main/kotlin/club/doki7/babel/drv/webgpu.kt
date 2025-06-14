@@ -43,7 +43,6 @@ fun webgpuMain() {
     )
 
 
-// 生成常量文档并保存
     val constantsDoc = generateConstants(webgpuRegistry, codegenOptions)
     File("$packageDir/${codegenOptions.constantClassName}.java")
         .safeWrite(render(constantsDoc))

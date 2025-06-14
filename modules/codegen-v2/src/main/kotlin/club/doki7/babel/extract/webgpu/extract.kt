@@ -2,12 +2,13 @@ package club.doki7.babel.extract.webgpu
 
 import club.doki7.babel.extract.toPascalCase
 import club.doki7.babel.registry.*
+import club.doki7.babel.util.Either
 import club.doki7.babel.util.parseYML
 import club.doki7.babel.util.query
 import java.util.logging.Logger
 import kotlin.io.path.Path
 
-
+import java.math.BigInteger
 private val inputDir = Path("codegen-v2/input")
 internal val log = Logger.getLogger("c.d.b.extract.webgpu")
 
@@ -34,9 +35,10 @@ fun extractWebGPURegistry(): Registry<EmptyMergeable> {
 private fun Map<String, Any>.extractEntities(): Registry<EmptyMergeable> {
     val constants = extractConstants()
     val enumerations = extractEnumerations()
+    val bitmasks = extractBitmasks()
     return Registry(
         aliases = mutableMapOf(),
-        bitmasks = mutableMapOf(),
+        bitmasks = bitmasks,
         constants = constants,
         commands = mutableMapOf(),
         enumerations = enumerations,
@@ -56,7 +58,7 @@ private fun Map<String, Any>.extractEnumerations(): MutableMap<Identifier, Enume
         val entries = rawEnum["entries"] as? List<Map<String, Any>> ?: emptyList()
         val variants: MutableList<EnumVariant>  = mutableListOf()
         entries.forEachIndexed { index, entry ->
-            if (entry == null) return@forEachIndexed  // 直接跳过 null entry
+            if (entry == null) return@forEachIndexed
 
             val entryName = entry["name"] as? String ?: return@forEachIndexed
             val value = index.toLong()
@@ -69,6 +71,50 @@ private fun Map<String, Any>.extractEnumerations(): MutableMap<Identifier, Enume
     }
 
     return enumerations
+}
+
+
+private fun Map<String, Any>.extractBitmasks(): MutableMap<Identifier, Bitmask> {
+    val bitmasks = mutableMapOf<Identifier, Bitmask>()
+
+    this.query("bitflags").forEach { rawEnum ->
+        val name = rawEnum["name"] as String
+        val entries = rawEnum["entries"] as? List<Map<String, Any>> ?: emptyList()
+        val variants: MutableList<Bitflag>  = mutableListOf()
+        entries.forEachIndexed { index, entry ->
+            if (entry == null) return@forEachIndexed
+            val entryName = entry["name"] as? String ?: return@forEachIndexed
+            if(entry["value_combination"]!=null){
+                val combination = entry["value_combination"] as? List<*> ?: emptyList<Any>()
+                val combinedValueRaw = combination
+                    .mapNotNull { combinationEntryName ->
+                        val key = combinationEntryName.toString().uppercase()
+                        variants.find { it.name.toString() == key.uppercase() }?.value
+                    }
+                val allAreNumbers = combinedValueRaw.all { it is Either.Left }
+                if (allAreNumbers) {
+                    val combinedValue = combinedValueRaw
+                        .map { (it as Either.Left).value }
+                        .fold(BigInteger.ZERO) { acc, v -> acc.or(v) }
+                    variants.add(
+                        Bitflag(entryName.uppercase(), combinedValue)
+                    )
+                } else {
+                    println("Warning: Not all combined values are numeric BigInteger, cannot fold.")
+                    variants.add(
+                        Bitflag(entryName.uppercase(), bitflagValue(index))
+                    )
+                }
+            }else{
+                val value = BigInteger.ONE.shiftLeft(index)
+                variants.add(Bitflag(entryName.uppercase(), bitflagValue(index)))
+            }
+        }
+        val bitmask = Bitmask(name.toPascalCase().intern(),64,variants)
+        bitmasks.putEntityIfAbsent(bitmask)
+    }
+
+    return bitmasks
 }
 
 private fun Map<String, Any>.extractConstants(): MutableMap<Identifier, Constant> {
@@ -98,4 +144,7 @@ private fun Map<String, Any>.extractConstants(): MutableMap<Identifier, Constant
     }
 
     return constants
+}
+fun bitflagValue(index: Int): BigInteger {
+    return if (index == 0) BigInteger.ZERO else BigInteger.ONE.shiftLeft(index-1)
 }
