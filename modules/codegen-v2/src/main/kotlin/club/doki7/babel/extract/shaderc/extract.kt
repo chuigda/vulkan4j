@@ -35,16 +35,10 @@ import club.doki7.babel.registry.Param
 import club.doki7.babel.registry.Registry
 import club.doki7.babel.registry.Structure
 import club.doki7.babel.registry.putEntityIfAbsent
-import club.doki7.babel.util.parseDecOrHex
 import kotlin.io.path.Path
 
 private val inputDir = Path("codegen-v2/input")
 const val SHADERC_EXPORT = "SHADERC_EXPORT"
-
-fun main() {
-    val reg = extractShadercRegistry()
-    return
-}
 
 fun extractShadercRegistry(): Registry<EmptyMergeable> {
     val file = inputDir.resolve("libshaderc.h")
