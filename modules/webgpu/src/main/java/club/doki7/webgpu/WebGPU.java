@@ -11,6 +11,7 @@ import club.doki7.ffm.annotation.*;
 import club.doki7.ffm.ptr.*;
 import club.doki7.webgpu.bitmask.*;
 import club.doki7.webgpu.enumtype.*;
+import club.doki7.webgpu.handle.*;
 
 public final class WebGPU implements WebGPUConstants {
     public WebGPU(RawFunctionLoader loader) {

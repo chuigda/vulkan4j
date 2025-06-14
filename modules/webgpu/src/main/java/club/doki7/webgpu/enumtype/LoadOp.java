@@ -3,17 +3,17 @@ package club.doki7.webgpu.enumtype;
 import club.doki7.ffm.annotation.*;
 
 public final class LoadOp {
-    public static final int LOAD_OP_UNDEFINED = 0x0;
-    public static final int LOAD_OP_LOAD = 0x1;
-    public static final int LOAD_OP_CLEAR = 0x2;
-    public static final int LOAD_OP_FORCE32 = 0x7fffffff;
+    public static final int UNDEFINED = 0x0;
+    public static final int LOAD = 0x1;
+    public static final int CLEAR = 0x2;
+    public static final int FORCE32 = 0x7fffffff;
 
     public static String explain(@EnumType(LoadOp.class) int value) {
         return switch (value) {
-            case LoadOp.LOAD_OP_CLEAR -> "LOAD_OP_CLEAR";
-            case LoadOp.LOAD_OP_FORCE32 -> "LOAD_OP_FORCE32";
-            case LoadOp.LOAD_OP_LOAD -> "LOAD_OP_LOAD";
-            case LoadOp.LOAD_OP_UNDEFINED -> "LOAD_OP_UNDEFINED";
+            case LoadOp.CLEAR -> "CLEAR";
+            case LoadOp.FORCE32 -> "FORCE32";
+            case LoadOp.LOAD -> "LOAD";
+            case LoadOp.UNDEFINED -> "UNDEFINED";
             default -> "UNKNOWN(" + value + ")";
         };
     }

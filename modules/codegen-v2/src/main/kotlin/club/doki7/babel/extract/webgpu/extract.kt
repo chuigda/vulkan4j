@@ -1,31 +1,26 @@
 package club.doki7.babel.extract.webgpu
 
+import club.doki7.babel.extract.ensureLowerCamelCase
 import club.doki7.babel.extract.toPascalCase
 import club.doki7.babel.registry.*
 import club.doki7.babel.util.Either
 import club.doki7.babel.util.parseYML
 import club.doki7.babel.util.query
+import java.math.BigInteger
 import java.util.logging.Logger
 import kotlin.io.path.Path
 
-import java.math.BigInteger
 private val inputDir = Path("codegen-v2/input")
 internal val log = Logger.getLogger("c.d.b.extract.webgpu")
 
-
 fun main() {
-    val ymlString = inputDir.resolve("webgpu.yml")
-        .toFile()
-        .readText()
+    val ymlString = inputDir.resolve("webgpu.yml").toFile().readText()
     val parsedYML = ymlString.parseYML()
     parsedYML.extractEntities()
 }
 
-
 fun extractWebGPURegistry(): Registry<EmptyMergeable> {
-    val ymlString = inputDir.resolve("webgpu.yml")
-        .toFile()
-        .readText()
+    val ymlString = inputDir.resolve("webgpu.yml").toFile().readText()
     val parsedYML = ymlString.parseYML()
     var r = parsedYML.extractEntities()
     r.renameEntities()
@@ -36,43 +31,158 @@ private fun Map<String, Any>.extractEntities(): Registry<EmptyMergeable> {
     val constants = extractConstants()
     val enumerations = extractEnumerations()
     val bitmasks = extractBitmasks()
+    val structures = extractStructures()
+    val opaqueHandleTypedefs = extractOpaqueHandleTypedefs()
     return Registry(
-        aliases = mutableMapOf(),
-        bitmasks = bitmasks,
-        constants = constants,
-        commands = mutableMapOf(),
-        enumerations = enumerations,
-        functionTypedefs = mutableMapOf(),
-        opaqueHandleTypedefs = mutableMapOf(),
-        opaqueTypedefs = mutableMapOf(),
-        structures = mutableMapOf(),
-        unions = mutableMapOf(),
-        ext = EmptyMergeable()
+            aliases = mutableMapOf(),
+            bitmasks = bitmasks,
+            constants = constants,
+            commands = mutableMapOf(),
+            enumerations = enumerations,
+            functionTypedefs = mutableMapOf(),
+            opaqueHandleTypedefs = opaqueHandleTypedefs,
+            opaqueTypedefs = mutableMapOf(),
+            structures = structures,
+            unions = mutableMapOf(),
+            ext = EmptyMergeable()
     )
 }
+private fun Map<String, Any>.extractOpaqueHandleTypedefs(): MutableMap<Identifier, OpaqueHandleTypedef> {
+    val opaqueHandleTypedefs = mutableMapOf<Identifier, OpaqueHandleTypedef>()
+    this.query("objects").forEach { rawObject->
+        val rawObjectName = rawObject["name"] as String
+        println(rawObjectName)
+        opaqueHandleTypedefs.putEntityIfAbsent(OpaqueHandleTypedef(rawObjectName.toPascalCase()))
+    }
+    return opaqueHandleTypedefs
+}
+
+
+private fun Map<String, Any>.extractStructures(): MutableMap<Identifier, Structure> {
+    val structures = mutableMapOf<Identifier, Structure>()
+    coreStructures.forEach { struct -> structures.putEntityIfAbsent(struct)}
+
+    this.query("structs").forEach { rawStruct ->
+        val name = rawStruct["name"] as String
+        val entries = rawStruct["members"] as? List<Map<String, Any>> ?: emptyList()
+        val variants: MutableList<Member> = mutableListOf()
+        if(rawStruct["type"]=="extensible" || rawStruct["type"]=="extensible_callback_arg"){
+            variants.add(Member(
+                "nextInChain",
+                PointerType(IdentifierType("ChainedStruct")),
+                values = null,
+                len = null,
+                altLen = null,
+                optional = false,
+                bits = null,
+            ))
+        }
+        entries.forEachIndexed { index, entry ->
+            if (entry == null) return@forEachIndexed
+            val entryName = entry["name"] as? String ?: return@forEachIndexed
+            val entryType = entry["type"] as String
+            if(entryType.startsWith("array<") && entryType.endsWith(">")){
+                variants.add(Member(
+                    name=singularize(entryName).toPascalCase().ensureLowerCamelCase()+"Count",
+                    type= IdentifierType("size_t"),
+                    values = null,
+                    len = null,
+                    altLen = null,
+                    optional = false,
+                    bits = null
+                ))
+            }
+            variants.add(Member(
+                name=entryName.toPascalCase().ensureLowerCamelCase(),
+                type=classifyType(entryType),
+                values = null,
+                len = null,
+                altLen = null,
+                optional = entry["optional"] == true,
+                bits = null
+            ))
+        }
+
+        structures.putEntityIfAbsent(Structure(name.toPascalCase().intern(), variants))
+    }
+
+    this.query("callbacks").forEach { rawStruct ->
+        val name = rawStruct["name"] as String
+        val structName = name.toPascalCase()+"CallbackInfo"
+        val callbackStruct = Structure(structName, mutableListOf(
+            Member(
+                "nextInChain",
+                PointerType(IdentifierType("ChainedStruct")),
+                values = null,
+                len = null,
+                altLen = null,
+                optional = false,
+                bits = null,
+            ),
+            Member(
+                "mode",
+                IdentifierType(name.toPascalCase()+"Callback"),
+                values = null,
+                len = null,
+                altLen = null,
+                optional = false,
+                bits = null,
+            ),
+            Member(
+                "callback",
+                IdentifierType("CallbackMode"),
+                values = null,
+                len = null,
+                altLen = null,
+                optional = false,
+                bits = null,
+            ),
+            Member(
+                "userdata1",
+                PointerType(IdentifierType("void")),
+                values = null,
+                len = null,
+                altLen = null,
+                optional = true,
+                bits = null,
+            ),
+            Member(
+                "userdata2",
+                PointerType(IdentifierType("void")),
+                values = null,
+                len = null,
+                altLen = null,
+                optional = true,
+                bits = null,
+            )
+        ))
+        structures.putEntityIfAbsent(callbackStruct)
+    }
+
+    return structures
+}
+
 private fun Map<String, Any>.extractEnumerations(): MutableMap<Identifier, Enumeration> {
     val enumerations = mutableMapOf<Identifier, Enumeration>()
 
     this.query("enums").forEach { rawEnum ->
         val name = rawEnum["name"] as String
         val entries = rawEnum["entries"] as? List<Map<String, Any>> ?: emptyList()
-        val variants: MutableList<EnumVariant>  = mutableListOf()
+        val variants: MutableList<EnumVariant> = mutableListOf()
         entries.forEachIndexed { index, entry ->
             if (entry == null) return@forEachIndexed
-
             val entryName = entry["name"] as? String ?: return@forEachIndexed
             val value = index.toLong()
-            variants.add(EnumVariant(name.uppercase() + "_" + entryName.uppercase(), value))
+            variants.add(EnumVariant(entryName.uppercase(), value))
         }
-        variants.add(EnumVariant(name.uppercase()+"_"+"Force32".uppercase(), 0x7FFFFFFF))
+        variants.add(EnumVariant("Force32".uppercase(), 0x7FFFFFFF))
 
-        val enumeration = Enumeration(name.toPascalCase().intern(),variants)
+        val enumeration = Enumeration(name.toPascalCase().intern(), variants)
         enumerations.putEntityIfAbsent(enumeration)
     }
 
     return enumerations
 }
-
 
 private fun Map<String, Any>.extractBitmasks(): MutableMap<Identifier, Bitmask> {
     val bitmasks = mutableMapOf<Identifier, Bitmask>()
@@ -80,37 +190,34 @@ private fun Map<String, Any>.extractBitmasks(): MutableMap<Identifier, Bitmask> 
     this.query("bitflags").forEach { rawEnum ->
         val name = rawEnum["name"] as String
         val entries = rawEnum["entries"] as? List<Map<String, Any>> ?: emptyList()
-        val variants: MutableList<Bitflag>  = mutableListOf()
+        val variants: MutableList<Bitflag> = mutableListOf()
         entries.forEachIndexed { index, entry ->
             if (entry == null) return@forEachIndexed
             val entryName = entry["name"] as? String ?: return@forEachIndexed
-            if(entry["value_combination"]!=null){
+            if (entry["value_combination"] != null) {
                 val combination = entry["value_combination"] as? List<*> ?: emptyList<Any>()
-                val combinedValueRaw = combination
-                    .mapNotNull { combinationEntryName ->
-                        val key = combinationEntryName.toString().uppercase()
-                        variants.find { it.name.toString() == key.uppercase() }?.value
-                    }
+                val combinedValueRaw =
+                        combination.mapNotNull { combinationEntryName ->
+                            val key = combinationEntryName.toString().uppercase()
+                            variants.find { it.name.toString() == key.uppercase() }?.value
+                        }
                 val allAreNumbers = combinedValueRaw.all { it is Either.Left }
                 if (allAreNumbers) {
-                    val combinedValue = combinedValueRaw
-                        .map { (it as Either.Left).value }
-                        .fold(BigInteger.ZERO) { acc, v -> acc.or(v) }
-                    variants.add(
-                        Bitflag(entryName.uppercase(), combinedValue)
-                    )
+                    val combinedValue =
+                            combinedValueRaw.map { (it as Either.Left).value }.fold(
+                                            BigInteger.ZERO
+                                    ) { acc, v -> acc.or(v) }
+                    variants.add(Bitflag(entryName.uppercase(), combinedValue))
                 } else {
                     println("Warning: Not all combined values are numeric BigInteger, cannot fold.")
-                    variants.add(
-                        Bitflag(entryName.uppercase(), bitflagValue(index))
-                    )
+                    variants.add(Bitflag(entryName.uppercase(), bitflagValue(index)))
                 }
-            }else{
+            } else {
                 val value = BigInteger.ONE.shiftLeft(index)
                 variants.add(Bitflag(entryName.uppercase(), bitflagValue(index)))
             }
         }
-        val bitmask = Bitmask(name.toPascalCase().intern(),64,variants)
+        val bitmask = Bitmask(name.toPascalCase().intern(), 64, variants)
         bitmasks.putEntityIfAbsent(bitmask)
     }
 
@@ -133,18 +240,75 @@ private fun Map<String, Any>.extractConstants(): MutableMap<Identifier, Constant
         val mappingType = mapping?.javaType
         val mappingValue = mapping?.javaExpression
 
-        val constant = if (mappingType != null) {
-            Constant(name.intern(), mappingType, mappingValue.toString())
-        } else {
-            println("$expr 没有在映射表中找到，可能是用户自定义宏")
-            Constant(name.intern(), IdentifierType("void"), "null")
-        }
+        val constant =
+                if (mappingType != null) {
+                    Constant(name.intern(), mappingType, mappingValue.toString())
+                } else {
+                    println("$expr 没有在映射表中找到，可能是用户自定义宏")
+                    Constant(name.intern(), IdentifierType("void"), "null")
+                }
 
         constants.putEntityIfAbsent(constant)
     }
 
     return constants
 }
+
 fun bitflagValue(index: Int): BigInteger {
-    return if (index == 0) BigInteger.ZERO else BigInteger.ONE.shiftLeft(index-1)
+    return if (index == 0) BigInteger.ZERO else BigInteger.ONE.shiftLeft(index - 1)
 }
+
+fun singularize(s: String): String {
+    return when (s) {
+        "entries" -> "entry"
+        else -> s.removeSuffix("s")
+    }
+}
+val coreStructures = listOf(
+    Structure(
+        name = "StringView",
+        members = mutableListOf(
+            Member(
+                name = "data",
+                type = PointerType(IdentifierType("char"), const = true),
+                values = null,
+                len = null,
+                altLen = null,
+                optional = true,
+                bits = null
+            ),
+            Member(
+                name = "length",
+                type = IdentifierType("size_t"),
+                values = null,
+                len = null,
+                altLen = null,
+                optional = false,
+                bits = null
+            )
+        )
+    ),
+    Structure(
+        name = "ChainedStruct",
+        members = mutableListOf(
+            Member(
+                name = "next",
+                type = PointerType(IdentifierType("ChainedStruct")),
+                values = null,
+                len = null,
+                altLen = null,
+                optional = true,
+                bits = null
+            ),
+            Member(
+                name = "sType",
+                type = IdentifierType("SType"),
+                values = null,
+                len = null,
+                altLen = null,
+                optional = false,
+                bits = null
+            )
+        )
+    )
+    )

@@ -3,23 +3,23 @@ package club.doki7.webgpu.enumtype;
 import club.doki7.ffm.annotation.*;
 
 public final class SurfaceGetCurrentTextureStatus {
-    public static final int SURFACE_GET_CURRENT_TEXTURE_STATUS_SUCCESS_OPTIMAL = 0x1;
-    public static final int SURFACE_GET_CURRENT_TEXTURE_STATUS_SUCCESS_SUBOPTIMAL = 0x2;
-    public static final int SURFACE_GET_CURRENT_TEXTURE_STATUS_TIMEOUT = 0x3;
-    public static final int SURFACE_GET_CURRENT_TEXTURE_STATUS_OUTDATED = 0x4;
-    public static final int SURFACE_GET_CURRENT_TEXTURE_STATUS_LOST = 0x5;
-    public static final int SURFACE_GET_CURRENT_TEXTURE_STATUS_ERROR = 0x6;
-    public static final int SURFACE_GET_CURRENT_TEXTURE_STATUS_FORCE32 = 0x7fffffff;
+    public static final int SUCCESS_OPTIMAL = 0x1;
+    public static final int SUCCESS_SUBOPTIMAL = 0x2;
+    public static final int TIMEOUT = 0x3;
+    public static final int OUTDATED = 0x4;
+    public static final int LOST = 0x5;
+    public static final int ERROR = 0x6;
+    public static final int FORCE32 = 0x7fffffff;
 
     public static String explain(@EnumType(SurfaceGetCurrentTextureStatus.class) int value) {
         return switch (value) {
-            case SurfaceGetCurrentTextureStatus.SURFACE_GET_CURRENT_TEXTURE_STATUS_ERROR -> "SURFACE_GET_CURRENT_TEXTURE_STATUS_ERROR";
-            case SurfaceGetCurrentTextureStatus.SURFACE_GET_CURRENT_TEXTURE_STATUS_FORCE32 -> "SURFACE_GET_CURRENT_TEXTURE_STATUS_FORCE32";
-            case SurfaceGetCurrentTextureStatus.SURFACE_GET_CURRENT_TEXTURE_STATUS_LOST -> "SURFACE_GET_CURRENT_TEXTURE_STATUS_LOST";
-            case SurfaceGetCurrentTextureStatus.SURFACE_GET_CURRENT_TEXTURE_STATUS_OUTDATED -> "SURFACE_GET_CURRENT_TEXTURE_STATUS_OUTDATED";
-            case SurfaceGetCurrentTextureStatus.SURFACE_GET_CURRENT_TEXTURE_STATUS_SUCCESS_OPTIMAL -> "SURFACE_GET_CURRENT_TEXTURE_STATUS_SUCCESS_OPTIMAL";
-            case SurfaceGetCurrentTextureStatus.SURFACE_GET_CURRENT_TEXTURE_STATUS_SUCCESS_SUBOPTIMAL -> "SURFACE_GET_CURRENT_TEXTURE_STATUS_SUCCESS_SUBOPTIMAL";
-            case SurfaceGetCurrentTextureStatus.SURFACE_GET_CURRENT_TEXTURE_STATUS_TIMEOUT -> "SURFACE_GET_CURRENT_TEXTURE_STATUS_TIMEOUT";
+            case SurfaceGetCurrentTextureStatus.ERROR -> "ERROR";
+            case SurfaceGetCurrentTextureStatus.FORCE32 -> "FORCE32";
+            case SurfaceGetCurrentTextureStatus.LOST -> "LOST";
+            case SurfaceGetCurrentTextureStatus.OUTDATED -> "OUTDATED";
+            case SurfaceGetCurrentTextureStatus.SUCCESS_OPTIMAL -> "SUCCESS_OPTIMAL";
+            case SurfaceGetCurrentTextureStatus.SUCCESS_SUBOPTIMAL -> "SUCCESS_SUBOPTIMAL";
+            case SurfaceGetCurrentTextureStatus.TIMEOUT -> "TIMEOUT";
             default -> "UNKNOWN(" + value + ")";
         };
     }
