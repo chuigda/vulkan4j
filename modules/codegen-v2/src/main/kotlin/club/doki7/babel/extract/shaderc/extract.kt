@@ -2,7 +2,12 @@
 
 package club.doki7.babel.extract.shaderc
 
+import club.doki7.babel.cdecl.FunctionDecl
+import club.doki7.babel.cdecl.RawFunctionType
+import club.doki7.babel.cdecl.TypedefDecl
+import club.doki7.babel.cdecl.parseFunctionDecl
 import club.doki7.babel.cdecl.parseStructFieldDecl
+import club.doki7.babel.cdecl.parseTypedefDecl
 import club.doki7.babel.cdecl.toType
 import club.doki7.babel.extract.vma.enumerationParseConfig
 import club.doki7.babel.hparse.ControlFlow
@@ -18,38 +23,76 @@ import club.doki7.babel.hparse.nextLine
 import club.doki7.babel.hparse.parseAndSaveBlockDoxygen
 import club.doki7.babel.hparse.parseAndSaveTriSlashDoxygen
 import club.doki7.babel.hparse.skipBlockComment
+import club.doki7.babel.registry.Command
 import club.doki7.babel.registry.EmptyMergeable
 import club.doki7.babel.registry.EnumVariant
 import club.doki7.babel.registry.Enumeration
+import club.doki7.babel.registry.FunctionTypedef
 import club.doki7.babel.registry.Member
+import club.doki7.babel.registry.OpaqueHandleTypedef
 import club.doki7.babel.registry.OpaqueTypedef
+import club.doki7.babel.registry.Param
 import club.doki7.babel.registry.Registry
 import club.doki7.babel.registry.Structure
 import club.doki7.babel.registry.putEntityIfAbsent
 import club.doki7.babel.util.parseDecOrHex
+import kotlin.io.path.Path
+
+private val inputDir = Path("codegen-v2/input")
+const val SHADERC_EXPORT = "SHADERC_EXPORT"
+
+fun main() {
+    val reg = extractShadercRegistry()
+    return
+}
 
 fun extractShadercRegistry(): Registry<EmptyMergeable> {
-    ParseConfig<EmptyMergeable>().apply {
-        addRule(20, {
-            if (it.startsWith("typedef enum")) {
-                ControlFlow.ACCEPT
-            } else ControlFlow.NEXT
-        }, ::parseAndSaveEnumeration)
+    val file = inputDir.resolve("libshaderc.h")
+        .toAbsolutePath()
+        .toFile()
+        .readText()
+        .splitToSequence("\n")
+        .map(String::trim)
+        .toList()
 
-        addRule(20, {
-            if (it.startsWith("typedef struct") && it.endsWith(";")) {
-                ControlFlow.ACCEPT
-            } else ControlFlow.NEXT
-        }, ::parseOpaqueStructure)
+    val registry = Registry(ext = EmptyMergeable())
 
-        addRule(20, {
-            if (it.startsWith("typedef struct") && it.endsWith("{")) {
-                ControlFlow.ACCEPT
-            } else ControlFlow.NEXT
-        }, ::parseAndSaveStructure)
-    }
+    hparse(headerParseConfig, registry, mutableMapOf(), file, 0)
 
-    TODO()
+    return registry
+}
+
+private val headerParseConfig: ParseConfig<EmptyMergeable> = ParseConfig<EmptyMergeable>().apply {
+    addRule(20, {
+        if (it.startsWith("typedef enum")) {
+            ControlFlow.ACCEPT
+        } else ControlFlow.NEXT
+    }, ::parseAndSaveEnumeration)
+
+    addRule(20, {
+        if (it.startsWith("typedef struct") && it.endsWith(";")) {
+            ControlFlow.ACCEPT
+        } else ControlFlow.NEXT
+    }, ::parseOpaqueStructure)
+
+    addRule(20, {
+        if (it.startsWith("typedef struct") && it.endsWith("{")) {
+            ControlFlow.ACCEPT
+        } else ControlFlow.NEXT
+    }, ::parseAndSaveStructure)
+
+    addRule(20, {
+        if (it.startsWith(SHADERC_EXPORT)) {
+            ControlFlow.ACCEPT
+        } else ControlFlow.NEXT
+    }, ::parseAndSaveFunctionDecl)
+
+    addRule(30, {
+        if (it.startsWith("typedef")) {
+            ControlFlow.ACCEPT
+        } else ControlFlow.NEXT
+    }, ::parseFunctionTypedef)
+
 }
 
 private fun parseOpaqueStructure(
@@ -64,10 +107,19 @@ private fun parseOpaqueStructure(
     assert(names.size == 2)
 
     val name = names[1]
-    val typedef = OpaqueTypedef(name)
-    typedef.isHandle = true
-    typedef.doc = cx.steal(Doxygen)
-    registry.opaqueTypedefs.putEntityIfAbsent(typedef)
+    val entity = if (name.endsWith('*')) {
+        val realName = name.dropLast(1)
+        OpaqueHandleTypedef(realName).apply {
+            registry.opaqueHandleTypedefs.putEntityIfAbsent(this)
+        }
+    } else {
+        // this case is kinda impossible, as all opaque typedef are handle typedef for now.
+        OpaqueTypedef(name, true).apply {
+            registry.opaqueTypedefs.putEntityIfAbsent(this)
+        }
+    }
+
+    entity.doc = cx.steal(Doxygen)
     return index + 1
 }
 
@@ -148,17 +200,17 @@ private fun parseAndSaveEnumeration(
         cx[EnumerationDoxygen] = it
     }
 
-    val next = hparse(enumerationParseConfig, registry, cx, lines, index + 2)
+    val next = hparse(enumerationParseConfig, registry, cx, lines, index + 1)
     // next is at the line `} ENUM_NAME;`
     val enumName = lines[next].removeSurrounding("}", ";").trim()
-    val enumerators = cx.rob(Enumerator)
+    val enumerators = cx.rob(Enumerators)
 
     val enumeration = Enumeration(
         name = enumName,
         variants = enumerators.map { (enumDecl, doc) ->
             val variant = EnumVariant(
                 name = enumDecl.name,
-                value = enumDecl.value.parseDecOrHex()
+                value = if (enumDecl.value.isBlank()) emptyList() else listOf(enumDecl.value)
             )
             variant.doc = doc
             variant
@@ -171,3 +223,58 @@ private fun parseAndSaveEnumeration(
     assert(lines[next].startsWith("}") && lines[next].endsWith(";"))
     return next + 1
 }
+
+private fun parseFunctionTypedef(
+    registry: Registry<EmptyMergeable>,
+    cx: MutableMap<String, Any>,
+    lines: List<String>,
+    index: Int,
+): Int {
+    val parseResult = parseTypedefDecl(lines, index)
+    val typedef = parseResult.first
+    val nextIndex = parseResult.second
+
+    val functionTypedef = morphFunctionTypedef(typedef)
+    functionTypedef.doc = cx.steal(Doxygen)
+    registry.functionTypedefs.putEntityIfAbsent(functionTypedef)
+    return nextIndex
+}
+
+private fun parseAndSaveFunctionDecl(
+    registry: Registry<EmptyMergeable>,
+    cx: MutableMap<String, Any>,
+    lines: List<String>,
+    index: Int,
+): Int {
+    val parseResult = parseFunctionDecl(lines, index)
+    val functionDecl = parseResult.first
+    val nextIndex = parseResult.second
+
+    val command = morphFunctionDecl(functionDecl)
+    command.doc = cx.steal(Doxygen)
+    registry.commands.putEntityIfAbsent(command)
+
+    return nextIndex
+}
+
+private fun morphFunctionDecl(functionDecl: FunctionDecl) = Command(
+    name = functionDecl.name,
+    params = functionDecl.params.map {
+        Param(
+            name = it.name,
+            type = it.type.toType(),
+            len = null,
+            argLen = null,
+            optional = false,
+        )
+    },
+    result = functionDecl.returnType.toType(),
+    successCodes = null,
+    errorCodes = null
+)
+
+private fun morphFunctionTypedef(typedef: TypedefDecl) = FunctionTypedef(
+    name = typedef.name,
+    params = (typedef.aliasedType as RawFunctionType).params.map { it.second.toType() },
+    result = typedef.aliasedType.returnType.toType()
+)
