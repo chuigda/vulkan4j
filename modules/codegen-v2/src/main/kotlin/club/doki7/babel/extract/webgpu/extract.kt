@@ -9,7 +9,6 @@ import club.doki7.babel.util.query
 import java.math.BigInteger
 import java.util.logging.Logger
 import kotlin.io.path.Path
-import kotlin.reflect.typeOf
 
 private val inputDir = Path("codegen-v2/input")
 internal val log = Logger.getLogger("c.d.b.extract.webgpu")
@@ -63,16 +62,12 @@ private fun Map<String, Any>.extractFunctionTypedefs(): MutableMap<Identifier, F
     this.query("functions").forEach { rawFunction->
         val rawFunctionName = rawFunction["name"] as String
         val returns = rawFunction["returns"]as? Map<*, *>
-        println(returns)
         val returnType = returns?.get("type") as? String ?: null
-        val returnDoc = returns?.get("doc") as? String ?: null
         val args = rawFunction["args"] as? List<Map<String, Any>> ?: emptyList()
         val params = mutableListOf<Type>()
-        println(args)
         args.forEachIndexed { index, arg ->
             if (args == null) return@forEachIndexed
-            val argName = arg["name"] as? String ?: return@forEachIndexed
-            val argType = arg["type"] as String
+            val argType = arg["type"] as String?: return@forEachIndexed
             val typeName = classifyType(argType)
             if(argType.startsWith("struct.")){
                 params.add(PointerType(typeName,const= (arg["pointer"] == "immutable")))
@@ -99,7 +94,6 @@ private fun Map<String, Any>.extractFunctionTypedefs(): MutableMap<Identifier, F
     }
     return functionTypedefs
 }
-
 
 private fun Map<String, Any>.extractStructures(): MutableMap<Identifier, Structure> {
     val structures = mutableMapOf<Identifier, Structure>()
