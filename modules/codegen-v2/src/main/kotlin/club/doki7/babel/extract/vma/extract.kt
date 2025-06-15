@@ -319,7 +319,7 @@ private fun parseAndSaveEnumeration(
     return next + 1
 }
 
-private val enumerationParseConfig = ParseConfig<EmptyMergeable>().apply {
+val enumerationParseConfig = ParseConfig<EmptyMergeable>().apply {
     addInit { it["enumerators"] = mutableListOf<Pair<EnumeratorDecl, List<String>?>>() }
 
     addRule(0, { line -> if (line.startsWith("}")) ControlFlow.RETURN else ControlFlow.NEXT }, ::dummyAction)
@@ -331,7 +331,7 @@ private val enumerationParseConfig = ParseConfig<EmptyMergeable>().apply {
     addRule(99, { _ -> ControlFlow.ACCEPT }, ::parseEnumerator)
 }
 
-private fun parseEnumerator(
+fun parseEnumerator(
     @Suppress("unused") registry: Registry<EmptyMergeable>,
     cx: MutableMap<String, Any>,
     lines: List<String>,
