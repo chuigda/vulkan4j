@@ -9,6 +9,7 @@ import club.doki7.babel.util.query
 import java.math.BigInteger
 import java.util.logging.Logger
 import kotlin.io.path.Path
+import kotlin.reflect.typeOf
 
 private val inputDir = Path("codegen-v2/input")
 internal val log = Logger.getLogger("c.d.b.extract.webgpu")
@@ -31,15 +32,16 @@ private fun Map<String, Any>.extractEntities(): Registry<EmptyMergeable> {
     val constants = extractConstants()
     val enumerations = extractEnumerations()
     val bitmasks = extractBitmasks()
-    val structures = extractStructures()
     val opaqueHandleTypedefs = extractOpaqueHandleTypedefs()
+    val functionTypedefs = extractFunctionTypedefs()
+    val structures = extractStructures()
     return Registry(
             aliases = mutableMapOf(),
             bitmasks = bitmasks,
             constants = constants,
             commands = mutableMapOf(),
             enumerations = enumerations,
-            functionTypedefs = mutableMapOf(),
+            functionTypedefs = functionTypedefs,
             opaqueHandleTypedefs = opaqueHandleTypedefs,
             opaqueTypedefs = mutableMapOf(),
             structures = structures,
@@ -51,10 +53,51 @@ private fun Map<String, Any>.extractOpaqueHandleTypedefs(): MutableMap<Identifie
     val opaqueHandleTypedefs = mutableMapOf<Identifier, OpaqueHandleTypedef>()
     this.query("objects").forEach { rawObject->
         val rawObjectName = rawObject["name"] as String
-        println(rawObjectName)
         opaqueHandleTypedefs.putEntityIfAbsent(OpaqueHandleTypedef(rawObjectName.toPascalCase()))
     }
     return opaqueHandleTypedefs
+}
+
+private fun Map<String, Any>.extractFunctionTypedefs(): MutableMap<Identifier, FunctionTypedef> {
+    val functionTypedefs = mutableMapOf<Identifier, FunctionTypedef>()
+    this.query("functions").forEach { rawFunction->
+        val rawFunctionName = rawFunction["name"] as String
+        val returns = rawFunction["returns"]as? Map<*, *>
+        println(returns)
+        val returnType = returns?.get("type") as? String ?: null
+        val returnDoc = returns?.get("doc") as? String ?: null
+        val args = rawFunction["args"] as? List<Map<String, Any>> ?: emptyList()
+        val params = mutableListOf<Type>()
+        println(args)
+        args.forEachIndexed { index, arg ->
+            if (args == null) return@forEachIndexed
+            val argName = arg["name"] as? String ?: return@forEachIndexed
+            val argType = arg["type"] as String
+            val typeName = classifyType(argType)
+            if(argType.startsWith("struct.")){
+                params.add(PointerType(typeName,const= (arg["pointer"] == "immutable")))
+            }else{
+                params.add(typeName)
+            }
+        }
+        if(returnType !=null){
+            val returnTypeIdent =  classifyType(returnType) as Type
+            functionTypedefs.putEntityIfAbsent(FunctionTypedef(
+                rawFunctionName.toPascalCase(),
+                params = params,
+                result = returnTypeIdent
+            ))
+        }else{
+            val returnTypeIdent = IdentifierType("void") as Type
+            functionTypedefs.putEntityIfAbsent(FunctionTypedef(
+                rawFunctionName.toPascalCase(),
+                params = params,
+                result = returnTypeIdent
+            ))
+        }
+
+    }
+    return functionTypedefs
 }
 
 
