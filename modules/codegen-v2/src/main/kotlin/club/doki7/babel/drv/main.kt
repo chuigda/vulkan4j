@@ -37,7 +37,7 @@ internal val log = Logger.getLogger("c.d.b.drv")
  * */
 fun main() {
     setupLog()
-
+    webgpuMain()
     openglMain()
     val vulkanRegistry = vulkanMain()
     val vulkanAdditionalRegistry = vulkanAdditionalRegistry()
