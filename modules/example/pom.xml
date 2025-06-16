@@ -37,17 +37,17 @@
         <dependency>
             <groupId>club.doki7</groupId>
             <artifactId>vulkan</artifactId>
-            <version>0.3.3</version>
+            <version>0.3.4</version>
         </dependency>
         <dependency>
             <groupId>club.doki7</groupId>
             <artifactId>vma</artifactId>
-            <version>0.3.3</version>
+            <version>0.3.4</version>
         </dependency>
         <dependency>
             <groupId>club.doki7</groupId>
             <artifactId>sdl3</artifactId>
-            <version>0.3.3-sdl3-alpha0</version>
+            <version>0.3.4-sdl3-alpha1</version>
         </dependency>
     </dependencies>
 </project>
