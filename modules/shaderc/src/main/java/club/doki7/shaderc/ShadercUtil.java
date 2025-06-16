@@ -16,7 +16,7 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.MethodHandles;
 import java.lang.invoke.MethodType;
 
-public final class ShadercIncludeHelper {
+public final class ShadercUtil {
     public static class IncludeResult {
         public final @NotNull String sourceName;
         public final @NotNull String content;
@@ -113,7 +113,7 @@ public final class ShadercIncludeHelper {
     static {
         try {
             hCallIncludeResolve = MethodHandles.lookup().findStatic(
-                    ShadercIncludeHelper.class,
+                    ShadercUtil.class,
                     "callIncludeResolve",
                     MethodType.methodType(
                             MemorySegment.class,
@@ -126,7 +126,7 @@ public final class ShadercIncludeHelper {
                     )
             );
             hIncludeResultRelease = MethodHandles.lookup().findStatic(
-                    ShadercIncludeHelper.class,
+                    ShadercUtil.class,
                     "includeResultRelease",
                     ShadercFunctionTypes.shaderc_include_result_release_fn.toMethodType()
             );

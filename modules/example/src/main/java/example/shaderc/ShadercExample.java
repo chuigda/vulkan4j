@@ -3,7 +3,7 @@ package example.shaderc;
 import club.doki7.ffm.Loader;
 import club.doki7.ffm.ptr.BytePtr;
 import club.doki7.shaderc.Shaderc;
-import club.doki7.shaderc.ShadercIncludeHelper;
+import club.doki7.shaderc.ShadercUtil;
 import club.doki7.shaderc.enumtype.ShadercShaderKind;
 import club.doki7.shaderc.handle.ShadercCompilationResult;
 import club.doki7.shaderc.handle.ShadercCompileOptions;
@@ -27,14 +27,12 @@ public final class ShadercExample {
         ShadercCompileOptions options = shaderc.compileOptionsInitialize();
 
         try (Arena arena = Arena.ofConfined()) {
-            ShadercIncludeHelper.IncludeCallbacks callbacks = ShadercIncludeHelper.makeCallbacks(
+            ShadercUtil.IncludeCallbacks callbacks = ShadercUtil.makeCallbacks(
                     arena,
                     (requestedSource, _, _, _) -> {
                         System.err.println("including source: " + requestedSource);
-                        // For this example, we will just return the requested source as is.
-                        // In a real application, you would read the file and return its content.
                         String content = Files.readString(Path.of("example/resc/" + requestedSource));
-                        return new ShadercIncludeHelper.IncludeResult(requestedSource, content);
+                        return new ShadercUtil.IncludeResult(requestedSource, content);
                     }
             );
             shaderc.compileOptionsSetIncludeCallbacks(
