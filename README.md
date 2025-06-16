@@ -15,6 +15,7 @@
 - [OpenGL](https://www.opengl.org/) ([`opengl`](https://github.com/chuigda/vulkan4j/tree/master/modules/opengl) module): Generated from [`gl.xml`](https://github.com/KhronosGroup/OpenGL-Registry/blob/main/xml/gl.xml). Our supported extension list is copied from LWJGL, and not all extensions are included (since some OpenGL extensions are completely useless nowadays). Name your desired extension in the issue tracker!
 - [OpenAL](https://www.openal.org/) ([`openal`](https://github.com/chuigda/vulkan4j/tree/master/modules/openal) module): Generated from OpenAL-soft header files. This module is based on OpenAL-soft 1.2, and provides a complete set of OpenAL features, including all extensions supported by OpenAL-soft.
 - [GLFW](https://www.glfw.org/) ([`glfw`](https://github.com/chuigda/vulkan4j/tree/master/modules/glfw) module): Generated from GLFW header files.
+- [libshaderc](https://github.com/google/shaderc) ([`shaderc`](https://github.com/chuigda/vulkan4j/tree/master/modules/shaderc) module): Generated from `libshaderc` header files. This module also provides a useful `ShadercUtil` class to assist you with including files.
 
 ### Experimental Bindings
 

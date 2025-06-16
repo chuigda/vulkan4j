@@ -11,7 +11,7 @@
 /// <dependency>
 ///     <groupId>club.doki7</groupId>
 ///     <artifactId>sdl3</artifactId>
-///     <version>0.3.3-sdl3-alpha0</version>
+///     <version>0.3.4-sdl3-alpha1</version>
 ///     <scope>compile</scope>
 /// </dependency>
 /// ```

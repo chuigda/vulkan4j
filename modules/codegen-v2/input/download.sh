@@ -28,4 +28,4 @@ curl -o efx-presets.h https://raw.githubusercontent.com/kcat/openal-soft/refs/ta
 
 echo Downloading SDL
 curl -o SDL3.tar.gz https://github.com/libsdl-org/SDL/releases/download/release-3.2.14/SDL3-3.2.14.tar.gz
-tar -xzf SDL3-3.2.14.tar.gz
+tar -xzf SDL3-3.2.14.tar.gzithubusercontent.com/google/shaderc/refs/heads/main/libshaderc/include/shaderc/shaderc.h

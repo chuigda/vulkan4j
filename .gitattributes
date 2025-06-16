@@ -43,4 +43,10 @@ modules/sdl3/src/main/java/club/doki7/sdl3/datatype/*.java linguist-generated
 modules/sdl3/src/main/java/club/doki7/sdl3/enumtype/*.java linguist-generated
 modules/sdl3/src/main/java/club/doki7/sdl3/handle/*.java linguist-generated
 
+modules/shaderc/src/main/java/club/doki7/shaderc/Shaderc.java linguist-generated
+modules/shaderc/src/main/java/club/doki7/shaderc/ShadercFunctionTypes.java linguist-generated
+modules/shaderc/src/main/java/club/doki7/shaderc/datatype/*.java linguist-generated
+modules/shaderc/src/main/java/club/doki7/shaderc/enumtype/*.java linguist-generated
+modules/shaderc/src/main/java/club/doki7/shaderc/handle/*.java linguist-generated
+
 modules/tutorial/src/main/java/**/*.java linguist-documentation

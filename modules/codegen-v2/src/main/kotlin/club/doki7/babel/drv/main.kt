@@ -1,7 +1,5 @@
 package club.doki7.babel.drv
 
-import club.doki7.babel.extract.opengl.extractOpenGLRegistry
-import club.doki7.babel.extract.vulkan.extractVulkanRegistry
 import club.doki7.babel.extract.vulkanAdditionalRegistry
 import club.doki7.babel.util.setupLog
 import java.util.logging.Logger

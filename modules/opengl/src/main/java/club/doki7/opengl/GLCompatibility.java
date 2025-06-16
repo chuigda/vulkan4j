@@ -6648,10 +6648,11 @@ public final class GLCompatibility extends GL {
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glGetUniformOffsetEXT);
         try {
-            return (long) hFunction.invokeExact(
+            MemorySegment s = (MemorySegment) hFunction.invokeExact(
                 program,
                 location
             );
+            return s.address();
         } catch (Throwable e) {
             throw new RuntimeException(e);
         }

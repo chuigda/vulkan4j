@@ -54,7 +54,10 @@ public final class LibcArena implements Arena {
 
         MemorySegment ms;
         try {
-            ms = (MemorySegment) HANDLE$aligned_alloc.invokeExact(byteAlignment, byteSize);
+            ms = (MemorySegment) HANDLE$aligned_alloc.invokeExact(
+                    MemorySegment.ofAddress(byteAlignment),
+                    MemorySegment.ofAddress(byteSize)
+            );
         } catch (Throwable _) {
             throw new RuntimeException("Failed to allocate memory");
         }

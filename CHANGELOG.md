@@ -1,3 +1,16 @@
+## v0.3.4
+
+Upgrade `ffm-plus` to v0.2.2, and other wrapper modules to v0.3.4.
+
+### New bindings
+
+- Added `shaderc` module, which provides bindings for `libshaderc`.
+
+### Bugfixes
+
+- Fixed a issue causing memory allocation failure of `LibcArena`.
+- Fixed a issue causing incorrect generation of return value retrieval for commands that returns `size_t`.
+
 ## v0.3.3
 
 - Fixed a issue (#93) causing incorrect generation of `HandleType.Ptr.Iter.next` series methods.
