@@ -1,10 +1,10 @@
 package club.doki7.babel.extract.shaderc
 
-import club.doki7.babel.extract.renameVariantOrBitflag
 import club.doki7.babel.extract.vma.log
 import club.doki7.babel.registry.EmptyMergeable
 import club.doki7.babel.registry.Entity
 import club.doki7.babel.registry.Registry
+import club.doki7.babel.util.commonPrefix
 import java.io.File
 
 private const val renamedEntitiesFile = "codegen-v2/output/shaderc-renamed-entities.csv"
@@ -19,12 +19,36 @@ internal fun Registry<EmptyMergeable>.renameEntities() {
     }
 
     commands.forEach { it.value.rename(::renameCommand); putEntityIfNameReplaced(it.value) }
+    enumerations.forEach { it.value.rename(::renameTypeName); putEntityIfNameReplaced(it.value) }
+    structures.forEach { it.value.rename(::renameTypeName); putEntityIfNameReplaced(it.value) }
+    opaqueHandleTypedefs.forEach { it.value.rename(::renameHandleTypeName); putEntityIfNameReplaced(it.value) }
 
     for (enum in enumerations.values) {
-        putEntityIfNameReplaced(enum)
-        for (value in enum.variants) {
-            value.rename { renameVariantOrBitflag(this, enum.name.value) }
-            putEntityIfNameReplaced(value)
+        val commonPrefix = if (enum.name.original == "shaderc_spirv_version") {
+            "shaderc_spirv_"
+        } else {
+            commonPrefix(enum.variants.map { it.name.original })
+        }
+        for (variant in enum.variants) {
+            variant.rename(variant.name.original.removePrefix(commonPrefix).uppercase())
+            putEntityIfNameReplaced(variant)
+        }
+    }
+
+    for (structure in structures.values) {
+        for (member in structure.members) {
+            if (member.name.original != member.name.value) {
+                renamed.putIfAbsent(member.name.original, member.name.value)
+            }
+            member.rename(::renameVar)
+            putEntityIfNameReplaced(member)
+        }
+    }
+
+    for (command in commands.values) {
+        for (param in command.params) {
+            param.rename(::renameVar)
+            putEntityIfNameReplaced(param)
         }
     }
 
@@ -55,5 +79,24 @@ private fun renameCommand(name: String) = buildString {
         } else {
             append(part.replaceFirstChar { it.uppercase() })
         }
+    }
+}
+
+private fun renameTypeName(name: String) = buildString {
+    val parts = name.splitToSequence("_")
+    parts.forEach { part -> append(part.replaceFirstChar { it.uppercase() }) }
+}
+
+private fun renameHandleTypeName(name: String) = renameTypeName(name.removeSuffix("_t"))
+
+private fun renameVar(name: String) = buildString {
+    val parts = name.splitToSequence("_")
+    parts.forEachIndexed { index, part ->
+        if (part.isEmpty()) return@forEachIndexed
+        if (index == 0) {
+            append(part)
+            return@forEachIndexed
+        }
+        append(part.replaceFirstChar { it.uppercase() })
     }
 }
