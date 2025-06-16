@@ -6,7 +6,7 @@
 /// <dependency>
 ///     <groupId>club.doki7</groupId>
 ///     <artifactId>shaderc</artifactId>
-///     <version>0.3.3</version>
+///     <version>0.3.4</version>
 ///     <scope>compile</scope>
 /// </dependency>
 /// ```

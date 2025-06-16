@@ -1,8 +1,3 @@
-#version 450
-
-layout(local_size_x = 8, local_size_y = 8) in;
-layout(rgba32f, set = 0, binding = 0) writeonly uniform image2D outputImage;
-
 void main() {
     ivec2 pixelCoords = ivec2(gl_GlobalInvocationID.xy);
     ivec2 imageSize = imageSize(outputImage);
