@@ -342,7 +342,7 @@ private fun morphFunctionDecl(functionDecl: FunctionDecl) = Command(
             type = it.type.toType(),
             len = null,
             argLen = null,
-            optional = false,
+            optional = true
         )
     },
     result = functionDecl.returnType.toType(),

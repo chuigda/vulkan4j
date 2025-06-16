@@ -108,18 +108,18 @@ public final class Shaderc {
     // region command wrappers
 
     public ShadercCompilationResult assembleIntoSPV(
-        ShadercCompiler compiler,
-        BytePtr sourceAssembly,
+        @Nullable ShadercCompiler compiler,
+        @Nullable BytePtr sourceAssembly,
         long sourceAssemblySize,
-        ShadercCompileOptions additionalOptions
+        @Nullable ShadercCompileOptions additionalOptions
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$shaderc_assemble_into_spv);
         try {
             MemorySegment s = (MemorySegment) hFunction.invokeExact(
-                compiler.segment(),
-                sourceAssembly.segment(),
+                (MemorySegment) (compiler != null ? compiler.segment() : MemorySegment.NULL),
+                (MemorySegment) (sourceAssembly != null ? sourceAssembly.segment() : MemorySegment.NULL),
                 MemorySegment.ofAddress(sourceAssemblySize),
-                additionalOptions.segment()
+                (MemorySegment) (additionalOptions != null ? additionalOptions.segment() : MemorySegment.NULL)
             );
             return s.equals(MemorySegment.NULL) ? null : new ShadercCompilationResult(s);
         } catch (Throwable e) {
@@ -128,24 +128,24 @@ public final class Shaderc {
     }
 
     public ShadercCompilationResult compileIntoPreprocessedText(
-        ShadercCompiler compiler,
-        BytePtr sourceText,
+        @Nullable ShadercCompiler compiler,
+        @Nullable BytePtr sourceText,
         long sourceTextSize,
         @EnumType(ShadercShaderKind.class) int shaderKind,
-        BytePtr inputFileName,
-        BytePtr entryPointName,
-        ShadercCompileOptions additionalOptions
+        @Nullable BytePtr inputFileName,
+        @Nullable BytePtr entryPointName,
+        @Nullable ShadercCompileOptions additionalOptions
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$shaderc_compile_into_preprocessed_text);
         try {
             MemorySegment s = (MemorySegment) hFunction.invokeExact(
-                compiler.segment(),
-                sourceText.segment(),
+                (MemorySegment) (compiler != null ? compiler.segment() : MemorySegment.NULL),
+                (MemorySegment) (sourceText != null ? sourceText.segment() : MemorySegment.NULL),
                 MemorySegment.ofAddress(sourceTextSize),
                 shaderKind,
-                inputFileName.segment(),
-                entryPointName.segment(),
-                additionalOptions.segment()
+                (MemorySegment) (inputFileName != null ? inputFileName.segment() : MemorySegment.NULL),
+                (MemorySegment) (entryPointName != null ? entryPointName.segment() : MemorySegment.NULL),
+                (MemorySegment) (additionalOptions != null ? additionalOptions.segment() : MemorySegment.NULL)
             );
             return s.equals(MemorySegment.NULL) ? null : new ShadercCompilationResult(s);
         } catch (Throwable e) {
@@ -154,24 +154,24 @@ public final class Shaderc {
     }
 
     public ShadercCompilationResult compileIntoSPV(
-        ShadercCompiler compiler,
-        BytePtr sourceText,
+        @Nullable ShadercCompiler compiler,
+        @Nullable BytePtr sourceText,
         long sourceTextSize,
         @EnumType(ShadercShaderKind.class) int shaderKind,
-        BytePtr inputFileName,
-        BytePtr entryPointName,
-        ShadercCompileOptions additionalOptions
+        @Nullable BytePtr inputFileName,
+        @Nullable BytePtr entryPointName,
+        @Nullable ShadercCompileOptions additionalOptions
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$shaderc_compile_into_spv);
         try {
             MemorySegment s = (MemorySegment) hFunction.invokeExact(
-                compiler.segment(),
-                sourceText.segment(),
+                (MemorySegment) (compiler != null ? compiler.segment() : MemorySegment.NULL),
+                (MemorySegment) (sourceText != null ? sourceText.segment() : MemorySegment.NULL),
                 MemorySegment.ofAddress(sourceTextSize),
                 shaderKind,
-                inputFileName.segment(),
-                entryPointName.segment(),
-                additionalOptions.segment()
+                (MemorySegment) (inputFileName != null ? inputFileName.segment() : MemorySegment.NULL),
+                (MemorySegment) (entryPointName != null ? entryPointName.segment() : MemorySegment.NULL),
+                (MemorySegment) (additionalOptions != null ? additionalOptions.segment() : MemorySegment.NULL)
             );
             return s.equals(MemorySegment.NULL) ? null : new ShadercCompilationResult(s);
         } catch (Throwable e) {
@@ -180,24 +180,24 @@ public final class Shaderc {
     }
 
     public ShadercCompilationResult compileIntoSPVAssembly(
-        ShadercCompiler compiler,
-        BytePtr sourceText,
+        @Nullable ShadercCompiler compiler,
+        @Nullable BytePtr sourceText,
         long sourceTextSize,
         @EnumType(ShadercShaderKind.class) int shaderKind,
-        BytePtr inputFileName,
-        BytePtr entryPointName,
-        ShadercCompileOptions additionalOptions
+        @Nullable BytePtr inputFileName,
+        @Nullable BytePtr entryPointName,
+        @Nullable ShadercCompileOptions additionalOptions
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$shaderc_compile_into_spv_assembly);
         try {
             MemorySegment s = (MemorySegment) hFunction.invokeExact(
-                compiler.segment(),
-                sourceText.segment(),
+                (MemorySegment) (compiler != null ? compiler.segment() : MemorySegment.NULL),
+                (MemorySegment) (sourceText != null ? sourceText.segment() : MemorySegment.NULL),
                 MemorySegment.ofAddress(sourceTextSize),
                 shaderKind,
-                inputFileName.segment(),
-                entryPointName.segment(),
-                additionalOptions.segment()
+                (MemorySegment) (inputFileName != null ? inputFileName.segment() : MemorySegment.NULL),
+                (MemorySegment) (entryPointName != null ? entryPointName.segment() : MemorySegment.NULL),
+                (MemorySegment) (additionalOptions != null ? additionalOptions.segment() : MemorySegment.NULL)
             );
             return s.equals(MemorySegment.NULL) ? null : new ShadercCompilationResult(s);
         } catch (Throwable e) {
@@ -206,19 +206,19 @@ public final class Shaderc {
     }
 
     public void compileOptionsAddMacroDefinition(
-        ShadercCompileOptions options,
-        BytePtr name,
+        @Nullable ShadercCompileOptions options,
+        @Nullable BytePtr name,
         long nameLength,
-        BytePtr value,
+        @Nullable BytePtr value,
         long valueLength
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$shaderc_compile_options_add_macro_definition);
         try {
             hFunction.invokeExact(
-                options.segment(),
-                name.segment(),
+                (MemorySegment) (options != null ? options.segment() : MemorySegment.NULL),
+                (MemorySegment) (name != null ? name.segment() : MemorySegment.NULL),
                 MemorySegment.ofAddress(nameLength),
-                value.segment(),
+                (MemorySegment) (value != null ? value.segment() : MemorySegment.NULL),
                 MemorySegment.ofAddress(valueLength)
             );
         } catch (Throwable e) {
@@ -227,12 +227,12 @@ public final class Shaderc {
     }
 
     public ShadercCompileOptions compileOptionsClone(
-        ShadercCompileOptions options
+        @Nullable ShadercCompileOptions options
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$shaderc_compile_options_clone);
         try {
             MemorySegment s = (MemorySegment) hFunction.invokeExact(
-                options.segment()
+                (MemorySegment) (options != null ? options.segment() : MemorySegment.NULL)
             );
             return s.equals(MemorySegment.NULL) ? null : new ShadercCompileOptions(s);
         } catch (Throwable e) {
@@ -252,12 +252,12 @@ public final class Shaderc {
     }
 
     public void compileOptionsRelease(
-        ShadercCompileOptions options
+        @Nullable ShadercCompileOptions options
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$shaderc_compile_options_release);
         try {
             hFunction.invokeExact(
-                options.segment()
+                (MemorySegment) (options != null ? options.segment() : MemorySegment.NULL)
             );
         } catch (Throwable e) {
             throw new RuntimeException(e);
@@ -265,13 +265,13 @@ public final class Shaderc {
     }
 
     public void compileOptionsSetAutoBindUniforms(
-        ShadercCompileOptions options,
+        @Nullable ShadercCompileOptions options,
         @NativeType("boolean") boolean autoBind
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$shaderc_compile_options_set_auto_bind_uniforms);
         try {
             hFunction.invokeExact(
-                options.segment(),
+                (MemorySegment) (options != null ? options.segment() : MemorySegment.NULL),
                 autoBind
             );
         } catch (Throwable e) {
@@ -280,13 +280,13 @@ public final class Shaderc {
     }
 
     public void compileOptionsSetAutoCombinedImageSampler(
-        ShadercCompileOptions options,
+        @Nullable ShadercCompileOptions options,
         @NativeType("boolean") boolean upgrade
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$shaderc_compile_options_set_auto_combined_image_sampler);
         try {
             hFunction.invokeExact(
-                options.segment(),
+                (MemorySegment) (options != null ? options.segment() : MemorySegment.NULL),
                 upgrade
             );
         } catch (Throwable e) {
@@ -295,13 +295,13 @@ public final class Shaderc {
     }
 
     public void compileOptionsSetAutoMapLocations(
-        ShadercCompileOptions options,
+        @Nullable ShadercCompileOptions options,
         @NativeType("boolean") boolean autoMap
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$shaderc_compile_options_set_auto_map_locations);
         try {
             hFunction.invokeExact(
-                options.segment(),
+                (MemorySegment) (options != null ? options.segment() : MemorySegment.NULL),
                 autoMap
             );
         } catch (Throwable e) {
@@ -310,14 +310,14 @@ public final class Shaderc {
     }
 
     public void compileOptionsSetBindingBase(
-        ShadercCompileOptions options,
+        @Nullable ShadercCompileOptions options,
         @EnumType(ShadercUniformKind.class) int kind,
         @Unsigned int base
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$shaderc_compile_options_set_binding_base);
         try {
             hFunction.invokeExact(
-                options.segment(),
+                (MemorySegment) (options != null ? options.segment() : MemorySegment.NULL),
                 kind,
                 base
             );
@@ -327,7 +327,7 @@ public final class Shaderc {
     }
 
     public void compileOptionsSetBindingBaseForStage(
-        ShadercCompileOptions options,
+        @Nullable ShadercCompileOptions options,
         @EnumType(ShadercShaderKind.class) int shaderKind,
         @EnumType(ShadercUniformKind.class) int kind,
         @Unsigned int base
@@ -335,7 +335,7 @@ public final class Shaderc {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$shaderc_compile_options_set_binding_base_for_stage);
         try {
             hFunction.invokeExact(
-                options.segment(),
+                (MemorySegment) (options != null ? options.segment() : MemorySegment.NULL),
                 shaderKind,
                 kind,
                 base
@@ -346,14 +346,14 @@ public final class Shaderc {
     }
 
     public void compileOptionsSetForcedVersionProfile(
-        ShadercCompileOptions options,
+        @Nullable ShadercCompileOptions options,
         int version,
         @EnumType(ShadercProfile.class) int profile
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$shaderc_compile_options_set_forced_version_profile);
         try {
             hFunction.invokeExact(
-                options.segment(),
+                (MemorySegment) (options != null ? options.segment() : MemorySegment.NULL),
                 version,
                 profile
             );
@@ -363,12 +363,12 @@ public final class Shaderc {
     }
 
     public void compileOptionsSetGenerateDebugInfo(
-        ShadercCompileOptions options
+        @Nullable ShadercCompileOptions options
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$shaderc_compile_options_set_generate_debug_info);
         try {
             hFunction.invokeExact(
-                options.segment()
+                (MemorySegment) (options != null ? options.segment() : MemorySegment.NULL)
             );
         } catch (Throwable e) {
             throw new RuntimeException(e);
@@ -376,13 +376,13 @@ public final class Shaderc {
     }
 
     public void compileOptionsSetHLSL16bitTypes(
-        ShadercCompileOptions options,
+        @Nullable ShadercCompileOptions options,
         @NativeType("boolean") boolean enable
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$shaderc_compile_options_set_hlsl_16bit_types);
         try {
             hFunction.invokeExact(
-                options.segment(),
+                (MemorySegment) (options != null ? options.segment() : MemorySegment.NULL),
                 enable
             );
         } catch (Throwable e) {
@@ -391,13 +391,13 @@ public final class Shaderc {
     }
 
     public void compileOptionsSetHLSLFunctionality1(
-        ShadercCompileOptions options,
+        @Nullable ShadercCompileOptions options,
         @NativeType("boolean") boolean enable
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$shaderc_compile_options_set_hlsl_functionality1);
         try {
             hFunction.invokeExact(
-                options.segment(),
+                (MemorySegment) (options != null ? options.segment() : MemorySegment.NULL),
                 enable
             );
         } catch (Throwable e) {
@@ -406,13 +406,13 @@ public final class Shaderc {
     }
 
     public void compileOptionsSetHLSLIoMapping(
-        ShadercCompileOptions options,
+        @Nullable ShadercCompileOptions options,
         @NativeType("boolean") boolean hlslIomap
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$shaderc_compile_options_set_hlsl_io_mapping);
         try {
             hFunction.invokeExact(
-                options.segment(),
+                (MemorySegment) (options != null ? options.segment() : MemorySegment.NULL),
                 hlslIomap
             );
         } catch (Throwable e) {
@@ -421,13 +421,13 @@ public final class Shaderc {
     }
 
     public void compileOptionsSetHLSLOffsets(
-        ShadercCompileOptions options,
+        @Nullable ShadercCompileOptions options,
         @NativeType("boolean") boolean hlslOffsets
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$shaderc_compile_options_set_hlsl_offsets);
         try {
             hFunction.invokeExact(
-                options.segment(),
+                (MemorySegment) (options != null ? options.segment() : MemorySegment.NULL),
                 hlslOffsets
             );
         } catch (Throwable e) {
@@ -436,18 +436,18 @@ public final class Shaderc {
     }
 
     public void compileOptionsSetHLSLRegisterSetAndBinding(
-        ShadercCompileOptions options,
-        BytePtr reg,
-        BytePtr set,
-        BytePtr binding
+        @Nullable ShadercCompileOptions options,
+        @Nullable BytePtr reg,
+        @Nullable BytePtr set,
+        @Nullable BytePtr binding
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$shaderc_compile_options_set_hlsl_register_set_and_binding);
         try {
             hFunction.invokeExact(
-                options.segment(),
-                reg.segment(),
-                set.segment(),
-                binding.segment()
+                (MemorySegment) (options != null ? options.segment() : MemorySegment.NULL),
+                (MemorySegment) (reg != null ? reg.segment() : MemorySegment.NULL),
+                (MemorySegment) (set != null ? set.segment() : MemorySegment.NULL),
+                (MemorySegment) (binding != null ? binding.segment() : MemorySegment.NULL)
             );
         } catch (Throwable e) {
             throw new RuntimeException(e);
@@ -455,20 +455,20 @@ public final class Shaderc {
     }
 
     public void compileOptionsSetHLSLRegisterSetAndBindingForStage(
-        ShadercCompileOptions options,
+        @Nullable ShadercCompileOptions options,
         @EnumType(ShadercShaderKind.class) int shaderKind,
-        BytePtr reg,
-        BytePtr set,
-        BytePtr binding
+        @Nullable BytePtr reg,
+        @Nullable BytePtr set,
+        @Nullable BytePtr binding
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$shaderc_compile_options_set_hlsl_register_set_and_binding_for_stage);
         try {
             hFunction.invokeExact(
-                options.segment(),
+                (MemorySegment) (options != null ? options.segment() : MemorySegment.NULL),
                 shaderKind,
-                reg.segment(),
-                set.segment(),
-                binding.segment()
+                (MemorySegment) (reg != null ? reg.segment() : MemorySegment.NULL),
+                (MemorySegment) (set != null ? set.segment() : MemorySegment.NULL),
+                (MemorySegment) (binding != null ? binding.segment() : MemorySegment.NULL)
             );
         } catch (Throwable e) {
             throw new RuntimeException(e);
@@ -476,7 +476,7 @@ public final class Shaderc {
     }
 
     public void compileOptionsSetIncludeCallbacks(
-        ShadercCompileOptions options,
+        @Nullable ShadercCompileOptions options,
         @Pointer(comment="shaderc_include_resolve_fn") MemorySegment resolver,
         @Pointer(comment="shaderc_include_result_release_fn") MemorySegment resultReleaser,
         @Pointer(comment="void*") MemorySegment userData
@@ -484,7 +484,7 @@ public final class Shaderc {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$shaderc_compile_options_set_include_callbacks);
         try {
             hFunction.invokeExact(
-                options.segment(),
+                (MemorySegment) (options != null ? options.segment() : MemorySegment.NULL),
                 resolver,
                 resultReleaser,
                 userData
@@ -495,13 +495,13 @@ public final class Shaderc {
     }
 
     public void compileOptionsSetInvertY(
-        ShadercCompileOptions options,
+        @Nullable ShadercCompileOptions options,
         @NativeType("boolean") boolean enable
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$shaderc_compile_options_set_invert_y);
         try {
             hFunction.invokeExact(
-                options.segment(),
+                (MemorySegment) (options != null ? options.segment() : MemorySegment.NULL),
                 enable
             );
         } catch (Throwable e) {
@@ -510,14 +510,14 @@ public final class Shaderc {
     }
 
     public void compileOptionsSetLimit(
-        ShadercCompileOptions options,
+        @Nullable ShadercCompileOptions options,
         @EnumType(ShadercLimit.class) int limit,
         int value
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$shaderc_compile_options_set_limit);
         try {
             hFunction.invokeExact(
-                options.segment(),
+                (MemorySegment) (options != null ? options.segment() : MemorySegment.NULL),
                 limit,
                 value
             );
@@ -527,13 +527,13 @@ public final class Shaderc {
     }
 
     public void compileOptionsSetNANClamp(
-        ShadercCompileOptions options,
+        @Nullable ShadercCompileOptions options,
         @NativeType("boolean") boolean enable
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$shaderc_compile_options_set_nan_clamp);
         try {
             hFunction.invokeExact(
-                options.segment(),
+                (MemorySegment) (options != null ? options.segment() : MemorySegment.NULL),
                 enable
             );
         } catch (Throwable e) {
@@ -542,13 +542,13 @@ public final class Shaderc {
     }
 
     public void compileOptionsSetOptimizationLevel(
-        ShadercCompileOptions options,
+        @Nullable ShadercCompileOptions options,
         @EnumType(ShadercOptimizationLevel.class) int level
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$shaderc_compile_options_set_optimization_level);
         try {
             hFunction.invokeExact(
-                options.segment(),
+                (MemorySegment) (options != null ? options.segment() : MemorySegment.NULL),
                 level
             );
         } catch (Throwable e) {
@@ -557,13 +557,13 @@ public final class Shaderc {
     }
 
     public void compileOptionsSetPreserveBindings(
-        ShadercCompileOptions options,
+        @Nullable ShadercCompileOptions options,
         @NativeType("boolean") boolean preserveBindings
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$shaderc_compile_options_set_preserve_bindings);
         try {
             hFunction.invokeExact(
-                options.segment(),
+                (MemorySegment) (options != null ? options.segment() : MemorySegment.NULL),
                 preserveBindings
             );
         } catch (Throwable e) {
@@ -572,13 +572,13 @@ public final class Shaderc {
     }
 
     public void compileOptionsSetSourceLanguage(
-        ShadercCompileOptions options,
+        @Nullable ShadercCompileOptions options,
         @EnumType(ShadercSourceLanguage.class) int lang
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$shaderc_compile_options_set_source_language);
         try {
             hFunction.invokeExact(
-                options.segment(),
+                (MemorySegment) (options != null ? options.segment() : MemorySegment.NULL),
                 lang
             );
         } catch (Throwable e) {
@@ -587,12 +587,12 @@ public final class Shaderc {
     }
 
     public void compileOptionsSetSuppressWarnings(
-        ShadercCompileOptions options
+        @Nullable ShadercCompileOptions options
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$shaderc_compile_options_set_suppress_warnings);
         try {
             hFunction.invokeExact(
-                options.segment()
+                (MemorySegment) (options != null ? options.segment() : MemorySegment.NULL)
             );
         } catch (Throwable e) {
             throw new RuntimeException(e);
@@ -600,14 +600,14 @@ public final class Shaderc {
     }
 
     public void compileOptionsSetTargetEnv(
-        ShadercCompileOptions options,
+        @Nullable ShadercCompileOptions options,
         @EnumType(ShadercTargetEnv.class) int target,
         @Unsigned int version
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$shaderc_compile_options_set_target_env);
         try {
             hFunction.invokeExact(
-                options.segment(),
+                (MemorySegment) (options != null ? options.segment() : MemorySegment.NULL),
                 target,
                 version
             );
@@ -617,13 +617,13 @@ public final class Shaderc {
     }
 
     public void compileOptionsSetTargetSPIRV(
-        ShadercCompileOptions options,
+        @Nullable ShadercCompileOptions options,
         @EnumType(ShadercSpirvVersion.class) int version
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$shaderc_compile_options_set_target_spirv);
         try {
             hFunction.invokeExact(
-                options.segment(),
+                (MemorySegment) (options != null ? options.segment() : MemorySegment.NULL),
                 version
             );
         } catch (Throwable e) {
@@ -632,13 +632,13 @@ public final class Shaderc {
     }
 
     public void compileOptionsSetVulkanRulesRelaxed(
-        ShadercCompileOptions options,
+        @Nullable ShadercCompileOptions options,
         @NativeType("boolean") boolean enable
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$shaderc_compile_options_set_vulkan_rules_relaxed);
         try {
             hFunction.invokeExact(
-                options.segment(),
+                (MemorySegment) (options != null ? options.segment() : MemorySegment.NULL),
                 enable
             );
         } catch (Throwable e) {
@@ -647,12 +647,12 @@ public final class Shaderc {
     }
 
     public void compileOptionsSetWarningsAsErrors(
-        ShadercCompileOptions options
+        @Nullable ShadercCompileOptions options
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$shaderc_compile_options_set_warnings_as_errors);
         try {
             hFunction.invokeExact(
-                options.segment()
+                (MemorySegment) (options != null ? options.segment() : MemorySegment.NULL)
             );
         } catch (Throwable e) {
             throw new RuntimeException(e);
@@ -671,12 +671,12 @@ public final class Shaderc {
     }
 
     public void compilerRelease(
-        ShadercCompiler param0
+        @Nullable ShadercCompiler param0
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$shaderc_compiler_release);
         try {
             hFunction.invokeExact(
-                param0.segment()
+                (MemorySegment) (param0 != null ? param0.segment() : MemorySegment.NULL)
             );
         } catch (Throwable e) {
             throw new RuntimeException(e);
@@ -684,14 +684,14 @@ public final class Shaderc {
     }
 
     public void getSPVVersion(
-        IntPtr version,
-        IntPtr revision
+        @Nullable IntPtr version,
+        @Nullable IntPtr revision
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$shaderc_get_spv_version);
         try {
             hFunction.invokeExact(
-                version.segment(),
-                revision.segment()
+                (MemorySegment) (version != null ? version.segment() : MemorySegment.NULL),
+                (MemorySegment) (revision != null ? revision.segment() : MemorySegment.NULL)
             );
         } catch (Throwable e) {
             throw new RuntimeException(e);
@@ -699,16 +699,16 @@ public final class Shaderc {
     }
 
     public @NativeType("boolean") boolean parseVersionProfile(
-        BytePtr str,
-        IntPtr version,
-        @EnumType(ShadercProfile.class) IntPtr profile
+        @Nullable BytePtr str,
+        @Nullable IntPtr version,
+        @Nullable @EnumType(ShadercProfile.class) IntPtr profile
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$shaderc_parse_version_profile);
         try {
             return (boolean) hFunction.invokeExact(
-                str.segment(),
-                version.segment(),
-                profile.segment()
+                (MemorySegment) (str != null ? str.segment() : MemorySegment.NULL),
+                (MemorySegment) (version != null ? version.segment() : MemorySegment.NULL),
+                (MemorySegment) (profile != null ? profile.segment() : MemorySegment.NULL)
             );
         } catch (Throwable e) {
             throw new RuntimeException(e);
@@ -716,12 +716,12 @@ public final class Shaderc {
     }
 
     public BytePtr resultGetBytes(
-        ShadercCompilationResult result
+        @Nullable ShadercCompilationResult result
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$shaderc_result_get_bytes);
         try {
             MemorySegment s = (MemorySegment) hFunction.invokeExact(
-                result.segment()
+                (MemorySegment) (result != null ? result.segment() : MemorySegment.NULL)
             );
             return s.equals(MemorySegment.NULL) ? null : new BytePtr(s);
         } catch (Throwable e) {
@@ -730,12 +730,12 @@ public final class Shaderc {
     }
 
     public @EnumType(ShadercCompilationStatus.class) int resultGetCompilationStatus(
-        ShadercCompilationResult param0
+        @Nullable ShadercCompilationResult param0
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$shaderc_result_get_compilation_status);
         try {
             return (int) hFunction.invokeExact(
-                param0.segment()
+                (MemorySegment) (param0 != null ? param0.segment() : MemorySegment.NULL)
             );
         } catch (Throwable e) {
             throw new RuntimeException(e);
@@ -743,12 +743,12 @@ public final class Shaderc {
     }
 
     public BytePtr resultGetErrorMessage(
-        ShadercCompilationResult result
+        @Nullable ShadercCompilationResult result
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$shaderc_result_get_error_message);
         try {
             MemorySegment s = (MemorySegment) hFunction.invokeExact(
-                result.segment()
+                (MemorySegment) (result != null ? result.segment() : MemorySegment.NULL)
             );
             return s.equals(MemorySegment.NULL) ? null : new BytePtr(s);
         } catch (Throwable e) {
@@ -757,51 +757,54 @@ public final class Shaderc {
     }
 
     public long resultGetLength(
-        ShadercCompilationResult result
+        @Nullable ShadercCompilationResult result
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$shaderc_result_get_length);
         try {
-            return (long) hFunction.invokeExact(
-                result.segment()
+            MemorySegment s = (MemorySegment) hFunction.invokeExact(
+                (MemorySegment) (result != null ? result.segment() : MemorySegment.NULL)
             );
+            return s.address();
         } catch (Throwable e) {
             throw new RuntimeException(e);
         }
     }
 
     public long resultGetNumErrors(
-        ShadercCompilationResult result
+        @Nullable ShadercCompilationResult result
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$shaderc_result_get_num_errors);
         try {
-            return (long) hFunction.invokeExact(
-                result.segment()
+            MemorySegment s = (MemorySegment) hFunction.invokeExact(
+                (MemorySegment) (result != null ? result.segment() : MemorySegment.NULL)
             );
+            return s.address();
         } catch (Throwable e) {
             throw new RuntimeException(e);
         }
     }
 
     public long resultGetNumWarnings(
-        ShadercCompilationResult result
+        @Nullable ShadercCompilationResult result
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$shaderc_result_get_num_warnings);
         try {
-            return (long) hFunction.invokeExact(
-                result.segment()
+            MemorySegment s = (MemorySegment) hFunction.invokeExact(
+                (MemorySegment) (result != null ? result.segment() : MemorySegment.NULL)
             );
+            return s.address();
         } catch (Throwable e) {
             throw new RuntimeException(e);
         }
     }
 
     public void resultRelease(
-        ShadercCompilationResult result
+        @Nullable ShadercCompilationResult result
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$shaderc_result_release);
         try {
             hFunction.invokeExact(
-                result.segment()
+                (MemorySegment) (result != null ? result.segment() : MemorySegment.NULL)
             );
         } catch (Throwable e) {
             throw new RuntimeException(e);

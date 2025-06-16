@@ -346,6 +346,21 @@ private fun generateResultConvert(retType: CType): Triple<String, String, String
         "",
         "return s.equals(MemorySegment.NULL) ? null : new ${retType.name}(s);"
     )
+    is CPlatformDependentIntType -> {
+        if (retType.cType == "size_t") {
+            Triple(
+                "MemorySegment s = (MemorySegment) ",
+                "",
+                "return s.address();"
+            )
+        } else {
+            Triple(
+                "return (${retType.jTypeNoAnnotation}) ",
+                "",
+                null
+            )
+        }
+    }
     is CNonRefType -> Triple(
         "return (${retType.jTypeNoAnnotation}) ",
         "",
