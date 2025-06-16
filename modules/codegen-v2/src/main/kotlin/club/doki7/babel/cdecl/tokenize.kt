@@ -1,6 +1,5 @@
 package club.doki7.babel.cdecl
 
-import club.doki7.babel.extract.shaderc.SHADERC_EXPORT
 import club.doki7.babel.util.isHexDigit
 
 internal enum class TokenKind {
@@ -250,7 +249,7 @@ internal val knownTriviaMacros = setOf(
     "SDL_SCANF_FORMAT_STRING",
     "SDL_MALLOC",
 
-    SHADERC_EXPORT,
+    "SHADERC_EXPORT",
 
     "extern"
 )

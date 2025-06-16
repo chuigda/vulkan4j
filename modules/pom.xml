@@ -66,6 +66,7 @@
         <module>opengl</module>
         <module>example</module>
         <module>sdl3</module>
+        <module>shaderc</module>
     </modules>
 
     <build>

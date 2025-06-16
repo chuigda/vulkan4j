@@ -2,14 +2,15 @@
 
 package club.doki7.babel.extract.shaderc
 
+import club.doki7.babel.cdecl.EnumeratorDecl
 import club.doki7.babel.cdecl.FunctionDecl
 import club.doki7.babel.cdecl.RawFunctionType
 import club.doki7.babel.cdecl.TypedefDecl
+import club.doki7.babel.cdecl.parseEnumeratorDecl
 import club.doki7.babel.cdecl.parseFunctionDecl
 import club.doki7.babel.cdecl.parseStructFieldDecl
 import club.doki7.babel.cdecl.parseTypedefDecl
 import club.doki7.babel.cdecl.toType
-import club.doki7.babel.extract.vma.enumerationParseConfig
 import club.doki7.babel.hparse.ControlFlow
 import club.doki7.babel.hparse.ParseConfig
 import club.doki7.babel.hparse.detectBlockComment
@@ -38,7 +39,6 @@ import club.doki7.babel.registry.putEntityIfAbsent
 import kotlin.io.path.Path
 
 private val inputDir = Path("codegen-v2/input")
-const val SHADERC_EXPORT = "SHADERC_EXPORT"
 
 fun extractShadercRegistry(): Registry<EmptyMergeable> {
     val file = inputDir.resolve("libshaderc.h")
@@ -50,9 +50,8 @@ fun extractShadercRegistry(): Registry<EmptyMergeable> {
         .toList()
 
     val registry = Registry(ext = EmptyMergeable())
-
     hparse(headerParseConfig, registry, mutableMapOf(), file, 0)
-
+    registry.renameEntities()
     return registry
 }
 
@@ -76,7 +75,7 @@ private val headerParseConfig: ParseConfig<EmptyMergeable> = ParseConfig<EmptyMe
     }, ::parseAndSaveStructure)
 
     addRule(20, {
-        if (it.startsWith(SHADERC_EXPORT)) {
+        if (it.startsWith("SHADERC_EXPORT")) {
             ControlFlow.ACCEPT
         } else ControlFlow.NEXT
     }, ::parseAndSaveFunctionDecl)
@@ -117,7 +116,6 @@ private fun parseOpaqueStructure(
     return index + 1
 }
 
-// TODO: copy from vma, unify them
 private val structureParseConfig = ParseConfig<EmptyMergeable>().apply {
     addInit { it[Fields] = mutableListOf() }
     addRule(0, { line -> if (line.startsWith("}")) ControlFlow.RETURN else ControlFlow.NEXT }, ::dummyAction)
@@ -128,7 +126,6 @@ private val structureParseConfig = ParseConfig<EmptyMergeable>().apply {
     addRule(10, ::detectBlockComment, ::skipBlockComment)
     addRule(99, { _ -> ControlFlow.ACCEPT }, ::parseStructField)
 }
-
 
 private fun parseStructField(
     @Suppress("unused") registry: Registry<EmptyMergeable>,
@@ -216,6 +213,38 @@ private fun parseAndSaveEnumeration(
 
     assert(lines[next].startsWith("}") && lines[next].endsWith(";"))
     return next + 1
+}
+
+val enumerationParseConfig = ParseConfig<EmptyMergeable>().apply {
+    addInit { it["enumerators"] = mutableListOf<Pair<EnumeratorDecl, List<String>?>>() }
+
+    addRule(0, { line -> if (line.startsWith("}")) ControlFlow.RETURN else ControlFlow.NEXT }, ::dummyAction)
+    addRule(0, ::detectBlockDoxygen, ::parseAndSaveBlockDoxygen)
+    addRule(0, ::detectTriSlashDoxygen, ::parseAndSaveTriSlashDoxygen)
+    addRule(10, ::detectLineComment, ::nextLine)
+    addRule(10, ::detectPreprocessor, ::nextLine)
+    addRule(10, ::detectBlockComment, ::skipBlockComment)
+    addRule(99, { _ -> ControlFlow.ACCEPT }, ::parseEnumerator)
+}
+
+fun parseEnumerator(
+    @Suppress("unused") registry: Registry<EmptyMergeable>,
+    cx: MutableMap<String, Any>,
+    lines: List<String>,
+    index: Int
+): Int {
+    val parseResult = parseEnumeratorDecl(lines, index)
+    val enumDecl = parseResult.first
+    val nextIndex = parseResult.second
+
+    var enumeratorDoc: List<String>? = null
+    if ("doxygen" in cx) {
+        enumeratorDoc = cx["doxygen"] as List<String>
+        cx.remove("doxygen")
+    }
+
+    (cx["enumerators"] as MutableList<Pair<EnumeratorDecl, List<String>?>>).add(Pair(enumDecl, enumeratorDoc))
+    return nextIndex
 }
 
 private fun parseFunctionTypedef(
