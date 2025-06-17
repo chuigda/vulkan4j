@@ -285,8 +285,7 @@ private fun <E : IMergeable<E>> parseFunctionTypeDecl(
     lines: List<String>,
     index: Int
 ): Int {
-    val parseResult = parseTypedefDecl(lines, index)
-    val (typedef, nextIndex) = parseResult
+    val (typedef, nextIndex) = parseTypedefDecl(lines, index)
     val functionTypedef = morphFunctionTypedef(typedef)
     if ("doxygen" in cx) {
         functionTypedef.doc = cx["doxygen"] as List<String>

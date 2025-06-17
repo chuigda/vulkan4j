@@ -1,16 +1,16 @@
 #!/usr/bin/env bash
 
-VK_MEM_ALLOC_H_URI=https://raw.githubusercontent.com/nothings/stb/refs/heads/master/stb_image.h
+STB_IMAGE_H_URI=https://raw.githubusercontent.com/nothings/stb/refs/heads/master/stb_image.h
 
 # if the file does not exist
 if [ ! -f stb_image.h ]; then
   # if wget is installed on this system
   if command -v wget &> /dev/null; then
     echo Downloading VMA header file
-    wget $VK_MEM_ALLOC_H_URI
+    wget $STB_IMAGE_H_URI
   elif command -v curl &> /dev/null; then
     echo Downloading VMA header file
-    curl -o stb_image.h $VK_MEM_ALLOC_H_URI
+    curl -o stb_image.h $STB_IMAGE_H_URI
   else
     echo Error: could not find stb_image.h and cannot download it automatically
     exit 1
