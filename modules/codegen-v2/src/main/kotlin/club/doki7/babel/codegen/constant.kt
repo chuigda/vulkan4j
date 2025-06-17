@@ -14,11 +14,9 @@ fun generateConstants(
     +"package ${codegenOptions.packageName};"
     +""
 
-    +"import club.doki7.ffm.annotation.*;"
+    imports("club.doki7.ffm.annotation.*")
     if (codegenOptions.extraImport.isNotEmpty()) {
-        for (import in codegenOptions.extraImport) {
-            +"import $import;"
-        }
+        for (import in codegenOptions.extraImport) imports(import)
     }
     +""
 

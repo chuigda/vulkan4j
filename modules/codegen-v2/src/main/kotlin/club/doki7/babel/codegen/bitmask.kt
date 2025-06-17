@@ -24,18 +24,16 @@ fun generateBitmask(
     +""
 
     if (codegenOptions.extraImport.isNotEmpty()) {
-        for (import in codegenOptions.extraImport) {
-            +"import $import;"
-        }
+        for (import in codegenOptions.extraImport) imports(import)
         +""
     }
 
     if (bitflags.isNotEmpty()) {
-        +"import club.doki7.ffm.annotation.*;"
-        +"import org.intellij.lang.annotations.MagicConstant;"
+        imports("club.doki7.ffm.annotation.*")
+        imports("org.intellij.lang.annotations.MagicConstant")
         +""
-        +"import java.util.ArrayList;"
-        +"import java.util.List;"
+        imports("java.util.ArrayList")
+        imports("java.util.List")
         +""
     }
 

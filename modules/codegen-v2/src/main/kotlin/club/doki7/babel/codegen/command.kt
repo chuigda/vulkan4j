@@ -36,6 +36,7 @@ fun generateCommandFile(
     imports("java.lang.foreign.*")
     imports("java.lang.invoke.MethodHandle")
     imports("java.util.Objects")
+    imports("org.intellij.lang.annotations.MagicConstant")
     +""
     imports("org.jetbrains.annotations.Nullable")
     imports("club.doki7.ffm.NativeLayout")
