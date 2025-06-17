@@ -3,6 +3,7 @@ package club.doki7.openal;
 import java.lang.foreign.*;
 import java.lang.invoke.MethodHandle;
 import java.util.Objects;
+import org.intellij.lang.annotations.MagicConstant;
 
 import org.jetbrains.annotations.Nullable;
 import club.doki7.ffm.NativeLayout;
