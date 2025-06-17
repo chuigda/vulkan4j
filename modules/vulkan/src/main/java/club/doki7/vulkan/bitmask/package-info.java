@@ -7,15 +7,15 @@
 /// {@link club.doki7.ffm.ptr} types when representing pointer to or array of bitmasks.
 ///
 /// In order to tell what bitmask type an integral value represents, we use the annotation
-/// {@link club.doki7.ffm.annotation.EnumType @EnumType}. For example:
+/// {@link org.intellij.lang.annotations.MagicConstant @MagicConstant}. For example:
 ///
 /// {@snippet :
 /// public record VkBufferCreateInfo(MemorySegment segment) {
-///     @EnumType(VkBufferUsageFlags.class) int usage() {
+///     @MagicConstant(flagsFromClass = VkBufferUsageFlags.class) int usage() {
 ///         // implementation omitted
 ///     }
 ///
-///     void usage(@EnumType(VkBufferUsageFlags.class) int value) {
+///     void usage(@MagicConstant(flagsFromClass = VkBufferUsageFlags.class) int value) {
 ///         // implementation omitted
 ///     }
 ///
@@ -23,7 +23,7 @@
 /// }
 /// }
 ///
-/// The {@link club.doki7.ffm.annotation.EnumType @EnumType} annotation provides useful in-IDE and
+/// The {@link club.doki7.ffm.annotation.EnumType @MagicConstant} annotation provides useful in-IDE and
 /// JavaDoc links, so you can Ctrl-Click on the annotation argument to jump to the definition of the
 /// bitmask type.
 ///

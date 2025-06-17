@@ -1,12 +1,6 @@
 package club.doki7.babel.ctype
 
-import club.doki7.babel.registry.ArrayType
-import club.doki7.babel.registry.IdentifierType
-import club.doki7.babel.registry.OpaqueTypedef
-import club.doki7.babel.registry.PointerType
-import club.doki7.babel.registry.RegistryBase
-import club.doki7.babel.registry.Type
-import kotlin.collections.contains
+import club.doki7.babel.registry.*
 
 sealed interface CType {
     val jType: String
@@ -280,9 +274,9 @@ data class CEnumType(
     val bitwidth: Int? = null
 ): CFixedSizeType {
     override val jType: String get() = when (bitwidth) {
-        null, 32 -> "@EnumType($name.class) int"
-        8 -> "@EnumType($name.class) byte"
-        64 -> "@EnumType($name.class) long"
+        null, 32 -> "@MagicConstant(valuesFromClass = $name.class) int"
+        8 -> "@MagicConstant(valuesFromClass = $name.class) byte"
+        64 -> "@MagicConstant(valuesFromClass = $name.class) long"
         else -> error("unsupported bitwidth: $bitwidth")
     }
 
