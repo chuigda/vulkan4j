@@ -11,11 +11,11 @@ import kotlin.io.path.useLines
 private val inputDir = Path("codegen-v2/input")
 internal val log = Logger.getLogger("c.d.b.extract.stb")
 
-fun extractStbHeader(): Registry<EmptyMergeable> {
+fun extractStbImageHeader(): Registry<EmptyMergeable> {
     val header = inputDir.resolve("stb_image.h")
         .useLines { it.map(String::trim).toList() }
 
-    var registry = Registry(ext = EmptyMergeable())
+    val registry = Registry(ext = EmptyMergeable())
 
     hparse(
         headerParseConfig,
