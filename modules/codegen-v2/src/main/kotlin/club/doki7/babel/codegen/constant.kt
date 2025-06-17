@@ -15,6 +15,7 @@ fun generateConstants(
     +""
 
     +"import club.doki7.ffm.annotation.*;"
+    +"import org.intellij.lang.annotations.MagicConstant;"
     if (codegenOptions.extraImport.isNotEmpty()) {
         for (import in codegenOptions.extraImport) {
             +"import $import;"

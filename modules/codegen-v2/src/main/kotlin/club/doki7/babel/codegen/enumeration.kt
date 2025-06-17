@@ -18,6 +18,7 @@ fun generateEnumeration(
 
     if (variants.isNotEmpty()) {
         +"import club.doki7.ffm.annotation.*;"
+        +"import org.intellij.lang.annotations.MagicConstant;"
         +""
     }
 
