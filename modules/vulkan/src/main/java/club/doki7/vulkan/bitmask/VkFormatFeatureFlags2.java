@@ -1,6 +1,7 @@
 package club.doki7.vulkan.bitmask;
 
 import club.doki7.ffm.annotation.*;
+import org.intellij.lang.annotations.MagicConstant;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -54,7 +55,7 @@ public final class VkFormatFeatureFlags2 {
     public static final long WEIGHT_IMAGE_QCOM = 0x400000000L;
     public static final long WEIGHT_SAMPLED_IMAGE_QCOM = 0x800000000L;
 
-    public static String explain(@EnumType(VkFormatFeatureFlags2.class) long flags) {
+    public static String explain(@MagicConstant(flagsFromClass = VkFormatFeatureFlags2.class) long flags) {
         List<String> detectedFlagBits = new ArrayList<>();
         if ((flags & ACCELERATION_STRUCTURE_RADIUS_BUFFER_NV) != 0) {
             detectedFlagBits.add("VK_FORMAT_FEATURE_2_ACCELERATION_STRUCTURE_RADIUS_BUFFER_BIT_NV");

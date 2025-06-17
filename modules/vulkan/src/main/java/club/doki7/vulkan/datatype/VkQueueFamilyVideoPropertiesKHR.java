@@ -190,11 +190,11 @@ public record VkQueueFamilyVideoPropertiesKHR(@NotNull MemorySegment segment) im
         sType(VkStructureType.QUEUE_FAMILY_VIDEO_PROPERTIES_KHR);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkQueueFamilyVideoPropertiesKHR sType(@EnumType(VkStructureType.class) int value) {
+    public VkQueueFamilyVideoPropertiesKHR sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }
@@ -212,11 +212,11 @@ public record VkQueueFamilyVideoPropertiesKHR(@NotNull MemorySegment segment) im
         return this;
     }
 
-    public @EnumType(VkVideoCodecOperationFlagsKHR.class) int videoCodecOperations() {
+    public @MagicConstant(valuesFromClass = VkVideoCodecOperationFlagsKHR.class) int videoCodecOperations() {
         return segment.get(LAYOUT$videoCodecOperations, OFFSET$videoCodecOperations);
     }
 
-    public VkQueueFamilyVideoPropertiesKHR videoCodecOperations(@EnumType(VkVideoCodecOperationFlagsKHR.class) int value) {
+    public VkQueueFamilyVideoPropertiesKHR videoCodecOperations(@MagicConstant(valuesFromClass = VkVideoCodecOperationFlagsKHR.class) int value) {
         segment.set(LAYOUT$videoCodecOperations, OFFSET$videoCodecOperations, value);
         return this;
     }

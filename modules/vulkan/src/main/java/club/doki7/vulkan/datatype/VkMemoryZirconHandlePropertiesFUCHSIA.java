@@ -190,11 +190,11 @@ public record VkMemoryZirconHandlePropertiesFUCHSIA(@NotNull MemorySegment segme
         sType(VkStructureType.MEMORY_ZIRCON_HANDLE_PROPERTIES_FUCHSIA);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkMemoryZirconHandlePropertiesFUCHSIA sType(@EnumType(VkStructureType.class) int value) {
+    public VkMemoryZirconHandlePropertiesFUCHSIA sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }

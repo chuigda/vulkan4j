@@ -194,11 +194,11 @@ public record VkClusterAccelerationStructureInputInfoNV(@NotNull MemorySegment s
         sType(VkStructureType.CLUSTER_ACCELERATION_STRUCTURE_INPUT_INFO_NV);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkClusterAccelerationStructureInputInfoNV sType(@EnumType(VkStructureType.class) int value) {
+    public VkClusterAccelerationStructureInputInfoNV sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }
@@ -225,29 +225,29 @@ public record VkClusterAccelerationStructureInputInfoNV(@NotNull MemorySegment s
         return this;
     }
 
-    public @EnumType(VkBuildAccelerationStructureFlagsKHR.class) int flags() {
+    public @MagicConstant(valuesFromClass = VkBuildAccelerationStructureFlagsKHR.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public VkClusterAccelerationStructureInputInfoNV flags(@EnumType(VkBuildAccelerationStructureFlagsKHR.class) int value) {
+    public VkClusterAccelerationStructureInputInfoNV flags(@MagicConstant(valuesFromClass = VkBuildAccelerationStructureFlagsKHR.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
         return this;
     }
 
-    public @EnumType(VkClusterAccelerationStructureOpTypeNV.class) int opType() {
+    public @MagicConstant(valuesFromClass = VkClusterAccelerationStructureOpTypeNV.class) int opType() {
         return segment.get(LAYOUT$opType, OFFSET$opType);
     }
 
-    public VkClusterAccelerationStructureInputInfoNV opType(@EnumType(VkClusterAccelerationStructureOpTypeNV.class) int value) {
+    public VkClusterAccelerationStructureInputInfoNV opType(@MagicConstant(valuesFromClass = VkClusterAccelerationStructureOpTypeNV.class) int value) {
         segment.set(LAYOUT$opType, OFFSET$opType, value);
         return this;
     }
 
-    public @EnumType(VkClusterAccelerationStructureOpModeNV.class) int opMode() {
+    public @MagicConstant(valuesFromClass = VkClusterAccelerationStructureOpModeNV.class) int opMode() {
         return segment.get(LAYOUT$opMode, OFFSET$opMode);
     }
 
-    public VkClusterAccelerationStructureInputInfoNV opMode(@EnumType(VkClusterAccelerationStructureOpModeNV.class) int value) {
+    public VkClusterAccelerationStructureInputInfoNV opMode(@MagicConstant(valuesFromClass = VkClusterAccelerationStructureOpModeNV.class) int value) {
         segment.set(LAYOUT$opMode, OFFSET$opMode, value);
         return this;
     }

@@ -186,11 +186,11 @@ public record VmaDefragmentationMove(@NotNull MemorySegment segment) implements 
         return ret;
     }
 
-    public @EnumType(VmaDefragmentationMoveOperation.class) int operation() {
+    public @MagicConstant(valuesFromClass = VmaDefragmentationMoveOperation.class) int operation() {
         return segment.get(LAYOUT$operation, OFFSET$operation);
     }
 
-    public VmaDefragmentationMove operation(@EnumType(VmaDefragmentationMoveOperation.class) int value) {
+    public VmaDefragmentationMove operation(@MagicConstant(valuesFromClass = VmaDefragmentationMoveOperation.class) int value) {
         segment.set(LAYOUT$operation, OFFSET$operation, value);
         return this;
     }

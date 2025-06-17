@@ -192,11 +192,11 @@ public record VkDeviceQueueInfo2(@NotNull MemorySegment segment) implements IVkD
         sType(VkStructureType.DEVICE_QUEUE_INFO_2);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkDeviceQueueInfo2 sType(@EnumType(VkStructureType.class) int value) {
+    public VkDeviceQueueInfo2 sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }
@@ -214,11 +214,11 @@ public record VkDeviceQueueInfo2(@NotNull MemorySegment segment) implements IVkD
         return this;
     }
 
-    public @EnumType(VkDeviceQueueCreateFlags.class) int flags() {
+    public @MagicConstant(valuesFromClass = VkDeviceQueueCreateFlags.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public VkDeviceQueueInfo2 flags(@EnumType(VkDeviceQueueCreateFlags.class) int value) {
+    public VkDeviceQueueInfo2 flags(@MagicConstant(valuesFromClass = VkDeviceQueueCreateFlags.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
         return this;
     }

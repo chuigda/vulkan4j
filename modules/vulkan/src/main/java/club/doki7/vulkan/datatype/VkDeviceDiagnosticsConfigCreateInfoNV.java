@@ -190,11 +190,11 @@ public record VkDeviceDiagnosticsConfigCreateInfoNV(@NotNull MemorySegment segme
         sType(VkStructureType.DEVICE_DIAGNOSTICS_CONFIG_CREATE_INFO_NV);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkDeviceDiagnosticsConfigCreateInfoNV sType(@EnumType(VkStructureType.class) int value) {
+    public VkDeviceDiagnosticsConfigCreateInfoNV sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }
@@ -212,11 +212,11 @@ public record VkDeviceDiagnosticsConfigCreateInfoNV(@NotNull MemorySegment segme
         return this;
     }
 
-    public @EnumType(VkDeviceDiagnosticsConfigFlagsNV.class) int flags() {
+    public @MagicConstant(valuesFromClass = VkDeviceDiagnosticsConfigFlagsNV.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public VkDeviceDiagnosticsConfigCreateInfoNV flags(@EnumType(VkDeviceDiagnosticsConfigFlagsNV.class) int value) {
+    public VkDeviceDiagnosticsConfigCreateInfoNV flags(@MagicConstant(valuesFromClass = VkDeviceDiagnosticsConfigFlagsNV.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
         return this;
     }

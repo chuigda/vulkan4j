@@ -190,11 +190,11 @@ public record VkPhysicalDeviceShaderDrawParametersFeatures(@NotNull MemorySegmen
         sType(VkStructureType.PHYSICAL_DEVICE_SHADER_DRAW_PARAMETERS_FEATURES);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkPhysicalDeviceShaderDrawParametersFeatures sType(@EnumType(VkStructureType.class) int value) {
+    public VkPhysicalDeviceShaderDrawParametersFeatures sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }

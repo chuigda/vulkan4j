@@ -190,11 +190,11 @@ public record VkAccelerationStructureDeviceAddressInfoKHR(@NotNull MemorySegment
         sType(VkStructureType.ACCELERATION_STRUCTURE_DEVICE_ADDRESS_INFO_KHR);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkAccelerationStructureDeviceAddressInfoKHR sType(@EnumType(VkStructureType.class) int value) {
+    public VkAccelerationStructureDeviceAddressInfoKHR sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }

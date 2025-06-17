@@ -193,11 +193,11 @@ public record VkDeviceFaultInfoEXT(@NotNull MemorySegment segment) implements IV
         sType(VkStructureType.DEVICE_FAULT_INFO_EXT);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkDeviceFaultInfoEXT sType(@EnumType(VkStructureType.class) int value) {
+    public VkDeviceFaultInfoEXT sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }

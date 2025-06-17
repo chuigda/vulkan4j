@@ -190,11 +190,11 @@ public record VkPhysicalDevicePointClippingProperties(@NotNull MemorySegment seg
         sType(VkStructureType.PHYSICAL_DEVICE_POINT_CLIPPING_PROPERTIES);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkPhysicalDevicePointClippingProperties sType(@EnumType(VkStructureType.class) int value) {
+    public VkPhysicalDevicePointClippingProperties sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }
@@ -212,11 +212,11 @@ public record VkPhysicalDevicePointClippingProperties(@NotNull MemorySegment seg
         return this;
     }
 
-    public @EnumType(VkPointClippingBehavior.class) int pointClippingBehavior() {
+    public @MagicConstant(valuesFromClass = VkPointClippingBehavior.class) int pointClippingBehavior() {
         return segment.get(LAYOUT$pointClippingBehavior, OFFSET$pointClippingBehavior);
     }
 
-    public VkPhysicalDevicePointClippingProperties pointClippingBehavior(@EnumType(VkPointClippingBehavior.class) int value) {
+    public VkPhysicalDevicePointClippingProperties pointClippingBehavior(@MagicConstant(valuesFromClass = VkPointClippingBehavior.class) int value) {
         segment.set(LAYOUT$pointClippingBehavior, OFFSET$pointClippingBehavior, value);
         return this;
     }

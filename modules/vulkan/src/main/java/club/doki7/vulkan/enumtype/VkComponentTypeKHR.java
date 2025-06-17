@@ -1,6 +1,7 @@
 package club.doki7.vulkan.enumtype;
 
 import club.doki7.ffm.annotation.*;
+import org.intellij.lang.annotations.MagicConstant;
 
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkComponentTypeKHR.html"><code>VkComponentTypeKHR</code></a>
 public final class VkComponentTypeKHR {
@@ -21,7 +22,7 @@ public final class VkComponentTypeKHR {
     public static final int FLOAT_E4M3_NV = 0x3ba247fa;
     public static final int FLOAT_E5M2_NV = 0x3ba247fb;
 
-    public static String explain(@EnumType(VkComponentTypeKHR.class) int value) {
+    public static String explain(@MagicConstant(valuesFromClass = VkComponentTypeKHR.class) int value) {
         return switch (value) {
             case VkComponentTypeKHR.BFLOAT16 -> "VK_COMPONENT_TYPE_BFLOAT16_KHR";
             case VkComponentTypeKHR.FLOAT16 -> "VK_COMPONENT_TYPE_FLOAT16_KHR";

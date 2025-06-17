@@ -1,6 +1,7 @@
 package club.doki7.vulkan.enumtype;
 
 import club.doki7.ffm.annotation.*;
+import org.intellij.lang.annotations.MagicConstant;
 
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkRayTracingShaderGroupTypeKHR.html"><code>VkRayTracingShaderGroupTypeKHR</code></a>
 public final class VkRayTracingShaderGroupTypeKHR {
@@ -8,7 +9,7 @@ public final class VkRayTracingShaderGroupTypeKHR {
     public static final int TRIANGLES_HIT_GROUP = 0x1;
     public static final int PROCEDURAL_HIT_GROUP = 0x2;
 
-    public static String explain(@EnumType(VkRayTracingShaderGroupTypeKHR.class) int value) {
+    public static String explain(@MagicConstant(valuesFromClass = VkRayTracingShaderGroupTypeKHR.class) int value) {
         return switch (value) {
             case VkRayTracingShaderGroupTypeKHR.GENERAL -> "VK_RAY_TRACING_SHADER_GROUP_TYPE_GENERAL_KHR";
             case VkRayTracingShaderGroupTypeKHR.PROCEDURAL_HIT_GROUP -> "VK_RAY_TRACING_SHADER_GROUP_TYPE_PROCEDURAL_HIT_GROUP_KHR";

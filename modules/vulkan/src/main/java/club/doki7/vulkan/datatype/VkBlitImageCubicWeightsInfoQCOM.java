@@ -190,11 +190,11 @@ public record VkBlitImageCubicWeightsInfoQCOM(@NotNull MemorySegment segment) im
         sType(VkStructureType.BLIT_IMAGE_CUBIC_WEIGHTS_INFO_QCOM);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkBlitImageCubicWeightsInfoQCOM sType(@EnumType(VkStructureType.class) int value) {
+    public VkBlitImageCubicWeightsInfoQCOM sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }
@@ -212,11 +212,11 @@ public record VkBlitImageCubicWeightsInfoQCOM(@NotNull MemorySegment segment) im
         return this;
     }
 
-    public @EnumType(VkCubicFilterWeightsQCOM.class) int cubicWeights() {
+    public @MagicConstant(valuesFromClass = VkCubicFilterWeightsQCOM.class) int cubicWeights() {
         return segment.get(LAYOUT$cubicWeights, OFFSET$cubicWeights);
     }
 
-    public VkBlitImageCubicWeightsInfoQCOM cubicWeights(@EnumType(VkCubicFilterWeightsQCOM.class) int value) {
+    public VkBlitImageCubicWeightsInfoQCOM cubicWeights(@MagicConstant(valuesFromClass = VkCubicFilterWeightsQCOM.class) int value) {
         segment.set(LAYOUT$cubicWeights, OFFSET$cubicWeights, value);
         return this;
     }

@@ -191,11 +191,11 @@ public record VkPhysicalDeviceShadingRateImageFeaturesNV(@NotNull MemorySegment 
         sType(VkStructureType.PHYSICAL_DEVICE_SHADING_RATE_IMAGE_FEATURES_NV);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkPhysicalDeviceShadingRateImageFeaturesNV sType(@EnumType(VkStructureType.class) int value) {
+    public VkPhysicalDeviceShadingRateImageFeaturesNV sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }

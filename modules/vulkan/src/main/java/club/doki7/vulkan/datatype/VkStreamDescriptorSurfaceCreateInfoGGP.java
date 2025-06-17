@@ -191,11 +191,11 @@ public record VkStreamDescriptorSurfaceCreateInfoGGP(@NotNull MemorySegment segm
         sType(VkStructureType.STREAM_DESCRIPTOR_SURFACE_CREATE_INFO_GGP);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkStreamDescriptorSurfaceCreateInfoGGP sType(@EnumType(VkStructureType.class) int value) {
+    public VkStreamDescriptorSurfaceCreateInfoGGP sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }
@@ -213,11 +213,11 @@ public record VkStreamDescriptorSurfaceCreateInfoGGP(@NotNull MemorySegment segm
         return this;
     }
 
-    public @EnumType(VkStreamDescriptorSurfaceCreateFlagsGGP.class) int flags() {
+    public @MagicConstant(valuesFromClass = VkStreamDescriptorSurfaceCreateFlagsGGP.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public VkStreamDescriptorSurfaceCreateInfoGGP flags(@EnumType(VkStreamDescriptorSurfaceCreateFlagsGGP.class) int value) {
+    public VkStreamDescriptorSurfaceCreateInfoGGP flags(@MagicConstant(valuesFromClass = VkStreamDescriptorSurfaceCreateFlagsGGP.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
         return this;
     }

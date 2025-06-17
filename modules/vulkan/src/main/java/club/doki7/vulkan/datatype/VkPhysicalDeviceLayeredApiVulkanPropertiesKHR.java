@@ -190,11 +190,11 @@ public record VkPhysicalDeviceLayeredApiVulkanPropertiesKHR(@NotNull MemorySegme
         sType(VkStructureType.PHYSICAL_DEVICE_LAYERED_API_VULKAN_PROPERTIES_KHR);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkPhysicalDeviceLayeredApiVulkanPropertiesKHR sType(@EnumType(VkStructureType.class) int value) {
+    public VkPhysicalDeviceLayeredApiVulkanPropertiesKHR sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }

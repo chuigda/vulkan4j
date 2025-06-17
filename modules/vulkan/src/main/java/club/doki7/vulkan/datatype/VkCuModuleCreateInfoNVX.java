@@ -191,11 +191,11 @@ public record VkCuModuleCreateInfoNVX(@NotNull MemorySegment segment) implements
         sType(VkStructureType.CU_MODULE_CREATE_INFO_NVX);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkCuModuleCreateInfoNVX sType(@EnumType(VkStructureType.class) int value) {
+    public VkCuModuleCreateInfoNVX sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }

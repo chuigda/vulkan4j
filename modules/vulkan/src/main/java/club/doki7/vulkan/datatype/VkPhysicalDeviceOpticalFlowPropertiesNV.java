@@ -200,11 +200,11 @@ public record VkPhysicalDeviceOpticalFlowPropertiesNV(@NotNull MemorySegment seg
         sType(VkStructureType.PHYSICAL_DEVICE_OPTICAL_FLOW_PROPERTIES_NV);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkPhysicalDeviceOpticalFlowPropertiesNV sType(@EnumType(VkStructureType.class) int value) {
+    public VkPhysicalDeviceOpticalFlowPropertiesNV sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }
@@ -222,20 +222,20 @@ public record VkPhysicalDeviceOpticalFlowPropertiesNV(@NotNull MemorySegment seg
         return this;
     }
 
-    public @EnumType(VkOpticalFlowGridSizeFlagsNV.class) int supportedOutputGridSizes() {
+    public @MagicConstant(valuesFromClass = VkOpticalFlowGridSizeFlagsNV.class) int supportedOutputGridSizes() {
         return segment.get(LAYOUT$supportedOutputGridSizes, OFFSET$supportedOutputGridSizes);
     }
 
-    public VkPhysicalDeviceOpticalFlowPropertiesNV supportedOutputGridSizes(@EnumType(VkOpticalFlowGridSizeFlagsNV.class) int value) {
+    public VkPhysicalDeviceOpticalFlowPropertiesNV supportedOutputGridSizes(@MagicConstant(valuesFromClass = VkOpticalFlowGridSizeFlagsNV.class) int value) {
         segment.set(LAYOUT$supportedOutputGridSizes, OFFSET$supportedOutputGridSizes, value);
         return this;
     }
 
-    public @EnumType(VkOpticalFlowGridSizeFlagsNV.class) int supportedHintGridSizes() {
+    public @MagicConstant(valuesFromClass = VkOpticalFlowGridSizeFlagsNV.class) int supportedHintGridSizes() {
         return segment.get(LAYOUT$supportedHintGridSizes, OFFSET$supportedHintGridSizes);
     }
 
-    public VkPhysicalDeviceOpticalFlowPropertiesNV supportedHintGridSizes(@EnumType(VkOpticalFlowGridSizeFlagsNV.class) int value) {
+    public VkPhysicalDeviceOpticalFlowPropertiesNV supportedHintGridSizes(@MagicConstant(valuesFromClass = VkOpticalFlowGridSizeFlagsNV.class) int value) {
         segment.set(LAYOUT$supportedHintGridSizes, OFFSET$supportedHintGridSizes, value);
         return this;
     }

@@ -1,6 +1,7 @@
 package club.doki7.vulkan.enumtype;
 
 import club.doki7.ffm.annotation.*;
+import org.intellij.lang.annotations.MagicConstant;
 
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkIndirectCommandsTokenTypeNV.html"><code>VkIndirectCommandsTokenTypeNV</code></a>
 public final class VkIndirectCommandsTokenTypeNV {
@@ -16,7 +17,7 @@ public final class VkIndirectCommandsTokenTypeNV {
     public static final int PIPELINE = 0x3ba151e3;
     public static final int DISPATCH = 0x3ba151e4;
 
-    public static String explain(@EnumType(VkIndirectCommandsTokenTypeNV.class) int value) {
+    public static String explain(@MagicConstant(valuesFromClass = VkIndirectCommandsTokenTypeNV.class) int value) {
         return switch (value) {
             case VkIndirectCommandsTokenTypeNV.DISPATCH -> "VK_INDIRECT_COMMANDS_TOKEN_TYPE_DISPATCH_NV";
             case VkIndirectCommandsTokenTypeNV.DRAW_INDEXED -> "VK_INDIRECT_COMMANDS_TOKEN_TYPE_DRAW_INDEXED_NV";

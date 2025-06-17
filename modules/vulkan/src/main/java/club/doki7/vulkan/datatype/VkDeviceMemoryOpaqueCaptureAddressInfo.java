@@ -190,11 +190,11 @@ public record VkDeviceMemoryOpaqueCaptureAddressInfo(@NotNull MemorySegment segm
         sType(VkStructureType.DEVICE_MEMORY_OPAQUE_CAPTURE_ADDRESS_INFO);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkDeviceMemoryOpaqueCaptureAddressInfo sType(@EnumType(VkStructureType.class) int value) {
+    public VkDeviceMemoryOpaqueCaptureAddressInfo sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }

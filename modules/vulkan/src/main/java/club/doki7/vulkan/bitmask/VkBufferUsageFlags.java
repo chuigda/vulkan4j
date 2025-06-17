@@ -1,6 +1,7 @@
 package club.doki7.vulkan.bitmask;
 
 import club.doki7.ffm.annotation.*;
+import org.intellij.lang.annotations.MagicConstant;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -35,7 +36,7 @@ public final class VkBufferUsageFlags {
     public static final int VIDEO_ENCODE_DST_KHR = 0x8000;
     public static final int VIDEO_ENCODE_SRC_KHR = 0x10000;
 
-    public static String explain(@EnumType(VkBufferUsageFlags.class) int flags) {
+    public static String explain(@MagicConstant(flagsFromClass = VkBufferUsageFlags.class) int flags) {
         List<String> detectedFlagBits = new ArrayList<>();
         if ((flags & ACCELERATION_STRUCTURE_BUILD_INPUT_READ_ONLY_KHR) != 0) {
             detectedFlagBits.add("VK_BUFFER_USAGE_ACCELERATION_STRUCTURE_BUILD_INPUT_READ_ONLY_BIT_KHR");

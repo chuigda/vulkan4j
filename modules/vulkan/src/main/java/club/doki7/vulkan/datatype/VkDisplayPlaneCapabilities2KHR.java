@@ -190,11 +190,11 @@ public record VkDisplayPlaneCapabilities2KHR(@NotNull MemorySegment segment) imp
         sType(VkStructureType.DISPLAY_PLANE_CAPABILITIES_2_KHR);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkDisplayPlaneCapabilities2KHR sType(@EnumType(VkStructureType.class) int value) {
+    public VkDisplayPlaneCapabilities2KHR sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }

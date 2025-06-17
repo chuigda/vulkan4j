@@ -1,6 +1,7 @@
 package club.doki7.vulkan.enumtype;
 
 import club.doki7.ffm.annotation.*;
+import org.intellij.lang.annotations.MagicConstant;
 
 public final class StdVideoAV1ColorPrimaries {
     public static final int STD_VIDEO_AV1_COLOR_PRIMARIES_BT_709 = 0x1;
@@ -17,7 +18,7 @@ public final class StdVideoAV1ColorPrimaries {
     public static final int STD_VIDEO_AV1_COLOR_PRIMARIES_EBU_3213 = 0x16;
     public static final int STD_VIDEO_AV1_COLOR_PRIMARIES_INVALID = 0x7fffffff;
 
-    public static String explain(@EnumType(StdVideoAV1ColorPrimaries.class) int value) {
+    public static String explain(@MagicConstant(valuesFromClass = StdVideoAV1ColorPrimaries.class) int value) {
         return switch (value) {
             case StdVideoAV1ColorPrimaries.STD_VIDEO_AV1_COLOR_PRIMARIES_BT_2020 -> "STD_VIDEO_AV1_COLOR_PRIMARIES_BT_2020";
             case StdVideoAV1ColorPrimaries.STD_VIDEO_AV1_COLOR_PRIMARIES_BT_470_B_G -> "STD_VIDEO_AV1_COLOR_PRIMARIES_BT_470_B_G";

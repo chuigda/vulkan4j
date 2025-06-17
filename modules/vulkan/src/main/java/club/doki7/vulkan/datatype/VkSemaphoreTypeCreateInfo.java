@@ -191,11 +191,11 @@ public record VkSemaphoreTypeCreateInfo(@NotNull MemorySegment segment) implemen
         sType(VkStructureType.SEMAPHORE_TYPE_CREATE_INFO);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkSemaphoreTypeCreateInfo sType(@EnumType(VkStructureType.class) int value) {
+    public VkSemaphoreTypeCreateInfo sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }
@@ -213,11 +213,11 @@ public record VkSemaphoreTypeCreateInfo(@NotNull MemorySegment segment) implemen
         return this;
     }
 
-    public @EnumType(VkSemaphoreType.class) int semaphoreType() {
+    public @MagicConstant(valuesFromClass = VkSemaphoreType.class) int semaphoreType() {
         return segment.get(LAYOUT$semaphoreType, OFFSET$semaphoreType);
     }
 
-    public VkSemaphoreTypeCreateInfo semaphoreType(@EnumType(VkSemaphoreType.class) int value) {
+    public VkSemaphoreTypeCreateInfo semaphoreType(@MagicConstant(valuesFromClass = VkSemaphoreType.class) int value) {
         segment.set(LAYOUT$semaphoreType, OFFSET$semaphoreType, value);
         return this;
     }

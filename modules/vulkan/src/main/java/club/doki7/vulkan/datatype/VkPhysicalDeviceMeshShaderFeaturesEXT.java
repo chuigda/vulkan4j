@@ -194,11 +194,11 @@ public record VkPhysicalDeviceMeshShaderFeaturesEXT(@NotNull MemorySegment segme
         sType(VkStructureType.PHYSICAL_DEVICE_MESH_SHADER_FEATURES_EXT);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkPhysicalDeviceMeshShaderFeaturesEXT sType(@EnumType(VkStructureType.class) int value) {
+    public VkPhysicalDeviceMeshShaderFeaturesEXT sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }

@@ -190,11 +190,11 @@ public record VkPhysicalDevicePipelineRobustnessFeatures(@NotNull MemorySegment 
         sType(VkStructureType.PHYSICAL_DEVICE_PIPELINE_ROBUSTNESS_FEATURES);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkPhysicalDevicePipelineRobustnessFeatures sType(@EnumType(VkStructureType.class) int value) {
+    public VkPhysicalDevicePipelineRobustnessFeatures sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }

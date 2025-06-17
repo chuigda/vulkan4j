@@ -190,11 +190,11 @@ public record VkTextureLODGatherFormatPropertiesAMD(@NotNull MemorySegment segme
         sType(VkStructureType.TEXTURE_LOD_GATHER_FORMAT_PROPERTIES_AMD);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkTextureLODGatherFormatPropertiesAMD sType(@EnumType(VkStructureType.class) int value) {
+    public VkTextureLODGatherFormatPropertiesAMD sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }

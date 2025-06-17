@@ -190,11 +190,11 @@ public record VkSurfaceCapabilitiesPresentBarrierNV(@NotNull MemorySegment segme
         sType(VkStructureType.SURFACE_CAPABILITIES_PRESENT_BARRIER_NV);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkSurfaceCapabilitiesPresentBarrierNV sType(@EnumType(VkStructureType.class) int value) {
+    public VkSurfaceCapabilitiesPresentBarrierNV sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }

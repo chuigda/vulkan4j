@@ -1,6 +1,7 @@
 package club.doki7.vulkan.enumtype;
 
 import club.doki7.ffm.annotation.*;
+import org.intellij.lang.annotations.MagicConstant;
 
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkAccelerationStructureMotionInstanceTypeNV.html"><code>VkAccelerationStructureMotionInstanceTypeNV</code></a>
 public final class VkAccelerationStructureMotionInstanceTypeNV {
@@ -8,7 +9,7 @@ public final class VkAccelerationStructureMotionInstanceTypeNV {
     public static final int MATRIX_MOTION = 0x1;
     public static final int SRT_MOTION = 0x2;
 
-    public static String explain(@EnumType(VkAccelerationStructureMotionInstanceTypeNV.class) int value) {
+    public static String explain(@MagicConstant(valuesFromClass = VkAccelerationStructureMotionInstanceTypeNV.class) int value) {
         return switch (value) {
             case VkAccelerationStructureMotionInstanceTypeNV.MATRIX_MOTION -> "VK_ACCELERATION_STRUCTURE_MOTION_INSTANCE_TYPE_MATRIX_MOTION_NV";
             case VkAccelerationStructureMotionInstanceTypeNV.SRT_MOTION -> "VK_ACCELERATION_STRUCTURE_MOTION_INSTANCE_TYPE_SRT_MOTION_NV";

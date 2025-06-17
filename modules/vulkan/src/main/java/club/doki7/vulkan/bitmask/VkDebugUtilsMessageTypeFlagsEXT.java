@@ -1,6 +1,7 @@
 package club.doki7.vulkan.bitmask;
 
 import club.doki7.ffm.annotation.*;
+import org.intellij.lang.annotations.MagicConstant;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,7 +13,7 @@ public final class VkDebugUtilsMessageTypeFlagsEXT {
     public static final int PERFORMANCE = 0x4;
     public static final int VALIDATION = 0x2;
 
-    public static String explain(@EnumType(VkDebugUtilsMessageTypeFlagsEXT.class) int flags) {
+    public static String explain(@MagicConstant(flagsFromClass = VkDebugUtilsMessageTypeFlagsEXT.class) int flags) {
         List<String> detectedFlagBits = new ArrayList<>();
         if ((flags & DEVICE_ADDRESS_BINDING) != 0) {
             detectedFlagBits.add("VK_DEBUG_UTILS_MESSAGE_TYPE_DEVICE_ADDRESS_BINDING_BIT_EXT");

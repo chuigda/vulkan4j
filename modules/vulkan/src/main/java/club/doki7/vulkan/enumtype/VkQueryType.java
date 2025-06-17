@@ -1,6 +1,7 @@
 package club.doki7.vulkan.enumtype;
 
 import club.doki7.ffm.annotation.*;
+import org.intellij.lang.annotations.MagicConstant;
 
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkQueryType.html"><code>VkQueryType</code></a>
 public final class VkQueryType {
@@ -22,7 +23,7 @@ public final class VkQueryType {
     public static final int MICROMAP_SERIALIZATION_SIZE_EXT = 0x3ba0d4e0;
     public static final int MICROMAP_COMPACTED_SIZE_EXT = 0x3ba0d4e1;
 
-    public static String explain(@EnumType(VkQueryType.class) int value) {
+    public static String explain(@MagicConstant(valuesFromClass = VkQueryType.class) int value) {
         return switch (value) {
             case VkQueryType.ACCELERATION_STRUCTURE_COMPACTED_SIZE_KHR -> "VK_QUERY_TYPE_ACCELERATION_STRUCTURE_COMPACTED_SIZE_KHR";
             case VkQueryType.ACCELERATION_STRUCTURE_COMPACTED_SIZE_NV -> "VK_QUERY_TYPE_ACCELERATION_STRUCTURE_COMPACTED_SIZE_NV";

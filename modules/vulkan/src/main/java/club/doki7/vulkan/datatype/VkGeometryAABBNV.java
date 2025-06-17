@@ -193,11 +193,11 @@ public record VkGeometryAABBNV(@NotNull MemorySegment segment) implements IVkGeo
         sType(VkStructureType.GEOMETRY_AABB_NV);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkGeometryAABBNV sType(@EnumType(VkStructureType.class) int value) {
+    public VkGeometryAABBNV sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }

@@ -1,6 +1,7 @@
 package club.doki7.vulkan.enumtype;
 
 import club.doki7.ffm.annotation.*;
+import org.intellij.lang.annotations.MagicConstant;
 
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkFragmentShadingRateCombinerOpKHR.html"><code>VkFragmentShadingRateCombinerOpKHR</code></a>
 public final class VkFragmentShadingRateCombinerOpKHR {
@@ -10,7 +11,7 @@ public final class VkFragmentShadingRateCombinerOpKHR {
     public static final int MAX = 0x3;
     public static final int MUL = 0x4;
 
-    public static String explain(@EnumType(VkFragmentShadingRateCombinerOpKHR.class) int value) {
+    public static String explain(@MagicConstant(valuesFromClass = VkFragmentShadingRateCombinerOpKHR.class) int value) {
         return switch (value) {
             case VkFragmentShadingRateCombinerOpKHR.KEEP -> "VK_FRAGMENT_SHADING_RATE_COMBINER_OP_KEEP_KHR";
             case VkFragmentShadingRateCombinerOpKHR.MAX -> "VK_FRAGMENT_SHADING_RATE_COMBINER_OP_MAX_KHR";

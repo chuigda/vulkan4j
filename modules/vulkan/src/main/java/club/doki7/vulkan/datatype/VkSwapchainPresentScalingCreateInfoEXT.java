@@ -192,11 +192,11 @@ public record VkSwapchainPresentScalingCreateInfoEXT(@NotNull MemorySegment segm
         sType(VkStructureType.SWAPCHAIN_PRESENT_SCALING_CREATE_INFO_EXT);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkSwapchainPresentScalingCreateInfoEXT sType(@EnumType(VkStructureType.class) int value) {
+    public VkSwapchainPresentScalingCreateInfoEXT sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }
@@ -214,29 +214,29 @@ public record VkSwapchainPresentScalingCreateInfoEXT(@NotNull MemorySegment segm
         return this;
     }
 
-    public @EnumType(VkPresentScalingFlagsEXT.class) int scalingBehavior() {
+    public @MagicConstant(valuesFromClass = VkPresentScalingFlagsEXT.class) int scalingBehavior() {
         return segment.get(LAYOUT$scalingBehavior, OFFSET$scalingBehavior);
     }
 
-    public VkSwapchainPresentScalingCreateInfoEXT scalingBehavior(@EnumType(VkPresentScalingFlagsEXT.class) int value) {
+    public VkSwapchainPresentScalingCreateInfoEXT scalingBehavior(@MagicConstant(valuesFromClass = VkPresentScalingFlagsEXT.class) int value) {
         segment.set(LAYOUT$scalingBehavior, OFFSET$scalingBehavior, value);
         return this;
     }
 
-    public @EnumType(VkPresentGravityFlagsEXT.class) int presentGravityX() {
+    public @MagicConstant(valuesFromClass = VkPresentGravityFlagsEXT.class) int presentGravityX() {
         return segment.get(LAYOUT$presentGravityX, OFFSET$presentGravityX);
     }
 
-    public VkSwapchainPresentScalingCreateInfoEXT presentGravityX(@EnumType(VkPresentGravityFlagsEXT.class) int value) {
+    public VkSwapchainPresentScalingCreateInfoEXT presentGravityX(@MagicConstant(valuesFromClass = VkPresentGravityFlagsEXT.class) int value) {
         segment.set(LAYOUT$presentGravityX, OFFSET$presentGravityX, value);
         return this;
     }
 
-    public @EnumType(VkPresentGravityFlagsEXT.class) int presentGravityY() {
+    public @MagicConstant(valuesFromClass = VkPresentGravityFlagsEXT.class) int presentGravityY() {
         return segment.get(LAYOUT$presentGravityY, OFFSET$presentGravityY);
     }
 
-    public VkSwapchainPresentScalingCreateInfoEXT presentGravityY(@EnumType(VkPresentGravityFlagsEXT.class) int value) {
+    public VkSwapchainPresentScalingCreateInfoEXT presentGravityY(@MagicConstant(valuesFromClass = VkPresentGravityFlagsEXT.class) int value) {
         segment.set(LAYOUT$presentGravityY, OFFSET$presentGravityY, value);
         return this;
     }

@@ -191,11 +191,11 @@ public record VkDeviceGroupBindSparseInfo(@NotNull MemorySegment segment) implem
         sType(VkStructureType.DEVICE_GROUP_BIND_SPARSE_INFO);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkDeviceGroupBindSparseInfo sType(@EnumType(VkStructureType.class) int value) {
+    public VkDeviceGroupBindSparseInfo sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }

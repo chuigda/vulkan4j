@@ -1,6 +1,7 @@
 package club.doki7.vulkan.bitmask;
 
 import club.doki7.ffm.annotation.*;
+import org.intellij.lang.annotations.MagicConstant;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,7 +12,7 @@ public final class VkImageViewCreateFlags {
     public static final int FRAGMENT_DENSITY_MAP_DEFERRED_EXT = 0x2;
     public static final int FRAGMENT_DENSITY_MAP_DYNAMIC_EXT = 0x1;
 
-    public static String explain(@EnumType(VkImageViewCreateFlags.class) int flags) {
+    public static String explain(@MagicConstant(flagsFromClass = VkImageViewCreateFlags.class) int flags) {
         List<String> detectedFlagBits = new ArrayList<>();
         if ((flags & DESCRIPTOR_BUFFER_CAPTURE_REPLAY_EXT) != 0) {
             detectedFlagBits.add("VK_IMAGE_VIEW_CREATE_DESCRIPTOR_BUFFER_CAPTURE_REPLAY_BIT_EXT");

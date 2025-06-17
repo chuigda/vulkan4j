@@ -1,6 +1,7 @@
 package club.doki7.vulkan.enumtype;
 
 import club.doki7.ffm.annotation.*;
+import org.intellij.lang.annotations.MagicConstant;
 
 public final class StdVideoH264NonVclNaluType {
     public static final int STD_VIDEO_H264_NON_VCL_NALU_TYPE_SPS = 0x0;
@@ -12,7 +13,7 @@ public final class StdVideoH264NonVclNaluType {
     public static final int STD_VIDEO_H264_NON_VCL_NALU_TYPE_PRECODED = 0x6;
     public static final int STD_VIDEO_H264_NON_VCL_NALU_TYPE_INVALID = 0x7fffffff;
 
-    public static String explain(@EnumType(StdVideoH264NonVclNaluType.class) int value) {
+    public static String explain(@MagicConstant(valuesFromClass = StdVideoH264NonVclNaluType.class) int value) {
         return switch (value) {
             case StdVideoH264NonVclNaluType.STD_VIDEO_H264_NON_VCL_NALU_TYPE_AUD -> "STD_VIDEO_H264_NON_VCL_NALU_TYPE_AUD";
             case StdVideoH264NonVclNaluType.STD_VIDEO_H264_NON_VCL_NALU_TYPE_END_OF_SEQUENCE -> "STD_VIDEO_H264_NON_VCL_NALU_TYPE_END_OF_SEQUENCE";

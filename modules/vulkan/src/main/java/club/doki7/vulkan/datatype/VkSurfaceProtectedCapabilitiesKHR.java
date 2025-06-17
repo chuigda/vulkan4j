@@ -190,11 +190,11 @@ public record VkSurfaceProtectedCapabilitiesKHR(@NotNull MemorySegment segment) 
         sType(VkStructureType.SURFACE_PROTECTED_CAPABILITIES_KHR);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkSurfaceProtectedCapabilitiesKHR sType(@EnumType(VkStructureType.class) int value) {
+    public VkSurfaceProtectedCapabilitiesKHR sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }

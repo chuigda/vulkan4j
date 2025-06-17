@@ -195,11 +195,11 @@ public record VkAccelerationStructureCreateInfoKHR(@NotNull MemorySegment segmen
         sType(VkStructureType.ACCELERATION_STRUCTURE_CREATE_INFO_KHR);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkAccelerationStructureCreateInfoKHR sType(@EnumType(VkStructureType.class) int value) {
+    public VkAccelerationStructureCreateInfoKHR sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }
@@ -217,11 +217,11 @@ public record VkAccelerationStructureCreateInfoKHR(@NotNull MemorySegment segmen
         return this;
     }
 
-    public @EnumType(VkAccelerationStructureCreateFlagsKHR.class) int createFlags() {
+    public @MagicConstant(valuesFromClass = VkAccelerationStructureCreateFlagsKHR.class) int createFlags() {
         return segment.get(LAYOUT$createFlags, OFFSET$createFlags);
     }
 
-    public VkAccelerationStructureCreateInfoKHR createFlags(@EnumType(VkAccelerationStructureCreateFlagsKHR.class) int value) {
+    public VkAccelerationStructureCreateInfoKHR createFlags(@MagicConstant(valuesFromClass = VkAccelerationStructureCreateFlagsKHR.class) int value) {
         segment.set(LAYOUT$createFlags, OFFSET$createFlags, value);
         return this;
     }
@@ -257,11 +257,11 @@ public record VkAccelerationStructureCreateInfoKHR(@NotNull MemorySegment segmen
         return this;
     }
 
-    public @EnumType(VkAccelerationStructureTypeKHR.class) int type() {
+    public @MagicConstant(valuesFromClass = VkAccelerationStructureTypeKHR.class) int type() {
         return segment.get(LAYOUT$type, OFFSET$type);
     }
 
-    public VkAccelerationStructureCreateInfoKHR type(@EnumType(VkAccelerationStructureTypeKHR.class) int value) {
+    public VkAccelerationStructureCreateInfoKHR type(@MagicConstant(valuesFromClass = VkAccelerationStructureTypeKHR.class) int value) {
         segment.set(LAYOUT$type, OFFSET$type, value);
         return this;
     }

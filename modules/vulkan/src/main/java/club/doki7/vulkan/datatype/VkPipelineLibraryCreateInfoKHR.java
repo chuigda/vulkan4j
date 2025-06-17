@@ -191,11 +191,11 @@ public record VkPipelineLibraryCreateInfoKHR(@NotNull MemorySegment segment) imp
         sType(VkStructureType.PIPELINE_LIBRARY_CREATE_INFO_KHR);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkPipelineLibraryCreateInfoKHR sType(@EnumType(VkStructureType.class) int value) {
+    public VkPipelineLibraryCreateInfoKHR sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }

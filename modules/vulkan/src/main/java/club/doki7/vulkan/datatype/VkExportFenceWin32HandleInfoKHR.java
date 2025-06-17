@@ -192,11 +192,11 @@ public record VkExportFenceWin32HandleInfoKHR(@NotNull MemorySegment segment) im
         sType(VkStructureType.EXPORT_FENCE_WIN32_HANDLE_INFO_KHR);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkExportFenceWin32HandleInfoKHR sType(@EnumType(VkStructureType.class) int value) {
+    public VkExportFenceWin32HandleInfoKHR sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }

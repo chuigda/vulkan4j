@@ -194,11 +194,11 @@ public record VkPhysicalDeviceSampleLocationsPropertiesEXT(@NotNull MemorySegmen
         sType(VkStructureType.PHYSICAL_DEVICE_SAMPLE_LOCATIONS_PROPERTIES_EXT);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkPhysicalDeviceSampleLocationsPropertiesEXT sType(@EnumType(VkStructureType.class) int value) {
+    public VkPhysicalDeviceSampleLocationsPropertiesEXT sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }
@@ -216,11 +216,11 @@ public record VkPhysicalDeviceSampleLocationsPropertiesEXT(@NotNull MemorySegmen
         return this;
     }
 
-    public @EnumType(VkSampleCountFlags.class) int sampleLocationSampleCounts() {
+    public @MagicConstant(valuesFromClass = VkSampleCountFlags.class) int sampleLocationSampleCounts() {
         return segment.get(LAYOUT$sampleLocationSampleCounts, OFFSET$sampleLocationSampleCounts);
     }
 
-    public VkPhysicalDeviceSampleLocationsPropertiesEXT sampleLocationSampleCounts(@EnumType(VkSampleCountFlags.class) int value) {
+    public VkPhysicalDeviceSampleLocationsPropertiesEXT sampleLocationSampleCounts(@MagicConstant(valuesFromClass = VkSampleCountFlags.class) int value) {
         segment.set(LAYOUT$sampleLocationSampleCounts, OFFSET$sampleLocationSampleCounts, value);
         return this;
     }

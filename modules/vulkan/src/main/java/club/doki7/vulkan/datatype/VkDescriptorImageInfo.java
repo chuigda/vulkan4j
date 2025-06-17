@@ -197,11 +197,11 @@ public record VkDescriptorImageInfo(@NotNull MemorySegment segment) implements I
         return this;
     }
 
-    public @EnumType(VkImageLayout.class) int imageLayout() {
+    public @MagicConstant(valuesFromClass = VkImageLayout.class) int imageLayout() {
         return segment.get(LAYOUT$imageLayout, OFFSET$imageLayout);
     }
 
-    public VkDescriptorImageInfo imageLayout(@EnumType(VkImageLayout.class) int value) {
+    public VkDescriptorImageInfo imageLayout(@MagicConstant(valuesFromClass = VkImageLayout.class) int value) {
         segment.set(LAYOUT$imageLayout, OFFSET$imageLayout, value);
         return this;
     }

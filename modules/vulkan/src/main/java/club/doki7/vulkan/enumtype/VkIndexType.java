@@ -1,6 +1,7 @@
 package club.doki7.vulkan.enumtype;
 
 import club.doki7.ffm.annotation.*;
+import org.intellij.lang.annotations.MagicConstant;
 
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkIndexType.html"><code>VkIndexType</code></a>
 public final class VkIndexType {
@@ -9,7 +10,7 @@ public final class VkIndexType {
     public static final int UINT8 = 0x3b9ed528;
     public static final int NONE_KHR = 0x3b9d4e88;
 
-    public static String explain(@EnumType(VkIndexType.class) int value) {
+    public static String explain(@MagicConstant(valuesFromClass = VkIndexType.class) int value) {
         return switch (value) {
             case VkIndexType.NONE_KHR -> "VK_INDEX_TYPE_NONE_KHR";
             case VkIndexType.UINT16 -> "VK_INDEX_TYPE_UINT16";

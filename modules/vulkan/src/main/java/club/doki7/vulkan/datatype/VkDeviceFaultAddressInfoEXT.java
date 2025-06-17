@@ -171,11 +171,11 @@ public record VkDeviceFaultAddressInfoEXT(@NotNull MemorySegment segment) implem
         return ret;
     }
 
-    public @EnumType(VkDeviceFaultAddressTypeEXT.class) int addressType() {
+    public @MagicConstant(valuesFromClass = VkDeviceFaultAddressTypeEXT.class) int addressType() {
         return segment.get(LAYOUT$addressType, OFFSET$addressType);
     }
 
-    public VkDeviceFaultAddressInfoEXT addressType(@EnumType(VkDeviceFaultAddressTypeEXT.class) int value) {
+    public VkDeviceFaultAddressInfoEXT addressType(@MagicConstant(valuesFromClass = VkDeviceFaultAddressTypeEXT.class) int value) {
         segment.set(LAYOUT$addressType, OFFSET$addressType, value);
         return this;
     }

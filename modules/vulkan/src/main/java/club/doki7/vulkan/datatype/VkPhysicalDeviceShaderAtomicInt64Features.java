@@ -191,11 +191,11 @@ public record VkPhysicalDeviceShaderAtomicInt64Features(@NotNull MemorySegment s
         sType(VkStructureType.PHYSICAL_DEVICE_SHADER_ATOMIC_INT64_FEATURES);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkPhysicalDeviceShaderAtomicInt64Features sType(@EnumType(VkStructureType.class) int value) {
+    public VkPhysicalDeviceShaderAtomicInt64Features sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }

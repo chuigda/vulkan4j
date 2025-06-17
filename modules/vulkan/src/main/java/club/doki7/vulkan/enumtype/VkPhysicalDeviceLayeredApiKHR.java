@@ -1,6 +1,7 @@
 package club.doki7.vulkan.enumtype;
 
 import club.doki7.ffm.annotation.*;
+import org.intellij.lang.annotations.MagicConstant;
 
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPhysicalDeviceLayeredApiKHR.html"><code>VkPhysicalDeviceLayeredApiKHR</code></a>
 public final class VkPhysicalDeviceLayeredApiKHR {
@@ -10,7 +11,7 @@ public final class VkPhysicalDeviceLayeredApiKHR {
     public static final int OPENGL = 0x3;
     public static final int OPENGLES = 0x4;
 
-    public static String explain(@EnumType(VkPhysicalDeviceLayeredApiKHR.class) int value) {
+    public static String explain(@MagicConstant(valuesFromClass = VkPhysicalDeviceLayeredApiKHR.class) int value) {
         return switch (value) {
             case VkPhysicalDeviceLayeredApiKHR.D3D12 -> "VK_PHYSICAL_DEVICE_LAYERED_API_D3D12_KHR";
             case VkPhysicalDeviceLayeredApiKHR.METAL -> "VK_PHYSICAL_DEVICE_LAYERED_API_METAL_KHR";

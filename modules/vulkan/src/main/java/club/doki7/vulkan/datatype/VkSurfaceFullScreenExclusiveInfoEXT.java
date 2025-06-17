@@ -190,11 +190,11 @@ public record VkSurfaceFullScreenExclusiveInfoEXT(@NotNull MemorySegment segment
         sType(VkStructureType.SURFACE_FULL_SCREEN_EXCLUSIVE_INFO_EXT);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkSurfaceFullScreenExclusiveInfoEXT sType(@EnumType(VkStructureType.class) int value) {
+    public VkSurfaceFullScreenExclusiveInfoEXT sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }
@@ -212,11 +212,11 @@ public record VkSurfaceFullScreenExclusiveInfoEXT(@NotNull MemorySegment segment
         return this;
     }
 
-    public @EnumType(VkFullScreenExclusiveEXT.class) int fullScreenExclusive() {
+    public @MagicConstant(valuesFromClass = VkFullScreenExclusiveEXT.class) int fullScreenExclusive() {
         return segment.get(LAYOUT$fullScreenExclusive, OFFSET$fullScreenExclusive);
     }
 
-    public VkSurfaceFullScreenExclusiveInfoEXT fullScreenExclusive(@EnumType(VkFullScreenExclusiveEXT.class) int value) {
+    public VkSurfaceFullScreenExclusiveInfoEXT fullScreenExclusive(@MagicConstant(valuesFromClass = VkFullScreenExclusiveEXT.class) int value) {
         segment.set(LAYOUT$fullScreenExclusive, OFFSET$fullScreenExclusive, value);
         return this;
     }

@@ -193,11 +193,11 @@ public record VkHostImageLayoutTransitionInfo(@NotNull MemorySegment segment) im
         sType(VkStructureType.HOST_IMAGE_LAYOUT_TRANSITION_INFO);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkHostImageLayoutTransitionInfo sType(@EnumType(VkStructureType.class) int value) {
+    public VkHostImageLayoutTransitionInfo sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }
@@ -228,20 +228,20 @@ public record VkHostImageLayoutTransitionInfo(@NotNull MemorySegment segment) im
         return this;
     }
 
-    public @EnumType(VkImageLayout.class) int oldLayout() {
+    public @MagicConstant(valuesFromClass = VkImageLayout.class) int oldLayout() {
         return segment.get(LAYOUT$oldLayout, OFFSET$oldLayout);
     }
 
-    public VkHostImageLayoutTransitionInfo oldLayout(@EnumType(VkImageLayout.class) int value) {
+    public VkHostImageLayoutTransitionInfo oldLayout(@MagicConstant(valuesFromClass = VkImageLayout.class) int value) {
         segment.set(LAYOUT$oldLayout, OFFSET$oldLayout, value);
         return this;
     }
 
-    public @EnumType(VkImageLayout.class) int newLayout() {
+    public @MagicConstant(valuesFromClass = VkImageLayout.class) int newLayout() {
         return segment.get(LAYOUT$newLayout, OFFSET$newLayout);
     }
 
-    public VkHostImageLayoutTransitionInfo newLayout(@EnumType(VkImageLayout.class) int value) {
+    public VkHostImageLayoutTransitionInfo newLayout(@MagicConstant(valuesFromClass = VkImageLayout.class) int value) {
         segment.set(LAYOUT$newLayout, OFFSET$newLayout, value);
         return this;
     }

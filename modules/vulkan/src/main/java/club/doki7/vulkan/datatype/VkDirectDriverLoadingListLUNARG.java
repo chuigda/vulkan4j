@@ -192,11 +192,11 @@ public record VkDirectDriverLoadingListLUNARG(@NotNull MemorySegment segment) im
         sType(VkStructureType.DIRECT_DRIVER_LOADING_LIST_LUNARG);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkDirectDriverLoadingListLUNARG sType(@EnumType(VkStructureType.class) int value) {
+    public VkDirectDriverLoadingListLUNARG sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }
@@ -214,11 +214,11 @@ public record VkDirectDriverLoadingListLUNARG(@NotNull MemorySegment segment) im
         return this;
     }
 
-    public @EnumType(VkDirectDriverLoadingModeLUNARG.class) int mode() {
+    public @MagicConstant(valuesFromClass = VkDirectDriverLoadingModeLUNARG.class) int mode() {
         return segment.get(LAYOUT$mode, OFFSET$mode);
     }
 
-    public VkDirectDriverLoadingListLUNARG mode(@EnumType(VkDirectDriverLoadingModeLUNARG.class) int value) {
+    public VkDirectDriverLoadingListLUNARG mode(@MagicConstant(valuesFromClass = VkDirectDriverLoadingModeLUNARG.class) int value) {
         segment.set(LAYOUT$mode, OFFSET$mode, value);
         return this;
     }

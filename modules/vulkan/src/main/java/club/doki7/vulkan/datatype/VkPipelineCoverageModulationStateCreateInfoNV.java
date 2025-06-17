@@ -194,11 +194,11 @@ public record VkPipelineCoverageModulationStateCreateInfoNV(@NotNull MemorySegme
         sType(VkStructureType.PIPELINE_COVERAGE_MODULATION_STATE_CREATE_INFO_NV);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkPipelineCoverageModulationStateCreateInfoNV sType(@EnumType(VkStructureType.class) int value) {
+    public VkPipelineCoverageModulationStateCreateInfoNV sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }
@@ -216,20 +216,20 @@ public record VkPipelineCoverageModulationStateCreateInfoNV(@NotNull MemorySegme
         return this;
     }
 
-    public @EnumType(VkPipelineCoverageModulationStateCreateFlagsNV.class) int flags() {
+    public @MagicConstant(valuesFromClass = VkPipelineCoverageModulationStateCreateFlagsNV.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public VkPipelineCoverageModulationStateCreateInfoNV flags(@EnumType(VkPipelineCoverageModulationStateCreateFlagsNV.class) int value) {
+    public VkPipelineCoverageModulationStateCreateInfoNV flags(@MagicConstant(valuesFromClass = VkPipelineCoverageModulationStateCreateFlagsNV.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
         return this;
     }
 
-    public @EnumType(VkCoverageModulationModeNV.class) int coverageModulationMode() {
+    public @MagicConstant(valuesFromClass = VkCoverageModulationModeNV.class) int coverageModulationMode() {
         return segment.get(LAYOUT$coverageModulationMode, OFFSET$coverageModulationMode);
     }
 
-    public VkPipelineCoverageModulationStateCreateInfoNV coverageModulationMode(@EnumType(VkCoverageModulationModeNV.class) int value) {
+    public VkPipelineCoverageModulationStateCreateInfoNV coverageModulationMode(@MagicConstant(valuesFromClass = VkCoverageModulationModeNV.class) int value) {
         segment.set(LAYOUT$coverageModulationMode, OFFSET$coverageModulationMode, value);
         return this;
     }

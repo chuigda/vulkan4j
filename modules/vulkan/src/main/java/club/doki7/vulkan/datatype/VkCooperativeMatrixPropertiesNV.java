@@ -197,11 +197,11 @@ public record VkCooperativeMatrixPropertiesNV(@NotNull MemorySegment segment) im
         sType(VkStructureType.COOPERATIVE_MATRIX_PROPERTIES_NV);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkCooperativeMatrixPropertiesNV sType(@EnumType(VkStructureType.class) int value) {
+    public VkCooperativeMatrixPropertiesNV sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }
@@ -246,47 +246,47 @@ public record VkCooperativeMatrixPropertiesNV(@NotNull MemorySegment segment) im
         return this;
     }
 
-    public @EnumType(VkComponentTypeKHR.class) int AType() {
+    public @MagicConstant(valuesFromClass = VkComponentTypeKHR.class) int AType() {
         return segment.get(LAYOUT$AType, OFFSET$AType);
     }
 
-    public VkCooperativeMatrixPropertiesNV AType(@EnumType(VkComponentTypeKHR.class) int value) {
+    public VkCooperativeMatrixPropertiesNV AType(@MagicConstant(valuesFromClass = VkComponentTypeKHR.class) int value) {
         segment.set(LAYOUT$AType, OFFSET$AType, value);
         return this;
     }
 
-    public @EnumType(VkComponentTypeKHR.class) int BType() {
+    public @MagicConstant(valuesFromClass = VkComponentTypeKHR.class) int BType() {
         return segment.get(LAYOUT$BType, OFFSET$BType);
     }
 
-    public VkCooperativeMatrixPropertiesNV BType(@EnumType(VkComponentTypeKHR.class) int value) {
+    public VkCooperativeMatrixPropertiesNV BType(@MagicConstant(valuesFromClass = VkComponentTypeKHR.class) int value) {
         segment.set(LAYOUT$BType, OFFSET$BType, value);
         return this;
     }
 
-    public @EnumType(VkComponentTypeKHR.class) int CType() {
+    public @MagicConstant(valuesFromClass = VkComponentTypeKHR.class) int CType() {
         return segment.get(LAYOUT$CType, OFFSET$CType);
     }
 
-    public VkCooperativeMatrixPropertiesNV CType(@EnumType(VkComponentTypeKHR.class) int value) {
+    public VkCooperativeMatrixPropertiesNV CType(@MagicConstant(valuesFromClass = VkComponentTypeKHR.class) int value) {
         segment.set(LAYOUT$CType, OFFSET$CType, value);
         return this;
     }
 
-    public @EnumType(VkComponentTypeKHR.class) int DType() {
+    public @MagicConstant(valuesFromClass = VkComponentTypeKHR.class) int DType() {
         return segment.get(LAYOUT$DType, OFFSET$DType);
     }
 
-    public VkCooperativeMatrixPropertiesNV DType(@EnumType(VkComponentTypeKHR.class) int value) {
+    public VkCooperativeMatrixPropertiesNV DType(@MagicConstant(valuesFromClass = VkComponentTypeKHR.class) int value) {
         segment.set(LAYOUT$DType, OFFSET$DType, value);
         return this;
     }
 
-    public @EnumType(VkScopeKHR.class) int scope() {
+    public @MagicConstant(valuesFromClass = VkScopeKHR.class) int scope() {
         return segment.get(LAYOUT$scope, OFFSET$scope);
     }
 
-    public VkCooperativeMatrixPropertiesNV scope(@EnumType(VkScopeKHR.class) int value) {
+    public VkCooperativeMatrixPropertiesNV scope(@MagicConstant(valuesFromClass = VkScopeKHR.class) int value) {
         segment.set(LAYOUT$scope, OFFSET$scope, value);
         return this;
     }

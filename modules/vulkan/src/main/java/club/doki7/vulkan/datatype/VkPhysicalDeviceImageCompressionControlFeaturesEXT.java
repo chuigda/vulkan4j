@@ -190,11 +190,11 @@ public record VkPhysicalDeviceImageCompressionControlFeaturesEXT(@NotNull Memory
         sType(VkStructureType.PHYSICAL_DEVICE_IMAGE_COMPRESSION_CONTROL_FEATURES_EXT);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkPhysicalDeviceImageCompressionControlFeaturesEXT sType(@EnumType(VkStructureType.class) int value) {
+    public VkPhysicalDeviceImageCompressionControlFeaturesEXT sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }

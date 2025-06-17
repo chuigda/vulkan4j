@@ -195,11 +195,11 @@ public record StdVideoEncodeAV1ReferenceInfo(@NotNull MemorySegment segment) imp
         return this;
     }
 
-    public @EnumType(StdVideoAV1FrameType.class) int frame_type() {
+    public @MagicConstant(valuesFromClass = StdVideoAV1FrameType.class) int frame_type() {
         return segment.get(LAYOUT$frame_type, OFFSET$frame_type);
     }
 
-    public StdVideoEncodeAV1ReferenceInfo frame_type(@EnumType(StdVideoAV1FrameType.class) int value) {
+    public StdVideoEncodeAV1ReferenceInfo frame_type(@MagicConstant(valuesFromClass = StdVideoAV1FrameType.class) int value) {
         segment.set(LAYOUT$frame_type, OFFSET$frame_type, value);
         return this;
     }

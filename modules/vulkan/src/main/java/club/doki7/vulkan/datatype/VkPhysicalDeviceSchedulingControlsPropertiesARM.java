@@ -190,11 +190,11 @@ public record VkPhysicalDeviceSchedulingControlsPropertiesARM(@NotNull MemorySeg
         sType(VkStructureType.PHYSICAL_DEVICE_SCHEDULING_CONTROLS_PROPERTIES_ARM);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkPhysicalDeviceSchedulingControlsPropertiesARM sType(@EnumType(VkStructureType.class) int value) {
+    public VkPhysicalDeviceSchedulingControlsPropertiesARM sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }
@@ -212,11 +212,11 @@ public record VkPhysicalDeviceSchedulingControlsPropertiesARM(@NotNull MemorySeg
         return this;
     }
 
-    public @EnumType(VkPhysicalDeviceSchedulingControlsFlagsARM.class) long schedulingControlsFlags() {
+    public @MagicConstant(valuesFromClass = VkPhysicalDeviceSchedulingControlsFlagsARM.class) long schedulingControlsFlags() {
         return segment.get(LAYOUT$schedulingControlsFlags, OFFSET$schedulingControlsFlags);
     }
 
-    public VkPhysicalDeviceSchedulingControlsPropertiesARM schedulingControlsFlags(@EnumType(VkPhysicalDeviceSchedulingControlsFlagsARM.class) long value) {
+    public VkPhysicalDeviceSchedulingControlsPropertiesARM schedulingControlsFlags(@MagicConstant(valuesFromClass = VkPhysicalDeviceSchedulingControlsFlagsARM.class) long value) {
         segment.set(LAYOUT$schedulingControlsFlags, OFFSET$schedulingControlsFlags, value);
         return this;
     }

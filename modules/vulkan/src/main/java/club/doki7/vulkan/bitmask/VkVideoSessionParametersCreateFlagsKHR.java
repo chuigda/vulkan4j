@@ -1,6 +1,7 @@
 package club.doki7.vulkan.bitmask;
 
 import club.doki7.ffm.annotation.*;
+import org.intellij.lang.annotations.MagicConstant;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -9,7 +10,7 @@ import java.util.List;
 public final class VkVideoSessionParametersCreateFlagsKHR {
     public static final int QUANTIZATION_MAP_COMPATIBLE = 0x1;
 
-    public static String explain(@EnumType(VkVideoSessionParametersCreateFlagsKHR.class) int flags) {
+    public static String explain(@MagicConstant(flagsFromClass = VkVideoSessionParametersCreateFlagsKHR.class) int flags) {
         List<String> detectedFlagBits = new ArrayList<>();
         if ((flags & QUANTIZATION_MAP_COMPATIBLE) != 0) {
             detectedFlagBits.add("VK_VIDEO_SESSION_PARAMETERS_CREATE_QUANTIZATION_MAP_COMPATIBLE_BIT_KHR");

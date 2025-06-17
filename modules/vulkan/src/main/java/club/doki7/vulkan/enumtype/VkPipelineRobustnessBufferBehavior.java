@@ -1,6 +1,7 @@
 package club.doki7.vulkan.enumtype;
 
 import club.doki7.ffm.annotation.*;
+import org.intellij.lang.annotations.MagicConstant;
 
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPipelineRobustnessBufferBehavior.html"><code>VkPipelineRobustnessBufferBehavior</code></a>
 public final class VkPipelineRobustnessBufferBehavior {
@@ -9,7 +10,7 @@ public final class VkPipelineRobustnessBufferBehavior {
     public static final int ROBUST_BUFFER_ACCESS = 0x2;
     public static final int ROBUST_BUFFER_ACCESS_2 = 0x3;
 
-    public static String explain(@EnumType(VkPipelineRobustnessBufferBehavior.class) int value) {
+    public static String explain(@MagicConstant(valuesFromClass = VkPipelineRobustnessBufferBehavior.class) int value) {
         return switch (value) {
             case VkPipelineRobustnessBufferBehavior.DEVICE_DEFAULT -> "VK_PIPELINE_ROBUSTNESS_BUFFER_BEHAVIOR_DEVICE_DEFAULT";
             case VkPipelineRobustnessBufferBehavior.DISABLED -> "VK_PIPELINE_ROBUSTNESS_BUFFER_BEHAVIOR_DISABLED";

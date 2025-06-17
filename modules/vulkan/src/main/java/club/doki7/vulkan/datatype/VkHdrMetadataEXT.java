@@ -197,11 +197,11 @@ public record VkHdrMetadataEXT(@NotNull MemorySegment segment) implements IVkHdr
         sType(VkStructureType.HDR_METADATA_EXT);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkHdrMetadataEXT sType(@EnumType(VkStructureType.class) int value) {
+    public VkHdrMetadataEXT sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }

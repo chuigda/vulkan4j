@@ -1,6 +1,7 @@
 package club.doki7.vulkan.enumtype;
 
 import club.doki7.ffm.annotation.*;
+import org.intellij.lang.annotations.MagicConstant;
 
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPerformanceCounterScopeKHR.html"><code>VkPerformanceCounterScopeKHR</code></a>
 public final class VkPerformanceCounterScopeKHR {
@@ -8,7 +9,7 @@ public final class VkPerformanceCounterScopeKHR {
     public static final int RENDER_PASS = 0x1;
     public static final int COMMAND = 0x2;
 
-    public static String explain(@EnumType(VkPerformanceCounterScopeKHR.class) int value) {
+    public static String explain(@MagicConstant(valuesFromClass = VkPerformanceCounterScopeKHR.class) int value) {
         return switch (value) {
             case VkPerformanceCounterScopeKHR.COMMAND_BUFFER -> "VK_PERFORMANCE_COUNTER_SCOPE_COMMAND_BUFFER_KHR";
             case VkPerformanceCounterScopeKHR.COMMAND -> "VK_PERFORMANCE_COUNTER_SCOPE_COMMAND_KHR";

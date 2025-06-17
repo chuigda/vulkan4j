@@ -190,11 +190,11 @@ public record VkPerformanceMarkerInfoINTEL(@NotNull MemorySegment segment) imple
         sType(VkStructureType.PERFORMANCE_MARKER_INFO_INTEL);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkPerformanceMarkerInfoINTEL sType(@EnumType(VkStructureType.class) int value) {
+    public VkPerformanceMarkerInfoINTEL sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }

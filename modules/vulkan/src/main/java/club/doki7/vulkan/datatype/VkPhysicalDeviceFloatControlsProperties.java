@@ -206,11 +206,11 @@ public record VkPhysicalDeviceFloatControlsProperties(@NotNull MemorySegment seg
         sType(VkStructureType.PHYSICAL_DEVICE_FLOAT_CONTROLS_PROPERTIES);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkPhysicalDeviceFloatControlsProperties sType(@EnumType(VkStructureType.class) int value) {
+    public VkPhysicalDeviceFloatControlsProperties sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }
@@ -228,20 +228,20 @@ public record VkPhysicalDeviceFloatControlsProperties(@NotNull MemorySegment seg
         return this;
     }
 
-    public @EnumType(VkShaderFloatControlsIndependence.class) int denormBehaviorIndependence() {
+    public @MagicConstant(valuesFromClass = VkShaderFloatControlsIndependence.class) int denormBehaviorIndependence() {
         return segment.get(LAYOUT$denormBehaviorIndependence, OFFSET$denormBehaviorIndependence);
     }
 
-    public VkPhysicalDeviceFloatControlsProperties denormBehaviorIndependence(@EnumType(VkShaderFloatControlsIndependence.class) int value) {
+    public VkPhysicalDeviceFloatControlsProperties denormBehaviorIndependence(@MagicConstant(valuesFromClass = VkShaderFloatControlsIndependence.class) int value) {
         segment.set(LAYOUT$denormBehaviorIndependence, OFFSET$denormBehaviorIndependence, value);
         return this;
     }
 
-    public @EnumType(VkShaderFloatControlsIndependence.class) int roundingModeIndependence() {
+    public @MagicConstant(valuesFromClass = VkShaderFloatControlsIndependence.class) int roundingModeIndependence() {
         return segment.get(LAYOUT$roundingModeIndependence, OFFSET$roundingModeIndependence);
     }
 
-    public VkPhysicalDeviceFloatControlsProperties roundingModeIndependence(@EnumType(VkShaderFloatControlsIndependence.class) int value) {
+    public VkPhysicalDeviceFloatControlsProperties roundingModeIndependence(@MagicConstant(valuesFromClass = VkShaderFloatControlsIndependence.class) int value) {
         segment.set(LAYOUT$roundingModeIndependence, OFFSET$roundingModeIndependence, value);
         return this;
     }

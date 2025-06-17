@@ -193,11 +193,11 @@ public record VkPhysicalDeviceSubgroupProperties(@NotNull MemorySegment segment)
         sType(VkStructureType.PHYSICAL_DEVICE_SUBGROUP_PROPERTIES);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkPhysicalDeviceSubgroupProperties sType(@EnumType(VkStructureType.class) int value) {
+    public VkPhysicalDeviceSubgroupProperties sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }
@@ -224,20 +224,20 @@ public record VkPhysicalDeviceSubgroupProperties(@NotNull MemorySegment segment)
         return this;
     }
 
-    public @EnumType(VkShaderStageFlags.class) int supportedStages() {
+    public @MagicConstant(valuesFromClass = VkShaderStageFlags.class) int supportedStages() {
         return segment.get(LAYOUT$supportedStages, OFFSET$supportedStages);
     }
 
-    public VkPhysicalDeviceSubgroupProperties supportedStages(@EnumType(VkShaderStageFlags.class) int value) {
+    public VkPhysicalDeviceSubgroupProperties supportedStages(@MagicConstant(valuesFromClass = VkShaderStageFlags.class) int value) {
         segment.set(LAYOUT$supportedStages, OFFSET$supportedStages, value);
         return this;
     }
 
-    public @EnumType(VkSubgroupFeatureFlags.class) int supportedOperations() {
+    public @MagicConstant(valuesFromClass = VkSubgroupFeatureFlags.class) int supportedOperations() {
         return segment.get(LAYOUT$supportedOperations, OFFSET$supportedOperations);
     }
 
-    public VkPhysicalDeviceSubgroupProperties supportedOperations(@EnumType(VkSubgroupFeatureFlags.class) int value) {
+    public VkPhysicalDeviceSubgroupProperties supportedOperations(@MagicConstant(valuesFromClass = VkSubgroupFeatureFlags.class) int value) {
         segment.set(LAYOUT$supportedOperations, OFFSET$supportedOperations, value);
         return this;
     }

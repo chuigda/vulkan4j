@@ -1,6 +1,7 @@
 package club.doki7.vulkan.enumtype;
 
 import club.doki7.ffm.annotation.*;
+import org.intellij.lang.annotations.MagicConstant;
 
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkVendorId.html"><code>VkVendorId</code></a>
 public final class VkVendorId {
@@ -13,7 +14,7 @@ public final class VkVendorId {
     public static final int POCL = 0x10006;
     public static final int MOBILEYE = 0x10007;
 
-    public static String explain(@EnumType(VkVendorId.class) int value) {
+    public static String explain(@MagicConstant(valuesFromClass = VkVendorId.class) int value) {
         return switch (value) {
             case VkVendorId.CODEPLAY -> "VK_VENDOR_ID_CODEPLAY";
             case VkVendorId.KAZAN -> "VK_VENDOR_ID_KAZAN";

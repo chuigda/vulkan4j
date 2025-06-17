@@ -200,11 +200,11 @@ public record VkSurfaceCapabilities2EXT(@NotNull MemorySegment segment) implemen
         sType(VkStructureType.SURFACE_CAPABILITIES_2_EXT);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkSurfaceCapabilities2EXT sType(@EnumType(VkStructureType.class) int value) {
+    public VkSurfaceCapabilities2EXT sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }
@@ -291,47 +291,47 @@ public record VkSurfaceCapabilities2EXT(@NotNull MemorySegment segment) implemen
         return this;
     }
 
-    public @EnumType(VkSurfaceTransformFlagsKHR.class) int supportedTransforms() {
+    public @MagicConstant(valuesFromClass = VkSurfaceTransformFlagsKHR.class) int supportedTransforms() {
         return segment.get(LAYOUT$supportedTransforms, OFFSET$supportedTransforms);
     }
 
-    public VkSurfaceCapabilities2EXT supportedTransforms(@EnumType(VkSurfaceTransformFlagsKHR.class) int value) {
+    public VkSurfaceCapabilities2EXT supportedTransforms(@MagicConstant(valuesFromClass = VkSurfaceTransformFlagsKHR.class) int value) {
         segment.set(LAYOUT$supportedTransforms, OFFSET$supportedTransforms, value);
         return this;
     }
 
-    public @EnumType(VkSurfaceTransformFlagsKHR.class) int currentTransform() {
+    public @MagicConstant(valuesFromClass = VkSurfaceTransformFlagsKHR.class) int currentTransform() {
         return segment.get(LAYOUT$currentTransform, OFFSET$currentTransform);
     }
 
-    public VkSurfaceCapabilities2EXT currentTransform(@EnumType(VkSurfaceTransformFlagsKHR.class) int value) {
+    public VkSurfaceCapabilities2EXT currentTransform(@MagicConstant(valuesFromClass = VkSurfaceTransformFlagsKHR.class) int value) {
         segment.set(LAYOUT$currentTransform, OFFSET$currentTransform, value);
         return this;
     }
 
-    public @EnumType(VkCompositeAlphaFlagsKHR.class) int supportedCompositeAlpha() {
+    public @MagicConstant(valuesFromClass = VkCompositeAlphaFlagsKHR.class) int supportedCompositeAlpha() {
         return segment.get(LAYOUT$supportedCompositeAlpha, OFFSET$supportedCompositeAlpha);
     }
 
-    public VkSurfaceCapabilities2EXT supportedCompositeAlpha(@EnumType(VkCompositeAlphaFlagsKHR.class) int value) {
+    public VkSurfaceCapabilities2EXT supportedCompositeAlpha(@MagicConstant(valuesFromClass = VkCompositeAlphaFlagsKHR.class) int value) {
         segment.set(LAYOUT$supportedCompositeAlpha, OFFSET$supportedCompositeAlpha, value);
         return this;
     }
 
-    public @EnumType(VkImageUsageFlags.class) int supportedUsageFlags() {
+    public @MagicConstant(valuesFromClass = VkImageUsageFlags.class) int supportedUsageFlags() {
         return segment.get(LAYOUT$supportedUsageFlags, OFFSET$supportedUsageFlags);
     }
 
-    public VkSurfaceCapabilities2EXT supportedUsageFlags(@EnumType(VkImageUsageFlags.class) int value) {
+    public VkSurfaceCapabilities2EXT supportedUsageFlags(@MagicConstant(valuesFromClass = VkImageUsageFlags.class) int value) {
         segment.set(LAYOUT$supportedUsageFlags, OFFSET$supportedUsageFlags, value);
         return this;
     }
 
-    public @EnumType(VkSurfaceCounterFlagsEXT.class) int supportedSurfaceCounters() {
+    public @MagicConstant(valuesFromClass = VkSurfaceCounterFlagsEXT.class) int supportedSurfaceCounters() {
         return segment.get(LAYOUT$supportedSurfaceCounters, OFFSET$supportedSurfaceCounters);
     }
 
-    public VkSurfaceCapabilities2EXT supportedSurfaceCounters(@EnumType(VkSurfaceCounterFlagsEXT.class) int value) {
+    public VkSurfaceCapabilities2EXT supportedSurfaceCounters(@MagicConstant(valuesFromClass = VkSurfaceCounterFlagsEXT.class) int value) {
         segment.set(LAYOUT$supportedSurfaceCounters, OFFSET$supportedSurfaceCounters, value);
         return this;
     }

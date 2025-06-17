@@ -196,11 +196,11 @@ public record VkSubmitInfo2(@NotNull MemorySegment segment) implements IVkSubmit
         sType(VkStructureType.SUBMIT_INFO_2);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkSubmitInfo2 sType(@EnumType(VkStructureType.class) int value) {
+    public VkSubmitInfo2 sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }
@@ -218,11 +218,11 @@ public record VkSubmitInfo2(@NotNull MemorySegment segment) implements IVkSubmit
         return this;
     }
 
-    public @EnumType(VkSubmitFlags.class) int flags() {
+    public @MagicConstant(valuesFromClass = VkSubmitFlags.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public VkSubmitInfo2 flags(@EnumType(VkSubmitFlags.class) int value) {
+    public VkSubmitInfo2 flags(@MagicConstant(valuesFromClass = VkSubmitFlags.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
         return this;
     }

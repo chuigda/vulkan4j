@@ -199,11 +199,11 @@ public record VkDebugUtilsMessengerCallbackDataEXT(@NotNull MemorySegment segmen
         sType(VkStructureType.DEBUG_UTILS_MESSENGER_CALLBACK_DATA_EXT);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkDebugUtilsMessengerCallbackDataEXT sType(@EnumType(VkStructureType.class) int value) {
+    public VkDebugUtilsMessengerCallbackDataEXT sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }
@@ -221,11 +221,11 @@ public record VkDebugUtilsMessengerCallbackDataEXT(@NotNull MemorySegment segmen
         return this;
     }
 
-    public @EnumType(VkDebugUtilsMessengerCallbackDataFlagsEXT.class) int flags() {
+    public @MagicConstant(valuesFromClass = VkDebugUtilsMessengerCallbackDataFlagsEXT.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public VkDebugUtilsMessengerCallbackDataEXT flags(@EnumType(VkDebugUtilsMessengerCallbackDataFlagsEXT.class) int value) {
+    public VkDebugUtilsMessengerCallbackDataEXT flags(@MagicConstant(valuesFromClass = VkDebugUtilsMessengerCallbackDataFlagsEXT.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
         return this;
     }

@@ -170,11 +170,11 @@ public record VkDescriptorPoolSize(@NotNull MemorySegment segment) implements IV
         return ret;
     }
 
-    public @EnumType(VkDescriptorType.class) int type() {
+    public @MagicConstant(valuesFromClass = VkDescriptorType.class) int type() {
         return segment.get(LAYOUT$type, OFFSET$type);
     }
 
-    public VkDescriptorPoolSize type(@EnumType(VkDescriptorType.class) int value) {
+    public VkDescriptorPoolSize type(@MagicConstant(valuesFromClass = VkDescriptorType.class) int value) {
         segment.set(LAYOUT$type, OFFSET$type, value);
         return this;
     }

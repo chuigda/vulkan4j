@@ -1,6 +1,7 @@
 package club.doki7.vulkan.bitmask;
 
 import club.doki7.ffm.annotation.*;
+import org.intellij.lang.annotations.MagicConstant;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -9,7 +10,7 @@ import java.util.List;
 public final class VkMicromapCreateFlagsEXT {
     public static final int DEVICE_ADDRESS_CAPTURE_REPLAY = 0x1;
 
-    public static String explain(@EnumType(VkMicromapCreateFlagsEXT.class) int flags) {
+    public static String explain(@MagicConstant(flagsFromClass = VkMicromapCreateFlagsEXT.class) int flags) {
         List<String> detectedFlagBits = new ArrayList<>();
         if ((flags & DEVICE_ADDRESS_CAPTURE_REPLAY) != 0) {
             detectedFlagBits.add("VK_MICROMAP_CREATE_DEVICE_ADDRESS_CAPTURE_REPLAY_BIT_EXT");

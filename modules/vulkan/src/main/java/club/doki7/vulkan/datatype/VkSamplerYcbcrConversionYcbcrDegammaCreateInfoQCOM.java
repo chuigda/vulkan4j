@@ -191,11 +191,11 @@ public record VkSamplerYcbcrConversionYcbcrDegammaCreateInfoQCOM(@NotNull Memory
         sType(VkStructureType.SAMPLER_YCBCR_CONVERSION_YCBCR_DEGAMMA_CREATE_INFO_QCOM);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkSamplerYcbcrConversionYcbcrDegammaCreateInfoQCOM sType(@EnumType(VkStructureType.class) int value) {
+    public VkSamplerYcbcrConversionYcbcrDegammaCreateInfoQCOM sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }

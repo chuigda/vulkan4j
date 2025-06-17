@@ -182,11 +182,11 @@ public record VkDescriptorSetLayoutBinding(@NotNull MemorySegment segment) imple
         return this;
     }
 
-    public @EnumType(VkDescriptorType.class) int descriptorType() {
+    public @MagicConstant(valuesFromClass = VkDescriptorType.class) int descriptorType() {
         return segment.get(LAYOUT$descriptorType, OFFSET$descriptorType);
     }
 
-    public VkDescriptorSetLayoutBinding descriptorType(@EnumType(VkDescriptorType.class) int value) {
+    public VkDescriptorSetLayoutBinding descriptorType(@MagicConstant(valuesFromClass = VkDescriptorType.class) int value) {
         segment.set(LAYOUT$descriptorType, OFFSET$descriptorType, value);
         return this;
     }
@@ -200,11 +200,11 @@ public record VkDescriptorSetLayoutBinding(@NotNull MemorySegment segment) imple
         return this;
     }
 
-    public @EnumType(VkShaderStageFlags.class) int stageFlags() {
+    public @MagicConstant(valuesFromClass = VkShaderStageFlags.class) int stageFlags() {
         return segment.get(LAYOUT$stageFlags, OFFSET$stageFlags);
     }
 
-    public VkDescriptorSetLayoutBinding stageFlags(@EnumType(VkShaderStageFlags.class) int value) {
+    public VkDescriptorSetLayoutBinding stageFlags(@MagicConstant(valuesFromClass = VkShaderStageFlags.class) int value) {
         segment.set(LAYOUT$stageFlags, OFFSET$stageFlags, value);
         return this;
     }

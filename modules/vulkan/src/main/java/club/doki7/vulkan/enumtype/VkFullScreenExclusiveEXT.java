@@ -1,6 +1,7 @@
 package club.doki7.vulkan.enumtype;
 
 import club.doki7.ffm.annotation.*;
+import org.intellij.lang.annotations.MagicConstant;
 
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkFullScreenExclusiveEXT.html"><code>VkFullScreenExclusiveEXT</code></a>
 public final class VkFullScreenExclusiveEXT {
@@ -9,7 +10,7 @@ public final class VkFullScreenExclusiveEXT {
     public static final int DISALLOWED = 0x2;
     public static final int APPLICATION_CONTROLLED = 0x3;
 
-    public static String explain(@EnumType(VkFullScreenExclusiveEXT.class) int value) {
+    public static String explain(@MagicConstant(valuesFromClass = VkFullScreenExclusiveEXT.class) int value) {
         return switch (value) {
             case VkFullScreenExclusiveEXT.ALLOWED -> "VK_FULL_SCREEN_EXCLUSIVE_ALLOWED_EXT";
             case VkFullScreenExclusiveEXT.APPLICATION_CONTROLLED -> "VK_FULL_SCREEN_EXCLUSIVE_APPLICATION_CONTROLLED_EXT";

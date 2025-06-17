@@ -191,11 +191,11 @@ public record VkImagePipeSurfaceCreateInfoFUCHSIA(@NotNull MemorySegment segment
         sType(VkStructureType.IMAGEPIPE_SURFACE_CREATE_INFO_FUCHSIA);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkImagePipeSurfaceCreateInfoFUCHSIA sType(@EnumType(VkStructureType.class) int value) {
+    public VkImagePipeSurfaceCreateInfoFUCHSIA sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }
@@ -213,11 +213,11 @@ public record VkImagePipeSurfaceCreateInfoFUCHSIA(@NotNull MemorySegment segment
         return this;
     }
 
-    public @EnumType(VkImagePipeSurfaceCreateFlagsFUCHSIA.class) int flags() {
+    public @MagicConstant(valuesFromClass = VkImagePipeSurfaceCreateFlagsFUCHSIA.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public VkImagePipeSurfaceCreateInfoFUCHSIA flags(@EnumType(VkImagePipeSurfaceCreateFlagsFUCHSIA.class) int value) {
+    public VkImagePipeSurfaceCreateInfoFUCHSIA flags(@MagicConstant(valuesFromClass = VkImagePipeSurfaceCreateFlagsFUCHSIA.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
         return this;
     }

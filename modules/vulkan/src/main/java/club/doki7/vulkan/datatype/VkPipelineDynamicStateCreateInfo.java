@@ -192,11 +192,11 @@ public record VkPipelineDynamicStateCreateInfo(@NotNull MemorySegment segment) i
         sType(VkStructureType.PIPELINE_DYNAMIC_STATE_CREATE_INFO);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkPipelineDynamicStateCreateInfo sType(@EnumType(VkStructureType.class) int value) {
+    public VkPipelineDynamicStateCreateInfo sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }
@@ -214,11 +214,11 @@ public record VkPipelineDynamicStateCreateInfo(@NotNull MemorySegment segment) i
         return this;
     }
 
-    public @EnumType(VkPipelineDynamicStateCreateFlags.class) int flags() {
+    public @MagicConstant(valuesFromClass = VkPipelineDynamicStateCreateFlags.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public VkPipelineDynamicStateCreateInfo flags(@EnumType(VkPipelineDynamicStateCreateFlags.class) int value) {
+    public VkPipelineDynamicStateCreateInfo flags(@MagicConstant(valuesFromClass = VkPipelineDynamicStateCreateFlags.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
         return this;
     }

@@ -192,11 +192,11 @@ public record VkPipelineViewportCoarseSampleOrderStateCreateInfoNV(@NotNull Memo
         sType(VkStructureType.PIPELINE_VIEWPORT_COARSE_SAMPLE_ORDER_STATE_CREATE_INFO_NV);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkPipelineViewportCoarseSampleOrderStateCreateInfoNV sType(@EnumType(VkStructureType.class) int value) {
+    public VkPipelineViewportCoarseSampleOrderStateCreateInfoNV sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }
@@ -214,11 +214,11 @@ public record VkPipelineViewportCoarseSampleOrderStateCreateInfoNV(@NotNull Memo
         return this;
     }
 
-    public @EnumType(VkCoarseSampleOrderTypeNV.class) int sampleOrderType() {
+    public @MagicConstant(valuesFromClass = VkCoarseSampleOrderTypeNV.class) int sampleOrderType() {
         return segment.get(LAYOUT$sampleOrderType, OFFSET$sampleOrderType);
     }
 
-    public VkPipelineViewportCoarseSampleOrderStateCreateInfoNV sampleOrderType(@EnumType(VkCoarseSampleOrderTypeNV.class) int value) {
+    public VkPipelineViewportCoarseSampleOrderStateCreateInfoNV sampleOrderType(@MagicConstant(valuesFromClass = VkCoarseSampleOrderTypeNV.class) int value) {
         segment.set(LAYOUT$sampleOrderType, OFFSET$sampleOrderType, value);
         return this;
     }

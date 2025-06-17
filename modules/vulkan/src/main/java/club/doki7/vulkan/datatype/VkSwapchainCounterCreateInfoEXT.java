@@ -190,11 +190,11 @@ public record VkSwapchainCounterCreateInfoEXT(@NotNull MemorySegment segment) im
         sType(VkStructureType.SWAPCHAIN_COUNTER_CREATE_INFO_EXT);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkSwapchainCounterCreateInfoEXT sType(@EnumType(VkStructureType.class) int value) {
+    public VkSwapchainCounterCreateInfoEXT sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }
@@ -212,11 +212,11 @@ public record VkSwapchainCounterCreateInfoEXT(@NotNull MemorySegment segment) im
         return this;
     }
 
-    public @EnumType(VkSurfaceCounterFlagsEXT.class) int surfaceCounters() {
+    public @MagicConstant(valuesFromClass = VkSurfaceCounterFlagsEXT.class) int surfaceCounters() {
         return segment.get(LAYOUT$surfaceCounters, OFFSET$surfaceCounters);
     }
 
-    public VkSwapchainCounterCreateInfoEXT surfaceCounters(@EnumType(VkSurfaceCounterFlagsEXT.class) int value) {
+    public VkSwapchainCounterCreateInfoEXT surfaceCounters(@MagicConstant(valuesFromClass = VkSurfaceCounterFlagsEXT.class) int value) {
         segment.set(LAYOUT$surfaceCounters, OFFSET$surfaceCounters, value);
         return this;
     }

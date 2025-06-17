@@ -190,11 +190,11 @@ public record VkSurfaceFormat2KHR(@NotNull MemorySegment segment) implements IVk
         sType(VkStructureType.SURFACE_FORMAT_2_KHR);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkSurfaceFormat2KHR sType(@EnumType(VkStructureType.class) int value) {
+    public VkSurfaceFormat2KHR sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }

@@ -192,11 +192,11 @@ public record VkPipelineViewportSwizzleStateCreateInfoNV(@NotNull MemorySegment 
         sType(VkStructureType.PIPELINE_VIEWPORT_SWIZZLE_STATE_CREATE_INFO_NV);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkPipelineViewportSwizzleStateCreateInfoNV sType(@EnumType(VkStructureType.class) int value) {
+    public VkPipelineViewportSwizzleStateCreateInfoNV sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }
@@ -214,11 +214,11 @@ public record VkPipelineViewportSwizzleStateCreateInfoNV(@NotNull MemorySegment 
         return this;
     }
 
-    public @EnumType(VkPipelineViewportSwizzleStateCreateFlagsNV.class) int flags() {
+    public @MagicConstant(valuesFromClass = VkPipelineViewportSwizzleStateCreateFlagsNV.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public VkPipelineViewportSwizzleStateCreateInfoNV flags(@EnumType(VkPipelineViewportSwizzleStateCreateFlagsNV.class) int value) {
+    public VkPipelineViewportSwizzleStateCreateInfoNV flags(@MagicConstant(valuesFromClass = VkPipelineViewportSwizzleStateCreateFlagsNV.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
         return this;
     }

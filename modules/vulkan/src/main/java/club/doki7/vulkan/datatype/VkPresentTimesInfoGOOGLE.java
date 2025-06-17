@@ -191,11 +191,11 @@ public record VkPresentTimesInfoGOOGLE(@NotNull MemorySegment segment) implement
         sType(VkStructureType.PRESENT_TIMES_INFO_GOOGLE);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkPresentTimesInfoGOOGLE sType(@EnumType(VkStructureType.class) int value) {
+    public VkPresentTimesInfoGOOGLE sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }

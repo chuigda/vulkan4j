@@ -192,11 +192,11 @@ public record VkIndirectCommandsLayoutTokenEXT(@NotNull MemorySegment segment) i
         sType(VkStructureType.INDIRECT_COMMANDS_LAYOUT_TOKEN_EXT);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkIndirectCommandsLayoutTokenEXT sType(@EnumType(VkStructureType.class) int value) {
+    public VkIndirectCommandsLayoutTokenEXT sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }
@@ -214,11 +214,11 @@ public record VkIndirectCommandsLayoutTokenEXT(@NotNull MemorySegment segment) i
         return this;
     }
 
-    public @EnumType(VkIndirectCommandsTokenTypeEXT.class) int type() {
+    public @MagicConstant(valuesFromClass = VkIndirectCommandsTokenTypeEXT.class) int type() {
         return segment.get(LAYOUT$type, OFFSET$type);
     }
 
-    public VkIndirectCommandsLayoutTokenEXT type(@EnumType(VkIndirectCommandsTokenTypeEXT.class) int value) {
+    public VkIndirectCommandsLayoutTokenEXT type(@MagicConstant(valuesFromClass = VkIndirectCommandsTokenTypeEXT.class) int value) {
         segment.set(LAYOUT$type, OFFSET$type, value);
         return this;
     }

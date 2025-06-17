@@ -191,11 +191,11 @@ public record VkVideoDecodeH264ProfileInfoKHR(@NotNull MemorySegment segment) im
         sType(VkStructureType.VIDEO_DECODE_H264_PROFILE_INFO_KHR);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkVideoDecodeH264ProfileInfoKHR sType(@EnumType(VkStructureType.class) int value) {
+    public VkVideoDecodeH264ProfileInfoKHR sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }
@@ -213,20 +213,20 @@ public record VkVideoDecodeH264ProfileInfoKHR(@NotNull MemorySegment segment) im
         return this;
     }
 
-    public @EnumType(StdVideoH264ProfileIdc.class) int stdProfileIdc() {
+    public @MagicConstant(valuesFromClass = StdVideoH264ProfileIdc.class) int stdProfileIdc() {
         return segment.get(LAYOUT$stdProfileIdc, OFFSET$stdProfileIdc);
     }
 
-    public VkVideoDecodeH264ProfileInfoKHR stdProfileIdc(@EnumType(StdVideoH264ProfileIdc.class) int value) {
+    public VkVideoDecodeH264ProfileInfoKHR stdProfileIdc(@MagicConstant(valuesFromClass = StdVideoH264ProfileIdc.class) int value) {
         segment.set(LAYOUT$stdProfileIdc, OFFSET$stdProfileIdc, value);
         return this;
     }
 
-    public @EnumType(VkVideoDecodeH264PictureLayoutFlagsKHR.class) int pictureLayout() {
+    public @MagicConstant(valuesFromClass = VkVideoDecodeH264PictureLayoutFlagsKHR.class) int pictureLayout() {
         return segment.get(LAYOUT$pictureLayout, OFFSET$pictureLayout);
     }
 
-    public VkVideoDecodeH264ProfileInfoKHR pictureLayout(@EnumType(VkVideoDecodeH264PictureLayoutFlagsKHR.class) int value) {
+    public VkVideoDecodeH264ProfileInfoKHR pictureLayout(@MagicConstant(valuesFromClass = VkVideoDecodeH264PictureLayoutFlagsKHR.class) int value) {
         segment.set(LAYOUT$pictureLayout, OFFSET$pictureLayout, value);
         return this;
     }

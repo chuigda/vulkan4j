@@ -191,11 +191,11 @@ public record VkMemoryBarrierAccessFlags3KHR(@NotNull MemorySegment segment) imp
         sType(VkStructureType.MEMORY_BARRIER_ACCESS_FLAGS_3_KHR);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkMemoryBarrierAccessFlags3KHR sType(@EnumType(VkStructureType.class) int value) {
+    public VkMemoryBarrierAccessFlags3KHR sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }
@@ -213,20 +213,20 @@ public record VkMemoryBarrierAccessFlags3KHR(@NotNull MemorySegment segment) imp
         return this;
     }
 
-    public @EnumType(VkAccessFlags3KHR.class) long srcAccessMask3() {
+    public @MagicConstant(valuesFromClass = VkAccessFlags3KHR.class) long srcAccessMask3() {
         return segment.get(LAYOUT$srcAccessMask3, OFFSET$srcAccessMask3);
     }
 
-    public VkMemoryBarrierAccessFlags3KHR srcAccessMask3(@EnumType(VkAccessFlags3KHR.class) long value) {
+    public VkMemoryBarrierAccessFlags3KHR srcAccessMask3(@MagicConstant(valuesFromClass = VkAccessFlags3KHR.class) long value) {
         segment.set(LAYOUT$srcAccessMask3, OFFSET$srcAccessMask3, value);
         return this;
     }
 
-    public @EnumType(VkAccessFlags3KHR.class) long dstAccessMask3() {
+    public @MagicConstant(valuesFromClass = VkAccessFlags3KHR.class) long dstAccessMask3() {
         return segment.get(LAYOUT$dstAccessMask3, OFFSET$dstAccessMask3);
     }
 
-    public VkMemoryBarrierAccessFlags3KHR dstAccessMask3(@EnumType(VkAccessFlags3KHR.class) long value) {
+    public VkMemoryBarrierAccessFlags3KHR dstAccessMask3(@MagicConstant(valuesFromClass = VkAccessFlags3KHR.class) long value) {
         segment.set(LAYOUT$dstAccessMask3, OFFSET$dstAccessMask3, value);
         return this;
     }

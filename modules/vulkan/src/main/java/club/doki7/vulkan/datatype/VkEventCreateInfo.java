@@ -190,11 +190,11 @@ public record VkEventCreateInfo(@NotNull MemorySegment segment) implements IVkEv
         sType(VkStructureType.EVENT_CREATE_INFO);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkEventCreateInfo sType(@EnumType(VkStructureType.class) int value) {
+    public VkEventCreateInfo sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }
@@ -212,11 +212,11 @@ public record VkEventCreateInfo(@NotNull MemorySegment segment) implements IVkEv
         return this;
     }
 
-    public @EnumType(VkEventCreateFlags.class) int flags() {
+    public @MagicConstant(valuesFromClass = VkEventCreateFlags.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public VkEventCreateInfo flags(@EnumType(VkEventCreateFlags.class) int value) {
+    public VkEventCreateInfo flags(@MagicConstant(valuesFromClass = VkEventCreateFlags.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
         return this;
     }

@@ -190,11 +190,11 @@ public record VkAttachmentReferenceStencilLayout(@NotNull MemorySegment segment)
         sType(VkStructureType.ATTACHMENT_REFERENCE_STENCIL_LAYOUT);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkAttachmentReferenceStencilLayout sType(@EnumType(VkStructureType.class) int value) {
+    public VkAttachmentReferenceStencilLayout sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }
@@ -212,11 +212,11 @@ public record VkAttachmentReferenceStencilLayout(@NotNull MemorySegment segment)
         return this;
     }
 
-    public @EnumType(VkImageLayout.class) int stencilLayout() {
+    public @MagicConstant(valuesFromClass = VkImageLayout.class) int stencilLayout() {
         return segment.get(LAYOUT$stencilLayout, OFFSET$stencilLayout);
     }
 
-    public VkAttachmentReferenceStencilLayout stencilLayout(@EnumType(VkImageLayout.class) int value) {
+    public VkAttachmentReferenceStencilLayout stencilLayout(@MagicConstant(valuesFromClass = VkImageLayout.class) int value) {
         segment.set(LAYOUT$stencilLayout, OFFSET$stencilLayout, value);
         return this;
     }

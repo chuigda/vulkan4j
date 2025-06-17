@@ -190,11 +190,11 @@ public record VkPhysicalDeviceMultiDrawPropertiesEXT(@NotNull MemorySegment segm
         sType(VkStructureType.PHYSICAL_DEVICE_MULTI_DRAW_PROPERTIES_EXT);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkPhysicalDeviceMultiDrawPropertiesEXT sType(@EnumType(VkStructureType.class) int value) {
+    public VkPhysicalDeviceMultiDrawPropertiesEXT sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }

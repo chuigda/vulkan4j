@@ -194,11 +194,11 @@ public record VkPhysicalDeviceToolProperties(@NotNull MemorySegment segment) imp
         sType(VkStructureType.PHYSICAL_DEVICE_TOOL_PROPERTIES);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkPhysicalDeviceToolProperties sType(@EnumType(VkStructureType.class) int value) {
+    public VkPhysicalDeviceToolProperties sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }
@@ -242,11 +242,11 @@ public record VkPhysicalDeviceToolProperties(@NotNull MemorySegment segment) imp
         return segment.asSlice(OFFSET$version, SIZE$version);
     }
 
-    public @EnumType(VkToolPurposeFlags.class) int purposes() {
+    public @MagicConstant(valuesFromClass = VkToolPurposeFlags.class) int purposes() {
         return segment.get(LAYOUT$purposes, OFFSET$purposes);
     }
 
-    public VkPhysicalDeviceToolProperties purposes(@EnumType(VkToolPurposeFlags.class) int value) {
+    public VkPhysicalDeviceToolProperties purposes(@MagicConstant(valuesFromClass = VkToolPurposeFlags.class) int value) {
         segment.set(LAYOUT$purposes, OFFSET$purposes, value);
         return this;
     }

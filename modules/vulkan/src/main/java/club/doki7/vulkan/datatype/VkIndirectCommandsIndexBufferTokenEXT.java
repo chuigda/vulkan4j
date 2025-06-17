@@ -169,11 +169,11 @@ public record VkIndirectCommandsIndexBufferTokenEXT(@NotNull MemorySegment segme
         return ret;
     }
 
-    public @EnumType(VkIndirectCommandsInputModeFlagsEXT.class) int mode() {
+    public @MagicConstant(valuesFromClass = VkIndirectCommandsInputModeFlagsEXT.class) int mode() {
         return segment.get(LAYOUT$mode, OFFSET$mode);
     }
 
-    public VkIndirectCommandsIndexBufferTokenEXT mode(@EnumType(VkIndirectCommandsInputModeFlagsEXT.class) int value) {
+    public VkIndirectCommandsIndexBufferTokenEXT mode(@MagicConstant(valuesFromClass = VkIndirectCommandsInputModeFlagsEXT.class) int value) {
         segment.set(LAYOUT$mode, OFFSET$mode, value);
         return this;
     }

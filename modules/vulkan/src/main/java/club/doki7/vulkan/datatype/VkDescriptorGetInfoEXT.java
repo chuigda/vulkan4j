@@ -191,11 +191,11 @@ public record VkDescriptorGetInfoEXT(@NotNull MemorySegment segment) implements 
         sType(VkStructureType.DESCRIPTOR_GET_INFO_EXT);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkDescriptorGetInfoEXT sType(@EnumType(VkStructureType.class) int value) {
+    public VkDescriptorGetInfoEXT sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }
@@ -213,11 +213,11 @@ public record VkDescriptorGetInfoEXT(@NotNull MemorySegment segment) implements 
         return this;
     }
 
-    public @EnumType(VkDescriptorType.class) int type() {
+    public @MagicConstant(valuesFromClass = VkDescriptorType.class) int type() {
         return segment.get(LAYOUT$type, OFFSET$type);
     }
 
-    public VkDescriptorGetInfoEXT type(@EnumType(VkDescriptorType.class) int value) {
+    public VkDescriptorGetInfoEXT type(@MagicConstant(valuesFromClass = VkDescriptorType.class) int value) {
         segment.set(LAYOUT$type, OFFSET$type, value);
         return this;
     }

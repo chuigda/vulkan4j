@@ -1,6 +1,7 @@
 package club.doki7.vulkan.enumtype;
 
 import club.doki7.ffm.annotation.*;
+import org.intellij.lang.annotations.MagicConstant;
 
 public final class StdVideoAV1FrameRestorationType {
     public static final int STD_VIDEO_AV1_FRAME_RESTORATION_TYPE_NONE = 0x0;
@@ -9,7 +10,7 @@ public final class StdVideoAV1FrameRestorationType {
     public static final int STD_VIDEO_AV1_FRAME_RESTORATION_TYPE_SWITCHABLE = 0x3;
     public static final int STD_VIDEO_AV1_FRAME_RESTORATION_TYPE_INVALID = 0x7fffffff;
 
-    public static String explain(@EnumType(StdVideoAV1FrameRestorationType.class) int value) {
+    public static String explain(@MagicConstant(valuesFromClass = StdVideoAV1FrameRestorationType.class) int value) {
         return switch (value) {
             case StdVideoAV1FrameRestorationType.STD_VIDEO_AV1_FRAME_RESTORATION_TYPE_INVALID -> "STD_VIDEO_AV1_FRAME_RESTORATION_TYPE_INVALID";
             case StdVideoAV1FrameRestorationType.STD_VIDEO_AV1_FRAME_RESTORATION_TYPE_NONE -> "STD_VIDEO_AV1_FRAME_RESTORATION_TYPE_NONE";

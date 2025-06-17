@@ -172,11 +172,11 @@ public record VkCoarseSampleOrderCustomNV(@NotNull MemorySegment segment) implem
         return ret;
     }
 
-    public @EnumType(VkShadingRatePaletteEntryNV.class) int shadingRate() {
+    public @MagicConstant(valuesFromClass = VkShadingRatePaletteEntryNV.class) int shadingRate() {
         return segment.get(LAYOUT$shadingRate, OFFSET$shadingRate);
     }
 
-    public VkCoarseSampleOrderCustomNV shadingRate(@EnumType(VkShadingRatePaletteEntryNV.class) int value) {
+    public VkCoarseSampleOrderCustomNV shadingRate(@MagicConstant(valuesFromClass = VkShadingRatePaletteEntryNV.class) int value) {
         segment.set(LAYOUT$shadingRate, OFFSET$shadingRate, value);
         return this;
     }

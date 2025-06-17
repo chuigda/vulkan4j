@@ -193,11 +193,11 @@ public record VkVideoEncodeRateControlLayerInfoKHR(@NotNull MemorySegment segmen
         sType(VkStructureType.VIDEO_ENCODE_RATE_CONTROL_LAYER_INFO_KHR);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkVideoEncodeRateControlLayerInfoKHR sType(@EnumType(VkStructureType.class) int value) {
+    public VkVideoEncodeRateControlLayerInfoKHR sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }

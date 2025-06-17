@@ -190,11 +190,11 @@ public record VkAndroidHardwareBufferFormatResolvePropertiesANDROID(@NotNull Mem
         sType(VkStructureType.ANDROID_HARDWARE_BUFFER_FORMAT_RESOLVE_PROPERTIES_ANDROID);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkAndroidHardwareBufferFormatResolvePropertiesANDROID sType(@EnumType(VkStructureType.class) int value) {
+    public VkAndroidHardwareBufferFormatResolvePropertiesANDROID sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }
@@ -212,11 +212,11 @@ public record VkAndroidHardwareBufferFormatResolvePropertiesANDROID(@NotNull Mem
         return this;
     }
 
-    public @EnumType(VkFormat.class) int colorAttachmentFormat() {
+    public @MagicConstant(valuesFromClass = VkFormat.class) int colorAttachmentFormat() {
         return segment.get(LAYOUT$colorAttachmentFormat, OFFSET$colorAttachmentFormat);
     }
 
-    public VkAndroidHardwareBufferFormatResolvePropertiesANDROID colorAttachmentFormat(@EnumType(VkFormat.class) int value) {
+    public VkAndroidHardwareBufferFormatResolvePropertiesANDROID colorAttachmentFormat(@MagicConstant(valuesFromClass = VkFormat.class) int value) {
         segment.set(LAYOUT$colorAttachmentFormat, OFFSET$colorAttachmentFormat, value);
         return this;
     }

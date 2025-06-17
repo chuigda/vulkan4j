@@ -1,6 +1,7 @@
 package club.doki7.vulkan.bitmask;
 
 import club.doki7.ffm.annotation.*;
+import org.intellij.lang.annotations.MagicConstant;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -9,7 +10,7 @@ import java.util.List;
 public final class VkClusterAccelerationStructureClusterFlagsNV {
     public static final int ALLOW_DISABLE_OPACITY_MICROMAPS = 0x1;
 
-    public static String explain(@EnumType(VkClusterAccelerationStructureClusterFlagsNV.class) int flags) {
+    public static String explain(@MagicConstant(flagsFromClass = VkClusterAccelerationStructureClusterFlagsNV.class) int flags) {
         List<String> detectedFlagBits = new ArrayList<>();
         if ((flags & ALLOW_DISABLE_OPACITY_MICROMAPS) != 0) {
             detectedFlagBits.add("VK_CLUSTER_ACCELERATION_STRUCTURE_CLUSTER_ALLOW_DISABLE_OPACITY_MICROMAPS_NV");

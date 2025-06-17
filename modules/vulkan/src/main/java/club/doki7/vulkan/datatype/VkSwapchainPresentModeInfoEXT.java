@@ -191,11 +191,11 @@ public record VkSwapchainPresentModeInfoEXT(@NotNull MemorySegment segment) impl
         sType(VkStructureType.SWAPCHAIN_PRESENT_MODE_INFO_EXT);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkSwapchainPresentModeInfoEXT sType(@EnumType(VkStructureType.class) int value) {
+    public VkSwapchainPresentModeInfoEXT sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }

@@ -190,11 +190,11 @@ public record VkCopyCommandTransformInfoQCOM(@NotNull MemorySegment segment) imp
         sType(VkStructureType.COPY_COMMAND_TRANSFORM_INFO_QCOM);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkCopyCommandTransformInfoQCOM sType(@EnumType(VkStructureType.class) int value) {
+    public VkCopyCommandTransformInfoQCOM sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }
@@ -212,11 +212,11 @@ public record VkCopyCommandTransformInfoQCOM(@NotNull MemorySegment segment) imp
         return this;
     }
 
-    public @EnumType(VkSurfaceTransformFlagsKHR.class) int transform() {
+    public @MagicConstant(valuesFromClass = VkSurfaceTransformFlagsKHR.class) int transform() {
         return segment.get(LAYOUT$transform, OFFSET$transform);
     }
 
-    public VkCopyCommandTransformInfoQCOM transform(@EnumType(VkSurfaceTransformFlagsKHR.class) int value) {
+    public VkCopyCommandTransformInfoQCOM transform(@MagicConstant(valuesFromClass = VkSurfaceTransformFlagsKHR.class) int value) {
         segment.set(LAYOUT$transform, OFFSET$transform, value);
         return this;
     }

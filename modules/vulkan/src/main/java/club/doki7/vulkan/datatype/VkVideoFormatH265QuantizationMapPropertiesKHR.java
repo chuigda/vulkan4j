@@ -190,11 +190,11 @@ public record VkVideoFormatH265QuantizationMapPropertiesKHR(@NotNull MemorySegme
         sType(VkStructureType.VIDEO_FORMAT_H265_QUANTIZATION_MAP_PROPERTIES_KHR);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkVideoFormatH265QuantizationMapPropertiesKHR sType(@EnumType(VkStructureType.class) int value) {
+    public VkVideoFormatH265QuantizationMapPropertiesKHR sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }
@@ -212,11 +212,11 @@ public record VkVideoFormatH265QuantizationMapPropertiesKHR(@NotNull MemorySegme
         return this;
     }
 
-    public @EnumType(VkVideoEncodeH265CtbSizeFlagsKHR.class) int compatibleCtbSizes() {
+    public @MagicConstant(valuesFromClass = VkVideoEncodeH265CtbSizeFlagsKHR.class) int compatibleCtbSizes() {
         return segment.get(LAYOUT$compatibleCtbSizes, OFFSET$compatibleCtbSizes);
     }
 
-    public VkVideoFormatH265QuantizationMapPropertiesKHR compatibleCtbSizes(@EnumType(VkVideoEncodeH265CtbSizeFlagsKHR.class) int value) {
+    public VkVideoFormatH265QuantizationMapPropertiesKHR compatibleCtbSizes(@MagicConstant(valuesFromClass = VkVideoEncodeH265CtbSizeFlagsKHR.class) int value) {
         segment.set(LAYOUT$compatibleCtbSizes, OFFSET$compatibleCtbSizes, value);
         return this;
     }

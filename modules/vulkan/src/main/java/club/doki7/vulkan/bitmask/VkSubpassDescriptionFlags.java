@@ -1,6 +1,7 @@
 package club.doki7.vulkan.bitmask;
 
 import club.doki7.ffm.annotation.*;
+import org.intellij.lang.annotations.MagicConstant;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,7 +18,7 @@ public final class VkSubpassDescriptionFlags {
     public static final int SHADER_RESOLVE_QCOM = 0x8;
     public static final int TILE_SHADING_APRON_QCOM = 0x100;
 
-    public static String explain(@EnumType(VkSubpassDescriptionFlags.class) int flags) {
+    public static String explain(@MagicConstant(flagsFromClass = VkSubpassDescriptionFlags.class) int flags) {
         List<String> detectedFlagBits = new ArrayList<>();
         if ((flags & ENABLE_LEGACY_DITHERING_EXT) != 0) {
             detectedFlagBits.add("VK_SUBPASS_DESCRIPTION_ENABLE_LEGACY_DITHERING_BIT_EXT");

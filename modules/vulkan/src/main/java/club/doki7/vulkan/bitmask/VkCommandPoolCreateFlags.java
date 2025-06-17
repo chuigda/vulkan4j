@@ -1,6 +1,7 @@
 package club.doki7.vulkan.bitmask;
 
 import club.doki7.ffm.annotation.*;
+import org.intellij.lang.annotations.MagicConstant;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,7 +12,7 @@ public final class VkCommandPoolCreateFlags {
     public static final int RESET_COMMAND_BUFFER = 0x2;
     public static final int TRANSIENT = 0x1;
 
-    public static String explain(@EnumType(VkCommandPoolCreateFlags.class) int flags) {
+    public static String explain(@MagicConstant(flagsFromClass = VkCommandPoolCreateFlags.class) int flags) {
         List<String> detectedFlagBits = new ArrayList<>();
         if ((flags & PROTECTED) != 0) {
             detectedFlagBits.add("VK_COMMAND_POOL_CREATE_PROTECTED_BIT");

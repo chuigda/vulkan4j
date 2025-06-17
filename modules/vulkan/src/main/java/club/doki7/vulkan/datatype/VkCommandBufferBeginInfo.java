@@ -191,11 +191,11 @@ public record VkCommandBufferBeginInfo(@NotNull MemorySegment segment) implement
         sType(VkStructureType.COMMAND_BUFFER_BEGIN_INFO);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkCommandBufferBeginInfo sType(@EnumType(VkStructureType.class) int value) {
+    public VkCommandBufferBeginInfo sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }
@@ -213,11 +213,11 @@ public record VkCommandBufferBeginInfo(@NotNull MemorySegment segment) implement
         return this;
     }
 
-    public @EnumType(VkCommandBufferUsageFlags.class) int flags() {
+    public @MagicConstant(valuesFromClass = VkCommandBufferUsageFlags.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public VkCommandBufferBeginInfo flags(@EnumType(VkCommandBufferUsageFlags.class) int value) {
+    public VkCommandBufferBeginInfo flags(@MagicConstant(valuesFromClass = VkCommandBufferUsageFlags.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
         return this;
     }

@@ -190,11 +190,11 @@ public record VkPhysicalDeviceCooperativeMatrixPropertiesNV(@NotNull MemorySegme
         sType(VkStructureType.PHYSICAL_DEVICE_COOPERATIVE_MATRIX_PROPERTIES_NV);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkPhysicalDeviceCooperativeMatrixPropertiesNV sType(@EnumType(VkStructureType.class) int value) {
+    public VkPhysicalDeviceCooperativeMatrixPropertiesNV sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }
@@ -212,11 +212,11 @@ public record VkPhysicalDeviceCooperativeMatrixPropertiesNV(@NotNull MemorySegme
         return this;
     }
 
-    public @EnumType(VkShaderStageFlags.class) int cooperativeMatrixSupportedStages() {
+    public @MagicConstant(valuesFromClass = VkShaderStageFlags.class) int cooperativeMatrixSupportedStages() {
         return segment.get(LAYOUT$cooperativeMatrixSupportedStages, OFFSET$cooperativeMatrixSupportedStages);
     }
 
-    public VkPhysicalDeviceCooperativeMatrixPropertiesNV cooperativeMatrixSupportedStages(@EnumType(VkShaderStageFlags.class) int value) {
+    public VkPhysicalDeviceCooperativeMatrixPropertiesNV cooperativeMatrixSupportedStages(@MagicConstant(valuesFromClass = VkShaderStageFlags.class) int value) {
         segment.set(LAYOUT$cooperativeMatrixSupportedStages, OFFSET$cooperativeMatrixSupportedStages, value);
         return this;
     }

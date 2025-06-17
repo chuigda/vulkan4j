@@ -191,11 +191,11 @@ public record VkPhysicalDevice4444FormatsFeaturesEXT(@NotNull MemorySegment segm
         sType(VkStructureType.PHYSICAL_DEVICE_4444_FORMATS_FEATURES_EXT);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkPhysicalDevice4444FormatsFeaturesEXT sType(@EnumType(VkStructureType.class) int value) {
+    public VkPhysicalDevice4444FormatsFeaturesEXT sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }

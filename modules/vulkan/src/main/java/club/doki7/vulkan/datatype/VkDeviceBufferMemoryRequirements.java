@@ -190,11 +190,11 @@ public record VkDeviceBufferMemoryRequirements(@NotNull MemorySegment segment) i
         sType(VkStructureType.DEVICE_BUFFER_MEMORY_REQUIREMENTS);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkDeviceBufferMemoryRequirements sType(@EnumType(VkStructureType.class) int value) {
+    public VkDeviceBufferMemoryRequirements sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }

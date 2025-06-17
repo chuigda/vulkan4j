@@ -1,6 +1,7 @@
 package club.doki7.vulkan.enumtype;
 
 import club.doki7.ffm.annotation.*;
+import org.intellij.lang.annotations.MagicConstant;
 
 public final class StdVideoH264AspectRatioIdc {
     public static final int STD_VIDEO_H264_ASPECT_RATIO_IDC_UNSPECIFIED = 0x0;
@@ -23,7 +24,7 @@ public final class StdVideoH264AspectRatioIdc {
     public static final int STD_VIDEO_H264_ASPECT_RATIO_IDC_EXTENDED_SAR = 0xff;
     public static final int STD_VIDEO_H264_ASPECT_RATIO_IDC_INVALID = 0x7fffffff;
 
-    public static String explain(@EnumType(StdVideoH264AspectRatioIdc.class) int value) {
+    public static String explain(@MagicConstant(valuesFromClass = StdVideoH264AspectRatioIdc.class) int value) {
         return switch (value) {
             case StdVideoH264AspectRatioIdc.STD_VIDEO_H264_ASPECT_RATIO_IDC_10_11 -> "STD_VIDEO_H264_ASPECT_RATIO_IDC_10_11";
             case StdVideoH264AspectRatioIdc.STD_VIDEO_H264_ASPECT_RATIO_IDC_12_11 -> "STD_VIDEO_H264_ASPECT_RATIO_IDC_12_11";

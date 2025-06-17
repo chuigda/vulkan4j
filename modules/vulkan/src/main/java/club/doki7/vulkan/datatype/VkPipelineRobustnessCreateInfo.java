@@ -193,11 +193,11 @@ public record VkPipelineRobustnessCreateInfo(@NotNull MemorySegment segment) imp
         sType(VkStructureType.PIPELINE_ROBUSTNESS_CREATE_INFO);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkPipelineRobustnessCreateInfo sType(@EnumType(VkStructureType.class) int value) {
+    public VkPipelineRobustnessCreateInfo sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }
@@ -215,38 +215,38 @@ public record VkPipelineRobustnessCreateInfo(@NotNull MemorySegment segment) imp
         return this;
     }
 
-    public @EnumType(VkPipelineRobustnessBufferBehavior.class) int storageBuffers() {
+    public @MagicConstant(valuesFromClass = VkPipelineRobustnessBufferBehavior.class) int storageBuffers() {
         return segment.get(LAYOUT$storageBuffers, OFFSET$storageBuffers);
     }
 
-    public VkPipelineRobustnessCreateInfo storageBuffers(@EnumType(VkPipelineRobustnessBufferBehavior.class) int value) {
+    public VkPipelineRobustnessCreateInfo storageBuffers(@MagicConstant(valuesFromClass = VkPipelineRobustnessBufferBehavior.class) int value) {
         segment.set(LAYOUT$storageBuffers, OFFSET$storageBuffers, value);
         return this;
     }
 
-    public @EnumType(VkPipelineRobustnessBufferBehavior.class) int uniformBuffers() {
+    public @MagicConstant(valuesFromClass = VkPipelineRobustnessBufferBehavior.class) int uniformBuffers() {
         return segment.get(LAYOUT$uniformBuffers, OFFSET$uniformBuffers);
     }
 
-    public VkPipelineRobustnessCreateInfo uniformBuffers(@EnumType(VkPipelineRobustnessBufferBehavior.class) int value) {
+    public VkPipelineRobustnessCreateInfo uniformBuffers(@MagicConstant(valuesFromClass = VkPipelineRobustnessBufferBehavior.class) int value) {
         segment.set(LAYOUT$uniformBuffers, OFFSET$uniformBuffers, value);
         return this;
     }
 
-    public @EnumType(VkPipelineRobustnessBufferBehavior.class) int vertexInputs() {
+    public @MagicConstant(valuesFromClass = VkPipelineRobustnessBufferBehavior.class) int vertexInputs() {
         return segment.get(LAYOUT$vertexInputs, OFFSET$vertexInputs);
     }
 
-    public VkPipelineRobustnessCreateInfo vertexInputs(@EnumType(VkPipelineRobustnessBufferBehavior.class) int value) {
+    public VkPipelineRobustnessCreateInfo vertexInputs(@MagicConstant(valuesFromClass = VkPipelineRobustnessBufferBehavior.class) int value) {
         segment.set(LAYOUT$vertexInputs, OFFSET$vertexInputs, value);
         return this;
     }
 
-    public @EnumType(VkPipelineRobustnessImageBehavior.class) int images() {
+    public @MagicConstant(valuesFromClass = VkPipelineRobustnessImageBehavior.class) int images() {
         return segment.get(LAYOUT$images, OFFSET$images);
     }
 
-    public VkPipelineRobustnessCreateInfo images(@EnumType(VkPipelineRobustnessImageBehavior.class) int value) {
+    public VkPipelineRobustnessCreateInfo images(@MagicConstant(valuesFromClass = VkPipelineRobustnessImageBehavior.class) int value) {
         segment.set(LAYOUT$images, OFFSET$images, value);
         return this;
     }

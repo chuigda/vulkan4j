@@ -1,6 +1,7 @@
 package club.doki7.vulkan.bitmask;
 
 import club.doki7.ffm.annotation.*;
+import org.intellij.lang.annotations.MagicConstant;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,7 +13,7 @@ public final class VkImageCompressionFlagsEXT {
     public static final int FIXED_RATE_DEFAULT = 0x1;
     public static final int FIXED_RATE_EXPLICIT = 0x2;
 
-    public static String explain(@EnumType(VkImageCompressionFlagsEXT.class) int flags) {
+    public static String explain(@MagicConstant(flagsFromClass = VkImageCompressionFlagsEXT.class) int flags) {
         List<String> detectedFlagBits = new ArrayList<>();
         if ((flags & DEFAULT) != 0) {
             detectedFlagBits.add("VK_IMAGE_COMPRESSION_DEFAULT_EXT");

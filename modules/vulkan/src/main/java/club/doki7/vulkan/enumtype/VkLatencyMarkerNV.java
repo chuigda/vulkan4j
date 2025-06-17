@@ -1,6 +1,7 @@
 package club.doki7.vulkan.enumtype;
 
 import club.doki7.ffm.annotation.*;
+import org.intellij.lang.annotations.MagicConstant;
 
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkLatencyMarkerNV.html"><code>VkLatencyMarkerNV</code></a>
 public final class VkLatencyMarkerNV {
@@ -17,7 +18,7 @@ public final class VkLatencyMarkerNV {
     public static final int OUT_OF_BAND_PRESENT_START = 0xa;
     public static final int OUT_OF_BAND_PRESENT_END = 0xb;
 
-    public static String explain(@EnumType(VkLatencyMarkerNV.class) int value) {
+    public static String explain(@MagicConstant(valuesFromClass = VkLatencyMarkerNV.class) int value) {
         return switch (value) {
             case VkLatencyMarkerNV.INPUT_SAMPLE -> "VK_LATENCY_MARKER_INPUT_SAMPLE_NV";
             case VkLatencyMarkerNV.OUT_OF_BAND_PRESENT_END -> "VK_LATENCY_MARKER_OUT_OF_BAND_PRESENT_END_NV";

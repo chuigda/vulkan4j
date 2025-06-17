@@ -202,11 +202,11 @@ public record VkVideoEncodeH264CapabilitiesKHR(@NotNull MemorySegment segment) i
         sType(VkStructureType.VIDEO_ENCODE_H264_CAPABILITIES_KHR);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkVideoEncodeH264CapabilitiesKHR sType(@EnumType(VkStructureType.class) int value) {
+    public VkVideoEncodeH264CapabilitiesKHR sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }
@@ -224,20 +224,20 @@ public record VkVideoEncodeH264CapabilitiesKHR(@NotNull MemorySegment segment) i
         return this;
     }
 
-    public @EnumType(VkVideoEncodeH264CapabilityFlagsKHR.class) int flags() {
+    public @MagicConstant(valuesFromClass = VkVideoEncodeH264CapabilityFlagsKHR.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public VkVideoEncodeH264CapabilitiesKHR flags(@EnumType(VkVideoEncodeH264CapabilityFlagsKHR.class) int value) {
+    public VkVideoEncodeH264CapabilitiesKHR flags(@MagicConstant(valuesFromClass = VkVideoEncodeH264CapabilityFlagsKHR.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
         return this;
     }
 
-    public @EnumType(StdVideoH264LevelIdc.class) int maxLevelIdc() {
+    public @MagicConstant(valuesFromClass = StdVideoH264LevelIdc.class) int maxLevelIdc() {
         return segment.get(LAYOUT$maxLevelIdc, OFFSET$maxLevelIdc);
     }
 
-    public VkVideoEncodeH264CapabilitiesKHR maxLevelIdc(@EnumType(StdVideoH264LevelIdc.class) int value) {
+    public VkVideoEncodeH264CapabilitiesKHR maxLevelIdc(@MagicConstant(valuesFromClass = StdVideoH264LevelIdc.class) int value) {
         segment.set(LAYOUT$maxLevelIdc, OFFSET$maxLevelIdc, value);
         return this;
     }
@@ -332,11 +332,11 @@ public record VkVideoEncodeH264CapabilitiesKHR(@NotNull MemorySegment segment) i
         return this;
     }
 
-    public @EnumType(VkVideoEncodeH264StdFlagsKHR.class) int stdSyntaxFlags() {
+    public @MagicConstant(valuesFromClass = VkVideoEncodeH264StdFlagsKHR.class) int stdSyntaxFlags() {
         return segment.get(LAYOUT$stdSyntaxFlags, OFFSET$stdSyntaxFlags);
     }
 
-    public VkVideoEncodeH264CapabilitiesKHR stdSyntaxFlags(@EnumType(VkVideoEncodeH264StdFlagsKHR.class) int value) {
+    public VkVideoEncodeH264CapabilitiesKHR stdSyntaxFlags(@MagicConstant(valuesFromClass = VkVideoEncodeH264StdFlagsKHR.class) int value) {
         segment.set(LAYOUT$stdSyntaxFlags, OFFSET$stdSyntaxFlags, value);
         return this;
     }

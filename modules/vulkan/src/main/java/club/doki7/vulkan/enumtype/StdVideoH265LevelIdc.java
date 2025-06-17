@@ -1,6 +1,7 @@
 package club.doki7.vulkan.enumtype;
 
 import club.doki7.ffm.annotation.*;
+import org.intellij.lang.annotations.MagicConstant;
 
 public final class StdVideoH265LevelIdc {
     public static final int STD_VIDEO_H265_LEVEL_IDC_1_0 = 0x0;
@@ -18,7 +19,7 @@ public final class StdVideoH265LevelIdc {
     public static final int STD_VIDEO_H265_LEVEL_IDC_6_2 = 0xc;
     public static final int STD_VIDEO_H265_LEVEL_IDC_INVALID = 0x7fffffff;
 
-    public static String explain(@EnumType(StdVideoH265LevelIdc.class) int value) {
+    public static String explain(@MagicConstant(valuesFromClass = StdVideoH265LevelIdc.class) int value) {
         return switch (value) {
             case StdVideoH265LevelIdc.STD_VIDEO_H265_LEVEL_IDC_1_0 -> "STD_VIDEO_H265_LEVEL_IDC_1_0";
             case StdVideoH265LevelIdc.STD_VIDEO_H265_LEVEL_IDC_2_0 -> "STD_VIDEO_H265_LEVEL_IDC_2_0";

@@ -192,11 +192,11 @@ public record VkExecutionGraphPipelineScratchSizeAMDX(@NotNull MemorySegment seg
         sType(VkStructureType.EXECUTION_GRAPH_PIPELINE_SCRATCH_SIZE_AMDX);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkExecutionGraphPipelineScratchSizeAMDX sType(@EnumType(VkStructureType.class) int value) {
+    public VkExecutionGraphPipelineScratchSizeAMDX sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }

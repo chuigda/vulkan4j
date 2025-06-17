@@ -190,11 +190,11 @@ public record VkPipelineCreateFlags2CreateInfo(@NotNull MemorySegment segment) i
         sType(VkStructureType.PIPELINE_CREATE_FLAGS_2_CREATE_INFO);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkPipelineCreateFlags2CreateInfo sType(@EnumType(VkStructureType.class) int value) {
+    public VkPipelineCreateFlags2CreateInfo sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }
@@ -212,11 +212,11 @@ public record VkPipelineCreateFlags2CreateInfo(@NotNull MemorySegment segment) i
         return this;
     }
 
-    public @EnumType(VkPipelineCreateFlags2.class) long flags() {
+    public @MagicConstant(valuesFromClass = VkPipelineCreateFlags2.class) long flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public VkPipelineCreateFlags2CreateInfo flags(@EnumType(VkPipelineCreateFlags2.class) long value) {
+    public VkPipelineCreateFlags2CreateInfo flags(@MagicConstant(valuesFromClass = VkPipelineCreateFlags2.class) long value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
         return this;
     }

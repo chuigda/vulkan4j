@@ -191,11 +191,11 @@ public record VkPipelineCoverageReductionStateCreateInfoNV(@NotNull MemorySegmen
         sType(VkStructureType.PIPELINE_COVERAGE_REDUCTION_STATE_CREATE_INFO_NV);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkPipelineCoverageReductionStateCreateInfoNV sType(@EnumType(VkStructureType.class) int value) {
+    public VkPipelineCoverageReductionStateCreateInfoNV sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }
@@ -213,20 +213,20 @@ public record VkPipelineCoverageReductionStateCreateInfoNV(@NotNull MemorySegmen
         return this;
     }
 
-    public @EnumType(VkPipelineCoverageReductionStateCreateFlagsNV.class) int flags() {
+    public @MagicConstant(valuesFromClass = VkPipelineCoverageReductionStateCreateFlagsNV.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public VkPipelineCoverageReductionStateCreateInfoNV flags(@EnumType(VkPipelineCoverageReductionStateCreateFlagsNV.class) int value) {
+    public VkPipelineCoverageReductionStateCreateInfoNV flags(@MagicConstant(valuesFromClass = VkPipelineCoverageReductionStateCreateFlagsNV.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
         return this;
     }
 
-    public @EnumType(VkCoverageReductionModeNV.class) int coverageReductionMode() {
+    public @MagicConstant(valuesFromClass = VkCoverageReductionModeNV.class) int coverageReductionMode() {
         return segment.get(LAYOUT$coverageReductionMode, OFFSET$coverageReductionMode);
     }
 
-    public VkPipelineCoverageReductionStateCreateInfoNV coverageReductionMode(@EnumType(VkCoverageReductionModeNV.class) int value) {
+    public VkPipelineCoverageReductionStateCreateInfoNV coverageReductionMode(@MagicConstant(valuesFromClass = VkCoverageReductionModeNV.class) int value) {
         segment.set(LAYOUT$coverageReductionMode, OFFSET$coverageReductionMode, value);
         return this;
     }

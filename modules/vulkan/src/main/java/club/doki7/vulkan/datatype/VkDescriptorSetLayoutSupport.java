@@ -190,11 +190,11 @@ public record VkDescriptorSetLayoutSupport(@NotNull MemorySegment segment) imple
         sType(VkStructureType.DESCRIPTOR_SET_LAYOUT_SUPPORT);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkDescriptorSetLayoutSupport sType(@EnumType(VkStructureType.class) int value) {
+    public VkDescriptorSetLayoutSupport sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }

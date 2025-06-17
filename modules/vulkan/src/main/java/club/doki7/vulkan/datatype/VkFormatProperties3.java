@@ -192,11 +192,11 @@ public record VkFormatProperties3(@NotNull MemorySegment segment) implements IVk
         sType(VkStructureType.FORMAT_PROPERTIES_3);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkFormatProperties3 sType(@EnumType(VkStructureType.class) int value) {
+    public VkFormatProperties3 sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }
@@ -214,29 +214,29 @@ public record VkFormatProperties3(@NotNull MemorySegment segment) implements IVk
         return this;
     }
 
-    public @EnumType(VkFormatFeatureFlags2.class) long linearTilingFeatures() {
+    public @MagicConstant(valuesFromClass = VkFormatFeatureFlags2.class) long linearTilingFeatures() {
         return segment.get(LAYOUT$linearTilingFeatures, OFFSET$linearTilingFeatures);
     }
 
-    public VkFormatProperties3 linearTilingFeatures(@EnumType(VkFormatFeatureFlags2.class) long value) {
+    public VkFormatProperties3 linearTilingFeatures(@MagicConstant(valuesFromClass = VkFormatFeatureFlags2.class) long value) {
         segment.set(LAYOUT$linearTilingFeatures, OFFSET$linearTilingFeatures, value);
         return this;
     }
 
-    public @EnumType(VkFormatFeatureFlags2.class) long optimalTilingFeatures() {
+    public @MagicConstant(valuesFromClass = VkFormatFeatureFlags2.class) long optimalTilingFeatures() {
         return segment.get(LAYOUT$optimalTilingFeatures, OFFSET$optimalTilingFeatures);
     }
 
-    public VkFormatProperties3 optimalTilingFeatures(@EnumType(VkFormatFeatureFlags2.class) long value) {
+    public VkFormatProperties3 optimalTilingFeatures(@MagicConstant(valuesFromClass = VkFormatFeatureFlags2.class) long value) {
         segment.set(LAYOUT$optimalTilingFeatures, OFFSET$optimalTilingFeatures, value);
         return this;
     }
 
-    public @EnumType(VkFormatFeatureFlags2.class) long bufferFeatures() {
+    public @MagicConstant(valuesFromClass = VkFormatFeatureFlags2.class) long bufferFeatures() {
         return segment.get(LAYOUT$bufferFeatures, OFFSET$bufferFeatures);
     }
 
-    public VkFormatProperties3 bufferFeatures(@EnumType(VkFormatFeatureFlags2.class) long value) {
+    public VkFormatProperties3 bufferFeatures(@MagicConstant(valuesFromClass = VkFormatFeatureFlags2.class) long value) {
         segment.set(LAYOUT$bufferFeatures, OFFSET$bufferFeatures, value);
         return this;
     }

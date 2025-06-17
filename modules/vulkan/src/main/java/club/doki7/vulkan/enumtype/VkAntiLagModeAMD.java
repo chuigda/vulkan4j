@@ -1,6 +1,7 @@
 package club.doki7.vulkan.enumtype;
 
 import club.doki7.ffm.annotation.*;
+import org.intellij.lang.annotations.MagicConstant;
 
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkAntiLagModeAMD.html"><code>VkAntiLagModeAMD</code></a>
 public final class VkAntiLagModeAMD {
@@ -8,7 +9,7 @@ public final class VkAntiLagModeAMD {
     public static final int ON = 0x1;
     public static final int OFF = 0x2;
 
-    public static String explain(@EnumType(VkAntiLagModeAMD.class) int value) {
+    public static String explain(@MagicConstant(valuesFromClass = VkAntiLagModeAMD.class) int value) {
         return switch (value) {
             case VkAntiLagModeAMD.DRIVER_CONTROL -> "VK_ANTI_LAG_MODE_DRIVER_CONTROL_AMD";
             case VkAntiLagModeAMD.OFF -> "VK_ANTI_LAG_MODE_OFF_AMD";

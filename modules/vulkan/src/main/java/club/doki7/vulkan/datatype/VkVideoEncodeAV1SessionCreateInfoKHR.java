@@ -191,11 +191,11 @@ public record VkVideoEncodeAV1SessionCreateInfoKHR(@NotNull MemorySegment segmen
         sType(VkStructureType.VIDEO_ENCODE_AV1_SESSION_CREATE_INFO_KHR);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkVideoEncodeAV1SessionCreateInfoKHR sType(@EnumType(VkStructureType.class) int value) {
+    public VkVideoEncodeAV1SessionCreateInfoKHR sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }
@@ -222,11 +222,11 @@ public record VkVideoEncodeAV1SessionCreateInfoKHR(@NotNull MemorySegment segmen
         return this;
     }
 
-    public @EnumType(StdVideoAV1Level.class) int maxLevel() {
+    public @MagicConstant(valuesFromClass = StdVideoAV1Level.class) int maxLevel() {
         return segment.get(LAYOUT$maxLevel, OFFSET$maxLevel);
     }
 
-    public VkVideoEncodeAV1SessionCreateInfoKHR maxLevel(@EnumType(StdVideoAV1Level.class) int value) {
+    public VkVideoEncodeAV1SessionCreateInfoKHR maxLevel(@MagicConstant(valuesFromClass = StdVideoAV1Level.class) int value) {
         segment.set(LAYOUT$maxLevel, OFFSET$maxLevel, value);
         return this;
     }

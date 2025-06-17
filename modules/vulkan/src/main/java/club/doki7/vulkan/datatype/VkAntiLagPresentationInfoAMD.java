@@ -191,11 +191,11 @@ public record VkAntiLagPresentationInfoAMD(@NotNull MemorySegment segment) imple
         sType(VkStructureType.ANTI_LAG_PRESENTATION_INFO_AMD);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkAntiLagPresentationInfoAMD sType(@EnumType(VkStructureType.class) int value) {
+    public VkAntiLagPresentationInfoAMD sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }
@@ -213,11 +213,11 @@ public record VkAntiLagPresentationInfoAMD(@NotNull MemorySegment segment) imple
         return this;
     }
 
-    public @EnumType(VkAntiLagStageAMD.class) int stage() {
+    public @MagicConstant(valuesFromClass = VkAntiLagStageAMD.class) int stage() {
         return segment.get(LAYOUT$stage, OFFSET$stage);
     }
 
-    public VkAntiLagPresentationInfoAMD stage(@EnumType(VkAntiLagStageAMD.class) int value) {
+    public VkAntiLagPresentationInfoAMD stage(@MagicConstant(valuesFromClass = VkAntiLagStageAMD.class) int value) {
         segment.set(LAYOUT$stage, OFFSET$stage, value);
         return this;
     }

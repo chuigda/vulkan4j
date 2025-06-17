@@ -192,11 +192,11 @@ public record VkDeviceGroupRenderPassBeginInfo(@NotNull MemorySegment segment) i
         sType(VkStructureType.DEVICE_GROUP_RENDER_PASS_BEGIN_INFO);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkDeviceGroupRenderPassBeginInfo sType(@EnumType(VkStructureType.class) int value) {
+    public VkDeviceGroupRenderPassBeginInfo sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }

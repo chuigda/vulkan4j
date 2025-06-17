@@ -190,11 +190,11 @@ public record VkImageAlignmentControlCreateInfoMESA(@NotNull MemorySegment segme
         sType(VkStructureType.IMAGE_ALIGNMENT_CONTROL_CREATE_INFO_MESA);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkImageAlignmentControlCreateInfoMESA sType(@EnumType(VkStructureType.class) int value) {
+    public VkImageAlignmentControlCreateInfoMESA sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }

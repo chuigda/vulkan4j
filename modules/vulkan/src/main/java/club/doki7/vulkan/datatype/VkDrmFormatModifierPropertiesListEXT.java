@@ -191,11 +191,11 @@ public record VkDrmFormatModifierPropertiesListEXT(@NotNull MemorySegment segmen
         sType(VkStructureType.DRM_FORMAT_MODIFIER_PROPERTIES_LIST_EXT);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkDrmFormatModifierPropertiesListEXT sType(@EnumType(VkStructureType.class) int value) {
+    public VkDrmFormatModifierPropertiesListEXT sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }

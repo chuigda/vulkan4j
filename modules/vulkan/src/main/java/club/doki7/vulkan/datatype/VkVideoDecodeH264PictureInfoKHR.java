@@ -192,11 +192,11 @@ public record VkVideoDecodeH264PictureInfoKHR(@NotNull MemorySegment segment) im
         sType(VkStructureType.VIDEO_DECODE_H264_PICTURE_INFO_KHR);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkVideoDecodeH264PictureInfoKHR sType(@EnumType(VkStructureType.class) int value) {
+    public VkVideoDecodeH264PictureInfoKHR sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }

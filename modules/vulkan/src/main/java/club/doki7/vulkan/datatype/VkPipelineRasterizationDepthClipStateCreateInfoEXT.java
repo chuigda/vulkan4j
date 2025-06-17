@@ -191,11 +191,11 @@ public record VkPipelineRasterizationDepthClipStateCreateInfoEXT(@NotNull Memory
         sType(VkStructureType.PIPELINE_RASTERIZATION_DEPTH_CLIP_STATE_CREATE_INFO_EXT);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkPipelineRasterizationDepthClipStateCreateInfoEXT sType(@EnumType(VkStructureType.class) int value) {
+    public VkPipelineRasterizationDepthClipStateCreateInfoEXT sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }
@@ -213,11 +213,11 @@ public record VkPipelineRasterizationDepthClipStateCreateInfoEXT(@NotNull Memory
         return this;
     }
 
-    public @EnumType(VkPipelineRasterizationDepthClipStateCreateFlagsEXT.class) int flags() {
+    public @MagicConstant(valuesFromClass = VkPipelineRasterizationDepthClipStateCreateFlagsEXT.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public VkPipelineRasterizationDepthClipStateCreateInfoEXT flags(@EnumType(VkPipelineRasterizationDepthClipStateCreateFlagsEXT.class) int value) {
+    public VkPipelineRasterizationDepthClipStateCreateInfoEXT flags(@MagicConstant(valuesFromClass = VkPipelineRasterizationDepthClipStateCreateFlagsEXT.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
         return this;
     }

@@ -190,11 +190,11 @@ public record VkRenderPassTransformBeginInfoQCOM(@NotNull MemorySegment segment)
         sType(VkStructureType.RENDER_PASS_TRANSFORM_BEGIN_INFO_QCOM);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkRenderPassTransformBeginInfoQCOM sType(@EnumType(VkStructureType.class) int value) {
+    public VkRenderPassTransformBeginInfoQCOM sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }
@@ -212,11 +212,11 @@ public record VkRenderPassTransformBeginInfoQCOM(@NotNull MemorySegment segment)
         return this;
     }
 
-    public @EnumType(VkSurfaceTransformFlagsKHR.class) int transform() {
+    public @MagicConstant(valuesFromClass = VkSurfaceTransformFlagsKHR.class) int transform() {
         return segment.get(LAYOUT$transform, OFFSET$transform);
     }
 
-    public VkRenderPassTransformBeginInfoQCOM transform(@EnumType(VkSurfaceTransformFlagsKHR.class) int value) {
+    public VkRenderPassTransformBeginInfoQCOM transform(@MagicConstant(valuesFromClass = VkSurfaceTransformFlagsKHR.class) int value) {
         segment.set(LAYOUT$transform, OFFSET$transform, value);
         return this;
     }

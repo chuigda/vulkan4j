@@ -1,6 +1,7 @@
 package club.doki7.vulkan.bitmask;
 
 import club.doki7.ffm.annotation.*;
+import org.intellij.lang.annotations.MagicConstant;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,7 +16,7 @@ public final class VkBufferCreateFlags {
     public static final int SPARSE_RESIDENCY = 0x2;
     public static final int VIDEO_PROFILE_INDEPENDENT_KHR = 0x40;
 
-    public static String explain(@EnumType(VkBufferCreateFlags.class) int flags) {
+    public static String explain(@MagicConstant(flagsFromClass = VkBufferCreateFlags.class) int flags) {
         List<String> detectedFlagBits = new ArrayList<>();
         if ((flags & DESCRIPTOR_BUFFER_CAPTURE_REPLAY_EXT) != 0) {
             detectedFlagBits.add("VK_BUFFER_CREATE_DESCRIPTOR_BUFFER_CAPTURE_REPLAY_BIT_EXT");

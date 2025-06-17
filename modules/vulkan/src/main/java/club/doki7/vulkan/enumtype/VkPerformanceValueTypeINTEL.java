@@ -1,6 +1,7 @@
 package club.doki7.vulkan.enumtype;
 
 import club.doki7.ffm.annotation.*;
+import org.intellij.lang.annotations.MagicConstant;
 
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPerformanceValueTypeINTEL.html"><code>VkPerformanceValueTypeINTEL</code></a>
 public final class VkPerformanceValueTypeINTEL {
@@ -10,7 +11,7 @@ public final class VkPerformanceValueTypeINTEL {
     public static final int BOOL = 0x3;
     public static final int STRING = 0x4;
 
-    public static String explain(@EnumType(VkPerformanceValueTypeINTEL.class) int value) {
+    public static String explain(@MagicConstant(valuesFromClass = VkPerformanceValueTypeINTEL.class) int value) {
         return switch (value) {
             case VkPerformanceValueTypeINTEL.BOOL -> "VK_PERFORMANCE_VALUE_TYPE_BOOL_INTEL";
             case VkPerformanceValueTypeINTEL.FLOAT -> "VK_PERFORMANCE_VALUE_TYPE_FLOAT_INTEL";

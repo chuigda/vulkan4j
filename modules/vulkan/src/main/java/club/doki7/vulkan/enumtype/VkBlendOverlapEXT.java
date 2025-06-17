@@ -1,6 +1,7 @@
 package club.doki7.vulkan.enumtype;
 
 import club.doki7.ffm.annotation.*;
+import org.intellij.lang.annotations.MagicConstant;
 
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkBlendOverlapEXT.html"><code>VkBlendOverlapEXT</code></a>
 public final class VkBlendOverlapEXT {
@@ -8,7 +9,7 @@ public final class VkBlendOverlapEXT {
     public static final int DISJOINT = 0x1;
     public static final int CONJOINT = 0x2;
 
-    public static String explain(@EnumType(VkBlendOverlapEXT.class) int value) {
+    public static String explain(@MagicConstant(valuesFromClass = VkBlendOverlapEXT.class) int value) {
         return switch (value) {
             case VkBlendOverlapEXT.CONJOINT -> "VK_BLEND_OVERLAP_CONJOINT_EXT";
             case VkBlendOverlapEXT.DISJOINT -> "VK_BLEND_OVERLAP_DISJOINT_EXT";

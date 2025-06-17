@@ -192,11 +192,11 @@ public record VkVideoInlineQueryInfoKHR(@NotNull MemorySegment segment) implemen
         sType(VkStructureType.VIDEO_INLINE_QUERY_INFO_KHR);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkVideoInlineQueryInfoKHR sType(@EnumType(VkStructureType.class) int value) {
+    public VkVideoInlineQueryInfoKHR sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }

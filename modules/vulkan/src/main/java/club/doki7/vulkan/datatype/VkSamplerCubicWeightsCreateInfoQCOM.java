@@ -190,11 +190,11 @@ public record VkSamplerCubicWeightsCreateInfoQCOM(@NotNull MemorySegment segment
         sType(VkStructureType.SAMPLER_CUBIC_WEIGHTS_CREATE_INFO_QCOM);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkSamplerCubicWeightsCreateInfoQCOM sType(@EnumType(VkStructureType.class) int value) {
+    public VkSamplerCubicWeightsCreateInfoQCOM sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }
@@ -212,11 +212,11 @@ public record VkSamplerCubicWeightsCreateInfoQCOM(@NotNull MemorySegment segment
         return this;
     }
 
-    public @EnumType(VkCubicFilterWeightsQCOM.class) int cubicWeights() {
+    public @MagicConstant(valuesFromClass = VkCubicFilterWeightsQCOM.class) int cubicWeights() {
         return segment.get(LAYOUT$cubicWeights, OFFSET$cubicWeights);
     }
 
-    public VkSamplerCubicWeightsCreateInfoQCOM cubicWeights(@EnumType(VkCubicFilterWeightsQCOM.class) int value) {
+    public VkSamplerCubicWeightsCreateInfoQCOM cubicWeights(@MagicConstant(valuesFromClass = VkCubicFilterWeightsQCOM.class) int value) {
         segment.set(LAYOUT$cubicWeights, OFFSET$cubicWeights, value);
         return this;
     }

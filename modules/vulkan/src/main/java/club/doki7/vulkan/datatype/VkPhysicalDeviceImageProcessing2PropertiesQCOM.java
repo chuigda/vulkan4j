@@ -190,11 +190,11 @@ public record VkPhysicalDeviceImageProcessing2PropertiesQCOM(@NotNull MemorySegm
         sType(VkStructureType.PHYSICAL_DEVICE_IMAGE_PROCESSING_2_PROPERTIES_QCOM);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkPhysicalDeviceImageProcessing2PropertiesQCOM sType(@EnumType(VkStructureType.class) int value) {
+    public VkPhysicalDeviceImageProcessing2PropertiesQCOM sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }

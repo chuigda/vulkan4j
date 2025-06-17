@@ -170,20 +170,20 @@ public record VkIndirectCommandsExecutionSetTokenEXT(@NotNull MemorySegment segm
         return ret;
     }
 
-    public @EnumType(VkIndirectExecutionSetInfoTypeEXT.class) int type() {
+    public @MagicConstant(valuesFromClass = VkIndirectExecutionSetInfoTypeEXT.class) int type() {
         return segment.get(LAYOUT$type, OFFSET$type);
     }
 
-    public VkIndirectCommandsExecutionSetTokenEXT type(@EnumType(VkIndirectExecutionSetInfoTypeEXT.class) int value) {
+    public VkIndirectCommandsExecutionSetTokenEXT type(@MagicConstant(valuesFromClass = VkIndirectExecutionSetInfoTypeEXT.class) int value) {
         segment.set(LAYOUT$type, OFFSET$type, value);
         return this;
     }
 
-    public @EnumType(VkShaderStageFlags.class) int shaderStages() {
+    public @MagicConstant(valuesFromClass = VkShaderStageFlags.class) int shaderStages() {
         return segment.get(LAYOUT$shaderStages, OFFSET$shaderStages);
     }
 
-    public VkIndirectCommandsExecutionSetTokenEXT shaderStages(@EnumType(VkShaderStageFlags.class) int value) {
+    public VkIndirectCommandsExecutionSetTokenEXT shaderStages(@MagicConstant(valuesFromClass = VkShaderStageFlags.class) int value) {
         segment.set(LAYOUT$shaderStages, OFFSET$shaderStages, value);
         return this;
     }

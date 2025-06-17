@@ -191,11 +191,11 @@ public record VkPipelineIndirectDeviceAddressInfoNV(@NotNull MemorySegment segme
         sType(VkStructureType.PIPELINE_INDIRECT_DEVICE_ADDRESS_INFO_NV);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkPipelineIndirectDeviceAddressInfoNV sType(@EnumType(VkStructureType.class) int value) {
+    public VkPipelineIndirectDeviceAddressInfoNV sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }
@@ -213,11 +213,11 @@ public record VkPipelineIndirectDeviceAddressInfoNV(@NotNull MemorySegment segme
         return this;
     }
 
-    public @EnumType(VkPipelineBindPoint.class) int pipelineBindPoint() {
+    public @MagicConstant(valuesFromClass = VkPipelineBindPoint.class) int pipelineBindPoint() {
         return segment.get(LAYOUT$pipelineBindPoint, OFFSET$pipelineBindPoint);
     }
 
-    public VkPipelineIndirectDeviceAddressInfoNV pipelineBindPoint(@EnumType(VkPipelineBindPoint.class) int value) {
+    public VkPipelineIndirectDeviceAddressInfoNV pipelineBindPoint(@MagicConstant(valuesFromClass = VkPipelineBindPoint.class) int value) {
         segment.set(LAYOUT$pipelineBindPoint, OFFSET$pipelineBindPoint, value);
         return this;
     }

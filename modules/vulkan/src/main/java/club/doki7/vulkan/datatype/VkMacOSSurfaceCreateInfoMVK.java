@@ -191,11 +191,11 @@ public record VkMacOSSurfaceCreateInfoMVK(@NotNull MemorySegment segment) implem
         sType(VkStructureType.MACOS_SURFACE_CREATE_INFO_MVK);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkMacOSSurfaceCreateInfoMVK sType(@EnumType(VkStructureType.class) int value) {
+    public VkMacOSSurfaceCreateInfoMVK sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }
@@ -213,11 +213,11 @@ public record VkMacOSSurfaceCreateInfoMVK(@NotNull MemorySegment segment) implem
         return this;
     }
 
-    public @EnumType(VkMacOSSurfaceCreateFlagsMVK.class) int flags() {
+    public @MagicConstant(valuesFromClass = VkMacOSSurfaceCreateFlagsMVK.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public VkMacOSSurfaceCreateInfoMVK flags(@EnumType(VkMacOSSurfaceCreateFlagsMVK.class) int value) {
+    public VkMacOSSurfaceCreateInfoMVK flags(@MagicConstant(valuesFromClass = VkMacOSSurfaceCreateFlagsMVK.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
         return this;
     }

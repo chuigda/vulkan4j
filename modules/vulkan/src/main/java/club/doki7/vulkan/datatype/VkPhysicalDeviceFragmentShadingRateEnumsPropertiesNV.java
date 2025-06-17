@@ -190,11 +190,11 @@ public record VkPhysicalDeviceFragmentShadingRateEnumsPropertiesNV(@NotNull Memo
         sType(VkStructureType.PHYSICAL_DEVICE_FRAGMENT_SHADING_RATE_ENUMS_PROPERTIES_NV);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkPhysicalDeviceFragmentShadingRateEnumsPropertiesNV sType(@EnumType(VkStructureType.class) int value) {
+    public VkPhysicalDeviceFragmentShadingRateEnumsPropertiesNV sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }
@@ -212,11 +212,11 @@ public record VkPhysicalDeviceFragmentShadingRateEnumsPropertiesNV(@NotNull Memo
         return this;
     }
 
-    public @EnumType(VkSampleCountFlags.class) int maxFragmentShadingRateInvocationCount() {
+    public @MagicConstant(valuesFromClass = VkSampleCountFlags.class) int maxFragmentShadingRateInvocationCount() {
         return segment.get(LAYOUT$maxFragmentShadingRateInvocationCount, OFFSET$maxFragmentShadingRateInvocationCount);
     }
 
-    public VkPhysicalDeviceFragmentShadingRateEnumsPropertiesNV maxFragmentShadingRateInvocationCount(@EnumType(VkSampleCountFlags.class) int value) {
+    public VkPhysicalDeviceFragmentShadingRateEnumsPropertiesNV maxFragmentShadingRateInvocationCount(@MagicConstant(valuesFromClass = VkSampleCountFlags.class) int value) {
         segment.set(LAYOUT$maxFragmentShadingRateInvocationCount, OFFSET$maxFragmentShadingRateInvocationCount, value);
         return this;
     }

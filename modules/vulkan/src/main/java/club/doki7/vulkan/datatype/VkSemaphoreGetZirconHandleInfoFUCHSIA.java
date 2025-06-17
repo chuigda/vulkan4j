@@ -191,11 +191,11 @@ public record VkSemaphoreGetZirconHandleInfoFUCHSIA(@NotNull MemorySegment segme
         sType(VkStructureType.SEMAPHORE_GET_ZIRCON_HANDLE_INFO_FUCHSIA);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkSemaphoreGetZirconHandleInfoFUCHSIA sType(@EnumType(VkStructureType.class) int value) {
+    public VkSemaphoreGetZirconHandleInfoFUCHSIA sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }
@@ -226,11 +226,11 @@ public record VkSemaphoreGetZirconHandleInfoFUCHSIA(@NotNull MemorySegment segme
         return this;
     }
 
-    public @EnumType(VkExternalSemaphoreHandleTypeFlags.class) int handleType() {
+    public @MagicConstant(valuesFromClass = VkExternalSemaphoreHandleTypeFlags.class) int handleType() {
         return segment.get(LAYOUT$handleType, OFFSET$handleType);
     }
 
-    public VkSemaphoreGetZirconHandleInfoFUCHSIA handleType(@EnumType(VkExternalSemaphoreHandleTypeFlags.class) int value) {
+    public VkSemaphoreGetZirconHandleInfoFUCHSIA handleType(@MagicConstant(valuesFromClass = VkExternalSemaphoreHandleTypeFlags.class) int value) {
         segment.set(LAYOUT$handleType, OFFSET$handleType, value);
         return this;
     }

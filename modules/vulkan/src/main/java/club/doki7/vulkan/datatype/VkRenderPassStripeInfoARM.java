@@ -190,11 +190,11 @@ public record VkRenderPassStripeInfoARM(@NotNull MemorySegment segment) implemen
         sType(VkStructureType.RENDER_PASS_STRIPE_INFO_ARM);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkRenderPassStripeInfoARM sType(@EnumType(VkStructureType.class) int value) {
+    public VkRenderPassStripeInfoARM sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }

@@ -1,6 +1,7 @@
 package club.doki7.vulkan.bitmask;
 
 import club.doki7.ffm.annotation.*;
+import org.intellij.lang.annotations.MagicConstant;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,7 +13,7 @@ public final class VkSwapchainCreateFlagsKHR {
     public static final int PROTECTED = 0x2;
     public static final int SPLIT_INSTANCE_BIND_REGIONS = 0x1;
 
-    public static String explain(@EnumType(VkSwapchainCreateFlagsKHR.class) int flags) {
+    public static String explain(@MagicConstant(flagsFromClass = VkSwapchainCreateFlagsKHR.class) int flags) {
         List<String> detectedFlagBits = new ArrayList<>();
         if ((flags & DEFERRED_MEMORY_ALLOCATION_EXT) != 0) {
             detectedFlagBits.add("VK_SWAPCHAIN_CREATE_DEFERRED_MEMORY_ALLOCATION_BIT_EXT");

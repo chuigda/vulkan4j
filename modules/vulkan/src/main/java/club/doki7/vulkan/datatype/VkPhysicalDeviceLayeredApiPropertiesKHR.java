@@ -193,11 +193,11 @@ public record VkPhysicalDeviceLayeredApiPropertiesKHR(@NotNull MemorySegment seg
         sType(VkStructureType.PHYSICAL_DEVICE_LAYERED_API_PROPERTIES_KHR);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkPhysicalDeviceLayeredApiPropertiesKHR sType(@EnumType(VkStructureType.class) int value) {
+    public VkPhysicalDeviceLayeredApiPropertiesKHR sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }
@@ -233,11 +233,11 @@ public record VkPhysicalDeviceLayeredApiPropertiesKHR(@NotNull MemorySegment seg
         return this;
     }
 
-    public @EnumType(VkPhysicalDeviceLayeredApiKHR.class) int layeredAPI() {
+    public @MagicConstant(valuesFromClass = VkPhysicalDeviceLayeredApiKHR.class) int layeredAPI() {
         return segment.get(LAYOUT$layeredAPI, OFFSET$layeredAPI);
     }
 
-    public VkPhysicalDeviceLayeredApiPropertiesKHR layeredAPI(@EnumType(VkPhysicalDeviceLayeredApiKHR.class) int value) {
+    public VkPhysicalDeviceLayeredApiPropertiesKHR layeredAPI(@MagicConstant(valuesFromClass = VkPhysicalDeviceLayeredApiKHR.class) int value) {
         segment.set(LAYOUT$layeredAPI, OFFSET$layeredAPI, value);
         return this;
     }

@@ -192,11 +192,11 @@ public record VkDescriptorSetAllocateInfo(@NotNull MemorySegment segment) implem
         sType(VkStructureType.DESCRIPTOR_SET_ALLOCATE_INFO);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkDescriptorSetAllocateInfo sType(@EnumType(VkStructureType.class) int value) {
+    public VkDescriptorSetAllocateInfo sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }

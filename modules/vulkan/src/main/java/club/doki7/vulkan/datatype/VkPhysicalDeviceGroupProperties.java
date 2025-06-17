@@ -192,11 +192,11 @@ public record VkPhysicalDeviceGroupProperties(@NotNull MemorySegment segment) im
         sType(VkStructureType.PHYSICAL_DEVICE_GROUP_PROPERTIES);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkPhysicalDeviceGroupProperties sType(@EnumType(VkStructureType.class) int value) {
+    public VkPhysicalDeviceGroupProperties sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }

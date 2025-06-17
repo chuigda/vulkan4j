@@ -1,6 +1,7 @@
 package club.doki7.vulkan.enumtype;
 
 import club.doki7.ffm.annotation.*;
+import org.intellij.lang.annotations.MagicConstant;
 
 public final class StdVideoAV1ReferenceName {
     public static final int STD_VIDEO_AV1_REFERENCE_NAME_INTRA_FRAME = 0x0;
@@ -13,7 +14,7 @@ public final class StdVideoAV1ReferenceName {
     public static final int STD_VIDEO_AV1_REFERENCE_NAME_ALTREF_FRAME = 0x7;
     public static final int STD_VIDEO_AV1_REFERENCE_NAME_INVALID = 0x7fffffff;
 
-    public static String explain(@EnumType(StdVideoAV1ReferenceName.class) int value) {
+    public static String explain(@MagicConstant(valuesFromClass = StdVideoAV1ReferenceName.class) int value) {
         return switch (value) {
             case StdVideoAV1ReferenceName.STD_VIDEO_AV1_REFERENCE_NAME_ALTREF2_FRAME -> "STD_VIDEO_AV1_REFERENCE_NAME_ALTREF2_FRAME";
             case StdVideoAV1ReferenceName.STD_VIDEO_AV1_REFERENCE_NAME_ALTREF_FRAME -> "STD_VIDEO_AV1_REFERENCE_NAME_ALTREF_FRAME";

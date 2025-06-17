@@ -196,11 +196,11 @@ public record VkPipelineMultisampleStateCreateInfo(@NotNull MemorySegment segmen
         sType(VkStructureType.PIPELINE_MULTISAMPLE_STATE_CREATE_INFO);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkPipelineMultisampleStateCreateInfo sType(@EnumType(VkStructureType.class) int value) {
+    public VkPipelineMultisampleStateCreateInfo sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }
@@ -218,20 +218,20 @@ public record VkPipelineMultisampleStateCreateInfo(@NotNull MemorySegment segmen
         return this;
     }
 
-    public @EnumType(VkPipelineMultisampleStateCreateFlags.class) int flags() {
+    public @MagicConstant(valuesFromClass = VkPipelineMultisampleStateCreateFlags.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public VkPipelineMultisampleStateCreateInfo flags(@EnumType(VkPipelineMultisampleStateCreateFlags.class) int value) {
+    public VkPipelineMultisampleStateCreateInfo flags(@MagicConstant(valuesFromClass = VkPipelineMultisampleStateCreateFlags.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
         return this;
     }
 
-    public @EnumType(VkSampleCountFlags.class) int rasterizationSamples() {
+    public @MagicConstant(valuesFromClass = VkSampleCountFlags.class) int rasterizationSamples() {
         return segment.get(LAYOUT$rasterizationSamples, OFFSET$rasterizationSamples);
     }
 
-    public VkPipelineMultisampleStateCreateInfo rasterizationSamples(@EnumType(VkSampleCountFlags.class) int value) {
+    public VkPipelineMultisampleStateCreateInfo rasterizationSamples(@MagicConstant(valuesFromClass = VkSampleCountFlags.class) int value) {
         segment.set(LAYOUT$rasterizationSamples, OFFSET$rasterizationSamples, value);
         return this;
     }

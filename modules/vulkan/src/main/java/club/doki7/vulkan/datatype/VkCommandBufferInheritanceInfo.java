@@ -195,11 +195,11 @@ public record VkCommandBufferInheritanceInfo(@NotNull MemorySegment segment) imp
         sType(VkStructureType.COMMAND_BUFFER_INHERITANCE_INFO);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkCommandBufferInheritanceInfo sType(@EnumType(VkStructureType.class) int value) {
+    public VkCommandBufferInheritanceInfo sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }
@@ -261,20 +261,20 @@ public record VkCommandBufferInheritanceInfo(@NotNull MemorySegment segment) imp
         return this;
     }
 
-    public @EnumType(VkQueryControlFlags.class) int queryFlags() {
+    public @MagicConstant(valuesFromClass = VkQueryControlFlags.class) int queryFlags() {
         return segment.get(LAYOUT$queryFlags, OFFSET$queryFlags);
     }
 
-    public VkCommandBufferInheritanceInfo queryFlags(@EnumType(VkQueryControlFlags.class) int value) {
+    public VkCommandBufferInheritanceInfo queryFlags(@MagicConstant(valuesFromClass = VkQueryControlFlags.class) int value) {
         segment.set(LAYOUT$queryFlags, OFFSET$queryFlags, value);
         return this;
     }
 
-    public @EnumType(VkQueryPipelineStatisticFlags.class) int pipelineStatistics() {
+    public @MagicConstant(valuesFromClass = VkQueryPipelineStatisticFlags.class) int pipelineStatistics() {
         return segment.get(LAYOUT$pipelineStatistics, OFFSET$pipelineStatistics);
     }
 
-    public VkCommandBufferInheritanceInfo pipelineStatistics(@EnumType(VkQueryPipelineStatisticFlags.class) int value) {
+    public VkCommandBufferInheritanceInfo pipelineStatistics(@MagicConstant(valuesFromClass = VkQueryPipelineStatisticFlags.class) int value) {
         segment.set(LAYOUT$pipelineStatistics, OFFSET$pipelineStatistics, value);
         return this;
     }

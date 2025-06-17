@@ -1,6 +1,7 @@
 package club.doki7.vulkan.bitmask;
 
 import club.doki7.ffm.annotation.*;
+import org.intellij.lang.annotations.MagicConstant;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,7 +20,7 @@ public final class VkBuildAccelerationStructureFlagsKHR {
     public static final int PREFER_FAST_BUILD = 0x8;
     public static final int PREFER_FAST_TRACE = 0x4;
 
-    public static String explain(@EnumType(VkBuildAccelerationStructureFlagsKHR.class) int flags) {
+    public static String explain(@MagicConstant(flagsFromClass = VkBuildAccelerationStructureFlagsKHR.class) int flags) {
         List<String> detectedFlagBits = new ArrayList<>();
         if ((flags & ALLOW_COMPACTION) != 0) {
             detectedFlagBits.add("VK_BUILD_ACCELERATION_STRUCTURE_ALLOW_COMPACTION_BIT_KHR");

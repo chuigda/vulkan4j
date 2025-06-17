@@ -193,11 +193,11 @@ public record VkQueryPoolCreateInfo(@NotNull MemorySegment segment) implements I
         sType(VkStructureType.QUERY_POOL_CREATE_INFO);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkQueryPoolCreateInfo sType(@EnumType(VkStructureType.class) int value) {
+    public VkQueryPoolCreateInfo sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }
@@ -215,20 +215,20 @@ public record VkQueryPoolCreateInfo(@NotNull MemorySegment segment) implements I
         return this;
     }
 
-    public @EnumType(VkQueryPoolCreateFlags.class) int flags() {
+    public @MagicConstant(valuesFromClass = VkQueryPoolCreateFlags.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public VkQueryPoolCreateInfo flags(@EnumType(VkQueryPoolCreateFlags.class) int value) {
+    public VkQueryPoolCreateInfo flags(@MagicConstant(valuesFromClass = VkQueryPoolCreateFlags.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
         return this;
     }
 
-    public @EnumType(VkQueryType.class) int queryType() {
+    public @MagicConstant(valuesFromClass = VkQueryType.class) int queryType() {
         return segment.get(LAYOUT$queryType, OFFSET$queryType);
     }
 
-    public VkQueryPoolCreateInfo queryType(@EnumType(VkQueryType.class) int value) {
+    public VkQueryPoolCreateInfo queryType(@MagicConstant(valuesFromClass = VkQueryType.class) int value) {
         segment.set(LAYOUT$queryType, OFFSET$queryType, value);
         return this;
     }
@@ -242,11 +242,11 @@ public record VkQueryPoolCreateInfo(@NotNull MemorySegment segment) implements I
         return this;
     }
 
-    public @EnumType(VkQueryPipelineStatisticFlags.class) int pipelineStatistics() {
+    public @MagicConstant(valuesFromClass = VkQueryPipelineStatisticFlags.class) int pipelineStatistics() {
         return segment.get(LAYOUT$pipelineStatistics, OFFSET$pipelineStatistics);
     }
 
-    public VkQueryPoolCreateInfo pipelineStatistics(@EnumType(VkQueryPipelineStatisticFlags.class) int value) {
+    public VkQueryPoolCreateInfo pipelineStatistics(@MagicConstant(valuesFromClass = VkQueryPipelineStatisticFlags.class) int value) {
         segment.set(LAYOUT$pipelineStatistics, OFFSET$pipelineStatistics, value);
         return this;
     }

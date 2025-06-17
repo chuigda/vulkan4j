@@ -189,11 +189,11 @@ public record VkSubpassEndInfo(@NotNull MemorySegment segment) implements IVkSub
         sType(VkStructureType.SUBPASS_END_INFO);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkSubpassEndInfo sType(@EnumType(VkStructureType.class) int value) {
+    public VkSubpassEndInfo sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }

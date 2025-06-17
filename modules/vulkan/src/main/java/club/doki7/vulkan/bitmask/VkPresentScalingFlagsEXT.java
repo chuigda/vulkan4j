@@ -1,6 +1,7 @@
 package club.doki7.vulkan.bitmask;
 
 import club.doki7.ffm.annotation.*;
+import org.intellij.lang.annotations.MagicConstant;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,7 +12,7 @@ public final class VkPresentScalingFlagsEXT {
     public static final int ONE_TO_ONE = 0x1;
     public static final int STRETCH = 0x4;
 
-    public static String explain(@EnumType(VkPresentScalingFlagsEXT.class) int flags) {
+    public static String explain(@MagicConstant(flagsFromClass = VkPresentScalingFlagsEXT.class) int flags) {
         List<String> detectedFlagBits = new ArrayList<>();
         if ((flags & ASPECT_RATIO_STRETCH) != 0) {
             detectedFlagBits.add("VK_PRESENT_SCALING_ASPECT_RATIO_STRETCH_BIT_EXT");

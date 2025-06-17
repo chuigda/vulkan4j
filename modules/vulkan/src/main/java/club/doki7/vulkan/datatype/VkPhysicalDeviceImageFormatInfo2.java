@@ -194,11 +194,11 @@ public record VkPhysicalDeviceImageFormatInfo2(@NotNull MemorySegment segment) i
         sType(VkStructureType.PHYSICAL_DEVICE_IMAGE_FORMAT_INFO_2);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkPhysicalDeviceImageFormatInfo2 sType(@EnumType(VkStructureType.class) int value) {
+    public VkPhysicalDeviceImageFormatInfo2 sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }
@@ -216,47 +216,47 @@ public record VkPhysicalDeviceImageFormatInfo2(@NotNull MemorySegment segment) i
         return this;
     }
 
-    public @EnumType(VkFormat.class) int format() {
+    public @MagicConstant(valuesFromClass = VkFormat.class) int format() {
         return segment.get(LAYOUT$format, OFFSET$format);
     }
 
-    public VkPhysicalDeviceImageFormatInfo2 format(@EnumType(VkFormat.class) int value) {
+    public VkPhysicalDeviceImageFormatInfo2 format(@MagicConstant(valuesFromClass = VkFormat.class) int value) {
         segment.set(LAYOUT$format, OFFSET$format, value);
         return this;
     }
 
-    public @EnumType(VkImageType.class) int type() {
+    public @MagicConstant(valuesFromClass = VkImageType.class) int type() {
         return segment.get(LAYOUT$type, OFFSET$type);
     }
 
-    public VkPhysicalDeviceImageFormatInfo2 type(@EnumType(VkImageType.class) int value) {
+    public VkPhysicalDeviceImageFormatInfo2 type(@MagicConstant(valuesFromClass = VkImageType.class) int value) {
         segment.set(LAYOUT$type, OFFSET$type, value);
         return this;
     }
 
-    public @EnumType(VkImageTiling.class) int tiling() {
+    public @MagicConstant(valuesFromClass = VkImageTiling.class) int tiling() {
         return segment.get(LAYOUT$tiling, OFFSET$tiling);
     }
 
-    public VkPhysicalDeviceImageFormatInfo2 tiling(@EnumType(VkImageTiling.class) int value) {
+    public VkPhysicalDeviceImageFormatInfo2 tiling(@MagicConstant(valuesFromClass = VkImageTiling.class) int value) {
         segment.set(LAYOUT$tiling, OFFSET$tiling, value);
         return this;
     }
 
-    public @EnumType(VkImageUsageFlags.class) int usage() {
+    public @MagicConstant(valuesFromClass = VkImageUsageFlags.class) int usage() {
         return segment.get(LAYOUT$usage, OFFSET$usage);
     }
 
-    public VkPhysicalDeviceImageFormatInfo2 usage(@EnumType(VkImageUsageFlags.class) int value) {
+    public VkPhysicalDeviceImageFormatInfo2 usage(@MagicConstant(valuesFromClass = VkImageUsageFlags.class) int value) {
         segment.set(LAYOUT$usage, OFFSET$usage, value);
         return this;
     }
 
-    public @EnumType(VkImageCreateFlags.class) int flags() {
+    public @MagicConstant(valuesFromClass = VkImageCreateFlags.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public VkPhysicalDeviceImageFormatInfo2 flags(@EnumType(VkImageCreateFlags.class) int value) {
+    public VkPhysicalDeviceImageFormatInfo2 flags(@MagicConstant(valuesFromClass = VkImageCreateFlags.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
         return this;
     }

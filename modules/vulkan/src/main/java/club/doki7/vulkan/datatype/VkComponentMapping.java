@@ -172,38 +172,38 @@ public record VkComponentMapping(@NotNull MemorySegment segment) implements IVkC
         return ret;
     }
 
-    public @EnumType(VkComponentSwizzle.class) int r() {
+    public @MagicConstant(valuesFromClass = VkComponentSwizzle.class) int r() {
         return segment.get(LAYOUT$r, OFFSET$r);
     }
 
-    public VkComponentMapping r(@EnumType(VkComponentSwizzle.class) int value) {
+    public VkComponentMapping r(@MagicConstant(valuesFromClass = VkComponentSwizzle.class) int value) {
         segment.set(LAYOUT$r, OFFSET$r, value);
         return this;
     }
 
-    public @EnumType(VkComponentSwizzle.class) int g() {
+    public @MagicConstant(valuesFromClass = VkComponentSwizzle.class) int g() {
         return segment.get(LAYOUT$g, OFFSET$g);
     }
 
-    public VkComponentMapping g(@EnumType(VkComponentSwizzle.class) int value) {
+    public VkComponentMapping g(@MagicConstant(valuesFromClass = VkComponentSwizzle.class) int value) {
         segment.set(LAYOUT$g, OFFSET$g, value);
         return this;
     }
 
-    public @EnumType(VkComponentSwizzle.class) int b() {
+    public @MagicConstant(valuesFromClass = VkComponentSwizzle.class) int b() {
         return segment.get(LAYOUT$b, OFFSET$b);
     }
 
-    public VkComponentMapping b(@EnumType(VkComponentSwizzle.class) int value) {
+    public VkComponentMapping b(@MagicConstant(valuesFromClass = VkComponentSwizzle.class) int value) {
         segment.set(LAYOUT$b, OFFSET$b, value);
         return this;
     }
 
-    public @EnumType(VkComponentSwizzle.class) int a() {
+    public @MagicConstant(valuesFromClass = VkComponentSwizzle.class) int a() {
         return segment.get(LAYOUT$a, OFFSET$a);
     }
 
-    public VkComponentMapping a(@EnumType(VkComponentSwizzle.class) int value) {
+    public VkComponentMapping a(@MagicConstant(valuesFromClass = VkComponentSwizzle.class) int value) {
         segment.set(LAYOUT$a, OFFSET$a, value);
         return this;
     }

@@ -205,11 +205,11 @@ public record VkAccelerationStructureTrianglesDisplacementMicromapNV(@NotNull Me
         sType(VkStructureType.ACCELERATION_STRUCTURE_TRIANGLES_DISPLACEMENT_MICROMAP_NV);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkAccelerationStructureTrianglesDisplacementMicromapNV sType(@EnumType(VkStructureType.class) int value) {
+    public VkAccelerationStructureTrianglesDisplacementMicromapNV sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }
@@ -227,20 +227,20 @@ public record VkAccelerationStructureTrianglesDisplacementMicromapNV(@NotNull Me
         return this;
     }
 
-    public @EnumType(VkFormat.class) int displacementBiasAndScaleFormat() {
+    public @MagicConstant(valuesFromClass = VkFormat.class) int displacementBiasAndScaleFormat() {
         return segment.get(LAYOUT$displacementBiasAndScaleFormat, OFFSET$displacementBiasAndScaleFormat);
     }
 
-    public VkAccelerationStructureTrianglesDisplacementMicromapNV displacementBiasAndScaleFormat(@EnumType(VkFormat.class) int value) {
+    public VkAccelerationStructureTrianglesDisplacementMicromapNV displacementBiasAndScaleFormat(@MagicConstant(valuesFromClass = VkFormat.class) int value) {
         segment.set(LAYOUT$displacementBiasAndScaleFormat, OFFSET$displacementBiasAndScaleFormat, value);
         return this;
     }
 
-    public @EnumType(VkFormat.class) int displacementVectorFormat() {
+    public @MagicConstant(valuesFromClass = VkFormat.class) int displacementVectorFormat() {
         return segment.get(LAYOUT$displacementVectorFormat, OFFSET$displacementVectorFormat);
     }
 
-    public VkAccelerationStructureTrianglesDisplacementMicromapNV displacementVectorFormat(@EnumType(VkFormat.class) int value) {
+    public VkAccelerationStructureTrianglesDisplacementMicromapNV displacementVectorFormat(@MagicConstant(valuesFromClass = VkFormat.class) int value) {
         segment.set(LAYOUT$displacementVectorFormat, OFFSET$displacementVectorFormat, value);
         return this;
     }
@@ -314,11 +314,11 @@ public record VkAccelerationStructureTrianglesDisplacementMicromapNV(@NotNull Me
         return this;
     }
 
-    public @EnumType(VkIndexType.class) int indexType() {
+    public @MagicConstant(valuesFromClass = VkIndexType.class) int indexType() {
         return segment.get(LAYOUT$indexType, OFFSET$indexType);
     }
 
-    public VkAccelerationStructureTrianglesDisplacementMicromapNV indexType(@EnumType(VkIndexType.class) int value) {
+    public VkAccelerationStructureTrianglesDisplacementMicromapNV indexType(@MagicConstant(valuesFromClass = VkIndexType.class) int value) {
         segment.set(LAYOUT$indexType, OFFSET$indexType, value);
         return this;
     }

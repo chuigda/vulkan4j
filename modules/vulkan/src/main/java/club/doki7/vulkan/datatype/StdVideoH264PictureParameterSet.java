@@ -227,11 +227,11 @@ public record StdVideoH264PictureParameterSet(@NotNull MemorySegment segment) im
         return this;
     }
 
-    public @EnumType(StdVideoH264WeightedBipredIdc.class) int weighted_bipred_idc() {
+    public @MagicConstant(valuesFromClass = StdVideoH264WeightedBipredIdc.class) int weighted_bipred_idc() {
         return segment.get(LAYOUT$weighted_bipred_idc, OFFSET$weighted_bipred_idc);
     }
 
-    public StdVideoH264PictureParameterSet weighted_bipred_idc(@EnumType(StdVideoH264WeightedBipredIdc.class) int value) {
+    public StdVideoH264PictureParameterSet weighted_bipred_idc(@MagicConstant(valuesFromClass = StdVideoH264WeightedBipredIdc.class) int value) {
         segment.set(LAYOUT$weighted_bipred_idc, OFFSET$weighted_bipred_idc, value);
         return this;
     }

@@ -190,11 +190,11 @@ public record VkDescriptorBufferBindingPushDescriptorBufferHandleEXT(@NotNull Me
         sType(VkStructureType.DESCRIPTOR_BUFFER_BINDING_PUSH_DESCRIPTOR_BUFFER_HANDLE_EXT);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkDescriptorBufferBindingPushDescriptorBufferHandleEXT sType(@EnumType(VkStructureType.class) int value) {
+    public VkDescriptorBufferBindingPushDescriptorBufferHandleEXT sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }

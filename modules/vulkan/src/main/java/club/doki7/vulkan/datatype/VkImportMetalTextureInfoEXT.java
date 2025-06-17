@@ -191,11 +191,11 @@ public record VkImportMetalTextureInfoEXT(@NotNull MemorySegment segment) implem
         sType(VkStructureType.IMPORT_METAL_TEXTURE_INFO_EXT);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkImportMetalTextureInfoEXT sType(@EnumType(VkStructureType.class) int value) {
+    public VkImportMetalTextureInfoEXT sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }
@@ -213,11 +213,11 @@ public record VkImportMetalTextureInfoEXT(@NotNull MemorySegment segment) implem
         return this;
     }
 
-    public @EnumType(VkImageAspectFlags.class) int plane() {
+    public @MagicConstant(valuesFromClass = VkImageAspectFlags.class) int plane() {
         return segment.get(LAYOUT$plane, OFFSET$plane);
     }
 
-    public VkImportMetalTextureInfoEXT plane(@EnumType(VkImageAspectFlags.class) int value) {
+    public VkImportMetalTextureInfoEXT plane(@MagicConstant(valuesFromClass = VkImageAspectFlags.class) int value) {
         segment.set(LAYOUT$plane, OFFSET$plane, value);
         return this;
     }

@@ -198,11 +198,11 @@ public record VkRayTracingPipelineCreateInfoNV(@NotNull MemorySegment segment) i
         sType(VkStructureType.RAY_TRACING_PIPELINE_CREATE_INFO_NV);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkRayTracingPipelineCreateInfoNV sType(@EnumType(VkStructureType.class) int value) {
+    public VkRayTracingPipelineCreateInfoNV sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }
@@ -220,11 +220,11 @@ public record VkRayTracingPipelineCreateInfoNV(@NotNull MemorySegment segment) i
         return this;
     }
 
-    public @EnumType(VkPipelineCreateFlags.class) int flags() {
+    public @MagicConstant(valuesFromClass = VkPipelineCreateFlags.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public VkRayTracingPipelineCreateInfoNV flags(@EnumType(VkPipelineCreateFlags.class) int value) {
+    public VkRayTracingPipelineCreateInfoNV flags(@MagicConstant(valuesFromClass = VkPipelineCreateFlags.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
         return this;
     }

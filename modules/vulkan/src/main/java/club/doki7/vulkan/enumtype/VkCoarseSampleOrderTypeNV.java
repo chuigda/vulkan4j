@@ -1,6 +1,7 @@
 package club.doki7.vulkan.enumtype;
 
 import club.doki7.ffm.annotation.*;
+import org.intellij.lang.annotations.MagicConstant;
 
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkCoarseSampleOrderTypeNV.html"><code>VkCoarseSampleOrderTypeNV</code></a>
 public final class VkCoarseSampleOrderTypeNV {
@@ -9,7 +10,7 @@ public final class VkCoarseSampleOrderTypeNV {
     public static final int PIXEL_MAJOR = 0x2;
     public static final int SAMPLE_MAJOR = 0x3;
 
-    public static String explain(@EnumType(VkCoarseSampleOrderTypeNV.class) int value) {
+    public static String explain(@MagicConstant(valuesFromClass = VkCoarseSampleOrderTypeNV.class) int value) {
         return switch (value) {
             case VkCoarseSampleOrderTypeNV.CUSTOM -> "VK_COARSE_SAMPLE_ORDER_TYPE_CUSTOM_NV";
             case VkCoarseSampleOrderTypeNV.DEFAULT -> "VK_COARSE_SAMPLE_ORDER_TYPE_DEFAULT_NV";

@@ -194,11 +194,11 @@ public record VkPartitionedAccelerationStructureInstancesInputNV(@NotNull Memory
         sType(VkStructureType.PARTITIONED_ACCELERATION_STRUCTURE_INSTANCES_INPUT_NV);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkPartitionedAccelerationStructureInstancesInputNV sType(@EnumType(VkStructureType.class) int value) {
+    public VkPartitionedAccelerationStructureInstancesInputNV sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }
@@ -216,11 +216,11 @@ public record VkPartitionedAccelerationStructureInstancesInputNV(@NotNull Memory
         return this;
     }
 
-    public @EnumType(VkBuildAccelerationStructureFlagsKHR.class) int flags() {
+    public @MagicConstant(valuesFromClass = VkBuildAccelerationStructureFlagsKHR.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public VkPartitionedAccelerationStructureInstancesInputNV flags(@EnumType(VkBuildAccelerationStructureFlagsKHR.class) int value) {
+    public VkPartitionedAccelerationStructureInstancesInputNV flags(@MagicConstant(valuesFromClass = VkBuildAccelerationStructureFlagsKHR.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
         return this;
     }

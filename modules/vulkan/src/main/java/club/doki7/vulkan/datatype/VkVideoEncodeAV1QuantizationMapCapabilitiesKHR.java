@@ -191,11 +191,11 @@ public record VkVideoEncodeAV1QuantizationMapCapabilitiesKHR(@NotNull MemorySegm
         sType(VkStructureType.VIDEO_ENCODE_AV1_QUANTIZATION_MAP_CAPABILITIES_KHR);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkVideoEncodeAV1QuantizationMapCapabilitiesKHR sType(@EnumType(VkStructureType.class) int value) {
+    public VkVideoEncodeAV1QuantizationMapCapabilitiesKHR sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }

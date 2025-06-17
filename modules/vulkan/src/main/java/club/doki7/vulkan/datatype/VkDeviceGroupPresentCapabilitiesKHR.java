@@ -191,11 +191,11 @@ public record VkDeviceGroupPresentCapabilitiesKHR(@NotNull MemorySegment segment
         sType(VkStructureType.DEVICE_GROUP_PRESENT_CAPABILITIES_KHR);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkDeviceGroupPresentCapabilitiesKHR sType(@EnumType(VkStructureType.class) int value) {
+    public VkDeviceGroupPresentCapabilitiesKHR sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }
@@ -226,11 +226,11 @@ public record VkDeviceGroupPresentCapabilitiesKHR(@NotNull MemorySegment segment
         return segment.asSlice(OFFSET$presentMask, SIZE$presentMask);
     }
 
-    public @EnumType(VkDeviceGroupPresentModeFlagsKHR.class) int modes() {
+    public @MagicConstant(valuesFromClass = VkDeviceGroupPresentModeFlagsKHR.class) int modes() {
         return segment.get(LAYOUT$modes, OFFSET$modes);
     }
 
-    public VkDeviceGroupPresentCapabilitiesKHR modes(@EnumType(VkDeviceGroupPresentModeFlagsKHR.class) int value) {
+    public VkDeviceGroupPresentCapabilitiesKHR modes(@MagicConstant(valuesFromClass = VkDeviceGroupPresentModeFlagsKHR.class) int value) {
         segment.set(LAYOUT$modes, OFFSET$modes, value);
         return this;
     }

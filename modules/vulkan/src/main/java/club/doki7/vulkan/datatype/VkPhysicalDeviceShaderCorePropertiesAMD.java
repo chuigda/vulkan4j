@@ -203,11 +203,11 @@ public record VkPhysicalDeviceShaderCorePropertiesAMD(@NotNull MemorySegment seg
         sType(VkStructureType.PHYSICAL_DEVICE_SHADER_CORE_PROPERTIES_AMD);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkPhysicalDeviceShaderCorePropertiesAMD sType(@EnumType(VkStructureType.class) int value) {
+    public VkPhysicalDeviceShaderCorePropertiesAMD sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }

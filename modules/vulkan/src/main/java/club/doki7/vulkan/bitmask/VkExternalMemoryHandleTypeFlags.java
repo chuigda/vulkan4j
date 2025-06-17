@@ -1,6 +1,7 @@
 package club.doki7.vulkan.bitmask;
 
 import club.doki7.ffm.annotation.*;
+import org.intellij.lang.annotations.MagicConstant;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,7 +27,7 @@ public final class VkExternalMemoryHandleTypeFlags {
     public static final int SCREEN_BUFFER_QNX = 0x4000;
     public static final int ZIRCON_VMO_FUCHSIA = 0x800;
 
-    public static String explain(@EnumType(VkExternalMemoryHandleTypeFlags.class) int flags) {
+    public static String explain(@MagicConstant(flagsFromClass = VkExternalMemoryHandleTypeFlags.class) int flags) {
         List<String> detectedFlagBits = new ArrayList<>();
         if ((flags & ANDROID_HARDWARE_BUFFER_ANDROID) != 0) {
             detectedFlagBits.add("VK_EXTERNAL_MEMORY_HANDLE_TYPE_ANDROID_HARDWARE_BUFFER_BIT_ANDROID");

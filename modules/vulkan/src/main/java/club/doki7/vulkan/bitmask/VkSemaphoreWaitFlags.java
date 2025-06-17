@@ -1,6 +1,7 @@
 package club.doki7.vulkan.bitmask;
 
 import club.doki7.ffm.annotation.*;
+import org.intellij.lang.annotations.MagicConstant;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -9,7 +10,7 @@ import java.util.List;
 public final class VkSemaphoreWaitFlags {
     public static final int ANY = 0x1;
 
-    public static String explain(@EnumType(VkSemaphoreWaitFlags.class) int flags) {
+    public static String explain(@MagicConstant(flagsFromClass = VkSemaphoreWaitFlags.class) int flags) {
         List<String> detectedFlagBits = new ArrayList<>();
         if ((flags & ANY) != 0) {
             detectedFlagBits.add("VK_SEMAPHORE_WAIT_ANY_BIT");

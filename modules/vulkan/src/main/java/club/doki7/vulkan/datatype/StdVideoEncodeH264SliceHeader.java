@@ -199,11 +199,11 @@ public record StdVideoEncodeH264SliceHeader(@NotNull MemorySegment segment) impl
         return this;
     }
 
-    public @EnumType(StdVideoH264SliceType.class) int slice_type() {
+    public @MagicConstant(valuesFromClass = StdVideoH264SliceType.class) int slice_type() {
         return segment.get(LAYOUT$slice_type, OFFSET$slice_type);
     }
 
-    public StdVideoEncodeH264SliceHeader slice_type(@EnumType(StdVideoH264SliceType.class) int value) {
+    public StdVideoEncodeH264SliceHeader slice_type(@MagicConstant(valuesFromClass = StdVideoH264SliceType.class) int value) {
         segment.set(LAYOUT$slice_type, OFFSET$slice_type, value);
         return this;
     }
@@ -236,20 +236,20 @@ public record StdVideoEncodeH264SliceHeader(@NotNull MemorySegment segment) impl
     }
 
 
-    public @EnumType(StdVideoH264CabacInitIdc.class) int cabac_init_idc() {
+    public @MagicConstant(valuesFromClass = StdVideoH264CabacInitIdc.class) int cabac_init_idc() {
         return segment.get(LAYOUT$cabac_init_idc, OFFSET$cabac_init_idc);
     }
 
-    public StdVideoEncodeH264SliceHeader cabac_init_idc(@EnumType(StdVideoH264CabacInitIdc.class) int value) {
+    public StdVideoEncodeH264SliceHeader cabac_init_idc(@MagicConstant(valuesFromClass = StdVideoH264CabacInitIdc.class) int value) {
         segment.set(LAYOUT$cabac_init_idc, OFFSET$cabac_init_idc, value);
         return this;
     }
 
-    public @EnumType(StdVideoH264DisableDeblockingFilterIdc.class) int disable_deblocking_filter_idc() {
+    public @MagicConstant(valuesFromClass = StdVideoH264DisableDeblockingFilterIdc.class) int disable_deblocking_filter_idc() {
         return segment.get(LAYOUT$disable_deblocking_filter_idc, OFFSET$disable_deblocking_filter_idc);
     }
 
-    public StdVideoEncodeH264SliceHeader disable_deblocking_filter_idc(@EnumType(StdVideoH264DisableDeblockingFilterIdc.class) int value) {
+    public StdVideoEncodeH264SliceHeader disable_deblocking_filter_idc(@MagicConstant(valuesFromClass = StdVideoH264DisableDeblockingFilterIdc.class) int value) {
         segment.set(LAYOUT$disable_deblocking_filter_idc, OFFSET$disable_deblocking_filter_idc, value);
         return this;
     }

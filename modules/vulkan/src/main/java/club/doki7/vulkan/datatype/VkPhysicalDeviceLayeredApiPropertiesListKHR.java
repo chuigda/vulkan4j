@@ -191,11 +191,11 @@ public record VkPhysicalDeviceLayeredApiPropertiesListKHR(@NotNull MemorySegment
         sType(VkStructureType.PHYSICAL_DEVICE_LAYERED_API_PROPERTIES_LIST_KHR);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkPhysicalDeviceLayeredApiPropertiesListKHR sType(@EnumType(VkStructureType.class) int value) {
+    public VkPhysicalDeviceLayeredApiPropertiesListKHR sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }

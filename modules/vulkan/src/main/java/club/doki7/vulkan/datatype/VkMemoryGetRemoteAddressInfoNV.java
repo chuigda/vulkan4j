@@ -191,11 +191,11 @@ public record VkMemoryGetRemoteAddressInfoNV(@NotNull MemorySegment segment) imp
         sType(VkStructureType.MEMORY_GET_REMOTE_ADDRESS_INFO_NV);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkMemoryGetRemoteAddressInfoNV sType(@EnumType(VkStructureType.class) int value) {
+    public VkMemoryGetRemoteAddressInfoNV sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }
@@ -226,11 +226,11 @@ public record VkMemoryGetRemoteAddressInfoNV(@NotNull MemorySegment segment) imp
         return this;
     }
 
-    public @EnumType(VkExternalMemoryHandleTypeFlags.class) int handleType() {
+    public @MagicConstant(valuesFromClass = VkExternalMemoryHandleTypeFlags.class) int handleType() {
         return segment.get(LAYOUT$handleType, OFFSET$handleType);
     }
 
-    public VkMemoryGetRemoteAddressInfoNV handleType(@EnumType(VkExternalMemoryHandleTypeFlags.class) int value) {
+    public VkMemoryGetRemoteAddressInfoNV handleType(@MagicConstant(valuesFromClass = VkExternalMemoryHandleTypeFlags.class) int value) {
         segment.set(LAYOUT$handleType, OFFSET$handleType, value);
         return this;
     }

@@ -197,11 +197,11 @@ public record VkWriteDescriptorSet(@NotNull MemorySegment segment) implements IV
         sType(VkStructureType.WRITE_DESCRIPTOR_SET);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkWriteDescriptorSet sType(@EnumType(VkStructureType.class) int value) {
+    public VkWriteDescriptorSet sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }
@@ -259,11 +259,11 @@ public record VkWriteDescriptorSet(@NotNull MemorySegment segment) implements IV
         return this;
     }
 
-    public @EnumType(VkDescriptorType.class) int descriptorType() {
+    public @MagicConstant(valuesFromClass = VkDescriptorType.class) int descriptorType() {
         return segment.get(LAYOUT$descriptorType, OFFSET$descriptorType);
     }
 
-    public VkWriteDescriptorSet descriptorType(@EnumType(VkDescriptorType.class) int value) {
+    public VkWriteDescriptorSet descriptorType(@MagicConstant(valuesFromClass = VkDescriptorType.class) int value) {
         segment.set(LAYOUT$descriptorType, OFFSET$descriptorType, value);
         return this;
     }

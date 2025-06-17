@@ -197,11 +197,11 @@ public record VkSamplerYcbcrConversionCreateInfo(@NotNull MemorySegment segment)
         sType(VkStructureType.SAMPLER_YCBCR_CONVERSION_CREATE_INFO);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkSamplerYcbcrConversionCreateInfo sType(@EnumType(VkStructureType.class) int value) {
+    public VkSamplerYcbcrConversionCreateInfo sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }
@@ -219,29 +219,29 @@ public record VkSamplerYcbcrConversionCreateInfo(@NotNull MemorySegment segment)
         return this;
     }
 
-    public @EnumType(VkFormat.class) int format() {
+    public @MagicConstant(valuesFromClass = VkFormat.class) int format() {
         return segment.get(LAYOUT$format, OFFSET$format);
     }
 
-    public VkSamplerYcbcrConversionCreateInfo format(@EnumType(VkFormat.class) int value) {
+    public VkSamplerYcbcrConversionCreateInfo format(@MagicConstant(valuesFromClass = VkFormat.class) int value) {
         segment.set(LAYOUT$format, OFFSET$format, value);
         return this;
     }
 
-    public @EnumType(VkSamplerYcbcrModelConversion.class) int ycbcrModel() {
+    public @MagicConstant(valuesFromClass = VkSamplerYcbcrModelConversion.class) int ycbcrModel() {
         return segment.get(LAYOUT$ycbcrModel, OFFSET$ycbcrModel);
     }
 
-    public VkSamplerYcbcrConversionCreateInfo ycbcrModel(@EnumType(VkSamplerYcbcrModelConversion.class) int value) {
+    public VkSamplerYcbcrConversionCreateInfo ycbcrModel(@MagicConstant(valuesFromClass = VkSamplerYcbcrModelConversion.class) int value) {
         segment.set(LAYOUT$ycbcrModel, OFFSET$ycbcrModel, value);
         return this;
     }
 
-    public @EnumType(VkSamplerYcbcrRange.class) int ycbcrRange() {
+    public @MagicConstant(valuesFromClass = VkSamplerYcbcrRange.class) int ycbcrRange() {
         return segment.get(LAYOUT$ycbcrRange, OFFSET$ycbcrRange);
     }
 
-    public VkSamplerYcbcrConversionCreateInfo ycbcrRange(@EnumType(VkSamplerYcbcrRange.class) int value) {
+    public VkSamplerYcbcrConversionCreateInfo ycbcrRange(@MagicConstant(valuesFromClass = VkSamplerYcbcrRange.class) int value) {
         segment.set(LAYOUT$ycbcrRange, OFFSET$ycbcrRange, value);
         return this;
     }
@@ -260,29 +260,29 @@ public record VkSamplerYcbcrConversionCreateInfo(@NotNull MemorySegment segment)
         return this;
     }
 
-    public @EnumType(VkChromaLocation.class) int xChromaOffset() {
+    public @MagicConstant(valuesFromClass = VkChromaLocation.class) int xChromaOffset() {
         return segment.get(LAYOUT$xChromaOffset, OFFSET$xChromaOffset);
     }
 
-    public VkSamplerYcbcrConversionCreateInfo xChromaOffset(@EnumType(VkChromaLocation.class) int value) {
+    public VkSamplerYcbcrConversionCreateInfo xChromaOffset(@MagicConstant(valuesFromClass = VkChromaLocation.class) int value) {
         segment.set(LAYOUT$xChromaOffset, OFFSET$xChromaOffset, value);
         return this;
     }
 
-    public @EnumType(VkChromaLocation.class) int yChromaOffset() {
+    public @MagicConstant(valuesFromClass = VkChromaLocation.class) int yChromaOffset() {
         return segment.get(LAYOUT$yChromaOffset, OFFSET$yChromaOffset);
     }
 
-    public VkSamplerYcbcrConversionCreateInfo yChromaOffset(@EnumType(VkChromaLocation.class) int value) {
+    public VkSamplerYcbcrConversionCreateInfo yChromaOffset(@MagicConstant(valuesFromClass = VkChromaLocation.class) int value) {
         segment.set(LAYOUT$yChromaOffset, OFFSET$yChromaOffset, value);
         return this;
     }
 
-    public @EnumType(VkFilter.class) int chromaFilter() {
+    public @MagicConstant(valuesFromClass = VkFilter.class) int chromaFilter() {
         return segment.get(LAYOUT$chromaFilter, OFFSET$chromaFilter);
     }
 
-    public VkSamplerYcbcrConversionCreateInfo chromaFilter(@EnumType(VkFilter.class) int value) {
+    public VkSamplerYcbcrConversionCreateInfo chromaFilter(@MagicConstant(valuesFromClass = VkFilter.class) int value) {
         segment.set(LAYOUT$chromaFilter, OFFSET$chromaFilter, value);
         return this;
     }

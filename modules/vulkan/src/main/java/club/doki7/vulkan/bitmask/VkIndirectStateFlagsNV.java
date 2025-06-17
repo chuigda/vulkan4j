@@ -1,6 +1,7 @@
 package club.doki7.vulkan.bitmask;
 
 import club.doki7.ffm.annotation.*;
+import org.intellij.lang.annotations.MagicConstant;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -9,7 +10,7 @@ import java.util.List;
 public final class VkIndirectStateFlagsNV {
     public static final int FLAG_FRONTFACE = 0x1;
 
-    public static String explain(@EnumType(VkIndirectStateFlagsNV.class) int flags) {
+    public static String explain(@MagicConstant(flagsFromClass = VkIndirectStateFlagsNV.class) int flags) {
         List<String> detectedFlagBits = new ArrayList<>();
         if ((flags & FLAG_FRONTFACE) != 0) {
             detectedFlagBits.add("VK_INDIRECT_STATE_FLAG_FRONTFACE_BIT_NV");

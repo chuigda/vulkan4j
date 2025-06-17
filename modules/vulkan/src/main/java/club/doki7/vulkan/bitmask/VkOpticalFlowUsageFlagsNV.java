@@ -1,6 +1,7 @@
 package club.doki7.vulkan.bitmask;
 
 import club.doki7.ffm.annotation.*;
+import org.intellij.lang.annotations.MagicConstant;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,7 +15,7 @@ public final class VkOpticalFlowUsageFlagsNV {
     public static final int OUTPUT = 0x2;
     public static final int UNKNOWN = 0x0;
 
-    public static String explain(@EnumType(VkOpticalFlowUsageFlagsNV.class) int flags) {
+    public static String explain(@MagicConstant(flagsFromClass = VkOpticalFlowUsageFlagsNV.class) int flags) {
         List<String> detectedFlagBits = new ArrayList<>();
         if ((flags & COST) != 0) {
             detectedFlagBits.add("VK_OPTICAL_FLOW_USAGE_COST_BIT_NV");

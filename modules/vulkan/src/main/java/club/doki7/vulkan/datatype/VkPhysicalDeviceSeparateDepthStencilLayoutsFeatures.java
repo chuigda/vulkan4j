@@ -190,11 +190,11 @@ public record VkPhysicalDeviceSeparateDepthStencilLayoutsFeatures(@NotNull Memor
         sType(VkStructureType.PHYSICAL_DEVICE_SEPARATE_DEPTH_STENCIL_LAYOUTS_FEATURES);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkPhysicalDeviceSeparateDepthStencilLayoutsFeatures sType(@EnumType(VkStructureType.class) int value) {
+    public VkPhysicalDeviceSeparateDepthStencilLayoutsFeatures sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }

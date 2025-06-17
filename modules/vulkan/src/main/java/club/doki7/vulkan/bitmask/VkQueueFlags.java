@@ -1,6 +1,7 @@
 package club.doki7.vulkan.bitmask;
 
 import club.doki7.ffm.annotation.*;
+import org.intellij.lang.annotations.MagicConstant;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,7 +17,7 @@ public final class VkQueueFlags {
     public static final int VIDEO_DECODE_KHR = 0x20;
     public static final int VIDEO_ENCODE_KHR = 0x40;
 
-    public static String explain(@EnumType(VkQueueFlags.class) int flags) {
+    public static String explain(@MagicConstant(flagsFromClass = VkQueueFlags.class) int flags) {
         List<String> detectedFlagBits = new ArrayList<>();
         if ((flags & COMPUTE) != 0) {
             detectedFlagBits.add("VK_QUEUE_COMPUTE_BIT");

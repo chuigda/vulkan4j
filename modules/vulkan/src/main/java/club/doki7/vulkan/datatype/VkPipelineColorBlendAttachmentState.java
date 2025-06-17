@@ -185,65 +185,65 @@ public record VkPipelineColorBlendAttachmentState(@NotNull MemorySegment segment
         return this;
     }
 
-    public @EnumType(VkBlendFactor.class) int srcColorBlendFactor() {
+    public @MagicConstant(valuesFromClass = VkBlendFactor.class) int srcColorBlendFactor() {
         return segment.get(LAYOUT$srcColorBlendFactor, OFFSET$srcColorBlendFactor);
     }
 
-    public VkPipelineColorBlendAttachmentState srcColorBlendFactor(@EnumType(VkBlendFactor.class) int value) {
+    public VkPipelineColorBlendAttachmentState srcColorBlendFactor(@MagicConstant(valuesFromClass = VkBlendFactor.class) int value) {
         segment.set(LAYOUT$srcColorBlendFactor, OFFSET$srcColorBlendFactor, value);
         return this;
     }
 
-    public @EnumType(VkBlendFactor.class) int dstColorBlendFactor() {
+    public @MagicConstant(valuesFromClass = VkBlendFactor.class) int dstColorBlendFactor() {
         return segment.get(LAYOUT$dstColorBlendFactor, OFFSET$dstColorBlendFactor);
     }
 
-    public VkPipelineColorBlendAttachmentState dstColorBlendFactor(@EnumType(VkBlendFactor.class) int value) {
+    public VkPipelineColorBlendAttachmentState dstColorBlendFactor(@MagicConstant(valuesFromClass = VkBlendFactor.class) int value) {
         segment.set(LAYOUT$dstColorBlendFactor, OFFSET$dstColorBlendFactor, value);
         return this;
     }
 
-    public @EnumType(VkBlendOp.class) int colorBlendOp() {
+    public @MagicConstant(valuesFromClass = VkBlendOp.class) int colorBlendOp() {
         return segment.get(LAYOUT$colorBlendOp, OFFSET$colorBlendOp);
     }
 
-    public VkPipelineColorBlendAttachmentState colorBlendOp(@EnumType(VkBlendOp.class) int value) {
+    public VkPipelineColorBlendAttachmentState colorBlendOp(@MagicConstant(valuesFromClass = VkBlendOp.class) int value) {
         segment.set(LAYOUT$colorBlendOp, OFFSET$colorBlendOp, value);
         return this;
     }
 
-    public @EnumType(VkBlendFactor.class) int srcAlphaBlendFactor() {
+    public @MagicConstant(valuesFromClass = VkBlendFactor.class) int srcAlphaBlendFactor() {
         return segment.get(LAYOUT$srcAlphaBlendFactor, OFFSET$srcAlphaBlendFactor);
     }
 
-    public VkPipelineColorBlendAttachmentState srcAlphaBlendFactor(@EnumType(VkBlendFactor.class) int value) {
+    public VkPipelineColorBlendAttachmentState srcAlphaBlendFactor(@MagicConstant(valuesFromClass = VkBlendFactor.class) int value) {
         segment.set(LAYOUT$srcAlphaBlendFactor, OFFSET$srcAlphaBlendFactor, value);
         return this;
     }
 
-    public @EnumType(VkBlendFactor.class) int dstAlphaBlendFactor() {
+    public @MagicConstant(valuesFromClass = VkBlendFactor.class) int dstAlphaBlendFactor() {
         return segment.get(LAYOUT$dstAlphaBlendFactor, OFFSET$dstAlphaBlendFactor);
     }
 
-    public VkPipelineColorBlendAttachmentState dstAlphaBlendFactor(@EnumType(VkBlendFactor.class) int value) {
+    public VkPipelineColorBlendAttachmentState dstAlphaBlendFactor(@MagicConstant(valuesFromClass = VkBlendFactor.class) int value) {
         segment.set(LAYOUT$dstAlphaBlendFactor, OFFSET$dstAlphaBlendFactor, value);
         return this;
     }
 
-    public @EnumType(VkBlendOp.class) int alphaBlendOp() {
+    public @MagicConstant(valuesFromClass = VkBlendOp.class) int alphaBlendOp() {
         return segment.get(LAYOUT$alphaBlendOp, OFFSET$alphaBlendOp);
     }
 
-    public VkPipelineColorBlendAttachmentState alphaBlendOp(@EnumType(VkBlendOp.class) int value) {
+    public VkPipelineColorBlendAttachmentState alphaBlendOp(@MagicConstant(valuesFromClass = VkBlendOp.class) int value) {
         segment.set(LAYOUT$alphaBlendOp, OFFSET$alphaBlendOp, value);
         return this;
     }
 
-    public @EnumType(VkColorComponentFlags.class) int colorWriteMask() {
+    public @MagicConstant(valuesFromClass = VkColorComponentFlags.class) int colorWriteMask() {
         return segment.get(LAYOUT$colorWriteMask, OFFSET$colorWriteMask);
     }
 
-    public VkPipelineColorBlendAttachmentState colorWriteMask(@EnumType(VkColorComponentFlags.class) int value) {
+    public VkPipelineColorBlendAttachmentState colorWriteMask(@MagicConstant(valuesFromClass = VkColorComponentFlags.class) int value) {
         segment.set(LAYOUT$colorWriteMask, OFFSET$colorWriteMask, value);
         return this;
     }

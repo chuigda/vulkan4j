@@ -190,11 +190,11 @@ public record VkPhysicalDeviceExternalFormatResolveFeaturesANDROID(@NotNull Memo
         sType(VkStructureType.PHYSICAL_DEVICE_EXTERNAL_FORMAT_RESOLVE_FEATURES_ANDROID);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkPhysicalDeviceExternalFormatResolveFeaturesANDROID sType(@EnumType(VkStructureType.class) int value) {
+    public VkPhysicalDeviceExternalFormatResolveFeaturesANDROID sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }

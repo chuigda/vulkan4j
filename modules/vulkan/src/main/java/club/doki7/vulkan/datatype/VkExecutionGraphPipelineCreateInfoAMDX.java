@@ -196,11 +196,11 @@ public record VkExecutionGraphPipelineCreateInfoAMDX(@NotNull MemorySegment segm
         sType(VkStructureType.EXECUTION_GRAPH_PIPELINE_CREATE_INFO_AMDX);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkExecutionGraphPipelineCreateInfoAMDX sType(@EnumType(VkStructureType.class) int value) {
+    public VkExecutionGraphPipelineCreateInfoAMDX sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }
@@ -218,11 +218,11 @@ public record VkExecutionGraphPipelineCreateInfoAMDX(@NotNull MemorySegment segm
         return this;
     }
 
-    public @EnumType(VkPipelineCreateFlags.class) int flags() {
+    public @MagicConstant(valuesFromClass = VkPipelineCreateFlags.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public VkExecutionGraphPipelineCreateInfoAMDX flags(@EnumType(VkPipelineCreateFlags.class) int value) {
+    public VkExecutionGraphPipelineCreateInfoAMDX flags(@MagicConstant(valuesFromClass = VkPipelineCreateFlags.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
         return this;
     }

@@ -1,6 +1,7 @@
 package club.doki7.vulkan.bitmask;
 
 import club.doki7.ffm.annotation.*;
+import org.intellij.lang.annotations.MagicConstant;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,7 +11,7 @@ public final class VkIndirectCommandsInputModeFlagsEXT {
     public static final int DXGI_INDEX_BUFFER = 0x2;
     public static final int VULKAN_INDEX_BUFFER = 0x1;
 
-    public static String explain(@EnumType(VkIndirectCommandsInputModeFlagsEXT.class) int flags) {
+    public static String explain(@MagicConstant(flagsFromClass = VkIndirectCommandsInputModeFlagsEXT.class) int flags) {
         List<String> detectedFlagBits = new ArrayList<>();
         if ((flags & DXGI_INDEX_BUFFER) != 0) {
             detectedFlagBits.add("VK_INDIRECT_COMMANDS_INPUT_MODE_DXGI_INDEX_BUFFER_EXT");

@@ -190,11 +190,11 @@ public record VkRenderPassFragmentDensityMapCreateInfoEXT(@NotNull MemorySegment
         sType(VkStructureType.RENDER_PASS_FRAGMENT_DENSITY_MAP_CREATE_INFO_EXT);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkRenderPassFragmentDensityMapCreateInfoEXT sType(@EnumType(VkStructureType.class) int value) {
+    public VkRenderPassFragmentDensityMapCreateInfoEXT sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }

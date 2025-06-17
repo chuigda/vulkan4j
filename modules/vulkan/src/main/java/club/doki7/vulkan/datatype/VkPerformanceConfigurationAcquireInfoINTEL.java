@@ -190,11 +190,11 @@ public record VkPerformanceConfigurationAcquireInfoINTEL(@NotNull MemorySegment 
         sType(VkStructureType.PERFORMANCE_CONFIGURATION_ACQUIRE_INFO_INTEL);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkPerformanceConfigurationAcquireInfoINTEL sType(@EnumType(VkStructureType.class) int value) {
+    public VkPerformanceConfigurationAcquireInfoINTEL sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }
@@ -212,11 +212,11 @@ public record VkPerformanceConfigurationAcquireInfoINTEL(@NotNull MemorySegment 
         return this;
     }
 
-    public @EnumType(VkPerformanceConfigurationTypeINTEL.class) int type() {
+    public @MagicConstant(valuesFromClass = VkPerformanceConfigurationTypeINTEL.class) int type() {
         return segment.get(LAYOUT$type, OFFSET$type);
     }
 
-    public VkPerformanceConfigurationAcquireInfoINTEL type(@EnumType(VkPerformanceConfigurationTypeINTEL.class) int value) {
+    public VkPerformanceConfigurationAcquireInfoINTEL type(@MagicConstant(valuesFromClass = VkPerformanceConfigurationTypeINTEL.class) int value) {
         segment.set(LAYOUT$type, OFFSET$type, value);
         return this;
     }

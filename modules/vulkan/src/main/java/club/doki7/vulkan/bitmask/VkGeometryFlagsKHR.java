@@ -1,6 +1,7 @@
 package club.doki7.vulkan.bitmask;
 
 import club.doki7.ffm.annotation.*;
+import org.intellij.lang.annotations.MagicConstant;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,7 +11,7 @@ public final class VkGeometryFlagsKHR {
     public static final int NO_DUPLICATE_ANY_HIT_INVOCATION = 0x2;
     public static final int OPAQUE = 0x1;
 
-    public static String explain(@EnumType(VkGeometryFlagsKHR.class) int flags) {
+    public static String explain(@MagicConstant(flagsFromClass = VkGeometryFlagsKHR.class) int flags) {
         List<String> detectedFlagBits = new ArrayList<>();
         if ((flags & NO_DUPLICATE_ANY_HIT_INVOCATION) != 0) {
             detectedFlagBits.add("VK_GEOMETRY_NO_DUPLICATE_ANY_HIT_INVOCATION_BIT_KHR");

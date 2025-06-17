@@ -1,6 +1,7 @@
 package club.doki7.vulkan.bitmask;
 
 import club.doki7.ffm.annotation.*;
+import org.intellij.lang.annotations.MagicConstant;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,7 +20,7 @@ public final class VkSubgroupFeatureFlags {
     public static final int SHUFFLE_RELATIVE = 0x20;
     public static final int VOTE = 0x2;
 
-    public static String explain(@EnumType(VkSubgroupFeatureFlags.class) int flags) {
+    public static String explain(@MagicConstant(flagsFromClass = VkSubgroupFeatureFlags.class) int flags) {
         List<String> detectedFlagBits = new ArrayList<>();
         if ((flags & ARITHMETIC) != 0) {
             detectedFlagBits.add("VK_SUBGROUP_FEATURE_ARITHMETIC_BIT");

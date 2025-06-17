@@ -190,11 +190,11 @@ public record VkPhysicalDevicePushDescriptorProperties(@NotNull MemorySegment se
         sType(VkStructureType.PHYSICAL_DEVICE_PUSH_DESCRIPTOR_PROPERTIES);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkPhysicalDevicePushDescriptorProperties sType(@EnumType(VkStructureType.class) int value) {
+    public VkPhysicalDevicePushDescriptorProperties sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }

@@ -191,11 +191,11 @@ public record VkHostImageCopyDevicePerformanceQuery(@NotNull MemorySegment segme
         sType(VkStructureType.HOST_IMAGE_COPY_DEVICE_PERFORMANCE_QUERY);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkHostImageCopyDevicePerformanceQuery sType(@EnumType(VkStructureType.class) int value) {
+    public VkHostImageCopyDevicePerformanceQuery sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }

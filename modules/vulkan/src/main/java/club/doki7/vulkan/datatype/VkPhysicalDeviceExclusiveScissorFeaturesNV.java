@@ -190,11 +190,11 @@ public record VkPhysicalDeviceExclusiveScissorFeaturesNV(@NotNull MemorySegment 
         sType(VkStructureType.PHYSICAL_DEVICE_EXCLUSIVE_SCISSOR_FEATURES_NV);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkPhysicalDeviceExclusiveScissorFeaturesNV sType(@EnumType(VkStructureType.class) int value) {
+    public VkPhysicalDeviceExclusiveScissorFeaturesNV sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }

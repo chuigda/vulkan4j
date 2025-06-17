@@ -191,11 +191,11 @@ public record VkHdrVividDynamicMetadataHUAWEI(@NotNull MemorySegment segment) im
         sType(VkStructureType.HDR_VIVID_DYNAMIC_METADATA_HUAWEI);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkHdrVividDynamicMetadataHUAWEI sType(@EnumType(VkStructureType.class) int value) {
+    public VkHdrVividDynamicMetadataHUAWEI sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }

@@ -190,11 +190,11 @@ public record VkLatencySubmissionPresentIdNV(@NotNull MemorySegment segment) imp
         sType(VkStructureType.LATENCY_SUBMISSION_PRESENT_ID_NV);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkLatencySubmissionPresentIdNV sType(@EnumType(VkStructureType.class) int value) {
+    public VkLatencySubmissionPresentIdNV sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }

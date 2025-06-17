@@ -192,11 +192,11 @@ public record VkDeviceDeviceMemoryReportCreateInfoEXT(@NotNull MemorySegment seg
         sType(VkStructureType.DEVICE_DEVICE_MEMORY_REPORT_CREATE_INFO_EXT);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkDeviceDeviceMemoryReportCreateInfoEXT sType(@EnumType(VkStructureType.class) int value) {
+    public VkDeviceDeviceMemoryReportCreateInfoEXT sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }
@@ -214,11 +214,11 @@ public record VkDeviceDeviceMemoryReportCreateInfoEXT(@NotNull MemorySegment seg
         return this;
     }
 
-    public @EnumType(VkDeviceMemoryReportFlagsEXT.class) int flags() {
+    public @MagicConstant(valuesFromClass = VkDeviceMemoryReportFlagsEXT.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public VkDeviceDeviceMemoryReportCreateInfoEXT flags(@EnumType(VkDeviceMemoryReportFlagsEXT.class) int value) {
+    public VkDeviceDeviceMemoryReportCreateInfoEXT flags(@MagicConstant(valuesFromClass = VkDeviceMemoryReportFlagsEXT.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
         return this;
     }

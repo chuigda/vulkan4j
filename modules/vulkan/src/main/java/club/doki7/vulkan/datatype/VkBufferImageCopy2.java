@@ -195,11 +195,11 @@ public record VkBufferImageCopy2(@NotNull MemorySegment segment) implements IVkB
         sType(VkStructureType.BUFFER_IMAGE_COPY_2);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkBufferImageCopy2 sType(@EnumType(VkStructureType.class) int value) {
+    public VkBufferImageCopy2 sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }

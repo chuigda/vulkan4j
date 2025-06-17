@@ -1,6 +1,7 @@
 package club.doki7.vulkan.enumtype;
 
 import club.doki7.ffm.annotation.*;
+import org.intellij.lang.annotations.MagicConstant;
 
 public final class StdVideoH264WeightedBipredIdc {
     public static final int STD_VIDEO_H264_WEIGHTED_BIPRED_IDC_DEFAULT = 0x0;
@@ -8,7 +9,7 @@ public final class StdVideoH264WeightedBipredIdc {
     public static final int STD_VIDEO_H264_WEIGHTED_BIPRED_IDC_IMPLICIT = 0x2;
     public static final int STD_VIDEO_H264_WEIGHTED_BIPRED_IDC_INVALID = 0x7fffffff;
 
-    public static String explain(@EnumType(StdVideoH264WeightedBipredIdc.class) int value) {
+    public static String explain(@MagicConstant(valuesFromClass = StdVideoH264WeightedBipredIdc.class) int value) {
         return switch (value) {
             case StdVideoH264WeightedBipredIdc.STD_VIDEO_H264_WEIGHTED_BIPRED_IDC_DEFAULT -> "STD_VIDEO_H264_WEIGHTED_BIPRED_IDC_DEFAULT";
             case StdVideoH264WeightedBipredIdc.STD_VIDEO_H264_WEIGHTED_BIPRED_IDC_EXPLICIT -> "STD_VIDEO_H264_WEIGHTED_BIPRED_IDC_EXPLICIT";

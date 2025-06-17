@@ -190,11 +190,11 @@ public record VkVideoDecodeCapabilitiesKHR(@NotNull MemorySegment segment) imple
         sType(VkStructureType.VIDEO_DECODE_CAPABILITIES_KHR);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkVideoDecodeCapabilitiesKHR sType(@EnumType(VkStructureType.class) int value) {
+    public VkVideoDecodeCapabilitiesKHR sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }
@@ -212,11 +212,11 @@ public record VkVideoDecodeCapabilitiesKHR(@NotNull MemorySegment segment) imple
         return this;
     }
 
-    public @EnumType(VkVideoDecodeCapabilityFlagsKHR.class) int flags() {
+    public @MagicConstant(valuesFromClass = VkVideoDecodeCapabilityFlagsKHR.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public VkVideoDecodeCapabilitiesKHR flags(@EnumType(VkVideoDecodeCapabilityFlagsKHR.class) int value) {
+    public VkVideoDecodeCapabilitiesKHR flags(@MagicConstant(valuesFromClass = VkVideoDecodeCapabilityFlagsKHR.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
         return this;
     }

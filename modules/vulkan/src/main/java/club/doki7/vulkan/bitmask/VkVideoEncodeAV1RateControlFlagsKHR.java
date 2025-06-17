@@ -1,6 +1,7 @@
 package club.doki7.vulkan.bitmask;
 
 import club.doki7.ffm.annotation.*;
+import org.intellij.lang.annotations.MagicConstant;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,7 +13,7 @@ public final class VkVideoEncodeAV1RateControlFlagsKHR {
     public static final int VK_VIDEO_ENCODE_AV1_RATE_CONTROL_REGULAR_GOP = 0x1;
     public static final int VK_VIDEO_ENCODE_AV1_RATE_CONTROL_TEMPORAL_LAYER_PATTERN_DYADIC = 0x2;
 
-    public static String explain(@EnumType(VkVideoEncodeAV1RateControlFlagsKHR.class) int flags) {
+    public static String explain(@MagicConstant(flagsFromClass = VkVideoEncodeAV1RateControlFlagsKHR.class) int flags) {
         List<String> detectedFlagBits = new ArrayList<>();
         if ((flags & VK_VIDEO_ENCODE_AV1_RATE_CONTROL_REFERENCE_PATTERN_DYADIC) != 0) {
             detectedFlagBits.add("VK_VIDEO_ENCODE_AV1_RATE_CONTROL_REFERENCE_PATTERN_DYADIC_BIT_KHR");

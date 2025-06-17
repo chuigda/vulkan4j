@@ -190,11 +190,11 @@ public record VkImportMetalBufferInfoEXT(@NotNull MemorySegment segment) impleme
         sType(VkStructureType.IMPORT_METAL_BUFFER_INFO_EXT);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkImportMetalBufferInfoEXT sType(@EnumType(VkStructureType.class) int value) {
+    public VkImportMetalBufferInfoEXT sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }

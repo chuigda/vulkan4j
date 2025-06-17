@@ -191,11 +191,11 @@ public record VkVideoEncodeH264SessionParametersFeedbackInfoKHR(@NotNull MemoryS
         sType(VkStructureType.VIDEO_ENCODE_H264_SESSION_PARAMETERS_FEEDBACK_INFO_KHR);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkVideoEncodeH264SessionParametersFeedbackInfoKHR sType(@EnumType(VkStructureType.class) int value) {
+    public VkVideoEncodeH264SessionParametersFeedbackInfoKHR sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }

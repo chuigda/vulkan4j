@@ -192,11 +192,11 @@ public record VkImageCompressionControlEXT(@NotNull MemorySegment segment) imple
         sType(VkStructureType.IMAGE_COMPRESSION_CONTROL_EXT);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkImageCompressionControlEXT sType(@EnumType(VkStructureType.class) int value) {
+    public VkImageCompressionControlEXT sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }
@@ -214,11 +214,11 @@ public record VkImageCompressionControlEXT(@NotNull MemorySegment segment) imple
         return this;
     }
 
-    public @EnumType(VkImageCompressionFlagsEXT.class) int flags() {
+    public @MagicConstant(valuesFromClass = VkImageCompressionFlagsEXT.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public VkImageCompressionControlEXT flags(@EnumType(VkImageCompressionFlagsEXT.class) int value) {
+    public VkImageCompressionControlEXT flags(@MagicConstant(valuesFromClass = VkImageCompressionFlagsEXT.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
         return this;
     }

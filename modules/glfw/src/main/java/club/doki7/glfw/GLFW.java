@@ -661,7 +661,7 @@ public final class GLFW implements GLFWConstants {
     ///  @since Added in version 3.2.
     ///
     ///  @ingroup vulkan
-    public @EnumType(VkResult.class) int createWindowSurface(
+    public @MagicConstant(valuesFromClass = VkResult.class) int createWindowSurface(
         @Nullable VkInstance instance,
         @Nullable GLFWwindow window,
         @Nullable @Pointer IVkAllocationCallbacks allocator,

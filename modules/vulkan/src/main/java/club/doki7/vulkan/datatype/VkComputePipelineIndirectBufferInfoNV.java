@@ -192,11 +192,11 @@ public record VkComputePipelineIndirectBufferInfoNV(@NotNull MemorySegment segme
         sType(VkStructureType.COMPUTE_PIPELINE_INDIRECT_BUFFER_INFO_NV);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkComputePipelineIndirectBufferInfoNV sType(@EnumType(VkStructureType.class) int value) {
+    public VkComputePipelineIndirectBufferInfoNV sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }

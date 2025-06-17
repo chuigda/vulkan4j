@@ -192,11 +192,11 @@ public record VkCopyAccelerationStructureInfoKHR(@NotNull MemorySegment segment)
         sType(VkStructureType.COPY_ACCELERATION_STRUCTURE_INFO_KHR);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkCopyAccelerationStructureInfoKHR sType(@EnumType(VkStructureType.class) int value) {
+    public VkCopyAccelerationStructureInfoKHR sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }
@@ -240,11 +240,11 @@ public record VkCopyAccelerationStructureInfoKHR(@NotNull MemorySegment segment)
         return this;
     }
 
-    public @EnumType(VkCopyAccelerationStructureModeKHR.class) int mode() {
+    public @MagicConstant(valuesFromClass = VkCopyAccelerationStructureModeKHR.class) int mode() {
         return segment.get(LAYOUT$mode, OFFSET$mode);
     }
 
-    public VkCopyAccelerationStructureInfoKHR mode(@EnumType(VkCopyAccelerationStructureModeKHR.class) int value) {
+    public VkCopyAccelerationStructureInfoKHR mode(@MagicConstant(valuesFromClass = VkCopyAccelerationStructureModeKHR.class) int value) {
         segment.set(LAYOUT$mode, OFFSET$mode, value);
         return this;
     }

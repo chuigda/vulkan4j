@@ -191,11 +191,11 @@ public record VkRenderPassTileShadingCreateInfoQCOM(@NotNull MemorySegment segme
         sType(VkStructureType.RENDER_PASS_TILE_SHADING_CREATE_INFO_QCOM);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkRenderPassTileShadingCreateInfoQCOM sType(@EnumType(VkStructureType.class) int value) {
+    public VkRenderPassTileShadingCreateInfoQCOM sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }
@@ -213,11 +213,11 @@ public record VkRenderPassTileShadingCreateInfoQCOM(@NotNull MemorySegment segme
         return this;
     }
 
-    public @EnumType(VkTileShadingRenderPassFlagsQCOM.class) int flags() {
+    public @MagicConstant(valuesFromClass = VkTileShadingRenderPassFlagsQCOM.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public VkRenderPassTileShadingCreateInfoQCOM flags(@EnumType(VkTileShadingRenderPassFlagsQCOM.class) int value) {
+    public VkRenderPassTileShadingCreateInfoQCOM flags(@MagicConstant(valuesFromClass = VkTileShadingRenderPassFlagsQCOM.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
         return this;
     }

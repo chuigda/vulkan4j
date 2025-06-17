@@ -189,11 +189,11 @@ public record VkVertexInputBindingDescription(@NotNull MemorySegment segment) im
         return this;
     }
 
-    public @EnumType(VkVertexInputRate.class) int inputRate() {
+    public @MagicConstant(valuesFromClass = VkVertexInputRate.class) int inputRate() {
         return segment.get(LAYOUT$inputRate, OFFSET$inputRate);
     }
 
-    public VkVertexInputBindingDescription inputRate(@EnumType(VkVertexInputRate.class) int value) {
+    public VkVertexInputBindingDescription inputRate(@MagicConstant(valuesFromClass = VkVertexInputRate.class) int value) {
         segment.set(LAYOUT$inputRate, OFFSET$inputRate, value);
         return this;
     }

@@ -191,11 +191,11 @@ public record VkFilterCubicImageViewImageFormatPropertiesEXT(@NotNull MemorySegm
         sType(VkStructureType.FILTER_CUBIC_IMAGE_VIEW_IMAGE_FORMAT_PROPERTIES_EXT);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkFilterCubicImageViewImageFormatPropertiesEXT sType(@EnumType(VkStructureType.class) int value) {
+    public VkFilterCubicImageViewImageFormatPropertiesEXT sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }

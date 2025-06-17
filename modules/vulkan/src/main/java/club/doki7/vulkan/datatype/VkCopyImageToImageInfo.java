@@ -196,11 +196,11 @@ public record VkCopyImageToImageInfo(@NotNull MemorySegment segment) implements 
         sType(VkStructureType.COPY_IMAGE_TO_IMAGE_INFO);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkCopyImageToImageInfo sType(@EnumType(VkStructureType.class) int value) {
+    public VkCopyImageToImageInfo sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }
@@ -218,11 +218,11 @@ public record VkCopyImageToImageInfo(@NotNull MemorySegment segment) implements 
         return this;
     }
 
-    public @EnumType(VkHostImageCopyFlags.class) int flags() {
+    public @MagicConstant(valuesFromClass = VkHostImageCopyFlags.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public VkCopyImageToImageInfo flags(@EnumType(VkHostImageCopyFlags.class) int value) {
+    public VkCopyImageToImageInfo flags(@MagicConstant(valuesFromClass = VkHostImageCopyFlags.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
         return this;
     }
@@ -240,11 +240,11 @@ public record VkCopyImageToImageInfo(@NotNull MemorySegment segment) implements 
         return this;
     }
 
-    public @EnumType(VkImageLayout.class) int srcImageLayout() {
+    public @MagicConstant(valuesFromClass = VkImageLayout.class) int srcImageLayout() {
         return segment.get(LAYOUT$srcImageLayout, OFFSET$srcImageLayout);
     }
 
-    public VkCopyImageToImageInfo srcImageLayout(@EnumType(VkImageLayout.class) int value) {
+    public VkCopyImageToImageInfo srcImageLayout(@MagicConstant(valuesFromClass = VkImageLayout.class) int value) {
         segment.set(LAYOUT$srcImageLayout, OFFSET$srcImageLayout, value);
         return this;
     }
@@ -262,11 +262,11 @@ public record VkCopyImageToImageInfo(@NotNull MemorySegment segment) implements 
         return this;
     }
 
-    public @EnumType(VkImageLayout.class) int dstImageLayout() {
+    public @MagicConstant(valuesFromClass = VkImageLayout.class) int dstImageLayout() {
         return segment.get(LAYOUT$dstImageLayout, OFFSET$dstImageLayout);
     }
 
-    public VkCopyImageToImageInfo dstImageLayout(@EnumType(VkImageLayout.class) int value) {
+    public VkCopyImageToImageInfo dstImageLayout(@MagicConstant(valuesFromClass = VkImageLayout.class) int value) {
         segment.set(LAYOUT$dstImageLayout, OFFSET$dstImageLayout, value);
         return this;
     }

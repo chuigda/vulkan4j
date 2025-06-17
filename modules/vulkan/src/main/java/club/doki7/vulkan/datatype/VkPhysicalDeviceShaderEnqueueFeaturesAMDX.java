@@ -191,11 +191,11 @@ public record VkPhysicalDeviceShaderEnqueueFeaturesAMDX(@NotNull MemorySegment s
         sType(VkStructureType.PHYSICAL_DEVICE_SHADER_ENQUEUE_FEATURES_AMDX);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkPhysicalDeviceShaderEnqueueFeaturesAMDX sType(@EnumType(VkStructureType.class) int value) {
+    public VkPhysicalDeviceShaderEnqueueFeaturesAMDX sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }

@@ -191,11 +191,11 @@ public record VkAccelerationStructureCreateInfoNV(@NotNull MemorySegment segment
         sType(VkStructureType.ACCELERATION_STRUCTURE_CREATE_INFO_NV);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkAccelerationStructureCreateInfoNV sType(@EnumType(VkStructureType.class) int value) {
+    public VkAccelerationStructureCreateInfoNV sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }

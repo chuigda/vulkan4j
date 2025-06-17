@@ -193,11 +193,11 @@ public record VkPhysicalDeviceSubgroupSizeControlProperties(@NotNull MemorySegme
         sType(VkStructureType.PHYSICAL_DEVICE_SUBGROUP_SIZE_CONTROL_PROPERTIES);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkPhysicalDeviceSubgroupSizeControlProperties sType(@EnumType(VkStructureType.class) int value) {
+    public VkPhysicalDeviceSubgroupSizeControlProperties sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }
@@ -242,11 +242,11 @@ public record VkPhysicalDeviceSubgroupSizeControlProperties(@NotNull MemorySegme
         return this;
     }
 
-    public @EnumType(VkShaderStageFlags.class) int requiredSubgroupSizeStages() {
+    public @MagicConstant(valuesFromClass = VkShaderStageFlags.class) int requiredSubgroupSizeStages() {
         return segment.get(LAYOUT$requiredSubgroupSizeStages, OFFSET$requiredSubgroupSizeStages);
     }
 
-    public VkPhysicalDeviceSubgroupSizeControlProperties requiredSubgroupSizeStages(@EnumType(VkShaderStageFlags.class) int value) {
+    public VkPhysicalDeviceSubgroupSizeControlProperties requiredSubgroupSizeStages(@MagicConstant(valuesFromClass = VkShaderStageFlags.class) int value) {
         segment.set(LAYOUT$requiredSubgroupSizeStages, OFFSET$requiredSubgroupSizeStages, value);
         return this;
     }

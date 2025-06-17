@@ -190,11 +190,11 @@ public record VkPhysicalDeviceSchedulingControlsFeaturesARM(@NotNull MemorySegme
         sType(VkStructureType.PHYSICAL_DEVICE_SCHEDULING_CONTROLS_FEATURES_ARM);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkPhysicalDeviceSchedulingControlsFeaturesARM sType(@EnumType(VkStructureType.class) int value) {
+    public VkPhysicalDeviceSchedulingControlsFeaturesARM sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }

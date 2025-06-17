@@ -191,11 +191,11 @@ public record VkVideoSessionMemoryRequirementsKHR(@NotNull MemorySegment segment
         sType(VkStructureType.VIDEO_SESSION_MEMORY_REQUIREMENTS_KHR);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkVideoSessionMemoryRequirementsKHR sType(@EnumType(VkStructureType.class) int value) {
+    public VkVideoSessionMemoryRequirementsKHR sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }

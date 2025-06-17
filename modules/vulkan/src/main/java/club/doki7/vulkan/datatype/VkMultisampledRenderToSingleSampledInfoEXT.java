@@ -191,11 +191,11 @@ public record VkMultisampledRenderToSingleSampledInfoEXT(@NotNull MemorySegment 
         sType(VkStructureType.MULTISAMPLED_RENDER_TO_SINGLE_SAMPLED_INFO_EXT);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkMultisampledRenderToSingleSampledInfoEXT sType(@EnumType(VkStructureType.class) int value) {
+    public VkMultisampledRenderToSingleSampledInfoEXT sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }
@@ -222,11 +222,11 @@ public record VkMultisampledRenderToSingleSampledInfoEXT(@NotNull MemorySegment 
         return this;
     }
 
-    public @EnumType(VkSampleCountFlags.class) int rasterizationSamples() {
+    public @MagicConstant(valuesFromClass = VkSampleCountFlags.class) int rasterizationSamples() {
         return segment.get(LAYOUT$rasterizationSamples, OFFSET$rasterizationSamples);
     }
 
-    public VkMultisampledRenderToSingleSampledInfoEXT rasterizationSamples(@EnumType(VkSampleCountFlags.class) int value) {
+    public VkMultisampledRenderToSingleSampledInfoEXT rasterizationSamples(@MagicConstant(valuesFromClass = VkSampleCountFlags.class) int value) {
         segment.set(LAYOUT$rasterizationSamples, OFFSET$rasterizationSamples, value);
         return this;
     }

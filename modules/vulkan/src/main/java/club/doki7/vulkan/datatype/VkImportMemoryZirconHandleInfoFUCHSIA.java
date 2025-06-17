@@ -191,11 +191,11 @@ public record VkImportMemoryZirconHandleInfoFUCHSIA(@NotNull MemorySegment segme
         sType(VkStructureType.IMPORT_MEMORY_ZIRCON_HANDLE_INFO_FUCHSIA);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkImportMemoryZirconHandleInfoFUCHSIA sType(@EnumType(VkStructureType.class) int value) {
+    public VkImportMemoryZirconHandleInfoFUCHSIA sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }
@@ -213,11 +213,11 @@ public record VkImportMemoryZirconHandleInfoFUCHSIA(@NotNull MemorySegment segme
         return this;
     }
 
-    public @EnumType(VkExternalMemoryHandleTypeFlags.class) int handleType() {
+    public @MagicConstant(valuesFromClass = VkExternalMemoryHandleTypeFlags.class) int handleType() {
         return segment.get(LAYOUT$handleType, OFFSET$handleType);
     }
 
-    public VkImportMemoryZirconHandleInfoFUCHSIA handleType(@EnumType(VkExternalMemoryHandleTypeFlags.class) int value) {
+    public VkImportMemoryZirconHandleInfoFUCHSIA handleType(@MagicConstant(valuesFromClass = VkExternalMemoryHandleTypeFlags.class) int value) {
         segment.set(LAYOUT$handleType, OFFSET$handleType, value);
         return this;
     }

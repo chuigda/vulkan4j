@@ -197,11 +197,11 @@ public record VkAccelerationStructureTrianglesOpacityMicromapEXT(@NotNull Memory
         sType(VkStructureType.ACCELERATION_STRUCTURE_TRIANGLES_OPACITY_MICROMAP_EXT);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkAccelerationStructureTrianglesOpacityMicromapEXT sType(@EnumType(VkStructureType.class) int value) {
+    public VkAccelerationStructureTrianglesOpacityMicromapEXT sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }
@@ -219,11 +219,11 @@ public record VkAccelerationStructureTrianglesOpacityMicromapEXT(@NotNull Memory
         return this;
     }
 
-    public @EnumType(VkIndexType.class) int indexType() {
+    public @MagicConstant(valuesFromClass = VkIndexType.class) int indexType() {
         return segment.get(LAYOUT$indexType, OFFSET$indexType);
     }
 
-    public VkAccelerationStructureTrianglesOpacityMicromapEXT indexType(@EnumType(VkIndexType.class) int value) {
+    public VkAccelerationStructureTrianglesOpacityMicromapEXT indexType(@MagicConstant(valuesFromClass = VkIndexType.class) int value) {
         segment.set(LAYOUT$indexType, OFFSET$indexType, value);
         return this;
     }

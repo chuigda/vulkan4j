@@ -199,11 +199,11 @@ public record VkBindSparseInfo(@NotNull MemorySegment segment) implements IVkBin
         sType(VkStructureType.BIND_SPARSE_INFO);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkBindSparseInfo sType(@EnumType(VkStructureType.class) int value) {
+    public VkBindSparseInfo sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }

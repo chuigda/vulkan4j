@@ -192,11 +192,11 @@ public record VkPipelineCacheCreateInfo(@NotNull MemorySegment segment) implemen
         sType(VkStructureType.PIPELINE_CACHE_CREATE_INFO);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkPipelineCacheCreateInfo sType(@EnumType(VkStructureType.class) int value) {
+    public VkPipelineCacheCreateInfo sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }
@@ -214,11 +214,11 @@ public record VkPipelineCacheCreateInfo(@NotNull MemorySegment segment) implemen
         return this;
     }
 
-    public @EnumType(VkPipelineCacheCreateFlags.class) int flags() {
+    public @MagicConstant(valuesFromClass = VkPipelineCacheCreateFlags.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public VkPipelineCacheCreateInfo flags(@EnumType(VkPipelineCacheCreateFlags.class) int value) {
+    public VkPipelineCacheCreateInfo flags(@MagicConstant(valuesFromClass = VkPipelineCacheCreateFlags.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
         return this;
     }

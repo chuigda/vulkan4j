@@ -195,11 +195,11 @@ public record VkDeviceGroupSubmitInfo(@NotNull MemorySegment segment) implements
         sType(VkStructureType.DEVICE_GROUP_SUBMIT_INFO);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkDeviceGroupSubmitInfo sType(@EnumType(VkStructureType.class) int value) {
+    public VkDeviceGroupSubmitInfo sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }

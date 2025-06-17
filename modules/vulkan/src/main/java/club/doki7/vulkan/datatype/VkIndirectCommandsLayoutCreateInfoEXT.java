@@ -195,11 +195,11 @@ public record VkIndirectCommandsLayoutCreateInfoEXT(@NotNull MemorySegment segme
         sType(VkStructureType.INDIRECT_COMMANDS_LAYOUT_CREATE_INFO_EXT);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkIndirectCommandsLayoutCreateInfoEXT sType(@EnumType(VkStructureType.class) int value) {
+    public VkIndirectCommandsLayoutCreateInfoEXT sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }
@@ -217,20 +217,20 @@ public record VkIndirectCommandsLayoutCreateInfoEXT(@NotNull MemorySegment segme
         return this;
     }
 
-    public @EnumType(VkIndirectCommandsLayoutUsageFlagsEXT.class) int flags() {
+    public @MagicConstant(valuesFromClass = VkIndirectCommandsLayoutUsageFlagsEXT.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public VkIndirectCommandsLayoutCreateInfoEXT flags(@EnumType(VkIndirectCommandsLayoutUsageFlagsEXT.class) int value) {
+    public VkIndirectCommandsLayoutCreateInfoEXT flags(@MagicConstant(valuesFromClass = VkIndirectCommandsLayoutUsageFlagsEXT.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
         return this;
     }
 
-    public @EnumType(VkShaderStageFlags.class) int shaderStages() {
+    public @MagicConstant(valuesFromClass = VkShaderStageFlags.class) int shaderStages() {
         return segment.get(LAYOUT$shaderStages, OFFSET$shaderStages);
     }
 
-    public VkIndirectCommandsLayoutCreateInfoEXT shaderStages(@EnumType(VkShaderStageFlags.class) int value) {
+    public VkIndirectCommandsLayoutCreateInfoEXT shaderStages(@MagicConstant(valuesFromClass = VkShaderStageFlags.class) int value) {
         segment.set(LAYOUT$shaderStages, OFFSET$shaderStages, value);
         return this;
     }

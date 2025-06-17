@@ -191,11 +191,11 @@ public record VkDescriptorSetBindingReferenceVALVE(@NotNull MemorySegment segmen
         sType(VkStructureType.DESCRIPTOR_SET_BINDING_REFERENCE_VALVE);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkDescriptorSetBindingReferenceVALVE sType(@EnumType(VkStructureType.class) int value) {
+    public VkDescriptorSetBindingReferenceVALVE sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }

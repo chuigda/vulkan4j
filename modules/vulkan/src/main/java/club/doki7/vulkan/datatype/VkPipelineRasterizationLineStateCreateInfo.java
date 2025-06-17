@@ -193,11 +193,11 @@ public record VkPipelineRasterizationLineStateCreateInfo(@NotNull MemorySegment 
         sType(VkStructureType.PIPELINE_RASTERIZATION_LINE_STATE_CREATE_INFO);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkPipelineRasterizationLineStateCreateInfo sType(@EnumType(VkStructureType.class) int value) {
+    public VkPipelineRasterizationLineStateCreateInfo sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }
@@ -215,11 +215,11 @@ public record VkPipelineRasterizationLineStateCreateInfo(@NotNull MemorySegment 
         return this;
     }
 
-    public @EnumType(VkLineRasterizationMode.class) int lineRasterizationMode() {
+    public @MagicConstant(valuesFromClass = VkLineRasterizationMode.class) int lineRasterizationMode() {
         return segment.get(LAYOUT$lineRasterizationMode, OFFSET$lineRasterizationMode);
     }
 
-    public VkPipelineRasterizationLineStateCreateInfo lineRasterizationMode(@EnumType(VkLineRasterizationMode.class) int value) {
+    public VkPipelineRasterizationLineStateCreateInfo lineRasterizationMode(@MagicConstant(valuesFromClass = VkLineRasterizationMode.class) int value) {
         segment.set(LAYOUT$lineRasterizationMode, OFFSET$lineRasterizationMode, value);
         return this;
     }

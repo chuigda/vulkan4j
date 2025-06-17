@@ -191,11 +191,11 @@ public record VkDescriptorBufferBindingInfoEXT(@NotNull MemorySegment segment) i
         sType(VkStructureType.DESCRIPTOR_BUFFER_BINDING_INFO_EXT);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkDescriptorBufferBindingInfoEXT sType(@EnumType(VkStructureType.class) int value) {
+    public VkDescriptorBufferBindingInfoEXT sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }
@@ -222,11 +222,11 @@ public record VkDescriptorBufferBindingInfoEXT(@NotNull MemorySegment segment) i
         return this;
     }
 
-    public @EnumType(VkBufferUsageFlags.class) int usage() {
+    public @MagicConstant(valuesFromClass = VkBufferUsageFlags.class) int usage() {
         return segment.get(LAYOUT$usage, OFFSET$usage);
     }
 
-    public VkDescriptorBufferBindingInfoEXT usage(@EnumType(VkBufferUsageFlags.class) int value) {
+    public VkDescriptorBufferBindingInfoEXT usage(@MagicConstant(valuesFromClass = VkBufferUsageFlags.class) int value) {
         segment.set(LAYOUT$usage, OFFSET$usage, value);
         return this;
     }

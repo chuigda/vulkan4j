@@ -171,11 +171,11 @@ public record VkRenderPassSubpassFeedbackInfoEXT(@NotNull MemorySegment segment)
         return ret;
     }
 
-    public @EnumType(VkSubpassMergeStatusEXT.class) int subpassMergeStatus() {
+    public @MagicConstant(valuesFromClass = VkSubpassMergeStatusEXT.class) int subpassMergeStatus() {
         return segment.get(LAYOUT$subpassMergeStatus, OFFSET$subpassMergeStatus);
     }
 
-    public VkRenderPassSubpassFeedbackInfoEXT subpassMergeStatus(@EnumType(VkSubpassMergeStatusEXT.class) int value) {
+    public VkRenderPassSubpassFeedbackInfoEXT subpassMergeStatus(@MagicConstant(valuesFromClass = VkSubpassMergeStatusEXT.class) int value) {
         segment.set(LAYOUT$subpassMergeStatus, OFFSET$subpassMergeStatus, value);
         return this;
     }

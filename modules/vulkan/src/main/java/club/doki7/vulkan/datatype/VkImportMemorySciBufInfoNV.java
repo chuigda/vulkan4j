@@ -191,11 +191,11 @@ public record VkImportMemorySciBufInfoNV(@NotNull MemorySegment segment) impleme
         sType(VkStructureType.IMPORT_MEMORY_SCI_BUF_INFO_NV);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkImportMemorySciBufInfoNV sType(@EnumType(VkStructureType.class) int value) {
+    public VkImportMemorySciBufInfoNV sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }
@@ -213,11 +213,11 @@ public record VkImportMemorySciBufInfoNV(@NotNull MemorySegment segment) impleme
         return this;
     }
 
-    public @EnumType(VkExternalMemoryHandleTypeFlags.class) int handleType() {
+    public @MagicConstant(valuesFromClass = VkExternalMemoryHandleTypeFlags.class) int handleType() {
         return segment.get(LAYOUT$handleType, OFFSET$handleType);
     }
 
-    public VkImportMemorySciBufInfoNV handleType(@EnumType(VkExternalMemoryHandleTypeFlags.class) int value) {
+    public VkImportMemorySciBufInfoNV handleType(@MagicConstant(valuesFromClass = VkExternalMemoryHandleTypeFlags.class) int value) {
         segment.set(LAYOUT$handleType, OFFSET$handleType, value);
         return this;
     }

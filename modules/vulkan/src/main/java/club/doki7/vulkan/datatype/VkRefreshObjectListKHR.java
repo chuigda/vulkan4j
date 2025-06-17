@@ -191,11 +191,11 @@ public record VkRefreshObjectListKHR(@NotNull MemorySegment segment) implements 
         sType(VkStructureType.REFRESH_OBJECT_LIST_KHR);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkRefreshObjectListKHR sType(@EnumType(VkStructureType.class) int value) {
+    public VkRefreshObjectListKHR sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }

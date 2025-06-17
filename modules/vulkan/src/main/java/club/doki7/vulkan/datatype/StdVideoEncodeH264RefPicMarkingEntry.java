@@ -171,11 +171,11 @@ public record StdVideoEncodeH264RefPicMarkingEntry(@NotNull MemorySegment segmen
         return ret;
     }
 
-    public @EnumType(StdVideoH264MemMgmtControlOp.class) int memory_management_control_operation() {
+    public @MagicConstant(valuesFromClass = StdVideoH264MemMgmtControlOp.class) int memory_management_control_operation() {
         return segment.get(LAYOUT$memory_management_control_operation, OFFSET$memory_management_control_operation);
     }
 
-    public StdVideoEncodeH264RefPicMarkingEntry memory_management_control_operation(@EnumType(StdVideoH264MemMgmtControlOp.class) int value) {
+    public StdVideoEncodeH264RefPicMarkingEntry memory_management_control_operation(@MagicConstant(valuesFromClass = StdVideoH264MemMgmtControlOp.class) int value) {
         segment.set(LAYOUT$memory_management_control_operation, OFFSET$memory_management_control_operation, value);
         return this;
     }

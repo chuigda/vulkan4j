@@ -1,6 +1,7 @@
 package club.doki7.vulkan.bitmask;
 
 import club.doki7.ffm.annotation.*;
+import org.intellij.lang.annotations.MagicConstant;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,7 +15,7 @@ public final class VkResolveModeFlags {
     public static final int NONE = 0x0;
     public static final int SAMPLE_ZERO = 0x1;
 
-    public static String explain(@EnumType(VkResolveModeFlags.class) int flags) {
+    public static String explain(@MagicConstant(flagsFromClass = VkResolveModeFlags.class) int flags) {
         List<String> detectedFlagBits = new ArrayList<>();
         if ((flags & AVERAGE) != 0) {
             detectedFlagBits.add("VK_RESOLVE_MODE_AVERAGE_BIT");

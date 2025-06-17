@@ -192,11 +192,11 @@ public record VkQueryPoolPerformanceCreateInfoKHR(@NotNull MemorySegment segment
         sType(VkStructureType.QUERY_POOL_PERFORMANCE_CREATE_INFO_KHR);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkQueryPoolPerformanceCreateInfoKHR sType(@EnumType(VkStructureType.class) int value) {
+    public VkQueryPoolPerformanceCreateInfoKHR sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }

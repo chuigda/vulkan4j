@@ -190,11 +190,11 @@ public record VkReleaseCapturedPipelineDataInfoKHR(@NotNull MemorySegment segmen
         sType(VkStructureType.RELEASE_CAPTURED_PIPELINE_DATA_INFO_KHR);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkReleaseCapturedPipelineDataInfoKHR sType(@EnumType(VkStructureType.class) int value) {
+    public VkReleaseCapturedPipelineDataInfoKHR sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }

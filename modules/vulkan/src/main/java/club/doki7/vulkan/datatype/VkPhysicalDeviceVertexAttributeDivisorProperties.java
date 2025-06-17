@@ -191,11 +191,11 @@ public record VkPhysicalDeviceVertexAttributeDivisorProperties(@NotNull MemorySe
         sType(VkStructureType.PHYSICAL_DEVICE_VERTEX_ATTRIBUTE_DIVISOR_PROPERTIES);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkPhysicalDeviceVertexAttributeDivisorProperties sType(@EnumType(VkStructureType.class) int value) {
+    public VkPhysicalDeviceVertexAttributeDivisorProperties sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }

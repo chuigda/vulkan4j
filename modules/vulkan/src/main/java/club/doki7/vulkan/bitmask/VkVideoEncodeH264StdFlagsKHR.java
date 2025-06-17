@@ -1,6 +1,7 @@
 package club.doki7.vulkan.bitmask;
 
 import club.doki7.ffm.annotation.*;
+import org.intellij.lang.annotations.MagicConstant;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -28,7 +29,7 @@ public final class VkVideoEncodeH264StdFlagsKHR {
     public static final int VK_VIDEO_ENCODE_H264_STD_WEIGHTED_BIPRED_IDC_IMPLICIT = 0x100;
     public static final int VK_VIDEO_ENCODE_H264_STD_WEIGHTED_PRED_FLAG_SET = 0x40;
 
-    public static String explain(@EnumType(VkVideoEncodeH264StdFlagsKHR.class) int flags) {
+    public static String explain(@MagicConstant(flagsFromClass = VkVideoEncodeH264StdFlagsKHR.class) int flags) {
         List<String> detectedFlagBits = new ArrayList<>();
         if ((flags & VK_VIDEO_ENCODE_H264_STD_CHROMA_QP_INDEX_OFFSET) != 0) {
             detectedFlagBits.add("VK_VIDEO_ENCODE_H264_STD_CHROMA_QP_INDEX_OFFSET_BIT_KHR");

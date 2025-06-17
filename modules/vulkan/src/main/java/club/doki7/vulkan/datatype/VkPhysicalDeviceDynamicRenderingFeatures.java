@@ -190,11 +190,11 @@ public record VkPhysicalDeviceDynamicRenderingFeatures(@NotNull MemorySegment se
         sType(VkStructureType.PHYSICAL_DEVICE_DYNAMIC_RENDERING_FEATURES);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkPhysicalDeviceDynamicRenderingFeatures sType(@EnumType(VkStructureType.class) int value) {
+    public VkPhysicalDeviceDynamicRenderingFeatures sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }

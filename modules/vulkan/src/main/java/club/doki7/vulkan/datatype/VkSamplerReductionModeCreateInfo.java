@@ -190,11 +190,11 @@ public record VkSamplerReductionModeCreateInfo(@NotNull MemorySegment segment) i
         sType(VkStructureType.SAMPLER_REDUCTION_MODE_CREATE_INFO);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkSamplerReductionModeCreateInfo sType(@EnumType(VkStructureType.class) int value) {
+    public VkSamplerReductionModeCreateInfo sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }
@@ -212,11 +212,11 @@ public record VkSamplerReductionModeCreateInfo(@NotNull MemorySegment segment) i
         return this;
     }
 
-    public @EnumType(VkSamplerReductionMode.class) int reductionMode() {
+    public @MagicConstant(valuesFromClass = VkSamplerReductionMode.class) int reductionMode() {
         return segment.get(LAYOUT$reductionMode, OFFSET$reductionMode);
     }
 
-    public VkSamplerReductionModeCreateInfo reductionMode(@EnumType(VkSamplerReductionMode.class) int value) {
+    public VkSamplerReductionModeCreateInfo reductionMode(@MagicConstant(valuesFromClass = VkSamplerReductionMode.class) int value) {
         segment.set(LAYOUT$reductionMode, OFFSET$reductionMode, value);
         return this;
     }

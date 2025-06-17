@@ -190,11 +190,11 @@ public record VkPhysicalDeviceRayTracingInvocationReorderPropertiesNV(@NotNull M
         sType(VkStructureType.PHYSICAL_DEVICE_RAY_TRACING_INVOCATION_REORDER_PROPERTIES_NV);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkPhysicalDeviceRayTracingInvocationReorderPropertiesNV sType(@EnumType(VkStructureType.class) int value) {
+    public VkPhysicalDeviceRayTracingInvocationReorderPropertiesNV sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }
@@ -212,11 +212,11 @@ public record VkPhysicalDeviceRayTracingInvocationReorderPropertiesNV(@NotNull M
         return this;
     }
 
-    public @EnumType(VkRayTracingInvocationReorderModeNV.class) int rayTracingInvocationReorderReorderingHint() {
+    public @MagicConstant(valuesFromClass = VkRayTracingInvocationReorderModeNV.class) int rayTracingInvocationReorderReorderingHint() {
         return segment.get(LAYOUT$rayTracingInvocationReorderReorderingHint, OFFSET$rayTracingInvocationReorderReorderingHint);
     }
 
-    public VkPhysicalDeviceRayTracingInvocationReorderPropertiesNV rayTracingInvocationReorderReorderingHint(@EnumType(VkRayTracingInvocationReorderModeNV.class) int value) {
+    public VkPhysicalDeviceRayTracingInvocationReorderPropertiesNV rayTracingInvocationReorderReorderingHint(@MagicConstant(valuesFromClass = VkRayTracingInvocationReorderModeNV.class) int value) {
         segment.set(LAYOUT$rayTracingInvocationReorderReorderingHint, OFFSET$rayTracingInvocationReorderReorderingHint, value);
         return this;
     }

@@ -1,6 +1,7 @@
 package club.doki7.vulkan.bitmask;
 
 import club.doki7.ffm.annotation.*;
+import org.intellij.lang.annotations.MagicConstant;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -53,7 +54,7 @@ public final class VkAccessFlags2 {
     public static final long VIDEO_ENCODE_READ_KHR = 0x2000000000L;
     public static final long VIDEO_ENCODE_WRITE_KHR = 0x4000000000L;
 
-    public static String explain(@EnumType(VkAccessFlags2.class) long flags) {
+    public static String explain(@MagicConstant(flagsFromClass = VkAccessFlags2.class) long flags) {
         List<String> detectedFlagBits = new ArrayList<>();
         if ((flags & ACCELERATION_STRUCTURE_READ_KHR) != 0) {
             detectedFlagBits.add("VK_ACCESS_2_ACCELERATION_STRUCTURE_READ_BIT_KHR");

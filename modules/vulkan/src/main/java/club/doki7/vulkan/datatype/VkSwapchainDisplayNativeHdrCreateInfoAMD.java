@@ -190,11 +190,11 @@ public record VkSwapchainDisplayNativeHdrCreateInfoAMD(@NotNull MemorySegment se
         sType(VkStructureType.SWAPCHAIN_DISPLAY_NATIVE_HDR_CREATE_INFO_AMD);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkSwapchainDisplayNativeHdrCreateInfoAMD sType(@EnumType(VkStructureType.class) int value) {
+    public VkSwapchainDisplayNativeHdrCreateInfoAMD sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }

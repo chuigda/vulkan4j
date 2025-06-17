@@ -190,11 +190,11 @@ public record VkImageSparseMemoryRequirementsInfo2(@NotNull MemorySegment segmen
         sType(VkStructureType.IMAGE_SPARSE_MEMORY_REQUIREMENTS_INFO_2);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkImageSparseMemoryRequirementsInfo2 sType(@EnumType(VkStructureType.class) int value) {
+    public VkImageSparseMemoryRequirementsInfo2 sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }

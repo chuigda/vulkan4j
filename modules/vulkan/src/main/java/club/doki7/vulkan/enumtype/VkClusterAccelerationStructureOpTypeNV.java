@@ -1,6 +1,7 @@
 package club.doki7.vulkan.enumtype;
 
 import club.doki7.ffm.annotation.*;
+import org.intellij.lang.annotations.MagicConstant;
 
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkClusterAccelerationStructureOpTypeNV.html"><code>VkClusterAccelerationStructureOpTypeNV</code></a>
 public final class VkClusterAccelerationStructureOpTypeNV {
@@ -10,7 +11,7 @@ public final class VkClusterAccelerationStructureOpTypeNV {
     public static final int BUILD_TRIANGLE_CLUSTER_TEMPLATE = 0x3;
     public static final int INSTANTIATE_TRIANGLE_CLUSTER = 0x4;
 
-    public static String explain(@EnumType(VkClusterAccelerationStructureOpTypeNV.class) int value) {
+    public static String explain(@MagicConstant(valuesFromClass = VkClusterAccelerationStructureOpTypeNV.class) int value) {
         return switch (value) {
             case VkClusterAccelerationStructureOpTypeNV.BUILD_CLUSTERS_BOTTOM_LEVEL -> "VK_CLUSTER_ACCELERATION_STRUCTURE_OP_TYPE_BUILD_CLUSTERS_BOTTOM_LEVEL_NV";
             case VkClusterAccelerationStructureOpTypeNV.BUILD_TRIANGLE_CLUSTER -> "VK_CLUSTER_ACCELERATION_STRUCTURE_OP_TYPE_BUILD_TRIANGLE_CLUSTER_NV";

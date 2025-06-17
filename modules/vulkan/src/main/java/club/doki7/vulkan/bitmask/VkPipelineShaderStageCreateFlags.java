@@ -1,6 +1,7 @@
 package club.doki7.vulkan.bitmask;
 
 import club.doki7.ffm.annotation.*;
+import org.intellij.lang.annotations.MagicConstant;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,7 +11,7 @@ public final class VkPipelineShaderStageCreateFlags {
     public static final int ALLOW_VARYING_SUBGROUP_SIZE = 0x1;
     public static final int REQUIRE_FULL_SUBGROUPS = 0x2;
 
-    public static String explain(@EnumType(VkPipelineShaderStageCreateFlags.class) int flags) {
+    public static String explain(@MagicConstant(flagsFromClass = VkPipelineShaderStageCreateFlags.class) int flags) {
         List<String> detectedFlagBits = new ArrayList<>();
         if ((flags & ALLOW_VARYING_SUBGROUP_SIZE) != 0) {
             detectedFlagBits.add("VK_PIPELINE_SHADER_STAGE_CREATE_ALLOW_VARYING_SUBGROUP_SIZE_BIT");

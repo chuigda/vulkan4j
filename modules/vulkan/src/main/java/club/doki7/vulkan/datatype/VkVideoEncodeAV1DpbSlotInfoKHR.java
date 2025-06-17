@@ -190,11 +190,11 @@ public record VkVideoEncodeAV1DpbSlotInfoKHR(@NotNull MemorySegment segment) imp
         sType(VkStructureType.VIDEO_ENCODE_AV1_DPB_SLOT_INFO_KHR);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkVideoEncodeAV1DpbSlotInfoKHR sType(@EnumType(VkStructureType.class) int value) {
+    public VkVideoEncodeAV1DpbSlotInfoKHR sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }

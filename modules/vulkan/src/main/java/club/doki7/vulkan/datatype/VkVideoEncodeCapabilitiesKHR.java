@@ -196,11 +196,11 @@ public record VkVideoEncodeCapabilitiesKHR(@NotNull MemorySegment segment) imple
         sType(VkStructureType.VIDEO_ENCODE_CAPABILITIES_KHR);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkVideoEncodeCapabilitiesKHR sType(@EnumType(VkStructureType.class) int value) {
+    public VkVideoEncodeCapabilitiesKHR sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }
@@ -218,20 +218,20 @@ public record VkVideoEncodeCapabilitiesKHR(@NotNull MemorySegment segment) imple
         return this;
     }
 
-    public @EnumType(VkVideoEncodeCapabilityFlagsKHR.class) int flags() {
+    public @MagicConstant(valuesFromClass = VkVideoEncodeCapabilityFlagsKHR.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public VkVideoEncodeCapabilitiesKHR flags(@EnumType(VkVideoEncodeCapabilityFlagsKHR.class) int value) {
+    public VkVideoEncodeCapabilitiesKHR flags(@MagicConstant(valuesFromClass = VkVideoEncodeCapabilityFlagsKHR.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
         return this;
     }
 
-    public @EnumType(VkVideoEncodeRateControlModeFlagsKHR.class) int rateControlModes() {
+    public @MagicConstant(valuesFromClass = VkVideoEncodeRateControlModeFlagsKHR.class) int rateControlModes() {
         return segment.get(LAYOUT$rateControlModes, OFFSET$rateControlModes);
     }
 
-    public VkVideoEncodeCapabilitiesKHR rateControlModes(@EnumType(VkVideoEncodeRateControlModeFlagsKHR.class) int value) {
+    public VkVideoEncodeCapabilitiesKHR rateControlModes(@MagicConstant(valuesFromClass = VkVideoEncodeRateControlModeFlagsKHR.class) int value) {
         segment.set(LAYOUT$rateControlModes, OFFSET$rateControlModes, value);
         return this;
     }
@@ -277,11 +277,11 @@ public record VkVideoEncodeCapabilitiesKHR(@NotNull MemorySegment segment) imple
         return this;
     }
 
-    public @EnumType(VkVideoEncodeFeedbackFlagsKHR.class) int supportedEncodeFeedbackFlags() {
+    public @MagicConstant(valuesFromClass = VkVideoEncodeFeedbackFlagsKHR.class) int supportedEncodeFeedbackFlags() {
         return segment.get(LAYOUT$supportedEncodeFeedbackFlags, OFFSET$supportedEncodeFeedbackFlags);
     }
 
-    public VkVideoEncodeCapabilitiesKHR supportedEncodeFeedbackFlags(@EnumType(VkVideoEncodeFeedbackFlagsKHR.class) int value) {
+    public VkVideoEncodeCapabilitiesKHR supportedEncodeFeedbackFlags(@MagicConstant(valuesFromClass = VkVideoEncodeFeedbackFlagsKHR.class) int value) {
         segment.set(LAYOUT$supportedEncodeFeedbackFlags, OFFSET$supportedEncodeFeedbackFlags, value);
         return this;
     }

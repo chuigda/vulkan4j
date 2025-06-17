@@ -193,11 +193,11 @@ public record VkValidationFeaturesEXT(@NotNull MemorySegment segment) implements
         sType(VkStructureType.VALIDATION_FEATURES_EXT);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkValidationFeaturesEXT sType(@EnumType(VkStructureType.class) int value) {
+    public VkValidationFeaturesEXT sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }

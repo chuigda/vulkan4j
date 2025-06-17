@@ -190,11 +190,11 @@ public record VkPhysicalDeviceCoherentMemoryFeaturesAMD(@NotNull MemorySegment s
         sType(VkStructureType.PHYSICAL_DEVICE_COHERENT_MEMORY_FEATURES_AMD);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkPhysicalDeviceCoherentMemoryFeaturesAMD sType(@EnumType(VkStructureType.class) int value) {
+    public VkPhysicalDeviceCoherentMemoryFeaturesAMD sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }

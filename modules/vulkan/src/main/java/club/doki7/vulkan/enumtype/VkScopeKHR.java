@@ -1,6 +1,7 @@
 package club.doki7.vulkan.enumtype;
 
 import club.doki7.ffm.annotation.*;
+import org.intellij.lang.annotations.MagicConstant;
 
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkScopeKHR.html"><code>VkScopeKHR</code></a>
 public final class VkScopeKHR {
@@ -9,7 +10,7 @@ public final class VkScopeKHR {
     public static final int SUBGROUP = 0x3;
     public static final int QUEUE_FAMILY = 0x5;
 
-    public static String explain(@EnumType(VkScopeKHR.class) int value) {
+    public static String explain(@MagicConstant(valuesFromClass = VkScopeKHR.class) int value) {
         return switch (value) {
             case VkScopeKHR.DEVICE -> "VK_SCOPE_DEVICE_KHR";
             case VkScopeKHR.QUEUE_FAMILY -> "VK_SCOPE_QUEUE_FAMILY_KHR";

@@ -190,11 +190,11 @@ public record VkPhysicalDeviceDisplacementMicromapPropertiesNV(@NotNull MemorySe
         sType(VkStructureType.PHYSICAL_DEVICE_DISPLACEMENT_MICROMAP_PROPERTIES_NV);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkPhysicalDeviceDisplacementMicromapPropertiesNV sType(@EnumType(VkStructureType.class) int value) {
+    public VkPhysicalDeviceDisplacementMicromapPropertiesNV sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }

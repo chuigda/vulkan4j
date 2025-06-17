@@ -171,11 +171,11 @@ public record VkImageSubresource(@NotNull MemorySegment segment) implements IVkI
         return ret;
     }
 
-    public @EnumType(VkImageAspectFlags.class) int aspectMask() {
+    public @MagicConstant(valuesFromClass = VkImageAspectFlags.class) int aspectMask() {
         return segment.get(LAYOUT$aspectMask, OFFSET$aspectMask);
     }
 
-    public VkImageSubresource aspectMask(@EnumType(VkImageAspectFlags.class) int value) {
+    public VkImageSubresource aspectMask(@MagicConstant(valuesFromClass = VkImageAspectFlags.class) int value) {
         segment.set(LAYOUT$aspectMask, OFFSET$aspectMask, value);
         return this;
     }

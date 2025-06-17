@@ -1,6 +1,7 @@
 package club.doki7.vulkan.enumtype;
 
 import club.doki7.ffm.annotation.*;
+import org.intellij.lang.annotations.MagicConstant;
 
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkViewportCoordinateSwizzleNV.html"><code>VkViewportCoordinateSwizzleNV</code></a>
 public final class VkViewportCoordinateSwizzleNV {
@@ -13,7 +14,7 @@ public final class VkViewportCoordinateSwizzleNV {
     public static final int POSITIVE_W = 0x6;
     public static final int NEGATIVE_W = 0x7;
 
-    public static String explain(@EnumType(VkViewportCoordinateSwizzleNV.class) int value) {
+    public static String explain(@MagicConstant(valuesFromClass = VkViewportCoordinateSwizzleNV.class) int value) {
         return switch (value) {
             case VkViewportCoordinateSwizzleNV.NEGATIVE_W -> "VK_VIEWPORT_COORDINATE_SWIZZLE_NEGATIVE_W_NV";
             case VkViewportCoordinateSwizzleNV.NEGATIVE_X -> "VK_VIEWPORT_COORDINATE_SWIZZLE_NEGATIVE_X_NV";

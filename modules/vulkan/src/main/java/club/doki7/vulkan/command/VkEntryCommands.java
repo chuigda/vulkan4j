@@ -29,7 +29,7 @@ public final class VkEntryCommands {
     // region command wrappers
 
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkCreateInstance.html"><code>vkCreateInstance</code></a>
-    public @EnumType(VkResult.class) int createInstance(
+    public @MagicConstant(valuesFromClass = VkResult.class) int createInstance(
         @Pointer VkInstanceCreateInfo pCreateInfo,
         @Nullable @Pointer VkAllocationCallbacks pAllocator,
         @Pointer VkInstance.Ptr pInstance
@@ -47,7 +47,7 @@ public final class VkEntryCommands {
     }
 
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkEnumerateInstanceExtensionProperties.html"><code>vkEnumerateInstanceExtensionProperties</code></a>
-    public @EnumType(VkResult.class) int enumerateInstanceExtensionProperties(
+    public @MagicConstant(valuesFromClass = VkResult.class) int enumerateInstanceExtensionProperties(
         @Nullable BytePtr pLayerName,
         @Unsigned IntPtr pPropertyCount,
         @Nullable @Pointer IVkExtensionProperties pProperties
@@ -65,7 +65,7 @@ public final class VkEntryCommands {
     }
 
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkEnumerateInstanceLayerProperties.html"><code>vkEnumerateInstanceLayerProperties</code></a>
-    public @EnumType(VkResult.class) int enumerateInstanceLayerProperties(
+    public @MagicConstant(valuesFromClass = VkResult.class) int enumerateInstanceLayerProperties(
         @Unsigned IntPtr pPropertyCount,
         @Nullable @Pointer IVkLayerProperties pProperties
     ) {
@@ -81,7 +81,7 @@ public final class VkEntryCommands {
     }
 
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkEnumerateInstanceVersion.html"><code>vkEnumerateInstanceVersion</code></a>
-    public @EnumType(VkResult.class) int enumerateInstanceVersion(
+    public @MagicConstant(valuesFromClass = VkResult.class) int enumerateInstanceVersion(
         @Unsigned IntPtr pApiVersion
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkEnumerateInstanceVersion);

@@ -192,11 +192,11 @@ public record VkBufferConstraintsInfoFUCHSIA(@NotNull MemorySegment segment) imp
         sType(VkStructureType.BUFFER_CONSTRAINTS_INFO_FUCHSIA);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkBufferConstraintsInfoFUCHSIA sType(@EnumType(VkStructureType.class) int value) {
+    public VkBufferConstraintsInfoFUCHSIA sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }
@@ -228,11 +228,11 @@ public record VkBufferConstraintsInfoFUCHSIA(@NotNull MemorySegment segment) imp
         return this;
     }
 
-    public @EnumType(VkFormatFeatureFlags.class) int requiredFormatFeatures() {
+    public @MagicConstant(valuesFromClass = VkFormatFeatureFlags.class) int requiredFormatFeatures() {
         return segment.get(LAYOUT$requiredFormatFeatures, OFFSET$requiredFormatFeatures);
     }
 
-    public VkBufferConstraintsInfoFUCHSIA requiredFormatFeatures(@EnumType(VkFormatFeatureFlags.class) int value) {
+    public VkBufferConstraintsInfoFUCHSIA requiredFormatFeatures(@MagicConstant(valuesFromClass = VkFormatFeatureFlags.class) int value) {
         segment.set(LAYOUT$requiredFormatFeatures, OFFSET$requiredFormatFeatures, value);
         return this;
     }

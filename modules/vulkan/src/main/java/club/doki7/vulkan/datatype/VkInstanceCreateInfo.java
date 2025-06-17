@@ -195,11 +195,11 @@ public record VkInstanceCreateInfo(@NotNull MemorySegment segment) implements IV
         sType(VkStructureType.INSTANCE_CREATE_INFO);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkInstanceCreateInfo sType(@EnumType(VkStructureType.class) int value) {
+    public VkInstanceCreateInfo sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }
@@ -217,11 +217,11 @@ public record VkInstanceCreateInfo(@NotNull MemorySegment segment) implements IV
         return this;
     }
 
-    public @EnumType(VkInstanceCreateFlags.class) int flags() {
+    public @MagicConstant(valuesFromClass = VkInstanceCreateFlags.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public VkInstanceCreateInfo flags(@EnumType(VkInstanceCreateFlags.class) int value) {
+    public VkInstanceCreateInfo flags(@MagicConstant(valuesFromClass = VkInstanceCreateFlags.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
         return this;
     }

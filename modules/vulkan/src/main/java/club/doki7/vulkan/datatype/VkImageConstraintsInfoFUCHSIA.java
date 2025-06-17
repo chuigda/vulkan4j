@@ -193,11 +193,11 @@ public record VkImageConstraintsInfoFUCHSIA(@NotNull MemorySegment segment) impl
         sType(VkStructureType.IMAGE_CONSTRAINTS_INFO_FUCHSIA);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkImageConstraintsInfoFUCHSIA sType(@EnumType(VkStructureType.class) int value) {
+    public VkImageConstraintsInfoFUCHSIA sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }
@@ -270,11 +270,11 @@ public record VkImageConstraintsInfoFUCHSIA(@NotNull MemorySegment segment) impl
         return this;
     }
 
-    public @EnumType(VkImageConstraintsInfoFlagsFUCHSIA.class) int flags() {
+    public @MagicConstant(valuesFromClass = VkImageConstraintsInfoFlagsFUCHSIA.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public VkImageConstraintsInfoFUCHSIA flags(@EnumType(VkImageConstraintsInfoFlagsFUCHSIA.class) int value) {
+    public VkImageConstraintsInfoFUCHSIA flags(@MagicConstant(valuesFromClass = VkImageConstraintsInfoFlagsFUCHSIA.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
         return this;
     }

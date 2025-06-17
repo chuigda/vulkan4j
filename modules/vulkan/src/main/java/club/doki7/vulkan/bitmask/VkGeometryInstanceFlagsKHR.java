@@ -1,6 +1,7 @@
 package club.doki7.vulkan.bitmask;
 
 import club.doki7.ffm.annotation.*;
+import org.intellij.lang.annotations.MagicConstant;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,7 +15,7 @@ public final class VkGeometryInstanceFlagsKHR {
     public static final int TRIANGLE_FACING_CULL_DISABLE = 0x1;
     public static final int TRIANGLE_FLIP_FACING = 0x2;
 
-    public static String explain(@EnumType(VkGeometryInstanceFlagsKHR.class) int flags) {
+    public static String explain(@MagicConstant(flagsFromClass = VkGeometryInstanceFlagsKHR.class) int flags) {
         List<String> detectedFlagBits = new ArrayList<>();
         if ((flags & DISABLE_OPACITY_MICROMAPS_EXT) != 0) {
             detectedFlagBits.add("VK_GEOMETRY_INSTANCE_DISABLE_OPACITY_MICROMAPS_EXT");

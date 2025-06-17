@@ -190,11 +190,11 @@ public record VkDeviceEventInfoEXT(@NotNull MemorySegment segment) implements IV
         sType(VkStructureType.DEVICE_EVENT_INFO_EXT);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkDeviceEventInfoEXT sType(@EnumType(VkStructureType.class) int value) {
+    public VkDeviceEventInfoEXT sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }
@@ -212,11 +212,11 @@ public record VkDeviceEventInfoEXT(@NotNull MemorySegment segment) implements IV
         return this;
     }
 
-    public @EnumType(VkDeviceEventTypeEXT.class) int deviceEvent() {
+    public @MagicConstant(valuesFromClass = VkDeviceEventTypeEXT.class) int deviceEvent() {
         return segment.get(LAYOUT$deviceEvent, OFFSET$deviceEvent);
     }
 
-    public VkDeviceEventInfoEXT deviceEvent(@EnumType(VkDeviceEventTypeEXT.class) int value) {
+    public VkDeviceEventInfoEXT deviceEvent(@MagicConstant(valuesFromClass = VkDeviceEventTypeEXT.class) int value) {
         segment.set(LAYOUT$deviceEvent, OFFSET$deviceEvent, value);
         return this;
     }

@@ -194,11 +194,11 @@ public record VkPipelineShaderStageCreateInfo(@NotNull MemorySegment segment) im
         sType(VkStructureType.PIPELINE_SHADER_STAGE_CREATE_INFO);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkPipelineShaderStageCreateInfo sType(@EnumType(VkStructureType.class) int value) {
+    public VkPipelineShaderStageCreateInfo sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }
@@ -216,20 +216,20 @@ public record VkPipelineShaderStageCreateInfo(@NotNull MemorySegment segment) im
         return this;
     }
 
-    public @EnumType(VkPipelineShaderStageCreateFlags.class) int flags() {
+    public @MagicConstant(valuesFromClass = VkPipelineShaderStageCreateFlags.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public VkPipelineShaderStageCreateInfo flags(@EnumType(VkPipelineShaderStageCreateFlags.class) int value) {
+    public VkPipelineShaderStageCreateInfo flags(@MagicConstant(valuesFromClass = VkPipelineShaderStageCreateFlags.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
         return this;
     }
 
-    public @EnumType(VkShaderStageFlags.class) int stage() {
+    public @MagicConstant(valuesFromClass = VkShaderStageFlags.class) int stage() {
         return segment.get(LAYOUT$stage, OFFSET$stage);
     }
 
-    public VkPipelineShaderStageCreateInfo stage(@EnumType(VkShaderStageFlags.class) int value) {
+    public VkPipelineShaderStageCreateInfo stage(@MagicConstant(valuesFromClass = VkShaderStageFlags.class) int value) {
         segment.set(LAYOUT$stage, OFFSET$stage, value);
         return this;
     }

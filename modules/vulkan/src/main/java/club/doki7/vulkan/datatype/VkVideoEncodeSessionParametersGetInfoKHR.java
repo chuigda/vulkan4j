@@ -190,11 +190,11 @@ public record VkVideoEncodeSessionParametersGetInfoKHR(@NotNull MemorySegment se
         sType(VkStructureType.VIDEO_ENCODE_SESSION_PARAMETERS_GET_INFO_KHR);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkVideoEncodeSessionParametersGetInfoKHR sType(@EnumType(VkStructureType.class) int value) {
+    public VkVideoEncodeSessionParametersGetInfoKHR sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }

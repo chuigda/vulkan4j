@@ -192,11 +192,11 @@ public record VkAccelerationStructureGeometryKHR(@NotNull MemorySegment segment)
         sType(VkStructureType.ACCELERATION_STRUCTURE_GEOMETRY_KHR);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkAccelerationStructureGeometryKHR sType(@EnumType(VkStructureType.class) int value) {
+    public VkAccelerationStructureGeometryKHR sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }
@@ -214,11 +214,11 @@ public record VkAccelerationStructureGeometryKHR(@NotNull MemorySegment segment)
         return this;
     }
 
-    public @EnumType(VkGeometryTypeKHR.class) int geometryType() {
+    public @MagicConstant(valuesFromClass = VkGeometryTypeKHR.class) int geometryType() {
         return segment.get(LAYOUT$geometryType, OFFSET$geometryType);
     }
 
-    public VkAccelerationStructureGeometryKHR geometryType(@EnumType(VkGeometryTypeKHR.class) int value) {
+    public VkAccelerationStructureGeometryKHR geometryType(@MagicConstant(valuesFromClass = VkGeometryTypeKHR.class) int value) {
         segment.set(LAYOUT$geometryType, OFFSET$geometryType, value);
         return this;
     }
@@ -237,11 +237,11 @@ public record VkAccelerationStructureGeometryKHR(@NotNull MemorySegment segment)
         return this;
     }
 
-    public @EnumType(VkGeometryFlagsKHR.class) int flags() {
+    public @MagicConstant(valuesFromClass = VkGeometryFlagsKHR.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public VkAccelerationStructureGeometryKHR flags(@EnumType(VkGeometryFlagsKHR.class) int value) {
+    public VkAccelerationStructureGeometryKHR flags(@MagicConstant(valuesFromClass = VkGeometryFlagsKHR.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
         return this;
     }

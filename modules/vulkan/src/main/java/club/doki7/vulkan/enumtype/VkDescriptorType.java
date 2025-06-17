@@ -1,6 +1,7 @@
 package club.doki7.vulkan.enumtype;
 
 import club.doki7.ffm.annotation.*;
+import org.intellij.lang.annotations.MagicConstant;
 
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkDescriptorType.html"><code>VkDescriptorType</code></a>
 public final class VkDescriptorType {
@@ -23,7 +24,7 @@ public final class VkDescriptorType {
     public static final int MUTABLE_EXT = 0x3ba02518;
     public static final int PARTITIONED_ACCELERATION_STRUCTURE_NV = 0x3ba37c90;
 
-    public static String explain(@EnumType(VkDescriptorType.class) int value) {
+    public static String explain(@MagicConstant(valuesFromClass = VkDescriptorType.class) int value) {
         return switch (value) {
             case VkDescriptorType.ACCELERATION_STRUCTURE_KHR -> "VK_DESCRIPTOR_TYPE_ACCELERATION_STRUCTURE_KHR";
             case VkDescriptorType.ACCELERATION_STRUCTURE_NV -> "VK_DESCRIPTOR_TYPE_ACCELERATION_STRUCTURE_NV";

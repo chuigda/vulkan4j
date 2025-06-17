@@ -1,6 +1,7 @@
 package club.doki7.vulkan.enumtype;
 
 import club.doki7.ffm.annotation.*;
+import org.intellij.lang.annotations.MagicConstant;
 
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkCompareOp.html"><code>VkCompareOp</code></a>
 public final class VkCompareOp {
@@ -13,7 +14,7 @@ public final class VkCompareOp {
     public static final int GREATER_OR_EQUAL = 0x6;
     public static final int ALWAYS = 0x7;
 
-    public static String explain(@EnumType(VkCompareOp.class) int value) {
+    public static String explain(@MagicConstant(valuesFromClass = VkCompareOp.class) int value) {
         return switch (value) {
             case VkCompareOp.ALWAYS -> "VK_COMPARE_OP_ALWAYS";
             case VkCompareOp.EQUAL -> "VK_COMPARE_OP_EQUAL";

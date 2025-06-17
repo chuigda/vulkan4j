@@ -191,11 +191,11 @@ public record VkMemoryAllocateFlagsInfo(@NotNull MemorySegment segment) implemen
         sType(VkStructureType.MEMORY_ALLOCATE_FLAGS_INFO);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkMemoryAllocateFlagsInfo sType(@EnumType(VkStructureType.class) int value) {
+    public VkMemoryAllocateFlagsInfo sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }
@@ -213,11 +213,11 @@ public record VkMemoryAllocateFlagsInfo(@NotNull MemorySegment segment) implemen
         return this;
     }
 
-    public @EnumType(VkMemoryAllocateFlags.class) int flags() {
+    public @MagicConstant(valuesFromClass = VkMemoryAllocateFlags.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public VkMemoryAllocateFlagsInfo flags(@EnumType(VkMemoryAllocateFlags.class) int value) {
+    public VkMemoryAllocateFlagsInfo flags(@MagicConstant(valuesFromClass = VkMemoryAllocateFlags.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
         return this;
     }

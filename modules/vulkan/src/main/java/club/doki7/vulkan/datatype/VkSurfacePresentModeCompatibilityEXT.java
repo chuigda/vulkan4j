@@ -191,11 +191,11 @@ public record VkSurfacePresentModeCompatibilityEXT(@NotNull MemorySegment segmen
         sType(VkStructureType.SURFACE_PRESENT_MODE_COMPATIBILITY_EXT);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkSurfacePresentModeCompatibilityEXT sType(@EnumType(VkStructureType.class) int value) {
+    public VkSurfacePresentModeCompatibilityEXT sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }

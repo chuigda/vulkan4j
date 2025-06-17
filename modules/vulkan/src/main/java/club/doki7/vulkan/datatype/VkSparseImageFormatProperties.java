@@ -171,11 +171,11 @@ public record VkSparseImageFormatProperties(@NotNull MemorySegment segment) impl
         return ret;
     }
 
-    public @EnumType(VkImageAspectFlags.class) int aspectMask() {
+    public @MagicConstant(valuesFromClass = VkImageAspectFlags.class) int aspectMask() {
         return segment.get(LAYOUT$aspectMask, OFFSET$aspectMask);
     }
 
-    public VkSparseImageFormatProperties aspectMask(@EnumType(VkImageAspectFlags.class) int value) {
+    public VkSparseImageFormatProperties aspectMask(@MagicConstant(valuesFromClass = VkImageAspectFlags.class) int value) {
         segment.set(LAYOUT$aspectMask, OFFSET$aspectMask, value);
         return this;
     }
@@ -194,11 +194,11 @@ public record VkSparseImageFormatProperties(@NotNull MemorySegment segment) impl
         return this;
     }
 
-    public @EnumType(VkSparseImageFormatFlags.class) int flags() {
+    public @MagicConstant(valuesFromClass = VkSparseImageFormatFlags.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public VkSparseImageFormatProperties flags(@EnumType(VkSparseImageFormatFlags.class) int value) {
+    public VkSparseImageFormatProperties flags(@MagicConstant(valuesFromClass = VkSparseImageFormatFlags.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
         return this;
     }

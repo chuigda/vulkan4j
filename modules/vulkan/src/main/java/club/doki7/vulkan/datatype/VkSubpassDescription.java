@@ -178,20 +178,20 @@ public record VkSubpassDescription(@NotNull MemorySegment segment) implements IV
         return ret;
     }
 
-    public @EnumType(VkSubpassDescriptionFlags.class) int flags() {
+    public @MagicConstant(valuesFromClass = VkSubpassDescriptionFlags.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public VkSubpassDescription flags(@EnumType(VkSubpassDescriptionFlags.class) int value) {
+    public VkSubpassDescription flags(@MagicConstant(valuesFromClass = VkSubpassDescriptionFlags.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
         return this;
     }
 
-    public @EnumType(VkPipelineBindPoint.class) int pipelineBindPoint() {
+    public @MagicConstant(valuesFromClass = VkPipelineBindPoint.class) int pipelineBindPoint() {
         return segment.get(LAYOUT$pipelineBindPoint, OFFSET$pipelineBindPoint);
     }
 
-    public VkSubpassDescription pipelineBindPoint(@EnumType(VkPipelineBindPoint.class) int value) {
+    public VkSubpassDescription pipelineBindPoint(@MagicConstant(valuesFromClass = VkPipelineBindPoint.class) int value) {
         segment.set(LAYOUT$pipelineBindPoint, OFFSET$pipelineBindPoint, value);
         return this;
     }

@@ -190,11 +190,11 @@ public record VkPhysicalDeviceCopyMemoryIndirectFeaturesNV(@NotNull MemorySegmen
         sType(VkStructureType.PHYSICAL_DEVICE_COPY_MEMORY_INDIRECT_FEATURES_NV);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkPhysicalDeviceCopyMemoryIndirectFeaturesNV sType(@EnumType(VkStructureType.class) int value) {
+    public VkPhysicalDeviceCopyMemoryIndirectFeaturesNV sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }

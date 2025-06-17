@@ -1,6 +1,7 @@
 package club.doki7.vulkan.enumtype;
 
 import club.doki7.ffm.annotation.*;
+import org.intellij.lang.annotations.MagicConstant;
 
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkDisplayPowerStateEXT.html"><code>VkDisplayPowerStateEXT</code></a>
 public final class VkDisplayPowerStateEXT {
@@ -8,7 +9,7 @@ public final class VkDisplayPowerStateEXT {
     public static final int SUSPEND = 0x1;
     public static final int ON = 0x2;
 
-    public static String explain(@EnumType(VkDisplayPowerStateEXT.class) int value) {
+    public static String explain(@MagicConstant(valuesFromClass = VkDisplayPowerStateEXT.class) int value) {
         return switch (value) {
             case VkDisplayPowerStateEXT.OFF -> "VK_DISPLAY_POWER_STATE_OFF_EXT";
             case VkDisplayPowerStateEXT.ON -> "VK_DISPLAY_POWER_STATE_ON_EXT";

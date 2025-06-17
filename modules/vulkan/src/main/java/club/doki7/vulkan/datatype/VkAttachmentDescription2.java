@@ -198,11 +198,11 @@ public record VkAttachmentDescription2(@NotNull MemorySegment segment) implement
         sType(VkStructureType.ATTACHMENT_DESCRIPTION_2);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkAttachmentDescription2 sType(@EnumType(VkStructureType.class) int value) {
+    public VkAttachmentDescription2 sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }
@@ -220,83 +220,83 @@ public record VkAttachmentDescription2(@NotNull MemorySegment segment) implement
         return this;
     }
 
-    public @EnumType(VkAttachmentDescriptionFlags.class) int flags() {
+    public @MagicConstant(valuesFromClass = VkAttachmentDescriptionFlags.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public VkAttachmentDescription2 flags(@EnumType(VkAttachmentDescriptionFlags.class) int value) {
+    public VkAttachmentDescription2 flags(@MagicConstant(valuesFromClass = VkAttachmentDescriptionFlags.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
         return this;
     }
 
-    public @EnumType(VkFormat.class) int format() {
+    public @MagicConstant(valuesFromClass = VkFormat.class) int format() {
         return segment.get(LAYOUT$format, OFFSET$format);
     }
 
-    public VkAttachmentDescription2 format(@EnumType(VkFormat.class) int value) {
+    public VkAttachmentDescription2 format(@MagicConstant(valuesFromClass = VkFormat.class) int value) {
         segment.set(LAYOUT$format, OFFSET$format, value);
         return this;
     }
 
-    public @EnumType(VkSampleCountFlags.class) int samples() {
+    public @MagicConstant(valuesFromClass = VkSampleCountFlags.class) int samples() {
         return segment.get(LAYOUT$samples, OFFSET$samples);
     }
 
-    public VkAttachmentDescription2 samples(@EnumType(VkSampleCountFlags.class) int value) {
+    public VkAttachmentDescription2 samples(@MagicConstant(valuesFromClass = VkSampleCountFlags.class) int value) {
         segment.set(LAYOUT$samples, OFFSET$samples, value);
         return this;
     }
 
-    public @EnumType(VkAttachmentLoadOp.class) int loadOp() {
+    public @MagicConstant(valuesFromClass = VkAttachmentLoadOp.class) int loadOp() {
         return segment.get(LAYOUT$loadOp, OFFSET$loadOp);
     }
 
-    public VkAttachmentDescription2 loadOp(@EnumType(VkAttachmentLoadOp.class) int value) {
+    public VkAttachmentDescription2 loadOp(@MagicConstant(valuesFromClass = VkAttachmentLoadOp.class) int value) {
         segment.set(LAYOUT$loadOp, OFFSET$loadOp, value);
         return this;
     }
 
-    public @EnumType(VkAttachmentStoreOp.class) int storeOp() {
+    public @MagicConstant(valuesFromClass = VkAttachmentStoreOp.class) int storeOp() {
         return segment.get(LAYOUT$storeOp, OFFSET$storeOp);
     }
 
-    public VkAttachmentDescription2 storeOp(@EnumType(VkAttachmentStoreOp.class) int value) {
+    public VkAttachmentDescription2 storeOp(@MagicConstant(valuesFromClass = VkAttachmentStoreOp.class) int value) {
         segment.set(LAYOUT$storeOp, OFFSET$storeOp, value);
         return this;
     }
 
-    public @EnumType(VkAttachmentLoadOp.class) int stencilLoadOp() {
+    public @MagicConstant(valuesFromClass = VkAttachmentLoadOp.class) int stencilLoadOp() {
         return segment.get(LAYOUT$stencilLoadOp, OFFSET$stencilLoadOp);
     }
 
-    public VkAttachmentDescription2 stencilLoadOp(@EnumType(VkAttachmentLoadOp.class) int value) {
+    public VkAttachmentDescription2 stencilLoadOp(@MagicConstant(valuesFromClass = VkAttachmentLoadOp.class) int value) {
         segment.set(LAYOUT$stencilLoadOp, OFFSET$stencilLoadOp, value);
         return this;
     }
 
-    public @EnumType(VkAttachmentStoreOp.class) int stencilStoreOp() {
+    public @MagicConstant(valuesFromClass = VkAttachmentStoreOp.class) int stencilStoreOp() {
         return segment.get(LAYOUT$stencilStoreOp, OFFSET$stencilStoreOp);
     }
 
-    public VkAttachmentDescription2 stencilStoreOp(@EnumType(VkAttachmentStoreOp.class) int value) {
+    public VkAttachmentDescription2 stencilStoreOp(@MagicConstant(valuesFromClass = VkAttachmentStoreOp.class) int value) {
         segment.set(LAYOUT$stencilStoreOp, OFFSET$stencilStoreOp, value);
         return this;
     }
 
-    public @EnumType(VkImageLayout.class) int initialLayout() {
+    public @MagicConstant(valuesFromClass = VkImageLayout.class) int initialLayout() {
         return segment.get(LAYOUT$initialLayout, OFFSET$initialLayout);
     }
 
-    public VkAttachmentDescription2 initialLayout(@EnumType(VkImageLayout.class) int value) {
+    public VkAttachmentDescription2 initialLayout(@MagicConstant(valuesFromClass = VkImageLayout.class) int value) {
         segment.set(LAYOUT$initialLayout, OFFSET$initialLayout, value);
         return this;
     }
 
-    public @EnumType(VkImageLayout.class) int finalLayout() {
+    public @MagicConstant(valuesFromClass = VkImageLayout.class) int finalLayout() {
         return segment.get(LAYOUT$finalLayout, OFFSET$finalLayout);
     }
 
-    public VkAttachmentDescription2 finalLayout(@EnumType(VkImageLayout.class) int value) {
+    public VkAttachmentDescription2 finalLayout(@MagicConstant(valuesFromClass = VkImageLayout.class) int value) {
         segment.set(LAYOUT$finalLayout, OFFSET$finalLayout, value);
         return this;
     }

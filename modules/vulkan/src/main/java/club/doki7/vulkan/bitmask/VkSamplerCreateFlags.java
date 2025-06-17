@@ -1,6 +1,7 @@
 package club.doki7.vulkan.bitmask;
 
 import club.doki7.ffm.annotation.*;
+import org.intellij.lang.annotations.MagicConstant;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,7 +14,7 @@ public final class VkSamplerCreateFlags {
     public static final int SUBSAMPLED_EXT = 0x1;
     public static final int SUBSAMPLED_COARSE_RECONSTRUCTION_EXT = 0x2;
 
-    public static String explain(@EnumType(VkSamplerCreateFlags.class) int flags) {
+    public static String explain(@MagicConstant(flagsFromClass = VkSamplerCreateFlags.class) int flags) {
         List<String> detectedFlagBits = new ArrayList<>();
         if ((flags & DESCRIPTOR_BUFFER_CAPTURE_REPLAY_EXT) != 0) {
             detectedFlagBits.add("VK_SAMPLER_CREATE_DESCRIPTOR_BUFFER_CAPTURE_REPLAY_BIT_EXT");

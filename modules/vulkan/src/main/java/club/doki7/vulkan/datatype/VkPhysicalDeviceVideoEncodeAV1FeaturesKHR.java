@@ -190,11 +190,11 @@ public record VkPhysicalDeviceVideoEncodeAV1FeaturesKHR(@NotNull MemorySegment s
         sType(VkStructureType.PHYSICAL_DEVICE_VIDEO_ENCODE_AV1_FEATURES_KHR);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkPhysicalDeviceVideoEncodeAV1FeaturesKHR sType(@EnumType(VkStructureType.class) int value) {
+    public VkPhysicalDeviceVideoEncodeAV1FeaturesKHR sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }

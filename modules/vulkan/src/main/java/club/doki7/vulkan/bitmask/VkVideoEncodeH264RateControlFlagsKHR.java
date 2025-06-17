@@ -1,6 +1,7 @@
 package club.doki7.vulkan.bitmask;
 
 import club.doki7.ffm.annotation.*;
+import org.intellij.lang.annotations.MagicConstant;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,7 +14,7 @@ public final class VkVideoEncodeH264RateControlFlagsKHR {
     public static final int VK_VIDEO_ENCODE_H264_RATE_CONTROL_REGULAR_GOP = 0x2;
     public static final int VK_VIDEO_ENCODE_H264_RATE_CONTROL_TEMPORAL_LAYER_PATTERN_DYADIC = 0x10;
 
-    public static String explain(@EnumType(VkVideoEncodeH264RateControlFlagsKHR.class) int flags) {
+    public static String explain(@MagicConstant(flagsFromClass = VkVideoEncodeH264RateControlFlagsKHR.class) int flags) {
         List<String> detectedFlagBits = new ArrayList<>();
         if ((flags & VK_VIDEO_ENCODE_H264_RATE_CONTROL_ATTEMPT_HRD_COMPLIANCE) != 0) {
             detectedFlagBits.add("VK_VIDEO_ENCODE_H264_RATE_CONTROL_ATTEMPT_HRD_COMPLIANCE_BIT_KHR");

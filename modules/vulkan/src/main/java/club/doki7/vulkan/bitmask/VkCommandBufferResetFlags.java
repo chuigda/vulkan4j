@@ -1,6 +1,7 @@
 package club.doki7.vulkan.bitmask;
 
 import club.doki7.ffm.annotation.*;
+import org.intellij.lang.annotations.MagicConstant;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -9,7 +10,7 @@ import java.util.List;
 public final class VkCommandBufferResetFlags {
     public static final int RELEASE_RESOURCES = 0x1;
 
-    public static String explain(@EnumType(VkCommandBufferResetFlags.class) int flags) {
+    public static String explain(@MagicConstant(flagsFromClass = VkCommandBufferResetFlags.class) int flags) {
         List<String> detectedFlagBits = new ArrayList<>();
         if ((flags & RELEASE_RESOURCES) != 0) {
             detectedFlagBits.add("VK_COMMAND_BUFFER_RESET_RELEASE_RESOURCES_BIT");

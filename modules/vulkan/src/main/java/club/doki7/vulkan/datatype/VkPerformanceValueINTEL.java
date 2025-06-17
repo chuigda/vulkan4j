@@ -170,11 +170,11 @@ public record VkPerformanceValueINTEL(@NotNull MemorySegment segment) implements
         return ret;
     }
 
-    public @EnumType(VkPerformanceValueTypeINTEL.class) int type() {
+    public @MagicConstant(valuesFromClass = VkPerformanceValueTypeINTEL.class) int type() {
         return segment.get(LAYOUT$type, OFFSET$type);
     }
 
-    public VkPerformanceValueINTEL type(@EnumType(VkPerformanceValueTypeINTEL.class) int value) {
+    public VkPerformanceValueINTEL type(@MagicConstant(valuesFromClass = VkPerformanceValueTypeINTEL.class) int value) {
         segment.set(LAYOUT$type, OFFSET$type, value);
         return this;
     }

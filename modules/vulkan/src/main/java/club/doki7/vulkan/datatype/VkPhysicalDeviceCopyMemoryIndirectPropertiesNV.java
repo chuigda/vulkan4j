@@ -190,11 +190,11 @@ public record VkPhysicalDeviceCopyMemoryIndirectPropertiesNV(@NotNull MemorySegm
         sType(VkStructureType.PHYSICAL_DEVICE_COPY_MEMORY_INDIRECT_PROPERTIES_NV);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkPhysicalDeviceCopyMemoryIndirectPropertiesNV sType(@EnumType(VkStructureType.class) int value) {
+    public VkPhysicalDeviceCopyMemoryIndirectPropertiesNV sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }
@@ -212,11 +212,11 @@ public record VkPhysicalDeviceCopyMemoryIndirectPropertiesNV(@NotNull MemorySegm
         return this;
     }
 
-    public @EnumType(VkQueueFlags.class) int supportedQueues() {
+    public @MagicConstant(valuesFromClass = VkQueueFlags.class) int supportedQueues() {
         return segment.get(LAYOUT$supportedQueues, OFFSET$supportedQueues);
     }
 
-    public VkPhysicalDeviceCopyMemoryIndirectPropertiesNV supportedQueues(@EnumType(VkQueueFlags.class) int value) {
+    public VkPhysicalDeviceCopyMemoryIndirectPropertiesNV supportedQueues(@MagicConstant(valuesFromClass = VkQueueFlags.class) int value) {
         segment.set(LAYOUT$supportedQueues, OFFSET$supportedQueues, value);
         return this;
     }

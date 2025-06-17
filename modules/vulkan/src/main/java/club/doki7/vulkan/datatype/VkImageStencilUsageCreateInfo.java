@@ -190,11 +190,11 @@ public record VkImageStencilUsageCreateInfo(@NotNull MemorySegment segment) impl
         sType(VkStructureType.IMAGE_STENCIL_USAGE_CREATE_INFO);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkImageStencilUsageCreateInfo sType(@EnumType(VkStructureType.class) int value) {
+    public VkImageStencilUsageCreateInfo sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }
@@ -212,11 +212,11 @@ public record VkImageStencilUsageCreateInfo(@NotNull MemorySegment segment) impl
         return this;
     }
 
-    public @EnumType(VkImageUsageFlags.class) int stencilUsage() {
+    public @MagicConstant(valuesFromClass = VkImageUsageFlags.class) int stencilUsage() {
         return segment.get(LAYOUT$stencilUsage, OFFSET$stencilUsage);
     }
 
-    public VkImageStencilUsageCreateInfo stencilUsage(@EnumType(VkImageUsageFlags.class) int value) {
+    public VkImageStencilUsageCreateInfo stencilUsage(@MagicConstant(valuesFromClass = VkImageUsageFlags.class) int value) {
         segment.set(LAYOUT$stencilUsage, OFFSET$stencilUsage, value);
         return this;
     }

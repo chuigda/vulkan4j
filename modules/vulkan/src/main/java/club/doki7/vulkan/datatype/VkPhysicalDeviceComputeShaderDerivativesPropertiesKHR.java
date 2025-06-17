@@ -190,11 +190,11 @@ public record VkPhysicalDeviceComputeShaderDerivativesPropertiesKHR(@NotNull Mem
         sType(VkStructureType.PHYSICAL_DEVICE_COMPUTE_SHADER_DERIVATIVES_PROPERTIES_KHR);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkPhysicalDeviceComputeShaderDerivativesPropertiesKHR sType(@EnumType(VkStructureType.class) int value) {
+    public VkPhysicalDeviceComputeShaderDerivativesPropertiesKHR sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }

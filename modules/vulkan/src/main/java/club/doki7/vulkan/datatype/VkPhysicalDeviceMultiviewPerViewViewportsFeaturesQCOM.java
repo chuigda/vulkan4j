@@ -190,11 +190,11 @@ public record VkPhysicalDeviceMultiviewPerViewViewportsFeaturesQCOM(@NotNull Mem
         sType(VkStructureType.PHYSICAL_DEVICE_MULTIVIEW_PER_VIEW_VIEWPORTS_FEATURES_QCOM);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkPhysicalDeviceMultiviewPerViewViewportsFeaturesQCOM sType(@EnumType(VkStructureType.class) int value) {
+    public VkPhysicalDeviceMultiviewPerViewViewportsFeaturesQCOM sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }

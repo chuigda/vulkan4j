@@ -191,11 +191,11 @@ public record VkClusterAccelerationStructureClustersBottomLevelInputNV(@NotNull 
         sType(VkStructureType.CLUSTER_ACCELERATION_STRUCTURE_CLUSTERS_BOTTOM_LEVEL_INPUT_NV);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkClusterAccelerationStructureClustersBottomLevelInputNV sType(@EnumType(VkStructureType.class) int value) {
+    public VkClusterAccelerationStructureClustersBottomLevelInputNV sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }

@@ -190,11 +190,11 @@ public record VkPhysicalDeviceFragmentShaderBarycentricFeaturesKHR(@NotNull Memo
         sType(VkStructureType.PHYSICAL_DEVICE_FRAGMENT_SHADER_BARYCENTRIC_FEATURES_KHR);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkPhysicalDeviceFragmentShaderBarycentricFeaturesKHR sType(@EnumType(VkStructureType.class) int value) {
+    public VkPhysicalDeviceFragmentShaderBarycentricFeaturesKHR sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }

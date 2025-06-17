@@ -192,11 +192,11 @@ public record VkRenderingFragmentShadingRateAttachmentInfoKHR(@NotNull MemorySeg
         sType(VkStructureType.RENDERING_FRAGMENT_SHADING_RATE_ATTACHMENT_INFO_KHR);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkRenderingFragmentShadingRateAttachmentInfoKHR sType(@EnumType(VkStructureType.class) int value) {
+    public VkRenderingFragmentShadingRateAttachmentInfoKHR sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }
@@ -227,11 +227,11 @@ public record VkRenderingFragmentShadingRateAttachmentInfoKHR(@NotNull MemorySeg
         return this;
     }
 
-    public @EnumType(VkImageLayout.class) int imageLayout() {
+    public @MagicConstant(valuesFromClass = VkImageLayout.class) int imageLayout() {
         return segment.get(LAYOUT$imageLayout, OFFSET$imageLayout);
     }
 
-    public VkRenderingFragmentShadingRateAttachmentInfoKHR imageLayout(@EnumType(VkImageLayout.class) int value) {
+    public VkRenderingFragmentShadingRateAttachmentInfoKHR imageLayout(@MagicConstant(valuesFromClass = VkImageLayout.class) int value) {
         segment.set(LAYOUT$imageLayout, OFFSET$imageLayout, value);
         return this;
     }

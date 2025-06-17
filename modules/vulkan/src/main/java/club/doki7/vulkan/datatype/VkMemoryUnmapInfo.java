@@ -191,11 +191,11 @@ public record VkMemoryUnmapInfo(@NotNull MemorySegment segment) implements IVkMe
         sType(VkStructureType.MEMORY_UNMAP_INFO);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkMemoryUnmapInfo sType(@EnumType(VkStructureType.class) int value) {
+    public VkMemoryUnmapInfo sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }
@@ -213,11 +213,11 @@ public record VkMemoryUnmapInfo(@NotNull MemorySegment segment) implements IVkMe
         return this;
     }
 
-    public @EnumType(VkMemoryUnmapFlags.class) int flags() {
+    public @MagicConstant(valuesFromClass = VkMemoryUnmapFlags.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public VkMemoryUnmapInfo flags(@EnumType(VkMemoryUnmapFlags.class) int value) {
+    public VkMemoryUnmapInfo flags(@MagicConstant(valuesFromClass = VkMemoryUnmapFlags.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
         return this;
     }

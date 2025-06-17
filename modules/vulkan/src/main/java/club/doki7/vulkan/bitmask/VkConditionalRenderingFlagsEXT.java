@@ -1,6 +1,7 @@
 package club.doki7.vulkan.bitmask;
 
 import club.doki7.ffm.annotation.*;
+import org.intellij.lang.annotations.MagicConstant;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -9,7 +10,7 @@ import java.util.List;
 public final class VkConditionalRenderingFlagsEXT {
     public static final int INVERTED = 0x1;
 
-    public static String explain(@EnumType(VkConditionalRenderingFlagsEXT.class) int flags) {
+    public static String explain(@MagicConstant(flagsFromClass = VkConditionalRenderingFlagsEXT.class) int flags) {
         List<String> detectedFlagBits = new ArrayList<>();
         if ((flags & INVERTED) != 0) {
             detectedFlagBits.add("VK_CONDITIONAL_RENDERING_INVERTED_BIT_EXT");

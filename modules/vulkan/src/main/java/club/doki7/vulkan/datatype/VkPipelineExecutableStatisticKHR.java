@@ -193,11 +193,11 @@ public record VkPipelineExecutableStatisticKHR(@NotNull MemorySegment segment) i
         sType(VkStructureType.PIPELINE_EXECUTABLE_STATISTIC_KHR);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkPipelineExecutableStatisticKHR sType(@EnumType(VkStructureType.class) int value) {
+    public VkPipelineExecutableStatisticKHR sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }
@@ -241,11 +241,11 @@ public record VkPipelineExecutableStatisticKHR(@NotNull MemorySegment segment) i
         return segment.asSlice(OFFSET$description, SIZE$description);
     }
 
-    public @EnumType(VkPipelineExecutableStatisticFormatKHR.class) int format() {
+    public @MagicConstant(valuesFromClass = VkPipelineExecutableStatisticFormatKHR.class) int format() {
         return segment.get(LAYOUT$format, OFFSET$format);
     }
 
-    public VkPipelineExecutableStatisticKHR format(@EnumType(VkPipelineExecutableStatisticFormatKHR.class) int value) {
+    public VkPipelineExecutableStatisticKHR format(@MagicConstant(valuesFromClass = VkPipelineExecutableStatisticFormatKHR.class) int value) {
         segment.set(LAYOUT$format, OFFSET$format, value);
         return this;
     }

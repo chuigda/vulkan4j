@@ -190,11 +190,11 @@ public record VkSubpassResolvePerformanceQueryEXT(@NotNull MemorySegment segment
         sType(VkStructureType.SUBPASS_RESOLVE_PERFORMANCE_QUERY_EXT);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkSubpassResolvePerformanceQueryEXT sType(@EnumType(VkStructureType.class) int value) {
+    public VkSubpassResolvePerformanceQueryEXT sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }

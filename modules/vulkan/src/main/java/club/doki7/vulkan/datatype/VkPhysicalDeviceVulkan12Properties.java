@@ -241,11 +241,11 @@ public record VkPhysicalDeviceVulkan12Properties(@NotNull MemorySegment segment)
         sType(VkStructureType.PHYSICAL_DEVICE_VULKAN_1_2_PROPERTIES);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkPhysicalDeviceVulkan12Properties sType(@EnumType(VkStructureType.class) int value) {
+    public VkPhysicalDeviceVulkan12Properties sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }
@@ -263,11 +263,11 @@ public record VkPhysicalDeviceVulkan12Properties(@NotNull MemorySegment segment)
         return this;
     }
 
-    public @EnumType(VkDriverId.class) int driverID() {
+    public @MagicConstant(valuesFromClass = VkDriverId.class) int driverID() {
         return segment.get(LAYOUT$driverID, OFFSET$driverID);
     }
 
-    public VkPhysicalDeviceVulkan12Properties driverID(@EnumType(VkDriverId.class) int value) {
+    public VkPhysicalDeviceVulkan12Properties driverID(@MagicConstant(valuesFromClass = VkDriverId.class) int value) {
         segment.set(LAYOUT$driverID, OFFSET$driverID, value);
         return this;
     }
@@ -312,20 +312,20 @@ public record VkPhysicalDeviceVulkan12Properties(@NotNull MemorySegment segment)
         return this;
     }
 
-    public @EnumType(VkShaderFloatControlsIndependence.class) int denormBehaviorIndependence() {
+    public @MagicConstant(valuesFromClass = VkShaderFloatControlsIndependence.class) int denormBehaviorIndependence() {
         return segment.get(LAYOUT$denormBehaviorIndependence, OFFSET$denormBehaviorIndependence);
     }
 
-    public VkPhysicalDeviceVulkan12Properties denormBehaviorIndependence(@EnumType(VkShaderFloatControlsIndependence.class) int value) {
+    public VkPhysicalDeviceVulkan12Properties denormBehaviorIndependence(@MagicConstant(valuesFromClass = VkShaderFloatControlsIndependence.class) int value) {
         segment.set(LAYOUT$denormBehaviorIndependence, OFFSET$denormBehaviorIndependence, value);
         return this;
     }
 
-    public @EnumType(VkShaderFloatControlsIndependence.class) int roundingModeIndependence() {
+    public @MagicConstant(valuesFromClass = VkShaderFloatControlsIndependence.class) int roundingModeIndependence() {
         return segment.get(LAYOUT$roundingModeIndependence, OFFSET$roundingModeIndependence);
     }
 
-    public VkPhysicalDeviceVulkan12Properties roundingModeIndependence(@EnumType(VkShaderFloatControlsIndependence.class) int value) {
+    public VkPhysicalDeviceVulkan12Properties roundingModeIndependence(@MagicConstant(valuesFromClass = VkShaderFloatControlsIndependence.class) int value) {
         segment.set(LAYOUT$roundingModeIndependence, OFFSET$roundingModeIndependence, value);
         return this;
     }
@@ -672,20 +672,20 @@ public record VkPhysicalDeviceVulkan12Properties(@NotNull MemorySegment segment)
         return this;
     }
 
-    public @EnumType(VkResolveModeFlags.class) int supportedDepthResolveModes() {
+    public @MagicConstant(valuesFromClass = VkResolveModeFlags.class) int supportedDepthResolveModes() {
         return segment.get(LAYOUT$supportedDepthResolveModes, OFFSET$supportedDepthResolveModes);
     }
 
-    public VkPhysicalDeviceVulkan12Properties supportedDepthResolveModes(@EnumType(VkResolveModeFlags.class) int value) {
+    public VkPhysicalDeviceVulkan12Properties supportedDepthResolveModes(@MagicConstant(valuesFromClass = VkResolveModeFlags.class) int value) {
         segment.set(LAYOUT$supportedDepthResolveModes, OFFSET$supportedDepthResolveModes, value);
         return this;
     }
 
-    public @EnumType(VkResolveModeFlags.class) int supportedStencilResolveModes() {
+    public @MagicConstant(valuesFromClass = VkResolveModeFlags.class) int supportedStencilResolveModes() {
         return segment.get(LAYOUT$supportedStencilResolveModes, OFFSET$supportedStencilResolveModes);
     }
 
-    public VkPhysicalDeviceVulkan12Properties supportedStencilResolveModes(@EnumType(VkResolveModeFlags.class) int value) {
+    public VkPhysicalDeviceVulkan12Properties supportedStencilResolveModes(@MagicConstant(valuesFromClass = VkResolveModeFlags.class) int value) {
         segment.set(LAYOUT$supportedStencilResolveModes, OFFSET$supportedStencilResolveModes, value);
         return this;
     }
@@ -735,11 +735,11 @@ public record VkPhysicalDeviceVulkan12Properties(@NotNull MemorySegment segment)
         return this;
     }
 
-    public @EnumType(VkSampleCountFlags.class) int framebufferIntegerColorSampleCounts() {
+    public @MagicConstant(valuesFromClass = VkSampleCountFlags.class) int framebufferIntegerColorSampleCounts() {
         return segment.get(LAYOUT$framebufferIntegerColorSampleCounts, OFFSET$framebufferIntegerColorSampleCounts);
     }
 
-    public VkPhysicalDeviceVulkan12Properties framebufferIntegerColorSampleCounts(@EnumType(VkSampleCountFlags.class) int value) {
+    public VkPhysicalDeviceVulkan12Properties framebufferIntegerColorSampleCounts(@MagicConstant(valuesFromClass = VkSampleCountFlags.class) int value) {
         segment.set(LAYOUT$framebufferIntegerColorSampleCounts, OFFSET$framebufferIntegerColorSampleCounts, value);
         return this;
     }

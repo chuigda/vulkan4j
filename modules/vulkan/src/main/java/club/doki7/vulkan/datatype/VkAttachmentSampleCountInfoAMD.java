@@ -192,11 +192,11 @@ public record VkAttachmentSampleCountInfoAMD(@NotNull MemorySegment segment) imp
         sType(VkStructureType.ATTACHMENT_SAMPLE_COUNT_INFO_AMD);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkAttachmentSampleCountInfoAMD sType(@EnumType(VkStructureType.class) int value) {
+    public VkAttachmentSampleCountInfoAMD sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }
@@ -250,11 +250,11 @@ public record VkAttachmentSampleCountInfoAMD(@NotNull MemorySegment segment) imp
         segment.set(LAYOUT$pColorAttachmentSamples, OFFSET$pColorAttachmentSamples, value);
     }
 
-    public @EnumType(VkSampleCountFlags.class) int depthStencilAttachmentSamples() {
+    public @MagicConstant(valuesFromClass = VkSampleCountFlags.class) int depthStencilAttachmentSamples() {
         return segment.get(LAYOUT$depthStencilAttachmentSamples, OFFSET$depthStencilAttachmentSamples);
     }
 
-    public VkAttachmentSampleCountInfoAMD depthStencilAttachmentSamples(@EnumType(VkSampleCountFlags.class) int value) {
+    public VkAttachmentSampleCountInfoAMD depthStencilAttachmentSamples(@MagicConstant(valuesFromClass = VkSampleCountFlags.class) int value) {
         segment.set(LAYOUT$depthStencilAttachmentSamples, OFFSET$depthStencilAttachmentSamples, value);
         return this;
     }

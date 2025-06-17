@@ -199,11 +199,11 @@ public record VkGeneratedCommandsInfoEXT(@NotNull MemorySegment segment) impleme
         sType(VkStructureType.GENERATED_COMMANDS_INFO_EXT);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkGeneratedCommandsInfoEXT sType(@EnumType(VkStructureType.class) int value) {
+    public VkGeneratedCommandsInfoEXT sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }
@@ -221,11 +221,11 @@ public record VkGeneratedCommandsInfoEXT(@NotNull MemorySegment segment) impleme
         return this;
     }
 
-    public @EnumType(VkShaderStageFlags.class) int shaderStages() {
+    public @MagicConstant(valuesFromClass = VkShaderStageFlags.class) int shaderStages() {
         return segment.get(LAYOUT$shaderStages, OFFSET$shaderStages);
     }
 
-    public VkGeneratedCommandsInfoEXT shaderStages(@EnumType(VkShaderStageFlags.class) int value) {
+    public VkGeneratedCommandsInfoEXT shaderStages(@MagicConstant(valuesFromClass = VkShaderStageFlags.class) int value) {
         segment.set(LAYOUT$shaderStages, OFFSET$shaderStages, value);
         return this;
     }

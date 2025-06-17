@@ -225,11 +225,11 @@ public record VkLayerSettingEXT(@NotNull MemorySegment segment) implements IVkLa
         segment.set(LAYOUT$pSettingName, OFFSET$pSettingName, value);
     }
 
-    public @EnumType(VkLayerSettingTypeEXT.class) int type() {
+    public @MagicConstant(valuesFromClass = VkLayerSettingTypeEXT.class) int type() {
         return segment.get(LAYOUT$type, OFFSET$type);
     }
 
-    public VkLayerSettingEXT type(@EnumType(VkLayerSettingTypeEXT.class) int value) {
+    public VkLayerSettingEXT type(@MagicConstant(valuesFromClass = VkLayerSettingTypeEXT.class) int value) {
         segment.set(LAYOUT$type, OFFSET$type, value);
         return this;
     }

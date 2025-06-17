@@ -198,11 +198,11 @@ public record VkAccelerationStructureBuildGeometryInfoKHR(@NotNull MemorySegment
         sType(VkStructureType.ACCELERATION_STRUCTURE_BUILD_GEOMETRY_INFO_KHR);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkAccelerationStructureBuildGeometryInfoKHR sType(@EnumType(VkStructureType.class) int value) {
+    public VkAccelerationStructureBuildGeometryInfoKHR sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }
@@ -220,29 +220,29 @@ public record VkAccelerationStructureBuildGeometryInfoKHR(@NotNull MemorySegment
         return this;
     }
 
-    public @EnumType(VkAccelerationStructureTypeKHR.class) int type() {
+    public @MagicConstant(valuesFromClass = VkAccelerationStructureTypeKHR.class) int type() {
         return segment.get(LAYOUT$type, OFFSET$type);
     }
 
-    public VkAccelerationStructureBuildGeometryInfoKHR type(@EnumType(VkAccelerationStructureTypeKHR.class) int value) {
+    public VkAccelerationStructureBuildGeometryInfoKHR type(@MagicConstant(valuesFromClass = VkAccelerationStructureTypeKHR.class) int value) {
         segment.set(LAYOUT$type, OFFSET$type, value);
         return this;
     }
 
-    public @EnumType(VkBuildAccelerationStructureFlagsKHR.class) int flags() {
+    public @MagicConstant(valuesFromClass = VkBuildAccelerationStructureFlagsKHR.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public VkAccelerationStructureBuildGeometryInfoKHR flags(@EnumType(VkBuildAccelerationStructureFlagsKHR.class) int value) {
+    public VkAccelerationStructureBuildGeometryInfoKHR flags(@MagicConstant(valuesFromClass = VkBuildAccelerationStructureFlagsKHR.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
         return this;
     }
 
-    public @EnumType(VkBuildAccelerationStructureModeKHR.class) int mode() {
+    public @MagicConstant(valuesFromClass = VkBuildAccelerationStructureModeKHR.class) int mode() {
         return segment.get(LAYOUT$mode, OFFSET$mode);
     }
 
-    public VkAccelerationStructureBuildGeometryInfoKHR mode(@EnumType(VkBuildAccelerationStructureModeKHR.class) int value) {
+    public VkAccelerationStructureBuildGeometryInfoKHR mode(@MagicConstant(valuesFromClass = VkBuildAccelerationStructureModeKHR.class) int value) {
         segment.set(LAYOUT$mode, OFFSET$mode, value);
         return this;
     }

@@ -190,11 +190,11 @@ public record VkMemoryOpaqueCaptureAddressAllocateInfo(@NotNull MemorySegment se
         sType(VkStructureType.MEMORY_OPAQUE_CAPTURE_ADDRESS_ALLOCATE_INFO);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkMemoryOpaqueCaptureAddressAllocateInfo sType(@EnumType(VkStructureType.class) int value) {
+    public VkMemoryOpaqueCaptureAddressAllocateInfo sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }

@@ -195,11 +195,11 @@ public record VkImageToMemoryCopy(@NotNull MemorySegment segment) implements IVk
         sType(VkStructureType.IMAGE_TO_MEMORY_COPY);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkImageToMemoryCopy sType(@EnumType(VkStructureType.class) int value) {
+    public VkImageToMemoryCopy sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }

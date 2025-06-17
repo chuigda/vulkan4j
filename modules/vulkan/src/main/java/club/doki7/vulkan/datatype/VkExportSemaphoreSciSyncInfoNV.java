@@ -190,11 +190,11 @@ public record VkExportSemaphoreSciSyncInfoNV(@NotNull MemorySegment segment) imp
         sType(VkStructureType.EXPORT_SEMAPHORE_SCI_SYNC_INFO_NV);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkExportSemaphoreSciSyncInfoNV sType(@EnumType(VkStructureType.class) int value) {
+    public VkExportSemaphoreSciSyncInfoNV sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }

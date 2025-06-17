@@ -190,11 +190,11 @@ public record VkPhysicalDevicePartitionedAccelerationStructureFeaturesNV(@NotNul
         sType(VkStructureType.PHYSICAL_DEVICE_PARTITIONED_ACCELERATION_STRUCTURE_FEATURES_NV);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkPhysicalDevicePartitionedAccelerationStructureFeaturesNV sType(@EnumType(VkStructureType.class) int value) {
+    public VkPhysicalDevicePartitionedAccelerationStructureFeaturesNV sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }

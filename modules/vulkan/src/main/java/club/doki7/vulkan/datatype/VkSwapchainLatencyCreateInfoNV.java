@@ -190,11 +190,11 @@ public record VkSwapchainLatencyCreateInfoNV(@NotNull MemorySegment segment) imp
         sType(VkStructureType.SWAPCHAIN_LATENCY_CREATE_INFO_NV);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkSwapchainLatencyCreateInfoNV sType(@EnumType(VkStructureType.class) int value) {
+    public VkSwapchainLatencyCreateInfoNV sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }

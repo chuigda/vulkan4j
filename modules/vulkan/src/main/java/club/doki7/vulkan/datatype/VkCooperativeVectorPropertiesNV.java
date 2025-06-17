@@ -195,11 +195,11 @@ public record VkCooperativeVectorPropertiesNV(@NotNull MemorySegment segment) im
         sType(VkStructureType.COOPERATIVE_VECTOR_PROPERTIES_NV);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkCooperativeVectorPropertiesNV sType(@EnumType(VkStructureType.class) int value) {
+    public VkCooperativeVectorPropertiesNV sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }
@@ -217,47 +217,47 @@ public record VkCooperativeVectorPropertiesNV(@NotNull MemorySegment segment) im
         return this;
     }
 
-    public @EnumType(VkComponentTypeKHR.class) int inputType() {
+    public @MagicConstant(valuesFromClass = VkComponentTypeKHR.class) int inputType() {
         return segment.get(LAYOUT$inputType, OFFSET$inputType);
     }
 
-    public VkCooperativeVectorPropertiesNV inputType(@EnumType(VkComponentTypeKHR.class) int value) {
+    public VkCooperativeVectorPropertiesNV inputType(@MagicConstant(valuesFromClass = VkComponentTypeKHR.class) int value) {
         segment.set(LAYOUT$inputType, OFFSET$inputType, value);
         return this;
     }
 
-    public @EnumType(VkComponentTypeKHR.class) int inputInterpretation() {
+    public @MagicConstant(valuesFromClass = VkComponentTypeKHR.class) int inputInterpretation() {
         return segment.get(LAYOUT$inputInterpretation, OFFSET$inputInterpretation);
     }
 
-    public VkCooperativeVectorPropertiesNV inputInterpretation(@EnumType(VkComponentTypeKHR.class) int value) {
+    public VkCooperativeVectorPropertiesNV inputInterpretation(@MagicConstant(valuesFromClass = VkComponentTypeKHR.class) int value) {
         segment.set(LAYOUT$inputInterpretation, OFFSET$inputInterpretation, value);
         return this;
     }
 
-    public @EnumType(VkComponentTypeKHR.class) int matrixInterpretation() {
+    public @MagicConstant(valuesFromClass = VkComponentTypeKHR.class) int matrixInterpretation() {
         return segment.get(LAYOUT$matrixInterpretation, OFFSET$matrixInterpretation);
     }
 
-    public VkCooperativeVectorPropertiesNV matrixInterpretation(@EnumType(VkComponentTypeKHR.class) int value) {
+    public VkCooperativeVectorPropertiesNV matrixInterpretation(@MagicConstant(valuesFromClass = VkComponentTypeKHR.class) int value) {
         segment.set(LAYOUT$matrixInterpretation, OFFSET$matrixInterpretation, value);
         return this;
     }
 
-    public @EnumType(VkComponentTypeKHR.class) int biasInterpretation() {
+    public @MagicConstant(valuesFromClass = VkComponentTypeKHR.class) int biasInterpretation() {
         return segment.get(LAYOUT$biasInterpretation, OFFSET$biasInterpretation);
     }
 
-    public VkCooperativeVectorPropertiesNV biasInterpretation(@EnumType(VkComponentTypeKHR.class) int value) {
+    public VkCooperativeVectorPropertiesNV biasInterpretation(@MagicConstant(valuesFromClass = VkComponentTypeKHR.class) int value) {
         segment.set(LAYOUT$biasInterpretation, OFFSET$biasInterpretation, value);
         return this;
     }
 
-    public @EnumType(VkComponentTypeKHR.class) int resultType() {
+    public @MagicConstant(valuesFromClass = VkComponentTypeKHR.class) int resultType() {
         return segment.get(LAYOUT$resultType, OFFSET$resultType);
     }
 
-    public VkCooperativeVectorPropertiesNV resultType(@EnumType(VkComponentTypeKHR.class) int value) {
+    public VkCooperativeVectorPropertiesNV resultType(@MagicConstant(valuesFromClass = VkComponentTypeKHR.class) int value) {
         segment.set(LAYOUT$resultType, OFFSET$resultType, value);
         return this;
     }

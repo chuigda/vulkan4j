@@ -190,11 +190,11 @@ public record VkPipelineRepresentativeFragmentTestStateCreateInfoNV(@NotNull Mem
         sType(VkStructureType.PIPELINE_REPRESENTATIVE_FRAGMENT_TEST_STATE_CREATE_INFO_NV);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkPipelineRepresentativeFragmentTestStateCreateInfoNV sType(@EnumType(VkStructureType.class) int value) {
+    public VkPipelineRepresentativeFragmentTestStateCreateInfoNV sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }

@@ -194,11 +194,11 @@ public record VkDebugUtilsObjectTagInfoEXT(@NotNull MemorySegment segment) imple
         sType(VkStructureType.DEBUG_UTILS_OBJECT_TAG_INFO_EXT);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkDebugUtilsObjectTagInfoEXT sType(@EnumType(VkStructureType.class) int value) {
+    public VkDebugUtilsObjectTagInfoEXT sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }
@@ -216,11 +216,11 @@ public record VkDebugUtilsObjectTagInfoEXT(@NotNull MemorySegment segment) imple
         return this;
     }
 
-    public @EnumType(VkObjectType.class) int objectType() {
+    public @MagicConstant(valuesFromClass = VkObjectType.class) int objectType() {
         return segment.get(LAYOUT$objectType, OFFSET$objectType);
     }
 
-    public VkDebugUtilsObjectTagInfoEXT objectType(@EnumType(VkObjectType.class) int value) {
+    public VkDebugUtilsObjectTagInfoEXT objectType(@MagicConstant(valuesFromClass = VkObjectType.class) int value) {
         segment.set(LAYOUT$objectType, OFFSET$objectType, value);
         return this;
     }

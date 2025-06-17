@@ -191,11 +191,11 @@ public record VkWriteDescriptorSetPartitionedAccelerationStructureNV(@NotNull Me
         sType(VkStructureType.WRITE_DESCRIPTOR_SET_PARTITIONED_ACCELERATION_STRUCTURE_NV);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkWriteDescriptorSetPartitionedAccelerationStructureNV sType(@EnumType(VkStructureType.class) int value) {
+    public VkWriteDescriptorSetPartitionedAccelerationStructureNV sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }

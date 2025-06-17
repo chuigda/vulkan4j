@@ -201,11 +201,11 @@ public record VkDescriptorUpdateTemplateEntry(@NotNull MemorySegment segment) im
         return this;
     }
 
-    public @EnumType(VkDescriptorType.class) int descriptorType() {
+    public @MagicConstant(valuesFromClass = VkDescriptorType.class) int descriptorType() {
         return segment.get(LAYOUT$descriptorType, OFFSET$descriptorType);
     }
 
-    public VkDescriptorUpdateTemplateEntry descriptorType(@EnumType(VkDescriptorType.class) int value) {
+    public VkDescriptorUpdateTemplateEntry descriptorType(@MagicConstant(valuesFromClass = VkDescriptorType.class) int value) {
         segment.set(LAYOUT$descriptorType, OFFSET$descriptorType, value);
         return this;
     }

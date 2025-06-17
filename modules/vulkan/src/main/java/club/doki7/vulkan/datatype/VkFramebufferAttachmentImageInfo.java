@@ -196,11 +196,11 @@ public record VkFramebufferAttachmentImageInfo(@NotNull MemorySegment segment) i
         sType(VkStructureType.FRAMEBUFFER_ATTACHMENT_IMAGE_INFO);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkFramebufferAttachmentImageInfo sType(@EnumType(VkStructureType.class) int value) {
+    public VkFramebufferAttachmentImageInfo sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }
@@ -218,20 +218,20 @@ public record VkFramebufferAttachmentImageInfo(@NotNull MemorySegment segment) i
         return this;
     }
 
-    public @EnumType(VkImageCreateFlags.class) int flags() {
+    public @MagicConstant(valuesFromClass = VkImageCreateFlags.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public VkFramebufferAttachmentImageInfo flags(@EnumType(VkImageCreateFlags.class) int value) {
+    public VkFramebufferAttachmentImageInfo flags(@MagicConstant(valuesFromClass = VkImageCreateFlags.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
         return this;
     }
 
-    public @EnumType(VkImageUsageFlags.class) int usage() {
+    public @MagicConstant(valuesFromClass = VkImageUsageFlags.class) int usage() {
         return segment.get(LAYOUT$usage, OFFSET$usage);
     }
 
-    public VkFramebufferAttachmentImageInfo usage(@EnumType(VkImageUsageFlags.class) int value) {
+    public VkFramebufferAttachmentImageInfo usage(@MagicConstant(valuesFromClass = VkImageUsageFlags.class) int value) {
         segment.set(LAYOUT$usage, OFFSET$usage, value);
         return this;
     }

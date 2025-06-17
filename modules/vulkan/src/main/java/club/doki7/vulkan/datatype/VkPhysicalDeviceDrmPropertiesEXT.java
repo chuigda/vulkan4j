@@ -195,11 +195,11 @@ public record VkPhysicalDeviceDrmPropertiesEXT(@NotNull MemorySegment segment) i
         sType(VkStructureType.PHYSICAL_DEVICE_DRM_PROPERTIES_EXT);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkPhysicalDeviceDrmPropertiesEXT sType(@EnumType(VkStructureType.class) int value) {
+    public VkPhysicalDeviceDrmPropertiesEXT sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }

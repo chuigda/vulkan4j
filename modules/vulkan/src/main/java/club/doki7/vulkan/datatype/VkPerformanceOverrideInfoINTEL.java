@@ -192,11 +192,11 @@ public record VkPerformanceOverrideInfoINTEL(@NotNull MemorySegment segment) imp
         sType(VkStructureType.PERFORMANCE_OVERRIDE_INFO_INTEL);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkPerformanceOverrideInfoINTEL sType(@EnumType(VkStructureType.class) int value) {
+    public VkPerformanceOverrideInfoINTEL sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }
@@ -214,11 +214,11 @@ public record VkPerformanceOverrideInfoINTEL(@NotNull MemorySegment segment) imp
         return this;
     }
 
-    public @EnumType(VkPerformanceOverrideTypeINTEL.class) int type() {
+    public @MagicConstant(valuesFromClass = VkPerformanceOverrideTypeINTEL.class) int type() {
         return segment.get(LAYOUT$type, OFFSET$type);
     }
 
-    public VkPerformanceOverrideInfoINTEL type(@EnumType(VkPerformanceOverrideTypeINTEL.class) int value) {
+    public VkPerformanceOverrideInfoINTEL type(@MagicConstant(valuesFromClass = VkPerformanceOverrideTypeINTEL.class) int value) {
         segment.set(LAYOUT$type, OFFSET$type, value);
         return this;
     }

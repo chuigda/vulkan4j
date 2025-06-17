@@ -191,11 +191,11 @@ public record VkImportMemoryFdInfoKHR(@NotNull MemorySegment segment) implements
         sType(VkStructureType.IMPORT_MEMORY_FD_INFO_KHR);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkImportMemoryFdInfoKHR sType(@EnumType(VkStructureType.class) int value) {
+    public VkImportMemoryFdInfoKHR sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }
@@ -213,11 +213,11 @@ public record VkImportMemoryFdInfoKHR(@NotNull MemorySegment segment) implements
         return this;
     }
 
-    public @EnumType(VkExternalMemoryHandleTypeFlags.class) int handleType() {
+    public @MagicConstant(valuesFromClass = VkExternalMemoryHandleTypeFlags.class) int handleType() {
         return segment.get(LAYOUT$handleType, OFFSET$handleType);
     }
 
-    public VkImportMemoryFdInfoKHR handleType(@EnumType(VkExternalMemoryHandleTypeFlags.class) int value) {
+    public VkImportMemoryFdInfoKHR handleType(@MagicConstant(valuesFromClass = VkExternalMemoryHandleTypeFlags.class) int value) {
         segment.set(LAYOUT$handleType, OFFSET$handleType, value);
         return this;
     }

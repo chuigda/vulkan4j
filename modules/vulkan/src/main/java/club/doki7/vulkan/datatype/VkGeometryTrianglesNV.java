@@ -200,11 +200,11 @@ public record VkGeometryTrianglesNV(@NotNull MemorySegment segment) implements I
         sType(VkStructureType.GEOMETRY_TRIANGLES_NV);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkGeometryTrianglesNV sType(@EnumType(VkStructureType.class) int value) {
+    public VkGeometryTrianglesNV sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }
@@ -262,11 +262,11 @@ public record VkGeometryTrianglesNV(@NotNull MemorySegment segment) implements I
         return this;
     }
 
-    public @EnumType(VkFormat.class) int vertexFormat() {
+    public @MagicConstant(valuesFromClass = VkFormat.class) int vertexFormat() {
         return segment.get(LAYOUT$vertexFormat, OFFSET$vertexFormat);
     }
 
-    public VkGeometryTrianglesNV vertexFormat(@EnumType(VkFormat.class) int value) {
+    public VkGeometryTrianglesNV vertexFormat(@MagicConstant(valuesFromClass = VkFormat.class) int value) {
         segment.set(LAYOUT$vertexFormat, OFFSET$vertexFormat, value);
         return this;
     }
@@ -302,11 +302,11 @@ public record VkGeometryTrianglesNV(@NotNull MemorySegment segment) implements I
         return this;
     }
 
-    public @EnumType(VkIndexType.class) int indexType() {
+    public @MagicConstant(valuesFromClass = VkIndexType.class) int indexType() {
         return segment.get(LAYOUT$indexType, OFFSET$indexType);
     }
 
-    public VkGeometryTrianglesNV indexType(@EnumType(VkIndexType.class) int value) {
+    public VkGeometryTrianglesNV indexType(@MagicConstant(valuesFromClass = VkIndexType.class) int value) {
         segment.set(LAYOUT$indexType, OFFSET$indexType, value);
         return this;
     }

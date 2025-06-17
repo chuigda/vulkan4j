@@ -198,11 +198,11 @@ public record VkRenderPassCreateInfo2(@NotNull MemorySegment segment) implements
         sType(VkStructureType.RENDER_PASS_CREATE_INFO_2);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkRenderPassCreateInfo2 sType(@EnumType(VkStructureType.class) int value) {
+    public VkRenderPassCreateInfo2 sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }
@@ -220,11 +220,11 @@ public record VkRenderPassCreateInfo2(@NotNull MemorySegment segment) implements
         return this;
     }
 
-    public @EnumType(VkRenderPassCreateFlags.class) int flags() {
+    public @MagicConstant(valuesFromClass = VkRenderPassCreateFlags.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public VkRenderPassCreateInfo2 flags(@EnumType(VkRenderPassCreateFlags.class) int value) {
+    public VkRenderPassCreateInfo2 flags(@MagicConstant(valuesFromClass = VkRenderPassCreateFlags.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
         return this;
     }

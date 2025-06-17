@@ -190,11 +190,11 @@ public record VkHeadlessSurfaceCreateInfoEXT(@NotNull MemorySegment segment) imp
         sType(VkStructureType.HEADLESS_SURFACE_CREATE_INFO_EXT);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkHeadlessSurfaceCreateInfoEXT sType(@EnumType(VkStructureType.class) int value) {
+    public VkHeadlessSurfaceCreateInfoEXT sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }
@@ -212,11 +212,11 @@ public record VkHeadlessSurfaceCreateInfoEXT(@NotNull MemorySegment segment) imp
         return this;
     }
 
-    public @EnumType(VkHeadlessSurfaceCreateFlagsEXT.class) int flags() {
+    public @MagicConstant(valuesFromClass = VkHeadlessSurfaceCreateFlagsEXT.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public VkHeadlessSurfaceCreateInfoEXT flags(@EnumType(VkHeadlessSurfaceCreateFlagsEXT.class) int value) {
+    public VkHeadlessSurfaceCreateInfoEXT flags(@MagicConstant(valuesFromClass = VkHeadlessSurfaceCreateFlagsEXT.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
         return this;
     }

@@ -191,11 +191,11 @@ public record VkPipelineSampleLocationsStateCreateInfoEXT(@NotNull MemorySegment
         sType(VkStructureType.PIPELINE_SAMPLE_LOCATIONS_STATE_CREATE_INFO_EXT);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkPipelineSampleLocationsStateCreateInfoEXT sType(@EnumType(VkStructureType.class) int value) {
+    public VkPipelineSampleLocationsStateCreateInfoEXT sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }

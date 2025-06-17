@@ -195,11 +195,11 @@ public record VkBuildPartitionedAccelerationStructureInfoNV(@NotNull MemorySegme
         sType(VkStructureType.BUILD_PARTITIONED_ACCELERATION_STRUCTURE_INFO_NV);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkBuildPartitionedAccelerationStructureInfoNV sType(@EnumType(VkStructureType.class) int value) {
+    public VkBuildPartitionedAccelerationStructureInfoNV sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }

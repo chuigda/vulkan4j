@@ -192,11 +192,11 @@ public record VkMappedMemoryRange(@NotNull MemorySegment segment) implements IVk
         sType(VkStructureType.MAPPED_MEMORY_RANGE);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkMappedMemoryRange sType(@EnumType(VkStructureType.class) int value) {
+    public VkMappedMemoryRange sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }

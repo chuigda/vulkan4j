@@ -190,11 +190,11 @@ public record VkDeviceGroupSwapchainCreateInfoKHR(@NotNull MemorySegment segment
         sType(VkStructureType.DEVICE_GROUP_SWAPCHAIN_CREATE_INFO_KHR);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkDeviceGroupSwapchainCreateInfoKHR sType(@EnumType(VkStructureType.class) int value) {
+    public VkDeviceGroupSwapchainCreateInfoKHR sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }
@@ -212,11 +212,11 @@ public record VkDeviceGroupSwapchainCreateInfoKHR(@NotNull MemorySegment segment
         return this;
     }
 
-    public @EnumType(VkDeviceGroupPresentModeFlagsKHR.class) int modes() {
+    public @MagicConstant(valuesFromClass = VkDeviceGroupPresentModeFlagsKHR.class) int modes() {
         return segment.get(LAYOUT$modes, OFFSET$modes);
     }
 
-    public VkDeviceGroupSwapchainCreateInfoKHR modes(@EnumType(VkDeviceGroupPresentModeFlagsKHR.class) int value) {
+    public VkDeviceGroupSwapchainCreateInfoKHR modes(@MagicConstant(valuesFromClass = VkDeviceGroupPresentModeFlagsKHR.class) int value) {
         segment.set(LAYOUT$modes, OFFSET$modes, value);
         return this;
     }

@@ -195,11 +195,11 @@ public record VkImageFormatConstraintsInfoFUCHSIA(@NotNull MemorySegment segment
         sType(VkStructureType.IMAGE_FORMAT_CONSTRAINTS_INFO_FUCHSIA);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkImageFormatConstraintsInfoFUCHSIA sType(@EnumType(VkStructureType.class) int value) {
+    public VkImageFormatConstraintsInfoFUCHSIA sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }
@@ -231,20 +231,20 @@ public record VkImageFormatConstraintsInfoFUCHSIA(@NotNull MemorySegment segment
         return this;
     }
 
-    public @EnumType(VkFormatFeatureFlags.class) int requiredFormatFeatures() {
+    public @MagicConstant(valuesFromClass = VkFormatFeatureFlags.class) int requiredFormatFeatures() {
         return segment.get(LAYOUT$requiredFormatFeatures, OFFSET$requiredFormatFeatures);
     }
 
-    public VkImageFormatConstraintsInfoFUCHSIA requiredFormatFeatures(@EnumType(VkFormatFeatureFlags.class) int value) {
+    public VkImageFormatConstraintsInfoFUCHSIA requiredFormatFeatures(@MagicConstant(valuesFromClass = VkFormatFeatureFlags.class) int value) {
         segment.set(LAYOUT$requiredFormatFeatures, OFFSET$requiredFormatFeatures, value);
         return this;
     }
 
-    public @EnumType(VkImageFormatConstraintsFlagsFUCHSIA.class) int flags() {
+    public @MagicConstant(valuesFromClass = VkImageFormatConstraintsFlagsFUCHSIA.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public VkImageFormatConstraintsInfoFUCHSIA flags(@EnumType(VkImageFormatConstraintsFlagsFUCHSIA.class) int value) {
+    public VkImageFormatConstraintsInfoFUCHSIA flags(@MagicConstant(valuesFromClass = VkImageFormatConstraintsFlagsFUCHSIA.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
         return this;
     }

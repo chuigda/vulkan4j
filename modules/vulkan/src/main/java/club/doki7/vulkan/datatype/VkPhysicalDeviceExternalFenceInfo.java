@@ -190,11 +190,11 @@ public record VkPhysicalDeviceExternalFenceInfo(@NotNull MemorySegment segment) 
         sType(VkStructureType.PHYSICAL_DEVICE_EXTERNAL_FENCE_INFO);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkPhysicalDeviceExternalFenceInfo sType(@EnumType(VkStructureType.class) int value) {
+    public VkPhysicalDeviceExternalFenceInfo sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }
@@ -212,11 +212,11 @@ public record VkPhysicalDeviceExternalFenceInfo(@NotNull MemorySegment segment) 
         return this;
     }
 
-    public @EnumType(VkExternalFenceHandleTypeFlags.class) int handleType() {
+    public @MagicConstant(valuesFromClass = VkExternalFenceHandleTypeFlags.class) int handleType() {
         return segment.get(LAYOUT$handleType, OFFSET$handleType);
     }
 
-    public VkPhysicalDeviceExternalFenceInfo handleType(@EnumType(VkExternalFenceHandleTypeFlags.class) int value) {
+    public VkPhysicalDeviceExternalFenceInfo handleType(@MagicConstant(valuesFromClass = VkExternalFenceHandleTypeFlags.class) int value) {
         segment.set(LAYOUT$handleType, OFFSET$handleType, value);
         return this;
     }

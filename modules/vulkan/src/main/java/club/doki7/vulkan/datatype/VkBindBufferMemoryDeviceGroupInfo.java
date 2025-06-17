@@ -191,11 +191,11 @@ public record VkBindBufferMemoryDeviceGroupInfo(@NotNull MemorySegment segment) 
         sType(VkStructureType.BIND_BUFFER_MEMORY_DEVICE_GROUP_INFO);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkBindBufferMemoryDeviceGroupInfo sType(@EnumType(VkStructureType.class) int value) {
+    public VkBindBufferMemoryDeviceGroupInfo sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }

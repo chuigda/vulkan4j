@@ -171,11 +171,11 @@ public record VkBuildPartitionedAccelerationStructureIndirectCommandNV(@NotNull 
         return ret;
     }
 
-    public @EnumType(VkPartitionedAccelerationStructureOpTypeNV.class) int opType() {
+    public @MagicConstant(valuesFromClass = VkPartitionedAccelerationStructureOpTypeNV.class) int opType() {
         return segment.get(LAYOUT$opType, OFFSET$opType);
     }
 
-    public VkBuildPartitionedAccelerationStructureIndirectCommandNV opType(@EnumType(VkPartitionedAccelerationStructureOpTypeNV.class) int value) {
+    public VkBuildPartitionedAccelerationStructureIndirectCommandNV opType(@MagicConstant(valuesFromClass = VkPartitionedAccelerationStructureOpTypeNV.class) int value) {
         segment.set(LAYOUT$opType, OFFSET$opType, value);
         return this;
     }

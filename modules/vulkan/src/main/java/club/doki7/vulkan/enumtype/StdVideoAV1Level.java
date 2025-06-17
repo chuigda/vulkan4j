@@ -1,6 +1,7 @@
 package club.doki7.vulkan.enumtype;
 
 import club.doki7.ffm.annotation.*;
+import org.intellij.lang.annotations.MagicConstant;
 
 public final class StdVideoAV1Level {
     public static final int STD_VIDEO_AV1_LEVEL_2_0 = 0x0;
@@ -29,7 +30,7 @@ public final class StdVideoAV1Level {
     public static final int STD_VIDEO_AV1_LEVEL_7_3 = 0x17;
     public static final int STD_VIDEO_AV1_LEVEL_INVALID = 0x7fffffff;
 
-    public static String explain(@EnumType(StdVideoAV1Level.class) int value) {
+    public static String explain(@MagicConstant(valuesFromClass = StdVideoAV1Level.class) int value) {
         return switch (value) {
             case StdVideoAV1Level.STD_VIDEO_AV1_LEVEL_2_0 -> "STD_VIDEO_AV1_LEVEL_2_0";
             case StdVideoAV1Level.STD_VIDEO_AV1_LEVEL_2_1 -> "STD_VIDEO_AV1_LEVEL_2_1";

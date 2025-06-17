@@ -1,6 +1,7 @@
 package club.doki7.vma.enumtype;
 
 import club.doki7.ffm.annotation.*;
+import org.intellij.lang.annotations.MagicConstant;
 
 /// Operation performed on single defragmentation move. See structure {@code VmaDefragmentationMove}.
 ///
@@ -14,7 +15,7 @@ public final class VmaDefragmentationMoveOperation {
     /// Set this value if you decide to abandon the allocation and you destroyed the buffer/image. New place reserved at `dstTmpAllocation` will be freed, along with `srcAllocation`, which will be destroyed.
     public static final int DESTROY = 0x2;
 
-    public static String explain(@EnumType(VmaDefragmentationMoveOperation.class) int value) {
+    public static String explain(@MagicConstant(valuesFromClass = VmaDefragmentationMoveOperation.class) int value) {
         return switch (value) {
             case VmaDefragmentationMoveOperation.COPY -> "VMA_DEFRAGMENTATION_MOVE_OPERATION_COPY";
             case VmaDefragmentationMoveOperation.DESTROY -> "VMA_DEFRAGMENTATION_MOVE_OPERATION_DESTROY";

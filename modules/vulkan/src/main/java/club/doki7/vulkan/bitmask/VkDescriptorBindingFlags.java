@@ -1,6 +1,7 @@
 package club.doki7.vulkan.bitmask;
 
 import club.doki7.ffm.annotation.*;
+import org.intellij.lang.annotations.MagicConstant;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,7 +13,7 @@ public final class VkDescriptorBindingFlags {
     public static final int UPDATE_UNUSED_WHILE_PENDING = 0x2;
     public static final int VARIABLE_DESCRIPTOR_COUNT = 0x8;
 
-    public static String explain(@EnumType(VkDescriptorBindingFlags.class) int flags) {
+    public static String explain(@MagicConstant(flagsFromClass = VkDescriptorBindingFlags.class) int flags) {
         List<String> detectedFlagBits = new ArrayList<>();
         if ((flags & PARTIALLY_BOUND) != 0) {
             detectedFlagBits.add("VK_DESCRIPTOR_BINDING_PARTIALLY_BOUND_BIT");

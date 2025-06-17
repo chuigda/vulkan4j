@@ -196,11 +196,11 @@ public record VkBlitImageInfo2(@NotNull MemorySegment segment) implements IVkBli
         sType(VkStructureType.BLIT_IMAGE_INFO_2);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkBlitImageInfo2 sType(@EnumType(VkStructureType.class) int value) {
+    public VkBlitImageInfo2 sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }
@@ -231,11 +231,11 @@ public record VkBlitImageInfo2(@NotNull MemorySegment segment) implements IVkBli
         return this;
     }
 
-    public @EnumType(VkImageLayout.class) int srcImageLayout() {
+    public @MagicConstant(valuesFromClass = VkImageLayout.class) int srcImageLayout() {
         return segment.get(LAYOUT$srcImageLayout, OFFSET$srcImageLayout);
     }
 
-    public VkBlitImageInfo2 srcImageLayout(@EnumType(VkImageLayout.class) int value) {
+    public VkBlitImageInfo2 srcImageLayout(@MagicConstant(valuesFromClass = VkImageLayout.class) int value) {
         segment.set(LAYOUT$srcImageLayout, OFFSET$srcImageLayout, value);
         return this;
     }
@@ -253,11 +253,11 @@ public record VkBlitImageInfo2(@NotNull MemorySegment segment) implements IVkBli
         return this;
     }
 
-    public @EnumType(VkImageLayout.class) int dstImageLayout() {
+    public @MagicConstant(valuesFromClass = VkImageLayout.class) int dstImageLayout() {
         return segment.get(LAYOUT$dstImageLayout, OFFSET$dstImageLayout);
     }
 
-    public VkBlitImageInfo2 dstImageLayout(@EnumType(VkImageLayout.class) int value) {
+    public VkBlitImageInfo2 dstImageLayout(@MagicConstant(valuesFromClass = VkImageLayout.class) int value) {
         segment.set(LAYOUT$dstImageLayout, OFFSET$dstImageLayout, value);
         return this;
     }
@@ -303,11 +303,11 @@ public record VkBlitImageInfo2(@NotNull MemorySegment segment) implements IVkBli
         segment.set(LAYOUT$pRegions, OFFSET$pRegions, value);
     }
 
-    public @EnumType(VkFilter.class) int filter() {
+    public @MagicConstant(valuesFromClass = VkFilter.class) int filter() {
         return segment.get(LAYOUT$filter, OFFSET$filter);
     }
 
-    public VkBlitImageInfo2 filter(@EnumType(VkFilter.class) int value) {
+    public VkBlitImageInfo2 filter(@MagicConstant(valuesFromClass = VkFilter.class) int value) {
         segment.set(LAYOUT$filter, OFFSET$filter, value);
         return this;
     }

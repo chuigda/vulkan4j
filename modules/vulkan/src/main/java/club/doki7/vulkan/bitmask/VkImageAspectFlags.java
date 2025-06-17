@@ -1,6 +1,7 @@
 package club.doki7.vulkan.bitmask;
 
 import club.doki7.ffm.annotation.*;
+import org.intellij.lang.annotations.MagicConstant;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,7 +20,7 @@ public final class VkImageAspectFlags {
     public static final int PLANE_2 = 0x40;
     public static final int STENCIL = 0x4;
 
-    public static String explain(@EnumType(VkImageAspectFlags.class) int flags) {
+    public static String explain(@MagicConstant(flagsFromClass = VkImageAspectFlags.class) int flags) {
         List<String> detectedFlagBits = new ArrayList<>();
         if ((flags & COLOR) != 0) {
             detectedFlagBits.add("VK_IMAGE_ASPECT_COLOR_BIT");

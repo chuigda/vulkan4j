@@ -1,6 +1,7 @@
 package club.doki7.vulkan.enumtype;
 
 import club.doki7.ffm.annotation.*;
+import org.intellij.lang.annotations.MagicConstant;
 
 public final class StdVideoH265SliceType {
     public static final int STD_VIDEO_H265_SLICE_TYPE_B = 0x0;
@@ -8,7 +9,7 @@ public final class StdVideoH265SliceType {
     public static final int STD_VIDEO_H265_SLICE_TYPE_I = 0x2;
     public static final int STD_VIDEO_H265_SLICE_TYPE_INVALID = 0x7fffffff;
 
-    public static String explain(@EnumType(StdVideoH265SliceType.class) int value) {
+    public static String explain(@MagicConstant(valuesFromClass = StdVideoH265SliceType.class) int value) {
         return switch (value) {
             case StdVideoH265SliceType.STD_VIDEO_H265_SLICE_TYPE_B -> "STD_VIDEO_H265_SLICE_TYPE_B";
             case StdVideoH265SliceType.STD_VIDEO_H265_SLICE_TYPE_I -> "STD_VIDEO_H265_SLICE_TYPE_I";

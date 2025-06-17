@@ -193,11 +193,11 @@ public record VkPhysicalDeviceImageDrmFormatModifierInfoEXT(@NotNull MemorySegme
         sType(VkStructureType.PHYSICAL_DEVICE_IMAGE_DRM_FORMAT_MODIFIER_INFO_EXT);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkPhysicalDeviceImageDrmFormatModifierInfoEXT sType(@EnumType(VkStructureType.class) int value) {
+    public VkPhysicalDeviceImageDrmFormatModifierInfoEXT sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }
@@ -224,11 +224,11 @@ public record VkPhysicalDeviceImageDrmFormatModifierInfoEXT(@NotNull MemorySegme
         return this;
     }
 
-    public @EnumType(VkSharingMode.class) int sharingMode() {
+    public @MagicConstant(valuesFromClass = VkSharingMode.class) int sharingMode() {
         return segment.get(LAYOUT$sharingMode, OFFSET$sharingMode);
     }
 
-    public VkPhysicalDeviceImageDrmFormatModifierInfoEXT sharingMode(@EnumType(VkSharingMode.class) int value) {
+    public VkPhysicalDeviceImageDrmFormatModifierInfoEXT sharingMode(@MagicConstant(valuesFromClass = VkSharingMode.class) int value) {
         segment.set(LAYOUT$sharingMode, OFFSET$sharingMode, value);
         return this;
     }

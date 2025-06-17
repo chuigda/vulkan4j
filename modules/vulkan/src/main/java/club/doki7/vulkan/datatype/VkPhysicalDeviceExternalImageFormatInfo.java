@@ -190,11 +190,11 @@ public record VkPhysicalDeviceExternalImageFormatInfo(@NotNull MemorySegment seg
         sType(VkStructureType.PHYSICAL_DEVICE_EXTERNAL_IMAGE_FORMAT_INFO);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkPhysicalDeviceExternalImageFormatInfo sType(@EnumType(VkStructureType.class) int value) {
+    public VkPhysicalDeviceExternalImageFormatInfo sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }
@@ -212,11 +212,11 @@ public record VkPhysicalDeviceExternalImageFormatInfo(@NotNull MemorySegment seg
         return this;
     }
 
-    public @EnumType(VkExternalMemoryHandleTypeFlags.class) int handleType() {
+    public @MagicConstant(valuesFromClass = VkExternalMemoryHandleTypeFlags.class) int handleType() {
         return segment.get(LAYOUT$handleType, OFFSET$handleType);
     }
 
-    public VkPhysicalDeviceExternalImageFormatInfo handleType(@EnumType(VkExternalMemoryHandleTypeFlags.class) int value) {
+    public VkPhysicalDeviceExternalImageFormatInfo handleType(@MagicConstant(valuesFromClass = VkExternalMemoryHandleTypeFlags.class) int value) {
         segment.set(LAYOUT$handleType, OFFSET$handleType, value);
         return this;
     }

@@ -190,11 +190,11 @@ public record VkPhysicalDeviceRawAccessChainsFeaturesNV(@NotNull MemorySegment s
         sType(VkStructureType.PHYSICAL_DEVICE_RAW_ACCESS_CHAINS_FEATURES_NV);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkPhysicalDeviceRawAccessChainsFeaturesNV sType(@EnumType(VkStructureType.class) int value) {
+    public VkPhysicalDeviceRawAccessChainsFeaturesNV sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }

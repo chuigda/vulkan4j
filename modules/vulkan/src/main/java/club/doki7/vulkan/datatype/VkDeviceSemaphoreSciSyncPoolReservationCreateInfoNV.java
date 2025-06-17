@@ -190,11 +190,11 @@ public record VkDeviceSemaphoreSciSyncPoolReservationCreateInfoNV(@NotNull Memor
         sType(VkStructureType.DEVICE_SEMAPHORE_SCI_SYNC_POOL_RESERVATION_CREATE_INFO_NV);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkDeviceSemaphoreSciSyncPoolReservationCreateInfoNV sType(@EnumType(VkStructureType.class) int value) {
+    public VkDeviceSemaphoreSciSyncPoolReservationCreateInfoNV sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }

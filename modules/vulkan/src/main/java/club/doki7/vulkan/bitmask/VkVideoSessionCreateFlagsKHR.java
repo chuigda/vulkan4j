@@ -1,6 +1,7 @@
 package club.doki7.vulkan.bitmask;
 
 import club.doki7.ffm.annotation.*;
+import org.intellij.lang.annotations.MagicConstant;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,7 +15,7 @@ public final class VkVideoSessionCreateFlagsKHR {
     public static final int INLINE_SESSION_PARAMETERS = 0x20;
     public static final int PROTECTED_CONTENT = 0x1;
 
-    public static String explain(@EnumType(VkVideoSessionCreateFlagsKHR.class) int flags) {
+    public static String explain(@MagicConstant(flagsFromClass = VkVideoSessionCreateFlagsKHR.class) int flags) {
         List<String> detectedFlagBits = new ArrayList<>();
         if ((flags & ALLOW_ENCODE_EMPHASIS_MAP) != 0) {
             detectedFlagBits.add("VK_VIDEO_SESSION_CREATE_ALLOW_ENCODE_EMPHASIS_MAP_BIT_KHR");

@@ -234,11 +234,11 @@ public record VmaPoolCreateInfo(@NotNull MemorySegment segment) implements IVmaP
         return this;
     }
 
-    public @EnumType(VmaPoolCreateFlags.class) int flags() {
+    public @MagicConstant(valuesFromClass = VmaPoolCreateFlags.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public VmaPoolCreateInfo flags(@EnumType(VmaPoolCreateFlags.class) int value) {
+    public VmaPoolCreateInfo flags(@MagicConstant(valuesFromClass = VmaPoolCreateFlags.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
         return this;
     }

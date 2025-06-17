@@ -190,11 +190,11 @@ public record VkPhysicalDeviceExternalMemoryScreenBufferFeaturesQNX(@NotNull Mem
         sType(VkStructureType.PHYSICAL_DEVICE_EXTERNAL_MEMORY_SCREEN_BUFFER_FEATURES_QNX);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkPhysicalDeviceExternalMemoryScreenBufferFeaturesQNX sType(@EnumType(VkStructureType.class) int value) {
+    public VkPhysicalDeviceExternalMemoryScreenBufferFeaturesQNX sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }

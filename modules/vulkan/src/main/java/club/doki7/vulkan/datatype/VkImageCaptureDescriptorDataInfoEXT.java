@@ -190,11 +190,11 @@ public record VkImageCaptureDescriptorDataInfoEXT(@NotNull MemorySegment segment
         sType(VkStructureType.IMAGE_CAPTURE_DESCRIPTOR_DATA_INFO_EXT);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkImageCaptureDescriptorDataInfoEXT sType(@EnumType(VkStructureType.class) int value) {
+    public VkImageCaptureDescriptorDataInfoEXT sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }

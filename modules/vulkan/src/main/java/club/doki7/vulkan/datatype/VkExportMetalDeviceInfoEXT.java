@@ -190,11 +190,11 @@ public record VkExportMetalDeviceInfoEXT(@NotNull MemorySegment segment) impleme
         sType(VkStructureType.EXPORT_METAL_DEVICE_INFO_EXT);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkExportMetalDeviceInfoEXT sType(@EnumType(VkStructureType.class) int value) {
+    public VkExportMetalDeviceInfoEXT sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }

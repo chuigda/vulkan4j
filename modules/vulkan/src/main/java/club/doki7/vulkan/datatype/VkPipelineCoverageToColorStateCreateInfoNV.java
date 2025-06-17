@@ -192,11 +192,11 @@ public record VkPipelineCoverageToColorStateCreateInfoNV(@NotNull MemorySegment 
         sType(VkStructureType.PIPELINE_COVERAGE_TO_COLOR_STATE_CREATE_INFO_NV);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkPipelineCoverageToColorStateCreateInfoNV sType(@EnumType(VkStructureType.class) int value) {
+    public VkPipelineCoverageToColorStateCreateInfoNV sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }
@@ -214,11 +214,11 @@ public record VkPipelineCoverageToColorStateCreateInfoNV(@NotNull MemorySegment 
         return this;
     }
 
-    public @EnumType(VkPipelineCoverageToColorStateCreateFlagsNV.class) int flags() {
+    public @MagicConstant(valuesFromClass = VkPipelineCoverageToColorStateCreateFlagsNV.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public VkPipelineCoverageToColorStateCreateInfoNV flags(@EnumType(VkPipelineCoverageToColorStateCreateFlagsNV.class) int value) {
+    public VkPipelineCoverageToColorStateCreateInfoNV flags(@MagicConstant(valuesFromClass = VkPipelineCoverageToColorStateCreateFlagsNV.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
         return this;
     }

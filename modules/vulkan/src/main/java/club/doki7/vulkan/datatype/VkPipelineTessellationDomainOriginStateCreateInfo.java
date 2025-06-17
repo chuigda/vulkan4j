@@ -190,11 +190,11 @@ public record VkPipelineTessellationDomainOriginStateCreateInfo(@NotNull MemoryS
         sType(VkStructureType.PIPELINE_TESSELLATION_DOMAIN_ORIGIN_STATE_CREATE_INFO);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkPipelineTessellationDomainOriginStateCreateInfo sType(@EnumType(VkStructureType.class) int value) {
+    public VkPipelineTessellationDomainOriginStateCreateInfo sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }
@@ -212,11 +212,11 @@ public record VkPipelineTessellationDomainOriginStateCreateInfo(@NotNull MemoryS
         return this;
     }
 
-    public @EnumType(VkTessellationDomainOrigin.class) int domainOrigin() {
+    public @MagicConstant(valuesFromClass = VkTessellationDomainOrigin.class) int domainOrigin() {
         return segment.get(LAYOUT$domainOrigin, OFFSET$domainOrigin);
     }
 
-    public VkPipelineTessellationDomainOriginStateCreateInfo domainOrigin(@EnumType(VkTessellationDomainOrigin.class) int value) {
+    public VkPipelineTessellationDomainOriginStateCreateInfo domainOrigin(@MagicConstant(valuesFromClass = VkTessellationDomainOrigin.class) int value) {
         segment.set(LAYOUT$domainOrigin, OFFSET$domainOrigin, value);
         return this;
     }

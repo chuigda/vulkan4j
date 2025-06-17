@@ -195,11 +195,11 @@ public record VkImageViewCreateInfo(@NotNull MemorySegment segment) implements I
         sType(VkStructureType.IMAGE_VIEW_CREATE_INFO);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkImageViewCreateInfo sType(@EnumType(VkStructureType.class) int value) {
+    public VkImageViewCreateInfo sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }
@@ -217,11 +217,11 @@ public record VkImageViewCreateInfo(@NotNull MemorySegment segment) implements I
         return this;
     }
 
-    public @EnumType(VkImageViewCreateFlags.class) int flags() {
+    public @MagicConstant(valuesFromClass = VkImageViewCreateFlags.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public VkImageViewCreateInfo flags(@EnumType(VkImageViewCreateFlags.class) int value) {
+    public VkImageViewCreateInfo flags(@MagicConstant(valuesFromClass = VkImageViewCreateFlags.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
         return this;
     }
@@ -239,20 +239,20 @@ public record VkImageViewCreateInfo(@NotNull MemorySegment segment) implements I
         return this;
     }
 
-    public @EnumType(VkImageViewType.class) int viewType() {
+    public @MagicConstant(valuesFromClass = VkImageViewType.class) int viewType() {
         return segment.get(LAYOUT$viewType, OFFSET$viewType);
     }
 
-    public VkImageViewCreateInfo viewType(@EnumType(VkImageViewType.class) int value) {
+    public VkImageViewCreateInfo viewType(@MagicConstant(valuesFromClass = VkImageViewType.class) int value) {
         segment.set(LAYOUT$viewType, OFFSET$viewType, value);
         return this;
     }
 
-    public @EnumType(VkFormat.class) int format() {
+    public @MagicConstant(valuesFromClass = VkFormat.class) int format() {
         return segment.get(LAYOUT$format, OFFSET$format);
     }
 
-    public VkImageViewCreateInfo format(@EnumType(VkFormat.class) int value) {
+    public VkImageViewCreateInfo format(@MagicConstant(valuesFromClass = VkFormat.class) int value) {
         segment.set(LAYOUT$format, OFFSET$format, value);
         return this;
     }

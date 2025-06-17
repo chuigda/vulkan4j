@@ -190,11 +190,11 @@ public record VkPhysicalDeviceCudaKernelLaunchFeaturesNV(@NotNull MemorySegment 
         sType(VkStructureType.PHYSICAL_DEVICE_CUDA_KERNEL_LAUNCH_FEATURES_NV);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkPhysicalDeviceCudaKernelLaunchFeaturesNV sType(@EnumType(VkStructureType.class) int value) {
+    public VkPhysicalDeviceCudaKernelLaunchFeaturesNV sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }

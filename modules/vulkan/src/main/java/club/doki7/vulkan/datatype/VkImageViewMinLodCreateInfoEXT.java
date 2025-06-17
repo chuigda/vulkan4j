@@ -190,11 +190,11 @@ public record VkImageViewMinLodCreateInfoEXT(@NotNull MemorySegment segment) imp
         sType(VkStructureType.IMAGE_VIEW_MIN_LOD_CREATE_INFO_EXT);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkImageViewMinLodCreateInfoEXT sType(@EnumType(VkStructureType.class) int value) {
+    public VkImageViewMinLodCreateInfoEXT sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }

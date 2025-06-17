@@ -205,29 +205,29 @@ public record StdVideoH264SequenceParameterSet(@NotNull MemorySegment segment) i
         return this;
     }
 
-    public @EnumType(StdVideoH264ProfileIdc.class) int profile_idc() {
+    public @MagicConstant(valuesFromClass = StdVideoH264ProfileIdc.class) int profile_idc() {
         return segment.get(LAYOUT$profile_idc, OFFSET$profile_idc);
     }
 
-    public StdVideoH264SequenceParameterSet profile_idc(@EnumType(StdVideoH264ProfileIdc.class) int value) {
+    public StdVideoH264SequenceParameterSet profile_idc(@MagicConstant(valuesFromClass = StdVideoH264ProfileIdc.class) int value) {
         segment.set(LAYOUT$profile_idc, OFFSET$profile_idc, value);
         return this;
     }
 
-    public @EnumType(StdVideoH264LevelIdc.class) int level_idc() {
+    public @MagicConstant(valuesFromClass = StdVideoH264LevelIdc.class) int level_idc() {
         return segment.get(LAYOUT$level_idc, OFFSET$level_idc);
     }
 
-    public StdVideoH264SequenceParameterSet level_idc(@EnumType(StdVideoH264LevelIdc.class) int value) {
+    public StdVideoH264SequenceParameterSet level_idc(@MagicConstant(valuesFromClass = StdVideoH264LevelIdc.class) int value) {
         segment.set(LAYOUT$level_idc, OFFSET$level_idc, value);
         return this;
     }
 
-    public @EnumType(StdVideoH264ChromaFormatIdc.class) int chroma_format_idc() {
+    public @MagicConstant(valuesFromClass = StdVideoH264ChromaFormatIdc.class) int chroma_format_idc() {
         return segment.get(LAYOUT$chroma_format_idc, OFFSET$chroma_format_idc);
     }
 
-    public StdVideoH264SequenceParameterSet chroma_format_idc(@EnumType(StdVideoH264ChromaFormatIdc.class) int value) {
+    public StdVideoH264SequenceParameterSet chroma_format_idc(@MagicConstant(valuesFromClass = StdVideoH264ChromaFormatIdc.class) int value) {
         segment.set(LAYOUT$chroma_format_idc, OFFSET$chroma_format_idc, value);
         return this;
     }
@@ -268,11 +268,11 @@ public record StdVideoH264SequenceParameterSet(@NotNull MemorySegment segment) i
         return this;
     }
 
-    public @EnumType(StdVideoH264PocType.class) int pic_order_cnt_type() {
+    public @MagicConstant(valuesFromClass = StdVideoH264PocType.class) int pic_order_cnt_type() {
         return segment.get(LAYOUT$pic_order_cnt_type, OFFSET$pic_order_cnt_type);
     }
 
-    public StdVideoH264SequenceParameterSet pic_order_cnt_type(@EnumType(StdVideoH264PocType.class) int value) {
+    public StdVideoH264SequenceParameterSet pic_order_cnt_type(@MagicConstant(valuesFromClass = StdVideoH264PocType.class) int value) {
         segment.set(LAYOUT$pic_order_cnt_type, OFFSET$pic_order_cnt_type, value);
         return this;
     }

@@ -190,11 +190,11 @@ public record VkSysmemColorSpaceFUCHSIA(@NotNull MemorySegment segment) implemen
         sType(VkStructureType.SYSMEM_COLOR_SPACE_FUCHSIA);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkSysmemColorSpaceFUCHSIA sType(@EnumType(VkStructureType.class) int value) {
+    public VkSysmemColorSpaceFUCHSIA sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }

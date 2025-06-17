@@ -1,6 +1,7 @@
 package club.doki7.vulkan.bitmask;
 
 import club.doki7.ffm.annotation.*;
+import org.intellij.lang.annotations.MagicConstant;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,7 +14,7 @@ public final class VkVideoEncodeUsageFlagsKHR {
     public static final int STREAMING = 0x2;
     public static final int TRANSCODING = 0x1;
 
-    public static String explain(@EnumType(VkVideoEncodeUsageFlagsKHR.class) int flags) {
+    public static String explain(@MagicConstant(flagsFromClass = VkVideoEncodeUsageFlagsKHR.class) int flags) {
         List<String> detectedFlagBits = new ArrayList<>();
         if ((flags & CONFERENCING) != 0) {
             detectedFlagBits.add("VK_VIDEO_ENCODE_USAGE_CONFERENCING_BIT_KHR");

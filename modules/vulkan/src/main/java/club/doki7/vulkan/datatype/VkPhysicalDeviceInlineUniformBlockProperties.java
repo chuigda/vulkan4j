@@ -194,11 +194,11 @@ public record VkPhysicalDeviceInlineUniformBlockProperties(@NotNull MemorySegmen
         sType(VkStructureType.PHYSICAL_DEVICE_INLINE_UNIFORM_BLOCK_PROPERTIES);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkPhysicalDeviceInlineUniformBlockProperties sType(@EnumType(VkStructureType.class) int value) {
+    public VkPhysicalDeviceInlineUniformBlockProperties sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }

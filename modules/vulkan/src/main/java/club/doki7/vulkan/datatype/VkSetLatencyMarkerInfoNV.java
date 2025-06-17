@@ -191,11 +191,11 @@ public record VkSetLatencyMarkerInfoNV(@NotNull MemorySegment segment) implement
         sType(VkStructureType.SET_LATENCY_MARKER_INFO_NV);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkSetLatencyMarkerInfoNV sType(@EnumType(VkStructureType.class) int value) {
+    public VkSetLatencyMarkerInfoNV sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }
@@ -222,11 +222,11 @@ public record VkSetLatencyMarkerInfoNV(@NotNull MemorySegment segment) implement
         return this;
     }
 
-    public @EnumType(VkLatencyMarkerNV.class) int marker() {
+    public @MagicConstant(valuesFromClass = VkLatencyMarkerNV.class) int marker() {
         return segment.get(LAYOUT$marker, OFFSET$marker);
     }
 
-    public VkSetLatencyMarkerInfoNV marker(@EnumType(VkLatencyMarkerNV.class) int value) {
+    public VkSetLatencyMarkerInfoNV marker(@MagicConstant(valuesFromClass = VkLatencyMarkerNV.class) int value) {
         segment.set(LAYOUT$marker, OFFSET$marker, value);
         return this;
     }

@@ -1,6 +1,7 @@
 package club.doki7.vulkan.bitmask;
 
 import club.doki7.ffm.annotation.*;
+import org.intellij.lang.annotations.MagicConstant;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,7 +16,7 @@ public final class VkSampleCountFlags {
     public static final int _64 = 0x40;
     public static final int _8 = 0x8;
 
-    public static String explain(@EnumType(VkSampleCountFlags.class) int flags) {
+    public static String explain(@MagicConstant(flagsFromClass = VkSampleCountFlags.class) int flags) {
         List<String> detectedFlagBits = new ArrayList<>();
         if ((flags & _16) != 0) {
             detectedFlagBits.add("VK_SAMPLE_COUNT_16_BIT");

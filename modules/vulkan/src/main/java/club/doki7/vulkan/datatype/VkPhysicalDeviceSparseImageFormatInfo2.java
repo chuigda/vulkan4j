@@ -194,11 +194,11 @@ public record VkPhysicalDeviceSparseImageFormatInfo2(@NotNull MemorySegment segm
         sType(VkStructureType.PHYSICAL_DEVICE_SPARSE_IMAGE_FORMAT_INFO_2);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkPhysicalDeviceSparseImageFormatInfo2 sType(@EnumType(VkStructureType.class) int value) {
+    public VkPhysicalDeviceSparseImageFormatInfo2 sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }
@@ -216,47 +216,47 @@ public record VkPhysicalDeviceSparseImageFormatInfo2(@NotNull MemorySegment segm
         return this;
     }
 
-    public @EnumType(VkFormat.class) int format() {
+    public @MagicConstant(valuesFromClass = VkFormat.class) int format() {
         return segment.get(LAYOUT$format, OFFSET$format);
     }
 
-    public VkPhysicalDeviceSparseImageFormatInfo2 format(@EnumType(VkFormat.class) int value) {
+    public VkPhysicalDeviceSparseImageFormatInfo2 format(@MagicConstant(valuesFromClass = VkFormat.class) int value) {
         segment.set(LAYOUT$format, OFFSET$format, value);
         return this;
     }
 
-    public @EnumType(VkImageType.class) int type() {
+    public @MagicConstant(valuesFromClass = VkImageType.class) int type() {
         return segment.get(LAYOUT$type, OFFSET$type);
     }
 
-    public VkPhysicalDeviceSparseImageFormatInfo2 type(@EnumType(VkImageType.class) int value) {
+    public VkPhysicalDeviceSparseImageFormatInfo2 type(@MagicConstant(valuesFromClass = VkImageType.class) int value) {
         segment.set(LAYOUT$type, OFFSET$type, value);
         return this;
     }
 
-    public @EnumType(VkSampleCountFlags.class) int samples() {
+    public @MagicConstant(valuesFromClass = VkSampleCountFlags.class) int samples() {
         return segment.get(LAYOUT$samples, OFFSET$samples);
     }
 
-    public VkPhysicalDeviceSparseImageFormatInfo2 samples(@EnumType(VkSampleCountFlags.class) int value) {
+    public VkPhysicalDeviceSparseImageFormatInfo2 samples(@MagicConstant(valuesFromClass = VkSampleCountFlags.class) int value) {
         segment.set(LAYOUT$samples, OFFSET$samples, value);
         return this;
     }
 
-    public @EnumType(VkImageUsageFlags.class) int usage() {
+    public @MagicConstant(valuesFromClass = VkImageUsageFlags.class) int usage() {
         return segment.get(LAYOUT$usage, OFFSET$usage);
     }
 
-    public VkPhysicalDeviceSparseImageFormatInfo2 usage(@EnumType(VkImageUsageFlags.class) int value) {
+    public VkPhysicalDeviceSparseImageFormatInfo2 usage(@MagicConstant(valuesFromClass = VkImageUsageFlags.class) int value) {
         segment.set(LAYOUT$usage, OFFSET$usage, value);
         return this;
     }
 
-    public @EnumType(VkImageTiling.class) int tiling() {
+    public @MagicConstant(valuesFromClass = VkImageTiling.class) int tiling() {
         return segment.get(LAYOUT$tiling, OFFSET$tiling);
     }
 
-    public VkPhysicalDeviceSparseImageFormatInfo2 tiling(@EnumType(VkImageTiling.class) int value) {
+    public VkPhysicalDeviceSparseImageFormatInfo2 tiling(@MagicConstant(valuesFromClass = VkImageTiling.class) int value) {
         segment.set(LAYOUT$tiling, OFFSET$tiling, value);
         return this;
     }

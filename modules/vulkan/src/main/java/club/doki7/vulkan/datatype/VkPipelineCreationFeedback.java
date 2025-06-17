@@ -170,11 +170,11 @@ public record VkPipelineCreationFeedback(@NotNull MemorySegment segment) impleme
         return ret;
     }
 
-    public @EnumType(VkPipelineCreationFeedbackFlags.class) int flags() {
+    public @MagicConstant(valuesFromClass = VkPipelineCreationFeedbackFlags.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public VkPipelineCreationFeedback flags(@EnumType(VkPipelineCreationFeedbackFlags.class) int value) {
+    public VkPipelineCreationFeedback flags(@MagicConstant(valuesFromClass = VkPipelineCreationFeedbackFlags.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
         return this;
     }

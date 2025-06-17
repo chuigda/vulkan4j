@@ -190,11 +190,11 @@ public record VkPhysicalDeviceDeviceGeneratedCommandsFeaturesNV(@NotNull MemoryS
         sType(VkStructureType.PHYSICAL_DEVICE_DEVICE_GENERATED_COMMANDS_FEATURES_NV);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkPhysicalDeviceDeviceGeneratedCommandsFeaturesNV sType(@EnumType(VkStructureType.class) int value) {
+    public VkPhysicalDeviceDeviceGeneratedCommandsFeaturesNV sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }

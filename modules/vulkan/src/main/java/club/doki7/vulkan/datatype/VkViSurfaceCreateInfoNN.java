@@ -191,11 +191,11 @@ public record VkViSurfaceCreateInfoNN(@NotNull MemorySegment segment) implements
         sType(VkStructureType.VI_SURFACE_CREATE_INFO_NN);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkViSurfaceCreateInfoNN sType(@EnumType(VkStructureType.class) int value) {
+    public VkViSurfaceCreateInfoNN sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }
@@ -213,11 +213,11 @@ public record VkViSurfaceCreateInfoNN(@NotNull MemorySegment segment) implements
         return this;
     }
 
-    public @EnumType(VkViSurfaceCreateFlagsNN.class) int flags() {
+    public @MagicConstant(valuesFromClass = VkViSurfaceCreateFlagsNN.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public VkViSurfaceCreateInfoNN flags(@EnumType(VkViSurfaceCreateFlagsNN.class) int value) {
+    public VkViSurfaceCreateInfoNN flags(@MagicConstant(valuesFromClass = VkViSurfaceCreateFlagsNN.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
         return this;
     }

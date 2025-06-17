@@ -175,11 +175,11 @@ public record VkShaderStatisticsInfoAMD(@NotNull MemorySegment segment) implemen
         return ret;
     }
 
-    public @EnumType(VkShaderStageFlags.class) int shaderStageMask() {
+    public @MagicConstant(valuesFromClass = VkShaderStageFlags.class) int shaderStageMask() {
         return segment.get(LAYOUT$shaderStageMask, OFFSET$shaderStageMask);
     }
 
-    public VkShaderStatisticsInfoAMD shaderStageMask(@EnumType(VkShaderStageFlags.class) int value) {
+    public VkShaderStatisticsInfoAMD shaderStageMask(@MagicConstant(valuesFromClass = VkShaderStageFlags.class) int value) {
         segment.set(LAYOUT$shaderStageMask, OFFSET$shaderStageMask, value);
         return this;
     }

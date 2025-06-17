@@ -190,11 +190,11 @@ public record VkPhysicalDeviceMemoryProperties2(@NotNull MemorySegment segment) 
         sType(VkStructureType.PHYSICAL_DEVICE_MEMORY_PROPERTIES_2);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkPhysicalDeviceMemoryProperties2 sType(@EnumType(VkStructureType.class) int value) {
+    public VkPhysicalDeviceMemoryProperties2 sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }

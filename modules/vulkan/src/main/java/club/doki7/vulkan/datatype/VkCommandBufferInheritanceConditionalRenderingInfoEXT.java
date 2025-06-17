@@ -190,11 +190,11 @@ public record VkCommandBufferInheritanceConditionalRenderingInfoEXT(@NotNull Mem
         sType(VkStructureType.COMMAND_BUFFER_INHERITANCE_CONDITIONAL_RENDERING_INFO_EXT);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkCommandBufferInheritanceConditionalRenderingInfoEXT sType(@EnumType(VkStructureType.class) int value) {
+    public VkCommandBufferInheritanceConditionalRenderingInfoEXT sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }

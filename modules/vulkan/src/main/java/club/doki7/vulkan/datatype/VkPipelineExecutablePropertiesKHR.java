@@ -193,11 +193,11 @@ public record VkPipelineExecutablePropertiesKHR(@NotNull MemorySegment segment) 
         sType(VkStructureType.PIPELINE_EXECUTABLE_PROPERTIES_KHR);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkPipelineExecutablePropertiesKHR sType(@EnumType(VkStructureType.class) int value) {
+    public VkPipelineExecutablePropertiesKHR sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }
@@ -215,11 +215,11 @@ public record VkPipelineExecutablePropertiesKHR(@NotNull MemorySegment segment) 
         return this;
     }
 
-    public @EnumType(VkShaderStageFlags.class) int stages() {
+    public @MagicConstant(valuesFromClass = VkShaderStageFlags.class) int stages() {
         return segment.get(LAYOUT$stages, OFFSET$stages);
     }
 
-    public VkPipelineExecutablePropertiesKHR stages(@EnumType(VkShaderStageFlags.class) int value) {
+    public VkPipelineExecutablePropertiesKHR stages(@MagicConstant(valuesFromClass = VkShaderStageFlags.class) int value) {
         segment.set(LAYOUT$stages, OFFSET$stages, value);
         return this;
     }

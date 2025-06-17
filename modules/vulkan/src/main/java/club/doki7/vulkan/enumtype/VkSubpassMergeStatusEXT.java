@@ -1,6 +1,7 @@
 package club.doki7.vulkan.enumtype;
 
 import club.doki7.ffm.annotation.*;
+import org.intellij.lang.annotations.MagicConstant;
 
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkSubpassMergeStatusEXT.html"><code>VkSubpassMergeStatusEXT</code></a>
 public final class VkSubpassMergeStatusEXT {
@@ -19,7 +20,7 @@ public final class VkSubpassMergeStatusEXT {
     public static final int NOT_MERGED_SINGLE_SUBPASS = 0xc;
     public static final int NOT_MERGED_UNSPECIFIED = 0xd;
 
-    public static String explain(@EnumType(VkSubpassMergeStatusEXT.class) int value) {
+    public static String explain(@MagicConstant(valuesFromClass = VkSubpassMergeStatusEXT.class) int value) {
         return switch (value) {
             case VkSubpassMergeStatusEXT.DISALLOWED -> "VK_SUBPASS_MERGE_STATUS_DISALLOWED_EXT";
             case VkSubpassMergeStatusEXT.MERGED -> "VK_SUBPASS_MERGE_STATUS_MERGED_EXT";

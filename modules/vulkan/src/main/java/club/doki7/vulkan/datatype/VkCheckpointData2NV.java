@@ -191,11 +191,11 @@ public record VkCheckpointData2NV(@NotNull MemorySegment segment) implements IVk
         sType(VkStructureType.CHECKPOINT_DATA_2_NV);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkCheckpointData2NV sType(@EnumType(VkStructureType.class) int value) {
+    public VkCheckpointData2NV sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }
@@ -213,11 +213,11 @@ public record VkCheckpointData2NV(@NotNull MemorySegment segment) implements IVk
         return this;
     }
 
-    public @EnumType(VkPipelineStageFlags2.class) long stage() {
+    public @MagicConstant(valuesFromClass = VkPipelineStageFlags2.class) long stage() {
         return segment.get(LAYOUT$stage, OFFSET$stage);
     }
 
-    public VkCheckpointData2NV stage(@EnumType(VkPipelineStageFlags2.class) long value) {
+    public VkCheckpointData2NV stage(@MagicConstant(valuesFromClass = VkPipelineStageFlags2.class) long value) {
         segment.set(LAYOUT$stage, OFFSET$stage, value);
         return this;
     }

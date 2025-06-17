@@ -192,11 +192,11 @@ public record VkCopyMicromapInfoEXT(@NotNull MemorySegment segment) implements I
         sType(VkStructureType.COPY_MICROMAP_INFO_EXT);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkCopyMicromapInfoEXT sType(@EnumType(VkStructureType.class) int value) {
+    public VkCopyMicromapInfoEXT sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }
@@ -240,11 +240,11 @@ public record VkCopyMicromapInfoEXT(@NotNull MemorySegment segment) implements I
         return this;
     }
 
-    public @EnumType(VkCopyMicromapModeEXT.class) int mode() {
+    public @MagicConstant(valuesFromClass = VkCopyMicromapModeEXT.class) int mode() {
         return segment.get(LAYOUT$mode, OFFSET$mode);
     }
 
-    public VkCopyMicromapInfoEXT mode(@EnumType(VkCopyMicromapModeEXT.class) int value) {
+    public VkCopyMicromapInfoEXT mode(@MagicConstant(valuesFromClass = VkCopyMicromapModeEXT.class) int value) {
         segment.set(LAYOUT$mode, OFFSET$mode, value);
         return this;
     }

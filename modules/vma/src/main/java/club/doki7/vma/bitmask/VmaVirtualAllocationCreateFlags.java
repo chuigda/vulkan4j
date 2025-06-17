@@ -1,6 +1,7 @@
 package club.doki7.vma.bitmask;
 
 import club.doki7.ffm.annotation.*;
+import org.intellij.lang.annotations.MagicConstant;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -30,7 +31,7 @@ public final class VmaVirtualAllocationCreateFlags {
     /// This flag is only allowed for virtual blocks created with {@code VMA_VIRTUAL_BLOCK_CREATE_LINEAR_ALGORITHM_BIT} flag.
     public static final int UPPER_ADDRESS = VmaAllocationCreateFlags.UPPER_ADDRESS;
 
-    public static String explain(@EnumType(VmaVirtualAllocationCreateFlags.class) int flags) {
+    public static String explain(@MagicConstant(flagsFromClass = VmaVirtualAllocationCreateFlags.class) int flags) {
         List<String> detectedFlagBits = new ArrayList<>();
         if ((flags & FLAG_BITS_MAX_ENUM) != 0) {
             detectedFlagBits.add("VMA_VIRTUAL_ALLOCATION_CREATE_FLAG_BITS_MAX_ENUM");

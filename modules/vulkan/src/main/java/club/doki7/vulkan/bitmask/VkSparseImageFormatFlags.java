@@ -1,6 +1,7 @@
 package club.doki7.vulkan.bitmask;
 
 import club.doki7.ffm.annotation.*;
+import org.intellij.lang.annotations.MagicConstant;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,7 +12,7 @@ public final class VkSparseImageFormatFlags {
     public static final int NONSTANDARD_BLOCK_SIZE = 0x4;
     public static final int SINGLE_MIPTAIL = 0x1;
 
-    public static String explain(@EnumType(VkSparseImageFormatFlags.class) int flags) {
+    public static String explain(@MagicConstant(flagsFromClass = VkSparseImageFormatFlags.class) int flags) {
         List<String> detectedFlagBits = new ArrayList<>();
         if ((flags & ALIGNED_MIP_SIZE) != 0) {
             detectedFlagBits.add("VK_SPARSE_IMAGE_FORMAT_ALIGNED_MIP_SIZE_BIT");

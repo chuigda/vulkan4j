@@ -1,6 +1,7 @@
 package club.doki7.vulkan.enumtype;
 
 import club.doki7.ffm.annotation.*;
+import org.intellij.lang.annotations.MagicConstant;
 
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkCooperativeVectorMatrixLayoutNV.html"><code>VkCooperativeVectorMatrixLayoutNV</code></a>
 public final class VkCooperativeVectorMatrixLayoutNV {
@@ -9,7 +10,7 @@ public final class VkCooperativeVectorMatrixLayoutNV {
     public static final int INFERENCING_OPTIMAL = 0x2;
     public static final int TRAINING_OPTIMAL = 0x3;
 
-    public static String explain(@EnumType(VkCooperativeVectorMatrixLayoutNV.class) int value) {
+    public static String explain(@MagicConstant(valuesFromClass = VkCooperativeVectorMatrixLayoutNV.class) int value) {
         return switch (value) {
             case VkCooperativeVectorMatrixLayoutNV.COLUMN_MAJOR -> "VK_COOPERATIVE_VECTOR_MATRIX_LAYOUT_COLUMN_MAJOR_NV";
             case VkCooperativeVectorMatrixLayoutNV.INFERENCING_OPTIMAL -> "VK_COOPERATIVE_VECTOR_MATRIX_LAYOUT_INFERENCING_OPTIMAL_NV";

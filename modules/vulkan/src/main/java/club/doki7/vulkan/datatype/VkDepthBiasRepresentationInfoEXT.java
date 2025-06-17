@@ -191,11 +191,11 @@ public record VkDepthBiasRepresentationInfoEXT(@NotNull MemorySegment segment) i
         sType(VkStructureType.DEPTH_BIAS_REPRESENTATION_INFO_EXT);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkDepthBiasRepresentationInfoEXT sType(@EnumType(VkStructureType.class) int value) {
+    public VkDepthBiasRepresentationInfoEXT sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }
@@ -213,11 +213,11 @@ public record VkDepthBiasRepresentationInfoEXT(@NotNull MemorySegment segment) i
         return this;
     }
 
-    public @EnumType(VkDepthBiasRepresentationEXT.class) int depthBiasRepresentation() {
+    public @MagicConstant(valuesFromClass = VkDepthBiasRepresentationEXT.class) int depthBiasRepresentation() {
         return segment.get(LAYOUT$depthBiasRepresentation, OFFSET$depthBiasRepresentation);
     }
 
-    public VkDepthBiasRepresentationInfoEXT depthBiasRepresentation(@EnumType(VkDepthBiasRepresentationEXT.class) int value) {
+    public VkDepthBiasRepresentationInfoEXT depthBiasRepresentation(@MagicConstant(valuesFromClass = VkDepthBiasRepresentationEXT.class) int value) {
         segment.set(LAYOUT$depthBiasRepresentation, OFFSET$depthBiasRepresentation, value);
         return this;
     }

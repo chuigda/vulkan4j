@@ -190,11 +190,11 @@ public record VkPhysicalDeviceImagelessFramebufferFeatures(@NotNull MemorySegmen
         sType(VkStructureType.PHYSICAL_DEVICE_IMAGELESS_FRAMEBUFFER_FEATURES);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkPhysicalDeviceImagelessFramebufferFeatures sType(@EnumType(VkStructureType.class) int value) {
+    public VkPhysicalDeviceImagelessFramebufferFeatures sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }

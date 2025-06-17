@@ -193,11 +193,11 @@ public record VkGeneratedCommandsMemoryRequirementsInfoNV(@NotNull MemorySegment
         sType(VkStructureType.GENERATED_COMMANDS_MEMORY_REQUIREMENTS_INFO_NV);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkGeneratedCommandsMemoryRequirementsInfoNV sType(@EnumType(VkStructureType.class) int value) {
+    public VkGeneratedCommandsMemoryRequirementsInfoNV sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }
@@ -215,11 +215,11 @@ public record VkGeneratedCommandsMemoryRequirementsInfoNV(@NotNull MemorySegment
         return this;
     }
 
-    public @EnumType(VkPipelineBindPoint.class) int pipelineBindPoint() {
+    public @MagicConstant(valuesFromClass = VkPipelineBindPoint.class) int pipelineBindPoint() {
         return segment.get(LAYOUT$pipelineBindPoint, OFFSET$pipelineBindPoint);
     }
 
-    public VkGeneratedCommandsMemoryRequirementsInfoNV pipelineBindPoint(@EnumType(VkPipelineBindPoint.class) int value) {
+    public VkGeneratedCommandsMemoryRequirementsInfoNV pipelineBindPoint(@MagicConstant(valuesFromClass = VkPipelineBindPoint.class) int value) {
         segment.set(LAYOUT$pipelineBindPoint, OFFSET$pipelineBindPoint, value);
         return this;
     }

@@ -192,11 +192,11 @@ public record VkGeometryNV(@NotNull MemorySegment segment) implements IVkGeometr
         sType(VkStructureType.GEOMETRY_NV);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkGeometryNV sType(@EnumType(VkStructureType.class) int value) {
+    public VkGeometryNV sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }
@@ -214,11 +214,11 @@ public record VkGeometryNV(@NotNull MemorySegment segment) implements IVkGeometr
         return this;
     }
 
-    public @EnumType(VkGeometryTypeKHR.class) int geometryType() {
+    public @MagicConstant(valuesFromClass = VkGeometryTypeKHR.class) int geometryType() {
         return segment.get(LAYOUT$geometryType, OFFSET$geometryType);
     }
 
-    public VkGeometryNV geometryType(@EnumType(VkGeometryTypeKHR.class) int value) {
+    public VkGeometryNV geometryType(@MagicConstant(valuesFromClass = VkGeometryTypeKHR.class) int value) {
         segment.set(LAYOUT$geometryType, OFFSET$geometryType, value);
         return this;
     }
@@ -237,11 +237,11 @@ public record VkGeometryNV(@NotNull MemorySegment segment) implements IVkGeometr
         return this;
     }
 
-    public @EnumType(VkGeometryFlagsKHR.class) int flags() {
+    public @MagicConstant(valuesFromClass = VkGeometryFlagsKHR.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public VkGeometryNV flags(@EnumType(VkGeometryFlagsKHR.class) int value) {
+    public VkGeometryNV flags(@MagicConstant(valuesFromClass = VkGeometryFlagsKHR.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
         return this;
     }

@@ -193,11 +193,11 @@ public record VkDescriptorPoolCreateInfo(@NotNull MemorySegment segment) impleme
         sType(VkStructureType.DESCRIPTOR_POOL_CREATE_INFO);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkDescriptorPoolCreateInfo sType(@EnumType(VkStructureType.class) int value) {
+    public VkDescriptorPoolCreateInfo sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }
@@ -215,11 +215,11 @@ public record VkDescriptorPoolCreateInfo(@NotNull MemorySegment segment) impleme
         return this;
     }
 
-    public @EnumType(VkDescriptorPoolCreateFlags.class) int flags() {
+    public @MagicConstant(valuesFromClass = VkDescriptorPoolCreateFlags.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public VkDescriptorPoolCreateInfo flags(@EnumType(VkDescriptorPoolCreateFlags.class) int value) {
+    public VkDescriptorPoolCreateInfo flags(@MagicConstant(valuesFromClass = VkDescriptorPoolCreateFlags.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
         return this;
     }

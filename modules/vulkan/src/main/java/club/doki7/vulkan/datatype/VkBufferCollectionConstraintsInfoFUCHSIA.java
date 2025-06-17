@@ -194,11 +194,11 @@ public record VkBufferCollectionConstraintsInfoFUCHSIA(@NotNull MemorySegment se
         sType(VkStructureType.BUFFER_COLLECTION_CONSTRAINTS_INFO_FUCHSIA);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkBufferCollectionConstraintsInfoFUCHSIA sType(@EnumType(VkStructureType.class) int value) {
+    public VkBufferCollectionConstraintsInfoFUCHSIA sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }

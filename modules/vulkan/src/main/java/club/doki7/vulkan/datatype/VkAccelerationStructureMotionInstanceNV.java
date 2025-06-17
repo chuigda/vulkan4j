@@ -171,20 +171,20 @@ public record VkAccelerationStructureMotionInstanceNV(@NotNull MemorySegment seg
         return ret;
     }
 
-    public @EnumType(VkAccelerationStructureMotionInstanceTypeNV.class) int type() {
+    public @MagicConstant(valuesFromClass = VkAccelerationStructureMotionInstanceTypeNV.class) int type() {
         return segment.get(LAYOUT$type, OFFSET$type);
     }
 
-    public VkAccelerationStructureMotionInstanceNV type(@EnumType(VkAccelerationStructureMotionInstanceTypeNV.class) int value) {
+    public VkAccelerationStructureMotionInstanceNV type(@MagicConstant(valuesFromClass = VkAccelerationStructureMotionInstanceTypeNV.class) int value) {
         segment.set(LAYOUT$type, OFFSET$type, value);
         return this;
     }
 
-    public @EnumType(VkAccelerationStructureMotionInstanceFlagsNV.class) int flags() {
+    public @MagicConstant(valuesFromClass = VkAccelerationStructureMotionInstanceFlagsNV.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public VkAccelerationStructureMotionInstanceNV flags(@EnumType(VkAccelerationStructureMotionInstanceFlagsNV.class) int value) {
+    public VkAccelerationStructureMotionInstanceNV flags(@MagicConstant(valuesFromClass = VkAccelerationStructureMotionInstanceFlagsNV.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
         return this;
     }

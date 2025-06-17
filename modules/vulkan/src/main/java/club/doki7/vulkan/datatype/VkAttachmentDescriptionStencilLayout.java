@@ -191,11 +191,11 @@ public record VkAttachmentDescriptionStencilLayout(@NotNull MemorySegment segmen
         sType(VkStructureType.ATTACHMENT_DESCRIPTION_STENCIL_LAYOUT);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkAttachmentDescriptionStencilLayout sType(@EnumType(VkStructureType.class) int value) {
+    public VkAttachmentDescriptionStencilLayout sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }
@@ -213,20 +213,20 @@ public record VkAttachmentDescriptionStencilLayout(@NotNull MemorySegment segmen
         return this;
     }
 
-    public @EnumType(VkImageLayout.class) int stencilInitialLayout() {
+    public @MagicConstant(valuesFromClass = VkImageLayout.class) int stencilInitialLayout() {
         return segment.get(LAYOUT$stencilInitialLayout, OFFSET$stencilInitialLayout);
     }
 
-    public VkAttachmentDescriptionStencilLayout stencilInitialLayout(@EnumType(VkImageLayout.class) int value) {
+    public VkAttachmentDescriptionStencilLayout stencilInitialLayout(@MagicConstant(valuesFromClass = VkImageLayout.class) int value) {
         segment.set(LAYOUT$stencilInitialLayout, OFFSET$stencilInitialLayout, value);
         return this;
     }
 
-    public @EnumType(VkImageLayout.class) int stencilFinalLayout() {
+    public @MagicConstant(valuesFromClass = VkImageLayout.class) int stencilFinalLayout() {
         return segment.get(LAYOUT$stencilFinalLayout, OFFSET$stencilFinalLayout);
     }
 
-    public VkAttachmentDescriptionStencilLayout stencilFinalLayout(@EnumType(VkImageLayout.class) int value) {
+    public VkAttachmentDescriptionStencilLayout stencilFinalLayout(@MagicConstant(valuesFromClass = VkImageLayout.class) int value) {
         segment.set(LAYOUT$stencilFinalLayout, OFFSET$stencilFinalLayout, value);
         return this;
     }

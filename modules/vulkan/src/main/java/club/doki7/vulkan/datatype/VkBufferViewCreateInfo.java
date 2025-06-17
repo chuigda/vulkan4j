@@ -194,11 +194,11 @@ public record VkBufferViewCreateInfo(@NotNull MemorySegment segment) implements 
         sType(VkStructureType.BUFFER_VIEW_CREATE_INFO);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkBufferViewCreateInfo sType(@EnumType(VkStructureType.class) int value) {
+    public VkBufferViewCreateInfo sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }
@@ -216,11 +216,11 @@ public record VkBufferViewCreateInfo(@NotNull MemorySegment segment) implements 
         return this;
     }
 
-    public @EnumType(VkBufferViewCreateFlags.class) int flags() {
+    public @MagicConstant(valuesFromClass = VkBufferViewCreateFlags.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public VkBufferViewCreateInfo flags(@EnumType(VkBufferViewCreateFlags.class) int value) {
+    public VkBufferViewCreateInfo flags(@MagicConstant(valuesFromClass = VkBufferViewCreateFlags.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
         return this;
     }
@@ -238,11 +238,11 @@ public record VkBufferViewCreateInfo(@NotNull MemorySegment segment) implements 
         return this;
     }
 
-    public @EnumType(VkFormat.class) int format() {
+    public @MagicConstant(valuesFromClass = VkFormat.class) int format() {
         return segment.get(LAYOUT$format, OFFSET$format);
     }
 
-    public VkBufferViewCreateInfo format(@EnumType(VkFormat.class) int value) {
+    public VkBufferViewCreateInfo format(@MagicConstant(valuesFromClass = VkFormat.class) int value) {
         segment.set(LAYOUT$format, OFFSET$format, value);
         return this;
     }

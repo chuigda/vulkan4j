@@ -192,11 +192,11 @@ public record VkPipelineRasterizationConservativeStateCreateInfoEXT(@NotNull Mem
         sType(VkStructureType.PIPELINE_RASTERIZATION_CONSERVATIVE_STATE_CREATE_INFO_EXT);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkPipelineRasterizationConservativeStateCreateInfoEXT sType(@EnumType(VkStructureType.class) int value) {
+    public VkPipelineRasterizationConservativeStateCreateInfoEXT sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }
@@ -214,20 +214,20 @@ public record VkPipelineRasterizationConservativeStateCreateInfoEXT(@NotNull Mem
         return this;
     }
 
-    public @EnumType(VkPipelineRasterizationConservativeStateCreateFlagsEXT.class) int flags() {
+    public @MagicConstant(valuesFromClass = VkPipelineRasterizationConservativeStateCreateFlagsEXT.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public VkPipelineRasterizationConservativeStateCreateInfoEXT flags(@EnumType(VkPipelineRasterizationConservativeStateCreateFlagsEXT.class) int value) {
+    public VkPipelineRasterizationConservativeStateCreateInfoEXT flags(@MagicConstant(valuesFromClass = VkPipelineRasterizationConservativeStateCreateFlagsEXT.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
         return this;
     }
 
-    public @EnumType(VkConservativeRasterizationModeEXT.class) int conservativeRasterizationMode() {
+    public @MagicConstant(valuesFromClass = VkConservativeRasterizationModeEXT.class) int conservativeRasterizationMode() {
         return segment.get(LAYOUT$conservativeRasterizationMode, OFFSET$conservativeRasterizationMode);
     }
 
-    public VkPipelineRasterizationConservativeStateCreateInfoEXT conservativeRasterizationMode(@EnumType(VkConservativeRasterizationModeEXT.class) int value) {
+    public VkPipelineRasterizationConservativeStateCreateInfoEXT conservativeRasterizationMode(@MagicConstant(valuesFromClass = VkConservativeRasterizationModeEXT.class) int value) {
         segment.set(LAYOUT$conservativeRasterizationMode, OFFSET$conservativeRasterizationMode, value);
         return this;
     }

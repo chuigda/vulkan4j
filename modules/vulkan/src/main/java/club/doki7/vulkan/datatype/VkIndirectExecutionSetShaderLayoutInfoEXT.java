@@ -191,11 +191,11 @@ public record VkIndirectExecutionSetShaderLayoutInfoEXT(@NotNull MemorySegment s
         sType(VkStructureType.INDIRECT_EXECUTION_SET_SHADER_LAYOUT_INFO_EXT);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkIndirectExecutionSetShaderLayoutInfoEXT sType(@EnumType(VkStructureType.class) int value) {
+    public VkIndirectExecutionSetShaderLayoutInfoEXT sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }

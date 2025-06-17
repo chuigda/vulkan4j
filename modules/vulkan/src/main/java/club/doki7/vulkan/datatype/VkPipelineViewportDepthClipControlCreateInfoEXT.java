@@ -190,11 +190,11 @@ public record VkPipelineViewportDepthClipControlCreateInfoEXT(@NotNull MemorySeg
         sType(VkStructureType.PIPELINE_VIEWPORT_DEPTH_CLIP_CONTROL_CREATE_INFO_EXT);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkPipelineViewportDepthClipControlCreateInfoEXT sType(@EnumType(VkStructureType.class) int value) {
+    public VkPipelineViewportDepthClipControlCreateInfoEXT sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }

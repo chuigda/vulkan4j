@@ -1,6 +1,7 @@
 package club.doki7.vulkan.bitmask;
 
 import club.doki7.ffm.annotation.*;
+import org.intellij.lang.annotations.MagicConstant;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,7 +11,7 @@ public final class VkTileShadingRenderPassFlagsQCOM {
     public static final int ENABLE = 0x1;
     public static final int PER_TILE_EXECUTION = 0x2;
 
-    public static String explain(@EnumType(VkTileShadingRenderPassFlagsQCOM.class) int flags) {
+    public static String explain(@MagicConstant(flagsFromClass = VkTileShadingRenderPassFlagsQCOM.class) int flags) {
         List<String> detectedFlagBits = new ArrayList<>();
         if ((flags & ENABLE) != 0) {
             detectedFlagBits.add("VK_TILE_SHADING_RENDER_PASS_ENABLE_BIT_QCOM");

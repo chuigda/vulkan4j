@@ -190,11 +190,11 @@ public record VkPhysicalDeviceDescriptorSetHostMappingFeaturesVALVE(@NotNull Mem
         sType(VkStructureType.PHYSICAL_DEVICE_DESCRIPTOR_SET_HOST_MAPPING_FEATURES_VALVE);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkPhysicalDeviceDescriptorSetHostMappingFeaturesVALVE sType(@EnumType(VkStructureType.class) int value) {
+    public VkPhysicalDeviceDescriptorSetHostMappingFeaturesVALVE sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }

@@ -191,11 +191,11 @@ public record VkPhysicalDeviceShaderCoreProperties2AMD(@NotNull MemorySegment se
         sType(VkStructureType.PHYSICAL_DEVICE_SHADER_CORE_PROPERTIES_2_AMD);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkPhysicalDeviceShaderCoreProperties2AMD sType(@EnumType(VkStructureType.class) int value) {
+    public VkPhysicalDeviceShaderCoreProperties2AMD sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }
@@ -213,11 +213,11 @@ public record VkPhysicalDeviceShaderCoreProperties2AMD(@NotNull MemorySegment se
         return this;
     }
 
-    public @EnumType(VkShaderCorePropertiesFlagsAMD.class) int shaderCoreFeatures() {
+    public @MagicConstant(valuesFromClass = VkShaderCorePropertiesFlagsAMD.class) int shaderCoreFeatures() {
         return segment.get(LAYOUT$shaderCoreFeatures, OFFSET$shaderCoreFeatures);
     }
 
-    public VkPhysicalDeviceShaderCoreProperties2AMD shaderCoreFeatures(@EnumType(VkShaderCorePropertiesFlagsAMD.class) int value) {
+    public VkPhysicalDeviceShaderCoreProperties2AMD shaderCoreFeatures(@MagicConstant(valuesFromClass = VkShaderCorePropertiesFlagsAMD.class) int value) {
         segment.set(LAYOUT$shaderCoreFeatures, OFFSET$shaderCoreFeatures, value);
         return this;
     }

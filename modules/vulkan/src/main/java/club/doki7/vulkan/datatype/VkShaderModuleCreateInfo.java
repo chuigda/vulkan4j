@@ -192,11 +192,11 @@ public record VkShaderModuleCreateInfo(@NotNull MemorySegment segment) implement
         sType(VkStructureType.SHADER_MODULE_CREATE_INFO);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkShaderModuleCreateInfo sType(@EnumType(VkStructureType.class) int value) {
+    public VkShaderModuleCreateInfo sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }
@@ -214,11 +214,11 @@ public record VkShaderModuleCreateInfo(@NotNull MemorySegment segment) implement
         return this;
     }
 
-    public @EnumType(VkShaderModuleCreateFlags.class) int flags() {
+    public @MagicConstant(valuesFromClass = VkShaderModuleCreateFlags.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public VkShaderModuleCreateInfo flags(@EnumType(VkShaderModuleCreateFlags.class) int value) {
+    public VkShaderModuleCreateInfo flags(@MagicConstant(valuesFromClass = VkShaderModuleCreateFlags.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
         return this;
     }

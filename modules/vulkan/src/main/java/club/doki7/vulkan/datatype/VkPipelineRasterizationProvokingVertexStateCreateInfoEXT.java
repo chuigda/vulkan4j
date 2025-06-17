@@ -190,11 +190,11 @@ public record VkPipelineRasterizationProvokingVertexStateCreateInfoEXT(@NotNull 
         sType(VkStructureType.PIPELINE_RASTERIZATION_PROVOKING_VERTEX_STATE_CREATE_INFO_EXT);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkPipelineRasterizationProvokingVertexStateCreateInfoEXT sType(@EnumType(VkStructureType.class) int value) {
+    public VkPipelineRasterizationProvokingVertexStateCreateInfoEXT sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }
@@ -212,11 +212,11 @@ public record VkPipelineRasterizationProvokingVertexStateCreateInfoEXT(@NotNull 
         return this;
     }
 
-    public @EnumType(VkProvokingVertexModeEXT.class) int provokingVertexMode() {
+    public @MagicConstant(valuesFromClass = VkProvokingVertexModeEXT.class) int provokingVertexMode() {
         return segment.get(LAYOUT$provokingVertexMode, OFFSET$provokingVertexMode);
     }
 
-    public VkPipelineRasterizationProvokingVertexStateCreateInfoEXT provokingVertexMode(@EnumType(VkProvokingVertexModeEXT.class) int value) {
+    public VkPipelineRasterizationProvokingVertexStateCreateInfoEXT provokingVertexMode(@MagicConstant(valuesFromClass = VkProvokingVertexModeEXT.class) int value) {
         segment.set(LAYOUT$provokingVertexMode, OFFSET$provokingVertexMode, value);
         return this;
     }

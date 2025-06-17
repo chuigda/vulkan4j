@@ -190,11 +190,11 @@ public record VkExportSemaphoreCreateInfo(@NotNull MemorySegment segment) implem
         sType(VkStructureType.EXPORT_SEMAPHORE_CREATE_INFO);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkExportSemaphoreCreateInfo sType(@EnumType(VkStructureType.class) int value) {
+    public VkExportSemaphoreCreateInfo sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }
@@ -212,11 +212,11 @@ public record VkExportSemaphoreCreateInfo(@NotNull MemorySegment segment) implem
         return this;
     }
 
-    public @EnumType(VkExternalSemaphoreHandleTypeFlags.class) int handleTypes() {
+    public @MagicConstant(valuesFromClass = VkExternalSemaphoreHandleTypeFlags.class) int handleTypes() {
         return segment.get(LAYOUT$handleTypes, OFFSET$handleTypes);
     }
 
-    public VkExportSemaphoreCreateInfo handleTypes(@EnumType(VkExternalSemaphoreHandleTypeFlags.class) int value) {
+    public VkExportSemaphoreCreateInfo handleTypes(@MagicConstant(valuesFromClass = VkExternalSemaphoreHandleTypeFlags.class) int value) {
         segment.set(LAYOUT$handleTypes, OFFSET$handleTypes, value);
         return this;
     }

@@ -188,11 +188,11 @@ public record VkDeviceFaultVendorBinaryHeaderVersionOneEXT(@NotNull MemorySegmen
         return this;
     }
 
-    public @EnumType(VkDeviceFaultVendorBinaryHeaderVersionEXT.class) int headerVersion() {
+    public @MagicConstant(valuesFromClass = VkDeviceFaultVendorBinaryHeaderVersionEXT.class) int headerVersion() {
         return segment.get(LAYOUT$headerVersion, OFFSET$headerVersion);
     }
 
-    public VkDeviceFaultVendorBinaryHeaderVersionOneEXT headerVersion(@EnumType(VkDeviceFaultVendorBinaryHeaderVersionEXT.class) int value) {
+    public VkDeviceFaultVendorBinaryHeaderVersionOneEXT headerVersion(@MagicConstant(valuesFromClass = VkDeviceFaultVendorBinaryHeaderVersionEXT.class) int value) {
         segment.set(LAYOUT$headerVersion, OFFSET$headerVersion, value);
         return this;
     }

@@ -198,11 +198,11 @@ public record VkScreenBufferFormatPropertiesQNX(@NotNull MemorySegment segment) 
         sType(VkStructureType.SCREEN_BUFFER_FORMAT_PROPERTIES_QNX);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkScreenBufferFormatPropertiesQNX sType(@EnumType(VkStructureType.class) int value) {
+    public VkScreenBufferFormatPropertiesQNX sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }
@@ -220,11 +220,11 @@ public record VkScreenBufferFormatPropertiesQNX(@NotNull MemorySegment segment) 
         return this;
     }
 
-    public @EnumType(VkFormat.class) int format() {
+    public @MagicConstant(valuesFromClass = VkFormat.class) int format() {
         return segment.get(LAYOUT$format, OFFSET$format);
     }
 
-    public VkScreenBufferFormatPropertiesQNX format(@EnumType(VkFormat.class) int value) {
+    public VkScreenBufferFormatPropertiesQNX format(@MagicConstant(valuesFromClass = VkFormat.class) int value) {
         segment.set(LAYOUT$format, OFFSET$format, value);
         return this;
     }
@@ -247,11 +247,11 @@ public record VkScreenBufferFormatPropertiesQNX(@NotNull MemorySegment segment) 
         return this;
     }
 
-    public @EnumType(VkFormatFeatureFlags.class) int formatFeatures() {
+    public @MagicConstant(valuesFromClass = VkFormatFeatureFlags.class) int formatFeatures() {
         return segment.get(LAYOUT$formatFeatures, OFFSET$formatFeatures);
     }
 
-    public VkScreenBufferFormatPropertiesQNX formatFeatures(@EnumType(VkFormatFeatureFlags.class) int value) {
+    public VkScreenBufferFormatPropertiesQNX formatFeatures(@MagicConstant(valuesFromClass = VkFormatFeatureFlags.class) int value) {
         segment.set(LAYOUT$formatFeatures, OFFSET$formatFeatures, value);
         return this;
     }
@@ -270,38 +270,38 @@ public record VkScreenBufferFormatPropertiesQNX(@NotNull MemorySegment segment) 
         return this;
     }
 
-    public @EnumType(VkSamplerYcbcrModelConversion.class) int suggestedYcbcrModel() {
+    public @MagicConstant(valuesFromClass = VkSamplerYcbcrModelConversion.class) int suggestedYcbcrModel() {
         return segment.get(LAYOUT$suggestedYcbcrModel, OFFSET$suggestedYcbcrModel);
     }
 
-    public VkScreenBufferFormatPropertiesQNX suggestedYcbcrModel(@EnumType(VkSamplerYcbcrModelConversion.class) int value) {
+    public VkScreenBufferFormatPropertiesQNX suggestedYcbcrModel(@MagicConstant(valuesFromClass = VkSamplerYcbcrModelConversion.class) int value) {
         segment.set(LAYOUT$suggestedYcbcrModel, OFFSET$suggestedYcbcrModel, value);
         return this;
     }
 
-    public @EnumType(VkSamplerYcbcrRange.class) int suggestedYcbcrRange() {
+    public @MagicConstant(valuesFromClass = VkSamplerYcbcrRange.class) int suggestedYcbcrRange() {
         return segment.get(LAYOUT$suggestedYcbcrRange, OFFSET$suggestedYcbcrRange);
     }
 
-    public VkScreenBufferFormatPropertiesQNX suggestedYcbcrRange(@EnumType(VkSamplerYcbcrRange.class) int value) {
+    public VkScreenBufferFormatPropertiesQNX suggestedYcbcrRange(@MagicConstant(valuesFromClass = VkSamplerYcbcrRange.class) int value) {
         segment.set(LAYOUT$suggestedYcbcrRange, OFFSET$suggestedYcbcrRange, value);
         return this;
     }
 
-    public @EnumType(VkChromaLocation.class) int suggestedXChromaOffset() {
+    public @MagicConstant(valuesFromClass = VkChromaLocation.class) int suggestedXChromaOffset() {
         return segment.get(LAYOUT$suggestedXChromaOffset, OFFSET$suggestedXChromaOffset);
     }
 
-    public VkScreenBufferFormatPropertiesQNX suggestedXChromaOffset(@EnumType(VkChromaLocation.class) int value) {
+    public VkScreenBufferFormatPropertiesQNX suggestedXChromaOffset(@MagicConstant(valuesFromClass = VkChromaLocation.class) int value) {
         segment.set(LAYOUT$suggestedXChromaOffset, OFFSET$suggestedXChromaOffset, value);
         return this;
     }
 
-    public @EnumType(VkChromaLocation.class) int suggestedYChromaOffset() {
+    public @MagicConstant(valuesFromClass = VkChromaLocation.class) int suggestedYChromaOffset() {
         return segment.get(LAYOUT$suggestedYChromaOffset, OFFSET$suggestedYChromaOffset);
     }
 
-    public VkScreenBufferFormatPropertiesQNX suggestedYChromaOffset(@EnumType(VkChromaLocation.class) int value) {
+    public VkScreenBufferFormatPropertiesQNX suggestedYChromaOffset(@MagicConstant(valuesFromClass = VkChromaLocation.class) int value) {
         segment.set(LAYOUT$suggestedYChromaOffset, OFFSET$suggestedYChromaOffset, value);
         return this;
     }

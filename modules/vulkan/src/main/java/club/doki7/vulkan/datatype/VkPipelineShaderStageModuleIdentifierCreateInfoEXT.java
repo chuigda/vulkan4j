@@ -191,11 +191,11 @@ public record VkPipelineShaderStageModuleIdentifierCreateInfoEXT(@NotNull Memory
         sType(VkStructureType.PIPELINE_SHADER_STAGE_MODULE_IDENTIFIER_CREATE_INFO_EXT);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkPipelineShaderStageModuleIdentifierCreateInfoEXT sType(@EnumType(VkStructureType.class) int value) {
+    public VkPipelineShaderStageModuleIdentifierCreateInfoEXT sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }

@@ -190,11 +190,11 @@ public record VkSharedPresentSurfaceCapabilitiesKHR(@NotNull MemorySegment segme
         sType(VkStructureType.SHARED_PRESENT_SURFACE_CAPABILITIES_KHR);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkSharedPresentSurfaceCapabilitiesKHR sType(@EnumType(VkStructureType.class) int value) {
+    public VkSharedPresentSurfaceCapabilitiesKHR sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }
@@ -212,11 +212,11 @@ public record VkSharedPresentSurfaceCapabilitiesKHR(@NotNull MemorySegment segme
         return this;
     }
 
-    public @EnumType(VkImageUsageFlags.class) int sharedPresentSupportedUsageFlags() {
+    public @MagicConstant(valuesFromClass = VkImageUsageFlags.class) int sharedPresentSupportedUsageFlags() {
         return segment.get(LAYOUT$sharedPresentSupportedUsageFlags, OFFSET$sharedPresentSupportedUsageFlags);
     }
 
-    public VkSharedPresentSurfaceCapabilitiesKHR sharedPresentSupportedUsageFlags(@EnumType(VkImageUsageFlags.class) int value) {
+    public VkSharedPresentSurfaceCapabilitiesKHR sharedPresentSupportedUsageFlags(@MagicConstant(valuesFromClass = VkImageUsageFlags.class) int value) {
         segment.set(LAYOUT$sharedPresentSupportedUsageFlags, OFFSET$sharedPresentSupportedUsageFlags, value);
         return this;
     }

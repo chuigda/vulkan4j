@@ -190,11 +190,11 @@ public record VkDisplaySurfaceStereoCreateInfoNV(@NotNull MemorySegment segment)
         sType(VkStructureType.DISPLAY_SURFACE_STEREO_CREATE_INFO_NV);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkDisplaySurfaceStereoCreateInfoNV sType(@EnumType(VkStructureType.class) int value) {
+    public VkDisplaySurfaceStereoCreateInfoNV sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }
@@ -212,11 +212,11 @@ public record VkDisplaySurfaceStereoCreateInfoNV(@NotNull MemorySegment segment)
         return this;
     }
 
-    public @EnumType(VkDisplaySurfaceStereoTypeNV.class) int stereoType() {
+    public @MagicConstant(valuesFromClass = VkDisplaySurfaceStereoTypeNV.class) int stereoType() {
         return segment.get(LAYOUT$stereoType, OFFSET$stereoType);
     }
 
-    public VkDisplaySurfaceStereoCreateInfoNV stereoType(@EnumType(VkDisplaySurfaceStereoTypeNV.class) int value) {
+    public VkDisplaySurfaceStereoCreateInfoNV stereoType(@MagicConstant(valuesFromClass = VkDisplaySurfaceStereoTypeNV.class) int value) {
         segment.set(LAYOUT$stereoType, OFFSET$stereoType, value);
         return this;
     }

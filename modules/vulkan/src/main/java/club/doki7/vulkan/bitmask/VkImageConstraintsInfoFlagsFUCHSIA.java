@@ -1,6 +1,7 @@
 package club.doki7.vulkan.bitmask;
 
 import club.doki7.ffm.annotation.*;
+import org.intellij.lang.annotations.MagicConstant;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,7 +14,7 @@ public final class VkImageConstraintsInfoFlagsFUCHSIA {
     public static final int CPU_WRITE_RARELY = 0x4;
     public static final int PROTECTED_OPTIONAL = 0x10;
 
-    public static String explain(@EnumType(VkImageConstraintsInfoFlagsFUCHSIA.class) int flags) {
+    public static String explain(@MagicConstant(flagsFromClass = VkImageConstraintsInfoFlagsFUCHSIA.class) int flags) {
         List<String> detectedFlagBits = new ArrayList<>();
         if ((flags & CPU_READ_OFTEN) != 0) {
             detectedFlagBits.add("VK_IMAGE_CONSTRAINTS_INFO_CPU_READ_OFTEN_FUCHSIA");

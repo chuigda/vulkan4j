@@ -191,11 +191,11 @@ public record VkScreenBufferPropertiesQNX(@NotNull MemorySegment segment) implem
         sType(VkStructureType.SCREEN_BUFFER_PROPERTIES_QNX);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkScreenBufferPropertiesQNX sType(@EnumType(VkStructureType.class) int value) {
+    public VkScreenBufferPropertiesQNX sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }

@@ -1,6 +1,7 @@
 package club.doki7.vulkan.enumtype;
 
 import club.doki7.ffm.annotation.*;
+import org.intellij.lang.annotations.MagicConstant;
 
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkStructureType.html"><code>VkStructureType</code></a>
 public final class VkStructureType {
@@ -1046,7 +1047,7 @@ public final class VkStructureType {
     public static final int RENDER_PASS_FRAGMENT_DENSITY_MAP_OFFSET_END_INFO_EXT = 0x3ba1462a;
     public static final int RENDERING_END_INFO_EXT = 0x3ba43bfb;
 
-    public static String explain(@EnumType(VkStructureType.class) int value) {
+    public static String explain(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         return switch (value) {
             case VkStructureType.ACCELERATION_STRUCTURE_BUILD_GEOMETRY_INFO_KHR -> "VK_STRUCTURE_TYPE_ACCELERATION_STRUCTURE_BUILD_GEOMETRY_INFO_KHR";
             case VkStructureType.ACCELERATION_STRUCTURE_BUILD_SIZES_INFO_KHR -> "VK_STRUCTURE_TYPE_ACCELERATION_STRUCTURE_BUILD_SIZES_INFO_KHR";

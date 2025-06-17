@@ -213,11 +213,11 @@ public record VkPhysicalDeviceProperties(@NotNull MemorySegment segment) impleme
         return this;
     }
 
-    public @EnumType(VkPhysicalDeviceType.class) int deviceType() {
+    public @MagicConstant(valuesFromClass = VkPhysicalDeviceType.class) int deviceType() {
         return segment.get(LAYOUT$deviceType, OFFSET$deviceType);
     }
 
-    public VkPhysicalDeviceProperties deviceType(@EnumType(VkPhysicalDeviceType.class) int value) {
+    public VkPhysicalDeviceProperties deviceType(@MagicConstant(valuesFromClass = VkPhysicalDeviceType.class) int value) {
         segment.set(LAYOUT$deviceType, OFFSET$deviceType, value);
         return this;
     }

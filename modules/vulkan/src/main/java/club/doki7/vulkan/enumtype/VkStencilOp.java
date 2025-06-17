@@ -1,6 +1,7 @@
 package club.doki7.vulkan.enumtype;
 
 import club.doki7.ffm.annotation.*;
+import org.intellij.lang.annotations.MagicConstant;
 
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkStencilOp.html"><code>VkStencilOp</code></a>
 public final class VkStencilOp {
@@ -13,7 +14,7 @@ public final class VkStencilOp {
     public static final int INCREMENT_AND_WRAP = 0x6;
     public static final int DECREMENT_AND_WRAP = 0x7;
 
-    public static String explain(@EnumType(VkStencilOp.class) int value) {
+    public static String explain(@MagicConstant(valuesFromClass = VkStencilOp.class) int value) {
         return switch (value) {
             case VkStencilOp.DECREMENT_AND_CLAMP -> "VK_STENCIL_OP_DECREMENT_AND_CLAMP";
             case VkStencilOp.DECREMENT_AND_WRAP -> "VK_STENCIL_OP_DECREMENT_AND_WRAP";

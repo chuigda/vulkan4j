@@ -1,6 +1,7 @@
 package club.doki7.vulkan.bitmask;
 
 import club.doki7.ffm.annotation.*;
+import org.intellij.lang.annotations.MagicConstant;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,7 +11,7 @@ public final class VkVideoEncodeAV1SuperblockSizeFlagsKHR {
     public static final int VK_VIDEO_ENCODE_AV1_SUPERBLOCK_SIZE_128 = 0x2;
     public static final int VK_VIDEO_ENCODE_AV1_SUPERBLOCK_SIZE_64 = 0x1;
 
-    public static String explain(@EnumType(VkVideoEncodeAV1SuperblockSizeFlagsKHR.class) int flags) {
+    public static String explain(@MagicConstant(flagsFromClass = VkVideoEncodeAV1SuperblockSizeFlagsKHR.class) int flags) {
         List<String> detectedFlagBits = new ArrayList<>();
         if ((flags & VK_VIDEO_ENCODE_AV1_SUPERBLOCK_SIZE_128) != 0) {
             detectedFlagBits.add("VK_VIDEO_ENCODE_AV1_SUPERBLOCK_SIZE_128_BIT_KHR");

@@ -192,11 +192,11 @@ public record VkVideoSessionParametersCreateInfoKHR(@NotNull MemorySegment segme
         sType(VkStructureType.VIDEO_SESSION_PARAMETERS_CREATE_INFO_KHR);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkVideoSessionParametersCreateInfoKHR sType(@EnumType(VkStructureType.class) int value) {
+    public VkVideoSessionParametersCreateInfoKHR sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }
@@ -214,11 +214,11 @@ public record VkVideoSessionParametersCreateInfoKHR(@NotNull MemorySegment segme
         return this;
     }
 
-    public @EnumType(VkVideoSessionParametersCreateFlagsKHR.class) int flags() {
+    public @MagicConstant(valuesFromClass = VkVideoSessionParametersCreateFlagsKHR.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public VkVideoSessionParametersCreateInfoKHR flags(@EnumType(VkVideoSessionParametersCreateFlagsKHR.class) int value) {
+    public VkVideoSessionParametersCreateInfoKHR flags(@MagicConstant(valuesFromClass = VkVideoSessionParametersCreateFlagsKHR.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
         return this;
     }

@@ -190,11 +190,11 @@ public record VkFenceCreateInfo(@NotNull MemorySegment segment) implements IVkFe
         sType(VkStructureType.FENCE_CREATE_INFO);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkFenceCreateInfo sType(@EnumType(VkStructureType.class) int value) {
+    public VkFenceCreateInfo sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }
@@ -212,11 +212,11 @@ public record VkFenceCreateInfo(@NotNull MemorySegment segment) implements IVkFe
         return this;
     }
 
-    public @EnumType(VkFenceCreateFlags.class) int flags() {
+    public @MagicConstant(valuesFromClass = VkFenceCreateFlags.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public VkFenceCreateInfo flags(@EnumType(VkFenceCreateFlags.class) int value) {
+    public VkFenceCreateInfo flags(@MagicConstant(valuesFromClass = VkFenceCreateFlags.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
         return this;
     }

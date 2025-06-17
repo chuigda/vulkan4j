@@ -192,11 +192,11 @@ public record VkPipelineInputAssemblyStateCreateInfo(@NotNull MemorySegment segm
         sType(VkStructureType.PIPELINE_INPUT_ASSEMBLY_STATE_CREATE_INFO);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkPipelineInputAssemblyStateCreateInfo sType(@EnumType(VkStructureType.class) int value) {
+    public VkPipelineInputAssemblyStateCreateInfo sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }
@@ -214,20 +214,20 @@ public record VkPipelineInputAssemblyStateCreateInfo(@NotNull MemorySegment segm
         return this;
     }
 
-    public @EnumType(VkPipelineInputAssemblyStateCreateFlags.class) int flags() {
+    public @MagicConstant(valuesFromClass = VkPipelineInputAssemblyStateCreateFlags.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public VkPipelineInputAssemblyStateCreateInfo flags(@EnumType(VkPipelineInputAssemblyStateCreateFlags.class) int value) {
+    public VkPipelineInputAssemblyStateCreateInfo flags(@MagicConstant(valuesFromClass = VkPipelineInputAssemblyStateCreateFlags.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
         return this;
     }
 
-    public @EnumType(VkPrimitiveTopology.class) int topology() {
+    public @MagicConstant(valuesFromClass = VkPrimitiveTopology.class) int topology() {
         return segment.get(LAYOUT$topology, OFFSET$topology);
     }
 
-    public VkPipelineInputAssemblyStateCreateInfo topology(@EnumType(VkPrimitiveTopology.class) int value) {
+    public VkPipelineInputAssemblyStateCreateInfo topology(@MagicConstant(valuesFromClass = VkPrimitiveTopology.class) int value) {
         segment.set(LAYOUT$topology, OFFSET$topology, value);
         return this;
     }

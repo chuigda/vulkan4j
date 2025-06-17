@@ -190,11 +190,11 @@ public record VkPhysicalDeviceImageViewMinLodFeaturesEXT(@NotNull MemorySegment 
         sType(VkStructureType.PHYSICAL_DEVICE_IMAGE_VIEW_MIN_LOD_FEATURES_EXT);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkPhysicalDeviceImageViewMinLodFeaturesEXT sType(@EnumType(VkStructureType.class) int value) {
+    public VkPhysicalDeviceImageViewMinLodFeaturesEXT sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }

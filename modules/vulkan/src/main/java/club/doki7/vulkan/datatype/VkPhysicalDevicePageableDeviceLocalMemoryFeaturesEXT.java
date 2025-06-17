@@ -190,11 +190,11 @@ public record VkPhysicalDevicePageableDeviceLocalMemoryFeaturesEXT(@NotNull Memo
         sType(VkStructureType.PHYSICAL_DEVICE_PAGEABLE_DEVICE_LOCAL_MEMORY_FEATURES_EXT);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkPhysicalDevicePageableDeviceLocalMemoryFeaturesEXT sType(@EnumType(VkStructureType.class) int value) {
+    public VkPhysicalDevicePageableDeviceLocalMemoryFeaturesEXT sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }

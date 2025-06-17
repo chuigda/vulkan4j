@@ -190,11 +190,11 @@ public record VkBufferDeviceAddressCreateInfoEXT(@NotNull MemorySegment segment)
         sType(VkStructureType.BUFFER_DEVICE_ADDRESS_CREATE_INFO_EXT);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkBufferDeviceAddressCreateInfoEXT sType(@EnumType(VkStructureType.class) int value) {
+    public VkBufferDeviceAddressCreateInfoEXT sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }

@@ -1,6 +1,7 @@
 package club.doki7.vma.bitmask;
 
 import club.doki7.ffm.annotation.*;
+import org.intellij.lang.annotations.MagicConstant;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -133,7 +134,7 @@ public final class VmaAllocatorCreateFlags {
     /// while creating Vulkan device passed as VmaAllocatorCreateInfo::device.
     public static final int KHR_MAINTENANCE5 = 0x100;
 
-    public static String explain(@EnumType(VmaAllocatorCreateFlags.class) int flags) {
+    public static String explain(@MagicConstant(flagsFromClass = VmaAllocatorCreateFlags.class) int flags) {
         List<String> detectedFlagBits = new ArrayList<>();
         if ((flags & AMD_DEVICE_COHERENT_MEMORY) != 0) {
             detectedFlagBits.add("VMA_ALLOCATOR_CREATE_AMD_DEVICE_COHERENT_MEMORY_BIT");

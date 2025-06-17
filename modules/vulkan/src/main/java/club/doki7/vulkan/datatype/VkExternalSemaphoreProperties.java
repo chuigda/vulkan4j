@@ -192,11 +192,11 @@ public record VkExternalSemaphoreProperties(@NotNull MemorySegment segment) impl
         sType(VkStructureType.EXTERNAL_SEMAPHORE_PROPERTIES);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkExternalSemaphoreProperties sType(@EnumType(VkStructureType.class) int value) {
+    public VkExternalSemaphoreProperties sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }
@@ -214,29 +214,29 @@ public record VkExternalSemaphoreProperties(@NotNull MemorySegment segment) impl
         return this;
     }
 
-    public @EnumType(VkExternalSemaphoreHandleTypeFlags.class) int exportFromImportedHandleTypes() {
+    public @MagicConstant(valuesFromClass = VkExternalSemaphoreHandleTypeFlags.class) int exportFromImportedHandleTypes() {
         return segment.get(LAYOUT$exportFromImportedHandleTypes, OFFSET$exportFromImportedHandleTypes);
     }
 
-    public VkExternalSemaphoreProperties exportFromImportedHandleTypes(@EnumType(VkExternalSemaphoreHandleTypeFlags.class) int value) {
+    public VkExternalSemaphoreProperties exportFromImportedHandleTypes(@MagicConstant(valuesFromClass = VkExternalSemaphoreHandleTypeFlags.class) int value) {
         segment.set(LAYOUT$exportFromImportedHandleTypes, OFFSET$exportFromImportedHandleTypes, value);
         return this;
     }
 
-    public @EnumType(VkExternalSemaphoreHandleTypeFlags.class) int compatibleHandleTypes() {
+    public @MagicConstant(valuesFromClass = VkExternalSemaphoreHandleTypeFlags.class) int compatibleHandleTypes() {
         return segment.get(LAYOUT$compatibleHandleTypes, OFFSET$compatibleHandleTypes);
     }
 
-    public VkExternalSemaphoreProperties compatibleHandleTypes(@EnumType(VkExternalSemaphoreHandleTypeFlags.class) int value) {
+    public VkExternalSemaphoreProperties compatibleHandleTypes(@MagicConstant(valuesFromClass = VkExternalSemaphoreHandleTypeFlags.class) int value) {
         segment.set(LAYOUT$compatibleHandleTypes, OFFSET$compatibleHandleTypes, value);
         return this;
     }
 
-    public @EnumType(VkExternalSemaphoreFeatureFlags.class) int externalSemaphoreFeatures() {
+    public @MagicConstant(valuesFromClass = VkExternalSemaphoreFeatureFlags.class) int externalSemaphoreFeatures() {
         return segment.get(LAYOUT$externalSemaphoreFeatures, OFFSET$externalSemaphoreFeatures);
     }
 
-    public VkExternalSemaphoreProperties externalSemaphoreFeatures(@EnumType(VkExternalSemaphoreFeatureFlags.class) int value) {
+    public VkExternalSemaphoreProperties externalSemaphoreFeatures(@MagicConstant(valuesFromClass = VkExternalSemaphoreFeatureFlags.class) int value) {
         segment.set(LAYOUT$externalSemaphoreFeatures, OFFSET$externalSemaphoreFeatures, value);
         return this;
     }

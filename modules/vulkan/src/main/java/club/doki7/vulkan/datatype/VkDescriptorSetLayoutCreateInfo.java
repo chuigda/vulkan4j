@@ -192,11 +192,11 @@ public record VkDescriptorSetLayoutCreateInfo(@NotNull MemorySegment segment) im
         sType(VkStructureType.DESCRIPTOR_SET_LAYOUT_CREATE_INFO);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkDescriptorSetLayoutCreateInfo sType(@EnumType(VkStructureType.class) int value) {
+    public VkDescriptorSetLayoutCreateInfo sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }
@@ -214,11 +214,11 @@ public record VkDescriptorSetLayoutCreateInfo(@NotNull MemorySegment segment) im
         return this;
     }
 
-    public @EnumType(VkDescriptorSetLayoutCreateFlags.class) int flags() {
+    public @MagicConstant(valuesFromClass = VkDescriptorSetLayoutCreateFlags.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public VkDescriptorSetLayoutCreateInfo flags(@EnumType(VkDescriptorSetLayoutCreateFlags.class) int value) {
+    public VkDescriptorSetLayoutCreateInfo flags(@MagicConstant(valuesFromClass = VkDescriptorSetLayoutCreateFlags.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
         return this;
     }

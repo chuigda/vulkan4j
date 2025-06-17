@@ -1,6 +1,7 @@
 package club.doki7.vulkan.bitmask;
 
 import club.doki7.ffm.annotation.*;
+import org.intellij.lang.annotations.MagicConstant;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,7 +11,7 @@ public final class VkPipelineCacheCreateFlags {
     public static final int EXTERNALLY_SYNCHRONIZED = 0x1;
     public static final int INTERNALLY_SYNCHRONIZED_MERGE_KHR = 0x8;
 
-    public static String explain(@EnumType(VkPipelineCacheCreateFlags.class) int flags) {
+    public static String explain(@MagicConstant(flagsFromClass = VkPipelineCacheCreateFlags.class) int flags) {
         List<String> detectedFlagBits = new ArrayList<>();
         if ((flags & EXTERNALLY_SYNCHRONIZED) != 0) {
             detectedFlagBits.add("VK_PIPELINE_CACHE_CREATE_EXTERNALLY_SYNCHRONIZED_BIT");

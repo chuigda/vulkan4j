@@ -198,11 +198,11 @@ public record VkVideoEncodeH264QualityLevelPropertiesKHR(@NotNull MemorySegment 
         sType(VkStructureType.VIDEO_ENCODE_H264_QUALITY_LEVEL_PROPERTIES_KHR);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkVideoEncodeH264QualityLevelPropertiesKHR sType(@EnumType(VkStructureType.class) int value) {
+    public VkVideoEncodeH264QualityLevelPropertiesKHR sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }
@@ -220,11 +220,11 @@ public record VkVideoEncodeH264QualityLevelPropertiesKHR(@NotNull MemorySegment 
         return this;
     }
 
-    public @EnumType(VkVideoEncodeH264RateControlFlagsKHR.class) int preferredRateControlFlags() {
+    public @MagicConstant(valuesFromClass = VkVideoEncodeH264RateControlFlagsKHR.class) int preferredRateControlFlags() {
         return segment.get(LAYOUT$preferredRateControlFlags, OFFSET$preferredRateControlFlags);
     }
 
-    public VkVideoEncodeH264QualityLevelPropertiesKHR preferredRateControlFlags(@EnumType(VkVideoEncodeH264RateControlFlagsKHR.class) int value) {
+    public VkVideoEncodeH264QualityLevelPropertiesKHR preferredRateControlFlags(@MagicConstant(valuesFromClass = VkVideoEncodeH264RateControlFlagsKHR.class) int value) {
         segment.set(LAYOUT$preferredRateControlFlags, OFFSET$preferredRateControlFlags, value);
         return this;
     }

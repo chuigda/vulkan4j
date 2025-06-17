@@ -198,11 +198,11 @@ public record VkOpticalFlowSessionCreateInfoNV(@NotNull MemorySegment segment) i
         sType(VkStructureType.OPTICAL_FLOW_SESSION_CREATE_INFO_NV);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkOpticalFlowSessionCreateInfoNV sType(@EnumType(VkStructureType.class) int value) {
+    public VkOpticalFlowSessionCreateInfoNV sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }
@@ -238,65 +238,65 @@ public record VkOpticalFlowSessionCreateInfoNV(@NotNull MemorySegment segment) i
         return this;
     }
 
-    public @EnumType(VkFormat.class) int imageFormat() {
+    public @MagicConstant(valuesFromClass = VkFormat.class) int imageFormat() {
         return segment.get(LAYOUT$imageFormat, OFFSET$imageFormat);
     }
 
-    public VkOpticalFlowSessionCreateInfoNV imageFormat(@EnumType(VkFormat.class) int value) {
+    public VkOpticalFlowSessionCreateInfoNV imageFormat(@MagicConstant(valuesFromClass = VkFormat.class) int value) {
         segment.set(LAYOUT$imageFormat, OFFSET$imageFormat, value);
         return this;
     }
 
-    public @EnumType(VkFormat.class) int flowVectorFormat() {
+    public @MagicConstant(valuesFromClass = VkFormat.class) int flowVectorFormat() {
         return segment.get(LAYOUT$flowVectorFormat, OFFSET$flowVectorFormat);
     }
 
-    public VkOpticalFlowSessionCreateInfoNV flowVectorFormat(@EnumType(VkFormat.class) int value) {
+    public VkOpticalFlowSessionCreateInfoNV flowVectorFormat(@MagicConstant(valuesFromClass = VkFormat.class) int value) {
         segment.set(LAYOUT$flowVectorFormat, OFFSET$flowVectorFormat, value);
         return this;
     }
 
-    public @EnumType(VkFormat.class) int costFormat() {
+    public @MagicConstant(valuesFromClass = VkFormat.class) int costFormat() {
         return segment.get(LAYOUT$costFormat, OFFSET$costFormat);
     }
 
-    public VkOpticalFlowSessionCreateInfoNV costFormat(@EnumType(VkFormat.class) int value) {
+    public VkOpticalFlowSessionCreateInfoNV costFormat(@MagicConstant(valuesFromClass = VkFormat.class) int value) {
         segment.set(LAYOUT$costFormat, OFFSET$costFormat, value);
         return this;
     }
 
-    public @EnumType(VkOpticalFlowGridSizeFlagsNV.class) int outputGridSize() {
+    public @MagicConstant(valuesFromClass = VkOpticalFlowGridSizeFlagsNV.class) int outputGridSize() {
         return segment.get(LAYOUT$outputGridSize, OFFSET$outputGridSize);
     }
 
-    public VkOpticalFlowSessionCreateInfoNV outputGridSize(@EnumType(VkOpticalFlowGridSizeFlagsNV.class) int value) {
+    public VkOpticalFlowSessionCreateInfoNV outputGridSize(@MagicConstant(valuesFromClass = VkOpticalFlowGridSizeFlagsNV.class) int value) {
         segment.set(LAYOUT$outputGridSize, OFFSET$outputGridSize, value);
         return this;
     }
 
-    public @EnumType(VkOpticalFlowGridSizeFlagsNV.class) int hintGridSize() {
+    public @MagicConstant(valuesFromClass = VkOpticalFlowGridSizeFlagsNV.class) int hintGridSize() {
         return segment.get(LAYOUT$hintGridSize, OFFSET$hintGridSize);
     }
 
-    public VkOpticalFlowSessionCreateInfoNV hintGridSize(@EnumType(VkOpticalFlowGridSizeFlagsNV.class) int value) {
+    public VkOpticalFlowSessionCreateInfoNV hintGridSize(@MagicConstant(valuesFromClass = VkOpticalFlowGridSizeFlagsNV.class) int value) {
         segment.set(LAYOUT$hintGridSize, OFFSET$hintGridSize, value);
         return this;
     }
 
-    public @EnumType(VkOpticalFlowPerformanceLevelNV.class) int performanceLevel() {
+    public @MagicConstant(valuesFromClass = VkOpticalFlowPerformanceLevelNV.class) int performanceLevel() {
         return segment.get(LAYOUT$performanceLevel, OFFSET$performanceLevel);
     }
 
-    public VkOpticalFlowSessionCreateInfoNV performanceLevel(@EnumType(VkOpticalFlowPerformanceLevelNV.class) int value) {
+    public VkOpticalFlowSessionCreateInfoNV performanceLevel(@MagicConstant(valuesFromClass = VkOpticalFlowPerformanceLevelNV.class) int value) {
         segment.set(LAYOUT$performanceLevel, OFFSET$performanceLevel, value);
         return this;
     }
 
-    public @EnumType(VkOpticalFlowSessionCreateFlagsNV.class) int flags() {
+    public @MagicConstant(valuesFromClass = VkOpticalFlowSessionCreateFlagsNV.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public VkOpticalFlowSessionCreateInfoNV flags(@EnumType(VkOpticalFlowSessionCreateFlagsNV.class) int value) {
+    public VkOpticalFlowSessionCreateInfoNV flags(@MagicConstant(valuesFromClass = VkOpticalFlowSessionCreateFlagsNV.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
         return this;
     }

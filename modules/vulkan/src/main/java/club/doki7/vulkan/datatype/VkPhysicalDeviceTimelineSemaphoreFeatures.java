@@ -190,11 +190,11 @@ public record VkPhysicalDeviceTimelineSemaphoreFeatures(@NotNull MemorySegment s
         sType(VkStructureType.PHYSICAL_DEVICE_TIMELINE_SEMAPHORE_FEATURES);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkPhysicalDeviceTimelineSemaphoreFeatures sType(@EnumType(VkStructureType.class) int value) {
+    public VkPhysicalDeviceTimelineSemaphoreFeatures sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }

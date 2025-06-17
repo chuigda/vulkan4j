@@ -190,11 +190,11 @@ public record VkExportMetalObjectCreateInfoEXT(@NotNull MemorySegment segment) i
         sType(VkStructureType.EXPORT_METAL_OBJECT_CREATE_INFO_EXT);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkExportMetalObjectCreateInfoEXT sType(@EnumType(VkStructureType.class) int value) {
+    public VkExportMetalObjectCreateInfoEXT sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }
@@ -212,11 +212,11 @@ public record VkExportMetalObjectCreateInfoEXT(@NotNull MemorySegment segment) i
         return this;
     }
 
-    public @EnumType(VkExportMetalObjectTypeFlagsEXT.class) int exportObjectType() {
+    public @MagicConstant(valuesFromClass = VkExportMetalObjectTypeFlagsEXT.class) int exportObjectType() {
         return segment.get(LAYOUT$exportObjectType, OFFSET$exportObjectType);
     }
 
-    public VkExportMetalObjectCreateInfoEXT exportObjectType(@EnumType(VkExportMetalObjectTypeFlagsEXT.class) int value) {
+    public VkExportMetalObjectCreateInfoEXT exportObjectType(@MagicConstant(valuesFromClass = VkExportMetalObjectTypeFlagsEXT.class) int value) {
         segment.set(LAYOUT$exportObjectType, OFFSET$exportObjectType, value);
         return this;
     }

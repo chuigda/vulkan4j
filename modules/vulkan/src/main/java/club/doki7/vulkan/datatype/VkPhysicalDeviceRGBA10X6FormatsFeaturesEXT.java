@@ -190,11 +190,11 @@ public record VkPhysicalDeviceRGBA10X6FormatsFeaturesEXT(@NotNull MemorySegment 
         sType(VkStructureType.PHYSICAL_DEVICE_RGBA10X6_FORMATS_FEATURES_EXT);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkPhysicalDeviceRGBA10X6FormatsFeaturesEXT sType(@EnumType(VkStructureType.class) int value) {
+    public VkPhysicalDeviceRGBA10X6FormatsFeaturesEXT sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }

@@ -209,11 +209,11 @@ public record VkDecompressMemoryRegionNV(@NotNull MemorySegment segment) impleme
         return this;
     }
 
-    public @EnumType(VkMemoryDecompressionMethodFlagsNV.class) long decompressionMethod() {
+    public @MagicConstant(valuesFromClass = VkMemoryDecompressionMethodFlagsNV.class) long decompressionMethod() {
         return segment.get(LAYOUT$decompressionMethod, OFFSET$decompressionMethod);
     }
 
-    public VkDecompressMemoryRegionNV decompressionMethod(@EnumType(VkMemoryDecompressionMethodFlagsNV.class) long value) {
+    public VkDecompressMemoryRegionNV decompressionMethod(@MagicConstant(valuesFromClass = VkMemoryDecompressionMethodFlagsNV.class) long value) {
         segment.set(LAYOUT$decompressionMethod, OFFSET$decompressionMethod, value);
         return this;
     }

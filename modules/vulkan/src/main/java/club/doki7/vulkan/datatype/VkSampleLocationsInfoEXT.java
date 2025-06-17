@@ -193,11 +193,11 @@ public record VkSampleLocationsInfoEXT(@NotNull MemorySegment segment) implement
         sType(VkStructureType.SAMPLE_LOCATIONS_INFO_EXT);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkSampleLocationsInfoEXT sType(@EnumType(VkStructureType.class) int value) {
+    public VkSampleLocationsInfoEXT sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }
@@ -215,11 +215,11 @@ public record VkSampleLocationsInfoEXT(@NotNull MemorySegment segment) implement
         return this;
     }
 
-    public @EnumType(VkSampleCountFlags.class) int sampleLocationsPerPixel() {
+    public @MagicConstant(valuesFromClass = VkSampleCountFlags.class) int sampleLocationsPerPixel() {
         return segment.get(LAYOUT$sampleLocationsPerPixel, OFFSET$sampleLocationsPerPixel);
     }
 
-    public VkSampleLocationsInfoEXT sampleLocationsPerPixel(@EnumType(VkSampleCountFlags.class) int value) {
+    public VkSampleLocationsInfoEXT sampleLocationsPerPixel(@MagicConstant(valuesFromClass = VkSampleCountFlags.class) int value) {
         segment.set(LAYOUT$sampleLocationsPerPixel, OFFSET$sampleLocationsPerPixel, value);
         return this;
     }

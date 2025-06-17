@@ -190,11 +190,11 @@ public record VkPhysicalDeviceDepthClampControlFeaturesEXT(@NotNull MemorySegmen
         sType(VkStructureType.PHYSICAL_DEVICE_DEPTH_CLAMP_CONTROL_FEATURES_EXT);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkPhysicalDeviceDepthClampControlFeaturesEXT sType(@EnumType(VkStructureType.class) int value) {
+    public VkPhysicalDeviceDepthClampControlFeaturesEXT sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }

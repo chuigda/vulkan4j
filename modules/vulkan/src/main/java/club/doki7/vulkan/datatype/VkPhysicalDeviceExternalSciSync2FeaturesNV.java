@@ -193,11 +193,11 @@ public record VkPhysicalDeviceExternalSciSync2FeaturesNV(@NotNull MemorySegment 
         sType(VkStructureType.PHYSICAL_DEVICE_EXTERNAL_SCI_SYNC_2_FEATURES_NV);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkPhysicalDeviceExternalSciSync2FeaturesNV sType(@EnumType(VkStructureType.class) int value) {
+    public VkPhysicalDeviceExternalSciSync2FeaturesNV sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }

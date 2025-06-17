@@ -192,11 +192,11 @@ public record VkPhysicalDeviceVulkanMemoryModelFeatures(@NotNull MemorySegment s
         sType(VkStructureType.PHYSICAL_DEVICE_VULKAN_MEMORY_MODEL_FEATURES);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkPhysicalDeviceVulkanMemoryModelFeatures sType(@EnumType(VkStructureType.class) int value) {
+    public VkPhysicalDeviceVulkanMemoryModelFeatures sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }

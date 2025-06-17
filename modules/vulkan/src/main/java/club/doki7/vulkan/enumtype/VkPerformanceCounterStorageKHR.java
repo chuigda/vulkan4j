@@ -1,6 +1,7 @@
 package club.doki7.vulkan.enumtype;
 
 import club.doki7.ffm.annotation.*;
+import org.intellij.lang.annotations.MagicConstant;
 
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPerformanceCounterStorageKHR.html"><code>VkPerformanceCounterStorageKHR</code></a>
 public final class VkPerformanceCounterStorageKHR {
@@ -11,7 +12,7 @@ public final class VkPerformanceCounterStorageKHR {
     public static final int FLOAT32 = 0x4;
     public static final int FLOAT64 = 0x5;
 
-    public static String explain(@EnumType(VkPerformanceCounterStorageKHR.class) int value) {
+    public static String explain(@MagicConstant(valuesFromClass = VkPerformanceCounterStorageKHR.class) int value) {
         return switch (value) {
             case VkPerformanceCounterStorageKHR.FLOAT32 -> "VK_PERFORMANCE_COUNTER_STORAGE_FLOAT32_KHR";
             case VkPerformanceCounterStorageKHR.FLOAT64 -> "VK_PERFORMANCE_COUNTER_STORAGE_FLOAT64_KHR";

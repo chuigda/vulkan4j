@@ -195,11 +195,11 @@ public record VkPhysicalDeviceLineRasterizationFeatures(@NotNull MemorySegment s
         sType(VkStructureType.PHYSICAL_DEVICE_LINE_RASTERIZATION_FEATURES);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkPhysicalDeviceLineRasterizationFeatures sType(@EnumType(VkStructureType.class) int value) {
+    public VkPhysicalDeviceLineRasterizationFeatures sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }

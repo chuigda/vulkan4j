@@ -1,6 +1,7 @@
 package club.doki7.vulkan.enumtype;
 
 import club.doki7.ffm.annotation.*;
+import org.intellij.lang.annotations.MagicConstant;
 
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkLineRasterizationMode.html"><code>VkLineRasterizationMode</code></a>
 public final class VkLineRasterizationMode {
@@ -9,7 +10,7 @@ public final class VkLineRasterizationMode {
     public static final int BRESENHAM = 0x2;
     public static final int RECTANGULAR_SMOOTH = 0x3;
 
-    public static String explain(@EnumType(VkLineRasterizationMode.class) int value) {
+    public static String explain(@MagicConstant(valuesFromClass = VkLineRasterizationMode.class) int value) {
         return switch (value) {
             case VkLineRasterizationMode.BRESENHAM -> "VK_LINE_RASTERIZATION_MODE_BRESENHAM";
             case VkLineRasterizationMode.DEFAULT -> "VK_LINE_RASTERIZATION_MODE_DEFAULT";

@@ -201,11 +201,11 @@ public record VmaDefragmentationInfo(@NotNull MemorySegment segment) implements 
         return ret;
     }
 
-    public @EnumType(VmaDefragmentationFlags.class) int flags() {
+    public @MagicConstant(valuesFromClass = VmaDefragmentationFlags.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public VmaDefragmentationInfo flags(@EnumType(VmaDefragmentationFlags.class) int value) {
+    public VmaDefragmentationInfo flags(@MagicConstant(valuesFromClass = VmaDefragmentationFlags.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
         return this;
     }

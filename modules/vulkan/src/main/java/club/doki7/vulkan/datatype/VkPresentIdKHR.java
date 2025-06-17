@@ -191,11 +191,11 @@ public record VkPresentIdKHR(@NotNull MemorySegment segment) implements IVkPrese
         sType(VkStructureType.PRESENT_ID_KHR);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkPresentIdKHR sType(@EnumType(VkStructureType.class) int value) {
+    public VkPresentIdKHR sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }

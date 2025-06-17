@@ -192,11 +192,11 @@ public record VkExternalFenceProperties(@NotNull MemorySegment segment) implemen
         sType(VkStructureType.EXTERNAL_FENCE_PROPERTIES);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkExternalFenceProperties sType(@EnumType(VkStructureType.class) int value) {
+    public VkExternalFenceProperties sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }
@@ -214,29 +214,29 @@ public record VkExternalFenceProperties(@NotNull MemorySegment segment) implemen
         return this;
     }
 
-    public @EnumType(VkExternalFenceHandleTypeFlags.class) int exportFromImportedHandleTypes() {
+    public @MagicConstant(valuesFromClass = VkExternalFenceHandleTypeFlags.class) int exportFromImportedHandleTypes() {
         return segment.get(LAYOUT$exportFromImportedHandleTypes, OFFSET$exportFromImportedHandleTypes);
     }
 
-    public VkExternalFenceProperties exportFromImportedHandleTypes(@EnumType(VkExternalFenceHandleTypeFlags.class) int value) {
+    public VkExternalFenceProperties exportFromImportedHandleTypes(@MagicConstant(valuesFromClass = VkExternalFenceHandleTypeFlags.class) int value) {
         segment.set(LAYOUT$exportFromImportedHandleTypes, OFFSET$exportFromImportedHandleTypes, value);
         return this;
     }
 
-    public @EnumType(VkExternalFenceHandleTypeFlags.class) int compatibleHandleTypes() {
+    public @MagicConstant(valuesFromClass = VkExternalFenceHandleTypeFlags.class) int compatibleHandleTypes() {
         return segment.get(LAYOUT$compatibleHandleTypes, OFFSET$compatibleHandleTypes);
     }
 
-    public VkExternalFenceProperties compatibleHandleTypes(@EnumType(VkExternalFenceHandleTypeFlags.class) int value) {
+    public VkExternalFenceProperties compatibleHandleTypes(@MagicConstant(valuesFromClass = VkExternalFenceHandleTypeFlags.class) int value) {
         segment.set(LAYOUT$compatibleHandleTypes, OFFSET$compatibleHandleTypes, value);
         return this;
     }
 
-    public @EnumType(VkExternalFenceFeatureFlags.class) int externalFenceFeatures() {
+    public @MagicConstant(valuesFromClass = VkExternalFenceFeatureFlags.class) int externalFenceFeatures() {
         return segment.get(LAYOUT$externalFenceFeatures, OFFSET$externalFenceFeatures);
     }
 
-    public VkExternalFenceProperties externalFenceFeatures(@EnumType(VkExternalFenceFeatureFlags.class) int value) {
+    public VkExternalFenceProperties externalFenceFeatures(@MagicConstant(valuesFromClass = VkExternalFenceFeatureFlags.class) int value) {
         segment.set(LAYOUT$externalFenceFeatures, OFFSET$externalFenceFeatures, value);
         return this;
     }

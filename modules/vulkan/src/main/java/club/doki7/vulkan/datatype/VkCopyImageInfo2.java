@@ -195,11 +195,11 @@ public record VkCopyImageInfo2(@NotNull MemorySegment segment) implements IVkCop
         sType(VkStructureType.COPY_IMAGE_INFO_2);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkCopyImageInfo2 sType(@EnumType(VkStructureType.class) int value) {
+    public VkCopyImageInfo2 sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }
@@ -230,11 +230,11 @@ public record VkCopyImageInfo2(@NotNull MemorySegment segment) implements IVkCop
         return this;
     }
 
-    public @EnumType(VkImageLayout.class) int srcImageLayout() {
+    public @MagicConstant(valuesFromClass = VkImageLayout.class) int srcImageLayout() {
         return segment.get(LAYOUT$srcImageLayout, OFFSET$srcImageLayout);
     }
 
-    public VkCopyImageInfo2 srcImageLayout(@EnumType(VkImageLayout.class) int value) {
+    public VkCopyImageInfo2 srcImageLayout(@MagicConstant(valuesFromClass = VkImageLayout.class) int value) {
         segment.set(LAYOUT$srcImageLayout, OFFSET$srcImageLayout, value);
         return this;
     }
@@ -252,11 +252,11 @@ public record VkCopyImageInfo2(@NotNull MemorySegment segment) implements IVkCop
         return this;
     }
 
-    public @EnumType(VkImageLayout.class) int dstImageLayout() {
+    public @MagicConstant(valuesFromClass = VkImageLayout.class) int dstImageLayout() {
         return segment.get(LAYOUT$dstImageLayout, OFFSET$dstImageLayout);
     }
 
-    public VkCopyImageInfo2 dstImageLayout(@EnumType(VkImageLayout.class) int value) {
+    public VkCopyImageInfo2 dstImageLayout(@MagicConstant(valuesFromClass = VkImageLayout.class) int value) {
         segment.set(LAYOUT$dstImageLayout, OFFSET$dstImageLayout, value);
         return this;
     }

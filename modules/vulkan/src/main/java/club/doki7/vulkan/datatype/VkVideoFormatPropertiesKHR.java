@@ -195,11 +195,11 @@ public record VkVideoFormatPropertiesKHR(@NotNull MemorySegment segment) impleme
         sType(VkStructureType.VIDEO_FORMAT_PROPERTIES_KHR);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkVideoFormatPropertiesKHR sType(@EnumType(VkStructureType.class) int value) {
+    public VkVideoFormatPropertiesKHR sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }
@@ -217,11 +217,11 @@ public record VkVideoFormatPropertiesKHR(@NotNull MemorySegment segment) impleme
         return this;
     }
 
-    public @EnumType(VkFormat.class) int format() {
+    public @MagicConstant(valuesFromClass = VkFormat.class) int format() {
         return segment.get(LAYOUT$format, OFFSET$format);
     }
 
-    public VkVideoFormatPropertiesKHR format(@EnumType(VkFormat.class) int value) {
+    public VkVideoFormatPropertiesKHR format(@MagicConstant(valuesFromClass = VkFormat.class) int value) {
         segment.set(LAYOUT$format, OFFSET$format, value);
         return this;
     }
@@ -240,38 +240,38 @@ public record VkVideoFormatPropertiesKHR(@NotNull MemorySegment segment) impleme
         return this;
     }
 
-    public @EnumType(VkImageCreateFlags.class) int imageCreateFlags() {
+    public @MagicConstant(valuesFromClass = VkImageCreateFlags.class) int imageCreateFlags() {
         return segment.get(LAYOUT$imageCreateFlags, OFFSET$imageCreateFlags);
     }
 
-    public VkVideoFormatPropertiesKHR imageCreateFlags(@EnumType(VkImageCreateFlags.class) int value) {
+    public VkVideoFormatPropertiesKHR imageCreateFlags(@MagicConstant(valuesFromClass = VkImageCreateFlags.class) int value) {
         segment.set(LAYOUT$imageCreateFlags, OFFSET$imageCreateFlags, value);
         return this;
     }
 
-    public @EnumType(VkImageType.class) int imageType() {
+    public @MagicConstant(valuesFromClass = VkImageType.class) int imageType() {
         return segment.get(LAYOUT$imageType, OFFSET$imageType);
     }
 
-    public VkVideoFormatPropertiesKHR imageType(@EnumType(VkImageType.class) int value) {
+    public VkVideoFormatPropertiesKHR imageType(@MagicConstant(valuesFromClass = VkImageType.class) int value) {
         segment.set(LAYOUT$imageType, OFFSET$imageType, value);
         return this;
     }
 
-    public @EnumType(VkImageTiling.class) int imageTiling() {
+    public @MagicConstant(valuesFromClass = VkImageTiling.class) int imageTiling() {
         return segment.get(LAYOUT$imageTiling, OFFSET$imageTiling);
     }
 
-    public VkVideoFormatPropertiesKHR imageTiling(@EnumType(VkImageTiling.class) int value) {
+    public VkVideoFormatPropertiesKHR imageTiling(@MagicConstant(valuesFromClass = VkImageTiling.class) int value) {
         segment.set(LAYOUT$imageTiling, OFFSET$imageTiling, value);
         return this;
     }
 
-    public @EnumType(VkImageUsageFlags.class) int imageUsageFlags() {
+    public @MagicConstant(valuesFromClass = VkImageUsageFlags.class) int imageUsageFlags() {
         return segment.get(LAYOUT$imageUsageFlags, OFFSET$imageUsageFlags);
     }
 
-    public VkVideoFormatPropertiesKHR imageUsageFlags(@EnumType(VkImageUsageFlags.class) int value) {
+    public VkVideoFormatPropertiesKHR imageUsageFlags(@MagicConstant(valuesFromClass = VkImageUsageFlags.class) int value) {
         segment.set(LAYOUT$imageUsageFlags, OFFSET$imageUsageFlags, value);
         return this;
     }

@@ -171,11 +171,11 @@ public record VkClearAttachment(@NotNull MemorySegment segment) implements IVkCl
         return ret;
     }
 
-    public @EnumType(VkImageAspectFlags.class) int aspectMask() {
+    public @MagicConstant(valuesFromClass = VkImageAspectFlags.class) int aspectMask() {
         return segment.get(LAYOUT$aspectMask, OFFSET$aspectMask);
     }
 
-    public VkClearAttachment aspectMask(@EnumType(VkImageAspectFlags.class) int value) {
+    public VkClearAttachment aspectMask(@MagicConstant(valuesFromClass = VkImageAspectFlags.class) int value) {
         segment.set(LAYOUT$aspectMask, OFFSET$aspectMask, value);
         return this;
     }

@@ -200,11 +200,11 @@ public record VkPipelineRasterizationStateCreateInfo(@NotNull MemorySegment segm
         sType(VkStructureType.PIPELINE_RASTERIZATION_STATE_CREATE_INFO);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkPipelineRasterizationStateCreateInfo sType(@EnumType(VkStructureType.class) int value) {
+    public VkPipelineRasterizationStateCreateInfo sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }
@@ -222,11 +222,11 @@ public record VkPipelineRasterizationStateCreateInfo(@NotNull MemorySegment segm
         return this;
     }
 
-    public @EnumType(VkPipelineRasterizationStateCreateFlags.class) int flags() {
+    public @MagicConstant(valuesFromClass = VkPipelineRasterizationStateCreateFlags.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public VkPipelineRasterizationStateCreateInfo flags(@EnumType(VkPipelineRasterizationStateCreateFlags.class) int value) {
+    public VkPipelineRasterizationStateCreateInfo flags(@MagicConstant(valuesFromClass = VkPipelineRasterizationStateCreateFlags.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
         return this;
     }
@@ -249,29 +249,29 @@ public record VkPipelineRasterizationStateCreateInfo(@NotNull MemorySegment segm
         return this;
     }
 
-    public @EnumType(VkPolygonMode.class) int polygonMode() {
+    public @MagicConstant(valuesFromClass = VkPolygonMode.class) int polygonMode() {
         return segment.get(LAYOUT$polygonMode, OFFSET$polygonMode);
     }
 
-    public VkPipelineRasterizationStateCreateInfo polygonMode(@EnumType(VkPolygonMode.class) int value) {
+    public VkPipelineRasterizationStateCreateInfo polygonMode(@MagicConstant(valuesFromClass = VkPolygonMode.class) int value) {
         segment.set(LAYOUT$polygonMode, OFFSET$polygonMode, value);
         return this;
     }
 
-    public @EnumType(VkCullModeFlags.class) int cullMode() {
+    public @MagicConstant(valuesFromClass = VkCullModeFlags.class) int cullMode() {
         return segment.get(LAYOUT$cullMode, OFFSET$cullMode);
     }
 
-    public VkPipelineRasterizationStateCreateInfo cullMode(@EnumType(VkCullModeFlags.class) int value) {
+    public VkPipelineRasterizationStateCreateInfo cullMode(@MagicConstant(valuesFromClass = VkCullModeFlags.class) int value) {
         segment.set(LAYOUT$cullMode, OFFSET$cullMode, value);
         return this;
     }
 
-    public @EnumType(VkFrontFace.class) int frontFace() {
+    public @MagicConstant(valuesFromClass = VkFrontFace.class) int frontFace() {
         return segment.get(LAYOUT$frontFace, OFFSET$frontFace);
     }
 
-    public VkPipelineRasterizationStateCreateInfo frontFace(@EnumType(VkFrontFace.class) int value) {
+    public VkPipelineRasterizationStateCreateInfo frontFace(@MagicConstant(valuesFromClass = VkFrontFace.class) int value) {
         segment.set(LAYOUT$frontFace, OFFSET$frontFace, value);
         return this;
     }

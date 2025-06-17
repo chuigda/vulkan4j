@@ -190,11 +190,11 @@ public record VkPhysicalDevicePipelineOpacityMicromapFeaturesARM(@NotNull Memory
         sType(VkStructureType.PHYSICAL_DEVICE_PIPELINE_OPACITY_MICROMAP_FEATURES_ARM);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkPhysicalDevicePipelineOpacityMicromapFeaturesARM sType(@EnumType(VkStructureType.class) int value) {
+    public VkPhysicalDevicePipelineOpacityMicromapFeaturesARM sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }

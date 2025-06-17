@@ -190,11 +190,11 @@ public record VkExportMemorySciBufInfoNV(@NotNull MemorySegment segment) impleme
         sType(VkStructureType.EXPORT_MEMORY_SCI_BUF_INFO_NV);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkExportMemorySciBufInfoNV sType(@EnumType(VkStructureType.class) int value) {
+    public VkExportMemorySciBufInfoNV sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }

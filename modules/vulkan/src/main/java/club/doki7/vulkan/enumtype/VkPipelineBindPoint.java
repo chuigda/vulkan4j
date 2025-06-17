@@ -1,6 +1,7 @@
 package club.doki7.vulkan.enumtype;
 
 import club.doki7.ffm.annotation.*;
+import org.intellij.lang.annotations.MagicConstant;
 
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPipelineBindPoint.html"><code>VkPipelineBindPoint</code></a>
 public final class VkPipelineBindPoint {
@@ -10,7 +11,7 @@ public final class VkPipelineBindPoint {
     public static final int RAY_TRACING_KHR = 0x3b9d4e88;
     public static final int SUBPASS_SHADING_HUAWEI = 0x3ba06b6b;
 
-    public static String explain(@EnumType(VkPipelineBindPoint.class) int value) {
+    public static String explain(@MagicConstant(valuesFromClass = VkPipelineBindPoint.class) int value) {
         return switch (value) {
             case VkPipelineBindPoint.COMPUTE -> "VK_PIPELINE_BIND_POINT_COMPUTE";
             case VkPipelineBindPoint.EXECUTION_GRAPH_AMDX -> "VK_PIPELINE_BIND_POINT_EXECUTION_GRAPH_AMDX";

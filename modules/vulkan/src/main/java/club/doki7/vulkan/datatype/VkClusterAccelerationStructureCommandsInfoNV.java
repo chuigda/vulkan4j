@@ -197,11 +197,11 @@ public record VkClusterAccelerationStructureCommandsInfoNV(@NotNull MemorySegmen
         sType(VkStructureType.CLUSTER_ACCELERATION_STRUCTURE_COMMANDS_INFO_NV);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkClusterAccelerationStructureCommandsInfoNV sType(@EnumType(VkStructureType.class) int value) {
+    public VkClusterAccelerationStructureCommandsInfoNV sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }
@@ -302,11 +302,11 @@ public record VkClusterAccelerationStructureCommandsInfoNV(@NotNull MemorySegmen
         return this;
     }
 
-    public @EnumType(VkClusterAccelerationStructureAddressResolutionFlagsNV.class) int addressResolutionFlags() {
+    public @MagicConstant(valuesFromClass = VkClusterAccelerationStructureAddressResolutionFlagsNV.class) int addressResolutionFlags() {
         return segment.get(LAYOUT$addressResolutionFlags, OFFSET$addressResolutionFlags);
     }
 
-    public VkClusterAccelerationStructureCommandsInfoNV addressResolutionFlags(@EnumType(VkClusterAccelerationStructureAddressResolutionFlagsNV.class) int value) {
+    public VkClusterAccelerationStructureCommandsInfoNV addressResolutionFlags(@MagicConstant(valuesFromClass = VkClusterAccelerationStructureAddressResolutionFlagsNV.class) int value) {
         segment.set(LAYOUT$addressResolutionFlags, OFFSET$addressResolutionFlags, value);
         return this;
     }

@@ -190,11 +190,11 @@ public record VkQueryPoolPerformanceQueryCreateInfoINTEL(@NotNull MemorySegment 
         sType(VkStructureType.QUERY_POOL_PERFORMANCE_QUERY_CREATE_INFO_INTEL);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkQueryPoolPerformanceQueryCreateInfoINTEL sType(@EnumType(VkStructureType.class) int value) {
+    public VkQueryPoolPerformanceQueryCreateInfoINTEL sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }
@@ -212,11 +212,11 @@ public record VkQueryPoolPerformanceQueryCreateInfoINTEL(@NotNull MemorySegment 
         return this;
     }
 
-    public @EnumType(VkQueryPoolSamplingModeINTEL.class) int performanceCountersSampling() {
+    public @MagicConstant(valuesFromClass = VkQueryPoolSamplingModeINTEL.class) int performanceCountersSampling() {
         return segment.get(LAYOUT$performanceCountersSampling, OFFSET$performanceCountersSampling);
     }
 
-    public VkQueryPoolPerformanceQueryCreateInfoINTEL performanceCountersSampling(@EnumType(VkQueryPoolSamplingModeINTEL.class) int value) {
+    public VkQueryPoolPerformanceQueryCreateInfoINTEL performanceCountersSampling(@MagicConstant(valuesFromClass = VkQueryPoolSamplingModeINTEL.class) int value) {
         segment.set(LAYOUT$performanceCountersSampling, OFFSET$performanceCountersSampling, value);
         return this;
     }

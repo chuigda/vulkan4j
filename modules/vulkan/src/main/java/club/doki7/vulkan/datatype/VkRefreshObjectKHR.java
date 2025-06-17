@@ -171,11 +171,11 @@ public record VkRefreshObjectKHR(@NotNull MemorySegment segment) implements IVkR
         return ret;
     }
 
-    public @EnumType(VkObjectType.class) int objectType() {
+    public @MagicConstant(valuesFromClass = VkObjectType.class) int objectType() {
         return segment.get(LAYOUT$objectType, OFFSET$objectType);
     }
 
-    public VkRefreshObjectKHR objectType(@EnumType(VkObjectType.class) int value) {
+    public VkRefreshObjectKHR objectType(@MagicConstant(valuesFromClass = VkObjectType.class) int value) {
         segment.set(LAYOUT$objectType, OFFSET$objectType, value);
         return this;
     }
@@ -189,11 +189,11 @@ public record VkRefreshObjectKHR(@NotNull MemorySegment segment) implements IVkR
         return this;
     }
 
-    public @EnumType(VkRefreshObjectFlagsKHR.class) int flags() {
+    public @MagicConstant(valuesFromClass = VkRefreshObjectFlagsKHR.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public VkRefreshObjectKHR flags(@EnumType(VkRefreshObjectFlagsKHR.class) int value) {
+    public VkRefreshObjectKHR flags(@MagicConstant(valuesFromClass = VkRefreshObjectFlagsKHR.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
         return this;
     }

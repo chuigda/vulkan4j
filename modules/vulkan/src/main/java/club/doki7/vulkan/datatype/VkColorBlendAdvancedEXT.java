@@ -173,11 +173,11 @@ public record VkColorBlendAdvancedEXT(@NotNull MemorySegment segment) implements
         return ret;
     }
 
-    public @EnumType(VkBlendOp.class) int advancedBlendOp() {
+    public @MagicConstant(valuesFromClass = VkBlendOp.class) int advancedBlendOp() {
         return segment.get(LAYOUT$advancedBlendOp, OFFSET$advancedBlendOp);
     }
 
-    public VkColorBlendAdvancedEXT advancedBlendOp(@EnumType(VkBlendOp.class) int value) {
+    public VkColorBlendAdvancedEXT advancedBlendOp(@MagicConstant(valuesFromClass = VkBlendOp.class) int value) {
         segment.set(LAYOUT$advancedBlendOp, OFFSET$advancedBlendOp, value);
         return this;
     }
@@ -200,11 +200,11 @@ public record VkColorBlendAdvancedEXT(@NotNull MemorySegment segment) implements
         return this;
     }
 
-    public @EnumType(VkBlendOverlapEXT.class) int blendOverlap() {
+    public @MagicConstant(valuesFromClass = VkBlendOverlapEXT.class) int blendOverlap() {
         return segment.get(LAYOUT$blendOverlap, OFFSET$blendOverlap);
     }
 
-    public VkColorBlendAdvancedEXT blendOverlap(@EnumType(VkBlendOverlapEXT.class) int value) {
+    public VkColorBlendAdvancedEXT blendOverlap(@MagicConstant(valuesFromClass = VkBlendOverlapEXT.class) int value) {
         segment.set(LAYOUT$blendOverlap, OFFSET$blendOverlap, value);
         return this;
     }

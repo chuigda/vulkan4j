@@ -1,6 +1,7 @@
 package club.doki7.vulkan.bitmask;
 
 import club.doki7.ffm.annotation.*;
+import org.intellij.lang.annotations.MagicConstant;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -9,7 +10,7 @@ import java.util.List;
 public final class VkOpticalFlowExecuteFlagsNV {
     public static final int DISABLE_TEMPORAL_HINTS = 0x1;
 
-    public static String explain(@EnumType(VkOpticalFlowExecuteFlagsNV.class) int flags) {
+    public static String explain(@MagicConstant(flagsFromClass = VkOpticalFlowExecuteFlagsNV.class) int flags) {
         List<String> detectedFlagBits = new ArrayList<>();
         if ((flags & DISABLE_TEMPORAL_HINTS) != 0) {
             detectedFlagBits.add("VK_OPTICAL_FLOW_EXECUTE_DISABLE_TEMPORAL_HINTS_BIT_NV");

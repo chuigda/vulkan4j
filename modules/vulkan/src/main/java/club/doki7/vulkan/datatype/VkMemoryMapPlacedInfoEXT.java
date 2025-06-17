@@ -190,11 +190,11 @@ public record VkMemoryMapPlacedInfoEXT(@NotNull MemorySegment segment) implement
         sType(VkStructureType.MEMORY_MAP_PLACED_INFO_EXT);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkMemoryMapPlacedInfoEXT sType(@EnumType(VkStructureType.class) int value) {
+    public VkMemoryMapPlacedInfoEXT sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }

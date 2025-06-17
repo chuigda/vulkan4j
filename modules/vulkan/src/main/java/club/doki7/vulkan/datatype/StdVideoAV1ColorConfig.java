@@ -217,38 +217,38 @@ public record StdVideoAV1ColorConfig(@NotNull MemorySegment segment) implements 
     }
 
 
-    public @EnumType(StdVideoAV1ColorPrimaries.class) int color_primaries() {
+    public @MagicConstant(valuesFromClass = StdVideoAV1ColorPrimaries.class) int color_primaries() {
         return segment.get(LAYOUT$color_primaries, OFFSET$color_primaries);
     }
 
-    public StdVideoAV1ColorConfig color_primaries(@EnumType(StdVideoAV1ColorPrimaries.class) int value) {
+    public StdVideoAV1ColorConfig color_primaries(@MagicConstant(valuesFromClass = StdVideoAV1ColorPrimaries.class) int value) {
         segment.set(LAYOUT$color_primaries, OFFSET$color_primaries, value);
         return this;
     }
 
-    public @EnumType(StdVideoAV1TransferCharacteristics.class) int transfer_characteristics() {
+    public @MagicConstant(valuesFromClass = StdVideoAV1TransferCharacteristics.class) int transfer_characteristics() {
         return segment.get(LAYOUT$transfer_characteristics, OFFSET$transfer_characteristics);
     }
 
-    public StdVideoAV1ColorConfig transfer_characteristics(@EnumType(StdVideoAV1TransferCharacteristics.class) int value) {
+    public StdVideoAV1ColorConfig transfer_characteristics(@MagicConstant(valuesFromClass = StdVideoAV1TransferCharacteristics.class) int value) {
         segment.set(LAYOUT$transfer_characteristics, OFFSET$transfer_characteristics, value);
         return this;
     }
 
-    public @EnumType(StdVideoAV1MatrixCoefficients.class) int matrix_coefficients() {
+    public @MagicConstant(valuesFromClass = StdVideoAV1MatrixCoefficients.class) int matrix_coefficients() {
         return segment.get(LAYOUT$matrix_coefficients, OFFSET$matrix_coefficients);
     }
 
-    public StdVideoAV1ColorConfig matrix_coefficients(@EnumType(StdVideoAV1MatrixCoefficients.class) int value) {
+    public StdVideoAV1ColorConfig matrix_coefficients(@MagicConstant(valuesFromClass = StdVideoAV1MatrixCoefficients.class) int value) {
         segment.set(LAYOUT$matrix_coefficients, OFFSET$matrix_coefficients, value);
         return this;
     }
 
-    public @EnumType(StdVideoAV1ChromaSamplePosition.class) int chroma_sample_position() {
+    public @MagicConstant(valuesFromClass = StdVideoAV1ChromaSamplePosition.class) int chroma_sample_position() {
         return segment.get(LAYOUT$chroma_sample_position, OFFSET$chroma_sample_position);
     }
 
-    public StdVideoAV1ColorConfig chroma_sample_position(@EnumType(StdVideoAV1ChromaSamplePosition.class) int value) {
+    public StdVideoAV1ColorConfig chroma_sample_position(@MagicConstant(valuesFromClass = StdVideoAV1ChromaSamplePosition.class) int value) {
         segment.set(LAYOUT$chroma_sample_position, OFFSET$chroma_sample_position, value);
         return this;
     }

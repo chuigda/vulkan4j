@@ -205,11 +205,11 @@ public record VkVideoEncodeH265CapabilitiesKHR(@NotNull MemorySegment segment) i
         sType(VkStructureType.VIDEO_ENCODE_H265_CAPABILITIES_KHR);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkVideoEncodeH265CapabilitiesKHR sType(@EnumType(VkStructureType.class) int value) {
+    public VkVideoEncodeH265CapabilitiesKHR sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }
@@ -227,20 +227,20 @@ public record VkVideoEncodeH265CapabilitiesKHR(@NotNull MemorySegment segment) i
         return this;
     }
 
-    public @EnumType(VkVideoEncodeH265CapabilityFlagsKHR.class) int flags() {
+    public @MagicConstant(valuesFromClass = VkVideoEncodeH265CapabilityFlagsKHR.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public VkVideoEncodeH265CapabilitiesKHR flags(@EnumType(VkVideoEncodeH265CapabilityFlagsKHR.class) int value) {
+    public VkVideoEncodeH265CapabilitiesKHR flags(@MagicConstant(valuesFromClass = VkVideoEncodeH265CapabilityFlagsKHR.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
         return this;
     }
 
-    public @EnumType(StdVideoH265LevelIdc.class) int maxLevelIdc() {
+    public @MagicConstant(valuesFromClass = StdVideoH265LevelIdc.class) int maxLevelIdc() {
         return segment.get(LAYOUT$maxLevelIdc, OFFSET$maxLevelIdc);
     }
 
-    public VkVideoEncodeH265CapabilitiesKHR maxLevelIdc(@EnumType(StdVideoH265LevelIdc.class) int value) {
+    public VkVideoEncodeH265CapabilitiesKHR maxLevelIdc(@MagicConstant(valuesFromClass = StdVideoH265LevelIdc.class) int value) {
         segment.set(LAYOUT$maxLevelIdc, OFFSET$maxLevelIdc, value);
         return this;
     }
@@ -268,20 +268,20 @@ public record VkVideoEncodeH265CapabilitiesKHR(@NotNull MemorySegment segment) i
         return this;
     }
 
-    public @EnumType(VkVideoEncodeH265CtbSizeFlagsKHR.class) int ctbSizes() {
+    public @MagicConstant(valuesFromClass = VkVideoEncodeH265CtbSizeFlagsKHR.class) int ctbSizes() {
         return segment.get(LAYOUT$ctbSizes, OFFSET$ctbSizes);
     }
 
-    public VkVideoEncodeH265CapabilitiesKHR ctbSizes(@EnumType(VkVideoEncodeH265CtbSizeFlagsKHR.class) int value) {
+    public VkVideoEncodeH265CapabilitiesKHR ctbSizes(@MagicConstant(valuesFromClass = VkVideoEncodeH265CtbSizeFlagsKHR.class) int value) {
         segment.set(LAYOUT$ctbSizes, OFFSET$ctbSizes, value);
         return this;
     }
 
-    public @EnumType(VkVideoEncodeH265TransformBlockSizeFlagsKHR.class) int transformBlockSizes() {
+    public @MagicConstant(valuesFromClass = VkVideoEncodeH265TransformBlockSizeFlagsKHR.class) int transformBlockSizes() {
         return segment.get(LAYOUT$transformBlockSizes, OFFSET$transformBlockSizes);
     }
 
-    public VkVideoEncodeH265CapabilitiesKHR transformBlockSizes(@EnumType(VkVideoEncodeH265TransformBlockSizeFlagsKHR.class) int value) {
+    public VkVideoEncodeH265CapabilitiesKHR transformBlockSizes(@MagicConstant(valuesFromClass = VkVideoEncodeH265TransformBlockSizeFlagsKHR.class) int value) {
         segment.set(LAYOUT$transformBlockSizes, OFFSET$transformBlockSizes, value);
         return this;
     }
@@ -367,11 +367,11 @@ public record VkVideoEncodeH265CapabilitiesKHR(@NotNull MemorySegment segment) i
         return this;
     }
 
-    public @EnumType(VkVideoEncodeH265StdFlagsKHR.class) int stdSyntaxFlags() {
+    public @MagicConstant(valuesFromClass = VkVideoEncodeH265StdFlagsKHR.class) int stdSyntaxFlags() {
         return segment.get(LAYOUT$stdSyntaxFlags, OFFSET$stdSyntaxFlags);
     }
 
-    public VkVideoEncodeH265CapabilitiesKHR stdSyntaxFlags(@EnumType(VkVideoEncodeH265StdFlagsKHR.class) int value) {
+    public VkVideoEncodeH265CapabilitiesKHR stdSyntaxFlags(@MagicConstant(valuesFromClass = VkVideoEncodeH265StdFlagsKHR.class) int value) {
         segment.set(LAYOUT$stdSyntaxFlags, OFFSET$stdSyntaxFlags, value);
         return this;
     }

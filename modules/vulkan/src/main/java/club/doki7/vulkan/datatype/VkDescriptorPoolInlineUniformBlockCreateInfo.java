@@ -190,11 +190,11 @@ public record VkDescriptorPoolInlineUniformBlockCreateInfo(@NotNull MemorySegmen
         sType(VkStructureType.DESCRIPTOR_POOL_INLINE_UNIFORM_BLOCK_CREATE_INFO);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkDescriptorPoolInlineUniformBlockCreateInfo sType(@EnumType(VkStructureType.class) int value) {
+    public VkDescriptorPoolInlineUniformBlockCreateInfo sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }

@@ -194,11 +194,11 @@ public record VkImportSemaphoreWin32HandleInfoKHR(@NotNull MemorySegment segment
         sType(VkStructureType.IMPORT_SEMAPHORE_WIN32_HANDLE_INFO_KHR);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkImportSemaphoreWin32HandleInfoKHR sType(@EnumType(VkStructureType.class) int value) {
+    public VkImportSemaphoreWin32HandleInfoKHR sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }
@@ -229,20 +229,20 @@ public record VkImportSemaphoreWin32HandleInfoKHR(@NotNull MemorySegment segment
         return this;
     }
 
-    public @EnumType(VkSemaphoreImportFlags.class) int flags() {
+    public @MagicConstant(valuesFromClass = VkSemaphoreImportFlags.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public VkImportSemaphoreWin32HandleInfoKHR flags(@EnumType(VkSemaphoreImportFlags.class) int value) {
+    public VkImportSemaphoreWin32HandleInfoKHR flags(@MagicConstant(valuesFromClass = VkSemaphoreImportFlags.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
         return this;
     }
 
-    public @EnumType(VkExternalSemaphoreHandleTypeFlags.class) int handleType() {
+    public @MagicConstant(valuesFromClass = VkExternalSemaphoreHandleTypeFlags.class) int handleType() {
         return segment.get(LAYOUT$handleType, OFFSET$handleType);
     }
 
-    public VkImportSemaphoreWin32HandleInfoKHR handleType(@EnumType(VkExternalSemaphoreHandleTypeFlags.class) int value) {
+    public VkImportSemaphoreWin32HandleInfoKHR handleType(@MagicConstant(valuesFromClass = VkExternalSemaphoreHandleTypeFlags.class) int value) {
         segment.set(LAYOUT$handleType, OFFSET$handleType, value);
         return this;
     }

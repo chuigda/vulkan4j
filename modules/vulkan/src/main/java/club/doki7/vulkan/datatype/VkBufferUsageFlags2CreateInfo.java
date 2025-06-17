@@ -190,11 +190,11 @@ public record VkBufferUsageFlags2CreateInfo(@NotNull MemorySegment segment) impl
         sType(VkStructureType.BUFFER_USAGE_FLAGS_2_CREATE_INFO);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkBufferUsageFlags2CreateInfo sType(@EnumType(VkStructureType.class) int value) {
+    public VkBufferUsageFlags2CreateInfo sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }
@@ -212,11 +212,11 @@ public record VkBufferUsageFlags2CreateInfo(@NotNull MemorySegment segment) impl
         return this;
     }
 
-    public @EnumType(VkBufferUsageFlags2.class) long usage() {
+    public @MagicConstant(valuesFromClass = VkBufferUsageFlags2.class) long usage() {
         return segment.get(LAYOUT$usage, OFFSET$usage);
     }
 
-    public VkBufferUsageFlags2CreateInfo usage(@EnumType(VkBufferUsageFlags2.class) long value) {
+    public VkBufferUsageFlags2CreateInfo usage(@MagicConstant(valuesFromClass = VkBufferUsageFlags2.class) long value) {
         segment.set(LAYOUT$usage, OFFSET$usage, value);
         return this;
     }

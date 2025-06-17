@@ -191,11 +191,11 @@ public record VkDeviceImageMemoryRequirements(@NotNull MemorySegment segment) im
         sType(VkStructureType.DEVICE_IMAGE_MEMORY_REQUIREMENTS);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkDeviceImageMemoryRequirements sType(@EnumType(VkStructureType.class) int value) {
+    public VkDeviceImageMemoryRequirements sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }
@@ -245,11 +245,11 @@ public record VkDeviceImageMemoryRequirements(@NotNull MemorySegment segment) im
         segment.set(LAYOUT$pCreateInfo, OFFSET$pCreateInfo, value);
     }
 
-    public @EnumType(VkImageAspectFlags.class) int planeAspect() {
+    public @MagicConstant(valuesFromClass = VkImageAspectFlags.class) int planeAspect() {
         return segment.get(LAYOUT$planeAspect, OFFSET$planeAspect);
     }
 
-    public VkDeviceImageMemoryRequirements planeAspect(@EnumType(VkImageAspectFlags.class) int value) {
+    public VkDeviceImageMemoryRequirements planeAspect(@MagicConstant(valuesFromClass = VkImageAspectFlags.class) int value) {
         segment.set(LAYOUT$planeAspect, OFFSET$planeAspect, value);
         return this;
     }

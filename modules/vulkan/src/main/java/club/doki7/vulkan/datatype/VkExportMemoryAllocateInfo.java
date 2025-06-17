@@ -190,11 +190,11 @@ public record VkExportMemoryAllocateInfo(@NotNull MemorySegment segment) impleme
         sType(VkStructureType.EXPORT_MEMORY_ALLOCATE_INFO);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkExportMemoryAllocateInfo sType(@EnumType(VkStructureType.class) int value) {
+    public VkExportMemoryAllocateInfo sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }
@@ -212,11 +212,11 @@ public record VkExportMemoryAllocateInfo(@NotNull MemorySegment segment) impleme
         return this;
     }
 
-    public @EnumType(VkExternalMemoryHandleTypeFlags.class) int handleTypes() {
+    public @MagicConstant(valuesFromClass = VkExternalMemoryHandleTypeFlags.class) int handleTypes() {
         return segment.get(LAYOUT$handleTypes, OFFSET$handleTypes);
     }
 
-    public VkExportMemoryAllocateInfo handleTypes(@EnumType(VkExternalMemoryHandleTypeFlags.class) int value) {
+    public VkExportMemoryAllocateInfo handleTypes(@MagicConstant(valuesFromClass = VkExternalMemoryHandleTypeFlags.class) int value) {
         segment.set(LAYOUT$handleTypes, OFFSET$handleTypes, value);
         return this;
     }

@@ -191,11 +191,11 @@ public record VkSamplerBlockMatchWindowCreateInfoQCOM(@NotNull MemorySegment seg
         sType(VkStructureType.SAMPLER_BLOCK_MATCH_WINDOW_CREATE_INFO_QCOM);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkSamplerBlockMatchWindowCreateInfoQCOM sType(@EnumType(VkStructureType.class) int value) {
+    public VkSamplerBlockMatchWindowCreateInfoQCOM sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }
@@ -227,11 +227,11 @@ public record VkSamplerBlockMatchWindowCreateInfoQCOM(@NotNull MemorySegment seg
         return this;
     }
 
-    public @EnumType(VkBlockMatchWindowCompareModeQCOM.class) int windowCompareMode() {
+    public @MagicConstant(valuesFromClass = VkBlockMatchWindowCompareModeQCOM.class) int windowCompareMode() {
         return segment.get(LAYOUT$windowCompareMode, OFFSET$windowCompareMode);
     }
 
-    public VkSamplerBlockMatchWindowCreateInfoQCOM windowCompareMode(@EnumType(VkBlockMatchWindowCompareModeQCOM.class) int value) {
+    public VkSamplerBlockMatchWindowCreateInfoQCOM windowCompareMode(@MagicConstant(valuesFromClass = VkBlockMatchWindowCompareModeQCOM.class) int value) {
         segment.set(LAYOUT$windowCompareMode, OFFSET$windowCompareMode, value);
         return this;
     }

@@ -1,6 +1,7 @@
 package club.doki7.vulkan.bitmask;
 
 import club.doki7.ffm.annotation.*;
+import org.intellij.lang.annotations.MagicConstant;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -9,7 +10,7 @@ import java.util.List;
 public final class VkSparseMemoryBindFlags {
     public static final int METADATA = 0x1;
 
-    public static String explain(@EnumType(VkSparseMemoryBindFlags.class) int flags) {
+    public static String explain(@MagicConstant(flagsFromClass = VkSparseMemoryBindFlags.class) int flags) {
         List<String> detectedFlagBits = new ArrayList<>();
         if ((flags & METADATA) != 0) {
             detectedFlagBits.add("VK_SPARSE_MEMORY_BIND_METADATA_BIT");

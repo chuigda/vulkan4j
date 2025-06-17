@@ -197,11 +197,11 @@ public record VkClusterAccelerationStructureTriangleClusterInputNV(@NotNull Memo
         sType(VkStructureType.CLUSTER_ACCELERATION_STRUCTURE_TRIANGLE_CLUSTER_INPUT_NV);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkClusterAccelerationStructureTriangleClusterInputNV sType(@EnumType(VkStructureType.class) int value) {
+    public VkClusterAccelerationStructureTriangleClusterInputNV sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }
@@ -219,11 +219,11 @@ public record VkClusterAccelerationStructureTriangleClusterInputNV(@NotNull Memo
         return this;
     }
 
-    public @EnumType(VkFormat.class) int vertexFormat() {
+    public @MagicConstant(valuesFromClass = VkFormat.class) int vertexFormat() {
         return segment.get(LAYOUT$vertexFormat, OFFSET$vertexFormat);
     }
 
-    public VkClusterAccelerationStructureTriangleClusterInputNV vertexFormat(@EnumType(VkFormat.class) int value) {
+    public VkClusterAccelerationStructureTriangleClusterInputNV vertexFormat(@MagicConstant(valuesFromClass = VkFormat.class) int value) {
         segment.set(LAYOUT$vertexFormat, OFFSET$vertexFormat, value);
         return this;
     }

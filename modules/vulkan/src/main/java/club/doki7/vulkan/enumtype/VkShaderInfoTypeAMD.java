@@ -1,6 +1,7 @@
 package club.doki7.vulkan.enumtype;
 
 import club.doki7.ffm.annotation.*;
+import org.intellij.lang.annotations.MagicConstant;
 
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkShaderInfoTypeAMD.html"><code>VkShaderInfoTypeAMD</code></a>
 public final class VkShaderInfoTypeAMD {
@@ -8,7 +9,7 @@ public final class VkShaderInfoTypeAMD {
     public static final int BINARY = 0x1;
     public static final int DISASSEMBLY = 0x2;
 
-    public static String explain(@EnumType(VkShaderInfoTypeAMD.class) int value) {
+    public static String explain(@MagicConstant(valuesFromClass = VkShaderInfoTypeAMD.class) int value) {
         return switch (value) {
             case VkShaderInfoTypeAMD.BINARY -> "VK_SHADER_INFO_TYPE_BINARY_AMD";
             case VkShaderInfoTypeAMD.DISASSEMBLY -> "VK_SHADER_INFO_TYPE_DISASSEMBLY_AMD";

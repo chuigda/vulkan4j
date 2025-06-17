@@ -213,11 +213,11 @@ public record VkVideoEncodeAV1CapabilitiesKHR(@NotNull MemorySegment segment) im
         sType(VkStructureType.VIDEO_ENCODE_AV1_CAPABILITIES_KHR);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkVideoEncodeAV1CapabilitiesKHR sType(@EnumType(VkStructureType.class) int value) {
+    public VkVideoEncodeAV1CapabilitiesKHR sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }
@@ -235,20 +235,20 @@ public record VkVideoEncodeAV1CapabilitiesKHR(@NotNull MemorySegment segment) im
         return this;
     }
 
-    public @EnumType(VkVideoEncodeAV1CapabilityFlagsKHR.class) int flags() {
+    public @MagicConstant(valuesFromClass = VkVideoEncodeAV1CapabilityFlagsKHR.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public VkVideoEncodeAV1CapabilitiesKHR flags(@EnumType(VkVideoEncodeAV1CapabilityFlagsKHR.class) int value) {
+    public VkVideoEncodeAV1CapabilitiesKHR flags(@MagicConstant(valuesFromClass = VkVideoEncodeAV1CapabilityFlagsKHR.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
         return this;
     }
 
-    public @EnumType(StdVideoAV1Level.class) int maxLevel() {
+    public @MagicConstant(valuesFromClass = StdVideoAV1Level.class) int maxLevel() {
         return segment.get(LAYOUT$maxLevel, OFFSET$maxLevel);
     }
 
-    public VkVideoEncodeAV1CapabilitiesKHR maxLevel(@EnumType(StdVideoAV1Level.class) int value) {
+    public VkVideoEncodeAV1CapabilitiesKHR maxLevel(@MagicConstant(valuesFromClass = StdVideoAV1Level.class) int value) {
         segment.set(LAYOUT$maxLevel, OFFSET$maxLevel, value);
         return this;
     }
@@ -309,11 +309,11 @@ public record VkVideoEncodeAV1CapabilitiesKHR(@NotNull MemorySegment segment) im
         return this;
     }
 
-    public @EnumType(VkVideoEncodeAV1SuperblockSizeFlagsKHR.class) int superblockSizes() {
+    public @MagicConstant(valuesFromClass = VkVideoEncodeAV1SuperblockSizeFlagsKHR.class) int superblockSizes() {
         return segment.get(LAYOUT$superblockSizes, OFFSET$superblockSizes);
     }
 
-    public VkVideoEncodeAV1CapabilitiesKHR superblockSizes(@EnumType(VkVideoEncodeAV1SuperblockSizeFlagsKHR.class) int value) {
+    public VkVideoEncodeAV1CapabilitiesKHR superblockSizes(@MagicConstant(valuesFromClass = VkVideoEncodeAV1SuperblockSizeFlagsKHR.class) int value) {
         segment.set(LAYOUT$superblockSizes, OFFSET$superblockSizes, value);
         return this;
     }
@@ -462,11 +462,11 @@ public record VkVideoEncodeAV1CapabilitiesKHR(@NotNull MemorySegment segment) im
         return this;
     }
 
-    public @EnumType(VkVideoEncodeAV1StdFlagsKHR.class) int stdSyntaxFlags() {
+    public @MagicConstant(valuesFromClass = VkVideoEncodeAV1StdFlagsKHR.class) int stdSyntaxFlags() {
         return segment.get(LAYOUT$stdSyntaxFlags, OFFSET$stdSyntaxFlags);
     }
 
-    public VkVideoEncodeAV1CapabilitiesKHR stdSyntaxFlags(@EnumType(VkVideoEncodeAV1StdFlagsKHR.class) int value) {
+    public VkVideoEncodeAV1CapabilitiesKHR stdSyntaxFlags(@MagicConstant(valuesFromClass = VkVideoEncodeAV1StdFlagsKHR.class) int value) {
         segment.set(LAYOUT$stdSyntaxFlags, OFFSET$stdSyntaxFlags, value);
         return this;
     }

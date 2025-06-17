@@ -1,6 +1,7 @@
 package club.doki7.vulkan.bitmask;
 
 import club.doki7.ffm.annotation.*;
+import org.intellij.lang.annotations.MagicConstant;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,7 +13,7 @@ public final class VkDeviceGroupPresentModeFlagsKHR {
     public static final int REMOTE = 0x2;
     public static final int SUM = 0x4;
 
-    public static String explain(@EnumType(VkDeviceGroupPresentModeFlagsKHR.class) int flags) {
+    public static String explain(@MagicConstant(flagsFromClass = VkDeviceGroupPresentModeFlagsKHR.class) int flags) {
         List<String> detectedFlagBits = new ArrayList<>();
         if ((flags & LOCAL) != 0) {
             detectedFlagBits.add("VK_DEVICE_GROUP_PRESENT_MODE_LOCAL_BIT_KHR");

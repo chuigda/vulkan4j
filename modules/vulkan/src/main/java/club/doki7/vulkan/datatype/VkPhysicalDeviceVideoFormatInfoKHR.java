@@ -190,11 +190,11 @@ public record VkPhysicalDeviceVideoFormatInfoKHR(@NotNull MemorySegment segment)
         sType(VkStructureType.PHYSICAL_DEVICE_VIDEO_FORMAT_INFO_KHR);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkPhysicalDeviceVideoFormatInfoKHR sType(@EnumType(VkStructureType.class) int value) {
+    public VkPhysicalDeviceVideoFormatInfoKHR sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }
@@ -212,11 +212,11 @@ public record VkPhysicalDeviceVideoFormatInfoKHR(@NotNull MemorySegment segment)
         return this;
     }
 
-    public @EnumType(VkImageUsageFlags.class) int imageUsage() {
+    public @MagicConstant(valuesFromClass = VkImageUsageFlags.class) int imageUsage() {
         return segment.get(LAYOUT$imageUsage, OFFSET$imageUsage);
     }
 
-    public VkPhysicalDeviceVideoFormatInfoKHR imageUsage(@EnumType(VkImageUsageFlags.class) int value) {
+    public VkPhysicalDeviceVideoFormatInfoKHR imageUsage(@MagicConstant(valuesFromClass = VkImageUsageFlags.class) int value) {
         segment.set(LAYOUT$imageUsage, OFFSET$imageUsage, value);
         return this;
     }

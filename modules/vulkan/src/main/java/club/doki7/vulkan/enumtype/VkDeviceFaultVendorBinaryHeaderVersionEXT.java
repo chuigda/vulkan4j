@@ -1,12 +1,13 @@
 package club.doki7.vulkan.enumtype;
 
 import club.doki7.ffm.annotation.*;
+import org.intellij.lang.annotations.MagicConstant;
 
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkDeviceFaultVendorBinaryHeaderVersionEXT.html"><code>VkDeviceFaultVendorBinaryHeaderVersionEXT</code></a>
 public final class VkDeviceFaultVendorBinaryHeaderVersionEXT {
     public static final int ONE = 0x1;
 
-    public static String explain(@EnumType(VkDeviceFaultVendorBinaryHeaderVersionEXT.class) int value) {
+    public static String explain(@MagicConstant(valuesFromClass = VkDeviceFaultVendorBinaryHeaderVersionEXT.class) int value) {
         return switch (value) {
             case VkDeviceFaultVendorBinaryHeaderVersionEXT.ONE -> "VK_DEVICE_FAULT_VENDOR_BINARY_HEADER_VERSION_ONE_EXT";
             default -> "UNKNOWN(" + value + ")";

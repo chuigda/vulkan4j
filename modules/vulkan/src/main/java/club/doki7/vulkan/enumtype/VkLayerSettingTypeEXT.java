@@ -1,6 +1,7 @@
 package club.doki7.vulkan.enumtype;
 
 import club.doki7.ffm.annotation.*;
+import org.intellij.lang.annotations.MagicConstant;
 
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkLayerSettingTypeEXT.html"><code>VkLayerSettingTypeEXT</code></a>
 public final class VkLayerSettingTypeEXT {
@@ -13,7 +14,7 @@ public final class VkLayerSettingTypeEXT {
     public static final int FLOAT64 = 0x6;
     public static final int STRING = 0x7;
 
-    public static String explain(@EnumType(VkLayerSettingTypeEXT.class) int value) {
+    public static String explain(@MagicConstant(valuesFromClass = VkLayerSettingTypeEXT.class) int value) {
         return switch (value) {
             case VkLayerSettingTypeEXT.BOOL32 -> "VK_LAYER_SETTING_TYPE_BOOL32_EXT";
             case VkLayerSettingTypeEXT.FLOAT32 -> "VK_LAYER_SETTING_TYPE_FLOAT32_EXT";

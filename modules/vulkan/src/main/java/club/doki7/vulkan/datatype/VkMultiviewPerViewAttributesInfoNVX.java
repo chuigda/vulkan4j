@@ -191,11 +191,11 @@ public record VkMultiviewPerViewAttributesInfoNVX(@NotNull MemorySegment segment
         sType(VkStructureType.MULTIVIEW_PER_VIEW_ATTRIBUTES_INFO_NVX);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkMultiviewPerViewAttributesInfoNVX sType(@EnumType(VkStructureType.class) int value) {
+    public VkMultiviewPerViewAttributesInfoNVX sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }

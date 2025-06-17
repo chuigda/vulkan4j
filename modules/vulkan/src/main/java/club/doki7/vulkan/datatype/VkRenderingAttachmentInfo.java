@@ -197,11 +197,11 @@ public record VkRenderingAttachmentInfo(@NotNull MemorySegment segment) implemen
         sType(VkStructureType.RENDERING_ATTACHMENT_INFO);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkRenderingAttachmentInfo sType(@EnumType(VkStructureType.class) int value) {
+    public VkRenderingAttachmentInfo sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }
@@ -232,20 +232,20 @@ public record VkRenderingAttachmentInfo(@NotNull MemorySegment segment) implemen
         return this;
     }
 
-    public @EnumType(VkImageLayout.class) int imageLayout() {
+    public @MagicConstant(valuesFromClass = VkImageLayout.class) int imageLayout() {
         return segment.get(LAYOUT$imageLayout, OFFSET$imageLayout);
     }
 
-    public VkRenderingAttachmentInfo imageLayout(@EnumType(VkImageLayout.class) int value) {
+    public VkRenderingAttachmentInfo imageLayout(@MagicConstant(valuesFromClass = VkImageLayout.class) int value) {
         segment.set(LAYOUT$imageLayout, OFFSET$imageLayout, value);
         return this;
     }
 
-    public @EnumType(VkResolveModeFlags.class) int resolveMode() {
+    public @MagicConstant(valuesFromClass = VkResolveModeFlags.class) int resolveMode() {
         return segment.get(LAYOUT$resolveMode, OFFSET$resolveMode);
     }
 
-    public VkRenderingAttachmentInfo resolveMode(@EnumType(VkResolveModeFlags.class) int value) {
+    public VkRenderingAttachmentInfo resolveMode(@MagicConstant(valuesFromClass = VkResolveModeFlags.class) int value) {
         segment.set(LAYOUT$resolveMode, OFFSET$resolveMode, value);
         return this;
     }
@@ -263,29 +263,29 @@ public record VkRenderingAttachmentInfo(@NotNull MemorySegment segment) implemen
         return this;
     }
 
-    public @EnumType(VkImageLayout.class) int resolveImageLayout() {
+    public @MagicConstant(valuesFromClass = VkImageLayout.class) int resolveImageLayout() {
         return segment.get(LAYOUT$resolveImageLayout, OFFSET$resolveImageLayout);
     }
 
-    public VkRenderingAttachmentInfo resolveImageLayout(@EnumType(VkImageLayout.class) int value) {
+    public VkRenderingAttachmentInfo resolveImageLayout(@MagicConstant(valuesFromClass = VkImageLayout.class) int value) {
         segment.set(LAYOUT$resolveImageLayout, OFFSET$resolveImageLayout, value);
         return this;
     }
 
-    public @EnumType(VkAttachmentLoadOp.class) int loadOp() {
+    public @MagicConstant(valuesFromClass = VkAttachmentLoadOp.class) int loadOp() {
         return segment.get(LAYOUT$loadOp, OFFSET$loadOp);
     }
 
-    public VkRenderingAttachmentInfo loadOp(@EnumType(VkAttachmentLoadOp.class) int value) {
+    public VkRenderingAttachmentInfo loadOp(@MagicConstant(valuesFromClass = VkAttachmentLoadOp.class) int value) {
         segment.set(LAYOUT$loadOp, OFFSET$loadOp, value);
         return this;
     }
 
-    public @EnumType(VkAttachmentStoreOp.class) int storeOp() {
+    public @MagicConstant(valuesFromClass = VkAttachmentStoreOp.class) int storeOp() {
         return segment.get(LAYOUT$storeOp, OFFSET$storeOp);
     }
 
-    public VkRenderingAttachmentInfo storeOp(@EnumType(VkAttachmentStoreOp.class) int value) {
+    public VkRenderingAttachmentInfo storeOp(@MagicConstant(valuesFromClass = VkAttachmentStoreOp.class) int value) {
         segment.set(LAYOUT$storeOp, OFFSET$storeOp, value);
         return this;
     }

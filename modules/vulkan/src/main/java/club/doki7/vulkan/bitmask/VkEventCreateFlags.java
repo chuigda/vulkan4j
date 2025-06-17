@@ -1,6 +1,7 @@
 package club.doki7.vulkan.bitmask;
 
 import club.doki7.ffm.annotation.*;
+import org.intellij.lang.annotations.MagicConstant;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -9,7 +10,7 @@ import java.util.List;
 public final class VkEventCreateFlags {
     public static final int DEVICE_ONLY = 0x1;
 
-    public static String explain(@EnumType(VkEventCreateFlags.class) int flags) {
+    public static String explain(@MagicConstant(flagsFromClass = VkEventCreateFlags.class) int flags) {
         List<String> detectedFlagBits = new ArrayList<>();
         if ((flags & DEVICE_ONLY) != 0) {
             detectedFlagBits.add("VK_EVENT_CREATE_DEVICE_ONLY_BIT");

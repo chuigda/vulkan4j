@@ -191,11 +191,11 @@ public record VkPipelineShaderStageNodeCreateInfoAMDX(@NotNull MemorySegment seg
         sType(VkStructureType.PIPELINE_SHADER_STAGE_NODE_CREATE_INFO_AMDX);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkPipelineShaderStageNodeCreateInfoAMDX sType(@EnumType(VkStructureType.class) int value) {
+    public VkPipelineShaderStageNodeCreateInfoAMDX sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }

@@ -193,11 +193,11 @@ public record VkVideoEncodeH264GopRemainingFrameInfoKHR(@NotNull MemorySegment s
         sType(VkStructureType.VIDEO_ENCODE_H264_GOP_REMAINING_FRAME_INFO_KHR);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkVideoEncodeH264GopRemainingFrameInfoKHR sType(@EnumType(VkStructureType.class) int value) {
+    public VkVideoEncodeH264GopRemainingFrameInfoKHR sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }

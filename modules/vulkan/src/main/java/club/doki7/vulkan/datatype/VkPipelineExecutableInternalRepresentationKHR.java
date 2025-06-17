@@ -194,11 +194,11 @@ public record VkPipelineExecutableInternalRepresentationKHR(@NotNull MemorySegme
         sType(VkStructureType.PIPELINE_EXECUTABLE_INTERNAL_REPRESENTATION_KHR);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkPipelineExecutableInternalRepresentationKHR sType(@EnumType(VkStructureType.class) int value) {
+    public VkPipelineExecutableInternalRepresentationKHR sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }

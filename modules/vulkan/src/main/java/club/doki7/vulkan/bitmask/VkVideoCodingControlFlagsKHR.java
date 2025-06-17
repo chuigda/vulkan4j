@@ -1,6 +1,7 @@
 package club.doki7.vulkan.bitmask;
 
 import club.doki7.ffm.annotation.*;
+import org.intellij.lang.annotations.MagicConstant;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,7 +12,7 @@ public final class VkVideoCodingControlFlagsKHR {
     public static final int ENCODE_RATE_CONTROL = 0x2;
     public static final int RESET = 0x1;
 
-    public static String explain(@EnumType(VkVideoCodingControlFlagsKHR.class) int flags) {
+    public static String explain(@MagicConstant(flagsFromClass = VkVideoCodingControlFlagsKHR.class) int flags) {
         List<String> detectedFlagBits = new ArrayList<>();
         if ((flags & ENCODE_QUALITY_LEVEL) != 0) {
             detectedFlagBits.add("VK_VIDEO_CODING_CONTROL_ENCODE_QUALITY_LEVEL_BIT_KHR");

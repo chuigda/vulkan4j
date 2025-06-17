@@ -201,11 +201,11 @@ public record VkShaderCreateInfoEXT(@NotNull MemorySegment segment) implements I
         sType(VkStructureType.SHADER_CREATE_INFO_EXT);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkShaderCreateInfoEXT sType(@EnumType(VkStructureType.class) int value) {
+    public VkShaderCreateInfoEXT sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }
@@ -223,38 +223,38 @@ public record VkShaderCreateInfoEXT(@NotNull MemorySegment segment) implements I
         return this;
     }
 
-    public @EnumType(VkShaderCreateFlagsEXT.class) int flags() {
+    public @MagicConstant(valuesFromClass = VkShaderCreateFlagsEXT.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public VkShaderCreateInfoEXT flags(@EnumType(VkShaderCreateFlagsEXT.class) int value) {
+    public VkShaderCreateInfoEXT flags(@MagicConstant(valuesFromClass = VkShaderCreateFlagsEXT.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
         return this;
     }
 
-    public @EnumType(VkShaderStageFlags.class) int stage() {
+    public @MagicConstant(valuesFromClass = VkShaderStageFlags.class) int stage() {
         return segment.get(LAYOUT$stage, OFFSET$stage);
     }
 
-    public VkShaderCreateInfoEXT stage(@EnumType(VkShaderStageFlags.class) int value) {
+    public VkShaderCreateInfoEXT stage(@MagicConstant(valuesFromClass = VkShaderStageFlags.class) int value) {
         segment.set(LAYOUT$stage, OFFSET$stage, value);
         return this;
     }
 
-    public @EnumType(VkShaderStageFlags.class) int nextStage() {
+    public @MagicConstant(valuesFromClass = VkShaderStageFlags.class) int nextStage() {
         return segment.get(LAYOUT$nextStage, OFFSET$nextStage);
     }
 
-    public VkShaderCreateInfoEXT nextStage(@EnumType(VkShaderStageFlags.class) int value) {
+    public VkShaderCreateInfoEXT nextStage(@MagicConstant(valuesFromClass = VkShaderStageFlags.class) int value) {
         segment.set(LAYOUT$nextStage, OFFSET$nextStage, value);
         return this;
     }
 
-    public @EnumType(VkShaderCodeTypeEXT.class) int codeType() {
+    public @MagicConstant(valuesFromClass = VkShaderCodeTypeEXT.class) int codeType() {
         return segment.get(LAYOUT$codeType, OFFSET$codeType);
     }
 
-    public VkShaderCreateInfoEXT codeType(@EnumType(VkShaderCodeTypeEXT.class) int value) {
+    public VkShaderCreateInfoEXT codeType(@MagicConstant(valuesFromClass = VkShaderCodeTypeEXT.class) int value) {
         segment.set(LAYOUT$codeType, OFFSET$codeType, value);
         return this;
     }

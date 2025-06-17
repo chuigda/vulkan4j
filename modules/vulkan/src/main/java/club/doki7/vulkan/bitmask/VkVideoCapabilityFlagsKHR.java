@@ -1,6 +1,7 @@
 package club.doki7.vulkan.bitmask;
 
 import club.doki7.ffm.annotation.*;
+import org.intellij.lang.annotations.MagicConstant;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,7 +11,7 @@ public final class VkVideoCapabilityFlagsKHR {
     public static final int PROTECTED_CONTENT = 0x1;
     public static final int SEPARATE_REFERENCE_IMAGES = 0x2;
 
-    public static String explain(@EnumType(VkVideoCapabilityFlagsKHR.class) int flags) {
+    public static String explain(@MagicConstant(flagsFromClass = VkVideoCapabilityFlagsKHR.class) int flags) {
         List<String> detectedFlagBits = new ArrayList<>();
         if ((flags & PROTECTED_CONTENT) != 0) {
             detectedFlagBits.add("VK_VIDEO_CAPABILITY_PROTECTED_CONTENT_BIT_KHR");

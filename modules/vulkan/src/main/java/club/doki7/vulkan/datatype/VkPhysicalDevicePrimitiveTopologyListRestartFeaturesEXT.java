@@ -191,11 +191,11 @@ public record VkPhysicalDevicePrimitiveTopologyListRestartFeaturesEXT(@NotNull M
         sType(VkStructureType.PHYSICAL_DEVICE_PRIMITIVE_TOPOLOGY_LIST_RESTART_FEATURES_EXT);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkPhysicalDevicePrimitiveTopologyListRestartFeaturesEXT sType(@EnumType(VkStructureType.class) int value) {
+    public VkPhysicalDevicePrimitiveTopologyListRestartFeaturesEXT sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }

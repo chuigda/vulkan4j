@@ -192,11 +192,11 @@ public record VkXcbSurfaceCreateInfoKHR(@NotNull MemorySegment segment) implemen
         sType(VkStructureType.XCB_SURFACE_CREATE_INFO_KHR);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkXcbSurfaceCreateInfoKHR sType(@EnumType(VkStructureType.class) int value) {
+    public VkXcbSurfaceCreateInfoKHR sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }
@@ -214,11 +214,11 @@ public record VkXcbSurfaceCreateInfoKHR(@NotNull MemorySegment segment) implemen
         return this;
     }
 
-    public @EnumType(VkXcbSurfaceCreateFlagsKHR.class) int flags() {
+    public @MagicConstant(valuesFromClass = VkXcbSurfaceCreateFlagsKHR.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public VkXcbSurfaceCreateInfoKHR flags(@EnumType(VkXcbSurfaceCreateFlagsKHR.class) int value) {
+    public VkXcbSurfaceCreateInfoKHR flags(@MagicConstant(valuesFromClass = VkXcbSurfaceCreateFlagsKHR.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
         return this;
     }

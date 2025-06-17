@@ -1,6 +1,7 @@
 package club.doki7.vulkan.bitmask;
 
 import club.doki7.ffm.annotation.*;
+import org.intellij.lang.annotations.MagicConstant;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,7 +16,7 @@ public final class VkDescriptorSetLayoutCreateFlags {
     public static final int PUSH_DESCRIPTOR = 0x1;
     public static final int UPDATE_AFTER_BIND_POOL = 0x2;
 
-    public static String explain(@EnumType(VkDescriptorSetLayoutCreateFlags.class) int flags) {
+    public static String explain(@MagicConstant(flagsFromClass = VkDescriptorSetLayoutCreateFlags.class) int flags) {
         List<String> detectedFlagBits = new ArrayList<>();
         if ((flags & DESCRIPTOR_BUFFER_EXT) != 0) {
             detectedFlagBits.add("VK_DESCRIPTOR_SET_LAYOUT_CREATE_DESCRIPTOR_BUFFER_BIT_EXT");

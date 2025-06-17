@@ -190,11 +190,11 @@ public record VkPhysicalDeviceDescriptorPoolOverallocationFeaturesNV(@NotNull Me
         sType(VkStructureType.PHYSICAL_DEVICE_DESCRIPTOR_POOL_OVERALLOCATION_FEATURES_NV);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkPhysicalDeviceDescriptorPoolOverallocationFeaturesNV sType(@EnumType(VkStructureType.class) int value) {
+    public VkPhysicalDeviceDescriptorPoolOverallocationFeaturesNV sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }

@@ -190,11 +190,11 @@ public record VkBindMemoryStatus(@NotNull MemorySegment segment) implements IVkB
         sType(VkStructureType.BIND_MEMORY_STATUS);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkBindMemoryStatus sType(@EnumType(VkStructureType.class) int value) {
+    public VkBindMemoryStatus sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }

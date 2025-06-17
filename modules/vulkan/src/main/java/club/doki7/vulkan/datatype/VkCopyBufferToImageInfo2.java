@@ -194,11 +194,11 @@ public record VkCopyBufferToImageInfo2(@NotNull MemorySegment segment) implement
         sType(VkStructureType.COPY_BUFFER_TO_IMAGE_INFO_2);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkCopyBufferToImageInfo2 sType(@EnumType(VkStructureType.class) int value) {
+    public VkCopyBufferToImageInfo2 sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }
@@ -242,11 +242,11 @@ public record VkCopyBufferToImageInfo2(@NotNull MemorySegment segment) implement
         return this;
     }
 
-    public @EnumType(VkImageLayout.class) int dstImageLayout() {
+    public @MagicConstant(valuesFromClass = VkImageLayout.class) int dstImageLayout() {
         return segment.get(LAYOUT$dstImageLayout, OFFSET$dstImageLayout);
     }
 
-    public VkCopyBufferToImageInfo2 dstImageLayout(@EnumType(VkImageLayout.class) int value) {
+    public VkCopyBufferToImageInfo2 dstImageLayout(@MagicConstant(valuesFromClass = VkImageLayout.class) int value) {
         segment.set(LAYOUT$dstImageLayout, OFFSET$dstImageLayout, value);
         return this;
     }

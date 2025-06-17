@@ -192,11 +192,11 @@ public record VkDebugReportCallbackCreateInfoEXT(@NotNull MemorySegment segment)
         sType(VkStructureType.DEBUG_REPORT_CALLBACK_CREATE_INFO_EXT);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkDebugReportCallbackCreateInfoEXT sType(@EnumType(VkStructureType.class) int value) {
+    public VkDebugReportCallbackCreateInfoEXT sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }
@@ -214,11 +214,11 @@ public record VkDebugReportCallbackCreateInfoEXT(@NotNull MemorySegment segment)
         return this;
     }
 
-    public @EnumType(VkDebugReportFlagsEXT.class) int flags() {
+    public @MagicConstant(valuesFromClass = VkDebugReportFlagsEXT.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public VkDebugReportCallbackCreateInfoEXT flags(@EnumType(VkDebugReportFlagsEXT.class) int value) {
+    public VkDebugReportCallbackCreateInfoEXT flags(@MagicConstant(valuesFromClass = VkDebugReportFlagsEXT.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
         return this;
     }

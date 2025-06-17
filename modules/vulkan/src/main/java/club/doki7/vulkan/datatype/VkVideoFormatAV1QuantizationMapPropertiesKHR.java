@@ -190,11 +190,11 @@ public record VkVideoFormatAV1QuantizationMapPropertiesKHR(@NotNull MemorySegmen
         sType(VkStructureType.VIDEO_FORMAT_AV1_QUANTIZATION_MAP_PROPERTIES_KHR);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkVideoFormatAV1QuantizationMapPropertiesKHR sType(@EnumType(VkStructureType.class) int value) {
+    public VkVideoFormatAV1QuantizationMapPropertiesKHR sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }
@@ -212,11 +212,11 @@ public record VkVideoFormatAV1QuantizationMapPropertiesKHR(@NotNull MemorySegmen
         return this;
     }
 
-    public @EnumType(VkVideoEncodeAV1SuperblockSizeFlagsKHR.class) int compatibleSuperblockSizes() {
+    public @MagicConstant(valuesFromClass = VkVideoEncodeAV1SuperblockSizeFlagsKHR.class) int compatibleSuperblockSizes() {
         return segment.get(LAYOUT$compatibleSuperblockSizes, OFFSET$compatibleSuperblockSizes);
     }
 
-    public VkVideoFormatAV1QuantizationMapPropertiesKHR compatibleSuperblockSizes(@EnumType(VkVideoEncodeAV1SuperblockSizeFlagsKHR.class) int value) {
+    public VkVideoFormatAV1QuantizationMapPropertiesKHR compatibleSuperblockSizes(@MagicConstant(valuesFromClass = VkVideoEncodeAV1SuperblockSizeFlagsKHR.class) int value) {
         segment.set(LAYOUT$compatibleSuperblockSizes, OFFSET$compatibleSuperblockSizes, value);
         return this;
     }

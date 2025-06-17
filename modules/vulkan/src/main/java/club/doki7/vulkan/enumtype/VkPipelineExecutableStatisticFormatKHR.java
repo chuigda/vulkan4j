@@ -1,6 +1,7 @@
 package club.doki7.vulkan.enumtype;
 
 import club.doki7.ffm.annotation.*;
+import org.intellij.lang.annotations.MagicConstant;
 
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPipelineExecutableStatisticFormatKHR.html"><code>VkPipelineExecutableStatisticFormatKHR</code></a>
 public final class VkPipelineExecutableStatisticFormatKHR {
@@ -9,7 +10,7 @@ public final class VkPipelineExecutableStatisticFormatKHR {
     public static final int UINT64 = 0x2;
     public static final int FLOAT64 = 0x3;
 
-    public static String explain(@EnumType(VkPipelineExecutableStatisticFormatKHR.class) int value) {
+    public static String explain(@MagicConstant(valuesFromClass = VkPipelineExecutableStatisticFormatKHR.class) int value) {
         return switch (value) {
             case VkPipelineExecutableStatisticFormatKHR.BOOL32 -> "VK_PIPELINE_EXECUTABLE_STATISTIC_FORMAT_BOOL32_KHR";
             case VkPipelineExecutableStatisticFormatKHR.FLOAT64 -> "VK_PIPELINE_EXECUTABLE_STATISTIC_FORMAT_FLOAT64_KHR";

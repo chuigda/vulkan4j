@@ -190,11 +190,11 @@ public record VkPhysicalDeviceZeroInitializeWorkgroupMemoryFeatures(@NotNull Mem
         sType(VkStructureType.PHYSICAL_DEVICE_ZERO_INITIALIZE_WORKGROUP_MEMORY_FEATURES);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkPhysicalDeviceZeroInitializeWorkgroupMemoryFeatures sType(@EnumType(VkStructureType.class) int value) {
+    public VkPhysicalDeviceZeroInitializeWorkgroupMemoryFeatures sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }

@@ -205,11 +205,11 @@ public record VkSwapchainCreateInfoKHR(@NotNull MemorySegment segment) implement
         sType(VkStructureType.SWAPCHAIN_CREATE_INFO_KHR);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkSwapchainCreateInfoKHR sType(@EnumType(VkStructureType.class) int value) {
+    public VkSwapchainCreateInfoKHR sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }
@@ -227,11 +227,11 @@ public record VkSwapchainCreateInfoKHR(@NotNull MemorySegment segment) implement
         return this;
     }
 
-    public @EnumType(VkSwapchainCreateFlagsKHR.class) int flags() {
+    public @MagicConstant(valuesFromClass = VkSwapchainCreateFlagsKHR.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public VkSwapchainCreateInfoKHR flags(@EnumType(VkSwapchainCreateFlagsKHR.class) int value) {
+    public VkSwapchainCreateInfoKHR flags(@MagicConstant(valuesFromClass = VkSwapchainCreateFlagsKHR.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
         return this;
     }
@@ -258,20 +258,20 @@ public record VkSwapchainCreateInfoKHR(@NotNull MemorySegment segment) implement
         return this;
     }
 
-    public @EnumType(VkFormat.class) int imageFormat() {
+    public @MagicConstant(valuesFromClass = VkFormat.class) int imageFormat() {
         return segment.get(LAYOUT$imageFormat, OFFSET$imageFormat);
     }
 
-    public VkSwapchainCreateInfoKHR imageFormat(@EnumType(VkFormat.class) int value) {
+    public VkSwapchainCreateInfoKHR imageFormat(@MagicConstant(valuesFromClass = VkFormat.class) int value) {
         segment.set(LAYOUT$imageFormat, OFFSET$imageFormat, value);
         return this;
     }
 
-    public @EnumType(VkColorSpaceKHR.class) int imageColorSpace() {
+    public @MagicConstant(valuesFromClass = VkColorSpaceKHR.class) int imageColorSpace() {
         return segment.get(LAYOUT$imageColorSpace, OFFSET$imageColorSpace);
     }
 
-    public VkSwapchainCreateInfoKHR imageColorSpace(@EnumType(VkColorSpaceKHR.class) int value) {
+    public VkSwapchainCreateInfoKHR imageColorSpace(@MagicConstant(valuesFromClass = VkColorSpaceKHR.class) int value) {
         segment.set(LAYOUT$imageColorSpace, OFFSET$imageColorSpace, value);
         return this;
     }
@@ -299,20 +299,20 @@ public record VkSwapchainCreateInfoKHR(@NotNull MemorySegment segment) implement
         return this;
     }
 
-    public @EnumType(VkImageUsageFlags.class) int imageUsage() {
+    public @MagicConstant(valuesFromClass = VkImageUsageFlags.class) int imageUsage() {
         return segment.get(LAYOUT$imageUsage, OFFSET$imageUsage);
     }
 
-    public VkSwapchainCreateInfoKHR imageUsage(@EnumType(VkImageUsageFlags.class) int value) {
+    public VkSwapchainCreateInfoKHR imageUsage(@MagicConstant(valuesFromClass = VkImageUsageFlags.class) int value) {
         segment.set(LAYOUT$imageUsage, OFFSET$imageUsage, value);
         return this;
     }
 
-    public @EnumType(VkSharingMode.class) int imageSharingMode() {
+    public @MagicConstant(valuesFromClass = VkSharingMode.class) int imageSharingMode() {
         return segment.get(LAYOUT$imageSharingMode, OFFSET$imageSharingMode);
     }
 
-    public VkSwapchainCreateInfoKHR imageSharingMode(@EnumType(VkSharingMode.class) int value) {
+    public VkSwapchainCreateInfoKHR imageSharingMode(@MagicConstant(valuesFromClass = VkSharingMode.class) int value) {
         segment.set(LAYOUT$imageSharingMode, OFFSET$imageSharingMode, value);
         return this;
     }
@@ -352,29 +352,29 @@ public record VkSwapchainCreateInfoKHR(@NotNull MemorySegment segment) implement
         segment.set(LAYOUT$pQueueFamilyIndices, OFFSET$pQueueFamilyIndices, value);
     }
 
-    public @EnumType(VkSurfaceTransformFlagsKHR.class) int preTransform() {
+    public @MagicConstant(valuesFromClass = VkSurfaceTransformFlagsKHR.class) int preTransform() {
         return segment.get(LAYOUT$preTransform, OFFSET$preTransform);
     }
 
-    public VkSwapchainCreateInfoKHR preTransform(@EnumType(VkSurfaceTransformFlagsKHR.class) int value) {
+    public VkSwapchainCreateInfoKHR preTransform(@MagicConstant(valuesFromClass = VkSurfaceTransformFlagsKHR.class) int value) {
         segment.set(LAYOUT$preTransform, OFFSET$preTransform, value);
         return this;
     }
 
-    public @EnumType(VkCompositeAlphaFlagsKHR.class) int compositeAlpha() {
+    public @MagicConstant(valuesFromClass = VkCompositeAlphaFlagsKHR.class) int compositeAlpha() {
         return segment.get(LAYOUT$compositeAlpha, OFFSET$compositeAlpha);
     }
 
-    public VkSwapchainCreateInfoKHR compositeAlpha(@EnumType(VkCompositeAlphaFlagsKHR.class) int value) {
+    public VkSwapchainCreateInfoKHR compositeAlpha(@MagicConstant(valuesFromClass = VkCompositeAlphaFlagsKHR.class) int value) {
         segment.set(LAYOUT$compositeAlpha, OFFSET$compositeAlpha, value);
         return this;
     }
 
-    public @EnumType(VkPresentModeKHR.class) int presentMode() {
+    public @MagicConstant(valuesFromClass = VkPresentModeKHR.class) int presentMode() {
         return segment.get(LAYOUT$presentMode, OFFSET$presentMode);
     }
 
-    public VkSwapchainCreateInfoKHR presentMode(@EnumType(VkPresentModeKHR.class) int value) {
+    public VkSwapchainCreateInfoKHR presentMode(@MagicConstant(valuesFromClass = VkPresentModeKHR.class) int value) {
         segment.set(LAYOUT$presentMode, OFFSET$presentMode, value);
         return this;
     }

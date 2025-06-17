@@ -191,11 +191,11 @@ public record VkSciSyncAttributesInfoNV(@NotNull MemorySegment segment) implemen
         sType(VkStructureType.SCI_SYNC_ATTRIBUTES_INFO_NV);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkSciSyncAttributesInfoNV sType(@EnumType(VkStructureType.class) int value) {
+    public VkSciSyncAttributesInfoNV sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }
@@ -213,20 +213,20 @@ public record VkSciSyncAttributesInfoNV(@NotNull MemorySegment segment) implemen
         return this;
     }
 
-    public @EnumType(VkSciSyncClientTypeNV.class) int clientType() {
+    public @MagicConstant(valuesFromClass = VkSciSyncClientTypeNV.class) int clientType() {
         return segment.get(LAYOUT$clientType, OFFSET$clientType);
     }
 
-    public VkSciSyncAttributesInfoNV clientType(@EnumType(VkSciSyncClientTypeNV.class) int value) {
+    public VkSciSyncAttributesInfoNV clientType(@MagicConstant(valuesFromClass = VkSciSyncClientTypeNV.class) int value) {
         segment.set(LAYOUT$clientType, OFFSET$clientType, value);
         return this;
     }
 
-    public @EnumType(VkSciSyncPrimitiveTypeNV.class) int primitiveType() {
+    public @MagicConstant(valuesFromClass = VkSciSyncPrimitiveTypeNV.class) int primitiveType() {
         return segment.get(LAYOUT$primitiveType, OFFSET$primitiveType);
     }
 
-    public VkSciSyncAttributesInfoNV primitiveType(@EnumType(VkSciSyncPrimitiveTypeNV.class) int value) {
+    public VkSciSyncAttributesInfoNV primitiveType(@MagicConstant(valuesFromClass = VkSciSyncPrimitiveTypeNV.class) int value) {
         segment.set(LAYOUT$primitiveType, OFFSET$primitiveType, value);
         return this;
     }

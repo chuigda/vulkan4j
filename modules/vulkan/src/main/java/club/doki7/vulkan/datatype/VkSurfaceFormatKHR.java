@@ -170,20 +170,20 @@ public record VkSurfaceFormatKHR(@NotNull MemorySegment segment) implements IVkS
         return ret;
     }
 
-    public @EnumType(VkFormat.class) int format() {
+    public @MagicConstant(valuesFromClass = VkFormat.class) int format() {
         return segment.get(LAYOUT$format, OFFSET$format);
     }
 
-    public VkSurfaceFormatKHR format(@EnumType(VkFormat.class) int value) {
+    public VkSurfaceFormatKHR format(@MagicConstant(valuesFromClass = VkFormat.class) int value) {
         segment.set(LAYOUT$format, OFFSET$format, value);
         return this;
     }
 
-    public @EnumType(VkColorSpaceKHR.class) int colorSpace() {
+    public @MagicConstant(valuesFromClass = VkColorSpaceKHR.class) int colorSpace() {
         return segment.get(LAYOUT$colorSpace, OFFSET$colorSpace);
     }
 
-    public VkSurfaceFormatKHR colorSpace(@EnumType(VkColorSpaceKHR.class) int value) {
+    public VkSurfaceFormatKHR colorSpace(@MagicConstant(valuesFromClass = VkColorSpaceKHR.class) int value) {
         segment.set(LAYOUT$colorSpace, OFFSET$colorSpace, value);
         return this;
     }

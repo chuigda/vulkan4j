@@ -192,11 +192,11 @@ public record VkPhysicalDeviceShaderBfloat16FeaturesKHR(@NotNull MemorySegment s
         sType(VkStructureType.PHYSICAL_DEVICE_SHADER_BFLOAT16_FEATURES_KHR);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkPhysicalDeviceShaderBfloat16FeaturesKHR sType(@EnumType(VkStructureType.class) int value) {
+    public VkPhysicalDeviceShaderBfloat16FeaturesKHR sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }

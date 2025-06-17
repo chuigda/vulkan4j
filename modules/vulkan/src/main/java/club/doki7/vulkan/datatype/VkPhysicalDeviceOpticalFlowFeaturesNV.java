@@ -190,11 +190,11 @@ public record VkPhysicalDeviceOpticalFlowFeaturesNV(@NotNull MemorySegment segme
         sType(VkStructureType.PHYSICAL_DEVICE_OPTICAL_FLOW_FEATURES_NV);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkPhysicalDeviceOpticalFlowFeaturesNV sType(@EnumType(VkStructureType.class) int value) {
+    public VkPhysicalDeviceOpticalFlowFeaturesNV sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }

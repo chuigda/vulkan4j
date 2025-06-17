@@ -194,11 +194,11 @@ public record VkVideoEncodeAV1RateControlInfoKHR(@NotNull MemorySegment segment)
         sType(VkStructureType.VIDEO_ENCODE_AV1_RATE_CONTROL_INFO_KHR);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkVideoEncodeAV1RateControlInfoKHR sType(@EnumType(VkStructureType.class) int value) {
+    public VkVideoEncodeAV1RateControlInfoKHR sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }
@@ -216,11 +216,11 @@ public record VkVideoEncodeAV1RateControlInfoKHR(@NotNull MemorySegment segment)
         return this;
     }
 
-    public @EnumType(VkVideoEncodeAV1RateControlFlagsKHR.class) int flags() {
+    public @MagicConstant(valuesFromClass = VkVideoEncodeAV1RateControlFlagsKHR.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public VkVideoEncodeAV1RateControlInfoKHR flags(@EnumType(VkVideoEncodeAV1RateControlFlagsKHR.class) int value) {
+    public VkVideoEncodeAV1RateControlInfoKHR flags(@MagicConstant(valuesFromClass = VkVideoEncodeAV1RateControlFlagsKHR.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
         return this;
     }

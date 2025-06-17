@@ -171,29 +171,29 @@ public record VkFormatProperties(@NotNull MemorySegment segment) implements IVkF
         return ret;
     }
 
-    public @EnumType(VkFormatFeatureFlags.class) int linearTilingFeatures() {
+    public @MagicConstant(valuesFromClass = VkFormatFeatureFlags.class) int linearTilingFeatures() {
         return segment.get(LAYOUT$linearTilingFeatures, OFFSET$linearTilingFeatures);
     }
 
-    public VkFormatProperties linearTilingFeatures(@EnumType(VkFormatFeatureFlags.class) int value) {
+    public VkFormatProperties linearTilingFeatures(@MagicConstant(valuesFromClass = VkFormatFeatureFlags.class) int value) {
         segment.set(LAYOUT$linearTilingFeatures, OFFSET$linearTilingFeatures, value);
         return this;
     }
 
-    public @EnumType(VkFormatFeatureFlags.class) int optimalTilingFeatures() {
+    public @MagicConstant(valuesFromClass = VkFormatFeatureFlags.class) int optimalTilingFeatures() {
         return segment.get(LAYOUT$optimalTilingFeatures, OFFSET$optimalTilingFeatures);
     }
 
-    public VkFormatProperties optimalTilingFeatures(@EnumType(VkFormatFeatureFlags.class) int value) {
+    public VkFormatProperties optimalTilingFeatures(@MagicConstant(valuesFromClass = VkFormatFeatureFlags.class) int value) {
         segment.set(LAYOUT$optimalTilingFeatures, OFFSET$optimalTilingFeatures, value);
         return this;
     }
 
-    public @EnumType(VkFormatFeatureFlags.class) int bufferFeatures() {
+    public @MagicConstant(valuesFromClass = VkFormatFeatureFlags.class) int bufferFeatures() {
         return segment.get(LAYOUT$bufferFeatures, OFFSET$bufferFeatures);
     }
 
-    public VkFormatProperties bufferFeatures(@EnumType(VkFormatFeatureFlags.class) int value) {
+    public VkFormatProperties bufferFeatures(@MagicConstant(valuesFromClass = VkFormatFeatureFlags.class) int value) {
         segment.set(LAYOUT$bufferFeatures, OFFSET$bufferFeatures, value);
         return this;
     }

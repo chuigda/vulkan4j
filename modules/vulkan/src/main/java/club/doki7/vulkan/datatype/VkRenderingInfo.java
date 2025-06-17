@@ -197,11 +197,11 @@ public record VkRenderingInfo(@NotNull MemorySegment segment) implements IVkRend
         sType(VkStructureType.RENDERING_INFO);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkRenderingInfo sType(@EnumType(VkStructureType.class) int value) {
+    public VkRenderingInfo sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }
@@ -219,11 +219,11 @@ public record VkRenderingInfo(@NotNull MemorySegment segment) implements IVkRend
         return this;
     }
 
-    public @EnumType(VkRenderingFlags.class) int flags() {
+    public @MagicConstant(valuesFromClass = VkRenderingFlags.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public VkRenderingInfo flags(@EnumType(VkRenderingFlags.class) int value) {
+    public VkRenderingInfo flags(@MagicConstant(valuesFromClass = VkRenderingFlags.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
         return this;
     }

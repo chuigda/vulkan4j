@@ -194,11 +194,11 @@ public record VkSurfacePresentScalingCapabilitiesEXT(@NotNull MemorySegment segm
         sType(VkStructureType.SURFACE_PRESENT_SCALING_CAPABILITIES_EXT);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkSurfacePresentScalingCapabilitiesEXT sType(@EnumType(VkStructureType.class) int value) {
+    public VkSurfacePresentScalingCapabilitiesEXT sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }
@@ -216,29 +216,29 @@ public record VkSurfacePresentScalingCapabilitiesEXT(@NotNull MemorySegment segm
         return this;
     }
 
-    public @EnumType(VkPresentScalingFlagsEXT.class) int supportedPresentScaling() {
+    public @MagicConstant(valuesFromClass = VkPresentScalingFlagsEXT.class) int supportedPresentScaling() {
         return segment.get(LAYOUT$supportedPresentScaling, OFFSET$supportedPresentScaling);
     }
 
-    public VkSurfacePresentScalingCapabilitiesEXT supportedPresentScaling(@EnumType(VkPresentScalingFlagsEXT.class) int value) {
+    public VkSurfacePresentScalingCapabilitiesEXT supportedPresentScaling(@MagicConstant(valuesFromClass = VkPresentScalingFlagsEXT.class) int value) {
         segment.set(LAYOUT$supportedPresentScaling, OFFSET$supportedPresentScaling, value);
         return this;
     }
 
-    public @EnumType(VkPresentGravityFlagsEXT.class) int supportedPresentGravityX() {
+    public @MagicConstant(valuesFromClass = VkPresentGravityFlagsEXT.class) int supportedPresentGravityX() {
         return segment.get(LAYOUT$supportedPresentGravityX, OFFSET$supportedPresentGravityX);
     }
 
-    public VkSurfacePresentScalingCapabilitiesEXT supportedPresentGravityX(@EnumType(VkPresentGravityFlagsEXT.class) int value) {
+    public VkSurfacePresentScalingCapabilitiesEXT supportedPresentGravityX(@MagicConstant(valuesFromClass = VkPresentGravityFlagsEXT.class) int value) {
         segment.set(LAYOUT$supportedPresentGravityX, OFFSET$supportedPresentGravityX, value);
         return this;
     }
 
-    public @EnumType(VkPresentGravityFlagsEXT.class) int supportedPresentGravityY() {
+    public @MagicConstant(valuesFromClass = VkPresentGravityFlagsEXT.class) int supportedPresentGravityY() {
         return segment.get(LAYOUT$supportedPresentGravityY, OFFSET$supportedPresentGravityY);
     }
 
-    public VkSurfacePresentScalingCapabilitiesEXT supportedPresentGravityY(@EnumType(VkPresentGravityFlagsEXT.class) int value) {
+    public VkSurfacePresentScalingCapabilitiesEXT supportedPresentGravityY(@MagicConstant(valuesFromClass = VkPresentGravityFlagsEXT.class) int value) {
         segment.set(LAYOUT$supportedPresentGravityY, OFFSET$supportedPresentGravityY, value);
         return this;
     }

@@ -192,11 +192,11 @@ public record VkBindImageMemoryInfo(@NotNull MemorySegment segment) implements I
         sType(VkStructureType.BIND_IMAGE_MEMORY_INFO);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkBindImageMemoryInfo sType(@EnumType(VkStructureType.class) int value) {
+    public VkBindImageMemoryInfo sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }

@@ -191,11 +191,11 @@ public record VkPhysicalDeviceMultiviewProperties(@NotNull MemorySegment segment
         sType(VkStructureType.PHYSICAL_DEVICE_MULTIVIEW_PROPERTIES);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkPhysicalDeviceMultiviewProperties sType(@EnumType(VkStructureType.class) int value) {
+    public VkPhysicalDeviceMultiviewProperties sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }

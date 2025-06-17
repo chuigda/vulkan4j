@@ -191,11 +191,11 @@ public record VkPhysicalDeviceExternalComputeQueuePropertiesNV(@NotNull MemorySe
         sType(VkStructureType.PHYSICAL_DEVICE_EXTERNAL_COMPUTE_QUEUE_PROPERTIES_NV);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkPhysicalDeviceExternalComputeQueuePropertiesNV sType(@EnumType(VkStructureType.class) int value) {
+    public VkPhysicalDeviceExternalComputeQueuePropertiesNV sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }

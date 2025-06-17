@@ -192,11 +192,11 @@ public record VkVideoEncodeUsageInfoKHR(@NotNull MemorySegment segment) implemen
         sType(VkStructureType.VIDEO_ENCODE_USAGE_INFO_KHR);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkVideoEncodeUsageInfoKHR sType(@EnumType(VkStructureType.class) int value) {
+    public VkVideoEncodeUsageInfoKHR sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }
@@ -214,29 +214,29 @@ public record VkVideoEncodeUsageInfoKHR(@NotNull MemorySegment segment) implemen
         return this;
     }
 
-    public @EnumType(VkVideoEncodeUsageFlagsKHR.class) int videoUsageHints() {
+    public @MagicConstant(valuesFromClass = VkVideoEncodeUsageFlagsKHR.class) int videoUsageHints() {
         return segment.get(LAYOUT$videoUsageHints, OFFSET$videoUsageHints);
     }
 
-    public VkVideoEncodeUsageInfoKHR videoUsageHints(@EnumType(VkVideoEncodeUsageFlagsKHR.class) int value) {
+    public VkVideoEncodeUsageInfoKHR videoUsageHints(@MagicConstant(valuesFromClass = VkVideoEncodeUsageFlagsKHR.class) int value) {
         segment.set(LAYOUT$videoUsageHints, OFFSET$videoUsageHints, value);
         return this;
     }
 
-    public @EnumType(VkVideoEncodeContentFlagsKHR.class) int videoContentHints() {
+    public @MagicConstant(valuesFromClass = VkVideoEncodeContentFlagsKHR.class) int videoContentHints() {
         return segment.get(LAYOUT$videoContentHints, OFFSET$videoContentHints);
     }
 
-    public VkVideoEncodeUsageInfoKHR videoContentHints(@EnumType(VkVideoEncodeContentFlagsKHR.class) int value) {
+    public VkVideoEncodeUsageInfoKHR videoContentHints(@MagicConstant(valuesFromClass = VkVideoEncodeContentFlagsKHR.class) int value) {
         segment.set(LAYOUT$videoContentHints, OFFSET$videoContentHints, value);
         return this;
     }
 
-    public @EnumType(VkVideoEncodeTuningModeKHR.class) int tuningMode() {
+    public @MagicConstant(valuesFromClass = VkVideoEncodeTuningModeKHR.class) int tuningMode() {
         return segment.get(LAYOUT$tuningMode, OFFSET$tuningMode);
     }
 
-    public VkVideoEncodeUsageInfoKHR tuningMode(@EnumType(VkVideoEncodeTuningModeKHR.class) int value) {
+    public VkVideoEncodeUsageInfoKHR tuningMode(@MagicConstant(valuesFromClass = VkVideoEncodeTuningModeKHR.class) int value) {
         segment.set(LAYOUT$tuningMode, OFFSET$tuningMode, value);
         return this;
     }

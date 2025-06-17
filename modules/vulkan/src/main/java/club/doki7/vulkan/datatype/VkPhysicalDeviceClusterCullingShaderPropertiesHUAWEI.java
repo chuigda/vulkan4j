@@ -193,11 +193,11 @@ public record VkPhysicalDeviceClusterCullingShaderPropertiesHUAWEI(@NotNull Memo
         sType(VkStructureType.PHYSICAL_DEVICE_CLUSTER_CULLING_SHADER_PROPERTIES_HUAWEI);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkPhysicalDeviceClusterCullingShaderPropertiesHUAWEI sType(@EnumType(VkStructureType.class) int value) {
+    public VkPhysicalDeviceClusterCullingShaderPropertiesHUAWEI sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }

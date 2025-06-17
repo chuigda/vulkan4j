@@ -192,11 +192,11 @@ public record VkPhysicalDeviceExternalBufferInfo(@NotNull MemorySegment segment)
         sType(VkStructureType.PHYSICAL_DEVICE_EXTERNAL_BUFFER_INFO);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkPhysicalDeviceExternalBufferInfo sType(@EnumType(VkStructureType.class) int value) {
+    public VkPhysicalDeviceExternalBufferInfo sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }
@@ -214,29 +214,29 @@ public record VkPhysicalDeviceExternalBufferInfo(@NotNull MemorySegment segment)
         return this;
     }
 
-    public @EnumType(VkBufferCreateFlags.class) int flags() {
+    public @MagicConstant(valuesFromClass = VkBufferCreateFlags.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public VkPhysicalDeviceExternalBufferInfo flags(@EnumType(VkBufferCreateFlags.class) int value) {
+    public VkPhysicalDeviceExternalBufferInfo flags(@MagicConstant(valuesFromClass = VkBufferCreateFlags.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
         return this;
     }
 
-    public @EnumType(VkBufferUsageFlags.class) int usage() {
+    public @MagicConstant(valuesFromClass = VkBufferUsageFlags.class) int usage() {
         return segment.get(LAYOUT$usage, OFFSET$usage);
     }
 
-    public VkPhysicalDeviceExternalBufferInfo usage(@EnumType(VkBufferUsageFlags.class) int value) {
+    public VkPhysicalDeviceExternalBufferInfo usage(@MagicConstant(valuesFromClass = VkBufferUsageFlags.class) int value) {
         segment.set(LAYOUT$usage, OFFSET$usage, value);
         return this;
     }
 
-    public @EnumType(VkExternalMemoryHandleTypeFlags.class) int handleType() {
+    public @MagicConstant(valuesFromClass = VkExternalMemoryHandleTypeFlags.class) int handleType() {
         return segment.get(LAYOUT$handleType, OFFSET$handleType);
     }
 
-    public VkPhysicalDeviceExternalBufferInfo handleType(@EnumType(VkExternalMemoryHandleTypeFlags.class) int value) {
+    public VkPhysicalDeviceExternalBufferInfo handleType(@MagicConstant(valuesFromClass = VkExternalMemoryHandleTypeFlags.class) int value) {
         segment.set(LAYOUT$handleType, OFFSET$handleType, value);
         return this;
     }

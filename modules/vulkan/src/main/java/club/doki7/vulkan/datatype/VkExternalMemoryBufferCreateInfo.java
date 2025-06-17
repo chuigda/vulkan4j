@@ -190,11 +190,11 @@ public record VkExternalMemoryBufferCreateInfo(@NotNull MemorySegment segment) i
         sType(VkStructureType.EXTERNAL_MEMORY_BUFFER_CREATE_INFO);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkExternalMemoryBufferCreateInfo sType(@EnumType(VkStructureType.class) int value) {
+    public VkExternalMemoryBufferCreateInfo sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }
@@ -212,11 +212,11 @@ public record VkExternalMemoryBufferCreateInfo(@NotNull MemorySegment segment) i
         return this;
     }
 
-    public @EnumType(VkExternalMemoryHandleTypeFlags.class) int handleTypes() {
+    public @MagicConstant(valuesFromClass = VkExternalMemoryHandleTypeFlags.class) int handleTypes() {
         return segment.get(LAYOUT$handleTypes, OFFSET$handleTypes);
     }
 
-    public VkExternalMemoryBufferCreateInfo handleTypes(@EnumType(VkExternalMemoryHandleTypeFlags.class) int value) {
+    public VkExternalMemoryBufferCreateInfo handleTypes(@MagicConstant(valuesFromClass = VkExternalMemoryHandleTypeFlags.class) int value) {
         segment.set(LAYOUT$handleTypes, OFFSET$handleTypes, value);
         return this;
     }

@@ -1,6 +1,7 @@
 package club.doki7.vulkan.enumtype;
 
 import club.doki7.ffm.annotation.*;
+import org.intellij.lang.annotations.MagicConstant;
 
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkBlendOp.html"><code>VkBlendOp</code></a>
 public final class VkBlendOp {
@@ -56,7 +57,7 @@ public final class VkBlendOp {
     public static final int GREEN_EXT = 0x3b9d0c4c;
     public static final int BLUE_EXT = 0x3b9d0c4d;
 
-    public static String explain(@EnumType(VkBlendOp.class) int value) {
+    public static String explain(@MagicConstant(valuesFromClass = VkBlendOp.class) int value) {
         return switch (value) {
             case VkBlendOp.ADD -> "VK_BLEND_OP_ADD";
             case VkBlendOp.BLUE_EXT -> "VK_BLEND_OP_BLUE_EXT";

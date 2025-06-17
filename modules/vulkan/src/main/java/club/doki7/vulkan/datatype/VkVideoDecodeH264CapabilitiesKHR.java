@@ -191,11 +191,11 @@ public record VkVideoDecodeH264CapabilitiesKHR(@NotNull MemorySegment segment) i
         sType(VkStructureType.VIDEO_DECODE_H264_CAPABILITIES_KHR);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkVideoDecodeH264CapabilitiesKHR sType(@EnumType(VkStructureType.class) int value) {
+    public VkVideoDecodeH264CapabilitiesKHR sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }
@@ -213,11 +213,11 @@ public record VkVideoDecodeH264CapabilitiesKHR(@NotNull MemorySegment segment) i
         return this;
     }
 
-    public @EnumType(StdVideoH264LevelIdc.class) int maxLevelIdc() {
+    public @MagicConstant(valuesFromClass = StdVideoH264LevelIdc.class) int maxLevelIdc() {
         return segment.get(LAYOUT$maxLevelIdc, OFFSET$maxLevelIdc);
     }
 
-    public VkVideoDecodeH264CapabilitiesKHR maxLevelIdc(@EnumType(StdVideoH264LevelIdc.class) int value) {
+    public VkVideoDecodeH264CapabilitiesKHR maxLevelIdc(@MagicConstant(valuesFromClass = StdVideoH264LevelIdc.class) int value) {
         segment.set(LAYOUT$maxLevelIdc, OFFSET$maxLevelIdc, value);
         return this;
     }

@@ -1,6 +1,7 @@
 package club.doki7.vulkan.bitmask;
 
 import club.doki7.ffm.annotation.*;
+import org.intellij.lang.annotations.MagicConstant;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,7 +12,7 @@ public final class VkVideoEncodeFeedbackFlagsKHR {
     public static final int BITSTREAM_BYTES_WRITTEN = 0x2;
     public static final int BITSTREAM_HAS_OVERRIDES = 0x4;
 
-    public static String explain(@EnumType(VkVideoEncodeFeedbackFlagsKHR.class) int flags) {
+    public static String explain(@MagicConstant(flagsFromClass = VkVideoEncodeFeedbackFlagsKHR.class) int flags) {
         List<String> detectedFlagBits = new ArrayList<>();
         if ((flags & BITSTREAM_BUFFER_OFFSET) != 0) {
             detectedFlagBits.add("VK_VIDEO_ENCODE_FEEDBACK_BITSTREAM_BUFFER_OFFSET_BIT_KHR");

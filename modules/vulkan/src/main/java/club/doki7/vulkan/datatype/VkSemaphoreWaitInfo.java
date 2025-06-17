@@ -193,11 +193,11 @@ public record VkSemaphoreWaitInfo(@NotNull MemorySegment segment) implements IVk
         sType(VkStructureType.SEMAPHORE_WAIT_INFO);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkSemaphoreWaitInfo sType(@EnumType(VkStructureType.class) int value) {
+    public VkSemaphoreWaitInfo sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }
@@ -215,11 +215,11 @@ public record VkSemaphoreWaitInfo(@NotNull MemorySegment segment) implements IVk
         return this;
     }
 
-    public @EnumType(VkSemaphoreWaitFlags.class) int flags() {
+    public @MagicConstant(valuesFromClass = VkSemaphoreWaitFlags.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public VkSemaphoreWaitInfo flags(@EnumType(VkSemaphoreWaitFlags.class) int value) {
+    public VkSemaphoreWaitInfo flags(@MagicConstant(valuesFromClass = VkSemaphoreWaitFlags.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
         return this;
     }

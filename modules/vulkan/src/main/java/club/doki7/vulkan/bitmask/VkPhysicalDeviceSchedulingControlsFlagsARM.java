@@ -1,6 +1,7 @@
 package club.doki7.vulkan.bitmask;
 
 import club.doki7.ffm.annotation.*;
+import org.intellij.lang.annotations.MagicConstant;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -9,7 +10,7 @@ import java.util.List;
 public final class VkPhysicalDeviceSchedulingControlsFlagsARM {
     public static final long SHADER_CORE_COUNT = 0x1L;
 
-    public static String explain(@EnumType(VkPhysicalDeviceSchedulingControlsFlagsARM.class) long flags) {
+    public static String explain(@MagicConstant(flagsFromClass = VkPhysicalDeviceSchedulingControlsFlagsARM.class) long flags) {
         List<String> detectedFlagBits = new ArrayList<>();
         if ((flags & SHADER_CORE_COUNT) != 0) {
             detectedFlagBits.add("VK_PHYSICAL_DEVICE_SCHEDULING_CONTROLS_SHADER_CORE_COUNT_ARM");

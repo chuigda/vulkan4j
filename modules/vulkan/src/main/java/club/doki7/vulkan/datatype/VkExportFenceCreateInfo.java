@@ -190,11 +190,11 @@ public record VkExportFenceCreateInfo(@NotNull MemorySegment segment) implements
         sType(VkStructureType.EXPORT_FENCE_CREATE_INFO);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkExportFenceCreateInfo sType(@EnumType(VkStructureType.class) int value) {
+    public VkExportFenceCreateInfo sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }
@@ -212,11 +212,11 @@ public record VkExportFenceCreateInfo(@NotNull MemorySegment segment) implements
         return this;
     }
 
-    public @EnumType(VkExternalFenceHandleTypeFlags.class) int handleTypes() {
+    public @MagicConstant(valuesFromClass = VkExternalFenceHandleTypeFlags.class) int handleTypes() {
         return segment.get(LAYOUT$handleTypes, OFFSET$handleTypes);
     }
 
-    public VkExportFenceCreateInfo handleTypes(@EnumType(VkExternalFenceHandleTypeFlags.class) int value) {
+    public VkExportFenceCreateInfo handleTypes(@MagicConstant(valuesFromClass = VkExternalFenceHandleTypeFlags.class) int value) {
         segment.set(LAYOUT$handleTypes, OFFSET$handleTypes, value);
         return this;
     }

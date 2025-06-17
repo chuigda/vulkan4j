@@ -191,11 +191,11 @@ public record VkAmigoProfilingSubmitInfoSEC(@NotNull MemorySegment segment) impl
         sType(VkStructureType.AMIGO_PROFILING_SUBMIT_INFO_SEC);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkAmigoProfilingSubmitInfoSEC sType(@EnumType(VkStructureType.class) int value) {
+    public VkAmigoProfilingSubmitInfoSEC sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }

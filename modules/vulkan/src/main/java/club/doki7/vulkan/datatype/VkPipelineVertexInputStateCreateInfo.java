@@ -194,11 +194,11 @@ public record VkPipelineVertexInputStateCreateInfo(@NotNull MemorySegment segmen
         sType(VkStructureType.PIPELINE_VERTEX_INPUT_STATE_CREATE_INFO);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkPipelineVertexInputStateCreateInfo sType(@EnumType(VkStructureType.class) int value) {
+    public VkPipelineVertexInputStateCreateInfo sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }
@@ -216,11 +216,11 @@ public record VkPipelineVertexInputStateCreateInfo(@NotNull MemorySegment segmen
         return this;
     }
 
-    public @EnumType(VkPipelineVertexInputStateCreateFlags.class) int flags() {
+    public @MagicConstant(valuesFromClass = VkPipelineVertexInputStateCreateFlags.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public VkPipelineVertexInputStateCreateInfo flags(@EnumType(VkPipelineVertexInputStateCreateFlags.class) int value) {
+    public VkPipelineVertexInputStateCreateInfo flags(@MagicConstant(valuesFromClass = VkPipelineVertexInputStateCreateFlags.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
         return this;
     }

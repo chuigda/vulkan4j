@@ -190,11 +190,11 @@ public record VkPhysicalDeviceExternalSemaphoreInfo(@NotNull MemorySegment segme
         sType(VkStructureType.PHYSICAL_DEVICE_EXTERNAL_SEMAPHORE_INFO);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkPhysicalDeviceExternalSemaphoreInfo sType(@EnumType(VkStructureType.class) int value) {
+    public VkPhysicalDeviceExternalSemaphoreInfo sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }
@@ -212,11 +212,11 @@ public record VkPhysicalDeviceExternalSemaphoreInfo(@NotNull MemorySegment segme
         return this;
     }
 
-    public @EnumType(VkExternalSemaphoreHandleTypeFlags.class) int handleType() {
+    public @MagicConstant(valuesFromClass = VkExternalSemaphoreHandleTypeFlags.class) int handleType() {
         return segment.get(LAYOUT$handleType, OFFSET$handleType);
     }
 
-    public VkPhysicalDeviceExternalSemaphoreInfo handleType(@EnumType(VkExternalSemaphoreHandleTypeFlags.class) int value) {
+    public VkPhysicalDeviceExternalSemaphoreInfo handleType(@MagicConstant(valuesFromClass = VkExternalSemaphoreHandleTypeFlags.class) int value) {
         segment.set(LAYOUT$handleType, OFFSET$handleType, value);
         return this;
     }

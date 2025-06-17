@@ -192,11 +192,11 @@ public record VkPhysicalDeviceExtendedSparseAddressSpacePropertiesNV(@NotNull Me
         sType(VkStructureType.PHYSICAL_DEVICE_EXTENDED_SPARSE_ADDRESS_SPACE_PROPERTIES_NV);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkPhysicalDeviceExtendedSparseAddressSpacePropertiesNV sType(@EnumType(VkStructureType.class) int value) {
+    public VkPhysicalDeviceExtendedSparseAddressSpacePropertiesNV sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }
@@ -223,20 +223,20 @@ public record VkPhysicalDeviceExtendedSparseAddressSpacePropertiesNV(@NotNull Me
         return this;
     }
 
-    public @EnumType(VkImageUsageFlags.class) int extendedSparseImageUsageFlags() {
+    public @MagicConstant(valuesFromClass = VkImageUsageFlags.class) int extendedSparseImageUsageFlags() {
         return segment.get(LAYOUT$extendedSparseImageUsageFlags, OFFSET$extendedSparseImageUsageFlags);
     }
 
-    public VkPhysicalDeviceExtendedSparseAddressSpacePropertiesNV extendedSparseImageUsageFlags(@EnumType(VkImageUsageFlags.class) int value) {
+    public VkPhysicalDeviceExtendedSparseAddressSpacePropertiesNV extendedSparseImageUsageFlags(@MagicConstant(valuesFromClass = VkImageUsageFlags.class) int value) {
         segment.set(LAYOUT$extendedSparseImageUsageFlags, OFFSET$extendedSparseImageUsageFlags, value);
         return this;
     }
 
-    public @EnumType(VkBufferUsageFlags.class) int extendedSparseBufferUsageFlags() {
+    public @MagicConstant(valuesFromClass = VkBufferUsageFlags.class) int extendedSparseBufferUsageFlags() {
         return segment.get(LAYOUT$extendedSparseBufferUsageFlags, OFFSET$extendedSparseBufferUsageFlags);
     }
 
-    public VkPhysicalDeviceExtendedSparseAddressSpacePropertiesNV extendedSparseBufferUsageFlags(@EnumType(VkBufferUsageFlags.class) int value) {
+    public VkPhysicalDeviceExtendedSparseAddressSpacePropertiesNV extendedSparseBufferUsageFlags(@MagicConstant(valuesFromClass = VkBufferUsageFlags.class) int value) {
         segment.set(LAYOUT$extendedSparseBufferUsageFlags, OFFSET$extendedSparseBufferUsageFlags, value);
         return this;
     }

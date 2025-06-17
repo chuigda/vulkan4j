@@ -190,11 +190,11 @@ public record VkPipelinePropertiesIdentifierEXT(@NotNull MemorySegment segment) 
         sType(VkStructureType.PIPELINE_PROPERTIES_IDENTIFIER_EXT);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkPipelinePropertiesIdentifierEXT sType(@EnumType(VkStructureType.class) int value) {
+    public VkPipelinePropertiesIdentifierEXT sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }

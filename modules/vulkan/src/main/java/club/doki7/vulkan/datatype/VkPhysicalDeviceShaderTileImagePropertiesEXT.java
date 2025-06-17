@@ -192,11 +192,11 @@ public record VkPhysicalDeviceShaderTileImagePropertiesEXT(@NotNull MemorySegmen
         sType(VkStructureType.PHYSICAL_DEVICE_SHADER_TILE_IMAGE_PROPERTIES_EXT);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkPhysicalDeviceShaderTileImagePropertiesEXT sType(@EnumType(VkStructureType.class) int value) {
+    public VkPhysicalDeviceShaderTileImagePropertiesEXT sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }

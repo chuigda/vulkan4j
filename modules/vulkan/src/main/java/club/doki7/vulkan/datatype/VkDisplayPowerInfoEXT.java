@@ -190,11 +190,11 @@ public record VkDisplayPowerInfoEXT(@NotNull MemorySegment segment) implements I
         sType(VkStructureType.DISPLAY_POWER_INFO_EXT);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkDisplayPowerInfoEXT sType(@EnumType(VkStructureType.class) int value) {
+    public VkDisplayPowerInfoEXT sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }
@@ -212,11 +212,11 @@ public record VkDisplayPowerInfoEXT(@NotNull MemorySegment segment) implements I
         return this;
     }
 
-    public @EnumType(VkDisplayPowerStateEXT.class) int powerState() {
+    public @MagicConstant(valuesFromClass = VkDisplayPowerStateEXT.class) int powerState() {
         return segment.get(LAYOUT$powerState, OFFSET$powerState);
     }
 
-    public VkDisplayPowerInfoEXT powerState(@EnumType(VkDisplayPowerStateEXT.class) int value) {
+    public VkDisplayPowerInfoEXT powerState(@MagicConstant(valuesFromClass = VkDisplayPowerStateEXT.class) int value) {
         segment.set(LAYOUT$powerState, OFFSET$powerState, value);
         return this;
     }

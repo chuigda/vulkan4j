@@ -1,6 +1,7 @@
 package club.doki7.vulkan.enumtype;
 
 import club.doki7.ffm.annotation.*;
+import org.intellij.lang.annotations.MagicConstant;
 
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPhysicalDeviceType.html"><code>VkPhysicalDeviceType</code></a>
 public final class VkPhysicalDeviceType {
@@ -10,7 +11,7 @@ public final class VkPhysicalDeviceType {
     public static final int VIRTUAL_GPU = 0x3;
     public static final int CPU = 0x4;
 
-    public static String explain(@EnumType(VkPhysicalDeviceType.class) int value) {
+    public static String explain(@MagicConstant(valuesFromClass = VkPhysicalDeviceType.class) int value) {
         return switch (value) {
             case VkPhysicalDeviceType.CPU -> "VK_PHYSICAL_DEVICE_TYPE_CPU";
             case VkPhysicalDeviceType.DISCRETE_GPU -> "VK_PHYSICAL_DEVICE_TYPE_DISCRETE_GPU";

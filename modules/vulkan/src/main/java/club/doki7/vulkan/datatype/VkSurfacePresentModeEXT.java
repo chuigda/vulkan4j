@@ -190,11 +190,11 @@ public record VkSurfacePresentModeEXT(@NotNull MemorySegment segment) implements
         sType(VkStructureType.SURFACE_PRESENT_MODE_EXT);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkSurfacePresentModeEXT sType(@EnumType(VkStructureType.class) int value) {
+    public VkSurfacePresentModeEXT sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }
@@ -212,11 +212,11 @@ public record VkSurfacePresentModeEXT(@NotNull MemorySegment segment) implements
         return this;
     }
 
-    public @EnumType(VkPresentModeKHR.class) int presentMode() {
+    public @MagicConstant(valuesFromClass = VkPresentModeKHR.class) int presentMode() {
         return segment.get(LAYOUT$presentMode, OFFSET$presentMode);
     }
 
-    public VkSurfacePresentModeEXT presentMode(@EnumType(VkPresentModeKHR.class) int value) {
+    public VkSurfacePresentModeEXT presentMode(@MagicConstant(valuesFromClass = VkPresentModeKHR.class) int value) {
         segment.set(LAYOUT$presentMode, OFFSET$presentMode, value);
         return this;
     }

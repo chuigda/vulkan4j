@@ -191,11 +191,11 @@ public record VkPhysicalDeviceRenderPassStripedPropertiesARM(@NotNull MemorySegm
         sType(VkStructureType.PHYSICAL_DEVICE_RENDER_PASS_STRIPED_PROPERTIES_ARM);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkPhysicalDeviceRenderPassStripedPropertiesARM sType(@EnumType(VkStructureType.class) int value) {
+    public VkPhysicalDeviceRenderPassStripedPropertiesARM sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }

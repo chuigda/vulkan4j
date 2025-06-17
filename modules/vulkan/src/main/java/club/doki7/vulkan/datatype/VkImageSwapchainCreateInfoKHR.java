@@ -190,11 +190,11 @@ public record VkImageSwapchainCreateInfoKHR(@NotNull MemorySegment segment) impl
         sType(VkStructureType.IMAGE_SWAPCHAIN_CREATE_INFO_KHR);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkImageSwapchainCreateInfoKHR sType(@EnumType(VkStructureType.class) int value) {
+    public VkImageSwapchainCreateInfoKHR sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }

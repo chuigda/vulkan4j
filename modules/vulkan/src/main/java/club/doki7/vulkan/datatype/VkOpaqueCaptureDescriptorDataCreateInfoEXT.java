@@ -190,11 +190,11 @@ public record VkOpaqueCaptureDescriptorDataCreateInfoEXT(@NotNull MemorySegment 
         sType(VkStructureType.OPAQUE_CAPTURE_DESCRIPTOR_DATA_CREATE_INFO_EXT);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkOpaqueCaptureDescriptorDataCreateInfoEXT sType(@EnumType(VkStructureType.class) int value) {
+    public VkOpaqueCaptureDescriptorDataCreateInfoEXT sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }

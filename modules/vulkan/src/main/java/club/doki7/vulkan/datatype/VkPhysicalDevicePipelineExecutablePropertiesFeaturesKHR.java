@@ -190,11 +190,11 @@ public record VkPhysicalDevicePipelineExecutablePropertiesFeaturesKHR(@NotNull M
         sType(VkStructureType.PHYSICAL_DEVICE_PIPELINE_EXECUTABLE_PROPERTIES_FEATURES_KHR);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkPhysicalDevicePipelineExecutablePropertiesFeaturesKHR sType(@EnumType(VkStructureType.class) int value) {
+    public VkPhysicalDevicePipelineExecutablePropertiesFeaturesKHR sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }

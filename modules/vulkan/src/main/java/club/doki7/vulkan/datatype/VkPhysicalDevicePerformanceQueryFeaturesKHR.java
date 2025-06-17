@@ -191,11 +191,11 @@ public record VkPhysicalDevicePerformanceQueryFeaturesKHR(@NotNull MemorySegment
         sType(VkStructureType.PHYSICAL_DEVICE_PERFORMANCE_QUERY_FEATURES_KHR);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkPhysicalDevicePerformanceQueryFeaturesKHR sType(@EnumType(VkStructureType.class) int value) {
+    public VkPhysicalDevicePerformanceQueryFeaturesKHR sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }

@@ -192,11 +192,11 @@ public record VkAntiLagDataAMD(@NotNull MemorySegment segment) implements IVkAnt
         sType(VkStructureType.ANTI_LAG_DATA_AMD);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkAntiLagDataAMD sType(@EnumType(VkStructureType.class) int value) {
+    public VkAntiLagDataAMD sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }
@@ -214,11 +214,11 @@ public record VkAntiLagDataAMD(@NotNull MemorySegment segment) implements IVkAnt
         return this;
     }
 
-    public @EnumType(VkAntiLagModeAMD.class) int mode() {
+    public @MagicConstant(valuesFromClass = VkAntiLagModeAMD.class) int mode() {
         return segment.get(LAYOUT$mode, OFFSET$mode);
     }
 
-    public VkAntiLagDataAMD mode(@EnumType(VkAntiLagModeAMD.class) int value) {
+    public VkAntiLagDataAMD mode(@MagicConstant(valuesFromClass = VkAntiLagModeAMD.class) int value) {
         segment.set(LAYOUT$mode, OFFSET$mode, value);
         return this;
     }

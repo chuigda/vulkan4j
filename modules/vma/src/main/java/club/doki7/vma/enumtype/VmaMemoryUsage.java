@@ -1,6 +1,7 @@
 package club.doki7.vma.enumtype;
 
 import club.doki7.ffm.annotation.*;
+import org.intellij.lang.annotations.MagicConstant;
 
 /// Intended usage of the allocated memory.
 ///
@@ -72,7 +73,7 @@ public final class VmaMemoryUsage {
     public static final int AUTO_PREFER_HOST = 0x9;
     public static final int MAX_ENUM = 0x7fffffff;
 
-    public static String explain(@EnumType(VmaMemoryUsage.class) int value) {
+    public static String explain(@MagicConstant(valuesFromClass = VmaMemoryUsage.class) int value) {
         return switch (value) {
             case VmaMemoryUsage.AUTO -> "VMA_MEMORY_USAGE_AUTO";
             case VmaMemoryUsage.AUTO_PREFER_DEVICE -> "VMA_MEMORY_USAGE_AUTO_PREFER_DEVICE";

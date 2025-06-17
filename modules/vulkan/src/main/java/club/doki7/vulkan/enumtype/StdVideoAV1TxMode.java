@@ -1,6 +1,7 @@
 package club.doki7.vulkan.enumtype;
 
 import club.doki7.ffm.annotation.*;
+import org.intellij.lang.annotations.MagicConstant;
 
 public final class StdVideoAV1TxMode {
     public static final int STD_VIDEO_AV1_TX_MODE_ONLY_4X4 = 0x0;
@@ -8,7 +9,7 @@ public final class StdVideoAV1TxMode {
     public static final int STD_VIDEO_AV1_TX_MODE_SELECT = 0x2;
     public static final int STD_VIDEO_AV1_TX_MODE_INVALID = 0x7fffffff;
 
-    public static String explain(@EnumType(StdVideoAV1TxMode.class) int value) {
+    public static String explain(@MagicConstant(valuesFromClass = StdVideoAV1TxMode.class) int value) {
         return switch (value) {
             case StdVideoAV1TxMode.STD_VIDEO_AV1_TX_MODE_INVALID -> "STD_VIDEO_AV1_TX_MODE_INVALID";
             case StdVideoAV1TxMode.STD_VIDEO_AV1_TX_MODE_LARGEST -> "STD_VIDEO_AV1_TX_MODE_LARGEST";

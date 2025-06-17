@@ -190,11 +190,11 @@ public record VkPhysicalDeviceImageViewImageFormatInfoEXT(@NotNull MemorySegment
         sType(VkStructureType.PHYSICAL_DEVICE_IMAGE_VIEW_IMAGE_FORMAT_INFO_EXT);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkPhysicalDeviceImageViewImageFormatInfoEXT sType(@EnumType(VkStructureType.class) int value) {
+    public VkPhysicalDeviceImageViewImageFormatInfoEXT sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }
@@ -212,11 +212,11 @@ public record VkPhysicalDeviceImageViewImageFormatInfoEXT(@NotNull MemorySegment
         return this;
     }
 
-    public @EnumType(VkImageViewType.class) int imageViewType() {
+    public @MagicConstant(valuesFromClass = VkImageViewType.class) int imageViewType() {
         return segment.get(LAYOUT$imageViewType, OFFSET$imageViewType);
     }
 
-    public VkPhysicalDeviceImageViewImageFormatInfoEXT imageViewType(@EnumType(VkImageViewType.class) int value) {
+    public VkPhysicalDeviceImageViewImageFormatInfoEXT imageViewType(@MagicConstant(valuesFromClass = VkImageViewType.class) int value) {
         segment.set(LAYOUT$imageViewType, OFFSET$imageViewType, value);
         return this;
     }

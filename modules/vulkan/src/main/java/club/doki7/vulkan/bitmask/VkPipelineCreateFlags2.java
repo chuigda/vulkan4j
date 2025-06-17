@@ -1,6 +1,7 @@
 package club.doki7.vulkan.bitmask;
 
 import club.doki7.ffm.annotation.*;
+import org.intellij.lang.annotations.MagicConstant;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -45,7 +46,7 @@ public final class VkPipelineCreateFlags2 {
     public static final long RETAIN_LINK_TIME_OPTIMIZATION_INFO_EXT = 0x800000L;
     public static final long VIEW_INDEX_FROM_DEVICE_INDEX = 0x8L;
 
-    public static String explain(@EnumType(VkPipelineCreateFlags2.class) long flags) {
+    public static String explain(@MagicConstant(flagsFromClass = VkPipelineCreateFlags2.class) long flags) {
         List<String> detectedFlagBits = new ArrayList<>();
         if ((flags & ALLOW_DERIVATIVES) != 0) {
             detectedFlagBits.add("VK_PIPELINE_CREATE_2_ALLOW_DERIVATIVES_BIT");

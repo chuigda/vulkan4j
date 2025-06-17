@@ -170,11 +170,11 @@ public record VkBaseInStructure(@NotNull MemorySegment segment) implements IVkBa
         return ret;
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkBaseInStructure sType(@EnumType(VkStructureType.class) int value) {
+    public VkBaseInStructure sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }

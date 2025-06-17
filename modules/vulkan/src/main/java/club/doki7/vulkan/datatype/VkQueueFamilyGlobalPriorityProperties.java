@@ -191,11 +191,11 @@ public record VkQueueFamilyGlobalPriorityProperties(@NotNull MemorySegment segme
         sType(VkStructureType.QUEUE_FAMILY_GLOBAL_PRIORITY_PROPERTIES);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkQueueFamilyGlobalPriorityProperties sType(@EnumType(VkStructureType.class) int value) {
+    public VkQueueFamilyGlobalPriorityProperties sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }

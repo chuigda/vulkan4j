@@ -191,11 +191,11 @@ public record VkDisplayModeCreateInfoKHR(@NotNull MemorySegment segment) impleme
         sType(VkStructureType.DISPLAY_MODE_CREATE_INFO_KHR);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkDisplayModeCreateInfoKHR sType(@EnumType(VkStructureType.class) int value) {
+    public VkDisplayModeCreateInfoKHR sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }
@@ -213,11 +213,11 @@ public record VkDisplayModeCreateInfoKHR(@NotNull MemorySegment segment) impleme
         return this;
     }
 
-    public @EnumType(VkDisplayModeCreateFlagsKHR.class) int flags() {
+    public @MagicConstant(valuesFromClass = VkDisplayModeCreateFlagsKHR.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public VkDisplayModeCreateInfoKHR flags(@EnumType(VkDisplayModeCreateFlagsKHR.class) int value) {
+    public VkDisplayModeCreateInfoKHR flags(@MagicConstant(valuesFromClass = VkDisplayModeCreateFlagsKHR.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
         return this;
     }

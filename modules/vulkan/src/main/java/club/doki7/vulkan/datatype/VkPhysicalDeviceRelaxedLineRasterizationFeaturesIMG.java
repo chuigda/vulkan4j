@@ -190,11 +190,11 @@ public record VkPhysicalDeviceRelaxedLineRasterizationFeaturesIMG(@NotNull Memor
         sType(VkStructureType.PHYSICAL_DEVICE_RELAXED_LINE_RASTERIZATION_FEATURES_IMG);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkPhysicalDeviceRelaxedLineRasterizationFeaturesIMG sType(@EnumType(VkStructureType.class) int value) {
+    public VkPhysicalDeviceRelaxedLineRasterizationFeaturesIMG sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }

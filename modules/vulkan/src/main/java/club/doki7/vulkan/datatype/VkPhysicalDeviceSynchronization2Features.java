@@ -190,11 +190,11 @@ public record VkPhysicalDeviceSynchronization2Features(@NotNull MemorySegment se
         sType(VkStructureType.PHYSICAL_DEVICE_SYNCHRONIZATION_2_FEATURES);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkPhysicalDeviceSynchronization2Features sType(@EnumType(VkStructureType.class) int value) {
+    public VkPhysicalDeviceSynchronization2Features sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }

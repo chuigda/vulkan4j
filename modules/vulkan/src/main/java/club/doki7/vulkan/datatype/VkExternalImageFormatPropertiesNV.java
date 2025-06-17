@@ -186,29 +186,29 @@ public record VkExternalImageFormatPropertiesNV(@NotNull MemorySegment segment) 
         return this;
     }
 
-    public @EnumType(VkExternalMemoryFeatureFlagsNV.class) int externalMemoryFeatures() {
+    public @MagicConstant(valuesFromClass = VkExternalMemoryFeatureFlagsNV.class) int externalMemoryFeatures() {
         return segment.get(LAYOUT$externalMemoryFeatures, OFFSET$externalMemoryFeatures);
     }
 
-    public VkExternalImageFormatPropertiesNV externalMemoryFeatures(@EnumType(VkExternalMemoryFeatureFlagsNV.class) int value) {
+    public VkExternalImageFormatPropertiesNV externalMemoryFeatures(@MagicConstant(valuesFromClass = VkExternalMemoryFeatureFlagsNV.class) int value) {
         segment.set(LAYOUT$externalMemoryFeatures, OFFSET$externalMemoryFeatures, value);
         return this;
     }
 
-    public @EnumType(VkExternalMemoryHandleTypeFlagsNV.class) int exportFromImportedHandleTypes() {
+    public @MagicConstant(valuesFromClass = VkExternalMemoryHandleTypeFlagsNV.class) int exportFromImportedHandleTypes() {
         return segment.get(LAYOUT$exportFromImportedHandleTypes, OFFSET$exportFromImportedHandleTypes);
     }
 
-    public VkExternalImageFormatPropertiesNV exportFromImportedHandleTypes(@EnumType(VkExternalMemoryHandleTypeFlagsNV.class) int value) {
+    public VkExternalImageFormatPropertiesNV exportFromImportedHandleTypes(@MagicConstant(valuesFromClass = VkExternalMemoryHandleTypeFlagsNV.class) int value) {
         segment.set(LAYOUT$exportFromImportedHandleTypes, OFFSET$exportFromImportedHandleTypes, value);
         return this;
     }
 
-    public @EnumType(VkExternalMemoryHandleTypeFlagsNV.class) int compatibleHandleTypes() {
+    public @MagicConstant(valuesFromClass = VkExternalMemoryHandleTypeFlagsNV.class) int compatibleHandleTypes() {
         return segment.get(LAYOUT$compatibleHandleTypes, OFFSET$compatibleHandleTypes);
     }
 
-    public VkExternalImageFormatPropertiesNV compatibleHandleTypes(@EnumType(VkExternalMemoryHandleTypeFlagsNV.class) int value) {
+    public VkExternalImageFormatPropertiesNV compatibleHandleTypes(@MagicConstant(valuesFromClass = VkExternalMemoryHandleTypeFlagsNV.class) int value) {
         segment.set(LAYOUT$compatibleHandleTypes, OFFSET$compatibleHandleTypes, value);
         return this;
     }

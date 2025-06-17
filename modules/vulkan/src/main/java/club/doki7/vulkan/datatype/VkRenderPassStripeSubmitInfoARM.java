@@ -191,11 +191,11 @@ public record VkRenderPassStripeSubmitInfoARM(@NotNull MemorySegment segment) im
         sType(VkStructureType.RENDER_PASS_STRIPE_SUBMIT_INFO_ARM);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkRenderPassStripeSubmitInfoARM sType(@EnumType(VkStructureType.class) int value) {
+    public VkRenderPassStripeSubmitInfoARM sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }

@@ -190,11 +190,11 @@ public record VkExternalFormatANDROID(@NotNull MemorySegment segment) implements
         sType(VkStructureType.EXTERNAL_FORMAT_ANDROID);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkExternalFormatANDROID sType(@EnumType(VkStructureType.class) int value) {
+    public VkExternalFormatANDROID sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }

@@ -190,11 +190,11 @@ public record VkPhysicalDevicePipelineLibraryGroupHandlesFeaturesEXT(@NotNull Me
         sType(VkStructureType.PHYSICAL_DEVICE_PIPELINE_LIBRARY_GROUP_HANDLES_FEATURES_EXT);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkPhysicalDevicePipelineLibraryGroupHandlesFeaturesEXT sType(@EnumType(VkStructureType.class) int value) {
+    public VkPhysicalDevicePipelineLibraryGroupHandlesFeaturesEXT sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }

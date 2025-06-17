@@ -1,6 +1,7 @@
 package club.doki7.vulkan.enumtype;
 
 import club.doki7.ffm.annotation.*;
+import org.intellij.lang.annotations.MagicConstant;
 
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPipelineRobustnessImageBehavior.html"><code>VkPipelineRobustnessImageBehavior</code></a>
 public final class VkPipelineRobustnessImageBehavior {
@@ -9,7 +10,7 @@ public final class VkPipelineRobustnessImageBehavior {
     public static final int ROBUST_IMAGE_ACCESS = 0x2;
     public static final int ROBUST_IMAGE_ACCESS_2 = 0x3;
 
-    public static String explain(@EnumType(VkPipelineRobustnessImageBehavior.class) int value) {
+    public static String explain(@MagicConstant(valuesFromClass = VkPipelineRobustnessImageBehavior.class) int value) {
         return switch (value) {
             case VkPipelineRobustnessImageBehavior.DEVICE_DEFAULT -> "VK_PIPELINE_ROBUSTNESS_IMAGE_BEHAVIOR_DEVICE_DEFAULT";
             case VkPipelineRobustnessImageBehavior.DISABLED -> "VK_PIPELINE_ROBUSTNESS_IMAGE_BEHAVIOR_DISABLED";

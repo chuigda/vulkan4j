@@ -190,11 +190,11 @@ public record VkPhysicalDeviceHdrVividFeaturesHUAWEI(@NotNull MemorySegment segm
         sType(VkStructureType.PHYSICAL_DEVICE_HDR_VIVID_FEATURES_HUAWEI);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkPhysicalDeviceHdrVividFeaturesHUAWEI sType(@EnumType(VkStructureType.class) int value) {
+    public VkPhysicalDeviceHdrVividFeaturesHUAWEI sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }

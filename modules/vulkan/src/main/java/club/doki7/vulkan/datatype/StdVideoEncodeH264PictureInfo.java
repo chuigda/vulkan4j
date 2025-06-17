@@ -217,11 +217,11 @@ public record StdVideoEncodeH264PictureInfo(@NotNull MemorySegment segment) impl
         return this;
     }
 
-    public @EnumType(StdVideoH264PictureType.class) int primary_pic_type() {
+    public @MagicConstant(valuesFromClass = StdVideoH264PictureType.class) int primary_pic_type() {
         return segment.get(LAYOUT$primary_pic_type, OFFSET$primary_pic_type);
     }
 
-    public StdVideoEncodeH264PictureInfo primary_pic_type(@EnumType(StdVideoH264PictureType.class) int value) {
+    public StdVideoEncodeH264PictureInfo primary_pic_type(@MagicConstant(valuesFromClass = StdVideoH264PictureType.class) int value) {
         segment.set(LAYOUT$primary_pic_type, OFFSET$primary_pic_type, value);
         return this;
     }

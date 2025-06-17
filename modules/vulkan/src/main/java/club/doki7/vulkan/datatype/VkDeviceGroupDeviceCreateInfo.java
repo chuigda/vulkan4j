@@ -191,11 +191,11 @@ public record VkDeviceGroupDeviceCreateInfo(@NotNull MemorySegment segment) impl
         sType(VkStructureType.DEVICE_GROUP_DEVICE_CREATE_INFO);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkDeviceGroupDeviceCreateInfo sType(@EnumType(VkStructureType.class) int value) {
+    public VkDeviceGroupDeviceCreateInfo sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }

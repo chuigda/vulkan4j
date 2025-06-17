@@ -190,11 +190,11 @@ public record VkExternalComputeQueueDeviceCreateInfoNV(@NotNull MemorySegment se
         sType(VkStructureType.EXTERNAL_COMPUTE_QUEUE_DEVICE_CREATE_INFO_NV);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkExternalComputeQueueDeviceCreateInfoNV sType(@EnumType(VkStructureType.class) int value) {
+    public VkExternalComputeQueueDeviceCreateInfoNV sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }

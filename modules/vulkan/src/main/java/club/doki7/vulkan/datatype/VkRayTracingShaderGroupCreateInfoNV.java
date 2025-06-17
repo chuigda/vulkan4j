@@ -194,11 +194,11 @@ public record VkRayTracingShaderGroupCreateInfoNV(@NotNull MemorySegment segment
         sType(VkStructureType.RAY_TRACING_SHADER_GROUP_CREATE_INFO_NV);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkRayTracingShaderGroupCreateInfoNV sType(@EnumType(VkStructureType.class) int value) {
+    public VkRayTracingShaderGroupCreateInfoNV sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }
@@ -216,11 +216,11 @@ public record VkRayTracingShaderGroupCreateInfoNV(@NotNull MemorySegment segment
         return this;
     }
 
-    public @EnumType(VkRayTracingShaderGroupTypeKHR.class) int type() {
+    public @MagicConstant(valuesFromClass = VkRayTracingShaderGroupTypeKHR.class) int type() {
         return segment.get(LAYOUT$type, OFFSET$type);
     }
 
-    public VkRayTracingShaderGroupCreateInfoNV type(@EnumType(VkRayTracingShaderGroupTypeKHR.class) int value) {
+    public VkRayTracingShaderGroupCreateInfoNV type(@MagicConstant(valuesFromClass = VkRayTracingShaderGroupTypeKHR.class) int value) {
         segment.set(LAYOUT$type, OFFSET$type, value);
         return this;
     }

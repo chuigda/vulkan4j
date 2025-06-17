@@ -192,11 +192,11 @@ public record VkDirectFBSurfaceCreateInfoEXT(@NotNull MemorySegment segment) imp
         sType(VkStructureType.DIRECTFB_SURFACE_CREATE_INFO_EXT);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkDirectFBSurfaceCreateInfoEXT sType(@EnumType(VkStructureType.class) int value) {
+    public VkDirectFBSurfaceCreateInfoEXT sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }
@@ -214,11 +214,11 @@ public record VkDirectFBSurfaceCreateInfoEXT(@NotNull MemorySegment segment) imp
         return this;
     }
 
-    public @EnumType(VkDirectFBSurfaceCreateFlagsEXT.class) int flags() {
+    public @MagicConstant(valuesFromClass = VkDirectFBSurfaceCreateFlagsEXT.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public VkDirectFBSurfaceCreateInfoEXT flags(@EnumType(VkDirectFBSurfaceCreateFlagsEXT.class) int value) {
+    public VkDirectFBSurfaceCreateInfoEXT flags(@MagicConstant(valuesFromClass = VkDirectFBSurfaceCreateFlagsEXT.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
         return this;
     }

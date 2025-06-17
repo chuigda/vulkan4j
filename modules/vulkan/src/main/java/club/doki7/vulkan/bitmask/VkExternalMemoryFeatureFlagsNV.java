@@ -1,6 +1,7 @@
 package club.doki7.vulkan.bitmask;
 
 import club.doki7.ffm.annotation.*;
+import org.intellij.lang.annotations.MagicConstant;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,7 +12,7 @@ public final class VkExternalMemoryFeatureFlagsNV {
     public static final int EXPORTABLE = 0x2;
     public static final int IMPORTABLE = 0x4;
 
-    public static String explain(@EnumType(VkExternalMemoryFeatureFlagsNV.class) int flags) {
+    public static String explain(@MagicConstant(flagsFromClass = VkExternalMemoryFeatureFlagsNV.class) int flags) {
         List<String> detectedFlagBits = new ArrayList<>();
         if ((flags & DEDICATED_ONLY) != 0) {
             detectedFlagBits.add("VK_EXTERNAL_MEMORY_FEATURE_DEDICATED_ONLY_BIT_NV");

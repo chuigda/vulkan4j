@@ -197,11 +197,11 @@ public record VkImageMemoryBarrier(@NotNull MemorySegment segment) implements IV
         sType(VkStructureType.IMAGE_MEMORY_BARRIER);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkImageMemoryBarrier sType(@EnumType(VkStructureType.class) int value) {
+    public VkImageMemoryBarrier sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }
@@ -219,38 +219,38 @@ public record VkImageMemoryBarrier(@NotNull MemorySegment segment) implements IV
         return this;
     }
 
-    public @EnumType(VkAccessFlags.class) int srcAccessMask() {
+    public @MagicConstant(valuesFromClass = VkAccessFlags.class) int srcAccessMask() {
         return segment.get(LAYOUT$srcAccessMask, OFFSET$srcAccessMask);
     }
 
-    public VkImageMemoryBarrier srcAccessMask(@EnumType(VkAccessFlags.class) int value) {
+    public VkImageMemoryBarrier srcAccessMask(@MagicConstant(valuesFromClass = VkAccessFlags.class) int value) {
         segment.set(LAYOUT$srcAccessMask, OFFSET$srcAccessMask, value);
         return this;
     }
 
-    public @EnumType(VkAccessFlags.class) int dstAccessMask() {
+    public @MagicConstant(valuesFromClass = VkAccessFlags.class) int dstAccessMask() {
         return segment.get(LAYOUT$dstAccessMask, OFFSET$dstAccessMask);
     }
 
-    public VkImageMemoryBarrier dstAccessMask(@EnumType(VkAccessFlags.class) int value) {
+    public VkImageMemoryBarrier dstAccessMask(@MagicConstant(valuesFromClass = VkAccessFlags.class) int value) {
         segment.set(LAYOUT$dstAccessMask, OFFSET$dstAccessMask, value);
         return this;
     }
 
-    public @EnumType(VkImageLayout.class) int oldLayout() {
+    public @MagicConstant(valuesFromClass = VkImageLayout.class) int oldLayout() {
         return segment.get(LAYOUT$oldLayout, OFFSET$oldLayout);
     }
 
-    public VkImageMemoryBarrier oldLayout(@EnumType(VkImageLayout.class) int value) {
+    public VkImageMemoryBarrier oldLayout(@MagicConstant(valuesFromClass = VkImageLayout.class) int value) {
         segment.set(LAYOUT$oldLayout, OFFSET$oldLayout, value);
         return this;
     }
 
-    public @EnumType(VkImageLayout.class) int newLayout() {
+    public @MagicConstant(valuesFromClass = VkImageLayout.class) int newLayout() {
         return segment.get(LAYOUT$newLayout, OFFSET$newLayout);
     }
 
-    public VkImageMemoryBarrier newLayout(@EnumType(VkImageLayout.class) int value) {
+    public VkImageMemoryBarrier newLayout(@MagicConstant(valuesFromClass = VkImageLayout.class) int value) {
         segment.set(LAYOUT$newLayout, OFFSET$newLayout, value);
         return this;
     }

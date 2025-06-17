@@ -193,11 +193,11 @@ public record VkVertexInputBindingDescription2EXT(@NotNull MemorySegment segment
         sType(VkStructureType.VERTEX_INPUT_BINDING_DESCRIPTION_2_EXT);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkVertexInputBindingDescription2EXT sType(@EnumType(VkStructureType.class) int value) {
+    public VkVertexInputBindingDescription2EXT sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }
@@ -233,11 +233,11 @@ public record VkVertexInputBindingDescription2EXT(@NotNull MemorySegment segment
         return this;
     }
 
-    public @EnumType(VkVertexInputRate.class) int inputRate() {
+    public @MagicConstant(valuesFromClass = VkVertexInputRate.class) int inputRate() {
         return segment.get(LAYOUT$inputRate, OFFSET$inputRate);
     }
 
-    public VkVertexInputBindingDescription2EXT inputRate(@EnumType(VkVertexInputRate.class) int value) {
+    public VkVertexInputBindingDescription2EXT inputRate(@MagicConstant(valuesFromClass = VkVertexInputRate.class) int value) {
         segment.set(LAYOUT$inputRate, OFFSET$inputRate, value);
         return this;
     }

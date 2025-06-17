@@ -190,11 +190,11 @@ public record VkRayTracingPipelineClusterAccelerationStructureCreateInfoNV(@NotN
         sType(VkStructureType.RAY_TRACING_PIPELINE_CLUSTER_ACCELERATION_STRUCTURE_CREATE_INFO_NV);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkRayTracingPipelineClusterAccelerationStructureCreateInfoNV sType(@EnumType(VkStructureType.class) int value) {
+    public VkRayTracingPipelineClusterAccelerationStructureCreateInfoNV sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }

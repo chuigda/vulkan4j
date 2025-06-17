@@ -195,11 +195,11 @@ public record StdVideoEncodeH265SliceSegmentHeader(@NotNull MemorySegment segmen
         return this;
     }
 
-    public @EnumType(StdVideoH265SliceType.class) int slice_type() {
+    public @MagicConstant(valuesFromClass = StdVideoH265SliceType.class) int slice_type() {
         return segment.get(LAYOUT$slice_type, OFFSET$slice_type);
     }
 
-    public StdVideoEncodeH265SliceSegmentHeader slice_type(@EnumType(StdVideoH265SliceType.class) int value) {
+    public StdVideoEncodeH265SliceSegmentHeader slice_type(@MagicConstant(valuesFromClass = StdVideoH265SliceType.class) int value) {
         segment.set(LAYOUT$slice_type, OFFSET$slice_type, value);
         return this;
     }

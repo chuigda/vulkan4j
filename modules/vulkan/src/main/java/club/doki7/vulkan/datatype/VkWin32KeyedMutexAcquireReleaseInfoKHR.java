@@ -196,11 +196,11 @@ public record VkWin32KeyedMutexAcquireReleaseInfoKHR(@NotNull MemorySegment segm
         sType(VkStructureType.WIN32_KEYED_MUTEX_ACQUIRE_RELEASE_INFO_KHR);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkWin32KeyedMutexAcquireReleaseInfoKHR sType(@EnumType(VkStructureType.class) int value) {
+    public VkWin32KeyedMutexAcquireReleaseInfoKHR sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }

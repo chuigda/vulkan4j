@@ -1,6 +1,7 @@
 package club.doki7.vulkan.bitmask;
 
 import club.doki7.ffm.annotation.*;
+import org.intellij.lang.annotations.MagicConstant;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,7 +12,7 @@ public final class VkPresentGravityFlagsEXT {
     public static final int MAX = 0x2;
     public static final int MIN = 0x1;
 
-    public static String explain(@EnumType(VkPresentGravityFlagsEXT.class) int flags) {
+    public static String explain(@MagicConstant(flagsFromClass = VkPresentGravityFlagsEXT.class) int flags) {
         List<String> detectedFlagBits = new ArrayList<>();
         if ((flags & CENTERED) != 0) {
             detectedFlagBits.add("VK_PRESENT_GRAVITY_CENTERED_BIT_EXT");

@@ -190,11 +190,11 @@ public record VkAndroidHardwareBufferUsageANDROID(@NotNull MemorySegment segment
         sType(VkStructureType.ANDROID_HARDWARE_BUFFER_USAGE_ANDROID);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkAndroidHardwareBufferUsageANDROID sType(@EnumType(VkStructureType.class) int value) {
+    public VkAndroidHardwareBufferUsageANDROID sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }

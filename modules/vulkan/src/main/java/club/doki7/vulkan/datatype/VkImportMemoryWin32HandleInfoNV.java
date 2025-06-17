@@ -191,11 +191,11 @@ public record VkImportMemoryWin32HandleInfoNV(@NotNull MemorySegment segment) im
         sType(VkStructureType.IMPORT_MEMORY_WIN32_HANDLE_INFO_NV);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkImportMemoryWin32HandleInfoNV sType(@EnumType(VkStructureType.class) int value) {
+    public VkImportMemoryWin32HandleInfoNV sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }
@@ -213,11 +213,11 @@ public record VkImportMemoryWin32HandleInfoNV(@NotNull MemorySegment segment) im
         return this;
     }
 
-    public @EnumType(VkExternalMemoryHandleTypeFlagsNV.class) int handleType() {
+    public @MagicConstant(valuesFromClass = VkExternalMemoryHandleTypeFlagsNV.class) int handleType() {
         return segment.get(LAYOUT$handleType, OFFSET$handleType);
     }
 
-    public VkImportMemoryWin32HandleInfoNV handleType(@EnumType(VkExternalMemoryHandleTypeFlagsNV.class) int value) {
+    public VkImportMemoryWin32HandleInfoNV handleType(@MagicConstant(valuesFromClass = VkExternalMemoryHandleTypeFlagsNV.class) int value) {
         segment.set(LAYOUT$handleType, OFFSET$handleType, value);
         return this;
     }

@@ -1,6 +1,7 @@
 package club.doki7.vulkan.enumtype;
 
 import club.doki7.ffm.annotation.*;
+import org.intellij.lang.annotations.MagicConstant;
 
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkAccelerationStructureTypeKHR.html"><code>VkAccelerationStructureTypeKHR</code></a>
 public final class VkAccelerationStructureTypeKHR {
@@ -8,7 +9,7 @@ public final class VkAccelerationStructureTypeKHR {
     public static final int BOTTOM_LEVEL = 0x1;
     public static final int GENERIC = 0x2;
 
-    public static String explain(@EnumType(VkAccelerationStructureTypeKHR.class) int value) {
+    public static String explain(@MagicConstant(valuesFromClass = VkAccelerationStructureTypeKHR.class) int value) {
         return switch (value) {
             case VkAccelerationStructureTypeKHR.BOTTOM_LEVEL -> "VK_ACCELERATION_STRUCTURE_TYPE_BOTTOM_LEVEL_KHR";
             case VkAccelerationStructureTypeKHR.GENERIC -> "VK_ACCELERATION_STRUCTURE_TYPE_GENERIC_KHR";

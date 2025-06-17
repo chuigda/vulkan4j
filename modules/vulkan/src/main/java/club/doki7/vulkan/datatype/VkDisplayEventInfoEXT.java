@@ -190,11 +190,11 @@ public record VkDisplayEventInfoEXT(@NotNull MemorySegment segment) implements I
         sType(VkStructureType.DISPLAY_EVENT_INFO_EXT);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkDisplayEventInfoEXT sType(@EnumType(VkStructureType.class) int value) {
+    public VkDisplayEventInfoEXT sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }
@@ -212,11 +212,11 @@ public record VkDisplayEventInfoEXT(@NotNull MemorySegment segment) implements I
         return this;
     }
 
-    public @EnumType(VkDisplayEventTypeEXT.class) int displayEvent() {
+    public @MagicConstant(valuesFromClass = VkDisplayEventTypeEXT.class) int displayEvent() {
         return segment.get(LAYOUT$displayEvent, OFFSET$displayEvent);
     }
 
-    public VkDisplayEventInfoEXT displayEvent(@EnumType(VkDisplayEventTypeEXT.class) int value) {
+    public VkDisplayEventInfoEXT displayEvent(@MagicConstant(valuesFromClass = VkDisplayEventTypeEXT.class) int value) {
         segment.set(LAYOUT$displayEvent, OFFSET$displayEvent, value);
         return this;
     }

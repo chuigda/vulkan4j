@@ -190,11 +190,11 @@ public record VkSparseImageFormatProperties2(@NotNull MemorySegment segment) imp
         sType(VkStructureType.SPARSE_IMAGE_FORMAT_PROPERTIES_2);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkSparseImageFormatProperties2 sType(@EnumType(VkStructureType.class) int value) {
+    public VkSparseImageFormatProperties2 sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }

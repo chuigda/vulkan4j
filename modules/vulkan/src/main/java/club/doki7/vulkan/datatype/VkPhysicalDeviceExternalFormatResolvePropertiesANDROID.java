@@ -192,11 +192,11 @@ public record VkPhysicalDeviceExternalFormatResolvePropertiesANDROID(@NotNull Me
         sType(VkStructureType.PHYSICAL_DEVICE_EXTERNAL_FORMAT_RESOLVE_PROPERTIES_ANDROID);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkPhysicalDeviceExternalFormatResolvePropertiesANDROID sType(@EnumType(VkStructureType.class) int value) {
+    public VkPhysicalDeviceExternalFormatResolvePropertiesANDROID sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }
@@ -223,20 +223,20 @@ public record VkPhysicalDeviceExternalFormatResolvePropertiesANDROID(@NotNull Me
         return this;
     }
 
-    public @EnumType(VkChromaLocation.class) int externalFormatResolveChromaOffsetX() {
+    public @MagicConstant(valuesFromClass = VkChromaLocation.class) int externalFormatResolveChromaOffsetX() {
         return segment.get(LAYOUT$externalFormatResolveChromaOffsetX, OFFSET$externalFormatResolveChromaOffsetX);
     }
 
-    public VkPhysicalDeviceExternalFormatResolvePropertiesANDROID externalFormatResolveChromaOffsetX(@EnumType(VkChromaLocation.class) int value) {
+    public VkPhysicalDeviceExternalFormatResolvePropertiesANDROID externalFormatResolveChromaOffsetX(@MagicConstant(valuesFromClass = VkChromaLocation.class) int value) {
         segment.set(LAYOUT$externalFormatResolveChromaOffsetX, OFFSET$externalFormatResolveChromaOffsetX, value);
         return this;
     }
 
-    public @EnumType(VkChromaLocation.class) int externalFormatResolveChromaOffsetY() {
+    public @MagicConstant(valuesFromClass = VkChromaLocation.class) int externalFormatResolveChromaOffsetY() {
         return segment.get(LAYOUT$externalFormatResolveChromaOffsetY, OFFSET$externalFormatResolveChromaOffsetY);
     }
 
-    public VkPhysicalDeviceExternalFormatResolvePropertiesANDROID externalFormatResolveChromaOffsetY(@EnumType(VkChromaLocation.class) int value) {
+    public VkPhysicalDeviceExternalFormatResolvePropertiesANDROID externalFormatResolveChromaOffsetY(@MagicConstant(valuesFromClass = VkChromaLocation.class) int value) {
         segment.set(LAYOUT$externalFormatResolveChromaOffsetY, OFFSET$externalFormatResolveChromaOffsetY, value);
         return this;
     }

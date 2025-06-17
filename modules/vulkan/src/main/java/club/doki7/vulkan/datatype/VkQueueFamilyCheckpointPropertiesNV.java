@@ -190,11 +190,11 @@ public record VkQueueFamilyCheckpointPropertiesNV(@NotNull MemorySegment segment
         sType(VkStructureType.QUEUE_FAMILY_CHECKPOINT_PROPERTIES_NV);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkQueueFamilyCheckpointPropertiesNV sType(@EnumType(VkStructureType.class) int value) {
+    public VkQueueFamilyCheckpointPropertiesNV sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }
@@ -212,11 +212,11 @@ public record VkQueueFamilyCheckpointPropertiesNV(@NotNull MemorySegment segment
         return this;
     }
 
-    public @EnumType(VkPipelineStageFlags.class) int checkpointExecutionStageMask() {
+    public @MagicConstant(valuesFromClass = VkPipelineStageFlags.class) int checkpointExecutionStageMask() {
         return segment.get(LAYOUT$checkpointExecutionStageMask, OFFSET$checkpointExecutionStageMask);
     }
 
-    public VkQueueFamilyCheckpointPropertiesNV checkpointExecutionStageMask(@EnumType(VkPipelineStageFlags.class) int value) {
+    public VkQueueFamilyCheckpointPropertiesNV checkpointExecutionStageMask(@MagicConstant(valuesFromClass = VkPipelineStageFlags.class) int value) {
         segment.set(LAYOUT$checkpointExecutionStageMask, OFFSET$checkpointExecutionStageMask, value);
         return this;
     }

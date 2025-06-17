@@ -190,11 +190,11 @@ public record VkMemoryPriorityAllocateInfoEXT(@NotNull MemorySegment segment) im
         sType(VkStructureType.MEMORY_PRIORITY_ALLOCATE_INFO_EXT);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkMemoryPriorityAllocateInfoEXT sType(@EnumType(VkStructureType.class) int value) {
+    public VkMemoryPriorityAllocateInfoEXT sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }

@@ -1269,7 +1269,7 @@ public final class VkDeviceCommands {
     // region command wrappers
 
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkAcquireFullScreenExclusiveModeEXT.html"><code>vkAcquireFullScreenExclusiveModeEXT</code></a>
-    public @EnumType(VkResult.class) int acquireFullScreenExclusiveModeEXT(
+    public @MagicConstant(valuesFromClass = VkResult.class) int acquireFullScreenExclusiveModeEXT(
         VkDevice device,
         VkSwapchainKHR swapchain
     ) {
@@ -1285,7 +1285,7 @@ public final class VkDeviceCommands {
     }
 
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkAcquireNextImage2KHR.html"><code>vkAcquireNextImage2KHR</code></a>
-    public @EnumType(VkResult.class) int acquireNextImage2KHR(
+    public @MagicConstant(valuesFromClass = VkResult.class) int acquireNextImage2KHR(
         VkDevice device,
         @Pointer VkAcquireNextImageInfoKHR pAcquireInfo,
         @Unsigned IntPtr pImageIndex
@@ -1303,7 +1303,7 @@ public final class VkDeviceCommands {
     }
 
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkAcquireNextImageKHR.html"><code>vkAcquireNextImageKHR</code></a>
-    public @EnumType(VkResult.class) int acquireNextImageKHR(
+    public @MagicConstant(valuesFromClass = VkResult.class) int acquireNextImageKHR(
         VkDevice device,
         VkSwapchainKHR swapchain,
         @Unsigned long timeout,
@@ -1327,7 +1327,7 @@ public final class VkDeviceCommands {
     }
 
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkAcquirePerformanceConfigurationINTEL.html"><code>vkAcquirePerformanceConfigurationINTEL</code></a>
-    public @EnumType(VkResult.class) int acquirePerformanceConfigurationINTEL(
+    public @MagicConstant(valuesFromClass = VkResult.class) int acquirePerformanceConfigurationINTEL(
         VkDevice device,
         @Pointer VkPerformanceConfigurationAcquireInfoINTEL pAcquireInfo,
         @Pointer VkPerformanceConfigurationINTEL.Ptr pConfiguration
@@ -1345,7 +1345,7 @@ public final class VkDeviceCommands {
     }
 
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkAcquireProfilingLockKHR.html"><code>vkAcquireProfilingLockKHR</code></a>
-    public @EnumType(VkResult.class) int acquireProfilingLockKHR(
+    public @MagicConstant(valuesFromClass = VkResult.class) int acquireProfilingLockKHR(
         VkDevice device,
         @Pointer VkAcquireProfilingLockInfoKHR pInfo
     ) {
@@ -1361,7 +1361,7 @@ public final class VkDeviceCommands {
     }
 
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkAllocateCommandBuffers.html"><code>vkAllocateCommandBuffers</code></a>
-    public @EnumType(VkResult.class) int allocateCommandBuffers(
+    public @MagicConstant(valuesFromClass = VkResult.class) int allocateCommandBuffers(
         VkDevice device,
         @Pointer VkCommandBufferAllocateInfo pAllocateInfo,
         @Pointer VkCommandBuffer.Ptr pCommandBuffers
@@ -1379,7 +1379,7 @@ public final class VkDeviceCommands {
     }
 
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkAllocateDescriptorSets.html"><code>vkAllocateDescriptorSets</code></a>
-    public @EnumType(VkResult.class) int allocateDescriptorSets(
+    public @MagicConstant(valuesFromClass = VkResult.class) int allocateDescriptorSets(
         VkDevice device,
         @Pointer VkDescriptorSetAllocateInfo pAllocateInfo,
         @Pointer VkDescriptorSet.Ptr pDescriptorSets
@@ -1397,7 +1397,7 @@ public final class VkDeviceCommands {
     }
 
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkAllocateMemory.html"><code>vkAllocateMemory</code></a>
-    public @EnumType(VkResult.class) int allocateMemory(
+    public @MagicConstant(valuesFromClass = VkResult.class) int allocateMemory(
         VkDevice device,
         @Pointer VkMemoryAllocateInfo pAllocateInfo,
         @Nullable @Pointer VkAllocationCallbacks pAllocator,
@@ -1433,7 +1433,7 @@ public final class VkDeviceCommands {
     }
 
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkBeginCommandBuffer.html"><code>vkBeginCommandBuffer</code></a>
-    public @EnumType(VkResult.class) int beginCommandBuffer(
+    public @MagicConstant(valuesFromClass = VkResult.class) int beginCommandBuffer(
         VkCommandBuffer commandBuffer,
         @Pointer VkCommandBufferBeginInfo pBeginInfo
     ) {
@@ -1449,7 +1449,7 @@ public final class VkDeviceCommands {
     }
 
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkBindAccelerationStructureMemoryNV.html"><code>vkBindAccelerationStructureMemoryNV</code></a>
-    public @EnumType(VkResult.class) int bindAccelerationStructureMemoryNV(
+    public @MagicConstant(valuesFromClass = VkResult.class) int bindAccelerationStructureMemoryNV(
         VkDevice device,
         @Unsigned int bindInfoCount,
         @Pointer IVkBindAccelerationStructureMemoryInfoNV pBindInfos
@@ -1467,7 +1467,7 @@ public final class VkDeviceCommands {
     }
 
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkBindBufferMemory.html"><code>vkBindBufferMemory</code></a>
-    public @EnumType(VkResult.class) int bindBufferMemory(
+    public @MagicConstant(valuesFromClass = VkResult.class) int bindBufferMemory(
         VkDevice device,
         VkBuffer buffer,
         VkDeviceMemory memory,
@@ -1487,7 +1487,7 @@ public final class VkDeviceCommands {
     }
 
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkBindBufferMemory2.html"><code>vkBindBufferMemory2</code></a>
-    public @EnumType(VkResult.class) int bindBufferMemory2(
+    public @MagicConstant(valuesFromClass = VkResult.class) int bindBufferMemory2(
         VkDevice device,
         @Unsigned int bindInfoCount,
         @Pointer IVkBindBufferMemoryInfo pBindInfos
@@ -1505,7 +1505,7 @@ public final class VkDeviceCommands {
     }
 
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkBindBufferMemory2KHR.html"><code>vkBindBufferMemory2KHR</code></a>
-    public @EnumType(VkResult.class) int bindBufferMemory2KHR(
+    public @MagicConstant(valuesFromClass = VkResult.class) int bindBufferMemory2KHR(
         VkDevice device,
         @Unsigned int bindInfoCount,
         @Pointer IVkBindBufferMemoryInfo pBindInfos
@@ -1523,7 +1523,7 @@ public final class VkDeviceCommands {
     }
 
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkBindImageMemory.html"><code>vkBindImageMemory</code></a>
-    public @EnumType(VkResult.class) int bindImageMemory(
+    public @MagicConstant(valuesFromClass = VkResult.class) int bindImageMemory(
         VkDevice device,
         VkImage image,
         VkDeviceMemory memory,
@@ -1543,7 +1543,7 @@ public final class VkDeviceCommands {
     }
 
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkBindImageMemory2.html"><code>vkBindImageMemory2</code></a>
-    public @EnumType(VkResult.class) int bindImageMemory2(
+    public @MagicConstant(valuesFromClass = VkResult.class) int bindImageMemory2(
         VkDevice device,
         @Unsigned int bindInfoCount,
         @Pointer IVkBindImageMemoryInfo pBindInfos
@@ -1561,7 +1561,7 @@ public final class VkDeviceCommands {
     }
 
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkBindImageMemory2KHR.html"><code>vkBindImageMemory2KHR</code></a>
-    public @EnumType(VkResult.class) int bindImageMemory2KHR(
+    public @MagicConstant(valuesFromClass = VkResult.class) int bindImageMemory2KHR(
         VkDevice device,
         @Unsigned int bindInfoCount,
         @Pointer IVkBindImageMemoryInfo pBindInfos
@@ -1579,12 +1579,12 @@ public final class VkDeviceCommands {
     }
 
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkBindOpticalFlowSessionImageNV.html"><code>vkBindOpticalFlowSessionImageNV</code></a>
-    public @EnumType(VkResult.class) int bindOpticalFlowSessionImageNV(
+    public @MagicConstant(valuesFromClass = VkResult.class) int bindOpticalFlowSessionImageNV(
         VkDevice device,
         VkOpticalFlowSessionNV session,
-        @EnumType(VkOpticalFlowSessionBindingPointNV.class) int bindingPoint,
+        @MagicConstant(valuesFromClass = VkOpticalFlowSessionBindingPointNV.class) int bindingPoint,
         @Nullable VkImageView view,
-        @EnumType(VkImageLayout.class) int layout
+        @MagicConstant(valuesFromClass = VkImageLayout.class) int layout
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkBindOpticalFlowSessionImageNV);
         try {
@@ -1601,7 +1601,7 @@ public final class VkDeviceCommands {
     }
 
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkBindVideoSessionMemoryKHR.html"><code>vkBindVideoSessionMemoryKHR</code></a>
-    public @EnumType(VkResult.class) int bindVideoSessionMemoryKHR(
+    public @MagicConstant(valuesFromClass = VkResult.class) int bindVideoSessionMemoryKHR(
         VkDevice device,
         VkVideoSessionKHR videoSession,
         @Unsigned int bindSessionMemoryInfoCount,
@@ -1621,7 +1621,7 @@ public final class VkDeviceCommands {
     }
 
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkBuildAccelerationStructuresKHR.html"><code>vkBuildAccelerationStructuresKHR</code></a>
-    public @EnumType(VkResult.class) int buildAccelerationStructuresKHR(
+    public @MagicConstant(valuesFromClass = VkResult.class) int buildAccelerationStructuresKHR(
         VkDevice device,
         @Nullable VkDeferredOperationKHR deferredOperation,
         @Unsigned int infoCount,
@@ -1643,7 +1643,7 @@ public final class VkDeviceCommands {
     }
 
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkBuildMicromapsEXT.html"><code>vkBuildMicromapsEXT</code></a>
-    public @EnumType(VkResult.class) int buildMicromapsEXT(
+    public @MagicConstant(valuesFromClass = VkResult.class) int buildMicromapsEXT(
         VkDevice device,
         @Nullable VkDeferredOperationKHR deferredOperation,
         @Unsigned int infoCount,
@@ -1699,7 +1699,7 @@ public final class VkDeviceCommands {
         VkCommandBuffer commandBuffer,
         VkQueryPool queryPool,
         @Unsigned int query,
-        @EnumType(VkQueryControlFlags.class) int flags
+        @MagicConstant(valuesFromClass = VkQueryControlFlags.class) int flags
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkCmdBeginQuery);
         try {
@@ -1719,7 +1719,7 @@ public final class VkDeviceCommands {
         VkCommandBuffer commandBuffer,
         VkQueryPool queryPool,
         @Unsigned int query,
-        @EnumType(VkQueryControlFlags.class) int flags,
+        @MagicConstant(valuesFromClass = VkQueryControlFlags.class) int flags,
         @Unsigned int index
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkCmdBeginQueryIndexedEXT);
@@ -1740,7 +1740,7 @@ public final class VkDeviceCommands {
     public void cmdBeginRenderPass(
         VkCommandBuffer commandBuffer,
         @Pointer VkRenderPassBeginInfo pRenderPassBegin,
-        @EnumType(VkSubpassContents.class) int contents
+        @MagicConstant(valuesFromClass = VkSubpassContents.class) int contents
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkCmdBeginRenderPass);
         try {
@@ -1879,7 +1879,7 @@ public final class VkDeviceCommands {
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkCmdBindDescriptorBufferEmbeddedSamplersEXT.html"><code>vkCmdBindDescriptorBufferEmbeddedSamplersEXT</code></a>
     public void cmdBindDescriptorBufferEmbeddedSamplersEXT(
         VkCommandBuffer commandBuffer,
-        @EnumType(VkPipelineBindPoint.class) int pipelineBindPoint,
+        @MagicConstant(valuesFromClass = VkPipelineBindPoint.class) int pipelineBindPoint,
         VkPipelineLayout layout,
         @Unsigned int set
     ) {
@@ -1917,7 +1917,7 @@ public final class VkDeviceCommands {
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkCmdBindDescriptorSets.html"><code>vkCmdBindDescriptorSets</code></a>
     public void cmdBindDescriptorSets(
         VkCommandBuffer commandBuffer,
-        @EnumType(VkPipelineBindPoint.class) int pipelineBindPoint,
+        @MagicConstant(valuesFromClass = VkPipelineBindPoint.class) int pipelineBindPoint,
         VkPipelineLayout layout,
         @Unsigned int firstSet,
         @Unsigned int descriptorSetCount,
@@ -1979,7 +1979,7 @@ public final class VkDeviceCommands {
         VkCommandBuffer commandBuffer,
         @Nullable VkBuffer buffer,
         @NativeType("VkDeviceSize") @Unsigned long offset,
-        @EnumType(VkIndexType.class) int indexType
+        @MagicConstant(valuesFromClass = VkIndexType.class) int indexType
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkCmdBindIndexBuffer);
         try {
@@ -2000,7 +2000,7 @@ public final class VkDeviceCommands {
         @Nullable VkBuffer buffer,
         @NativeType("VkDeviceSize") @Unsigned long offset,
         @NativeType("VkDeviceSize") @Unsigned long size,
-        @EnumType(VkIndexType.class) int indexType
+        @MagicConstant(valuesFromClass = VkIndexType.class) int indexType
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkCmdBindIndexBuffer2);
         try {
@@ -2022,7 +2022,7 @@ public final class VkDeviceCommands {
         @Nullable VkBuffer buffer,
         @NativeType("VkDeviceSize") @Unsigned long offset,
         @NativeType("VkDeviceSize") @Unsigned long size,
-        @EnumType(VkIndexType.class) int indexType
+        @MagicConstant(valuesFromClass = VkIndexType.class) int indexType
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkCmdBindIndexBuffer2KHR);
         try {
@@ -2042,7 +2042,7 @@ public final class VkDeviceCommands {
     public void cmdBindInvocationMaskHUAWEI(
         VkCommandBuffer commandBuffer,
         @Nullable VkImageView imageView,
-        @EnumType(VkImageLayout.class) int imageLayout
+        @MagicConstant(valuesFromClass = VkImageLayout.class) int imageLayout
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkCmdBindInvocationMaskHUAWEI);
         try {
@@ -2059,7 +2059,7 @@ public final class VkDeviceCommands {
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkCmdBindPipeline.html"><code>vkCmdBindPipeline</code></a>
     public void cmdBindPipeline(
         VkCommandBuffer commandBuffer,
-        @EnumType(VkPipelineBindPoint.class) int pipelineBindPoint,
+        @MagicConstant(valuesFromClass = VkPipelineBindPoint.class) int pipelineBindPoint,
         VkPipeline pipeline
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkCmdBindPipeline);
@@ -2077,7 +2077,7 @@ public final class VkDeviceCommands {
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkCmdBindPipelineShaderGroupNV.html"><code>vkCmdBindPipelineShaderGroupNV</code></a>
     public void cmdBindPipelineShaderGroupNV(
         VkCommandBuffer commandBuffer,
-        @EnumType(VkPipelineBindPoint.class) int pipelineBindPoint,
+        @MagicConstant(valuesFromClass = VkPipelineBindPoint.class) int pipelineBindPoint,
         VkPipeline pipeline,
         @Unsigned int groupIndex
     ) {
@@ -2118,7 +2118,7 @@ public final class VkDeviceCommands {
     public void cmdBindShadingRateImageNV(
         VkCommandBuffer commandBuffer,
         @Nullable VkImageView imageView,
-        @EnumType(VkImageLayout.class) int imageLayout
+        @MagicConstant(valuesFromClass = VkImageLayout.class) int imageLayout
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkCmdBindShadingRateImageNV);
         try {
@@ -2250,12 +2250,12 @@ public final class VkDeviceCommands {
     public void cmdBlitImage(
         VkCommandBuffer commandBuffer,
         VkImage srcImage,
-        @EnumType(VkImageLayout.class) int srcImageLayout,
+        @MagicConstant(valuesFromClass = VkImageLayout.class) int srcImageLayout,
         VkImage dstImage,
-        @EnumType(VkImageLayout.class) int dstImageLayout,
+        @MagicConstant(valuesFromClass = VkImageLayout.class) int dstImageLayout,
         @Unsigned int regionCount,
         @Pointer IVkImageBlit pRegions,
-        @EnumType(VkFilter.class) int filter
+        @MagicConstant(valuesFromClass = VkFilter.class) int filter
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkCmdBlitImage);
         try {
@@ -2456,7 +2456,7 @@ public final class VkDeviceCommands {
     public void cmdClearColorImage(
         VkCommandBuffer commandBuffer,
         VkImage image,
-        @EnumType(VkImageLayout.class) int imageLayout,
+        @MagicConstant(valuesFromClass = VkImageLayout.class) int imageLayout,
         @Pointer VkClearColorValue pColor,
         @Unsigned int rangeCount,
         @Pointer IVkImageSubresourceRange pRanges
@@ -2480,7 +2480,7 @@ public final class VkDeviceCommands {
     public void cmdClearDepthStencilImage(
         VkCommandBuffer commandBuffer,
         VkImage image,
-        @EnumType(VkImageLayout.class) int imageLayout,
+        @MagicConstant(valuesFromClass = VkImageLayout.class) int imageLayout,
         @Pointer VkClearDepthStencilValue pDepthStencil,
         @Unsigned int rangeCount,
         @Pointer IVkImageSubresourceRange pRanges
@@ -2555,7 +2555,7 @@ public final class VkDeviceCommands {
         VkCommandBuffer commandBuffer,
         VkAccelerationStructureNV dst,
         VkAccelerationStructureNV src,
-        @EnumType(VkCopyAccelerationStructureModeKHR.class) int mode
+        @MagicConstant(valuesFromClass = VkCopyAccelerationStructureModeKHR.class) int mode
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkCmdCopyAccelerationStructureNV);
         try {
@@ -2645,7 +2645,7 @@ public final class VkDeviceCommands {
         VkCommandBuffer commandBuffer,
         VkBuffer srcBuffer,
         VkImage dstImage,
-        @EnumType(VkImageLayout.class) int dstImageLayout,
+        @MagicConstant(valuesFromClass = VkImageLayout.class) int dstImageLayout,
         @Unsigned int regionCount,
         @Pointer IVkBufferImageCopy pRegions
     ) {
@@ -2700,9 +2700,9 @@ public final class VkDeviceCommands {
     public void cmdCopyImage(
         VkCommandBuffer commandBuffer,
         VkImage srcImage,
-        @EnumType(VkImageLayout.class) int srcImageLayout,
+        @MagicConstant(valuesFromClass = VkImageLayout.class) int srcImageLayout,
         VkImage dstImage,
-        @EnumType(VkImageLayout.class) int dstImageLayout,
+        @MagicConstant(valuesFromClass = VkImageLayout.class) int dstImageLayout,
         @Unsigned int regionCount,
         @Pointer IVkImageCopy pRegions
     ) {
@@ -2758,7 +2758,7 @@ public final class VkDeviceCommands {
     public void cmdCopyImageToBuffer(
         VkCommandBuffer commandBuffer,
         VkImage srcImage,
-        @EnumType(VkImageLayout.class) int srcImageLayout,
+        @MagicConstant(valuesFromClass = VkImageLayout.class) int srcImageLayout,
         VkBuffer dstBuffer,
         @Unsigned int regionCount,
         @Pointer IVkBufferImageCopy pRegions
@@ -2853,7 +2853,7 @@ public final class VkDeviceCommands {
         @Unsigned int copyCount,
         @Unsigned int stride,
         VkImage dstImage,
-        @EnumType(VkImageLayout.class) int dstImageLayout,
+        @MagicConstant(valuesFromClass = VkImageLayout.class) int dstImageLayout,
         @Pointer IVkImageSubresourceLayers pImageSubresources
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkCmdCopyMemoryToImageIndirectNV);
@@ -2929,7 +2929,7 @@ public final class VkDeviceCommands {
         VkBuffer dstBuffer,
         @NativeType("VkDeviceSize") @Unsigned long dstOffset,
         @NativeType("VkDeviceSize") @Unsigned long stride,
-        @EnumType(VkQueryResultFlags.class) int flags
+        @MagicConstant(valuesFromClass = VkQueryResultFlags.class) int flags
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkCmdCopyQueryPoolResults);
         try {
@@ -4049,7 +4049,7 @@ public final class VkDeviceCommands {
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkCmdNextSubpass.html"><code>vkCmdNextSubpass</code></a>
     public void cmdNextSubpass(
         VkCommandBuffer commandBuffer,
-        @EnumType(VkSubpassContents.class) int contents
+        @MagicConstant(valuesFromClass = VkSubpassContents.class) int contents
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkCmdNextSubpass);
         try {
@@ -4119,9 +4119,9 @@ public final class VkDeviceCommands {
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkCmdPipelineBarrier.html"><code>vkCmdPipelineBarrier</code></a>
     public void cmdPipelineBarrier(
         VkCommandBuffer commandBuffer,
-        @EnumType(VkPipelineStageFlags.class) int srcStageMask,
-        @EnumType(VkPipelineStageFlags.class) int dstStageMask,
-        @EnumType(VkDependencyFlags.class) int dependencyFlags,
+        @MagicConstant(valuesFromClass = VkPipelineStageFlags.class) int srcStageMask,
+        @MagicConstant(valuesFromClass = VkPipelineStageFlags.class) int dstStageMask,
+        @MagicConstant(valuesFromClass = VkDependencyFlags.class) int dependencyFlags,
         @Unsigned int memoryBarrierCount,
         @Nullable @Pointer IVkMemoryBarrier pMemoryBarriers,
         @Unsigned int bufferMemoryBarrierCount,
@@ -4218,7 +4218,7 @@ public final class VkDeviceCommands {
     public void cmdPushConstants(
         VkCommandBuffer commandBuffer,
         VkPipelineLayout layout,
-        @EnumType(VkShaderStageFlags.class) int stageFlags,
+        @MagicConstant(valuesFromClass = VkShaderStageFlags.class) int stageFlags,
         @Unsigned int offset,
         @Unsigned int size,
         @Pointer(comment="void*") MemorySegment pValues
@@ -4273,7 +4273,7 @@ public final class VkDeviceCommands {
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkCmdPushDescriptorSet.html"><code>vkCmdPushDescriptorSet</code></a>
     public void cmdPushDescriptorSet(
         VkCommandBuffer commandBuffer,
-        @EnumType(VkPipelineBindPoint.class) int pipelineBindPoint,
+        @MagicConstant(valuesFromClass = VkPipelineBindPoint.class) int pipelineBindPoint,
         VkPipelineLayout layout,
         @Unsigned int set,
         @Unsigned int descriptorWriteCount,
@@ -4329,7 +4329,7 @@ public final class VkDeviceCommands {
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkCmdPushDescriptorSetKHR.html"><code>vkCmdPushDescriptorSetKHR</code></a>
     public void cmdPushDescriptorSetKHR(
         VkCommandBuffer commandBuffer,
-        @EnumType(VkPipelineBindPoint.class) int pipelineBindPoint,
+        @MagicConstant(valuesFromClass = VkPipelineBindPoint.class) int pipelineBindPoint,
         VkPipelineLayout layout,
         @Unsigned int set,
         @Unsigned int descriptorWriteCount,
@@ -4446,7 +4446,7 @@ public final class VkDeviceCommands {
     public void cmdResetEvent(
         VkCommandBuffer commandBuffer,
         VkEvent event,
-        @EnumType(VkPipelineStageFlags.class) int stageMask
+        @MagicConstant(valuesFromClass = VkPipelineStageFlags.class) int stageMask
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkCmdResetEvent);
         try {
@@ -4464,7 +4464,7 @@ public final class VkDeviceCommands {
     public void cmdResetEvent2(
         VkCommandBuffer commandBuffer,
         VkEvent event,
-        @EnumType(VkPipelineStageFlags2.class) long stageMask
+        @MagicConstant(valuesFromClass = VkPipelineStageFlags2.class) long stageMask
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkCmdResetEvent2);
         try {
@@ -4482,7 +4482,7 @@ public final class VkDeviceCommands {
     public void cmdResetEvent2KHR(
         VkCommandBuffer commandBuffer,
         VkEvent event,
-        @EnumType(VkPipelineStageFlags2.class) long stageMask
+        @MagicConstant(valuesFromClass = VkPipelineStageFlags2.class) long stageMask
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkCmdResetEvent2KHR);
         try {
@@ -4520,9 +4520,9 @@ public final class VkDeviceCommands {
     public void cmdResolveImage(
         VkCommandBuffer commandBuffer,
         VkImage srcImage,
-        @EnumType(VkImageLayout.class) int srcImageLayout,
+        @MagicConstant(valuesFromClass = VkImageLayout.class) int srcImageLayout,
         VkImage dstImage,
-        @EnumType(VkImageLayout.class) int dstImageLayout,
+        @MagicConstant(valuesFromClass = VkImageLayout.class) int dstImageLayout,
         @Unsigned int regionCount,
         @Pointer IVkImageResolve pRegions
     ) {
@@ -4609,7 +4609,7 @@ public final class VkDeviceCommands {
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkCmdSetAttachmentFeedbackLoopEnableEXT.html"><code>vkCmdSetAttachmentFeedbackLoopEnableEXT</code></a>
     public void cmdSetAttachmentFeedbackLoopEnableEXT(
         VkCommandBuffer commandBuffer,
-        @EnumType(VkImageAspectFlags.class) int aspectMask
+        @MagicConstant(valuesFromClass = VkImageAspectFlags.class) int aspectMask
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkCmdSetAttachmentFeedbackLoopEnableEXT);
         try {
@@ -4657,7 +4657,7 @@ public final class VkDeviceCommands {
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkCmdSetCoarseSampleOrderNV.html"><code>vkCmdSetCoarseSampleOrderNV</code></a>
     public void cmdSetCoarseSampleOrderNV(
         VkCommandBuffer commandBuffer,
-        @EnumType(VkCoarseSampleOrderTypeNV.class) int sampleOrderType,
+        @MagicConstant(valuesFromClass = VkCoarseSampleOrderTypeNV.class) int sampleOrderType,
         @Unsigned int customSampleOrderCount,
         @Nullable @Pointer IVkCoarseSampleOrderCustomNV pCustomSampleOrders
     ) {
@@ -4775,7 +4775,7 @@ public final class VkDeviceCommands {
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkCmdSetConservativeRasterizationModeEXT.html"><code>vkCmdSetConservativeRasterizationModeEXT</code></a>
     public void cmdSetConservativeRasterizationModeEXT(
         VkCommandBuffer commandBuffer,
-        @EnumType(VkConservativeRasterizationModeEXT.class) int conservativeRasterizationMode
+        @MagicConstant(valuesFromClass = VkConservativeRasterizationModeEXT.class) int conservativeRasterizationMode
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkCmdSetConservativeRasterizationModeEXT);
         try {
@@ -4791,7 +4791,7 @@ public final class VkDeviceCommands {
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkCmdSetCoverageModulationModeNV.html"><code>vkCmdSetCoverageModulationModeNV</code></a>
     public void cmdSetCoverageModulationModeNV(
         VkCommandBuffer commandBuffer,
-        @EnumType(VkCoverageModulationModeNV.class) int coverageModulationMode
+        @MagicConstant(valuesFromClass = VkCoverageModulationModeNV.class) int coverageModulationMode
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkCmdSetCoverageModulationModeNV);
         try {
@@ -4841,7 +4841,7 @@ public final class VkDeviceCommands {
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkCmdSetCoverageReductionModeNV.html"><code>vkCmdSetCoverageReductionModeNV</code></a>
     public void cmdSetCoverageReductionModeNV(
         VkCommandBuffer commandBuffer,
-        @EnumType(VkCoverageReductionModeNV.class) int coverageReductionMode
+        @MagicConstant(valuesFromClass = VkCoverageReductionModeNV.class) int coverageReductionMode
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkCmdSetCoverageReductionModeNV);
         try {
@@ -4889,7 +4889,7 @@ public final class VkDeviceCommands {
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkCmdSetCullMode.html"><code>vkCmdSetCullMode</code></a>
     public void cmdSetCullMode(
         VkCommandBuffer commandBuffer,
-        @EnumType(VkCullModeFlags.class) int cullMode
+        @MagicConstant(valuesFromClass = VkCullModeFlags.class) int cullMode
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkCmdSetCullMode);
         try {
@@ -4905,7 +4905,7 @@ public final class VkDeviceCommands {
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkCmdSetCullModeEXT.html"><code>vkCmdSetCullModeEXT</code></a>
     public void cmdSetCullModeEXT(
         VkCommandBuffer commandBuffer,
-        @EnumType(VkCullModeFlags.class) int cullMode
+        @MagicConstant(valuesFromClass = VkCullModeFlags.class) int cullMode
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkCmdSetCullModeEXT);
         try {
@@ -5055,7 +5055,7 @@ public final class VkDeviceCommands {
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkCmdSetDepthClampRangeEXT.html"><code>vkCmdSetDepthClampRangeEXT</code></a>
     public void cmdSetDepthClampRangeEXT(
         VkCommandBuffer commandBuffer,
-        @EnumType(VkDepthClampModeEXT.class) int depthClampMode,
+        @MagicConstant(valuesFromClass = VkDepthClampModeEXT.class) int depthClampMode,
         @Nullable @Pointer VkDepthClampRangeEXT pDepthClampRange
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkCmdSetDepthClampRangeEXT);
@@ -5105,7 +5105,7 @@ public final class VkDeviceCommands {
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkCmdSetDepthCompareOp.html"><code>vkCmdSetDepthCompareOp</code></a>
     public void cmdSetDepthCompareOp(
         VkCommandBuffer commandBuffer,
-        @EnumType(VkCompareOp.class) int depthCompareOp
+        @MagicConstant(valuesFromClass = VkCompareOp.class) int depthCompareOp
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkCmdSetDepthCompareOp);
         try {
@@ -5121,7 +5121,7 @@ public final class VkDeviceCommands {
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkCmdSetDepthCompareOpEXT.html"><code>vkCmdSetDepthCompareOpEXT</code></a>
     public void cmdSetDepthCompareOpEXT(
         VkCommandBuffer commandBuffer,
-        @EnumType(VkCompareOp.class) int depthCompareOp
+        @MagicConstant(valuesFromClass = VkCompareOp.class) int depthCompareOp
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkCmdSetDepthCompareOpEXT);
         try {
@@ -5217,7 +5217,7 @@ public final class VkDeviceCommands {
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkCmdSetDescriptorBufferOffsetsEXT.html"><code>vkCmdSetDescriptorBufferOffsetsEXT</code></a>
     public void cmdSetDescriptorBufferOffsetsEXT(
         VkCommandBuffer commandBuffer,
-        @EnumType(VkPipelineBindPoint.class) int pipelineBindPoint,
+        @MagicConstant(valuesFromClass = VkPipelineBindPoint.class) int pipelineBindPoint,
         VkPipelineLayout layout,
         @Unsigned int firstSet,
         @Unsigned int setCount,
@@ -5311,7 +5311,7 @@ public final class VkDeviceCommands {
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkCmdSetDiscardRectangleModeEXT.html"><code>vkCmdSetDiscardRectangleModeEXT</code></a>
     public void cmdSetDiscardRectangleModeEXT(
         VkCommandBuffer commandBuffer,
-        @EnumType(VkDiscardRectangleModeEXT.class) int discardRectangleMode
+        @MagicConstant(valuesFromClass = VkDiscardRectangleModeEXT.class) int discardRectangleMode
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkCmdSetDiscardRectangleModeEXT);
         try {
@@ -5328,7 +5328,7 @@ public final class VkDeviceCommands {
     public void cmdSetEvent(
         VkCommandBuffer commandBuffer,
         VkEvent event,
-        @EnumType(VkPipelineStageFlags.class) int stageMask
+        @MagicConstant(valuesFromClass = VkPipelineStageFlags.class) int stageMask
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkCmdSetEvent);
         try {
@@ -5437,8 +5437,8 @@ public final class VkDeviceCommands {
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkCmdSetFragmentShadingRateEnumNV.html"><code>vkCmdSetFragmentShadingRateEnumNV</code></a>
     public void cmdSetFragmentShadingRateEnumNV(
         VkCommandBuffer commandBuffer,
-        @EnumType(VkFragmentShadingRateNV.class) int shadingRate,
-        @EnumType(VkFragmentShadingRateCombinerOpKHR.class) int combinerOps
+        @MagicConstant(valuesFromClass = VkFragmentShadingRateNV.class) int shadingRate,
+        @MagicConstant(valuesFromClass = VkFragmentShadingRateCombinerOpKHR.class) int combinerOps
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkCmdSetFragmentShadingRateEnumNV);
         try {
@@ -5456,7 +5456,7 @@ public final class VkDeviceCommands {
     public void cmdSetFragmentShadingRateKHR(
         VkCommandBuffer commandBuffer,
         @Pointer VkExtent2D pFragmentSize,
-        @EnumType(VkFragmentShadingRateCombinerOpKHR.class) int combinerOps
+        @MagicConstant(valuesFromClass = VkFragmentShadingRateCombinerOpKHR.class) int combinerOps
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkCmdSetFragmentShadingRateKHR);
         try {
@@ -5473,7 +5473,7 @@ public final class VkDeviceCommands {
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkCmdSetFrontFace.html"><code>vkCmdSetFrontFace</code></a>
     public void cmdSetFrontFace(
         VkCommandBuffer commandBuffer,
-        @EnumType(VkFrontFace.class) int frontFace
+        @MagicConstant(valuesFromClass = VkFrontFace.class) int frontFace
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkCmdSetFrontFace);
         try {
@@ -5489,7 +5489,7 @@ public final class VkDeviceCommands {
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkCmdSetFrontFaceEXT.html"><code>vkCmdSetFrontFaceEXT</code></a>
     public void cmdSetFrontFaceEXT(
         VkCommandBuffer commandBuffer,
-        @EnumType(VkFrontFace.class) int frontFace
+        @MagicConstant(valuesFromClass = VkFrontFace.class) int frontFace
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkCmdSetFrontFaceEXT);
         try {
@@ -5505,7 +5505,7 @@ public final class VkDeviceCommands {
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkCmdSetLineRasterizationModeEXT.html"><code>vkCmdSetLineRasterizationModeEXT</code></a>
     public void cmdSetLineRasterizationModeEXT(
         VkCommandBuffer commandBuffer,
-        @EnumType(VkLineRasterizationMode.class) int lineRasterizationMode
+        @MagicConstant(valuesFromClass = VkLineRasterizationMode.class) int lineRasterizationMode
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkCmdSetLineRasterizationModeEXT);
         try {
@@ -5607,7 +5607,7 @@ public final class VkDeviceCommands {
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkCmdSetLogicOpEXT.html"><code>vkCmdSetLogicOpEXT</code></a>
     public void cmdSetLogicOpEXT(
         VkCommandBuffer commandBuffer,
-        @EnumType(VkLogicOp.class) int logicOp
+        @MagicConstant(valuesFromClass = VkLogicOp.class) int logicOp
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkCmdSetLogicOpEXT);
         try {
@@ -5653,7 +5653,7 @@ public final class VkDeviceCommands {
     }
 
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkCmdSetPerformanceMarkerINTEL.html"><code>vkCmdSetPerformanceMarkerINTEL</code></a>
-    public @EnumType(VkResult.class) int cmdSetPerformanceMarkerINTEL(
+    public @MagicConstant(valuesFromClass = VkResult.class) int cmdSetPerformanceMarkerINTEL(
         VkCommandBuffer commandBuffer,
         @Pointer VkPerformanceMarkerInfoINTEL pMarkerInfo
     ) {
@@ -5669,7 +5669,7 @@ public final class VkDeviceCommands {
     }
 
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkCmdSetPerformanceOverrideINTEL.html"><code>vkCmdSetPerformanceOverrideINTEL</code></a>
-    public @EnumType(VkResult.class) int cmdSetPerformanceOverrideINTEL(
+    public @MagicConstant(valuesFromClass = VkResult.class) int cmdSetPerformanceOverrideINTEL(
         VkCommandBuffer commandBuffer,
         @Pointer VkPerformanceOverrideInfoINTEL pOverrideInfo
     ) {
@@ -5685,7 +5685,7 @@ public final class VkDeviceCommands {
     }
 
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkCmdSetPerformanceStreamMarkerINTEL.html"><code>vkCmdSetPerformanceStreamMarkerINTEL</code></a>
-    public @EnumType(VkResult.class) int cmdSetPerformanceStreamMarkerINTEL(
+    public @MagicConstant(valuesFromClass = VkResult.class) int cmdSetPerformanceStreamMarkerINTEL(
         VkCommandBuffer commandBuffer,
         @Pointer VkPerformanceStreamMarkerInfoINTEL pMarkerInfo
     ) {
@@ -5703,7 +5703,7 @@ public final class VkDeviceCommands {
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkCmdSetPolygonModeEXT.html"><code>vkCmdSetPolygonModeEXT</code></a>
     public void cmdSetPolygonModeEXT(
         VkCommandBuffer commandBuffer,
-        @EnumType(VkPolygonMode.class) int polygonMode
+        @MagicConstant(valuesFromClass = VkPolygonMode.class) int polygonMode
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkCmdSetPolygonModeEXT);
         try {
@@ -5751,7 +5751,7 @@ public final class VkDeviceCommands {
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkCmdSetPrimitiveTopology.html"><code>vkCmdSetPrimitiveTopology</code></a>
     public void cmdSetPrimitiveTopology(
         VkCommandBuffer commandBuffer,
-        @EnumType(VkPrimitiveTopology.class) int primitiveTopology
+        @MagicConstant(valuesFromClass = VkPrimitiveTopology.class) int primitiveTopology
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkCmdSetPrimitiveTopology);
         try {
@@ -5767,7 +5767,7 @@ public final class VkDeviceCommands {
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkCmdSetPrimitiveTopologyEXT.html"><code>vkCmdSetPrimitiveTopologyEXT</code></a>
     public void cmdSetPrimitiveTopologyEXT(
         VkCommandBuffer commandBuffer,
-        @EnumType(VkPrimitiveTopology.class) int primitiveTopology
+        @MagicConstant(valuesFromClass = VkPrimitiveTopology.class) int primitiveTopology
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkCmdSetPrimitiveTopologyEXT);
         try {
@@ -5783,7 +5783,7 @@ public final class VkDeviceCommands {
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkCmdSetProvokingVertexModeEXT.html"><code>vkCmdSetProvokingVertexModeEXT</code></a>
     public void cmdSetProvokingVertexModeEXT(
         VkCommandBuffer commandBuffer,
-        @EnumType(VkProvokingVertexModeEXT.class) int provokingVertexMode
+        @MagicConstant(valuesFromClass = VkProvokingVertexModeEXT.class) int provokingVertexMode
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkCmdSetProvokingVertexModeEXT);
         try {
@@ -5799,7 +5799,7 @@ public final class VkDeviceCommands {
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkCmdSetRasterizationSamplesEXT.html"><code>vkCmdSetRasterizationSamplesEXT</code></a>
     public void cmdSetRasterizationSamplesEXT(
         VkCommandBuffer commandBuffer,
-        @EnumType(VkSampleCountFlags.class) int rasterizationSamples
+        @MagicConstant(valuesFromClass = VkSampleCountFlags.class) int rasterizationSamples
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkCmdSetRasterizationSamplesEXT);
         try {
@@ -5991,7 +5991,7 @@ public final class VkDeviceCommands {
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkCmdSetSampleMaskEXT.html"><code>vkCmdSetSampleMaskEXT</code></a>
     public void cmdSetSampleMaskEXT(
         VkCommandBuffer commandBuffer,
-        @EnumType(VkSampleCountFlags.class) int samples,
+        @MagicConstant(valuesFromClass = VkSampleCountFlags.class) int samples,
         @Pointer(comment="VkSampleMask") @Unsigned IntPtr pSampleMask
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkCmdSetSampleMaskEXT);
@@ -6081,7 +6081,7 @@ public final class VkDeviceCommands {
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkCmdSetStencilCompareMask.html"><code>vkCmdSetStencilCompareMask</code></a>
     public void cmdSetStencilCompareMask(
         VkCommandBuffer commandBuffer,
-        @EnumType(VkStencilFaceFlags.class) int faceMask,
+        @MagicConstant(valuesFromClass = VkStencilFaceFlags.class) int faceMask,
         @Unsigned int compareMask
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkCmdSetStencilCompareMask);
@@ -6099,11 +6099,11 @@ public final class VkDeviceCommands {
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkCmdSetStencilOp.html"><code>vkCmdSetStencilOp</code></a>
     public void cmdSetStencilOp(
         VkCommandBuffer commandBuffer,
-        @EnumType(VkStencilFaceFlags.class) int faceMask,
-        @EnumType(VkStencilOp.class) int failOp,
-        @EnumType(VkStencilOp.class) int passOp,
-        @EnumType(VkStencilOp.class) int depthFailOp,
-        @EnumType(VkCompareOp.class) int compareOp
+        @MagicConstant(valuesFromClass = VkStencilFaceFlags.class) int faceMask,
+        @MagicConstant(valuesFromClass = VkStencilOp.class) int failOp,
+        @MagicConstant(valuesFromClass = VkStencilOp.class) int passOp,
+        @MagicConstant(valuesFromClass = VkStencilOp.class) int depthFailOp,
+        @MagicConstant(valuesFromClass = VkCompareOp.class) int compareOp
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkCmdSetStencilOp);
         try {
@@ -6123,11 +6123,11 @@ public final class VkDeviceCommands {
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkCmdSetStencilOpEXT.html"><code>vkCmdSetStencilOpEXT</code></a>
     public void cmdSetStencilOpEXT(
         VkCommandBuffer commandBuffer,
-        @EnumType(VkStencilFaceFlags.class) int faceMask,
-        @EnumType(VkStencilOp.class) int failOp,
-        @EnumType(VkStencilOp.class) int passOp,
-        @EnumType(VkStencilOp.class) int depthFailOp,
-        @EnumType(VkCompareOp.class) int compareOp
+        @MagicConstant(valuesFromClass = VkStencilFaceFlags.class) int faceMask,
+        @MagicConstant(valuesFromClass = VkStencilOp.class) int failOp,
+        @MagicConstant(valuesFromClass = VkStencilOp.class) int passOp,
+        @MagicConstant(valuesFromClass = VkStencilOp.class) int depthFailOp,
+        @MagicConstant(valuesFromClass = VkCompareOp.class) int compareOp
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkCmdSetStencilOpEXT);
         try {
@@ -6147,7 +6147,7 @@ public final class VkDeviceCommands {
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkCmdSetStencilReference.html"><code>vkCmdSetStencilReference</code></a>
     public void cmdSetStencilReference(
         VkCommandBuffer commandBuffer,
-        @EnumType(VkStencilFaceFlags.class) int faceMask,
+        @MagicConstant(valuesFromClass = VkStencilFaceFlags.class) int faceMask,
         @Unsigned int reference
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkCmdSetStencilReference);
@@ -6197,7 +6197,7 @@ public final class VkDeviceCommands {
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkCmdSetStencilWriteMask.html"><code>vkCmdSetStencilWriteMask</code></a>
     public void cmdSetStencilWriteMask(
         VkCommandBuffer commandBuffer,
-        @EnumType(VkStencilFaceFlags.class) int faceMask,
+        @MagicConstant(valuesFromClass = VkStencilFaceFlags.class) int faceMask,
         @Unsigned int writeMask
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkCmdSetStencilWriteMask);
@@ -6215,7 +6215,7 @@ public final class VkDeviceCommands {
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkCmdSetTessellationDomainOriginEXT.html"><code>vkCmdSetTessellationDomainOriginEXT</code></a>
     public void cmdSetTessellationDomainOriginEXT(
         VkCommandBuffer commandBuffer,
-        @EnumType(VkTessellationDomainOrigin.class) int domainOrigin
+        @MagicConstant(valuesFromClass = VkTessellationDomainOrigin.class) int domainOrigin
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkCmdSetTessellationDomainOriginEXT);
         try {
@@ -6531,7 +6531,7 @@ public final class VkDeviceCommands {
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkCmdUpdatePipelineIndirectBufferNV.html"><code>vkCmdUpdatePipelineIndirectBufferNV</code></a>
     public void cmdUpdatePipelineIndirectBufferNV(
         VkCommandBuffer commandBuffer,
-        @EnumType(VkPipelineBindPoint.class) int pipelineBindPoint,
+        @MagicConstant(valuesFromClass = VkPipelineBindPoint.class) int pipelineBindPoint,
         VkPipeline pipeline
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkCmdUpdatePipelineIndirectBufferNV);
@@ -6551,8 +6551,8 @@ public final class VkDeviceCommands {
         VkCommandBuffer commandBuffer,
         @Unsigned int eventCount,
         @Pointer VkEvent.Ptr pEvents,
-        @EnumType(VkPipelineStageFlags.class) int srcStageMask,
-        @EnumType(VkPipelineStageFlags.class) int dstStageMask,
+        @MagicConstant(valuesFromClass = VkPipelineStageFlags.class) int srcStageMask,
+        @MagicConstant(valuesFromClass = VkPipelineStageFlags.class) int dstStageMask,
         @Unsigned int memoryBarrierCount,
         @Nullable @Pointer IVkMemoryBarrier pMemoryBarriers,
         @Unsigned int bufferMemoryBarrierCount,
@@ -6625,7 +6625,7 @@ public final class VkDeviceCommands {
         VkCommandBuffer commandBuffer,
         @Unsigned int accelerationStructureCount,
         @Pointer VkAccelerationStructureKHR.Ptr pAccelerationStructures,
-        @EnumType(VkQueryType.class) int queryType,
+        @MagicConstant(valuesFromClass = VkQueryType.class) int queryType,
         VkQueryPool queryPool,
         @Unsigned int firstQuery
     ) {
@@ -6649,7 +6649,7 @@ public final class VkDeviceCommands {
         VkCommandBuffer commandBuffer,
         @Unsigned int accelerationStructureCount,
         @Pointer VkAccelerationStructureNV.Ptr pAccelerationStructures,
-        @EnumType(VkQueryType.class) int queryType,
+        @MagicConstant(valuesFromClass = VkQueryType.class) int queryType,
         VkQueryPool queryPool,
         @Unsigned int firstQuery
     ) {
@@ -6671,7 +6671,7 @@ public final class VkDeviceCommands {
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkCmdWriteBufferMarker2AMD.html"><code>vkCmdWriteBufferMarker2AMD</code></a>
     public void cmdWriteBufferMarker2AMD(
         VkCommandBuffer commandBuffer,
-        @EnumType(VkPipelineStageFlags2.class) long stage,
+        @MagicConstant(valuesFromClass = VkPipelineStageFlags2.class) long stage,
         VkBuffer dstBuffer,
         @NativeType("VkDeviceSize") @Unsigned long dstOffset,
         @Unsigned int marker
@@ -6693,7 +6693,7 @@ public final class VkDeviceCommands {
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkCmdWriteBufferMarkerAMD.html"><code>vkCmdWriteBufferMarkerAMD</code></a>
     public void cmdWriteBufferMarkerAMD(
         VkCommandBuffer commandBuffer,
-        @EnumType(VkPipelineStageFlags.class) int pipelineStage,
+        @MagicConstant(valuesFromClass = VkPipelineStageFlags.class) int pipelineStage,
         VkBuffer dstBuffer,
         @NativeType("VkDeviceSize") @Unsigned long dstOffset,
         @Unsigned int marker
@@ -6717,7 +6717,7 @@ public final class VkDeviceCommands {
         VkCommandBuffer commandBuffer,
         @Unsigned int micromapCount,
         @Pointer VkMicromapEXT.Ptr pMicromaps,
-        @EnumType(VkQueryType.class) int queryType,
+        @MagicConstant(valuesFromClass = VkQueryType.class) int queryType,
         VkQueryPool queryPool,
         @Unsigned int firstQuery
     ) {
@@ -6739,7 +6739,7 @@ public final class VkDeviceCommands {
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkCmdWriteTimestamp.html"><code>vkCmdWriteTimestamp</code></a>
     public void cmdWriteTimestamp(
         VkCommandBuffer commandBuffer,
-        @EnumType(VkPipelineStageFlags.class) int pipelineStage,
+        @MagicConstant(valuesFromClass = VkPipelineStageFlags.class) int pipelineStage,
         VkQueryPool queryPool,
         @Unsigned int query
     ) {
@@ -6759,7 +6759,7 @@ public final class VkDeviceCommands {
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkCmdWriteTimestamp2.html"><code>vkCmdWriteTimestamp2</code></a>
     public void cmdWriteTimestamp2(
         VkCommandBuffer commandBuffer,
-        @EnumType(VkPipelineStageFlags2.class) long stage,
+        @MagicConstant(valuesFromClass = VkPipelineStageFlags2.class) long stage,
         VkQueryPool queryPool,
         @Unsigned int query
     ) {
@@ -6779,7 +6779,7 @@ public final class VkDeviceCommands {
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkCmdWriteTimestamp2KHR.html"><code>vkCmdWriteTimestamp2KHR</code></a>
     public void cmdWriteTimestamp2KHR(
         VkCommandBuffer commandBuffer,
-        @EnumType(VkPipelineStageFlags2.class) long stage,
+        @MagicConstant(valuesFromClass = VkPipelineStageFlags2.class) long stage,
         VkQueryPool queryPool,
         @Unsigned int query
     ) {
@@ -6797,7 +6797,7 @@ public final class VkDeviceCommands {
     }
 
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkCompileDeferredNV.html"><code>vkCompileDeferredNV</code></a>
-    public @EnumType(VkResult.class) int compileDeferredNV(
+    public @MagicConstant(valuesFromClass = VkResult.class) int compileDeferredNV(
         VkDevice device,
         VkPipeline pipeline,
         @Unsigned int shader
@@ -6815,7 +6815,7 @@ public final class VkDeviceCommands {
     }
 
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkConvertCooperativeVectorMatrixNV.html"><code>vkConvertCooperativeVectorMatrixNV</code></a>
-    public @EnumType(VkResult.class) int convertCooperativeVectorMatrixNV(
+    public @MagicConstant(valuesFromClass = VkResult.class) int convertCooperativeVectorMatrixNV(
         VkDevice device,
         @Pointer VkConvertCooperativeVectorMatrixInfoNV pInfo
     ) {
@@ -6831,7 +6831,7 @@ public final class VkDeviceCommands {
     }
 
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkCopyAccelerationStructureKHR.html"><code>vkCopyAccelerationStructureKHR</code></a>
-    public @EnumType(VkResult.class) int copyAccelerationStructureKHR(
+    public @MagicConstant(valuesFromClass = VkResult.class) int copyAccelerationStructureKHR(
         VkDevice device,
         @Nullable VkDeferredOperationKHR deferredOperation,
         @Pointer VkCopyAccelerationStructureInfoKHR pInfo
@@ -6849,7 +6849,7 @@ public final class VkDeviceCommands {
     }
 
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkCopyAccelerationStructureToMemoryKHR.html"><code>vkCopyAccelerationStructureToMemoryKHR</code></a>
-    public @EnumType(VkResult.class) int copyAccelerationStructureToMemoryKHR(
+    public @MagicConstant(valuesFromClass = VkResult.class) int copyAccelerationStructureToMemoryKHR(
         VkDevice device,
         @Nullable VkDeferredOperationKHR deferredOperation,
         @Pointer VkCopyAccelerationStructureToMemoryInfoKHR pInfo
@@ -6867,7 +6867,7 @@ public final class VkDeviceCommands {
     }
 
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkCopyImageToImage.html"><code>vkCopyImageToImage</code></a>
-    public @EnumType(VkResult.class) int copyImageToImage(
+    public @MagicConstant(valuesFromClass = VkResult.class) int copyImageToImage(
         VkDevice device,
         @Pointer VkCopyImageToImageInfo pCopyImageToImageInfo
     ) {
@@ -6883,7 +6883,7 @@ public final class VkDeviceCommands {
     }
 
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkCopyImageToImageEXT.html"><code>vkCopyImageToImageEXT</code></a>
-    public @EnumType(VkResult.class) int copyImageToImageEXT(
+    public @MagicConstant(valuesFromClass = VkResult.class) int copyImageToImageEXT(
         VkDevice device,
         @Pointer VkCopyImageToImageInfo pCopyImageToImageInfo
     ) {
@@ -6899,7 +6899,7 @@ public final class VkDeviceCommands {
     }
 
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkCopyImageToMemory.html"><code>vkCopyImageToMemory</code></a>
-    public @EnumType(VkResult.class) int copyImageToMemory(
+    public @MagicConstant(valuesFromClass = VkResult.class) int copyImageToMemory(
         VkDevice device,
         @Pointer VkCopyImageToMemoryInfo pCopyImageToMemoryInfo
     ) {
@@ -6915,7 +6915,7 @@ public final class VkDeviceCommands {
     }
 
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkCopyImageToMemoryEXT.html"><code>vkCopyImageToMemoryEXT</code></a>
-    public @EnumType(VkResult.class) int copyImageToMemoryEXT(
+    public @MagicConstant(valuesFromClass = VkResult.class) int copyImageToMemoryEXT(
         VkDevice device,
         @Pointer VkCopyImageToMemoryInfo pCopyImageToMemoryInfo
     ) {
@@ -6931,7 +6931,7 @@ public final class VkDeviceCommands {
     }
 
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkCopyMemoryToAccelerationStructureKHR.html"><code>vkCopyMemoryToAccelerationStructureKHR</code></a>
-    public @EnumType(VkResult.class) int copyMemoryToAccelerationStructureKHR(
+    public @MagicConstant(valuesFromClass = VkResult.class) int copyMemoryToAccelerationStructureKHR(
         VkDevice device,
         @Nullable VkDeferredOperationKHR deferredOperation,
         @Pointer VkCopyMemoryToAccelerationStructureInfoKHR pInfo
@@ -6949,7 +6949,7 @@ public final class VkDeviceCommands {
     }
 
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkCopyMemoryToImage.html"><code>vkCopyMemoryToImage</code></a>
-    public @EnumType(VkResult.class) int copyMemoryToImage(
+    public @MagicConstant(valuesFromClass = VkResult.class) int copyMemoryToImage(
         VkDevice device,
         @Pointer VkCopyMemoryToImageInfo pCopyMemoryToImageInfo
     ) {
@@ -6965,7 +6965,7 @@ public final class VkDeviceCommands {
     }
 
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkCopyMemoryToImageEXT.html"><code>vkCopyMemoryToImageEXT</code></a>
-    public @EnumType(VkResult.class) int copyMemoryToImageEXT(
+    public @MagicConstant(valuesFromClass = VkResult.class) int copyMemoryToImageEXT(
         VkDevice device,
         @Pointer VkCopyMemoryToImageInfo pCopyMemoryToImageInfo
     ) {
@@ -6981,7 +6981,7 @@ public final class VkDeviceCommands {
     }
 
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkCopyMemoryToMicromapEXT.html"><code>vkCopyMemoryToMicromapEXT</code></a>
-    public @EnumType(VkResult.class) int copyMemoryToMicromapEXT(
+    public @MagicConstant(valuesFromClass = VkResult.class) int copyMemoryToMicromapEXT(
         VkDevice device,
         @Nullable VkDeferredOperationKHR deferredOperation,
         @Pointer VkCopyMemoryToMicromapInfoEXT pInfo
@@ -6999,7 +6999,7 @@ public final class VkDeviceCommands {
     }
 
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkCopyMicromapEXT.html"><code>vkCopyMicromapEXT</code></a>
-    public @EnumType(VkResult.class) int copyMicromapEXT(
+    public @MagicConstant(valuesFromClass = VkResult.class) int copyMicromapEXT(
         VkDevice device,
         @Nullable VkDeferredOperationKHR deferredOperation,
         @Pointer VkCopyMicromapInfoEXT pInfo
@@ -7017,7 +7017,7 @@ public final class VkDeviceCommands {
     }
 
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkCopyMicromapToMemoryEXT.html"><code>vkCopyMicromapToMemoryEXT</code></a>
-    public @EnumType(VkResult.class) int copyMicromapToMemoryEXT(
+    public @MagicConstant(valuesFromClass = VkResult.class) int copyMicromapToMemoryEXT(
         VkDevice device,
         @Nullable VkDeferredOperationKHR deferredOperation,
         @Pointer VkCopyMicromapToMemoryInfoEXT pInfo
@@ -7035,7 +7035,7 @@ public final class VkDeviceCommands {
     }
 
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkCreateAccelerationStructureKHR.html"><code>vkCreateAccelerationStructureKHR</code></a>
-    public @EnumType(VkResult.class) int createAccelerationStructureKHR(
+    public @MagicConstant(valuesFromClass = VkResult.class) int createAccelerationStructureKHR(
         VkDevice device,
         @Pointer VkAccelerationStructureCreateInfoKHR pCreateInfo,
         @Nullable @Pointer VkAllocationCallbacks pAllocator,
@@ -7055,7 +7055,7 @@ public final class VkDeviceCommands {
     }
 
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkCreateAccelerationStructureNV.html"><code>vkCreateAccelerationStructureNV</code></a>
-    public @EnumType(VkResult.class) int createAccelerationStructureNV(
+    public @MagicConstant(valuesFromClass = VkResult.class) int createAccelerationStructureNV(
         VkDevice device,
         @Pointer VkAccelerationStructureCreateInfoNV pCreateInfo,
         @Nullable @Pointer VkAllocationCallbacks pAllocator,
@@ -7075,7 +7075,7 @@ public final class VkDeviceCommands {
     }
 
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkCreateBuffer.html"><code>vkCreateBuffer</code></a>
-    public @EnumType(VkResult.class) int createBuffer(
+    public @MagicConstant(valuesFromClass = VkResult.class) int createBuffer(
         VkDevice device,
         @Pointer VkBufferCreateInfo pCreateInfo,
         @Nullable @Pointer VkAllocationCallbacks pAllocator,
@@ -7095,7 +7095,7 @@ public final class VkDeviceCommands {
     }
 
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkCreateBufferCollectionFUCHSIA.html"><code>vkCreateBufferCollectionFUCHSIA</code></a>
-    public @EnumType(VkResult.class) int createBufferCollectionFUCHSIA(
+    public @MagicConstant(valuesFromClass = VkResult.class) int createBufferCollectionFUCHSIA(
         VkDevice device,
         @Pointer VkBufferCollectionCreateInfoFUCHSIA pCreateInfo,
         @Nullable @Pointer VkAllocationCallbacks pAllocator,
@@ -7115,7 +7115,7 @@ public final class VkDeviceCommands {
     }
 
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkCreateBufferView.html"><code>vkCreateBufferView</code></a>
-    public @EnumType(VkResult.class) int createBufferView(
+    public @MagicConstant(valuesFromClass = VkResult.class) int createBufferView(
         VkDevice device,
         @Pointer VkBufferViewCreateInfo pCreateInfo,
         @Nullable @Pointer VkAllocationCallbacks pAllocator,
@@ -7135,7 +7135,7 @@ public final class VkDeviceCommands {
     }
 
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkCreateCommandPool.html"><code>vkCreateCommandPool</code></a>
-    public @EnumType(VkResult.class) int createCommandPool(
+    public @MagicConstant(valuesFromClass = VkResult.class) int createCommandPool(
         VkDevice device,
         @Pointer VkCommandPoolCreateInfo pCreateInfo,
         @Nullable @Pointer VkAllocationCallbacks pAllocator,
@@ -7155,7 +7155,7 @@ public final class VkDeviceCommands {
     }
 
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkCreateComputePipelines.html"><code>vkCreateComputePipelines</code></a>
-    public @EnumType(VkResult.class) int createComputePipelines(
+    public @MagicConstant(valuesFromClass = VkResult.class) int createComputePipelines(
         VkDevice device,
         @Nullable VkPipelineCache pipelineCache,
         @Unsigned int createInfoCount,
@@ -7179,7 +7179,7 @@ public final class VkDeviceCommands {
     }
 
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkCreateCuFunctionNVX.html"><code>vkCreateCuFunctionNVX</code></a>
-    public @EnumType(VkResult.class) int createCuFunctionNVX(
+    public @MagicConstant(valuesFromClass = VkResult.class) int createCuFunctionNVX(
         VkDevice device,
         @Pointer VkCuFunctionCreateInfoNVX pCreateInfo,
         @Nullable @Pointer VkAllocationCallbacks pAllocator,
@@ -7199,7 +7199,7 @@ public final class VkDeviceCommands {
     }
 
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkCreateCuModuleNVX.html"><code>vkCreateCuModuleNVX</code></a>
-    public @EnumType(VkResult.class) int createCuModuleNVX(
+    public @MagicConstant(valuesFromClass = VkResult.class) int createCuModuleNVX(
         VkDevice device,
         @Pointer VkCuModuleCreateInfoNVX pCreateInfo,
         @Nullable @Pointer VkAllocationCallbacks pAllocator,
@@ -7219,7 +7219,7 @@ public final class VkDeviceCommands {
     }
 
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkCreateCudaFunctionNV.html"><code>vkCreateCudaFunctionNV</code></a>
-    public @EnumType(VkResult.class) int createCudaFunctionNV(
+    public @MagicConstant(valuesFromClass = VkResult.class) int createCudaFunctionNV(
         VkDevice device,
         @Pointer VkCudaFunctionCreateInfoNV pCreateInfo,
         @Nullable @Pointer VkAllocationCallbacks pAllocator,
@@ -7239,7 +7239,7 @@ public final class VkDeviceCommands {
     }
 
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkCreateCudaModuleNV.html"><code>vkCreateCudaModuleNV</code></a>
-    public @EnumType(VkResult.class) int createCudaModuleNV(
+    public @MagicConstant(valuesFromClass = VkResult.class) int createCudaModuleNV(
         VkDevice device,
         @Pointer VkCudaModuleCreateInfoNV pCreateInfo,
         @Nullable @Pointer VkAllocationCallbacks pAllocator,
@@ -7259,7 +7259,7 @@ public final class VkDeviceCommands {
     }
 
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkCreateDeferredOperationKHR.html"><code>vkCreateDeferredOperationKHR</code></a>
-    public @EnumType(VkResult.class) int createDeferredOperationKHR(
+    public @MagicConstant(valuesFromClass = VkResult.class) int createDeferredOperationKHR(
         VkDevice device,
         @Nullable @Pointer VkAllocationCallbacks pAllocator,
         @Pointer VkDeferredOperationKHR.Ptr pDeferredOperation
@@ -7277,7 +7277,7 @@ public final class VkDeviceCommands {
     }
 
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkCreateDescriptorPool.html"><code>vkCreateDescriptorPool</code></a>
-    public @EnumType(VkResult.class) int createDescriptorPool(
+    public @MagicConstant(valuesFromClass = VkResult.class) int createDescriptorPool(
         VkDevice device,
         @Pointer VkDescriptorPoolCreateInfo pCreateInfo,
         @Nullable @Pointer VkAllocationCallbacks pAllocator,
@@ -7297,7 +7297,7 @@ public final class VkDeviceCommands {
     }
 
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkCreateDescriptorSetLayout.html"><code>vkCreateDescriptorSetLayout</code></a>
-    public @EnumType(VkResult.class) int createDescriptorSetLayout(
+    public @MagicConstant(valuesFromClass = VkResult.class) int createDescriptorSetLayout(
         VkDevice device,
         @Pointer VkDescriptorSetLayoutCreateInfo pCreateInfo,
         @Nullable @Pointer VkAllocationCallbacks pAllocator,
@@ -7317,7 +7317,7 @@ public final class VkDeviceCommands {
     }
 
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkCreateDescriptorUpdateTemplate.html"><code>vkCreateDescriptorUpdateTemplate</code></a>
-    public @EnumType(VkResult.class) int createDescriptorUpdateTemplate(
+    public @MagicConstant(valuesFromClass = VkResult.class) int createDescriptorUpdateTemplate(
         VkDevice device,
         @Pointer VkDescriptorUpdateTemplateCreateInfo pCreateInfo,
         @Nullable @Pointer VkAllocationCallbacks pAllocator,
@@ -7337,7 +7337,7 @@ public final class VkDeviceCommands {
     }
 
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkCreateDescriptorUpdateTemplateKHR.html"><code>vkCreateDescriptorUpdateTemplateKHR</code></a>
-    public @EnumType(VkResult.class) int createDescriptorUpdateTemplateKHR(
+    public @MagicConstant(valuesFromClass = VkResult.class) int createDescriptorUpdateTemplateKHR(
         VkDevice device,
         @Pointer VkDescriptorUpdateTemplateCreateInfo pCreateInfo,
         @Nullable @Pointer VkAllocationCallbacks pAllocator,
@@ -7357,7 +7357,7 @@ public final class VkDeviceCommands {
     }
 
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkCreateEvent.html"><code>vkCreateEvent</code></a>
-    public @EnumType(VkResult.class) int createEvent(
+    public @MagicConstant(valuesFromClass = VkResult.class) int createEvent(
         VkDevice device,
         @Pointer VkEventCreateInfo pCreateInfo,
         @Nullable @Pointer VkAllocationCallbacks pAllocator,
@@ -7377,7 +7377,7 @@ public final class VkDeviceCommands {
     }
 
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkCreateExecutionGraphPipelinesAMDX.html"><code>vkCreateExecutionGraphPipelinesAMDX</code></a>
-    public @EnumType(VkResult.class) int createExecutionGraphPipelinesAMDX(
+    public @MagicConstant(valuesFromClass = VkResult.class) int createExecutionGraphPipelinesAMDX(
         VkDevice device,
         @Nullable VkPipelineCache pipelineCache,
         @Unsigned int createInfoCount,
@@ -7401,7 +7401,7 @@ public final class VkDeviceCommands {
     }
 
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkCreateExternalComputeQueueNV.html"><code>vkCreateExternalComputeQueueNV</code></a>
-    public @EnumType(VkResult.class) int createExternalComputeQueueNV(
+    public @MagicConstant(valuesFromClass = VkResult.class) int createExternalComputeQueueNV(
         VkDevice device,
         @Pointer VkExternalComputeQueueCreateInfoNV pCreateInfo,
         @Nullable @Pointer VkAllocationCallbacks pAllocator,
@@ -7421,7 +7421,7 @@ public final class VkDeviceCommands {
     }
 
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkCreateFence.html"><code>vkCreateFence</code></a>
-    public @EnumType(VkResult.class) int createFence(
+    public @MagicConstant(valuesFromClass = VkResult.class) int createFence(
         VkDevice device,
         @Pointer VkFenceCreateInfo pCreateInfo,
         @Nullable @Pointer VkAllocationCallbacks pAllocator,
@@ -7441,7 +7441,7 @@ public final class VkDeviceCommands {
     }
 
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkCreateFramebuffer.html"><code>vkCreateFramebuffer</code></a>
-    public @EnumType(VkResult.class) int createFramebuffer(
+    public @MagicConstant(valuesFromClass = VkResult.class) int createFramebuffer(
         VkDevice device,
         @Pointer VkFramebufferCreateInfo pCreateInfo,
         @Nullable @Pointer VkAllocationCallbacks pAllocator,
@@ -7461,7 +7461,7 @@ public final class VkDeviceCommands {
     }
 
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkCreateGraphicsPipelines.html"><code>vkCreateGraphicsPipelines</code></a>
-    public @EnumType(VkResult.class) int createGraphicsPipelines(
+    public @MagicConstant(valuesFromClass = VkResult.class) int createGraphicsPipelines(
         VkDevice device,
         @Nullable VkPipelineCache pipelineCache,
         @Unsigned int createInfoCount,
@@ -7485,7 +7485,7 @@ public final class VkDeviceCommands {
     }
 
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkCreateImage.html"><code>vkCreateImage</code></a>
-    public @EnumType(VkResult.class) int createImage(
+    public @MagicConstant(valuesFromClass = VkResult.class) int createImage(
         VkDevice device,
         @Pointer VkImageCreateInfo pCreateInfo,
         @Nullable @Pointer VkAllocationCallbacks pAllocator,
@@ -7505,7 +7505,7 @@ public final class VkDeviceCommands {
     }
 
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkCreateImageView.html"><code>vkCreateImageView</code></a>
-    public @EnumType(VkResult.class) int createImageView(
+    public @MagicConstant(valuesFromClass = VkResult.class) int createImageView(
         VkDevice device,
         @Pointer VkImageViewCreateInfo pCreateInfo,
         @Nullable @Pointer VkAllocationCallbacks pAllocator,
@@ -7525,7 +7525,7 @@ public final class VkDeviceCommands {
     }
 
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkCreateIndirectCommandsLayoutEXT.html"><code>vkCreateIndirectCommandsLayoutEXT</code></a>
-    public @EnumType(VkResult.class) int createIndirectCommandsLayoutEXT(
+    public @MagicConstant(valuesFromClass = VkResult.class) int createIndirectCommandsLayoutEXT(
         VkDevice device,
         @Pointer VkIndirectCommandsLayoutCreateInfoEXT pCreateInfo,
         @Nullable @Pointer VkAllocationCallbacks pAllocator,
@@ -7545,7 +7545,7 @@ public final class VkDeviceCommands {
     }
 
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkCreateIndirectCommandsLayoutNV.html"><code>vkCreateIndirectCommandsLayoutNV</code></a>
-    public @EnumType(VkResult.class) int createIndirectCommandsLayoutNV(
+    public @MagicConstant(valuesFromClass = VkResult.class) int createIndirectCommandsLayoutNV(
         VkDevice device,
         @Pointer VkIndirectCommandsLayoutCreateInfoNV pCreateInfo,
         @Nullable @Pointer VkAllocationCallbacks pAllocator,
@@ -7565,7 +7565,7 @@ public final class VkDeviceCommands {
     }
 
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkCreateIndirectExecutionSetEXT.html"><code>vkCreateIndirectExecutionSetEXT</code></a>
-    public @EnumType(VkResult.class) int createIndirectExecutionSetEXT(
+    public @MagicConstant(valuesFromClass = VkResult.class) int createIndirectExecutionSetEXT(
         VkDevice device,
         @Pointer VkIndirectExecutionSetCreateInfoEXT pCreateInfo,
         @Nullable @Pointer VkAllocationCallbacks pAllocator,
@@ -7585,7 +7585,7 @@ public final class VkDeviceCommands {
     }
 
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkCreateMicromapEXT.html"><code>vkCreateMicromapEXT</code></a>
-    public @EnumType(VkResult.class) int createMicromapEXT(
+    public @MagicConstant(valuesFromClass = VkResult.class) int createMicromapEXT(
         VkDevice device,
         @Pointer VkMicromapCreateInfoEXT pCreateInfo,
         @Nullable @Pointer VkAllocationCallbacks pAllocator,
@@ -7605,7 +7605,7 @@ public final class VkDeviceCommands {
     }
 
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkCreateOpticalFlowSessionNV.html"><code>vkCreateOpticalFlowSessionNV</code></a>
-    public @EnumType(VkResult.class) int createOpticalFlowSessionNV(
+    public @MagicConstant(valuesFromClass = VkResult.class) int createOpticalFlowSessionNV(
         VkDevice device,
         @Pointer VkOpticalFlowSessionCreateInfoNV pCreateInfo,
         @Nullable @Pointer VkAllocationCallbacks pAllocator,
@@ -7625,7 +7625,7 @@ public final class VkDeviceCommands {
     }
 
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkCreatePipelineBinariesKHR.html"><code>vkCreatePipelineBinariesKHR</code></a>
-    public @EnumType(VkResult.class) int createPipelineBinariesKHR(
+    public @MagicConstant(valuesFromClass = VkResult.class) int createPipelineBinariesKHR(
         VkDevice device,
         @Pointer VkPipelineBinaryCreateInfoKHR pCreateInfo,
         @Nullable @Pointer VkAllocationCallbacks pAllocator,
@@ -7645,7 +7645,7 @@ public final class VkDeviceCommands {
     }
 
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkCreatePipelineCache.html"><code>vkCreatePipelineCache</code></a>
-    public @EnumType(VkResult.class) int createPipelineCache(
+    public @MagicConstant(valuesFromClass = VkResult.class) int createPipelineCache(
         VkDevice device,
         @Pointer VkPipelineCacheCreateInfo pCreateInfo,
         @Nullable @Pointer VkAllocationCallbacks pAllocator,
@@ -7665,7 +7665,7 @@ public final class VkDeviceCommands {
     }
 
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkCreatePipelineLayout.html"><code>vkCreatePipelineLayout</code></a>
-    public @EnumType(VkResult.class) int createPipelineLayout(
+    public @MagicConstant(valuesFromClass = VkResult.class) int createPipelineLayout(
         VkDevice device,
         @Pointer VkPipelineLayoutCreateInfo pCreateInfo,
         @Nullable @Pointer VkAllocationCallbacks pAllocator,
@@ -7685,7 +7685,7 @@ public final class VkDeviceCommands {
     }
 
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkCreatePrivateDataSlot.html"><code>vkCreatePrivateDataSlot</code></a>
-    public @EnumType(VkResult.class) int createPrivateDataSlot(
+    public @MagicConstant(valuesFromClass = VkResult.class) int createPrivateDataSlot(
         VkDevice device,
         @Pointer VkPrivateDataSlotCreateInfo pCreateInfo,
         @Nullable @Pointer VkAllocationCallbacks pAllocator,
@@ -7705,7 +7705,7 @@ public final class VkDeviceCommands {
     }
 
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkCreatePrivateDataSlotEXT.html"><code>vkCreatePrivateDataSlotEXT</code></a>
-    public @EnumType(VkResult.class) int createPrivateDataSlotEXT(
+    public @MagicConstant(valuesFromClass = VkResult.class) int createPrivateDataSlotEXT(
         VkDevice device,
         @Pointer VkPrivateDataSlotCreateInfo pCreateInfo,
         @Nullable @Pointer VkAllocationCallbacks pAllocator,
@@ -7725,7 +7725,7 @@ public final class VkDeviceCommands {
     }
 
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkCreateQueryPool.html"><code>vkCreateQueryPool</code></a>
-    public @EnumType(VkResult.class) int createQueryPool(
+    public @MagicConstant(valuesFromClass = VkResult.class) int createQueryPool(
         VkDevice device,
         @Pointer VkQueryPoolCreateInfo pCreateInfo,
         @Nullable @Pointer VkAllocationCallbacks pAllocator,
@@ -7745,7 +7745,7 @@ public final class VkDeviceCommands {
     }
 
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkCreateRayTracingPipelinesKHR.html"><code>vkCreateRayTracingPipelinesKHR</code></a>
-    public @EnumType(VkResult.class) int createRayTracingPipelinesKHR(
+    public @MagicConstant(valuesFromClass = VkResult.class) int createRayTracingPipelinesKHR(
         VkDevice device,
         @Nullable VkDeferredOperationKHR deferredOperation,
         @Nullable VkPipelineCache pipelineCache,
@@ -7771,7 +7771,7 @@ public final class VkDeviceCommands {
     }
 
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkCreateRayTracingPipelinesNV.html"><code>vkCreateRayTracingPipelinesNV</code></a>
-    public @EnumType(VkResult.class) int createRayTracingPipelinesNV(
+    public @MagicConstant(valuesFromClass = VkResult.class) int createRayTracingPipelinesNV(
         VkDevice device,
         @Nullable VkPipelineCache pipelineCache,
         @Unsigned int createInfoCount,
@@ -7795,7 +7795,7 @@ public final class VkDeviceCommands {
     }
 
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkCreateRenderPass.html"><code>vkCreateRenderPass</code></a>
-    public @EnumType(VkResult.class) int createRenderPass(
+    public @MagicConstant(valuesFromClass = VkResult.class) int createRenderPass(
         VkDevice device,
         @Pointer VkRenderPassCreateInfo pCreateInfo,
         @Nullable @Pointer VkAllocationCallbacks pAllocator,
@@ -7815,7 +7815,7 @@ public final class VkDeviceCommands {
     }
 
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkCreateRenderPass2.html"><code>vkCreateRenderPass2</code></a>
-    public @EnumType(VkResult.class) int createRenderPass2(
+    public @MagicConstant(valuesFromClass = VkResult.class) int createRenderPass2(
         VkDevice device,
         @Pointer VkRenderPassCreateInfo2 pCreateInfo,
         @Nullable @Pointer VkAllocationCallbacks pAllocator,
@@ -7835,7 +7835,7 @@ public final class VkDeviceCommands {
     }
 
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkCreateRenderPass2KHR.html"><code>vkCreateRenderPass2KHR</code></a>
-    public @EnumType(VkResult.class) int createRenderPass2KHR(
+    public @MagicConstant(valuesFromClass = VkResult.class) int createRenderPass2KHR(
         VkDevice device,
         @Pointer VkRenderPassCreateInfo2 pCreateInfo,
         @Nullable @Pointer VkAllocationCallbacks pAllocator,
@@ -7855,7 +7855,7 @@ public final class VkDeviceCommands {
     }
 
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkCreateSampler.html"><code>vkCreateSampler</code></a>
-    public @EnumType(VkResult.class) int createSampler(
+    public @MagicConstant(valuesFromClass = VkResult.class) int createSampler(
         VkDevice device,
         @Pointer VkSamplerCreateInfo pCreateInfo,
         @Nullable @Pointer VkAllocationCallbacks pAllocator,
@@ -7875,7 +7875,7 @@ public final class VkDeviceCommands {
     }
 
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkCreateSamplerYcbcrConversion.html"><code>vkCreateSamplerYcbcrConversion</code></a>
-    public @EnumType(VkResult.class) int createSamplerYcbcrConversion(
+    public @MagicConstant(valuesFromClass = VkResult.class) int createSamplerYcbcrConversion(
         VkDevice device,
         @Pointer VkSamplerYcbcrConversionCreateInfo pCreateInfo,
         @Nullable @Pointer VkAllocationCallbacks pAllocator,
@@ -7895,7 +7895,7 @@ public final class VkDeviceCommands {
     }
 
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkCreateSamplerYcbcrConversionKHR.html"><code>vkCreateSamplerYcbcrConversionKHR</code></a>
-    public @EnumType(VkResult.class) int createSamplerYcbcrConversionKHR(
+    public @MagicConstant(valuesFromClass = VkResult.class) int createSamplerYcbcrConversionKHR(
         VkDevice device,
         @Pointer VkSamplerYcbcrConversionCreateInfo pCreateInfo,
         @Nullable @Pointer VkAllocationCallbacks pAllocator,
@@ -7915,7 +7915,7 @@ public final class VkDeviceCommands {
     }
 
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkCreateSemaphore.html"><code>vkCreateSemaphore</code></a>
-    public @EnumType(VkResult.class) int createSemaphore(
+    public @MagicConstant(valuesFromClass = VkResult.class) int createSemaphore(
         VkDevice device,
         @Pointer VkSemaphoreCreateInfo pCreateInfo,
         @Nullable @Pointer VkAllocationCallbacks pAllocator,
@@ -7935,7 +7935,7 @@ public final class VkDeviceCommands {
     }
 
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkCreateSemaphoreSciSyncPoolNV.html"><code>vkCreateSemaphoreSciSyncPoolNV</code></a>
-    public @EnumType(VkResult.class) int createSemaphoreSciSyncPoolNV(
+    public @MagicConstant(valuesFromClass = VkResult.class) int createSemaphoreSciSyncPoolNV(
         VkDevice device,
         @Pointer VkSemaphoreSciSyncPoolCreateInfoNV pCreateInfo,
         @Nullable @Pointer VkAllocationCallbacks pAllocator,
@@ -7955,7 +7955,7 @@ public final class VkDeviceCommands {
     }
 
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkCreateShaderModule.html"><code>vkCreateShaderModule</code></a>
-    public @EnumType(VkResult.class) int createShaderModule(
+    public @MagicConstant(valuesFromClass = VkResult.class) int createShaderModule(
         VkDevice device,
         @Pointer VkShaderModuleCreateInfo pCreateInfo,
         @Nullable @Pointer VkAllocationCallbacks pAllocator,
@@ -7975,7 +7975,7 @@ public final class VkDeviceCommands {
     }
 
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkCreateShadersEXT.html"><code>vkCreateShadersEXT</code></a>
-    public @EnumType(VkResult.class) int createShadersEXT(
+    public @MagicConstant(valuesFromClass = VkResult.class) int createShadersEXT(
         VkDevice device,
         @Unsigned int createInfoCount,
         @Pointer IVkShaderCreateInfoEXT pCreateInfos,
@@ -7997,7 +7997,7 @@ public final class VkDeviceCommands {
     }
 
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkCreateSharedSwapchainsKHR.html"><code>vkCreateSharedSwapchainsKHR</code></a>
-    public @EnumType(VkResult.class) int createSharedSwapchainsKHR(
+    public @MagicConstant(valuesFromClass = VkResult.class) int createSharedSwapchainsKHR(
         VkDevice device,
         @Unsigned int swapchainCount,
         @Pointer IVkSwapchainCreateInfoKHR pCreateInfos,
@@ -8019,7 +8019,7 @@ public final class VkDeviceCommands {
     }
 
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkCreateSwapchainKHR.html"><code>vkCreateSwapchainKHR</code></a>
-    public @EnumType(VkResult.class) int createSwapchainKHR(
+    public @MagicConstant(valuesFromClass = VkResult.class) int createSwapchainKHR(
         VkDevice device,
         @Pointer VkSwapchainCreateInfoKHR pCreateInfo,
         @Nullable @Pointer VkAllocationCallbacks pAllocator,
@@ -8039,7 +8039,7 @@ public final class VkDeviceCommands {
     }
 
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkCreateValidationCacheEXT.html"><code>vkCreateValidationCacheEXT</code></a>
-    public @EnumType(VkResult.class) int createValidationCacheEXT(
+    public @MagicConstant(valuesFromClass = VkResult.class) int createValidationCacheEXT(
         VkDevice device,
         @Pointer VkValidationCacheCreateInfoEXT pCreateInfo,
         @Nullable @Pointer VkAllocationCallbacks pAllocator,
@@ -8059,7 +8059,7 @@ public final class VkDeviceCommands {
     }
 
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkCreateVideoSessionKHR.html"><code>vkCreateVideoSessionKHR</code></a>
-    public @EnumType(VkResult.class) int createVideoSessionKHR(
+    public @MagicConstant(valuesFromClass = VkResult.class) int createVideoSessionKHR(
         VkDevice device,
         @Pointer VkVideoSessionCreateInfoKHR pCreateInfo,
         @Nullable @Pointer VkAllocationCallbacks pAllocator,
@@ -8079,7 +8079,7 @@ public final class VkDeviceCommands {
     }
 
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkCreateVideoSessionParametersKHR.html"><code>vkCreateVideoSessionParametersKHR</code></a>
-    public @EnumType(VkResult.class) int createVideoSessionParametersKHR(
+    public @MagicConstant(valuesFromClass = VkResult.class) int createVideoSessionParametersKHR(
         VkDevice device,
         @Pointer VkVideoSessionParametersCreateInfoKHR pCreateInfo,
         @Nullable @Pointer VkAllocationCallbacks pAllocator,
@@ -8099,7 +8099,7 @@ public final class VkDeviceCommands {
     }
 
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkDebugMarkerSetObjectNameEXT.html"><code>vkDebugMarkerSetObjectNameEXT</code></a>
-    public @EnumType(VkResult.class) int debugMarkerSetObjectNameEXT(
+    public @MagicConstant(valuesFromClass = VkResult.class) int debugMarkerSetObjectNameEXT(
         VkDevice device,
         @Pointer VkDebugMarkerObjectNameInfoEXT pNameInfo
     ) {
@@ -8115,7 +8115,7 @@ public final class VkDeviceCommands {
     }
 
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkDebugMarkerSetObjectTagEXT.html"><code>vkDebugMarkerSetObjectTagEXT</code></a>
-    public @EnumType(VkResult.class) int debugMarkerSetObjectTagEXT(
+    public @MagicConstant(valuesFromClass = VkResult.class) int debugMarkerSetObjectTagEXT(
         VkDevice device,
         @Pointer VkDebugMarkerObjectTagInfoEXT pTagInfo
     ) {
@@ -8131,7 +8131,7 @@ public final class VkDeviceCommands {
     }
 
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkDeferredOperationJoinKHR.html"><code>vkDeferredOperationJoinKHR</code></a>
-    public @EnumType(VkResult.class) int deferredOperationJoinKHR(
+    public @MagicConstant(valuesFromClass = VkResult.class) int deferredOperationJoinKHR(
         VkDevice device,
         VkDeferredOperationKHR operation
     ) {
@@ -8973,7 +8973,7 @@ public final class VkDeviceCommands {
     }
 
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkDeviceWaitIdle.html"><code>vkDeviceWaitIdle</code></a>
-    public @EnumType(VkResult.class) int deviceWaitIdle(
+    public @MagicConstant(valuesFromClass = VkResult.class) int deviceWaitIdle(
         VkDevice device
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkDeviceWaitIdle);
@@ -8987,7 +8987,7 @@ public final class VkDeviceCommands {
     }
 
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkDisplayPowerControlEXT.html"><code>vkDisplayPowerControlEXT</code></a>
-    public @EnumType(VkResult.class) int displayPowerControlEXT(
+    public @MagicConstant(valuesFromClass = VkResult.class) int displayPowerControlEXT(
         VkDevice device,
         VkDisplayKHR display,
         @Pointer VkDisplayPowerInfoEXT pDisplayPowerInfo
@@ -9005,7 +9005,7 @@ public final class VkDeviceCommands {
     }
 
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkEndCommandBuffer.html"><code>vkEndCommandBuffer</code></a>
-    public @EnumType(VkResult.class) int endCommandBuffer(
+    public @MagicConstant(valuesFromClass = VkResult.class) int endCommandBuffer(
         VkCommandBuffer commandBuffer
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkEndCommandBuffer);
@@ -9035,7 +9035,7 @@ public final class VkDeviceCommands {
     }
 
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkFlushMappedMemoryRanges.html"><code>vkFlushMappedMemoryRanges</code></a>
-    public @EnumType(VkResult.class) int flushMappedMemoryRanges(
+    public @MagicConstant(valuesFromClass = VkResult.class) int flushMappedMemoryRanges(
         VkDevice device,
         @Unsigned int memoryRangeCount,
         @Pointer IVkMappedMemoryRange pMemoryRanges
@@ -9073,7 +9073,7 @@ public final class VkDeviceCommands {
     }
 
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkFreeDescriptorSets.html"><code>vkFreeDescriptorSets</code></a>
-    public @EnumType(VkResult.class) int freeDescriptorSets(
+    public @MagicConstant(valuesFromClass = VkResult.class) int freeDescriptorSets(
         VkDevice device,
         VkDescriptorPool descriptorPool,
         @Unsigned int descriptorSetCount,
@@ -9113,7 +9113,7 @@ public final class VkDeviceCommands {
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkGetAccelerationStructureBuildSizesKHR.html"><code>vkGetAccelerationStructureBuildSizesKHR</code></a>
     public void getAccelerationStructureBuildSizesKHR(
         VkDevice device,
-        @EnumType(VkAccelerationStructureBuildTypeKHR.class) int buildType,
+        @MagicConstant(valuesFromClass = VkAccelerationStructureBuildTypeKHR.class) int buildType,
         @Pointer VkAccelerationStructureBuildGeometryInfoKHR pBuildInfo,
         @Nullable @Unsigned IntPtr pMaxPrimitiveCounts,
         @Pointer VkAccelerationStructureBuildSizesInfoKHR pSizeInfo
@@ -9149,7 +9149,7 @@ public final class VkDeviceCommands {
     }
 
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkGetAccelerationStructureHandleNV.html"><code>vkGetAccelerationStructureHandleNV</code></a>
-    public @EnumType(VkResult.class) int getAccelerationStructureHandleNV(
+    public @MagicConstant(valuesFromClass = VkResult.class) int getAccelerationStructureHandleNV(
         VkDevice device,
         VkAccelerationStructureNV accelerationStructure,
         long dataSize,
@@ -9187,7 +9187,7 @@ public final class VkDeviceCommands {
     }
 
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkGetAccelerationStructureOpaqueCaptureDescriptorDataEXT.html"><code>vkGetAccelerationStructureOpaqueCaptureDescriptorDataEXT</code></a>
-    public @EnumType(VkResult.class) int getAccelerationStructureOpaqueCaptureDescriptorDataEXT(
+    public @MagicConstant(valuesFromClass = VkResult.class) int getAccelerationStructureOpaqueCaptureDescriptorDataEXT(
         VkDevice device,
         @Pointer VkAccelerationStructureCaptureDescriptorDataInfoEXT pInfo,
         @Pointer(comment="void*") MemorySegment pData
@@ -9205,7 +9205,7 @@ public final class VkDeviceCommands {
     }
 
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkGetAndroidHardwareBufferPropertiesANDROID.html"><code>vkGetAndroidHardwareBufferPropertiesANDROID</code></a>
-    public @EnumType(VkResult.class) int getAndroidHardwareBufferPropertiesANDROID(
+    public @MagicConstant(valuesFromClass = VkResult.class) int getAndroidHardwareBufferPropertiesANDROID(
         VkDevice device,
         PointerPtr buffer,
         @Pointer VkAndroidHardwareBufferPropertiesANDROID pProperties
@@ -9223,7 +9223,7 @@ public final class VkDeviceCommands {
     }
 
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkGetBufferCollectionPropertiesFUCHSIA.html"><code>vkGetBufferCollectionPropertiesFUCHSIA</code></a>
-    public @EnumType(VkResult.class) int getBufferCollectionPropertiesFUCHSIA(
+    public @MagicConstant(valuesFromClass = VkResult.class) int getBufferCollectionPropertiesFUCHSIA(
         VkDevice device,
         VkBufferCollectionFUCHSIA collection,
         @Pointer VkBufferCollectionPropertiesFUCHSIA pProperties
@@ -9375,7 +9375,7 @@ public final class VkDeviceCommands {
     }
 
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkGetBufferOpaqueCaptureDescriptorDataEXT.html"><code>vkGetBufferOpaqueCaptureDescriptorDataEXT</code></a>
-    public @EnumType(VkResult.class) int getBufferOpaqueCaptureDescriptorDataEXT(
+    public @MagicConstant(valuesFromClass = VkResult.class) int getBufferOpaqueCaptureDescriptorDataEXT(
         VkDevice device,
         @Pointer VkBufferCaptureDescriptorDataInfoEXT pInfo,
         @Pointer(comment="void*") MemorySegment pData
@@ -9393,7 +9393,7 @@ public final class VkDeviceCommands {
     }
 
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkGetCalibratedTimestampsEXT.html"><code>vkGetCalibratedTimestampsEXT</code></a>
-    public @EnumType(VkResult.class) int getCalibratedTimestampsEXT(
+    public @MagicConstant(valuesFromClass = VkResult.class) int getCalibratedTimestampsEXT(
         VkDevice device,
         @Unsigned int timestampCount,
         @Pointer IVkCalibratedTimestampInfoKHR pTimestampInfos,
@@ -9415,7 +9415,7 @@ public final class VkDeviceCommands {
     }
 
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkGetCalibratedTimestampsKHR.html"><code>vkGetCalibratedTimestampsKHR</code></a>
-    public @EnumType(VkResult.class) int getCalibratedTimestampsKHR(
+    public @MagicConstant(valuesFromClass = VkResult.class) int getCalibratedTimestampsKHR(
         VkDevice device,
         @Unsigned int timestampCount,
         @Pointer IVkCalibratedTimestampInfoKHR pTimestampInfos,
@@ -9455,7 +9455,7 @@ public final class VkDeviceCommands {
     }
 
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkGetCudaModuleCacheNV.html"><code>vkGetCudaModuleCacheNV</code></a>
-    public @EnumType(VkResult.class) int getCudaModuleCacheNV(
+    public @MagicConstant(valuesFromClass = VkResult.class) int getCudaModuleCacheNV(
         VkDevice device,
         VkCudaModuleNV module,
         PointerPtr pCacheSize,
@@ -9491,7 +9491,7 @@ public final class VkDeviceCommands {
     }
 
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkGetDeferredOperationResultKHR.html"><code>vkGetDeferredOperationResultKHR</code></a>
-    public @EnumType(VkResult.class) int getDeferredOperationResultKHR(
+    public @MagicConstant(valuesFromClass = VkResult.class) int getDeferredOperationResultKHR(
         VkDevice device,
         VkDeferredOperationKHR operation
     ) {
@@ -9691,7 +9691,7 @@ public final class VkDeviceCommands {
     }
 
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkGetDeviceFaultInfoEXT.html"><code>vkGetDeviceFaultInfoEXT</code></a>
-    public @EnumType(VkResult.class) int getDeviceFaultInfoEXT(
+    public @MagicConstant(valuesFromClass = VkResult.class) int getDeviceFaultInfoEXT(
         VkDevice device,
         @Pointer VkDeviceFaultCountsEXT pFaultCounts,
         @Nullable @Pointer VkDeviceFaultInfoEXT pFaultInfo
@@ -9753,7 +9753,7 @@ public final class VkDeviceCommands {
     }
 
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkGetDeviceGroupPresentCapabilitiesKHR.html"><code>vkGetDeviceGroupPresentCapabilitiesKHR</code></a>
-    public @EnumType(VkResult.class) int getDeviceGroupPresentCapabilitiesKHR(
+    public @MagicConstant(valuesFromClass = VkResult.class) int getDeviceGroupPresentCapabilitiesKHR(
         VkDevice device,
         @Pointer VkDeviceGroupPresentCapabilitiesKHR pDeviceGroupPresentCapabilities
     ) {
@@ -9769,7 +9769,7 @@ public final class VkDeviceCommands {
     }
 
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkGetDeviceGroupSurfacePresentModes2EXT.html"><code>vkGetDeviceGroupSurfacePresentModes2EXT</code></a>
-    public @EnumType(VkResult.class) int getDeviceGroupSurfacePresentModes2EXT(
+    public @MagicConstant(valuesFromClass = VkResult.class) int getDeviceGroupSurfacePresentModes2EXT(
         VkDevice device,
         @Pointer VkPhysicalDeviceSurfaceInfo2KHR pSurfaceInfo,
         @EnumType(VkDeviceGroupPresentModeFlagsKHR.class) IntPtr pModes
@@ -9787,7 +9787,7 @@ public final class VkDeviceCommands {
     }
 
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkGetDeviceGroupSurfacePresentModesKHR.html"><code>vkGetDeviceGroupSurfacePresentModesKHR</code></a>
-    public @EnumType(VkResult.class) int getDeviceGroupSurfacePresentModesKHR(
+    public @MagicConstant(valuesFromClass = VkResult.class) int getDeviceGroupSurfacePresentModesKHR(
         VkDevice device,
         VkSurfaceKHR surface,
         @EnumType(VkDeviceGroupPresentModeFlagsKHR.class) IntPtr pModes
@@ -10023,7 +10023,7 @@ public final class VkDeviceCommands {
     }
 
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkGetDeviceSubpassShadingMaxWorkgroupSizeHUAWEI.html"><code>vkGetDeviceSubpassShadingMaxWorkgroupSizeHUAWEI</code></a>
-    public @EnumType(VkResult.class) int getDeviceSubpassShadingMaxWorkgroupSizeHUAWEI(
+    public @MagicConstant(valuesFromClass = VkResult.class) int getDeviceSubpassShadingMaxWorkgroupSizeHUAWEI(
         VkDevice device,
         VkRenderPass renderpass,
         @Pointer IVkExtent2D pMaxWorkgroupSize
@@ -10041,7 +10041,7 @@ public final class VkDeviceCommands {
     }
 
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkGetDynamicRenderingTilePropertiesQCOM.html"><code>vkGetDynamicRenderingTilePropertiesQCOM</code></a>
-    public @EnumType(VkResult.class) int getDynamicRenderingTilePropertiesQCOM(
+    public @MagicConstant(valuesFromClass = VkResult.class) int getDynamicRenderingTilePropertiesQCOM(
         VkDevice device,
         @Pointer VkRenderingInfo pRenderingInfo,
         @Pointer VkTilePropertiesQCOM pProperties
@@ -10059,7 +10059,7 @@ public final class VkDeviceCommands {
     }
 
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkGetEncodedVideoSessionParametersKHR.html"><code>vkGetEncodedVideoSessionParametersKHR</code></a>
-    public @EnumType(VkResult.class) int getEncodedVideoSessionParametersKHR(
+    public @MagicConstant(valuesFromClass = VkResult.class) int getEncodedVideoSessionParametersKHR(
         VkDevice device,
         @Pointer VkVideoEncodeSessionParametersGetInfoKHR pVideoSessionParametersInfo,
         @Nullable @Pointer VkVideoEncodeSessionParametersFeedbackInfoKHR pFeedbackInfo,
@@ -10081,7 +10081,7 @@ public final class VkDeviceCommands {
     }
 
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkGetEventStatus.html"><code>vkGetEventStatus</code></a>
-    public @EnumType(VkResult.class) int getEventStatus(
+    public @MagicConstant(valuesFromClass = VkResult.class) int getEventStatus(
         VkDevice device,
         VkEvent event
     ) {
@@ -10097,7 +10097,7 @@ public final class VkDeviceCommands {
     }
 
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkGetExecutionGraphPipelineNodeIndexAMDX.html"><code>vkGetExecutionGraphPipelineNodeIndexAMDX</code></a>
-    public @EnumType(VkResult.class) int getExecutionGraphPipelineNodeIndexAMDX(
+    public @MagicConstant(valuesFromClass = VkResult.class) int getExecutionGraphPipelineNodeIndexAMDX(
         VkDevice device,
         VkPipeline executionGraph,
         @Pointer VkPipelineShaderStageNodeCreateInfoAMDX pNodeInfo,
@@ -10117,7 +10117,7 @@ public final class VkDeviceCommands {
     }
 
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkGetExecutionGraphPipelineScratchSizeAMDX.html"><code>vkGetExecutionGraphPipelineScratchSizeAMDX</code></a>
-    public @EnumType(VkResult.class) int getExecutionGraphPipelineScratchSizeAMDX(
+    public @MagicConstant(valuesFromClass = VkResult.class) int getExecutionGraphPipelineScratchSizeAMDX(
         VkDevice device,
         VkPipeline executionGraph,
         @Pointer VkExecutionGraphPipelineScratchSizeAMDX pSizeInfo
@@ -10153,7 +10153,7 @@ public final class VkDeviceCommands {
     }
 
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkGetFenceFdKHR.html"><code>vkGetFenceFdKHR</code></a>
-    public @EnumType(VkResult.class) int getFenceFdKHR(
+    public @MagicConstant(valuesFromClass = VkResult.class) int getFenceFdKHR(
         VkDevice device,
         @Pointer VkFenceGetFdInfoKHR pGetFdInfo,
         IntPtr pFd
@@ -10171,7 +10171,7 @@ public final class VkDeviceCommands {
     }
 
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkGetFenceSciSyncFenceNV.html"><code>vkGetFenceSciSyncFenceNV</code></a>
-    public @EnumType(VkResult.class) int getFenceSciSyncFenceNV(
+    public @MagicConstant(valuesFromClass = VkResult.class) int getFenceSciSyncFenceNV(
         VkDevice device,
         @Pointer VkFenceGetSciSyncInfoNV pGetSciSyncHandleInfo,
         @Pointer(comment="void*") MemorySegment pHandle
@@ -10189,7 +10189,7 @@ public final class VkDeviceCommands {
     }
 
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkGetFenceSciSyncObjNV.html"><code>vkGetFenceSciSyncObjNV</code></a>
-    public @EnumType(VkResult.class) int getFenceSciSyncObjNV(
+    public @MagicConstant(valuesFromClass = VkResult.class) int getFenceSciSyncObjNV(
         VkDevice device,
         @Pointer VkFenceGetSciSyncInfoNV pGetSciSyncHandleInfo,
         @Pointer(comment="void*") MemorySegment pHandle
@@ -10207,7 +10207,7 @@ public final class VkDeviceCommands {
     }
 
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkGetFenceStatus.html"><code>vkGetFenceStatus</code></a>
-    public @EnumType(VkResult.class) int getFenceStatus(
+    public @MagicConstant(valuesFromClass = VkResult.class) int getFenceStatus(
         VkDevice device,
         VkFence fence
     ) {
@@ -10223,7 +10223,7 @@ public final class VkDeviceCommands {
     }
 
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkGetFenceWin32HandleKHR.html"><code>vkGetFenceWin32HandleKHR</code></a>
-    public @EnumType(VkResult.class) int getFenceWin32HandleKHR(
+    public @MagicConstant(valuesFromClass = VkResult.class) int getFenceWin32HandleKHR(
         VkDevice device,
         @Pointer VkFenceGetWin32HandleInfoKHR pGetWin32HandleInfo,
         PointerPtr pHandle
@@ -10241,7 +10241,7 @@ public final class VkDeviceCommands {
     }
 
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkGetFramebufferTilePropertiesQCOM.html"><code>vkGetFramebufferTilePropertiesQCOM</code></a>
-    public @EnumType(VkResult.class) int getFramebufferTilePropertiesQCOM(
+    public @MagicConstant(valuesFromClass = VkResult.class) int getFramebufferTilePropertiesQCOM(
         VkDevice device,
         VkFramebuffer framebuffer,
         @Unsigned IntPtr pPropertiesCount,
@@ -10297,7 +10297,7 @@ public final class VkDeviceCommands {
     }
 
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkGetImageDrmFormatModifierPropertiesEXT.html"><code>vkGetImageDrmFormatModifierPropertiesEXT</code></a>
-    public @EnumType(VkResult.class) int getImageDrmFormatModifierPropertiesEXT(
+    public @MagicConstant(valuesFromClass = VkResult.class) int getImageDrmFormatModifierPropertiesEXT(
         VkDevice device,
         VkImage image,
         @Pointer VkImageDrmFormatModifierPropertiesEXT pProperties
@@ -10369,7 +10369,7 @@ public final class VkDeviceCommands {
     }
 
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkGetImageOpaqueCaptureDescriptorDataEXT.html"><code>vkGetImageOpaqueCaptureDescriptorDataEXT</code></a>
-    public @EnumType(VkResult.class) int getImageOpaqueCaptureDescriptorDataEXT(
+    public @MagicConstant(valuesFromClass = VkResult.class) int getImageOpaqueCaptureDescriptorDataEXT(
         VkDevice device,
         @Pointer VkImageCaptureDescriptorDataInfoEXT pInfo,
         @Pointer(comment="void*") MemorySegment pData
@@ -10527,7 +10527,7 @@ public final class VkDeviceCommands {
     }
 
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkGetImageViewAddressNVX.html"><code>vkGetImageViewAddressNVX</code></a>
-    public @EnumType(VkResult.class) int getImageViewAddressNVX(
+    public @MagicConstant(valuesFromClass = VkResult.class) int getImageViewAddressNVX(
         VkDevice device,
         VkImageView imageView,
         @Pointer VkImageViewAddressPropertiesNVX pProperties
@@ -10577,7 +10577,7 @@ public final class VkDeviceCommands {
     }
 
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkGetImageViewOpaqueCaptureDescriptorDataEXT.html"><code>vkGetImageViewOpaqueCaptureDescriptorDataEXT</code></a>
-    public @EnumType(VkResult.class) int getImageViewOpaqueCaptureDescriptorDataEXT(
+    public @MagicConstant(valuesFromClass = VkResult.class) int getImageViewOpaqueCaptureDescriptorDataEXT(
         VkDevice device,
         @Pointer VkImageViewCaptureDescriptorDataInfoEXT pInfo,
         @Pointer(comment="void*") MemorySegment pData
@@ -10613,7 +10613,7 @@ public final class VkDeviceCommands {
     }
 
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkGetMemoryAndroidHardwareBufferANDROID.html"><code>vkGetMemoryAndroidHardwareBufferANDROID</code></a>
-    public @EnumType(VkResult.class) int getMemoryAndroidHardwareBufferANDROID(
+    public @MagicConstant(valuesFromClass = VkResult.class) int getMemoryAndroidHardwareBufferANDROID(
         VkDevice device,
         @Pointer VkMemoryGetAndroidHardwareBufferInfoANDROID pInfo,
         PointerPtr pBuffer
@@ -10631,7 +10631,7 @@ public final class VkDeviceCommands {
     }
 
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkGetMemoryFdKHR.html"><code>vkGetMemoryFdKHR</code></a>
-    public @EnumType(VkResult.class) int getMemoryFdKHR(
+    public @MagicConstant(valuesFromClass = VkResult.class) int getMemoryFdKHR(
         VkDevice device,
         @Pointer VkMemoryGetFdInfoKHR pGetFdInfo,
         IntPtr pFd
@@ -10649,9 +10649,9 @@ public final class VkDeviceCommands {
     }
 
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkGetMemoryFdPropertiesKHR.html"><code>vkGetMemoryFdPropertiesKHR</code></a>
-    public @EnumType(VkResult.class) int getMemoryFdPropertiesKHR(
+    public @MagicConstant(valuesFromClass = VkResult.class) int getMemoryFdPropertiesKHR(
         VkDevice device,
-        @EnumType(VkExternalMemoryHandleTypeFlags.class) int handleType,
+        @MagicConstant(valuesFromClass = VkExternalMemoryHandleTypeFlags.class) int handleType,
         int fd,
         @Pointer VkMemoryFdPropertiesKHR pMemoryFdProperties
     ) {
@@ -10669,9 +10669,9 @@ public final class VkDeviceCommands {
     }
 
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkGetMemoryHostPointerPropertiesEXT.html"><code>vkGetMemoryHostPointerPropertiesEXT</code></a>
-    public @EnumType(VkResult.class) int getMemoryHostPointerPropertiesEXT(
+    public @MagicConstant(valuesFromClass = VkResult.class) int getMemoryHostPointerPropertiesEXT(
         VkDevice device,
-        @EnumType(VkExternalMemoryHandleTypeFlags.class) int handleType,
+        @MagicConstant(valuesFromClass = VkExternalMemoryHandleTypeFlags.class) int handleType,
         @Pointer(comment="void*") MemorySegment pHostPointer,
         @Pointer VkMemoryHostPointerPropertiesEXT pMemoryHostPointerProperties
     ) {
@@ -10689,7 +10689,7 @@ public final class VkDeviceCommands {
     }
 
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkGetMemoryMetalHandleEXT.html"><code>vkGetMemoryMetalHandleEXT</code></a>
-    public @EnumType(VkResult.class) int getMemoryMetalHandleEXT(
+    public @MagicConstant(valuesFromClass = VkResult.class) int getMemoryMetalHandleEXT(
         VkDevice device,
         @Pointer VkMemoryGetMetalHandleInfoEXT pGetMetalHandleInfo,
         PointerPtr pHandle
@@ -10707,9 +10707,9 @@ public final class VkDeviceCommands {
     }
 
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkGetMemoryMetalHandlePropertiesEXT.html"><code>vkGetMemoryMetalHandlePropertiesEXT</code></a>
-    public @EnumType(VkResult.class) int getMemoryMetalHandlePropertiesEXT(
+    public @MagicConstant(valuesFromClass = VkResult.class) int getMemoryMetalHandlePropertiesEXT(
         VkDevice device,
-        @EnumType(VkExternalMemoryHandleTypeFlags.class) int handleType,
+        @MagicConstant(valuesFromClass = VkExternalMemoryHandleTypeFlags.class) int handleType,
         @Pointer(comment="void*") MemorySegment pHandle,
         @Pointer VkMemoryMetalHandlePropertiesEXT pMemoryMetalHandleProperties
     ) {
@@ -10727,7 +10727,7 @@ public final class VkDeviceCommands {
     }
 
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkGetMemoryRemoteAddressNV.html"><code>vkGetMemoryRemoteAddressNV</code></a>
-    public @EnumType(VkResult.class) int getMemoryRemoteAddressNV(
+    public @MagicConstant(valuesFromClass = VkResult.class) int getMemoryRemoteAddressNV(
         VkDevice device,
         @Pointer VkMemoryGetRemoteAddressInfoNV pMemoryGetRemoteAddressInfo,
         PointerPtr pAddress
@@ -10745,7 +10745,7 @@ public final class VkDeviceCommands {
     }
 
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkGetMemorySciBufNV.html"><code>vkGetMemorySciBufNV</code></a>
-    public @EnumType(VkResult.class) int getMemorySciBufNV(
+    public @MagicConstant(valuesFromClass = VkResult.class) int getMemorySciBufNV(
         VkDevice device,
         @Pointer VkMemoryGetSciBufInfoNV pGetSciBufInfo,
         PointerPtr pHandle
@@ -10763,7 +10763,7 @@ public final class VkDeviceCommands {
     }
 
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkGetMemoryWin32HandleKHR.html"><code>vkGetMemoryWin32HandleKHR</code></a>
-    public @EnumType(VkResult.class) int getMemoryWin32HandleKHR(
+    public @MagicConstant(valuesFromClass = VkResult.class) int getMemoryWin32HandleKHR(
         VkDevice device,
         @Pointer VkMemoryGetWin32HandleInfoKHR pGetWin32HandleInfo,
         PointerPtr pHandle
@@ -10781,10 +10781,10 @@ public final class VkDeviceCommands {
     }
 
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkGetMemoryWin32HandleNV.html"><code>vkGetMemoryWin32HandleNV</code></a>
-    public @EnumType(VkResult.class) int getMemoryWin32HandleNV(
+    public @MagicConstant(valuesFromClass = VkResult.class) int getMemoryWin32HandleNV(
         VkDevice device,
         VkDeviceMemory memory,
-        @EnumType(VkExternalMemoryHandleTypeFlagsNV.class) int handleType,
+        @MagicConstant(valuesFromClass = VkExternalMemoryHandleTypeFlagsNV.class) int handleType,
         PointerPtr pHandle
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkGetMemoryWin32HandleNV);
@@ -10801,9 +10801,9 @@ public final class VkDeviceCommands {
     }
 
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkGetMemoryWin32HandlePropertiesKHR.html"><code>vkGetMemoryWin32HandlePropertiesKHR</code></a>
-    public @EnumType(VkResult.class) int getMemoryWin32HandlePropertiesKHR(
+    public @MagicConstant(valuesFromClass = VkResult.class) int getMemoryWin32HandlePropertiesKHR(
         VkDevice device,
-        @EnumType(VkExternalMemoryHandleTypeFlags.class) int handleType,
+        @MagicConstant(valuesFromClass = VkExternalMemoryHandleTypeFlags.class) int handleType,
         @Pointer(comment="HANDLE") MemorySegment handle,
         @Pointer VkMemoryWin32HandlePropertiesKHR pMemoryWin32HandleProperties
     ) {
@@ -10821,7 +10821,7 @@ public final class VkDeviceCommands {
     }
 
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkGetMemoryZirconHandleFUCHSIA.html"><code>vkGetMemoryZirconHandleFUCHSIA</code></a>
-    public @EnumType(VkResult.class) int getMemoryZirconHandleFUCHSIA(
+    public @MagicConstant(valuesFromClass = VkResult.class) int getMemoryZirconHandleFUCHSIA(
         VkDevice device,
         @Pointer VkMemoryGetZirconHandleInfoFUCHSIA pGetZirconHandleInfo,
         @Pointer(comment="zx_handle_t") @Unsigned IntPtr pZirconHandle
@@ -10839,9 +10839,9 @@ public final class VkDeviceCommands {
     }
 
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkGetMemoryZirconHandlePropertiesFUCHSIA.html"><code>vkGetMemoryZirconHandlePropertiesFUCHSIA</code></a>
-    public @EnumType(VkResult.class) int getMemoryZirconHandlePropertiesFUCHSIA(
+    public @MagicConstant(valuesFromClass = VkResult.class) int getMemoryZirconHandlePropertiesFUCHSIA(
         VkDevice device,
-        @EnumType(VkExternalMemoryHandleTypeFlags.class) int handleType,
+        @MagicConstant(valuesFromClass = VkExternalMemoryHandleTypeFlags.class) int handleType,
         @NativeType("zx_handle_t") @Unsigned int zirconHandle,
         @Pointer VkMemoryZirconHandlePropertiesFUCHSIA pMemoryZirconHandleProperties
     ) {
@@ -10861,7 +10861,7 @@ public final class VkDeviceCommands {
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkGetMicromapBuildSizesEXT.html"><code>vkGetMicromapBuildSizesEXT</code></a>
     public void getMicromapBuildSizesEXT(
         VkDevice device,
-        @EnumType(VkAccelerationStructureBuildTypeKHR.class) int buildType,
+        @MagicConstant(valuesFromClass = VkAccelerationStructureBuildTypeKHR.class) int buildType,
         @Pointer VkMicromapBuildInfoEXT pBuildInfo,
         @Pointer VkMicromapBuildSizesInfoEXT pSizeInfo
     ) {
@@ -10897,7 +10897,7 @@ public final class VkDeviceCommands {
     }
 
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkGetPastPresentationTimingGOOGLE.html"><code>vkGetPastPresentationTimingGOOGLE</code></a>
-    public @EnumType(VkResult.class) int getPastPresentationTimingGOOGLE(
+    public @MagicConstant(valuesFromClass = VkResult.class) int getPastPresentationTimingGOOGLE(
         VkDevice device,
         VkSwapchainKHR swapchain,
         @Unsigned IntPtr pPresentationTimingCount,
@@ -10917,9 +10917,9 @@ public final class VkDeviceCommands {
     }
 
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkGetPerformanceParameterINTEL.html"><code>vkGetPerformanceParameterINTEL</code></a>
-    public @EnumType(VkResult.class) int getPerformanceParameterINTEL(
+    public @MagicConstant(valuesFromClass = VkResult.class) int getPerformanceParameterINTEL(
         VkDevice device,
-        @EnumType(VkPerformanceParameterTypeINTEL.class) int parameter,
+        @MagicConstant(valuesFromClass = VkPerformanceParameterTypeINTEL.class) int parameter,
         @Pointer VkPerformanceValueINTEL pValue
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkGetPerformanceParameterINTEL);
@@ -10935,7 +10935,7 @@ public final class VkDeviceCommands {
     }
 
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkGetPipelineBinaryDataKHR.html"><code>vkGetPipelineBinaryDataKHR</code></a>
-    public @EnumType(VkResult.class) int getPipelineBinaryDataKHR(
+    public @MagicConstant(valuesFromClass = VkResult.class) int getPipelineBinaryDataKHR(
         VkDevice device,
         @Pointer VkPipelineBinaryDataInfoKHR pInfo,
         @Pointer VkPipelineBinaryKeyKHR pPipelineBinaryKey,
@@ -10957,7 +10957,7 @@ public final class VkDeviceCommands {
     }
 
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkGetPipelineCacheData.html"><code>vkGetPipelineCacheData</code></a>
-    public @EnumType(VkResult.class) int getPipelineCacheData(
+    public @MagicConstant(valuesFromClass = VkResult.class) int getPipelineCacheData(
         VkDevice device,
         VkPipelineCache pipelineCache,
         PointerPtr pDataSize,
@@ -10977,7 +10977,7 @@ public final class VkDeviceCommands {
     }
 
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkGetPipelineExecutableInternalRepresentationsKHR.html"><code>vkGetPipelineExecutableInternalRepresentationsKHR</code></a>
-    public @EnumType(VkResult.class) int getPipelineExecutableInternalRepresentationsKHR(
+    public @MagicConstant(valuesFromClass = VkResult.class) int getPipelineExecutableInternalRepresentationsKHR(
         VkDevice device,
         @Pointer VkPipelineExecutableInfoKHR pExecutableInfo,
         @Unsigned IntPtr pInternalRepresentationCount,
@@ -10997,7 +10997,7 @@ public final class VkDeviceCommands {
     }
 
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkGetPipelineExecutablePropertiesKHR.html"><code>vkGetPipelineExecutablePropertiesKHR</code></a>
-    public @EnumType(VkResult.class) int getPipelineExecutablePropertiesKHR(
+    public @MagicConstant(valuesFromClass = VkResult.class) int getPipelineExecutablePropertiesKHR(
         VkDevice device,
         @Pointer VkPipelineInfoKHR pPipelineInfo,
         @Unsigned IntPtr pExecutableCount,
@@ -11017,7 +11017,7 @@ public final class VkDeviceCommands {
     }
 
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkGetPipelineExecutableStatisticsKHR.html"><code>vkGetPipelineExecutableStatisticsKHR</code></a>
-    public @EnumType(VkResult.class) int getPipelineExecutableStatisticsKHR(
+    public @MagicConstant(valuesFromClass = VkResult.class) int getPipelineExecutableStatisticsKHR(
         VkDevice device,
         @Pointer VkPipelineExecutableInfoKHR pExecutableInfo,
         @Unsigned IntPtr pStatisticCount,
@@ -11071,7 +11071,7 @@ public final class VkDeviceCommands {
     }
 
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkGetPipelineKeyKHR.html"><code>vkGetPipelineKeyKHR</code></a>
-    public @EnumType(VkResult.class) int getPipelineKeyKHR(
+    public @MagicConstant(valuesFromClass = VkResult.class) int getPipelineKeyKHR(
         VkDevice device,
         @Nullable @Pointer VkPipelineCreateInfoKHR pPipelineCreateInfo,
         @Pointer VkPipelineBinaryKeyKHR pPipelineKey
@@ -11089,7 +11089,7 @@ public final class VkDeviceCommands {
     }
 
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkGetPipelinePropertiesEXT.html"><code>vkGetPipelinePropertiesEXT</code></a>
-    public @EnumType(VkResult.class) int getPipelinePropertiesEXT(
+    public @MagicConstant(valuesFromClass = VkResult.class) int getPipelinePropertiesEXT(
         VkDevice device,
         @Pointer VkPipelineInfoKHR pPipelineInfo,
         @Pointer VkBaseOutStructure pPipelineProperties
@@ -11109,7 +11109,7 @@ public final class VkDeviceCommands {
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkGetPrivateData.html"><code>vkGetPrivateData</code></a>
     public void getPrivateData(
         VkDevice device,
-        @EnumType(VkObjectType.class) int objectType,
+        @MagicConstant(valuesFromClass = VkObjectType.class) int objectType,
         @Unsigned long objectHandle,
         VkPrivateDataSlot privateDataSlot,
         @Unsigned LongPtr pData
@@ -11131,7 +11131,7 @@ public final class VkDeviceCommands {
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkGetPrivateDataEXT.html"><code>vkGetPrivateDataEXT</code></a>
     public void getPrivateDataEXT(
         VkDevice device,
-        @EnumType(VkObjectType.class) int objectType,
+        @MagicConstant(valuesFromClass = VkObjectType.class) int objectType,
         @Unsigned long objectHandle,
         VkPrivateDataSlot privateDataSlot,
         @Unsigned LongPtr pData
@@ -11151,7 +11151,7 @@ public final class VkDeviceCommands {
     }
 
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkGetQueryPoolResults.html"><code>vkGetQueryPoolResults</code></a>
-    public @EnumType(VkResult.class) int getQueryPoolResults(
+    public @MagicConstant(valuesFromClass = VkResult.class) int getQueryPoolResults(
         VkDevice device,
         VkQueryPool queryPool,
         @Unsigned int firstQuery,
@@ -11159,7 +11159,7 @@ public final class VkDeviceCommands {
         long dataSize,
         @Pointer(comment="void*") MemorySegment pData,
         @NativeType("VkDeviceSize") @Unsigned long stride,
-        @EnumType(VkQueryResultFlags.class) int flags
+        @MagicConstant(valuesFromClass = VkQueryResultFlags.class) int flags
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkGetQueryPoolResults);
         try {
@@ -11215,7 +11215,7 @@ public final class VkDeviceCommands {
     }
 
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkGetRayTracingCaptureReplayShaderGroupHandlesKHR.html"><code>vkGetRayTracingCaptureReplayShaderGroupHandlesKHR</code></a>
-    public @EnumType(VkResult.class) int getRayTracingCaptureReplayShaderGroupHandlesKHR(
+    public @MagicConstant(valuesFromClass = VkResult.class) int getRayTracingCaptureReplayShaderGroupHandlesKHR(
         VkDevice device,
         VkPipeline pipeline,
         @Unsigned int firstGroup,
@@ -11239,7 +11239,7 @@ public final class VkDeviceCommands {
     }
 
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkGetRayTracingShaderGroupHandlesKHR.html"><code>vkGetRayTracingShaderGroupHandlesKHR</code></a>
-    public @EnumType(VkResult.class) int getRayTracingShaderGroupHandlesKHR(
+    public @MagicConstant(valuesFromClass = VkResult.class) int getRayTracingShaderGroupHandlesKHR(
         VkDevice device,
         VkPipeline pipeline,
         @Unsigned int firstGroup,
@@ -11263,7 +11263,7 @@ public final class VkDeviceCommands {
     }
 
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkGetRayTracingShaderGroupHandlesNV.html"><code>vkGetRayTracingShaderGroupHandlesNV</code></a>
-    public @EnumType(VkResult.class) int getRayTracingShaderGroupHandlesNV(
+    public @MagicConstant(valuesFromClass = VkResult.class) int getRayTracingShaderGroupHandlesNV(
         VkDevice device,
         VkPipeline pipeline,
         @Unsigned int firstGroup,
@@ -11291,7 +11291,7 @@ public final class VkDeviceCommands {
         VkDevice device,
         VkPipeline pipeline,
         @Unsigned int group,
-        @EnumType(VkShaderGroupShaderKHR.class) int groupShader
+        @MagicConstant(valuesFromClass = VkShaderGroupShaderKHR.class) int groupShader
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkGetRayTracingShaderGroupStackSizeKHR);
         try {
@@ -11307,7 +11307,7 @@ public final class VkDeviceCommands {
     }
 
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkGetRefreshCycleDurationGOOGLE.html"><code>vkGetRefreshCycleDurationGOOGLE</code></a>
-    public @EnumType(VkResult.class) int getRefreshCycleDurationGOOGLE(
+    public @MagicConstant(valuesFromClass = VkResult.class) int getRefreshCycleDurationGOOGLE(
         VkDevice device,
         VkSwapchainKHR swapchain,
         @Pointer VkRefreshCycleDurationGOOGLE pDisplayTimingProperties
@@ -11379,7 +11379,7 @@ public final class VkDeviceCommands {
     }
 
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkGetSamplerOpaqueCaptureDescriptorDataEXT.html"><code>vkGetSamplerOpaqueCaptureDescriptorDataEXT</code></a>
-    public @EnumType(VkResult.class) int getSamplerOpaqueCaptureDescriptorDataEXT(
+    public @MagicConstant(valuesFromClass = VkResult.class) int getSamplerOpaqueCaptureDescriptorDataEXT(
         VkDevice device,
         @Pointer VkSamplerCaptureDescriptorDataInfoEXT pInfo,
         @Pointer(comment="void*") MemorySegment pData
@@ -11397,7 +11397,7 @@ public final class VkDeviceCommands {
     }
 
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkGetScreenBufferPropertiesQNX.html"><code>vkGetScreenBufferPropertiesQNX</code></a>
-    public @EnumType(VkResult.class) int getScreenBufferPropertiesQNX(
+    public @MagicConstant(valuesFromClass = VkResult.class) int getScreenBufferPropertiesQNX(
         VkDevice device,
         PointerPtr buffer,
         @Pointer VkScreenBufferPropertiesQNX pProperties
@@ -11415,7 +11415,7 @@ public final class VkDeviceCommands {
     }
 
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkGetSemaphoreCounterValue.html"><code>vkGetSemaphoreCounterValue</code></a>
-    public @EnumType(VkResult.class) int getSemaphoreCounterValue(
+    public @MagicConstant(valuesFromClass = VkResult.class) int getSemaphoreCounterValue(
         VkDevice device,
         VkSemaphore semaphore,
         @Unsigned LongPtr pValue
@@ -11433,7 +11433,7 @@ public final class VkDeviceCommands {
     }
 
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkGetSemaphoreCounterValueKHR.html"><code>vkGetSemaphoreCounterValueKHR</code></a>
-    public @EnumType(VkResult.class) int getSemaphoreCounterValueKHR(
+    public @MagicConstant(valuesFromClass = VkResult.class) int getSemaphoreCounterValueKHR(
         VkDevice device,
         VkSemaphore semaphore,
         @Unsigned LongPtr pValue
@@ -11451,7 +11451,7 @@ public final class VkDeviceCommands {
     }
 
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkGetSemaphoreFdKHR.html"><code>vkGetSemaphoreFdKHR</code></a>
-    public @EnumType(VkResult.class) int getSemaphoreFdKHR(
+    public @MagicConstant(valuesFromClass = VkResult.class) int getSemaphoreFdKHR(
         VkDevice device,
         @Pointer VkSemaphoreGetFdInfoKHR pGetFdInfo,
         IntPtr pFd
@@ -11469,7 +11469,7 @@ public final class VkDeviceCommands {
     }
 
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkGetSemaphoreSciSyncObjNV.html"><code>vkGetSemaphoreSciSyncObjNV</code></a>
-    public @EnumType(VkResult.class) int getSemaphoreSciSyncObjNV(
+    public @MagicConstant(valuesFromClass = VkResult.class) int getSemaphoreSciSyncObjNV(
         VkDevice device,
         @Pointer VkSemaphoreGetSciSyncInfoNV pGetSciSyncInfo,
         @Pointer(comment="void*") MemorySegment pHandle
@@ -11487,7 +11487,7 @@ public final class VkDeviceCommands {
     }
 
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkGetSemaphoreWin32HandleKHR.html"><code>vkGetSemaphoreWin32HandleKHR</code></a>
-    public @EnumType(VkResult.class) int getSemaphoreWin32HandleKHR(
+    public @MagicConstant(valuesFromClass = VkResult.class) int getSemaphoreWin32HandleKHR(
         VkDevice device,
         @Pointer VkSemaphoreGetWin32HandleInfoKHR pGetWin32HandleInfo,
         PointerPtr pHandle
@@ -11505,7 +11505,7 @@ public final class VkDeviceCommands {
     }
 
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkGetSemaphoreZirconHandleFUCHSIA.html"><code>vkGetSemaphoreZirconHandleFUCHSIA</code></a>
-    public @EnumType(VkResult.class) int getSemaphoreZirconHandleFUCHSIA(
+    public @MagicConstant(valuesFromClass = VkResult.class) int getSemaphoreZirconHandleFUCHSIA(
         VkDevice device,
         @Pointer VkSemaphoreGetZirconHandleInfoFUCHSIA pGetZirconHandleInfo,
         @Pointer(comment="zx_handle_t") @Unsigned IntPtr pZirconHandle
@@ -11523,7 +11523,7 @@ public final class VkDeviceCommands {
     }
 
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkGetShaderBinaryDataEXT.html"><code>vkGetShaderBinaryDataEXT</code></a>
-    public @EnumType(VkResult.class) int getShaderBinaryDataEXT(
+    public @MagicConstant(valuesFromClass = VkResult.class) int getShaderBinaryDataEXT(
         VkDevice device,
         VkShaderEXT shader,
         PointerPtr pDataSize,
@@ -11543,11 +11543,11 @@ public final class VkDeviceCommands {
     }
 
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkGetShaderInfoAMD.html"><code>vkGetShaderInfoAMD</code></a>
-    public @EnumType(VkResult.class) int getShaderInfoAMD(
+    public @MagicConstant(valuesFromClass = VkResult.class) int getShaderInfoAMD(
         VkDevice device,
         VkPipeline pipeline,
-        @EnumType(VkShaderStageFlags.class) int shaderStage,
-        @EnumType(VkShaderInfoTypeAMD.class) int infoType,
+        @MagicConstant(valuesFromClass = VkShaderStageFlags.class) int shaderStage,
+        @MagicConstant(valuesFromClass = VkShaderInfoTypeAMD.class) int infoType,
         PointerPtr pInfoSize,
         @Pointer(comment="void*") MemorySegment pInfo
     ) {
@@ -11603,10 +11603,10 @@ public final class VkDeviceCommands {
     }
 
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkGetSwapchainCounterEXT.html"><code>vkGetSwapchainCounterEXT</code></a>
-    public @EnumType(VkResult.class) int getSwapchainCounterEXT(
+    public @MagicConstant(valuesFromClass = VkResult.class) int getSwapchainCounterEXT(
         VkDevice device,
         VkSwapchainKHR swapchain,
-        @EnumType(VkSurfaceCounterFlagsEXT.class) int counter,
+        @MagicConstant(valuesFromClass = VkSurfaceCounterFlagsEXT.class) int counter,
         @Unsigned LongPtr pCounterValue
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkGetSwapchainCounterEXT);
@@ -11623,7 +11623,7 @@ public final class VkDeviceCommands {
     }
 
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkGetSwapchainImagesKHR.html"><code>vkGetSwapchainImagesKHR</code></a>
-    public @EnumType(VkResult.class) int getSwapchainImagesKHR(
+    public @MagicConstant(valuesFromClass = VkResult.class) int getSwapchainImagesKHR(
         VkDevice device,
         VkSwapchainKHR swapchain,
         @Unsigned IntPtr pSwapchainImageCount,
@@ -11643,7 +11643,7 @@ public final class VkDeviceCommands {
     }
 
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkGetSwapchainStatusKHR.html"><code>vkGetSwapchainStatusKHR</code></a>
-    public @EnumType(VkResult.class) int getSwapchainStatusKHR(
+    public @MagicConstant(valuesFromClass = VkResult.class) int getSwapchainStatusKHR(
         VkDevice device,
         VkSwapchainKHR swapchain
     ) {
@@ -11659,7 +11659,7 @@ public final class VkDeviceCommands {
     }
 
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkGetValidationCacheDataEXT.html"><code>vkGetValidationCacheDataEXT</code></a>
-    public @EnumType(VkResult.class) int getValidationCacheDataEXT(
+    public @MagicConstant(valuesFromClass = VkResult.class) int getValidationCacheDataEXT(
         VkDevice device,
         VkValidationCacheEXT validationCache,
         PointerPtr pDataSize,
@@ -11679,7 +11679,7 @@ public final class VkDeviceCommands {
     }
 
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkGetVideoSessionMemoryRequirementsKHR.html"><code>vkGetVideoSessionMemoryRequirementsKHR</code></a>
-    public @EnumType(VkResult.class) int getVideoSessionMemoryRequirementsKHR(
+    public @MagicConstant(valuesFromClass = VkResult.class) int getVideoSessionMemoryRequirementsKHR(
         VkDevice device,
         VkVideoSessionKHR videoSession,
         @Unsigned IntPtr pMemoryRequirementsCount,
@@ -11699,7 +11699,7 @@ public final class VkDeviceCommands {
     }
 
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkImportFenceFdKHR.html"><code>vkImportFenceFdKHR</code></a>
-    public @EnumType(VkResult.class) int importFenceFdKHR(
+    public @MagicConstant(valuesFromClass = VkResult.class) int importFenceFdKHR(
         VkDevice device,
         @Pointer VkImportFenceFdInfoKHR pImportFenceFdInfo
     ) {
@@ -11715,7 +11715,7 @@ public final class VkDeviceCommands {
     }
 
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkImportFenceSciSyncFenceNV.html"><code>vkImportFenceSciSyncFenceNV</code></a>
-    public @EnumType(VkResult.class) int importFenceSciSyncFenceNV(
+    public @MagicConstant(valuesFromClass = VkResult.class) int importFenceSciSyncFenceNV(
         VkDevice device,
         @Pointer VkImportFenceSciSyncInfoNV pImportFenceSciSyncInfo
     ) {
@@ -11731,7 +11731,7 @@ public final class VkDeviceCommands {
     }
 
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkImportFenceSciSyncObjNV.html"><code>vkImportFenceSciSyncObjNV</code></a>
-    public @EnumType(VkResult.class) int importFenceSciSyncObjNV(
+    public @MagicConstant(valuesFromClass = VkResult.class) int importFenceSciSyncObjNV(
         VkDevice device,
         @Pointer VkImportFenceSciSyncInfoNV pImportFenceSciSyncInfo
     ) {
@@ -11747,7 +11747,7 @@ public final class VkDeviceCommands {
     }
 
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkImportFenceWin32HandleKHR.html"><code>vkImportFenceWin32HandleKHR</code></a>
-    public @EnumType(VkResult.class) int importFenceWin32HandleKHR(
+    public @MagicConstant(valuesFromClass = VkResult.class) int importFenceWin32HandleKHR(
         VkDevice device,
         @Pointer VkImportFenceWin32HandleInfoKHR pImportFenceWin32HandleInfo
     ) {
@@ -11763,7 +11763,7 @@ public final class VkDeviceCommands {
     }
 
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkImportSemaphoreFdKHR.html"><code>vkImportSemaphoreFdKHR</code></a>
-    public @EnumType(VkResult.class) int importSemaphoreFdKHR(
+    public @MagicConstant(valuesFromClass = VkResult.class) int importSemaphoreFdKHR(
         VkDevice device,
         @Pointer VkImportSemaphoreFdInfoKHR pImportSemaphoreFdInfo
     ) {
@@ -11779,7 +11779,7 @@ public final class VkDeviceCommands {
     }
 
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkImportSemaphoreSciSyncObjNV.html"><code>vkImportSemaphoreSciSyncObjNV</code></a>
-    public @EnumType(VkResult.class) int importSemaphoreSciSyncObjNV(
+    public @MagicConstant(valuesFromClass = VkResult.class) int importSemaphoreSciSyncObjNV(
         VkDevice device,
         @Pointer VkImportSemaphoreSciSyncInfoNV pImportSemaphoreSciSyncInfo
     ) {
@@ -11795,7 +11795,7 @@ public final class VkDeviceCommands {
     }
 
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkImportSemaphoreWin32HandleKHR.html"><code>vkImportSemaphoreWin32HandleKHR</code></a>
-    public @EnumType(VkResult.class) int importSemaphoreWin32HandleKHR(
+    public @MagicConstant(valuesFromClass = VkResult.class) int importSemaphoreWin32HandleKHR(
         VkDevice device,
         @Pointer VkImportSemaphoreWin32HandleInfoKHR pImportSemaphoreWin32HandleInfo
     ) {
@@ -11811,7 +11811,7 @@ public final class VkDeviceCommands {
     }
 
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkImportSemaphoreZirconHandleFUCHSIA.html"><code>vkImportSemaphoreZirconHandleFUCHSIA</code></a>
-    public @EnumType(VkResult.class) int importSemaphoreZirconHandleFUCHSIA(
+    public @MagicConstant(valuesFromClass = VkResult.class) int importSemaphoreZirconHandleFUCHSIA(
         VkDevice device,
         @Pointer VkImportSemaphoreZirconHandleInfoFUCHSIA pImportSemaphoreZirconHandleInfo
     ) {
@@ -11827,7 +11827,7 @@ public final class VkDeviceCommands {
     }
 
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkInitializePerformanceApiINTEL.html"><code>vkInitializePerformanceApiINTEL</code></a>
-    public @EnumType(VkResult.class) int initializePerformanceApiINTEL(
+    public @MagicConstant(valuesFromClass = VkResult.class) int initializePerformanceApiINTEL(
         VkDevice device,
         @Pointer VkInitializePerformanceApiInfoINTEL pInitializeInfo
     ) {
@@ -11843,7 +11843,7 @@ public final class VkDeviceCommands {
     }
 
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkInvalidateMappedMemoryRanges.html"><code>vkInvalidateMappedMemoryRanges</code></a>
-    public @EnumType(VkResult.class) int invalidateMappedMemoryRanges(
+    public @MagicConstant(valuesFromClass = VkResult.class) int invalidateMappedMemoryRanges(
         VkDevice device,
         @Unsigned int memoryRangeCount,
         @Pointer IVkMappedMemoryRange pMemoryRanges
@@ -11861,7 +11861,7 @@ public final class VkDeviceCommands {
     }
 
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkLatencySleepNV.html"><code>vkLatencySleepNV</code></a>
-    public @EnumType(VkResult.class) int latencySleepNV(
+    public @MagicConstant(valuesFromClass = VkResult.class) int latencySleepNV(
         VkDevice device,
         VkSwapchainKHR swapchain,
         @Pointer VkLatencySleepInfoNV pSleepInfo
@@ -11879,12 +11879,12 @@ public final class VkDeviceCommands {
     }
 
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkMapMemory.html"><code>vkMapMemory</code></a>
-    public @EnumType(VkResult.class) int mapMemory(
+    public @MagicConstant(valuesFromClass = VkResult.class) int mapMemory(
         VkDevice device,
         VkDeviceMemory memory,
         @NativeType("VkDeviceSize") @Unsigned long offset,
         @NativeType("VkDeviceSize") @Unsigned long size,
-        @EnumType(VkMemoryMapFlags.class) int flags,
+        @MagicConstant(valuesFromClass = VkMemoryMapFlags.class) int flags,
         PointerPtr ppData
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkMapMemory);
@@ -11903,7 +11903,7 @@ public final class VkDeviceCommands {
     }
 
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkMapMemory2.html"><code>vkMapMemory2</code></a>
-    public @EnumType(VkResult.class) int mapMemory2(
+    public @MagicConstant(valuesFromClass = VkResult.class) int mapMemory2(
         VkDevice device,
         @Pointer VkMemoryMapInfo pMemoryMapInfo,
         PointerPtr ppData
@@ -11921,7 +11921,7 @@ public final class VkDeviceCommands {
     }
 
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkMapMemory2KHR.html"><code>vkMapMemory2KHR</code></a>
-    public @EnumType(VkResult.class) int mapMemory2KHR(
+    public @MagicConstant(valuesFromClass = VkResult.class) int mapMemory2KHR(
         VkDevice device,
         @Pointer VkMemoryMapInfo pMemoryMapInfo,
         PointerPtr ppData
@@ -11939,7 +11939,7 @@ public final class VkDeviceCommands {
     }
 
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkMergePipelineCaches.html"><code>vkMergePipelineCaches</code></a>
-    public @EnumType(VkResult.class) int mergePipelineCaches(
+    public @MagicConstant(valuesFromClass = VkResult.class) int mergePipelineCaches(
         VkDevice device,
         VkPipelineCache dstCache,
         @Unsigned int srcCacheCount,
@@ -11959,7 +11959,7 @@ public final class VkDeviceCommands {
     }
 
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkMergeValidationCachesEXT.html"><code>vkMergeValidationCachesEXT</code></a>
-    public @EnumType(VkResult.class) int mergeValidationCachesEXT(
+    public @MagicConstant(valuesFromClass = VkResult.class) int mergeValidationCachesEXT(
         VkDevice device,
         VkValidationCacheEXT dstCache,
         @Unsigned int srcCacheCount,
@@ -11979,7 +11979,7 @@ public final class VkDeviceCommands {
     }
 
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkQueueBindSparse.html"><code>vkQueueBindSparse</code></a>
-    public @EnumType(VkResult.class) int queueBindSparse(
+    public @MagicConstant(valuesFromClass = VkResult.class) int queueBindSparse(
         VkQueue queue,
         @Unsigned int bindInfoCount,
         @Nullable @Pointer IVkBindSparseInfo pBindInfo,
@@ -12015,7 +12015,7 @@ public final class VkDeviceCommands {
     }
 
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkQueuePresentKHR.html"><code>vkQueuePresentKHR</code></a>
-    public @EnumType(VkResult.class) int queuePresentKHR(
+    public @MagicConstant(valuesFromClass = VkResult.class) int queuePresentKHR(
         VkQueue queue,
         @Pointer VkPresentInfoKHR pPresentInfo
     ) {
@@ -12031,7 +12031,7 @@ public final class VkDeviceCommands {
     }
 
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkQueueSetPerformanceConfigurationINTEL.html"><code>vkQueueSetPerformanceConfigurationINTEL</code></a>
-    public @EnumType(VkResult.class) int queueSetPerformanceConfigurationINTEL(
+    public @MagicConstant(valuesFromClass = VkResult.class) int queueSetPerformanceConfigurationINTEL(
         VkQueue queue,
         VkPerformanceConfigurationINTEL configuration
     ) {
@@ -12047,7 +12047,7 @@ public final class VkDeviceCommands {
     }
 
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkQueueSubmit.html"><code>vkQueueSubmit</code></a>
-    public @EnumType(VkResult.class) int queueSubmit(
+    public @MagicConstant(valuesFromClass = VkResult.class) int queueSubmit(
         VkQueue queue,
         @Unsigned int submitCount,
         @Nullable @Pointer IVkSubmitInfo pSubmits,
@@ -12067,7 +12067,7 @@ public final class VkDeviceCommands {
     }
 
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkQueueSubmit2.html"><code>vkQueueSubmit2</code></a>
-    public @EnumType(VkResult.class) int queueSubmit2(
+    public @MagicConstant(valuesFromClass = VkResult.class) int queueSubmit2(
         VkQueue queue,
         @Unsigned int submitCount,
         @Nullable @Pointer IVkSubmitInfo2 pSubmits,
@@ -12087,7 +12087,7 @@ public final class VkDeviceCommands {
     }
 
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkQueueSubmit2KHR.html"><code>vkQueueSubmit2KHR</code></a>
-    public @EnumType(VkResult.class) int queueSubmit2KHR(
+    public @MagicConstant(valuesFromClass = VkResult.class) int queueSubmit2KHR(
         VkQueue queue,
         @Unsigned int submitCount,
         @Nullable @Pointer IVkSubmitInfo2 pSubmits,
@@ -12107,7 +12107,7 @@ public final class VkDeviceCommands {
     }
 
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkQueueWaitIdle.html"><code>vkQueueWaitIdle</code></a>
-    public @EnumType(VkResult.class) int queueWaitIdle(
+    public @MagicConstant(valuesFromClass = VkResult.class) int queueWaitIdle(
         VkQueue queue
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkQueueWaitIdle);
@@ -12121,7 +12121,7 @@ public final class VkDeviceCommands {
     }
 
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkRegisterDeviceEventEXT.html"><code>vkRegisterDeviceEventEXT</code></a>
-    public @EnumType(VkResult.class) int registerDeviceEventEXT(
+    public @MagicConstant(valuesFromClass = VkResult.class) int registerDeviceEventEXT(
         VkDevice device,
         @Pointer VkDeviceEventInfoEXT pDeviceEventInfo,
         @Nullable @Pointer VkAllocationCallbacks pAllocator,
@@ -12141,7 +12141,7 @@ public final class VkDeviceCommands {
     }
 
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkRegisterDisplayEventEXT.html"><code>vkRegisterDisplayEventEXT</code></a>
-    public @EnumType(VkResult.class) int registerDisplayEventEXT(
+    public @MagicConstant(valuesFromClass = VkResult.class) int registerDisplayEventEXT(
         VkDevice device,
         VkDisplayKHR display,
         @Pointer VkDisplayEventInfoEXT pDisplayEventInfo,
@@ -12163,7 +12163,7 @@ public final class VkDeviceCommands {
     }
 
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkReleaseCapturedPipelineDataKHR.html"><code>vkReleaseCapturedPipelineDataKHR</code></a>
-    public @EnumType(VkResult.class) int releaseCapturedPipelineDataKHR(
+    public @MagicConstant(valuesFromClass = VkResult.class) int releaseCapturedPipelineDataKHR(
         VkDevice device,
         @Pointer VkReleaseCapturedPipelineDataInfoKHR pInfo,
         @Nullable @Pointer VkAllocationCallbacks pAllocator
@@ -12181,7 +12181,7 @@ public final class VkDeviceCommands {
     }
 
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkReleaseFullScreenExclusiveModeEXT.html"><code>vkReleaseFullScreenExclusiveModeEXT</code></a>
-    public @EnumType(VkResult.class) int releaseFullScreenExclusiveModeEXT(
+    public @MagicConstant(valuesFromClass = VkResult.class) int releaseFullScreenExclusiveModeEXT(
         VkDevice device,
         VkSwapchainKHR swapchain
     ) {
@@ -12197,7 +12197,7 @@ public final class VkDeviceCommands {
     }
 
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkReleasePerformanceConfigurationINTEL.html"><code>vkReleasePerformanceConfigurationINTEL</code></a>
-    public @EnumType(VkResult.class) int releasePerformanceConfigurationINTEL(
+    public @MagicConstant(valuesFromClass = VkResult.class) int releasePerformanceConfigurationINTEL(
         VkDevice device,
         @Nullable VkPerformanceConfigurationINTEL configuration
     ) {
@@ -12227,7 +12227,7 @@ public final class VkDeviceCommands {
     }
 
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkReleaseSwapchainImagesEXT.html"><code>vkReleaseSwapchainImagesEXT</code></a>
-    public @EnumType(VkResult.class) int releaseSwapchainImagesEXT(
+    public @MagicConstant(valuesFromClass = VkResult.class) int releaseSwapchainImagesEXT(
         VkDevice device,
         @Pointer VkReleaseSwapchainImagesInfoEXT pReleaseInfo
     ) {
@@ -12243,9 +12243,9 @@ public final class VkDeviceCommands {
     }
 
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkResetCommandBuffer.html"><code>vkResetCommandBuffer</code></a>
-    public @EnumType(VkResult.class) int resetCommandBuffer(
+    public @MagicConstant(valuesFromClass = VkResult.class) int resetCommandBuffer(
         VkCommandBuffer commandBuffer,
-        @EnumType(VkCommandBufferResetFlags.class) int flags
+        @MagicConstant(valuesFromClass = VkCommandBufferResetFlags.class) int flags
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkResetCommandBuffer);
         try {
@@ -12259,10 +12259,10 @@ public final class VkDeviceCommands {
     }
 
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkResetCommandPool.html"><code>vkResetCommandPool</code></a>
-    public @EnumType(VkResult.class) int resetCommandPool(
+    public @MagicConstant(valuesFromClass = VkResult.class) int resetCommandPool(
         VkDevice device,
         VkCommandPool commandPool,
-        @EnumType(VkCommandPoolResetFlags.class) int flags
+        @MagicConstant(valuesFromClass = VkCommandPoolResetFlags.class) int flags
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkResetCommandPool);
         try {
@@ -12277,10 +12277,10 @@ public final class VkDeviceCommands {
     }
 
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkResetDescriptorPool.html"><code>vkResetDescriptorPool</code></a>
-    public @EnumType(VkResult.class) int resetDescriptorPool(
+    public @MagicConstant(valuesFromClass = VkResult.class) int resetDescriptorPool(
         VkDevice device,
         VkDescriptorPool descriptorPool,
-        @EnumType(VkDescriptorPoolResetFlags.class) int flags
+        @MagicConstant(valuesFromClass = VkDescriptorPoolResetFlags.class) int flags
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkResetDescriptorPool);
         try {
@@ -12295,7 +12295,7 @@ public final class VkDeviceCommands {
     }
 
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkResetEvent.html"><code>vkResetEvent</code></a>
-    public @EnumType(VkResult.class) int resetEvent(
+    public @MagicConstant(valuesFromClass = VkResult.class) int resetEvent(
         VkDevice device,
         VkEvent event
     ) {
@@ -12311,7 +12311,7 @@ public final class VkDeviceCommands {
     }
 
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkResetFences.html"><code>vkResetFences</code></a>
-    public @EnumType(VkResult.class) int resetFences(
+    public @MagicConstant(valuesFromClass = VkResult.class) int resetFences(
         VkDevice device,
         @Unsigned int fenceCount,
         @Pointer VkFence.Ptr pFences
@@ -12369,7 +12369,7 @@ public final class VkDeviceCommands {
     }
 
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkSetBufferCollectionBufferConstraintsFUCHSIA.html"><code>vkSetBufferCollectionBufferConstraintsFUCHSIA</code></a>
-    public @EnumType(VkResult.class) int setBufferCollectionBufferConstraintsFUCHSIA(
+    public @MagicConstant(valuesFromClass = VkResult.class) int setBufferCollectionBufferConstraintsFUCHSIA(
         VkDevice device,
         VkBufferCollectionFUCHSIA collection,
         @Pointer VkBufferConstraintsInfoFUCHSIA pBufferConstraintsInfo
@@ -12387,7 +12387,7 @@ public final class VkDeviceCommands {
     }
 
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkSetBufferCollectionImageConstraintsFUCHSIA.html"><code>vkSetBufferCollectionImageConstraintsFUCHSIA</code></a>
-    public @EnumType(VkResult.class) int setBufferCollectionImageConstraintsFUCHSIA(
+    public @MagicConstant(valuesFromClass = VkResult.class) int setBufferCollectionImageConstraintsFUCHSIA(
         VkDevice device,
         VkBufferCollectionFUCHSIA collection,
         @Pointer VkImageConstraintsInfoFUCHSIA pImageConstraintsInfo
@@ -12423,7 +12423,7 @@ public final class VkDeviceCommands {
     }
 
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkSetEvent.html"><code>vkSetEvent</code></a>
-    public @EnumType(VkResult.class) int setEvent(
+    public @MagicConstant(valuesFromClass = VkResult.class) int setEvent(
         VkDevice device,
         VkEvent event
     ) {
@@ -12477,7 +12477,7 @@ public final class VkDeviceCommands {
     }
 
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkSetLatencySleepModeNV.html"><code>vkSetLatencySleepModeNV</code></a>
-    public @EnumType(VkResult.class) int setLatencySleepModeNV(
+    public @MagicConstant(valuesFromClass = VkResult.class) int setLatencySleepModeNV(
         VkDevice device,
         VkSwapchainKHR swapchain,
         @Pointer VkLatencySleepModeInfoNV pSleepModeInfo
@@ -12513,9 +12513,9 @@ public final class VkDeviceCommands {
     }
 
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkSetPrivateData.html"><code>vkSetPrivateData</code></a>
-    public @EnumType(VkResult.class) int setPrivateData(
+    public @MagicConstant(valuesFromClass = VkResult.class) int setPrivateData(
         VkDevice device,
-        @EnumType(VkObjectType.class) int objectType,
+        @MagicConstant(valuesFromClass = VkObjectType.class) int objectType,
         @Unsigned long objectHandle,
         VkPrivateDataSlot privateDataSlot,
         @Unsigned long data
@@ -12535,9 +12535,9 @@ public final class VkDeviceCommands {
     }
 
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkSetPrivateDataEXT.html"><code>vkSetPrivateDataEXT</code></a>
-    public @EnumType(VkResult.class) int setPrivateDataEXT(
+    public @MagicConstant(valuesFromClass = VkResult.class) int setPrivateDataEXT(
         VkDevice device,
-        @EnumType(VkObjectType.class) int objectType,
+        @MagicConstant(valuesFromClass = VkObjectType.class) int objectType,
         @Unsigned long objectHandle,
         VkPrivateDataSlot privateDataSlot,
         @Unsigned long data
@@ -12557,7 +12557,7 @@ public final class VkDeviceCommands {
     }
 
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkSignalSemaphore.html"><code>vkSignalSemaphore</code></a>
-    public @EnumType(VkResult.class) int signalSemaphore(
+    public @MagicConstant(valuesFromClass = VkResult.class) int signalSemaphore(
         VkDevice device,
         @Pointer VkSemaphoreSignalInfo pSignalInfo
     ) {
@@ -12573,7 +12573,7 @@ public final class VkDeviceCommands {
     }
 
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkSignalSemaphoreKHR.html"><code>vkSignalSemaphoreKHR</code></a>
-    public @EnumType(VkResult.class) int signalSemaphoreKHR(
+    public @MagicConstant(valuesFromClass = VkResult.class) int signalSemaphoreKHR(
         VkDevice device,
         @Pointer VkSemaphoreSignalInfo pSignalInfo
     ) {
@@ -12589,7 +12589,7 @@ public final class VkDeviceCommands {
     }
 
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkTransitionImageLayout.html"><code>vkTransitionImageLayout</code></a>
-    public @EnumType(VkResult.class) int transitionImageLayout(
+    public @MagicConstant(valuesFromClass = VkResult.class) int transitionImageLayout(
         VkDevice device,
         @Unsigned int transitionCount,
         @Pointer IVkHostImageLayoutTransitionInfo pTransitions
@@ -12607,7 +12607,7 @@ public final class VkDeviceCommands {
     }
 
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkTransitionImageLayoutEXT.html"><code>vkTransitionImageLayoutEXT</code></a>
-    public @EnumType(VkResult.class) int transitionImageLayoutEXT(
+    public @MagicConstant(valuesFromClass = VkResult.class) int transitionImageLayoutEXT(
         VkDevice device,
         @Unsigned int transitionCount,
         @Pointer IVkHostImageLayoutTransitionInfo pTransitions
@@ -12628,7 +12628,7 @@ public final class VkDeviceCommands {
     public void trimCommandPool(
         VkDevice device,
         VkCommandPool commandPool,
-        @EnumType(VkCommandPoolTrimFlags.class) int flags
+        @MagicConstant(valuesFromClass = VkCommandPoolTrimFlags.class) int flags
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkTrimCommandPool);
         try {
@@ -12646,7 +12646,7 @@ public final class VkDeviceCommands {
     public void trimCommandPoolKHR(
         VkDevice device,
         VkCommandPool commandPool,
-        @EnumType(VkCommandPoolTrimFlags.class) int flags
+        @MagicConstant(valuesFromClass = VkCommandPoolTrimFlags.class) int flags
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkTrimCommandPoolKHR);
         try {
@@ -12691,7 +12691,7 @@ public final class VkDeviceCommands {
     }
 
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkUnmapMemory2.html"><code>vkUnmapMemory2</code></a>
-    public @EnumType(VkResult.class) int unmapMemory2(
+    public @MagicConstant(valuesFromClass = VkResult.class) int unmapMemory2(
         VkDevice device,
         @Pointer VkMemoryUnmapInfo pMemoryUnmapInfo
     ) {
@@ -12707,7 +12707,7 @@ public final class VkDeviceCommands {
     }
 
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkUnmapMemory2KHR.html"><code>vkUnmapMemory2KHR</code></a>
-    public @EnumType(VkResult.class) int unmapMemory2KHR(
+    public @MagicConstant(valuesFromClass = VkResult.class) int unmapMemory2KHR(
         VkDevice device,
         @Pointer VkMemoryUnmapInfo pMemoryUnmapInfo
     ) {
@@ -12825,7 +12825,7 @@ public final class VkDeviceCommands {
     }
 
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkUpdateVideoSessionParametersKHR.html"><code>vkUpdateVideoSessionParametersKHR</code></a>
-    public @EnumType(VkResult.class) int updateVideoSessionParametersKHR(
+    public @MagicConstant(valuesFromClass = VkResult.class) int updateVideoSessionParametersKHR(
         VkDevice device,
         VkVideoSessionParametersKHR videoSessionParameters,
         @Pointer VkVideoSessionParametersUpdateInfoKHR pUpdateInfo
@@ -12843,7 +12843,7 @@ public final class VkDeviceCommands {
     }
 
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkWaitForFences.html"><code>vkWaitForFences</code></a>
-    public @EnumType(VkResult.class) int waitForFences(
+    public @MagicConstant(valuesFromClass = VkResult.class) int waitForFences(
         VkDevice device,
         @Unsigned int fenceCount,
         @Pointer VkFence.Ptr pFences,
@@ -12865,7 +12865,7 @@ public final class VkDeviceCommands {
     }
 
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkWaitForPresentKHR.html"><code>vkWaitForPresentKHR</code></a>
-    public @EnumType(VkResult.class) int waitForPresentKHR(
+    public @MagicConstant(valuesFromClass = VkResult.class) int waitForPresentKHR(
         VkDevice device,
         VkSwapchainKHR swapchain,
         @Unsigned long presentId,
@@ -12885,7 +12885,7 @@ public final class VkDeviceCommands {
     }
 
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkWaitSemaphores.html"><code>vkWaitSemaphores</code></a>
-    public @EnumType(VkResult.class) int waitSemaphores(
+    public @MagicConstant(valuesFromClass = VkResult.class) int waitSemaphores(
         VkDevice device,
         @Pointer VkSemaphoreWaitInfo pWaitInfo,
         @Unsigned long timeout
@@ -12903,7 +12903,7 @@ public final class VkDeviceCommands {
     }
 
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkWaitSemaphoresKHR.html"><code>vkWaitSemaphoresKHR</code></a>
-    public @EnumType(VkResult.class) int waitSemaphoresKHR(
+    public @MagicConstant(valuesFromClass = VkResult.class) int waitSemaphoresKHR(
         VkDevice device,
         @Pointer VkSemaphoreWaitInfo pWaitInfo,
         @Unsigned long timeout
@@ -12921,11 +12921,11 @@ public final class VkDeviceCommands {
     }
 
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkWriteAccelerationStructuresPropertiesKHR.html"><code>vkWriteAccelerationStructuresPropertiesKHR</code></a>
-    public @EnumType(VkResult.class) int writeAccelerationStructuresPropertiesKHR(
+    public @MagicConstant(valuesFromClass = VkResult.class) int writeAccelerationStructuresPropertiesKHR(
         VkDevice device,
         @Unsigned int accelerationStructureCount,
         @Pointer VkAccelerationStructureKHR.Ptr pAccelerationStructures,
-        @EnumType(VkQueryType.class) int queryType,
+        @MagicConstant(valuesFromClass = VkQueryType.class) int queryType,
         long dataSize,
         @Pointer(comment="void*") MemorySegment pData,
         long stride
@@ -12947,11 +12947,11 @@ public final class VkDeviceCommands {
     }
 
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkWriteMicromapsPropertiesEXT.html"><code>vkWriteMicromapsPropertiesEXT</code></a>
-    public @EnumType(VkResult.class) int writeMicromapsPropertiesEXT(
+    public @MagicConstant(valuesFromClass = VkResult.class) int writeMicromapsPropertiesEXT(
         VkDevice device,
         @Unsigned int micromapCount,
         @Pointer VkMicromapEXT.Ptr pMicromaps,
-        @EnumType(VkQueryType.class) int queryType,
+        @MagicConstant(valuesFromClass = VkQueryType.class) int queryType,
         long dataSize,
         @Pointer(comment="void*") MemorySegment pData,
         long stride

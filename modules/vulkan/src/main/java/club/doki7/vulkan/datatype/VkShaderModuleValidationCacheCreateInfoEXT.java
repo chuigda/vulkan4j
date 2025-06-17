@@ -190,11 +190,11 @@ public record VkShaderModuleValidationCacheCreateInfoEXT(@NotNull MemorySegment 
         sType(VkStructureType.SHADER_MODULE_VALIDATION_CACHE_CREATE_INFO_EXT);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkShaderModuleValidationCacheCreateInfoEXT sType(@EnumType(VkStructureType.class) int value) {
+    public VkShaderModuleValidationCacheCreateInfoEXT sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }

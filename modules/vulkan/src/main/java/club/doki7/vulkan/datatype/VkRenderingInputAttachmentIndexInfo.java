@@ -193,11 +193,11 @@ public record VkRenderingInputAttachmentIndexInfo(@NotNull MemorySegment segment
         sType(VkStructureType.RENDERING_INPUT_ATTACHMENT_INDEX_INFO);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkRenderingInputAttachmentIndexInfo sType(@EnumType(VkStructureType.class) int value) {
+    public VkRenderingInputAttachmentIndexInfo sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }

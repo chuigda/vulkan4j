@@ -1,6 +1,7 @@
 package club.doki7.vulkan.enumtype;
 
 import club.doki7.ffm.annotation.*;
+import org.intellij.lang.annotations.MagicConstant;
 
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkCopyMicromapModeEXT.html"><code>VkCopyMicromapModeEXT</code></a>
 public final class VkCopyMicromapModeEXT {
@@ -9,7 +10,7 @@ public final class VkCopyMicromapModeEXT {
     public static final int DESERIALIZE = 0x2;
     public static final int COMPACT = 0x3;
 
-    public static String explain(@EnumType(VkCopyMicromapModeEXT.class) int value) {
+    public static String explain(@MagicConstant(valuesFromClass = VkCopyMicromapModeEXT.class) int value) {
         return switch (value) {
             case VkCopyMicromapModeEXT.CLONE -> "VK_COPY_MICROMAP_MODE_CLONE_EXT";
             case VkCopyMicromapModeEXT.COMPACT -> "VK_COPY_MICROMAP_MODE_COMPACT_EXT";

@@ -190,11 +190,11 @@ public record VkDeviceQueueGlobalPriorityCreateInfo(@NotNull MemorySegment segme
         sType(VkStructureType.DEVICE_QUEUE_GLOBAL_PRIORITY_CREATE_INFO);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkDeviceQueueGlobalPriorityCreateInfo sType(@EnumType(VkStructureType.class) int value) {
+    public VkDeviceQueueGlobalPriorityCreateInfo sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }
@@ -212,11 +212,11 @@ public record VkDeviceQueueGlobalPriorityCreateInfo(@NotNull MemorySegment segme
         return this;
     }
 
-    public @EnumType(VkQueueGlobalPriority.class) int globalPriority() {
+    public @MagicConstant(valuesFromClass = VkQueueGlobalPriority.class) int globalPriority() {
         return segment.get(LAYOUT$globalPriority, OFFSET$globalPriority);
     }
 
-    public VkDeviceQueueGlobalPriorityCreateInfo globalPriority(@EnumType(VkQueueGlobalPriority.class) int value) {
+    public VkDeviceQueueGlobalPriorityCreateInfo globalPriority(@MagicConstant(valuesFromClass = VkQueueGlobalPriority.class) int value) {
         segment.set(LAYOUT$globalPriority, OFFSET$globalPriority, value);
         return this;
     }

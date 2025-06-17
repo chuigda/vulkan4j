@@ -191,11 +191,11 @@ public record VkDescriptorSetVariableDescriptorCountAllocateInfo(@NotNull Memory
         sType(VkStructureType.DESCRIPTOR_SET_VARIABLE_DESCRIPTOR_COUNT_ALLOCATE_INFO);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkDescriptorSetVariableDescriptorCountAllocateInfo sType(@EnumType(VkStructureType.class) int value) {
+    public VkDescriptorSetVariableDescriptorCountAllocateInfo sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }

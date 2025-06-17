@@ -191,11 +191,11 @@ public record VkPipelineTessellationStateCreateInfo(@NotNull MemorySegment segme
         sType(VkStructureType.PIPELINE_TESSELLATION_STATE_CREATE_INFO);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkPipelineTessellationStateCreateInfo sType(@EnumType(VkStructureType.class) int value) {
+    public VkPipelineTessellationStateCreateInfo sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }
@@ -213,11 +213,11 @@ public record VkPipelineTessellationStateCreateInfo(@NotNull MemorySegment segme
         return this;
     }
 
-    public @EnumType(VkPipelineTessellationStateCreateFlags.class) int flags() {
+    public @MagicConstant(valuesFromClass = VkPipelineTessellationStateCreateFlags.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public VkPipelineTessellationStateCreateInfo flags(@EnumType(VkPipelineTessellationStateCreateFlags.class) int value) {
+    public VkPipelineTessellationStateCreateInfo flags(@MagicConstant(valuesFromClass = VkPipelineTessellationStateCreateFlags.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
         return this;
     }

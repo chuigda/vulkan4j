@@ -201,11 +201,11 @@ public record VkPhysicalDeviceDeviceGeneratedCommandsPropertiesEXT(@NotNull Memo
         sType(VkStructureType.PHYSICAL_DEVICE_DEVICE_GENERATED_COMMANDS_PROPERTIES_EXT);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkPhysicalDeviceDeviceGeneratedCommandsPropertiesEXT sType(@EnumType(VkStructureType.class) int value) {
+    public VkPhysicalDeviceDeviceGeneratedCommandsPropertiesEXT sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }
@@ -277,38 +277,38 @@ public record VkPhysicalDeviceDeviceGeneratedCommandsPropertiesEXT(@NotNull Memo
         return this;
     }
 
-    public @EnumType(VkIndirectCommandsInputModeFlagsEXT.class) int supportedIndirectCommandsInputModes() {
+    public @MagicConstant(valuesFromClass = VkIndirectCommandsInputModeFlagsEXT.class) int supportedIndirectCommandsInputModes() {
         return segment.get(LAYOUT$supportedIndirectCommandsInputModes, OFFSET$supportedIndirectCommandsInputModes);
     }
 
-    public VkPhysicalDeviceDeviceGeneratedCommandsPropertiesEXT supportedIndirectCommandsInputModes(@EnumType(VkIndirectCommandsInputModeFlagsEXT.class) int value) {
+    public VkPhysicalDeviceDeviceGeneratedCommandsPropertiesEXT supportedIndirectCommandsInputModes(@MagicConstant(valuesFromClass = VkIndirectCommandsInputModeFlagsEXT.class) int value) {
         segment.set(LAYOUT$supportedIndirectCommandsInputModes, OFFSET$supportedIndirectCommandsInputModes, value);
         return this;
     }
 
-    public @EnumType(VkShaderStageFlags.class) int supportedIndirectCommandsShaderStages() {
+    public @MagicConstant(valuesFromClass = VkShaderStageFlags.class) int supportedIndirectCommandsShaderStages() {
         return segment.get(LAYOUT$supportedIndirectCommandsShaderStages, OFFSET$supportedIndirectCommandsShaderStages);
     }
 
-    public VkPhysicalDeviceDeviceGeneratedCommandsPropertiesEXT supportedIndirectCommandsShaderStages(@EnumType(VkShaderStageFlags.class) int value) {
+    public VkPhysicalDeviceDeviceGeneratedCommandsPropertiesEXT supportedIndirectCommandsShaderStages(@MagicConstant(valuesFromClass = VkShaderStageFlags.class) int value) {
         segment.set(LAYOUT$supportedIndirectCommandsShaderStages, OFFSET$supportedIndirectCommandsShaderStages, value);
         return this;
     }
 
-    public @EnumType(VkShaderStageFlags.class) int supportedIndirectCommandsShaderStagesPipelineBinding() {
+    public @MagicConstant(valuesFromClass = VkShaderStageFlags.class) int supportedIndirectCommandsShaderStagesPipelineBinding() {
         return segment.get(LAYOUT$supportedIndirectCommandsShaderStagesPipelineBinding, OFFSET$supportedIndirectCommandsShaderStagesPipelineBinding);
     }
 
-    public VkPhysicalDeviceDeviceGeneratedCommandsPropertiesEXT supportedIndirectCommandsShaderStagesPipelineBinding(@EnumType(VkShaderStageFlags.class) int value) {
+    public VkPhysicalDeviceDeviceGeneratedCommandsPropertiesEXT supportedIndirectCommandsShaderStagesPipelineBinding(@MagicConstant(valuesFromClass = VkShaderStageFlags.class) int value) {
         segment.set(LAYOUT$supportedIndirectCommandsShaderStagesPipelineBinding, OFFSET$supportedIndirectCommandsShaderStagesPipelineBinding, value);
         return this;
     }
 
-    public @EnumType(VkShaderStageFlags.class) int supportedIndirectCommandsShaderStagesShaderBinding() {
+    public @MagicConstant(valuesFromClass = VkShaderStageFlags.class) int supportedIndirectCommandsShaderStagesShaderBinding() {
         return segment.get(LAYOUT$supportedIndirectCommandsShaderStagesShaderBinding, OFFSET$supportedIndirectCommandsShaderStagesShaderBinding);
     }
 
-    public VkPhysicalDeviceDeviceGeneratedCommandsPropertiesEXT supportedIndirectCommandsShaderStagesShaderBinding(@EnumType(VkShaderStageFlags.class) int value) {
+    public VkPhysicalDeviceDeviceGeneratedCommandsPropertiesEXT supportedIndirectCommandsShaderStagesShaderBinding(@MagicConstant(valuesFromClass = VkShaderStageFlags.class) int value) {
         segment.set(LAYOUT$supportedIndirectCommandsShaderStagesShaderBinding, OFFSET$supportedIndirectCommandsShaderStagesShaderBinding, value);
         return this;
     }

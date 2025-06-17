@@ -191,11 +191,11 @@ public record VkPipelineViewportDepthClampControlCreateInfoEXT(@NotNull MemorySe
         sType(VkStructureType.PIPELINE_VIEWPORT_DEPTH_CLAMP_CONTROL_CREATE_INFO_EXT);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkPipelineViewportDepthClampControlCreateInfoEXT sType(@EnumType(VkStructureType.class) int value) {
+    public VkPipelineViewportDepthClampControlCreateInfoEXT sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }
@@ -213,11 +213,11 @@ public record VkPipelineViewportDepthClampControlCreateInfoEXT(@NotNull MemorySe
         return this;
     }
 
-    public @EnumType(VkDepthClampModeEXT.class) int depthClampMode() {
+    public @MagicConstant(valuesFromClass = VkDepthClampModeEXT.class) int depthClampMode() {
         return segment.get(LAYOUT$depthClampMode, OFFSET$depthClampMode);
     }
 
-    public VkPipelineViewportDepthClampControlCreateInfoEXT depthClampMode(@EnumType(VkDepthClampModeEXT.class) int value) {
+    public VkPipelineViewportDepthClampControlCreateInfoEXT depthClampMode(@MagicConstant(valuesFromClass = VkDepthClampModeEXT.class) int value) {
         segment.set(LAYOUT$depthClampMode, OFFSET$depthClampMode, value);
         return this;
     }

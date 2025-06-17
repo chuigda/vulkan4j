@@ -197,11 +197,11 @@ public record VkAndroidHardwareBufferFormatProperties2ANDROID(@NotNull MemorySeg
         sType(VkStructureType.ANDROID_HARDWARE_BUFFER_FORMAT_PROPERTIES_2_ANDROID);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkAndroidHardwareBufferFormatProperties2ANDROID sType(@EnumType(VkStructureType.class) int value) {
+    public VkAndroidHardwareBufferFormatProperties2ANDROID sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }
@@ -219,11 +219,11 @@ public record VkAndroidHardwareBufferFormatProperties2ANDROID(@NotNull MemorySeg
         return this;
     }
 
-    public @EnumType(VkFormat.class) int format() {
+    public @MagicConstant(valuesFromClass = VkFormat.class) int format() {
         return segment.get(LAYOUT$format, OFFSET$format);
     }
 
-    public VkAndroidHardwareBufferFormatProperties2ANDROID format(@EnumType(VkFormat.class) int value) {
+    public VkAndroidHardwareBufferFormatProperties2ANDROID format(@MagicConstant(valuesFromClass = VkFormat.class) int value) {
         segment.set(LAYOUT$format, OFFSET$format, value);
         return this;
     }
@@ -237,11 +237,11 @@ public record VkAndroidHardwareBufferFormatProperties2ANDROID(@NotNull MemorySeg
         return this;
     }
 
-    public @EnumType(VkFormatFeatureFlags2.class) long formatFeatures() {
+    public @MagicConstant(valuesFromClass = VkFormatFeatureFlags2.class) long formatFeatures() {
         return segment.get(LAYOUT$formatFeatures, OFFSET$formatFeatures);
     }
 
-    public VkAndroidHardwareBufferFormatProperties2ANDROID formatFeatures(@EnumType(VkFormatFeatureFlags2.class) long value) {
+    public VkAndroidHardwareBufferFormatProperties2ANDROID formatFeatures(@MagicConstant(valuesFromClass = VkFormatFeatureFlags2.class) long value) {
         segment.set(LAYOUT$formatFeatures, OFFSET$formatFeatures, value);
         return this;
     }
@@ -260,38 +260,38 @@ public record VkAndroidHardwareBufferFormatProperties2ANDROID(@NotNull MemorySeg
         return this;
     }
 
-    public @EnumType(VkSamplerYcbcrModelConversion.class) int suggestedYcbcrModel() {
+    public @MagicConstant(valuesFromClass = VkSamplerYcbcrModelConversion.class) int suggestedYcbcrModel() {
         return segment.get(LAYOUT$suggestedYcbcrModel, OFFSET$suggestedYcbcrModel);
     }
 
-    public VkAndroidHardwareBufferFormatProperties2ANDROID suggestedYcbcrModel(@EnumType(VkSamplerYcbcrModelConversion.class) int value) {
+    public VkAndroidHardwareBufferFormatProperties2ANDROID suggestedYcbcrModel(@MagicConstant(valuesFromClass = VkSamplerYcbcrModelConversion.class) int value) {
         segment.set(LAYOUT$suggestedYcbcrModel, OFFSET$suggestedYcbcrModel, value);
         return this;
     }
 
-    public @EnumType(VkSamplerYcbcrRange.class) int suggestedYcbcrRange() {
+    public @MagicConstant(valuesFromClass = VkSamplerYcbcrRange.class) int suggestedYcbcrRange() {
         return segment.get(LAYOUT$suggestedYcbcrRange, OFFSET$suggestedYcbcrRange);
     }
 
-    public VkAndroidHardwareBufferFormatProperties2ANDROID suggestedYcbcrRange(@EnumType(VkSamplerYcbcrRange.class) int value) {
+    public VkAndroidHardwareBufferFormatProperties2ANDROID suggestedYcbcrRange(@MagicConstant(valuesFromClass = VkSamplerYcbcrRange.class) int value) {
         segment.set(LAYOUT$suggestedYcbcrRange, OFFSET$suggestedYcbcrRange, value);
         return this;
     }
 
-    public @EnumType(VkChromaLocation.class) int suggestedXChromaOffset() {
+    public @MagicConstant(valuesFromClass = VkChromaLocation.class) int suggestedXChromaOffset() {
         return segment.get(LAYOUT$suggestedXChromaOffset, OFFSET$suggestedXChromaOffset);
     }
 
-    public VkAndroidHardwareBufferFormatProperties2ANDROID suggestedXChromaOffset(@EnumType(VkChromaLocation.class) int value) {
+    public VkAndroidHardwareBufferFormatProperties2ANDROID suggestedXChromaOffset(@MagicConstant(valuesFromClass = VkChromaLocation.class) int value) {
         segment.set(LAYOUT$suggestedXChromaOffset, OFFSET$suggestedXChromaOffset, value);
         return this;
     }
 
-    public @EnumType(VkChromaLocation.class) int suggestedYChromaOffset() {
+    public @MagicConstant(valuesFromClass = VkChromaLocation.class) int suggestedYChromaOffset() {
         return segment.get(LAYOUT$suggestedYChromaOffset, OFFSET$suggestedYChromaOffset);
     }
 
-    public VkAndroidHardwareBufferFormatProperties2ANDROID suggestedYChromaOffset(@EnumType(VkChromaLocation.class) int value) {
+    public VkAndroidHardwareBufferFormatProperties2ANDROID suggestedYChromaOffset(@MagicConstant(valuesFromClass = VkChromaLocation.class) int value) {
         segment.set(LAYOUT$suggestedYChromaOffset, OFFSET$suggestedYChromaOffset, value);
         return this;
     }

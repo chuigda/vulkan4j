@@ -193,11 +193,11 @@ public record VkPushDescriptorSetWithTemplateInfo(@NotNull MemorySegment segment
         sType(VkStructureType.PUSH_DESCRIPTOR_SET_WITH_TEMPLATE_INFO);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkPushDescriptorSetWithTemplateInfo sType(@EnumType(VkStructureType.class) int value) {
+    public VkPushDescriptorSetWithTemplateInfo sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }

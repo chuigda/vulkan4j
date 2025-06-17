@@ -1,6 +1,7 @@
 package club.doki7.vulkan.enumtype;
 
 import club.doki7.ffm.annotation.*;
+import org.intellij.lang.annotations.MagicConstant;
 
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPrimitiveTopology.html"><code>VkPrimitiveTopology</code></a>
 public final class VkPrimitiveTopology {
@@ -16,7 +17,7 @@ public final class VkPrimitiveTopology {
     public static final int TRIANGLE_STRIP_WITH_ADJACENCY = 0x9;
     public static final int PATCH_LIST = 0xa;
 
-    public static String explain(@EnumType(VkPrimitiveTopology.class) int value) {
+    public static String explain(@MagicConstant(valuesFromClass = VkPrimitiveTopology.class) int value) {
         return switch (value) {
             case VkPrimitiveTopology.LINE_LIST -> "VK_PRIMITIVE_TOPOLOGY_LINE_LIST";
             case VkPrimitiveTopology.LINE_LIST_WITH_ADJACENCY -> "VK_PRIMITIVE_TOPOLOGY_LINE_LIST_WITH_ADJACENCY";

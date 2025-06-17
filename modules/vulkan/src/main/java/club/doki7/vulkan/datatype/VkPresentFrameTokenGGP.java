@@ -190,11 +190,11 @@ public record VkPresentFrameTokenGGP(@NotNull MemorySegment segment) implements 
         sType(VkStructureType.PRESENT_FRAME_TOKEN_GGP);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkPresentFrameTokenGGP sType(@EnumType(VkStructureType.class) int value) {
+    public VkPresentFrameTokenGGP sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }

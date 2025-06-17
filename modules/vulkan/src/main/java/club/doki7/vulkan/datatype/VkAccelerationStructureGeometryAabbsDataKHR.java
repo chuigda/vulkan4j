@@ -191,11 +191,11 @@ public record VkAccelerationStructureGeometryAabbsDataKHR(@NotNull MemorySegment
         sType(VkStructureType.ACCELERATION_STRUCTURE_GEOMETRY_AABBS_DATA_KHR);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkAccelerationStructureGeometryAabbsDataKHR sType(@EnumType(VkStructureType.class) int value) {
+    public VkAccelerationStructureGeometryAabbsDataKHR sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }

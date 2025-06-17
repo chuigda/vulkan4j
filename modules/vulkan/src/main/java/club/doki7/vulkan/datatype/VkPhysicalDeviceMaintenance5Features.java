@@ -190,11 +190,11 @@ public record VkPhysicalDeviceMaintenance5Features(@NotNull MemorySegment segmen
         sType(VkStructureType.PHYSICAL_DEVICE_MAINTENANCE_5_FEATURES);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkPhysicalDeviceMaintenance5Features sType(@EnumType(VkStructureType.class) int value) {
+    public VkPhysicalDeviceMaintenance5Features sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }

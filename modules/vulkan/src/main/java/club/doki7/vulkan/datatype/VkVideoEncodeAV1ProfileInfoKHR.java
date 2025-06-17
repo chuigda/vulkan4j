@@ -190,11 +190,11 @@ public record VkVideoEncodeAV1ProfileInfoKHR(@NotNull MemorySegment segment) imp
         sType(VkStructureType.VIDEO_ENCODE_AV1_PROFILE_INFO_KHR);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkVideoEncodeAV1ProfileInfoKHR sType(@EnumType(VkStructureType.class) int value) {
+    public VkVideoEncodeAV1ProfileInfoKHR sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }
@@ -212,11 +212,11 @@ public record VkVideoEncodeAV1ProfileInfoKHR(@NotNull MemorySegment segment) imp
         return this;
     }
 
-    public @EnumType(StdVideoAV1Profile.class) int stdProfile() {
+    public @MagicConstant(valuesFromClass = StdVideoAV1Profile.class) int stdProfile() {
         return segment.get(LAYOUT$stdProfile, OFFSET$stdProfile);
     }
 
-    public VkVideoEncodeAV1ProfileInfoKHR stdProfile(@EnumType(StdVideoAV1Profile.class) int value) {
+    public VkVideoEncodeAV1ProfileInfoKHR stdProfile(@MagicConstant(valuesFromClass = StdVideoAV1Profile.class) int value) {
         segment.set(LAYOUT$stdProfile, OFFSET$stdProfile, value);
         return this;
     }

@@ -190,11 +190,11 @@ public record VkExportFenceSciSyncInfoNV(@NotNull MemorySegment segment) impleme
         sType(VkStructureType.EXPORT_FENCE_SCI_SYNC_INFO_NV);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkExportFenceSciSyncInfoNV sType(@EnumType(VkStructureType.class) int value) {
+    public VkExportFenceSciSyncInfoNV sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }

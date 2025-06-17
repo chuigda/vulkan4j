@@ -191,11 +191,11 @@ public record VkSwapchainPresentFenceInfoEXT(@NotNull MemorySegment segment) imp
         sType(VkStructureType.SWAPCHAIN_PRESENT_FENCE_INFO_EXT);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkSwapchainPresentFenceInfoEXT sType(@EnumType(VkStructureType.class) int value) {
+    public VkSwapchainPresentFenceInfoEXT sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }

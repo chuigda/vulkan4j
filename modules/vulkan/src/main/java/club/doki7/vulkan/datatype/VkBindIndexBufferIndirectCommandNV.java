@@ -189,11 +189,11 @@ public record VkBindIndexBufferIndirectCommandNV(@NotNull MemorySegment segment)
         return this;
     }
 
-    public @EnumType(VkIndexType.class) int indexType() {
+    public @MagicConstant(valuesFromClass = VkIndexType.class) int indexType() {
         return segment.get(LAYOUT$indexType, OFFSET$indexType);
     }
 
-    public VkBindIndexBufferIndirectCommandNV indexType(@EnumType(VkIndexType.class) int value) {
+    public VkBindIndexBufferIndirectCommandNV indexType(@MagicConstant(valuesFromClass = VkIndexType.class) int value) {
         segment.set(LAYOUT$indexType, OFFSET$indexType, value);
         return this;
     }

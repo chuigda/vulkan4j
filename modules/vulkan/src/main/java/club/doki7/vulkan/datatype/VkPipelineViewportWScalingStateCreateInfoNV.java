@@ -192,11 +192,11 @@ public record VkPipelineViewportWScalingStateCreateInfoNV(@NotNull MemorySegment
         sType(VkStructureType.PIPELINE_VIEWPORT_W_SCALING_STATE_CREATE_INFO_NV);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkPipelineViewportWScalingStateCreateInfoNV sType(@EnumType(VkStructureType.class) int value) {
+    public VkPipelineViewportWScalingStateCreateInfoNV sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }

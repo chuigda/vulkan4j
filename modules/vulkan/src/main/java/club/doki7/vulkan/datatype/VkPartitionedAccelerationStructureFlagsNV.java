@@ -190,11 +190,11 @@ public record VkPartitionedAccelerationStructureFlagsNV(@NotNull MemorySegment s
         sType(VkStructureType.PARTITIONED_ACCELERATION_STRUCTURE_FLAGS_NV);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkPartitionedAccelerationStructureFlagsNV sType(@EnumType(VkStructureType.class) int value) {
+    public VkPartitionedAccelerationStructureFlagsNV sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }

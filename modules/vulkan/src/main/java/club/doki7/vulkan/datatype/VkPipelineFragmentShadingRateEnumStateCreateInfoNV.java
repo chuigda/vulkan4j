@@ -192,11 +192,11 @@ public record VkPipelineFragmentShadingRateEnumStateCreateInfoNV(@NotNull Memory
         sType(VkStructureType.PIPELINE_FRAGMENT_SHADING_RATE_ENUM_STATE_CREATE_INFO_NV);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkPipelineFragmentShadingRateEnumStateCreateInfoNV sType(@EnumType(VkStructureType.class) int value) {
+    public VkPipelineFragmentShadingRateEnumStateCreateInfoNV sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }
@@ -214,20 +214,20 @@ public record VkPipelineFragmentShadingRateEnumStateCreateInfoNV(@NotNull Memory
         return this;
     }
 
-    public @EnumType(VkFragmentShadingRateTypeNV.class) int shadingRateType() {
+    public @MagicConstant(valuesFromClass = VkFragmentShadingRateTypeNV.class) int shadingRateType() {
         return segment.get(LAYOUT$shadingRateType, OFFSET$shadingRateType);
     }
 
-    public VkPipelineFragmentShadingRateEnumStateCreateInfoNV shadingRateType(@EnumType(VkFragmentShadingRateTypeNV.class) int value) {
+    public VkPipelineFragmentShadingRateEnumStateCreateInfoNV shadingRateType(@MagicConstant(valuesFromClass = VkFragmentShadingRateTypeNV.class) int value) {
         segment.set(LAYOUT$shadingRateType, OFFSET$shadingRateType, value);
         return this;
     }
 
-    public @EnumType(VkFragmentShadingRateNV.class) int shadingRate() {
+    public @MagicConstant(valuesFromClass = VkFragmentShadingRateNV.class) int shadingRate() {
         return segment.get(LAYOUT$shadingRate, OFFSET$shadingRate);
     }
 
-    public VkPipelineFragmentShadingRateEnumStateCreateInfoNV shadingRate(@EnumType(VkFragmentShadingRateNV.class) int value) {
+    public VkPipelineFragmentShadingRateEnumStateCreateInfoNV shadingRate(@MagicConstant(valuesFromClass = VkFragmentShadingRateNV.class) int value) {
         segment.set(LAYOUT$shadingRate, OFFSET$shadingRate, value);
         return this;
     }

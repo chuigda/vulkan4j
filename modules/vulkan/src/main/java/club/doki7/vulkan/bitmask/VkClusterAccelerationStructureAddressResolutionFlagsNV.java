@@ -1,6 +1,7 @@
 package club.doki7.vulkan.bitmask;
 
 import club.doki7.ffm.annotation.*;
+import org.intellij.lang.annotations.MagicConstant;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,7 +15,7 @@ public final class VkClusterAccelerationStructureAddressResolutionFlagsNV {
     public static final int INDIRECTED_SRC_INFOS_ARRAY = 0x10;
     public static final int INDIRECTED_SRC_INFOS_COUNT = 0x20;
 
-    public static String explain(@EnumType(VkClusterAccelerationStructureAddressResolutionFlagsNV.class) int flags) {
+    public static String explain(@MagicConstant(flagsFromClass = VkClusterAccelerationStructureAddressResolutionFlagsNV.class) int flags) {
         List<String> detectedFlagBits = new ArrayList<>();
         if ((flags & INDIRECTED_DST_ADDRESS_ARRAY) != 0) {
             detectedFlagBits.add("VK_CLUSTER_ACCELERATION_STRUCTURE_ADDRESS_RESOLUTION_INDIRECTED_DST_ADDRESS_ARRAY_BIT_NV");

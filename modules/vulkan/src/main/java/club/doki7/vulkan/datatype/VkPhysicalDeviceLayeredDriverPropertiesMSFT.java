@@ -190,11 +190,11 @@ public record VkPhysicalDeviceLayeredDriverPropertiesMSFT(@NotNull MemorySegment
         sType(VkStructureType.PHYSICAL_DEVICE_LAYERED_DRIVER_PROPERTIES_MSFT);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkPhysicalDeviceLayeredDriverPropertiesMSFT sType(@EnumType(VkStructureType.class) int value) {
+    public VkPhysicalDeviceLayeredDriverPropertiesMSFT sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }
@@ -212,11 +212,11 @@ public record VkPhysicalDeviceLayeredDriverPropertiesMSFT(@NotNull MemorySegment
         return this;
     }
 
-    public @EnumType(VkLayeredDriverUnderlyingApiMSFT.class) int underlyingAPI() {
+    public @MagicConstant(valuesFromClass = VkLayeredDriverUnderlyingApiMSFT.class) int underlyingAPI() {
         return segment.get(LAYOUT$underlyingAPI, OFFSET$underlyingAPI);
     }
 
-    public VkPhysicalDeviceLayeredDriverPropertiesMSFT underlyingAPI(@EnumType(VkLayeredDriverUnderlyingApiMSFT.class) int value) {
+    public VkPhysicalDeviceLayeredDriverPropertiesMSFT underlyingAPI(@MagicConstant(valuesFromClass = VkLayeredDriverUnderlyingApiMSFT.class) int value) {
         segment.set(LAYOUT$underlyingAPI, OFFSET$underlyingAPI, value);
         return this;
     }

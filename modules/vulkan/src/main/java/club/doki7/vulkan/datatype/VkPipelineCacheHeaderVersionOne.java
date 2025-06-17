@@ -182,11 +182,11 @@ public record VkPipelineCacheHeaderVersionOne(@NotNull MemorySegment segment) im
         return this;
     }
 
-    public @EnumType(VkPipelineCacheHeaderVersion.class) int headerVersion() {
+    public @MagicConstant(valuesFromClass = VkPipelineCacheHeaderVersion.class) int headerVersion() {
         return segment.get(LAYOUT$headerVersion, OFFSET$headerVersion);
     }
 
-    public VkPipelineCacheHeaderVersionOne headerVersion(@EnumType(VkPipelineCacheHeaderVersion.class) int value) {
+    public VkPipelineCacheHeaderVersionOne headerVersion(@MagicConstant(valuesFromClass = VkPipelineCacheHeaderVersion.class) int value) {
         segment.set(LAYOUT$headerVersion, OFFSET$headerVersion, value);
         return this;
     }

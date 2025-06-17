@@ -1,6 +1,7 @@
 package club.doki7.vulkan.bitmask;
 
 import club.doki7.ffm.annotation.*;
+import org.intellij.lang.annotations.MagicConstant;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -9,7 +10,7 @@ import java.util.List;
 public final class VkFrameBoundaryFlagsEXT {
     public static final int FRAME_END = 0x1;
 
-    public static String explain(@EnumType(VkFrameBoundaryFlagsEXT.class) int flags) {
+    public static String explain(@MagicConstant(flagsFromClass = VkFrameBoundaryFlagsEXT.class) int flags) {
         List<String> detectedFlagBits = new ArrayList<>();
         if ((flags & FRAME_END) != 0) {
             detectedFlagBits.add("VK_FRAME_BOUNDARY_FRAME_END_BIT_EXT");

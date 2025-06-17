@@ -1,6 +1,7 @@
 package club.doki7.vulkan.bitmask;
 
 import club.doki7.ffm.annotation.*;
+import org.intellij.lang.annotations.MagicConstant;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -9,7 +10,7 @@ import java.util.List;
 public final class VkMemoryMapFlags {
     public static final int PLACED_EXT = 0x1;
 
-    public static String explain(@EnumType(VkMemoryMapFlags.class) int flags) {
+    public static String explain(@MagicConstant(flagsFromClass = VkMemoryMapFlags.class) int flags) {
         List<String> detectedFlagBits = new ArrayList<>();
         if ((flags & PLACED_EXT) != 0) {
             detectedFlagBits.add("VK_MEMORY_MAP_PLACED_BIT_EXT");

@@ -191,11 +191,11 @@ public record VkAccelerationStructureMemoryRequirementsInfoNV(@NotNull MemorySeg
         sType(VkStructureType.ACCELERATION_STRUCTURE_MEMORY_REQUIREMENTS_INFO_NV);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkAccelerationStructureMemoryRequirementsInfoNV sType(@EnumType(VkStructureType.class) int value) {
+    public VkAccelerationStructureMemoryRequirementsInfoNV sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }
@@ -213,11 +213,11 @@ public record VkAccelerationStructureMemoryRequirementsInfoNV(@NotNull MemorySeg
         return this;
     }
 
-    public @EnumType(VkAccelerationStructureMemoryRequirementsTypeNV.class) int type() {
+    public @MagicConstant(valuesFromClass = VkAccelerationStructureMemoryRequirementsTypeNV.class) int type() {
         return segment.get(LAYOUT$type, OFFSET$type);
     }
 
-    public VkAccelerationStructureMemoryRequirementsInfoNV type(@EnumType(VkAccelerationStructureMemoryRequirementsTypeNV.class) int value) {
+    public VkAccelerationStructureMemoryRequirementsInfoNV type(@MagicConstant(valuesFromClass = VkAccelerationStructureMemoryRequirementsTypeNV.class) int value) {
         segment.set(LAYOUT$type, OFFSET$type, value);
         return this;
     }

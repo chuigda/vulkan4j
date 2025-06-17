@@ -193,11 +193,11 @@ public record VkDeviceAddressBindingCallbackDataEXT(@NotNull MemorySegment segme
         sType(VkStructureType.DEVICE_ADDRESS_BINDING_CALLBACK_DATA_EXT);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkDeviceAddressBindingCallbackDataEXT sType(@EnumType(VkStructureType.class) int value) {
+    public VkDeviceAddressBindingCallbackDataEXT sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }
@@ -215,11 +215,11 @@ public record VkDeviceAddressBindingCallbackDataEXT(@NotNull MemorySegment segme
         return this;
     }
 
-    public @EnumType(VkDeviceAddressBindingFlagsEXT.class) int flags() {
+    public @MagicConstant(valuesFromClass = VkDeviceAddressBindingFlagsEXT.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public VkDeviceAddressBindingCallbackDataEXT flags(@EnumType(VkDeviceAddressBindingFlagsEXT.class) int value) {
+    public VkDeviceAddressBindingCallbackDataEXT flags(@MagicConstant(valuesFromClass = VkDeviceAddressBindingFlagsEXT.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
         return this;
     }
@@ -242,11 +242,11 @@ public record VkDeviceAddressBindingCallbackDataEXT(@NotNull MemorySegment segme
         return this;
     }
 
-    public @EnumType(VkDeviceAddressBindingTypeEXT.class) int bindingType() {
+    public @MagicConstant(valuesFromClass = VkDeviceAddressBindingTypeEXT.class) int bindingType() {
         return segment.get(LAYOUT$bindingType, OFFSET$bindingType);
     }
 
-    public VkDeviceAddressBindingCallbackDataEXT bindingType(@EnumType(VkDeviceAddressBindingTypeEXT.class) int value) {
+    public VkDeviceAddressBindingCallbackDataEXT bindingType(@MagicConstant(valuesFromClass = VkDeviceAddressBindingTypeEXT.class) int value) {
         segment.set(LAYOUT$bindingType, OFFSET$bindingType, value);
         return this;
     }

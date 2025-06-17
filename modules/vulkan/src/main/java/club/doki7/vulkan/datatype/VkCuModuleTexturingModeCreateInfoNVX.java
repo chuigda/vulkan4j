@@ -190,11 +190,11 @@ public record VkCuModuleTexturingModeCreateInfoNVX(@NotNull MemorySegment segmen
         sType(VkStructureType.CU_MODULE_TEXTURING_MODE_CREATE_INFO_NVX);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkCuModuleTexturingModeCreateInfoNVX sType(@EnumType(VkStructureType.class) int value) {
+    public VkCuModuleTexturingModeCreateInfoNVX sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }

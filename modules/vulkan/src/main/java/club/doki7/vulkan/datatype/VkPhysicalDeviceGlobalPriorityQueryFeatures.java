@@ -190,11 +190,11 @@ public record VkPhysicalDeviceGlobalPriorityQueryFeatures(@NotNull MemorySegment
         sType(VkStructureType.PHYSICAL_DEVICE_GLOBAL_PRIORITY_QUERY_FEATURES);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkPhysicalDeviceGlobalPriorityQueryFeatures sType(@EnumType(VkStructureType.class) int value) {
+    public VkPhysicalDeviceGlobalPriorityQueryFeatures sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }

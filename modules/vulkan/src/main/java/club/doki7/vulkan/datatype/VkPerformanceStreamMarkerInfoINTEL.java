@@ -190,11 +190,11 @@ public record VkPerformanceStreamMarkerInfoINTEL(@NotNull MemorySegment segment)
         sType(VkStructureType.PERFORMANCE_STREAM_MARKER_INFO_INTEL);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkPerformanceStreamMarkerInfoINTEL sType(@EnumType(VkStructureType.class) int value) {
+    public VkPerformanceStreamMarkerInfoINTEL sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }

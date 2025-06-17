@@ -195,11 +195,11 @@ public record VkSetDescriptorBufferOffsetsInfoEXT(@NotNull MemorySegment segment
         sType(VkStructureType.SET_DESCRIPTOR_BUFFER_OFFSETS_INFO_EXT);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkSetDescriptorBufferOffsetsInfoEXT sType(@EnumType(VkStructureType.class) int value) {
+    public VkSetDescriptorBufferOffsetsInfoEXT sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }
@@ -217,11 +217,11 @@ public record VkSetDescriptorBufferOffsetsInfoEXT(@NotNull MemorySegment segment
         return this;
     }
 
-    public @EnumType(VkShaderStageFlags.class) int stageFlags() {
+    public @MagicConstant(valuesFromClass = VkShaderStageFlags.class) int stageFlags() {
         return segment.get(LAYOUT$stageFlags, OFFSET$stageFlags);
     }
 
-    public VkSetDescriptorBufferOffsetsInfoEXT stageFlags(@EnumType(VkShaderStageFlags.class) int value) {
+    public VkSetDescriptorBufferOffsetsInfoEXT stageFlags(@MagicConstant(valuesFromClass = VkShaderStageFlags.class) int value) {
         segment.set(LAYOUT$stageFlags, OFFSET$stageFlags, value);
         return this;
     }

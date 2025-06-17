@@ -191,11 +191,11 @@ public record VkDebugUtilsLabelEXT(@NotNull MemorySegment segment) implements IV
         sType(VkStructureType.DEBUG_UTILS_LABEL_EXT);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkDebugUtilsLabelEXT sType(@EnumType(VkStructureType.class) int value) {
+    public VkDebugUtilsLabelEXT sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }

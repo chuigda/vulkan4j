@@ -192,11 +192,11 @@ public record VkOpticalFlowExecuteInfoNV(@NotNull MemorySegment segment) impleme
         sType(VkStructureType.OPTICAL_FLOW_EXECUTE_INFO_NV);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkOpticalFlowExecuteInfoNV sType(@EnumType(VkStructureType.class) int value) {
+    public VkOpticalFlowExecuteInfoNV sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }
@@ -214,11 +214,11 @@ public record VkOpticalFlowExecuteInfoNV(@NotNull MemorySegment segment) impleme
         return this;
     }
 
-    public @EnumType(VkOpticalFlowExecuteFlagsNV.class) int flags() {
+    public @MagicConstant(valuesFromClass = VkOpticalFlowExecuteFlagsNV.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public VkOpticalFlowExecuteInfoNV flags(@EnumType(VkOpticalFlowExecuteFlagsNV.class) int value) {
+    public VkOpticalFlowExecuteInfoNV flags(@MagicConstant(valuesFromClass = VkOpticalFlowExecuteFlagsNV.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
         return this;
     }

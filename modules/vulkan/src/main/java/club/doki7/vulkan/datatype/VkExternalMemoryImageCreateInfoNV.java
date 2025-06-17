@@ -190,11 +190,11 @@ public record VkExternalMemoryImageCreateInfoNV(@NotNull MemorySegment segment) 
         sType(VkStructureType.EXTERNAL_MEMORY_IMAGE_CREATE_INFO_NV);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkExternalMemoryImageCreateInfoNV sType(@EnumType(VkStructureType.class) int value) {
+    public VkExternalMemoryImageCreateInfoNV sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }
@@ -212,11 +212,11 @@ public record VkExternalMemoryImageCreateInfoNV(@NotNull MemorySegment segment) 
         return this;
     }
 
-    public @EnumType(VkExternalMemoryHandleTypeFlagsNV.class) int handleTypes() {
+    public @MagicConstant(valuesFromClass = VkExternalMemoryHandleTypeFlagsNV.class) int handleTypes() {
         return segment.get(LAYOUT$handleTypes, OFFSET$handleTypes);
     }
 
-    public VkExternalMemoryImageCreateInfoNV handleTypes(@EnumType(VkExternalMemoryHandleTypeFlagsNV.class) int value) {
+    public VkExternalMemoryImageCreateInfoNV handleTypes(@MagicConstant(valuesFromClass = VkExternalMemoryHandleTypeFlagsNV.class) int value) {
         segment.set(LAYOUT$handleTypes, OFFSET$handleTypes, value);
         return this;
     }

@@ -192,11 +192,11 @@ public record VkImportSemaphoreSciSyncInfoNV(@NotNull MemorySegment segment) imp
         sType(VkStructureType.IMPORT_SEMAPHORE_SCI_SYNC_INFO_NV);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkImportSemaphoreSciSyncInfoNV sType(@EnumType(VkStructureType.class) int value) {
+    public VkImportSemaphoreSciSyncInfoNV sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }
@@ -227,11 +227,11 @@ public record VkImportSemaphoreSciSyncInfoNV(@NotNull MemorySegment segment) imp
         return this;
     }
 
-    public @EnumType(VkExternalSemaphoreHandleTypeFlags.class) int handleType() {
+    public @MagicConstant(valuesFromClass = VkExternalSemaphoreHandleTypeFlags.class) int handleType() {
         return segment.get(LAYOUT$handleType, OFFSET$handleType);
     }
 
-    public VkImportSemaphoreSciSyncInfoNV handleType(@EnumType(VkExternalSemaphoreHandleTypeFlags.class) int value) {
+    public VkImportSemaphoreSciSyncInfoNV handleType(@MagicConstant(valuesFromClass = VkExternalSemaphoreHandleTypeFlags.class) int value) {
         segment.set(LAYOUT$handleType, OFFSET$handleType, value);
         return this;
     }

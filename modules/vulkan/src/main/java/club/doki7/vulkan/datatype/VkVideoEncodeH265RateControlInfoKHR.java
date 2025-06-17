@@ -194,11 +194,11 @@ public record VkVideoEncodeH265RateControlInfoKHR(@NotNull MemorySegment segment
         sType(VkStructureType.VIDEO_ENCODE_H265_RATE_CONTROL_INFO_KHR);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkVideoEncodeH265RateControlInfoKHR sType(@EnumType(VkStructureType.class) int value) {
+    public VkVideoEncodeH265RateControlInfoKHR sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }
@@ -216,11 +216,11 @@ public record VkVideoEncodeH265RateControlInfoKHR(@NotNull MemorySegment segment
         return this;
     }
 
-    public @EnumType(VkVideoEncodeH265RateControlFlagsKHR.class) int flags() {
+    public @MagicConstant(valuesFromClass = VkVideoEncodeH265RateControlFlagsKHR.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public VkVideoEncodeH265RateControlInfoKHR flags(@EnumType(VkVideoEncodeH265RateControlFlagsKHR.class) int value) {
+    public VkVideoEncodeH265RateControlInfoKHR flags(@MagicConstant(valuesFromClass = VkVideoEncodeH265RateControlFlagsKHR.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
         return this;
     }

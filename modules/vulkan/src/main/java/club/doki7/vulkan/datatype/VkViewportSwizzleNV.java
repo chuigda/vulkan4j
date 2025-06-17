@@ -172,38 +172,38 @@ public record VkViewportSwizzleNV(@NotNull MemorySegment segment) implements IVk
         return ret;
     }
 
-    public @EnumType(VkViewportCoordinateSwizzleNV.class) int x() {
+    public @MagicConstant(valuesFromClass = VkViewportCoordinateSwizzleNV.class) int x() {
         return segment.get(LAYOUT$x, OFFSET$x);
     }
 
-    public VkViewportSwizzleNV x(@EnumType(VkViewportCoordinateSwizzleNV.class) int value) {
+    public VkViewportSwizzleNV x(@MagicConstant(valuesFromClass = VkViewportCoordinateSwizzleNV.class) int value) {
         segment.set(LAYOUT$x, OFFSET$x, value);
         return this;
     }
 
-    public @EnumType(VkViewportCoordinateSwizzleNV.class) int y() {
+    public @MagicConstant(valuesFromClass = VkViewportCoordinateSwizzleNV.class) int y() {
         return segment.get(LAYOUT$y, OFFSET$y);
     }
 
-    public VkViewportSwizzleNV y(@EnumType(VkViewportCoordinateSwizzleNV.class) int value) {
+    public VkViewportSwizzleNV y(@MagicConstant(valuesFromClass = VkViewportCoordinateSwizzleNV.class) int value) {
         segment.set(LAYOUT$y, OFFSET$y, value);
         return this;
     }
 
-    public @EnumType(VkViewportCoordinateSwizzleNV.class) int z() {
+    public @MagicConstant(valuesFromClass = VkViewportCoordinateSwizzleNV.class) int z() {
         return segment.get(LAYOUT$z, OFFSET$z);
     }
 
-    public VkViewportSwizzleNV z(@EnumType(VkViewportCoordinateSwizzleNV.class) int value) {
+    public VkViewportSwizzleNV z(@MagicConstant(valuesFromClass = VkViewportCoordinateSwizzleNV.class) int value) {
         segment.set(LAYOUT$z, OFFSET$z, value);
         return this;
     }
 
-    public @EnumType(VkViewportCoordinateSwizzleNV.class) int w() {
+    public @MagicConstant(valuesFromClass = VkViewportCoordinateSwizzleNV.class) int w() {
         return segment.get(LAYOUT$w, OFFSET$w);
     }
 
-    public VkViewportSwizzleNV w(@EnumType(VkViewportCoordinateSwizzleNV.class) int value) {
+    public VkViewportSwizzleNV w(@MagicConstant(valuesFromClass = VkViewportCoordinateSwizzleNV.class) int value) {
         segment.set(LAYOUT$w, OFFSET$w, value);
         return this;
     }

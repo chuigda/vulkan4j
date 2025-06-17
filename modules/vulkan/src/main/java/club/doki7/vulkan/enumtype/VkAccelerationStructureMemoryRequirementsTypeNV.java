@@ -1,6 +1,7 @@
 package club.doki7.vulkan.enumtype;
 
 import club.doki7.ffm.annotation.*;
+import org.intellij.lang.annotations.MagicConstant;
 
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkAccelerationStructureMemoryRequirementsTypeNV.html"><code>VkAccelerationStructureMemoryRequirementsTypeNV</code></a>
 public final class VkAccelerationStructureMemoryRequirementsTypeNV {
@@ -8,7 +9,7 @@ public final class VkAccelerationStructureMemoryRequirementsTypeNV {
     public static final int BUILD_SCRATCH = 0x1;
     public static final int UPDATE_SCRATCH = 0x2;
 
-    public static String explain(@EnumType(VkAccelerationStructureMemoryRequirementsTypeNV.class) int value) {
+    public static String explain(@MagicConstant(valuesFromClass = VkAccelerationStructureMemoryRequirementsTypeNV.class) int value) {
         return switch (value) {
             case VkAccelerationStructureMemoryRequirementsTypeNV.BUILD_SCRATCH -> "VK_ACCELERATION_STRUCTURE_MEMORY_REQUIREMENTS_TYPE_BUILD_SCRATCH_NV";
             case VkAccelerationStructureMemoryRequirementsTypeNV.OBJECT -> "VK_ACCELERATION_STRUCTURE_MEMORY_REQUIREMENTS_TYPE_OBJECT_NV";

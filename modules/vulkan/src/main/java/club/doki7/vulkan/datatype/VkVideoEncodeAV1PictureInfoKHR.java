@@ -196,11 +196,11 @@ public record VkVideoEncodeAV1PictureInfoKHR(@NotNull MemorySegment segment) imp
         sType(VkStructureType.VIDEO_ENCODE_AV1_PICTURE_INFO_KHR);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkVideoEncodeAV1PictureInfoKHR sType(@EnumType(VkStructureType.class) int value) {
+    public VkVideoEncodeAV1PictureInfoKHR sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }
@@ -218,20 +218,20 @@ public record VkVideoEncodeAV1PictureInfoKHR(@NotNull MemorySegment segment) imp
         return this;
     }
 
-    public @EnumType(VkVideoEncodeAV1PredictionModeKHR.class) int predictionMode() {
+    public @MagicConstant(valuesFromClass = VkVideoEncodeAV1PredictionModeKHR.class) int predictionMode() {
         return segment.get(LAYOUT$predictionMode, OFFSET$predictionMode);
     }
 
-    public VkVideoEncodeAV1PictureInfoKHR predictionMode(@EnumType(VkVideoEncodeAV1PredictionModeKHR.class) int value) {
+    public VkVideoEncodeAV1PictureInfoKHR predictionMode(@MagicConstant(valuesFromClass = VkVideoEncodeAV1PredictionModeKHR.class) int value) {
         segment.set(LAYOUT$predictionMode, OFFSET$predictionMode, value);
         return this;
     }
 
-    public @EnumType(VkVideoEncodeAV1RateControlGroupKHR.class) int rateControlGroup() {
+    public @MagicConstant(valuesFromClass = VkVideoEncodeAV1RateControlGroupKHR.class) int rateControlGroup() {
         return segment.get(LAYOUT$rateControlGroup, OFFSET$rateControlGroup);
     }
 
-    public VkVideoEncodeAV1PictureInfoKHR rateControlGroup(@EnumType(VkVideoEncodeAV1RateControlGroupKHR.class) int value) {
+    public VkVideoEncodeAV1PictureInfoKHR rateControlGroup(@MagicConstant(valuesFromClass = VkVideoEncodeAV1RateControlGroupKHR.class) int value) {
         segment.set(LAYOUT$rateControlGroup, OFFSET$rateControlGroup, value);
         return this;
     }

@@ -191,11 +191,11 @@ public record VkIOSSurfaceCreateInfoMVK(@NotNull MemorySegment segment) implemen
         sType(VkStructureType.IOS_SURFACE_CREATE_INFO_MVK);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkIOSSurfaceCreateInfoMVK sType(@EnumType(VkStructureType.class) int value) {
+    public VkIOSSurfaceCreateInfoMVK sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }
@@ -213,11 +213,11 @@ public record VkIOSSurfaceCreateInfoMVK(@NotNull MemorySegment segment) implemen
         return this;
     }
 
-    public @EnumType(VkIOSSurfaceCreateFlagsMVK.class) int flags() {
+    public @MagicConstant(valuesFromClass = VkIOSSurfaceCreateFlagsMVK.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public VkIOSSurfaceCreateInfoMVK flags(@EnumType(VkIOSSurfaceCreateFlagsMVK.class) int value) {
+    public VkIOSSurfaceCreateInfoMVK flags(@MagicConstant(valuesFromClass = VkIOSSurfaceCreateFlagsMVK.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
         return this;
     }

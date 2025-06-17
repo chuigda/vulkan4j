@@ -191,11 +191,11 @@ public record VkSamplerCustomBorderColorCreateInfoEXT(@NotNull MemorySegment seg
         sType(VkStructureType.SAMPLER_CUSTOM_BORDER_COLOR_CREATE_INFO_EXT);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkSamplerCustomBorderColorCreateInfoEXT sType(@EnumType(VkStructureType.class) int value) {
+    public VkSamplerCustomBorderColorCreateInfoEXT sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }
@@ -227,11 +227,11 @@ public record VkSamplerCustomBorderColorCreateInfoEXT(@NotNull MemorySegment seg
         return this;
     }
 
-    public @EnumType(VkFormat.class) int format() {
+    public @MagicConstant(valuesFromClass = VkFormat.class) int format() {
         return segment.get(LAYOUT$format, OFFSET$format);
     }
 
-    public VkSamplerCustomBorderColorCreateInfoEXT format(@EnumType(VkFormat.class) int value) {
+    public VkSamplerCustomBorderColorCreateInfoEXT format(@MagicConstant(valuesFromClass = VkFormat.class) int value) {
         segment.set(LAYOUT$format, OFFSET$format, value);
         return this;
     }

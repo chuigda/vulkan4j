@@ -1,6 +1,7 @@
 package club.doki7.vma.bitmask;
 
 import club.doki7.ffm.annotation.*;
+import org.intellij.lang.annotations.MagicConstant;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,7 +26,7 @@ public final class VmaVirtualBlockCreateFlags {
     /// Bit mask to extract only `ALGORITHM` bits from entire set of flags.
     public static final int ALGORITHM_MASK = LINEAR_ALGORITHM;
 
-    public static String explain(@EnumType(VmaVirtualBlockCreateFlags.class) int flags) {
+    public static String explain(@MagicConstant(flagsFromClass = VmaVirtualBlockCreateFlags.class) int flags) {
         List<String> detectedFlagBits = new ArrayList<>();
         if ((flags & FLAG_BITS_MAX_ENUM) != 0) {
             detectedFlagBits.add("VMA_VIRTUAL_BLOCK_CREATE_FLAG_BITS_MAX_ENUM");

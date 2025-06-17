@@ -190,11 +190,11 @@ public record VkDeviceMemoryOverallocationCreateInfoAMD(@NotNull MemorySegment s
         sType(VkStructureType.DEVICE_MEMORY_OVERALLOCATION_CREATE_INFO_AMD);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkDeviceMemoryOverallocationCreateInfoAMD sType(@EnumType(VkStructureType.class) int value) {
+    public VkDeviceMemoryOverallocationCreateInfoAMD sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }
@@ -212,11 +212,11 @@ public record VkDeviceMemoryOverallocationCreateInfoAMD(@NotNull MemorySegment s
         return this;
     }
 
-    public @EnumType(VkMemoryOverallocationBehaviorAMD.class) int overallocationBehavior() {
+    public @MagicConstant(valuesFromClass = VkMemoryOverallocationBehaviorAMD.class) int overallocationBehavior() {
         return segment.get(LAYOUT$overallocationBehavior, OFFSET$overallocationBehavior);
     }
 
-    public VkDeviceMemoryOverallocationCreateInfoAMD overallocationBehavior(@EnumType(VkMemoryOverallocationBehaviorAMD.class) int value) {
+    public VkDeviceMemoryOverallocationCreateInfoAMD overallocationBehavior(@MagicConstant(valuesFromClass = VkMemoryOverallocationBehaviorAMD.class) int value) {
         segment.set(LAYOUT$overallocationBehavior, OFFSET$overallocationBehavior, value);
         return this;
     }

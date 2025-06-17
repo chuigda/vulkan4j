@@ -197,11 +197,11 @@ public record VkDisplaySurfaceCreateInfoKHR(@NotNull MemorySegment segment) impl
         sType(VkStructureType.DISPLAY_SURFACE_CREATE_INFO_KHR);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkDisplaySurfaceCreateInfoKHR sType(@EnumType(VkStructureType.class) int value) {
+    public VkDisplaySurfaceCreateInfoKHR sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }
@@ -219,11 +219,11 @@ public record VkDisplaySurfaceCreateInfoKHR(@NotNull MemorySegment segment) impl
         return this;
     }
 
-    public @EnumType(VkDisplaySurfaceCreateFlagsKHR.class) int flags() {
+    public @MagicConstant(valuesFromClass = VkDisplaySurfaceCreateFlagsKHR.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public VkDisplaySurfaceCreateInfoKHR flags(@EnumType(VkDisplaySurfaceCreateFlagsKHR.class) int value) {
+    public VkDisplaySurfaceCreateInfoKHR flags(@MagicConstant(valuesFromClass = VkDisplaySurfaceCreateFlagsKHR.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
         return this;
     }
@@ -259,11 +259,11 @@ public record VkDisplaySurfaceCreateInfoKHR(@NotNull MemorySegment segment) impl
         return this;
     }
 
-    public @EnumType(VkSurfaceTransformFlagsKHR.class) int transform() {
+    public @MagicConstant(valuesFromClass = VkSurfaceTransformFlagsKHR.class) int transform() {
         return segment.get(LAYOUT$transform, OFFSET$transform);
     }
 
-    public VkDisplaySurfaceCreateInfoKHR transform(@EnumType(VkSurfaceTransformFlagsKHR.class) int value) {
+    public VkDisplaySurfaceCreateInfoKHR transform(@MagicConstant(valuesFromClass = VkSurfaceTransformFlagsKHR.class) int value) {
         segment.set(LAYOUT$transform, OFFSET$transform, value);
         return this;
     }
@@ -277,11 +277,11 @@ public record VkDisplaySurfaceCreateInfoKHR(@NotNull MemorySegment segment) impl
         return this;
     }
 
-    public @EnumType(VkDisplayPlaneAlphaFlagsKHR.class) int alphaMode() {
+    public @MagicConstant(valuesFromClass = VkDisplayPlaneAlphaFlagsKHR.class) int alphaMode() {
         return segment.get(LAYOUT$alphaMode, OFFSET$alphaMode);
     }
 
-    public VkDisplaySurfaceCreateInfoKHR alphaMode(@EnumType(VkDisplayPlaneAlphaFlagsKHR.class) int value) {
+    public VkDisplaySurfaceCreateInfoKHR alphaMode(@MagicConstant(valuesFromClass = VkDisplayPlaneAlphaFlagsKHR.class) int value) {
         segment.set(LAYOUT$alphaMode, OFFSET$alphaMode, value);
         return this;
     }

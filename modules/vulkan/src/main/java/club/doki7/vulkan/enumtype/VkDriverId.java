@@ -1,6 +1,7 @@
 package club.doki7.vulkan.enumtype;
 
 import club.doki7.ffm.annotation.*;
+import org.intellij.lang.annotations.MagicConstant;
 
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkDriverId.html"><code>VkDriverId</code></a>
 public final class VkDriverId {
@@ -32,7 +33,7 @@ public final class VkDriverId {
     public static final int MESA_HONEYKRISP = 0x1a;
     public static final int VULKAN_SC_EMULATION_ON_VULKAN = 0x1b;
 
-    public static String explain(@EnumType(VkDriverId.class) int value) {
+    public static String explain(@MagicConstant(valuesFromClass = VkDriverId.class) int value) {
         return switch (value) {
             case VkDriverId.AMD_OPEN_SOURCE -> "VK_DRIVER_ID_AMD_OPEN_SOURCE";
             case VkDriverId.AMD_PROPRIETARY -> "VK_DRIVER_ID_AMD_PROPRIETARY";

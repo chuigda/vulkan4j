@@ -190,11 +190,11 @@ public record VkImageViewASTCDecodeModeEXT(@NotNull MemorySegment segment) imple
         sType(VkStructureType.IMAGE_VIEW_ASTC_DECODE_MODE_EXT);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkImageViewASTCDecodeModeEXT sType(@EnumType(VkStructureType.class) int value) {
+    public VkImageViewASTCDecodeModeEXT sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }
@@ -212,11 +212,11 @@ public record VkImageViewASTCDecodeModeEXT(@NotNull MemorySegment segment) imple
         return this;
     }
 
-    public @EnumType(VkFormat.class) int decodeMode() {
+    public @MagicConstant(valuesFromClass = VkFormat.class) int decodeMode() {
         return segment.get(LAYOUT$decodeMode, OFFSET$decodeMode);
     }
 
-    public VkImageViewASTCDecodeModeEXT decodeMode(@EnumType(VkFormat.class) int value) {
+    public VkImageViewASTCDecodeModeEXT decodeMode(@MagicConstant(valuesFromClass = VkFormat.class) int value) {
         segment.set(LAYOUT$decodeMode, OFFSET$decodeMode, value);
         return this;
     }

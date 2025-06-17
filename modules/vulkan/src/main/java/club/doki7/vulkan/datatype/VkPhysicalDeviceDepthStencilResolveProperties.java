@@ -193,11 +193,11 @@ public record VkPhysicalDeviceDepthStencilResolveProperties(@NotNull MemorySegme
         sType(VkStructureType.PHYSICAL_DEVICE_DEPTH_STENCIL_RESOLVE_PROPERTIES);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkPhysicalDeviceDepthStencilResolveProperties sType(@EnumType(VkStructureType.class) int value) {
+    public VkPhysicalDeviceDepthStencilResolveProperties sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }
@@ -215,20 +215,20 @@ public record VkPhysicalDeviceDepthStencilResolveProperties(@NotNull MemorySegme
         return this;
     }
 
-    public @EnumType(VkResolveModeFlags.class) int supportedDepthResolveModes() {
+    public @MagicConstant(valuesFromClass = VkResolveModeFlags.class) int supportedDepthResolveModes() {
         return segment.get(LAYOUT$supportedDepthResolveModes, OFFSET$supportedDepthResolveModes);
     }
 
-    public VkPhysicalDeviceDepthStencilResolveProperties supportedDepthResolveModes(@EnumType(VkResolveModeFlags.class) int value) {
+    public VkPhysicalDeviceDepthStencilResolveProperties supportedDepthResolveModes(@MagicConstant(valuesFromClass = VkResolveModeFlags.class) int value) {
         segment.set(LAYOUT$supportedDepthResolveModes, OFFSET$supportedDepthResolveModes, value);
         return this;
     }
 
-    public @EnumType(VkResolveModeFlags.class) int supportedStencilResolveModes() {
+    public @MagicConstant(valuesFromClass = VkResolveModeFlags.class) int supportedStencilResolveModes() {
         return segment.get(LAYOUT$supportedStencilResolveModes, OFFSET$supportedStencilResolveModes);
     }
 
-    public VkPhysicalDeviceDepthStencilResolveProperties supportedStencilResolveModes(@EnumType(VkResolveModeFlags.class) int value) {
+    public VkPhysicalDeviceDepthStencilResolveProperties supportedStencilResolveModes(@MagicConstant(valuesFromClass = VkResolveModeFlags.class) int value) {
         segment.set(LAYOUT$supportedStencilResolveModes, OFFSET$supportedStencilResolveModes, value);
         return this;
     }

@@ -205,11 +205,11 @@ public record VkSamplerCreateInfo(@NotNull MemorySegment segment) implements IVk
         sType(VkStructureType.SAMPLER_CREATE_INFO);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkSamplerCreateInfo sType(@EnumType(VkStructureType.class) int value) {
+    public VkSamplerCreateInfo sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }
@@ -227,65 +227,65 @@ public record VkSamplerCreateInfo(@NotNull MemorySegment segment) implements IVk
         return this;
     }
 
-    public @EnumType(VkSamplerCreateFlags.class) int flags() {
+    public @MagicConstant(valuesFromClass = VkSamplerCreateFlags.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public VkSamplerCreateInfo flags(@EnumType(VkSamplerCreateFlags.class) int value) {
+    public VkSamplerCreateInfo flags(@MagicConstant(valuesFromClass = VkSamplerCreateFlags.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
         return this;
     }
 
-    public @EnumType(VkFilter.class) int magFilter() {
+    public @MagicConstant(valuesFromClass = VkFilter.class) int magFilter() {
         return segment.get(LAYOUT$magFilter, OFFSET$magFilter);
     }
 
-    public VkSamplerCreateInfo magFilter(@EnumType(VkFilter.class) int value) {
+    public VkSamplerCreateInfo magFilter(@MagicConstant(valuesFromClass = VkFilter.class) int value) {
         segment.set(LAYOUT$magFilter, OFFSET$magFilter, value);
         return this;
     }
 
-    public @EnumType(VkFilter.class) int minFilter() {
+    public @MagicConstant(valuesFromClass = VkFilter.class) int minFilter() {
         return segment.get(LAYOUT$minFilter, OFFSET$minFilter);
     }
 
-    public VkSamplerCreateInfo minFilter(@EnumType(VkFilter.class) int value) {
+    public VkSamplerCreateInfo minFilter(@MagicConstant(valuesFromClass = VkFilter.class) int value) {
         segment.set(LAYOUT$minFilter, OFFSET$minFilter, value);
         return this;
     }
 
-    public @EnumType(VkSamplerMipmapMode.class) int mipmapMode() {
+    public @MagicConstant(valuesFromClass = VkSamplerMipmapMode.class) int mipmapMode() {
         return segment.get(LAYOUT$mipmapMode, OFFSET$mipmapMode);
     }
 
-    public VkSamplerCreateInfo mipmapMode(@EnumType(VkSamplerMipmapMode.class) int value) {
+    public VkSamplerCreateInfo mipmapMode(@MagicConstant(valuesFromClass = VkSamplerMipmapMode.class) int value) {
         segment.set(LAYOUT$mipmapMode, OFFSET$mipmapMode, value);
         return this;
     }
 
-    public @EnumType(VkSamplerAddressMode.class) int addressModeU() {
+    public @MagicConstant(valuesFromClass = VkSamplerAddressMode.class) int addressModeU() {
         return segment.get(LAYOUT$addressModeU, OFFSET$addressModeU);
     }
 
-    public VkSamplerCreateInfo addressModeU(@EnumType(VkSamplerAddressMode.class) int value) {
+    public VkSamplerCreateInfo addressModeU(@MagicConstant(valuesFromClass = VkSamplerAddressMode.class) int value) {
         segment.set(LAYOUT$addressModeU, OFFSET$addressModeU, value);
         return this;
     }
 
-    public @EnumType(VkSamplerAddressMode.class) int addressModeV() {
+    public @MagicConstant(valuesFromClass = VkSamplerAddressMode.class) int addressModeV() {
         return segment.get(LAYOUT$addressModeV, OFFSET$addressModeV);
     }
 
-    public VkSamplerCreateInfo addressModeV(@EnumType(VkSamplerAddressMode.class) int value) {
+    public VkSamplerCreateInfo addressModeV(@MagicConstant(valuesFromClass = VkSamplerAddressMode.class) int value) {
         segment.set(LAYOUT$addressModeV, OFFSET$addressModeV, value);
         return this;
     }
 
-    public @EnumType(VkSamplerAddressMode.class) int addressModeW() {
+    public @MagicConstant(valuesFromClass = VkSamplerAddressMode.class) int addressModeW() {
         return segment.get(LAYOUT$addressModeW, OFFSET$addressModeW);
     }
 
-    public VkSamplerCreateInfo addressModeW(@EnumType(VkSamplerAddressMode.class) int value) {
+    public VkSamplerCreateInfo addressModeW(@MagicConstant(valuesFromClass = VkSamplerAddressMode.class) int value) {
         segment.set(LAYOUT$addressModeW, OFFSET$addressModeW, value);
         return this;
     }
@@ -326,11 +326,11 @@ public record VkSamplerCreateInfo(@NotNull MemorySegment segment) implements IVk
         return this;
     }
 
-    public @EnumType(VkCompareOp.class) int compareOp() {
+    public @MagicConstant(valuesFromClass = VkCompareOp.class) int compareOp() {
         return segment.get(LAYOUT$compareOp, OFFSET$compareOp);
     }
 
-    public VkSamplerCreateInfo compareOp(@EnumType(VkCompareOp.class) int value) {
+    public VkSamplerCreateInfo compareOp(@MagicConstant(valuesFromClass = VkCompareOp.class) int value) {
         segment.set(LAYOUT$compareOp, OFFSET$compareOp, value);
         return this;
     }
@@ -353,11 +353,11 @@ public record VkSamplerCreateInfo(@NotNull MemorySegment segment) implements IVk
         return this;
     }
 
-    public @EnumType(VkBorderColor.class) int borderColor() {
+    public @MagicConstant(valuesFromClass = VkBorderColor.class) int borderColor() {
         return segment.get(LAYOUT$borderColor, OFFSET$borderColor);
     }
 
-    public VkSamplerCreateInfo borderColor(@EnumType(VkBorderColor.class) int value) {
+    public VkSamplerCreateInfo borderColor(@MagicConstant(valuesFromClass = VkBorderColor.class) int value) {
         segment.set(LAYOUT$borderColor, OFFSET$borderColor, value);
         return this;
     }

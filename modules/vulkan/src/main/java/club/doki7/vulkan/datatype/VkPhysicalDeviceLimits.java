@@ -1010,38 +1010,38 @@ public record VkPhysicalDeviceLimits(@NotNull MemorySegment segment) implements 
         return this;
     }
 
-    public @EnumType(VkSampleCountFlags.class) int framebufferColorSampleCounts() {
+    public @MagicConstant(valuesFromClass = VkSampleCountFlags.class) int framebufferColorSampleCounts() {
         return segment.get(LAYOUT$framebufferColorSampleCounts, OFFSET$framebufferColorSampleCounts);
     }
 
-    public VkPhysicalDeviceLimits framebufferColorSampleCounts(@EnumType(VkSampleCountFlags.class) int value) {
+    public VkPhysicalDeviceLimits framebufferColorSampleCounts(@MagicConstant(valuesFromClass = VkSampleCountFlags.class) int value) {
         segment.set(LAYOUT$framebufferColorSampleCounts, OFFSET$framebufferColorSampleCounts, value);
         return this;
     }
 
-    public @EnumType(VkSampleCountFlags.class) int framebufferDepthSampleCounts() {
+    public @MagicConstant(valuesFromClass = VkSampleCountFlags.class) int framebufferDepthSampleCounts() {
         return segment.get(LAYOUT$framebufferDepthSampleCounts, OFFSET$framebufferDepthSampleCounts);
     }
 
-    public VkPhysicalDeviceLimits framebufferDepthSampleCounts(@EnumType(VkSampleCountFlags.class) int value) {
+    public VkPhysicalDeviceLimits framebufferDepthSampleCounts(@MagicConstant(valuesFromClass = VkSampleCountFlags.class) int value) {
         segment.set(LAYOUT$framebufferDepthSampleCounts, OFFSET$framebufferDepthSampleCounts, value);
         return this;
     }
 
-    public @EnumType(VkSampleCountFlags.class) int framebufferStencilSampleCounts() {
+    public @MagicConstant(valuesFromClass = VkSampleCountFlags.class) int framebufferStencilSampleCounts() {
         return segment.get(LAYOUT$framebufferStencilSampleCounts, OFFSET$framebufferStencilSampleCounts);
     }
 
-    public VkPhysicalDeviceLimits framebufferStencilSampleCounts(@EnumType(VkSampleCountFlags.class) int value) {
+    public VkPhysicalDeviceLimits framebufferStencilSampleCounts(@MagicConstant(valuesFromClass = VkSampleCountFlags.class) int value) {
         segment.set(LAYOUT$framebufferStencilSampleCounts, OFFSET$framebufferStencilSampleCounts, value);
         return this;
     }
 
-    public @EnumType(VkSampleCountFlags.class) int framebufferNoAttachmentsSampleCounts() {
+    public @MagicConstant(valuesFromClass = VkSampleCountFlags.class) int framebufferNoAttachmentsSampleCounts() {
         return segment.get(LAYOUT$framebufferNoAttachmentsSampleCounts, OFFSET$framebufferNoAttachmentsSampleCounts);
     }
 
-    public VkPhysicalDeviceLimits framebufferNoAttachmentsSampleCounts(@EnumType(VkSampleCountFlags.class) int value) {
+    public VkPhysicalDeviceLimits framebufferNoAttachmentsSampleCounts(@MagicConstant(valuesFromClass = VkSampleCountFlags.class) int value) {
         segment.set(LAYOUT$framebufferNoAttachmentsSampleCounts, OFFSET$framebufferNoAttachmentsSampleCounts, value);
         return this;
     }
@@ -1055,47 +1055,47 @@ public record VkPhysicalDeviceLimits(@NotNull MemorySegment segment) implements 
         return this;
     }
 
-    public @EnumType(VkSampleCountFlags.class) int sampledImageColorSampleCounts() {
+    public @MagicConstant(valuesFromClass = VkSampleCountFlags.class) int sampledImageColorSampleCounts() {
         return segment.get(LAYOUT$sampledImageColorSampleCounts, OFFSET$sampledImageColorSampleCounts);
     }
 
-    public VkPhysicalDeviceLimits sampledImageColorSampleCounts(@EnumType(VkSampleCountFlags.class) int value) {
+    public VkPhysicalDeviceLimits sampledImageColorSampleCounts(@MagicConstant(valuesFromClass = VkSampleCountFlags.class) int value) {
         segment.set(LAYOUT$sampledImageColorSampleCounts, OFFSET$sampledImageColorSampleCounts, value);
         return this;
     }
 
-    public @EnumType(VkSampleCountFlags.class) int sampledImageIntegerSampleCounts() {
+    public @MagicConstant(valuesFromClass = VkSampleCountFlags.class) int sampledImageIntegerSampleCounts() {
         return segment.get(LAYOUT$sampledImageIntegerSampleCounts, OFFSET$sampledImageIntegerSampleCounts);
     }
 
-    public VkPhysicalDeviceLimits sampledImageIntegerSampleCounts(@EnumType(VkSampleCountFlags.class) int value) {
+    public VkPhysicalDeviceLimits sampledImageIntegerSampleCounts(@MagicConstant(valuesFromClass = VkSampleCountFlags.class) int value) {
         segment.set(LAYOUT$sampledImageIntegerSampleCounts, OFFSET$sampledImageIntegerSampleCounts, value);
         return this;
     }
 
-    public @EnumType(VkSampleCountFlags.class) int sampledImageDepthSampleCounts() {
+    public @MagicConstant(valuesFromClass = VkSampleCountFlags.class) int sampledImageDepthSampleCounts() {
         return segment.get(LAYOUT$sampledImageDepthSampleCounts, OFFSET$sampledImageDepthSampleCounts);
     }
 
-    public VkPhysicalDeviceLimits sampledImageDepthSampleCounts(@EnumType(VkSampleCountFlags.class) int value) {
+    public VkPhysicalDeviceLimits sampledImageDepthSampleCounts(@MagicConstant(valuesFromClass = VkSampleCountFlags.class) int value) {
         segment.set(LAYOUT$sampledImageDepthSampleCounts, OFFSET$sampledImageDepthSampleCounts, value);
         return this;
     }
 
-    public @EnumType(VkSampleCountFlags.class) int sampledImageStencilSampleCounts() {
+    public @MagicConstant(valuesFromClass = VkSampleCountFlags.class) int sampledImageStencilSampleCounts() {
         return segment.get(LAYOUT$sampledImageStencilSampleCounts, OFFSET$sampledImageStencilSampleCounts);
     }
 
-    public VkPhysicalDeviceLimits sampledImageStencilSampleCounts(@EnumType(VkSampleCountFlags.class) int value) {
+    public VkPhysicalDeviceLimits sampledImageStencilSampleCounts(@MagicConstant(valuesFromClass = VkSampleCountFlags.class) int value) {
         segment.set(LAYOUT$sampledImageStencilSampleCounts, OFFSET$sampledImageStencilSampleCounts, value);
         return this;
     }
 
-    public @EnumType(VkSampleCountFlags.class) int storageImageSampleCounts() {
+    public @MagicConstant(valuesFromClass = VkSampleCountFlags.class) int storageImageSampleCounts() {
         return segment.get(LAYOUT$storageImageSampleCounts, OFFSET$storageImageSampleCounts);
     }
 
-    public VkPhysicalDeviceLimits storageImageSampleCounts(@EnumType(VkSampleCountFlags.class) int value) {
+    public VkPhysicalDeviceLimits storageImageSampleCounts(@MagicConstant(valuesFromClass = VkSampleCountFlags.class) int value) {
         segment.set(LAYOUT$storageImageSampleCounts, OFFSET$storageImageSampleCounts, value);
         return this;
     }

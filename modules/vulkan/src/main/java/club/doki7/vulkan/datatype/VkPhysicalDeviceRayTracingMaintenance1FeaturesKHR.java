@@ -191,11 +191,11 @@ public record VkPhysicalDeviceRayTracingMaintenance1FeaturesKHR(@NotNull MemoryS
         sType(VkStructureType.PHYSICAL_DEVICE_RAY_TRACING_MAINTENANCE_1_FEATURES_KHR);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkPhysicalDeviceRayTracingMaintenance1FeaturesKHR sType(@EnumType(VkStructureType.class) int value) {
+    public VkPhysicalDeviceRayTracingMaintenance1FeaturesKHR sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }

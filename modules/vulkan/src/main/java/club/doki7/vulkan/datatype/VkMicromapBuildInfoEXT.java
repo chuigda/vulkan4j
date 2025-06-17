@@ -200,11 +200,11 @@ public record VkMicromapBuildInfoEXT(@NotNull MemorySegment segment) implements 
         sType(VkStructureType.MICROMAP_BUILD_INFO_EXT);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkMicromapBuildInfoEXT sType(@EnumType(VkStructureType.class) int value) {
+    public VkMicromapBuildInfoEXT sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }
@@ -222,29 +222,29 @@ public record VkMicromapBuildInfoEXT(@NotNull MemorySegment segment) implements 
         return this;
     }
 
-    public @EnumType(VkMicromapTypeEXT.class) int type() {
+    public @MagicConstant(valuesFromClass = VkMicromapTypeEXT.class) int type() {
         return segment.get(LAYOUT$type, OFFSET$type);
     }
 
-    public VkMicromapBuildInfoEXT type(@EnumType(VkMicromapTypeEXT.class) int value) {
+    public VkMicromapBuildInfoEXT type(@MagicConstant(valuesFromClass = VkMicromapTypeEXT.class) int value) {
         segment.set(LAYOUT$type, OFFSET$type, value);
         return this;
     }
 
-    public @EnumType(VkBuildMicromapFlagsEXT.class) int flags() {
+    public @MagicConstant(valuesFromClass = VkBuildMicromapFlagsEXT.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public VkMicromapBuildInfoEXT flags(@EnumType(VkBuildMicromapFlagsEXT.class) int value) {
+    public VkMicromapBuildInfoEXT flags(@MagicConstant(valuesFromClass = VkBuildMicromapFlagsEXT.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
         return this;
     }
 
-    public @EnumType(VkBuildMicromapModeEXT.class) int mode() {
+    public @MagicConstant(valuesFromClass = VkBuildMicromapModeEXT.class) int mode() {
         return segment.get(LAYOUT$mode, OFFSET$mode);
     }
 
-    public VkMicromapBuildInfoEXT mode(@EnumType(VkBuildMicromapModeEXT.class) int value) {
+    public VkMicromapBuildInfoEXT mode(@MagicConstant(valuesFromClass = VkBuildMicromapModeEXT.class) int value) {
         segment.set(LAYOUT$mode, OFFSET$mode, value);
         return this;
     }

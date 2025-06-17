@@ -196,11 +196,11 @@ public record VkFramebufferCreateInfo(@NotNull MemorySegment segment) implements
         sType(VkStructureType.FRAMEBUFFER_CREATE_INFO);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkFramebufferCreateInfo sType(@EnumType(VkStructureType.class) int value) {
+    public VkFramebufferCreateInfo sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }
@@ -218,11 +218,11 @@ public record VkFramebufferCreateInfo(@NotNull MemorySegment segment) implements
         return this;
     }
 
-    public @EnumType(VkFramebufferCreateFlags.class) int flags() {
+    public @MagicConstant(valuesFromClass = VkFramebufferCreateFlags.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public VkFramebufferCreateInfo flags(@EnumType(VkFramebufferCreateFlags.class) int value) {
+    public VkFramebufferCreateInfo flags(@MagicConstant(valuesFromClass = VkFramebufferCreateFlags.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
         return this;
     }

@@ -183,20 +183,20 @@ public record StdVideoH265ProfileTierLevel(@NotNull MemorySegment segment) imple
         return this;
     }
 
-    public @EnumType(StdVideoH265ProfileIdc.class) int general_profile_idc() {
+    public @MagicConstant(valuesFromClass = StdVideoH265ProfileIdc.class) int general_profile_idc() {
         return segment.get(LAYOUT$general_profile_idc, OFFSET$general_profile_idc);
     }
 
-    public StdVideoH265ProfileTierLevel general_profile_idc(@EnumType(StdVideoH265ProfileIdc.class) int value) {
+    public StdVideoH265ProfileTierLevel general_profile_idc(@MagicConstant(valuesFromClass = StdVideoH265ProfileIdc.class) int value) {
         segment.set(LAYOUT$general_profile_idc, OFFSET$general_profile_idc, value);
         return this;
     }
 
-    public @EnumType(StdVideoH265LevelIdc.class) int general_level_idc() {
+    public @MagicConstant(valuesFromClass = StdVideoH265LevelIdc.class) int general_level_idc() {
         return segment.get(LAYOUT$general_level_idc, OFFSET$general_level_idc);
     }
 
-    public StdVideoH265ProfileTierLevel general_level_idc(@EnumType(StdVideoH265LevelIdc.class) int value) {
+    public StdVideoH265ProfileTierLevel general_level_idc(@MagicConstant(valuesFromClass = StdVideoH265LevelIdc.class) int value) {
         segment.set(LAYOUT$general_level_idc, OFFSET$general_level_idc, value);
         return this;
     }

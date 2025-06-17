@@ -1,6 +1,7 @@
 package club.doki7.vulkan.bitmask;
 
 import club.doki7.ffm.annotation.*;
+import org.intellij.lang.annotations.MagicConstant;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,7 +15,7 @@ public final class VkExternalFenceHandleTypeFlags {
     public static final int SCI_SYNC_OBJ_NV = 0x10;
     public static final int SYNC_FD = 0x8;
 
-    public static String explain(@EnumType(VkExternalFenceHandleTypeFlags.class) int flags) {
+    public static String explain(@MagicConstant(flagsFromClass = VkExternalFenceHandleTypeFlags.class) int flags) {
         List<String> detectedFlagBits = new ArrayList<>();
         if ((flags & OPAQUE_FD) != 0) {
             detectedFlagBits.add("VK_EXTERNAL_FENCE_HANDLE_TYPE_OPAQUE_FD_BIT");

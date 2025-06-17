@@ -190,11 +190,11 @@ public record VkQueueFamilyProperties2(@NotNull MemorySegment segment) implement
         sType(VkStructureType.QUEUE_FAMILY_PROPERTIES_2);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkQueueFamilyProperties2 sType(@EnumType(VkStructureType.class) int value) {
+    public VkQueueFamilyProperties2 sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }

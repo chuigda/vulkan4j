@@ -193,11 +193,11 @@ public record VkMemoryBarrier2(@NotNull MemorySegment segment) implements IVkMem
         sType(VkStructureType.MEMORY_BARRIER_2);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkMemoryBarrier2 sType(@EnumType(VkStructureType.class) int value) {
+    public VkMemoryBarrier2 sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }
@@ -215,38 +215,38 @@ public record VkMemoryBarrier2(@NotNull MemorySegment segment) implements IVkMem
         return this;
     }
 
-    public @EnumType(VkPipelineStageFlags2.class) long srcStageMask() {
+    public @MagicConstant(valuesFromClass = VkPipelineStageFlags2.class) long srcStageMask() {
         return segment.get(LAYOUT$srcStageMask, OFFSET$srcStageMask);
     }
 
-    public VkMemoryBarrier2 srcStageMask(@EnumType(VkPipelineStageFlags2.class) long value) {
+    public VkMemoryBarrier2 srcStageMask(@MagicConstant(valuesFromClass = VkPipelineStageFlags2.class) long value) {
         segment.set(LAYOUT$srcStageMask, OFFSET$srcStageMask, value);
         return this;
     }
 
-    public @EnumType(VkAccessFlags2.class) long srcAccessMask() {
+    public @MagicConstant(valuesFromClass = VkAccessFlags2.class) long srcAccessMask() {
         return segment.get(LAYOUT$srcAccessMask, OFFSET$srcAccessMask);
     }
 
-    public VkMemoryBarrier2 srcAccessMask(@EnumType(VkAccessFlags2.class) long value) {
+    public VkMemoryBarrier2 srcAccessMask(@MagicConstant(valuesFromClass = VkAccessFlags2.class) long value) {
         segment.set(LAYOUT$srcAccessMask, OFFSET$srcAccessMask, value);
         return this;
     }
 
-    public @EnumType(VkPipelineStageFlags2.class) long dstStageMask() {
+    public @MagicConstant(valuesFromClass = VkPipelineStageFlags2.class) long dstStageMask() {
         return segment.get(LAYOUT$dstStageMask, OFFSET$dstStageMask);
     }
 
-    public VkMemoryBarrier2 dstStageMask(@EnumType(VkPipelineStageFlags2.class) long value) {
+    public VkMemoryBarrier2 dstStageMask(@MagicConstant(valuesFromClass = VkPipelineStageFlags2.class) long value) {
         segment.set(LAYOUT$dstStageMask, OFFSET$dstStageMask, value);
         return this;
     }
 
-    public @EnumType(VkAccessFlags2.class) long dstAccessMask() {
+    public @MagicConstant(valuesFromClass = VkAccessFlags2.class) long dstAccessMask() {
         return segment.get(LAYOUT$dstAccessMask, OFFSET$dstAccessMask);
     }
 
-    public VkMemoryBarrier2 dstAccessMask(@EnumType(VkAccessFlags2.class) long value) {
+    public VkMemoryBarrier2 dstAccessMask(@MagicConstant(valuesFromClass = VkAccessFlags2.class) long value) {
         segment.set(LAYOUT$dstAccessMask, OFFSET$dstAccessMask, value);
         return this;
     }

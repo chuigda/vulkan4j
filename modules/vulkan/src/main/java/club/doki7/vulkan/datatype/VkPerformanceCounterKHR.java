@@ -193,11 +193,11 @@ public record VkPerformanceCounterKHR(@NotNull MemorySegment segment) implements
         sType(VkStructureType.PERFORMANCE_COUNTER_KHR);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkPerformanceCounterKHR sType(@EnumType(VkStructureType.class) int value) {
+    public VkPerformanceCounterKHR sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }
@@ -215,29 +215,29 @@ public record VkPerformanceCounterKHR(@NotNull MemorySegment segment) implements
         return this;
     }
 
-    public @EnumType(VkPerformanceCounterUnitKHR.class) int unit() {
+    public @MagicConstant(valuesFromClass = VkPerformanceCounterUnitKHR.class) int unit() {
         return segment.get(LAYOUT$unit, OFFSET$unit);
     }
 
-    public VkPerformanceCounterKHR unit(@EnumType(VkPerformanceCounterUnitKHR.class) int value) {
+    public VkPerformanceCounterKHR unit(@MagicConstant(valuesFromClass = VkPerformanceCounterUnitKHR.class) int value) {
         segment.set(LAYOUT$unit, OFFSET$unit, value);
         return this;
     }
 
-    public @EnumType(VkPerformanceCounterScopeKHR.class) int scope() {
+    public @MagicConstant(valuesFromClass = VkPerformanceCounterScopeKHR.class) int scope() {
         return segment.get(LAYOUT$scope, OFFSET$scope);
     }
 
-    public VkPerformanceCounterKHR scope(@EnumType(VkPerformanceCounterScopeKHR.class) int value) {
+    public VkPerformanceCounterKHR scope(@MagicConstant(valuesFromClass = VkPerformanceCounterScopeKHR.class) int value) {
         segment.set(LAYOUT$scope, OFFSET$scope, value);
         return this;
     }
 
-    public @EnumType(VkPerformanceCounterStorageKHR.class) int storage() {
+    public @MagicConstant(valuesFromClass = VkPerformanceCounterStorageKHR.class) int storage() {
         return segment.get(LAYOUT$storage, OFFSET$storage);
     }
 
-    public VkPerformanceCounterKHR storage(@EnumType(VkPerformanceCounterStorageKHR.class) int value) {
+    public VkPerformanceCounterKHR storage(@MagicConstant(valuesFromClass = VkPerformanceCounterStorageKHR.class) int value) {
         segment.set(LAYOUT$storage, OFFSET$storage, value);
         return this;
     }

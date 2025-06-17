@@ -1,6 +1,7 @@
 package club.doki7.vulkan.bitmask;
 
 import club.doki7.ffm.annotation.*;
+import org.intellij.lang.annotations.MagicConstant;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,7 +13,7 @@ public final class VkPeerMemoryFeatureFlags {
     public static final int GENERIC_DST = 0x8;
     public static final int GENERIC_SRC = 0x4;
 
-    public static String explain(@EnumType(VkPeerMemoryFeatureFlags.class) int flags) {
+    public static String explain(@MagicConstant(flagsFromClass = VkPeerMemoryFeatureFlags.class) int flags) {
         List<String> detectedFlagBits = new ArrayList<>();
         if ((flags & COPY_DST) != 0) {
             detectedFlagBits.add("VK_PEER_MEMORY_FEATURE_COPY_DST_BIT");

@@ -1,6 +1,7 @@
 package club.doki7.vulkan.bitmask;
 
 import club.doki7.ffm.annotation.*;
+import org.intellij.lang.annotations.MagicConstant;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -9,7 +10,7 @@ import java.util.List;
 public final class VkAccessFlags3KHR {
     public static final long NONE = 0x0L;
 
-    public static String explain(@EnumType(VkAccessFlags3KHR.class) long flags) {
+    public static String explain(@MagicConstant(flagsFromClass = VkAccessFlags3KHR.class) long flags) {
         List<String> detectedFlagBits = new ArrayList<>();
         if ((flags & NONE) != 0) {
             detectedFlagBits.add("VK_ACCESS_3_NONE_KHR");

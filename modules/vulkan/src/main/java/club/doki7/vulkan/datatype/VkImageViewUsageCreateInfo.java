@@ -190,11 +190,11 @@ public record VkImageViewUsageCreateInfo(@NotNull MemorySegment segment) impleme
         sType(VkStructureType.IMAGE_VIEW_USAGE_CREATE_INFO);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkImageViewUsageCreateInfo sType(@EnumType(VkStructureType.class) int value) {
+    public VkImageViewUsageCreateInfo sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }
@@ -212,11 +212,11 @@ public record VkImageViewUsageCreateInfo(@NotNull MemorySegment segment) impleme
         return this;
     }
 
-    public @EnumType(VkImageUsageFlags.class) int usage() {
+    public @MagicConstant(valuesFromClass = VkImageUsageFlags.class) int usage() {
         return segment.get(LAYOUT$usage, OFFSET$usage);
     }
 
-    public VkImageViewUsageCreateInfo usage(@EnumType(VkImageUsageFlags.class) int value) {
+    public VkImageViewUsageCreateInfo usage(@MagicConstant(valuesFromClass = VkImageUsageFlags.class) int value) {
         segment.set(LAYOUT$usage, OFFSET$usage, value);
         return this;
     }

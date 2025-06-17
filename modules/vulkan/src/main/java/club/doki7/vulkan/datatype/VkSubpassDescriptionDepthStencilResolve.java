@@ -192,11 +192,11 @@ public record VkSubpassDescriptionDepthStencilResolve(@NotNull MemorySegment seg
         sType(VkStructureType.SUBPASS_DESCRIPTION_DEPTH_STENCIL_RESOLVE);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkSubpassDescriptionDepthStencilResolve sType(@EnumType(VkStructureType.class) int value) {
+    public VkSubpassDescriptionDepthStencilResolve sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }
@@ -214,20 +214,20 @@ public record VkSubpassDescriptionDepthStencilResolve(@NotNull MemorySegment seg
         return this;
     }
 
-    public @EnumType(VkResolveModeFlags.class) int depthResolveMode() {
+    public @MagicConstant(valuesFromClass = VkResolveModeFlags.class) int depthResolveMode() {
         return segment.get(LAYOUT$depthResolveMode, OFFSET$depthResolveMode);
     }
 
-    public VkSubpassDescriptionDepthStencilResolve depthResolveMode(@EnumType(VkResolveModeFlags.class) int value) {
+    public VkSubpassDescriptionDepthStencilResolve depthResolveMode(@MagicConstant(valuesFromClass = VkResolveModeFlags.class) int value) {
         segment.set(LAYOUT$depthResolveMode, OFFSET$depthResolveMode, value);
         return this;
     }
 
-    public @EnumType(VkResolveModeFlags.class) int stencilResolveMode() {
+    public @MagicConstant(valuesFromClass = VkResolveModeFlags.class) int stencilResolveMode() {
         return segment.get(LAYOUT$stencilResolveMode, OFFSET$stencilResolveMode);
     }
 
-    public VkSubpassDescriptionDepthStencilResolve stencilResolveMode(@EnumType(VkResolveModeFlags.class) int value) {
+    public VkSubpassDescriptionDepthStencilResolve stencilResolveMode(@MagicConstant(valuesFromClass = VkResolveModeFlags.class) int value) {
         segment.set(LAYOUT$stencilResolveMode, OFFSET$stencilResolveMode, value);
         return this;
     }

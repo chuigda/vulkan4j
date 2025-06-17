@@ -193,11 +193,11 @@ public record VkCopyBufferInfo2(@NotNull MemorySegment segment) implements IVkCo
         sType(VkStructureType.COPY_BUFFER_INFO_2);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkCopyBufferInfo2 sType(@EnumType(VkStructureType.class) int value) {
+    public VkCopyBufferInfo2 sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }

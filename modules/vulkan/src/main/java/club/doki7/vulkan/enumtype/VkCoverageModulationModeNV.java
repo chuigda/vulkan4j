@@ -1,6 +1,7 @@
 package club.doki7.vulkan.enumtype;
 
 import club.doki7.ffm.annotation.*;
+import org.intellij.lang.annotations.MagicConstant;
 
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkCoverageModulationModeNV.html"><code>VkCoverageModulationModeNV</code></a>
 public final class VkCoverageModulationModeNV {
@@ -9,7 +10,7 @@ public final class VkCoverageModulationModeNV {
     public static final int ALPHA = 0x2;
     public static final int RGBA = 0x3;
 
-    public static String explain(@EnumType(VkCoverageModulationModeNV.class) int value) {
+    public static String explain(@MagicConstant(valuesFromClass = VkCoverageModulationModeNV.class) int value) {
         return switch (value) {
             case VkCoverageModulationModeNV.ALPHA -> "VK_COVERAGE_MODULATION_MODE_ALPHA_NV";
             case VkCoverageModulationModeNV.NONE -> "VK_COVERAGE_MODULATION_MODE_NONE_NV";

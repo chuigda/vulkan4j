@@ -190,11 +190,11 @@ public record VkDescriptorSetVariableDescriptorCountLayoutSupport(@NotNull Memor
         sType(VkStructureType.DESCRIPTOR_SET_VARIABLE_DESCRIPTOR_COUNT_LAYOUT_SUPPORT);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkDescriptorSetVariableDescriptorCountLayoutSupport sType(@EnumType(VkStructureType.class) int value) {
+    public VkDescriptorSetVariableDescriptorCountLayoutSupport sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }

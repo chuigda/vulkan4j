@@ -191,11 +191,11 @@ public record VkMemoryGetMetalHandleInfoEXT(@NotNull MemorySegment segment) impl
         sType(VkStructureType.MEMORY_GET_METAL_HANDLE_INFO_EXT);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkMemoryGetMetalHandleInfoEXT sType(@EnumType(VkStructureType.class) int value) {
+    public VkMemoryGetMetalHandleInfoEXT sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }
@@ -226,11 +226,11 @@ public record VkMemoryGetMetalHandleInfoEXT(@NotNull MemorySegment segment) impl
         return this;
     }
 
-    public @EnumType(VkExternalMemoryHandleTypeFlags.class) int handleType() {
+    public @MagicConstant(valuesFromClass = VkExternalMemoryHandleTypeFlags.class) int handleType() {
         return segment.get(LAYOUT$handleType, OFFSET$handleType);
     }
 
-    public VkMemoryGetMetalHandleInfoEXT handleType(@EnumType(VkExternalMemoryHandleTypeFlags.class) int value) {
+    public VkMemoryGetMetalHandleInfoEXT handleType(@MagicConstant(valuesFromClass = VkExternalMemoryHandleTypeFlags.class) int value) {
         segment.set(LAYOUT$handleType, OFFSET$handleType, value);
         return this;
     }

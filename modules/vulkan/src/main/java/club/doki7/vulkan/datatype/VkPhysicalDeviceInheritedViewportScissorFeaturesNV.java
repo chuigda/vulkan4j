@@ -190,11 +190,11 @@ public record VkPhysicalDeviceInheritedViewportScissorFeaturesNV(@NotNull Memory
         sType(VkStructureType.PHYSICAL_DEVICE_INHERITED_VIEWPORT_SCISSOR_FEATURES_NV);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkPhysicalDeviceInheritedViewportScissorFeaturesNV sType(@EnumType(VkStructureType.class) int value) {
+    public VkPhysicalDeviceInheritedViewportScissorFeaturesNV sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }

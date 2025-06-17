@@ -193,11 +193,11 @@ public record VkFramebufferMixedSamplesCombinationNV(@NotNull MemorySegment segm
         sType(VkStructureType.FRAMEBUFFER_MIXED_SAMPLES_COMBINATION_NV);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkFramebufferMixedSamplesCombinationNV sType(@EnumType(VkStructureType.class) int value) {
+    public VkFramebufferMixedSamplesCombinationNV sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }
@@ -215,38 +215,38 @@ public record VkFramebufferMixedSamplesCombinationNV(@NotNull MemorySegment segm
         return this;
     }
 
-    public @EnumType(VkCoverageReductionModeNV.class) int coverageReductionMode() {
+    public @MagicConstant(valuesFromClass = VkCoverageReductionModeNV.class) int coverageReductionMode() {
         return segment.get(LAYOUT$coverageReductionMode, OFFSET$coverageReductionMode);
     }
 
-    public VkFramebufferMixedSamplesCombinationNV coverageReductionMode(@EnumType(VkCoverageReductionModeNV.class) int value) {
+    public VkFramebufferMixedSamplesCombinationNV coverageReductionMode(@MagicConstant(valuesFromClass = VkCoverageReductionModeNV.class) int value) {
         segment.set(LAYOUT$coverageReductionMode, OFFSET$coverageReductionMode, value);
         return this;
     }
 
-    public @EnumType(VkSampleCountFlags.class) int rasterizationSamples() {
+    public @MagicConstant(valuesFromClass = VkSampleCountFlags.class) int rasterizationSamples() {
         return segment.get(LAYOUT$rasterizationSamples, OFFSET$rasterizationSamples);
     }
 
-    public VkFramebufferMixedSamplesCombinationNV rasterizationSamples(@EnumType(VkSampleCountFlags.class) int value) {
+    public VkFramebufferMixedSamplesCombinationNV rasterizationSamples(@MagicConstant(valuesFromClass = VkSampleCountFlags.class) int value) {
         segment.set(LAYOUT$rasterizationSamples, OFFSET$rasterizationSamples, value);
         return this;
     }
 
-    public @EnumType(VkSampleCountFlags.class) int depthStencilSamples() {
+    public @MagicConstant(valuesFromClass = VkSampleCountFlags.class) int depthStencilSamples() {
         return segment.get(LAYOUT$depthStencilSamples, OFFSET$depthStencilSamples);
     }
 
-    public VkFramebufferMixedSamplesCombinationNV depthStencilSamples(@EnumType(VkSampleCountFlags.class) int value) {
+    public VkFramebufferMixedSamplesCombinationNV depthStencilSamples(@MagicConstant(valuesFromClass = VkSampleCountFlags.class) int value) {
         segment.set(LAYOUT$depthStencilSamples, OFFSET$depthStencilSamples, value);
         return this;
     }
 
-    public @EnumType(VkSampleCountFlags.class) int colorSamples() {
+    public @MagicConstant(valuesFromClass = VkSampleCountFlags.class) int colorSamples() {
         return segment.get(LAYOUT$colorSamples, OFFSET$colorSamples);
     }
 
-    public VkFramebufferMixedSamplesCombinationNV colorSamples(@EnumType(VkSampleCountFlags.class) int value) {
+    public VkFramebufferMixedSamplesCombinationNV colorSamples(@MagicConstant(valuesFromClass = VkSampleCountFlags.class) int value) {
         segment.set(LAYOUT$colorSamples, OFFSET$colorSamples, value);
         return this;
     }

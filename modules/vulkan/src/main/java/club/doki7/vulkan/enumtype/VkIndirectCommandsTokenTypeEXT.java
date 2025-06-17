@@ -1,6 +1,7 @@
 package club.doki7.vulkan.enumtype;
 
 import club.doki7.ffm.annotation.*;
+import org.intellij.lang.annotations.MagicConstant;
 
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkIndirectCommandsTokenTypeEXT.html"><code>VkIndirectCommandsTokenTypeEXT</code></a>
 public final class VkIndirectCommandsTokenTypeEXT {
@@ -20,7 +21,7 @@ public final class VkIndirectCommandsTokenTypeEXT {
     public static final int DRAW_MESH_TASKS_COUNT = 0x3b9fcb41;
     public static final int TRACE_RAYS2 = 0x3ba0add4;
 
-    public static String explain(@EnumType(VkIndirectCommandsTokenTypeEXT.class) int value) {
+    public static String explain(@MagicConstant(valuesFromClass = VkIndirectCommandsTokenTypeEXT.class) int value) {
         return switch (value) {
             case VkIndirectCommandsTokenTypeEXT.DISPATCH -> "VK_INDIRECT_COMMANDS_TOKEN_TYPE_DISPATCH_EXT";
             case VkIndirectCommandsTokenTypeEXT.DRAW_COUNT -> "VK_INDIRECT_COMMANDS_TOKEN_TYPE_DRAW_COUNT_EXT";

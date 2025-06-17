@@ -192,11 +192,11 @@ public record VkWin32SurfaceCreateInfoKHR(@NotNull MemorySegment segment) implem
         sType(VkStructureType.WIN32_SURFACE_CREATE_INFO_KHR);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkWin32SurfaceCreateInfoKHR sType(@EnumType(VkStructureType.class) int value) {
+    public VkWin32SurfaceCreateInfoKHR sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }
@@ -214,11 +214,11 @@ public record VkWin32SurfaceCreateInfoKHR(@NotNull MemorySegment segment) implem
         return this;
     }
 
-    public @EnumType(VkWin32SurfaceCreateFlagsKHR.class) int flags() {
+    public @MagicConstant(valuesFromClass = VkWin32SurfaceCreateFlagsKHR.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public VkWin32SurfaceCreateInfoKHR flags(@EnumType(VkWin32SurfaceCreateFlagsKHR.class) int value) {
+    public VkWin32SurfaceCreateInfoKHR flags(@MagicConstant(valuesFromClass = VkWin32SurfaceCreateFlagsKHR.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
         return this;
     }

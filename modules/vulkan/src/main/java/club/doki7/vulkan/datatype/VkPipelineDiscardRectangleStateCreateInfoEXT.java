@@ -193,11 +193,11 @@ public record VkPipelineDiscardRectangleStateCreateInfoEXT(@NotNull MemorySegmen
         sType(VkStructureType.PIPELINE_DISCARD_RECTANGLE_STATE_CREATE_INFO_EXT);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkPipelineDiscardRectangleStateCreateInfoEXT sType(@EnumType(VkStructureType.class) int value) {
+    public VkPipelineDiscardRectangleStateCreateInfoEXT sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }
@@ -215,20 +215,20 @@ public record VkPipelineDiscardRectangleStateCreateInfoEXT(@NotNull MemorySegmen
         return this;
     }
 
-    public @EnumType(VkPipelineDiscardRectangleStateCreateFlagsEXT.class) int flags() {
+    public @MagicConstant(valuesFromClass = VkPipelineDiscardRectangleStateCreateFlagsEXT.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public VkPipelineDiscardRectangleStateCreateInfoEXT flags(@EnumType(VkPipelineDiscardRectangleStateCreateFlagsEXT.class) int value) {
+    public VkPipelineDiscardRectangleStateCreateInfoEXT flags(@MagicConstant(valuesFromClass = VkPipelineDiscardRectangleStateCreateFlagsEXT.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
         return this;
     }
 
-    public @EnumType(VkDiscardRectangleModeEXT.class) int discardRectangleMode() {
+    public @MagicConstant(valuesFromClass = VkDiscardRectangleModeEXT.class) int discardRectangleMode() {
         return segment.get(LAYOUT$discardRectangleMode, OFFSET$discardRectangleMode);
     }
 
-    public VkPipelineDiscardRectangleStateCreateInfoEXT discardRectangleMode(@EnumType(VkDiscardRectangleModeEXT.class) int value) {
+    public VkPipelineDiscardRectangleStateCreateInfoEXT discardRectangleMode(@MagicConstant(valuesFromClass = VkDiscardRectangleModeEXT.class) int value) {
         segment.set(LAYOUT$discardRectangleMode, OFFSET$discardRectangleMode, value);
         return this;
     }

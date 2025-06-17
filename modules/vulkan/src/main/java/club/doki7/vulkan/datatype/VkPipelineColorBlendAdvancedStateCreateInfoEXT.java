@@ -192,11 +192,11 @@ public record VkPipelineColorBlendAdvancedStateCreateInfoEXT(@NotNull MemorySegm
         sType(VkStructureType.PIPELINE_COLOR_BLEND_ADVANCED_STATE_CREATE_INFO_EXT);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkPipelineColorBlendAdvancedStateCreateInfoEXT sType(@EnumType(VkStructureType.class) int value) {
+    public VkPipelineColorBlendAdvancedStateCreateInfoEXT sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }
@@ -232,11 +232,11 @@ public record VkPipelineColorBlendAdvancedStateCreateInfoEXT(@NotNull MemorySegm
         return this;
     }
 
-    public @EnumType(VkBlendOverlapEXT.class) int blendOverlap() {
+    public @MagicConstant(valuesFromClass = VkBlendOverlapEXT.class) int blendOverlap() {
         return segment.get(LAYOUT$blendOverlap, OFFSET$blendOverlap);
     }
 
-    public VkPipelineColorBlendAdvancedStateCreateInfoEXT blendOverlap(@EnumType(VkBlendOverlapEXT.class) int value) {
+    public VkPipelineColorBlendAdvancedStateCreateInfoEXT blendOverlap(@MagicConstant(valuesFromClass = VkBlendOverlapEXT.class) int value) {
         segment.set(LAYOUT$blendOverlap, OFFSET$blendOverlap, value);
         return this;
     }

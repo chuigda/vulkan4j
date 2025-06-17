@@ -1,6 +1,7 @@
 package club.doki7.vulkan.enumtype;
 
 import club.doki7.ffm.annotation.*;
+import org.intellij.lang.annotations.MagicConstant;
 
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkLogicOp.html"><code>VkLogicOp</code></a>
 public final class VkLogicOp {
@@ -21,7 +22,7 @@ public final class VkLogicOp {
     public static final int NAND = 0xe;
     public static final int SET = 0xf;
 
-    public static String explain(@EnumType(VkLogicOp.class) int value) {
+    public static String explain(@MagicConstant(valuesFromClass = VkLogicOp.class) int value) {
         return switch (value) {
             case VkLogicOp.AND -> "VK_LOGIC_OP_AND";
             case VkLogicOp.AND_INVERTED -> "VK_LOGIC_OP_AND_INVERTED";

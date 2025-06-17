@@ -190,11 +190,11 @@ public record VkPipelineBinaryDataInfoKHR(@NotNull MemorySegment segment) implem
         sType(VkStructureType.PIPELINE_BINARY_DATA_INFO_KHR);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkPipelineBinaryDataInfoKHR sType(@EnumType(VkStructureType.class) int value) {
+    public VkPipelineBinaryDataInfoKHR sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }

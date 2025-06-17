@@ -193,47 +193,47 @@ public record VkSubpassDependency(@NotNull MemorySegment segment) implements IVk
         return this;
     }
 
-    public @EnumType(VkPipelineStageFlags.class) int srcStageMask() {
+    public @MagicConstant(valuesFromClass = VkPipelineStageFlags.class) int srcStageMask() {
         return segment.get(LAYOUT$srcStageMask, OFFSET$srcStageMask);
     }
 
-    public VkSubpassDependency srcStageMask(@EnumType(VkPipelineStageFlags.class) int value) {
+    public VkSubpassDependency srcStageMask(@MagicConstant(valuesFromClass = VkPipelineStageFlags.class) int value) {
         segment.set(LAYOUT$srcStageMask, OFFSET$srcStageMask, value);
         return this;
     }
 
-    public @EnumType(VkPipelineStageFlags.class) int dstStageMask() {
+    public @MagicConstant(valuesFromClass = VkPipelineStageFlags.class) int dstStageMask() {
         return segment.get(LAYOUT$dstStageMask, OFFSET$dstStageMask);
     }
 
-    public VkSubpassDependency dstStageMask(@EnumType(VkPipelineStageFlags.class) int value) {
+    public VkSubpassDependency dstStageMask(@MagicConstant(valuesFromClass = VkPipelineStageFlags.class) int value) {
         segment.set(LAYOUT$dstStageMask, OFFSET$dstStageMask, value);
         return this;
     }
 
-    public @EnumType(VkAccessFlags.class) int srcAccessMask() {
+    public @MagicConstant(valuesFromClass = VkAccessFlags.class) int srcAccessMask() {
         return segment.get(LAYOUT$srcAccessMask, OFFSET$srcAccessMask);
     }
 
-    public VkSubpassDependency srcAccessMask(@EnumType(VkAccessFlags.class) int value) {
+    public VkSubpassDependency srcAccessMask(@MagicConstant(valuesFromClass = VkAccessFlags.class) int value) {
         segment.set(LAYOUT$srcAccessMask, OFFSET$srcAccessMask, value);
         return this;
     }
 
-    public @EnumType(VkAccessFlags.class) int dstAccessMask() {
+    public @MagicConstant(valuesFromClass = VkAccessFlags.class) int dstAccessMask() {
         return segment.get(LAYOUT$dstAccessMask, OFFSET$dstAccessMask);
     }
 
-    public VkSubpassDependency dstAccessMask(@EnumType(VkAccessFlags.class) int value) {
+    public VkSubpassDependency dstAccessMask(@MagicConstant(valuesFromClass = VkAccessFlags.class) int value) {
         segment.set(LAYOUT$dstAccessMask, OFFSET$dstAccessMask, value);
         return this;
     }
 
-    public @EnumType(VkDependencyFlags.class) int dependencyFlags() {
+    public @MagicConstant(valuesFromClass = VkDependencyFlags.class) int dependencyFlags() {
         return segment.get(LAYOUT$dependencyFlags, OFFSET$dependencyFlags);
     }
 
-    public VkSubpassDependency dependencyFlags(@EnumType(VkDependencyFlags.class) int value) {
+    public VkSubpassDependency dependencyFlags(@MagicConstant(valuesFromClass = VkDependencyFlags.class) int value) {
         segment.set(LAYOUT$dependencyFlags, OFFSET$dependencyFlags, value);
         return this;
     }

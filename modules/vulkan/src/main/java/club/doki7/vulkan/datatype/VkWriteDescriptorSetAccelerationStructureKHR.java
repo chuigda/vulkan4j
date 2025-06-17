@@ -191,11 +191,11 @@ public record VkWriteDescriptorSetAccelerationStructureKHR(@NotNull MemorySegmen
         sType(VkStructureType.WRITE_DESCRIPTOR_SET_ACCELERATION_STRUCTURE_KHR);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkWriteDescriptorSetAccelerationStructureKHR sType(@EnumType(VkStructureType.class) int value) {
+    public VkWriteDescriptorSetAccelerationStructureKHR sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }

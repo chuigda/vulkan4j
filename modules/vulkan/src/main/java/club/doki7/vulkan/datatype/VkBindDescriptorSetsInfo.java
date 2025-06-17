@@ -196,11 +196,11 @@ public record VkBindDescriptorSetsInfo(@NotNull MemorySegment segment) implement
         sType(VkStructureType.BIND_DESCRIPTOR_SETS_INFO);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkBindDescriptorSetsInfo sType(@EnumType(VkStructureType.class) int value) {
+    public VkBindDescriptorSetsInfo sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }
@@ -218,11 +218,11 @@ public record VkBindDescriptorSetsInfo(@NotNull MemorySegment segment) implement
         return this;
     }
 
-    public @EnumType(VkShaderStageFlags.class) int stageFlags() {
+    public @MagicConstant(valuesFromClass = VkShaderStageFlags.class) int stageFlags() {
         return segment.get(LAYOUT$stageFlags, OFFSET$stageFlags);
     }
 
-    public VkBindDescriptorSetsInfo stageFlags(@EnumType(VkShaderStageFlags.class) int value) {
+    public VkBindDescriptorSetsInfo stageFlags(@MagicConstant(valuesFromClass = VkShaderStageFlags.class) int value) {
         segment.set(LAYOUT$stageFlags, OFFSET$stageFlags, value);
         return this;
     }

@@ -191,11 +191,11 @@ public record VkSubpassShadingPipelineCreateInfoHUAWEI(@NotNull MemorySegment se
         sType(VkStructureType.SUBPASS_SHADING_PIPELINE_CREATE_INFO_HUAWEI);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkSubpassShadingPipelineCreateInfoHUAWEI sType(@EnumType(VkStructureType.class) int value) {
+    public VkSubpassShadingPipelineCreateInfoHUAWEI sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }

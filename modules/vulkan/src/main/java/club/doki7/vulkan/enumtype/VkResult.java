@@ -1,6 +1,7 @@
 package club.doki7.vulkan.enumtype;
 
 import club.doki7.ffm.annotation.*;
+import org.intellij.lang.annotations.MagicConstant;
 
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkResult.html"><code>VkResult</code></a>
 public final class VkResult {
@@ -54,7 +55,7 @@ public final class VkResult {
     public static final int PIPELINE_BINARY_MISSING_KHR = 0x3ba228b8;
     public static final int ERROR_NOT_ENOUGH_SPACE_KHR = 0xc45dd748;
 
-    public static String explain(@EnumType(VkResult.class) int value) {
+    public static String explain(@MagicConstant(valuesFromClass = VkResult.class) int value) {
         return switch (value) {
             case VkResult.ERROR_COMPRESSION_EXHAUSTED_EXT -> "VK_ERROR_COMPRESSION_EXHAUSTED_EXT";
             case VkResult.ERROR_DEVICE_LOST -> "VK_ERROR_DEVICE_LOST";

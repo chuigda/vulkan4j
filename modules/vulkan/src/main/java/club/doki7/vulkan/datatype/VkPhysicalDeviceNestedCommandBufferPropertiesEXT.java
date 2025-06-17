@@ -190,11 +190,11 @@ public record VkPhysicalDeviceNestedCommandBufferPropertiesEXT(@NotNull MemorySe
         sType(VkStructureType.PHYSICAL_DEVICE_NESTED_COMMAND_BUFFER_PROPERTIES_EXT);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkPhysicalDeviceNestedCommandBufferPropertiesEXT sType(@EnumType(VkStructureType.class) int value) {
+    public VkPhysicalDeviceNestedCommandBufferPropertiesEXT sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }

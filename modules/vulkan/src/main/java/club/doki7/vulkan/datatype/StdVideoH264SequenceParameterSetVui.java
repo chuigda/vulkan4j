@@ -196,11 +196,11 @@ public record StdVideoH264SequenceParameterSetVui(@NotNull MemorySegment segment
         return this;
     }
 
-    public @EnumType(StdVideoH264AspectRatioIdc.class) int aspect_ratio_idc() {
+    public @MagicConstant(valuesFromClass = StdVideoH264AspectRatioIdc.class) int aspect_ratio_idc() {
         return segment.get(LAYOUT$aspect_ratio_idc, OFFSET$aspect_ratio_idc);
     }
 
-    public StdVideoH264SequenceParameterSetVui aspect_ratio_idc(@EnumType(StdVideoH264AspectRatioIdc.class) int value) {
+    public StdVideoH264SequenceParameterSetVui aspect_ratio_idc(@MagicConstant(valuesFromClass = StdVideoH264AspectRatioIdc.class) int value) {
         segment.set(LAYOUT$aspect_ratio_idc, OFFSET$aspect_ratio_idc, value);
         return this;
     }

@@ -190,11 +190,11 @@ public record VkPhysicalDeviceShaderIntegerFunctions2FeaturesINTEL(@NotNull Memo
         sType(VkStructureType.PHYSICAL_DEVICE_SHADER_INTEGER_FUNCTIONS_2_FEATURES_INTEL);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkPhysicalDeviceShaderIntegerFunctions2FeaturesINTEL sType(@EnumType(VkStructureType.class) int value) {
+    public VkPhysicalDeviceShaderIntegerFunctions2FeaturesINTEL sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }

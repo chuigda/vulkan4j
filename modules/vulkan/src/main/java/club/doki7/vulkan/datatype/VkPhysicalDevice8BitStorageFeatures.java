@@ -192,11 +192,11 @@ public record VkPhysicalDevice8BitStorageFeatures(@NotNull MemorySegment segment
         sType(VkStructureType.PHYSICAL_DEVICE_8BIT_STORAGE_FEATURES);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkPhysicalDevice8BitStorageFeatures sType(@EnumType(VkStructureType.class) int value) {
+    public VkPhysicalDevice8BitStorageFeatures sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }

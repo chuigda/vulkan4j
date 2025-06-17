@@ -191,11 +191,11 @@ public record VkPhysicalDeviceFragmentShadingRateKHR(@NotNull MemorySegment segm
         sType(VkStructureType.PHYSICAL_DEVICE_FRAGMENT_SHADING_RATE_KHR);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkPhysicalDeviceFragmentShadingRateKHR sType(@EnumType(VkStructureType.class) int value) {
+    public VkPhysicalDeviceFragmentShadingRateKHR sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }
@@ -213,11 +213,11 @@ public record VkPhysicalDeviceFragmentShadingRateKHR(@NotNull MemorySegment segm
         return this;
     }
 
-    public @EnumType(VkSampleCountFlags.class) int sampleCounts() {
+    public @MagicConstant(valuesFromClass = VkSampleCountFlags.class) int sampleCounts() {
         return segment.get(LAYOUT$sampleCounts, OFFSET$sampleCounts);
     }
 
-    public VkPhysicalDeviceFragmentShadingRateKHR sampleCounts(@EnumType(VkSampleCountFlags.class) int value) {
+    public VkPhysicalDeviceFragmentShadingRateKHR sampleCounts(@MagicConstant(valuesFromClass = VkSampleCountFlags.class) int value) {
         segment.set(LAYOUT$sampleCounts, OFFSET$sampleCounts, value);
         return this;
     }

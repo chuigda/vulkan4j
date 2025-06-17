@@ -1,6 +1,7 @@
 package club.doki7.vulkan.enumtype;
 
 import club.doki7.ffm.annotation.*;
+import org.intellij.lang.annotations.MagicConstant;
 
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkImageLayout.html"><code>VkImageLayout</code></a>
 public final class VkImageLayout {
@@ -35,7 +36,7 @@ public final class VkImageLayout {
     public static final int ATTACHMENT_FEEDBACK_LOOP_OPTIMAL_EXT = 0x3b9ff638;
     public static final int VIDEO_ENCODE_QUANTIZATION_MAP_KHR = 0x3ba33a28;
 
-    public static String explain(@EnumType(VkImageLayout.class) int value) {
+    public static String explain(@MagicConstant(valuesFromClass = VkImageLayout.class) int value) {
         return switch (value) {
             case VkImageLayout.ATTACHMENT_FEEDBACK_LOOP_OPTIMAL_EXT -> "VK_IMAGE_LAYOUT_ATTACHMENT_FEEDBACK_LOOP_OPTIMAL_EXT";
             case VkImageLayout.ATTACHMENT_OPTIMAL -> "VK_IMAGE_LAYOUT_ATTACHMENT_OPTIMAL";

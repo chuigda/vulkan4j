@@ -32,6 +32,7 @@ fun generateBitmask(
 
     if (bitflags.isNotEmpty()) {
         +"import club.doki7.ffm.annotation.*;"
+        +"import org.intellij.lang.annotations.MagicConstant;"
         +""
         +"import java.util.ArrayList;"
         +"import java.util.List;"

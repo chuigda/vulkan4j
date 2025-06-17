@@ -192,11 +192,11 @@ public record VkCommandBufferAllocateInfo(@NotNull MemorySegment segment) implem
         sType(VkStructureType.COMMAND_BUFFER_ALLOCATE_INFO);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkCommandBufferAllocateInfo sType(@EnumType(VkStructureType.class) int value) {
+    public VkCommandBufferAllocateInfo sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }
@@ -227,11 +227,11 @@ public record VkCommandBufferAllocateInfo(@NotNull MemorySegment segment) implem
         return this;
     }
 
-    public @EnumType(VkCommandBufferLevel.class) int level() {
+    public @MagicConstant(valuesFromClass = VkCommandBufferLevel.class) int level() {
         return segment.get(LAYOUT$level, OFFSET$level);
     }
 
-    public VkCommandBufferAllocateInfo level(@EnumType(VkCommandBufferLevel.class) int value) {
+    public VkCommandBufferAllocateInfo level(@MagicConstant(valuesFromClass = VkCommandBufferLevel.class) int value) {
         segment.set(LAYOUT$level, OFFSET$level, value);
         return this;
     }

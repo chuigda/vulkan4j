@@ -1,6 +1,7 @@
 package club.doki7.vulkan.bitmask;
 
 import club.doki7.ffm.annotation.*;
+import org.intellij.lang.annotations.MagicConstant;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -9,7 +10,7 @@ import java.util.List;
 public final class VkSurfaceCounterFlagsEXT {
     public static final int VBLANK = 0x1;
 
-    public static String explain(@EnumType(VkSurfaceCounterFlagsEXT.class) int flags) {
+    public static String explain(@MagicConstant(flagsFromClass = VkSurfaceCounterFlagsEXT.class) int flags) {
         List<String> detectedFlagBits = new ArrayList<>();
         if ((flags & VBLANK) != 0) {
             detectedFlagBits.add("VK_SURFACE_COUNTER_VBLANK_BIT_EXT");

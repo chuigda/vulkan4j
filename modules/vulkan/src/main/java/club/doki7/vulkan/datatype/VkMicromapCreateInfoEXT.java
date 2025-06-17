@@ -195,11 +195,11 @@ public record VkMicromapCreateInfoEXT(@NotNull MemorySegment segment) implements
         sType(VkStructureType.MICROMAP_CREATE_INFO_EXT);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkMicromapCreateInfoEXT sType(@EnumType(VkStructureType.class) int value) {
+    public VkMicromapCreateInfoEXT sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }
@@ -217,11 +217,11 @@ public record VkMicromapCreateInfoEXT(@NotNull MemorySegment segment) implements
         return this;
     }
 
-    public @EnumType(VkMicromapCreateFlagsEXT.class) int createFlags() {
+    public @MagicConstant(valuesFromClass = VkMicromapCreateFlagsEXT.class) int createFlags() {
         return segment.get(LAYOUT$createFlags, OFFSET$createFlags);
     }
 
-    public VkMicromapCreateInfoEXT createFlags(@EnumType(VkMicromapCreateFlagsEXT.class) int value) {
+    public VkMicromapCreateInfoEXT createFlags(@MagicConstant(valuesFromClass = VkMicromapCreateFlagsEXT.class) int value) {
         segment.set(LAYOUT$createFlags, OFFSET$createFlags, value);
         return this;
     }
@@ -257,11 +257,11 @@ public record VkMicromapCreateInfoEXT(@NotNull MemorySegment segment) implements
         return this;
     }
 
-    public @EnumType(VkMicromapTypeEXT.class) int type() {
+    public @MagicConstant(valuesFromClass = VkMicromapTypeEXT.class) int type() {
         return segment.get(LAYOUT$type, OFFSET$type);
     }
 
-    public VkMicromapCreateInfoEXT type(@EnumType(VkMicromapTypeEXT.class) int value) {
+    public VkMicromapCreateInfoEXT type(@MagicConstant(valuesFromClass = VkMicromapTypeEXT.class) int value) {
         segment.set(LAYOUT$type, OFFSET$type, value);
         return this;
     }

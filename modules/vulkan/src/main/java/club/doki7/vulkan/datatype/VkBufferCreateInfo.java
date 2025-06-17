@@ -195,11 +195,11 @@ public record VkBufferCreateInfo(@NotNull MemorySegment segment) implements IVkB
         sType(VkStructureType.BUFFER_CREATE_INFO);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkBufferCreateInfo sType(@EnumType(VkStructureType.class) int value) {
+    public VkBufferCreateInfo sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }
@@ -217,11 +217,11 @@ public record VkBufferCreateInfo(@NotNull MemorySegment segment) implements IVkB
         return this;
     }
 
-    public @EnumType(VkBufferCreateFlags.class) int flags() {
+    public @MagicConstant(valuesFromClass = VkBufferCreateFlags.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public VkBufferCreateInfo flags(@EnumType(VkBufferCreateFlags.class) int value) {
+    public VkBufferCreateInfo flags(@MagicConstant(valuesFromClass = VkBufferCreateFlags.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
         return this;
     }
@@ -235,20 +235,20 @@ public record VkBufferCreateInfo(@NotNull MemorySegment segment) implements IVkB
         return this;
     }
 
-    public @EnumType(VkBufferUsageFlags.class) int usage() {
+    public @MagicConstant(valuesFromClass = VkBufferUsageFlags.class) int usage() {
         return segment.get(LAYOUT$usage, OFFSET$usage);
     }
 
-    public VkBufferCreateInfo usage(@EnumType(VkBufferUsageFlags.class) int value) {
+    public VkBufferCreateInfo usage(@MagicConstant(valuesFromClass = VkBufferUsageFlags.class) int value) {
         segment.set(LAYOUT$usage, OFFSET$usage, value);
         return this;
     }
 
-    public @EnumType(VkSharingMode.class) int sharingMode() {
+    public @MagicConstant(valuesFromClass = VkSharingMode.class) int sharingMode() {
         return segment.get(LAYOUT$sharingMode, OFFSET$sharingMode);
     }
 
-    public VkBufferCreateInfo sharingMode(@EnumType(VkSharingMode.class) int value) {
+    public VkBufferCreateInfo sharingMode(@MagicConstant(valuesFromClass = VkSharingMode.class) int value) {
         segment.set(LAYOUT$sharingMode, OFFSET$sharingMode, value);
         return this;
     }

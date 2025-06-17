@@ -195,11 +195,11 @@ public record VkIndirectCommandsLayoutCreateInfoNV(@NotNull MemorySegment segmen
         sType(VkStructureType.INDIRECT_COMMANDS_LAYOUT_CREATE_INFO_NV);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkIndirectCommandsLayoutCreateInfoNV sType(@EnumType(VkStructureType.class) int value) {
+    public VkIndirectCommandsLayoutCreateInfoNV sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }
@@ -217,20 +217,20 @@ public record VkIndirectCommandsLayoutCreateInfoNV(@NotNull MemorySegment segmen
         return this;
     }
 
-    public @EnumType(VkIndirectCommandsLayoutUsageFlagsNV.class) int flags() {
+    public @MagicConstant(valuesFromClass = VkIndirectCommandsLayoutUsageFlagsNV.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public VkIndirectCommandsLayoutCreateInfoNV flags(@EnumType(VkIndirectCommandsLayoutUsageFlagsNV.class) int value) {
+    public VkIndirectCommandsLayoutCreateInfoNV flags(@MagicConstant(valuesFromClass = VkIndirectCommandsLayoutUsageFlagsNV.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
         return this;
     }
 
-    public @EnumType(VkPipelineBindPoint.class) int pipelineBindPoint() {
+    public @MagicConstant(valuesFromClass = VkPipelineBindPoint.class) int pipelineBindPoint() {
         return segment.get(LAYOUT$pipelineBindPoint, OFFSET$pipelineBindPoint);
     }
 
-    public VkIndirectCommandsLayoutCreateInfoNV pipelineBindPoint(@EnumType(VkPipelineBindPoint.class) int value) {
+    public VkIndirectCommandsLayoutCreateInfoNV pipelineBindPoint(@MagicConstant(valuesFromClass = VkPipelineBindPoint.class) int value) {
         segment.set(LAYOUT$pipelineBindPoint, OFFSET$pipelineBindPoint, value);
         return this;
     }

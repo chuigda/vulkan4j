@@ -190,11 +190,11 @@ public record VkDisplayNativeHdrSurfaceCapabilitiesAMD(@NotNull MemorySegment se
         sType(VkStructureType.DISPLAY_NATIVE_HDR_SURFACE_CAPABILITIES_AMD);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkDisplayNativeHdrSurfaceCapabilitiesAMD sType(@EnumType(VkStructureType.class) int value) {
+    public VkDisplayNativeHdrSurfaceCapabilitiesAMD sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }

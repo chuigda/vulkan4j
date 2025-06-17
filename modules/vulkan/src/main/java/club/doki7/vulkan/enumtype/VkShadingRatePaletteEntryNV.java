@@ -1,6 +1,7 @@
 package club.doki7.vulkan.enumtype;
 
 import club.doki7.ffm.annotation.*;
+import org.intellij.lang.annotations.MagicConstant;
 
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkShadingRatePaletteEntryNV.html"><code>VkShadingRatePaletteEntryNV</code></a>
 public final class VkShadingRatePaletteEntryNV {
@@ -17,7 +18,7 @@ public final class VkShadingRatePaletteEntryNV {
     public static final int _1_INVOCATION_PER_2X4_PIXELS = 0xa;
     public static final int _1_INVOCATION_PER_4X4_PIXELS = 0xb;
 
-    public static String explain(@EnumType(VkShadingRatePaletteEntryNV.class) int value) {
+    public static String explain(@MagicConstant(valuesFromClass = VkShadingRatePaletteEntryNV.class) int value) {
         return switch (value) {
             case VkShadingRatePaletteEntryNV._16_INVOCATIONS_PER_PIXEL -> "VK_SHADING_RATE_PALETTE_ENTRY_16_INVOCATIONS_PER_PIXEL_NV";
             case VkShadingRatePaletteEntryNV._1_INVOCATION_PER_1X2_PIXELS -> "VK_SHADING_RATE_PALETTE_ENTRY_1_INVOCATION_PER_1X2_PIXELS_NV";

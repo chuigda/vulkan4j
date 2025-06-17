@@ -191,11 +191,11 @@ public record VkVideoReferenceSlotInfoKHR(@NotNull MemorySegment segment) implem
         sType(VkStructureType.VIDEO_REFERENCE_SLOT_INFO_KHR);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkVideoReferenceSlotInfoKHR sType(@EnumType(VkStructureType.class) int value) {
+    public VkVideoReferenceSlotInfoKHR sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }

@@ -229,38 +229,38 @@ public record VmaAllocationCreateInfo(@NotNull MemorySegment segment) implements
         return ret;
     }
 
-    public @EnumType(VmaAllocationCreateFlags.class) int flags() {
+    public @MagicConstant(valuesFromClass = VmaAllocationCreateFlags.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public VmaAllocationCreateInfo flags(@EnumType(VmaAllocationCreateFlags.class) int value) {
+    public VmaAllocationCreateInfo flags(@MagicConstant(valuesFromClass = VmaAllocationCreateFlags.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
         return this;
     }
 
-    public @EnumType(VmaMemoryUsage.class) int usage() {
+    public @MagicConstant(valuesFromClass = VmaMemoryUsage.class) int usage() {
         return segment.get(LAYOUT$usage, OFFSET$usage);
     }
 
-    public VmaAllocationCreateInfo usage(@EnumType(VmaMemoryUsage.class) int value) {
+    public VmaAllocationCreateInfo usage(@MagicConstant(valuesFromClass = VmaMemoryUsage.class) int value) {
         segment.set(LAYOUT$usage, OFFSET$usage, value);
         return this;
     }
 
-    public @EnumType(VkMemoryPropertyFlags.class) int requiredFlags() {
+    public @MagicConstant(valuesFromClass = VkMemoryPropertyFlags.class) int requiredFlags() {
         return segment.get(LAYOUT$requiredFlags, OFFSET$requiredFlags);
     }
 
-    public VmaAllocationCreateInfo requiredFlags(@EnumType(VkMemoryPropertyFlags.class) int value) {
+    public VmaAllocationCreateInfo requiredFlags(@MagicConstant(valuesFromClass = VkMemoryPropertyFlags.class) int value) {
         segment.set(LAYOUT$requiredFlags, OFFSET$requiredFlags, value);
         return this;
     }
 
-    public @EnumType(VkMemoryPropertyFlags.class) int preferredFlags() {
+    public @MagicConstant(valuesFromClass = VkMemoryPropertyFlags.class) int preferredFlags() {
         return segment.get(LAYOUT$preferredFlags, OFFSET$preferredFlags);
     }
 
-    public VmaAllocationCreateInfo preferredFlags(@EnumType(VkMemoryPropertyFlags.class) int value) {
+    public VmaAllocationCreateInfo preferredFlags(@MagicConstant(valuesFromClass = VkMemoryPropertyFlags.class) int value) {
         segment.set(LAYOUT$preferredFlags, OFFSET$preferredFlags, value);
         return this;
     }

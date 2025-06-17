@@ -190,11 +190,11 @@ public record VkVideoDecodeUsageInfoKHR(@NotNull MemorySegment segment) implemen
         sType(VkStructureType.VIDEO_DECODE_USAGE_INFO_KHR);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkVideoDecodeUsageInfoKHR sType(@EnumType(VkStructureType.class) int value) {
+    public VkVideoDecodeUsageInfoKHR sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }
@@ -212,11 +212,11 @@ public record VkVideoDecodeUsageInfoKHR(@NotNull MemorySegment segment) implemen
         return this;
     }
 
-    public @EnumType(VkVideoDecodeUsageFlagsKHR.class) int videoUsageHints() {
+    public @MagicConstant(valuesFromClass = VkVideoDecodeUsageFlagsKHR.class) int videoUsageHints() {
         return segment.get(LAYOUT$videoUsageHints, OFFSET$videoUsageHints);
     }
 
-    public VkVideoDecodeUsageInfoKHR videoUsageHints(@EnumType(VkVideoDecodeUsageFlagsKHR.class) int value) {
+    public VkVideoDecodeUsageInfoKHR videoUsageHints(@MagicConstant(valuesFromClass = VkVideoDecodeUsageFlagsKHR.class) int value) {
         segment.set(LAYOUT$videoUsageHints, OFFSET$videoUsageHints, value);
         return this;
     }

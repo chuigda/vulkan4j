@@ -179,11 +179,11 @@ public record VkAttachmentReference(@NotNull MemorySegment segment) implements I
         return this;
     }
 
-    public @EnumType(VkImageLayout.class) int layout() {
+    public @MagicConstant(valuesFromClass = VkImageLayout.class) int layout() {
         return segment.get(LAYOUT$layout, OFFSET$layout);
     }
 
-    public VkAttachmentReference layout(@EnumType(VkImageLayout.class) int value) {
+    public VkAttachmentReference layout(@MagicConstant(valuesFromClass = VkImageLayout.class) int value) {
         segment.set(LAYOUT$layout, OFFSET$layout, value);
         return this;
     }

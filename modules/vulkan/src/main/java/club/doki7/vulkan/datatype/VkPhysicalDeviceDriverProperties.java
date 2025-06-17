@@ -193,11 +193,11 @@ public record VkPhysicalDeviceDriverProperties(@NotNull MemorySegment segment) i
         sType(VkStructureType.PHYSICAL_DEVICE_DRIVER_PROPERTIES);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkPhysicalDeviceDriverProperties sType(@EnumType(VkStructureType.class) int value) {
+    public VkPhysicalDeviceDriverProperties sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }
@@ -215,11 +215,11 @@ public record VkPhysicalDeviceDriverProperties(@NotNull MemorySegment segment) i
         return this;
     }
 
-    public @EnumType(VkDriverId.class) int driverID() {
+    public @MagicConstant(valuesFromClass = VkDriverId.class) int driverID() {
         return segment.get(LAYOUT$driverID, OFFSET$driverID);
     }
 
-    public VkPhysicalDeviceDriverProperties driverID(@EnumType(VkDriverId.class) int value) {
+    public VkPhysicalDeviceDriverProperties driverID(@MagicConstant(valuesFromClass = VkDriverId.class) int value) {
         segment.set(LAYOUT$driverID, OFFSET$driverID, value);
         return this;
     }

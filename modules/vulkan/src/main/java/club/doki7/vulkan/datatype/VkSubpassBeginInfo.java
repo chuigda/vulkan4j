@@ -190,11 +190,11 @@ public record VkSubpassBeginInfo(@NotNull MemorySegment segment) implements IVkS
         sType(VkStructureType.SUBPASS_BEGIN_INFO);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkSubpassBeginInfo sType(@EnumType(VkStructureType.class) int value) {
+    public VkSubpassBeginInfo sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }
@@ -212,11 +212,11 @@ public record VkSubpassBeginInfo(@NotNull MemorySegment segment) implements IVkS
         return this;
     }
 
-    public @EnumType(VkSubpassContents.class) int contents() {
+    public @MagicConstant(valuesFromClass = VkSubpassContents.class) int contents() {
         return segment.get(LAYOUT$contents, OFFSET$contents);
     }
 
-    public VkSubpassBeginInfo contents(@EnumType(VkSubpassContents.class) int value) {
+    public VkSubpassBeginInfo contents(@MagicConstant(valuesFromClass = VkSubpassContents.class) int value) {
         segment.set(LAYOUT$contents, OFFSET$contents, value);
         return this;
     }

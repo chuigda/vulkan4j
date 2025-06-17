@@ -192,11 +192,11 @@ public record VkWaylandSurfaceCreateInfoKHR(@NotNull MemorySegment segment) impl
         sType(VkStructureType.WAYLAND_SURFACE_CREATE_INFO_KHR);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkWaylandSurfaceCreateInfoKHR sType(@EnumType(VkStructureType.class) int value) {
+    public VkWaylandSurfaceCreateInfoKHR sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }
@@ -214,11 +214,11 @@ public record VkWaylandSurfaceCreateInfoKHR(@NotNull MemorySegment segment) impl
         return this;
     }
 
-    public @EnumType(VkWaylandSurfaceCreateFlagsKHR.class) int flags() {
+    public @MagicConstant(valuesFromClass = VkWaylandSurfaceCreateFlagsKHR.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public VkWaylandSurfaceCreateInfoKHR flags(@EnumType(VkWaylandSurfaceCreateFlagsKHR.class) int value) {
+    public VkWaylandSurfaceCreateInfoKHR flags(@MagicConstant(valuesFromClass = VkWaylandSurfaceCreateFlagsKHR.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
         return this;
     }

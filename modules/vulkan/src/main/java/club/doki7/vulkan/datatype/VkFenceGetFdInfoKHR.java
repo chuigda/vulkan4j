@@ -191,11 +191,11 @@ public record VkFenceGetFdInfoKHR(@NotNull MemorySegment segment) implements IVk
         sType(VkStructureType.FENCE_GET_FD_INFO_KHR);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkFenceGetFdInfoKHR sType(@EnumType(VkStructureType.class) int value) {
+    public VkFenceGetFdInfoKHR sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }
@@ -226,11 +226,11 @@ public record VkFenceGetFdInfoKHR(@NotNull MemorySegment segment) implements IVk
         return this;
     }
 
-    public @EnumType(VkExternalFenceHandleTypeFlags.class) int handleType() {
+    public @MagicConstant(valuesFromClass = VkExternalFenceHandleTypeFlags.class) int handleType() {
         return segment.get(LAYOUT$handleType, OFFSET$handleType);
     }
 
-    public VkFenceGetFdInfoKHR handleType(@EnumType(VkExternalFenceHandleTypeFlags.class) int value) {
+    public VkFenceGetFdInfoKHR handleType(@MagicConstant(valuesFromClass = VkExternalFenceHandleTypeFlags.class) int value) {
         segment.set(LAYOUT$handleType, OFFSET$handleType, value);
         return this;
     }

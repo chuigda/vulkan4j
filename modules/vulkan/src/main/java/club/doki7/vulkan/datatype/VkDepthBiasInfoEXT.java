@@ -192,11 +192,11 @@ public record VkDepthBiasInfoEXT(@NotNull MemorySegment segment) implements IVkD
         sType(VkStructureType.DEPTH_BIAS_INFO_EXT);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkDepthBiasInfoEXT sType(@EnumType(VkStructureType.class) int value) {
+    public VkDepthBiasInfoEXT sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }

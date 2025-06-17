@@ -171,11 +171,11 @@ public record VkPushConstantRange(@NotNull MemorySegment segment) implements IVk
         return ret;
     }
 
-    public @EnumType(VkShaderStageFlags.class) int stageFlags() {
+    public @MagicConstant(valuesFromClass = VkShaderStageFlags.class) int stageFlags() {
         return segment.get(LAYOUT$stageFlags, OFFSET$stageFlags);
     }
 
-    public VkPushConstantRange stageFlags(@EnumType(VkShaderStageFlags.class) int value) {
+    public VkPushConstantRange stageFlags(@MagicConstant(valuesFromClass = VkShaderStageFlags.class) int value) {
         segment.set(LAYOUT$stageFlags, OFFSET$stageFlags, value);
         return this;
     }

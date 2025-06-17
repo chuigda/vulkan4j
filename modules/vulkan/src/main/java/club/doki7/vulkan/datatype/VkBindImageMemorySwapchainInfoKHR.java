@@ -191,11 +191,11 @@ public record VkBindImageMemorySwapchainInfoKHR(@NotNull MemorySegment segment) 
         sType(VkStructureType.BIND_IMAGE_MEMORY_SWAPCHAIN_INFO_KHR);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkBindImageMemorySwapchainInfoKHR sType(@EnumType(VkStructureType.class) int value) {
+    public VkBindImageMemorySwapchainInfoKHR sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }

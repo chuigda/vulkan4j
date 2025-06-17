@@ -168,7 +168,7 @@ public final class VMA {
 
     /// Creates {@code VmaAllocator} object.
     ///
-    public @EnumType(VkResult.class) int createAllocator(
+    public @MagicConstant(valuesFromClass = VkResult.class) int createAllocator(
         @Pointer IVmaAllocatorCreateInfo pCreateInfo,
         @Pointer VmaAllocator.Ptr pAllocator
     ) {
@@ -358,7 +358,7 @@ public final class VMA {
     /// resource, like image layout (OPTIMAL versus LINEAR) or mip level count.
     ///
     /// @return Returns VK_ERROR_FEATURE_NOT_PRESENT if not found. Receiving such result
-    public @EnumType(VkResult.class) int findMemoryTypeIndex(
+    public @MagicConstant(valuesFromClass = VkResult.class) int findMemoryTypeIndex(
         VmaAllocator allocator,
         @Unsigned int memoryTypeBits,
         @Pointer IVmaAllocationCreateInfo pAllocationCreateInfo,
@@ -382,7 +382,7 @@ public final class VMA {
     /// It can be useful e.g. to determine value to be used as VmaPoolCreateInfo::memoryTypeIndex.
     /// It internally creates a temporary, dummy buffer that never has memory bound.
     ///
-    public @EnumType(VkResult.class) int findMemoryTypeIndexForBufferInfo(
+    public @MagicConstant(valuesFromClass = VkResult.class) int findMemoryTypeIndexForBufferInfo(
         VmaAllocator allocator,
         @Pointer IVkBufferCreateInfo pBufferCreateInfo,
         @Pointer IVmaAllocationCreateInfo pAllocationCreateInfo,
@@ -406,7 +406,7 @@ public final class VMA {
     /// It can be useful e.g. to determine value to be used as VmaPoolCreateInfo::memoryTypeIndex.
     /// It internally creates a temporary, dummy image that never has memory bound.
     ///
-    public @EnumType(VkResult.class) int findMemoryTypeIndexForImageInfo(
+    public @MagicConstant(valuesFromClass = VkResult.class) int findMemoryTypeIndexForImageInfo(
         VmaAllocator allocator,
         @Pointer IVkImageCreateInfo pImageCreateInfo,
         @Pointer IVmaAllocationCreateInfo pAllocationCreateInfo,
@@ -430,7 +430,7 @@ public final class VMA {
     /// @param allocator Allocator object.
     /// @param pCreateInfo Parameters of pool to create.
     /// @param pPool Handle to created pool.
-    public @EnumType(VkResult.class) int createPool(
+    public @MagicConstant(valuesFromClass = VkResult.class) int createPool(
         VmaAllocator allocator,
         @Pointer IVmaPoolCreateInfo pCreateInfo,
         @Pointer VmaPool.Ptr pPool
@@ -525,7 +525,7 @@ public final class VMA {
     /// `VMA_ASSERT` is also fired in that case.
     /// - Other value: Error returned by Vulkan, e.g. memory mapping failure.
     ///
-    public @EnumType(VkResult.class) int checkPoolCorruption(
+    public @MagicConstant(valuesFromClass = VkResult.class) int checkPoolCorruption(
         VmaAllocator allocator,
         VmaPool pool
     ) {
@@ -597,7 +597,7 @@ public final class VMA {
     /// @param pCreateInfo
     /// @param pAllocation Handle to allocated memory.
     /// @param pAllocationInfo Optional. Information about allocated memory. It can be later fetched using function vmaGetAllocationInfo().
-    public @EnumType(VkResult.class) int allocateMemory(
+    public @MagicConstant(valuesFromClass = VkResult.class) int allocateMemory(
         VmaAllocator allocator,
         @Pointer IVkMemoryRequirements pVkMemoryRequirements,
         @Pointer IVmaAllocationCreateInfo pCreateInfo,
@@ -636,7 +636,7 @@ public final class VMA {
     /// @param allocationCount Number of allocations to make.
     /// @param pAllocations Pointer to array that will be filled with handles to created allocations.
     /// @param pAllocationInfo Optional. Pointer to array that will be filled with parameters of created allocations.
-    public @EnumType(VkResult.class) int allocateMemoryPages(
+    public @MagicConstant(valuesFromClass = VkResult.class) int allocateMemoryPages(
         VmaAllocator allocator,
         @Pointer IVkMemoryRequirements pVkMemoryRequirements,
         @Pointer IVmaAllocationCreateInfo pCreateInfo,
@@ -672,7 +672,7 @@ public final class VMA {
     /// @param pCreateInfo
     /// @param pAllocation Handle to allocated memory.
     /// @param pAllocationInfo Optional. Information about allocated memory. It can be later fetched using function vmaGetAllocationInfo().
-    public @EnumType(VkResult.class) int allocateMemoryForBuffer(
+    public @MagicConstant(valuesFromClass = VkResult.class) int allocateMemoryForBuffer(
         VmaAllocator allocator,
         VkBuffer buffer,
         @Pointer IVmaAllocationCreateInfo pCreateInfo,
@@ -706,7 +706,7 @@ public final class VMA {
     /// @param pCreateInfo
     /// @param pAllocation Handle to allocated memory.
     /// @param pAllocationInfo Optional. Information about allocated memory. It can be later fetched using function vmaGetAllocationInfo().
-    public @EnumType(VkResult.class) int allocateMemoryForImage(
+    public @MagicConstant(valuesFromClass = VkResult.class) int allocateMemoryForImage(
         VmaAllocator allocator,
         VkImage image,
         @Pointer IVmaAllocationCreateInfo pCreateInfo,
@@ -924,7 +924,7 @@ public final class VMA {
     ///
     /// @param hTargetProcess Must be a valid handle to target process or null. If it's null, the function returns
     /// @param pHandle Output parameter that returns the handle.
-    public @EnumType(VkResult.class) int getMemoryWin32Handle(
+    public @MagicConstant(valuesFromClass = VkResult.class) int getMemoryWin32Handle(
         VmaAllocator allocator,
         VmaAllocation allocation,
         @Pointer(comment="HANDLE") MemorySegment hTargetProcess,
@@ -980,7 +980,7 @@ public final class VMA {
     /// If the allocation is made from a memory types that is not `HOST_COHERENT`,
     /// you also need to use vmaInvalidateAllocation() / vmaFlushAllocation(), as required by Vulkan specification.
     ///
-    public @EnumType(VkResult.class) int mapMemory(
+    public @MagicConstant(valuesFromClass = VkResult.class) int mapMemory(
         VmaAllocator allocator,
         VmaAllocation allocation,
         PointerPtr ppData
@@ -1041,7 +1041,7 @@ public final class VMA {
     /// This function returns the `VkResult` from `vkFlushMappedMemoryRanges` if it is
     /// called, otherwise `VK_SUCCESS`.
     ///
-    public @EnumType(VkResult.class) int flushAllocation(
+    public @MagicConstant(valuesFromClass = VkResult.class) int flushAllocation(
         VmaAllocator allocator,
         VmaAllocation allocation,
         @NativeType("VkDeviceSize") @Unsigned long offset,
@@ -1081,7 +1081,7 @@ public final class VMA {
     /// This function returns the `VkResult` from `vkInvalidateMappedMemoryRanges` if
     /// it is called, otherwise `VK_SUCCESS`.
     ///
-    public @EnumType(VkResult.class) int invalidateAllocation(
+    public @MagicConstant(valuesFromClass = VkResult.class) int invalidateAllocation(
         VmaAllocator allocator,
         VmaAllocation allocation,
         @NativeType("VkDeviceSize") @Unsigned long offset,
@@ -1113,7 +1113,7 @@ public final class VMA {
     /// @param allocations
     /// @param offsets If not null, it must point to an array of offsets of regions to flush, relative to the beginning of respective allocations. Null means all offsets are zero.
     /// @param sizes If not null, it must point to an array of sizes of regions to flush in respective allocations. Null means `VK_WHOLE_SIZE` for all allocations.
-    public @EnumType(VkResult.class) int flushAllocations(
+    public @MagicConstant(valuesFromClass = VkResult.class) int flushAllocations(
         VmaAllocator allocator,
         @Unsigned int allocationCount,
         @Nullable @Pointer VmaAllocation.Ptr allocations,
@@ -1147,7 +1147,7 @@ public final class VMA {
     /// @param allocations
     /// @param offsets If not null, it must point to an array of offsets of regions to flush, relative to the beginning of respective allocations. Null means all offsets are zero.
     /// @param sizes If not null, it must point to an array of sizes of regions to flush in respective allocations. Null means `VK_WHOLE_SIZE` for all allocations.
-    public @EnumType(VkResult.class) int invalidateAllocations(
+    public @MagicConstant(valuesFromClass = VkResult.class) int invalidateAllocations(
         VmaAllocator allocator,
         @Unsigned int allocationCount,
         @Nullable @Pointer VmaAllocation.Ptr allocations,
@@ -1187,7 +1187,7 @@ public final class VMA {
     /// @param dstAllocation   Handle to the allocation that becomes destination of the copy.
     /// @param dstAllocationLocalOffset  Offset within `dstAllocation` where to write copied data, in bytes.
     /// @param size            Number of bytes to copy.
-    public @EnumType(VkResult.class) int copyMemoryToAllocation(
+    public @MagicConstant(valuesFromClass = VkResult.class) int copyMemoryToAllocation(
         VmaAllocator allocator,
         @Pointer(comment="void*") MemorySegment pSrcHostPointer,
         VmaAllocation dstAllocation,
@@ -1228,7 +1228,7 @@ public final class VMA {
     /// @param srcAllocationLocalOffset  Offset within `srcAllocation` where to read copied data, in bytes.
     /// @param pDstHostPointer Pointer to the host memory that become destination of the copy.
     /// @param size            Number of bytes to copy.
-    public @EnumType(VkResult.class) int copyAllocationToMemory(
+    public @MagicConstant(valuesFromClass = VkResult.class) int copyAllocationToMemory(
         VmaAllocator allocator,
         VmaAllocation srcAllocation,
         @NativeType("VkDeviceSize") @Unsigned long srcAllocationLocalOffset,
@@ -1265,7 +1265,7 @@ public final class VMA {
     ///
     /// @param allocator
     /// @param memoryTypeBits Bit mask, where each bit set means that a memory type with that index should be checked.
-    public @EnumType(VkResult.class) int checkCorruption(
+    public @MagicConstant(valuesFromClass = VkResult.class) int checkCorruption(
         VmaAllocator allocator,
         @Unsigned int memoryTypeBits
     ) {
@@ -1291,7 +1291,7 @@ public final class VMA {
     /// @return
     /// <li>`VK_SUCCESS` if defragmentation can begin.</li>
     /// <li>`VK_ERROR_FEATURE_NOT_PRESENT` if defragmentation is not supported.</li>
-    public @EnumType(VkResult.class) int beginDefragmentation(
+    public @MagicConstant(valuesFromClass = VkResult.class) int beginDefragmentation(
         VmaAllocator allocator,
         @Pointer IVmaDefragmentationInfo pInfo,
         @Pointer VmaDefragmentationContext.Ptr pContext
@@ -1340,7 +1340,7 @@ public final class VMA {
     /// @return
     /// <li>`VK_SUCCESS` if no more moves are possible. Then you can omit call to vmaEndDefragmentationPass() and simply end whole defragmentation.</li>
     /// <li>`VK_INCOMPLETE` if there are pending moves returned in `pPassInfo`. You need to perform them, call vmaEndDefragmentationPass(),</li>
-    public @EnumType(VkResult.class) int beginDefragmentationPass(
+    public @MagicConstant(valuesFromClass = VkResult.class) int beginDefragmentationPass(
         VmaAllocator allocator,
         VmaDefragmentationContext context,
         @Pointer IVmaDefragmentationPassMoveInfo pPassInfo
@@ -1374,7 +1374,7 @@ public final class VMA {
     /// @param allocator Allocator object.
     /// @param context Context object that has been created by vmaBeginDefragmentation().
     /// @param pPassInfo Computed information for current pass filled by vmaBeginDefragmentationPass() and possibly modified by you.
-    public @EnumType(VkResult.class) int endDefragmentationPass(
+    public @MagicConstant(valuesFromClass = VkResult.class) int endDefragmentationPass(
         VmaAllocator allocator,
         VmaDefragmentationContext context,
         @Pointer IVmaDefragmentationPassMoveInfo pPassInfo
@@ -1403,7 +1403,7 @@ public final class VMA {
     ///
     /// It is recommended to use function vmaCreateBuffer() instead of this one.
     ///
-    public @EnumType(VkResult.class) int bindBufferMemory(
+    public @MagicConstant(valuesFromClass = VkResult.class) int bindBufferMemory(
         VmaAllocator allocator,
         VmaAllocation allocation,
         VkBuffer buffer
@@ -1432,7 +1432,7 @@ public final class VMA {
     /// @param allocationLocalOffset Additional offset to be added while binding, relative to the beginning of the `allocation`. Normally it should be 0.
     /// @param buffer
     /// @param pNext A chain of structures to be attached to `VkBindBufferMemoryInfoKHR` structure used internally. Normally it should be null.
-    public @EnumType(VkResult.class) int bindBufferMemory2(
+    public @MagicConstant(valuesFromClass = VkResult.class) int bindBufferMemory2(
         VmaAllocator allocator,
         VmaAllocation allocation,
         @NativeType("VkDeviceSize") @Unsigned long allocationLocalOffset,
@@ -1465,7 +1465,7 @@ public final class VMA {
     ///
     /// It is recommended to use function vmaCreateImage() instead of this one.
     ///
-    public @EnumType(VkResult.class) int bindImageMemory(
+    public @MagicConstant(valuesFromClass = VkResult.class) int bindImageMemory(
         VmaAllocator allocator,
         VmaAllocation allocation,
         VkImage image
@@ -1494,7 +1494,7 @@ public final class VMA {
     /// @param allocationLocalOffset Additional offset to be added while binding, relative to the beginning of the `allocation`. Normally it should be 0.
     /// @param image
     /// @param pNext A chain of structures to be attached to `VkBindImageMemoryInfoKHR` structure used internally. Normally it should be null.
-    public @EnumType(VkResult.class) int bindImageMemory2(
+    public @MagicConstant(valuesFromClass = VkResult.class) int bindImageMemory2(
         VmaAllocator allocator,
         VmaAllocation allocation,
         @NativeType("VkDeviceSize") @Unsigned long allocationLocalOffset,
@@ -1548,7 +1548,7 @@ public final class VMA {
     /// @param pBuffer Buffer that was created.
     /// @param pAllocation Allocation that was created.
     /// @param pAllocationInfo Optional. Information about allocated memory. It can be later fetched using function vmaGetAllocationInfo().
-    public @EnumType(VkResult.class) int createBuffer(
+    public @MagicConstant(valuesFromClass = VkResult.class) int createBuffer(
         VmaAllocator allocator,
         @Pointer IVkBufferCreateInfo pBufferCreateInfo,
         @Pointer IVmaAllocationCreateInfo pAllocationCreateInfo,
@@ -1577,7 +1577,7 @@ public final class VMA {
     /// minimum alignment to be used when placing the buffer inside a larger memory block, which may be needed e.g.
     /// for interop with OpenGL.
     ///
-    public @EnumType(VkResult.class) int createBufferWithAlignment(
+    public @MagicConstant(valuesFromClass = VkResult.class) int createBufferWithAlignment(
         VmaAllocator allocator,
         @Pointer IVkBufferCreateInfo pBufferCreateInfo,
         @Pointer IVmaAllocationCreateInfo pAllocationCreateInfo,
@@ -1622,7 +1622,7 @@ public final class VMA {
     /// @param allocation Allocation that provides memory to be used for binding new buffer to it.
     /// @param pBufferCreateInfo
     /// @param pBuffer Buffer that was created.
-    public @EnumType(VkResult.class) int createAliasingBuffer(
+    public @MagicConstant(valuesFromClass = VkResult.class) int createAliasingBuffer(
         VmaAllocator allocator,
         VmaAllocation allocation,
         @Pointer IVkBufferCreateInfo pBufferCreateInfo,
@@ -1662,7 +1662,7 @@ public final class VMA {
     /// @param allocationLocalOffset Additional offset to be added while binding, relative to the beginning of the allocation. Normally it should be 0.
     /// @param pBufferCreateInfo
     /// @param pBuffer Buffer that was created.
-    public @EnumType(VkResult.class) int createAliasingBuffer2(
+    public @MagicConstant(valuesFromClass = VkResult.class) int createAliasingBuffer2(
         VmaAllocator allocator,
         VmaAllocation allocation,
         @NativeType("VkDeviceSize") @Unsigned long allocationLocalOffset,
@@ -1713,7 +1713,7 @@ public final class VMA {
 
     /// Function similar to vmaCreateBuffer().
     ///
-    public @EnumType(VkResult.class) int createImage(
+    public @MagicConstant(valuesFromClass = VkResult.class) int createImage(
         VmaAllocator allocator,
         @Pointer IVkImageCreateInfo pImageCreateInfo,
         @Pointer IVmaAllocationCreateInfo pAllocationCreateInfo,
@@ -1738,7 +1738,7 @@ public final class VMA {
 
     /// Function similar to vmaCreateAliasingBuffer() but for images.
     ///
-    public @EnumType(VkResult.class) int createAliasingImage(
+    public @MagicConstant(valuesFromClass = VkResult.class) int createAliasingImage(
         VmaAllocator allocator,
         VmaAllocation allocation,
         @Pointer IVkImageCreateInfo pImageCreateInfo,
@@ -1759,7 +1759,7 @@ public final class VMA {
 
     /// Function similar to vmaCreateAliasingBuffer2() but for images.
     ///
-    public @EnumType(VkResult.class) int createAliasingImage2(
+    public @MagicConstant(valuesFromClass = VkResult.class) int createAliasingImage2(
         VmaAllocator allocator,
         VmaAllocation allocation,
         @NativeType("VkDeviceSize") @Unsigned long allocationLocalOffset,
@@ -1812,7 +1812,7 @@ public final class VMA {
     ///
     /// @param pCreateInfo Parameters for creation.
     /// @param pVirtualBlock Returned virtual block object or `VMA_NULL` if creation failed.
-    public @EnumType(VkResult.class) int createVirtualBlock(
+    public @MagicConstant(valuesFromClass = VkResult.class) int createVirtualBlock(
         @Pointer IVmaVirtualBlockCreateInfo pCreateInfo,
         @Pointer VmaVirtualBlock.Ptr pVirtualBlock
     ) {
@@ -1893,7 +1893,7 @@ public final class VMA {
     /// @param pCreateInfo Parameters for the allocation
     /// @param pAllocation Returned handle of the new allocation
     /// @param pOffset Returned offset of the new allocation. Optional, can be null.
-    public @EnumType(VkResult.class) int virtualAllocate(
+    public @MagicConstant(valuesFromClass = VkResult.class) int virtualAllocate(
         VmaVirtualBlock virtualBlock,
         @Pointer IVmaVirtualAllocationCreateInfo pCreateInfo,
         @Pointer VmaVirtualAllocation.Ptr pAllocation,

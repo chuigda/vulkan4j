@@ -195,11 +195,11 @@ public record VkPhysicalDeviceHostImageCopyProperties(@NotNull MemorySegment seg
         sType(VkStructureType.PHYSICAL_DEVICE_HOST_IMAGE_COPY_PROPERTIES);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkPhysicalDeviceHostImageCopyProperties sType(@EnumType(VkStructureType.class) int value) {
+    public VkPhysicalDeviceHostImageCopyProperties sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }

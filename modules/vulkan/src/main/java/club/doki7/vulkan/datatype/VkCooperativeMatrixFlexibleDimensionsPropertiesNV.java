@@ -199,11 +199,11 @@ public record VkCooperativeMatrixFlexibleDimensionsPropertiesNV(@NotNull MemoryS
         sType(VkStructureType.COOPERATIVE_MATRIX_FLEXIBLE_DIMENSIONS_PROPERTIES_NV);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkCooperativeMatrixFlexibleDimensionsPropertiesNV sType(@EnumType(VkStructureType.class) int value) {
+    public VkCooperativeMatrixFlexibleDimensionsPropertiesNV sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }
@@ -248,38 +248,38 @@ public record VkCooperativeMatrixFlexibleDimensionsPropertiesNV(@NotNull MemoryS
         return this;
     }
 
-    public @EnumType(VkComponentTypeKHR.class) int AType() {
+    public @MagicConstant(valuesFromClass = VkComponentTypeKHR.class) int AType() {
         return segment.get(LAYOUT$AType, OFFSET$AType);
     }
 
-    public VkCooperativeMatrixFlexibleDimensionsPropertiesNV AType(@EnumType(VkComponentTypeKHR.class) int value) {
+    public VkCooperativeMatrixFlexibleDimensionsPropertiesNV AType(@MagicConstant(valuesFromClass = VkComponentTypeKHR.class) int value) {
         segment.set(LAYOUT$AType, OFFSET$AType, value);
         return this;
     }
 
-    public @EnumType(VkComponentTypeKHR.class) int BType() {
+    public @MagicConstant(valuesFromClass = VkComponentTypeKHR.class) int BType() {
         return segment.get(LAYOUT$BType, OFFSET$BType);
     }
 
-    public VkCooperativeMatrixFlexibleDimensionsPropertiesNV BType(@EnumType(VkComponentTypeKHR.class) int value) {
+    public VkCooperativeMatrixFlexibleDimensionsPropertiesNV BType(@MagicConstant(valuesFromClass = VkComponentTypeKHR.class) int value) {
         segment.set(LAYOUT$BType, OFFSET$BType, value);
         return this;
     }
 
-    public @EnumType(VkComponentTypeKHR.class) int CType() {
+    public @MagicConstant(valuesFromClass = VkComponentTypeKHR.class) int CType() {
         return segment.get(LAYOUT$CType, OFFSET$CType);
     }
 
-    public VkCooperativeMatrixFlexibleDimensionsPropertiesNV CType(@EnumType(VkComponentTypeKHR.class) int value) {
+    public VkCooperativeMatrixFlexibleDimensionsPropertiesNV CType(@MagicConstant(valuesFromClass = VkComponentTypeKHR.class) int value) {
         segment.set(LAYOUT$CType, OFFSET$CType, value);
         return this;
     }
 
-    public @EnumType(VkComponentTypeKHR.class) int ResultType() {
+    public @MagicConstant(valuesFromClass = VkComponentTypeKHR.class) int ResultType() {
         return segment.get(LAYOUT$ResultType, OFFSET$ResultType);
     }
 
-    public VkCooperativeMatrixFlexibleDimensionsPropertiesNV ResultType(@EnumType(VkComponentTypeKHR.class) int value) {
+    public VkCooperativeMatrixFlexibleDimensionsPropertiesNV ResultType(@MagicConstant(valuesFromClass = VkComponentTypeKHR.class) int value) {
         segment.set(LAYOUT$ResultType, OFFSET$ResultType, value);
         return this;
     }
@@ -293,11 +293,11 @@ public record VkCooperativeMatrixFlexibleDimensionsPropertiesNV(@NotNull MemoryS
         return this;
     }
 
-    public @EnumType(VkScopeKHR.class) int scope() {
+    public @MagicConstant(valuesFromClass = VkScopeKHR.class) int scope() {
         return segment.get(LAYOUT$scope, OFFSET$scope);
     }
 
-    public VkCooperativeMatrixFlexibleDimensionsPropertiesNV scope(@EnumType(VkScopeKHR.class) int value) {
+    public VkCooperativeMatrixFlexibleDimensionsPropertiesNV scope(@MagicConstant(valuesFromClass = VkScopeKHR.class) int value) {
         segment.set(LAYOUT$scope, OFFSET$scope, value);
         return this;
     }

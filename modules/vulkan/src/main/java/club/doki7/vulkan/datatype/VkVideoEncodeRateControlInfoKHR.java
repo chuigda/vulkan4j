@@ -195,11 +195,11 @@ public record VkVideoEncodeRateControlInfoKHR(@NotNull MemorySegment segment) im
         sType(VkStructureType.VIDEO_ENCODE_RATE_CONTROL_INFO_KHR);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkVideoEncodeRateControlInfoKHR sType(@EnumType(VkStructureType.class) int value) {
+    public VkVideoEncodeRateControlInfoKHR sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }
@@ -217,20 +217,20 @@ public record VkVideoEncodeRateControlInfoKHR(@NotNull MemorySegment segment) im
         return this;
     }
 
-    public @EnumType(VkVideoEncodeRateControlFlagsKHR.class) int flags() {
+    public @MagicConstant(valuesFromClass = VkVideoEncodeRateControlFlagsKHR.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public VkVideoEncodeRateControlInfoKHR flags(@EnumType(VkVideoEncodeRateControlFlagsKHR.class) int value) {
+    public VkVideoEncodeRateControlInfoKHR flags(@MagicConstant(valuesFromClass = VkVideoEncodeRateControlFlagsKHR.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
         return this;
     }
 
-    public @EnumType(VkVideoEncodeRateControlModeFlagsKHR.class) int rateControlMode() {
+    public @MagicConstant(valuesFromClass = VkVideoEncodeRateControlModeFlagsKHR.class) int rateControlMode() {
         return segment.get(LAYOUT$rateControlMode, OFFSET$rateControlMode);
     }
 
-    public VkVideoEncodeRateControlInfoKHR rateControlMode(@EnumType(VkVideoEncodeRateControlModeFlagsKHR.class) int value) {
+    public VkVideoEncodeRateControlInfoKHR rateControlMode(@MagicConstant(valuesFromClass = VkVideoEncodeRateControlModeFlagsKHR.class) int value) {
         segment.set(LAYOUT$rateControlMode, OFFSET$rateControlMode, value);
         return this;
     }

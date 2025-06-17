@@ -191,11 +191,11 @@ public record VkDedicatedAllocationMemoryAllocateInfoNV(@NotNull MemorySegment s
         sType(VkStructureType.DEDICATED_ALLOCATION_MEMORY_ALLOCATE_INFO_NV);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkDedicatedAllocationMemoryAllocateInfoNV sType(@EnumType(VkStructureType.class) int value) {
+    public VkDedicatedAllocationMemoryAllocateInfoNV sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }

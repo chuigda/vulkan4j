@@ -194,11 +194,11 @@ public record VkVideoBeginCodingInfoKHR(@NotNull MemorySegment segment) implemen
         sType(VkStructureType.VIDEO_BEGIN_CODING_INFO_KHR);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkVideoBeginCodingInfoKHR sType(@EnumType(VkStructureType.class) int value) {
+    public VkVideoBeginCodingInfoKHR sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }
@@ -216,11 +216,11 @@ public record VkVideoBeginCodingInfoKHR(@NotNull MemorySegment segment) implemen
         return this;
     }
 
-    public @EnumType(VkVideoBeginCodingFlagsKHR.class) int flags() {
+    public @MagicConstant(valuesFromClass = VkVideoBeginCodingFlagsKHR.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public VkVideoBeginCodingInfoKHR flags(@EnumType(VkVideoBeginCodingFlagsKHR.class) int value) {
+    public VkVideoBeginCodingInfoKHR flags(@MagicConstant(valuesFromClass = VkVideoBeginCodingFlagsKHR.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
         return this;
     }

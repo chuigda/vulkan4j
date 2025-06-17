@@ -192,11 +192,11 @@ public record VkImageViewHandleInfoNVX(@NotNull MemorySegment segment) implement
         sType(VkStructureType.IMAGE_VIEW_HANDLE_INFO_NVX);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkImageViewHandleInfoNVX sType(@EnumType(VkStructureType.class) int value) {
+    public VkImageViewHandleInfoNVX sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }
@@ -227,11 +227,11 @@ public record VkImageViewHandleInfoNVX(@NotNull MemorySegment segment) implement
         return this;
     }
 
-    public @EnumType(VkDescriptorType.class) int descriptorType() {
+    public @MagicConstant(valuesFromClass = VkDescriptorType.class) int descriptorType() {
         return segment.get(LAYOUT$descriptorType, OFFSET$descriptorType);
     }
 
-    public VkImageViewHandleInfoNVX descriptorType(@EnumType(VkDescriptorType.class) int value) {
+    public VkImageViewHandleInfoNVX descriptorType(@MagicConstant(valuesFromClass = VkDescriptorType.class) int value) {
         segment.set(LAYOUT$descriptorType, OFFSET$descriptorType, value);
         return this;
     }

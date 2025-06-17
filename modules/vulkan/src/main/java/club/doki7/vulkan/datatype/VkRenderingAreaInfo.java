@@ -194,11 +194,11 @@ public record VkRenderingAreaInfo(@NotNull MemorySegment segment) implements IVk
         sType(VkStructureType.RENDERING_AREA_INFO);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkRenderingAreaInfo sType(@EnumType(VkStructureType.class) int value) {
+    public VkRenderingAreaInfo sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }
@@ -261,20 +261,20 @@ public record VkRenderingAreaInfo(@NotNull MemorySegment segment) implements IVk
         segment.set(LAYOUT$pColorAttachmentFormats, OFFSET$pColorAttachmentFormats, value);
     }
 
-    public @EnumType(VkFormat.class) int depthAttachmentFormat() {
+    public @MagicConstant(valuesFromClass = VkFormat.class) int depthAttachmentFormat() {
         return segment.get(LAYOUT$depthAttachmentFormat, OFFSET$depthAttachmentFormat);
     }
 
-    public VkRenderingAreaInfo depthAttachmentFormat(@EnumType(VkFormat.class) int value) {
+    public VkRenderingAreaInfo depthAttachmentFormat(@MagicConstant(valuesFromClass = VkFormat.class) int value) {
         segment.set(LAYOUT$depthAttachmentFormat, OFFSET$depthAttachmentFormat, value);
         return this;
     }
 
-    public @EnumType(VkFormat.class) int stencilAttachmentFormat() {
+    public @MagicConstant(valuesFromClass = VkFormat.class) int stencilAttachmentFormat() {
         return segment.get(LAYOUT$stencilAttachmentFormat, OFFSET$stencilAttachmentFormat);
     }
 
-    public VkRenderingAreaInfo stencilAttachmentFormat(@EnumType(VkFormat.class) int value) {
+    public VkRenderingAreaInfo stencilAttachmentFormat(@MagicConstant(valuesFromClass = VkFormat.class) int value) {
         segment.set(LAYOUT$stencilAttachmentFormat, OFFSET$stencilAttachmentFormat, value);
         return this;
     }

@@ -190,11 +190,11 @@ public record VkVertexInputAttributeDescription(@NotNull MemorySegment segment) 
         return this;
     }
 
-    public @EnumType(VkFormat.class) int format() {
+    public @MagicConstant(valuesFromClass = VkFormat.class) int format() {
         return segment.get(LAYOUT$format, OFFSET$format);
     }
 
-    public VkVertexInputAttributeDescription format(@EnumType(VkFormat.class) int value) {
+    public VkVertexInputAttributeDescription format(@MagicConstant(valuesFromClass = VkFormat.class) int value) {
         segment.set(LAYOUT$format, OFFSET$format, value);
         return this;
     }

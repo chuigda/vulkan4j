@@ -191,11 +191,11 @@ public record VkVideoEncodeH265SessionCreateInfoKHR(@NotNull MemorySegment segme
         sType(VkStructureType.VIDEO_ENCODE_H265_SESSION_CREATE_INFO_KHR);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkVideoEncodeH265SessionCreateInfoKHR sType(@EnumType(VkStructureType.class) int value) {
+    public VkVideoEncodeH265SessionCreateInfoKHR sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }
@@ -222,11 +222,11 @@ public record VkVideoEncodeH265SessionCreateInfoKHR(@NotNull MemorySegment segme
         return this;
     }
 
-    public @EnumType(StdVideoH265LevelIdc.class) int maxLevelIdc() {
+    public @MagicConstant(valuesFromClass = StdVideoH265LevelIdc.class) int maxLevelIdc() {
         return segment.get(LAYOUT$maxLevelIdc, OFFSET$maxLevelIdc);
     }
 
-    public VkVideoEncodeH265SessionCreateInfoKHR maxLevelIdc(@EnumType(StdVideoH265LevelIdc.class) int value) {
+    public VkVideoEncodeH265SessionCreateInfoKHR maxLevelIdc(@MagicConstant(valuesFromClass = StdVideoH265LevelIdc.class) int value) {
         segment.set(LAYOUT$maxLevelIdc, OFFSET$maxLevelIdc, value);
         return this;
     }

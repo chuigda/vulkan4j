@@ -198,11 +198,11 @@ public record VkAccelerationStructureGeometrySpheresDataNV(@NotNull MemorySegmen
         sType(VkStructureType.ACCELERATION_STRUCTURE_GEOMETRY_SPHERES_DATA_NV);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkAccelerationStructureGeometrySpheresDataNV sType(@EnumType(VkStructureType.class) int value) {
+    public VkAccelerationStructureGeometrySpheresDataNV sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }
@@ -220,11 +220,11 @@ public record VkAccelerationStructureGeometrySpheresDataNV(@NotNull MemorySegmen
         return this;
     }
 
-    public @EnumType(VkFormat.class) int vertexFormat() {
+    public @MagicConstant(valuesFromClass = VkFormat.class) int vertexFormat() {
         return segment.get(LAYOUT$vertexFormat, OFFSET$vertexFormat);
     }
 
-    public VkAccelerationStructureGeometrySpheresDataNV vertexFormat(@EnumType(VkFormat.class) int value) {
+    public VkAccelerationStructureGeometrySpheresDataNV vertexFormat(@MagicConstant(valuesFromClass = VkFormat.class) int value) {
         segment.set(LAYOUT$vertexFormat, OFFSET$vertexFormat, value);
         return this;
     }
@@ -252,11 +252,11 @@ public record VkAccelerationStructureGeometrySpheresDataNV(@NotNull MemorySegmen
         return this;
     }
 
-    public @EnumType(VkFormat.class) int radiusFormat() {
+    public @MagicConstant(valuesFromClass = VkFormat.class) int radiusFormat() {
         return segment.get(LAYOUT$radiusFormat, OFFSET$radiusFormat);
     }
 
-    public VkAccelerationStructureGeometrySpheresDataNV radiusFormat(@EnumType(VkFormat.class) int value) {
+    public VkAccelerationStructureGeometrySpheresDataNV radiusFormat(@MagicConstant(valuesFromClass = VkFormat.class) int value) {
         segment.set(LAYOUT$radiusFormat, OFFSET$radiusFormat, value);
         return this;
     }
@@ -284,11 +284,11 @@ public record VkAccelerationStructureGeometrySpheresDataNV(@NotNull MemorySegmen
         return this;
     }
 
-    public @EnumType(VkIndexType.class) int indexType() {
+    public @MagicConstant(valuesFromClass = VkIndexType.class) int indexType() {
         return segment.get(LAYOUT$indexType, OFFSET$indexType);
     }
 
-    public VkAccelerationStructureGeometrySpheresDataNV indexType(@EnumType(VkIndexType.class) int value) {
+    public VkAccelerationStructureGeometrySpheresDataNV indexType(@MagicConstant(valuesFromClass = VkIndexType.class) int value) {
         segment.set(LAYOUT$indexType, OFFSET$indexType, value);
         return this;
     }

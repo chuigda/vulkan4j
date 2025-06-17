@@ -191,11 +191,11 @@ public record VkPipelineColorWriteCreateInfoEXT(@NotNull MemorySegment segment) 
         sType(VkStructureType.PIPELINE_COLOR_WRITE_CREATE_INFO_EXT);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkPipelineColorWriteCreateInfoEXT sType(@EnumType(VkStructureType.class) int value) {
+    public VkPipelineColorWriteCreateInfoEXT sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }

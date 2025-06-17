@@ -190,11 +190,11 @@ public record VkPhysicalDeviceAntiLagFeaturesAMD(@NotNull MemorySegment segment)
         sType(VkStructureType.PHYSICAL_DEVICE_ANTI_LAG_FEATURES_AMD);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkPhysicalDeviceAntiLagFeaturesAMD sType(@EnumType(VkStructureType.class) int value) {
+    public VkPhysicalDeviceAntiLagFeaturesAMD sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }

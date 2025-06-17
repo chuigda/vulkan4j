@@ -194,11 +194,11 @@ public record VkImageResolve2(@NotNull MemorySegment segment) implements IVkImag
         sType(VkStructureType.IMAGE_RESOLVE_2);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkImageResolve2 sType(@EnumType(VkStructureType.class) int value) {
+    public VkImageResolve2 sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }

@@ -1,6 +1,7 @@
 package club.doki7.vulkan.bitmask;
 
 import club.doki7.ffm.annotation.*;
+import org.intellij.lang.annotations.MagicConstant;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -9,7 +10,7 @@ import java.util.List;
 public final class VkPipelineLayoutCreateFlags {
     public static final int INDEPENDENT_SETS_EXT = 0x2;
 
-    public static String explain(@EnumType(VkPipelineLayoutCreateFlags.class) int flags) {
+    public static String explain(@MagicConstant(flagsFromClass = VkPipelineLayoutCreateFlags.class) int flags) {
         List<String> detectedFlagBits = new ArrayList<>();
         if ((flags & INDEPENDENT_SETS_EXT) != 0) {
             detectedFlagBits.add("VK_PIPELINE_LAYOUT_CREATE_INDEPENDENT_SETS_BIT_EXT");

@@ -194,11 +194,11 @@ public record StdVideoAV1SequenceHeader(@NotNull MemorySegment segment) implemen
         return this;
     }
 
-    public @EnumType(StdVideoAV1Profile.class) int seq_profile() {
+    public @MagicConstant(valuesFromClass = StdVideoAV1Profile.class) int seq_profile() {
         return segment.get(LAYOUT$seq_profile, OFFSET$seq_profile);
     }
 
-    public StdVideoAV1SequenceHeader seq_profile(@EnumType(StdVideoAV1Profile.class) int value) {
+    public StdVideoAV1SequenceHeader seq_profile(@MagicConstant(valuesFromClass = StdVideoAV1Profile.class) int value) {
         segment.set(LAYOUT$seq_profile, OFFSET$seq_profile, value);
         return this;
     }

@@ -1,6 +1,7 @@
 package club.doki7.vulkan.bitmask;
 
 import club.doki7.ffm.annotation.*;
+import org.intellij.lang.annotations.MagicConstant;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,7 +11,7 @@ public final class VkVideoDecodeCapabilityFlagsKHR {
     public static final int DPB_AND_OUTPUT_COINCIDE = 0x1;
     public static final int DPB_AND_OUTPUT_DISTINCT = 0x2;
 
-    public static String explain(@EnumType(VkVideoDecodeCapabilityFlagsKHR.class) int flags) {
+    public static String explain(@MagicConstant(flagsFromClass = VkVideoDecodeCapabilityFlagsKHR.class) int flags) {
         List<String> detectedFlagBits = new ArrayList<>();
         if ((flags & DPB_AND_OUTPUT_COINCIDE) != 0) {
             detectedFlagBits.add("VK_VIDEO_DECODE_CAPABILITY_DPB_AND_OUTPUT_COINCIDE_BIT_KHR");

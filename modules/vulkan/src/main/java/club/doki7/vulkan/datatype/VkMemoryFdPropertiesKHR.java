@@ -190,11 +190,11 @@ public record VkMemoryFdPropertiesKHR(@NotNull MemorySegment segment) implements
         sType(VkStructureType.MEMORY_FD_PROPERTIES_KHR);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkMemoryFdPropertiesKHR sType(@EnumType(VkStructureType.class) int value) {
+    public VkMemoryFdPropertiesKHR sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }

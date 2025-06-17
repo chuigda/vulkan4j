@@ -1,6 +1,7 @@
 package club.doki7.vma.bitmask;
 
 import club.doki7.ffm.annotation.*;
+import org.intellij.lang.annotations.MagicConstant;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,7 +23,7 @@ public final class VmaDefragmentationFlags {
     /// A bit mask to extract only `ALGORITHM` bits from entire set of flags.
     public static final int FLAG_ALGORITHM_MASK = FLAG_ALGORITHM_FAST | FLAG_ALGORITHM_BALANCED | FLAG_ALGORITHM_FULL | FLAG_ALGORITHM_EXTENSIVE;
 
-    public static String explain(@EnumType(VmaDefragmentationFlags.class) int flags) {
+    public static String explain(@MagicConstant(flagsFromClass = VmaDefragmentationFlags.class) int flags) {
         List<String> detectedFlagBits = new ArrayList<>();
         if ((flags & FLAG_ALGORITHM_BALANCED) != 0) {
             detectedFlagBits.add("VMA_DEFRAGMENTATION_FLAG_ALGORITHM_BALANCED_BIT");

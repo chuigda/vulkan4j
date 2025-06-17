@@ -169,11 +169,11 @@ public record StdVideoEncodeH264RefListModEntry(@NotNull MemorySegment segment) 
         return ret;
     }
 
-    public @EnumType(StdVideoH264ModificationOfPicNumsIdc.class) int modification_of_pic_nums_idc() {
+    public @MagicConstant(valuesFromClass = StdVideoH264ModificationOfPicNumsIdc.class) int modification_of_pic_nums_idc() {
         return segment.get(LAYOUT$modification_of_pic_nums_idc, OFFSET$modification_of_pic_nums_idc);
     }
 
-    public StdVideoEncodeH264RefListModEntry modification_of_pic_nums_idc(@EnumType(StdVideoH264ModificationOfPicNumsIdc.class) int value) {
+    public StdVideoEncodeH264RefListModEntry modification_of_pic_nums_idc(@MagicConstant(valuesFromClass = StdVideoH264ModificationOfPicNumsIdc.class) int value) {
         segment.set(LAYOUT$modification_of_pic_nums_idc, OFFSET$modification_of_pic_nums_idc, value);
         return this;
     }

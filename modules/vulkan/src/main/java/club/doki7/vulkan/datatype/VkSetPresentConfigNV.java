@@ -191,11 +191,11 @@ public record VkSetPresentConfigNV(@NotNull MemorySegment segment) implements IV
         sType(VkStructureType.SET_PRESENT_CONFIG_NV);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkSetPresentConfigNV sType(@EnumType(VkStructureType.class) int value) {
+    public VkSetPresentConfigNV sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }

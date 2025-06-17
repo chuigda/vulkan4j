@@ -196,11 +196,11 @@ public record VkDeviceMemoryReportCallbackDataEXT(@NotNull MemorySegment segment
         sType(VkStructureType.DEVICE_MEMORY_REPORT_CALLBACK_DATA_EXT);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkDeviceMemoryReportCallbackDataEXT sType(@EnumType(VkStructureType.class) int value) {
+    public VkDeviceMemoryReportCallbackDataEXT sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }
@@ -218,20 +218,20 @@ public record VkDeviceMemoryReportCallbackDataEXT(@NotNull MemorySegment segment
         return this;
     }
 
-    public @EnumType(VkDeviceMemoryReportFlagsEXT.class) int flags() {
+    public @MagicConstant(valuesFromClass = VkDeviceMemoryReportFlagsEXT.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public VkDeviceMemoryReportCallbackDataEXT flags(@EnumType(VkDeviceMemoryReportFlagsEXT.class) int value) {
+    public VkDeviceMemoryReportCallbackDataEXT flags(@MagicConstant(valuesFromClass = VkDeviceMemoryReportFlagsEXT.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
         return this;
     }
 
-    public @EnumType(VkDeviceMemoryReportEventTypeEXT.class) int type() {
+    public @MagicConstant(valuesFromClass = VkDeviceMemoryReportEventTypeEXT.class) int type() {
         return segment.get(LAYOUT$type, OFFSET$type);
     }
 
-    public VkDeviceMemoryReportCallbackDataEXT type(@EnumType(VkDeviceMemoryReportEventTypeEXT.class) int value) {
+    public VkDeviceMemoryReportCallbackDataEXT type(@MagicConstant(valuesFromClass = VkDeviceMemoryReportEventTypeEXT.class) int value) {
         segment.set(LAYOUT$type, OFFSET$type, value);
         return this;
     }
@@ -254,11 +254,11 @@ public record VkDeviceMemoryReportCallbackDataEXT(@NotNull MemorySegment segment
         return this;
     }
 
-    public @EnumType(VkObjectType.class) int objectType() {
+    public @MagicConstant(valuesFromClass = VkObjectType.class) int objectType() {
         return segment.get(LAYOUT$objectType, OFFSET$objectType);
     }
 
-    public VkDeviceMemoryReportCallbackDataEXT objectType(@EnumType(VkObjectType.class) int value) {
+    public VkDeviceMemoryReportCallbackDataEXT objectType(@MagicConstant(valuesFromClass = VkObjectType.class) int value) {
         segment.set(LAYOUT$objectType, OFFSET$objectType, value);
         return this;
     }

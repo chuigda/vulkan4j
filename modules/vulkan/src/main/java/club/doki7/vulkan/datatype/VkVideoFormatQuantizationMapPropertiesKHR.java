@@ -190,11 +190,11 @@ public record VkVideoFormatQuantizationMapPropertiesKHR(@NotNull MemorySegment s
         sType(VkStructureType.VIDEO_FORMAT_QUANTIZATION_MAP_PROPERTIES_KHR);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkVideoFormatQuantizationMapPropertiesKHR sType(@EnumType(VkStructureType.class) int value) {
+    public VkVideoFormatQuantizationMapPropertiesKHR sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }

@@ -1,6 +1,7 @@
 package club.doki7.vulkan.enumtype;
 
 import club.doki7.ffm.annotation.*;
+import org.intellij.lang.annotations.MagicConstant;
 
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkQueueGlobalPriority.html"><code>VkQueueGlobalPriority</code></a>
 public final class VkQueueGlobalPriority {
@@ -9,7 +10,7 @@ public final class VkQueueGlobalPriority {
     public static final int HIGH = 0x200;
     public static final int REALTIME = 0x400;
 
-    public static String explain(@EnumType(VkQueueGlobalPriority.class) int value) {
+    public static String explain(@MagicConstant(valuesFromClass = VkQueueGlobalPriority.class) int value) {
         return switch (value) {
             case VkQueueGlobalPriority.HIGH -> "VK_QUEUE_GLOBAL_PRIORITY_HIGH";
             case VkQueueGlobalPriority.LOW -> "VK_QUEUE_GLOBAL_PRIORITY_LOW";

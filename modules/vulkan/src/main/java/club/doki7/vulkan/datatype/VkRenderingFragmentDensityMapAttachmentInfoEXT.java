@@ -191,11 +191,11 @@ public record VkRenderingFragmentDensityMapAttachmentInfoEXT(@NotNull MemorySegm
         sType(VkStructureType.RENDERING_FRAGMENT_DENSITY_MAP_ATTACHMENT_INFO_EXT);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkRenderingFragmentDensityMapAttachmentInfoEXT sType(@EnumType(VkStructureType.class) int value) {
+    public VkRenderingFragmentDensityMapAttachmentInfoEXT sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }
@@ -226,11 +226,11 @@ public record VkRenderingFragmentDensityMapAttachmentInfoEXT(@NotNull MemorySegm
         return this;
     }
 
-    public @EnumType(VkImageLayout.class) int imageLayout() {
+    public @MagicConstant(valuesFromClass = VkImageLayout.class) int imageLayout() {
         return segment.get(LAYOUT$imageLayout, OFFSET$imageLayout);
     }
 
-    public VkRenderingFragmentDensityMapAttachmentInfoEXT imageLayout(@EnumType(VkImageLayout.class) int value) {
+    public VkRenderingFragmentDensityMapAttachmentInfoEXT imageLayout(@MagicConstant(valuesFromClass = VkImageLayout.class) int value) {
         segment.set(LAYOUT$imageLayout, OFFSET$imageLayout, value);
         return this;
     }

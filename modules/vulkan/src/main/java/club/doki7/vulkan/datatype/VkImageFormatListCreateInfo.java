@@ -191,11 +191,11 @@ public record VkImageFormatListCreateInfo(@NotNull MemorySegment segment) implem
         sType(VkStructureType.IMAGE_FORMAT_LIST_CREATE_INFO);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkImageFormatListCreateInfo sType(@EnumType(VkStructureType.class) int value) {
+    public VkImageFormatListCreateInfo sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }

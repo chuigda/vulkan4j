@@ -199,11 +199,11 @@ public record VkPipelineDepthStencilStateCreateInfo(@NotNull MemorySegment segme
         sType(VkStructureType.PIPELINE_DEPTH_STENCIL_STATE_CREATE_INFO);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkPipelineDepthStencilStateCreateInfo sType(@EnumType(VkStructureType.class) int value) {
+    public VkPipelineDepthStencilStateCreateInfo sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }
@@ -221,11 +221,11 @@ public record VkPipelineDepthStencilStateCreateInfo(@NotNull MemorySegment segme
         return this;
     }
 
-    public @EnumType(VkPipelineDepthStencilStateCreateFlags.class) int flags() {
+    public @MagicConstant(valuesFromClass = VkPipelineDepthStencilStateCreateFlags.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public VkPipelineDepthStencilStateCreateInfo flags(@EnumType(VkPipelineDepthStencilStateCreateFlags.class) int value) {
+    public VkPipelineDepthStencilStateCreateInfo flags(@MagicConstant(valuesFromClass = VkPipelineDepthStencilStateCreateFlags.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
         return this;
     }
@@ -248,11 +248,11 @@ public record VkPipelineDepthStencilStateCreateInfo(@NotNull MemorySegment segme
         return this;
     }
 
-    public @EnumType(VkCompareOp.class) int depthCompareOp() {
+    public @MagicConstant(valuesFromClass = VkCompareOp.class) int depthCompareOp() {
         return segment.get(LAYOUT$depthCompareOp, OFFSET$depthCompareOp);
     }
 
-    public VkPipelineDepthStencilStateCreateInfo depthCompareOp(@EnumType(VkCompareOp.class) int value) {
+    public VkPipelineDepthStencilStateCreateInfo depthCompareOp(@MagicConstant(valuesFromClass = VkCompareOp.class) int value) {
         segment.set(LAYOUT$depthCompareOp, OFFSET$depthCompareOp, value);
         return this;
     }

@@ -193,11 +193,11 @@ public record VkPhysicalDevicePCIBusInfoPropertiesEXT(@NotNull MemorySegment seg
         sType(VkStructureType.PHYSICAL_DEVICE_PCI_BUS_INFO_PROPERTIES_EXT);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkPhysicalDevicePCIBusInfoPropertiesEXT sType(@EnumType(VkStructureType.class) int value) {
+    public VkPhysicalDevicePCIBusInfoPropertiesEXT sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }

@@ -196,11 +196,11 @@ public record VkDependencyInfo(@NotNull MemorySegment segment) implements IVkDep
         sType(VkStructureType.DEPENDENCY_INFO);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkDependencyInfo sType(@EnumType(VkStructureType.class) int value) {
+    public VkDependencyInfo sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }
@@ -218,11 +218,11 @@ public record VkDependencyInfo(@NotNull MemorySegment segment) implements IVkDep
         return this;
     }
 
-    public @EnumType(VkDependencyFlags.class) int dependencyFlags() {
+    public @MagicConstant(valuesFromClass = VkDependencyFlags.class) int dependencyFlags() {
         return segment.get(LAYOUT$dependencyFlags, OFFSET$dependencyFlags);
     }
 
-    public VkDependencyInfo dependencyFlags(@EnumType(VkDependencyFlags.class) int value) {
+    public VkDependencyInfo dependencyFlags(@MagicConstant(valuesFromClass = VkDependencyFlags.class) int value) {
         segment.set(LAYOUT$dependencyFlags, OFFSET$dependencyFlags, value);
         return this;
     }

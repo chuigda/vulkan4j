@@ -191,11 +191,11 @@ public record VkPhysicalDeviceMemoryDecompressionPropertiesNV(@NotNull MemorySeg
         sType(VkStructureType.PHYSICAL_DEVICE_MEMORY_DECOMPRESSION_PROPERTIES_NV);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkPhysicalDeviceMemoryDecompressionPropertiesNV sType(@EnumType(VkStructureType.class) int value) {
+    public VkPhysicalDeviceMemoryDecompressionPropertiesNV sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }
@@ -213,11 +213,11 @@ public record VkPhysicalDeviceMemoryDecompressionPropertiesNV(@NotNull MemorySeg
         return this;
     }
 
-    public @EnumType(VkMemoryDecompressionMethodFlagsNV.class) long decompressionMethods() {
+    public @MagicConstant(valuesFromClass = VkMemoryDecompressionMethodFlagsNV.class) long decompressionMethods() {
         return segment.get(LAYOUT$decompressionMethods, OFFSET$decompressionMethods);
     }
 
-    public VkPhysicalDeviceMemoryDecompressionPropertiesNV decompressionMethods(@EnumType(VkMemoryDecompressionMethodFlagsNV.class) long value) {
+    public VkPhysicalDeviceMemoryDecompressionPropertiesNV decompressionMethods(@MagicConstant(valuesFromClass = VkMemoryDecompressionMethodFlagsNV.class) long value) {
         segment.set(LAYOUT$decompressionMethods, OFFSET$decompressionMethods, value);
         return this;
     }

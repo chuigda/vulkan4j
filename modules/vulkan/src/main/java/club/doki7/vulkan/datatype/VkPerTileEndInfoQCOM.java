@@ -189,11 +189,11 @@ public record VkPerTileEndInfoQCOM(@NotNull MemorySegment segment) implements IV
         sType(VkStructureType.PER_TILE_END_INFO_QCOM);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkPerTileEndInfoQCOM sType(@EnumType(VkStructureType.class) int value) {
+    public VkPerTileEndInfoQCOM sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }

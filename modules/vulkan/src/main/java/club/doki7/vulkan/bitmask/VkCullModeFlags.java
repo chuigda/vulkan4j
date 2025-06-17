@@ -1,6 +1,7 @@
 package club.doki7.vulkan.bitmask;
 
 import club.doki7.ffm.annotation.*;
+import org.intellij.lang.annotations.MagicConstant;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,7 +13,7 @@ public final class VkCullModeFlags {
     public static final int FRONT = 0x1;
     public static final int NONE = 0x0;
 
-    public static String explain(@EnumType(VkCullModeFlags.class) int flags) {
+    public static String explain(@MagicConstant(flagsFromClass = VkCullModeFlags.class) int flags) {
         List<String> detectedFlagBits = new ArrayList<>();
         if ((flags & BACK) != 0) {
             detectedFlagBits.add("VK_CULL_MODE_BACK_BIT");

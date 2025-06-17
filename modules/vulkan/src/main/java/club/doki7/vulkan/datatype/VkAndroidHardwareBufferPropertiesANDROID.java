@@ -191,11 +191,11 @@ public record VkAndroidHardwareBufferPropertiesANDROID(@NotNull MemorySegment se
         sType(VkStructureType.ANDROID_HARDWARE_BUFFER_PROPERTIES_ANDROID);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkAndroidHardwareBufferPropertiesANDROID sType(@EnumType(VkStructureType.class) int value) {
+    public VkAndroidHardwareBufferPropertiesANDROID sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }

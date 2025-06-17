@@ -1,6 +1,7 @@
 package club.doki7.vulkan.bitmask;
 
 import club.doki7.ffm.annotation.*;
+import org.intellij.lang.annotations.MagicConstant;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,7 +12,7 @@ public final class VkCommandBufferUsageFlags {
     public static final int RENDER_PASS_CONTINUE = 0x2;
     public static final int SIMULTANEOUS_USE = 0x4;
 
-    public static String explain(@EnumType(VkCommandBufferUsageFlags.class) int flags) {
+    public static String explain(@MagicConstant(flagsFromClass = VkCommandBufferUsageFlags.class) int flags) {
         List<String> detectedFlagBits = new ArrayList<>();
         if ((flags & ONE_TIME_SUBMIT) != 0) {
             detectedFlagBits.add("VK_COMMAND_BUFFER_USAGE_ONE_TIME_SUBMIT_BIT");

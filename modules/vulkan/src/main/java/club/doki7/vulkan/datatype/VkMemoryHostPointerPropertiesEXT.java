@@ -190,11 +190,11 @@ public record VkMemoryHostPointerPropertiesEXT(@NotNull MemorySegment segment) i
         sType(VkStructureType.MEMORY_HOST_POINTER_PROPERTIES_EXT);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkMemoryHostPointerPropertiesEXT sType(@EnumType(VkStructureType.class) int value) {
+    public VkMemoryHostPointerPropertiesEXT sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }

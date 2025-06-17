@@ -1,6 +1,7 @@
 package club.doki7.vulkan.enumtype;
 
 import club.doki7.ffm.annotation.*;
+import org.intellij.lang.annotations.MagicConstant;
 
 public final class StdVideoAV1ChromaSamplePosition {
     public static final int STD_VIDEO_AV1_CHROMA_SAMPLE_POSITION_UNKNOWN = 0x0;
@@ -9,7 +10,7 @@ public final class StdVideoAV1ChromaSamplePosition {
     public static final int STD_VIDEO_AV1_CHROMA_SAMPLE_POSITION_RESERVED = 0x3;
     public static final int STD_VIDEO_AV1_CHROMA_SAMPLE_POSITION_INVALID = 0x7fffffff;
 
-    public static String explain(@EnumType(StdVideoAV1ChromaSamplePosition.class) int value) {
+    public static String explain(@MagicConstant(valuesFromClass = StdVideoAV1ChromaSamplePosition.class) int value) {
         return switch (value) {
             case StdVideoAV1ChromaSamplePosition.STD_VIDEO_AV1_CHROMA_SAMPLE_POSITION_COLOCATED -> "STD_VIDEO_AV1_CHROMA_SAMPLE_POSITION_COLOCATED";
             case StdVideoAV1ChromaSamplePosition.STD_VIDEO_AV1_CHROMA_SAMPLE_POSITION_INVALID -> "STD_VIDEO_AV1_CHROMA_SAMPLE_POSITION_INVALID";

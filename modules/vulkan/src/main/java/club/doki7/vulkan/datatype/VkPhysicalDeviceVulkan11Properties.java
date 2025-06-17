@@ -204,11 +204,11 @@ public record VkPhysicalDeviceVulkan11Properties(@NotNull MemorySegment segment)
         sType(VkStructureType.PHYSICAL_DEVICE_VULKAN_1_1_PROPERTIES);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkPhysicalDeviceVulkan11Properties sType(@EnumType(VkStructureType.class) int value) {
+    public VkPhysicalDeviceVulkan11Properties sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }
@@ -292,20 +292,20 @@ public record VkPhysicalDeviceVulkan11Properties(@NotNull MemorySegment segment)
         return this;
     }
 
-    public @EnumType(VkShaderStageFlags.class) int subgroupSupportedStages() {
+    public @MagicConstant(valuesFromClass = VkShaderStageFlags.class) int subgroupSupportedStages() {
         return segment.get(LAYOUT$subgroupSupportedStages, OFFSET$subgroupSupportedStages);
     }
 
-    public VkPhysicalDeviceVulkan11Properties subgroupSupportedStages(@EnumType(VkShaderStageFlags.class) int value) {
+    public VkPhysicalDeviceVulkan11Properties subgroupSupportedStages(@MagicConstant(valuesFromClass = VkShaderStageFlags.class) int value) {
         segment.set(LAYOUT$subgroupSupportedStages, OFFSET$subgroupSupportedStages, value);
         return this;
     }
 
-    public @EnumType(VkSubgroupFeatureFlags.class) int subgroupSupportedOperations() {
+    public @MagicConstant(valuesFromClass = VkSubgroupFeatureFlags.class) int subgroupSupportedOperations() {
         return segment.get(LAYOUT$subgroupSupportedOperations, OFFSET$subgroupSupportedOperations);
     }
 
-    public VkPhysicalDeviceVulkan11Properties subgroupSupportedOperations(@EnumType(VkSubgroupFeatureFlags.class) int value) {
+    public VkPhysicalDeviceVulkan11Properties subgroupSupportedOperations(@MagicConstant(valuesFromClass = VkSubgroupFeatureFlags.class) int value) {
         segment.set(LAYOUT$subgroupSupportedOperations, OFFSET$subgroupSupportedOperations, value);
         return this;
     }
@@ -319,11 +319,11 @@ public record VkPhysicalDeviceVulkan11Properties(@NotNull MemorySegment segment)
         return this;
     }
 
-    public @EnumType(VkPointClippingBehavior.class) int pointClippingBehavior() {
+    public @MagicConstant(valuesFromClass = VkPointClippingBehavior.class) int pointClippingBehavior() {
         return segment.get(LAYOUT$pointClippingBehavior, OFFSET$pointClippingBehavior);
     }
 
-    public VkPhysicalDeviceVulkan11Properties pointClippingBehavior(@EnumType(VkPointClippingBehavior.class) int value) {
+    public VkPhysicalDeviceVulkan11Properties pointClippingBehavior(@MagicConstant(valuesFromClass = VkPointClippingBehavior.class) int value) {
         segment.set(LAYOUT$pointClippingBehavior, OFFSET$pointClippingBehavior, value);
         return this;
     }

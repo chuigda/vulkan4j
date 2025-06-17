@@ -191,11 +191,11 @@ public record VkExportMemoryWin32HandleInfoNV(@NotNull MemorySegment segment) im
         sType(VkStructureType.EXPORT_MEMORY_WIN32_HANDLE_INFO_NV);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkExportMemoryWin32HandleInfoNV sType(@EnumType(VkStructureType.class) int value) {
+    public VkExportMemoryWin32HandleInfoNV sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }

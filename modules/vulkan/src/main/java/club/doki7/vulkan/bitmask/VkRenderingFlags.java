@@ -1,6 +1,7 @@
 package club.doki7.vulkan.bitmask;
 
 import club.doki7.ffm.annotation.*;
+import org.intellij.lang.annotations.MagicConstant;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,7 +14,7 @@ public final class VkRenderingFlags {
     public static final int RESUMING = 0x4;
     public static final int SUSPENDING = 0x2;
 
-    public static String explain(@EnumType(VkRenderingFlags.class) int flags) {
+    public static String explain(@MagicConstant(flagsFromClass = VkRenderingFlags.class) int flags) {
         List<String> detectedFlagBits = new ArrayList<>();
         if ((flags & CONTENTS_INLINE_KHR) != 0) {
             detectedFlagBits.add("VK_RENDERING_CONTENTS_INLINE_BIT_KHR");

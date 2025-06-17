@@ -1,6 +1,7 @@
 package club.doki7.vulkan.bitmask;
 
 import club.doki7.ffm.annotation.*;
+import org.intellij.lang.annotations.MagicConstant;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -28,7 +29,7 @@ public final class VkImageCreateFlags {
     public static final int SUBSAMPLED_EXT = 0x4000;
     public static final int VIDEO_PROFILE_INDEPENDENT_KHR = 0x100000;
 
-    public static String explain(@EnumType(VkImageCreateFlags.class) int flags) {
+    public static String explain(@MagicConstant(flagsFromClass = VkImageCreateFlags.class) int flags) {
         List<String> detectedFlagBits = new ArrayList<>();
         if ((flags & _2D_ARRAY_COMPATIBLE) != 0) {
             detectedFlagBits.add("VK_IMAGE_CREATE_2D_ARRAY_COMPATIBLE_BIT");

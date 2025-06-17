@@ -1,6 +1,7 @@
 package club.doki7.vulkan.bitmask;
 
 import club.doki7.ffm.annotation.*;
+import org.intellij.lang.annotations.MagicConstant;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -9,7 +10,7 @@ import java.util.List;
 public final class VkAttachmentDescriptionFlags {
     public static final int MAY_ALIAS = 0x1;
 
-    public static String explain(@EnumType(VkAttachmentDescriptionFlags.class) int flags) {
+    public static String explain(@MagicConstant(flagsFromClass = VkAttachmentDescriptionFlags.class) int flags) {
         List<String> detectedFlagBits = new ArrayList<>();
         if ((flags & MAY_ALIAS) != 0) {
             detectedFlagBits.add("VK_ATTACHMENT_DESCRIPTION_MAY_ALIAS_BIT");

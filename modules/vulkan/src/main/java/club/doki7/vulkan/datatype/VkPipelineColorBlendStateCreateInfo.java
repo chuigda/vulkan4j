@@ -195,11 +195,11 @@ public record VkPipelineColorBlendStateCreateInfo(@NotNull MemorySegment segment
         sType(VkStructureType.PIPELINE_COLOR_BLEND_STATE_CREATE_INFO);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkPipelineColorBlendStateCreateInfo sType(@EnumType(VkStructureType.class) int value) {
+    public VkPipelineColorBlendStateCreateInfo sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }
@@ -217,11 +217,11 @@ public record VkPipelineColorBlendStateCreateInfo(@NotNull MemorySegment segment
         return this;
     }
 
-    public @EnumType(VkPipelineColorBlendStateCreateFlags.class) int flags() {
+    public @MagicConstant(valuesFromClass = VkPipelineColorBlendStateCreateFlags.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public VkPipelineColorBlendStateCreateInfo flags(@EnumType(VkPipelineColorBlendStateCreateFlags.class) int value) {
+    public VkPipelineColorBlendStateCreateInfo flags(@MagicConstant(valuesFromClass = VkPipelineColorBlendStateCreateFlags.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
         return this;
     }
@@ -235,11 +235,11 @@ public record VkPipelineColorBlendStateCreateInfo(@NotNull MemorySegment segment
         return this;
     }
 
-    public @EnumType(VkLogicOp.class) int logicOp() {
+    public @MagicConstant(valuesFromClass = VkLogicOp.class) int logicOp() {
         return segment.get(LAYOUT$logicOp, OFFSET$logicOp);
     }
 
-    public VkPipelineColorBlendStateCreateInfo logicOp(@EnumType(VkLogicOp.class) int value) {
+    public VkPipelineColorBlendStateCreateInfo logicOp(@MagicConstant(valuesFromClass = VkLogicOp.class) int value) {
         segment.set(LAYOUT$logicOp, OFFSET$logicOp, value);
         return this;
     }

@@ -202,11 +202,11 @@ public record VkImageCreateInfo(@NotNull MemorySegment segment) implements IVkIm
         sType(VkStructureType.IMAGE_CREATE_INFO);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkImageCreateInfo sType(@EnumType(VkStructureType.class) int value) {
+    public VkImageCreateInfo sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }
@@ -224,29 +224,29 @@ public record VkImageCreateInfo(@NotNull MemorySegment segment) implements IVkIm
         return this;
     }
 
-    public @EnumType(VkImageCreateFlags.class) int flags() {
+    public @MagicConstant(valuesFromClass = VkImageCreateFlags.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public VkImageCreateInfo flags(@EnumType(VkImageCreateFlags.class) int value) {
+    public VkImageCreateInfo flags(@MagicConstant(valuesFromClass = VkImageCreateFlags.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
         return this;
     }
 
-    public @EnumType(VkImageType.class) int imageType() {
+    public @MagicConstant(valuesFromClass = VkImageType.class) int imageType() {
         return segment.get(LAYOUT$imageType, OFFSET$imageType);
     }
 
-    public VkImageCreateInfo imageType(@EnumType(VkImageType.class) int value) {
+    public VkImageCreateInfo imageType(@MagicConstant(valuesFromClass = VkImageType.class) int value) {
         segment.set(LAYOUT$imageType, OFFSET$imageType, value);
         return this;
     }
 
-    public @EnumType(VkFormat.class) int format() {
+    public @MagicConstant(valuesFromClass = VkFormat.class) int format() {
         return segment.get(LAYOUT$format, OFFSET$format);
     }
 
-    public VkImageCreateInfo format(@EnumType(VkFormat.class) int value) {
+    public VkImageCreateInfo format(@MagicConstant(valuesFromClass = VkFormat.class) int value) {
         segment.set(LAYOUT$format, OFFSET$format, value);
         return this;
     }
@@ -283,38 +283,38 @@ public record VkImageCreateInfo(@NotNull MemorySegment segment) implements IVkIm
         return this;
     }
 
-    public @EnumType(VkSampleCountFlags.class) int samples() {
+    public @MagicConstant(valuesFromClass = VkSampleCountFlags.class) int samples() {
         return segment.get(LAYOUT$samples, OFFSET$samples);
     }
 
-    public VkImageCreateInfo samples(@EnumType(VkSampleCountFlags.class) int value) {
+    public VkImageCreateInfo samples(@MagicConstant(valuesFromClass = VkSampleCountFlags.class) int value) {
         segment.set(LAYOUT$samples, OFFSET$samples, value);
         return this;
     }
 
-    public @EnumType(VkImageTiling.class) int tiling() {
+    public @MagicConstant(valuesFromClass = VkImageTiling.class) int tiling() {
         return segment.get(LAYOUT$tiling, OFFSET$tiling);
     }
 
-    public VkImageCreateInfo tiling(@EnumType(VkImageTiling.class) int value) {
+    public VkImageCreateInfo tiling(@MagicConstant(valuesFromClass = VkImageTiling.class) int value) {
         segment.set(LAYOUT$tiling, OFFSET$tiling, value);
         return this;
     }
 
-    public @EnumType(VkImageUsageFlags.class) int usage() {
+    public @MagicConstant(valuesFromClass = VkImageUsageFlags.class) int usage() {
         return segment.get(LAYOUT$usage, OFFSET$usage);
     }
 
-    public VkImageCreateInfo usage(@EnumType(VkImageUsageFlags.class) int value) {
+    public VkImageCreateInfo usage(@MagicConstant(valuesFromClass = VkImageUsageFlags.class) int value) {
         segment.set(LAYOUT$usage, OFFSET$usage, value);
         return this;
     }
 
-    public @EnumType(VkSharingMode.class) int sharingMode() {
+    public @MagicConstant(valuesFromClass = VkSharingMode.class) int sharingMode() {
         return segment.get(LAYOUT$sharingMode, OFFSET$sharingMode);
     }
 
-    public VkImageCreateInfo sharingMode(@EnumType(VkSharingMode.class) int value) {
+    public VkImageCreateInfo sharingMode(@MagicConstant(valuesFromClass = VkSharingMode.class) int value) {
         segment.set(LAYOUT$sharingMode, OFFSET$sharingMode, value);
         return this;
     }
@@ -354,11 +354,11 @@ public record VkImageCreateInfo(@NotNull MemorySegment segment) implements IVkIm
         segment.set(LAYOUT$pQueueFamilyIndices, OFFSET$pQueueFamilyIndices, value);
     }
 
-    public @EnumType(VkImageLayout.class) int initialLayout() {
+    public @MagicConstant(valuesFromClass = VkImageLayout.class) int initialLayout() {
         return segment.get(LAYOUT$initialLayout, OFFSET$initialLayout);
     }
 
-    public VkImageCreateInfo initialLayout(@EnumType(VkImageLayout.class) int value) {
+    public VkImageCreateInfo initialLayout(@MagicConstant(valuesFromClass = VkImageLayout.class) int value) {
         segment.set(LAYOUT$initialLayout, OFFSET$initialLayout, value);
         return this;
     }

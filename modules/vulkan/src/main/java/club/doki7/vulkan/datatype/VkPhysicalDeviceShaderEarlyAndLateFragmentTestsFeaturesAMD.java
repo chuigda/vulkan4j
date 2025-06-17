@@ -190,11 +190,11 @@ public record VkPhysicalDeviceShaderEarlyAndLateFragmentTestsFeaturesAMD(@NotNul
         sType(VkStructureType.PHYSICAL_DEVICE_SHADER_EARLY_AND_LATE_FRAGMENT_TESTS_FEATURES_AMD);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkPhysicalDeviceShaderEarlyAndLateFragmentTestsFeaturesAMD sType(@EnumType(VkStructureType.class) int value) {
+    public VkPhysicalDeviceShaderEarlyAndLateFragmentTestsFeaturesAMD sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }

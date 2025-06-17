@@ -190,11 +190,11 @@ public record VkPipelineCompilerControlCreateInfoAMD(@NotNull MemorySegment segm
         sType(VkStructureType.PIPELINE_COMPILER_CONTROL_CREATE_INFO_AMD);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkPipelineCompilerControlCreateInfoAMD sType(@EnumType(VkStructureType.class) int value) {
+    public VkPipelineCompilerControlCreateInfoAMD sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }
@@ -212,11 +212,11 @@ public record VkPipelineCompilerControlCreateInfoAMD(@NotNull MemorySegment segm
         return this;
     }
 
-    public @EnumType(VkPipelineCompilerControlFlagsAMD.class) int compilerControlFlags() {
+    public @MagicConstant(valuesFromClass = VkPipelineCompilerControlFlagsAMD.class) int compilerControlFlags() {
         return segment.get(LAYOUT$compilerControlFlags, OFFSET$compilerControlFlags);
     }
 
-    public VkPipelineCompilerControlCreateInfoAMD compilerControlFlags(@EnumType(VkPipelineCompilerControlFlagsAMD.class) int value) {
+    public VkPipelineCompilerControlCreateInfoAMD compilerControlFlags(@MagicConstant(valuesFromClass = VkPipelineCompilerControlFlagsAMD.class) int value) {
         segment.set(LAYOUT$compilerControlFlags, OFFSET$compilerControlFlags, value);
         return this;
     }

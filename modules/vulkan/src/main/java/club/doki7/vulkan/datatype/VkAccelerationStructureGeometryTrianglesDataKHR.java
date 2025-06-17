@@ -196,11 +196,11 @@ public record VkAccelerationStructureGeometryTrianglesDataKHR(@NotNull MemorySeg
         sType(VkStructureType.ACCELERATION_STRUCTURE_GEOMETRY_TRIANGLES_DATA_KHR);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkAccelerationStructureGeometryTrianglesDataKHR sType(@EnumType(VkStructureType.class) int value) {
+    public VkAccelerationStructureGeometryTrianglesDataKHR sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }
@@ -218,11 +218,11 @@ public record VkAccelerationStructureGeometryTrianglesDataKHR(@NotNull MemorySeg
         return this;
     }
 
-    public @EnumType(VkFormat.class) int vertexFormat() {
+    public @MagicConstant(valuesFromClass = VkFormat.class) int vertexFormat() {
         return segment.get(LAYOUT$vertexFormat, OFFSET$vertexFormat);
     }
 
-    public VkAccelerationStructureGeometryTrianglesDataKHR vertexFormat(@EnumType(VkFormat.class) int value) {
+    public VkAccelerationStructureGeometryTrianglesDataKHR vertexFormat(@MagicConstant(valuesFromClass = VkFormat.class) int value) {
         segment.set(LAYOUT$vertexFormat, OFFSET$vertexFormat, value);
         return this;
     }
@@ -259,11 +259,11 @@ public record VkAccelerationStructureGeometryTrianglesDataKHR(@NotNull MemorySeg
         return this;
     }
 
-    public @EnumType(VkIndexType.class) int indexType() {
+    public @MagicConstant(valuesFromClass = VkIndexType.class) int indexType() {
         return segment.get(LAYOUT$indexType, OFFSET$indexType);
     }
 
-    public VkAccelerationStructureGeometryTrianglesDataKHR indexType(@EnumType(VkIndexType.class) int value) {
+    public VkAccelerationStructureGeometryTrianglesDataKHR indexType(@MagicConstant(valuesFromClass = VkIndexType.class) int value) {
         segment.set(LAYOUT$indexType, OFFSET$indexType, value);
         return this;
     }

@@ -192,11 +192,11 @@ public record VkValidationCacheCreateInfoEXT(@NotNull MemorySegment segment) imp
         sType(VkStructureType.VALIDATION_CACHE_CREATE_INFO_EXT);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkValidationCacheCreateInfoEXT sType(@EnumType(VkStructureType.class) int value) {
+    public VkValidationCacheCreateInfoEXT sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }
@@ -214,11 +214,11 @@ public record VkValidationCacheCreateInfoEXT(@NotNull MemorySegment segment) imp
         return this;
     }
 
-    public @EnumType(VkValidationCacheCreateFlagsEXT.class) int flags() {
+    public @MagicConstant(valuesFromClass = VkValidationCacheCreateFlagsEXT.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public VkValidationCacheCreateInfoEXT flags(@EnumType(VkValidationCacheCreateFlagsEXT.class) int value) {
+    public VkValidationCacheCreateInfoEXT flags(@MagicConstant(valuesFromClass = VkValidationCacheCreateFlagsEXT.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
         return this;
     }

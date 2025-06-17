@@ -192,11 +192,11 @@ public record VkPipelineViewportShadingRateImageStateCreateInfoNV(@NotNull Memor
         sType(VkStructureType.PIPELINE_VIEWPORT_SHADING_RATE_IMAGE_STATE_CREATE_INFO_NV);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkPipelineViewportShadingRateImageStateCreateInfoNV sType(@EnumType(VkStructureType.class) int value) {
+    public VkPipelineViewportShadingRateImageStateCreateInfoNV sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }

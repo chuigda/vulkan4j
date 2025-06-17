@@ -192,11 +192,11 @@ public record VkAttachmentReference2(@NotNull MemorySegment segment) implements 
         sType(VkStructureType.ATTACHMENT_REFERENCE_2);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkAttachmentReference2 sType(@EnumType(VkStructureType.class) int value) {
+    public VkAttachmentReference2 sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }
@@ -223,20 +223,20 @@ public record VkAttachmentReference2(@NotNull MemorySegment segment) implements 
         return this;
     }
 
-    public @EnumType(VkImageLayout.class) int layout() {
+    public @MagicConstant(valuesFromClass = VkImageLayout.class) int layout() {
         return segment.get(LAYOUT$layout, OFFSET$layout);
     }
 
-    public VkAttachmentReference2 layout(@EnumType(VkImageLayout.class) int value) {
+    public VkAttachmentReference2 layout(@MagicConstant(valuesFromClass = VkImageLayout.class) int value) {
         segment.set(LAYOUT$layout, OFFSET$layout, value);
         return this;
     }
 
-    public @EnumType(VkImageAspectFlags.class) int aspectMask() {
+    public @MagicConstant(valuesFromClass = VkImageAspectFlags.class) int aspectMask() {
         return segment.get(LAYOUT$aspectMask, OFFSET$aspectMask);
     }
 
-    public VkAttachmentReference2 aspectMask(@EnumType(VkImageAspectFlags.class) int value) {
+    public VkAttachmentReference2 aspectMask(@MagicConstant(valuesFromClass = VkImageAspectFlags.class) int value) {
         segment.set(LAYOUT$aspectMask, OFFSET$aspectMask, value);
         return this;
     }

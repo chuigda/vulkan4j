@@ -190,11 +190,11 @@ public record VkOutOfBandQueueTypeInfoNV(@NotNull MemorySegment segment) impleme
         sType(VkStructureType.OUT_OF_BAND_QUEUE_TYPE_INFO_NV);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkOutOfBandQueueTypeInfoNV sType(@EnumType(VkStructureType.class) int value) {
+    public VkOutOfBandQueueTypeInfoNV sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }
@@ -212,11 +212,11 @@ public record VkOutOfBandQueueTypeInfoNV(@NotNull MemorySegment segment) impleme
         return this;
     }
 
-    public @EnumType(VkOutOfBandQueueTypeNV.class) int queueType() {
+    public @MagicConstant(valuesFromClass = VkOutOfBandQueueTypeNV.class) int queueType() {
         return segment.get(LAYOUT$queueType, OFFSET$queueType);
     }
 
-    public VkOutOfBandQueueTypeInfoNV queueType(@EnumType(VkOutOfBandQueueTypeNV.class) int value) {
+    public VkOutOfBandQueueTypeInfoNV queueType(@MagicConstant(valuesFromClass = VkOutOfBandQueueTypeNV.class) int value) {
         segment.set(LAYOUT$queueType, OFFSET$queueType, value);
         return this;
     }

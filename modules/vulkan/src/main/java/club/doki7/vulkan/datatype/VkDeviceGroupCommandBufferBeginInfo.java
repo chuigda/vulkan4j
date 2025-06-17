@@ -190,11 +190,11 @@ public record VkDeviceGroupCommandBufferBeginInfo(@NotNull MemorySegment segment
         sType(VkStructureType.DEVICE_GROUP_COMMAND_BUFFER_BEGIN_INFO);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkDeviceGroupCommandBufferBeginInfo sType(@EnumType(VkStructureType.class) int value) {
+    public VkDeviceGroupCommandBufferBeginInfo sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }

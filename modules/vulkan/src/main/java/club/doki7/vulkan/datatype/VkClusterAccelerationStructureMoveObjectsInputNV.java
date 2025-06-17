@@ -192,11 +192,11 @@ public record VkClusterAccelerationStructureMoveObjectsInputNV(@NotNull MemorySe
         sType(VkStructureType.CLUSTER_ACCELERATION_STRUCTURE_MOVE_OBJECTS_INPUT_NV);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkClusterAccelerationStructureMoveObjectsInputNV sType(@EnumType(VkStructureType.class) int value) {
+    public VkClusterAccelerationStructureMoveObjectsInputNV sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }
@@ -214,11 +214,11 @@ public record VkClusterAccelerationStructureMoveObjectsInputNV(@NotNull MemorySe
         return this;
     }
 
-    public @EnumType(VkClusterAccelerationStructureTypeNV.class) int type() {
+    public @MagicConstant(valuesFromClass = VkClusterAccelerationStructureTypeNV.class) int type() {
         return segment.get(LAYOUT$type, OFFSET$type);
     }
 
-    public VkClusterAccelerationStructureMoveObjectsInputNV type(@EnumType(VkClusterAccelerationStructureTypeNV.class) int value) {
+    public VkClusterAccelerationStructureMoveObjectsInputNV type(@MagicConstant(valuesFromClass = VkClusterAccelerationStructureTypeNV.class) int value) {
         segment.set(LAYOUT$type, OFFSET$type, value);
         return this;
     }

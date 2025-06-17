@@ -190,11 +190,11 @@ public record VkPipelineRasterizationStateRasterizationOrderAMD(@NotNull MemoryS
         sType(VkStructureType.PIPELINE_RASTERIZATION_STATE_RASTERIZATION_ORDER_AMD);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkPipelineRasterizationStateRasterizationOrderAMD sType(@EnumType(VkStructureType.class) int value) {
+    public VkPipelineRasterizationStateRasterizationOrderAMD sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }
@@ -212,11 +212,11 @@ public record VkPipelineRasterizationStateRasterizationOrderAMD(@NotNull MemoryS
         return this;
     }
 
-    public @EnumType(VkRasterizationOrderAMD.class) int rasterizationOrder() {
+    public @MagicConstant(valuesFromClass = VkRasterizationOrderAMD.class) int rasterizationOrder() {
         return segment.get(LAYOUT$rasterizationOrder, OFFSET$rasterizationOrder);
     }
 
-    public VkPipelineRasterizationStateRasterizationOrderAMD rasterizationOrder(@EnumType(VkRasterizationOrderAMD.class) int value) {
+    public VkPipelineRasterizationStateRasterizationOrderAMD rasterizationOrder(@MagicConstant(valuesFromClass = VkRasterizationOrderAMD.class) int value) {
         segment.set(LAYOUT$rasterizationOrder, OFFSET$rasterizationOrder, value);
         return this;
     }

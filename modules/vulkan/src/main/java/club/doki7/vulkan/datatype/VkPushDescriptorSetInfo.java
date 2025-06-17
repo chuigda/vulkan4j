@@ -194,11 +194,11 @@ public record VkPushDescriptorSetInfo(@NotNull MemorySegment segment) implements
         sType(VkStructureType.PUSH_DESCRIPTOR_SET_INFO);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkPushDescriptorSetInfo sType(@EnumType(VkStructureType.class) int value) {
+    public VkPushDescriptorSetInfo sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }
@@ -216,11 +216,11 @@ public record VkPushDescriptorSetInfo(@NotNull MemorySegment segment) implements
         return this;
     }
 
-    public @EnumType(VkShaderStageFlags.class) int stageFlags() {
+    public @MagicConstant(valuesFromClass = VkShaderStageFlags.class) int stageFlags() {
         return segment.get(LAYOUT$stageFlags, OFFSET$stageFlags);
     }
 
-    public VkPushDescriptorSetInfo stageFlags(@EnumType(VkShaderStageFlags.class) int value) {
+    public VkPushDescriptorSetInfo stageFlags(@MagicConstant(valuesFromClass = VkShaderStageFlags.class) int value) {
         segment.set(LAYOUT$stageFlags, OFFSET$stageFlags, value);
         return this;
     }

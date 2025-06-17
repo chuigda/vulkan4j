@@ -190,11 +190,11 @@ public record VkPhysicalDeviceSamplerYcbcrConversionFeatures(@NotNull MemorySegm
         sType(VkStructureType.PHYSICAL_DEVICE_SAMPLER_YCBCR_CONVERSION_FEATURES);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkPhysicalDeviceSamplerYcbcrConversionFeatures sType(@EnumType(VkStructureType.class) int value) {
+    public VkPhysicalDeviceSamplerYcbcrConversionFeatures sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }

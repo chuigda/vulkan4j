@@ -219,11 +219,11 @@ public record StdVideoH265SequenceParameterSet(@NotNull MemorySegment segment) i
         return this;
     }
 
-    public @EnumType(StdVideoH265ChromaFormatIdc.class) int chroma_format_idc() {
+    public @MagicConstant(valuesFromClass = StdVideoH265ChromaFormatIdc.class) int chroma_format_idc() {
         return segment.get(LAYOUT$chroma_format_idc, OFFSET$chroma_format_idc);
     }
 
-    public StdVideoH265SequenceParameterSet chroma_format_idc(@EnumType(StdVideoH265ChromaFormatIdc.class) int value) {
+    public StdVideoH265SequenceParameterSet chroma_format_idc(@MagicConstant(valuesFromClass = StdVideoH265ChromaFormatIdc.class) int value) {
         segment.set(LAYOUT$chroma_format_idc, OFFSET$chroma_format_idc, value);
         return this;
     }

@@ -191,11 +191,11 @@ public record VkCuFunctionCreateInfoNVX(@NotNull MemorySegment segment) implemen
         sType(VkStructureType.CU_FUNCTION_CREATE_INFO_NVX);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkCuFunctionCreateInfoNVX sType(@EnumType(VkStructureType.class) int value) {
+    public VkCuFunctionCreateInfoNVX sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }

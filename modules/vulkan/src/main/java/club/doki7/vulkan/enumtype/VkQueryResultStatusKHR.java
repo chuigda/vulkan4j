@@ -1,6 +1,7 @@
 package club.doki7.vulkan.enumtype;
 
 import club.doki7.ffm.annotation.*;
+import org.intellij.lang.annotations.MagicConstant;
 
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkQueryResultStatusKHR.html"><code>VkQueryResultStatusKHR</code></a>
 public final class VkQueryResultStatusKHR {
@@ -9,7 +10,7 @@ public final class VkQueryResultStatusKHR {
     public static final int COMPLETE = 0x1;
     public static final int INSUFFICIENT_BITSTREAM_BUFFER_RANGE = 0xc460a608;
 
-    public static String explain(@EnumType(VkQueryResultStatusKHR.class) int value) {
+    public static String explain(@MagicConstant(valuesFromClass = VkQueryResultStatusKHR.class) int value) {
         return switch (value) {
             case VkQueryResultStatusKHR.COMPLETE -> "VK_QUERY_RESULT_STATUS_COMPLETE_KHR";
             case VkQueryResultStatusKHR.ERROR -> "VK_QUERY_RESULT_STATUS_ERROR_KHR";

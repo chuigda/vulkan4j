@@ -192,11 +192,11 @@ public record VkDebugMarkerObjectNameInfoEXT(@NotNull MemorySegment segment) imp
         sType(VkStructureType.DEBUG_MARKER_OBJECT_NAME_INFO_EXT);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkDebugMarkerObjectNameInfoEXT sType(@EnumType(VkStructureType.class) int value) {
+    public VkDebugMarkerObjectNameInfoEXT sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }
@@ -214,11 +214,11 @@ public record VkDebugMarkerObjectNameInfoEXT(@NotNull MemorySegment segment) imp
         return this;
     }
 
-    public @EnumType(VkDebugReportObjectTypeEXT.class) int objectType() {
+    public @MagicConstant(valuesFromClass = VkDebugReportObjectTypeEXT.class) int objectType() {
         return segment.get(LAYOUT$objectType, OFFSET$objectType);
     }
 
-    public VkDebugMarkerObjectNameInfoEXT objectType(@EnumType(VkDebugReportObjectTypeEXT.class) int value) {
+    public VkDebugMarkerObjectNameInfoEXT objectType(@MagicConstant(valuesFromClass = VkDebugReportObjectTypeEXT.class) int value) {
         segment.set(LAYOUT$objectType, OFFSET$objectType, value);
         return this;
     }

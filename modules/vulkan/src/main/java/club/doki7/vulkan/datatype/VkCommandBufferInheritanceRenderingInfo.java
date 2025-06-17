@@ -196,11 +196,11 @@ public record VkCommandBufferInheritanceRenderingInfo(@NotNull MemorySegment seg
         sType(VkStructureType.COMMAND_BUFFER_INHERITANCE_RENDERING_INFO);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkCommandBufferInheritanceRenderingInfo sType(@EnumType(VkStructureType.class) int value) {
+    public VkCommandBufferInheritanceRenderingInfo sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }
@@ -218,11 +218,11 @@ public record VkCommandBufferInheritanceRenderingInfo(@NotNull MemorySegment seg
         return this;
     }
 
-    public @EnumType(VkRenderingFlags.class) int flags() {
+    public @MagicConstant(valuesFromClass = VkRenderingFlags.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public VkCommandBufferInheritanceRenderingInfo flags(@EnumType(VkRenderingFlags.class) int value) {
+    public VkCommandBufferInheritanceRenderingInfo flags(@MagicConstant(valuesFromClass = VkRenderingFlags.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
         return this;
     }
@@ -272,29 +272,29 @@ public record VkCommandBufferInheritanceRenderingInfo(@NotNull MemorySegment seg
         segment.set(LAYOUT$pColorAttachmentFormats, OFFSET$pColorAttachmentFormats, value);
     }
 
-    public @EnumType(VkFormat.class) int depthAttachmentFormat() {
+    public @MagicConstant(valuesFromClass = VkFormat.class) int depthAttachmentFormat() {
         return segment.get(LAYOUT$depthAttachmentFormat, OFFSET$depthAttachmentFormat);
     }
 
-    public VkCommandBufferInheritanceRenderingInfo depthAttachmentFormat(@EnumType(VkFormat.class) int value) {
+    public VkCommandBufferInheritanceRenderingInfo depthAttachmentFormat(@MagicConstant(valuesFromClass = VkFormat.class) int value) {
         segment.set(LAYOUT$depthAttachmentFormat, OFFSET$depthAttachmentFormat, value);
         return this;
     }
 
-    public @EnumType(VkFormat.class) int stencilAttachmentFormat() {
+    public @MagicConstant(valuesFromClass = VkFormat.class) int stencilAttachmentFormat() {
         return segment.get(LAYOUT$stencilAttachmentFormat, OFFSET$stencilAttachmentFormat);
     }
 
-    public VkCommandBufferInheritanceRenderingInfo stencilAttachmentFormat(@EnumType(VkFormat.class) int value) {
+    public VkCommandBufferInheritanceRenderingInfo stencilAttachmentFormat(@MagicConstant(valuesFromClass = VkFormat.class) int value) {
         segment.set(LAYOUT$stencilAttachmentFormat, OFFSET$stencilAttachmentFormat, value);
         return this;
     }
 
-    public @EnumType(VkSampleCountFlags.class) int rasterizationSamples() {
+    public @MagicConstant(valuesFromClass = VkSampleCountFlags.class) int rasterizationSamples() {
         return segment.get(LAYOUT$rasterizationSamples, OFFSET$rasterizationSamples);
     }
 
-    public VkCommandBufferInheritanceRenderingInfo rasterizationSamples(@EnumType(VkSampleCountFlags.class) int value) {
+    public VkCommandBufferInheritanceRenderingInfo rasterizationSamples(@MagicConstant(valuesFromClass = VkSampleCountFlags.class) int value) {
         segment.set(LAYOUT$rasterizationSamples, OFFSET$rasterizationSamples, value);
         return this;
     }

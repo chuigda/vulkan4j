@@ -198,11 +198,11 @@ public record VkFrameBoundaryEXT(@NotNull MemorySegment segment) implements IVkF
         sType(VkStructureType.FRAME_BOUNDARY_EXT);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkFrameBoundaryEXT sType(@EnumType(VkStructureType.class) int value) {
+    public VkFrameBoundaryEXT sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }
@@ -220,11 +220,11 @@ public record VkFrameBoundaryEXT(@NotNull MemorySegment segment) implements IVkF
         return this;
     }
 
-    public @EnumType(VkFrameBoundaryFlagsEXT.class) int flags() {
+    public @MagicConstant(valuesFromClass = VkFrameBoundaryFlagsEXT.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public VkFrameBoundaryEXT flags(@EnumType(VkFrameBoundaryFlagsEXT.class) int value) {
+    public VkFrameBoundaryEXT flags(@MagicConstant(valuesFromClass = VkFrameBoundaryFlagsEXT.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
         return this;
     }

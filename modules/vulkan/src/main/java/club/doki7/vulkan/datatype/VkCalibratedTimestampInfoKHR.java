@@ -190,11 +190,11 @@ public record VkCalibratedTimestampInfoKHR(@NotNull MemorySegment segment) imple
         sType(VkStructureType.CALIBRATED_TIMESTAMP_INFO_KHR);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkCalibratedTimestampInfoKHR sType(@EnumType(VkStructureType.class) int value) {
+    public VkCalibratedTimestampInfoKHR sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }
@@ -212,11 +212,11 @@ public record VkCalibratedTimestampInfoKHR(@NotNull MemorySegment segment) imple
         return this;
     }
 
-    public @EnumType(VkTimeDomainKHR.class) int timeDomain() {
+    public @MagicConstant(valuesFromClass = VkTimeDomainKHR.class) int timeDomain() {
         return segment.get(LAYOUT$timeDomain, OFFSET$timeDomain);
     }
 
-    public VkCalibratedTimestampInfoKHR timeDomain(@EnumType(VkTimeDomainKHR.class) int value) {
+    public VkCalibratedTimestampInfoKHR timeDomain(@MagicConstant(valuesFromClass = VkTimeDomainKHR.class) int value) {
         segment.set(LAYOUT$timeDomain, OFFSET$timeDomain, value);
         return this;
     }

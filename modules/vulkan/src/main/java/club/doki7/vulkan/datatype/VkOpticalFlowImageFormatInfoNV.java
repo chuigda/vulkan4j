@@ -190,11 +190,11 @@ public record VkOpticalFlowImageFormatInfoNV(@NotNull MemorySegment segment) imp
         sType(VkStructureType.OPTICAL_FLOW_IMAGE_FORMAT_INFO_NV);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkOpticalFlowImageFormatInfoNV sType(@EnumType(VkStructureType.class) int value) {
+    public VkOpticalFlowImageFormatInfoNV sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }
@@ -212,11 +212,11 @@ public record VkOpticalFlowImageFormatInfoNV(@NotNull MemorySegment segment) imp
         return this;
     }
 
-    public @EnumType(VkOpticalFlowUsageFlagsNV.class) int usage() {
+    public @MagicConstant(valuesFromClass = VkOpticalFlowUsageFlagsNV.class) int usage() {
         return segment.get(LAYOUT$usage, OFFSET$usage);
     }
 
-    public VkOpticalFlowImageFormatInfoNV usage(@EnumType(VkOpticalFlowUsageFlagsNV.class) int value) {
+    public VkOpticalFlowImageFormatInfoNV usage(@MagicConstant(valuesFromClass = VkOpticalFlowUsageFlagsNV.class) int value) {
         segment.set(LAYOUT$usage, OFFSET$usage, value);
         return this;
     }

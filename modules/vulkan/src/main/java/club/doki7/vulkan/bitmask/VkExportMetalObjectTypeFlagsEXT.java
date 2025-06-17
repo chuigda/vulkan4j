@@ -1,6 +1,7 @@
 package club.doki7.vulkan.bitmask;
 
 import club.doki7.ffm.annotation.*;
+import org.intellij.lang.annotations.MagicConstant;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,7 +15,7 @@ public final class VkExportMetalObjectTypeFlagsEXT {
     public static final int METAL_SHARED_EVENT = 0x20;
     public static final int METAL_TEXTURE = 0x8;
 
-    public static String explain(@EnumType(VkExportMetalObjectTypeFlagsEXT.class) int flags) {
+    public static String explain(@MagicConstant(flagsFromClass = VkExportMetalObjectTypeFlagsEXT.class) int flags) {
         List<String> detectedFlagBits = new ArrayList<>();
         if ((flags & METAL_BUFFER) != 0) {
             detectedFlagBits.add("VK_EXPORT_METAL_OBJECT_TYPE_METAL_BUFFER_BIT_EXT");

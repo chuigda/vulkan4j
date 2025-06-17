@@ -179,11 +179,11 @@ public record VkMemoryHeap(@NotNull MemorySegment segment) implements IVkMemoryH
         return this;
     }
 
-    public @EnumType(VkMemoryHeapFlags.class) int flags() {
+    public @MagicConstant(valuesFromClass = VkMemoryHeapFlags.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public VkMemoryHeap flags(@EnumType(VkMemoryHeapFlags.class) int value) {
+    public VkMemoryHeap flags(@MagicConstant(valuesFromClass = VkMemoryHeapFlags.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
         return this;
     }

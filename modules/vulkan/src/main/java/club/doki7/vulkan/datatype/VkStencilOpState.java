@@ -175,38 +175,38 @@ public record VkStencilOpState(@NotNull MemorySegment segment) implements IVkSte
         return ret;
     }
 
-    public @EnumType(VkStencilOp.class) int failOp() {
+    public @MagicConstant(valuesFromClass = VkStencilOp.class) int failOp() {
         return segment.get(LAYOUT$failOp, OFFSET$failOp);
     }
 
-    public VkStencilOpState failOp(@EnumType(VkStencilOp.class) int value) {
+    public VkStencilOpState failOp(@MagicConstant(valuesFromClass = VkStencilOp.class) int value) {
         segment.set(LAYOUT$failOp, OFFSET$failOp, value);
         return this;
     }
 
-    public @EnumType(VkStencilOp.class) int passOp() {
+    public @MagicConstant(valuesFromClass = VkStencilOp.class) int passOp() {
         return segment.get(LAYOUT$passOp, OFFSET$passOp);
     }
 
-    public VkStencilOpState passOp(@EnumType(VkStencilOp.class) int value) {
+    public VkStencilOpState passOp(@MagicConstant(valuesFromClass = VkStencilOp.class) int value) {
         segment.set(LAYOUT$passOp, OFFSET$passOp, value);
         return this;
     }
 
-    public @EnumType(VkStencilOp.class) int depthFailOp() {
+    public @MagicConstant(valuesFromClass = VkStencilOp.class) int depthFailOp() {
         return segment.get(LAYOUT$depthFailOp, OFFSET$depthFailOp);
     }
 
-    public VkStencilOpState depthFailOp(@EnumType(VkStencilOp.class) int value) {
+    public VkStencilOpState depthFailOp(@MagicConstant(valuesFromClass = VkStencilOp.class) int value) {
         segment.set(LAYOUT$depthFailOp, OFFSET$depthFailOp, value);
         return this;
     }
 
-    public @EnumType(VkCompareOp.class) int compareOp() {
+    public @MagicConstant(valuesFromClass = VkCompareOp.class) int compareOp() {
         return segment.get(LAYOUT$compareOp, OFFSET$compareOp);
     }
 
-    public VkStencilOpState compareOp(@EnumType(VkCompareOp.class) int value) {
+    public VkStencilOpState compareOp(@MagicConstant(valuesFromClass = VkCompareOp.class) int value) {
         segment.set(LAYOUT$compareOp, OFFSET$compareOp, value);
         return this;
     }

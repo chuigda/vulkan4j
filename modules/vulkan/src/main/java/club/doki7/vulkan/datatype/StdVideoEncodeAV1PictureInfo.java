@@ -207,11 +207,11 @@ public record StdVideoEncodeAV1PictureInfo(@NotNull MemorySegment segment) imple
         return this;
     }
 
-    public @EnumType(StdVideoAV1FrameType.class) int frame_type() {
+    public @MagicConstant(valuesFromClass = StdVideoAV1FrameType.class) int frame_type() {
         return segment.get(LAYOUT$frame_type, OFFSET$frame_type);
     }
 
-    public StdVideoEncodeAV1PictureInfo frame_type(@EnumType(StdVideoAV1FrameType.class) int value) {
+    public StdVideoEncodeAV1PictureInfo frame_type(@MagicConstant(valuesFromClass = StdVideoAV1FrameType.class) int value) {
         segment.set(LAYOUT$frame_type, OFFSET$frame_type, value);
         return this;
     }
@@ -288,20 +288,20 @@ public record StdVideoEncodeAV1PictureInfo(@NotNull MemorySegment segment) imple
         return this;
     }
 
-    public @EnumType(StdVideoAV1InterpolationFilter.class) int interpolation_filter() {
+    public @MagicConstant(valuesFromClass = StdVideoAV1InterpolationFilter.class) int interpolation_filter() {
         return segment.get(LAYOUT$interpolation_filter, OFFSET$interpolation_filter);
     }
 
-    public StdVideoEncodeAV1PictureInfo interpolation_filter(@EnumType(StdVideoAV1InterpolationFilter.class) int value) {
+    public StdVideoEncodeAV1PictureInfo interpolation_filter(@MagicConstant(valuesFromClass = StdVideoAV1InterpolationFilter.class) int value) {
         segment.set(LAYOUT$interpolation_filter, OFFSET$interpolation_filter, value);
         return this;
     }
 
-    public @EnumType(StdVideoAV1TxMode.class) int TxMode() {
+    public @MagicConstant(valuesFromClass = StdVideoAV1TxMode.class) int TxMode() {
         return segment.get(LAYOUT$TxMode, OFFSET$TxMode);
     }
 
-    public StdVideoEncodeAV1PictureInfo TxMode(@EnumType(StdVideoAV1TxMode.class) int value) {
+    public StdVideoEncodeAV1PictureInfo TxMode(@MagicConstant(valuesFromClass = StdVideoAV1TxMode.class) int value) {
         segment.set(LAYOUT$TxMode, OFFSET$TxMode, value);
         return this;
     }

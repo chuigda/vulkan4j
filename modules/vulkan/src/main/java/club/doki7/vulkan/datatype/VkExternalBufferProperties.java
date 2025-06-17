@@ -190,11 +190,11 @@ public record VkExternalBufferProperties(@NotNull MemorySegment segment) impleme
         sType(VkStructureType.EXTERNAL_BUFFER_PROPERTIES);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkExternalBufferProperties sType(@EnumType(VkStructureType.class) int value) {
+    public VkExternalBufferProperties sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }

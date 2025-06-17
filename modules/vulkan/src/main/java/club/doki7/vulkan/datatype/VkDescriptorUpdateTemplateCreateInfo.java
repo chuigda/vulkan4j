@@ -197,11 +197,11 @@ public record VkDescriptorUpdateTemplateCreateInfo(@NotNull MemorySegment segmen
         sType(VkStructureType.DESCRIPTOR_UPDATE_TEMPLATE_CREATE_INFO);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkDescriptorUpdateTemplateCreateInfo sType(@EnumType(VkStructureType.class) int value) {
+    public VkDescriptorUpdateTemplateCreateInfo sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }
@@ -219,11 +219,11 @@ public record VkDescriptorUpdateTemplateCreateInfo(@NotNull MemorySegment segmen
         return this;
     }
 
-    public @EnumType(VkDescriptorUpdateTemplateCreateFlags.class) int flags() {
+    public @MagicConstant(valuesFromClass = VkDescriptorUpdateTemplateCreateFlags.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public VkDescriptorUpdateTemplateCreateInfo flags(@EnumType(VkDescriptorUpdateTemplateCreateFlags.class) int value) {
+    public VkDescriptorUpdateTemplateCreateInfo flags(@MagicConstant(valuesFromClass = VkDescriptorUpdateTemplateCreateFlags.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
         return this;
     }
@@ -269,11 +269,11 @@ public record VkDescriptorUpdateTemplateCreateInfo(@NotNull MemorySegment segmen
         segment.set(LAYOUT$pDescriptorUpdateEntries, OFFSET$pDescriptorUpdateEntries, value);
     }
 
-    public @EnumType(VkDescriptorUpdateTemplateType.class) int templateType() {
+    public @MagicConstant(valuesFromClass = VkDescriptorUpdateTemplateType.class) int templateType() {
         return segment.get(LAYOUT$templateType, OFFSET$templateType);
     }
 
-    public VkDescriptorUpdateTemplateCreateInfo templateType(@EnumType(VkDescriptorUpdateTemplateType.class) int value) {
+    public VkDescriptorUpdateTemplateCreateInfo templateType(@MagicConstant(valuesFromClass = VkDescriptorUpdateTemplateType.class) int value) {
         segment.set(LAYOUT$templateType, OFFSET$templateType, value);
         return this;
     }
@@ -291,11 +291,11 @@ public record VkDescriptorUpdateTemplateCreateInfo(@NotNull MemorySegment segmen
         return this;
     }
 
-    public @EnumType(VkPipelineBindPoint.class) int pipelineBindPoint() {
+    public @MagicConstant(valuesFromClass = VkPipelineBindPoint.class) int pipelineBindPoint() {
         return segment.get(LAYOUT$pipelineBindPoint, OFFSET$pipelineBindPoint);
     }
 
-    public VkDescriptorUpdateTemplateCreateInfo pipelineBindPoint(@EnumType(VkPipelineBindPoint.class) int value) {
+    public VkDescriptorUpdateTemplateCreateInfo pipelineBindPoint(@MagicConstant(valuesFromClass = VkPipelineBindPoint.class) int value) {
         segment.set(LAYOUT$pipelineBindPoint, OFFSET$pipelineBindPoint, value);
         return this;
     }

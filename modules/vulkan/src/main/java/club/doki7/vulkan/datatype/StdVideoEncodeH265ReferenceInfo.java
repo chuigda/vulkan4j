@@ -184,11 +184,11 @@ public record StdVideoEncodeH265ReferenceInfo(@NotNull MemorySegment segment) im
         return this;
     }
 
-    public @EnumType(StdVideoH265PictureType.class) int pic_type() {
+    public @MagicConstant(valuesFromClass = StdVideoH265PictureType.class) int pic_type() {
         return segment.get(LAYOUT$pic_type, OFFSET$pic_type);
     }
 
-    public StdVideoEncodeH265ReferenceInfo pic_type(@EnumType(StdVideoH265PictureType.class) int value) {
+    public StdVideoEncodeH265ReferenceInfo pic_type(@MagicConstant(valuesFromClass = StdVideoH265PictureType.class) int value) {
         segment.set(LAYOUT$pic_type, OFFSET$pic_type, value);
         return this;
     }

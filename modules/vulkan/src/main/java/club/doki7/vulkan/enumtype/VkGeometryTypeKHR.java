@@ -1,6 +1,7 @@
 package club.doki7.vulkan.enumtype;
 
 import club.doki7.ffm.annotation.*;
+import org.intellij.lang.annotations.MagicConstant;
 
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkGeometryTypeKHR.html"><code>VkGeometryTypeKHR</code></a>
 public final class VkGeometryTypeKHR {
@@ -10,7 +11,7 @@ public final class VkGeometryTypeKHR {
     public static final int SPHERES_NV = 0x3ba155cc;
     public static final int LINEAR_SWEPT_SPHERES_NV = 0x3ba155cd;
 
-    public static String explain(@EnumType(VkGeometryTypeKHR.class) int value) {
+    public static String explain(@MagicConstant(valuesFromClass = VkGeometryTypeKHR.class) int value) {
         return switch (value) {
             case VkGeometryTypeKHR.AABBS -> "VK_GEOMETRY_TYPE_AABBS_KHR";
             case VkGeometryTypeKHR.INSTANCES -> "VK_GEOMETRY_TYPE_INSTANCES_KHR";

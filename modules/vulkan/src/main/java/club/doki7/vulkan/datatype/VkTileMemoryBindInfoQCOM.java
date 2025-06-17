@@ -190,11 +190,11 @@ public record VkTileMemoryBindInfoQCOM(@NotNull MemorySegment segment) implement
         sType(VkStructureType.TILE_MEMORY_BIND_INFO_QCOM);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkTileMemoryBindInfoQCOM sType(@EnumType(VkStructureType.class) int value) {
+    public VkTileMemoryBindInfoQCOM sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }

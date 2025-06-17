@@ -1,6 +1,7 @@
 package club.doki7.vulkan.bitmask;
 
 import club.doki7.ffm.annotation.*;
+import org.intellij.lang.annotations.MagicConstant;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,7 +11,7 @@ public final class VkPipelineDepthStencilStateCreateFlags {
     public static final int RASTERIZATION_ORDER_ATTACHMENT_DEPTH_ACCESS_EXT = 0x1;
     public static final int RASTERIZATION_ORDER_ATTACHMENT_STENCIL_ACCESS_EXT = 0x2;
 
-    public static String explain(@EnumType(VkPipelineDepthStencilStateCreateFlags.class) int flags) {
+    public static String explain(@MagicConstant(flagsFromClass = VkPipelineDepthStencilStateCreateFlags.class) int flags) {
         List<String> detectedFlagBits = new ArrayList<>();
         if ((flags & RASTERIZATION_ORDER_ATTACHMENT_DEPTH_ACCESS_EXT) != 0) {
             detectedFlagBits.add("VK_PIPELINE_DEPTH_STENCIL_STATE_CREATE_RASTERIZATION_ORDER_ATTACHMENT_DEPTH_ACCESS_BIT_EXT");

@@ -244,11 +244,11 @@ public record VmaAllocatorCreateInfo(@NotNull MemorySegment segment) implements 
         return ret;
     }
 
-    public @EnumType(VmaAllocatorCreateFlags.class) int flags() {
+    public @MagicConstant(valuesFromClass = VmaAllocatorCreateFlags.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public VmaAllocatorCreateInfo flags(@EnumType(VmaAllocatorCreateFlags.class) int value) {
+    public VmaAllocatorCreateInfo flags(@MagicConstant(valuesFromClass = VmaAllocatorCreateFlags.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
         return this;
     }

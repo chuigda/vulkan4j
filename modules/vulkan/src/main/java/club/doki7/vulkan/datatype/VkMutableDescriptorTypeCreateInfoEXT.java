@@ -191,11 +191,11 @@ public record VkMutableDescriptorTypeCreateInfoEXT(@NotNull MemorySegment segmen
         sType(VkStructureType.MUTABLE_DESCRIPTOR_TYPE_CREATE_INFO_EXT);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkMutableDescriptorTypeCreateInfoEXT sType(@EnumType(VkStructureType.class) int value) {
+    public VkMutableDescriptorTypeCreateInfoEXT sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }

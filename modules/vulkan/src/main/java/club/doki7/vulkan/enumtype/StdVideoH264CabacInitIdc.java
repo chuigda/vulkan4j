@@ -1,6 +1,7 @@
 package club.doki7.vulkan.enumtype;
 
 import club.doki7.ffm.annotation.*;
+import org.intellij.lang.annotations.MagicConstant;
 
 public final class StdVideoH264CabacInitIdc {
     public static final int STD_VIDEO_H264_CABAC_INIT_IDC_0 = 0x0;
@@ -8,7 +9,7 @@ public final class StdVideoH264CabacInitIdc {
     public static final int STD_VIDEO_H264_CABAC_INIT_IDC_2 = 0x2;
     public static final int STD_VIDEO_H264_CABAC_INIT_IDC_INVALID = 0x7fffffff;
 
-    public static String explain(@EnumType(StdVideoH264CabacInitIdc.class) int value) {
+    public static String explain(@MagicConstant(valuesFromClass = StdVideoH264CabacInitIdc.class) int value) {
         return switch (value) {
             case StdVideoH264CabacInitIdc.STD_VIDEO_H264_CABAC_INIT_IDC_0 -> "STD_VIDEO_H264_CABAC_INIT_IDC_0";
             case StdVideoH264CabacInitIdc.STD_VIDEO_H264_CABAC_INIT_IDC_1 -> "STD_VIDEO_H264_CABAC_INIT_IDC_1";

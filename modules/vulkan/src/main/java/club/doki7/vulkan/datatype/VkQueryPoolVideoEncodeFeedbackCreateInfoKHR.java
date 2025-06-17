@@ -190,11 +190,11 @@ public record VkQueryPoolVideoEncodeFeedbackCreateInfoKHR(@NotNull MemorySegment
         sType(VkStructureType.QUERY_POOL_VIDEO_ENCODE_FEEDBACK_CREATE_INFO_KHR);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkQueryPoolVideoEncodeFeedbackCreateInfoKHR sType(@EnumType(VkStructureType.class) int value) {
+    public VkQueryPoolVideoEncodeFeedbackCreateInfoKHR sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }
@@ -212,11 +212,11 @@ public record VkQueryPoolVideoEncodeFeedbackCreateInfoKHR(@NotNull MemorySegment
         return this;
     }
 
-    public @EnumType(VkVideoEncodeFeedbackFlagsKHR.class) int encodeFeedbackFlags() {
+    public @MagicConstant(valuesFromClass = VkVideoEncodeFeedbackFlagsKHR.class) int encodeFeedbackFlags() {
         return segment.get(LAYOUT$encodeFeedbackFlags, OFFSET$encodeFeedbackFlags);
     }
 
-    public VkQueryPoolVideoEncodeFeedbackCreateInfoKHR encodeFeedbackFlags(@EnumType(VkVideoEncodeFeedbackFlagsKHR.class) int value) {
+    public VkQueryPoolVideoEncodeFeedbackCreateInfoKHR encodeFeedbackFlags(@MagicConstant(valuesFromClass = VkVideoEncodeFeedbackFlagsKHR.class) int value) {
         segment.set(LAYOUT$encodeFeedbackFlags, OFFSET$encodeFeedbackFlags, value);
         return this;
     }

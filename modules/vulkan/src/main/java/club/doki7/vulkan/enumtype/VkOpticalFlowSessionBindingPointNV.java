@@ -1,6 +1,7 @@
 package club.doki7.vulkan.enumtype;
 
 import club.doki7.ffm.annotation.*;
+import org.intellij.lang.annotations.MagicConstant;
 
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkOpticalFlowSessionBindingPointNV.html"><code>VkOpticalFlowSessionBindingPointNV</code></a>
 public final class VkOpticalFlowSessionBindingPointNV {
@@ -14,7 +15,7 @@ public final class VkOpticalFlowSessionBindingPointNV {
     public static final int BACKWARD_COST = 0x7;
     public static final int GLOBAL_FLOW = 0x8;
 
-    public static String explain(@EnumType(VkOpticalFlowSessionBindingPointNV.class) int value) {
+    public static String explain(@MagicConstant(valuesFromClass = VkOpticalFlowSessionBindingPointNV.class) int value) {
         return switch (value) {
             case VkOpticalFlowSessionBindingPointNV.BACKWARD_COST -> "VK_OPTICAL_FLOW_SESSION_BINDING_POINT_BACKWARD_COST_NV";
             case VkOpticalFlowSessionBindingPointNV.BACKWARD_FLOW_VECTOR -> "VK_OPTICAL_FLOW_SESSION_BINDING_POINT_BACKWARD_FLOW_VECTOR_NV";

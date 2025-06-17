@@ -210,11 +210,11 @@ public record VmaVirtualAllocationCreateInfo(@NotNull MemorySegment segment) imp
         return this;
     }
 
-    public @EnumType(VmaVirtualAllocationCreateFlags.class) int flags() {
+    public @MagicConstant(valuesFromClass = VmaVirtualAllocationCreateFlags.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public VmaVirtualAllocationCreateInfo flags(@EnumType(VmaVirtualAllocationCreateFlags.class) int value) {
+    public VmaVirtualAllocationCreateInfo flags(@MagicConstant(valuesFromClass = VmaVirtualAllocationCreateFlags.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
         return this;
     }

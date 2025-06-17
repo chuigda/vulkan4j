@@ -191,11 +191,11 @@ public record VkBufferCollectionImageCreateInfoFUCHSIA(@NotNull MemorySegment se
         sType(VkStructureType.BUFFER_COLLECTION_IMAGE_CREATE_INFO_FUCHSIA);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkBufferCollectionImageCreateInfoFUCHSIA sType(@EnumType(VkStructureType.class) int value) {
+    public VkBufferCollectionImageCreateInfoFUCHSIA sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }

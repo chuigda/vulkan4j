@@ -195,11 +195,11 @@ public record VkVideoEncodeH265SessionParametersAddInfoKHR(@NotNull MemorySegmen
         sType(VkStructureType.VIDEO_ENCODE_H265_SESSION_PARAMETERS_ADD_INFO_KHR);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkVideoEncodeH265SessionParametersAddInfoKHR sType(@EnumType(VkStructureType.class) int value) {
+    public VkVideoEncodeH265SessionParametersAddInfoKHR sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }

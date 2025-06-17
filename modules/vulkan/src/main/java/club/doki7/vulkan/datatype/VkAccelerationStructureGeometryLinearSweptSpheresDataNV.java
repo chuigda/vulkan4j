@@ -200,11 +200,11 @@ public record VkAccelerationStructureGeometryLinearSweptSpheresDataNV(@NotNull M
         sType(VkStructureType.ACCELERATION_STRUCTURE_GEOMETRY_LINEAR_SWEPT_SPHERES_DATA_NV);
     }
 
-    public @EnumType(VkStructureType.class) int sType() {
+    public @MagicConstant(valuesFromClass = VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public VkAccelerationStructureGeometryLinearSweptSpheresDataNV sType(@EnumType(VkStructureType.class) int value) {
+    public VkAccelerationStructureGeometryLinearSweptSpheresDataNV sType(@MagicConstant(valuesFromClass = VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
         return this;
     }
@@ -222,11 +222,11 @@ public record VkAccelerationStructureGeometryLinearSweptSpheresDataNV(@NotNull M
         return this;
     }
 
-    public @EnumType(VkFormat.class) int vertexFormat() {
+    public @MagicConstant(valuesFromClass = VkFormat.class) int vertexFormat() {
         return segment.get(LAYOUT$vertexFormat, OFFSET$vertexFormat);
     }
 
-    public VkAccelerationStructureGeometryLinearSweptSpheresDataNV vertexFormat(@EnumType(VkFormat.class) int value) {
+    public VkAccelerationStructureGeometryLinearSweptSpheresDataNV vertexFormat(@MagicConstant(valuesFromClass = VkFormat.class) int value) {
         segment.set(LAYOUT$vertexFormat, OFFSET$vertexFormat, value);
         return this;
     }
@@ -254,11 +254,11 @@ public record VkAccelerationStructureGeometryLinearSweptSpheresDataNV(@NotNull M
         return this;
     }
 
-    public @EnumType(VkFormat.class) int radiusFormat() {
+    public @MagicConstant(valuesFromClass = VkFormat.class) int radiusFormat() {
         return segment.get(LAYOUT$radiusFormat, OFFSET$radiusFormat);
     }
 
-    public VkAccelerationStructureGeometryLinearSweptSpheresDataNV radiusFormat(@EnumType(VkFormat.class) int value) {
+    public VkAccelerationStructureGeometryLinearSweptSpheresDataNV radiusFormat(@MagicConstant(valuesFromClass = VkFormat.class) int value) {
         segment.set(LAYOUT$radiusFormat, OFFSET$radiusFormat, value);
         return this;
     }
@@ -286,11 +286,11 @@ public record VkAccelerationStructureGeometryLinearSweptSpheresDataNV(@NotNull M
         return this;
     }
 
-    public @EnumType(VkIndexType.class) int indexType() {
+    public @MagicConstant(valuesFromClass = VkIndexType.class) int indexType() {
         return segment.get(LAYOUT$indexType, OFFSET$indexType);
     }
 
-    public VkAccelerationStructureGeometryLinearSweptSpheresDataNV indexType(@EnumType(VkIndexType.class) int value) {
+    public VkAccelerationStructureGeometryLinearSweptSpheresDataNV indexType(@MagicConstant(valuesFromClass = VkIndexType.class) int value) {
         segment.set(LAYOUT$indexType, OFFSET$indexType, value);
         return this;
     }
@@ -318,20 +318,20 @@ public record VkAccelerationStructureGeometryLinearSweptSpheresDataNV(@NotNull M
         return this;
     }
 
-    public @EnumType(VkRayTracingLssIndexingModeNV.class) int indexingMode() {
+    public @MagicConstant(valuesFromClass = VkRayTracingLssIndexingModeNV.class) int indexingMode() {
         return segment.get(LAYOUT$indexingMode, OFFSET$indexingMode);
     }
 
-    public VkAccelerationStructureGeometryLinearSweptSpheresDataNV indexingMode(@EnumType(VkRayTracingLssIndexingModeNV.class) int value) {
+    public VkAccelerationStructureGeometryLinearSweptSpheresDataNV indexingMode(@MagicConstant(valuesFromClass = VkRayTracingLssIndexingModeNV.class) int value) {
         segment.set(LAYOUT$indexingMode, OFFSET$indexingMode, value);
         return this;
     }
 
-    public @EnumType(VkRayTracingLssPrimitiveEndCapsModeNV.class) int endCapsMode() {
+    public @MagicConstant(valuesFromClass = VkRayTracingLssPrimitiveEndCapsModeNV.class) int endCapsMode() {
         return segment.get(LAYOUT$endCapsMode, OFFSET$endCapsMode);
     }
 
-    public VkAccelerationStructureGeometryLinearSweptSpheresDataNV endCapsMode(@EnumType(VkRayTracingLssPrimitiveEndCapsModeNV.class) int value) {
+    public VkAccelerationStructureGeometryLinearSweptSpheresDataNV endCapsMode(@MagicConstant(valuesFromClass = VkRayTracingLssPrimitiveEndCapsModeNV.class) int value) {
         segment.set(LAYOUT$endCapsMode, OFFSET$endCapsMode, value);
         return this;
     }
