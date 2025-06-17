@@ -776,6 +776,7 @@ class Application {
                     bufferSize,
                     VkBufferUsageFlags.TRANSFER_SRC,
                     VmaAllocationCreateFlags.HOST_ACCESS_RANDOM,
+                    VkMemoryPropertyFlags.HOST_COHERENT,
                     null
             );
             var stagingBuffer = pair.first;
@@ -793,6 +794,7 @@ class Application {
             pair = createBuffer(
                     bufferSize,
                     VkBufferUsageFlags.TRANSFER_DST | VkBufferUsageFlags.VERTEX_BUFFER,
+                    0,
                     0,
                     null
             );
@@ -813,6 +815,7 @@ class Application {
                     bufferSize,
                     VkBufferUsageFlags.TRANSFER_SRC,
                     VmaAllocationCreateFlags.HOST_ACCESS_RANDOM,
+                    VkMemoryPropertyFlags.HOST_COHERENT,
                     null
             );
             var stagingBuffer = pair.first;
@@ -830,6 +833,7 @@ class Application {
             pair = createBuffer(
                     bufferSize,
                     VkBufferUsageFlags.TRANSFER_DST | VkBufferUsageFlags.INDEX_BUFFER,
+                    0,
                     0,
                     null
             );
@@ -855,6 +859,7 @@ class Application {
                         bufferSize * Float.BYTES,
                         VkBufferUsageFlags.UNIFORM_BUFFER,
                         VmaAllocationCreateFlags.MAPPED | VmaAllocationCreateFlags.HOST_ACCESS_RANDOM,
+                        VkMemoryPropertyFlags.HOST_COHERENT,
                         allocationInfo
                 );
                 uniformBuffers.write(i, pair.first);
@@ -977,6 +982,7 @@ class Application {
                 imageSizeBytes,
                 VkBufferUsageFlags.TRANSFER_SRC,
                 VmaAllocationCreateFlags.HOST_ACCESS_RANDOM,
+                VkMemoryPropertyFlags.HOST_COHERENT,
                 null
         );
         var stagingBuffer = pair.first;
@@ -1550,6 +1556,7 @@ class Application {
             int size,
             @EnumType(VkBufferUsageFlags.class) int usage,
             @EnumType(VmaAllocationCreateFlags.class) int vmaAllocationCreationFlags,
+            @EnumType(VkMemoryPropertyFlags.class) int vkMemoryPropertyFlags,
             @Nullable @Pointer VmaAllocationInfo allocationInfo
     ) {
         try (var arena = Arena.ofConfined()) {
@@ -1560,7 +1567,8 @@ class Application {
 
             var allocationCreateInfo = VmaAllocationCreateInfo.allocate(arena)
                     .usage(VmaMemoryUsage.AUTO)
-                    .flags(vmaAllocationCreationFlags);
+                    .flags(vmaAllocationCreationFlags)
+                    .requiredFlags(vkMemoryPropertyFlags);
 
             var pBuffer = VkBuffer.Ptr.allocate(arena);
             var pAllocation = VmaAllocation.Ptr.allocate(arena);

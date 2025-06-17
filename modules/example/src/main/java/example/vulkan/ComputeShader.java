@@ -261,6 +261,7 @@ final class Application {
                 .sharingMode(VkSharingMode.EXCLUSIVE);
         VmaAllocationCreateInfo allocationCreateInfo = VmaAllocationCreateInfo.allocate(arena)
                 .flags(VmaAllocationCreateFlags.HOST_ACCESS_RANDOM | VmaAllocationCreateFlags.MAPPED)
+                .requiredFlags(VkMemoryPropertyFlags.HOST_COHERENT)
                 .usage(VmaMemoryUsage.AUTO);
         VkImage.Ptr pImage = VkImage.Ptr.allocate(arena);
         VmaAllocation.Ptr pAllocation = VmaAllocation.Ptr.allocate(arena);
