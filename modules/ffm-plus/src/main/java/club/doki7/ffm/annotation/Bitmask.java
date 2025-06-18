@@ -5,5 +5,5 @@ import java.lang.annotation.Documented;
 /// Marker annotation, indicating that an integral value is a C enumeration type.
 @Documented
 public @interface Bitmask {
-    Class<?> value() default Object.class;
+    Class<?> value() default void.class;
 }
