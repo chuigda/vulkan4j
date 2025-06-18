@@ -4,15 +4,23 @@ import club.doki7.babel.cdecl.parseType
 import club.doki7.babel.cdecl.toType
 import club.doki7.babel.registry.Bitflag
 import club.doki7.babel.registry.Bitmask
+import club.doki7.babel.registry.Command
+import club.doki7.babel.registry.Constant
+import club.doki7.babel.registry.EmptyMergeable
 import club.doki7.babel.registry.Entity
 import club.doki7.babel.registry.EnumVariant
 import club.doki7.babel.registry.Enumeration
 import club.doki7.babel.registry.Identifier
 import club.doki7.babel.registry.IdentifierType
 import club.doki7.babel.registry.Member
+import club.doki7.babel.registry.OpaqueHandleTypedef
+import club.doki7.babel.registry.Param
+import club.doki7.babel.registry.Registry
 import club.doki7.babel.registry.Structure
+import club.doki7.babel.registry.Type
 import club.doki7.babel.registry.Typedef
 import club.doki7.babel.registry.intern
+import club.doki7.babel.util.Either
 import club.doki7.babel.util.asSequence
 import club.doki7.babel.util.attrs
 import club.doki7.babel.util.children
@@ -26,51 +34,101 @@ import kotlin.io.path.Path
 
 private val inputDir = Path("codegen-v2/input")
 
-fun extractOpenXRRegistry() {
-    val element = inputDir.resolve("xr.xml")
+fun main() {
+    val reg = extractOpenXRRegistry()
+    return
+}
+
+fun extractOpenXRRegistry(): Registry<EmptyMergeable> {
+    val registry = inputDir.resolve("xr.xml")
         .toFile()
         .readText()
         .parseXML()
         .extractEntities()
+
+    return registry
 }
 
 private fun <T : Entity> Sequence<T>.associate(): MutableMap<Identifier, T> {
     return associateByTo(mutableMapOf(), Entity::name)
 }
 
-private fun Element.extractEntities() {
+private fun Element.extractEntities(): Registry<EmptyMergeable> {
     val e = this
 
     // TODO: parse <type requires="...">
 
-    val basetypes = e.query("types/type[@category=basetype]")
+    val basetypes = e.query("types/type[@category='basetype']")
         .map(::extractBasetype)
 
     // TODO: do we need this? perhaps this is implied by [bitmasks]
 //    val bitmaskTypes = e.query("types/type[@category=bitmask]")
 //        .map(::extractBitmaskType)
 
-    val typedefs = basetypes
+    val handles = e.query("types/type[@category='handle']")
+        .map(::extractHandle)
+
+    val opaqueHandles: MutableMap<Identifier, OpaqueHandleTypedef> = if (shouldOpaqueHandle()) {
+        handles.map { (it as Either.Left).value }.associate()
+    } else mutableMapOf()
+
+    val typedefHandles: Sequence<Typedef> = if (!shouldOpaqueHandle()) {
+        handles.map { (it as Either.Right).value }
+    } else emptySequence()
+
+    val typedefs = (basetypes + typedefHandles)
         .associate()
 
-    val structs = e.query("types/type[@category=struct and not(@alias)]")
-    val structAliases = e.query("types/type[@category=struct and @alias]")
+    val structs = e.query("types/type[@category='struct' and not(@alias)]")
+        .map(::extractStruct)
+        .associate()
+    val structAliases = e.query("types/type[@category='struct' and @alias]")
 
     // TODO: extract enum API Constants
-    val enums = e.query("enums[@type=enum]")
+    val constants = e.query("enums[@name='API Constants']/enum")
+        .map(::extractConstant)
+        .associate()
+
+    val enums = e.query("enums[@type='enum']")
         .map(::extractEnumeration)
         .associate()
 
-    val bitmasks = e.query("enums[@type=bitmask]")
+    val bitmasks = e.query("enums[@type='bitmask']")
         .map(::extractBitmask)
         .associate()
 
+    val commands = e.query("commands/command[not(@alias)]")
+        .map(::extractCommand)
+        .associate()
+
+    return Registry(
+        aliases = typedefs,
+        bitmasks = bitmasks,
+        constants = constants,
+        commands = commands,
+        enumerations = enums,
+        opaqueHandleTypedefs = opaqueHandles,
+        structures = structs,
+        ext = EmptyMergeable()
+    )
 }
 
 private const val XR_DEFINE_ATOM = "XR_DEFINE_ATOM"
 
 private fun XR_DEFINE_ATOM(value: String): Typedef {
     return Typedef(value, IdentifierType("uint64_t"))
+}
+
+private const val XR_PTR_SIZE: Int = -1
+
+private fun shouldOpaqueHandle(): Boolean = XR_PTR_SIZE == 8
+
+private fun XR_DEFINE_HANDLE(name: String): Either<OpaqueHandleTypedef, Typedef> {
+    return if (shouldOpaqueHandle()) {
+        Either.Left(OpaqueHandleTypedef("$name#_T"))
+    } else {
+        Either.Right(Typedef(name, IdentifierType("uint64_t")))
+    }
 }
 
 /**
@@ -106,18 +164,25 @@ private fun extractBitmaskType(e: Element): Typedef {
 
 /**
  * @param e in form `<type category="handle" parent="MAY_OR_MAY_NOT_SET"><type>XR_DEFINE_HANDLE</type>(<name>NAME</name>)</type>`
+ * @return either [OpaqueHandleTypedef] or [Typedef], completely depends on the value of [XR_PTR_SIZE]
  */
-private fun extractHandle(e: Element) {
-    TODO()
+private fun extractHandle(e: Element): Either<OpaqueHandleTypedef, Typedef> {
+    val name = getName(e)
+    return XR_DEFINE_HANDLE(name)
 }
 
 /**
  * TODO: few struct decl provide comments, should we extract them?
  *
- * @param e in form `<type category="struct" name="NAME">MEMBER+</type>`
+ * @param e in form `<type category="struct" name="NAME" structextends="MAYBE_SET" protect="MAYBE_SET" returnonly="MAYBE_SET" mayalias="MAYBE_SET">MEMBER+</type>`
  */
 private fun extractStruct(e: Element): Structure {
-    TODO()
+    val name by e.attrs
+    val members = e.getElementSeq("member")
+        .map(::extractMember)
+        .toMutableList()
+
+    return Structure(name!!, members)
 }
 
 /**
@@ -137,23 +202,31 @@ private fun getElementTextWithoutName(e: Element): String {
 }
 
 /**
+ * Extract the name child of given element
+ */
+private fun getName(e: Element): String {
+    return e.getFirstElement("name")!!.textContent.trim()
+}
+
+private fun commaList(s: String?): List<Identifier>? {
+    return s?.split(',')?.map { it.intern() }
+}
+
+/**
  * @param e in form `<member values="..." optional="..." len="...">... <name>NAME</name></member>`
  */
 private fun extractMember(e: Element): Member {
     val values by e.attrs
     val optional by e.attrs
     val len by e.attrs
-    val name by e.children
-    val nameText = name!!.textContent
+    val name = getName(e)
     val type = parseType(getElementTextWithoutName(e)).toType()
 
     // len is a comma separated (identifier | "null-terminated") list
-    val lenList = len
-        ?.split(',')
-        ?.map { it.intern() }
+    val lenList = commaList(len)
 
     return Member(
-        nameText,
+        name,
         type,
         values?.intern(),
         lenList,
@@ -163,14 +236,32 @@ private fun extractMember(e: Element): Member {
     )
 }
 
+private data class EnumLike(val name: String, val value: String)
+
+private fun extractEnumLike(e: Element): EnumLike {
+    val value by e.attrs
+    val name by e.attrs
+
+    return EnumLike(name!!, value!!)
+}
+
+private fun extractConstant(e: Element): Constant {
+    return extractEnumLike(e).run {
+        Constant(
+            name,
+            IdentifierType("uint32_t"),     // FIXME: I am not sure
+            value
+        )
+    }
+}
+
 /**
  * @param e in form `<enum value="INTEGER" name="NAME" comment-"..." />`
  */
 private fun extractEnumVariant(e: Element): EnumVariant {
-    val value by e.attrs
-    val name by e.attrs
-
-    return EnumVariant(name!!, value!!.parseDecOrHex())
+    return extractEnumLike(e).let {
+        EnumVariant(it.name, it.value.parseDecOrHex())
+    }
 }
 
 /**
@@ -205,4 +296,48 @@ private fun extractBitmask(e: Element): Bitmask {
 
     // TODO: i am not sure whether if bitwidth should be null
     return Bitmask(name!!, null, flags)
+}
+
+/**
+ * @param e in form `<some_tag>TYPE <name>NAME</name></some_tag>`
+ */
+private fun extractTypeJudgement(e: Element): Pair<String, Type> {
+    val rawType = getElementTextWithoutName(e)
+    val type = parseType(rawType).toType()
+    val name = getName(e)
+    return name to type
+}
+
+/**
+ * @param e in form `<param len="MAYBE_SET" externsync="MAYBE_SET" optional="MAYBE_SET">TYPE <name>NAME</name></param>`
+ */
+private fun extractParam(e: Element): Param {
+    val (name, type) = extractTypeJudgement(e)
+    val len by e.attrs
+    val externsync by e.attrs
+    val optional by e.attrs
+
+    return Param(name, type, len?.intern(), null, optional == "true")
+}
+
+/**
+ * TODO: some command has `<implicitexternsyncparams>`
+ * @param e in form `<command successcodes="SUCC_CODE*" errorcodes="ERROR_CODE*">PROTO PARAM*</command>`
+ */
+private fun extractCommand(e: Element): Command {
+    val successcodes by e.attrs
+    val errorcodes by e.attrs
+    val (name, retType) = extractTypeJudgement(e.getFirstElement("proto")!!)
+
+    val params = e.childNodes.asSequence().mapNotNull { (it as? Element)?.takeIf { it.tagName == "param" } }
+        .map(::extractParam)
+        .toList()
+
+    return Command(
+        name,
+        params,
+        retType,
+        commaList(successcodes),
+        commaList(errorcodes)
+    )
 }
