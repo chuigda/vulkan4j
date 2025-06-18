@@ -2,33 +2,8 @@ package club.doki7.babel.extract.openxr
 
 import club.doki7.babel.cdecl.parseType
 import club.doki7.babel.cdecl.toType
-import club.doki7.babel.registry.Bitflag
-import club.doki7.babel.registry.Bitmask
-import club.doki7.babel.registry.Command
-import club.doki7.babel.registry.Constant
-import club.doki7.babel.registry.EmptyMergeable
-import club.doki7.babel.registry.Entity
-import club.doki7.babel.registry.EnumVariant
-import club.doki7.babel.registry.Enumeration
-import club.doki7.babel.registry.Identifier
-import club.doki7.babel.registry.IdentifierType
-import club.doki7.babel.registry.Member
-import club.doki7.babel.registry.OpaqueHandleTypedef
-import club.doki7.babel.registry.Param
-import club.doki7.babel.registry.Registry
-import club.doki7.babel.registry.Structure
-import club.doki7.babel.registry.Type
-import club.doki7.babel.registry.Typedef
-import club.doki7.babel.registry.intern
-import club.doki7.babel.util.Either
-import club.doki7.babel.util.asSequence
-import club.doki7.babel.util.attrs
-import club.doki7.babel.util.children
-import club.doki7.babel.util.getElementSeq
-import club.doki7.babel.util.getFirstElement
-import club.doki7.babel.util.parseDecOrHex
-import club.doki7.babel.util.parseXML
-import club.doki7.babel.util.query
+import club.doki7.babel.registry.*
+import club.doki7.babel.util.*
 import org.w3c.dom.Element
 import kotlin.io.path.Path
 
@@ -100,6 +75,23 @@ private fun Element.extractEntities(): Registry<EmptyMergeable> {
     val commands = e.query("commands/command[not(@alias)]")
         .map(::extractCommand)
         .associate()
+
+    e.query("commands/command[@alias]")
+        .map(::extractCommandAlias)
+        .forEach { (name, rawAlias) ->
+            val aliasTo = rawAlias.intern()
+            val origin = commands[aliasTo] ?: error("Missing aliased command: $aliasTo")
+            val alias = Command(
+                name.intern(),
+                origin.params,
+                origin.result,
+                origin.successCodes,
+                origin.errorCodes,
+                aliasTo
+            )
+
+            commands.putEntityIfAbsent(alias)
+        }
 
     return Registry(
         aliases = typedefs,
@@ -340,4 +332,15 @@ private fun extractCommand(e: Element): Command {
         commaList(successcodes),
         commaList(errorcodes)
     )
+}
+
+private data class Aliasing(val name: String, val aliasTo: String)
+
+/**
+ * @param e in form `<command name="NAME" alias="ALIAS"></command>`
+ */
+private fun extractCommandAlias(e: Element): Aliasing {
+    val name = getName(e)
+    val alias by e.attrs
+    return Aliasing(name, alias!!)
 }
