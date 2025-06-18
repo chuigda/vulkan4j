@@ -11,7 +11,7 @@
 
     <name>shaderc</name>
     <description>Java bindings for libshaderc using Project Panama</description>
-    <url>https://github.com/chuigda/vulkan4j</url>
+    <url>https://github.com/club-doki7/vulkan4j</url>
 
     <inceptionYear>2024</inceptionYear>
     <organization>
@@ -42,7 +42,7 @@
     <scm>
         <connection>scm:git:git://github.com/chuigda/vulkan4j.git</connection>
         <developerConnection>scm:git:ssh://github.com:chuigda/vulkan4j.git</developerConnection>
-        <url>https://github.com/chuigda/vulkan4j</url>
+        <url>https://github.com/club-doki7/vulkan4j</url>
     </scm>
 
     <artifactId>shaderc</artifactId>

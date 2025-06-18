@@ -1,6 +1,6 @@
 # Multisampling
 
-> [Java code](https://github.com/chuigda/vulkan4j/tree/master/modules/tutorial/src/main/java/tutorial/vulkan/part10/ch30/Main.java) | [C++ version](https://vulkan-tutorial.com/Multisampling)
+> [Java code](https://github.com/club-doki7/vulkan4j/tree/master/modules/tutorial/src/main/java/tutorial/vulkan/part10/ch30/Main.java) | [C++ version](https://vulkan-tutorial.com/Multisampling)
 
 ## Introduction
 

@@ -1,6 +1,6 @@
 # Base code
 
-> [Java code](https://github.com/chuigda/vulkan4j/tree/master/modules/tutorial/src/main/java/tutorial/vulkan/part01/ch00/Main.java) | [C++ version](https://vulkan-tutorial.com/Drawing_a_triangle/Setup/Base_code)
+> [Java code](https://github.com/club-doki7/vulkan4j/tree/master/modules/tutorial/src/main/java/tutorial/vulkan/part01/ch00/Main.java) | [C++ version](https://vulkan-tutorial.com/Drawing_a_triangle/Setup/Base_code)
 
 ## General structure
 

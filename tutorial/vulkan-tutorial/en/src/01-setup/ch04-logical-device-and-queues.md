@@ -1,6 +1,6 @@
 # Logical device and queues
 
-> [Java code](https://github.com/chuigda/vulkan4j/tree/master/modules/tutorial/src/main/java/tutorial/vulkan/part01/ch04/Main.java) | [C++ version](https://vulkan-tutorial.com/Drawing_a_triangle/Setup/Logical_device_and_queues)
+> [Java code](https://github.com/club-doki7/vulkan4j/tree/master/modules/tutorial/src/main/java/tutorial/vulkan/part01/ch04/Main.java) | [C++ version](https://vulkan-tutorial.com/Drawing_a_triangle/Setup/Logical_device_and_queues)
 
 ## Introduction
 
