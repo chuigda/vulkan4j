@@ -9,6 +9,7 @@ import java.io.StringReader
 import javax.xml.parsers.DocumentBuilderFactory
 import javax.xml.xpath.XPathConstants
 import javax.xml.xpath.XPathFactory
+import kotlin.reflect.KProperty
 
 fun String.parseXML(): Element {
     val builder = DocumentBuilderFactory.newInstance().newDocumentBuilder()
@@ -26,8 +27,7 @@ fun Element.getFirstElement(tag: String): Element? = getElementSeq(tag).firstOrN
 
 fun Element.getElementSeq(tag: String) = getElementsByTagName(tag)
     .asSequence()
-    .filter { it is Element }
-    .map { it as Element }
+    .mapNotNull { it as? Element }
 
 fun Node.query(@Language("XPath") xpath: String): Sequence<Element> {
     return (XPathFactory
@@ -57,3 +57,18 @@ operator fun NodeList.iterator(): Iterator<Node> = object : Iterator<Node> {
 }
 
 fun NodeList.asSequence(): Sequence<Node> = Sequence { this@asSequence.iterator() }
+
+class AttributeDelegate(val element: Element) {
+    operator fun getValue(thisRef: Any?, property: KProperty<*>): String? {
+        return element.getAttributeText(property.name)
+    }
+}
+
+class NodeDelegate(val element: Element) {
+    operator fun getValue(thisRef: Any?, property: KProperty<*>): Element? {
+        return element.getFirstElement(property.name)
+    }
+}
+
+val Element.attrs: AttributeDelegate get() = AttributeDelegate(this)
+val Element.children: NodeDelegate get() = NodeDelegate(this)
