@@ -170,6 +170,12 @@ class Command(
         errorCodes: List<Identifier>?
     ) : this(name.intern(), params, result, successCodes, errorCodes)
 
+    fun aliasBy(name: Identifier): Command {
+        return Command(
+            name, params, result, successCodes, errorCodes, this.name
+        ).also { it.setExt(this.ext<Any?>()) }
+    }
+
     override fun toStringImpl() =
         "Command(name=\"$name\", params=$params, result=$result, successCodes=$successCodes, errorCodes=$errorCodes"
 }

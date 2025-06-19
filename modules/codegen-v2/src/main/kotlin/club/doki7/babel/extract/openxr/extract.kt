@@ -96,15 +96,7 @@ private fun Element.extractEntities(): Registry<EmptyMergeable> {
         .forEach { (name, rawAlias) ->
             val aliasTo = rawAlias.intern()
             val origin = commands[aliasTo] ?: error("Missing aliased command: $aliasTo")
-            val alias = Command(
-                name.intern(),
-                origin.params,
-                origin.result,
-                origin.successCodes,
-                origin.errorCodes,
-                aliasTo
-            )
-
+            val alias = origin.aliasBy(name.intern())
             commands.putEntityIfAbsent(alias)
         }
 
@@ -132,13 +124,13 @@ private fun XR_DEFINE_ATOM(value: String): Typedef {
 
 private fun XR_DEFINE_OPAQUE_64(value: String): OpaqueDefine = XR_DEFINE_HANDLE(value)
 
-private const val XR_PTR_SIZE: Int = -1
+private const val XR_PTR_SIZE: Int = 8
 
 private fun shouldOpaqueHandle(): Boolean = XR_PTR_SIZE == 8
 
 private fun XR_DEFINE_HANDLE(name: String): OpaqueDefine {
     return if (shouldOpaqueHandle()) {
-        Either.Left(OpaqueHandleTypedef("${name}#_T"))
+        Either.Left(OpaqueHandleTypedef(name))
     } else {
         Either.Right(Typedef(name, IdentifierType("uint64_t")))
     }
