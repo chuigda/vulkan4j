@@ -1,6 +1,10 @@
 package club.doki7.babel.extract.openxr
 
+import club.doki7.babel.cdecl.RawFunctionType
+import club.doki7.babel.cdecl.TypedefDecl
+import club.doki7.babel.cdecl.parseFunctionDecl
 import club.doki7.babel.cdecl.parseType
+import club.doki7.babel.cdecl.parseTypedefDecl
 import club.doki7.babel.cdecl.toType
 import club.doki7.babel.registry.*
 import club.doki7.babel.util.*
@@ -83,6 +87,10 @@ private fun Element.extractEntities(): Registry<EmptyMergeable> {
         .map(::extractCommand)
         .associate()
 
+    val funcs = e.query("types/type[@category='funcpointer']")
+        .map(::extractFunctionTypedef)
+        .associate()
+
     e.query("commands/command[@alias]")
         .map(::extractAlias)
         .forEach { (name, rawAlias) ->
@@ -106,6 +114,7 @@ private fun Element.extractEntities(): Registry<EmptyMergeable> {
         constants = constants,
         commands = commands,
         enumerations = enums,
+        functionTypedefs = funcs,
         opaqueHandleTypedefs = opaqueHandles,
         structures = structs,
         ext = EmptyMergeable()
@@ -385,4 +394,22 @@ private fun extractAlias(e: Element): Aliasing {
     val name by e.attrs
     val alias by e.attrs
     return Aliasing(name!!, alias!!)
+}
+
+private fun morphFunctionTypedef(typedef: TypedefDecl) = FunctionTypedef(
+    name = typedef.name,
+    params = (typedef.aliasedType as RawFunctionType).params.map { it.second.toType() },
+    result = typedef.aliasedType.returnType.toType()
+)
+
+/**
+ * @param e form `<type category="funcpointer" requires="MAYBE_SET">RAW_C_TYPEDEF+</type>`
+ */
+private fun extractFunctionTypedef(e: Element): FunctionTypedef {
+    val requires by e.attrs
+    val content = e.textContent.trim()
+    val typedefs = content.split(';')
+    val typedef = typedefs[typedefs.size - 2] + ';'
+    val (rawTypedef, _) = parseTypedefDecl(typedef.lines(), 0)
+    return morphFunctionTypedef(rawTypedef)
 }

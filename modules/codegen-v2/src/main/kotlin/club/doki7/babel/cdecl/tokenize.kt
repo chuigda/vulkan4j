@@ -250,6 +250,7 @@ internal val knownTriviaMacros = setOf(
     "SDL_MALLOC",
 
     "SHADERC_EXPORT",
+    "XRAPI_PTR",
 
     "extern"
 )
