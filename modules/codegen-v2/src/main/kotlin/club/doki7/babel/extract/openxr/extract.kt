@@ -58,7 +58,14 @@ private fun Element.extractEntities(): Registry<EmptyMergeable> {
         .map(::extractStruct)
         .associate()
 
-    val structAliases = e.query("types/type[@category='struct' and @alias]")
+    e.query("types/type[@category='struct' and @alias]")
+        .map(::extractAlias)
+        .forEach { (name, rawAlias) ->
+            val aliasTo = rawAlias.intern()
+            val origin = structs[aliasTo] ?: error("Missing aliased structure: $aliasTo")
+            val alias = Structure(name, origin.members)
+            structs.putEntityIfAbsent(alias)
+        }
 
     val constants = e.query("enums[@name='API Constants']/enum")
         .map(::extractConstant)
@@ -77,7 +84,7 @@ private fun Element.extractEntities(): Registry<EmptyMergeable> {
         .associate()
 
     e.query("commands/command[@alias]")
-        .map(::extractCommandAlias)
+        .map(::extractAlias)
         .forEach { (name, rawAlias) ->
             val aliasTo = rawAlias.intern()
             val origin = commands[aliasTo] ?: error("Missing aliased command: $aliasTo")
@@ -372,9 +379,9 @@ private fun extractCommand(e: Element): Command {
 private data class Aliasing(val name: String, val aliasTo: String)
 
 /**
- * @param e in form `<command name="NAME" alias="ALIAS"></command>`
+ * @param e in form `<some_tag name="NAME" alias="ALIAS"></some_tag>`
  */
-private fun extractCommandAlias(e: Element): Aliasing {
+private fun extractAlias(e: Element): Aliasing {
     val name by e.attrs
     val alias by e.attrs
     return Aliasing(name!!, alias!!)
