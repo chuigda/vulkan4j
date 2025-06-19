@@ -32,9 +32,17 @@ private fun Element.extractEntities(): Registry<EmptyMergeable> {
     val e = this
 
     // TODO: parse <type requires="...">
+    val opaqueHandles: MutableMap<Identifier, OpaqueHandleTypedef> = mutableMapOf()
+    val typedefs: MutableMap<Identifier, Typedef> = mutableMapOf()
 
-    val basetypes = e.query("types/type[@category='basetype']")
+    e.query("types/type[@category='basetype']")
         .map(::extractBasetype)
+        .forEach {
+            when (it) {
+                is Either.Left<OpaqueHandleTypedef, Typedef> -> opaqueHandles.putEntityIfAbsent(it.value)
+                is Either.Right<OpaqueHandleTypedef, Typedef> -> typedefs.putEntityIfAbsent(it.value)
+            }
+        }
 
     // TODO: do we need this? perhaps this is implied by [bitmasks]
 //    val bitmaskTypes = e.query("types/type[@category=bitmask]")
@@ -43,23 +51,15 @@ private fun Element.extractEntities(): Registry<EmptyMergeable> {
     val handles = e.query("types/type[@category='handle']")
         .map(::extractHandle)
 
-    val opaqueHandles: MutableMap<Identifier, OpaqueHandleTypedef> = if (shouldOpaqueHandle()) {
-        handles.map { (it as Either.Left).value }.associate()
-    } else mutableMapOf()
-
-    val typedefHandles: Sequence<Typedef> = if (!shouldOpaqueHandle()) {
-        handles.map { (it as Either.Right).value }
-    } else emptySequence()
-
-    val typedefs = (basetypes + typedefHandles)
-        .associate()
+    liftLeft(handles).associateByTo(opaqueHandles, Entity::name)
+    liftRight(handles).associateByTo(typedefs, Entity::name)
 
     val structs = e.query("types/type[@category='struct' and not(@alias)]")
         .map(::extractStruct)
         .associate()
+
     val structAliases = e.query("types/type[@category='struct' and @alias]")
 
-    // TODO: extract enum API Constants
     val constants = e.query("enums[@name='API Constants']/enum")
         .map(::extractConstant)
         .associate()
@@ -106,21 +106,38 @@ private fun Element.extractEntities(): Registry<EmptyMergeable> {
 }
 
 private const val XR_DEFINE_ATOM = "XR_DEFINE_ATOM"
+private const val XR_DEFINE_OPAQUE_64 = "XR_DEFINE_OPAQUE_64"
+
+private typealias OpaqueDefine = Either<OpaqueHandleTypedef, Typedef>
 
 private fun XR_DEFINE_ATOM(value: String): Typedef {
     return Typedef(value, IdentifierType("uint64_t"))
 }
 
+private fun XR_DEFINE_OPAQUE_64(value: String): OpaqueDefine = XR_DEFINE_HANDLE(value)
+
 private const val XR_PTR_SIZE: Int = -1
 
 private fun shouldOpaqueHandle(): Boolean = XR_PTR_SIZE == 8
 
-private fun XR_DEFINE_HANDLE(name: String): Either<OpaqueHandleTypedef, Typedef> {
+private fun XR_DEFINE_HANDLE(name: String): OpaqueDefine {
     return if (shouldOpaqueHandle()) {
-        Either.Left(OpaqueHandleTypedef("$name#_T"))
+        Either.Left(OpaqueHandleTypedef("${name}#_T"))
     } else {
         Either.Right(Typedef(name, IdentifierType("uint64_t")))
     }
+}
+
+private fun liftLeft(es: Sequence<OpaqueDefine>): Sequence<OpaqueHandleTypedef> {
+    return if (shouldOpaqueHandle()) {
+        es.map { (it as Either.Left).value }
+    } else emptySequence()
+}
+
+private fun liftRight(es: Sequence<OpaqueDefine>): Sequence<Typedef> {
+    return if (!shouldOpaqueHandle()) {
+        es.map { (it as Either.Right).value }
+    } else emptySequence()
 }
 
 /**
@@ -135,15 +152,16 @@ private fun extractTrivialTypedef(e: Element): Typedef {
 /**
  * @param e in form `<type category="basetype">...<type>TYPE_OR_MACRO</type>...<name>NAME</name>...</type>`
  */
-private fun extractBasetype(e: Element): Typedef {
+private fun extractBasetype(e: Element): OpaqueDefine {
     val typeOrMacro = e.getFirstElement("type")!!.textContent
-    val name = e.getFirstElement("name")!!.textContent
+    val name = getName(e)
 
-    // TODO: handle XR_DEFINE_OPAQUE_64
-    return if (typeOrMacro == XR_DEFINE_ATOM) {
-        XR_DEFINE_ATOM(name)
-    } else {
-        extractTrivialTypedef(e)
+    return when (typeOrMacro) {
+        XR_DEFINE_ATOM -> Either.Right(XR_DEFINE_ATOM(name))
+        XR_DEFINE_OPAQUE_64 -> XR_DEFINE_OPAQUE_64(name)
+        else -> {
+            Either.Right(extractTrivialTypedef(e))
+        }
     }
 }
 
@@ -166,15 +184,30 @@ private fun extractHandle(e: Element): Either<OpaqueHandleTypedef, Typedef> {
 /**
  * TODO: few struct decl provide comments, should we extract them?
  *
- * @param e in form `<type category="struct" name="NAME" structextends="MAYBE_SET" protect="MAYBE_SET" returnonly="MAYBE_SET" mayalias="MAYBE_SET">MEMBER+</type>`
+ * @param e in form `<type category="struct" name="NAME" structextends="MAYBE_SET" parentstruct="MAYBE_SET" protect="MAYBE_SET" returnonly="MAYBE_SET" mayalias="MAYBE_SET">MEMBER+</type>`
  */
 private fun extractStruct(e: Element): Structure {
     val name by e.attrs
+    val structextends by e.attrs
+    val parentstruct by e.attrs
+    val protect by e.attrs
+    val returnonly by e.attrs
+    val mayalias by e.attrs
     val members = e.getElementSeq("member")
         .map(::extractMember)
         .toMutableList()
 
-    return Structure(name!!, members)
+    return Structure(name!!, members).apply {
+        setExt(
+            XrStructMetadata(
+                structextends,
+                parentstruct,
+                protect,
+                returnonly == "true",
+                mayalias == "true"
+            )
+        )
+    }
 }
 
 /**
@@ -309,7 +342,9 @@ private fun extractParam(e: Element): Param {
     val externsync by e.attrs
     val optional by e.attrs
 
-    return Param(name, type, len?.intern(), null, optional == "true")
+    return Param(name, type, len?.intern(), null, optional == "true").apply {
+        setExt(XrParamMetadata(externsync))
+    }
 }
 
 /**
@@ -321,7 +356,7 @@ private fun extractCommand(e: Element): Command {
     val errorcodes by e.attrs
     val (name, retType) = extractTypeJudgement(e.getFirstElement("proto")!!)
 
-    val params = e.childNodes.asSequence().mapNotNull { (it as? Element)?.takeIf { it.tagName == "param" } }
+    val params = e.query("param")
         .map(::extractParam)
         .toList()
 
@@ -340,7 +375,7 @@ private data class Aliasing(val name: String, val aliasTo: String)
  * @param e in form `<command name="NAME" alias="ALIAS"></command>`
  */
 private fun extractCommandAlias(e: Element): Aliasing {
-    val name = getName(e)
+    val name by e.attrs
     val alias by e.attrs
-    return Aliasing(name, alias!!)
+    return Aliasing(name!!, alias!!)
 }
