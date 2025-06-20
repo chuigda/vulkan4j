@@ -442,7 +442,7 @@ private fun extractExtends(e: Element): Extend {
         .map(::extractComponent)
         .toList()
 
-    return Extend(interaction_profile_path!!, components)
+    return Extend(interaction_profile_path, components)
 }
 
 /**

@@ -27,7 +27,7 @@ data class Require(
 )
 
 data class Extend(
-    val interactionProfilePath: String,
+    val interactionProfilePath: String?,
     val components: List<Component>
 ) {
     data class Component(val subpath: String, val type: Identifier)
