@@ -1,0 +1,8 @@
+BasedOnStyle: LLVM
+IndentWidth: 4
+
+AllowShortEnumsOnASingleLine: false
+AllowShortFunctionsOnASingleLine: None
+AllowShortBlocksOnASingleLine: Never
+ColumnLimit: 0
+BreakFunctionDefinitionParameters: false
