@@ -98,6 +98,10 @@ private fun Element.extractEntities(): Registry<OpenXRRegistryExt> {
         .map(::extractFeature)
         .associate()
 
+    val extensions = e.query("extensions/extension")
+        .map(::extractExtension)
+        .associate()
+
     return Registry(
         aliases = typedefs,
         bitmasks = bitmasks,
@@ -107,7 +111,7 @@ private fun Element.extractEntities(): Registry<OpenXRRegistryExt> {
         functionTypedefs = funcs,
         opaqueHandleTypedefs = opaqueHandles,
         structures = structs,
-        ext = OpenXRRegistryExt(features)
+        ext = OpenXRRegistryExt(features, extensions)
     )
 }
 
@@ -421,6 +425,15 @@ private fun extractRequire(e: Element): Require {
 }
 
 /**
+ * TODO: fix this stupid thing:
+ *             <extend interaction_profile_predicate="true">
+ *                 <condition>
+ *                     <user_path path="/user/hand/left"/>
+ *                     <component subpath="/input/grip/pose" type="XR_ACTION_TYPE_POSE_INPUT"/>
+ *                 </condition>
+ *                 <user_path path="/user/detached_controller_meta/left" inherit="/user/hand/left"/>
+ *             </extend>
+ *
  * @param e in form `<extend interaction_profile_path="...">COMPONENT*</extend>`
  */
 private fun extractExtends(e: Element): Extend {
@@ -461,5 +474,48 @@ private fun extractRequireValue(e: Element): RequireValue {
         offset?.parseDecOrHex(),
         dir,
         alias
+    )
+}
+
+/**
+ * @param e in form
+ *          ```
+ *          <extension name="..."
+ *                     number="INTEGER"
+ *                     type="..."
+ *                     supported="..."
+ *                     depends="?"
+ *                     provisional="BOOLEAN?"
+ *                     ratified="?"
+ *                     promotedto="VERSION_NAME?"
+ *                     deprecatedBy="?">
+ *              REQUIRE*
+ *          </extension>`
+ */
+private fun extractExtension(e: Element): OpenXRExtension {
+    val name by e.attrs
+    val number by e.attrs
+    val type by e.attrs
+    val supported by e.attrs
+    // optional
+    val depends by e.attrs
+    val provisional by e.attrs
+    val ratified by e.attrs
+    val promotedto by e.attrs
+    val deprecatedBy by e.attrs
+
+    val requires = e.getElementSeq("require").map(::extractRequire).toList()
+
+    return OpenXRExtension(
+        name!!,
+        number!!.parseDecOrHex(),
+        type!!,
+        supported!!,
+        depends,
+        provisional == "true",
+        ratified,
+        promotedto?.intern(),
+        deprecatedBy,
+        requires
     )
 }

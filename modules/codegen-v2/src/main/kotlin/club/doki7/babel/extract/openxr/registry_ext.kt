@@ -79,13 +79,49 @@ class OpenXRVersion(
     override fun toStringImpl(): String = """OpenXRVersion(name="$name", number=$number, require=$require"""
 }
 
+class OpenXRExtension(
+    name: String,
+    val number: Long,
+    val type: String,
+    val supported: String,
+    val depends: String?,
+    val provisional: Boolean,
+    val ratified: String?,
+    val promotedTo: Identifier?,
+    val deprecatedBy: String?,
+    val requires: List<Require>
+) : Entity(name) {
+    override fun toStringImpl(): String = buildString {
+        append("OpenXRExtension(name=\"$name\", number=$number, type=\"$type\", supported=\"$supported\", provisional=$provisional")
+
+        depends?.let {
+            append(", depends=\"$depends\"")
+        }
+
+        ratified?.let {
+            append(", ratified=\"$ratified\"")
+        }
+
+        promotedTo?.let {
+            append(", promotedTo=$promotedTo")
+        }
+
+        deprecatedBy?.let {
+            append(", deprecatedBy=\"$deprecatedBy\"")
+        }
+
+        append("requires=$requires")
+    }
+}
+
 data class OpenXRRegistryExt(
-    val versions: Map<Identifier, OpenXRVersion>
+    val versions: Map<Identifier, OpenXRVersion>,
+    val extensions: Map<Identifier, OpenXRExtension>
 ) : IMergeable<OpenXRRegistryExt> {
     override fun merge(other: OpenXRRegistryExt): OpenXRRegistryExt {
         return OpenXRRegistryExt(
-            versions + other.versions
+            versions + other.versions,
+            extensions + other.extensions
         )
     }
-
 }

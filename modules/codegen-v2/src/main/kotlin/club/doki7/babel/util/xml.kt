@@ -1,6 +1,7 @@
 package club.doki7.babel.util
 
 import org.intellij.lang.annotations.Language
+import org.w3c.dom.Attr
 import org.w3c.dom.Element
 import org.w3c.dom.NamedNodeMap
 import org.w3c.dom.Node
@@ -86,5 +87,17 @@ fun NamedNodeMap.toNodeList(): NodeList = object : NodeList {
     override fun getLength(): Int {
         return this@toNodeList.length
     }
+}
 
+fun NodeList.allAttributeName(): Map<String, Int> {
+    return asSequence().fold(mutableMapOf()) { acc, elem ->
+        acc.apply {
+            elem.attributes.toNodeList().asSequence().forEach {
+                val name = (it as Attr).nodeName
+                compute(name) { _, v ->
+                    (v ?: 0) + 1
+                }
+            }
+        }
+    }
 }
