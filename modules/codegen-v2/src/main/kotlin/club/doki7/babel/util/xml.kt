@@ -2,6 +2,7 @@ package club.doki7.babel.util
 
 import org.intellij.lang.annotations.Language
 import org.w3c.dom.Element
+import org.w3c.dom.NamedNodeMap
 import org.w3c.dom.Node
 import org.w3c.dom.NodeList
 import org.xml.sax.InputSource
@@ -72,3 +73,18 @@ class NodeDelegate(val element: Element) {
 
 val Element.attrs: AttributeDelegate get() = AttributeDelegate(this)
 val Element.children: NodeDelegate get() = NodeDelegate(this)
+
+inline fun NamedNodeMap.toMap(keyMapping: (Node) -> String): Map<String, Node> {
+    return toNodeList().asSequence().associateBy(keyMapping)
+}
+
+fun NamedNodeMap.toNodeList(): NodeList = object : NodeList {
+    override fun item(index: Int): Node? {
+        return this@toNodeList.item(index)
+    }
+
+    override fun getLength(): Int {
+        return this@toNodeList.length
+    }
+
+}

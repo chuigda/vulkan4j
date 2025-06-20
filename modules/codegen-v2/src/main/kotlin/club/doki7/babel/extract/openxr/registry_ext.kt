@@ -20,9 +20,56 @@ data class Require(
     val comment: String?,
     val extend: String?,
     val types: List<String>,
-    val enums: List<Identifier>,
-    val commands: List<Identifier>
+    val values: List<RequireValue>,
+    val commands: List<Identifier>,
+    val interactionProfiles: List<String>,
+    val extending: List<Extend>
 )
+
+data class Extend(
+    val interactionProfilePath: String,
+    val components: List<Component>
+) {
+    data class Component(val subpath: String, val type: Identifier)
+}
+
+class RequireValue(
+    name: String,
+    val extends: String?,
+    val value: String?,
+    val bitpos: Long?,
+    val offset: Long?,
+    val dir: String?,
+    val alias: String?
+) : Entity(name) {
+    override fun toStringImpl(): String = buildString {
+        append("RequireValue(name=\"$name\"")
+
+        extends?.let {
+            append(", extends=\"$it\"")
+        }
+
+        value?.let {
+            append(", value=\"$it\"")
+        }
+
+        bitpos?.let {
+            append(", bitpos=$it")
+        }
+
+        offset?.let {
+            append(", offset=$it")
+        }
+
+        dir?.let {
+            append(", dir=\"$it\"")
+        }
+
+        alias?.let {
+            append(", alias=\"$alias\"")
+        }
+    }
+}
 
 class OpenXRVersion(
     name: String,

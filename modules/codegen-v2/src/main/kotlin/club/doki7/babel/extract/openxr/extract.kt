@@ -1,11 +1,6 @@
 package club.doki7.babel.extract.openxr
 
-import club.doki7.babel.cdecl.RawFunctionType
-import club.doki7.babel.cdecl.TypedefDecl
-import club.doki7.babel.cdecl.parseFunctionDecl
-import club.doki7.babel.cdecl.parseType
-import club.doki7.babel.cdecl.parseTypedefDecl
-import club.doki7.babel.cdecl.toType
+import club.doki7.babel.cdecl.*
 import club.doki7.babel.registry.*
 import club.doki7.babel.util.*
 import org.w3c.dom.Element
@@ -35,7 +30,6 @@ private fun <T : Entity> Sequence<T>.associate(): MutableMap<Identifier, T> {
 private fun Element.extractEntities(): Registry<OpenXRRegistryExt> {
     val e = this
 
-    // TODO: parse <type requires="...">
     val opaqueHandles: MutableMap<Identifier, OpaqueHandleTypedef> = mutableMapOf()
     val typedefs: MutableMap<Identifier, Typedef> = mutableMapOf()
 
@@ -178,13 +172,6 @@ private fun extractBasetype(e: Element): OpaqueDefine {
 }
 
 /**
- * @param e in form `<type bitvalues="BIT_VALUES" category="bitmask">typedef <type>XrFlags64</type> <name>BIT_VALUES</name></type>`
- */
-private fun extractBitmaskType(e: Element): Typedef {
-    return extractTrivialTypedef(e)
-}
-
-/**
  * @param e in form `<type category="handle" parent="MAY_OR_MAY_NOT_SET"><type>XR_DEFINE_HANDLE</type>(<name>NAME</name>)</type>`
  * @return either [OpaqueHandleTypedef] or [Typedef], completely depends on the value of [XR_PTR_SIZE]
  */
@@ -220,13 +207,6 @@ private fun extractStruct(e: Element): Structure {
             )
         )
     }
-}
-
-/**
- * @param e in form `<type category="struct" name="NAME" alias="ALIAS"/>`
- */
-private fun extractStructAlias(e: Element) {
-    TODO()
 }
 
 /**
@@ -424,16 +404,62 @@ private fun extractFeature(e: Element): OpenXRVersion {
 }
 
 /**
- * @param e in form `<require comment="MAYBE_SET" depends="MAYBE_SET">ENTITY</require>`
- *          where ENTITY can be: `type`, `enum`, `command`, `interaction_profile`, `extend`
+ * @param e in form `<require comment="MAYBE_SET" depends="MAYBE_SET">ENTITY*</require>`
+ *          where `ENTITY` can be: `type`, `enum`, `command`, `interaction_profile`, `extend`
  */
 private fun extractRequire(e: Element): Require {
     val comment by e.attrs
     val extend by e.attrs
 
     val types = e.getElementSeq("type").map { it.getAttributeText("name")!! }.toList()
-    val enums = e.getElementSeq("enum").map { it.getAttributeText("name")!!.intern() }.toList()
+    val values = e.getElementSeq("enum").map(::extractRequireValue).toList()
     val commands = e.getElementSeq("command").map { it.getAttributeText("name")!!.intern() }.toList()
+    val interactionProfiles = e.getElementSeq("interaction_profile").map { it.getAttributeText("name")!! }.toList()
+    val extends = e.getElementSeq("extend").map(::extractExtends).toList()
 
-    return Require(comment, extend, types, enums, commands)
+    return Require(comment, extend, types, values, commands, interactionProfiles, extends)
+}
+
+/**
+ * @param e in form `<extend interaction_profile_path="...">COMPONENT*</extend>`
+ */
+private fun extractExtends(e: Element): Extend {
+    val interaction_profile_path by e.attrs
+    val components = e.getElementSeq("component")
+        .map(::extractComponent)
+        .toList()
+
+    return Extend(interaction_profile_path!!, components)
+}
+
+/**
+ * @param e in form `<component subpath="..." type="..." />`
+ */
+private fun extractComponent(e: Element): Extend.Component {
+    val subpath by e.attrs
+    val type by e.attrs
+    return Extend.Component(subpath!!, type!!.intern())
+}
+
+/**
+ * @param e in form `<enum name="..." extends="..." value="..." bitpos="..." offset="..." dir="..." alias="..." comment="..." />`
+ */
+private fun extractRequireValue(e: Element): RequireValue {
+    val name by e.attrs
+    val extends by e.attrs
+    val value by e.attrs
+    val bitpos by e.attrs
+    val offset by e.attrs
+    val dir by e.attrs
+    val alias by e.attrs
+
+    return RequireValue(
+        name!!,
+        extends,
+        value,
+        bitpos?.parseDecOrHex(),
+        offset?.parseDecOrHex(),
+        dir,
+        alias
+    )
 }
