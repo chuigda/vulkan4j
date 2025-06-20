@@ -20,6 +20,8 @@ module club.doki7.ffm {
     exports club.doki7.ffm.annotation;
     exports club.doki7.ffm.ptr;
     exports club.doki7.ffm.bits;
+    exports club.doki7.ffm.library;
+    exports club.doki7.ffm.util;
 
     requires org.jetbrains.annotations;
 }
