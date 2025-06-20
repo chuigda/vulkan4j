@@ -18,7 +18,7 @@ fun main() {
     return
 }
 
-fun extractOpenXRRegistry(): Registry<EmptyMergeable> {
+fun extractOpenXRRegistry(): Registry<OpenXRRegistryExt> {
     val registry = inputDir.resolve("xr.xml")
         .toFile()
         .readText()
@@ -32,7 +32,7 @@ private fun <T : Entity> Sequence<T>.associate(): MutableMap<Identifier, T> {
     return associateByTo(mutableMapOf(), Entity::name)
 }
 
-private fun Element.extractEntities(): Registry<EmptyMergeable> {
+private fun Element.extractEntities(): Registry<OpenXRRegistryExt> {
     val e = this
 
     // TODO: parse <type requires="...">
@@ -100,6 +100,10 @@ private fun Element.extractEntities(): Registry<EmptyMergeable> {
             commands.putEntityIfAbsent(alias)
         }
 
+    val features = e.query("feature[@api]")
+        .map(::extractFeature)
+        .associate()
+
     return Registry(
         aliases = typedefs,
         bitmasks = bitmasks,
@@ -109,7 +113,7 @@ private fun Element.extractEntities(): Registry<EmptyMergeable> {
         functionTypedefs = funcs,
         opaqueHandleTypedefs = opaqueHandles,
         structures = structs,
-        ext = EmptyMergeable()
+        ext = OpenXRRegistryExt(features)
     )
 }
 
@@ -395,7 +399,7 @@ private fun morphFunctionTypedef(typedef: TypedefDecl) = FunctionTypedef(
 )
 
 /**
- * @param e form `<type category="funcpointer" requires="MAYBE_SET">RAW_C_TYPEDEF+</type>`
+ * @param e in form `<type category="funcpointer" requires="MAYBE_SET">RAW_C_TYPEDEF+</type>`
  */
 private fun extractFunctionTypedef(e: Element): FunctionTypedef {
     val requires by e.attrs
@@ -404,4 +408,32 @@ private fun extractFunctionTypedef(e: Element): FunctionTypedef {
     val typedef = typedefs[typedefs.size - 2] + ';'
     val (rawTypedef, _) = parseTypedefDecl(typedef.lines(), 0)
     return morphFunctionTypedef(rawTypedef)
+}
+
+/**
+ * @param e in form `<feature api="openxr" name="NAME" number="NUMBER">REQUIRE*</feature>`
+ */
+private fun extractFeature(e: Element): OpenXRVersion {
+    val name by e.attrs
+    val number by e.attrs
+    val requires = e.getElementSeq("require")
+        .map(::extractRequire)
+        .toList()
+
+    return OpenXRVersion(name!!, number!!.toFloat(), requires)
+}
+
+/**
+ * @param e in form `<require comment="MAYBE_SET" depends="MAYBE_SET">ENTITY</require>`
+ *          where ENTITY can be: `type`, `enum`, `command`, `interaction_profile`, `extend`
+ */
+private fun extractRequire(e: Element): Require {
+    val comment by e.attrs
+    val extend by e.attrs
+
+    val types = e.getElementSeq("type").map { it.getAttributeText("name")!! }.toList()
+    val enums = e.getElementSeq("enum").map { it.getAttributeText("name")!!.intern() }.toList()
+    val commands = e.getElementSeq("command").map { it.getAttributeText("name")!!.intern() }.toList()
+
+    return Require(comment, extend, types, enums, commands)
 }
