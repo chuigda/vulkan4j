@@ -35,16 +35,20 @@ if [ -z "$CXX" ]; then
   echo Info: CXX is not set, defaulting to g++
 fi
 
+if [ -z "$VULKAN_SDK_DIR" ] || [ ! -d "$VULKAN_SDK_DIR" ]; then
+  # try to use VULKAN_SDK. The github actions seems to use this one
+  VULKAN_SDK_DIR=$VULKAN_SDK
+fi
+
 # if VULKAN_SDK_DIR is not set, or the directory does not exist, give a warn
 if [ -z "$VULKAN_SDK_DIR" ] || [ ! -d "$VULKAN_SDK_DIR" ]; then
   # if this is on Windows platform, this is likely to be incorrect and give warning
   if [ -n "$WIN32" ]; then
     echo Warning: VULKAN_SDK_DIR is not set or does not exist
-  else
-    echo Info: picked up VULKAN_SDK_DIR=$VULKAN_SDK_DIR
   fi
   $CXX -std=c++17 -O2 -fno-rtti -fno-exceptions -fPIC -I. -c -o vma.o vma_usage.cc
 else
+  echo Info: picked up VULKAN_SDK_DIR=$VULKAN_SDK_DIR
   $CXX -std=c++17 -O2 -fno-rtti -fno-exceptions -fPIC "-I${VULKAN_SDK_DIR}/Include" -I. -c -o vma.o vma_usage.cc
 fi
 
