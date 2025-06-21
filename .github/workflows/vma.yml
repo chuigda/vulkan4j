@@ -40,7 +40,7 @@ jobs:
         CXX: ${{ steps.install_cc.outputs.cxx }}
       run: |
         cd modules/vma/vma_build
-        bash build.sh
+        ./build.sh
     - name: Upload libvma.so
       uses: actions/upload-artifact@v4
       if: matrix.os == 'ubuntu-latest'
