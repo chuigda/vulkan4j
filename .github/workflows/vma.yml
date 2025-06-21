@@ -34,13 +34,12 @@ jobs:
       run: echo "MACOS=true" >> $GITHUB_ENV
     - name: Set WIN32 environment variable
       if: matrix.os == 'windows-latest'
-      run: echo "WIN32=true" >> $GITHUB_ENV
+      run: echo "WIN32=true" >> $env:GITHUB_ENV
     - name: Compile vma
       env:
         CXX: ${{ steps.install_cc.outputs.cxx }}
       run: |
         cd modules/vma/vma_build
-        . $GITHUB_ENV
         ./build.sh
     - name: Upload libvma.so
       uses: actions/upload-artifact@v4
