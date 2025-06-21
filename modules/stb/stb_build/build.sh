@@ -1,40 +1,20 @@
 #!/usr/bin/env bash
 
-STB_IMAGE_H_URI=https://raw.githubusercontent.com/nothings/stb/refs/heads/master/stb_image.h
+STB_URL_PREFIX="https://raw.githubusercontent.com/nothings/stb/f58f558c120e9b32c217290b80bad1a0729fbb2c/"
+COMPONENTS=("image" "truetype" "image_resize2")
 
-# if the file does not exist
-if [ ! -f stb_image.h ]; then
-  # if wget is installed on this system
-  if command -v wget &> /dev/null; then
-    echo Downloading VMA header file
-    wget $STB_IMAGE_H_URI
-  elif command -v curl &> /dev/null; then
-    echo Downloading VMA header file
-    curl -o stb_image.h $STB_IMAGE_H_URI
-  else
-    echo Error: could not find stb_image.h and cannot download it automatically
-    exit 1
-  fi
+for component in "${COMPONENTS[@]}"; do
+  if [ ! -f "stb_${component}.h" ]; then
+    curl -o "stb_${component}.h" "${STB_URL_PREFIX}stb_${component}.h";
+  fi;
+done
 
-  # if last command failed, exit
-  if [ $? -ne 0 ]; then
-    echo Error: error downloading stb_image.h
-    exit 1
-  fi
+# if CC is not set, default to gcc
+if [ -z "CC" ]; then
+  CC=gcc
 fi
 
-# if the file still does not exist (even if the download command succeeded)
-if [ ! -f stb_image.h ]; then
-  echo Error: could not find stb_image.h, consider downloading it manually
-  exit 1
-fi
-
-# if CXX is not set, default to g++
-if [ -z "$CXX" ]; then
-  CXX=g++
-fi
-
-$CXX -std=c++17 -O2 -fno-rtti -fno-exceptions -fPIC -I. -c -o stb_image.o stb_image.cc
+$CC -std=c11 -O2 -fPIC -I. -c -o stb.o stb_usage.c
 
 # If the last command failed, exit
 if [ $? -ne 0 ]; then
@@ -43,7 +23,7 @@ fi
 
 # Generate shared library file according to the platform, using a environment variable WIN32
 if [ -n "$WIN32" ]; then
-  $CXX -shared -fPIC -static-libgcc -static-libstdc++ -o stb_image.dll stb_image.o
+  $CC -shared -fPIC -static-libgcc -o stb.dll stb.o
 else
-  $CXX -shared -fPIC -o libstb_image.so stb_image.o
+  $CC -shared -fPIC -o libstb.so stb.o
 fi
