@@ -61,5 +61,10 @@ fi
 if [ -n "$WIN32" ]; then
   $CXX -shared -fPIC -static-libgcc -static-libstdc++ -o vma.dll vma.o
 else
-  $CXX -shared -fPIC -o libvma.so vma.o
+  if [ -n "$MACOS" ]; then
+    $CXX -shared -fPIC -o libvma.dylib vma.o
+  else
+    # if you are on macos, we still compile the dylib, but it'll have a cringe file extension
+    $CXX -shared -fPIC -o libvma.so vma.o
+  fi
 fi
