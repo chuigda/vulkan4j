@@ -1,7 +1,7 @@
 package club.doki7.ffm.library;
 
-import club.doki7.ffm.Loader;
 import club.doki7.ffm.RawFunctionLoader;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.lang.foreign.Arena;
@@ -13,7 +13,7 @@ import java.util.Objects;
 
 public final class WindowsLibrary implements ISharedLibrary {
     @Override
-    public MemorySegment apply(String name) {
+    public @NotNull MemorySegment apply(@NotNull String name) {
         try (Arena arena = Arena.ofConfined()){
             MethodHandle h = Objects.requireNonNull(hGetProcAddress);
             return (MemorySegment) h.invokeExact(arena.allocateFrom(name));
@@ -50,11 +50,9 @@ public final class WindowsLibrary implements ISharedLibrary {
     private static final @Nullable MethodHandle hGetProcAddress;
     private static final @Nullable MethodHandle hFreeLibrary;
     static {
-        MemorySegment pfnGetProcAddress = Loader.loadFunctionOrNull("GetProcSAddress");
-        MemorySegment pfnFreeLibrary = Loader.loadFunctionOrNull("FreeLibrary");
-        if (pfnGetProcAddress == null
-            || pfnFreeLibrary == null
-            || pfnGetProcAddress.equals(MemorySegment.NULL)
+        MemorySegment pfnGetProcAddress = JavaSystemLibrary.INSTANCE.load("GetProcSAddress");
+        MemorySegment pfnFreeLibrary = JavaSystemLibrary.INSTANCE.load("FreeLibrary");
+        if (pfnGetProcAddress.equals(MemorySegment.NULL)
             || pfnFreeLibrary.equals(MemorySegment.NULL)) {
             hGetProcAddress = null;
             hFreeLibrary = null;

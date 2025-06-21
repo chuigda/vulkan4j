@@ -1,8 +1,8 @@
 package club.doki7.ffm.library;
 
-import club.doki7.ffm.Loader;
 import club.doki7.ffm.RawFunctionLoader;
 import club.doki7.ffm.util.WindowsUtil;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.lang.foreign.Arena;
@@ -14,7 +14,7 @@ import java.util.Objects;
 
 public final class WindowsLibraryLoader implements ILibraryLoader {
     @Override
-    public ISharedLibrary loadLibrary(String libName) throws UnsatisfiedLinkError {
+    public @NotNull ISharedLibrary loadLibrary(@NotNull String libName) throws UnsatisfiedLinkError {
         MemorySegment result;
         try (Arena arena = Arena.ofConfined()) {
             MethodHandle h = Objects.requireNonNull(hLoadLibraryW);
@@ -27,17 +27,21 @@ public final class WindowsLibraryLoader implements ILibraryLoader {
             throw new UnsatisfiedLinkError(e.getMessage());
         }
 
-        if (result == MemorySegment.NULL) {
+        if (result.equals(MemorySegment.NULL)) {
             int lastError = WindowsUtil.getLastError();
             if (lastError < 0) {
-                throw new UnsatisfiedLinkError("Unknown error");
+                throw new UnsatisfiedLinkError("LoadLibraryW error: unknown error");
             } else {
-                throw new UnsatisfiedLinkError("Windows LoadLibraryW error: " + lastError);
+                throw new UnsatisfiedLinkError("LoadLibraryW error: " + lastError);
             }
         }
 
         return new WindowsLibrary(result);
     }
+
+    public static final WindowsLibraryLoader INSTANCE = new WindowsLibraryLoader();
+
+    private WindowsLibraryLoader() {}
 
     private static final FunctionDescriptor DESCRIPTOR$LoadLibraryW = FunctionDescriptor.of(
             ValueLayout.ADDRESS, // returns HMODULE
@@ -45,8 +49,8 @@ public final class WindowsLibraryLoader implements ILibraryLoader {
     );
     private static final @Nullable MethodHandle hLoadLibraryW;
     static {
-        MemorySegment pfnLoadLibraryW = Loader.loadFunctionOrNull("LoadLibraryW");
-        if (pfnLoadLibraryW == null || pfnLoadLibraryW.equals(MemorySegment.NULL)) {
+        MemorySegment pfnLoadLibraryW = JavaSystemLibrary.INSTANCE.load("LoadLibraryW");
+        if (pfnLoadLibraryW.equals(MemorySegment.NULL)) {
             hLoadLibraryW = null;
         } else {
             hLoadLibraryW = RawFunctionLoader.link(pfnLoadLibraryW, DESCRIPTOR$LoadLibraryW);

@@ -1,5 +1,6 @@
 package club.doki7.ffm;
 
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.lang.foreign.FunctionDescriptor;
@@ -9,12 +10,16 @@ import java.lang.invoke.MethodHandle;
 
 @FunctionalInterface
 public interface RawFunctionLoader {
-    MemorySegment apply(String name);
+    @NotNull MemorySegment apply(@NotNull String name);
+
+    default @NotNull MemorySegment load(@NotNull String name) {
+        return apply(name);
+    }
 
     Linker nativeLinker = Linker.nativeLinker();
 
-    static @Nullable MethodHandle link(@Nullable MemorySegment segment, FunctionDescriptor descriptor) {
-        if (segment == null || segment.equals(MemorySegment.NULL)) {
+    static @Nullable MethodHandle link(@NotNull MemorySegment segment, FunctionDescriptor descriptor) {
+        if (segment.equals(MemorySegment.NULL)) {
             return null;
         }
 

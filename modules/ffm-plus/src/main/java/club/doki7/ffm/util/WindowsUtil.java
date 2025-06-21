@@ -1,7 +1,7 @@
 package club.doki7.ffm.util;
 
-import club.doki7.ffm.Loader;
 import club.doki7.ffm.RawFunctionLoader;
+import club.doki7.ffm.library.JavaSystemLibrary;
 import org.jetbrains.annotations.Nullable;
 
 import java.lang.foreign.FunctionDescriptor;
@@ -25,8 +25,8 @@ public final class WindowsUtil {
     private static final @Nullable MethodHandle hGetLastError;
 
     static {
-        MemorySegment pfnGetLastError = Loader.loadFunctionOrNull("GetLastError");
-        if (pfnGetLastError == null || pfnGetLastError.equals(MemorySegment.NULL)) {
+        MemorySegment pfnGetLastError = JavaSystemLibrary.INSTANCE.load("GetLastError");
+        if (pfnGetLastError.equals(MemorySegment.NULL)) {
             hGetLastError = null;
         } else {
             hGetLastError = RawFunctionLoader.link(pfnGetLastError, DESCRIPTOR$GetLastError);

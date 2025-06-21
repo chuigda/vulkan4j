@@ -6,6 +6,7 @@ import org.jetbrains.annotations.Nullable;
 import java.lang.foreign.*;
 import java.lang.invoke.MethodHandle;
 
+@Deprecated
 public final class Loader {
     private static final Linker nativeLinker = Linker.nativeLinker();
     private static final SymbolLookup stdlibLookup = nativeLinker.defaultLookup();
