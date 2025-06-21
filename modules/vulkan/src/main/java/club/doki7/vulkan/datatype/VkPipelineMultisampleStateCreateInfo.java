@@ -205,12 +205,13 @@ public record VkPipelineMultisampleStateCreateInfo(@NotNull MemorySegment segmen
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkPipelineMultisampleStateCreateInfo pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkPipelineMultisampleStateCreateInfo pNext(@Nullable IPointer pointer) {
@@ -272,11 +273,11 @@ public record VkPipelineMultisampleStateCreateInfo(@NotNull MemorySegment segmen
         return this;
     }
 
-    public @Pointer(comment="uint32_t*") MemorySegment pSampleMaskRaw() {
+    public @Pointer(comment="uint32_t*") @NotNull MemorySegment pSampleMaskRaw() {
         return segment.get(LAYOUT$pSampleMask, OFFSET$pSampleMask);
     }
 
-    public void pSampleMaskRaw(@Pointer(comment="uint32_t*") MemorySegment value) {
+    public void pSampleMaskRaw(@Pointer(comment="uint32_t*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pSampleMask, OFFSET$pSampleMask, value);
     }
 

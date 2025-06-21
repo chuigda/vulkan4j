@@ -198,11 +198,11 @@ public record VkMutableDescriptorTypeListEXT(@NotNull MemorySegment segment) imp
         return this;
     }
 
-    public @Pointer(target=VkDescriptorType.class) MemorySegment pDescriptorTypesRaw() {
+    public @Pointer(target=VkDescriptorType.class) @NotNull MemorySegment pDescriptorTypesRaw() {
         return segment.get(LAYOUT$pDescriptorTypes, OFFSET$pDescriptorTypes);
     }
 
-    public void pDescriptorTypesRaw(@Pointer(target=VkDescriptorType.class) MemorySegment value) {
+    public void pDescriptorTypesRaw(@Pointer(target=VkDescriptorType.class) @NotNull MemorySegment value) {
         segment.set(LAYOUT$pDescriptorTypes, OFFSET$pDescriptorTypes, value);
     }
 

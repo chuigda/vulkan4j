@@ -221,7 +221,7 @@ public record StdVideoDecodeAV1ReferenceInfo(@NotNull MemorySegment segment) imp
         return this;
     }
 
-    public MemorySegment SavedOrderHintsRaw() {
+    public @NotNull MemorySegment SavedOrderHintsRaw() {
         return segment.asSlice(OFFSET$SavedOrderHints, SIZE$SavedOrderHints);
     }
 

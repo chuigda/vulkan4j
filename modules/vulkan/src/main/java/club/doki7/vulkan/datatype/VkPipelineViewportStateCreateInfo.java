@@ -203,12 +203,13 @@ public record VkPipelineViewportStateCreateInfo(@NotNull MemorySegment segment) 
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkPipelineViewportStateCreateInfo pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkPipelineViewportStateCreateInfo pNext(@Nullable IPointer pointer) {
@@ -258,11 +259,11 @@ public record VkPipelineViewportStateCreateInfo(@NotNull MemorySegment segment) 
         return new VkViewport(s);
     }
 
-    public @Pointer(target=VkViewport.class) MemorySegment pViewportsRaw() {
+    public @Pointer(target=VkViewport.class) @NotNull MemorySegment pViewportsRaw() {
         return segment.get(LAYOUT$pViewports, OFFSET$pViewports);
     }
 
-    public void pViewportsRaw(@Pointer(target=VkViewport.class) MemorySegment value) {
+    public void pViewportsRaw(@Pointer(target=VkViewport.class) @NotNull MemorySegment value) {
         segment.set(LAYOUT$pViewports, OFFSET$pViewports, value);
     }
 
@@ -299,11 +300,11 @@ public record VkPipelineViewportStateCreateInfo(@NotNull MemorySegment segment) 
         return new VkRect2D(s);
     }
 
-    public @Pointer(target=VkRect2D.class) MemorySegment pScissorsRaw() {
+    public @Pointer(target=VkRect2D.class) @NotNull MemorySegment pScissorsRaw() {
         return segment.get(LAYOUT$pScissors, OFFSET$pScissors);
     }
 
-    public void pScissorsRaw(@Pointer(target=VkRect2D.class) MemorySegment value) {
+    public void pScissorsRaw(@Pointer(target=VkRect2D.class) @NotNull MemorySegment value) {
         segment.set(LAYOUT$pScissors, OFFSET$pScissors, value);
     }
 

@@ -200,12 +200,13 @@ public record VkMultiviewPerViewRenderAreasRenderPassBeginInfoQCOM(@NotNull Memo
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkMultiviewPerViewRenderAreasRenderPassBeginInfoQCOM pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkMultiviewPerViewRenderAreasRenderPassBeginInfoQCOM pNext(@Nullable IPointer pointer) {
@@ -246,11 +247,11 @@ public record VkMultiviewPerViewRenderAreasRenderPassBeginInfoQCOM(@NotNull Memo
         return new VkRect2D(s);
     }
 
-    public @Pointer(target=VkRect2D.class) MemorySegment pPerViewRenderAreasRaw() {
+    public @Pointer(target=VkRect2D.class) @NotNull MemorySegment pPerViewRenderAreasRaw() {
         return segment.get(LAYOUT$pPerViewRenderAreas, OFFSET$pPerViewRenderAreas);
     }
 
-    public void pPerViewRenderAreasRaw(@Pointer(target=VkRect2D.class) MemorySegment value) {
+    public void pPerViewRenderAreasRaw(@Pointer(target=VkRect2D.class) @NotNull MemorySegment value) {
         segment.set(LAYOUT$pPerViewRenderAreas, OFFSET$pPerViewRenderAreas, value);
     }
 

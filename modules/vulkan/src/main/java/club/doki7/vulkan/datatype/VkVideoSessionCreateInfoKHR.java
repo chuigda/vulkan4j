@@ -207,12 +207,13 @@ public record VkVideoSessionCreateInfoKHR(@NotNull MemorySegment segment) implem
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkVideoSessionCreateInfoKHR pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkVideoSessionCreateInfoKHR pNext(@Nullable IPointer pointer) {
@@ -262,11 +263,11 @@ public record VkVideoSessionCreateInfoKHR(@NotNull MemorySegment segment) implem
         return new VkVideoProfileInfoKHR(s);
     }
 
-    public @Pointer(target=VkVideoProfileInfoKHR.class) MemorySegment pVideoProfileRaw() {
+    public @Pointer(target=VkVideoProfileInfoKHR.class) @NotNull MemorySegment pVideoProfileRaw() {
         return segment.get(LAYOUT$pVideoProfile, OFFSET$pVideoProfile);
     }
 
-    public void pVideoProfileRaw(@Pointer(target=VkVideoProfileInfoKHR.class) MemorySegment value) {
+    public void pVideoProfileRaw(@Pointer(target=VkVideoProfileInfoKHR.class) @NotNull MemorySegment value) {
         segment.set(LAYOUT$pVideoProfile, OFFSET$pVideoProfile, value);
     }
 
@@ -344,11 +345,11 @@ public record VkVideoSessionCreateInfoKHR(@NotNull MemorySegment segment) implem
         return new VkExtensionProperties(s);
     }
 
-    public @Pointer(target=VkExtensionProperties.class) MemorySegment pStdHeaderVersionRaw() {
+    public @Pointer(target=VkExtensionProperties.class) @NotNull MemorySegment pStdHeaderVersionRaw() {
         return segment.get(LAYOUT$pStdHeaderVersion, OFFSET$pStdHeaderVersion);
     }
 
-    public void pStdHeaderVersionRaw(@Pointer(target=VkExtensionProperties.class) MemorySegment value) {
+    public void pStdHeaderVersionRaw(@Pointer(target=VkExtensionProperties.class) @NotNull MemorySegment value) {
         segment.set(LAYOUT$pStdHeaderVersion, OFFSET$pStdHeaderVersion, value);
     }
 

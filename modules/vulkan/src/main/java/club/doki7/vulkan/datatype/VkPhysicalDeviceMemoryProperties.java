@@ -201,7 +201,7 @@ public record VkPhysicalDeviceMemoryProperties(@NotNull MemorySegment segment) i
         MemorySegment.copy(value.segment(), 0, s, index * VkMemoryType.BYTES, VkMemoryType.BYTES);
     }
 
-    public MemorySegment memoryTypesRaw() {
+    public @NotNull MemorySegment memoryTypesRaw() {
         return segment.asSlice(OFFSET$memoryTypes, SIZE$memoryTypes);
     }
 
@@ -234,7 +234,7 @@ public record VkPhysicalDeviceMemoryProperties(@NotNull MemorySegment segment) i
         MemorySegment.copy(value.segment(), 0, s, index * VkMemoryHeap.BYTES, VkMemoryHeap.BYTES);
     }
 
-    public MemorySegment memoryHeapsRaw() {
+    public @NotNull MemorySegment memoryHeapsRaw() {
         return segment.asSlice(OFFSET$memoryHeaps, SIZE$memoryHeaps);
     }
 

@@ -202,12 +202,13 @@ public record VkGraphicsPipelineShaderGroupsCreateInfoNV(@NotNull MemorySegment 
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkGraphicsPipelineShaderGroupsCreateInfoNV pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkGraphicsPipelineShaderGroupsCreateInfoNV pNext(@Nullable IPointer pointer) {
@@ -248,11 +249,11 @@ public record VkGraphicsPipelineShaderGroupsCreateInfoNV(@NotNull MemorySegment 
         return new VkGraphicsShaderGroupCreateInfoNV(s);
     }
 
-    public @Pointer(target=VkGraphicsShaderGroupCreateInfoNV.class) MemorySegment pGroupsRaw() {
+    public @Pointer(target=VkGraphicsShaderGroupCreateInfoNV.class) @NotNull MemorySegment pGroupsRaw() {
         return segment.get(LAYOUT$pGroups, OFFSET$pGroups);
     }
 
-    public void pGroupsRaw(@Pointer(target=VkGraphicsShaderGroupCreateInfoNV.class) MemorySegment value) {
+    public void pGroupsRaw(@Pointer(target=VkGraphicsShaderGroupCreateInfoNV.class) @NotNull MemorySegment value) {
         segment.set(LAYOUT$pGroups, OFFSET$pGroups, value);
     }
 
@@ -283,11 +284,11 @@ public record VkGraphicsPipelineShaderGroupsCreateInfoNV(@NotNull MemorySegment 
         return this;
     }
 
-    public @Pointer(target=VkPipeline.class) MemorySegment pPipelinesRaw() {
+    public @Pointer(target=VkPipeline.class) @NotNull MemorySegment pPipelinesRaw() {
         return segment.get(LAYOUT$pPipelines, OFFSET$pPipelines);
     }
 
-    public void pPipelinesRaw(@Pointer(target=VkPipeline.class) MemorySegment value) {
+    public void pPipelinesRaw(@Pointer(target=VkPipeline.class) @NotNull MemorySegment value) {
         segment.set(LAYOUT$pPipelines, OFFSET$pPipelines, value);
     }
 

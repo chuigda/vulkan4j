@@ -201,12 +201,13 @@ public record VkPipelineDynamicStateCreateInfo(@NotNull MemorySegment segment) i
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkPipelineDynamicStateCreateInfo pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkPipelineDynamicStateCreateInfo pNext(@Nullable IPointer pointer) {
@@ -251,11 +252,11 @@ public record VkPipelineDynamicStateCreateInfo(@NotNull MemorySegment segment) i
         return this;
     }
 
-    public @Pointer(target=VkDynamicState.class) MemorySegment pDynamicStatesRaw() {
+    public @Pointer(target=VkDynamicState.class) @NotNull MemorySegment pDynamicStatesRaw() {
         return segment.get(LAYOUT$pDynamicStates, OFFSET$pDynamicStates);
     }
 
-    public void pDynamicStatesRaw(@Pointer(target=VkDynamicState.class) MemorySegment value) {
+    public void pDynamicStatesRaw(@Pointer(target=VkDynamicState.class) @NotNull MemorySegment value) {
         segment.set(LAYOUT$pDynamicStates, OFFSET$pDynamicStates, value);
     }
 

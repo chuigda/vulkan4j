@@ -179,7 +179,7 @@ public record VkExtensionProperties(@NotNull MemorySegment segment) implements I
         return this;
     }
 
-    public MemorySegment extensionNameRaw() {
+    public @NotNull MemorySegment extensionNameRaw() {
         return segment.asSlice(OFFSET$extensionName, SIZE$extensionName);
     }
 

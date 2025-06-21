@@ -200,7 +200,7 @@ public record StdVideoEncodeH265LongTermRefPics(@NotNull MemorySegment segment) 
         return this;
     }
 
-    public MemorySegment lt_idx_spsRaw() {
+    public @NotNull MemorySegment lt_idx_spsRaw() {
         return segment.asSlice(OFFSET$lt_idx_sps, SIZE$lt_idx_sps);
     }
 
@@ -213,7 +213,7 @@ public record StdVideoEncodeH265LongTermRefPics(@NotNull MemorySegment segment) 
         return this;
     }
 
-    public MemorySegment poc_lsb_ltRaw() {
+    public @NotNull MemorySegment poc_lsb_ltRaw() {
         return segment.asSlice(OFFSET$poc_lsb_lt, SIZE$poc_lsb_lt);
     }
 
@@ -235,7 +235,7 @@ public record StdVideoEncodeH265LongTermRefPics(@NotNull MemorySegment segment) 
         return this;
     }
 
-    public MemorySegment delta_poc_msb_present_flagRaw() {
+    public @NotNull MemorySegment delta_poc_msb_present_flagRaw() {
         return segment.asSlice(OFFSET$delta_poc_msb_present_flag, SIZE$delta_poc_msb_present_flag);
     }
 
@@ -248,7 +248,7 @@ public record StdVideoEncodeH265LongTermRefPics(@NotNull MemorySegment segment) 
         return this;
     }
 
-    public MemorySegment delta_poc_msb_cycle_ltRaw() {
+    public @NotNull MemorySegment delta_poc_msb_cycle_ltRaw() {
         return segment.asSlice(OFFSET$delta_poc_msb_cycle_lt, SIZE$delta_poc_msb_cycle_lt);
     }
 

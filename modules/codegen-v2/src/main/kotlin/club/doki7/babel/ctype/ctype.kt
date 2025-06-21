@@ -39,10 +39,10 @@ data class CPointerType(
     override var comment: String?,
 ) : CType, ICommentable<CPointerType> {
     override val jType: String = if (comment != null) {
-        """@Pointer(comment="$comment") MemorySegment"""
+        """@Pointer(comment="$comment") @NotNull MemorySegment"""
     }
     else {
-        """@Pointer(comment="void*") MemorySegment"""
+        """@Pointer(comment="void*") @NotNull MemorySegment"""
     }
 
     override val jLayout: String = if (pointee is CVoidType) {

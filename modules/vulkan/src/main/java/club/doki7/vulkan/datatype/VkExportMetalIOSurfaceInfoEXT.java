@@ -200,12 +200,13 @@ public record VkExportMetalIOSurfaceInfoEXT(@NotNull MemorySegment segment) impl
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkExportMetalIOSurfaceInfoEXT pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkExportMetalIOSurfaceInfoEXT pNext(@Nullable IPointer pointer) {
@@ -226,12 +227,13 @@ public record VkExportMetalIOSurfaceInfoEXT(@NotNull MemorySegment segment) impl
         return this;
     }
 
-    public @Pointer(comment="IOSurfaceRef") MemorySegment ioSurface() {
+    public @Pointer(comment="IOSurfaceRef") @NotNull MemorySegment ioSurface() {
         return segment.get(LAYOUT$ioSurface, OFFSET$ioSurface);
     }
 
-    public void ioSurface(@Pointer(comment="IOSurfaceRef") MemorySegment value) {
+    public VkExportMetalIOSurfaceInfoEXT ioSurface(@Pointer(comment="IOSurfaceRef") @NotNull MemorySegment value) {
         segment.set(LAYOUT$ioSurface, OFFSET$ioSurface, value);
+        return this;
     }
 
     public VkExportMetalIOSurfaceInfoEXT ioSurface(@Nullable IPointer pointer) {

@@ -206,12 +206,13 @@ public record VkDeviceCreateInfo(@NotNull MemorySegment segment) implements IVkD
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkDeviceCreateInfo pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkDeviceCreateInfo pNext(@Nullable IPointer pointer) {
@@ -261,11 +262,11 @@ public record VkDeviceCreateInfo(@NotNull MemorySegment segment) implements IVkD
         return new VkDeviceQueueCreateInfo(s);
     }
 
-    public @Pointer(target=VkDeviceQueueCreateInfo.class) MemorySegment pQueueCreateInfosRaw() {
+    public @Pointer(target=VkDeviceQueueCreateInfo.class) @NotNull MemorySegment pQueueCreateInfosRaw() {
         return segment.get(LAYOUT$pQueueCreateInfos, OFFSET$pQueueCreateInfos);
     }
 
-    public void pQueueCreateInfosRaw(@Pointer(target=VkDeviceQueueCreateInfo.class) MemorySegment value) {
+    public void pQueueCreateInfosRaw(@Pointer(target=VkDeviceQueueCreateInfo.class) @NotNull MemorySegment value) {
         segment.set(LAYOUT$pQueueCreateInfos, OFFSET$pQueueCreateInfos, value);
     }
 
@@ -295,11 +296,11 @@ public record VkDeviceCreateInfo(@NotNull MemorySegment segment) implements IVkD
         return this;
     }
 
-    public @Pointer(comment="void**") MemorySegment ppEnabledLayerNamesRaw() {
+    public @Pointer(comment="void**") @NotNull MemorySegment ppEnabledLayerNamesRaw() {
         return segment.get(LAYOUT$ppEnabledLayerNames, OFFSET$ppEnabledLayerNames);
     }
 
-    public void ppEnabledLayerNamesRaw(@Pointer(comment="void**") MemorySegment value) {
+    public void ppEnabledLayerNamesRaw(@Pointer(comment="void**") @NotNull MemorySegment value) {
         segment.set(LAYOUT$ppEnabledLayerNames, OFFSET$ppEnabledLayerNames, value);
     }
 
@@ -329,11 +330,11 @@ public record VkDeviceCreateInfo(@NotNull MemorySegment segment) implements IVkD
         return this;
     }
 
-    public @Pointer(comment="void**") MemorySegment ppEnabledExtensionNamesRaw() {
+    public @Pointer(comment="void**") @NotNull MemorySegment ppEnabledExtensionNamesRaw() {
         return segment.get(LAYOUT$ppEnabledExtensionNames, OFFSET$ppEnabledExtensionNames);
     }
 
-    public void ppEnabledExtensionNamesRaw(@Pointer(comment="void**") MemorySegment value) {
+    public void ppEnabledExtensionNamesRaw(@Pointer(comment="void**") @NotNull MemorySegment value) {
         segment.set(LAYOUT$ppEnabledExtensionNames, OFFSET$ppEnabledExtensionNames, value);
     }
 
@@ -361,11 +362,11 @@ public record VkDeviceCreateInfo(@NotNull MemorySegment segment) implements IVkD
         return new VkPhysicalDeviceFeatures(s);
     }
 
-    public @Pointer(target=VkPhysicalDeviceFeatures.class) MemorySegment pEnabledFeaturesRaw() {
+    public @Pointer(target=VkPhysicalDeviceFeatures.class) @NotNull MemorySegment pEnabledFeaturesRaw() {
         return segment.get(LAYOUT$pEnabledFeatures, OFFSET$pEnabledFeatures);
     }
 
-    public void pEnabledFeaturesRaw(@Pointer(target=VkPhysicalDeviceFeatures.class) MemorySegment value) {
+    public void pEnabledFeaturesRaw(@Pointer(target=VkPhysicalDeviceFeatures.class) @NotNull MemorySegment value) {
         segment.set(LAYOUT$pEnabledFeatures, OFFSET$pEnabledFeatures, value);
     }
 

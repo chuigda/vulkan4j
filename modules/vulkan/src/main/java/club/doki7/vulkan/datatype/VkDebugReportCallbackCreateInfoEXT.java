@@ -201,12 +201,13 @@ public record VkDebugReportCallbackCreateInfoEXT(@NotNull MemorySegment segment)
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkDebugReportCallbackCreateInfoEXT pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkDebugReportCallbackCreateInfoEXT pNext(@Nullable IPointer pointer) {
@@ -223,12 +224,13 @@ public record VkDebugReportCallbackCreateInfoEXT(@NotNull MemorySegment segment)
         return this;
     }
 
-    public @Pointer(comment="PFN_vkDebugReportCallbackEXT") MemorySegment pfnCallback() {
+    public @Pointer(comment="PFN_vkDebugReportCallbackEXT") @NotNull MemorySegment pfnCallback() {
         return segment.get(LAYOUT$pfnCallback, OFFSET$pfnCallback);
     }
 
-    public void pfnCallback(@Pointer(comment="PFN_vkDebugReportCallbackEXT") MemorySegment value) {
+    public VkDebugReportCallbackCreateInfoEXT pfnCallback(@Pointer(comment="PFN_vkDebugReportCallbackEXT") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pfnCallback, OFFSET$pfnCallback, value);
+        return this;
     }
 
     public VkDebugReportCallbackCreateInfoEXT pfnCallback(@Nullable IPointer pointer) {
@@ -236,12 +238,13 @@ public record VkDebugReportCallbackCreateInfoEXT(@NotNull MemorySegment segment)
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pUserData() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pUserData() {
         return segment.get(LAYOUT$pUserData, OFFSET$pUserData);
     }
 
-    public void pUserData(@Pointer(comment="void*") MemorySegment value) {
+    public VkDebugReportCallbackCreateInfoEXT pUserData(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pUserData, OFFSET$pUserData, value);
+        return this;
     }
 
     public VkDebugReportCallbackCreateInfoEXT pUserData(@Nullable IPointer pointer) {

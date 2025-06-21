@@ -200,12 +200,13 @@ public record VkDeviceGroupDeviceCreateInfo(@NotNull MemorySegment segment) impl
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkDeviceGroupDeviceCreateInfo pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkDeviceGroupDeviceCreateInfo pNext(@Nullable IPointer pointer) {
@@ -240,11 +241,11 @@ public record VkDeviceGroupDeviceCreateInfo(@NotNull MemorySegment segment) impl
         return this;
     }
 
-    public @Pointer(target=VkPhysicalDevice.class) MemorySegment pPhysicalDevicesRaw() {
+    public @Pointer(target=VkPhysicalDevice.class) @NotNull MemorySegment pPhysicalDevicesRaw() {
         return segment.get(LAYOUT$pPhysicalDevices, OFFSET$pPhysicalDevices);
     }
 
-    public void pPhysicalDevicesRaw(@Pointer(target=VkPhysicalDevice.class) MemorySegment value) {
+    public void pPhysicalDevicesRaw(@Pointer(target=VkPhysicalDevice.class) @NotNull MemorySegment value) {
         segment.set(LAYOUT$pPhysicalDevices, OFFSET$pPhysicalDevices, value);
     }
 

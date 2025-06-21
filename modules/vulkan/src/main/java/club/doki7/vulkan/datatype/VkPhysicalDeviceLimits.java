@@ -751,7 +751,7 @@ public record VkPhysicalDeviceLimits(@NotNull MemorySegment segment) implements 
         return this;
     }
 
-    public MemorySegment maxComputeWorkGroupCountRaw() {
+    public @NotNull MemorySegment maxComputeWorkGroupCountRaw() {
         return segment.asSlice(OFFSET$maxComputeWorkGroupCount, SIZE$maxComputeWorkGroupCount);
     }
 
@@ -773,7 +773,7 @@ public record VkPhysicalDeviceLimits(@NotNull MemorySegment segment) implements 
         return this;
     }
 
-    public MemorySegment maxComputeWorkGroupSizeRaw() {
+    public @NotNull MemorySegment maxComputeWorkGroupSizeRaw() {
         return segment.asSlice(OFFSET$maxComputeWorkGroupSize, SIZE$maxComputeWorkGroupSize);
     }
 
@@ -858,7 +858,7 @@ public record VkPhysicalDeviceLimits(@NotNull MemorySegment segment) implements 
         return this;
     }
 
-    public MemorySegment maxViewportDimensionsRaw() {
+    public @NotNull MemorySegment maxViewportDimensionsRaw() {
         return segment.asSlice(OFFSET$maxViewportDimensions, SIZE$maxViewportDimensions);
     }
 
@@ -871,7 +871,7 @@ public record VkPhysicalDeviceLimits(@NotNull MemorySegment segment) implements 
         return this;
     }
 
-    public MemorySegment viewportBoundsRangeRaw() {
+    public @NotNull MemorySegment viewportBoundsRangeRaw() {
         return segment.asSlice(OFFSET$viewportBoundsRange, SIZE$viewportBoundsRange);
     }
 
@@ -1172,7 +1172,7 @@ public record VkPhysicalDeviceLimits(@NotNull MemorySegment segment) implements 
         return this;
     }
 
-    public MemorySegment pointSizeRangeRaw() {
+    public @NotNull MemorySegment pointSizeRangeRaw() {
         return segment.asSlice(OFFSET$pointSizeRange, SIZE$pointSizeRange);
     }
 
@@ -1185,7 +1185,7 @@ public record VkPhysicalDeviceLimits(@NotNull MemorySegment segment) implements 
         return this;
     }
 
-    public MemorySegment lineWidthRangeRaw() {
+    public @NotNull MemorySegment lineWidthRangeRaw() {
         return segment.asSlice(OFFSET$lineWidthRange, SIZE$lineWidthRange);
     }
 

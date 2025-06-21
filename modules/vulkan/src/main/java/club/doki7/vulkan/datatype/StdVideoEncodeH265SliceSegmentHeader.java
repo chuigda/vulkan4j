@@ -328,11 +328,11 @@ public record StdVideoEncodeH265SliceSegmentHeader(@NotNull MemorySegment segmen
         return new StdVideoEncodeH265WeightTable(s);
     }
 
-    public @Pointer(target=StdVideoEncodeH265WeightTable.class) MemorySegment pWeightTableRaw() {
+    public @Pointer(target=StdVideoEncodeH265WeightTable.class) @NotNull MemorySegment pWeightTableRaw() {
         return segment.get(LAYOUT$pWeightTable, OFFSET$pWeightTable);
     }
 
-    public void pWeightTableRaw(@Pointer(target=StdVideoEncodeH265WeightTable.class) MemorySegment value) {
+    public void pWeightTableRaw(@Pointer(target=StdVideoEncodeH265WeightTable.class) @NotNull MemorySegment value) {
         segment.set(LAYOUT$pWeightTable, OFFSET$pWeightTable, value);
     }
 

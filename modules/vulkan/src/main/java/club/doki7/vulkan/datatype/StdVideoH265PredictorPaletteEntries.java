@@ -176,7 +176,7 @@ public record StdVideoH265PredictorPaletteEntries(@NotNull MemorySegment segment
         return this;
     }
 
-    public MemorySegment PredictorPaletteEntriesRaw() {
+    public @NotNull MemorySegment PredictorPaletteEntriesRaw() {
         return segment.asSlice(OFFSET$PredictorPaletteEntries, SIZE$PredictorPaletteEntries);
     }
 

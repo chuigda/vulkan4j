@@ -200,12 +200,13 @@ public record VkWriteDescriptorSetPartitionedAccelerationStructureNV(@NotNull Me
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkWriteDescriptorSetPartitionedAccelerationStructureNV pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkWriteDescriptorSetPartitionedAccelerationStructureNV pNext(@Nullable IPointer pointer) {
@@ -240,11 +241,11 @@ public record VkWriteDescriptorSetPartitionedAccelerationStructureNV(@NotNull Me
         return this;
     }
 
-    public @Pointer(comment="uint64_t*") MemorySegment pAccelerationStructuresRaw() {
+    public @Pointer(comment="uint64_t*") @NotNull MemorySegment pAccelerationStructuresRaw() {
         return segment.get(LAYOUT$pAccelerationStructures, OFFSET$pAccelerationStructures);
     }
 
-    public void pAccelerationStructuresRaw(@Pointer(comment="uint64_t*") MemorySegment value) {
+    public void pAccelerationStructuresRaw(@Pointer(comment="uint64_t*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pAccelerationStructures, OFFSET$pAccelerationStructures, value);
     }
 

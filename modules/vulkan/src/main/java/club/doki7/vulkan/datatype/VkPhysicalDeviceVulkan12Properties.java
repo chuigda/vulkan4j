@@ -250,12 +250,13 @@ public record VkPhysicalDeviceVulkan12Properties(@NotNull MemorySegment segment)
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkPhysicalDeviceVulkan12Properties pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkPhysicalDeviceVulkan12Properties pNext(@Nullable IPointer pointer) {
@@ -281,7 +282,7 @@ public record VkPhysicalDeviceVulkan12Properties(@NotNull MemorySegment segment)
         return this;
     }
 
-    public MemorySegment driverNameRaw() {
+    public @NotNull MemorySegment driverNameRaw() {
         return segment.asSlice(OFFSET$driverName, SIZE$driverName);
     }
 
@@ -294,7 +295,7 @@ public record VkPhysicalDeviceVulkan12Properties(@NotNull MemorySegment segment)
         return this;
     }
 
-    public MemorySegment driverInfoRaw() {
+    public @NotNull MemorySegment driverInfoRaw() {
         return segment.asSlice(OFFSET$driverInfo, SIZE$driverInfo);
     }
 

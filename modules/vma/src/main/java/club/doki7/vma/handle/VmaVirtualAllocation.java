@@ -83,11 +83,11 @@ public record VmaVirtualAllocation(@NotNull MemorySegment segment) implements IP
             }
         }
 
-        public MemorySegment readRaw() {
+        public @NotNull MemorySegment readRaw() {
             return segment.get(ValueLayout.ADDRESS, 0);
         }
 
-        public MemorySegment readRaw(long index) {
+        public @NotNull MemorySegment readRaw(long index) {
             return segment.get(ValueLayout.ADDRESS, index * ValueLayout.ADDRESS.byteSize());
         }
 

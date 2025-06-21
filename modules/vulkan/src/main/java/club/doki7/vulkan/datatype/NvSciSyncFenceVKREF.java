@@ -176,7 +176,7 @@ public record NvSciSyncFenceVKREF(@NotNull MemorySegment segment) implements INv
         return this;
     }
 
-    public MemorySegment payloadRaw() {
+    public @NotNull MemorySegment payloadRaw() {
         return segment.asSlice(OFFSET$payload, SIZE$payload);
     }
 

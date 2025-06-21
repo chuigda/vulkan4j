@@ -223,11 +223,11 @@ public record VkCoarseSampleOrderCustomNV(@NotNull MemorySegment segment) implem
         return new VkCoarseSampleLocationNV(s);
     }
 
-    public @Pointer(target=VkCoarseSampleLocationNV.class) MemorySegment pSampleLocationsRaw() {
+    public @Pointer(target=VkCoarseSampleLocationNV.class) @NotNull MemorySegment pSampleLocationsRaw() {
         return segment.get(LAYOUT$pSampleLocations, OFFSET$pSampleLocations);
     }
 
-    public void pSampleLocationsRaw(@Pointer(target=VkCoarseSampleLocationNV.class) MemorySegment value) {
+    public void pSampleLocationsRaw(@Pointer(target=VkCoarseSampleLocationNV.class) @NotNull MemorySegment value) {
         segment.set(LAYOUT$pSampleLocations, OFFSET$pSampleLocations, value);
     }
 

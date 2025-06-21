@@ -200,12 +200,13 @@ public record VkIOSSurfaceCreateInfoMVK(@NotNull MemorySegment segment) implemen
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkIOSSurfaceCreateInfoMVK pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkIOSSurfaceCreateInfoMVK pNext(@Nullable IPointer pointer) {
@@ -222,12 +223,13 @@ public record VkIOSSurfaceCreateInfoMVK(@NotNull MemorySegment segment) implemen
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pView() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pView() {
         return segment.get(LAYOUT$pView, OFFSET$pView);
     }
 
-    public void pView(@Pointer(comment="void*") MemorySegment value) {
+    public VkIOSSurfaceCreateInfoMVK pView(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pView, OFFSET$pView, value);
+        return this;
     }
 
     public VkIOSSurfaceCreateInfoMVK pView(@Nullable IPointer pointer) {

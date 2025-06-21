@@ -43,7 +43,7 @@ fun openalMain() {
     for (opaqueTypedef in registry.opaqueTypedefs.values) {
         val handleTypedef = OpaqueHandleTypedef(opaqueTypedef.name)
         handleTypedef.doc = opaqueTypedef.doc
-        val handleDoc = generateHandle(registry, handleTypedef, codegenOptions)
+        val handleDoc = generateHandle(handleTypedef, codegenOptions)
         File("$packageDir/handle/${opaqueTypedef.name}.java")
             .writeText(render(handleDoc))
     }

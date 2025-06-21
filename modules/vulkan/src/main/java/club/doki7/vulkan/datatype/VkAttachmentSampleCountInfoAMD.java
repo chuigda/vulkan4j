@@ -201,12 +201,13 @@ public record VkAttachmentSampleCountInfoAMD(@NotNull MemorySegment segment) imp
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkAttachmentSampleCountInfoAMD pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkAttachmentSampleCountInfoAMD pNext(@Nullable IPointer pointer) {
@@ -242,11 +243,11 @@ public record VkAttachmentSampleCountInfoAMD(@NotNull MemorySegment segment) imp
         return this;
     }
 
-    public @Pointer(target=VkSampleCountFlags.class) MemorySegment pColorAttachmentSamplesRaw() {
+    public @Pointer(target=VkSampleCountFlags.class) @NotNull MemorySegment pColorAttachmentSamplesRaw() {
         return segment.get(LAYOUT$pColorAttachmentSamples, OFFSET$pColorAttachmentSamples);
     }
 
-    public void pColorAttachmentSamplesRaw(@Pointer(target=VkSampleCountFlags.class) MemorySegment value) {
+    public void pColorAttachmentSamplesRaw(@Pointer(target=VkSampleCountFlags.class) @NotNull MemorySegment value) {
         segment.set(LAYOUT$pColorAttachmentSamples, OFFSET$pColorAttachmentSamples, value);
     }
 

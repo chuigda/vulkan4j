@@ -230,11 +230,11 @@ public record VmaVirtualBlockCreateInfo(@NotNull MemorySegment segment) implemen
         return new VkAllocationCallbacks(s);
     }
 
-    public @Pointer(target=VkAllocationCallbacks.class) MemorySegment pAllocationCallbacksRaw() {
+    public @Pointer(target=VkAllocationCallbacks.class) @NotNull MemorySegment pAllocationCallbacksRaw() {
         return segment.get(LAYOUT$pAllocationCallbacks, OFFSET$pAllocationCallbacks);
     }
 
-    public void pAllocationCallbacksRaw(@Pointer(target=VkAllocationCallbacks.class) MemorySegment value) {
+    public void pAllocationCallbacksRaw(@Pointer(target=VkAllocationCallbacks.class) @NotNull MemorySegment value) {
         segment.set(LAYOUT$pAllocationCallbacks, OFFSET$pAllocationCallbacks, value);
     }
 

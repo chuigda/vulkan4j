@@ -202,12 +202,13 @@ public record VkValidationFeaturesEXT(@NotNull MemorySegment segment) implements
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkValidationFeaturesEXT pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkValidationFeaturesEXT pNext(@Nullable IPointer pointer) {
@@ -243,11 +244,11 @@ public record VkValidationFeaturesEXT(@NotNull MemorySegment segment) implements
         return this;
     }
 
-    public @Pointer(target=VkValidationFeatureEnableEXT.class) MemorySegment pEnabledValidationFeaturesRaw() {
+    public @Pointer(target=VkValidationFeatureEnableEXT.class) @NotNull MemorySegment pEnabledValidationFeaturesRaw() {
         return segment.get(LAYOUT$pEnabledValidationFeatures, OFFSET$pEnabledValidationFeatures);
     }
 
-    public void pEnabledValidationFeaturesRaw(@Pointer(target=VkValidationFeatureEnableEXT.class) MemorySegment value) {
+    public void pEnabledValidationFeaturesRaw(@Pointer(target=VkValidationFeatureEnableEXT.class) @NotNull MemorySegment value) {
         segment.set(LAYOUT$pEnabledValidationFeatures, OFFSET$pEnabledValidationFeatures, value);
     }
 
@@ -279,11 +280,11 @@ public record VkValidationFeaturesEXT(@NotNull MemorySegment segment) implements
         return this;
     }
 
-    public @Pointer(target=VkValidationFeatureDisableEXT.class) MemorySegment pDisabledValidationFeaturesRaw() {
+    public @Pointer(target=VkValidationFeatureDisableEXT.class) @NotNull MemorySegment pDisabledValidationFeaturesRaw() {
         return segment.get(LAYOUT$pDisabledValidationFeatures, OFFSET$pDisabledValidationFeatures);
     }
 
-    public void pDisabledValidationFeaturesRaw(@Pointer(target=VkValidationFeatureDisableEXT.class) MemorySegment value) {
+    public void pDisabledValidationFeaturesRaw(@Pointer(target=VkValidationFeatureDisableEXT.class) @NotNull MemorySegment value) {
         segment.set(LAYOUT$pDisabledValidationFeatures, OFFSET$pDisabledValidationFeatures, value);
     }
 

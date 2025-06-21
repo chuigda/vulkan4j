@@ -203,12 +203,13 @@ public record VkPushDescriptorSetInfo(@NotNull MemorySegment segment) implements
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkPushDescriptorSetInfo pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkPushDescriptorSetInfo pNext(@Nullable IPointer pointer) {
@@ -280,11 +281,11 @@ public record VkPushDescriptorSetInfo(@NotNull MemorySegment segment) implements
         return new VkWriteDescriptorSet(s);
     }
 
-    public @Pointer(target=VkWriteDescriptorSet.class) MemorySegment pDescriptorWritesRaw() {
+    public @Pointer(target=VkWriteDescriptorSet.class) @NotNull MemorySegment pDescriptorWritesRaw() {
         return segment.get(LAYOUT$pDescriptorWrites, OFFSET$pDescriptorWrites);
     }
 
-    public void pDescriptorWritesRaw(@Pointer(target=VkWriteDescriptorSet.class) MemorySegment value) {
+    public void pDescriptorWritesRaw(@Pointer(target=VkWriteDescriptorSet.class) @NotNull MemorySegment value) {
         segment.set(LAYOUT$pDescriptorWrites, OFFSET$pDescriptorWrites, value);
     }
 

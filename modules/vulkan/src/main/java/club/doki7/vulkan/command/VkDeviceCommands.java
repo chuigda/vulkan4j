@@ -5,6 +5,7 @@ import java.lang.invoke.MethodHandle;
 import java.util.Objects;
 
 import org.jetbrains.annotations.Nullable;
+import org.jetbrains.annotations.NotNull;
 import club.doki7.ffm.NativeLayout;
 import club.doki7.ffm.RawFunctionLoader;
 import club.doki7.ffm.annotation.*;
@@ -4221,7 +4222,7 @@ public final class VkDeviceCommands {
         @EnumType(VkShaderStageFlags.class) int stageFlags,
         @Unsigned int offset,
         @Unsigned int size,
-        @Pointer(comment="void*") MemorySegment pValues
+        @Pointer(comment="void*") @NotNull MemorySegment pValues
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkCmdPushConstants);
         try {
@@ -4356,7 +4357,7 @@ public final class VkDeviceCommands {
         VkDescriptorUpdateTemplate descriptorUpdateTemplate,
         VkPipelineLayout layout,
         @Unsigned int set,
-        @Pointer(comment="void*") MemorySegment pData
+        @Pointer(comment="void*") @NotNull MemorySegment pData
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkCmdPushDescriptorSetWithTemplate);
         try {
@@ -4410,7 +4411,7 @@ public final class VkDeviceCommands {
         VkDescriptorUpdateTemplate descriptorUpdateTemplate,
         VkPipelineLayout layout,
         @Unsigned int set,
-        @Pointer(comment="void*") MemorySegment pData
+        @Pointer(comment="void*") @NotNull MemorySegment pData
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkCmdPushDescriptorSetWithTemplateKHR);
         try {
@@ -4641,7 +4642,7 @@ public final class VkDeviceCommands {
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkCmdSetCheckpointNV.html"><code>vkCmdSetCheckpointNV</code></a>
     public void cmdSetCheckpointNV(
         VkCommandBuffer commandBuffer,
-        @Pointer(comment="void*") MemorySegment pCheckpointMarker
+        @Pointer(comment="void*") @NotNull MemorySegment pCheckpointMarker
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkCmdSetCheckpointNV);
         try {
@@ -6512,7 +6513,7 @@ public final class VkDeviceCommands {
         VkBuffer dstBuffer,
         @NativeType("VkDeviceSize") @Unsigned long dstOffset,
         @NativeType("VkDeviceSize") @Unsigned long dataSize,
-        @Pointer(comment="void*") MemorySegment pData
+        @Pointer(comment="void*") @NotNull MemorySegment pData
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkCmdUpdateBuffer);
         try {
@@ -9153,7 +9154,7 @@ public final class VkDeviceCommands {
         VkDevice device,
         VkAccelerationStructureNV accelerationStructure,
         long dataSize,
-        @Pointer(comment="void*") MemorySegment pData
+        @Pointer(comment="void*") @NotNull MemorySegment pData
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkGetAccelerationStructureHandleNV);
         try {
@@ -9190,7 +9191,7 @@ public final class VkDeviceCommands {
     public @EnumType(VkResult.class) int getAccelerationStructureOpaqueCaptureDescriptorDataEXT(
         VkDevice device,
         @Pointer VkAccelerationStructureCaptureDescriptorDataInfoEXT pInfo,
-        @Pointer(comment="void*") MemorySegment pData
+        @Pointer(comment="void*") @NotNull MemorySegment pData
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkGetAccelerationStructureOpaqueCaptureDescriptorDataEXT);
         try {
@@ -9378,7 +9379,7 @@ public final class VkDeviceCommands {
     public @EnumType(VkResult.class) int getBufferOpaqueCaptureDescriptorDataEXT(
         VkDevice device,
         @Pointer VkBufferCaptureDescriptorDataInfoEXT pInfo,
-        @Pointer(comment="void*") MemorySegment pData
+        @Pointer(comment="void*") @NotNull MemorySegment pData
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkGetBufferOpaqueCaptureDescriptorDataEXT);
         try {
@@ -9459,7 +9460,7 @@ public final class VkDeviceCommands {
         VkDevice device,
         VkCudaModuleNV module,
         PointerPtr pCacheSize,
-        @Pointer(comment="void*") MemorySegment pCacheData
+        @Pointer(comment="void*") @NotNull MemorySegment pCacheData
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkGetCudaModuleCacheNV);
         try {
@@ -9511,7 +9512,7 @@ public final class VkDeviceCommands {
         VkDevice device,
         @Pointer VkDescriptorGetInfoEXT pDescriptorInfo,
         long dataSize,
-        @Pointer(comment="void*") MemorySegment pDescriptor
+        @Pointer(comment="void*") @NotNull MemorySegment pDescriptor
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkGetDescriptorEXT);
         try {
@@ -10064,7 +10065,7 @@ public final class VkDeviceCommands {
         @Pointer VkVideoEncodeSessionParametersGetInfoKHR pVideoSessionParametersInfo,
         @Nullable @Pointer VkVideoEncodeSessionParametersFeedbackInfoKHR pFeedbackInfo,
         PointerPtr pDataSize,
-        @Pointer(comment="void*") MemorySegment pData
+        @Pointer(comment="void*") @NotNull MemorySegment pData
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkGetEncodedVideoSessionParametersKHR);
         try {
@@ -10138,7 +10139,7 @@ public final class VkDeviceCommands {
     public void getExternalComputeQueueDataNV(
         VkExternalComputeQueueNV externalQueue,
         @Pointer VkExternalComputeQueueDataParamsNV params,
-        @Pointer(comment="void*") MemorySegment pData
+        @Pointer(comment="void*") @NotNull MemorySegment pData
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkGetExternalComputeQueueDataNV);
         try {
@@ -10174,7 +10175,7 @@ public final class VkDeviceCommands {
     public @EnumType(VkResult.class) int getFenceSciSyncFenceNV(
         VkDevice device,
         @Pointer VkFenceGetSciSyncInfoNV pGetSciSyncHandleInfo,
-        @Pointer(comment="void*") MemorySegment pHandle
+        @Pointer(comment="void*") @NotNull MemorySegment pHandle
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkGetFenceSciSyncFenceNV);
         try {
@@ -10192,7 +10193,7 @@ public final class VkDeviceCommands {
     public @EnumType(VkResult.class) int getFenceSciSyncObjNV(
         VkDevice device,
         @Pointer VkFenceGetSciSyncInfoNV pGetSciSyncHandleInfo,
-        @Pointer(comment="void*") MemorySegment pHandle
+        @Pointer(comment="void*") @NotNull MemorySegment pHandle
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkGetFenceSciSyncObjNV);
         try {
@@ -10372,7 +10373,7 @@ public final class VkDeviceCommands {
     public @EnumType(VkResult.class) int getImageOpaqueCaptureDescriptorDataEXT(
         VkDevice device,
         @Pointer VkImageCaptureDescriptorDataInfoEXT pInfo,
-        @Pointer(comment="void*") MemorySegment pData
+        @Pointer(comment="void*") @NotNull MemorySegment pData
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkGetImageOpaqueCaptureDescriptorDataEXT);
         try {
@@ -10580,7 +10581,7 @@ public final class VkDeviceCommands {
     public @EnumType(VkResult.class) int getImageViewOpaqueCaptureDescriptorDataEXT(
         VkDevice device,
         @Pointer VkImageViewCaptureDescriptorDataInfoEXT pInfo,
-        @Pointer(comment="void*") MemorySegment pData
+        @Pointer(comment="void*") @NotNull MemorySegment pData
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkGetImageViewOpaqueCaptureDescriptorDataEXT);
         try {
@@ -10672,7 +10673,7 @@ public final class VkDeviceCommands {
     public @EnumType(VkResult.class) int getMemoryHostPointerPropertiesEXT(
         VkDevice device,
         @EnumType(VkExternalMemoryHandleTypeFlags.class) int handleType,
-        @Pointer(comment="void*") MemorySegment pHostPointer,
+        @Pointer(comment="void*") @NotNull MemorySegment pHostPointer,
         @Pointer VkMemoryHostPointerPropertiesEXT pMemoryHostPointerProperties
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkGetMemoryHostPointerPropertiesEXT);
@@ -10710,7 +10711,7 @@ public final class VkDeviceCommands {
     public @EnumType(VkResult.class) int getMemoryMetalHandlePropertiesEXT(
         VkDevice device,
         @EnumType(VkExternalMemoryHandleTypeFlags.class) int handleType,
-        @Pointer(comment="void*") MemorySegment pHandle,
+        @Pointer(comment="void*") @NotNull MemorySegment pHandle,
         @Pointer VkMemoryMetalHandlePropertiesEXT pMemoryMetalHandleProperties
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkGetMemoryMetalHandlePropertiesEXT);
@@ -10804,7 +10805,7 @@ public final class VkDeviceCommands {
     public @EnumType(VkResult.class) int getMemoryWin32HandlePropertiesKHR(
         VkDevice device,
         @EnumType(VkExternalMemoryHandleTypeFlags.class) int handleType,
-        @Pointer(comment="HANDLE") MemorySegment handle,
+        @Pointer(comment="HANDLE") @NotNull MemorySegment handle,
         @Pointer VkMemoryWin32HandlePropertiesKHR pMemoryWin32HandleProperties
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkGetMemoryWin32HandlePropertiesKHR);
@@ -10940,7 +10941,7 @@ public final class VkDeviceCommands {
         @Pointer VkPipelineBinaryDataInfoKHR pInfo,
         @Pointer VkPipelineBinaryKeyKHR pPipelineBinaryKey,
         PointerPtr pPipelineBinaryDataSize,
-        @Pointer(comment="void*") MemorySegment pPipelineBinaryData
+        @Pointer(comment="void*") @NotNull MemorySegment pPipelineBinaryData
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkGetPipelineBinaryDataKHR);
         try {
@@ -10961,7 +10962,7 @@ public final class VkDeviceCommands {
         VkDevice device,
         VkPipelineCache pipelineCache,
         PointerPtr pDataSize,
-        @Pointer(comment="void*") MemorySegment pData
+        @Pointer(comment="void*") @NotNull MemorySegment pData
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkGetPipelineCacheData);
         try {
@@ -11157,7 +11158,7 @@ public final class VkDeviceCommands {
         @Unsigned int firstQuery,
         @Unsigned int queryCount,
         long dataSize,
-        @Pointer(comment="void*") MemorySegment pData,
+        @Pointer(comment="void*") @NotNull MemorySegment pData,
         @NativeType("VkDeviceSize") @Unsigned long stride,
         @EnumType(VkQueryResultFlags.class) int flags
     ) {
@@ -11221,7 +11222,7 @@ public final class VkDeviceCommands {
         @Unsigned int firstGroup,
         @Unsigned int groupCount,
         long dataSize,
-        @Pointer(comment="void*") MemorySegment pData
+        @Pointer(comment="void*") @NotNull MemorySegment pData
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkGetRayTracingCaptureReplayShaderGroupHandlesKHR);
         try {
@@ -11245,7 +11246,7 @@ public final class VkDeviceCommands {
         @Unsigned int firstGroup,
         @Unsigned int groupCount,
         long dataSize,
-        @Pointer(comment="void*") MemorySegment pData
+        @Pointer(comment="void*") @NotNull MemorySegment pData
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkGetRayTracingShaderGroupHandlesKHR);
         try {
@@ -11269,7 +11270,7 @@ public final class VkDeviceCommands {
         @Unsigned int firstGroup,
         @Unsigned int groupCount,
         long dataSize,
-        @Pointer(comment="void*") MemorySegment pData
+        @Pointer(comment="void*") @NotNull MemorySegment pData
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkGetRayTracingShaderGroupHandlesNV);
         try {
@@ -11382,7 +11383,7 @@ public final class VkDeviceCommands {
     public @EnumType(VkResult.class) int getSamplerOpaqueCaptureDescriptorDataEXT(
         VkDevice device,
         @Pointer VkSamplerCaptureDescriptorDataInfoEXT pInfo,
-        @Pointer(comment="void*") MemorySegment pData
+        @Pointer(comment="void*") @NotNull MemorySegment pData
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkGetSamplerOpaqueCaptureDescriptorDataEXT);
         try {
@@ -11472,7 +11473,7 @@ public final class VkDeviceCommands {
     public @EnumType(VkResult.class) int getSemaphoreSciSyncObjNV(
         VkDevice device,
         @Pointer VkSemaphoreGetSciSyncInfoNV pGetSciSyncInfo,
-        @Pointer(comment="void*") MemorySegment pHandle
+        @Pointer(comment="void*") @NotNull MemorySegment pHandle
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkGetSemaphoreSciSyncObjNV);
         try {
@@ -11527,7 +11528,7 @@ public final class VkDeviceCommands {
         VkDevice device,
         VkShaderEXT shader,
         PointerPtr pDataSize,
-        @Pointer(comment="void*") MemorySegment pData
+        @Pointer(comment="void*") @NotNull MemorySegment pData
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkGetShaderBinaryDataEXT);
         try {
@@ -11549,7 +11550,7 @@ public final class VkDeviceCommands {
         @EnumType(VkShaderStageFlags.class) int shaderStage,
         @EnumType(VkShaderInfoTypeAMD.class) int infoType,
         PointerPtr pInfoSize,
-        @Pointer(comment="void*") MemorySegment pInfo
+        @Pointer(comment="void*") @NotNull MemorySegment pInfo
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkGetShaderInfoAMD);
         try {
@@ -11663,7 +11664,7 @@ public final class VkDeviceCommands {
         VkDevice device,
         VkValidationCacheEXT validationCache,
         PointerPtr pDataSize,
-        @Pointer(comment="void*") MemorySegment pData
+        @Pointer(comment="void*") @NotNull MemorySegment pData
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkGetValidationCacheDataEXT);
         try {
@@ -12727,7 +12728,7 @@ public final class VkDeviceCommands {
         VkDevice device,
         VkDescriptorSet descriptorSet,
         VkDescriptorUpdateTemplate descriptorUpdateTemplate,
-        @Pointer(comment="void*") MemorySegment pData
+        @Pointer(comment="void*") @NotNull MemorySegment pData
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkUpdateDescriptorSetWithTemplate);
         try {
@@ -12747,7 +12748,7 @@ public final class VkDeviceCommands {
         VkDevice device,
         VkDescriptorSet descriptorSet,
         VkDescriptorUpdateTemplate descriptorUpdateTemplate,
-        @Pointer(comment="void*") MemorySegment pData
+        @Pointer(comment="void*") @NotNull MemorySegment pData
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkUpdateDescriptorSetWithTemplateKHR);
         try {
@@ -12927,7 +12928,7 @@ public final class VkDeviceCommands {
         @Pointer VkAccelerationStructureKHR.Ptr pAccelerationStructures,
         @EnumType(VkQueryType.class) int queryType,
         long dataSize,
-        @Pointer(comment="void*") MemorySegment pData,
+        @Pointer(comment="void*") @NotNull MemorySegment pData,
         long stride
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkWriteAccelerationStructuresPropertiesKHR);
@@ -12953,7 +12954,7 @@ public final class VkDeviceCommands {
         @Pointer VkMicromapEXT.Ptr pMicromaps,
         @EnumType(VkQueryType.class) int queryType,
         long dataSize,
-        @Pointer(comment="void*") MemorySegment pData,
+        @Pointer(comment="void*") @NotNull MemorySegment pData,
         long stride
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkWriteMicromapsPropertiesEXT);

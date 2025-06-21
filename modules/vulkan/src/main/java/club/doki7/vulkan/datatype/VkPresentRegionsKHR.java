@@ -200,12 +200,13 @@ public record VkPresentRegionsKHR(@NotNull MemorySegment segment) implements IVk
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkPresentRegionsKHR pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkPresentRegionsKHR pNext(@Nullable IPointer pointer) {
@@ -246,11 +247,11 @@ public record VkPresentRegionsKHR(@NotNull MemorySegment segment) implements IVk
         return new VkPresentRegionKHR(s);
     }
 
-    public @Pointer(target=VkPresentRegionKHR.class) MemorySegment pRegionsRaw() {
+    public @Pointer(target=VkPresentRegionKHR.class) @NotNull MemorySegment pRegionsRaw() {
         return segment.get(LAYOUT$pRegions, OFFSET$pRegions);
     }
 
-    public void pRegionsRaw(@Pointer(target=VkPresentRegionKHR.class) MemorySegment value) {
+    public void pRegionsRaw(@Pointer(target=VkPresentRegionKHR.class) @NotNull MemorySegment value) {
         segment.set(LAYOUT$pRegions, OFFSET$pRegions, value);
     }
 

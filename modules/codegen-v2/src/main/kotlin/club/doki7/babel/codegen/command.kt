@@ -38,6 +38,7 @@ fun generateCommandFile(
     imports("java.util.Objects")
     +""
     imports("org.jetbrains.annotations.Nullable")
+    imports("org.jetbrains.annotations.NotNull")
     imports("club.doki7.ffm.NativeLayout")
     imports("club.doki7.ffm.RawFunctionLoader")
     imports("club.doki7.ffm.annotation.*")

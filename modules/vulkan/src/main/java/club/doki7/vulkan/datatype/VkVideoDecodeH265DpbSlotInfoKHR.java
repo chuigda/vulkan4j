@@ -199,12 +199,13 @@ public record VkVideoDecodeH265DpbSlotInfoKHR(@NotNull MemorySegment segment) im
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkVideoDecodeH265DpbSlotInfoKHR pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkVideoDecodeH265DpbSlotInfoKHR pNext(@Nullable IPointer pointer) {
@@ -236,11 +237,11 @@ public record VkVideoDecodeH265DpbSlotInfoKHR(@NotNull MemorySegment segment) im
         return new StdVideoDecodeH265ReferenceInfo(s);
     }
 
-    public @Pointer(target=StdVideoDecodeH265ReferenceInfo.class) MemorySegment pStdReferenceInfoRaw() {
+    public @Pointer(target=StdVideoDecodeH265ReferenceInfo.class) @NotNull MemorySegment pStdReferenceInfoRaw() {
         return segment.get(LAYOUT$pStdReferenceInfo, OFFSET$pStdReferenceInfo);
     }
 
-    public void pStdReferenceInfoRaw(@Pointer(target=StdVideoDecodeH265ReferenceInfo.class) MemorySegment value) {
+    public void pStdReferenceInfoRaw(@Pointer(target=StdVideoDecodeH265ReferenceInfo.class) @NotNull MemorySegment value) {
         segment.set(LAYOUT$pStdReferenceInfo, OFFSET$pStdReferenceInfo, value);
     }
 

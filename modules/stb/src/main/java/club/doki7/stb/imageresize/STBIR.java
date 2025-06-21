@@ -5,6 +5,7 @@ import java.lang.invoke.MethodHandle;
 import java.util.Objects;
 
 import org.jetbrains.annotations.Nullable;
+import org.jetbrains.annotations.NotNull;
 import club.doki7.ffm.NativeLayout;
 import club.doki7.ffm.RawFunctionLoader;
 import club.doki7.ffm.annotation.*;
@@ -110,12 +111,12 @@ public final class STBIR {
         }
     }
 
-    public @Pointer(comment="void*") MemorySegment resize(
-        @Pointer(comment="void*") MemorySegment inputPixels,
+    public @Pointer(comment="void*") @NotNull MemorySegment resize(
+        @Pointer(comment="void*") @NotNull MemorySegment inputPixels,
         int inputW,
         int inputH,
         int inputStrideInBytes,
-        @Pointer(comment="void*") MemorySegment outputPixels,
+        @Pointer(comment="void*") @NotNull MemorySegment outputPixels,
         int outputW,
         int outputH,
         int outputStrideInBytes,
@@ -237,11 +238,11 @@ public final class STBIR {
 
     public void resizeInit(
         @Nullable @Pointer ISTBIR_RESIZE resize,
-        @Pointer(comment="void*") MemorySegment inputPixels,
+        @Pointer(comment="void*") @NotNull MemorySegment inputPixels,
         int inputW,
         int inputH,
         int inputStrideInBytes,
-        @Pointer(comment="void*") MemorySegment outputPixels,
+        @Pointer(comment="void*") @NotNull MemorySegment outputPixels,
         int outputW,
         int outputH,
         int outputStrideInBytes,
@@ -349,9 +350,9 @@ public final class STBIR {
 
     public void setBufferPtrs(
         @Nullable @Pointer ISTBIR_RESIZE resize,
-        @Pointer(comment="void*") MemorySegment inputPixels,
+        @Pointer(comment="void*") @NotNull MemorySegment inputPixels,
         int inputStrideInBytes,
-        @Pointer(comment="void*") MemorySegment outputPixels,
+        @Pointer(comment="void*") @NotNull MemorySegment outputPixels,
         int outputStrideInBytes
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$stbir_set_buffer_ptrs);
@@ -404,10 +405,10 @@ public final class STBIR {
 
     public int setFilterCallbacks(
         @Nullable @Pointer ISTBIR_RESIZE resize,
-        @Pointer(comment="stbir__kernel_callback*") MemorySegment horizontalFilter,
-        @Pointer(comment="stbir__support_callback*") MemorySegment horizontalSupport,
-        @Pointer(comment="stbir__kernel_callback*") MemorySegment verticalFilter,
-        @Pointer(comment="stbir__support_callback*") MemorySegment verticalSupport
+        @Pointer(comment="stbir__kernel_callback*") @NotNull MemorySegment horizontalFilter,
+        @Pointer(comment="stbir__support_callback*") @NotNull MemorySegment horizontalSupport,
+        @Pointer(comment="stbir__kernel_callback*") @NotNull MemorySegment verticalFilter,
+        @Pointer(comment="stbir__support_callback*") @NotNull MemorySegment verticalSupport
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$stbir_set_filter_callbacks);
         try {
@@ -499,8 +500,8 @@ public final class STBIR {
 
     public void setPixelCallbacks(
         @Nullable @Pointer ISTBIR_RESIZE resize,
-        @Pointer(comment="stbir_input_callback*") MemorySegment inputCb,
-        @Pointer(comment="stbir_output_callback*") MemorySegment outputCb
+        @Pointer(comment="stbir_input_callback*") @NotNull MemorySegment inputCb,
+        @Pointer(comment="stbir_output_callback*") @NotNull MemorySegment outputCb
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$stbir_set_pixel_callbacks);
         try {
@@ -554,7 +555,7 @@ public final class STBIR {
 
     public void setUserData(
         @Nullable @Pointer ISTBIR_RESIZE resize,
-        @Pointer(comment="void*") MemorySegment userData
+        @Pointer(comment="void*") @NotNull MemorySegment userData
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$stbir_set_user_data);
         try {

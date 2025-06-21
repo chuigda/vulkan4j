@@ -207,12 +207,13 @@ public record VkAccelerationStructureBuildGeometryInfoKHR(@NotNull MemorySegment
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkAccelerationStructureBuildGeometryInfoKHR pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkAccelerationStructureBuildGeometryInfoKHR pNext(@Nullable IPointer pointer) {
@@ -306,11 +307,11 @@ public record VkAccelerationStructureBuildGeometryInfoKHR(@NotNull MemorySegment
         return new VkAccelerationStructureGeometryKHR(s);
     }
 
-    public @Pointer(target=VkAccelerationStructureGeometryKHR.class) MemorySegment pGeometriesRaw() {
+    public @Pointer(target=VkAccelerationStructureGeometryKHR.class) @NotNull MemorySegment pGeometriesRaw() {
         return segment.get(LAYOUT$pGeometries, OFFSET$pGeometries);
     }
 
-    public void pGeometriesRaw(@Pointer(target=VkAccelerationStructureGeometryKHR.class) MemorySegment value) {
+    public void pGeometriesRaw(@Pointer(target=VkAccelerationStructureGeometryKHR.class) @NotNull MemorySegment value) {
         segment.set(LAYOUT$pGeometries, OFFSET$pGeometries, value);
     }
 
@@ -331,11 +332,11 @@ public record VkAccelerationStructureBuildGeometryInfoKHR(@NotNull MemorySegment
         return this;
     }
 
-    public @Pointer(comment="void**") MemorySegment ppGeometriesRaw() {
+    public @Pointer(comment="void**") @NotNull MemorySegment ppGeometriesRaw() {
         return segment.get(LAYOUT$ppGeometries, OFFSET$ppGeometries);
     }
 
-    public void ppGeometriesRaw(@Pointer(comment="void**") MemorySegment value) {
+    public void ppGeometriesRaw(@Pointer(comment="void**") @NotNull MemorySegment value) {
         segment.set(LAYOUT$ppGeometries, OFFSET$ppGeometries, value);
     }
 

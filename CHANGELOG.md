@@ -14,6 +14,10 @@ Upgrade `ffm-plus` to v0.2.4, and other wrapper modules to v0.4.0.
   - This feature uses `LoadLibraryW` + `GetProcAddress` on Windows platform, `dlopen` + `dlsym` on Linux/FreeBSD/macOS platform.
   - macOS library bundle (`.framework`) is not supported yet.
 
+### Quality of Life update
+
+- PVOID type setters accepting `MemorySegment`s now also returns `this` to allow chaining.
+
 ## v0.3.4
 
 Upgrade `ffm-plus` to v0.2.2, and other wrapper modules to v0.3.4.

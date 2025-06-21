@@ -205,12 +205,13 @@ public record VkRenderPassCreateInfo(@NotNull MemorySegment segment) implements 
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkRenderPassCreateInfo pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkRenderPassCreateInfo pNext(@Nullable IPointer pointer) {
@@ -260,11 +261,11 @@ public record VkRenderPassCreateInfo(@NotNull MemorySegment segment) implements 
         return new VkAttachmentDescription(s);
     }
 
-    public @Pointer(target=VkAttachmentDescription.class) MemorySegment pAttachmentsRaw() {
+    public @Pointer(target=VkAttachmentDescription.class) @NotNull MemorySegment pAttachmentsRaw() {
         return segment.get(LAYOUT$pAttachments, OFFSET$pAttachments);
     }
 
-    public void pAttachmentsRaw(@Pointer(target=VkAttachmentDescription.class) MemorySegment value) {
+    public void pAttachmentsRaw(@Pointer(target=VkAttachmentDescription.class) @NotNull MemorySegment value) {
         segment.set(LAYOUT$pAttachments, OFFSET$pAttachments, value);
     }
 
@@ -301,11 +302,11 @@ public record VkRenderPassCreateInfo(@NotNull MemorySegment segment) implements 
         return new VkSubpassDescription(s);
     }
 
-    public @Pointer(target=VkSubpassDescription.class) MemorySegment pSubpassesRaw() {
+    public @Pointer(target=VkSubpassDescription.class) @NotNull MemorySegment pSubpassesRaw() {
         return segment.get(LAYOUT$pSubpasses, OFFSET$pSubpasses);
     }
 
-    public void pSubpassesRaw(@Pointer(target=VkSubpassDescription.class) MemorySegment value) {
+    public void pSubpassesRaw(@Pointer(target=VkSubpassDescription.class) @NotNull MemorySegment value) {
         segment.set(LAYOUT$pSubpasses, OFFSET$pSubpasses, value);
     }
 
@@ -342,11 +343,11 @@ public record VkRenderPassCreateInfo(@NotNull MemorySegment segment) implements 
         return new VkSubpassDependency(s);
     }
 
-    public @Pointer(target=VkSubpassDependency.class) MemorySegment pDependenciesRaw() {
+    public @Pointer(target=VkSubpassDependency.class) @NotNull MemorySegment pDependenciesRaw() {
         return segment.get(LAYOUT$pDependencies, OFFSET$pDependencies);
     }
 
-    public void pDependenciesRaw(@Pointer(target=VkSubpassDependency.class) MemorySegment value) {
+    public void pDependenciesRaw(@Pointer(target=VkSubpassDependency.class) @NotNull MemorySegment value) {
         segment.set(LAYOUT$pDependencies, OFFSET$pDependencies, value);
     }
 

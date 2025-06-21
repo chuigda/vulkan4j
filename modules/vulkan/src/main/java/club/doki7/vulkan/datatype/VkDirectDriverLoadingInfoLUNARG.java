@@ -200,12 +200,13 @@ public record VkDirectDriverLoadingInfoLUNARG(@NotNull MemorySegment segment) im
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkDirectDriverLoadingInfoLUNARG pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkDirectDriverLoadingInfoLUNARG pNext(@Nullable IPointer pointer) {
@@ -222,12 +223,13 @@ public record VkDirectDriverLoadingInfoLUNARG(@NotNull MemorySegment segment) im
         return this;
     }
 
-    public @Pointer(comment="PFN_vkGetInstanceProcAddrLUNARG") MemorySegment pfnGetInstanceProcAddr() {
+    public @Pointer(comment="PFN_vkGetInstanceProcAddrLUNARG") @NotNull MemorySegment pfnGetInstanceProcAddr() {
         return segment.get(LAYOUT$pfnGetInstanceProcAddr, OFFSET$pfnGetInstanceProcAddr);
     }
 
-    public void pfnGetInstanceProcAddr(@Pointer(comment="PFN_vkGetInstanceProcAddrLUNARG") MemorySegment value) {
+    public VkDirectDriverLoadingInfoLUNARG pfnGetInstanceProcAddr(@Pointer(comment="PFN_vkGetInstanceProcAddrLUNARG") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pfnGetInstanceProcAddr, OFFSET$pfnGetInstanceProcAddr, value);
+        return this;
     }
 
     public VkDirectDriverLoadingInfoLUNARG pfnGetInstanceProcAddr(@Nullable IPointer pointer) {

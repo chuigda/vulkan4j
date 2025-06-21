@@ -231,7 +231,7 @@ public record VkPhysicalDeviceProperties(@NotNull MemorySegment segment) impleme
         return this;
     }
 
-    public MemorySegment deviceNameRaw() {
+    public @NotNull MemorySegment deviceNameRaw() {
         return segment.asSlice(OFFSET$deviceName, SIZE$deviceName);
     }
 
@@ -244,7 +244,7 @@ public record VkPhysicalDeviceProperties(@NotNull MemorySegment segment) impleme
         return this;
     }
 
-    public MemorySegment pipelineCacheUUIDRaw() {
+    public @NotNull MemorySegment pipelineCacheUUIDRaw() {
         return segment.asSlice(OFFSET$pipelineCacheUUID, SIZE$pipelineCacheUUID);
     }
 

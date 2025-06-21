@@ -185,11 +185,11 @@ public record STBTT_Buf(@NotNull MemorySegment segment) implements ISTBTT_Buf {
         return this;
     }
 
-    public @Pointer(comment="int8_t*") MemorySegment dataRaw() {
+    public @Pointer(comment="int8_t*") @NotNull MemorySegment dataRaw() {
         return segment.get(LAYOUT$data, OFFSET$data);
     }
 
-    public void dataRaw(@Pointer(comment="int8_t*") MemorySegment value) {
+    public void dataRaw(@Pointer(comment="int8_t*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$data, OFFSET$data, value);
     }
 

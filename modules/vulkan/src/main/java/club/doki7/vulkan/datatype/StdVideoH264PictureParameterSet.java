@@ -296,11 +296,11 @@ public record StdVideoH264PictureParameterSet(@NotNull MemorySegment segment) im
         return new StdVideoH264ScalingLists(s);
     }
 
-    public @Pointer(target=StdVideoH264ScalingLists.class) MemorySegment pScalingListsRaw() {
+    public @Pointer(target=StdVideoH264ScalingLists.class) @NotNull MemorySegment pScalingListsRaw() {
         return segment.get(LAYOUT$pScalingLists, OFFSET$pScalingLists);
     }
 
-    public void pScalingListsRaw(@Pointer(target=StdVideoH264ScalingLists.class) MemorySegment value) {
+    public void pScalingListsRaw(@Pointer(target=StdVideoH264ScalingLists.class) @NotNull MemorySegment value) {
         segment.set(LAYOUT$pScalingLists, OFFSET$pScalingLists, value);
     }
 

@@ -177,7 +177,7 @@ public record StdVideoAV1GlobalMotion(@NotNull MemorySegment segment) implements
         return this;
     }
 
-    public MemorySegment GmTypeRaw() {
+    public @NotNull MemorySegment GmTypeRaw() {
         return segment.asSlice(OFFSET$GmType, SIZE$GmType);
     }
 
@@ -190,7 +190,7 @@ public record StdVideoAV1GlobalMotion(@NotNull MemorySegment segment) implements
         return this;
     }
 
-    public MemorySegment gm_paramsRaw() {
+    public @NotNull MemorySegment gm_paramsRaw() {
         return segment.asSlice(OFFSET$gm_params, SIZE$gm_params);
     }
 

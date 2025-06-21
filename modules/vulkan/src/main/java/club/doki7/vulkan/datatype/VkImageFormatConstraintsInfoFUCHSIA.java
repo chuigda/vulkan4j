@@ -204,12 +204,13 @@ public record VkImageFormatConstraintsInfoFUCHSIA(@NotNull MemorySegment segment
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkImageFormatConstraintsInfoFUCHSIA pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkImageFormatConstraintsInfoFUCHSIA pNext(@Nullable IPointer pointer) {
@@ -291,11 +292,11 @@ public record VkImageFormatConstraintsInfoFUCHSIA(@NotNull MemorySegment segment
         return new VkSysmemColorSpaceFUCHSIA(s);
     }
 
-    public @Pointer(target=VkSysmemColorSpaceFUCHSIA.class) MemorySegment pColorSpacesRaw() {
+    public @Pointer(target=VkSysmemColorSpaceFUCHSIA.class) @NotNull MemorySegment pColorSpacesRaw() {
         return segment.get(LAYOUT$pColorSpaces, OFFSET$pColorSpaces);
     }
 
-    public void pColorSpacesRaw(@Pointer(target=VkSysmemColorSpaceFUCHSIA.class) MemorySegment value) {
+    public void pColorSpacesRaw(@Pointer(target=VkSysmemColorSpaceFUCHSIA.class) @NotNull MemorySegment value) {
         segment.set(LAYOUT$pColorSpaces, OFFSET$pColorSpaces, value);
     }
 

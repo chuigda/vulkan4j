@@ -201,12 +201,13 @@ public record VkScreenSurfaceCreateInfoQNX(@NotNull MemorySegment segment) imple
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkScreenSurfaceCreateInfoQNX pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkScreenSurfaceCreateInfoQNX pNext(@Nullable IPointer pointer) {
@@ -240,11 +241,11 @@ public record VkScreenSurfaceCreateInfoQNX(@NotNull MemorySegment segment) imple
         return this;
     }
 
-    public @Pointer(comment="_screen_context*") MemorySegment contextRaw() {
+    public @Pointer(comment="_screen_context*") @NotNull MemorySegment contextRaw() {
         return segment.get(LAYOUT$context, OFFSET$context);
     }
 
-    public void contextRaw(@Pointer(comment="_screen_context*") MemorySegment value) {
+    public void contextRaw(@Pointer(comment="_screen_context*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$context, OFFSET$context, value);
     }
 
@@ -265,11 +266,11 @@ public record VkScreenSurfaceCreateInfoQNX(@NotNull MemorySegment segment) imple
         return this;
     }
 
-    public @Pointer(comment="_screen_window*") MemorySegment windowRaw() {
+    public @Pointer(comment="_screen_window*") @NotNull MemorySegment windowRaw() {
         return segment.get(LAYOUT$window, OFFSET$window);
     }
 
-    public void windowRaw(@Pointer(comment="_screen_window*") MemorySegment value) {
+    public void windowRaw(@Pointer(comment="_screen_window*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$window, OFFSET$window, value);
     }
 

@@ -200,12 +200,13 @@ public record VkPresentIdKHR(@NotNull MemorySegment segment) implements IVkPrese
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkPresentIdKHR pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkPresentIdKHR pNext(@Nullable IPointer pointer) {
@@ -240,11 +241,11 @@ public record VkPresentIdKHR(@NotNull MemorySegment segment) implements IVkPrese
         return this;
     }
 
-    public @Pointer(comment="uint64_t*") MemorySegment pPresentIdsRaw() {
+    public @Pointer(comment="uint64_t*") @NotNull MemorySegment pPresentIdsRaw() {
         return segment.get(LAYOUT$pPresentIds, OFFSET$pPresentIds);
     }
 
-    public void pPresentIdsRaw(@Pointer(comment="uint64_t*") MemorySegment value) {
+    public void pPresentIdsRaw(@Pointer(comment="uint64_t*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pPresentIds, OFFSET$pPresentIds, value);
     }
 

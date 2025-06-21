@@ -200,12 +200,13 @@ public record VkVideoEncodeH265NaluSliceSegmentInfoKHR(@NotNull MemorySegment se
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkVideoEncodeH265NaluSliceSegmentInfoKHR pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkVideoEncodeH265NaluSliceSegmentInfoKHR pNext(@Nullable IPointer pointer) {
@@ -246,11 +247,11 @@ public record VkVideoEncodeH265NaluSliceSegmentInfoKHR(@NotNull MemorySegment se
         return new StdVideoEncodeH265SliceSegmentHeader(s);
     }
 
-    public @Pointer(target=StdVideoEncodeH265SliceSegmentHeader.class) MemorySegment pStdSliceSegmentHeaderRaw() {
+    public @Pointer(target=StdVideoEncodeH265SliceSegmentHeader.class) @NotNull MemorySegment pStdSliceSegmentHeaderRaw() {
         return segment.get(LAYOUT$pStdSliceSegmentHeader, OFFSET$pStdSliceSegmentHeader);
     }
 
-    public void pStdSliceSegmentHeaderRaw(@Pointer(target=StdVideoEncodeH265SliceSegmentHeader.class) MemorySegment value) {
+    public void pStdSliceSegmentHeaderRaw(@Pointer(target=StdVideoEncodeH265SliceSegmentHeader.class) @NotNull MemorySegment value) {
         segment.set(LAYOUT$pStdSliceSegmentHeader, OFFSET$pStdSliceSegmentHeader, value);
     }
 

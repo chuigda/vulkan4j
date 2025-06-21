@@ -210,12 +210,13 @@ public record VkShaderCreateInfoEXT(@NotNull MemorySegment segment) implements I
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkShaderCreateInfoEXT pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkShaderCreateInfoEXT pNext(@Nullable IPointer pointer) {
@@ -268,12 +269,13 @@ public record VkShaderCreateInfoEXT(@NotNull MemorySegment segment) implements I
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pCode() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pCode() {
         return segment.get(LAYOUT$pCode, OFFSET$pCode);
     }
 
-    public void pCode(@Pointer(comment="void*") MemorySegment value) {
+    public VkShaderCreateInfoEXT pCode(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pCode, OFFSET$pCode, value);
+        return this;
     }
 
     public VkShaderCreateInfoEXT pCode(@Nullable IPointer pointer) {
@@ -299,11 +301,11 @@ public record VkShaderCreateInfoEXT(@NotNull MemorySegment segment) implements I
         return this;
     }
 
-    public @Pointer(comment="int8_t*") MemorySegment pNameRaw() {
+    public @Pointer(comment="int8_t*") @NotNull MemorySegment pNameRaw() {
         return segment.get(LAYOUT$pName, OFFSET$pName);
     }
 
-    public void pNameRaw(@Pointer(comment="int8_t*") MemorySegment value) {
+    public void pNameRaw(@Pointer(comment="int8_t*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pName, OFFSET$pName, value);
     }
 
@@ -334,11 +336,11 @@ public record VkShaderCreateInfoEXT(@NotNull MemorySegment segment) implements I
         return this;
     }
 
-    public @Pointer(target=VkDescriptorSetLayout.class) MemorySegment pSetLayoutsRaw() {
+    public @Pointer(target=VkDescriptorSetLayout.class) @NotNull MemorySegment pSetLayoutsRaw() {
         return segment.get(LAYOUT$pSetLayouts, OFFSET$pSetLayouts);
     }
 
-    public void pSetLayoutsRaw(@Pointer(target=VkDescriptorSetLayout.class) MemorySegment value) {
+    public void pSetLayoutsRaw(@Pointer(target=VkDescriptorSetLayout.class) @NotNull MemorySegment value) {
         segment.set(LAYOUT$pSetLayouts, OFFSET$pSetLayouts, value);
     }
 
@@ -375,11 +377,11 @@ public record VkShaderCreateInfoEXT(@NotNull MemorySegment segment) implements I
         return new VkPushConstantRange(s);
     }
 
-    public @Pointer(target=VkPushConstantRange.class) MemorySegment pPushConstantRangesRaw() {
+    public @Pointer(target=VkPushConstantRange.class) @NotNull MemorySegment pPushConstantRangesRaw() {
         return segment.get(LAYOUT$pPushConstantRanges, OFFSET$pPushConstantRanges);
     }
 
-    public void pPushConstantRangesRaw(@Pointer(target=VkPushConstantRange.class) MemorySegment value) {
+    public void pPushConstantRangesRaw(@Pointer(target=VkPushConstantRange.class) @NotNull MemorySegment value) {
         segment.set(LAYOUT$pPushConstantRanges, OFFSET$pPushConstantRanges, value);
     }
 
@@ -407,11 +409,11 @@ public record VkShaderCreateInfoEXT(@NotNull MemorySegment segment) implements I
         return new VkSpecializationInfo(s);
     }
 
-    public @Pointer(target=VkSpecializationInfo.class) MemorySegment pSpecializationInfoRaw() {
+    public @Pointer(target=VkSpecializationInfo.class) @NotNull MemorySegment pSpecializationInfoRaw() {
         return segment.get(LAYOUT$pSpecializationInfo, OFFSET$pSpecializationInfo);
     }
 
-    public void pSpecializationInfoRaw(@Pointer(target=VkSpecializationInfo.class) MemorySegment value) {
+    public void pSpecializationInfoRaw(@Pointer(target=VkSpecializationInfo.class) @NotNull MemorySegment value) {
         segment.set(LAYOUT$pSpecializationInfo, OFFSET$pSpecializationInfo, value);
     }
 

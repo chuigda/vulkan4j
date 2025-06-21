@@ -204,12 +204,13 @@ public record VkPipelineColorBlendStateCreateInfo(@NotNull MemorySegment segment
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkPipelineColorBlendStateCreateInfo pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkPipelineColorBlendStateCreateInfo pNext(@Nullable IPointer pointer) {
@@ -277,11 +278,11 @@ public record VkPipelineColorBlendStateCreateInfo(@NotNull MemorySegment segment
         return new VkPipelineColorBlendAttachmentState(s);
     }
 
-    public @Pointer(target=VkPipelineColorBlendAttachmentState.class) MemorySegment pAttachmentsRaw() {
+    public @Pointer(target=VkPipelineColorBlendAttachmentState.class) @NotNull MemorySegment pAttachmentsRaw() {
         return segment.get(LAYOUT$pAttachments, OFFSET$pAttachments);
     }
 
-    public void pAttachmentsRaw(@Pointer(target=VkPipelineColorBlendAttachmentState.class) MemorySegment value) {
+    public void pAttachmentsRaw(@Pointer(target=VkPipelineColorBlendAttachmentState.class) @NotNull MemorySegment value) {
         segment.set(LAYOUT$pAttachments, OFFSET$pAttachments, value);
     }
 
@@ -294,7 +295,7 @@ public record VkPipelineColorBlendStateCreateInfo(@NotNull MemorySegment segment
         return this;
     }
 
-    public MemorySegment blendConstantsRaw() {
+    public @NotNull MemorySegment blendConstantsRaw() {
         return segment.asSlice(OFFSET$blendConstants, SIZE$blendConstants);
     }
 

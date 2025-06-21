@@ -200,12 +200,13 @@ public record VkPipelineLibraryCreateInfoKHR(@NotNull MemorySegment segment) imp
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkPipelineLibraryCreateInfoKHR pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkPipelineLibraryCreateInfoKHR pNext(@Nullable IPointer pointer) {
@@ -240,11 +241,11 @@ public record VkPipelineLibraryCreateInfoKHR(@NotNull MemorySegment segment) imp
         return this;
     }
 
-    public @Pointer(target=VkPipeline.class) MemorySegment pLibrariesRaw() {
+    public @Pointer(target=VkPipeline.class) @NotNull MemorySegment pLibrariesRaw() {
         return segment.get(LAYOUT$pLibraries, OFFSET$pLibraries);
     }
 
-    public void pLibrariesRaw(@Pointer(target=VkPipeline.class) MemorySegment value) {
+    public void pLibrariesRaw(@Pointer(target=VkPipeline.class) @NotNull MemorySegment value) {
         segment.set(LAYOUT$pLibraries, OFFSET$pLibraries, value);
     }
 

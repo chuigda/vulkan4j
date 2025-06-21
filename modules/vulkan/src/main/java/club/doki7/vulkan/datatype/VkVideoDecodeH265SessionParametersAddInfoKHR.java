@@ -204,12 +204,13 @@ public record VkVideoDecodeH265SessionParametersAddInfoKHR(@NotNull MemorySegmen
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkVideoDecodeH265SessionParametersAddInfoKHR pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkVideoDecodeH265SessionParametersAddInfoKHR pNext(@Nullable IPointer pointer) {
@@ -250,11 +251,11 @@ public record VkVideoDecodeH265SessionParametersAddInfoKHR(@NotNull MemorySegmen
         return new StdVideoH265VideoParameterSet(s);
     }
 
-    public @Pointer(target=StdVideoH265VideoParameterSet.class) MemorySegment pStdVPSsRaw() {
+    public @Pointer(target=StdVideoH265VideoParameterSet.class) @NotNull MemorySegment pStdVPSsRaw() {
         return segment.get(LAYOUT$pStdVPSs, OFFSET$pStdVPSs);
     }
 
-    public void pStdVPSsRaw(@Pointer(target=StdVideoH265VideoParameterSet.class) MemorySegment value) {
+    public void pStdVPSsRaw(@Pointer(target=StdVideoH265VideoParameterSet.class) @NotNull MemorySegment value) {
         segment.set(LAYOUT$pStdVPSs, OFFSET$pStdVPSs, value);
     }
 
@@ -291,11 +292,11 @@ public record VkVideoDecodeH265SessionParametersAddInfoKHR(@NotNull MemorySegmen
         return new StdVideoH265SequenceParameterSet(s);
     }
 
-    public @Pointer(target=StdVideoH265SequenceParameterSet.class) MemorySegment pStdSPSsRaw() {
+    public @Pointer(target=StdVideoH265SequenceParameterSet.class) @NotNull MemorySegment pStdSPSsRaw() {
         return segment.get(LAYOUT$pStdSPSs, OFFSET$pStdSPSs);
     }
 
-    public void pStdSPSsRaw(@Pointer(target=StdVideoH265SequenceParameterSet.class) MemorySegment value) {
+    public void pStdSPSsRaw(@Pointer(target=StdVideoH265SequenceParameterSet.class) @NotNull MemorySegment value) {
         segment.set(LAYOUT$pStdSPSs, OFFSET$pStdSPSs, value);
     }
 
@@ -332,11 +333,11 @@ public record VkVideoDecodeH265SessionParametersAddInfoKHR(@NotNull MemorySegmen
         return new StdVideoH265PictureParameterSet(s);
     }
 
-    public @Pointer(target=StdVideoH265PictureParameterSet.class) MemorySegment pStdPPSsRaw() {
+    public @Pointer(target=StdVideoH265PictureParameterSet.class) @NotNull MemorySegment pStdPPSsRaw() {
         return segment.get(LAYOUT$pStdPPSs, OFFSET$pStdPPSs);
     }
 
-    public void pStdPPSsRaw(@Pointer(target=StdVideoH265PictureParameterSet.class) MemorySegment value) {
+    public void pStdPPSsRaw(@Pointer(target=StdVideoH265PictureParameterSet.class) @NotNull MemorySegment value) {
         segment.set(LAYOUT$pStdPPSs, OFFSET$pStdPPSs, value);
     }
 

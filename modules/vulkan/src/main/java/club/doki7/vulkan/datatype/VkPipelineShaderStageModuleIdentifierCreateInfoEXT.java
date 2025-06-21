@@ -200,12 +200,13 @@ public record VkPipelineShaderStageModuleIdentifierCreateInfoEXT(@NotNull Memory
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkPipelineShaderStageModuleIdentifierCreateInfoEXT pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkPipelineShaderStageModuleIdentifierCreateInfoEXT pNext(@Nullable IPointer pointer) {
@@ -240,11 +241,11 @@ public record VkPipelineShaderStageModuleIdentifierCreateInfoEXT(@NotNull Memory
         return this;
     }
 
-    public @Pointer(comment="uint8_t*") MemorySegment pIdentifierRaw() {
+    public @Pointer(comment="uint8_t*") @NotNull MemorySegment pIdentifierRaw() {
         return segment.get(LAYOUT$pIdentifier, OFFSET$pIdentifier);
     }
 
-    public void pIdentifierRaw(@Pointer(comment="uint8_t*") MemorySegment value) {
+    public void pIdentifierRaw(@Pointer(comment="uint8_t*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pIdentifier, OFFSET$pIdentifier, value);
     }
 

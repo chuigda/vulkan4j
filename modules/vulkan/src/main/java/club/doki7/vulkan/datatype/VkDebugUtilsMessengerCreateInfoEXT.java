@@ -203,12 +203,13 @@ public record VkDebugUtilsMessengerCreateInfoEXT(@NotNull MemorySegment segment)
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkDebugUtilsMessengerCreateInfoEXT pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkDebugUtilsMessengerCreateInfoEXT pNext(@Nullable IPointer pointer) {
@@ -243,12 +244,13 @@ public record VkDebugUtilsMessengerCreateInfoEXT(@NotNull MemorySegment segment)
         return this;
     }
 
-    public @Pointer(comment="PFN_vkDebugUtilsMessengerCallbackEXT") MemorySegment pfnUserCallback() {
+    public @Pointer(comment="PFN_vkDebugUtilsMessengerCallbackEXT") @NotNull MemorySegment pfnUserCallback() {
         return segment.get(LAYOUT$pfnUserCallback, OFFSET$pfnUserCallback);
     }
 
-    public void pfnUserCallback(@Pointer(comment="PFN_vkDebugUtilsMessengerCallbackEXT") MemorySegment value) {
+    public VkDebugUtilsMessengerCreateInfoEXT pfnUserCallback(@Pointer(comment="PFN_vkDebugUtilsMessengerCallbackEXT") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pfnUserCallback, OFFSET$pfnUserCallback, value);
+        return this;
     }
 
     public VkDebugUtilsMessengerCreateInfoEXT pfnUserCallback(@Nullable IPointer pointer) {
@@ -256,12 +258,13 @@ public record VkDebugUtilsMessengerCreateInfoEXT(@NotNull MemorySegment segment)
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pUserData() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pUserData() {
         return segment.get(LAYOUT$pUserData, OFFSET$pUserData);
     }
 
-    public void pUserData(@Pointer(comment="void*") MemorySegment value) {
+    public VkDebugUtilsMessengerCreateInfoEXT pUserData(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pUserData, OFFSET$pUserData, value);
+        return this;
     }
 
     public VkDebugUtilsMessengerCreateInfoEXT pUserData(@Nullable IPointer pointer) {

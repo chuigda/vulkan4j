@@ -203,7 +203,7 @@ public record StdVideoDecodeH264ReferenceInfo(@NotNull MemorySegment segment) im
         return this;
     }
 
-    public MemorySegment PicOrderCntRaw() {
+    public @NotNull MemorySegment PicOrderCntRaw() {
         return segment.asSlice(OFFSET$PicOrderCnt, SIZE$PicOrderCnt);
     }
 

@@ -201,12 +201,13 @@ public record VkDeviceDeviceMemoryReportCreateInfoEXT(@NotNull MemorySegment seg
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkDeviceDeviceMemoryReportCreateInfoEXT pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkDeviceDeviceMemoryReportCreateInfoEXT pNext(@Nullable IPointer pointer) {
@@ -223,12 +224,13 @@ public record VkDeviceDeviceMemoryReportCreateInfoEXT(@NotNull MemorySegment seg
         return this;
     }
 
-    public @Pointer(comment="PFN_vkDeviceMemoryReportCallbackEXT") MemorySegment pfnUserCallback() {
+    public @Pointer(comment="PFN_vkDeviceMemoryReportCallbackEXT") @NotNull MemorySegment pfnUserCallback() {
         return segment.get(LAYOUT$pfnUserCallback, OFFSET$pfnUserCallback);
     }
 
-    public void pfnUserCallback(@Pointer(comment="PFN_vkDeviceMemoryReportCallbackEXT") MemorySegment value) {
+    public VkDeviceDeviceMemoryReportCreateInfoEXT pfnUserCallback(@Pointer(comment="PFN_vkDeviceMemoryReportCallbackEXT") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pfnUserCallback, OFFSET$pfnUserCallback, value);
+        return this;
     }
 
     public VkDeviceDeviceMemoryReportCreateInfoEXT pfnUserCallback(@Nullable IPointer pointer) {
@@ -236,12 +238,13 @@ public record VkDeviceDeviceMemoryReportCreateInfoEXT(@NotNull MemorySegment seg
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pUserData() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pUserData() {
         return segment.get(LAYOUT$pUserData, OFFSET$pUserData);
     }
 
-    public void pUserData(@Pointer(comment="void*") MemorySegment value) {
+    public VkDeviceDeviceMemoryReportCreateInfoEXT pUserData(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pUserData, OFFSET$pUserData, value);
+        return this;
     }
 
     public VkDeviceDeviceMemoryReportCreateInfoEXT pUserData(@Nullable IPointer pointer) {

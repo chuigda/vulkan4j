@@ -19,13 +19,14 @@ private fun generatePVoidAccessor(className: String, type: CPointerType, member:
     val comment = type.comment ?: "void*"
     val annotation = "@Pointer(comment=\"$comment\")"
 
-    defun("public", "$annotation MemorySegment", member.name) {
+    defun("public", "$annotation @NotNull MemorySegment", member.name) {
         +"return segment.get(${member.layoutName}, ${member.offsetName});"
     }
     +""
 
-    defun("public", "void", member.name, "$annotation MemorySegment value") {
+    defun("public", className, member.name, "$annotation @NotNull MemorySegment value") {
         +"segment.set(${member.layoutName}, ${member.offsetName}, value);"
+        +"return this;"
     }
     +""
 
@@ -59,12 +60,12 @@ private fun generatePPAccessor(className: String, pointee: CPointerType, member:
     }
     +""
 
-    defun("public", "$annotation MemorySegment", rawName) {
+    defun("public", "$annotation @NotNull MemorySegment", rawName) {
         +"return segment.get(${member.layoutName}, ${member.offsetName});"
     }
     +""
 
-    defun("public", "void", rawName, "$annotation MemorySegment value") {
+    defun("public", "void", rawName, "$annotation @NotNull MemorySegment value") {
         +"segment.set(${member.layoutName}, ${member.offsetName}, value);"
     }
 }
@@ -94,12 +95,12 @@ private fun generatePNonRefAccessor(className: String, pointee: CNonRefType, mem
     }
     +""
 
-    defun("public", "$annotation MemorySegment", rawName) {
+    defun("public", "$annotation @NotNull MemorySegment", rawName) {
         +"return segment.get(${member.layoutName}, ${member.offsetName});"
     }
     +""
 
-    defun("public", "void", rawName, "$annotation MemorySegment value") {
+    defun("public", "void", rawName, "$annotation @NotNull MemorySegment value") {
         +"segment.set(${member.layoutName}, ${member.offsetName}, value);"
     }
 }
@@ -129,12 +130,12 @@ private fun generatePHandleAccessor(className: String, pointee: CHandleType, mem
     }
     +""
 
-    defun("public", "$annotation MemorySegment", rawName) {
+    defun("public", "$annotation @NotNull MemorySegment", rawName) {
         +"return segment.get(${member.layoutName}, ${member.offsetName});"
     }
     +""
 
-    defun("public", "void", rawName, "$annotation MemorySegment value") {
+    defun("public", "void", rawName, "$annotation @NotNull MemorySegment value") {
         +"segment.set(${member.layoutName}, ${member.offsetName}, value);"
     }
 }
@@ -171,12 +172,12 @@ private fun generatePStructureAccessor(className: String, pointee: CStructType, 
     }
     +""
 
-    defun("public", "$annotation MemorySegment", rawName) {
+    defun("public", "$annotation @NotNull MemorySegment", rawName) {
         +"return segment.get(${member.layoutName}, ${member.offsetName});"
     }
     +""
 
-    defun("public", "void", rawName, "$annotation MemorySegment value") {
+    defun("public", "void", rawName, "$annotation @NotNull MemorySegment value") {
         +"segment.set(${member.layoutName}, ${member.offsetName}, value);"
     }
 }
@@ -204,16 +205,16 @@ private fun generatePEnumAccessor(className: String, pointee: CEnumType, member:
     defun("public", className, member.name, "@Nullable ${pointee.jPtrType} value") {
         +"MemorySegment s = value == null ? MemorySegment.NULL : value.segment();"
         +"$rawName(s);"
-        +"return this;";
+        +"return this;"
     }
     +""
 
-    defun("public", "$annotation MemorySegment", rawName) {
+    defun("public", "$annotation @NotNull MemorySegment", rawName) {
         +"return segment.get(${member.layoutName}, ${member.offsetName});"
     }
     +""
 
-    defun("public", "void", rawName, "$annotation MemorySegment value") {
+    defun("public", "void", rawName, "$annotation @NotNull MemorySegment value") {
         +"segment.set(${member.layoutName}, ${member.offsetName}, value);"
     }
 }

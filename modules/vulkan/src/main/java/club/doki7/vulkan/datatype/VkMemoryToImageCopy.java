@@ -204,12 +204,13 @@ public record VkMemoryToImageCopy(@NotNull MemorySegment segment) implements IVk
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkMemoryToImageCopy pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkMemoryToImageCopy pNext(@Nullable IPointer pointer) {
@@ -217,12 +218,13 @@ public record VkMemoryToImageCopy(@NotNull MemorySegment segment) implements IVk
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pHostPointer() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pHostPointer() {
         return segment.get(LAYOUT$pHostPointer, OFFSET$pHostPointer);
     }
 
-    public void pHostPointer(@Pointer(comment="void*") MemorySegment value) {
+    public VkMemoryToImageCopy pHostPointer(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pHostPointer, OFFSET$pHostPointer, value);
+        return this;
     }
 
     public VkMemoryToImageCopy pHostPointer(@Nullable IPointer pointer) {

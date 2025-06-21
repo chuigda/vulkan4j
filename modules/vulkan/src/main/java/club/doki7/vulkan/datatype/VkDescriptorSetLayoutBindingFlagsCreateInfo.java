@@ -200,12 +200,13 @@ public record VkDescriptorSetLayoutBindingFlagsCreateInfo(@NotNull MemorySegment
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkDescriptorSetLayoutBindingFlagsCreateInfo pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkDescriptorSetLayoutBindingFlagsCreateInfo pNext(@Nullable IPointer pointer) {
@@ -241,11 +242,11 @@ public record VkDescriptorSetLayoutBindingFlagsCreateInfo(@NotNull MemorySegment
         return this;
     }
 
-    public @Pointer(target=VkDescriptorBindingFlags.class) MemorySegment pBindingFlagsRaw() {
+    public @Pointer(target=VkDescriptorBindingFlags.class) @NotNull MemorySegment pBindingFlagsRaw() {
         return segment.get(LAYOUT$pBindingFlags, OFFSET$pBindingFlags);
     }
 
-    public void pBindingFlagsRaw(@Pointer(target=VkDescriptorBindingFlags.class) MemorySegment value) {
+    public void pBindingFlagsRaw(@Pointer(target=VkDescriptorBindingFlags.class) @NotNull MemorySegment value) {
         segment.set(LAYOUT$pBindingFlags, OFFSET$pBindingFlags, value);
     }
 

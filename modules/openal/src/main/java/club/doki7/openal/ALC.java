@@ -5,6 +5,7 @@ import java.lang.invoke.MethodHandle;
 import java.util.Objects;
 
 import org.jetbrains.annotations.Nullable;
+import org.jetbrains.annotations.NotNull;
 import club.doki7.ffm.NativeLayout;
 import club.doki7.ffm.RawFunctionLoader;
 import club.doki7.ffm.annotation.*;
@@ -250,7 +251,7 @@ public final class ALC implements ALCConstants {
 
     /// Retrieve the address of a function. Given a non-NULL device, the returned
     /// function may be device-specific.
-    public @Pointer(comment="void*") MemorySegment getProcAddress(
+    public @Pointer(comment="void*") @NotNull MemorySegment getProcAddress(
         @Nullable ALCdevice device,
         @Nullable @Pointer(comment="ALCchar") BytePtr funcname
     ) {
@@ -386,7 +387,7 @@ public final class ALC implements ALCConstants {
     ///  Reads samples from the device buffer.
     public void captureSamples(
         @Nullable ALCdevice device,
-        @Pointer(comment="void*") MemorySegment buffer,
+        @Pointer(comment="void*") @NotNull MemorySegment buffer,
         @NativeType("ALCsizei") int samples
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$alcCaptureSamples);
@@ -460,7 +461,7 @@ public final class ALC implements ALCConstants {
 
     public void renderSamplesSOFT(
         @Nullable ALCdevice device,
-        @Pointer(comment="void*") MemorySegment buffer,
+        @Pointer(comment="void*") @NotNull MemorySegment buffer,
         @NativeType("ALCsizei") int samples
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$alcRenderSamplesSOFT);
@@ -603,8 +604,8 @@ public final class ALC implements ALCConstants {
     }
 
     public void eventCallbackSOFT(
-        @Pointer(comment="ALCEVENTPROCTYPESOFT") MemorySegment callback,
-        @Pointer(comment="void*") MemorySegment userParam
+        @Pointer(comment="ALCEVENTPROCTYPESOFT") @NotNull MemorySegment callback,
+        @Pointer(comment="void*") @NotNull MemorySegment userParam
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$alcEventCallbackSOFT);
         try {
@@ -617,7 +618,7 @@ public final class ALC implements ALCConstants {
         }
     }
 
-    public @Pointer(comment="void*") MemorySegment getProcAddress2(
+    public @Pointer(comment="void*") @NotNull MemorySegment getProcAddress2(
         @Nullable ALCdevice device,
         @Nullable @Pointer(comment="ALCchar") BytePtr funcName
     ) {

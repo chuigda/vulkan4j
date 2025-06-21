@@ -202,12 +202,13 @@ public record VkDescriptorPoolCreateInfo(@NotNull MemorySegment segment) impleme
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkDescriptorPoolCreateInfo pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkDescriptorPoolCreateInfo pNext(@Nullable IPointer pointer) {
@@ -266,11 +267,11 @@ public record VkDescriptorPoolCreateInfo(@NotNull MemorySegment segment) impleme
         return new VkDescriptorPoolSize(s);
     }
 
-    public @Pointer(target=VkDescriptorPoolSize.class) MemorySegment pPoolSizesRaw() {
+    public @Pointer(target=VkDescriptorPoolSize.class) @NotNull MemorySegment pPoolSizesRaw() {
         return segment.get(LAYOUT$pPoolSizes, OFFSET$pPoolSizes);
     }
 
-    public void pPoolSizesRaw(@Pointer(target=VkDescriptorPoolSize.class) MemorySegment value) {
+    public void pPoolSizesRaw(@Pointer(target=VkDescriptorPoolSize.class) @NotNull MemorySegment value) {
         segment.set(LAYOUT$pPoolSizes, OFFSET$pPoolSizes, value);
     }
 

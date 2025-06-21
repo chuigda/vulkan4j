@@ -312,11 +312,11 @@ public record VmaAllocatorCreateInfo(@NotNull MemorySegment segment) implements 
         return new VkAllocationCallbacks(s);
     }
 
-    public @Pointer(target=VkAllocationCallbacks.class) MemorySegment pAllocationCallbacksRaw() {
+    public @Pointer(target=VkAllocationCallbacks.class) @NotNull MemorySegment pAllocationCallbacksRaw() {
         return segment.get(LAYOUT$pAllocationCallbacks, OFFSET$pAllocationCallbacks);
     }
 
-    public void pAllocationCallbacksRaw(@Pointer(target=VkAllocationCallbacks.class) MemorySegment value) {
+    public void pAllocationCallbacksRaw(@Pointer(target=VkAllocationCallbacks.class) @NotNull MemorySegment value) {
         segment.set(LAYOUT$pAllocationCallbacks, OFFSET$pAllocationCallbacks, value);
     }
 
@@ -344,11 +344,11 @@ public record VmaAllocatorCreateInfo(@NotNull MemorySegment segment) implements 
         return new VmaDeviceMemoryCallbacks(s);
     }
 
-    public @Pointer(target=VmaDeviceMemoryCallbacks.class) MemorySegment pDeviceMemoryCallbacksRaw() {
+    public @Pointer(target=VmaDeviceMemoryCallbacks.class) @NotNull MemorySegment pDeviceMemoryCallbacksRaw() {
         return segment.get(LAYOUT$pDeviceMemoryCallbacks, OFFSET$pDeviceMemoryCallbacks);
     }
 
-    public void pDeviceMemoryCallbacksRaw(@Pointer(target=VmaDeviceMemoryCallbacks.class) MemorySegment value) {
+    public void pDeviceMemoryCallbacksRaw(@Pointer(target=VmaDeviceMemoryCallbacks.class) @NotNull MemorySegment value) {
         segment.set(LAYOUT$pDeviceMemoryCallbacks, OFFSET$pDeviceMemoryCallbacks, value);
     }
 
@@ -370,11 +370,11 @@ public record VmaAllocatorCreateInfo(@NotNull MemorySegment segment) implements 
         return this;
     }
 
-    public @Pointer(comment="uint64_t*") MemorySegment pHeapSizeLimitRaw() {
+    public @Pointer(comment="uint64_t*") @NotNull MemorySegment pHeapSizeLimitRaw() {
         return segment.get(LAYOUT$pHeapSizeLimit, OFFSET$pHeapSizeLimit);
     }
 
-    public void pHeapSizeLimitRaw(@Pointer(comment="uint64_t*") MemorySegment value) {
+    public void pHeapSizeLimitRaw(@Pointer(comment="uint64_t*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pHeapSizeLimit, OFFSET$pHeapSizeLimit, value);
     }
 
@@ -402,11 +402,11 @@ public record VmaAllocatorCreateInfo(@NotNull MemorySegment segment) implements 
         return new VmaVulkanFunctions(s);
     }
 
-    public @Pointer(target=VmaVulkanFunctions.class) MemorySegment pVulkanFunctionsRaw() {
+    public @Pointer(target=VmaVulkanFunctions.class) @NotNull MemorySegment pVulkanFunctionsRaw() {
         return segment.get(LAYOUT$pVulkanFunctions, OFFSET$pVulkanFunctions);
     }
 
-    public void pVulkanFunctionsRaw(@Pointer(target=VmaVulkanFunctions.class) MemorySegment value) {
+    public void pVulkanFunctionsRaw(@Pointer(target=VmaVulkanFunctions.class) @NotNull MemorySegment value) {
         segment.set(LAYOUT$pVulkanFunctions, OFFSET$pVulkanFunctions, value);
     }
 
@@ -451,11 +451,11 @@ public record VmaAllocatorCreateInfo(@NotNull MemorySegment segment) implements 
         return this;
     }
 
-    public @Pointer(target=VkExternalMemoryHandleTypeFlags.class) MemorySegment pTypeExternalMemoryHandleTypesRaw() {
+    public @Pointer(target=VkExternalMemoryHandleTypeFlags.class) @NotNull MemorySegment pTypeExternalMemoryHandleTypesRaw() {
         return segment.get(LAYOUT$pTypeExternalMemoryHandleTypes, OFFSET$pTypeExternalMemoryHandleTypes);
     }
 
-    public void pTypeExternalMemoryHandleTypesRaw(@Pointer(target=VkExternalMemoryHandleTypeFlags.class) MemorySegment value) {
+    public void pTypeExternalMemoryHandleTypesRaw(@Pointer(target=VkExternalMemoryHandleTypeFlags.class) @NotNull MemorySegment value) {
         segment.set(LAYOUT$pTypeExternalMemoryHandleTypes, OFFSET$pTypeExternalMemoryHandleTypes, value);
     }
 

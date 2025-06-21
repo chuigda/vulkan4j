@@ -201,12 +201,13 @@ public record VkImportFenceSciSyncInfoNV(@NotNull MemorySegment segment) impleme
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkImportFenceSciSyncInfoNV pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkImportFenceSciSyncInfoNV pNext(@Nullable IPointer pointer) {
@@ -236,12 +237,13 @@ public record VkImportFenceSciSyncInfoNV(@NotNull MemorySegment segment) impleme
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment handle() {
+    public @Pointer(comment="void*") @NotNull MemorySegment handle() {
         return segment.get(LAYOUT$handle, OFFSET$handle);
     }
 
-    public void handle(@Pointer(comment="void*") MemorySegment value) {
+    public VkImportFenceSciSyncInfoNV handle(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$handle, OFFSET$handle, value);
+        return this;
     }
 
     public VkImportFenceSciSyncInfoNV handle(@Nullable IPointer pointer) {

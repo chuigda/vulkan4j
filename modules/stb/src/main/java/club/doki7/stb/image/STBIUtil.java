@@ -30,11 +30,10 @@ public final class STBIUtil {
                 arena
         );
 
-        STBI_IoCallbacks ret = STBI_IoCallbacks.allocate(arena);
-        ret.read(pfnRead);
-        ret.skip(pfnSkip);
-        ret.eof(pfnEof);
-        return ret;
+        return STBI_IoCallbacks.allocate(arena)
+                .read(pfnRead)
+                .skip(pfnSkip)
+                .eof(pfnEof);
     }
 
     private static int read(

@@ -218,7 +218,7 @@ public record VkPipelineCacheHeaderVersionOne(@NotNull MemorySegment segment) im
         return this;
     }
 
-    public MemorySegment pipelineCacheUUIDRaw() {
+    public @NotNull MemorySegment pipelineCacheUUIDRaw() {
         return segment.asSlice(OFFSET$pipelineCacheUUID, SIZE$pipelineCacheUUID);
     }
 

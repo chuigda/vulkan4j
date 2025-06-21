@@ -202,12 +202,13 @@ public record VkD3D12FenceSubmitInfoKHR(@NotNull MemorySegment segment) implemen
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkD3D12FenceSubmitInfoKHR pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkD3D12FenceSubmitInfoKHR pNext(@Nullable IPointer pointer) {
@@ -242,11 +243,11 @@ public record VkD3D12FenceSubmitInfoKHR(@NotNull MemorySegment segment) implemen
         return this;
     }
 
-    public @Pointer(comment="uint64_t*") MemorySegment pWaitSemaphoreValuesRaw() {
+    public @Pointer(comment="uint64_t*") @NotNull MemorySegment pWaitSemaphoreValuesRaw() {
         return segment.get(LAYOUT$pWaitSemaphoreValues, OFFSET$pWaitSemaphoreValues);
     }
 
-    public void pWaitSemaphoreValuesRaw(@Pointer(comment="uint64_t*") MemorySegment value) {
+    public void pWaitSemaphoreValuesRaw(@Pointer(comment="uint64_t*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pWaitSemaphoreValues, OFFSET$pWaitSemaphoreValues, value);
     }
 
@@ -277,11 +278,11 @@ public record VkD3D12FenceSubmitInfoKHR(@NotNull MemorySegment segment) implemen
         return this;
     }
 
-    public @Pointer(comment="uint64_t*") MemorySegment pSignalSemaphoreValuesRaw() {
+    public @Pointer(comment="uint64_t*") @NotNull MemorySegment pSignalSemaphoreValuesRaw() {
         return segment.get(LAYOUT$pSignalSemaphoreValues, OFFSET$pSignalSemaphoreValues);
     }
 
-    public void pSignalSemaphoreValuesRaw(@Pointer(comment="uint64_t*") MemorySegment value) {
+    public void pSignalSemaphoreValuesRaw(@Pointer(comment="uint64_t*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pSignalSemaphoreValues, OFFSET$pSignalSemaphoreValues, value);
     }
 

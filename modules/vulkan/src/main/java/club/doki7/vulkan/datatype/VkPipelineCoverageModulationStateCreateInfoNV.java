@@ -203,12 +203,13 @@ public record VkPipelineCoverageModulationStateCreateInfoNV(@NotNull MemorySegme
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkPipelineCoverageModulationStateCreateInfoNV pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkPipelineCoverageModulationStateCreateInfoNV pNext(@Nullable IPointer pointer) {
@@ -270,11 +271,11 @@ public record VkPipelineCoverageModulationStateCreateInfoNV(@NotNull MemorySegme
         return this;
     }
 
-    public @Pointer(comment="float*") MemorySegment pCoverageModulationTableRaw() {
+    public @Pointer(comment="float*") @NotNull MemorySegment pCoverageModulationTableRaw() {
         return segment.get(LAYOUT$pCoverageModulationTable, OFFSET$pCoverageModulationTable);
     }
 
-    public void pCoverageModulationTableRaw(@Pointer(comment="float*") MemorySegment value) {
+    public void pCoverageModulationTableRaw(@Pointer(comment="float*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pCoverageModulationTable, OFFSET$pCoverageModulationTable, value);
     }
 

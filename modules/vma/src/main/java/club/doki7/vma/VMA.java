@@ -5,6 +5,7 @@ import java.lang.invoke.MethodHandle;
 import java.util.Objects;
 
 import org.jetbrains.annotations.Nullable;
+import org.jetbrains.annotations.NotNull;
 import club.doki7.ffm.NativeLayout;
 import club.doki7.ffm.RawFunctionLoader;
 import club.doki7.ffm.annotation.*;
@@ -836,7 +837,7 @@ public final class VMA {
     public void setAllocationUserData(
         VmaAllocator allocator,
         VmaAllocation allocation,
-        @Pointer(comment="void*") MemorySegment pUserData
+        @Pointer(comment="void*") @NotNull MemorySegment pUserData
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vmaSetAllocationUserData);
         try {
@@ -927,7 +928,7 @@ public final class VMA {
     public @EnumType(VkResult.class) int getMemoryWin32Handle(
         VmaAllocator allocator,
         VmaAllocation allocation,
-        @Pointer(comment="HANDLE") MemorySegment hTargetProcess,
+        @Pointer(comment="HANDLE") @NotNull MemorySegment hTargetProcess,
         PointerPtr pHandle
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vmaGetMemoryWin32Handle);
@@ -1189,7 +1190,7 @@ public final class VMA {
     /// @param size            Number of bytes to copy.
     public @EnumType(VkResult.class) int copyMemoryToAllocation(
         VmaAllocator allocator,
-        @Pointer(comment="void*") MemorySegment pSrcHostPointer,
+        @Pointer(comment="void*") @NotNull MemorySegment pSrcHostPointer,
         VmaAllocation dstAllocation,
         @NativeType("VkDeviceSize") @Unsigned long dstAllocationLocalOffset,
         @NativeType("VkDeviceSize") @Unsigned long size
@@ -1232,7 +1233,7 @@ public final class VMA {
         VmaAllocator allocator,
         VmaAllocation srcAllocation,
         @NativeType("VkDeviceSize") @Unsigned long srcAllocationLocalOffset,
-        @Pointer(comment="void*") MemorySegment pDstHostPointer,
+        @Pointer(comment="void*") @NotNull MemorySegment pDstHostPointer,
         @NativeType("VkDeviceSize") @Unsigned long size
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vmaCopyAllocationToMemory);
@@ -1437,7 +1438,7 @@ public final class VMA {
         VmaAllocation allocation,
         @NativeType("VkDeviceSize") @Unsigned long allocationLocalOffset,
         VkBuffer buffer,
-        @Pointer(comment="void*") MemorySegment pNext
+        @Pointer(comment="void*") @NotNull MemorySegment pNext
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vmaBindBufferMemory2);
         try {
@@ -1499,7 +1500,7 @@ public final class VMA {
         VmaAllocation allocation,
         @NativeType("VkDeviceSize") @Unsigned long allocationLocalOffset,
         VkImage image,
-        @Pointer(comment="void*") MemorySegment pNext
+        @Pointer(comment="void*") @NotNull MemorySegment pNext
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vmaBindImageMemory2);
         try {
@@ -1957,7 +1958,7 @@ public final class VMA {
     public void setVirtualAllocationUserData(
         VmaVirtualBlock virtualBlock,
         VmaVirtualAllocation allocation,
-        @Pointer(comment="void*") MemorySegment pUserData
+        @Pointer(comment="void*") @NotNull MemorySegment pUserData
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vmaSetVirtualAllocationUserData);
         try {

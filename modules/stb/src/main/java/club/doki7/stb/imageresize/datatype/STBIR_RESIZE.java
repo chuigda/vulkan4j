@@ -200,12 +200,13 @@ public record STBIR_RESIZE(@NotNull MemorySegment segment) implements ISTBIR_RES
         return ret;
     }
 
-    public @Pointer(comment="void*") MemorySegment userData() {
+    public @Pointer(comment="void*") @NotNull MemorySegment userData() {
         return segment.get(LAYOUT$userData, OFFSET$userData);
     }
 
-    public void userData(@Pointer(comment="void*") MemorySegment value) {
+    public STBIR_RESIZE userData(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$userData, OFFSET$userData, value);
+        return this;
     }
 
     public STBIR_RESIZE userData(@Nullable IPointer pointer) {
@@ -213,12 +214,13 @@ public record STBIR_RESIZE(@NotNull MemorySegment segment) implements ISTBIR_RES
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment inputPixels() {
+    public @Pointer(comment="void*") @NotNull MemorySegment inputPixels() {
         return segment.get(LAYOUT$inputPixels, OFFSET$inputPixels);
     }
 
-    public void inputPixels(@Pointer(comment="void*") MemorySegment value) {
+    public STBIR_RESIZE inputPixels(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$inputPixels, OFFSET$inputPixels, value);
+        return this;
     }
 
     public STBIR_RESIZE inputPixels(@Nullable IPointer pointer) {
@@ -280,12 +282,13 @@ public record STBIR_RESIZE(@NotNull MemorySegment segment) implements ISTBIR_RES
         return this;
     }
 
-    public @Pointer(comment="stbir_input_callback*") MemorySegment inputCb() {
+    public @Pointer(comment="stbir_input_callback*") @NotNull MemorySegment inputCb() {
         return segment.get(LAYOUT$inputCb, OFFSET$inputCb);
     }
 
-    public void inputCb(@Pointer(comment="stbir_input_callback*") MemorySegment value) {
+    public STBIR_RESIZE inputCb(@Pointer(comment="stbir_input_callback*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$inputCb, OFFSET$inputCb, value);
+        return this;
     }
 
     public STBIR_RESIZE inputCb(@Nullable IPointer pointer) {
@@ -293,12 +296,13 @@ public record STBIR_RESIZE(@NotNull MemorySegment segment) implements ISTBIR_RES
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment outputPixels() {
+    public @Pointer(comment="void*") @NotNull MemorySegment outputPixels() {
         return segment.get(LAYOUT$outputPixels, OFFSET$outputPixels);
     }
 
-    public void outputPixels(@Pointer(comment="void*") MemorySegment value) {
+    public STBIR_RESIZE outputPixels(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$outputPixels, OFFSET$outputPixels, value);
+        return this;
     }
 
     public STBIR_RESIZE outputPixels(@Nullable IPointer pointer) {
@@ -360,12 +364,13 @@ public record STBIR_RESIZE(@NotNull MemorySegment segment) implements ISTBIR_RES
         return this;
     }
 
-    public @Pointer(comment="stbir_output_callback*") MemorySegment outputCb() {
+    public @Pointer(comment="stbir_output_callback*") @NotNull MemorySegment outputCb() {
         return segment.get(LAYOUT$outputCb, OFFSET$outputCb);
     }
 
-    public void outputCb(@Pointer(comment="stbir_output_callback*") MemorySegment value) {
+    public STBIR_RESIZE outputCb(@Pointer(comment="stbir_output_callback*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$outputCb, OFFSET$outputCb, value);
+        return this;
     }
 
     public STBIR_RESIZE outputCb(@Nullable IPointer pointer) {
@@ -499,12 +504,13 @@ public record STBIR_RESIZE(@NotNull MemorySegment segment) implements ISTBIR_RES
         return this;
     }
 
-    public @Pointer(comment="stbir__kernel_callback*") MemorySegment horizontalFilterKernel() {
+    public @Pointer(comment="stbir__kernel_callback*") @NotNull MemorySegment horizontalFilterKernel() {
         return segment.get(LAYOUT$horizontalFilterKernel, OFFSET$horizontalFilterKernel);
     }
 
-    public void horizontalFilterKernel(@Pointer(comment="stbir__kernel_callback*") MemorySegment value) {
+    public STBIR_RESIZE horizontalFilterKernel(@Pointer(comment="stbir__kernel_callback*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$horizontalFilterKernel, OFFSET$horizontalFilterKernel, value);
+        return this;
     }
 
     public STBIR_RESIZE horizontalFilterKernel(@Nullable IPointer pointer) {
@@ -512,12 +518,13 @@ public record STBIR_RESIZE(@NotNull MemorySegment segment) implements ISTBIR_RES
         return this;
     }
 
-    public @Pointer(comment="stbir__support_callback*") MemorySegment horizontalFilterSupport() {
+    public @Pointer(comment="stbir__support_callback*") @NotNull MemorySegment horizontalFilterSupport() {
         return segment.get(LAYOUT$horizontalFilterSupport, OFFSET$horizontalFilterSupport);
     }
 
-    public void horizontalFilterSupport(@Pointer(comment="stbir__support_callback*") MemorySegment value) {
+    public STBIR_RESIZE horizontalFilterSupport(@Pointer(comment="stbir__support_callback*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$horizontalFilterSupport, OFFSET$horizontalFilterSupport, value);
+        return this;
     }
 
     public STBIR_RESIZE horizontalFilterSupport(@Nullable IPointer pointer) {
@@ -525,12 +532,13 @@ public record STBIR_RESIZE(@NotNull MemorySegment segment) implements ISTBIR_RES
         return this;
     }
 
-    public @Pointer(comment="stbir__kernel_callback*") MemorySegment verticalFilterKernel() {
+    public @Pointer(comment="stbir__kernel_callback*") @NotNull MemorySegment verticalFilterKernel() {
         return segment.get(LAYOUT$verticalFilterKernel, OFFSET$verticalFilterKernel);
     }
 
-    public void verticalFilterKernel(@Pointer(comment="stbir__kernel_callback*") MemorySegment value) {
+    public STBIR_RESIZE verticalFilterKernel(@Pointer(comment="stbir__kernel_callback*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$verticalFilterKernel, OFFSET$verticalFilterKernel, value);
+        return this;
     }
 
     public STBIR_RESIZE verticalFilterKernel(@Nullable IPointer pointer) {
@@ -538,12 +546,13 @@ public record STBIR_RESIZE(@NotNull MemorySegment segment) implements ISTBIR_RES
         return this;
     }
 
-    public @Pointer(comment="stbir__support_callback*") MemorySegment verticalFilterSupport() {
+    public @Pointer(comment="stbir__support_callback*") @NotNull MemorySegment verticalFilterSupport() {
         return segment.get(LAYOUT$verticalFilterSupport, OFFSET$verticalFilterSupport);
     }
 
-    public void verticalFilterSupport(@Pointer(comment="stbir__support_callback*") MemorySegment value) {
+    public STBIR_RESIZE verticalFilterSupport(@Pointer(comment="stbir__support_callback*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$verticalFilterSupport, OFFSET$verticalFilterSupport, value);
+        return this;
     }
 
     public STBIR_RESIZE verticalFilterSupport(@Nullable IPointer pointer) {

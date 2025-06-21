@@ -278,11 +278,11 @@ public record StdVideoEncodeH264PictureInfo(@NotNull MemorySegment segment) impl
         return new StdVideoEncodeH264ReferenceListsInfo(s);
     }
 
-    public @Pointer(target=StdVideoEncodeH264ReferenceListsInfo.class) MemorySegment pRefListsRaw() {
+    public @Pointer(target=StdVideoEncodeH264ReferenceListsInfo.class) @NotNull MemorySegment pRefListsRaw() {
         return segment.get(LAYOUT$pRefLists, OFFSET$pRefLists);
     }
 
-    public void pRefListsRaw(@Pointer(target=StdVideoEncodeH264ReferenceListsInfo.class) MemorySegment value) {
+    public void pRefListsRaw(@Pointer(target=StdVideoEncodeH264ReferenceListsInfo.class) @NotNull MemorySegment value) {
         segment.set(LAYOUT$pRefLists, OFFSET$pRefLists, value);
     }
 

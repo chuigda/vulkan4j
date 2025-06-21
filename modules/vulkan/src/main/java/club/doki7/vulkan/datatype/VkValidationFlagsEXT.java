@@ -200,12 +200,13 @@ public record VkValidationFlagsEXT(@NotNull MemorySegment segment) implements IV
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkValidationFlagsEXT pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkValidationFlagsEXT pNext(@Nullable IPointer pointer) {
@@ -241,11 +242,11 @@ public record VkValidationFlagsEXT(@NotNull MemorySegment segment) implements IV
         return this;
     }
 
-    public @Pointer(target=VkValidationCheckEXT.class) MemorySegment pDisabledValidationChecksRaw() {
+    public @Pointer(target=VkValidationCheckEXT.class) @NotNull MemorySegment pDisabledValidationChecksRaw() {
         return segment.get(LAYOUT$pDisabledValidationChecks, OFFSET$pDisabledValidationChecks);
     }
 
-    public void pDisabledValidationChecksRaw(@Pointer(target=VkValidationCheckEXT.class) MemorySegment value) {
+    public void pDisabledValidationChecksRaw(@Pointer(target=VkValidationCheckEXT.class) @NotNull MemorySegment value) {
         segment.set(LAYOUT$pDisabledValidationChecks, OFFSET$pDisabledValidationChecks, value);
     }
 

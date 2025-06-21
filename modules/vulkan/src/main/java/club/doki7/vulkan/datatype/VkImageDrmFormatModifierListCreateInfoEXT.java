@@ -200,12 +200,13 @@ public record VkImageDrmFormatModifierListCreateInfoEXT(@NotNull MemorySegment s
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkImageDrmFormatModifierListCreateInfoEXT pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkImageDrmFormatModifierListCreateInfoEXT pNext(@Nullable IPointer pointer) {
@@ -240,11 +241,11 @@ public record VkImageDrmFormatModifierListCreateInfoEXT(@NotNull MemorySegment s
         return this;
     }
 
-    public @Pointer(comment="uint64_t*") MemorySegment pDrmFormatModifiersRaw() {
+    public @Pointer(comment="uint64_t*") @NotNull MemorySegment pDrmFormatModifiersRaw() {
         return segment.get(LAYOUT$pDrmFormatModifiers, OFFSET$pDrmFormatModifiers);
     }
 
-    public void pDrmFormatModifiersRaw(@Pointer(comment="uint64_t*") MemorySegment value) {
+    public void pDrmFormatModifiersRaw(@Pointer(comment="uint64_t*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pDrmFormatModifiers, OFFSET$pDrmFormatModifiers, value);
     }
 

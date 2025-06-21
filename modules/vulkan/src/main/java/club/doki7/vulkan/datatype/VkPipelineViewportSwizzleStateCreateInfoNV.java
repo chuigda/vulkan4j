@@ -201,12 +201,13 @@ public record VkPipelineViewportSwizzleStateCreateInfoNV(@NotNull MemorySegment 
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkPipelineViewportSwizzleStateCreateInfoNV pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkPipelineViewportSwizzleStateCreateInfoNV pNext(@Nullable IPointer pointer) {
@@ -256,11 +257,11 @@ public record VkPipelineViewportSwizzleStateCreateInfoNV(@NotNull MemorySegment 
         return new VkViewportSwizzleNV(s);
     }
 
-    public @Pointer(target=VkViewportSwizzleNV.class) MemorySegment pViewportSwizzlesRaw() {
+    public @Pointer(target=VkViewportSwizzleNV.class) @NotNull MemorySegment pViewportSwizzlesRaw() {
         return segment.get(LAYOUT$pViewportSwizzles, OFFSET$pViewportSwizzles);
     }
 
-    public void pViewportSwizzlesRaw(@Pointer(target=VkViewportSwizzleNV.class) MemorySegment value) {
+    public void pViewportSwizzlesRaw(@Pointer(target=VkViewportSwizzleNV.class) @NotNull MemorySegment value) {
         segment.set(LAYOUT$pViewportSwizzles, OFFSET$pViewportSwizzles, value);
     }
 

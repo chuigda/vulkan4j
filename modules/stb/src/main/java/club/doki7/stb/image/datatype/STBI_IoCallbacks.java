@@ -166,12 +166,13 @@ public record STBI_IoCallbacks(@NotNull MemorySegment segment) implements ISTBI_
         return ret;
     }
 
-    public @Pointer(comment="PFN_stbi_io_callbacks_read") MemorySegment read() {
+    public @Pointer(comment="PFN_stbi_io_callbacks_read") @NotNull MemorySegment read() {
         return segment.get(LAYOUT$read, OFFSET$read);
     }
 
-    public void read(@Pointer(comment="PFN_stbi_io_callbacks_read") MemorySegment value) {
+    public STBI_IoCallbacks read(@Pointer(comment="PFN_stbi_io_callbacks_read") @NotNull MemorySegment value) {
         segment.set(LAYOUT$read, OFFSET$read, value);
+        return this;
     }
 
     public STBI_IoCallbacks read(@Nullable IPointer pointer) {
@@ -179,12 +180,13 @@ public record STBI_IoCallbacks(@NotNull MemorySegment segment) implements ISTBI_
         return this;
     }
 
-    public @Pointer(comment="PFN_stbi_io_callbacks_skip") MemorySegment skip() {
+    public @Pointer(comment="PFN_stbi_io_callbacks_skip") @NotNull MemorySegment skip() {
         return segment.get(LAYOUT$skip, OFFSET$skip);
     }
 
-    public void skip(@Pointer(comment="PFN_stbi_io_callbacks_skip") MemorySegment value) {
+    public STBI_IoCallbacks skip(@Pointer(comment="PFN_stbi_io_callbacks_skip") @NotNull MemorySegment value) {
         segment.set(LAYOUT$skip, OFFSET$skip, value);
+        return this;
     }
 
     public STBI_IoCallbacks skip(@Nullable IPointer pointer) {
@@ -192,12 +194,13 @@ public record STBI_IoCallbacks(@NotNull MemorySegment segment) implements ISTBI_
         return this;
     }
 
-    public @Pointer(comment="PFN_stbi_io_callbacks_eof") MemorySegment eof() {
+    public @Pointer(comment="PFN_stbi_io_callbacks_eof") @NotNull MemorySegment eof() {
         return segment.get(LAYOUT$eof, OFFSET$eof);
     }
 
-    public void eof(@Pointer(comment="PFN_stbi_io_callbacks_eof") MemorySegment value) {
+    public STBI_IoCallbacks eof(@Pointer(comment="PFN_stbi_io_callbacks_eof") @NotNull MemorySegment value) {
         segment.set(LAYOUT$eof, OFFSET$eof, value);
+        return this;
     }
 
     public STBI_IoCallbacks eof(@Nullable IPointer pointer) {

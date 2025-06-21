@@ -203,12 +203,13 @@ public record VkBindAccelerationStructureMemoryInfoNV(@NotNull MemorySegment seg
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkBindAccelerationStructureMemoryInfoNV pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkBindAccelerationStructureMemoryInfoNV pNext(@Nullable IPointer pointer) {
@@ -278,11 +279,11 @@ public record VkBindAccelerationStructureMemoryInfoNV(@NotNull MemorySegment seg
         return this;
     }
 
-    public @Pointer(comment="uint32_t*") MemorySegment pDeviceIndicesRaw() {
+    public @Pointer(comment="uint32_t*") @NotNull MemorySegment pDeviceIndicesRaw() {
         return segment.get(LAYOUT$pDeviceIndices, OFFSET$pDeviceIndices);
     }
 
-    public void pDeviceIndicesRaw(@Pointer(comment="uint32_t*") MemorySegment value) {
+    public void pDeviceIndicesRaw(@Pointer(comment="uint32_t*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pDeviceIndices, OFFSET$pDeviceIndices, value);
     }
 

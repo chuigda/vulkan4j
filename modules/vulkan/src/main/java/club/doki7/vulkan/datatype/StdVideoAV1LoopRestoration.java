@@ -177,7 +177,7 @@ public record StdVideoAV1LoopRestoration(@NotNull MemorySegment segment) impleme
         return this;
     }
 
-    public MemorySegment FrameRestorationTypeRaw() {
+    public @NotNull MemorySegment FrameRestorationTypeRaw() {
         return segment.asSlice(OFFSET$FrameRestorationType, SIZE$FrameRestorationType);
     }
 
@@ -190,7 +190,7 @@ public record StdVideoAV1LoopRestoration(@NotNull MemorySegment segment) impleme
         return this;
     }
 
-    public MemorySegment LoopRestorationSizeRaw() {
+    public @NotNull MemorySegment LoopRestorationSizeRaw() {
         return segment.asSlice(OFFSET$LoopRestorationSize, SIZE$LoopRestorationSize);
     }
 

@@ -5,6 +5,7 @@ import java.lang.invoke.MethodHandle;
 import java.util.Objects;
 
 import org.jetbrains.annotations.Nullable;
+import org.jetbrains.annotations.NotNull;
 import club.doki7.ffm.NativeLayout;
 import club.doki7.ffm.RawFunctionLoader;
 import club.doki7.ffm.annotation.*;
@@ -1368,7 +1369,7 @@ public final class VkInstanceCommands {
     public @EnumType(VkResult.class) int getPhysicalDeviceExternalMemorySciBufPropertiesNV(
         VkPhysicalDevice physicalDevice,
         @EnumType(VkExternalMemoryHandleTypeFlags.class) int handleType,
-        @Pointer(comment="NvSciBufObj") MemorySegment handle,
+        @Pointer(comment="NvSciBufObj") @NotNull MemorySegment handle,
         @Pointer VkMemorySciBufPropertiesNV pMemorySciBufProperties
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkGetPhysicalDeviceExternalMemorySciBufPropertiesNV);
@@ -1849,7 +1850,7 @@ public final class VkInstanceCommands {
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkGetPhysicalDeviceSciBufAttributesNV.html"><code>vkGetPhysicalDeviceSciBufAttributesNV</code></a>
     public @EnumType(VkResult.class) int getPhysicalDeviceSciBufAttributesNV(
         VkPhysicalDevice physicalDevice,
-        @Pointer(comment="NvSciBufAttrList") MemorySegment pAttributes
+        @Pointer(comment="NvSciBufAttrList") @NotNull MemorySegment pAttributes
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkGetPhysicalDeviceSciBufAttributesNV);
         try {
@@ -1866,7 +1867,7 @@ public final class VkInstanceCommands {
     public @EnumType(VkResult.class) int getPhysicalDeviceSciSyncAttributesNV(
         VkPhysicalDevice physicalDevice,
         @Pointer VkSciSyncAttributesInfoNV pSciSyncAttributesInfo,
-        @Pointer(comment="NvSciSyncAttrList") MemorySegment pAttributes
+        @Pointer(comment="NvSciSyncAttrList") @NotNull MemorySegment pAttributes
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkGetPhysicalDeviceSciSyncAttributesNV);
         try {
@@ -2268,7 +2269,7 @@ public final class VkInstanceCommands {
     public @NativeType("VkBool32") @Unsigned int getPhysicalDeviceXcbPresentationSupportKHR(
         VkPhysicalDevice physicalDevice,
         @Unsigned int queueFamilyIndex,
-        @Pointer(comment="void*") MemorySegment connection,
+        @Pointer(comment="void*") @NotNull MemorySegment connection,
         @NativeType("xcb_visualid_t") @Unsigned int visual_id
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkGetPhysicalDeviceXcbPresentationSupportKHR);

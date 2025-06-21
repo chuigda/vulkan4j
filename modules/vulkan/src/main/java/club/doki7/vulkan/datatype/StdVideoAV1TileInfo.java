@@ -245,11 +245,11 @@ public record StdVideoAV1TileInfo(@NotNull MemorySegment segment) implements ISt
         return this;
     }
 
-    public @Pointer(comment="uint16_t*") MemorySegment pMiColStartsRaw() {
+    public @Pointer(comment="uint16_t*") @NotNull MemorySegment pMiColStartsRaw() {
         return segment.get(LAYOUT$pMiColStarts, OFFSET$pMiColStarts);
     }
 
-    public void pMiColStartsRaw(@Pointer(comment="uint16_t*") MemorySegment value) {
+    public void pMiColStartsRaw(@Pointer(comment="uint16_t*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pMiColStarts, OFFSET$pMiColStarts, value);
     }
 
@@ -271,11 +271,11 @@ public record StdVideoAV1TileInfo(@NotNull MemorySegment segment) implements ISt
         return this;
     }
 
-    public @Pointer(comment="uint16_t*") MemorySegment pMiRowStartsRaw() {
+    public @Pointer(comment="uint16_t*") @NotNull MemorySegment pMiRowStartsRaw() {
         return segment.get(LAYOUT$pMiRowStarts, OFFSET$pMiRowStarts);
     }
 
-    public void pMiRowStartsRaw(@Pointer(comment="uint16_t*") MemorySegment value) {
+    public void pMiRowStartsRaw(@Pointer(comment="uint16_t*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pMiRowStarts, OFFSET$pMiRowStarts, value);
     }
 
@@ -297,11 +297,11 @@ public record StdVideoAV1TileInfo(@NotNull MemorySegment segment) implements ISt
         return this;
     }
 
-    public @Pointer(comment="uint16_t*") MemorySegment pWidthInSbsMinus1Raw() {
+    public @Pointer(comment="uint16_t*") @NotNull MemorySegment pWidthInSbsMinus1Raw() {
         return segment.get(LAYOUT$pWidthInSbsMinus1, OFFSET$pWidthInSbsMinus1);
     }
 
-    public void pWidthInSbsMinus1Raw(@Pointer(comment="uint16_t*") MemorySegment value) {
+    public void pWidthInSbsMinus1Raw(@Pointer(comment="uint16_t*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pWidthInSbsMinus1, OFFSET$pWidthInSbsMinus1, value);
     }
 
@@ -323,11 +323,11 @@ public record StdVideoAV1TileInfo(@NotNull MemorySegment segment) implements ISt
         return this;
     }
 
-    public @Pointer(comment="uint16_t*") MemorySegment pHeightInSbsMinus1Raw() {
+    public @Pointer(comment="uint16_t*") @NotNull MemorySegment pHeightInSbsMinus1Raw() {
         return segment.get(LAYOUT$pHeightInSbsMinus1, OFFSET$pHeightInSbsMinus1);
     }
 
-    public void pHeightInSbsMinus1Raw(@Pointer(comment="uint16_t*") MemorySegment value) {
+    public void pHeightInSbsMinus1Raw(@Pointer(comment="uint16_t*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pHeightInSbsMinus1, OFFSET$pHeightInSbsMinus1, value);
     }
 

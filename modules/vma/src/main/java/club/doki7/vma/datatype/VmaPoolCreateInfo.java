@@ -288,12 +288,13 @@ public record VmaPoolCreateInfo(@NotNull MemorySegment segment) implements IVmaP
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pMemoryAllocateNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pMemoryAllocateNext() {
         return segment.get(LAYOUT$pMemoryAllocateNext, OFFSET$pMemoryAllocateNext);
     }
 
-    public void pMemoryAllocateNext(@Pointer(comment="void*") MemorySegment value) {
+    public VmaPoolCreateInfo pMemoryAllocateNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pMemoryAllocateNext, OFFSET$pMemoryAllocateNext, value);
+        return this;
     }
 
     public VmaPoolCreateInfo pMemoryAllocateNext(@Nullable IPointer pointer) {

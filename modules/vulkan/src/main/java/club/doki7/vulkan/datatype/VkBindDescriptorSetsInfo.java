@@ -205,12 +205,13 @@ public record VkBindDescriptorSetsInfo(@NotNull MemorySegment segment) implement
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkBindDescriptorSetsInfo pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkBindDescriptorSetsInfo pNext(@Nullable IPointer pointer) {
@@ -276,11 +277,11 @@ public record VkBindDescriptorSetsInfo(@NotNull MemorySegment segment) implement
         return this;
     }
 
-    public @Pointer(target=VkDescriptorSet.class) MemorySegment pDescriptorSetsRaw() {
+    public @Pointer(target=VkDescriptorSet.class) @NotNull MemorySegment pDescriptorSetsRaw() {
         return segment.get(LAYOUT$pDescriptorSets, OFFSET$pDescriptorSets);
     }
 
-    public void pDescriptorSetsRaw(@Pointer(target=VkDescriptorSet.class) MemorySegment value) {
+    public void pDescriptorSetsRaw(@Pointer(target=VkDescriptorSet.class) @NotNull MemorySegment value) {
         segment.set(LAYOUT$pDescriptorSets, OFFSET$pDescriptorSets, value);
     }
 
@@ -311,11 +312,11 @@ public record VkBindDescriptorSetsInfo(@NotNull MemorySegment segment) implement
         return this;
     }
 
-    public @Pointer(comment="uint32_t*") MemorySegment pDynamicOffsetsRaw() {
+    public @Pointer(comment="uint32_t*") @NotNull MemorySegment pDynamicOffsetsRaw() {
         return segment.get(LAYOUT$pDynamicOffsets, OFFSET$pDynamicOffsets);
     }
 
-    public void pDynamicOffsetsRaw(@Pointer(comment="uint32_t*") MemorySegment value) {
+    public void pDynamicOffsetsRaw(@Pointer(comment="uint32_t*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pDynamicOffsets, OFFSET$pDynamicOffsets, value);
     }
 

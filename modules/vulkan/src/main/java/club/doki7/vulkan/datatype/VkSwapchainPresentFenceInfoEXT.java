@@ -200,12 +200,13 @@ public record VkSwapchainPresentFenceInfoEXT(@NotNull MemorySegment segment) imp
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkSwapchainPresentFenceInfoEXT pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkSwapchainPresentFenceInfoEXT pNext(@Nullable IPointer pointer) {
@@ -240,11 +241,11 @@ public record VkSwapchainPresentFenceInfoEXT(@NotNull MemorySegment segment) imp
         return this;
     }
 
-    public @Pointer(target=VkFence.class) MemorySegment pFencesRaw() {
+    public @Pointer(target=VkFence.class) @NotNull MemorySegment pFencesRaw() {
         return segment.get(LAYOUT$pFences, OFFSET$pFences);
     }
 
-    public void pFencesRaw(@Pointer(target=VkFence.class) MemorySegment value) {
+    public void pFencesRaw(@Pointer(target=VkFence.class) @NotNull MemorySegment value) {
         segment.set(LAYOUT$pFences, OFFSET$pFences, value);
     }
 

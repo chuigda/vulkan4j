@@ -5,6 +5,7 @@ import java.lang.invoke.MethodHandle;
 import java.util.Objects;
 
 import org.jetbrains.annotations.Nullable;
+import org.jetbrains.annotations.NotNull;
 import club.doki7.ffm.NativeLayout;
 import club.doki7.ffm.RawFunctionLoader;
 import club.doki7.ffm.annotation.*;
@@ -25,7 +26,7 @@ public final class VkStaticCommands {
     // region command wrappers
 
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkGetDeviceProcAddr.html"><code>vkGetDeviceProcAddr</code></a>
-    public @Pointer(comment="PFN_vkVoidFunction") MemorySegment getDeviceProcAddr(
+    public @Pointer(comment="PFN_vkVoidFunction") @NotNull MemorySegment getDeviceProcAddr(
         VkDevice device,
         BytePtr pName
     ) {
@@ -41,7 +42,7 @@ public final class VkStaticCommands {
     }
 
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkGetInstanceProcAddr.html"><code>vkGetInstanceProcAddr</code></a>
-    public @Pointer(comment="PFN_vkVoidFunction") MemorySegment getInstanceProcAddr(
+    public @Pointer(comment="PFN_vkVoidFunction") @NotNull MemorySegment getInstanceProcAddr(
         @Nullable VkInstance instance,
         BytePtr pName
     ) {

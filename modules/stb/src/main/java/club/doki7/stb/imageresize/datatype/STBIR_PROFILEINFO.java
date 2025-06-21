@@ -186,7 +186,7 @@ public record STBIR_PROFILEINFO(@NotNull MemorySegment segment) implements ISTBI
         return this;
     }
 
-    public MemorySegment clocksRaw() {
+    public @NotNull MemorySegment clocksRaw() {
         return segment.asSlice(OFFSET$clocks, SIZE$clocks);
     }
 
@@ -207,11 +207,11 @@ public record STBIR_PROFILEINFO(@NotNull MemorySegment segment) implements ISTBI
         return this;
     }
 
-    public @Pointer(comment="void**") MemorySegment descriptionsRaw() {
+    public @Pointer(comment="void**") @NotNull MemorySegment descriptionsRaw() {
         return segment.get(LAYOUT$descriptions, OFFSET$descriptions);
     }
 
-    public void descriptionsRaw(@Pointer(comment="void**") MemorySegment value) {
+    public void descriptionsRaw(@Pointer(comment="void**") @NotNull MemorySegment value) {
         segment.set(LAYOUT$descriptions, OFFSET$descriptions, value);
     }
 

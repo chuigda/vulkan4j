@@ -181,7 +181,7 @@ public record VkLayerProperties(@NotNull MemorySegment segment) implements IVkLa
         return this;
     }
 
-    public MemorySegment layerNameRaw() {
+    public @NotNull MemorySegment layerNameRaw() {
         return segment.asSlice(OFFSET$layerName, SIZE$layerName);
     }
 
@@ -212,7 +212,7 @@ public record VkLayerProperties(@NotNull MemorySegment segment) implements IVkLa
         return this;
     }
 
-    public MemorySegment descriptionRaw() {
+    public @NotNull MemorySegment descriptionRaw() {
         return segment.asSlice(OFFSET$description, SIZE$description);
     }
 

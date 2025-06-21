@@ -203,12 +203,13 @@ public record VkDebugUtilsObjectTagInfoEXT(@NotNull MemorySegment segment) imple
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkDebugUtilsObjectTagInfoEXT pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkDebugUtilsObjectTagInfoEXT pNext(@Nullable IPointer pointer) {
@@ -252,12 +253,13 @@ public record VkDebugUtilsObjectTagInfoEXT(@NotNull MemorySegment segment) imple
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pTag() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pTag() {
         return segment.get(LAYOUT$pTag, OFFSET$pTag);
     }
 
-    public void pTag(@Pointer(comment="void*") MemorySegment value) {
+    public VkDebugUtilsObjectTagInfoEXT pTag(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pTag, OFFSET$pTag, value);
+        return this;
     }
 
     public VkDebugUtilsObjectTagInfoEXT pTag(@Nullable IPointer pointer) {

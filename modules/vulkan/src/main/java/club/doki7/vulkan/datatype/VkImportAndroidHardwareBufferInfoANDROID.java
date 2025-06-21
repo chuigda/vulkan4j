@@ -199,12 +199,13 @@ public record VkImportAndroidHardwareBufferInfoANDROID(@NotNull MemorySegment se
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkImportAndroidHardwareBufferInfoANDROID pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkImportAndroidHardwareBufferInfoANDROID pNext(@Nullable IPointer pointer) {
@@ -229,11 +230,11 @@ public record VkImportAndroidHardwareBufferInfoANDROID(@NotNull MemorySegment se
         return this;
     }
 
-    public @Pointer(comment="AHardwareBuffer*") MemorySegment bufferRaw() {
+    public @Pointer(comment="AHardwareBuffer*") @NotNull MemorySegment bufferRaw() {
         return segment.get(LAYOUT$buffer, OFFSET$buffer);
     }
 
-    public void bufferRaw(@Pointer(comment="AHardwareBuffer*") MemorySegment value) {
+    public void bufferRaw(@Pointer(comment="AHardwareBuffer*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$buffer, OFFSET$buffer, value);
     }
 

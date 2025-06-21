@@ -214,7 +214,7 @@ public record StdVideoH264HrdParameters(@NotNull MemorySegment segment) implemen
         return this;
     }
 
-    public MemorySegment bit_rate_value_minus1Raw() {
+    public @NotNull MemorySegment bit_rate_value_minus1Raw() {
         return segment.asSlice(OFFSET$bit_rate_value_minus1, SIZE$bit_rate_value_minus1);
     }
 
@@ -227,7 +227,7 @@ public record StdVideoH264HrdParameters(@NotNull MemorySegment segment) implemen
         return this;
     }
 
-    public MemorySegment cpb_size_value_minus1Raw() {
+    public @NotNull MemorySegment cpb_size_value_minus1Raw() {
         return segment.asSlice(OFFSET$cpb_size_value_minus1, SIZE$cpb_size_value_minus1);
     }
 
@@ -240,7 +240,7 @@ public record StdVideoH264HrdParameters(@NotNull MemorySegment segment) implemen
         return this;
     }
 
-    public MemorySegment cbr_flagRaw() {
+    public @NotNull MemorySegment cbr_flagRaw() {
         return segment.asSlice(OFFSET$cbr_flag, SIZE$cbr_flag);
     }
 

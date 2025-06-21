@@ -205,12 +205,13 @@ public record VkFramebufferAttachmentImageInfo(@NotNull MemorySegment segment) i
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkFramebufferAttachmentImageInfo pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkFramebufferAttachmentImageInfo pNext(@Nullable IPointer pointer) {
@@ -291,11 +292,11 @@ public record VkFramebufferAttachmentImageInfo(@NotNull MemorySegment segment) i
         return this;
     }
 
-    public @Pointer(target=VkFormat.class) MemorySegment pViewFormatsRaw() {
+    public @Pointer(target=VkFormat.class) @NotNull MemorySegment pViewFormatsRaw() {
         return segment.get(LAYOUT$pViewFormats, OFFSET$pViewFormats);
     }
 
-    public void pViewFormatsRaw(@Pointer(target=VkFormat.class) MemorySegment value) {
+    public void pViewFormatsRaw(@Pointer(target=VkFormat.class) @NotNull MemorySegment value) {
         segment.set(LAYOUT$pViewFormats, OFFSET$pViewFormats, value);
     }
 

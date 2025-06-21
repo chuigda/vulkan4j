@@ -207,12 +207,13 @@ public record VkFrameBoundaryEXT(@NotNull MemorySegment segment) implements IVkF
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkFrameBoundaryEXT pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkFrameBoundaryEXT pNext(@Nullable IPointer pointer) {
@@ -265,11 +266,11 @@ public record VkFrameBoundaryEXT(@NotNull MemorySegment segment) implements IVkF
         return this;
     }
 
-    public @Pointer(target=VkImage.class) MemorySegment pImagesRaw() {
+    public @Pointer(target=VkImage.class) @NotNull MemorySegment pImagesRaw() {
         return segment.get(LAYOUT$pImages, OFFSET$pImages);
     }
 
-    public void pImagesRaw(@Pointer(target=VkImage.class) MemorySegment value) {
+    public void pImagesRaw(@Pointer(target=VkImage.class) @NotNull MemorySegment value) {
         segment.set(LAYOUT$pImages, OFFSET$pImages, value);
     }
 
@@ -300,11 +301,11 @@ public record VkFrameBoundaryEXT(@NotNull MemorySegment segment) implements IVkF
         return this;
     }
 
-    public @Pointer(target=VkBuffer.class) MemorySegment pBuffersRaw() {
+    public @Pointer(target=VkBuffer.class) @NotNull MemorySegment pBuffersRaw() {
         return segment.get(LAYOUT$pBuffers, OFFSET$pBuffers);
     }
 
-    public void pBuffersRaw(@Pointer(target=VkBuffer.class) MemorySegment value) {
+    public void pBuffersRaw(@Pointer(target=VkBuffer.class) @NotNull MemorySegment value) {
         segment.set(LAYOUT$pBuffers, OFFSET$pBuffers, value);
     }
 
@@ -326,12 +327,13 @@ public record VkFrameBoundaryEXT(@NotNull MemorySegment segment) implements IVkF
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pTag() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pTag() {
         return segment.get(LAYOUT$pTag, OFFSET$pTag);
     }
 
-    public void pTag(@Pointer(comment="void*") MemorySegment value) {
+    public VkFrameBoundaryEXT pTag(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pTag, OFFSET$pTag, value);
+        return this;
     }
 
     public VkFrameBoundaryEXT pTag(@Nullable IPointer pointer) {

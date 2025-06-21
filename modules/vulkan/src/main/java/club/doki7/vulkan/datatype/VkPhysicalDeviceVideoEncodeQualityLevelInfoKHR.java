@@ -200,12 +200,13 @@ public record VkPhysicalDeviceVideoEncodeQualityLevelInfoKHR(@NotNull MemorySegm
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkPhysicalDeviceVideoEncodeQualityLevelInfoKHR pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkPhysicalDeviceVideoEncodeQualityLevelInfoKHR pNext(@Nullable IPointer pointer) {
@@ -237,11 +238,11 @@ public record VkPhysicalDeviceVideoEncodeQualityLevelInfoKHR(@NotNull MemorySegm
         return new VkVideoProfileInfoKHR(s);
     }
 
-    public @Pointer(target=VkVideoProfileInfoKHR.class) MemorySegment pVideoProfileRaw() {
+    public @Pointer(target=VkVideoProfileInfoKHR.class) @NotNull MemorySegment pVideoProfileRaw() {
         return segment.get(LAYOUT$pVideoProfile, OFFSET$pVideoProfile);
     }
 
-    public void pVideoProfileRaw(@Pointer(target=VkVideoProfileInfoKHR.class) MemorySegment value) {
+    public void pVideoProfileRaw(@Pointer(target=VkVideoProfileInfoKHR.class) @NotNull MemorySegment value) {
         segment.set(LAYOUT$pVideoProfile, OFFSET$pVideoProfile, value);
     }
 

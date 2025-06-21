@@ -99,7 +99,6 @@ public record CLongPtr(MemorySegment segment) implements IPointer, Iterable<Long
     /// @return {@code null} if {@code segment} is {@code null} or {@link MemorySegment#NULL},
     /// otherwise a new {@link CLongPtr} that uses {@code segment} as backing storage
     /// @throws IllegalArgumentException if {@code segment} is not native or not properly aligned
-    @Contract("null -> null")
     public static @Nullable CLongPtr checked(@Nullable MemorySegment segment) {
         if (segment == null || segment.equals(MemorySegment.NULL)) {
             return null;

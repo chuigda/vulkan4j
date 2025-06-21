@@ -208,12 +208,13 @@ public record VkDebugUtilsMessengerCallbackDataEXT(@NotNull MemorySegment segmen
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkDebugUtilsMessengerCallbackDataEXT pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkDebugUtilsMessengerCallbackDataEXT pNext(@Nullable IPointer pointer) {
@@ -248,11 +249,11 @@ public record VkDebugUtilsMessengerCallbackDataEXT(@NotNull MemorySegment segmen
         return this;
     }
 
-    public @Pointer(comment="int8_t*") MemorySegment pMessageIdNameRaw() {
+    public @Pointer(comment="int8_t*") @NotNull MemorySegment pMessageIdNameRaw() {
         return segment.get(LAYOUT$pMessageIdName, OFFSET$pMessageIdName);
     }
 
-    public void pMessageIdNameRaw(@Pointer(comment="int8_t*") MemorySegment value) {
+    public void pMessageIdNameRaw(@Pointer(comment="int8_t*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pMessageIdName, OFFSET$pMessageIdName, value);
     }
 
@@ -283,11 +284,11 @@ public record VkDebugUtilsMessengerCallbackDataEXT(@NotNull MemorySegment segmen
         return this;
     }
 
-    public @Pointer(comment="int8_t*") MemorySegment pMessageRaw() {
+    public @Pointer(comment="int8_t*") @NotNull MemorySegment pMessageRaw() {
         return segment.get(LAYOUT$pMessage, OFFSET$pMessage);
     }
 
-    public void pMessageRaw(@Pointer(comment="int8_t*") MemorySegment value) {
+    public void pMessageRaw(@Pointer(comment="int8_t*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pMessage, OFFSET$pMessage, value);
     }
 
@@ -324,11 +325,11 @@ public record VkDebugUtilsMessengerCallbackDataEXT(@NotNull MemorySegment segmen
         return new VkDebugUtilsLabelEXT(s);
     }
 
-    public @Pointer(target=VkDebugUtilsLabelEXT.class) MemorySegment pQueueLabelsRaw() {
+    public @Pointer(target=VkDebugUtilsLabelEXT.class) @NotNull MemorySegment pQueueLabelsRaw() {
         return segment.get(LAYOUT$pQueueLabels, OFFSET$pQueueLabels);
     }
 
-    public void pQueueLabelsRaw(@Pointer(target=VkDebugUtilsLabelEXT.class) MemorySegment value) {
+    public void pQueueLabelsRaw(@Pointer(target=VkDebugUtilsLabelEXT.class) @NotNull MemorySegment value) {
         segment.set(LAYOUT$pQueueLabels, OFFSET$pQueueLabels, value);
     }
 
@@ -365,11 +366,11 @@ public record VkDebugUtilsMessengerCallbackDataEXT(@NotNull MemorySegment segmen
         return new VkDebugUtilsLabelEXT(s);
     }
 
-    public @Pointer(target=VkDebugUtilsLabelEXT.class) MemorySegment pCmdBufLabelsRaw() {
+    public @Pointer(target=VkDebugUtilsLabelEXT.class) @NotNull MemorySegment pCmdBufLabelsRaw() {
         return segment.get(LAYOUT$pCmdBufLabels, OFFSET$pCmdBufLabels);
     }
 
-    public void pCmdBufLabelsRaw(@Pointer(target=VkDebugUtilsLabelEXT.class) MemorySegment value) {
+    public void pCmdBufLabelsRaw(@Pointer(target=VkDebugUtilsLabelEXT.class) @NotNull MemorySegment value) {
         segment.set(LAYOUT$pCmdBufLabels, OFFSET$pCmdBufLabels, value);
     }
 
@@ -406,11 +407,11 @@ public record VkDebugUtilsMessengerCallbackDataEXT(@NotNull MemorySegment segmen
         return new VkDebugUtilsObjectNameInfoEXT(s);
     }
 
-    public @Pointer(target=VkDebugUtilsObjectNameInfoEXT.class) MemorySegment pObjectsRaw() {
+    public @Pointer(target=VkDebugUtilsObjectNameInfoEXT.class) @NotNull MemorySegment pObjectsRaw() {
         return segment.get(LAYOUT$pObjects, OFFSET$pObjects);
     }
 
-    public void pObjectsRaw(@Pointer(target=VkDebugUtilsObjectNameInfoEXT.class) MemorySegment value) {
+    public void pObjectsRaw(@Pointer(target=VkDebugUtilsObjectNameInfoEXT.class) @NotNull MemorySegment value) {
         segment.set(LAYOUT$pObjects, OFFSET$pObjects, value);
     }
 

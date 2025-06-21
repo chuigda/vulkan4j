@@ -202,12 +202,13 @@ public record VkPhysicalDeviceLayeredApiPropertiesKHR(@NotNull MemorySegment seg
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkPhysicalDeviceLayeredApiPropertiesKHR pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkPhysicalDeviceLayeredApiPropertiesKHR pNext(@Nullable IPointer pointer) {
@@ -251,7 +252,7 @@ public record VkPhysicalDeviceLayeredApiPropertiesKHR(@NotNull MemorySegment seg
         return this;
     }
 
-    public MemorySegment deviceNameRaw() {
+    public @NotNull MemorySegment deviceNameRaw() {
         return segment.asSlice(OFFSET$deviceName, SIZE$deviceName);
     }
 

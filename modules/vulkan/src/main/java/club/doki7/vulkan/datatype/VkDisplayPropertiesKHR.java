@@ -206,11 +206,11 @@ public record VkDisplayPropertiesKHR(@NotNull MemorySegment segment) implements 
         return this;
     }
 
-    public @Pointer(comment="int8_t*") MemorySegment displayNameRaw() {
+    public @Pointer(comment="int8_t*") @NotNull MemorySegment displayNameRaw() {
         return segment.get(LAYOUT$displayName, OFFSET$displayName);
     }
 
-    public void displayNameRaw(@Pointer(comment="int8_t*") MemorySegment value) {
+    public void displayNameRaw(@Pointer(comment="int8_t*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$displayName, OFFSET$displayName, value);
     }
 

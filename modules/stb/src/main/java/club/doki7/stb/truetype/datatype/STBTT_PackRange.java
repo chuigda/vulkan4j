@@ -207,11 +207,11 @@ public record STBTT_PackRange(@NotNull MemorySegment segment) implements ISTBTT_
         return this;
     }
 
-    public @Pointer(comment="int32_t*") MemorySegment arrayOfUnicodeCodepointsRaw() {
+    public @Pointer(comment="int32_t*") @NotNull MemorySegment arrayOfUnicodeCodepointsRaw() {
         return segment.get(LAYOUT$arrayOfUnicodeCodepoints, OFFSET$arrayOfUnicodeCodepoints);
     }
 
-    public void arrayOfUnicodeCodepointsRaw(@Pointer(comment="int32_t*") MemorySegment value) {
+    public void arrayOfUnicodeCodepointsRaw(@Pointer(comment="int32_t*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$arrayOfUnicodeCodepoints, OFFSET$arrayOfUnicodeCodepoints, value);
     }
 
@@ -248,11 +248,11 @@ public record STBTT_PackRange(@NotNull MemorySegment segment) implements ISTBTT_
         return new STBTT_Packedchar(s);
     }
 
-    public @Pointer(target=STBTT_Packedchar.class) MemorySegment chardataForRangeRaw() {
+    public @Pointer(target=STBTT_Packedchar.class) @NotNull MemorySegment chardataForRangeRaw() {
         return segment.get(LAYOUT$chardataForRange, OFFSET$chardataForRange);
     }
 
-    public void chardataForRangeRaw(@Pointer(target=STBTT_Packedchar.class) MemorySegment value) {
+    public void chardataForRangeRaw(@Pointer(target=STBTT_Packedchar.class) @NotNull MemorySegment value) {
         segment.set(LAYOUT$chardataForRange, OFFSET$chardataForRange, value);
     }
 

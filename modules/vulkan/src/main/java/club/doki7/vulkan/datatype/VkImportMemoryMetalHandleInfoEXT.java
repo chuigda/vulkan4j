@@ -200,12 +200,13 @@ public record VkImportMemoryMetalHandleInfoEXT(@NotNull MemorySegment segment) i
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkImportMemoryMetalHandleInfoEXT pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkImportMemoryMetalHandleInfoEXT pNext(@Nullable IPointer pointer) {
@@ -222,12 +223,13 @@ public record VkImportMemoryMetalHandleInfoEXT(@NotNull MemorySegment segment) i
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment handle() {
+    public @Pointer(comment="void*") @NotNull MemorySegment handle() {
         return segment.get(LAYOUT$handle, OFFSET$handle);
     }
 
-    public void handle(@Pointer(comment="void*") MemorySegment value) {
+    public VkImportMemoryMetalHandleInfoEXT handle(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$handle, OFFSET$handle, value);
+        return this;
     }
 
     public VkImportMemoryMetalHandleInfoEXT handle(@Nullable IPointer pointer) {

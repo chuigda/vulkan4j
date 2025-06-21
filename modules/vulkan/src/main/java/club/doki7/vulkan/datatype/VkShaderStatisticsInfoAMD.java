@@ -243,7 +243,7 @@ public record VkShaderStatisticsInfoAMD(@NotNull MemorySegment segment) implemen
         return this;
     }
 
-    public MemorySegment computeWorkGroupSizeRaw() {
+    public @NotNull MemorySegment computeWorkGroupSizeRaw() {
         return segment.asSlice(OFFSET$computeWorkGroupSize, SIZE$computeWorkGroupSize);
     }
 

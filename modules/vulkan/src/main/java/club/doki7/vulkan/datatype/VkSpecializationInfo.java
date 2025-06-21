@@ -205,11 +205,11 @@ public record VkSpecializationInfo(@NotNull MemorySegment segment) implements IV
         return new VkSpecializationMapEntry(s);
     }
 
-    public @Pointer(target=VkSpecializationMapEntry.class) MemorySegment pMapEntriesRaw() {
+    public @Pointer(target=VkSpecializationMapEntry.class) @NotNull MemorySegment pMapEntriesRaw() {
         return segment.get(LAYOUT$pMapEntries, OFFSET$pMapEntries);
     }
 
-    public void pMapEntriesRaw(@Pointer(target=VkSpecializationMapEntry.class) MemorySegment value) {
+    public void pMapEntriesRaw(@Pointer(target=VkSpecializationMapEntry.class) @NotNull MemorySegment value) {
         segment.set(LAYOUT$pMapEntries, OFFSET$pMapEntries, value);
     }
 
@@ -222,12 +222,13 @@ public record VkSpecializationInfo(@NotNull MemorySegment segment) implements IV
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pData() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pData() {
         return segment.get(LAYOUT$pData, OFFSET$pData);
     }
 
-    public void pData(@Pointer(comment="void*") MemorySegment value) {
+    public VkSpecializationInfo pData(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pData, OFFSET$pData, value);
+        return this;
     }
 
     public VkSpecializationInfo pData(@Nullable IPointer pointer) {

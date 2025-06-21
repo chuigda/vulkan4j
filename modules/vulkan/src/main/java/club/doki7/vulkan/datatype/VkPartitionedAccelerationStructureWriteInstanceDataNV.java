@@ -200,7 +200,7 @@ public record VkPartitionedAccelerationStructureWriteInstanceDataNV(@NotNull Mem
         return this;
     }
 
-    public MemorySegment explicitAABBRaw() {
+    public @NotNull MemorySegment explicitAABBRaw() {
         return segment.asSlice(OFFSET$explicitAABB, SIZE$explicitAABB);
     }
 

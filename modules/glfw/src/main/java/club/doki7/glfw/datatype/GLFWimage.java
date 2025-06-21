@@ -222,11 +222,11 @@ public record GLFWimage(@NotNull MemorySegment segment) implements IGLFWimage {
         return this;
     }
 
-    public @Pointer(comment="int8_t*") MemorySegment pixelsRaw() {
+    public @Pointer(comment="int8_t*") @NotNull MemorySegment pixelsRaw() {
         return segment.get(LAYOUT$pixels, OFFSET$pixels);
     }
 
-    public void pixelsRaw(@Pointer(comment="int8_t*") MemorySegment value) {
+    public void pixelsRaw(@Pointer(comment="int8_t*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pixels, OFFSET$pixels, value);
     }
 

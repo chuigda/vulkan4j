@@ -26,7 +26,7 @@ fun openglMain() {
         .writeText(render(constantsDoc))
 
     for (handle in openglRegistry.opaqueHandleTypedefs.values) {
-        val handleDoc = generateHandle(openglRegistry, handle, codegenOptions)
+        val handleDoc = generateHandle(handle, codegenOptions)
         File("$packageDir/handle/${handle.name.value}.java")
             .writeText(render(handleDoc))
     }

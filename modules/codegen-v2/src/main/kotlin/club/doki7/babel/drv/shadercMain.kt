@@ -54,7 +54,7 @@ fun main() {
     }
 
     for (handle in registry.opaqueHandleTypedefs.values) {
-        val handleDoc = generateHandle(registry, handle, codegenOptions)
+        val handleDoc = generateHandle(handle, codegenOptions)
         File("$packageDir/handle/${handle.name}.java").writeText(render(handleDoc))
     }
 }

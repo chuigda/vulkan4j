@@ -200,12 +200,13 @@ public record VkPhysicalDeviceShaderObjectPropertiesEXT(@NotNull MemorySegment s
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkPhysicalDeviceShaderObjectPropertiesEXT pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkPhysicalDeviceShaderObjectPropertiesEXT pNext(@Nullable IPointer pointer) {
@@ -222,7 +223,7 @@ public record VkPhysicalDeviceShaderObjectPropertiesEXT(@NotNull MemorySegment s
         return this;
     }
 
-    public MemorySegment shaderBinaryUUIDRaw() {
+    public @NotNull MemorySegment shaderBinaryUUIDRaw() {
         return segment.asSlice(OFFSET$shaderBinaryUUID, SIZE$shaderBinaryUUID);
     }
 

@@ -200,12 +200,13 @@ public record VkMacOSSurfaceCreateInfoMVK(@NotNull MemorySegment segment) implem
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkMacOSSurfaceCreateInfoMVK pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkMacOSSurfaceCreateInfoMVK pNext(@Nullable IPointer pointer) {
@@ -222,12 +223,13 @@ public record VkMacOSSurfaceCreateInfoMVK(@NotNull MemorySegment segment) implem
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pView() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pView() {
         return segment.get(LAYOUT$pView, OFFSET$pView);
     }
 
-    public void pView(@Pointer(comment="void*") MemorySegment value) {
+    public VkMacOSSurfaceCreateInfoMVK pView(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pView, OFFSET$pView, value);
+        return this;
     }
 
     public VkMacOSSurfaceCreateInfoMVK pView(@Nullable IPointer pointer) {

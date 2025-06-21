@@ -206,12 +206,13 @@ public record VkDescriptorUpdateTemplateCreateInfo(@NotNull MemorySegment segmen
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkDescriptorUpdateTemplateCreateInfo pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkDescriptorUpdateTemplateCreateInfo pNext(@Nullable IPointer pointer) {
@@ -261,11 +262,11 @@ public record VkDescriptorUpdateTemplateCreateInfo(@NotNull MemorySegment segmen
         return new VkDescriptorUpdateTemplateEntry(s);
     }
 
-    public @Pointer(target=VkDescriptorUpdateTemplateEntry.class) MemorySegment pDescriptorUpdateEntriesRaw() {
+    public @Pointer(target=VkDescriptorUpdateTemplateEntry.class) @NotNull MemorySegment pDescriptorUpdateEntriesRaw() {
         return segment.get(LAYOUT$pDescriptorUpdateEntries, OFFSET$pDescriptorUpdateEntries);
     }
 
-    public void pDescriptorUpdateEntriesRaw(@Pointer(target=VkDescriptorUpdateTemplateEntry.class) MemorySegment value) {
+    public void pDescriptorUpdateEntriesRaw(@Pointer(target=VkDescriptorUpdateTemplateEntry.class) @NotNull MemorySegment value) {
         segment.set(LAYOUT$pDescriptorUpdateEntries, OFFSET$pDescriptorUpdateEntries, value);
     }
 

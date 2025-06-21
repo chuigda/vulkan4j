@@ -200,12 +200,13 @@ public record VkPipelineViewportExclusiveScissorStateCreateInfoNV(@NotNull Memor
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkPipelineViewportExclusiveScissorStateCreateInfoNV pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkPipelineViewportExclusiveScissorStateCreateInfoNV pNext(@Nullable IPointer pointer) {
@@ -246,11 +247,11 @@ public record VkPipelineViewportExclusiveScissorStateCreateInfoNV(@NotNull Memor
         return new VkRect2D(s);
     }
 
-    public @Pointer(target=VkRect2D.class) MemorySegment pExclusiveScissorsRaw() {
+    public @Pointer(target=VkRect2D.class) @NotNull MemorySegment pExclusiveScissorsRaw() {
         return segment.get(LAYOUT$pExclusiveScissors, OFFSET$pExclusiveScissors);
     }
 
-    public void pExclusiveScissorsRaw(@Pointer(target=VkRect2D.class) MemorySegment value) {
+    public void pExclusiveScissorsRaw(@Pointer(target=VkRect2D.class) @NotNull MemorySegment value) {
         segment.set(LAYOUT$pExclusiveScissors, OFFSET$pExclusiveScissors, value);
     }
 

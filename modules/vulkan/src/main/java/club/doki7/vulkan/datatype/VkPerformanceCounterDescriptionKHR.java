@@ -202,12 +202,13 @@ public record VkPerformanceCounterDescriptionKHR(@NotNull MemorySegment segment)
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkPerformanceCounterDescriptionKHR pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkPerformanceCounterDescriptionKHR pNext(@Nullable IPointer pointer) {
@@ -233,7 +234,7 @@ public record VkPerformanceCounterDescriptionKHR(@NotNull MemorySegment segment)
         return this;
     }
 
-    public MemorySegment nameRaw() {
+    public @NotNull MemorySegment nameRaw() {
         return segment.asSlice(OFFSET$name, SIZE$name);
     }
 
@@ -246,7 +247,7 @@ public record VkPerformanceCounterDescriptionKHR(@NotNull MemorySegment segment)
         return this;
     }
 
-    public MemorySegment categoryRaw() {
+    public @NotNull MemorySegment categoryRaw() {
         return segment.asSlice(OFFSET$category, SIZE$category);
     }
 
@@ -259,7 +260,7 @@ public record VkPerformanceCounterDescriptionKHR(@NotNull MemorySegment segment)
         return this;
     }
 
-    public MemorySegment descriptionRaw() {
+    public @NotNull MemorySegment descriptionRaw() {
         return segment.asSlice(OFFSET$description, SIZE$description);
     }
 

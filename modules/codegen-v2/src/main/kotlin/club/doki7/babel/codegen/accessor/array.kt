@@ -35,7 +35,7 @@ private fun generateNonRefArrayAccessor(className: String, elementType: CNonRefT
     }
     +""
 
-    defun("public", "MemorySegment", rawName) {
+    defun("public", "@NotNull MemorySegment", rawName) {
         +"return segment.asSlice(${member.offsetName}, ${member.sizeName});"
     }
 }
@@ -69,7 +69,7 @@ private fun generateStructureArrayAccessor(className: String, elementType: CStru
     }
     +""
 
-    defun("public", "MemorySegment", rawName) {
+    defun("public", "@NotNull MemorySegment", rawName) {
         +"return segment.asSlice(${member.offsetName}, ${member.sizeName});"
     }
 }
@@ -77,7 +77,7 @@ private fun generateStructureArrayAccessor(className: String, elementType: CStru
 private fun generateHandleArrayAccessor(className: String, elementType: CHandleType, member: LayoutField.Typed) = buildDoc {
     val rawName = "${member.name}Raw"
 
-    defun("public", "MemorySegment", rawName) {
+    defun("public", "@NotNull MemorySegment", rawName) {
         +"return segment.asSlice(${member.offsetName}, ${member.sizeName});"
     }
 
