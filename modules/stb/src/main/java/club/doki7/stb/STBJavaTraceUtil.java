@@ -48,4 +48,6 @@ public final class STBJavaTraceUtil {
             throw new RuntimeException(e);
         }
     }
+
+    private STBJavaTraceUtil() {}
 }
