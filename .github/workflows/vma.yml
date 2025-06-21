@@ -34,7 +34,8 @@ jobs:
       run: echo "MACOS=true" >> $GITHUB_ENV
     - name: Set WIN32 environment variable
       if: matrix.os == 'windows-latest'
-      run: echo "WIN32=true" | Out-File -FilePath $env:GITHUB_ENV -Append
+      run:
+        echo 114514 >> modules/vma/vma_build/windows-indicator.txt
     - name: Compile vma
       env:
         CXX: ${{ steps.install_cc.outputs.cxx }}
