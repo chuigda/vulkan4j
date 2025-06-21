@@ -6,7 +6,6 @@ import club.doki7.babel.cdecl.*
 import club.doki7.babel.hparse.*
 import club.doki7.babel.registry.*
 import club.doki7.babel.util.parseDecOrHex
-import club.doki7.babel.util.setupLog
 import java.util.logging.Logger
 import kotlin.io.path.Path
 import kotlin.io.path.useLines
@@ -14,36 +13,26 @@ import kotlin.io.path.useLines
 private val inputDir = Path("codegen-v2/input/stb_formatted")
 internal val log = Logger.getLogger("c.d.b.extract.stb")
 
-fun main() {
-    setupLog()
-
-    val stbImageRegistry = extractSTBImageHeader()
-    val stbTrueTypeRegistry = extractSTBTrueTypeHeader()
-    val stbImageResizeRegistry = extractSTBImageResizeHeader()
-
-    println("done")
-}
-
 fun extractSTBImageHeader() = extractSTBHeader(
     fileName = "stb_image.h",
     startDefn = "STBI_INCLUDE_STB_IMAGE_H",
     fndefMacro = "STBIDEF",
     hardStop = "#ifdef STB_IMAGE_IMPLEMENTATION"
-)
+).renameEntities("image", "stbi_", true)
 
 fun extractSTBTrueTypeHeader() = extractSTBHeader(
     fileName = "stb_truetype.h",
     startDefn = "__STB_INCLUDE_STB_TRUETYPE_H__",
     fndefMacro = "STBTT_DEF",
     hardStop = "#ifdef STB_TRUETYPE_IMPLEMENTATION"
-)
+).renameEntities("truetype", "stbtt_", false)
 
 fun extractSTBImageResizeHeader() = extractSTBHeader(
     fileName = "stb_image_resize2.h",
     startDefn = "STBIR_INCLUDE_STB_IMAGE_RESIZE2_H",
     fndefMacro = "STBIRDEF",
     hardStop = "#if defined(STB_IMAGE_RESIZE_IMPLEMENTATION) || defined(STB_IMAGE_RESIZE2_IMPLEMENTATION)"
-)
+).renameEntities("image_resize", "stbir_", true)
 
 private fun extractSTBHeader(
     fileName: String,
@@ -272,9 +261,9 @@ private fun parseStructField(
     index: Int
 ): Int {
     val (declList, nextIndex) = parseStructFieldDecl(lines, index)
-    assert(declList.size == 1)
-    val decl = declList[0]
-    (cx["fields"] as MutableList<VarDecl>).add(decl)
+    for (decl in declList) {
+        (cx["fields"] as MutableList<VarDecl>).add(decl)
+    }
     return nextIndex
 }
 
