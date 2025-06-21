@@ -57,6 +57,8 @@ if [ $? -ne 0 ]; then
   exit 1
 fi
 
+echo ls
+ls
 # Generate shared library file according to the platform, using a environment variable WIN32
 if [ -n "$WIN32" ]; then
   $CXX -shared -fPIC -static-libgcc -static-libstdc++ -o vma.dll vma.o
@@ -68,3 +70,6 @@ else
     $CXX -shared -fPIC -o libvma.so vma.o
   fi
 fi
+
+echo ls
+ls
