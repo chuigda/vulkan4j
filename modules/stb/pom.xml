@@ -9,7 +9,7 @@
         <version>${revision}</version>
     </parent>
 
-    <name>stb-image</name>
+    <name>stb</name>
     <description>Java bindings for STB library collection using Project Panama</description>
     <url>https://github.com/chuigda/vulkan4j</url>
 
