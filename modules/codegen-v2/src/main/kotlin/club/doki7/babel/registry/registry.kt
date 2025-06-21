@@ -2,6 +2,7 @@ package club.doki7.babel.registry
 
 import club.doki7.babel.util.Either
 import java.math.BigInteger
+import javax.lang.model.type.TypeMirror
 
 interface IMergeable<Self: IMergeable<Self>> {
     fun merge(other: Self): Self
@@ -232,7 +233,8 @@ class EnumVariant(
 class FunctionTypedef(
     name: Identifier,
     val params: List<Type>,
-    val result: Type
+    val result: Type,
+    val isPointer: Boolean = true
 ) : Entity(name) {
     constructor(name: String, params: List<Type>, result: Type) : this(name.intern(), params, result)
 
