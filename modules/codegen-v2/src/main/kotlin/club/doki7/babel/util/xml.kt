@@ -1,7 +1,9 @@
 package club.doki7.babel.util
 
 import org.intellij.lang.annotations.Language
+import org.w3c.dom.Attr
 import org.w3c.dom.Element
+import org.w3c.dom.NamedNodeMap
 import org.w3c.dom.Node
 import org.w3c.dom.NodeList
 import org.xml.sax.InputSource
@@ -9,6 +11,7 @@ import java.io.StringReader
 import javax.xml.parsers.DocumentBuilderFactory
 import javax.xml.xpath.XPathConstants
 import javax.xml.xpath.XPathFactory
+import kotlin.reflect.KProperty
 
 fun String.parseXML(): Element {
     val builder = DocumentBuilderFactory.newInstance().newDocumentBuilder()
@@ -26,8 +29,7 @@ fun Element.getFirstElement(tag: String): Element? = getElementSeq(tag).firstOrN
 
 fun Element.getElementSeq(tag: String) = getElementsByTagName(tag)
     .asSequence()
-    .filter { it is Element }
-    .map { it as Element }
+    .mapNotNull { it as? Element }
 
 fun Node.query(@Language("XPath") xpath: String): Sequence<Element> {
     return (XPathFactory
@@ -57,3 +59,45 @@ operator fun NodeList.iterator(): Iterator<Node> = object : Iterator<Node> {
 }
 
 fun NodeList.asSequence(): Sequence<Node> = Sequence { this@asSequence.iterator() }
+
+class AttributeDelegate(val element: Element) {
+    operator fun getValue(thisRef: Any?, property: KProperty<*>): String? {
+        return element.getAttributeText(property.name)
+    }
+}
+
+class NodeDelegate(val element: Element) {
+    operator fun getValue(thisRef: Any?, property: KProperty<*>): Element? {
+        return element.getFirstElement(property.name)
+    }
+}
+
+val Element.attrs: AttributeDelegate get() = AttributeDelegate(this)
+val Element.children: NodeDelegate get() = NodeDelegate(this)
+
+inline fun NamedNodeMap.toMap(keyMapping: (Node) -> String): Map<String, Node> {
+    return toNodeList().asSequence().associateBy(keyMapping)
+}
+
+fun NamedNodeMap.toNodeList(): NodeList = object : NodeList {
+    override fun item(index: Int): Node? {
+        return this@toNodeList.item(index)
+    }
+
+    override fun getLength(): Int {
+        return this@toNodeList.length
+    }
+}
+
+fun NodeList.allAttributeName(): Map<String, Int> {
+    return asSequence().fold(mutableMapOf()) { acc, elem ->
+        acc.apply {
+            elem.attributes.toNodeList().asSequence().forEach {
+                val name = (it as Attr).nodeName
+                compute(name) { _, v ->
+                    (v ?: 0) + 1
+                }
+            }
+        }
+    }
+}
