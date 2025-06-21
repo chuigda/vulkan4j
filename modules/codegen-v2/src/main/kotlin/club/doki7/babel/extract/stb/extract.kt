@@ -40,6 +40,13 @@ fun extractSTBImageResizeHeader() = extractSTBHeader(
     hardStop = "#if defined(STB_IMAGE_RESIZE_IMPLEMENTATION) || defined(STB_IMAGE_RESIZE2_IMPLEMENTATION)"
 ).renameEntities("image_resize", "stbir_", true)
 
+fun extractSTBImageWriteHeader() = extractSTBHeader(
+    fileName = "stb_image_write.h",
+    startDefn = "INCLUDE_STB_IMAGE_WRITE_H",
+    fndefMacro = "STBIWDEF",
+    hardStop = "#ifdef STB_IMAGE_WRITE_IMPLEMENTATION"
+).renameEntities("image_write", "stbi_", true)
+
 private fun extractSTBHeader(
     fileName: String,
     startDefn: String,
@@ -52,7 +59,7 @@ private fun extractSTBHeader(
     val registry = Registry(ext = EmptyMergeable())
 
     fun detectFuncDecl(line: String): ControlFlow =
-        if (line.startsWith(fndefMacro)) {
+        if (line.startsWith(fndefMacro) && line.contains("(")) {
             ControlFlow.ACCEPT
         } else {
             ControlFlow.NEXT
@@ -128,7 +135,8 @@ private fun morphFunctionDecl(functionDecl: FunctionDecl) = Command(
 
 // region callback typedef
 private fun detectCallbackTypedef(line: String): ControlFlow =
-    if (line.startsWith("typedef") && line.contains("_callback(")) {
+    if (line.startsWith("typedef")
+        && (line.contains("_callback(") || line.contains("_func("))) {
         ControlFlow.ACCEPT
     } else {
         ControlFlow.NEXT

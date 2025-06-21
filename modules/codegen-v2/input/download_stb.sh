@@ -2,7 +2,7 @@
 
 STB_URL_PREFIX="https://raw.githubusercontent.com/nothings/stb/f58f558c120e9b32c217290b80bad1a0729fbb2c/"
 
-COMPONENTS=("image" "truetype" "image_resize2")
+COMPONENTS=("image" "truetype" "image_resize2" "image_write")
 
 mkdir -p stb
 mkdir -p stb_formatted

@@ -254,6 +254,7 @@ internal val knownTriviaMacros = setOf(
     "STBIDEF",
     "STBTT_DEF",
     "STBIRDEF",
+    "STBIWDEF",
 
     "extern"
 )

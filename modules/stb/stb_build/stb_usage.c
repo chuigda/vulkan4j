@@ -28,8 +28,12 @@ static void vk4jStbAssertFail(const char *asserter, const char *condition) {
 #   define STBTT_assert(CONDITION) VK4J_STB_GENERAL_ASSERT("STBTT_assert", CONDITION)
 #endif
 
-#ifdef STBIR_ASSERT
+#ifndef STBIR_ASSERT
 #   define STBIR_ASSERT(CONDITION) VK4J_STB_GENERAL_ASSERT("STBIR_ASSERT", CONDITION)
+#endif
+
+#ifndef STBIW_ASSERT
+#   define STBIW_ASSERT(CONDITION) VK4J_STB_GENERAL_ASSERT("STBIW_ASSERT", CONDITION)
 #endif
 
 
@@ -42,3 +46,6 @@ static void vk4jStbAssertFail(const char *asserter, const char *condition) {
 #define STB_IMAGE_RESIZE_IMPLEMENTATION
 #define STB_IMAGE_RESIZE2_IMPLEMENTATION
 #include "stb_image_resize2.h"
+
+#define STB_IMAGE_WRITE_IMPLEMENTATION
+#include "stb_image_write.h"
