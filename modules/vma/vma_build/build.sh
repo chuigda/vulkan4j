@@ -61,12 +61,15 @@ echo ls
 ls
 # Generate shared library file according to the platform, using a environment variable WIN32
 if [ -n "$WIN32" ]; then
+  echo Info: Windows detected, compiling as a dll
   $CXX -shared -fPIC -static-libgcc -static-libstdc++ -o vma.dll vma.o
 else
   if [ -n "$MACOS" ]; then
+    echo Info: macOS detected, compiling as a dylib
     $CXX -shared -fPIC -o libvma.dylib vma.o
   else
     # if you are on macos, we still compile the dylib, but it'll have a cringe file extension
+    echo Info: Non-Windows detected but macOS not detected, compiling as a so
     $CXX -shared -fPIC -o libvma.so vma.o
   fi
 fi
