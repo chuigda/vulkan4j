@@ -6,13 +6,13 @@ import org.jetbrains.annotations.Nullable;
 import java.lang.foreign.*;
 import java.lang.invoke.MethodHandle;
 
-@Deprecated
+@Deprecated(forRemoval = true, since = "0.2.4")
 public final class Loader {
     private static final Linker nativeLinker = Linker.nativeLinker();
     private static final SymbolLookup stdlibLookup = nativeLinker.defaultLookup();
     private static final SymbolLookup loaderLookup = SymbolLookup.loaderLookup();
 
-    @Deprecated
+    @Deprecated(forRemoval = true, since = "0.2.4")
     public static @NotNull MethodHandle loadFunction(String name, FunctionDescriptor descriptor) {
         return loaderLookup.find(name)
                 .or(() -> stdlibLookup.find(name))
@@ -20,7 +20,7 @@ public final class Loader {
                 .orElseThrow(() -> new RuntimeException("native function " + name + " not found"));
     }
 
-    @Deprecated
+    @Deprecated(forRemoval = true, since = "0.2.4")
     public static @Nullable MethodHandle loadFunctionOrNull(String name, FunctionDescriptor descriptor) {
         return loaderLookup.find(name)
                 .or(() -> stdlibLookup.find(name))
@@ -28,14 +28,14 @@ public final class Loader {
                 .orElse(null);
     }
 
-    @Deprecated
+    @Deprecated(forRemoval = true, since = "0.2.4")
     public static @NotNull MemorySegment loadFunction(String name) {
         return loaderLookup.find(name)
                 .or(() -> stdlibLookup.find(name))
                 .orElseThrow(() -> new RuntimeException("native function " + name + " not found"));
     }
 
-    @Deprecated
+    @Deprecated(forRemoval = true, since = "0.2.4")
     public static @Nullable MemorySegment loadFunctionOrNull(String name) {
         return loaderLookup.find(name)
                 .or(() -> stdlibLookup.find(name))
