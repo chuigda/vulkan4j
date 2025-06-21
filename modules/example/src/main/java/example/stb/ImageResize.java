@@ -102,7 +102,7 @@ public final class ImageResize {
 
     private static Consumer<MemorySegment> makeWriter(String fileName) {
         return segment -> {
-            try (FileChannel ch = FileChannel.open(Path.of(fileName), StandardOpenOption.WRITE, StandardOpenOption.CREATE)) {
+            try (FileChannel ch = FileChannel.open(Path.of(fileName), StandardOpenOption.WRITE, StandardOpenOption.CREATE, StandardOpenOption.TRUNCATE_EXISTING)) {
                 ch.write(segment.asByteBuffer());
             } catch (IOException e) {
                 throw new RuntimeException("Failed to write image to " + fileName, e);
