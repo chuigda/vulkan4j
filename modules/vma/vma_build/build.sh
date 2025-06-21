@@ -49,8 +49,7 @@ if [ -z "$VULKAN_SDK_DIR" ] || [ ! -d "$VULKAN_SDK_DIR" ]; then
   $CXX -std=c++17 -O2 -fno-rtti -fno-exceptions -fPIC -I. -c -o vma.o vma_usage.cc
 else
   echo Info: picked up VULKAN_SDK_DIR=$VULKAN_SDK_DIR
-  ls $VULKAN_SDK_DIR
-  $CXX -std=c++17 -O2 -fno-rtti -fno-exceptions -fPIC "-I${VULKAN_SDK_DIR}/Include" -I. -c -o vma.o vma_usage.cc
+  $CXX -std=c++17 -O2 -fno-rtti -fno-exceptions -fPIC "-I${VULKAN_SDK_DIR}/include" "-I${VULKAN_SDK_DIR}/Include" -I. -c -o vma.o vma_usage.cc
 fi
 
 # If the last command failed, exit
