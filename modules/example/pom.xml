@@ -46,8 +46,19 @@
         </dependency>
         <dependency>
             <groupId>club.doki7</groupId>
+            <artifactId>stb</artifactId>
+            <version>0.3.4</version>
+        </dependency>
+        <dependency>
+            <groupId>club.doki7</groupId>
             <artifactId>sdl3</artifactId>
             <version>0.3.4-sdl3-alpha1</version>
+        </dependency>
+        <dependency>
+            <groupId>club.doki7</groupId>
+            <artifactId>glfw</artifactId>
+            <version>0.3.4</version>
+            <scope>compile</scope>
         </dependency>
     </dependencies>
 </project>

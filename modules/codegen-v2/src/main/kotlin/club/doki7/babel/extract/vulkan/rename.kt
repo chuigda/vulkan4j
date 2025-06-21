@@ -2,7 +2,6 @@ package club.doki7.babel.extract.vulkan
 
 import club.doki7.babel.extract.ensureLowerCamelCase
 import club.doki7.babel.extract.renameVariantOrBitflag
-import club.doki7.babel.extract.toSnakeCase
 import club.doki7.babel.registry.Entity
 import club.doki7.babel.registry.Registry
 import club.doki7.babel.registry.intern

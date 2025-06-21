@@ -51,7 +51,8 @@ fun generateCommandFile(
     if (registry.enumerations.isNotEmpty()) {
         imports("$packageName.enumtype.*")
     }
-    if (registry.opaqueHandleTypedefs.isNotEmpty()) {
+    if (registry.opaqueHandleTypedefs.isNotEmpty()
+        || registry.opaqueTypedefs.values.any { it.isHandle }) {
         imports("$packageName.handle.*")
     }
 

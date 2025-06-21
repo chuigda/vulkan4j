@@ -49,4 +49,9 @@ modules/shaderc/src/main/java/club/doki7/shaderc/datatype/*.java linguist-genera
 modules/shaderc/src/main/java/club/doki7/shaderc/enumtype/*.java linguist-generated
 modules/shaderc/src/main/java/club/doki7/shaderc/handle/*.java linguist-generated
 
+modules/stb/src/main/java/club/doki7/stb/**/*.java linguist-generated
+modules/stb/src/main/java/club/doki7/stb/STBJavaTraceUtil.java linguist-detectable
+modules/stb/src/main/java/club/doki7/stb/image/STBIUtil.java linguist-detectable
+modules/stb/src/main/java/club/doki7/stb/imagewrite/STBWUtil.java linguist-detectable
+
 modules/tutorial/src/main/java/**/*.java linguist-documentation

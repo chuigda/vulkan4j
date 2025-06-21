@@ -1,0 +1,29 @@
+#!/usr/bin/env bash
+
+STB_URL_PREFIX="https://raw.githubusercontent.com/nothings/stb/f58f558c120e9b32c217290b80bad1a0729fbb2c/"
+COMPONENTS=("image" "truetype" "image_resize2" "image_write")
+
+for component in "${COMPONENTS[@]}"; do
+  if [ ! -f "stb_${component}.h" ]; then
+    curl -o "stb_${component}.h" "${STB_URL_PREFIX}stb_${component}.h";
+  fi;
+done
+
+# if CC is not set, default to gcc
+if [ -z "CC" ]; then
+  CC=gcc
+fi
+
+$CC -std=c11 -O2 -fPIC -I. -c -o stb.o stb_usage.c
+
+# If the last command failed, exit
+if [ $? -ne 0 ]; then
+  exit 1
+fi
+
+# Generate shared library file according to the platform, using a environment variable WIN32
+if [ -n "$WIN32" ]; then
+  $CC -shared -fPIC -static-libgcc -o stb.dll stb.o
+else
+  $CC -shared -fPIC -o libstb.so stb.o
+fi

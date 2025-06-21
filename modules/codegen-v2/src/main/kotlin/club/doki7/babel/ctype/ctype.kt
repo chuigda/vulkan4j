@@ -1,6 +1,7 @@
 package club.doki7.babel.ctype
 
 import club.doki7.babel.registry.ArrayType
+import club.doki7.babel.registry.FunctionTypedef
 import club.doki7.babel.registry.IdentifierType
 import club.doki7.babel.registry.OpaqueTypedef
 import club.doki7.babel.registry.PointerType
@@ -383,6 +384,7 @@ private val knownTypes = mapOf(
     "unsigned" to cUIntType,
     "unsigned int" to cUIntType,
     "long long" to int64Type,
+    "__int64" to int64Type,
 
     "long" to cLongType,
     "size_t" to cSizeType,
@@ -515,6 +517,11 @@ fun lowerType(registry: RegistryBase, refRegistries: List<RegistryBase>, type: T
         }
         is PointerType -> {
             if (type.pointee is IdentifierType) {
+                val functionTypedef = lookupFunctionTypedef(registry, refRegistries, type.pointee)
+                if (functionTypedef != null && !functionTypedef.isPointer) {
+                    return CPointerType(voidType, false, pointerToOne = true, comment="${type.pointee.ident.value}*")
+                }
+
                 val opaqueTypedef = lookupOpaqueTypedef(registry, refRegistries, type.pointee)
                 if (opaqueTypedef != null) {
                     return if (opaqueTypedef.isHandle) {
@@ -554,6 +561,24 @@ fun lookupOpaqueTypedef(
     for (refRegistry in refRegistries) {
         if (refRegistry.opaqueTypedefs.contains(type.ident)) {
             return refRegistry.opaqueTypedefs[type.ident]!!
+        }
+    }
+
+    return null
+}
+
+fun lookupFunctionTypedef(
+    registry: RegistryBase,
+    refRegistries: List<RegistryBase>,
+    type: IdentifierType
+): FunctionTypedef? {
+    if (registry.functionTypedefs.contains(type.ident)) {
+        return registry.functionTypedefs[type.ident]
+    }
+
+    for (refRegistry in refRegistries) {
+        if (refRegistry.functionTypedefs.contains(type.ident)) {
+            return refRegistry.functionTypedefs[type.ident]
         }
     }
 
@@ -601,6 +626,10 @@ fun identifierTypeLookup(registry: RegistryBase, refRegistries: List<RegistryBas
         CHandleType(type.ident.value)
     }
     else if (registry.functionTypedefs.contains(type.ident)) {
+        val functionTypedef = registry.functionTypedefs[type.ident]!!
+        if (!functionTypedef.isPointer) {
+            error("function typedef ${type.ident.value} is not a pointer type, should not be used individually")
+        }
         CPointerType(voidType, false, pointerToOne = true, comment=type.ident.value)
     }
     else if (registry.aliases.contains(type.ident)) {

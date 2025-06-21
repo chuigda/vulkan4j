@@ -16,6 +16,7 @@
 - [OpenAL](https://www.openal.org/) ([`openal`](https://github.com/club-doki7/vulkan4j/tree/master/modules/openal) module): Generated from OpenAL-soft header files. This module is based on OpenAL-soft 1.2, and provides a complete set of OpenAL features, including all extensions supported by OpenAL-soft.
 - [GLFW](https://www.glfw.org/) ([`glfw`](https://github.com/club-doki7/vulkan4j/tree/master/modules/glfw) module): Generated from GLFW header files.
 - [libshaderc](https://github.com/google/shaderc) ([`shaderc`](https://github.com/club-doki7/vulkan4j/tree/master/modules/shaderc) module): Generated from `libshaderc` header files. This module also provides a useful `ShadercUtil` class to assist you with including files.
+- [STB](https://github.com/nothings/stb) ([`stb`](https://github.com/club-doki7/vulkan4j/tree/master/modules/stb) module): Generated from STB header files, currently contains `stb_image`, `stb_image_write`, `stb_image_resize` and `stb_truetype`. If you use a specific build supporting `vk4jSetSTBJavaTrace`, you can enjoy Java stacktrace on STB assertion failures. Check out the [`stb_build`](https://github.com/club-doki7/vulkan4j/tree/master/modules/stb/stb_build) directory for more information.
 
 ### Experimental Bindings
 
@@ -51,8 +52,12 @@ We provide a set of examples, which can be found under the `example` directory. 
 - [x] v0.3.0 rewrite, new namespace, new `ffm-plus` module, use `codegen-v2` module for all registry extraction and code generation.
 - [x] API enhancements: chaining `set` methods for structures, LWJGL style `set` methods for structure members, `allocateV` and `writeV` series functions for `Ptr` types.
 - [x] Full OpenGL bindings
-  - [ ] Tutorial porting
 - [x] OpenAL bindings
+- [x] STB bindings
+  - [x] STB image (containing `image_resize2` and `image_write`)
+  - [x] STB truetype
+  - [ ] STB vorbis
+  - [ ] *To be added*
 - [ ] WebGPU bindings
 - [ ] Full OpenGL ES bindings
 - [ ] SDL3 bindings
