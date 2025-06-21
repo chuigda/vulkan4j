@@ -19,12 +19,13 @@ jobs:
         cache: maven
     - name: Setup GCC
       uses: egor-tensin/setup-gcc@v1
-    - name: Give build.sh privilege to run
-      working-directory: ./misc/test_binary/
-      run: chmod +x ./build.sh
     - name: Build testing-use native binaries
       working-directory: ./misc/test_binary/
       run: ./build.sh
+    - name: Upload vma.so
+      uses: actions/upload-artifact@v4
+      with:
+        path: modules/vma/vma_build/libvma.so
     - name: Run test with maven
       run: mvn -B test --file pom.xml
       working-directory: ./modules
