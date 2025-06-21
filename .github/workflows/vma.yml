@@ -1,0 +1,36 @@
+name: VMA Native Binary
+
+on:
+  push:
+    branches: [ "master" ]
+    paths:
+      - "modules/vma/vma_build/**"
+  pull_request:
+    branches: [ "master" ]
+    paths:
+      - "modules/vma/vma_build/**"
+
+jobs:
+  build:
+    strategy:
+      matrix:
+        os: [ubuntu-latest, macos-latest, windows-latest]
+    runs-on: ${{ matrix.os }}
+    steps:
+    - uses: actions/checkout@v4
+    - name: Install compiler
+      id: install_cc
+      uses: rlalik/setup-cpp-compiler@master
+      with:
+        compiler: latest
+    - name: Compile vma
+      env:
+        CXX: ${{ steps.install_cc.outputs.cxx }}
+      run: |
+        cd modules/vma/vma_build
+        bash build.sh
+    - name: Upload vma.so
+      uses: actions/upload-artifact@v4
+      with:
+        path: modules/vma/vma_build/libvma.so
+
