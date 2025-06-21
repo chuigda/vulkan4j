@@ -10,7 +10,7 @@
     </parent>
 
     <name>stb-image</name>
-    <description>Java bindings for stb_image.h using Project Panama</description>
+    <description>Java bindings for STB library collection using Project Panama</description>
     <url>https://github.com/chuigda/vulkan4j</url>
 
     <inceptionYear>2024</inceptionYear>
@@ -30,6 +30,11 @@
         <developer>
             <name>Tesla Zhang</name>
             <email>ice1000kotlin@gmail.com</email>
+            <organization>Doki Doki 7th Design Club!</organization>
+        </developer>
+        <developer>
+            <name>Chuigda Whitegive</name>
+            <email>chuigda@doki7.club</email>
             <organization>Doki Doki 7th Design Club!</organization>
         </developer>
     </developers>
