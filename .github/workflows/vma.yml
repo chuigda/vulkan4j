@@ -43,14 +43,17 @@ jobs:
       if: matrix.os == 'ubuntu-latest'
       with:
         path: modules/vma/vma_build/libvma.so
+        name: libvma.so
     - name: Upload libvma.dylib
       uses: actions/upload-artifact@v4
       if: matrix.os == 'macos-latest'
       with:
         path: modules/vma/vma_build/libvma.dylib
+        name: libvma.dylib
     - name: Upload vma.dll
       uses: actions/upload-artifact@v4
       if: matrix.os == 'windows-latest'
       with:
         path: modules/vma/vma_build/vma.dll
+        name: vma.dll
 
