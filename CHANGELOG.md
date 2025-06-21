@@ -12,7 +12,7 @@ Upgrade `ffm-plus` to v0.2.4, and other wrapper modules to v0.4.0.
 ### New bindings
 
 - Added `stb` module, which provides bindings for `stb` libraries. Currently the following components are supported:
-  - `stb.iamge` (`stb_image.h`): Image loading library.
+  - `stb.image` (`stb_image.h`): Image loading library.
   - `stb.imagewrite` (`stb_image_write.h`): Image writing library.
   - `stb.imageresize` (`stb_image_resize2.h`): Image resizing library.
   - `stb.truetype` (`stb_truetype.h`): TrueType font rendering library.
@@ -27,6 +27,10 @@ Upgrade `ffm-plus` to v0.2.4, and other wrapper modules to v0.4.0.
 
 - PVOID type field setters accepting `MemorySegment`s now also returns `this` to allow chaining.
 - Added `ALLoader` class to automatically deal with platform library name difference (`OpenAL32.dll` on Windows vs `libopenal.so` on Linux).
+
+### Known issues
+
+- `LibcArena` does not work on Windows platform due to the lack of `aligned_alloc` support. `ShadercUtil` using `LibcArena` is also affected.
 
 ## v0.3.4
 
