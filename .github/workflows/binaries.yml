@@ -38,6 +38,7 @@ jobs:
       if: matrix.os == 'windows-latest'
       run:
         echo 114514 >> modules/vma/vma_build/windows-indicator.txt
+        echo 114514 >> modules/stb/stb_build/windows-indicator.txt
     - name: Compile vma
       env:
         CXX: ${{ steps.install_cc.outputs.cxx }}
