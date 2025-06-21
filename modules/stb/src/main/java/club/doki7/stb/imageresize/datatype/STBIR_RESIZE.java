@@ -13,6 +13,7 @@ import club.doki7.ffm.IPointer;
 import club.doki7.ffm.NativeLayout;
 import club.doki7.ffm.annotation.*;
 import club.doki7.ffm.ptr.*;
+import club.doki7.stb.imageresize.handle.*;
 import club.doki7.stb.imageresize.enumtype.*;
 
 /// Represents a pointer to a {@code STBIR_RESIZE} structure in native memory.

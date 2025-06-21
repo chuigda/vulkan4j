@@ -127,7 +127,8 @@ fun generateStructure(
         imports("$packageName.bitmask.*")
     }
 
-    if (registryBase.opaqueHandleTypedefs.isNotEmpty()) {
+    if (registryBase.opaqueHandleTypedefs.isNotEmpty()
+        || registryBase.opaqueTypedefs.values.any { it.isHandle }) {
         imports("$packageName.handle.*")
     }
 

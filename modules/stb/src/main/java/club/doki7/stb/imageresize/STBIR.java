@@ -11,6 +11,7 @@ import club.doki7.ffm.annotation.*;
 import club.doki7.ffm.ptr.*;
 import club.doki7.stb.imageresize.datatype.*;
 import club.doki7.stb.imageresize.enumtype.*;
+import club.doki7.stb.imageresize.handle.*;
 
 public final class STBIR {
     public STBIR(RawFunctionLoader loader) {
