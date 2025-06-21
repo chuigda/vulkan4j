@@ -58,7 +58,7 @@ if [ $? -ne 0 ]; then
 fi
 
 # Generate shared library file according to the platform, using a environment variable WIN32
-if [ -n "$WIN32" ] || [ -e windows-indicator.txt ]; then
+if [ -n "$WIN32" ] || [ -f windows-indicator.txt ]; then
   echo Info: Windows detected, compiling as a dll
   $CXX -shared -fPIC -static-libgcc -static-libstdc++ -o vma.dll vma.o
 else
