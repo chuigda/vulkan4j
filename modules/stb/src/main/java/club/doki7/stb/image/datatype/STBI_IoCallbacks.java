@@ -21,9 +21,9 @@ import static club.doki7.stb.image.STBImageConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct stbi_io_callbacks {
-///     PFN_read read; // @link substring="read" target="#read"
-///     PFN_skip skip; // @link substring="skip" target="#skip"
-///     PFN_eof eof; // @link substring="eof" target="#eof"
+///     PFN_stbi_io_callbacks_read read; // @link substring="read" target="#read"
+///     PFN_stbi_io_callbacks_skip skip; // @link substring="skip" target="#skip"
+///     PFN_stbi_io_callbacks_eof eof; // @link substring="eof" target="#eof"
 /// } stbi_io_callbacks;
 /// }
 ///
@@ -166,11 +166,11 @@ public record STBI_IoCallbacks(@NotNull MemorySegment segment) implements ISTBI_
         return ret;
     }
 
-    public @Pointer(comment="PFN_read") MemorySegment read() {
+    public @Pointer(comment="PFN_stbi_io_callbacks_read") MemorySegment read() {
         return segment.get(LAYOUT$read, OFFSET$read);
     }
 
-    public void read(@Pointer(comment="PFN_read") MemorySegment value) {
+    public void read(@Pointer(comment="PFN_stbi_io_callbacks_read") MemorySegment value) {
         segment.set(LAYOUT$read, OFFSET$read, value);
     }
 
@@ -179,11 +179,11 @@ public record STBI_IoCallbacks(@NotNull MemorySegment segment) implements ISTBI_
         return this;
     }
 
-    public @Pointer(comment="PFN_skip") MemorySegment skip() {
+    public @Pointer(comment="PFN_stbi_io_callbacks_skip") MemorySegment skip() {
         return segment.get(LAYOUT$skip, OFFSET$skip);
     }
 
-    public void skip(@Pointer(comment="PFN_skip") MemorySegment value) {
+    public void skip(@Pointer(comment="PFN_stbi_io_callbacks_skip") MemorySegment value) {
         segment.set(LAYOUT$skip, OFFSET$skip, value);
     }
 
@@ -192,11 +192,11 @@ public record STBI_IoCallbacks(@NotNull MemorySegment segment) implements ISTBI_
         return this;
     }
 
-    public @Pointer(comment="PFN_eof") MemorySegment eof() {
+    public @Pointer(comment="PFN_stbi_io_callbacks_eof") MemorySegment eof() {
         return segment.get(LAYOUT$eof, OFFSET$eof);
     }
 
-    public void eof(@Pointer(comment="PFN_eof") MemorySegment value) {
+    public void eof(@Pointer(comment="PFN_stbi_io_callbacks_eof") MemorySegment value) {
         segment.set(LAYOUT$eof, OFFSET$eof, value);
     }
 

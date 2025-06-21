@@ -184,7 +184,7 @@ private fun parseAndSaveStructure(
     val fieldVarDecls = cx["fields"] as MutableList<VarDecl>
     cx.remove("fields")
 
-    val members = fieldVarDecls.map { morphStructFieldDecl(registry, it) }
+    val members = fieldVarDecls.map { morphStructFieldDecl(registry, structureName, it) }
         .toMutableList()
 
     registry.structures.putEntityIfAbsent(Structure(
@@ -223,7 +223,7 @@ private fun parseAndSaveStructure2(
     val fieldVarDecls = cx["fields"] as MutableList<VarDecl>
     cx.remove("fields")
 
-    val members = fieldVarDecls.map { morphStructFieldDecl(registry, it) }
+    val members = fieldVarDecls.map { morphStructFieldDecl(registry, structureName, it) }
         .toMutableList()
     registry.structures.putEntityIfAbsent(Structure(
         name = structureName,
@@ -275,9 +275,13 @@ private fun parseStructField(
     return nextIndex
 }
 
-private fun morphStructFieldDecl(registry: RegistryBase, decl: VarDecl): Member =
+private fun morphStructFieldDecl(
+    registry: RegistryBase,
+    structureName: String,
+    decl: VarDecl
+): Member =
     if (decl.type is RawFunctionType) {
-        val typeName = "PFN_${decl.name}"
+        val typeName = "PFN_${structureName}_${decl.name}"
         registry.functionTypedefs.putEntityIfAbsent(
             FunctionTypedef(
                 name = typeName,
