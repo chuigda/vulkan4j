@@ -7,6 +7,7 @@ import club.doki7.babel.codegen.generateEnumeration
 import club.doki7.babel.codegen.generateFunctionTypedefs
 import club.doki7.babel.codegen.generateHandle
 import club.doki7.babel.codegen.generateStructure
+import club.doki7.babel.codegen.generateStructureInterface
 import club.doki7.babel.extract.stb.extractSTBImageHeader
 import club.doki7.babel.extract.stb.extractSTBImageResizeHeader
 import club.doki7.babel.extract.stb.extractSTBTrueTypeHeader
@@ -14,9 +15,12 @@ import club.doki7.babel.registry.EmptyMergeable
 import club.doki7.babel.registry.OpaqueHandleTypedef
 import club.doki7.babel.registry.Registry
 import club.doki7.babel.util.render
+import club.doki7.babel.util.setupLog
 import java.io.File
 
 fun main() {
+    setupLog()
+
     val stbImageRegistry = extractSTBImageHeader()
     val stbTrueTypeRegistry = extractSTBTrueTypeHeader()
     val stbImageResizeRegistry = extractSTBImageResizeHeader()
@@ -81,6 +85,9 @@ private fun codegen(
 
     if (registry.structures.isNotEmpty()) {
         for (structure in registry.structures.values) {
+            val structureInterfaceDoc = generateStructureInterface(structure, codegenOptions)
+            File("$packageDir/datatype/I${structure.name}.java").writeText(render(structureInterfaceDoc))
+
             val structureDoc = generateStructure(registry, structure, false, codegenOptions)
             File("$packageDir/datatype/${structure.name}.java").writeText(render(structureDoc))
         }

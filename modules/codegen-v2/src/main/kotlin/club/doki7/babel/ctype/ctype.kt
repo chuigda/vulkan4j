@@ -384,6 +384,7 @@ private val knownTypes = mapOf(
     "unsigned" to cUIntType,
     "unsigned int" to cUIntType,
     "long long" to int64Type,
+    "__int64" to int64Type,
 
     "long" to cLongType,
     "size_t" to cSizeType,

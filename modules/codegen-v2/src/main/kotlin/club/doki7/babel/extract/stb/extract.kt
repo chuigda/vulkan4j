@@ -25,7 +25,13 @@ fun extractSTBTrueTypeHeader() = extractSTBHeader(
     startDefn = "__STB_INCLUDE_STB_TRUETYPE_H__",
     fndefMacro = "STBTT_DEF",
     hardStop = "#ifdef STB_TRUETYPE_IMPLEMENTATION"
-).renameEntities("truetype", "stbtt_", false)
+).let {
+    it.aliases.putEntityIfAbsent(Typedef(
+        name = "stbtt_vertex_type",
+        type = IdentifierType("short")
+    ))
+    it
+}.renameEntities("truetype", "stbtt_", false)
 
 fun extractSTBImageResizeHeader() = extractSTBHeader(
     fileName = "stb_image_resize2.h",
@@ -178,7 +184,8 @@ private fun parseAndSaveStructure(
     val fieldVarDecls = cx["fields"] as MutableList<VarDecl>
     cx.remove("fields")
 
-    val members = fieldVarDecls.map(::morphStructFieldDecl).toMutableList()
+    val members = fieldVarDecls.map { morphStructFieldDecl(registry, it) }
+        .toMutableList()
 
     registry.structures.putEntityIfAbsent(Structure(
         name = structureName,
@@ -216,7 +223,8 @@ private fun parseAndSaveStructure2(
     val fieldVarDecls = cx["fields"] as MutableList<VarDecl>
     cx.remove("fields")
 
-    val members = fieldVarDecls.map(::morphStructFieldDecl).toMutableList()
+    val members = fieldVarDecls.map { morphStructFieldDecl(registry, it) }
+        .toMutableList()
     registry.structures.putEntityIfAbsent(Structure(
         name = structureName,
         members = members
@@ -267,9 +275,18 @@ private fun parseStructField(
     return nextIndex
 }
 
-private fun morphStructFieldDecl(decl: VarDecl): Member =
+private fun morphStructFieldDecl(registry: RegistryBase, decl: VarDecl): Member =
     if (decl.type is RawFunctionType) {
         val typeName = "PFN_${decl.name}"
+        registry.functionTypedefs.putEntityIfAbsent(
+            FunctionTypedef(
+                name = typeName,
+                params = decl.type.params.map { it.second.toType() },
+                result = decl.type.returnType.toType(),
+                isPointer = true
+            )
+        )
+
         Member(
             name = decl.name,
             type = IdentifierType(typeName),
