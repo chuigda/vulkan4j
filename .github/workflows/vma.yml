@@ -1,0 +1,63 @@
+name: VMA Native Binary
+
+on:
+  push:
+    branches: [ "master" ]
+    paths:
+      - "modules/vma/vma_build/**"
+  pull_request:
+    branches: [ "master" ]
+    paths:
+      - "modules/vma/vma_build/**"
+
+jobs:
+  build:
+    strategy:
+      matrix:
+        os: [ubuntu-latest, macos-latest, windows-latest]
+    runs-on: ${{ matrix.os }}
+    steps:
+    - uses: actions/checkout@v4
+    - name: Install compiler
+      id: install_cc
+      uses: rlalik/setup-cpp-compiler@master
+      with:
+        compiler: latest
+    - name: Prepare Vulkan SDK
+      uses: humbletim/setup-vulkan-sdk@v1.2.1
+      with:
+        vulkan-query-version: latest
+        vulkan-components: Vulkan-Headers, Vulkan-Loader
+        vulkan-use-cache: true
+    - name: Set MACOS environment variable
+      if: matrix.os == 'macos-latest'
+      run: echo "MACOS=true" >> $GITHUB_ENV
+    - name: Set WIN32 environment variable
+      if: matrix.os == 'windows-latest'
+      run:
+        echo 114514 >> modules/vma/vma_build/windows-indicator.txt
+    - name: Compile vma
+      env:
+        CXX: ${{ steps.install_cc.outputs.cxx }}
+      run: |
+        cd modules/vma/vma_build
+        bash build.sh
+    - name: Upload libvma.so
+      uses: actions/upload-artifact@v4
+      if: matrix.os == 'ubuntu-latest'
+      with:
+        path: modules/vma/vma_build/libvma.so
+        name: libvma.so
+    - name: Upload libvma.dylib
+      uses: actions/upload-artifact@v4
+      if: matrix.os == 'macos-latest'
+      with:
+        path: modules/vma/vma_build/libvma.dylib
+        name: libvma.dylib
+    - name: Upload vma.dll
+      uses: actions/upload-artifact@v4
+      if: matrix.os == 'windows-latest'
+      with:
+        path: modules/vma/vma_build/vma.dll
+        name: vma.dll
+
