@@ -42,7 +42,7 @@ public final class UnixLibraryLoader implements ILibraryLoader {
 
     private static final FunctionDescriptor DESCRIPTOR$dlopen = FunctionDescriptor.of(
             ValueLayout.ADDRESS, // returns void*
-            ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_SHORT), // const char* filename
+            ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_BYTE), // const char* filename
             ValueLayout.JAVA_INT // int flag
     );
     private static final @Nullable MethodHandle hDlopen;
