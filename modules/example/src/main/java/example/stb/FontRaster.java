@@ -9,6 +9,7 @@ import club.doki7.stb.imagewrite.STBIW;
 import club.doki7.stb.truetype.STBTT;
 import club.doki7.stb.truetype.datatype.STBTT_Fontinfo;
 
+import java.io.IOException;
 import java.lang.foreign.Arena;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -21,7 +22,7 @@ public final class FontRaster {
         STBJavaTraceUtil.enableJavaTraceForSTB(liBSTB);
     }
 
-    public static void main(String[] args) throws Exception {
+    public static void main(String[] args) throws IOException {
         STBTT stbTT = new STBTT(liBSTB);
         STBIW stbIW = new STBIW(liBSTB);
 

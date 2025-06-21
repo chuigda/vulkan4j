@@ -6,4 +6,6 @@ public sealed interface ISharedLibrary extends RawFunctionLoader, AutoCloseable 
         JavaSystemLibrary,
         UnixLibrary,
         WindowsLibrary
-{}
+{
+    @Override void close();
+}

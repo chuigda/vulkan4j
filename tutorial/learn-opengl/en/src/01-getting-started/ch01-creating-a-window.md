@@ -153,10 +153,12 @@ import club.doki7.glfw.GLFWLoader;
 
 public class Main {
     public static void main(String[] args) {
-        GLFWLoader.loadGLFWLibrary();
-        GLFW glfw = GLFWLoader.loadGLFW();
+        try (ISharedLibrary libGLFW = GLFWLoader.loadGLFWLibrary()) {
+            GLFW glfw = GLFWLoader.loadGLFW(libGLFW);
+        }
     }
 }
+
 ```
 
 You may read the JavaDoc and the implementation of `GLFWLoader` to see how it works.

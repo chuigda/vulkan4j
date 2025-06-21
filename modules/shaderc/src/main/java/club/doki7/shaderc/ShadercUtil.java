@@ -1,6 +1,7 @@
 package club.doki7.shaderc;
 
 import club.doki7.ffm.LibcArena;
+import club.doki7.ffm.annotation.Bitmask;
 import club.doki7.ffm.annotation.EnumType;
 import club.doki7.ffm.annotation.NativeType;
 import club.doki7.ffm.annotation.Pointer;

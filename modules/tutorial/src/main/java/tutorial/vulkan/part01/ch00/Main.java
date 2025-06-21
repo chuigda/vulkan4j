@@ -1,9 +1,9 @@
 package tutorial.vulkan.part01.ch00;
 
-import club.doki7.glfw.GLFWConstants;
 import club.doki7.glfw.handle.GLFWwindow;
 import club.doki7.glfw.GLFW;
 import club.doki7.glfw.GLFWLoader;
+import club.doki7.ffm.library.ISharedLibrary;
 import club.doki7.ffm.ptr.BytePtr;
 
 import java.lang.foreign.Arena;
@@ -17,8 +17,6 @@ class Application {
     }
 
     private void initWindow() {
-        GLFWLoader.loadGLFWLibrary();
-        glfw = GLFWLoader.loadGLFW();
         if (glfw.init() != GLFW.TRUE) {
             throw new RuntimeException("Failed to initialize GLFW");
         }
@@ -46,9 +44,10 @@ class Application {
         glfw.terminate();
     }
 
-    private GLFW glfw;
     private GLFWwindow window;
 
+    private static final ISharedLibrary libGLFW = GLFWLoader.loadGLFWLibrary();
+    private static final GLFW glfw = GLFWLoader.loadGLFW(libGLFW);
     private static final int WIDTH = 800;
     private static final int HEIGHT = 600;
     private static final BytePtr WINDOW_TITLE = BytePtr.allocateString(Arena.global(), "Vulkan");

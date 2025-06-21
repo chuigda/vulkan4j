@@ -4,7 +4,7 @@ import club.doki7.vulkan.command.VkStaticCommands;
 import club.doki7.vulkan.command.VulkanLoader;
 
 public class LoadTest {
-    public static void main(String[] args) throws Exception {
+    public static void main(String[] args) {
         ISharedLibrary libVulkan = VulkanLoader.loadVulkanLibrary();
         VkStaticCommands staticCommands = VulkanLoader.loadStaticCommands(libVulkan);
         VkEntryCommands entryCommands = VulkanLoader.loadEntryCommands(staticCommands);

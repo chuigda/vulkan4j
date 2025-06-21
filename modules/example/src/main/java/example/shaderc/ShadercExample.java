@@ -10,6 +10,7 @@ import club.doki7.shaderc.handle.ShadercCompilationResult;
 import club.doki7.shaderc.handle.ShadercCompileOptions;
 import club.doki7.shaderc.handle.ShadercCompiler;
 
+import java.io.IOException;
 import java.lang.foreign.Arena;
 import java.lang.foreign.MemorySegment;
 import java.nio.file.Files;
@@ -17,7 +18,7 @@ import java.nio.file.Path;
 import java.util.Objects;
 
 public final class ShadercExample {
-    public static void main(String[] args) throws Exception {
+    public static void main(String[] args) throws IOException {
         ISharedLibrary libShaderc = ILibraryLoader.platformLoader().loadLibrary("shaderc_shared");
         Shaderc shaderc = new Shaderc(libShaderc);
 

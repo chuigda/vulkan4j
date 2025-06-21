@@ -29,7 +29,7 @@ public final class ImageResize {
         STBJavaTraceUtil.enableJavaTraceForSTB(libSTB);
     }
 
-    public static void main(String[] args) throws Exception {
+    public static void main(String[] args) throws IOException {
         STBI stbI = new STBI(libSTB);
         STBIR stbIR = new STBIR(libSTB);
         STBIW stbIW = new STBIW(libSTB);

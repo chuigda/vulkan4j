@@ -103,7 +103,7 @@ The `VkMemoryRequirements` struct has three fields:
 Graphics cards can offer different types of memory to allocate from. Each type of memory varies in terms of allowed operations and performance characteristics. We need to combine the requirements of the buffer and our own application requirements to find the right type of memory to use. Let's create a new function `findMemoryType` for this purpose.
 
 ```java
-private int findMemoryType(int typeFilter, @enumtype(VkMemoryPropertyFlags.class) int properties) {
+private int findMemoryType(int typeFilter, @Bitmask(VkMemoryPropertyFlags.class) int properties) {
 }
 ```
 
