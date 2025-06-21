@@ -36,7 +36,7 @@ public class TestLongPtr {
 
     @Test
     void testCheckedWithNullSegment() {
-        assertNull(LongPtr.checked((MemorySegment) null), "传入null时应返回null");
+        assertNull(LongPtr.checked(MemorySegment.NULL), "传入MemorySegment.NULL时应返回null");
     }
 
     @Test
