@@ -25,13 +25,13 @@ In our implementation, we will focus on using the maximum available sample count
 Let's start off by determining how many samples our hardware can use. Most modern GPUs support at least 8 samples but this number is not guaranteed to be the same everywhere. We'll keep track of it by adding a new class member:
 
 ```java
-private @EnumType(VkSampleCountFlags.class) int msaaSamples;
+private @Bitmask(VkSampleCountFlags.class) int msaaSamples;
 ```
 
 By default, we'll be using only one sample per pixel which is equivalent to no multisampling, in which case the final image will remain unchanged. The exact maximum number of samples can be extracted from `VkPhysicalDeviceProperties` associated with our selected physical device. We're using a depth buffer, so we have to take into account the sample count for both color and depth. The highest sample count that is supported by both (&) will be the maximum we can support. Add a function that will fetch this information for us:By default we'll be using only one sample per pixel which is equivalent to no multisampling, in which case the final image will remain unchanged. The exact maximum number of samples can be extracted from VkPhysicalDeviceProperties associated with our selected physical device. We're using a depth buffer, so we have to take into account the sample count for both color and depth. The highest sample count that is supported by both (&) will be the maximum we can support. Add a function that will fetch this information for us:
 
 ```java
-private @EnumType(VkSampleCountFlags.class) int getMaxUsableSampleCount() {
+private @Bitmask(VkSampleCountFlags.class) int getMaxUsableSampleCount() {
     try (var arena = Arena.ofConfined()) {
         var physicalDeviceProperties = VkPhysicalDeviceProperties.allocate(arena);
         instanceCommands.getPhysicalDeviceProperties(physicalDevice, physicalDeviceProperties);
@@ -96,11 +96,11 @@ This new image will have to store the desired number of samples per pixel, so we
         int width,
         int height,
         int mipLevels,
-        @EnumType(VkSampleCountFlags.class) int numSamples,
+        @Bitmask(VkSampleCountFlags.class) int numSamples,
         @EnumType(VkFormat.class) int format,
         @EnumType(VkImageTiling.class) int tiling,
-        @EnumType(VkImageUsageFlags.class) int usage,
-        @EnumType(VkMemoryPropertyFlags.class) int properties
+        @Bitmask(VkImageUsageFlags.class) int usage,
+        @Bitmask(VkMemoryPropertyFlags.class) int properties
 ) {
     // ...
     imageInfo.samples(numSamples);

@@ -8,7 +8,7 @@
 /// <dependency>
 ///     <groupId>club.doki7</groupId>
 ///     <artifactId>opengl</artifactId>
-///     <version>0.3.4</version>
+///     <version>0.4.0</version>
 ///     <scope>compile</scope>
 /// </dependency>
 /// ```

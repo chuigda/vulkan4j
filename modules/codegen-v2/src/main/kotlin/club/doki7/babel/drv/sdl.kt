@@ -73,14 +73,14 @@ fun main() {
     for (opaqueTypedef in registry.opaqueTypedefs.values) {
         if (opaqueTypedef.isHandle) {
             val handle = OpaqueHandleTypedef(opaqueTypedef.name)
-            val handleDoc = generateHandle(registry, handle, codegenOptions)
+            val handleDoc = generateHandle(handle, codegenOptions)
             File("$packageDir/handle/${handle.name}.java")
                 .writeText(render(handleDoc))
         }
     }
 
     for (opaqueHandleTypedef in registry.opaqueHandleTypedefs.values) {
-        val handleDoc = generateHandle(registry, opaqueHandleTypedef, codegenOptions)
+        val handleDoc = generateHandle(opaqueHandleTypedef, codegenOptions)
         File("$packageDir/handle/${opaqueHandleTypedef.name}.java")
             .writeText(render(handleDoc))
     }

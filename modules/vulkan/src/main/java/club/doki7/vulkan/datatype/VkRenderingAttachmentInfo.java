@@ -206,12 +206,13 @@ public record VkRenderingAttachmentInfo(@NotNull MemorySegment segment) implemen
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkRenderingAttachmentInfo pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkRenderingAttachmentInfo pNext(@Nullable IPointer pointer) {
@@ -241,11 +242,11 @@ public record VkRenderingAttachmentInfo(@NotNull MemorySegment segment) implemen
         return this;
     }
 
-    public @EnumType(VkResolveModeFlags.class) int resolveMode() {
+    public @Bitmask(VkResolveModeFlags.class) int resolveMode() {
         return segment.get(LAYOUT$resolveMode, OFFSET$resolveMode);
     }
 
-    public VkRenderingAttachmentInfo resolveMode(@EnumType(VkResolveModeFlags.class) int value) {
+    public VkRenderingAttachmentInfo resolveMode(@Bitmask(VkResolveModeFlags.class) int value) {
         segment.set(LAYOUT$resolveMode, OFFSET$resolveMode, value);
         return this;
     }

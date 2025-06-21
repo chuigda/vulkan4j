@@ -13,7 +13,7 @@ public final class VkVideoChromaSubsamplingFlagsKHR {
     public static final int INVALID = 0x0;
     public static final int MONOCHROME = 0x1;
 
-    public static String explain(@EnumType(VkVideoChromaSubsamplingFlagsKHR.class) int flags) {
+    public static String explain(@Bitmask(VkVideoChromaSubsamplingFlagsKHR.class) int flags) {
         List<String> detectedFlagBits = new ArrayList<>();
         if ((flags & _420) != 0) {
             detectedFlagBits.add("VK_VIDEO_CHROMA_SUBSAMPLING_420_BIT_KHR");

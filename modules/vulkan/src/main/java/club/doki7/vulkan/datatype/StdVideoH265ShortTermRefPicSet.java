@@ -278,7 +278,7 @@ public record StdVideoH265ShortTermRefPicSet(@NotNull MemorySegment segment) imp
         return this;
     }
 
-    public MemorySegment delta_poc_s0_minus1Raw() {
+    public @NotNull MemorySegment delta_poc_s0_minus1Raw() {
         return segment.asSlice(OFFSET$delta_poc_s0_minus1, SIZE$delta_poc_s0_minus1);
     }
 
@@ -291,7 +291,7 @@ public record StdVideoH265ShortTermRefPicSet(@NotNull MemorySegment segment) imp
         return this;
     }
 
-    public MemorySegment delta_poc_s1_minus1Raw() {
+    public @NotNull MemorySegment delta_poc_s1_minus1Raw() {
         return segment.asSlice(OFFSET$delta_poc_s1_minus1, SIZE$delta_poc_s1_minus1);
     }
 

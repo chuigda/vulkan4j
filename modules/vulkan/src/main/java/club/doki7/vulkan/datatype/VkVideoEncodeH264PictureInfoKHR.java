@@ -202,12 +202,13 @@ public record VkVideoEncodeH264PictureInfoKHR(@NotNull MemorySegment segment) im
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkVideoEncodeH264PictureInfoKHR pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkVideoEncodeH264PictureInfoKHR pNext(@Nullable IPointer pointer) {
@@ -248,11 +249,11 @@ public record VkVideoEncodeH264PictureInfoKHR(@NotNull MemorySegment segment) im
         return new VkVideoEncodeH264NaluSliceInfoKHR(s);
     }
 
-    public @Pointer(target=VkVideoEncodeH264NaluSliceInfoKHR.class) MemorySegment pNaluSliceEntriesRaw() {
+    public @Pointer(target=VkVideoEncodeH264NaluSliceInfoKHR.class) @NotNull MemorySegment pNaluSliceEntriesRaw() {
         return segment.get(LAYOUT$pNaluSliceEntries, OFFSET$pNaluSliceEntries);
     }
 
-    public void pNaluSliceEntriesRaw(@Pointer(target=VkVideoEncodeH264NaluSliceInfoKHR.class) MemorySegment value) {
+    public void pNaluSliceEntriesRaw(@Pointer(target=VkVideoEncodeH264NaluSliceInfoKHR.class) @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNaluSliceEntries, OFFSET$pNaluSliceEntries, value);
     }
 
@@ -280,11 +281,11 @@ public record VkVideoEncodeH264PictureInfoKHR(@NotNull MemorySegment segment) im
         return new StdVideoEncodeH264PictureInfo(s);
     }
 
-    public @Pointer(target=StdVideoEncodeH264PictureInfo.class) MemorySegment pStdPictureInfoRaw() {
+    public @Pointer(target=StdVideoEncodeH264PictureInfo.class) @NotNull MemorySegment pStdPictureInfoRaw() {
         return segment.get(LAYOUT$pStdPictureInfo, OFFSET$pStdPictureInfo);
     }
 
-    public void pStdPictureInfoRaw(@Pointer(target=StdVideoEncodeH264PictureInfo.class) MemorySegment value) {
+    public void pStdPictureInfoRaw(@Pointer(target=StdVideoEncodeH264PictureInfo.class) @NotNull MemorySegment value) {
         segment.set(LAYOUT$pStdPictureInfo, OFFSET$pStdPictureInfo, value);
     }
 

@@ -208,12 +208,13 @@ public record VkGeneratedCommandsInfoEXT(@NotNull MemorySegment segment) impleme
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkGeneratedCommandsInfoEXT pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkGeneratedCommandsInfoEXT pNext(@Nullable IPointer pointer) {
@@ -221,11 +222,11 @@ public record VkGeneratedCommandsInfoEXT(@NotNull MemorySegment segment) impleme
         return this;
     }
 
-    public @EnumType(VkShaderStageFlags.class) int shaderStages() {
+    public @Bitmask(VkShaderStageFlags.class) int shaderStages() {
         return segment.get(LAYOUT$shaderStages, OFFSET$shaderStages);
     }
 
-    public VkGeneratedCommandsInfoEXT shaderStages(@EnumType(VkShaderStageFlags.class) int value) {
+    public VkGeneratedCommandsInfoEXT shaderStages(@Bitmask(VkShaderStageFlags.class) int value) {
         segment.set(LAYOUT$shaderStages, OFFSET$shaderStages, value);
         return this;
     }

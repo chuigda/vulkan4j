@@ -184,12 +184,13 @@ public record STBTT_Fontinfo(@NotNull MemorySegment segment) implements ISTBTT_F
         return ret;
     }
 
-    public @Pointer(comment="void*") MemorySegment userdata() {
+    public @Pointer(comment="void*") @NotNull MemorySegment userdata() {
         return segment.get(LAYOUT$userdata, OFFSET$userdata);
     }
 
-    public void userdata(@Pointer(comment="void*") MemorySegment value) {
+    public STBTT_Fontinfo userdata(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$userdata, OFFSET$userdata, value);
+        return this;
     }
 
     public STBTT_Fontinfo userdata(@Nullable IPointer pointer) {
@@ -215,11 +216,11 @@ public record STBTT_Fontinfo(@NotNull MemorySegment segment) implements ISTBTT_F
         return this;
     }
 
-    public @Pointer(comment="int8_t*") MemorySegment dataRaw() {
+    public @Pointer(comment="int8_t*") @NotNull MemorySegment dataRaw() {
         return segment.get(LAYOUT$data, OFFSET$data);
     }
 
-    public void dataRaw(@Pointer(comment="int8_t*") MemorySegment value) {
+    public void dataRaw(@Pointer(comment="int8_t*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$data, OFFSET$data, value);
     }
 

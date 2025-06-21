@@ -201,12 +201,13 @@ public record VkDebugMarkerObjectNameInfoEXT(@NotNull MemorySegment segment) imp
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkDebugMarkerObjectNameInfoEXT pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkDebugMarkerObjectNameInfoEXT pNext(@Nullable IPointer pointer) {
@@ -250,11 +251,11 @@ public record VkDebugMarkerObjectNameInfoEXT(@NotNull MemorySegment segment) imp
         return this;
     }
 
-    public @Pointer(comment="int8_t*") MemorySegment pObjectNameRaw() {
+    public @Pointer(comment="int8_t*") @NotNull MemorySegment pObjectNameRaw() {
         return segment.get(LAYOUT$pObjectName, OFFSET$pObjectName);
     }
 
-    public void pObjectNameRaw(@Pointer(comment="int8_t*") MemorySegment value) {
+    public void pObjectNameRaw(@Pointer(comment="int8_t*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pObjectName, OFFSET$pObjectName, value);
     }
 

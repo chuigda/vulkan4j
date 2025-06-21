@@ -200,12 +200,13 @@ public record VkVideoProfileListInfoKHR(@NotNull MemorySegment segment) implemen
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkVideoProfileListInfoKHR pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkVideoProfileListInfoKHR pNext(@Nullable IPointer pointer) {
@@ -246,11 +247,11 @@ public record VkVideoProfileListInfoKHR(@NotNull MemorySegment segment) implemen
         return new VkVideoProfileInfoKHR(s);
     }
 
-    public @Pointer(target=VkVideoProfileInfoKHR.class) MemorySegment pProfilesRaw() {
+    public @Pointer(target=VkVideoProfileInfoKHR.class) @NotNull MemorySegment pProfilesRaw() {
         return segment.get(LAYOUT$pProfiles, OFFSET$pProfiles);
     }
 
-    public void pProfilesRaw(@Pointer(target=VkVideoProfileInfoKHR.class) MemorySegment value) {
+    public void pProfilesRaw(@Pointer(target=VkVideoProfileInfoKHR.class) @NotNull MemorySegment value) {
         segment.set(LAYOUT$pProfiles, OFFSET$pProfiles, value);
     }
 

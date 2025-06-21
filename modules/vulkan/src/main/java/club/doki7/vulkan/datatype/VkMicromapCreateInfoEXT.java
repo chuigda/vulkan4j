@@ -204,12 +204,13 @@ public record VkMicromapCreateInfoEXT(@NotNull MemorySegment segment) implements
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkMicromapCreateInfoEXT pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkMicromapCreateInfoEXT pNext(@Nullable IPointer pointer) {
@@ -217,11 +218,11 @@ public record VkMicromapCreateInfoEXT(@NotNull MemorySegment segment) implements
         return this;
     }
 
-    public @EnumType(VkMicromapCreateFlagsEXT.class) int createFlags() {
+    public @Bitmask(VkMicromapCreateFlagsEXT.class) int createFlags() {
         return segment.get(LAYOUT$createFlags, OFFSET$createFlags);
     }
 
-    public VkMicromapCreateInfoEXT createFlags(@EnumType(VkMicromapCreateFlagsEXT.class) int value) {
+    public VkMicromapCreateInfoEXT createFlags(@Bitmask(VkMicromapCreateFlagsEXT.class) int value) {
         segment.set(LAYOUT$createFlags, OFFSET$createFlags, value);
         return this;
     }

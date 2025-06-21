@@ -81,11 +81,11 @@ public record VkVideoSessionKHR(@NotNull MemorySegment segment) implements IPoin
             }
         }
 
-        public MemorySegment readRaw() {
+        public @NotNull MemorySegment readRaw() {
             return segment.get(ValueLayout.ADDRESS, 0);
         }
 
-        public MemorySegment readRaw(long index) {
+        public @NotNull MemorySegment readRaw(long index) {
             return segment.get(ValueLayout.ADDRESS, index * ValueLayout.ADDRESS.byteSize());
         }
 

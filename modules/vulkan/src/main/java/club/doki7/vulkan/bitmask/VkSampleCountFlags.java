@@ -15,7 +15,7 @@ public final class VkSampleCountFlags {
     public static final int _64 = 0x40;
     public static final int _8 = 0x8;
 
-    public static String explain(@EnumType(VkSampleCountFlags.class) int flags) {
+    public static String explain(@Bitmask(VkSampleCountFlags.class) int flags) {
         List<String> detectedFlagBits = new ArrayList<>();
         if ((flags & _16) != 0) {
             detectedFlagBits.add("VK_SAMPLE_COUNT_16_BIT");

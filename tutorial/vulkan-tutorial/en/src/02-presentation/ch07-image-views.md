@@ -37,9 +37,9 @@ Next, set up the loop that iterates over all the swap chain images.
 ```java
 try (var arena = Arena.ofConfined()) {
     var createInfo = VkImageViewCreateInfo.allocate(arena);
-    var pImageView = VkImageView.Buffer.allocate(arena);
+    var pImageView = VkImageView.Ptr.allocate(arena);
 
-    for (int i = 0; i < swapChainImages.length; i++) {
+    for (long i = 0; i < swapChainImages.size(); i++) {
     }
 }
 ```

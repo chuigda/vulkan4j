@@ -201,12 +201,13 @@ public record VkPipelineViewportWScalingStateCreateInfoNV(@NotNull MemorySegment
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkPipelineViewportWScalingStateCreateInfoNV pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkPipelineViewportWScalingStateCreateInfoNV pNext(@Nullable IPointer pointer) {
@@ -256,11 +257,11 @@ public record VkPipelineViewportWScalingStateCreateInfoNV(@NotNull MemorySegment
         return new VkViewportWScalingNV(s);
     }
 
-    public @Pointer(target=VkViewportWScalingNV.class) MemorySegment pViewportWScalingsRaw() {
+    public @Pointer(target=VkViewportWScalingNV.class) @NotNull MemorySegment pViewportWScalingsRaw() {
         return segment.get(LAYOUT$pViewportWScalings, OFFSET$pViewportWScalings);
     }
 
-    public void pViewportWScalingsRaw(@Pointer(target=VkViewportWScalingNV.class) MemorySegment value) {
+    public void pViewportWScalingsRaw(@Pointer(target=VkViewportWScalingNV.class) @NotNull MemorySegment value) {
         segment.set(LAYOUT$pViewportWScalings, OFFSET$pViewportWScalings, value);
     }
 

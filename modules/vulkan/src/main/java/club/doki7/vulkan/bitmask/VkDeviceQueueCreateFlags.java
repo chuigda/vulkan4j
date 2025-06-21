@@ -9,7 +9,7 @@ import java.util.List;
 public final class VkDeviceQueueCreateFlags {
     public static final int PROTECTED = 0x1;
 
-    public static String explain(@EnumType(VkDeviceQueueCreateFlags.class) int flags) {
+    public static String explain(@Bitmask(VkDeviceQueueCreateFlags.class) int flags) {
         List<String> detectedFlagBits = new ArrayList<>();
         if ((flags & PROTECTED) != 0) {
             detectedFlagBits.add("VK_DEVICE_QUEUE_CREATE_PROTECTED_BIT");

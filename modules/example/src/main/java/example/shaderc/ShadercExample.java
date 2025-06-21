@@ -1,6 +1,7 @@
 package example.shaderc;
 
-import club.doki7.ffm.Loader;
+import club.doki7.ffm.library.ILibraryLoader;
+import club.doki7.ffm.library.ISharedLibrary;
 import club.doki7.ffm.ptr.BytePtr;
 import club.doki7.shaderc.Shaderc;
 import club.doki7.shaderc.ShadercUtil;
@@ -18,8 +19,8 @@ import java.util.Objects;
 
 public final class ShadercExample {
     public static void main(String[] args) throws IOException {
-        System.loadLibrary("shaderc_shared");
-        Shaderc shaderc = new Shaderc(Loader::loadFunctionOrNull);
+        ISharedLibrary libShaderc = ILibraryLoader.platformLoader().loadLibrary("shaderc_shared");
+        Shaderc shaderc = new Shaderc(libShaderc);
 
         String shaderCode = Files.readString(Path.of("example/resc/nop1.comp"));
 
@@ -68,6 +69,7 @@ public final class ShadercExample {
         } finally {
             shaderc.compileOptionsRelease(options);
             shaderc.compilerRelease(compiler);
+            libShaderc.close();
         }
     }
 }

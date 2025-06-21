@@ -200,12 +200,13 @@ public record VkMultisampledRenderToSingleSampledInfoEXT(@NotNull MemorySegment 
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkMultisampledRenderToSingleSampledInfoEXT pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkMultisampledRenderToSingleSampledInfoEXT pNext(@Nullable IPointer pointer) {
@@ -222,11 +223,11 @@ public record VkMultisampledRenderToSingleSampledInfoEXT(@NotNull MemorySegment 
         return this;
     }
 
-    public @EnumType(VkSampleCountFlags.class) int rasterizationSamples() {
+    public @Bitmask(VkSampleCountFlags.class) int rasterizationSamples() {
         return segment.get(LAYOUT$rasterizationSamples, OFFSET$rasterizationSamples);
     }
 
-    public VkMultisampledRenderToSingleSampledInfoEXT rasterizationSamples(@EnumType(VkSampleCountFlags.class) int value) {
+    public VkMultisampledRenderToSingleSampledInfoEXT rasterizationSamples(@Bitmask(VkSampleCountFlags.class) int value) {
         segment.set(LAYOUT$rasterizationSamples, OFFSET$rasterizationSamples, value);
         return this;
     }

@@ -213,12 +213,13 @@ public record VkPhysicalDeviceVulkan11Properties(@NotNull MemorySegment segment)
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkPhysicalDeviceVulkan11Properties pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkPhysicalDeviceVulkan11Properties pNext(@Nullable IPointer pointer) {
@@ -235,7 +236,7 @@ public record VkPhysicalDeviceVulkan11Properties(@NotNull MemorySegment segment)
         return this;
     }
 
-    public MemorySegment deviceUUIDRaw() {
+    public @NotNull MemorySegment deviceUUIDRaw() {
         return segment.asSlice(OFFSET$deviceUUID, SIZE$deviceUUID);
     }
 
@@ -248,7 +249,7 @@ public record VkPhysicalDeviceVulkan11Properties(@NotNull MemorySegment segment)
         return this;
     }
 
-    public MemorySegment driverUUIDRaw() {
+    public @NotNull MemorySegment driverUUIDRaw() {
         return segment.asSlice(OFFSET$driverUUID, SIZE$driverUUID);
     }
 
@@ -261,7 +262,7 @@ public record VkPhysicalDeviceVulkan11Properties(@NotNull MemorySegment segment)
         return this;
     }
 
-    public MemorySegment deviceLUIDRaw() {
+    public @NotNull MemorySegment deviceLUIDRaw() {
         return segment.asSlice(OFFSET$deviceLUID, SIZE$deviceLUID);
     }
 
@@ -292,20 +293,20 @@ public record VkPhysicalDeviceVulkan11Properties(@NotNull MemorySegment segment)
         return this;
     }
 
-    public @EnumType(VkShaderStageFlags.class) int subgroupSupportedStages() {
+    public @Bitmask(VkShaderStageFlags.class) int subgroupSupportedStages() {
         return segment.get(LAYOUT$subgroupSupportedStages, OFFSET$subgroupSupportedStages);
     }
 
-    public VkPhysicalDeviceVulkan11Properties subgroupSupportedStages(@EnumType(VkShaderStageFlags.class) int value) {
+    public VkPhysicalDeviceVulkan11Properties subgroupSupportedStages(@Bitmask(VkShaderStageFlags.class) int value) {
         segment.set(LAYOUT$subgroupSupportedStages, OFFSET$subgroupSupportedStages, value);
         return this;
     }
 
-    public @EnumType(VkSubgroupFeatureFlags.class) int subgroupSupportedOperations() {
+    public @Bitmask(VkSubgroupFeatureFlags.class) int subgroupSupportedOperations() {
         return segment.get(LAYOUT$subgroupSupportedOperations, OFFSET$subgroupSupportedOperations);
     }
 
-    public VkPhysicalDeviceVulkan11Properties subgroupSupportedOperations(@EnumType(VkSubgroupFeatureFlags.class) int value) {
+    public VkPhysicalDeviceVulkan11Properties subgroupSupportedOperations(@Bitmask(VkSubgroupFeatureFlags.class) int value) {
         segment.set(LAYOUT$subgroupSupportedOperations, OFFSET$subgroupSupportedOperations, value);
         return this;
     }

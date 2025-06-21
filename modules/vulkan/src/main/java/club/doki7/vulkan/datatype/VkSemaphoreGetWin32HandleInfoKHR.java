@@ -200,12 +200,13 @@ public record VkSemaphoreGetWin32HandleInfoKHR(@NotNull MemorySegment segment) i
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkSemaphoreGetWin32HandleInfoKHR pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkSemaphoreGetWin32HandleInfoKHR pNext(@Nullable IPointer pointer) {
@@ -226,11 +227,11 @@ public record VkSemaphoreGetWin32HandleInfoKHR(@NotNull MemorySegment segment) i
         return this;
     }
 
-    public @EnumType(VkExternalSemaphoreHandleTypeFlags.class) int handleType() {
+    public @Bitmask(VkExternalSemaphoreHandleTypeFlags.class) int handleType() {
         return segment.get(LAYOUT$handleType, OFFSET$handleType);
     }
 
-    public VkSemaphoreGetWin32HandleInfoKHR handleType(@EnumType(VkExternalSemaphoreHandleTypeFlags.class) int value) {
+    public VkSemaphoreGetWin32HandleInfoKHR handleType(@Bitmask(VkExternalSemaphoreHandleTypeFlags.class) int value) {
         segment.set(LAYOUT$handleType, OFFSET$handleType, value);
         return this;
     }

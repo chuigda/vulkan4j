@@ -201,12 +201,13 @@ public record VkAttachmentReference2(@NotNull MemorySegment segment) implements 
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkAttachmentReference2 pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkAttachmentReference2 pNext(@Nullable IPointer pointer) {
@@ -232,11 +233,11 @@ public record VkAttachmentReference2(@NotNull MemorySegment segment) implements 
         return this;
     }
 
-    public @EnumType(VkImageAspectFlags.class) int aspectMask() {
+    public @Bitmask(VkImageAspectFlags.class) int aspectMask() {
         return segment.get(LAYOUT$aspectMask, OFFSET$aspectMask);
     }
 
-    public VkAttachmentReference2 aspectMask(@EnumType(VkImageAspectFlags.class) int value) {
+    public VkAttachmentReference2 aspectMask(@Bitmask(VkImageAspectFlags.class) int value) {
         segment.set(LAYOUT$aspectMask, OFFSET$aspectMask, value);
         return this;
     }

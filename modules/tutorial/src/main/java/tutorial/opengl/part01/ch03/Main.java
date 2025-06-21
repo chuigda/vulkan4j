@@ -2,17 +2,16 @@ package tutorial.opengl.part01.ch03;
 
 import club.doki7.ffm.annotation.Pointer;
 import club.doki7.ffm.annotation.Unsigned;
+import club.doki7.ffm.library.ISharedLibrary;
 import club.doki7.ffm.ptr.BytePtr;
 import club.doki7.ffm.ptr.FloatPtr;
 import club.doki7.ffm.ptr.IntPtr;
 import club.doki7.ffm.ptr.PointerPtr;
 import club.doki7.glfw.GLFW;
-import club.doki7.glfw.GLFWConstants;
 import club.doki7.glfw.GLFWFunctionTypes;
 import club.doki7.glfw.GLFWLoader;
 import club.doki7.glfw.handle.GLFWwindow;
 import club.doki7.opengl.GL;
-import club.doki7.opengl.GLConstants;
 
 import java.lang.foreign.Arena;
 import java.lang.foreign.Linker;
@@ -200,10 +199,11 @@ class Application {
 
 public class Main {
     public static void main(String[] args) {
-        GLFWLoader.loadGLFWLibrary();
-        GLFW glfw = GLFWLoader.loadGLFW();
+        try (ISharedLibrary libGLFW = GLFWLoader.loadGLFWLibrary()) {
+            GLFW glfw = GLFWLoader.loadGLFW(libGLFW);
 
-        Application application = new Application(glfw);
-        application.run();
+            Application application = new Application(glfw);
+            application.run();
+        }
     }
 }

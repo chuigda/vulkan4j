@@ -199,12 +199,13 @@ public record VkPhysicalDeviceFragmentDensityMapOffsetPropertiesEXT(@NotNull Mem
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkPhysicalDeviceFragmentDensityMapOffsetPropertiesEXT pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkPhysicalDeviceFragmentDensityMapOffsetPropertiesEXT pNext(@Nullable IPointer pointer) {

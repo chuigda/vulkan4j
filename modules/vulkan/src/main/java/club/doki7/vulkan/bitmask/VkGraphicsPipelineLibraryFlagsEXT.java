@@ -12,7 +12,7 @@ public final class VkGraphicsPipelineLibraryFlagsEXT {
     public static final int PRE_RASTERIZATION_SHADERS = 0x2;
     public static final int VERTEX_INPUT_INTERFACE = 0x1;
 
-    public static String explain(@EnumType(VkGraphicsPipelineLibraryFlagsEXT.class) int flags) {
+    public static String explain(@Bitmask(VkGraphicsPipelineLibraryFlagsEXT.class) int flags) {
         List<String> detectedFlagBits = new ArrayList<>();
         if ((flags & FRAGMENT_OUTPUT_INTERFACE) != 0) {
             detectedFlagBits.add("VK_GRAPHICS_PIPELINE_LIBRARY_FRAGMENT_OUTPUT_INTERFACE_BIT_EXT");

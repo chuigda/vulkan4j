@@ -200,12 +200,13 @@ public record VkDeviceGroupPresentCapabilitiesKHR(@NotNull MemorySegment segment
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkDeviceGroupPresentCapabilitiesKHR pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkDeviceGroupPresentCapabilitiesKHR pNext(@Nullable IPointer pointer) {
@@ -222,15 +223,15 @@ public record VkDeviceGroupPresentCapabilitiesKHR(@NotNull MemorySegment segment
         return this;
     }
 
-    public MemorySegment presentMaskRaw() {
+    public @NotNull MemorySegment presentMaskRaw() {
         return segment.asSlice(OFFSET$presentMask, SIZE$presentMask);
     }
 
-    public @EnumType(VkDeviceGroupPresentModeFlagsKHR.class) int modes() {
+    public @Bitmask(VkDeviceGroupPresentModeFlagsKHR.class) int modes() {
         return segment.get(LAYOUT$modes, OFFSET$modes);
     }
 
-    public VkDeviceGroupPresentCapabilitiesKHR modes(@EnumType(VkDeviceGroupPresentModeFlagsKHR.class) int value) {
+    public VkDeviceGroupPresentCapabilitiesKHR modes(@Bitmask(VkDeviceGroupPresentModeFlagsKHR.class) int value) {
         segment.set(LAYOUT$modes, OFFSET$modes, value);
         return this;
     }

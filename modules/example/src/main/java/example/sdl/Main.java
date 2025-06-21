@@ -1,6 +1,7 @@
 package example.sdl;
 
-import club.doki7.ffm.Loader;
+import club.doki7.ffm.library.ILibraryLoader;
+import club.doki7.ffm.library.ISharedLibrary;
 import club.doki7.ffm.ptr.BytePtr;
 import club.doki7.ffm.ptr.IntPtr;
 import club.doki7.ffm.ptr.PointerPtr;
@@ -19,9 +20,10 @@ import java.lang.foreign.Arena;
 import java.lang.foreign.MemorySegment;
 
 public final class Main {
+    private static final ISharedLibrary libSDL3 = ILibraryLoader.platformLoader().loadLibrary("SDL3");
+
     public static void main(String[] args) {
-        System.loadLibrary("sdl3");
-        SDL3 sdl = new SDL3(Loader::loadFunctionOrNull);
+        SDL3 sdl = new SDL3(libSDL3);
 
         sdl.init(SDL_InitFlags.VIDEO | SDL_InitFlags.AUDIO);
 

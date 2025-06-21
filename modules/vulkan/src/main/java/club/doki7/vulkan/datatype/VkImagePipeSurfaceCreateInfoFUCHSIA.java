@@ -200,12 +200,13 @@ public record VkImagePipeSurfaceCreateInfoFUCHSIA(@NotNull MemorySegment segment
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkImagePipeSurfaceCreateInfoFUCHSIA pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkImagePipeSurfaceCreateInfoFUCHSIA pNext(@Nullable IPointer pointer) {
@@ -213,11 +214,11 @@ public record VkImagePipeSurfaceCreateInfoFUCHSIA(@NotNull MemorySegment segment
         return this;
     }
 
-    public @EnumType(VkImagePipeSurfaceCreateFlagsFUCHSIA.class) int flags() {
+    public @Bitmask(VkImagePipeSurfaceCreateFlagsFUCHSIA.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public VkImagePipeSurfaceCreateInfoFUCHSIA flags(@EnumType(VkImagePipeSurfaceCreateFlagsFUCHSIA.class) int value) {
+    public VkImagePipeSurfaceCreateInfoFUCHSIA flags(@Bitmask(VkImagePipeSurfaceCreateFlagsFUCHSIA.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
         return this;
     }

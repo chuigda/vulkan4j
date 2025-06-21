@@ -199,12 +199,13 @@ public record VkExportMemorySciBufInfoNV(@NotNull MemorySegment segment) impleme
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkExportMemorySciBufInfoNV pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkExportMemorySciBufInfoNV pNext(@Nullable IPointer pointer) {
@@ -212,12 +213,13 @@ public record VkExportMemorySciBufInfoNV(@NotNull MemorySegment segment) impleme
         return this;
     }
 
-    public @Pointer(comment="NvSciBufAttrList") MemorySegment pAttributes() {
+    public @Pointer(comment="NvSciBufAttrList") @NotNull MemorySegment pAttributes() {
         return segment.get(LAYOUT$pAttributes, OFFSET$pAttributes);
     }
 
-    public void pAttributes(@Pointer(comment="NvSciBufAttrList") MemorySegment value) {
+    public VkExportMemorySciBufInfoNV pAttributes(@Pointer(comment="NvSciBufAttrList") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pAttributes, OFFSET$pAttributes, value);
+        return this;
     }
 
     public VkExportMemorySciBufInfoNV pAttributes(@Nullable IPointer pointer) {

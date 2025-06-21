@@ -201,12 +201,13 @@ public record VkQueryPoolPerformanceCreateInfoKHR(@NotNull MemorySegment segment
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkQueryPoolPerformanceCreateInfoKHR pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkQueryPoolPerformanceCreateInfoKHR pNext(@Nullable IPointer pointer) {
@@ -250,11 +251,11 @@ public record VkQueryPoolPerformanceCreateInfoKHR(@NotNull MemorySegment segment
         return this;
     }
 
-    public @Pointer(comment="uint32_t*") MemorySegment pCounterIndicesRaw() {
+    public @Pointer(comment="uint32_t*") @NotNull MemorySegment pCounterIndicesRaw() {
         return segment.get(LAYOUT$pCounterIndices, OFFSET$pCounterIndices);
     }
 
-    public void pCounterIndicesRaw(@Pointer(comment="uint32_t*") MemorySegment value) {
+    public void pCounterIndicesRaw(@Pointer(comment="uint32_t*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pCounterIndices, OFFSET$pCounterIndices, value);
     }
 

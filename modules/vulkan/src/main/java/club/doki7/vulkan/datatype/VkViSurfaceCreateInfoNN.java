@@ -200,12 +200,13 @@ public record VkViSurfaceCreateInfoNN(@NotNull MemorySegment segment) implements
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkViSurfaceCreateInfoNN pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkViSurfaceCreateInfoNN pNext(@Nullable IPointer pointer) {
@@ -213,21 +214,22 @@ public record VkViSurfaceCreateInfoNN(@NotNull MemorySegment segment) implements
         return this;
     }
 
-    public @EnumType(VkViSurfaceCreateFlagsNN.class) int flags() {
+    public @Bitmask(VkViSurfaceCreateFlagsNN.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public VkViSurfaceCreateInfoNN flags(@EnumType(VkViSurfaceCreateFlagsNN.class) int value) {
+    public VkViSurfaceCreateInfoNN flags(@Bitmask(VkViSurfaceCreateFlagsNN.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment window() {
+    public @Pointer(comment="void*") @NotNull MemorySegment window() {
         return segment.get(LAYOUT$window, OFFSET$window);
     }
 
-    public void window(@Pointer(comment="void*") MemorySegment value) {
+    public VkViSurfaceCreateInfoNN window(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$window, OFFSET$window, value);
+        return this;
     }
 
     public VkViSurfaceCreateInfoNN window(@Nullable IPointer pointer) {

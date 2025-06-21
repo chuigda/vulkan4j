@@ -177,7 +177,7 @@ public record StdVideoAV1Segmentation(@NotNull MemorySegment segment) implements
         return this;
     }
 
-    public MemorySegment FeatureEnabledRaw() {
+    public @NotNull MemorySegment FeatureEnabledRaw() {
         return segment.asSlice(OFFSET$FeatureEnabled, SIZE$FeatureEnabled);
     }
 
@@ -190,7 +190,7 @@ public record StdVideoAV1Segmentation(@NotNull MemorySegment segment) implements
         return this;
     }
 
-    public MemorySegment FeatureDataRaw() {
+    public @NotNull MemorySegment FeatureDataRaw() {
         return segment.asSlice(OFFSET$FeatureData, SIZE$FeatureData);
     }
 

@@ -200,12 +200,13 @@ public record VkDescriptorBufferBindingInfoEXT(@NotNull MemorySegment segment) i
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkDescriptorBufferBindingInfoEXT pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkDescriptorBufferBindingInfoEXT pNext(@Nullable IPointer pointer) {
@@ -222,11 +223,11 @@ public record VkDescriptorBufferBindingInfoEXT(@NotNull MemorySegment segment) i
         return this;
     }
 
-    public @EnumType(VkBufferUsageFlags.class) int usage() {
+    public @Bitmask(VkBufferUsageFlags.class) int usage() {
         return segment.get(LAYOUT$usage, OFFSET$usage);
     }
 
-    public VkDescriptorBufferBindingInfoEXT usage(@EnumType(VkBufferUsageFlags.class) int value) {
+    public VkDescriptorBufferBindingInfoEXT usage(@Bitmask(VkBufferUsageFlags.class) int value) {
         segment.set(LAYOUT$usage, OFFSET$usage, value);
         return this;
     }

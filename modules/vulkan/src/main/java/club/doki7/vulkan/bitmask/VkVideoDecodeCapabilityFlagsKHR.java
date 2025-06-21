@@ -10,7 +10,7 @@ public final class VkVideoDecodeCapabilityFlagsKHR {
     public static final int DPB_AND_OUTPUT_COINCIDE = 0x1;
     public static final int DPB_AND_OUTPUT_DISTINCT = 0x2;
 
-    public static String explain(@EnumType(VkVideoDecodeCapabilityFlagsKHR.class) int flags) {
+    public static String explain(@Bitmask(VkVideoDecodeCapabilityFlagsKHR.class) int flags) {
         List<String> detectedFlagBits = new ArrayList<>();
         if ((flags & DPB_AND_OUTPUT_COINCIDE) != 0) {
             detectedFlagBits.add("VK_VIDEO_DECODE_CAPABILITY_DPB_AND_OUTPUT_COINCIDE_BIT_KHR");

@@ -181,7 +181,7 @@ public record StdVideoH265ScalingLists(@NotNull MemorySegment segment) implement
         return this;
     }
 
-    public MemorySegment ScalingList4x4Raw() {
+    public @NotNull MemorySegment ScalingList4x4Raw() {
         return segment.asSlice(OFFSET$ScalingList4x4, SIZE$ScalingList4x4);
     }
 
@@ -194,7 +194,7 @@ public record StdVideoH265ScalingLists(@NotNull MemorySegment segment) implement
         return this;
     }
 
-    public MemorySegment ScalingList8x8Raw() {
+    public @NotNull MemorySegment ScalingList8x8Raw() {
         return segment.asSlice(OFFSET$ScalingList8x8, SIZE$ScalingList8x8);
     }
 
@@ -207,7 +207,7 @@ public record StdVideoH265ScalingLists(@NotNull MemorySegment segment) implement
         return this;
     }
 
-    public MemorySegment ScalingList16x16Raw() {
+    public @NotNull MemorySegment ScalingList16x16Raw() {
         return segment.asSlice(OFFSET$ScalingList16x16, SIZE$ScalingList16x16);
     }
 
@@ -220,7 +220,7 @@ public record StdVideoH265ScalingLists(@NotNull MemorySegment segment) implement
         return this;
     }
 
-    public MemorySegment ScalingList32x32Raw() {
+    public @NotNull MemorySegment ScalingList32x32Raw() {
         return segment.asSlice(OFFSET$ScalingList32x32, SIZE$ScalingList32x32);
     }
 
@@ -233,7 +233,7 @@ public record StdVideoH265ScalingLists(@NotNull MemorySegment segment) implement
         return this;
     }
 
-    public MemorySegment ScalingListDCCoef16x16Raw() {
+    public @NotNull MemorySegment ScalingListDCCoef16x16Raw() {
         return segment.asSlice(OFFSET$ScalingListDCCoef16x16, SIZE$ScalingListDCCoef16x16);
     }
 
@@ -246,7 +246,7 @@ public record StdVideoH265ScalingLists(@NotNull MemorySegment segment) implement
         return this;
     }
 
-    public MemorySegment ScalingListDCCoef32x32Raw() {
+    public @NotNull MemorySegment ScalingListDCCoef32x32Raw() {
         return segment.asSlice(OFFSET$ScalingListDCCoef32x32, SIZE$ScalingListDCCoef32x32);
     }
 

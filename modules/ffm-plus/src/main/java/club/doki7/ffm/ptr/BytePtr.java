@@ -4,7 +4,6 @@ import club.doki7.ffm.IPointer;
 import club.doki7.ffm.annotation.Unsafe;
 import club.doki7.ffm.annotation.UnsafeConstructor;
 import club.doki7.ffm.annotation.ValueBasedCandidate;
-import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -128,12 +127,11 @@ public record BytePtr(@NotNull MemorySegment segment) implements IPointer, Itera
     /// considered "empty". See the documentation of {@link IPointer#segment()} for more details.
     ///
     /// @param segment the {@link MemorySegment} to use as the backing storage
-    /// @return {@code null} if {@code segment} is {@code null} or {@link MemorySegment#NULL},
+    /// @return {@code null} if {@code segment} is {@link MemorySegment#NULL},
     /// otherwise a new {@link BytePtr} that uses {@code segment} as backing storage
     /// @throws IllegalArgumentException if {@code segment} is not native
-    @Contract("null -> null")
-    public @Nullable BytePtr checked(@Nullable MemorySegment segment) {
-        if (segment == null || segment.equals(MemorySegment.NULL)) {
+    public @Nullable BytePtr checked(@NotNull MemorySegment segment) {
+        if (segment.equals(MemorySegment.NULL)) {
             return null;
         }
 

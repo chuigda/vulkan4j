@@ -39,7 +39,7 @@ public final class VkFormatFeatureFlags {
     public static final int VIDEO_ENCODE_DPB_KHR = 0x10000000;
     public static final int VIDEO_ENCODE_INPUT_KHR = 0x8000000;
 
-    public static String explain(@EnumType(VkFormatFeatureFlags.class) int flags) {
+    public static String explain(@Bitmask(VkFormatFeatureFlags.class) int flags) {
         List<String> detectedFlagBits = new ArrayList<>();
         if ((flags & ACCELERATION_STRUCTURE_VERTEX_BUFFER_KHR) != 0) {
             detectedFlagBits.add("VK_FORMAT_FEATURE_ACCELERATION_STRUCTURE_VERTEX_BUFFER_BIT_KHR");

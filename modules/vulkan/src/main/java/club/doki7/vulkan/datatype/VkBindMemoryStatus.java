@@ -199,12 +199,13 @@ public record VkBindMemoryStatus(@NotNull MemorySegment segment) implements IVkB
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkBindMemoryStatus pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkBindMemoryStatus pNext(@Nullable IPointer pointer) {
@@ -231,11 +232,11 @@ public record VkBindMemoryStatus(@NotNull MemorySegment segment) implements IVkB
         return this;
     }
 
-    public @Pointer(target=VkResult.class) MemorySegment pResultRaw() {
+    public @Pointer(target=VkResult.class) @NotNull MemorySegment pResultRaw() {
         return segment.get(LAYOUT$pResult, OFFSET$pResult);
     }
 
-    public void pResultRaw(@Pointer(target=VkResult.class) MemorySegment value) {
+    public void pResultRaw(@Pointer(target=VkResult.class) @NotNull MemorySegment value) {
         segment.set(LAYOUT$pResult, OFFSET$pResult, value);
     }
 

@@ -239,11 +239,11 @@ public record VkPipelineColorBlendAttachmentState(@NotNull MemorySegment segment
         return this;
     }
 
-    public @EnumType(VkColorComponentFlags.class) int colorWriteMask() {
+    public @Bitmask(VkColorComponentFlags.class) int colorWriteMask() {
         return segment.get(LAYOUT$colorWriteMask, OFFSET$colorWriteMask);
     }
 
-    public VkPipelineColorBlendAttachmentState colorWriteMask(@EnumType(VkColorComponentFlags.class) int value) {
+    public VkPipelineColorBlendAttachmentState colorWriteMask(@Bitmask(VkColorComponentFlags.class) int value) {
         segment.set(LAYOUT$colorWriteMask, OFFSET$colorWriteMask, value);
         return this;
     }

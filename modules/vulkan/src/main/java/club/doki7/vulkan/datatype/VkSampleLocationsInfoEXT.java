@@ -202,12 +202,13 @@ public record VkSampleLocationsInfoEXT(@NotNull MemorySegment segment) implement
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkSampleLocationsInfoEXT pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkSampleLocationsInfoEXT pNext(@Nullable IPointer pointer) {
@@ -215,11 +216,11 @@ public record VkSampleLocationsInfoEXT(@NotNull MemorySegment segment) implement
         return this;
     }
 
-    public @EnumType(VkSampleCountFlags.class) int sampleLocationsPerPixel() {
+    public @Bitmask(VkSampleCountFlags.class) int sampleLocationsPerPixel() {
         return segment.get(LAYOUT$sampleLocationsPerPixel, OFFSET$sampleLocationsPerPixel);
     }
 
-    public VkSampleLocationsInfoEXT sampleLocationsPerPixel(@EnumType(VkSampleCountFlags.class) int value) {
+    public VkSampleLocationsInfoEXT sampleLocationsPerPixel(@Bitmask(VkSampleCountFlags.class) int value) {
         segment.set(LAYOUT$sampleLocationsPerPixel, OFFSET$sampleLocationsPerPixel, value);
         return this;
     }
@@ -271,11 +272,11 @@ public record VkSampleLocationsInfoEXT(@NotNull MemorySegment segment) implement
         return new VkSampleLocationEXT(s);
     }
 
-    public @Pointer(target=VkSampleLocationEXT.class) MemorySegment pSampleLocationsRaw() {
+    public @Pointer(target=VkSampleLocationEXT.class) @NotNull MemorySegment pSampleLocationsRaw() {
         return segment.get(LAYOUT$pSampleLocations, OFFSET$pSampleLocations);
     }
 
-    public void pSampleLocationsRaw(@Pointer(target=VkSampleLocationEXT.class) MemorySegment value) {
+    public void pSampleLocationsRaw(@Pointer(target=VkSampleLocationEXT.class) @NotNull MemorySegment value) {
         segment.set(LAYOUT$pSampleLocations, OFFSET$pSampleLocations, value);
     }
 

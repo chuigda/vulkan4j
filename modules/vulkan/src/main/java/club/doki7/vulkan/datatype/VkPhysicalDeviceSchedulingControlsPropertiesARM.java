@@ -199,12 +199,13 @@ public record VkPhysicalDeviceSchedulingControlsPropertiesARM(@NotNull MemorySeg
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkPhysicalDeviceSchedulingControlsPropertiesARM pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkPhysicalDeviceSchedulingControlsPropertiesARM pNext(@Nullable IPointer pointer) {
@@ -212,11 +213,11 @@ public record VkPhysicalDeviceSchedulingControlsPropertiesARM(@NotNull MemorySeg
         return this;
     }
 
-    public @EnumType(VkPhysicalDeviceSchedulingControlsFlagsARM.class) long schedulingControlsFlags() {
+    public @Bitmask(VkPhysicalDeviceSchedulingControlsFlagsARM.class) long schedulingControlsFlags() {
         return segment.get(LAYOUT$schedulingControlsFlags, OFFSET$schedulingControlsFlags);
     }
 
-    public VkPhysicalDeviceSchedulingControlsPropertiesARM schedulingControlsFlags(@EnumType(VkPhysicalDeviceSchedulingControlsFlagsARM.class) long value) {
+    public VkPhysicalDeviceSchedulingControlsPropertiesARM schedulingControlsFlags(@Bitmask(VkPhysicalDeviceSchedulingControlsFlagsARM.class) long value) {
         segment.set(LAYOUT$schedulingControlsFlags, OFFSET$schedulingControlsFlags, value);
         return this;
     }

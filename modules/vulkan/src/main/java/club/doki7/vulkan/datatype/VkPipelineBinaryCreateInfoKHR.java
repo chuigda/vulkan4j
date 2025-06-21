@@ -201,12 +201,13 @@ public record VkPipelineBinaryCreateInfoKHR(@NotNull MemorySegment segment) impl
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkPipelineBinaryCreateInfoKHR pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkPipelineBinaryCreateInfoKHR pNext(@Nullable IPointer pointer) {
@@ -238,11 +239,11 @@ public record VkPipelineBinaryCreateInfoKHR(@NotNull MemorySegment segment) impl
         return new VkPipelineBinaryKeysAndDataKHR(s);
     }
 
-    public @Pointer(target=VkPipelineBinaryKeysAndDataKHR.class) MemorySegment pKeysAndDataInfoRaw() {
+    public @Pointer(target=VkPipelineBinaryKeysAndDataKHR.class) @NotNull MemorySegment pKeysAndDataInfoRaw() {
         return segment.get(LAYOUT$pKeysAndDataInfo, OFFSET$pKeysAndDataInfo);
     }
 
-    public void pKeysAndDataInfoRaw(@Pointer(target=VkPipelineBinaryKeysAndDataKHR.class) MemorySegment value) {
+    public void pKeysAndDataInfoRaw(@Pointer(target=VkPipelineBinaryKeysAndDataKHR.class) @NotNull MemorySegment value) {
         segment.set(LAYOUT$pKeysAndDataInfo, OFFSET$pKeysAndDataInfo, value);
     }
 
@@ -283,11 +284,11 @@ public record VkPipelineBinaryCreateInfoKHR(@NotNull MemorySegment segment) impl
         return new VkPipelineCreateInfoKHR(s);
     }
 
-    public @Pointer(target=VkPipelineCreateInfoKHR.class) MemorySegment pPipelineCreateInfoRaw() {
+    public @Pointer(target=VkPipelineCreateInfoKHR.class) @NotNull MemorySegment pPipelineCreateInfoRaw() {
         return segment.get(LAYOUT$pPipelineCreateInfo, OFFSET$pPipelineCreateInfo);
     }
 
-    public void pPipelineCreateInfoRaw(@Pointer(target=VkPipelineCreateInfoKHR.class) MemorySegment value) {
+    public void pPipelineCreateInfoRaw(@Pointer(target=VkPipelineCreateInfoKHR.class) @NotNull MemorySegment value) {
         segment.set(LAYOUT$pPipelineCreateInfo, OFFSET$pPipelineCreateInfo, value);
     }
 

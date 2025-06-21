@@ -217,11 +217,11 @@ public record VkSparseImageMemoryBindInfo(@NotNull MemorySegment segment) implem
         return new VkSparseImageMemoryBind(s);
     }
 
-    public @Pointer(target=VkSparseImageMemoryBind.class) MemorySegment pBindsRaw() {
+    public @Pointer(target=VkSparseImageMemoryBind.class) @NotNull MemorySegment pBindsRaw() {
         return segment.get(LAYOUT$pBinds, OFFSET$pBinds);
     }
 
-    public void pBindsRaw(@Pointer(target=VkSparseImageMemoryBind.class) MemorySegment value) {
+    public void pBindsRaw(@Pointer(target=VkSparseImageMemoryBind.class) @NotNull MemorySegment value) {
         segment.set(LAYOUT$pBinds, OFFSET$pBinds, value);
     }
 

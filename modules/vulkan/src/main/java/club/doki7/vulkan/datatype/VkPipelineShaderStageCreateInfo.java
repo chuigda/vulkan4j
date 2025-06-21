@@ -203,12 +203,13 @@ public record VkPipelineShaderStageCreateInfo(@NotNull MemorySegment segment) im
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkPipelineShaderStageCreateInfo pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkPipelineShaderStageCreateInfo pNext(@Nullable IPointer pointer) {
@@ -216,20 +217,20 @@ public record VkPipelineShaderStageCreateInfo(@NotNull MemorySegment segment) im
         return this;
     }
 
-    public @EnumType(VkPipelineShaderStageCreateFlags.class) int flags() {
+    public @Bitmask(VkPipelineShaderStageCreateFlags.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public VkPipelineShaderStageCreateInfo flags(@EnumType(VkPipelineShaderStageCreateFlags.class) int value) {
+    public VkPipelineShaderStageCreateInfo flags(@Bitmask(VkPipelineShaderStageCreateFlags.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
         return this;
     }
 
-    public @EnumType(VkShaderStageFlags.class) int stage() {
+    public @Bitmask(VkShaderStageFlags.class) int stage() {
         return segment.get(LAYOUT$stage, OFFSET$stage);
     }
 
-    public VkPipelineShaderStageCreateInfo stage(@EnumType(VkShaderStageFlags.class) int value) {
+    public VkPipelineShaderStageCreateInfo stage(@Bitmask(VkShaderStageFlags.class) int value) {
         segment.set(LAYOUT$stage, OFFSET$stage, value);
         return this;
     }
@@ -265,11 +266,11 @@ public record VkPipelineShaderStageCreateInfo(@NotNull MemorySegment segment) im
         return this;
     }
 
-    public @Pointer(comment="int8_t*") MemorySegment pNameRaw() {
+    public @Pointer(comment="int8_t*") @NotNull MemorySegment pNameRaw() {
         return segment.get(LAYOUT$pName, OFFSET$pName);
     }
 
-    public void pNameRaw(@Pointer(comment="int8_t*") MemorySegment value) {
+    public void pNameRaw(@Pointer(comment="int8_t*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pName, OFFSET$pName, value);
     }
 
@@ -297,11 +298,11 @@ public record VkPipelineShaderStageCreateInfo(@NotNull MemorySegment segment) im
         return new VkSpecializationInfo(s);
     }
 
-    public @Pointer(target=VkSpecializationInfo.class) MemorySegment pSpecializationInfoRaw() {
+    public @Pointer(target=VkSpecializationInfo.class) @NotNull MemorySegment pSpecializationInfoRaw() {
         return segment.get(LAYOUT$pSpecializationInfo, OFFSET$pSpecializationInfo);
     }
 
-    public void pSpecializationInfoRaw(@Pointer(target=VkSpecializationInfo.class) MemorySegment value) {
+    public void pSpecializationInfoRaw(@Pointer(target=VkSpecializationInfo.class) @NotNull MemorySegment value) {
         segment.set(LAYOUT$pSpecializationInfo, OFFSET$pSpecializationInfo, value);
     }
 

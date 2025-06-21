@@ -201,12 +201,13 @@ public record VkExportSemaphoreWin32HandleInfoKHR(@NotNull MemorySegment segment
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkExportSemaphoreWin32HandleInfoKHR pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkExportSemaphoreWin32HandleInfoKHR pNext(@Nullable IPointer pointer) {
@@ -214,12 +215,13 @@ public record VkExportSemaphoreWin32HandleInfoKHR(@NotNull MemorySegment segment
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pAttributes() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pAttributes() {
         return segment.get(LAYOUT$pAttributes, OFFSET$pAttributes);
     }
 
-    public void pAttributes(@Pointer(comment="void*") MemorySegment value) {
+    public VkExportSemaphoreWin32HandleInfoKHR pAttributes(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pAttributes, OFFSET$pAttributes, value);
+        return this;
     }
 
     public VkExportSemaphoreWin32HandleInfoKHR pAttributes(@Nullable IPointer pointer) {
@@ -254,11 +256,11 @@ public record VkExportSemaphoreWin32HandleInfoKHR(@NotNull MemorySegment segment
         return this;
     }
 
-    public @Pointer(comment="uint16_t*") MemorySegment nameRaw() {
+    public @Pointer(comment="uint16_t*") @NotNull MemorySegment nameRaw() {
         return segment.get(LAYOUT$name, OFFSET$name);
     }
 
-    public void nameRaw(@Pointer(comment="uint16_t*") MemorySegment value) {
+    public void nameRaw(@Pointer(comment="uint16_t*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$name, OFFSET$name, value);
     }
 

@@ -197,7 +197,7 @@ public record StdVideoH264ScalingLists(@NotNull MemorySegment segment) implement
         return this;
     }
 
-    public MemorySegment ScalingList4x4Raw() {
+    public @NotNull MemorySegment ScalingList4x4Raw() {
         return segment.asSlice(OFFSET$ScalingList4x4, SIZE$ScalingList4x4);
     }
 
@@ -210,7 +210,7 @@ public record StdVideoH264ScalingLists(@NotNull MemorySegment segment) implement
         return this;
     }
 
-    public MemorySegment ScalingList8x8Raw() {
+    public @NotNull MemorySegment ScalingList8x8Raw() {
         return segment.asSlice(OFFSET$ScalingList8x8, SIZE$ScalingList8x8);
     }
 

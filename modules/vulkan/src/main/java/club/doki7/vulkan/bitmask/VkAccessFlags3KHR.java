@@ -9,7 +9,7 @@ import java.util.List;
 public final class VkAccessFlags3KHR {
     public static final long NONE = 0x0L;
 
-    public static String explain(@EnumType(VkAccessFlags3KHR.class) long flags) {
+    public static String explain(@Bitmask(VkAccessFlags3KHR.class) long flags) {
         List<String> detectedFlagBits = new ArrayList<>();
         if ((flags & NONE) != 0) {
             detectedFlagBits.add("VK_ACCESS_3_NONE_KHR");

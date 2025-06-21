@@ -199,12 +199,13 @@ public record VkPrivateDataSlotCreateInfo(@NotNull MemorySegment segment) implem
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkPrivateDataSlotCreateInfo pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkPrivateDataSlotCreateInfo pNext(@Nullable IPointer pointer) {
@@ -212,11 +213,11 @@ public record VkPrivateDataSlotCreateInfo(@NotNull MemorySegment segment) implem
         return this;
     }
 
-    public @EnumType(VkPrivateDataSlotCreateFlags.class) int flags() {
+    public @Bitmask(VkPrivateDataSlotCreateFlags.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public VkPrivateDataSlotCreateInfo flags(@EnumType(VkPrivateDataSlotCreateFlags.class) int value) {
+    public VkPrivateDataSlotCreateInfo flags(@Bitmask(VkPrivateDataSlotCreateFlags.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
         return this;
     }

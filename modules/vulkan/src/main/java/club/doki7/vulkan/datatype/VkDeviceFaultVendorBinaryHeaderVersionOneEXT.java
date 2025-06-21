@@ -233,7 +233,7 @@ public record VkDeviceFaultVendorBinaryHeaderVersionOneEXT(@NotNull MemorySegmen
         return this;
     }
 
-    public MemorySegment pipelineCacheUUIDRaw() {
+    public @NotNull MemorySegment pipelineCacheUUIDRaw() {
         return segment.asSlice(OFFSET$pipelineCacheUUID, SIZE$pipelineCacheUUID);
     }
 

@@ -3,7 +3,6 @@ package club.doki7.babel.codegen
 import club.doki7.babel.codegen.accessor.*
 import club.doki7.babel.ctype.*
 import club.doki7.babel.ctype.lowerType
-import club.doki7.babel.registry.ArrayType
 import club.doki7.babel.registry.IdentifierType
 import club.doki7.babel.registry.PointerType
 import club.doki7.babel.registry.RegistryBase

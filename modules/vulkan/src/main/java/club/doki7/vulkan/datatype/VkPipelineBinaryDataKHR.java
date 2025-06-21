@@ -179,12 +179,13 @@ public record VkPipelineBinaryDataKHR(@NotNull MemorySegment segment) implements
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pData() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pData() {
         return segment.get(LAYOUT$pData, OFFSET$pData);
     }
 
-    public void pData(@Pointer(comment="void*") MemorySegment value) {
+    public VkPipelineBinaryDataKHR pData(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pData, OFFSET$pData, value);
+        return this;
     }
 
     public VkPipelineBinaryDataKHR pData(@Nullable IPointer pointer) {

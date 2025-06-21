@@ -10,7 +10,7 @@ public final class VkGeometryFlagsKHR {
     public static final int NO_DUPLICATE_ANY_HIT_INVOCATION = 0x2;
     public static final int OPAQUE = 0x1;
 
-    public static String explain(@EnumType(VkGeometryFlagsKHR.class) int flags) {
+    public static String explain(@Bitmask(VkGeometryFlagsKHR.class) int flags) {
         List<String> detectedFlagBits = new ArrayList<>();
         if ((flags & NO_DUPLICATE_ANY_HIT_INVOCATION) != 0) {
             detectedFlagBits.add("VK_GEOMETRY_NO_DUPLICATE_ANY_HIT_INVOCATION_BIT_KHR");

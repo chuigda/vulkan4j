@@ -179,12 +179,13 @@ public record VkDeviceOrHostAddressConstKHR(@NotNull MemorySegment segment) impl
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment hostAddress() {
+    public @Pointer(comment="void*") @NotNull MemorySegment hostAddress() {
         return segment.get(LAYOUT$hostAddress, OFFSET$hostAddress);
     }
 
-    public void hostAddress(@Pointer(comment="void*") MemorySegment value) {
+    public VkDeviceOrHostAddressConstKHR hostAddress(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$hostAddress, OFFSET$hostAddress, value);
+        return this;
     }
 
     public VkDeviceOrHostAddressConstKHR hostAddress(@Nullable IPointer pointer) {

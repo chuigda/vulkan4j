@@ -201,11 +201,11 @@ public record VmaDefragmentationInfo(@NotNull MemorySegment segment) implements 
         return ret;
     }
 
-    public @EnumType(VmaDefragmentationFlags.class) int flags() {
+    public @Bitmask(VmaDefragmentationFlags.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public VmaDefragmentationInfo flags(@EnumType(VmaDefragmentationFlags.class) int value) {
+    public VmaDefragmentationInfo flags(@Bitmask(VmaDefragmentationFlags.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
         return this;
     }
@@ -241,12 +241,13 @@ public record VmaDefragmentationInfo(@NotNull MemorySegment segment) implements 
         return this;
     }
 
-    public @Pointer(comment="PFN_vmaCheckDefragmentationBreakFunction") MemorySegment pfnBreakCallback() {
+    public @Pointer(comment="PFN_vmaCheckDefragmentationBreakFunction") @NotNull MemorySegment pfnBreakCallback() {
         return segment.get(LAYOUT$pfnBreakCallback, OFFSET$pfnBreakCallback);
     }
 
-    public void pfnBreakCallback(@Pointer(comment="PFN_vmaCheckDefragmentationBreakFunction") MemorySegment value) {
+    public VmaDefragmentationInfo pfnBreakCallback(@Pointer(comment="PFN_vmaCheckDefragmentationBreakFunction") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pfnBreakCallback, OFFSET$pfnBreakCallback, value);
+        return this;
     }
 
     public VmaDefragmentationInfo pfnBreakCallback(@Nullable IPointer pointer) {
@@ -254,12 +255,13 @@ public record VmaDefragmentationInfo(@NotNull MemorySegment segment) implements 
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pBreakCallbackUserData() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pBreakCallbackUserData() {
         return segment.get(LAYOUT$pBreakCallbackUserData, OFFSET$pBreakCallbackUserData);
     }
 
-    public void pBreakCallbackUserData(@Pointer(comment="void*") MemorySegment value) {
+    public VmaDefragmentationInfo pBreakCallbackUserData(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pBreakCallbackUserData, OFFSET$pBreakCallbackUserData, value);
+        return this;
     }
 
     public VmaDefragmentationInfo pBreakCallbackUserData(@Nullable IPointer pointer) {

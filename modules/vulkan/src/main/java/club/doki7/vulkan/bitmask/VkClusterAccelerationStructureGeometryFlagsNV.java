@@ -11,7 +11,7 @@ public final class VkClusterAccelerationStructureGeometryFlagsNV {
     public static final int NO_DUPLICATE_ANYHIT_INVOCATION = 0x2;
     public static final int OPAQUE = 0x4;
 
-    public static String explain(@EnumType(VkClusterAccelerationStructureGeometryFlagsNV.class) int flags) {
+    public static String explain(@Bitmask(VkClusterAccelerationStructureGeometryFlagsNV.class) int flags) {
         List<String> detectedFlagBits = new ArrayList<>();
         if ((flags & CULL_DISABLE) != 0) {
             detectedFlagBits.add("VK_CLUSTER_ACCELERATION_STRUCTURE_GEOMETRY_CULL_DISABLE_BIT_NV");

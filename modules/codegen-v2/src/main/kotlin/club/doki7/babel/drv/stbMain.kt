@@ -106,7 +106,7 @@ private fun codegen(
     if (registry.opaqueTypedefs.isNotEmpty()) {
         for (opaqueTypedef in registry.opaqueTypedefs.values) {
             val handle = OpaqueHandleTypedef(opaqueTypedef.name)
-            val handleDoc = generateHandle(registry, handle, codegenOptions)
+            val handleDoc = generateHandle(handle, codegenOptions)
             File("$packageDir/handle/${handle.name}.java").writeText(render(handleDoc))
         }
     }

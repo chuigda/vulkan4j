@@ -200,12 +200,13 @@ public record VkDeviceImageMemoryRequirements(@NotNull MemorySegment segment) im
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkDeviceImageMemoryRequirements pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkDeviceImageMemoryRequirements pNext(@Nullable IPointer pointer) {
@@ -237,19 +238,19 @@ public record VkDeviceImageMemoryRequirements(@NotNull MemorySegment segment) im
         return new VkImageCreateInfo(s);
     }
 
-    public @Pointer(target=VkImageCreateInfo.class) MemorySegment pCreateInfoRaw() {
+    public @Pointer(target=VkImageCreateInfo.class) @NotNull MemorySegment pCreateInfoRaw() {
         return segment.get(LAYOUT$pCreateInfo, OFFSET$pCreateInfo);
     }
 
-    public void pCreateInfoRaw(@Pointer(target=VkImageCreateInfo.class) MemorySegment value) {
+    public void pCreateInfoRaw(@Pointer(target=VkImageCreateInfo.class) @NotNull MemorySegment value) {
         segment.set(LAYOUT$pCreateInfo, OFFSET$pCreateInfo, value);
     }
 
-    public @EnumType(VkImageAspectFlags.class) int planeAspect() {
+    public @Bitmask(VkImageAspectFlags.class) int planeAspect() {
         return segment.get(LAYOUT$planeAspect, OFFSET$planeAspect);
     }
 
-    public VkDeviceImageMemoryRequirements planeAspect(@EnumType(VkImageAspectFlags.class) int value) {
+    public VkDeviceImageMemoryRequirements planeAspect(@Bitmask(VkImageAspectFlags.class) int value) {
         segment.set(LAYOUT$planeAspect, OFFSET$planeAspect, value);
         return this;
     }

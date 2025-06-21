@@ -226,12 +226,13 @@ public record VkPhysicalDeviceMeshShaderPropertiesEXT(@NotNull MemorySegment seg
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkPhysicalDeviceMeshShaderPropertiesEXT pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkPhysicalDeviceMeshShaderPropertiesEXT pNext(@Nullable IPointer pointer) {
@@ -257,7 +258,7 @@ public record VkPhysicalDeviceMeshShaderPropertiesEXT(@NotNull MemorySegment seg
         return this;
     }
 
-    public MemorySegment maxTaskWorkGroupCountRaw() {
+    public @NotNull MemorySegment maxTaskWorkGroupCountRaw() {
         return segment.asSlice(OFFSET$maxTaskWorkGroupCount, SIZE$maxTaskWorkGroupCount);
     }
 
@@ -279,7 +280,7 @@ public record VkPhysicalDeviceMeshShaderPropertiesEXT(@NotNull MemorySegment seg
         return this;
     }
 
-    public MemorySegment maxTaskWorkGroupSizeRaw() {
+    public @NotNull MemorySegment maxTaskWorkGroupSizeRaw() {
         return segment.asSlice(OFFSET$maxTaskWorkGroupSize, SIZE$maxTaskWorkGroupSize);
     }
 
@@ -328,7 +329,7 @@ public record VkPhysicalDeviceMeshShaderPropertiesEXT(@NotNull MemorySegment seg
         return this;
     }
 
-    public MemorySegment maxMeshWorkGroupCountRaw() {
+    public @NotNull MemorySegment maxMeshWorkGroupCountRaw() {
         return segment.asSlice(OFFSET$maxMeshWorkGroupCount, SIZE$maxMeshWorkGroupCount);
     }
 
@@ -350,7 +351,7 @@ public record VkPhysicalDeviceMeshShaderPropertiesEXT(@NotNull MemorySegment seg
         return this;
     }
 
-    public MemorySegment maxMeshWorkGroupSizeRaw() {
+    public @NotNull MemorySegment maxMeshWorkGroupSizeRaw() {
         return segment.asSlice(OFFSET$maxMeshWorkGroupSize, SIZE$maxMeshWorkGroupSize);
     }
 

@@ -11,7 +11,7 @@ public final class VkExternalMemoryFeatureFlags {
     public static final int EXPORTABLE = 0x2;
     public static final int IMPORTABLE = 0x4;
 
-    public static String explain(@EnumType(VkExternalMemoryFeatureFlags.class) int flags) {
+    public static String explain(@Bitmask(VkExternalMemoryFeatureFlags.class) int flags) {
         List<String> detectedFlagBits = new ArrayList<>();
         if ((flags & DEDICATED_ONLY) != 0) {
             detectedFlagBits.add("VK_EXTERNAL_MEMORY_FEATURE_DEDICATED_ONLY_BIT");

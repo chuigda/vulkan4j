@@ -202,12 +202,13 @@ public record VkSemaphoreWaitInfo(@NotNull MemorySegment segment) implements IVk
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkSemaphoreWaitInfo pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkSemaphoreWaitInfo pNext(@Nullable IPointer pointer) {
@@ -215,11 +216,11 @@ public record VkSemaphoreWaitInfo(@NotNull MemorySegment segment) implements IVk
         return this;
     }
 
-    public @EnumType(VkSemaphoreWaitFlags.class) int flags() {
+    public @Bitmask(VkSemaphoreWaitFlags.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public VkSemaphoreWaitInfo flags(@EnumType(VkSemaphoreWaitFlags.class) int value) {
+    public VkSemaphoreWaitInfo flags(@Bitmask(VkSemaphoreWaitFlags.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
         return this;
     }
@@ -251,11 +252,11 @@ public record VkSemaphoreWaitInfo(@NotNull MemorySegment segment) implements IVk
         return this;
     }
 
-    public @Pointer(target=VkSemaphore.class) MemorySegment pSemaphoresRaw() {
+    public @Pointer(target=VkSemaphore.class) @NotNull MemorySegment pSemaphoresRaw() {
         return segment.get(LAYOUT$pSemaphores, OFFSET$pSemaphores);
     }
 
-    public void pSemaphoresRaw(@Pointer(target=VkSemaphore.class) MemorySegment value) {
+    public void pSemaphoresRaw(@Pointer(target=VkSemaphore.class) @NotNull MemorySegment value) {
         segment.set(LAYOUT$pSemaphores, OFFSET$pSemaphores, value);
     }
 
@@ -277,11 +278,11 @@ public record VkSemaphoreWaitInfo(@NotNull MemorySegment segment) implements IVk
         return this;
     }
 
-    public @Pointer(comment="uint64_t*") MemorySegment pValuesRaw() {
+    public @Pointer(comment="uint64_t*") @NotNull MemorySegment pValuesRaw() {
         return segment.get(LAYOUT$pValues, OFFSET$pValues);
     }
 
-    public void pValuesRaw(@Pointer(comment="uint64_t*") MemorySegment value) {
+    public void pValuesRaw(@Pointer(comment="uint64_t*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pValues, OFFSET$pValues, value);
     }
 

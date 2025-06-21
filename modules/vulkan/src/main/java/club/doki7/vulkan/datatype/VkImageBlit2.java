@@ -202,12 +202,13 @@ public record VkImageBlit2(@NotNull MemorySegment segment) implements IVkImageBl
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkImageBlit2 pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkImageBlit2 pNext(@Nullable IPointer pointer) {
@@ -249,7 +250,7 @@ public record VkImageBlit2(@NotNull MemorySegment segment) implements IVkImageBl
         MemorySegment.copy(value.segment(), 0, s, index * VkOffset3D.BYTES, VkOffset3D.BYTES);
     }
 
-    public MemorySegment srcOffsetsRaw() {
+    public @NotNull MemorySegment srcOffsetsRaw() {
         return segment.asSlice(OFFSET$srcOffsets, SIZE$srcOffsets);
     }
 
@@ -287,7 +288,7 @@ public record VkImageBlit2(@NotNull MemorySegment segment) implements IVkImageBl
         MemorySegment.copy(value.segment(), 0, s, index * VkOffset3D.BYTES, VkOffset3D.BYTES);
     }
 
-    public MemorySegment dstOffsetsRaw() {
+    public @NotNull MemorySegment dstOffsetsRaw() {
         return segment.asSlice(OFFSET$dstOffsets, SIZE$dstOffsets);
     }
 

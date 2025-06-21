@@ -189,11 +189,11 @@ public record VkInputAttachmentAspectReference(@NotNull MemorySegment segment) i
         return this;
     }
 
-    public @EnumType(VkImageAspectFlags.class) int aspectMask() {
+    public @Bitmask(VkImageAspectFlags.class) int aspectMask() {
         return segment.get(LAYOUT$aspectMask, OFFSET$aspectMask);
     }
 
-    public VkInputAttachmentAspectReference aspectMask(@EnumType(VkImageAspectFlags.class) int value) {
+    public VkInputAttachmentAspectReference aspectMask(@Bitmask(VkImageAspectFlags.class) int value) {
         segment.set(LAYOUT$aspectMask, OFFSET$aspectMask, value);
         return this;
     }

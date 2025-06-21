@@ -204,12 +204,13 @@ public record VkIndirectCommandsLayoutCreateInfoEXT(@NotNull MemorySegment segme
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkIndirectCommandsLayoutCreateInfoEXT pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkIndirectCommandsLayoutCreateInfoEXT pNext(@Nullable IPointer pointer) {
@@ -217,20 +218,20 @@ public record VkIndirectCommandsLayoutCreateInfoEXT(@NotNull MemorySegment segme
         return this;
     }
 
-    public @EnumType(VkIndirectCommandsLayoutUsageFlagsEXT.class) int flags() {
+    public @Bitmask(VkIndirectCommandsLayoutUsageFlagsEXT.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public VkIndirectCommandsLayoutCreateInfoEXT flags(@EnumType(VkIndirectCommandsLayoutUsageFlagsEXT.class) int value) {
+    public VkIndirectCommandsLayoutCreateInfoEXT flags(@Bitmask(VkIndirectCommandsLayoutUsageFlagsEXT.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
         return this;
     }
 
-    public @EnumType(VkShaderStageFlags.class) int shaderStages() {
+    public @Bitmask(VkShaderStageFlags.class) int shaderStages() {
         return segment.get(LAYOUT$shaderStages, OFFSET$shaderStages);
     }
 
-    public VkIndirectCommandsLayoutCreateInfoEXT shaderStages(@EnumType(VkShaderStageFlags.class) int value) {
+    public VkIndirectCommandsLayoutCreateInfoEXT shaderStages(@Bitmask(VkShaderStageFlags.class) int value) {
         segment.set(LAYOUT$shaderStages, OFFSET$shaderStages, value);
         return this;
     }
@@ -290,11 +291,11 @@ public record VkIndirectCommandsLayoutCreateInfoEXT(@NotNull MemorySegment segme
         return new VkIndirectCommandsLayoutTokenEXT(s);
     }
 
-    public @Pointer(target=VkIndirectCommandsLayoutTokenEXT.class) MemorySegment pTokensRaw() {
+    public @Pointer(target=VkIndirectCommandsLayoutTokenEXT.class) @NotNull MemorySegment pTokensRaw() {
         return segment.get(LAYOUT$pTokens, OFFSET$pTokens);
     }
 
-    public void pTokensRaw(@Pointer(target=VkIndirectCommandsLayoutTokenEXT.class) MemorySegment value) {
+    public void pTokensRaw(@Pointer(target=VkIndirectCommandsLayoutTokenEXT.class) @NotNull MemorySegment value) {
         segment.set(LAYOUT$pTokens, OFFSET$pTokens, value);
     }
 

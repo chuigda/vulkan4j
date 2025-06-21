@@ -204,12 +204,13 @@ public record VkRenderPassMultiviewCreateInfo(@NotNull MemorySegment segment) im
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkRenderPassMultiviewCreateInfo pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkRenderPassMultiviewCreateInfo pNext(@Nullable IPointer pointer) {
@@ -244,11 +245,11 @@ public record VkRenderPassMultiviewCreateInfo(@NotNull MemorySegment segment) im
         return this;
     }
 
-    public @Pointer(comment="uint32_t*") MemorySegment pViewMasksRaw() {
+    public @Pointer(comment="uint32_t*") @NotNull MemorySegment pViewMasksRaw() {
         return segment.get(LAYOUT$pViewMasks, OFFSET$pViewMasks);
     }
 
-    public void pViewMasksRaw(@Pointer(comment="uint32_t*") MemorySegment value) {
+    public void pViewMasksRaw(@Pointer(comment="uint32_t*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pViewMasks, OFFSET$pViewMasks, value);
     }
 
@@ -279,11 +280,11 @@ public record VkRenderPassMultiviewCreateInfo(@NotNull MemorySegment segment) im
         return this;
     }
 
-    public @Pointer(comment="int32_t*") MemorySegment pViewOffsetsRaw() {
+    public @Pointer(comment="int32_t*") @NotNull MemorySegment pViewOffsetsRaw() {
         return segment.get(LAYOUT$pViewOffsets, OFFSET$pViewOffsets);
     }
 
-    public void pViewOffsetsRaw(@Pointer(comment="int32_t*") MemorySegment value) {
+    public void pViewOffsetsRaw(@Pointer(comment="int32_t*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pViewOffsets, OFFSET$pViewOffsets, value);
     }
 
@@ -314,11 +315,11 @@ public record VkRenderPassMultiviewCreateInfo(@NotNull MemorySegment segment) im
         return this;
     }
 
-    public @Pointer(comment="uint32_t*") MemorySegment pCorrelationMasksRaw() {
+    public @Pointer(comment="uint32_t*") @NotNull MemorySegment pCorrelationMasksRaw() {
         return segment.get(LAYOUT$pCorrelationMasks, OFFSET$pCorrelationMasks);
     }
 
-    public void pCorrelationMasksRaw(@Pointer(comment="uint32_t*") MemorySegment value) {
+    public void pCorrelationMasksRaw(@Pointer(comment="uint32_t*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pCorrelationMasks, OFFSET$pCorrelationMasks, value);
     }
 

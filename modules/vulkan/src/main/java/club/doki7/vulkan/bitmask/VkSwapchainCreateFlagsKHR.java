@@ -12,7 +12,7 @@ public final class VkSwapchainCreateFlagsKHR {
     public static final int PROTECTED = 0x2;
     public static final int SPLIT_INSTANCE_BIND_REGIONS = 0x1;
 
-    public static String explain(@EnumType(VkSwapchainCreateFlagsKHR.class) int flags) {
+    public static String explain(@Bitmask(VkSwapchainCreateFlagsKHR.class) int flags) {
         List<String> detectedFlagBits = new ArrayList<>();
         if ((flags & DEFERRED_MEMORY_ALLOCATION_EXT) != 0) {
             detectedFlagBits.add("VK_SWAPCHAIN_CREATE_DEFERRED_MEMORY_ALLOCATION_BIT_EXT");

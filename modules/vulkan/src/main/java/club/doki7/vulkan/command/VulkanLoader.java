@@ -1,6 +1,8 @@
 package club.doki7.vulkan.command;
 
-import club.doki7.ffm.Loader;
+import club.doki7.ffm.library.ISharedLibrary;
+import club.doki7.ffm.library.UnixLibraryLoader;
+import club.doki7.ffm.library.WindowsLibraryLoader;
 import club.doki7.ffm.ptr.BytePtr;
 import club.doki7.vulkan.handle.VkDevice;
 import club.doki7.vulkan.handle.VkInstance;
@@ -15,9 +17,10 @@ import java.lang.foreign.MemorySegment;
 public final class VulkanLoader {
     /// Try loading the Vulkan library.
     ///
-    /// This function is implemented in terms of {@link System#loadLibrary(String)}. On Windows it
-    /// will try {@code "vulkan-1"} ({@code vulkan-1.dll}), and on other platforms it will try
-    /// {@code "vulkan"} ({@code libvulkan.so} or {@code libvulkan.dylib}).
+    /// This function is implemented in terms of
+    /// {@link club.doki7.ffm.library.ILibraryLoader#loadLibrary(String) ILibraryLoader.loadLibary(String)}.
+    /// On Windows it will try {@code "vulkan-1"} ({@code vulkan-1.dll}), and on other platforms it
+    /// will try {@code "vulkan"} ({@code libvulkan.so} or {@code libvulkan.dylib}).
     ///
     /// Instead of using this function, you may also implement your own Vulkan library loading
     /// logic.
@@ -37,20 +40,19 @@ public final class VulkanLoader {
     /// have any knowledge on macOS software packaging. You may need to implement your own loading
     /// logic when packaging and releasing software. Contributions are welcome.
     ///
-    /// @throws SecurityException see {@link System#loadLibrary(String)}
-    /// @throws UnsatisfiedLinkError see {@link System#loadLibrary(String)}
-    public static void loadVulkanLibrary() {
+    /// @throws UnsatisfiedLinkError see {@link club.doki7.ffm.library.ILibraryLoader#loadLibrary(String) ILibraryLoader.loadLibrary(String)}
+    public static ISharedLibrary loadVulkanLibrary() {
         if (System.getProperty("os.name").toLowerCase().contains("windows")) {
-            System.loadLibrary("vulkan-1");
+            return WindowsLibraryLoader.INSTANCE.loadLibrary("vulkan-1");
         } else {
-            System.loadLibrary("vulkan");
+            return UnixLibraryLoader.INSTANCE.loadLibrary("vulkan");
         }
     }
 
     /// Load Vulkan static commands.
     ///
     /// This function is in effect implemented in terms of
-    /// {@link Loader#loadFunction(String, FunctionDescriptor)} +
+    /// {@link ISharedLibrary#load(String)} +
     /// {@link Linker#downcallHandle(MemorySegment, FunctionDescriptor, Linker.Option...)}. If any
     /// of the static functions is not found, a {@link RuntimeException} will be thrown. If any of
     /// the functions cannot be linked due to any reason, the relevant exception will be thrown.
@@ -58,11 +60,17 @@ public final class VulkanLoader {
     /// Instead of using this function, you may also implement your own commands loading logic.
     ///
     /// @return loaded static commands
-    /// @throws RuntimeException if any static function is not found, see {@link Loader#loadFunction}
+    /// @throws RuntimeException if any static function is not found
     /// @throws IllegalArgumentException see {@link Linker#downcallHandle(MemorySegment, FunctionDescriptor, Linker.Option...)}
     /// @throws IllegalCallerException see {@link Linker#downcallHandle(MemorySegment, FunctionDescriptor, Linker.Option...)}
-    public static @NotNull VkStaticCommands loadStaticCommands() {
-        return new VkStaticCommands(Loader::loadFunction);
+    public static @NotNull VkStaticCommands loadStaticCommands(ISharedLibrary libVulkan) {
+        return new VkStaticCommands(name -> {
+            MemorySegment segment = libVulkan.load(name);
+            if (segment.equals(MemorySegment.NULL)) {
+                throw new RuntimeException("Vulkan static function " + name + " not found");
+            }
+            return segment;
+        });
     }
 
     /// Load Vulkan entry commands.

@@ -203,12 +203,13 @@ public record VkPhysicalDeviceSparseImageFormatInfo2(@NotNull MemorySegment segm
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkPhysicalDeviceSparseImageFormatInfo2 pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkPhysicalDeviceSparseImageFormatInfo2 pNext(@Nullable IPointer pointer) {
@@ -234,20 +235,20 @@ public record VkPhysicalDeviceSparseImageFormatInfo2(@NotNull MemorySegment segm
         return this;
     }
 
-    public @EnumType(VkSampleCountFlags.class) int samples() {
+    public @Bitmask(VkSampleCountFlags.class) int samples() {
         return segment.get(LAYOUT$samples, OFFSET$samples);
     }
 
-    public VkPhysicalDeviceSparseImageFormatInfo2 samples(@EnumType(VkSampleCountFlags.class) int value) {
+    public VkPhysicalDeviceSparseImageFormatInfo2 samples(@Bitmask(VkSampleCountFlags.class) int value) {
         segment.set(LAYOUT$samples, OFFSET$samples, value);
         return this;
     }
 
-    public @EnumType(VkImageUsageFlags.class) int usage() {
+    public @Bitmask(VkImageUsageFlags.class) int usage() {
         return segment.get(LAYOUT$usage, OFFSET$usage);
     }
 
-    public VkPhysicalDeviceSparseImageFormatInfo2 usage(@EnumType(VkImageUsageFlags.class) int value) {
+    public VkPhysicalDeviceSparseImageFormatInfo2 usage(@Bitmask(VkImageUsageFlags.class) int value) {
         segment.set(LAYOUT$usage, OFFSET$usage, value);
         return this;
     }

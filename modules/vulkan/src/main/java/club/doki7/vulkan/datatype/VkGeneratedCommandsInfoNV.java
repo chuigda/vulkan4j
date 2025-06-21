@@ -211,12 +211,13 @@ public record VkGeneratedCommandsInfoNV(@NotNull MemorySegment segment) implemen
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkGeneratedCommandsInfoNV pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkGeneratedCommandsInfoNV pNext(@Nullable IPointer pointer) {
@@ -292,11 +293,11 @@ public record VkGeneratedCommandsInfoNV(@NotNull MemorySegment segment) implemen
         return new VkIndirectCommandsStreamNV(s);
     }
 
-    public @Pointer(target=VkIndirectCommandsStreamNV.class) MemorySegment pStreamsRaw() {
+    public @Pointer(target=VkIndirectCommandsStreamNV.class) @NotNull MemorySegment pStreamsRaw() {
         return segment.get(LAYOUT$pStreams, OFFSET$pStreams);
     }
 
-    public void pStreamsRaw(@Pointer(target=VkIndirectCommandsStreamNV.class) MemorySegment value) {
+    public void pStreamsRaw(@Pointer(target=VkIndirectCommandsStreamNV.class) @NotNull MemorySegment value) {
         segment.set(LAYOUT$pStreams, OFFSET$pStreams, value);
     }
 

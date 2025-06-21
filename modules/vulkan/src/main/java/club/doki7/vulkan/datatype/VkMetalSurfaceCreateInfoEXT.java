@@ -200,12 +200,13 @@ public record VkMetalSurfaceCreateInfoEXT(@NotNull MemorySegment segment) implem
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkMetalSurfaceCreateInfoEXT pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkMetalSurfaceCreateInfoEXT pNext(@Nullable IPointer pointer) {
@@ -213,11 +214,11 @@ public record VkMetalSurfaceCreateInfoEXT(@NotNull MemorySegment segment) implem
         return this;
     }
 
-    public @EnumType(VkMetalSurfaceCreateFlagsEXT.class) int flags() {
+    public @Bitmask(VkMetalSurfaceCreateFlagsEXT.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public VkMetalSurfaceCreateInfoEXT flags(@EnumType(VkMetalSurfaceCreateFlagsEXT.class) int value) {
+    public VkMetalSurfaceCreateInfoEXT flags(@Bitmask(VkMetalSurfaceCreateFlagsEXT.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
         return this;
     }
@@ -239,11 +240,11 @@ public record VkMetalSurfaceCreateInfoEXT(@NotNull MemorySegment segment) implem
         return this;
     }
 
-    public @Pointer(comment="CAMetalLayer*") MemorySegment pLayerRaw() {
+    public @Pointer(comment="CAMetalLayer*") @NotNull MemorySegment pLayerRaw() {
         return segment.get(LAYOUT$pLayer, OFFSET$pLayer);
     }
 
-    public void pLayerRaw(@Pointer(comment="CAMetalLayer*") MemorySegment value) {
+    public void pLayerRaw(@Pointer(comment="CAMetalLayer*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pLayer, OFFSET$pLayer, value);
     }
 

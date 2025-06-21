@@ -199,12 +199,13 @@ public record VkRenderPassSubpassFeedbackCreateInfoEXT(@NotNull MemorySegment se
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkRenderPassSubpassFeedbackCreateInfoEXT pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkRenderPassSubpassFeedbackCreateInfoEXT pNext(@Nullable IPointer pointer) {
@@ -236,11 +237,11 @@ public record VkRenderPassSubpassFeedbackCreateInfoEXT(@NotNull MemorySegment se
         return new VkRenderPassSubpassFeedbackInfoEXT(s);
     }
 
-    public @Pointer(target=VkRenderPassSubpassFeedbackInfoEXT.class) MemorySegment pSubpassFeedbackRaw() {
+    public @Pointer(target=VkRenderPassSubpassFeedbackInfoEXT.class) @NotNull MemorySegment pSubpassFeedbackRaw() {
         return segment.get(LAYOUT$pSubpassFeedback, OFFSET$pSubpassFeedback);
     }
 
-    public void pSubpassFeedbackRaw(@Pointer(target=VkRenderPassSubpassFeedbackInfoEXT.class) MemorySegment value) {
+    public void pSubpassFeedbackRaw(@Pointer(target=VkRenderPassSubpassFeedbackInfoEXT.class) @NotNull MemorySegment value) {
         segment.set(LAYOUT$pSubpassFeedback, OFFSET$pSubpassFeedback, value);
     }
 

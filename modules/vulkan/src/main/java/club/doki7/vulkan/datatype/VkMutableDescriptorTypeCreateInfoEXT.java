@@ -200,12 +200,13 @@ public record VkMutableDescriptorTypeCreateInfoEXT(@NotNull MemorySegment segmen
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkMutableDescriptorTypeCreateInfoEXT pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkMutableDescriptorTypeCreateInfoEXT pNext(@Nullable IPointer pointer) {
@@ -246,11 +247,11 @@ public record VkMutableDescriptorTypeCreateInfoEXT(@NotNull MemorySegment segmen
         return new VkMutableDescriptorTypeListEXT(s);
     }
 
-    public @Pointer(target=VkMutableDescriptorTypeListEXT.class) MemorySegment pMutableDescriptorTypeListsRaw() {
+    public @Pointer(target=VkMutableDescriptorTypeListEXT.class) @NotNull MemorySegment pMutableDescriptorTypeListsRaw() {
         return segment.get(LAYOUT$pMutableDescriptorTypeLists, OFFSET$pMutableDescriptorTypeLists);
     }
 
-    public void pMutableDescriptorTypeListsRaw(@Pointer(target=VkMutableDescriptorTypeListEXT.class) MemorySegment value) {
+    public void pMutableDescriptorTypeListsRaw(@Pointer(target=VkMutableDescriptorTypeListEXT.class) @NotNull MemorySegment value) {
         segment.set(LAYOUT$pMutableDescriptorTypeLists, OFFSET$pMutableDescriptorTypeLists, value);
     }
 

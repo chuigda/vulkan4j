@@ -201,12 +201,13 @@ public record VkConditionalRenderingBeginInfoEXT(@NotNull MemorySegment segment)
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkConditionalRenderingBeginInfoEXT pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkConditionalRenderingBeginInfoEXT pNext(@Nullable IPointer pointer) {
@@ -236,11 +237,11 @@ public record VkConditionalRenderingBeginInfoEXT(@NotNull MemorySegment segment)
         return this;
     }
 
-    public @EnumType(VkConditionalRenderingFlagsEXT.class) int flags() {
+    public @Bitmask(VkConditionalRenderingFlagsEXT.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public VkConditionalRenderingBeginInfoEXT flags(@EnumType(VkConditionalRenderingFlagsEXT.class) int value) {
+    public VkConditionalRenderingBeginInfoEXT flags(@Bitmask(VkConditionalRenderingFlagsEXT.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
         return this;
     }

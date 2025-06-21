@@ -178,11 +178,11 @@ public record VkSubpassDescription(@NotNull MemorySegment segment) implements IV
         return ret;
     }
 
-    public @EnumType(VkSubpassDescriptionFlags.class) int flags() {
+    public @Bitmask(VkSubpassDescriptionFlags.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public VkSubpassDescription flags(@EnumType(VkSubpassDescriptionFlags.class) int value) {
+    public VkSubpassDescription flags(@Bitmask(VkSubpassDescriptionFlags.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
         return this;
     }
@@ -229,11 +229,11 @@ public record VkSubpassDescription(@NotNull MemorySegment segment) implements IV
         return new VkAttachmentReference(s);
     }
 
-    public @Pointer(target=VkAttachmentReference.class) MemorySegment pInputAttachmentsRaw() {
+    public @Pointer(target=VkAttachmentReference.class) @NotNull MemorySegment pInputAttachmentsRaw() {
         return segment.get(LAYOUT$pInputAttachments, OFFSET$pInputAttachments);
     }
 
-    public void pInputAttachmentsRaw(@Pointer(target=VkAttachmentReference.class) MemorySegment value) {
+    public void pInputAttachmentsRaw(@Pointer(target=VkAttachmentReference.class) @NotNull MemorySegment value) {
         segment.set(LAYOUT$pInputAttachments, OFFSET$pInputAttachments, value);
     }
 
@@ -270,11 +270,11 @@ public record VkSubpassDescription(@NotNull MemorySegment segment) implements IV
         return new VkAttachmentReference(s);
     }
 
-    public @Pointer(target=VkAttachmentReference.class) MemorySegment pColorAttachmentsRaw() {
+    public @Pointer(target=VkAttachmentReference.class) @NotNull MemorySegment pColorAttachmentsRaw() {
         return segment.get(LAYOUT$pColorAttachments, OFFSET$pColorAttachments);
     }
 
-    public void pColorAttachmentsRaw(@Pointer(target=VkAttachmentReference.class) MemorySegment value) {
+    public void pColorAttachmentsRaw(@Pointer(target=VkAttachmentReference.class) @NotNull MemorySegment value) {
         segment.set(LAYOUT$pColorAttachments, OFFSET$pColorAttachments, value);
     }
 
@@ -302,11 +302,11 @@ public record VkSubpassDescription(@NotNull MemorySegment segment) implements IV
         return new VkAttachmentReference(s);
     }
 
-    public @Pointer(target=VkAttachmentReference.class) MemorySegment pResolveAttachmentsRaw() {
+    public @Pointer(target=VkAttachmentReference.class) @NotNull MemorySegment pResolveAttachmentsRaw() {
         return segment.get(LAYOUT$pResolveAttachments, OFFSET$pResolveAttachments);
     }
 
-    public void pResolveAttachmentsRaw(@Pointer(target=VkAttachmentReference.class) MemorySegment value) {
+    public void pResolveAttachmentsRaw(@Pointer(target=VkAttachmentReference.class) @NotNull MemorySegment value) {
         segment.set(LAYOUT$pResolveAttachments, OFFSET$pResolveAttachments, value);
     }
 
@@ -334,11 +334,11 @@ public record VkSubpassDescription(@NotNull MemorySegment segment) implements IV
         return new VkAttachmentReference(s);
     }
 
-    public @Pointer(target=VkAttachmentReference.class) MemorySegment pDepthStencilAttachmentRaw() {
+    public @Pointer(target=VkAttachmentReference.class) @NotNull MemorySegment pDepthStencilAttachmentRaw() {
         return segment.get(LAYOUT$pDepthStencilAttachment, OFFSET$pDepthStencilAttachment);
     }
 
-    public void pDepthStencilAttachmentRaw(@Pointer(target=VkAttachmentReference.class) MemorySegment value) {
+    public void pDepthStencilAttachmentRaw(@Pointer(target=VkAttachmentReference.class) @NotNull MemorySegment value) {
         segment.set(LAYOUT$pDepthStencilAttachment, OFFSET$pDepthStencilAttachment, value);
     }
 
@@ -369,11 +369,11 @@ public record VkSubpassDescription(@NotNull MemorySegment segment) implements IV
         return this;
     }
 
-    public @Pointer(comment="uint32_t*") MemorySegment pPreserveAttachmentsRaw() {
+    public @Pointer(comment="uint32_t*") @NotNull MemorySegment pPreserveAttachmentsRaw() {
         return segment.get(LAYOUT$pPreserveAttachments, OFFSET$pPreserveAttachments);
     }
 
-    public void pPreserveAttachmentsRaw(@Pointer(comment="uint32_t*") MemorySegment value) {
+    public void pPreserveAttachmentsRaw(@Pointer(comment="uint32_t*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pPreserveAttachments, OFFSET$pPreserveAttachments, value);
     }
 

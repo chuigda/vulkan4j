@@ -189,7 +189,7 @@ public record VkRenderPassSubpassFeedbackInfoEXT(@NotNull MemorySegment segment)
         return this;
     }
 
-    public MemorySegment descriptionRaw() {
+    public @NotNull MemorySegment descriptionRaw() {
         return segment.asSlice(OFFSET$description, SIZE$description);
     }
 

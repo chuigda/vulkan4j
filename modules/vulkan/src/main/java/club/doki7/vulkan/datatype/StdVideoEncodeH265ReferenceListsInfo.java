@@ -214,7 +214,7 @@ public record StdVideoEncodeH265ReferenceListsInfo(@NotNull MemorySegment segmen
         return this;
     }
 
-    public MemorySegment RefPicList0Raw() {
+    public @NotNull MemorySegment RefPicList0Raw() {
         return segment.asSlice(OFFSET$RefPicList0, SIZE$RefPicList0);
     }
 
@@ -227,7 +227,7 @@ public record StdVideoEncodeH265ReferenceListsInfo(@NotNull MemorySegment segmen
         return this;
     }
 
-    public MemorySegment RefPicList1Raw() {
+    public @NotNull MemorySegment RefPicList1Raw() {
         return segment.asSlice(OFFSET$RefPicList1, SIZE$RefPicList1);
     }
 
@@ -240,7 +240,7 @@ public record StdVideoEncodeH265ReferenceListsInfo(@NotNull MemorySegment segmen
         return this;
     }
 
-    public MemorySegment list_entry_l0Raw() {
+    public @NotNull MemorySegment list_entry_l0Raw() {
         return segment.asSlice(OFFSET$list_entry_l0, SIZE$list_entry_l0);
     }
 
@@ -253,7 +253,7 @@ public record StdVideoEncodeH265ReferenceListsInfo(@NotNull MemorySegment segmen
         return this;
     }
 
-    public MemorySegment list_entry_l1Raw() {
+    public @NotNull MemorySegment list_entry_l1Raw() {
         return segment.asSlice(OFFSET$list_entry_l1, SIZE$list_entry_l1);
     }
 

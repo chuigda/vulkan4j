@@ -175,12 +175,13 @@ public record STBTT_PackContext(@NotNull MemorySegment segment) implements ISTBT
         return ret;
     }
 
-    public @Pointer(comment="void*") MemorySegment userAllocatorContext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment userAllocatorContext() {
         return segment.get(LAYOUT$userAllocatorContext, OFFSET$userAllocatorContext);
     }
 
-    public void userAllocatorContext(@Pointer(comment="void*") MemorySegment value) {
+    public STBTT_PackContext userAllocatorContext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$userAllocatorContext, OFFSET$userAllocatorContext, value);
+        return this;
     }
 
     public STBTT_PackContext userAllocatorContext(@Nullable IPointer pointer) {
@@ -188,12 +189,13 @@ public record STBTT_PackContext(@NotNull MemorySegment segment) implements ISTBT
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment packInfo() {
+    public @Pointer(comment="void*") @NotNull MemorySegment packInfo() {
         return segment.get(LAYOUT$packInfo, OFFSET$packInfo);
     }
 
-    public void packInfo(@Pointer(comment="void*") MemorySegment value) {
+    public STBTT_PackContext packInfo(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$packInfo, OFFSET$packInfo, value);
+        return this;
     }
 
     public STBTT_PackContext packInfo(@Nullable IPointer pointer) {
@@ -282,20 +284,21 @@ public record STBTT_PackContext(@NotNull MemorySegment segment) implements ISTBT
         return this;
     }
 
-    public @Pointer(comment="int8_t*") MemorySegment pixelsRaw() {
+    public @Pointer(comment="int8_t*") @NotNull MemorySegment pixelsRaw() {
         return segment.get(LAYOUT$pixels, OFFSET$pixels);
     }
 
-    public void pixelsRaw(@Pointer(comment="int8_t*") MemorySegment value) {
+    public void pixelsRaw(@Pointer(comment="int8_t*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pixels, OFFSET$pixels, value);
     }
 
-    public @Pointer(comment="void*") MemorySegment nodes() {
+    public @Pointer(comment="void*") @NotNull MemorySegment nodes() {
         return segment.get(LAYOUT$nodes, OFFSET$nodes);
     }
 
-    public void nodes(@Pointer(comment="void*") MemorySegment value) {
+    public STBTT_PackContext nodes(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$nodes, OFFSET$nodes, value);
+        return this;
     }
 
     public STBTT_PackContext nodes(@Nullable IPointer pointer) {

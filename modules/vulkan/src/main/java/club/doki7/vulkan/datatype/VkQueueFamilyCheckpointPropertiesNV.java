@@ -199,12 +199,13 @@ public record VkQueueFamilyCheckpointPropertiesNV(@NotNull MemorySegment segment
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkQueueFamilyCheckpointPropertiesNV pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkQueueFamilyCheckpointPropertiesNV pNext(@Nullable IPointer pointer) {
@@ -212,11 +213,11 @@ public record VkQueueFamilyCheckpointPropertiesNV(@NotNull MemorySegment segment
         return this;
     }
 
-    public @EnumType(VkPipelineStageFlags.class) int checkpointExecutionStageMask() {
+    public @Bitmask(VkPipelineStageFlags.class) int checkpointExecutionStageMask() {
         return segment.get(LAYOUT$checkpointExecutionStageMask, OFFSET$checkpointExecutionStageMask);
     }
 
-    public VkQueueFamilyCheckpointPropertiesNV checkpointExecutionStageMask(@EnumType(VkPipelineStageFlags.class) int value) {
+    public VkQueueFamilyCheckpointPropertiesNV checkpointExecutionStageMask(@Bitmask(VkPipelineStageFlags.class) int value) {
         segment.set(LAYOUT$checkpointExecutionStageMask, OFFSET$checkpointExecutionStageMask, value);
         return this;
     }

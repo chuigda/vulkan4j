@@ -200,12 +200,13 @@ public record VkPipelineTessellationStateCreateInfo(@NotNull MemorySegment segme
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkPipelineTessellationStateCreateInfo pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkPipelineTessellationStateCreateInfo pNext(@Nullable IPointer pointer) {
@@ -213,11 +214,11 @@ public record VkPipelineTessellationStateCreateInfo(@NotNull MemorySegment segme
         return this;
     }
 
-    public @EnumType(VkPipelineTessellationStateCreateFlags.class) int flags() {
+    public @Bitmask(VkPipelineTessellationStateCreateFlags.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public VkPipelineTessellationStateCreateInfo flags(@EnumType(VkPipelineTessellationStateCreateFlags.class) int value) {
+    public VkPipelineTessellationStateCreateInfo flags(@Bitmask(VkPipelineTessellationStateCreateFlags.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
         return this;
     }

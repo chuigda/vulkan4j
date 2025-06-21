@@ -200,12 +200,13 @@ public record VkAccelerationStructureMotionInfoNV(@NotNull MemorySegment segment
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkAccelerationStructureMotionInfoNV pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkAccelerationStructureMotionInfoNV pNext(@Nullable IPointer pointer) {
@@ -222,11 +223,11 @@ public record VkAccelerationStructureMotionInfoNV(@NotNull MemorySegment segment
         return this;
     }
 
-    public @EnumType(VkAccelerationStructureMotionInfoFlagsNV.class) int flags() {
+    public @Bitmask(VkAccelerationStructureMotionInfoFlagsNV.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public VkAccelerationStructureMotionInfoNV flags(@EnumType(VkAccelerationStructureMotionInfoFlagsNV.class) int value) {
+    public VkAccelerationStructureMotionInfoNV flags(@Bitmask(VkAccelerationStructureMotionInfoFlagsNV.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
         return this;
     }

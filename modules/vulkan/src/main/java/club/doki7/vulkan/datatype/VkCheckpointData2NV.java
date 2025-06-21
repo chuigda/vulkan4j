@@ -200,12 +200,13 @@ public record VkCheckpointData2NV(@NotNull MemorySegment segment) implements IVk
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkCheckpointData2NV pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkCheckpointData2NV pNext(@Nullable IPointer pointer) {
@@ -213,21 +214,22 @@ public record VkCheckpointData2NV(@NotNull MemorySegment segment) implements IVk
         return this;
     }
 
-    public @EnumType(VkPipelineStageFlags2.class) long stage() {
+    public @Bitmask(VkPipelineStageFlags2.class) long stage() {
         return segment.get(LAYOUT$stage, OFFSET$stage);
     }
 
-    public VkCheckpointData2NV stage(@EnumType(VkPipelineStageFlags2.class) long value) {
+    public VkCheckpointData2NV stage(@Bitmask(VkPipelineStageFlags2.class) long value) {
         segment.set(LAYOUT$stage, OFFSET$stage, value);
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pCheckpointMarker() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pCheckpointMarker() {
         return segment.get(LAYOUT$pCheckpointMarker, OFFSET$pCheckpointMarker);
     }
 
-    public void pCheckpointMarker(@Pointer(comment="void*") MemorySegment value) {
+    public VkCheckpointData2NV pCheckpointMarker(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pCheckpointMarker, OFFSET$pCheckpointMarker, value);
+        return this;
     }
 
     public VkCheckpointData2NV pCheckpointMarker(@Nullable IPointer pointer) {

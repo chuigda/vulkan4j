@@ -202,12 +202,13 @@ public record VkPhysicalDeviceSubgroupSizeControlProperties(@NotNull MemorySegme
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkPhysicalDeviceSubgroupSizeControlProperties pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkPhysicalDeviceSubgroupSizeControlProperties pNext(@Nullable IPointer pointer) {
@@ -242,11 +243,11 @@ public record VkPhysicalDeviceSubgroupSizeControlProperties(@NotNull MemorySegme
         return this;
     }
 
-    public @EnumType(VkShaderStageFlags.class) int requiredSubgroupSizeStages() {
+    public @Bitmask(VkShaderStageFlags.class) int requiredSubgroupSizeStages() {
         return segment.get(LAYOUT$requiredSubgroupSizeStages, OFFSET$requiredSubgroupSizeStages);
     }
 
-    public VkPhysicalDeviceSubgroupSizeControlProperties requiredSubgroupSizeStages(@EnumType(VkShaderStageFlags.class) int value) {
+    public VkPhysicalDeviceSubgroupSizeControlProperties requiredSubgroupSizeStages(@Bitmask(VkShaderStageFlags.class) int value) {
         segment.set(LAYOUT$requiredSubgroupSizeStages, OFFSET$requiredSubgroupSizeStages, value);
         return this;
     }

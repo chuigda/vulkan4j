@@ -16,7 +16,7 @@ public final class VkQueueFlags {
     public static final int VIDEO_DECODE_KHR = 0x20;
     public static final int VIDEO_ENCODE_KHR = 0x40;
 
-    public static String explain(@EnumType(VkQueueFlags.class) int flags) {
+    public static String explain(@Bitmask(VkQueueFlags.class) int flags) {
         List<String> detectedFlagBits = new ArrayList<>();
         if ((flags & COMPUTE) != 0) {
             detectedFlagBits.add("VK_QUEUE_COMPUTE_BIT");

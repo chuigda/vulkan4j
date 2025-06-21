@@ -1,6 +1,7 @@
 package example.stb;
 
-import club.doki7.ffm.Loader;
+import club.doki7.ffm.library.ILibraryLoader;
+import club.doki7.ffm.library.ISharedLibrary;
 import club.doki7.ffm.ptr.BytePtr;
 import club.doki7.ffm.ptr.IntPtr;
 import club.doki7.stb.STBJavaTraceUtil;
@@ -23,15 +24,15 @@ import java.util.Objects;
 import java.util.function.Consumer;
 
 public final class ImageResize {
+    private static final ISharedLibrary libSTB = ILibraryLoader.platformLoader().loadLibrary("stb");
     static {
-        System.loadLibrary("stb");
-        STBJavaTraceUtil.enableJavaTraceForSTB();
+        STBJavaTraceUtil.enableJavaTraceForSTB(libSTB);
     }
 
-    public static void main(String[] args) throws Exception {
-        STBI stbI = new STBI(Loader::loadFunctionOrNull);
-        STBIR stbIR = new STBIR(Loader::loadFunctionOrNull);
-        STBIW stbIW = new STBIW(Loader::loadFunctionOrNull);
+    public static void main(String[] args) throws IOException {
+        STBI stbI = new STBI(libSTB);
+        STBIR stbIR = new STBIR(libSTB);
+        STBIW stbIW = new STBIW(libSTB);
 
         try (Arena arena = Arena.ofConfined();
              RandomAccessFile file = new RandomAccessFile("example/resc/looking-for-trouble.png", "r")) {

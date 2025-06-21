@@ -199,12 +199,13 @@ public record VkExternalMemoryImageCreateInfoNV(@NotNull MemorySegment segment) 
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkExternalMemoryImageCreateInfoNV pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkExternalMemoryImageCreateInfoNV pNext(@Nullable IPointer pointer) {
@@ -212,11 +213,11 @@ public record VkExternalMemoryImageCreateInfoNV(@NotNull MemorySegment segment) 
         return this;
     }
 
-    public @EnumType(VkExternalMemoryHandleTypeFlagsNV.class) int handleTypes() {
+    public @Bitmask(VkExternalMemoryHandleTypeFlagsNV.class) int handleTypes() {
         return segment.get(LAYOUT$handleTypes, OFFSET$handleTypes);
     }
 
-    public VkExternalMemoryImageCreateInfoNV handleTypes(@EnumType(VkExternalMemoryHandleTypeFlagsNV.class) int value) {
+    public VkExternalMemoryImageCreateInfoNV handleTypes(@Bitmask(VkExternalMemoryHandleTypeFlagsNV.class) int value) {
         segment.set(LAYOUT$handleTypes, OFFSET$handleTypes, value);
         return this;
     }

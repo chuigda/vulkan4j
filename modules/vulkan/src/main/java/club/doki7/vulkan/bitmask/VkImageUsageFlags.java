@@ -32,7 +32,7 @@ public final class VkImageUsageFlags {
     public static final int VIDEO_ENCODE_QUANTIZATION_DELTA_MAP_KHR = 0x2000000;
     public static final int VIDEO_ENCODE_SRC_KHR = 0x4000;
 
-    public static String explain(@EnumType(VkImageUsageFlags.class) int flags) {
+    public static String explain(@Bitmask(VkImageUsageFlags.class) int flags) {
         List<String> detectedFlagBits = new ArrayList<>();
         if ((flags & ATTACHMENT_FEEDBACK_LOOP_EXT) != 0) {
             detectedFlagBits.add("VK_IMAGE_USAGE_ATTACHMENT_FEEDBACK_LOOP_BIT_EXT");

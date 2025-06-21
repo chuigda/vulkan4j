@@ -207,12 +207,13 @@ public record VkRenderPassCreateInfo2(@NotNull MemorySegment segment) implements
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkRenderPassCreateInfo2 pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkRenderPassCreateInfo2 pNext(@Nullable IPointer pointer) {
@@ -220,11 +221,11 @@ public record VkRenderPassCreateInfo2(@NotNull MemorySegment segment) implements
         return this;
     }
 
-    public @EnumType(VkRenderPassCreateFlags.class) int flags() {
+    public @Bitmask(VkRenderPassCreateFlags.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public VkRenderPassCreateInfo2 flags(@EnumType(VkRenderPassCreateFlags.class) int value) {
+    public VkRenderPassCreateInfo2 flags(@Bitmask(VkRenderPassCreateFlags.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
         return this;
     }
@@ -262,11 +263,11 @@ public record VkRenderPassCreateInfo2(@NotNull MemorySegment segment) implements
         return new VkAttachmentDescription2(s);
     }
 
-    public @Pointer(target=VkAttachmentDescription2.class) MemorySegment pAttachmentsRaw() {
+    public @Pointer(target=VkAttachmentDescription2.class) @NotNull MemorySegment pAttachmentsRaw() {
         return segment.get(LAYOUT$pAttachments, OFFSET$pAttachments);
     }
 
-    public void pAttachmentsRaw(@Pointer(target=VkAttachmentDescription2.class) MemorySegment value) {
+    public void pAttachmentsRaw(@Pointer(target=VkAttachmentDescription2.class) @NotNull MemorySegment value) {
         segment.set(LAYOUT$pAttachments, OFFSET$pAttachments, value);
     }
 
@@ -303,11 +304,11 @@ public record VkRenderPassCreateInfo2(@NotNull MemorySegment segment) implements
         return new VkSubpassDescription2(s);
     }
 
-    public @Pointer(target=VkSubpassDescription2.class) MemorySegment pSubpassesRaw() {
+    public @Pointer(target=VkSubpassDescription2.class) @NotNull MemorySegment pSubpassesRaw() {
         return segment.get(LAYOUT$pSubpasses, OFFSET$pSubpasses);
     }
 
-    public void pSubpassesRaw(@Pointer(target=VkSubpassDescription2.class) MemorySegment value) {
+    public void pSubpassesRaw(@Pointer(target=VkSubpassDescription2.class) @NotNull MemorySegment value) {
         segment.set(LAYOUT$pSubpasses, OFFSET$pSubpasses, value);
     }
 
@@ -344,11 +345,11 @@ public record VkRenderPassCreateInfo2(@NotNull MemorySegment segment) implements
         return new VkSubpassDependency2(s);
     }
 
-    public @Pointer(target=VkSubpassDependency2.class) MemorySegment pDependenciesRaw() {
+    public @Pointer(target=VkSubpassDependency2.class) @NotNull MemorySegment pDependenciesRaw() {
         return segment.get(LAYOUT$pDependencies, OFFSET$pDependencies);
     }
 
-    public void pDependenciesRaw(@Pointer(target=VkSubpassDependency2.class) MemorySegment value) {
+    public void pDependenciesRaw(@Pointer(target=VkSubpassDependency2.class) @NotNull MemorySegment value) {
         segment.set(LAYOUT$pDependencies, OFFSET$pDependencies, value);
     }
 
@@ -379,11 +380,11 @@ public record VkRenderPassCreateInfo2(@NotNull MemorySegment segment) implements
         return this;
     }
 
-    public @Pointer(comment="uint32_t*") MemorySegment pCorrelatedViewMasksRaw() {
+    public @Pointer(comment="uint32_t*") @NotNull MemorySegment pCorrelatedViewMasksRaw() {
         return segment.get(LAYOUT$pCorrelatedViewMasks, OFFSET$pCorrelatedViewMasks);
     }
 
-    public void pCorrelatedViewMasksRaw(@Pointer(comment="uint32_t*") MemorySegment value) {
+    public void pCorrelatedViewMasksRaw(@Pointer(comment="uint32_t*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pCorrelatedViewMasks, OFFSET$pCorrelatedViewMasks, value);
     }
 

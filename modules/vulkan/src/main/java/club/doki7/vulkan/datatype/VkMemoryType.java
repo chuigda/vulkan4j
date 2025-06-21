@@ -170,11 +170,11 @@ public record VkMemoryType(@NotNull MemorySegment segment) implements IVkMemoryT
         return ret;
     }
 
-    public @EnumType(VkMemoryPropertyFlags.class) int propertyFlags() {
+    public @Bitmask(VkMemoryPropertyFlags.class) int propertyFlags() {
         return segment.get(LAYOUT$propertyFlags, OFFSET$propertyFlags);
     }
 
-    public VkMemoryType propertyFlags(@EnumType(VkMemoryPropertyFlags.class) int value) {
+    public VkMemoryType propertyFlags(@Bitmask(VkMemoryPropertyFlags.class) int value) {
         segment.set(LAYOUT$propertyFlags, OFFSET$propertyFlags, value);
         return this;
     }

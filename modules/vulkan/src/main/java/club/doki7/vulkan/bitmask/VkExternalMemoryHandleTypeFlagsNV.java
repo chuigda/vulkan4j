@@ -12,7 +12,7 @@ public final class VkExternalMemoryHandleTypeFlagsNV {
     public static final int OPAQUE_WIN32 = 0x1;
     public static final int OPAQUE_WIN32_KMT = 0x2;
 
-    public static String explain(@EnumType(VkExternalMemoryHandleTypeFlagsNV.class) int flags) {
+    public static String explain(@Bitmask(VkExternalMemoryHandleTypeFlagsNV.class) int flags) {
         List<String> detectedFlagBits = new ArrayList<>();
         if ((flags & D3D11_IMAGE) != 0) {
             detectedFlagBits.add("VK_EXTERNAL_MEMORY_HANDLE_TYPE_D3D11_IMAGE_BIT_NV");

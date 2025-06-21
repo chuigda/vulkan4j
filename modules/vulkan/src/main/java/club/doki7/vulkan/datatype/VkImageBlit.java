@@ -206,7 +206,7 @@ public record VkImageBlit(@NotNull MemorySegment segment) implements IVkImageBli
         MemorySegment.copy(value.segment(), 0, s, index * VkOffset3D.BYTES, VkOffset3D.BYTES);
     }
 
-    public MemorySegment srcOffsetsRaw() {
+    public @NotNull MemorySegment srcOffsetsRaw() {
         return segment.asSlice(OFFSET$srcOffsets, SIZE$srcOffsets);
     }
 
@@ -244,7 +244,7 @@ public record VkImageBlit(@NotNull MemorySegment segment) implements IVkImageBli
         MemorySegment.copy(value.segment(), 0, s, index * VkOffset3D.BYTES, VkOffset3D.BYTES);
     }
 
-    public MemorySegment dstOffsetsRaw() {
+    public @NotNull MemorySegment dstOffsetsRaw() {
         return segment.asSlice(OFFSET$dstOffsets, SIZE$dstOffsets);
     }
 

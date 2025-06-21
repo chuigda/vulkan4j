@@ -209,12 +209,13 @@ public record VkBufferCollectionPropertiesFUCHSIA(@NotNull MemorySegment segment
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkBufferCollectionPropertiesFUCHSIA pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkBufferCollectionPropertiesFUCHSIA pNext(@Nullable IPointer pointer) {
@@ -258,11 +259,11 @@ public record VkBufferCollectionPropertiesFUCHSIA(@NotNull MemorySegment segment
         return this;
     }
 
-    public @EnumType(VkFormatFeatureFlags.class) int formatFeatures() {
+    public @Bitmask(VkFormatFeatureFlags.class) int formatFeatures() {
         return segment.get(LAYOUT$formatFeatures, OFFSET$formatFeatures);
     }
 
-    public VkBufferCollectionPropertiesFUCHSIA formatFeatures(@EnumType(VkFormatFeatureFlags.class) int value) {
+    public VkBufferCollectionPropertiesFUCHSIA formatFeatures(@Bitmask(VkFormatFeatureFlags.class) int value) {
         segment.set(LAYOUT$formatFeatures, OFFSET$formatFeatures, value);
         return this;
     }

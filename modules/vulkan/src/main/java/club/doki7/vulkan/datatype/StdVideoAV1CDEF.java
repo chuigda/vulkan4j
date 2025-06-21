@@ -199,7 +199,7 @@ public record StdVideoAV1CDEF(@NotNull MemorySegment segment) implements IStdVid
         return this;
     }
 
-    public MemorySegment cdef_y_pri_strengthRaw() {
+    public @NotNull MemorySegment cdef_y_pri_strengthRaw() {
         return segment.asSlice(OFFSET$cdef_y_pri_strength, SIZE$cdef_y_pri_strength);
     }
 
@@ -212,7 +212,7 @@ public record StdVideoAV1CDEF(@NotNull MemorySegment segment) implements IStdVid
         return this;
     }
 
-    public MemorySegment cdef_y_sec_strengthRaw() {
+    public @NotNull MemorySegment cdef_y_sec_strengthRaw() {
         return segment.asSlice(OFFSET$cdef_y_sec_strength, SIZE$cdef_y_sec_strength);
     }
 
@@ -225,7 +225,7 @@ public record StdVideoAV1CDEF(@NotNull MemorySegment segment) implements IStdVid
         return this;
     }
 
-    public MemorySegment cdef_uv_pri_strengthRaw() {
+    public @NotNull MemorySegment cdef_uv_pri_strengthRaw() {
         return segment.asSlice(OFFSET$cdef_uv_pri_strength, SIZE$cdef_uv_pri_strength);
     }
 
@@ -238,7 +238,7 @@ public record StdVideoAV1CDEF(@NotNull MemorySegment segment) implements IStdVid
         return this;
     }
 
-    public MemorySegment cdef_uv_sec_strengthRaw() {
+    public @NotNull MemorySegment cdef_uv_sec_strengthRaw() {
         return segment.asSlice(OFFSET$cdef_uv_sec_strength, SIZE$cdef_uv_sec_strength);
     }
 

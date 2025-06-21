@@ -39,10 +39,10 @@ data class CPointerType(
     override var comment: String?,
 ) : CType, ICommentable<CPointerType> {
     override val jType: String = if (comment != null) {
-        """@Pointer(comment="$comment") MemorySegment"""
+        """@Pointer(comment="$comment") @NotNull MemorySegment"""
     }
     else {
-        """@Pointer(comment="void*") MemorySegment"""
+        """@Pointer(comment="void*") @NotNull MemorySegment"""
     }
 
     override val jLayout: String = if (pointee is CVoidType) {
@@ -278,12 +278,15 @@ data class CStructType(val name: String, val isUnion: Boolean): CType {
 
 data class CEnumType(
     val name: String,
+    val isBitmask: Boolean,
     val bitwidth: Int? = null
 ): CFixedSizeType {
+    private val annotationClassName = if (isBitmask) "Bitmask" else "EnumType"
+
     override val jType: String get() = when (bitwidth) {
-        null, 32 -> "@EnumType($name.class) int"
-        8 -> "@EnumType($name.class) byte"
-        64 -> "@EnumType($name.class) long"
+        null, 32 -> "@$annotationClassName($name.class) int"
+        8 -> "@$annotationClassName($name.class) byte"
+        64 -> "@$annotationClassName($name.class) long"
         else -> error("unsupported bitwidth: $bitwidth")
     }
 
@@ -317,9 +320,9 @@ data class CEnumType(
     }
 
     override val jPtrType: String = when (bitwidth) {
-        null, 32 -> "@EnumType($name.class) IntPtr"
-        8 -> "@EnumType($name.class) BytePtr"
-        64 -> "@EnumType($name.class) LongPtr"
+        null, 32 -> "@$annotationClassName($name.class) IntPtr"
+        8 -> "@$annotationClassName($name.class) BytePtr"
+        64 -> "@$annotationClassName($name.class) LongPtr"
         else -> error("unsupported bitwidth: $bitwidth")
     }
 
@@ -617,10 +620,10 @@ fun identifierTypeLookup(registry: RegistryBase, refRegistries: List<RegistryBas
         CStructType(type.ident.value, true)
     }
     else if (registry.enumerations.contains(type.ident)) {
-        CEnumType(type.ident.value)
+        CEnumType(type.ident.value, isBitmask = false)
     }
     else if (registry.bitmasks.contains(type.ident)) {
-        CEnumType(type.ident.value, bitwidth=registry.bitmasks[type.ident]!!.bitwidth)
+        CEnumType(type.ident.value, isBitmask = true, bitwidth=registry.bitmasks[type.ident]!!.bitwidth)
     }
     else if (registry.opaqueHandleTypedefs.contains(type.ident)) {
         CHandleType(type.ident.value)

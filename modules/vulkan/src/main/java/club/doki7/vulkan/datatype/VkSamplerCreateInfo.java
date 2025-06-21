@@ -214,12 +214,13 @@ public record VkSamplerCreateInfo(@NotNull MemorySegment segment) implements IVk
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkSamplerCreateInfo pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkSamplerCreateInfo pNext(@Nullable IPointer pointer) {
@@ -227,11 +228,11 @@ public record VkSamplerCreateInfo(@NotNull MemorySegment segment) implements IVk
         return this;
     }
 
-    public @EnumType(VkSamplerCreateFlags.class) int flags() {
+    public @Bitmask(VkSamplerCreateFlags.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public VkSamplerCreateInfo flags(@EnumType(VkSamplerCreateFlags.class) int value) {
+    public VkSamplerCreateInfo flags(@Bitmask(VkSamplerCreateFlags.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
         return this;
     }

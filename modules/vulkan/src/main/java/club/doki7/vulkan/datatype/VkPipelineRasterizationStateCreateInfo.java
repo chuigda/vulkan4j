@@ -209,12 +209,13 @@ public record VkPipelineRasterizationStateCreateInfo(@NotNull MemorySegment segm
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkPipelineRasterizationStateCreateInfo pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkPipelineRasterizationStateCreateInfo pNext(@Nullable IPointer pointer) {
@@ -222,11 +223,11 @@ public record VkPipelineRasterizationStateCreateInfo(@NotNull MemorySegment segm
         return this;
     }
 
-    public @EnumType(VkPipelineRasterizationStateCreateFlags.class) int flags() {
+    public @Bitmask(VkPipelineRasterizationStateCreateFlags.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public VkPipelineRasterizationStateCreateInfo flags(@EnumType(VkPipelineRasterizationStateCreateFlags.class) int value) {
+    public VkPipelineRasterizationStateCreateInfo flags(@Bitmask(VkPipelineRasterizationStateCreateFlags.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
         return this;
     }
@@ -258,11 +259,11 @@ public record VkPipelineRasterizationStateCreateInfo(@NotNull MemorySegment segm
         return this;
     }
 
-    public @EnumType(VkCullModeFlags.class) int cullMode() {
+    public @Bitmask(VkCullModeFlags.class) int cullMode() {
         return segment.get(LAYOUT$cullMode, OFFSET$cullMode);
     }
 
-    public VkPipelineRasterizationStateCreateInfo cullMode(@EnumType(VkCullModeFlags.class) int value) {
+    public VkPipelineRasterizationStateCreateInfo cullMode(@Bitmask(VkCullModeFlags.class) int value) {
         segment.set(LAYOUT$cullMode, OFFSET$cullMode, value);
         return this;
     }

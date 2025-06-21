@@ -199,12 +199,13 @@ public record VkPipelinePropertiesIdentifierEXT(@NotNull MemorySegment segment) 
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkPipelinePropertiesIdentifierEXT pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkPipelinePropertiesIdentifierEXT pNext(@Nullable IPointer pointer) {
@@ -221,7 +222,7 @@ public record VkPipelinePropertiesIdentifierEXT(@NotNull MemorySegment segment) 
         return this;
     }
 
-    public MemorySegment pipelineIdentifierRaw() {
+    public @NotNull MemorySegment pipelineIdentifierRaw() {
         return segment.asSlice(OFFSET$pipelineIdentifier, SIZE$pipelineIdentifier);
     }
 

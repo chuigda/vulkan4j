@@ -199,12 +199,13 @@ public record VkExportSemaphoreCreateInfo(@NotNull MemorySegment segment) implem
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkExportSemaphoreCreateInfo pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkExportSemaphoreCreateInfo pNext(@Nullable IPointer pointer) {
@@ -212,11 +213,11 @@ public record VkExportSemaphoreCreateInfo(@NotNull MemorySegment segment) implem
         return this;
     }
 
-    public @EnumType(VkExternalSemaphoreHandleTypeFlags.class) int handleTypes() {
+    public @Bitmask(VkExternalSemaphoreHandleTypeFlags.class) int handleTypes() {
         return segment.get(LAYOUT$handleTypes, OFFSET$handleTypes);
     }
 
-    public VkExportSemaphoreCreateInfo handleTypes(@EnumType(VkExternalSemaphoreHandleTypeFlags.class) int value) {
+    public VkExportSemaphoreCreateInfo handleTypes(@Bitmask(VkExternalSemaphoreHandleTypeFlags.class) int value) {
         segment.set(LAYOUT$handleTypes, OFFSET$handleTypes, value);
         return this;
     }

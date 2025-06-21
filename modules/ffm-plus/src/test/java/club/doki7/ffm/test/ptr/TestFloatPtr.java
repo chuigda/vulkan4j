@@ -36,7 +36,7 @@ public class TestFloatPtr {
 
     @Test
     void testCheckedWithNullSegment() {
-        assertNull(FloatPtr.checked((MemorySegment) null), "传入null时应返回null");
+        assertNull(FloatPtr.checked(MemorySegment.NULL), "传入 MemorySegment.NULL 时应返回null");
     }
 
     @Test

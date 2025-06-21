@@ -204,12 +204,13 @@ public record VkPresentInfoKHR(@NotNull MemorySegment segment) implements IVkPre
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkPresentInfoKHR pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkPresentInfoKHR pNext(@Nullable IPointer pointer) {
@@ -244,11 +245,11 @@ public record VkPresentInfoKHR(@NotNull MemorySegment segment) implements IVkPre
         return this;
     }
 
-    public @Pointer(target=VkSemaphore.class) MemorySegment pWaitSemaphoresRaw() {
+    public @Pointer(target=VkSemaphore.class) @NotNull MemorySegment pWaitSemaphoresRaw() {
         return segment.get(LAYOUT$pWaitSemaphores, OFFSET$pWaitSemaphores);
     }
 
-    public void pWaitSemaphoresRaw(@Pointer(target=VkSemaphore.class) MemorySegment value) {
+    public void pWaitSemaphoresRaw(@Pointer(target=VkSemaphore.class) @NotNull MemorySegment value) {
         segment.set(LAYOUT$pWaitSemaphores, OFFSET$pWaitSemaphores, value);
     }
 
@@ -279,11 +280,11 @@ public record VkPresentInfoKHR(@NotNull MemorySegment segment) implements IVkPre
         return this;
     }
 
-    public @Pointer(target=VkSwapchainKHR.class) MemorySegment pSwapchainsRaw() {
+    public @Pointer(target=VkSwapchainKHR.class) @NotNull MemorySegment pSwapchainsRaw() {
         return segment.get(LAYOUT$pSwapchains, OFFSET$pSwapchains);
     }
 
-    public void pSwapchainsRaw(@Pointer(target=VkSwapchainKHR.class) MemorySegment value) {
+    public void pSwapchainsRaw(@Pointer(target=VkSwapchainKHR.class) @NotNull MemorySegment value) {
         segment.set(LAYOUT$pSwapchains, OFFSET$pSwapchains, value);
     }
 
@@ -305,11 +306,11 @@ public record VkPresentInfoKHR(@NotNull MemorySegment segment) implements IVkPre
         return this;
     }
 
-    public @Pointer(comment="uint32_t*") MemorySegment pImageIndicesRaw() {
+    public @Pointer(comment="uint32_t*") @NotNull MemorySegment pImageIndicesRaw() {
         return segment.get(LAYOUT$pImageIndices, OFFSET$pImageIndices);
     }
 
-    public void pImageIndicesRaw(@Pointer(comment="uint32_t*") MemorySegment value) {
+    public void pImageIndicesRaw(@Pointer(comment="uint32_t*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pImageIndices, OFFSET$pImageIndices, value);
     }
 
@@ -332,11 +333,11 @@ public record VkPresentInfoKHR(@NotNull MemorySegment segment) implements IVkPre
         return this;
     }
 
-    public @Pointer(target=VkResult.class) MemorySegment pResultsRaw() {
+    public @Pointer(target=VkResult.class) @NotNull MemorySegment pResultsRaw() {
         return segment.get(LAYOUT$pResults, OFFSET$pResults);
     }
 
-    public void pResultsRaw(@Pointer(target=VkResult.class) MemorySegment value) {
+    public void pResultsRaw(@Pointer(target=VkResult.class) @NotNull MemorySegment value) {
         segment.set(LAYOUT$pResults, OFFSET$pResults, value);
     }
 

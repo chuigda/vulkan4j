@@ -201,12 +201,13 @@ public record VkPipelineInputAssemblyStateCreateInfo(@NotNull MemorySegment segm
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkPipelineInputAssemblyStateCreateInfo pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkPipelineInputAssemblyStateCreateInfo pNext(@Nullable IPointer pointer) {
@@ -214,11 +215,11 @@ public record VkPipelineInputAssemblyStateCreateInfo(@NotNull MemorySegment segm
         return this;
     }
 
-    public @EnumType(VkPipelineInputAssemblyStateCreateFlags.class) int flags() {
+    public @Bitmask(VkPipelineInputAssemblyStateCreateFlags.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public VkPipelineInputAssemblyStateCreateInfo flags(@EnumType(VkPipelineInputAssemblyStateCreateFlags.class) int value) {
+    public VkPipelineInputAssemblyStateCreateInfo flags(@Bitmask(VkPipelineInputAssemblyStateCreateFlags.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
         return this;
     }

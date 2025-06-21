@@ -200,7 +200,7 @@ public record VkPartitionedAccelerationStructureWriteInstanceDataNV(@NotNull Mem
         return this;
     }
 
-    public MemorySegment explicitAABBRaw() {
+    public @NotNull MemorySegment explicitAABBRaw() {
         return segment.asSlice(OFFSET$explicitAABB, SIZE$explicitAABB);
     }
 
@@ -231,11 +231,11 @@ public record VkPartitionedAccelerationStructureWriteInstanceDataNV(@NotNull Mem
         return this;
     }
 
-    public @EnumType(VkPartitionedAccelerationStructureInstanceFlagsNV.class) int instanceFlags() {
+    public @Bitmask(VkPartitionedAccelerationStructureInstanceFlagsNV.class) int instanceFlags() {
         return segment.get(LAYOUT$instanceFlags, OFFSET$instanceFlags);
     }
 
-    public VkPartitionedAccelerationStructureWriteInstanceDataNV instanceFlags(@EnumType(VkPartitionedAccelerationStructureInstanceFlagsNV.class) int value) {
+    public VkPartitionedAccelerationStructureWriteInstanceDataNV instanceFlags(@Bitmask(VkPartitionedAccelerationStructureInstanceFlagsNV.class) int value) {
         segment.set(LAYOUT$instanceFlags, OFFSET$instanceFlags, value);
         return this;
     }

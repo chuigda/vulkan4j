@@ -5,6 +5,7 @@ import java.lang.invoke.MethodHandle;
 import java.util.Objects;
 
 import org.jetbrains.annotations.Nullable;
+import org.jetbrains.annotations.NotNull;
 import club.doki7.ffm.NativeLayout;
 import club.doki7.ffm.RawFunctionLoader;
 import club.doki7.ffm.annotation.*;
@@ -58,7 +59,7 @@ public final class STBIW {
         int w,
         int h,
         int comp,
-        @Pointer(comment="void*") MemorySegment data
+        @Pointer(comment="void*") @NotNull MemorySegment data
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$stbi_write_bmp);
         try {
@@ -75,12 +76,12 @@ public final class STBIW {
     }
 
     public int writeBmpToFunc(
-        @Pointer(comment="stbi_write_func*") MemorySegment func,
-        @Pointer(comment="void*") MemorySegment context,
+        @Pointer(comment="stbi_write_func*") @NotNull MemorySegment func,
+        @Pointer(comment="void*") @NotNull MemorySegment context,
         int w,
         int h,
         int comp,
-        @Pointer(comment="void*") MemorySegment data
+        @Pointer(comment="void*") @NotNull MemorySegment data
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$stbi_write_bmp_to_func);
         try {
@@ -119,8 +120,8 @@ public final class STBIW {
     }
 
     public int writeHdrToFunc(
-        @Pointer(comment="stbi_write_func*") MemorySegment func,
-        @Pointer(comment="void*") MemorySegment context,
+        @Pointer(comment="stbi_write_func*") @NotNull MemorySegment func,
+        @Pointer(comment="void*") @NotNull MemorySegment context,
         int w,
         int h,
         int comp,
@@ -146,7 +147,7 @@ public final class STBIW {
         int x,
         int y,
         int comp,
-        @Pointer(comment="void*") MemorySegment data,
+        @Pointer(comment="void*") @NotNull MemorySegment data,
         int quality
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$stbi_write_jpg);
@@ -165,12 +166,12 @@ public final class STBIW {
     }
 
     public int writeJpgToFunc(
-        @Pointer(comment="stbi_write_func*") MemorySegment func,
-        @Pointer(comment="void*") MemorySegment context,
+        @Pointer(comment="stbi_write_func*") @NotNull MemorySegment func,
+        @Pointer(comment="void*") @NotNull MemorySegment context,
         int x,
         int y,
         int comp,
-        @Pointer(comment="void*") MemorySegment data,
+        @Pointer(comment="void*") @NotNull MemorySegment data,
         int quality
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$stbi_write_jpg_to_func);
@@ -194,7 +195,7 @@ public final class STBIW {
         int w,
         int h,
         int comp,
-        @Pointer(comment="void*") MemorySegment data,
+        @Pointer(comment="void*") @NotNull MemorySegment data,
         int strideInBytes
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$stbi_write_png);
@@ -213,12 +214,12 @@ public final class STBIW {
     }
 
     public int writePngToFunc(
-        @Pointer(comment="stbi_write_func*") MemorySegment func,
-        @Pointer(comment="void*") MemorySegment context,
+        @Pointer(comment="stbi_write_func*") @NotNull MemorySegment func,
+        @Pointer(comment="void*") @NotNull MemorySegment context,
         int w,
         int h,
         int comp,
-        @Pointer(comment="void*") MemorySegment data,
+        @Pointer(comment="void*") @NotNull MemorySegment data,
         int strideInBytes
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$stbi_write_png_to_func);
@@ -242,7 +243,7 @@ public final class STBIW {
         int w,
         int h,
         int comp,
-        @Pointer(comment="void*") MemorySegment data
+        @Pointer(comment="void*") @NotNull MemorySegment data
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$stbi_write_tga);
         try {
@@ -259,12 +260,12 @@ public final class STBIW {
     }
 
     public int writeTgaToFunc(
-        @Pointer(comment="stbi_write_func*") MemorySegment func,
-        @Pointer(comment="void*") MemorySegment context,
+        @Pointer(comment="stbi_write_func*") @NotNull MemorySegment func,
+        @Pointer(comment="void*") @NotNull MemorySegment context,
         int w,
         int h,
         int comp,
-        @Pointer(comment="void*") MemorySegment data
+        @Pointer(comment="void*") @NotNull MemorySegment data
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$stbi_write_tga_to_func);
         try {
@@ -284,7 +285,7 @@ public final class STBIW {
     public int stbiwConvertWcharToUtf8(
         @Nullable BytePtr buffer,
         long bufferlen,
-        @Pointer(comment="wchar_t*") MemorySegment input
+        @Pointer(comment="wchar_t*") @NotNull MemorySegment input
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$stbiw_convert_wchar_to_utf8);
         try {

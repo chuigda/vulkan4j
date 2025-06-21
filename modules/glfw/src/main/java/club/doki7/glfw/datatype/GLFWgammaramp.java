@@ -205,11 +205,11 @@ public record GLFWgammaramp(@NotNull MemorySegment segment) implements IGLFWgamm
         return this;
     }
 
-    public @Pointer(comment="int16_t*") MemorySegment redRaw() {
+    public @Pointer(comment="int16_t*") @NotNull MemorySegment redRaw() {
         return segment.get(LAYOUT$red, OFFSET$red);
     }
 
-    public void redRaw(@Pointer(comment="int16_t*") MemorySegment value) {
+    public void redRaw(@Pointer(comment="int16_t*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$red, OFFSET$red, value);
     }
 
@@ -231,11 +231,11 @@ public record GLFWgammaramp(@NotNull MemorySegment segment) implements IGLFWgamm
         return this;
     }
 
-    public @Pointer(comment="int16_t*") MemorySegment greenRaw() {
+    public @Pointer(comment="int16_t*") @NotNull MemorySegment greenRaw() {
         return segment.get(LAYOUT$green, OFFSET$green);
     }
 
-    public void greenRaw(@Pointer(comment="int16_t*") MemorySegment value) {
+    public void greenRaw(@Pointer(comment="int16_t*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$green, OFFSET$green, value);
     }
 
@@ -257,11 +257,11 @@ public record GLFWgammaramp(@NotNull MemorySegment segment) implements IGLFWgamm
         return this;
     }
 
-    public @Pointer(comment="int16_t*") MemorySegment blueRaw() {
+    public @Pointer(comment="int16_t*") @NotNull MemorySegment blueRaw() {
         return segment.get(LAYOUT$blue, OFFSET$blue);
     }
 
-    public void blueRaw(@Pointer(comment="int16_t*") MemorySegment value) {
+    public void blueRaw(@Pointer(comment="int16_t*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$blue, OFFSET$blue, value);
     }
 

@@ -177,11 +177,11 @@ public record VkDisplayPlaneCapabilitiesKHR(@NotNull MemorySegment segment) impl
         return ret;
     }
 
-    public @EnumType(VkDisplayPlaneAlphaFlagsKHR.class) int supportedAlpha() {
+    public @Bitmask(VkDisplayPlaneAlphaFlagsKHR.class) int supportedAlpha() {
         return segment.get(LAYOUT$supportedAlpha, OFFSET$supportedAlpha);
     }
 
-    public VkDisplayPlaneCapabilitiesKHR supportedAlpha(@EnumType(VkDisplayPlaneAlphaFlagsKHR.class) int value) {
+    public VkDisplayPlaneCapabilitiesKHR supportedAlpha(@Bitmask(VkDisplayPlaneAlphaFlagsKHR.class) int value) {
         segment.set(LAYOUT$supportedAlpha, OFFSET$supportedAlpha, value);
         return this;
     }

@@ -201,12 +201,13 @@ public record VkDirectDriverLoadingListLUNARG(@NotNull MemorySegment segment) im
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkDirectDriverLoadingListLUNARG pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkDirectDriverLoadingListLUNARG pNext(@Nullable IPointer pointer) {
@@ -256,11 +257,11 @@ public record VkDirectDriverLoadingListLUNARG(@NotNull MemorySegment segment) im
         return new VkDirectDriverLoadingInfoLUNARG(s);
     }
 
-    public @Pointer(target=VkDirectDriverLoadingInfoLUNARG.class) MemorySegment pDriversRaw() {
+    public @Pointer(target=VkDirectDriverLoadingInfoLUNARG.class) @NotNull MemorySegment pDriversRaw() {
         return segment.get(LAYOUT$pDrivers, OFFSET$pDrivers);
     }
 
-    public void pDriversRaw(@Pointer(target=VkDirectDriverLoadingInfoLUNARG.class) MemorySegment value) {
+    public void pDriversRaw(@Pointer(target=VkDirectDriverLoadingInfoLUNARG.class) @NotNull MemorySegment value) {
         segment.set(LAYOUT$pDrivers, OFFSET$pDrivers, value);
     }
 

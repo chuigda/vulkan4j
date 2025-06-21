@@ -204,12 +204,13 @@ public record VkCommandBufferInheritanceInfo(@NotNull MemorySegment segment) imp
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkCommandBufferInheritanceInfo pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkCommandBufferInheritanceInfo pNext(@Nullable IPointer pointer) {
@@ -261,20 +262,20 @@ public record VkCommandBufferInheritanceInfo(@NotNull MemorySegment segment) imp
         return this;
     }
 
-    public @EnumType(VkQueryControlFlags.class) int queryFlags() {
+    public @Bitmask(VkQueryControlFlags.class) int queryFlags() {
         return segment.get(LAYOUT$queryFlags, OFFSET$queryFlags);
     }
 
-    public VkCommandBufferInheritanceInfo queryFlags(@EnumType(VkQueryControlFlags.class) int value) {
+    public VkCommandBufferInheritanceInfo queryFlags(@Bitmask(VkQueryControlFlags.class) int value) {
         segment.set(LAYOUT$queryFlags, OFFSET$queryFlags, value);
         return this;
     }
 
-    public @EnumType(VkQueryPipelineStatisticFlags.class) int pipelineStatistics() {
+    public @Bitmask(VkQueryPipelineStatisticFlags.class) int pipelineStatistics() {
         return segment.get(LAYOUT$pipelineStatistics, OFFSET$pipelineStatistics);
     }
 
-    public VkCommandBufferInheritanceInfo pipelineStatistics(@EnumType(VkQueryPipelineStatisticFlags.class) int value) {
+    public VkCommandBufferInheritanceInfo pipelineStatistics(@Bitmask(VkQueryPipelineStatisticFlags.class) int value) {
         segment.set(LAYOUT$pipelineStatistics, OFFSET$pipelineStatistics, value);
         return this;
     }

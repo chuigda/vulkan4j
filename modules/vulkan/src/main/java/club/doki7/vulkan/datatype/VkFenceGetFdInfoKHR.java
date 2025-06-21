@@ -200,12 +200,13 @@ public record VkFenceGetFdInfoKHR(@NotNull MemorySegment segment) implements IVk
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkFenceGetFdInfoKHR pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkFenceGetFdInfoKHR pNext(@Nullable IPointer pointer) {
@@ -226,11 +227,11 @@ public record VkFenceGetFdInfoKHR(@NotNull MemorySegment segment) implements IVk
         return this;
     }
 
-    public @EnumType(VkExternalFenceHandleTypeFlags.class) int handleType() {
+    public @Bitmask(VkExternalFenceHandleTypeFlags.class) int handleType() {
         return segment.get(LAYOUT$handleType, OFFSET$handleType);
     }
 
-    public VkFenceGetFdInfoKHR handleType(@EnumType(VkExternalFenceHandleTypeFlags.class) int value) {
+    public VkFenceGetFdInfoKHR handleType(@Bitmask(VkExternalFenceHandleTypeFlags.class) int value) {
         segment.set(LAYOUT$handleType, OFFSET$handleType, value);
         return this;
     }

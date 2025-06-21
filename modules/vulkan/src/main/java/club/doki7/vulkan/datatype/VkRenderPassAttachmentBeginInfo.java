@@ -200,12 +200,13 @@ public record VkRenderPassAttachmentBeginInfo(@NotNull MemorySegment segment) im
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkRenderPassAttachmentBeginInfo pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkRenderPassAttachmentBeginInfo pNext(@Nullable IPointer pointer) {
@@ -240,11 +241,11 @@ public record VkRenderPassAttachmentBeginInfo(@NotNull MemorySegment segment) im
         return this;
     }
 
-    public @Pointer(target=VkImageView.class) MemorySegment pAttachmentsRaw() {
+    public @Pointer(target=VkImageView.class) @NotNull MemorySegment pAttachmentsRaw() {
         return segment.get(LAYOUT$pAttachments, OFFSET$pAttachments);
     }
 
-    public void pAttachmentsRaw(@Pointer(target=VkImageView.class) MemorySegment value) {
+    public void pAttachmentsRaw(@Pointer(target=VkImageView.class) @NotNull MemorySegment value) {
         segment.set(LAYOUT$pAttachments, OFFSET$pAttachments, value);
     }
 

@@ -199,12 +199,13 @@ public record VkDeviceGroupSwapchainCreateInfoKHR(@NotNull MemorySegment segment
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkDeviceGroupSwapchainCreateInfoKHR pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkDeviceGroupSwapchainCreateInfoKHR pNext(@Nullable IPointer pointer) {
@@ -212,11 +213,11 @@ public record VkDeviceGroupSwapchainCreateInfoKHR(@NotNull MemorySegment segment
         return this;
     }
 
-    public @EnumType(VkDeviceGroupPresentModeFlagsKHR.class) int modes() {
+    public @Bitmask(VkDeviceGroupPresentModeFlagsKHR.class) int modes() {
         return segment.get(LAYOUT$modes, OFFSET$modes);
     }
 
-    public VkDeviceGroupSwapchainCreateInfoKHR modes(@EnumType(VkDeviceGroupPresentModeFlagsKHR.class) int value) {
+    public VkDeviceGroupSwapchainCreateInfoKHR modes(@Bitmask(VkDeviceGroupPresentModeFlagsKHR.class) int value) {
         segment.set(LAYOUT$modes, OFFSET$modes, value);
         return this;
     }

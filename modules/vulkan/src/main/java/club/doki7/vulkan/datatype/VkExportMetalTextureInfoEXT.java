@@ -203,12 +203,13 @@ public record VkExportMetalTextureInfoEXT(@NotNull MemorySegment segment) implem
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkExportMetalTextureInfoEXT pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkExportMetalTextureInfoEXT pNext(@Nullable IPointer pointer) {
@@ -255,21 +256,22 @@ public record VkExportMetalTextureInfoEXT(@NotNull MemorySegment segment) implem
         return this;
     }
 
-    public @EnumType(VkImageAspectFlags.class) int plane() {
+    public @Bitmask(VkImageAspectFlags.class) int plane() {
         return segment.get(LAYOUT$plane, OFFSET$plane);
     }
 
-    public VkExportMetalTextureInfoEXT plane(@EnumType(VkImageAspectFlags.class) int value) {
+    public VkExportMetalTextureInfoEXT plane(@Bitmask(VkImageAspectFlags.class) int value) {
         segment.set(LAYOUT$plane, OFFSET$plane, value);
         return this;
     }
 
-    public @Pointer(comment="MTLTexture_id") MemorySegment mtlTexture() {
+    public @Pointer(comment="MTLTexture_id") @NotNull MemorySegment mtlTexture() {
         return segment.get(LAYOUT$mtlTexture, OFFSET$mtlTexture);
     }
 
-    public void mtlTexture(@Pointer(comment="MTLTexture_id") MemorySegment value) {
+    public VkExportMetalTextureInfoEXT mtlTexture(@Pointer(comment="MTLTexture_id") @NotNull MemorySegment value) {
         segment.set(LAYOUT$mtlTexture, OFFSET$mtlTexture, value);
+        return this;
     }
 
     public VkExportMetalTextureInfoEXT mtlTexture(@Nullable IPointer pointer) {

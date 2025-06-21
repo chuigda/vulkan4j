@@ -200,12 +200,13 @@ public record VkPipelineVertexInputDivisorStateCreateInfo(@NotNull MemorySegment
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkPipelineVertexInputDivisorStateCreateInfo pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkPipelineVertexInputDivisorStateCreateInfo pNext(@Nullable IPointer pointer) {
@@ -246,11 +247,11 @@ public record VkPipelineVertexInputDivisorStateCreateInfo(@NotNull MemorySegment
         return new VkVertexInputBindingDivisorDescription(s);
     }
 
-    public @Pointer(target=VkVertexInputBindingDivisorDescription.class) MemorySegment pVertexBindingDivisorsRaw() {
+    public @Pointer(target=VkVertexInputBindingDivisorDescription.class) @NotNull MemorySegment pVertexBindingDivisorsRaw() {
         return segment.get(LAYOUT$pVertexBindingDivisors, OFFSET$pVertexBindingDivisors);
     }
 
-    public void pVertexBindingDivisorsRaw(@Pointer(target=VkVertexInputBindingDivisorDescription.class) MemorySegment value) {
+    public void pVertexBindingDivisorsRaw(@Pointer(target=VkVertexInputBindingDivisorDescription.class) @NotNull MemorySegment value) {
         segment.set(LAYOUT$pVertexBindingDivisors, OFFSET$pVertexBindingDivisors, value);
     }
 

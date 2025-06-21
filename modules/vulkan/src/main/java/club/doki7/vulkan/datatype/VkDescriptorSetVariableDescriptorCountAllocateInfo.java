@@ -200,12 +200,13 @@ public record VkDescriptorSetVariableDescriptorCountAllocateInfo(@NotNull Memory
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkDescriptorSetVariableDescriptorCountAllocateInfo pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkDescriptorSetVariableDescriptorCountAllocateInfo pNext(@Nullable IPointer pointer) {
@@ -240,11 +241,11 @@ public record VkDescriptorSetVariableDescriptorCountAllocateInfo(@NotNull Memory
         return this;
     }
 
-    public @Pointer(comment="uint32_t*") MemorySegment pDescriptorCountsRaw() {
+    public @Pointer(comment="uint32_t*") @NotNull MemorySegment pDescriptorCountsRaw() {
         return segment.get(LAYOUT$pDescriptorCounts, OFFSET$pDescriptorCounts);
     }
 
-    public void pDescriptorCountsRaw(@Pointer(comment="uint32_t*") MemorySegment value) {
+    public void pDescriptorCountsRaw(@Pointer(comment="uint32_t*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pDescriptorCounts, OFFSET$pDescriptorCounts, value);
     }
 

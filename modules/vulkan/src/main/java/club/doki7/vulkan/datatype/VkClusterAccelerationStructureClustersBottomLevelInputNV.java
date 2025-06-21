@@ -200,12 +200,13 @@ public record VkClusterAccelerationStructureClustersBottomLevelInputNV(@NotNull 
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkClusterAccelerationStructureClustersBottomLevelInputNV pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkClusterAccelerationStructureClustersBottomLevelInputNV pNext(@Nullable IPointer pointer) {

@@ -1,11 +1,11 @@
 package club.doki7.vma;
 
-import club.doki7.ffm.Loader;
 import club.doki7.ffm.RawFunctionLoader;
 
 import java.lang.foreign.*;
 import java.lang.invoke.MethodHandle;
 import java.lang.invoke.MethodHandles;
+import java.util.Objects;
 
 public final class VMAJavaTraceUtil {
     public static void trace() {
@@ -16,9 +16,9 @@ public final class VMAJavaTraceUtil {
         }
     }
 
-    public static void enableJavaTraceForVMA() {
-        MemorySegment vk4jSetJavaTraceSegment = Loader.loadFunctionOrNull("vk4jSetJavaTrace");
-        if (vk4jSetJavaTraceSegment == null || vk4jSetJavaTraceSegment.address() == 0) {
+    public static void enableJavaTraceForVMA(RawFunctionLoader loader) {
+        MemorySegment vk4jSetJavaTraceSegment = loader.load("vk4jSetJavaTrace");
+        if (vk4jSetJavaTraceSegment.equals(MemorySegment.NULL)) {
             System.err.println("warn: enableJavaTraceForVMA: vk4jSetJavaTrace not found");
             System.err.println("note: obviously you're not using a VMA build supporting Java trace");
             System.err.println("note: checkout vulkan4j/vma/vma_build to see how to enable Java trace");
@@ -26,7 +26,8 @@ public final class VMAJavaTraceUtil {
         }
 
         FunctionDescriptor descriptor = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS);
-        MethodHandle handle = RawFunctionLoader.link(vk4jSetJavaTraceSegment, descriptor);
+        MethodHandle handle =
+                Objects.requireNonNull(RawFunctionLoader.link(vk4jSetJavaTraceSegment, descriptor));
 
         try {
             handle.invoke(PTRACE);

@@ -200,12 +200,13 @@ public record VkLayerSettingsCreateInfoEXT(@NotNull MemorySegment segment) imple
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkLayerSettingsCreateInfoEXT pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkLayerSettingsCreateInfoEXT pNext(@Nullable IPointer pointer) {
@@ -246,11 +247,11 @@ public record VkLayerSettingsCreateInfoEXT(@NotNull MemorySegment segment) imple
         return new VkLayerSettingEXT(s);
     }
 
-    public @Pointer(target=VkLayerSettingEXT.class) MemorySegment pSettingsRaw() {
+    public @Pointer(target=VkLayerSettingEXT.class) @NotNull MemorySegment pSettingsRaw() {
         return segment.get(LAYOUT$pSettings, OFFSET$pSettings);
     }
 
-    public void pSettingsRaw(@Pointer(target=VkLayerSettingEXT.class) MemorySegment value) {
+    public void pSettingsRaw(@Pointer(target=VkLayerSettingEXT.class) @NotNull MemorySegment value) {
         segment.set(LAYOUT$pSettings, OFFSET$pSettings, value);
     }
 

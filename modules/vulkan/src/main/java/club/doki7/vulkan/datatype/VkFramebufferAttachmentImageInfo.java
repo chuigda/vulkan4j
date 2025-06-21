@@ -205,12 +205,13 @@ public record VkFramebufferAttachmentImageInfo(@NotNull MemorySegment segment) i
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkFramebufferAttachmentImageInfo pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkFramebufferAttachmentImageInfo pNext(@Nullable IPointer pointer) {
@@ -218,20 +219,20 @@ public record VkFramebufferAttachmentImageInfo(@NotNull MemorySegment segment) i
         return this;
     }
 
-    public @EnumType(VkImageCreateFlags.class) int flags() {
+    public @Bitmask(VkImageCreateFlags.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public VkFramebufferAttachmentImageInfo flags(@EnumType(VkImageCreateFlags.class) int value) {
+    public VkFramebufferAttachmentImageInfo flags(@Bitmask(VkImageCreateFlags.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
         return this;
     }
 
-    public @EnumType(VkImageUsageFlags.class) int usage() {
+    public @Bitmask(VkImageUsageFlags.class) int usage() {
         return segment.get(LAYOUT$usage, OFFSET$usage);
     }
 
-    public VkFramebufferAttachmentImageInfo usage(@EnumType(VkImageUsageFlags.class) int value) {
+    public VkFramebufferAttachmentImageInfo usage(@Bitmask(VkImageUsageFlags.class) int value) {
         segment.set(LAYOUT$usage, OFFSET$usage, value);
         return this;
     }
@@ -291,11 +292,11 @@ public record VkFramebufferAttachmentImageInfo(@NotNull MemorySegment segment) i
         return this;
     }
 
-    public @Pointer(target=VkFormat.class) MemorySegment pViewFormatsRaw() {
+    public @Pointer(target=VkFormat.class) @NotNull MemorySegment pViewFormatsRaw() {
         return segment.get(LAYOUT$pViewFormats, OFFSET$pViewFormats);
     }
 
-    public void pViewFormatsRaw(@Pointer(target=VkFormat.class) MemorySegment value) {
+    public void pViewFormatsRaw(@Pointer(target=VkFormat.class) @NotNull MemorySegment value) {
         segment.set(LAYOUT$pViewFormats, OFFSET$pViewFormats, value);
     }
 

@@ -203,12 +203,13 @@ public record VkPartitionedAccelerationStructureInstancesInputNV(@NotNull Memory
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkPartitionedAccelerationStructureInstancesInputNV pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkPartitionedAccelerationStructureInstancesInputNV pNext(@Nullable IPointer pointer) {
@@ -216,11 +217,11 @@ public record VkPartitionedAccelerationStructureInstancesInputNV(@NotNull Memory
         return this;
     }
 
-    public @EnumType(VkBuildAccelerationStructureFlagsKHR.class) int flags() {
+    public @Bitmask(VkBuildAccelerationStructureFlagsKHR.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public VkPartitionedAccelerationStructureInstancesInputNV flags(@EnumType(VkBuildAccelerationStructureFlagsKHR.class) int value) {
+    public VkPartitionedAccelerationStructureInstancesInputNV flags(@Bitmask(VkBuildAccelerationStructureFlagsKHR.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
         return this;
     }

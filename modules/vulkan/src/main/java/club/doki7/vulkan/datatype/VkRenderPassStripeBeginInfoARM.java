@@ -200,12 +200,13 @@ public record VkRenderPassStripeBeginInfoARM(@NotNull MemorySegment segment) imp
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkRenderPassStripeBeginInfoARM pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkRenderPassStripeBeginInfoARM pNext(@Nullable IPointer pointer) {
@@ -246,11 +247,11 @@ public record VkRenderPassStripeBeginInfoARM(@NotNull MemorySegment segment) imp
         return new VkRenderPassStripeInfoARM(s);
     }
 
-    public @Pointer(target=VkRenderPassStripeInfoARM.class) MemorySegment pStripeInfosRaw() {
+    public @Pointer(target=VkRenderPassStripeInfoARM.class) @NotNull MemorySegment pStripeInfosRaw() {
         return segment.get(LAYOUT$pStripeInfos, OFFSET$pStripeInfos);
     }
 
-    public void pStripeInfosRaw(@Pointer(target=VkRenderPassStripeInfoARM.class) MemorySegment value) {
+    public void pStripeInfosRaw(@Pointer(target=VkRenderPassStripeInfoARM.class) @NotNull MemorySegment value) {
         segment.set(LAYOUT$pStripeInfos, OFFSET$pStripeInfos, value);
     }
 

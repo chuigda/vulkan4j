@@ -209,12 +209,13 @@ public record VkMicromapBuildInfoEXT(@NotNull MemorySegment segment) implements 
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkMicromapBuildInfoEXT pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkMicromapBuildInfoEXT pNext(@Nullable IPointer pointer) {
@@ -231,11 +232,11 @@ public record VkMicromapBuildInfoEXT(@NotNull MemorySegment segment) implements 
         return this;
     }
 
-    public @EnumType(VkBuildMicromapFlagsEXT.class) int flags() {
+    public @Bitmask(VkBuildMicromapFlagsEXT.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public VkMicromapBuildInfoEXT flags(@EnumType(VkBuildMicromapFlagsEXT.class) int value) {
+    public VkMicromapBuildInfoEXT flags(@Bitmask(VkBuildMicromapFlagsEXT.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
         return this;
     }
@@ -295,11 +296,11 @@ public record VkMicromapBuildInfoEXT(@NotNull MemorySegment segment) implements 
         return new VkMicromapUsageEXT(s);
     }
 
-    public @Pointer(target=VkMicromapUsageEXT.class) MemorySegment pUsageCountsRaw() {
+    public @Pointer(target=VkMicromapUsageEXT.class) @NotNull MemorySegment pUsageCountsRaw() {
         return segment.get(LAYOUT$pUsageCounts, OFFSET$pUsageCounts);
     }
 
-    public void pUsageCountsRaw(@Pointer(target=VkMicromapUsageEXT.class) MemorySegment value) {
+    public void pUsageCountsRaw(@Pointer(target=VkMicromapUsageEXT.class) @NotNull MemorySegment value) {
         segment.set(LAYOUT$pUsageCounts, OFFSET$pUsageCounts, value);
     }
 
@@ -320,11 +321,11 @@ public record VkMicromapBuildInfoEXT(@NotNull MemorySegment segment) implements 
         return this;
     }
 
-    public @Pointer(comment="void**") MemorySegment ppUsageCountsRaw() {
+    public @Pointer(comment="void**") @NotNull MemorySegment ppUsageCountsRaw() {
         return segment.get(LAYOUT$ppUsageCounts, OFFSET$ppUsageCounts);
     }
 
-    public void ppUsageCountsRaw(@Pointer(comment="void**") MemorySegment value) {
+    public void ppUsageCountsRaw(@Pointer(comment="void**") @NotNull MemorySegment value) {
         segment.set(LAYOUT$ppUsageCounts, OFFSET$ppUsageCounts, value);
     }
 

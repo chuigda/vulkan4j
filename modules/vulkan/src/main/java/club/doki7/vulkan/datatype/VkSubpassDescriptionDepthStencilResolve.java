@@ -201,12 +201,13 @@ public record VkSubpassDescriptionDepthStencilResolve(@NotNull MemorySegment seg
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkSubpassDescriptionDepthStencilResolve pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkSubpassDescriptionDepthStencilResolve pNext(@Nullable IPointer pointer) {
@@ -214,20 +215,20 @@ public record VkSubpassDescriptionDepthStencilResolve(@NotNull MemorySegment seg
         return this;
     }
 
-    public @EnumType(VkResolveModeFlags.class) int depthResolveMode() {
+    public @Bitmask(VkResolveModeFlags.class) int depthResolveMode() {
         return segment.get(LAYOUT$depthResolveMode, OFFSET$depthResolveMode);
     }
 
-    public VkSubpassDescriptionDepthStencilResolve depthResolveMode(@EnumType(VkResolveModeFlags.class) int value) {
+    public VkSubpassDescriptionDepthStencilResolve depthResolveMode(@Bitmask(VkResolveModeFlags.class) int value) {
         segment.set(LAYOUT$depthResolveMode, OFFSET$depthResolveMode, value);
         return this;
     }
 
-    public @EnumType(VkResolveModeFlags.class) int stencilResolveMode() {
+    public @Bitmask(VkResolveModeFlags.class) int stencilResolveMode() {
         return segment.get(LAYOUT$stencilResolveMode, OFFSET$stencilResolveMode);
     }
 
-    public VkSubpassDescriptionDepthStencilResolve stencilResolveMode(@EnumType(VkResolveModeFlags.class) int value) {
+    public VkSubpassDescriptionDepthStencilResolve stencilResolveMode(@Bitmask(VkResolveModeFlags.class) int value) {
         segment.set(LAYOUT$stencilResolveMode, OFFSET$stencilResolveMode, value);
         return this;
     }
@@ -256,11 +257,11 @@ public record VkSubpassDescriptionDepthStencilResolve(@NotNull MemorySegment seg
         return new VkAttachmentReference2(s);
     }
 
-    public @Pointer(target=VkAttachmentReference2.class) MemorySegment pDepthStencilResolveAttachmentRaw() {
+    public @Pointer(target=VkAttachmentReference2.class) @NotNull MemorySegment pDepthStencilResolveAttachmentRaw() {
         return segment.get(LAYOUT$pDepthStencilResolveAttachment, OFFSET$pDepthStencilResolveAttachment);
     }
 
-    public void pDepthStencilResolveAttachmentRaw(@Pointer(target=VkAttachmentReference2.class) MemorySegment value) {
+    public void pDepthStencilResolveAttachmentRaw(@Pointer(target=VkAttachmentReference2.class) @NotNull MemorySegment value) {
         segment.set(LAYOUT$pDepthStencilResolveAttachment, OFFSET$pDepthStencilResolveAttachment, value);
     }
 

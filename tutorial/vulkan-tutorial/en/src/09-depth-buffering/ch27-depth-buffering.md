@@ -148,7 +148,7 @@ We could simply go for the `VkFormat.D32_SFLOAT` format, because support for it 
 private @EnumType(VkFormat.class) int findSupportedFormat(
         @EnumType(VkFormat.class) int[] candidates,
         @EnumType(VkImageTiling.class) int tiling,
-        @EnumType(VkFormatFeatureFlags.class) int features
+        @Bitmask(VkFormatFeatureFlags.class) int features
 ) {
 }
 ```
@@ -187,7 +187,7 @@ If none of the candidate formats support the desired usage, then we can either r
 private @EnumType(VkFormat.class) int findSupportedFormat(
         @EnumType(VkFormat.class) int[] candidates,
         @EnumType(VkImageTiling.class) int tiling,
-        @EnumType(VkFormatFeatureFlags.class) int features
+        @Bitmask(VkFormatFeatureFlags.class) int features
 ) {
     for (var format : candidates) {
         try (var arena = Arena.ofConfined()) {
@@ -259,7 +259,7 @@ However, the createImageView function currently assumes that the subresource is 
 private VkImageView createImageView(
         VkImage image,
         @EnumType(VkFormat.class) int format,
-        @EnumType(VkImageAspectFlags.class) int aspect
+        @Bitmask(VkImageAspectFlags.class) int aspect
 ) {
     // ...
     subresourceRange.aspectMask(aspect);

@@ -203,12 +203,13 @@ public record VkApplicationInfo(@NotNull MemorySegment segment) implements IVkAp
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkApplicationInfo pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkApplicationInfo pNext(@Nullable IPointer pointer) {
@@ -234,11 +235,11 @@ public record VkApplicationInfo(@NotNull MemorySegment segment) implements IVkAp
         return this;
     }
 
-    public @Pointer(comment="int8_t*") MemorySegment pApplicationNameRaw() {
+    public @Pointer(comment="int8_t*") @NotNull MemorySegment pApplicationNameRaw() {
         return segment.get(LAYOUT$pApplicationName, OFFSET$pApplicationName);
     }
 
-    public void pApplicationNameRaw(@Pointer(comment="int8_t*") MemorySegment value) {
+    public void pApplicationNameRaw(@Pointer(comment="int8_t*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pApplicationName, OFFSET$pApplicationName, value);
     }
 
@@ -269,11 +270,11 @@ public record VkApplicationInfo(@NotNull MemorySegment segment) implements IVkAp
         return this;
     }
 
-    public @Pointer(comment="int8_t*") MemorySegment pEngineNameRaw() {
+    public @Pointer(comment="int8_t*") @NotNull MemorySegment pEngineNameRaw() {
         return segment.get(LAYOUT$pEngineName, OFFSET$pEngineName);
     }
 
-    public void pEngineNameRaw(@Pointer(comment="int8_t*") MemorySegment value) {
+    public void pEngineNameRaw(@Pointer(comment="int8_t*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pEngineName, OFFSET$pEngineName, value);
     }
 

@@ -200,12 +200,13 @@ public record VkPhysicalDeviceShaderCoreProperties2AMD(@NotNull MemorySegment se
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkPhysicalDeviceShaderCoreProperties2AMD pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkPhysicalDeviceShaderCoreProperties2AMD pNext(@Nullable IPointer pointer) {
@@ -213,11 +214,11 @@ public record VkPhysicalDeviceShaderCoreProperties2AMD(@NotNull MemorySegment se
         return this;
     }
 
-    public @EnumType(VkShaderCorePropertiesFlagsAMD.class) int shaderCoreFeatures() {
+    public @Bitmask(VkShaderCorePropertiesFlagsAMD.class) int shaderCoreFeatures() {
         return segment.get(LAYOUT$shaderCoreFeatures, OFFSET$shaderCoreFeatures);
     }
 
-    public VkPhysicalDeviceShaderCoreProperties2AMD shaderCoreFeatures(@EnumType(VkShaderCorePropertiesFlagsAMD.class) int value) {
+    public VkPhysicalDeviceShaderCoreProperties2AMD shaderCoreFeatures(@Bitmask(VkShaderCorePropertiesFlagsAMD.class) int value) {
         segment.set(LAYOUT$shaderCoreFeatures, OFFSET$shaderCoreFeatures, value);
         return this;
     }

@@ -199,12 +199,13 @@ public record VkDeviceBufferMemoryRequirements(@NotNull MemorySegment segment) i
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkDeviceBufferMemoryRequirements pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkDeviceBufferMemoryRequirements pNext(@Nullable IPointer pointer) {
@@ -236,11 +237,11 @@ public record VkDeviceBufferMemoryRequirements(@NotNull MemorySegment segment) i
         return new VkBufferCreateInfo(s);
     }
 
-    public @Pointer(target=VkBufferCreateInfo.class) MemorySegment pCreateInfoRaw() {
+    public @Pointer(target=VkBufferCreateInfo.class) @NotNull MemorySegment pCreateInfoRaw() {
         return segment.get(LAYOUT$pCreateInfo, OFFSET$pCreateInfo);
     }
 
-    public void pCreateInfoRaw(@Pointer(target=VkBufferCreateInfo.class) MemorySegment value) {
+    public void pCreateInfoRaw(@Pointer(target=VkBufferCreateInfo.class) @NotNull MemorySegment value) {
         segment.set(LAYOUT$pCreateInfo, OFFSET$pCreateInfo, value);
     }
 

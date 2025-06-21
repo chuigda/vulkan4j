@@ -199,12 +199,13 @@ public record VkOpaqueCaptureDescriptorDataCreateInfoEXT(@NotNull MemorySegment 
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkOpaqueCaptureDescriptorDataCreateInfoEXT pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkOpaqueCaptureDescriptorDataCreateInfoEXT pNext(@Nullable IPointer pointer) {
@@ -212,12 +213,13 @@ public record VkOpaqueCaptureDescriptorDataCreateInfoEXT(@NotNull MemorySegment 
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment opaqueCaptureDescriptorData() {
+    public @Pointer(comment="void*") @NotNull MemorySegment opaqueCaptureDescriptorData() {
         return segment.get(LAYOUT$opaqueCaptureDescriptorData, OFFSET$opaqueCaptureDescriptorData);
     }
 
-    public void opaqueCaptureDescriptorData(@Pointer(comment="void*") MemorySegment value) {
+    public VkOpaqueCaptureDescriptorDataCreateInfoEXT opaqueCaptureDescriptorData(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$opaqueCaptureDescriptorData, OFFSET$opaqueCaptureDescriptorData, value);
+        return this;
     }
 
     public VkOpaqueCaptureDescriptorDataCreateInfoEXT opaqueCaptureDescriptorData(@Nullable IPointer pointer) {

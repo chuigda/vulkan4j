@@ -199,12 +199,13 @@ public record VkExportMetalDeviceInfoEXT(@NotNull MemorySegment segment) impleme
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkExportMetalDeviceInfoEXT pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkExportMetalDeviceInfoEXT pNext(@Nullable IPointer pointer) {
@@ -212,12 +213,13 @@ public record VkExportMetalDeviceInfoEXT(@NotNull MemorySegment segment) impleme
         return this;
     }
 
-    public @Pointer(comment="MTLDevice_id") MemorySegment mtlDevice() {
+    public @Pointer(comment="MTLDevice_id") @NotNull MemorySegment mtlDevice() {
         return segment.get(LAYOUT$mtlDevice, OFFSET$mtlDevice);
     }
 
-    public void mtlDevice(@Pointer(comment="MTLDevice_id") MemorySegment value) {
+    public VkExportMetalDeviceInfoEXT mtlDevice(@Pointer(comment="MTLDevice_id") @NotNull MemorySegment value) {
         segment.set(LAYOUT$mtlDevice, OFFSET$mtlDevice, value);
+        return this;
     }
 
     public VkExportMetalDeviceInfoEXT mtlDevice(@Nullable IPointer pointer) {

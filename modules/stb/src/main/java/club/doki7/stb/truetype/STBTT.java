@@ -5,6 +5,7 @@ import java.lang.invoke.MethodHandle;
 import java.util.Objects;
 
 import org.jetbrains.annotations.Nullable;
+import org.jetbrains.annotations.NotNull;
 import club.doki7.ffm.NativeLayout;
 import club.doki7.ffm.RawFunctionLoader;
 import club.doki7.ffm.annotation.*;
@@ -234,7 +235,7 @@ public final class STBTT {
 
     public void freeBitmap(
         @Nullable BytePtr bitmap,
-        @Pointer(comment="void*") MemorySegment userdata
+        @Pointer(comment="void*") @NotNull MemorySegment userdata
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$stbtt_FreeBitmap);
         try {
@@ -249,7 +250,7 @@ public final class STBTT {
 
     public void freeSDF(
         @Nullable BytePtr bitmap,
-        @Pointer(comment="void*") MemorySegment userdata
+        @Pointer(comment="void*") @NotNull MemorySegment userdata
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$stbtt_FreeSDF);
         try {
@@ -1214,7 +1215,7 @@ public final class STBTT {
         int height,
         int strideInBytes,
         int padding,
-        @Pointer(comment="void*") MemorySegment allocContext
+        @Pointer(comment="void*") @NotNull MemorySegment allocContext
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$stbtt_PackBegin);
         try {
@@ -1394,7 +1395,7 @@ public final class STBTT {
         int xOff,
         int yOff,
         int invert,
-        @Pointer(comment="void*") MemorySegment userdata
+        @Pointer(comment="void*") @NotNull MemorySegment userdata
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$stbtt_Rasterize);
         try {

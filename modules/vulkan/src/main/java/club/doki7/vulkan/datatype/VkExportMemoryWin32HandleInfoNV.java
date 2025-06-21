@@ -200,12 +200,13 @@ public record VkExportMemoryWin32HandleInfoNV(@NotNull MemorySegment segment) im
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkExportMemoryWin32HandleInfoNV pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkExportMemoryWin32HandleInfoNV pNext(@Nullable IPointer pointer) {
@@ -213,12 +214,13 @@ public record VkExportMemoryWin32HandleInfoNV(@NotNull MemorySegment segment) im
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pAttributes() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pAttributes() {
         return segment.get(LAYOUT$pAttributes, OFFSET$pAttributes);
     }
 
-    public void pAttributes(@Pointer(comment="void*") MemorySegment value) {
+    public VkExportMemoryWin32HandleInfoNV pAttributes(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pAttributes, OFFSET$pAttributes, value);
+        return this;
     }
 
     public VkExportMemoryWin32HandleInfoNV pAttributes(@Nullable IPointer pointer) {

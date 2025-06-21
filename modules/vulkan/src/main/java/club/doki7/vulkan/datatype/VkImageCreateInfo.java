@@ -211,12 +211,13 @@ public record VkImageCreateInfo(@NotNull MemorySegment segment) implements IVkIm
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkImageCreateInfo pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkImageCreateInfo pNext(@Nullable IPointer pointer) {
@@ -224,11 +225,11 @@ public record VkImageCreateInfo(@NotNull MemorySegment segment) implements IVkIm
         return this;
     }
 
-    public @EnumType(VkImageCreateFlags.class) int flags() {
+    public @Bitmask(VkImageCreateFlags.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public VkImageCreateInfo flags(@EnumType(VkImageCreateFlags.class) int value) {
+    public VkImageCreateInfo flags(@Bitmask(VkImageCreateFlags.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
         return this;
     }
@@ -283,11 +284,11 @@ public record VkImageCreateInfo(@NotNull MemorySegment segment) implements IVkIm
         return this;
     }
 
-    public @EnumType(VkSampleCountFlags.class) int samples() {
+    public @Bitmask(VkSampleCountFlags.class) int samples() {
         return segment.get(LAYOUT$samples, OFFSET$samples);
     }
 
-    public VkImageCreateInfo samples(@EnumType(VkSampleCountFlags.class) int value) {
+    public VkImageCreateInfo samples(@Bitmask(VkSampleCountFlags.class) int value) {
         segment.set(LAYOUT$samples, OFFSET$samples, value);
         return this;
     }
@@ -301,11 +302,11 @@ public record VkImageCreateInfo(@NotNull MemorySegment segment) implements IVkIm
         return this;
     }
 
-    public @EnumType(VkImageUsageFlags.class) int usage() {
+    public @Bitmask(VkImageUsageFlags.class) int usage() {
         return segment.get(LAYOUT$usage, OFFSET$usage);
     }
 
-    public VkImageCreateInfo usage(@EnumType(VkImageUsageFlags.class) int value) {
+    public VkImageCreateInfo usage(@Bitmask(VkImageUsageFlags.class) int value) {
         segment.set(LAYOUT$usage, OFFSET$usage, value);
         return this;
     }
@@ -346,11 +347,11 @@ public record VkImageCreateInfo(@NotNull MemorySegment segment) implements IVkIm
         return this;
     }
 
-    public @Pointer(comment="uint32_t*") MemorySegment pQueueFamilyIndicesRaw() {
+    public @Pointer(comment="uint32_t*") @NotNull MemorySegment pQueueFamilyIndicesRaw() {
         return segment.get(LAYOUT$pQueueFamilyIndices, OFFSET$pQueueFamilyIndices);
     }
 
-    public void pQueueFamilyIndicesRaw(@Pointer(comment="uint32_t*") MemorySegment value) {
+    public void pQueueFamilyIndicesRaw(@Pointer(comment="uint32_t*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pQueueFamilyIndices, OFFSET$pQueueFamilyIndices, value);
     }
 

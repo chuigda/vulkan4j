@@ -196,7 +196,7 @@ public record StdVideoAV1LoopFilter(@NotNull MemorySegment segment) implements I
         return this;
     }
 
-    public MemorySegment loop_filter_levelRaw() {
+    public @NotNull MemorySegment loop_filter_levelRaw() {
         return segment.asSlice(OFFSET$loop_filter_level, SIZE$loop_filter_level);
     }
 
@@ -227,7 +227,7 @@ public record StdVideoAV1LoopFilter(@NotNull MemorySegment segment) implements I
         return this;
     }
 
-    public MemorySegment loop_filter_ref_deltasRaw() {
+    public @NotNull MemorySegment loop_filter_ref_deltasRaw() {
         return segment.asSlice(OFFSET$loop_filter_ref_deltas, SIZE$loop_filter_ref_deltas);
     }
 
@@ -249,7 +249,7 @@ public record StdVideoAV1LoopFilter(@NotNull MemorySegment segment) implements I
         return this;
     }
 
-    public MemorySegment loop_filter_mode_deltasRaw() {
+    public @NotNull MemorySegment loop_filter_mode_deltasRaw() {
         return segment.asSlice(OFFSET$loop_filter_mode_deltas, SIZE$loop_filter_mode_deltas);
     }
 

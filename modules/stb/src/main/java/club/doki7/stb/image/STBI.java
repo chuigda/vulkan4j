@@ -5,6 +5,7 @@ import java.lang.invoke.MethodHandle;
 import java.util.Objects;
 
 import org.jetbrains.annotations.Nullable;
+import org.jetbrains.annotations.NotNull;
 import club.doki7.ffm.NativeLayout;
 import club.doki7.ffm.RawFunctionLoader;
 import club.doki7.ffm.annotation.*;
@@ -122,7 +123,7 @@ public final class STBI {
     public int convertWcharToUtf8(
         @Nullable BytePtr buffer,
         long bufferlen,
-        @Pointer(comment="wchar_t*") MemorySegment input
+        @Pointer(comment="wchar_t*") @NotNull MemorySegment input
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$stbi_convert_wchar_to_utf8);
         try {
@@ -174,7 +175,7 @@ public final class STBI {
     }
 
     public void imageFree(
-        @Pointer(comment="void*") MemorySegment retvalFromStbiLoad
+        @Pointer(comment="void*") @NotNull MemorySegment retvalFromStbiLoad
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$stbi_image_free);
         try {
@@ -207,7 +208,7 @@ public final class STBI {
 
     public int infoFromCallbacks(
         @Nullable @Pointer ISTBI_IoCallbacks clbk,
-        @Pointer(comment="void*") MemorySegment user,
+        @Pointer(comment="void*") @NotNull MemorySegment user,
         @Nullable IntPtr x,
         @Nullable IntPtr y,
         @Nullable IntPtr comp
@@ -262,7 +263,7 @@ public final class STBI {
 
     public int is16BitFromCallbacks(
         @Nullable @Pointer ISTBI_IoCallbacks clbk,
-        @Pointer(comment="void*") MemorySegment user
+        @Pointer(comment="void*") @NotNull MemorySegment user
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$stbi_is_16_bit_from_callbacks);
         try {
@@ -305,7 +306,7 @@ public final class STBI {
 
     public int isHdrFromCallbacks(
         @Nullable @Pointer ISTBI_IoCallbacks clbk,
-        @Pointer(comment="void*") MemorySegment user
+        @Pointer(comment="void*") @NotNull MemorySegment user
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$stbi_is_hdr_from_callbacks);
         try {
@@ -405,7 +406,7 @@ public final class STBI {
 
     public @Pointer(comment="stbi_us") ShortPtr load16FromCallbacks(
         @Nullable @Pointer ISTBI_IoCallbacks clbk,
-        @Pointer(comment="void*") MemorySegment user,
+        @Pointer(comment="void*") @NotNull MemorySegment user,
         @Nullable IntPtr x,
         @Nullable IntPtr y,
         @Nullable IntPtr channelsInFile,
@@ -453,7 +454,7 @@ public final class STBI {
 
     public @Pointer(comment="stbi_uc") BytePtr loadFromCallbacks(
         @Nullable @Pointer ISTBI_IoCallbacks clbk,
-        @Pointer(comment="void*") MemorySegment user,
+        @Pointer(comment="void*") @NotNull MemorySegment user,
         @Nullable IntPtr x,
         @Nullable IntPtr y,
         @Nullable IntPtr channelsInFile,
@@ -551,7 +552,7 @@ public final class STBI {
 
     public FloatPtr loadfFromCallbacks(
         @Nullable @Pointer ISTBI_IoCallbacks clbk,
-        @Pointer(comment="void*") MemorySegment user,
+        @Pointer(comment="void*") @NotNull MemorySegment user,
         @Nullable IntPtr x,
         @Nullable IntPtr y,
         @Nullable IntPtr channelsInFile,

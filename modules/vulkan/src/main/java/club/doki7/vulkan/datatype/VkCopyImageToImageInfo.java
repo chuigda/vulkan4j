@@ -205,12 +205,13 @@ public record VkCopyImageToImageInfo(@NotNull MemorySegment segment) implements 
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkCopyImageToImageInfo pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkCopyImageToImageInfo pNext(@Nullable IPointer pointer) {
@@ -218,11 +219,11 @@ public record VkCopyImageToImageInfo(@NotNull MemorySegment segment) implements 
         return this;
     }
 
-    public @EnumType(VkHostImageCopyFlags.class) int flags() {
+    public @Bitmask(VkHostImageCopyFlags.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public VkCopyImageToImageInfo flags(@EnumType(VkHostImageCopyFlags.class) int value) {
+    public VkCopyImageToImageInfo flags(@Bitmask(VkHostImageCopyFlags.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
         return this;
     }
@@ -304,11 +305,11 @@ public record VkCopyImageToImageInfo(@NotNull MemorySegment segment) implements 
         return new VkImageCopy2(s);
     }
 
-    public @Pointer(target=VkImageCopy2.class) MemorySegment pRegionsRaw() {
+    public @Pointer(target=VkImageCopy2.class) @NotNull MemorySegment pRegionsRaw() {
         return segment.get(LAYOUT$pRegions, OFFSET$pRegions);
     }
 
-    public void pRegionsRaw(@Pointer(target=VkImageCopy2.class) MemorySegment value) {
+    public void pRegionsRaw(@Pointer(target=VkImageCopy2.class) @NotNull MemorySegment value) {
         segment.set(LAYOUT$pRegions, OFFSET$pRegions, value);
     }
 

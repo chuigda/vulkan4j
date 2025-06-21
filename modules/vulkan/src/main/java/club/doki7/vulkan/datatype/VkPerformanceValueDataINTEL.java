@@ -227,11 +227,11 @@ public record VkPerformanceValueDataINTEL(@NotNull MemorySegment segment) implem
         return this;
     }
 
-    public @Pointer(comment="int8_t*") MemorySegment valueStringRaw() {
+    public @Pointer(comment="int8_t*") @NotNull MemorySegment valueStringRaw() {
         return segment.get(LAYOUT$valueString, OFFSET$valueString);
     }
 
-    public void valueStringRaw(@Pointer(comment="int8_t*") MemorySegment value) {
+    public void valueStringRaw(@Pointer(comment="int8_t*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$valueString, OFFSET$valueString, value);
     }
 
