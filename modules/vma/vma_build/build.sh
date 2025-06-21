@@ -32,6 +32,7 @@ fi
 # if CXX is not set, default to g++
 if [ -z "$CXX" ]; then
   CXX=g++
+  echo Info: CXX is not set, defaulting to g++
 fi
 
 # if VULKAN_SDK_DIR is not set, or the directory does not exist, give a warn
@@ -39,6 +40,8 @@ if [ -z "$VULKAN_SDK_DIR" ] || [ ! -d "$VULKAN_SDK_DIR" ]; then
   # if this is on Windows platform, this is likely to be incorrect and give warning
   if [ -n "$WIN32" ]; then
     echo Warning: VULKAN_SDK_DIR is not set or does not exist
+  else
+    echo Info: picked up VULKAN_SDK_DIR=$VULKAN_SDK_DIR
   fi
   $CXX -std=c++17 -O2 -fno-rtti -fno-exceptions -fPIC -I. -c -o vma.o vma_usage.cc
 else

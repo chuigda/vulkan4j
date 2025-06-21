@@ -3,12 +3,12 @@ name: VMA Native Binary
 on:
   push:
     branches: [ "master" ]
-    # paths:
-    #   - "modules/vma/vma_build/**"
+    paths:
+      - "modules/vma/vma_build/**"
   pull_request:
     branches: [ "master" ]
-    # paths:
-    #   - "modules/vma/vma_build/**"
+    paths:
+      - "modules/vma/vma_build/**"
 
 jobs:
   build:
