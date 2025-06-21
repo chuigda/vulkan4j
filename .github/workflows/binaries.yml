@@ -1,14 +1,16 @@
-name: VMA Native Binary
+name: VMA & STB Native Binaries
 
 on:
   push:
     branches: [ "master" ]
     paths:
       - "modules/vma/vma_build/**"
+      - "modules/stb/stb_build/**"
   pull_request:
     branches: [ "master" ]
     paths:
       - "modules/vma/vma_build/**"
+      - "modules/stb/stb_build/**"
 
 jobs:
   build:
@@ -42,22 +44,36 @@ jobs:
       run: |
         cd modules/vma/vma_build
         bash build.sh
+        cd ../../..
+    - name: Compile stb
+      env:
+        CC: ${{ steps.install_cc.outputs.cc }}
+      run: |
+        cd modules/stb/stb_build
+        bash build.sh
+        cd ../../..
     - name: Upload libvma.so
       uses: actions/upload-artifact@v4
       if: matrix.os == 'ubuntu-latest'
       with:
-        path: modules/vma/vma_build/libvma.so
-        name: libvma.so
+        path: |
+          modules/vma/vma_build/libvma.so
+          modules/stb/stb_build/libstb.so
+        name: linux-binaries
     - name: Upload libvma.dylib
       uses: actions/upload-artifact@v4
       if: matrix.os == 'macos-latest'
       with:
-        path: modules/vma/vma_build/libvma.dylib
-        name: libvma.dylib
+        path: |
+          modules/vma/vma_build/libvma.dylib
+          modules/stb/stb_build/libstb.dylib
+        name: macos-binaries
     - name: Upload vma.dll
       uses: actions/upload-artifact@v4
       if: matrix.os == 'windows-latest'
       with:
-        path: modules/vma/vma_build/vma.dll
-        name: vma.dll
+        path: |
+          modules/vma/vma_build/vma.dll
+          modules/stb/stb_build/stb.dll
+        name: windows-binaries
 

@@ -12,6 +12,7 @@ done
 # if CC is not set, default to gcc
 if [ -z "CC" ]; then
   CC=gcc
+  echo Info: CC is not set, defaulting to gcc
 fi
 
 $CC -std=c11 -O2 -fPIC -I. -c -o stb.o stb_usage.c
@@ -22,8 +23,12 @@ if [ $? -ne 0 ]; then
 fi
 
 # Generate shared library file according to the platform, using a environment variable WIN32
-if [ -n "$WIN32" ]; then
+if [ -n "$WIN32" ] || [ -f windows-indicator.txt ]; then
   $CC -shared -fPIC -static-libgcc -o stb.dll stb.o
 else
-  $CC -shared -fPIC -o libstb.so stb.o
+  if [ -n "$MACOS" ]; then
+    $CC -shared -fPIC -o libstb.dylib stb.o
+  else
+    $CC -shared -fPIC -o libstb.so stb.o
+  fi
 fi
