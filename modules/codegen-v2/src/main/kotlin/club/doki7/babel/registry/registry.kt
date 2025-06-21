@@ -2,8 +2,6 @@ package club.doki7.babel.registry
 
 import club.doki7.babel.util.Either
 import java.math.BigInteger
-import javax.lang.model.type.TypeMirror
-
 interface IMergeable<Self: IMergeable<Self>> {
     fun merge(other: Self): Self
 }
