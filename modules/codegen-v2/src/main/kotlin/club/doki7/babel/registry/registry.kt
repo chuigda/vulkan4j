@@ -238,6 +238,8 @@ class FunctionTypedef(
 ) : Entity(name) {
     constructor(name: String, params: List<Type>, result: Type) : this(name.intern(), params, result)
 
+    constructor(name: String, params: List<Type>, result: Type, isPointer: Boolean) : this(name.intern(), params, result, isPointer)
+
     override fun toStringImpl() = "FunctionTypedef(name=\"$name\", params=$params, result=$result"
 }
 

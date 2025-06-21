@@ -6,3 +6,12 @@ AllowShortFunctionsOnASingleLine: None
 AllowShortBlocksOnASingleLine: Never
 ColumnLimit: 0
 BreakFunctionDefinitionParameters: false
+
+BraceWrapping:
+  AfterClass: false
+  AfterEnum: false
+  AfterUnion: false
+  AfterStruct: false
+  AfterNamespace: false
+  AfterExternBlock: false
+  AfterFunction: false

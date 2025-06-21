@@ -61,6 +61,16 @@ fun parseTypedefDecl(lines: List<String>, startLine: Int): Pair<TypedefDecl, Int
     return Pair(decl, tokenizer.curLine)
 }
 
+fun parseNonPointerFunctionTypedefDecl(
+    lines: List<String>,
+    startLine: Int
+): Pair<TypedefDecl, Int> {
+    val tokenizer = Tokenizer(lines, startLine)
+    val decl = parseNonPointerFunctionTypedefDecl(tokenizer)
+    tokenizer.maybeSkipToLineEnd()
+    return Pair(decl, tokenizer.curLine)
+}
+
 fun parseInlineFunctionPointerField(lines: List<String>, startLine: Int): Pair<VarDecl, Int> {
     val tokenizer = Tokenizer(lines, startLine)
     val decl = parseInlineFunctionPointerField(tokenizer)
