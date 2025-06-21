@@ -12,6 +12,7 @@ public final class Loader {
     private static final SymbolLookup stdlibLookup = nativeLinker.defaultLookup();
     private static final SymbolLookup loaderLookup = SymbolLookup.loaderLookup();
 
+    @Deprecated
     public static @NotNull MethodHandle loadFunction(String name, FunctionDescriptor descriptor) {
         return loaderLookup.find(name)
                 .or(() -> stdlibLookup.find(name))
@@ -19,6 +20,7 @@ public final class Loader {
                 .orElseThrow(() -> new RuntimeException("native function " + name + " not found"));
     }
 
+    @Deprecated
     public static @Nullable MethodHandle loadFunctionOrNull(String name, FunctionDescriptor descriptor) {
         return loaderLookup.find(name)
                 .or(() -> stdlibLookup.find(name))
@@ -26,12 +28,14 @@ public final class Loader {
                 .orElse(null);
     }
 
+    @Deprecated
     public static @NotNull MemorySegment loadFunction(String name) {
         return loaderLookup.find(name)
                 .or(() -> stdlibLookup.find(name))
                 .orElseThrow(() -> new RuntimeException("native function " + name + " not found"));
     }
 
+    @Deprecated
     public static @Nullable MemorySegment loadFunctionOrNull(String name) {
         return loaderLookup.find(name)
                 .or(() -> stdlibLookup.find(name))
