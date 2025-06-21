@@ -277,7 +277,7 @@ private fun extractConstant(e: Element): Constant {
 }
 
 /**
- * @param e in form `<enum value="INTEGER" name="NAME" comment-"..." />`
+ * @param e in form `<enum value="INTEGER" name="NAME" comment="..." />`
  */
 private fun extractEnumVariant(e: Element): EnumVariant {
     return extractEnumLike(e).let {
