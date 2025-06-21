@@ -32,6 +32,9 @@ jobs:
     - name: Set MACOS environment variable
       if: matrix.os == 'macos-latest'
       run: echo "MACOS=true" >> $GITHUB_ENV
+    - name: Set WIN32 environment variable
+      if: matrix.os == 'windows-latest'
+      run: echo "WIN32=true" >> $GITHUB_ENV
     - name: Compile vma
       env:
         CXX: ${{ steps.install_cc.outputs.cxx }}
