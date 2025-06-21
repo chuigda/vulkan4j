@@ -1,6 +1,6 @@
 # Image view and sampler
 
-> [Java code](https://github.com/chuigda/vulkan4j/tree/master/modules/tutorial/src/main/java/tutorial/vulkan/part08/ch25/Main.java) | [C++ version](https://vulkan-tutorial.com/Texture_mapping/Image_view_and_sampler)
+> [Java code](https://github.com/club-doki7/vulkan4j/tree/master/modules/tutorial/src/main/java/tutorial/vulkan/part08/ch25/Main.java) | [C++ version](https://vulkan-tutorial.com/Texture_mapping/Image_view_and_sampler)
 
 In this chapter we're going to create two more resources that are needed for the graphics pipeline to sample an image. The first resource is one that we've already seen before while working with the swap chain images, but the second one is new - it relates to how the shader will read texels from the image.
 

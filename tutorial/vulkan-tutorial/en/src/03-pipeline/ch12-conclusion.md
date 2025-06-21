@@ -1,6 +1,6 @@
 # Conclusion
 
-> [Java code](https://github.com/chuigda/vulkan4j/tree/master/modules/tutorial/src/main/java/tutorial/vulkan/part03/ch12/Main.java) | [C++ version](https://vulkan-tutorial.com/Drawing_a_triangle/Graphics_pipeline_basics/Conclusion)
+> [Java code](https://github.com/club-doki7/vulkan4j/tree/master/modules/tutorial/src/main/java/tutorial/vulkan/part03/ch12/Main.java) | [C++ version](https://vulkan-tutorial.com/Drawing_a_triangle/Graphics_pipeline_basics/Conclusion)
 
 We can now combine all the structures and objects from the previous chapters to create the graphics pipeline! Here's the types of objects we have now, as a quick recap:
 

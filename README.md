@@ -1,8 +1,8 @@
 # vulkan4j
 
-[![CI status](https://github.com/chuigda/vulkan4j/actions/workflows/ci.yml/badge.svg?branch=master)](https://github.com/chuigda/vulkan4j/actions/workflows/ci.yml)
+[![CI status](https://github.com/club-doki7/vulkan4j/actions/workflows/ci.yml/badge.svg?branch=master)](https://github.com/club-doki7/vulkan4j/actions/workflows/ci.yml)
 
-> [Website & JavaDoc](https://vulkan4j.doki7.club) | [Vulkan Tutorial port](https://vulkan4j.doki7.club/tutorial/en/) | [LearnOpenGL port](https://vulkan4j.doki7.club/learnopengl/en/) | [Examples](https://github.com/chuigda/vulkan4j/tree/master/modules/example/src/main/java/example) | [Discord](https://discord.gg/UsmRvrt4gg)
+> [Website & JavaDoc](https://vulkan4j.doki7.club) | [Vulkan Tutorial port](https://vulkan4j.doki7.club/tutorial/en/) | [LearnOpenGL port](https://vulkan4j.doki7.club/learnopengl/en/) | [Examples](https://github.com/club-doki7/vulkan4j/tree/master/modules/example/src/main/java/example) | [Discord](https://discord.gg/UsmRvrt4gg)
 
 *This project is heavily inspired by the [`vulkanalia`](https://github.com/KyleMayes/vulkanalia) crate.*
 
@@ -10,28 +10,28 @@
 
 ## Bindings Available
 
-- [Vulkan](https://www.khronos.org/vulkan/) ([`vulkan`](https://github.com/chuigda/vulkan4j/tree/master/modules/vulkan) module): Generated from [`vk.xml`](https://github.com/KhronosGroup/Vulkan-Docs/blob/main/xml/vk.xml) and [`video.xml`](https://github.com/KhronosGroup/Vulkan-Docs/blob/main/xml/video.xml).
-- [Vulkan Memory Allocator](https://github.com/GPUOpen-LibrariesAndSDKs/VulkanMemoryAllocator) ([`vma`](https://github.com/chuigda/vulkan4j/tree/master/modules/vma) module): Generated from [`vk_mem_alloc.h`](https://github.com/GPUOpen-LibrariesAndSDKs/VulkanMemoryAllocator/blob/master/include/vk_mem_alloc.h). If you use a specific build supporting `vk4jSetJavaTrace`, you can enjoy Java stacktrace on VMA assertion failures. Check out the [`vma_build`](https://github.com/chuigda/vulkan4j/tree/master/modules/vma/vma_build) directory for more information.
-- [OpenGL](https://www.opengl.org/) ([`opengl`](https://github.com/chuigda/vulkan4j/tree/master/modules/opengl) module): Generated from [`gl.xml`](https://github.com/KhronosGroup/OpenGL-Registry/blob/main/xml/gl.xml). Our supported extension list is copied from LWJGL, and not all extensions are included (since some OpenGL extensions are completely useless nowadays). Name your desired extension in the issue tracker!
-- [OpenAL](https://www.openal.org/) ([`openal`](https://github.com/chuigda/vulkan4j/tree/master/modules/openal) module): Generated from OpenAL-soft header files. This module is based on OpenAL-soft 1.2, and provides a complete set of OpenAL features, including all extensions supported by OpenAL-soft.
-- [GLFW](https://www.glfw.org/) ([`glfw`](https://github.com/chuigda/vulkan4j/tree/master/modules/glfw) module): Generated from GLFW header files.
-- [libshaderc](https://github.com/google/shaderc) ([`shaderc`](https://github.com/chuigda/vulkan4j/tree/master/modules/shaderc) module): Generated from `libshaderc` header files. This module also provides a useful `ShadercUtil` class to assist you with including files.
-- [STB](https://github.com/nothings/stb) ([`stb`](https://github.com/chuigda/vulkan4j/tree/master/modules/stb) module): Generated from STB header files, currently contains `stb_image`, `stb_image_write`, `stb_image_resize` and `stb_truetype`. If you use a specific build supporting `vk4jSetSTBJavaTrace`, you can enjoy Java stacktrace on STB assertion failures. Check out the [`stb_build`](https://github.com/chuigda/vulkan4j/tree/master/modules/stb/stb_build) directory for more information.
+- [Vulkan](https://www.khronos.org/vulkan/) ([`vulkan`](https://github.com/club-doki7/vulkan4j/tree/master/modules/vulkan) module): Generated from [`vk.xml`](https://github.com/KhronosGroup/Vulkan-Docs/blob/main/xml/vk.xml) and [`video.xml`](https://github.com/KhronosGroup/Vulkan-Docs/blob/main/xml/video.xml).
+- [Vulkan Memory Allocator](https://github.com/GPUOpen-LibrariesAndSDKs/VulkanMemoryAllocator) ([`vma`](https://github.com/club-doki7/vulkan4j/tree/master/modules/vma) module): Generated from [`vk_mem_alloc.h`](https://github.com/GPUOpen-LibrariesAndSDKs/VulkanMemoryAllocator/blob/master/include/vk_mem_alloc.h). If you use a specific build supporting `vk4jSetJavaTrace`, you can enjoy Java stacktrace on VMA assertion failures. Check out the [`vma_build`](https://github.com/club-doki7/vulkan4j/tree/master/modules/vma/vma_build) directory for more information.
+- [OpenGL](https://www.opengl.org/) ([`opengl`](https://github.com/club-doki7/vulkan4j/tree/master/modules/opengl) module): Generated from [`gl.xml`](https://github.com/KhronosGroup/OpenGL-Registry/blob/main/xml/gl.xml). Our supported extension list is copied from LWJGL, and not all extensions are included (since some OpenGL extensions are completely useless nowadays). Name your desired extension in the issue tracker!
+- [OpenAL](https://www.openal.org/) ([`openal`](https://github.com/club-doki7/vulkan4j/tree/master/modules/openal) module): Generated from OpenAL-soft header files. This module is based on OpenAL-soft 1.2, and provides a complete set of OpenAL features, including all extensions supported by OpenAL-soft.
+- [GLFW](https://www.glfw.org/) ([`glfw`](https://github.com/club-doki7/vulkan4j/tree/master/modules/glfw) module): Generated from GLFW header files.
+- [libshaderc](https://github.com/google/shaderc) ([`shaderc`](https://github.com/club-doki7/vulkan4j/tree/master/modules/shaderc) module): Generated from `libshaderc` header files. This module also provides a useful `ShadercUtil` class to assist you with including files.
+- [STB](https://github.com/nothings/stb) ([`stb`](https://github.com/club-doki7/vulkan4j/tree/master/modules/stb) module): Generated from STB header files, currently contains `stb_image`, `stb_image_write`, `stb_image_resize` and `stb_truetype`. If you use a specific build supporting `vk4jSetSTBJavaTrace`, you can enjoy Java stacktrace on STB assertion failures. Check out the [`stb_build`](https://github.com/club-doki7/vulkan4j/tree/master/modules/stb/stb_build) directory for more information.
 
 ### Experimental Bindings
 
-- [SDL3](https://www.libsdl.org/) ([`sdl3`](https://github.com/chuigda/vulkan4j/tree/master/modules/sdl3) module): Generated from SDL3 header files. This module is still under development, it has unimplemented functionalities, and may contain bugs. Issues and pull requests are welcome.
+- [SDL3](https://www.libsdl.org/) ([`sdl3`](https://github.com/club-doki7/vulkan4j/tree/master/modules/sdl3) module): Generated from SDL3 header files. This module is still under development, it has unimplemented functionalities, and may contain bugs. Issues and pull requests are welcome.
 
 <details>
 <summary>Obsolete bindings</summary>
 
-- [OpenGL ES **2.0 only**](https://www.khronos.org/opengles/) ([`gles2`](https://github.com/chuigda/vulkan4j/tree/master/modules/gles2) module): Also generated from `gl.xml`. This module only provides most fundamental OpenGL ES 2.0 features, and does not include any extensions. This package was initially created for the Chuigda's own use. This package will still get maintained since Chuigda wants.
+- [OpenGL ES **2.0 only**](https://www.khronos.org/opengles/) ([`gles2`](https://github.com/club-doki7/vulkan4j/tree/master/modules/gles2) module): Also generated from `gl.xml`. This module only provides most fundamental OpenGL ES 2.0 features, and does not include any extensions. This package was initially created for the Chuigda's own use. This package will still get maintained since Chuigda wants.
 
 </details>
 
 ## `ffm-plus`
 
-To improve development experience using Java 22 FFM APIs, we created a small library [`ffm-plus`](https://github.com/chuigda/vulkan4j/tree/master/modules/ffm-plus) that encapsulates most commonly used facilities, such as typed pointers and bitfield operations. All our bindings use `ffm-plus`.
+To improve development experience using Java 22 FFM APIs, we created a small library [`ffm-plus`](https://github.com/club-doki7/vulkan4j/tree/master/modules/ffm-plus) that encapsulates most commonly used facilities, such as typed pointers and bitfield operations. All our bindings use `ffm-plus`.
 
 ## Documentation and Tutorials
 
@@ -45,7 +45,7 @@ For users new to Vulkan, there is a (almost) complete adaptation of [https://vul
 ### [LearnOpenGL tutorial port](https://vulkan4j.doki7.club/learnopengl/en/)
 For OpenGL users, we ported the [LearnOpenGL](https://learnopengl.com) tutorial to use Java and `vulkan4j`. The published version of this tutorial can be found [here](https://vulkan4j.doki7.club/learnopengl/en/), and the sources for the tutorial can be found under the `tutorial` directory. Till now only the first several chapters are ported, which should be adequate to get you started with OpenGL in Java. The rest of the chapters will be ported in the future.
 
-### [Examples](https://github.com/chuigda/vulkan4j/tree/master/modules/example/src/main/java/example)
+### [Examples](https://github.com/club-doki7/vulkan4j/tree/master/modules/example/src/main/java/example)
 We provide a set of examples, which can be found under the `example` directory. These examples are intended to demonstrate how to use the bindings in practice, and can be used as a reference for your own projects.
 
 ## Roadmap

@@ -1,6 +1,6 @@
 # Vertex input description
 
-> [Java code](https://github.com/chuigda/vulkan4j/tree/master/modules/tutorial/src/main/java/tutorial/vulkan/part06/ch18/Main.java) | [C++ version](https://vulkan-tutorial.com/Vertex_buffers/Vertex_input_description)
+> [Java code](https://github.com/club-doki7/vulkan4j/tree/master/modules/tutorial/src/main/java/tutorial/vulkan/part06/ch18/Main.java) | [C++ version](https://vulkan-tutorial.com/Vertex_buffers/Vertex_input_description)
 
 ## Introduction
 
