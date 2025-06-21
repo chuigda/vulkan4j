@@ -1,4 +1,4 @@
-## UNPUBLISHED v0.4.0
+## v0.4.0
 
 Upgrade `ffm-plus` to v0.2.4, and other wrapper modules to v0.4.0.
 
@@ -8,6 +8,14 @@ Upgrade `ffm-plus` to v0.2.4, and other wrapper modules to v0.4.0.
 - All `MemorySegment`s are now `@NotNull` by default. APIs previously accepts `null` `MemorySegment` will now throw `NullPointerException` if you pass `null`. Always use `MemorySegment.NULL`.
 - Deprecated `Loader` class and its methods. If you need to load basic functions (like `libc` functions) from "global" scope, use `JavaSystemLibrary.INSTANCE.load` instead; if you need to load functions from a specific library, use `ILibraryLoader` and `ISharedLibrary` interface instead.
 - Updated `VulkanLoader`, `GLFWLoader`, `VMAJavaTraceUtil` and `STBJavaTraceUtil` APIs to use `ILibraryLoader` and `ISharedLibrary` accordingly.
+
+### New bindings
+
+- Added `stb` module, which provides bindings for `stb` libraries. Currently the following components are supported:
+  - `stb.iamge` (`stb_image.h`): Image loading library.
+  - `stb.imagewrite` (`stb_image_write.h`): Image writing library.
+  - `stb.imageresize` (`stb_image_resize2.h`): Image resizing library.
+  - `stb.truetype` (`stb_truetype.h`): TrueType font rendering library.
 
 ### Functionality updates
 
