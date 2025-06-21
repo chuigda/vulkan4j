@@ -39,7 +39,7 @@ try (var arena = Arena.ofConfined()) {
     var createInfo = VkImageViewCreateInfo.allocate(arena);
     var pImageView = VkImageView.Buffer.allocate(arena);
 
-    for (int i = 0; i < swapChainImages.length; i++) {
+    for (long i = 0; i < swapChainImages.size(); i++) {
     }
 }
 ```
