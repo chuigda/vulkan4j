@@ -1,3 +1,17 @@
+## UNPUBLISHED v0.4.0
+
+Upgrade `ffm-plus` to v0.2.4, and other wrapper modules to v0.4.0.
+
+### Breaking changes
+
+- Add new annotation `@Bitmask` and use it to mark bitmask types. Original `@EnumType` annotation should only be applied to non-composable enums. This won't break build, but you'll see IDE warnings if you are using our [ffm-plus-inspection](https://github.com/club-doki7/ffm-plus-inspection) plugin.
+- `RawFunctionLoader`'s return value is now `@NotNull`, it only returns `MemorySegment.NULL` when failed to load the function. Downstream implementation of `RawFunctionLoader` should also return `@NotNull` value now.
+
+### Functionality updates
+
+- Added `ILibraryLoader` and `ISharedLibrary` interface to reduce global `System.load`/`System.loadLibrary` calls. This allows you to load libraries in a more controlled manner.
+  - This feature uses `LoadLibraryW` + `GetProcAddress` on Windows platform, `dlopen` + `dlsym` on Linux/FreeBSD platform. *TODO: What should we use on MAC?*
+
 ## v0.3.4
 
 Upgrade `ffm-plus` to v0.2.2, and other wrapper modules to v0.3.4.
