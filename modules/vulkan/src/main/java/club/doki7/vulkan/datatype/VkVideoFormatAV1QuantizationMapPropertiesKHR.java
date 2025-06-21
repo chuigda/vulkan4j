@@ -213,11 +213,11 @@ public record VkVideoFormatAV1QuantizationMapPropertiesKHR(@NotNull MemorySegmen
         return this;
     }
 
-    public @EnumType(VkVideoEncodeAV1SuperblockSizeFlagsKHR.class) int compatibleSuperblockSizes() {
+    public @Bitmask(VkVideoEncodeAV1SuperblockSizeFlagsKHR.class) int compatibleSuperblockSizes() {
         return segment.get(LAYOUT$compatibleSuperblockSizes, OFFSET$compatibleSuperblockSizes);
     }
 
-    public VkVideoFormatAV1QuantizationMapPropertiesKHR compatibleSuperblockSizes(@EnumType(VkVideoEncodeAV1SuperblockSizeFlagsKHR.class) int value) {
+    public VkVideoFormatAV1QuantizationMapPropertiesKHR compatibleSuperblockSizes(@Bitmask(VkVideoEncodeAV1SuperblockSizeFlagsKHR.class) int value) {
         segment.set(LAYOUT$compatibleSuperblockSizes, OFFSET$compatibleSuperblockSizes, value);
         return this;
     }

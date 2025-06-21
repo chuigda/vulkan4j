@@ -213,11 +213,11 @@ public record VkPipelineCreateFlags2CreateInfo(@NotNull MemorySegment segment) i
         return this;
     }
 
-    public @EnumType(VkPipelineCreateFlags2.class) long flags() {
+    public @Bitmask(VkPipelineCreateFlags2.class) long flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public VkPipelineCreateFlags2CreateInfo flags(@EnumType(VkPipelineCreateFlags2.class) long value) {
+    public VkPipelineCreateFlags2CreateInfo flags(@Bitmask(VkPipelineCreateFlags2.class) long value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
         return this;
     }

@@ -218,20 +218,20 @@ public record VkVideoEncodeRateControlInfoKHR(@NotNull MemorySegment segment) im
         return this;
     }
 
-    public @EnumType(VkVideoEncodeRateControlFlagsKHR.class) int flags() {
+    public @Bitmask(VkVideoEncodeRateControlFlagsKHR.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public VkVideoEncodeRateControlInfoKHR flags(@EnumType(VkVideoEncodeRateControlFlagsKHR.class) int value) {
+    public VkVideoEncodeRateControlInfoKHR flags(@Bitmask(VkVideoEncodeRateControlFlagsKHR.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
         return this;
     }
 
-    public @EnumType(VkVideoEncodeRateControlModeFlagsKHR.class) int rateControlMode() {
+    public @Bitmask(VkVideoEncodeRateControlModeFlagsKHR.class) int rateControlMode() {
         return segment.get(LAYOUT$rateControlMode, OFFSET$rateControlMode);
     }
 
-    public VkVideoEncodeRateControlInfoKHR rateControlMode(@EnumType(VkVideoEncodeRateControlModeFlagsKHR.class) int value) {
+    public VkVideoEncodeRateControlInfoKHR rateControlMode(@Bitmask(VkVideoEncodeRateControlModeFlagsKHR.class) int value) {
         segment.set(LAYOUT$rateControlMode, OFFSET$rateControlMode, value);
         return this;
     }

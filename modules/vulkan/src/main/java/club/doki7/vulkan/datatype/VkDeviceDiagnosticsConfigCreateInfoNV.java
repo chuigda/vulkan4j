@@ -213,11 +213,11 @@ public record VkDeviceDiagnosticsConfigCreateInfoNV(@NotNull MemorySegment segme
         return this;
     }
 
-    public @EnumType(VkDeviceDiagnosticsConfigFlagsNV.class) int flags() {
+    public @Bitmask(VkDeviceDiagnosticsConfigFlagsNV.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public VkDeviceDiagnosticsConfigCreateInfoNV flags(@EnumType(VkDeviceDiagnosticsConfigFlagsNV.class) int value) {
+    public VkDeviceDiagnosticsConfigCreateInfoNV flags(@Bitmask(VkDeviceDiagnosticsConfigFlagsNV.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
         return this;
     }

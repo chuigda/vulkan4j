@@ -217,11 +217,11 @@ public record VkPushDescriptorSetInfo(@NotNull MemorySegment segment) implements
         return this;
     }
 
-    public @EnumType(VkShaderStageFlags.class) int stageFlags() {
+    public @Bitmask(VkShaderStageFlags.class) int stageFlags() {
         return segment.get(LAYOUT$stageFlags, OFFSET$stageFlags);
     }
 
-    public VkPushDescriptorSetInfo stageFlags(@EnumType(VkShaderStageFlags.class) int value) {
+    public VkPushDescriptorSetInfo stageFlags(@Bitmask(VkShaderStageFlags.class) int value) {
         segment.set(LAYOUT$stageFlags, OFFSET$stageFlags, value);
         return this;
     }

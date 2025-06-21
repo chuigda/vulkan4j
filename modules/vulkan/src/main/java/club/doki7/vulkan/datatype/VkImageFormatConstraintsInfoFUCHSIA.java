@@ -232,20 +232,20 @@ public record VkImageFormatConstraintsInfoFUCHSIA(@NotNull MemorySegment segment
         return this;
     }
 
-    public @EnumType(VkFormatFeatureFlags.class) int requiredFormatFeatures() {
+    public @Bitmask(VkFormatFeatureFlags.class) int requiredFormatFeatures() {
         return segment.get(LAYOUT$requiredFormatFeatures, OFFSET$requiredFormatFeatures);
     }
 
-    public VkImageFormatConstraintsInfoFUCHSIA requiredFormatFeatures(@EnumType(VkFormatFeatureFlags.class) int value) {
+    public VkImageFormatConstraintsInfoFUCHSIA requiredFormatFeatures(@Bitmask(VkFormatFeatureFlags.class) int value) {
         segment.set(LAYOUT$requiredFormatFeatures, OFFSET$requiredFormatFeatures, value);
         return this;
     }
 
-    public @EnumType(VkImageFormatConstraintsFlagsFUCHSIA.class) int flags() {
+    public @Bitmask(VkImageFormatConstraintsFlagsFUCHSIA.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public VkImageFormatConstraintsInfoFUCHSIA flags(@EnumType(VkImageFormatConstraintsFlagsFUCHSIA.class) int value) {
+    public VkImageFormatConstraintsInfoFUCHSIA flags(@Bitmask(VkImageFormatConstraintsFlagsFUCHSIA.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
         return this;
     }

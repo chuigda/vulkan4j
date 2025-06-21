@@ -219,11 +219,11 @@ public record VkDependencyInfo(@NotNull MemorySegment segment) implements IVkDep
         return this;
     }
 
-    public @EnumType(VkDependencyFlags.class) int dependencyFlags() {
+    public @Bitmask(VkDependencyFlags.class) int dependencyFlags() {
         return segment.get(LAYOUT$dependencyFlags, OFFSET$dependencyFlags);
     }
 
-    public VkDependencyInfo dependencyFlags(@EnumType(VkDependencyFlags.class) int value) {
+    public VkDependencyInfo dependencyFlags(@Bitmask(VkDependencyFlags.class) int value) {
         segment.set(LAYOUT$dependencyFlags, OFFSET$dependencyFlags, value);
         return this;
     }

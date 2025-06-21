@@ -217,11 +217,11 @@ public record VkCopyImageToMemoryInfo(@NotNull MemorySegment segment) implements
         return this;
     }
 
-    public @EnumType(VkHostImageCopyFlags.class) int flags() {
+    public @Bitmask(VkHostImageCopyFlags.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public VkCopyImageToMemoryInfo flags(@EnumType(VkHostImageCopyFlags.class) int value) {
+    public VkCopyImageToMemoryInfo flags(@Bitmask(VkHostImageCopyFlags.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
         return this;
     }

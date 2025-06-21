@@ -740,7 +740,7 @@ public final class VkInstanceCommands {
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkDebugReportMessageEXT.html"><code>vkDebugReportMessageEXT</code></a>
     public void debugReportMessageEXT(
         VkInstance instance,
-        @EnumType(VkDebugReportFlagsEXT.class) int flags,
+        @Bitmask(VkDebugReportFlagsEXT.class) int flags,
         @EnumType(VkDebugReportObjectTypeEXT.class) int objectType,
         @Unsigned long object,
         long location,
@@ -1343,9 +1343,9 @@ public final class VkInstanceCommands {
         @EnumType(VkFormat.class) int format,
         @EnumType(VkImageType.class) int type,
         @EnumType(VkImageTiling.class) int tiling,
-        @EnumType(VkImageUsageFlags.class) int usage,
-        @EnumType(VkImageCreateFlags.class) int flags,
-        @EnumType(VkExternalMemoryHandleTypeFlagsNV.class) int externalHandleType,
+        @Bitmask(VkImageUsageFlags.class) int usage,
+        @Bitmask(VkImageCreateFlags.class) int flags,
+        @Bitmask(VkExternalMemoryHandleTypeFlagsNV.class) int externalHandleType,
         @Pointer VkExternalImageFormatPropertiesNV pExternalImageFormatProperties
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkGetPhysicalDeviceExternalImageFormatPropertiesNV);
@@ -1368,7 +1368,7 @@ public final class VkInstanceCommands {
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkGetPhysicalDeviceExternalMemorySciBufPropertiesNV.html"><code>vkGetPhysicalDeviceExternalMemorySciBufPropertiesNV</code></a>
     public @EnumType(VkResult.class) int getPhysicalDeviceExternalMemorySciBufPropertiesNV(
         VkPhysicalDevice physicalDevice,
-        @EnumType(VkExternalMemoryHandleTypeFlags.class) int handleType,
+        @Bitmask(VkExternalMemoryHandleTypeFlags.class) int handleType,
         @Pointer(comment="NvSciBufObj") @NotNull MemorySegment handle,
         @Pointer VkMemorySciBufPropertiesNV pMemorySciBufProperties
     ) {
@@ -1547,8 +1547,8 @@ public final class VkInstanceCommands {
         @EnumType(VkFormat.class) int format,
         @EnumType(VkImageType.class) int type,
         @EnumType(VkImageTiling.class) int tiling,
-        @EnumType(VkImageUsageFlags.class) int usage,
-        @EnumType(VkImageCreateFlags.class) int flags,
+        @Bitmask(VkImageUsageFlags.class) int usage,
+        @Bitmask(VkImageCreateFlags.class) int flags,
         @Pointer VkImageFormatProperties pImageFormatProperties
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkGetPhysicalDeviceImageFormatProperties);
@@ -1654,7 +1654,7 @@ public final class VkInstanceCommands {
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkGetPhysicalDeviceMultisamplePropertiesEXT.html"><code>vkGetPhysicalDeviceMultisamplePropertiesEXT</code></a>
     public void getPhysicalDeviceMultisamplePropertiesEXT(
         VkPhysicalDevice physicalDevice,
-        @EnumType(VkSampleCountFlags.class) int samples,
+        @Bitmask(VkSampleCountFlags.class) int samples,
         @Pointer VkMultisamplePropertiesEXT pMultisampleProperties
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkGetPhysicalDeviceMultisamplePropertiesEXT);
@@ -1904,8 +1904,8 @@ public final class VkInstanceCommands {
         VkPhysicalDevice physicalDevice,
         @EnumType(VkFormat.class) int format,
         @EnumType(VkImageType.class) int type,
-        @EnumType(VkSampleCountFlags.class) int samples,
-        @EnumType(VkImageUsageFlags.class) int usage,
+        @Bitmask(VkSampleCountFlags.class) int samples,
+        @Bitmask(VkImageUsageFlags.class) int usage,
         @EnumType(VkImageTiling.class) int tiling,
         @Unsigned IntPtr pPropertyCount,
         @Nullable @Pointer IVkSparseImageFormatProperties pProperties
@@ -2440,8 +2440,8 @@ public final class VkInstanceCommands {
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkSubmitDebugUtilsMessageEXT.html"><code>vkSubmitDebugUtilsMessageEXT</code></a>
     public void submitDebugUtilsMessageEXT(
         VkInstance instance,
-        @EnumType(VkDebugUtilsMessageSeverityFlagsEXT.class) int messageSeverity,
-        @EnumType(VkDebugUtilsMessageTypeFlagsEXT.class) int messageTypes,
+        @Bitmask(VkDebugUtilsMessageSeverityFlagsEXT.class) int messageSeverity,
+        @Bitmask(VkDebugUtilsMessageTypeFlagsEXT.class) int messageTypes,
         @Pointer VkDebugUtilsMessengerCallbackDataEXT pCallbackData
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkSubmitDebugUtilsMessageEXT);

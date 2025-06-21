@@ -230,20 +230,20 @@ public record VkImportSemaphoreWin32HandleInfoKHR(@NotNull MemorySegment segment
         return this;
     }
 
-    public @EnumType(VkSemaphoreImportFlags.class) int flags() {
+    public @Bitmask(VkSemaphoreImportFlags.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public VkImportSemaphoreWin32HandleInfoKHR flags(@EnumType(VkSemaphoreImportFlags.class) int value) {
+    public VkImportSemaphoreWin32HandleInfoKHR flags(@Bitmask(VkSemaphoreImportFlags.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
         return this;
     }
 
-    public @EnumType(VkExternalSemaphoreHandleTypeFlags.class) int handleType() {
+    public @Bitmask(VkExternalSemaphoreHandleTypeFlags.class) int handleType() {
         return segment.get(LAYOUT$handleType, OFFSET$handleType);
     }
 
-    public VkImportSemaphoreWin32HandleInfoKHR handleType(@EnumType(VkExternalSemaphoreHandleTypeFlags.class) int value) {
+    public VkImportSemaphoreWin32HandleInfoKHR handleType(@Bitmask(VkExternalSemaphoreHandleTypeFlags.class) int value) {
         segment.set(LAYOUT$handleType, OFFSET$handleType, value);
         return this;
     }

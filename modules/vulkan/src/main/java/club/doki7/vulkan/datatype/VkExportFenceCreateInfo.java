@@ -213,11 +213,11 @@ public record VkExportFenceCreateInfo(@NotNull MemorySegment segment) implements
         return this;
     }
 
-    public @EnumType(VkExternalFenceHandleTypeFlags.class) int handleTypes() {
+    public @Bitmask(VkExternalFenceHandleTypeFlags.class) int handleTypes() {
         return segment.get(LAYOUT$handleTypes, OFFSET$handleTypes);
     }
 
-    public VkExportFenceCreateInfo handleTypes(@EnumType(VkExternalFenceHandleTypeFlags.class) int value) {
+    public VkExportFenceCreateInfo handleTypes(@Bitmask(VkExternalFenceHandleTypeFlags.class) int value) {
         segment.set(LAYOUT$handleTypes, OFFSET$handleTypes, value);
         return this;
     }

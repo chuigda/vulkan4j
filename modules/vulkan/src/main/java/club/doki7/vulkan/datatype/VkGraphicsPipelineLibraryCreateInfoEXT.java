@@ -213,11 +213,11 @@ public record VkGraphicsPipelineLibraryCreateInfoEXT(@NotNull MemorySegment segm
         return this;
     }
 
-    public @EnumType(VkGraphicsPipelineLibraryFlagsEXT.class) int flags() {
+    public @Bitmask(VkGraphicsPipelineLibraryFlagsEXT.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public VkGraphicsPipelineLibraryCreateInfoEXT flags(@EnumType(VkGraphicsPipelineLibraryFlagsEXT.class) int value) {
+    public VkGraphicsPipelineLibraryCreateInfoEXT flags(@Bitmask(VkGraphicsPipelineLibraryFlagsEXT.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
         return this;
     }

@@ -215,11 +215,11 @@ public record VkDebugReportCallbackCreateInfoEXT(@NotNull MemorySegment segment)
         return this;
     }
 
-    public @EnumType(VkDebugReportFlagsEXT.class) int flags() {
+    public @Bitmask(VkDebugReportFlagsEXT.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public VkDebugReportCallbackCreateInfoEXT flags(@EnumType(VkDebugReportFlagsEXT.class) int value) {
+    public VkDebugReportCallbackCreateInfoEXT flags(@Bitmask(VkDebugReportFlagsEXT.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
         return this;
     }

@@ -262,20 +262,20 @@ public record VkCommandBufferInheritanceInfo(@NotNull MemorySegment segment) imp
         return this;
     }
 
-    public @EnumType(VkQueryControlFlags.class) int queryFlags() {
+    public @Bitmask(VkQueryControlFlags.class) int queryFlags() {
         return segment.get(LAYOUT$queryFlags, OFFSET$queryFlags);
     }
 
-    public VkCommandBufferInheritanceInfo queryFlags(@EnumType(VkQueryControlFlags.class) int value) {
+    public VkCommandBufferInheritanceInfo queryFlags(@Bitmask(VkQueryControlFlags.class) int value) {
         segment.set(LAYOUT$queryFlags, OFFSET$queryFlags, value);
         return this;
     }
 
-    public @EnumType(VkQueryPipelineStatisticFlags.class) int pipelineStatistics() {
+    public @Bitmask(VkQueryPipelineStatisticFlags.class) int pipelineStatistics() {
         return segment.get(LAYOUT$pipelineStatistics, OFFSET$pipelineStatistics);
     }
 
-    public VkCommandBufferInheritanceInfo pipelineStatistics(@EnumType(VkQueryPipelineStatisticFlags.class) int value) {
+    public VkCommandBufferInheritanceInfo pipelineStatistics(@Bitmask(VkQueryPipelineStatisticFlags.class) int value) {
         segment.set(LAYOUT$pipelineStatistics, OFFSET$pipelineStatistics, value);
         return this;
     }

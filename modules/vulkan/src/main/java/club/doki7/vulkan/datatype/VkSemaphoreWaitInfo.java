@@ -216,11 +216,11 @@ public record VkSemaphoreWaitInfo(@NotNull MemorySegment segment) implements IVk
         return this;
     }
 
-    public @EnumType(VkSemaphoreWaitFlags.class) int flags() {
+    public @Bitmask(VkSemaphoreWaitFlags.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public VkSemaphoreWaitInfo flags(@EnumType(VkSemaphoreWaitFlags.class) int value) {
+    public VkSemaphoreWaitInfo flags(@Bitmask(VkSemaphoreWaitFlags.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
         return this;
     }

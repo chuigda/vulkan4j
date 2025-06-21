@@ -219,11 +219,11 @@ public record VkRenderPassCreateInfo(@NotNull MemorySegment segment) implements 
         return this;
     }
 
-    public @EnumType(VkRenderPassCreateFlags.class) int flags() {
+    public @Bitmask(VkRenderPassCreateFlags.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public VkRenderPassCreateInfo flags(@EnumType(VkRenderPassCreateFlags.class) int value) {
+    public VkRenderPassCreateInfo flags(@Bitmask(VkRenderPassCreateFlags.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
         return this;
     }

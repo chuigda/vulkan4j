@@ -216,11 +216,11 @@ public record VkDescriptorPoolCreateInfo(@NotNull MemorySegment segment) impleme
         return this;
     }
 
-    public @EnumType(VkDescriptorPoolCreateFlags.class) int flags() {
+    public @Bitmask(VkDescriptorPoolCreateFlags.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public VkDescriptorPoolCreateInfo flags(@EnumType(VkDescriptorPoolCreateFlags.class) int value) {
+    public VkDescriptorPoolCreateInfo flags(@Bitmask(VkDescriptorPoolCreateFlags.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
         return this;
     }

@@ -226,11 +226,11 @@ public record VkAccelerationStructureInfoNV(@NotNull MemorySegment segment) impl
         return this;
     }
 
-    public @EnumType(VkBuildAccelerationStructureFlagsKHR.class) int flags() {
+    public @Bitmask(VkBuildAccelerationStructureFlagsKHR.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public VkAccelerationStructureInfoNV flags(@EnumType(VkBuildAccelerationStructureFlagsKHR.class) int value) {
+    public VkAccelerationStructureInfoNV flags(@Bitmask(VkBuildAccelerationStructureFlagsKHR.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
         return this;
     }

@@ -219,11 +219,11 @@ public record VkCommandBufferInheritanceRenderingInfo(@NotNull MemorySegment seg
         return this;
     }
 
-    public @EnumType(VkRenderingFlags.class) int flags() {
+    public @Bitmask(VkRenderingFlags.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public VkCommandBufferInheritanceRenderingInfo flags(@EnumType(VkRenderingFlags.class) int value) {
+    public VkCommandBufferInheritanceRenderingInfo flags(@Bitmask(VkRenderingFlags.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
         return this;
     }
@@ -291,11 +291,11 @@ public record VkCommandBufferInheritanceRenderingInfo(@NotNull MemorySegment seg
         return this;
     }
 
-    public @EnumType(VkSampleCountFlags.class) int rasterizationSamples() {
+    public @Bitmask(VkSampleCountFlags.class) int rasterizationSamples() {
         return segment.get(LAYOUT$rasterizationSamples, OFFSET$rasterizationSamples);
     }
 
-    public VkCommandBufferInheritanceRenderingInfo rasterizationSamples(@EnumType(VkSampleCountFlags.class) int value) {
+    public VkCommandBufferInheritanceRenderingInfo rasterizationSamples(@Bitmask(VkSampleCountFlags.class) int value) {
         segment.set(LAYOUT$rasterizationSamples, OFFSET$rasterizationSamples, value);
         return this;
     }

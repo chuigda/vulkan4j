@@ -215,11 +215,11 @@ public record VkOpticalFlowExecuteInfoNV(@NotNull MemorySegment segment) impleme
         return this;
     }
 
-    public @EnumType(VkOpticalFlowExecuteFlagsNV.class) int flags() {
+    public @Bitmask(VkOpticalFlowExecuteFlagsNV.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public VkOpticalFlowExecuteInfoNV flags(@EnumType(VkOpticalFlowExecuteFlagsNV.class) int value) {
+    public VkOpticalFlowExecuteInfoNV flags(@Bitmask(VkOpticalFlowExecuteFlagsNV.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
         return this;
     }

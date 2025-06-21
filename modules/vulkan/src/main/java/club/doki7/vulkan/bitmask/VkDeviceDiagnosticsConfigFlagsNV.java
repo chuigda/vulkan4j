@@ -12,7 +12,7 @@ public final class VkDeviceDiagnosticsConfigFlagsNV {
     public static final int ENABLE_SHADER_DEBUG_INFO = 0x1;
     public static final int ENABLE_SHADER_ERROR_REPORTING = 0x8;
 
-    public static String explain(@EnumType(VkDeviceDiagnosticsConfigFlagsNV.class) int flags) {
+    public static String explain(@Bitmask(VkDeviceDiagnosticsConfigFlagsNV.class) int flags) {
         List<String> detectedFlagBits = new ArrayList<>();
         if ((flags & ENABLE_AUTOMATIC_CHECKPOINTS) != 0) {
             detectedFlagBits.add("VK_DEVICE_DIAGNOSTICS_CONFIG_ENABLE_AUTOMATIC_CHECKPOINTS_BIT_NV");

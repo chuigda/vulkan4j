@@ -11,7 +11,7 @@ public final class VkBuildMicromapFlagsEXT {
     public static final int PREFER_FAST_BUILD = 0x2;
     public static final int PREFER_FAST_TRACE = 0x1;
 
-    public static String explain(@EnumType(VkBuildMicromapFlagsEXT.class) int flags) {
+    public static String explain(@Bitmask(VkBuildMicromapFlagsEXT.class) int flags) {
         List<String> detectedFlagBits = new ArrayList<>();
         if ((flags & ALLOW_COMPACTION) != 0) {
             detectedFlagBits.add("VK_BUILD_MICROMAP_ALLOW_COMPACTION_BIT_EXT");

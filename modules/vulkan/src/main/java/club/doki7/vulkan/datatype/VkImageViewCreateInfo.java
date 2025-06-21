@@ -218,11 +218,11 @@ public record VkImageViewCreateInfo(@NotNull MemorySegment segment) implements I
         return this;
     }
 
-    public @EnumType(VkImageViewCreateFlags.class) int flags() {
+    public @Bitmask(VkImageViewCreateFlags.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public VkImageViewCreateInfo flags(@EnumType(VkImageViewCreateFlags.class) int value) {
+    public VkImageViewCreateInfo flags(@Bitmask(VkImageViewCreateFlags.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
         return this;
     }

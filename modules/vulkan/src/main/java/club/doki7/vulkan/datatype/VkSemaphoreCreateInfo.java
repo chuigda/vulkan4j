@@ -213,11 +213,11 @@ public record VkSemaphoreCreateInfo(@NotNull MemorySegment segment) implements I
         return this;
     }
 
-    public @EnumType(VkSemaphoreCreateFlags.class) int flags() {
+    public @Bitmask(VkSemaphoreCreateFlags.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public VkSemaphoreCreateInfo flags(@EnumType(VkSemaphoreCreateFlags.class) int value) {
+    public VkSemaphoreCreateInfo flags(@Bitmask(VkSemaphoreCreateFlags.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
         return this;
     }

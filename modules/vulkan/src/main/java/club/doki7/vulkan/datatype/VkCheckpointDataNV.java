@@ -214,11 +214,11 @@ public record VkCheckpointDataNV(@NotNull MemorySegment segment) implements IVkC
         return this;
     }
 
-    public @EnumType(VkPipelineStageFlags.class) int stage() {
+    public @Bitmask(VkPipelineStageFlags.class) int stage() {
         return segment.get(LAYOUT$stage, OFFSET$stage);
     }
 
-    public VkCheckpointDataNV stage(@EnumType(VkPipelineStageFlags.class) int value) {
+    public VkCheckpointDataNV stage(@Bitmask(VkPipelineStageFlags.class) int value) {
         segment.set(LAYOUT$stage, OFFSET$stage, value);
         return this;
     }

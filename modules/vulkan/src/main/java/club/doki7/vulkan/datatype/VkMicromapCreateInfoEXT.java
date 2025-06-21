@@ -218,11 +218,11 @@ public record VkMicromapCreateInfoEXT(@NotNull MemorySegment segment) implements
         return this;
     }
 
-    public @EnumType(VkMicromapCreateFlagsEXT.class) int createFlags() {
+    public @Bitmask(VkMicromapCreateFlagsEXT.class) int createFlags() {
         return segment.get(LAYOUT$createFlags, OFFSET$createFlags);
     }
 
-    public VkMicromapCreateInfoEXT createFlags(@EnumType(VkMicromapCreateFlagsEXT.class) int value) {
+    public VkMicromapCreateInfoEXT createFlags(@Bitmask(VkMicromapCreateFlagsEXT.class) int value) {
         segment.set(LAYOUT$createFlags, OFFSET$createFlags, value);
         return this;
     }

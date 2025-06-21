@@ -250,11 +250,11 @@ public record VkDeviceGroupPresentInfoKHR(@NotNull MemorySegment segment) implem
         segment.set(LAYOUT$pDeviceMasks, OFFSET$pDeviceMasks, value);
     }
 
-    public @EnumType(VkDeviceGroupPresentModeFlagsKHR.class) int mode() {
+    public @Bitmask(VkDeviceGroupPresentModeFlagsKHR.class) int mode() {
         return segment.get(LAYOUT$mode, OFFSET$mode);
     }
 
-    public VkDeviceGroupPresentInfoKHR mode(@EnumType(VkDeviceGroupPresentModeFlagsKHR.class) int value) {
+    public VkDeviceGroupPresentInfoKHR mode(@Bitmask(VkDeviceGroupPresentModeFlagsKHR.class) int value) {
         segment.set(LAYOUT$mode, OFFSET$mode, value);
         return this;
     }

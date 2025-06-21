@@ -214,11 +214,11 @@ public record VkMacOSSurfaceCreateInfoMVK(@NotNull MemorySegment segment) implem
         return this;
     }
 
-    public @EnumType(VkMacOSSurfaceCreateFlagsMVK.class) int flags() {
+    public @Bitmask(VkMacOSSurfaceCreateFlagsMVK.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public VkMacOSSurfaceCreateInfoMVK flags(@EnumType(VkMacOSSurfaceCreateFlagsMVK.class) int value) {
+    public VkMacOSSurfaceCreateInfoMVK flags(@Bitmask(VkMacOSSurfaceCreateFlagsMVK.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
         return this;
     }

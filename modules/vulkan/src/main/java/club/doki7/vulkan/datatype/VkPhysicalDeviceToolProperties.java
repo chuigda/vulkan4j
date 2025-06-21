@@ -243,11 +243,11 @@ public record VkPhysicalDeviceToolProperties(@NotNull MemorySegment segment) imp
         return segment.asSlice(OFFSET$version, SIZE$version);
     }
 
-    public @EnumType(VkToolPurposeFlags.class) int purposes() {
+    public @Bitmask(VkToolPurposeFlags.class) int purposes() {
         return segment.get(LAYOUT$purposes, OFFSET$purposes);
     }
 
-    public VkPhysicalDeviceToolProperties purposes(@EnumType(VkToolPurposeFlags.class) int value) {
+    public VkPhysicalDeviceToolProperties purposes(@Bitmask(VkToolPurposeFlags.class) int value) {
         segment.set(LAYOUT$purposes, OFFSET$purposes, value);
         return this;
     }

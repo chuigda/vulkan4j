@@ -214,11 +214,11 @@ public record VkPipelineRasterizationStateStreamCreateInfoEXT(@NotNull MemorySeg
         return this;
     }
 
-    public @EnumType(VkPipelineRasterizationStateStreamCreateFlagsEXT.class) int flags() {
+    public @Bitmask(VkPipelineRasterizationStateStreamCreateFlagsEXT.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public VkPipelineRasterizationStateStreamCreateInfoEXT flags(@EnumType(VkPipelineRasterizationStateStreamCreateFlagsEXT.class) int value) {
+    public VkPipelineRasterizationStateStreamCreateInfoEXT flags(@Bitmask(VkPipelineRasterizationStateStreamCreateFlagsEXT.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
         return this;
     }

@@ -217,11 +217,11 @@ public record VkPipelineVertexInputStateCreateInfo(@NotNull MemorySegment segmen
         return this;
     }
 
-    public @EnumType(VkPipelineVertexInputStateCreateFlags.class) int flags() {
+    public @Bitmask(VkPipelineVertexInputStateCreateFlags.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public VkPipelineVertexInputStateCreateInfo flags(@EnumType(VkPipelineVertexInputStateCreateFlags.class) int value) {
+    public VkPipelineVertexInputStateCreateInfo flags(@Bitmask(VkPipelineVertexInputStateCreateFlags.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
         return this;
     }

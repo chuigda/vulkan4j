@@ -213,11 +213,11 @@ public record VkHeadlessSurfaceCreateInfoEXT(@NotNull MemorySegment segment) imp
         return this;
     }
 
-    public @EnumType(VkHeadlessSurfaceCreateFlagsEXT.class) int flags() {
+    public @Bitmask(VkHeadlessSurfaceCreateFlagsEXT.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public VkHeadlessSurfaceCreateInfoEXT flags(@EnumType(VkHeadlessSurfaceCreateFlagsEXT.class) int value) {
+    public VkHeadlessSurfaceCreateInfoEXT flags(@Bitmask(VkHeadlessSurfaceCreateFlagsEXT.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
         return this;
     }

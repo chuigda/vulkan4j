@@ -227,11 +227,11 @@ public record VkMemoryGetFdInfoKHR(@NotNull MemorySegment segment) implements IV
         return this;
     }
 
-    public @EnumType(VkExternalMemoryHandleTypeFlags.class) int handleType() {
+    public @Bitmask(VkExternalMemoryHandleTypeFlags.class) int handleType() {
         return segment.get(LAYOUT$handleType, OFFSET$handleType);
     }
 
-    public VkMemoryGetFdInfoKHR handleType(@EnumType(VkExternalMemoryHandleTypeFlags.class) int value) {
+    public VkMemoryGetFdInfoKHR handleType(@Bitmask(VkExternalMemoryHandleTypeFlags.class) int value) {
         segment.set(LAYOUT$handleType, OFFSET$handleType, value);
         return this;
     }

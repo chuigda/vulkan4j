@@ -228,7 +228,7 @@ public record VkDescriptorSetLayoutBindingFlagsCreateInfo(@NotNull MemorySegment
     /// {@link IntPtr#size} property. It's up to user to track the size of the buffer,
     /// and use {@link IntPtr#reinterpret} to set the size before actually reading fro
     /// or writing to the buffer.
-    public @Nullable @EnumType(VkDescriptorBindingFlags.class) IntPtr pBindingFlags() {
+    public @Nullable @Bitmask(VkDescriptorBindingFlags.class) IntPtr pBindingFlags() {
         MemorySegment s = pBindingFlagsRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
@@ -236,7 +236,7 @@ public record VkDescriptorSetLayoutBindingFlagsCreateInfo(@NotNull MemorySegment
         return new IntPtr(s);
     }
 
-    public VkDescriptorSetLayoutBindingFlagsCreateInfo pBindingFlags(@Nullable @EnumType(VkDescriptorBindingFlags.class) IntPtr value) {
+    public VkDescriptorSetLayoutBindingFlagsCreateInfo pBindingFlags(@Nullable @Bitmask(VkDescriptorBindingFlags.class) IntPtr value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pBindingFlagsRaw(s);
         return this;

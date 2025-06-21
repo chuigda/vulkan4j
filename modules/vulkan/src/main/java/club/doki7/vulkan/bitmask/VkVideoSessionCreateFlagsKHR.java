@@ -14,7 +14,7 @@ public final class VkVideoSessionCreateFlagsKHR {
     public static final int INLINE_SESSION_PARAMETERS = 0x20;
     public static final int PROTECTED_CONTENT = 0x1;
 
-    public static String explain(@EnumType(VkVideoSessionCreateFlagsKHR.class) int flags) {
+    public static String explain(@Bitmask(VkVideoSessionCreateFlagsKHR.class) int flags) {
         List<String> detectedFlagBits = new ArrayList<>();
         if ((flags & ALLOW_ENCODE_EMPHASIS_MAP) != 0) {
             detectedFlagBits.add("VK_VIDEO_SESSION_CREATE_ALLOW_ENCODE_EMPHASIS_MAP_BIT_KHR");

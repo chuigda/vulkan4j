@@ -214,11 +214,11 @@ public record VkImagePipeSurfaceCreateInfoFUCHSIA(@NotNull MemorySegment segment
         return this;
     }
 
-    public @EnumType(VkImagePipeSurfaceCreateFlagsFUCHSIA.class) int flags() {
+    public @Bitmask(VkImagePipeSurfaceCreateFlagsFUCHSIA.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public VkImagePipeSurfaceCreateInfoFUCHSIA flags(@EnumType(VkImagePipeSurfaceCreateFlagsFUCHSIA.class) int value) {
+    public VkImagePipeSurfaceCreateInfoFUCHSIA flags(@Bitmask(VkImagePipeSurfaceCreateFlagsFUCHSIA.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
         return this;
     }

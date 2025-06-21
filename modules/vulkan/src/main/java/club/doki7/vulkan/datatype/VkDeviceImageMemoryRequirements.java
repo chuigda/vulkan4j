@@ -246,11 +246,11 @@ public record VkDeviceImageMemoryRequirements(@NotNull MemorySegment segment) im
         segment.set(LAYOUT$pCreateInfo, OFFSET$pCreateInfo, value);
     }
 
-    public @EnumType(VkImageAspectFlags.class) int planeAspect() {
+    public @Bitmask(VkImageAspectFlags.class) int planeAspect() {
         return segment.get(LAYOUT$planeAspect, OFFSET$planeAspect);
     }
 
-    public VkDeviceImageMemoryRequirements planeAspect(@EnumType(VkImageAspectFlags.class) int value) {
+    public VkDeviceImageMemoryRequirements planeAspect(@Bitmask(VkImageAspectFlags.class) int value) {
         segment.set(LAYOUT$planeAspect, OFFSET$planeAspect, value);
         return this;
     }

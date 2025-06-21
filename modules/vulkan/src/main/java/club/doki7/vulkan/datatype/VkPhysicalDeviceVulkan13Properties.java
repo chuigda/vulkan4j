@@ -284,11 +284,11 @@ public record VkPhysicalDeviceVulkan13Properties(@NotNull MemorySegment segment)
         return this;
     }
 
-    public @EnumType(VkShaderStageFlags.class) int requiredSubgroupSizeStages() {
+    public @Bitmask(VkShaderStageFlags.class) int requiredSubgroupSizeStages() {
         return segment.get(LAYOUT$requiredSubgroupSizeStages, OFFSET$requiredSubgroupSizeStages);
     }
 
-    public VkPhysicalDeviceVulkan13Properties requiredSubgroupSizeStages(@EnumType(VkShaderStageFlags.class) int value) {
+    public VkPhysicalDeviceVulkan13Properties requiredSubgroupSizeStages(@Bitmask(VkShaderStageFlags.class) int value) {
         segment.set(LAYOUT$requiredSubgroupSizeStages, OFFSET$requiredSubgroupSizeStages, value);
         return this;
     }

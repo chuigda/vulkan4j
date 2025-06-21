@@ -214,11 +214,11 @@ public record VkPipelineTessellationStateCreateInfo(@NotNull MemorySegment segme
         return this;
     }
 
-    public @EnumType(VkPipelineTessellationStateCreateFlags.class) int flags() {
+    public @Bitmask(VkPipelineTessellationStateCreateFlags.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public VkPipelineTessellationStateCreateInfo flags(@EnumType(VkPipelineTessellationStateCreateFlags.class) int value) {
+    public VkPipelineTessellationStateCreateInfo flags(@Bitmask(VkPipelineTessellationStateCreateFlags.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
         return this;
     }

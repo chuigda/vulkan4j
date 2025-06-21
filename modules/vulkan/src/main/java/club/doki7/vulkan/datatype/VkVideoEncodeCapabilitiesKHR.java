@@ -219,20 +219,20 @@ public record VkVideoEncodeCapabilitiesKHR(@NotNull MemorySegment segment) imple
         return this;
     }
 
-    public @EnumType(VkVideoEncodeCapabilityFlagsKHR.class) int flags() {
+    public @Bitmask(VkVideoEncodeCapabilityFlagsKHR.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public VkVideoEncodeCapabilitiesKHR flags(@EnumType(VkVideoEncodeCapabilityFlagsKHR.class) int value) {
+    public VkVideoEncodeCapabilitiesKHR flags(@Bitmask(VkVideoEncodeCapabilityFlagsKHR.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
         return this;
     }
 
-    public @EnumType(VkVideoEncodeRateControlModeFlagsKHR.class) int rateControlModes() {
+    public @Bitmask(VkVideoEncodeRateControlModeFlagsKHR.class) int rateControlModes() {
         return segment.get(LAYOUT$rateControlModes, OFFSET$rateControlModes);
     }
 
-    public VkVideoEncodeCapabilitiesKHR rateControlModes(@EnumType(VkVideoEncodeRateControlModeFlagsKHR.class) int value) {
+    public VkVideoEncodeCapabilitiesKHR rateControlModes(@Bitmask(VkVideoEncodeRateControlModeFlagsKHR.class) int value) {
         segment.set(LAYOUT$rateControlModes, OFFSET$rateControlModes, value);
         return this;
     }
@@ -278,11 +278,11 @@ public record VkVideoEncodeCapabilitiesKHR(@NotNull MemorySegment segment) imple
         return this;
     }
 
-    public @EnumType(VkVideoEncodeFeedbackFlagsKHR.class) int supportedEncodeFeedbackFlags() {
+    public @Bitmask(VkVideoEncodeFeedbackFlagsKHR.class) int supportedEncodeFeedbackFlags() {
         return segment.get(LAYOUT$supportedEncodeFeedbackFlags, OFFSET$supportedEncodeFeedbackFlags);
     }
 
-    public VkVideoEncodeCapabilitiesKHR supportedEncodeFeedbackFlags(@EnumType(VkVideoEncodeFeedbackFlagsKHR.class) int value) {
+    public VkVideoEncodeCapabilitiesKHR supportedEncodeFeedbackFlags(@Bitmask(VkVideoEncodeFeedbackFlagsKHR.class) int value) {
         segment.set(LAYOUT$supportedEncodeFeedbackFlags, OFFSET$supportedEncodeFeedbackFlags, value);
         return this;
     }

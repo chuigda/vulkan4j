@@ -219,11 +219,11 @@ public record VkFramebufferCreateInfo(@NotNull MemorySegment segment) implements
         return this;
     }
 
-    public @EnumType(VkFramebufferCreateFlags.class) int flags() {
+    public @Bitmask(VkFramebufferCreateFlags.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public VkFramebufferCreateInfo flags(@EnumType(VkFramebufferCreateFlags.class) int value) {
+    public VkFramebufferCreateInfo flags(@Bitmask(VkFramebufferCreateFlags.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
         return this;
     }

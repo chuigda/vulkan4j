@@ -214,11 +214,11 @@ public record VkViSurfaceCreateInfoNN(@NotNull MemorySegment segment) implements
         return this;
     }
 
-    public @EnumType(VkViSurfaceCreateFlagsNN.class) int flags() {
+    public @Bitmask(VkViSurfaceCreateFlagsNN.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public VkViSurfaceCreateInfoNN flags(@EnumType(VkViSurfaceCreateFlagsNN.class) int value) {
+    public VkViSurfaceCreateInfoNN flags(@Bitmask(VkViSurfaceCreateFlagsNN.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
         return this;
     }

@@ -213,11 +213,11 @@ public record VkVideoCodingControlInfoKHR(@NotNull MemorySegment segment) implem
         return this;
     }
 
-    public @EnumType(VkVideoCodingControlFlagsKHR.class) int flags() {
+    public @Bitmask(VkVideoCodingControlFlagsKHR.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public VkVideoCodingControlInfoKHR flags(@EnumType(VkVideoCodingControlFlagsKHR.class) int value) {
+    public VkVideoCodingControlInfoKHR flags(@Bitmask(VkVideoCodingControlFlagsKHR.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
         return this;
     }

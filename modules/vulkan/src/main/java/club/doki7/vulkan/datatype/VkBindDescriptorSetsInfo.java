@@ -219,11 +219,11 @@ public record VkBindDescriptorSetsInfo(@NotNull MemorySegment segment) implement
         return this;
     }
 
-    public @EnumType(VkShaderStageFlags.class) int stageFlags() {
+    public @Bitmask(VkShaderStageFlags.class) int stageFlags() {
         return segment.get(LAYOUT$stageFlags, OFFSET$stageFlags);
     }
 
-    public VkBindDescriptorSetsInfo stageFlags(@EnumType(VkShaderStageFlags.class) int value) {
+    public VkBindDescriptorSetsInfo stageFlags(@Bitmask(VkShaderStageFlags.class) int value) {
         segment.set(LAYOUT$stageFlags, OFFSET$stageFlags, value);
         return this;
     }

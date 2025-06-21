@@ -217,29 +217,29 @@ public record VkDebugUtilsMessengerCreateInfoEXT(@NotNull MemorySegment segment)
         return this;
     }
 
-    public @EnumType(VkDebugUtilsMessengerCreateFlagsEXT.class) int flags() {
+    public @Bitmask(VkDebugUtilsMessengerCreateFlagsEXT.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public VkDebugUtilsMessengerCreateInfoEXT flags(@EnumType(VkDebugUtilsMessengerCreateFlagsEXT.class) int value) {
+    public VkDebugUtilsMessengerCreateInfoEXT flags(@Bitmask(VkDebugUtilsMessengerCreateFlagsEXT.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
         return this;
     }
 
-    public @EnumType(VkDebugUtilsMessageSeverityFlagsEXT.class) int messageSeverity() {
+    public @Bitmask(VkDebugUtilsMessageSeverityFlagsEXT.class) int messageSeverity() {
         return segment.get(LAYOUT$messageSeverity, OFFSET$messageSeverity);
     }
 
-    public VkDebugUtilsMessengerCreateInfoEXT messageSeverity(@EnumType(VkDebugUtilsMessageSeverityFlagsEXT.class) int value) {
+    public VkDebugUtilsMessengerCreateInfoEXT messageSeverity(@Bitmask(VkDebugUtilsMessageSeverityFlagsEXT.class) int value) {
         segment.set(LAYOUT$messageSeverity, OFFSET$messageSeverity, value);
         return this;
     }
 
-    public @EnumType(VkDebugUtilsMessageTypeFlagsEXT.class) int messageType() {
+    public @Bitmask(VkDebugUtilsMessageTypeFlagsEXT.class) int messageType() {
         return segment.get(LAYOUT$messageType, OFFSET$messageType);
     }
 
-    public VkDebugUtilsMessengerCreateInfoEXT messageType(@EnumType(VkDebugUtilsMessageTypeFlagsEXT.class) int value) {
+    public VkDebugUtilsMessengerCreateInfoEXT messageType(@Bitmask(VkDebugUtilsMessageTypeFlagsEXT.class) int value) {
         segment.set(LAYOUT$messageType, OFFSET$messageType, value);
         return this;
     }

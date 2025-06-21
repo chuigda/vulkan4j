@@ -259,11 +259,11 @@ public record VkBufferCollectionPropertiesFUCHSIA(@NotNull MemorySegment segment
         return this;
     }
 
-    public @EnumType(VkFormatFeatureFlags.class) int formatFeatures() {
+    public @Bitmask(VkFormatFeatureFlags.class) int formatFeatures() {
         return segment.get(LAYOUT$formatFeatures, OFFSET$formatFeatures);
     }
 
-    public VkBufferCollectionPropertiesFUCHSIA formatFeatures(@EnumType(VkFormatFeatureFlags.class) int value) {
+    public VkBufferCollectionPropertiesFUCHSIA formatFeatures(@Bitmask(VkFormatFeatureFlags.class) int value) {
         segment.set(LAYOUT$formatFeatures, OFFSET$formatFeatures, value);
         return this;
     }

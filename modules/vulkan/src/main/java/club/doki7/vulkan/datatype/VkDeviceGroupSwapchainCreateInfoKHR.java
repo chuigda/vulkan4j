@@ -213,11 +213,11 @@ public record VkDeviceGroupSwapchainCreateInfoKHR(@NotNull MemorySegment segment
         return this;
     }
 
-    public @EnumType(VkDeviceGroupPresentModeFlagsKHR.class) int modes() {
+    public @Bitmask(VkDeviceGroupPresentModeFlagsKHR.class) int modes() {
         return segment.get(LAYOUT$modes, OFFSET$modes);
     }
 
-    public VkDeviceGroupSwapchainCreateInfoKHR modes(@EnumType(VkDeviceGroupPresentModeFlagsKHR.class) int value) {
+    public VkDeviceGroupSwapchainCreateInfoKHR modes(@Bitmask(VkDeviceGroupPresentModeFlagsKHR.class) int value) {
         segment.set(LAYOUT$modes, OFFSET$modes, value);
         return this;
     }

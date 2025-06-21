@@ -130,7 +130,7 @@ public final class VmaAllocationCreateFlags {
     /// A bit mask to extract only `STRATEGY` bits from entire set of flags.
     public static final int STRATEGY_MASK = STRATEGY_MIN_MEMORY | STRATEGY_MIN_TIME | STRATEGY_MIN_OFFSET;
 
-    public static String explain(@EnumType(VmaAllocationCreateFlags.class) int flags) {
+    public static String explain(@Bitmask(VmaAllocationCreateFlags.class) int flags) {
         List<String> detectedFlagBits = new ArrayList<>();
         if ((flags & CAN_ALIAS) != 0) {
             detectedFlagBits.add("VMA_ALLOCATION_CREATE_CAN_ALIAS_BIT");

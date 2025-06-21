@@ -217,11 +217,11 @@ public record VkVideoEncodeAV1RateControlInfoKHR(@NotNull MemorySegment segment)
         return this;
     }
 
-    public @EnumType(VkVideoEncodeAV1RateControlFlagsKHR.class) int flags() {
+    public @Bitmask(VkVideoEncodeAV1RateControlFlagsKHR.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public VkVideoEncodeAV1RateControlInfoKHR flags(@EnumType(VkVideoEncodeAV1RateControlFlagsKHR.class) int value) {
+    public VkVideoEncodeAV1RateControlInfoKHR flags(@Bitmask(VkVideoEncodeAV1RateControlFlagsKHR.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
         return this;
     }

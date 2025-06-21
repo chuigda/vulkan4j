@@ -224,20 +224,20 @@ public record VkPhysicalDeviceExtendedSparseAddressSpacePropertiesNV(@NotNull Me
         return this;
     }
 
-    public @EnumType(VkImageUsageFlags.class) int extendedSparseImageUsageFlags() {
+    public @Bitmask(VkImageUsageFlags.class) int extendedSparseImageUsageFlags() {
         return segment.get(LAYOUT$extendedSparseImageUsageFlags, OFFSET$extendedSparseImageUsageFlags);
     }
 
-    public VkPhysicalDeviceExtendedSparseAddressSpacePropertiesNV extendedSparseImageUsageFlags(@EnumType(VkImageUsageFlags.class) int value) {
+    public VkPhysicalDeviceExtendedSparseAddressSpacePropertiesNV extendedSparseImageUsageFlags(@Bitmask(VkImageUsageFlags.class) int value) {
         segment.set(LAYOUT$extendedSparseImageUsageFlags, OFFSET$extendedSparseImageUsageFlags, value);
         return this;
     }
 
-    public @EnumType(VkBufferUsageFlags.class) int extendedSparseBufferUsageFlags() {
+    public @Bitmask(VkBufferUsageFlags.class) int extendedSparseBufferUsageFlags() {
         return segment.get(LAYOUT$extendedSparseBufferUsageFlags, OFFSET$extendedSparseBufferUsageFlags);
     }
 
-    public VkPhysicalDeviceExtendedSparseAddressSpacePropertiesNV extendedSparseBufferUsageFlags(@EnumType(VkBufferUsageFlags.class) int value) {
+    public VkPhysicalDeviceExtendedSparseAddressSpacePropertiesNV extendedSparseBufferUsageFlags(@Bitmask(VkBufferUsageFlags.class) int value) {
         segment.set(LAYOUT$extendedSparseBufferUsageFlags, OFFSET$extendedSparseBufferUsageFlags, value);
         return this;
     }

@@ -213,11 +213,11 @@ public record VkRenderPassTransformBeginInfoQCOM(@NotNull MemorySegment segment)
         return this;
     }
 
-    public @EnumType(VkSurfaceTransformFlagsKHR.class) int transform() {
+    public @Bitmask(VkSurfaceTransformFlagsKHR.class) int transform() {
         return segment.get(LAYOUT$transform, OFFSET$transform);
     }
 
-    public VkRenderPassTransformBeginInfoQCOM transform(@EnumType(VkSurfaceTransformFlagsKHR.class) int value) {
+    public VkRenderPassTransformBeginInfoQCOM transform(@Bitmask(VkSurfaceTransformFlagsKHR.class) int value) {
         segment.set(LAYOUT$transform, OFFSET$transform, value);
         return this;
     }

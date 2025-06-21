@@ -217,20 +217,20 @@ public record VkPipelineShaderStageCreateInfo(@NotNull MemorySegment segment) im
         return this;
     }
 
-    public @EnumType(VkPipelineShaderStageCreateFlags.class) int flags() {
+    public @Bitmask(VkPipelineShaderStageCreateFlags.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public VkPipelineShaderStageCreateInfo flags(@EnumType(VkPipelineShaderStageCreateFlags.class) int value) {
+    public VkPipelineShaderStageCreateInfo flags(@Bitmask(VkPipelineShaderStageCreateFlags.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
         return this;
     }
 
-    public @EnumType(VkShaderStageFlags.class) int stage() {
+    public @Bitmask(VkShaderStageFlags.class) int stage() {
         return segment.get(LAYOUT$stage, OFFSET$stage);
     }
 
-    public VkPipelineShaderStageCreateInfo stage(@EnumType(VkShaderStageFlags.class) int value) {
+    public VkPipelineShaderStageCreateInfo stage(@Bitmask(VkShaderStageFlags.class) int value) {
         segment.set(LAYOUT$stage, OFFSET$stage, value);
         return this;
     }

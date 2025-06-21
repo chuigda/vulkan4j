@@ -214,11 +214,11 @@ public record VkMemoryUnmapInfo(@NotNull MemorySegment segment) implements IVkMe
         return this;
     }
 
-    public @EnumType(VkMemoryUnmapFlags.class) int flags() {
+    public @Bitmask(VkMemoryUnmapFlags.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public VkMemoryUnmapInfo flags(@EnumType(VkMemoryUnmapFlags.class) int value) {
+    public VkMemoryUnmapInfo flags(@Bitmask(VkMemoryUnmapFlags.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
         return this;
     }

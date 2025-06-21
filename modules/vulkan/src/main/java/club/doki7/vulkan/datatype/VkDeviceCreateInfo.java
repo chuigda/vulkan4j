@@ -220,11 +220,11 @@ public record VkDeviceCreateInfo(@NotNull MemorySegment segment) implements IVkD
         return this;
     }
 
-    public @EnumType(VkDeviceCreateFlags.class) int flags() {
+    public @Bitmask(VkDeviceCreateFlags.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public VkDeviceCreateInfo flags(@EnumType(VkDeviceCreateFlags.class) int value) {
+    public VkDeviceCreateInfo flags(@Bitmask(VkDeviceCreateFlags.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
         return this;
     }

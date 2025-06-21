@@ -216,11 +216,11 @@ public record VkPipelineDiscardRectangleStateCreateInfoEXT(@NotNull MemorySegmen
         return this;
     }
 
-    public @EnumType(VkPipelineDiscardRectangleStateCreateFlagsEXT.class) int flags() {
+    public @Bitmask(VkPipelineDiscardRectangleStateCreateFlagsEXT.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public VkPipelineDiscardRectangleStateCreateInfoEXT flags(@EnumType(VkPipelineDiscardRectangleStateCreateFlagsEXT.class) int value) {
+    public VkPipelineDiscardRectangleStateCreateInfoEXT flags(@Bitmask(VkPipelineDiscardRectangleStateCreateFlagsEXT.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
         return this;
     }

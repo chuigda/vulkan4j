@@ -215,11 +215,11 @@ public record VkScreenSurfaceCreateInfoQNX(@NotNull MemorySegment segment) imple
         return this;
     }
 
-    public @EnumType(VkScreenSurfaceCreateFlagsQNX.class) int flags() {
+    public @Bitmask(VkScreenSurfaceCreateFlagsQNX.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public VkScreenSurfaceCreateInfoQNX flags(@EnumType(VkScreenSurfaceCreateFlagsQNX.class) int value) {
+    public VkScreenSurfaceCreateInfoQNX flags(@Bitmask(VkScreenSurfaceCreateFlagsQNX.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
         return this;
     }

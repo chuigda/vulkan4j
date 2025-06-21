@@ -9,7 +9,7 @@ import java.util.List;
 public final class VkPipelineColorBlendStateCreateFlags {
     public static final int RASTERIZATION_ORDER_ATTACHMENT_ACCESS_EXT = 0x1;
 
-    public static String explain(@EnumType(VkPipelineColorBlendStateCreateFlags.class) int flags) {
+    public static String explain(@Bitmask(VkPipelineColorBlendStateCreateFlags.class) int flags) {
         List<String> detectedFlagBits = new ArrayList<>();
         if ((flags & RASTERIZATION_ORDER_ATTACHMENT_ACCESS_EXT) != 0) {
             detectedFlagBits.add("VK_PIPELINE_COLOR_BLEND_STATE_CREATE_RASTERIZATION_ORDER_ATTACHMENT_ACCESS_BIT_EXT");

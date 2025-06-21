@@ -214,11 +214,11 @@ public record VkVideoEncodeQualityLevelPropertiesKHR(@NotNull MemorySegment segm
         return this;
     }
 
-    public @EnumType(VkVideoEncodeRateControlModeFlagsKHR.class) int preferredRateControlMode() {
+    public @Bitmask(VkVideoEncodeRateControlModeFlagsKHR.class) int preferredRateControlMode() {
         return segment.get(LAYOUT$preferredRateControlMode, OFFSET$preferredRateControlMode);
     }
 
-    public VkVideoEncodeQualityLevelPropertiesKHR preferredRateControlMode(@EnumType(VkVideoEncodeRateControlModeFlagsKHR.class) int value) {
+    public VkVideoEncodeQualityLevelPropertiesKHR preferredRateControlMode(@Bitmask(VkVideoEncodeRateControlModeFlagsKHR.class) int value) {
         segment.set(LAYOUT$preferredRateControlMode, OFFSET$preferredRateControlMode, value);
         return this;
     }

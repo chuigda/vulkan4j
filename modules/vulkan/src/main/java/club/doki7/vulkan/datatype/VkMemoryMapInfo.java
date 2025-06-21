@@ -216,11 +216,11 @@ public record VkMemoryMapInfo(@NotNull MemorySegment segment) implements IVkMemo
         return this;
     }
 
-    public @EnumType(VkMemoryMapFlags.class) int flags() {
+    public @Bitmask(VkMemoryMapFlags.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public VkMemoryMapInfo flags(@EnumType(VkMemoryMapFlags.class) int value) {
+    public VkMemoryMapInfo flags(@Bitmask(VkMemoryMapFlags.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
         return this;
     }

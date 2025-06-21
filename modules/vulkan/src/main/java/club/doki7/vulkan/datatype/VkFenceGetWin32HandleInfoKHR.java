@@ -227,11 +227,11 @@ public record VkFenceGetWin32HandleInfoKHR(@NotNull MemorySegment segment) imple
         return this;
     }
 
-    public @EnumType(VkExternalFenceHandleTypeFlags.class) int handleType() {
+    public @Bitmask(VkExternalFenceHandleTypeFlags.class) int handleType() {
         return segment.get(LAYOUT$handleType, OFFSET$handleType);
     }
 
-    public VkFenceGetWin32HandleInfoKHR handleType(@EnumType(VkExternalFenceHandleTypeFlags.class) int value) {
+    public VkFenceGetWin32HandleInfoKHR handleType(@Bitmask(VkExternalFenceHandleTypeFlags.class) int value) {
         segment.set(LAYOUT$handleType, OFFSET$handleType, value);
         return this;
     }

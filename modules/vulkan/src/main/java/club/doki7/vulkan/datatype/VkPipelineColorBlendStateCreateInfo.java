@@ -218,11 +218,11 @@ public record VkPipelineColorBlendStateCreateInfo(@NotNull MemorySegment segment
         return this;
     }
 
-    public @EnumType(VkPipelineColorBlendStateCreateFlags.class) int flags() {
+    public @Bitmask(VkPipelineColorBlendStateCreateFlags.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public VkPipelineColorBlendStateCreateInfo flags(@EnumType(VkPipelineColorBlendStateCreateFlags.class) int value) {
+    public VkPipelineColorBlendStateCreateInfo flags(@Bitmask(VkPipelineColorBlendStateCreateFlags.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
         return this;
     }

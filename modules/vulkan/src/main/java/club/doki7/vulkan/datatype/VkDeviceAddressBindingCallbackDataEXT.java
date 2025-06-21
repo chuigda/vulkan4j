@@ -216,11 +216,11 @@ public record VkDeviceAddressBindingCallbackDataEXT(@NotNull MemorySegment segme
         return this;
     }
 
-    public @EnumType(VkDeviceAddressBindingFlagsEXT.class) int flags() {
+    public @Bitmask(VkDeviceAddressBindingFlagsEXT.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public VkDeviceAddressBindingCallbackDataEXT flags(@EnumType(VkDeviceAddressBindingFlagsEXT.class) int value) {
+    public VkDeviceAddressBindingCallbackDataEXT flags(@Bitmask(VkDeviceAddressBindingFlagsEXT.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
         return this;
     }

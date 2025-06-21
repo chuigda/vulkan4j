@@ -227,11 +227,11 @@ public record VkSemaphoreGetSciSyncInfoNV(@NotNull MemorySegment segment) implem
         return this;
     }
 
-    public @EnumType(VkExternalSemaphoreHandleTypeFlags.class) int handleType() {
+    public @Bitmask(VkExternalSemaphoreHandleTypeFlags.class) int handleType() {
         return segment.get(LAYOUT$handleType, OFFSET$handleType);
     }
 
-    public VkSemaphoreGetSciSyncInfoNV handleType(@EnumType(VkExternalSemaphoreHandleTypeFlags.class) int value) {
+    public VkSemaphoreGetSciSyncInfoNV handleType(@Bitmask(VkExternalSemaphoreHandleTypeFlags.class) int value) {
         segment.set(LAYOUT$handleType, OFFSET$handleType, value);
         return this;
     }

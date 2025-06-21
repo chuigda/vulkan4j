@@ -218,11 +218,11 @@ public record VkBufferCreateInfo(@NotNull MemorySegment segment) implements IVkB
         return this;
     }
 
-    public @EnumType(VkBufferCreateFlags.class) int flags() {
+    public @Bitmask(VkBufferCreateFlags.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public VkBufferCreateInfo flags(@EnumType(VkBufferCreateFlags.class) int value) {
+    public VkBufferCreateInfo flags(@Bitmask(VkBufferCreateFlags.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
         return this;
     }
@@ -236,11 +236,11 @@ public record VkBufferCreateInfo(@NotNull MemorySegment segment) implements IVkB
         return this;
     }
 
-    public @EnumType(VkBufferUsageFlags.class) int usage() {
+    public @Bitmask(VkBufferUsageFlags.class) int usage() {
         return segment.get(LAYOUT$usage, OFFSET$usage);
     }
 
-    public VkBufferCreateInfo usage(@EnumType(VkBufferUsageFlags.class) int value) {
+    public VkBufferCreateInfo usage(@Bitmask(VkBufferUsageFlags.class) int value) {
         segment.set(LAYOUT$usage, OFFSET$usage, value);
         return this;
     }

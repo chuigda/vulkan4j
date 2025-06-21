@@ -221,11 +221,11 @@ public record VkFrameBoundaryEXT(@NotNull MemorySegment segment) implements IVkF
         return this;
     }
 
-    public @EnumType(VkFrameBoundaryFlagsEXT.class) int flags() {
+    public @Bitmask(VkFrameBoundaryFlagsEXT.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public VkFrameBoundaryEXT flags(@EnumType(VkFrameBoundaryFlagsEXT.class) int value) {
+    public VkFrameBoundaryEXT flags(@Bitmask(VkFrameBoundaryFlagsEXT.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
         return this;
     }

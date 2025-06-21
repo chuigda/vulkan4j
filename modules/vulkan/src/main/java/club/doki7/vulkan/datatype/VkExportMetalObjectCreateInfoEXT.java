@@ -213,11 +213,11 @@ public record VkExportMetalObjectCreateInfoEXT(@NotNull MemorySegment segment) i
         return this;
     }
 
-    public @EnumType(VkExportMetalObjectTypeFlagsEXT.class) int exportObjectType() {
+    public @Bitmask(VkExportMetalObjectTypeFlagsEXT.class) int exportObjectType() {
         return segment.get(LAYOUT$exportObjectType, OFFSET$exportObjectType);
     }
 
-    public VkExportMetalObjectCreateInfoEXT exportObjectType(@EnumType(VkExportMetalObjectTypeFlagsEXT.class) int value) {
+    public VkExportMetalObjectCreateInfoEXT exportObjectType(@Bitmask(VkExportMetalObjectTypeFlagsEXT.class) int value) {
         segment.set(LAYOUT$exportObjectType, OFFSET$exportObjectType, value);
         return this;
     }

@@ -216,38 +216,38 @@ public record VkMemoryBarrier2(@NotNull MemorySegment segment) implements IVkMem
         return this;
     }
 
-    public @EnumType(VkPipelineStageFlags2.class) long srcStageMask() {
+    public @Bitmask(VkPipelineStageFlags2.class) long srcStageMask() {
         return segment.get(LAYOUT$srcStageMask, OFFSET$srcStageMask);
     }
 
-    public VkMemoryBarrier2 srcStageMask(@EnumType(VkPipelineStageFlags2.class) long value) {
+    public VkMemoryBarrier2 srcStageMask(@Bitmask(VkPipelineStageFlags2.class) long value) {
         segment.set(LAYOUT$srcStageMask, OFFSET$srcStageMask, value);
         return this;
     }
 
-    public @EnumType(VkAccessFlags2.class) long srcAccessMask() {
+    public @Bitmask(VkAccessFlags2.class) long srcAccessMask() {
         return segment.get(LAYOUT$srcAccessMask, OFFSET$srcAccessMask);
     }
 
-    public VkMemoryBarrier2 srcAccessMask(@EnumType(VkAccessFlags2.class) long value) {
+    public VkMemoryBarrier2 srcAccessMask(@Bitmask(VkAccessFlags2.class) long value) {
         segment.set(LAYOUT$srcAccessMask, OFFSET$srcAccessMask, value);
         return this;
     }
 
-    public @EnumType(VkPipelineStageFlags2.class) long dstStageMask() {
+    public @Bitmask(VkPipelineStageFlags2.class) long dstStageMask() {
         return segment.get(LAYOUT$dstStageMask, OFFSET$dstStageMask);
     }
 
-    public VkMemoryBarrier2 dstStageMask(@EnumType(VkPipelineStageFlags2.class) long value) {
+    public VkMemoryBarrier2 dstStageMask(@Bitmask(VkPipelineStageFlags2.class) long value) {
         segment.set(LAYOUT$dstStageMask, OFFSET$dstStageMask, value);
         return this;
     }
 
-    public @EnumType(VkAccessFlags2.class) long dstAccessMask() {
+    public @Bitmask(VkAccessFlags2.class) long dstAccessMask() {
         return segment.get(LAYOUT$dstAccessMask, OFFSET$dstAccessMask);
     }
 
-    public VkMemoryBarrier2 dstAccessMask(@EnumType(VkAccessFlags2.class) long value) {
+    public VkMemoryBarrier2 dstAccessMask(@Bitmask(VkAccessFlags2.class) long value) {
         segment.set(LAYOUT$dstAccessMask, OFFSET$dstAccessMask, value);
         return this;
     }

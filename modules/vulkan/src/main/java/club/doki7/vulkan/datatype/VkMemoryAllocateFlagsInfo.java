@@ -214,11 +214,11 @@ public record VkMemoryAllocateFlagsInfo(@NotNull MemorySegment segment) implemen
         return this;
     }
 
-    public @EnumType(VkMemoryAllocateFlags.class) int flags() {
+    public @Bitmask(VkMemoryAllocateFlags.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public VkMemoryAllocateFlagsInfo flags(@EnumType(VkMemoryAllocateFlags.class) int value) {
+    public VkMemoryAllocateFlagsInfo flags(@Bitmask(VkMemoryAllocateFlags.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
         return this;
     }

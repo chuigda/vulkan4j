@@ -178,11 +178,11 @@ public record VkSubpassDescription(@NotNull MemorySegment segment) implements IV
         return ret;
     }
 
-    public @EnumType(VkSubpassDescriptionFlags.class) int flags() {
+    public @Bitmask(VkSubpassDescriptionFlags.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public VkSubpassDescription flags(@EnumType(VkSubpassDescriptionFlags.class) int value) {
+    public VkSubpassDescription flags(@Bitmask(VkSubpassDescriptionFlags.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
         return this;
     }

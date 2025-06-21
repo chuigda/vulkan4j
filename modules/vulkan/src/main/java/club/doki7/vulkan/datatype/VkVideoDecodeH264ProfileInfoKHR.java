@@ -223,11 +223,11 @@ public record VkVideoDecodeH264ProfileInfoKHR(@NotNull MemorySegment segment) im
         return this;
     }
 
-    public @EnumType(VkVideoDecodeH264PictureLayoutFlagsKHR.class) int pictureLayout() {
+    public @Bitmask(VkVideoDecodeH264PictureLayoutFlagsKHR.class) int pictureLayout() {
         return segment.get(LAYOUT$pictureLayout, OFFSET$pictureLayout);
     }
 
-    public VkVideoDecodeH264ProfileInfoKHR pictureLayout(@EnumType(VkVideoDecodeH264PictureLayoutFlagsKHR.class) int value) {
+    public VkVideoDecodeH264ProfileInfoKHR pictureLayout(@Bitmask(VkVideoDecodeH264PictureLayoutFlagsKHR.class) int value) {
         segment.set(LAYOUT$pictureLayout, OFFSET$pictureLayout, value);
         return this;
     }

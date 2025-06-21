@@ -215,11 +215,11 @@ public record VkPipelineViewportSwizzleStateCreateInfoNV(@NotNull MemorySegment 
         return this;
     }
 
-    public @EnumType(VkPipelineViewportSwizzleStateCreateFlagsNV.class) int flags() {
+    public @Bitmask(VkPipelineViewportSwizzleStateCreateFlagsNV.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public VkPipelineViewportSwizzleStateCreateInfoNV flags(@EnumType(VkPipelineViewportSwizzleStateCreateFlagsNV.class) int value) {
+    public VkPipelineViewportSwizzleStateCreateInfoNV flags(@Bitmask(VkPipelineViewportSwizzleStateCreateFlagsNV.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
         return this;
     }

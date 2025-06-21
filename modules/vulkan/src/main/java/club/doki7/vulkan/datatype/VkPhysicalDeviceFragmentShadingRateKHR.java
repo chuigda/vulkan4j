@@ -214,11 +214,11 @@ public record VkPhysicalDeviceFragmentShadingRateKHR(@NotNull MemorySegment segm
         return this;
     }
 
-    public @EnumType(VkSampleCountFlags.class) int sampleCounts() {
+    public @Bitmask(VkSampleCountFlags.class) int sampleCounts() {
         return segment.get(LAYOUT$sampleCounts, OFFSET$sampleCounts);
     }
 
-    public VkPhysicalDeviceFragmentShadingRateKHR sampleCounts(@EnumType(VkSampleCountFlags.class) int value) {
+    public VkPhysicalDeviceFragmentShadingRateKHR sampleCounts(@Bitmask(VkSampleCountFlags.class) int value) {
         segment.set(LAYOUT$sampleCounts, OFFSET$sampleCounts, value);
         return this;
     }

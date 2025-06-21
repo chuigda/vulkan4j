@@ -227,11 +227,11 @@ public record VkSemaphoreGetWin32HandleInfoKHR(@NotNull MemorySegment segment) i
         return this;
     }
 
-    public @EnumType(VkExternalSemaphoreHandleTypeFlags.class) int handleType() {
+    public @Bitmask(VkExternalSemaphoreHandleTypeFlags.class) int handleType() {
         return segment.get(LAYOUT$handleType, OFFSET$handleType);
     }
 
-    public VkSemaphoreGetWin32HandleInfoKHR handleType(@EnumType(VkExternalSemaphoreHandleTypeFlags.class) int value) {
+    public VkSemaphoreGetWin32HandleInfoKHR handleType(@Bitmask(VkExternalSemaphoreHandleTypeFlags.class) int value) {
         segment.set(LAYOUT$handleType, OFFSET$handleType, value);
         return this;
     }

@@ -213,11 +213,11 @@ public record VkExportMemoryAllocateInfo(@NotNull MemorySegment segment) impleme
         return this;
     }
 
-    public @EnumType(VkExternalMemoryHandleTypeFlags.class) int handleTypes() {
+    public @Bitmask(VkExternalMemoryHandleTypeFlags.class) int handleTypes() {
         return segment.get(LAYOUT$handleTypes, OFFSET$handleTypes);
     }
 
-    public VkExportMemoryAllocateInfo handleTypes(@EnumType(VkExternalMemoryHandleTypeFlags.class) int value) {
+    public VkExportMemoryAllocateInfo handleTypes(@Bitmask(VkExternalMemoryHandleTypeFlags.class) int value) {
         segment.set(LAYOUT$handleTypes, OFFSET$handleTypes, value);
         return this;
     }

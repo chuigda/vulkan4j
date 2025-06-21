@@ -214,11 +214,11 @@ public record VkAcquireProfilingLockInfoKHR(@NotNull MemorySegment segment) impl
         return this;
     }
 
-    public @EnumType(VkAcquireProfilingLockFlagsKHR.class) int flags() {
+    public @Bitmask(VkAcquireProfilingLockFlagsKHR.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public VkAcquireProfilingLockInfoKHR flags(@EnumType(VkAcquireProfilingLockFlagsKHR.class) int value) {
+    public VkAcquireProfilingLockInfoKHR flags(@Bitmask(VkAcquireProfilingLockFlagsKHR.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
         return this;
     }

@@ -216,11 +216,11 @@ public record VkSampleLocationsInfoEXT(@NotNull MemorySegment segment) implement
         return this;
     }
 
-    public @EnumType(VkSampleCountFlags.class) int sampleLocationsPerPixel() {
+    public @Bitmask(VkSampleCountFlags.class) int sampleLocationsPerPixel() {
         return segment.get(LAYOUT$sampleLocationsPerPixel, OFFSET$sampleLocationsPerPixel);
     }
 
-    public VkSampleLocationsInfoEXT sampleLocationsPerPixel(@EnumType(VkSampleCountFlags.class) int value) {
+    public VkSampleLocationsInfoEXT sampleLocationsPerPixel(@Bitmask(VkSampleCountFlags.class) int value) {
         segment.set(LAYOUT$sampleLocationsPerPixel, OFFSET$sampleLocationsPerPixel, value);
         return this;
     }

@@ -271,11 +271,11 @@ public record VkImageConstraintsInfoFUCHSIA(@NotNull MemorySegment segment) impl
         return this;
     }
 
-    public @EnumType(VkImageConstraintsInfoFlagsFUCHSIA.class) int flags() {
+    public @Bitmask(VkImageConstraintsInfoFlagsFUCHSIA.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public VkImageConstraintsInfoFUCHSIA flags(@EnumType(VkImageConstraintsInfoFlagsFUCHSIA.class) int value) {
+    public VkImageConstraintsInfoFUCHSIA flags(@Bitmask(VkImageConstraintsInfoFlagsFUCHSIA.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
         return this;
     }

@@ -214,11 +214,11 @@ public record VkIOSSurfaceCreateInfoMVK(@NotNull MemorySegment segment) implemen
         return this;
     }
 
-    public @EnumType(VkIOSSurfaceCreateFlagsMVK.class) int flags() {
+    public @Bitmask(VkIOSSurfaceCreateFlagsMVK.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public VkIOSSurfaceCreateInfoMVK flags(@EnumType(VkIOSSurfaceCreateFlagsMVK.class) int value) {
+    public VkIOSSurfaceCreateInfoMVK flags(@Bitmask(VkIOSSurfaceCreateFlagsMVK.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
         return this;
     }

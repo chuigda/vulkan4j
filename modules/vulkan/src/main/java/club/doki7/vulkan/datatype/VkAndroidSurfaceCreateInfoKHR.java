@@ -214,11 +214,11 @@ public record VkAndroidSurfaceCreateInfoKHR(@NotNull MemorySegment segment) impl
         return this;
     }
 
-    public @EnumType(VkAndroidSurfaceCreateFlagsKHR.class) int flags() {
+    public @Bitmask(VkAndroidSurfaceCreateFlagsKHR.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public VkAndroidSurfaceCreateInfoKHR flags(@EnumType(VkAndroidSurfaceCreateFlagsKHR.class) int value) {
+    public VkAndroidSurfaceCreateInfoKHR flags(@Bitmask(VkAndroidSurfaceCreateFlagsKHR.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
         return this;
     }

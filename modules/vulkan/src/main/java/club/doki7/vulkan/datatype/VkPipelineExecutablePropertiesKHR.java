@@ -216,11 +216,11 @@ public record VkPipelineExecutablePropertiesKHR(@NotNull MemorySegment segment) 
         return this;
     }
 
-    public @EnumType(VkShaderStageFlags.class) int stages() {
+    public @Bitmask(VkShaderStageFlags.class) int stages() {
         return segment.get(LAYOUT$stages, OFFSET$stages);
     }
 
-    public VkPipelineExecutablePropertiesKHR stages(@EnumType(VkShaderStageFlags.class) int value) {
+    public VkPipelineExecutablePropertiesKHR stages(@Bitmask(VkShaderStageFlags.class) int value) {
         segment.set(LAYOUT$stages, OFFSET$stages, value);
         return this;
     }

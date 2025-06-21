@@ -197,11 +197,11 @@ public record VmaVirtualBlockCreateInfo(@NotNull MemorySegment segment) implemen
         return this;
     }
 
-    public @EnumType(VmaVirtualBlockCreateFlags.class) int flags() {
+    public @Bitmask(VmaVirtualBlockCreateFlags.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public VmaVirtualBlockCreateInfo flags(@EnumType(VmaVirtualBlockCreateFlags.class) int value) {
+    public VmaVirtualBlockCreateInfo flags(@Bitmask(VmaVirtualBlockCreateFlags.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
         return this;
     }

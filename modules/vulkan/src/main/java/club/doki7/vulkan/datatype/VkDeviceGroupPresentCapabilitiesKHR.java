@@ -227,11 +227,11 @@ public record VkDeviceGroupPresentCapabilitiesKHR(@NotNull MemorySegment segment
         return segment.asSlice(OFFSET$presentMask, SIZE$presentMask);
     }
 
-    public @EnumType(VkDeviceGroupPresentModeFlagsKHR.class) int modes() {
+    public @Bitmask(VkDeviceGroupPresentModeFlagsKHR.class) int modes() {
         return segment.get(LAYOUT$modes, OFFSET$modes);
     }
 
-    public VkDeviceGroupPresentCapabilitiesKHR modes(@EnumType(VkDeviceGroupPresentModeFlagsKHR.class) int value) {
+    public VkDeviceGroupPresentCapabilitiesKHR modes(@Bitmask(VkDeviceGroupPresentModeFlagsKHR.class) int value) {
         segment.set(LAYOUT$modes, OFFSET$modes, value);
         return this;
     }

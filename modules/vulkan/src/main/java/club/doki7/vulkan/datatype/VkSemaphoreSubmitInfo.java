@@ -238,11 +238,11 @@ public record VkSemaphoreSubmitInfo(@NotNull MemorySegment segment) implements I
         return this;
     }
 
-    public @EnumType(VkPipelineStageFlags2.class) long stageMask() {
+    public @Bitmask(VkPipelineStageFlags2.class) long stageMask() {
         return segment.get(LAYOUT$stageMask, OFFSET$stageMask);
     }
 
-    public VkSemaphoreSubmitInfo stageMask(@EnumType(VkPipelineStageFlags2.class) long value) {
+    public VkSemaphoreSubmitInfo stageMask(@Bitmask(VkPipelineStageFlags2.class) long value) {
         segment.set(LAYOUT$stageMask, OFFSET$stageMask, value);
         return this;
     }

@@ -213,11 +213,11 @@ public record VkPhysicalDeviceCopyMemoryIndirectPropertiesNV(@NotNull MemorySegm
         return this;
     }
 
-    public @EnumType(VkQueueFlags.class) int supportedQueues() {
+    public @Bitmask(VkQueueFlags.class) int supportedQueues() {
         return segment.get(LAYOUT$supportedQueues, OFFSET$supportedQueues);
     }
 
-    public VkPhysicalDeviceCopyMemoryIndirectPropertiesNV supportedQueues(@EnumType(VkQueueFlags.class) int value) {
+    public VkPhysicalDeviceCopyMemoryIndirectPropertiesNV supportedQueues(@Bitmask(VkQueueFlags.class) int value) {
         segment.set(LAYOUT$supportedQueues, OFFSET$supportedQueues, value);
         return this;
     }

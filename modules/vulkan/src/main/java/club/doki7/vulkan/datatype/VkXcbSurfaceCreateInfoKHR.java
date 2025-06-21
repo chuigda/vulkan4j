@@ -215,11 +215,11 @@ public record VkXcbSurfaceCreateInfoKHR(@NotNull MemorySegment segment) implemen
         return this;
     }
 
-    public @EnumType(VkXcbSurfaceCreateFlagsKHR.class) int flags() {
+    public @Bitmask(VkXcbSurfaceCreateFlagsKHR.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public VkXcbSurfaceCreateInfoKHR flags(@EnumType(VkXcbSurfaceCreateFlagsKHR.class) int value) {
+    public VkXcbSurfaceCreateInfoKHR flags(@Bitmask(VkXcbSurfaceCreateFlagsKHR.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
         return this;
     }

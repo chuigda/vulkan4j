@@ -242,11 +242,11 @@ public record VkDisplayPropertiesKHR(@NotNull MemorySegment segment) implements 
         return this;
     }
 
-    public @EnumType(VkSurfaceTransformFlagsKHR.class) int supportedTransforms() {
+    public @Bitmask(VkSurfaceTransformFlagsKHR.class) int supportedTransforms() {
         return segment.get(LAYOUT$supportedTransforms, OFFSET$supportedTransforms);
     }
 
-    public VkDisplayPropertiesKHR supportedTransforms(@EnumType(VkSurfaceTransformFlagsKHR.class) int value) {
+    public VkDisplayPropertiesKHR supportedTransforms(@Bitmask(VkSurfaceTransformFlagsKHR.class) int value) {
         segment.set(LAYOUT$supportedTransforms, OFFSET$supportedTransforms, value);
         return this;
     }

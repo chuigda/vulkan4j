@@ -216,11 +216,11 @@ public record VkPerformanceCounterDescriptionKHR(@NotNull MemorySegment segment)
         return this;
     }
 
-    public @EnumType(VkPerformanceCounterDescriptionFlagsKHR.class) int flags() {
+    public @Bitmask(VkPerformanceCounterDescriptionFlagsKHR.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public VkPerformanceCounterDescriptionKHR flags(@EnumType(VkPerformanceCounterDescriptionFlagsKHR.class) int value) {
+    public VkPerformanceCounterDescriptionKHR flags(@Bitmask(VkPerformanceCounterDescriptionFlagsKHR.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
         return this;
     }

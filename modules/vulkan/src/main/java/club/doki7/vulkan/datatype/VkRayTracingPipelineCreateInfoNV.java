@@ -221,11 +221,11 @@ public record VkRayTracingPipelineCreateInfoNV(@NotNull MemorySegment segment) i
         return this;
     }
 
-    public @EnumType(VkPipelineCreateFlags.class) int flags() {
+    public @Bitmask(VkPipelineCreateFlags.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public VkRayTracingPipelineCreateInfoNV flags(@EnumType(VkPipelineCreateFlags.class) int value) {
+    public VkRayTracingPipelineCreateInfoNV flags(@Bitmask(VkPipelineCreateFlags.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
         return this;
     }

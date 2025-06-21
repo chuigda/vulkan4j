@@ -12,7 +12,7 @@ public final class VkVideoDecodeUsageFlagsKHR {
     public static final int STREAMING = 0x4;
     public static final int TRANSCODING = 0x1;
 
-    public static String explain(@EnumType(VkVideoDecodeUsageFlagsKHR.class) int flags) {
+    public static String explain(@Bitmask(VkVideoDecodeUsageFlagsKHR.class) int flags) {
         List<String> detectedFlagBits = new ArrayList<>();
         if ((flags & DEFAULT) != 0) {
             detectedFlagBits.add("VK_VIDEO_DECODE_USAGE_DEFAULT_KHR");

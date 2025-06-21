@@ -220,11 +220,11 @@ public record VkDescriptorUpdateTemplateCreateInfo(@NotNull MemorySegment segmen
         return this;
     }
 
-    public @EnumType(VkDescriptorUpdateTemplateCreateFlags.class) int flags() {
+    public @Bitmask(VkDescriptorUpdateTemplateCreateFlags.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public VkDescriptorUpdateTemplateCreateInfo flags(@EnumType(VkDescriptorUpdateTemplateCreateFlags.class) int value) {
+    public VkDescriptorUpdateTemplateCreateInfo flags(@Bitmask(VkDescriptorUpdateTemplateCreateFlags.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
         return this;
     }

@@ -325,11 +325,11 @@ public record VkPhysicalDeviceFragmentShadingRatePropertiesKHR(@NotNull MemorySe
         return this;
     }
 
-    public @EnumType(VkSampleCountFlags.class) int maxFragmentShadingRateRasterizationSamples() {
+    public @Bitmask(VkSampleCountFlags.class) int maxFragmentShadingRateRasterizationSamples() {
         return segment.get(LAYOUT$maxFragmentShadingRateRasterizationSamples, OFFSET$maxFragmentShadingRateRasterizationSamples);
     }
 
-    public VkPhysicalDeviceFragmentShadingRatePropertiesKHR maxFragmentShadingRateRasterizationSamples(@EnumType(VkSampleCountFlags.class) int value) {
+    public VkPhysicalDeviceFragmentShadingRatePropertiesKHR maxFragmentShadingRateRasterizationSamples(@Bitmask(VkSampleCountFlags.class) int value) {
         segment.set(LAYOUT$maxFragmentShadingRateRasterizationSamples, OFFSET$maxFragmentShadingRateRasterizationSamples, value);
         return this;
     }

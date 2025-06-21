@@ -217,11 +217,11 @@ public record VkPartitionedAccelerationStructureInstancesInputNV(@NotNull Memory
         return this;
     }
 
-    public @EnumType(VkBuildAccelerationStructureFlagsKHR.class) int flags() {
+    public @Bitmask(VkBuildAccelerationStructureFlagsKHR.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public VkPartitionedAccelerationStructureInstancesInputNV flags(@EnumType(VkBuildAccelerationStructureFlagsKHR.class) int value) {
+    public VkPartitionedAccelerationStructureInstancesInputNV flags(@Bitmask(VkBuildAccelerationStructureFlagsKHR.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
         return this;
     }

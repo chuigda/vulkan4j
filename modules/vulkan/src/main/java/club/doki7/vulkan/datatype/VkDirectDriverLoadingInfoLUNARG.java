@@ -214,11 +214,11 @@ public record VkDirectDriverLoadingInfoLUNARG(@NotNull MemorySegment segment) im
         return this;
     }
 
-    public @EnumType(VkDirectDriverLoadingFlagsLUNARG.class) int flags() {
+    public @Bitmask(VkDirectDriverLoadingFlagsLUNARG.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public VkDirectDriverLoadingInfoLUNARG flags(@EnumType(VkDirectDriverLoadingFlagsLUNARG.class) int value) {
+    public VkDirectDriverLoadingInfoLUNARG flags(@Bitmask(VkDirectDriverLoadingFlagsLUNARG.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
         return this;
     }

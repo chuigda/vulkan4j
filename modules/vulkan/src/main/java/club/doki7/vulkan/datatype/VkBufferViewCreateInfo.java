@@ -217,11 +217,11 @@ public record VkBufferViewCreateInfo(@NotNull MemorySegment segment) implements 
         return this;
     }
 
-    public @EnumType(VkBufferViewCreateFlags.class) int flags() {
+    public @Bitmask(VkBufferViewCreateFlags.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public VkBufferViewCreateInfo flags(@EnumType(VkBufferViewCreateFlags.class) int value) {
+    public VkBufferViewCreateInfo flags(@Bitmask(VkBufferViewCreateFlags.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
         return this;
     }

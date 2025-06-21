@@ -215,11 +215,11 @@ public record VkValidationCacheCreateInfoEXT(@NotNull MemorySegment segment) imp
         return this;
     }
 
-    public @EnumType(VkValidationCacheCreateFlagsEXT.class) int flags() {
+    public @Bitmask(VkValidationCacheCreateFlagsEXT.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public VkValidationCacheCreateInfoEXT flags(@EnumType(VkValidationCacheCreateFlagsEXT.class) int value) {
+    public VkValidationCacheCreateInfoEXT flags(@Bitmask(VkValidationCacheCreateFlagsEXT.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
         return this;
     }

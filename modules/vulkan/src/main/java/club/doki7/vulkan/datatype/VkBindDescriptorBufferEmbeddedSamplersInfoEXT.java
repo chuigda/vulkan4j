@@ -215,11 +215,11 @@ public record VkBindDescriptorBufferEmbeddedSamplersInfoEXT(@NotNull MemorySegme
         return this;
     }
 
-    public @EnumType(VkShaderStageFlags.class) int stageFlags() {
+    public @Bitmask(VkShaderStageFlags.class) int stageFlags() {
         return segment.get(LAYOUT$stageFlags, OFFSET$stageFlags);
     }
 
-    public VkBindDescriptorBufferEmbeddedSamplersInfoEXT stageFlags(@EnumType(VkShaderStageFlags.class) int value) {
+    public VkBindDescriptorBufferEmbeddedSamplersInfoEXT stageFlags(@Bitmask(VkShaderStageFlags.class) int value) {
         segment.set(LAYOUT$stageFlags, OFFSET$stageFlags, value);
         return this;
     }

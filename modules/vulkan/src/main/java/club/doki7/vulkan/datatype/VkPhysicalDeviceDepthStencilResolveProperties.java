@@ -216,20 +216,20 @@ public record VkPhysicalDeviceDepthStencilResolveProperties(@NotNull MemorySegme
         return this;
     }
 
-    public @EnumType(VkResolveModeFlags.class) int supportedDepthResolveModes() {
+    public @Bitmask(VkResolveModeFlags.class) int supportedDepthResolveModes() {
         return segment.get(LAYOUT$supportedDepthResolveModes, OFFSET$supportedDepthResolveModes);
     }
 
-    public VkPhysicalDeviceDepthStencilResolveProperties supportedDepthResolveModes(@EnumType(VkResolveModeFlags.class) int value) {
+    public VkPhysicalDeviceDepthStencilResolveProperties supportedDepthResolveModes(@Bitmask(VkResolveModeFlags.class) int value) {
         segment.set(LAYOUT$supportedDepthResolveModes, OFFSET$supportedDepthResolveModes, value);
         return this;
     }
 
-    public @EnumType(VkResolveModeFlags.class) int supportedStencilResolveModes() {
+    public @Bitmask(VkResolveModeFlags.class) int supportedStencilResolveModes() {
         return segment.get(LAYOUT$supportedStencilResolveModes, OFFSET$supportedStencilResolveModes);
     }
 
-    public VkPhysicalDeviceDepthStencilResolveProperties supportedStencilResolveModes(@EnumType(VkResolveModeFlags.class) int value) {
+    public VkPhysicalDeviceDepthStencilResolveProperties supportedStencilResolveModes(@Bitmask(VkResolveModeFlags.class) int value) {
         segment.set(LAYOUT$supportedStencilResolveModes, OFFSET$supportedStencilResolveModes, value);
         return this;
     }

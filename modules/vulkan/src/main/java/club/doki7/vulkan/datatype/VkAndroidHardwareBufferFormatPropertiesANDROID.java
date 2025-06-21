@@ -238,11 +238,11 @@ public record VkAndroidHardwareBufferFormatPropertiesANDROID(@NotNull MemorySegm
         return this;
     }
 
-    public @EnumType(VkFormatFeatureFlags.class) int formatFeatures() {
+    public @Bitmask(VkFormatFeatureFlags.class) int formatFeatures() {
         return segment.get(LAYOUT$formatFeatures, OFFSET$formatFeatures);
     }
 
-    public VkAndroidHardwareBufferFormatPropertiesANDROID formatFeatures(@EnumType(VkFormatFeatureFlags.class) int value) {
+    public VkAndroidHardwareBufferFormatPropertiesANDROID formatFeatures(@Bitmask(VkFormatFeatureFlags.class) int value) {
         segment.set(LAYOUT$formatFeatures, OFFSET$formatFeatures, value);
         return this;
     }

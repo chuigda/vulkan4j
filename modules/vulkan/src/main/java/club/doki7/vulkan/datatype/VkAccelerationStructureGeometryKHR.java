@@ -238,11 +238,11 @@ public record VkAccelerationStructureGeometryKHR(@NotNull MemorySegment segment)
         return this;
     }
 
-    public @EnumType(VkGeometryFlagsKHR.class) int flags() {
+    public @Bitmask(VkGeometryFlagsKHR.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public VkAccelerationStructureGeometryKHR flags(@EnumType(VkGeometryFlagsKHR.class) int value) {
+    public VkAccelerationStructureGeometryKHR flags(@Bitmask(VkGeometryFlagsKHR.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
         return this;
     }

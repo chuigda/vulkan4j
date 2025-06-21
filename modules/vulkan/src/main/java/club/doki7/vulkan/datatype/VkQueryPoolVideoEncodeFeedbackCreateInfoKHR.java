@@ -213,11 +213,11 @@ public record VkQueryPoolVideoEncodeFeedbackCreateInfoKHR(@NotNull MemorySegment
         return this;
     }
 
-    public @EnumType(VkVideoEncodeFeedbackFlagsKHR.class) int encodeFeedbackFlags() {
+    public @Bitmask(VkVideoEncodeFeedbackFlagsKHR.class) int encodeFeedbackFlags() {
         return segment.get(LAYOUT$encodeFeedbackFlags, OFFSET$encodeFeedbackFlags);
     }
 
-    public VkQueryPoolVideoEncodeFeedbackCreateInfoKHR encodeFeedbackFlags(@EnumType(VkVideoEncodeFeedbackFlagsKHR.class) int value) {
+    public VkQueryPoolVideoEncodeFeedbackCreateInfoKHR encodeFeedbackFlags(@Bitmask(VkVideoEncodeFeedbackFlagsKHR.class) int value) {
         segment.set(LAYOUT$encodeFeedbackFlags, OFFSET$encodeFeedbackFlags, value);
         return this;
     }

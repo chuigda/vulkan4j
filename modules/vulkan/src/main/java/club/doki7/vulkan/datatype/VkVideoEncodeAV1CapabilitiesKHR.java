@@ -236,11 +236,11 @@ public record VkVideoEncodeAV1CapabilitiesKHR(@NotNull MemorySegment segment) im
         return this;
     }
 
-    public @EnumType(VkVideoEncodeAV1CapabilityFlagsKHR.class) int flags() {
+    public @Bitmask(VkVideoEncodeAV1CapabilityFlagsKHR.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public VkVideoEncodeAV1CapabilitiesKHR flags(@EnumType(VkVideoEncodeAV1CapabilityFlagsKHR.class) int value) {
+    public VkVideoEncodeAV1CapabilitiesKHR flags(@Bitmask(VkVideoEncodeAV1CapabilityFlagsKHR.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
         return this;
     }
@@ -310,11 +310,11 @@ public record VkVideoEncodeAV1CapabilitiesKHR(@NotNull MemorySegment segment) im
         return this;
     }
 
-    public @EnumType(VkVideoEncodeAV1SuperblockSizeFlagsKHR.class) int superblockSizes() {
+    public @Bitmask(VkVideoEncodeAV1SuperblockSizeFlagsKHR.class) int superblockSizes() {
         return segment.get(LAYOUT$superblockSizes, OFFSET$superblockSizes);
     }
 
-    public VkVideoEncodeAV1CapabilitiesKHR superblockSizes(@EnumType(VkVideoEncodeAV1SuperblockSizeFlagsKHR.class) int value) {
+    public VkVideoEncodeAV1CapabilitiesKHR superblockSizes(@Bitmask(VkVideoEncodeAV1SuperblockSizeFlagsKHR.class) int value) {
         segment.set(LAYOUT$superblockSizes, OFFSET$superblockSizes, value);
         return this;
     }
@@ -463,11 +463,11 @@ public record VkVideoEncodeAV1CapabilitiesKHR(@NotNull MemorySegment segment) im
         return this;
     }
 
-    public @EnumType(VkVideoEncodeAV1StdFlagsKHR.class) int stdSyntaxFlags() {
+    public @Bitmask(VkVideoEncodeAV1StdFlagsKHR.class) int stdSyntaxFlags() {
         return segment.get(LAYOUT$stdSyntaxFlags, OFFSET$stdSyntaxFlags);
     }
 
-    public VkVideoEncodeAV1CapabilitiesKHR stdSyntaxFlags(@EnumType(VkVideoEncodeAV1StdFlagsKHR.class) int value) {
+    public VkVideoEncodeAV1CapabilitiesKHR stdSyntaxFlags(@Bitmask(VkVideoEncodeAV1StdFlagsKHR.class) int value) {
         segment.set(LAYOUT$stdSyntaxFlags, OFFSET$stdSyntaxFlags, value);
         return this;
     }

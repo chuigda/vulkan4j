@@ -133,7 +133,7 @@ public final class VmaAllocatorCreateFlags {
     /// while creating Vulkan device passed as VmaAllocatorCreateInfo::device.
     public static final int KHR_MAINTENANCE5 = 0x100;
 
-    public static String explain(@EnumType(VmaAllocatorCreateFlags.class) int flags) {
+    public static String explain(@Bitmask(VmaAllocatorCreateFlags.class) int flags) {
         List<String> detectedFlagBits = new ArrayList<>();
         if ((flags & AMD_DEVICE_COHERENT_MEMORY) != 0) {
             detectedFlagBits.add("VMA_ALLOCATOR_CREATE_AMD_DEVICE_COHERENT_MEMORY_BIT");

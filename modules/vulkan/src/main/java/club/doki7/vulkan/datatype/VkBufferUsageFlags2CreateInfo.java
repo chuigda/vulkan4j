@@ -213,11 +213,11 @@ public record VkBufferUsageFlags2CreateInfo(@NotNull MemorySegment segment) impl
         return this;
     }
 
-    public @EnumType(VkBufferUsageFlags2.class) long usage() {
+    public @Bitmask(VkBufferUsageFlags2.class) long usage() {
         return segment.get(LAYOUT$usage, OFFSET$usage);
     }
 
-    public VkBufferUsageFlags2CreateInfo usage(@EnumType(VkBufferUsageFlags2.class) long value) {
+    public VkBufferUsageFlags2CreateInfo usage(@Bitmask(VkBufferUsageFlags2.class) long value) {
         segment.set(LAYOUT$usage, OFFSET$usage, value);
         return this;
     }

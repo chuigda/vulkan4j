@@ -213,11 +213,11 @@ public record VkSharedPresentSurfaceCapabilitiesKHR(@NotNull MemorySegment segme
         return this;
     }
 
-    public @EnumType(VkImageUsageFlags.class) int sharedPresentSupportedUsageFlags() {
+    public @Bitmask(VkImageUsageFlags.class) int sharedPresentSupportedUsageFlags() {
         return segment.get(LAYOUT$sharedPresentSupportedUsageFlags, OFFSET$sharedPresentSupportedUsageFlags);
     }
 
-    public VkSharedPresentSurfaceCapabilitiesKHR sharedPresentSupportedUsageFlags(@EnumType(VkImageUsageFlags.class) int value) {
+    public VkSharedPresentSurfaceCapabilitiesKHR sharedPresentSupportedUsageFlags(@Bitmask(VkImageUsageFlags.class) int value) {
         segment.set(LAYOUT$sharedPresentSupportedUsageFlags, OFFSET$sharedPresentSupportedUsageFlags, value);
         return this;
     }

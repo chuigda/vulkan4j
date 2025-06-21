@@ -213,11 +213,11 @@ public record VkEventCreateInfo(@NotNull MemorySegment segment) implements IVkEv
         return this;
     }
 
-    public @EnumType(VkEventCreateFlags.class) int flags() {
+    public @Bitmask(VkEventCreateFlags.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public VkEventCreateInfo flags(@EnumType(VkEventCreateFlags.class) int value) {
+    public VkEventCreateInfo flags(@Bitmask(VkEventCreateFlags.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
         return this;
     }

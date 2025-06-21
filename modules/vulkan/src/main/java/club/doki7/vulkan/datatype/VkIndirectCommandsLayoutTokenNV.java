@@ -283,11 +283,11 @@ public record VkIndirectCommandsLayoutTokenNV(@NotNull MemorySegment segment) im
         return this;
     }
 
-    public @EnumType(VkShaderStageFlags.class) int pushconstantShaderStageFlags() {
+    public @Bitmask(VkShaderStageFlags.class) int pushconstantShaderStageFlags() {
         return segment.get(LAYOUT$pushconstantShaderStageFlags, OFFSET$pushconstantShaderStageFlags);
     }
 
-    public VkIndirectCommandsLayoutTokenNV pushconstantShaderStageFlags(@EnumType(VkShaderStageFlags.class) int value) {
+    public VkIndirectCommandsLayoutTokenNV pushconstantShaderStageFlags(@Bitmask(VkShaderStageFlags.class) int value) {
         segment.set(LAYOUT$pushconstantShaderStageFlags, OFFSET$pushconstantShaderStageFlags, value);
         return this;
     }
@@ -310,11 +310,11 @@ public record VkIndirectCommandsLayoutTokenNV(@NotNull MemorySegment segment) im
         return this;
     }
 
-    public @EnumType(VkIndirectStateFlagsNV.class) int indirectStateFlags() {
+    public @Bitmask(VkIndirectStateFlagsNV.class) int indirectStateFlags() {
         return segment.get(LAYOUT$indirectStateFlags, OFFSET$indirectStateFlags);
     }
 
-    public VkIndirectCommandsLayoutTokenNV indirectStateFlags(@EnumType(VkIndirectStateFlagsNV.class) int value) {
+    public VkIndirectCommandsLayoutTokenNV indirectStateFlags(@Bitmask(VkIndirectStateFlagsNV.class) int value) {
         segment.set(LAYOUT$indirectStateFlags, OFFSET$indirectStateFlags, value);
         return this;
     }

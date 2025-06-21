@@ -223,11 +223,11 @@ public record VkAccelerationStructureMotionInfoNV(@NotNull MemorySegment segment
         return this;
     }
 
-    public @EnumType(VkAccelerationStructureMotionInfoFlagsNV.class) int flags() {
+    public @Bitmask(VkAccelerationStructureMotionInfoFlagsNV.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public VkAccelerationStructureMotionInfoNV flags(@EnumType(VkAccelerationStructureMotionInfoFlagsNV.class) int value) {
+    public VkAccelerationStructureMotionInfoNV flags(@Bitmask(VkAccelerationStructureMotionInfoFlagsNV.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
         return this;
     }

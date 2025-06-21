@@ -215,20 +215,20 @@ public record VkVideoEncodeUsageInfoKHR(@NotNull MemorySegment segment) implemen
         return this;
     }
 
-    public @EnumType(VkVideoEncodeUsageFlagsKHR.class) int videoUsageHints() {
+    public @Bitmask(VkVideoEncodeUsageFlagsKHR.class) int videoUsageHints() {
         return segment.get(LAYOUT$videoUsageHints, OFFSET$videoUsageHints);
     }
 
-    public VkVideoEncodeUsageInfoKHR videoUsageHints(@EnumType(VkVideoEncodeUsageFlagsKHR.class) int value) {
+    public VkVideoEncodeUsageInfoKHR videoUsageHints(@Bitmask(VkVideoEncodeUsageFlagsKHR.class) int value) {
         segment.set(LAYOUT$videoUsageHints, OFFSET$videoUsageHints, value);
         return this;
     }
 
-    public @EnumType(VkVideoEncodeContentFlagsKHR.class) int videoContentHints() {
+    public @Bitmask(VkVideoEncodeContentFlagsKHR.class) int videoContentHints() {
         return segment.get(LAYOUT$videoContentHints, OFFSET$videoContentHints);
     }
 
-    public VkVideoEncodeUsageInfoKHR videoContentHints(@EnumType(VkVideoEncodeContentFlagsKHR.class) int value) {
+    public VkVideoEncodeUsageInfoKHR videoContentHints(@Bitmask(VkVideoEncodeContentFlagsKHR.class) int value) {
         segment.set(LAYOUT$videoContentHints, OFFSET$videoContentHints, value);
         return this;
     }

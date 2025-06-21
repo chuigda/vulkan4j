@@ -214,11 +214,11 @@ public record VkCommandBufferBeginInfo(@NotNull MemorySegment segment) implement
         return this;
     }
 
-    public @EnumType(VkCommandBufferUsageFlags.class) int flags() {
+    public @Bitmask(VkCommandBufferUsageFlags.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public VkCommandBufferBeginInfo flags(@EnumType(VkCommandBufferUsageFlags.class) int value) {
+    public VkCommandBufferBeginInfo flags(@Bitmask(VkCommandBufferUsageFlags.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
         return this;
     }

@@ -214,11 +214,11 @@ public record VkImportMemoryMetalHandleInfoEXT(@NotNull MemorySegment segment) i
         return this;
     }
 
-    public @EnumType(VkExternalMemoryHandleTypeFlags.class) int handleType() {
+    public @Bitmask(VkExternalMemoryHandleTypeFlags.class) int handleType() {
         return segment.get(LAYOUT$handleType, OFFSET$handleType);
     }
 
-    public VkImportMemoryMetalHandleInfoEXT handleType(@EnumType(VkExternalMemoryHandleTypeFlags.class) int value) {
+    public VkImportMemoryMetalHandleInfoEXT handleType(@Bitmask(VkExternalMemoryHandleTypeFlags.class) int value) {
         segment.set(LAYOUT$handleType, OFFSET$handleType, value);
         return this;
     }

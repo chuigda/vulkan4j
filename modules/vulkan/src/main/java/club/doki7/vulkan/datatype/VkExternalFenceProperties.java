@@ -215,29 +215,29 @@ public record VkExternalFenceProperties(@NotNull MemorySegment segment) implemen
         return this;
     }
 
-    public @EnumType(VkExternalFenceHandleTypeFlags.class) int exportFromImportedHandleTypes() {
+    public @Bitmask(VkExternalFenceHandleTypeFlags.class) int exportFromImportedHandleTypes() {
         return segment.get(LAYOUT$exportFromImportedHandleTypes, OFFSET$exportFromImportedHandleTypes);
     }
 
-    public VkExternalFenceProperties exportFromImportedHandleTypes(@EnumType(VkExternalFenceHandleTypeFlags.class) int value) {
+    public VkExternalFenceProperties exportFromImportedHandleTypes(@Bitmask(VkExternalFenceHandleTypeFlags.class) int value) {
         segment.set(LAYOUT$exportFromImportedHandleTypes, OFFSET$exportFromImportedHandleTypes, value);
         return this;
     }
 
-    public @EnumType(VkExternalFenceHandleTypeFlags.class) int compatibleHandleTypes() {
+    public @Bitmask(VkExternalFenceHandleTypeFlags.class) int compatibleHandleTypes() {
         return segment.get(LAYOUT$compatibleHandleTypes, OFFSET$compatibleHandleTypes);
     }
 
-    public VkExternalFenceProperties compatibleHandleTypes(@EnumType(VkExternalFenceHandleTypeFlags.class) int value) {
+    public VkExternalFenceProperties compatibleHandleTypes(@Bitmask(VkExternalFenceHandleTypeFlags.class) int value) {
         segment.set(LAYOUT$compatibleHandleTypes, OFFSET$compatibleHandleTypes, value);
         return this;
     }
 
-    public @EnumType(VkExternalFenceFeatureFlags.class) int externalFenceFeatures() {
+    public @Bitmask(VkExternalFenceFeatureFlags.class) int externalFenceFeatures() {
         return segment.get(LAYOUT$externalFenceFeatures, OFFSET$externalFenceFeatures);
     }
 
-    public VkExternalFenceProperties externalFenceFeatures(@EnumType(VkExternalFenceFeatureFlags.class) int value) {
+    public VkExternalFenceProperties externalFenceFeatures(@Bitmask(VkExternalFenceFeatureFlags.class) int value) {
         segment.set(LAYOUT$externalFenceFeatures, OFFSET$externalFenceFeatures, value);
         return this;
     }

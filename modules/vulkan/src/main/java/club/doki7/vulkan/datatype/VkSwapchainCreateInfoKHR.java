@@ -228,11 +228,11 @@ public record VkSwapchainCreateInfoKHR(@NotNull MemorySegment segment) implement
         return this;
     }
 
-    public @EnumType(VkSwapchainCreateFlagsKHR.class) int flags() {
+    public @Bitmask(VkSwapchainCreateFlagsKHR.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public VkSwapchainCreateInfoKHR flags(@EnumType(VkSwapchainCreateFlagsKHR.class) int value) {
+    public VkSwapchainCreateInfoKHR flags(@Bitmask(VkSwapchainCreateFlagsKHR.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
         return this;
     }
@@ -300,11 +300,11 @@ public record VkSwapchainCreateInfoKHR(@NotNull MemorySegment segment) implement
         return this;
     }
 
-    public @EnumType(VkImageUsageFlags.class) int imageUsage() {
+    public @Bitmask(VkImageUsageFlags.class) int imageUsage() {
         return segment.get(LAYOUT$imageUsage, OFFSET$imageUsage);
     }
 
-    public VkSwapchainCreateInfoKHR imageUsage(@EnumType(VkImageUsageFlags.class) int value) {
+    public VkSwapchainCreateInfoKHR imageUsage(@Bitmask(VkImageUsageFlags.class) int value) {
         segment.set(LAYOUT$imageUsage, OFFSET$imageUsage, value);
         return this;
     }
@@ -353,20 +353,20 @@ public record VkSwapchainCreateInfoKHR(@NotNull MemorySegment segment) implement
         segment.set(LAYOUT$pQueueFamilyIndices, OFFSET$pQueueFamilyIndices, value);
     }
 
-    public @EnumType(VkSurfaceTransformFlagsKHR.class) int preTransform() {
+    public @Bitmask(VkSurfaceTransformFlagsKHR.class) int preTransform() {
         return segment.get(LAYOUT$preTransform, OFFSET$preTransform);
     }
 
-    public VkSwapchainCreateInfoKHR preTransform(@EnumType(VkSurfaceTransformFlagsKHR.class) int value) {
+    public VkSwapchainCreateInfoKHR preTransform(@Bitmask(VkSurfaceTransformFlagsKHR.class) int value) {
         segment.set(LAYOUT$preTransform, OFFSET$preTransform, value);
         return this;
     }
 
-    public @EnumType(VkCompositeAlphaFlagsKHR.class) int compositeAlpha() {
+    public @Bitmask(VkCompositeAlphaFlagsKHR.class) int compositeAlpha() {
         return segment.get(LAYOUT$compositeAlpha, OFFSET$compositeAlpha);
     }
 
-    public VkSwapchainCreateInfoKHR compositeAlpha(@EnumType(VkCompositeAlphaFlagsKHR.class) int value) {
+    public VkSwapchainCreateInfoKHR compositeAlpha(@Bitmask(VkCompositeAlphaFlagsKHR.class) int value) {
         segment.set(LAYOUT$compositeAlpha, OFFSET$compositeAlpha, value);
         return this;
     }

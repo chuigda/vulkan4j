@@ -215,11 +215,11 @@ public record VkPipelineCoverageToColorStateCreateInfoNV(@NotNull MemorySegment 
         return this;
     }
 
-    public @EnumType(VkPipelineCoverageToColorStateCreateFlagsNV.class) int flags() {
+    public @Bitmask(VkPipelineCoverageToColorStateCreateFlagsNV.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public VkPipelineCoverageToColorStateCreateInfoNV flags(@EnumType(VkPipelineCoverageToColorStateCreateFlagsNV.class) int value) {
+    public VkPipelineCoverageToColorStateCreateInfoNV flags(@Bitmask(VkPipelineCoverageToColorStateCreateFlagsNV.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
         return this;
     }

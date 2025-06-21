@@ -214,20 +214,20 @@ public record VkMemoryBarrierAccessFlags3KHR(@NotNull MemorySegment segment) imp
         return this;
     }
 
-    public @EnumType(VkAccessFlags3KHR.class) long srcAccessMask3() {
+    public @Bitmask(VkAccessFlags3KHR.class) long srcAccessMask3() {
         return segment.get(LAYOUT$srcAccessMask3, OFFSET$srcAccessMask3);
     }
 
-    public VkMemoryBarrierAccessFlags3KHR srcAccessMask3(@EnumType(VkAccessFlags3KHR.class) long value) {
+    public VkMemoryBarrierAccessFlags3KHR srcAccessMask3(@Bitmask(VkAccessFlags3KHR.class) long value) {
         segment.set(LAYOUT$srcAccessMask3, OFFSET$srcAccessMask3, value);
         return this;
     }
 
-    public @EnumType(VkAccessFlags3KHR.class) long dstAccessMask3() {
+    public @Bitmask(VkAccessFlags3KHR.class) long dstAccessMask3() {
         return segment.get(LAYOUT$dstAccessMask3, OFFSET$dstAccessMask3);
     }
 
-    public VkMemoryBarrierAccessFlags3KHR dstAccessMask3(@EnumType(VkAccessFlags3KHR.class) long value) {
+    public VkMemoryBarrierAccessFlags3KHR dstAccessMask3(@Bitmask(VkAccessFlags3KHR.class) long value) {
         segment.set(LAYOUT$dstAccessMask3, OFFSET$dstAccessMask3, value);
         return this;
     }

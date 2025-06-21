@@ -217,11 +217,11 @@ public record VkPhysicalDeviceSampleLocationsPropertiesEXT(@NotNull MemorySegmen
         return this;
     }
 
-    public @EnumType(VkSampleCountFlags.class) int sampleLocationSampleCounts() {
+    public @Bitmask(VkSampleCountFlags.class) int sampleLocationSampleCounts() {
         return segment.get(LAYOUT$sampleLocationSampleCounts, OFFSET$sampleLocationSampleCounts);
     }
 
-    public VkPhysicalDeviceSampleLocationsPropertiesEXT sampleLocationSampleCounts(@EnumType(VkSampleCountFlags.class) int value) {
+    public VkPhysicalDeviceSampleLocationsPropertiesEXT sampleLocationSampleCounts(@Bitmask(VkSampleCountFlags.class) int value) {
         segment.set(LAYOUT$sampleLocationSampleCounts, OFFSET$sampleLocationSampleCounts, value);
         return this;
     }

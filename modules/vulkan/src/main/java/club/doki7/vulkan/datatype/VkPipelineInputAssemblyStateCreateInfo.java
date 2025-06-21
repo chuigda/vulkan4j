@@ -215,11 +215,11 @@ public record VkPipelineInputAssemblyStateCreateInfo(@NotNull MemorySegment segm
         return this;
     }
 
-    public @EnumType(VkPipelineInputAssemblyStateCreateFlags.class) int flags() {
+    public @Bitmask(VkPipelineInputAssemblyStateCreateFlags.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public VkPipelineInputAssemblyStateCreateInfo flags(@EnumType(VkPipelineInputAssemblyStateCreateFlags.class) int value) {
+    public VkPipelineInputAssemblyStateCreateInfo flags(@Bitmask(VkPipelineInputAssemblyStateCreateFlags.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
         return this;
     }

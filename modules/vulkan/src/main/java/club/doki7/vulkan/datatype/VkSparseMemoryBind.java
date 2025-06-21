@@ -213,11 +213,11 @@ public record VkSparseMemoryBind(@NotNull MemorySegment segment) implements IVkS
         return this;
     }
 
-    public @EnumType(VkSparseMemoryBindFlags.class) int flags() {
+    public @Bitmask(VkSparseMemoryBindFlags.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public VkSparseMemoryBind flags(@EnumType(VkSparseMemoryBindFlags.class) int value) {
+    public VkSparseMemoryBind flags(@Bitmask(VkSparseMemoryBindFlags.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
         return this;
     }

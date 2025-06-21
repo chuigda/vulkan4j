@@ -215,11 +215,11 @@ public record VkPipelineCacheCreateInfo(@NotNull MemorySegment segment) implemen
         return this;
     }
 
-    public @EnumType(VkPipelineCacheCreateFlags.class) int flags() {
+    public @Bitmask(VkPipelineCacheCreateFlags.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public VkPipelineCacheCreateInfo flags(@EnumType(VkPipelineCacheCreateFlags.class) int value) {
+    public VkPipelineCacheCreateInfo flags(@Bitmask(VkPipelineCacheCreateFlags.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
         return this;
     }

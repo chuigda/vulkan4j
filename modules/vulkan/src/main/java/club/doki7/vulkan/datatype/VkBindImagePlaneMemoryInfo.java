@@ -213,11 +213,11 @@ public record VkBindImagePlaneMemoryInfo(@NotNull MemorySegment segment) impleme
         return this;
     }
 
-    public @EnumType(VkImageAspectFlags.class) int planeAspect() {
+    public @Bitmask(VkImageAspectFlags.class) int planeAspect() {
         return segment.get(LAYOUT$planeAspect, OFFSET$planeAspect);
     }
 
-    public VkBindImagePlaneMemoryInfo planeAspect(@EnumType(VkImageAspectFlags.class) int value) {
+    public VkBindImagePlaneMemoryInfo planeAspect(@Bitmask(VkImageAspectFlags.class) int value) {
         segment.set(LAYOUT$planeAspect, OFFSET$planeAspect, value);
         return this;
     }

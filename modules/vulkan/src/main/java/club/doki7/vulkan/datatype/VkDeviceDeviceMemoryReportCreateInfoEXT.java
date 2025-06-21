@@ -215,11 +215,11 @@ public record VkDeviceDeviceMemoryReportCreateInfoEXT(@NotNull MemorySegment seg
         return this;
     }
 
-    public @EnumType(VkDeviceMemoryReportFlagsEXT.class) int flags() {
+    public @Bitmask(VkDeviceMemoryReportFlagsEXT.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public VkDeviceDeviceMemoryReportCreateInfoEXT flags(@EnumType(VkDeviceMemoryReportFlagsEXT.class) int value) {
+    public VkDeviceDeviceMemoryReportCreateInfoEXT flags(@Bitmask(VkDeviceMemoryReportFlagsEXT.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
         return this;
     }

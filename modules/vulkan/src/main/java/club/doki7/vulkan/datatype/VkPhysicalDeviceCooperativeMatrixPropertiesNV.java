@@ -213,11 +213,11 @@ public record VkPhysicalDeviceCooperativeMatrixPropertiesNV(@NotNull MemorySegme
         return this;
     }
 
-    public @EnumType(VkShaderStageFlags.class) int cooperativeMatrixSupportedStages() {
+    public @Bitmask(VkShaderStageFlags.class) int cooperativeMatrixSupportedStages() {
         return segment.get(LAYOUT$cooperativeMatrixSupportedStages, OFFSET$cooperativeMatrixSupportedStages);
     }
 
-    public VkPhysicalDeviceCooperativeMatrixPropertiesNV cooperativeMatrixSupportedStages(@EnumType(VkShaderStageFlags.class) int value) {
+    public VkPhysicalDeviceCooperativeMatrixPropertiesNV cooperativeMatrixSupportedStages(@Bitmask(VkShaderStageFlags.class) int value) {
         segment.set(LAYOUT$cooperativeMatrixSupportedStages, OFFSET$cooperativeMatrixSupportedStages, value);
         return this;
     }

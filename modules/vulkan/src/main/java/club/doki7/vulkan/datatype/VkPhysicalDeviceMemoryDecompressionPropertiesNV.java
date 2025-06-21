@@ -214,11 +214,11 @@ public record VkPhysicalDeviceMemoryDecompressionPropertiesNV(@NotNull MemorySeg
         return this;
     }
 
-    public @EnumType(VkMemoryDecompressionMethodFlagsNV.class) long decompressionMethods() {
+    public @Bitmask(VkMemoryDecompressionMethodFlagsNV.class) long decompressionMethods() {
         return segment.get(LAYOUT$decompressionMethods, OFFSET$decompressionMethods);
     }
 
-    public VkPhysicalDeviceMemoryDecompressionPropertiesNV decompressionMethods(@EnumType(VkMemoryDecompressionMethodFlagsNV.class) long value) {
+    public VkPhysicalDeviceMemoryDecompressionPropertiesNV decompressionMethods(@Bitmask(VkMemoryDecompressionMethodFlagsNV.class) long value) {
         segment.set(LAYOUT$decompressionMethods, OFFSET$decompressionMethods, value);
         return this;
     }

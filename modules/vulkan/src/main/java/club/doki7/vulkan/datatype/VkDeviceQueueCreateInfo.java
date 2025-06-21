@@ -216,11 +216,11 @@ public record VkDeviceQueueCreateInfo(@NotNull MemorySegment segment) implements
         return this;
     }
 
-    public @EnumType(VkDeviceQueueCreateFlags.class) int flags() {
+    public @Bitmask(VkDeviceQueueCreateFlags.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public VkDeviceQueueCreateInfo flags(@EnumType(VkDeviceQueueCreateFlags.class) int value) {
+    public VkDeviceQueueCreateInfo flags(@Bitmask(VkDeviceQueueCreateFlags.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
         return this;
     }

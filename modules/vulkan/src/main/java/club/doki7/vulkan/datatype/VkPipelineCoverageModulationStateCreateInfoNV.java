@@ -217,11 +217,11 @@ public record VkPipelineCoverageModulationStateCreateInfoNV(@NotNull MemorySegme
         return this;
     }
 
-    public @EnumType(VkPipelineCoverageModulationStateCreateFlagsNV.class) int flags() {
+    public @Bitmask(VkPipelineCoverageModulationStateCreateFlagsNV.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public VkPipelineCoverageModulationStateCreateInfoNV flags(@EnumType(VkPipelineCoverageModulationStateCreateFlagsNV.class) int value) {
+    public VkPipelineCoverageModulationStateCreateInfoNV flags(@Bitmask(VkPipelineCoverageModulationStateCreateFlagsNV.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
         return this;
     }

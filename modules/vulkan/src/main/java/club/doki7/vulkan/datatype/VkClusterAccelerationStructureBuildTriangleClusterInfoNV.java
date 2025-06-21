@@ -195,11 +195,11 @@ public record VkClusterAccelerationStructureBuildTriangleClusterInfoNV(@NotNull 
         return this;
     }
 
-    public @EnumType(VkClusterAccelerationStructureClusterFlagsNV.class) int clusterFlags() {
+    public @Bitmask(VkClusterAccelerationStructureClusterFlagsNV.class) int clusterFlags() {
         return segment.get(LAYOUT$clusterFlags, OFFSET$clusterFlags);
     }
 
-    public VkClusterAccelerationStructureBuildTriangleClusterInfoNV clusterFlags(@EnumType(VkClusterAccelerationStructureClusterFlagsNV.class) int value) {
+    public VkClusterAccelerationStructureBuildTriangleClusterInfoNV clusterFlags(@Bitmask(VkClusterAccelerationStructureClusterFlagsNV.class) int value) {
         segment.set(LAYOUT$clusterFlags, OFFSET$clusterFlags, value);
         return this;
     }

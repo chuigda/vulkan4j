@@ -232,11 +232,11 @@ public record VkMicromapBuildInfoEXT(@NotNull MemorySegment segment) implements 
         return this;
     }
 
-    public @EnumType(VkBuildMicromapFlagsEXT.class) int flags() {
+    public @Bitmask(VkBuildMicromapFlagsEXT.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public VkMicromapBuildInfoEXT flags(@EnumType(VkBuildMicromapFlagsEXT.class) int value) {
+    public VkMicromapBuildInfoEXT flags(@Bitmask(VkBuildMicromapFlagsEXT.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
         return this;
     }

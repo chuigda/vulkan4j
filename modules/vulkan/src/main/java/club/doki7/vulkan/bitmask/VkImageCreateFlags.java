@@ -28,7 +28,7 @@ public final class VkImageCreateFlags {
     public static final int SUBSAMPLED_EXT = 0x4000;
     public static final int VIDEO_PROFILE_INDEPENDENT_KHR = 0x100000;
 
-    public static String explain(@EnumType(VkImageCreateFlags.class) int flags) {
+    public static String explain(@Bitmask(VkImageCreateFlags.class) int flags) {
         List<String> detectedFlagBits = new ArrayList<>();
         if ((flags & _2D_ARRAY_COMPATIBLE) != 0) {
             detectedFlagBits.add("VK_IMAGE_CREATE_2D_ARRAY_COMPATIBLE_BIT");

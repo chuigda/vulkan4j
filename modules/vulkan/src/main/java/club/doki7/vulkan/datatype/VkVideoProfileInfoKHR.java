@@ -216,38 +216,38 @@ public record VkVideoProfileInfoKHR(@NotNull MemorySegment segment) implements I
         return this;
     }
 
-    public @EnumType(VkVideoCodecOperationFlagsKHR.class) int videoCodecOperation() {
+    public @Bitmask(VkVideoCodecOperationFlagsKHR.class) int videoCodecOperation() {
         return segment.get(LAYOUT$videoCodecOperation, OFFSET$videoCodecOperation);
     }
 
-    public VkVideoProfileInfoKHR videoCodecOperation(@EnumType(VkVideoCodecOperationFlagsKHR.class) int value) {
+    public VkVideoProfileInfoKHR videoCodecOperation(@Bitmask(VkVideoCodecOperationFlagsKHR.class) int value) {
         segment.set(LAYOUT$videoCodecOperation, OFFSET$videoCodecOperation, value);
         return this;
     }
 
-    public @EnumType(VkVideoChromaSubsamplingFlagsKHR.class) int chromaSubsampling() {
+    public @Bitmask(VkVideoChromaSubsamplingFlagsKHR.class) int chromaSubsampling() {
         return segment.get(LAYOUT$chromaSubsampling, OFFSET$chromaSubsampling);
     }
 
-    public VkVideoProfileInfoKHR chromaSubsampling(@EnumType(VkVideoChromaSubsamplingFlagsKHR.class) int value) {
+    public VkVideoProfileInfoKHR chromaSubsampling(@Bitmask(VkVideoChromaSubsamplingFlagsKHR.class) int value) {
         segment.set(LAYOUT$chromaSubsampling, OFFSET$chromaSubsampling, value);
         return this;
     }
 
-    public @EnumType(VkVideoComponentBitDepthFlagsKHR.class) int lumaBitDepth() {
+    public @Bitmask(VkVideoComponentBitDepthFlagsKHR.class) int lumaBitDepth() {
         return segment.get(LAYOUT$lumaBitDepth, OFFSET$lumaBitDepth);
     }
 
-    public VkVideoProfileInfoKHR lumaBitDepth(@EnumType(VkVideoComponentBitDepthFlagsKHR.class) int value) {
+    public VkVideoProfileInfoKHR lumaBitDepth(@Bitmask(VkVideoComponentBitDepthFlagsKHR.class) int value) {
         segment.set(LAYOUT$lumaBitDepth, OFFSET$lumaBitDepth, value);
         return this;
     }
 
-    public @EnumType(VkVideoComponentBitDepthFlagsKHR.class) int chromaBitDepth() {
+    public @Bitmask(VkVideoComponentBitDepthFlagsKHR.class) int chromaBitDepth() {
         return segment.get(LAYOUT$chromaBitDepth, OFFSET$chromaBitDepth);
     }
 
-    public VkVideoProfileInfoKHR chromaBitDepth(@EnumType(VkVideoComponentBitDepthFlagsKHR.class) int value) {
+    public VkVideoProfileInfoKHR chromaBitDepth(@Bitmask(VkVideoComponentBitDepthFlagsKHR.class) int value) {
         segment.set(LAYOUT$chromaBitDepth, OFFSET$chromaBitDepth, value);
         return this;
     }

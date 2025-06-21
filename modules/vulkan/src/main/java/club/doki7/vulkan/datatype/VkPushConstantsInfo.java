@@ -230,11 +230,11 @@ public record VkPushConstantsInfo(@NotNull MemorySegment segment) implements IVk
         return this;
     }
 
-    public @EnumType(VkShaderStageFlags.class) int stageFlags() {
+    public @Bitmask(VkShaderStageFlags.class) int stageFlags() {
         return segment.get(LAYOUT$stageFlags, OFFSET$stageFlags);
     }
 
-    public VkPushConstantsInfo stageFlags(@EnumType(VkShaderStageFlags.class) int value) {
+    public VkPushConstantsInfo stageFlags(@Bitmask(VkShaderStageFlags.class) int value) {
         segment.set(LAYOUT$stageFlags, OFFSET$stageFlags, value);
         return this;
     }

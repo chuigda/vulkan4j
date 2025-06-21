@@ -259,7 +259,7 @@ public record VkSubmitInfo(@NotNull MemorySegment segment) implements IVkSubmitI
     /// {@link IntPtr#size} property. It's up to user to track the size of the buffer,
     /// and use {@link IntPtr#reinterpret} to set the size before actually reading fro
     /// or writing to the buffer.
-    public @Nullable @EnumType(VkPipelineStageFlags.class) IntPtr pWaitDstStageMask() {
+    public @Nullable @Bitmask(VkPipelineStageFlags.class) IntPtr pWaitDstStageMask() {
         MemorySegment s = pWaitDstStageMaskRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
@@ -267,7 +267,7 @@ public record VkSubmitInfo(@NotNull MemorySegment segment) implements IVkSubmitI
         return new IntPtr(s);
     }
 
-    public VkSubmitInfo pWaitDstStageMask(@Nullable @EnumType(VkPipelineStageFlags.class) IntPtr value) {
+    public VkSubmitInfo pWaitDstStageMask(@Nullable @Bitmask(VkPipelineStageFlags.class) IntPtr value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pWaitDstStageMaskRaw(s);
         return this;

@@ -213,11 +213,11 @@ public record VkVideoDecodeCapabilitiesKHR(@NotNull MemorySegment segment) imple
         return this;
     }
 
-    public @EnumType(VkVideoDecodeCapabilityFlagsKHR.class) int flags() {
+    public @Bitmask(VkVideoDecodeCapabilityFlagsKHR.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public VkVideoDecodeCapabilitiesKHR flags(@EnumType(VkVideoDecodeCapabilityFlagsKHR.class) int value) {
+    public VkVideoDecodeCapabilitiesKHR flags(@Bitmask(VkVideoDecodeCapabilityFlagsKHR.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
         return this;
     }

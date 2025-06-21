@@ -244,11 +244,11 @@ public record VmaAllocatorCreateInfo(@NotNull MemorySegment segment) implements 
         return ret;
     }
 
-    public @EnumType(VmaAllocatorCreateFlags.class) int flags() {
+    public @Bitmask(VmaAllocatorCreateFlags.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public VmaAllocatorCreateInfo flags(@EnumType(VmaAllocatorCreateFlags.class) int value) {
+    public VmaAllocatorCreateInfo flags(@Bitmask(VmaAllocatorCreateFlags.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
         return this;
     }
@@ -437,7 +437,7 @@ public record VmaAllocatorCreateInfo(@NotNull MemorySegment segment) implements 
     /// {@link IntPtr#size} property. It's up to user to track the size of the buffer,
     /// and use {@link IntPtr#reinterpret} to set the size before actually reading fro
     /// or writing to the buffer.
-    public @Nullable @EnumType(VkExternalMemoryHandleTypeFlags.class) IntPtr pTypeExternalMemoryHandleTypes() {
+    public @Nullable @Bitmask(VkExternalMemoryHandleTypeFlags.class) IntPtr pTypeExternalMemoryHandleTypes() {
         MemorySegment s = pTypeExternalMemoryHandleTypesRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
@@ -445,7 +445,7 @@ public record VmaAllocatorCreateInfo(@NotNull MemorySegment segment) implements 
         return new IntPtr(s);
     }
 
-    public VmaAllocatorCreateInfo pTypeExternalMemoryHandleTypes(@Nullable @EnumType(VkExternalMemoryHandleTypeFlags.class) IntPtr value) {
+    public VmaAllocatorCreateInfo pTypeExternalMemoryHandleTypes(@Nullable @Bitmask(VkExternalMemoryHandleTypeFlags.class) IntPtr value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pTypeExternalMemoryHandleTypesRaw(s);
         return this;

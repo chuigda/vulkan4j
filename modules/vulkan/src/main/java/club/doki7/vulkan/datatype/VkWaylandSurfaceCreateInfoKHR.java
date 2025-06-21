@@ -215,11 +215,11 @@ public record VkWaylandSurfaceCreateInfoKHR(@NotNull MemorySegment segment) impl
         return this;
     }
 
-    public @EnumType(VkWaylandSurfaceCreateFlagsKHR.class) int flags() {
+    public @Bitmask(VkWaylandSurfaceCreateFlagsKHR.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public VkWaylandSurfaceCreateInfoKHR flags(@EnumType(VkWaylandSurfaceCreateFlagsKHR.class) int value) {
+    public VkWaylandSurfaceCreateInfoKHR flags(@Bitmask(VkWaylandSurfaceCreateFlagsKHR.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
         return this;
     }

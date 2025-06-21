@@ -220,11 +220,11 @@ public record VkRenderingInfo(@NotNull MemorySegment segment) implements IVkRend
         return this;
     }
 
-    public @EnumType(VkRenderingFlags.class) int flags() {
+    public @Bitmask(VkRenderingFlags.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public VkRenderingInfo flags(@EnumType(VkRenderingFlags.class) int value) {
+    public VkRenderingInfo flags(@Bitmask(VkRenderingFlags.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
         return this;
     }

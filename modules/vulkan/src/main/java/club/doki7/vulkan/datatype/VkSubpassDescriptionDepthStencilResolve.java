@@ -215,20 +215,20 @@ public record VkSubpassDescriptionDepthStencilResolve(@NotNull MemorySegment seg
         return this;
     }
 
-    public @EnumType(VkResolveModeFlags.class) int depthResolveMode() {
+    public @Bitmask(VkResolveModeFlags.class) int depthResolveMode() {
         return segment.get(LAYOUT$depthResolveMode, OFFSET$depthResolveMode);
     }
 
-    public VkSubpassDescriptionDepthStencilResolve depthResolveMode(@EnumType(VkResolveModeFlags.class) int value) {
+    public VkSubpassDescriptionDepthStencilResolve depthResolveMode(@Bitmask(VkResolveModeFlags.class) int value) {
         segment.set(LAYOUT$depthResolveMode, OFFSET$depthResolveMode, value);
         return this;
     }
 
-    public @EnumType(VkResolveModeFlags.class) int stencilResolveMode() {
+    public @Bitmask(VkResolveModeFlags.class) int stencilResolveMode() {
         return segment.get(LAYOUT$stencilResolveMode, OFFSET$stencilResolveMode);
     }
 
-    public VkSubpassDescriptionDepthStencilResolve stencilResolveMode(@EnumType(VkResolveModeFlags.class) int value) {
+    public VkSubpassDescriptionDepthStencilResolve stencilResolveMode(@Bitmask(VkResolveModeFlags.class) int value) {
         segment.set(LAYOUT$stencilResolveMode, OFFSET$stencilResolveMode, value);
         return this;
     }

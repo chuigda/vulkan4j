@@ -217,11 +217,11 @@ public record VkPipelineLayoutCreateInfo(@NotNull MemorySegment segment) impleme
         return this;
     }
 
-    public @EnumType(VkPipelineLayoutCreateFlags.class) int flags() {
+    public @Bitmask(VkPipelineLayoutCreateFlags.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public VkPipelineLayoutCreateInfo flags(@EnumType(VkPipelineLayoutCreateFlags.class) int value) {
+    public VkPipelineLayoutCreateInfo flags(@Bitmask(VkPipelineLayoutCreateFlags.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
         return this;
     }

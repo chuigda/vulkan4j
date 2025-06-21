@@ -11,7 +11,7 @@ public final class VkMemoryHeapFlags {
     public static final int MULTI_INSTANCE = 0x2;
     public static final int TILE_MEMORY_QCOM = 0x8;
 
-    public static String explain(@EnumType(VkMemoryHeapFlags.class) int flags) {
+    public static String explain(@Bitmask(VkMemoryHeapFlags.class) int flags) {
         List<String> detectedFlagBits = new ArrayList<>();
         if ((flags & DEVICE_LOCAL) != 0) {
             detectedFlagBits.add("VK_MEMORY_HEAP_DEVICE_LOCAL_BIT");

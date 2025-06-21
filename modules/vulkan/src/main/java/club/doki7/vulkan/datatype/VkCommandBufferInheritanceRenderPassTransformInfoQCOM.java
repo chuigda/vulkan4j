@@ -214,11 +214,11 @@ public record VkCommandBufferInheritanceRenderPassTransformInfoQCOM(@NotNull Mem
         return this;
     }
 
-    public @EnumType(VkSurfaceTransformFlagsKHR.class) int transform() {
+    public @Bitmask(VkSurfaceTransformFlagsKHR.class) int transform() {
         return segment.get(LAYOUT$transform, OFFSET$transform);
     }
 
-    public VkCommandBufferInheritanceRenderPassTransformInfoQCOM transform(@EnumType(VkSurfaceTransformFlagsKHR.class) int value) {
+    public VkCommandBufferInheritanceRenderPassTransformInfoQCOM transform(@Bitmask(VkSurfaceTransformFlagsKHR.class) int value) {
         segment.set(LAYOUT$transform, OFFSET$transform, value);
         return this;
     }

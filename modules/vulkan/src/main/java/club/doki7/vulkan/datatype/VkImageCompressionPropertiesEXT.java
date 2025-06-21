@@ -214,20 +214,20 @@ public record VkImageCompressionPropertiesEXT(@NotNull MemorySegment segment) im
         return this;
     }
 
-    public @EnumType(VkImageCompressionFlagsEXT.class) int imageCompressionFlags() {
+    public @Bitmask(VkImageCompressionFlagsEXT.class) int imageCompressionFlags() {
         return segment.get(LAYOUT$imageCompressionFlags, OFFSET$imageCompressionFlags);
     }
 
-    public VkImageCompressionPropertiesEXT imageCompressionFlags(@EnumType(VkImageCompressionFlagsEXT.class) int value) {
+    public VkImageCompressionPropertiesEXT imageCompressionFlags(@Bitmask(VkImageCompressionFlagsEXT.class) int value) {
         segment.set(LAYOUT$imageCompressionFlags, OFFSET$imageCompressionFlags, value);
         return this;
     }
 
-    public @EnumType(VkImageCompressionFixedRateFlagsEXT.class) int imageCompressionFixedRateFlags() {
+    public @Bitmask(VkImageCompressionFixedRateFlagsEXT.class) int imageCompressionFixedRateFlags() {
         return segment.get(LAYOUT$imageCompressionFixedRateFlags, OFFSET$imageCompressionFixedRateFlags);
     }
 
-    public VkImageCompressionPropertiesEXT imageCompressionFixedRateFlags(@EnumType(VkImageCompressionFixedRateFlagsEXT.class) int value) {
+    public VkImageCompressionPropertiesEXT imageCompressionFixedRateFlags(@Bitmask(VkImageCompressionFixedRateFlagsEXT.class) int value) {
         segment.set(LAYOUT$imageCompressionFixedRateFlags, OFFSET$imageCompressionFixedRateFlags, value);
         return this;
     }

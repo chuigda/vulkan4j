@@ -213,11 +213,11 @@ public record VkExportSemaphoreCreateInfo(@NotNull MemorySegment segment) implem
         return this;
     }
 
-    public @EnumType(VkExternalSemaphoreHandleTypeFlags.class) int handleTypes() {
+    public @Bitmask(VkExternalSemaphoreHandleTypeFlags.class) int handleTypes() {
         return segment.get(LAYOUT$handleTypes, OFFSET$handleTypes);
     }
 
-    public VkExportSemaphoreCreateInfo handleTypes(@EnumType(VkExternalSemaphoreHandleTypeFlags.class) int value) {
+    public VkExportSemaphoreCreateInfo handleTypes(@Bitmask(VkExternalSemaphoreHandleTypeFlags.class) int value) {
         segment.set(LAYOUT$handleTypes, OFFSET$handleTypes, value);
         return this;
     }

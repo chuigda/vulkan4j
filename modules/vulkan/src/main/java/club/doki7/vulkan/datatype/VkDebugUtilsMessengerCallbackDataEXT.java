@@ -222,11 +222,11 @@ public record VkDebugUtilsMessengerCallbackDataEXT(@NotNull MemorySegment segmen
         return this;
     }
 
-    public @EnumType(VkDebugUtilsMessengerCallbackDataFlagsEXT.class) int flags() {
+    public @Bitmask(VkDebugUtilsMessengerCallbackDataFlagsEXT.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public VkDebugUtilsMessengerCallbackDataEXT flags(@EnumType(VkDebugUtilsMessengerCallbackDataFlagsEXT.class) int value) {
+    public VkDebugUtilsMessengerCallbackDataEXT flags(@Bitmask(VkDebugUtilsMessengerCallbackDataFlagsEXT.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
         return this;
     }

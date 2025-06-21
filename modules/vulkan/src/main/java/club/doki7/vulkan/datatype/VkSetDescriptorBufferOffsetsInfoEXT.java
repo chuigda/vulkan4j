@@ -218,11 +218,11 @@ public record VkSetDescriptorBufferOffsetsInfoEXT(@NotNull MemorySegment segment
         return this;
     }
 
-    public @EnumType(VkShaderStageFlags.class) int stageFlags() {
+    public @Bitmask(VkShaderStageFlags.class) int stageFlags() {
         return segment.get(LAYOUT$stageFlags, OFFSET$stageFlags);
     }
 
-    public VkSetDescriptorBufferOffsetsInfoEXT stageFlags(@EnumType(VkShaderStageFlags.class) int value) {
+    public VkSetDescriptorBufferOffsetsInfoEXT stageFlags(@Bitmask(VkShaderStageFlags.class) int value) {
         segment.set(LAYOUT$stageFlags, OFFSET$stageFlags, value);
         return this;
     }

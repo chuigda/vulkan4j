@@ -213,11 +213,11 @@ public record VkFenceCreateInfo(@NotNull MemorySegment segment) implements IVkFe
         return this;
     }
 
-    public @EnumType(VkFenceCreateFlags.class) int flags() {
+    public @Bitmask(VkFenceCreateFlags.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public VkFenceCreateInfo flags(@EnumType(VkFenceCreateFlags.class) int value) {
+    public VkFenceCreateInfo flags(@Bitmask(VkFenceCreateFlags.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
         return this;
     }

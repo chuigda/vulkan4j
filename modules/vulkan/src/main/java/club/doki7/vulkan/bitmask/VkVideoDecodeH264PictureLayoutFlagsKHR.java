@@ -11,7 +11,7 @@ public final class VkVideoDecodeH264PictureLayoutFlagsKHR {
     public static final int VK_VIDEO_DECODE_H264_PICTURE_LAYOUT_INTERLACED_SEPARATE_PLANES = 0x2;
     public static final int VK_VIDEO_DECODE_H264_PICTURE_LAYOUT_PROGRESSIVE = 0x0;
 
-    public static String explain(@EnumType(VkVideoDecodeH264PictureLayoutFlagsKHR.class) int flags) {
+    public static String explain(@Bitmask(VkVideoDecodeH264PictureLayoutFlagsKHR.class) int flags) {
         List<String> detectedFlagBits = new ArrayList<>();
         if ((flags & VK_VIDEO_DECODE_H264_PICTURE_LAYOUT_INTERLACED_INTERLEAVED_LINES) != 0) {
             detectedFlagBits.add("VK_VIDEO_DECODE_H264_PICTURE_LAYOUT_INTERLACED_INTERLEAVED_LINES_BIT_KHR");

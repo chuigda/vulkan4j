@@ -227,11 +227,11 @@ public record VkFenceGetFdInfoKHR(@NotNull MemorySegment segment) implements IVk
         return this;
     }
 
-    public @EnumType(VkExternalFenceHandleTypeFlags.class) int handleType() {
+    public @Bitmask(VkExternalFenceHandleTypeFlags.class) int handleType() {
         return segment.get(LAYOUT$handleType, OFFSET$handleType);
     }
 
-    public VkFenceGetFdInfoKHR handleType(@EnumType(VkExternalFenceHandleTypeFlags.class) int value) {
+    public VkFenceGetFdInfoKHR handleType(@Bitmask(VkExternalFenceHandleTypeFlags.class) int value) {
         segment.set(LAYOUT$handleType, OFFSET$handleType, value);
         return this;
     }

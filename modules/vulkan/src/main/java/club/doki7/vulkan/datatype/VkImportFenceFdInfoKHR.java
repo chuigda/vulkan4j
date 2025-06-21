@@ -229,20 +229,20 @@ public record VkImportFenceFdInfoKHR(@NotNull MemorySegment segment) implements 
         return this;
     }
 
-    public @EnumType(VkFenceImportFlags.class) int flags() {
+    public @Bitmask(VkFenceImportFlags.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public VkImportFenceFdInfoKHR flags(@EnumType(VkFenceImportFlags.class) int value) {
+    public VkImportFenceFdInfoKHR flags(@Bitmask(VkFenceImportFlags.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
         return this;
     }
 
-    public @EnumType(VkExternalFenceHandleTypeFlags.class) int handleType() {
+    public @Bitmask(VkExternalFenceHandleTypeFlags.class) int handleType() {
         return segment.get(LAYOUT$handleType, OFFSET$handleType);
     }
 
-    public VkImportFenceFdInfoKHR handleType(@EnumType(VkExternalFenceHandleTypeFlags.class) int value) {
+    public VkImportFenceFdInfoKHR handleType(@Bitmask(VkExternalFenceHandleTypeFlags.class) int value) {
         segment.set(LAYOUT$handleType, OFFSET$handleType, value);
         return this;
     }

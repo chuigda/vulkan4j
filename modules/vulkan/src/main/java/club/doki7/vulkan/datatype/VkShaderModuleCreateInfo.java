@@ -215,11 +215,11 @@ public record VkShaderModuleCreateInfo(@NotNull MemorySegment segment) implement
         return this;
     }
 
-    public @EnumType(VkShaderModuleCreateFlags.class) int flags() {
+    public @Bitmask(VkShaderModuleCreateFlags.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public VkShaderModuleCreateInfo flags(@EnumType(VkShaderModuleCreateFlags.class) int value) {
+    public VkShaderModuleCreateInfo flags(@Bitmask(VkShaderModuleCreateFlags.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
         return this;
     }

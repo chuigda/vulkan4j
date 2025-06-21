@@ -223,11 +223,11 @@ public record VkMultisampledRenderToSingleSampledInfoEXT(@NotNull MemorySegment 
         return this;
     }
 
-    public @EnumType(VkSampleCountFlags.class) int rasterizationSamples() {
+    public @Bitmask(VkSampleCountFlags.class) int rasterizationSamples() {
         return segment.get(LAYOUT$rasterizationSamples, OFFSET$rasterizationSamples);
     }
 
-    public VkMultisampledRenderToSingleSampledInfoEXT rasterizationSamples(@EnumType(VkSampleCountFlags.class) int value) {
+    public VkMultisampledRenderToSingleSampledInfoEXT rasterizationSamples(@Bitmask(VkSampleCountFlags.class) int value) {
         segment.set(LAYOUT$rasterizationSamples, OFFSET$rasterizationSamples, value);
         return this;
     }

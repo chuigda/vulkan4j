@@ -215,11 +215,11 @@ public record VkPipelineDynamicStateCreateInfo(@NotNull MemorySegment segment) i
         return this;
     }
 
-    public @EnumType(VkPipelineDynamicStateCreateFlags.class) int flags() {
+    public @Bitmask(VkPipelineDynamicStateCreateFlags.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public VkPipelineDynamicStateCreateInfo flags(@EnumType(VkPipelineDynamicStateCreateFlags.class) int value) {
+    public VkPipelineDynamicStateCreateInfo flags(@Bitmask(VkPipelineDynamicStateCreateFlags.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
         return this;
     }

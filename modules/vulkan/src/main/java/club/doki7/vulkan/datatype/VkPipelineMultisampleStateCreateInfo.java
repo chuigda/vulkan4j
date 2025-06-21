@@ -219,20 +219,20 @@ public record VkPipelineMultisampleStateCreateInfo(@NotNull MemorySegment segmen
         return this;
     }
 
-    public @EnumType(VkPipelineMultisampleStateCreateFlags.class) int flags() {
+    public @Bitmask(VkPipelineMultisampleStateCreateFlags.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public VkPipelineMultisampleStateCreateInfo flags(@EnumType(VkPipelineMultisampleStateCreateFlags.class) int value) {
+    public VkPipelineMultisampleStateCreateInfo flags(@Bitmask(VkPipelineMultisampleStateCreateFlags.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
         return this;
     }
 
-    public @EnumType(VkSampleCountFlags.class) int rasterizationSamples() {
+    public @Bitmask(VkSampleCountFlags.class) int rasterizationSamples() {
         return segment.get(LAYOUT$rasterizationSamples, OFFSET$rasterizationSamples);
     }
 
-    public VkPipelineMultisampleStateCreateInfo rasterizationSamples(@EnumType(VkSampleCountFlags.class) int value) {
+    public VkPipelineMultisampleStateCreateInfo rasterizationSamples(@Bitmask(VkSampleCountFlags.class) int value) {
         segment.set(LAYOUT$rasterizationSamples, OFFSET$rasterizationSamples, value);
         return this;
     }

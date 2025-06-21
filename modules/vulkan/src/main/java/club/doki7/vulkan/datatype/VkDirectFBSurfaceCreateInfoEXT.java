@@ -215,11 +215,11 @@ public record VkDirectFBSurfaceCreateInfoEXT(@NotNull MemorySegment segment) imp
         return this;
     }
 
-    public @EnumType(VkDirectFBSurfaceCreateFlagsEXT.class) int flags() {
+    public @Bitmask(VkDirectFBSurfaceCreateFlagsEXT.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public VkDirectFBSurfaceCreateInfoEXT flags(@EnumType(VkDirectFBSurfaceCreateFlagsEXT.class) int value) {
+    public VkDirectFBSurfaceCreateInfoEXT flags(@Bitmask(VkDirectFBSurfaceCreateFlagsEXT.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
         return this;
     }

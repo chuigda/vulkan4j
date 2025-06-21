@@ -213,11 +213,11 @@ public record VkVideoFormatH265QuantizationMapPropertiesKHR(@NotNull MemorySegme
         return this;
     }
 
-    public @EnumType(VkVideoEncodeH265CtbSizeFlagsKHR.class) int compatibleCtbSizes() {
+    public @Bitmask(VkVideoEncodeH265CtbSizeFlagsKHR.class) int compatibleCtbSizes() {
         return segment.get(LAYOUT$compatibleCtbSizes, OFFSET$compatibleCtbSizes);
     }
 
-    public VkVideoFormatH265QuantizationMapPropertiesKHR compatibleCtbSizes(@EnumType(VkVideoEncodeH265CtbSizeFlagsKHR.class) int value) {
+    public VkVideoFormatH265QuantizationMapPropertiesKHR compatibleCtbSizes(@Bitmask(VkVideoEncodeH265CtbSizeFlagsKHR.class) int value) {
         segment.set(LAYOUT$compatibleCtbSizes, OFFSET$compatibleCtbSizes, value);
         return this;
     }

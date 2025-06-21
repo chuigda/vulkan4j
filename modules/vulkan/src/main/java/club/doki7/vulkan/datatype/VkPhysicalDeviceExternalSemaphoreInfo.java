@@ -213,11 +213,11 @@ public record VkPhysicalDeviceExternalSemaphoreInfo(@NotNull MemorySegment segme
         return this;
     }
 
-    public @EnumType(VkExternalSemaphoreHandleTypeFlags.class) int handleType() {
+    public @Bitmask(VkExternalSemaphoreHandleTypeFlags.class) int handleType() {
         return segment.get(LAYOUT$handleType, OFFSET$handleType);
     }
 
-    public VkPhysicalDeviceExternalSemaphoreInfo handleType(@EnumType(VkExternalSemaphoreHandleTypeFlags.class) int value) {
+    public VkPhysicalDeviceExternalSemaphoreInfo handleType(@Bitmask(VkExternalSemaphoreHandleTypeFlags.class) int value) {
         segment.set(LAYOUT$handleType, OFFSET$handleType, value);
         return this;
     }

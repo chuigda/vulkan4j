@@ -221,11 +221,11 @@ public record VkVideoEncodeInfoKHR(@NotNull MemorySegment segment) implements IV
         return this;
     }
 
-    public @EnumType(VkVideoEncodeFlagsKHR.class) int flags() {
+    public @Bitmask(VkVideoEncodeFlagsKHR.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public VkVideoEncodeInfoKHR flags(@EnumType(VkVideoEncodeFlagsKHR.class) int value) {
+    public VkVideoEncodeInfoKHR flags(@Bitmask(VkVideoEncodeFlagsKHR.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
         return this;
     }

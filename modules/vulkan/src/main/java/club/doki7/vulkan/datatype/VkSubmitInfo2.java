@@ -219,11 +219,11 @@ public record VkSubmitInfo2(@NotNull MemorySegment segment) implements IVkSubmit
         return this;
     }
 
-    public @EnumType(VkSubmitFlags.class) int flags() {
+    public @Bitmask(VkSubmitFlags.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public VkSubmitInfo2 flags(@EnumType(VkSubmitFlags.class) int value) {
+    public VkSubmitInfo2 flags(@Bitmask(VkSubmitFlags.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
         return this;
     }

@@ -673,20 +673,20 @@ public record VkPhysicalDeviceVulkan12Properties(@NotNull MemorySegment segment)
         return this;
     }
 
-    public @EnumType(VkResolveModeFlags.class) int supportedDepthResolveModes() {
+    public @Bitmask(VkResolveModeFlags.class) int supportedDepthResolveModes() {
         return segment.get(LAYOUT$supportedDepthResolveModes, OFFSET$supportedDepthResolveModes);
     }
 
-    public VkPhysicalDeviceVulkan12Properties supportedDepthResolveModes(@EnumType(VkResolveModeFlags.class) int value) {
+    public VkPhysicalDeviceVulkan12Properties supportedDepthResolveModes(@Bitmask(VkResolveModeFlags.class) int value) {
         segment.set(LAYOUT$supportedDepthResolveModes, OFFSET$supportedDepthResolveModes, value);
         return this;
     }
 
-    public @EnumType(VkResolveModeFlags.class) int supportedStencilResolveModes() {
+    public @Bitmask(VkResolveModeFlags.class) int supportedStencilResolveModes() {
         return segment.get(LAYOUT$supportedStencilResolveModes, OFFSET$supportedStencilResolveModes);
     }
 
-    public VkPhysicalDeviceVulkan12Properties supportedStencilResolveModes(@EnumType(VkResolveModeFlags.class) int value) {
+    public VkPhysicalDeviceVulkan12Properties supportedStencilResolveModes(@Bitmask(VkResolveModeFlags.class) int value) {
         segment.set(LAYOUT$supportedStencilResolveModes, OFFSET$supportedStencilResolveModes, value);
         return this;
     }
@@ -736,11 +736,11 @@ public record VkPhysicalDeviceVulkan12Properties(@NotNull MemorySegment segment)
         return this;
     }
 
-    public @EnumType(VkSampleCountFlags.class) int framebufferIntegerColorSampleCounts() {
+    public @Bitmask(VkSampleCountFlags.class) int framebufferIntegerColorSampleCounts() {
         return segment.get(LAYOUT$framebufferIntegerColorSampleCounts, OFFSET$framebufferIntegerColorSampleCounts);
     }
 
-    public VkPhysicalDeviceVulkan12Properties framebufferIntegerColorSampleCounts(@EnumType(VkSampleCountFlags.class) int value) {
+    public VkPhysicalDeviceVulkan12Properties framebufferIntegerColorSampleCounts(@Bitmask(VkSampleCountFlags.class) int value) {
         segment.set(LAYOUT$framebufferIntegerColorSampleCounts, OFFSET$framebufferIntegerColorSampleCounts, value);
         return this;
     }

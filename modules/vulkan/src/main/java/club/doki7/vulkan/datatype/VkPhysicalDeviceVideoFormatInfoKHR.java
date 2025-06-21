@@ -213,11 +213,11 @@ public record VkPhysicalDeviceVideoFormatInfoKHR(@NotNull MemorySegment segment)
         return this;
     }
 
-    public @EnumType(VkImageUsageFlags.class) int imageUsage() {
+    public @Bitmask(VkImageUsageFlags.class) int imageUsage() {
         return segment.get(LAYOUT$imageUsage, OFFSET$imageUsage);
     }
 
-    public VkPhysicalDeviceVideoFormatInfoKHR imageUsage(@EnumType(VkImageUsageFlags.class) int value) {
+    public VkPhysicalDeviceVideoFormatInfoKHR imageUsage(@Bitmask(VkImageUsageFlags.class) int value) {
         segment.set(LAYOUT$imageUsage, OFFSET$imageUsage, value);
         return this;
     }

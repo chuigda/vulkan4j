@@ -213,11 +213,11 @@ public record VkPhysicalDeviceFragmentShadingRateEnumsPropertiesNV(@NotNull Memo
         return this;
     }
 
-    public @EnumType(VkSampleCountFlags.class) int maxFragmentShadingRateInvocationCount() {
+    public @Bitmask(VkSampleCountFlags.class) int maxFragmentShadingRateInvocationCount() {
         return segment.get(LAYOUT$maxFragmentShadingRateInvocationCount, OFFSET$maxFragmentShadingRateInvocationCount);
     }
 
-    public VkPhysicalDeviceFragmentShadingRateEnumsPropertiesNV maxFragmentShadingRateInvocationCount(@EnumType(VkSampleCountFlags.class) int value) {
+    public VkPhysicalDeviceFragmentShadingRateEnumsPropertiesNV maxFragmentShadingRateInvocationCount(@Bitmask(VkSampleCountFlags.class) int value) {
         segment.set(LAYOUT$maxFragmentShadingRateInvocationCount, OFFSET$maxFragmentShadingRateInvocationCount, value);
         return this;
     }

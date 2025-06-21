@@ -214,11 +214,11 @@ public record VkImportMetalTextureInfoEXT(@NotNull MemorySegment segment) implem
         return this;
     }
 
-    public @EnumType(VkImageAspectFlags.class) int plane() {
+    public @Bitmask(VkImageAspectFlags.class) int plane() {
         return segment.get(LAYOUT$plane, OFFSET$plane);
     }
 
-    public VkImportMetalTextureInfoEXT plane(@EnumType(VkImageAspectFlags.class) int value) {
+    public VkImportMetalTextureInfoEXT plane(@Bitmask(VkImageAspectFlags.class) int value) {
         segment.set(LAYOUT$plane, OFFSET$plane, value);
         return this;
     }

@@ -214,11 +214,11 @@ public record VkPhysicalDeviceShaderCoreProperties2AMD(@NotNull MemorySegment se
         return this;
     }
 
-    public @EnumType(VkShaderCorePropertiesFlagsAMD.class) int shaderCoreFeatures() {
+    public @Bitmask(VkShaderCorePropertiesFlagsAMD.class) int shaderCoreFeatures() {
         return segment.get(LAYOUT$shaderCoreFeatures, OFFSET$shaderCoreFeatures);
     }
 
-    public VkPhysicalDeviceShaderCoreProperties2AMD shaderCoreFeatures(@EnumType(VkShaderCorePropertiesFlagsAMD.class) int value) {
+    public VkPhysicalDeviceShaderCoreProperties2AMD shaderCoreFeatures(@Bitmask(VkShaderCorePropertiesFlagsAMD.class) int value) {
         segment.set(LAYOUT$shaderCoreFeatures, OFFSET$shaderCoreFeatures, value);
         return this;
     }

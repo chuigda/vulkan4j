@@ -224,29 +224,29 @@ public record VkShaderCreateInfoEXT(@NotNull MemorySegment segment) implements I
         return this;
     }
 
-    public @EnumType(VkShaderCreateFlagsEXT.class) int flags() {
+    public @Bitmask(VkShaderCreateFlagsEXT.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public VkShaderCreateInfoEXT flags(@EnumType(VkShaderCreateFlagsEXT.class) int value) {
+    public VkShaderCreateInfoEXT flags(@Bitmask(VkShaderCreateFlagsEXT.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
         return this;
     }
 
-    public @EnumType(VkShaderStageFlags.class) int stage() {
+    public @Bitmask(VkShaderStageFlags.class) int stage() {
         return segment.get(LAYOUT$stage, OFFSET$stage);
     }
 
-    public VkShaderCreateInfoEXT stage(@EnumType(VkShaderStageFlags.class) int value) {
+    public VkShaderCreateInfoEXT stage(@Bitmask(VkShaderStageFlags.class) int value) {
         segment.set(LAYOUT$stage, OFFSET$stage, value);
         return this;
     }
 
-    public @EnumType(VkShaderStageFlags.class) int nextStage() {
+    public @Bitmask(VkShaderStageFlags.class) int nextStage() {
         return segment.get(LAYOUT$nextStage, OFFSET$nextStage);
     }
 
-    public VkShaderCreateInfoEXT nextStage(@EnumType(VkShaderStageFlags.class) int value) {
+    public VkShaderCreateInfoEXT nextStage(@Bitmask(VkShaderStageFlags.class) int value) {
         segment.set(LAYOUT$nextStage, OFFSET$nextStage, value);
         return this;
     }

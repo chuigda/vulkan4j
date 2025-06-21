@@ -214,11 +214,11 @@ public record VkMetalSurfaceCreateInfoEXT(@NotNull MemorySegment segment) implem
         return this;
     }
 
-    public @EnumType(VkMetalSurfaceCreateFlagsEXT.class) int flags() {
+    public @Bitmask(VkMetalSurfaceCreateFlagsEXT.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public VkMetalSurfaceCreateInfoEXT flags(@EnumType(VkMetalSurfaceCreateFlagsEXT.class) int value) {
+    public VkMetalSurfaceCreateInfoEXT flags(@Bitmask(VkMetalSurfaceCreateFlagsEXT.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
         return this;
     }

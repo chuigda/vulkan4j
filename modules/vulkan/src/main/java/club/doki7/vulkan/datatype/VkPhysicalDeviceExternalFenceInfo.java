@@ -213,11 +213,11 @@ public record VkPhysicalDeviceExternalFenceInfo(@NotNull MemorySegment segment) 
         return this;
     }
 
-    public @EnumType(VkExternalFenceHandleTypeFlags.class) int handleType() {
+    public @Bitmask(VkExternalFenceHandleTypeFlags.class) int handleType() {
         return segment.get(LAYOUT$handleType, OFFSET$handleType);
     }
 
-    public VkPhysicalDeviceExternalFenceInfo handleType(@EnumType(VkExternalFenceHandleTypeFlags.class) int value) {
+    public VkPhysicalDeviceExternalFenceInfo handleType(@Bitmask(VkExternalFenceHandleTypeFlags.class) int value) {
         segment.set(LAYOUT$handleType, OFFSET$handleType, value);
         return this;
     }

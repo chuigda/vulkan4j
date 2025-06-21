@@ -214,11 +214,11 @@ public record VkStreamDescriptorSurfaceCreateInfoGGP(@NotNull MemorySegment segm
         return this;
     }
 
-    public @EnumType(VkStreamDescriptorSurfaceCreateFlagsGGP.class) int flags() {
+    public @Bitmask(VkStreamDescriptorSurfaceCreateFlagsGGP.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public VkStreamDescriptorSurfaceCreateInfoGGP flags(@EnumType(VkStreamDescriptorSurfaceCreateFlagsGGP.class) int value) {
+    public VkStreamDescriptorSurfaceCreateInfoGGP flags(@Bitmask(VkStreamDescriptorSurfaceCreateFlagsGGP.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
         return this;
     }

@@ -233,11 +233,11 @@ public record VkAttachmentReference2(@NotNull MemorySegment segment) implements 
         return this;
     }
 
-    public @EnumType(VkImageAspectFlags.class) int aspectMask() {
+    public @Bitmask(VkImageAspectFlags.class) int aspectMask() {
         return segment.get(LAYOUT$aspectMask, OFFSET$aspectMask);
     }
 
-    public VkAttachmentReference2 aspectMask(@EnumType(VkImageAspectFlags.class) int value) {
+    public VkAttachmentReference2 aspectMask(@Bitmask(VkImageAspectFlags.class) int value) {
         segment.set(LAYOUT$aspectMask, OFFSET$aspectMask, value);
         return this;
     }

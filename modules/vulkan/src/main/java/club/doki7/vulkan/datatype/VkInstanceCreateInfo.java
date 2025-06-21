@@ -218,11 +218,11 @@ public record VkInstanceCreateInfo(@NotNull MemorySegment segment) implements IV
         return this;
     }
 
-    public @EnumType(VkInstanceCreateFlags.class) int flags() {
+    public @Bitmask(VkInstanceCreateFlags.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public VkInstanceCreateInfo flags(@EnumType(VkInstanceCreateFlags.class) int value) {
+    public VkInstanceCreateInfo flags(@Bitmask(VkInstanceCreateFlags.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
         return this;
     }

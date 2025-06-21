@@ -213,11 +213,11 @@ public record VkQueueFamilyVideoPropertiesKHR(@NotNull MemorySegment segment) im
         return this;
     }
 
-    public @EnumType(VkVideoCodecOperationFlagsKHR.class) int videoCodecOperations() {
+    public @Bitmask(VkVideoCodecOperationFlagsKHR.class) int videoCodecOperations() {
         return segment.get(LAYOUT$videoCodecOperations, OFFSET$videoCodecOperations);
     }
 
-    public VkQueueFamilyVideoPropertiesKHR videoCodecOperations(@EnumType(VkVideoCodecOperationFlagsKHR.class) int value) {
+    public VkQueueFamilyVideoPropertiesKHR videoCodecOperations(@Bitmask(VkVideoCodecOperationFlagsKHR.class) int value) {
         segment.set(LAYOUT$videoCodecOperations, OFFSET$videoCodecOperations, value);
         return this;
     }

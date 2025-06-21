@@ -229,11 +229,11 @@ public record VkGraphicsPipelineCreateInfo(@NotNull MemorySegment segment) imple
         return this;
     }
 
-    public @EnumType(VkPipelineCreateFlags.class) int flags() {
+    public @Bitmask(VkPipelineCreateFlags.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public VkGraphicsPipelineCreateInfo flags(@EnumType(VkPipelineCreateFlags.class) int value) {
+    public VkGraphicsPipelineCreateInfo flags(@Bitmask(VkPipelineCreateFlags.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
         return this;
     }

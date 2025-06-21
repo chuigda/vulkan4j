@@ -13,7 +13,7 @@ public final class VkRenderingFlags {
     public static final int RESUMING = 0x4;
     public static final int SUSPENDING = 0x2;
 
-    public static String explain(@EnumType(VkRenderingFlags.class) int flags) {
+    public static String explain(@Bitmask(VkRenderingFlags.class) int flags) {
         List<String> detectedFlagBits = new ArrayList<>();
         if ((flags & CONTENTS_INLINE_KHR) != 0) {
             detectedFlagBits.add("VK_RENDERING_CONTENTS_INLINE_BIT_KHR");

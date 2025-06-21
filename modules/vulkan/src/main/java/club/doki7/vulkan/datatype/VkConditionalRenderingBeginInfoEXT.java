@@ -237,11 +237,11 @@ public record VkConditionalRenderingBeginInfoEXT(@NotNull MemorySegment segment)
         return this;
     }
 
-    public @EnumType(VkConditionalRenderingFlagsEXT.class) int flags() {
+    public @Bitmask(VkConditionalRenderingFlagsEXT.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public VkConditionalRenderingBeginInfoEXT flags(@EnumType(VkConditionalRenderingFlagsEXT.class) int value) {
+    public VkConditionalRenderingBeginInfoEXT flags(@Bitmask(VkConditionalRenderingFlagsEXT.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
         return this;
     }

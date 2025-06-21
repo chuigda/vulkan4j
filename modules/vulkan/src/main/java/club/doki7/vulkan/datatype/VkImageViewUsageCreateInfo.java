@@ -213,11 +213,11 @@ public record VkImageViewUsageCreateInfo(@NotNull MemorySegment segment) impleme
         return this;
     }
 
-    public @EnumType(VkImageUsageFlags.class) int usage() {
+    public @Bitmask(VkImageUsageFlags.class) int usage() {
         return segment.get(LAYOUT$usage, OFFSET$usage);
     }
 
-    public VkImageViewUsageCreateInfo usage(@EnumType(VkImageUsageFlags.class) int value) {
+    public VkImageViewUsageCreateInfo usage(@Bitmask(VkImageUsageFlags.class) int value) {
         segment.set(LAYOUT$usage, OFFSET$usage, value);
         return this;
     }

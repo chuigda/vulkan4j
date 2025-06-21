@@ -214,11 +214,11 @@ public record VkRenderPassTileShadingCreateInfoQCOM(@NotNull MemorySegment segme
         return this;
     }
 
-    public @EnumType(VkTileShadingRenderPassFlagsQCOM.class) int flags() {
+    public @Bitmask(VkTileShadingRenderPassFlagsQCOM.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public VkRenderPassTileShadingCreateInfoQCOM flags(@EnumType(VkTileShadingRenderPassFlagsQCOM.class) int value) {
+    public VkRenderPassTileShadingCreateInfoQCOM flags(@Bitmask(VkTileShadingRenderPassFlagsQCOM.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
         return this;
     }

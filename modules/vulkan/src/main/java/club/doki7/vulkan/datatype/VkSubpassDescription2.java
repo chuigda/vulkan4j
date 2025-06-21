@@ -223,11 +223,11 @@ public record VkSubpassDescription2(@NotNull MemorySegment segment) implements I
         return this;
     }
 
-    public @EnumType(VkSubpassDescriptionFlags.class) int flags() {
+    public @Bitmask(VkSubpassDescriptionFlags.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public VkSubpassDescription2 flags(@EnumType(VkSubpassDescriptionFlags.class) int value) {
+    public VkSubpassDescription2 flags(@Bitmask(VkSubpassDescriptionFlags.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
         return this;
     }

@@ -222,11 +222,11 @@ public record VkPipelineDepthStencilStateCreateInfo(@NotNull MemorySegment segme
         return this;
     }
 
-    public @EnumType(VkPipelineDepthStencilStateCreateFlags.class) int flags() {
+    public @Bitmask(VkPipelineDepthStencilStateCreateFlags.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public VkPipelineDepthStencilStateCreateInfo flags(@EnumType(VkPipelineDepthStencilStateCreateFlags.class) int value) {
+    public VkPipelineDepthStencilStateCreateInfo flags(@Bitmask(VkPipelineDepthStencilStateCreateFlags.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
         return this;
     }

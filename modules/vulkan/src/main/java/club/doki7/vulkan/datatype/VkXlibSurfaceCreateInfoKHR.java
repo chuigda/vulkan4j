@@ -215,11 +215,11 @@ public record VkXlibSurfaceCreateInfoKHR(@NotNull MemorySegment segment) impleme
         return this;
     }
 
-    public @EnumType(VkXlibSurfaceCreateFlagsKHR.class) int flags() {
+    public @Bitmask(VkXlibSurfaceCreateFlagsKHR.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public VkXlibSurfaceCreateInfoKHR flags(@EnumType(VkXlibSurfaceCreateFlagsKHR.class) int value) {
+    public VkXlibSurfaceCreateInfoKHR flags(@Bitmask(VkXlibSurfaceCreateFlagsKHR.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
         return this;
     }

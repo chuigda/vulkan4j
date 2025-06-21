@@ -11,7 +11,7 @@ public final class VkPipelineCreationFeedbackFlags {
     public static final int BASE_PIPELINE_ACCELERATION = 0x4;
     public static final int VALID = 0x1;
 
-    public static String explain(@EnumType(VkPipelineCreationFeedbackFlags.class) int flags) {
+    public static String explain(@Bitmask(VkPipelineCreationFeedbackFlags.class) int flags) {
         List<String> detectedFlagBits = new ArrayList<>();
         if ((flags & APPLICATION_PIPELINE_CACHE_HIT) != 0) {
             detectedFlagBits.add("VK_PIPELINE_CREATION_FEEDBACK_APPLICATION_PIPELINE_CACHE_HIT_BIT");

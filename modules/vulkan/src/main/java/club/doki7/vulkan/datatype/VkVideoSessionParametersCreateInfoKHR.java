@@ -215,11 +215,11 @@ public record VkVideoSessionParametersCreateInfoKHR(@NotNull MemorySegment segme
         return this;
     }
 
-    public @EnumType(VkVideoSessionParametersCreateFlagsKHR.class) int flags() {
+    public @Bitmask(VkVideoSessionParametersCreateFlagsKHR.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public VkVideoSessionParametersCreateInfoKHR flags(@EnumType(VkVideoSessionParametersCreateFlagsKHR.class) int value) {
+    public VkVideoSessionParametersCreateInfoKHR flags(@Bitmask(VkVideoSessionParametersCreateFlagsKHR.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
         return this;
     }

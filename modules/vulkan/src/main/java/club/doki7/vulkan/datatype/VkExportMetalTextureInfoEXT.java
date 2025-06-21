@@ -256,11 +256,11 @@ public record VkExportMetalTextureInfoEXT(@NotNull MemorySegment segment) implem
         return this;
     }
 
-    public @EnumType(VkImageAspectFlags.class) int plane() {
+    public @Bitmask(VkImageAspectFlags.class) int plane() {
         return segment.get(LAYOUT$plane, OFFSET$plane);
     }
 
-    public VkExportMetalTextureInfoEXT plane(@EnumType(VkImageAspectFlags.class) int value) {
+    public VkExportMetalTextureInfoEXT plane(@Bitmask(VkImageAspectFlags.class) int value) {
         segment.set(LAYOUT$plane, OFFSET$plane, value);
         return this;
     }

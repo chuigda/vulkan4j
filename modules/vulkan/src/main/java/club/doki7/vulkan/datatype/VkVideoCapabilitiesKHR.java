@@ -221,11 +221,11 @@ public record VkVideoCapabilitiesKHR(@NotNull MemorySegment segment) implements 
         return this;
     }
 
-    public @EnumType(VkVideoCapabilityFlagsKHR.class) int flags() {
+    public @Bitmask(VkVideoCapabilityFlagsKHR.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public VkVideoCapabilitiesKHR flags(@EnumType(VkVideoCapabilityFlagsKHR.class) int value) {
+    public VkVideoCapabilitiesKHR flags(@Bitmask(VkVideoCapabilityFlagsKHR.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
         return this;
     }

@@ -303,11 +303,11 @@ public record VkClusterAccelerationStructureCommandsInfoNV(@NotNull MemorySegmen
         return this;
     }
 
-    public @EnumType(VkClusterAccelerationStructureAddressResolutionFlagsNV.class) int addressResolutionFlags() {
+    public @Bitmask(VkClusterAccelerationStructureAddressResolutionFlagsNV.class) int addressResolutionFlags() {
         return segment.get(LAYOUT$addressResolutionFlags, OFFSET$addressResolutionFlags);
     }
 
-    public VkClusterAccelerationStructureCommandsInfoNV addressResolutionFlags(@EnumType(VkClusterAccelerationStructureAddressResolutionFlagsNV.class) int value) {
+    public VkClusterAccelerationStructureCommandsInfoNV addressResolutionFlags(@Bitmask(VkClusterAccelerationStructureAddressResolutionFlagsNV.class) int value) {
         segment.set(LAYOUT$addressResolutionFlags, OFFSET$addressResolutionFlags, value);
         return this;
     }

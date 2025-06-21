@@ -225,20 +225,20 @@ public record VkPhysicalDeviceSubgroupProperties(@NotNull MemorySegment segment)
         return this;
     }
 
-    public @EnumType(VkShaderStageFlags.class) int supportedStages() {
+    public @Bitmask(VkShaderStageFlags.class) int supportedStages() {
         return segment.get(LAYOUT$supportedStages, OFFSET$supportedStages);
     }
 
-    public VkPhysicalDeviceSubgroupProperties supportedStages(@EnumType(VkShaderStageFlags.class) int value) {
+    public VkPhysicalDeviceSubgroupProperties supportedStages(@Bitmask(VkShaderStageFlags.class) int value) {
         segment.set(LAYOUT$supportedStages, OFFSET$supportedStages, value);
         return this;
     }
 
-    public @EnumType(VkSubgroupFeatureFlags.class) int supportedOperations() {
+    public @Bitmask(VkSubgroupFeatureFlags.class) int supportedOperations() {
         return segment.get(LAYOUT$supportedOperations, OFFSET$supportedOperations);
     }
 
-    public VkPhysicalDeviceSubgroupProperties supportedOperations(@EnumType(VkSubgroupFeatureFlags.class) int value) {
+    public VkPhysicalDeviceSubgroupProperties supportedOperations(@Bitmask(VkSubgroupFeatureFlags.class) int value) {
         segment.set(LAYOUT$supportedOperations, OFFSET$supportedOperations, value);
         return this;
     }

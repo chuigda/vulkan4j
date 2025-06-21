@@ -242,11 +242,11 @@ public record VkRenderingAttachmentInfo(@NotNull MemorySegment segment) implemen
         return this;
     }
 
-    public @EnumType(VkResolveModeFlags.class) int resolveMode() {
+    public @Bitmask(VkResolveModeFlags.class) int resolveMode() {
         return segment.get(LAYOUT$resolveMode, OFFSET$resolveMode);
     }
 
-    public VkRenderingAttachmentInfo resolveMode(@EnumType(VkResolveModeFlags.class) int value) {
+    public VkRenderingAttachmentInfo resolveMode(@Bitmask(VkResolveModeFlags.class) int value) {
         segment.set(LAYOUT$resolveMode, OFFSET$resolveMode, value);
         return this;
     }

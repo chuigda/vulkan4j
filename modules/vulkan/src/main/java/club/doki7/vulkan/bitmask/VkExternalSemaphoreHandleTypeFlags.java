@@ -15,7 +15,7 @@ public final class VkExternalSemaphoreHandleTypeFlags {
     public static final int SYNC_FD = 0x10;
     public static final int ZIRCON_EVENT_FUCHSIA = 0x80;
 
-    public static String explain(@EnumType(VkExternalSemaphoreHandleTypeFlags.class) int flags) {
+    public static String explain(@Bitmask(VkExternalSemaphoreHandleTypeFlags.class) int flags) {
         List<String> detectedFlagBits = new ArrayList<>();
         if ((flags & D3D12_FENCE) != 0) {
             detectedFlagBits.add("VK_EXTERNAL_SEMAPHORE_HANDLE_TYPE_D3D12_FENCE_BIT");

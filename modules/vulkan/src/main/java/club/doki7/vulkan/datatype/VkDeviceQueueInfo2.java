@@ -215,11 +215,11 @@ public record VkDeviceQueueInfo2(@NotNull MemorySegment segment) implements IVkD
         return this;
     }
 
-    public @EnumType(VkDeviceQueueCreateFlags.class) int flags() {
+    public @Bitmask(VkDeviceQueueCreateFlags.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public VkDeviceQueueInfo2 flags(@EnumType(VkDeviceQueueCreateFlags.class) int value) {
+    public VkDeviceQueueInfo2 flags(@Bitmask(VkDeviceQueueCreateFlags.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
         return this;
     }

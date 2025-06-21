@@ -214,20 +214,20 @@ public record VkMemoryBarrier(@NotNull MemorySegment segment) implements IVkMemo
         return this;
     }
 
-    public @EnumType(VkAccessFlags.class) int srcAccessMask() {
+    public @Bitmask(VkAccessFlags.class) int srcAccessMask() {
         return segment.get(LAYOUT$srcAccessMask, OFFSET$srcAccessMask);
     }
 
-    public VkMemoryBarrier srcAccessMask(@EnumType(VkAccessFlags.class) int value) {
+    public VkMemoryBarrier srcAccessMask(@Bitmask(VkAccessFlags.class) int value) {
         segment.set(LAYOUT$srcAccessMask, OFFSET$srcAccessMask, value);
         return this;
     }
 
-    public @EnumType(VkAccessFlags.class) int dstAccessMask() {
+    public @Bitmask(VkAccessFlags.class) int dstAccessMask() {
         return segment.get(LAYOUT$dstAccessMask, OFFSET$dstAccessMask);
     }
 
-    public VkMemoryBarrier dstAccessMask(@EnumType(VkAccessFlags.class) int value) {
+    public VkMemoryBarrier dstAccessMask(@Bitmask(VkAccessFlags.class) int value) {
         segment.set(LAYOUT$dstAccessMask, OFFSET$dstAccessMask, value);
         return this;
     }

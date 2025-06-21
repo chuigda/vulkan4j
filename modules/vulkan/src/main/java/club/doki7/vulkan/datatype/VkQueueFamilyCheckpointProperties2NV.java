@@ -213,11 +213,11 @@ public record VkQueueFamilyCheckpointProperties2NV(@NotNull MemorySegment segmen
         return this;
     }
 
-    public @EnumType(VkPipelineStageFlags2.class) long checkpointExecutionStageMask() {
+    public @Bitmask(VkPipelineStageFlags2.class) long checkpointExecutionStageMask() {
         return segment.get(LAYOUT$checkpointExecutionStageMask, OFFSET$checkpointExecutionStageMask);
     }
 
-    public VkQueueFamilyCheckpointProperties2NV checkpointExecutionStageMask(@EnumType(VkPipelineStageFlags2.class) long value) {
+    public VkQueueFamilyCheckpointProperties2NV checkpointExecutionStageMask(@Bitmask(VkPipelineStageFlags2.class) long value) {
         segment.set(LAYOUT$checkpointExecutionStageMask, OFFSET$checkpointExecutionStageMask, value);
         return this;
     }

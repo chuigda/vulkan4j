@@ -218,11 +218,11 @@ public record VkIndirectCommandsLayoutCreateInfoNV(@NotNull MemorySegment segmen
         return this;
     }
 
-    public @EnumType(VkIndirectCommandsLayoutUsageFlagsNV.class) int flags() {
+    public @Bitmask(VkIndirectCommandsLayoutUsageFlagsNV.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public VkIndirectCommandsLayoutCreateInfoNV flags(@EnumType(VkIndirectCommandsLayoutUsageFlagsNV.class) int value) {
+    public VkIndirectCommandsLayoutCreateInfoNV flags(@Bitmask(VkIndirectCommandsLayoutUsageFlagsNV.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
         return this;
     }

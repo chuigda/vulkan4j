@@ -214,11 +214,11 @@ public record VkImportMemoryHostPointerInfoEXT(@NotNull MemorySegment segment) i
         return this;
     }
 
-    public @EnumType(VkExternalMemoryHandleTypeFlags.class) int handleType() {
+    public @Bitmask(VkExternalMemoryHandleTypeFlags.class) int handleType() {
         return segment.get(LAYOUT$handleType, OFFSET$handleType);
     }
 
-    public VkImportMemoryHostPointerInfoEXT handleType(@EnumType(VkExternalMemoryHandleTypeFlags.class) int value) {
+    public VkImportMemoryHostPointerInfoEXT handleType(@Bitmask(VkExternalMemoryHandleTypeFlags.class) int value) {
         segment.set(LAYOUT$handleType, OFFSET$handleType, value);
         return this;
     }

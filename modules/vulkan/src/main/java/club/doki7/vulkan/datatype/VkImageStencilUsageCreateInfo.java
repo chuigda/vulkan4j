@@ -213,11 +213,11 @@ public record VkImageStencilUsageCreateInfo(@NotNull MemorySegment segment) impl
         return this;
     }
 
-    public @EnumType(VkImageUsageFlags.class) int stencilUsage() {
+    public @Bitmask(VkImageUsageFlags.class) int stencilUsage() {
         return segment.get(LAYOUT$stencilUsage, OFFSET$stencilUsage);
     }
 
-    public VkImageStencilUsageCreateInfo stencilUsage(@EnumType(VkImageUsageFlags.class) int value) {
+    public VkImageStencilUsageCreateInfo stencilUsage(@Bitmask(VkImageUsageFlags.class) int value) {
         segment.set(LAYOUT$stencilUsage, OFFSET$stencilUsage, value);
         return this;
     }

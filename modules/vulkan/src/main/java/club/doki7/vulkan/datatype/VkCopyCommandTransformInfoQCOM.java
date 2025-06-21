@@ -213,11 +213,11 @@ public record VkCopyCommandTransformInfoQCOM(@NotNull MemorySegment segment) imp
         return this;
     }
 
-    public @EnumType(VkSurfaceTransformFlagsKHR.class) int transform() {
+    public @Bitmask(VkSurfaceTransformFlagsKHR.class) int transform() {
         return segment.get(LAYOUT$transform, OFFSET$transform);
     }
 
-    public VkCopyCommandTransformInfoQCOM transform(@EnumType(VkSurfaceTransformFlagsKHR.class) int value) {
+    public VkCopyCommandTransformInfoQCOM transform(@Bitmask(VkSurfaceTransformFlagsKHR.class) int value) {
         segment.set(LAYOUT$transform, OFFSET$transform, value);
         return this;
     }

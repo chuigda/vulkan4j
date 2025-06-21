@@ -213,11 +213,11 @@ public record VkSwapchainCounterCreateInfoEXT(@NotNull MemorySegment segment) im
         return this;
     }
 
-    public @EnumType(VkSurfaceCounterFlagsEXT.class) int surfaceCounters() {
+    public @Bitmask(VkSurfaceCounterFlagsEXT.class) int surfaceCounters() {
         return segment.get(LAYOUT$surfaceCounters, OFFSET$surfaceCounters);
     }
 
-    public VkSwapchainCounterCreateInfoEXT surfaceCounters(@EnumType(VkSurfaceCounterFlagsEXT.class) int value) {
+    public VkSwapchainCounterCreateInfoEXT surfaceCounters(@Bitmask(VkSurfaceCounterFlagsEXT.class) int value) {
         segment.set(LAYOUT$surfaceCounters, OFFSET$surfaceCounters, value);
         return this;
     }

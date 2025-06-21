@@ -218,11 +218,11 @@ public record VkAccelerationStructureCreateInfoKHR(@NotNull MemorySegment segmen
         return this;
     }
 
-    public @EnumType(VkAccelerationStructureCreateFlagsKHR.class) int createFlags() {
+    public @Bitmask(VkAccelerationStructureCreateFlagsKHR.class) int createFlags() {
         return segment.get(LAYOUT$createFlags, OFFSET$createFlags);
     }
 
-    public VkAccelerationStructureCreateInfoKHR createFlags(@EnumType(VkAccelerationStructureCreateFlagsKHR.class) int value) {
+    public VkAccelerationStructureCreateInfoKHR createFlags(@Bitmask(VkAccelerationStructureCreateFlagsKHR.class) int value) {
         segment.set(LAYOUT$createFlags, OFFSET$createFlags, value);
         return this;
     }

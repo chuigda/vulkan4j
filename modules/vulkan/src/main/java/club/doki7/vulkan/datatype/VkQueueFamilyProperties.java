@@ -172,11 +172,11 @@ public record VkQueueFamilyProperties(@NotNull MemorySegment segment) implements
         return ret;
     }
 
-    public @EnumType(VkQueueFlags.class) int queueFlags() {
+    public @Bitmask(VkQueueFlags.class) int queueFlags() {
         return segment.get(LAYOUT$queueFlags, OFFSET$queueFlags);
     }
 
-    public VkQueueFamilyProperties queueFlags(@EnumType(VkQueueFlags.class) int value) {
+    public VkQueueFamilyProperties queueFlags(@Bitmask(VkQueueFlags.class) int value) {
         segment.set(LAYOUT$queueFlags, OFFSET$queueFlags, value);
         return this;
     }

@@ -263,7 +263,7 @@ public final class VMA {
     public void getMemoryTypeProperties(
         VmaAllocator allocator,
         @Unsigned int memoryTypeIndex,
-        @EnumType(VkMemoryPropertyFlags.class) IntPtr pFlags
+        @Bitmask(VkMemoryPropertyFlags.class) IntPtr pFlags
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vmaGetMemoryTypeProperties);
         try {
@@ -884,7 +884,7 @@ public final class VMA {
     public void getAllocationMemoryProperties(
         VmaAllocator allocator,
         VmaAllocation allocation,
-        @EnumType(VkMemoryPropertyFlags.class) IntPtr pFlags
+        @Bitmask(VkMemoryPropertyFlags.class) IntPtr pFlags
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vmaGetAllocationMemoryProperties);
         try {
