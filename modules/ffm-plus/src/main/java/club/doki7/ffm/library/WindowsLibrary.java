@@ -16,7 +16,7 @@ public final class WindowsLibrary implements ISharedLibrary {
     public @NotNull MemorySegment apply(@NotNull String name) {
         try (Arena arena = Arena.ofConfined()){
             MethodHandle h = Objects.requireNonNull(hGetProcAddress);
-            return (MemorySegment) h.invokeExact(arena.allocateFrom(name));
+            return (MemorySegment) h.invokeExact(this.hModule, arena.allocateFrom(name));
         } catch (Throwable e) {
             throw new UnsatisfiedLinkError(e.getMessage());
         }
@@ -50,7 +50,7 @@ public final class WindowsLibrary implements ISharedLibrary {
     private static final @Nullable MethodHandle hGetProcAddress;
     private static final @Nullable MethodHandle hFreeLibrary;
     static {
-        MemorySegment pfnGetProcAddress = JavaSystemLibrary.INSTANCE.load("GetProcSAddress");
+        MemorySegment pfnGetProcAddress = JavaSystemLibrary.INSTANCE.load("GetProcAddress");
         MemorySegment pfnFreeLibrary = JavaSystemLibrary.INSTANCE.load("FreeLibrary");
         if (pfnGetProcAddress.equals(MemorySegment.NULL)
             || pfnFreeLibrary.equals(MemorySegment.NULL)) {

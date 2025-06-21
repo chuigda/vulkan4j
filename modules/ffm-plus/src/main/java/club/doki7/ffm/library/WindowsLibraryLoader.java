@@ -49,11 +49,21 @@ public final class WindowsLibraryLoader implements ILibraryLoader {
     );
     private static final @Nullable MethodHandle hLoadLibraryW;
     static {
-        MemorySegment pfnLoadLibraryW = JavaSystemLibrary.INSTANCE.load("LoadLibraryW");
-        if (pfnLoadLibraryW.equals(MemorySegment.NULL)) {
-            hLoadLibraryW = null;
+        if (System.getProperty("os.name").toLowerCase().contains("windows")) {
+            try {
+                System.loadLibrary("kernel32");
+            } catch (Throwable e) {
+                throw new RuntimeException(e);
+            }
+
+            MemorySegment pfnLoadLibraryW = JavaSystemLibrary.INSTANCE.load("LoadLibraryW");
+            if (pfnLoadLibraryW.equals(MemorySegment.NULL)) {
+                hLoadLibraryW = null;
+            } else {
+                hLoadLibraryW = RawFunctionLoader.link(pfnLoadLibraryW, DESCRIPTOR$LoadLibraryW);
+            }
         } else {
-            hLoadLibraryW = RawFunctionLoader.link(pfnLoadLibraryW, DESCRIPTOR$LoadLibraryW);
+            hLoadLibraryW = null;
         }
     }
 }
