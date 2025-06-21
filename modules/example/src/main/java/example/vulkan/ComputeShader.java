@@ -1,10 +1,11 @@
 package example.vulkan;
 
-import club.doki7.ffm.Loader;
 import club.doki7.ffm.annotation.EnumType;
 import club.doki7.ffm.annotation.NativeType;
 import club.doki7.ffm.annotation.Pointer;
 import club.doki7.ffm.annotation.Unsigned;
+import club.doki7.ffm.library.ILibraryLoader;
+import club.doki7.ffm.library.ISharedLibrary;
 import club.doki7.ffm.ptr.BytePtr;
 import club.doki7.ffm.ptr.FloatPtr;
 import club.doki7.ffm.ptr.IntPtr;
@@ -42,7 +43,7 @@ import java.nio.file.Path;
 import java.util.Objects;
 
 final class Application {
-    static void applicationStart(VkStaticCommands sCmd, VkEntryCommands eCmd, Arena arena) {
+    static void applicationStart(ISharedLibrary libVMA, VkStaticCommands sCmd, VkEntryCommands eCmd, Arena arena) {
         // region 1. instance creation
         VkApplicationInfo applicationInfo = VkApplicationInfo.allocate(arena)
                 .pApplicationName(BytePtr.allocateString(arena, "Compute Shader Example"))
@@ -226,9 +227,8 @@ final class Application {
         // endregion
 
         // region 9. Load VMA
-        System.loadLibrary("vma");
-        VMAJavaTraceUtil.enableJavaTraceForVMA();
-        VMA vma = new VMA(Loader::loadFunctionOrNull);
+        VMAJavaTraceUtil.enableJavaTraceForVMA(libVMA);
+        VMA vma = new VMA(libVMA);
 
         VmaVulkanFunctions vmaVulkanFunctions = VmaVulkanFunctions.allocate(arena);
         VMAUtil.fillVulkanFunctions(vmaVulkanFunctions, sCmd, eCmd, iCmd, dCmd);
@@ -500,12 +500,14 @@ final class Application {
 
 public final class ComputeShader {
     public static void main(String[] args) {
-        VulkanLoader.loadVulkanLibrary();
-        VkStaticCommands sCmd = VulkanLoader.loadStaticCommands();
-        VkEntryCommands eCmd = VulkanLoader.loadEntryCommands(sCmd);
-
-        try (Arena arena = Arena.ofConfined()) {
-            Application.applicationStart(sCmd, eCmd, arena);
+        try (ISharedLibrary libVulkan = VulkanLoader.loadVulkanLibrary();
+             ISharedLibrary libVMA = ILibraryLoader.platformLoader().loadLibrary("vma");
+             Arena arena = Arena.ofConfined()) {
+            VkStaticCommands sCmd = VulkanLoader.loadStaticCommands(libVulkan);
+            VkEntryCommands eCmd = VulkanLoader.loadEntryCommands(sCmd);
+            Application.applicationStart(libVMA, sCmd, eCmd, arena);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
         }
     }
 }

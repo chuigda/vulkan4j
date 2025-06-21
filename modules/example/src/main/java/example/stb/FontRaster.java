@@ -1,6 +1,7 @@
 package example.stb;
 
-import club.doki7.ffm.Loader;
+import club.doki7.ffm.library.ILibraryLoader;
+import club.doki7.ffm.library.ISharedLibrary;
 import club.doki7.ffm.ptr.BytePtr;
 import club.doki7.ffm.ptr.IntPtr;
 import club.doki7.stb.STBJavaTraceUtil;
@@ -15,14 +16,14 @@ import java.nio.file.Path;
 // code mostly copied from:
 // https://github.com/justinmeiners/stb-truetype-example/blob/master/main.c
 public final class FontRaster {
+    private static final ISharedLibrary liBSTB = ILibraryLoader.platformLoader().loadLibrary("stb");
     static {
-        System.loadLibrary("stb");
-        STBJavaTraceUtil.enableJavaTraceForSTB();
+        STBJavaTraceUtil.enableJavaTraceForSTB(liBSTB);
     }
 
     public static void main(String[] args) throws Exception {
-        STBTT stbTT = new STBTT(Loader::loadFunctionOrNull);
-        STBIW stbIW = new STBIW(Loader::loadFunctionOrNull);
+        STBTT stbTT = new STBTT(liBSTB);
+        STBIW stbIW = new STBIW(liBSTB);
 
         byte[] fontData = Files.readAllBytes(Path.of("example/resc/less-perfect-dos-vga.ttf"));
 

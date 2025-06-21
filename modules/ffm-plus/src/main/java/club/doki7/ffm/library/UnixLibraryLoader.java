@@ -15,6 +15,10 @@ import java.util.Objects;
 public final class UnixLibraryLoader implements ILibraryLoader {
     @Override
     public @NotNull ISharedLibrary loadLibrary(@NotNull String libName) throws UnsatisfiedLinkError {
+        if (!libName.startsWith("/")) {
+            libName = "lib" + libName + ".so";
+        }
+
         MemorySegment result;
         try (Arena arena = Arena.ofConfined()) {
             MethodHandle h = Objects.requireNonNull(hDlopen);
