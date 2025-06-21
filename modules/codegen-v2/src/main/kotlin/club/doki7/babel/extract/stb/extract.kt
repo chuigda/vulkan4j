@@ -376,6 +376,7 @@ private fun parseEnumerator(
         if (enumValues.contains(value)) {
             EnumVariant(name = enumDecl.name, value = listOf("0x${value.toString(16)}"))
         } else {
+            enumValues.add(value)
             EnumVariant(name = enumDecl.name, value = value)
         }
     )
@@ -406,10 +407,13 @@ private fun parseAndSaveEnumConstants(
         index + 1
     )
     assert(lines[next].startsWith("}"))
+    cx.remove("nextEnumConstantValue")
     return next + 1
 }
 
 private val enumConstantParseConfig = ParseConfig<EmptyMergeable>().apply {
+    addInit { it.put("nextEnumConstantValue", 0L) }
+
     addRule(0, { line -> if (line.startsWith("}")) ControlFlow.RETURN else ControlFlow.NEXT }, ::dummyAction)
     addRule(10, ::detectLineComment, ::nextLine)
     addRule(10, ::detectPreprocessor, ::nextLine)
@@ -426,12 +430,24 @@ private fun parseEnumeratorAsConstant(
     val parseResult = parseEnumeratorDecl(lines, index)
     val enumDecl = parseResult.first
     val nextIndex = parseResult.second
+    val nextEnumConstantValue = (cx["nextEnumConstantValue"] as Long)
 
-    registry.constants.putEntityIfAbsent(Constant(
-        name = enumDecl.name,
-        expr = enumDecl.value,
-        type = IdentifierType("int")
-    ))
+    if (enumDecl.value.isNotEmpty()) {
+        val value = enumDecl.value.parseDecOrHex()
+        registry.constants.putEntityIfAbsent(Constant(
+            name = enumDecl.name,
+            expr = "0x${value.toString(16)}",
+            type = IdentifierType("int")
+        ))
+        cx["nextEnumConstantValue"] = value + 1
+    } else {
+        registry.constants.putEntityIfAbsent(Constant(
+            name = enumDecl.name,
+            expr = "0x${nextEnumConstantValue.toString(16)}",
+            type = IdentifierType("int")
+        ))
+        cx["nextEnumConstantValue"] = nextEnumConstantValue + 1
+    }
 
     return nextIndex
 }

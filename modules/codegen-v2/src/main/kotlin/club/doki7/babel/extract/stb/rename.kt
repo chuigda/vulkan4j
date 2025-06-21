@@ -44,7 +44,11 @@ internal fun Registry<EmptyMergeable>.renameEntities(
 
         val commonPrefix = commonPrefix(enum.variants.map { it.name.original })
         for (variant in enum.variants) {
-            variant.rename(variant.name.original.removePrefix(commonPrefix).uppercase())
+            var renamed = variant.name.original.removePrefix(commonPrefix).uppercase()
+            if (renamed[0].isDigit()) {
+                renamed = "_$renamed"
+            }
+            variant.rename(renamed)
             putEntityIfNameReplaced(variant)
         }
     }
