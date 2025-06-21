@@ -1,6 +1,5 @@
 package club.doki7.stb;
 
-import club.doki7.ffm.Loader;
 import club.doki7.ffm.RawFunctionLoader;
 
 import java.lang.foreign.*;
@@ -17,9 +16,9 @@ public final class STBJavaTraceUtil {
         }
     }
 
-    public static void enableJavaTraceForSTB() {
-        MemorySegment vk4jSetJavaTraceSegment = Loader.loadFunctionOrNull("vk4jSetSTBJavaTrace");
-        if (vk4jSetJavaTraceSegment == null || vk4jSetJavaTraceSegment.address() == 0) {
+    public static void enableJavaTraceForSTB(RawFunctionLoader loader) {
+        MemorySegment vk4jSetJavaTraceSegment = loader.load("vk4jSetSTBJavaTrace");
+        if (vk4jSetJavaTraceSegment.equals(MemorySegment.NULL)) {
             System.err.println("warn: enableJavaTraceForSTB: vk4jSetSTBJavaTrace not found");
             System.err.println("note: obviously you're not using a STB build supporting Java trace");
             System.err.println("note: checkout vulkan4j/stb/stb_build to see how to enable Java trace");

@@ -4,7 +4,6 @@ import club.doki7.ffm.IPointer;
 import club.doki7.ffm.annotation.Unsafe;
 import club.doki7.ffm.annotation.UnsafeConstructor;
 import club.doki7.ffm.annotation.ValueBasedCandidate;
-import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
