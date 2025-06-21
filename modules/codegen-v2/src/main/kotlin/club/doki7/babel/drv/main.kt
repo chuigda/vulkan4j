@@ -42,5 +42,4 @@ fun main() {
     vmaMain(vulkanRegistry, vulkanAdditionalRegistry)
     glfw3Main(vulkanRegistry, vulkanAdditionalRegistry)
     openalMain()
-    stbImageMain()
 }

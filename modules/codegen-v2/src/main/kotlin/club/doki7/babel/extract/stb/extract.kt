@@ -5,12 +5,45 @@ package club.doki7.babel.extract.stb
 import club.doki7.babel.cdecl.*
 import club.doki7.babel.hparse.*
 import club.doki7.babel.registry.*
+import club.doki7.babel.util.parseDecOrHex
+import club.doki7.babel.util.setupLog
 import java.util.logging.Logger
 import kotlin.io.path.Path
 import kotlin.io.path.useLines
 
 private val inputDir = Path("codegen-v2/input/stb_formatted")
 internal val log = Logger.getLogger("c.d.b.extract.stb")
+
+fun main() {
+    setupLog()
+
+    val stbImageRegistry = extractSTBImageHeader()
+    val stbTrueTypeRegistry = extractSTBTrueTypeHeader()
+    val stbImageResizeRegistry = extractSTBImageResizeHeader()
+
+    println("done")
+}
+
+fun extractSTBImageHeader() = extractSTBHeader(
+    fileName = "stb_image.h",
+    startDefn = "STBI_INCLUDE_STB_IMAGE_H",
+    fndefMacro = "STBIDEF",
+    hardStop = "#ifdef STB_IMAGE_IMPLEMENTATION"
+)
+
+fun extractSTBTrueTypeHeader() = extractSTBHeader(
+    fileName = "stb_truetype.h",
+    startDefn = "__STB_INCLUDE_STB_TRUETYPE_H__",
+    fndefMacro = "STBTT_DEF",
+    hardStop = "#ifdef STB_TRUETYPE_IMPLEMENTATION"
+)
+
+fun extractSTBImageResizeHeader() = extractSTBHeader(
+    fileName = "stb_image_resize2.h",
+    startDefn = "STBIR_INCLUDE_STB_IMAGE_RESIZE2_H",
+    fndefMacro = "STBIRDEF",
+    hardStop = "#if defined(STB_IMAGE_RESIZE_IMPLEMENTATION) || defined(STB_IMAGE_RESIZE2_IMPLEMENTATION)"
+)
 
 private fun extractSTBHeader(
     fileName: String,
@@ -40,14 +73,22 @@ private fun extractSTBHeader(
     val headerParseConfig = ParseConfig<EmptyMergeable>().apply {
         addRule(0, ::detectHardStop, ::dummyAction)
 
-        addRule(10, ::detectBlockComment, ::nextLine)
-        addRule(10, ::detectLineComment, ::skipBlockComment)
+        addRule(10, ::detectLineComment, ::nextLine)
+        addRule(10, ::detectBlockComment, ::skipBlockComment)
+        addRule(10, ::detectIfdefCplusplus, ::skipIfdefCplusplusExternC)
 
-        addRule(20, ::detectFuncDecl, ::parseAndSaveFuncDecl)
-        addRule(20, ::detectCallbackTypedef, ::parseAndSaveCallbackTypedef)
-        addRule(20, ::detectStructTypedef, ::parseAndSaveStructure)
-        addRule(20, ::detectEnumDecl, ::parseAndSaveEnumConstants)
-        addRule(30, ::detectTypeAlias, ::parseTypeAlias)
+        addRule(20, ::detectPreprocessor, ::skipPreprocessor)
+
+        addRule(30, ::detectFuncDecl, ::parseAndSaveFuncDecl)
+        addRule(30, ::detectCallbackTypedef, ::parseAndSaveCallbackTypedef)
+        addRule(30, ::detectStructTypedef, ::parseAndSaveStructure)
+        addRule(30, ::detectNonTypedefStruct, ::parseAndSaveStructure2)
+        addRule(30, ::detectEnumTypedef, ::parseAndSaveEnumeration)
+        addRule(30, ::detectEnumDecl, ::parseAndSaveEnumConstants)
+
+        addRule(40, ::detectOpaqueHandle, ::parseOpaqueHandle)
+
+        addRule(50, ::detectTypeAlias, ::parseTypeAlias)
     }
 
     hparse(
@@ -92,7 +133,7 @@ private fun morphFunctionDecl(functionDecl: FunctionDecl) = Command(
 
 // region callback typedef
 private fun detectCallbackTypedef(line: String): ControlFlow =
-    if (line.startsWith("typedef") && line.contains("_callback(") && line.endsWith(';')) {
+    if (line.startsWith("typedef") && line.contains("_callback(")) {
         ControlFlow.ACCEPT
     } else {
         ControlFlow.NEXT
@@ -118,7 +159,7 @@ private fun morphCallbackTypedef(typedef: TypedefDecl) = FunctionTypedef(
 )
 // endregion
 
-// region structure
+// region struct
 private fun detectStructTypedef(line: String): ControlFlow =
     if (line.startsWith("typedef") && line.contains("struct") && !line.endsWith(";")) {
         ControlFlow.ACCEPT
@@ -148,43 +189,49 @@ private fun parseAndSaveStructure(
     val fieldVarDecls = cx["fields"] as MutableList<VarDecl>
     cx.remove("fields")
 
-    val members = mutableListOf<Member>()
-    for (varDecl in fieldVarDecls) {
-        members.add(if (varDecl.type is RawFunctionType) {
-            val typeName = "PFN_${structureName}_${varDecl.name}"
-            registry.functionTypedefs.putEntityIfAbsent(FunctionTypedef(
-                name = typeName,
-                params = varDecl.type.params.map { it.second.toType() },
-                result = varDecl.type.returnType.toType()
-            ))
-
-            Member(
-                name = varDecl.name,
-                type = IdentifierType(typeName),
-                values = null,
-                len = null,
-                altLen = null,
-                optional = false,
-                bits = null
-            )
-        } else {
-            Member(
-                name = varDecl.name,
-                type = varDecl.type.toType(),
-                values = null,
-                len = null,
-                altLen = null,
-                optional = false,
-                bits = null
-            )
-        })
-    }
+    val members = fieldVarDecls.map(::morphStructFieldDecl).toMutableList()
 
     registry.structures.putEntityIfAbsent(Structure(
         name = structureName,
         members = members
     ))
 
+    return next + 1
+}
+
+private fun detectNonTypedefStruct(line: String): ControlFlow =
+    if (line.startsWith("struct") && !line.endsWith(";")) {
+        ControlFlow.ACCEPT
+    } else {
+        ControlFlow.NEXT
+    }
+
+private fun parseAndSaveStructure2(
+    registry: Registry<EmptyMergeable>,
+    cx: MutableMap<String, Any>,
+    lines: List<String>,
+    index: Int
+): Int {
+    val structureName = lines[index].removePrefix("struct").removeSuffix("{").trim()
+    registry.opaqueTypedefs.remove(structureName.intern())
+
+    val next = hparse(
+        structureParseConfig,
+        registry,
+        cx,
+        lines,
+        if (lines[index].endsWith("{")) index + 1 else index + 2
+    )
+    assert(lines[next].startsWith("}") && lines[next].endsWith(";"))
+
+    val fieldVarDecls = cx["fields"] as MutableList<VarDecl>
+    cx.remove("fields")
+
+    val members = fieldVarDecls.map(::morphStructFieldDecl).toMutableList()
+    registry.structures.putEntityIfAbsent(Structure(
+        name = structureName,
+        members = members
+    ))
     return next + 1
 }
 
@@ -201,7 +248,7 @@ private val structureParseConfig = ParseConfig<EmptyMergeable>().apply {
 }
 
 private fun detectFunctionPointerMember(line: String): ControlFlow =
-    if (line.matches(Regex("\\(\\*[A-Za-z0-9_]+\\)\\("))) {
+    if (Regex("\\(\\*[A-Za-z0-9_]+\\)\\(").containsMatchIn(line)) {
         ControlFlow.ACCEPT
     } else {
         ControlFlow.NEXT
@@ -230,11 +277,110 @@ private fun parseStructField(
     (cx["fields"] as MutableList<VarDecl>).add(decl)
     return nextIndex
 }
+
+private fun morphStructFieldDecl(decl: VarDecl): Member =
+    if (decl.type is RawFunctionType) {
+        val typeName = "PFN_${decl.name}"
+        Member(
+            name = decl.name,
+            type = IdentifierType(typeName),
+            values = null,
+            len = null,
+            altLen = null,
+            optional = false,
+            bits = null
+        )
+    } else {
+        Member(
+            name = decl.name,
+            type = decl.type.toType(),
+            values = null,
+            len = null,
+            altLen = null,
+            optional = false,
+            bits = null
+        )
+    }
+// endregion
+
+// region enum (typedef)
+private fun detectEnumTypedef(line: String): ControlFlow =
+    if (line.startsWith("typedef") && line.contains("enum")) {
+        ControlFlow.ACCEPT
+    } else {
+        ControlFlow.NEXT
+    }
+
+private fun parseAndSaveEnumeration(
+    registry: Registry<EmptyMergeable>,
+    cx: MutableMap<String, Any>,
+    lines: List<String>,
+    index: Int
+): Int {
+    val nextIndex = hparse(
+        enumParseConfig,
+        registry,
+        cx,
+        lines,
+        if (lines[index].endsWith("{")) index + 1 else index + 2
+    )
+    assert(lines[nextIndex].startsWith("}") && lines[nextIndex].endsWith(";"))
+
+    val enumName = lines[nextIndex]
+        .removePrefix("}")
+        .removeSuffix(";")
+        .trim()
+    val variants = cx["variants"] as MutableList<EnumVariant>
+    cx.remove("variants")
+    cx.remove("enumValues")
+
+    registry.enumerations.putEntityIfAbsent(Enumeration(
+        name = enumName,
+        variants = variants
+    ))
+    return nextIndex + 1
+}
+
+private val enumParseConfig = ParseConfig<EmptyMergeable>().apply {
+    addInit {
+        it.put("enumValues", mutableSetOf<Long>())
+        it.put("variants", mutableListOf<EnumVariant>())
+    }
+
+    addRule(0, { line -> if (line.startsWith("}")) ControlFlow.RETURN else ControlFlow.NEXT }, ::dummyAction)
+    addRule(10, ::detectLineComment, ::nextLine)
+    addRule(10, ::detectPreprocessor, ::nextLine)
+    addRule(10, ::detectBlockComment, ::skipBlockComment)
+    addRule(99, { _ -> ControlFlow.ACCEPT }, ::parseEnumerator)
+}
+
+private fun parseEnumerator(
+    @Suppress("unused") registry: Registry<EmptyMergeable>,
+    cx: MutableMap<String, Any>,
+    lines: List<String>,
+    index: Int
+): Int {
+    val (enumDecl, nextIndex) = parseEnumeratorDecl(lines, index)
+    val enumValues = cx["enumValues"] as MutableSet<Long>
+    val variants = cx["variants"] as MutableList<EnumVariant>
+
+    val value = enumDecl.value.parseDecOrHex()
+
+    variants.add(
+        if (enumValues.contains(value)) {
+            EnumVariant(name = enumDecl.name, value = listOf("0x${value.toString(16)}"))
+        } else {
+            EnumVariant(name = enumDecl.name, value = value)
+        }
+    )
+
+    return nextIndex
+}
 // endregion
 
 // region enum (global constants)
 private fun detectEnumDecl(line: String): ControlFlow =
-    if (line.startsWith("enum") && line.endsWith("{")) {
+    if (line.startsWith("enum {")) {
         ControlFlow.ACCEPT
     } else {
         ControlFlow.NEXT
@@ -247,7 +393,7 @@ private fun parseAndSaveEnumConstants(
     index: Int
 ): Int {
     val next = hparse(
-        enumerationParseConfig,
+        enumConstantParseConfig,
         registry,
         cx,
         lines,
@@ -257,15 +403,15 @@ private fun parseAndSaveEnumConstants(
     return next + 1
 }
 
-val enumerationParseConfig = ParseConfig<EmptyMergeable>().apply {
+private val enumConstantParseConfig = ParseConfig<EmptyMergeable>().apply {
     addRule(0, { line -> if (line.startsWith("}")) ControlFlow.RETURN else ControlFlow.NEXT }, ::dummyAction)
     addRule(10, ::detectLineComment, ::nextLine)
     addRule(10, ::detectPreprocessor, ::nextLine)
     addRule(10, ::detectBlockComment, ::skipBlockComment)
-    addRule(99, { _ -> ControlFlow.ACCEPT }, ::parseEnumerator)
+    addRule(99, { _ -> ControlFlow.ACCEPT }, ::parseEnumeratorAsConstant)
 }
 
-fun parseEnumerator(
+private fun parseEnumeratorAsConstant(
     @Suppress("unused") registry: Registry<EmptyMergeable>,
     @Suppress("unused") cx: MutableMap<String, Any>,
     lines: List<String>,
@@ -285,6 +431,35 @@ fun parseEnumerator(
 }
 // endregion
 
+// region opaque handle
+private fun detectOpaqueHandle(line: String): ControlFlow =
+    if (line.startsWith("typedef") && line.contains("struct") && line.endsWith(";")) {
+        ControlFlow.ACCEPT
+    } else {
+        ControlFlow.NEXT
+    }
+
+private fun <E : IMergeable<E>> parseOpaqueHandle(
+    registry: Registry<E>,
+    @Suppress("unused") cx: MutableMap<String, Any>,
+    lines: List<String>,
+    index: Int
+): Int {
+    val twoParts = lines[index]
+        .removePrefix("typedef struct")
+        .removeSuffix(";")
+        .trim()
+        .split(" ", limit = 2)
+    assert(twoParts.size == 2 && twoParts[0] == twoParts[1])
+
+    registry.opaqueTypedefs.putEntityIfAbsent(OpaqueTypedef(
+        name = twoParts[0],
+        isHandle = true
+    ))
+    return index + 1
+}
+
+// region type alias
 private fun detectTypeAlias(line: String): ControlFlow =
     if (line.startsWith("typedef") && "struct" !in line && line matches Regex("""^typedef\s+([_a-zA-Z][_a-zA-Z0-9]*\*?\s+)+\w+;$""")) {
         ControlFlow.ACCEPT
@@ -310,3 +485,4 @@ private fun morphTypedefAlias(typedef: TypedefDecl) = Typedef(
     name = typedef.name,
     type = (typedef.aliasedType.toType() as IdentifierType),
 )
+// endregion

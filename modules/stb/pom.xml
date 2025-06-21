@@ -40,7 +40,7 @@
         <url>https://github.com/chuigda/vulkan4j</url>
     </scm>
 
-    <artifactId>stb-image</artifactId>
+    <artifactId>stb</artifactId>
     <version>0.3.4</version>
     <packaging>jar</packaging>
 
