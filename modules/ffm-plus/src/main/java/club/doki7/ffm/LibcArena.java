@@ -11,7 +11,9 @@ import java.lang.foreign.ValueLayout;
 import java.lang.invoke.MethodHandle;
 import java.util.Objects;
 
-public final class LibcArena implements Arena {
+public enum LibcArena implements Arena {
+    INSTANCE;
+
     private static final FunctionDescriptor DESCRIPTOR$aligned_alloc = FunctionDescriptor.of(
             ValueLayout.ADDRESS,
             NativeLayout.C_SIZE_T,
@@ -30,8 +32,6 @@ public final class LibcArena implements Arena {
             Objects.requireNonNull(JavaSystemLibrary.INSTANCE.load("free")),
             DESCRIPTOR$free
     );
-
-    private LibcArena() {}
 
     public void free(@NotNull MemorySegment ms) {
         try {
@@ -86,6 +86,4 @@ public final class LibcArena implements Arena {
     public void close() {
         throw new UnsupportedOperationException("Cannot close CArena");
     }
-
-    public static final LibcArena INSTANCE = new LibcArena();
 }

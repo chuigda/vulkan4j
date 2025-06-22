@@ -2,7 +2,9 @@ package club.doki7.ffm.library;
 
 import org.jetbrains.annotations.NotNull;
 
-public final class JavaSystemLibraryLoader implements ILibraryLoader {
+public enum JavaSystemLibraryLoader implements ILibraryLoader {
+    INSTANCE;
+
     @Override
     public @NotNull ISharedLibrary loadLibrary(@NotNull String libName) throws UnsatisfiedLinkError {
         try {
@@ -12,8 +14,4 @@ public final class JavaSystemLibraryLoader implements ILibraryLoader {
         }
         return JavaSystemLibrary.INSTANCE;
     }
-
-    public static final JavaSystemLibraryLoader INSTANCE = new JavaSystemLibraryLoader();
-
-    private JavaSystemLibraryLoader() {}
 }
