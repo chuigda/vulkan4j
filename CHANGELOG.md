@@ -1,3 +1,9 @@
+## Unreleased
+
+### Minor changes
+
+- `LibcArena` and a few singleton library loaders now support well-behaved serialization.
+
 ## v0.4.0
 
 Upgrade `ffm-plus` to v0.2.4, and other wrapper modules to v0.4.0.
