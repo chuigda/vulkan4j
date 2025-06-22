@@ -12,7 +12,9 @@ import java.lang.foreign.ValueLayout;
 import java.lang.invoke.MethodHandle;
 import java.util.Objects;
 
-public final class WindowsLibraryLoader implements ILibraryLoader {
+public enum WindowsLibraryLoader implements ILibraryLoader {
+    INSTANCE;
+
     @Override
     public @NotNull ISharedLibrary loadLibrary(@NotNull String libName) throws UnsatisfiedLinkError {
         MemorySegment result;
@@ -38,10 +40,6 @@ public final class WindowsLibraryLoader implements ILibraryLoader {
 
         return new WindowsLibrary(result);
     }
-
-    public static final WindowsLibraryLoader INSTANCE = new WindowsLibraryLoader();
-
-    private WindowsLibraryLoader() {}
 
     private static final FunctionDescriptor DESCRIPTOR$LoadLibraryW = FunctionDescriptor.of(
             ValueLayout.ADDRESS, // returns HMODULE

@@ -12,7 +12,9 @@ import java.lang.foreign.ValueLayout;
 import java.lang.invoke.MethodHandle;
 import java.util.Objects;
 
-public final class UnixLibraryLoader implements ILibraryLoader {
+public enum UnixLibraryLoader implements ILibraryLoader {
+    INSTANCE;
+
     @Override
     public @NotNull ISharedLibrary loadLibrary(@NotNull String libName) throws UnsatisfiedLinkError {
         if (!libName.startsWith("/")) {
@@ -39,10 +41,6 @@ public final class UnixLibraryLoader implements ILibraryLoader {
 
         return new UnixLibrary(result);
     }
-
-    public static final UnixLibraryLoader INSTANCE = new UnixLibraryLoader();
-
-    private UnixLibraryLoader() {}
 
     private static final FunctionDescriptor DESCRIPTOR$dlopen = FunctionDescriptor.of(
             ValueLayout.ADDRESS, // returns void*

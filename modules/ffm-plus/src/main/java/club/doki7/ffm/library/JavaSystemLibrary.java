@@ -6,7 +6,9 @@ import java.lang.foreign.Linker;
 import java.lang.foreign.MemorySegment;
 import java.lang.foreign.SymbolLookup;
 
-public final class JavaSystemLibrary implements ISharedLibrary {
+public enum JavaSystemLibrary implements ISharedLibrary {
+    INSTANCE;
+
     @Override
     public @NotNull MemorySegment apply(@NotNull String name) {
         return loaderLookup.find(name)
@@ -16,10 +18,6 @@ public final class JavaSystemLibrary implements ISharedLibrary {
 
     @Override
     public void close() {}
-
-    private JavaSystemLibrary() {}
-
-    public static final JavaSystemLibrary INSTANCE = new JavaSystemLibrary();
 
     private static final Linker nativeLinker = Linker.nativeLinker();
     private static final SymbolLookup stdlibLookup = nativeLinker.defaultLookup();
