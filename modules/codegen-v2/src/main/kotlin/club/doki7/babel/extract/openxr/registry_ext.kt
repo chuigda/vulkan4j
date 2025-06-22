@@ -39,7 +39,7 @@ class RequireValue(
     val value: String?,
     val bitpos: Long?,
     val offset: Long?,
-    val dir: String?,
+    val negative: Boolean,
     val alias: String?
 ) : Entity(name) {
     override fun toStringImpl(): String = buildString {
@@ -61,9 +61,7 @@ class RequireValue(
             append(", offset=$it")
         }
 
-        dir?.let {
-            append(", dir=\"$it\"")
-        }
+        append(", negative=$negative")
 
         alias?.let {
             append(", alias=\"$alias\"")

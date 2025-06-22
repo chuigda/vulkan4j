@@ -83,7 +83,7 @@ abstract class Entity(val name: Identifier, var doc: List<String>? = null) {
 
     fun rename(newName: String) = this.name.rename(newName)
 
-    fun rename(renamer: String.() -> String) = this.rename(renamer(this.name.original))
+    inline fun rename(renamer: String.() -> String) = this.rename(renamer(this.name.original))
 
     fun <T> setExt(extra: T) {
         this._ext = extra

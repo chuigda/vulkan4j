@@ -4,14 +4,11 @@ import club.doki7.babel.cdecl.*
 import club.doki7.babel.registry.*
 import club.doki7.babel.util.*
 import org.w3c.dom.Element
+import java.util.logging.Logger
 import kotlin.io.path.Path
 
+internal val log = Logger.getLogger("c.d.b.extract.openxr")
 private val inputDir = Path("codegen-v2/input")
-
-fun main() {
-    val reg = extractOpenXRRegistry()
-    return
-}
 
 fun extractOpenXRRegistry(): Registry<OpenXRRegistryExt> {
     val registry = inputDir.resolve("xr.xml")
@@ -472,7 +469,7 @@ private fun extractRequireValue(e: Element): RequireValue {
         value,
         bitpos?.parseDecOrHex(),
         offset?.parseDecOrHex(),
-        dir,
+        dir == "-",
         alias
     )
 }
