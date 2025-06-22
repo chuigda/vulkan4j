@@ -95,3 +95,7 @@ A fresh start
 - Entities are renamed properly to reduce boilerplates.
 - Improved usability and correctness of `ffm-plus` (previously `panama-plus`) module.
 - Many other enhancements and bug fixes.
+
+### *Development history before 0.3.0?*
+
+See [vulkan4j-legacy](https://github.com/CousinZe/vulkan4j-legacy).

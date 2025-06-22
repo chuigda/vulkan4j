@@ -65,10 +65,6 @@ We provide a set of examples, which can be found under the `example` directory. 
 - [ ] SDL3 bindings
 - [ ] LLVM bindings (*is this graphics anymore?*)
 
-### *Development history before 0.3.0?*
-
-See [vulkan4j-legacy](https://github.com/CousinZe/vulkan4j-legacy).
-
 ## Donation
 
 Doki Doki 7th Design Club! is not accepting any donation at the moment <del>though Chuigda thinks that the whole world owes him 27 billion 30 million CHF</del>. If you like this project, either using in production or got some inspiration, just star and thank author.
