@@ -22,7 +22,7 @@ import club.doki7.babel.util.Doc
 import club.doki7.babel.util.render
 import java.io.File
 
-private const val packageDir = "vulkan/src/main/java/club/doki7/openxr"
+private const val packageDir = "openxr/src/main/java/club/doki7/openxr"
 
 internal fun openxrMain(): Registry<OpenXRRegistryExt> {
     val reg = extractOpenXRRegistry()
