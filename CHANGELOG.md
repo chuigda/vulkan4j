@@ -1,8 +1,8 @@
-## Unreleased
+## Unreleased v0.4.1
 
 ### Minor changes
 
-- `LibcArena` and a few singleton library loaders now support well-behaved serialization.
+- `LibcArena` and a few singleton library loaders are now implemented in terms of `enum` instead of `class`, in order to support well-behaved serialization.
 
 ## v0.4.0
 
