@@ -498,6 +498,37 @@ private val knownTypes = mapOf(
 
     // FUCHSIA
     "zx_handle_t" to uint32Type.copyWithComment(comment = "zx_handle_t"),
+  
+  // unknwn.h
+  "IUnknown" to pvoidType("IUnknown"),
+  
+  //d3dcommon
+  "D3D_FEATURE_LEVEL" to uint32Type,
+  
+  // d3d11/12
+  "ID3D11Device" to pvoidType("ID3D11Device"),
+  "ID3D11Texture2D" to pvoidType("ID3D11Texture2D"),
+  "ID3D12CommandQueue" to pvoidType("ID3D12CommandQueue"),
+  "ID3D12Device" to pvoidType("ID3D12Device"),
+  "ID3D12Resource" to pvoidType("ID3D12Resource"),
+  
+  // https://registry.khronos.org/EGL/api/EGL/egl.h
+  "EGLDisplay" to pvoidType("EGLDisplay"),
+  "EGLConfig" to pvoidType("EGLConfig"),
+  "EGLContext" to pvoidType("EGLContext"),
+  "EGLenum" to uint32Type,
+  
+  // https://xcb.freedesktop.org/manual/glx_8h_source.html
+  "xcb_glx_fbconfig_t" to uint32Type,
+  "xcb_glx_drawable_t" to uint32Type,
+  "xcb_glx_context_t" to uint32Type,
+  
+  // https://xcb.freedesktop.org/manual/xcb_8h.html
+  "xcb_connection_t" to voidType,
+  // https://xcb.freedesktop.org/manual/group__XCB____API.html
+  "xcb_visualid_t" to uint32Type,
+  "xcb_window_t" to uint32Type,
+  
 )
 
 fun lowerType(registry: RegistryBase, refRegistries: List<RegistryBase>, type: Type): CType {
