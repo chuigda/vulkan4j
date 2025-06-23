@@ -418,6 +418,10 @@ private val knownTypes = mapOf(
     "GLbitfield" to uint32Type.copyWithComment(comment = "GLbitfield"),
     "GLboolean" to uint8Type.copyWithComment(comment = "GLboolean"),
 
+    // https://registry.khronos.org/OpenGL/api/GL/glxext.h
+    "GLXFBConfig" to pvoidType("GLXFBConfig"),
+    "HGLRC" to pvoidType("HGLRC"),      // this comes from "windows.h" though
+
     // Vulkan base types
     "VkSampleMask" to uint32Type.copyWithComment(comment = "VkSampleMask"),
     "VkBool32" to uint32Type.copyWithComment(comment = "VkBool32"),
@@ -460,10 +464,13 @@ private val knownTypes = mapOf(
 
     // Windows
     "DWORD" to uint32Type.copyWithComment(comment = "DWORD"),
+    "LONG" to int32Type.copyWithComment("LONG"),
     "HANDLE" to pvoidType("HANDLE"),
     "HINSTANCE" to pvoidType("HINSTANCE"),
     "HMONITOR" to pvoidType("HMONITOR"),
     "HWND" to pvoidType("HWND"),
+    "HDC" to pvoidType("HDC"),
+    "LARGE_INTEGER" to voidType,        // used as a pointer
     "LPCWSTR" to CPointerType(uint16Type, const = true, pointerToOne = false, comment = "LPCWSTR"),
     "HGLRC" to pvoidType("HGLRC"),
     "SECURITY_ATTRIBUTES" to voidType.copy(cType = "SECURITY_ATTRIBUTES"),
@@ -503,7 +510,7 @@ private val knownTypes = mapOf(
     "IUnknown" to pvoidType("IUnknown"),
 
     //d3dcommon
-    "D3D_FEATURE_LEVEL" to uint32Type,
+    "D3D_FEATURE_LEVEL" to uint32Type.copyWithComment("D3D_FEATURE_LEVEL"),
 
     // d3d11/12
     "ID3D11Device" to pvoidType("ID3D11Device"),
@@ -516,18 +523,18 @@ private val knownTypes = mapOf(
     "EGLDisplay" to pvoidType("EGLDisplay"),
     "EGLConfig" to pvoidType("EGLConfig"),
     "EGLContext" to pvoidType("EGLContext"),
-    "EGLenum" to uint32Type,
+    "EGLenum" to uint32Type.copyWithComment("EGLenum"),
 
     // https://xcb.freedesktop.org/manual/glx_8h_source.html
-    "xcb_glx_fbconfig_t" to uint32Type,
-    "xcb_glx_drawable_t" to uint32Type,
-    "xcb_glx_context_t" to uint32Type,
+    "xcb_glx_fbconfig_t" to uint32Type.copyWithComment("xcb_glx_fbconfig_t"),
+    "xcb_glx_drawable_t" to uint32Type.copyWithComment("xcb_glx_drawable_t"),
+    "xcb_glx_context_t" to uint32Type.copyWithComment("xcb_glx_context_t"),
 
     // https://xcb.freedesktop.org/manual/xcb_8h.html
     "xcb_connection_t" to voidType,
     // https://xcb.freedesktop.org/manual/group__XCB____API.html
-    "xcb_visualid_t" to uint32Type,
-    "xcb_window_t" to uint32Type,
+    "xcb_visualid_t" to uint32Type.copyWithComment("xcb_visualid_t"),
+    "xcb_window_t" to uint32Type.copyWithComment("xcb_window_t"),
   
 )
 

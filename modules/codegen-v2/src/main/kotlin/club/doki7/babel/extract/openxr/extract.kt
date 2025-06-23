@@ -10,14 +10,12 @@ import kotlin.io.path.Path
 internal val log = Logger.getLogger("c.d.b.extract.openxr")
 private val inputDir = Path("codegen-v2/input")
 
-fun extractOpenXRRegistry(): Registry<OpenXRRegistryExt> {
-    val registry = inputDir.resolve("xr.xml")
+fun extractRawOpenXRRegistry(): Registry<OpenXRRegistryExt> {
+    return inputDir.resolve("xr.xml")
         .toFile()
         .readText()
         .parseXML()
         .extractEntities()
-
-    return registry.apply { renameEntities() }
 }
 
 private fun <T : Entity> Sequence<T>.associate(): MutableMap<Identifier, T> {
