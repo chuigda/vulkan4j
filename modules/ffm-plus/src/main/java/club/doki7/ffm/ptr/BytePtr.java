@@ -130,7 +130,7 @@ public record BytePtr(@NotNull MemorySegment segment) implements IPointer, Itera
     /// @return {@code null} if {@code segment} is {@link MemorySegment#NULL},
     /// otherwise a new {@link BytePtr} that uses {@code segment} as backing storage
     /// @throws IllegalArgumentException if {@code segment} is not native
-    public @Nullable BytePtr checked(@NotNull MemorySegment segment) {
+    public static @Nullable BytePtr checked(@NotNull MemorySegment segment) {
         if (segment.equals(MemorySegment.NULL)) {
             return null;
         }

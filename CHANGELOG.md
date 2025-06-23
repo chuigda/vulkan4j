@@ -1,5 +1,9 @@
 ## Unreleased v0.4.1
 
+### Bugfixes
+
+- Fixed `BytePtr.checked` which was not previouly marked as `static`.
+
 ### Minor changes
 
 - `LibcArena` and a few singleton library loaders are now implemented in terms of `enum` instead of `class`, in order to support well-behaved serialization.
@@ -29,7 +33,7 @@ Upgrade `ffm-plus` to v0.2.4, and other wrapper modules to v0.4.0.
   - This feature uses `LoadLibraryW` + `GetProcAddress` on Windows platform, `dlopen` + `dlsym` on Linux/FreeBSD/macOS platform.
   - macOS library bundle (`.framework`) is not supported yet.
 
-### Quality of Life update
+### Quality of Life updates
 
 - PVOID type field setters accepting `MemorySegment`s now also returns `this` to allow chaining.
 - Added `ALLoader` class to automatically deal with platform library name difference (`OpenAL32.dll` on Windows vs `libopenal.so` on Linux).
