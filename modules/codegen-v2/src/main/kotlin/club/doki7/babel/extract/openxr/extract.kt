@@ -17,7 +17,7 @@ fun extractOpenXRRegistry(): Registry<OpenXRRegistryExt> {
         .parseXML()
         .extractEntities()
 
-    return registry
+    return registry.apply { renameEntities() }
 }
 
 private fun <T : Entity> Sequence<T>.associate(): MutableMap<Identifier, T> {
