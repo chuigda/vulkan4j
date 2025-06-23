@@ -81,28 +81,22 @@ data class CodegenContext<T : IMergeable<T>>(
     }
 
     private fun Doc.writeTo(relativePath: String) {
-        file(relativePath).writeText(this)
+        file(relativePath).apply {
+            parentFile.mkdirs()
+        }.writeText(this)
     }
 
     fun generateConstants() {
-        generateConstants(registry, codegenOptions).let {
-            file("${codegenOptions.constantClassName}.java")
-                .writeText(it)
-        }
+        generateConstants(registry, codegenOptions)
+            .writeTo("${codegenOptions.constantClassName}.java")
     }
 
     fun generateFunctionTypes() {
-        generateFunctionTypedefs(registry, codegenOptions).let {
-            file("${codegenOptions.functionTypeClassName}.java")
-                .writeText(it)
-        }
+        generateFunctionTypedefs(registry, codegenOptions).writeTo("${codegenOptions.functionTypeClassName}.java")
     }
 
     fun generateBitmask(bitmask: Bitmask) {
-        generateBitmask(bitmask, codegenOptions).let {
-            file("bitmask/${bitmask.name}.java")
-                .writeText(it)
-        }
+        generateBitmask(bitmask, codegenOptions).writeTo("bitmask/${bitmask.name}.java")
     }
 
     fun generateBitmasks() {
@@ -110,10 +104,7 @@ data class CodegenContext<T : IMergeable<T>>(
     }
 
     fun generateEnumeration(enumeration: Enumeration) {
-        generateEnumeration(registry, enumeration, codegenOptions).let {
-            file("enumtype/${enumeration.name}.java")
-                .writeText(it)
-        }
+        generateEnumeration(registry, enumeration, codegenOptions).writeTo("enumtype/${enumeration.name}.java")
     }
 
     fun generateEnumerations() {

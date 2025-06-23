@@ -294,6 +294,8 @@ private fun extractEnumeration(e: Element): Enumeration {
     return Enumeration(name!!, enums)
 }
 
+private fun String.sanitizeFlagBits() = replace("FlagBits", "Flags")
+
 /**
  * @param e in form `<enum bitpos="INTEGER" name="NAME" comment="..." />`
  */
@@ -313,7 +315,7 @@ private fun extractBitmask(e: Element): Bitmask {
         .toMutableList()
 
     // TODO: i am not sure whether if bitwidth should be null
-    return Bitmask(name!!, null, flags)
+    return Bitmask(name!!.sanitizeFlagBits(), null, flags)
 }
 
 /**
