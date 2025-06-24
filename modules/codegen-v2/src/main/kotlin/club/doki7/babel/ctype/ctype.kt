@@ -534,6 +534,9 @@ private val knownTypes = mapOf(
     // https://xcb.freedesktop.org/manual/group__XCB____API.html
     "xcb_visualid_t" to uint32Type.copyWithComment("xcb_visualid_t"),
     "xcb_window_t" to uint32Type.copyWithComment("xcb_window_t"),
+
+    // JNI
+    "jobject" to pvoidType("jobject"),
 )
 
 fun lowerType(registry: RegistryBase, refRegistries: List<RegistryBase>, type: Type): CType {
