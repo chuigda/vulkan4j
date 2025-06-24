@@ -12,7 +12,9 @@ import club.doki7.babel.codegen.generateStructureInterface
 import club.doki7.babel.extract.openxr.OpenXRRegistryExt
 import club.doki7.babel.extract.openxr.extractOpenXRRegistry
 import club.doki7.babel.extract.vulkan.VulkanRegistryExt
+import club.doki7.babel.extract.vulkanAdditionalRegistry
 import club.doki7.babel.registry.Bitmask
+import club.doki7.babel.registry.EmptyMergeable
 import club.doki7.babel.registry.Entity
 import club.doki7.babel.registry.Enumeration
 import club.doki7.babel.registry.IMergeable
@@ -27,10 +29,15 @@ private const val packageDir = "openxr/src/main/java/club/doki7/openxr"
 
 fun main() {
     val vulkan = vulkanMain()
-    openxrMain(vulkan, true)
+    val vulkanPlus = vulkanAdditionalRegistry()
+    openxrMain(vulkan, vulkanPlus, true)
 }
 
-internal fun openxrMain(vulkanRegistry: Registry<VulkanRegistryExt>, dryRun: Boolean): Registry<OpenXRRegistryExt> {
+internal fun openxrMain(
+    vulkanRegistry: Registry<VulkanRegistryExt>,
+    vulkanAdditionRegistry: Registry<EmptyMergeable>,
+    dryRun: Boolean
+): Registry<OpenXRRegistryExt> {
     val reg = extractOpenXRRegistry()
 
     val opt = CodegenOptions(
@@ -38,7 +45,7 @@ internal fun openxrMain(vulkanRegistry: Registry<VulkanRegistryExt>, dryRun: Boo
         extraImport = listOf(),
         constantClassName = "OpenXRConstants",
         functionTypeClassName = "OpenXRFunctionTypes",
-        refRegistries = listOf(vulkanRegistry),
+        refRegistries = listOf(vulkanRegistry, vulkanAdditionRegistry),
         seeLinkProvider = ::openxrLinkProvider
     )
 
