@@ -205,12 +205,13 @@ public record VkPhysicalDeviceShaderEnqueuePropertiesAMDX(@NotNull MemorySegment
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkPhysicalDeviceShaderEnqueuePropertiesAMDX pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkPhysicalDeviceShaderEnqueuePropertiesAMDX pNext(@Nullable IPointer pointer) {
@@ -272,7 +273,7 @@ public record VkPhysicalDeviceShaderEnqueuePropertiesAMDX(@NotNull MemorySegment
         return this;
     }
 
-    public MemorySegment maxExecutionGraphWorkgroupCountRaw() {
+    public @NotNull MemorySegment maxExecutionGraphWorkgroupCountRaw() {
         return segment.asSlice(OFFSET$maxExecutionGraphWorkgroupCount, SIZE$maxExecutionGraphWorkgroupCount);
     }
 

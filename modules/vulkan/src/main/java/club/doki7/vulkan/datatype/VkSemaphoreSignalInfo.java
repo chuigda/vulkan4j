@@ -200,12 +200,13 @@ public record VkSemaphoreSignalInfo(@NotNull MemorySegment segment) implements I
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkSemaphoreSignalInfo pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkSemaphoreSignalInfo pNext(@Nullable IPointer pointer) {

@@ -203,12 +203,13 @@ public record VkPushConstantsInfo(@NotNull MemorySegment segment) implements IVk
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkPushConstantsInfo pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkPushConstantsInfo pNext(@Nullable IPointer pointer) {
@@ -229,11 +230,11 @@ public record VkPushConstantsInfo(@NotNull MemorySegment segment) implements IVk
         return this;
     }
 
-    public @EnumType(VkShaderStageFlags.class) int stageFlags() {
+    public @Bitmask(VkShaderStageFlags.class) int stageFlags() {
         return segment.get(LAYOUT$stageFlags, OFFSET$stageFlags);
     }
 
-    public VkPushConstantsInfo stageFlags(@EnumType(VkShaderStageFlags.class) int value) {
+    public VkPushConstantsInfo stageFlags(@Bitmask(VkShaderStageFlags.class) int value) {
         segment.set(LAYOUT$stageFlags, OFFSET$stageFlags, value);
         return this;
     }
@@ -256,12 +257,13 @@ public record VkPushConstantsInfo(@NotNull MemorySegment segment) implements IVk
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pValues() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pValues() {
         return segment.get(LAYOUT$pValues, OFFSET$pValues);
     }
 
-    public void pValues(@Pointer(comment="void*") MemorySegment value) {
+    public VkPushConstantsInfo pValues(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pValues, OFFSET$pValues, value);
+        return this;
     }
 
     public VkPushConstantsInfo pValues(@Nullable IPointer pointer) {

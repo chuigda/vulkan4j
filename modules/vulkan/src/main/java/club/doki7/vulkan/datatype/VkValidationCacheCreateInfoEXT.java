@@ -201,12 +201,13 @@ public record VkValidationCacheCreateInfoEXT(@NotNull MemorySegment segment) imp
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkValidationCacheCreateInfoEXT pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkValidationCacheCreateInfoEXT pNext(@Nullable IPointer pointer) {
@@ -214,11 +215,11 @@ public record VkValidationCacheCreateInfoEXT(@NotNull MemorySegment segment) imp
         return this;
     }
 
-    public @EnumType(VkValidationCacheCreateFlagsEXT.class) int flags() {
+    public @Bitmask(VkValidationCacheCreateFlagsEXT.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public VkValidationCacheCreateInfoEXT flags(@EnumType(VkValidationCacheCreateFlagsEXT.class) int value) {
+    public VkValidationCacheCreateInfoEXT flags(@Bitmask(VkValidationCacheCreateFlagsEXT.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
         return this;
     }
@@ -232,12 +233,13 @@ public record VkValidationCacheCreateInfoEXT(@NotNull MemorySegment segment) imp
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pInitialData() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pInitialData() {
         return segment.get(LAYOUT$pInitialData, OFFSET$pInitialData);
     }
 
-    public void pInitialData(@Pointer(comment="void*") MemorySegment value) {
+    public VkValidationCacheCreateInfoEXT pInitialData(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pInitialData, OFFSET$pInitialData, value);
+        return this;
     }
 
     public VkValidationCacheCreateInfoEXT pInitialData(@Nullable IPointer pointer) {

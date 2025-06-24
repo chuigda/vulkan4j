@@ -177,11 +177,11 @@ public record VkAttachmentDescription(@NotNull MemorySegment segment) implements
         return ret;
     }
 
-    public @EnumType(VkAttachmentDescriptionFlags.class) int flags() {
+    public @Bitmask(VkAttachmentDescriptionFlags.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public VkAttachmentDescription flags(@EnumType(VkAttachmentDescriptionFlags.class) int value) {
+    public VkAttachmentDescription flags(@Bitmask(VkAttachmentDescriptionFlags.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
         return this;
     }
@@ -195,11 +195,11 @@ public record VkAttachmentDescription(@NotNull MemorySegment segment) implements
         return this;
     }
 
-    public @EnumType(VkSampleCountFlags.class) int samples() {
+    public @Bitmask(VkSampleCountFlags.class) int samples() {
         return segment.get(LAYOUT$samples, OFFSET$samples);
     }
 
-    public VkAttachmentDescription samples(@EnumType(VkSampleCountFlags.class) int value) {
+    public VkAttachmentDescription samples(@Bitmask(VkSampleCountFlags.class) int value) {
         segment.set(LAYOUT$samples, OFFSET$samples, value);
         return this;
     }

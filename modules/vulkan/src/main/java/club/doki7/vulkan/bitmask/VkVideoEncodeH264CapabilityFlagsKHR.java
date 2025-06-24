@@ -18,7 +18,7 @@ public final class VkVideoEncodeH264CapabilityFlagsKHR {
     public static final int VK_VIDEO_ENCODE_H264_CAPABILITY_PREDICTION_WEIGHT_TABLE_GENERATED = 0x2;
     public static final int VK_VIDEO_ENCODE_H264_CAPABILITY_ROW_UNALIGNED_SLICE = 0x4;
 
-    public static String explain(@EnumType(VkVideoEncodeH264CapabilityFlagsKHR.class) int flags) {
+    public static String explain(@Bitmask(VkVideoEncodeH264CapabilityFlagsKHR.class) int flags) {
         List<String> detectedFlagBits = new ArrayList<>();
         if ((flags & VK_VIDEO_ENCODE_H264_CAPABILITY_B_FRAME_IN_L0_LIST) != 0) {
             detectedFlagBits.add("VK_VIDEO_ENCODE_H264_CAPABILITY_B_FRAME_IN_L0_LIST_BIT_KHR");

@@ -188,7 +188,7 @@ public record VkPartitionedAccelerationStructureWritePartitionTranslationDataNV(
         return this;
     }
 
-    public MemorySegment partitionTranslationRaw() {
+    public @NotNull MemorySegment partitionTranslationRaw() {
         return segment.asSlice(OFFSET$partitionTranslation, SIZE$partitionTranslation);
     }
 

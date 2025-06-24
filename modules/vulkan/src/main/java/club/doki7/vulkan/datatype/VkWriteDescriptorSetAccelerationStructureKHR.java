@@ -200,12 +200,13 @@ public record VkWriteDescriptorSetAccelerationStructureKHR(@NotNull MemorySegmen
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkWriteDescriptorSetAccelerationStructureKHR pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkWriteDescriptorSetAccelerationStructureKHR pNext(@Nullable IPointer pointer) {
@@ -240,11 +241,11 @@ public record VkWriteDescriptorSetAccelerationStructureKHR(@NotNull MemorySegmen
         return this;
     }
 
-    public @Pointer(target=VkAccelerationStructureKHR.class) MemorySegment pAccelerationStructuresRaw() {
+    public @Pointer(target=VkAccelerationStructureKHR.class) @NotNull MemorySegment pAccelerationStructuresRaw() {
         return segment.get(LAYOUT$pAccelerationStructures, OFFSET$pAccelerationStructures);
     }
 
-    public void pAccelerationStructuresRaw(@Pointer(target=VkAccelerationStructureKHR.class) MemorySegment value) {
+    public void pAccelerationStructuresRaw(@Pointer(target=VkAccelerationStructureKHR.class) @NotNull MemorySegment value) {
         segment.set(LAYOUT$pAccelerationStructures, OFFSET$pAccelerationStructures, value);
     }
 

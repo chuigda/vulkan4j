@@ -1,9 +1,9 @@
 package tutorial.vulkan.part01.ch01;
 
-import club.doki7.glfw.GLFWConstants;
 import club.doki7.glfw.handle.GLFWwindow;
 import club.doki7.glfw.GLFW;
 import club.doki7.glfw.GLFWLoader;
+import club.doki7.ffm.library.ISharedLibrary;
 import club.doki7.ffm.ptr.BytePtr;
 import club.doki7.ffm.ptr.IntPtr;
 import club.doki7.vulkan.Version;
@@ -28,8 +28,6 @@ class Application {
     }
 
     private void initWindow() {
-        GLFWLoader.loadGLFWLibrary();
-        glfw = GLFWLoader.loadGLFW();
         if (glfw.init() != GLFW.TRUE) {
             throw new RuntimeException("Failed to initialize GLFW");
         }
@@ -44,8 +42,6 @@ class Application {
     }
 
     private void initVulkan() {
-        VulkanLoader.loadVulkanLibrary();
-        staticCommands = VulkanLoader.loadStaticCommands();
         entryCommands = VulkanLoader.loadEntryCommands(staticCommands);
 
         createInstance();
@@ -96,17 +92,19 @@ class Application {
         }
     }
 
-    private GLFW glfw;
     private GLFWwindow window;
 
-    private VkStaticCommands staticCommands;
     private VkEntryCommands entryCommands;
     private VkInstance instance;
     private VkInstanceCommands instanceCommands;
 
+    private static final ISharedLibrary libGLFW = GLFWLoader.loadGLFWLibrary();
+    private static final GLFW glfw = GLFWLoader.loadGLFW(libGLFW);
     private static final int WIDTH = 800;
     private static final int HEIGHT = 600;
     private static final BytePtr WINDOW_TITLE = BytePtr.allocateString(Arena.global(), "Vulkan");
+    private static final ISharedLibrary libVulkan = VulkanLoader.loadVulkanLibrary();
+    private static final VkStaticCommands staticCommands = VulkanLoader.loadStaticCommands(libVulkan);
 }
 
 public class Main {

@@ -199,12 +199,13 @@ public record VkSemaphoreSciSyncPoolCreateInfoNV(@NotNull MemorySegment segment)
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkSemaphoreSciSyncPoolCreateInfoNV pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkSemaphoreSciSyncPoolCreateInfoNV pNext(@Nullable IPointer pointer) {
@@ -212,12 +213,13 @@ public record VkSemaphoreSciSyncPoolCreateInfoNV(@NotNull MemorySegment segment)
         return this;
     }
 
-    public @Pointer(comment="NvSciSyncObj") MemorySegment handle() {
+    public @Pointer(comment="NvSciSyncObj") @NotNull MemorySegment handle() {
         return segment.get(LAYOUT$handle, OFFSET$handle);
     }
 
-    public void handle(@Pointer(comment="NvSciSyncObj") MemorySegment value) {
+    public VkSemaphoreSciSyncPoolCreateInfoNV handle(@Pointer(comment="NvSciSyncObj") @NotNull MemorySegment value) {
         segment.set(LAYOUT$handle, OFFSET$handle, value);
+        return this;
     }
 
     public VkSemaphoreSciSyncPoolCreateInfoNV handle(@Nullable IPointer pointer) {

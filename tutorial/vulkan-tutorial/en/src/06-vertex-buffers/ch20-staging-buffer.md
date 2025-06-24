@@ -29,8 +29,8 @@ private record Pair<T1, T2>(T1 first, T2 second) {}
 
 private Pair<VkBuffer, VkDeviceMemory> createBuffer(
         int size,
-        @EnumType(VkBufferUsageFlags.class) int usage,
-        @EnumType(VkMemoryPropertyFlags.class) int properties
+        @Bitmask(VkBufferUsageFlags.class) int usage,
+        @Bitmask(VkMemoryPropertyFlags.class) int properties
 ) {
     try (var arena = Arena.ofConfined()) {
         var bufferInfo = VkBufferCreateInfo.allocate(arena)

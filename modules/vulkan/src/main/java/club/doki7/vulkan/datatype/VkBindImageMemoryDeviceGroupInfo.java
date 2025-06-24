@@ -202,12 +202,13 @@ public record VkBindImageMemoryDeviceGroupInfo(@NotNull MemorySegment segment) i
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkBindImageMemoryDeviceGroupInfo pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkBindImageMemoryDeviceGroupInfo pNext(@Nullable IPointer pointer) {
@@ -242,11 +243,11 @@ public record VkBindImageMemoryDeviceGroupInfo(@NotNull MemorySegment segment) i
         return this;
     }
 
-    public @Pointer(comment="uint32_t*") MemorySegment pDeviceIndicesRaw() {
+    public @Pointer(comment="uint32_t*") @NotNull MemorySegment pDeviceIndicesRaw() {
         return segment.get(LAYOUT$pDeviceIndices, OFFSET$pDeviceIndices);
     }
 
-    public void pDeviceIndicesRaw(@Pointer(comment="uint32_t*") MemorySegment value) {
+    public void pDeviceIndicesRaw(@Pointer(comment="uint32_t*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pDeviceIndices, OFFSET$pDeviceIndices, value);
     }
 
@@ -283,11 +284,11 @@ public record VkBindImageMemoryDeviceGroupInfo(@NotNull MemorySegment segment) i
         return new VkRect2D(s);
     }
 
-    public @Pointer(target=VkRect2D.class) MemorySegment pSplitInstanceBindRegionsRaw() {
+    public @Pointer(target=VkRect2D.class) @NotNull MemorySegment pSplitInstanceBindRegionsRaw() {
         return segment.get(LAYOUT$pSplitInstanceBindRegions, OFFSET$pSplitInstanceBindRegions);
     }
 
-    public void pSplitInstanceBindRegionsRaw(@Pointer(target=VkRect2D.class) MemorySegment value) {
+    public void pSplitInstanceBindRegionsRaw(@Pointer(target=VkRect2D.class) @NotNull MemorySegment value) {
         segment.set(LAYOUT$pSplitInstanceBindRegions, OFFSET$pSplitInstanceBindRegions, value);
     }
 

@@ -75,7 +75,7 @@ private val headerParseConfig = ParseConfig<EmptyMergeable>().apply {
     )
 
     addRule(10, ::detectLineComment, ::nextLine)
-    addRule(10, ::detectBlockComment, ::tweakedSkipBlockComment)
+    addRule(10, ::detectBlockComment, ::skipBlockComment)
 
     addRule(20, ::detectOpaqueTypedefStruct,  ::parseOpaqueTypedefStruct)
     addRule(20, ::detectConstant, ::parseConstant)
@@ -182,23 +182,6 @@ private fun <E : IMergeable<E>> parseConstant(
     return index + 1
 }
 
-fun <E: IMergeable<E>> tweakedSkipBlockComment(
-    @Suppress("unused") registry: Registry<E>,
-    @Suppress("unused") cx: MutableMap<String, Any>,
-    lines: List<String>,
-    index: Int
-): Int {
-    assert(lines[index].startsWith("/*")) { "Expected block comment start at line $index" }
-    var i = index
-    while (i < lines.size && !lines[i].contains("*/")) {
-        i++
-    }
-    if (i >= lines.size) {
-        log.warning("Unterminated block comment starting at line $index")
-    }
-    return i + 1
-}
-
 private fun detectTypeAlias(line: String): ControlFlow =
     if (line.startsWith("typedef") && "struct" !in line && line matches Regex("""^typedef\s+([_a-zA-Z][_a-zA-Z0-9]*\*?\s+)+\w+;$""")) {
         ControlFlow.ACCEPT
@@ -285,8 +268,7 @@ private fun <E : IMergeable<E>> parseFunctionTypeDecl(
     lines: List<String>,
     index: Int
 ): Int {
-    val parseResult = parseTypedefDecl(lines, index)
-    val (typedef, nextIndex) = parseResult
+    val (typedef, nextIndex) = parseTypedefDecl(lines, index)
     val functionTypedef = morphFunctionTypedef(typedef)
     if ("doxygen" in cx) {
         functionTypedef.doc = cx["doxygen"] as List<String>

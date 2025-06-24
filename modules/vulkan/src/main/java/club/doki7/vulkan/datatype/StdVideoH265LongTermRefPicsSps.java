@@ -186,7 +186,7 @@ public record StdVideoH265LongTermRefPicsSps(@NotNull MemorySegment segment) imp
         return this;
     }
 
-    public MemorySegment lt_ref_pic_poc_lsb_spsRaw() {
+    public @NotNull MemorySegment lt_ref_pic_poc_lsb_spsRaw() {
         return segment.asSlice(OFFSET$lt_ref_pic_poc_lsb_sps, SIZE$lt_ref_pic_poc_lsb_sps);
     }
 

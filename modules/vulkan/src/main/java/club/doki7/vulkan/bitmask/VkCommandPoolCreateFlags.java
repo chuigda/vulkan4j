@@ -11,7 +11,7 @@ public final class VkCommandPoolCreateFlags {
     public static final int RESET_COMMAND_BUFFER = 0x2;
     public static final int TRANSIENT = 0x1;
 
-    public static String explain(@EnumType(VkCommandPoolCreateFlags.class) int flags) {
+    public static String explain(@Bitmask(VkCommandPoolCreateFlags.class) int flags) {
         List<String> detectedFlagBits = new ArrayList<>();
         if ((flags & PROTECTED) != 0) {
             detectedFlagBits.add("VK_COMMAND_POOL_CREATE_PROTECTED_BIT");

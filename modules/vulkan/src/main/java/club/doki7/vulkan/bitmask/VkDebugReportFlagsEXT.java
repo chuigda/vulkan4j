@@ -13,7 +13,7 @@ public final class VkDebugReportFlagsEXT {
     public static final int PERFORMANCE_WARNING = 0x4;
     public static final int WARNING = 0x2;
 
-    public static String explain(@EnumType(VkDebugReportFlagsEXT.class) int flags) {
+    public static String explain(@Bitmask(VkDebugReportFlagsEXT.class) int flags) {
         List<String> detectedFlagBits = new ArrayList<>();
         if ((flags & DEBUG) != 0) {
             detectedFlagBits.add("VK_DEBUG_REPORT_DEBUG_BIT_EXT");

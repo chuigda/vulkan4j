@@ -5,6 +5,7 @@ import java.lang.invoke.MethodHandle;
 import java.util.Objects;
 
 import org.jetbrains.annotations.Nullable;
+import org.jetbrains.annotations.NotNull;
 import club.doki7.ffm.NativeLayout;
 import club.doki7.ffm.RawFunctionLoader;
 import club.doki7.ffm.annotation.*;

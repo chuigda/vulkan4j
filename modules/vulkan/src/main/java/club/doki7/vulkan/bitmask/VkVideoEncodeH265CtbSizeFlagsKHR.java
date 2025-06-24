@@ -11,7 +11,7 @@ public final class VkVideoEncodeH265CtbSizeFlagsKHR {
     public static final int VK_VIDEO_ENCODE_H265_CTB_SIZE_32 = 0x2;
     public static final int VK_VIDEO_ENCODE_H265_CTB_SIZE_64 = 0x4;
 
-    public static String explain(@EnumType(VkVideoEncodeH265CtbSizeFlagsKHR.class) int flags) {
+    public static String explain(@Bitmask(VkVideoEncodeH265CtbSizeFlagsKHR.class) int flags) {
         List<String> detectedFlagBits = new ArrayList<>();
         if ((flags & VK_VIDEO_ENCODE_H265_CTB_SIZE_16) != 0) {
             detectedFlagBits.add("VK_VIDEO_ENCODE_H265_CTB_SIZE_16_BIT_KHR");

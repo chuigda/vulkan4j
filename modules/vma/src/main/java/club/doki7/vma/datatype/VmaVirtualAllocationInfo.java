@@ -208,12 +208,13 @@ public record VmaVirtualAllocationInfo(@NotNull MemorySegment segment) implement
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pUserData() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pUserData() {
         return segment.get(LAYOUT$pUserData, OFFSET$pUserData);
     }
 
-    public void pUserData(@Pointer(comment="void*") MemorySegment value) {
+    public VmaVirtualAllocationInfo pUserData(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pUserData, OFFSET$pUserData, value);
+        return this;
     }
 
     public VmaVirtualAllocationInfo pUserData(@Nullable IPointer pointer) {

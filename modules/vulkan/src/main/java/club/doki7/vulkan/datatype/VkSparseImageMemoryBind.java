@@ -238,11 +238,11 @@ public record VkSparseImageMemoryBind(@NotNull MemorySegment segment) implements
         return this;
     }
 
-    public @EnumType(VkSparseMemoryBindFlags.class) int flags() {
+    public @Bitmask(VkSparseMemoryBindFlags.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public VkSparseImageMemoryBind flags(@EnumType(VkSparseMemoryBindFlags.class) int value) {
+    public VkSparseImageMemoryBind flags(@Bitmask(VkSparseMemoryBindFlags.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
         return this;
     }

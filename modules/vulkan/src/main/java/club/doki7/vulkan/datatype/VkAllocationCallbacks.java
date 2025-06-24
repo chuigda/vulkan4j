@@ -174,12 +174,13 @@ public record VkAllocationCallbacks(@NotNull MemorySegment segment) implements I
         return ret;
     }
 
-    public @Pointer(comment="void*") MemorySegment pUserData() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pUserData() {
         return segment.get(LAYOUT$pUserData, OFFSET$pUserData);
     }
 
-    public void pUserData(@Pointer(comment="void*") MemorySegment value) {
+    public VkAllocationCallbacks pUserData(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pUserData, OFFSET$pUserData, value);
+        return this;
     }
 
     public VkAllocationCallbacks pUserData(@Nullable IPointer pointer) {
@@ -187,12 +188,13 @@ public record VkAllocationCallbacks(@NotNull MemorySegment segment) implements I
         return this;
     }
 
-    public @Pointer(comment="PFN_vkAllocationFunction") MemorySegment pfnAllocation() {
+    public @Pointer(comment="PFN_vkAllocationFunction") @NotNull MemorySegment pfnAllocation() {
         return segment.get(LAYOUT$pfnAllocation, OFFSET$pfnAllocation);
     }
 
-    public void pfnAllocation(@Pointer(comment="PFN_vkAllocationFunction") MemorySegment value) {
+    public VkAllocationCallbacks pfnAllocation(@Pointer(comment="PFN_vkAllocationFunction") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pfnAllocation, OFFSET$pfnAllocation, value);
+        return this;
     }
 
     public VkAllocationCallbacks pfnAllocation(@Nullable IPointer pointer) {
@@ -200,12 +202,13 @@ public record VkAllocationCallbacks(@NotNull MemorySegment segment) implements I
         return this;
     }
 
-    public @Pointer(comment="PFN_vkReallocationFunction") MemorySegment pfnReallocation() {
+    public @Pointer(comment="PFN_vkReallocationFunction") @NotNull MemorySegment pfnReallocation() {
         return segment.get(LAYOUT$pfnReallocation, OFFSET$pfnReallocation);
     }
 
-    public void pfnReallocation(@Pointer(comment="PFN_vkReallocationFunction") MemorySegment value) {
+    public VkAllocationCallbacks pfnReallocation(@Pointer(comment="PFN_vkReallocationFunction") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pfnReallocation, OFFSET$pfnReallocation, value);
+        return this;
     }
 
     public VkAllocationCallbacks pfnReallocation(@Nullable IPointer pointer) {
@@ -213,12 +216,13 @@ public record VkAllocationCallbacks(@NotNull MemorySegment segment) implements I
         return this;
     }
 
-    public @Pointer(comment="PFN_vkFreeFunction") MemorySegment pfnFree() {
+    public @Pointer(comment="PFN_vkFreeFunction") @NotNull MemorySegment pfnFree() {
         return segment.get(LAYOUT$pfnFree, OFFSET$pfnFree);
     }
 
-    public void pfnFree(@Pointer(comment="PFN_vkFreeFunction") MemorySegment value) {
+    public VkAllocationCallbacks pfnFree(@Pointer(comment="PFN_vkFreeFunction") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pfnFree, OFFSET$pfnFree, value);
+        return this;
     }
 
     public VkAllocationCallbacks pfnFree(@Nullable IPointer pointer) {
@@ -226,12 +230,13 @@ public record VkAllocationCallbacks(@NotNull MemorySegment segment) implements I
         return this;
     }
 
-    public @Pointer(comment="PFN_vkInternalAllocationNotification") MemorySegment pfnInternalAllocation() {
+    public @Pointer(comment="PFN_vkInternalAllocationNotification") @NotNull MemorySegment pfnInternalAllocation() {
         return segment.get(LAYOUT$pfnInternalAllocation, OFFSET$pfnInternalAllocation);
     }
 
-    public void pfnInternalAllocation(@Pointer(comment="PFN_vkInternalAllocationNotification") MemorySegment value) {
+    public VkAllocationCallbacks pfnInternalAllocation(@Pointer(comment="PFN_vkInternalAllocationNotification") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pfnInternalAllocation, OFFSET$pfnInternalAllocation, value);
+        return this;
     }
 
     public VkAllocationCallbacks pfnInternalAllocation(@Nullable IPointer pointer) {
@@ -239,12 +244,13 @@ public record VkAllocationCallbacks(@NotNull MemorySegment segment) implements I
         return this;
     }
 
-    public @Pointer(comment="PFN_vkInternalFreeNotification") MemorySegment pfnInternalFree() {
+    public @Pointer(comment="PFN_vkInternalFreeNotification") @NotNull MemorySegment pfnInternalFree() {
         return segment.get(LAYOUT$pfnInternalFree, OFFSET$pfnInternalFree);
     }
 
-    public void pfnInternalFree(@Pointer(comment="PFN_vkInternalFreeNotification") MemorySegment value) {
+    public VkAllocationCallbacks pfnInternalFree(@Pointer(comment="PFN_vkInternalFreeNotification") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pfnInternalFree, OFFSET$pfnInternalFree, value);
+        return this;
     }
 
     public VkAllocationCallbacks pfnInternalFree(@Nullable IPointer pointer) {

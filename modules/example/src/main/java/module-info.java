@@ -6,4 +6,6 @@ module example {
     requires club.doki7.vulkan;
     requires club.doki7.vma;
     requires java.desktop;
+    requires club.doki7.stb;
+    requires club.doki7.glfw;
 }

@@ -203,12 +203,13 @@ public record VkVideoEncodeAV1RateControlInfoKHR(@NotNull MemorySegment segment)
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkVideoEncodeAV1RateControlInfoKHR pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkVideoEncodeAV1RateControlInfoKHR pNext(@Nullable IPointer pointer) {
@@ -216,11 +217,11 @@ public record VkVideoEncodeAV1RateControlInfoKHR(@NotNull MemorySegment segment)
         return this;
     }
 
-    public @EnumType(VkVideoEncodeAV1RateControlFlagsKHR.class) int flags() {
+    public @Bitmask(VkVideoEncodeAV1RateControlFlagsKHR.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public VkVideoEncodeAV1RateControlInfoKHR flags(@EnumType(VkVideoEncodeAV1RateControlFlagsKHR.class) int value) {
+    public VkVideoEncodeAV1RateControlInfoKHR flags(@Bitmask(VkVideoEncodeAV1RateControlFlagsKHR.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
         return this;
     }

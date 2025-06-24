@@ -1,3 +1,47 @@
+## Unreleased v0.4.1
+
+### Bugfixes
+
+- Fixed `BytePtr.checked` which was not previouly marked as `static`.
+
+### Minor changes
+
+- `LibcArena` and a few singleton library loaders are now implemented in terms of `enum` instead of `class`, in order to support well-behaved serialization.
+
+## v0.4.0
+
+Upgrade `ffm-plus` to v0.2.4, and other wrapper modules to v0.4.0.
+
+### Breaking changes
+
+- Add new annotation `@Bitmask` and use it to mark bitmask types. Original `@EnumType` annotation should only be applied to non-composable enums. This won't break build, but you'll see IDE warnings if you are using our [ffm-plus-inspection](https://github.com/club-doki7/ffm-plus-inspection) plugin.
+- All `MemorySegment`s are now `@NotNull` by default. APIs previously accepts `null` `MemorySegment` will now throw `NullPointerException` if you pass `null`. Always use `MemorySegment.NULL`.
+- Deprecated `Loader` class and its methods. If you need to load basic functions (like `libc` functions) from "global" scope, use `JavaSystemLibrary.INSTANCE.load` instead; if you need to load functions from a specific library, use `ILibraryLoader` and `ISharedLibrary` interface instead.
+- Updated `VulkanLoader`, `GLFWLoader`, `VMAJavaTraceUtil` and `STBJavaTraceUtil` APIs to use `ILibraryLoader` and `ISharedLibrary` accordingly.
+
+### New bindings
+
+- Added `stb` module, which provides bindings for `stb` libraries. Currently the following components are supported:
+  - `stb.image` (`stb_image.h`): Image loading library.
+  - `stb.imagewrite` (`stb_image_write.h`): Image writing library.
+  - `stb.imageresize` (`stb_image_resize2.h`): Image resizing library.
+  - `stb.truetype` (`stb_truetype.h`): TrueType font rendering library.
+
+### Functionality updates
+
+- Added `ILibraryLoader` and `ISharedLibrary` interface to reduce global `System.load`/`System.loadLibrary` calls. This allows you to load libraries in a more controlled manner.
+  - This feature uses `LoadLibraryW` + `GetProcAddress` on Windows platform, `dlopen` + `dlsym` on Linux/FreeBSD/macOS platform.
+  - macOS library bundle (`.framework`) is not supported yet.
+
+### Quality of Life updates
+
+- PVOID type field setters accepting `MemorySegment`s now also returns `this` to allow chaining.
+- Added `ALLoader` class to automatically deal with platform library name difference (`OpenAL32.dll` on Windows vs `libopenal.so` on Linux).
+
+### Known issues
+
+- `LibcArena` does not work on Windows platform due to the lack of `aligned_alloc` support. `ShadercUtil` using `LibcArena` is also affected.
+
 ## v0.3.4
 
 Upgrade `ffm-plus` to v0.2.2, and other wrapper modules to v0.3.4.
@@ -61,3 +105,7 @@ A fresh start
 - Entities are renamed properly to reduce boilerplates.
 - Improved usability and correctness of `ffm-plus` (previously `panama-plus`) module.
 - Many other enhancements and bug fixes.
+
+### *Development history before 0.3.0?*
+
+See [vulkan4j-legacy](https://github.com/CousinZe/vulkan4j-legacy).

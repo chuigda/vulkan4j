@@ -200,12 +200,13 @@ public record VkPresentTimesInfoGOOGLE(@NotNull MemorySegment segment) implement
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkPresentTimesInfoGOOGLE pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkPresentTimesInfoGOOGLE pNext(@Nullable IPointer pointer) {
@@ -246,11 +247,11 @@ public record VkPresentTimesInfoGOOGLE(@NotNull MemorySegment segment) implement
         return new VkPresentTimeGOOGLE(s);
     }
 
-    public @Pointer(target=VkPresentTimeGOOGLE.class) MemorySegment pTimesRaw() {
+    public @Pointer(target=VkPresentTimeGOOGLE.class) @NotNull MemorySegment pTimesRaw() {
         return segment.get(LAYOUT$pTimes, OFFSET$pTimes);
     }
 
-    public void pTimesRaw(@Pointer(target=VkPresentTimeGOOGLE.class) MemorySegment value) {
+    public void pTimesRaw(@Pointer(target=VkPresentTimeGOOGLE.class) @NotNull MemorySegment value) {
         segment.set(LAYOUT$pTimes, OFFSET$pTimes, value);
     }
 

@@ -5,6 +5,7 @@ import java.lang.invoke.MethodHandle;
 import java.util.Objects;
 
 import org.jetbrains.annotations.Nullable;
+import org.jetbrains.annotations.NotNull;
 import club.doki7.ffm.NativeLayout;
 import club.doki7.ffm.RawFunctionLoader;
 import club.doki7.ffm.annotation.*;
@@ -2732,7 +2733,7 @@ public final class GLCompatibility extends GL {
     public void bufferDataARB(
         @NativeType("GLenum") int target,
         @NativeType("GLsizeiptrARB") long size,
-        @Pointer(comment="void*") MemorySegment data,
+        @Pointer(comment="void*") @NotNull MemorySegment data,
         @NativeType("GLenum") int usage
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glBufferDataARB);
@@ -2773,7 +2774,7 @@ public final class GLCompatibility extends GL {
         @NativeType("GLenum") int target,
         @NativeType("GLintptrARB") long offset,
         @NativeType("GLsizeiptrARB") long size,
-        @Pointer(comment="void*") MemorySegment data
+        @Pointer(comment="void*") @NotNull MemorySegment data
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glBufferSubDataARB);
         try {
@@ -2804,7 +2805,7 @@ public final class GLCompatibility extends GL {
     public void callLists(
         @NativeType("GLsizei") int n,
         @NativeType("GLenum") int type,
-        @Pointer(comment="void*") MemorySegment lists
+        @Pointer(comment="void*") @NotNull MemorySegment lists
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glCallLists);
         try {
@@ -3632,7 +3633,7 @@ public final class GLCompatibility extends GL {
         @NativeType("GLint") int size,
         @NativeType("GLenum") int type,
         @NativeType("GLsizei") int stride,
-        @Pointer(comment="void*") MemorySegment pointer
+        @Pointer(comment="void*") @NotNull MemorySegment pointer
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glColorPointer);
         try {
@@ -3653,7 +3654,7 @@ public final class GLCompatibility extends GL {
         @NativeType("GLsizei") int count,
         @NativeType("GLenum") int format,
         @NativeType("GLenum") int type,
-        @Pointer(comment="void*") MemorySegment data
+        @Pointer(comment="void*") @NotNull MemorySegment data
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glColorSubTable);
         try {
@@ -3676,7 +3677,7 @@ public final class GLCompatibility extends GL {
         @NativeType("GLsizei") int width,
         @NativeType("GLenum") int format,
         @NativeType("GLenum") int type,
-        @Pointer(comment="void*") MemorySegment table
+        @Pointer(comment="void*") @NotNull MemorySegment table
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glColorTable);
         try {
@@ -3747,7 +3748,7 @@ public final class GLCompatibility extends GL {
         @NativeType("GLsizei") int width,
         @NativeType("GLint") int border,
         @NativeType("GLsizei") int imageSize,
-        @Pointer(comment="void*") MemorySegment data
+        @Pointer(comment="void*") @NotNull MemorySegment data
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glCompressedTexImage1DARB);
         try {
@@ -3773,7 +3774,7 @@ public final class GLCompatibility extends GL {
         @NativeType("GLsizei") int height,
         @NativeType("GLint") int border,
         @NativeType("GLsizei") int imageSize,
-        @Pointer(comment="void*") MemorySegment data
+        @Pointer(comment="void*") @NotNull MemorySegment data
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glCompressedTexImage2DARB);
         try {
@@ -3801,7 +3802,7 @@ public final class GLCompatibility extends GL {
         @NativeType("GLsizei") int depth,
         @NativeType("GLint") int border,
         @NativeType("GLsizei") int imageSize,
-        @Pointer(comment="void*") MemorySegment data
+        @Pointer(comment="void*") @NotNull MemorySegment data
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glCompressedTexImage3DARB);
         try {
@@ -3828,7 +3829,7 @@ public final class GLCompatibility extends GL {
         @NativeType("GLsizei") int width,
         @NativeType("GLenum") int format,
         @NativeType("GLsizei") int imageSize,
-        @Pointer(comment="void*") MemorySegment data
+        @Pointer(comment="void*") @NotNull MemorySegment data
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glCompressedTexSubImage1DARB);
         try {
@@ -3855,7 +3856,7 @@ public final class GLCompatibility extends GL {
         @NativeType("GLsizei") int height,
         @NativeType("GLenum") int format,
         @NativeType("GLsizei") int imageSize,
-        @Pointer(comment="void*") MemorySegment data
+        @Pointer(comment="void*") @NotNull MemorySegment data
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glCompressedTexSubImage2DARB);
         try {
@@ -3886,7 +3887,7 @@ public final class GLCompatibility extends GL {
         @NativeType("GLsizei") int depth,
         @NativeType("GLenum") int format,
         @NativeType("GLsizei") int imageSize,
-        @Pointer(comment="void*") MemorySegment data
+        @Pointer(comment="void*") @NotNull MemorySegment data
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glCompressedTexSubImage3DARB);
         try {
@@ -3914,7 +3915,7 @@ public final class GLCompatibility extends GL {
         @NativeType("GLsizei") int width,
         @NativeType("GLenum") int format,
         @NativeType("GLenum") int type,
-        @Pointer(comment="void*") MemorySegment image
+        @Pointer(comment="void*") @NotNull MemorySegment image
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glConvolutionFilter1D);
         try {
@@ -3938,7 +3939,7 @@ public final class GLCompatibility extends GL {
         @NativeType("GLsizei") int height,
         @NativeType("GLenum") int format,
         @NativeType("GLenum") int type,
-        @Pointer(comment="void*") MemorySegment image
+        @Pointer(comment="void*") @NotNull MemorySegment image
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glConvolutionFilter2D);
         try {
@@ -4234,8 +4235,8 @@ public final class GLCompatibility extends GL {
     }
 
     public void debugMessageCallbackAMD(
-        @Pointer(comment="GLDEBUGPROCAMD") MemorySegment callback,
-        @Pointer(comment="void*") MemorySegment userParam
+        @Pointer(comment="GLDEBUGPROCAMD") @NotNull MemorySegment callback,
+        @Pointer(comment="void*") @NotNull MemorySegment userParam
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glDebugMessageCallbackAMD);
         try {
@@ -4514,7 +4515,7 @@ public final class GLCompatibility extends GL {
         @NativeType("GLsizei") int height,
         @NativeType("GLenum") int format,
         @NativeType("GLenum") int type,
-        @Pointer(comment="void*") MemorySegment pixels
+        @Pointer(comment="void*") @NotNull MemorySegment pixels
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glDrawPixels);
         try {
@@ -4593,7 +4594,7 @@ public final class GLCompatibility extends GL {
 
     public void edgeFlagPointer(
         @NativeType("GLsizei") int stride,
-        @Pointer(comment="void*") MemorySegment pointer
+        @Pointer(comment="void*") @NotNull MemorySegment pointer
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glEdgeFlagPointer);
         try {
@@ -4938,7 +4939,7 @@ public final class GLCompatibility extends GL {
     public void fogCoordPointer(
         @NativeType("GLenum") int type,
         @NativeType("GLsizei") int stride,
-        @Pointer(comment="void*") MemorySegment pointer
+        @Pointer(comment="void*") @NotNull MemorySegment pointer
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glFogCoordPointer);
         try {
@@ -5521,7 +5522,7 @@ public final class GLCompatibility extends GL {
         @NativeType("GLenum") int target,
         @NativeType("GLintptrARB") long offset,
         @NativeType("GLsizeiptrARB") long size,
-        @Pointer(comment="void*") MemorySegment data
+        @Pointer(comment="void*") @NotNull MemorySegment data
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glGetBufferSubDataARB);
         try {
@@ -5555,7 +5556,7 @@ public final class GLCompatibility extends GL {
         @NativeType("GLenum") int target,
         @NativeType("GLenum") int format,
         @NativeType("GLenum") int type,
-        @Pointer(comment="void*") MemorySegment table
+        @Pointer(comment="void*") @NotNull MemorySegment table
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glGetColorTable);
         try {
@@ -5607,7 +5608,7 @@ public final class GLCompatibility extends GL {
     public void getCompressedTexImageARB(
         @NativeType("GLenum") int target,
         @NativeType("GLint") int level,
-        @Pointer(comment="void*") MemorySegment img
+        @Pointer(comment="void*") @NotNull MemorySegment img
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glGetCompressedTexImageARB);
         try {
@@ -5625,7 +5626,7 @@ public final class GLCompatibility extends GL {
         @NativeType("GLenum") int target,
         @NativeType("GLenum") int format,
         @NativeType("GLenum") int type,
-        @Pointer(comment="void*") MemorySegment image
+        @Pointer(comment="void*") @NotNull MemorySegment image
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glGetConvolutionFilter);
         try {
@@ -5768,7 +5769,7 @@ public final class GLCompatibility extends GL {
         @NativeType("GLboolean") @Unsigned byte reset,
         @NativeType("GLenum") int format,
         @NativeType("GLenum") int type,
-        @Pointer(comment="void*") MemorySegment values
+        @Pointer(comment="void*") @NotNull MemorySegment values
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glGetHistogram);
         try {
@@ -5961,7 +5962,7 @@ public final class GLCompatibility extends GL {
         @NativeType("GLboolean") @Unsigned byte reset,
         @NativeType("GLenum") int format,
         @NativeType("GLenum") int type,
-        @Pointer(comment="void*") MemorySegment values
+        @Pointer(comment="void*") @NotNull MemorySegment values
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glGetMinmax);
         try {
@@ -6259,7 +6260,7 @@ public final class GLCompatibility extends GL {
     public void getProgramStringARB(
         @NativeType("GLenum") int target,
         @NativeType("GLenum") int pname,
-        @Pointer(comment="void*") MemorySegment string
+        @Pointer(comment="void*") @NotNull MemorySegment string
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glGetProgramStringARB);
         try {
@@ -6413,9 +6414,9 @@ public final class GLCompatibility extends GL {
         @NativeType("GLenum") int target,
         @NativeType("GLenum") int format,
         @NativeType("GLenum") int type,
-        @Pointer(comment="void*") MemorySegment row,
-        @Pointer(comment="void*") MemorySegment column,
-        @Pointer(comment="void*") MemorySegment span
+        @Pointer(comment="void*") @NotNull MemorySegment row,
+        @Pointer(comment="void*") @NotNull MemorySegment column,
+        @Pointer(comment="void*") @NotNull MemorySegment span
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glGetSeparableFilter);
         try {
@@ -6882,7 +6883,7 @@ public final class GLCompatibility extends GL {
         @NativeType("GLenum") int format,
         @NativeType("GLenum") int type,
         @NativeType("GLsizei") int bufSize,
-        @Pointer(comment="void*") MemorySegment table
+        @Pointer(comment="void*") @NotNull MemorySegment table
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glGetnColorTable);
         try {
@@ -6903,7 +6904,7 @@ public final class GLCompatibility extends GL {
         @NativeType("GLenum") int format,
         @NativeType("GLenum") int type,
         @NativeType("GLsizei") int bufSize,
-        @Pointer(comment="void*") MemorySegment table
+        @Pointer(comment="void*") @NotNull MemorySegment table
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glGetnColorTableARB);
         try {
@@ -6924,7 +6925,7 @@ public final class GLCompatibility extends GL {
         @NativeType("GLenum") int format,
         @NativeType("GLenum") int type,
         @NativeType("GLsizei") int bufSize,
-        @Pointer(comment="void*") MemorySegment image
+        @Pointer(comment="void*") @NotNull MemorySegment image
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glGetnConvolutionFilter);
         try {
@@ -6945,7 +6946,7 @@ public final class GLCompatibility extends GL {
         @NativeType("GLenum") int format,
         @NativeType("GLenum") int type,
         @NativeType("GLsizei") int bufSize,
-        @Pointer(comment="void*") MemorySegment image
+        @Pointer(comment="void*") @NotNull MemorySegment image
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glGetnConvolutionFilterARB);
         try {
@@ -6967,7 +6968,7 @@ public final class GLCompatibility extends GL {
         @NativeType("GLenum") int format,
         @NativeType("GLenum") int type,
         @NativeType("GLsizei") int bufSize,
-        @Pointer(comment="void*") MemorySegment values
+        @Pointer(comment="void*") @NotNull MemorySegment values
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glGetnHistogram);
         try {
@@ -6990,7 +6991,7 @@ public final class GLCompatibility extends GL {
         @NativeType("GLenum") int format,
         @NativeType("GLenum") int type,
         @NativeType("GLsizei") int bufSize,
-        @Pointer(comment="void*") MemorySegment values
+        @Pointer(comment="void*") @NotNull MemorySegment values
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glGetnHistogramARB);
         try {
@@ -7127,7 +7128,7 @@ public final class GLCompatibility extends GL {
         @NativeType("GLenum") int format,
         @NativeType("GLenum") int type,
         @NativeType("GLsizei") int bufSize,
-        @Pointer(comment="void*") MemorySegment values
+        @Pointer(comment="void*") @NotNull MemorySegment values
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glGetnMinmax);
         try {
@@ -7150,7 +7151,7 @@ public final class GLCompatibility extends GL {
         @NativeType("GLenum") int format,
         @NativeType("GLenum") int type,
         @NativeType("GLsizei") int bufSize,
-        @Pointer(comment="void*") MemorySegment values
+        @Pointer(comment="void*") @NotNull MemorySegment values
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glGetnMinmaxARB);
         try {
@@ -7304,10 +7305,10 @@ public final class GLCompatibility extends GL {
         @NativeType("GLenum") int format,
         @NativeType("GLenum") int type,
         @NativeType("GLsizei") int rowBufSize,
-        @Pointer(comment="void*") MemorySegment row,
+        @Pointer(comment="void*") @NotNull MemorySegment row,
         @NativeType("GLsizei") int columnBufSize,
-        @Pointer(comment="void*") MemorySegment column,
-        @Pointer(comment="void*") MemorySegment span
+        @Pointer(comment="void*") @NotNull MemorySegment column,
+        @Pointer(comment="void*") @NotNull MemorySegment span
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glGetnSeparableFilter);
         try {
@@ -7331,10 +7332,10 @@ public final class GLCompatibility extends GL {
         @NativeType("GLenum") int format,
         @NativeType("GLenum") int type,
         @NativeType("GLsizei") int rowBufSize,
-        @Pointer(comment="void*") MemorySegment row,
+        @Pointer(comment="void*") @NotNull MemorySegment row,
         @NativeType("GLsizei") int columnBufSize,
-        @Pointer(comment="void*") MemorySegment column,
-        @Pointer(comment="void*") MemorySegment span
+        @Pointer(comment="void*") @NotNull MemorySegment column,
+        @Pointer(comment="void*") @NotNull MemorySegment span
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glGetnSeparableFilterARB);
         try {
@@ -7406,7 +7407,7 @@ public final class GLCompatibility extends GL {
     public void indexPointer(
         @NativeType("GLenum") int type,
         @NativeType("GLsizei") int stride,
-        @Pointer(comment="void*") MemorySegment pointer
+        @Pointer(comment="void*") @NotNull MemorySegment pointer
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glIndexPointer);
         try {
@@ -7563,7 +7564,7 @@ public final class GLCompatibility extends GL {
     public void interleavedArrays(
         @NativeType("GLenum") int format,
         @NativeType("GLsizei") int stride,
-        @Pointer(comment="void*") MemorySegment pointer
+        @Pointer(comment="void*") @NotNull MemorySegment pointer
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glInterleavedArrays);
         try {
@@ -8074,7 +8075,7 @@ public final class GLCompatibility extends GL {
         }
     }
 
-    public @Pointer(comment="void*") MemorySegment mapBufferARB(
+    public @Pointer(comment="void*") @NotNull MemorySegment mapBufferARB(
         @NativeType("GLenum") int target,
         @NativeType("GLenum") int access
     ) {
@@ -8169,7 +8170,7 @@ public final class GLCompatibility extends GL {
         }
     }
 
-    public @Pointer(comment="void*") MemorySegment mapTexture2DINTEL(
+    public @Pointer(comment="void*") @NotNull MemorySegment mapTexture2DINTEL(
         @NativeType("GLuint") @Unsigned int texture,
         @NativeType("GLint") int level,
         @NativeType("GLbitfield") @Unsigned int access,
@@ -8262,7 +8263,7 @@ public final class GLCompatibility extends GL {
         @NativeType("GLint") int size,
         @NativeType("GLenum") int type,
         @NativeType("GLsizei") int stride,
-        @Pointer(comment="void*") MemorySegment pointer
+        @Pointer(comment="void*") @NotNull MemorySegment pointer
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glMatrixIndexPointerARB);
         try {
@@ -9817,7 +9818,7 @@ public final class GLCompatibility extends GL {
         @NativeType("GLuint") @Unsigned int buffer,
         @NativeType("GLintptr") long offset,
         @NativeType("GLsizeiptr") long size,
-        @Pointer(comment="void*") MemorySegment data
+        @Pointer(comment="void*") @NotNull MemorySegment data
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glMulticastBufferSubDataNV);
         try {
@@ -10321,7 +10322,7 @@ public final class GLCompatibility extends GL {
     public void normalPointer(
         @NativeType("GLenum") int type,
         @NativeType("GLsizei") int stride,
-        @Pointer(comment="void*") MemorySegment pointer
+        @Pointer(comment="void*") @NotNull MemorySegment pointer
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glNormalPointer);
         try {
@@ -10435,7 +10436,7 @@ public final class GLCompatibility extends GL {
     public void pixelDataRangeNV(
         @NativeType("GLenum") int target,
         @NativeType("GLsizei") int length,
-        @Pointer(comment="void*") MemorySegment pointer
+        @Pointer(comment="void*") @NotNull MemorySegment pointer
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glPixelDataRangeNV);
         try {
@@ -10947,7 +10948,7 @@ public final class GLCompatibility extends GL {
         @NativeType("GLenum") int target,
         @NativeType("GLenum") int format,
         @NativeType("GLsizei") int len,
-        @Pointer(comment="void*") MemorySegment string
+        @Pointer(comment="void*") @NotNull MemorySegment string
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glProgramStringARB);
         try {
@@ -12648,7 +12649,7 @@ public final class GLCompatibility extends GL {
         @NativeType("GLint") int size,
         @NativeType("GLenum") int type,
         @NativeType("GLsizei") int stride,
-        @Pointer(comment="void*") MemorySegment pointer
+        @Pointer(comment="void*") @NotNull MemorySegment pointer
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glSecondaryColorPointer);
         try {
@@ -12667,7 +12668,7 @@ public final class GLCompatibility extends GL {
         @NativeType("GLint") int size,
         @NativeType("GLenum") int type,
         @NativeType("GLsizei") int stride,
-        @Pointer(comment="void*") MemorySegment pointer
+        @Pointer(comment="void*") @NotNull MemorySegment pointer
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glSecondaryColorPointerEXT);
         try {
@@ -12721,8 +12722,8 @@ public final class GLCompatibility extends GL {
         @NativeType("GLsizei") int height,
         @NativeType("GLenum") int format,
         @NativeType("GLenum") int type,
-        @Pointer(comment="void*") MemorySegment row,
-        @Pointer(comment="void*") MemorySegment column
+        @Pointer(comment="void*") @NotNull MemorySegment row,
+        @Pointer(comment="void*") @NotNull MemorySegment column
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glSeparableFilter2D);
         try {
@@ -12856,7 +12857,7 @@ public final class GLCompatibility extends GL {
 
     public void stringMarkerGREMEDY(
         @NativeType("GLsizei") int len,
-        @Pointer(comment="void*") MemorySegment string
+        @Pointer(comment="void*") @NotNull MemorySegment string
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glStringMarkerGREMEDY);
         try {
@@ -13642,7 +13643,7 @@ public final class GLCompatibility extends GL {
         @NativeType("GLint") int size,
         @NativeType("GLenum") int type,
         @NativeType("GLsizei") int stride,
-        @Pointer(comment="void*") MemorySegment pointer
+        @Pointer(comment="void*") @NotNull MemorySegment pointer
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glTexCoordPointer);
         try {
@@ -15501,7 +15502,7 @@ public final class GLCompatibility extends GL {
 
     public void vertexArrayRangeNV(
         @NativeType("GLsizei") int length,
-        @Pointer(comment="void*") MemorySegment pointer
+        @Pointer(comment="void*") @NotNull MemorySegment pointer
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glVertexArrayRangeNV);
         try {
@@ -16557,7 +16558,7 @@ public final class GLCompatibility extends GL {
         @NativeType("GLint") int size,
         @NativeType("GLenum") int type,
         @NativeType("GLsizei") int stride,
-        @Pointer(comment="void*") MemorySegment pointer
+        @Pointer(comment="void*") @NotNull MemorySegment pointer
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glVertexAttribIPointerEXT);
         try {
@@ -16710,7 +16711,7 @@ public final class GLCompatibility extends GL {
         @NativeType("GLint") int size,
         @NativeType("GLenum") int type,
         @NativeType("GLsizei") int stride,
-        @Pointer(comment="void*") MemorySegment pointer
+        @Pointer(comment="void*") @NotNull MemorySegment pointer
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glVertexAttribLPointerEXT);
         try {
@@ -16749,7 +16750,7 @@ public final class GLCompatibility extends GL {
         @NativeType("GLenum") int type,
         @NativeType("GLboolean") @Unsigned byte normalized,
         @NativeType("GLsizei") int stride,
-        @Pointer(comment="void*") MemorySegment pointer
+        @Pointer(comment="void*") @NotNull MemorySegment pointer
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glVertexAttribPointerARB);
         try {
@@ -16941,7 +16942,7 @@ public final class GLCompatibility extends GL {
         @NativeType("GLint") int size,
         @NativeType("GLenum") int type,
         @NativeType("GLsizei") int stride,
-        @Pointer(comment="void*") MemorySegment pointer
+        @Pointer(comment="void*") @NotNull MemorySegment pointer
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glVertexPointer);
         try {
@@ -17005,7 +17006,7 @@ public final class GLCompatibility extends GL {
         @NativeType("GLint") int size,
         @NativeType("GLenum") int type,
         @NativeType("GLsizei") int stride,
-        @Pointer(comment="void*") MemorySegment pointer
+        @Pointer(comment="void*") @NotNull MemorySegment pointer
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glWeightPointerARB);
         try {

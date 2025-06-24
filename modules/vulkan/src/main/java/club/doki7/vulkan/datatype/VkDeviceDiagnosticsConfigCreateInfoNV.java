@@ -199,12 +199,13 @@ public record VkDeviceDiagnosticsConfigCreateInfoNV(@NotNull MemorySegment segme
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkDeviceDiagnosticsConfigCreateInfoNV pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkDeviceDiagnosticsConfigCreateInfoNV pNext(@Nullable IPointer pointer) {
@@ -212,11 +213,11 @@ public record VkDeviceDiagnosticsConfigCreateInfoNV(@NotNull MemorySegment segme
         return this;
     }
 
-    public @EnumType(VkDeviceDiagnosticsConfigFlagsNV.class) int flags() {
+    public @Bitmask(VkDeviceDiagnosticsConfigFlagsNV.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public VkDeviceDiagnosticsConfigCreateInfoNV flags(@EnumType(VkDeviceDiagnosticsConfigFlagsNV.class) int value) {
+    public VkDeviceDiagnosticsConfigCreateInfoNV flags(@Bitmask(VkDeviceDiagnosticsConfigFlagsNV.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
         return this;
     }

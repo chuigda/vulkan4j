@@ -203,12 +203,13 @@ public record VkComputePipelineCreateInfo(@NotNull MemorySegment segment) implem
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkComputePipelineCreateInfo pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkComputePipelineCreateInfo pNext(@Nullable IPointer pointer) {
@@ -216,11 +217,11 @@ public record VkComputePipelineCreateInfo(@NotNull MemorySegment segment) implem
         return this;
     }
 
-    public @EnumType(VkPipelineCreateFlags.class) int flags() {
+    public @Bitmask(VkPipelineCreateFlags.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public VkComputePipelineCreateInfo flags(@EnumType(VkPipelineCreateFlags.class) int value) {
+    public VkComputePipelineCreateInfo flags(@Bitmask(VkPipelineCreateFlags.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
         return this;
     }

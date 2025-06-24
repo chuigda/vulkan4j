@@ -201,12 +201,13 @@ public record VkPipelineCoverageToColorStateCreateInfoNV(@NotNull MemorySegment 
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkPipelineCoverageToColorStateCreateInfoNV pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkPipelineCoverageToColorStateCreateInfoNV pNext(@Nullable IPointer pointer) {
@@ -214,11 +215,11 @@ public record VkPipelineCoverageToColorStateCreateInfoNV(@NotNull MemorySegment 
         return this;
     }
 
-    public @EnumType(VkPipelineCoverageToColorStateCreateFlagsNV.class) int flags() {
+    public @Bitmask(VkPipelineCoverageToColorStateCreateFlagsNV.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public VkPipelineCoverageToColorStateCreateInfoNV flags(@EnumType(VkPipelineCoverageToColorStateCreateFlagsNV.class) int value) {
+    public VkPipelineCoverageToColorStateCreateInfoNV flags(@Bitmask(VkPipelineCoverageToColorStateCreateFlagsNV.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
         return this;
     }

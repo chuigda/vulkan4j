@@ -196,11 +196,11 @@ public record VkDescriptorDataEXT(@NotNull MemorySegment segment) implements IVk
         return this;
     }
 
-    public @Pointer(target=VkSampler.class) MemorySegment pSamplerRaw() {
+    public @Pointer(target=VkSampler.class) @NotNull MemorySegment pSamplerRaw() {
         return segment.get(LAYOUT$pSampler, OFFSET$pSampler);
     }
 
-    public void pSamplerRaw(@Pointer(target=VkSampler.class) MemorySegment value) {
+    public void pSamplerRaw(@Pointer(target=VkSampler.class) @NotNull MemorySegment value) {
         segment.set(LAYOUT$pSampler, OFFSET$pSampler, value);
     }
 
@@ -228,11 +228,11 @@ public record VkDescriptorDataEXT(@NotNull MemorySegment segment) implements IVk
         return new VkDescriptorImageInfo(s);
     }
 
-    public @Pointer(target=VkDescriptorImageInfo.class) MemorySegment pCombinedImageSamplerRaw() {
+    public @Pointer(target=VkDescriptorImageInfo.class) @NotNull MemorySegment pCombinedImageSamplerRaw() {
         return segment.get(LAYOUT$pCombinedImageSampler, OFFSET$pCombinedImageSampler);
     }
 
-    public void pCombinedImageSamplerRaw(@Pointer(target=VkDescriptorImageInfo.class) MemorySegment value) {
+    public void pCombinedImageSamplerRaw(@Pointer(target=VkDescriptorImageInfo.class) @NotNull MemorySegment value) {
         segment.set(LAYOUT$pCombinedImageSampler, OFFSET$pCombinedImageSampler, value);
     }
 
@@ -260,11 +260,11 @@ public record VkDescriptorDataEXT(@NotNull MemorySegment segment) implements IVk
         return new VkDescriptorImageInfo(s);
     }
 
-    public @Pointer(target=VkDescriptorImageInfo.class) MemorySegment pInputAttachmentImageRaw() {
+    public @Pointer(target=VkDescriptorImageInfo.class) @NotNull MemorySegment pInputAttachmentImageRaw() {
         return segment.get(LAYOUT$pInputAttachmentImage, OFFSET$pInputAttachmentImage);
     }
 
-    public void pInputAttachmentImageRaw(@Pointer(target=VkDescriptorImageInfo.class) MemorySegment value) {
+    public void pInputAttachmentImageRaw(@Pointer(target=VkDescriptorImageInfo.class) @NotNull MemorySegment value) {
         segment.set(LAYOUT$pInputAttachmentImage, OFFSET$pInputAttachmentImage, value);
     }
 
@@ -292,11 +292,11 @@ public record VkDescriptorDataEXT(@NotNull MemorySegment segment) implements IVk
         return new VkDescriptorImageInfo(s);
     }
 
-    public @Pointer(target=VkDescriptorImageInfo.class) MemorySegment pSampledImageRaw() {
+    public @Pointer(target=VkDescriptorImageInfo.class) @NotNull MemorySegment pSampledImageRaw() {
         return segment.get(LAYOUT$pSampledImage, OFFSET$pSampledImage);
     }
 
-    public void pSampledImageRaw(@Pointer(target=VkDescriptorImageInfo.class) MemorySegment value) {
+    public void pSampledImageRaw(@Pointer(target=VkDescriptorImageInfo.class) @NotNull MemorySegment value) {
         segment.set(LAYOUT$pSampledImage, OFFSET$pSampledImage, value);
     }
 
@@ -324,11 +324,11 @@ public record VkDescriptorDataEXT(@NotNull MemorySegment segment) implements IVk
         return new VkDescriptorImageInfo(s);
     }
 
-    public @Pointer(target=VkDescriptorImageInfo.class) MemorySegment pStorageImageRaw() {
+    public @Pointer(target=VkDescriptorImageInfo.class) @NotNull MemorySegment pStorageImageRaw() {
         return segment.get(LAYOUT$pStorageImage, OFFSET$pStorageImage);
     }
 
-    public void pStorageImageRaw(@Pointer(target=VkDescriptorImageInfo.class) MemorySegment value) {
+    public void pStorageImageRaw(@Pointer(target=VkDescriptorImageInfo.class) @NotNull MemorySegment value) {
         segment.set(LAYOUT$pStorageImage, OFFSET$pStorageImage, value);
     }
 
@@ -356,11 +356,11 @@ public record VkDescriptorDataEXT(@NotNull MemorySegment segment) implements IVk
         return new VkDescriptorAddressInfoEXT(s);
     }
 
-    public @Pointer(target=VkDescriptorAddressInfoEXT.class) MemorySegment pUniformTexelBufferRaw() {
+    public @Pointer(target=VkDescriptorAddressInfoEXT.class) @NotNull MemorySegment pUniformTexelBufferRaw() {
         return segment.get(LAYOUT$pUniformTexelBuffer, OFFSET$pUniformTexelBuffer);
     }
 
-    public void pUniformTexelBufferRaw(@Pointer(target=VkDescriptorAddressInfoEXT.class) MemorySegment value) {
+    public void pUniformTexelBufferRaw(@Pointer(target=VkDescriptorAddressInfoEXT.class) @NotNull MemorySegment value) {
         segment.set(LAYOUT$pUniformTexelBuffer, OFFSET$pUniformTexelBuffer, value);
     }
 
@@ -388,11 +388,11 @@ public record VkDescriptorDataEXT(@NotNull MemorySegment segment) implements IVk
         return new VkDescriptorAddressInfoEXT(s);
     }
 
-    public @Pointer(target=VkDescriptorAddressInfoEXT.class) MemorySegment pStorageTexelBufferRaw() {
+    public @Pointer(target=VkDescriptorAddressInfoEXT.class) @NotNull MemorySegment pStorageTexelBufferRaw() {
         return segment.get(LAYOUT$pStorageTexelBuffer, OFFSET$pStorageTexelBuffer);
     }
 
-    public void pStorageTexelBufferRaw(@Pointer(target=VkDescriptorAddressInfoEXT.class) MemorySegment value) {
+    public void pStorageTexelBufferRaw(@Pointer(target=VkDescriptorAddressInfoEXT.class) @NotNull MemorySegment value) {
         segment.set(LAYOUT$pStorageTexelBuffer, OFFSET$pStorageTexelBuffer, value);
     }
 
@@ -420,11 +420,11 @@ public record VkDescriptorDataEXT(@NotNull MemorySegment segment) implements IVk
         return new VkDescriptorAddressInfoEXT(s);
     }
 
-    public @Pointer(target=VkDescriptorAddressInfoEXT.class) MemorySegment pUniformBufferRaw() {
+    public @Pointer(target=VkDescriptorAddressInfoEXT.class) @NotNull MemorySegment pUniformBufferRaw() {
         return segment.get(LAYOUT$pUniformBuffer, OFFSET$pUniformBuffer);
     }
 
-    public void pUniformBufferRaw(@Pointer(target=VkDescriptorAddressInfoEXT.class) MemorySegment value) {
+    public void pUniformBufferRaw(@Pointer(target=VkDescriptorAddressInfoEXT.class) @NotNull MemorySegment value) {
         segment.set(LAYOUT$pUniformBuffer, OFFSET$pUniformBuffer, value);
     }
 
@@ -452,11 +452,11 @@ public record VkDescriptorDataEXT(@NotNull MemorySegment segment) implements IVk
         return new VkDescriptorAddressInfoEXT(s);
     }
 
-    public @Pointer(target=VkDescriptorAddressInfoEXT.class) MemorySegment pStorageBufferRaw() {
+    public @Pointer(target=VkDescriptorAddressInfoEXT.class) @NotNull MemorySegment pStorageBufferRaw() {
         return segment.get(LAYOUT$pStorageBuffer, OFFSET$pStorageBuffer);
     }
 
-    public void pStorageBufferRaw(@Pointer(target=VkDescriptorAddressInfoEXT.class) MemorySegment value) {
+    public void pStorageBufferRaw(@Pointer(target=VkDescriptorAddressInfoEXT.class) @NotNull MemorySegment value) {
         segment.set(LAYOUT$pStorageBuffer, OFFSET$pStorageBuffer, value);
     }
 

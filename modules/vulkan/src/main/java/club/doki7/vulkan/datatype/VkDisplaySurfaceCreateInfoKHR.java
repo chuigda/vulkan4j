@@ -206,12 +206,13 @@ public record VkDisplaySurfaceCreateInfoKHR(@NotNull MemorySegment segment) impl
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkDisplaySurfaceCreateInfoKHR pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkDisplaySurfaceCreateInfoKHR pNext(@Nullable IPointer pointer) {
@@ -219,11 +220,11 @@ public record VkDisplaySurfaceCreateInfoKHR(@NotNull MemorySegment segment) impl
         return this;
     }
 
-    public @EnumType(VkDisplaySurfaceCreateFlagsKHR.class) int flags() {
+    public @Bitmask(VkDisplaySurfaceCreateFlagsKHR.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public VkDisplaySurfaceCreateInfoKHR flags(@EnumType(VkDisplaySurfaceCreateFlagsKHR.class) int value) {
+    public VkDisplaySurfaceCreateInfoKHR flags(@Bitmask(VkDisplaySurfaceCreateFlagsKHR.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
         return this;
     }
@@ -259,11 +260,11 @@ public record VkDisplaySurfaceCreateInfoKHR(@NotNull MemorySegment segment) impl
         return this;
     }
 
-    public @EnumType(VkSurfaceTransformFlagsKHR.class) int transform() {
+    public @Bitmask(VkSurfaceTransformFlagsKHR.class) int transform() {
         return segment.get(LAYOUT$transform, OFFSET$transform);
     }
 
-    public VkDisplaySurfaceCreateInfoKHR transform(@EnumType(VkSurfaceTransformFlagsKHR.class) int value) {
+    public VkDisplaySurfaceCreateInfoKHR transform(@Bitmask(VkSurfaceTransformFlagsKHR.class) int value) {
         segment.set(LAYOUT$transform, OFFSET$transform, value);
         return this;
     }
@@ -277,11 +278,11 @@ public record VkDisplaySurfaceCreateInfoKHR(@NotNull MemorySegment segment) impl
         return this;
     }
 
-    public @EnumType(VkDisplayPlaneAlphaFlagsKHR.class) int alphaMode() {
+    public @Bitmask(VkDisplayPlaneAlphaFlagsKHR.class) int alphaMode() {
         return segment.get(LAYOUT$alphaMode, OFFSET$alphaMode);
     }
 
-    public VkDisplaySurfaceCreateInfoKHR alphaMode(@EnumType(VkDisplayPlaneAlphaFlagsKHR.class) int value) {
+    public VkDisplaySurfaceCreateInfoKHR alphaMode(@Bitmask(VkDisplayPlaneAlphaFlagsKHR.class) int value) {
         segment.set(LAYOUT$alphaMode, OFFSET$alphaMode, value);
         return this;
     }

@@ -199,12 +199,13 @@ public record VkVideoFormatH265QuantizationMapPropertiesKHR(@NotNull MemorySegme
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkVideoFormatH265QuantizationMapPropertiesKHR pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkVideoFormatH265QuantizationMapPropertiesKHR pNext(@Nullable IPointer pointer) {
@@ -212,11 +213,11 @@ public record VkVideoFormatH265QuantizationMapPropertiesKHR(@NotNull MemorySegme
         return this;
     }
 
-    public @EnumType(VkVideoEncodeH265CtbSizeFlagsKHR.class) int compatibleCtbSizes() {
+    public @Bitmask(VkVideoEncodeH265CtbSizeFlagsKHR.class) int compatibleCtbSizes() {
         return segment.get(LAYOUT$compatibleCtbSizes, OFFSET$compatibleCtbSizes);
     }
 
-    public VkVideoFormatH265QuantizationMapPropertiesKHR compatibleCtbSizes(@EnumType(VkVideoEncodeH265CtbSizeFlagsKHR.class) int value) {
+    public VkVideoFormatH265QuantizationMapPropertiesKHR compatibleCtbSizes(@Bitmask(VkVideoEncodeH265CtbSizeFlagsKHR.class) int value) {
         segment.set(LAYOUT$compatibleCtbSizes, OFFSET$compatibleCtbSizes, value);
         return this;
     }

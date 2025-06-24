@@ -191,11 +191,11 @@ public record VkLayerSettingEXT(@NotNull MemorySegment segment) implements IVkLa
         return this;
     }
 
-    public @Pointer(comment="int8_t*") MemorySegment pLayerNameRaw() {
+    public @Pointer(comment="int8_t*") @NotNull MemorySegment pLayerNameRaw() {
         return segment.get(LAYOUT$pLayerName, OFFSET$pLayerName);
     }
 
-    public void pLayerNameRaw(@Pointer(comment="int8_t*") MemorySegment value) {
+    public void pLayerNameRaw(@Pointer(comment="int8_t*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pLayerName, OFFSET$pLayerName, value);
     }
 
@@ -217,11 +217,11 @@ public record VkLayerSettingEXT(@NotNull MemorySegment segment) implements IVkLa
         return this;
     }
 
-    public @Pointer(comment="int8_t*") MemorySegment pSettingNameRaw() {
+    public @Pointer(comment="int8_t*") @NotNull MemorySegment pSettingNameRaw() {
         return segment.get(LAYOUT$pSettingName, OFFSET$pSettingName);
     }
 
-    public void pSettingNameRaw(@Pointer(comment="int8_t*") MemorySegment value) {
+    public void pSettingNameRaw(@Pointer(comment="int8_t*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pSettingName, OFFSET$pSettingName, value);
     }
 
@@ -243,12 +243,13 @@ public record VkLayerSettingEXT(@NotNull MemorySegment segment) implements IVkLa
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pValues() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pValues() {
         return segment.get(LAYOUT$pValues, OFFSET$pValues);
     }
 
-    public void pValues(@Pointer(comment="void*") MemorySegment value) {
+    public VkLayerSettingEXT pValues(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pValues, OFFSET$pValues, value);
+        return this;
     }
 
     public VkLayerSettingEXT pValues(@Nullable IPointer pointer) {

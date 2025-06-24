@@ -180,7 +180,7 @@ public record StdVideoH265SubLayerHrdParameters(@NotNull MemorySegment segment) 
         return this;
     }
 
-    public MemorySegment bit_rate_value_minus1Raw() {
+    public @NotNull MemorySegment bit_rate_value_minus1Raw() {
         return segment.asSlice(OFFSET$bit_rate_value_minus1, SIZE$bit_rate_value_minus1);
     }
 
@@ -193,7 +193,7 @@ public record StdVideoH265SubLayerHrdParameters(@NotNull MemorySegment segment) 
         return this;
     }
 
-    public MemorySegment cpb_size_value_minus1Raw() {
+    public @NotNull MemorySegment cpb_size_value_minus1Raw() {
         return segment.asSlice(OFFSET$cpb_size_value_minus1, SIZE$cpb_size_value_minus1);
     }
 
@@ -206,7 +206,7 @@ public record StdVideoH265SubLayerHrdParameters(@NotNull MemorySegment segment) 
         return this;
     }
 
-    public MemorySegment cpb_size_du_value_minus1Raw() {
+    public @NotNull MemorySegment cpb_size_du_value_minus1Raw() {
         return segment.asSlice(OFFSET$cpb_size_du_value_minus1, SIZE$cpb_size_du_value_minus1);
     }
 
@@ -219,7 +219,7 @@ public record StdVideoH265SubLayerHrdParameters(@NotNull MemorySegment segment) 
         return this;
     }
 
-    public MemorySegment bit_rate_du_value_minus1Raw() {
+    public @NotNull MemorySegment bit_rate_du_value_minus1Raw() {
         return segment.asSlice(OFFSET$bit_rate_du_value_minus1, SIZE$bit_rate_du_value_minus1);
     }
 

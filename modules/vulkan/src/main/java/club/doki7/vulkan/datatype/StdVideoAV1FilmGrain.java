@@ -277,7 +277,7 @@ public record StdVideoAV1FilmGrain(@NotNull MemorySegment segment) implements IS
         return this;
     }
 
-    public MemorySegment point_y_valueRaw() {
+    public @NotNull MemorySegment point_y_valueRaw() {
         return segment.asSlice(OFFSET$point_y_value, SIZE$point_y_value);
     }
 
@@ -290,7 +290,7 @@ public record StdVideoAV1FilmGrain(@NotNull MemorySegment segment) implements IS
         return this;
     }
 
-    public MemorySegment point_y_scalingRaw() {
+    public @NotNull MemorySegment point_y_scalingRaw() {
         return segment.asSlice(OFFSET$point_y_scaling, SIZE$point_y_scaling);
     }
 
@@ -312,7 +312,7 @@ public record StdVideoAV1FilmGrain(@NotNull MemorySegment segment) implements IS
         return this;
     }
 
-    public MemorySegment point_cb_valueRaw() {
+    public @NotNull MemorySegment point_cb_valueRaw() {
         return segment.asSlice(OFFSET$point_cb_value, SIZE$point_cb_value);
     }
 
@@ -325,7 +325,7 @@ public record StdVideoAV1FilmGrain(@NotNull MemorySegment segment) implements IS
         return this;
     }
 
-    public MemorySegment point_cb_scalingRaw() {
+    public @NotNull MemorySegment point_cb_scalingRaw() {
         return segment.asSlice(OFFSET$point_cb_scaling, SIZE$point_cb_scaling);
     }
 
@@ -347,7 +347,7 @@ public record StdVideoAV1FilmGrain(@NotNull MemorySegment segment) implements IS
         return this;
     }
 
-    public MemorySegment point_cr_valueRaw() {
+    public @NotNull MemorySegment point_cr_valueRaw() {
         return segment.asSlice(OFFSET$point_cr_value, SIZE$point_cr_value);
     }
 
@@ -360,7 +360,7 @@ public record StdVideoAV1FilmGrain(@NotNull MemorySegment segment) implements IS
         return this;
     }
 
-    public MemorySegment point_cr_scalingRaw() {
+    public @NotNull MemorySegment point_cr_scalingRaw() {
         return segment.asSlice(OFFSET$point_cr_scaling, SIZE$point_cr_scaling);
     }
 
@@ -373,7 +373,7 @@ public record StdVideoAV1FilmGrain(@NotNull MemorySegment segment) implements IS
         return this;
     }
 
-    public MemorySegment ar_coeffs_y_plus_128Raw() {
+    public @NotNull MemorySegment ar_coeffs_y_plus_128Raw() {
         return segment.asSlice(OFFSET$ar_coeffs_y_plus_128, SIZE$ar_coeffs_y_plus_128);
     }
 
@@ -386,7 +386,7 @@ public record StdVideoAV1FilmGrain(@NotNull MemorySegment segment) implements IS
         return this;
     }
 
-    public MemorySegment ar_coeffs_cb_plus_128Raw() {
+    public @NotNull MemorySegment ar_coeffs_cb_plus_128Raw() {
         return segment.asSlice(OFFSET$ar_coeffs_cb_plus_128, SIZE$ar_coeffs_cb_plus_128);
     }
 
@@ -399,7 +399,7 @@ public record StdVideoAV1FilmGrain(@NotNull MemorySegment segment) implements IS
         return this;
     }
 
-    public MemorySegment ar_coeffs_cr_plus_128Raw() {
+    public @NotNull MemorySegment ar_coeffs_cr_plus_128Raw() {
         return segment.asSlice(OFFSET$ar_coeffs_cr_plus_128, SIZE$ar_coeffs_cr_plus_128);
     }
 

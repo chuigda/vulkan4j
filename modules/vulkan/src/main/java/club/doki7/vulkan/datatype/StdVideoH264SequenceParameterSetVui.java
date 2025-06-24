@@ -338,11 +338,11 @@ public record StdVideoH264SequenceParameterSetVui(@NotNull MemorySegment segment
         return new StdVideoH264HrdParameters(s);
     }
 
-    public @Pointer(target=StdVideoH264HrdParameters.class) MemorySegment pHrdParametersRaw() {
+    public @Pointer(target=StdVideoH264HrdParameters.class) @NotNull MemorySegment pHrdParametersRaw() {
         return segment.get(LAYOUT$pHrdParameters, OFFSET$pHrdParameters);
     }
 
-    public void pHrdParametersRaw(@Pointer(target=StdVideoH264HrdParameters.class) MemorySegment value) {
+    public void pHrdParametersRaw(@Pointer(target=StdVideoH264HrdParameters.class) @NotNull MemorySegment value) {
         segment.set(LAYOUT$pHrdParameters, OFFSET$pHrdParameters, value);
     }
 

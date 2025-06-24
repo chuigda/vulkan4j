@@ -255,7 +255,7 @@ public record StdVideoDecodeH265PictureInfo(@NotNull MemorySegment segment) impl
         return this;
     }
 
-    public MemorySegment RefPicSetStCurrBeforeRaw() {
+    public @NotNull MemorySegment RefPicSetStCurrBeforeRaw() {
         return segment.asSlice(OFFSET$RefPicSetStCurrBefore, SIZE$RefPicSetStCurrBefore);
     }
 
@@ -268,7 +268,7 @@ public record StdVideoDecodeH265PictureInfo(@NotNull MemorySegment segment) impl
         return this;
     }
 
-    public MemorySegment RefPicSetStCurrAfterRaw() {
+    public @NotNull MemorySegment RefPicSetStCurrAfterRaw() {
         return segment.asSlice(OFFSET$RefPicSetStCurrAfter, SIZE$RefPicSetStCurrAfter);
     }
 
@@ -281,7 +281,7 @@ public record StdVideoDecodeH265PictureInfo(@NotNull MemorySegment segment) impl
         return this;
     }
 
-    public MemorySegment RefPicSetLtCurrRaw() {
+    public @NotNull MemorySegment RefPicSetLtCurrRaw() {
         return segment.asSlice(OFFSET$RefPicSetLtCurr, SIZE$RefPicSetLtCurr);
     }
 

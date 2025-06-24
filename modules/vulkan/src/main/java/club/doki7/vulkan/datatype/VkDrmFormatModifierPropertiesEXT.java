@@ -189,11 +189,11 @@ public record VkDrmFormatModifierPropertiesEXT(@NotNull MemorySegment segment) i
         return this;
     }
 
-    public @EnumType(VkFormatFeatureFlags.class) int drmFormatModifierTilingFeatures() {
+    public @Bitmask(VkFormatFeatureFlags.class) int drmFormatModifierTilingFeatures() {
         return segment.get(LAYOUT$drmFormatModifierTilingFeatures, OFFSET$drmFormatModifierTilingFeatures);
     }
 
-    public VkDrmFormatModifierPropertiesEXT drmFormatModifierTilingFeatures(@EnumType(VkFormatFeatureFlags.class) int value) {
+    public VkDrmFormatModifierPropertiesEXT drmFormatModifierTilingFeatures(@Bitmask(VkFormatFeatureFlags.class) int value) {
         segment.set(LAYOUT$drmFormatModifierTilingFeatures, OFFSET$drmFormatModifierTilingFeatures, value);
         return this;
     }

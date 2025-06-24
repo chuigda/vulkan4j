@@ -201,12 +201,13 @@ public record VkWaylandSurfaceCreateInfoKHR(@NotNull MemorySegment segment) impl
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkWaylandSurfaceCreateInfoKHR pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkWaylandSurfaceCreateInfoKHR pNext(@Nullable IPointer pointer) {
@@ -214,11 +215,11 @@ public record VkWaylandSurfaceCreateInfoKHR(@NotNull MemorySegment segment) impl
         return this;
     }
 
-    public @EnumType(VkWaylandSurfaceCreateFlagsKHR.class) int flags() {
+    public @Bitmask(VkWaylandSurfaceCreateFlagsKHR.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public VkWaylandSurfaceCreateInfoKHR flags(@EnumType(VkWaylandSurfaceCreateFlagsKHR.class) int value) {
+    public VkWaylandSurfaceCreateInfoKHR flags(@Bitmask(VkWaylandSurfaceCreateFlagsKHR.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
         return this;
     }
@@ -240,11 +241,11 @@ public record VkWaylandSurfaceCreateInfoKHR(@NotNull MemorySegment segment) impl
         return this;
     }
 
-    public @Pointer(comment="wl_display*") MemorySegment displayRaw() {
+    public @Pointer(comment="wl_display*") @NotNull MemorySegment displayRaw() {
         return segment.get(LAYOUT$display, OFFSET$display);
     }
 
-    public void displayRaw(@Pointer(comment="wl_display*") MemorySegment value) {
+    public void displayRaw(@Pointer(comment="wl_display*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$display, OFFSET$display, value);
     }
 
@@ -265,11 +266,11 @@ public record VkWaylandSurfaceCreateInfoKHR(@NotNull MemorySegment segment) impl
         return this;
     }
 
-    public @Pointer(comment="wl_surface*") MemorySegment surfaceRaw() {
+    public @Pointer(comment="wl_surface*") @NotNull MemorySegment surfaceRaw() {
         return segment.get(LAYOUT$surface, OFFSET$surface);
     }
 
-    public void surfaceRaw(@Pointer(comment="wl_surface*") MemorySegment value) {
+    public void surfaceRaw(@Pointer(comment="wl_surface*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$surface, OFFSET$surface, value);
     }
 

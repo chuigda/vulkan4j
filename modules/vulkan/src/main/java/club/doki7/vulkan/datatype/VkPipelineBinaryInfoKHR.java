@@ -200,12 +200,13 @@ public record VkPipelineBinaryInfoKHR(@NotNull MemorySegment segment) implements
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkPipelineBinaryInfoKHR pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkPipelineBinaryInfoKHR pNext(@Nullable IPointer pointer) {
@@ -240,11 +241,11 @@ public record VkPipelineBinaryInfoKHR(@NotNull MemorySegment segment) implements
         return this;
     }
 
-    public @Pointer(target=VkPipelineBinaryKHR.class) MemorySegment pPipelineBinariesRaw() {
+    public @Pointer(target=VkPipelineBinaryKHR.class) @NotNull MemorySegment pPipelineBinariesRaw() {
         return segment.get(LAYOUT$pPipelineBinaries, OFFSET$pPipelineBinaries);
     }
 
-    public void pPipelineBinariesRaw(@Pointer(target=VkPipelineBinaryKHR.class) MemorySegment value) {
+    public void pPipelineBinariesRaw(@Pointer(target=VkPipelineBinaryKHR.class) @NotNull MemorySegment value) {
         segment.set(LAYOUT$pPipelineBinaries, OFFSET$pPipelineBinaries, value);
     }
 

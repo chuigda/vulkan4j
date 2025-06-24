@@ -200,12 +200,13 @@ public record VkCommandBufferBeginInfo(@NotNull MemorySegment segment) implement
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkCommandBufferBeginInfo pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkCommandBufferBeginInfo pNext(@Nullable IPointer pointer) {
@@ -213,11 +214,11 @@ public record VkCommandBufferBeginInfo(@NotNull MemorySegment segment) implement
         return this;
     }
 
-    public @EnumType(VkCommandBufferUsageFlags.class) int flags() {
+    public @Bitmask(VkCommandBufferUsageFlags.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public VkCommandBufferBeginInfo flags(@EnumType(VkCommandBufferUsageFlags.class) int value) {
+    public VkCommandBufferBeginInfo flags(@Bitmask(VkCommandBufferUsageFlags.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
         return this;
     }
@@ -246,11 +247,11 @@ public record VkCommandBufferBeginInfo(@NotNull MemorySegment segment) implement
         return new VkCommandBufferInheritanceInfo(s);
     }
 
-    public @Pointer(target=VkCommandBufferInheritanceInfo.class) MemorySegment pInheritanceInfoRaw() {
+    public @Pointer(target=VkCommandBufferInheritanceInfo.class) @NotNull MemorySegment pInheritanceInfoRaw() {
         return segment.get(LAYOUT$pInheritanceInfo, OFFSET$pInheritanceInfo);
     }
 
-    public void pInheritanceInfoRaw(@Pointer(target=VkCommandBufferInheritanceInfo.class) MemorySegment value) {
+    public void pInheritanceInfoRaw(@Pointer(target=VkCommandBufferInheritanceInfo.class) @NotNull MemorySegment value) {
         segment.set(LAYOUT$pInheritanceInfo, OFFSET$pInheritanceInfo, value);
     }
 

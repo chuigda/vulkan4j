@@ -201,12 +201,13 @@ public record VkPipelineViewportCoarseSampleOrderStateCreateInfoNV(@NotNull Memo
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkPipelineViewportCoarseSampleOrderStateCreateInfoNV pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkPipelineViewportCoarseSampleOrderStateCreateInfoNV pNext(@Nullable IPointer pointer) {
@@ -256,11 +257,11 @@ public record VkPipelineViewportCoarseSampleOrderStateCreateInfoNV(@NotNull Memo
         return new VkCoarseSampleOrderCustomNV(s);
     }
 
-    public @Pointer(target=VkCoarseSampleOrderCustomNV.class) MemorySegment pCustomSampleOrdersRaw() {
+    public @Pointer(target=VkCoarseSampleOrderCustomNV.class) @NotNull MemorySegment pCustomSampleOrdersRaw() {
         return segment.get(LAYOUT$pCustomSampleOrders, OFFSET$pCustomSampleOrders);
     }
 
-    public void pCustomSampleOrdersRaw(@Pointer(target=VkCoarseSampleOrderCustomNV.class) MemorySegment value) {
+    public void pCustomSampleOrdersRaw(@Pointer(target=VkCoarseSampleOrderCustomNV.class) @NotNull MemorySegment value) {
         segment.set(LAYOUT$pCustomSampleOrders, OFFSET$pCustomSampleOrders, value);
     }
 

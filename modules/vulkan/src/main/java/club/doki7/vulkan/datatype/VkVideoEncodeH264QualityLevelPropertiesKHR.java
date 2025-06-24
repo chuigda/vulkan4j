@@ -207,12 +207,13 @@ public record VkVideoEncodeH264QualityLevelPropertiesKHR(@NotNull MemorySegment 
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkVideoEncodeH264QualityLevelPropertiesKHR pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkVideoEncodeH264QualityLevelPropertiesKHR pNext(@Nullable IPointer pointer) {
@@ -220,11 +221,11 @@ public record VkVideoEncodeH264QualityLevelPropertiesKHR(@NotNull MemorySegment 
         return this;
     }
 
-    public @EnumType(VkVideoEncodeH264RateControlFlagsKHR.class) int preferredRateControlFlags() {
+    public @Bitmask(VkVideoEncodeH264RateControlFlagsKHR.class) int preferredRateControlFlags() {
         return segment.get(LAYOUT$preferredRateControlFlags, OFFSET$preferredRateControlFlags);
     }
 
-    public VkVideoEncodeH264QualityLevelPropertiesKHR preferredRateControlFlags(@EnumType(VkVideoEncodeH264RateControlFlagsKHR.class) int value) {
+    public VkVideoEncodeH264QualityLevelPropertiesKHR preferredRateControlFlags(@Bitmask(VkVideoEncodeH264RateControlFlagsKHR.class) int value) {
         segment.set(LAYOUT$preferredRateControlFlags, OFFSET$preferredRateControlFlags, value);
         return this;
     }

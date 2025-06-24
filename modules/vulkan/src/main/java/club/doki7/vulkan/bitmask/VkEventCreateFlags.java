@@ -9,7 +9,7 @@ import java.util.List;
 public final class VkEventCreateFlags {
     public static final int DEVICE_ONLY = 0x1;
 
-    public static String explain(@EnumType(VkEventCreateFlags.class) int flags) {
+    public static String explain(@Bitmask(VkEventCreateFlags.class) int flags) {
         List<String> detectedFlagBits = new ArrayList<>();
         if ((flags & DEVICE_ONLY) != 0) {
             detectedFlagBits.add("VK_EVENT_CREATE_DEVICE_ONLY_BIT");

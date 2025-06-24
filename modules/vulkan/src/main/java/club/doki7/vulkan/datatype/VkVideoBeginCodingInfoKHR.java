@@ -203,12 +203,13 @@ public record VkVideoBeginCodingInfoKHR(@NotNull MemorySegment segment) implemen
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkVideoBeginCodingInfoKHR pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkVideoBeginCodingInfoKHR pNext(@Nullable IPointer pointer) {
@@ -216,11 +217,11 @@ public record VkVideoBeginCodingInfoKHR(@NotNull MemorySegment segment) implemen
         return this;
     }
 
-    public @EnumType(VkVideoBeginCodingFlagsKHR.class) int flags() {
+    public @Bitmask(VkVideoBeginCodingFlagsKHR.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public VkVideoBeginCodingInfoKHR flags(@EnumType(VkVideoBeginCodingFlagsKHR.class) int value) {
+    public VkVideoBeginCodingInfoKHR flags(@Bitmask(VkVideoBeginCodingFlagsKHR.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
         return this;
     }
@@ -284,11 +285,11 @@ public record VkVideoBeginCodingInfoKHR(@NotNull MemorySegment segment) implemen
         return new VkVideoReferenceSlotInfoKHR(s);
     }
 
-    public @Pointer(target=VkVideoReferenceSlotInfoKHR.class) MemorySegment pReferenceSlotsRaw() {
+    public @Pointer(target=VkVideoReferenceSlotInfoKHR.class) @NotNull MemorySegment pReferenceSlotsRaw() {
         return segment.get(LAYOUT$pReferenceSlots, OFFSET$pReferenceSlots);
     }
 
-    public void pReferenceSlotsRaw(@Pointer(target=VkVideoReferenceSlotInfoKHR.class) MemorySegment value) {
+    public void pReferenceSlotsRaw(@Pointer(target=VkVideoReferenceSlotInfoKHR.class) @NotNull MemorySegment value) {
         segment.set(LAYOUT$pReferenceSlots, OFFSET$pReferenceSlots, value);
     }
 

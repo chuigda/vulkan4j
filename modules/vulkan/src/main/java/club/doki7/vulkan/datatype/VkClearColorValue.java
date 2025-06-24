@@ -180,7 +180,7 @@ public record VkClearColorValue(@NotNull MemorySegment segment) implements IVkCl
         return this;
     }
 
-    public MemorySegment float32Raw() {
+    public @NotNull MemorySegment float32Raw() {
         return segment.asSlice(OFFSET$float32, SIZE$float32);
     }
 
@@ -193,7 +193,7 @@ public record VkClearColorValue(@NotNull MemorySegment segment) implements IVkCl
         return this;
     }
 
-    public MemorySegment int32Raw() {
+    public @NotNull MemorySegment int32Raw() {
         return segment.asSlice(OFFSET$int32, SIZE$int32);
     }
 
@@ -206,7 +206,7 @@ public record VkClearColorValue(@NotNull MemorySegment segment) implements IVkCl
         return this;
     }
 
-    public MemorySegment uint32Raw() {
+    public @NotNull MemorySegment uint32Raw() {
         return segment.asSlice(OFFSET$uint32, SIZE$uint32);
     }
 

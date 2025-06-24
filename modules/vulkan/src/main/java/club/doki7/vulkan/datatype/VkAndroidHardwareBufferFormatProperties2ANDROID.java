@@ -206,12 +206,13 @@ public record VkAndroidHardwareBufferFormatProperties2ANDROID(@NotNull MemorySeg
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkAndroidHardwareBufferFormatProperties2ANDROID pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkAndroidHardwareBufferFormatProperties2ANDROID pNext(@Nullable IPointer pointer) {
@@ -237,11 +238,11 @@ public record VkAndroidHardwareBufferFormatProperties2ANDROID(@NotNull MemorySeg
         return this;
     }
 
-    public @EnumType(VkFormatFeatureFlags2.class) long formatFeatures() {
+    public @Bitmask(VkFormatFeatureFlags2.class) long formatFeatures() {
         return segment.get(LAYOUT$formatFeatures, OFFSET$formatFeatures);
     }
 
-    public VkAndroidHardwareBufferFormatProperties2ANDROID formatFeatures(@EnumType(VkFormatFeatureFlags2.class) long value) {
+    public VkAndroidHardwareBufferFormatProperties2ANDROID formatFeatures(@Bitmask(VkFormatFeatureFlags2.class) long value) {
         segment.set(LAYOUT$formatFeatures, OFFSET$formatFeatures, value);
         return this;
     }

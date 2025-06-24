@@ -178,7 +178,7 @@ public record VkTransformMatrixKHR(@NotNull MemorySegment segment) implements IV
         return this;
     }
 
-    public MemorySegment matrixRaw() {
+    public @NotNull MemorySegment matrixRaw() {
         return segment.asSlice(OFFSET$matrix, SIZE$matrix);
     }
 

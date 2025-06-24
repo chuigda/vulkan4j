@@ -202,12 +202,13 @@ public record VkRenderPassSampleLocationsBeginInfoEXT(@NotNull MemorySegment seg
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkRenderPassSampleLocationsBeginInfoEXT pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkRenderPassSampleLocationsBeginInfoEXT pNext(@Nullable IPointer pointer) {
@@ -248,11 +249,11 @@ public record VkRenderPassSampleLocationsBeginInfoEXT(@NotNull MemorySegment seg
         return new VkAttachmentSampleLocationsEXT(s);
     }
 
-    public @Pointer(target=VkAttachmentSampleLocationsEXT.class) MemorySegment pAttachmentInitialSampleLocationsRaw() {
+    public @Pointer(target=VkAttachmentSampleLocationsEXT.class) @NotNull MemorySegment pAttachmentInitialSampleLocationsRaw() {
         return segment.get(LAYOUT$pAttachmentInitialSampleLocations, OFFSET$pAttachmentInitialSampleLocations);
     }
 
-    public void pAttachmentInitialSampleLocationsRaw(@Pointer(target=VkAttachmentSampleLocationsEXT.class) MemorySegment value) {
+    public void pAttachmentInitialSampleLocationsRaw(@Pointer(target=VkAttachmentSampleLocationsEXT.class) @NotNull MemorySegment value) {
         segment.set(LAYOUT$pAttachmentInitialSampleLocations, OFFSET$pAttachmentInitialSampleLocations, value);
     }
 
@@ -289,11 +290,11 @@ public record VkRenderPassSampleLocationsBeginInfoEXT(@NotNull MemorySegment seg
         return new VkSubpassSampleLocationsEXT(s);
     }
 
-    public @Pointer(target=VkSubpassSampleLocationsEXT.class) MemorySegment pPostSubpassSampleLocationsRaw() {
+    public @Pointer(target=VkSubpassSampleLocationsEXT.class) @NotNull MemorySegment pPostSubpassSampleLocationsRaw() {
         return segment.get(LAYOUT$pPostSubpassSampleLocations, OFFSET$pPostSubpassSampleLocations);
     }
 
-    public void pPostSubpassSampleLocationsRaw(@Pointer(target=VkSubpassSampleLocationsEXT.class) MemorySegment value) {
+    public void pPostSubpassSampleLocationsRaw(@Pointer(target=VkSubpassSampleLocationsEXT.class) @NotNull MemorySegment value) {
         segment.set(LAYOUT$pPostSubpassSampleLocations, OFFSET$pPostSubpassSampleLocations, value);
     }
 

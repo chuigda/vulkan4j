@@ -211,12 +211,13 @@ public record VkIndirectCommandsLayoutTokenNV(@NotNull MemorySegment segment) im
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkIndirectCommandsLayoutTokenNV pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkIndirectCommandsLayoutTokenNV pNext(@Nullable IPointer pointer) {
@@ -282,11 +283,11 @@ public record VkIndirectCommandsLayoutTokenNV(@NotNull MemorySegment segment) im
         return this;
     }
 
-    public @EnumType(VkShaderStageFlags.class) int pushconstantShaderStageFlags() {
+    public @Bitmask(VkShaderStageFlags.class) int pushconstantShaderStageFlags() {
         return segment.get(LAYOUT$pushconstantShaderStageFlags, OFFSET$pushconstantShaderStageFlags);
     }
 
-    public VkIndirectCommandsLayoutTokenNV pushconstantShaderStageFlags(@EnumType(VkShaderStageFlags.class) int value) {
+    public VkIndirectCommandsLayoutTokenNV pushconstantShaderStageFlags(@Bitmask(VkShaderStageFlags.class) int value) {
         segment.set(LAYOUT$pushconstantShaderStageFlags, OFFSET$pushconstantShaderStageFlags, value);
         return this;
     }
@@ -309,11 +310,11 @@ public record VkIndirectCommandsLayoutTokenNV(@NotNull MemorySegment segment) im
         return this;
     }
 
-    public @EnumType(VkIndirectStateFlagsNV.class) int indirectStateFlags() {
+    public @Bitmask(VkIndirectStateFlagsNV.class) int indirectStateFlags() {
         return segment.get(LAYOUT$indirectStateFlags, OFFSET$indirectStateFlags);
     }
 
-    public VkIndirectCommandsLayoutTokenNV indirectStateFlags(@EnumType(VkIndirectStateFlagsNV.class) int value) {
+    public VkIndirectCommandsLayoutTokenNV indirectStateFlags(@Bitmask(VkIndirectStateFlagsNV.class) int value) {
         segment.set(LAYOUT$indirectStateFlags, OFFSET$indirectStateFlags, value);
         return this;
     }
@@ -346,11 +347,11 @@ public record VkIndirectCommandsLayoutTokenNV(@NotNull MemorySegment segment) im
         return this;
     }
 
-    public @Pointer(target=VkIndexType.class) MemorySegment pIndexTypesRaw() {
+    public @Pointer(target=VkIndexType.class) @NotNull MemorySegment pIndexTypesRaw() {
         return segment.get(LAYOUT$pIndexTypes, OFFSET$pIndexTypes);
     }
 
-    public void pIndexTypesRaw(@Pointer(target=VkIndexType.class) MemorySegment value) {
+    public void pIndexTypesRaw(@Pointer(target=VkIndexType.class) @NotNull MemorySegment value) {
         segment.set(LAYOUT$pIndexTypes, OFFSET$pIndexTypes, value);
     }
 
@@ -372,11 +373,11 @@ public record VkIndirectCommandsLayoutTokenNV(@NotNull MemorySegment segment) im
         return this;
     }
 
-    public @Pointer(comment="uint32_t*") MemorySegment pIndexTypeValuesRaw() {
+    public @Pointer(comment="uint32_t*") @NotNull MemorySegment pIndexTypeValuesRaw() {
         return segment.get(LAYOUT$pIndexTypeValues, OFFSET$pIndexTypeValues);
     }
 
-    public void pIndexTypeValuesRaw(@Pointer(comment="uint32_t*") MemorySegment value) {
+    public void pIndexTypeValuesRaw(@Pointer(comment="uint32_t*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pIndexTypeValues, OFFSET$pIndexTypeValues, value);
     }
 

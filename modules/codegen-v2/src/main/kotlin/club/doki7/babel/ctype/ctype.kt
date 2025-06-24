@@ -1,6 +1,7 @@
 package club.doki7.babel.ctype
 
 import club.doki7.babel.registry.ArrayType
+import club.doki7.babel.registry.FunctionTypedef
 import club.doki7.babel.registry.IdentifierType
 import club.doki7.babel.registry.OpaqueTypedef
 import club.doki7.babel.registry.PointerType
@@ -38,10 +39,10 @@ data class CPointerType(
     override var comment: String?,
 ) : CType, ICommentable<CPointerType> {
     override val jType: String = if (comment != null) {
-        """@Pointer(comment="$comment") MemorySegment"""
+        """@Pointer(comment="$comment") @NotNull MemorySegment"""
     }
     else {
-        """@Pointer(comment="void*") MemorySegment"""
+        """@Pointer(comment="void*") @NotNull MemorySegment"""
     }
 
     override val jLayout: String = if (pointee is CVoidType) {
@@ -277,12 +278,15 @@ data class CStructType(val name: String, val isUnion: Boolean): CType {
 
 data class CEnumType(
     val name: String,
+    val isBitmask: Boolean,
     val bitwidth: Int? = null
 ): CFixedSizeType {
+    private val annotationClassName = if (isBitmask) "Bitmask" else "EnumType"
+
     override val jType: String get() = when (bitwidth) {
-        null, 32 -> "@EnumType($name.class) int"
-        8 -> "@EnumType($name.class) byte"
-        64 -> "@EnumType($name.class) long"
+        null, 32 -> "@$annotationClassName($name.class) int"
+        8 -> "@$annotationClassName($name.class) byte"
+        64 -> "@$annotationClassName($name.class) long"
         else -> error("unsupported bitwidth: $bitwidth")
     }
 
@@ -316,9 +320,9 @@ data class CEnumType(
     }
 
     override val jPtrType: String = when (bitwidth) {
-        null, 32 -> "@EnumType($name.class) IntPtr"
-        8 -> "@EnumType($name.class) BytePtr"
-        64 -> "@EnumType($name.class) LongPtr"
+        null, 32 -> "@$annotationClassName($name.class) IntPtr"
+        8 -> "@$annotationClassName($name.class) BytePtr"
+        64 -> "@$annotationClassName($name.class) LongPtr"
         else -> error("unsupported bitwidth: $bitwidth")
     }
 
@@ -383,6 +387,7 @@ private val knownTypes = mapOf(
     "unsigned" to cUIntType,
     "unsigned int" to cUIntType,
     "long long" to int64Type,
+    "__int64" to int64Type,
 
     "long" to cLongType,
     "size_t" to cSizeType,
@@ -554,6 +559,11 @@ fun lowerType(registry: RegistryBase, refRegistries: List<RegistryBase>, type: T
         }
         is PointerType -> {
             if (type.pointee is IdentifierType) {
+                val functionTypedef = lookupFunctionTypedef(registry, refRegistries, type.pointee)
+                if (functionTypedef != null && !functionTypedef.isPointer) {
+                    return CPointerType(voidType, false, pointerToOne = true, comment="${type.pointee.ident.value}*")
+                }
+
                 val opaqueTypedef = lookupOpaqueTypedef(registry, refRegistries, type.pointee)
                 if (opaqueTypedef != null) {
                     return if (opaqueTypedef.isHandle) {
@@ -599,6 +609,24 @@ fun lookupOpaqueTypedef(
     return null
 }
 
+fun lookupFunctionTypedef(
+    registry: RegistryBase,
+    refRegistries: List<RegistryBase>,
+    type: IdentifierType
+): FunctionTypedef? {
+    if (registry.functionTypedefs.contains(type.ident)) {
+        return registry.functionTypedefs[type.ident]
+    }
+
+    for (refRegistry in refRegistries) {
+        if (refRegistry.functionTypedefs.contains(type.ident)) {
+            return refRegistry.functionTypedefs[type.ident]
+        }
+    }
+
+    return null
+}
+
 fun lowerIdentifierType(
     registry: RegistryBase,
     refRegistries: List<RegistryBase>,
@@ -631,15 +659,19 @@ fun identifierTypeLookup(registry: RegistryBase, refRegistries: List<RegistryBas
         CStructType(type.ident.value, true)
     }
     else if (registry.enumerations.contains(type.ident)) {
-        CEnumType(type.ident.value)
+        CEnumType(type.ident.value, isBitmask = false)
     }
     else if (registry.bitmasks.contains(type.ident)) {
-        CEnumType(type.ident.value, bitwidth=registry.bitmasks[type.ident]!!.bitwidth)
+        CEnumType(type.ident.value, isBitmask = true, bitwidth=registry.bitmasks[type.ident]!!.bitwidth)
     }
     else if (registry.opaqueHandleTypedefs.contains(type.ident)) {
         CHandleType(type.ident.value)
     }
     else if (registry.functionTypedefs.contains(type.ident)) {
+        val functionTypedef = registry.functionTypedefs[type.ident]!!
+        if (!functionTypedef.isPointer) {
+            error("function typedef ${type.ident.value} is not a pointer type, should not be used individually")
+        }
         CPointerType(voidType, false, pointerToOne = true, comment=type.ident.value)
     }
     else if (registry.aliases.contains(type.ident)) {

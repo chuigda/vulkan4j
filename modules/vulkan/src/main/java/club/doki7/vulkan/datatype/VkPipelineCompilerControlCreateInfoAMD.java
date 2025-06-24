@@ -199,12 +199,13 @@ public record VkPipelineCompilerControlCreateInfoAMD(@NotNull MemorySegment segm
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkPipelineCompilerControlCreateInfoAMD pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkPipelineCompilerControlCreateInfoAMD pNext(@Nullable IPointer pointer) {
@@ -212,11 +213,11 @@ public record VkPipelineCompilerControlCreateInfoAMD(@NotNull MemorySegment segm
         return this;
     }
 
-    public @EnumType(VkPipelineCompilerControlFlagsAMD.class) int compilerControlFlags() {
+    public @Bitmask(VkPipelineCompilerControlFlagsAMD.class) int compilerControlFlags() {
         return segment.get(LAYOUT$compilerControlFlags, OFFSET$compilerControlFlags);
     }
 
-    public VkPipelineCompilerControlCreateInfoAMD compilerControlFlags(@EnumType(VkPipelineCompilerControlFlagsAMD.class) int value) {
+    public VkPipelineCompilerControlCreateInfoAMD compilerControlFlags(@Bitmask(VkPipelineCompilerControlFlagsAMD.class) int value) {
         segment.set(LAYOUT$compilerControlFlags, OFFSET$compilerControlFlags, value);
         return this;
     }

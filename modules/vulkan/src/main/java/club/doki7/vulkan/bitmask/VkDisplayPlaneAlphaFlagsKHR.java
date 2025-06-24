@@ -12,7 +12,7 @@ public final class VkDisplayPlaneAlphaFlagsKHR {
     public static final int PER_PIXEL = 0x4;
     public static final int PER_PIXEL_PREMULTIPLIED = 0x8;
 
-    public static String explain(@EnumType(VkDisplayPlaneAlphaFlagsKHR.class) int flags) {
+    public static String explain(@Bitmask(VkDisplayPlaneAlphaFlagsKHR.class) int flags) {
         List<String> detectedFlagBits = new ArrayList<>();
         if ((flags & GLOBAL) != 0) {
             detectedFlagBits.add("VK_DISPLAY_PLANE_ALPHA_GLOBAL_BIT_KHR");

@@ -197,7 +197,7 @@ public record VmaTotalStatistics(@NotNull MemorySegment segment) implements IVma
         MemorySegment.copy(value.segment(), 0, s, index * VmaDetailedStatistics.BYTES, VmaDetailedStatistics.BYTES);
     }
 
-    public MemorySegment memoryTypeRaw() {
+    public @NotNull MemorySegment memoryTypeRaw() {
         return segment.asSlice(OFFSET$memoryType, SIZE$memoryType);
     }
 
@@ -221,7 +221,7 @@ public record VmaTotalStatistics(@NotNull MemorySegment segment) implements IVma
         MemorySegment.copy(value.segment(), 0, s, index * VmaDetailedStatistics.BYTES, VmaDetailedStatistics.BYTES);
     }
 
-    public MemorySegment memoryHeapRaw() {
+    public @NotNull MemorySegment memoryHeapRaw() {
         return segment.asSlice(OFFSET$memoryHeap, SIZE$memoryHeap);
     }
 

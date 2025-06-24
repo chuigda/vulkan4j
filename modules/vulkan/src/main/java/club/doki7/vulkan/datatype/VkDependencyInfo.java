@@ -205,12 +205,13 @@ public record VkDependencyInfo(@NotNull MemorySegment segment) implements IVkDep
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkDependencyInfo pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkDependencyInfo pNext(@Nullable IPointer pointer) {
@@ -218,11 +219,11 @@ public record VkDependencyInfo(@NotNull MemorySegment segment) implements IVkDep
         return this;
     }
 
-    public @EnumType(VkDependencyFlags.class) int dependencyFlags() {
+    public @Bitmask(VkDependencyFlags.class) int dependencyFlags() {
         return segment.get(LAYOUT$dependencyFlags, OFFSET$dependencyFlags);
     }
 
-    public VkDependencyInfo dependencyFlags(@EnumType(VkDependencyFlags.class) int value) {
+    public VkDependencyInfo dependencyFlags(@Bitmask(VkDependencyFlags.class) int value) {
         segment.set(LAYOUT$dependencyFlags, OFFSET$dependencyFlags, value);
         return this;
     }
@@ -260,11 +261,11 @@ public record VkDependencyInfo(@NotNull MemorySegment segment) implements IVkDep
         return new VkMemoryBarrier2(s);
     }
 
-    public @Pointer(target=VkMemoryBarrier2.class) MemorySegment pMemoryBarriersRaw() {
+    public @Pointer(target=VkMemoryBarrier2.class) @NotNull MemorySegment pMemoryBarriersRaw() {
         return segment.get(LAYOUT$pMemoryBarriers, OFFSET$pMemoryBarriers);
     }
 
-    public void pMemoryBarriersRaw(@Pointer(target=VkMemoryBarrier2.class) MemorySegment value) {
+    public void pMemoryBarriersRaw(@Pointer(target=VkMemoryBarrier2.class) @NotNull MemorySegment value) {
         segment.set(LAYOUT$pMemoryBarriers, OFFSET$pMemoryBarriers, value);
     }
 
@@ -301,11 +302,11 @@ public record VkDependencyInfo(@NotNull MemorySegment segment) implements IVkDep
         return new VkBufferMemoryBarrier2(s);
     }
 
-    public @Pointer(target=VkBufferMemoryBarrier2.class) MemorySegment pBufferMemoryBarriersRaw() {
+    public @Pointer(target=VkBufferMemoryBarrier2.class) @NotNull MemorySegment pBufferMemoryBarriersRaw() {
         return segment.get(LAYOUT$pBufferMemoryBarriers, OFFSET$pBufferMemoryBarriers);
     }
 
-    public void pBufferMemoryBarriersRaw(@Pointer(target=VkBufferMemoryBarrier2.class) MemorySegment value) {
+    public void pBufferMemoryBarriersRaw(@Pointer(target=VkBufferMemoryBarrier2.class) @NotNull MemorySegment value) {
         segment.set(LAYOUT$pBufferMemoryBarriers, OFFSET$pBufferMemoryBarriers, value);
     }
 
@@ -342,11 +343,11 @@ public record VkDependencyInfo(@NotNull MemorySegment segment) implements IVkDep
         return new VkImageMemoryBarrier2(s);
     }
 
-    public @Pointer(target=VkImageMemoryBarrier2.class) MemorySegment pImageMemoryBarriersRaw() {
+    public @Pointer(target=VkImageMemoryBarrier2.class) @NotNull MemorySegment pImageMemoryBarriersRaw() {
         return segment.get(LAYOUT$pImageMemoryBarriers, OFFSET$pImageMemoryBarriers);
     }
 
-    public void pImageMemoryBarriersRaw(@Pointer(target=VkImageMemoryBarrier2.class) MemorySegment value) {
+    public void pImageMemoryBarriersRaw(@Pointer(target=VkImageMemoryBarrier2.class) @NotNull MemorySegment value) {
         segment.set(LAYOUT$pImageMemoryBarriers, OFFSET$pImageMemoryBarriers, value);
     }
 

@@ -203,12 +203,13 @@ public record VkSurfacePresentScalingCapabilitiesEXT(@NotNull MemorySegment segm
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkSurfacePresentScalingCapabilitiesEXT pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkSurfacePresentScalingCapabilitiesEXT pNext(@Nullable IPointer pointer) {
@@ -216,29 +217,29 @@ public record VkSurfacePresentScalingCapabilitiesEXT(@NotNull MemorySegment segm
         return this;
     }
 
-    public @EnumType(VkPresentScalingFlagsEXT.class) int supportedPresentScaling() {
+    public @Bitmask(VkPresentScalingFlagsEXT.class) int supportedPresentScaling() {
         return segment.get(LAYOUT$supportedPresentScaling, OFFSET$supportedPresentScaling);
     }
 
-    public VkSurfacePresentScalingCapabilitiesEXT supportedPresentScaling(@EnumType(VkPresentScalingFlagsEXT.class) int value) {
+    public VkSurfacePresentScalingCapabilitiesEXT supportedPresentScaling(@Bitmask(VkPresentScalingFlagsEXT.class) int value) {
         segment.set(LAYOUT$supportedPresentScaling, OFFSET$supportedPresentScaling, value);
         return this;
     }
 
-    public @EnumType(VkPresentGravityFlagsEXT.class) int supportedPresentGravityX() {
+    public @Bitmask(VkPresentGravityFlagsEXT.class) int supportedPresentGravityX() {
         return segment.get(LAYOUT$supportedPresentGravityX, OFFSET$supportedPresentGravityX);
     }
 
-    public VkSurfacePresentScalingCapabilitiesEXT supportedPresentGravityX(@EnumType(VkPresentGravityFlagsEXT.class) int value) {
+    public VkSurfacePresentScalingCapabilitiesEXT supportedPresentGravityX(@Bitmask(VkPresentGravityFlagsEXT.class) int value) {
         segment.set(LAYOUT$supportedPresentGravityX, OFFSET$supportedPresentGravityX, value);
         return this;
     }
 
-    public @EnumType(VkPresentGravityFlagsEXT.class) int supportedPresentGravityY() {
+    public @Bitmask(VkPresentGravityFlagsEXT.class) int supportedPresentGravityY() {
         return segment.get(LAYOUT$supportedPresentGravityY, OFFSET$supportedPresentGravityY);
     }
 
-    public VkSurfacePresentScalingCapabilitiesEXT supportedPresentGravityY(@EnumType(VkPresentGravityFlagsEXT.class) int value) {
+    public VkSurfacePresentScalingCapabilitiesEXT supportedPresentGravityY(@Bitmask(VkPresentGravityFlagsEXT.class) int value) {
         segment.set(LAYOUT$supportedPresentGravityY, OFFSET$supportedPresentGravityY, value);
         return this;
     }

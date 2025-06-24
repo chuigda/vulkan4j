@@ -200,12 +200,13 @@ public record VkPipelineViewportDepthClampControlCreateInfoEXT(@NotNull MemorySe
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkPipelineViewportDepthClampControlCreateInfoEXT pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkPipelineViewportDepthClampControlCreateInfoEXT pNext(@Nullable IPointer pointer) {
@@ -246,11 +247,11 @@ public record VkPipelineViewportDepthClampControlCreateInfoEXT(@NotNull MemorySe
         return new VkDepthClampRangeEXT(s);
     }
 
-    public @Pointer(target=VkDepthClampRangeEXT.class) MemorySegment pDepthClampRangeRaw() {
+    public @Pointer(target=VkDepthClampRangeEXT.class) @NotNull MemorySegment pDepthClampRangeRaw() {
         return segment.get(LAYOUT$pDepthClampRange, OFFSET$pDepthClampRange);
     }
 
-    public void pDepthClampRangeRaw(@Pointer(target=VkDepthClampRangeEXT.class) MemorySegment value) {
+    public void pDepthClampRangeRaw(@Pointer(target=VkDepthClampRangeEXT.class) @NotNull MemorySegment value) {
         segment.set(LAYOUT$pDepthClampRange, OFFSET$pDepthClampRange, value);
     }
 

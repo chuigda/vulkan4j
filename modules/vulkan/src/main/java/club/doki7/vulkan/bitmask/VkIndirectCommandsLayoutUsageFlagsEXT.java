@@ -10,7 +10,7 @@ public final class VkIndirectCommandsLayoutUsageFlagsEXT {
     public static final int EXPLICIT_PREPROCESS = 0x1;
     public static final int UNORDERED_SEQUENCES = 0x2;
 
-    public static String explain(@EnumType(VkIndirectCommandsLayoutUsageFlagsEXT.class) int flags) {
+    public static String explain(@Bitmask(VkIndirectCommandsLayoutUsageFlagsEXT.class) int flags) {
         List<String> detectedFlagBits = new ArrayList<>();
         if ((flags & EXPLICIT_PREPROCESS) != 0) {
             detectedFlagBits.add("VK_INDIRECT_COMMANDS_LAYOUT_USAGE_EXPLICIT_PREPROCESS_BIT_EXT");

@@ -195,7 +195,7 @@ public record GLFWgamepadstate(@NotNull MemorySegment segment) implements IGLFWg
         return this;
     }
 
-    public MemorySegment buttonsRaw() {
+    public @NotNull MemorySegment buttonsRaw() {
         return segment.asSlice(OFFSET$buttons, SIZE$buttons);
     }
 
@@ -208,7 +208,7 @@ public record GLFWgamepadstate(@NotNull MemorySegment segment) implements IGLFWg
         return this;
     }
 
-    public MemorySegment axesRaw() {
+    public @NotNull MemorySegment axesRaw() {
         return segment.asSlice(OFFSET$axes, SIZE$axes);
     }
 

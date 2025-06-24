@@ -205,12 +205,13 @@ public record VkWin32KeyedMutexAcquireReleaseInfoNV(@NotNull MemorySegment segme
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkWin32KeyedMutexAcquireReleaseInfoNV pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkWin32KeyedMutexAcquireReleaseInfoNV pNext(@Nullable IPointer pointer) {
@@ -245,11 +246,11 @@ public record VkWin32KeyedMutexAcquireReleaseInfoNV(@NotNull MemorySegment segme
         return this;
     }
 
-    public @Pointer(target=VkDeviceMemory.class) MemorySegment pAcquireSyncsRaw() {
+    public @Pointer(target=VkDeviceMemory.class) @NotNull MemorySegment pAcquireSyncsRaw() {
         return segment.get(LAYOUT$pAcquireSyncs, OFFSET$pAcquireSyncs);
     }
 
-    public void pAcquireSyncsRaw(@Pointer(target=VkDeviceMemory.class) MemorySegment value) {
+    public void pAcquireSyncsRaw(@Pointer(target=VkDeviceMemory.class) @NotNull MemorySegment value) {
         segment.set(LAYOUT$pAcquireSyncs, OFFSET$pAcquireSyncs, value);
     }
 
@@ -271,11 +272,11 @@ public record VkWin32KeyedMutexAcquireReleaseInfoNV(@NotNull MemorySegment segme
         return this;
     }
 
-    public @Pointer(comment="uint64_t*") MemorySegment pAcquireKeysRaw() {
+    public @Pointer(comment="uint64_t*") @NotNull MemorySegment pAcquireKeysRaw() {
         return segment.get(LAYOUT$pAcquireKeys, OFFSET$pAcquireKeys);
     }
 
-    public void pAcquireKeysRaw(@Pointer(comment="uint64_t*") MemorySegment value) {
+    public void pAcquireKeysRaw(@Pointer(comment="uint64_t*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pAcquireKeys, OFFSET$pAcquireKeys, value);
     }
 
@@ -297,11 +298,11 @@ public record VkWin32KeyedMutexAcquireReleaseInfoNV(@NotNull MemorySegment segme
         return this;
     }
 
-    public @Pointer(comment="uint32_t*") MemorySegment pAcquireTimeoutMillisecondsRaw() {
+    public @Pointer(comment="uint32_t*") @NotNull MemorySegment pAcquireTimeoutMillisecondsRaw() {
         return segment.get(LAYOUT$pAcquireTimeoutMilliseconds, OFFSET$pAcquireTimeoutMilliseconds);
     }
 
-    public void pAcquireTimeoutMillisecondsRaw(@Pointer(comment="uint32_t*") MemorySegment value) {
+    public void pAcquireTimeoutMillisecondsRaw(@Pointer(comment="uint32_t*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pAcquireTimeoutMilliseconds, OFFSET$pAcquireTimeoutMilliseconds, value);
     }
 
@@ -332,11 +333,11 @@ public record VkWin32KeyedMutexAcquireReleaseInfoNV(@NotNull MemorySegment segme
         return this;
     }
 
-    public @Pointer(target=VkDeviceMemory.class) MemorySegment pReleaseSyncsRaw() {
+    public @Pointer(target=VkDeviceMemory.class) @NotNull MemorySegment pReleaseSyncsRaw() {
         return segment.get(LAYOUT$pReleaseSyncs, OFFSET$pReleaseSyncs);
     }
 
-    public void pReleaseSyncsRaw(@Pointer(target=VkDeviceMemory.class) MemorySegment value) {
+    public void pReleaseSyncsRaw(@Pointer(target=VkDeviceMemory.class) @NotNull MemorySegment value) {
         segment.set(LAYOUT$pReleaseSyncs, OFFSET$pReleaseSyncs, value);
     }
 
@@ -358,11 +359,11 @@ public record VkWin32KeyedMutexAcquireReleaseInfoNV(@NotNull MemorySegment segme
         return this;
     }
 
-    public @Pointer(comment="uint64_t*") MemorySegment pReleaseKeysRaw() {
+    public @Pointer(comment="uint64_t*") @NotNull MemorySegment pReleaseKeysRaw() {
         return segment.get(LAYOUT$pReleaseKeys, OFFSET$pReleaseKeys);
     }
 
-    public void pReleaseKeysRaw(@Pointer(comment="uint64_t*") MemorySegment value) {
+    public void pReleaseKeysRaw(@Pointer(comment="uint64_t*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pReleaseKeys, OFFSET$pReleaseKeys, value);
     }
 

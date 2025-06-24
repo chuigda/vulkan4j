@@ -201,12 +201,13 @@ public record VkDirectFBSurfaceCreateInfoEXT(@NotNull MemorySegment segment) imp
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkDirectFBSurfaceCreateInfoEXT pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkDirectFBSurfaceCreateInfoEXT pNext(@Nullable IPointer pointer) {
@@ -214,11 +215,11 @@ public record VkDirectFBSurfaceCreateInfoEXT(@NotNull MemorySegment segment) imp
         return this;
     }
 
-    public @EnumType(VkDirectFBSurfaceCreateFlagsEXT.class) int flags() {
+    public @Bitmask(VkDirectFBSurfaceCreateFlagsEXT.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public VkDirectFBSurfaceCreateInfoEXT flags(@EnumType(VkDirectFBSurfaceCreateFlagsEXT.class) int value) {
+    public VkDirectFBSurfaceCreateInfoEXT flags(@Bitmask(VkDirectFBSurfaceCreateFlagsEXT.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
         return this;
     }
@@ -240,11 +241,11 @@ public record VkDirectFBSurfaceCreateInfoEXT(@NotNull MemorySegment segment) imp
         return this;
     }
 
-    public @Pointer(comment="IDirectFB*") MemorySegment dfbRaw() {
+    public @Pointer(comment="IDirectFB*") @NotNull MemorySegment dfbRaw() {
         return segment.get(LAYOUT$dfb, OFFSET$dfb);
     }
 
-    public void dfbRaw(@Pointer(comment="IDirectFB*") MemorySegment value) {
+    public void dfbRaw(@Pointer(comment="IDirectFB*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$dfb, OFFSET$dfb, value);
     }
 
@@ -265,11 +266,11 @@ public record VkDirectFBSurfaceCreateInfoEXT(@NotNull MemorySegment segment) imp
         return this;
     }
 
-    public @Pointer(comment="IDirectFBSurface*") MemorySegment surfaceRaw() {
+    public @Pointer(comment="IDirectFBSurface*") @NotNull MemorySegment surfaceRaw() {
         return segment.get(LAYOUT$surface, OFFSET$surface);
     }
 
-    public void surfaceRaw(@Pointer(comment="IDirectFBSurface*") MemorySegment value) {
+    public void surfaceRaw(@Pointer(comment="IDirectFBSurface*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$surface, OFFSET$surface, value);
     }
 

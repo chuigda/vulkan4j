@@ -11,11 +11,11 @@
 ///
 /// {@snippet :
 /// public record VkBufferCreateInfo(MemorySegment segment) {
-///     @EnumType(VkBufferUsageFlags.class) int usage() {
+///     @Bitmask(VkBufferUsageFlags.class) int usage() {
 ///         // implementation omitted
 ///     }
 ///
-///     void usage(@EnumType(VkBufferUsageFlags.class) int value) {
+///     void usage(@Bitmask(VkBufferUsageFlags.class) int value) {
 ///         // implementation omitted
 ///     }
 ///

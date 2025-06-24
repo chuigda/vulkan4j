@@ -1,13 +1,14 @@
 package tutorial.vulkan.part09.ch27;
 
 import club.doki7.ffm.NativeLayout;
+import club.doki7.ffm.annotation.Bitmask;
 import club.doki7.ffm.annotation.EnumType;
 import club.doki7.ffm.annotation.NativeType;
 import club.doki7.ffm.annotation.Pointer;
 import club.doki7.ffm.annotation.Unsigned;
+import club.doki7.ffm.library.ISharedLibrary;
 import club.doki7.ffm.ptr.*;
 import club.doki7.glfw.GLFW;
-import club.doki7.glfw.GLFWConstants;
 import club.doki7.glfw.GLFWFunctionTypes;
 import club.doki7.glfw.GLFWLoader;
 import club.doki7.glfw.handle.GLFWwindow;
@@ -42,8 +43,6 @@ class Application {
     }
 
     private void initWindow() {
-        GLFWLoader.loadGLFWLibrary();
-        glfw = GLFWLoader.loadGLFW();
         if (glfw.init() != GLFW.TRUE) {
             throw new RuntimeException("Failed to initialize GLFW");
         }
@@ -71,8 +70,6 @@ class Application {
     }
 
     private void initVulkan() {
-        VulkanLoader.loadVulkanLibrary();
-        staticCommands = VulkanLoader.loadStaticCommands();
         entryCommands = VulkanLoader.loadEntryCommands(staticCommands);
 
         createInstance();
@@ -1434,7 +1431,7 @@ class Application {
         framebufferResized = true;
     }
 
-    private int findMemoryType(int typeFilter, @EnumType(VkMemoryPropertyFlags.class) int properties) {
+    private int findMemoryType(int typeFilter, @Bitmask(VkMemoryPropertyFlags.class) int properties) {
         try (var arena = Arena.ofConfined()) {
             var memProperties = VkPhysicalDeviceMemoryProperties.allocate(arena);
             instanceCommands.getPhysicalDeviceMemoryProperties(physicalDevice, memProperties);
@@ -1454,8 +1451,8 @@ class Application {
 
     private Pair<VkBuffer, VkDeviceMemory> createBuffer(
             int size,
-            @EnumType(VkBufferUsageFlags.class) int usage,
-            @EnumType(VkMemoryPropertyFlags.class) int properties
+            @Bitmask(VkBufferUsageFlags.class) int usage,
+            @Bitmask(VkMemoryPropertyFlags.class) int properties
     ) {
         try (var arena = Arena.ofConfined()) {
             var bufferInfo = VkBufferCreateInfo.allocate(arena)
@@ -1519,8 +1516,8 @@ class Application {
             int height,
             @EnumType(VkFormat.class) int format,
             @EnumType(VkImageTiling.class) int tiling,
-            @EnumType(VkImageUsageFlags.class) int usage,
-            @EnumType(VkMemoryPropertyFlags.class) int properties
+            @Bitmask(VkImageUsageFlags.class) int usage,
+            @Bitmask(VkMemoryPropertyFlags.class) int properties
     ) {
         try (var arena = Arena.ofConfined()) {
             var imageInfo = VkImageCreateInfo.allocate(arena)
@@ -1594,8 +1591,8 @@ class Application {
                 subResourceRange.aspectMask(VkImageAspectFlags.COLOR);
             }
 
-            @EnumType(VkPipelineStageFlags.class) int sourceStage;
-            @EnumType(VkPipelineStageFlags.class) int destinationStage;
+            @Bitmask(VkPipelineStageFlags.class) int sourceStage;
+            @Bitmask(VkPipelineStageFlags.class) int destinationStage;
 
             if (oldLayout == VkImageLayout.UNDEFINED
                 && newLayout == VkImageLayout.TRANSFER_DST_OPTIMAL) {
@@ -1723,7 +1720,7 @@ class Application {
     private VkImageView createImageView(
             VkImage image,
             @EnumType(VkFormat.class) int format,
-            @EnumType(VkImageAspectFlags.class) int aspect
+            @Bitmask(VkImageAspectFlags.class) int aspect
     ) {
         try (var arena = Arena.ofConfined()) {
             var viewInfo = VkImageViewCreateInfo.allocate(arena)
@@ -1761,7 +1758,7 @@ class Application {
     private @EnumType(VkFormat.class) int findSupportedFormat(
             @EnumType(VkFormat.class) int[] candidates,
             @EnumType(VkImageTiling.class) int tiling,
-            @EnumType(VkFormatFeatureFlags.class) int features
+            @Bitmask(VkFormatFeatureFlags.class) int features
     ) {
         for (var format : candidates) {
             try (var arena = Arena.ofConfined()) {
@@ -1785,8 +1782,8 @@ class Application {
     }
 
     private static @NativeType("VkBool32") @Unsigned int debugCallback(
-            @EnumType(VkDebugUtilsMessageSeverityFlagsEXT.class) int ignoredMessageSeverity,
-            @EnumType(VkDebugUtilsMessageTypeFlagsEXT.class) int ignoredMessageType,
+            @Bitmask(VkDebugUtilsMessageSeverityFlagsEXT.class) int ignoredMessageSeverity,
+            @Bitmask(VkDebugUtilsMessageTypeFlagsEXT.class) int ignoredMessageType,
             @Pointer(target=VkDebugUtilsMessengerCallbackDataEXT.class) MemorySegment pCallbackData,
             @Pointer(comment="void*") MemorySegment ignoredPUserData
     ) {
@@ -1849,10 +1846,8 @@ class Application {
         return attributeDescriptions;
     }
 
-    private GLFW glfw;
     private GLFWwindow window;
 
-    private VkStaticCommands staticCommands;
     private VkEntryCommands entryCommands;
     private VkInstance instance;
     private VkInstanceCommands instanceCommands;
@@ -1897,9 +1892,13 @@ class Application {
     private VkDeviceMemory depthImageMemory;
     private VkImageView depthImageView;
 
+    private static final ISharedLibrary libGLFW = GLFWLoader.loadGLFWLibrary();
+    private static final GLFW glfw = GLFWLoader.loadGLFW(libGLFW);
     private static final int WIDTH = 800;
     private static final int HEIGHT = 600;
     private static final BytePtr WINDOW_TITLE = BytePtr.allocateString(Arena.global(), "Vulkan");
+    private static final ISharedLibrary libVulkan = VulkanLoader.loadVulkanLibrary();
+    private static final VkStaticCommands staticCommands = VulkanLoader.loadStaticCommands(libVulkan);
     private static final boolean ENABLE_VALIDATION_LAYERS = System.getProperty("validation") != null;
     private static final String VALIDATION_LAYER_NAME = "VK_LAYER_KHRONOS_validation";
     private static final MethodHandle HANDLE_debugCallback;

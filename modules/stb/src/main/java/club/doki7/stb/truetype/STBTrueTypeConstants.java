@@ -1,0 +1,57 @@
+package club.doki7.stb.truetype;
+
+import club.doki7.ffm.annotation.*;
+
+public interface STBTrueTypeConstants {
+    int MAC_EID_ARABIC = 0x4;
+    int MAC_EID_CHINESE_TRAD = 0x2;
+    int MAC_EID_GREEK = 0x6;
+    int MAC_EID_HEBREW = 0x5;
+    int MAC_EID_JAPANESE = 0x1;
+    int MAC_EID_KOREAN = 0x3;
+    int MAC_EID_ROMAN = 0x0;
+    int MAC_EID_RUSSIAN = 0x7;
+    int MAC_LANG_ARABIC = 0xc;
+    int MAC_LANG_CHINESE_SIMPLIFIED = 0x21;
+    int MAC_LANG_CHINESE_TRAD = 0x13;
+    int MAC_LANG_DUTCH = 0x4;
+    int MAC_LANG_ENGLISH = 0x0;
+    int MAC_LANG_FRENCH = 0x1;
+    int MAC_LANG_GERMAN = 0x2;
+    int MAC_LANG_HEBREW = 0xa;
+    int MAC_LANG_ITALIAN = 0x3;
+    int MAC_LANG_JAPANESE = 0xb;
+    int MAC_LANG_KOREAN = 0x17;
+    int MAC_LANG_RUSSIAN = 0x20;
+    int MAC_LANG_SPANISH = 0x6;
+    int MAC_LANG_SWEDISH = 0x5;
+    int MS_EID_SHIFTJIS = 0x2;
+    int MS_EID_SYMBOL = 0x0;
+    int MS_EID_UNICODE_BMP = 0x1;
+    int MS_EID_UNICODE_FULL = 0xa;
+    int MS_LANG_CHINESE = 0x804;
+    int MS_LANG_DUTCH = 0x413;
+    int MS_LANG_ENGLISH = 0x409;
+    int MS_LANG_FRENCH = 0x40c;
+    int MS_LANG_GERMAN = 0x407;
+    int MS_LANG_HEBREW = 0x40d;
+    int MS_LANG_ITALIAN = 0x410;
+    int MS_LANG_JAPANESE = 0x411;
+    int MS_LANG_KOREAN = 0x412;
+    int MS_LANG_RUSSIAN = 0x419;
+    int MS_LANG_SPANISH = 0x409;
+    int MS_LANG_SWEDISH = 0x41d;
+    int PLATFORM_ID_ISO = 0x2;
+    int PLATFORM_ID_MAC = 0x1;
+    int PLATFORM_ID_MICROSOFT = 0x3;
+    int PLATFORM_ID_UNICODE = 0x0;
+    int UNICODE_EID_ISO_10646 = 0x2;
+    int UNICODE_EID_UNICODE_1_0 = 0x0;
+    int UNICODE_EID_UNICODE_1_1 = 0x1;
+    int UNICODE_EID_UNICODE_2_0_BMP = 0x3;
+    int UNICODE_EID_UNICODE_2_0_FULL = 0x4;
+    int VCUBIC = 0x4;
+    int VCURVE = 0x3;
+    int VLINE = 0x2;
+    int VMOVE = 0x1;
+}

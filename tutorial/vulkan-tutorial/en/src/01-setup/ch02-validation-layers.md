@@ -170,8 +170,8 @@ Now let's see what a debug callback function looks like. Add a new static member
 
 ```java
 private static @NativeType("VkBool32") @Unsigned int debugCallback(
-        @EnumType(VkDebugUtilsMessageSeverityFlagsEXT.class) int ignoredMessageSeverity,
-        @EnumType(VkDebugUtilsMessageTypeFlagsEXT.class) int ignoredMessageType,
+        @Bitmask(VkDebugUtilsMessageSeverityFlagsEXT.class) int ignoredMessageSeverity,
+        @Bitmask(VkDebugUtilsMessageTypeFlagsEXT.class) int ignoredMessageType,
         @Pointer(target=VkDebugUtilsMessengerCallbackDataEXT.class) MemorySegment pCallbackData,
         @Pointer(comment="void*") MemorySegment ignoredPUserData
 ) {

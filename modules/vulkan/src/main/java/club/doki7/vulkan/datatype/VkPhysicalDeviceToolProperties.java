@@ -203,12 +203,13 @@ public record VkPhysicalDeviceToolProperties(@NotNull MemorySegment segment) imp
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkPhysicalDeviceToolProperties pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkPhysicalDeviceToolProperties pNext(@Nullable IPointer pointer) {
@@ -225,7 +226,7 @@ public record VkPhysicalDeviceToolProperties(@NotNull MemorySegment segment) imp
         return this;
     }
 
-    public MemorySegment nameRaw() {
+    public @NotNull MemorySegment nameRaw() {
         return segment.asSlice(OFFSET$name, SIZE$name);
     }
 
@@ -238,15 +239,15 @@ public record VkPhysicalDeviceToolProperties(@NotNull MemorySegment segment) imp
         return this;
     }
 
-    public MemorySegment versionRaw() {
+    public @NotNull MemorySegment versionRaw() {
         return segment.asSlice(OFFSET$version, SIZE$version);
     }
 
-    public @EnumType(VkToolPurposeFlags.class) int purposes() {
+    public @Bitmask(VkToolPurposeFlags.class) int purposes() {
         return segment.get(LAYOUT$purposes, OFFSET$purposes);
     }
 
-    public VkPhysicalDeviceToolProperties purposes(@EnumType(VkToolPurposeFlags.class) int value) {
+    public VkPhysicalDeviceToolProperties purposes(@Bitmask(VkToolPurposeFlags.class) int value) {
         segment.set(LAYOUT$purposes, OFFSET$purposes, value);
         return this;
     }
@@ -260,7 +261,7 @@ public record VkPhysicalDeviceToolProperties(@NotNull MemorySegment segment) imp
         return this;
     }
 
-    public MemorySegment descriptionRaw() {
+    public @NotNull MemorySegment descriptionRaw() {
         return segment.asSlice(OFFSET$description, SIZE$description);
     }
 
@@ -273,7 +274,7 @@ public record VkPhysicalDeviceToolProperties(@NotNull MemorySegment segment) imp
         return this;
     }
 
-    public MemorySegment layerRaw() {
+    public @NotNull MemorySegment layerRaw() {
         return segment.asSlice(OFFSET$layer, SIZE$layer);
     }
 

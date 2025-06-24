@@ -36,7 +36,7 @@ public final class VkBufferUsageFlags2 {
     public static final long VIDEO_ENCODE_DST_KHR = 0x8000L;
     public static final long VIDEO_ENCODE_SRC_KHR = 0x10000L;
 
-    public static String explain(@EnumType(VkBufferUsageFlags2.class) long flags) {
+    public static String explain(@Bitmask(VkBufferUsageFlags2.class) long flags) {
         List<String> detectedFlagBits = new ArrayList<>();
         if ((flags & ACCELERATION_STRUCTURE_BUILD_INPUT_READ_ONLY_KHR) != 0) {
             detectedFlagBits.add("VK_BUFFER_USAGE_2_ACCELERATION_STRUCTURE_BUILD_INPUT_READ_ONLY_BIT_KHR");

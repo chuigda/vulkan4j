@@ -11,7 +11,7 @@
 /// <dependency>
 ///     <groupId>club.doki7</groupId>
 ///     <artifactId>ffm-plus</artifactId>
-///     <version>0.2.3</version>
+///     <version>0.2.4</version>
 ///     <scope>compile</scope>
 /// </dependency>
 /// ```
@@ -20,6 +20,8 @@ module club.doki7.ffm {
     exports club.doki7.ffm.annotation;
     exports club.doki7.ffm.ptr;
     exports club.doki7.ffm.bits;
+    exports club.doki7.ffm.library;
+    exports club.doki7.ffm.util;
 
     requires org.jetbrains.annotations;
 }

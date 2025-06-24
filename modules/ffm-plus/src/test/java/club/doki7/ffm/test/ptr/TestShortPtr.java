@@ -64,7 +64,6 @@ class TestShortPtr {
 
             // 验证切片后的段大小为 (5 - 2) * Short.BYTES，即 6 字节
             long expectedSize = (5 - 2) * Short.BYTES; // 6 字节
-            // TODO 是否有问题?
             assertEquals(expectedSize, slicePtr.segment().byteSize(), "切片操作后的段大小应正确");
         }
     }

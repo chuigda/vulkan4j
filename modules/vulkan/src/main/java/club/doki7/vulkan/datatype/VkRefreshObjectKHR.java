@@ -189,11 +189,11 @@ public record VkRefreshObjectKHR(@NotNull MemorySegment segment) implements IVkR
         return this;
     }
 
-    public @EnumType(VkRefreshObjectFlagsKHR.class) int flags() {
+    public @Bitmask(VkRefreshObjectFlagsKHR.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public VkRefreshObjectKHR flags(@EnumType(VkRefreshObjectFlagsKHR.class) int value) {
+    public VkRefreshObjectKHR flags(@Bitmask(VkRefreshObjectFlagsKHR.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
         return this;
     }

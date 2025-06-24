@@ -9,7 +9,7 @@ import java.util.List;
 public final class VkAttachmentDescriptionFlags {
     public static final int MAY_ALIAS = 0x1;
 
-    public static String explain(@EnumType(VkAttachmentDescriptionFlags.class) int flags) {
+    public static String explain(@Bitmask(VkAttachmentDescriptionFlags.class) int flags) {
         List<String> detectedFlagBits = new ArrayList<>();
         if ((flags & MAY_ALIAS) != 0) {
             detectedFlagBits.add("VK_ATTACHMENT_DESCRIPTION_MAY_ALIAS_BIT");

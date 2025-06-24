@@ -202,12 +202,13 @@ public record VkDeviceAddressBindingCallbackDataEXT(@NotNull MemorySegment segme
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkDeviceAddressBindingCallbackDataEXT pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkDeviceAddressBindingCallbackDataEXT pNext(@Nullable IPointer pointer) {
@@ -215,11 +216,11 @@ public record VkDeviceAddressBindingCallbackDataEXT(@NotNull MemorySegment segme
         return this;
     }
 
-    public @EnumType(VkDeviceAddressBindingFlagsEXT.class) int flags() {
+    public @Bitmask(VkDeviceAddressBindingFlagsEXT.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public VkDeviceAddressBindingCallbackDataEXT flags(@EnumType(VkDeviceAddressBindingFlagsEXT.class) int value) {
+    public VkDeviceAddressBindingCallbackDataEXT flags(@Bitmask(VkDeviceAddressBindingFlagsEXT.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
         return this;
     }

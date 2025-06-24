@@ -199,12 +199,13 @@ public record VkQueryPoolVideoEncodeFeedbackCreateInfoKHR(@NotNull MemorySegment
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkQueryPoolVideoEncodeFeedbackCreateInfoKHR pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkQueryPoolVideoEncodeFeedbackCreateInfoKHR pNext(@Nullable IPointer pointer) {
@@ -212,11 +213,11 @@ public record VkQueryPoolVideoEncodeFeedbackCreateInfoKHR(@NotNull MemorySegment
         return this;
     }
 
-    public @EnumType(VkVideoEncodeFeedbackFlagsKHR.class) int encodeFeedbackFlags() {
+    public @Bitmask(VkVideoEncodeFeedbackFlagsKHR.class) int encodeFeedbackFlags() {
         return segment.get(LAYOUT$encodeFeedbackFlags, OFFSET$encodeFeedbackFlags);
     }
 
-    public VkQueryPoolVideoEncodeFeedbackCreateInfoKHR encodeFeedbackFlags(@EnumType(VkVideoEncodeFeedbackFlagsKHR.class) int value) {
+    public VkQueryPoolVideoEncodeFeedbackCreateInfoKHR encodeFeedbackFlags(@Bitmask(VkVideoEncodeFeedbackFlagsKHR.class) int value) {
         segment.set(LAYOUT$encodeFeedbackFlags, OFFSET$encodeFeedbackFlags, value);
         return this;
     }

@@ -333,7 +333,7 @@ public record StdVideoEncodeAV1PictureInfo(@NotNull MemorySegment segment) imple
         return this;
     }
 
-    public MemorySegment ref_order_hintRaw() {
+    public @NotNull MemorySegment ref_order_hintRaw() {
         return segment.asSlice(OFFSET$ref_order_hint, SIZE$ref_order_hint);
     }
 
@@ -346,7 +346,7 @@ public record StdVideoEncodeAV1PictureInfo(@NotNull MemorySegment segment) imple
         return this;
     }
 
-    public MemorySegment ref_frame_idxRaw() {
+    public @NotNull MemorySegment ref_frame_idxRaw() {
         return segment.asSlice(OFFSET$ref_frame_idx, SIZE$ref_frame_idx);
     }
 
@@ -360,7 +360,7 @@ public record StdVideoEncodeAV1PictureInfo(@NotNull MemorySegment segment) imple
         return this;
     }
 
-    public MemorySegment delta_frame_id_minus_1Raw() {
+    public @NotNull MemorySegment delta_frame_id_minus_1Raw() {
         return segment.asSlice(OFFSET$delta_frame_id_minus_1, SIZE$delta_frame_id_minus_1);
     }
 
@@ -388,11 +388,11 @@ public record StdVideoEncodeAV1PictureInfo(@NotNull MemorySegment segment) imple
         return new StdVideoAV1TileInfo(s);
     }
 
-    public @Pointer(target=StdVideoAV1TileInfo.class) MemorySegment pTileInfoRaw() {
+    public @Pointer(target=StdVideoAV1TileInfo.class) @NotNull MemorySegment pTileInfoRaw() {
         return segment.get(LAYOUT$pTileInfo, OFFSET$pTileInfo);
     }
 
-    public void pTileInfoRaw(@Pointer(target=StdVideoAV1TileInfo.class) MemorySegment value) {
+    public void pTileInfoRaw(@Pointer(target=StdVideoAV1TileInfo.class) @NotNull MemorySegment value) {
         segment.set(LAYOUT$pTileInfo, OFFSET$pTileInfo, value);
     }
 
@@ -420,11 +420,11 @@ public record StdVideoEncodeAV1PictureInfo(@NotNull MemorySegment segment) imple
         return new StdVideoAV1Quantization(s);
     }
 
-    public @Pointer(target=StdVideoAV1Quantization.class) MemorySegment pQuantizationRaw() {
+    public @Pointer(target=StdVideoAV1Quantization.class) @NotNull MemorySegment pQuantizationRaw() {
         return segment.get(LAYOUT$pQuantization, OFFSET$pQuantization);
     }
 
-    public void pQuantizationRaw(@Pointer(target=StdVideoAV1Quantization.class) MemorySegment value) {
+    public void pQuantizationRaw(@Pointer(target=StdVideoAV1Quantization.class) @NotNull MemorySegment value) {
         segment.set(LAYOUT$pQuantization, OFFSET$pQuantization, value);
     }
 
@@ -452,11 +452,11 @@ public record StdVideoEncodeAV1PictureInfo(@NotNull MemorySegment segment) imple
         return new StdVideoAV1Segmentation(s);
     }
 
-    public @Pointer(target=StdVideoAV1Segmentation.class) MemorySegment pSegmentationRaw() {
+    public @Pointer(target=StdVideoAV1Segmentation.class) @NotNull MemorySegment pSegmentationRaw() {
         return segment.get(LAYOUT$pSegmentation, OFFSET$pSegmentation);
     }
 
-    public void pSegmentationRaw(@Pointer(target=StdVideoAV1Segmentation.class) MemorySegment value) {
+    public void pSegmentationRaw(@Pointer(target=StdVideoAV1Segmentation.class) @NotNull MemorySegment value) {
         segment.set(LAYOUT$pSegmentation, OFFSET$pSegmentation, value);
     }
 
@@ -484,11 +484,11 @@ public record StdVideoEncodeAV1PictureInfo(@NotNull MemorySegment segment) imple
         return new StdVideoAV1LoopFilter(s);
     }
 
-    public @Pointer(target=StdVideoAV1LoopFilter.class) MemorySegment pLoopFilterRaw() {
+    public @Pointer(target=StdVideoAV1LoopFilter.class) @NotNull MemorySegment pLoopFilterRaw() {
         return segment.get(LAYOUT$pLoopFilter, OFFSET$pLoopFilter);
     }
 
-    public void pLoopFilterRaw(@Pointer(target=StdVideoAV1LoopFilter.class) MemorySegment value) {
+    public void pLoopFilterRaw(@Pointer(target=StdVideoAV1LoopFilter.class) @NotNull MemorySegment value) {
         segment.set(LAYOUT$pLoopFilter, OFFSET$pLoopFilter, value);
     }
 
@@ -516,11 +516,11 @@ public record StdVideoEncodeAV1PictureInfo(@NotNull MemorySegment segment) imple
         return new StdVideoAV1CDEF(s);
     }
 
-    public @Pointer(target=StdVideoAV1CDEF.class) MemorySegment pCDEFRaw() {
+    public @Pointer(target=StdVideoAV1CDEF.class) @NotNull MemorySegment pCDEFRaw() {
         return segment.get(LAYOUT$pCDEF, OFFSET$pCDEF);
     }
 
-    public void pCDEFRaw(@Pointer(target=StdVideoAV1CDEF.class) MemorySegment value) {
+    public void pCDEFRaw(@Pointer(target=StdVideoAV1CDEF.class) @NotNull MemorySegment value) {
         segment.set(LAYOUT$pCDEF, OFFSET$pCDEF, value);
     }
 
@@ -548,11 +548,11 @@ public record StdVideoEncodeAV1PictureInfo(@NotNull MemorySegment segment) imple
         return new StdVideoAV1LoopRestoration(s);
     }
 
-    public @Pointer(target=StdVideoAV1LoopRestoration.class) MemorySegment pLoopRestorationRaw() {
+    public @Pointer(target=StdVideoAV1LoopRestoration.class) @NotNull MemorySegment pLoopRestorationRaw() {
         return segment.get(LAYOUT$pLoopRestoration, OFFSET$pLoopRestoration);
     }
 
-    public void pLoopRestorationRaw(@Pointer(target=StdVideoAV1LoopRestoration.class) MemorySegment value) {
+    public void pLoopRestorationRaw(@Pointer(target=StdVideoAV1LoopRestoration.class) @NotNull MemorySegment value) {
         segment.set(LAYOUT$pLoopRestoration, OFFSET$pLoopRestoration, value);
     }
 
@@ -580,11 +580,11 @@ public record StdVideoEncodeAV1PictureInfo(@NotNull MemorySegment segment) imple
         return new StdVideoAV1GlobalMotion(s);
     }
 
-    public @Pointer(target=StdVideoAV1GlobalMotion.class) MemorySegment pGlobalMotionRaw() {
+    public @Pointer(target=StdVideoAV1GlobalMotion.class) @NotNull MemorySegment pGlobalMotionRaw() {
         return segment.get(LAYOUT$pGlobalMotion, OFFSET$pGlobalMotion);
     }
 
-    public void pGlobalMotionRaw(@Pointer(target=StdVideoAV1GlobalMotion.class) MemorySegment value) {
+    public void pGlobalMotionRaw(@Pointer(target=StdVideoAV1GlobalMotion.class) @NotNull MemorySegment value) {
         segment.set(LAYOUT$pGlobalMotion, OFFSET$pGlobalMotion, value);
     }
 
@@ -612,11 +612,11 @@ public record StdVideoEncodeAV1PictureInfo(@NotNull MemorySegment segment) imple
         return new StdVideoEncodeAV1ExtensionHeader(s);
     }
 
-    public @Pointer(target=StdVideoEncodeAV1ExtensionHeader.class) MemorySegment pExtensionHeaderRaw() {
+    public @Pointer(target=StdVideoEncodeAV1ExtensionHeader.class) @NotNull MemorySegment pExtensionHeaderRaw() {
         return segment.get(LAYOUT$pExtensionHeader, OFFSET$pExtensionHeader);
     }
 
-    public void pExtensionHeaderRaw(@Pointer(target=StdVideoEncodeAV1ExtensionHeader.class) MemorySegment value) {
+    public void pExtensionHeaderRaw(@Pointer(target=StdVideoEncodeAV1ExtensionHeader.class) @NotNull MemorySegment value) {
         segment.set(LAYOUT$pExtensionHeader, OFFSET$pExtensionHeader, value);
     }
 
@@ -638,11 +638,11 @@ public record StdVideoEncodeAV1PictureInfo(@NotNull MemorySegment segment) imple
         return this;
     }
 
-    public @Pointer(comment="uint32_t*") MemorySegment pBufferRemovalTimesRaw() {
+    public @Pointer(comment="uint32_t*") @NotNull MemorySegment pBufferRemovalTimesRaw() {
         return segment.get(LAYOUT$pBufferRemovalTimes, OFFSET$pBufferRemovalTimes);
     }
 
-    public void pBufferRemovalTimesRaw(@Pointer(comment="uint32_t*") MemorySegment value) {
+    public void pBufferRemovalTimesRaw(@Pointer(comment="uint32_t*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pBufferRemovalTimes, OFFSET$pBufferRemovalTimes, value);
     }
 

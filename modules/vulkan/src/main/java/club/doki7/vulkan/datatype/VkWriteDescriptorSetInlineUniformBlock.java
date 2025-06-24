@@ -200,12 +200,13 @@ public record VkWriteDescriptorSetInlineUniformBlock(@NotNull MemorySegment segm
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkWriteDescriptorSetInlineUniformBlock pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkWriteDescriptorSetInlineUniformBlock pNext(@Nullable IPointer pointer) {
@@ -222,12 +223,13 @@ public record VkWriteDescriptorSetInlineUniformBlock(@NotNull MemorySegment segm
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pData() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pData() {
         return segment.get(LAYOUT$pData, OFFSET$pData);
     }
 
-    public void pData(@Pointer(comment="void*") MemorySegment value) {
+    public VkWriteDescriptorSetInlineUniformBlock pData(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pData, OFFSET$pData, value);
+        return this;
     }
 
     public VkWriteDescriptorSetInlineUniformBlock pData(@Nullable IPointer pointer) {

@@ -179,11 +179,11 @@ public record VkIndirectCommandsExecutionSetTokenEXT(@NotNull MemorySegment segm
         return this;
     }
 
-    public @EnumType(VkShaderStageFlags.class) int shaderStages() {
+    public @Bitmask(VkShaderStageFlags.class) int shaderStages() {
         return segment.get(LAYOUT$shaderStages, OFFSET$shaderStages);
     }
 
-    public VkIndirectCommandsExecutionSetTokenEXT shaderStages(@EnumType(VkShaderStageFlags.class) int value) {
+    public VkIndirectCommandsExecutionSetTokenEXT shaderStages(@Bitmask(VkShaderStageFlags.class) int value) {
         segment.set(LAYOUT$shaderStages, OFFSET$shaderStages, value);
         return this;
     }

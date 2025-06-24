@@ -236,11 +236,11 @@ public record VmaDefragmentationPassMoveInfo(@NotNull MemorySegment segment) imp
         return new VmaDefragmentationMove(s);
     }
 
-    public @Pointer(target=VmaDefragmentationMove.class) MemorySegment pMovesRaw() {
+    public @Pointer(target=VmaDefragmentationMove.class) @NotNull MemorySegment pMovesRaw() {
         return segment.get(LAYOUT$pMoves, OFFSET$pMoves);
     }
 
-    public void pMovesRaw(@Pointer(target=VmaDefragmentationMove.class) MemorySegment value) {
+    public void pMovesRaw(@Pointer(target=VmaDefragmentationMove.class) @NotNull MemorySegment value) {
         segment.set(LAYOUT$pMoves, OFFSET$pMoves, value);
     }
 

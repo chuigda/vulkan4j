@@ -200,12 +200,13 @@ public record VkPipelineRasterizationStateStreamCreateInfoEXT(@NotNull MemorySeg
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkPipelineRasterizationStateStreamCreateInfoEXT pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkPipelineRasterizationStateStreamCreateInfoEXT pNext(@Nullable IPointer pointer) {
@@ -213,11 +214,11 @@ public record VkPipelineRasterizationStateStreamCreateInfoEXT(@NotNull MemorySeg
         return this;
     }
 
-    public @EnumType(VkPipelineRasterizationStateStreamCreateFlagsEXT.class) int flags() {
+    public @Bitmask(VkPipelineRasterizationStateStreamCreateFlagsEXT.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public VkPipelineRasterizationStateStreamCreateInfoEXT flags(@EnumType(VkPipelineRasterizationStateStreamCreateFlagsEXT.class) int value) {
+    public VkPipelineRasterizationStateStreamCreateInfoEXT flags(@Bitmask(VkPipelineRasterizationStateStreamCreateFlagsEXT.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
         return this;
     }

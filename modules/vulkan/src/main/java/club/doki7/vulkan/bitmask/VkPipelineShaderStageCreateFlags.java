@@ -10,7 +10,7 @@ public final class VkPipelineShaderStageCreateFlags {
     public static final int ALLOW_VARYING_SUBGROUP_SIZE = 0x1;
     public static final int REQUIRE_FULL_SUBGROUPS = 0x2;
 
-    public static String explain(@EnumType(VkPipelineShaderStageCreateFlags.class) int flags) {
+    public static String explain(@Bitmask(VkPipelineShaderStageCreateFlags.class) int flags) {
         List<String> detectedFlagBits = new ArrayList<>();
         if ((flags & ALLOW_VARYING_SUBGROUP_SIZE) != 0) {
             detectedFlagBits.add("VK_PIPELINE_SHADER_STAGE_CREATE_ALLOW_VARYING_SUBGROUP_SIZE_BIT");

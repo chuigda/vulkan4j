@@ -205,12 +205,13 @@ public record VkSubmitInfo(@NotNull MemorySegment segment) implements IVkSubmitI
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkSubmitInfo pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkSubmitInfo pNext(@Nullable IPointer pointer) {
@@ -245,11 +246,11 @@ public record VkSubmitInfo(@NotNull MemorySegment segment) implements IVkSubmitI
         return this;
     }
 
-    public @Pointer(target=VkSemaphore.class) MemorySegment pWaitSemaphoresRaw() {
+    public @Pointer(target=VkSemaphore.class) @NotNull MemorySegment pWaitSemaphoresRaw() {
         return segment.get(LAYOUT$pWaitSemaphores, OFFSET$pWaitSemaphores);
     }
 
-    public void pWaitSemaphoresRaw(@Pointer(target=VkSemaphore.class) MemorySegment value) {
+    public void pWaitSemaphoresRaw(@Pointer(target=VkSemaphore.class) @NotNull MemorySegment value) {
         segment.set(LAYOUT$pWaitSemaphores, OFFSET$pWaitSemaphores, value);
     }
 
@@ -258,7 +259,7 @@ public record VkSubmitInfo(@NotNull MemorySegment segment) implements IVkSubmitI
     /// {@link IntPtr#size} property. It's up to user to track the size of the buffer,
     /// and use {@link IntPtr#reinterpret} to set the size before actually reading fro
     /// or writing to the buffer.
-    public @Nullable @EnumType(VkPipelineStageFlags.class) IntPtr pWaitDstStageMask() {
+    public @Nullable @Bitmask(VkPipelineStageFlags.class) IntPtr pWaitDstStageMask() {
         MemorySegment s = pWaitDstStageMaskRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
@@ -266,17 +267,17 @@ public record VkSubmitInfo(@NotNull MemorySegment segment) implements IVkSubmitI
         return new IntPtr(s);
     }
 
-    public VkSubmitInfo pWaitDstStageMask(@Nullable @EnumType(VkPipelineStageFlags.class) IntPtr value) {
+    public VkSubmitInfo pWaitDstStageMask(@Nullable @Bitmask(VkPipelineStageFlags.class) IntPtr value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pWaitDstStageMaskRaw(s);
         return this;
     }
 
-    public @Pointer(target=VkPipelineStageFlags.class) MemorySegment pWaitDstStageMaskRaw() {
+    public @Pointer(target=VkPipelineStageFlags.class) @NotNull MemorySegment pWaitDstStageMaskRaw() {
         return segment.get(LAYOUT$pWaitDstStageMask, OFFSET$pWaitDstStageMask);
     }
 
-    public void pWaitDstStageMaskRaw(@Pointer(target=VkPipelineStageFlags.class) MemorySegment value) {
+    public void pWaitDstStageMaskRaw(@Pointer(target=VkPipelineStageFlags.class) @NotNull MemorySegment value) {
         segment.set(LAYOUT$pWaitDstStageMask, OFFSET$pWaitDstStageMask, value);
     }
 
@@ -307,11 +308,11 @@ public record VkSubmitInfo(@NotNull MemorySegment segment) implements IVkSubmitI
         return this;
     }
 
-    public @Pointer(target=VkCommandBuffer.class) MemorySegment pCommandBuffersRaw() {
+    public @Pointer(target=VkCommandBuffer.class) @NotNull MemorySegment pCommandBuffersRaw() {
         return segment.get(LAYOUT$pCommandBuffers, OFFSET$pCommandBuffers);
     }
 
-    public void pCommandBuffersRaw(@Pointer(target=VkCommandBuffer.class) MemorySegment value) {
+    public void pCommandBuffersRaw(@Pointer(target=VkCommandBuffer.class) @NotNull MemorySegment value) {
         segment.set(LAYOUT$pCommandBuffers, OFFSET$pCommandBuffers, value);
     }
 
@@ -342,11 +343,11 @@ public record VkSubmitInfo(@NotNull MemorySegment segment) implements IVkSubmitI
         return this;
     }
 
-    public @Pointer(target=VkSemaphore.class) MemorySegment pSignalSemaphoresRaw() {
+    public @Pointer(target=VkSemaphore.class) @NotNull MemorySegment pSignalSemaphoresRaw() {
         return segment.get(LAYOUT$pSignalSemaphores, OFFSET$pSignalSemaphores);
     }
 
-    public void pSignalSemaphoresRaw(@Pointer(target=VkSemaphore.class) MemorySegment value) {
+    public void pSignalSemaphoresRaw(@Pointer(target=VkSemaphore.class) @NotNull MemorySegment value) {
         segment.set(LAYOUT$pSignalSemaphores, OFFSET$pSignalSemaphores, value);
     }
 

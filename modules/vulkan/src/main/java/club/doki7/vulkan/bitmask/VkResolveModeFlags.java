@@ -14,7 +14,7 @@ public final class VkResolveModeFlags {
     public static final int NONE = 0x0;
     public static final int SAMPLE_ZERO = 0x1;
 
-    public static String explain(@EnumType(VkResolveModeFlags.class) int flags) {
+    public static String explain(@Bitmask(VkResolveModeFlags.class) int flags) {
         List<String> detectedFlagBits = new ArrayList<>();
         if ((flags & AVERAGE) != 0) {
             detectedFlagBits.add("VK_RESOLVE_MODE_AVERAGE_BIT");

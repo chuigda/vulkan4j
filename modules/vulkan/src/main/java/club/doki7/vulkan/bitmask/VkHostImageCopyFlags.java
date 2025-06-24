@@ -9,7 +9,7 @@ import java.util.List;
 public final class VkHostImageCopyFlags {
     public static final int MEMCPY = 0x1;
 
-    public static String explain(@EnumType(VkHostImageCopyFlags.class) int flags) {
+    public static String explain(@Bitmask(VkHostImageCopyFlags.class) int flags) {
         List<String> detectedFlagBits = new ArrayList<>();
         if ((flags & MEMCPY) != 0) {
             detectedFlagBits.add("VK_HOST_IMAGE_COPY_MEMCPY");

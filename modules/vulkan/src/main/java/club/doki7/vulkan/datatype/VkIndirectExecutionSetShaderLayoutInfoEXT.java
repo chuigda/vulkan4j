@@ -200,12 +200,13 @@ public record VkIndirectExecutionSetShaderLayoutInfoEXT(@NotNull MemorySegment s
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkIndirectExecutionSetShaderLayoutInfoEXT pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkIndirectExecutionSetShaderLayoutInfoEXT pNext(@Nullable IPointer pointer) {
@@ -240,11 +241,11 @@ public record VkIndirectExecutionSetShaderLayoutInfoEXT(@NotNull MemorySegment s
         return this;
     }
 
-    public @Pointer(target=VkDescriptorSetLayout.class) MemorySegment pSetLayoutsRaw() {
+    public @Pointer(target=VkDescriptorSetLayout.class) @NotNull MemorySegment pSetLayoutsRaw() {
         return segment.get(LAYOUT$pSetLayouts, OFFSET$pSetLayouts);
     }
 
-    public void pSetLayoutsRaw(@Pointer(target=VkDescriptorSetLayout.class) MemorySegment value) {
+    public void pSetLayoutsRaw(@Pointer(target=VkDescriptorSetLayout.class) @NotNull MemorySegment value) {
         segment.set(LAYOUT$pSetLayouts, OFFSET$pSetLayouts, value);
     }
 

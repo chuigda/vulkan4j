@@ -46,7 +46,7 @@ private void pickPhysicalDevice() {
 Otherwise, we can now allocate an array to hold all the VkPhysicalDevice handles.
 
 ```java
-var pDevices = VkPhysicalDevice.Buffer.allocate(arena, deviceCount);
+var pDevices = VkPhysicalDevice.Ptr.allocate(arena, deviceCount);
 result = instanceCommands.vkEnumeratePhysicalDevices(instance, pDeviceCount, pDevices);
 if (result != VkResult.VK_SUCCESS) {
     throw new RuntimeException("Failed to enumerate physical devices, vulkan error code: " + VkResult.explain(result));

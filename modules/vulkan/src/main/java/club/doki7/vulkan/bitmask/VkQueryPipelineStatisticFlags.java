@@ -22,7 +22,7 @@ public final class VkQueryPipelineStatisticFlags {
     public static final int TESSELLATION_EVALUATION_SHADER_INVOCATIONS = 0x200;
     public static final int VERTEX_SHADER_INVOCATIONS = 0x4;
 
-    public static String explain(@EnumType(VkQueryPipelineStatisticFlags.class) int flags) {
+    public static String explain(@Bitmask(VkQueryPipelineStatisticFlags.class) int flags) {
         List<String> detectedFlagBits = new ArrayList<>();
         if ((flags & CLIPPING_INVOCATIONS) != 0) {
             detectedFlagBits.add("VK_QUERY_PIPELINE_STATISTIC_CLIPPING_INVOCATIONS_BIT");

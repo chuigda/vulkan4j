@@ -252,6 +252,11 @@ internal val knownTriviaMacros = setOf(
     "SHADERC_EXPORT",
     "XRAPI_PTR",
 
+    "STBIDEF",
+    "STBTT_DEF",
+    "STBIRDEF",
+    "STBIWDEF",
+
     "extern"
 )
 

@@ -187,11 +187,11 @@ public record ShadercIncludeResult(@NotNull MemorySegment segment) implements IS
         return this;
     }
 
-    public @Pointer(comment="int8_t*") MemorySegment sourceNameRaw() {
+    public @Pointer(comment="int8_t*") @NotNull MemorySegment sourceNameRaw() {
         return segment.get(LAYOUT$sourceName, OFFSET$sourceName);
     }
 
-    public void sourceNameRaw(@Pointer(comment="int8_t*") MemorySegment value) {
+    public void sourceNameRaw(@Pointer(comment="int8_t*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$sourceName, OFFSET$sourceName, value);
     }
 
@@ -222,11 +222,11 @@ public record ShadercIncludeResult(@NotNull MemorySegment segment) implements IS
         return this;
     }
 
-    public @Pointer(comment="int8_t*") MemorySegment contentRaw() {
+    public @Pointer(comment="int8_t*") @NotNull MemorySegment contentRaw() {
         return segment.get(LAYOUT$content, OFFSET$content);
     }
 
-    public void contentRaw(@Pointer(comment="int8_t*") MemorySegment value) {
+    public void contentRaw(@Pointer(comment="int8_t*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$content, OFFSET$content, value);
     }
 
@@ -239,12 +239,13 @@ public record ShadercIncludeResult(@NotNull MemorySegment segment) implements IS
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment userData() {
+    public @Pointer(comment="void*") @NotNull MemorySegment userData() {
         return segment.get(LAYOUT$userData, OFFSET$userData);
     }
 
-    public void userData(@Pointer(comment="void*") MemorySegment value) {
+    public ShadercIncludeResult userData(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$userData, OFFSET$userData, value);
+        return this;
     }
 
     public ShadercIncludeResult userData(@Nullable IPointer pointer) {

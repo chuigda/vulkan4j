@@ -205,12 +205,13 @@ public record VkDeviceMemoryReportCallbackDataEXT(@NotNull MemorySegment segment
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkDeviceMemoryReportCallbackDataEXT pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkDeviceMemoryReportCallbackDataEXT pNext(@Nullable IPointer pointer) {
@@ -218,11 +219,11 @@ public record VkDeviceMemoryReportCallbackDataEXT(@NotNull MemorySegment segment
         return this;
     }
 
-    public @EnumType(VkDeviceMemoryReportFlagsEXT.class) int flags() {
+    public @Bitmask(VkDeviceMemoryReportFlagsEXT.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public VkDeviceMemoryReportCallbackDataEXT flags(@EnumType(VkDeviceMemoryReportFlagsEXT.class) int value) {
+    public VkDeviceMemoryReportCallbackDataEXT flags(@Bitmask(VkDeviceMemoryReportFlagsEXT.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
         return this;
     }

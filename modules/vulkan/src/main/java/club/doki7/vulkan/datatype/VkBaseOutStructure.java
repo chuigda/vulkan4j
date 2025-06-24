@@ -203,11 +203,11 @@ public record VkBaseOutStructure(@NotNull MemorySegment segment) implements IVkB
         return new VkBaseOutStructure(s);
     }
 
-    public @Pointer(target=VkBaseOutStructure.class) MemorySegment pNextRaw() {
+    public @Pointer(target=VkBaseOutStructure.class) @NotNull MemorySegment pNextRaw() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNextRaw(@Pointer(target=VkBaseOutStructure.class) MemorySegment value) {
+    public void pNextRaw(@Pointer(target=VkBaseOutStructure.class) @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 

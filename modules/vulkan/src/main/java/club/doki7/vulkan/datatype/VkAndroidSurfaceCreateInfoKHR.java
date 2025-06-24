@@ -200,12 +200,13 @@ public record VkAndroidSurfaceCreateInfoKHR(@NotNull MemorySegment segment) impl
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkAndroidSurfaceCreateInfoKHR pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkAndroidSurfaceCreateInfoKHR pNext(@Nullable IPointer pointer) {
@@ -213,11 +214,11 @@ public record VkAndroidSurfaceCreateInfoKHR(@NotNull MemorySegment segment) impl
         return this;
     }
 
-    public @EnumType(VkAndroidSurfaceCreateFlagsKHR.class) int flags() {
+    public @Bitmask(VkAndroidSurfaceCreateFlagsKHR.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public VkAndroidSurfaceCreateInfoKHR flags(@EnumType(VkAndroidSurfaceCreateFlagsKHR.class) int value) {
+    public VkAndroidSurfaceCreateInfoKHR flags(@Bitmask(VkAndroidSurfaceCreateFlagsKHR.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
         return this;
     }
@@ -239,11 +240,11 @@ public record VkAndroidSurfaceCreateInfoKHR(@NotNull MemorySegment segment) impl
         return this;
     }
 
-    public @Pointer(comment="ANativeWindow*") MemorySegment windowRaw() {
+    public @Pointer(comment="ANativeWindow*") @NotNull MemorySegment windowRaw() {
         return segment.get(LAYOUT$window, OFFSET$window);
     }
 
-    public void windowRaw(@Pointer(comment="ANativeWindow*") MemorySegment value) {
+    public void windowRaw(@Pointer(comment="ANativeWindow*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$window, OFFSET$window, value);
     }
 

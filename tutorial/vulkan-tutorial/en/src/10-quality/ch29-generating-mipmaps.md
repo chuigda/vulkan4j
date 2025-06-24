@@ -40,8 +40,8 @@ private Pair<VkImage, VkDeviceMemory> createImage(
         int mipLevels,
         @EnumType(VkFormat.class) int format,
         @EnumType(VkImageTiling.class) int tiling,
-        @EnumType(VkImageUsageFlags.class) int usage,
-        @EnumType(VkMemoryPropertyFlags.class) int properties
+        @Bitmask(VkImageUsageFlags.class) int usage,
+        @Bitmask(VkMemoryPropertyFlags.class) int properties
 ) {
     // ...
     imageInfo.mipLevels(mipLevels);
@@ -53,7 +53,7 @@ private Pair<VkImage, VkDeviceMemory> createImage(
 private VkImageView createImageView(
         VkImage image,
         @EnumType(VkFormat.class) int format,
-        @EnumType(VkImageAspectFlags.class) int aspect,
+        @Bitmask(VkImageAspectFlags.class) int aspect,
         int mipLevels
 ) {
     // ...

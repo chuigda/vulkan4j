@@ -84,7 +84,7 @@ fun generateBitmask(
 
         if (bitflags.isNotEmpty()) {
             +""
-            +"public static String explain(@EnumType(${bitmask.name}.class) $bitflagType flags) {"
+            +"public static String explain(@Bitmask(${bitmask.name}.class) $bitflagType flags) {"
             indent {
                 +"List<String> detectedFlagBits = new ArrayList<>();"
                 for (flag in bitflags) {

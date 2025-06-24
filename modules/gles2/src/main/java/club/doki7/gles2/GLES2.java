@@ -5,6 +5,7 @@ import java.lang.invoke.MethodHandle;
 import java.util.Objects;
 
 import org.jetbrains.annotations.Nullable;
+import org.jetbrains.annotations.NotNull;
 import club.doki7.ffm.NativeLayout;
 import club.doki7.ffm.RawFunctionLoader;
 import club.doki7.ffm.annotation.*;
@@ -502,7 +503,7 @@ public final class GLES2 implements GLES2Constants {
     public void bufferData(
         @NativeType("GLenum") int target,
         @NativeType("GLsizeiptr") long size,
-        @Pointer(comment="void*") MemorySegment data,
+        @Pointer(comment="void*") @NotNull MemorySegment data,
         @NativeType("GLenum") int usage
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glBufferData);
@@ -523,7 +524,7 @@ public final class GLES2 implements GLES2Constants {
         @NativeType("GLenum") int target,
         @NativeType("GLintptr") long offset,
         @NativeType("GLsizeiptr") long size,
-        @Pointer(comment="void*") MemorySegment data
+        @Pointer(comment="void*") @NotNull MemorySegment data
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glBufferSubData);
         try {
@@ -657,7 +658,7 @@ public final class GLES2 implements GLES2Constants {
         @NativeType("GLsizei") int height,
         @NativeType("GLint") int border,
         @NativeType("GLsizei") int imageSize,
-        @Pointer(comment="void*") MemorySegment data
+        @Pointer(comment="void*") @NotNull MemorySegment data
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glCompressedTexImage2D);
         try {
@@ -686,7 +687,7 @@ public final class GLES2 implements GLES2Constants {
         @NativeType("GLsizei") int height,
         @NativeType("GLenum") int format,
         @NativeType("GLsizei") int imageSize,
-        @Pointer(comment="void*") MemorySegment data
+        @Pointer(comment="void*") @NotNull MemorySegment data
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glCompressedTexSubImage2D);
         try {
@@ -1004,7 +1005,7 @@ public final class GLES2 implements GLES2Constants {
         @NativeType("GLenum") int mode,
         @NativeType("GLsizei") int count,
         @NativeType("GLenum") int type,
-        @Pointer(comment="void*") MemorySegment indices
+        @Pointer(comment="void*") @NotNull MemorySegment indices
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glDrawElements);
         try {
@@ -1861,7 +1862,7 @@ public final class GLES2 implements GLES2Constants {
         @NativeType("GLsizei") int height,
         @NativeType("GLenum") int format,
         @NativeType("GLenum") int type,
-        @Pointer(comment="void*") MemorySegment pixels
+        @Pointer(comment="void*") @NotNull MemorySegment pixels
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glReadPixels);
         try {
@@ -1951,7 +1952,7 @@ public final class GLES2 implements GLES2Constants {
         @NativeType("GLsizei") int count,
         @Nullable @Pointer(comment="GLuint") @Unsigned IntPtr shaders,
         @NativeType("GLenum") int binaryFormat,
-        @Pointer(comment="void*") MemorySegment binary,
+        @Pointer(comment="void*") @NotNull MemorySegment binary,
         @NativeType("GLsizei") int length
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glShaderBinary);
@@ -2104,7 +2105,7 @@ public final class GLES2 implements GLES2Constants {
         @NativeType("GLint") int border,
         @NativeType("GLenum") int format,
         @NativeType("GLenum") int type,
-        @Pointer(comment="void*") MemorySegment pixels
+        @Pointer(comment="void*") @NotNull MemorySegment pixels
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glTexImage2D);
         try {
@@ -2206,7 +2207,7 @@ public final class GLES2 implements GLES2Constants {
         @NativeType("GLsizei") int height,
         @NativeType("GLenum") int format,
         @NativeType("GLenum") int type,
-        @Pointer(comment="void*") MemorySegment pixels
+        @Pointer(comment="void*") @NotNull MemorySegment pixels
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glTexSubImage2D);
         try {
@@ -2757,7 +2758,7 @@ public final class GLES2 implements GLES2Constants {
         @NativeType("GLenum") int type,
         @NativeType("GLboolean") @Unsigned byte normalized,
         @NativeType("GLsizei") int stride,
-        @Pointer(comment="void*") MemorySegment pointer
+        @Pointer(comment="void*") @NotNull MemorySegment pointer
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glVertexAttribPointer);
         try {

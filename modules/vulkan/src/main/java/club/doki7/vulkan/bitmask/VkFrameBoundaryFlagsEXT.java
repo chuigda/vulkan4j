@@ -9,7 +9,7 @@ import java.util.List;
 public final class VkFrameBoundaryFlagsEXT {
     public static final int FRAME_END = 0x1;
 
-    public static String explain(@EnumType(VkFrameBoundaryFlagsEXT.class) int flags) {
+    public static String explain(@Bitmask(VkFrameBoundaryFlagsEXT.class) int flags) {
         List<String> detectedFlagBits = new ArrayList<>();
         if ((flags & FRAME_END) != 0) {
             detectedFlagBits.add("VK_FRAME_BOUNDARY_FRAME_END_BIT_EXT");

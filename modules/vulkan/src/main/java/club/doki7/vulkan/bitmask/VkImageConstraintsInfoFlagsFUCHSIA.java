@@ -13,7 +13,7 @@ public final class VkImageConstraintsInfoFlagsFUCHSIA {
     public static final int CPU_WRITE_RARELY = 0x4;
     public static final int PROTECTED_OPTIONAL = 0x10;
 
-    public static String explain(@EnumType(VkImageConstraintsInfoFlagsFUCHSIA.class) int flags) {
+    public static String explain(@Bitmask(VkImageConstraintsInfoFlagsFUCHSIA.class) int flags) {
         List<String> detectedFlagBits = new ArrayList<>();
         if ((flags & CPU_READ_OFTEN) != 0) {
             detectedFlagBits.add("VK_IMAGE_CONSTRAINTS_INFO_CPU_READ_OFTEN_FUCHSIA");

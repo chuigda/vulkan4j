@@ -203,12 +203,13 @@ public record VkAccelerationStructureInfoNV(@NotNull MemorySegment segment) impl
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkAccelerationStructureInfoNV pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkAccelerationStructureInfoNV pNext(@Nullable IPointer pointer) {
@@ -225,11 +226,11 @@ public record VkAccelerationStructureInfoNV(@NotNull MemorySegment segment) impl
         return this;
     }
 
-    public @EnumType(VkBuildAccelerationStructureFlagsKHR.class) int flags() {
+    public @Bitmask(VkBuildAccelerationStructureFlagsKHR.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public VkAccelerationStructureInfoNV flags(@EnumType(VkBuildAccelerationStructureFlagsKHR.class) int value) {
+    public VkAccelerationStructureInfoNV flags(@Bitmask(VkBuildAccelerationStructureFlagsKHR.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
         return this;
     }
@@ -276,11 +277,11 @@ public record VkAccelerationStructureInfoNV(@NotNull MemorySegment segment) impl
         return new VkGeometryNV(s);
     }
 
-    public @Pointer(target=VkGeometryNV.class) MemorySegment pGeometriesRaw() {
+    public @Pointer(target=VkGeometryNV.class) @NotNull MemorySegment pGeometriesRaw() {
         return segment.get(LAYOUT$pGeometries, OFFSET$pGeometries);
     }
 
-    public void pGeometriesRaw(@Pointer(target=VkGeometryNV.class) MemorySegment value) {
+    public void pGeometriesRaw(@Pointer(target=VkGeometryNV.class) @NotNull MemorySegment value) {
         segment.set(LAYOUT$pGeometries, OFFSET$pGeometries, value);
     }
 

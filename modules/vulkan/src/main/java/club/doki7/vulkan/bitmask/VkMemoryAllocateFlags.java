@@ -11,7 +11,7 @@ public final class VkMemoryAllocateFlags {
     public static final int DEVICE_ADDRESS_CAPTURE_REPLAY = 0x4;
     public static final int DEVICE_MASK = 0x1;
 
-    public static String explain(@EnumType(VkMemoryAllocateFlags.class) int flags) {
+    public static String explain(@Bitmask(VkMemoryAllocateFlags.class) int flags) {
         List<String> detectedFlagBits = new ArrayList<>();
         if ((flags & DEVICE_ADDRESS) != 0) {
             detectedFlagBits.add("VK_MEMORY_ALLOCATE_DEVICE_ADDRESS_BIT");

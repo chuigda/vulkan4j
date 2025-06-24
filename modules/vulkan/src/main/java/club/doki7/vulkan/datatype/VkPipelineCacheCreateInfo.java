@@ -201,12 +201,13 @@ public record VkPipelineCacheCreateInfo(@NotNull MemorySegment segment) implemen
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkPipelineCacheCreateInfo pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkPipelineCacheCreateInfo pNext(@Nullable IPointer pointer) {
@@ -214,11 +215,11 @@ public record VkPipelineCacheCreateInfo(@NotNull MemorySegment segment) implemen
         return this;
     }
 
-    public @EnumType(VkPipelineCacheCreateFlags.class) int flags() {
+    public @Bitmask(VkPipelineCacheCreateFlags.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public VkPipelineCacheCreateInfo flags(@EnumType(VkPipelineCacheCreateFlags.class) int value) {
+    public VkPipelineCacheCreateInfo flags(@Bitmask(VkPipelineCacheCreateFlags.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
         return this;
     }
@@ -232,12 +233,13 @@ public record VkPipelineCacheCreateInfo(@NotNull MemorySegment segment) implemen
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pInitialData() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pInitialData() {
         return segment.get(LAYOUT$pInitialData, OFFSET$pInitialData);
     }
 
-    public void pInitialData(@Pointer(comment="void*") MemorySegment value) {
+    public VkPipelineCacheCreateInfo pInitialData(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pInitialData, OFFSET$pInitialData, value);
+        return this;
     }
 
     public VkPipelineCacheCreateInfo pInitialData(@Nullable IPointer pointer) {

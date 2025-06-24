@@ -200,12 +200,13 @@ public record VkPhysicalDeviceMemoryBudgetPropertiesEXT(@NotNull MemorySegment s
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkPhysicalDeviceMemoryBudgetPropertiesEXT pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkPhysicalDeviceMemoryBudgetPropertiesEXT pNext(@Nullable IPointer pointer) {
@@ -222,7 +223,7 @@ public record VkPhysicalDeviceMemoryBudgetPropertiesEXT(@NotNull MemorySegment s
         return this;
     }
 
-    public MemorySegment heapBudgetRaw() {
+    public @NotNull MemorySegment heapBudgetRaw() {
         return segment.asSlice(OFFSET$heapBudget, SIZE$heapBudget);
     }
 
@@ -235,7 +236,7 @@ public record VkPhysicalDeviceMemoryBudgetPropertiesEXT(@NotNull MemorySegment s
         return this;
     }
 
-    public MemorySegment heapUsageRaw() {
+    public @NotNull MemorySegment heapUsageRaw() {
         return segment.asSlice(OFFSET$heapUsage, SIZE$heapUsage);
     }
 

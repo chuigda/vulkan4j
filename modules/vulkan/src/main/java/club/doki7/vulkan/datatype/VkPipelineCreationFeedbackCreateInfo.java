@@ -201,12 +201,13 @@ public record VkPipelineCreationFeedbackCreateInfo(@NotNull MemorySegment segmen
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkPipelineCreationFeedbackCreateInfo pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkPipelineCreationFeedbackCreateInfo pNext(@Nullable IPointer pointer) {
@@ -238,11 +239,11 @@ public record VkPipelineCreationFeedbackCreateInfo(@NotNull MemorySegment segmen
         return new VkPipelineCreationFeedback(s);
     }
 
-    public @Pointer(target=VkPipelineCreationFeedback.class) MemorySegment pPipelineCreationFeedbackRaw() {
+    public @Pointer(target=VkPipelineCreationFeedback.class) @NotNull MemorySegment pPipelineCreationFeedbackRaw() {
         return segment.get(LAYOUT$pPipelineCreationFeedback, OFFSET$pPipelineCreationFeedback);
     }
 
-    public void pPipelineCreationFeedbackRaw(@Pointer(target=VkPipelineCreationFeedback.class) MemorySegment value) {
+    public void pPipelineCreationFeedbackRaw(@Pointer(target=VkPipelineCreationFeedback.class) @NotNull MemorySegment value) {
         segment.set(LAYOUT$pPipelineCreationFeedback, OFFSET$pPipelineCreationFeedback, value);
     }
 
@@ -279,11 +280,11 @@ public record VkPipelineCreationFeedbackCreateInfo(@NotNull MemorySegment segmen
         return new VkPipelineCreationFeedback(s);
     }
 
-    public @Pointer(target=VkPipelineCreationFeedback.class) MemorySegment pPipelineStageCreationFeedbacksRaw() {
+    public @Pointer(target=VkPipelineCreationFeedback.class) @NotNull MemorySegment pPipelineStageCreationFeedbacksRaw() {
         return segment.get(LAYOUT$pPipelineStageCreationFeedbacks, OFFSET$pPipelineStageCreationFeedbacks);
     }
 
-    public void pPipelineStageCreationFeedbacksRaw(@Pointer(target=VkPipelineCreationFeedback.class) MemorySegment value) {
+    public void pPipelineStageCreationFeedbacksRaw(@Pointer(target=VkPipelineCreationFeedback.class) @NotNull MemorySegment value) {
         segment.set(LAYOUT$pPipelineStageCreationFeedbacks, OFFSET$pPipelineStageCreationFeedbacks, value);
     }
 

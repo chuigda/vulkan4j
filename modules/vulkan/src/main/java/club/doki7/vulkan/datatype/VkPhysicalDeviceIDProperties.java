@@ -203,12 +203,13 @@ public record VkPhysicalDeviceIDProperties(@NotNull MemorySegment segment) imple
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkPhysicalDeviceIDProperties pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkPhysicalDeviceIDProperties pNext(@Nullable IPointer pointer) {
@@ -225,7 +226,7 @@ public record VkPhysicalDeviceIDProperties(@NotNull MemorySegment segment) imple
         return this;
     }
 
-    public MemorySegment deviceUUIDRaw() {
+    public @NotNull MemorySegment deviceUUIDRaw() {
         return segment.asSlice(OFFSET$deviceUUID, SIZE$deviceUUID);
     }
 
@@ -238,7 +239,7 @@ public record VkPhysicalDeviceIDProperties(@NotNull MemorySegment segment) imple
         return this;
     }
 
-    public MemorySegment driverUUIDRaw() {
+    public @NotNull MemorySegment driverUUIDRaw() {
         return segment.asSlice(OFFSET$driverUUID, SIZE$driverUUID);
     }
 
@@ -251,7 +252,7 @@ public record VkPhysicalDeviceIDProperties(@NotNull MemorySegment segment) imple
         return this;
     }
 
-    public MemorySegment deviceLUIDRaw() {
+    public @NotNull MemorySegment deviceLUIDRaw() {
         return segment.asSlice(OFFSET$deviceLUID, SIZE$deviceLUID);
     }
 

@@ -207,12 +207,13 @@ public record VkAttachmentDescription2(@NotNull MemorySegment segment) implement
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkAttachmentDescription2 pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkAttachmentDescription2 pNext(@Nullable IPointer pointer) {
@@ -220,11 +221,11 @@ public record VkAttachmentDescription2(@NotNull MemorySegment segment) implement
         return this;
     }
 
-    public @EnumType(VkAttachmentDescriptionFlags.class) int flags() {
+    public @Bitmask(VkAttachmentDescriptionFlags.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public VkAttachmentDescription2 flags(@EnumType(VkAttachmentDescriptionFlags.class) int value) {
+    public VkAttachmentDescription2 flags(@Bitmask(VkAttachmentDescriptionFlags.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
         return this;
     }
@@ -238,11 +239,11 @@ public record VkAttachmentDescription2(@NotNull MemorySegment segment) implement
         return this;
     }
 
-    public @EnumType(VkSampleCountFlags.class) int samples() {
+    public @Bitmask(VkSampleCountFlags.class) int samples() {
         return segment.get(LAYOUT$samples, OFFSET$samples);
     }
 
-    public VkAttachmentDescription2 samples(@EnumType(VkSampleCountFlags.class) int value) {
+    public VkAttachmentDescription2 samples(@Bitmask(VkSampleCountFlags.class) int value) {
         segment.set(LAYOUT$samples, OFFSET$samples, value);
         return this;
     }

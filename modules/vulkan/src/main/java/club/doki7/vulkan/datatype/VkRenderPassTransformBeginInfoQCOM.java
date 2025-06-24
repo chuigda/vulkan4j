@@ -199,12 +199,13 @@ public record VkRenderPassTransformBeginInfoQCOM(@NotNull MemorySegment segment)
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkRenderPassTransformBeginInfoQCOM pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkRenderPassTransformBeginInfoQCOM pNext(@Nullable IPointer pointer) {
@@ -212,11 +213,11 @@ public record VkRenderPassTransformBeginInfoQCOM(@NotNull MemorySegment segment)
         return this;
     }
 
-    public @EnumType(VkSurfaceTransformFlagsKHR.class) int transform() {
+    public @Bitmask(VkSurfaceTransformFlagsKHR.class) int transform() {
         return segment.get(LAYOUT$transform, OFFSET$transform);
     }
 
-    public VkRenderPassTransformBeginInfoQCOM transform(@EnumType(VkSurfaceTransformFlagsKHR.class) int value) {
+    public VkRenderPassTransformBeginInfoQCOM transform(@Bitmask(VkSurfaceTransformFlagsKHR.class) int value) {
         segment.set(LAYOUT$transform, OFFSET$transform, value);
         return this;
     }

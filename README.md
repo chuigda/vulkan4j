@@ -1,6 +1,8 @@
 # vulkan4j
 
 [![CI status](https://github.com/club-doki7/vulkan4j/actions/workflows/ci.yml/badge.svg?branch=master)](https://github.com/club-doki7/vulkan4j/actions/workflows/ci.yml)
+[![Maven Central Version](https://img.shields.io/maven-central/v/club.doki7/vulkan?label=vulkan)](https://repo1.maven.org/maven2/club/doki7/vulkan/)
+[![Maven Central Version](https://img.shields.io/maven-central/v/club.doki7/ffm-plus?label=ffm-plus)](https://repo1.maven.org/maven2/club/doki7/ffm-plus/)
 
 > [Website & JavaDoc](https://vulkan4j.doki7.club) | [Vulkan Tutorial port](https://vulkan4j.doki7.club/tutorial/en/) | [LearnOpenGL port](https://vulkan4j.doki7.club/learnopengl/en/) | [Examples](https://github.com/club-doki7/vulkan4j/tree/master/modules/example/src/main/java/example) | [Discord](https://discord.gg/UsmRvrt4gg)
 
@@ -16,6 +18,7 @@
 - [OpenAL](https://www.openal.org/) ([`openal`](https://github.com/club-doki7/vulkan4j/tree/master/modules/openal) module): Generated from OpenAL-soft header files. This module is based on OpenAL-soft 1.2, and provides a complete set of OpenAL features, including all extensions supported by OpenAL-soft.
 - [GLFW](https://www.glfw.org/) ([`glfw`](https://github.com/club-doki7/vulkan4j/tree/master/modules/glfw) module): Generated from GLFW header files.
 - [libshaderc](https://github.com/google/shaderc) ([`shaderc`](https://github.com/club-doki7/vulkan4j/tree/master/modules/shaderc) module): Generated from `libshaderc` header files. This module also provides a useful `ShadercUtil` class to assist you with including files.
+- [STB](https://github.com/nothings/stb) ([`stb`](https://github.com/club-doki7/vulkan4j/tree/master/modules/stb) module): Generated from STB header files, currently contains `stb_image`, `stb_image_write`, `stb_image_resize` and `stb_truetype`. If you use a specific build supporting `vk4jSetSTBJavaTrace`, you can enjoy Java stacktrace on STB assertion failures. Check out the [`stb_build`](https://github.com/club-doki7/vulkan4j/tree/master/modules/stb/stb_build) directory for more information.
 
 ### Experimental Bindings
 
@@ -51,16 +54,16 @@ We provide a set of examples, which can be found under the `example` directory. 
 - [x] v0.3.0 rewrite, new namespace, new `ffm-plus` module, use `codegen-v2` module for all registry extraction and code generation.
 - [x] API enhancements: chaining `set` methods for structures, LWJGL style `set` methods for structure members, `allocateV` and `writeV` series functions for `Ptr` types.
 - [x] Full OpenGL bindings
-  - [ ] Tutorial porting
 - [x] OpenAL bindings
+- [x] STB bindings
+  - [x] STB image (containing `image_resize2` and `image_write`)
+  - [x] STB truetype
+  - [ ] STB vorbis
+  - [ ] *To be added*
 - [ ] WebGPU bindings
 - [ ] Full OpenGL ES bindings
 - [ ] SDL3 bindings
 - [ ] LLVM bindings (*is this graphics anymore?*)
-
-### *Development history before 0.3.0?*
-
-See [vulkan4j-legacy](https://github.com/CousinZe/vulkan4j-legacy).
 
 ## Donation
 

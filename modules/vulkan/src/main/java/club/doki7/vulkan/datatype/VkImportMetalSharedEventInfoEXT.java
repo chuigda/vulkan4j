@@ -199,12 +199,13 @@ public record VkImportMetalSharedEventInfoEXT(@NotNull MemorySegment segment) im
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkImportMetalSharedEventInfoEXT pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkImportMetalSharedEventInfoEXT pNext(@Nullable IPointer pointer) {
@@ -212,12 +213,13 @@ public record VkImportMetalSharedEventInfoEXT(@NotNull MemorySegment segment) im
         return this;
     }
 
-    public @Pointer(comment="MTLSharedEvent_id") MemorySegment mtlSharedEvent() {
+    public @Pointer(comment="MTLSharedEvent_id") @NotNull MemorySegment mtlSharedEvent() {
         return segment.get(LAYOUT$mtlSharedEvent, OFFSET$mtlSharedEvent);
     }
 
-    public void mtlSharedEvent(@Pointer(comment="MTLSharedEvent_id") MemorySegment value) {
+    public VkImportMetalSharedEventInfoEXT mtlSharedEvent(@Pointer(comment="MTLSharedEvent_id") @NotNull MemorySegment value) {
         segment.set(LAYOUT$mtlSharedEvent, OFFSET$mtlSharedEvent, value);
+        return this;
     }
 
     public VkImportMetalSharedEventInfoEXT mtlSharedEvent(@Nullable IPointer pointer) {

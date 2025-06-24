@@ -198,11 +198,11 @@ public record VkShadingRatePaletteNV(@NotNull MemorySegment segment) implements 
         return this;
     }
 
-    public @Pointer(target=VkShadingRatePaletteEntryNV.class) MemorySegment pShadingRatePaletteEntriesRaw() {
+    public @Pointer(target=VkShadingRatePaletteEntryNV.class) @NotNull MemorySegment pShadingRatePaletteEntriesRaw() {
         return segment.get(LAYOUT$pShadingRatePaletteEntries, OFFSET$pShadingRatePaletteEntries);
     }
 
-    public void pShadingRatePaletteEntriesRaw(@Pointer(target=VkShadingRatePaletteEntryNV.class) MemorySegment value) {
+    public void pShadingRatePaletteEntriesRaw(@Pointer(target=VkShadingRatePaletteEntryNV.class) @NotNull MemorySegment value) {
         segment.set(LAYOUT$pShadingRatePaletteEntries, OFFSET$pShadingRatePaletteEntries, value);
     }
 

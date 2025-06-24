@@ -199,12 +199,13 @@ public record VkExportMetalObjectCreateInfoEXT(@NotNull MemorySegment segment) i
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkExportMetalObjectCreateInfoEXT pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkExportMetalObjectCreateInfoEXT pNext(@Nullable IPointer pointer) {
@@ -212,11 +213,11 @@ public record VkExportMetalObjectCreateInfoEXT(@NotNull MemorySegment segment) i
         return this;
     }
 
-    public @EnumType(VkExportMetalObjectTypeFlagsEXT.class) int exportObjectType() {
+    public @Bitmask(VkExportMetalObjectTypeFlagsEXT.class) int exportObjectType() {
         return segment.get(LAYOUT$exportObjectType, OFFSET$exportObjectType);
     }
 
-    public VkExportMetalObjectCreateInfoEXT exportObjectType(@EnumType(VkExportMetalObjectTypeFlagsEXT.class) int value) {
+    public VkExportMetalObjectCreateInfoEXT exportObjectType(@Bitmask(VkExportMetalObjectTypeFlagsEXT.class) int value) {
         segment.set(LAYOUT$exportObjectType, OFFSET$exportObjectType, value);
         return this;
     }

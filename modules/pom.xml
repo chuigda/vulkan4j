@@ -57,16 +57,20 @@
         <module>codegen-v2</module>
 
         <module>ffm-plus</module>
+
         <module>vulkan</module>
         <module>gles2</module>
         <module>vma</module>
+        <module>stb</module>
         <module>openal</module>
         <module>glfw</module>
         <module>tutorial</module>
         <module>opengl</module>
         <module>example</module>
-        <module>sdl3</module>
         <module>shaderc</module>
+
+        <!-- experimental -->
+        <module>sdl3</module>
     </modules>
 
     <build>

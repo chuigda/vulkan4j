@@ -201,12 +201,13 @@ public record VkPhysicalDeviceExternalBufferInfo(@NotNull MemorySegment segment)
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkPhysicalDeviceExternalBufferInfo pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkPhysicalDeviceExternalBufferInfo pNext(@Nullable IPointer pointer) {
@@ -214,29 +215,29 @@ public record VkPhysicalDeviceExternalBufferInfo(@NotNull MemorySegment segment)
         return this;
     }
 
-    public @EnumType(VkBufferCreateFlags.class) int flags() {
+    public @Bitmask(VkBufferCreateFlags.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public VkPhysicalDeviceExternalBufferInfo flags(@EnumType(VkBufferCreateFlags.class) int value) {
+    public VkPhysicalDeviceExternalBufferInfo flags(@Bitmask(VkBufferCreateFlags.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
         return this;
     }
 
-    public @EnumType(VkBufferUsageFlags.class) int usage() {
+    public @Bitmask(VkBufferUsageFlags.class) int usage() {
         return segment.get(LAYOUT$usage, OFFSET$usage);
     }
 
-    public VkPhysicalDeviceExternalBufferInfo usage(@EnumType(VkBufferUsageFlags.class) int value) {
+    public VkPhysicalDeviceExternalBufferInfo usage(@Bitmask(VkBufferUsageFlags.class) int value) {
         segment.set(LAYOUT$usage, OFFSET$usage, value);
         return this;
     }
 
-    public @EnumType(VkExternalMemoryHandleTypeFlags.class) int handleType() {
+    public @Bitmask(VkExternalMemoryHandleTypeFlags.class) int handleType() {
         return segment.get(LAYOUT$handleType, OFFSET$handleType);
     }
 
-    public VkPhysicalDeviceExternalBufferInfo handleType(@EnumType(VkExternalMemoryHandleTypeFlags.class) int value) {
+    public VkPhysicalDeviceExternalBufferInfo handleType(@Bitmask(VkExternalMemoryHandleTypeFlags.class) int value) {
         segment.set(LAYOUT$handleType, OFFSET$handleType, value);
         return this;
     }

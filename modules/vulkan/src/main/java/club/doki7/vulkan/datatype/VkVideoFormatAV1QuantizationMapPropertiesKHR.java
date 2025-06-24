@@ -199,12 +199,13 @@ public record VkVideoFormatAV1QuantizationMapPropertiesKHR(@NotNull MemorySegmen
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkVideoFormatAV1QuantizationMapPropertiesKHR pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkVideoFormatAV1QuantizationMapPropertiesKHR pNext(@Nullable IPointer pointer) {
@@ -212,11 +213,11 @@ public record VkVideoFormatAV1QuantizationMapPropertiesKHR(@NotNull MemorySegmen
         return this;
     }
 
-    public @EnumType(VkVideoEncodeAV1SuperblockSizeFlagsKHR.class) int compatibleSuperblockSizes() {
+    public @Bitmask(VkVideoEncodeAV1SuperblockSizeFlagsKHR.class) int compatibleSuperblockSizes() {
         return segment.get(LAYOUT$compatibleSuperblockSizes, OFFSET$compatibleSuperblockSizes);
     }
 
-    public VkVideoFormatAV1QuantizationMapPropertiesKHR compatibleSuperblockSizes(@EnumType(VkVideoEncodeAV1SuperblockSizeFlagsKHR.class) int value) {
+    public VkVideoFormatAV1QuantizationMapPropertiesKHR compatibleSuperblockSizes(@Bitmask(VkVideoEncodeAV1SuperblockSizeFlagsKHR.class) int value) {
         segment.set(LAYOUT$compatibleSuperblockSizes, OFFSET$compatibleSuperblockSizes, value);
         return this;
     }

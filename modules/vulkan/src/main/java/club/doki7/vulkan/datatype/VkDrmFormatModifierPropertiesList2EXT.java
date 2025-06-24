@@ -200,12 +200,13 @@ public record VkDrmFormatModifierPropertiesList2EXT(@NotNull MemorySegment segme
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkDrmFormatModifierPropertiesList2EXT pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkDrmFormatModifierPropertiesList2EXT pNext(@Nullable IPointer pointer) {
@@ -246,11 +247,11 @@ public record VkDrmFormatModifierPropertiesList2EXT(@NotNull MemorySegment segme
         return new VkDrmFormatModifierProperties2EXT(s);
     }
 
-    public @Pointer(target=VkDrmFormatModifierProperties2EXT.class) MemorySegment pDrmFormatModifierPropertiesRaw() {
+    public @Pointer(target=VkDrmFormatModifierProperties2EXT.class) @NotNull MemorySegment pDrmFormatModifierPropertiesRaw() {
         return segment.get(LAYOUT$pDrmFormatModifierProperties, OFFSET$pDrmFormatModifierProperties);
     }
 
-    public void pDrmFormatModifierPropertiesRaw(@Pointer(target=VkDrmFormatModifierProperties2EXT.class) MemorySegment value) {
+    public void pDrmFormatModifierPropertiesRaw(@Pointer(target=VkDrmFormatModifierProperties2EXT.class) @NotNull MemorySegment value) {
         segment.set(LAYOUT$pDrmFormatModifierProperties, OFFSET$pDrmFormatModifierProperties, value);
     }
 

@@ -206,12 +206,13 @@ public record VkAccelerationStructureTrianglesOpacityMicromapEXT(@NotNull Memory
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkAccelerationStructureTrianglesOpacityMicromapEXT pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkAccelerationStructureTrianglesOpacityMicromapEXT pNext(@Nullable IPointer pointer) {
@@ -293,11 +294,11 @@ public record VkAccelerationStructureTrianglesOpacityMicromapEXT(@NotNull Memory
         return new VkMicromapUsageEXT(s);
     }
 
-    public @Pointer(target=VkMicromapUsageEXT.class) MemorySegment pUsageCountsRaw() {
+    public @Pointer(target=VkMicromapUsageEXT.class) @NotNull MemorySegment pUsageCountsRaw() {
         return segment.get(LAYOUT$pUsageCounts, OFFSET$pUsageCounts);
     }
 
-    public void pUsageCountsRaw(@Pointer(target=VkMicromapUsageEXT.class) MemorySegment value) {
+    public void pUsageCountsRaw(@Pointer(target=VkMicromapUsageEXT.class) @NotNull MemorySegment value) {
         segment.set(LAYOUT$pUsageCounts, OFFSET$pUsageCounts, value);
     }
 
@@ -318,11 +319,11 @@ public record VkAccelerationStructureTrianglesOpacityMicromapEXT(@NotNull Memory
         return this;
     }
 
-    public @Pointer(comment="void**") MemorySegment ppUsageCountsRaw() {
+    public @Pointer(comment="void**") @NotNull MemorySegment ppUsageCountsRaw() {
         return segment.get(LAYOUT$ppUsageCounts, OFFSET$ppUsageCounts);
     }
 
-    public void ppUsageCountsRaw(@Pointer(comment="void**") MemorySegment value) {
+    public void ppUsageCountsRaw(@Pointer(comment="void**") @NotNull MemorySegment value) {
         segment.set(LAYOUT$ppUsageCounts, OFFSET$ppUsageCounts, value);
     }
 

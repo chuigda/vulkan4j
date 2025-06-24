@@ -200,12 +200,13 @@ public record VkDebugUtilsLabelEXT(@NotNull MemorySegment segment) implements IV
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkDebugUtilsLabelEXT pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkDebugUtilsLabelEXT pNext(@Nullable IPointer pointer) {
@@ -231,11 +232,11 @@ public record VkDebugUtilsLabelEXT(@NotNull MemorySegment segment) implements IV
         return this;
     }
 
-    public @Pointer(comment="int8_t*") MemorySegment pLabelNameRaw() {
+    public @Pointer(comment="int8_t*") @NotNull MemorySegment pLabelNameRaw() {
         return segment.get(LAYOUT$pLabelName, OFFSET$pLabelName);
     }
 
-    public void pLabelNameRaw(@Pointer(comment="int8_t*") MemorySegment value) {
+    public void pLabelNameRaw(@Pointer(comment="int8_t*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pLabelName, OFFSET$pLabelName, value);
     }
 
@@ -248,7 +249,7 @@ public record VkDebugUtilsLabelEXT(@NotNull MemorySegment segment) implements IV
         return this;
     }
 
-    public MemorySegment colorRaw() {
+    public @NotNull MemorySegment colorRaw() {
         return segment.asSlice(OFFSET$color, SIZE$color);
     }
 

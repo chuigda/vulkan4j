@@ -5,6 +5,7 @@ import java.lang.invoke.MethodHandle;
 import java.util.Objects;
 
 import org.jetbrains.annotations.Nullable;
+import org.jetbrains.annotations.NotNull;
 import club.doki7.ffm.NativeLayout;
 import club.doki7.ffm.RawFunctionLoader;
 import club.doki7.ffm.annotation.*;
@@ -477,9 +478,9 @@ public final class Shaderc {
 
     public void compileOptionsSetIncludeCallbacks(
         @Nullable ShadercCompileOptions options,
-        @Pointer(comment="shaderc_include_resolve_fn") MemorySegment resolver,
-        @Pointer(comment="shaderc_include_result_release_fn") MemorySegment resultReleaser,
-        @Pointer(comment="void*") MemorySegment userData
+        @Pointer(comment="shaderc_include_resolve_fn") @NotNull MemorySegment resolver,
+        @Pointer(comment="shaderc_include_result_release_fn") @NotNull MemorySegment resultReleaser,
+        @Pointer(comment="void*") @NotNull MemorySegment userData
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$shaderc_compile_options_set_include_callbacks);
         try {

@@ -202,12 +202,13 @@ public record VkVideoEncodeAV1SessionParametersCreateInfoKHR(@NotNull MemorySegm
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkVideoEncodeAV1SessionParametersCreateInfoKHR pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkVideoEncodeAV1SessionParametersCreateInfoKHR pNext(@Nullable IPointer pointer) {
@@ -239,11 +240,11 @@ public record VkVideoEncodeAV1SessionParametersCreateInfoKHR(@NotNull MemorySegm
         return new StdVideoAV1SequenceHeader(s);
     }
 
-    public @Pointer(target=StdVideoAV1SequenceHeader.class) MemorySegment pStdSequenceHeaderRaw() {
+    public @Pointer(target=StdVideoAV1SequenceHeader.class) @NotNull MemorySegment pStdSequenceHeaderRaw() {
         return segment.get(LAYOUT$pStdSequenceHeader, OFFSET$pStdSequenceHeader);
     }
 
-    public void pStdSequenceHeaderRaw(@Pointer(target=StdVideoAV1SequenceHeader.class) MemorySegment value) {
+    public void pStdSequenceHeaderRaw(@Pointer(target=StdVideoAV1SequenceHeader.class) @NotNull MemorySegment value) {
         segment.set(LAYOUT$pStdSequenceHeader, OFFSET$pStdSequenceHeader, value);
     }
 
@@ -271,11 +272,11 @@ public record VkVideoEncodeAV1SessionParametersCreateInfoKHR(@NotNull MemorySegm
         return new StdVideoEncodeAV1DecoderModelInfo(s);
     }
 
-    public @Pointer(target=StdVideoEncodeAV1DecoderModelInfo.class) MemorySegment pStdDecoderModelInfoRaw() {
+    public @Pointer(target=StdVideoEncodeAV1DecoderModelInfo.class) @NotNull MemorySegment pStdDecoderModelInfoRaw() {
         return segment.get(LAYOUT$pStdDecoderModelInfo, OFFSET$pStdDecoderModelInfo);
     }
 
-    public void pStdDecoderModelInfoRaw(@Pointer(target=StdVideoEncodeAV1DecoderModelInfo.class) MemorySegment value) {
+    public void pStdDecoderModelInfoRaw(@Pointer(target=StdVideoEncodeAV1DecoderModelInfo.class) @NotNull MemorySegment value) {
         segment.set(LAYOUT$pStdDecoderModelInfo, OFFSET$pStdDecoderModelInfo, value);
     }
 
@@ -312,11 +313,11 @@ public record VkVideoEncodeAV1SessionParametersCreateInfoKHR(@NotNull MemorySegm
         return new StdVideoEncodeAV1OperatingPointInfo(s);
     }
 
-    public @Pointer(target=StdVideoEncodeAV1OperatingPointInfo.class) MemorySegment pStdOperatingPointsRaw() {
+    public @Pointer(target=StdVideoEncodeAV1OperatingPointInfo.class) @NotNull MemorySegment pStdOperatingPointsRaw() {
         return segment.get(LAYOUT$pStdOperatingPoints, OFFSET$pStdOperatingPoints);
     }
 
-    public void pStdOperatingPointsRaw(@Pointer(target=StdVideoEncodeAV1OperatingPointInfo.class) MemorySegment value) {
+    public void pStdOperatingPointsRaw(@Pointer(target=StdVideoEncodeAV1OperatingPointInfo.class) @NotNull MemorySegment value) {
         segment.set(LAYOUT$pStdOperatingPoints, OFFSET$pStdOperatingPoints, value);
     }
 

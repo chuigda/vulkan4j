@@ -204,12 +204,13 @@ public record VkVideoFormatPropertiesKHR(@NotNull MemorySegment segment) impleme
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkVideoFormatPropertiesKHR pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkVideoFormatPropertiesKHR pNext(@Nullable IPointer pointer) {
@@ -240,11 +241,11 @@ public record VkVideoFormatPropertiesKHR(@NotNull MemorySegment segment) impleme
         return this;
     }
 
-    public @EnumType(VkImageCreateFlags.class) int imageCreateFlags() {
+    public @Bitmask(VkImageCreateFlags.class) int imageCreateFlags() {
         return segment.get(LAYOUT$imageCreateFlags, OFFSET$imageCreateFlags);
     }
 
-    public VkVideoFormatPropertiesKHR imageCreateFlags(@EnumType(VkImageCreateFlags.class) int value) {
+    public VkVideoFormatPropertiesKHR imageCreateFlags(@Bitmask(VkImageCreateFlags.class) int value) {
         segment.set(LAYOUT$imageCreateFlags, OFFSET$imageCreateFlags, value);
         return this;
     }
@@ -267,11 +268,11 @@ public record VkVideoFormatPropertiesKHR(@NotNull MemorySegment segment) impleme
         return this;
     }
 
-    public @EnumType(VkImageUsageFlags.class) int imageUsageFlags() {
+    public @Bitmask(VkImageUsageFlags.class) int imageUsageFlags() {
         return segment.get(LAYOUT$imageUsageFlags, OFFSET$imageUsageFlags);
     }
 
-    public VkVideoFormatPropertiesKHR imageUsageFlags(@EnumType(VkImageUsageFlags.class) int value) {
+    public VkVideoFormatPropertiesKHR imageUsageFlags(@Bitmask(VkImageUsageFlags.class) int value) {
         segment.set(LAYOUT$imageUsageFlags, OFFSET$imageUsageFlags, value);
         return this;
     }

@@ -204,12 +204,13 @@ public record VkBufferCreateInfo(@NotNull MemorySegment segment) implements IVkB
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkBufferCreateInfo pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkBufferCreateInfo pNext(@Nullable IPointer pointer) {
@@ -217,11 +218,11 @@ public record VkBufferCreateInfo(@NotNull MemorySegment segment) implements IVkB
         return this;
     }
 
-    public @EnumType(VkBufferCreateFlags.class) int flags() {
+    public @Bitmask(VkBufferCreateFlags.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public VkBufferCreateInfo flags(@EnumType(VkBufferCreateFlags.class) int value) {
+    public VkBufferCreateInfo flags(@Bitmask(VkBufferCreateFlags.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
         return this;
     }
@@ -235,11 +236,11 @@ public record VkBufferCreateInfo(@NotNull MemorySegment segment) implements IVkB
         return this;
     }
 
-    public @EnumType(VkBufferUsageFlags.class) int usage() {
+    public @Bitmask(VkBufferUsageFlags.class) int usage() {
         return segment.get(LAYOUT$usage, OFFSET$usage);
     }
 
-    public VkBufferCreateInfo usage(@EnumType(VkBufferUsageFlags.class) int value) {
+    public VkBufferCreateInfo usage(@Bitmask(VkBufferUsageFlags.class) int value) {
         segment.set(LAYOUT$usage, OFFSET$usage, value);
         return this;
     }
@@ -280,11 +281,11 @@ public record VkBufferCreateInfo(@NotNull MemorySegment segment) implements IVkB
         return this;
     }
 
-    public @Pointer(comment="uint32_t*") MemorySegment pQueueFamilyIndicesRaw() {
+    public @Pointer(comment="uint32_t*") @NotNull MemorySegment pQueueFamilyIndicesRaw() {
         return segment.get(LAYOUT$pQueueFamilyIndices, OFFSET$pQueueFamilyIndices);
     }
 
-    public void pQueueFamilyIndicesRaw(@Pointer(comment="uint32_t*") MemorySegment value) {
+    public void pQueueFamilyIndicesRaw(@Pointer(comment="uint32_t*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pQueueFamilyIndices, OFFSET$pQueueFamilyIndices, value);
     }
 

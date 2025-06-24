@@ -200,12 +200,13 @@ public record VkExportMetalBufferInfoEXT(@NotNull MemorySegment segment) impleme
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkExportMetalBufferInfoEXT pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkExportMetalBufferInfoEXT pNext(@Nullable IPointer pointer) {
@@ -226,12 +227,13 @@ public record VkExportMetalBufferInfoEXT(@NotNull MemorySegment segment) impleme
         return this;
     }
 
-    public @Pointer(comment="MTLBuffer_id") MemorySegment mtlBuffer() {
+    public @Pointer(comment="MTLBuffer_id") @NotNull MemorySegment mtlBuffer() {
         return segment.get(LAYOUT$mtlBuffer, OFFSET$mtlBuffer);
     }
 
-    public void mtlBuffer(@Pointer(comment="MTLBuffer_id") MemorySegment value) {
+    public VkExportMetalBufferInfoEXT mtlBuffer(@Pointer(comment="MTLBuffer_id") @NotNull MemorySegment value) {
         segment.set(LAYOUT$mtlBuffer, OFFSET$mtlBuffer, value);
+        return this;
     }
 
     public VkExportMetalBufferInfoEXT mtlBuffer(@Nullable IPointer pointer) {

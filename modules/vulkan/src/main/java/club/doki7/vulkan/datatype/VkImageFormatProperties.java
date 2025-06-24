@@ -205,11 +205,11 @@ public record VkImageFormatProperties(@NotNull MemorySegment segment) implements
         return this;
     }
 
-    public @EnumType(VkSampleCountFlags.class) int sampleCounts() {
+    public @Bitmask(VkSampleCountFlags.class) int sampleCounts() {
         return segment.get(LAYOUT$sampleCounts, OFFSET$sampleCounts);
     }
 
-    public VkImageFormatProperties sampleCounts(@EnumType(VkSampleCountFlags.class) int value) {
+    public VkImageFormatProperties sampleCounts(@Bitmask(VkSampleCountFlags.class) int value) {
         segment.set(LAYOUT$sampleCounts, OFFSET$sampleCounts, value);
         return this;
     }

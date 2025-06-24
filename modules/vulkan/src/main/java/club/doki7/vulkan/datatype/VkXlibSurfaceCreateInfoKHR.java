@@ -201,12 +201,13 @@ public record VkXlibSurfaceCreateInfoKHR(@NotNull MemorySegment segment) impleme
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkXlibSurfaceCreateInfoKHR pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkXlibSurfaceCreateInfoKHR pNext(@Nullable IPointer pointer) {
@@ -214,11 +215,11 @@ public record VkXlibSurfaceCreateInfoKHR(@NotNull MemorySegment segment) impleme
         return this;
     }
 
-    public @EnumType(VkXlibSurfaceCreateFlagsKHR.class) int flags() {
+    public @Bitmask(VkXlibSurfaceCreateFlagsKHR.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public VkXlibSurfaceCreateInfoKHR flags(@EnumType(VkXlibSurfaceCreateFlagsKHR.class) int value) {
+    public VkXlibSurfaceCreateInfoKHR flags(@Bitmask(VkXlibSurfaceCreateFlagsKHR.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
         return this;
     }
@@ -240,11 +241,11 @@ public record VkXlibSurfaceCreateInfoKHR(@NotNull MemorySegment segment) impleme
         return this;
     }
 
-    public @Pointer(comment="Display*") MemorySegment dpyRaw() {
+    public @Pointer(comment="Display*") @NotNull MemorySegment dpyRaw() {
         return segment.get(LAYOUT$dpy, OFFSET$dpy);
     }
 
-    public void dpyRaw(@Pointer(comment="Display*") MemorySegment value) {
+    public void dpyRaw(@Pointer(comment="Display*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$dpy, OFFSET$dpy, value);
     }
 

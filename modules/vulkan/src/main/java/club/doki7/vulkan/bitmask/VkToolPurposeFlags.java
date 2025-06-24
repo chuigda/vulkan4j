@@ -15,7 +15,7 @@ public final class VkToolPurposeFlags {
     public static final int TRACING = 0x4;
     public static final int VALIDATION = 0x1;
 
-    public static String explain(@EnumType(VkToolPurposeFlags.class) int flags) {
+    public static String explain(@Bitmask(VkToolPurposeFlags.class) int flags) {
         List<String> detectedFlagBits = new ArrayList<>();
         if ((flags & ADDITIONAL_FEATURES) != 0) {
             detectedFlagBits.add("VK_TOOL_PURPOSE_ADDITIONAL_FEATURES_BIT");

@@ -199,12 +199,13 @@ public record VkPhysicalDeviceExternalSemaphoreInfo(@NotNull MemorySegment segme
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkPhysicalDeviceExternalSemaphoreInfo pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkPhysicalDeviceExternalSemaphoreInfo pNext(@Nullable IPointer pointer) {
@@ -212,11 +213,11 @@ public record VkPhysicalDeviceExternalSemaphoreInfo(@NotNull MemorySegment segme
         return this;
     }
 
-    public @EnumType(VkExternalSemaphoreHandleTypeFlags.class) int handleType() {
+    public @Bitmask(VkExternalSemaphoreHandleTypeFlags.class) int handleType() {
         return segment.get(LAYOUT$handleType, OFFSET$handleType);
     }
 
-    public VkPhysicalDeviceExternalSemaphoreInfo handleType(@EnumType(VkExternalSemaphoreHandleTypeFlags.class) int value) {
+    public VkPhysicalDeviceExternalSemaphoreInfo handleType(@Bitmask(VkExternalSemaphoreHandleTypeFlags.class) int value) {
         segment.set(LAYOUT$handleType, OFFSET$handleType, value);
         return this;
     }

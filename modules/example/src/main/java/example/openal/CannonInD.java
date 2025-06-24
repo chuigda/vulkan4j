@@ -1,9 +1,10 @@
 package example.openal;
 
-import club.doki7.ffm.Loader;
+import club.doki7.ffm.library.ISharedLibrary;
 import club.doki7.ffm.ptr.IntPtr;
 import club.doki7.openal.AL;
 import club.doki7.openal.ALC;
+import club.doki7.openal.ALLoader;
 import club.doki7.openal.handle.ALCcontext;
 import club.doki7.openal.handle.ALCdevice;
 
@@ -115,14 +116,8 @@ public class CannonInD {
 
     public static void playPCM(int[] bufferData) {
         try (Arena arena = Arena.ofConfined()) {
-            if (System.getProperty("os.name").toLowerCase().contains("win")) {
-                System.loadLibrary("OpenAL32");
-            } else {
-                System.loadLibrary("openal");
-            }
-
-            ALC alc = new ALC(Loader::loadFunctionOrNull);
-            AL al = new AL(Loader::loadFunctionOrNull);
+            ALC alc = ALLoader.loadALC(libOpenAL);
+            AL al = ALLoader.loadAL(libOpenAL);
 
             ALCdevice device = alc.openDevice(null);
             ALCcontext context = alc.createContext(device, null);
@@ -150,4 +145,6 @@ public class CannonInD {
             alc.closeDevice(device);
         }
     }
+
+    private static final ISharedLibrary libOpenAL = ALLoader.loadOpenALLibrary();
 }

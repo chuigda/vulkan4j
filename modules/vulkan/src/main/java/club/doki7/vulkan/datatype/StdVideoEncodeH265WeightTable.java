@@ -218,7 +218,7 @@ public record StdVideoEncodeH265WeightTable(@NotNull MemorySegment segment) impl
         return this;
     }
 
-    public MemorySegment delta_luma_weight_l0Raw() {
+    public @NotNull MemorySegment delta_luma_weight_l0Raw() {
         return segment.asSlice(OFFSET$delta_luma_weight_l0, SIZE$delta_luma_weight_l0);
     }
 
@@ -231,7 +231,7 @@ public record StdVideoEncodeH265WeightTable(@NotNull MemorySegment segment) impl
         return this;
     }
 
-    public MemorySegment luma_offset_l0Raw() {
+    public @NotNull MemorySegment luma_offset_l0Raw() {
         return segment.asSlice(OFFSET$luma_offset_l0, SIZE$luma_offset_l0);
     }
 
@@ -244,7 +244,7 @@ public record StdVideoEncodeH265WeightTable(@NotNull MemorySegment segment) impl
         return this;
     }
 
-    public MemorySegment delta_chroma_weight_l0Raw() {
+    public @NotNull MemorySegment delta_chroma_weight_l0Raw() {
         return segment.asSlice(OFFSET$delta_chroma_weight_l0, SIZE$delta_chroma_weight_l0);
     }
 
@@ -257,7 +257,7 @@ public record StdVideoEncodeH265WeightTable(@NotNull MemorySegment segment) impl
         return this;
     }
 
-    public MemorySegment delta_chroma_offset_l0Raw() {
+    public @NotNull MemorySegment delta_chroma_offset_l0Raw() {
         return segment.asSlice(OFFSET$delta_chroma_offset_l0, SIZE$delta_chroma_offset_l0);
     }
 
@@ -270,7 +270,7 @@ public record StdVideoEncodeH265WeightTable(@NotNull MemorySegment segment) impl
         return this;
     }
 
-    public MemorySegment delta_luma_weight_l1Raw() {
+    public @NotNull MemorySegment delta_luma_weight_l1Raw() {
         return segment.asSlice(OFFSET$delta_luma_weight_l1, SIZE$delta_luma_weight_l1);
     }
 
@@ -283,7 +283,7 @@ public record StdVideoEncodeH265WeightTable(@NotNull MemorySegment segment) impl
         return this;
     }
 
-    public MemorySegment luma_offset_l1Raw() {
+    public @NotNull MemorySegment luma_offset_l1Raw() {
         return segment.asSlice(OFFSET$luma_offset_l1, SIZE$luma_offset_l1);
     }
 
@@ -296,7 +296,7 @@ public record StdVideoEncodeH265WeightTable(@NotNull MemorySegment segment) impl
         return this;
     }
 
-    public MemorySegment delta_chroma_weight_l1Raw() {
+    public @NotNull MemorySegment delta_chroma_weight_l1Raw() {
         return segment.asSlice(OFFSET$delta_chroma_weight_l1, SIZE$delta_chroma_weight_l1);
     }
 
@@ -309,7 +309,7 @@ public record StdVideoEncodeH265WeightTable(@NotNull MemorySegment segment) impl
         return this;
     }
 
-    public MemorySegment delta_chroma_offset_l1Raw() {
+    public @NotNull MemorySegment delta_chroma_offset_l1Raw() {
         return segment.asSlice(OFFSET$delta_chroma_offset_l1, SIZE$delta_chroma_offset_l1);
     }
 

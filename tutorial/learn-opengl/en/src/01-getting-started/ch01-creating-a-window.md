@@ -21,12 +21,12 @@ Create a Maven project and add the following dependencies to your `pom.xml` file
 <dependency>
     <groupId>club.doki7</groupId>
     <artifactId>opengl</artifactId>
-    <version>0.3.3</version>
+    <version>0.4.0</version>
 </dependency>
 <dependency>
     <groupId>club.doki7</groupId>
     <artifactId>glfw</artifactId>
-    <version>0.3.3</version>
+    <version>0.4.0</version>
 </dependency>
 <dependency>
     <groupId>org.joml</groupId>
@@ -153,10 +153,12 @@ import club.doki7.glfw.GLFWLoader;
 
 public class Main {
     public static void main(String[] args) {
-        GLFWLoader.loadGLFWLibrary();
-        GLFW glfw = GLFWLoader.loadGLFW();
+        try (ISharedLibrary libGLFW = GLFWLoader.loadGLFWLibrary()) {
+            GLFW glfw = GLFWLoader.loadGLFW(libGLFW);
+        }
     }
 }
+
 ```
 
 You may read the JavaDoc and the implementation of `GLFWLoader` to see how it works.

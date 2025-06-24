@@ -13,7 +13,7 @@ public final class VkDependencyFlags {
     public static final int QUEUE_FAMILY_OWNERSHIP_TRANSFER_USE_ALL_STAGES_KHR = 0x20;
     public static final int VIEW_LOCAL = 0x2;
 
-    public static String explain(@EnumType(VkDependencyFlags.class) int flags) {
+    public static String explain(@Bitmask(VkDependencyFlags.class) int flags) {
         List<String> detectedFlagBits = new ArrayList<>();
         if ((flags & BY_REGION) != 0) {
             detectedFlagBits.add("VK_DEPENDENCY_BY_REGION_BIT");

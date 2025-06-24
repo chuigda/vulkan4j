@@ -3,10 +3,8 @@ package club.doki7.babel.codegen
 import club.doki7.babel.registry.OpaqueHandleTypedef
 import club.doki7.babel.util.Doc
 import club.doki7.babel.util.buildDoc
-import club.doki7.babel.registry.RegistryBase
 
 fun generateHandle(
-    registryBase: RegistryBase,
     handle: OpaqueHandleTypedef,
     codegenOptions: CodegenOptions
 ): Doc = buildDoc {
@@ -134,12 +132,12 @@ fun generateHandle(
             }
             +""
 
-            defun("public", "MemorySegment", "readRaw") {
+            defun("public", "@NotNull MemorySegment", "readRaw") {
                 +"return segment.get(ValueLayout.ADDRESS, 0);"
             }
             +""
 
-            defun("public", "MemorySegment", "readRaw", "long index") {
+            defun("public", "@NotNull MemorySegment", "readRaw", "long index") {
                 +"return segment.get(ValueLayout.ADDRESS, index * ValueLayout.ADDRESS.byteSize());"
             }
             +""

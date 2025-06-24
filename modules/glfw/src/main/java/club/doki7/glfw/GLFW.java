@@ -5,6 +5,7 @@ import java.lang.invoke.MethodHandle;
 import java.util.Objects;
 
 import org.jetbrains.annotations.Nullable;
+import org.jetbrains.annotations.NotNull;
 import club.doki7.ffm.NativeLayout;
 import club.doki7.ffm.RawFunctionLoader;
 import club.doki7.ffm.annotation.*;
@@ -966,7 +967,7 @@ public final class GLFW implements GLFWConstants {
     ///  @since Added in version 3.4.
     ///
     ///  @ingroup native
-    public @Pointer(comment="id") MemorySegment getCocoaView(
+    public @Pointer(comment="id") @NotNull MemorySegment getCocoaView(
         @Nullable GLFWwindow window
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glfwGetCocoaView);
@@ -993,7 +994,7 @@ public final class GLFW implements GLFWConstants {
     ///  @since Added in version 3.0.
     ///
     ///  @ingroup native
-    public @Pointer(comment="id") MemorySegment getCocoaWindow(
+    public @Pointer(comment="id") @NotNull MemorySegment getCocoaWindow(
         @Nullable GLFWwindow window
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glfwGetCocoaWindow);
@@ -1101,7 +1102,7 @@ public final class GLFW implements GLFWConstants {
     ///  @since Added in version 3.0.
     ///
     ///  @ingroup native
-    public @Pointer(comment="EGLContext") MemorySegment getEGLContext(
+    public @Pointer(comment="EGLContext") @NotNull MemorySegment getEGLContext(
         @Nullable GLFWwindow window
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glfwGetEGLContext);
@@ -1130,7 +1131,7 @@ public final class GLFW implements GLFWConstants {
     ///  @since Added in version 3.0.
     ///
     ///  @ingroup native
-    public @Pointer(comment="EGLDisplay") MemorySegment getEGLDisplay() {
+    public @Pointer(comment="EGLDisplay") @NotNull MemorySegment getEGLDisplay() {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glfwGetEGLDisplay);
         try {
             return (MemorySegment) hFunction.invokeExact(
@@ -1154,7 +1155,7 @@ public final class GLFW implements GLFWConstants {
     ///  @since Added in version 3.0.
     ///
     ///  @ingroup native
-    public @Pointer(comment="EGLSurface") MemorySegment getEGLSurface(
+    public @Pointer(comment="EGLSurface") @NotNull MemorySegment getEGLSurface(
         @Nullable GLFWwindow window
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glfwGetEGLSurface);
@@ -1265,7 +1266,7 @@ public final class GLFW implements GLFWConstants {
     ///  @since Added in version 3.0.
     ///
     ///  @ingroup native
-    public @Pointer(comment="GLXContext") MemorySegment getGLXContext(
+    public @Pointer(comment="GLXContext") @NotNull MemorySegment getGLXContext(
         @Nullable GLFWwindow window
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glfwGetGLXContext);
@@ -1514,7 +1515,7 @@ public final class GLFW implements GLFWConstants {
     ///  @since Added in version 3.2.
     ///
     ///  @ingroup vulkan
-    public @Pointer(comment="GLFWvkproc") MemorySegment getInstanceProcAddress(
+    public @Pointer(comment="GLFWvkproc") @NotNull MemorySegment getInstanceProcAddress(
         @Nullable VkInstance instance,
         @Nullable BytePtr procname
     ) {
@@ -1814,7 +1815,7 @@ public final class GLFW implements GLFWConstants {
     ///  @since Added in version 3.3.
     ///
     ///  @ingroup input
-    public @Pointer(comment="void*") MemorySegment getJoystickUserPointer(
+    public @Pointer(comment="void*") @NotNull MemorySegment getJoystickUserPointer(
         int jid
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glfwGetJoystickUserPointer);
@@ -2191,7 +2192,7 @@ public final class GLFW implements GLFWConstants {
     ///  @since Added in version 3.3.
     ///
     ///  @ingroup monitor
-    public @Pointer(comment="void*") MemorySegment getMonitorUserPointer(
+    public @Pointer(comment="void*") @NotNull MemorySegment getMonitorUserPointer(
         @Nullable GLFWmonitor monitor
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glfwGetMonitorUserPointer);
@@ -2348,7 +2349,7 @@ public final class GLFW implements GLFWConstants {
     ///  @since Added in version 3.0.
     ///
     ///  @ingroup native
-    public @Pointer(comment="id") MemorySegment getNSGLContext(
+    public @Pointer(comment="id") @NotNull MemorySegment getNSGLContext(
         @Nullable GLFWwindow window
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glfwGetNSGLContext);
@@ -2417,7 +2418,7 @@ public final class GLFW implements GLFWConstants {
     ///  @since Added in version 3.3.
     ///
     ///  @ingroup native
-    public @Pointer(comment="OSMesaContext") MemorySegment getOSMesaContext(
+    public @Pointer(comment="OSMesaContext") @NotNull MemorySegment getOSMesaContext(
         @Nullable GLFWwindow window
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glfwGetOSMesaContext);
@@ -2622,7 +2623,7 @@ public final class GLFW implements GLFWConstants {
     ///  @since Added in version 1.0.
     ///
     ///  @ingroup context
-    public @Pointer(comment="GLFWglproc") MemorySegment getProcAddress(
+    public @Pointer(comment="GLFWglproc") @NotNull MemorySegment getProcAddress(
         @Nullable BytePtr procname
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glfwGetProcAddress);
@@ -2974,7 +2975,7 @@ public final class GLFW implements GLFWConstants {
     ///  @since Added in version 3.0.
     ///
     ///  @ingroup native
-    public @Pointer(comment="HGLRC") MemorySegment getWGLContext(
+    public @Pointer(comment="HGLRC") @NotNull MemorySegment getWGLContext(
         @Nullable GLFWwindow window
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glfwGetWGLContext);
@@ -3026,7 +3027,7 @@ public final class GLFW implements GLFWConstants {
     ///  @since Added in version 3.2.
     ///
     ///  @ingroup native
-    public @Pointer(comment="void*") MemorySegment getWaylandMonitor(
+    public @Pointer(comment="void*") @NotNull MemorySegment getWaylandMonitor(
         @Nullable GLFWmonitor monitor
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glfwGetWaylandMonitor);
@@ -3147,7 +3148,7 @@ public final class GLFW implements GLFWConstants {
     ///  @since Added in version 3.0.
     ///
     ///  @ingroup native
-    public @Pointer(comment="HWND") MemorySegment getWin32Window(
+    public @Pointer(comment="HWND") @NotNull MemorySegment getWin32Window(
         @Nullable GLFWwindow window
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glfwGetWin32Window);
@@ -3532,7 +3533,7 @@ public final class GLFW implements GLFWConstants {
     ///  @since Added in version 3.0.
     ///
     ///  @ingroup window
-    public @Pointer(comment="void*") MemorySegment getWindowUserPointer(
+    public @Pointer(comment="void*") @NotNull MemorySegment getWindowUserPointer(
         @Nullable GLFWwindow window
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glfwGetWindowUserPointer);
@@ -3955,7 +3956,7 @@ public final class GLFW implements GLFWConstants {
     ///
     ///  @ingroup init
     public void initVulkanLoader(
-        @Pointer(comment="PFN_vkGetInstanceProcAddr") MemorySegment loader
+        @Pointer(comment="PFN_vkGetInstanceProcAddr") @NotNull MemorySegment loader
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glfwInitVulkanLoader);
         try {
@@ -4385,9 +4386,9 @@ public final class GLFW implements GLFWConstants {
     ///  @glfw3 Added window handle parameter and return value.
     ///
     ///  @ingroup input
-    public @Pointer(comment="GLFWcharfun") MemorySegment setCharCallback(
+    public @Pointer(comment="GLFWcharfun") @NotNull MemorySegment setCharCallback(
         @Nullable GLFWwindow window,
-        @Pointer(comment="GLFWcharfun") MemorySegment callback
+        @Pointer(comment="GLFWcharfun") @NotNull MemorySegment callback
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glfwSetCharCallback);
         try {
@@ -4439,9 +4440,9 @@ public final class GLFW implements GLFWConstants {
     ///  @since Added in version 3.1.
     ///
     ///  @ingroup input
-    public @Pointer(comment="GLFWcharmodsfun") MemorySegment setCharModsCallback(
+    public @Pointer(comment="GLFWcharmodsfun") @NotNull MemorySegment setCharModsCallback(
         @Nullable GLFWwindow window,
-        @Pointer(comment="GLFWcharmodsfun") MemorySegment callback
+        @Pointer(comment="GLFWcharmodsfun") @NotNull MemorySegment callback
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glfwSetCharModsCallback);
         try {
@@ -4563,9 +4564,9 @@ public final class GLFW implements GLFWConstants {
     ///  @since Added in version 3.0.
     ///
     ///  @ingroup input
-    public @Pointer(comment="GLFWcursorenterfun") MemorySegment setCursorEnterCallback(
+    public @Pointer(comment="GLFWcursorenterfun") @NotNull MemorySegment setCursorEnterCallback(
         @Nullable GLFWwindow window,
-        @Pointer(comment="GLFWcursorenterfun") MemorySegment callback
+        @Pointer(comment="GLFWcursorenterfun") @NotNull MemorySegment callback
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glfwSetCursorEnterCallback);
         try {
@@ -4661,9 +4662,9 @@ public final class GLFW implements GLFWConstants {
     ///  @since Added in version 3.0.  Replaces `glfwSetMousePosCallback`.
     ///
     ///  @ingroup input
-    public @Pointer(comment="GLFWcursorposfun") MemorySegment setCursorPosCallback(
+    public @Pointer(comment="GLFWcursorposfun") @NotNull MemorySegment setCursorPosCallback(
         @Nullable GLFWwindow window,
-        @Pointer(comment="GLFWcursorposfun") MemorySegment callback
+        @Pointer(comment="GLFWcursorposfun") @NotNull MemorySegment callback
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glfwSetCursorPosCallback);
         try {
@@ -4708,9 +4709,9 @@ public final class GLFW implements GLFWConstants {
     ///  @since Added in version 3.1.
     ///
     ///  @ingroup input
-    public @Pointer(comment="GLFWdropfun") MemorySegment setDropCallback(
+    public @Pointer(comment="GLFWdropfun") @NotNull MemorySegment setDropCallback(
         @Nullable GLFWwindow window,
-        @Pointer(comment="GLFWdropfun") MemorySegment callback
+        @Pointer(comment="GLFWdropfun") @NotNull MemorySegment callback
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glfwSetDropCallback);
         try {
@@ -4766,8 +4767,8 @@ public final class GLFW implements GLFWConstants {
     ///  @since Added in version 3.0.
     ///
     ///  @ingroup init
-    public @Pointer(comment="GLFWerrorfun") MemorySegment setErrorCallback(
-        @Pointer(comment="GLFWerrorfun") MemorySegment callback
+    public @Pointer(comment="GLFWerrorfun") @NotNull MemorySegment setErrorCallback(
+        @Pointer(comment="GLFWerrorfun") @NotNull MemorySegment callback
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glfwSetErrorCallback);
         try {
@@ -4806,9 +4807,9 @@ public final class GLFW implements GLFWConstants {
     ///  @since Added in version 3.0.
     ///
     ///  @ingroup window
-    public @Pointer(comment="GLFWframebuffersizefun") MemorySegment setFramebufferSizeCallback(
+    public @Pointer(comment="GLFWframebuffersizefun") @NotNull MemorySegment setFramebufferSizeCallback(
         @Nullable GLFWwindow window,
-        @Pointer(comment="GLFWframebuffersizefun") MemorySegment callback
+        @Pointer(comment="GLFWframebuffersizefun") @NotNull MemorySegment callback
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glfwSetFramebufferSizeCallback);
         try {
@@ -5031,8 +5032,8 @@ public final class GLFW implements GLFWConstants {
     ///  @since Added in version 3.2.
     ///
     ///  @ingroup input
-    public @Pointer(comment="GLFWjoystickfun") MemorySegment setJoystickCallback(
-        @Pointer(comment="GLFWjoystickfun") MemorySegment callback
+    public @Pointer(comment="GLFWjoystickfun") @NotNull MemorySegment setJoystickCallback(
+        @Pointer(comment="GLFWjoystickfun") @NotNull MemorySegment callback
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glfwSetJoystickCallback);
         try {
@@ -5069,7 +5070,7 @@ public final class GLFW implements GLFWConstants {
     ///  @ingroup input
     public void setJoystickUserPointer(
         int jid,
-        @Pointer(comment="void*") MemorySegment pointer
+        @Pointer(comment="void*") @NotNull MemorySegment pointer
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glfwSetJoystickUserPointer);
         try {
@@ -5129,9 +5130,9 @@ public final class GLFW implements GLFWConstants {
     ///  @glfw3 Added window handle parameter and return value.
     ///
     ///  @ingroup input
-    public @Pointer(comment="GLFWkeyfun") MemorySegment setKeyCallback(
+    public @Pointer(comment="GLFWkeyfun") @NotNull MemorySegment setKeyCallback(
         @Nullable GLFWwindow window,
-        @Pointer(comment="GLFWkeyfun") MemorySegment callback
+        @Pointer(comment="GLFWkeyfun") @NotNull MemorySegment callback
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glfwSetKeyCallback);
         try {
@@ -5171,8 +5172,8 @@ public final class GLFW implements GLFWConstants {
     ///  @since Added in version 3.0.
     ///
     ///  @ingroup monitor
-    public @Pointer(comment="GLFWmonitorfun") MemorySegment setMonitorCallback(
-        @Pointer(comment="GLFWmonitorfun") MemorySegment callback
+    public @Pointer(comment="GLFWmonitorfun") @NotNull MemorySegment setMonitorCallback(
+        @Pointer(comment="GLFWmonitorfun") @NotNull MemorySegment callback
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glfwSetMonitorCallback);
         try {
@@ -5209,7 +5210,7 @@ public final class GLFW implements GLFWConstants {
     ///  @ingroup monitor
     public void setMonitorUserPointer(
         @Nullable GLFWmonitor monitor,
-        @Pointer(comment="void*") MemorySegment pointer
+        @Pointer(comment="void*") @NotNull MemorySegment pointer
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glfwSetMonitorUserPointer);
         try {
@@ -5256,9 +5257,9 @@ public final class GLFW implements GLFWConstants {
     ///  @glfw3 Added window handle parameter and return value.
     ///
     ///  @ingroup input
-    public @Pointer(comment="GLFWmousebuttonfun") MemorySegment setMouseButtonCallback(
+    public @Pointer(comment="GLFWmousebuttonfun") @NotNull MemorySegment setMouseButtonCallback(
         @Nullable GLFWwindow window,
-        @Pointer(comment="GLFWmousebuttonfun") MemorySegment callback
+        @Pointer(comment="GLFWmousebuttonfun") @NotNull MemorySegment callback
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glfwSetMouseButtonCallback);
         try {
@@ -5302,9 +5303,9 @@ public final class GLFW implements GLFWConstants {
     ///  @since Added in version 3.0.  Replaces `glfwSetMouseWheelCallback`.
     ///
     ///  @ingroup input
-    public @Pointer(comment="GLFWscrollfun") MemorySegment setScrollCallback(
+    public @Pointer(comment="GLFWscrollfun") @NotNull MemorySegment setScrollCallback(
         @Nullable GLFWwindow window,
-        @Pointer(comment="GLFWscrollfun") MemorySegment callback
+        @Pointer(comment="GLFWscrollfun") @NotNull MemorySegment callback
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glfwSetScrollCallback);
         try {
@@ -5507,9 +5508,9 @@ public final class GLFW implements GLFWConstants {
     ///  @glfw3 Added window handle parameter and return value.
     ///
     ///  @ingroup window
-    public @Pointer(comment="GLFWwindowclosefun") MemorySegment setWindowCloseCallback(
+    public @Pointer(comment="GLFWwindowclosefun") @NotNull MemorySegment setWindowCloseCallback(
         @Nullable GLFWwindow window,
-        @Pointer(comment="GLFWwindowclosefun") MemorySegment callback
+        @Pointer(comment="GLFWwindowclosefun") @NotNull MemorySegment callback
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glfwSetWindowCloseCallback);
         try {
@@ -5550,9 +5551,9 @@ public final class GLFW implements GLFWConstants {
     ///  @since Added in version 3.3.
     ///
     ///  @ingroup window
-    public @Pointer(comment="GLFWwindowcontentscalefun") MemorySegment setWindowContentScaleCallback(
+    public @Pointer(comment="GLFWwindowcontentscalefun") @NotNull MemorySegment setWindowContentScaleCallback(
         @Nullable GLFWwindow window,
-        @Pointer(comment="GLFWwindowcontentscalefun") MemorySegment callback
+        @Pointer(comment="GLFWwindowcontentscalefun") @NotNull MemorySegment callback
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glfwSetWindowContentScaleCallback);
         try {
@@ -5597,9 +5598,9 @@ public final class GLFW implements GLFWConstants {
     ///  @since Added in version 3.0.
     ///
     ///  @ingroup window
-    public @Pointer(comment="GLFWwindowfocusfun") MemorySegment setWindowFocusCallback(
+    public @Pointer(comment="GLFWwindowfocusfun") @NotNull MemorySegment setWindowFocusCallback(
         @Nullable GLFWwindow window,
-        @Pointer(comment="GLFWwindowfocusfun") MemorySegment callback
+        @Pointer(comment="GLFWwindowfocusfun") @NotNull MemorySegment callback
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glfwSetWindowFocusCallback);
         try {
@@ -5702,9 +5703,9 @@ public final class GLFW implements GLFWConstants {
     ///  @since Added in version 3.0.
     ///
     ///  @ingroup window
-    public @Pointer(comment="GLFWwindowiconifyfun") MemorySegment setWindowIconifyCallback(
+    public @Pointer(comment="GLFWwindowiconifyfun") @NotNull MemorySegment setWindowIconifyCallback(
         @Nullable GLFWwindow window,
-        @Pointer(comment="GLFWwindowiconifyfun") MemorySegment callback
+        @Pointer(comment="GLFWwindowiconifyfun") @NotNull MemorySegment callback
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glfwSetWindowIconifyCallback);
         try {
@@ -5744,9 +5745,9 @@ public final class GLFW implements GLFWConstants {
     ///  @since Added in version 3.3.
     ///
     ///  @ingroup window
-    public @Pointer(comment="GLFWwindowmaximizefun") MemorySegment setWindowMaximizeCallback(
+    public @Pointer(comment="GLFWwindowmaximizefun") @NotNull MemorySegment setWindowMaximizeCallback(
         @Nullable GLFWwindow window,
-        @Pointer(comment="GLFWwindowmaximizefun") MemorySegment callback
+        @Pointer(comment="GLFWwindowmaximizefun") @NotNull MemorySegment callback
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glfwSetWindowMaximizeCallback);
         try {
@@ -5962,9 +5963,9 @@ public final class GLFW implements GLFWConstants {
     ///  @since Added in version 3.0.
     ///
     ///  @ingroup window
-    public @Pointer(comment="GLFWwindowposfun") MemorySegment setWindowPosCallback(
+    public @Pointer(comment="GLFWwindowposfun") @NotNull MemorySegment setWindowPosCallback(
         @Nullable GLFWwindow window,
-        @Pointer(comment="GLFWwindowposfun") MemorySegment callback
+        @Pointer(comment="GLFWwindowposfun") @NotNull MemorySegment callback
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glfwSetWindowPosCallback);
         try {
@@ -6010,9 +6011,9 @@ public final class GLFW implements GLFWConstants {
     ///  @glfw3 Added window handle parameter and return value.
     ///
     ///  @ingroup window
-    public @Pointer(comment="GLFWwindowrefreshfun") MemorySegment setWindowRefreshCallback(
+    public @Pointer(comment="GLFWwindowrefreshfun") @NotNull MemorySegment setWindowRefreshCallback(
         @Nullable GLFWwindow window,
-        @Pointer(comment="GLFWwindowrefreshfun") MemorySegment callback
+        @Pointer(comment="GLFWwindowrefreshfun") @NotNull MemorySegment callback
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glfwSetWindowRefreshCallback);
         try {
@@ -6140,9 +6141,9 @@ public final class GLFW implements GLFWConstants {
     ///  @glfw3 Added window handle parameter and return value.
     ///
     ///  @ingroup window
-    public @Pointer(comment="GLFWwindowsizefun") MemorySegment setWindowSizeCallback(
+    public @Pointer(comment="GLFWwindowsizefun") @NotNull MemorySegment setWindowSizeCallback(
         @Nullable GLFWwindow window,
-        @Pointer(comment="GLFWwindowsizefun") MemorySegment callback
+        @Pointer(comment="GLFWwindowsizefun") @NotNull MemorySegment callback
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glfwSetWindowSizeCallback);
         try {
@@ -6276,7 +6277,7 @@ public final class GLFW implements GLFWConstants {
     ///  @ingroup window
     public void setWindowUserPointer(
         @Nullable GLFWwindow window,
-        @Pointer(comment="void*") MemorySegment pointer
+        @Pointer(comment="void*") @NotNull MemorySegment pointer
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glfwSetWindowUserPointer);
         try {

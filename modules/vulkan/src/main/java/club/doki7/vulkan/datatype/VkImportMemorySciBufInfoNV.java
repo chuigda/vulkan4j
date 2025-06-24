@@ -200,12 +200,13 @@ public record VkImportMemorySciBufInfoNV(@NotNull MemorySegment segment) impleme
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkImportMemorySciBufInfoNV pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkImportMemorySciBufInfoNV pNext(@Nullable IPointer pointer) {
@@ -213,21 +214,22 @@ public record VkImportMemorySciBufInfoNV(@NotNull MemorySegment segment) impleme
         return this;
     }
 
-    public @EnumType(VkExternalMemoryHandleTypeFlags.class) int handleType() {
+    public @Bitmask(VkExternalMemoryHandleTypeFlags.class) int handleType() {
         return segment.get(LAYOUT$handleType, OFFSET$handleType);
     }
 
-    public VkImportMemorySciBufInfoNV handleType(@EnumType(VkExternalMemoryHandleTypeFlags.class) int value) {
+    public VkImportMemorySciBufInfoNV handleType(@Bitmask(VkExternalMemoryHandleTypeFlags.class) int value) {
         segment.set(LAYOUT$handleType, OFFSET$handleType, value);
         return this;
     }
 
-    public @Pointer(comment="NvSciBufObj") MemorySegment handle() {
+    public @Pointer(comment="NvSciBufObj") @NotNull MemorySegment handle() {
         return segment.get(LAYOUT$handle, OFFSET$handle);
     }
 
-    public void handle(@Pointer(comment="NvSciBufObj") MemorySegment value) {
+    public VkImportMemorySciBufInfoNV handle(@Pointer(comment="NvSciBufObj") @NotNull MemorySegment value) {
         segment.set(LAYOUT$handle, OFFSET$handle, value);
+        return this;
     }
 
     public VkImportMemorySciBufInfoNV handle(@Nullable IPointer pointer) {

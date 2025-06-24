@@ -5,6 +5,7 @@ import java.lang.invoke.MethodHandle;
 import java.util.Objects;
 
 import org.jetbrains.annotations.Nullable;
+import org.jetbrains.annotations.NotNull;
 import club.doki7.ffm.NativeLayout;
 import club.doki7.ffm.RawFunctionLoader;
 import club.doki7.ffm.annotation.*;
@@ -856,7 +857,7 @@ public final class AL implements ALConstants {
 
     /// Retrieve the address of a function. The returned function may be context-
     /// specific.
-    public @Pointer(comment="void*") MemorySegment getProcAddress(
+    public @Pointer(comment="void*") @NotNull MemorySegment getProcAddress(
         @Nullable @Pointer(comment="ALchar") BytePtr fname
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$alGetProcAddress);
@@ -1552,7 +1553,7 @@ public final class AL implements ALConstants {
     public void bufferData(
         @NativeType("ALuint") int buffer,
         @NativeType("ALenum") int format,
-        @Pointer(comment="void*") MemorySegment data,
+        @Pointer(comment="void*") @NotNull MemorySegment data,
         @NativeType("ALsizei") int size,
         @NativeType("ALsizei") int samplerate
     ) {
@@ -1793,7 +1794,7 @@ public final class AL implements ALConstants {
     public void bufferDataStatic(
         @NativeType("ALuint") int buffer,
         @NativeType("ALenum") int format,
-        @Pointer(comment="void*") MemorySegment data,
+        @Pointer(comment="void*") @NotNull MemorySegment data,
         @NativeType("ALsizei") int size,
         @NativeType("ALsizei") int freq
     ) {
@@ -1814,7 +1815,7 @@ public final class AL implements ALConstants {
     public void bufferSubDataSOFT(
         @NativeType("ALuint") int buffer,
         @NativeType("ALenum") int format,
-        @Pointer(comment="void*") MemorySegment data,
+        @Pointer(comment="void*") @NotNull MemorySegment data,
         @NativeType("ALsizei") int offset,
         @NativeType("ALsizei") int length
     ) {
@@ -1837,7 +1838,7 @@ public final class AL implements ALConstants {
         @NativeType("ALsizei") int count,
         @NativeType("ALsizei") int length,
         @Nullable @Pointer(comment="ALfloat") FloatPtr mem,
-        @Pointer(comment="LPALFOLDBACKCALLBACK") MemorySegment callback
+        @Pointer(comment="LPALFOLDBACKCALLBACK") @NotNull MemorySegment callback
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$alRequestFoldbackStart);
         try {
@@ -1870,7 +1871,7 @@ public final class AL implements ALConstants {
         @NativeType("ALsizei") int samples,
         @NativeType("ALenum") int channels,
         @NativeType("ALenum") int type,
-        @Pointer(comment="void*") MemorySegment data
+        @Pointer(comment="void*") @NotNull MemorySegment data
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$alBufferSamplesSOFT);
         try {
@@ -1894,7 +1895,7 @@ public final class AL implements ALConstants {
         @NativeType("ALsizei") int samples,
         @NativeType("ALenum") int channels,
         @NativeType("ALenum") int type,
-        @Pointer(comment="void*") MemorySegment data
+        @Pointer(comment="void*") @NotNull MemorySegment data
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$alBufferSubSamplesSOFT);
         try {
@@ -1917,7 +1918,7 @@ public final class AL implements ALConstants {
         @NativeType("ALsizei") int samples,
         @NativeType("ALenum") int channels,
         @NativeType("ALenum") int type,
-        @Pointer(comment="void*") MemorySegment data
+        @Pointer(comment="void*") @NotNull MemorySegment data
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$alGetBufferSamplesSOFT);
         try {
@@ -2221,8 +2222,8 @@ public final class AL implements ALConstants {
     }
 
     public void eventCallbackSOFT(
-        @Pointer(comment="ALEVENTPROCSOFT") MemorySegment callback,
-        @Pointer(comment="void*") MemorySegment userParam
+        @Pointer(comment="ALEVENTPROCSOFT") @NotNull MemorySegment callback,
+        @Pointer(comment="void*") @NotNull MemorySegment userParam
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$alEventCallbackSOFT);
         try {
@@ -2235,7 +2236,7 @@ public final class AL implements ALConstants {
         }
     }
 
-    public @Pointer(comment="void*") MemorySegment getPointerSOFT(
+    public @Pointer(comment="void*") @NotNull MemorySegment getPointerSOFT(
         @NativeType("ALenum") int pname
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$alGetPointerSOFT);
@@ -2267,8 +2268,8 @@ public final class AL implements ALConstants {
         @NativeType("ALuint") int buffer,
         @NativeType("ALenum") int format,
         @NativeType("ALsizei") int freq,
-        @Pointer(comment="ALBUFFERCALLBACKTYPESOFT") MemorySegment callback,
-        @Pointer(comment="void*") MemorySegment userptr
+        @Pointer(comment="ALBUFFERCALLBACKTYPESOFT") @NotNull MemorySegment callback,
+        @Pointer(comment="void*") @NotNull MemorySegment userptr
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$alBufferCallbackSOFT);
         try {
@@ -2372,8 +2373,8 @@ public final class AL implements ALConstants {
     }
 
     public void debugMessageCallbackEXT(
-        @Pointer(comment="ALDEBUGPROCEXT") MemorySegment callback,
-        @Pointer(comment="void*") MemorySegment userParam
+        @Pointer(comment="ALDEBUGPROCEXT") @NotNull MemorySegment callback,
+        @Pointer(comment="void*") @NotNull MemorySegment userParam
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$alDebugMessageCallbackEXT);
         try {
@@ -2528,7 +2529,7 @@ public final class AL implements ALConstants {
         }
     }
 
-    public @Pointer(comment="void*") MemorySegment getPointerEXT(
+    public @Pointer(comment="void*") @NotNull MemorySegment getPointerEXT(
         @NativeType("ALenum") int pname
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$alGetPointerEXT);
@@ -2818,7 +2819,7 @@ public final class AL implements ALConstants {
         }
     }
 
-    public @Pointer(comment="void*") MemorySegment getProcAddressDirect(
+    public @Pointer(comment="void*") @NotNull MemorySegment getProcAddressDirect(
         @Nullable ALCcontext context,
         @Nullable @Pointer(comment="ALchar") BytePtr fname
     ) {
@@ -3580,7 +3581,7 @@ public final class AL implements ALConstants {
         @Nullable ALCcontext context,
         @NativeType("ALuint") int buffer,
         @NativeType("ALenum") int format,
-        @Pointer(comment="void*") MemorySegment data,
+        @Pointer(comment="void*") @NotNull MemorySegment data,
         @NativeType("ALsizei") int size,
         @NativeType("ALsizei") int samplerate
     ) {
@@ -4450,7 +4451,7 @@ public final class AL implements ALConstants {
         @Nullable ALCcontext context,
         @NativeType("ALuint") int buffer,
         @NativeType("ALenum") int format,
-        @Pointer(comment="void*") MemorySegment data,
+        @Pointer(comment="void*") @NotNull MemorySegment data,
         @NativeType("ALsizei") int size,
         @NativeType("ALsizei") int freq
     ) {
@@ -4471,8 +4472,8 @@ public final class AL implements ALConstants {
 
     public void debugMessageCallbackDirectEXT(
         @Nullable ALCcontext context,
-        @Pointer(comment="ALDEBUGPROCEXT") MemorySegment callback,
-        @Pointer(comment="void*") MemorySegment userParam
+        @Pointer(comment="ALDEBUGPROCEXT") @NotNull MemorySegment callback,
+        @Pointer(comment="void*") @NotNull MemorySegment userParam
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$alDebugMessageCallbackDirectEXT);
         try {
@@ -4643,7 +4644,7 @@ public final class AL implements ALConstants {
         }
     }
 
-    public @Pointer(comment="void*") MemorySegment getPointerDirectEXT(
+    public @Pointer(comment="void*") @NotNull MemorySegment getPointerDirectEXT(
         @Nullable ALCcontext context,
         @NativeType("ALenum") int pname
     ) {
@@ -4681,7 +4682,7 @@ public final class AL implements ALConstants {
         @NativeType("ALsizei") int count,
         @NativeType("ALsizei") int length,
         @Nullable @Pointer(comment="ALfloat") FloatPtr mem,
-        @Pointer(comment="LPALFOLDBACKCALLBACK") MemorySegment callback
+        @Pointer(comment="LPALFOLDBACKCALLBACK") @NotNull MemorySegment callback
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$alRequestFoldbackStartDirect);
         try {
@@ -4715,7 +4716,7 @@ public final class AL implements ALConstants {
         @Nullable ALCcontext context,
         @NativeType("ALuint") int buffer,
         @NativeType("ALenum") int format,
-        @Pointer(comment="void*") MemorySegment data,
+        @Pointer(comment="void*") @NotNull MemorySegment data,
         @NativeType("ALsizei") int offset,
         @NativeType("ALsizei") int length
     ) {
@@ -5043,8 +5044,8 @@ public final class AL implements ALConstants {
 
     public void eventCallbackDirectSOFT(
         @Nullable ALCcontext context,
-        @Pointer(comment="ALEVENTPROCSOFT") MemorySegment callback,
-        @Pointer(comment="void*") MemorySegment userParam
+        @Pointer(comment="ALEVENTPROCSOFT") @NotNull MemorySegment callback,
+        @Pointer(comment="void*") @NotNull MemorySegment userParam
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$alEventCallbackDirectSOFT);
         try {
@@ -5058,7 +5059,7 @@ public final class AL implements ALConstants {
         }
     }
 
-    public @Pointer(comment="void*") MemorySegment getPointerDirectSOFT(
+    public @Pointer(comment="void*") @NotNull MemorySegment getPointerDirectSOFT(
         @Nullable ALCcontext context,
         @NativeType("ALenum") int pname
     ) {
@@ -5095,8 +5096,8 @@ public final class AL implements ALConstants {
         @NativeType("ALuint") int buffer,
         @NativeType("ALenum") int format,
         @NativeType("ALsizei") int freq,
-        @Pointer(comment="ALBUFFERCALLBACKTYPESOFT") MemorySegment callback,
-        @Pointer(comment="void*") MemorySegment userptr
+        @Pointer(comment="ALBUFFERCALLBACKTYPESOFT") @NotNull MemorySegment callback,
+        @Pointer(comment="void*") @NotNull MemorySegment userptr
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$alBufferCallbackDirectSOFT);
         try {
@@ -5215,7 +5216,7 @@ public final class AL implements ALConstants {
         @Nullable _GUID property_set_id,
         @NativeType("ALuint") int property_id,
         @NativeType("ALuint") int source_id,
-        @Pointer(comment="void*") MemorySegment value,
+        @Pointer(comment="void*") @NotNull MemorySegment value,
         @NativeType("ALuint") int value_size
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$EAXSetDirect);
@@ -5238,7 +5239,7 @@ public final class AL implements ALConstants {
         @Nullable _GUID property_set_id,
         @NativeType("ALuint") int property_id,
         @NativeType("ALuint") int source_id,
-        @Pointer(comment="void*") MemorySegment value,
+        @Pointer(comment="void*") @NotNull MemorySegment value,
         @NativeType("ALuint") int value_size
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$EAXGetDirect);

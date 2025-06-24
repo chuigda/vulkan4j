@@ -175,11 +175,11 @@ public record VkShaderStatisticsInfoAMD(@NotNull MemorySegment segment) implemen
         return ret;
     }
 
-    public @EnumType(VkShaderStageFlags.class) int shaderStageMask() {
+    public @Bitmask(VkShaderStageFlags.class) int shaderStageMask() {
         return segment.get(LAYOUT$shaderStageMask, OFFSET$shaderStageMask);
     }
 
-    public VkShaderStatisticsInfoAMD shaderStageMask(@EnumType(VkShaderStageFlags.class) int value) {
+    public VkShaderStatisticsInfoAMD shaderStageMask(@Bitmask(VkShaderStageFlags.class) int value) {
         segment.set(LAYOUT$shaderStageMask, OFFSET$shaderStageMask, value);
         return this;
     }
@@ -243,7 +243,7 @@ public record VkShaderStatisticsInfoAMD(@NotNull MemorySegment segment) implemen
         return this;
     }
 
-    public MemorySegment computeWorkGroupSizeRaw() {
+    public @NotNull MemorySegment computeWorkGroupSizeRaw() {
         return segment.asSlice(OFFSET$computeWorkGroupSize, SIZE$computeWorkGroupSize);
     }
 

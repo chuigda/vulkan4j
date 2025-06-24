@@ -11,7 +11,7 @@ public final class VkVideoCodingControlFlagsKHR {
     public static final int ENCODE_RATE_CONTROL = 0x2;
     public static final int RESET = 0x1;
 
-    public static String explain(@EnumType(VkVideoCodingControlFlagsKHR.class) int flags) {
+    public static String explain(@Bitmask(VkVideoCodingControlFlagsKHR.class) int flags) {
         List<String> detectedFlagBits = new ArrayList<>();
         if ((flags & ENCODE_QUALITY_LEVEL) != 0) {
             detectedFlagBits.add("VK_VIDEO_CODING_CONTROL_ENCODE_QUALITY_LEVEL_BIT_KHR");

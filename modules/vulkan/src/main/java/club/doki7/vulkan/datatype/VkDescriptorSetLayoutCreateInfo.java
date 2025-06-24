@@ -201,12 +201,13 @@ public record VkDescriptorSetLayoutCreateInfo(@NotNull MemorySegment segment) im
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkDescriptorSetLayoutCreateInfo pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkDescriptorSetLayoutCreateInfo pNext(@Nullable IPointer pointer) {
@@ -214,11 +215,11 @@ public record VkDescriptorSetLayoutCreateInfo(@NotNull MemorySegment segment) im
         return this;
     }
 
-    public @EnumType(VkDescriptorSetLayoutCreateFlags.class) int flags() {
+    public @Bitmask(VkDescriptorSetLayoutCreateFlags.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public VkDescriptorSetLayoutCreateInfo flags(@EnumType(VkDescriptorSetLayoutCreateFlags.class) int value) {
+    public VkDescriptorSetLayoutCreateInfo flags(@Bitmask(VkDescriptorSetLayoutCreateFlags.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
         return this;
     }
@@ -256,11 +257,11 @@ public record VkDescriptorSetLayoutCreateInfo(@NotNull MemorySegment segment) im
         return new VkDescriptorSetLayoutBinding(s);
     }
 
-    public @Pointer(target=VkDescriptorSetLayoutBinding.class) MemorySegment pBindingsRaw() {
+    public @Pointer(target=VkDescriptorSetLayoutBinding.class) @NotNull MemorySegment pBindingsRaw() {
         return segment.get(LAYOUT$pBindings, OFFSET$pBindings);
     }
 
-    public void pBindingsRaw(@Pointer(target=VkDescriptorSetLayoutBinding.class) MemorySegment value) {
+    public void pBindingsRaw(@Pointer(target=VkDescriptorSetLayoutBinding.class) @NotNull MemorySegment value) {
         segment.set(LAYOUT$pBindings, OFFSET$pBindings, value);
     }
 

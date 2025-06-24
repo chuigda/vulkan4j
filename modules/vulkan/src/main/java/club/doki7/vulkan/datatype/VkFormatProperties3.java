@@ -201,12 +201,13 @@ public record VkFormatProperties3(@NotNull MemorySegment segment) implements IVk
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkFormatProperties3 pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkFormatProperties3 pNext(@Nullable IPointer pointer) {
@@ -214,29 +215,29 @@ public record VkFormatProperties3(@NotNull MemorySegment segment) implements IVk
         return this;
     }
 
-    public @EnumType(VkFormatFeatureFlags2.class) long linearTilingFeatures() {
+    public @Bitmask(VkFormatFeatureFlags2.class) long linearTilingFeatures() {
         return segment.get(LAYOUT$linearTilingFeatures, OFFSET$linearTilingFeatures);
     }
 
-    public VkFormatProperties3 linearTilingFeatures(@EnumType(VkFormatFeatureFlags2.class) long value) {
+    public VkFormatProperties3 linearTilingFeatures(@Bitmask(VkFormatFeatureFlags2.class) long value) {
         segment.set(LAYOUT$linearTilingFeatures, OFFSET$linearTilingFeatures, value);
         return this;
     }
 
-    public @EnumType(VkFormatFeatureFlags2.class) long optimalTilingFeatures() {
+    public @Bitmask(VkFormatFeatureFlags2.class) long optimalTilingFeatures() {
         return segment.get(LAYOUT$optimalTilingFeatures, OFFSET$optimalTilingFeatures);
     }
 
-    public VkFormatProperties3 optimalTilingFeatures(@EnumType(VkFormatFeatureFlags2.class) long value) {
+    public VkFormatProperties3 optimalTilingFeatures(@Bitmask(VkFormatFeatureFlags2.class) long value) {
         segment.set(LAYOUT$optimalTilingFeatures, OFFSET$optimalTilingFeatures, value);
         return this;
     }
 
-    public @EnumType(VkFormatFeatureFlags2.class) long bufferFeatures() {
+    public @Bitmask(VkFormatFeatureFlags2.class) long bufferFeatures() {
         return segment.get(LAYOUT$bufferFeatures, OFFSET$bufferFeatures);
     }
 
-    public VkFormatProperties3 bufferFeatures(@EnumType(VkFormatFeatureFlags2.class) long value) {
+    public VkFormatProperties3 bufferFeatures(@Bitmask(VkFormatFeatureFlags2.class) long value) {
         segment.set(LAYOUT$bufferFeatures, OFFSET$bufferFeatures, value);
         return this;
     }

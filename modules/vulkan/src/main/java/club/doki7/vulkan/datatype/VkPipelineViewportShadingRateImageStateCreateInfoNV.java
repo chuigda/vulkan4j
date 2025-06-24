@@ -201,12 +201,13 @@ public record VkPipelineViewportShadingRateImageStateCreateInfoNV(@NotNull Memor
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkPipelineViewportShadingRateImageStateCreateInfoNV pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkPipelineViewportShadingRateImageStateCreateInfoNV pNext(@Nullable IPointer pointer) {
@@ -256,11 +257,11 @@ public record VkPipelineViewportShadingRateImageStateCreateInfoNV(@NotNull Memor
         return new VkShadingRatePaletteNV(s);
     }
 
-    public @Pointer(target=VkShadingRatePaletteNV.class) MemorySegment pShadingRatePalettesRaw() {
+    public @Pointer(target=VkShadingRatePaletteNV.class) @NotNull MemorySegment pShadingRatePalettesRaw() {
         return segment.get(LAYOUT$pShadingRatePalettes, OFFSET$pShadingRatePalettes);
     }
 
-    public void pShadingRatePalettesRaw(@Pointer(target=VkShadingRatePaletteNV.class) MemorySegment value) {
+    public void pShadingRatePalettesRaw(@Pointer(target=VkShadingRatePaletteNV.class) @NotNull MemorySegment value) {
         segment.set(LAYOUT$pShadingRatePalettes, OFFSET$pShadingRatePalettes, value);
     }
 

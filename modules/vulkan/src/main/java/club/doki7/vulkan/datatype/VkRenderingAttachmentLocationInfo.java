@@ -200,12 +200,13 @@ public record VkRenderingAttachmentLocationInfo(@NotNull MemorySegment segment) 
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkRenderingAttachmentLocationInfo pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkRenderingAttachmentLocationInfo pNext(@Nullable IPointer pointer) {
@@ -240,11 +241,11 @@ public record VkRenderingAttachmentLocationInfo(@NotNull MemorySegment segment) 
         return this;
     }
 
-    public @Pointer(comment="uint32_t*") MemorySegment pColorAttachmentLocationsRaw() {
+    public @Pointer(comment="uint32_t*") @NotNull MemorySegment pColorAttachmentLocationsRaw() {
         return segment.get(LAYOUT$pColorAttachmentLocations, OFFSET$pColorAttachmentLocations);
     }
 
-    public void pColorAttachmentLocationsRaw(@Pointer(comment="uint32_t*") MemorySegment value) {
+    public void pColorAttachmentLocationsRaw(@Pointer(comment="uint32_t*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pColorAttachmentLocations, OFFSET$pColorAttachmentLocations, value);
     }
 

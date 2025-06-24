@@ -202,12 +202,13 @@ public record VkPipelineExecutableStatisticKHR(@NotNull MemorySegment segment) i
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkPipelineExecutableStatisticKHR pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkPipelineExecutableStatisticKHR pNext(@Nullable IPointer pointer) {
@@ -224,7 +225,7 @@ public record VkPipelineExecutableStatisticKHR(@NotNull MemorySegment segment) i
         return this;
     }
 
-    public MemorySegment nameRaw() {
+    public @NotNull MemorySegment nameRaw() {
         return segment.asSlice(OFFSET$name, SIZE$name);
     }
 
@@ -237,7 +238,7 @@ public record VkPipelineExecutableStatisticKHR(@NotNull MemorySegment segment) i
         return this;
     }
 
-    public MemorySegment descriptionRaw() {
+    public @NotNull MemorySegment descriptionRaw() {
         return segment.asSlice(OFFSET$description, SIZE$description);
     }
 

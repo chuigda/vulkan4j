@@ -211,12 +211,13 @@ public record VkVideoEncodeH264CapabilitiesKHR(@NotNull MemorySegment segment) i
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkVideoEncodeH264CapabilitiesKHR pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkVideoEncodeH264CapabilitiesKHR pNext(@Nullable IPointer pointer) {
@@ -224,11 +225,11 @@ public record VkVideoEncodeH264CapabilitiesKHR(@NotNull MemorySegment segment) i
         return this;
     }
 
-    public @EnumType(VkVideoEncodeH264CapabilityFlagsKHR.class) int flags() {
+    public @Bitmask(VkVideoEncodeH264CapabilityFlagsKHR.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public VkVideoEncodeH264CapabilitiesKHR flags(@EnumType(VkVideoEncodeH264CapabilityFlagsKHR.class) int value) {
+    public VkVideoEncodeH264CapabilitiesKHR flags(@Bitmask(VkVideoEncodeH264CapabilityFlagsKHR.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
         return this;
     }
@@ -332,11 +333,11 @@ public record VkVideoEncodeH264CapabilitiesKHR(@NotNull MemorySegment segment) i
         return this;
     }
 
-    public @EnumType(VkVideoEncodeH264StdFlagsKHR.class) int stdSyntaxFlags() {
+    public @Bitmask(VkVideoEncodeH264StdFlagsKHR.class) int stdSyntaxFlags() {
         return segment.get(LAYOUT$stdSyntaxFlags, OFFSET$stdSyntaxFlags);
     }
 
-    public VkVideoEncodeH264CapabilitiesKHR stdSyntaxFlags(@EnumType(VkVideoEncodeH264StdFlagsKHR.class) int value) {
+    public VkVideoEncodeH264CapabilitiesKHR stdSyntaxFlags(@Bitmask(VkVideoEncodeH264StdFlagsKHR.class) int value) {
         segment.set(LAYOUT$stdSyntaxFlags, OFFSET$stdSyntaxFlags, value);
         return this;
     }

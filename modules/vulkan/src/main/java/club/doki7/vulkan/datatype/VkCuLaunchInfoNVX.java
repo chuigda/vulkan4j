@@ -210,12 +210,13 @@ public record VkCuLaunchInfoNVX(@NotNull MemorySegment segment) implements IVkCu
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkCuLaunchInfoNVX pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkCuLaunchInfoNVX pNext(@Nullable IPointer pointer) {
@@ -308,12 +309,13 @@ public record VkCuLaunchInfoNVX(@NotNull MemorySegment segment) implements IVkCu
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pParams() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pParams() {
         return segment.get(LAYOUT$pParams, OFFSET$pParams);
     }
 
-    public void pParams(@Pointer(comment="void*") MemorySegment value) {
+    public VkCuLaunchInfoNVX pParams(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pParams, OFFSET$pParams, value);
+        return this;
     }
 
     public VkCuLaunchInfoNVX pParams(@Nullable IPointer pointer) {
@@ -330,12 +332,13 @@ public record VkCuLaunchInfoNVX(@NotNull MemorySegment segment) implements IVkCu
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pExtras() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pExtras() {
         return segment.get(LAYOUT$pExtras, OFFSET$pExtras);
     }
 
-    public void pExtras(@Pointer(comment="void*") MemorySegment value) {
+    public VkCuLaunchInfoNVX pExtras(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pExtras, OFFSET$pExtras, value);
+        return this;
     }
 
     public VkCuLaunchInfoNVX pExtras(@Nullable IPointer pointer) {

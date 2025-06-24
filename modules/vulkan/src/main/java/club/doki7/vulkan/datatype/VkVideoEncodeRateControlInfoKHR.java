@@ -204,12 +204,13 @@ public record VkVideoEncodeRateControlInfoKHR(@NotNull MemorySegment segment) im
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkVideoEncodeRateControlInfoKHR pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkVideoEncodeRateControlInfoKHR pNext(@Nullable IPointer pointer) {
@@ -217,20 +218,20 @@ public record VkVideoEncodeRateControlInfoKHR(@NotNull MemorySegment segment) im
         return this;
     }
 
-    public @EnumType(VkVideoEncodeRateControlFlagsKHR.class) int flags() {
+    public @Bitmask(VkVideoEncodeRateControlFlagsKHR.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public VkVideoEncodeRateControlInfoKHR flags(@EnumType(VkVideoEncodeRateControlFlagsKHR.class) int value) {
+    public VkVideoEncodeRateControlInfoKHR flags(@Bitmask(VkVideoEncodeRateControlFlagsKHR.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
         return this;
     }
 
-    public @EnumType(VkVideoEncodeRateControlModeFlagsKHR.class) int rateControlMode() {
+    public @Bitmask(VkVideoEncodeRateControlModeFlagsKHR.class) int rateControlMode() {
         return segment.get(LAYOUT$rateControlMode, OFFSET$rateControlMode);
     }
 
-    public VkVideoEncodeRateControlInfoKHR rateControlMode(@EnumType(VkVideoEncodeRateControlModeFlagsKHR.class) int value) {
+    public VkVideoEncodeRateControlInfoKHR rateControlMode(@Bitmask(VkVideoEncodeRateControlModeFlagsKHR.class) int value) {
         segment.set(LAYOUT$rateControlMode, OFFSET$rateControlMode, value);
         return this;
     }
@@ -268,11 +269,11 @@ public record VkVideoEncodeRateControlInfoKHR(@NotNull MemorySegment segment) im
         return new VkVideoEncodeRateControlLayerInfoKHR(s);
     }
 
-    public @Pointer(target=VkVideoEncodeRateControlLayerInfoKHR.class) MemorySegment pLayersRaw() {
+    public @Pointer(target=VkVideoEncodeRateControlLayerInfoKHR.class) @NotNull MemorySegment pLayersRaw() {
         return segment.get(LAYOUT$pLayers, OFFSET$pLayers);
     }
 
-    public void pLayersRaw(@Pointer(target=VkVideoEncodeRateControlLayerInfoKHR.class) MemorySegment value) {
+    public void pLayersRaw(@Pointer(target=VkVideoEncodeRateControlLayerInfoKHR.class) @NotNull MemorySegment value) {
         segment.set(LAYOUT$pLayers, OFFSET$pLayers, value);
     }
 
