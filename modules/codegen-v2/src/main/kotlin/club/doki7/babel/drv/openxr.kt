@@ -11,6 +11,7 @@ import club.doki7.babel.codegen.generateStructure
 import club.doki7.babel.codegen.generateStructureInterface
 import club.doki7.babel.extract.openxr.OpenXRRegistryExt
 import club.doki7.babel.extract.openxr.extractOpenXRRegistry
+import club.doki7.babel.extract.vulkan.VulkanRegistryExt
 import club.doki7.babel.registry.Bitmask
 import club.doki7.babel.registry.Entity
 import club.doki7.babel.registry.Enumeration
@@ -24,7 +25,12 @@ import java.io.File
 
 private const val packageDir = "openxr/src/main/java/club/doki7/openxr"
 
-internal fun openxrMain(): Registry<OpenXRRegistryExt> {
+fun main() {
+    val vulkan = vulkanMain()
+    openxrMain(vulkan, true)
+}
+
+internal fun openxrMain(vulkanRegistry: Registry<VulkanRegistryExt>, dryRun: Boolean): Registry<OpenXRRegistryExt> {
     val reg = extractOpenXRRegistry()
 
     val opt = CodegenOptions(
@@ -32,7 +38,7 @@ internal fun openxrMain(): Registry<OpenXRRegistryExt> {
         extraImport = listOf(),
         constantClassName = "OpenXRConstants",
         functionTypeClassName = "OpenXRFunctionTypes",
-        refRegistries = emptyList(),
+        refRegistries = listOf(vulkanRegistry),
         seeLinkProvider = ::openxrLinkProvider
     )
 
@@ -46,7 +52,7 @@ internal fun openxrMain(): Registry<OpenXRRegistryExt> {
     // opaqueHandleTypedefs
     // structures
 
-    val context = CodegenContext(packageDir, reg, opt)
+    val context = CodegenContext(packageDir, reg, opt, dryRun)
 
     with(context) {
         generateConstants()
@@ -67,23 +73,25 @@ fun openxrLinkProvider(e: Entity): String {
     return "<a href=\"https://registry.khronos.org/OpenXR/specs/1.0/man/html/$name.html\"><code>$name</code></a>"
 }
 
+/**
+ * @param dryRun for testing, only generate code, no writing
+ */
 data class CodegenContext<T : IMergeable<T>>(
     val packageDir: String,
     val registry: Registry<T>,
-    val codegenOptions: CodegenOptions
+    val codegenOptions: CodegenOptions,
+    val dryRun: Boolean,
 ) {
     private fun file(path: String): File {
         return File("$packageDir/$path")
     }
 
-    private fun File.writeText(doc: Doc) {
-        writeText(render(doc))
-    }
-
     private fun Doc.writeTo(relativePath: String) {
-        file(relativePath).apply {
-            parentFile.mkdirs()
-        }.writeText(this)
+        if (!dryRun) {
+            file(relativePath).apply {
+                parentFile.mkdirs()
+            }.writeText(render(this))
+        }
     }
 
     fun generateConstants() {
