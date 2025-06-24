@@ -418,10 +418,6 @@ private val knownTypes = mapOf(
     "GLbitfield" to uint32Type.copyWithComment(comment = "GLbitfield"),
     "GLboolean" to uint8Type.copyWithComment(comment = "GLboolean"),
 
-    // https://registry.khronos.org/OpenGL/api/GL/glxext.h
-    "GLXFBConfig" to pvoidType("GLXFBConfig"),
-    "HGLRC" to pvoidType("HGLRC"),      // this comes from "windows.h" though
-
     // Vulkan base types
     "VkSampleMask" to uint32Type.copyWithComment(comment = "VkSampleMask"),
     "VkBool32" to uint32Type.copyWithComment(comment = "VkBool32"),
@@ -481,6 +477,8 @@ private val knownTypes = mapOf(
     "RRCrtc" to cLongType.copy(comment = "RRCrtc"),
     "VisualID" to cLongType.copy(comment = "VisualID"),
     "Window" to cLongType.copy(comment = "Window"),
+    "GLXFBConfig" to pvoidType("GLXFBConfig"),
+    "GLXDrawable" to cLongType.copyWithComment("GLXDrawable"),
     "GLXContext" to pvoidType("GLXContext"),
     "GLXWindow" to cLongType.copy(comment = "GLXWindow"),
     "XEvent" to voidType.copy(cType = "XEvent"),
@@ -488,6 +486,7 @@ private val knownTypes = mapOf(
     "xcb_visualid_t" to uint32Type.copyWithComment(comment = "xcb_visualid_t"),
     "xcb_window_t" to uint32Type.copyWithComment(comment = "xcb_window_t"),
     "xcb_handle_t" to uint32Type.copyWithComment(comment = "xcb_handle_t"),
+    "HGLRC" to pvoidType("HGLRC"),      // this comes from "windows.h" though
 
     // EGL
     "EGLDisplay" to pvoidType("EGLDisplay"),
