@@ -1,6 +1,10 @@
 package club.doki7.openxr;
 
 import club.doki7.ffm.annotation.*;
+import club.doki7.vulkan.bitmask.*;
+import club.doki7.vulkan.datatype.*;
+import club.doki7.vulkan.enumtype.*;
+import club.doki7.vulkan.handle.*;
 
 public interface XRConstants {
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XR_FALSE.html"><code>XR_FALSE</code></a>

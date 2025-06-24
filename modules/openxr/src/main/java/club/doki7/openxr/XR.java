@@ -14,6 +14,10 @@ import club.doki7.openxr.bitmask.*;
 import club.doki7.openxr.datatype.*;
 import club.doki7.openxr.enumtype.*;
 import club.doki7.openxr.handle.*;
+import club.doki7.vulkan.bitmask.*;
+import club.doki7.vulkan.datatype.*;
+import club.doki7.vulkan.enumtype.*;
+import club.doki7.vulkan.handle.*;
 
 public final class XR implements XRConstants {
     public XR(RawFunctionLoader loader) {

@@ -1,5 +1,10 @@
 package club.doki7.openxr.bitmask;
 
+import club.doki7.vulkan.bitmask.*;
+import club.doki7.vulkan.datatype.*;
+import club.doki7.vulkan.enumtype.*;
+import club.doki7.vulkan.handle.*;
+
 import club.doki7.ffm.annotation.*;
 
 import java.util.ArrayList;

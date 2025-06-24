@@ -46,7 +46,12 @@ internal fun openxrMain(
 
     val opt = CodegenOptions(
         packageName = "club.doki7.openxr",
-        extraImport = listOf(),
+        extraImport = listOf(
+            "club.doki7.vulkan.bitmask.*",
+            "club.doki7.vulkan.datatype.*",
+            "club.doki7.vulkan.enumtype.*",
+            "club.doki7.vulkan.handle.*",
+        ),
         constantClassName = "XRConstants",
         functionTypeClassName = "XRFunctionTypes",
         refRegistries = listOf(vulkanRegistry, vulkanAdditionRegistry),

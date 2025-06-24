@@ -17,6 +17,10 @@ import club.doki7.openxr.bitmask.*;
 import club.doki7.openxr.handle.*;
 import club.doki7.openxr.enumtype.*;
 import static club.doki7.openxr.XRConstants.*;
+import club.doki7.vulkan.bitmask.*;
+import club.doki7.vulkan.datatype.*;
+import club.doki7.vulkan.enumtype.*;
+import club.doki7.vulkan.handle.*;
 
 /// Represents a pointer to a <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XrSceneComponentLocationMSFT.html"><code>XrSceneComponentLocationMSFT</code></a> structure in native memory.
 ///
