@@ -1,0 +1,44 @@
+package club.doki7.openxr;
+
+import java.lang.foreign.*;
+import club.doki7.ffm.NativeLayout;
+import club.doki7.openxr.datatype.*;
+
+public final class XRFunctionTypes {
+    /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/PFN_xrCreateApiLayerInstance.html"><code>PFN_xrCreateApiLayerInstance</code></a>
+    public static final FunctionDescriptor PFN_xrCreateApiLayerInstance = FunctionDescriptor.of(
+        ValueLayout.JAVA_INT,
+        ValueLayout.ADDRESS.withTargetLayout(XrInstanceCreateInfo.LAYOUT),
+        ValueLayout.ADDRESS.withTargetLayout(XrApiLayerCreateInfo.LAYOUT),
+        ValueLayout.ADDRESS.withTargetLayout(ValueLayout.ADDRESS)
+    );
+
+    /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/PFN_xrDebugUtilsMessengerCallbackEXT.html"><code>PFN_xrDebugUtilsMessengerCallbackEXT</code></a>
+    public static final FunctionDescriptor PFN_xrDebugUtilsMessengerCallbackEXT = FunctionDescriptor.of(
+        ValueLayout.JAVA_INT,
+        ValueLayout.JAVA_INT,
+        ValueLayout.JAVA_INT,
+        ValueLayout.ADDRESS.withTargetLayout(XrDebugUtilsMessengerCallbackDataEXT.LAYOUT),
+        ValueLayout.ADDRESS
+    );
+
+    /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/PFN_xrEglGetProcAddressMNDX.html"><code>PFN_xrEglGetProcAddressMNDX</code></a>
+    public static final FunctionDescriptor PFN_xrEglGetProcAddressMNDX = FunctionDescriptor.of(
+        ValueLayout.ADDRESS,
+        ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_BYTE)
+    );
+
+    /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/PFN_xrGetInstanceProcAddr.html"><code>PFN_xrGetInstanceProcAddr</code></a>
+    public static final FunctionDescriptor PFN_xrGetInstanceProcAddr = FunctionDescriptor.of(
+        ValueLayout.JAVA_INT,
+        ValueLayout.ADDRESS,
+        ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_BYTE),
+        ValueLayout.ADDRESS.withTargetLayout(ValueLayout.ADDRESS)
+    );
+
+    /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/PFN_xrVoidFunction.html"><code>PFN_xrVoidFunction</code></a>
+    public static final FunctionDescriptor PFN_xrVoidFunction = FunctionDescriptor.ofVoid();
+
+    /// Constructing this class is nonsense so the constructor is made private.
+    private XRFunctionTypes() {}
+}

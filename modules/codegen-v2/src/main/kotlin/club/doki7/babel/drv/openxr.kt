@@ -12,6 +12,7 @@ import club.doki7.babel.codegen.generateStructureInterface
 import club.doki7.babel.extract.openxr.OpenXRRegistryExt
 import club.doki7.babel.extract.openxr.extractOpenXRRegistry
 import club.doki7.babel.extract.vulkan.VulkanRegistryExt
+import club.doki7.babel.extract.vulkan.extractVulkanRegistry
 import club.doki7.babel.extract.vulkanAdditionalRegistry
 import club.doki7.babel.registry.Bitmask
 import club.doki7.babel.registry.EmptyMergeable
@@ -23,14 +24,17 @@ import club.doki7.babel.registry.Registry
 import club.doki7.babel.registry.Structure
 import club.doki7.babel.util.Doc
 import club.doki7.babel.util.render
+import club.doki7.babel.util.setupLog
 import java.io.File
 
 private const val packageDir = "openxr/src/main/java/club/doki7/openxr"
 
 fun main() {
-    val vulkan = vulkanMain()
+    setupLog()
+
+    val vulkan = extractVulkanRegistry()
     val vulkanPlus = vulkanAdditionalRegistry()
-    openxrMain(vulkan, vulkanPlus, true)
+    openxrMain(vulkan, vulkanPlus, false)
 }
 
 internal fun openxrMain(
@@ -43,8 +47,8 @@ internal fun openxrMain(
     val opt = CodegenOptions(
         packageName = "club.doki7.openxr",
         extraImport = listOf(),
-        constantClassName = "OpenXRConstants",
-        functionTypeClassName = "OpenXRFunctionTypes",
+        constantClassName = "XRConstants",
+        functionTypeClassName = "XRFunctionTypes",
         refRegistries = listOf(vulkanRegistry, vulkanAdditionRegistry),
         seeLinkProvider = ::openxrLinkProvider
     )
@@ -77,7 +81,7 @@ internal fun openxrMain(
 fun openxrLinkProvider(e: Entity): String {
     val name = e.name.original
     // TODO: open xr doesn't have 'latest' version
-    return "<a href=\"https://registry.khronos.org/OpenXR/specs/1.0/man/html/$name.html\"><code>$name</code></a>"
+    return "<a href=\"https://registry.khronos.org/OpenXR/specs/1.1/man/html/$name.html\"><code>$name</code></a>"
 }
 
 /**
@@ -139,7 +143,7 @@ data class CodegenContext<T : IMergeable<T>>(
     }
 
     fun generateOpaqueHandle(handle: OpaqueHandleTypedef) {
-        generateHandle(registry, handle, codegenOptions)
+        generateHandle(handle, codegenOptions)
             .writeTo("handle/${handle.name}.java")
     }
 
@@ -150,11 +154,11 @@ data class CodegenContext<T : IMergeable<T>>(
     fun generateCommands() {
         generateCommandFile(
             registry,
-            "OpenXR",
+            "XR",
             registry.commands.values.toList(),
             codegenOptions,
             true,
             null
-        )
+        ).writeTo("XR.java")
     }
 }

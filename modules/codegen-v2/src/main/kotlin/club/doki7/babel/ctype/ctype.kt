@@ -1,5 +1,6 @@
 package club.doki7.babel.ctype
 
+import club.doki7.babel.ctype.voidType
 import club.doki7.babel.registry.ArrayType
 import club.doki7.babel.registry.FunctionTypedef
 import club.doki7.babel.registry.IdentifierType
@@ -398,6 +399,9 @@ private val knownTypes = mapOf(
     "short" to int16Type,
     "unsigned short" to uint16Type,
 
+    // libc types
+    "timespec" to voidType.copy(cType = "timespec"), // used as a pointer
+
     // OpenGL base types
     "GLbyte" to int8Type.copyWithComment(comment = "GLbyte"),
     "GLubyte" to uint8Type.copyWithComment(comment = "GLubyte"),
@@ -471,12 +475,12 @@ private val knownTypes = mapOf(
     "HMONITOR" to pvoidType("HMONITOR"),
     "HWND" to pvoidType("HWND"),
     "HDC" to pvoidType("HDC"),
-    "LARGE_INTEGER" to voidType,        // used as a pointer
+    "LARGE_INTEGER" to voidType, // used as a pointer
     "LPCWSTR" to CPointerType(uint16Type, const = true, pointerToOne = false, comment = "LPCWSTR"),
     "HGLRC" to pvoidType("HGLRC"),
     "SECURITY_ATTRIBUTES" to voidType.copy(cType = "SECURITY_ATTRIBUTES"),
 
-    // X11
+    // X11 Xlib
     "Display" to pvoidType("Display"),
     "RROutput" to cLongType.copy(comment = "RROutput"),
     "RRCrtc" to cLongType.copy(comment = "RRCrtc"),
@@ -487,16 +491,22 @@ private val knownTypes = mapOf(
     "GLXContext" to pvoidType("GLXContext"),
     "GLXWindow" to cLongType.copy(comment = "GLXWindow"),
     "XEvent" to voidType.copy(cType = "XEvent"),
+
+    // X11 XCB
     "xcb_connection_t" to voidType.copy(cType = "xcb_connection_t"),
     "xcb_visualid_t" to uint32Type.copyWithComment(comment = "xcb_visualid_t"),
     "xcb_window_t" to uint32Type.copyWithComment(comment = "xcb_window_t"),
     "xcb_handle_t" to uint32Type.copyWithComment(comment = "xcb_handle_t"),
-    "HGLRC" to pvoidType("HGLRC"),      // this comes from "windows.h" though
+    "xcb_glx_fbconfig_t" to uint32Type.copyWithComment("xcb_glx_fbconfig_t"),
+    "xcb_glx_drawable_t" to uint32Type.copyWithComment("xcb_glx_drawable_t"),
+    "xcb_glx_context_t" to uint32Type.copyWithComment("xcb_glx_context_t"),
 
     // EGL
     "EGLDisplay" to pvoidType("EGLDisplay"),
     "EGLContext" to pvoidType("EGLContext"),
     "EGLSurface" to pvoidType("EGLSurface"),
+    "EGLConfig" to pvoidType("EGLConfig"),
+    "EGLenum" to uint32Type.copyWithComment("EGLenum"),
 
     // MESA
     "OSMesaContext" to pvoidType("OSMesaContext"),
@@ -510,38 +520,17 @@ private val knownTypes = mapOf(
     // FUCHSIA
     "zx_handle_t" to uint32Type.copyWithComment(comment = "zx_handle_t"),
 
-    // unknwn.h
+    // Microsoft Windows COM and Direct3D
     "IUnknown" to pvoidType("IUnknown"),
-
-    //d3dcommon
-    "D3D_FEATURE_LEVEL" to uint32Type.copyWithComment("D3D_FEATURE_LEVEL"),
-
-    // d3d11/12
     "ID3D11Device" to pvoidType("ID3D11Device"),
     "ID3D11Texture2D" to pvoidType("ID3D11Texture2D"),
     "ID3D12CommandQueue" to pvoidType("ID3D12CommandQueue"),
     "ID3D12Device" to pvoidType("ID3D12Device"),
     "ID3D12Resource" to pvoidType("ID3D12Resource"),
-
-    // https://registry.khronos.org/EGL/api/EGL/egl.h
-    "EGLDisplay" to pvoidType("EGLDisplay"),
-    "EGLConfig" to pvoidType("EGLConfig"),
-    "EGLContext" to pvoidType("EGLContext"),
-    "EGLenum" to uint32Type.copyWithComment("EGLenum"),
-
-    // https://xcb.freedesktop.org/manual/glx_8h_source.html
-    "xcb_glx_fbconfig_t" to uint32Type.copyWithComment("xcb_glx_fbconfig_t"),
-    "xcb_glx_drawable_t" to uint32Type.copyWithComment("xcb_glx_drawable_t"),
-    "xcb_glx_context_t" to uint32Type.copyWithComment("xcb_glx_context_t"),
-
-    // https://xcb.freedesktop.org/manual/xcb_8h.html
-    "xcb_connection_t" to voidType,
-    // https://xcb.freedesktop.org/manual/group__XCB____API.html
-    "xcb_visualid_t" to uint32Type.copyWithComment("xcb_visualid_t"),
-    "xcb_window_t" to uint32Type.copyWithComment("xcb_window_t"),
+    "D3D_FEATURE_LEVEL" to uint32Type.copyWithComment("D3D_FEATURE_LEVEL"),
 
     // JNI
-    "jobject" to pvoidType("jobject"),
+    "jobject" to pvoidType("jobject")
 )
 
 fun lowerType(registry: RegistryBase, refRegistries: List<RegistryBase>, type: Type): CType {

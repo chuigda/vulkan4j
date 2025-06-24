@@ -37,15 +37,9 @@ private fun Element.extractEntities(): Registry<OpenXRRegistryExt> {
             }
         }
 
-    // TODO: do we need this? perhaps this is implied by [bitmasks]
-//    val bitmaskTypes = e.query("types/type[@category=bitmask]")
-//        .map(::extractBitmaskType)
-
-    val handles = e.query("types/type[@category='handle']")
+    e.query("types/type[@category='handle']")
         .map(::extractHandle)
-
-    liftLeft(handles).associateByTo(opaqueHandles, Entity::name)
-    liftRight(handles).associateByTo(typedefs, Entity::name)
+        .associateByTo(opaqueHandles, Entity::name)
 
     val structs = e.query("types/type[@category='struct' and not(@alias)]")
         .map(::extractStruct)
@@ -75,6 +69,10 @@ private fun Element.extractEntities(): Registry<OpenXRRegistryExt> {
     val commands = e.query("commands/command[not(@alias)]")
         .map(::extractCommand)
         .associate()
+        .toMutableMap()
+    // TODO correctly implement command filtering
+    commands.remove("xrGetAudioOutputDeviceGuidOculus".intern())
+    commands.remove("xrGetAudioInputDeviceGuidOculus".intern())
 
     val funcs = e.query("types/type[@category='funcpointer']")
         .map(::extractFunctionTypedef)
@@ -95,6 +93,8 @@ private fun Element.extractEntities(): Registry<OpenXRRegistryExt> {
 
     val extensions = e.query("extensions/extension")
         .map(::extractExtension)
+        .filter { it.supported != "disabled" }
+        .filter { it.name.original != "XR_OCULUS_audio_device_guid" } // TODO: requires full wchar_t support to work
         .associate()
 
     return Registry(
@@ -119,31 +119,11 @@ private fun XR_DEFINE_ATOM(value: String): Typedef {
     return Typedef(value, IdentifierType("uint64_t"))
 }
 
-private fun XR_DEFINE_OPAQUE_64(value: String): OpaqueDefine = XR_DEFINE_HANDLE(value)
+// OpenXR uses uint64_t for opaque handles on 32-bit platforms. However, Java 22+ supports
+// 64-bit platforms only, so we don't need to handle the "compatibility" here.
+private fun XR_DEFINE_HANDLE(name: String) = OpaqueHandleTypedef(name)
 
-private const val XR_PTR_SIZE: Int = 8
-
-private fun shouldOpaqueHandle(): Boolean = XR_PTR_SIZE == 8
-
-private fun XR_DEFINE_HANDLE(name: String): OpaqueDefine {
-    return if (shouldOpaqueHandle()) {
-        Either.Left(OpaqueHandleTypedef(name))
-    } else {
-        Either.Right(Typedef(name, IdentifierType("uint64_t")))
-    }
-}
-
-private fun liftLeft(es: Sequence<OpaqueDefine>): Sequence<OpaqueHandleTypedef> {
-    return if (shouldOpaqueHandle()) {
-        es.map { (it as Either.Left).value }
-    } else emptySequence()
-}
-
-private fun liftRight(es: Sequence<OpaqueDefine>): Sequence<Typedef> {
-    return if (!shouldOpaqueHandle()) {
-        es.map { (it as Either.Right).value }
-    } else emptySequence()
-}
+private fun XR_DEFINE_OPAQUE_64(name: String) = XR_DEFINE_HANDLE(name)
 
 /**
  * @param e in form `<type>typedef <type>TYPE</type> <name>NAME</name></type>`
@@ -163,7 +143,7 @@ private fun extractBasetype(e: Element): OpaqueDefine {
 
     return when (typeOrMacro) {
         XR_DEFINE_ATOM -> Either.Right(XR_DEFINE_ATOM(name))
-        XR_DEFINE_OPAQUE_64 -> XR_DEFINE_OPAQUE_64(name)
+        XR_DEFINE_OPAQUE_64 -> Either.Left(XR_DEFINE_OPAQUE_64(name))
         else -> {
             Either.Right(extractTrivialTypedef(e))
         }
@@ -172,9 +152,8 @@ private fun extractBasetype(e: Element): OpaqueDefine {
 
 /**
  * @param e in form `<type category="handle" parent="MAY_OR_MAY_NOT_SET"><type>XR_DEFINE_HANDLE</type>(<name>NAME</name>)</type>`
- * @return either [OpaqueHandleTypedef] or [Typedef], completely depends on the value of [XR_PTR_SIZE]
  */
-private fun extractHandle(e: Element): Either<OpaqueHandleTypedef, Typedef> {
+private fun extractHandle(e: Element): OpaqueHandleTypedef {
     val name = getName(e)
     return XR_DEFINE_HANDLE(name)
 }

@@ -1,0 +1,208 @@
+package club.doki7.openxr.enumtype;
+
+import club.doki7.ffm.annotation.*;
+
+/// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XrFaceExpressionFB.html"><code>XrFaceExpressionFB</code></a>
+public final class XrFaceExpressionFB {
+    /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XR_FACE_EXPRESSION_BROW_LOWERER_L_FB.html"><code>XR_FACE_EXPRESSION_BROW_LOWERER_L_FB</code></a>
+    public static final int BROW_LOWERER_L = 0x0;
+    /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XR_FACE_EXPRESSION_BROW_LOWERER_R_FB.html"><code>XR_FACE_EXPRESSION_BROW_LOWERER_R_FB</code></a>
+    public static final int BROW_LOWERER_R = 0x1;
+    /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XR_FACE_EXPRESSION_CHEEK_PUFF_L_FB.html"><code>XR_FACE_EXPRESSION_CHEEK_PUFF_L_FB</code></a>
+    public static final int CHEEK_PUFF_L = 0x2;
+    /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XR_FACE_EXPRESSION_CHEEK_PUFF_R_FB.html"><code>XR_FACE_EXPRESSION_CHEEK_PUFF_R_FB</code></a>
+    public static final int CHEEK_PUFF_R = 0x3;
+    /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XR_FACE_EXPRESSION_CHEEK_RAISER_L_FB.html"><code>XR_FACE_EXPRESSION_CHEEK_RAISER_L_FB</code></a>
+    public static final int CHEEK_RAISER_L = 0x4;
+    /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XR_FACE_EXPRESSION_CHEEK_RAISER_R_FB.html"><code>XR_FACE_EXPRESSION_CHEEK_RAISER_R_FB</code></a>
+    public static final int CHEEK_RAISER_R = 0x5;
+    /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XR_FACE_EXPRESSION_CHEEK_SUCK_L_FB.html"><code>XR_FACE_EXPRESSION_CHEEK_SUCK_L_FB</code></a>
+    public static final int CHEEK_SUCK_L = 0x6;
+    /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XR_FACE_EXPRESSION_CHEEK_SUCK_R_FB.html"><code>XR_FACE_EXPRESSION_CHEEK_SUCK_R_FB</code></a>
+    public static final int CHEEK_SUCK_R = 0x7;
+    /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XR_FACE_EXPRESSION_CHIN_RAISER_B_FB.html"><code>XR_FACE_EXPRESSION_CHIN_RAISER_B_FB</code></a>
+    public static final int CHIN_RAISER_B = 0x8;
+    /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XR_FACE_EXPRESSION_CHIN_RAISER_T_FB.html"><code>XR_FACE_EXPRESSION_CHIN_RAISER_T_FB</code></a>
+    public static final int CHIN_RAISER_T = 0x9;
+    /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XR_FACE_EXPRESSION_DIMPLER_L_FB.html"><code>XR_FACE_EXPRESSION_DIMPLER_L_FB</code></a>
+    public static final int DIMPLER_L = 0xa;
+    /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XR_FACE_EXPRESSION_DIMPLER_R_FB.html"><code>XR_FACE_EXPRESSION_DIMPLER_R_FB</code></a>
+    public static final int DIMPLER_R = 0xb;
+    /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XR_FACE_EXPRESSION_EYES_CLOSED_L_FB.html"><code>XR_FACE_EXPRESSION_EYES_CLOSED_L_FB</code></a>
+    public static final int EYES_CLOSED_L = 0xc;
+    /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XR_FACE_EXPRESSION_EYES_CLOSED_R_FB.html"><code>XR_FACE_EXPRESSION_EYES_CLOSED_R_FB</code></a>
+    public static final int EYES_CLOSED_R = 0xd;
+    /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XR_FACE_EXPRESSION_EYES_LOOK_DOWN_L_FB.html"><code>XR_FACE_EXPRESSION_EYES_LOOK_DOWN_L_FB</code></a>
+    public static final int EYES_LOOK_DOWN_L = 0xe;
+    /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XR_FACE_EXPRESSION_EYES_LOOK_DOWN_R_FB.html"><code>XR_FACE_EXPRESSION_EYES_LOOK_DOWN_R_FB</code></a>
+    public static final int EYES_LOOK_DOWN_R = 0xf;
+    /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XR_FACE_EXPRESSION_EYES_LOOK_LEFT_L_FB.html"><code>XR_FACE_EXPRESSION_EYES_LOOK_LEFT_L_FB</code></a>
+    public static final int EYES_LOOK_LEFT_L = 0x10;
+    /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XR_FACE_EXPRESSION_EYES_LOOK_LEFT_R_FB.html"><code>XR_FACE_EXPRESSION_EYES_LOOK_LEFT_R_FB</code></a>
+    public static final int EYES_LOOK_LEFT_R = 0x11;
+    /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XR_FACE_EXPRESSION_EYES_LOOK_RIGHT_L_FB.html"><code>XR_FACE_EXPRESSION_EYES_LOOK_RIGHT_L_FB</code></a>
+    public static final int EYES_LOOK_RIGHT_L = 0x12;
+    /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XR_FACE_EXPRESSION_EYES_LOOK_RIGHT_R_FB.html"><code>XR_FACE_EXPRESSION_EYES_LOOK_RIGHT_R_FB</code></a>
+    public static final int EYES_LOOK_RIGHT_R = 0x13;
+    /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XR_FACE_EXPRESSION_EYES_LOOK_UP_L_FB.html"><code>XR_FACE_EXPRESSION_EYES_LOOK_UP_L_FB</code></a>
+    public static final int EYES_LOOK_UP_L = 0x14;
+    /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XR_FACE_EXPRESSION_EYES_LOOK_UP_R_FB.html"><code>XR_FACE_EXPRESSION_EYES_LOOK_UP_R_FB</code></a>
+    public static final int EYES_LOOK_UP_R = 0x15;
+    /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XR_FACE_EXPRESSION_INNER_BROW_RAISER_L_FB.html"><code>XR_FACE_EXPRESSION_INNER_BROW_RAISER_L_FB</code></a>
+    public static final int INNER_BROW_RAISER_L = 0x16;
+    /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XR_FACE_EXPRESSION_INNER_BROW_RAISER_R_FB.html"><code>XR_FACE_EXPRESSION_INNER_BROW_RAISER_R_FB</code></a>
+    public static final int INNER_BROW_RAISER_R = 0x17;
+    /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XR_FACE_EXPRESSION_JAW_DROP_FB.html"><code>XR_FACE_EXPRESSION_JAW_DROP_FB</code></a>
+    public static final int JAW_DROP = 0x18;
+    /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XR_FACE_EXPRESSION_JAW_SIDEWAYS_LEFT_FB.html"><code>XR_FACE_EXPRESSION_JAW_SIDEWAYS_LEFT_FB</code></a>
+    public static final int JAW_SIDEWAYS_LEFT = 0x19;
+    /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XR_FACE_EXPRESSION_JAW_SIDEWAYS_RIGHT_FB.html"><code>XR_FACE_EXPRESSION_JAW_SIDEWAYS_RIGHT_FB</code></a>
+    public static final int JAW_SIDEWAYS_RIGHT = 0x1a;
+    /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XR_FACE_EXPRESSION_JAW_THRUST_FB.html"><code>XR_FACE_EXPRESSION_JAW_THRUST_FB</code></a>
+    public static final int JAW_THRUST = 0x1b;
+    /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XR_FACE_EXPRESSION_LID_TIGHTENER_L_FB.html"><code>XR_FACE_EXPRESSION_LID_TIGHTENER_L_FB</code></a>
+    public static final int LID_TIGHTENER_L = 0x1c;
+    /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XR_FACE_EXPRESSION_LID_TIGHTENER_R_FB.html"><code>XR_FACE_EXPRESSION_LID_TIGHTENER_R_FB</code></a>
+    public static final int LID_TIGHTENER_R = 0x1d;
+    /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XR_FACE_EXPRESSION_LIP_CORNER_DEPRESSOR_L_FB.html"><code>XR_FACE_EXPRESSION_LIP_CORNER_DEPRESSOR_L_FB</code></a>
+    public static final int LIP_CORNER_DEPRESSOR_L = 0x1e;
+    /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XR_FACE_EXPRESSION_LIP_CORNER_DEPRESSOR_R_FB.html"><code>XR_FACE_EXPRESSION_LIP_CORNER_DEPRESSOR_R_FB</code></a>
+    public static final int LIP_CORNER_DEPRESSOR_R = 0x1f;
+    /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XR_FACE_EXPRESSION_LIP_CORNER_PULLER_L_FB.html"><code>XR_FACE_EXPRESSION_LIP_CORNER_PULLER_L_FB</code></a>
+    public static final int LIP_CORNER_PULLER_L = 0x20;
+    /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XR_FACE_EXPRESSION_LIP_CORNER_PULLER_R_FB.html"><code>XR_FACE_EXPRESSION_LIP_CORNER_PULLER_R_FB</code></a>
+    public static final int LIP_CORNER_PULLER_R = 0x21;
+    /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XR_FACE_EXPRESSION_LIP_FUNNELER_LB_FB.html"><code>XR_FACE_EXPRESSION_LIP_FUNNELER_LB_FB</code></a>
+    public static final int LIP_FUNNELER_LB = 0x22;
+    /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XR_FACE_EXPRESSION_LIP_FUNNELER_LT_FB.html"><code>XR_FACE_EXPRESSION_LIP_FUNNELER_LT_FB</code></a>
+    public static final int LIP_FUNNELER_LT = 0x23;
+    /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XR_FACE_EXPRESSION_LIP_FUNNELER_RB_FB.html"><code>XR_FACE_EXPRESSION_LIP_FUNNELER_RB_FB</code></a>
+    public static final int LIP_FUNNELER_RB = 0x24;
+    /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XR_FACE_EXPRESSION_LIP_FUNNELER_RT_FB.html"><code>XR_FACE_EXPRESSION_LIP_FUNNELER_RT_FB</code></a>
+    public static final int LIP_FUNNELER_RT = 0x25;
+    /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XR_FACE_EXPRESSION_LIP_PRESSOR_L_FB.html"><code>XR_FACE_EXPRESSION_LIP_PRESSOR_L_FB</code></a>
+    public static final int LIP_PRESSOR_L = 0x26;
+    /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XR_FACE_EXPRESSION_LIP_PRESSOR_R_FB.html"><code>XR_FACE_EXPRESSION_LIP_PRESSOR_R_FB</code></a>
+    public static final int LIP_PRESSOR_R = 0x27;
+    /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XR_FACE_EXPRESSION_LIP_PUCKER_L_FB.html"><code>XR_FACE_EXPRESSION_LIP_PUCKER_L_FB</code></a>
+    public static final int LIP_PUCKER_L = 0x28;
+    /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XR_FACE_EXPRESSION_LIP_PUCKER_R_FB.html"><code>XR_FACE_EXPRESSION_LIP_PUCKER_R_FB</code></a>
+    public static final int LIP_PUCKER_R = 0x29;
+    /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XR_FACE_EXPRESSION_LIP_STRETCHER_L_FB.html"><code>XR_FACE_EXPRESSION_LIP_STRETCHER_L_FB</code></a>
+    public static final int LIP_STRETCHER_L = 0x2a;
+    /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XR_FACE_EXPRESSION_LIP_STRETCHER_R_FB.html"><code>XR_FACE_EXPRESSION_LIP_STRETCHER_R_FB</code></a>
+    public static final int LIP_STRETCHER_R = 0x2b;
+    /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XR_FACE_EXPRESSION_LIP_SUCK_LB_FB.html"><code>XR_FACE_EXPRESSION_LIP_SUCK_LB_FB</code></a>
+    public static final int LIP_SUCK_LB = 0x2c;
+    /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XR_FACE_EXPRESSION_LIP_SUCK_LT_FB.html"><code>XR_FACE_EXPRESSION_LIP_SUCK_LT_FB</code></a>
+    public static final int LIP_SUCK_LT = 0x2d;
+    /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XR_FACE_EXPRESSION_LIP_SUCK_RB_FB.html"><code>XR_FACE_EXPRESSION_LIP_SUCK_RB_FB</code></a>
+    public static final int LIP_SUCK_RB = 0x2e;
+    /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XR_FACE_EXPRESSION_LIP_SUCK_RT_FB.html"><code>XR_FACE_EXPRESSION_LIP_SUCK_RT_FB</code></a>
+    public static final int LIP_SUCK_RT = 0x2f;
+    /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XR_FACE_EXPRESSION_LIP_TIGHTENER_L_FB.html"><code>XR_FACE_EXPRESSION_LIP_TIGHTENER_L_FB</code></a>
+    public static final int LIP_TIGHTENER_L = 0x30;
+    /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XR_FACE_EXPRESSION_LIP_TIGHTENER_R_FB.html"><code>XR_FACE_EXPRESSION_LIP_TIGHTENER_R_FB</code></a>
+    public static final int LIP_TIGHTENER_R = 0x31;
+    /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XR_FACE_EXPRESSION_LIPS_TOWARD_FB.html"><code>XR_FACE_EXPRESSION_LIPS_TOWARD_FB</code></a>
+    public static final int LIPS_TOWARD = 0x32;
+    /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XR_FACE_EXPRESSION_LOWER_LIP_DEPRESSOR_L_FB.html"><code>XR_FACE_EXPRESSION_LOWER_LIP_DEPRESSOR_L_FB</code></a>
+    public static final int LOWER_LIP_DEPRESSOR_L = 0x33;
+    /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XR_FACE_EXPRESSION_LOWER_LIP_DEPRESSOR_R_FB.html"><code>XR_FACE_EXPRESSION_LOWER_LIP_DEPRESSOR_R_FB</code></a>
+    public static final int LOWER_LIP_DEPRESSOR_R = 0x34;
+    /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XR_FACE_EXPRESSION_MOUTH_LEFT_FB.html"><code>XR_FACE_EXPRESSION_MOUTH_LEFT_FB</code></a>
+    public static final int MOUTH_LEFT = 0x35;
+    /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XR_FACE_EXPRESSION_MOUTH_RIGHT_FB.html"><code>XR_FACE_EXPRESSION_MOUTH_RIGHT_FB</code></a>
+    public static final int MOUTH_RIGHT = 0x36;
+    /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XR_FACE_EXPRESSION_NOSE_WRINKLER_L_FB.html"><code>XR_FACE_EXPRESSION_NOSE_WRINKLER_L_FB</code></a>
+    public static final int NOSE_WRINKLER_L = 0x37;
+    /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XR_FACE_EXPRESSION_NOSE_WRINKLER_R_FB.html"><code>XR_FACE_EXPRESSION_NOSE_WRINKLER_R_FB</code></a>
+    public static final int NOSE_WRINKLER_R = 0x38;
+    /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XR_FACE_EXPRESSION_OUTER_BROW_RAISER_L_FB.html"><code>XR_FACE_EXPRESSION_OUTER_BROW_RAISER_L_FB</code></a>
+    public static final int OUTER_BROW_RAISER_L = 0x39;
+    /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XR_FACE_EXPRESSION_OUTER_BROW_RAISER_R_FB.html"><code>XR_FACE_EXPRESSION_OUTER_BROW_RAISER_R_FB</code></a>
+    public static final int OUTER_BROW_RAISER_R = 0x3a;
+    /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XR_FACE_EXPRESSION_UPPER_LID_RAISER_L_FB.html"><code>XR_FACE_EXPRESSION_UPPER_LID_RAISER_L_FB</code></a>
+    public static final int UPPER_LID_RAISER_L = 0x3b;
+    /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XR_FACE_EXPRESSION_UPPER_LID_RAISER_R_FB.html"><code>XR_FACE_EXPRESSION_UPPER_LID_RAISER_R_FB</code></a>
+    public static final int UPPER_LID_RAISER_R = 0x3c;
+    /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XR_FACE_EXPRESSION_UPPER_LIP_RAISER_L_FB.html"><code>XR_FACE_EXPRESSION_UPPER_LIP_RAISER_L_FB</code></a>
+    public static final int UPPER_LIP_RAISER_L = 0x3d;
+    /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XR_FACE_EXPRESSION_UPPER_LIP_RAISER_R_FB.html"><code>XR_FACE_EXPRESSION_UPPER_LIP_RAISER_R_FB</code></a>
+    public static final int UPPER_LIP_RAISER_R = 0x3e;
+    /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XR_FACE_EXPRESSION_COUNT_FB.html"><code>XR_FACE_EXPRESSION_COUNT_FB</code></a>
+    public static final int COUNT = 0x3f;
+
+    public static String explain(@EnumType(XrFaceExpressionFB.class) int value) {
+        return switch (value) {
+            case XrFaceExpressionFB.BROW_LOWERER_L -> "XR_FACE_EXPRESSION_BROW_LOWERER_L_FB";
+            case XrFaceExpressionFB.BROW_LOWERER_R -> "XR_FACE_EXPRESSION_BROW_LOWERER_R_FB";
+            case XrFaceExpressionFB.CHEEK_PUFF_L -> "XR_FACE_EXPRESSION_CHEEK_PUFF_L_FB";
+            case XrFaceExpressionFB.CHEEK_PUFF_R -> "XR_FACE_EXPRESSION_CHEEK_PUFF_R_FB";
+            case XrFaceExpressionFB.CHEEK_RAISER_L -> "XR_FACE_EXPRESSION_CHEEK_RAISER_L_FB";
+            case XrFaceExpressionFB.CHEEK_RAISER_R -> "XR_FACE_EXPRESSION_CHEEK_RAISER_R_FB";
+            case XrFaceExpressionFB.CHEEK_SUCK_L -> "XR_FACE_EXPRESSION_CHEEK_SUCK_L_FB";
+            case XrFaceExpressionFB.CHEEK_SUCK_R -> "XR_FACE_EXPRESSION_CHEEK_SUCK_R_FB";
+            case XrFaceExpressionFB.CHIN_RAISER_B -> "XR_FACE_EXPRESSION_CHIN_RAISER_B_FB";
+            case XrFaceExpressionFB.CHIN_RAISER_T -> "XR_FACE_EXPRESSION_CHIN_RAISER_T_FB";
+            case XrFaceExpressionFB.COUNT -> "XR_FACE_EXPRESSION_COUNT_FB";
+            case XrFaceExpressionFB.DIMPLER_L -> "XR_FACE_EXPRESSION_DIMPLER_L_FB";
+            case XrFaceExpressionFB.DIMPLER_R -> "XR_FACE_EXPRESSION_DIMPLER_R_FB";
+            case XrFaceExpressionFB.EYES_CLOSED_L -> "XR_FACE_EXPRESSION_EYES_CLOSED_L_FB";
+            case XrFaceExpressionFB.EYES_CLOSED_R -> "XR_FACE_EXPRESSION_EYES_CLOSED_R_FB";
+            case XrFaceExpressionFB.EYES_LOOK_DOWN_L -> "XR_FACE_EXPRESSION_EYES_LOOK_DOWN_L_FB";
+            case XrFaceExpressionFB.EYES_LOOK_DOWN_R -> "XR_FACE_EXPRESSION_EYES_LOOK_DOWN_R_FB";
+            case XrFaceExpressionFB.EYES_LOOK_LEFT_L -> "XR_FACE_EXPRESSION_EYES_LOOK_LEFT_L_FB";
+            case XrFaceExpressionFB.EYES_LOOK_LEFT_R -> "XR_FACE_EXPRESSION_EYES_LOOK_LEFT_R_FB";
+            case XrFaceExpressionFB.EYES_LOOK_RIGHT_L -> "XR_FACE_EXPRESSION_EYES_LOOK_RIGHT_L_FB";
+            case XrFaceExpressionFB.EYES_LOOK_RIGHT_R -> "XR_FACE_EXPRESSION_EYES_LOOK_RIGHT_R_FB";
+            case XrFaceExpressionFB.EYES_LOOK_UP_L -> "XR_FACE_EXPRESSION_EYES_LOOK_UP_L_FB";
+            case XrFaceExpressionFB.EYES_LOOK_UP_R -> "XR_FACE_EXPRESSION_EYES_LOOK_UP_R_FB";
+            case XrFaceExpressionFB.INNER_BROW_RAISER_L -> "XR_FACE_EXPRESSION_INNER_BROW_RAISER_L_FB";
+            case XrFaceExpressionFB.INNER_BROW_RAISER_R -> "XR_FACE_EXPRESSION_INNER_BROW_RAISER_R_FB";
+            case XrFaceExpressionFB.JAW_DROP -> "XR_FACE_EXPRESSION_JAW_DROP_FB";
+            case XrFaceExpressionFB.JAW_SIDEWAYS_LEFT -> "XR_FACE_EXPRESSION_JAW_SIDEWAYS_LEFT_FB";
+            case XrFaceExpressionFB.JAW_SIDEWAYS_RIGHT -> "XR_FACE_EXPRESSION_JAW_SIDEWAYS_RIGHT_FB";
+            case XrFaceExpressionFB.JAW_THRUST -> "XR_FACE_EXPRESSION_JAW_THRUST_FB";
+            case XrFaceExpressionFB.LID_TIGHTENER_L -> "XR_FACE_EXPRESSION_LID_TIGHTENER_L_FB";
+            case XrFaceExpressionFB.LID_TIGHTENER_R -> "XR_FACE_EXPRESSION_LID_TIGHTENER_R_FB";
+            case XrFaceExpressionFB.LIPS_TOWARD -> "XR_FACE_EXPRESSION_LIPS_TOWARD_FB";
+            case XrFaceExpressionFB.LIP_CORNER_DEPRESSOR_L -> "XR_FACE_EXPRESSION_LIP_CORNER_DEPRESSOR_L_FB";
+            case XrFaceExpressionFB.LIP_CORNER_DEPRESSOR_R -> "XR_FACE_EXPRESSION_LIP_CORNER_DEPRESSOR_R_FB";
+            case XrFaceExpressionFB.LIP_CORNER_PULLER_L -> "XR_FACE_EXPRESSION_LIP_CORNER_PULLER_L_FB";
+            case XrFaceExpressionFB.LIP_CORNER_PULLER_R -> "XR_FACE_EXPRESSION_LIP_CORNER_PULLER_R_FB";
+            case XrFaceExpressionFB.LIP_FUNNELER_LB -> "XR_FACE_EXPRESSION_LIP_FUNNELER_LB_FB";
+            case XrFaceExpressionFB.LIP_FUNNELER_LT -> "XR_FACE_EXPRESSION_LIP_FUNNELER_LT_FB";
+            case XrFaceExpressionFB.LIP_FUNNELER_RB -> "XR_FACE_EXPRESSION_LIP_FUNNELER_RB_FB";
+            case XrFaceExpressionFB.LIP_FUNNELER_RT -> "XR_FACE_EXPRESSION_LIP_FUNNELER_RT_FB";
+            case XrFaceExpressionFB.LIP_PRESSOR_L -> "XR_FACE_EXPRESSION_LIP_PRESSOR_L_FB";
+            case XrFaceExpressionFB.LIP_PRESSOR_R -> "XR_FACE_EXPRESSION_LIP_PRESSOR_R_FB";
+            case XrFaceExpressionFB.LIP_PUCKER_L -> "XR_FACE_EXPRESSION_LIP_PUCKER_L_FB";
+            case XrFaceExpressionFB.LIP_PUCKER_R -> "XR_FACE_EXPRESSION_LIP_PUCKER_R_FB";
+            case XrFaceExpressionFB.LIP_STRETCHER_L -> "XR_FACE_EXPRESSION_LIP_STRETCHER_L_FB";
+            case XrFaceExpressionFB.LIP_STRETCHER_R -> "XR_FACE_EXPRESSION_LIP_STRETCHER_R_FB";
+            case XrFaceExpressionFB.LIP_SUCK_LB -> "XR_FACE_EXPRESSION_LIP_SUCK_LB_FB";
+            case XrFaceExpressionFB.LIP_SUCK_LT -> "XR_FACE_EXPRESSION_LIP_SUCK_LT_FB";
+            case XrFaceExpressionFB.LIP_SUCK_RB -> "XR_FACE_EXPRESSION_LIP_SUCK_RB_FB";
+            case XrFaceExpressionFB.LIP_SUCK_RT -> "XR_FACE_EXPRESSION_LIP_SUCK_RT_FB";
+            case XrFaceExpressionFB.LIP_TIGHTENER_L -> "XR_FACE_EXPRESSION_LIP_TIGHTENER_L_FB";
+            case XrFaceExpressionFB.LIP_TIGHTENER_R -> "XR_FACE_EXPRESSION_LIP_TIGHTENER_R_FB";
+            case XrFaceExpressionFB.LOWER_LIP_DEPRESSOR_L -> "XR_FACE_EXPRESSION_LOWER_LIP_DEPRESSOR_L_FB";
+            case XrFaceExpressionFB.LOWER_LIP_DEPRESSOR_R -> "XR_FACE_EXPRESSION_LOWER_LIP_DEPRESSOR_R_FB";
+            case XrFaceExpressionFB.MOUTH_LEFT -> "XR_FACE_EXPRESSION_MOUTH_LEFT_FB";
+            case XrFaceExpressionFB.MOUTH_RIGHT -> "XR_FACE_EXPRESSION_MOUTH_RIGHT_FB";
+            case XrFaceExpressionFB.NOSE_WRINKLER_L -> "XR_FACE_EXPRESSION_NOSE_WRINKLER_L_FB";
+            case XrFaceExpressionFB.NOSE_WRINKLER_R -> "XR_FACE_EXPRESSION_NOSE_WRINKLER_R_FB";
+            case XrFaceExpressionFB.OUTER_BROW_RAISER_L -> "XR_FACE_EXPRESSION_OUTER_BROW_RAISER_L_FB";
+            case XrFaceExpressionFB.OUTER_BROW_RAISER_R -> "XR_FACE_EXPRESSION_OUTER_BROW_RAISER_R_FB";
+            case XrFaceExpressionFB.UPPER_LID_RAISER_L -> "XR_FACE_EXPRESSION_UPPER_LID_RAISER_L_FB";
+            case XrFaceExpressionFB.UPPER_LID_RAISER_R -> "XR_FACE_EXPRESSION_UPPER_LID_RAISER_R_FB";
+            case XrFaceExpressionFB.UPPER_LIP_RAISER_L -> "XR_FACE_EXPRESSION_UPPER_LIP_RAISER_L_FB";
+            case XrFaceExpressionFB.UPPER_LIP_RAISER_R -> "XR_FACE_EXPRESSION_UPPER_LIP_RAISER_R_FB";
+            default -> "UNKNOWN(" + value + ")";
+        };
+    }
+
+    /// Constructing this class is nonsense so the constructor is made private.
+    private XrFaceExpressionFB() {}
+}

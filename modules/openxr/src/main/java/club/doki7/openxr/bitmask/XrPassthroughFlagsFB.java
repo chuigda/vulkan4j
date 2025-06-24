@@ -1,0 +1,32 @@
+package club.doki7.openxr.bitmask;
+
+import club.doki7.ffm.annotation.*;
+
+import java.util.ArrayList;
+import java.util.List;
+
+/// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XrPassthroughFlagsFB.html"><code>XrPassthroughFlagsFB</code></a>
+public final class XrPassthroughFlagsFB {
+    /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XR_PASSTHROUGH_IS_RUNNING_AT_CREATION_BIT_FB.html"><code>XR_PASSTHROUGH_IS_RUNNING_AT_CREATION_BIT_FB</code></a>
+    public static final int IS_RUNNING_AT_CREATION = 0x0;
+    /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XR_PASSTHROUGH_LAYER_DEPTH_BIT_FB.html"><code>XR_PASSTHROUGH_LAYER_DEPTH_BIT_FB</code></a>
+    public static final int LAYER_DEPTH = 0x1;
+
+    public static String explain(@Bitmask(XrPassthroughFlagsFB.class) int flags) {
+        List<String> detectedFlagBits = new ArrayList<>();
+        if ((flags & IS_RUNNING_AT_CREATION) != 0) {
+            detectedFlagBits.add("XR_PASSTHROUGH_IS_RUNNING_AT_CREATION_BIT_FB");
+        }
+        if ((flags & LAYER_DEPTH) != 0) {
+            detectedFlagBits.add("XR_PASSTHROUGH_LAYER_DEPTH_BIT_FB");
+        }
+
+        if (detectedFlagBits.isEmpty()) {
+            return "NONE(" + Integer.toBinaryString(flags) + ")";
+        }
+        return String.join(" | ", detectedFlagBits);
+    }
+
+    /// Constructing this class is nonsense so the constructor is made private.
+    private XrPassthroughFlagsFB() {}
+}

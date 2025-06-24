@@ -4,6 +4,7 @@ import club.doki7.babel.extract.ensureLowerCamelCase
 import club.doki7.babel.extract.renameVariantOrBitflag
 import club.doki7.babel.registry.Entity
 import club.doki7.babel.registry.Registry
+import club.doki7.babel.registry.intern
 import java.io.File
 
 private const val renamedEntitiesFile = "codegen-v2/output/openxr-renamed-entities.csv"
@@ -33,6 +34,10 @@ internal fun Registry<OpenXRRegistryExt>.renameEntities() {
             variant.rename { renameVariantOrBitflag(this, enum.name.value) }
             putEntityIfNameReplaced(variant)
         }
+    }
+    enumerations["XrStructureType".intern()]!!.variants.forEach { variant ->
+        variant.rename { removePrefix("XR_TYPE_") }
+        putEntityIfNameReplaced(variant)
     }
 
     for (bitmask in bitmasks.values) {
