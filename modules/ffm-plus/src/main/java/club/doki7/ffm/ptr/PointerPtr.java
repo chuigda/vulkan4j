@@ -204,6 +204,27 @@ public record PointerPtr(@NotNull MemorySegment segment) implements IPointer, It
 
     public static @NotNull PointerPtr allocateStrings(
             @NotNull Arena arena,
+            @Nullable String string0,
+            @Nullable String @NotNull ...strings
+    ) {
+        PointerPtr ret = allocate(arena, strings.length + 1);
+        if (string0 != null) {
+            ret.write(0, arena.allocateFrom(string0));
+        } else {
+            ret.write(0, MemorySegment.NULL);
+        }
+        for (int i = 0; i < strings.length; i++) {
+            if (strings[i] != null) {
+                ret.write(i + 1, arena.allocateFrom(strings[i]));
+            } else {
+                ret.write(i + 1, MemorySegment.NULL);
+            }
+        }
+        return ret;
+    }
+
+    public static @NotNull PointerPtr allocateStrings(
+            @NotNull Arena arena,
             @Nullable String @NotNull [] strings
     ) {
         PointerPtr ret = allocate(arena, strings.length);
