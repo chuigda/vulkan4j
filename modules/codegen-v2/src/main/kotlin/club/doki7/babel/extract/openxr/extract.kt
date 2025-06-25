@@ -4,12 +4,17 @@ import club.doki7.babel.cdecl.*
 import club.doki7.babel.registry.*
 import club.doki7.babel.util.*
 import org.w3c.dom.Element
+import org.w3c.dom.Node
 import java.math.BigInteger
 import java.util.logging.Logger
 import kotlin.io.path.Path
 
 internal val log = Logger.getLogger("c.d.b.extract.openxr")
 private val inputDir = Path("codegen-v2/input")
+
+fun main() {
+    extractRawOpenXRRegistry()
+}
 
 fun extractRawOpenXRRegistry(): Registry<OpenXRRegistryExt> {
     val ret = inputDir.resolve("xr.xml")
@@ -31,6 +36,11 @@ private fun Element.extractEntities(): Registry<OpenXRRegistryExt> {
 
     val opaqueHandles: MutableMap<Identifier, OpaqueHandleTypedef> = mutableMapOf()
     val typedefs: MutableMap<Identifier, Typedef> = mutableMapOf()
+    val constants: MutableMap<Identifier, Constant> = mutableMapOf()
+
+    e.query("types/type[@category='define']")
+        .mapNotNull(::extractMacroConstant)
+        .associateByTo(constants, Entity::name)
 
     e.query("types/type[@category='basetype']")
         .map(::extractBasetype)
@@ -58,9 +68,9 @@ private fun Element.extractEntities(): Registry<OpenXRRegistryExt> {
             structs.putEntityIfAbsent(alias)
         }
 
-    val constants = e.query("enums[@name='API Constants']/enum")
+    e.query("enums[@name='API Constants']/enum")
         .map(::extractConstant)
-        .associate()
+        .associateByTo(constants, Entity::name)
 
     val enums = e.query("enums[@type='enum']")
         .map(::extractEnumeration)
@@ -124,6 +134,32 @@ private fun XR_DEFINE_ATOM(value: String): Typedef {
 private fun XR_DEFINE_HANDLE(name: String) = OpaqueHandleTypedef(name)
 
 private fun XR_DEFINE_OPAQUE_64(name: String) = XR_DEFINE_HANDLE(name)
+
+/**
+ * @param e in form `<type category="define">MACRO</type>`.
+ *          `#if`, `#define` and function `#define` are acceptable, but only constant `#define` will be extracted.
+ */
+private fun extractMacroConstant(e: Element): Constant? {
+    val defineText = e.firstChild!!.textContent.trim()
+    // `#if`
+    if (!defineText.startsWith("#define")) return null
+
+    val name = e.getFirstElement("name")!!
+    val definedAs = name.nextSibling!!.textContent.trim()
+
+    // function `#define`
+    if (definedAs.startsWith('(')) return null
+
+    val type = when {
+        definedAs.endsWith("LL") -> "int64_t"
+        definedAs.endsWith("u") -> "uint32_t"
+        // TODO: really?
+        definedAs.contains("sizeof") -> "uint64_t"
+        else -> "int32_t"
+    }
+
+    return Constant(name.textContent.trim(), IdentifierType(type), definedAs)
+}
 
 /**
  * @param e in form `<type>typedef <type>TYPE</type> <name>NAME</name></type>`
@@ -214,21 +250,68 @@ private fun extractMember(e: Element): Member {
     val values by e.attrs
     val optional by e.attrs
     val len by e.attrs
+    val type by e.children
     val name = getName(e)
-    val type = parseType(getElementTextWithoutName(e)).toType()
 
     // len is a comma separated (identifier | "null-terminated") list
     val lenList = commaList(len)
 
     return Member(
         name,
-        type,
+        extractType(type!!),
         values?.intern(),
         lenList,
         null,
         optional == "true",
         null
     )
+}
+
+// copy from vulkan
+private fun extractType(e: Element): Type {
+    val identifier = IdentifierType(e.textContent.trim().sanitizeFlagBits().intern())
+
+    // Array types, e.g.:
+    // `<type>float</type> <name>matrix</name>[3][4]`
+    // `<type>uint8_t</type> <name>deviceUUID</name>[<enum>VK_UUID_SIZE</enum>]`
+    if (e.parentNode is Element) {
+        val contents =
+            e.parentNode.childNodes
+                .toList()
+                .filter { it.nodeType == Node.TEXT_NODE || (it is Element && it.tagName == "enum") }
+                .joinToString("") { it.textContent }
+                .trim()
+
+        if (contents.startsWith('[') && contents.endsWith(']')) {
+            val lengths = contents
+                .removePrefix("[")
+                .removeSuffix("]")
+                .split("][")
+                .map { it.trim().intern() }
+                .reversed()
+
+            var array = ArrayType(identifier, lengths[0])
+            lengths.subList(1, lengths.size).forEach { array = ArrayType(array, it) }
+            return array
+        }
+    }
+
+    // Pointer types, e.g.:
+    // `<type>void</type>*`
+    // `const <type>char</type>* const*`
+    val next = e.nextSibling?.textContent?.trim()
+    if (next != null && next.startsWith("*")) {
+        val previous = e.previousSibling ?: e.parentNode
+        val const = previous?.textContent?.contains("const") ?: false
+        val pointer = PointerType(identifier, const)
+        return when {
+            next.startsWith("* const*") -> PointerType(pointer, true)
+            next.startsWith("**") -> PointerType(pointer, const)
+            else -> pointer
+        }
+    }
+
+    return identifier
 }
 
 private data class EnumLike(val name: String, val value: String)

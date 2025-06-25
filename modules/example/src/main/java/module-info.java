@@ -8,4 +8,6 @@ module example {
     requires java.desktop;
     requires club.doki7.stb;
     requires club.doki7.glfw;
+    requires club.doki7.openxr;
+    requires org.jetbrains.annotations;
 }
