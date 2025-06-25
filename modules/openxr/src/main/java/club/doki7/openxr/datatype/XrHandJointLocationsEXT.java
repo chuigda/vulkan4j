@@ -93,6 +93,11 @@ public record XrHandJointLocationsEXT(@NotNull MemorySegment segment) implements
             return new XrHandJointLocationsEXT(segment.asSlice(index * XrHandJointLocationsEXT.BYTES, XrHandJointLocationsEXT.BYTES));
         }
 
+        public XrHandJointLocationsEXT.Ptr at(long index, @NotNull Consumer<@NotNull XrHandJointLocationsEXT> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull XrHandJointLocationsEXT value) {
             MemorySegment s = segment.asSlice(index * XrHandJointLocationsEXT.BYTES, XrHandJointLocationsEXT.BYTES);
             s.copyFrom(value.segment);

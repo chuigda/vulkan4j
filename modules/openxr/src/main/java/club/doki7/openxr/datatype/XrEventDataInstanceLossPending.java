@@ -91,6 +91,11 @@ public record XrEventDataInstanceLossPending(@NotNull MemorySegment segment) imp
             return new XrEventDataInstanceLossPending(segment.asSlice(index * XrEventDataInstanceLossPending.BYTES, XrEventDataInstanceLossPending.BYTES));
         }
 
+        public XrEventDataInstanceLossPending.Ptr at(long index, @NotNull Consumer<@NotNull XrEventDataInstanceLossPending> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull XrEventDataInstanceLossPending value) {
             MemorySegment s = segment.asSlice(index * XrEventDataInstanceLossPending.BYTES, XrEventDataInstanceLossPending.BYTES);
             s.copyFrom(value.segment);

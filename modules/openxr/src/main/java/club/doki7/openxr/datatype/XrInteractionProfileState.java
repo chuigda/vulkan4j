@@ -91,6 +91,11 @@ public record XrInteractionProfileState(@NotNull MemorySegment segment) implemen
             return new XrInteractionProfileState(segment.asSlice(index * XrInteractionProfileState.BYTES, XrInteractionProfileState.BYTES));
         }
 
+        public XrInteractionProfileState.Ptr at(long index, @NotNull Consumer<@NotNull XrInteractionProfileState> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull XrInteractionProfileState value) {
             MemorySegment s = segment.asSlice(index * XrInteractionProfileState.BYTES, XrInteractionProfileState.BYTES);
             s.copyFrom(value.segment);

@@ -92,6 +92,11 @@ public record XrGraphicsRequirementsOpenGLESKHR(@NotNull MemorySegment segment) 
             return new XrGraphicsRequirementsOpenGLESKHR(segment.asSlice(index * XrGraphicsRequirementsOpenGLESKHR.BYTES, XrGraphicsRequirementsOpenGLESKHR.BYTES));
         }
 
+        public XrGraphicsRequirementsOpenGLESKHR.Ptr at(long index, @NotNull Consumer<@NotNull XrGraphicsRequirementsOpenGLESKHR> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull XrGraphicsRequirementsOpenGLESKHR value) {
             MemorySegment s = segment.asSlice(index * XrGraphicsRequirementsOpenGLESKHR.BYTES, XrGraphicsRequirementsOpenGLESKHR.BYTES);
             s.copyFrom(value.segment);

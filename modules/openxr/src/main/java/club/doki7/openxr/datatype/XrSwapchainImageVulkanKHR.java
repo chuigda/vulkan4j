@@ -91,6 +91,11 @@ public record XrSwapchainImageVulkanKHR(@NotNull MemorySegment segment) implemen
             return new XrSwapchainImageVulkanKHR(segment.asSlice(index * XrSwapchainImageVulkanKHR.BYTES, XrSwapchainImageVulkanKHR.BYTES));
         }
 
+        public XrSwapchainImageVulkanKHR.Ptr at(long index, @NotNull Consumer<@NotNull XrSwapchainImageVulkanKHR> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull XrSwapchainImageVulkanKHR value) {
             MemorySegment s = segment.asSlice(index * XrSwapchainImageVulkanKHR.BYTES, XrSwapchainImageVulkanKHR.BYTES);
             s.copyFrom(value.segment);

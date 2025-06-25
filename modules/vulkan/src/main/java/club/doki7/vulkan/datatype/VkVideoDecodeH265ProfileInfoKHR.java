@@ -87,6 +87,11 @@ public record VkVideoDecodeH265ProfileInfoKHR(@NotNull MemorySegment segment) im
             return new VkVideoDecodeH265ProfileInfoKHR(segment.asSlice(index * VkVideoDecodeH265ProfileInfoKHR.BYTES, VkVideoDecodeH265ProfileInfoKHR.BYTES));
         }
 
+        public VkVideoDecodeH265ProfileInfoKHR.Ptr at(long index, @NotNull Consumer<@NotNull VkVideoDecodeH265ProfileInfoKHR> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkVideoDecodeH265ProfileInfoKHR value) {
             MemorySegment s = segment.asSlice(index * VkVideoDecodeH265ProfileInfoKHR.BYTES, VkVideoDecodeH265ProfileInfoKHR.BYTES);
             s.copyFrom(value.segment);

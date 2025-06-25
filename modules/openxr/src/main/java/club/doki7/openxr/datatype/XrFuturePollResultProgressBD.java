@@ -92,6 +92,11 @@ public record XrFuturePollResultProgressBD(@NotNull MemorySegment segment) imple
             return new XrFuturePollResultProgressBD(segment.asSlice(index * XrFuturePollResultProgressBD.BYTES, XrFuturePollResultProgressBD.BYTES));
         }
 
+        public XrFuturePollResultProgressBD.Ptr at(long index, @NotNull Consumer<@NotNull XrFuturePollResultProgressBD> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull XrFuturePollResultProgressBD value) {
             MemorySegment s = segment.asSlice(index * XrFuturePollResultProgressBD.BYTES, XrFuturePollResultProgressBD.BYTES);
             s.copyFrom(value.segment);

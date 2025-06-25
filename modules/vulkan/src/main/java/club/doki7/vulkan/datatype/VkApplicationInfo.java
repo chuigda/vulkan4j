@@ -91,6 +91,11 @@ public record VkApplicationInfo(@NotNull MemorySegment segment) implements IVkAp
             return new VkApplicationInfo(segment.asSlice(index * VkApplicationInfo.BYTES, VkApplicationInfo.BYTES));
         }
 
+        public VkApplicationInfo.Ptr at(long index, @NotNull Consumer<@NotNull VkApplicationInfo> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkApplicationInfo value) {
             MemorySegment s = segment.asSlice(index * VkApplicationInfo.BYTES, VkApplicationInfo.BYTES);
             s.copyFrom(value.segment);

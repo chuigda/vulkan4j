@@ -81,6 +81,11 @@ public record VkSparseImageMemoryBind(@NotNull MemorySegment segment) implements
             return new VkSparseImageMemoryBind(segment.asSlice(index * VkSparseImageMemoryBind.BYTES, VkSparseImageMemoryBind.BYTES));
         }
 
+        public VkSparseImageMemoryBind.Ptr at(long index, @NotNull Consumer<@NotNull VkSparseImageMemoryBind> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkSparseImageMemoryBind value) {
             MemorySegment s = segment.asSlice(index * VkSparseImageMemoryBind.BYTES, VkSparseImageMemoryBind.BYTES);
             s.copyFrom(value.segment);

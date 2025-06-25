@@ -92,6 +92,11 @@ public record XrActiveActionSetPrioritiesEXT(@NotNull MemorySegment segment) imp
             return new XrActiveActionSetPrioritiesEXT(segment.asSlice(index * XrActiveActionSetPrioritiesEXT.BYTES, XrActiveActionSetPrioritiesEXT.BYTES));
         }
 
+        public XrActiveActionSetPrioritiesEXT.Ptr at(long index, @NotNull Consumer<@NotNull XrActiveActionSetPrioritiesEXT> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull XrActiveActionSetPrioritiesEXT value) {
             MemorySegment s = segment.asSlice(index * XrActiveActionSetPrioritiesEXT.BYTES, XrActiveActionSetPrioritiesEXT.BYTES);
             s.copyFrom(value.segment);

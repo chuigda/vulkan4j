@@ -92,6 +92,11 @@ public record XrEventDataSceneCaptureCompleteFB(@NotNull MemorySegment segment) 
             return new XrEventDataSceneCaptureCompleteFB(segment.asSlice(index * XrEventDataSceneCaptureCompleteFB.BYTES, XrEventDataSceneCaptureCompleteFB.BYTES));
         }
 
+        public XrEventDataSceneCaptureCompleteFB.Ptr at(long index, @NotNull Consumer<@NotNull XrEventDataSceneCaptureCompleteFB> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull XrEventDataSceneCaptureCompleteFB value) {
             MemorySegment s = segment.asSlice(index * XrEventDataSceneCaptureCompleteFB.BYTES, XrEventDataSceneCaptureCompleteFB.BYTES);
             s.copyFrom(value.segment);

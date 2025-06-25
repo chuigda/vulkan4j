@@ -88,6 +88,11 @@ public record VkAccelerationStructureCreateInfoNV(@NotNull MemorySegment segment
             return new VkAccelerationStructureCreateInfoNV(segment.asSlice(index * VkAccelerationStructureCreateInfoNV.BYTES, VkAccelerationStructureCreateInfoNV.BYTES));
         }
 
+        public VkAccelerationStructureCreateInfoNV.Ptr at(long index, @NotNull Consumer<@NotNull VkAccelerationStructureCreateInfoNV> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkAccelerationStructureCreateInfoNV value) {
             MemorySegment s = segment.asSlice(index * VkAccelerationStructureCreateInfoNV.BYTES, VkAccelerationStructureCreateInfoNV.BYTES);
             s.copyFrom(value.segment);

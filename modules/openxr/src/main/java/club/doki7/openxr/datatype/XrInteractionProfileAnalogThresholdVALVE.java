@@ -96,6 +96,11 @@ public record XrInteractionProfileAnalogThresholdVALVE(@NotNull MemorySegment se
             return new XrInteractionProfileAnalogThresholdVALVE(segment.asSlice(index * XrInteractionProfileAnalogThresholdVALVE.BYTES, XrInteractionProfileAnalogThresholdVALVE.BYTES));
         }
 
+        public XrInteractionProfileAnalogThresholdVALVE.Ptr at(long index, @NotNull Consumer<@NotNull XrInteractionProfileAnalogThresholdVALVE> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull XrInteractionProfileAnalogThresholdVALVE value) {
             MemorySegment s = segment.asSlice(index * XrInteractionProfileAnalogThresholdVALVE.BYTES, XrInteractionProfileAnalogThresholdVALVE.BYTES);
             s.copyFrom(value.segment);

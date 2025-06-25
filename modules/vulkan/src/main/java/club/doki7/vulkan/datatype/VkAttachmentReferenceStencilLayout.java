@@ -87,6 +87,11 @@ public record VkAttachmentReferenceStencilLayout(@NotNull MemorySegment segment)
             return new VkAttachmentReferenceStencilLayout(segment.asSlice(index * VkAttachmentReferenceStencilLayout.BYTES, VkAttachmentReferenceStencilLayout.BYTES));
         }
 
+        public VkAttachmentReferenceStencilLayout.Ptr at(long index, @NotNull Consumer<@NotNull VkAttachmentReferenceStencilLayout> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkAttachmentReferenceStencilLayout value) {
             MemorySegment s = segment.asSlice(index * VkAttachmentReferenceStencilLayout.BYTES, VkAttachmentReferenceStencilLayout.BYTES);
             s.copyFrom(value.segment);

@@ -78,6 +78,11 @@ public record VkSparseImageOpaqueMemoryBindInfo(@NotNull MemorySegment segment) 
             return new VkSparseImageOpaqueMemoryBindInfo(segment.asSlice(index * VkSparseImageOpaqueMemoryBindInfo.BYTES, VkSparseImageOpaqueMemoryBindInfo.BYTES));
         }
 
+        public VkSparseImageOpaqueMemoryBindInfo.Ptr at(long index, @NotNull Consumer<@NotNull VkSparseImageOpaqueMemoryBindInfo> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkSparseImageOpaqueMemoryBindInfo value) {
             MemorySegment s = segment.asSlice(index * VkSparseImageOpaqueMemoryBindInfo.BYTES, VkSparseImageOpaqueMemoryBindInfo.BYTES);
             s.copyFrom(value.segment);

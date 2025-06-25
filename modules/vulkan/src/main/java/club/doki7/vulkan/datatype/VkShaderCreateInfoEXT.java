@@ -98,6 +98,11 @@ public record VkShaderCreateInfoEXT(@NotNull MemorySegment segment) implements I
             return new VkShaderCreateInfoEXT(segment.asSlice(index * VkShaderCreateInfoEXT.BYTES, VkShaderCreateInfoEXT.BYTES));
         }
 
+        public VkShaderCreateInfoEXT.Ptr at(long index, @NotNull Consumer<@NotNull VkShaderCreateInfoEXT> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkShaderCreateInfoEXT value) {
             MemorySegment s = segment.asSlice(index * VkShaderCreateInfoEXT.BYTES, VkShaderCreateInfoEXT.BYTES);
             s.copyFrom(value.segment);

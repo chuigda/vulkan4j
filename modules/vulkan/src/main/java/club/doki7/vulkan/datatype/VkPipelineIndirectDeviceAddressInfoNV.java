@@ -88,6 +88,11 @@ public record VkPipelineIndirectDeviceAddressInfoNV(@NotNull MemorySegment segme
             return new VkPipelineIndirectDeviceAddressInfoNV(segment.asSlice(index * VkPipelineIndirectDeviceAddressInfoNV.BYTES, VkPipelineIndirectDeviceAddressInfoNV.BYTES));
         }
 
+        public VkPipelineIndirectDeviceAddressInfoNV.Ptr at(long index, @NotNull Consumer<@NotNull VkPipelineIndirectDeviceAddressInfoNV> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkPipelineIndirectDeviceAddressInfoNV value) {
             MemorySegment s = segment.asSlice(index * VkPipelineIndirectDeviceAddressInfoNV.BYTES, VkPipelineIndirectDeviceAddressInfoNV.BYTES);
             s.copyFrom(value.segment);

@@ -91,6 +91,11 @@ public record XrSystemFoveatedRenderingPropertiesVARJO(@NotNull MemorySegment se
             return new XrSystemFoveatedRenderingPropertiesVARJO(segment.asSlice(index * XrSystemFoveatedRenderingPropertiesVARJO.BYTES, XrSystemFoveatedRenderingPropertiesVARJO.BYTES));
         }
 
+        public XrSystemFoveatedRenderingPropertiesVARJO.Ptr at(long index, @NotNull Consumer<@NotNull XrSystemFoveatedRenderingPropertiesVARJO> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull XrSystemFoveatedRenderingPropertiesVARJO value) {
             MemorySegment s = segment.asSlice(index * XrSystemFoveatedRenderingPropertiesVARJO.BYTES, XrSystemFoveatedRenderingPropertiesVARJO.BYTES);
             s.copyFrom(value.segment);

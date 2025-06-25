@@ -87,6 +87,11 @@ public record VkPhysicalDeviceRayTracingInvocationReorderPropertiesNV(@NotNull M
             return new VkPhysicalDeviceRayTracingInvocationReorderPropertiesNV(segment.asSlice(index * VkPhysicalDeviceRayTracingInvocationReorderPropertiesNV.BYTES, VkPhysicalDeviceRayTracingInvocationReorderPropertiesNV.BYTES));
         }
 
+        public VkPhysicalDeviceRayTracingInvocationReorderPropertiesNV.Ptr at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceRayTracingInvocationReorderPropertiesNV> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkPhysicalDeviceRayTracingInvocationReorderPropertiesNV value) {
             MemorySegment s = segment.asSlice(index * VkPhysicalDeviceRayTracingInvocationReorderPropertiesNV.BYTES, VkPhysicalDeviceRayTracingInvocationReorderPropertiesNV.BYTES);
             s.copyFrom(value.segment);

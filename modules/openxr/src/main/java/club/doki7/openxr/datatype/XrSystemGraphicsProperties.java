@@ -82,6 +82,11 @@ public record XrSystemGraphicsProperties(@NotNull MemorySegment segment) impleme
             return new XrSystemGraphicsProperties(segment.asSlice(index * XrSystemGraphicsProperties.BYTES, XrSystemGraphicsProperties.BYTES));
         }
 
+        public XrSystemGraphicsProperties.Ptr at(long index, @NotNull Consumer<@NotNull XrSystemGraphicsProperties> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull XrSystemGraphicsProperties value) {
             MemorySegment s = segment.asSlice(index * XrSystemGraphicsProperties.BYTES, XrSystemGraphicsProperties.BYTES);
             s.copyFrom(value.segment);

@@ -91,6 +91,11 @@ public record XrSpatialFilterTrackingStateEXT(@NotNull MemorySegment segment) im
             return new XrSpatialFilterTrackingStateEXT(segment.asSlice(index * XrSpatialFilterTrackingStateEXT.BYTES, XrSpatialFilterTrackingStateEXT.BYTES));
         }
 
+        public XrSpatialFilterTrackingStateEXT.Ptr at(long index, @NotNull Consumer<@NotNull XrSpatialFilterTrackingStateEXT> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull XrSpatialFilterTrackingStateEXT value) {
             MemorySegment s = segment.asSlice(index * XrSpatialFilterTrackingStateEXT.BYTES, XrSpatialFilterTrackingStateEXT.BYTES);
             s.copyFrom(value.segment);

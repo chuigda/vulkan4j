@@ -90,6 +90,11 @@ public record XrMarkerDetectorSnapshotInfoML(@NotNull MemorySegment segment) imp
             return new XrMarkerDetectorSnapshotInfoML(segment.asSlice(index * XrMarkerDetectorSnapshotInfoML.BYTES, XrMarkerDetectorSnapshotInfoML.BYTES));
         }
 
+        public XrMarkerDetectorSnapshotInfoML.Ptr at(long index, @NotNull Consumer<@NotNull XrMarkerDetectorSnapshotInfoML> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull XrMarkerDetectorSnapshotInfoML value) {
             MemorySegment s = segment.asSlice(index * XrMarkerDetectorSnapshotInfoML.BYTES, XrMarkerDetectorSnapshotInfoML.BYTES);
             s.copyFrom(value.segment);

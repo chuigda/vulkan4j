@@ -78,6 +78,11 @@ public record VkClearAttachment(@NotNull MemorySegment segment) implements IVkCl
             return new VkClearAttachment(segment.asSlice(index * VkClearAttachment.BYTES, VkClearAttachment.BYTES));
         }
 
+        public VkClearAttachment.Ptr at(long index, @NotNull Consumer<@NotNull VkClearAttachment> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkClearAttachment value) {
             MemorySegment s = segment.asSlice(index * VkClearAttachment.BYTES, VkClearAttachment.BYTES);
             s.copyFrom(value.segment);

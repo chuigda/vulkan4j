@@ -88,6 +88,11 @@ public record VkAntiLagPresentationInfoAMD(@NotNull MemorySegment segment) imple
             return new VkAntiLagPresentationInfoAMD(segment.asSlice(index * VkAntiLagPresentationInfoAMD.BYTES, VkAntiLagPresentationInfoAMD.BYTES));
         }
 
+        public VkAntiLagPresentationInfoAMD.Ptr at(long index, @NotNull Consumer<@NotNull VkAntiLagPresentationInfoAMD> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkAntiLagPresentationInfoAMD value) {
             MemorySegment s = segment.asSlice(index * VkAntiLagPresentationInfoAMD.BYTES, VkAntiLagPresentationInfoAMD.BYTES);
             s.copyFrom(value.segment);

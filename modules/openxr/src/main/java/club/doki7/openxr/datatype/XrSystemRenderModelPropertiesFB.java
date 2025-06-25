@@ -91,6 +91,11 @@ public record XrSystemRenderModelPropertiesFB(@NotNull MemorySegment segment) im
             return new XrSystemRenderModelPropertiesFB(segment.asSlice(index * XrSystemRenderModelPropertiesFB.BYTES, XrSystemRenderModelPropertiesFB.BYTES));
         }
 
+        public XrSystemRenderModelPropertiesFB.Ptr at(long index, @NotNull Consumer<@NotNull XrSystemRenderModelPropertiesFB> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull XrSystemRenderModelPropertiesFB value) {
             MemorySegment s = segment.asSlice(index * XrSystemRenderModelPropertiesFB.BYTES, XrSystemRenderModelPropertiesFB.BYTES);
             s.copyFrom(value.segment);

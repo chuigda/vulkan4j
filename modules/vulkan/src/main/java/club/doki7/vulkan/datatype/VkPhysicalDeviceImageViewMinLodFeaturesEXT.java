@@ -87,6 +87,11 @@ public record VkPhysicalDeviceImageViewMinLodFeaturesEXT(@NotNull MemorySegment 
             return new VkPhysicalDeviceImageViewMinLodFeaturesEXT(segment.asSlice(index * VkPhysicalDeviceImageViewMinLodFeaturesEXT.BYTES, VkPhysicalDeviceImageViewMinLodFeaturesEXT.BYTES));
         }
 
+        public VkPhysicalDeviceImageViewMinLodFeaturesEXT.Ptr at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceImageViewMinLodFeaturesEXT> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkPhysicalDeviceImageViewMinLodFeaturesEXT value) {
             MemorySegment s = segment.asSlice(index * VkPhysicalDeviceImageViewMinLodFeaturesEXT.BYTES, VkPhysicalDeviceImageViewMinLodFeaturesEXT.BYTES);
             s.copyFrom(value.segment);

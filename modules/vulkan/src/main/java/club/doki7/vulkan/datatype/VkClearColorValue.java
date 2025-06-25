@@ -78,6 +78,11 @@ public record VkClearColorValue(@NotNull MemorySegment segment) implements IVkCl
             return new VkClearColorValue(segment.asSlice(index * VkClearColorValue.BYTES, VkClearColorValue.BYTES));
         }
 
+        public VkClearColorValue.Ptr at(long index, @NotNull Consumer<@NotNull VkClearColorValue> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkClearColorValue value) {
             MemorySegment s = segment.asSlice(index * VkClearColorValue.BYTES, VkClearColorValue.BYTES);
             s.copyFrom(value.segment);
@@ -175,6 +180,12 @@ public record VkClearColorValue(@NotNull MemorySegment segment) implements IVkCl
         return new FloatPtr(float32Raw());
     }
 
+    public VkClearColorValue float32(@NotNull Consumer<FloatPtr> consumer) {
+        FloatPtr ptr = float32();
+        consumer.accept(ptr);
+        return this;
+    }
+
     public VkClearColorValue float32(FloatPtr value) {
         MemorySegment s = float32Raw();
         s.copyFrom(value.segment());
@@ -189,6 +200,12 @@ public record VkClearColorValue(@NotNull MemorySegment segment) implements IVkCl
         return new IntPtr(int32Raw());
     }
 
+    public VkClearColorValue int32(@NotNull Consumer<IntPtr> consumer) {
+        IntPtr ptr = int32();
+        consumer.accept(ptr);
+        return this;
+    }
+
     public VkClearColorValue int32(IntPtr value) {
         MemorySegment s = int32Raw();
         s.copyFrom(value.segment());
@@ -201,6 +218,12 @@ public record VkClearColorValue(@NotNull MemorySegment segment) implements IVkCl
 
     public @Unsigned IntPtr uint32() {
         return new IntPtr(uint32Raw());
+    }
+
+    public VkClearColorValue uint32(@NotNull Consumer<IntPtr> consumer) {
+        @Unsigned IntPtr ptr = uint32();
+        consumer.accept(ptr);
+        return this;
     }
 
     public VkClearColorValue uint32(@Unsigned IntPtr value) {

@@ -11,11 +11,12 @@ import java.lang.foreign.AddressLayout;
 import java.lang.foreign.Arena;
 import java.lang.foreign.MemorySegment;
 import java.lang.foreign.ValueLayout;
+import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
 import java.util.NoSuchElementException;
 
-/// Reperesents a pointer to pointer(s) in native memory.
+/// Represents a pointer to pointer(s) in native memory.
 ///
 /// The property {@link #segment()} should always be not-null
 /// ({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to
@@ -142,6 +143,36 @@ public record PointerPtr(@NotNull MemorySegment segment) implements IPointer, It
         return new PointerPtr(arena.allocate(ValueLayout.ADDRESS, size));
     }
 
+    public static @NotNull PointerPtr allocate(
+            @NotNull Arena arena,
+            Collection<@Nullable IPointer> pointers
+    ) {
+        PointerPtr ret = allocate(arena, pointers.size());
+        int i = 0;
+        for (IPointer pointer : pointers) {
+            if (pointer != null) {
+                ret.write(i, pointer.segment());
+            } else {
+                ret.write(i, MemorySegment.NULL);
+            }
+            i += 1;
+        }
+        return ret;
+    }
+
+    public static @NotNull PointerPtr allocateR(
+            @NotNull Arena arena,
+            Collection<@NotNull MemorySegment> segments
+    ) {
+        PointerPtr ret = allocate(arena, segments.size());
+        int i = 0;
+        for (MemorySegment segment : segments) {
+            ret.write(i, segment);
+            i += 1;
+        }
+        return ret;
+    }
+
     public static @NotNull PointerPtr allocateV(
             @NotNull Arena arena,
             @Nullable IPointer pointer0,
@@ -167,6 +198,59 @@ public record PointerPtr(@NotNull MemorySegment segment) implements IPointer, It
         ret.write(segment0);
         for (int i = 0; i < segments.length; i++) {
             ret.write(i + 1, segments[i]);
+        }
+        return ret;
+    }
+
+    public static @NotNull PointerPtr allocateStrings(
+            @NotNull Arena arena,
+            @Nullable String string0,
+            @Nullable String @NotNull ...strings
+    ) {
+        PointerPtr ret = allocate(arena, strings.length + 1);
+        if (string0 != null) {
+            ret.write(0, arena.allocateFrom(string0));
+        } else {
+            ret.write(0, MemorySegment.NULL);
+        }
+        for (int i = 0; i < strings.length; i++) {
+            if (strings[i] != null) {
+                ret.write(i + 1, arena.allocateFrom(strings[i]));
+            } else {
+                ret.write(i + 1, MemorySegment.NULL);
+            }
+        }
+        return ret;
+    }
+
+    public static @NotNull PointerPtr allocateStrings(
+            @NotNull Arena arena,
+            @Nullable String @NotNull [] strings
+    ) {
+        PointerPtr ret = allocate(arena, strings.length);
+        for (int i = 0; i < strings.length; i++) {
+            if (strings[i] != null) {
+                ret.write(i, arena.allocateFrom(strings[i]));
+            } else {
+                ret.write(i, MemorySegment.NULL);
+            }
+        }
+        return ret;
+    }
+
+    public static @NotNull PointerPtr allocateStrings(
+            @NotNull Arena arena,
+            @NotNull Collection<@Nullable String> strings
+    ) {
+        PointerPtr ret = allocate(arena, strings.size());
+        int i = 0;
+        for (String string : strings) {
+            if (string != null) {
+                ret.write(i, arena.allocateFrom(string));
+            } else {
+                ret.write(i, MemorySegment.NULL);
+            }
+            i += 1;
         }
         return ret;
     }

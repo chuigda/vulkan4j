@@ -87,6 +87,11 @@ public record VkMemoryHostPointerPropertiesEXT(@NotNull MemorySegment segment) i
             return new VkMemoryHostPointerPropertiesEXT(segment.asSlice(index * VkMemoryHostPointerPropertiesEXT.BYTES, VkMemoryHostPointerPropertiesEXT.BYTES));
         }
 
+        public VkMemoryHostPointerPropertiesEXT.Ptr at(long index, @NotNull Consumer<@NotNull VkMemoryHostPointerPropertiesEXT> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkMemoryHostPointerPropertiesEXT value) {
             MemorySegment s = segment.asSlice(index * VkMemoryHostPointerPropertiesEXT.BYTES, VkMemoryHostPointerPropertiesEXT.BYTES);
             s.copyFrom(value.segment);

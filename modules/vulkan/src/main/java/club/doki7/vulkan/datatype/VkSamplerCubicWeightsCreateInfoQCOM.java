@@ -87,6 +87,11 @@ public record VkSamplerCubicWeightsCreateInfoQCOM(@NotNull MemorySegment segment
             return new VkSamplerCubicWeightsCreateInfoQCOM(segment.asSlice(index * VkSamplerCubicWeightsCreateInfoQCOM.BYTES, VkSamplerCubicWeightsCreateInfoQCOM.BYTES));
         }
 
+        public VkSamplerCubicWeightsCreateInfoQCOM.Ptr at(long index, @NotNull Consumer<@NotNull VkSamplerCubicWeightsCreateInfoQCOM> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkSamplerCubicWeightsCreateInfoQCOM value) {
             MemorySegment s = segment.asSlice(index * VkSamplerCubicWeightsCreateInfoQCOM.BYTES, VkSamplerCubicWeightsCreateInfoQCOM.BYTES);
             s.copyFrom(value.segment);

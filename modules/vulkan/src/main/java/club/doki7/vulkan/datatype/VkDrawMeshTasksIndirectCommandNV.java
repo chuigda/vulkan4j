@@ -77,6 +77,11 @@ public record VkDrawMeshTasksIndirectCommandNV(@NotNull MemorySegment segment) i
             return new VkDrawMeshTasksIndirectCommandNV(segment.asSlice(index * VkDrawMeshTasksIndirectCommandNV.BYTES, VkDrawMeshTasksIndirectCommandNV.BYTES));
         }
 
+        public VkDrawMeshTasksIndirectCommandNV.Ptr at(long index, @NotNull Consumer<@NotNull VkDrawMeshTasksIndirectCommandNV> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkDrawMeshTasksIndirectCommandNV value) {
             MemorySegment s = segment.asSlice(index * VkDrawMeshTasksIndirectCommandNV.BYTES, VkDrawMeshTasksIndirectCommandNV.BYTES);
             s.copyFrom(value.segment);

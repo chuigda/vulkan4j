@@ -88,6 +88,11 @@ public record VkMemoryAllocateFlagsInfo(@NotNull MemorySegment segment) implemen
             return new VkMemoryAllocateFlagsInfo(segment.asSlice(index * VkMemoryAllocateFlagsInfo.BYTES, VkMemoryAllocateFlagsInfo.BYTES));
         }
 
+        public VkMemoryAllocateFlagsInfo.Ptr at(long index, @NotNull Consumer<@NotNull VkMemoryAllocateFlagsInfo> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkMemoryAllocateFlagsInfo value) {
             MemorySegment s = segment.asSlice(index * VkMemoryAllocateFlagsInfo.BYTES, VkMemoryAllocateFlagsInfo.BYTES);
             s.copyFrom(value.segment);

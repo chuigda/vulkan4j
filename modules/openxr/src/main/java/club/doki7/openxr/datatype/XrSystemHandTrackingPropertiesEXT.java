@@ -91,6 +91,11 @@ public record XrSystemHandTrackingPropertiesEXT(@NotNull MemorySegment segment) 
             return new XrSystemHandTrackingPropertiesEXT(segment.asSlice(index * XrSystemHandTrackingPropertiesEXT.BYTES, XrSystemHandTrackingPropertiesEXT.BYTES));
         }
 
+        public XrSystemHandTrackingPropertiesEXT.Ptr at(long index, @NotNull Consumer<@NotNull XrSystemHandTrackingPropertiesEXT> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull XrSystemHandTrackingPropertiesEXT value) {
             MemorySegment s = segment.asSlice(index * XrSystemHandTrackingPropertiesEXT.BYTES, XrSystemHandTrackingPropertiesEXT.BYTES);
             s.copyFrom(value.segment);

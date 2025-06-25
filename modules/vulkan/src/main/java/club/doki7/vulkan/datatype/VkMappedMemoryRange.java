@@ -89,6 +89,11 @@ public record VkMappedMemoryRange(@NotNull MemorySegment segment) implements IVk
             return new VkMappedMemoryRange(segment.asSlice(index * VkMappedMemoryRange.BYTES, VkMappedMemoryRange.BYTES));
         }
 
+        public VkMappedMemoryRange.Ptr at(long index, @NotNull Consumer<@NotNull VkMappedMemoryRange> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkMappedMemoryRange value) {
             MemorySegment s = segment.asSlice(index * VkMappedMemoryRange.BYTES, VkMappedMemoryRange.BYTES);
             s.copyFrom(value.segment);

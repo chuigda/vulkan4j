@@ -89,6 +89,11 @@ public record VkExternalFenceProperties(@NotNull MemorySegment segment) implemen
             return new VkExternalFenceProperties(segment.asSlice(index * VkExternalFenceProperties.BYTES, VkExternalFenceProperties.BYTES));
         }
 
+        public VkExternalFenceProperties.Ptr at(long index, @NotNull Consumer<@NotNull VkExternalFenceProperties> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkExternalFenceProperties value) {
             MemorySegment s = segment.asSlice(index * VkExternalFenceProperties.BYTES, VkExternalFenceProperties.BYTES);
             s.copyFrom(value.segment);

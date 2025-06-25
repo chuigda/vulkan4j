@@ -75,6 +75,11 @@ public record STBTT_Bitmap(@NotNull MemorySegment segment) implements ISTBTT_Bit
             return new STBTT_Bitmap(segment.asSlice(index * STBTT_Bitmap.BYTES, STBTT_Bitmap.BYTES));
         }
 
+        public STBTT_Bitmap.Ptr at(long index, @NotNull Consumer<@NotNull STBTT_Bitmap> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull STBTT_Bitmap value) {
             MemorySegment s = segment.asSlice(index * STBTT_Bitmap.BYTES, STBTT_Bitmap.BYTES);
             s.copyFrom(value.segment);

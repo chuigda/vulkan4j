@@ -28,9 +28,9 @@ import static club.doki7.vulkan.VkConstants.*;
 ///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
 ///     VkPipelineLayoutCreateFlags flags; // optional // @link substring="VkPipelineLayoutCreateFlags" target="VkPipelineLayoutCreateFlags" @link substring="flags" target="#flags"
 ///     uint32_t setLayoutCount; // optional // @link substring="setLayoutCount" target="#setLayoutCount"
-///     VkDescriptorSetLayout const* pSetLayouts; // @link substring="VkDescriptorSetLayout" target="VkDescriptorSetLayout" @link substring="pSetLayouts" target="#pSetLayouts"
+///     VkDescriptorSetLayout const* pSetLayouts; // optional // @link substring="VkDescriptorSetLayout" target="VkDescriptorSetLayout" @link substring="pSetLayouts" target="#pSetLayouts"
 ///     uint32_t pushConstantRangeCount; // optional // @link substring="pushConstantRangeCount" target="#pushConstantRangeCount"
-///     VkPushConstantRange const* pPushConstantRanges; // @link substring="VkPushConstantRange" target="VkPushConstantRange" @link substring="pPushConstantRanges" target="#pPushConstantRanges"
+///     VkPushConstantRange const* pPushConstantRanges; // optional // @link substring="VkPushConstantRange" target="VkPushConstantRange" @link substring="pPushConstantRanges" target="#pPushConstantRanges"
 /// } VkPipelineLayoutCreateInfo;
 /// }
 ///
@@ -89,6 +89,11 @@ public record VkPipelineLayoutCreateInfo(@NotNull MemorySegment segment) impleme
         /// indicate that the returned structure is a view of the original structure.
         public @NotNull VkPipelineLayoutCreateInfo at(long index) {
             return new VkPipelineLayoutCreateInfo(segment.asSlice(index * VkPipelineLayoutCreateInfo.BYTES, VkPipelineLayoutCreateInfo.BYTES));
+        }
+
+        public VkPipelineLayoutCreateInfo.Ptr at(long index, @NotNull Consumer<@NotNull VkPipelineLayoutCreateInfo> consumer) {
+            consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkPipelineLayoutCreateInfo value) {

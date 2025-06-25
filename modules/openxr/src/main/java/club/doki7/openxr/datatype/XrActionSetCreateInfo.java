@@ -93,6 +93,11 @@ public record XrActionSetCreateInfo(@NotNull MemorySegment segment) implements I
             return new XrActionSetCreateInfo(segment.asSlice(index * XrActionSetCreateInfo.BYTES, XrActionSetCreateInfo.BYTES));
         }
 
+        public XrActionSetCreateInfo.Ptr at(long index, @NotNull Consumer<@NotNull XrActionSetCreateInfo> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull XrActionSetCreateInfo value) {
             MemorySegment s = segment.asSlice(index * XrActionSetCreateInfo.BYTES, XrActionSetCreateInfo.BYTES);
             s.copyFrom(value.segment);
@@ -223,6 +228,12 @@ public record XrActionSetCreateInfo(@NotNull MemorySegment segment) implements I
         return new BytePtr(actionSetNameRaw());
     }
 
+    public XrActionSetCreateInfo actionSetName(@NotNull Consumer<BytePtr> consumer) {
+        BytePtr ptr = actionSetName();
+        consumer.accept(ptr);
+        return this;
+    }
+
     public XrActionSetCreateInfo actionSetName(BytePtr value) {
         MemorySegment s = actionSetNameRaw();
         s.copyFrom(value.segment());
@@ -235,6 +246,12 @@ public record XrActionSetCreateInfo(@NotNull MemorySegment segment) implements I
 
     public BytePtr localizedActionSetName() {
         return new BytePtr(localizedActionSetNameRaw());
+    }
+
+    public XrActionSetCreateInfo localizedActionSetName(@NotNull Consumer<BytePtr> consumer) {
+        BytePtr ptr = localizedActionSetName();
+        consumer.accept(ptr);
+        return this;
     }
 
     public XrActionSetCreateInfo localizedActionSetName(BytePtr value) {

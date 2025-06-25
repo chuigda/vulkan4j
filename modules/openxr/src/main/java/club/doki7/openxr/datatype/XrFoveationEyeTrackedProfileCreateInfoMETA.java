@@ -91,6 +91,11 @@ public record XrFoveationEyeTrackedProfileCreateInfoMETA(@NotNull MemorySegment 
             return new XrFoveationEyeTrackedProfileCreateInfoMETA(segment.asSlice(index * XrFoveationEyeTrackedProfileCreateInfoMETA.BYTES, XrFoveationEyeTrackedProfileCreateInfoMETA.BYTES));
         }
 
+        public XrFoveationEyeTrackedProfileCreateInfoMETA.Ptr at(long index, @NotNull Consumer<@NotNull XrFoveationEyeTrackedProfileCreateInfoMETA> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull XrFoveationEyeTrackedProfileCreateInfoMETA value) {
             MemorySegment s = segment.asSlice(index * XrFoveationEyeTrackedProfileCreateInfoMETA.BYTES, XrFoveationEyeTrackedProfileCreateInfoMETA.BYTES);
             s.copyFrom(value.segment);

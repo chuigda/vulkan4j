@@ -90,6 +90,11 @@ public record XrWorldMeshDetectorCreateInfoML(@NotNull MemorySegment segment) im
             return new XrWorldMeshDetectorCreateInfoML(segment.asSlice(index * XrWorldMeshDetectorCreateInfoML.BYTES, XrWorldMeshDetectorCreateInfoML.BYTES));
         }
 
+        public XrWorldMeshDetectorCreateInfoML.Ptr at(long index, @NotNull Consumer<@NotNull XrWorldMeshDetectorCreateInfoML> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull XrWorldMeshDetectorCreateInfoML value) {
             MemorySegment s = segment.asSlice(index * XrWorldMeshDetectorCreateInfoML.BYTES, XrWorldMeshDetectorCreateInfoML.BYTES);
             s.copyFrom(value.segment);

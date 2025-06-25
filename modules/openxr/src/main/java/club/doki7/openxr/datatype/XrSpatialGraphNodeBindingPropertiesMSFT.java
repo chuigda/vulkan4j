@@ -92,6 +92,11 @@ public record XrSpatialGraphNodeBindingPropertiesMSFT(@NotNull MemorySegment seg
             return new XrSpatialGraphNodeBindingPropertiesMSFT(segment.asSlice(index * XrSpatialGraphNodeBindingPropertiesMSFT.BYTES, XrSpatialGraphNodeBindingPropertiesMSFT.BYTES));
         }
 
+        public XrSpatialGraphNodeBindingPropertiesMSFT.Ptr at(long index, @NotNull Consumer<@NotNull XrSpatialGraphNodeBindingPropertiesMSFT> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull XrSpatialGraphNodeBindingPropertiesMSFT value) {
             MemorySegment s = segment.asSlice(index * XrSpatialGraphNodeBindingPropertiesMSFT.BYTES, XrSpatialGraphNodeBindingPropertiesMSFT.BYTES);
             s.copyFrom(value.segment);
@@ -220,6 +225,12 @@ public record XrSpatialGraphNodeBindingPropertiesMSFT(@NotNull MemorySegment seg
 
     public @Unsigned BytePtr nodeId() {
         return new BytePtr(nodeIdRaw());
+    }
+
+    public XrSpatialGraphNodeBindingPropertiesMSFT nodeId(@NotNull Consumer<BytePtr> consumer) {
+        @Unsigned BytePtr ptr = nodeId();
+        consumer.accept(ptr);
+        return this;
     }
 
     public XrSpatialGraphNodeBindingPropertiesMSFT nodeId(@Unsigned BytePtr value) {

@@ -29,7 +29,7 @@ import static club.doki7.vulkan.VkConstants.*;
 ///     VkDescriptorPoolCreateFlags flags; // optional // @link substring="VkDescriptorPoolCreateFlags" target="VkDescriptorPoolCreateFlags" @link substring="flags" target="#flags"
 ///     uint32_t maxSets; // @link substring="maxSets" target="#maxSets"
 ///     uint32_t poolSizeCount; // optional // @link substring="poolSizeCount" target="#poolSizeCount"
-///     VkDescriptorPoolSize const* pPoolSizes; // @link substring="VkDescriptorPoolSize" target="VkDescriptorPoolSize" @link substring="pPoolSizes" target="#pPoolSizes"
+///     VkDescriptorPoolSize const* pPoolSizes; // optional // @link substring="VkDescriptorPoolSize" target="VkDescriptorPoolSize" @link substring="pPoolSizes" target="#pPoolSizes"
 /// } VkDescriptorPoolCreateInfo;
 /// }
 ///
@@ -88,6 +88,11 @@ public record VkDescriptorPoolCreateInfo(@NotNull MemorySegment segment) impleme
         /// indicate that the returned structure is a view of the original structure.
         public @NotNull VkDescriptorPoolCreateInfo at(long index) {
             return new VkDescriptorPoolCreateInfo(segment.asSlice(index * VkDescriptorPoolCreateInfo.BYTES, VkDescriptorPoolCreateInfo.BYTES));
+        }
+
+        public VkDescriptorPoolCreateInfo.Ptr at(long index, @NotNull Consumer<@NotNull VkDescriptorPoolCreateInfo> consumer) {
+            consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkDescriptorPoolCreateInfo value) {

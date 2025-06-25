@@ -81,6 +81,11 @@ public record VkPerformanceCounterResultKHR(@NotNull MemorySegment segment) impl
             return new VkPerformanceCounterResultKHR(segment.asSlice(index * VkPerformanceCounterResultKHR.BYTES, VkPerformanceCounterResultKHR.BYTES));
         }
 
+        public VkPerformanceCounterResultKHR.Ptr at(long index, @NotNull Consumer<@NotNull VkPerformanceCounterResultKHR> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkPerformanceCounterResultKHR value) {
             MemorySegment s = segment.asSlice(index * VkPerformanceCounterResultKHR.BYTES, VkPerformanceCounterResultKHR.BYTES);
             s.copyFrom(value.segment);

@@ -28,7 +28,7 @@ import static club.doki7.vulkan.VkConstants.*;
 ///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
 ///     VkPipelineCreationFeedback* pPipelineCreationFeedback; // @link substring="VkPipelineCreationFeedback" target="VkPipelineCreationFeedback" @link substring="pPipelineCreationFeedback" target="#pPipelineCreationFeedback"
 ///     uint32_t pipelineStageCreationFeedbackCount; // optional // @link substring="pipelineStageCreationFeedbackCount" target="#pipelineStageCreationFeedbackCount"
-///     VkPipelineCreationFeedback* pPipelineStageCreationFeedbacks; // @link substring="VkPipelineCreationFeedback" target="VkPipelineCreationFeedback" @link substring="pPipelineStageCreationFeedbacks" target="#pPipelineStageCreationFeedbacks"
+///     VkPipelineCreationFeedback* pPipelineStageCreationFeedbacks; // optional // @link substring="VkPipelineCreationFeedback" target="VkPipelineCreationFeedback" @link substring="pPipelineStageCreationFeedbacks" target="#pPipelineStageCreationFeedbacks"
 /// } VkPipelineCreationFeedbackCreateInfo;
 /// }
 ///
@@ -87,6 +87,11 @@ public record VkPipelineCreationFeedbackCreateInfo(@NotNull MemorySegment segmen
         /// indicate that the returned structure is a view of the original structure.
         public @NotNull VkPipelineCreationFeedbackCreateInfo at(long index) {
             return new VkPipelineCreationFeedbackCreateInfo(segment.asSlice(index * VkPipelineCreationFeedbackCreateInfo.BYTES, VkPipelineCreationFeedbackCreateInfo.BYTES));
+        }
+
+        public VkPipelineCreationFeedbackCreateInfo.Ptr at(long index, @NotNull Consumer<@NotNull VkPipelineCreationFeedbackCreateInfo> consumer) {
+            consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkPipelineCreationFeedbackCreateInfo value) {

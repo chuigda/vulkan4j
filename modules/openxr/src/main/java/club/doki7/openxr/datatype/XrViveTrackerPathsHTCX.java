@@ -92,6 +92,11 @@ public record XrViveTrackerPathsHTCX(@NotNull MemorySegment segment) implements 
             return new XrViveTrackerPathsHTCX(segment.asSlice(index * XrViveTrackerPathsHTCX.BYTES, XrViveTrackerPathsHTCX.BYTES));
         }
 
+        public XrViveTrackerPathsHTCX.Ptr at(long index, @NotNull Consumer<@NotNull XrViveTrackerPathsHTCX> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull XrViveTrackerPathsHTCX value) {
             MemorySegment s = segment.asSlice(index * XrViveTrackerPathsHTCX.BYTES, XrViveTrackerPathsHTCX.BYTES);
             s.copyFrom(value.segment);

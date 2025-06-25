@@ -90,6 +90,11 @@ public record XrSpatialGraphNodeBindingPropertiesGetInfoMSFT(@NotNull MemorySegm
             return new XrSpatialGraphNodeBindingPropertiesGetInfoMSFT(segment.asSlice(index * XrSpatialGraphNodeBindingPropertiesGetInfoMSFT.BYTES, XrSpatialGraphNodeBindingPropertiesGetInfoMSFT.BYTES));
         }
 
+        public XrSpatialGraphNodeBindingPropertiesGetInfoMSFT.Ptr at(long index, @NotNull Consumer<@NotNull XrSpatialGraphNodeBindingPropertiesGetInfoMSFT> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull XrSpatialGraphNodeBindingPropertiesGetInfoMSFT value) {
             MemorySegment s = segment.asSlice(index * XrSpatialGraphNodeBindingPropertiesGetInfoMSFT.BYTES, XrSpatialGraphNodeBindingPropertiesGetInfoMSFT.BYTES);
             s.copyFrom(value.segment);

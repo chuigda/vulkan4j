@@ -91,6 +91,11 @@ public record XrFoveationDynamicModeInfoHTC(@NotNull MemorySegment segment) impl
             return new XrFoveationDynamicModeInfoHTC(segment.asSlice(index * XrFoveationDynamicModeInfoHTC.BYTES, XrFoveationDynamicModeInfoHTC.BYTES));
         }
 
+        public XrFoveationDynamicModeInfoHTC.Ptr at(long index, @NotNull Consumer<@NotNull XrFoveationDynamicModeInfoHTC> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull XrFoveationDynamicModeInfoHTC value) {
             MemorySegment s = segment.asSlice(index * XrFoveationDynamicModeInfoHTC.BYTES, XrFoveationDynamicModeInfoHTC.BYTES);
             s.copyFrom(value.segment);

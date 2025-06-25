@@ -85,7 +85,8 @@ if (glfwExtensions == null) {
 
 var glfwExtensionCount = pGLFWExtensionCount.read();
 glfwExtensions = glfwExtensions.reinterpret(glfwExtensionCount);
-instanceCreateInfo.enabledExtensionCount(pGLFWExtensionCount.read())
+instanceCreateInfo
+        .enabledExtensionCount(pGLFWExtensionCount.read())
         .ppEnabledExtensionNames(glfwExtensions);
 ```
 

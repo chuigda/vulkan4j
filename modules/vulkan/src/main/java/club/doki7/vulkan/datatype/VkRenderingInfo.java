@@ -31,7 +31,7 @@ import static club.doki7.vulkan.VkConstants.*;
 ///     uint32_t layerCount; // @link substring="layerCount" target="#layerCount"
 ///     uint32_t viewMask; // @link substring="viewMask" target="#viewMask"
 ///     uint32_t colorAttachmentCount; // optional // @link substring="colorAttachmentCount" target="#colorAttachmentCount"
-///     VkRenderingAttachmentInfo const* pColorAttachments; // @link substring="VkRenderingAttachmentInfo" target="VkRenderingAttachmentInfo" @link substring="pColorAttachments" target="#pColorAttachments"
+///     VkRenderingAttachmentInfo const* pColorAttachments; // optional // @link substring="VkRenderingAttachmentInfo" target="VkRenderingAttachmentInfo" @link substring="pColorAttachments" target="#pColorAttachments"
 ///     VkRenderingAttachmentInfo const* pDepthAttachment; // optional // @link substring="VkRenderingAttachmentInfo" target="VkRenderingAttachmentInfo" @link substring="pDepthAttachment" target="#pDepthAttachment"
 ///     VkRenderingAttachmentInfo const* pStencilAttachment; // optional // @link substring="VkRenderingAttachmentInfo" target="VkRenderingAttachmentInfo" @link substring="pStencilAttachment" target="#pStencilAttachment"
 /// } VkRenderingInfo;
@@ -92,6 +92,11 @@ public record VkRenderingInfo(@NotNull MemorySegment segment) implements IVkRend
         /// indicate that the returned structure is a view of the original structure.
         public @NotNull VkRenderingInfo at(long index) {
             return new VkRenderingInfo(segment.asSlice(index * VkRenderingInfo.BYTES, VkRenderingInfo.BYTES));
+        }
+
+        public VkRenderingInfo.Ptr at(long index, @NotNull Consumer<@NotNull VkRenderingInfo> consumer) {
+            consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkRenderingInfo value) {

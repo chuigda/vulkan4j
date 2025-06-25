@@ -87,6 +87,11 @@ public record VkImagePlaneMemoryRequirementsInfo(@NotNull MemorySegment segment)
             return new VkImagePlaneMemoryRequirementsInfo(segment.asSlice(index * VkImagePlaneMemoryRequirementsInfo.BYTES, VkImagePlaneMemoryRequirementsInfo.BYTES));
         }
 
+        public VkImagePlaneMemoryRequirementsInfo.Ptr at(long index, @NotNull Consumer<@NotNull VkImagePlaneMemoryRequirementsInfo> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkImagePlaneMemoryRequirementsInfo value) {
             MemorySegment s = segment.asSlice(index * VkImagePlaneMemoryRequirementsInfo.BYTES, VkImagePlaneMemoryRequirementsInfo.BYTES);
             s.copyFrom(value.segment);

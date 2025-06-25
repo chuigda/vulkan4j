@@ -87,6 +87,11 @@ public record VkPipelineRasterizationProvokingVertexStateCreateInfoEXT(@NotNull 
             return new VkPipelineRasterizationProvokingVertexStateCreateInfoEXT(segment.asSlice(index * VkPipelineRasterizationProvokingVertexStateCreateInfoEXT.BYTES, VkPipelineRasterizationProvokingVertexStateCreateInfoEXT.BYTES));
         }
 
+        public VkPipelineRasterizationProvokingVertexStateCreateInfoEXT.Ptr at(long index, @NotNull Consumer<@NotNull VkPipelineRasterizationProvokingVertexStateCreateInfoEXT> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkPipelineRasterizationProvokingVertexStateCreateInfoEXT value) {
             MemorySegment s = segment.asSlice(index * VkPipelineRasterizationProvokingVertexStateCreateInfoEXT.BYTES, VkPipelineRasterizationProvokingVertexStateCreateInfoEXT.BYTES);
             s.copyFrom(value.segment);

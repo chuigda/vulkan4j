@@ -87,6 +87,11 @@ public record VkAccelerationStructureDeviceAddressInfoKHR(@NotNull MemorySegment
             return new VkAccelerationStructureDeviceAddressInfoKHR(segment.asSlice(index * VkAccelerationStructureDeviceAddressInfoKHR.BYTES, VkAccelerationStructureDeviceAddressInfoKHR.BYTES));
         }
 
+        public VkAccelerationStructureDeviceAddressInfoKHR.Ptr at(long index, @NotNull Consumer<@NotNull VkAccelerationStructureDeviceAddressInfoKHR> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkAccelerationStructureDeviceAddressInfoKHR value) {
             MemorySegment s = segment.asSlice(index * VkAccelerationStructureDeviceAddressInfoKHR.BYTES, VkAccelerationStructureDeviceAddressInfoKHR.BYTES);
             s.copyFrom(value.segment);

@@ -93,6 +93,11 @@ public record XrFaceTrackerCreateInfo2FB(@NotNull MemorySegment segment) impleme
             return new XrFaceTrackerCreateInfo2FB(segment.asSlice(index * XrFaceTrackerCreateInfo2FB.BYTES, XrFaceTrackerCreateInfo2FB.BYTES));
         }
 
+        public XrFaceTrackerCreateInfo2FB.Ptr at(long index, @NotNull Consumer<@NotNull XrFaceTrackerCreateInfo2FB> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull XrFaceTrackerCreateInfo2FB value) {
             MemorySegment s = segment.asSlice(index * XrFaceTrackerCreateInfo2FB.BYTES, XrFaceTrackerCreateInfo2FB.BYTES);
             s.copyFrom(value.segment);

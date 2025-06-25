@@ -27,11 +27,11 @@ import static club.doki7.vulkan.VkConstants.*;
 ///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
 ///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
 ///     uint32_t waitSemaphoreCount; // optional // @link substring="waitSemaphoreCount" target="#waitSemaphoreCount"
-///     uint32_t const* pWaitSemaphoreDeviceIndices; // @link substring="pWaitSemaphoreDeviceIndices" target="#pWaitSemaphoreDeviceIndices"
+///     uint32_t const* pWaitSemaphoreDeviceIndices; // optional // @link substring="pWaitSemaphoreDeviceIndices" target="#pWaitSemaphoreDeviceIndices"
 ///     uint32_t commandBufferCount; // optional // @link substring="commandBufferCount" target="#commandBufferCount"
-///     uint32_t const* pCommandBufferDeviceMasks; // @link substring="pCommandBufferDeviceMasks" target="#pCommandBufferDeviceMasks"
+///     uint32_t const* pCommandBufferDeviceMasks; // optional // @link substring="pCommandBufferDeviceMasks" target="#pCommandBufferDeviceMasks"
 ///     uint32_t signalSemaphoreCount; // optional // @link substring="signalSemaphoreCount" target="#signalSemaphoreCount"
-///     uint32_t const* pSignalSemaphoreDeviceIndices; // @link substring="pSignalSemaphoreDeviceIndices" target="#pSignalSemaphoreDeviceIndices"
+///     uint32_t const* pSignalSemaphoreDeviceIndices; // optional // @link substring="pSignalSemaphoreDeviceIndices" target="#pSignalSemaphoreDeviceIndices"
 /// } VkDeviceGroupSubmitInfo;
 /// }
 ///
@@ -90,6 +90,11 @@ public record VkDeviceGroupSubmitInfo(@NotNull MemorySegment segment) implements
         /// indicate that the returned structure is a view of the original structure.
         public @NotNull VkDeviceGroupSubmitInfo at(long index) {
             return new VkDeviceGroupSubmitInfo(segment.asSlice(index * VkDeviceGroupSubmitInfo.BYTES, VkDeviceGroupSubmitInfo.BYTES));
+        }
+
+        public VkDeviceGroupSubmitInfo.Ptr at(long index, @NotNull Consumer<@NotNull VkDeviceGroupSubmitInfo> consumer) {
+            consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkDeviceGroupSubmitInfo value) {

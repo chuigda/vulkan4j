@@ -87,6 +87,11 @@ public record VkSamplerYcbcrConversionInfo(@NotNull MemorySegment segment) imple
             return new VkSamplerYcbcrConversionInfo(segment.asSlice(index * VkSamplerYcbcrConversionInfo.BYTES, VkSamplerYcbcrConversionInfo.BYTES));
         }
 
+        public VkSamplerYcbcrConversionInfo.Ptr at(long index, @NotNull Consumer<@NotNull VkSamplerYcbcrConversionInfo> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkSamplerYcbcrConversionInfo value) {
             MemorySegment s = segment.asSlice(index * VkSamplerYcbcrConversionInfo.BYTES, VkSamplerYcbcrConversionInfo.BYTES);
             s.copyFrom(value.segment);

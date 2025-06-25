@@ -89,6 +89,11 @@ public record VkLatencySleepModeInfoNV(@NotNull MemorySegment segment) implement
             return new VkLatencySleepModeInfoNV(segment.asSlice(index * VkLatencySleepModeInfoNV.BYTES, VkLatencySleepModeInfoNV.BYTES));
         }
 
+        public VkLatencySleepModeInfoNV.Ptr at(long index, @NotNull Consumer<@NotNull VkLatencySleepModeInfoNV> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkLatencySleepModeInfoNV value) {
             MemorySegment s = segment.asSlice(index * VkLatencySleepModeInfoNV.BYTES, VkLatencySleepModeInfoNV.BYTES);
             s.copyFrom(value.segment);

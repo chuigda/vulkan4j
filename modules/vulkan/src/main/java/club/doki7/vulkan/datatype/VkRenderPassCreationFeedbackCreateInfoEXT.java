@@ -87,6 +87,11 @@ public record VkRenderPassCreationFeedbackCreateInfoEXT(@NotNull MemorySegment s
             return new VkRenderPassCreationFeedbackCreateInfoEXT(segment.asSlice(index * VkRenderPassCreationFeedbackCreateInfoEXT.BYTES, VkRenderPassCreationFeedbackCreateInfoEXT.BYTES));
         }
 
+        public VkRenderPassCreationFeedbackCreateInfoEXT.Ptr at(long index, @NotNull Consumer<@NotNull VkRenderPassCreationFeedbackCreateInfoEXT> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkRenderPassCreationFeedbackCreateInfoEXT value) {
             MemorySegment s = segment.asSlice(index * VkRenderPassCreationFeedbackCreateInfoEXT.BYTES, VkRenderPassCreationFeedbackCreateInfoEXT.BYTES);
             s.copyFrom(value.segment);

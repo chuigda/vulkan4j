@@ -94,6 +94,11 @@ public record XrFacialExpressionsHTC(@NotNull MemorySegment segment) implements 
             return new XrFacialExpressionsHTC(segment.asSlice(index * XrFacialExpressionsHTC.BYTES, XrFacialExpressionsHTC.BYTES));
         }
 
+        public XrFacialExpressionsHTC.Ptr at(long index, @NotNull Consumer<@NotNull XrFacialExpressionsHTC> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull XrFacialExpressionsHTC value) {
             MemorySegment s = segment.asSlice(index * XrFacialExpressionsHTC.BYTES, XrFacialExpressionsHTC.BYTES);
             s.copyFrom(value.segment);

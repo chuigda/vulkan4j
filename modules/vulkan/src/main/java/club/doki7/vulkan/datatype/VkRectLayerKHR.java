@@ -78,6 +78,11 @@ public record VkRectLayerKHR(@NotNull MemorySegment segment) implements IVkRectL
             return new VkRectLayerKHR(segment.asSlice(index * VkRectLayerKHR.BYTES, VkRectLayerKHR.BYTES));
         }
 
+        public VkRectLayerKHR.Ptr at(long index, @NotNull Consumer<@NotNull VkRectLayerKHR> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkRectLayerKHR value) {
             MemorySegment s = segment.asSlice(index * VkRectLayerKHR.BYTES, VkRectLayerKHR.BYTES);
             s.copyFrom(value.segment);

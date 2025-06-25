@@ -107,6 +107,11 @@ public record STBIR_RESIZE(@NotNull MemorySegment segment) implements ISTBIR_RES
             return new STBIR_RESIZE(segment.asSlice(index * STBIR_RESIZE.BYTES, STBIR_RESIZE.BYTES));
         }
 
+        public STBIR_RESIZE.Ptr at(long index, @NotNull Consumer<@NotNull STBIR_RESIZE> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull STBIR_RESIZE value) {
             MemorySegment s = segment.asSlice(index * STBIR_RESIZE.BYTES, STBIR_RESIZE.BYTES);
             s.copyFrom(value.segment);

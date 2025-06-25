@@ -81,6 +81,11 @@ public record XrHandMeshVertexMSFT(@NotNull MemorySegment segment) implements IX
             return new XrHandMeshVertexMSFT(segment.asSlice(index * XrHandMeshVertexMSFT.BYTES, XrHandMeshVertexMSFT.BYTES));
         }
 
+        public XrHandMeshVertexMSFT.Ptr at(long index, @NotNull Consumer<@NotNull XrHandMeshVertexMSFT> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull XrHandMeshVertexMSFT value) {
             MemorySegment s = segment.asSlice(index * XrHandMeshVertexMSFT.BYTES, XrHandMeshVertexMSFT.BYTES);
             s.copyFrom(value.segment);

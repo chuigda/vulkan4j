@@ -90,6 +90,11 @@ public record VkImageBlit2(@NotNull MemorySegment segment) implements IVkImageBl
             return new VkImageBlit2(segment.asSlice(index * VkImageBlit2.BYTES, VkImageBlit2.BYTES));
         }
 
+        public VkImageBlit2.Ptr at(long index, @NotNull Consumer<@NotNull VkImageBlit2> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkImageBlit2 value) {
             MemorySegment s = segment.asSlice(index * VkImageBlit2.BYTES, VkImageBlit2.BYTES);
             s.copyFrom(value.segment);
@@ -234,6 +239,12 @@ public record VkImageBlit2(@NotNull MemorySegment segment) implements IVkImageBl
         return new VkOffset3D.Ptr(srcOffsetsRaw());
     }
 
+    public VkImageBlit2 srcOffsets(@NotNull Consumer<VkOffset3D.Ptr> consumer) {
+        VkOffset3D.Ptr ptr = srcOffsets();
+        consumer.accept(ptr);
+        return this;
+    }
+
     public VkImageBlit2 srcOffsets(VkOffset3D.Ptr value) {
         MemorySegment s = srcOffsetsRaw();
         s.copyFrom(value.segment());
@@ -270,6 +281,12 @@ public record VkImageBlit2(@NotNull MemorySegment segment) implements IVkImageBl
 
     public VkOffset3D.Ptr dstOffsets() {
         return new VkOffset3D.Ptr(dstOffsetsRaw());
+    }
+
+    public VkImageBlit2 dstOffsets(@NotNull Consumer<VkOffset3D.Ptr> consumer) {
+        VkOffset3D.Ptr ptr = dstOffsets();
+        consumer.accept(ptr);
+        return this;
     }
 
     public VkImageBlit2 dstOffsets(VkOffset3D.Ptr value) {

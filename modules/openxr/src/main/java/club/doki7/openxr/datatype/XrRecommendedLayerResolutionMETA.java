@@ -92,6 +92,11 @@ public record XrRecommendedLayerResolutionMETA(@NotNull MemorySegment segment) i
             return new XrRecommendedLayerResolutionMETA(segment.asSlice(index * XrRecommendedLayerResolutionMETA.BYTES, XrRecommendedLayerResolutionMETA.BYTES));
         }
 
+        public XrRecommendedLayerResolutionMETA.Ptr at(long index, @NotNull Consumer<@NotNull XrRecommendedLayerResolutionMETA> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull XrRecommendedLayerResolutionMETA value) {
             MemorySegment s = segment.asSlice(index * XrRecommendedLayerResolutionMETA.BYTES, XrRecommendedLayerResolutionMETA.BYTES);
             s.copyFrom(value.segment);

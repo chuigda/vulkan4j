@@ -92,6 +92,11 @@ public record XrExtensionProperties(@NotNull MemorySegment segment) implements I
             return new XrExtensionProperties(segment.asSlice(index * XrExtensionProperties.BYTES, XrExtensionProperties.BYTES));
         }
 
+        public XrExtensionProperties.Ptr at(long index, @NotNull Consumer<@NotNull XrExtensionProperties> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull XrExtensionProperties value) {
             MemorySegment s = segment.asSlice(index * XrExtensionProperties.BYTES, XrExtensionProperties.BYTES);
             s.copyFrom(value.segment);
@@ -220,6 +225,12 @@ public record XrExtensionProperties(@NotNull MemorySegment segment) implements I
 
     public BytePtr extensionName() {
         return new BytePtr(extensionNameRaw());
+    }
+
+    public XrExtensionProperties extensionName(@NotNull Consumer<BytePtr> consumer) {
+        BytePtr ptr = extensionName();
+        consumer.accept(ptr);
+        return this;
     }
 
     public XrExtensionProperties extensionName(BytePtr value) {

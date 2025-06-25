@@ -88,6 +88,11 @@ public record VkLatencySleepInfoNV(@NotNull MemorySegment segment) implements IV
             return new VkLatencySleepInfoNV(segment.asSlice(index * VkLatencySleepInfoNV.BYTES, VkLatencySleepInfoNV.BYTES));
         }
 
+        public VkLatencySleepInfoNV.Ptr at(long index, @NotNull Consumer<@NotNull VkLatencySleepInfoNV> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkLatencySleepInfoNV value) {
             MemorySegment s = segment.asSlice(index * VkLatencySleepInfoNV.BYTES, VkLatencySleepInfoNV.BYTES);
             s.copyFrom(value.segment);

@@ -36,7 +36,7 @@ import static club.doki7.vulkan.VkConstants.*;
 ///     VkImageUsageFlags imageUsage; // @link substring="VkImageUsageFlags" target="VkImageUsageFlags" @link substring="imageUsage" target="#imageUsage"
 ///     VkSharingMode imageSharingMode; // @link substring="VkSharingMode" target="VkSharingMode" @link substring="imageSharingMode" target="#imageSharingMode"
 ///     uint32_t queueFamilyIndexCount; // optional // @link substring="queueFamilyIndexCount" target="#queueFamilyIndexCount"
-///     uint32_t const* pQueueFamilyIndices; // @link substring="pQueueFamilyIndices" target="#pQueueFamilyIndices"
+///     uint32_t const* pQueueFamilyIndices; // optional // @link substring="pQueueFamilyIndices" target="#pQueueFamilyIndices"
 ///     VkSurfaceTransformFlagsKHR preTransform; // @link substring="VkSurfaceTransformFlagsKHR" target="VkSurfaceTransformFlagsKHR" @link substring="preTransform" target="#preTransform"
 ///     VkCompositeAlphaFlagsKHR compositeAlpha; // @link substring="VkCompositeAlphaFlagsKHR" target="VkCompositeAlphaFlagsKHR" @link substring="compositeAlpha" target="#compositeAlpha"
 ///     VkPresentModeKHR presentMode; // @link substring="VkPresentModeKHR" target="VkPresentModeKHR" @link substring="presentMode" target="#presentMode"
@@ -100,6 +100,11 @@ public record VkSwapchainCreateInfoKHR(@NotNull MemorySegment segment) implement
         /// indicate that the returned structure is a view of the original structure.
         public @NotNull VkSwapchainCreateInfoKHR at(long index) {
             return new VkSwapchainCreateInfoKHR(segment.asSlice(index * VkSwapchainCreateInfoKHR.BYTES, VkSwapchainCreateInfoKHR.BYTES));
+        }
+
+        public VkSwapchainCreateInfoKHR.Ptr at(long index, @NotNull Consumer<@NotNull VkSwapchainCreateInfoKHR> consumer) {
+            consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkSwapchainCreateInfoKHR value) {

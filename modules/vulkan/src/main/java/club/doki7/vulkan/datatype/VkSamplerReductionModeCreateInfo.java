@@ -87,6 +87,11 @@ public record VkSamplerReductionModeCreateInfo(@NotNull MemorySegment segment) i
             return new VkSamplerReductionModeCreateInfo(segment.asSlice(index * VkSamplerReductionModeCreateInfo.BYTES, VkSamplerReductionModeCreateInfo.BYTES));
         }
 
+        public VkSamplerReductionModeCreateInfo.Ptr at(long index, @NotNull Consumer<@NotNull VkSamplerReductionModeCreateInfo> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkSamplerReductionModeCreateInfo value) {
             MemorySegment s = segment.asSlice(index * VkSamplerReductionModeCreateInfo.BYTES, VkSamplerReductionModeCreateInfo.BYTES);
             s.copyFrom(value.segment);

@@ -93,6 +93,11 @@ public record XrInteractionProfileSuggestedBinding(@NotNull MemorySegment segmen
             return new XrInteractionProfileSuggestedBinding(segment.asSlice(index * XrInteractionProfileSuggestedBinding.BYTES, XrInteractionProfileSuggestedBinding.BYTES));
         }
 
+        public XrInteractionProfileSuggestedBinding.Ptr at(long index, @NotNull Consumer<@NotNull XrInteractionProfileSuggestedBinding> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull XrInteractionProfileSuggestedBinding value) {
             MemorySegment s = segment.asSlice(index * XrInteractionProfileSuggestedBinding.BYTES, XrInteractionProfileSuggestedBinding.BYTES);
             s.copyFrom(value.segment);

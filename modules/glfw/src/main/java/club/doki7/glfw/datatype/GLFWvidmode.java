@@ -99,6 +99,11 @@ public record GLFWvidmode(@NotNull MemorySegment segment) implements IGLFWvidmod
             return new GLFWvidmode(segment.asSlice(index * GLFWvidmode.BYTES, GLFWvidmode.BYTES));
         }
 
+        public GLFWvidmode.Ptr at(long index, @NotNull Consumer<@NotNull GLFWvidmode> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull GLFWvidmode value) {
             MemorySegment s = segment.asSlice(index * GLFWvidmode.BYTES, GLFWvidmode.BYTES);
             s.copyFrom(value.segment);

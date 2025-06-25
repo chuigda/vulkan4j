@@ -83,6 +83,11 @@ public record XrFrustumf(@NotNull MemorySegment segment) implements IXrFrustumf 
             return new XrFrustumf(segment.asSlice(index * XrFrustumf.BYTES, XrFrustumf.BYTES));
         }
 
+        public XrFrustumf.Ptr at(long index, @NotNull Consumer<@NotNull XrFrustumf> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull XrFrustumf value) {
             MemorySegment s = segment.asSlice(index * XrFrustumf.BYTES, XrFrustumf.BYTES);
             s.copyFrom(value.segment);

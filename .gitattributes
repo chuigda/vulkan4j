@@ -54,4 +54,11 @@ modules/stb/src/main/java/club/doki7/stb/STBJavaTraceUtil.java linguist-detectab
 modules/stb/src/main/java/club/doki7/stb/image/STBIUtil.java linguist-detectable
 modules/stb/src/main/java/club/doki7/stb/imagewrite/STBWUtil.java linguist-detectable
 
+modules/openxr/src/main/java/club/doki7/openxr/XRConstants.java linguist-generated
+modules/openxr/src/main/java/club/doki7/openxr/XRFunctionTypes.java linguist-generated
+modules/openxr/src/main/java/club/doki7/openxr/bitmask/*.java linguist-generated
+modules/openxr/src/main/java/club/doki7/openxr/command/*.java linguist-generated
+modules/openxr/src/main/java/club/doki7/openxr/datatype/*.java linguist-generated
+modules/openxr/src/main/java/club/doki7/openxr/enumtype/*.java linguist-generated
+
 modules/tutorial/src/main/java/**/*.java linguist-documentation

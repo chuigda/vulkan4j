@@ -37,8 +37,8 @@ import static club.doki7.vulkan.VkConstants.*;
 ///     uint32_t pushconstantSize; // @link substring="pushconstantSize" target="#pushconstantSize"
 ///     VkIndirectStateFlagsNV indirectStateFlags; // optional // @link substring="VkIndirectStateFlagsNV" target="VkIndirectStateFlagsNV" @link substring="indirectStateFlags" target="#indirectStateFlags"
 ///     uint32_t indexTypeCount; // optional // @link substring="indexTypeCount" target="#indexTypeCount"
-///     VkIndexType const* pIndexTypes; // @link substring="VkIndexType" target="VkIndexType" @link substring="pIndexTypes" target="#pIndexTypes"
-///     uint32_t const* pIndexTypeValues; // @link substring="pIndexTypeValues" target="#pIndexTypeValues"
+///     VkIndexType const* pIndexTypes; // optional // @link substring="VkIndexType" target="VkIndexType" @link substring="pIndexTypes" target="#pIndexTypes"
+///     uint32_t const* pIndexTypeValues; // optional // @link substring="pIndexTypeValues" target="#pIndexTypeValues"
 /// } VkIndirectCommandsLayoutTokenNV;
 /// }
 ///
@@ -97,6 +97,11 @@ public record VkIndirectCommandsLayoutTokenNV(@NotNull MemorySegment segment) im
         /// indicate that the returned structure is a view of the original structure.
         public @NotNull VkIndirectCommandsLayoutTokenNV at(long index) {
             return new VkIndirectCommandsLayoutTokenNV(segment.asSlice(index * VkIndirectCommandsLayoutTokenNV.BYTES, VkIndirectCommandsLayoutTokenNV.BYTES));
+        }
+
+        public VkIndirectCommandsLayoutTokenNV.Ptr at(long index, @NotNull Consumer<@NotNull VkIndirectCommandsLayoutTokenNV> consumer) {
+            consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkIndirectCommandsLayoutTokenNV value) {

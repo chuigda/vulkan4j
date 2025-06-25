@@ -22,7 +22,8 @@
 
 ### Experimental Bindings
 
-- [SDL3](https://www.libsdl.org/) ([`sdl3`](https://github.com/club-doki7/vulkan4j/tree/master/modules/sdl3) module): Generated from SDL3 header files. This module is still under development, it has unimplemented functionalities, and may contain bugs. Issues and pull requests are welcome.
+- [OpenXR](https://www.khronos.org/openxr/) ([`openxr`](https://github.com/club-doki7/vulkan4j/tree/master/modules/openxr) module): Generated from OpenXR header files. This module should theoretically have no bugs, but because of the lacking of VR development experience, we haven't tested it thoroughly via a complete dog feeding OpenXR application yet. Report any issues you find, and pull requests are welcome.
+- [SDL3](https://www.libsdl.org/) ([`sdl3`](https://github.com/club-doki7/vulkan4j/tree/master/modules/sdl3) module): Generated from SDL3 header files. This module is still under development, it has unimplemented functionalities, and **DOES contain known bugs**. We are planning to migrate to a better manner for parsing C header files, so the update of this module is **stalling** for now.
 
 <details>
 <summary>Obsolete bindings</summary>
@@ -49,21 +50,6 @@ For OpenGL users, we ported the [LearnOpenGL](https://learnopengl.com) tutorial 
 
 ### [Examples](https://github.com/club-doki7/vulkan4j/tree/master/modules/example/src/main/java/example)
 We provide a set of examples, which can be found under the `example` directory. These examples are intended to demonstrate how to use the bindings in practice, and can be used as a reference for your own projects.
-
-## Roadmap
-- [x] v0.3.0 rewrite, new namespace, new `ffm-plus` module, use `codegen-v2` module for all registry extraction and code generation.
-- [x] API enhancements: chaining `set` methods for structures, LWJGL style `set` methods for structure members, `allocateV` and `writeV` series functions for `Ptr` types.
-- [x] Full OpenGL bindings
-- [x] OpenAL bindings
-- [x] STB bindings
-  - [x] STB image (containing `image_resize2` and `image_write`)
-  - [x] STB truetype
-  - [ ] STB vorbis
-  - [ ] *To be added*
-- [ ] WebGPU bindings
-- [ ] Full OpenGL ES bindings
-- [ ] SDL3 bindings
-- [ ] LLVM bindings (*is this graphics anymore?*)
 
 ## Donation
 

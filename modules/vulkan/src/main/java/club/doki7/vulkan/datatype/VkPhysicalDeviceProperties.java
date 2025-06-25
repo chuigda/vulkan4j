@@ -84,6 +84,11 @@ public record VkPhysicalDeviceProperties(@NotNull MemorySegment segment) impleme
             return new VkPhysicalDeviceProperties(segment.asSlice(index * VkPhysicalDeviceProperties.BYTES, VkPhysicalDeviceProperties.BYTES));
         }
 
+        public VkPhysicalDeviceProperties.Ptr at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceProperties> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkPhysicalDeviceProperties value) {
             MemorySegment s = segment.asSlice(index * VkPhysicalDeviceProperties.BYTES, VkPhysicalDeviceProperties.BYTES);
             s.copyFrom(value.segment);
@@ -226,6 +231,12 @@ public record VkPhysicalDeviceProperties(@NotNull MemorySegment segment) impleme
         return new BytePtr(deviceNameRaw());
     }
 
+    public VkPhysicalDeviceProperties deviceName(@NotNull Consumer<BytePtr> consumer) {
+        BytePtr ptr = deviceName();
+        consumer.accept(ptr);
+        return this;
+    }
+
     public VkPhysicalDeviceProperties deviceName(BytePtr value) {
         MemorySegment s = deviceNameRaw();
         s.copyFrom(value.segment());
@@ -238,6 +249,12 @@ public record VkPhysicalDeviceProperties(@NotNull MemorySegment segment) impleme
 
     public @Unsigned BytePtr pipelineCacheUUID() {
         return new BytePtr(pipelineCacheUUIDRaw());
+    }
+
+    public VkPhysicalDeviceProperties pipelineCacheUUID(@NotNull Consumer<BytePtr> consumer) {
+        @Unsigned BytePtr ptr = pipelineCacheUUID();
+        consumer.accept(ptr);
+        return this;
     }
 
     public VkPhysicalDeviceProperties pipelineCacheUUID(@Unsigned BytePtr value) {

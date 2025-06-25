@@ -93,6 +93,11 @@ public record XrSpatialAnchorCreateCompletionBD(@NotNull MemorySegment segment) 
             return new XrSpatialAnchorCreateCompletionBD(segment.asSlice(index * XrSpatialAnchorCreateCompletionBD.BYTES, XrSpatialAnchorCreateCompletionBD.BYTES));
         }
 
+        public XrSpatialAnchorCreateCompletionBD.Ptr at(long index, @NotNull Consumer<@NotNull XrSpatialAnchorCreateCompletionBD> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull XrSpatialAnchorCreateCompletionBD value) {
             MemorySegment s = segment.asSlice(index * XrSpatialAnchorCreateCompletionBD.BYTES, XrSpatialAnchorCreateCompletionBD.BYTES);
             s.copyFrom(value.segment);

@@ -91,6 +91,11 @@ public record VkDebugUtilsObjectTagInfoEXT(@NotNull MemorySegment segment) imple
             return new VkDebugUtilsObjectTagInfoEXT(segment.asSlice(index * VkDebugUtilsObjectTagInfoEXT.BYTES, VkDebugUtilsObjectTagInfoEXT.BYTES));
         }
 
+        public VkDebugUtilsObjectTagInfoEXT.Ptr at(long index, @NotNull Consumer<@NotNull VkDebugUtilsObjectTagInfoEXT> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkDebugUtilsObjectTagInfoEXT value) {
             MemorySegment s = segment.asSlice(index * VkDebugUtilsObjectTagInfoEXT.BYTES, VkDebugUtilsObjectTagInfoEXT.BYTES);
             s.copyFrom(value.segment);

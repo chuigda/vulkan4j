@@ -95,6 +95,11 @@ public record XrRoomLayoutFB(@NotNull MemorySegment segment) implements IXrRoomL
             return new XrRoomLayoutFB(segment.asSlice(index * XrRoomLayoutFB.BYTES, XrRoomLayoutFB.BYTES));
         }
 
+        public XrRoomLayoutFB.Ptr at(long index, @NotNull Consumer<@NotNull XrRoomLayoutFB> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull XrRoomLayoutFB value) {
             MemorySegment s = segment.asSlice(index * XrRoomLayoutFB.BYTES, XrRoomLayoutFB.BYTES);
             s.copyFrom(value.segment);

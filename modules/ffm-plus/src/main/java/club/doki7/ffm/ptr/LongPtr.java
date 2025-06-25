@@ -12,6 +12,7 @@ import java.lang.foreign.MemorySegment;
 import java.lang.foreign.ValueLayout;
 import java.nio.Buffer;
 import java.nio.LongBuffer;
+import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
 import java.util.NoSuchElementException;
@@ -170,6 +171,16 @@ public record LongPtr(@NotNull MemorySegment segment) implements IPointer, Itera
 
     public static @NotNull LongPtr allocate(@NotNull Arena arena, long @NotNull [] array) {
         return new LongPtr(arena.allocateFrom(ValueLayout.JAVA_LONG, array));
+    }
+
+    public static @NotNull LongPtr allocate(@NotNull Arena arena, Collection<Long> longs) {
+        LongPtr ret = allocate(arena, longs.size());
+        int i = 0;
+        for (long value : longs) {
+            ret.write(i, value);
+            i += 1;
+        }
+        return ret;
     }
 
     public static @NotNull LongPtr allocateV(@NotNull Arena arena, long value0, long ...values) {

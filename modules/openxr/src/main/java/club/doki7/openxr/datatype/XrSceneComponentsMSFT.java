@@ -93,6 +93,11 @@ public record XrSceneComponentsMSFT(@NotNull MemorySegment segment) implements I
             return new XrSceneComponentsMSFT(segment.asSlice(index * XrSceneComponentsMSFT.BYTES, XrSceneComponentsMSFT.BYTES));
         }
 
+        public XrSceneComponentsMSFT.Ptr at(long index, @NotNull Consumer<@NotNull XrSceneComponentsMSFT> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull XrSceneComponentsMSFT value) {
             MemorySegment s = segment.asSlice(index * XrSceneComponentsMSFT.BYTES, XrSceneComponentsMSFT.BYTES);
             s.copyFrom(value.segment);

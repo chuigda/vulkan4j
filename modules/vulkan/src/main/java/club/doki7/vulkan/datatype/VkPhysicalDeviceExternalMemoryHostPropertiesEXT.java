@@ -87,6 +87,11 @@ public record VkPhysicalDeviceExternalMemoryHostPropertiesEXT(@NotNull MemorySeg
             return new VkPhysicalDeviceExternalMemoryHostPropertiesEXT(segment.asSlice(index * VkPhysicalDeviceExternalMemoryHostPropertiesEXT.BYTES, VkPhysicalDeviceExternalMemoryHostPropertiesEXT.BYTES));
         }
 
+        public VkPhysicalDeviceExternalMemoryHostPropertiesEXT.Ptr at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceExternalMemoryHostPropertiesEXT> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkPhysicalDeviceExternalMemoryHostPropertiesEXT value) {
             MemorySegment s = segment.asSlice(index * VkPhysicalDeviceExternalMemoryHostPropertiesEXT.BYTES, VkPhysicalDeviceExternalMemoryHostPropertiesEXT.BYTES);
             s.copyFrom(value.segment);

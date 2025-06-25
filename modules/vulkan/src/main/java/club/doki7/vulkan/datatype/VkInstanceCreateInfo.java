@@ -29,9 +29,9 @@ import static club.doki7.vulkan.VkConstants.*;
 ///     VkInstanceCreateFlags flags; // optional // @link substring="VkInstanceCreateFlags" target="VkInstanceCreateFlags" @link substring="flags" target="#flags"
 ///     VkApplicationInfo const* pApplicationInfo; // optional // @link substring="VkApplicationInfo" target="VkApplicationInfo" @link substring="pApplicationInfo" target="#pApplicationInfo"
 ///     uint32_t enabledLayerCount; // optional // @link substring="enabledLayerCount" target="#enabledLayerCount"
-///     char const* const* ppEnabledLayerNames; // @link substring="ppEnabledLayerNames" target="#ppEnabledLayerNames"
+///     char const* const* ppEnabledLayerNames; // optional // @link substring="ppEnabledLayerNames" target="#ppEnabledLayerNames"
 ///     uint32_t enabledExtensionCount; // optional // @link substring="enabledExtensionCount" target="#enabledExtensionCount"
-///     char const* const* ppEnabledExtensionNames; // @link substring="ppEnabledExtensionNames" target="#ppEnabledExtensionNames"
+///     char const* const* ppEnabledExtensionNames; // optional // @link substring="ppEnabledExtensionNames" target="#ppEnabledExtensionNames"
 /// } VkInstanceCreateInfo;
 /// }
 ///
@@ -90,6 +90,11 @@ public record VkInstanceCreateInfo(@NotNull MemorySegment segment) implements IV
         /// indicate that the returned structure is a view of the original structure.
         public @NotNull VkInstanceCreateInfo at(long index) {
             return new VkInstanceCreateInfo(segment.asSlice(index * VkInstanceCreateInfo.BYTES, VkInstanceCreateInfo.BYTES));
+        }
+
+        public VkInstanceCreateInfo.Ptr at(long index, @NotNull Consumer<@NotNull VkInstanceCreateInfo> consumer) {
+            consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkInstanceCreateInfo value) {

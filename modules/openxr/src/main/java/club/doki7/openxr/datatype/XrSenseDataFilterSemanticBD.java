@@ -92,6 +92,11 @@ public record XrSenseDataFilterSemanticBD(@NotNull MemorySegment segment) implem
             return new XrSenseDataFilterSemanticBD(segment.asSlice(index * XrSenseDataFilterSemanticBD.BYTES, XrSenseDataFilterSemanticBD.BYTES));
         }
 
+        public XrSenseDataFilterSemanticBD.Ptr at(long index, @NotNull Consumer<@NotNull XrSenseDataFilterSemanticBD> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull XrSenseDataFilterSemanticBD value) {
             MemorySegment s = segment.asSlice(index * XrSenseDataFilterSemanticBD.BYTES, XrSenseDataFilterSemanticBD.BYTES);
             s.copyFrom(value.segment);

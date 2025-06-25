@@ -27,7 +27,7 @@ import static club.doki7.vulkan.VkConstants.*;
 ///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
 ///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
 ///     uint32_t bindingCount; // optional // @link substring="bindingCount" target="#bindingCount"
-///     VkDescriptorBindingFlags const* pBindingFlags; // @link substring="VkDescriptorBindingFlags" target="VkDescriptorBindingFlags" @link substring="pBindingFlags" target="#pBindingFlags"
+///     VkDescriptorBindingFlags const* pBindingFlags; // optional // @link substring="VkDescriptorBindingFlags" target="VkDescriptorBindingFlags" @link substring="pBindingFlags" target="#pBindingFlags"
 /// } VkDescriptorSetLayoutBindingFlagsCreateInfo;
 /// }
 ///
@@ -86,6 +86,11 @@ public record VkDescriptorSetLayoutBindingFlagsCreateInfo(@NotNull MemorySegment
         /// indicate that the returned structure is a view of the original structure.
         public @NotNull VkDescriptorSetLayoutBindingFlagsCreateInfo at(long index) {
             return new VkDescriptorSetLayoutBindingFlagsCreateInfo(segment.asSlice(index * VkDescriptorSetLayoutBindingFlagsCreateInfo.BYTES, VkDescriptorSetLayoutBindingFlagsCreateInfo.BYTES));
+        }
+
+        public VkDescriptorSetLayoutBindingFlagsCreateInfo.Ptr at(long index, @NotNull Consumer<@NotNull VkDescriptorSetLayoutBindingFlagsCreateInfo> consumer) {
+            consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkDescriptorSetLayoutBindingFlagsCreateInfo value) {

@@ -91,6 +91,11 @@ public record XrViewLocateFoveatedRenderingVARJO(@NotNull MemorySegment segment)
             return new XrViewLocateFoveatedRenderingVARJO(segment.asSlice(index * XrViewLocateFoveatedRenderingVARJO.BYTES, XrViewLocateFoveatedRenderingVARJO.BYTES));
         }
 
+        public XrViewLocateFoveatedRenderingVARJO.Ptr at(long index, @NotNull Consumer<@NotNull XrViewLocateFoveatedRenderingVARJO> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull XrViewLocateFoveatedRenderingVARJO value) {
             MemorySegment s = segment.asSlice(index * XrViewLocateFoveatedRenderingVARJO.BYTES, XrViewLocateFoveatedRenderingVARJO.BYTES);
             s.copyFrom(value.segment);

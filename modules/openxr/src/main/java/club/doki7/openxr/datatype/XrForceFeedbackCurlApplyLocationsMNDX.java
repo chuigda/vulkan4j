@@ -92,6 +92,11 @@ public record XrForceFeedbackCurlApplyLocationsMNDX(@NotNull MemorySegment segme
             return new XrForceFeedbackCurlApplyLocationsMNDX(segment.asSlice(index * XrForceFeedbackCurlApplyLocationsMNDX.BYTES, XrForceFeedbackCurlApplyLocationsMNDX.BYTES));
         }
 
+        public XrForceFeedbackCurlApplyLocationsMNDX.Ptr at(long index, @NotNull Consumer<@NotNull XrForceFeedbackCurlApplyLocationsMNDX> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull XrForceFeedbackCurlApplyLocationsMNDX value) {
             MemorySegment s = segment.asSlice(index * XrForceFeedbackCurlApplyLocationsMNDX.BYTES, XrForceFeedbackCurlApplyLocationsMNDX.BYTES);
             s.copyFrom(value.segment);

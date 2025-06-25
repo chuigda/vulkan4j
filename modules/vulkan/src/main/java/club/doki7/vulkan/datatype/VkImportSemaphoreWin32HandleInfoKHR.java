@@ -91,6 +91,11 @@ public record VkImportSemaphoreWin32HandleInfoKHR(@NotNull MemorySegment segment
             return new VkImportSemaphoreWin32HandleInfoKHR(segment.asSlice(index * VkImportSemaphoreWin32HandleInfoKHR.BYTES, VkImportSemaphoreWin32HandleInfoKHR.BYTES));
         }
 
+        public VkImportSemaphoreWin32HandleInfoKHR.Ptr at(long index, @NotNull Consumer<@NotNull VkImportSemaphoreWin32HandleInfoKHR> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkImportSemaphoreWin32HandleInfoKHR value) {
             MemorySegment s = segment.asSlice(index * VkImportSemaphoreWin32HandleInfoKHR.BYTES, VkImportSemaphoreWin32HandleInfoKHR.BYTES);
             s.copyFrom(value.segment);

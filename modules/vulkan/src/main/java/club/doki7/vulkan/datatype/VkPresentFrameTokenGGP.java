@@ -87,6 +87,11 @@ public record VkPresentFrameTokenGGP(@NotNull MemorySegment segment) implements 
             return new VkPresentFrameTokenGGP(segment.asSlice(index * VkPresentFrameTokenGGP.BYTES, VkPresentFrameTokenGGP.BYTES));
         }
 
+        public VkPresentFrameTokenGGP.Ptr at(long index, @NotNull Consumer<@NotNull VkPresentFrameTokenGGP> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkPresentFrameTokenGGP value) {
             MemorySegment s = segment.asSlice(index * VkPresentFrameTokenGGP.BYTES, VkPresentFrameTokenGGP.BYTES);
             s.copyFrom(value.segment);

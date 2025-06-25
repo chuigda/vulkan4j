@@ -88,6 +88,11 @@ public record VkSetLatencyMarkerInfoNV(@NotNull MemorySegment segment) implement
             return new VkSetLatencyMarkerInfoNV(segment.asSlice(index * VkSetLatencyMarkerInfoNV.BYTES, VkSetLatencyMarkerInfoNV.BYTES));
         }
 
+        public VkSetLatencyMarkerInfoNV.Ptr at(long index, @NotNull Consumer<@NotNull VkSetLatencyMarkerInfoNV> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkSetLatencyMarkerInfoNV value) {
             MemorySegment s = segment.asSlice(index * VkSetLatencyMarkerInfoNV.BYTES, VkSetLatencyMarkerInfoNV.BYTES);
             s.copyFrom(value.segment);

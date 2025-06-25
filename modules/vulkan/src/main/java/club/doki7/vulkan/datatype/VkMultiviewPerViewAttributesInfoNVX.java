@@ -88,6 +88,11 @@ public record VkMultiviewPerViewAttributesInfoNVX(@NotNull MemorySegment segment
             return new VkMultiviewPerViewAttributesInfoNVX(segment.asSlice(index * VkMultiviewPerViewAttributesInfoNVX.BYTES, VkMultiviewPerViewAttributesInfoNVX.BYTES));
         }
 
+        public VkMultiviewPerViewAttributesInfoNVX.Ptr at(long index, @NotNull Consumer<@NotNull VkMultiviewPerViewAttributesInfoNVX> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkMultiviewPerViewAttributesInfoNVX value) {
             MemorySegment s = segment.asSlice(index * VkMultiviewPerViewAttributesInfoNVX.BYTES, VkMultiviewPerViewAttributesInfoNVX.BYTES);
             s.copyFrom(value.segment);

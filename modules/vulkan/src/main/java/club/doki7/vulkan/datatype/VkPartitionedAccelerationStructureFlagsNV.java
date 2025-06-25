@@ -87,6 +87,11 @@ public record VkPartitionedAccelerationStructureFlagsNV(@NotNull MemorySegment s
             return new VkPartitionedAccelerationStructureFlagsNV(segment.asSlice(index * VkPartitionedAccelerationStructureFlagsNV.BYTES, VkPartitionedAccelerationStructureFlagsNV.BYTES));
         }
 
+        public VkPartitionedAccelerationStructureFlagsNV.Ptr at(long index, @NotNull Consumer<@NotNull VkPartitionedAccelerationStructureFlagsNV> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkPartitionedAccelerationStructureFlagsNV value) {
             MemorySegment s = segment.asSlice(index * VkPartitionedAccelerationStructureFlagsNV.BYTES, VkPartitionedAccelerationStructureFlagsNV.BYTES);
             s.copyFrom(value.segment);

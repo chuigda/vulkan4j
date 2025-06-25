@@ -27,7 +27,7 @@ import static club.doki7.vulkan.VkConstants.*;
 ///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
 ///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
 ///     size_t dataSize; // optional // @link substring="dataSize" target="#dataSize"
-///     void const* pData; // @link substring="pData" target="#pData"
+///     void const* pData; // optional // @link substring="pData" target="#pData"
 /// } VkCuModuleCreateInfoNVX;
 /// }
 ///
@@ -86,6 +86,11 @@ public record VkCuModuleCreateInfoNVX(@NotNull MemorySegment segment) implements
         /// indicate that the returned structure is a view of the original structure.
         public @NotNull VkCuModuleCreateInfoNVX at(long index) {
             return new VkCuModuleCreateInfoNVX(segment.asSlice(index * VkCuModuleCreateInfoNVX.BYTES, VkCuModuleCreateInfoNVX.BYTES));
+        }
+
+        public VkCuModuleCreateInfoNVX.Ptr at(long index, @NotNull Consumer<@NotNull VkCuModuleCreateInfoNVX> consumer) {
+            consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkCuModuleCreateInfoNVX value) {

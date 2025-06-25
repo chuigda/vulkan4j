@@ -91,6 +91,11 @@ public record XrGraphicsBindingMetalKHR(@NotNull MemorySegment segment) implemen
             return new XrGraphicsBindingMetalKHR(segment.asSlice(index * XrGraphicsBindingMetalKHR.BYTES, XrGraphicsBindingMetalKHR.BYTES));
         }
 
+        public XrGraphicsBindingMetalKHR.Ptr at(long index, @NotNull Consumer<@NotNull XrGraphicsBindingMetalKHR> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull XrGraphicsBindingMetalKHR value) {
             MemorySegment s = segment.asSlice(index * XrGraphicsBindingMetalKHR.BYTES, XrGraphicsBindingMetalKHR.BYTES);
             s.copyFrom(value.segment);

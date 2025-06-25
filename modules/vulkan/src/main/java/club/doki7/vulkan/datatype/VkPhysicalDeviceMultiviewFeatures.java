@@ -89,6 +89,11 @@ public record VkPhysicalDeviceMultiviewFeatures(@NotNull MemorySegment segment) 
             return new VkPhysicalDeviceMultiviewFeatures(segment.asSlice(index * VkPhysicalDeviceMultiviewFeatures.BYTES, VkPhysicalDeviceMultiviewFeatures.BYTES));
         }
 
+        public VkPhysicalDeviceMultiviewFeatures.Ptr at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceMultiviewFeatures> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkPhysicalDeviceMultiviewFeatures value) {
             MemorySegment s = segment.asSlice(index * VkPhysicalDeviceMultiviewFeatures.BYTES, VkPhysicalDeviceMultiviewFeatures.BYTES);
             s.copyFrom(value.segment);

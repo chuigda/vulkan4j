@@ -90,6 +90,11 @@ public record VkPhysicalDeviceLayeredApiPropertiesKHR(@NotNull MemorySegment seg
             return new VkPhysicalDeviceLayeredApiPropertiesKHR(segment.asSlice(index * VkPhysicalDeviceLayeredApiPropertiesKHR.BYTES, VkPhysicalDeviceLayeredApiPropertiesKHR.BYTES));
         }
 
+        public VkPhysicalDeviceLayeredApiPropertiesKHR.Ptr at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceLayeredApiPropertiesKHR> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkPhysicalDeviceLayeredApiPropertiesKHR value) {
             MemorySegment s = segment.asSlice(index * VkPhysicalDeviceLayeredApiPropertiesKHR.BYTES, VkPhysicalDeviceLayeredApiPropertiesKHR.BYTES);
             s.copyFrom(value.segment);
@@ -245,6 +250,12 @@ public record VkPhysicalDeviceLayeredApiPropertiesKHR(@NotNull MemorySegment seg
 
     public BytePtr deviceName() {
         return new BytePtr(deviceNameRaw());
+    }
+
+    public VkPhysicalDeviceLayeredApiPropertiesKHR deviceName(@NotNull Consumer<BytePtr> consumer) {
+        BytePtr ptr = deviceName();
+        consumer.accept(ptr);
+        return this;
     }
 
     public VkPhysicalDeviceLayeredApiPropertiesKHR deviceName(BytePtr value) {

@@ -27,7 +27,7 @@ import static club.doki7.vulkan.VkConstants.*;
 ///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
 ///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
 ///     uint32_t swapchainCount; // optional // @link substring="swapchainCount" target="#swapchainCount"
-///     uint32_t const* pDeviceMasks; // @link substring="pDeviceMasks" target="#pDeviceMasks"
+///     uint32_t const* pDeviceMasks; // optional // @link substring="pDeviceMasks" target="#pDeviceMasks"
 ///     VkDeviceGroupPresentModeFlagsKHR mode; // @link substring="VkDeviceGroupPresentModeFlagsKHR" target="VkDeviceGroupPresentModeFlagsKHR" @link substring="mode" target="#mode"
 /// } VkDeviceGroupPresentInfoKHR;
 /// }
@@ -87,6 +87,11 @@ public record VkDeviceGroupPresentInfoKHR(@NotNull MemorySegment segment) implem
         /// indicate that the returned structure is a view of the original structure.
         public @NotNull VkDeviceGroupPresentInfoKHR at(long index) {
             return new VkDeviceGroupPresentInfoKHR(segment.asSlice(index * VkDeviceGroupPresentInfoKHR.BYTES, VkDeviceGroupPresentInfoKHR.BYTES));
+        }
+
+        public VkDeviceGroupPresentInfoKHR.Ptr at(long index, @NotNull Consumer<@NotNull VkDeviceGroupPresentInfoKHR> consumer) {
+            consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkDeviceGroupPresentInfoKHR value) {

@@ -90,6 +90,11 @@ public record VkQueryPoolCreateInfo(@NotNull MemorySegment segment) implements I
             return new VkQueryPoolCreateInfo(segment.asSlice(index * VkQueryPoolCreateInfo.BYTES, VkQueryPoolCreateInfo.BYTES));
         }
 
+        public VkQueryPoolCreateInfo.Ptr at(long index, @NotNull Consumer<@NotNull VkQueryPoolCreateInfo> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkQueryPoolCreateInfo value) {
             MemorySegment s = segment.asSlice(index * VkQueryPoolCreateInfo.BYTES, VkQueryPoolCreateInfo.BYTES);
             s.copyFrom(value.segment);

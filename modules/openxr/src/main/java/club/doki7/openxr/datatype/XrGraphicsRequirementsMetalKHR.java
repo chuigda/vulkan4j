@@ -91,6 +91,11 @@ public record XrGraphicsRequirementsMetalKHR(@NotNull MemorySegment segment) imp
             return new XrGraphicsRequirementsMetalKHR(segment.asSlice(index * XrGraphicsRequirementsMetalKHR.BYTES, XrGraphicsRequirementsMetalKHR.BYTES));
         }
 
+        public XrGraphicsRequirementsMetalKHR.Ptr at(long index, @NotNull Consumer<@NotNull XrGraphicsRequirementsMetalKHR> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull XrGraphicsRequirementsMetalKHR value) {
             MemorySegment s = segment.asSlice(index * XrGraphicsRequirementsMetalKHR.BYTES, XrGraphicsRequirementsMetalKHR.BYTES);
             s.copyFrom(value.segment);

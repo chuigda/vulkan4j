@@ -88,6 +88,11 @@ public record VkCudaFunctionCreateInfoNV(@NotNull MemorySegment segment) impleme
             return new VkCudaFunctionCreateInfoNV(segment.asSlice(index * VkCudaFunctionCreateInfoNV.BYTES, VkCudaFunctionCreateInfoNV.BYTES));
         }
 
+        public VkCudaFunctionCreateInfoNV.Ptr at(long index, @NotNull Consumer<@NotNull VkCudaFunctionCreateInfoNV> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkCudaFunctionCreateInfoNV value) {
             MemorySegment s = segment.asSlice(index * VkCudaFunctionCreateInfoNV.BYTES, VkCudaFunctionCreateInfoNV.BYTES);
             s.copyFrom(value.segment);

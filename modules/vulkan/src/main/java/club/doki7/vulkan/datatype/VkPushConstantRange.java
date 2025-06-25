@@ -78,6 +78,11 @@ public record VkPushConstantRange(@NotNull MemorySegment segment) implements IVk
             return new VkPushConstantRange(segment.asSlice(index * VkPushConstantRange.BYTES, VkPushConstantRange.BYTES));
         }
 
+        public VkPushConstantRange.Ptr at(long index, @NotNull Consumer<@NotNull VkPushConstantRange> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkPushConstantRange value) {
             MemorySegment s = segment.asSlice(index * VkPushConstantRange.BYTES, VkPushConstantRange.BYTES);
             s.copyFrom(value.segment);

@@ -92,6 +92,11 @@ public record XrSpatialComponentDataQueryConditionEXT(@NotNull MemorySegment seg
             return new XrSpatialComponentDataQueryConditionEXT(segment.asSlice(index * XrSpatialComponentDataQueryConditionEXT.BYTES, XrSpatialComponentDataQueryConditionEXT.BYTES));
         }
 
+        public XrSpatialComponentDataQueryConditionEXT.Ptr at(long index, @NotNull Consumer<@NotNull XrSpatialComponentDataQueryConditionEXT> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull XrSpatialComponentDataQueryConditionEXT value) {
             MemorySegment s = segment.asSlice(index * XrSpatialComponentDataQueryConditionEXT.BYTES, XrSpatialComponentDataQueryConditionEXT.BYTES);
             s.copyFrom(value.segment);

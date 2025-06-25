@@ -87,6 +87,11 @@ public record VkQueueFamilyProperties2(@NotNull MemorySegment segment) implement
             return new VkQueueFamilyProperties2(segment.asSlice(index * VkQueueFamilyProperties2.BYTES, VkQueueFamilyProperties2.BYTES));
         }
 
+        public VkQueueFamilyProperties2.Ptr at(long index, @NotNull Consumer<@NotNull VkQueueFamilyProperties2> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkQueueFamilyProperties2 value) {
             MemorySegment s = segment.asSlice(index * VkQueueFamilyProperties2.BYTES, VkQueueFamilyProperties2.BYTES);
             s.copyFrom(value.segment);

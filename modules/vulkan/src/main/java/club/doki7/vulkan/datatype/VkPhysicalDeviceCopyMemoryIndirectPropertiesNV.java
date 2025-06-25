@@ -87,6 +87,11 @@ public record VkPhysicalDeviceCopyMemoryIndirectPropertiesNV(@NotNull MemorySegm
             return new VkPhysicalDeviceCopyMemoryIndirectPropertiesNV(segment.asSlice(index * VkPhysicalDeviceCopyMemoryIndirectPropertiesNV.BYTES, VkPhysicalDeviceCopyMemoryIndirectPropertiesNV.BYTES));
         }
 
+        public VkPhysicalDeviceCopyMemoryIndirectPropertiesNV.Ptr at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceCopyMemoryIndirectPropertiesNV> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkPhysicalDeviceCopyMemoryIndirectPropertiesNV value) {
             MemorySegment s = segment.asSlice(index * VkPhysicalDeviceCopyMemoryIndirectPropertiesNV.BYTES, VkPhysicalDeviceCopyMemoryIndirectPropertiesNV.BYTES);
             s.copyFrom(value.segment);

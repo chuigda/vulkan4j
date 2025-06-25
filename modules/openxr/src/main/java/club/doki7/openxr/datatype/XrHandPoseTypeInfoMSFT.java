@@ -91,6 +91,11 @@ public record XrHandPoseTypeInfoMSFT(@NotNull MemorySegment segment) implements 
             return new XrHandPoseTypeInfoMSFT(segment.asSlice(index * XrHandPoseTypeInfoMSFT.BYTES, XrHandPoseTypeInfoMSFT.BYTES));
         }
 
+        public XrHandPoseTypeInfoMSFT.Ptr at(long index, @NotNull Consumer<@NotNull XrHandPoseTypeInfoMSFT> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull XrHandPoseTypeInfoMSFT value) {
             MemorySegment s = segment.asSlice(index * XrHandPoseTypeInfoMSFT.BYTES, XrHandPoseTypeInfoMSFT.BYTES);
             s.copyFrom(value.segment);

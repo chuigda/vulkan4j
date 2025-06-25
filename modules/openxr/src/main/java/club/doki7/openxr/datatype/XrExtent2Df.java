@@ -81,6 +81,11 @@ public record XrExtent2Df(@NotNull MemorySegment segment) implements IXrExtent2D
             return new XrExtent2Df(segment.asSlice(index * XrExtent2Df.BYTES, XrExtent2Df.BYTES));
         }
 
+        public XrExtent2Df.Ptr at(long index, @NotNull Consumer<@NotNull XrExtent2Df> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull XrExtent2Df value) {
             MemorySegment s = segment.asSlice(index * XrExtent2Df.BYTES, XrExtent2Df.BYTES);
             s.copyFrom(value.segment);

@@ -87,6 +87,11 @@ public record VkPhysicalDeviceExternalFormatResolveFeaturesANDROID(@NotNull Memo
             return new VkPhysicalDeviceExternalFormatResolveFeaturesANDROID(segment.asSlice(index * VkPhysicalDeviceExternalFormatResolveFeaturesANDROID.BYTES, VkPhysicalDeviceExternalFormatResolveFeaturesANDROID.BYTES));
         }
 
+        public VkPhysicalDeviceExternalFormatResolveFeaturesANDROID.Ptr at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceExternalFormatResolveFeaturesANDROID> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkPhysicalDeviceExternalFormatResolveFeaturesANDROID value) {
             MemorySegment s = segment.asSlice(index * VkPhysicalDeviceExternalFormatResolveFeaturesANDROID.BYTES, VkPhysicalDeviceExternalFormatResolveFeaturesANDROID.BYTES);
             s.copyFrom(value.segment);

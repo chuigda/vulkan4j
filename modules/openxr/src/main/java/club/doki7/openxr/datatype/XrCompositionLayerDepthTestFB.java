@@ -92,6 +92,11 @@ public record XrCompositionLayerDepthTestFB(@NotNull MemorySegment segment) impl
             return new XrCompositionLayerDepthTestFB(segment.asSlice(index * XrCompositionLayerDepthTestFB.BYTES, XrCompositionLayerDepthTestFB.BYTES));
         }
 
+        public XrCompositionLayerDepthTestFB.Ptr at(long index, @NotNull Consumer<@NotNull XrCompositionLayerDepthTestFB> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull XrCompositionLayerDepthTestFB value) {
             MemorySegment s = segment.asSlice(index * XrCompositionLayerDepthTestFB.BYTES, XrCompositionLayerDepthTestFB.BYTES);
             s.copyFrom(value.segment);

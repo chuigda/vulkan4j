@@ -92,6 +92,11 @@ public record VkSetDescriptorBufferOffsetsInfoEXT(@NotNull MemorySegment segment
             return new VkSetDescriptorBufferOffsetsInfoEXT(segment.asSlice(index * VkSetDescriptorBufferOffsetsInfoEXT.BYTES, VkSetDescriptorBufferOffsetsInfoEXT.BYTES));
         }
 
+        public VkSetDescriptorBufferOffsetsInfoEXT.Ptr at(long index, @NotNull Consumer<@NotNull VkSetDescriptorBufferOffsetsInfoEXT> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkSetDescriptorBufferOffsetsInfoEXT value) {
             MemorySegment s = segment.asSlice(index * VkSetDescriptorBufferOffsetsInfoEXT.BYTES, VkSetDescriptorBufferOffsetsInfoEXT.BYTES);
             s.copyFrom(value.segment);

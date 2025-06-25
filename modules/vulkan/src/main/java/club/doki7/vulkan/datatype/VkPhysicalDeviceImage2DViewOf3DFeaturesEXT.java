@@ -88,6 +88,11 @@ public record VkPhysicalDeviceImage2DViewOf3DFeaturesEXT(@NotNull MemorySegment 
             return new VkPhysicalDeviceImage2DViewOf3DFeaturesEXT(segment.asSlice(index * VkPhysicalDeviceImage2DViewOf3DFeaturesEXT.BYTES, VkPhysicalDeviceImage2DViewOf3DFeaturesEXT.BYTES));
         }
 
+        public VkPhysicalDeviceImage2DViewOf3DFeaturesEXT.Ptr at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceImage2DViewOf3DFeaturesEXT> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkPhysicalDeviceImage2DViewOf3DFeaturesEXT value) {
             MemorySegment s = segment.asSlice(index * VkPhysicalDeviceImage2DViewOf3DFeaturesEXT.BYTES, VkPhysicalDeviceImage2DViewOf3DFeaturesEXT.BYTES);
             s.copyFrom(value.segment);

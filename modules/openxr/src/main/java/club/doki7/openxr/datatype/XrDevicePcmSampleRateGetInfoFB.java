@@ -91,6 +91,11 @@ public record XrDevicePcmSampleRateGetInfoFB(@NotNull MemorySegment segment) imp
             return new XrDevicePcmSampleRateGetInfoFB(segment.asSlice(index * XrDevicePcmSampleRateGetInfoFB.BYTES, XrDevicePcmSampleRateGetInfoFB.BYTES));
         }
 
+        public XrDevicePcmSampleRateGetInfoFB.Ptr at(long index, @NotNull Consumer<@NotNull XrDevicePcmSampleRateGetInfoFB> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull XrDevicePcmSampleRateGetInfoFB value) {
             MemorySegment s = segment.asSlice(index * XrDevicePcmSampleRateGetInfoFB.BYTES, XrDevicePcmSampleRateGetInfoFB.BYTES);
             s.copyFrom(value.segment);

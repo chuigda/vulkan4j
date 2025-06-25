@@ -91,6 +91,11 @@ public record XrSystemGetInfo(@NotNull MemorySegment segment) implements IXrSyst
             return new XrSystemGetInfo(segment.asSlice(index * XrSystemGetInfo.BYTES, XrSystemGetInfo.BYTES));
         }
 
+        public XrSystemGetInfo.Ptr at(long index, @NotNull Consumer<@NotNull XrSystemGetInfo> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull XrSystemGetInfo value) {
             MemorySegment s = segment.asSlice(index * XrSystemGetInfo.BYTES, XrSystemGetInfo.BYTES);
             s.copyFrom(value.segment);

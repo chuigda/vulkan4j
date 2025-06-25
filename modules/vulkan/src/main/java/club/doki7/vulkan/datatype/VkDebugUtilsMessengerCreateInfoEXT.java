@@ -91,6 +91,11 @@ public record VkDebugUtilsMessengerCreateInfoEXT(@NotNull MemorySegment segment)
             return new VkDebugUtilsMessengerCreateInfoEXT(segment.asSlice(index * VkDebugUtilsMessengerCreateInfoEXT.BYTES, VkDebugUtilsMessengerCreateInfoEXT.BYTES));
         }
 
+        public VkDebugUtilsMessengerCreateInfoEXT.Ptr at(long index, @NotNull Consumer<@NotNull VkDebugUtilsMessengerCreateInfoEXT> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkDebugUtilsMessengerCreateInfoEXT value) {
             MemorySegment s = segment.asSlice(index * VkDebugUtilsMessengerCreateInfoEXT.BYTES, VkDebugUtilsMessengerCreateInfoEXT.BYTES);
             s.copyFrom(value.segment);

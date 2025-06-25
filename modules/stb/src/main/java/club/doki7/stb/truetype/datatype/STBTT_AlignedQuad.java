@@ -79,6 +79,11 @@ public record STBTT_AlignedQuad(@NotNull MemorySegment segment) implements ISTBT
             return new STBTT_AlignedQuad(segment.asSlice(index * STBTT_AlignedQuad.BYTES, STBTT_AlignedQuad.BYTES));
         }
 
+        public STBTT_AlignedQuad.Ptr at(long index, @NotNull Consumer<@NotNull STBTT_AlignedQuad> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull STBTT_AlignedQuad value) {
             MemorySegment s = segment.asSlice(index * STBTT_AlignedQuad.BYTES, STBTT_AlignedQuad.BYTES);
             s.copyFrom(value.segment);

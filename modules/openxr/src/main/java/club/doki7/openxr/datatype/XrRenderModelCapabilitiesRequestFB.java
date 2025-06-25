@@ -91,6 +91,11 @@ public record XrRenderModelCapabilitiesRequestFB(@NotNull MemorySegment segment)
             return new XrRenderModelCapabilitiesRequestFB(segment.asSlice(index * XrRenderModelCapabilitiesRequestFB.BYTES, XrRenderModelCapabilitiesRequestFB.BYTES));
         }
 
+        public XrRenderModelCapabilitiesRequestFB.Ptr at(long index, @NotNull Consumer<@NotNull XrRenderModelCapabilitiesRequestFB> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull XrRenderModelCapabilitiesRequestFB value) {
             MemorySegment s = segment.asSlice(index * XrRenderModelCapabilitiesRequestFB.BYTES, XrRenderModelCapabilitiesRequestFB.BYTES);
             s.copyFrom(value.segment);

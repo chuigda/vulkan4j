@@ -87,6 +87,11 @@ public record VkCopyCommandTransformInfoQCOM(@NotNull MemorySegment segment) imp
             return new VkCopyCommandTransformInfoQCOM(segment.asSlice(index * VkCopyCommandTransformInfoQCOM.BYTES, VkCopyCommandTransformInfoQCOM.BYTES));
         }
 
+        public VkCopyCommandTransformInfoQCOM.Ptr at(long index, @NotNull Consumer<@NotNull VkCopyCommandTransformInfoQCOM> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkCopyCommandTransformInfoQCOM value) {
             MemorySegment s = segment.asSlice(index * VkCopyCommandTransformInfoQCOM.BYTES, VkCopyCommandTransformInfoQCOM.BYTES);
             s.copyFrom(value.segment);

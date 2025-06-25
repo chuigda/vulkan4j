@@ -31,11 +31,11 @@ import static club.doki7.vulkan.VkConstants.*;
 ///     int32_t messageIdNumber; // @link substring="messageIdNumber" target="#messageIdNumber"
 ///     char const* pMessage; // optional // @link substring="pMessage" target="#pMessage"
 ///     uint32_t queueLabelCount; // optional // @link substring="queueLabelCount" target="#queueLabelCount"
-///     VkDebugUtilsLabelEXT const* pQueueLabels; // @link substring="VkDebugUtilsLabelEXT" target="VkDebugUtilsLabelEXT" @link substring="pQueueLabels" target="#pQueueLabels"
+///     VkDebugUtilsLabelEXT const* pQueueLabels; // optional // @link substring="VkDebugUtilsLabelEXT" target="VkDebugUtilsLabelEXT" @link substring="pQueueLabels" target="#pQueueLabels"
 ///     uint32_t cmdBufLabelCount; // optional // @link substring="cmdBufLabelCount" target="#cmdBufLabelCount"
-///     VkDebugUtilsLabelEXT const* pCmdBufLabels; // @link substring="VkDebugUtilsLabelEXT" target="VkDebugUtilsLabelEXT" @link substring="pCmdBufLabels" target="#pCmdBufLabels"
+///     VkDebugUtilsLabelEXT const* pCmdBufLabels; // optional // @link substring="VkDebugUtilsLabelEXT" target="VkDebugUtilsLabelEXT" @link substring="pCmdBufLabels" target="#pCmdBufLabels"
 ///     uint32_t objectCount; // optional // @link substring="objectCount" target="#objectCount"
-///     VkDebugUtilsObjectNameInfoEXT const* pObjects; // @link substring="VkDebugUtilsObjectNameInfoEXT" target="VkDebugUtilsObjectNameInfoEXT" @link substring="pObjects" target="#pObjects"
+///     VkDebugUtilsObjectNameInfoEXT const* pObjects; // optional // @link substring="VkDebugUtilsObjectNameInfoEXT" target="VkDebugUtilsObjectNameInfoEXT" @link substring="pObjects" target="#pObjects"
 /// } VkDebugUtilsMessengerCallbackDataEXT;
 /// }
 ///
@@ -94,6 +94,11 @@ public record VkDebugUtilsMessengerCallbackDataEXT(@NotNull MemorySegment segmen
         /// indicate that the returned structure is a view of the original structure.
         public @NotNull VkDebugUtilsMessengerCallbackDataEXT at(long index) {
             return new VkDebugUtilsMessengerCallbackDataEXT(segment.asSlice(index * VkDebugUtilsMessengerCallbackDataEXT.BYTES, VkDebugUtilsMessengerCallbackDataEXT.BYTES));
+        }
+
+        public VkDebugUtilsMessengerCallbackDataEXT.Ptr at(long index, @NotNull Consumer<@NotNull VkDebugUtilsMessengerCallbackDataEXT> consumer) {
+            consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkDebugUtilsMessengerCallbackDataEXT value) {

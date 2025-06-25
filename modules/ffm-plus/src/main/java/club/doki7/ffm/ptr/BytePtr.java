@@ -12,6 +12,7 @@ import java.lang.foreign.MemorySegment;
 import java.lang.foreign.ValueLayout;
 import java.nio.Buffer;
 import java.nio.ByteBuffer;
+import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
 import java.util.NoSuchElementException;
@@ -185,6 +186,16 @@ public record BytePtr(@NotNull MemorySegment segment) implements IPointer, Itera
 
     public static @NotNull BytePtr allocate(@NotNull Arena arena, byte @NotNull [] bytes) {
         return new BytePtr(arena.allocateFrom(ValueLayout.JAVA_BYTE, bytes));
+    }
+
+    public static @NotNull BytePtr allocate(@NotNull Arena arena, Collection<Byte> bytes) {
+        BytePtr ret = allocate(arena, bytes.size());
+        int i = 0;
+        for (byte value : bytes) {
+            ret.write(i, value);
+            i += 1;
+        }
+        return ret;
     }
 
     public static @NotNull BytePtr allocateV(@NotNull Arena arena, byte value0, byte ...values) {

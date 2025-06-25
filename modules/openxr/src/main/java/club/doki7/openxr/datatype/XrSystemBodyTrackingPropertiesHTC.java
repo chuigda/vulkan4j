@@ -91,6 +91,11 @@ public record XrSystemBodyTrackingPropertiesHTC(@NotNull MemorySegment segment) 
             return new XrSystemBodyTrackingPropertiesHTC(segment.asSlice(index * XrSystemBodyTrackingPropertiesHTC.BYTES, XrSystemBodyTrackingPropertiesHTC.BYTES));
         }
 
+        public XrSystemBodyTrackingPropertiesHTC.Ptr at(long index, @NotNull Consumer<@NotNull XrSystemBodyTrackingPropertiesHTC> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull XrSystemBodyTrackingPropertiesHTC value) {
             MemorySegment s = segment.asSlice(index * XrSystemBodyTrackingPropertiesHTC.BYTES, XrSystemBodyTrackingPropertiesHTC.BYTES);
             s.copyFrom(value.segment);

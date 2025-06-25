@@ -93,6 +93,11 @@ public record XrSpaceListSaveInfoFB(@NotNull MemorySegment segment) implements I
             return new XrSpaceListSaveInfoFB(segment.asSlice(index * XrSpaceListSaveInfoFB.BYTES, XrSpaceListSaveInfoFB.BYTES));
         }
 
+        public XrSpaceListSaveInfoFB.Ptr at(long index, @NotNull Consumer<@NotNull XrSpaceListSaveInfoFB> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull XrSpaceListSaveInfoFB value) {
             MemorySegment s = segment.asSlice(index * XrSpaceListSaveInfoFB.BYTES, XrSpaceListSaveInfoFB.BYTES);
             s.copyFrom(value.segment);

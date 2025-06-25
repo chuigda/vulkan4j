@@ -29,7 +29,7 @@ import static club.doki7.vulkan.VkConstants.*;
 ///     VkPipelineDiscardRectangleStateCreateFlagsEXT flags; // optional // @link substring="VkPipelineDiscardRectangleStateCreateFlagsEXT" target="VkPipelineDiscardRectangleStateCreateFlagsEXT" @link substring="flags" target="#flags"
 ///     VkDiscardRectangleModeEXT discardRectangleMode; // @link substring="VkDiscardRectangleModeEXT" target="VkDiscardRectangleModeEXT" @link substring="discardRectangleMode" target="#discardRectangleMode"
 ///     uint32_t discardRectangleCount; // optional // @link substring="discardRectangleCount" target="#discardRectangleCount"
-///     VkRect2D const* pDiscardRectangles; // @link substring="VkRect2D" target="VkRect2D" @link substring="pDiscardRectangles" target="#pDiscardRectangles"
+///     VkRect2D const* pDiscardRectangles; // optional // @link substring="VkRect2D" target="VkRect2D" @link substring="pDiscardRectangles" target="#pDiscardRectangles"
 /// } VkPipelineDiscardRectangleStateCreateInfoEXT;
 /// }
 ///
@@ -88,6 +88,11 @@ public record VkPipelineDiscardRectangleStateCreateInfoEXT(@NotNull MemorySegmen
         /// indicate that the returned structure is a view of the original structure.
         public @NotNull VkPipelineDiscardRectangleStateCreateInfoEXT at(long index) {
             return new VkPipelineDiscardRectangleStateCreateInfoEXT(segment.asSlice(index * VkPipelineDiscardRectangleStateCreateInfoEXT.BYTES, VkPipelineDiscardRectangleStateCreateInfoEXT.BYTES));
+        }
+
+        public VkPipelineDiscardRectangleStateCreateInfoEXT.Ptr at(long index, @NotNull Consumer<@NotNull VkPipelineDiscardRectangleStateCreateInfoEXT> consumer) {
+            consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkPipelineDiscardRectangleStateCreateInfoEXT value) {

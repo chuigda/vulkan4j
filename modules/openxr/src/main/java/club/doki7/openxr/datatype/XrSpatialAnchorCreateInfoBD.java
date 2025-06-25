@@ -93,6 +93,11 @@ public record XrSpatialAnchorCreateInfoBD(@NotNull MemorySegment segment) implem
             return new XrSpatialAnchorCreateInfoBD(segment.asSlice(index * XrSpatialAnchorCreateInfoBD.BYTES, XrSpatialAnchorCreateInfoBD.BYTES));
         }
 
+        public XrSpatialAnchorCreateInfoBD.Ptr at(long index, @NotNull Consumer<@NotNull XrSpatialAnchorCreateInfoBD> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull XrSpatialAnchorCreateInfoBD value) {
             MemorySegment s = segment.asSlice(index * XrSpatialAnchorCreateInfoBD.BYTES, XrSpatialAnchorCreateInfoBD.BYTES);
             s.copyFrom(value.segment);

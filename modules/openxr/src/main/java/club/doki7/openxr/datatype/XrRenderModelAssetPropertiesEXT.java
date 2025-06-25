@@ -92,6 +92,11 @@ public record XrRenderModelAssetPropertiesEXT(@NotNull MemorySegment segment) im
             return new XrRenderModelAssetPropertiesEXT(segment.asSlice(index * XrRenderModelAssetPropertiesEXT.BYTES, XrRenderModelAssetPropertiesEXT.BYTES));
         }
 
+        public XrRenderModelAssetPropertiesEXT.Ptr at(long index, @NotNull Consumer<@NotNull XrRenderModelAssetPropertiesEXT> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull XrRenderModelAssetPropertiesEXT value) {
             MemorySegment s = segment.asSlice(index * XrRenderModelAssetPropertiesEXT.BYTES, XrRenderModelAssetPropertiesEXT.BYTES);
             s.copyFrom(value.segment);

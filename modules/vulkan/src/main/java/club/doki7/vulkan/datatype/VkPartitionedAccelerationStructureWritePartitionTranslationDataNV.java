@@ -77,6 +77,11 @@ public record VkPartitionedAccelerationStructureWritePartitionTranslationDataNV(
             return new VkPartitionedAccelerationStructureWritePartitionTranslationDataNV(segment.asSlice(index * VkPartitionedAccelerationStructureWritePartitionTranslationDataNV.BYTES, VkPartitionedAccelerationStructureWritePartitionTranslationDataNV.BYTES));
         }
 
+        public VkPartitionedAccelerationStructureWritePartitionTranslationDataNV.Ptr at(long index, @NotNull Consumer<@NotNull VkPartitionedAccelerationStructureWritePartitionTranslationDataNV> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkPartitionedAccelerationStructureWritePartitionTranslationDataNV value) {
             MemorySegment s = segment.asSlice(index * VkPartitionedAccelerationStructureWritePartitionTranslationDataNV.BYTES, VkPartitionedAccelerationStructureWritePartitionTranslationDataNV.BYTES);
             s.copyFrom(value.segment);
@@ -181,6 +186,12 @@ public record VkPartitionedAccelerationStructureWritePartitionTranslationDataNV(
 
     public FloatPtr partitionTranslation() {
         return new FloatPtr(partitionTranslationRaw());
+    }
+
+    public VkPartitionedAccelerationStructureWritePartitionTranslationDataNV partitionTranslation(@NotNull Consumer<FloatPtr> consumer) {
+        FloatPtr ptr = partitionTranslation();
+        consumer.accept(ptr);
+        return this;
     }
 
     public VkPartitionedAccelerationStructureWritePartitionTranslationDataNV partitionTranslation(FloatPtr value) {

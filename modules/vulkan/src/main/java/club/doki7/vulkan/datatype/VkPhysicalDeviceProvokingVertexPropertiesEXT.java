@@ -88,6 +88,11 @@ public record VkPhysicalDeviceProvokingVertexPropertiesEXT(@NotNull MemorySegmen
             return new VkPhysicalDeviceProvokingVertexPropertiesEXT(segment.asSlice(index * VkPhysicalDeviceProvokingVertexPropertiesEXT.BYTES, VkPhysicalDeviceProvokingVertexPropertiesEXT.BYTES));
         }
 
+        public VkPhysicalDeviceProvokingVertexPropertiesEXT.Ptr at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceProvokingVertexPropertiesEXT> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkPhysicalDeviceProvokingVertexPropertiesEXT value) {
             MemorySegment s = segment.asSlice(index * VkPhysicalDeviceProvokingVertexPropertiesEXT.BYTES, VkPhysicalDeviceProvokingVertexPropertiesEXT.BYTES);
             s.copyFrom(value.segment);

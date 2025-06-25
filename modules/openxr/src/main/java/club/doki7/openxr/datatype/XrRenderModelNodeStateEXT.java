@@ -81,6 +81,11 @@ public record XrRenderModelNodeStateEXT(@NotNull MemorySegment segment) implemen
             return new XrRenderModelNodeStateEXT(segment.asSlice(index * XrRenderModelNodeStateEXT.BYTES, XrRenderModelNodeStateEXT.BYTES));
         }
 
+        public XrRenderModelNodeStateEXT.Ptr at(long index, @NotNull Consumer<@NotNull XrRenderModelNodeStateEXT> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull XrRenderModelNodeStateEXT value) {
             MemorySegment s = segment.asSlice(index * XrRenderModelNodeStateEXT.BYTES, XrRenderModelNodeStateEXT.BYTES);
             s.copyFrom(value.segment);

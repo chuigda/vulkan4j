@@ -91,6 +91,11 @@ public record XrSystemPassthroughColorLutPropertiesMETA(@NotNull MemorySegment s
             return new XrSystemPassthroughColorLutPropertiesMETA(segment.asSlice(index * XrSystemPassthroughColorLutPropertiesMETA.BYTES, XrSystemPassthroughColorLutPropertiesMETA.BYTES));
         }
 
+        public XrSystemPassthroughColorLutPropertiesMETA.Ptr at(long index, @NotNull Consumer<@NotNull XrSystemPassthroughColorLutPropertiesMETA> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull XrSystemPassthroughColorLutPropertiesMETA value) {
             MemorySegment s = segment.asSlice(index * XrSystemPassthroughColorLutPropertiesMETA.BYTES, XrSystemPassthroughColorLutPropertiesMETA.BYTES);
             s.copyFrom(value.segment);

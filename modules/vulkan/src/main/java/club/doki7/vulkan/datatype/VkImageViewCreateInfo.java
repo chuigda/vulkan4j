@@ -92,6 +92,11 @@ public record VkImageViewCreateInfo(@NotNull MemorySegment segment) implements I
             return new VkImageViewCreateInfo(segment.asSlice(index * VkImageViewCreateInfo.BYTES, VkImageViewCreateInfo.BYTES));
         }
 
+        public VkImageViewCreateInfo.Ptr at(long index, @NotNull Consumer<@NotNull VkImageViewCreateInfo> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkImageViewCreateInfo value) {
             MemorySegment s = segment.asSlice(index * VkImageViewCreateInfo.BYTES, VkImageViewCreateInfo.BYTES);
             s.copyFrom(value.segment);

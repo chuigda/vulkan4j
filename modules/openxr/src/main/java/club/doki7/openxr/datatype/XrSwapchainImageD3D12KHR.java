@@ -91,6 +91,11 @@ public record XrSwapchainImageD3D12KHR(@NotNull MemorySegment segment) implement
             return new XrSwapchainImageD3D12KHR(segment.asSlice(index * XrSwapchainImageD3D12KHR.BYTES, XrSwapchainImageD3D12KHR.BYTES));
         }
 
+        public XrSwapchainImageD3D12KHR.Ptr at(long index, @NotNull Consumer<@NotNull XrSwapchainImageD3D12KHR> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull XrSwapchainImageD3D12KHR value) {
             MemorySegment s = segment.asSlice(index * XrSwapchainImageD3D12KHR.BYTES, XrSwapchainImageD3D12KHR.BYTES);
             s.copyFrom(value.segment);

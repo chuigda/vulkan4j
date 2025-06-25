@@ -92,6 +92,11 @@ public record XrEventDataVirtualKeyboardCommitTextMETA(@NotNull MemorySegment se
             return new XrEventDataVirtualKeyboardCommitTextMETA(segment.asSlice(index * XrEventDataVirtualKeyboardCommitTextMETA.BYTES, XrEventDataVirtualKeyboardCommitTextMETA.BYTES));
         }
 
+        public XrEventDataVirtualKeyboardCommitTextMETA.Ptr at(long index, @NotNull Consumer<@NotNull XrEventDataVirtualKeyboardCommitTextMETA> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull XrEventDataVirtualKeyboardCommitTextMETA value) {
             MemorySegment s = segment.asSlice(index * XrEventDataVirtualKeyboardCommitTextMETA.BYTES, XrEventDataVirtualKeyboardCommitTextMETA.BYTES);
             s.copyFrom(value.segment);
@@ -233,6 +238,12 @@ public record XrEventDataVirtualKeyboardCommitTextMETA(@NotNull MemorySegment se
 
     public BytePtr text() {
         return new BytePtr(textRaw());
+    }
+
+    public XrEventDataVirtualKeyboardCommitTextMETA text(@NotNull Consumer<BytePtr> consumer) {
+        BytePtr ptr = text();
+        consumer.accept(ptr);
+        return this;
     }
 
     public XrEventDataVirtualKeyboardCommitTextMETA text(BytePtr value) {

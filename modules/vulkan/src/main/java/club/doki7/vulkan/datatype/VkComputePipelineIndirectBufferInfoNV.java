@@ -89,6 +89,11 @@ public record VkComputePipelineIndirectBufferInfoNV(@NotNull MemorySegment segme
             return new VkComputePipelineIndirectBufferInfoNV(segment.asSlice(index * VkComputePipelineIndirectBufferInfoNV.BYTES, VkComputePipelineIndirectBufferInfoNV.BYTES));
         }
 
+        public VkComputePipelineIndirectBufferInfoNV.Ptr at(long index, @NotNull Consumer<@NotNull VkComputePipelineIndirectBufferInfoNV> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkComputePipelineIndirectBufferInfoNV value) {
             MemorySegment s = segment.asSlice(index * VkComputePipelineIndirectBufferInfoNV.BYTES, VkComputePipelineIndirectBufferInfoNV.BYTES);
             s.copyFrom(value.segment);

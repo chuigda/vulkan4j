@@ -89,6 +89,11 @@ public record VkCommandBufferInheritanceViewportScissorInfoNV(@NotNull MemorySeg
             return new VkCommandBufferInheritanceViewportScissorInfoNV(segment.asSlice(index * VkCommandBufferInheritanceViewportScissorInfoNV.BYTES, VkCommandBufferInheritanceViewportScissorInfoNV.BYTES));
         }
 
+        public VkCommandBufferInheritanceViewportScissorInfoNV.Ptr at(long index, @NotNull Consumer<@NotNull VkCommandBufferInheritanceViewportScissorInfoNV> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkCommandBufferInheritanceViewportScissorInfoNV value) {
             MemorySegment s = segment.asSlice(index * VkCommandBufferInheritanceViewportScissorInfoNV.BYTES, VkCommandBufferInheritanceViewportScissorInfoNV.BYTES);
             s.copyFrom(value.segment);

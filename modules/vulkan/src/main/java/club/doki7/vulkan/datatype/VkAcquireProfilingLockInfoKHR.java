@@ -88,6 +88,11 @@ public record VkAcquireProfilingLockInfoKHR(@NotNull MemorySegment segment) impl
             return new VkAcquireProfilingLockInfoKHR(segment.asSlice(index * VkAcquireProfilingLockInfoKHR.BYTES, VkAcquireProfilingLockInfoKHR.BYTES));
         }
 
+        public VkAcquireProfilingLockInfoKHR.Ptr at(long index, @NotNull Consumer<@NotNull VkAcquireProfilingLockInfoKHR> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkAcquireProfilingLockInfoKHR value) {
             MemorySegment s = segment.asSlice(index * VkAcquireProfilingLockInfoKHR.BYTES, VkAcquireProfilingLockInfoKHR.BYTES);
             s.copyFrom(value.segment);

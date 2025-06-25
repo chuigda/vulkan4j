@@ -87,6 +87,11 @@ public record VkPhysicalDeviceCubicClampFeaturesQCOM(@NotNull MemorySegment segm
             return new VkPhysicalDeviceCubicClampFeaturesQCOM(segment.asSlice(index * VkPhysicalDeviceCubicClampFeaturesQCOM.BYTES, VkPhysicalDeviceCubicClampFeaturesQCOM.BYTES));
         }
 
+        public VkPhysicalDeviceCubicClampFeaturesQCOM.Ptr at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceCubicClampFeaturesQCOM> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkPhysicalDeviceCubicClampFeaturesQCOM value) {
             MemorySegment s = segment.asSlice(index * VkPhysicalDeviceCubicClampFeaturesQCOM.BYTES, VkPhysicalDeviceCubicClampFeaturesQCOM.BYTES);
             s.copyFrom(value.segment);

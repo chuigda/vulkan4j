@@ -94,8 +94,9 @@ class Application {
                     .pApplicationInfo(appInfo);
 
             if (ENABLE_VALIDATION_LAYERS) {
-                instanceCreateInfo.enabledLayerCount(1)
-                        .ppEnabledLayerNames(PointerPtr.allocateV(arena, BytePtr.allocateString(arena, VALIDATION_LAYER_NAME)));
+                                instanceCreateInfo
+                        .enabledLayerCount(1)
+                        .ppEnabledLayerNames(PointerPtr.allocateStrings(arena, VALIDATION_LAYER_NAME));
 
                 var debugCreateInfo = VkDebugUtilsMessengerCreateInfoEXT.allocate(arena);
                 populateDebugMessengerCreateInfo(debugCreateInfo);

@@ -88,6 +88,11 @@ public record VkSemaphoreGetSciSyncInfoNV(@NotNull MemorySegment segment) implem
             return new VkSemaphoreGetSciSyncInfoNV(segment.asSlice(index * VkSemaphoreGetSciSyncInfoNV.BYTES, VkSemaphoreGetSciSyncInfoNV.BYTES));
         }
 
+        public VkSemaphoreGetSciSyncInfoNV.Ptr at(long index, @NotNull Consumer<@NotNull VkSemaphoreGetSciSyncInfoNV> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkSemaphoreGetSciSyncInfoNV value) {
             MemorySegment s = segment.asSlice(index * VkSemaphoreGetSciSyncInfoNV.BYTES, VkSemaphoreGetSciSyncInfoNV.BYTES);
             s.copyFrom(value.segment);

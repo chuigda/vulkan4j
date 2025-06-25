@@ -96,6 +96,11 @@ public record VkCooperativeMatrixFlexibleDimensionsPropertiesNV(@NotNull MemoryS
             return new VkCooperativeMatrixFlexibleDimensionsPropertiesNV(segment.asSlice(index * VkCooperativeMatrixFlexibleDimensionsPropertiesNV.BYTES, VkCooperativeMatrixFlexibleDimensionsPropertiesNV.BYTES));
         }
 
+        public VkCooperativeMatrixFlexibleDimensionsPropertiesNV.Ptr at(long index, @NotNull Consumer<@NotNull VkCooperativeMatrixFlexibleDimensionsPropertiesNV> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkCooperativeMatrixFlexibleDimensionsPropertiesNV value) {
             MemorySegment s = segment.asSlice(index * VkCooperativeMatrixFlexibleDimensionsPropertiesNV.BYTES, VkCooperativeMatrixFlexibleDimensionsPropertiesNV.BYTES);
             s.copyFrom(value.segment);

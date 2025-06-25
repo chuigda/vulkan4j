@@ -78,6 +78,11 @@ public record VkSparseImageFormatProperties(@NotNull MemorySegment segment) impl
             return new VkSparseImageFormatProperties(segment.asSlice(index * VkSparseImageFormatProperties.BYTES, VkSparseImageFormatProperties.BYTES));
         }
 
+        public VkSparseImageFormatProperties.Ptr at(long index, @NotNull Consumer<@NotNull VkSparseImageFormatProperties> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkSparseImageFormatProperties value) {
             MemorySegment s = segment.asSlice(index * VkSparseImageFormatProperties.BYTES, VkSparseImageFormatProperties.BYTES);
             s.copyFrom(value.segment);

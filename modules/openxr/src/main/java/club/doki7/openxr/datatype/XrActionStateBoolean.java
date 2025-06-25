@@ -94,6 +94,11 @@ public record XrActionStateBoolean(@NotNull MemorySegment segment) implements IX
             return new XrActionStateBoolean(segment.asSlice(index * XrActionStateBoolean.BYTES, XrActionStateBoolean.BYTES));
         }
 
+        public XrActionStateBoolean.Ptr at(long index, @NotNull Consumer<@NotNull XrActionStateBoolean> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull XrActionStateBoolean value) {
             MemorySegment s = segment.asSlice(index * XrActionStateBoolean.BYTES, XrActionStateBoolean.BYTES);
             s.copyFrom(value.segment);

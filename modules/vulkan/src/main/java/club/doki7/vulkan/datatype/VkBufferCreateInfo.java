@@ -31,7 +31,7 @@ import static club.doki7.vulkan.VkConstants.*;
 ///     VkBufferUsageFlags usage; // @link substring="VkBufferUsageFlags" target="VkBufferUsageFlags" @link substring="usage" target="#usage"
 ///     VkSharingMode sharingMode; // @link substring="VkSharingMode" target="VkSharingMode" @link substring="sharingMode" target="#sharingMode"
 ///     uint32_t queueFamilyIndexCount; // optional // @link substring="queueFamilyIndexCount" target="#queueFamilyIndexCount"
-///     uint32_t const* pQueueFamilyIndices; // @link substring="pQueueFamilyIndices" target="#pQueueFamilyIndices"
+///     uint32_t const* pQueueFamilyIndices; // optional // @link substring="pQueueFamilyIndices" target="#pQueueFamilyIndices"
 /// } VkBufferCreateInfo;
 /// }
 ///
@@ -90,6 +90,11 @@ public record VkBufferCreateInfo(@NotNull MemorySegment segment) implements IVkB
         /// indicate that the returned structure is a view of the original structure.
         public @NotNull VkBufferCreateInfo at(long index) {
             return new VkBufferCreateInfo(segment.asSlice(index * VkBufferCreateInfo.BYTES, VkBufferCreateInfo.BYTES));
+        }
+
+        public VkBufferCreateInfo.Ptr at(long index, @NotNull Consumer<@NotNull VkBufferCreateInfo> consumer) {
+            consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkBufferCreateInfo value) {

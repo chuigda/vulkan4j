@@ -82,6 +82,11 @@ public record VkShaderStatisticsInfoAMD(@NotNull MemorySegment segment) implemen
             return new VkShaderStatisticsInfoAMD(segment.asSlice(index * VkShaderStatisticsInfoAMD.BYTES, VkShaderStatisticsInfoAMD.BYTES));
         }
 
+        public VkShaderStatisticsInfoAMD.Ptr at(long index, @NotNull Consumer<@NotNull VkShaderStatisticsInfoAMD> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkShaderStatisticsInfoAMD value) {
             MemorySegment s = segment.asSlice(index * VkShaderStatisticsInfoAMD.BYTES, VkShaderStatisticsInfoAMD.BYTES);
             s.copyFrom(value.segment);
@@ -236,6 +241,12 @@ public record VkShaderStatisticsInfoAMD(@NotNull MemorySegment segment) implemen
 
     public @Unsigned IntPtr computeWorkGroupSize() {
         return new IntPtr(computeWorkGroupSizeRaw());
+    }
+
+    public VkShaderStatisticsInfoAMD computeWorkGroupSize(@NotNull Consumer<IntPtr> consumer) {
+        @Unsigned IntPtr ptr = computeWorkGroupSize();
+        consumer.accept(ptr);
+        return this;
     }
 
     public VkShaderStatisticsInfoAMD computeWorkGroupSize(@Unsigned IntPtr value) {

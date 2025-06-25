@@ -87,6 +87,11 @@ public record VkPhysicalDeviceShaderModuleIdentifierPropertiesEXT(@NotNull Memor
             return new VkPhysicalDeviceShaderModuleIdentifierPropertiesEXT(segment.asSlice(index * VkPhysicalDeviceShaderModuleIdentifierPropertiesEXT.BYTES, VkPhysicalDeviceShaderModuleIdentifierPropertiesEXT.BYTES));
         }
 
+        public VkPhysicalDeviceShaderModuleIdentifierPropertiesEXT.Ptr at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceShaderModuleIdentifierPropertiesEXT> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkPhysicalDeviceShaderModuleIdentifierPropertiesEXT value) {
             MemorySegment s = segment.asSlice(index * VkPhysicalDeviceShaderModuleIdentifierPropertiesEXT.BYTES, VkPhysicalDeviceShaderModuleIdentifierPropertiesEXT.BYTES);
             s.copyFrom(value.segment);
@@ -215,6 +220,12 @@ public record VkPhysicalDeviceShaderModuleIdentifierPropertiesEXT(@NotNull Memor
 
     public @Unsigned BytePtr shaderModuleIdentifierAlgorithmUUID() {
         return new BytePtr(shaderModuleIdentifierAlgorithmUUIDRaw());
+    }
+
+    public VkPhysicalDeviceShaderModuleIdentifierPropertiesEXT shaderModuleIdentifierAlgorithmUUID(@NotNull Consumer<BytePtr> consumer) {
+        @Unsigned BytePtr ptr = shaderModuleIdentifierAlgorithmUUID();
+        consumer.accept(ptr);
+        return this;
     }
 
     public VkPhysicalDeviceShaderModuleIdentifierPropertiesEXT shaderModuleIdentifierAlgorithmUUID(@Unsigned BytePtr value) {

@@ -87,6 +87,11 @@ public record VkRenderPassTransformBeginInfoQCOM(@NotNull MemorySegment segment)
             return new VkRenderPassTransformBeginInfoQCOM(segment.asSlice(index * VkRenderPassTransformBeginInfoQCOM.BYTES, VkRenderPassTransformBeginInfoQCOM.BYTES));
         }
 
+        public VkRenderPassTransformBeginInfoQCOM.Ptr at(long index, @NotNull Consumer<@NotNull VkRenderPassTransformBeginInfoQCOM> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkRenderPassTransformBeginInfoQCOM value) {
             MemorySegment s = segment.asSlice(index * VkRenderPassTransformBeginInfoQCOM.BYTES, VkRenderPassTransformBeginInfoQCOM.BYTES);
             s.copyFrom(value.segment);

@@ -88,6 +88,11 @@ public record VkPipelineShaderStageNodeCreateInfoAMDX(@NotNull MemorySegment seg
             return new VkPipelineShaderStageNodeCreateInfoAMDX(segment.asSlice(index * VkPipelineShaderStageNodeCreateInfoAMDX.BYTES, VkPipelineShaderStageNodeCreateInfoAMDX.BYTES));
         }
 
+        public VkPipelineShaderStageNodeCreateInfoAMDX.Ptr at(long index, @NotNull Consumer<@NotNull VkPipelineShaderStageNodeCreateInfoAMDX> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkPipelineShaderStageNodeCreateInfoAMDX value) {
             MemorySegment s = segment.asSlice(index * VkPipelineShaderStageNodeCreateInfoAMDX.BYTES, VkPipelineShaderStageNodeCreateInfoAMDX.BYTES);
             s.copyFrom(value.segment);

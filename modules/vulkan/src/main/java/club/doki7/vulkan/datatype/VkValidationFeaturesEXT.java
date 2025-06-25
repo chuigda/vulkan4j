@@ -27,9 +27,9 @@ import static club.doki7.vulkan.VkConstants.*;
 ///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
 ///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
 ///     uint32_t enabledValidationFeatureCount; // optional // @link substring="enabledValidationFeatureCount" target="#enabledValidationFeatureCount"
-///     VkValidationFeatureEnableEXT const* pEnabledValidationFeatures; // @link substring="VkValidationFeatureEnableEXT" target="VkValidationFeatureEnableEXT" @link substring="pEnabledValidationFeatures" target="#pEnabledValidationFeatures"
+///     VkValidationFeatureEnableEXT const* pEnabledValidationFeatures; // optional // @link substring="VkValidationFeatureEnableEXT" target="VkValidationFeatureEnableEXT" @link substring="pEnabledValidationFeatures" target="#pEnabledValidationFeatures"
 ///     uint32_t disabledValidationFeatureCount; // optional // @link substring="disabledValidationFeatureCount" target="#disabledValidationFeatureCount"
-///     VkValidationFeatureDisableEXT const* pDisabledValidationFeatures; // @link substring="VkValidationFeatureDisableEXT" target="VkValidationFeatureDisableEXT" @link substring="pDisabledValidationFeatures" target="#pDisabledValidationFeatures"
+///     VkValidationFeatureDisableEXT const* pDisabledValidationFeatures; // optional // @link substring="VkValidationFeatureDisableEXT" target="VkValidationFeatureDisableEXT" @link substring="pDisabledValidationFeatures" target="#pDisabledValidationFeatures"
 /// } VkValidationFeaturesEXT;
 /// }
 ///
@@ -88,6 +88,11 @@ public record VkValidationFeaturesEXT(@NotNull MemorySegment segment) implements
         /// indicate that the returned structure is a view of the original structure.
         public @NotNull VkValidationFeaturesEXT at(long index) {
             return new VkValidationFeaturesEXT(segment.asSlice(index * VkValidationFeaturesEXT.BYTES, VkValidationFeaturesEXT.BYTES));
+        }
+
+        public VkValidationFeaturesEXT.Ptr at(long index, @NotNull Consumer<@NotNull VkValidationFeaturesEXT> consumer) {
+            consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkValidationFeaturesEXT value) {

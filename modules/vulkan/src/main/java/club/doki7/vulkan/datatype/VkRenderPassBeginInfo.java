@@ -30,7 +30,7 @@ import static club.doki7.vulkan.VkConstants.*;
 ///     VkFramebuffer framebuffer; // @link substring="VkFramebuffer" target="VkFramebuffer" @link substring="framebuffer" target="#framebuffer"
 ///     VkRect2D renderArea; // @link substring="VkRect2D" target="VkRect2D" @link substring="renderArea" target="#renderArea"
 ///     uint32_t clearValueCount; // optional // @link substring="clearValueCount" target="#clearValueCount"
-///     VkClearValue const* pClearValues; // @link substring="VkClearValue" target="VkClearValue" @link substring="pClearValues" target="#pClearValues"
+///     VkClearValue const* pClearValues; // optional // @link substring="VkClearValue" target="VkClearValue" @link substring="pClearValues" target="#pClearValues"
 /// } VkRenderPassBeginInfo;
 /// }
 ///
@@ -89,6 +89,11 @@ public record VkRenderPassBeginInfo(@NotNull MemorySegment segment) implements I
         /// indicate that the returned structure is a view of the original structure.
         public @NotNull VkRenderPassBeginInfo at(long index) {
             return new VkRenderPassBeginInfo(segment.asSlice(index * VkRenderPassBeginInfo.BYTES, VkRenderPassBeginInfo.BYTES));
+        }
+
+        public VkRenderPassBeginInfo.Ptr at(long index, @NotNull Consumer<@NotNull VkRenderPassBeginInfo> consumer) {
+            consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkRenderPassBeginInfo value) {

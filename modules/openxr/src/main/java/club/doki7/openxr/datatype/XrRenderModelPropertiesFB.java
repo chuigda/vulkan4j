@@ -95,6 +95,11 @@ public record XrRenderModelPropertiesFB(@NotNull MemorySegment segment) implemen
             return new XrRenderModelPropertiesFB(segment.asSlice(index * XrRenderModelPropertiesFB.BYTES, XrRenderModelPropertiesFB.BYTES));
         }
 
+        public XrRenderModelPropertiesFB.Ptr at(long index, @NotNull Consumer<@NotNull XrRenderModelPropertiesFB> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull XrRenderModelPropertiesFB value) {
             MemorySegment s = segment.asSlice(index * XrRenderModelPropertiesFB.BYTES, XrRenderModelPropertiesFB.BYTES);
             s.copyFrom(value.segment);
@@ -232,6 +237,12 @@ public record XrRenderModelPropertiesFB(@NotNull MemorySegment segment) implemen
 
     public BytePtr modelName() {
         return new BytePtr(modelNameRaw());
+    }
+
+    public XrRenderModelPropertiesFB modelName(@NotNull Consumer<BytePtr> consumer) {
+        BytePtr ptr = modelName();
+        consumer.accept(ptr);
+        return this;
     }
 
     public XrRenderModelPropertiesFB modelName(BytePtr value) {

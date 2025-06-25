@@ -87,6 +87,11 @@ public record VkPhysicalDeviceInheritedViewportScissorFeaturesNV(@NotNull Memory
             return new VkPhysicalDeviceInheritedViewportScissorFeaturesNV(segment.asSlice(index * VkPhysicalDeviceInheritedViewportScissorFeaturesNV.BYTES, VkPhysicalDeviceInheritedViewportScissorFeaturesNV.BYTES));
         }
 
+        public VkPhysicalDeviceInheritedViewportScissorFeaturesNV.Ptr at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceInheritedViewportScissorFeaturesNV> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkPhysicalDeviceInheritedViewportScissorFeaturesNV value) {
             MemorySegment s = segment.asSlice(index * VkPhysicalDeviceInheritedViewportScissorFeaturesNV.BYTES, VkPhysicalDeviceInheritedViewportScissorFeaturesNV.BYTES);
             s.copyFrom(value.segment);

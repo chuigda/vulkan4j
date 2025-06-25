@@ -92,6 +92,11 @@ public record XrGraphicsBindingD3D12KHR(@NotNull MemorySegment segment) implemen
             return new XrGraphicsBindingD3D12KHR(segment.asSlice(index * XrGraphicsBindingD3D12KHR.BYTES, XrGraphicsBindingD3D12KHR.BYTES));
         }
 
+        public XrGraphicsBindingD3D12KHR.Ptr at(long index, @NotNull Consumer<@NotNull XrGraphicsBindingD3D12KHR> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull XrGraphicsBindingD3D12KHR value) {
             MemorySegment s = segment.asSlice(index * XrGraphicsBindingD3D12KHR.BYTES, XrGraphicsBindingD3D12KHR.BYTES);
             s.copyFrom(value.segment);

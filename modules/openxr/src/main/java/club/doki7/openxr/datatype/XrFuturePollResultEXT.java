@@ -91,6 +91,11 @@ public record XrFuturePollResultEXT(@NotNull MemorySegment segment) implements I
             return new XrFuturePollResultEXT(segment.asSlice(index * XrFuturePollResultEXT.BYTES, XrFuturePollResultEXT.BYTES));
         }
 
+        public XrFuturePollResultEXT.Ptr at(long index, @NotNull Consumer<@NotNull XrFuturePollResultEXT> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull XrFuturePollResultEXT value) {
             MemorySegment s = segment.asSlice(index * XrFuturePollResultEXT.BYTES, XrFuturePollResultEXT.BYTES);
             s.copyFrom(value.segment);

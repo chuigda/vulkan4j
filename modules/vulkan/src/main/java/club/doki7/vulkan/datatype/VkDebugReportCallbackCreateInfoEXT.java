@@ -89,6 +89,11 @@ public record VkDebugReportCallbackCreateInfoEXT(@NotNull MemorySegment segment)
             return new VkDebugReportCallbackCreateInfoEXT(segment.asSlice(index * VkDebugReportCallbackCreateInfoEXT.BYTES, VkDebugReportCallbackCreateInfoEXT.BYTES));
         }
 
+        public VkDebugReportCallbackCreateInfoEXT.Ptr at(long index, @NotNull Consumer<@NotNull VkDebugReportCallbackCreateInfoEXT> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkDebugReportCallbackCreateInfoEXT value) {
             MemorySegment s = segment.asSlice(index * VkDebugReportCallbackCreateInfoEXT.BYTES, VkDebugReportCallbackCreateInfoEXT.BYTES);
             s.copyFrom(value.segment);

@@ -90,6 +90,11 @@ public record VkGeometryAABBNV(@NotNull MemorySegment segment) implements IVkGeo
             return new VkGeometryAABBNV(segment.asSlice(index * VkGeometryAABBNV.BYTES, VkGeometryAABBNV.BYTES));
         }
 
+        public VkGeometryAABBNV.Ptr at(long index, @NotNull Consumer<@NotNull VkGeometryAABBNV> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkGeometryAABBNV value) {
             MemorySegment s = segment.asSlice(index * VkGeometryAABBNV.BYTES, VkGeometryAABBNV.BYTES);
             s.copyFrom(value.segment);

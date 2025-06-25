@@ -33,9 +33,9 @@ import club.doki7.vulkan.handle.*;
 ///     XrInstanceCreateFlags createFlags; // optional // @link substring="XrInstanceCreateFlags" target="XrInstanceCreateFlags" @link substring="createFlags" target="#createFlags"
 ///     XrApplicationInfo applicationInfo; // @link substring="XrApplicationInfo" target="XrApplicationInfo" @link substring="applicationInfo" target="#applicationInfo"
 ///     uint32_t enabledApiLayerCount; // optional // @link substring="enabledApiLayerCount" target="#enabledApiLayerCount"
-///     char const* const* enabledApiLayerNames; // @link substring="enabledApiLayerNames" target="#enabledApiLayerNames"
+///     char const* const* enabledApiLayerNames; // optional // @link substring="enabledApiLayerNames" target="#enabledApiLayerNames"
 ///     uint32_t enabledExtensionCount; // optional // @link substring="enabledExtensionCount" target="#enabledExtensionCount"
-///     char const* const* enabledExtensionNames; // @link substring="enabledExtensionNames" target="#enabledExtensionNames"
+///     char const* const* enabledExtensionNames; // optional // @link substring="enabledExtensionNames" target="#enabledExtensionNames"
 /// } XrInstanceCreateInfo;
 /// }
 ///
@@ -94,6 +94,11 @@ public record XrInstanceCreateInfo(@NotNull MemorySegment segment) implements IX
         /// indicate that the returned structure is a view of the original structure.
         public @NotNull XrInstanceCreateInfo at(long index) {
             return new XrInstanceCreateInfo(segment.asSlice(index * XrInstanceCreateInfo.BYTES, XrInstanceCreateInfo.BYTES));
+        }
+
+        public XrInstanceCreateInfo.Ptr at(long index, @NotNull Consumer<@NotNull XrInstanceCreateInfo> consumer) {
+            consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull XrInstanceCreateInfo value) {

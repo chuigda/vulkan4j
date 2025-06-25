@@ -87,6 +87,11 @@ public record VkDeviceEventInfoEXT(@NotNull MemorySegment segment) implements IV
             return new VkDeviceEventInfoEXT(segment.asSlice(index * VkDeviceEventInfoEXT.BYTES, VkDeviceEventInfoEXT.BYTES));
         }
 
+        public VkDeviceEventInfoEXT.Ptr at(long index, @NotNull Consumer<@NotNull VkDeviceEventInfoEXT> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkDeviceEventInfoEXT value) {
             MemorySegment s = segment.asSlice(index * VkDeviceEventInfoEXT.BYTES, VkDeviceEventInfoEXT.BYTES);
             s.copyFrom(value.segment);

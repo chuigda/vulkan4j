@@ -88,6 +88,11 @@ public record VkPhysicalDeviceShaderEnqueueFeaturesAMDX(@NotNull MemorySegment s
             return new VkPhysicalDeviceShaderEnqueueFeaturesAMDX(segment.asSlice(index * VkPhysicalDeviceShaderEnqueueFeaturesAMDX.BYTES, VkPhysicalDeviceShaderEnqueueFeaturesAMDX.BYTES));
         }
 
+        public VkPhysicalDeviceShaderEnqueueFeaturesAMDX.Ptr at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceShaderEnqueueFeaturesAMDX> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkPhysicalDeviceShaderEnqueueFeaturesAMDX value) {
             MemorySegment s = segment.asSlice(index * VkPhysicalDeviceShaderEnqueueFeaturesAMDX.BYTES, VkPhysicalDeviceShaderEnqueueFeaturesAMDX.BYTES);
             s.copyFrom(value.segment);

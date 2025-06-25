@@ -88,6 +88,11 @@ public record VkMacOSSurfaceCreateInfoMVK(@NotNull MemorySegment segment) implem
             return new VkMacOSSurfaceCreateInfoMVK(segment.asSlice(index * VkMacOSSurfaceCreateInfoMVK.BYTES, VkMacOSSurfaceCreateInfoMVK.BYTES));
         }
 
+        public VkMacOSSurfaceCreateInfoMVK.Ptr at(long index, @NotNull Consumer<@NotNull VkMacOSSurfaceCreateInfoMVK> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkMacOSSurfaceCreateInfoMVK value) {
             MemorySegment s = segment.asSlice(index * VkMacOSSurfaceCreateInfoMVK.BYTES, VkMacOSSurfaceCreateInfoMVK.BYTES);
             s.copyFrom(value.segment);

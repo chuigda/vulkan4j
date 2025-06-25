@@ -93,6 +93,11 @@ public record XrSceneMeshVertexBufferMSFT(@NotNull MemorySegment segment) implem
             return new XrSceneMeshVertexBufferMSFT(segment.asSlice(index * XrSceneMeshVertexBufferMSFT.BYTES, XrSceneMeshVertexBufferMSFT.BYTES));
         }
 
+        public XrSceneMeshVertexBufferMSFT.Ptr at(long index, @NotNull Consumer<@NotNull XrSceneMeshVertexBufferMSFT> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull XrSceneMeshVertexBufferMSFT value) {
             MemorySegment s = segment.asSlice(index * XrSceneMeshVertexBufferMSFT.BYTES, XrSceneMeshVertexBufferMSFT.BYTES);
             s.copyFrom(value.segment);

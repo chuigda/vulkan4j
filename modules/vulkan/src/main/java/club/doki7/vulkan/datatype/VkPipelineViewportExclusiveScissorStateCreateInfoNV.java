@@ -27,7 +27,7 @@ import static club.doki7.vulkan.VkConstants.*;
 ///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
 ///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
 ///     uint32_t exclusiveScissorCount; // optional // @link substring="exclusiveScissorCount" target="#exclusiveScissorCount"
-///     VkRect2D const* pExclusiveScissors; // @link substring="VkRect2D" target="VkRect2D" @link substring="pExclusiveScissors" target="#pExclusiveScissors"
+///     VkRect2D const* pExclusiveScissors; // optional // @link substring="VkRect2D" target="VkRect2D" @link substring="pExclusiveScissors" target="#pExclusiveScissors"
 /// } VkPipelineViewportExclusiveScissorStateCreateInfoNV;
 /// }
 ///
@@ -86,6 +86,11 @@ public record VkPipelineViewportExclusiveScissorStateCreateInfoNV(@NotNull Memor
         /// indicate that the returned structure is a view of the original structure.
         public @NotNull VkPipelineViewportExclusiveScissorStateCreateInfoNV at(long index) {
             return new VkPipelineViewportExclusiveScissorStateCreateInfoNV(segment.asSlice(index * VkPipelineViewportExclusiveScissorStateCreateInfoNV.BYTES, VkPipelineViewportExclusiveScissorStateCreateInfoNV.BYTES));
+        }
+
+        public VkPipelineViewportExclusiveScissorStateCreateInfoNV.Ptr at(long index, @NotNull Consumer<@NotNull VkPipelineViewportExclusiveScissorStateCreateInfoNV> consumer) {
+            consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkPipelineViewportExclusiveScissorStateCreateInfoNV value) {

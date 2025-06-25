@@ -97,6 +97,11 @@ public record VkSurfaceCapabilities2EXT(@NotNull MemorySegment segment) implemen
             return new VkSurfaceCapabilities2EXT(segment.asSlice(index * VkSurfaceCapabilities2EXT.BYTES, VkSurfaceCapabilities2EXT.BYTES));
         }
 
+        public VkSurfaceCapabilities2EXT.Ptr at(long index, @NotNull Consumer<@NotNull VkSurfaceCapabilities2EXT> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkSurfaceCapabilities2EXT value) {
             MemorySegment s = segment.asSlice(index * VkSurfaceCapabilities2EXT.BYTES, VkSurfaceCapabilities2EXT.BYTES);
             s.copyFrom(value.segment);

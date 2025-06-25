@@ -77,6 +77,11 @@ public record VkExtensionProperties(@NotNull MemorySegment segment) implements I
             return new VkExtensionProperties(segment.asSlice(index * VkExtensionProperties.BYTES, VkExtensionProperties.BYTES));
         }
 
+        public VkExtensionProperties.Ptr at(long index, @NotNull Consumer<@NotNull VkExtensionProperties> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkExtensionProperties value) {
             MemorySegment s = segment.asSlice(index * VkExtensionProperties.BYTES, VkExtensionProperties.BYTES);
             s.copyFrom(value.segment);
@@ -172,6 +177,12 @@ public record VkExtensionProperties(@NotNull MemorySegment segment) implements I
 
     public BytePtr extensionName() {
         return new BytePtr(extensionNameRaw());
+    }
+
+    public VkExtensionProperties extensionName(@NotNull Consumer<BytePtr> consumer) {
+        BytePtr ptr = extensionName();
+        consumer.accept(ptr);
+        return this;
     }
 
     public VkExtensionProperties extensionName(BytePtr value) {

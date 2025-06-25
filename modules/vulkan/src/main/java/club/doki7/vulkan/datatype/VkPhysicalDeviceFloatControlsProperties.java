@@ -103,6 +103,11 @@ public record VkPhysicalDeviceFloatControlsProperties(@NotNull MemorySegment seg
             return new VkPhysicalDeviceFloatControlsProperties(segment.asSlice(index * VkPhysicalDeviceFloatControlsProperties.BYTES, VkPhysicalDeviceFloatControlsProperties.BYTES));
         }
 
+        public VkPhysicalDeviceFloatControlsProperties.Ptr at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceFloatControlsProperties> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkPhysicalDeviceFloatControlsProperties value) {
             MemorySegment s = segment.asSlice(index * VkPhysicalDeviceFloatControlsProperties.BYTES, VkPhysicalDeviceFloatControlsProperties.BYTES);
             s.copyFrom(value.segment);

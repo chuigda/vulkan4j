@@ -91,6 +91,11 @@ public record XrFutureCancelInfoEXT(@NotNull MemorySegment segment) implements I
             return new XrFutureCancelInfoEXT(segment.asSlice(index * XrFutureCancelInfoEXT.BYTES, XrFutureCancelInfoEXT.BYTES));
         }
 
+        public XrFutureCancelInfoEXT.Ptr at(long index, @NotNull Consumer<@NotNull XrFutureCancelInfoEXT> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull XrFutureCancelInfoEXT value) {
             MemorySegment s = segment.asSlice(index * XrFutureCancelInfoEXT.BYTES, XrFutureCancelInfoEXT.BYTES);
             s.copyFrom(value.segment);

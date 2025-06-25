@@ -90,6 +90,11 @@ public record VkDeviceAddressBindingCallbackDataEXT(@NotNull MemorySegment segme
             return new VkDeviceAddressBindingCallbackDataEXT(segment.asSlice(index * VkDeviceAddressBindingCallbackDataEXT.BYTES, VkDeviceAddressBindingCallbackDataEXT.BYTES));
         }
 
+        public VkDeviceAddressBindingCallbackDataEXT.Ptr at(long index, @NotNull Consumer<@NotNull VkDeviceAddressBindingCallbackDataEXT> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkDeviceAddressBindingCallbackDataEXT value) {
             MemorySegment s = segment.asSlice(index * VkDeviceAddressBindingCallbackDataEXT.BYTES, VkDeviceAddressBindingCallbackDataEXT.BYTES);
             s.copyFrom(value.segment);

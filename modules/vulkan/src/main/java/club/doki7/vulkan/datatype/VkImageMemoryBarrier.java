@@ -94,6 +94,11 @@ public record VkImageMemoryBarrier(@NotNull MemorySegment segment) implements IV
             return new VkImageMemoryBarrier(segment.asSlice(index * VkImageMemoryBarrier.BYTES, VkImageMemoryBarrier.BYTES));
         }
 
+        public VkImageMemoryBarrier.Ptr at(long index, @NotNull Consumer<@NotNull VkImageMemoryBarrier> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkImageMemoryBarrier value) {
             MemorySegment s = segment.asSlice(index * VkImageMemoryBarrier.BYTES, VkImageMemoryBarrier.BYTES);
             s.copyFrom(value.segment);

@@ -87,6 +87,11 @@ public record VkPhysicalDeviceDescriptorPoolOverallocationFeaturesNV(@NotNull Me
             return new VkPhysicalDeviceDescriptorPoolOverallocationFeaturesNV(segment.asSlice(index * VkPhysicalDeviceDescriptorPoolOverallocationFeaturesNV.BYTES, VkPhysicalDeviceDescriptorPoolOverallocationFeaturesNV.BYTES));
         }
 
+        public VkPhysicalDeviceDescriptorPoolOverallocationFeaturesNV.Ptr at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceDescriptorPoolOverallocationFeaturesNV> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkPhysicalDeviceDescriptorPoolOverallocationFeaturesNV value) {
             MemorySegment s = segment.asSlice(index * VkPhysicalDeviceDescriptorPoolOverallocationFeaturesNV.BYTES, VkPhysicalDeviceDescriptorPoolOverallocationFeaturesNV.BYTES);
             s.copyFrom(value.segment);

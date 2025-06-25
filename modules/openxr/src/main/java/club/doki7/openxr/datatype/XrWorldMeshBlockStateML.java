@@ -95,6 +95,11 @@ public record XrWorldMeshBlockStateML(@NotNull MemorySegment segment) implements
             return new XrWorldMeshBlockStateML(segment.asSlice(index * XrWorldMeshBlockStateML.BYTES, XrWorldMeshBlockStateML.BYTES));
         }
 
+        public XrWorldMeshBlockStateML.Ptr at(long index, @NotNull Consumer<@NotNull XrWorldMeshBlockStateML> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull XrWorldMeshBlockStateML value) {
             MemorySegment s = segment.asSlice(index * XrWorldMeshBlockStateML.BYTES, XrWorldMeshBlockStateML.BYTES);
             s.copyFrom(value.segment);

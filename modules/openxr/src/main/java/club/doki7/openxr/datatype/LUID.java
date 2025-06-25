@@ -81,6 +81,11 @@ public record LUID(@NotNull MemorySegment segment) implements ILUID {
             return new LUID(segment.asSlice(index * LUID.BYTES, LUID.BYTES));
         }
 
+        public LUID.Ptr at(long index, @NotNull Consumer<@NotNull LUID> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull LUID value) {
             MemorySegment s = segment.asSlice(index * LUID.BYTES, LUID.BYTES);
             s.copyFrom(value.segment);

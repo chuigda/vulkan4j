@@ -92,6 +92,11 @@ public record XrActionsSyncInfo(@NotNull MemorySegment segment) implements IXrAc
             return new XrActionsSyncInfo(segment.asSlice(index * XrActionsSyncInfo.BYTES, XrActionsSyncInfo.BYTES));
         }
 
+        public XrActionsSyncInfo.Ptr at(long index, @NotNull Consumer<@NotNull XrActionsSyncInfo> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull XrActionsSyncInfo value) {
             MemorySegment s = segment.asSlice(index * XrActionsSyncInfo.BYTES, XrActionsSyncInfo.BYTES);
             s.copyFrom(value.segment);

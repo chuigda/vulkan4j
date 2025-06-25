@@ -97,8 +97,9 @@ class Application {
                     .pApplicationInfo(appInfo);
 
             if (ENABLE_VALIDATION_LAYERS) {
-                instanceCreateInfo.enabledLayerCount(1)
-                        .ppEnabledLayerNames(PointerPtr.allocateV(arena, BytePtr.allocateString(arena, VALIDATION_LAYER_NAME)));
+                                instanceCreateInfo
+                        .enabledLayerCount(1)
+                        .ppEnabledLayerNames(PointerPtr.allocateStrings(arena, VALIDATION_LAYER_NAME));
 
                 var debugCreateInfo = VkDebugUtilsMessengerCreateInfoEXT.allocate(arena);
                 populateDebugMessengerCreateInfo(debugCreateInfo);
@@ -200,23 +201,24 @@ class Application {
                 deviceCreateInfo.queueCreateInfoCount(1).pQueueCreateInfos(queueCreateInfo);
             }
             else {
-                var queueCreateInfos = VkDeviceQueueCreateInfo.allocate(arena, 2);
-                queueCreateInfos.at(0)
-                        .queueCount(1)
-                        .queueFamilyIndex(indices.graphicsFamily())
-                        .pQueuePriorities(pQueuePriorities);
-                queueCreateInfos.at(1)
-                        .queueCount(1)
-                        .queueFamilyIndex(indices.presentFamily())
-                        .pQueuePriorities(pQueuePriorities);
+                var queueCreateInfos = VkDeviceQueueCreateInfo.allocate(arena, 2)
+                        .at(0, it -> it
+                                .queueCount(1)
+                                .queueFamilyIndex(indices.graphicsFamily())
+                                .pQueuePriorities(pQueuePriorities))
+                        .at(1, it -> it
+                                .queueCount(1)
+                                .queueFamilyIndex(indices.presentFamily())
+                                .pQueuePriorities(pQueuePriorities));
                 deviceCreateInfo.queueCreateInfoCount(2).pQueueCreateInfos(queueCreateInfos);
             }
             var deviceFeatures = VkPhysicalDeviceFeatures.allocate(arena);
             deviceCreateInfo.pEnabledFeatures(deviceFeatures);
 
             if (ENABLE_VALIDATION_LAYERS) {
-                deviceCreateInfo.enabledLayerCount(1)
-                        .ppEnabledLayerNames(PointerPtr.allocateV(arena, BytePtr.allocateString(arena, VALIDATION_LAYER_NAME)));
+                deviceCreateInfo
+                        .enabledLayerCount(1)
+                        .ppEnabledLayerNames(PointerPtr.allocateStrings(arena, VALIDATION_LAYER_NAME));
             }
 
             var pDevice = VkDevice.Ptr.allocate(arena);

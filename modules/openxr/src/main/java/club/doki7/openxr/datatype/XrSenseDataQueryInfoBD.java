@@ -90,6 +90,11 @@ public record XrSenseDataQueryInfoBD(@NotNull MemorySegment segment) implements 
             return new XrSenseDataQueryInfoBD(segment.asSlice(index * XrSenseDataQueryInfoBD.BYTES, XrSenseDataQueryInfoBD.BYTES));
         }
 
+        public XrSenseDataQueryInfoBD.Ptr at(long index, @NotNull Consumer<@NotNull XrSenseDataQueryInfoBD> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull XrSenseDataQueryInfoBD value) {
             MemorySegment s = segment.asSlice(index * XrSenseDataQueryInfoBD.BYTES, XrSenseDataQueryInfoBD.BYTES);
             s.copyFrom(value.segment);

@@ -95,6 +95,11 @@ public record XrActionCreateInfo(@NotNull MemorySegment segment) implements IXrA
             return new XrActionCreateInfo(segment.asSlice(index * XrActionCreateInfo.BYTES, XrActionCreateInfo.BYTES));
         }
 
+        public XrActionCreateInfo.Ptr at(long index, @NotNull Consumer<@NotNull XrActionCreateInfo> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull XrActionCreateInfo value) {
             MemorySegment s = segment.asSlice(index * XrActionCreateInfo.BYTES, XrActionCreateInfo.BYTES);
             s.copyFrom(value.segment);
@@ -225,6 +230,12 @@ public record XrActionCreateInfo(@NotNull MemorySegment segment) implements IXrA
         return new BytePtr(actionNameRaw());
     }
 
+    public XrActionCreateInfo actionName(@NotNull Consumer<BytePtr> consumer) {
+        BytePtr ptr = actionName();
+        consumer.accept(ptr);
+        return this;
+    }
+
     public XrActionCreateInfo actionName(BytePtr value) {
         MemorySegment s = actionNameRaw();
         s.copyFrom(value.segment());
@@ -281,6 +292,12 @@ public record XrActionCreateInfo(@NotNull MemorySegment segment) implements IXrA
 
     public BytePtr localizedActionName() {
         return new BytePtr(localizedActionNameRaw());
+    }
+
+    public XrActionCreateInfo localizedActionName(@NotNull Consumer<BytePtr> consumer) {
+        BytePtr ptr = localizedActionName();
+        consumer.accept(ptr);
+        return this;
     }
 
     public XrActionCreateInfo localizedActionName(BytePtr value) {

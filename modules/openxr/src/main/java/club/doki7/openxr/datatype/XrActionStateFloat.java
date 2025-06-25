@@ -94,6 +94,11 @@ public record XrActionStateFloat(@NotNull MemorySegment segment) implements IXrA
             return new XrActionStateFloat(segment.asSlice(index * XrActionStateFloat.BYTES, XrActionStateFloat.BYTES));
         }
 
+        public XrActionStateFloat.Ptr at(long index, @NotNull Consumer<@NotNull XrActionStateFloat> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull XrActionStateFloat value) {
             MemorySegment s = segment.asSlice(index * XrActionStateFloat.BYTES, XrActionStateFloat.BYTES);
             s.copyFrom(value.segment);

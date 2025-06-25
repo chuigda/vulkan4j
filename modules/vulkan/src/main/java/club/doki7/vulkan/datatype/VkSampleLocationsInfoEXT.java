@@ -29,7 +29,7 @@ import static club.doki7.vulkan.VkConstants.*;
 ///     VkSampleCountFlags sampleLocationsPerPixel; // @link substring="VkSampleCountFlags" target="VkSampleCountFlags" @link substring="sampleLocationsPerPixel" target="#sampleLocationsPerPixel"
 ///     VkExtent2D sampleLocationGridSize; // @link substring="VkExtent2D" target="VkExtent2D" @link substring="sampleLocationGridSize" target="#sampleLocationGridSize"
 ///     uint32_t sampleLocationsCount; // optional // @link substring="sampleLocationsCount" target="#sampleLocationsCount"
-///     VkSampleLocationEXT const* pSampleLocations; // @link substring="VkSampleLocationEXT" target="VkSampleLocationEXT" @link substring="pSampleLocations" target="#pSampleLocations"
+///     VkSampleLocationEXT const* pSampleLocations; // optional // @link substring="VkSampleLocationEXT" target="VkSampleLocationEXT" @link substring="pSampleLocations" target="#pSampleLocations"
 /// } VkSampleLocationsInfoEXT;
 /// }
 ///
@@ -88,6 +88,11 @@ public record VkSampleLocationsInfoEXT(@NotNull MemorySegment segment) implement
         /// indicate that the returned structure is a view of the original structure.
         public @NotNull VkSampleLocationsInfoEXT at(long index) {
             return new VkSampleLocationsInfoEXT(segment.asSlice(index * VkSampleLocationsInfoEXT.BYTES, VkSampleLocationsInfoEXT.BYTES));
+        }
+
+        public VkSampleLocationsInfoEXT.Ptr at(long index, @NotNull Consumer<@NotNull VkSampleLocationsInfoEXT> consumer) {
+            consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkSampleLocationsInfoEXT value) {

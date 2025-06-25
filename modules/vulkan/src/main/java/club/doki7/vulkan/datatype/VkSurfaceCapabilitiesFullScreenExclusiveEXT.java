@@ -87,6 +87,11 @@ public record VkSurfaceCapabilitiesFullScreenExclusiveEXT(@NotNull MemorySegment
             return new VkSurfaceCapabilitiesFullScreenExclusiveEXT(segment.asSlice(index * VkSurfaceCapabilitiesFullScreenExclusiveEXT.BYTES, VkSurfaceCapabilitiesFullScreenExclusiveEXT.BYTES));
         }
 
+        public VkSurfaceCapabilitiesFullScreenExclusiveEXT.Ptr at(long index, @NotNull Consumer<@NotNull VkSurfaceCapabilitiesFullScreenExclusiveEXT> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkSurfaceCapabilitiesFullScreenExclusiveEXT value) {
             MemorySegment s = segment.asSlice(index * VkSurfaceCapabilitiesFullScreenExclusiveEXT.BYTES, VkSurfaceCapabilitiesFullScreenExclusiveEXT.BYTES);
             s.copyFrom(value.segment);

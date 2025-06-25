@@ -88,6 +88,11 @@ public record VkMetalSurfaceCreateInfoEXT(@NotNull MemorySegment segment) implem
             return new VkMetalSurfaceCreateInfoEXT(segment.asSlice(index * VkMetalSurfaceCreateInfoEXT.BYTES, VkMetalSurfaceCreateInfoEXT.BYTES));
         }
 
+        public VkMetalSurfaceCreateInfoEXT.Ptr at(long index, @NotNull Consumer<@NotNull VkMetalSurfaceCreateInfoEXT> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkMetalSurfaceCreateInfoEXT value) {
             MemorySegment s = segment.asSlice(index * VkMetalSurfaceCreateInfoEXT.BYTES, VkMetalSurfaceCreateInfoEXT.BYTES);
             s.copyFrom(value.segment);

@@ -92,6 +92,11 @@ public record XrSpaceEraseInfoFB(@NotNull MemorySegment segment) implements IXrS
             return new XrSpaceEraseInfoFB(segment.asSlice(index * XrSpaceEraseInfoFB.BYTES, XrSpaceEraseInfoFB.BYTES));
         }
 
+        public XrSpaceEraseInfoFB.Ptr at(long index, @NotNull Consumer<@NotNull XrSpaceEraseInfoFB> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull XrSpaceEraseInfoFB value) {
             MemorySegment s = segment.asSlice(index * XrSpaceEraseInfoFB.BYTES, XrSpaceEraseInfoFB.BYTES);
             s.copyFrom(value.segment);

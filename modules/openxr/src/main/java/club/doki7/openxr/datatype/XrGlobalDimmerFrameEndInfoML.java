@@ -92,6 +92,11 @@ public record XrGlobalDimmerFrameEndInfoML(@NotNull MemorySegment segment) imple
             return new XrGlobalDimmerFrameEndInfoML(segment.asSlice(index * XrGlobalDimmerFrameEndInfoML.BYTES, XrGlobalDimmerFrameEndInfoML.BYTES));
         }
 
+        public XrGlobalDimmerFrameEndInfoML.Ptr at(long index, @NotNull Consumer<@NotNull XrGlobalDimmerFrameEndInfoML> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull XrGlobalDimmerFrameEndInfoML value) {
             MemorySegment s = segment.asSlice(index * XrGlobalDimmerFrameEndInfoML.BYTES, XrGlobalDimmerFrameEndInfoML.BYTES);
             s.copyFrom(value.segment);

@@ -91,6 +91,11 @@ public record XrSystemSpatialPlanePropertiesBD(@NotNull MemorySegment segment) i
             return new XrSystemSpatialPlanePropertiesBD(segment.asSlice(index * XrSystemSpatialPlanePropertiesBD.BYTES, XrSystemSpatialPlanePropertiesBD.BYTES));
         }
 
+        public XrSystemSpatialPlanePropertiesBD.Ptr at(long index, @NotNull Consumer<@NotNull XrSystemSpatialPlanePropertiesBD> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull XrSystemSpatialPlanePropertiesBD value) {
             MemorySegment s = segment.asSlice(index * XrSystemSpatialPlanePropertiesBD.BYTES, XrSystemSpatialPlanePropertiesBD.BYTES);
             s.copyFrom(value.segment);

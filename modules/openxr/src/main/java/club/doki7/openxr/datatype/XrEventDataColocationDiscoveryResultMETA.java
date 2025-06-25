@@ -94,6 +94,11 @@ public record XrEventDataColocationDiscoveryResultMETA(@NotNull MemorySegment se
             return new XrEventDataColocationDiscoveryResultMETA(segment.asSlice(index * XrEventDataColocationDiscoveryResultMETA.BYTES, XrEventDataColocationDiscoveryResultMETA.BYTES));
         }
 
+        public XrEventDataColocationDiscoveryResultMETA.Ptr at(long index, @NotNull Consumer<@NotNull XrEventDataColocationDiscoveryResultMETA> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull XrEventDataColocationDiscoveryResultMETA value) {
             MemorySegment s = segment.asSlice(index * XrEventDataColocationDiscoveryResultMETA.BYTES, XrEventDataColocationDiscoveryResultMETA.BYTES);
             s.copyFrom(value.segment);
@@ -254,6 +259,12 @@ public record XrEventDataColocationDiscoveryResultMETA(@NotNull MemorySegment se
 
     public @Unsigned BytePtr buffer() {
         return new BytePtr(bufferRaw());
+    }
+
+    public XrEventDataColocationDiscoveryResultMETA buffer(@NotNull Consumer<BytePtr> consumer) {
+        @Unsigned BytePtr ptr = buffer();
+        consumer.accept(ptr);
+        return this;
     }
 
     public XrEventDataColocationDiscoveryResultMETA buffer(@Unsigned BytePtr value) {

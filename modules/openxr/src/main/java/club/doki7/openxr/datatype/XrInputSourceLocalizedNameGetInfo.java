@@ -92,6 +92,11 @@ public record XrInputSourceLocalizedNameGetInfo(@NotNull MemorySegment segment) 
             return new XrInputSourceLocalizedNameGetInfo(segment.asSlice(index * XrInputSourceLocalizedNameGetInfo.BYTES, XrInputSourceLocalizedNameGetInfo.BYTES));
         }
 
+        public XrInputSourceLocalizedNameGetInfo.Ptr at(long index, @NotNull Consumer<@NotNull XrInputSourceLocalizedNameGetInfo> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull XrInputSourceLocalizedNameGetInfo value) {
             MemorySegment s = segment.asSlice(index * XrInputSourceLocalizedNameGetInfo.BYTES, XrInputSourceLocalizedNameGetInfo.BYTES);
             s.copyFrom(value.segment);

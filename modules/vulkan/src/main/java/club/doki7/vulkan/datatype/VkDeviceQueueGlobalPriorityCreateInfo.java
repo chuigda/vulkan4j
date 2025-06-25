@@ -87,6 +87,11 @@ public record VkDeviceQueueGlobalPriorityCreateInfo(@NotNull MemorySegment segme
             return new VkDeviceQueueGlobalPriorityCreateInfo(segment.asSlice(index * VkDeviceQueueGlobalPriorityCreateInfo.BYTES, VkDeviceQueueGlobalPriorityCreateInfo.BYTES));
         }
 
+        public VkDeviceQueueGlobalPriorityCreateInfo.Ptr at(long index, @NotNull Consumer<@NotNull VkDeviceQueueGlobalPriorityCreateInfo> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkDeviceQueueGlobalPriorityCreateInfo value) {
             MemorySegment s = segment.asSlice(index * VkDeviceQueueGlobalPriorityCreateInfo.BYTES, VkDeviceQueueGlobalPriorityCreateInfo.BYTES);
             s.copyFrom(value.segment);

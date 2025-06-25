@@ -87,6 +87,11 @@ public record VkPipelineShaderStageRequiredSubgroupSizeCreateInfo(@NotNull Memor
             return new VkPipelineShaderStageRequiredSubgroupSizeCreateInfo(segment.asSlice(index * VkPipelineShaderStageRequiredSubgroupSizeCreateInfo.BYTES, VkPipelineShaderStageRequiredSubgroupSizeCreateInfo.BYTES));
         }
 
+        public VkPipelineShaderStageRequiredSubgroupSizeCreateInfo.Ptr at(long index, @NotNull Consumer<@NotNull VkPipelineShaderStageRequiredSubgroupSizeCreateInfo> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkPipelineShaderStageRequiredSubgroupSizeCreateInfo value) {
             MemorySegment s = segment.asSlice(index * VkPipelineShaderStageRequiredSubgroupSizeCreateInfo.BYTES, VkPipelineShaderStageRequiredSubgroupSizeCreateInfo.BYTES);
             s.copyFrom(value.segment);

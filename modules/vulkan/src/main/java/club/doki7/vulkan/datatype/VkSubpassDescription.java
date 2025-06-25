@@ -27,13 +27,13 @@ import static club.doki7.vulkan.VkConstants.*;
 ///     VkSubpassDescriptionFlags flags; // optional // @link substring="VkSubpassDescriptionFlags" target="VkSubpassDescriptionFlags" @link substring="flags" target="#flags"
 ///     VkPipelineBindPoint pipelineBindPoint; // @link substring="VkPipelineBindPoint" target="VkPipelineBindPoint" @link substring="pipelineBindPoint" target="#pipelineBindPoint"
 ///     uint32_t inputAttachmentCount; // optional // @link substring="inputAttachmentCount" target="#inputAttachmentCount"
-///     VkAttachmentReference const* pInputAttachments; // @link substring="VkAttachmentReference" target="VkAttachmentReference" @link substring="pInputAttachments" target="#pInputAttachments"
+///     VkAttachmentReference const* pInputAttachments; // optional // @link substring="VkAttachmentReference" target="VkAttachmentReference" @link substring="pInputAttachments" target="#pInputAttachments"
 ///     uint32_t colorAttachmentCount; // optional // @link substring="colorAttachmentCount" target="#colorAttachmentCount"
-///     VkAttachmentReference const* pColorAttachments; // @link substring="VkAttachmentReference" target="VkAttachmentReference" @link substring="pColorAttachments" target="#pColorAttachments"
+///     VkAttachmentReference const* pColorAttachments; // optional // @link substring="VkAttachmentReference" target="VkAttachmentReference" @link substring="pColorAttachments" target="#pColorAttachments"
 ///     VkAttachmentReference const* pResolveAttachments; // optional // @link substring="VkAttachmentReference" target="VkAttachmentReference" @link substring="pResolveAttachments" target="#pResolveAttachments"
 ///     VkAttachmentReference const* pDepthStencilAttachment; // optional // @link substring="VkAttachmentReference" target="VkAttachmentReference" @link substring="pDepthStencilAttachment" target="#pDepthStencilAttachment"
 ///     uint32_t preserveAttachmentCount; // optional // @link substring="preserveAttachmentCount" target="#preserveAttachmentCount"
-///     uint32_t const* pPreserveAttachments; // @link substring="pPreserveAttachments" target="#pPreserveAttachments"
+///     uint32_t const* pPreserveAttachments; // optional // @link substring="pPreserveAttachments" target="#pPreserveAttachments"
 /// } VkSubpassDescription;
 /// }
 ///
@@ -83,6 +83,11 @@ public record VkSubpassDescription(@NotNull MemorySegment segment) implements IV
         /// indicate that the returned structure is a view of the original structure.
         public @NotNull VkSubpassDescription at(long index) {
             return new VkSubpassDescription(segment.asSlice(index * VkSubpassDescription.BYTES, VkSubpassDescription.BYTES));
+        }
+
+        public VkSubpassDescription.Ptr at(long index, @NotNull Consumer<@NotNull VkSubpassDescription> consumer) {
+            consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkSubpassDescription value) {

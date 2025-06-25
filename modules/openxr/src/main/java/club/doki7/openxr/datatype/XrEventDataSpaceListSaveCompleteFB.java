@@ -92,6 +92,11 @@ public record XrEventDataSpaceListSaveCompleteFB(@NotNull MemorySegment segment)
             return new XrEventDataSpaceListSaveCompleteFB(segment.asSlice(index * XrEventDataSpaceListSaveCompleteFB.BYTES, XrEventDataSpaceListSaveCompleteFB.BYTES));
         }
 
+        public XrEventDataSpaceListSaveCompleteFB.Ptr at(long index, @NotNull Consumer<@NotNull XrEventDataSpaceListSaveCompleteFB> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull XrEventDataSpaceListSaveCompleteFB value) {
             MemorySegment s = segment.asSlice(index * XrEventDataSpaceListSaveCompleteFB.BYTES, XrEventDataSpaceListSaveCompleteFB.BYTES);
             s.copyFrom(value.segment);

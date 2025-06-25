@@ -87,6 +87,11 @@ public record VkBlitImageCubicWeightsInfoQCOM(@NotNull MemorySegment segment) im
             return new VkBlitImageCubicWeightsInfoQCOM(segment.asSlice(index * VkBlitImageCubicWeightsInfoQCOM.BYTES, VkBlitImageCubicWeightsInfoQCOM.BYTES));
         }
 
+        public VkBlitImageCubicWeightsInfoQCOM.Ptr at(long index, @NotNull Consumer<@NotNull VkBlitImageCubicWeightsInfoQCOM> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkBlitImageCubicWeightsInfoQCOM value) {
             MemorySegment s = segment.asSlice(index * VkBlitImageCubicWeightsInfoQCOM.BYTES, VkBlitImageCubicWeightsInfoQCOM.BYTES);
             s.copyFrom(value.segment);

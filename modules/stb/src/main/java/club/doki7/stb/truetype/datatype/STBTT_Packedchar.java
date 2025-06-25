@@ -80,6 +80,11 @@ public record STBTT_Packedchar(@NotNull MemorySegment segment) implements ISTBTT
             return new STBTT_Packedchar(segment.asSlice(index * STBTT_Packedchar.BYTES, STBTT_Packedchar.BYTES));
         }
 
+        public STBTT_Packedchar.Ptr at(long index, @NotNull Consumer<@NotNull STBTT_Packedchar> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull STBTT_Packedchar value) {
             MemorySegment s = segment.asSlice(index * STBTT_Packedchar.BYTES, STBTT_Packedchar.BYTES);
             s.copyFrom(value.segment);

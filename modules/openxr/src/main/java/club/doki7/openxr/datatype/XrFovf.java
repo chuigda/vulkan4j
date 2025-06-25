@@ -83,6 +83,11 @@ public record XrFovf(@NotNull MemorySegment segment) implements IXrFovf {
             return new XrFovf(segment.asSlice(index * XrFovf.BYTES, XrFovf.BYTES));
         }
 
+        public XrFovf.Ptr at(long index, @NotNull Consumer<@NotNull XrFovf> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull XrFovf value) {
             MemorySegment s = segment.asSlice(index * XrFovf.BYTES, XrFovf.BYTES);
             s.copyFrom(value.segment);

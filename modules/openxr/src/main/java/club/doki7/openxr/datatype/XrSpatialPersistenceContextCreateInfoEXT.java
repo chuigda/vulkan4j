@@ -91,6 +91,11 @@ public record XrSpatialPersistenceContextCreateInfoEXT(@NotNull MemorySegment se
             return new XrSpatialPersistenceContextCreateInfoEXT(segment.asSlice(index * XrSpatialPersistenceContextCreateInfoEXT.BYTES, XrSpatialPersistenceContextCreateInfoEXT.BYTES));
         }
 
+        public XrSpatialPersistenceContextCreateInfoEXT.Ptr at(long index, @NotNull Consumer<@NotNull XrSpatialPersistenceContextCreateInfoEXT> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull XrSpatialPersistenceContextCreateInfoEXT value) {
             MemorySegment s = segment.asSlice(index * XrSpatialPersistenceContextCreateInfoEXT.BYTES, XrSpatialPersistenceContextCreateInfoEXT.BYTES);
             s.copyFrom(value.segment);

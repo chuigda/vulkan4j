@@ -87,6 +87,11 @@ public record VkQueueFamilyQueryResultStatusPropertiesKHR(@NotNull MemorySegment
             return new VkQueueFamilyQueryResultStatusPropertiesKHR(segment.asSlice(index * VkQueueFamilyQueryResultStatusPropertiesKHR.BYTES, VkQueueFamilyQueryResultStatusPropertiesKHR.BYTES));
         }
 
+        public VkQueueFamilyQueryResultStatusPropertiesKHR.Ptr at(long index, @NotNull Consumer<@NotNull VkQueueFamilyQueryResultStatusPropertiesKHR> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkQueueFamilyQueryResultStatusPropertiesKHR value) {
             MemorySegment s = segment.asSlice(index * VkQueueFamilyQueryResultStatusPropertiesKHR.BYTES, VkQueueFamilyQueryResultStatusPropertiesKHR.BYTES);
             s.copyFrom(value.segment);

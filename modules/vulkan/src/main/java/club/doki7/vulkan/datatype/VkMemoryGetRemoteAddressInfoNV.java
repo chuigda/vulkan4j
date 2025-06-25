@@ -88,6 +88,11 @@ public record VkMemoryGetRemoteAddressInfoNV(@NotNull MemorySegment segment) imp
             return new VkMemoryGetRemoteAddressInfoNV(segment.asSlice(index * VkMemoryGetRemoteAddressInfoNV.BYTES, VkMemoryGetRemoteAddressInfoNV.BYTES));
         }
 
+        public VkMemoryGetRemoteAddressInfoNV.Ptr at(long index, @NotNull Consumer<@NotNull VkMemoryGetRemoteAddressInfoNV> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkMemoryGetRemoteAddressInfoNV value) {
             MemorySegment s = segment.asSlice(index * VkMemoryGetRemoteAddressInfoNV.BYTES, VkMemoryGetRemoteAddressInfoNV.BYTES);
             s.copyFrom(value.segment);

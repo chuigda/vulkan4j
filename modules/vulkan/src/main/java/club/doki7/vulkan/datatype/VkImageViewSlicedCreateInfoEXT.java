@@ -88,6 +88,11 @@ public record VkImageViewSlicedCreateInfoEXT(@NotNull MemorySegment segment) imp
             return new VkImageViewSlicedCreateInfoEXT(segment.asSlice(index * VkImageViewSlicedCreateInfoEXT.BYTES, VkImageViewSlicedCreateInfoEXT.BYTES));
         }
 
+        public VkImageViewSlicedCreateInfoEXT.Ptr at(long index, @NotNull Consumer<@NotNull VkImageViewSlicedCreateInfoEXT> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkImageViewSlicedCreateInfoEXT value) {
             MemorySegment s = segment.asSlice(index * VkImageViewSlicedCreateInfoEXT.BYTES, VkImageViewSlicedCreateInfoEXT.BYTES);
             s.copyFrom(value.segment);

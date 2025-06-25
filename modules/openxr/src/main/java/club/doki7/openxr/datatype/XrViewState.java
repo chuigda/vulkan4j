@@ -91,6 +91,11 @@ public record XrViewState(@NotNull MemorySegment segment) implements IXrViewStat
             return new XrViewState(segment.asSlice(index * XrViewState.BYTES, XrViewState.BYTES));
         }
 
+        public XrViewState.Ptr at(long index, @NotNull Consumer<@NotNull XrViewState> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull XrViewState value) {
             MemorySegment s = segment.asSlice(index * XrViewState.BYTES, XrViewState.BYTES);
             s.copyFrom(value.segment);

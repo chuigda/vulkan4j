@@ -93,6 +93,11 @@ public record GLFWimage(@NotNull MemorySegment segment) implements IGLFWimage {
             return new GLFWimage(segment.asSlice(index * GLFWimage.BYTES, GLFWimage.BYTES));
         }
 
+        public GLFWimage.Ptr at(long index, @NotNull Consumer<@NotNull GLFWimage> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull GLFWimage value) {
             MemorySegment s = segment.asSlice(index * GLFWimage.BYTES, GLFWimage.BYTES);
             s.copyFrom(value.segment);

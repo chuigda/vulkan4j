@@ -92,6 +92,11 @@ public record XrLoaderInitInfoAndroidKHR(@NotNull MemorySegment segment) impleme
             return new XrLoaderInitInfoAndroidKHR(segment.asSlice(index * XrLoaderInitInfoAndroidKHR.BYTES, XrLoaderInitInfoAndroidKHR.BYTES));
         }
 
+        public XrLoaderInitInfoAndroidKHR.Ptr at(long index, @NotNull Consumer<@NotNull XrLoaderInitInfoAndroidKHR> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull XrLoaderInitInfoAndroidKHR value) {
             MemorySegment s = segment.asSlice(index * XrLoaderInitInfoAndroidKHR.BYTES, XrLoaderInitInfoAndroidKHR.BYTES);
             s.copyFrom(value.segment);

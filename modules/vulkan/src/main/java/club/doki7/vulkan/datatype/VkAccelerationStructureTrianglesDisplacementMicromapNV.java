@@ -40,7 +40,7 @@ import static club.doki7.vulkan.VkConstants.*;
 ///     uint32_t baseTriangle; // @link substring="baseTriangle" target="#baseTriangle"
 ///     uint32_t usageCountsCount; // optional // @link substring="usageCountsCount" target="#usageCountsCount"
 ///     VkMicromapUsageEXT const* pUsageCounts; // optional // @link substring="VkMicromapUsageEXT" target="VkMicromapUsageEXT" @link substring="pUsageCounts" target="#pUsageCounts"
-///     VkMicromapUsageEXT const* const* ppUsageCounts; // @link substring="VkMicromapUsageEXT" target="VkMicromapUsageEXT" @link substring="ppUsageCounts" target="#ppUsageCounts"
+///     VkMicromapUsageEXT const* const* ppUsageCounts; // optional // @link substring="VkMicromapUsageEXT" target="VkMicromapUsageEXT" @link substring="ppUsageCounts" target="#ppUsageCounts"
 ///     VkMicromapEXT micromap; // optional // @link substring="VkMicromapEXT" target="VkMicromapEXT" @link substring="micromap" target="#micromap"
 /// } VkAccelerationStructureTrianglesDisplacementMicromapNV;
 /// }
@@ -100,6 +100,11 @@ public record VkAccelerationStructureTrianglesDisplacementMicromapNV(@NotNull Me
         /// indicate that the returned structure is a view of the original structure.
         public @NotNull VkAccelerationStructureTrianglesDisplacementMicromapNV at(long index) {
             return new VkAccelerationStructureTrianglesDisplacementMicromapNV(segment.asSlice(index * VkAccelerationStructureTrianglesDisplacementMicromapNV.BYTES, VkAccelerationStructureTrianglesDisplacementMicromapNV.BYTES));
+        }
+
+        public VkAccelerationStructureTrianglesDisplacementMicromapNV.Ptr at(long index, @NotNull Consumer<@NotNull VkAccelerationStructureTrianglesDisplacementMicromapNV> consumer) {
+            consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkAccelerationStructureTrianglesDisplacementMicromapNV value) {

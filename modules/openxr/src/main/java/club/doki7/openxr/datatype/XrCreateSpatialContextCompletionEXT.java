@@ -92,6 +92,11 @@ public record XrCreateSpatialContextCompletionEXT(@NotNull MemorySegment segment
             return new XrCreateSpatialContextCompletionEXT(segment.asSlice(index * XrCreateSpatialContextCompletionEXT.BYTES, XrCreateSpatialContextCompletionEXT.BYTES));
         }
 
+        public XrCreateSpatialContextCompletionEXT.Ptr at(long index, @NotNull Consumer<@NotNull XrCreateSpatialContextCompletionEXT> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull XrCreateSpatialContextCompletionEXT value) {
             MemorySegment s = segment.asSlice(index * XrCreateSpatialContextCompletionEXT.BYTES, XrCreateSpatialContextCompletionEXT.BYTES);
             s.copyFrom(value.segment);

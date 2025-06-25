@@ -88,6 +88,11 @@ public record VkSwapchainPresentModesCreateInfoEXT(@NotNull MemorySegment segmen
             return new VkSwapchainPresentModesCreateInfoEXT(segment.asSlice(index * VkSwapchainPresentModesCreateInfoEXT.BYTES, VkSwapchainPresentModesCreateInfoEXT.BYTES));
         }
 
+        public VkSwapchainPresentModesCreateInfoEXT.Ptr at(long index, @NotNull Consumer<@NotNull VkSwapchainPresentModesCreateInfoEXT> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkSwapchainPresentModesCreateInfoEXT value) {
             MemorySegment s = segment.asSlice(index * VkSwapchainPresentModesCreateInfoEXT.BYTES, VkSwapchainPresentModesCreateInfoEXT.BYTES);
             s.copyFrom(value.segment);

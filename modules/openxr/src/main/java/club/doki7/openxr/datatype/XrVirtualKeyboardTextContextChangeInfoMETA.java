@@ -91,6 +91,11 @@ public record XrVirtualKeyboardTextContextChangeInfoMETA(@NotNull MemorySegment 
             return new XrVirtualKeyboardTextContextChangeInfoMETA(segment.asSlice(index * XrVirtualKeyboardTextContextChangeInfoMETA.BYTES, XrVirtualKeyboardTextContextChangeInfoMETA.BYTES));
         }
 
+        public XrVirtualKeyboardTextContextChangeInfoMETA.Ptr at(long index, @NotNull Consumer<@NotNull XrVirtualKeyboardTextContextChangeInfoMETA> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull XrVirtualKeyboardTextContextChangeInfoMETA value) {
             MemorySegment s = segment.asSlice(index * XrVirtualKeyboardTextContextChangeInfoMETA.BYTES, XrVirtualKeyboardTextContextChangeInfoMETA.BYTES);
             s.copyFrom(value.segment);

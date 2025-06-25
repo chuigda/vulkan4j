@@ -87,6 +87,11 @@ public record VkTileMemoryBindInfoQCOM(@NotNull MemorySegment segment) implement
             return new VkTileMemoryBindInfoQCOM(segment.asSlice(index * VkTileMemoryBindInfoQCOM.BYTES, VkTileMemoryBindInfoQCOM.BYTES));
         }
 
+        public VkTileMemoryBindInfoQCOM.Ptr at(long index, @NotNull Consumer<@NotNull VkTileMemoryBindInfoQCOM> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkTileMemoryBindInfoQCOM value) {
             MemorySegment s = segment.asSlice(index * VkTileMemoryBindInfoQCOM.BYTES, VkTileMemoryBindInfoQCOM.BYTES);
             s.copyFrom(value.segment);

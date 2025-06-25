@@ -90,6 +90,11 @@ public record VkPerformanceCounterDescriptionKHR(@NotNull MemorySegment segment)
             return new VkPerformanceCounterDescriptionKHR(segment.asSlice(index * VkPerformanceCounterDescriptionKHR.BYTES, VkPerformanceCounterDescriptionKHR.BYTES));
         }
 
+        public VkPerformanceCounterDescriptionKHR.Ptr at(long index, @NotNull Consumer<@NotNull VkPerformanceCounterDescriptionKHR> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkPerformanceCounterDescriptionKHR value) {
             MemorySegment s = segment.asSlice(index * VkPerformanceCounterDescriptionKHR.BYTES, VkPerformanceCounterDescriptionKHR.BYTES);
             s.copyFrom(value.segment);
@@ -229,6 +234,12 @@ public record VkPerformanceCounterDescriptionKHR(@NotNull MemorySegment segment)
         return new BytePtr(nameRaw());
     }
 
+    public VkPerformanceCounterDescriptionKHR name(@NotNull Consumer<BytePtr> consumer) {
+        BytePtr ptr = name();
+        consumer.accept(ptr);
+        return this;
+    }
+
     public VkPerformanceCounterDescriptionKHR name(BytePtr value) {
         MemorySegment s = nameRaw();
         s.copyFrom(value.segment());
@@ -243,6 +254,12 @@ public record VkPerformanceCounterDescriptionKHR(@NotNull MemorySegment segment)
         return new BytePtr(categoryRaw());
     }
 
+    public VkPerformanceCounterDescriptionKHR category(@NotNull Consumer<BytePtr> consumer) {
+        BytePtr ptr = category();
+        consumer.accept(ptr);
+        return this;
+    }
+
     public VkPerformanceCounterDescriptionKHR category(BytePtr value) {
         MemorySegment s = categoryRaw();
         s.copyFrom(value.segment());
@@ -255,6 +272,12 @@ public record VkPerformanceCounterDescriptionKHR(@NotNull MemorySegment segment)
 
     public BytePtr description() {
         return new BytePtr(descriptionRaw());
+    }
+
+    public VkPerformanceCounterDescriptionKHR description(@NotNull Consumer<BytePtr> consumer) {
+        BytePtr ptr = description();
+        consumer.accept(ptr);
+        return this;
     }
 
     public VkPerformanceCounterDescriptionKHR description(BytePtr value) {

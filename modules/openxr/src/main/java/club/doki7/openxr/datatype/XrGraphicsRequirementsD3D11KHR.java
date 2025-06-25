@@ -92,6 +92,11 @@ public record XrGraphicsRequirementsD3D11KHR(@NotNull MemorySegment segment) imp
             return new XrGraphicsRequirementsD3D11KHR(segment.asSlice(index * XrGraphicsRequirementsD3D11KHR.BYTES, XrGraphicsRequirementsD3D11KHR.BYTES));
         }
 
+        public XrGraphicsRequirementsD3D11KHR.Ptr at(long index, @NotNull Consumer<@NotNull XrGraphicsRequirementsD3D11KHR> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull XrGraphicsRequirementsD3D11KHR value) {
             MemorySegment s = segment.asSlice(index * XrGraphicsRequirementsD3D11KHR.BYTES, XrGraphicsRequirementsD3D11KHR.BYTES);
             s.copyFrom(value.segment);

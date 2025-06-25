@@ -90,6 +90,11 @@ public record XrSwapchainImageReleaseInfo(@NotNull MemorySegment segment) implem
             return new XrSwapchainImageReleaseInfo(segment.asSlice(index * XrSwapchainImageReleaseInfo.BYTES, XrSwapchainImageReleaseInfo.BYTES));
         }
 
+        public XrSwapchainImageReleaseInfo.Ptr at(long index, @NotNull Consumer<@NotNull XrSwapchainImageReleaseInfo> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull XrSwapchainImageReleaseInfo value) {
             MemorySegment s = segment.asSlice(index * XrSwapchainImageReleaseInfo.BYTES, XrSwapchainImageReleaseInfo.BYTES);
             s.copyFrom(value.segment);

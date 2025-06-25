@@ -87,6 +87,11 @@ public record VkVideoEncodeSessionParametersGetInfoKHR(@NotNull MemorySegment se
             return new VkVideoEncodeSessionParametersGetInfoKHR(segment.asSlice(index * VkVideoEncodeSessionParametersGetInfoKHR.BYTES, VkVideoEncodeSessionParametersGetInfoKHR.BYTES));
         }
 
+        public VkVideoEncodeSessionParametersGetInfoKHR.Ptr at(long index, @NotNull Consumer<@NotNull VkVideoEncodeSessionParametersGetInfoKHR> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkVideoEncodeSessionParametersGetInfoKHR value) {
             MemorySegment s = segment.asSlice(index * VkVideoEncodeSessionParametersGetInfoKHR.BYTES, VkVideoEncodeSessionParametersGetInfoKHR.BYTES);
             s.copyFrom(value.segment);

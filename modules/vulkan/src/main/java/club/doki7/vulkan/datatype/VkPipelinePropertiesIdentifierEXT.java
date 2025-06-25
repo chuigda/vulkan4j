@@ -87,6 +87,11 @@ public record VkPipelinePropertiesIdentifierEXT(@NotNull MemorySegment segment) 
             return new VkPipelinePropertiesIdentifierEXT(segment.asSlice(index * VkPipelinePropertiesIdentifierEXT.BYTES, VkPipelinePropertiesIdentifierEXT.BYTES));
         }
 
+        public VkPipelinePropertiesIdentifierEXT.Ptr at(long index, @NotNull Consumer<@NotNull VkPipelinePropertiesIdentifierEXT> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkPipelinePropertiesIdentifierEXT value) {
             MemorySegment s = segment.asSlice(index * VkPipelinePropertiesIdentifierEXT.BYTES, VkPipelinePropertiesIdentifierEXT.BYTES);
             s.copyFrom(value.segment);
@@ -215,6 +220,12 @@ public record VkPipelinePropertiesIdentifierEXT(@NotNull MemorySegment segment) 
 
     public @Unsigned BytePtr pipelineIdentifier() {
         return new BytePtr(pipelineIdentifierRaw());
+    }
+
+    public VkPipelinePropertiesIdentifierEXT pipelineIdentifier(@NotNull Consumer<BytePtr> consumer) {
+        @Unsigned BytePtr ptr = pipelineIdentifier();
+        consumer.accept(ptr);
+        return this;
     }
 
     public VkPipelinePropertiesIdentifierEXT pipelineIdentifier(@Unsigned BytePtr value) {

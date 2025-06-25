@@ -111,6 +111,11 @@ public record VkPhysicalDeviceVulkan14Properties(@NotNull MemorySegment segment)
             return new VkPhysicalDeviceVulkan14Properties(segment.asSlice(index * VkPhysicalDeviceVulkan14Properties.BYTES, VkPhysicalDeviceVulkan14Properties.BYTES));
         }
 
+        public VkPhysicalDeviceVulkan14Properties.Ptr at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceVulkan14Properties> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkPhysicalDeviceVulkan14Properties value) {
             MemorySegment s = segment.asSlice(index * VkPhysicalDeviceVulkan14Properties.BYTES, VkPhysicalDeviceVulkan14Properties.BYTES);
             s.copyFrom(value.segment);
@@ -482,6 +487,12 @@ public record VkPhysicalDeviceVulkan14Properties(@NotNull MemorySegment segment)
 
     public @Unsigned BytePtr optimalTilingLayoutUUID() {
         return new BytePtr(optimalTilingLayoutUUIDRaw());
+    }
+
+    public VkPhysicalDeviceVulkan14Properties optimalTilingLayoutUUID(@NotNull Consumer<BytePtr> consumer) {
+        @Unsigned BytePtr ptr = optimalTilingLayoutUUID();
+        consumer.accept(ptr);
+        return this;
     }
 
     public VkPhysicalDeviceVulkan14Properties optimalTilingLayoutUUID(@Unsigned BytePtr value) {

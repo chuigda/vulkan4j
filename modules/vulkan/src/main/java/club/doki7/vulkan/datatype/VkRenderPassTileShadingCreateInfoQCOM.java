@@ -88,6 +88,11 @@ public record VkRenderPassTileShadingCreateInfoQCOM(@NotNull MemorySegment segme
             return new VkRenderPassTileShadingCreateInfoQCOM(segment.asSlice(index * VkRenderPassTileShadingCreateInfoQCOM.BYTES, VkRenderPassTileShadingCreateInfoQCOM.BYTES));
         }
 
+        public VkRenderPassTileShadingCreateInfoQCOM.Ptr at(long index, @NotNull Consumer<@NotNull VkRenderPassTileShadingCreateInfoQCOM> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkRenderPassTileShadingCreateInfoQCOM value) {
             MemorySegment s = segment.asSlice(index * VkRenderPassTileShadingCreateInfoQCOM.BYTES, VkRenderPassTileShadingCreateInfoQCOM.BYTES);
             s.copyFrom(value.segment);

@@ -91,6 +91,11 @@ public record XrEnvironmentDepthHandRemovalSetInfoMETA(@NotNull MemorySegment se
             return new XrEnvironmentDepthHandRemovalSetInfoMETA(segment.asSlice(index * XrEnvironmentDepthHandRemovalSetInfoMETA.BYTES, XrEnvironmentDepthHandRemovalSetInfoMETA.BYTES));
         }
 
+        public XrEnvironmentDepthHandRemovalSetInfoMETA.Ptr at(long index, @NotNull Consumer<@NotNull XrEnvironmentDepthHandRemovalSetInfoMETA> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull XrEnvironmentDepthHandRemovalSetInfoMETA value) {
             MemorySegment s = segment.asSlice(index * XrEnvironmentDepthHandRemovalSetInfoMETA.BYTES, XrEnvironmentDepthHandRemovalSetInfoMETA.BYTES);
             s.copyFrom(value.segment);

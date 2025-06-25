@@ -92,6 +92,11 @@ public record XrSpatialDiscoveryPersistenceUuidFilterEXT(@NotNull MemorySegment 
             return new XrSpatialDiscoveryPersistenceUuidFilterEXT(segment.asSlice(index * XrSpatialDiscoveryPersistenceUuidFilterEXT.BYTES, XrSpatialDiscoveryPersistenceUuidFilterEXT.BYTES));
         }
 
+        public XrSpatialDiscoveryPersistenceUuidFilterEXT.Ptr at(long index, @NotNull Consumer<@NotNull XrSpatialDiscoveryPersistenceUuidFilterEXT> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull XrSpatialDiscoveryPersistenceUuidFilterEXT value) {
             MemorySegment s = segment.asSlice(index * XrSpatialDiscoveryPersistenceUuidFilterEXT.BYTES, XrSpatialDiscoveryPersistenceUuidFilterEXT.BYTES);
             s.copyFrom(value.segment);

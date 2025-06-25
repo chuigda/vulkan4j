@@ -27,7 +27,7 @@ import static club.doki7.vulkan.VkConstants.*;
 ///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
 ///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
 ///     uint32_t profileCount; // optional // @link substring="profileCount" target="#profileCount"
-///     VkVideoProfileInfoKHR const* pProfiles; // @link substring="VkVideoProfileInfoKHR" target="VkVideoProfileInfoKHR" @link substring="pProfiles" target="#pProfiles"
+///     VkVideoProfileInfoKHR const* pProfiles; // optional // @link substring="VkVideoProfileInfoKHR" target="VkVideoProfileInfoKHR" @link substring="pProfiles" target="#pProfiles"
 /// } VkVideoProfileListInfoKHR;
 /// }
 ///
@@ -86,6 +86,11 @@ public record VkVideoProfileListInfoKHR(@NotNull MemorySegment segment) implemen
         /// indicate that the returned structure is a view of the original structure.
         public @NotNull VkVideoProfileListInfoKHR at(long index) {
             return new VkVideoProfileListInfoKHR(segment.asSlice(index * VkVideoProfileListInfoKHR.BYTES, VkVideoProfileListInfoKHR.BYTES));
+        }
+
+        public VkVideoProfileListInfoKHR.Ptr at(long index, @NotNull Consumer<@NotNull VkVideoProfileListInfoKHR> consumer) {
+            consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkVideoProfileListInfoKHR value) {

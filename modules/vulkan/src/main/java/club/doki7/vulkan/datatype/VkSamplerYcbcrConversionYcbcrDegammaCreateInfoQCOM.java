@@ -88,6 +88,11 @@ public record VkSamplerYcbcrConversionYcbcrDegammaCreateInfoQCOM(@NotNull Memory
             return new VkSamplerYcbcrConversionYcbcrDegammaCreateInfoQCOM(segment.asSlice(index * VkSamplerYcbcrConversionYcbcrDegammaCreateInfoQCOM.BYTES, VkSamplerYcbcrConversionYcbcrDegammaCreateInfoQCOM.BYTES));
         }
 
+        public VkSamplerYcbcrConversionYcbcrDegammaCreateInfoQCOM.Ptr at(long index, @NotNull Consumer<@NotNull VkSamplerYcbcrConversionYcbcrDegammaCreateInfoQCOM> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkSamplerYcbcrConversionYcbcrDegammaCreateInfoQCOM value) {
             MemorySegment s = segment.asSlice(index * VkSamplerYcbcrConversionYcbcrDegammaCreateInfoQCOM.BYTES, VkSamplerYcbcrConversionYcbcrDegammaCreateInfoQCOM.BYTES);
             s.copyFrom(value.segment);

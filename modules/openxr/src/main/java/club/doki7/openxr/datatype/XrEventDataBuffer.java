@@ -91,6 +91,11 @@ public record XrEventDataBuffer(@NotNull MemorySegment segment) implements IXrEv
             return new XrEventDataBuffer(segment.asSlice(index * XrEventDataBuffer.BYTES, XrEventDataBuffer.BYTES));
         }
 
+        public XrEventDataBuffer.Ptr at(long index, @NotNull Consumer<@NotNull XrEventDataBuffer> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull XrEventDataBuffer value) {
             MemorySegment s = segment.asSlice(index * XrEventDataBuffer.BYTES, XrEventDataBuffer.BYTES);
             s.copyFrom(value.segment);
@@ -219,6 +224,12 @@ public record XrEventDataBuffer(@NotNull MemorySegment segment) implements IXrEv
 
     public @Unsigned BytePtr varying() {
         return new BytePtr(varyingRaw());
+    }
+
+    public XrEventDataBuffer varying(@NotNull Consumer<BytePtr> consumer) {
+        @Unsigned BytePtr ptr = varying();
+        consumer.accept(ptr);
+        return this;
     }
 
     public XrEventDataBuffer varying(@Unsigned BytePtr value) {

@@ -91,6 +91,11 @@ public record XrDebugUtilsLabelEXT(@NotNull MemorySegment segment) implements IX
             return new XrDebugUtilsLabelEXT(segment.asSlice(index * XrDebugUtilsLabelEXT.BYTES, XrDebugUtilsLabelEXT.BYTES));
         }
 
+        public XrDebugUtilsLabelEXT.Ptr at(long index, @NotNull Consumer<@NotNull XrDebugUtilsLabelEXT> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull XrDebugUtilsLabelEXT value) {
             MemorySegment s = segment.asSlice(index * XrDebugUtilsLabelEXT.BYTES, XrDebugUtilsLabelEXT.BYTES);
             s.copyFrom(value.segment);

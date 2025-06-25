@@ -80,6 +80,11 @@ public record XrUuidEXT(@NotNull MemorySegment segment) implements IXrUuidEXT {
             return new XrUuidEXT(segment.asSlice(index * XrUuidEXT.BYTES, XrUuidEXT.BYTES));
         }
 
+        public XrUuidEXT.Ptr at(long index, @NotNull Consumer<@NotNull XrUuidEXT> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull XrUuidEXT value) {
             MemorySegment s = segment.asSlice(index * XrUuidEXT.BYTES, XrUuidEXT.BYTES);
             s.copyFrom(value.segment);
@@ -175,6 +180,12 @@ public record XrUuidEXT(@NotNull MemorySegment segment) implements IXrUuidEXT {
 
     public @Unsigned BytePtr data() {
         return new BytePtr(dataRaw());
+    }
+
+    public XrUuidEXT data(@NotNull Consumer<BytePtr> consumer) {
+        @Unsigned BytePtr ptr = data();
+        consumer.accept(ptr);
+        return this;
     }
 
     public XrUuidEXT data(@Unsigned BytePtr value) {

@@ -76,6 +76,11 @@ public record VkIndirectCommandsVertexBufferTokenEXT(@NotNull MemorySegment segm
             return new VkIndirectCommandsVertexBufferTokenEXT(segment.asSlice(index * VkIndirectCommandsVertexBufferTokenEXT.BYTES, VkIndirectCommandsVertexBufferTokenEXT.BYTES));
         }
 
+        public VkIndirectCommandsVertexBufferTokenEXT.Ptr at(long index, @NotNull Consumer<@NotNull VkIndirectCommandsVertexBufferTokenEXT> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkIndirectCommandsVertexBufferTokenEXT value) {
             MemorySegment s = segment.asSlice(index * VkIndirectCommandsVertexBufferTokenEXT.BYTES, VkIndirectCommandsVertexBufferTokenEXT.BYTES);
             s.copyFrom(value.segment);

@@ -87,6 +87,11 @@ public record VkQueueFamilyVideoPropertiesKHR(@NotNull MemorySegment segment) im
             return new VkQueueFamilyVideoPropertiesKHR(segment.asSlice(index * VkQueueFamilyVideoPropertiesKHR.BYTES, VkQueueFamilyVideoPropertiesKHR.BYTES));
         }
 
+        public VkQueueFamilyVideoPropertiesKHR.Ptr at(long index, @NotNull Consumer<@NotNull VkQueueFamilyVideoPropertiesKHR> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkQueueFamilyVideoPropertiesKHR value) {
             MemorySegment s = segment.asSlice(index * VkQueueFamilyVideoPropertiesKHR.BYTES, VkQueueFamilyVideoPropertiesKHR.BYTES);
             s.copyFrom(value.segment);

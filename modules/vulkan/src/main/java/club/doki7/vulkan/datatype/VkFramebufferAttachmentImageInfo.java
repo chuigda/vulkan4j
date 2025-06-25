@@ -32,7 +32,7 @@ import static club.doki7.vulkan.VkConstants.*;
 ///     uint32_t height; // @link substring="height" target="#height"
 ///     uint32_t layerCount; // @link substring="layerCount" target="#layerCount"
 ///     uint32_t viewFormatCount; // optional // @link substring="viewFormatCount" target="#viewFormatCount"
-///     VkFormat const* pViewFormats; // @link substring="VkFormat" target="VkFormat" @link substring="pViewFormats" target="#pViewFormats"
+///     VkFormat const* pViewFormats; // optional // @link substring="VkFormat" target="VkFormat" @link substring="pViewFormats" target="#pViewFormats"
 /// } VkFramebufferAttachmentImageInfo;
 /// }
 ///
@@ -91,6 +91,11 @@ public record VkFramebufferAttachmentImageInfo(@NotNull MemorySegment segment) i
         /// indicate that the returned structure is a view of the original structure.
         public @NotNull VkFramebufferAttachmentImageInfo at(long index) {
             return new VkFramebufferAttachmentImageInfo(segment.asSlice(index * VkFramebufferAttachmentImageInfo.BYTES, VkFramebufferAttachmentImageInfo.BYTES));
+        }
+
+        public VkFramebufferAttachmentImageInfo.Ptr at(long index, @NotNull Consumer<@NotNull VkFramebufferAttachmentImageInfo> consumer) {
+            consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkFramebufferAttachmentImageInfo value) {

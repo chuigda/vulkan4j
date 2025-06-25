@@ -87,6 +87,11 @@ public record VkPhysicalDeviceScalarBlockLayoutFeatures(@NotNull MemorySegment s
             return new VkPhysicalDeviceScalarBlockLayoutFeatures(segment.asSlice(index * VkPhysicalDeviceScalarBlockLayoutFeatures.BYTES, VkPhysicalDeviceScalarBlockLayoutFeatures.BYTES));
         }
 
+        public VkPhysicalDeviceScalarBlockLayoutFeatures.Ptr at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceScalarBlockLayoutFeatures> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkPhysicalDeviceScalarBlockLayoutFeatures value) {
             MemorySegment s = segment.asSlice(index * VkPhysicalDeviceScalarBlockLayoutFeatures.BYTES, VkPhysicalDeviceScalarBlockLayoutFeatures.BYTES);
             s.copyFrom(value.segment);

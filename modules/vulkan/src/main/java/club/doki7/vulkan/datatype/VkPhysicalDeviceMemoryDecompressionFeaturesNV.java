@@ -87,6 +87,11 @@ public record VkPhysicalDeviceMemoryDecompressionFeaturesNV(@NotNull MemorySegme
             return new VkPhysicalDeviceMemoryDecompressionFeaturesNV(segment.asSlice(index * VkPhysicalDeviceMemoryDecompressionFeaturesNV.BYTES, VkPhysicalDeviceMemoryDecompressionFeaturesNV.BYTES));
         }
 
+        public VkPhysicalDeviceMemoryDecompressionFeaturesNV.Ptr at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceMemoryDecompressionFeaturesNV> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkPhysicalDeviceMemoryDecompressionFeaturesNV value) {
             MemorySegment s = segment.asSlice(index * VkPhysicalDeviceMemoryDecompressionFeaturesNV.BYTES, VkPhysicalDeviceMemoryDecompressionFeaturesNV.BYTES);
             s.copyFrom(value.segment);

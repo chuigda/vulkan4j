@@ -91,6 +91,11 @@ public record VkPartitionedAccelerationStructureInstancesInputNV(@NotNull Memory
             return new VkPartitionedAccelerationStructureInstancesInputNV(segment.asSlice(index * VkPartitionedAccelerationStructureInstancesInputNV.BYTES, VkPartitionedAccelerationStructureInstancesInputNV.BYTES));
         }
 
+        public VkPartitionedAccelerationStructureInstancesInputNV.Ptr at(long index, @NotNull Consumer<@NotNull VkPartitionedAccelerationStructureInstancesInputNV> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkPartitionedAccelerationStructureInstancesInputNV value) {
             MemorySegment s = segment.asSlice(index * VkPartitionedAccelerationStructureInstancesInputNV.BYTES, VkPartitionedAccelerationStructureInstancesInputNV.BYTES);
             s.copyFrom(value.segment);

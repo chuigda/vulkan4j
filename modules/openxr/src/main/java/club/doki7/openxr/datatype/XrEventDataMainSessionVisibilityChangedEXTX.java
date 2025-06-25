@@ -92,6 +92,11 @@ public record XrEventDataMainSessionVisibilityChangedEXTX(@NotNull MemorySegment
             return new XrEventDataMainSessionVisibilityChangedEXTX(segment.asSlice(index * XrEventDataMainSessionVisibilityChangedEXTX.BYTES, XrEventDataMainSessionVisibilityChangedEXTX.BYTES));
         }
 
+        public XrEventDataMainSessionVisibilityChangedEXTX.Ptr at(long index, @NotNull Consumer<@NotNull XrEventDataMainSessionVisibilityChangedEXTX> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull XrEventDataMainSessionVisibilityChangedEXTX value) {
             MemorySegment s = segment.asSlice(index * XrEventDataMainSessionVisibilityChangedEXTX.BYTES, XrEventDataMainSessionVisibilityChangedEXTX.BYTES);
             s.copyFrom(value.segment);

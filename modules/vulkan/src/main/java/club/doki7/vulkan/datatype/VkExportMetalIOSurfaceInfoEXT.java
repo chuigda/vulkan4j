@@ -88,6 +88,11 @@ public record VkExportMetalIOSurfaceInfoEXT(@NotNull MemorySegment segment) impl
             return new VkExportMetalIOSurfaceInfoEXT(segment.asSlice(index * VkExportMetalIOSurfaceInfoEXT.BYTES, VkExportMetalIOSurfaceInfoEXT.BYTES));
         }
 
+        public VkExportMetalIOSurfaceInfoEXT.Ptr at(long index, @NotNull Consumer<@NotNull VkExportMetalIOSurfaceInfoEXT> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkExportMetalIOSurfaceInfoEXT value) {
             MemorySegment s = segment.asSlice(index * VkExportMetalIOSurfaceInfoEXT.BYTES, VkExportMetalIOSurfaceInfoEXT.BYTES);
             s.copyFrom(value.segment);

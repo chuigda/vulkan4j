@@ -88,6 +88,11 @@ public record VkRenderPassInputAttachmentAspectCreateInfo(@NotNull MemorySegment
             return new VkRenderPassInputAttachmentAspectCreateInfo(segment.asSlice(index * VkRenderPassInputAttachmentAspectCreateInfo.BYTES, VkRenderPassInputAttachmentAspectCreateInfo.BYTES));
         }
 
+        public VkRenderPassInputAttachmentAspectCreateInfo.Ptr at(long index, @NotNull Consumer<@NotNull VkRenderPassInputAttachmentAspectCreateInfo> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkRenderPassInputAttachmentAspectCreateInfo value) {
             MemorySegment s = segment.asSlice(index * VkRenderPassInputAttachmentAspectCreateInfo.BYTES, VkRenderPassInputAttachmentAspectCreateInfo.BYTES);
             s.copyFrom(value.segment);

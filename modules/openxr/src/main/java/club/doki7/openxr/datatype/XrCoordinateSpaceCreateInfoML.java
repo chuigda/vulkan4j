@@ -92,6 +92,11 @@ public record XrCoordinateSpaceCreateInfoML(@NotNull MemorySegment segment) impl
             return new XrCoordinateSpaceCreateInfoML(segment.asSlice(index * XrCoordinateSpaceCreateInfoML.BYTES, XrCoordinateSpaceCreateInfoML.BYTES));
         }
 
+        public XrCoordinateSpaceCreateInfoML.Ptr at(long index, @NotNull Consumer<@NotNull XrCoordinateSpaceCreateInfoML> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull XrCoordinateSpaceCreateInfoML value) {
             MemorySegment s = segment.asSlice(index * XrCoordinateSpaceCreateInfoML.BYTES, XrCoordinateSpaceCreateInfoML.BYTES);
             s.copyFrom(value.segment);

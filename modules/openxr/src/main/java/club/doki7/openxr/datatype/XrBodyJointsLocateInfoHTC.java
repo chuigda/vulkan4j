@@ -92,6 +92,11 @@ public record XrBodyJointsLocateInfoHTC(@NotNull MemorySegment segment) implemen
             return new XrBodyJointsLocateInfoHTC(segment.asSlice(index * XrBodyJointsLocateInfoHTC.BYTES, XrBodyJointsLocateInfoHTC.BYTES));
         }
 
+        public XrBodyJointsLocateInfoHTC.Ptr at(long index, @NotNull Consumer<@NotNull XrBodyJointsLocateInfoHTC> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull XrBodyJointsLocateInfoHTC value) {
             MemorySegment s = segment.asSlice(index * XrBodyJointsLocateInfoHTC.BYTES, XrBodyJointsLocateInfoHTC.BYTES);
             s.copyFrom(value.segment);

@@ -87,6 +87,11 @@ public record VkVideoEncodeQuantizationMapSessionParametersCreateInfoKHR(@NotNul
             return new VkVideoEncodeQuantizationMapSessionParametersCreateInfoKHR(segment.asSlice(index * VkVideoEncodeQuantizationMapSessionParametersCreateInfoKHR.BYTES, VkVideoEncodeQuantizationMapSessionParametersCreateInfoKHR.BYTES));
         }
 
+        public VkVideoEncodeQuantizationMapSessionParametersCreateInfoKHR.Ptr at(long index, @NotNull Consumer<@NotNull VkVideoEncodeQuantizationMapSessionParametersCreateInfoKHR> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkVideoEncodeQuantizationMapSessionParametersCreateInfoKHR value) {
             MemorySegment s = segment.asSlice(index * VkVideoEncodeQuantizationMapSessionParametersCreateInfoKHR.BYTES, VkVideoEncodeQuantizationMapSessionParametersCreateInfoKHR.BYTES);
             s.copyFrom(value.segment);

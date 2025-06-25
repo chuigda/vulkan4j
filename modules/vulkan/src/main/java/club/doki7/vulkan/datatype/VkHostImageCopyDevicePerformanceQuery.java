@@ -88,6 +88,11 @@ public record VkHostImageCopyDevicePerformanceQuery(@NotNull MemorySegment segme
             return new VkHostImageCopyDevicePerformanceQuery(segment.asSlice(index * VkHostImageCopyDevicePerformanceQuery.BYTES, VkHostImageCopyDevicePerformanceQuery.BYTES));
         }
 
+        public VkHostImageCopyDevicePerformanceQuery.Ptr at(long index, @NotNull Consumer<@NotNull VkHostImageCopyDevicePerformanceQuery> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkHostImageCopyDevicePerformanceQuery value) {
             MemorySegment s = segment.asSlice(index * VkHostImageCopyDevicePerformanceQuery.BYTES, VkHostImageCopyDevicePerformanceQuery.BYTES);
             s.copyFrom(value.segment);

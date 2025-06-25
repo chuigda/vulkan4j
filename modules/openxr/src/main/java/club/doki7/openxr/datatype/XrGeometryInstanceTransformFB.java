@@ -94,6 +94,11 @@ public record XrGeometryInstanceTransformFB(@NotNull MemorySegment segment) impl
             return new XrGeometryInstanceTransformFB(segment.asSlice(index * XrGeometryInstanceTransformFB.BYTES, XrGeometryInstanceTransformFB.BYTES));
         }
 
+        public XrGeometryInstanceTransformFB.Ptr at(long index, @NotNull Consumer<@NotNull XrGeometryInstanceTransformFB> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull XrGeometryInstanceTransformFB value) {
             MemorySegment s = segment.asSlice(index * XrGeometryInstanceTransformFB.BYTES, XrGeometryInstanceTransformFB.BYTES);
             s.copyFrom(value.segment);

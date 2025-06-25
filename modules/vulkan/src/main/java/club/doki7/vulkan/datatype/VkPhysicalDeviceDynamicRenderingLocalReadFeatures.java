@@ -87,6 +87,11 @@ public record VkPhysicalDeviceDynamicRenderingLocalReadFeatures(@NotNull MemoryS
             return new VkPhysicalDeviceDynamicRenderingLocalReadFeatures(segment.asSlice(index * VkPhysicalDeviceDynamicRenderingLocalReadFeatures.BYTES, VkPhysicalDeviceDynamicRenderingLocalReadFeatures.BYTES));
         }
 
+        public VkPhysicalDeviceDynamicRenderingLocalReadFeatures.Ptr at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceDynamicRenderingLocalReadFeatures> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkPhysicalDeviceDynamicRenderingLocalReadFeatures value) {
             MemorySegment s = segment.asSlice(index * VkPhysicalDeviceDynamicRenderingLocalReadFeatures.BYTES, VkPhysicalDeviceDynamicRenderingLocalReadFeatures.BYTES);
             s.copyFrom(value.segment);

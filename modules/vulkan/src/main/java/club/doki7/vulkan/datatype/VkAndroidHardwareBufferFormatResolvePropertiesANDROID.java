@@ -87,6 +87,11 @@ public record VkAndroidHardwareBufferFormatResolvePropertiesANDROID(@NotNull Mem
             return new VkAndroidHardwareBufferFormatResolvePropertiesANDROID(segment.asSlice(index * VkAndroidHardwareBufferFormatResolvePropertiesANDROID.BYTES, VkAndroidHardwareBufferFormatResolvePropertiesANDROID.BYTES));
         }
 
+        public VkAndroidHardwareBufferFormatResolvePropertiesANDROID.Ptr at(long index, @NotNull Consumer<@NotNull VkAndroidHardwareBufferFormatResolvePropertiesANDROID> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkAndroidHardwareBufferFormatResolvePropertiesANDROID value) {
             MemorySegment s = segment.asSlice(index * VkAndroidHardwareBufferFormatResolvePropertiesANDROID.BYTES, VkAndroidHardwareBufferFormatResolvePropertiesANDROID.BYTES);
             s.copyFrom(value.segment);

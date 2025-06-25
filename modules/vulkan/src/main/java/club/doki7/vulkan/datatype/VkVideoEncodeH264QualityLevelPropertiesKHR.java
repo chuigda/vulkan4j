@@ -95,6 +95,11 @@ public record VkVideoEncodeH264QualityLevelPropertiesKHR(@NotNull MemorySegment 
             return new VkVideoEncodeH264QualityLevelPropertiesKHR(segment.asSlice(index * VkVideoEncodeH264QualityLevelPropertiesKHR.BYTES, VkVideoEncodeH264QualityLevelPropertiesKHR.BYTES));
         }
 
+        public VkVideoEncodeH264QualityLevelPropertiesKHR.Ptr at(long index, @NotNull Consumer<@NotNull VkVideoEncodeH264QualityLevelPropertiesKHR> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkVideoEncodeH264QualityLevelPropertiesKHR value) {
             MemorySegment s = segment.asSlice(index * VkVideoEncodeH264QualityLevelPropertiesKHR.BYTES, VkVideoEncodeH264QualityLevelPropertiesKHR.BYTES);
             s.copyFrom(value.segment);

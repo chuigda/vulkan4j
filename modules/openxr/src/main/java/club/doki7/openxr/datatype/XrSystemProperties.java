@@ -95,6 +95,11 @@ public record XrSystemProperties(@NotNull MemorySegment segment) implements IXrS
             return new XrSystemProperties(segment.asSlice(index * XrSystemProperties.BYTES, XrSystemProperties.BYTES));
         }
 
+        public XrSystemProperties.Ptr at(long index, @NotNull Consumer<@NotNull XrSystemProperties> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull XrSystemProperties value) {
             MemorySegment s = segment.asSlice(index * XrSystemProperties.BYTES, XrSystemProperties.BYTES);
             s.copyFrom(value.segment);
@@ -241,6 +246,12 @@ public record XrSystemProperties(@NotNull MemorySegment segment) implements IXrS
 
     public BytePtr systemName() {
         return new BytePtr(systemNameRaw());
+    }
+
+    public XrSystemProperties systemName(@NotNull Consumer<BytePtr> consumer) {
+        BytePtr ptr = systemName();
+        consumer.accept(ptr);
+        return this;
     }
 
     public XrSystemProperties systemName(BytePtr value) {

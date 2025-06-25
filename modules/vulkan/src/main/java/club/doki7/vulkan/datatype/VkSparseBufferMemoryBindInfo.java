@@ -78,6 +78,11 @@ public record VkSparseBufferMemoryBindInfo(@NotNull MemorySegment segment) imple
             return new VkSparseBufferMemoryBindInfo(segment.asSlice(index * VkSparseBufferMemoryBindInfo.BYTES, VkSparseBufferMemoryBindInfo.BYTES));
         }
 
+        public VkSparseBufferMemoryBindInfo.Ptr at(long index, @NotNull Consumer<@NotNull VkSparseBufferMemoryBindInfo> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkSparseBufferMemoryBindInfo value) {
             MemorySegment s = segment.asSlice(index * VkSparseBufferMemoryBindInfo.BYTES, VkSparseBufferMemoryBindInfo.BYTES);
             s.copyFrom(value.segment);

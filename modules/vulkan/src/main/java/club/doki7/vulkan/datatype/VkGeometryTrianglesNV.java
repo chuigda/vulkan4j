@@ -97,6 +97,11 @@ public record VkGeometryTrianglesNV(@NotNull MemorySegment segment) implements I
             return new VkGeometryTrianglesNV(segment.asSlice(index * VkGeometryTrianglesNV.BYTES, VkGeometryTrianglesNV.BYTES));
         }
 
+        public VkGeometryTrianglesNV.Ptr at(long index, @NotNull Consumer<@NotNull VkGeometryTrianglesNV> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkGeometryTrianglesNV value) {
             MemorySegment s = segment.asSlice(index * VkGeometryTrianglesNV.BYTES, VkGeometryTrianglesNV.BYTES);
             s.copyFrom(value.segment);

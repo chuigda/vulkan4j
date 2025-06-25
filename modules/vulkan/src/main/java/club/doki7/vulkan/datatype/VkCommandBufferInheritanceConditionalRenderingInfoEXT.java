@@ -87,6 +87,11 @@ public record VkCommandBufferInheritanceConditionalRenderingInfoEXT(@NotNull Mem
             return new VkCommandBufferInheritanceConditionalRenderingInfoEXT(segment.asSlice(index * VkCommandBufferInheritanceConditionalRenderingInfoEXT.BYTES, VkCommandBufferInheritanceConditionalRenderingInfoEXT.BYTES));
         }
 
+        public VkCommandBufferInheritanceConditionalRenderingInfoEXT.Ptr at(long index, @NotNull Consumer<@NotNull VkCommandBufferInheritanceConditionalRenderingInfoEXT> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkCommandBufferInheritanceConditionalRenderingInfoEXT value) {
             MemorySegment s = segment.asSlice(index * VkCommandBufferInheritanceConditionalRenderingInfoEXT.BYTES, VkCommandBufferInheritanceConditionalRenderingInfoEXT.BYTES);
             s.copyFrom(value.segment);

@@ -81,6 +81,11 @@ public record XrActionSuggestedBinding(@NotNull MemorySegment segment) implement
             return new XrActionSuggestedBinding(segment.asSlice(index * XrActionSuggestedBinding.BYTES, XrActionSuggestedBinding.BYTES));
         }
 
+        public XrActionSuggestedBinding.Ptr at(long index, @NotNull Consumer<@NotNull XrActionSuggestedBinding> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull XrActionSuggestedBinding value) {
             MemorySegment s = segment.asSlice(index * XrActionSuggestedBinding.BYTES, XrActionSuggestedBinding.BYTES);
             s.copyFrom(value.segment);

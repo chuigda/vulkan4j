@@ -91,6 +91,11 @@ public record XrMarkerDetectorStateML(@NotNull MemorySegment segment) implements
             return new XrMarkerDetectorStateML(segment.asSlice(index * XrMarkerDetectorStateML.BYTES, XrMarkerDetectorStateML.BYTES));
         }
 
+        public XrMarkerDetectorStateML.Ptr at(long index, @NotNull Consumer<@NotNull XrMarkerDetectorStateML> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull XrMarkerDetectorStateML value) {
             MemorySegment s = segment.asSlice(index * XrMarkerDetectorStateML.BYTES, XrMarkerDetectorStateML.BYTES);
             s.copyFrom(value.segment);

@@ -90,6 +90,11 @@ public record VkPushDescriptorSetWithTemplateInfo(@NotNull MemorySegment segment
             return new VkPushDescriptorSetWithTemplateInfo(segment.asSlice(index * VkPushDescriptorSetWithTemplateInfo.BYTES, VkPushDescriptorSetWithTemplateInfo.BYTES));
         }
 
+        public VkPushDescriptorSetWithTemplateInfo.Ptr at(long index, @NotNull Consumer<@NotNull VkPushDescriptorSetWithTemplateInfo> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkPushDescriptorSetWithTemplateInfo value) {
             MemorySegment s = segment.asSlice(index * VkPushDescriptorSetWithTemplateInfo.BYTES, VkPushDescriptorSetWithTemplateInfo.BYTES);
             s.copyFrom(value.segment);

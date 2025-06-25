@@ -27,7 +27,7 @@ import static club.doki7.vulkan.VkConstants.*;
 ///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
 ///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
 ///     uint32_t attachmentCount; // optional // @link substring="attachmentCount" target="#attachmentCount"
-///     VkImageView const* pAttachments; // @link substring="VkImageView" target="VkImageView" @link substring="pAttachments" target="#pAttachments"
+///     VkImageView const* pAttachments; // optional // @link substring="VkImageView" target="VkImageView" @link substring="pAttachments" target="#pAttachments"
 /// } VkRenderPassAttachmentBeginInfo;
 /// }
 ///
@@ -86,6 +86,11 @@ public record VkRenderPassAttachmentBeginInfo(@NotNull MemorySegment segment) im
         /// indicate that the returned structure is a view of the original structure.
         public @NotNull VkRenderPassAttachmentBeginInfo at(long index) {
             return new VkRenderPassAttachmentBeginInfo(segment.asSlice(index * VkRenderPassAttachmentBeginInfo.BYTES, VkRenderPassAttachmentBeginInfo.BYTES));
+        }
+
+        public VkRenderPassAttachmentBeginInfo.Ptr at(long index, @NotNull Consumer<@NotNull VkRenderPassAttachmentBeginInfo> consumer) {
+            consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkRenderPassAttachmentBeginInfo value) {

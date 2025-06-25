@@ -92,6 +92,11 @@ public record XrRenderModelStateEXT(@NotNull MemorySegment segment) implements I
             return new XrRenderModelStateEXT(segment.asSlice(index * XrRenderModelStateEXT.BYTES, XrRenderModelStateEXT.BYTES));
         }
 
+        public XrRenderModelStateEXT.Ptr at(long index, @NotNull Consumer<@NotNull XrRenderModelStateEXT> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull XrRenderModelStateEXT value) {
             MemorySegment s = segment.asSlice(index * XrRenderModelStateEXT.BYTES, XrRenderModelStateEXT.BYTES);
             s.copyFrom(value.segment);

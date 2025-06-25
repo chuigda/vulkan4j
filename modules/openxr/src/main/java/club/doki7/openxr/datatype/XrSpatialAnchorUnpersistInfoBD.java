@@ -92,6 +92,11 @@ public record XrSpatialAnchorUnpersistInfoBD(@NotNull MemorySegment segment) imp
             return new XrSpatialAnchorUnpersistInfoBD(segment.asSlice(index * XrSpatialAnchorUnpersistInfoBD.BYTES, XrSpatialAnchorUnpersistInfoBD.BYTES));
         }
 
+        public XrSpatialAnchorUnpersistInfoBD.Ptr at(long index, @NotNull Consumer<@NotNull XrSpatialAnchorUnpersistInfoBD> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull XrSpatialAnchorUnpersistInfoBD value) {
             MemorySegment s = segment.asSlice(index * XrSpatialAnchorUnpersistInfoBD.BYTES, XrSpatialAnchorUnpersistInfoBD.BYTES);
             s.copyFrom(value.segment);

@@ -88,6 +88,11 @@ public record VkPhysicalDeviceMemoryBudgetPropertiesEXT(@NotNull MemorySegment s
             return new VkPhysicalDeviceMemoryBudgetPropertiesEXT(segment.asSlice(index * VkPhysicalDeviceMemoryBudgetPropertiesEXT.BYTES, VkPhysicalDeviceMemoryBudgetPropertiesEXT.BYTES));
         }
 
+        public VkPhysicalDeviceMemoryBudgetPropertiesEXT.Ptr at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceMemoryBudgetPropertiesEXT> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkPhysicalDeviceMemoryBudgetPropertiesEXT value) {
             MemorySegment s = segment.asSlice(index * VkPhysicalDeviceMemoryBudgetPropertiesEXT.BYTES, VkPhysicalDeviceMemoryBudgetPropertiesEXT.BYTES);
             s.copyFrom(value.segment);
@@ -218,6 +223,12 @@ public record VkPhysicalDeviceMemoryBudgetPropertiesEXT(@NotNull MemorySegment s
         return new LongPtr(heapBudgetRaw());
     }
 
+    public VkPhysicalDeviceMemoryBudgetPropertiesEXT heapBudget(@NotNull Consumer<LongPtr> consumer) {
+        @Pointer(comment="VkDeviceSize") @Unsigned LongPtr ptr = heapBudget();
+        consumer.accept(ptr);
+        return this;
+    }
+
     public VkPhysicalDeviceMemoryBudgetPropertiesEXT heapBudget(@Pointer(comment="VkDeviceSize") @Unsigned LongPtr value) {
         MemorySegment s = heapBudgetRaw();
         s.copyFrom(value.segment());
@@ -230,6 +241,12 @@ public record VkPhysicalDeviceMemoryBudgetPropertiesEXT(@NotNull MemorySegment s
 
     public @Pointer(comment="VkDeviceSize") @Unsigned LongPtr heapUsage() {
         return new LongPtr(heapUsageRaw());
+    }
+
+    public VkPhysicalDeviceMemoryBudgetPropertiesEXT heapUsage(@NotNull Consumer<LongPtr> consumer) {
+        @Pointer(comment="VkDeviceSize") @Unsigned LongPtr ptr = heapUsage();
+        consumer.accept(ptr);
+        return this;
     }
 
     public VkPhysicalDeviceMemoryBudgetPropertiesEXT heapUsage(@Pointer(comment="VkDeviceSize") @Unsigned LongPtr value) {

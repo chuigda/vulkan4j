@@ -90,6 +90,11 @@ public record XrFoveationProfileCreateInfoFB(@NotNull MemorySegment segment) imp
             return new XrFoveationProfileCreateInfoFB(segment.asSlice(index * XrFoveationProfileCreateInfoFB.BYTES, XrFoveationProfileCreateInfoFB.BYTES));
         }
 
+        public XrFoveationProfileCreateInfoFB.Ptr at(long index, @NotNull Consumer<@NotNull XrFoveationProfileCreateInfoFB> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull XrFoveationProfileCreateInfoFB value) {
             MemorySegment s = segment.asSlice(index * XrFoveationProfileCreateInfoFB.BYTES, XrFoveationProfileCreateInfoFB.BYTES);
             s.copyFrom(value.segment);

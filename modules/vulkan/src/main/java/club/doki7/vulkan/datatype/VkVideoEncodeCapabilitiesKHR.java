@@ -93,6 +93,11 @@ public record VkVideoEncodeCapabilitiesKHR(@NotNull MemorySegment segment) imple
             return new VkVideoEncodeCapabilitiesKHR(segment.asSlice(index * VkVideoEncodeCapabilitiesKHR.BYTES, VkVideoEncodeCapabilitiesKHR.BYTES));
         }
 
+        public VkVideoEncodeCapabilitiesKHR.Ptr at(long index, @NotNull Consumer<@NotNull VkVideoEncodeCapabilitiesKHR> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkVideoEncodeCapabilitiesKHR value) {
             MemorySegment s = segment.asSlice(index * VkVideoEncodeCapabilitiesKHR.BYTES, VkVideoEncodeCapabilitiesKHR.BYTES);
             s.copyFrom(value.segment);

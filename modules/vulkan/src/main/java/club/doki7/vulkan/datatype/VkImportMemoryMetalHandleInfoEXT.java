@@ -88,6 +88,11 @@ public record VkImportMemoryMetalHandleInfoEXT(@NotNull MemorySegment segment) i
             return new VkImportMemoryMetalHandleInfoEXT(segment.asSlice(index * VkImportMemoryMetalHandleInfoEXT.BYTES, VkImportMemoryMetalHandleInfoEXT.BYTES));
         }
 
+        public VkImportMemoryMetalHandleInfoEXT.Ptr at(long index, @NotNull Consumer<@NotNull VkImportMemoryMetalHandleInfoEXT> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkImportMemoryMetalHandleInfoEXT value) {
             MemorySegment s = segment.asSlice(index * VkImportMemoryMetalHandleInfoEXT.BYTES, VkImportMemoryMetalHandleInfoEXT.BYTES);
             s.copyFrom(value.segment);

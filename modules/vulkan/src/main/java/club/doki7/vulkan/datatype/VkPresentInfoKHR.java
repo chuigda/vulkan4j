@@ -27,11 +27,11 @@ import static club.doki7.vulkan.VkConstants.*;
 ///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
 ///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
 ///     uint32_t waitSemaphoreCount; // optional // @link substring="waitSemaphoreCount" target="#waitSemaphoreCount"
-///     VkSemaphore const* pWaitSemaphores; // @link substring="VkSemaphore" target="VkSemaphore" @link substring="pWaitSemaphores" target="#pWaitSemaphores"
+///     VkSemaphore const* pWaitSemaphores; // optional // @link substring="VkSemaphore" target="VkSemaphore" @link substring="pWaitSemaphores" target="#pWaitSemaphores"
 ///     uint32_t swapchainCount; // @link substring="swapchainCount" target="#swapchainCount"
 ///     VkSwapchainKHR const* pSwapchains; // @link substring="VkSwapchainKHR" target="VkSwapchainKHR" @link substring="pSwapchains" target="#pSwapchains"
 ///     uint32_t const* pImageIndices; // @link substring="pImageIndices" target="#pImageIndices"
-///     VkResult* pResults; // optional // @link substring="VkResult" target="VkResult" @link substring="pResults" target="#pResults"
+///     VkResult* pResults; // @link substring="VkResult" target="VkResult" @link substring="pResults" target="#pResults"
 /// } VkPresentInfoKHR;
 /// }
 ///
@@ -90,6 +90,11 @@ public record VkPresentInfoKHR(@NotNull MemorySegment segment) implements IVkPre
         /// indicate that the returned structure is a view of the original structure.
         public @NotNull VkPresentInfoKHR at(long index) {
             return new VkPresentInfoKHR(segment.asSlice(index * VkPresentInfoKHR.BYTES, VkPresentInfoKHR.BYTES));
+        }
+
+        public VkPresentInfoKHR.Ptr at(long index, @NotNull Consumer<@NotNull VkPresentInfoKHR> consumer) {
+            consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkPresentInfoKHR value) {

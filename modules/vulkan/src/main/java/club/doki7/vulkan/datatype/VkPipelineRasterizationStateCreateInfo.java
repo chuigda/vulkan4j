@@ -97,6 +97,11 @@ public record VkPipelineRasterizationStateCreateInfo(@NotNull MemorySegment segm
             return new VkPipelineRasterizationStateCreateInfo(segment.asSlice(index * VkPipelineRasterizationStateCreateInfo.BYTES, VkPipelineRasterizationStateCreateInfo.BYTES));
         }
 
+        public VkPipelineRasterizationStateCreateInfo.Ptr at(long index, @NotNull Consumer<@NotNull VkPipelineRasterizationStateCreateInfo> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkPipelineRasterizationStateCreateInfo value) {
             MemorySegment s = segment.asSlice(index * VkPipelineRasterizationStateCreateInfo.BYTES, VkPipelineRasterizationStateCreateInfo.BYTES);
             s.copyFrom(value.segment);

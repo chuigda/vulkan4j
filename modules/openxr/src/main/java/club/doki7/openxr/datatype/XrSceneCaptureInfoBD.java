@@ -90,6 +90,11 @@ public record XrSceneCaptureInfoBD(@NotNull MemorySegment segment) implements IX
             return new XrSceneCaptureInfoBD(segment.asSlice(index * XrSceneCaptureInfoBD.BYTES, XrSceneCaptureInfoBD.BYTES));
         }
 
+        public XrSceneCaptureInfoBD.Ptr at(long index, @NotNull Consumer<@NotNull XrSceneCaptureInfoBD> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull XrSceneCaptureInfoBD value) {
             MemorySegment s = segment.asSlice(index * XrSceneCaptureInfoBD.BYTES, XrSceneCaptureInfoBD.BYTES);
             s.copyFrom(value.segment);

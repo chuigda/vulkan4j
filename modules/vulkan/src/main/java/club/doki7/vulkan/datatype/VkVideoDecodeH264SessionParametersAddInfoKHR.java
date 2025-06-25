@@ -27,9 +27,9 @@ import static club.doki7.vulkan.VkConstants.*;
 ///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
 ///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
 ///     uint32_t stdSPSCount; // optional // @link substring="stdSPSCount" target="#stdSPSCount"
-///     StdVideoH264SequenceParameterSet const* pStdSPSs; // @link substring="StdVideoH264SequenceParameterSet" target="StdVideoH264SequenceParameterSet" @link substring="pStdSPSs" target="#pStdSPSs"
+///     StdVideoH264SequenceParameterSet const* pStdSPSs; // optional // @link substring="StdVideoH264SequenceParameterSet" target="StdVideoH264SequenceParameterSet" @link substring="pStdSPSs" target="#pStdSPSs"
 ///     uint32_t stdPPSCount; // optional // @link substring="stdPPSCount" target="#stdPPSCount"
-///     StdVideoH264PictureParameterSet const* pStdPPSs; // @link substring="StdVideoH264PictureParameterSet" target="StdVideoH264PictureParameterSet" @link substring="pStdPPSs" target="#pStdPPSs"
+///     StdVideoH264PictureParameterSet const* pStdPPSs; // optional // @link substring="StdVideoH264PictureParameterSet" target="StdVideoH264PictureParameterSet" @link substring="pStdPPSs" target="#pStdPPSs"
 /// } VkVideoDecodeH264SessionParametersAddInfoKHR;
 /// }
 ///
@@ -88,6 +88,11 @@ public record VkVideoDecodeH264SessionParametersAddInfoKHR(@NotNull MemorySegmen
         /// indicate that the returned structure is a view of the original structure.
         public @NotNull VkVideoDecodeH264SessionParametersAddInfoKHR at(long index) {
             return new VkVideoDecodeH264SessionParametersAddInfoKHR(segment.asSlice(index * VkVideoDecodeH264SessionParametersAddInfoKHR.BYTES, VkVideoDecodeH264SessionParametersAddInfoKHR.BYTES));
+        }
+
+        public VkVideoDecodeH264SessionParametersAddInfoKHR.Ptr at(long index, @NotNull Consumer<@NotNull VkVideoDecodeH264SessionParametersAddInfoKHR> consumer) {
+            consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkVideoDecodeH264SessionParametersAddInfoKHR value) {

@@ -78,6 +78,11 @@ public record VkMicromapUsageEXT(@NotNull MemorySegment segment) implements IVkM
             return new VkMicromapUsageEXT(segment.asSlice(index * VkMicromapUsageEXT.BYTES, VkMicromapUsageEXT.BYTES));
         }
 
+        public VkMicromapUsageEXT.Ptr at(long index, @NotNull Consumer<@NotNull VkMicromapUsageEXT> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkMicromapUsageEXT value) {
             MemorySegment s = segment.asSlice(index * VkMicromapUsageEXT.BYTES, VkMicromapUsageEXT.BYTES);
             s.copyFrom(value.segment);

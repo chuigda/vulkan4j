@@ -88,6 +88,11 @@ public record VkPhysicalDeviceBorderColorSwizzleFeaturesEXT(@NotNull MemorySegme
             return new VkPhysicalDeviceBorderColorSwizzleFeaturesEXT(segment.asSlice(index * VkPhysicalDeviceBorderColorSwizzleFeaturesEXT.BYTES, VkPhysicalDeviceBorderColorSwizzleFeaturesEXT.BYTES));
         }
 
+        public VkPhysicalDeviceBorderColorSwizzleFeaturesEXT.Ptr at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceBorderColorSwizzleFeaturesEXT> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkPhysicalDeviceBorderColorSwizzleFeaturesEXT value) {
             MemorySegment s = segment.asSlice(index * VkPhysicalDeviceBorderColorSwizzleFeaturesEXT.BYTES, VkPhysicalDeviceBorderColorSwizzleFeaturesEXT.BYTES);
             s.copyFrom(value.segment);

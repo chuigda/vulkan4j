@@ -91,6 +91,11 @@ public record VkPhysicalDevicePipelineBinaryPropertiesKHR(@NotNull MemorySegment
             return new VkPhysicalDevicePipelineBinaryPropertiesKHR(segment.asSlice(index * VkPhysicalDevicePipelineBinaryPropertiesKHR.BYTES, VkPhysicalDevicePipelineBinaryPropertiesKHR.BYTES));
         }
 
+        public VkPhysicalDevicePipelineBinaryPropertiesKHR.Ptr at(long index, @NotNull Consumer<@NotNull VkPhysicalDevicePipelineBinaryPropertiesKHR> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkPhysicalDevicePipelineBinaryPropertiesKHR value) {
             MemorySegment s = segment.asSlice(index * VkPhysicalDevicePipelineBinaryPropertiesKHR.BYTES, VkPhysicalDevicePipelineBinaryPropertiesKHR.BYTES);
             s.copyFrom(value.segment);

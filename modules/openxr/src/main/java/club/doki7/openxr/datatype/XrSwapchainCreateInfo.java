@@ -99,6 +99,11 @@ public record XrSwapchainCreateInfo(@NotNull MemorySegment segment) implements I
             return new XrSwapchainCreateInfo(segment.asSlice(index * XrSwapchainCreateInfo.BYTES, XrSwapchainCreateInfo.BYTES));
         }
 
+        public XrSwapchainCreateInfo.Ptr at(long index, @NotNull Consumer<@NotNull XrSwapchainCreateInfo> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull XrSwapchainCreateInfo value) {
             MemorySegment s = segment.asSlice(index * XrSwapchainCreateInfo.BYTES, XrSwapchainCreateInfo.BYTES);
             s.copyFrom(value.segment);

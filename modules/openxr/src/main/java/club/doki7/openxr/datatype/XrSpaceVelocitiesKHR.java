@@ -92,6 +92,11 @@ public record XrSpaceVelocitiesKHR(@NotNull MemorySegment segment) implements IX
             return new XrSpaceVelocitiesKHR(segment.asSlice(index * XrSpaceVelocitiesKHR.BYTES, XrSpaceVelocitiesKHR.BYTES));
         }
 
+        public XrSpaceVelocitiesKHR.Ptr at(long index, @NotNull Consumer<@NotNull XrSpaceVelocitiesKHR> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull XrSpaceVelocitiesKHR value) {
             MemorySegment s = segment.asSlice(index * XrSpaceVelocitiesKHR.BYTES, XrSpaceVelocitiesKHR.BYTES);
             s.copyFrom(value.segment);

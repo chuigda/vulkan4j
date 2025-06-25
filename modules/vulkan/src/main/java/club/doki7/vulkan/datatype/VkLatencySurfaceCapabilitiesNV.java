@@ -88,6 +88,11 @@ public record VkLatencySurfaceCapabilitiesNV(@NotNull MemorySegment segment) imp
             return new VkLatencySurfaceCapabilitiesNV(segment.asSlice(index * VkLatencySurfaceCapabilitiesNV.BYTES, VkLatencySurfaceCapabilitiesNV.BYTES));
         }
 
+        public VkLatencySurfaceCapabilitiesNV.Ptr at(long index, @NotNull Consumer<@NotNull VkLatencySurfaceCapabilitiesNV> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkLatencySurfaceCapabilitiesNV value) {
             MemorySegment s = segment.asSlice(index * VkLatencySurfaceCapabilitiesNV.BYTES, VkLatencySurfaceCapabilitiesNV.BYTES);
             s.copyFrom(value.segment);

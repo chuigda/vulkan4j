@@ -92,6 +92,11 @@ public record XrGraphicsBindingOpenGLWin32KHR(@NotNull MemorySegment segment) im
             return new XrGraphicsBindingOpenGLWin32KHR(segment.asSlice(index * XrGraphicsBindingOpenGLWin32KHR.BYTES, XrGraphicsBindingOpenGLWin32KHR.BYTES));
         }
 
+        public XrGraphicsBindingOpenGLWin32KHR.Ptr at(long index, @NotNull Consumer<@NotNull XrGraphicsBindingOpenGLWin32KHR> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull XrGraphicsBindingOpenGLWin32KHR value) {
             MemorySegment s = segment.asSlice(index * XrGraphicsBindingOpenGLWin32KHR.BYTES, XrGraphicsBindingOpenGLWin32KHR.BYTES);
             s.copyFrom(value.segment);

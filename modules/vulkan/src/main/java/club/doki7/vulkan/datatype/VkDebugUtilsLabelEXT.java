@@ -88,6 +88,11 @@ public record VkDebugUtilsLabelEXT(@NotNull MemorySegment segment) implements IV
             return new VkDebugUtilsLabelEXT(segment.asSlice(index * VkDebugUtilsLabelEXT.BYTES, VkDebugUtilsLabelEXT.BYTES));
         }
 
+        public VkDebugUtilsLabelEXT.Ptr at(long index, @NotNull Consumer<@NotNull VkDebugUtilsLabelEXT> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkDebugUtilsLabelEXT value) {
             MemorySegment s = segment.asSlice(index * VkDebugUtilsLabelEXT.BYTES, VkDebugUtilsLabelEXT.BYTES);
             s.copyFrom(value.segment);
@@ -242,6 +247,12 @@ public record VkDebugUtilsLabelEXT(@NotNull MemorySegment segment) implements IV
 
     public FloatPtr color() {
         return new FloatPtr(colorRaw());
+    }
+
+    public VkDebugUtilsLabelEXT color(@NotNull Consumer<FloatPtr> consumer) {
+        FloatPtr ptr = color();
+        consumer.accept(ptr);
+        return this;
     }
 
     public VkDebugUtilsLabelEXT color(FloatPtr value) {

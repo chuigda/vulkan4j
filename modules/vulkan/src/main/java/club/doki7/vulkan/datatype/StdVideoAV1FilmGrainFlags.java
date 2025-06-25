@@ -79,6 +79,11 @@ public record StdVideoAV1FilmGrainFlags(@NotNull MemorySegment segment) implemen
             return new StdVideoAV1FilmGrainFlags(segment.asSlice(index * StdVideoAV1FilmGrainFlags.BYTES, StdVideoAV1FilmGrainFlags.BYTES));
         }
 
+        public StdVideoAV1FilmGrainFlags.Ptr at(long index, @NotNull Consumer<@NotNull StdVideoAV1FilmGrainFlags> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull StdVideoAV1FilmGrainFlags value) {
             MemorySegment s = segment.asSlice(index * StdVideoAV1FilmGrainFlags.BYTES, StdVideoAV1FilmGrainFlags.BYTES);
             s.copyFrom(value.segment);

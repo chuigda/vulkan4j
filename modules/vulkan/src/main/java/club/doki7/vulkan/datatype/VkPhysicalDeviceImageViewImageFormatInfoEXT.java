@@ -87,6 +87,11 @@ public record VkPhysicalDeviceImageViewImageFormatInfoEXT(@NotNull MemorySegment
             return new VkPhysicalDeviceImageViewImageFormatInfoEXT(segment.asSlice(index * VkPhysicalDeviceImageViewImageFormatInfoEXT.BYTES, VkPhysicalDeviceImageViewImageFormatInfoEXT.BYTES));
         }
 
+        public VkPhysicalDeviceImageViewImageFormatInfoEXT.Ptr at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceImageViewImageFormatInfoEXT> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkPhysicalDeviceImageViewImageFormatInfoEXT value) {
             MemorySegment s = segment.asSlice(index * VkPhysicalDeviceImageViewImageFormatInfoEXT.BYTES, VkPhysicalDeviceImageViewImageFormatInfoEXT.BYTES);
             s.copyFrom(value.segment);

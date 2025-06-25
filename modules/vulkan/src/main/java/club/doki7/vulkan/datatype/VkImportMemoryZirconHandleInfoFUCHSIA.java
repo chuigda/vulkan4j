@@ -88,6 +88,11 @@ public record VkImportMemoryZirconHandleInfoFUCHSIA(@NotNull MemorySegment segme
             return new VkImportMemoryZirconHandleInfoFUCHSIA(segment.asSlice(index * VkImportMemoryZirconHandleInfoFUCHSIA.BYTES, VkImportMemoryZirconHandleInfoFUCHSIA.BYTES));
         }
 
+        public VkImportMemoryZirconHandleInfoFUCHSIA.Ptr at(long index, @NotNull Consumer<@NotNull VkImportMemoryZirconHandleInfoFUCHSIA> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkImportMemoryZirconHandleInfoFUCHSIA value) {
             MemorySegment s = segment.asSlice(index * VkImportMemoryZirconHandleInfoFUCHSIA.BYTES, VkImportMemoryZirconHandleInfoFUCHSIA.BYTES);
             s.copyFrom(value.segment);

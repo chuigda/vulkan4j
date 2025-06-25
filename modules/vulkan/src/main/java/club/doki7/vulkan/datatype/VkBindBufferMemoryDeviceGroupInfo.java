@@ -27,7 +27,7 @@ import static club.doki7.vulkan.VkConstants.*;
 ///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
 ///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
 ///     uint32_t deviceIndexCount; // optional // @link substring="deviceIndexCount" target="#deviceIndexCount"
-///     uint32_t const* pDeviceIndices; // @link substring="pDeviceIndices" target="#pDeviceIndices"
+///     uint32_t const* pDeviceIndices; // optional // @link substring="pDeviceIndices" target="#pDeviceIndices"
 /// } VkBindBufferMemoryDeviceGroupInfo;
 /// }
 ///
@@ -86,6 +86,11 @@ public record VkBindBufferMemoryDeviceGroupInfo(@NotNull MemorySegment segment) 
         /// indicate that the returned structure is a view of the original structure.
         public @NotNull VkBindBufferMemoryDeviceGroupInfo at(long index) {
             return new VkBindBufferMemoryDeviceGroupInfo(segment.asSlice(index * VkBindBufferMemoryDeviceGroupInfo.BYTES, VkBindBufferMemoryDeviceGroupInfo.BYTES));
+        }
+
+        public VkBindBufferMemoryDeviceGroupInfo.Ptr at(long index, @NotNull Consumer<@NotNull VkBindBufferMemoryDeviceGroupInfo> consumer) {
+            consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkBindBufferMemoryDeviceGroupInfo value) {

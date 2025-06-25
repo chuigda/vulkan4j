@@ -87,6 +87,11 @@ public record StdVideoAV1SequenceHeader(@NotNull MemorySegment segment) implemen
             return new StdVideoAV1SequenceHeader(segment.asSlice(index * StdVideoAV1SequenceHeader.BYTES, StdVideoAV1SequenceHeader.BYTES));
         }
 
+        public StdVideoAV1SequenceHeader.Ptr at(long index, @NotNull Consumer<@NotNull StdVideoAV1SequenceHeader> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull StdVideoAV1SequenceHeader value) {
             MemorySegment s = segment.asSlice(index * StdVideoAV1SequenceHeader.BYTES, StdVideoAV1SequenceHeader.BYTES);
             s.copyFrom(value.segment);

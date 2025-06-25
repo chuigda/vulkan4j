@@ -30,7 +30,7 @@ import static club.doki7.vulkan.VkConstants.*;
 ///     char[VK_MAX_DESCRIPTION_SIZE] description; // @link substring="description" target="#description"
 ///     VkBool32 isText; // @link substring="isText" target="#isText"
 ///     size_t dataSize; // @link substring="dataSize" target="#dataSize"
-///     void* pData; // optional // @link substring="pData" target="#pData"
+///     void* pData; // @link substring="pData" target="#pData"
 /// } VkPipelineExecutableInternalRepresentationKHR;
 /// }
 ///
@@ -89,6 +89,11 @@ public record VkPipelineExecutableInternalRepresentationKHR(@NotNull MemorySegme
         /// indicate that the returned structure is a view of the original structure.
         public @NotNull VkPipelineExecutableInternalRepresentationKHR at(long index) {
             return new VkPipelineExecutableInternalRepresentationKHR(segment.asSlice(index * VkPipelineExecutableInternalRepresentationKHR.BYTES, VkPipelineExecutableInternalRepresentationKHR.BYTES));
+        }
+
+        public VkPipelineExecutableInternalRepresentationKHR.Ptr at(long index, @NotNull Consumer<@NotNull VkPipelineExecutableInternalRepresentationKHR> consumer) {
+            consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkPipelineExecutableInternalRepresentationKHR value) {
@@ -221,6 +226,12 @@ public record VkPipelineExecutableInternalRepresentationKHR(@NotNull MemorySegme
         return new BytePtr(nameRaw());
     }
 
+    public VkPipelineExecutableInternalRepresentationKHR name(@NotNull Consumer<BytePtr> consumer) {
+        BytePtr ptr = name();
+        consumer.accept(ptr);
+        return this;
+    }
+
     public VkPipelineExecutableInternalRepresentationKHR name(BytePtr value) {
         MemorySegment s = nameRaw();
         s.copyFrom(value.segment());
@@ -233,6 +244,12 @@ public record VkPipelineExecutableInternalRepresentationKHR(@NotNull MemorySegme
 
     public BytePtr description() {
         return new BytePtr(descriptionRaw());
+    }
+
+    public VkPipelineExecutableInternalRepresentationKHR description(@NotNull Consumer<BytePtr> consumer) {
+        BytePtr ptr = description();
+        consumer.accept(ptr);
+        return this;
     }
 
     public VkPipelineExecutableInternalRepresentationKHR description(BytePtr value) {

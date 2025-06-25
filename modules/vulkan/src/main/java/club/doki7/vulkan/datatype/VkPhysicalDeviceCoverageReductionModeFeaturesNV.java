@@ -87,6 +87,11 @@ public record VkPhysicalDeviceCoverageReductionModeFeaturesNV(@NotNull MemorySeg
             return new VkPhysicalDeviceCoverageReductionModeFeaturesNV(segment.asSlice(index * VkPhysicalDeviceCoverageReductionModeFeaturesNV.BYTES, VkPhysicalDeviceCoverageReductionModeFeaturesNV.BYTES));
         }
 
+        public VkPhysicalDeviceCoverageReductionModeFeaturesNV.Ptr at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceCoverageReductionModeFeaturesNV> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkPhysicalDeviceCoverageReductionModeFeaturesNV value) {
             MemorySegment s = segment.asSlice(index * VkPhysicalDeviceCoverageReductionModeFeaturesNV.BYTES, VkPhysicalDeviceCoverageReductionModeFeaturesNV.BYTES);
             s.copyFrom(value.segment);

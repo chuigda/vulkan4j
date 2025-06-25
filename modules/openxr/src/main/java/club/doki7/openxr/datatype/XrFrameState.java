@@ -93,6 +93,11 @@ public record XrFrameState(@NotNull MemorySegment segment) implements IXrFrameSt
             return new XrFrameState(segment.asSlice(index * XrFrameState.BYTES, XrFrameState.BYTES));
         }
 
+        public XrFrameState.Ptr at(long index, @NotNull Consumer<@NotNull XrFrameState> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull XrFrameState value) {
             MemorySegment s = segment.asSlice(index * XrFrameState.BYTES, XrFrameState.BYTES);
             s.copyFrom(value.segment);

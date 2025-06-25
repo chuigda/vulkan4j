@@ -88,6 +88,11 @@ public record VkMemoryGetSciBufInfoNV(@NotNull MemorySegment segment) implements
             return new VkMemoryGetSciBufInfoNV(segment.asSlice(index * VkMemoryGetSciBufInfoNV.BYTES, VkMemoryGetSciBufInfoNV.BYTES));
         }
 
+        public VkMemoryGetSciBufInfoNV.Ptr at(long index, @NotNull Consumer<@NotNull VkMemoryGetSciBufInfoNV> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkMemoryGetSciBufInfoNV value) {
             MemorySegment s = segment.asSlice(index * VkMemoryGetSciBufInfoNV.BYTES, VkMemoryGetSciBufInfoNV.BYTES);
             s.copyFrom(value.segment);

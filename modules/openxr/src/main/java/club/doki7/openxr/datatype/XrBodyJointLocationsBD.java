@@ -93,6 +93,11 @@ public record XrBodyJointLocationsBD(@NotNull MemorySegment segment) implements 
             return new XrBodyJointLocationsBD(segment.asSlice(index * XrBodyJointLocationsBD.BYTES, XrBodyJointLocationsBD.BYTES));
         }
 
+        public XrBodyJointLocationsBD.Ptr at(long index, @NotNull Consumer<@NotNull XrBodyJointLocationsBD> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull XrBodyJointLocationsBD value) {
             MemorySegment s = segment.asSlice(index * XrBodyJointLocationsBD.BYTES, XrBodyJointLocationsBD.BYTES);
             s.copyFrom(value.segment);

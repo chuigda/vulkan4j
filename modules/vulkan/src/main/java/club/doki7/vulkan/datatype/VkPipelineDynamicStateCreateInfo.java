@@ -28,7 +28,7 @@ import static club.doki7.vulkan.VkConstants.*;
 ///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
 ///     VkPipelineDynamicStateCreateFlags flags; // optional // @link substring="VkPipelineDynamicStateCreateFlags" target="VkPipelineDynamicStateCreateFlags" @link substring="flags" target="#flags"
 ///     uint32_t dynamicStateCount; // optional // @link substring="dynamicStateCount" target="#dynamicStateCount"
-///     VkDynamicState const* pDynamicStates; // @link substring="VkDynamicState" target="VkDynamicState" @link substring="pDynamicStates" target="#pDynamicStates"
+///     VkDynamicState const* pDynamicStates; // optional // @link substring="VkDynamicState" target="VkDynamicState" @link substring="pDynamicStates" target="#pDynamicStates"
 /// } VkPipelineDynamicStateCreateInfo;
 /// }
 ///
@@ -87,6 +87,11 @@ public record VkPipelineDynamicStateCreateInfo(@NotNull MemorySegment segment) i
         /// indicate that the returned structure is a view of the original structure.
         public @NotNull VkPipelineDynamicStateCreateInfo at(long index) {
             return new VkPipelineDynamicStateCreateInfo(segment.asSlice(index * VkPipelineDynamicStateCreateInfo.BYTES, VkPipelineDynamicStateCreateInfo.BYTES));
+        }
+
+        public VkPipelineDynamicStateCreateInfo.Ptr at(long index, @NotNull Consumer<@NotNull VkPipelineDynamicStateCreateInfo> consumer) {
+            consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkPipelineDynamicStateCreateInfo value) {

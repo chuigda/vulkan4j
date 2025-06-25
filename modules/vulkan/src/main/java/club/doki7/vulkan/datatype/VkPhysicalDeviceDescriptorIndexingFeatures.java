@@ -106,6 +106,11 @@ public record VkPhysicalDeviceDescriptorIndexingFeatures(@NotNull MemorySegment 
             return new VkPhysicalDeviceDescriptorIndexingFeatures(segment.asSlice(index * VkPhysicalDeviceDescriptorIndexingFeatures.BYTES, VkPhysicalDeviceDescriptorIndexingFeatures.BYTES));
         }
 
+        public VkPhysicalDeviceDescriptorIndexingFeatures.Ptr at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceDescriptorIndexingFeatures> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkPhysicalDeviceDescriptorIndexingFeatures value) {
             MemorySegment s = segment.asSlice(index * VkPhysicalDeviceDescriptorIndexingFeatures.BYTES, VkPhysicalDeviceDescriptorIndexingFeatures.BYTES);
             s.copyFrom(value.segment);

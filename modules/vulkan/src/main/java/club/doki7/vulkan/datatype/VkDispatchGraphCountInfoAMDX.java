@@ -78,6 +78,11 @@ public record VkDispatchGraphCountInfoAMDX(@NotNull MemorySegment segment) imple
             return new VkDispatchGraphCountInfoAMDX(segment.asSlice(index * VkDispatchGraphCountInfoAMDX.BYTES, VkDispatchGraphCountInfoAMDX.BYTES));
         }
 
+        public VkDispatchGraphCountInfoAMDX.Ptr at(long index, @NotNull Consumer<@NotNull VkDispatchGraphCountInfoAMDX> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkDispatchGraphCountInfoAMDX value) {
             MemorySegment s = segment.asSlice(index * VkDispatchGraphCountInfoAMDX.BYTES, VkDispatchGraphCountInfoAMDX.BYTES);
             s.copyFrom(value.segment);

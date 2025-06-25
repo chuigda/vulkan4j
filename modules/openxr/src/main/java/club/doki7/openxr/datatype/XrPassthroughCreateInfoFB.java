@@ -91,6 +91,11 @@ public record XrPassthroughCreateInfoFB(@NotNull MemorySegment segment) implemen
             return new XrPassthroughCreateInfoFB(segment.asSlice(index * XrPassthroughCreateInfoFB.BYTES, XrPassthroughCreateInfoFB.BYTES));
         }
 
+        public XrPassthroughCreateInfoFB.Ptr at(long index, @NotNull Consumer<@NotNull XrPassthroughCreateInfoFB> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull XrPassthroughCreateInfoFB value) {
             MemorySegment s = segment.asSlice(index * XrPassthroughCreateInfoFB.BYTES, XrPassthroughCreateInfoFB.BYTES);
             s.copyFrom(value.segment);

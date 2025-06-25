@@ -88,6 +88,11 @@ public record VkAccelerationStructureMemoryRequirementsInfoNV(@NotNull MemorySeg
             return new VkAccelerationStructureMemoryRequirementsInfoNV(segment.asSlice(index * VkAccelerationStructureMemoryRequirementsInfoNV.BYTES, VkAccelerationStructureMemoryRequirementsInfoNV.BYTES));
         }
 
+        public VkAccelerationStructureMemoryRequirementsInfoNV.Ptr at(long index, @NotNull Consumer<@NotNull VkAccelerationStructureMemoryRequirementsInfoNV> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkAccelerationStructureMemoryRequirementsInfoNV value) {
             MemorySegment s = segment.asSlice(index * VkAccelerationStructureMemoryRequirementsInfoNV.BYTES, VkAccelerationStructureMemoryRequirementsInfoNV.BYTES);
             s.copyFrom(value.segment);

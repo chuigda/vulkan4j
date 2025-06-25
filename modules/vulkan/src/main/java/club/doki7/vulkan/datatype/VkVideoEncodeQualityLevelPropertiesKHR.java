@@ -88,6 +88,11 @@ public record VkVideoEncodeQualityLevelPropertiesKHR(@NotNull MemorySegment segm
             return new VkVideoEncodeQualityLevelPropertiesKHR(segment.asSlice(index * VkVideoEncodeQualityLevelPropertiesKHR.BYTES, VkVideoEncodeQualityLevelPropertiesKHR.BYTES));
         }
 
+        public VkVideoEncodeQualityLevelPropertiesKHR.Ptr at(long index, @NotNull Consumer<@NotNull VkVideoEncodeQualityLevelPropertiesKHR> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkVideoEncodeQualityLevelPropertiesKHR value) {
             MemorySegment s = segment.asSlice(index * VkVideoEncodeQualityLevelPropertiesKHR.BYTES, VkVideoEncodeQualityLevelPropertiesKHR.BYTES);
             s.copyFrom(value.segment);

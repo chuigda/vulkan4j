@@ -87,6 +87,11 @@ public record VkPhysicalDeviceSwapchainMaintenance1FeaturesEXT(@NotNull MemorySe
             return new VkPhysicalDeviceSwapchainMaintenance1FeaturesEXT(segment.asSlice(index * VkPhysicalDeviceSwapchainMaintenance1FeaturesEXT.BYTES, VkPhysicalDeviceSwapchainMaintenance1FeaturesEXT.BYTES));
         }
 
+        public VkPhysicalDeviceSwapchainMaintenance1FeaturesEXT.Ptr at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceSwapchainMaintenance1FeaturesEXT> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkPhysicalDeviceSwapchainMaintenance1FeaturesEXT value) {
             MemorySegment s = segment.asSlice(index * VkPhysicalDeviceSwapchainMaintenance1FeaturesEXT.BYTES, VkPhysicalDeviceSwapchainMaintenance1FeaturesEXT.BYTES);
             s.copyFrom(value.segment);

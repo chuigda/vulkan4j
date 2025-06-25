@@ -97,6 +97,11 @@ public record XrDebugUtilsMessengerCallbackDataEXT(@NotNull MemorySegment segmen
             return new XrDebugUtilsMessengerCallbackDataEXT(segment.asSlice(index * XrDebugUtilsMessengerCallbackDataEXT.BYTES, XrDebugUtilsMessengerCallbackDataEXT.BYTES));
         }
 
+        public XrDebugUtilsMessengerCallbackDataEXT.Ptr at(long index, @NotNull Consumer<@NotNull XrDebugUtilsMessengerCallbackDataEXT> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull XrDebugUtilsMessengerCallbackDataEXT value) {
             MemorySegment s = segment.asSlice(index * XrDebugUtilsMessengerCallbackDataEXT.BYTES, XrDebugUtilsMessengerCallbackDataEXT.BYTES);
             s.copyFrom(value.segment);

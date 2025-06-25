@@ -87,6 +87,11 @@ public record VkExportSemaphoreCreateInfo(@NotNull MemorySegment segment) implem
             return new VkExportSemaphoreCreateInfo(segment.asSlice(index * VkExportSemaphoreCreateInfo.BYTES, VkExportSemaphoreCreateInfo.BYTES));
         }
 
+        public VkExportSemaphoreCreateInfo.Ptr at(long index, @NotNull Consumer<@NotNull VkExportSemaphoreCreateInfo> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkExportSemaphoreCreateInfo value) {
             MemorySegment s = segment.asSlice(index * VkExportSemaphoreCreateInfo.BYTES, VkExportSemaphoreCreateInfo.BYTES);
             s.copyFrom(value.segment);

@@ -93,6 +93,11 @@ public record GLFWgamepadstate(@NotNull MemorySegment segment) implements IGLFWg
             return new GLFWgamepadstate(segment.asSlice(index * GLFWgamepadstate.BYTES, GLFWgamepadstate.BYTES));
         }
 
+        public GLFWgamepadstate.Ptr at(long index, @NotNull Consumer<@NotNull GLFWgamepadstate> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull GLFWgamepadstate value) {
             MemorySegment s = segment.asSlice(index * GLFWgamepadstate.BYTES, GLFWgamepadstate.BYTES);
             s.copyFrom(value.segment);
@@ -190,6 +195,12 @@ public record GLFWgamepadstate(@NotNull MemorySegment segment) implements IGLFWg
         return new BytePtr(buttonsRaw());
     }
 
+    public GLFWgamepadstate buttons(@NotNull Consumer<BytePtr> consumer) {
+        BytePtr ptr = buttons();
+        consumer.accept(ptr);
+        return this;
+    }
+
     public GLFWgamepadstate buttons(BytePtr value) {
         MemorySegment s = buttonsRaw();
         s.copyFrom(value.segment());
@@ -202,6 +213,12 @@ public record GLFWgamepadstate(@NotNull MemorySegment segment) implements IGLFWg
 
     public FloatPtr axes() {
         return new FloatPtr(axesRaw());
+    }
+
+    public GLFWgamepadstate axes(@NotNull Consumer<FloatPtr> consumer) {
+        FloatPtr ptr = axes();
+        consumer.accept(ptr);
+        return this;
     }
 
     public GLFWgamepadstate axes(FloatPtr value) {

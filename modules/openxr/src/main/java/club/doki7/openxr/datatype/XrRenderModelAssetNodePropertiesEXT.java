@@ -80,6 +80,11 @@ public record XrRenderModelAssetNodePropertiesEXT(@NotNull MemorySegment segment
             return new XrRenderModelAssetNodePropertiesEXT(segment.asSlice(index * XrRenderModelAssetNodePropertiesEXT.BYTES, XrRenderModelAssetNodePropertiesEXT.BYTES));
         }
 
+        public XrRenderModelAssetNodePropertiesEXT.Ptr at(long index, @NotNull Consumer<@NotNull XrRenderModelAssetNodePropertiesEXT> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull XrRenderModelAssetNodePropertiesEXT value) {
             MemorySegment s = segment.asSlice(index * XrRenderModelAssetNodePropertiesEXT.BYTES, XrRenderModelAssetNodePropertiesEXT.BYTES);
             s.copyFrom(value.segment);
@@ -175,6 +180,12 @@ public record XrRenderModelAssetNodePropertiesEXT(@NotNull MemorySegment segment
 
     public BytePtr uniqueName() {
         return new BytePtr(uniqueNameRaw());
+    }
+
+    public XrRenderModelAssetNodePropertiesEXT uniqueName(@NotNull Consumer<BytePtr> consumer) {
+        BytePtr ptr = uniqueName();
+        consumer.accept(ptr);
+        return this;
     }
 
     public XrRenderModelAssetNodePropertiesEXT uniqueName(BytePtr value) {

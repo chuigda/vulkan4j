@@ -95,6 +95,11 @@ public record XrCompositionLayerDepthInfoKHR(@NotNull MemorySegment segment) imp
             return new XrCompositionLayerDepthInfoKHR(segment.asSlice(index * XrCompositionLayerDepthInfoKHR.BYTES, XrCompositionLayerDepthInfoKHR.BYTES));
         }
 
+        public XrCompositionLayerDepthInfoKHR.Ptr at(long index, @NotNull Consumer<@NotNull XrCompositionLayerDepthInfoKHR> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull XrCompositionLayerDepthInfoKHR value) {
             MemorySegment s = segment.asSlice(index * XrCompositionLayerDepthInfoKHR.BYTES, XrCompositionLayerDepthInfoKHR.BYTES);
             s.copyFrom(value.segment);

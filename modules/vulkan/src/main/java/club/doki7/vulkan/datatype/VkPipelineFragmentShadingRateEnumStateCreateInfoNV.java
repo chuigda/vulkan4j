@@ -89,6 +89,11 @@ public record VkPipelineFragmentShadingRateEnumStateCreateInfoNV(@NotNull Memory
             return new VkPipelineFragmentShadingRateEnumStateCreateInfoNV(segment.asSlice(index * VkPipelineFragmentShadingRateEnumStateCreateInfoNV.BYTES, VkPipelineFragmentShadingRateEnumStateCreateInfoNV.BYTES));
         }
 
+        public VkPipelineFragmentShadingRateEnumStateCreateInfoNV.Ptr at(long index, @NotNull Consumer<@NotNull VkPipelineFragmentShadingRateEnumStateCreateInfoNV> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkPipelineFragmentShadingRateEnumStateCreateInfoNV value) {
             MemorySegment s = segment.asSlice(index * VkPipelineFragmentShadingRateEnumStateCreateInfoNV.BYTES, VkPipelineFragmentShadingRateEnumStateCreateInfoNV.BYTES);
             s.copyFrom(value.segment);
@@ -235,6 +240,12 @@ public record VkPipelineFragmentShadingRateEnumStateCreateInfoNV(@NotNull Memory
 
     public @EnumType(VkFragmentShadingRateCombinerOpKHR.class) IntPtr combinerOps() {
         return new IntPtr(combinerOpsRaw());
+    }
+
+    public VkPipelineFragmentShadingRateEnumStateCreateInfoNV combinerOps(@NotNull Consumer<IntPtr> consumer) {
+        @EnumType(VkFragmentShadingRateCombinerOpKHR.class) IntPtr ptr = combinerOps();
+        consumer.accept(ptr);
+        return this;
     }
 
     public VkPipelineFragmentShadingRateEnumStateCreateInfoNV combinerOps(@EnumType(VkFragmentShadingRateCombinerOpKHR.class) IntPtr value) {

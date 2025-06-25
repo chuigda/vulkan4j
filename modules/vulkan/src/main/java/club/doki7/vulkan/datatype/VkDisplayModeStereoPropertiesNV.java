@@ -87,6 +87,11 @@ public record VkDisplayModeStereoPropertiesNV(@NotNull MemorySegment segment) im
             return new VkDisplayModeStereoPropertiesNV(segment.asSlice(index * VkDisplayModeStereoPropertiesNV.BYTES, VkDisplayModeStereoPropertiesNV.BYTES));
         }
 
+        public VkDisplayModeStereoPropertiesNV.Ptr at(long index, @NotNull Consumer<@NotNull VkDisplayModeStereoPropertiesNV> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkDisplayModeStereoPropertiesNV value) {
             MemorySegment s = segment.asSlice(index * VkDisplayModeStereoPropertiesNV.BYTES, VkDisplayModeStereoPropertiesNV.BYTES);
             s.copyFrom(value.segment);

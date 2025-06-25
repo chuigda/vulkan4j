@@ -28,7 +28,7 @@ import static club.doki7.vulkan.VkConstants.*;
 ///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
 ///     VkImageCompressionFlagsEXT flags; // @link substring="VkImageCompressionFlagsEXT" target="VkImageCompressionFlagsEXT" @link substring="flags" target="#flags"
 ///     uint32_t compressionControlPlaneCount; // optional // @link substring="compressionControlPlaneCount" target="#compressionControlPlaneCount"
-///     VkImageCompressionFixedRateFlagsEXT* pFixedRateFlags; // @link substring="VkImageCompressionFixedRateFlagsEXT" target="VkImageCompressionFixedRateFlagsEXT" @link substring="pFixedRateFlags" target="#pFixedRateFlags"
+///     VkImageCompressionFixedRateFlagsEXT* pFixedRateFlags; // optional // @link substring="VkImageCompressionFixedRateFlagsEXT" target="VkImageCompressionFixedRateFlagsEXT" @link substring="pFixedRateFlags" target="#pFixedRateFlags"
 /// } VkImageCompressionControlEXT;
 /// }
 ///
@@ -87,6 +87,11 @@ public record VkImageCompressionControlEXT(@NotNull MemorySegment segment) imple
         /// indicate that the returned structure is a view of the original structure.
         public @NotNull VkImageCompressionControlEXT at(long index) {
             return new VkImageCompressionControlEXT(segment.asSlice(index * VkImageCompressionControlEXT.BYTES, VkImageCompressionControlEXT.BYTES));
+        }
+
+        public VkImageCompressionControlEXT.Ptr at(long index, @NotNull Consumer<@NotNull VkImageCompressionControlEXT> consumer) {
+            consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkImageCompressionControlEXT value) {

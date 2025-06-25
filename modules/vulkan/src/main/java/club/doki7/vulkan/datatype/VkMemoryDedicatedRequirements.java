@@ -88,6 +88,11 @@ public record VkMemoryDedicatedRequirements(@NotNull MemorySegment segment) impl
             return new VkMemoryDedicatedRequirements(segment.asSlice(index * VkMemoryDedicatedRequirements.BYTES, VkMemoryDedicatedRequirements.BYTES));
         }
 
+        public VkMemoryDedicatedRequirements.Ptr at(long index, @NotNull Consumer<@NotNull VkMemoryDedicatedRequirements> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkMemoryDedicatedRequirements value) {
             MemorySegment s = segment.asSlice(index * VkMemoryDedicatedRequirements.BYTES, VkMemoryDedicatedRequirements.BYTES);
             s.copyFrom(value.segment);

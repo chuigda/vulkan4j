@@ -25,9 +25,9 @@ import static club.doki7.vulkan.VkConstants.*;
 /// {@snippet lang=c :
 /// typedef struct VkSpecializationInfo {
 ///     uint32_t mapEntryCount; // optional // @link substring="mapEntryCount" target="#mapEntryCount"
-///     VkSpecializationMapEntry const* pMapEntries; // @link substring="VkSpecializationMapEntry" target="VkSpecializationMapEntry" @link substring="pMapEntries" target="#pMapEntries"
+///     VkSpecializationMapEntry const* pMapEntries; // optional // @link substring="VkSpecializationMapEntry" target="VkSpecializationMapEntry" @link substring="pMapEntries" target="#pMapEntries"
 ///     size_t dataSize; // optional // @link substring="dataSize" target="#dataSize"
-///     void const* pData; // @link substring="pData" target="#pData"
+///     void const* pData; // optional // @link substring="pData" target="#pData"
 /// } VkSpecializationInfo;
 /// }
 ///
@@ -77,6 +77,11 @@ public record VkSpecializationInfo(@NotNull MemorySegment segment) implements IV
         /// indicate that the returned structure is a view of the original structure.
         public @NotNull VkSpecializationInfo at(long index) {
             return new VkSpecializationInfo(segment.asSlice(index * VkSpecializationInfo.BYTES, VkSpecializationInfo.BYTES));
+        }
+
+        public VkSpecializationInfo.Ptr at(long index, @NotNull Consumer<@NotNull VkSpecializationInfo> consumer) {
+            consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkSpecializationInfo value) {

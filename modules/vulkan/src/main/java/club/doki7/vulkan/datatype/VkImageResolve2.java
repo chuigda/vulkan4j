@@ -91,6 +91,11 @@ public record VkImageResolve2(@NotNull MemorySegment segment) implements IVkImag
             return new VkImageResolve2(segment.asSlice(index * VkImageResolve2.BYTES, VkImageResolve2.BYTES));
         }
 
+        public VkImageResolve2.Ptr at(long index, @NotNull Consumer<@NotNull VkImageResolve2> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkImageResolve2 value) {
             MemorySegment s = segment.asSlice(index * VkImageResolve2.BYTES, VkImageResolve2.BYTES);
             s.copyFrom(value.segment);

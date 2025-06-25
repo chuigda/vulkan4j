@@ -87,6 +87,11 @@ public record VkVideoDecodeUsageInfoKHR(@NotNull MemorySegment segment) implemen
             return new VkVideoDecodeUsageInfoKHR(segment.asSlice(index * VkVideoDecodeUsageInfoKHR.BYTES, VkVideoDecodeUsageInfoKHR.BYTES));
         }
 
+        public VkVideoDecodeUsageInfoKHR.Ptr at(long index, @NotNull Consumer<@NotNull VkVideoDecodeUsageInfoKHR> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkVideoDecodeUsageInfoKHR value) {
             MemorySegment s = segment.asSlice(index * VkVideoDecodeUsageInfoKHR.BYTES, VkVideoDecodeUsageInfoKHR.BYTES);
             s.copyFrom(value.segment);

@@ -91,6 +91,11 @@ public record VkBufferCollectionConstraintsInfoFUCHSIA(@NotNull MemorySegment se
             return new VkBufferCollectionConstraintsInfoFUCHSIA(segment.asSlice(index * VkBufferCollectionConstraintsInfoFUCHSIA.BYTES, VkBufferCollectionConstraintsInfoFUCHSIA.BYTES));
         }
 
+        public VkBufferCollectionConstraintsInfoFUCHSIA.Ptr at(long index, @NotNull Consumer<@NotNull VkBufferCollectionConstraintsInfoFUCHSIA> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkBufferCollectionConstraintsInfoFUCHSIA value) {
             MemorySegment s = segment.asSlice(index * VkBufferCollectionConstraintsInfoFUCHSIA.BYTES, VkBufferCollectionConstraintsInfoFUCHSIA.BYTES);
             s.copyFrom(value.segment);

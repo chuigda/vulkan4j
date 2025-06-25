@@ -87,6 +87,11 @@ public record VkDeviceBufferMemoryRequirements(@NotNull MemorySegment segment) i
             return new VkDeviceBufferMemoryRequirements(segment.asSlice(index * VkDeviceBufferMemoryRequirements.BYTES, VkDeviceBufferMemoryRequirements.BYTES));
         }
 
+        public VkDeviceBufferMemoryRequirements.Ptr at(long index, @NotNull Consumer<@NotNull VkDeviceBufferMemoryRequirements> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkDeviceBufferMemoryRequirements value) {
             MemorySegment s = segment.asSlice(index * VkDeviceBufferMemoryRequirements.BYTES, VkDeviceBufferMemoryRequirements.BYTES);
             s.copyFrom(value.segment);

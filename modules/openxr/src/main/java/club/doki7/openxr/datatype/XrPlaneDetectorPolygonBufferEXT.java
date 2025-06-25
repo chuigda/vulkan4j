@@ -93,6 +93,11 @@ public record XrPlaneDetectorPolygonBufferEXT(@NotNull MemorySegment segment) im
             return new XrPlaneDetectorPolygonBufferEXT(segment.asSlice(index * XrPlaneDetectorPolygonBufferEXT.BYTES, XrPlaneDetectorPolygonBufferEXT.BYTES));
         }
 
+        public XrPlaneDetectorPolygonBufferEXT.Ptr at(long index, @NotNull Consumer<@NotNull XrPlaneDetectorPolygonBufferEXT> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull XrPlaneDetectorPolygonBufferEXT value) {
             MemorySegment s = segment.asSlice(index * XrPlaneDetectorPolygonBufferEXT.BYTES, XrPlaneDetectorPolygonBufferEXT.BYTES);
             s.copyFrom(value.segment);

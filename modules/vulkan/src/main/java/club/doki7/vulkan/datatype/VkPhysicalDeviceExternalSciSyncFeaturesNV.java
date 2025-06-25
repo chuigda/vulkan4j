@@ -90,6 +90,11 @@ public record VkPhysicalDeviceExternalSciSyncFeaturesNV(@NotNull MemorySegment s
             return new VkPhysicalDeviceExternalSciSyncFeaturesNV(segment.asSlice(index * VkPhysicalDeviceExternalSciSyncFeaturesNV.BYTES, VkPhysicalDeviceExternalSciSyncFeaturesNV.BYTES));
         }
 
+        public VkPhysicalDeviceExternalSciSyncFeaturesNV.Ptr at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceExternalSciSyncFeaturesNV> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkPhysicalDeviceExternalSciSyncFeaturesNV value) {
             MemorySegment s = segment.asSlice(index * VkPhysicalDeviceExternalSciSyncFeaturesNV.BYTES, VkPhysicalDeviceExternalSciSyncFeaturesNV.BYTES);
             s.copyFrom(value.segment);

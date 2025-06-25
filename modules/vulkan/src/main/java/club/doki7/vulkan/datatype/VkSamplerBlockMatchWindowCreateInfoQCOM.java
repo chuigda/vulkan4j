@@ -88,6 +88,11 @@ public record VkSamplerBlockMatchWindowCreateInfoQCOM(@NotNull MemorySegment seg
             return new VkSamplerBlockMatchWindowCreateInfoQCOM(segment.asSlice(index * VkSamplerBlockMatchWindowCreateInfoQCOM.BYTES, VkSamplerBlockMatchWindowCreateInfoQCOM.BYTES));
         }
 
+        public VkSamplerBlockMatchWindowCreateInfoQCOM.Ptr at(long index, @NotNull Consumer<@NotNull VkSamplerBlockMatchWindowCreateInfoQCOM> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkSamplerBlockMatchWindowCreateInfoQCOM value) {
             MemorySegment s = segment.asSlice(index * VkSamplerBlockMatchWindowCreateInfoQCOM.BYTES, VkSamplerBlockMatchWindowCreateInfoQCOM.BYTES);
             s.copyFrom(value.segment);

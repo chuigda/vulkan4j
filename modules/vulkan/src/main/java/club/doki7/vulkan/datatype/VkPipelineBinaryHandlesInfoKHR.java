@@ -27,7 +27,7 @@ import static club.doki7.vulkan.VkConstants.*;
 ///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
 ///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
 ///     uint32_t pipelineBinaryCount; // @link substring="pipelineBinaryCount" target="#pipelineBinaryCount"
-///     VkPipelineBinaryKHR* pPipelineBinaries; // optional // @link substring="VkPipelineBinaryKHR" target="VkPipelineBinaryKHR" @link substring="pPipelineBinaries" target="#pPipelineBinaries"
+///     VkPipelineBinaryKHR* pPipelineBinaries; // @link substring="VkPipelineBinaryKHR" target="VkPipelineBinaryKHR" @link substring="pPipelineBinaries" target="#pPipelineBinaries"
 /// } VkPipelineBinaryHandlesInfoKHR;
 /// }
 ///
@@ -86,6 +86,11 @@ public record VkPipelineBinaryHandlesInfoKHR(@NotNull MemorySegment segment) imp
         /// indicate that the returned structure is a view of the original structure.
         public @NotNull VkPipelineBinaryHandlesInfoKHR at(long index) {
             return new VkPipelineBinaryHandlesInfoKHR(segment.asSlice(index * VkPipelineBinaryHandlesInfoKHR.BYTES, VkPipelineBinaryHandlesInfoKHR.BYTES));
+        }
+
+        public VkPipelineBinaryHandlesInfoKHR.Ptr at(long index, @NotNull Consumer<@NotNull VkPipelineBinaryHandlesInfoKHR> consumer) {
+            consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkPipelineBinaryHandlesInfoKHR value) {

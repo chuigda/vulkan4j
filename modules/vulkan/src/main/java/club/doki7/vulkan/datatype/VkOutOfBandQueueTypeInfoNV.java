@@ -87,6 +87,11 @@ public record VkOutOfBandQueueTypeInfoNV(@NotNull MemorySegment segment) impleme
             return new VkOutOfBandQueueTypeInfoNV(segment.asSlice(index * VkOutOfBandQueueTypeInfoNV.BYTES, VkOutOfBandQueueTypeInfoNV.BYTES));
         }
 
+        public VkOutOfBandQueueTypeInfoNV.Ptr at(long index, @NotNull Consumer<@NotNull VkOutOfBandQueueTypeInfoNV> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkOutOfBandQueueTypeInfoNV value) {
             MemorySegment s = segment.asSlice(index * VkOutOfBandQueueTypeInfoNV.BYTES, VkOutOfBandQueueTypeInfoNV.BYTES);
             s.copyFrom(value.segment);

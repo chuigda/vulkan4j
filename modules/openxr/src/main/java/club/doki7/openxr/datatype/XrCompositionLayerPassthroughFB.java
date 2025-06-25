@@ -93,6 +93,11 @@ public record XrCompositionLayerPassthroughFB(@NotNull MemorySegment segment) im
             return new XrCompositionLayerPassthroughFB(segment.asSlice(index * XrCompositionLayerPassthroughFB.BYTES, XrCompositionLayerPassthroughFB.BYTES));
         }
 
+        public XrCompositionLayerPassthroughFB.Ptr at(long index, @NotNull Consumer<@NotNull XrCompositionLayerPassthroughFB> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull XrCompositionLayerPassthroughFB value) {
             MemorySegment s = segment.asSlice(index * XrCompositionLayerPassthroughFB.BYTES, XrCompositionLayerPassthroughFB.BYTES);
             s.copyFrom(value.segment);

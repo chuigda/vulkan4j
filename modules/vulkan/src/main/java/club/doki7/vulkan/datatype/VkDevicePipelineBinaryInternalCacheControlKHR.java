@@ -87,6 +87,11 @@ public record VkDevicePipelineBinaryInternalCacheControlKHR(@NotNull MemorySegme
             return new VkDevicePipelineBinaryInternalCacheControlKHR(segment.asSlice(index * VkDevicePipelineBinaryInternalCacheControlKHR.BYTES, VkDevicePipelineBinaryInternalCacheControlKHR.BYTES));
         }
 
+        public VkDevicePipelineBinaryInternalCacheControlKHR.Ptr at(long index, @NotNull Consumer<@NotNull VkDevicePipelineBinaryInternalCacheControlKHR> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkDevicePipelineBinaryInternalCacheControlKHR value) {
             MemorySegment s = segment.asSlice(index * VkDevicePipelineBinaryInternalCacheControlKHR.BYTES, VkDevicePipelineBinaryInternalCacheControlKHR.BYTES);
             s.copyFrom(value.segment);

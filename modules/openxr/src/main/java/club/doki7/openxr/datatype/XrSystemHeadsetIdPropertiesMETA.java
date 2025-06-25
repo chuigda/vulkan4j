@@ -91,6 +91,11 @@ public record XrSystemHeadsetIdPropertiesMETA(@NotNull MemorySegment segment) im
             return new XrSystemHeadsetIdPropertiesMETA(segment.asSlice(index * XrSystemHeadsetIdPropertiesMETA.BYTES, XrSystemHeadsetIdPropertiesMETA.BYTES));
         }
 
+        public XrSystemHeadsetIdPropertiesMETA.Ptr at(long index, @NotNull Consumer<@NotNull XrSystemHeadsetIdPropertiesMETA> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull XrSystemHeadsetIdPropertiesMETA value) {
             MemorySegment s = segment.asSlice(index * XrSystemHeadsetIdPropertiesMETA.BYTES, XrSystemHeadsetIdPropertiesMETA.BYTES);
             s.copyFrom(value.segment);

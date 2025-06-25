@@ -76,6 +76,11 @@ public record StdVideoH265DecPicBufMgr(@NotNull MemorySegment segment) implement
             return new StdVideoH265DecPicBufMgr(segment.asSlice(index * StdVideoH265DecPicBufMgr.BYTES, StdVideoH265DecPicBufMgr.BYTES));
         }
 
+        public StdVideoH265DecPicBufMgr.Ptr at(long index, @NotNull Consumer<@NotNull StdVideoH265DecPicBufMgr> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull StdVideoH265DecPicBufMgr value) {
             MemorySegment s = segment.asSlice(index * StdVideoH265DecPicBufMgr.BYTES, StdVideoH265DecPicBufMgr.BYTES);
             s.copyFrom(value.segment);
@@ -173,6 +178,12 @@ public record StdVideoH265DecPicBufMgr(@NotNull MemorySegment segment) implement
         return new IntPtr(max_latency_increase_plus1Raw());
     }
 
+    public StdVideoH265DecPicBufMgr max_latency_increase_plus1(@NotNull Consumer<IntPtr> consumer) {
+        @Unsigned IntPtr ptr = max_latency_increase_plus1();
+        consumer.accept(ptr);
+        return this;
+    }
+
     public StdVideoH265DecPicBufMgr max_latency_increase_plus1(@Unsigned IntPtr value) {
         MemorySegment s = max_latency_increase_plus1Raw();
         s.copyFrom(value.segment());
@@ -187,6 +198,12 @@ public record StdVideoH265DecPicBufMgr(@NotNull MemorySegment segment) implement
         return new BytePtr(max_dec_pic_buffering_minus1Raw());
     }
 
+    public StdVideoH265DecPicBufMgr max_dec_pic_buffering_minus1(@NotNull Consumer<BytePtr> consumer) {
+        @Unsigned BytePtr ptr = max_dec_pic_buffering_minus1();
+        consumer.accept(ptr);
+        return this;
+    }
+
     public StdVideoH265DecPicBufMgr max_dec_pic_buffering_minus1(@Unsigned BytePtr value) {
         MemorySegment s = max_dec_pic_buffering_minus1Raw();
         s.copyFrom(value.segment());
@@ -199,6 +216,12 @@ public record StdVideoH265DecPicBufMgr(@NotNull MemorySegment segment) implement
 
     public @Unsigned BytePtr max_num_reorder_pics() {
         return new BytePtr(max_num_reorder_picsRaw());
+    }
+
+    public StdVideoH265DecPicBufMgr max_num_reorder_pics(@NotNull Consumer<BytePtr> consumer) {
+        @Unsigned BytePtr ptr = max_num_reorder_pics();
+        consumer.accept(ptr);
+        return this;
     }
 
     public StdVideoH265DecPicBufMgr max_num_reorder_pics(@Unsigned BytePtr value) {

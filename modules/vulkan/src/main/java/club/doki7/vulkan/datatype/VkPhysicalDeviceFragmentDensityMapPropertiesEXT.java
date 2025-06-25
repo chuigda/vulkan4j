@@ -89,6 +89,11 @@ public record VkPhysicalDeviceFragmentDensityMapPropertiesEXT(@NotNull MemorySeg
             return new VkPhysicalDeviceFragmentDensityMapPropertiesEXT(segment.asSlice(index * VkPhysicalDeviceFragmentDensityMapPropertiesEXT.BYTES, VkPhysicalDeviceFragmentDensityMapPropertiesEXT.BYTES));
         }
 
+        public VkPhysicalDeviceFragmentDensityMapPropertiesEXT.Ptr at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceFragmentDensityMapPropertiesEXT> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkPhysicalDeviceFragmentDensityMapPropertiesEXT value) {
             MemorySegment s = segment.asSlice(index * VkPhysicalDeviceFragmentDensityMapPropertiesEXT.BYTES, VkPhysicalDeviceFragmentDensityMapPropertiesEXT.BYTES);
             s.copyFrom(value.segment);

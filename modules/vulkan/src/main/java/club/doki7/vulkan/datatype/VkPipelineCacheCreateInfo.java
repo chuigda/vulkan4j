@@ -28,7 +28,7 @@ import static club.doki7.vulkan.VkConstants.*;
 ///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
 ///     VkPipelineCacheCreateFlags flags; // optional // @link substring="VkPipelineCacheCreateFlags" target="VkPipelineCacheCreateFlags" @link substring="flags" target="#flags"
 ///     size_t initialDataSize; // optional // @link substring="initialDataSize" target="#initialDataSize"
-///     void const* pInitialData; // @link substring="pInitialData" target="#pInitialData"
+///     void const* pInitialData; // optional // @link substring="pInitialData" target="#pInitialData"
 /// } VkPipelineCacheCreateInfo;
 /// }
 ///
@@ -87,6 +87,11 @@ public record VkPipelineCacheCreateInfo(@NotNull MemorySegment segment) implemen
         /// indicate that the returned structure is a view of the original structure.
         public @NotNull VkPipelineCacheCreateInfo at(long index) {
             return new VkPipelineCacheCreateInfo(segment.asSlice(index * VkPipelineCacheCreateInfo.BYTES, VkPipelineCacheCreateInfo.BYTES));
+        }
+
+        public VkPipelineCacheCreateInfo.Ptr at(long index, @NotNull Consumer<@NotNull VkPipelineCacheCreateInfo> consumer) {
+            consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkPipelineCacheCreateInfo value) {

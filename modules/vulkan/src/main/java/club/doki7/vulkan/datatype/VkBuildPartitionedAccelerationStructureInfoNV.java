@@ -92,6 +92,11 @@ public record VkBuildPartitionedAccelerationStructureInfoNV(@NotNull MemorySegme
             return new VkBuildPartitionedAccelerationStructureInfoNV(segment.asSlice(index * VkBuildPartitionedAccelerationStructureInfoNV.BYTES, VkBuildPartitionedAccelerationStructureInfoNV.BYTES));
         }
 
+        public VkBuildPartitionedAccelerationStructureInfoNV.Ptr at(long index, @NotNull Consumer<@NotNull VkBuildPartitionedAccelerationStructureInfoNV> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkBuildPartitionedAccelerationStructureInfoNV value) {
             MemorySegment s = segment.asSlice(index * VkBuildPartitionedAccelerationStructureInfoNV.BYTES, VkBuildPartitionedAccelerationStructureInfoNV.BYTES);
             s.copyFrom(value.segment);

@@ -91,6 +91,11 @@ public record XrUserCalibrationEnableEventsInfoML(@NotNull MemorySegment segment
             return new XrUserCalibrationEnableEventsInfoML(segment.asSlice(index * XrUserCalibrationEnableEventsInfoML.BYTES, XrUserCalibrationEnableEventsInfoML.BYTES));
         }
 
+        public XrUserCalibrationEnableEventsInfoML.Ptr at(long index, @NotNull Consumer<@NotNull XrUserCalibrationEnableEventsInfoML> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull XrUserCalibrationEnableEventsInfoML value) {
             MemorySegment s = segment.asSlice(index * XrUserCalibrationEnableEventsInfoML.BYTES, XrUserCalibrationEnableEventsInfoML.BYTES);
             s.copyFrom(value.segment);

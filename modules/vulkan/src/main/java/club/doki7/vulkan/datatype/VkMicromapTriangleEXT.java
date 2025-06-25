@@ -78,6 +78,11 @@ public record VkMicromapTriangleEXT(@NotNull MemorySegment segment) implements I
             return new VkMicromapTriangleEXT(segment.asSlice(index * VkMicromapTriangleEXT.BYTES, VkMicromapTriangleEXT.BYTES));
         }
 
+        public VkMicromapTriangleEXT.Ptr at(long index, @NotNull Consumer<@NotNull VkMicromapTriangleEXT> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkMicromapTriangleEXT value) {
             MemorySegment s = segment.asSlice(index * VkMicromapTriangleEXT.BYTES, VkMicromapTriangleEXT.BYTES);
             s.copyFrom(value.segment);

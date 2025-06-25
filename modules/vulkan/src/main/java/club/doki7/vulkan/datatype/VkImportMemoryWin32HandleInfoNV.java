@@ -88,6 +88,11 @@ public record VkImportMemoryWin32HandleInfoNV(@NotNull MemorySegment segment) im
             return new VkImportMemoryWin32HandleInfoNV(segment.asSlice(index * VkImportMemoryWin32HandleInfoNV.BYTES, VkImportMemoryWin32HandleInfoNV.BYTES));
         }
 
+        public VkImportMemoryWin32HandleInfoNV.Ptr at(long index, @NotNull Consumer<@NotNull VkImportMemoryWin32HandleInfoNV> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkImportMemoryWin32HandleInfoNV value) {
             MemorySegment s = segment.asSlice(index * VkImportMemoryWin32HandleInfoNV.BYTES, VkImportMemoryWin32HandleInfoNV.BYTES);
             s.copyFrom(value.segment);

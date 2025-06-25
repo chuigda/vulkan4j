@@ -94,6 +94,11 @@ public record XrCompositionLayerPassthroughHTC(@NotNull MemorySegment segment) i
             return new XrCompositionLayerPassthroughHTC(segment.asSlice(index * XrCompositionLayerPassthroughHTC.BYTES, XrCompositionLayerPassthroughHTC.BYTES));
         }
 
+        public XrCompositionLayerPassthroughHTC.Ptr at(long index, @NotNull Consumer<@NotNull XrCompositionLayerPassthroughHTC> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull XrCompositionLayerPassthroughHTC value) {
             MemorySegment s = segment.asSlice(index * XrCompositionLayerPassthroughHTC.BYTES, XrCompositionLayerPassthroughHTC.BYTES);
             s.copyFrom(value.segment);

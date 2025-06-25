@@ -88,6 +88,11 @@ public record VkRefreshObjectListKHR(@NotNull MemorySegment segment) implements 
             return new VkRefreshObjectListKHR(segment.asSlice(index * VkRefreshObjectListKHR.BYTES, VkRefreshObjectListKHR.BYTES));
         }
 
+        public VkRefreshObjectListKHR.Ptr at(long index, @NotNull Consumer<@NotNull VkRefreshObjectListKHR> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkRefreshObjectListKHR value) {
             MemorySegment s = segment.asSlice(index * VkRefreshObjectListKHR.BYTES, VkRefreshObjectListKHR.BYTES);
             s.copyFrom(value.segment);

@@ -28,13 +28,13 @@ import static club.doki7.vulkan.VkConstants.*;
 ///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
 ///     VkRenderPassCreateFlags flags; // optional // @link substring="VkRenderPassCreateFlags" target="VkRenderPassCreateFlags" @link substring="flags" target="#flags"
 ///     uint32_t attachmentCount; // optional // @link substring="attachmentCount" target="#attachmentCount"
-///     VkAttachmentDescription2 const* pAttachments; // @link substring="VkAttachmentDescription2" target="VkAttachmentDescription2" @link substring="pAttachments" target="#pAttachments"
+///     VkAttachmentDescription2 const* pAttachments; // optional // @link substring="VkAttachmentDescription2" target="VkAttachmentDescription2" @link substring="pAttachments" target="#pAttachments"
 ///     uint32_t subpassCount; // @link substring="subpassCount" target="#subpassCount"
 ///     VkSubpassDescription2 const* pSubpasses; // @link substring="VkSubpassDescription2" target="VkSubpassDescription2" @link substring="pSubpasses" target="#pSubpasses"
 ///     uint32_t dependencyCount; // optional // @link substring="dependencyCount" target="#dependencyCount"
-///     VkSubpassDependency2 const* pDependencies; // @link substring="VkSubpassDependency2" target="VkSubpassDependency2" @link substring="pDependencies" target="#pDependencies"
+///     VkSubpassDependency2 const* pDependencies; // optional // @link substring="VkSubpassDependency2" target="VkSubpassDependency2" @link substring="pDependencies" target="#pDependencies"
 ///     uint32_t correlatedViewMaskCount; // optional // @link substring="correlatedViewMaskCount" target="#correlatedViewMaskCount"
-///     uint32_t const* pCorrelatedViewMasks; // @link substring="pCorrelatedViewMasks" target="#pCorrelatedViewMasks"
+///     uint32_t const* pCorrelatedViewMasks; // optional // @link substring="pCorrelatedViewMasks" target="#pCorrelatedViewMasks"
 /// } VkRenderPassCreateInfo2;
 /// }
 ///
@@ -93,6 +93,11 @@ public record VkRenderPassCreateInfo2(@NotNull MemorySegment segment) implements
         /// indicate that the returned structure is a view of the original structure.
         public @NotNull VkRenderPassCreateInfo2 at(long index) {
             return new VkRenderPassCreateInfo2(segment.asSlice(index * VkRenderPassCreateInfo2.BYTES, VkRenderPassCreateInfo2.BYTES));
+        }
+
+        public VkRenderPassCreateInfo2.Ptr at(long index, @NotNull Consumer<@NotNull VkRenderPassCreateInfo2> consumer) {
+            consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkRenderPassCreateInfo2 value) {

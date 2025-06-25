@@ -87,6 +87,11 @@ public record VkPhysicalDeviceMemoryPriorityFeaturesEXT(@NotNull MemorySegment s
             return new VkPhysicalDeviceMemoryPriorityFeaturesEXT(segment.asSlice(index * VkPhysicalDeviceMemoryPriorityFeaturesEXT.BYTES, VkPhysicalDeviceMemoryPriorityFeaturesEXT.BYTES));
         }
 
+        public VkPhysicalDeviceMemoryPriorityFeaturesEXT.Ptr at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceMemoryPriorityFeaturesEXT> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkPhysicalDeviceMemoryPriorityFeaturesEXT value) {
             MemorySegment s = segment.asSlice(index * VkPhysicalDeviceMemoryPriorityFeaturesEXT.BYTES, VkPhysicalDeviceMemoryPriorityFeaturesEXT.BYTES);
             s.copyFrom(value.segment);

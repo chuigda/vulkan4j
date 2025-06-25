@@ -95,6 +95,11 @@ public record VkPhysicalDeviceConservativeRasterizationPropertiesEXT(@NotNull Me
             return new VkPhysicalDeviceConservativeRasterizationPropertiesEXT(segment.asSlice(index * VkPhysicalDeviceConservativeRasterizationPropertiesEXT.BYTES, VkPhysicalDeviceConservativeRasterizationPropertiesEXT.BYTES));
         }
 
+        public VkPhysicalDeviceConservativeRasterizationPropertiesEXT.Ptr at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceConservativeRasterizationPropertiesEXT> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkPhysicalDeviceConservativeRasterizationPropertiesEXT value) {
             MemorySegment s = segment.asSlice(index * VkPhysicalDeviceConservativeRasterizationPropertiesEXT.BYTES, VkPhysicalDeviceConservativeRasterizationPropertiesEXT.BYTES);
             s.copyFrom(value.segment);

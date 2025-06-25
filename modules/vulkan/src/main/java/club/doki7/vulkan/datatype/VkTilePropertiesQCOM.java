@@ -89,6 +89,11 @@ public record VkTilePropertiesQCOM(@NotNull MemorySegment segment) implements IV
             return new VkTilePropertiesQCOM(segment.asSlice(index * VkTilePropertiesQCOM.BYTES, VkTilePropertiesQCOM.BYTES));
         }
 
+        public VkTilePropertiesQCOM.Ptr at(long index, @NotNull Consumer<@NotNull VkTilePropertiesQCOM> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkTilePropertiesQCOM value) {
             MemorySegment s = segment.asSlice(index * VkTilePropertiesQCOM.BYTES, VkTilePropertiesQCOM.BYTES);
             s.copyFrom(value.segment);

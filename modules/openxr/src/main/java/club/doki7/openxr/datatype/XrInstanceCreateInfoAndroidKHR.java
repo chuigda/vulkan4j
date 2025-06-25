@@ -92,6 +92,11 @@ public record XrInstanceCreateInfoAndroidKHR(@NotNull MemorySegment segment) imp
             return new XrInstanceCreateInfoAndroidKHR(segment.asSlice(index * XrInstanceCreateInfoAndroidKHR.BYTES, XrInstanceCreateInfoAndroidKHR.BYTES));
         }
 
+        public XrInstanceCreateInfoAndroidKHR.Ptr at(long index, @NotNull Consumer<@NotNull XrInstanceCreateInfoAndroidKHR> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull XrInstanceCreateInfoAndroidKHR value) {
             MemorySegment s = segment.asSlice(index * XrInstanceCreateInfoAndroidKHR.BYTES, XrInstanceCreateInfoAndroidKHR.BYTES);
             s.copyFrom(value.segment);

@@ -35,9 +35,9 @@ import static club.doki7.vulkan.VkConstants.*;
 ///     uint32_t blockDimZ; // @link substring="blockDimZ" target="#blockDimZ"
 ///     uint32_t sharedMemBytes; // @link substring="sharedMemBytes" target="#sharedMemBytes"
 ///     size_t paramCount; // optional // @link substring="paramCount" target="#paramCount"
-///     void const* pParams; // @link substring="pParams" target="#pParams"
+///     void const* pParams; // optional // @link substring="pParams" target="#pParams"
 ///     size_t extraCount; // optional // @link substring="extraCount" target="#extraCount"
-///     void const* pExtras; // @link substring="pExtras" target="#pExtras"
+///     void const* pExtras; // optional // @link substring="pExtras" target="#pExtras"
 /// } VkCuLaunchInfoNVX;
 /// }
 ///
@@ -96,6 +96,11 @@ public record VkCuLaunchInfoNVX(@NotNull MemorySegment segment) implements IVkCu
         /// indicate that the returned structure is a view of the original structure.
         public @NotNull VkCuLaunchInfoNVX at(long index) {
             return new VkCuLaunchInfoNVX(segment.asSlice(index * VkCuLaunchInfoNVX.BYTES, VkCuLaunchInfoNVX.BYTES));
+        }
+
+        public VkCuLaunchInfoNVX.Ptr at(long index, @NotNull Consumer<@NotNull VkCuLaunchInfoNVX> consumer) {
+            consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkCuLaunchInfoNVX value) {

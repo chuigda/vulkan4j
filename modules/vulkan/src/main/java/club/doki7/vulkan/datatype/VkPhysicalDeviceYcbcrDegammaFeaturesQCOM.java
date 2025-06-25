@@ -87,6 +87,11 @@ public record VkPhysicalDeviceYcbcrDegammaFeaturesQCOM(@NotNull MemorySegment se
             return new VkPhysicalDeviceYcbcrDegammaFeaturesQCOM(segment.asSlice(index * VkPhysicalDeviceYcbcrDegammaFeaturesQCOM.BYTES, VkPhysicalDeviceYcbcrDegammaFeaturesQCOM.BYTES));
         }
 
+        public VkPhysicalDeviceYcbcrDegammaFeaturesQCOM.Ptr at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceYcbcrDegammaFeaturesQCOM> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkPhysicalDeviceYcbcrDegammaFeaturesQCOM value) {
             MemorySegment s = segment.asSlice(index * VkPhysicalDeviceYcbcrDegammaFeaturesQCOM.BYTES, VkPhysicalDeviceYcbcrDegammaFeaturesQCOM.BYTES);
             s.copyFrom(value.segment);

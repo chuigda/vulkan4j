@@ -92,6 +92,11 @@ public record XrSceneMeshesMSFT(@NotNull MemorySegment segment) implements IXrSc
             return new XrSceneMeshesMSFT(segment.asSlice(index * XrSceneMeshesMSFT.BYTES, XrSceneMeshesMSFT.BYTES));
         }
 
+        public XrSceneMeshesMSFT.Ptr at(long index, @NotNull Consumer<@NotNull XrSceneMeshesMSFT> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull XrSceneMeshesMSFT value) {
             MemorySegment s = segment.asSlice(index * XrSceneMeshesMSFT.BYTES, XrSceneMeshesMSFT.BYTES);
             s.copyFrom(value.segment);

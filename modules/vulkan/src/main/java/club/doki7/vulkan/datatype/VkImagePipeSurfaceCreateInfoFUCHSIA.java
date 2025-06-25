@@ -88,6 +88,11 @@ public record VkImagePipeSurfaceCreateInfoFUCHSIA(@NotNull MemorySegment segment
             return new VkImagePipeSurfaceCreateInfoFUCHSIA(segment.asSlice(index * VkImagePipeSurfaceCreateInfoFUCHSIA.BYTES, VkImagePipeSurfaceCreateInfoFUCHSIA.BYTES));
         }
 
+        public VkImagePipeSurfaceCreateInfoFUCHSIA.Ptr at(long index, @NotNull Consumer<@NotNull VkImagePipeSurfaceCreateInfoFUCHSIA> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkImagePipeSurfaceCreateInfoFUCHSIA value) {
             MemorySegment s = segment.asSlice(index * VkImagePipeSurfaceCreateInfoFUCHSIA.BYTES, VkImagePipeSurfaceCreateInfoFUCHSIA.BYTES);
             s.copyFrom(value.segment);

@@ -91,6 +91,11 @@ public record XrSwapchainImageWaitInfo(@NotNull MemorySegment segment) implement
             return new XrSwapchainImageWaitInfo(segment.asSlice(index * XrSwapchainImageWaitInfo.BYTES, XrSwapchainImageWaitInfo.BYTES));
         }
 
+        public XrSwapchainImageWaitInfo.Ptr at(long index, @NotNull Consumer<@NotNull XrSwapchainImageWaitInfo> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull XrSwapchainImageWaitInfo value) {
             MemorySegment s = segment.asSlice(index * XrSwapchainImageWaitInfo.BYTES, XrSwapchainImageWaitInfo.BYTES);
             s.copyFrom(value.segment);

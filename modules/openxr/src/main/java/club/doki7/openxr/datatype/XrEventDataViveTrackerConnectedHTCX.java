@@ -91,6 +91,11 @@ public record XrEventDataViveTrackerConnectedHTCX(@NotNull MemorySegment segment
             return new XrEventDataViveTrackerConnectedHTCX(segment.asSlice(index * XrEventDataViveTrackerConnectedHTCX.BYTES, XrEventDataViveTrackerConnectedHTCX.BYTES));
         }
 
+        public XrEventDataViveTrackerConnectedHTCX.Ptr at(long index, @NotNull Consumer<@NotNull XrEventDataViveTrackerConnectedHTCX> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull XrEventDataViveTrackerConnectedHTCX value) {
             MemorySegment s = segment.asSlice(index * XrEventDataViveTrackerConnectedHTCX.BYTES, XrEventDataViveTrackerConnectedHTCX.BYTES);
             s.copyFrom(value.segment);

@@ -89,6 +89,11 @@ public record VkConditionalRenderingBeginInfoEXT(@NotNull MemorySegment segment)
             return new VkConditionalRenderingBeginInfoEXT(segment.asSlice(index * VkConditionalRenderingBeginInfoEXT.BYTES, VkConditionalRenderingBeginInfoEXT.BYTES));
         }
 
+        public VkConditionalRenderingBeginInfoEXT.Ptr at(long index, @NotNull Consumer<@NotNull VkConditionalRenderingBeginInfoEXT> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkConditionalRenderingBeginInfoEXT value) {
             MemorySegment s = segment.asSlice(index * VkConditionalRenderingBeginInfoEXT.BYTES, VkConditionalRenderingBeginInfoEXT.BYTES);
             s.copyFrom(value.segment);

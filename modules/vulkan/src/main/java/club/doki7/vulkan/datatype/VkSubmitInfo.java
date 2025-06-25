@@ -27,12 +27,12 @@ import static club.doki7.vulkan.VkConstants.*;
 ///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
 ///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
 ///     uint32_t waitSemaphoreCount; // optional // @link substring="waitSemaphoreCount" target="#waitSemaphoreCount"
-///     VkSemaphore const* pWaitSemaphores; // @link substring="VkSemaphore" target="VkSemaphore" @link substring="pWaitSemaphores" target="#pWaitSemaphores"
-///     VkPipelineStageFlags const* pWaitDstStageMask; // @link substring="VkPipelineStageFlags" target="VkPipelineStageFlags" @link substring="pWaitDstStageMask" target="#pWaitDstStageMask"
+///     VkSemaphore const* pWaitSemaphores; // optional // @link substring="VkSemaphore" target="VkSemaphore" @link substring="pWaitSemaphores" target="#pWaitSemaphores"
+///     VkPipelineStageFlags const* pWaitDstStageMask; // optional // @link substring="VkPipelineStageFlags" target="VkPipelineStageFlags" @link substring="pWaitDstStageMask" target="#pWaitDstStageMask"
 ///     uint32_t commandBufferCount; // optional // @link substring="commandBufferCount" target="#commandBufferCount"
-///     VkCommandBuffer const* pCommandBuffers; // @link substring="VkCommandBuffer" target="VkCommandBuffer" @link substring="pCommandBuffers" target="#pCommandBuffers"
+///     VkCommandBuffer const* pCommandBuffers; // optional // @link substring="VkCommandBuffer" target="VkCommandBuffer" @link substring="pCommandBuffers" target="#pCommandBuffers"
 ///     uint32_t signalSemaphoreCount; // optional // @link substring="signalSemaphoreCount" target="#signalSemaphoreCount"
-///     VkSemaphore const* pSignalSemaphores; // @link substring="VkSemaphore" target="VkSemaphore" @link substring="pSignalSemaphores" target="#pSignalSemaphores"
+///     VkSemaphore const* pSignalSemaphores; // optional // @link substring="VkSemaphore" target="VkSemaphore" @link substring="pSignalSemaphores" target="#pSignalSemaphores"
 /// } VkSubmitInfo;
 /// }
 ///
@@ -91,6 +91,11 @@ public record VkSubmitInfo(@NotNull MemorySegment segment) implements IVkSubmitI
         /// indicate that the returned structure is a view of the original structure.
         public @NotNull VkSubmitInfo at(long index) {
             return new VkSubmitInfo(segment.asSlice(index * VkSubmitInfo.BYTES, VkSubmitInfo.BYTES));
+        }
+
+        public VkSubmitInfo.Ptr at(long index, @NotNull Consumer<@NotNull VkSubmitInfo> consumer) {
+            consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkSubmitInfo value) {

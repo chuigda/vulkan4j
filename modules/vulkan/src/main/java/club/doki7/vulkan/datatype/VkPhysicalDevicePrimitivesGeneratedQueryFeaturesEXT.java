@@ -89,6 +89,11 @@ public record VkPhysicalDevicePrimitivesGeneratedQueryFeaturesEXT(@NotNull Memor
             return new VkPhysicalDevicePrimitivesGeneratedQueryFeaturesEXT(segment.asSlice(index * VkPhysicalDevicePrimitivesGeneratedQueryFeaturesEXT.BYTES, VkPhysicalDevicePrimitivesGeneratedQueryFeaturesEXT.BYTES));
         }
 
+        public VkPhysicalDevicePrimitivesGeneratedQueryFeaturesEXT.Ptr at(long index, @NotNull Consumer<@NotNull VkPhysicalDevicePrimitivesGeneratedQueryFeaturesEXT> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkPhysicalDevicePrimitivesGeneratedQueryFeaturesEXT value) {
             MemorySegment s = segment.asSlice(index * VkPhysicalDevicePrimitivesGeneratedQueryFeaturesEXT.BYTES, VkPhysicalDevicePrimitivesGeneratedQueryFeaturesEXT.BYTES);
             s.copyFrom(value.segment);

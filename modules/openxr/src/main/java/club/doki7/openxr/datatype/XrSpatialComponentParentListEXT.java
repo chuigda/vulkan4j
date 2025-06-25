@@ -92,6 +92,11 @@ public record XrSpatialComponentParentListEXT(@NotNull MemorySegment segment) im
             return new XrSpatialComponentParentListEXT(segment.asSlice(index * XrSpatialComponentParentListEXT.BYTES, XrSpatialComponentParentListEXT.BYTES));
         }
 
+        public XrSpatialComponentParentListEXT.Ptr at(long index, @NotNull Consumer<@NotNull XrSpatialComponentParentListEXT> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull XrSpatialComponentParentListEXT value) {
             MemorySegment s = segment.asSlice(index * XrSpatialComponentParentListEXT.BYTES, XrSpatialComponentParentListEXT.BYTES);
             s.copyFrom(value.segment);

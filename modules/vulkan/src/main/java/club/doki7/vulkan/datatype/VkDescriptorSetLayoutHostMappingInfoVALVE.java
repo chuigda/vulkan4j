@@ -88,6 +88,11 @@ public record VkDescriptorSetLayoutHostMappingInfoVALVE(@NotNull MemorySegment s
             return new VkDescriptorSetLayoutHostMappingInfoVALVE(segment.asSlice(index * VkDescriptorSetLayoutHostMappingInfoVALVE.BYTES, VkDescriptorSetLayoutHostMappingInfoVALVE.BYTES));
         }
 
+        public VkDescriptorSetLayoutHostMappingInfoVALVE.Ptr at(long index, @NotNull Consumer<@NotNull VkDescriptorSetLayoutHostMappingInfoVALVE> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkDescriptorSetLayoutHostMappingInfoVALVE value) {
             MemorySegment s = segment.asSlice(index * VkDescriptorSetLayoutHostMappingInfoVALVE.BYTES, VkDescriptorSetLayoutHostMappingInfoVALVE.BYTES);
             s.copyFrom(value.segment);

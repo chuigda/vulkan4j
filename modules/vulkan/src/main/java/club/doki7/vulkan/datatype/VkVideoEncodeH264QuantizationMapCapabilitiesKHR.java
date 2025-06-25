@@ -88,6 +88,11 @@ public record VkVideoEncodeH264QuantizationMapCapabilitiesKHR(@NotNull MemorySeg
             return new VkVideoEncodeH264QuantizationMapCapabilitiesKHR(segment.asSlice(index * VkVideoEncodeH264QuantizationMapCapabilitiesKHR.BYTES, VkVideoEncodeH264QuantizationMapCapabilitiesKHR.BYTES));
         }
 
+        public VkVideoEncodeH264QuantizationMapCapabilitiesKHR.Ptr at(long index, @NotNull Consumer<@NotNull VkVideoEncodeH264QuantizationMapCapabilitiesKHR> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkVideoEncodeH264QuantizationMapCapabilitiesKHR value) {
             MemorySegment s = segment.asSlice(index * VkVideoEncodeH264QuantizationMapCapabilitiesKHR.BYTES, VkVideoEncodeH264QuantizationMapCapabilitiesKHR.BYTES);
             s.copyFrom(value.segment);

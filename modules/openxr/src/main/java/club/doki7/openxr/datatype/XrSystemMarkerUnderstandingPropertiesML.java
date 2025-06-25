@@ -91,6 +91,11 @@ public record XrSystemMarkerUnderstandingPropertiesML(@NotNull MemorySegment seg
             return new XrSystemMarkerUnderstandingPropertiesML(segment.asSlice(index * XrSystemMarkerUnderstandingPropertiesML.BYTES, XrSystemMarkerUnderstandingPropertiesML.BYTES));
         }
 
+        public XrSystemMarkerUnderstandingPropertiesML.Ptr at(long index, @NotNull Consumer<@NotNull XrSystemMarkerUnderstandingPropertiesML> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull XrSystemMarkerUnderstandingPropertiesML value) {
             MemorySegment s = segment.asSlice(index * XrSystemMarkerUnderstandingPropertiesML.BYTES, XrSystemMarkerUnderstandingPropertiesML.BYTES);
             s.copyFrom(value.segment);

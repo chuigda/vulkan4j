@@ -84,6 +84,11 @@ public record StdVideoH264HrdParameters(@NotNull MemorySegment segment) implemen
             return new StdVideoH264HrdParameters(segment.asSlice(index * StdVideoH264HrdParameters.BYTES, StdVideoH264HrdParameters.BYTES));
         }
 
+        public StdVideoH264HrdParameters.Ptr at(long index, @NotNull Consumer<@NotNull StdVideoH264HrdParameters> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull StdVideoH264HrdParameters value) {
             MemorySegment s = segment.asSlice(index * StdVideoH264HrdParameters.BYTES, StdVideoH264HrdParameters.BYTES);
             s.copyFrom(value.segment);
@@ -209,6 +214,12 @@ public record StdVideoH264HrdParameters(@NotNull MemorySegment segment) implemen
         return new IntPtr(bit_rate_value_minus1Raw());
     }
 
+    public StdVideoH264HrdParameters bit_rate_value_minus1(@NotNull Consumer<IntPtr> consumer) {
+        @Unsigned IntPtr ptr = bit_rate_value_minus1();
+        consumer.accept(ptr);
+        return this;
+    }
+
     public StdVideoH264HrdParameters bit_rate_value_minus1(@Unsigned IntPtr value) {
         MemorySegment s = bit_rate_value_minus1Raw();
         s.copyFrom(value.segment());
@@ -223,6 +234,12 @@ public record StdVideoH264HrdParameters(@NotNull MemorySegment segment) implemen
         return new IntPtr(cpb_size_value_minus1Raw());
     }
 
+    public StdVideoH264HrdParameters cpb_size_value_minus1(@NotNull Consumer<IntPtr> consumer) {
+        @Unsigned IntPtr ptr = cpb_size_value_minus1();
+        consumer.accept(ptr);
+        return this;
+    }
+
     public StdVideoH264HrdParameters cpb_size_value_minus1(@Unsigned IntPtr value) {
         MemorySegment s = cpb_size_value_minus1Raw();
         s.copyFrom(value.segment());
@@ -235,6 +252,12 @@ public record StdVideoH264HrdParameters(@NotNull MemorySegment segment) implemen
 
     public @Unsigned BytePtr cbr_flag() {
         return new BytePtr(cbr_flagRaw());
+    }
+
+    public StdVideoH264HrdParameters cbr_flag(@NotNull Consumer<BytePtr> consumer) {
+        @Unsigned BytePtr ptr = cbr_flag();
+        consumer.accept(ptr);
+        return this;
     }
 
     public StdVideoH264HrdParameters cbr_flag(@Unsigned BytePtr value) {

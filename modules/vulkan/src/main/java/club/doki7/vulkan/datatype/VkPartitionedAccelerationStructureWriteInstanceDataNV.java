@@ -84,6 +84,11 @@ public record VkPartitionedAccelerationStructureWriteInstanceDataNV(@NotNull Mem
             return new VkPartitionedAccelerationStructureWriteInstanceDataNV(segment.asSlice(index * VkPartitionedAccelerationStructureWriteInstanceDataNV.BYTES, VkPartitionedAccelerationStructureWriteInstanceDataNV.BYTES));
         }
 
+        public VkPartitionedAccelerationStructureWriteInstanceDataNV.Ptr at(long index, @NotNull Consumer<@NotNull VkPartitionedAccelerationStructureWriteInstanceDataNV> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkPartitionedAccelerationStructureWriteInstanceDataNV value) {
             MemorySegment s = segment.asSlice(index * VkPartitionedAccelerationStructureWriteInstanceDataNV.BYTES, VkPartitionedAccelerationStructureWriteInstanceDataNV.BYTES);
             s.copyFrom(value.segment);
@@ -193,6 +198,12 @@ public record VkPartitionedAccelerationStructureWriteInstanceDataNV(@NotNull Mem
 
     public FloatPtr explicitAABB() {
         return new FloatPtr(explicitAABBRaw());
+    }
+
+    public VkPartitionedAccelerationStructureWriteInstanceDataNV explicitAABB(@NotNull Consumer<FloatPtr> consumer) {
+        FloatPtr ptr = explicitAABB();
+        consumer.accept(ptr);
+        return this;
     }
 
     public VkPartitionedAccelerationStructureWriteInstanceDataNV explicitAABB(FloatPtr value) {

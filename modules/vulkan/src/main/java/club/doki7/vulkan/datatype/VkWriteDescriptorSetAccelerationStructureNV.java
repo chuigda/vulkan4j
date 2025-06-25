@@ -88,6 +88,11 @@ public record VkWriteDescriptorSetAccelerationStructureNV(@NotNull MemorySegment
             return new VkWriteDescriptorSetAccelerationStructureNV(segment.asSlice(index * VkWriteDescriptorSetAccelerationStructureNV.BYTES, VkWriteDescriptorSetAccelerationStructureNV.BYTES));
         }
 
+        public VkWriteDescriptorSetAccelerationStructureNV.Ptr at(long index, @NotNull Consumer<@NotNull VkWriteDescriptorSetAccelerationStructureNV> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkWriteDescriptorSetAccelerationStructureNV value) {
             MemorySegment s = segment.asSlice(index * VkWriteDescriptorSetAccelerationStructureNV.BYTES, VkWriteDescriptorSetAccelerationStructureNV.BYTES);
             s.copyFrom(value.segment);

@@ -78,6 +78,11 @@ public record StdVideoH265SubLayerHrdParameters(@NotNull MemorySegment segment) 
             return new StdVideoH265SubLayerHrdParameters(segment.asSlice(index * StdVideoH265SubLayerHrdParameters.BYTES, StdVideoH265SubLayerHrdParameters.BYTES));
         }
 
+        public StdVideoH265SubLayerHrdParameters.Ptr at(long index, @NotNull Consumer<@NotNull StdVideoH265SubLayerHrdParameters> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull StdVideoH265SubLayerHrdParameters value) {
             MemorySegment s = segment.asSlice(index * StdVideoH265SubLayerHrdParameters.BYTES, StdVideoH265SubLayerHrdParameters.BYTES);
             s.copyFrom(value.segment);
@@ -175,6 +180,12 @@ public record StdVideoH265SubLayerHrdParameters(@NotNull MemorySegment segment) 
         return new IntPtr(bit_rate_value_minus1Raw());
     }
 
+    public StdVideoH265SubLayerHrdParameters bit_rate_value_minus1(@NotNull Consumer<IntPtr> consumer) {
+        @Unsigned IntPtr ptr = bit_rate_value_minus1();
+        consumer.accept(ptr);
+        return this;
+    }
+
     public StdVideoH265SubLayerHrdParameters bit_rate_value_minus1(@Unsigned IntPtr value) {
         MemorySegment s = bit_rate_value_minus1Raw();
         s.copyFrom(value.segment());
@@ -187,6 +198,12 @@ public record StdVideoH265SubLayerHrdParameters(@NotNull MemorySegment segment) 
 
     public @Unsigned IntPtr cpb_size_value_minus1() {
         return new IntPtr(cpb_size_value_minus1Raw());
+    }
+
+    public StdVideoH265SubLayerHrdParameters cpb_size_value_minus1(@NotNull Consumer<IntPtr> consumer) {
+        @Unsigned IntPtr ptr = cpb_size_value_minus1();
+        consumer.accept(ptr);
+        return this;
     }
 
     public StdVideoH265SubLayerHrdParameters cpb_size_value_minus1(@Unsigned IntPtr value) {
@@ -203,6 +220,12 @@ public record StdVideoH265SubLayerHrdParameters(@NotNull MemorySegment segment) 
         return new IntPtr(cpb_size_du_value_minus1Raw());
     }
 
+    public StdVideoH265SubLayerHrdParameters cpb_size_du_value_minus1(@NotNull Consumer<IntPtr> consumer) {
+        @Unsigned IntPtr ptr = cpb_size_du_value_minus1();
+        consumer.accept(ptr);
+        return this;
+    }
+
     public StdVideoH265SubLayerHrdParameters cpb_size_du_value_minus1(@Unsigned IntPtr value) {
         MemorySegment s = cpb_size_du_value_minus1Raw();
         s.copyFrom(value.segment());
@@ -215,6 +238,12 @@ public record StdVideoH265SubLayerHrdParameters(@NotNull MemorySegment segment) 
 
     public @Unsigned IntPtr bit_rate_du_value_minus1() {
         return new IntPtr(bit_rate_du_value_minus1Raw());
+    }
+
+    public StdVideoH265SubLayerHrdParameters bit_rate_du_value_minus1(@NotNull Consumer<IntPtr> consumer) {
+        @Unsigned IntPtr ptr = bit_rate_du_value_minus1();
+        consumer.accept(ptr);
+        return this;
     }
 
     public StdVideoH265SubLayerHrdParameters bit_rate_du_value_minus1(@Unsigned IntPtr value) {

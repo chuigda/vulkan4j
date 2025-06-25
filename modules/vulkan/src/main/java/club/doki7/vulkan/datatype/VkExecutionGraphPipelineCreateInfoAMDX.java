@@ -93,6 +93,11 @@ public record VkExecutionGraphPipelineCreateInfoAMDX(@NotNull MemorySegment segm
             return new VkExecutionGraphPipelineCreateInfoAMDX(segment.asSlice(index * VkExecutionGraphPipelineCreateInfoAMDX.BYTES, VkExecutionGraphPipelineCreateInfoAMDX.BYTES));
         }
 
+        public VkExecutionGraphPipelineCreateInfoAMDX.Ptr at(long index, @NotNull Consumer<@NotNull VkExecutionGraphPipelineCreateInfoAMDX> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkExecutionGraphPipelineCreateInfoAMDX value) {
             MemorySegment s = segment.asSlice(index * VkExecutionGraphPipelineCreateInfoAMDX.BYTES, VkExecutionGraphPipelineCreateInfoAMDX.BYTES);
             s.copyFrom(value.segment);

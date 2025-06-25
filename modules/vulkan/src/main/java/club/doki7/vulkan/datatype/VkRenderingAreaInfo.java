@@ -28,7 +28,7 @@ import static club.doki7.vulkan.VkConstants.*;
 ///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
 ///     uint32_t viewMask; // @link substring="viewMask" target="#viewMask"
 ///     uint32_t colorAttachmentCount; // optional // @link substring="colorAttachmentCount" target="#colorAttachmentCount"
-///     VkFormat const* pColorAttachmentFormats; // @link substring="VkFormat" target="VkFormat" @link substring="pColorAttachmentFormats" target="#pColorAttachmentFormats"
+///     VkFormat const* pColorAttachmentFormats; // optional // @link substring="VkFormat" target="VkFormat" @link substring="pColorAttachmentFormats" target="#pColorAttachmentFormats"
 ///     VkFormat depthAttachmentFormat; // @link substring="VkFormat" target="VkFormat" @link substring="depthAttachmentFormat" target="#depthAttachmentFormat"
 ///     VkFormat stencilAttachmentFormat; // @link substring="VkFormat" target="VkFormat" @link substring="stencilAttachmentFormat" target="#stencilAttachmentFormat"
 /// } VkRenderingAreaInfo;
@@ -89,6 +89,11 @@ public record VkRenderingAreaInfo(@NotNull MemorySegment segment) implements IVk
         /// indicate that the returned structure is a view of the original structure.
         public @NotNull VkRenderingAreaInfo at(long index) {
             return new VkRenderingAreaInfo(segment.asSlice(index * VkRenderingAreaInfo.BYTES, VkRenderingAreaInfo.BYTES));
+        }
+
+        public VkRenderingAreaInfo.Ptr at(long index, @NotNull Consumer<@NotNull VkRenderingAreaInfo> consumer) {
+            consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkRenderingAreaInfo value) {

@@ -89,6 +89,11 @@ public record VkBindBufferMemoryInfo(@NotNull MemorySegment segment) implements 
             return new VkBindBufferMemoryInfo(segment.asSlice(index * VkBindBufferMemoryInfo.BYTES, VkBindBufferMemoryInfo.BYTES));
         }
 
+        public VkBindBufferMemoryInfo.Ptr at(long index, @NotNull Consumer<@NotNull VkBindBufferMemoryInfo> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkBindBufferMemoryInfo value) {
             MemorySegment s = segment.asSlice(index * VkBindBufferMemoryInfo.BYTES, VkBindBufferMemoryInfo.BYTES);
             s.copyFrom(value.segment);

@@ -106,6 +106,11 @@ public record VmaBudget(@NotNull MemorySegment segment) implements IVmaBudget {
             return new VmaBudget(segment.asSlice(index * VmaBudget.BYTES, VmaBudget.BYTES));
         }
 
+        public VmaBudget.Ptr at(long index, @NotNull Consumer<@NotNull VmaBudget> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VmaBudget value) {
             MemorySegment s = segment.asSlice(index * VmaBudget.BYTES, VmaBudget.BYTES);
             s.copyFrom(value.segment);

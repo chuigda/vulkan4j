@@ -87,6 +87,11 @@ public record VkDeviceGroupSwapchainCreateInfoKHR(@NotNull MemorySegment segment
             return new VkDeviceGroupSwapchainCreateInfoKHR(segment.asSlice(index * VkDeviceGroupSwapchainCreateInfoKHR.BYTES, VkDeviceGroupSwapchainCreateInfoKHR.BYTES));
         }
 
+        public VkDeviceGroupSwapchainCreateInfoKHR.Ptr at(long index, @NotNull Consumer<@NotNull VkDeviceGroupSwapchainCreateInfoKHR> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkDeviceGroupSwapchainCreateInfoKHR value) {
             MemorySegment s = segment.asSlice(index * VkDeviceGroupSwapchainCreateInfoKHR.BYTES, VkDeviceGroupSwapchainCreateInfoKHR.BYTES);
             s.copyFrom(value.segment);

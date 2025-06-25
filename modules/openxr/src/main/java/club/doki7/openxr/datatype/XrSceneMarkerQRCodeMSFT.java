@@ -81,6 +81,11 @@ public record XrSceneMarkerQRCodeMSFT(@NotNull MemorySegment segment) implements
             return new XrSceneMarkerQRCodeMSFT(segment.asSlice(index * XrSceneMarkerQRCodeMSFT.BYTES, XrSceneMarkerQRCodeMSFT.BYTES));
         }
 
+        public XrSceneMarkerQRCodeMSFT.Ptr at(long index, @NotNull Consumer<@NotNull XrSceneMarkerQRCodeMSFT> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull XrSceneMarkerQRCodeMSFT value) {
             MemorySegment s = segment.asSlice(index * XrSceneMarkerQRCodeMSFT.BYTES, XrSceneMarkerQRCodeMSFT.BYTES);
             s.copyFrom(value.segment);

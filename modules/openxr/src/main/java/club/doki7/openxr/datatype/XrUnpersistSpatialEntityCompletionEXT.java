@@ -92,6 +92,11 @@ public record XrUnpersistSpatialEntityCompletionEXT(@NotNull MemorySegment segme
             return new XrUnpersistSpatialEntityCompletionEXT(segment.asSlice(index * XrUnpersistSpatialEntityCompletionEXT.BYTES, XrUnpersistSpatialEntityCompletionEXT.BYTES));
         }
 
+        public XrUnpersistSpatialEntityCompletionEXT.Ptr at(long index, @NotNull Consumer<@NotNull XrUnpersistSpatialEntityCompletionEXT> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull XrUnpersistSpatialEntityCompletionEXT value) {
             MemorySegment s = segment.asSlice(index * XrUnpersistSpatialEntityCompletionEXT.BYTES, XrUnpersistSpatialEntityCompletionEXT.BYTES);
             s.copyFrom(value.segment);

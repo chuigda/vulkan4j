@@ -86,6 +86,11 @@ public record XrApiLayerNextInfo(@NotNull MemorySegment segment) implements IXrA
             return new XrApiLayerNextInfo(segment.asSlice(index * XrApiLayerNextInfo.BYTES, XrApiLayerNextInfo.BYTES));
         }
 
+        public XrApiLayerNextInfo.Ptr at(long index, @NotNull Consumer<@NotNull XrApiLayerNextInfo> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull XrApiLayerNextInfo value) {
             MemorySegment s = segment.asSlice(index * XrApiLayerNextInfo.BYTES, XrApiLayerNextInfo.BYTES);
             s.copyFrom(value.segment);
@@ -208,6 +213,12 @@ public record XrApiLayerNextInfo(@NotNull MemorySegment segment) implements IXrA
 
     public BytePtr layerName() {
         return new BytePtr(layerNameRaw());
+    }
+
+    public XrApiLayerNextInfo layerName(@NotNull Consumer<BytePtr> consumer) {
+        BytePtr ptr = layerName();
+        consumer.accept(ptr);
+        return this;
     }
 
     public XrApiLayerNextInfo layerName(BytePtr value) {

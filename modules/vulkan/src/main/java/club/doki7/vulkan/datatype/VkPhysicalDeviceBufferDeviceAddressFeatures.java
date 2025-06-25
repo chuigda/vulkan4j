@@ -89,6 +89,11 @@ public record VkPhysicalDeviceBufferDeviceAddressFeatures(@NotNull MemorySegment
             return new VkPhysicalDeviceBufferDeviceAddressFeatures(segment.asSlice(index * VkPhysicalDeviceBufferDeviceAddressFeatures.BYTES, VkPhysicalDeviceBufferDeviceAddressFeatures.BYTES));
         }
 
+        public VkPhysicalDeviceBufferDeviceAddressFeatures.Ptr at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceBufferDeviceAddressFeatures> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkPhysicalDeviceBufferDeviceAddressFeatures value) {
             MemorySegment s = segment.asSlice(index * VkPhysicalDeviceBufferDeviceAddressFeatures.BYTES, VkPhysicalDeviceBufferDeviceAddressFeatures.BYTES);
             s.copyFrom(value.segment);

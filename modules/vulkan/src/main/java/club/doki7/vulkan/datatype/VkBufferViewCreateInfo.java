@@ -91,6 +91,11 @@ public record VkBufferViewCreateInfo(@NotNull MemorySegment segment) implements 
             return new VkBufferViewCreateInfo(segment.asSlice(index * VkBufferViewCreateInfo.BYTES, VkBufferViewCreateInfo.BYTES));
         }
 
+        public VkBufferViewCreateInfo.Ptr at(long index, @NotNull Consumer<@NotNull VkBufferViewCreateInfo> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkBufferViewCreateInfo value) {
             MemorySegment s = segment.asSlice(index * VkBufferViewCreateInfo.BYTES, VkBufferViewCreateInfo.BYTES);
             s.copyFrom(value.segment);

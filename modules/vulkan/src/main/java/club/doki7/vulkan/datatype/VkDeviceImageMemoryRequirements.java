@@ -88,6 +88,11 @@ public record VkDeviceImageMemoryRequirements(@NotNull MemorySegment segment) im
             return new VkDeviceImageMemoryRequirements(segment.asSlice(index * VkDeviceImageMemoryRequirements.BYTES, VkDeviceImageMemoryRequirements.BYTES));
         }
 
+        public VkDeviceImageMemoryRequirements.Ptr at(long index, @NotNull Consumer<@NotNull VkDeviceImageMemoryRequirements> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkDeviceImageMemoryRequirements value) {
             MemorySegment s = segment.asSlice(index * VkDeviceImageMemoryRequirements.BYTES, VkDeviceImageMemoryRequirements.BYTES);
             s.copyFrom(value.segment);

@@ -82,6 +82,11 @@ public record XrSpatialMeshDataEXT(@NotNull MemorySegment segment) implements IX
             return new XrSpatialMeshDataEXT(segment.asSlice(index * XrSpatialMeshDataEXT.BYTES, XrSpatialMeshDataEXT.BYTES));
         }
 
+        public XrSpatialMeshDataEXT.Ptr at(long index, @NotNull Consumer<@NotNull XrSpatialMeshDataEXT> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull XrSpatialMeshDataEXT value) {
             MemorySegment s = segment.asSlice(index * XrSpatialMeshDataEXT.BYTES, XrSpatialMeshDataEXT.BYTES);
             s.copyFrom(value.segment);

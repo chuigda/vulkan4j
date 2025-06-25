@@ -93,6 +93,11 @@ public record XrSceneMeshIndicesUint32MSFT(@NotNull MemorySegment segment) imple
             return new XrSceneMeshIndicesUint32MSFT(segment.asSlice(index * XrSceneMeshIndicesUint32MSFT.BYTES, XrSceneMeshIndicesUint32MSFT.BYTES));
         }
 
+        public XrSceneMeshIndicesUint32MSFT.Ptr at(long index, @NotNull Consumer<@NotNull XrSceneMeshIndicesUint32MSFT> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull XrSceneMeshIndicesUint32MSFT value) {
             MemorySegment s = segment.asSlice(index * XrSceneMeshIndicesUint32MSFT.BYTES, XrSceneMeshIndicesUint32MSFT.BYTES);
             s.copyFrom(value.segment);

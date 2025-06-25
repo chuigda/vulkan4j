@@ -87,6 +87,11 @@ public record VkPhysicalDeviceVertexAttributeRobustnessFeaturesEXT(@NotNull Memo
             return new VkPhysicalDeviceVertexAttributeRobustnessFeaturesEXT(segment.asSlice(index * VkPhysicalDeviceVertexAttributeRobustnessFeaturesEXT.BYTES, VkPhysicalDeviceVertexAttributeRobustnessFeaturesEXT.BYTES));
         }
 
+        public VkPhysicalDeviceVertexAttributeRobustnessFeaturesEXT.Ptr at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceVertexAttributeRobustnessFeaturesEXT> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkPhysicalDeviceVertexAttributeRobustnessFeaturesEXT value) {
             MemorySegment s = segment.asSlice(index * VkPhysicalDeviceVertexAttributeRobustnessFeaturesEXT.BYTES, VkPhysicalDeviceVertexAttributeRobustnessFeaturesEXT.BYTES);
             s.copyFrom(value.segment);

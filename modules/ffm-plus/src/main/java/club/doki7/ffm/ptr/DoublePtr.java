@@ -12,6 +12,7 @@ import java.lang.foreign.MemorySegment;
 import java.lang.foreign.ValueLayout;
 import java.nio.Buffer;
 import java.nio.DoubleBuffer;
+import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
 import java.util.NoSuchElementException;
@@ -170,6 +171,16 @@ public record DoublePtr(@NotNull MemorySegment segment) implements IPointer, Ite
 
     public static @NotNull DoublePtr allocate(@NotNull Arena arena, double @NotNull [] array) {
         return new DoublePtr(arena.allocateFrom(ValueLayout.JAVA_DOUBLE, array));
+    }
+
+    public static @NotNull DoublePtr allocate(@NotNull Arena arena, Collection<Double> doubles) {
+        DoublePtr ret = allocate(arena, doubles.size());
+        int i = 0;
+        for (double value : doubles) {
+            ret.write(i, value);
+            i += 1;
+        }
+        return ret;
     }
 
     public static @NotNull DoublePtr allocateV(@NotNull Arena arena, double value0, double ...values) {

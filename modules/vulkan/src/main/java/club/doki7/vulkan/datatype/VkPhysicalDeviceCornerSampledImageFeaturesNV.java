@@ -87,6 +87,11 @@ public record VkPhysicalDeviceCornerSampledImageFeaturesNV(@NotNull MemorySegmen
             return new VkPhysicalDeviceCornerSampledImageFeaturesNV(segment.asSlice(index * VkPhysicalDeviceCornerSampledImageFeaturesNV.BYTES, VkPhysicalDeviceCornerSampledImageFeaturesNV.BYTES));
         }
 
+        public VkPhysicalDeviceCornerSampledImageFeaturesNV.Ptr at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceCornerSampledImageFeaturesNV> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkPhysicalDeviceCornerSampledImageFeaturesNV value) {
             MemorySegment s = segment.asSlice(index * VkPhysicalDeviceCornerSampledImageFeaturesNV.BYTES, VkPhysicalDeviceCornerSampledImageFeaturesNV.BYTES);
             s.copyFrom(value.segment);

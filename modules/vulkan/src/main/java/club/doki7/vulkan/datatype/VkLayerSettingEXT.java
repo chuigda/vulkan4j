@@ -28,7 +28,7 @@ import static club.doki7.vulkan.VkConstants.*;
 ///     char const* pSettingName; // @link substring="pSettingName" target="#pSettingName"
 ///     VkLayerSettingTypeEXT type; // @link substring="VkLayerSettingTypeEXT" target="VkLayerSettingTypeEXT" @link substring="type" target="#type"
 ///     uint32_t valueCount; // optional // @link substring="valueCount" target="#valueCount"
-///     void const* pValues; // @link substring="pValues" target="#pValues"
+///     void const* pValues; // optional // @link substring="pValues" target="#pValues"
 /// } VkLayerSettingEXT;
 /// }
 ///
@@ -78,6 +78,11 @@ public record VkLayerSettingEXT(@NotNull MemorySegment segment) implements IVkLa
         /// indicate that the returned structure is a view of the original structure.
         public @NotNull VkLayerSettingEXT at(long index) {
             return new VkLayerSettingEXT(segment.asSlice(index * VkLayerSettingEXT.BYTES, VkLayerSettingEXT.BYTES));
+        }
+
+        public VkLayerSettingEXT.Ptr at(long index, @NotNull Consumer<@NotNull VkLayerSettingEXT> consumer) {
+            consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkLayerSettingEXT value) {

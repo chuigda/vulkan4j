@@ -87,6 +87,11 @@ public record VkPhysicalDeviceInvocationMaskFeaturesHUAWEI(@NotNull MemorySegmen
             return new VkPhysicalDeviceInvocationMaskFeaturesHUAWEI(segment.asSlice(index * VkPhysicalDeviceInvocationMaskFeaturesHUAWEI.BYTES, VkPhysicalDeviceInvocationMaskFeaturesHUAWEI.BYTES));
         }
 
+        public VkPhysicalDeviceInvocationMaskFeaturesHUAWEI.Ptr at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceInvocationMaskFeaturesHUAWEI> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkPhysicalDeviceInvocationMaskFeaturesHUAWEI value) {
             MemorySegment s = segment.asSlice(index * VkPhysicalDeviceInvocationMaskFeaturesHUAWEI.BYTES, VkPhysicalDeviceInvocationMaskFeaturesHUAWEI.BYTES);
             s.copyFrom(value.segment);

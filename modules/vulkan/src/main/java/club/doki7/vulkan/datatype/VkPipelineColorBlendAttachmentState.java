@@ -83,6 +83,11 @@ public record VkPipelineColorBlendAttachmentState(@NotNull MemorySegment segment
             return new VkPipelineColorBlendAttachmentState(segment.asSlice(index * VkPipelineColorBlendAttachmentState.BYTES, VkPipelineColorBlendAttachmentState.BYTES));
         }
 
+        public VkPipelineColorBlendAttachmentState.Ptr at(long index, @NotNull Consumer<@NotNull VkPipelineColorBlendAttachmentState> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkPipelineColorBlendAttachmentState value) {
             MemorySegment s = segment.asSlice(index * VkPipelineColorBlendAttachmentState.BYTES, VkPipelineColorBlendAttachmentState.BYTES);
             s.copyFrom(value.segment);

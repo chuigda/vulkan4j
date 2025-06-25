@@ -96,6 +96,11 @@ public record XrTriangleMeshCreateInfoFB(@NotNull MemorySegment segment) impleme
             return new XrTriangleMeshCreateInfoFB(segment.asSlice(index * XrTriangleMeshCreateInfoFB.BYTES, XrTriangleMeshCreateInfoFB.BYTES));
         }
 
+        public XrTriangleMeshCreateInfoFB.Ptr at(long index, @NotNull Consumer<@NotNull XrTriangleMeshCreateInfoFB> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull XrTriangleMeshCreateInfoFB value) {
             MemorySegment s = segment.asSlice(index * XrTriangleMeshCreateInfoFB.BYTES, XrTriangleMeshCreateInfoFB.BYTES);
             s.copyFrom(value.segment);

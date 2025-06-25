@@ -27,7 +27,7 @@ import static club.doki7.vulkan.VkConstants.*;
 ///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
 ///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
 ///     uint32_t colorAttachmentCount; // optional // @link substring="colorAttachmentCount" target="#colorAttachmentCount"
-///     VkSampleCountFlags const* pColorAttachmentSamples; // @link substring="VkSampleCountFlags" target="VkSampleCountFlags" @link substring="pColorAttachmentSamples" target="#pColorAttachmentSamples"
+///     VkSampleCountFlags const* pColorAttachmentSamples; // optional // @link substring="VkSampleCountFlags" target="VkSampleCountFlags" @link substring="pColorAttachmentSamples" target="#pColorAttachmentSamples"
 ///     VkSampleCountFlags depthStencilAttachmentSamples; // optional // @link substring="VkSampleCountFlags" target="VkSampleCountFlags" @link substring="depthStencilAttachmentSamples" target="#depthStencilAttachmentSamples"
 /// } VkAttachmentSampleCountInfoAMD;
 /// }
@@ -87,6 +87,11 @@ public record VkAttachmentSampleCountInfoAMD(@NotNull MemorySegment segment) imp
         /// indicate that the returned structure is a view of the original structure.
         public @NotNull VkAttachmentSampleCountInfoAMD at(long index) {
             return new VkAttachmentSampleCountInfoAMD(segment.asSlice(index * VkAttachmentSampleCountInfoAMD.BYTES, VkAttachmentSampleCountInfoAMD.BYTES));
+        }
+
+        public VkAttachmentSampleCountInfoAMD.Ptr at(long index, @NotNull Consumer<@NotNull VkAttachmentSampleCountInfoAMD> consumer) {
+            consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkAttachmentSampleCountInfoAMD value) {

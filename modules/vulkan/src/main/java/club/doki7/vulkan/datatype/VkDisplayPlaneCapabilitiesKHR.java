@@ -84,6 +84,11 @@ public record VkDisplayPlaneCapabilitiesKHR(@NotNull MemorySegment segment) impl
             return new VkDisplayPlaneCapabilitiesKHR(segment.asSlice(index * VkDisplayPlaneCapabilitiesKHR.BYTES, VkDisplayPlaneCapabilitiesKHR.BYTES));
         }
 
+        public VkDisplayPlaneCapabilitiesKHR.Ptr at(long index, @NotNull Consumer<@NotNull VkDisplayPlaneCapabilitiesKHR> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkDisplayPlaneCapabilitiesKHR value) {
             MemorySegment s = segment.asSlice(index * VkDisplayPlaneCapabilitiesKHR.BYTES, VkDisplayPlaneCapabilitiesKHR.BYTES);
             s.copyFrom(value.segment);

@@ -99,6 +99,11 @@ public record VkPhysicalDeviceMeshShaderPropertiesNV(@NotNull MemorySegment segm
             return new VkPhysicalDeviceMeshShaderPropertiesNV(segment.asSlice(index * VkPhysicalDeviceMeshShaderPropertiesNV.BYTES, VkPhysicalDeviceMeshShaderPropertiesNV.BYTES));
         }
 
+        public VkPhysicalDeviceMeshShaderPropertiesNV.Ptr at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceMeshShaderPropertiesNV> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkPhysicalDeviceMeshShaderPropertiesNV value) {
             MemorySegment s = segment.asSlice(index * VkPhysicalDeviceMeshShaderPropertiesNV.BYTES, VkPhysicalDeviceMeshShaderPropertiesNV.BYTES);
             s.copyFrom(value.segment);
@@ -247,6 +252,12 @@ public record VkPhysicalDeviceMeshShaderPropertiesNV(@NotNull MemorySegment segm
         return new IntPtr(maxTaskWorkGroupSizeRaw());
     }
 
+    public VkPhysicalDeviceMeshShaderPropertiesNV maxTaskWorkGroupSize(@NotNull Consumer<IntPtr> consumer) {
+        @Unsigned IntPtr ptr = maxTaskWorkGroupSize();
+        consumer.accept(ptr);
+        return this;
+    }
+
     public VkPhysicalDeviceMeshShaderPropertiesNV maxTaskWorkGroupSize(@Unsigned IntPtr value) {
         MemorySegment s = maxTaskWorkGroupSizeRaw();
         s.copyFrom(value.segment());
@@ -286,6 +297,12 @@ public record VkPhysicalDeviceMeshShaderPropertiesNV(@NotNull MemorySegment segm
 
     public @Unsigned IntPtr maxMeshWorkGroupSize() {
         return new IntPtr(maxMeshWorkGroupSizeRaw());
+    }
+
+    public VkPhysicalDeviceMeshShaderPropertiesNV maxMeshWorkGroupSize(@NotNull Consumer<IntPtr> consumer) {
+        @Unsigned IntPtr ptr = maxMeshWorkGroupSize();
+        consumer.accept(ptr);
+        return this;
     }
 
     public VkPhysicalDeviceMeshShaderPropertiesNV maxMeshWorkGroupSize(@Unsigned IntPtr value) {

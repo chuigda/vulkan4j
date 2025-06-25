@@ -82,6 +82,11 @@ public record STBTT_PackContext(@NotNull MemorySegment segment) implements ISTBT
             return new STBTT_PackContext(segment.asSlice(index * STBTT_PackContext.BYTES, STBTT_PackContext.BYTES));
         }
 
+        public STBTT_PackContext.Ptr at(long index, @NotNull Consumer<@NotNull STBTT_PackContext> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull STBTT_PackContext value) {
             MemorySegment s = segment.asSlice(index * STBTT_PackContext.BYTES, STBTT_PackContext.BYTES);
             s.copyFrom(value.segment);

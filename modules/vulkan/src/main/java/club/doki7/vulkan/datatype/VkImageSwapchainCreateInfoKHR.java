@@ -87,6 +87,11 @@ public record VkImageSwapchainCreateInfoKHR(@NotNull MemorySegment segment) impl
             return new VkImageSwapchainCreateInfoKHR(segment.asSlice(index * VkImageSwapchainCreateInfoKHR.BYTES, VkImageSwapchainCreateInfoKHR.BYTES));
         }
 
+        public VkImageSwapchainCreateInfoKHR.Ptr at(long index, @NotNull Consumer<@NotNull VkImageSwapchainCreateInfoKHR> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkImageSwapchainCreateInfoKHR value) {
             MemorySegment s = segment.asSlice(index * VkImageSwapchainCreateInfoKHR.BYTES, VkImageSwapchainCreateInfoKHR.BYTES);
             s.copyFrom(value.segment);

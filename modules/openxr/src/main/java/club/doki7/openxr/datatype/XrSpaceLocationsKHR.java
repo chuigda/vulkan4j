@@ -92,6 +92,11 @@ public record XrSpaceLocationsKHR(@NotNull MemorySegment segment) implements IXr
             return new XrSpaceLocationsKHR(segment.asSlice(index * XrSpaceLocationsKHR.BYTES, XrSpaceLocationsKHR.BYTES));
         }
 
+        public XrSpaceLocationsKHR.Ptr at(long index, @NotNull Consumer<@NotNull XrSpaceLocationsKHR> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull XrSpaceLocationsKHR value) {
             MemorySegment s = segment.asSlice(index * XrSpaceLocationsKHR.BYTES, XrSpaceLocationsKHR.BYTES);
             s.copyFrom(value.segment);

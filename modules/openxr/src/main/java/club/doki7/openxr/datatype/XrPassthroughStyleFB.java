@@ -92,6 +92,11 @@ public record XrPassthroughStyleFB(@NotNull MemorySegment segment) implements IX
             return new XrPassthroughStyleFB(segment.asSlice(index * XrPassthroughStyleFB.BYTES, XrPassthroughStyleFB.BYTES));
         }
 
+        public XrPassthroughStyleFB.Ptr at(long index, @NotNull Consumer<@NotNull XrPassthroughStyleFB> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull XrPassthroughStyleFB value) {
             MemorySegment s = segment.asSlice(index * XrPassthroughStyleFB.BYTES, XrPassthroughStyleFB.BYTES);
             s.copyFrom(value.segment);

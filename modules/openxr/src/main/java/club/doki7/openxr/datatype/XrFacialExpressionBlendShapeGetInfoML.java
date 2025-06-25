@@ -90,6 +90,11 @@ public record XrFacialExpressionBlendShapeGetInfoML(@NotNull MemorySegment segme
             return new XrFacialExpressionBlendShapeGetInfoML(segment.asSlice(index * XrFacialExpressionBlendShapeGetInfoML.BYTES, XrFacialExpressionBlendShapeGetInfoML.BYTES));
         }
 
+        public XrFacialExpressionBlendShapeGetInfoML.Ptr at(long index, @NotNull Consumer<@NotNull XrFacialExpressionBlendShapeGetInfoML> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull XrFacialExpressionBlendShapeGetInfoML value) {
             MemorySegment s = segment.asSlice(index * XrFacialExpressionBlendShapeGetInfoML.BYTES, XrFacialExpressionBlendShapeGetInfoML.BYTES);
             s.copyFrom(value.segment);

@@ -87,6 +87,11 @@ public record VkImageAlignmentControlCreateInfoMESA(@NotNull MemorySegment segme
             return new VkImageAlignmentControlCreateInfoMESA(segment.asSlice(index * VkImageAlignmentControlCreateInfoMESA.BYTES, VkImageAlignmentControlCreateInfoMESA.BYTES));
         }
 
+        public VkImageAlignmentControlCreateInfoMESA.Ptr at(long index, @NotNull Consumer<@NotNull VkImageAlignmentControlCreateInfoMESA> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkImageAlignmentControlCreateInfoMESA value) {
             MemorySegment s = segment.asSlice(index * VkImageAlignmentControlCreateInfoMESA.BYTES, VkImageAlignmentControlCreateInfoMESA.BYTES);
             s.copyFrom(value.segment);

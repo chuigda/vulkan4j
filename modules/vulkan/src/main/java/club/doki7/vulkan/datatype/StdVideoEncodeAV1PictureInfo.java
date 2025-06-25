@@ -100,6 +100,11 @@ public record StdVideoEncodeAV1PictureInfo(@NotNull MemorySegment segment) imple
             return new StdVideoEncodeAV1PictureInfo(segment.asSlice(index * StdVideoEncodeAV1PictureInfo.BYTES, StdVideoEncodeAV1PictureInfo.BYTES));
         }
 
+        public StdVideoEncodeAV1PictureInfo.Ptr at(long index, @NotNull Consumer<@NotNull StdVideoEncodeAV1PictureInfo> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull StdVideoEncodeAV1PictureInfo value) {
             MemorySegment s = segment.asSlice(index * StdVideoEncodeAV1PictureInfo.BYTES, StdVideoEncodeAV1PictureInfo.BYTES);
             s.copyFrom(value.segment);
@@ -328,6 +333,12 @@ public record StdVideoEncodeAV1PictureInfo(@NotNull MemorySegment segment) imple
         return new BytePtr(ref_order_hintRaw());
     }
 
+    public StdVideoEncodeAV1PictureInfo ref_order_hint(@NotNull Consumer<BytePtr> consumer) {
+        @Unsigned BytePtr ptr = ref_order_hint();
+        consumer.accept(ptr);
+        return this;
+    }
+
     public StdVideoEncodeAV1PictureInfo ref_order_hint(@Unsigned BytePtr value) {
         MemorySegment s = ref_order_hintRaw();
         s.copyFrom(value.segment());
@@ -340,6 +351,12 @@ public record StdVideoEncodeAV1PictureInfo(@NotNull MemorySegment segment) imple
 
     public BytePtr ref_frame_idx() {
         return new BytePtr(ref_frame_idxRaw());
+    }
+
+    public StdVideoEncodeAV1PictureInfo ref_frame_idx(@NotNull Consumer<BytePtr> consumer) {
+        BytePtr ptr = ref_frame_idx();
+        consumer.accept(ptr);
+        return this;
     }
 
     public StdVideoEncodeAV1PictureInfo ref_frame_idx(BytePtr value) {
@@ -355,6 +372,12 @@ public record StdVideoEncodeAV1PictureInfo(@NotNull MemorySegment segment) imple
 
     public @Unsigned IntPtr delta_frame_id_minus_1() {
         return new IntPtr(delta_frame_id_minus_1Raw());
+    }
+
+    public StdVideoEncodeAV1PictureInfo delta_frame_id_minus_1(@NotNull Consumer<IntPtr> consumer) {
+        @Unsigned IntPtr ptr = delta_frame_id_minus_1();
+        consumer.accept(ptr);
+        return this;
     }
 
     public StdVideoEncodeAV1PictureInfo delta_frame_id_minus_1(@Unsigned IntPtr value) {

@@ -92,6 +92,11 @@ public record XrView(@NotNull MemorySegment segment) implements IXrView {
             return new XrView(segment.asSlice(index * XrView.BYTES, XrView.BYTES));
         }
 
+        public XrView.Ptr at(long index, @NotNull Consumer<@NotNull XrView> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull XrView value) {
             MemorySegment s = segment.asSlice(index * XrView.BYTES, XrView.BYTES);
             s.copyFrom(value.segment);

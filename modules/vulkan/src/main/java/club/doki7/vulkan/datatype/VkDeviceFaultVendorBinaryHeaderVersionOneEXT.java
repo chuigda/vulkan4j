@@ -86,6 +86,11 @@ public record VkDeviceFaultVendorBinaryHeaderVersionOneEXT(@NotNull MemorySegmen
             return new VkDeviceFaultVendorBinaryHeaderVersionOneEXT(segment.asSlice(index * VkDeviceFaultVendorBinaryHeaderVersionOneEXT.BYTES, VkDeviceFaultVendorBinaryHeaderVersionOneEXT.BYTES));
         }
 
+        public VkDeviceFaultVendorBinaryHeaderVersionOneEXT.Ptr at(long index, @NotNull Consumer<@NotNull VkDeviceFaultVendorBinaryHeaderVersionOneEXT> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkDeviceFaultVendorBinaryHeaderVersionOneEXT value) {
             MemorySegment s = segment.asSlice(index * VkDeviceFaultVendorBinaryHeaderVersionOneEXT.BYTES, VkDeviceFaultVendorBinaryHeaderVersionOneEXT.BYTES);
             s.copyFrom(value.segment);
@@ -226,6 +231,12 @@ public record VkDeviceFaultVendorBinaryHeaderVersionOneEXT(@NotNull MemorySegmen
 
     public @Unsigned BytePtr pipelineCacheUUID() {
         return new BytePtr(pipelineCacheUUIDRaw());
+    }
+
+    public VkDeviceFaultVendorBinaryHeaderVersionOneEXT pipelineCacheUUID(@NotNull Consumer<BytePtr> consumer) {
+        @Unsigned BytePtr ptr = pipelineCacheUUID();
+        consumer.accept(ptr);
+        return this;
     }
 
     public VkDeviceFaultVendorBinaryHeaderVersionOneEXT pipelineCacheUUID(@Unsigned BytePtr value) {

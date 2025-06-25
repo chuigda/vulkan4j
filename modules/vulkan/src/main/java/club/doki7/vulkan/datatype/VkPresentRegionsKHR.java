@@ -27,7 +27,7 @@ import static club.doki7.vulkan.VkConstants.*;
 ///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
 ///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
 ///     uint32_t swapchainCount; // @link substring="swapchainCount" target="#swapchainCount"
-///     VkPresentRegionKHR const* pRegions; // optional // @link substring="VkPresentRegionKHR" target="VkPresentRegionKHR" @link substring="pRegions" target="#pRegions"
+///     VkPresentRegionKHR const* pRegions; // @link substring="VkPresentRegionKHR" target="VkPresentRegionKHR" @link substring="pRegions" target="#pRegions"
 /// } VkPresentRegionsKHR;
 /// }
 ///
@@ -86,6 +86,11 @@ public record VkPresentRegionsKHR(@NotNull MemorySegment segment) implements IVk
         /// indicate that the returned structure is a view of the original structure.
         public @NotNull VkPresentRegionsKHR at(long index) {
             return new VkPresentRegionsKHR(segment.asSlice(index * VkPresentRegionsKHR.BYTES, VkPresentRegionsKHR.BYTES));
+        }
+
+        public VkPresentRegionsKHR.Ptr at(long index, @NotNull Consumer<@NotNull VkPresentRegionsKHR> consumer) {
+            consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkPresentRegionsKHR value) {

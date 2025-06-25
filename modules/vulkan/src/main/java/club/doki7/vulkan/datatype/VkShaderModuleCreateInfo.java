@@ -89,6 +89,11 @@ public record VkShaderModuleCreateInfo(@NotNull MemorySegment segment) implement
             return new VkShaderModuleCreateInfo(segment.asSlice(index * VkShaderModuleCreateInfo.BYTES, VkShaderModuleCreateInfo.BYTES));
         }
 
+        public VkShaderModuleCreateInfo.Ptr at(long index, @NotNull Consumer<@NotNull VkShaderModuleCreateInfo> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkShaderModuleCreateInfo value) {
             MemorySegment s = segment.asSlice(index * VkShaderModuleCreateInfo.BYTES, VkShaderModuleCreateInfo.BYTES);
             s.copyFrom(value.segment);

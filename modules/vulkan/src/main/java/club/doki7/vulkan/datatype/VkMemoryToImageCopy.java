@@ -92,6 +92,11 @@ public record VkMemoryToImageCopy(@NotNull MemorySegment segment) implements IVk
             return new VkMemoryToImageCopy(segment.asSlice(index * VkMemoryToImageCopy.BYTES, VkMemoryToImageCopy.BYTES));
         }
 
+        public VkMemoryToImageCopy.Ptr at(long index, @NotNull Consumer<@NotNull VkMemoryToImageCopy> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkMemoryToImageCopy value) {
             MemorySegment s = segment.asSlice(index * VkMemoryToImageCopy.BYTES, VkMemoryToImageCopy.BYTES);
             s.copyFrom(value.segment);

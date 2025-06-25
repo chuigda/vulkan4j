@@ -89,6 +89,11 @@ public record VkExecutionGraphPipelineScratchSizeAMDX(@NotNull MemorySegment seg
             return new VkExecutionGraphPipelineScratchSizeAMDX(segment.asSlice(index * VkExecutionGraphPipelineScratchSizeAMDX.BYTES, VkExecutionGraphPipelineScratchSizeAMDX.BYTES));
         }
 
+        public VkExecutionGraphPipelineScratchSizeAMDX.Ptr at(long index, @NotNull Consumer<@NotNull VkExecutionGraphPipelineScratchSizeAMDX> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkExecutionGraphPipelineScratchSizeAMDX value) {
             MemorySegment s = segment.asSlice(index * VkExecutionGraphPipelineScratchSizeAMDX.BYTES, VkExecutionGraphPipelineScratchSizeAMDX.BYTES);
             s.copyFrom(value.segment);

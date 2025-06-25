@@ -81,6 +81,11 @@ public record VkAabbPositionsKHR(@NotNull MemorySegment segment) implements IVkA
             return new VkAabbPositionsKHR(segment.asSlice(index * VkAabbPositionsKHR.BYTES, VkAabbPositionsKHR.BYTES));
         }
 
+        public VkAabbPositionsKHR.Ptr at(long index, @NotNull Consumer<@NotNull VkAabbPositionsKHR> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkAabbPositionsKHR value) {
             MemorySegment s = segment.asSlice(index * VkAabbPositionsKHR.BYTES, VkAabbPositionsKHR.BYTES);
             s.copyFrom(value.segment);

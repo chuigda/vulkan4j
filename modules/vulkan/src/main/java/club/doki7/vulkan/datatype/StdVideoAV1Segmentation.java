@@ -75,6 +75,11 @@ public record StdVideoAV1Segmentation(@NotNull MemorySegment segment) implements
             return new StdVideoAV1Segmentation(segment.asSlice(index * StdVideoAV1Segmentation.BYTES, StdVideoAV1Segmentation.BYTES));
         }
 
+        public StdVideoAV1Segmentation.Ptr at(long index, @NotNull Consumer<@NotNull StdVideoAV1Segmentation> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull StdVideoAV1Segmentation value) {
             MemorySegment s = segment.asSlice(index * StdVideoAV1Segmentation.BYTES, StdVideoAV1Segmentation.BYTES);
             s.copyFrom(value.segment);
@@ -172,6 +177,12 @@ public record StdVideoAV1Segmentation(@NotNull MemorySegment segment) implements
         return new BytePtr(FeatureEnabledRaw());
     }
 
+    public StdVideoAV1Segmentation FeatureEnabled(@NotNull Consumer<BytePtr> consumer) {
+        @Unsigned BytePtr ptr = FeatureEnabled();
+        consumer.accept(ptr);
+        return this;
+    }
+
     public StdVideoAV1Segmentation FeatureEnabled(@Unsigned BytePtr value) {
         MemorySegment s = FeatureEnabledRaw();
         s.copyFrom(value.segment());
@@ -184,6 +195,12 @@ public record StdVideoAV1Segmentation(@NotNull MemorySegment segment) implements
 
     public ShortPtr FeatureData() {
         return new ShortPtr(FeatureDataRaw());
+    }
+
+    public StdVideoAV1Segmentation FeatureData(@NotNull Consumer<ShortPtr> consumer) {
+        ShortPtr ptr = FeatureData();
+        consumer.accept(ptr);
+        return this;
     }
 
     public StdVideoAV1Segmentation FeatureData(ShortPtr value) {

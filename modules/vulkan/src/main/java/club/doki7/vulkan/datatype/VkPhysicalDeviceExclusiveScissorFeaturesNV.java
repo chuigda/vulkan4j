@@ -87,6 +87,11 @@ public record VkPhysicalDeviceExclusiveScissorFeaturesNV(@NotNull MemorySegment 
             return new VkPhysicalDeviceExclusiveScissorFeaturesNV(segment.asSlice(index * VkPhysicalDeviceExclusiveScissorFeaturesNV.BYTES, VkPhysicalDeviceExclusiveScissorFeaturesNV.BYTES));
         }
 
+        public VkPhysicalDeviceExclusiveScissorFeaturesNV.Ptr at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceExclusiveScissorFeaturesNV> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkPhysicalDeviceExclusiveScissorFeaturesNV value) {
             MemorySegment s = segment.asSlice(index * VkPhysicalDeviceExclusiveScissorFeaturesNV.BYTES, VkPhysicalDeviceExclusiveScissorFeaturesNV.BYTES);
             s.copyFrom(value.segment);

@@ -87,6 +87,11 @@ public record VkFenceCreateInfo(@NotNull MemorySegment segment) implements IVkFe
             return new VkFenceCreateInfo(segment.asSlice(index * VkFenceCreateInfo.BYTES, VkFenceCreateInfo.BYTES));
         }
 
+        public VkFenceCreateInfo.Ptr at(long index, @NotNull Consumer<@NotNull VkFenceCreateInfo> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkFenceCreateInfo value) {
             MemorySegment s = segment.asSlice(index * VkFenceCreateInfo.BYTES, VkFenceCreateInfo.BYTES);
             s.copyFrom(value.segment);

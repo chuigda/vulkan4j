@@ -88,6 +88,11 @@ public record VkCommandBufferInheritanceRenderPassTransformInfoQCOM(@NotNull Mem
             return new VkCommandBufferInheritanceRenderPassTransformInfoQCOM(segment.asSlice(index * VkCommandBufferInheritanceRenderPassTransformInfoQCOM.BYTES, VkCommandBufferInheritanceRenderPassTransformInfoQCOM.BYTES));
         }
 
+        public VkCommandBufferInheritanceRenderPassTransformInfoQCOM.Ptr at(long index, @NotNull Consumer<@NotNull VkCommandBufferInheritanceRenderPassTransformInfoQCOM> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkCommandBufferInheritanceRenderPassTransformInfoQCOM value) {
             MemorySegment s = segment.asSlice(index * VkCommandBufferInheritanceRenderPassTransformInfoQCOM.BYTES, VkCommandBufferInheritanceRenderPassTransformInfoQCOM.BYTES);
             s.copyFrom(value.segment);

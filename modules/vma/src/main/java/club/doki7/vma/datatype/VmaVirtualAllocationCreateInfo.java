@@ -99,6 +99,11 @@ public record VmaVirtualAllocationCreateInfo(@NotNull MemorySegment segment) imp
             return new VmaVirtualAllocationCreateInfo(segment.asSlice(index * VmaVirtualAllocationCreateInfo.BYTES, VmaVirtualAllocationCreateInfo.BYTES));
         }
 
+        public VmaVirtualAllocationCreateInfo.Ptr at(long index, @NotNull Consumer<@NotNull VmaVirtualAllocationCreateInfo> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VmaVirtualAllocationCreateInfo value) {
             MemorySegment s = segment.asSlice(index * VmaVirtualAllocationCreateInfo.BYTES, VmaVirtualAllocationCreateInfo.BYTES);
             s.copyFrom(value.segment);

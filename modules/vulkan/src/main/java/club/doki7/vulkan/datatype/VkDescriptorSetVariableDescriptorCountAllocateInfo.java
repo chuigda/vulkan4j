@@ -27,7 +27,7 @@ import static club.doki7.vulkan.VkConstants.*;
 ///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
 ///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
 ///     uint32_t descriptorSetCount; // optional // @link substring="descriptorSetCount" target="#descriptorSetCount"
-///     uint32_t const* pDescriptorCounts; // @link substring="pDescriptorCounts" target="#pDescriptorCounts"
+///     uint32_t const* pDescriptorCounts; // optional // @link substring="pDescriptorCounts" target="#pDescriptorCounts"
 /// } VkDescriptorSetVariableDescriptorCountAllocateInfo;
 /// }
 ///
@@ -86,6 +86,11 @@ public record VkDescriptorSetVariableDescriptorCountAllocateInfo(@NotNull Memory
         /// indicate that the returned structure is a view of the original structure.
         public @NotNull VkDescriptorSetVariableDescriptorCountAllocateInfo at(long index) {
             return new VkDescriptorSetVariableDescriptorCountAllocateInfo(segment.asSlice(index * VkDescriptorSetVariableDescriptorCountAllocateInfo.BYTES, VkDescriptorSetVariableDescriptorCountAllocateInfo.BYTES));
+        }
+
+        public VkDescriptorSetVariableDescriptorCountAllocateInfo.Ptr at(long index, @NotNull Consumer<@NotNull VkDescriptorSetVariableDescriptorCountAllocateInfo> consumer) {
+            consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkDescriptorSetVariableDescriptorCountAllocateInfo value) {

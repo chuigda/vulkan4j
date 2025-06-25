@@ -94,6 +94,11 @@ public record XrSpatialCapabilityConfigurationAprilTagEXT(@NotNull MemorySegment
             return new XrSpatialCapabilityConfigurationAprilTagEXT(segment.asSlice(index * XrSpatialCapabilityConfigurationAprilTagEXT.BYTES, XrSpatialCapabilityConfigurationAprilTagEXT.BYTES));
         }
 
+        public XrSpatialCapabilityConfigurationAprilTagEXT.Ptr at(long index, @NotNull Consumer<@NotNull XrSpatialCapabilityConfigurationAprilTagEXT> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull XrSpatialCapabilityConfigurationAprilTagEXT value) {
             MemorySegment s = segment.asSlice(index * XrSpatialCapabilityConfigurationAprilTagEXT.BYTES, XrSpatialCapabilityConfigurationAprilTagEXT.BYTES);
             s.copyFrom(value.segment);

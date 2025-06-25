@@ -88,6 +88,11 @@ public record VkDebugMarkerMarkerInfoEXT(@NotNull MemorySegment segment) impleme
             return new VkDebugMarkerMarkerInfoEXT(segment.asSlice(index * VkDebugMarkerMarkerInfoEXT.BYTES, VkDebugMarkerMarkerInfoEXT.BYTES));
         }
 
+        public VkDebugMarkerMarkerInfoEXT.Ptr at(long index, @NotNull Consumer<@NotNull VkDebugMarkerMarkerInfoEXT> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkDebugMarkerMarkerInfoEXT value) {
             MemorySegment s = segment.asSlice(index * VkDebugMarkerMarkerInfoEXT.BYTES, VkDebugMarkerMarkerInfoEXT.BYTES);
             s.copyFrom(value.segment);
@@ -242,6 +247,12 @@ public record VkDebugMarkerMarkerInfoEXT(@NotNull MemorySegment segment) impleme
 
     public FloatPtr color() {
         return new FloatPtr(colorRaw());
+    }
+
+    public VkDebugMarkerMarkerInfoEXT color(@NotNull Consumer<FloatPtr> consumer) {
+        FloatPtr ptr = color();
+        consumer.accept(ptr);
+        return this;
     }
 
     public VkDebugMarkerMarkerInfoEXT color(FloatPtr value) {

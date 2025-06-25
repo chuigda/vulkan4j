@@ -91,6 +91,11 @@ public record XrSystemEyeGazeInteractionPropertiesEXT(@NotNull MemorySegment seg
             return new XrSystemEyeGazeInteractionPropertiesEXT(segment.asSlice(index * XrSystemEyeGazeInteractionPropertiesEXT.BYTES, XrSystemEyeGazeInteractionPropertiesEXT.BYTES));
         }
 
+        public XrSystemEyeGazeInteractionPropertiesEXT.Ptr at(long index, @NotNull Consumer<@NotNull XrSystemEyeGazeInteractionPropertiesEXT> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull XrSystemEyeGazeInteractionPropertiesEXT value) {
             MemorySegment s = segment.asSlice(index * XrSystemEyeGazeInteractionPropertiesEXT.BYTES, XrSystemEyeGazeInteractionPropertiesEXT.BYTES);
             s.copyFrom(value.segment);

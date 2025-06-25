@@ -92,6 +92,11 @@ public record XrSpatialComponentBounded3DListEXT(@NotNull MemorySegment segment)
             return new XrSpatialComponentBounded3DListEXT(segment.asSlice(index * XrSpatialComponentBounded3DListEXT.BYTES, XrSpatialComponentBounded3DListEXT.BYTES));
         }
 
+        public XrSpatialComponentBounded3DListEXT.Ptr at(long index, @NotNull Consumer<@NotNull XrSpatialComponentBounded3DListEXT> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull XrSpatialComponentBounded3DListEXT value) {
             MemorySegment s = segment.asSlice(index * XrSpatialComponentBounded3DListEXT.BYTES, XrSpatialComponentBounded3DListEXT.BYTES);
             s.copyFrom(value.segment);

@@ -87,6 +87,11 @@ public record VkPhysicalDeviceShaderFloatControls2Features(@NotNull MemorySegmen
             return new VkPhysicalDeviceShaderFloatControls2Features(segment.asSlice(index * VkPhysicalDeviceShaderFloatControls2Features.BYTES, VkPhysicalDeviceShaderFloatControls2Features.BYTES));
         }
 
+        public VkPhysicalDeviceShaderFloatControls2Features.Ptr at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceShaderFloatControls2Features> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkPhysicalDeviceShaderFloatControls2Features value) {
             MemorySegment s = segment.asSlice(index * VkPhysicalDeviceShaderFloatControls2Features.BYTES, VkPhysicalDeviceShaderFloatControls2Features.BYTES);
             s.copyFrom(value.segment);

@@ -87,6 +87,11 @@ public record VkPhysicalDeviceExternalImageFormatInfo(@NotNull MemorySegment seg
             return new VkPhysicalDeviceExternalImageFormatInfo(segment.asSlice(index * VkPhysicalDeviceExternalImageFormatInfo.BYTES, VkPhysicalDeviceExternalImageFormatInfo.BYTES));
         }
 
+        public VkPhysicalDeviceExternalImageFormatInfo.Ptr at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceExternalImageFormatInfo> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkPhysicalDeviceExternalImageFormatInfo value) {
             MemorySegment s = segment.asSlice(index * VkPhysicalDeviceExternalImageFormatInfo.BYTES, VkPhysicalDeviceExternalImageFormatInfo.BYTES);
             s.copyFrom(value.segment);

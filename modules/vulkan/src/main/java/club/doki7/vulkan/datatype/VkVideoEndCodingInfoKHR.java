@@ -87,6 +87,11 @@ public record VkVideoEndCodingInfoKHR(@NotNull MemorySegment segment) implements
             return new VkVideoEndCodingInfoKHR(segment.asSlice(index * VkVideoEndCodingInfoKHR.BYTES, VkVideoEndCodingInfoKHR.BYTES));
         }
 
+        public VkVideoEndCodingInfoKHR.Ptr at(long index, @NotNull Consumer<@NotNull VkVideoEndCodingInfoKHR> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkVideoEndCodingInfoKHR value) {
             MemorySegment s = segment.asSlice(index * VkVideoEndCodingInfoKHR.BYTES, VkVideoEndCodingInfoKHR.BYTES);
             s.copyFrom(value.segment);

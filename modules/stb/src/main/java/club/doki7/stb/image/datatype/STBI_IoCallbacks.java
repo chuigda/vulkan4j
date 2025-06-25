@@ -73,6 +73,11 @@ public record STBI_IoCallbacks(@NotNull MemorySegment segment) implements ISTBI_
             return new STBI_IoCallbacks(segment.asSlice(index * STBI_IoCallbacks.BYTES, STBI_IoCallbacks.BYTES));
         }
 
+        public STBI_IoCallbacks.Ptr at(long index, @NotNull Consumer<@NotNull STBI_IoCallbacks> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull STBI_IoCallbacks value) {
             MemorySegment s = segment.asSlice(index * STBI_IoCallbacks.BYTES, STBI_IoCallbacks.BYTES);
             s.copyFrom(value.segment);

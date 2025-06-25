@@ -88,6 +88,11 @@ public record VkPhysicalDeviceShaderCoreProperties2AMD(@NotNull MemorySegment se
             return new VkPhysicalDeviceShaderCoreProperties2AMD(segment.asSlice(index * VkPhysicalDeviceShaderCoreProperties2AMD.BYTES, VkPhysicalDeviceShaderCoreProperties2AMD.BYTES));
         }
 
+        public VkPhysicalDeviceShaderCoreProperties2AMD.Ptr at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceShaderCoreProperties2AMD> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkPhysicalDeviceShaderCoreProperties2AMD value) {
             MemorySegment s = segment.asSlice(index * VkPhysicalDeviceShaderCoreProperties2AMD.BYTES, VkPhysicalDeviceShaderCoreProperties2AMD.BYTES);
             s.copyFrom(value.segment);

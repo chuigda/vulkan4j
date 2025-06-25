@@ -32,7 +32,7 @@ import static club.doki7.vulkan.VkConstants.*;
 ///     uint32_t descriptorSetCount; // @link substring="descriptorSetCount" target="#descriptorSetCount"
 ///     VkDescriptorSet const* pDescriptorSets; // @link substring="VkDescriptorSet" target="VkDescriptorSet" @link substring="pDescriptorSets" target="#pDescriptorSets"
 ///     uint32_t dynamicOffsetCount; // optional // @link substring="dynamicOffsetCount" target="#dynamicOffsetCount"
-///     uint32_t const* pDynamicOffsets; // @link substring="pDynamicOffsets" target="#pDynamicOffsets"
+///     uint32_t const* pDynamicOffsets; // optional // @link substring="pDynamicOffsets" target="#pDynamicOffsets"
 /// } VkBindDescriptorSetsInfo;
 /// }
 ///
@@ -91,6 +91,11 @@ public record VkBindDescriptorSetsInfo(@NotNull MemorySegment segment) implement
         /// indicate that the returned structure is a view of the original structure.
         public @NotNull VkBindDescriptorSetsInfo at(long index) {
             return new VkBindDescriptorSetsInfo(segment.asSlice(index * VkBindDescriptorSetsInfo.BYTES, VkBindDescriptorSetsInfo.BYTES));
+        }
+
+        public VkBindDescriptorSetsInfo.Ptr at(long index, @NotNull Consumer<@NotNull VkBindDescriptorSetsInfo> consumer) {
+            consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkBindDescriptorSetsInfo value) {

@@ -91,6 +91,11 @@ public record XrEyeGazeSampleTimeEXT(@NotNull MemorySegment segment) implements 
             return new XrEyeGazeSampleTimeEXT(segment.asSlice(index * XrEyeGazeSampleTimeEXT.BYTES, XrEyeGazeSampleTimeEXT.BYTES));
         }
 
+        public XrEyeGazeSampleTimeEXT.Ptr at(long index, @NotNull Consumer<@NotNull XrEyeGazeSampleTimeEXT> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull XrEyeGazeSampleTimeEXT value) {
             MemorySegment s = segment.asSlice(index * XrEyeGazeSampleTimeEXT.BYTES, XrEyeGazeSampleTimeEXT.BYTES);
             s.copyFrom(value.segment);

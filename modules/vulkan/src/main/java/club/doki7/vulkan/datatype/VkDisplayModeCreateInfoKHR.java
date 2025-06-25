@@ -88,6 +88,11 @@ public record VkDisplayModeCreateInfoKHR(@NotNull MemorySegment segment) impleme
             return new VkDisplayModeCreateInfoKHR(segment.asSlice(index * VkDisplayModeCreateInfoKHR.BYTES, VkDisplayModeCreateInfoKHR.BYTES));
         }
 
+        public VkDisplayModeCreateInfoKHR.Ptr at(long index, @NotNull Consumer<@NotNull VkDisplayModeCreateInfoKHR> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkDisplayModeCreateInfoKHR value) {
             MemorySegment s = segment.asSlice(index * VkDisplayModeCreateInfoKHR.BYTES, VkDisplayModeCreateInfoKHR.BYTES);
             s.copyFrom(value.segment);

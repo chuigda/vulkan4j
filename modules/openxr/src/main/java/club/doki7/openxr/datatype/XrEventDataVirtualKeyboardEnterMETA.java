@@ -91,6 +91,11 @@ public record XrEventDataVirtualKeyboardEnterMETA(@NotNull MemorySegment segment
             return new XrEventDataVirtualKeyboardEnterMETA(segment.asSlice(index * XrEventDataVirtualKeyboardEnterMETA.BYTES, XrEventDataVirtualKeyboardEnterMETA.BYTES));
         }
 
+        public XrEventDataVirtualKeyboardEnterMETA.Ptr at(long index, @NotNull Consumer<@NotNull XrEventDataVirtualKeyboardEnterMETA> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull XrEventDataVirtualKeyboardEnterMETA value) {
             MemorySegment s = segment.asSlice(index * XrEventDataVirtualKeyboardEnterMETA.BYTES, XrEventDataVirtualKeyboardEnterMETA.BYTES);
             s.copyFrom(value.segment);

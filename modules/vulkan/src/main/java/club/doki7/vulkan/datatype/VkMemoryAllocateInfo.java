@@ -88,6 +88,11 @@ public record VkMemoryAllocateInfo(@NotNull MemorySegment segment) implements IV
             return new VkMemoryAllocateInfo(segment.asSlice(index * VkMemoryAllocateInfo.BYTES, VkMemoryAllocateInfo.BYTES));
         }
 
+        public VkMemoryAllocateInfo.Ptr at(long index, @NotNull Consumer<@NotNull VkMemoryAllocateInfo> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkMemoryAllocateInfo value) {
             MemorySegment s = segment.asSlice(index * VkMemoryAllocateInfo.BYTES, VkMemoryAllocateInfo.BYTES);
             s.copyFrom(value.segment);

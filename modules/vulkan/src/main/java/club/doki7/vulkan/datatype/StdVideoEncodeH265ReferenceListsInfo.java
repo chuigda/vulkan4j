@@ -80,6 +80,11 @@ public record StdVideoEncodeH265ReferenceListsInfo(@NotNull MemorySegment segmen
             return new StdVideoEncodeH265ReferenceListsInfo(segment.asSlice(index * StdVideoEncodeH265ReferenceListsInfo.BYTES, StdVideoEncodeH265ReferenceListsInfo.BYTES));
         }
 
+        public StdVideoEncodeH265ReferenceListsInfo.Ptr at(long index, @NotNull Consumer<@NotNull StdVideoEncodeH265ReferenceListsInfo> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull StdVideoEncodeH265ReferenceListsInfo value) {
             MemorySegment s = segment.asSlice(index * StdVideoEncodeH265ReferenceListsInfo.BYTES, StdVideoEncodeH265ReferenceListsInfo.BYTES);
             s.copyFrom(value.segment);
@@ -209,6 +214,12 @@ public record StdVideoEncodeH265ReferenceListsInfo(@NotNull MemorySegment segmen
         return new BytePtr(RefPicList0Raw());
     }
 
+    public StdVideoEncodeH265ReferenceListsInfo RefPicList0(@NotNull Consumer<BytePtr> consumer) {
+        @Unsigned BytePtr ptr = RefPicList0();
+        consumer.accept(ptr);
+        return this;
+    }
+
     public StdVideoEncodeH265ReferenceListsInfo RefPicList0(@Unsigned BytePtr value) {
         MemorySegment s = RefPicList0Raw();
         s.copyFrom(value.segment());
@@ -221,6 +232,12 @@ public record StdVideoEncodeH265ReferenceListsInfo(@NotNull MemorySegment segmen
 
     public @Unsigned BytePtr RefPicList1() {
         return new BytePtr(RefPicList1Raw());
+    }
+
+    public StdVideoEncodeH265ReferenceListsInfo RefPicList1(@NotNull Consumer<BytePtr> consumer) {
+        @Unsigned BytePtr ptr = RefPicList1();
+        consumer.accept(ptr);
+        return this;
     }
 
     public StdVideoEncodeH265ReferenceListsInfo RefPicList1(@Unsigned BytePtr value) {
@@ -237,6 +254,12 @@ public record StdVideoEncodeH265ReferenceListsInfo(@NotNull MemorySegment segmen
         return new BytePtr(list_entry_l0Raw());
     }
 
+    public StdVideoEncodeH265ReferenceListsInfo list_entry_l0(@NotNull Consumer<BytePtr> consumer) {
+        @Unsigned BytePtr ptr = list_entry_l0();
+        consumer.accept(ptr);
+        return this;
+    }
+
     public StdVideoEncodeH265ReferenceListsInfo list_entry_l0(@Unsigned BytePtr value) {
         MemorySegment s = list_entry_l0Raw();
         s.copyFrom(value.segment());
@@ -249,6 +272,12 @@ public record StdVideoEncodeH265ReferenceListsInfo(@NotNull MemorySegment segmen
 
     public @Unsigned BytePtr list_entry_l1() {
         return new BytePtr(list_entry_l1Raw());
+    }
+
+    public StdVideoEncodeH265ReferenceListsInfo list_entry_l1(@NotNull Consumer<BytePtr> consumer) {
+        @Unsigned BytePtr ptr = list_entry_l1();
+        consumer.accept(ptr);
+        return this;
     }
 
     public StdVideoEncodeH265ReferenceListsInfo list_entry_l1(@Unsigned BytePtr value) {

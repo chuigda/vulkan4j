@@ -33,7 +33,7 @@ import static club.doki7.vulkan.VkConstants.*;
 ///     VkAccelerationStructureKHR dstAccelerationStructure; // optional // @link substring="VkAccelerationStructureKHR" target="VkAccelerationStructureKHR" @link substring="dstAccelerationStructure" target="#dstAccelerationStructure"
 ///     uint32_t geometryCount; // optional // @link substring="geometryCount" target="#geometryCount"
 ///     VkAccelerationStructureGeometryKHR const* pGeometries; // optional // @link substring="VkAccelerationStructureGeometryKHR" target="VkAccelerationStructureGeometryKHR" @link substring="pGeometries" target="#pGeometries"
-///     VkAccelerationStructureGeometryKHR const* const* ppGeometries; // @link substring="VkAccelerationStructureGeometryKHR" target="VkAccelerationStructureGeometryKHR" @link substring="ppGeometries" target="#ppGeometries"
+///     VkAccelerationStructureGeometryKHR const* const* ppGeometries; // optional // @link substring="VkAccelerationStructureGeometryKHR" target="VkAccelerationStructureGeometryKHR" @link substring="ppGeometries" target="#ppGeometries"
 ///     VkDeviceOrHostAddressKHR scratchData; // @link substring="VkDeviceOrHostAddressKHR" target="VkDeviceOrHostAddressKHR" @link substring="scratchData" target="#scratchData"
 /// } VkAccelerationStructureBuildGeometryInfoKHR;
 /// }
@@ -93,6 +93,11 @@ public record VkAccelerationStructureBuildGeometryInfoKHR(@NotNull MemorySegment
         /// indicate that the returned structure is a view of the original structure.
         public @NotNull VkAccelerationStructureBuildGeometryInfoKHR at(long index) {
             return new VkAccelerationStructureBuildGeometryInfoKHR(segment.asSlice(index * VkAccelerationStructureBuildGeometryInfoKHR.BYTES, VkAccelerationStructureBuildGeometryInfoKHR.BYTES));
+        }
+
+        public VkAccelerationStructureBuildGeometryInfoKHR.Ptr at(long index, @NotNull Consumer<@NotNull VkAccelerationStructureBuildGeometryInfoKHR> consumer) {
+            consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkAccelerationStructureBuildGeometryInfoKHR value) {

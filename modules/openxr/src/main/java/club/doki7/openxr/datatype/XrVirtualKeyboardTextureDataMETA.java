@@ -95,6 +95,11 @@ public record XrVirtualKeyboardTextureDataMETA(@NotNull MemorySegment segment) i
             return new XrVirtualKeyboardTextureDataMETA(segment.asSlice(index * XrVirtualKeyboardTextureDataMETA.BYTES, XrVirtualKeyboardTextureDataMETA.BYTES));
         }
 
+        public XrVirtualKeyboardTextureDataMETA.Ptr at(long index, @NotNull Consumer<@NotNull XrVirtualKeyboardTextureDataMETA> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull XrVirtualKeyboardTextureDataMETA value) {
             MemorySegment s = segment.asSlice(index * XrVirtualKeyboardTextureDataMETA.BYTES, XrVirtualKeyboardTextureDataMETA.BYTES);
             s.copyFrom(value.segment);

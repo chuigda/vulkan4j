@@ -91,6 +91,11 @@ public record XrKeyboardSpaceCreateInfoFB(@NotNull MemorySegment segment) implem
             return new XrKeyboardSpaceCreateInfoFB(segment.asSlice(index * XrKeyboardSpaceCreateInfoFB.BYTES, XrKeyboardSpaceCreateInfoFB.BYTES));
         }
 
+        public XrKeyboardSpaceCreateInfoFB.Ptr at(long index, @NotNull Consumer<@NotNull XrKeyboardSpaceCreateInfoFB> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull XrKeyboardSpaceCreateInfoFB value) {
             MemorySegment s = segment.asSlice(index * XrKeyboardSpaceCreateInfoFB.BYTES, XrKeyboardSpaceCreateInfoFB.BYTES);
             s.copyFrom(value.segment);

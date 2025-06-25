@@ -76,6 +76,11 @@ public record VkSetStateFlagsIndirectCommandNV(@NotNull MemorySegment segment) i
             return new VkSetStateFlagsIndirectCommandNV(segment.asSlice(index * VkSetStateFlagsIndirectCommandNV.BYTES, VkSetStateFlagsIndirectCommandNV.BYTES));
         }
 
+        public VkSetStateFlagsIndirectCommandNV.Ptr at(long index, @NotNull Consumer<@NotNull VkSetStateFlagsIndirectCommandNV> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkSetStateFlagsIndirectCommandNV value) {
             MemorySegment s = segment.asSlice(index * VkSetStateFlagsIndirectCommandNV.BYTES, VkSetStateFlagsIndirectCommandNV.BYTES);
             s.copyFrom(value.segment);

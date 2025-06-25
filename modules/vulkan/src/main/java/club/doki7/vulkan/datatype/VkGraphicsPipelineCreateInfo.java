@@ -103,6 +103,11 @@ public record VkGraphicsPipelineCreateInfo(@NotNull MemorySegment segment) imple
             return new VkGraphicsPipelineCreateInfo(segment.asSlice(index * VkGraphicsPipelineCreateInfo.BYTES, VkGraphicsPipelineCreateInfo.BYTES));
         }
 
+        public VkGraphicsPipelineCreateInfo.Ptr at(long index, @NotNull Consumer<@NotNull VkGraphicsPipelineCreateInfo> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkGraphicsPipelineCreateInfo value) {
             MemorySegment s = segment.asSlice(index * VkGraphicsPipelineCreateInfo.BYTES, VkGraphicsPipelineCreateInfo.BYTES);
             s.copyFrom(value.segment);

@@ -89,6 +89,11 @@ public record VkAntiLagDataAMD(@NotNull MemorySegment segment) implements IVkAnt
             return new VkAntiLagDataAMD(segment.asSlice(index * VkAntiLagDataAMD.BYTES, VkAntiLagDataAMD.BYTES));
         }
 
+        public VkAntiLagDataAMD.Ptr at(long index, @NotNull Consumer<@NotNull VkAntiLagDataAMD> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkAntiLagDataAMD value) {
             MemorySegment s = segment.asSlice(index * VkAntiLagDataAMD.BYTES, VkAntiLagDataAMD.BYTES);
             s.copyFrom(value.segment);

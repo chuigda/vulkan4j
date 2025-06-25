@@ -81,6 +81,11 @@ public record XrLocalizationMapQueryInfoBaseHeaderML(@NotNull MemorySegment segm
             return new XrLocalizationMapQueryInfoBaseHeaderML(segment.asSlice(index * XrLocalizationMapQueryInfoBaseHeaderML.BYTES, XrLocalizationMapQueryInfoBaseHeaderML.BYTES));
         }
 
+        public XrLocalizationMapQueryInfoBaseHeaderML.Ptr at(long index, @NotNull Consumer<@NotNull XrLocalizationMapQueryInfoBaseHeaderML> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull XrLocalizationMapQueryInfoBaseHeaderML value) {
             MemorySegment s = segment.asSlice(index * XrLocalizationMapQueryInfoBaseHeaderML.BYTES, XrLocalizationMapQueryInfoBaseHeaderML.BYTES);
             s.copyFrom(value.segment);

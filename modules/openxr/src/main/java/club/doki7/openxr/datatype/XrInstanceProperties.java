@@ -92,6 +92,11 @@ public record XrInstanceProperties(@NotNull MemorySegment segment) implements IX
             return new XrInstanceProperties(segment.asSlice(index * XrInstanceProperties.BYTES, XrInstanceProperties.BYTES));
         }
 
+        public XrInstanceProperties.Ptr at(long index, @NotNull Consumer<@NotNull XrInstanceProperties> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull XrInstanceProperties value) {
             MemorySegment s = segment.asSlice(index * XrInstanceProperties.BYTES, XrInstanceProperties.BYTES);
             s.copyFrom(value.segment);
@@ -229,6 +234,12 @@ public record XrInstanceProperties(@NotNull MemorySegment segment) implements IX
 
     public BytePtr runtimeName() {
         return new BytePtr(runtimeNameRaw());
+    }
+
+    public XrInstanceProperties runtimeName(@NotNull Consumer<BytePtr> consumer) {
+        BytePtr ptr = runtimeName();
+        consumer.accept(ptr);
+        return this;
     }
 
     public XrInstanceProperties runtimeName(BytePtr value) {

@@ -94,6 +94,11 @@ public record VkClusterAccelerationStructureCommandsInfoNV(@NotNull MemorySegmen
             return new VkClusterAccelerationStructureCommandsInfoNV(segment.asSlice(index * VkClusterAccelerationStructureCommandsInfoNV.BYTES, VkClusterAccelerationStructureCommandsInfoNV.BYTES));
         }
 
+        public VkClusterAccelerationStructureCommandsInfoNV.Ptr at(long index, @NotNull Consumer<@NotNull VkClusterAccelerationStructureCommandsInfoNV> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkClusterAccelerationStructureCommandsInfoNV value) {
             MemorySegment s = segment.asSlice(index * VkClusterAccelerationStructureCommandsInfoNV.BYTES, VkClusterAccelerationStructureCommandsInfoNV.BYTES);
             s.copyFrom(value.segment);

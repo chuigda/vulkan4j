@@ -90,6 +90,11 @@ public record XrInteractionRenderModelIdsEnumerateInfoEXT(@NotNull MemorySegment
             return new XrInteractionRenderModelIdsEnumerateInfoEXT(segment.asSlice(index * XrInteractionRenderModelIdsEnumerateInfoEXT.BYTES, XrInteractionRenderModelIdsEnumerateInfoEXT.BYTES));
         }
 
+        public XrInteractionRenderModelIdsEnumerateInfoEXT.Ptr at(long index, @NotNull Consumer<@NotNull XrInteractionRenderModelIdsEnumerateInfoEXT> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull XrInteractionRenderModelIdsEnumerateInfoEXT value) {
             MemorySegment s = segment.asSlice(index * XrInteractionRenderModelIdsEnumerateInfoEXT.BYTES, XrInteractionRenderModelIdsEnumerateInfoEXT.BYTES);
             s.copyFrom(value.segment);

@@ -27,11 +27,11 @@ import static club.doki7.vulkan.VkConstants.*;
 ///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
 ///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
 ///     uint32_t subpassCount; // optional // @link substring="subpassCount" target="#subpassCount"
-///     uint32_t const* pViewMasks; // @link substring="pViewMasks" target="#pViewMasks"
+///     uint32_t const* pViewMasks; // optional // @link substring="pViewMasks" target="#pViewMasks"
 ///     uint32_t dependencyCount; // optional // @link substring="dependencyCount" target="#dependencyCount"
-///     int32_t const* pViewOffsets; // @link substring="pViewOffsets" target="#pViewOffsets"
+///     int32_t const* pViewOffsets; // optional // @link substring="pViewOffsets" target="#pViewOffsets"
 ///     uint32_t correlationMaskCount; // optional // @link substring="correlationMaskCount" target="#correlationMaskCount"
-///     uint32_t const* pCorrelationMasks; // @link substring="pCorrelationMasks" target="#pCorrelationMasks"
+///     uint32_t const* pCorrelationMasks; // optional // @link substring="pCorrelationMasks" target="#pCorrelationMasks"
 /// } VkRenderPassMultiviewCreateInfo;
 /// }
 ///
@@ -90,6 +90,11 @@ public record VkRenderPassMultiviewCreateInfo(@NotNull MemorySegment segment) im
         /// indicate that the returned structure is a view of the original structure.
         public @NotNull VkRenderPassMultiviewCreateInfo at(long index) {
             return new VkRenderPassMultiviewCreateInfo(segment.asSlice(index * VkRenderPassMultiviewCreateInfo.BYTES, VkRenderPassMultiviewCreateInfo.BYTES));
+        }
+
+        public VkRenderPassMultiviewCreateInfo.Ptr at(long index, @NotNull Consumer<@NotNull VkRenderPassMultiviewCreateInfo> consumer) {
+            consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkRenderPassMultiviewCreateInfo value) {

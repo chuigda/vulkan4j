@@ -81,6 +81,11 @@ public record XrSpatialBounded2DDataEXT(@NotNull MemorySegment segment) implemen
             return new XrSpatialBounded2DDataEXT(segment.asSlice(index * XrSpatialBounded2DDataEXT.BYTES, XrSpatialBounded2DDataEXT.BYTES));
         }
 
+        public XrSpatialBounded2DDataEXT.Ptr at(long index, @NotNull Consumer<@NotNull XrSpatialBounded2DDataEXT> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull XrSpatialBounded2DDataEXT value) {
             MemorySegment s = segment.asSlice(index * XrSpatialBounded2DDataEXT.BYTES, XrSpatialBounded2DDataEXT.BYTES);
             s.copyFrom(value.segment);

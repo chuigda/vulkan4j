@@ -27,9 +27,9 @@ import static club.doki7.vulkan.VkConstants.*;
 ///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
 ///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
 ///     uint32_t groupCount; // optional // @link substring="groupCount" target="#groupCount"
-///     VkGraphicsShaderGroupCreateInfoNV const* pGroups; // @link substring="VkGraphicsShaderGroupCreateInfoNV" target="VkGraphicsShaderGroupCreateInfoNV" @link substring="pGroups" target="#pGroups"
+///     VkGraphicsShaderGroupCreateInfoNV const* pGroups; // optional // @link substring="VkGraphicsShaderGroupCreateInfoNV" target="VkGraphicsShaderGroupCreateInfoNV" @link substring="pGroups" target="#pGroups"
 ///     uint32_t pipelineCount; // optional // @link substring="pipelineCount" target="#pipelineCount"
-///     VkPipeline const* pPipelines; // @link substring="VkPipeline" target="VkPipeline" @link substring="pPipelines" target="#pPipelines"
+///     VkPipeline const* pPipelines; // optional // @link substring="VkPipeline" target="VkPipeline" @link substring="pPipelines" target="#pPipelines"
 /// } VkGraphicsPipelineShaderGroupsCreateInfoNV;
 /// }
 ///
@@ -88,6 +88,11 @@ public record VkGraphicsPipelineShaderGroupsCreateInfoNV(@NotNull MemorySegment 
         /// indicate that the returned structure is a view of the original structure.
         public @NotNull VkGraphicsPipelineShaderGroupsCreateInfoNV at(long index) {
             return new VkGraphicsPipelineShaderGroupsCreateInfoNV(segment.asSlice(index * VkGraphicsPipelineShaderGroupsCreateInfoNV.BYTES, VkGraphicsPipelineShaderGroupsCreateInfoNV.BYTES));
+        }
+
+        public VkGraphicsPipelineShaderGroupsCreateInfoNV.Ptr at(long index, @NotNull Consumer<@NotNull VkGraphicsPipelineShaderGroupsCreateInfoNV> consumer) {
+            consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkGraphicsPipelineShaderGroupsCreateInfoNV value) {

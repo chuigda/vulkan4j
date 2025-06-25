@@ -92,6 +92,11 @@ public record XrPlaneDetectorGetInfoEXT(@NotNull MemorySegment segment) implemen
             return new XrPlaneDetectorGetInfoEXT(segment.asSlice(index * XrPlaneDetectorGetInfoEXT.BYTES, XrPlaneDetectorGetInfoEXT.BYTES));
         }
 
+        public XrPlaneDetectorGetInfoEXT.Ptr at(long index, @NotNull Consumer<@NotNull XrPlaneDetectorGetInfoEXT> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull XrPlaneDetectorGetInfoEXT value) {
             MemorySegment s = segment.asSlice(index * XrPlaneDetectorGetInfoEXT.BYTES, XrPlaneDetectorGetInfoEXT.BYTES);
             s.copyFrom(value.segment);

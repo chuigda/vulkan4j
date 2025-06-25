@@ -93,6 +93,11 @@ public record VkBufferMemoryBarrier(@NotNull MemorySegment segment) implements I
             return new VkBufferMemoryBarrier(segment.asSlice(index * VkBufferMemoryBarrier.BYTES, VkBufferMemoryBarrier.BYTES));
         }
 
+        public VkBufferMemoryBarrier.Ptr at(long index, @NotNull Consumer<@NotNull VkBufferMemoryBarrier> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkBufferMemoryBarrier value) {
             MemorySegment s = segment.asSlice(index * VkBufferMemoryBarrier.BYTES, VkBufferMemoryBarrier.BYTES);
             s.copyFrom(value.segment);

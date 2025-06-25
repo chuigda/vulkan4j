@@ -92,6 +92,11 @@ public record XrShareSpacesRecipientGroupsMETA(@NotNull MemorySegment segment) i
             return new XrShareSpacesRecipientGroupsMETA(segment.asSlice(index * XrShareSpacesRecipientGroupsMETA.BYTES, XrShareSpacesRecipientGroupsMETA.BYTES));
         }
 
+        public XrShareSpacesRecipientGroupsMETA.Ptr at(long index, @NotNull Consumer<@NotNull XrShareSpacesRecipientGroupsMETA> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull XrShareSpacesRecipientGroupsMETA value) {
             MemorySegment s = segment.asSlice(index * XrShareSpacesRecipientGroupsMETA.BYTES, XrShareSpacesRecipientGroupsMETA.BYTES);
             s.copyFrom(value.segment);

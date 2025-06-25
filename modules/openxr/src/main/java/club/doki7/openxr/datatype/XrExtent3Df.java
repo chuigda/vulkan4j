@@ -82,6 +82,11 @@ public record XrExtent3Df(@NotNull MemorySegment segment) implements IXrExtent3D
             return new XrExtent3Df(segment.asSlice(index * XrExtent3Df.BYTES, XrExtent3Df.BYTES));
         }
 
+        public XrExtent3Df.Ptr at(long index, @NotNull Consumer<@NotNull XrExtent3Df> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull XrExtent3Df value) {
             MemorySegment s = segment.asSlice(index * XrExtent3Df.BYTES, XrExtent3Df.BYTES);
             s.copyFrom(value.segment);

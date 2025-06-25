@@ -90,6 +90,11 @@ public record VkPhysicalDevicePipelineRobustnessProperties(@NotNull MemorySegmen
             return new VkPhysicalDevicePipelineRobustnessProperties(segment.asSlice(index * VkPhysicalDevicePipelineRobustnessProperties.BYTES, VkPhysicalDevicePipelineRobustnessProperties.BYTES));
         }
 
+        public VkPhysicalDevicePipelineRobustnessProperties.Ptr at(long index, @NotNull Consumer<@NotNull VkPhysicalDevicePipelineRobustnessProperties> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkPhysicalDevicePipelineRobustnessProperties value) {
             MemorySegment s = segment.asSlice(index * VkPhysicalDevicePipelineRobustnessProperties.BYTES, VkPhysicalDevicePipelineRobustnessProperties.BYTES);
             s.copyFrom(value.segment);

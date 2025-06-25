@@ -90,6 +90,11 @@ public record VkPerformanceCounterKHR(@NotNull MemorySegment segment) implements
             return new VkPerformanceCounterKHR(segment.asSlice(index * VkPerformanceCounterKHR.BYTES, VkPerformanceCounterKHR.BYTES));
         }
 
+        public VkPerformanceCounterKHR.Ptr at(long index, @NotNull Consumer<@NotNull VkPerformanceCounterKHR> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkPerformanceCounterKHR value) {
             MemorySegment s = segment.asSlice(index * VkPerformanceCounterKHR.BYTES, VkPerformanceCounterKHR.BYTES);
             s.copyFrom(value.segment);
@@ -245,6 +250,12 @@ public record VkPerformanceCounterKHR(@NotNull MemorySegment segment) implements
 
     public @Unsigned BytePtr uuid() {
         return new BytePtr(uuidRaw());
+    }
+
+    public VkPerformanceCounterKHR uuid(@NotNull Consumer<BytePtr> consumer) {
+        @Unsigned BytePtr ptr = uuid();
+        consumer.accept(ptr);
+        return this;
     }
 
     public VkPerformanceCounterKHR uuid(@Unsigned BytePtr value) {

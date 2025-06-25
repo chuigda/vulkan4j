@@ -28,11 +28,11 @@ import static club.doki7.vulkan.VkConstants.*;
 ///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
 ///     VkDependencyFlags dependencyFlags; // optional // @link substring="VkDependencyFlags" target="VkDependencyFlags" @link substring="dependencyFlags" target="#dependencyFlags"
 ///     uint32_t memoryBarrierCount; // optional // @link substring="memoryBarrierCount" target="#memoryBarrierCount"
-///     VkMemoryBarrier2 const* pMemoryBarriers; // @link substring="VkMemoryBarrier2" target="VkMemoryBarrier2" @link substring="pMemoryBarriers" target="#pMemoryBarriers"
+///     VkMemoryBarrier2 const* pMemoryBarriers; // optional // @link substring="VkMemoryBarrier2" target="VkMemoryBarrier2" @link substring="pMemoryBarriers" target="#pMemoryBarriers"
 ///     uint32_t bufferMemoryBarrierCount; // optional // @link substring="bufferMemoryBarrierCount" target="#bufferMemoryBarrierCount"
-///     VkBufferMemoryBarrier2 const* pBufferMemoryBarriers; // @link substring="VkBufferMemoryBarrier2" target="VkBufferMemoryBarrier2" @link substring="pBufferMemoryBarriers" target="#pBufferMemoryBarriers"
+///     VkBufferMemoryBarrier2 const* pBufferMemoryBarriers; // optional // @link substring="VkBufferMemoryBarrier2" target="VkBufferMemoryBarrier2" @link substring="pBufferMemoryBarriers" target="#pBufferMemoryBarriers"
 ///     uint32_t imageMemoryBarrierCount; // optional // @link substring="imageMemoryBarrierCount" target="#imageMemoryBarrierCount"
-///     VkImageMemoryBarrier2 const* pImageMemoryBarriers; // @link substring="VkImageMemoryBarrier2" target="VkImageMemoryBarrier2" @link substring="pImageMemoryBarriers" target="#pImageMemoryBarriers"
+///     VkImageMemoryBarrier2 const* pImageMemoryBarriers; // optional // @link substring="VkImageMemoryBarrier2" target="VkImageMemoryBarrier2" @link substring="pImageMemoryBarriers" target="#pImageMemoryBarriers"
 /// } VkDependencyInfo;
 /// }
 ///
@@ -91,6 +91,11 @@ public record VkDependencyInfo(@NotNull MemorySegment segment) implements IVkDep
         /// indicate that the returned structure is a view of the original structure.
         public @NotNull VkDependencyInfo at(long index) {
             return new VkDependencyInfo(segment.asSlice(index * VkDependencyInfo.BYTES, VkDependencyInfo.BYTES));
+        }
+
+        public VkDependencyInfo.Ptr at(long index, @NotNull Consumer<@NotNull VkDependencyInfo> consumer) {
+            consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkDependencyInfo value) {

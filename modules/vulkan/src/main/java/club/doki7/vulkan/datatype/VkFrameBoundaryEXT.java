@@ -95,6 +95,11 @@ public record VkFrameBoundaryEXT(@NotNull MemorySegment segment) implements IVkF
             return new VkFrameBoundaryEXT(segment.asSlice(index * VkFrameBoundaryEXT.BYTES, VkFrameBoundaryEXT.BYTES));
         }
 
+        public VkFrameBoundaryEXT.Ptr at(long index, @NotNull Consumer<@NotNull VkFrameBoundaryEXT> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkFrameBoundaryEXT value) {
             MemorySegment s = segment.asSlice(index * VkFrameBoundaryEXT.BYTES, VkFrameBoundaryEXT.BYTES);
             s.copyFrom(value.segment);

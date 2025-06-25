@@ -92,6 +92,11 @@ public record XrHolographicWindowAttachmentMSFT(@NotNull MemorySegment segment) 
             return new XrHolographicWindowAttachmentMSFT(segment.asSlice(index * XrHolographicWindowAttachmentMSFT.BYTES, XrHolographicWindowAttachmentMSFT.BYTES));
         }
 
+        public XrHolographicWindowAttachmentMSFT.Ptr at(long index, @NotNull Consumer<@NotNull XrHolographicWindowAttachmentMSFT> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull XrHolographicWindowAttachmentMSFT value) {
             MemorySegment s = segment.asSlice(index * XrHolographicWindowAttachmentMSFT.BYTES, XrHolographicWindowAttachmentMSFT.BYTES);
             s.copyFrom(value.segment);

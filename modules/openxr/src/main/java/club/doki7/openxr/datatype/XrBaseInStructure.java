@@ -81,6 +81,11 @@ public record XrBaseInStructure(@NotNull MemorySegment segment) implements IXrBa
             return new XrBaseInStructure(segment.asSlice(index * XrBaseInStructure.BYTES, XrBaseInStructure.BYTES));
         }
 
+        public XrBaseInStructure.Ptr at(long index, @NotNull Consumer<@NotNull XrBaseInStructure> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull XrBaseInStructure value) {
             MemorySegment s = segment.asSlice(index * XrBaseInStructure.BYTES, XrBaseInStructure.BYTES);
             s.copyFrom(value.segment);

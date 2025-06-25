@@ -92,6 +92,11 @@ public record XrSystemEnvironmentDepthPropertiesMETA(@NotNull MemorySegment segm
             return new XrSystemEnvironmentDepthPropertiesMETA(segment.asSlice(index * XrSystemEnvironmentDepthPropertiesMETA.BYTES, XrSystemEnvironmentDepthPropertiesMETA.BYTES));
         }
 
+        public XrSystemEnvironmentDepthPropertiesMETA.Ptr at(long index, @NotNull Consumer<@NotNull XrSystemEnvironmentDepthPropertiesMETA> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull XrSystemEnvironmentDepthPropertiesMETA value) {
             MemorySegment s = segment.asSlice(index * XrSystemEnvironmentDepthPropertiesMETA.BYTES, XrSystemEnvironmentDepthPropertiesMETA.BYTES);
             s.copyFrom(value.segment);

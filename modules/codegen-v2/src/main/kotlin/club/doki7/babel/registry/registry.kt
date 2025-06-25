@@ -296,7 +296,7 @@ class Member(
     val values: Identifier?,
     val len: List<Identifier>?,
     val altLen: String?,
-    val optional: Boolean,
+    var optional: Boolean,
     val bits: Int?
 ) : Entity(name) {
     override fun toStringImpl() = buildString {

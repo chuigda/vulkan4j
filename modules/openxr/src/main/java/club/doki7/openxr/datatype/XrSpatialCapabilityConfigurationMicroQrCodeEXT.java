@@ -93,6 +93,11 @@ public record XrSpatialCapabilityConfigurationMicroQrCodeEXT(@NotNull MemorySegm
             return new XrSpatialCapabilityConfigurationMicroQrCodeEXT(segment.asSlice(index * XrSpatialCapabilityConfigurationMicroQrCodeEXT.BYTES, XrSpatialCapabilityConfigurationMicroQrCodeEXT.BYTES));
         }
 
+        public XrSpatialCapabilityConfigurationMicroQrCodeEXT.Ptr at(long index, @NotNull Consumer<@NotNull XrSpatialCapabilityConfigurationMicroQrCodeEXT> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull XrSpatialCapabilityConfigurationMicroQrCodeEXT value) {
             MemorySegment s = segment.asSlice(index * XrSpatialCapabilityConfigurationMicroQrCodeEXT.BYTES, XrSpatialCapabilityConfigurationMicroQrCodeEXT.BYTES);
             s.copyFrom(value.segment);

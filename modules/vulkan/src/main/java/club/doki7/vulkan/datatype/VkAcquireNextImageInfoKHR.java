@@ -91,6 +91,11 @@ public record VkAcquireNextImageInfoKHR(@NotNull MemorySegment segment) implemen
             return new VkAcquireNextImageInfoKHR(segment.asSlice(index * VkAcquireNextImageInfoKHR.BYTES, VkAcquireNextImageInfoKHR.BYTES));
         }
 
+        public VkAcquireNextImageInfoKHR.Ptr at(long index, @NotNull Consumer<@NotNull VkAcquireNextImageInfoKHR> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkAcquireNextImageInfoKHR value) {
             MemorySegment s = segment.asSlice(index * VkAcquireNextImageInfoKHR.BYTES, VkAcquireNextImageInfoKHR.BYTES);
             s.copyFrom(value.segment);

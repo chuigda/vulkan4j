@@ -87,6 +87,11 @@ public record VkPhysicalDeviceVideoFormatInfoKHR(@NotNull MemorySegment segment)
             return new VkPhysicalDeviceVideoFormatInfoKHR(segment.asSlice(index * VkPhysicalDeviceVideoFormatInfoKHR.BYTES, VkPhysicalDeviceVideoFormatInfoKHR.BYTES));
         }
 
+        public VkPhysicalDeviceVideoFormatInfoKHR.Ptr at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceVideoFormatInfoKHR> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkPhysicalDeviceVideoFormatInfoKHR value) {
             MemorySegment s = segment.asSlice(index * VkPhysicalDeviceVideoFormatInfoKHR.BYTES, VkPhysicalDeviceVideoFormatInfoKHR.BYTES);
             s.copyFrom(value.segment);

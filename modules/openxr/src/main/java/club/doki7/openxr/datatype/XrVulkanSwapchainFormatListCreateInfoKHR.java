@@ -31,7 +31,7 @@ import club.doki7.vulkan.handle.*;
 ///     XrStructureType type; // @link substring="XrStructureType" target="XrStructureType" @link substring="type" target="#type"
 ///     void const* next; // @link substring="next" target="#next"
 ///     uint32_t viewFormatCount; // optional // @link substring="viewFormatCount" target="#viewFormatCount"
-///     VkFormat const* viewFormats; // @link substring="VkFormat" target="VkFormat" @link substring="viewFormats" target="#viewFormats"
+///     VkFormat const* viewFormats; // optional // @link substring="VkFormat" target="VkFormat" @link substring="viewFormats" target="#viewFormats"
 /// } XrVulkanSwapchainFormatListCreateInfoKHR;
 /// }
 ///
@@ -90,6 +90,11 @@ public record XrVulkanSwapchainFormatListCreateInfoKHR(@NotNull MemorySegment se
         /// indicate that the returned structure is a view of the original structure.
         public @NotNull XrVulkanSwapchainFormatListCreateInfoKHR at(long index) {
             return new XrVulkanSwapchainFormatListCreateInfoKHR(segment.asSlice(index * XrVulkanSwapchainFormatListCreateInfoKHR.BYTES, XrVulkanSwapchainFormatListCreateInfoKHR.BYTES));
+        }
+
+        public XrVulkanSwapchainFormatListCreateInfoKHR.Ptr at(long index, @NotNull Consumer<@NotNull XrVulkanSwapchainFormatListCreateInfoKHR> consumer) {
+            consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull XrVulkanSwapchainFormatListCreateInfoKHR value) {

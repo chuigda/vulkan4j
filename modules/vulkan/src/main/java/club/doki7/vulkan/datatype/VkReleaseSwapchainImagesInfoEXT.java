@@ -89,6 +89,11 @@ public record VkReleaseSwapchainImagesInfoEXT(@NotNull MemorySegment segment) im
             return new VkReleaseSwapchainImagesInfoEXT(segment.asSlice(index * VkReleaseSwapchainImagesInfoEXT.BYTES, VkReleaseSwapchainImagesInfoEXT.BYTES));
         }
 
+        public VkReleaseSwapchainImagesInfoEXT.Ptr at(long index, @NotNull Consumer<@NotNull VkReleaseSwapchainImagesInfoEXT> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkReleaseSwapchainImagesInfoEXT value) {
             MemorySegment s = segment.asSlice(index * VkReleaseSwapchainImagesInfoEXT.BYTES, VkReleaseSwapchainImagesInfoEXT.BYTES);
             s.copyFrom(value.segment);

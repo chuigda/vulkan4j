@@ -88,6 +88,11 @@ public record VkPhysicalDeviceFragmentShadingRateKHR(@NotNull MemorySegment segm
             return new VkPhysicalDeviceFragmentShadingRateKHR(segment.asSlice(index * VkPhysicalDeviceFragmentShadingRateKHR.BYTES, VkPhysicalDeviceFragmentShadingRateKHR.BYTES));
         }
 
+        public VkPhysicalDeviceFragmentShadingRateKHR.Ptr at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceFragmentShadingRateKHR> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkPhysicalDeviceFragmentShadingRateKHR value) {
             MemorySegment s = segment.asSlice(index * VkPhysicalDeviceFragmentShadingRateKHR.BYTES, VkPhysicalDeviceFragmentShadingRateKHR.BYTES);
             s.copyFrom(value.segment);

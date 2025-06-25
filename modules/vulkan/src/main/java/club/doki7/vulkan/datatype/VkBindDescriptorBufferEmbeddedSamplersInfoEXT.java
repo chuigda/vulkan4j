@@ -89,6 +89,11 @@ public record VkBindDescriptorBufferEmbeddedSamplersInfoEXT(@NotNull MemorySegme
             return new VkBindDescriptorBufferEmbeddedSamplersInfoEXT(segment.asSlice(index * VkBindDescriptorBufferEmbeddedSamplersInfoEXT.BYTES, VkBindDescriptorBufferEmbeddedSamplersInfoEXT.BYTES));
         }
 
+        public VkBindDescriptorBufferEmbeddedSamplersInfoEXT.Ptr at(long index, @NotNull Consumer<@NotNull VkBindDescriptorBufferEmbeddedSamplersInfoEXT> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkBindDescriptorBufferEmbeddedSamplersInfoEXT value) {
             MemorySegment s = segment.asSlice(index * VkBindDescriptorBufferEmbeddedSamplersInfoEXT.BYTES, VkBindDescriptorBufferEmbeddedSamplersInfoEXT.BYTES);
             s.copyFrom(value.segment);

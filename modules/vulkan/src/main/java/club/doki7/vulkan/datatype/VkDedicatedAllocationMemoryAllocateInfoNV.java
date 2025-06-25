@@ -88,6 +88,11 @@ public record VkDedicatedAllocationMemoryAllocateInfoNV(@NotNull MemorySegment s
             return new VkDedicatedAllocationMemoryAllocateInfoNV(segment.asSlice(index * VkDedicatedAllocationMemoryAllocateInfoNV.BYTES, VkDedicatedAllocationMemoryAllocateInfoNV.BYTES));
         }
 
+        public VkDedicatedAllocationMemoryAllocateInfoNV.Ptr at(long index, @NotNull Consumer<@NotNull VkDedicatedAllocationMemoryAllocateInfoNV> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkDedicatedAllocationMemoryAllocateInfoNV value) {
             MemorySegment s = segment.asSlice(index * VkDedicatedAllocationMemoryAllocateInfoNV.BYTES, VkDedicatedAllocationMemoryAllocateInfoNV.BYTES);
             s.copyFrom(value.segment);

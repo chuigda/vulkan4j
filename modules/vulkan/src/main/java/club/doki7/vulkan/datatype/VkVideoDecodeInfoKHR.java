@@ -33,7 +33,7 @@ import static club.doki7.vulkan.VkConstants.*;
 ///     VkVideoPictureResourceInfoKHR dstPictureResource; // @link substring="VkVideoPictureResourceInfoKHR" target="VkVideoPictureResourceInfoKHR" @link substring="dstPictureResource" target="#dstPictureResource"
 ///     VkVideoReferenceSlotInfoKHR const* pSetupReferenceSlot; // optional // @link substring="VkVideoReferenceSlotInfoKHR" target="VkVideoReferenceSlotInfoKHR" @link substring="pSetupReferenceSlot" target="#pSetupReferenceSlot"
 ///     uint32_t referenceSlotCount; // optional // @link substring="referenceSlotCount" target="#referenceSlotCount"
-///     VkVideoReferenceSlotInfoKHR const* pReferenceSlots; // @link substring="VkVideoReferenceSlotInfoKHR" target="VkVideoReferenceSlotInfoKHR" @link substring="pReferenceSlots" target="#pReferenceSlots"
+///     VkVideoReferenceSlotInfoKHR const* pReferenceSlots; // optional // @link substring="VkVideoReferenceSlotInfoKHR" target="VkVideoReferenceSlotInfoKHR" @link substring="pReferenceSlots" target="#pReferenceSlots"
 /// } VkVideoDecodeInfoKHR;
 /// }
 ///
@@ -92,6 +92,11 @@ public record VkVideoDecodeInfoKHR(@NotNull MemorySegment segment) implements IV
         /// indicate that the returned structure is a view of the original structure.
         public @NotNull VkVideoDecodeInfoKHR at(long index) {
             return new VkVideoDecodeInfoKHR(segment.asSlice(index * VkVideoDecodeInfoKHR.BYTES, VkVideoDecodeInfoKHR.BYTES));
+        }
+
+        public VkVideoDecodeInfoKHR.Ptr at(long index, @NotNull Consumer<@NotNull VkVideoDecodeInfoKHR> consumer) {
+            consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkVideoDecodeInfoKHR value) {

@@ -90,6 +90,11 @@ public record VkVideoProfileInfoKHR(@NotNull MemorySegment segment) implements I
             return new VkVideoProfileInfoKHR(segment.asSlice(index * VkVideoProfileInfoKHR.BYTES, VkVideoProfileInfoKHR.BYTES));
         }
 
+        public VkVideoProfileInfoKHR.Ptr at(long index, @NotNull Consumer<@NotNull VkVideoProfileInfoKHR> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkVideoProfileInfoKHR value) {
             MemorySegment s = segment.asSlice(index * VkVideoProfileInfoKHR.BYTES, VkVideoProfileInfoKHR.BYTES);
             s.copyFrom(value.segment);

@@ -90,6 +90,11 @@ public record VkImageConstraintsInfoFUCHSIA(@NotNull MemorySegment segment) impl
             return new VkImageConstraintsInfoFUCHSIA(segment.asSlice(index * VkImageConstraintsInfoFUCHSIA.BYTES, VkImageConstraintsInfoFUCHSIA.BYTES));
         }
 
+        public VkImageConstraintsInfoFUCHSIA.Ptr at(long index, @NotNull Consumer<@NotNull VkImageConstraintsInfoFUCHSIA> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkImageConstraintsInfoFUCHSIA value) {
             MemorySegment s = segment.asSlice(index * VkImageConstraintsInfoFUCHSIA.BYTES, VkImageConstraintsInfoFUCHSIA.BYTES);
             s.copyFrom(value.segment);

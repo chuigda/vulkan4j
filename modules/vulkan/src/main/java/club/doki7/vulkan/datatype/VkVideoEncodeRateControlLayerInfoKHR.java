@@ -90,6 +90,11 @@ public record VkVideoEncodeRateControlLayerInfoKHR(@NotNull MemorySegment segmen
             return new VkVideoEncodeRateControlLayerInfoKHR(segment.asSlice(index * VkVideoEncodeRateControlLayerInfoKHR.BYTES, VkVideoEncodeRateControlLayerInfoKHR.BYTES));
         }
 
+        public VkVideoEncodeRateControlLayerInfoKHR.Ptr at(long index, @NotNull Consumer<@NotNull VkVideoEncodeRateControlLayerInfoKHR> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkVideoEncodeRateControlLayerInfoKHR value) {
             MemorySegment s = segment.asSlice(index * VkVideoEncodeRateControlLayerInfoKHR.BYTES, VkVideoEncodeRateControlLayerInfoKHR.BYTES);
             s.copyFrom(value.segment);

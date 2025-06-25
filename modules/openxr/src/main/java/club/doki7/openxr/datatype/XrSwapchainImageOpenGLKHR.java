@@ -91,6 +91,11 @@ public record XrSwapchainImageOpenGLKHR(@NotNull MemorySegment segment) implemen
             return new XrSwapchainImageOpenGLKHR(segment.asSlice(index * XrSwapchainImageOpenGLKHR.BYTES, XrSwapchainImageOpenGLKHR.BYTES));
         }
 
+        public XrSwapchainImageOpenGLKHR.Ptr at(long index, @NotNull Consumer<@NotNull XrSwapchainImageOpenGLKHR> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull XrSwapchainImageOpenGLKHR value) {
             MemorySegment s = segment.asSlice(index * XrSwapchainImageOpenGLKHR.BYTES, XrSwapchainImageOpenGLKHR.BYTES);
             s.copyFrom(value.segment);

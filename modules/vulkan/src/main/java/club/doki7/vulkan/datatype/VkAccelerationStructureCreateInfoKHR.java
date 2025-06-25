@@ -92,6 +92,11 @@ public record VkAccelerationStructureCreateInfoKHR(@NotNull MemorySegment segmen
             return new VkAccelerationStructureCreateInfoKHR(segment.asSlice(index * VkAccelerationStructureCreateInfoKHR.BYTES, VkAccelerationStructureCreateInfoKHR.BYTES));
         }
 
+        public VkAccelerationStructureCreateInfoKHR.Ptr at(long index, @NotNull Consumer<@NotNull VkAccelerationStructureCreateInfoKHR> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkAccelerationStructureCreateInfoKHR value) {
             MemorySegment s = segment.asSlice(index * VkAccelerationStructureCreateInfoKHR.BYTES, VkAccelerationStructureCreateInfoKHR.BYTES);
             s.copyFrom(value.segment);

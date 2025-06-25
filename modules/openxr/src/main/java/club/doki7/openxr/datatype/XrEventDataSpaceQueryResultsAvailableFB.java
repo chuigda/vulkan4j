@@ -91,6 +91,11 @@ public record XrEventDataSpaceQueryResultsAvailableFB(@NotNull MemorySegment seg
             return new XrEventDataSpaceQueryResultsAvailableFB(segment.asSlice(index * XrEventDataSpaceQueryResultsAvailableFB.BYTES, XrEventDataSpaceQueryResultsAvailableFB.BYTES));
         }
 
+        public XrEventDataSpaceQueryResultsAvailableFB.Ptr at(long index, @NotNull Consumer<@NotNull XrEventDataSpaceQueryResultsAvailableFB> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull XrEventDataSpaceQueryResultsAvailableFB value) {
             MemorySegment s = segment.asSlice(index * XrEventDataSpaceQueryResultsAvailableFB.BYTES, XrEventDataSpaceQueryResultsAvailableFB.BYTES);
             s.copyFrom(value.segment);

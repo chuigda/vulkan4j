@@ -98,6 +98,11 @@ public record XrCompositionLayerCylinderKHR(@NotNull MemorySegment segment) impl
             return new XrCompositionLayerCylinderKHR(segment.asSlice(index * XrCompositionLayerCylinderKHR.BYTES, XrCompositionLayerCylinderKHR.BYTES));
         }
 
+        public XrCompositionLayerCylinderKHR.Ptr at(long index, @NotNull Consumer<@NotNull XrCompositionLayerCylinderKHR> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull XrCompositionLayerCylinderKHR value) {
             MemorySegment s = segment.asSlice(index * XrCompositionLayerCylinderKHR.BYTES, XrCompositionLayerCylinderKHR.BYTES);
             s.copyFrom(value.segment);

@@ -136,6 +136,11 @@ public record VmaAllocationCreateInfo(@NotNull MemorySegment segment) implements
             return new VmaAllocationCreateInfo(segment.asSlice(index * VmaAllocationCreateInfo.BYTES, VmaAllocationCreateInfo.BYTES));
         }
 
+        public VmaAllocationCreateInfo.Ptr at(long index, @NotNull Consumer<@NotNull VmaAllocationCreateInfo> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VmaAllocationCreateInfo value) {
             MemorySegment s = segment.asSlice(index * VmaAllocationCreateInfo.BYTES, VmaAllocationCreateInfo.BYTES);
             s.copyFrom(value.segment);

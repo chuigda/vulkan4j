@@ -78,6 +78,11 @@ public record VkDescriptorBufferInfo(@NotNull MemorySegment segment) implements 
             return new VkDescriptorBufferInfo(segment.asSlice(index * VkDescriptorBufferInfo.BYTES, VkDescriptorBufferInfo.BYTES));
         }
 
+        public VkDescriptorBufferInfo.Ptr at(long index, @NotNull Consumer<@NotNull VkDescriptorBufferInfo> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkDescriptorBufferInfo value) {
             MemorySegment s = segment.asSlice(index * VkDescriptorBufferInfo.BYTES, VkDescriptorBufferInfo.BYTES);
             s.copyFrom(value.segment);

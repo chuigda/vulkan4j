@@ -93,6 +93,11 @@ public record XrDebugUtilsObjectNameInfoEXT(@NotNull MemorySegment segment) impl
             return new XrDebugUtilsObjectNameInfoEXT(segment.asSlice(index * XrDebugUtilsObjectNameInfoEXT.BYTES, XrDebugUtilsObjectNameInfoEXT.BYTES));
         }
 
+        public XrDebugUtilsObjectNameInfoEXT.Ptr at(long index, @NotNull Consumer<@NotNull XrDebugUtilsObjectNameInfoEXT> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull XrDebugUtilsObjectNameInfoEXT value) {
             MemorySegment s = segment.asSlice(index * XrDebugUtilsObjectNameInfoEXT.BYTES, XrDebugUtilsObjectNameInfoEXT.BYTES);
             s.copyFrom(value.segment);

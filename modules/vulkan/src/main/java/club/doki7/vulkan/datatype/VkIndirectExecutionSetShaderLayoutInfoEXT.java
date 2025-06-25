@@ -27,7 +27,7 @@ import static club.doki7.vulkan.VkConstants.*;
 ///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
 ///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
 ///     uint32_t setLayoutCount; // optional // @link substring="setLayoutCount" target="#setLayoutCount"
-///     VkDescriptorSetLayout const* pSetLayouts; // @link substring="VkDescriptorSetLayout" target="VkDescriptorSetLayout" @link substring="pSetLayouts" target="#pSetLayouts"
+///     VkDescriptorSetLayout const* pSetLayouts; // optional // @link substring="VkDescriptorSetLayout" target="VkDescriptorSetLayout" @link substring="pSetLayouts" target="#pSetLayouts"
 /// } VkIndirectExecutionSetShaderLayoutInfoEXT;
 /// }
 ///
@@ -86,6 +86,11 @@ public record VkIndirectExecutionSetShaderLayoutInfoEXT(@NotNull MemorySegment s
         /// indicate that the returned structure is a view of the original structure.
         public @NotNull VkIndirectExecutionSetShaderLayoutInfoEXT at(long index) {
             return new VkIndirectExecutionSetShaderLayoutInfoEXT(segment.asSlice(index * VkIndirectExecutionSetShaderLayoutInfoEXT.BYTES, VkIndirectExecutionSetShaderLayoutInfoEXT.BYTES));
+        }
+
+        public VkIndirectExecutionSetShaderLayoutInfoEXT.Ptr at(long index, @NotNull Consumer<@NotNull VkIndirectExecutionSetShaderLayoutInfoEXT> consumer) {
+            consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkIndirectExecutionSetShaderLayoutInfoEXT value) {

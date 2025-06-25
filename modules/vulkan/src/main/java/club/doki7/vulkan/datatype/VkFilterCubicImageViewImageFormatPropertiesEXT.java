@@ -88,6 +88,11 @@ public record VkFilterCubicImageViewImageFormatPropertiesEXT(@NotNull MemorySegm
             return new VkFilterCubicImageViewImageFormatPropertiesEXT(segment.asSlice(index * VkFilterCubicImageViewImageFormatPropertiesEXT.BYTES, VkFilterCubicImageViewImageFormatPropertiesEXT.BYTES));
         }
 
+        public VkFilterCubicImageViewImageFormatPropertiesEXT.Ptr at(long index, @NotNull Consumer<@NotNull VkFilterCubicImageViewImageFormatPropertiesEXT> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkFilterCubicImageViewImageFormatPropertiesEXT value) {
             MemorySegment s = segment.asSlice(index * VkFilterCubicImageViewImageFormatPropertiesEXT.BYTES, VkFilterCubicImageViewImageFormatPropertiesEXT.BYTES);
             s.copyFrom(value.segment);

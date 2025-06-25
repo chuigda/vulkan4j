@@ -87,6 +87,11 @@ public record VkHeadlessSurfaceCreateInfoEXT(@NotNull MemorySegment segment) imp
             return new VkHeadlessSurfaceCreateInfoEXT(segment.asSlice(index * VkHeadlessSurfaceCreateInfoEXT.BYTES, VkHeadlessSurfaceCreateInfoEXT.BYTES));
         }
 
+        public VkHeadlessSurfaceCreateInfoEXT.Ptr at(long index, @NotNull Consumer<@NotNull VkHeadlessSurfaceCreateInfoEXT> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkHeadlessSurfaceCreateInfoEXT value) {
             MemorySegment s = segment.asSlice(index * VkHeadlessSurfaceCreateInfoEXT.BYTES, VkHeadlessSurfaceCreateInfoEXT.BYTES);
             s.copyFrom(value.segment);

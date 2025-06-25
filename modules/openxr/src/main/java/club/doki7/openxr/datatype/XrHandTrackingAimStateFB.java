@@ -96,6 +96,11 @@ public record XrHandTrackingAimStateFB(@NotNull MemorySegment segment) implement
             return new XrHandTrackingAimStateFB(segment.asSlice(index * XrHandTrackingAimStateFB.BYTES, XrHandTrackingAimStateFB.BYTES));
         }
 
+        public XrHandTrackingAimStateFB.Ptr at(long index, @NotNull Consumer<@NotNull XrHandTrackingAimStateFB> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull XrHandTrackingAimStateFB value) {
             MemorySegment s = segment.asSlice(index * XrHandTrackingAimStateFB.BYTES, XrHandTrackingAimStateFB.BYTES);
             s.copyFrom(value.segment);

@@ -27,7 +27,7 @@ import static club.doki7.vulkan.VkConstants.*;
 ///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
 ///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
 ///     uint32_t libraryCount; // optional // @link substring="libraryCount" target="#libraryCount"
-///     VkPipeline const* pLibraries; // @link substring="VkPipeline" target="VkPipeline" @link substring="pLibraries" target="#pLibraries"
+///     VkPipeline const* pLibraries; // optional // @link substring="VkPipeline" target="VkPipeline" @link substring="pLibraries" target="#pLibraries"
 /// } VkPipelineLibraryCreateInfoKHR;
 /// }
 ///
@@ -86,6 +86,11 @@ public record VkPipelineLibraryCreateInfoKHR(@NotNull MemorySegment segment) imp
         /// indicate that the returned structure is a view of the original structure.
         public @NotNull VkPipelineLibraryCreateInfoKHR at(long index) {
             return new VkPipelineLibraryCreateInfoKHR(segment.asSlice(index * VkPipelineLibraryCreateInfoKHR.BYTES, VkPipelineLibraryCreateInfoKHR.BYTES));
+        }
+
+        public VkPipelineLibraryCreateInfoKHR.Ptr at(long index, @NotNull Consumer<@NotNull VkPipelineLibraryCreateInfoKHR> consumer) {
+            consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkPipelineLibraryCreateInfoKHR value) {

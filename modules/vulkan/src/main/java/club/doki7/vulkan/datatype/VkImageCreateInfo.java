@@ -37,7 +37,7 @@ import static club.doki7.vulkan.VkConstants.*;
 ///     VkImageUsageFlags usage; // @link substring="VkImageUsageFlags" target="VkImageUsageFlags" @link substring="usage" target="#usage"
 ///     VkSharingMode sharingMode; // @link substring="VkSharingMode" target="VkSharingMode" @link substring="sharingMode" target="#sharingMode"
 ///     uint32_t queueFamilyIndexCount; // optional // @link substring="queueFamilyIndexCount" target="#queueFamilyIndexCount"
-///     uint32_t const* pQueueFamilyIndices; // @link substring="pQueueFamilyIndices" target="#pQueueFamilyIndices"
+///     uint32_t const* pQueueFamilyIndices; // optional // @link substring="pQueueFamilyIndices" target="#pQueueFamilyIndices"
 ///     VkImageLayout initialLayout; // @link substring="VkImageLayout" target="VkImageLayout" @link substring="initialLayout" target="#initialLayout"
 /// } VkImageCreateInfo;
 /// }
@@ -97,6 +97,11 @@ public record VkImageCreateInfo(@NotNull MemorySegment segment) implements IVkIm
         /// indicate that the returned structure is a view of the original structure.
         public @NotNull VkImageCreateInfo at(long index) {
             return new VkImageCreateInfo(segment.asSlice(index * VkImageCreateInfo.BYTES, VkImageCreateInfo.BYTES));
+        }
+
+        public VkImageCreateInfo.Ptr at(long index, @NotNull Consumer<@NotNull VkImageCreateInfo> consumer) {
+            consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkImageCreateInfo value) {

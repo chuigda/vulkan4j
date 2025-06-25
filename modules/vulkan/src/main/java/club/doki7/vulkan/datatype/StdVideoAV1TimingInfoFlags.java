@@ -76,6 +76,11 @@ public record StdVideoAV1TimingInfoFlags(@NotNull MemorySegment segment) impleme
             return new StdVideoAV1TimingInfoFlags(segment.asSlice(index * StdVideoAV1TimingInfoFlags.BYTES, StdVideoAV1TimingInfoFlags.BYTES));
         }
 
+        public StdVideoAV1TimingInfoFlags.Ptr at(long index, @NotNull Consumer<@NotNull StdVideoAV1TimingInfoFlags> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull StdVideoAV1TimingInfoFlags value) {
             MemorySegment s = segment.asSlice(index * StdVideoAV1TimingInfoFlags.BYTES, StdVideoAV1TimingInfoFlags.BYTES);
             s.copyFrom(value.segment);

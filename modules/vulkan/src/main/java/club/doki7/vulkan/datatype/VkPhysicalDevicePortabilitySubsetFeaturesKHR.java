@@ -101,6 +101,11 @@ public record VkPhysicalDevicePortabilitySubsetFeaturesKHR(@NotNull MemorySegmen
             return new VkPhysicalDevicePortabilitySubsetFeaturesKHR(segment.asSlice(index * VkPhysicalDevicePortabilitySubsetFeaturesKHR.BYTES, VkPhysicalDevicePortabilitySubsetFeaturesKHR.BYTES));
         }
 
+        public VkPhysicalDevicePortabilitySubsetFeaturesKHR.Ptr at(long index, @NotNull Consumer<@NotNull VkPhysicalDevicePortabilitySubsetFeaturesKHR> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkPhysicalDevicePortabilitySubsetFeaturesKHR value) {
             MemorySegment s = segment.asSlice(index * VkPhysicalDevicePortabilitySubsetFeaturesKHR.BYTES, VkPhysicalDevicePortabilitySubsetFeaturesKHR.BYTES);
             s.copyFrom(value.segment);

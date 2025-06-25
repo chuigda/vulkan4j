@@ -87,6 +87,11 @@ public record VkPipelineBinaryDataInfoKHR(@NotNull MemorySegment segment) implem
             return new VkPipelineBinaryDataInfoKHR(segment.asSlice(index * VkPipelineBinaryDataInfoKHR.BYTES, VkPipelineBinaryDataInfoKHR.BYTES));
         }
 
+        public VkPipelineBinaryDataInfoKHR.Ptr at(long index, @NotNull Consumer<@NotNull VkPipelineBinaryDataInfoKHR> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkPipelineBinaryDataInfoKHR value) {
             MemorySegment s = segment.asSlice(index * VkPipelineBinaryDataInfoKHR.BYTES, VkPipelineBinaryDataInfoKHR.BYTES);
             s.copyFrom(value.segment);

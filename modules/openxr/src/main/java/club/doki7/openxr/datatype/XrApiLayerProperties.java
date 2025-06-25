@@ -94,6 +94,11 @@ public record XrApiLayerProperties(@NotNull MemorySegment segment) implements IX
             return new XrApiLayerProperties(segment.asSlice(index * XrApiLayerProperties.BYTES, XrApiLayerProperties.BYTES));
         }
 
+        public XrApiLayerProperties.Ptr at(long index, @NotNull Consumer<@NotNull XrApiLayerProperties> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull XrApiLayerProperties value) {
             MemorySegment s = segment.asSlice(index * XrApiLayerProperties.BYTES, XrApiLayerProperties.BYTES);
             s.copyFrom(value.segment);
@@ -224,6 +229,12 @@ public record XrApiLayerProperties(@NotNull MemorySegment segment) implements IX
         return new BytePtr(layerNameRaw());
     }
 
+    public XrApiLayerProperties layerName(@NotNull Consumer<BytePtr> consumer) {
+        BytePtr ptr = layerName();
+        consumer.accept(ptr);
+        return this;
+    }
+
     public XrApiLayerProperties layerName(BytePtr value) {
         MemorySegment s = layerNameRaw();
         s.copyFrom(value.segment());
@@ -254,6 +265,12 @@ public record XrApiLayerProperties(@NotNull MemorySegment segment) implements IX
 
     public BytePtr description() {
         return new BytePtr(descriptionRaw());
+    }
+
+    public XrApiLayerProperties description(@NotNull Consumer<BytePtr> consumer) {
+        BytePtr ptr = description();
+        consumer.accept(ptr);
+        return this;
     }
 
     public XrApiLayerProperties description(BytePtr value) {

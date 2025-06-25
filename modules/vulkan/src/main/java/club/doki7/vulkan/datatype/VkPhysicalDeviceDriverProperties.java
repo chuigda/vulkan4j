@@ -90,6 +90,11 @@ public record VkPhysicalDeviceDriverProperties(@NotNull MemorySegment segment) i
             return new VkPhysicalDeviceDriverProperties(segment.asSlice(index * VkPhysicalDeviceDriverProperties.BYTES, VkPhysicalDeviceDriverProperties.BYTES));
         }
 
+        public VkPhysicalDeviceDriverProperties.Ptr at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceDriverProperties> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkPhysicalDeviceDriverProperties value) {
             MemorySegment s = segment.asSlice(index * VkPhysicalDeviceDriverProperties.BYTES, VkPhysicalDeviceDriverProperties.BYTES);
             s.copyFrom(value.segment);
@@ -229,6 +234,12 @@ public record VkPhysicalDeviceDriverProperties(@NotNull MemorySegment segment) i
         return new BytePtr(driverNameRaw());
     }
 
+    public VkPhysicalDeviceDriverProperties driverName(@NotNull Consumer<BytePtr> consumer) {
+        BytePtr ptr = driverName();
+        consumer.accept(ptr);
+        return this;
+    }
+
     public VkPhysicalDeviceDriverProperties driverName(BytePtr value) {
         MemorySegment s = driverNameRaw();
         s.copyFrom(value.segment());
@@ -241,6 +252,12 @@ public record VkPhysicalDeviceDriverProperties(@NotNull MemorySegment segment) i
 
     public BytePtr driverInfo() {
         return new BytePtr(driverInfoRaw());
+    }
+
+    public VkPhysicalDeviceDriverProperties driverInfo(@NotNull Consumer<BytePtr> consumer) {
+        BytePtr ptr = driverInfo();
+        consumer.accept(ptr);
+        return this;
     }
 
     public VkPhysicalDeviceDriverProperties driverInfo(BytePtr value) {

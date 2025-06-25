@@ -80,6 +80,11 @@ public record VkImageSubresourceRange(@NotNull MemorySegment segment) implements
             return new VkImageSubresourceRange(segment.asSlice(index * VkImageSubresourceRange.BYTES, VkImageSubresourceRange.BYTES));
         }
 
+        public VkImageSubresourceRange.Ptr at(long index, @NotNull Consumer<@NotNull VkImageSubresourceRange> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkImageSubresourceRange value) {
             MemorySegment s = segment.asSlice(index * VkImageSubresourceRange.BYTES, VkImageSubresourceRange.BYTES);
             s.copyFrom(value.segment);

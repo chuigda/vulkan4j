@@ -77,6 +77,11 @@ public record VkOffset2D(@NotNull MemorySegment segment) implements IVkOffset2D 
             return new VkOffset2D(segment.asSlice(index * VkOffset2D.BYTES, VkOffset2D.BYTES));
         }
 
+        public VkOffset2D.Ptr at(long index, @NotNull Consumer<@NotNull VkOffset2D> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkOffset2D value) {
             MemorySegment s = segment.asSlice(index * VkOffset2D.BYTES, VkOffset2D.BYTES);
             s.copyFrom(value.segment);

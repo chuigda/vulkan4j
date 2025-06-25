@@ -91,6 +91,11 @@ public record XrRenderModelLoadInfoFB(@NotNull MemorySegment segment) implements
             return new XrRenderModelLoadInfoFB(segment.asSlice(index * XrRenderModelLoadInfoFB.BYTES, XrRenderModelLoadInfoFB.BYTES));
         }
 
+        public XrRenderModelLoadInfoFB.Ptr at(long index, @NotNull Consumer<@NotNull XrRenderModelLoadInfoFB> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull XrRenderModelLoadInfoFB value) {
             MemorySegment s = segment.asSlice(index * XrRenderModelLoadInfoFB.BYTES, XrRenderModelLoadInfoFB.BYTES);
             s.copyFrom(value.segment);

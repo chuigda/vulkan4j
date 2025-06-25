@@ -93,6 +93,11 @@ public record XrEyeGazesFB(@NotNull MemorySegment segment) implements IXrEyeGaze
             return new XrEyeGazesFB(segment.asSlice(index * XrEyeGazesFB.BYTES, XrEyeGazesFB.BYTES));
         }
 
+        public XrEyeGazesFB.Ptr at(long index, @NotNull Consumer<@NotNull XrEyeGazesFB> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull XrEyeGazesFB value) {
             MemorySegment s = segment.asSlice(index * XrEyeGazesFB.BYTES, XrEyeGazesFB.BYTES);
             s.copyFrom(value.segment);
@@ -221,6 +226,12 @@ public record XrEyeGazesFB(@NotNull MemorySegment segment) implements IXrEyeGaze
 
     public XrEyeGazeFB.Ptr gaze() {
         return new XrEyeGazeFB.Ptr(gazeRaw());
+    }
+
+    public XrEyeGazesFB gaze(@NotNull Consumer<XrEyeGazeFB.Ptr> consumer) {
+        XrEyeGazeFB.Ptr ptr = gaze();
+        consumer.accept(ptr);
+        return this;
     }
 
     public XrEyeGazesFB gaze(XrEyeGazeFB.Ptr value) {

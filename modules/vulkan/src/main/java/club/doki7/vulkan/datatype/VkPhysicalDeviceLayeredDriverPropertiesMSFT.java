@@ -87,6 +87,11 @@ public record VkPhysicalDeviceLayeredDriverPropertiesMSFT(@NotNull MemorySegment
             return new VkPhysicalDeviceLayeredDriverPropertiesMSFT(segment.asSlice(index * VkPhysicalDeviceLayeredDriverPropertiesMSFT.BYTES, VkPhysicalDeviceLayeredDriverPropertiesMSFT.BYTES));
         }
 
+        public VkPhysicalDeviceLayeredDriverPropertiesMSFT.Ptr at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceLayeredDriverPropertiesMSFT> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkPhysicalDeviceLayeredDriverPropertiesMSFT value) {
             MemorySegment s = segment.asSlice(index * VkPhysicalDeviceLayeredDriverPropertiesMSFT.BYTES, VkPhysicalDeviceLayeredDriverPropertiesMSFT.BYTES);
             s.copyFrom(value.segment);

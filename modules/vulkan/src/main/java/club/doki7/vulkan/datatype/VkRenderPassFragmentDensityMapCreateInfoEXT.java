@@ -87,6 +87,11 @@ public record VkRenderPassFragmentDensityMapCreateInfoEXT(@NotNull MemorySegment
             return new VkRenderPassFragmentDensityMapCreateInfoEXT(segment.asSlice(index * VkRenderPassFragmentDensityMapCreateInfoEXT.BYTES, VkRenderPassFragmentDensityMapCreateInfoEXT.BYTES));
         }
 
+        public VkRenderPassFragmentDensityMapCreateInfoEXT.Ptr at(long index, @NotNull Consumer<@NotNull VkRenderPassFragmentDensityMapCreateInfoEXT> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkRenderPassFragmentDensityMapCreateInfoEXT value) {
             MemorySegment s = segment.asSlice(index * VkRenderPassFragmentDensityMapCreateInfoEXT.BYTES, VkRenderPassFragmentDensityMapCreateInfoEXT.BYTES);
             s.copyFrom(value.segment);

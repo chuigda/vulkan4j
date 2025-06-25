@@ -91,6 +91,11 @@ public record XrSystemPropertiesBodyTrackingFullBodyMETA(@NotNull MemorySegment 
             return new XrSystemPropertiesBodyTrackingFullBodyMETA(segment.asSlice(index * XrSystemPropertiesBodyTrackingFullBodyMETA.BYTES, XrSystemPropertiesBodyTrackingFullBodyMETA.BYTES));
         }
 
+        public XrSystemPropertiesBodyTrackingFullBodyMETA.Ptr at(long index, @NotNull Consumer<@NotNull XrSystemPropertiesBodyTrackingFullBodyMETA> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull XrSystemPropertiesBodyTrackingFullBodyMETA value) {
             MemorySegment s = segment.asSlice(index * XrSystemPropertiesBodyTrackingFullBodyMETA.BYTES, XrSystemPropertiesBodyTrackingFullBodyMETA.BYTES);
             s.copyFrom(value.segment);

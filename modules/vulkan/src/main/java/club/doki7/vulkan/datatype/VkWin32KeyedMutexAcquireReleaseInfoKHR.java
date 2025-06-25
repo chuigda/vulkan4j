@@ -27,12 +27,12 @@ import static club.doki7.vulkan.VkConstants.*;
 ///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
 ///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
 ///     uint32_t acquireCount; // optional // @link substring="acquireCount" target="#acquireCount"
-///     VkDeviceMemory const* pAcquireSyncs; // @link substring="VkDeviceMemory" target="VkDeviceMemory" @link substring="pAcquireSyncs" target="#pAcquireSyncs"
-///     uint64_t const* pAcquireKeys; // @link substring="pAcquireKeys" target="#pAcquireKeys"
-///     uint32_t const* pAcquireTimeouts; // @link substring="pAcquireTimeouts" target="#pAcquireTimeouts"
+///     VkDeviceMemory const* pAcquireSyncs; // optional // @link substring="VkDeviceMemory" target="VkDeviceMemory" @link substring="pAcquireSyncs" target="#pAcquireSyncs"
+///     uint64_t const* pAcquireKeys; // optional // @link substring="pAcquireKeys" target="#pAcquireKeys"
+///     uint32_t const* pAcquireTimeouts; // optional // @link substring="pAcquireTimeouts" target="#pAcquireTimeouts"
 ///     uint32_t releaseCount; // optional // @link substring="releaseCount" target="#releaseCount"
-///     VkDeviceMemory const* pReleaseSyncs; // @link substring="VkDeviceMemory" target="VkDeviceMemory" @link substring="pReleaseSyncs" target="#pReleaseSyncs"
-///     uint64_t const* pReleaseKeys; // @link substring="pReleaseKeys" target="#pReleaseKeys"
+///     VkDeviceMemory const* pReleaseSyncs; // optional // @link substring="VkDeviceMemory" target="VkDeviceMemory" @link substring="pReleaseSyncs" target="#pReleaseSyncs"
+///     uint64_t const* pReleaseKeys; // optional // @link substring="pReleaseKeys" target="#pReleaseKeys"
 /// } VkWin32KeyedMutexAcquireReleaseInfoKHR;
 /// }
 ///
@@ -91,6 +91,11 @@ public record VkWin32KeyedMutexAcquireReleaseInfoKHR(@NotNull MemorySegment segm
         /// indicate that the returned structure is a view of the original structure.
         public @NotNull VkWin32KeyedMutexAcquireReleaseInfoKHR at(long index) {
             return new VkWin32KeyedMutexAcquireReleaseInfoKHR(segment.asSlice(index * VkWin32KeyedMutexAcquireReleaseInfoKHR.BYTES, VkWin32KeyedMutexAcquireReleaseInfoKHR.BYTES));
+        }
+
+        public VkWin32KeyedMutexAcquireReleaseInfoKHR.Ptr at(long index, @NotNull Consumer<@NotNull VkWin32KeyedMutexAcquireReleaseInfoKHR> consumer) {
+            consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkWin32KeyedMutexAcquireReleaseInfoKHR value) {

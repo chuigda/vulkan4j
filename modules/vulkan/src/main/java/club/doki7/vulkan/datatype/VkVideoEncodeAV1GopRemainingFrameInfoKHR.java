@@ -90,6 +90,11 @@ public record VkVideoEncodeAV1GopRemainingFrameInfoKHR(@NotNull MemorySegment se
             return new VkVideoEncodeAV1GopRemainingFrameInfoKHR(segment.asSlice(index * VkVideoEncodeAV1GopRemainingFrameInfoKHR.BYTES, VkVideoEncodeAV1GopRemainingFrameInfoKHR.BYTES));
         }
 
+        public VkVideoEncodeAV1GopRemainingFrameInfoKHR.Ptr at(long index, @NotNull Consumer<@NotNull VkVideoEncodeAV1GopRemainingFrameInfoKHR> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkVideoEncodeAV1GopRemainingFrameInfoKHR value) {
             MemorySegment s = segment.asSlice(index * VkVideoEncodeAV1GopRemainingFrameInfoKHR.BYTES, VkVideoEncodeAV1GopRemainingFrameInfoKHR.BYTES);
             s.copyFrom(value.segment);

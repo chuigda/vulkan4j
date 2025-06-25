@@ -78,6 +78,11 @@ public record VkClearRect(@NotNull MemorySegment segment) implements IVkClearRec
             return new VkClearRect(segment.asSlice(index * VkClearRect.BYTES, VkClearRect.BYTES));
         }
 
+        public VkClearRect.Ptr at(long index, @NotNull Consumer<@NotNull VkClearRect> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkClearRect value) {
             MemorySegment s = segment.asSlice(index * VkClearRect.BYTES, VkClearRect.BYTES);
             s.copyFrom(value.segment);

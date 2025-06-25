@@ -80,6 +80,11 @@ public record StdVideoEncodeH265LongTermRefPics(@NotNull MemorySegment segment) 
             return new StdVideoEncodeH265LongTermRefPics(segment.asSlice(index * StdVideoEncodeH265LongTermRefPics.BYTES, StdVideoEncodeH265LongTermRefPics.BYTES));
         }
 
+        public StdVideoEncodeH265LongTermRefPics.Ptr at(long index, @NotNull Consumer<@NotNull StdVideoEncodeH265LongTermRefPics> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull StdVideoEncodeH265LongTermRefPics value) {
             MemorySegment s = segment.asSlice(index * StdVideoEncodeH265LongTermRefPics.BYTES, StdVideoEncodeH265LongTermRefPics.BYTES);
             s.copyFrom(value.segment);
@@ -195,6 +200,12 @@ public record StdVideoEncodeH265LongTermRefPics(@NotNull MemorySegment segment) 
         return new BytePtr(lt_idx_spsRaw());
     }
 
+    public StdVideoEncodeH265LongTermRefPics lt_idx_sps(@NotNull Consumer<BytePtr> consumer) {
+        @Unsigned BytePtr ptr = lt_idx_sps();
+        consumer.accept(ptr);
+        return this;
+    }
+
     public StdVideoEncodeH265LongTermRefPics lt_idx_sps(@Unsigned BytePtr value) {
         MemorySegment s = lt_idx_spsRaw();
         s.copyFrom(value.segment());
@@ -207,6 +218,12 @@ public record StdVideoEncodeH265LongTermRefPics(@NotNull MemorySegment segment) 
 
     public @Unsigned BytePtr poc_lsb_lt() {
         return new BytePtr(poc_lsb_ltRaw());
+    }
+
+    public StdVideoEncodeH265LongTermRefPics poc_lsb_lt(@NotNull Consumer<BytePtr> consumer) {
+        @Unsigned BytePtr ptr = poc_lsb_lt();
+        consumer.accept(ptr);
+        return this;
     }
 
     public StdVideoEncodeH265LongTermRefPics poc_lsb_lt(@Unsigned BytePtr value) {
@@ -232,6 +249,12 @@ public record StdVideoEncodeH265LongTermRefPics(@NotNull MemorySegment segment) 
         return new BytePtr(delta_poc_msb_present_flagRaw());
     }
 
+    public StdVideoEncodeH265LongTermRefPics delta_poc_msb_present_flag(@NotNull Consumer<BytePtr> consumer) {
+        @Unsigned BytePtr ptr = delta_poc_msb_present_flag();
+        consumer.accept(ptr);
+        return this;
+    }
+
     public StdVideoEncodeH265LongTermRefPics delta_poc_msb_present_flag(@Unsigned BytePtr value) {
         MemorySegment s = delta_poc_msb_present_flagRaw();
         s.copyFrom(value.segment());
@@ -244,6 +267,12 @@ public record StdVideoEncodeH265LongTermRefPics(@NotNull MemorySegment segment) 
 
     public @Unsigned BytePtr delta_poc_msb_cycle_lt() {
         return new BytePtr(delta_poc_msb_cycle_ltRaw());
+    }
+
+    public StdVideoEncodeH265LongTermRefPics delta_poc_msb_cycle_lt(@NotNull Consumer<BytePtr> consumer) {
+        @Unsigned BytePtr ptr = delta_poc_msb_cycle_lt();
+        consumer.accept(ptr);
+        return this;
     }
 
     public StdVideoEncodeH265LongTermRefPics delta_poc_msb_cycle_lt(@Unsigned BytePtr value) {

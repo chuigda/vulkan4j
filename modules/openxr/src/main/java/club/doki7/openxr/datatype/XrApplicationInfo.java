@@ -84,6 +84,11 @@ public record XrApplicationInfo(@NotNull MemorySegment segment) implements IXrAp
             return new XrApplicationInfo(segment.asSlice(index * XrApplicationInfo.BYTES, XrApplicationInfo.BYTES));
         }
 
+        public XrApplicationInfo.Ptr at(long index, @NotNull Consumer<@NotNull XrApplicationInfo> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull XrApplicationInfo value) {
             MemorySegment s = segment.asSlice(index * XrApplicationInfo.BYTES, XrApplicationInfo.BYTES);
             s.copyFrom(value.segment);
@@ -181,6 +186,12 @@ public record XrApplicationInfo(@NotNull MemorySegment segment) implements IXrAp
         return new BytePtr(applicationNameRaw());
     }
 
+    public XrApplicationInfo applicationName(@NotNull Consumer<BytePtr> consumer) {
+        BytePtr ptr = applicationName();
+        consumer.accept(ptr);
+        return this;
+    }
+
     public XrApplicationInfo applicationName(BytePtr value) {
         MemorySegment s = applicationNameRaw();
         s.copyFrom(value.segment());
@@ -202,6 +213,12 @@ public record XrApplicationInfo(@NotNull MemorySegment segment) implements IXrAp
 
     public BytePtr engineName() {
         return new BytePtr(engineNameRaw());
+    }
+
+    public XrApplicationInfo engineName(@NotNull Consumer<BytePtr> consumer) {
+        BytePtr ptr = engineName();
+        consumer.accept(ptr);
+        return this;
     }
 
     public XrApplicationInfo engineName(BytePtr value) {

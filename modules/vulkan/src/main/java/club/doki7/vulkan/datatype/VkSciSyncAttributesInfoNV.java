@@ -88,6 +88,11 @@ public record VkSciSyncAttributesInfoNV(@NotNull MemorySegment segment) implemen
             return new VkSciSyncAttributesInfoNV(segment.asSlice(index * VkSciSyncAttributesInfoNV.BYTES, VkSciSyncAttributesInfoNV.BYTES));
         }
 
+        public VkSciSyncAttributesInfoNV.Ptr at(long index, @NotNull Consumer<@NotNull VkSciSyncAttributesInfoNV> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkSciSyncAttributesInfoNV value) {
             MemorySegment s = segment.asSlice(index * VkSciSyncAttributesInfoNV.BYTES, VkSciSyncAttributesInfoNV.BYTES);
             s.copyFrom(value.segment);

@@ -80,6 +80,11 @@ public record VkSubresourceLayout(@NotNull MemorySegment segment) implements IVk
             return new VkSubresourceLayout(segment.asSlice(index * VkSubresourceLayout.BYTES, VkSubresourceLayout.BYTES));
         }
 
+        public VkSubresourceLayout.Ptr at(long index, @NotNull Consumer<@NotNull VkSubresourceLayout> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkSubresourceLayout value) {
             MemorySegment s = segment.asSlice(index * VkSubresourceLayout.BYTES, VkSubresourceLayout.BYTES);
             s.copyFrom(value.segment);

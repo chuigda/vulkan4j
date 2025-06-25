@@ -93,6 +93,11 @@ public record XrEventDataSessionStateChanged(@NotNull MemorySegment segment) imp
             return new XrEventDataSessionStateChanged(segment.asSlice(index * XrEventDataSessionStateChanged.BYTES, XrEventDataSessionStateChanged.BYTES));
         }
 
+        public XrEventDataSessionStateChanged.Ptr at(long index, @NotNull Consumer<@NotNull XrEventDataSessionStateChanged> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull XrEventDataSessionStateChanged value) {
             MemorySegment s = segment.asSlice(index * XrEventDataSessionStateChanged.BYTES, XrEventDataSessionStateChanged.BYTES);
             s.copyFrom(value.segment);

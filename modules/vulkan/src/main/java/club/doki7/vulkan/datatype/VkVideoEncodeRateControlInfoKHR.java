@@ -29,7 +29,7 @@ import static club.doki7.vulkan.VkConstants.*;
 ///     VkVideoEncodeRateControlFlagsKHR flags; // optional // @link substring="VkVideoEncodeRateControlFlagsKHR" target="VkVideoEncodeRateControlFlagsKHR" @link substring="flags" target="#flags"
 ///     VkVideoEncodeRateControlModeFlagsKHR rateControlMode; // optional // @link substring="VkVideoEncodeRateControlModeFlagsKHR" target="VkVideoEncodeRateControlModeFlagsKHR" @link substring="rateControlMode" target="#rateControlMode"
 ///     uint32_t layerCount; // optional // @link substring="layerCount" target="#layerCount"
-///     VkVideoEncodeRateControlLayerInfoKHR const* pLayers; // @link substring="VkVideoEncodeRateControlLayerInfoKHR" target="VkVideoEncodeRateControlLayerInfoKHR" @link substring="pLayers" target="#pLayers"
+///     VkVideoEncodeRateControlLayerInfoKHR const* pLayers; // optional // @link substring="VkVideoEncodeRateControlLayerInfoKHR" target="VkVideoEncodeRateControlLayerInfoKHR" @link substring="pLayers" target="#pLayers"
 ///     uint32_t virtualBufferSizeInMs; // @link substring="virtualBufferSizeInMs" target="#virtualBufferSizeInMs"
 ///     uint32_t initialVirtualBufferSizeInMs; // @link substring="initialVirtualBufferSizeInMs" target="#initialVirtualBufferSizeInMs"
 /// } VkVideoEncodeRateControlInfoKHR;
@@ -90,6 +90,11 @@ public record VkVideoEncodeRateControlInfoKHR(@NotNull MemorySegment segment) im
         /// indicate that the returned structure is a view of the original structure.
         public @NotNull VkVideoEncodeRateControlInfoKHR at(long index) {
             return new VkVideoEncodeRateControlInfoKHR(segment.asSlice(index * VkVideoEncodeRateControlInfoKHR.BYTES, VkVideoEncodeRateControlInfoKHR.BYTES));
+        }
+
+        public VkVideoEncodeRateControlInfoKHR.Ptr at(long index, @NotNull Consumer<@NotNull VkVideoEncodeRateControlInfoKHR> consumer) {
+            consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkVideoEncodeRateControlInfoKHR value) {

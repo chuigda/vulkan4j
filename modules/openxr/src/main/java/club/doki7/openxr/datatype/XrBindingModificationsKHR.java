@@ -92,6 +92,11 @@ public record XrBindingModificationsKHR(@NotNull MemorySegment segment) implemen
             return new XrBindingModificationsKHR(segment.asSlice(index * XrBindingModificationsKHR.BYTES, XrBindingModificationsKHR.BYTES));
         }
 
+        public XrBindingModificationsKHR.Ptr at(long index, @NotNull Consumer<@NotNull XrBindingModificationsKHR> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull XrBindingModificationsKHR value) {
             MemorySegment s = segment.asSlice(index * XrBindingModificationsKHR.BYTES, XrBindingModificationsKHR.BYTES);
             s.copyFrom(value.segment);

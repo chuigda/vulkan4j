@@ -28,7 +28,7 @@ import static club.doki7.vulkan.VkConstants.*;
 ///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
 ///     VkDescriptorSetLayoutCreateFlags flags; // optional // @link substring="VkDescriptorSetLayoutCreateFlags" target="VkDescriptorSetLayoutCreateFlags" @link substring="flags" target="#flags"
 ///     uint32_t bindingCount; // optional // @link substring="bindingCount" target="#bindingCount"
-///     VkDescriptorSetLayoutBinding const* pBindings; // @link substring="VkDescriptorSetLayoutBinding" target="VkDescriptorSetLayoutBinding" @link substring="pBindings" target="#pBindings"
+///     VkDescriptorSetLayoutBinding const* pBindings; // optional // @link substring="VkDescriptorSetLayoutBinding" target="VkDescriptorSetLayoutBinding" @link substring="pBindings" target="#pBindings"
 /// } VkDescriptorSetLayoutCreateInfo;
 /// }
 ///
@@ -87,6 +87,11 @@ public record VkDescriptorSetLayoutCreateInfo(@NotNull MemorySegment segment) im
         /// indicate that the returned structure is a view of the original structure.
         public @NotNull VkDescriptorSetLayoutCreateInfo at(long index) {
             return new VkDescriptorSetLayoutCreateInfo(segment.asSlice(index * VkDescriptorSetLayoutCreateInfo.BYTES, VkDescriptorSetLayoutCreateInfo.BYTES));
+        }
+
+        public VkDescriptorSetLayoutCreateInfo.Ptr at(long index, @NotNull Consumer<@NotNull VkDescriptorSetLayoutCreateInfo> consumer) {
+            consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkDescriptorSetLayoutCreateInfo value) {

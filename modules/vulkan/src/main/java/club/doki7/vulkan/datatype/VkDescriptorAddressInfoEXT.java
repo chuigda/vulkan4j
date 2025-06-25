@@ -89,6 +89,11 @@ public record VkDescriptorAddressInfoEXT(@NotNull MemorySegment segment) impleme
             return new VkDescriptorAddressInfoEXT(segment.asSlice(index * VkDescriptorAddressInfoEXT.BYTES, VkDescriptorAddressInfoEXT.BYTES));
         }
 
+        public VkDescriptorAddressInfoEXT.Ptr at(long index, @NotNull Consumer<@NotNull VkDescriptorAddressInfoEXT> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkDescriptorAddressInfoEXT value) {
             MemorySegment s = segment.asSlice(index * VkDescriptorAddressInfoEXT.BYTES, VkDescriptorAddressInfoEXT.BYTES);
             s.copyFrom(value.segment);

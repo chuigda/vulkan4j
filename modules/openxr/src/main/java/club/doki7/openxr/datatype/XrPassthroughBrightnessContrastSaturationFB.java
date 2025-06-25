@@ -93,6 +93,11 @@ public record XrPassthroughBrightnessContrastSaturationFB(@NotNull MemorySegment
             return new XrPassthroughBrightnessContrastSaturationFB(segment.asSlice(index * XrPassthroughBrightnessContrastSaturationFB.BYTES, XrPassthroughBrightnessContrastSaturationFB.BYTES));
         }
 
+        public XrPassthroughBrightnessContrastSaturationFB.Ptr at(long index, @NotNull Consumer<@NotNull XrPassthroughBrightnessContrastSaturationFB> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull XrPassthroughBrightnessContrastSaturationFB value) {
             MemorySegment s = segment.asSlice(index * XrPassthroughBrightnessContrastSaturationFB.BYTES, XrPassthroughBrightnessContrastSaturationFB.BYTES);
             s.copyFrom(value.segment);

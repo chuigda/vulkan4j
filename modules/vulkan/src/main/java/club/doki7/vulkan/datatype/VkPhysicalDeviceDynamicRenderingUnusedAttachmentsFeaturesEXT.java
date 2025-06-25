@@ -87,6 +87,11 @@ public record VkPhysicalDeviceDynamicRenderingUnusedAttachmentsFeaturesEXT(@NotN
             return new VkPhysicalDeviceDynamicRenderingUnusedAttachmentsFeaturesEXT(segment.asSlice(index * VkPhysicalDeviceDynamicRenderingUnusedAttachmentsFeaturesEXT.BYTES, VkPhysicalDeviceDynamicRenderingUnusedAttachmentsFeaturesEXT.BYTES));
         }
 
+        public VkPhysicalDeviceDynamicRenderingUnusedAttachmentsFeaturesEXT.Ptr at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceDynamicRenderingUnusedAttachmentsFeaturesEXT> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkPhysicalDeviceDynamicRenderingUnusedAttachmentsFeaturesEXT value) {
             MemorySegment s = segment.asSlice(index * VkPhysicalDeviceDynamicRenderingUnusedAttachmentsFeaturesEXT.BYTES, VkPhysicalDeviceDynamicRenderingUnusedAttachmentsFeaturesEXT.BYTES);
             s.copyFrom(value.segment);

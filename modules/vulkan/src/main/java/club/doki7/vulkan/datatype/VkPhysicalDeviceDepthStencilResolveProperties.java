@@ -90,6 +90,11 @@ public record VkPhysicalDeviceDepthStencilResolveProperties(@NotNull MemorySegme
             return new VkPhysicalDeviceDepthStencilResolveProperties(segment.asSlice(index * VkPhysicalDeviceDepthStencilResolveProperties.BYTES, VkPhysicalDeviceDepthStencilResolveProperties.BYTES));
         }
 
+        public VkPhysicalDeviceDepthStencilResolveProperties.Ptr at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceDepthStencilResolveProperties> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkPhysicalDeviceDepthStencilResolveProperties value) {
             MemorySegment s = segment.asSlice(index * VkPhysicalDeviceDepthStencilResolveProperties.BYTES, VkPhysicalDeviceDepthStencilResolveProperties.BYTES);
             s.copyFrom(value.segment);

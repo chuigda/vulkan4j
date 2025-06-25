@@ -91,6 +91,11 @@ public record XrPassthroughColorMapMonoToRgbaFB(@NotNull MemorySegment segment) 
             return new XrPassthroughColorMapMonoToRgbaFB(segment.asSlice(index * XrPassthroughColorMapMonoToRgbaFB.BYTES, XrPassthroughColorMapMonoToRgbaFB.BYTES));
         }
 
+        public XrPassthroughColorMapMonoToRgbaFB.Ptr at(long index, @NotNull Consumer<@NotNull XrPassthroughColorMapMonoToRgbaFB> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull XrPassthroughColorMapMonoToRgbaFB value) {
             MemorySegment s = segment.asSlice(index * XrPassthroughColorMapMonoToRgbaFB.BYTES, XrPassthroughColorMapMonoToRgbaFB.BYTES);
             s.copyFrom(value.segment);
@@ -219,6 +224,12 @@ public record XrPassthroughColorMapMonoToRgbaFB(@NotNull MemorySegment segment) 
 
     public XrColor4f.Ptr textureColorMap() {
         return new XrColor4f.Ptr(textureColorMapRaw());
+    }
+
+    public XrPassthroughColorMapMonoToRgbaFB textureColorMap(@NotNull Consumer<XrColor4f.Ptr> consumer) {
+        XrColor4f.Ptr ptr = textureColorMap();
+        consumer.accept(ptr);
+        return this;
     }
 
     public XrPassthroughColorMapMonoToRgbaFB textureColorMap(XrColor4f.Ptr value) {

@@ -88,6 +88,11 @@ public record VkShaderModuleIdentifierEXT(@NotNull MemorySegment segment) implem
             return new VkShaderModuleIdentifierEXT(segment.asSlice(index * VkShaderModuleIdentifierEXT.BYTES, VkShaderModuleIdentifierEXT.BYTES));
         }
 
+        public VkShaderModuleIdentifierEXT.Ptr at(long index, @NotNull Consumer<@NotNull VkShaderModuleIdentifierEXT> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkShaderModuleIdentifierEXT value) {
             MemorySegment s = segment.asSlice(index * VkShaderModuleIdentifierEXT.BYTES, VkShaderModuleIdentifierEXT.BYTES);
             s.copyFrom(value.segment);
@@ -225,6 +230,12 @@ public record VkShaderModuleIdentifierEXT(@NotNull MemorySegment segment) implem
 
     public @Unsigned BytePtr identifier() {
         return new BytePtr(identifierRaw());
+    }
+
+    public VkShaderModuleIdentifierEXT identifier(@NotNull Consumer<BytePtr> consumer) {
+        @Unsigned BytePtr ptr = identifier();
+        consumer.accept(ptr);
+        return this;
     }
 
     public VkShaderModuleIdentifierEXT identifier(@Unsigned BytePtr value) {

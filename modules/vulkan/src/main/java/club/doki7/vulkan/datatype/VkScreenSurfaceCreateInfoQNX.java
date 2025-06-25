@@ -89,6 +89,11 @@ public record VkScreenSurfaceCreateInfoQNX(@NotNull MemorySegment segment) imple
             return new VkScreenSurfaceCreateInfoQNX(segment.asSlice(index * VkScreenSurfaceCreateInfoQNX.BYTES, VkScreenSurfaceCreateInfoQNX.BYTES));
         }
 
+        public VkScreenSurfaceCreateInfoQNX.Ptr at(long index, @NotNull Consumer<@NotNull VkScreenSurfaceCreateInfoQNX> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkScreenSurfaceCreateInfoQNX value) {
             MemorySegment s = segment.asSlice(index * VkScreenSurfaceCreateInfoQNX.BYTES, VkScreenSurfaceCreateInfoQNX.BYTES);
             s.copyFrom(value.segment);

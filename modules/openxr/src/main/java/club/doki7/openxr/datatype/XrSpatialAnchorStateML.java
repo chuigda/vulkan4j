@@ -91,6 +91,11 @@ public record XrSpatialAnchorStateML(@NotNull MemorySegment segment) implements 
             return new XrSpatialAnchorStateML(segment.asSlice(index * XrSpatialAnchorStateML.BYTES, XrSpatialAnchorStateML.BYTES));
         }
 
+        public XrSpatialAnchorStateML.Ptr at(long index, @NotNull Consumer<@NotNull XrSpatialAnchorStateML> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull XrSpatialAnchorStateML value) {
             MemorySegment s = segment.asSlice(index * XrSpatialAnchorStateML.BYTES, XrSpatialAnchorStateML.BYTES);
             s.copyFrom(value.segment);

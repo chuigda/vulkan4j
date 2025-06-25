@@ -88,6 +88,11 @@ public record VkDrmFormatModifierPropertiesListEXT(@NotNull MemorySegment segmen
             return new VkDrmFormatModifierPropertiesListEXT(segment.asSlice(index * VkDrmFormatModifierPropertiesListEXT.BYTES, VkDrmFormatModifierPropertiesListEXT.BYTES));
         }
 
+        public VkDrmFormatModifierPropertiesListEXT.Ptr at(long index, @NotNull Consumer<@NotNull VkDrmFormatModifierPropertiesListEXT> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkDrmFormatModifierPropertiesListEXT value) {
             MemorySegment s = segment.asSlice(index * VkDrmFormatModifierPropertiesListEXT.BYTES, VkDrmFormatModifierPropertiesListEXT.BYTES);
             s.copyFrom(value.segment);
