@@ -89,6 +89,11 @@ public record VkExportMetalSharedEventInfoEXT(@NotNull MemorySegment segment) im
             return new VkExportMetalSharedEventInfoEXT(segment.asSlice(index * VkExportMetalSharedEventInfoEXT.BYTES, VkExportMetalSharedEventInfoEXT.BYTES));
         }
 
+        public VkExportMetalSharedEventInfoEXT.Ptr at(long index, @NotNull Consumer<@NotNull VkExportMetalSharedEventInfoEXT> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkExportMetalSharedEventInfoEXT value) {
             MemorySegment s = segment.asSlice(index * VkExportMetalSharedEventInfoEXT.BYTES, VkExportMetalSharedEventInfoEXT.BYTES);
             s.copyFrom(value.segment);
@@ -201,12 +206,13 @@ public record VkExportMetalSharedEventInfoEXT(@NotNull MemorySegment segment) im
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkExportMetalSharedEventInfoEXT pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkExportMetalSharedEventInfoEXT pNext(@Nullable IPointer pointer) {
@@ -240,12 +246,13 @@ public record VkExportMetalSharedEventInfoEXT(@NotNull MemorySegment segment) im
         return this;
     }
 
-    public @Pointer(comment="MTLSharedEvent_id") MemorySegment mtlSharedEvent() {
+    public @Pointer(comment="MTLSharedEvent_id") @NotNull MemorySegment mtlSharedEvent() {
         return segment.get(LAYOUT$mtlSharedEvent, OFFSET$mtlSharedEvent);
     }
 
-    public void mtlSharedEvent(@Pointer(comment="MTLSharedEvent_id") MemorySegment value) {
+    public VkExportMetalSharedEventInfoEXT mtlSharedEvent(@Pointer(comment="MTLSharedEvent_id") @NotNull MemorySegment value) {
         segment.set(LAYOUT$mtlSharedEvent, OFFSET$mtlSharedEvent, value);
+        return this;
     }
 
     public VkExportMetalSharedEventInfoEXT mtlSharedEvent(@Nullable IPointer pointer) {

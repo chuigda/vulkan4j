@@ -28,13 +28,13 @@ import static club.doki7.vulkan.VkConstants.*;
 ///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
 ///     VkRenderPassCreateFlags flags; // optional // @link substring="VkRenderPassCreateFlags" target="VkRenderPassCreateFlags" @link substring="flags" target="#flags"
 ///     uint32_t attachmentCount; // optional // @link substring="attachmentCount" target="#attachmentCount"
-///     VkAttachmentDescription2 const* pAttachments; // @link substring="VkAttachmentDescription2" target="VkAttachmentDescription2" @link substring="pAttachments" target="#pAttachments"
+///     VkAttachmentDescription2 const* pAttachments; // optional // @link substring="VkAttachmentDescription2" target="VkAttachmentDescription2" @link substring="pAttachments" target="#pAttachments"
 ///     uint32_t subpassCount; // @link substring="subpassCount" target="#subpassCount"
 ///     VkSubpassDescription2 const* pSubpasses; // @link substring="VkSubpassDescription2" target="VkSubpassDescription2" @link substring="pSubpasses" target="#pSubpasses"
 ///     uint32_t dependencyCount; // optional // @link substring="dependencyCount" target="#dependencyCount"
-///     VkSubpassDependency2 const* pDependencies; // @link substring="VkSubpassDependency2" target="VkSubpassDependency2" @link substring="pDependencies" target="#pDependencies"
+///     VkSubpassDependency2 const* pDependencies; // optional // @link substring="VkSubpassDependency2" target="VkSubpassDependency2" @link substring="pDependencies" target="#pDependencies"
 ///     uint32_t correlatedViewMaskCount; // optional // @link substring="correlatedViewMaskCount" target="#correlatedViewMaskCount"
-///     uint32_t const* pCorrelatedViewMasks; // @link substring="pCorrelatedViewMasks" target="#pCorrelatedViewMasks"
+///     uint32_t const* pCorrelatedViewMasks; // optional // @link substring="pCorrelatedViewMasks" target="#pCorrelatedViewMasks"
 /// } VkRenderPassCreateInfo2;
 /// }
 ///
@@ -93,6 +93,11 @@ public record VkRenderPassCreateInfo2(@NotNull MemorySegment segment) implements
         /// indicate that the returned structure is a view of the original structure.
         public @NotNull VkRenderPassCreateInfo2 at(long index) {
             return new VkRenderPassCreateInfo2(segment.asSlice(index * VkRenderPassCreateInfo2.BYTES, VkRenderPassCreateInfo2.BYTES));
+        }
+
+        public VkRenderPassCreateInfo2.Ptr at(long index, @NotNull Consumer<@NotNull VkRenderPassCreateInfo2> consumer) {
+            consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkRenderPassCreateInfo2 value) {
@@ -207,12 +212,13 @@ public record VkRenderPassCreateInfo2(@NotNull MemorySegment segment) implements
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkRenderPassCreateInfo2 pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkRenderPassCreateInfo2 pNext(@Nullable IPointer pointer) {
@@ -220,11 +226,11 @@ public record VkRenderPassCreateInfo2(@NotNull MemorySegment segment) implements
         return this;
     }
 
-    public @EnumType(VkRenderPassCreateFlags.class) int flags() {
+    public @Bitmask(VkRenderPassCreateFlags.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public VkRenderPassCreateInfo2 flags(@EnumType(VkRenderPassCreateFlags.class) int value) {
+    public VkRenderPassCreateInfo2 flags(@Bitmask(VkRenderPassCreateFlags.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
         return this;
     }
@@ -262,11 +268,11 @@ public record VkRenderPassCreateInfo2(@NotNull MemorySegment segment) implements
         return new VkAttachmentDescription2(s);
     }
 
-    public @Pointer(target=VkAttachmentDescription2.class) MemorySegment pAttachmentsRaw() {
+    public @Pointer(target=VkAttachmentDescription2.class) @NotNull MemorySegment pAttachmentsRaw() {
         return segment.get(LAYOUT$pAttachments, OFFSET$pAttachments);
     }
 
-    public void pAttachmentsRaw(@Pointer(target=VkAttachmentDescription2.class) MemorySegment value) {
+    public void pAttachmentsRaw(@Pointer(target=VkAttachmentDescription2.class) @NotNull MemorySegment value) {
         segment.set(LAYOUT$pAttachments, OFFSET$pAttachments, value);
     }
 
@@ -303,11 +309,11 @@ public record VkRenderPassCreateInfo2(@NotNull MemorySegment segment) implements
         return new VkSubpassDescription2(s);
     }
 
-    public @Pointer(target=VkSubpassDescription2.class) MemorySegment pSubpassesRaw() {
+    public @Pointer(target=VkSubpassDescription2.class) @NotNull MemorySegment pSubpassesRaw() {
         return segment.get(LAYOUT$pSubpasses, OFFSET$pSubpasses);
     }
 
-    public void pSubpassesRaw(@Pointer(target=VkSubpassDescription2.class) MemorySegment value) {
+    public void pSubpassesRaw(@Pointer(target=VkSubpassDescription2.class) @NotNull MemorySegment value) {
         segment.set(LAYOUT$pSubpasses, OFFSET$pSubpasses, value);
     }
 
@@ -344,11 +350,11 @@ public record VkRenderPassCreateInfo2(@NotNull MemorySegment segment) implements
         return new VkSubpassDependency2(s);
     }
 
-    public @Pointer(target=VkSubpassDependency2.class) MemorySegment pDependenciesRaw() {
+    public @Pointer(target=VkSubpassDependency2.class) @NotNull MemorySegment pDependenciesRaw() {
         return segment.get(LAYOUT$pDependencies, OFFSET$pDependencies);
     }
 
-    public void pDependenciesRaw(@Pointer(target=VkSubpassDependency2.class) MemorySegment value) {
+    public void pDependenciesRaw(@Pointer(target=VkSubpassDependency2.class) @NotNull MemorySegment value) {
         segment.set(LAYOUT$pDependencies, OFFSET$pDependencies, value);
     }
 
@@ -379,11 +385,11 @@ public record VkRenderPassCreateInfo2(@NotNull MemorySegment segment) implements
         return this;
     }
 
-    public @Pointer(comment="uint32_t*") MemorySegment pCorrelatedViewMasksRaw() {
+    public @Pointer(comment="uint32_t*") @NotNull MemorySegment pCorrelatedViewMasksRaw() {
         return segment.get(LAYOUT$pCorrelatedViewMasks, OFFSET$pCorrelatedViewMasks);
     }
 
-    public void pCorrelatedViewMasksRaw(@Pointer(comment="uint32_t*") MemorySegment value) {
+    public void pCorrelatedViewMasksRaw(@Pointer(comment="uint32_t*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pCorrelatedViewMasks, OFFSET$pCorrelatedViewMasks, value);
     }
 

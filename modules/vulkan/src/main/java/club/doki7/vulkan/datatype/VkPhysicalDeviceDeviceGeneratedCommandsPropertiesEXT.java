@@ -98,6 +98,11 @@ public record VkPhysicalDeviceDeviceGeneratedCommandsPropertiesEXT(@NotNull Memo
             return new VkPhysicalDeviceDeviceGeneratedCommandsPropertiesEXT(segment.asSlice(index * VkPhysicalDeviceDeviceGeneratedCommandsPropertiesEXT.BYTES, VkPhysicalDeviceDeviceGeneratedCommandsPropertiesEXT.BYTES));
         }
 
+        public VkPhysicalDeviceDeviceGeneratedCommandsPropertiesEXT.Ptr at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceDeviceGeneratedCommandsPropertiesEXT> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkPhysicalDeviceDeviceGeneratedCommandsPropertiesEXT value) {
             MemorySegment s = segment.asSlice(index * VkPhysicalDeviceDeviceGeneratedCommandsPropertiesEXT.BYTES, VkPhysicalDeviceDeviceGeneratedCommandsPropertiesEXT.BYTES);
             s.copyFrom(value.segment);
@@ -210,12 +215,13 @@ public record VkPhysicalDeviceDeviceGeneratedCommandsPropertiesEXT(@NotNull Memo
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkPhysicalDeviceDeviceGeneratedCommandsPropertiesEXT pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkPhysicalDeviceDeviceGeneratedCommandsPropertiesEXT pNext(@Nullable IPointer pointer) {
@@ -277,38 +283,38 @@ public record VkPhysicalDeviceDeviceGeneratedCommandsPropertiesEXT(@NotNull Memo
         return this;
     }
 
-    public @EnumType(VkIndirectCommandsInputModeFlagsEXT.class) int supportedIndirectCommandsInputModes() {
+    public @Bitmask(VkIndirectCommandsInputModeFlagsEXT.class) int supportedIndirectCommandsInputModes() {
         return segment.get(LAYOUT$supportedIndirectCommandsInputModes, OFFSET$supportedIndirectCommandsInputModes);
     }
 
-    public VkPhysicalDeviceDeviceGeneratedCommandsPropertiesEXT supportedIndirectCommandsInputModes(@EnumType(VkIndirectCommandsInputModeFlagsEXT.class) int value) {
+    public VkPhysicalDeviceDeviceGeneratedCommandsPropertiesEXT supportedIndirectCommandsInputModes(@Bitmask(VkIndirectCommandsInputModeFlagsEXT.class) int value) {
         segment.set(LAYOUT$supportedIndirectCommandsInputModes, OFFSET$supportedIndirectCommandsInputModes, value);
         return this;
     }
 
-    public @EnumType(VkShaderStageFlags.class) int supportedIndirectCommandsShaderStages() {
+    public @Bitmask(VkShaderStageFlags.class) int supportedIndirectCommandsShaderStages() {
         return segment.get(LAYOUT$supportedIndirectCommandsShaderStages, OFFSET$supportedIndirectCommandsShaderStages);
     }
 
-    public VkPhysicalDeviceDeviceGeneratedCommandsPropertiesEXT supportedIndirectCommandsShaderStages(@EnumType(VkShaderStageFlags.class) int value) {
+    public VkPhysicalDeviceDeviceGeneratedCommandsPropertiesEXT supportedIndirectCommandsShaderStages(@Bitmask(VkShaderStageFlags.class) int value) {
         segment.set(LAYOUT$supportedIndirectCommandsShaderStages, OFFSET$supportedIndirectCommandsShaderStages, value);
         return this;
     }
 
-    public @EnumType(VkShaderStageFlags.class) int supportedIndirectCommandsShaderStagesPipelineBinding() {
+    public @Bitmask(VkShaderStageFlags.class) int supportedIndirectCommandsShaderStagesPipelineBinding() {
         return segment.get(LAYOUT$supportedIndirectCommandsShaderStagesPipelineBinding, OFFSET$supportedIndirectCommandsShaderStagesPipelineBinding);
     }
 
-    public VkPhysicalDeviceDeviceGeneratedCommandsPropertiesEXT supportedIndirectCommandsShaderStagesPipelineBinding(@EnumType(VkShaderStageFlags.class) int value) {
+    public VkPhysicalDeviceDeviceGeneratedCommandsPropertiesEXT supportedIndirectCommandsShaderStagesPipelineBinding(@Bitmask(VkShaderStageFlags.class) int value) {
         segment.set(LAYOUT$supportedIndirectCommandsShaderStagesPipelineBinding, OFFSET$supportedIndirectCommandsShaderStagesPipelineBinding, value);
         return this;
     }
 
-    public @EnumType(VkShaderStageFlags.class) int supportedIndirectCommandsShaderStagesShaderBinding() {
+    public @Bitmask(VkShaderStageFlags.class) int supportedIndirectCommandsShaderStagesShaderBinding() {
         return segment.get(LAYOUT$supportedIndirectCommandsShaderStagesShaderBinding, OFFSET$supportedIndirectCommandsShaderStagesShaderBinding);
     }
 
-    public VkPhysicalDeviceDeviceGeneratedCommandsPropertiesEXT supportedIndirectCommandsShaderStagesShaderBinding(@EnumType(VkShaderStageFlags.class) int value) {
+    public VkPhysicalDeviceDeviceGeneratedCommandsPropertiesEXT supportedIndirectCommandsShaderStagesShaderBinding(@Bitmask(VkShaderStageFlags.class) int value) {
         segment.set(LAYOUT$supportedIndirectCommandsShaderStagesShaderBinding, OFFSET$supportedIndirectCommandsShaderStagesShaderBinding, value);
         return this;
     }

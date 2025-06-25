@@ -87,6 +87,11 @@ public record VkInitializePerformanceApiInfoINTEL(@NotNull MemorySegment segment
             return new VkInitializePerformanceApiInfoINTEL(segment.asSlice(index * VkInitializePerformanceApiInfoINTEL.BYTES, VkInitializePerformanceApiInfoINTEL.BYTES));
         }
 
+        public VkInitializePerformanceApiInfoINTEL.Ptr at(long index, @NotNull Consumer<@NotNull VkInitializePerformanceApiInfoINTEL> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkInitializePerformanceApiInfoINTEL value) {
             MemorySegment s = segment.asSlice(index * VkInitializePerformanceApiInfoINTEL.BYTES, VkInitializePerformanceApiInfoINTEL.BYTES);
             s.copyFrom(value.segment);
@@ -199,12 +204,13 @@ public record VkInitializePerformanceApiInfoINTEL(@NotNull MemorySegment segment
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkInitializePerformanceApiInfoINTEL pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkInitializePerformanceApiInfoINTEL pNext(@Nullable IPointer pointer) {
@@ -212,12 +218,13 @@ public record VkInitializePerformanceApiInfoINTEL(@NotNull MemorySegment segment
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pUserData() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pUserData() {
         return segment.get(LAYOUT$pUserData, OFFSET$pUserData);
     }
 
-    public void pUserData(@Pointer(comment="void*") MemorySegment value) {
+    public VkInitializePerformanceApiInfoINTEL pUserData(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pUserData, OFFSET$pUserData, value);
+        return this;
     }
 
     public VkInitializePerformanceApiInfoINTEL pUserData(@Nullable IPointer pointer) {

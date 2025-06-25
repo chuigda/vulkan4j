@@ -110,6 +110,11 @@ public record VkVideoEncodeAV1CapabilitiesKHR(@NotNull MemorySegment segment) im
             return new VkVideoEncodeAV1CapabilitiesKHR(segment.asSlice(index * VkVideoEncodeAV1CapabilitiesKHR.BYTES, VkVideoEncodeAV1CapabilitiesKHR.BYTES));
         }
 
+        public VkVideoEncodeAV1CapabilitiesKHR.Ptr at(long index, @NotNull Consumer<@NotNull VkVideoEncodeAV1CapabilitiesKHR> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkVideoEncodeAV1CapabilitiesKHR value) {
             MemorySegment s = segment.asSlice(index * VkVideoEncodeAV1CapabilitiesKHR.BYTES, VkVideoEncodeAV1CapabilitiesKHR.BYTES);
             s.copyFrom(value.segment);
@@ -222,12 +227,13 @@ public record VkVideoEncodeAV1CapabilitiesKHR(@NotNull MemorySegment segment) im
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkVideoEncodeAV1CapabilitiesKHR pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkVideoEncodeAV1CapabilitiesKHR pNext(@Nullable IPointer pointer) {
@@ -235,11 +241,11 @@ public record VkVideoEncodeAV1CapabilitiesKHR(@NotNull MemorySegment segment) im
         return this;
     }
 
-    public @EnumType(VkVideoEncodeAV1CapabilityFlagsKHR.class) int flags() {
+    public @Bitmask(VkVideoEncodeAV1CapabilityFlagsKHR.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public VkVideoEncodeAV1CapabilitiesKHR flags(@EnumType(VkVideoEncodeAV1CapabilityFlagsKHR.class) int value) {
+    public VkVideoEncodeAV1CapabilitiesKHR flags(@Bitmask(VkVideoEncodeAV1CapabilityFlagsKHR.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
         return this;
     }
@@ -309,11 +315,11 @@ public record VkVideoEncodeAV1CapabilitiesKHR(@NotNull MemorySegment segment) im
         return this;
     }
 
-    public @EnumType(VkVideoEncodeAV1SuperblockSizeFlagsKHR.class) int superblockSizes() {
+    public @Bitmask(VkVideoEncodeAV1SuperblockSizeFlagsKHR.class) int superblockSizes() {
         return segment.get(LAYOUT$superblockSizes, OFFSET$superblockSizes);
     }
 
-    public VkVideoEncodeAV1CapabilitiesKHR superblockSizes(@EnumType(VkVideoEncodeAV1SuperblockSizeFlagsKHR.class) int value) {
+    public VkVideoEncodeAV1CapabilitiesKHR superblockSizes(@Bitmask(VkVideoEncodeAV1SuperblockSizeFlagsKHR.class) int value) {
         segment.set(LAYOUT$superblockSizes, OFFSET$superblockSizes, value);
         return this;
     }
@@ -462,11 +468,11 @@ public record VkVideoEncodeAV1CapabilitiesKHR(@NotNull MemorySegment segment) im
         return this;
     }
 
-    public @EnumType(VkVideoEncodeAV1StdFlagsKHR.class) int stdSyntaxFlags() {
+    public @Bitmask(VkVideoEncodeAV1StdFlagsKHR.class) int stdSyntaxFlags() {
         return segment.get(LAYOUT$stdSyntaxFlags, OFFSET$stdSyntaxFlags);
     }
 
-    public VkVideoEncodeAV1CapabilitiesKHR stdSyntaxFlags(@EnumType(VkVideoEncodeAV1StdFlagsKHR.class) int value) {
+    public VkVideoEncodeAV1CapabilitiesKHR stdSyntaxFlags(@Bitmask(VkVideoEncodeAV1StdFlagsKHR.class) int value) {
         segment.set(LAYOUT$stdSyntaxFlags, OFFSET$stdSyntaxFlags, value);
         return this;
     }

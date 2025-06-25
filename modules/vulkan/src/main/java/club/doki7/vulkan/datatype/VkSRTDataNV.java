@@ -91,6 +91,11 @@ public record VkSRTDataNV(@NotNull MemorySegment segment) implements IVkSRTDataN
             return new VkSRTDataNV(segment.asSlice(index * VkSRTDataNV.BYTES, VkSRTDataNV.BYTES));
         }
 
+        public VkSRTDataNV.Ptr at(long index, @NotNull Consumer<@NotNull VkSRTDataNV> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkSRTDataNV value) {
             MemorySegment s = segment.asSlice(index * VkSRTDataNV.BYTES, VkSRTDataNV.BYTES);
             s.copyFrom(value.segment);

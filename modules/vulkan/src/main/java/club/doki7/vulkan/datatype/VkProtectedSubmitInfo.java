@@ -87,6 +87,11 @@ public record VkProtectedSubmitInfo(@NotNull MemorySegment segment) implements I
             return new VkProtectedSubmitInfo(segment.asSlice(index * VkProtectedSubmitInfo.BYTES, VkProtectedSubmitInfo.BYTES));
         }
 
+        public VkProtectedSubmitInfo.Ptr at(long index, @NotNull Consumer<@NotNull VkProtectedSubmitInfo> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkProtectedSubmitInfo value) {
             MemorySegment s = segment.asSlice(index * VkProtectedSubmitInfo.BYTES, VkProtectedSubmitInfo.BYTES);
             s.copyFrom(value.segment);
@@ -199,12 +204,13 @@ public record VkProtectedSubmitInfo(@NotNull MemorySegment segment) implements I
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkProtectedSubmitInfo pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkProtectedSubmitInfo pNext(@Nullable IPointer pointer) {

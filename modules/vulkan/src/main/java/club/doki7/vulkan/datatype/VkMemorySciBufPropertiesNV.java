@@ -87,6 +87,11 @@ public record VkMemorySciBufPropertiesNV(@NotNull MemorySegment segment) impleme
             return new VkMemorySciBufPropertiesNV(segment.asSlice(index * VkMemorySciBufPropertiesNV.BYTES, VkMemorySciBufPropertiesNV.BYTES));
         }
 
+        public VkMemorySciBufPropertiesNV.Ptr at(long index, @NotNull Consumer<@NotNull VkMemorySciBufPropertiesNV> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkMemorySciBufPropertiesNV value) {
             MemorySegment s = segment.asSlice(index * VkMemorySciBufPropertiesNV.BYTES, VkMemorySciBufPropertiesNV.BYTES);
             s.copyFrom(value.segment);
@@ -199,12 +204,13 @@ public record VkMemorySciBufPropertiesNV(@NotNull MemorySegment segment) impleme
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkMemorySciBufPropertiesNV pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkMemorySciBufPropertiesNV pNext(@Nullable IPointer pointer) {

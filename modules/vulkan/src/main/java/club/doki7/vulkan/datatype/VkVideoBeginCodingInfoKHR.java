@@ -30,7 +30,7 @@ import static club.doki7.vulkan.VkConstants.*;
 ///     VkVideoSessionKHR videoSession; // @link substring="VkVideoSessionKHR" target="VkVideoSessionKHR" @link substring="videoSession" target="#videoSession"
 ///     VkVideoSessionParametersKHR videoSessionParameters; // optional // @link substring="VkVideoSessionParametersKHR" target="VkVideoSessionParametersKHR" @link substring="videoSessionParameters" target="#videoSessionParameters"
 ///     uint32_t referenceSlotCount; // optional // @link substring="referenceSlotCount" target="#referenceSlotCount"
-///     VkVideoReferenceSlotInfoKHR const* pReferenceSlots; // @link substring="VkVideoReferenceSlotInfoKHR" target="VkVideoReferenceSlotInfoKHR" @link substring="pReferenceSlots" target="#pReferenceSlots"
+///     VkVideoReferenceSlotInfoKHR const* pReferenceSlots; // optional // @link substring="VkVideoReferenceSlotInfoKHR" target="VkVideoReferenceSlotInfoKHR" @link substring="pReferenceSlots" target="#pReferenceSlots"
 /// } VkVideoBeginCodingInfoKHR;
 /// }
 ///
@@ -89,6 +89,11 @@ public record VkVideoBeginCodingInfoKHR(@NotNull MemorySegment segment) implemen
         /// indicate that the returned structure is a view of the original structure.
         public @NotNull VkVideoBeginCodingInfoKHR at(long index) {
             return new VkVideoBeginCodingInfoKHR(segment.asSlice(index * VkVideoBeginCodingInfoKHR.BYTES, VkVideoBeginCodingInfoKHR.BYTES));
+        }
+
+        public VkVideoBeginCodingInfoKHR.Ptr at(long index, @NotNull Consumer<@NotNull VkVideoBeginCodingInfoKHR> consumer) {
+            consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkVideoBeginCodingInfoKHR value) {
@@ -203,12 +208,13 @@ public record VkVideoBeginCodingInfoKHR(@NotNull MemorySegment segment) implemen
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkVideoBeginCodingInfoKHR pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkVideoBeginCodingInfoKHR pNext(@Nullable IPointer pointer) {
@@ -216,11 +222,11 @@ public record VkVideoBeginCodingInfoKHR(@NotNull MemorySegment segment) implemen
         return this;
     }
 
-    public @EnumType(VkVideoBeginCodingFlagsKHR.class) int flags() {
+    public @Bitmask(VkVideoBeginCodingFlagsKHR.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public VkVideoBeginCodingInfoKHR flags(@EnumType(VkVideoBeginCodingFlagsKHR.class) int value) {
+    public VkVideoBeginCodingInfoKHR flags(@Bitmask(VkVideoBeginCodingFlagsKHR.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
         return this;
     }
@@ -284,11 +290,11 @@ public record VkVideoBeginCodingInfoKHR(@NotNull MemorySegment segment) implemen
         return new VkVideoReferenceSlotInfoKHR(s);
     }
 
-    public @Pointer(target=VkVideoReferenceSlotInfoKHR.class) MemorySegment pReferenceSlotsRaw() {
+    public @Pointer(target=VkVideoReferenceSlotInfoKHR.class) @NotNull MemorySegment pReferenceSlotsRaw() {
         return segment.get(LAYOUT$pReferenceSlots, OFFSET$pReferenceSlots);
     }
 
-    public void pReferenceSlotsRaw(@Pointer(target=VkVideoReferenceSlotInfoKHR.class) MemorySegment value) {
+    public void pReferenceSlotsRaw(@Pointer(target=VkVideoReferenceSlotInfoKHR.class) @NotNull MemorySegment value) {
         segment.set(LAYOUT$pReferenceSlots, OFFSET$pReferenceSlots, value);
     }
 

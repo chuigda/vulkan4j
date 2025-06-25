@@ -90,6 +90,11 @@ public record VkPhysicalDeviceDepthStencilResolveProperties(@NotNull MemorySegme
             return new VkPhysicalDeviceDepthStencilResolveProperties(segment.asSlice(index * VkPhysicalDeviceDepthStencilResolveProperties.BYTES, VkPhysicalDeviceDepthStencilResolveProperties.BYTES));
         }
 
+        public VkPhysicalDeviceDepthStencilResolveProperties.Ptr at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceDepthStencilResolveProperties> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkPhysicalDeviceDepthStencilResolveProperties value) {
             MemorySegment s = segment.asSlice(index * VkPhysicalDeviceDepthStencilResolveProperties.BYTES, VkPhysicalDeviceDepthStencilResolveProperties.BYTES);
             s.copyFrom(value.segment);
@@ -202,12 +207,13 @@ public record VkPhysicalDeviceDepthStencilResolveProperties(@NotNull MemorySegme
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkPhysicalDeviceDepthStencilResolveProperties pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkPhysicalDeviceDepthStencilResolveProperties pNext(@Nullable IPointer pointer) {
@@ -215,20 +221,20 @@ public record VkPhysicalDeviceDepthStencilResolveProperties(@NotNull MemorySegme
         return this;
     }
 
-    public @EnumType(VkResolveModeFlags.class) int supportedDepthResolveModes() {
+    public @Bitmask(VkResolveModeFlags.class) int supportedDepthResolveModes() {
         return segment.get(LAYOUT$supportedDepthResolveModes, OFFSET$supportedDepthResolveModes);
     }
 
-    public VkPhysicalDeviceDepthStencilResolveProperties supportedDepthResolveModes(@EnumType(VkResolveModeFlags.class) int value) {
+    public VkPhysicalDeviceDepthStencilResolveProperties supportedDepthResolveModes(@Bitmask(VkResolveModeFlags.class) int value) {
         segment.set(LAYOUT$supportedDepthResolveModes, OFFSET$supportedDepthResolveModes, value);
         return this;
     }
 
-    public @EnumType(VkResolveModeFlags.class) int supportedStencilResolveModes() {
+    public @Bitmask(VkResolveModeFlags.class) int supportedStencilResolveModes() {
         return segment.get(LAYOUT$supportedStencilResolveModes, OFFSET$supportedStencilResolveModes);
     }
 
-    public VkPhysicalDeviceDepthStencilResolveProperties supportedStencilResolveModes(@EnumType(VkResolveModeFlags.class) int value) {
+    public VkPhysicalDeviceDepthStencilResolveProperties supportedStencilResolveModes(@Bitmask(VkResolveModeFlags.class) int value) {
         segment.set(LAYOUT$supportedStencilResolveModes, OFFSET$supportedStencilResolveModes, value);
         return this;
     }

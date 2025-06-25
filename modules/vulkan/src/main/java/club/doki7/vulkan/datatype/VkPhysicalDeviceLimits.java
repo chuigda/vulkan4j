@@ -181,6 +181,11 @@ public record VkPhysicalDeviceLimits(@NotNull MemorySegment segment) implements 
             return new VkPhysicalDeviceLimits(segment.asSlice(index * VkPhysicalDeviceLimits.BYTES, VkPhysicalDeviceLimits.BYTES));
         }
 
+        public VkPhysicalDeviceLimits.Ptr at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceLimits> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkPhysicalDeviceLimits value) {
             MemorySegment s = segment.asSlice(index * VkPhysicalDeviceLimits.BYTES, VkPhysicalDeviceLimits.BYTES);
             s.copyFrom(value.segment);
@@ -746,12 +751,19 @@ public record VkPhysicalDeviceLimits(@NotNull MemorySegment segment) implements 
         return new IntPtr(maxComputeWorkGroupCountRaw());
     }
 
-    public VkPhysicalDeviceLimits maxComputeWorkGroupCount(@Unsigned IntPtr value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$maxComputeWorkGroupCount, SIZE$maxComputeWorkGroupCount);
+    public VkPhysicalDeviceLimits maxComputeWorkGroupCount(@NotNull Consumer<IntPtr> consumer) {
+        @Unsigned IntPtr ptr = maxComputeWorkGroupCount();
+        consumer.accept(ptr);
         return this;
     }
 
-    public MemorySegment maxComputeWorkGroupCountRaw() {
+    public VkPhysicalDeviceLimits maxComputeWorkGroupCount(@Unsigned IntPtr value) {
+        MemorySegment s = maxComputeWorkGroupCountRaw();
+        s.copyFrom(value.segment());
+        return this;
+    }
+
+    public @NotNull MemorySegment maxComputeWorkGroupCountRaw() {
         return segment.asSlice(OFFSET$maxComputeWorkGroupCount, SIZE$maxComputeWorkGroupCount);
     }
 
@@ -768,12 +780,19 @@ public record VkPhysicalDeviceLimits(@NotNull MemorySegment segment) implements 
         return new IntPtr(maxComputeWorkGroupSizeRaw());
     }
 
-    public VkPhysicalDeviceLimits maxComputeWorkGroupSize(@Unsigned IntPtr value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$maxComputeWorkGroupSize, SIZE$maxComputeWorkGroupSize);
+    public VkPhysicalDeviceLimits maxComputeWorkGroupSize(@NotNull Consumer<IntPtr> consumer) {
+        @Unsigned IntPtr ptr = maxComputeWorkGroupSize();
+        consumer.accept(ptr);
         return this;
     }
 
-    public MemorySegment maxComputeWorkGroupSizeRaw() {
+    public VkPhysicalDeviceLimits maxComputeWorkGroupSize(@Unsigned IntPtr value) {
+        MemorySegment s = maxComputeWorkGroupSizeRaw();
+        s.copyFrom(value.segment());
+        return this;
+    }
+
+    public @NotNull MemorySegment maxComputeWorkGroupSizeRaw() {
         return segment.asSlice(OFFSET$maxComputeWorkGroupSize, SIZE$maxComputeWorkGroupSize);
     }
 
@@ -853,12 +872,19 @@ public record VkPhysicalDeviceLimits(@NotNull MemorySegment segment) implements 
         return new IntPtr(maxViewportDimensionsRaw());
     }
 
-    public VkPhysicalDeviceLimits maxViewportDimensions(@Unsigned IntPtr value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$maxViewportDimensions, SIZE$maxViewportDimensions);
+    public VkPhysicalDeviceLimits maxViewportDimensions(@NotNull Consumer<IntPtr> consumer) {
+        @Unsigned IntPtr ptr = maxViewportDimensions();
+        consumer.accept(ptr);
         return this;
     }
 
-    public MemorySegment maxViewportDimensionsRaw() {
+    public VkPhysicalDeviceLimits maxViewportDimensions(@Unsigned IntPtr value) {
+        MemorySegment s = maxViewportDimensionsRaw();
+        s.copyFrom(value.segment());
+        return this;
+    }
+
+    public @NotNull MemorySegment maxViewportDimensionsRaw() {
         return segment.asSlice(OFFSET$maxViewportDimensions, SIZE$maxViewportDimensions);
     }
 
@@ -866,12 +892,19 @@ public record VkPhysicalDeviceLimits(@NotNull MemorySegment segment) implements 
         return new FloatPtr(viewportBoundsRangeRaw());
     }
 
-    public VkPhysicalDeviceLimits viewportBoundsRange(FloatPtr value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$viewportBoundsRange, SIZE$viewportBoundsRange);
+    public VkPhysicalDeviceLimits viewportBoundsRange(@NotNull Consumer<FloatPtr> consumer) {
+        FloatPtr ptr = viewportBoundsRange();
+        consumer.accept(ptr);
         return this;
     }
 
-    public MemorySegment viewportBoundsRangeRaw() {
+    public VkPhysicalDeviceLimits viewportBoundsRange(FloatPtr value) {
+        MemorySegment s = viewportBoundsRangeRaw();
+        s.copyFrom(value.segment());
+        return this;
+    }
+
+    public @NotNull MemorySegment viewportBoundsRangeRaw() {
         return segment.asSlice(OFFSET$viewportBoundsRange, SIZE$viewportBoundsRange);
     }
 
@@ -1010,38 +1043,38 @@ public record VkPhysicalDeviceLimits(@NotNull MemorySegment segment) implements 
         return this;
     }
 
-    public @EnumType(VkSampleCountFlags.class) int framebufferColorSampleCounts() {
+    public @Bitmask(VkSampleCountFlags.class) int framebufferColorSampleCounts() {
         return segment.get(LAYOUT$framebufferColorSampleCounts, OFFSET$framebufferColorSampleCounts);
     }
 
-    public VkPhysicalDeviceLimits framebufferColorSampleCounts(@EnumType(VkSampleCountFlags.class) int value) {
+    public VkPhysicalDeviceLimits framebufferColorSampleCounts(@Bitmask(VkSampleCountFlags.class) int value) {
         segment.set(LAYOUT$framebufferColorSampleCounts, OFFSET$framebufferColorSampleCounts, value);
         return this;
     }
 
-    public @EnumType(VkSampleCountFlags.class) int framebufferDepthSampleCounts() {
+    public @Bitmask(VkSampleCountFlags.class) int framebufferDepthSampleCounts() {
         return segment.get(LAYOUT$framebufferDepthSampleCounts, OFFSET$framebufferDepthSampleCounts);
     }
 
-    public VkPhysicalDeviceLimits framebufferDepthSampleCounts(@EnumType(VkSampleCountFlags.class) int value) {
+    public VkPhysicalDeviceLimits framebufferDepthSampleCounts(@Bitmask(VkSampleCountFlags.class) int value) {
         segment.set(LAYOUT$framebufferDepthSampleCounts, OFFSET$framebufferDepthSampleCounts, value);
         return this;
     }
 
-    public @EnumType(VkSampleCountFlags.class) int framebufferStencilSampleCounts() {
+    public @Bitmask(VkSampleCountFlags.class) int framebufferStencilSampleCounts() {
         return segment.get(LAYOUT$framebufferStencilSampleCounts, OFFSET$framebufferStencilSampleCounts);
     }
 
-    public VkPhysicalDeviceLimits framebufferStencilSampleCounts(@EnumType(VkSampleCountFlags.class) int value) {
+    public VkPhysicalDeviceLimits framebufferStencilSampleCounts(@Bitmask(VkSampleCountFlags.class) int value) {
         segment.set(LAYOUT$framebufferStencilSampleCounts, OFFSET$framebufferStencilSampleCounts, value);
         return this;
     }
 
-    public @EnumType(VkSampleCountFlags.class) int framebufferNoAttachmentsSampleCounts() {
+    public @Bitmask(VkSampleCountFlags.class) int framebufferNoAttachmentsSampleCounts() {
         return segment.get(LAYOUT$framebufferNoAttachmentsSampleCounts, OFFSET$framebufferNoAttachmentsSampleCounts);
     }
 
-    public VkPhysicalDeviceLimits framebufferNoAttachmentsSampleCounts(@EnumType(VkSampleCountFlags.class) int value) {
+    public VkPhysicalDeviceLimits framebufferNoAttachmentsSampleCounts(@Bitmask(VkSampleCountFlags.class) int value) {
         segment.set(LAYOUT$framebufferNoAttachmentsSampleCounts, OFFSET$framebufferNoAttachmentsSampleCounts, value);
         return this;
     }
@@ -1055,47 +1088,47 @@ public record VkPhysicalDeviceLimits(@NotNull MemorySegment segment) implements 
         return this;
     }
 
-    public @EnumType(VkSampleCountFlags.class) int sampledImageColorSampleCounts() {
+    public @Bitmask(VkSampleCountFlags.class) int sampledImageColorSampleCounts() {
         return segment.get(LAYOUT$sampledImageColorSampleCounts, OFFSET$sampledImageColorSampleCounts);
     }
 
-    public VkPhysicalDeviceLimits sampledImageColorSampleCounts(@EnumType(VkSampleCountFlags.class) int value) {
+    public VkPhysicalDeviceLimits sampledImageColorSampleCounts(@Bitmask(VkSampleCountFlags.class) int value) {
         segment.set(LAYOUT$sampledImageColorSampleCounts, OFFSET$sampledImageColorSampleCounts, value);
         return this;
     }
 
-    public @EnumType(VkSampleCountFlags.class) int sampledImageIntegerSampleCounts() {
+    public @Bitmask(VkSampleCountFlags.class) int sampledImageIntegerSampleCounts() {
         return segment.get(LAYOUT$sampledImageIntegerSampleCounts, OFFSET$sampledImageIntegerSampleCounts);
     }
 
-    public VkPhysicalDeviceLimits sampledImageIntegerSampleCounts(@EnumType(VkSampleCountFlags.class) int value) {
+    public VkPhysicalDeviceLimits sampledImageIntegerSampleCounts(@Bitmask(VkSampleCountFlags.class) int value) {
         segment.set(LAYOUT$sampledImageIntegerSampleCounts, OFFSET$sampledImageIntegerSampleCounts, value);
         return this;
     }
 
-    public @EnumType(VkSampleCountFlags.class) int sampledImageDepthSampleCounts() {
+    public @Bitmask(VkSampleCountFlags.class) int sampledImageDepthSampleCounts() {
         return segment.get(LAYOUT$sampledImageDepthSampleCounts, OFFSET$sampledImageDepthSampleCounts);
     }
 
-    public VkPhysicalDeviceLimits sampledImageDepthSampleCounts(@EnumType(VkSampleCountFlags.class) int value) {
+    public VkPhysicalDeviceLimits sampledImageDepthSampleCounts(@Bitmask(VkSampleCountFlags.class) int value) {
         segment.set(LAYOUT$sampledImageDepthSampleCounts, OFFSET$sampledImageDepthSampleCounts, value);
         return this;
     }
 
-    public @EnumType(VkSampleCountFlags.class) int sampledImageStencilSampleCounts() {
+    public @Bitmask(VkSampleCountFlags.class) int sampledImageStencilSampleCounts() {
         return segment.get(LAYOUT$sampledImageStencilSampleCounts, OFFSET$sampledImageStencilSampleCounts);
     }
 
-    public VkPhysicalDeviceLimits sampledImageStencilSampleCounts(@EnumType(VkSampleCountFlags.class) int value) {
+    public VkPhysicalDeviceLimits sampledImageStencilSampleCounts(@Bitmask(VkSampleCountFlags.class) int value) {
         segment.set(LAYOUT$sampledImageStencilSampleCounts, OFFSET$sampledImageStencilSampleCounts, value);
         return this;
     }
 
-    public @EnumType(VkSampleCountFlags.class) int storageImageSampleCounts() {
+    public @Bitmask(VkSampleCountFlags.class) int storageImageSampleCounts() {
         return segment.get(LAYOUT$storageImageSampleCounts, OFFSET$storageImageSampleCounts);
     }
 
-    public VkPhysicalDeviceLimits storageImageSampleCounts(@EnumType(VkSampleCountFlags.class) int value) {
+    public VkPhysicalDeviceLimits storageImageSampleCounts(@Bitmask(VkSampleCountFlags.class) int value) {
         segment.set(LAYOUT$storageImageSampleCounts, OFFSET$storageImageSampleCounts, value);
         return this;
     }
@@ -1167,12 +1200,19 @@ public record VkPhysicalDeviceLimits(@NotNull MemorySegment segment) implements 
         return new FloatPtr(pointSizeRangeRaw());
     }
 
-    public VkPhysicalDeviceLimits pointSizeRange(FloatPtr value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$pointSizeRange, SIZE$pointSizeRange);
+    public VkPhysicalDeviceLimits pointSizeRange(@NotNull Consumer<FloatPtr> consumer) {
+        FloatPtr ptr = pointSizeRange();
+        consumer.accept(ptr);
         return this;
     }
 
-    public MemorySegment pointSizeRangeRaw() {
+    public VkPhysicalDeviceLimits pointSizeRange(FloatPtr value) {
+        MemorySegment s = pointSizeRangeRaw();
+        s.copyFrom(value.segment());
+        return this;
+    }
+
+    public @NotNull MemorySegment pointSizeRangeRaw() {
         return segment.asSlice(OFFSET$pointSizeRange, SIZE$pointSizeRange);
     }
 
@@ -1180,12 +1220,19 @@ public record VkPhysicalDeviceLimits(@NotNull MemorySegment segment) implements 
         return new FloatPtr(lineWidthRangeRaw());
     }
 
-    public VkPhysicalDeviceLimits lineWidthRange(FloatPtr value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$lineWidthRange, SIZE$lineWidthRange);
+    public VkPhysicalDeviceLimits lineWidthRange(@NotNull Consumer<FloatPtr> consumer) {
+        FloatPtr ptr = lineWidthRange();
+        consumer.accept(ptr);
         return this;
     }
 
-    public MemorySegment lineWidthRangeRaw() {
+    public VkPhysicalDeviceLimits lineWidthRange(FloatPtr value) {
+        MemorySegment s = lineWidthRangeRaw();
+        s.copyFrom(value.segment());
+        return this;
+    }
+
+    public @NotNull MemorySegment lineWidthRangeRaw() {
         return segment.asSlice(OFFSET$lineWidthRange, SIZE$lineWidthRange);
     }
 

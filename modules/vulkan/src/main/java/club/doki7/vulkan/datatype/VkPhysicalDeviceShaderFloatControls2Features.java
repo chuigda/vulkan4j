@@ -87,6 +87,11 @@ public record VkPhysicalDeviceShaderFloatControls2Features(@NotNull MemorySegmen
             return new VkPhysicalDeviceShaderFloatControls2Features(segment.asSlice(index * VkPhysicalDeviceShaderFloatControls2Features.BYTES, VkPhysicalDeviceShaderFloatControls2Features.BYTES));
         }
 
+        public VkPhysicalDeviceShaderFloatControls2Features.Ptr at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceShaderFloatControls2Features> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkPhysicalDeviceShaderFloatControls2Features value) {
             MemorySegment s = segment.asSlice(index * VkPhysicalDeviceShaderFloatControls2Features.BYTES, VkPhysicalDeviceShaderFloatControls2Features.BYTES);
             s.copyFrom(value.segment);
@@ -199,12 +204,13 @@ public record VkPhysicalDeviceShaderFloatControls2Features(@NotNull MemorySegmen
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkPhysicalDeviceShaderFloatControls2Features pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkPhysicalDeviceShaderFloatControls2Features pNext(@Nullable IPointer pointer) {

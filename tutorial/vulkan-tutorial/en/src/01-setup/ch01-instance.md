@@ -1,13 +1,21 @@
 # Instance
 
-> [Java code](https://github.com/chuigda/vulkan4j/tree/master/modules/tutorial/src/main/java/tutorial/vulkan/part01/ch01/Main.java) | [C++ version](https://vulkan-tutorial.com/Drawing_a_triangle/Setup/Instance) 
+> [Java code](https://github.com/club-doki7/vulkan4j/tree/master/modules/tutorial/src/main/java/tutorial/vulkan/part01/ch01/Main.java) | [C++ version](https://vulkan-tutorial.com/Drawing_a_triangle/Setup/Instance) 
 
 ## Loading Vulkan library
 
-Before we can start using Vulkan, we need to load the Vulkan library and several fundamental Vulkan commands, just like what we did with GLFW. Add the following private fields to the `Application` class:
+Before we can start using Vulkan, we need to load the Vulkan library and several fundamental Vulkan commands, just like what we did with GLFW.
+
+Add the following private static fields to the `Application` class:
 
 ```java
-private VkStaticCommands staticCommands;
+private static final ISharedLibrary libVulkan = VulkanLoader.loadVulkanLibrary();
+private static final VkStaticCommands staticCommands = VulkanLoader.loadStaticCommands(libVulkan);
+```
+
+Add the following private fields to the `Application` class:
+
+```java
 private VkEntryCommands entryCommands;
 ```
 
@@ -15,8 +23,6 @@ Then load Vulkan library and initialize these two fields in the `initVulkan` fun
 
 ```java
 void initVulkan() {
-    VulkanLoader.loadVulkanLibrary();
-    staticCommands = VulkanLoader.loadStaticCommands();
     entryCommands = VulkanLoader.loadEntryCommands(staticCommands);
 }
 ```
@@ -79,7 +85,8 @@ if (glfwExtensions == null) {
 
 var glfwExtensionCount = pGLFWExtensionCount.read();
 glfwExtensions = glfwExtensions.reinterpret(glfwExtensionCount);
-instanceCreateInfo.enabledExtensionCount(pGLFWExtensionCount.read())
+instanceCreateInfo
+        .enabledExtensionCount(pGLFWExtensionCount.read())
         .ppEnabledExtensionNames(glfwExtensions);
 ```
 

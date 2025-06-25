@@ -27,7 +27,7 @@ import static club.doki7.vulkan.VkConstants.*;
 ///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
 ///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
 ///     uint32_t descriptorSetCount; // optional // @link substring="descriptorSetCount" target="#descriptorSetCount"
-///     uint32_t const* pDescriptorCounts; // @link substring="pDescriptorCounts" target="#pDescriptorCounts"
+///     uint32_t const* pDescriptorCounts; // optional // @link substring="pDescriptorCounts" target="#pDescriptorCounts"
 /// } VkDescriptorSetVariableDescriptorCountAllocateInfo;
 /// }
 ///
@@ -86,6 +86,11 @@ public record VkDescriptorSetVariableDescriptorCountAllocateInfo(@NotNull Memory
         /// indicate that the returned structure is a view of the original structure.
         public @NotNull VkDescriptorSetVariableDescriptorCountAllocateInfo at(long index) {
             return new VkDescriptorSetVariableDescriptorCountAllocateInfo(segment.asSlice(index * VkDescriptorSetVariableDescriptorCountAllocateInfo.BYTES, VkDescriptorSetVariableDescriptorCountAllocateInfo.BYTES));
+        }
+
+        public VkDescriptorSetVariableDescriptorCountAllocateInfo.Ptr at(long index, @NotNull Consumer<@NotNull VkDescriptorSetVariableDescriptorCountAllocateInfo> consumer) {
+            consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkDescriptorSetVariableDescriptorCountAllocateInfo value) {
@@ -200,12 +205,13 @@ public record VkDescriptorSetVariableDescriptorCountAllocateInfo(@NotNull Memory
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkDescriptorSetVariableDescriptorCountAllocateInfo pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkDescriptorSetVariableDescriptorCountAllocateInfo pNext(@Nullable IPointer pointer) {
@@ -240,11 +246,11 @@ public record VkDescriptorSetVariableDescriptorCountAllocateInfo(@NotNull Memory
         return this;
     }
 
-    public @Pointer(comment="uint32_t*") MemorySegment pDescriptorCountsRaw() {
+    public @Pointer(comment="uint32_t*") @NotNull MemorySegment pDescriptorCountsRaw() {
         return segment.get(LAYOUT$pDescriptorCounts, OFFSET$pDescriptorCounts);
     }
 
-    public void pDescriptorCountsRaw(@Pointer(comment="uint32_t*") MemorySegment value) {
+    public void pDescriptorCountsRaw(@Pointer(comment="uint32_t*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pDescriptorCounts, OFFSET$pDescriptorCounts, value);
     }
 

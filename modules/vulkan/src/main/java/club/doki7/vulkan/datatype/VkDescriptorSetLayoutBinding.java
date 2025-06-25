@@ -80,6 +80,11 @@ public record VkDescriptorSetLayoutBinding(@NotNull MemorySegment segment) imple
             return new VkDescriptorSetLayoutBinding(segment.asSlice(index * VkDescriptorSetLayoutBinding.BYTES, VkDescriptorSetLayoutBinding.BYTES));
         }
 
+        public VkDescriptorSetLayoutBinding.Ptr at(long index, @NotNull Consumer<@NotNull VkDescriptorSetLayoutBinding> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkDescriptorSetLayoutBinding value) {
             MemorySegment s = segment.asSlice(index * VkDescriptorSetLayoutBinding.BYTES, VkDescriptorSetLayoutBinding.BYTES);
             s.copyFrom(value.segment);
@@ -200,11 +205,11 @@ public record VkDescriptorSetLayoutBinding(@NotNull MemorySegment segment) imple
         return this;
     }
 
-    public @EnumType(VkShaderStageFlags.class) int stageFlags() {
+    public @Bitmask(VkShaderStageFlags.class) int stageFlags() {
         return segment.get(LAYOUT$stageFlags, OFFSET$stageFlags);
     }
 
-    public VkDescriptorSetLayoutBinding stageFlags(@EnumType(VkShaderStageFlags.class) int value) {
+    public VkDescriptorSetLayoutBinding stageFlags(@Bitmask(VkShaderStageFlags.class) int value) {
         segment.set(LAYOUT$stageFlags, OFFSET$stageFlags, value);
         return this;
     }
@@ -227,11 +232,11 @@ public record VkDescriptorSetLayoutBinding(@NotNull MemorySegment segment) imple
         return this;
     }
 
-    public @Pointer(target=VkSampler.class) MemorySegment pImmutableSamplersRaw() {
+    public @Pointer(target=VkSampler.class) @NotNull MemorySegment pImmutableSamplersRaw() {
         return segment.get(LAYOUT$pImmutableSamplers, OFFSET$pImmutableSamplers);
     }
 
-    public void pImmutableSamplersRaw(@Pointer(target=VkSampler.class) MemorySegment value) {
+    public void pImmutableSamplersRaw(@Pointer(target=VkSampler.class) @NotNull MemorySegment value) {
         segment.set(LAYOUT$pImmutableSamplers, OFFSET$pImmutableSamplers, value);
     }
 

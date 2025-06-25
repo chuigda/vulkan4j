@@ -87,6 +87,11 @@ public record VkPhysicalDeviceFragmentDensityMapOffsetFeaturesEXT(@NotNull Memor
             return new VkPhysicalDeviceFragmentDensityMapOffsetFeaturesEXT(segment.asSlice(index * VkPhysicalDeviceFragmentDensityMapOffsetFeaturesEXT.BYTES, VkPhysicalDeviceFragmentDensityMapOffsetFeaturesEXT.BYTES));
         }
 
+        public VkPhysicalDeviceFragmentDensityMapOffsetFeaturesEXT.Ptr at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceFragmentDensityMapOffsetFeaturesEXT> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkPhysicalDeviceFragmentDensityMapOffsetFeaturesEXT value) {
             MemorySegment s = segment.asSlice(index * VkPhysicalDeviceFragmentDensityMapOffsetFeaturesEXT.BYTES, VkPhysicalDeviceFragmentDensityMapOffsetFeaturesEXT.BYTES);
             s.copyFrom(value.segment);
@@ -199,12 +204,13 @@ public record VkPhysicalDeviceFragmentDensityMapOffsetFeaturesEXT(@NotNull Memor
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkPhysicalDeviceFragmentDensityMapOffsetFeaturesEXT pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkPhysicalDeviceFragmentDensityMapOffsetFeaturesEXT pNext(@Nullable IPointer pointer) {

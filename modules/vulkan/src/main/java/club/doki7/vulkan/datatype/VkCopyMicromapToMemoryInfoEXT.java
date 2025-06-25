@@ -89,6 +89,11 @@ public record VkCopyMicromapToMemoryInfoEXT(@NotNull MemorySegment segment) impl
             return new VkCopyMicromapToMemoryInfoEXT(segment.asSlice(index * VkCopyMicromapToMemoryInfoEXT.BYTES, VkCopyMicromapToMemoryInfoEXT.BYTES));
         }
 
+        public VkCopyMicromapToMemoryInfoEXT.Ptr at(long index, @NotNull Consumer<@NotNull VkCopyMicromapToMemoryInfoEXT> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkCopyMicromapToMemoryInfoEXT value) {
             MemorySegment s = segment.asSlice(index * VkCopyMicromapToMemoryInfoEXT.BYTES, VkCopyMicromapToMemoryInfoEXT.BYTES);
             s.copyFrom(value.segment);
@@ -201,12 +206,13 @@ public record VkCopyMicromapToMemoryInfoEXT(@NotNull MemorySegment segment) impl
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkCopyMicromapToMemoryInfoEXT pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkCopyMicromapToMemoryInfoEXT pNext(@Nullable IPointer pointer) {

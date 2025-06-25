@@ -92,6 +92,11 @@ public record VkPipelineColorBlendStateCreateInfo(@NotNull MemorySegment segment
             return new VkPipelineColorBlendStateCreateInfo(segment.asSlice(index * VkPipelineColorBlendStateCreateInfo.BYTES, VkPipelineColorBlendStateCreateInfo.BYTES));
         }
 
+        public VkPipelineColorBlendStateCreateInfo.Ptr at(long index, @NotNull Consumer<@NotNull VkPipelineColorBlendStateCreateInfo> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkPipelineColorBlendStateCreateInfo value) {
             MemorySegment s = segment.asSlice(index * VkPipelineColorBlendStateCreateInfo.BYTES, VkPipelineColorBlendStateCreateInfo.BYTES);
             s.copyFrom(value.segment);
@@ -204,12 +209,13 @@ public record VkPipelineColorBlendStateCreateInfo(@NotNull MemorySegment segment
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkPipelineColorBlendStateCreateInfo pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkPipelineColorBlendStateCreateInfo pNext(@Nullable IPointer pointer) {
@@ -217,11 +223,11 @@ public record VkPipelineColorBlendStateCreateInfo(@NotNull MemorySegment segment
         return this;
     }
 
-    public @EnumType(VkPipelineColorBlendStateCreateFlags.class) int flags() {
+    public @Bitmask(VkPipelineColorBlendStateCreateFlags.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public VkPipelineColorBlendStateCreateInfo flags(@EnumType(VkPipelineColorBlendStateCreateFlags.class) int value) {
+    public VkPipelineColorBlendStateCreateInfo flags(@Bitmask(VkPipelineColorBlendStateCreateFlags.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
         return this;
     }
@@ -277,11 +283,11 @@ public record VkPipelineColorBlendStateCreateInfo(@NotNull MemorySegment segment
         return new VkPipelineColorBlendAttachmentState(s);
     }
 
-    public @Pointer(target=VkPipelineColorBlendAttachmentState.class) MemorySegment pAttachmentsRaw() {
+    public @Pointer(target=VkPipelineColorBlendAttachmentState.class) @NotNull MemorySegment pAttachmentsRaw() {
         return segment.get(LAYOUT$pAttachments, OFFSET$pAttachments);
     }
 
-    public void pAttachmentsRaw(@Pointer(target=VkPipelineColorBlendAttachmentState.class) MemorySegment value) {
+    public void pAttachmentsRaw(@Pointer(target=VkPipelineColorBlendAttachmentState.class) @NotNull MemorySegment value) {
         segment.set(LAYOUT$pAttachments, OFFSET$pAttachments, value);
     }
 
@@ -289,12 +295,19 @@ public record VkPipelineColorBlendStateCreateInfo(@NotNull MemorySegment segment
         return new FloatPtr(blendConstantsRaw());
     }
 
-    public VkPipelineColorBlendStateCreateInfo blendConstants(FloatPtr value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$blendConstants, SIZE$blendConstants);
+    public VkPipelineColorBlendStateCreateInfo blendConstants(@NotNull Consumer<FloatPtr> consumer) {
+        FloatPtr ptr = blendConstants();
+        consumer.accept(ptr);
         return this;
     }
 
-    public MemorySegment blendConstantsRaw() {
+    public VkPipelineColorBlendStateCreateInfo blendConstants(FloatPtr value) {
+        MemorySegment s = blendConstantsRaw();
+        s.copyFrom(value.segment());
+        return this;
+    }
+
+    public @NotNull MemorySegment blendConstantsRaw() {
         return segment.asSlice(OFFSET$blendConstants, SIZE$blendConstants);
     }
 

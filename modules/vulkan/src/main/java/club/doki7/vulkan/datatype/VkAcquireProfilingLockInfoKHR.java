@@ -88,6 +88,11 @@ public record VkAcquireProfilingLockInfoKHR(@NotNull MemorySegment segment) impl
             return new VkAcquireProfilingLockInfoKHR(segment.asSlice(index * VkAcquireProfilingLockInfoKHR.BYTES, VkAcquireProfilingLockInfoKHR.BYTES));
         }
 
+        public VkAcquireProfilingLockInfoKHR.Ptr at(long index, @NotNull Consumer<@NotNull VkAcquireProfilingLockInfoKHR> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkAcquireProfilingLockInfoKHR value) {
             MemorySegment s = segment.asSlice(index * VkAcquireProfilingLockInfoKHR.BYTES, VkAcquireProfilingLockInfoKHR.BYTES);
             s.copyFrom(value.segment);
@@ -200,12 +205,13 @@ public record VkAcquireProfilingLockInfoKHR(@NotNull MemorySegment segment) impl
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkAcquireProfilingLockInfoKHR pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkAcquireProfilingLockInfoKHR pNext(@Nullable IPointer pointer) {
@@ -213,11 +219,11 @@ public record VkAcquireProfilingLockInfoKHR(@NotNull MemorySegment segment) impl
         return this;
     }
 
-    public @EnumType(VkAcquireProfilingLockFlagsKHR.class) int flags() {
+    public @Bitmask(VkAcquireProfilingLockFlagsKHR.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public VkAcquireProfilingLockInfoKHR flags(@EnumType(VkAcquireProfilingLockFlagsKHR.class) int value) {
+    public VkAcquireProfilingLockInfoKHR flags(@Bitmask(VkAcquireProfilingLockFlagsKHR.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
         return this;
     }

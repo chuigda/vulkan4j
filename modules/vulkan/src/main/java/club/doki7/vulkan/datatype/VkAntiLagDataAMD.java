@@ -89,6 +89,11 @@ public record VkAntiLagDataAMD(@NotNull MemorySegment segment) implements IVkAnt
             return new VkAntiLagDataAMD(segment.asSlice(index * VkAntiLagDataAMD.BYTES, VkAntiLagDataAMD.BYTES));
         }
 
+        public VkAntiLagDataAMD.Ptr at(long index, @NotNull Consumer<@NotNull VkAntiLagDataAMD> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkAntiLagDataAMD value) {
             MemorySegment s = segment.asSlice(index * VkAntiLagDataAMD.BYTES, VkAntiLagDataAMD.BYTES);
             s.copyFrom(value.segment);
@@ -201,12 +206,13 @@ public record VkAntiLagDataAMD(@NotNull MemorySegment segment) implements IVkAnt
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkAntiLagDataAMD pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkAntiLagDataAMD pNext(@Nullable IPointer pointer) {
@@ -256,11 +262,11 @@ public record VkAntiLagDataAMD(@NotNull MemorySegment segment) implements IVkAnt
         return new VkAntiLagPresentationInfoAMD(s);
     }
 
-    public @Pointer(target=VkAntiLagPresentationInfoAMD.class) MemorySegment pPresentationInfoRaw() {
+    public @Pointer(target=VkAntiLagPresentationInfoAMD.class) @NotNull MemorySegment pPresentationInfoRaw() {
         return segment.get(LAYOUT$pPresentationInfo, OFFSET$pPresentationInfo);
     }
 
-    public void pPresentationInfoRaw(@Pointer(target=VkAntiLagPresentationInfoAMD.class) MemorySegment value) {
+    public void pPresentationInfoRaw(@Pointer(target=VkAntiLagPresentationInfoAMD.class) @NotNull MemorySegment value) {
         segment.set(LAYOUT$pPresentationInfo, OFFSET$pPresentationInfo, value);
     }
 

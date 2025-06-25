@@ -88,6 +88,11 @@ public record VkMemoryGetSciBufInfoNV(@NotNull MemorySegment segment) implements
             return new VkMemoryGetSciBufInfoNV(segment.asSlice(index * VkMemoryGetSciBufInfoNV.BYTES, VkMemoryGetSciBufInfoNV.BYTES));
         }
 
+        public VkMemoryGetSciBufInfoNV.Ptr at(long index, @NotNull Consumer<@NotNull VkMemoryGetSciBufInfoNV> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkMemoryGetSciBufInfoNV value) {
             MemorySegment s = segment.asSlice(index * VkMemoryGetSciBufInfoNV.BYTES, VkMemoryGetSciBufInfoNV.BYTES);
             s.copyFrom(value.segment);
@@ -200,12 +205,13 @@ public record VkMemoryGetSciBufInfoNV(@NotNull MemorySegment segment) implements
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkMemoryGetSciBufInfoNV pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkMemoryGetSciBufInfoNV pNext(@Nullable IPointer pointer) {
@@ -226,11 +232,11 @@ public record VkMemoryGetSciBufInfoNV(@NotNull MemorySegment segment) implements
         return this;
     }
 
-    public @EnumType(VkExternalMemoryHandleTypeFlags.class) int handleType() {
+    public @Bitmask(VkExternalMemoryHandleTypeFlags.class) int handleType() {
         return segment.get(LAYOUT$handleType, OFFSET$handleType);
     }
 
-    public VkMemoryGetSciBufInfoNV handleType(@EnumType(VkExternalMemoryHandleTypeFlags.class) int value) {
+    public VkMemoryGetSciBufInfoNV handleType(@Bitmask(VkExternalMemoryHandleTypeFlags.class) int value) {
         segment.set(LAYOUT$handleType, OFFSET$handleType, value);
         return this;
     }

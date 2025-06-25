@@ -28,7 +28,7 @@ import static club.doki7.vulkan.VkConstants.*;
 ///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
 ///     VkCoarseSampleOrderTypeNV sampleOrderType; // @link substring="VkCoarseSampleOrderTypeNV" target="VkCoarseSampleOrderTypeNV" @link substring="sampleOrderType" target="#sampleOrderType"
 ///     uint32_t customSampleOrderCount; // optional // @link substring="customSampleOrderCount" target="#customSampleOrderCount"
-///     VkCoarseSampleOrderCustomNV const* pCustomSampleOrders; // @link substring="VkCoarseSampleOrderCustomNV" target="VkCoarseSampleOrderCustomNV" @link substring="pCustomSampleOrders" target="#pCustomSampleOrders"
+///     VkCoarseSampleOrderCustomNV const* pCustomSampleOrders; // optional // @link substring="VkCoarseSampleOrderCustomNV" target="VkCoarseSampleOrderCustomNV" @link substring="pCustomSampleOrders" target="#pCustomSampleOrders"
 /// } VkPipelineViewportCoarseSampleOrderStateCreateInfoNV;
 /// }
 ///
@@ -87,6 +87,11 @@ public record VkPipelineViewportCoarseSampleOrderStateCreateInfoNV(@NotNull Memo
         /// indicate that the returned structure is a view of the original structure.
         public @NotNull VkPipelineViewportCoarseSampleOrderStateCreateInfoNV at(long index) {
             return new VkPipelineViewportCoarseSampleOrderStateCreateInfoNV(segment.asSlice(index * VkPipelineViewportCoarseSampleOrderStateCreateInfoNV.BYTES, VkPipelineViewportCoarseSampleOrderStateCreateInfoNV.BYTES));
+        }
+
+        public VkPipelineViewportCoarseSampleOrderStateCreateInfoNV.Ptr at(long index, @NotNull Consumer<@NotNull VkPipelineViewportCoarseSampleOrderStateCreateInfoNV> consumer) {
+            consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkPipelineViewportCoarseSampleOrderStateCreateInfoNV value) {
@@ -201,12 +206,13 @@ public record VkPipelineViewportCoarseSampleOrderStateCreateInfoNV(@NotNull Memo
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkPipelineViewportCoarseSampleOrderStateCreateInfoNV pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkPipelineViewportCoarseSampleOrderStateCreateInfoNV pNext(@Nullable IPointer pointer) {
@@ -256,11 +262,11 @@ public record VkPipelineViewportCoarseSampleOrderStateCreateInfoNV(@NotNull Memo
         return new VkCoarseSampleOrderCustomNV(s);
     }
 
-    public @Pointer(target=VkCoarseSampleOrderCustomNV.class) MemorySegment pCustomSampleOrdersRaw() {
+    public @Pointer(target=VkCoarseSampleOrderCustomNV.class) @NotNull MemorySegment pCustomSampleOrdersRaw() {
         return segment.get(LAYOUT$pCustomSampleOrders, OFFSET$pCustomSampleOrders);
     }
 
-    public void pCustomSampleOrdersRaw(@Pointer(target=VkCoarseSampleOrderCustomNV.class) MemorySegment value) {
+    public void pCustomSampleOrdersRaw(@Pointer(target=VkCoarseSampleOrderCustomNV.class) @NotNull MemorySegment value) {
         segment.set(LAYOUT$pCustomSampleOrders, OFFSET$pCustomSampleOrders, value);
     }
 

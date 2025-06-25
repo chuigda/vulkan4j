@@ -87,6 +87,11 @@ public record VkHeadlessSurfaceCreateInfoEXT(@NotNull MemorySegment segment) imp
             return new VkHeadlessSurfaceCreateInfoEXT(segment.asSlice(index * VkHeadlessSurfaceCreateInfoEXT.BYTES, VkHeadlessSurfaceCreateInfoEXT.BYTES));
         }
 
+        public VkHeadlessSurfaceCreateInfoEXT.Ptr at(long index, @NotNull Consumer<@NotNull VkHeadlessSurfaceCreateInfoEXT> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkHeadlessSurfaceCreateInfoEXT value) {
             MemorySegment s = segment.asSlice(index * VkHeadlessSurfaceCreateInfoEXT.BYTES, VkHeadlessSurfaceCreateInfoEXT.BYTES);
             s.copyFrom(value.segment);
@@ -199,12 +204,13 @@ public record VkHeadlessSurfaceCreateInfoEXT(@NotNull MemorySegment segment) imp
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkHeadlessSurfaceCreateInfoEXT pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkHeadlessSurfaceCreateInfoEXT pNext(@Nullable IPointer pointer) {
@@ -212,11 +218,11 @@ public record VkHeadlessSurfaceCreateInfoEXT(@NotNull MemorySegment segment) imp
         return this;
     }
 
-    public @EnumType(VkHeadlessSurfaceCreateFlagsEXT.class) int flags() {
+    public @Bitmask(VkHeadlessSurfaceCreateFlagsEXT.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public VkHeadlessSurfaceCreateInfoEXT flags(@EnumType(VkHeadlessSurfaceCreateFlagsEXT.class) int value) {
+    public VkHeadlessSurfaceCreateInfoEXT flags(@Bitmask(VkHeadlessSurfaceCreateFlagsEXT.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
         return this;
     }

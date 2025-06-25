@@ -87,6 +87,11 @@ public record VkDescriptorPoolInlineUniformBlockCreateInfo(@NotNull MemorySegmen
             return new VkDescriptorPoolInlineUniformBlockCreateInfo(segment.asSlice(index * VkDescriptorPoolInlineUniformBlockCreateInfo.BYTES, VkDescriptorPoolInlineUniformBlockCreateInfo.BYTES));
         }
 
+        public VkDescriptorPoolInlineUniformBlockCreateInfo.Ptr at(long index, @NotNull Consumer<@NotNull VkDescriptorPoolInlineUniformBlockCreateInfo> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkDescriptorPoolInlineUniformBlockCreateInfo value) {
             MemorySegment s = segment.asSlice(index * VkDescriptorPoolInlineUniformBlockCreateInfo.BYTES, VkDescriptorPoolInlineUniformBlockCreateInfo.BYTES);
             s.copyFrom(value.segment);
@@ -199,12 +204,13 @@ public record VkDescriptorPoolInlineUniformBlockCreateInfo(@NotNull MemorySegmen
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkDescriptorPoolInlineUniformBlockCreateInfo pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkDescriptorPoolInlineUniformBlockCreateInfo pNext(@Nullable IPointer pointer) {

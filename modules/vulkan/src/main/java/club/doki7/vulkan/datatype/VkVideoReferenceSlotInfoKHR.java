@@ -88,6 +88,11 @@ public record VkVideoReferenceSlotInfoKHR(@NotNull MemorySegment segment) implem
             return new VkVideoReferenceSlotInfoKHR(segment.asSlice(index * VkVideoReferenceSlotInfoKHR.BYTES, VkVideoReferenceSlotInfoKHR.BYTES));
         }
 
+        public VkVideoReferenceSlotInfoKHR.Ptr at(long index, @NotNull Consumer<@NotNull VkVideoReferenceSlotInfoKHR> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkVideoReferenceSlotInfoKHR value) {
             MemorySegment s = segment.asSlice(index * VkVideoReferenceSlotInfoKHR.BYTES, VkVideoReferenceSlotInfoKHR.BYTES);
             s.copyFrom(value.segment);
@@ -200,12 +205,13 @@ public record VkVideoReferenceSlotInfoKHR(@NotNull MemorySegment segment) implem
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkVideoReferenceSlotInfoKHR pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkVideoReferenceSlotInfoKHR pNext(@Nullable IPointer pointer) {
@@ -246,11 +252,11 @@ public record VkVideoReferenceSlotInfoKHR(@NotNull MemorySegment segment) implem
         return new VkVideoPictureResourceInfoKHR(s);
     }
 
-    public @Pointer(target=VkVideoPictureResourceInfoKHR.class) MemorySegment pPictureResourceRaw() {
+    public @Pointer(target=VkVideoPictureResourceInfoKHR.class) @NotNull MemorySegment pPictureResourceRaw() {
         return segment.get(LAYOUT$pPictureResource, OFFSET$pPictureResource);
     }
 
-    public void pPictureResourceRaw(@Pointer(target=VkVideoPictureResourceInfoKHR.class) MemorySegment value) {
+    public void pPictureResourceRaw(@Pointer(target=VkVideoPictureResourceInfoKHR.class) @NotNull MemorySegment value) {
         segment.set(LAYOUT$pPictureResource, OFFSET$pPictureResource, value);
     }
 

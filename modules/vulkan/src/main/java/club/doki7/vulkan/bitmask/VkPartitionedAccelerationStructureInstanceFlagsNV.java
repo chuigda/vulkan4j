@@ -13,7 +13,7 @@ public final class VkPartitionedAccelerationStructureInstanceFlagsNV {
     public static final int FLAG_TRIANGLE_FACING_CULL_DISABLE = 0x1;
     public static final int FLAG_TRIANGLE_FLIP_FACING = 0x2;
 
-    public static String explain(@EnumType(VkPartitionedAccelerationStructureInstanceFlagsNV.class) int flags) {
+    public static String explain(@Bitmask(VkPartitionedAccelerationStructureInstanceFlagsNV.class) int flags) {
         List<String> detectedFlagBits = new ArrayList<>();
         if ((flags & FLAG_ENABLE_EXPLICIT_BOUNDING_BOX) != 0) {
             detectedFlagBits.add("VK_PARTITIONED_ACCELERATION_STRUCTURE_INSTANCE_FLAG_ENABLE_EXPLICIT_BOUNDING_BOX_NV");

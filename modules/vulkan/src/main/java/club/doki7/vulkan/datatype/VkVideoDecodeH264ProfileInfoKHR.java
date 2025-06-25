@@ -88,6 +88,11 @@ public record VkVideoDecodeH264ProfileInfoKHR(@NotNull MemorySegment segment) im
             return new VkVideoDecodeH264ProfileInfoKHR(segment.asSlice(index * VkVideoDecodeH264ProfileInfoKHR.BYTES, VkVideoDecodeH264ProfileInfoKHR.BYTES));
         }
 
+        public VkVideoDecodeH264ProfileInfoKHR.Ptr at(long index, @NotNull Consumer<@NotNull VkVideoDecodeH264ProfileInfoKHR> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkVideoDecodeH264ProfileInfoKHR value) {
             MemorySegment s = segment.asSlice(index * VkVideoDecodeH264ProfileInfoKHR.BYTES, VkVideoDecodeH264ProfileInfoKHR.BYTES);
             s.copyFrom(value.segment);
@@ -200,12 +205,13 @@ public record VkVideoDecodeH264ProfileInfoKHR(@NotNull MemorySegment segment) im
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkVideoDecodeH264ProfileInfoKHR pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkVideoDecodeH264ProfileInfoKHR pNext(@Nullable IPointer pointer) {
@@ -222,11 +228,11 @@ public record VkVideoDecodeH264ProfileInfoKHR(@NotNull MemorySegment segment) im
         return this;
     }
 
-    public @EnumType(VkVideoDecodeH264PictureLayoutFlagsKHR.class) int pictureLayout() {
+    public @Bitmask(VkVideoDecodeH264PictureLayoutFlagsKHR.class) int pictureLayout() {
         return segment.get(LAYOUT$pictureLayout, OFFSET$pictureLayout);
     }
 
-    public VkVideoDecodeH264ProfileInfoKHR pictureLayout(@EnumType(VkVideoDecodeH264PictureLayoutFlagsKHR.class) int value) {
+    public VkVideoDecodeH264ProfileInfoKHR pictureLayout(@Bitmask(VkVideoDecodeH264PictureLayoutFlagsKHR.class) int value) {
         segment.set(LAYOUT$pictureLayout, OFFSET$pictureLayout, value);
         return this;
     }

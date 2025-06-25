@@ -89,6 +89,11 @@ public record VkImageViewSampleWeightCreateInfoQCOM(@NotNull MemorySegment segme
             return new VkImageViewSampleWeightCreateInfoQCOM(segment.asSlice(index * VkImageViewSampleWeightCreateInfoQCOM.BYTES, VkImageViewSampleWeightCreateInfoQCOM.BYTES));
         }
 
+        public VkImageViewSampleWeightCreateInfoQCOM.Ptr at(long index, @NotNull Consumer<@NotNull VkImageViewSampleWeightCreateInfoQCOM> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkImageViewSampleWeightCreateInfoQCOM value) {
             MemorySegment s = segment.asSlice(index * VkImageViewSampleWeightCreateInfoQCOM.BYTES, VkImageViewSampleWeightCreateInfoQCOM.BYTES);
             s.copyFrom(value.segment);
@@ -201,12 +206,13 @@ public record VkImageViewSampleWeightCreateInfoQCOM(@NotNull MemorySegment segme
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkImageViewSampleWeightCreateInfoQCOM pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkImageViewSampleWeightCreateInfoQCOM pNext(@Nullable IPointer pointer) {

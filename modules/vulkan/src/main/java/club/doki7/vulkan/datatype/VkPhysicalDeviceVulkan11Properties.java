@@ -101,6 +101,11 @@ public record VkPhysicalDeviceVulkan11Properties(@NotNull MemorySegment segment)
             return new VkPhysicalDeviceVulkan11Properties(segment.asSlice(index * VkPhysicalDeviceVulkan11Properties.BYTES, VkPhysicalDeviceVulkan11Properties.BYTES));
         }
 
+        public VkPhysicalDeviceVulkan11Properties.Ptr at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceVulkan11Properties> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkPhysicalDeviceVulkan11Properties value) {
             MemorySegment s = segment.asSlice(index * VkPhysicalDeviceVulkan11Properties.BYTES, VkPhysicalDeviceVulkan11Properties.BYTES);
             s.copyFrom(value.segment);
@@ -213,12 +218,13 @@ public record VkPhysicalDeviceVulkan11Properties(@NotNull MemorySegment segment)
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkPhysicalDeviceVulkan11Properties pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkPhysicalDeviceVulkan11Properties pNext(@Nullable IPointer pointer) {
@@ -230,12 +236,19 @@ public record VkPhysicalDeviceVulkan11Properties(@NotNull MemorySegment segment)
         return new BytePtr(deviceUUIDRaw());
     }
 
-    public VkPhysicalDeviceVulkan11Properties deviceUUID(@Unsigned BytePtr value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$deviceUUID, SIZE$deviceUUID);
+    public VkPhysicalDeviceVulkan11Properties deviceUUID(@NotNull Consumer<BytePtr> consumer) {
+        @Unsigned BytePtr ptr = deviceUUID();
+        consumer.accept(ptr);
         return this;
     }
 
-    public MemorySegment deviceUUIDRaw() {
+    public VkPhysicalDeviceVulkan11Properties deviceUUID(@Unsigned BytePtr value) {
+        MemorySegment s = deviceUUIDRaw();
+        s.copyFrom(value.segment());
+        return this;
+    }
+
+    public @NotNull MemorySegment deviceUUIDRaw() {
         return segment.asSlice(OFFSET$deviceUUID, SIZE$deviceUUID);
     }
 
@@ -243,12 +256,19 @@ public record VkPhysicalDeviceVulkan11Properties(@NotNull MemorySegment segment)
         return new BytePtr(driverUUIDRaw());
     }
 
-    public VkPhysicalDeviceVulkan11Properties driverUUID(@Unsigned BytePtr value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$driverUUID, SIZE$driverUUID);
+    public VkPhysicalDeviceVulkan11Properties driverUUID(@NotNull Consumer<BytePtr> consumer) {
+        @Unsigned BytePtr ptr = driverUUID();
+        consumer.accept(ptr);
         return this;
     }
 
-    public MemorySegment driverUUIDRaw() {
+    public VkPhysicalDeviceVulkan11Properties driverUUID(@Unsigned BytePtr value) {
+        MemorySegment s = driverUUIDRaw();
+        s.copyFrom(value.segment());
+        return this;
+    }
+
+    public @NotNull MemorySegment driverUUIDRaw() {
         return segment.asSlice(OFFSET$driverUUID, SIZE$driverUUID);
     }
 
@@ -256,12 +276,19 @@ public record VkPhysicalDeviceVulkan11Properties(@NotNull MemorySegment segment)
         return new BytePtr(deviceLUIDRaw());
     }
 
-    public VkPhysicalDeviceVulkan11Properties deviceLUID(@Unsigned BytePtr value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$deviceLUID, SIZE$deviceLUID);
+    public VkPhysicalDeviceVulkan11Properties deviceLUID(@NotNull Consumer<BytePtr> consumer) {
+        @Unsigned BytePtr ptr = deviceLUID();
+        consumer.accept(ptr);
         return this;
     }
 
-    public MemorySegment deviceLUIDRaw() {
+    public VkPhysicalDeviceVulkan11Properties deviceLUID(@Unsigned BytePtr value) {
+        MemorySegment s = deviceLUIDRaw();
+        s.copyFrom(value.segment());
+        return this;
+    }
+
+    public @NotNull MemorySegment deviceLUIDRaw() {
         return segment.asSlice(OFFSET$deviceLUID, SIZE$deviceLUID);
     }
 
@@ -292,20 +319,20 @@ public record VkPhysicalDeviceVulkan11Properties(@NotNull MemorySegment segment)
         return this;
     }
 
-    public @EnumType(VkShaderStageFlags.class) int subgroupSupportedStages() {
+    public @Bitmask(VkShaderStageFlags.class) int subgroupSupportedStages() {
         return segment.get(LAYOUT$subgroupSupportedStages, OFFSET$subgroupSupportedStages);
     }
 
-    public VkPhysicalDeviceVulkan11Properties subgroupSupportedStages(@EnumType(VkShaderStageFlags.class) int value) {
+    public VkPhysicalDeviceVulkan11Properties subgroupSupportedStages(@Bitmask(VkShaderStageFlags.class) int value) {
         segment.set(LAYOUT$subgroupSupportedStages, OFFSET$subgroupSupportedStages, value);
         return this;
     }
 
-    public @EnumType(VkSubgroupFeatureFlags.class) int subgroupSupportedOperations() {
+    public @Bitmask(VkSubgroupFeatureFlags.class) int subgroupSupportedOperations() {
         return segment.get(LAYOUT$subgroupSupportedOperations, OFFSET$subgroupSupportedOperations);
     }
 
-    public VkPhysicalDeviceVulkan11Properties subgroupSupportedOperations(@EnumType(VkSubgroupFeatureFlags.class) int value) {
+    public VkPhysicalDeviceVulkan11Properties subgroupSupportedOperations(@Bitmask(VkSubgroupFeatureFlags.class) int value) {
         segment.set(LAYOUT$subgroupSupportedOperations, OFFSET$subgroupSupportedOperations, value);
         return this;
     }

@@ -89,6 +89,11 @@ public record VkOpticalFlowSessionCreatePrivateDataInfoNV(@NotNull MemorySegment
             return new VkOpticalFlowSessionCreatePrivateDataInfoNV(segment.asSlice(index * VkOpticalFlowSessionCreatePrivateDataInfoNV.BYTES, VkOpticalFlowSessionCreatePrivateDataInfoNV.BYTES));
         }
 
+        public VkOpticalFlowSessionCreatePrivateDataInfoNV.Ptr at(long index, @NotNull Consumer<@NotNull VkOpticalFlowSessionCreatePrivateDataInfoNV> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkOpticalFlowSessionCreatePrivateDataInfoNV value) {
             MemorySegment s = segment.asSlice(index * VkOpticalFlowSessionCreatePrivateDataInfoNV.BYTES, VkOpticalFlowSessionCreatePrivateDataInfoNV.BYTES);
             s.copyFrom(value.segment);
@@ -201,12 +206,13 @@ public record VkOpticalFlowSessionCreatePrivateDataInfoNV(@NotNull MemorySegment
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkOpticalFlowSessionCreatePrivateDataInfoNV pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkOpticalFlowSessionCreatePrivateDataInfoNV pNext(@Nullable IPointer pointer) {
@@ -232,12 +238,13 @@ public record VkOpticalFlowSessionCreatePrivateDataInfoNV(@NotNull MemorySegment
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pPrivateData() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pPrivateData() {
         return segment.get(LAYOUT$pPrivateData, OFFSET$pPrivateData);
     }
 
-    public void pPrivateData(@Pointer(comment="void*") MemorySegment value) {
+    public VkOpticalFlowSessionCreatePrivateDataInfoNV pPrivateData(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pPrivateData, OFFSET$pPrivateData, value);
+        return this;
     }
 
     public VkOpticalFlowSessionCreatePrivateDataInfoNV pPrivateData(@Nullable IPointer pointer) {

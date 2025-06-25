@@ -27,7 +27,7 @@ import static club.doki7.vulkan.VkConstants.*;
 ///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
 ///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
 ///     uint32_t deviceIndexCount; // optional // @link substring="deviceIndexCount" target="#deviceIndexCount"
-///     uint32_t const* pDeviceIndices; // @link substring="pDeviceIndices" target="#pDeviceIndices"
+///     uint32_t const* pDeviceIndices; // optional // @link substring="pDeviceIndices" target="#pDeviceIndices"
 /// } VkBindBufferMemoryDeviceGroupInfo;
 /// }
 ///
@@ -86,6 +86,11 @@ public record VkBindBufferMemoryDeviceGroupInfo(@NotNull MemorySegment segment) 
         /// indicate that the returned structure is a view of the original structure.
         public @NotNull VkBindBufferMemoryDeviceGroupInfo at(long index) {
             return new VkBindBufferMemoryDeviceGroupInfo(segment.asSlice(index * VkBindBufferMemoryDeviceGroupInfo.BYTES, VkBindBufferMemoryDeviceGroupInfo.BYTES));
+        }
+
+        public VkBindBufferMemoryDeviceGroupInfo.Ptr at(long index, @NotNull Consumer<@NotNull VkBindBufferMemoryDeviceGroupInfo> consumer) {
+            consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkBindBufferMemoryDeviceGroupInfo value) {
@@ -200,12 +205,13 @@ public record VkBindBufferMemoryDeviceGroupInfo(@NotNull MemorySegment segment) 
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkBindBufferMemoryDeviceGroupInfo pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkBindBufferMemoryDeviceGroupInfo pNext(@Nullable IPointer pointer) {
@@ -240,11 +246,11 @@ public record VkBindBufferMemoryDeviceGroupInfo(@NotNull MemorySegment segment) 
         return this;
     }
 
-    public @Pointer(comment="uint32_t*") MemorySegment pDeviceIndicesRaw() {
+    public @Pointer(comment="uint32_t*") @NotNull MemorySegment pDeviceIndicesRaw() {
         return segment.get(LAYOUT$pDeviceIndices, OFFSET$pDeviceIndices);
     }
 
-    public void pDeviceIndicesRaw(@Pointer(comment="uint32_t*") MemorySegment value) {
+    public void pDeviceIndicesRaw(@Pointer(comment="uint32_t*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pDeviceIndices, OFFSET$pDeviceIndices, value);
     }
 

@@ -88,6 +88,11 @@ public record VkMemoryGetZirconHandleInfoFUCHSIA(@NotNull MemorySegment segment)
             return new VkMemoryGetZirconHandleInfoFUCHSIA(segment.asSlice(index * VkMemoryGetZirconHandleInfoFUCHSIA.BYTES, VkMemoryGetZirconHandleInfoFUCHSIA.BYTES));
         }
 
+        public VkMemoryGetZirconHandleInfoFUCHSIA.Ptr at(long index, @NotNull Consumer<@NotNull VkMemoryGetZirconHandleInfoFUCHSIA> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkMemoryGetZirconHandleInfoFUCHSIA value) {
             MemorySegment s = segment.asSlice(index * VkMemoryGetZirconHandleInfoFUCHSIA.BYTES, VkMemoryGetZirconHandleInfoFUCHSIA.BYTES);
             s.copyFrom(value.segment);
@@ -200,12 +205,13 @@ public record VkMemoryGetZirconHandleInfoFUCHSIA(@NotNull MemorySegment segment)
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkMemoryGetZirconHandleInfoFUCHSIA pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkMemoryGetZirconHandleInfoFUCHSIA pNext(@Nullable IPointer pointer) {
@@ -226,11 +232,11 @@ public record VkMemoryGetZirconHandleInfoFUCHSIA(@NotNull MemorySegment segment)
         return this;
     }
 
-    public @EnumType(VkExternalMemoryHandleTypeFlags.class) int handleType() {
+    public @Bitmask(VkExternalMemoryHandleTypeFlags.class) int handleType() {
         return segment.get(LAYOUT$handleType, OFFSET$handleType);
     }
 
-    public VkMemoryGetZirconHandleInfoFUCHSIA handleType(@EnumType(VkExternalMemoryHandleTypeFlags.class) int value) {
+    public VkMemoryGetZirconHandleInfoFUCHSIA handleType(@Bitmask(VkExternalMemoryHandleTypeFlags.class) int value) {
         segment.set(LAYOUT$handleType, OFFSET$handleType, value);
         return this;
     }

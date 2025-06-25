@@ -87,6 +87,11 @@ public record VkPhysicalDeviceShaderDemoteToHelperInvocationFeatures(@NotNull Me
             return new VkPhysicalDeviceShaderDemoteToHelperInvocationFeatures(segment.asSlice(index * VkPhysicalDeviceShaderDemoteToHelperInvocationFeatures.BYTES, VkPhysicalDeviceShaderDemoteToHelperInvocationFeatures.BYTES));
         }
 
+        public VkPhysicalDeviceShaderDemoteToHelperInvocationFeatures.Ptr at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceShaderDemoteToHelperInvocationFeatures> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkPhysicalDeviceShaderDemoteToHelperInvocationFeatures value) {
             MemorySegment s = segment.asSlice(index * VkPhysicalDeviceShaderDemoteToHelperInvocationFeatures.BYTES, VkPhysicalDeviceShaderDemoteToHelperInvocationFeatures.BYTES);
             s.copyFrom(value.segment);
@@ -199,12 +204,13 @@ public record VkPhysicalDeviceShaderDemoteToHelperInvocationFeatures(@NotNull Me
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkPhysicalDeviceShaderDemoteToHelperInvocationFeatures pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkPhysicalDeviceShaderDemoteToHelperInvocationFeatures pNext(@Nullable IPointer pointer) {

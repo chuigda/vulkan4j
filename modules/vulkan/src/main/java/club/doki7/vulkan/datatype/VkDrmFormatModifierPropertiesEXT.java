@@ -78,6 +78,11 @@ public record VkDrmFormatModifierPropertiesEXT(@NotNull MemorySegment segment) i
             return new VkDrmFormatModifierPropertiesEXT(segment.asSlice(index * VkDrmFormatModifierPropertiesEXT.BYTES, VkDrmFormatModifierPropertiesEXT.BYTES));
         }
 
+        public VkDrmFormatModifierPropertiesEXT.Ptr at(long index, @NotNull Consumer<@NotNull VkDrmFormatModifierPropertiesEXT> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkDrmFormatModifierPropertiesEXT value) {
             MemorySegment s = segment.asSlice(index * VkDrmFormatModifierPropertiesEXT.BYTES, VkDrmFormatModifierPropertiesEXT.BYTES);
             s.copyFrom(value.segment);
@@ -189,11 +194,11 @@ public record VkDrmFormatModifierPropertiesEXT(@NotNull MemorySegment segment) i
         return this;
     }
 
-    public @EnumType(VkFormatFeatureFlags.class) int drmFormatModifierTilingFeatures() {
+    public @Bitmask(VkFormatFeatureFlags.class) int drmFormatModifierTilingFeatures() {
         return segment.get(LAYOUT$drmFormatModifierTilingFeatures, OFFSET$drmFormatModifierTilingFeatures);
     }
 
-    public VkDrmFormatModifierPropertiesEXT drmFormatModifierTilingFeatures(@EnumType(VkFormatFeatureFlags.class) int value) {
+    public VkDrmFormatModifierPropertiesEXT drmFormatModifierTilingFeatures(@Bitmask(VkFormatFeatureFlags.class) int value) {
         segment.set(LAYOUT$drmFormatModifierTilingFeatures, OFFSET$drmFormatModifierTilingFeatures, value);
         return this;
     }

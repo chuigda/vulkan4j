@@ -92,6 +92,11 @@ public record VkIndirectCommandsLayoutCreateInfoNV(@NotNull MemorySegment segmen
             return new VkIndirectCommandsLayoutCreateInfoNV(segment.asSlice(index * VkIndirectCommandsLayoutCreateInfoNV.BYTES, VkIndirectCommandsLayoutCreateInfoNV.BYTES));
         }
 
+        public VkIndirectCommandsLayoutCreateInfoNV.Ptr at(long index, @NotNull Consumer<@NotNull VkIndirectCommandsLayoutCreateInfoNV> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkIndirectCommandsLayoutCreateInfoNV value) {
             MemorySegment s = segment.asSlice(index * VkIndirectCommandsLayoutCreateInfoNV.BYTES, VkIndirectCommandsLayoutCreateInfoNV.BYTES);
             s.copyFrom(value.segment);
@@ -204,12 +209,13 @@ public record VkIndirectCommandsLayoutCreateInfoNV(@NotNull MemorySegment segmen
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkIndirectCommandsLayoutCreateInfoNV pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkIndirectCommandsLayoutCreateInfoNV pNext(@Nullable IPointer pointer) {
@@ -217,11 +223,11 @@ public record VkIndirectCommandsLayoutCreateInfoNV(@NotNull MemorySegment segmen
         return this;
     }
 
-    public @EnumType(VkIndirectCommandsLayoutUsageFlagsNV.class) int flags() {
+    public @Bitmask(VkIndirectCommandsLayoutUsageFlagsNV.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public VkIndirectCommandsLayoutCreateInfoNV flags(@EnumType(VkIndirectCommandsLayoutUsageFlagsNV.class) int value) {
+    public VkIndirectCommandsLayoutCreateInfoNV flags(@Bitmask(VkIndirectCommandsLayoutUsageFlagsNV.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
         return this;
     }
@@ -268,11 +274,11 @@ public record VkIndirectCommandsLayoutCreateInfoNV(@NotNull MemorySegment segmen
         return new VkIndirectCommandsLayoutTokenNV(s);
     }
 
-    public @Pointer(target=VkIndirectCommandsLayoutTokenNV.class) MemorySegment pTokensRaw() {
+    public @Pointer(target=VkIndirectCommandsLayoutTokenNV.class) @NotNull MemorySegment pTokensRaw() {
         return segment.get(LAYOUT$pTokens, OFFSET$pTokens);
     }
 
-    public void pTokensRaw(@Pointer(target=VkIndirectCommandsLayoutTokenNV.class) MemorySegment value) {
+    public void pTokensRaw(@Pointer(target=VkIndirectCommandsLayoutTokenNV.class) @NotNull MemorySegment value) {
         segment.set(LAYOUT$pTokens, OFFSET$pTokens, value);
     }
 
@@ -303,11 +309,11 @@ public record VkIndirectCommandsLayoutCreateInfoNV(@NotNull MemorySegment segmen
         return this;
     }
 
-    public @Pointer(comment="uint32_t*") MemorySegment pStreamStridesRaw() {
+    public @Pointer(comment="uint32_t*") @NotNull MemorySegment pStreamStridesRaw() {
         return segment.get(LAYOUT$pStreamStrides, OFFSET$pStreamStrides);
     }
 
-    public void pStreamStridesRaw(@Pointer(comment="uint32_t*") MemorySegment value) {
+    public void pStreamStridesRaw(@Pointer(comment="uint32_t*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pStreamStrides, OFFSET$pStreamStrides, value);
     }
 

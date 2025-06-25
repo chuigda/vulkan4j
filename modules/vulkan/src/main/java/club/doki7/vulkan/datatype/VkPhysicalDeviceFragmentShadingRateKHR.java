@@ -88,6 +88,11 @@ public record VkPhysicalDeviceFragmentShadingRateKHR(@NotNull MemorySegment segm
             return new VkPhysicalDeviceFragmentShadingRateKHR(segment.asSlice(index * VkPhysicalDeviceFragmentShadingRateKHR.BYTES, VkPhysicalDeviceFragmentShadingRateKHR.BYTES));
         }
 
+        public VkPhysicalDeviceFragmentShadingRateKHR.Ptr at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceFragmentShadingRateKHR> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkPhysicalDeviceFragmentShadingRateKHR value) {
             MemorySegment s = segment.asSlice(index * VkPhysicalDeviceFragmentShadingRateKHR.BYTES, VkPhysicalDeviceFragmentShadingRateKHR.BYTES);
             s.copyFrom(value.segment);
@@ -200,12 +205,13 @@ public record VkPhysicalDeviceFragmentShadingRateKHR(@NotNull MemorySegment segm
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkPhysicalDeviceFragmentShadingRateKHR pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkPhysicalDeviceFragmentShadingRateKHR pNext(@Nullable IPointer pointer) {
@@ -213,11 +219,11 @@ public record VkPhysicalDeviceFragmentShadingRateKHR(@NotNull MemorySegment segm
         return this;
     }
 
-    public @EnumType(VkSampleCountFlags.class) int sampleCounts() {
+    public @Bitmask(VkSampleCountFlags.class) int sampleCounts() {
         return segment.get(LAYOUT$sampleCounts, OFFSET$sampleCounts);
     }
 
-    public VkPhysicalDeviceFragmentShadingRateKHR sampleCounts(@EnumType(VkSampleCountFlags.class) int value) {
+    public VkPhysicalDeviceFragmentShadingRateKHR sampleCounts(@Bitmask(VkSampleCountFlags.class) int value) {
         segment.set(LAYOUT$sampleCounts, OFFSET$sampleCounts, value);
         return this;
     }

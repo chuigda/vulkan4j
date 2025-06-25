@@ -27,7 +27,7 @@
     <developers>
         <developer>
             <name>Chuigda Whitegive</name>
-            <email>icey@icey.tech</email>
+            <email>chuigda@doki7.club</email>
             <organization>Doki Doki 7th Design Club!</organization>
         </developer>
         <developer>
@@ -57,15 +57,21 @@
         <module>codegen-v2</module>
 
         <module>ffm-plus</module>
+
         <module>vulkan</module>
         <module>gles2</module>
         <module>vma</module>
+        <module>stb</module>
         <module>openal</module>
         <module>glfw</module>
         <module>tutorial</module>
         <module>opengl</module>
         <module>example</module>
+        <module>shaderc</module>
+
+        <!-- experimental -->
         <module>sdl3</module>
+        <module>openxr</module>
     </modules>
 
     <build>

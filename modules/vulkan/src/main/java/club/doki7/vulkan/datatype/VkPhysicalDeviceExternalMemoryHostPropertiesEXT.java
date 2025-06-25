@@ -87,6 +87,11 @@ public record VkPhysicalDeviceExternalMemoryHostPropertiesEXT(@NotNull MemorySeg
             return new VkPhysicalDeviceExternalMemoryHostPropertiesEXT(segment.asSlice(index * VkPhysicalDeviceExternalMemoryHostPropertiesEXT.BYTES, VkPhysicalDeviceExternalMemoryHostPropertiesEXT.BYTES));
         }
 
+        public VkPhysicalDeviceExternalMemoryHostPropertiesEXT.Ptr at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceExternalMemoryHostPropertiesEXT> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkPhysicalDeviceExternalMemoryHostPropertiesEXT value) {
             MemorySegment s = segment.asSlice(index * VkPhysicalDeviceExternalMemoryHostPropertiesEXT.BYTES, VkPhysicalDeviceExternalMemoryHostPropertiesEXT.BYTES);
             s.copyFrom(value.segment);
@@ -199,12 +204,13 @@ public record VkPhysicalDeviceExternalMemoryHostPropertiesEXT(@NotNull MemorySeg
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkPhysicalDeviceExternalMemoryHostPropertiesEXT pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkPhysicalDeviceExternalMemoryHostPropertiesEXT pNext(@Nullable IPointer pointer) {

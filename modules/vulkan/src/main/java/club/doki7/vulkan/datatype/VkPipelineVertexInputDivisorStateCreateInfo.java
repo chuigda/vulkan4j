@@ -88,6 +88,11 @@ public record VkPipelineVertexInputDivisorStateCreateInfo(@NotNull MemorySegment
             return new VkPipelineVertexInputDivisorStateCreateInfo(segment.asSlice(index * VkPipelineVertexInputDivisorStateCreateInfo.BYTES, VkPipelineVertexInputDivisorStateCreateInfo.BYTES));
         }
 
+        public VkPipelineVertexInputDivisorStateCreateInfo.Ptr at(long index, @NotNull Consumer<@NotNull VkPipelineVertexInputDivisorStateCreateInfo> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkPipelineVertexInputDivisorStateCreateInfo value) {
             MemorySegment s = segment.asSlice(index * VkPipelineVertexInputDivisorStateCreateInfo.BYTES, VkPipelineVertexInputDivisorStateCreateInfo.BYTES);
             s.copyFrom(value.segment);
@@ -200,12 +205,13 @@ public record VkPipelineVertexInputDivisorStateCreateInfo(@NotNull MemorySegment
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkPipelineVertexInputDivisorStateCreateInfo pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkPipelineVertexInputDivisorStateCreateInfo pNext(@Nullable IPointer pointer) {
@@ -246,11 +252,11 @@ public record VkPipelineVertexInputDivisorStateCreateInfo(@NotNull MemorySegment
         return new VkVertexInputBindingDivisorDescription(s);
     }
 
-    public @Pointer(target=VkVertexInputBindingDivisorDescription.class) MemorySegment pVertexBindingDivisorsRaw() {
+    public @Pointer(target=VkVertexInputBindingDivisorDescription.class) @NotNull MemorySegment pVertexBindingDivisorsRaw() {
         return segment.get(LAYOUT$pVertexBindingDivisors, OFFSET$pVertexBindingDivisors);
     }
 
-    public void pVertexBindingDivisorsRaw(@Pointer(target=VkVertexInputBindingDivisorDescription.class) MemorySegment value) {
+    public void pVertexBindingDivisorsRaw(@Pointer(target=VkVertexInputBindingDivisorDescription.class) @NotNull MemorySegment value) {
         segment.set(LAYOUT$pVertexBindingDivisors, OFFSET$pVertexBindingDivisors, value);
     }
 

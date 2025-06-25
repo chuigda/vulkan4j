@@ -87,6 +87,11 @@ public record StdVideoAV1SequenceHeader(@NotNull MemorySegment segment) implemen
             return new StdVideoAV1SequenceHeader(segment.asSlice(index * StdVideoAV1SequenceHeader.BYTES, StdVideoAV1SequenceHeader.BYTES));
         }
 
+        public StdVideoAV1SequenceHeader.Ptr at(long index, @NotNull Consumer<@NotNull StdVideoAV1SequenceHeader> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull StdVideoAV1SequenceHeader value) {
             MemorySegment s = segment.asSlice(index * StdVideoAV1SequenceHeader.BYTES, StdVideoAV1SequenceHeader.BYTES);
             s.copyFrom(value.segment);
@@ -309,11 +314,11 @@ public record StdVideoAV1SequenceHeader(@NotNull MemorySegment segment) implemen
         return new StdVideoAV1ColorConfig(s);
     }
 
-    public @Pointer(target=StdVideoAV1ColorConfig.class) MemorySegment pColorConfigRaw() {
+    public @Pointer(target=StdVideoAV1ColorConfig.class) @NotNull MemorySegment pColorConfigRaw() {
         return segment.get(LAYOUT$pColorConfig, OFFSET$pColorConfig);
     }
 
-    public void pColorConfigRaw(@Pointer(target=StdVideoAV1ColorConfig.class) MemorySegment value) {
+    public void pColorConfigRaw(@Pointer(target=StdVideoAV1ColorConfig.class) @NotNull MemorySegment value) {
         segment.set(LAYOUT$pColorConfig, OFFSET$pColorConfig, value);
     }
 
@@ -341,11 +346,11 @@ public record StdVideoAV1SequenceHeader(@NotNull MemorySegment segment) implemen
         return new StdVideoAV1TimingInfo(s);
     }
 
-    public @Pointer(target=StdVideoAV1TimingInfo.class) MemorySegment pTimingInfoRaw() {
+    public @Pointer(target=StdVideoAV1TimingInfo.class) @NotNull MemorySegment pTimingInfoRaw() {
         return segment.get(LAYOUT$pTimingInfo, OFFSET$pTimingInfo);
     }
 
-    public void pTimingInfoRaw(@Pointer(target=StdVideoAV1TimingInfo.class) MemorySegment value) {
+    public void pTimingInfoRaw(@Pointer(target=StdVideoAV1TimingInfo.class) @NotNull MemorySegment value) {
         segment.set(LAYOUT$pTimingInfo, OFFSET$pTimingInfo, value);
     }
 

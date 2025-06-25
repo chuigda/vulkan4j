@@ -87,6 +87,11 @@ public record VkTileMemoryBindInfoQCOM(@NotNull MemorySegment segment) implement
             return new VkTileMemoryBindInfoQCOM(segment.asSlice(index * VkTileMemoryBindInfoQCOM.BYTES, VkTileMemoryBindInfoQCOM.BYTES));
         }
 
+        public VkTileMemoryBindInfoQCOM.Ptr at(long index, @NotNull Consumer<@NotNull VkTileMemoryBindInfoQCOM> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkTileMemoryBindInfoQCOM value) {
             MemorySegment s = segment.asSlice(index * VkTileMemoryBindInfoQCOM.BYTES, VkTileMemoryBindInfoQCOM.BYTES);
             s.copyFrom(value.segment);
@@ -199,12 +204,13 @@ public record VkTileMemoryBindInfoQCOM(@NotNull MemorySegment segment) implement
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkTileMemoryBindInfoQCOM pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkTileMemoryBindInfoQCOM pNext(@Nullable IPointer pointer) {

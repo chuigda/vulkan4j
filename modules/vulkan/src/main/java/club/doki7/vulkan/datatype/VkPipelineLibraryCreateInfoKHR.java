@@ -27,7 +27,7 @@ import static club.doki7.vulkan.VkConstants.*;
 ///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
 ///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
 ///     uint32_t libraryCount; // optional // @link substring="libraryCount" target="#libraryCount"
-///     VkPipeline const* pLibraries; // @link substring="VkPipeline" target="VkPipeline" @link substring="pLibraries" target="#pLibraries"
+///     VkPipeline const* pLibraries; // optional // @link substring="VkPipeline" target="VkPipeline" @link substring="pLibraries" target="#pLibraries"
 /// } VkPipelineLibraryCreateInfoKHR;
 /// }
 ///
@@ -86,6 +86,11 @@ public record VkPipelineLibraryCreateInfoKHR(@NotNull MemorySegment segment) imp
         /// indicate that the returned structure is a view of the original structure.
         public @NotNull VkPipelineLibraryCreateInfoKHR at(long index) {
             return new VkPipelineLibraryCreateInfoKHR(segment.asSlice(index * VkPipelineLibraryCreateInfoKHR.BYTES, VkPipelineLibraryCreateInfoKHR.BYTES));
+        }
+
+        public VkPipelineLibraryCreateInfoKHR.Ptr at(long index, @NotNull Consumer<@NotNull VkPipelineLibraryCreateInfoKHR> consumer) {
+            consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkPipelineLibraryCreateInfoKHR value) {
@@ -200,12 +205,13 @@ public record VkPipelineLibraryCreateInfoKHR(@NotNull MemorySegment segment) imp
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkPipelineLibraryCreateInfoKHR pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkPipelineLibraryCreateInfoKHR pNext(@Nullable IPointer pointer) {
@@ -240,11 +246,11 @@ public record VkPipelineLibraryCreateInfoKHR(@NotNull MemorySegment segment) imp
         return this;
     }
 
-    public @Pointer(target=VkPipeline.class) MemorySegment pLibrariesRaw() {
+    public @Pointer(target=VkPipeline.class) @NotNull MemorySegment pLibrariesRaw() {
         return segment.get(LAYOUT$pLibraries, OFFSET$pLibraries);
     }
 
-    public void pLibrariesRaw(@Pointer(target=VkPipeline.class) MemorySegment value) {
+    public void pLibrariesRaw(@Pointer(target=VkPipeline.class) @NotNull MemorySegment value) {
         segment.set(LAYOUT$pLibraries, OFFSET$pLibraries, value);
     }
 

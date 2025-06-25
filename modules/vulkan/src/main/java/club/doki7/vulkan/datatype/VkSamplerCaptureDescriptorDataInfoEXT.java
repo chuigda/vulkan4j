@@ -87,6 +87,11 @@ public record VkSamplerCaptureDescriptorDataInfoEXT(@NotNull MemorySegment segme
             return new VkSamplerCaptureDescriptorDataInfoEXT(segment.asSlice(index * VkSamplerCaptureDescriptorDataInfoEXT.BYTES, VkSamplerCaptureDescriptorDataInfoEXT.BYTES));
         }
 
+        public VkSamplerCaptureDescriptorDataInfoEXT.Ptr at(long index, @NotNull Consumer<@NotNull VkSamplerCaptureDescriptorDataInfoEXT> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkSamplerCaptureDescriptorDataInfoEXT value) {
             MemorySegment s = segment.asSlice(index * VkSamplerCaptureDescriptorDataInfoEXT.BYTES, VkSamplerCaptureDescriptorDataInfoEXT.BYTES);
             s.copyFrom(value.segment);
@@ -199,12 +204,13 @@ public record VkSamplerCaptureDescriptorDataInfoEXT(@NotNull MemorySegment segme
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkSamplerCaptureDescriptorDataInfoEXT pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkSamplerCaptureDescriptorDataInfoEXT pNext(@Nullable IPointer pointer) {

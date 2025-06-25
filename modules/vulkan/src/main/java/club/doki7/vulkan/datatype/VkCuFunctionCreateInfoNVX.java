@@ -88,6 +88,11 @@ public record VkCuFunctionCreateInfoNVX(@NotNull MemorySegment segment) implemen
             return new VkCuFunctionCreateInfoNVX(segment.asSlice(index * VkCuFunctionCreateInfoNVX.BYTES, VkCuFunctionCreateInfoNVX.BYTES));
         }
 
+        public VkCuFunctionCreateInfoNVX.Ptr at(long index, @NotNull Consumer<@NotNull VkCuFunctionCreateInfoNVX> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkCuFunctionCreateInfoNVX value) {
             MemorySegment s = segment.asSlice(index * VkCuFunctionCreateInfoNVX.BYTES, VkCuFunctionCreateInfoNVX.BYTES);
             s.copyFrom(value.segment);
@@ -200,12 +205,13 @@ public record VkCuFunctionCreateInfoNVX(@NotNull MemorySegment segment) implemen
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkCuFunctionCreateInfoNVX pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkCuFunctionCreateInfoNVX pNext(@Nullable IPointer pointer) {
@@ -244,11 +250,11 @@ public record VkCuFunctionCreateInfoNVX(@NotNull MemorySegment segment) implemen
         return this;
     }
 
-    public @Pointer(comment="int8_t*") MemorySegment pNameRaw() {
+    public @Pointer(comment="int8_t*") @NotNull MemorySegment pNameRaw() {
         return segment.get(LAYOUT$pName, OFFSET$pName);
     }
 
-    public void pNameRaw(@Pointer(comment="int8_t*") MemorySegment value) {
+    public void pNameRaw(@Pointer(comment="int8_t*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pName, OFFSET$pName, value);
     }
 

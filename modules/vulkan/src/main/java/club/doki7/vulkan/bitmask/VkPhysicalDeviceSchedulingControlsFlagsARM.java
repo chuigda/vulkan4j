@@ -9,7 +9,7 @@ import java.util.List;
 public final class VkPhysicalDeviceSchedulingControlsFlagsARM {
     public static final long SHADER_CORE_COUNT = 0x1L;
 
-    public static String explain(@EnumType(VkPhysicalDeviceSchedulingControlsFlagsARM.class) long flags) {
+    public static String explain(@Bitmask(VkPhysicalDeviceSchedulingControlsFlagsARM.class) long flags) {
         List<String> detectedFlagBits = new ArrayList<>();
         if ((flags & SHADER_CORE_COUNT) != 0) {
             detectedFlagBits.add("VK_PHYSICAL_DEVICE_SCHEDULING_CONTROLS_SHADER_CORE_COUNT_ARM");

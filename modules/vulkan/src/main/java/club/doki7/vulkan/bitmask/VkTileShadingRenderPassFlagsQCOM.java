@@ -10,7 +10,7 @@ public final class VkTileShadingRenderPassFlagsQCOM {
     public static final int ENABLE = 0x1;
     public static final int PER_TILE_EXECUTION = 0x2;
 
-    public static String explain(@EnumType(VkTileShadingRenderPassFlagsQCOM.class) int flags) {
+    public static String explain(@Bitmask(VkTileShadingRenderPassFlagsQCOM.class) int flags) {
         List<String> detectedFlagBits = new ArrayList<>();
         if ((flags & ENABLE) != 0) {
             detectedFlagBits.add("VK_TILE_SHADING_RENDER_PASS_ENABLE_BIT_QCOM");

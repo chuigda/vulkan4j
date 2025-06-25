@@ -89,6 +89,11 @@ public record VkImageDrmFormatModifierExplicitCreateInfoEXT(@NotNull MemorySegme
             return new VkImageDrmFormatModifierExplicitCreateInfoEXT(segment.asSlice(index * VkImageDrmFormatModifierExplicitCreateInfoEXT.BYTES, VkImageDrmFormatModifierExplicitCreateInfoEXT.BYTES));
         }
 
+        public VkImageDrmFormatModifierExplicitCreateInfoEXT.Ptr at(long index, @NotNull Consumer<@NotNull VkImageDrmFormatModifierExplicitCreateInfoEXT> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkImageDrmFormatModifierExplicitCreateInfoEXT value) {
             MemorySegment s = segment.asSlice(index * VkImageDrmFormatModifierExplicitCreateInfoEXT.BYTES, VkImageDrmFormatModifierExplicitCreateInfoEXT.BYTES);
             s.copyFrom(value.segment);
@@ -201,12 +206,13 @@ public record VkImageDrmFormatModifierExplicitCreateInfoEXT(@NotNull MemorySegme
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkImageDrmFormatModifierExplicitCreateInfoEXT pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkImageDrmFormatModifierExplicitCreateInfoEXT pNext(@Nullable IPointer pointer) {
@@ -256,11 +262,11 @@ public record VkImageDrmFormatModifierExplicitCreateInfoEXT(@NotNull MemorySegme
         return new VkSubresourceLayout(s);
     }
 
-    public @Pointer(target=VkSubresourceLayout.class) MemorySegment pPlaneLayoutsRaw() {
+    public @Pointer(target=VkSubresourceLayout.class) @NotNull MemorySegment pPlaneLayoutsRaw() {
         return segment.get(LAYOUT$pPlaneLayouts, OFFSET$pPlaneLayouts);
     }
 
-    public void pPlaneLayoutsRaw(@Pointer(target=VkSubresourceLayout.class) MemorySegment value) {
+    public void pPlaneLayoutsRaw(@Pointer(target=VkSubresourceLayout.class) @NotNull MemorySegment value) {
         segment.set(LAYOUT$pPlaneLayouts, OFFSET$pPlaneLayouts, value);
     }
 

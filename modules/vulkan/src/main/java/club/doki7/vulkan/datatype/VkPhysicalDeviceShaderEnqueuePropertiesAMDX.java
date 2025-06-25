@@ -93,6 +93,11 @@ public record VkPhysicalDeviceShaderEnqueuePropertiesAMDX(@NotNull MemorySegment
             return new VkPhysicalDeviceShaderEnqueuePropertiesAMDX(segment.asSlice(index * VkPhysicalDeviceShaderEnqueuePropertiesAMDX.BYTES, VkPhysicalDeviceShaderEnqueuePropertiesAMDX.BYTES));
         }
 
+        public VkPhysicalDeviceShaderEnqueuePropertiesAMDX.Ptr at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceShaderEnqueuePropertiesAMDX> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkPhysicalDeviceShaderEnqueuePropertiesAMDX value) {
             MemorySegment s = segment.asSlice(index * VkPhysicalDeviceShaderEnqueuePropertiesAMDX.BYTES, VkPhysicalDeviceShaderEnqueuePropertiesAMDX.BYTES);
             s.copyFrom(value.segment);
@@ -205,12 +210,13 @@ public record VkPhysicalDeviceShaderEnqueuePropertiesAMDX(@NotNull MemorySegment
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkPhysicalDeviceShaderEnqueuePropertiesAMDX pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkPhysicalDeviceShaderEnqueuePropertiesAMDX pNext(@Nullable IPointer pointer) {
@@ -267,12 +273,19 @@ public record VkPhysicalDeviceShaderEnqueuePropertiesAMDX(@NotNull MemorySegment
         return new IntPtr(maxExecutionGraphWorkgroupCountRaw());
     }
 
-    public VkPhysicalDeviceShaderEnqueuePropertiesAMDX maxExecutionGraphWorkgroupCount(@Unsigned IntPtr value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$maxExecutionGraphWorkgroupCount, SIZE$maxExecutionGraphWorkgroupCount);
+    public VkPhysicalDeviceShaderEnqueuePropertiesAMDX maxExecutionGraphWorkgroupCount(@NotNull Consumer<IntPtr> consumer) {
+        @Unsigned IntPtr ptr = maxExecutionGraphWorkgroupCount();
+        consumer.accept(ptr);
         return this;
     }
 
-    public MemorySegment maxExecutionGraphWorkgroupCountRaw() {
+    public VkPhysicalDeviceShaderEnqueuePropertiesAMDX maxExecutionGraphWorkgroupCount(@Unsigned IntPtr value) {
+        MemorySegment s = maxExecutionGraphWorkgroupCountRaw();
+        s.copyFrom(value.segment());
+        return this;
+    }
+
+    public @NotNull MemorySegment maxExecutionGraphWorkgroupCountRaw() {
         return segment.asSlice(OFFSET$maxExecutionGraphWorkgroupCount, SIZE$maxExecutionGraphWorkgroupCount);
     }
 

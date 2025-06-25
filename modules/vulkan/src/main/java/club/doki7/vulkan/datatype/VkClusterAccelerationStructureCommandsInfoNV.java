@@ -94,6 +94,11 @@ public record VkClusterAccelerationStructureCommandsInfoNV(@NotNull MemorySegmen
             return new VkClusterAccelerationStructureCommandsInfoNV(segment.asSlice(index * VkClusterAccelerationStructureCommandsInfoNV.BYTES, VkClusterAccelerationStructureCommandsInfoNV.BYTES));
         }
 
+        public VkClusterAccelerationStructureCommandsInfoNV.Ptr at(long index, @NotNull Consumer<@NotNull VkClusterAccelerationStructureCommandsInfoNV> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkClusterAccelerationStructureCommandsInfoNV value) {
             MemorySegment s = segment.asSlice(index * VkClusterAccelerationStructureCommandsInfoNV.BYTES, VkClusterAccelerationStructureCommandsInfoNV.BYTES);
             s.copyFrom(value.segment);
@@ -206,12 +211,13 @@ public record VkClusterAccelerationStructureCommandsInfoNV(@NotNull MemorySegmen
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkClusterAccelerationStructureCommandsInfoNV pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkClusterAccelerationStructureCommandsInfoNV pNext(@Nullable IPointer pointer) {
@@ -302,11 +308,11 @@ public record VkClusterAccelerationStructureCommandsInfoNV(@NotNull MemorySegmen
         return this;
     }
 
-    public @EnumType(VkClusterAccelerationStructureAddressResolutionFlagsNV.class) int addressResolutionFlags() {
+    public @Bitmask(VkClusterAccelerationStructureAddressResolutionFlagsNV.class) int addressResolutionFlags() {
         return segment.get(LAYOUT$addressResolutionFlags, OFFSET$addressResolutionFlags);
     }
 
-    public VkClusterAccelerationStructureCommandsInfoNV addressResolutionFlags(@EnumType(VkClusterAccelerationStructureAddressResolutionFlagsNV.class) int value) {
+    public VkClusterAccelerationStructureCommandsInfoNV addressResolutionFlags(@Bitmask(VkClusterAccelerationStructureAddressResolutionFlagsNV.class) int value) {
         segment.set(LAYOUT$addressResolutionFlags, OFFSET$addressResolutionFlags, value);
         return this;
     }

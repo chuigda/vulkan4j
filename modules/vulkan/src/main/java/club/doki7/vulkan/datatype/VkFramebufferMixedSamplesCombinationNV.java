@@ -90,6 +90,11 @@ public record VkFramebufferMixedSamplesCombinationNV(@NotNull MemorySegment segm
             return new VkFramebufferMixedSamplesCombinationNV(segment.asSlice(index * VkFramebufferMixedSamplesCombinationNV.BYTES, VkFramebufferMixedSamplesCombinationNV.BYTES));
         }
 
+        public VkFramebufferMixedSamplesCombinationNV.Ptr at(long index, @NotNull Consumer<@NotNull VkFramebufferMixedSamplesCombinationNV> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkFramebufferMixedSamplesCombinationNV value) {
             MemorySegment s = segment.asSlice(index * VkFramebufferMixedSamplesCombinationNV.BYTES, VkFramebufferMixedSamplesCombinationNV.BYTES);
             s.copyFrom(value.segment);
@@ -202,12 +207,13 @@ public record VkFramebufferMixedSamplesCombinationNV(@NotNull MemorySegment segm
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkFramebufferMixedSamplesCombinationNV pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkFramebufferMixedSamplesCombinationNV pNext(@Nullable IPointer pointer) {
@@ -224,29 +230,29 @@ public record VkFramebufferMixedSamplesCombinationNV(@NotNull MemorySegment segm
         return this;
     }
 
-    public @EnumType(VkSampleCountFlags.class) int rasterizationSamples() {
+    public @Bitmask(VkSampleCountFlags.class) int rasterizationSamples() {
         return segment.get(LAYOUT$rasterizationSamples, OFFSET$rasterizationSamples);
     }
 
-    public VkFramebufferMixedSamplesCombinationNV rasterizationSamples(@EnumType(VkSampleCountFlags.class) int value) {
+    public VkFramebufferMixedSamplesCombinationNV rasterizationSamples(@Bitmask(VkSampleCountFlags.class) int value) {
         segment.set(LAYOUT$rasterizationSamples, OFFSET$rasterizationSamples, value);
         return this;
     }
 
-    public @EnumType(VkSampleCountFlags.class) int depthStencilSamples() {
+    public @Bitmask(VkSampleCountFlags.class) int depthStencilSamples() {
         return segment.get(LAYOUT$depthStencilSamples, OFFSET$depthStencilSamples);
     }
 
-    public VkFramebufferMixedSamplesCombinationNV depthStencilSamples(@EnumType(VkSampleCountFlags.class) int value) {
+    public VkFramebufferMixedSamplesCombinationNV depthStencilSamples(@Bitmask(VkSampleCountFlags.class) int value) {
         segment.set(LAYOUT$depthStencilSamples, OFFSET$depthStencilSamples, value);
         return this;
     }
 
-    public @EnumType(VkSampleCountFlags.class) int colorSamples() {
+    public @Bitmask(VkSampleCountFlags.class) int colorSamples() {
         return segment.get(LAYOUT$colorSamples, OFFSET$colorSamples);
     }
 
-    public VkFramebufferMixedSamplesCombinationNV colorSamples(@EnumType(VkSampleCountFlags.class) int value) {
+    public VkFramebufferMixedSamplesCombinationNV colorSamples(@Bitmask(VkSampleCountFlags.class) int value) {
         segment.set(LAYOUT$colorSamples, OFFSET$colorSamples, value);
         return this;
     }

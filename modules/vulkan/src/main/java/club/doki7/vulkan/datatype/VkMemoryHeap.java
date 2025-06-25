@@ -77,6 +77,11 @@ public record VkMemoryHeap(@NotNull MemorySegment segment) implements IVkMemoryH
             return new VkMemoryHeap(segment.asSlice(index * VkMemoryHeap.BYTES, VkMemoryHeap.BYTES));
         }
 
+        public VkMemoryHeap.Ptr at(long index, @NotNull Consumer<@NotNull VkMemoryHeap> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkMemoryHeap value) {
             MemorySegment s = segment.asSlice(index * VkMemoryHeap.BYTES, VkMemoryHeap.BYTES);
             s.copyFrom(value.segment);
@@ -179,11 +184,11 @@ public record VkMemoryHeap(@NotNull MemorySegment segment) implements IVkMemoryH
         return this;
     }
 
-    public @EnumType(VkMemoryHeapFlags.class) int flags() {
+    public @Bitmask(VkMemoryHeapFlags.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public VkMemoryHeap flags(@EnumType(VkMemoryHeapFlags.class) int value) {
+    public VkMemoryHeap flags(@Bitmask(VkMemoryHeapFlags.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
         return this;
     }

@@ -80,6 +80,11 @@ public record VkDecompressMemoryRegionNV(@NotNull MemorySegment segment) impleme
             return new VkDecompressMemoryRegionNV(segment.asSlice(index * VkDecompressMemoryRegionNV.BYTES, VkDecompressMemoryRegionNV.BYTES));
         }
 
+        public VkDecompressMemoryRegionNV.Ptr at(long index, @NotNull Consumer<@NotNull VkDecompressMemoryRegionNV> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkDecompressMemoryRegionNV value) {
             MemorySegment s = segment.asSlice(index * VkDecompressMemoryRegionNV.BYTES, VkDecompressMemoryRegionNV.BYTES);
             s.copyFrom(value.segment);
@@ -209,11 +214,11 @@ public record VkDecompressMemoryRegionNV(@NotNull MemorySegment segment) impleme
         return this;
     }
 
-    public @EnumType(VkMemoryDecompressionMethodFlagsNV.class) long decompressionMethod() {
+    public @Bitmask(VkMemoryDecompressionMethodFlagsNV.class) long decompressionMethod() {
         return segment.get(LAYOUT$decompressionMethod, OFFSET$decompressionMethod);
     }
 
-    public VkDecompressMemoryRegionNV decompressionMethod(@EnumType(VkMemoryDecompressionMethodFlagsNV.class) long value) {
+    public VkDecompressMemoryRegionNV decompressionMethod(@Bitmask(VkMemoryDecompressionMethodFlagsNV.class) long value) {
         segment.set(LAYOUT$decompressionMethod, OFFSET$decompressionMethod, value);
         return this;
     }

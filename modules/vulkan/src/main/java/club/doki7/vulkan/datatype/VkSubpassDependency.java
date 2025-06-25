@@ -82,6 +82,11 @@ public record VkSubpassDependency(@NotNull MemorySegment segment) implements IVk
             return new VkSubpassDependency(segment.asSlice(index * VkSubpassDependency.BYTES, VkSubpassDependency.BYTES));
         }
 
+        public VkSubpassDependency.Ptr at(long index, @NotNull Consumer<@NotNull VkSubpassDependency> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkSubpassDependency value) {
             MemorySegment s = segment.asSlice(index * VkSubpassDependency.BYTES, VkSubpassDependency.BYTES);
             s.copyFrom(value.segment);
@@ -193,47 +198,47 @@ public record VkSubpassDependency(@NotNull MemorySegment segment) implements IVk
         return this;
     }
 
-    public @EnumType(VkPipelineStageFlags.class) int srcStageMask() {
+    public @Bitmask(VkPipelineStageFlags.class) int srcStageMask() {
         return segment.get(LAYOUT$srcStageMask, OFFSET$srcStageMask);
     }
 
-    public VkSubpassDependency srcStageMask(@EnumType(VkPipelineStageFlags.class) int value) {
+    public VkSubpassDependency srcStageMask(@Bitmask(VkPipelineStageFlags.class) int value) {
         segment.set(LAYOUT$srcStageMask, OFFSET$srcStageMask, value);
         return this;
     }
 
-    public @EnumType(VkPipelineStageFlags.class) int dstStageMask() {
+    public @Bitmask(VkPipelineStageFlags.class) int dstStageMask() {
         return segment.get(LAYOUT$dstStageMask, OFFSET$dstStageMask);
     }
 
-    public VkSubpassDependency dstStageMask(@EnumType(VkPipelineStageFlags.class) int value) {
+    public VkSubpassDependency dstStageMask(@Bitmask(VkPipelineStageFlags.class) int value) {
         segment.set(LAYOUT$dstStageMask, OFFSET$dstStageMask, value);
         return this;
     }
 
-    public @EnumType(VkAccessFlags.class) int srcAccessMask() {
+    public @Bitmask(VkAccessFlags.class) int srcAccessMask() {
         return segment.get(LAYOUT$srcAccessMask, OFFSET$srcAccessMask);
     }
 
-    public VkSubpassDependency srcAccessMask(@EnumType(VkAccessFlags.class) int value) {
+    public VkSubpassDependency srcAccessMask(@Bitmask(VkAccessFlags.class) int value) {
         segment.set(LAYOUT$srcAccessMask, OFFSET$srcAccessMask, value);
         return this;
     }
 
-    public @EnumType(VkAccessFlags.class) int dstAccessMask() {
+    public @Bitmask(VkAccessFlags.class) int dstAccessMask() {
         return segment.get(LAYOUT$dstAccessMask, OFFSET$dstAccessMask);
     }
 
-    public VkSubpassDependency dstAccessMask(@EnumType(VkAccessFlags.class) int value) {
+    public VkSubpassDependency dstAccessMask(@Bitmask(VkAccessFlags.class) int value) {
         segment.set(LAYOUT$dstAccessMask, OFFSET$dstAccessMask, value);
         return this;
     }
 
-    public @EnumType(VkDependencyFlags.class) int dependencyFlags() {
+    public @Bitmask(VkDependencyFlags.class) int dependencyFlags() {
         return segment.get(LAYOUT$dependencyFlags, OFFSET$dependencyFlags);
     }
 
-    public VkSubpassDependency dependencyFlags(@EnumType(VkDependencyFlags.class) int value) {
+    public VkSubpassDependency dependencyFlags(@Bitmask(VkDependencyFlags.class) int value) {
         segment.set(LAYOUT$dependencyFlags, OFFSET$dependencyFlags, value);
         return this;
     }

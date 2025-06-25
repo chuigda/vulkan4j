@@ -87,6 +87,11 @@ public record VkPhysicalDeviceSeparateDepthStencilLayoutsFeatures(@NotNull Memor
             return new VkPhysicalDeviceSeparateDepthStencilLayoutsFeatures(segment.asSlice(index * VkPhysicalDeviceSeparateDepthStencilLayoutsFeatures.BYTES, VkPhysicalDeviceSeparateDepthStencilLayoutsFeatures.BYTES));
         }
 
+        public VkPhysicalDeviceSeparateDepthStencilLayoutsFeatures.Ptr at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceSeparateDepthStencilLayoutsFeatures> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkPhysicalDeviceSeparateDepthStencilLayoutsFeatures value) {
             MemorySegment s = segment.asSlice(index * VkPhysicalDeviceSeparateDepthStencilLayoutsFeatures.BYTES, VkPhysicalDeviceSeparateDepthStencilLayoutsFeatures.BYTES);
             s.copyFrom(value.segment);
@@ -199,12 +204,13 @@ public record VkPhysicalDeviceSeparateDepthStencilLayoutsFeatures(@NotNull Memor
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkPhysicalDeviceSeparateDepthStencilLayoutsFeatures pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkPhysicalDeviceSeparateDepthStencilLayoutsFeatures pNext(@Nullable IPointer pointer) {

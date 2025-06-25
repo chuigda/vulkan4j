@@ -87,6 +87,11 @@ public record VkVideoFormatAV1QuantizationMapPropertiesKHR(@NotNull MemorySegmen
             return new VkVideoFormatAV1QuantizationMapPropertiesKHR(segment.asSlice(index * VkVideoFormatAV1QuantizationMapPropertiesKHR.BYTES, VkVideoFormatAV1QuantizationMapPropertiesKHR.BYTES));
         }
 
+        public VkVideoFormatAV1QuantizationMapPropertiesKHR.Ptr at(long index, @NotNull Consumer<@NotNull VkVideoFormatAV1QuantizationMapPropertiesKHR> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkVideoFormatAV1QuantizationMapPropertiesKHR value) {
             MemorySegment s = segment.asSlice(index * VkVideoFormatAV1QuantizationMapPropertiesKHR.BYTES, VkVideoFormatAV1QuantizationMapPropertiesKHR.BYTES);
             s.copyFrom(value.segment);
@@ -199,12 +204,13 @@ public record VkVideoFormatAV1QuantizationMapPropertiesKHR(@NotNull MemorySegmen
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkVideoFormatAV1QuantizationMapPropertiesKHR pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkVideoFormatAV1QuantizationMapPropertiesKHR pNext(@Nullable IPointer pointer) {
@@ -212,11 +218,11 @@ public record VkVideoFormatAV1QuantizationMapPropertiesKHR(@NotNull MemorySegmen
         return this;
     }
 
-    public @EnumType(VkVideoEncodeAV1SuperblockSizeFlagsKHR.class) int compatibleSuperblockSizes() {
+    public @Bitmask(VkVideoEncodeAV1SuperblockSizeFlagsKHR.class) int compatibleSuperblockSizes() {
         return segment.get(LAYOUT$compatibleSuperblockSizes, OFFSET$compatibleSuperblockSizes);
     }
 
-    public VkVideoFormatAV1QuantizationMapPropertiesKHR compatibleSuperblockSizes(@EnumType(VkVideoEncodeAV1SuperblockSizeFlagsKHR.class) int value) {
+    public VkVideoFormatAV1QuantizationMapPropertiesKHR compatibleSuperblockSizes(@Bitmask(VkVideoEncodeAV1SuperblockSizeFlagsKHR.class) int value) {
         segment.set(LAYOUT$compatibleSuperblockSizes, OFFSET$compatibleSuperblockSizes, value);
         return this;
     }

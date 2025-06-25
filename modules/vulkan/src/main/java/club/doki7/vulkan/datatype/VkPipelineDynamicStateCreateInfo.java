@@ -28,7 +28,7 @@ import static club.doki7.vulkan.VkConstants.*;
 ///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
 ///     VkPipelineDynamicStateCreateFlags flags; // optional // @link substring="VkPipelineDynamicStateCreateFlags" target="VkPipelineDynamicStateCreateFlags" @link substring="flags" target="#flags"
 ///     uint32_t dynamicStateCount; // optional // @link substring="dynamicStateCount" target="#dynamicStateCount"
-///     VkDynamicState const* pDynamicStates; // @link substring="VkDynamicState" target="VkDynamicState" @link substring="pDynamicStates" target="#pDynamicStates"
+///     VkDynamicState const* pDynamicStates; // optional // @link substring="VkDynamicState" target="VkDynamicState" @link substring="pDynamicStates" target="#pDynamicStates"
 /// } VkPipelineDynamicStateCreateInfo;
 /// }
 ///
@@ -87,6 +87,11 @@ public record VkPipelineDynamicStateCreateInfo(@NotNull MemorySegment segment) i
         /// indicate that the returned structure is a view of the original structure.
         public @NotNull VkPipelineDynamicStateCreateInfo at(long index) {
             return new VkPipelineDynamicStateCreateInfo(segment.asSlice(index * VkPipelineDynamicStateCreateInfo.BYTES, VkPipelineDynamicStateCreateInfo.BYTES));
+        }
+
+        public VkPipelineDynamicStateCreateInfo.Ptr at(long index, @NotNull Consumer<@NotNull VkPipelineDynamicStateCreateInfo> consumer) {
+            consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkPipelineDynamicStateCreateInfo value) {
@@ -201,12 +206,13 @@ public record VkPipelineDynamicStateCreateInfo(@NotNull MemorySegment segment) i
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkPipelineDynamicStateCreateInfo pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkPipelineDynamicStateCreateInfo pNext(@Nullable IPointer pointer) {
@@ -214,11 +220,11 @@ public record VkPipelineDynamicStateCreateInfo(@NotNull MemorySegment segment) i
         return this;
     }
 
-    public @EnumType(VkPipelineDynamicStateCreateFlags.class) int flags() {
+    public @Bitmask(VkPipelineDynamicStateCreateFlags.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public VkPipelineDynamicStateCreateInfo flags(@EnumType(VkPipelineDynamicStateCreateFlags.class) int value) {
+    public VkPipelineDynamicStateCreateInfo flags(@Bitmask(VkPipelineDynamicStateCreateFlags.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
         return this;
     }
@@ -251,11 +257,11 @@ public record VkPipelineDynamicStateCreateInfo(@NotNull MemorySegment segment) i
         return this;
     }
 
-    public @Pointer(target=VkDynamicState.class) MemorySegment pDynamicStatesRaw() {
+    public @Pointer(target=VkDynamicState.class) @NotNull MemorySegment pDynamicStatesRaw() {
         return segment.get(LAYOUT$pDynamicStates, OFFSET$pDynamicStates);
     }
 
-    public void pDynamicStatesRaw(@Pointer(target=VkDynamicState.class) MemorySegment value) {
+    public void pDynamicStatesRaw(@Pointer(target=VkDynamicState.class) @NotNull MemorySegment value) {
         segment.set(LAYOUT$pDynamicStates, OFFSET$pDynamicStates, value);
     }
 

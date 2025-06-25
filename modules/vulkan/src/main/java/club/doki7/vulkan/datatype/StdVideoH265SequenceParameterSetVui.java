@@ -99,6 +99,11 @@ public record StdVideoH265SequenceParameterSetVui(@NotNull MemorySegment segment
             return new StdVideoH265SequenceParameterSetVui(segment.asSlice(index * StdVideoH265SequenceParameterSetVui.BYTES, StdVideoH265SequenceParameterSetVui.BYTES));
         }
 
+        public StdVideoH265SequenceParameterSetVui.Ptr at(long index, @NotNull Consumer<@NotNull StdVideoH265SequenceParameterSetVui> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull StdVideoH265SequenceParameterSetVui value) {
             MemorySegment s = segment.asSlice(index * StdVideoH265SequenceParameterSetVui.BYTES, StdVideoH265SequenceParameterSetVui.BYTES);
             s.copyFrom(value.segment);
@@ -422,11 +427,11 @@ public record StdVideoH265SequenceParameterSetVui(@NotNull MemorySegment segment
         return new StdVideoH265HrdParameters(s);
     }
 
-    public @Pointer(target=StdVideoH265HrdParameters.class) MemorySegment pHrdParametersRaw() {
+    public @Pointer(target=StdVideoH265HrdParameters.class) @NotNull MemorySegment pHrdParametersRaw() {
         return segment.get(LAYOUT$pHrdParameters, OFFSET$pHrdParameters);
     }
 
-    public void pHrdParametersRaw(@Pointer(target=StdVideoH265HrdParameters.class) MemorySegment value) {
+    public void pHrdParametersRaw(@Pointer(target=StdVideoH265HrdParameters.class) @NotNull MemorySegment value) {
         segment.set(LAYOUT$pHrdParameters, OFFSET$pHrdParameters, value);
     }
 

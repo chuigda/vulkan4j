@@ -88,6 +88,11 @@ public record VkPhysicalDevicePrimitiveTopologyListRestartFeaturesEXT(@NotNull M
             return new VkPhysicalDevicePrimitiveTopologyListRestartFeaturesEXT(segment.asSlice(index * VkPhysicalDevicePrimitiveTopologyListRestartFeaturesEXT.BYTES, VkPhysicalDevicePrimitiveTopologyListRestartFeaturesEXT.BYTES));
         }
 
+        public VkPhysicalDevicePrimitiveTopologyListRestartFeaturesEXT.Ptr at(long index, @NotNull Consumer<@NotNull VkPhysicalDevicePrimitiveTopologyListRestartFeaturesEXT> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkPhysicalDevicePrimitiveTopologyListRestartFeaturesEXT value) {
             MemorySegment s = segment.asSlice(index * VkPhysicalDevicePrimitiveTopologyListRestartFeaturesEXT.BYTES, VkPhysicalDevicePrimitiveTopologyListRestartFeaturesEXT.BYTES);
             s.copyFrom(value.segment);
@@ -200,12 +205,13 @@ public record VkPhysicalDevicePrimitiveTopologyListRestartFeaturesEXT(@NotNull M
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkPhysicalDevicePrimitiveTopologyListRestartFeaturesEXT pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkPhysicalDevicePrimitiveTopologyListRestartFeaturesEXT pNext(@Nullable IPointer pointer) {

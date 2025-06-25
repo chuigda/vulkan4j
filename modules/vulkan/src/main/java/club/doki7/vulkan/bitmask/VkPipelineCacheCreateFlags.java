@@ -10,7 +10,7 @@ public final class VkPipelineCacheCreateFlags {
     public static final int EXTERNALLY_SYNCHRONIZED = 0x1;
     public static final int INTERNALLY_SYNCHRONIZED_MERGE_KHR = 0x8;
 
-    public static String explain(@EnumType(VkPipelineCacheCreateFlags.class) int flags) {
+    public static String explain(@Bitmask(VkPipelineCacheCreateFlags.class) int flags) {
         List<String> detectedFlagBits = new ArrayList<>();
         if ((flags & EXTERNALLY_SYNCHRONIZED) != 0) {
             detectedFlagBits.add("VK_PIPELINE_CACHE_CREATE_EXTERNALLY_SYNCHRONIZED_BIT");

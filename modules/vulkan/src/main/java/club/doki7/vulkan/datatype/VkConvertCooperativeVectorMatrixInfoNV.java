@@ -98,6 +98,11 @@ public record VkConvertCooperativeVectorMatrixInfoNV(@NotNull MemorySegment segm
             return new VkConvertCooperativeVectorMatrixInfoNV(segment.asSlice(index * VkConvertCooperativeVectorMatrixInfoNV.BYTES, VkConvertCooperativeVectorMatrixInfoNV.BYTES));
         }
 
+        public VkConvertCooperativeVectorMatrixInfoNV.Ptr at(long index, @NotNull Consumer<@NotNull VkConvertCooperativeVectorMatrixInfoNV> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkConvertCooperativeVectorMatrixInfoNV value) {
             MemorySegment s = segment.asSlice(index * VkConvertCooperativeVectorMatrixInfoNV.BYTES, VkConvertCooperativeVectorMatrixInfoNV.BYTES);
             s.copyFrom(value.segment);
@@ -210,12 +215,13 @@ public record VkConvertCooperativeVectorMatrixInfoNV(@NotNull MemorySegment segm
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkConvertCooperativeVectorMatrixInfoNV pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkConvertCooperativeVectorMatrixInfoNV pNext(@Nullable IPointer pointer) {
@@ -264,11 +270,11 @@ public record VkConvertCooperativeVectorMatrixInfoNV(@NotNull MemorySegment segm
         return this;
     }
 
-    public @Pointer(comment="size_t*") MemorySegment pDstSizeRaw() {
+    public @Pointer(comment="size_t*") @NotNull MemorySegment pDstSizeRaw() {
         return segment.get(LAYOUT$pDstSize, OFFSET$pDstSize);
     }
 
-    public void pDstSizeRaw(@Pointer(comment="size_t*") MemorySegment value) {
+    public void pDstSizeRaw(@Pointer(comment="size_t*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pDstSize, OFFSET$pDstSize, value);
     }
 

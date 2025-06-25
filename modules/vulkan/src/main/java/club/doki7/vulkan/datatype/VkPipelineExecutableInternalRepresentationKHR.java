@@ -30,7 +30,7 @@ import static club.doki7.vulkan.VkConstants.*;
 ///     char[VK_MAX_DESCRIPTION_SIZE] description; // @link substring="description" target="#description"
 ///     VkBool32 isText; // @link substring="isText" target="#isText"
 ///     size_t dataSize; // @link substring="dataSize" target="#dataSize"
-///     void* pData; // optional // @link substring="pData" target="#pData"
+///     void* pData; // @link substring="pData" target="#pData"
 /// } VkPipelineExecutableInternalRepresentationKHR;
 /// }
 ///
@@ -89,6 +89,11 @@ public record VkPipelineExecutableInternalRepresentationKHR(@NotNull MemorySegme
         /// indicate that the returned structure is a view of the original structure.
         public @NotNull VkPipelineExecutableInternalRepresentationKHR at(long index) {
             return new VkPipelineExecutableInternalRepresentationKHR(segment.asSlice(index * VkPipelineExecutableInternalRepresentationKHR.BYTES, VkPipelineExecutableInternalRepresentationKHR.BYTES));
+        }
+
+        public VkPipelineExecutableInternalRepresentationKHR.Ptr at(long index, @NotNull Consumer<@NotNull VkPipelineExecutableInternalRepresentationKHR> consumer) {
+            consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkPipelineExecutableInternalRepresentationKHR value) {
@@ -203,12 +208,13 @@ public record VkPipelineExecutableInternalRepresentationKHR(@NotNull MemorySegme
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkPipelineExecutableInternalRepresentationKHR pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkPipelineExecutableInternalRepresentationKHR pNext(@Nullable IPointer pointer) {
@@ -220,12 +226,19 @@ public record VkPipelineExecutableInternalRepresentationKHR(@NotNull MemorySegme
         return new BytePtr(nameRaw());
     }
 
-    public VkPipelineExecutableInternalRepresentationKHR name(BytePtr value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$name, SIZE$name);
+    public VkPipelineExecutableInternalRepresentationKHR name(@NotNull Consumer<BytePtr> consumer) {
+        BytePtr ptr = name();
+        consumer.accept(ptr);
         return this;
     }
 
-    public MemorySegment nameRaw() {
+    public VkPipelineExecutableInternalRepresentationKHR name(BytePtr value) {
+        MemorySegment s = nameRaw();
+        s.copyFrom(value.segment());
+        return this;
+    }
+
+    public @NotNull MemorySegment nameRaw() {
         return segment.asSlice(OFFSET$name, SIZE$name);
     }
 
@@ -233,12 +246,19 @@ public record VkPipelineExecutableInternalRepresentationKHR(@NotNull MemorySegme
         return new BytePtr(descriptionRaw());
     }
 
-    public VkPipelineExecutableInternalRepresentationKHR description(BytePtr value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$description, SIZE$description);
+    public VkPipelineExecutableInternalRepresentationKHR description(@NotNull Consumer<BytePtr> consumer) {
+        BytePtr ptr = description();
+        consumer.accept(ptr);
         return this;
     }
 
-    public MemorySegment descriptionRaw() {
+    public VkPipelineExecutableInternalRepresentationKHR description(BytePtr value) {
+        MemorySegment s = descriptionRaw();
+        s.copyFrom(value.segment());
+        return this;
+    }
+
+    public @NotNull MemorySegment descriptionRaw() {
         return segment.asSlice(OFFSET$description, SIZE$description);
     }
 
@@ -260,12 +280,13 @@ public record VkPipelineExecutableInternalRepresentationKHR(@NotNull MemorySegme
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pData() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pData() {
         return segment.get(LAYOUT$pData, OFFSET$pData);
     }
 
-    public void pData(@Pointer(comment="void*") MemorySegment value) {
+    public VkPipelineExecutableInternalRepresentationKHR pData(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pData, OFFSET$pData, value);
+        return this;
     }
 
     public VkPipelineExecutableInternalRepresentationKHR pData(@Nullable IPointer pointer) {

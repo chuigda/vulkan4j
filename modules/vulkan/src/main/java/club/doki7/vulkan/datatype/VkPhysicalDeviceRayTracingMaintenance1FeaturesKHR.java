@@ -88,6 +88,11 @@ public record VkPhysicalDeviceRayTracingMaintenance1FeaturesKHR(@NotNull MemoryS
             return new VkPhysicalDeviceRayTracingMaintenance1FeaturesKHR(segment.asSlice(index * VkPhysicalDeviceRayTracingMaintenance1FeaturesKHR.BYTES, VkPhysicalDeviceRayTracingMaintenance1FeaturesKHR.BYTES));
         }
 
+        public VkPhysicalDeviceRayTracingMaintenance1FeaturesKHR.Ptr at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceRayTracingMaintenance1FeaturesKHR> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkPhysicalDeviceRayTracingMaintenance1FeaturesKHR value) {
             MemorySegment s = segment.asSlice(index * VkPhysicalDeviceRayTracingMaintenance1FeaturesKHR.BYTES, VkPhysicalDeviceRayTracingMaintenance1FeaturesKHR.BYTES);
             s.copyFrom(value.segment);
@@ -200,12 +205,13 @@ public record VkPhysicalDeviceRayTracingMaintenance1FeaturesKHR(@NotNull MemoryS
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkPhysicalDeviceRayTracingMaintenance1FeaturesKHR pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkPhysicalDeviceRayTracingMaintenance1FeaturesKHR pNext(@Nullable IPointer pointer) {

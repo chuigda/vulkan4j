@@ -90,6 +90,11 @@ public record VkPhysicalDevice16BitStorageFeatures(@NotNull MemorySegment segmen
             return new VkPhysicalDevice16BitStorageFeatures(segment.asSlice(index * VkPhysicalDevice16BitStorageFeatures.BYTES, VkPhysicalDevice16BitStorageFeatures.BYTES));
         }
 
+        public VkPhysicalDevice16BitStorageFeatures.Ptr at(long index, @NotNull Consumer<@NotNull VkPhysicalDevice16BitStorageFeatures> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkPhysicalDevice16BitStorageFeatures value) {
             MemorySegment s = segment.asSlice(index * VkPhysicalDevice16BitStorageFeatures.BYTES, VkPhysicalDevice16BitStorageFeatures.BYTES);
             s.copyFrom(value.segment);
@@ -202,12 +207,13 @@ public record VkPhysicalDevice16BitStorageFeatures(@NotNull MemorySegment segmen
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkPhysicalDevice16BitStorageFeatures pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkPhysicalDevice16BitStorageFeatures pNext(@Nullable IPointer pointer) {

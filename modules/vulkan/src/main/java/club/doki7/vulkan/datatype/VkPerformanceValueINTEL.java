@@ -77,6 +77,11 @@ public record VkPerformanceValueINTEL(@NotNull MemorySegment segment) implements
             return new VkPerformanceValueINTEL(segment.asSlice(index * VkPerformanceValueINTEL.BYTES, VkPerformanceValueINTEL.BYTES));
         }
 
+        public VkPerformanceValueINTEL.Ptr at(long index, @NotNull Consumer<@NotNull VkPerformanceValueINTEL> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkPerformanceValueINTEL value) {
             MemorySegment s = segment.asSlice(index * VkPerformanceValueINTEL.BYTES, VkPerformanceValueINTEL.BYTES);
             s.copyFrom(value.segment);

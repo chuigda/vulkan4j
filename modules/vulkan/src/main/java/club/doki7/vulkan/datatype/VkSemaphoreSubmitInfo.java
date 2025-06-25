@@ -90,6 +90,11 @@ public record VkSemaphoreSubmitInfo(@NotNull MemorySegment segment) implements I
             return new VkSemaphoreSubmitInfo(segment.asSlice(index * VkSemaphoreSubmitInfo.BYTES, VkSemaphoreSubmitInfo.BYTES));
         }
 
+        public VkSemaphoreSubmitInfo.Ptr at(long index, @NotNull Consumer<@NotNull VkSemaphoreSubmitInfo> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkSemaphoreSubmitInfo value) {
             MemorySegment s = segment.asSlice(index * VkSemaphoreSubmitInfo.BYTES, VkSemaphoreSubmitInfo.BYTES);
             s.copyFrom(value.segment);
@@ -202,12 +207,13 @@ public record VkSemaphoreSubmitInfo(@NotNull MemorySegment segment) implements I
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkSemaphoreSubmitInfo pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkSemaphoreSubmitInfo pNext(@Nullable IPointer pointer) {
@@ -237,11 +243,11 @@ public record VkSemaphoreSubmitInfo(@NotNull MemorySegment segment) implements I
         return this;
     }
 
-    public @EnumType(VkPipelineStageFlags2.class) long stageMask() {
+    public @Bitmask(VkPipelineStageFlags2.class) long stageMask() {
         return segment.get(LAYOUT$stageMask, OFFSET$stageMask);
     }
 
-    public VkSemaphoreSubmitInfo stageMask(@EnumType(VkPipelineStageFlags2.class) long value) {
+    public VkSemaphoreSubmitInfo stageMask(@Bitmask(VkPipelineStageFlags2.class) long value) {
         segment.set(LAYOUT$stageMask, OFFSET$stageMask, value);
         return this;
     }

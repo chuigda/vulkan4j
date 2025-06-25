@@ -88,6 +88,11 @@ public record VkMacOSSurfaceCreateInfoMVK(@NotNull MemorySegment segment) implem
             return new VkMacOSSurfaceCreateInfoMVK(segment.asSlice(index * VkMacOSSurfaceCreateInfoMVK.BYTES, VkMacOSSurfaceCreateInfoMVK.BYTES));
         }
 
+        public VkMacOSSurfaceCreateInfoMVK.Ptr at(long index, @NotNull Consumer<@NotNull VkMacOSSurfaceCreateInfoMVK> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkMacOSSurfaceCreateInfoMVK value) {
             MemorySegment s = segment.asSlice(index * VkMacOSSurfaceCreateInfoMVK.BYTES, VkMacOSSurfaceCreateInfoMVK.BYTES);
             s.copyFrom(value.segment);
@@ -200,12 +205,13 @@ public record VkMacOSSurfaceCreateInfoMVK(@NotNull MemorySegment segment) implem
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkMacOSSurfaceCreateInfoMVK pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkMacOSSurfaceCreateInfoMVK pNext(@Nullable IPointer pointer) {
@@ -213,21 +219,22 @@ public record VkMacOSSurfaceCreateInfoMVK(@NotNull MemorySegment segment) implem
         return this;
     }
 
-    public @EnumType(VkMacOSSurfaceCreateFlagsMVK.class) int flags() {
+    public @Bitmask(VkMacOSSurfaceCreateFlagsMVK.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public VkMacOSSurfaceCreateInfoMVK flags(@EnumType(VkMacOSSurfaceCreateFlagsMVK.class) int value) {
+    public VkMacOSSurfaceCreateInfoMVK flags(@Bitmask(VkMacOSSurfaceCreateFlagsMVK.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pView() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pView() {
         return segment.get(LAYOUT$pView, OFFSET$pView);
     }
 
-    public void pView(@Pointer(comment="void*") MemorySegment value) {
+    public VkMacOSSurfaceCreateInfoMVK pView(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pView, OFFSET$pView, value);
+        return this;
     }
 
     public VkMacOSSurfaceCreateInfoMVK pView(@Nullable IPointer pointer) {

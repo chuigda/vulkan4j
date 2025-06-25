@@ -87,6 +87,11 @@ public record VkPhysicalDeviceExternalFenceInfo(@NotNull MemorySegment segment) 
             return new VkPhysicalDeviceExternalFenceInfo(segment.asSlice(index * VkPhysicalDeviceExternalFenceInfo.BYTES, VkPhysicalDeviceExternalFenceInfo.BYTES));
         }
 
+        public VkPhysicalDeviceExternalFenceInfo.Ptr at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceExternalFenceInfo> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkPhysicalDeviceExternalFenceInfo value) {
             MemorySegment s = segment.asSlice(index * VkPhysicalDeviceExternalFenceInfo.BYTES, VkPhysicalDeviceExternalFenceInfo.BYTES);
             s.copyFrom(value.segment);
@@ -199,12 +204,13 @@ public record VkPhysicalDeviceExternalFenceInfo(@NotNull MemorySegment segment) 
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkPhysicalDeviceExternalFenceInfo pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkPhysicalDeviceExternalFenceInfo pNext(@Nullable IPointer pointer) {
@@ -212,11 +218,11 @@ public record VkPhysicalDeviceExternalFenceInfo(@NotNull MemorySegment segment) 
         return this;
     }
 
-    public @EnumType(VkExternalFenceHandleTypeFlags.class) int handleType() {
+    public @Bitmask(VkExternalFenceHandleTypeFlags.class) int handleType() {
         return segment.get(LAYOUT$handleType, OFFSET$handleType);
     }
 
-    public VkPhysicalDeviceExternalFenceInfo handleType(@EnumType(VkExternalFenceHandleTypeFlags.class) int value) {
+    public VkPhysicalDeviceExternalFenceInfo handleType(@Bitmask(VkExternalFenceHandleTypeFlags.class) int value) {
         segment.set(LAYOUT$handleType, OFFSET$handleType, value);
         return this;
     }

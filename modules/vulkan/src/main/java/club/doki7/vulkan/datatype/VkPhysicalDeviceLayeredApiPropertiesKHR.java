@@ -90,6 +90,11 @@ public record VkPhysicalDeviceLayeredApiPropertiesKHR(@NotNull MemorySegment seg
             return new VkPhysicalDeviceLayeredApiPropertiesKHR(segment.asSlice(index * VkPhysicalDeviceLayeredApiPropertiesKHR.BYTES, VkPhysicalDeviceLayeredApiPropertiesKHR.BYTES));
         }
 
+        public VkPhysicalDeviceLayeredApiPropertiesKHR.Ptr at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceLayeredApiPropertiesKHR> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkPhysicalDeviceLayeredApiPropertiesKHR value) {
             MemorySegment s = segment.asSlice(index * VkPhysicalDeviceLayeredApiPropertiesKHR.BYTES, VkPhysicalDeviceLayeredApiPropertiesKHR.BYTES);
             s.copyFrom(value.segment);
@@ -202,12 +207,13 @@ public record VkPhysicalDeviceLayeredApiPropertiesKHR(@NotNull MemorySegment seg
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkPhysicalDeviceLayeredApiPropertiesKHR pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkPhysicalDeviceLayeredApiPropertiesKHR pNext(@Nullable IPointer pointer) {
@@ -246,12 +252,19 @@ public record VkPhysicalDeviceLayeredApiPropertiesKHR(@NotNull MemorySegment seg
         return new BytePtr(deviceNameRaw());
     }
 
-    public VkPhysicalDeviceLayeredApiPropertiesKHR deviceName(BytePtr value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$deviceName, SIZE$deviceName);
+    public VkPhysicalDeviceLayeredApiPropertiesKHR deviceName(@NotNull Consumer<BytePtr> consumer) {
+        BytePtr ptr = deviceName();
+        consumer.accept(ptr);
         return this;
     }
 
-    public MemorySegment deviceNameRaw() {
+    public VkPhysicalDeviceLayeredApiPropertiesKHR deviceName(BytePtr value) {
+        MemorySegment s = deviceNameRaw();
+        s.copyFrom(value.segment());
+        return this;
+    }
+
+    public @NotNull MemorySegment deviceNameRaw() {
         return segment.asSlice(OFFSET$deviceName, SIZE$deviceName);
     }
 

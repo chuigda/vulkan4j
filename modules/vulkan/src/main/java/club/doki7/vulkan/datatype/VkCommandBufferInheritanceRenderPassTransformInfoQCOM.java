@@ -88,6 +88,11 @@ public record VkCommandBufferInheritanceRenderPassTransformInfoQCOM(@NotNull Mem
             return new VkCommandBufferInheritanceRenderPassTransformInfoQCOM(segment.asSlice(index * VkCommandBufferInheritanceRenderPassTransformInfoQCOM.BYTES, VkCommandBufferInheritanceRenderPassTransformInfoQCOM.BYTES));
         }
 
+        public VkCommandBufferInheritanceRenderPassTransformInfoQCOM.Ptr at(long index, @NotNull Consumer<@NotNull VkCommandBufferInheritanceRenderPassTransformInfoQCOM> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkCommandBufferInheritanceRenderPassTransformInfoQCOM value) {
             MemorySegment s = segment.asSlice(index * VkCommandBufferInheritanceRenderPassTransformInfoQCOM.BYTES, VkCommandBufferInheritanceRenderPassTransformInfoQCOM.BYTES);
             s.copyFrom(value.segment);
@@ -200,12 +205,13 @@ public record VkCommandBufferInheritanceRenderPassTransformInfoQCOM(@NotNull Mem
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkCommandBufferInheritanceRenderPassTransformInfoQCOM pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkCommandBufferInheritanceRenderPassTransformInfoQCOM pNext(@Nullable IPointer pointer) {
@@ -213,11 +219,11 @@ public record VkCommandBufferInheritanceRenderPassTransformInfoQCOM(@NotNull Mem
         return this;
     }
 
-    public @EnumType(VkSurfaceTransformFlagsKHR.class) int transform() {
+    public @Bitmask(VkSurfaceTransformFlagsKHR.class) int transform() {
         return segment.get(LAYOUT$transform, OFFSET$transform);
     }
 
-    public VkCommandBufferInheritanceRenderPassTransformInfoQCOM transform(@EnumType(VkSurfaceTransformFlagsKHR.class) int value) {
+    public VkCommandBufferInheritanceRenderPassTransformInfoQCOM transform(@Bitmask(VkSurfaceTransformFlagsKHR.class) int value) {
         segment.set(LAYOUT$transform, OFFSET$transform, value);
         return this;
     }

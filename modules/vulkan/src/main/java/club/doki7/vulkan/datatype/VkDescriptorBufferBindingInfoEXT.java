@@ -88,6 +88,11 @@ public record VkDescriptorBufferBindingInfoEXT(@NotNull MemorySegment segment) i
             return new VkDescriptorBufferBindingInfoEXT(segment.asSlice(index * VkDescriptorBufferBindingInfoEXT.BYTES, VkDescriptorBufferBindingInfoEXT.BYTES));
         }
 
+        public VkDescriptorBufferBindingInfoEXT.Ptr at(long index, @NotNull Consumer<@NotNull VkDescriptorBufferBindingInfoEXT> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkDescriptorBufferBindingInfoEXT value) {
             MemorySegment s = segment.asSlice(index * VkDescriptorBufferBindingInfoEXT.BYTES, VkDescriptorBufferBindingInfoEXT.BYTES);
             s.copyFrom(value.segment);
@@ -200,12 +205,13 @@ public record VkDescriptorBufferBindingInfoEXT(@NotNull MemorySegment segment) i
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkDescriptorBufferBindingInfoEXT pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkDescriptorBufferBindingInfoEXT pNext(@Nullable IPointer pointer) {
@@ -222,11 +228,11 @@ public record VkDescriptorBufferBindingInfoEXT(@NotNull MemorySegment segment) i
         return this;
     }
 
-    public @EnumType(VkBufferUsageFlags.class) int usage() {
+    public @Bitmask(VkBufferUsageFlags.class) int usage() {
         return segment.get(LAYOUT$usage, OFFSET$usage);
     }
 
-    public VkDescriptorBufferBindingInfoEXT usage(@EnumType(VkBufferUsageFlags.class) int value) {
+    public VkDescriptorBufferBindingInfoEXT usage(@Bitmask(VkBufferUsageFlags.class) int value) {
         segment.set(LAYOUT$usage, OFFSET$usage, value);
         return this;
     }

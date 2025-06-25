@@ -33,7 +33,7 @@ import static club.doki7.vulkan.VkConstants.*;
 ///     VkVideoPictureResourceInfoKHR dstPictureResource; // @link substring="VkVideoPictureResourceInfoKHR" target="VkVideoPictureResourceInfoKHR" @link substring="dstPictureResource" target="#dstPictureResource"
 ///     VkVideoReferenceSlotInfoKHR const* pSetupReferenceSlot; // optional // @link substring="VkVideoReferenceSlotInfoKHR" target="VkVideoReferenceSlotInfoKHR" @link substring="pSetupReferenceSlot" target="#pSetupReferenceSlot"
 ///     uint32_t referenceSlotCount; // optional // @link substring="referenceSlotCount" target="#referenceSlotCount"
-///     VkVideoReferenceSlotInfoKHR const* pReferenceSlots; // @link substring="VkVideoReferenceSlotInfoKHR" target="VkVideoReferenceSlotInfoKHR" @link substring="pReferenceSlots" target="#pReferenceSlots"
+///     VkVideoReferenceSlotInfoKHR const* pReferenceSlots; // optional // @link substring="VkVideoReferenceSlotInfoKHR" target="VkVideoReferenceSlotInfoKHR" @link substring="pReferenceSlots" target="#pReferenceSlots"
 /// } VkVideoDecodeInfoKHR;
 /// }
 ///
@@ -92,6 +92,11 @@ public record VkVideoDecodeInfoKHR(@NotNull MemorySegment segment) implements IV
         /// indicate that the returned structure is a view of the original structure.
         public @NotNull VkVideoDecodeInfoKHR at(long index) {
             return new VkVideoDecodeInfoKHR(segment.asSlice(index * VkVideoDecodeInfoKHR.BYTES, VkVideoDecodeInfoKHR.BYTES));
+        }
+
+        public VkVideoDecodeInfoKHR.Ptr at(long index, @NotNull Consumer<@NotNull VkVideoDecodeInfoKHR> consumer) {
+            consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkVideoDecodeInfoKHR value) {
@@ -206,12 +211,13 @@ public record VkVideoDecodeInfoKHR(@NotNull MemorySegment segment) implements IV
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkVideoDecodeInfoKHR pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkVideoDecodeInfoKHR pNext(@Nullable IPointer pointer) {
@@ -219,11 +225,11 @@ public record VkVideoDecodeInfoKHR(@NotNull MemorySegment segment) implements IV
         return this;
     }
 
-    public @EnumType(VkVideoDecodeFlagsKHR.class) int flags() {
+    public @Bitmask(VkVideoDecodeFlagsKHR.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public VkVideoDecodeInfoKHR flags(@EnumType(VkVideoDecodeFlagsKHR.class) int value) {
+    public VkVideoDecodeInfoKHR flags(@Bitmask(VkVideoDecodeFlagsKHR.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
         return this;
     }
@@ -297,11 +303,11 @@ public record VkVideoDecodeInfoKHR(@NotNull MemorySegment segment) implements IV
         return new VkVideoReferenceSlotInfoKHR(s);
     }
 
-    public @Pointer(target=VkVideoReferenceSlotInfoKHR.class) MemorySegment pSetupReferenceSlotRaw() {
+    public @Pointer(target=VkVideoReferenceSlotInfoKHR.class) @NotNull MemorySegment pSetupReferenceSlotRaw() {
         return segment.get(LAYOUT$pSetupReferenceSlot, OFFSET$pSetupReferenceSlot);
     }
 
-    public void pSetupReferenceSlotRaw(@Pointer(target=VkVideoReferenceSlotInfoKHR.class) MemorySegment value) {
+    public void pSetupReferenceSlotRaw(@Pointer(target=VkVideoReferenceSlotInfoKHR.class) @NotNull MemorySegment value) {
         segment.set(LAYOUT$pSetupReferenceSlot, OFFSET$pSetupReferenceSlot, value);
     }
 
@@ -338,11 +344,11 @@ public record VkVideoDecodeInfoKHR(@NotNull MemorySegment segment) implements IV
         return new VkVideoReferenceSlotInfoKHR(s);
     }
 
-    public @Pointer(target=VkVideoReferenceSlotInfoKHR.class) MemorySegment pReferenceSlotsRaw() {
+    public @Pointer(target=VkVideoReferenceSlotInfoKHR.class) @NotNull MemorySegment pReferenceSlotsRaw() {
         return segment.get(LAYOUT$pReferenceSlots, OFFSET$pReferenceSlots);
     }
 
-    public void pReferenceSlotsRaw(@Pointer(target=VkVideoReferenceSlotInfoKHR.class) MemorySegment value) {
+    public void pReferenceSlotsRaw(@Pointer(target=VkVideoReferenceSlotInfoKHR.class) @NotNull MemorySegment value) {
         segment.set(LAYOUT$pReferenceSlots, OFFSET$pReferenceSlots, value);
     }
 

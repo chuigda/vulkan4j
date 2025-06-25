@@ -1,13 +1,14 @@
 package tutorial.vulkan.part08.ch25;
 
 import club.doki7.ffm.NativeLayout;
+import club.doki7.ffm.annotation.Bitmask;
 import club.doki7.ffm.annotation.EnumType;
 import club.doki7.ffm.annotation.NativeType;
 import club.doki7.ffm.annotation.Pointer;
 import club.doki7.ffm.annotation.Unsigned;
+import club.doki7.ffm.library.ISharedLibrary;
 import club.doki7.ffm.ptr.*;
 import club.doki7.glfw.GLFW;
-import club.doki7.glfw.GLFWConstants;
 import club.doki7.glfw.GLFWFunctionTypes;
 import club.doki7.glfw.GLFWLoader;
 import club.doki7.glfw.handle.GLFWwindow;
@@ -42,8 +43,6 @@ class Application {
     }
 
     private void initWindow() {
-        GLFWLoader.loadGLFWLibrary();
-        glfw = GLFWLoader.loadGLFW();
         if (glfw.init() != GLFW.TRUE) {
             throw new RuntimeException("Failed to initialize GLFW");
         }
@@ -71,8 +70,6 @@ class Application {
     }
 
     private void initVulkan() {
-        VulkanLoader.loadVulkanLibrary();
-        staticCommands = VulkanLoader.loadStaticCommands();
         entryCommands = VulkanLoader.loadEntryCommands(staticCommands);
 
         createInstance();
@@ -163,8 +160,9 @@ class Application {
                     .pApplicationInfo(appInfo);
 
             if (ENABLE_VALIDATION_LAYERS) {
-                instanceCreateInfo.enabledLayerCount(1)
-                        .ppEnabledLayerNames(PointerPtr.allocateV(arena, BytePtr.allocateString(arena, VALIDATION_LAYER_NAME)));
+                                instanceCreateInfo
+                        .enabledLayerCount(1)
+                        .ppEnabledLayerNames(PointerPtr.allocateStrings(arena, VALIDATION_LAYER_NAME));
 
                 var debugCreateInfo = VkDebugUtilsMessengerCreateInfoEXT.allocate(arena);
                 populateDebugMessengerCreateInfo(debugCreateInfo);
@@ -266,15 +264,15 @@ class Application {
                 deviceCreateInfo.queueCreateInfoCount(1).pQueueCreateInfos(queueCreateInfo);
             }
             else {
-                var queueCreateInfos = VkDeviceQueueCreateInfo.allocate(arena, 2);
-                queueCreateInfos.at(0)
-                        .queueCount(1)
-                        .queueFamilyIndex(indices.graphicsFamily())
-                        .pQueuePriorities(pQueuePriorities);
-                queueCreateInfos.at(1)
-                        .queueCount(1)
-                        .queueFamilyIndex(indices.presentFamily())
-                        .pQueuePriorities(pQueuePriorities);
+                var queueCreateInfos = VkDeviceQueueCreateInfo.allocate(arena, 2)
+                        .at(0, it -> it
+                                .queueCount(1)
+                                .queueFamilyIndex(indices.graphicsFamily())
+                                .pQueuePriorities(pQueuePriorities))
+                        .at(1, it -> it
+                                .queueCount(1)
+                                .queueFamilyIndex(indices.presentFamily())
+                                .pQueuePriorities(pQueuePriorities));
                 deviceCreateInfo.queueCreateInfoCount(2).pQueueCreateInfos(queueCreateInfos);
             }
             var deviceFeatures = VkPhysicalDeviceFeatures.allocate(arena)
@@ -282,13 +280,13 @@ class Application {
             deviceCreateInfo.pEnabledFeatures(deviceFeatures);
 
             if (ENABLE_VALIDATION_LAYERS) {
-                deviceCreateInfo.enabledLayerCount(1)
-                        .ppEnabledLayerNames(PointerPtr.allocateV(arena, BytePtr.allocateString(arena, VALIDATION_LAYER_NAME)));
+                deviceCreateInfo
+                        .enabledLayerCount(1)
+                        .ppEnabledLayerNames(PointerPtr.allocateStrings(arena, VALIDATION_LAYER_NAME));
             }
 
             deviceCreateInfo.enabledExtensionCount(1);
-            var ppEnabledExtensionNames = PointerPtr.allocate(arena);
-            ppEnabledExtensionNames.write(BytePtr.allocateString(arena, VkConstants.KHR_SWAPCHAIN_EXTENSION_NAME));
+            var ppEnabledExtensionNames = PointerPtr.allocateStrings(arena, VkConstants.KHR_SWAPCHAIN_EXTENSION_NAME);
             deviceCreateInfo.ppEnabledExtensionNames(ppEnabledExtensionNames);
 
             var pDevice = VkDevice.Ptr.allocate(arena);
@@ -454,15 +452,15 @@ class Application {
             var vertexShaderModule = createShaderModule(vertShaderCode);
             var fragmentShaderModule = createShaderModule(fragShaderCode);
 
-            var shaderStages = VkPipelineShaderStageCreateInfo.allocate(arena, 2);
-            shaderStages.at(0)
-                    .stage(VkShaderStageFlags.VERTEX)
-                    .module(vertexShaderModule)
-                    .pName(BytePtr.allocateString(arena, "main"));
-            shaderStages.at(1)
-                    .stage(VkShaderStageFlags.FRAGMENT)
-                    .module(fragmentShaderModule)
-                    .pName(BytePtr.allocateString(arena, "main"));
+            var shaderStages = VkPipelineShaderStageCreateInfo.allocate(arena, 2)
+                    .at(0, it -> it
+                            .stage(VkShaderStageFlags.VERTEX)
+                            .module(vertexShaderModule)
+                            .pName(BytePtr.allocateString(arena, "main")))
+                    .at(1, it -> it
+                            .stage(VkShaderStageFlags.FRAGMENT)
+                            .module(fragmentShaderModule)
+                            .pName(BytePtr.allocateString(arena, "main")));
 
             var dynamicStates = IntPtr.allocateV(arena, VkDynamicState.VIEWPORT, VkDynamicState.SCISSOR);
 
@@ -1344,7 +1342,7 @@ class Application {
         framebufferResized = true;
     }
 
-    private int findMemoryType(int typeFilter, @EnumType(VkMemoryPropertyFlags.class) int properties) {
+    private int findMemoryType(int typeFilter, @Bitmask(VkMemoryPropertyFlags.class) int properties) {
         try (var arena = Arena.ofConfined()) {
             var memProperties = VkPhysicalDeviceMemoryProperties.allocate(arena);
             instanceCommands.getPhysicalDeviceMemoryProperties(physicalDevice, memProperties);
@@ -1364,8 +1362,8 @@ class Application {
 
     private Pair<VkBuffer, VkDeviceMemory> createBuffer(
             int size,
-            @EnumType(VkBufferUsageFlags.class) int usage,
-            @EnumType(VkMemoryPropertyFlags.class) int properties
+            @Bitmask(VkBufferUsageFlags.class) int usage,
+            @Bitmask(VkMemoryPropertyFlags.class) int properties
     ) {
         try (var arena = Arena.ofConfined()) {
             var bufferInfo = VkBufferCreateInfo.allocate(arena)
@@ -1429,8 +1427,8 @@ class Application {
             int height,
             @EnumType(VkFormat.class) int format,
             @EnumType(VkImageTiling.class) int tiling,
-            @EnumType(VkImageUsageFlags.class) int usage,
-            @EnumType(VkMemoryPropertyFlags.class) int properties
+            @Bitmask(VkImageUsageFlags.class) int usage,
+            @Bitmask(VkMemoryPropertyFlags.class) int properties
     ) {
         try (var arena = Arena.ofConfined()) {
             var imageInfo = VkImageCreateInfo.allocate(arena)
@@ -1493,8 +1491,8 @@ class Application {
                             .baseArrayLayer(0)
                             .layerCount(1));
 
-            @EnumType(VkPipelineStageFlags.class) int sourceStage;
-            @EnumType(VkPipelineStageFlags.class) int destinationStage;
+            @Bitmask(VkPipelineStageFlags.class) int sourceStage;
+            @Bitmask(VkPipelineStageFlags.class) int destinationStage;
 
             if (oldLayout == VkImageLayout.UNDEFINED
                 && newLayout == VkImageLayout.TRANSFER_DST_OPTIMAL) {
@@ -1633,8 +1631,8 @@ class Application {
     }
 
     private static @NativeType("VkBool32") @Unsigned int debugCallback(
-            @EnumType(VkDebugUtilsMessageSeverityFlagsEXT.class) int ignoredMessageSeverity,
-            @EnumType(VkDebugUtilsMessageTypeFlagsEXT.class) int ignoredMessageType,
+            @Bitmask(VkDebugUtilsMessageSeverityFlagsEXT.class) int ignoredMessageSeverity,
+            @Bitmask(VkDebugUtilsMessageTypeFlagsEXT.class) int ignoredMessageType,
             @Pointer(target=VkDebugUtilsMessengerCallbackDataEXT.class) MemorySegment pCallbackData,
             @Pointer(comment="void*") MemorySegment ignoredPUserData
     ) {
@@ -1678,24 +1676,21 @@ class Application {
     }
 
     private static VkVertexInputAttributeDescription.Ptr getAttributeDescriptions(Arena arena) {
-        var attributeDescriptions = VkVertexInputAttributeDescription.allocate(arena, 2);
-        attributeDescriptions.at(0)
-                .binding(0)
-                .location(0)
-                .format(VkFormat.R32G32_SFLOAT)
-                .offset(0);
-        attributeDescriptions.at(1)
-                .binding(0)
-                .location(1)
-                .format(VkFormat.R32G32B32_SFLOAT)
-                .offset(Float.BYTES * 2);
-        return attributeDescriptions;
+        return VkVertexInputAttributeDescription.allocate(arena, 2)
+                .at(0, it -> it
+                        .binding(0)
+                        .location(0)
+                        .format(VkFormat.R32G32_SFLOAT)
+                        .offset(0))
+                .at(1, it -> it
+                        .binding(0)
+                        .location(1)
+                        .format(VkFormat.R32G32B32_SFLOAT)
+                        .offset(Float.BYTES * 2));
     }
 
-    private GLFW glfw;
     private GLFWwindow window;
 
-    private VkStaticCommands staticCommands;
     private VkEntryCommands entryCommands;
     private VkInstance instance;
     private VkInstanceCommands instanceCommands;
@@ -1737,9 +1732,13 @@ class Application {
     private VkImageView textureImageView;
     private VkSampler textureSampler;
 
+    private static final ISharedLibrary libGLFW = GLFWLoader.loadGLFWLibrary();
+    private static final GLFW glfw = GLFWLoader.loadGLFW(libGLFW);
     private static final int WIDTH = 800;
     private static final int HEIGHT = 600;
     private static final BytePtr WINDOW_TITLE = BytePtr.allocateString(Arena.global(), "Vulkan");
+    private static final ISharedLibrary libVulkan = VulkanLoader.loadVulkanLibrary();
+    private static final VkStaticCommands staticCommands = VulkanLoader.loadStaticCommands(libVulkan);
     private static final boolean ENABLE_VALIDATION_LAYERS = System.getProperty("validation") != null;
     private static final String VALIDATION_LAYER_NAME = "VK_LAYER_KHRONOS_validation";
     private static final MethodHandle HANDLE_debugCallback;

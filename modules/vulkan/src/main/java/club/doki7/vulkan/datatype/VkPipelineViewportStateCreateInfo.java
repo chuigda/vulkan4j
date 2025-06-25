@@ -91,6 +91,11 @@ public record VkPipelineViewportStateCreateInfo(@NotNull MemorySegment segment) 
             return new VkPipelineViewportStateCreateInfo(segment.asSlice(index * VkPipelineViewportStateCreateInfo.BYTES, VkPipelineViewportStateCreateInfo.BYTES));
         }
 
+        public VkPipelineViewportStateCreateInfo.Ptr at(long index, @NotNull Consumer<@NotNull VkPipelineViewportStateCreateInfo> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkPipelineViewportStateCreateInfo value) {
             MemorySegment s = segment.asSlice(index * VkPipelineViewportStateCreateInfo.BYTES, VkPipelineViewportStateCreateInfo.BYTES);
             s.copyFrom(value.segment);
@@ -203,12 +208,13 @@ public record VkPipelineViewportStateCreateInfo(@NotNull MemorySegment segment) 
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkPipelineViewportStateCreateInfo pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkPipelineViewportStateCreateInfo pNext(@Nullable IPointer pointer) {
@@ -216,11 +222,11 @@ public record VkPipelineViewportStateCreateInfo(@NotNull MemorySegment segment) 
         return this;
     }
 
-    public @EnumType(VkPipelineViewportStateCreateFlags.class) int flags() {
+    public @Bitmask(VkPipelineViewportStateCreateFlags.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public VkPipelineViewportStateCreateInfo flags(@EnumType(VkPipelineViewportStateCreateFlags.class) int value) {
+    public VkPipelineViewportStateCreateInfo flags(@Bitmask(VkPipelineViewportStateCreateFlags.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
         return this;
     }
@@ -258,11 +264,11 @@ public record VkPipelineViewportStateCreateInfo(@NotNull MemorySegment segment) 
         return new VkViewport(s);
     }
 
-    public @Pointer(target=VkViewport.class) MemorySegment pViewportsRaw() {
+    public @Pointer(target=VkViewport.class) @NotNull MemorySegment pViewportsRaw() {
         return segment.get(LAYOUT$pViewports, OFFSET$pViewports);
     }
 
-    public void pViewportsRaw(@Pointer(target=VkViewport.class) MemorySegment value) {
+    public void pViewportsRaw(@Pointer(target=VkViewport.class) @NotNull MemorySegment value) {
         segment.set(LAYOUT$pViewports, OFFSET$pViewports, value);
     }
 
@@ -299,11 +305,11 @@ public record VkPipelineViewportStateCreateInfo(@NotNull MemorySegment segment) 
         return new VkRect2D(s);
     }
 
-    public @Pointer(target=VkRect2D.class) MemorySegment pScissorsRaw() {
+    public @Pointer(target=VkRect2D.class) @NotNull MemorySegment pScissorsRaw() {
         return segment.get(LAYOUT$pScissors, OFFSET$pScissors);
     }
 
-    public void pScissorsRaw(@Pointer(target=VkRect2D.class) MemorySegment value) {
+    public void pScissorsRaw(@Pointer(target=VkRect2D.class) @NotNull MemorySegment value) {
         segment.set(LAYOUT$pScissors, OFFSET$pScissors, value);
     }
 

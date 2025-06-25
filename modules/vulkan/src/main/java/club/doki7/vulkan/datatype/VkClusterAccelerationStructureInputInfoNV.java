@@ -91,6 +91,11 @@ public record VkClusterAccelerationStructureInputInfoNV(@NotNull MemorySegment s
             return new VkClusterAccelerationStructureInputInfoNV(segment.asSlice(index * VkClusterAccelerationStructureInputInfoNV.BYTES, VkClusterAccelerationStructureInputInfoNV.BYTES));
         }
 
+        public VkClusterAccelerationStructureInputInfoNV.Ptr at(long index, @NotNull Consumer<@NotNull VkClusterAccelerationStructureInputInfoNV> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkClusterAccelerationStructureInputInfoNV value) {
             MemorySegment s = segment.asSlice(index * VkClusterAccelerationStructureInputInfoNV.BYTES, VkClusterAccelerationStructureInputInfoNV.BYTES);
             s.copyFrom(value.segment);
@@ -203,12 +208,13 @@ public record VkClusterAccelerationStructureInputInfoNV(@NotNull MemorySegment s
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkClusterAccelerationStructureInputInfoNV pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkClusterAccelerationStructureInputInfoNV pNext(@Nullable IPointer pointer) {
@@ -225,11 +231,11 @@ public record VkClusterAccelerationStructureInputInfoNV(@NotNull MemorySegment s
         return this;
     }
 
-    public @EnumType(VkBuildAccelerationStructureFlagsKHR.class) int flags() {
+    public @Bitmask(VkBuildAccelerationStructureFlagsKHR.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public VkClusterAccelerationStructureInputInfoNV flags(@EnumType(VkBuildAccelerationStructureFlagsKHR.class) int value) {
+    public VkClusterAccelerationStructureInputInfoNV flags(@Bitmask(VkBuildAccelerationStructureFlagsKHR.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
         return this;
     }

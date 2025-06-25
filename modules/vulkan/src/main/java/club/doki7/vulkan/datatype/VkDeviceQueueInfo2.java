@@ -89,6 +89,11 @@ public record VkDeviceQueueInfo2(@NotNull MemorySegment segment) implements IVkD
             return new VkDeviceQueueInfo2(segment.asSlice(index * VkDeviceQueueInfo2.BYTES, VkDeviceQueueInfo2.BYTES));
         }
 
+        public VkDeviceQueueInfo2.Ptr at(long index, @NotNull Consumer<@NotNull VkDeviceQueueInfo2> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkDeviceQueueInfo2 value) {
             MemorySegment s = segment.asSlice(index * VkDeviceQueueInfo2.BYTES, VkDeviceQueueInfo2.BYTES);
             s.copyFrom(value.segment);
@@ -201,12 +206,13 @@ public record VkDeviceQueueInfo2(@NotNull MemorySegment segment) implements IVkD
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkDeviceQueueInfo2 pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkDeviceQueueInfo2 pNext(@Nullable IPointer pointer) {
@@ -214,11 +220,11 @@ public record VkDeviceQueueInfo2(@NotNull MemorySegment segment) implements IVkD
         return this;
     }
 
-    public @EnumType(VkDeviceQueueCreateFlags.class) int flags() {
+    public @Bitmask(VkDeviceQueueCreateFlags.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public VkDeviceQueueInfo2 flags(@EnumType(VkDeviceQueueCreateFlags.class) int value) {
+    public VkDeviceQueueInfo2 flags(@Bitmask(VkDeviceQueueCreateFlags.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
         return this;
     }

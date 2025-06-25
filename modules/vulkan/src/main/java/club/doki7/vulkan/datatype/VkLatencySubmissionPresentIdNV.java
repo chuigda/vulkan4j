@@ -87,6 +87,11 @@ public record VkLatencySubmissionPresentIdNV(@NotNull MemorySegment segment) imp
             return new VkLatencySubmissionPresentIdNV(segment.asSlice(index * VkLatencySubmissionPresentIdNV.BYTES, VkLatencySubmissionPresentIdNV.BYTES));
         }
 
+        public VkLatencySubmissionPresentIdNV.Ptr at(long index, @NotNull Consumer<@NotNull VkLatencySubmissionPresentIdNV> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkLatencySubmissionPresentIdNV value) {
             MemorySegment s = segment.asSlice(index * VkLatencySubmissionPresentIdNV.BYTES, VkLatencySubmissionPresentIdNV.BYTES);
             s.copyFrom(value.segment);
@@ -199,12 +204,13 @@ public record VkLatencySubmissionPresentIdNV(@NotNull MemorySegment segment) imp
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkLatencySubmissionPresentIdNV pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkLatencySubmissionPresentIdNV pNext(@Nullable IPointer pointer) {

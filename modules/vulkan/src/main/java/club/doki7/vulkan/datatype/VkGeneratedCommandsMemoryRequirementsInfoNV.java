@@ -90,6 +90,11 @@ public record VkGeneratedCommandsMemoryRequirementsInfoNV(@NotNull MemorySegment
             return new VkGeneratedCommandsMemoryRequirementsInfoNV(segment.asSlice(index * VkGeneratedCommandsMemoryRequirementsInfoNV.BYTES, VkGeneratedCommandsMemoryRequirementsInfoNV.BYTES));
         }
 
+        public VkGeneratedCommandsMemoryRequirementsInfoNV.Ptr at(long index, @NotNull Consumer<@NotNull VkGeneratedCommandsMemoryRequirementsInfoNV> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkGeneratedCommandsMemoryRequirementsInfoNV value) {
             MemorySegment s = segment.asSlice(index * VkGeneratedCommandsMemoryRequirementsInfoNV.BYTES, VkGeneratedCommandsMemoryRequirementsInfoNV.BYTES);
             s.copyFrom(value.segment);
@@ -202,12 +207,13 @@ public record VkGeneratedCommandsMemoryRequirementsInfoNV(@NotNull MemorySegment
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkGeneratedCommandsMemoryRequirementsInfoNV pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkGeneratedCommandsMemoryRequirementsInfoNV pNext(@Nullable IPointer pointer) {

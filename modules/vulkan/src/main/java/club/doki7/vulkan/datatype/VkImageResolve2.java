@@ -91,6 +91,11 @@ public record VkImageResolve2(@NotNull MemorySegment segment) implements IVkImag
             return new VkImageResolve2(segment.asSlice(index * VkImageResolve2.BYTES, VkImageResolve2.BYTES));
         }
 
+        public VkImageResolve2.Ptr at(long index, @NotNull Consumer<@NotNull VkImageResolve2> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkImageResolve2 value) {
             MemorySegment s = segment.asSlice(index * VkImageResolve2.BYTES, VkImageResolve2.BYTES);
             s.copyFrom(value.segment);
@@ -203,12 +208,13 @@ public record VkImageResolve2(@NotNull MemorySegment segment) implements IVkImag
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkImageResolve2 pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkImageResolve2 pNext(@Nullable IPointer pointer) {

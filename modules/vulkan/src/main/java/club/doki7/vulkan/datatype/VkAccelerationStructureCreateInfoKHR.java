@@ -92,6 +92,11 @@ public record VkAccelerationStructureCreateInfoKHR(@NotNull MemorySegment segmen
             return new VkAccelerationStructureCreateInfoKHR(segment.asSlice(index * VkAccelerationStructureCreateInfoKHR.BYTES, VkAccelerationStructureCreateInfoKHR.BYTES));
         }
 
+        public VkAccelerationStructureCreateInfoKHR.Ptr at(long index, @NotNull Consumer<@NotNull VkAccelerationStructureCreateInfoKHR> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkAccelerationStructureCreateInfoKHR value) {
             MemorySegment s = segment.asSlice(index * VkAccelerationStructureCreateInfoKHR.BYTES, VkAccelerationStructureCreateInfoKHR.BYTES);
             s.copyFrom(value.segment);
@@ -204,12 +209,13 @@ public record VkAccelerationStructureCreateInfoKHR(@NotNull MemorySegment segmen
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkAccelerationStructureCreateInfoKHR pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkAccelerationStructureCreateInfoKHR pNext(@Nullable IPointer pointer) {
@@ -217,11 +223,11 @@ public record VkAccelerationStructureCreateInfoKHR(@NotNull MemorySegment segmen
         return this;
     }
 
-    public @EnumType(VkAccelerationStructureCreateFlagsKHR.class) int createFlags() {
+    public @Bitmask(VkAccelerationStructureCreateFlagsKHR.class) int createFlags() {
         return segment.get(LAYOUT$createFlags, OFFSET$createFlags);
     }
 
-    public VkAccelerationStructureCreateInfoKHR createFlags(@EnumType(VkAccelerationStructureCreateFlagsKHR.class) int value) {
+    public VkAccelerationStructureCreateInfoKHR createFlags(@Bitmask(VkAccelerationStructureCreateFlagsKHR.class) int value) {
         segment.set(LAYOUT$createFlags, OFFSET$createFlags, value);
         return this;
     }

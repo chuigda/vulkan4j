@@ -78,6 +78,11 @@ public record StdVideoDecodeAV1ReferenceInfo(@NotNull MemorySegment segment) imp
             return new StdVideoDecodeAV1ReferenceInfo(segment.asSlice(index * StdVideoDecodeAV1ReferenceInfo.BYTES, StdVideoDecodeAV1ReferenceInfo.BYTES));
         }
 
+        public StdVideoDecodeAV1ReferenceInfo.Ptr at(long index, @NotNull Consumer<@NotNull StdVideoDecodeAV1ReferenceInfo> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull StdVideoDecodeAV1ReferenceInfo value) {
             MemorySegment s = segment.asSlice(index * StdVideoDecodeAV1ReferenceInfo.BYTES, StdVideoDecodeAV1ReferenceInfo.BYTES);
             s.copyFrom(value.segment);
@@ -216,12 +221,19 @@ public record StdVideoDecodeAV1ReferenceInfo(@NotNull MemorySegment segment) imp
         return new BytePtr(SavedOrderHintsRaw());
     }
 
-    public StdVideoDecodeAV1ReferenceInfo SavedOrderHints(@Unsigned BytePtr value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$SavedOrderHints, SIZE$SavedOrderHints);
+    public StdVideoDecodeAV1ReferenceInfo SavedOrderHints(@NotNull Consumer<BytePtr> consumer) {
+        @Unsigned BytePtr ptr = SavedOrderHints();
+        consumer.accept(ptr);
         return this;
     }
 
-    public MemorySegment SavedOrderHintsRaw() {
+    public StdVideoDecodeAV1ReferenceInfo SavedOrderHints(@Unsigned BytePtr value) {
+        MemorySegment s = SavedOrderHintsRaw();
+        s.copyFrom(value.segment());
+        return this;
+    }
+
+    public @NotNull MemorySegment SavedOrderHintsRaw() {
         return segment.asSlice(OFFSET$SavedOrderHints, SIZE$SavedOrderHints);
     }
 

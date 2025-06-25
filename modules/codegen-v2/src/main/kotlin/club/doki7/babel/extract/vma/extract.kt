@@ -2,45 +2,21 @@
 
 package club.doki7.babel.extract.vma
 
-import club.doki7.babel.hparse.ControlFlow
-import club.doki7.babel.cdecl.EnumeratorDecl
-import club.doki7.babel.cdecl.FunctionDecl
-import club.doki7.babel.hparse.ParseConfig
-import club.doki7.babel.cdecl.RawFunctionType
-import club.doki7.babel.cdecl.RawIdentifierType
-import club.doki7.babel.cdecl.TypedefDecl
-import club.doki7.babel.hparse.detectBlockComment
-import club.doki7.babel.hparse.detectBlockDoxygen
-import club.doki7.babel.hparse.detectLineComment
-import club.doki7.babel.hparse.detectPreprocessor
-import club.doki7.babel.hparse.detectTriSlashDoxygen
-import club.doki7.babel.hparse.dummyAction
-import club.doki7.babel.cdecl.parseEnumeratorDecl
-import club.doki7.babel.cdecl.parseFunctionDecl
-import club.doki7.babel.cdecl.parseStructFieldDecl
-import club.doki7.babel.cdecl.parseTypedefDecl
-import club.doki7.babel.hparse.nextLine
-import club.doki7.babel.hparse.hparse
-import club.doki7.babel.hparse.parseAndSaveBlockDoxygen
-import club.doki7.babel.hparse.parseAndSaveTriSlashDoxygen
-import club.doki7.babel.hparse.skipBlockComment
-import club.doki7.babel.cdecl.toType
+import club.doki7.babel.cdecl.*
+import club.doki7.babel.hparse.*
 import club.doki7.babel.registry.*
 import club.doki7.babel.util.isDecOrHexNumber
 import club.doki7.babel.util.parseDecOrHex
 import java.util.logging.Logger
 import kotlin.io.path.Path
+import kotlin.io.path.useLines
 
 private val inputDir = Path("codegen-v2/input")
 internal val log = Logger.getLogger("c.d.b.extract.vma")
 
 fun extractVMAHeader(): Registry<EmptyMergeable> {
     val headerFile = inputDir.resolve("vk_mem_alloc.h")
-        .toFile()
-        .readText()
-        .splitToSequence("\n")
-        .map(String::trim)
-        .toList()
+        .useLines { it.map(String::trim).toList() }
 
     val registry = Registry(ext = EmptyMergeable())
 
@@ -319,7 +295,7 @@ private fun parseAndSaveEnumeration(
     return next + 1
 }
 
-private val enumerationParseConfig = ParseConfig<EmptyMergeable>().apply {
+val enumerationParseConfig = ParseConfig<EmptyMergeable>().apply {
     addInit { it["enumerators"] = mutableListOf<Pair<EnumeratorDecl, List<String>?>>() }
 
     addRule(0, { line -> if (line.startsWith("}")) ControlFlow.RETURN else ControlFlow.NEXT }, ::dummyAction)
@@ -331,7 +307,7 @@ private val enumerationParseConfig = ParseConfig<EmptyMergeable>().apply {
     addRule(99, { _ -> ControlFlow.ACCEPT }, ::parseEnumerator)
 }
 
-private fun parseEnumerator(
+fun parseEnumerator(
     @Suppress("unused") registry: Registry<EmptyMergeable>,
     cx: MutableMap<String, Any>,
     lines: List<String>,

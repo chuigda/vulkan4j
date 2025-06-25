@@ -107,6 +107,11 @@ public record VmaStatistics(@NotNull MemorySegment segment) implements IVmaStati
             return new VmaStatistics(segment.asSlice(index * VmaStatistics.BYTES, VmaStatistics.BYTES));
         }
 
+        public VmaStatistics.Ptr at(long index, @NotNull Consumer<@NotNull VmaStatistics> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VmaStatistics value) {
             MemorySegment s = segment.asSlice(index * VmaStatistics.BYTES, VmaStatistics.BYTES);
             s.copyFrom(value.segment);

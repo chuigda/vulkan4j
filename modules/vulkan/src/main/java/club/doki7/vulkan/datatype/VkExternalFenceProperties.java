@@ -89,6 +89,11 @@ public record VkExternalFenceProperties(@NotNull MemorySegment segment) implemen
             return new VkExternalFenceProperties(segment.asSlice(index * VkExternalFenceProperties.BYTES, VkExternalFenceProperties.BYTES));
         }
 
+        public VkExternalFenceProperties.Ptr at(long index, @NotNull Consumer<@NotNull VkExternalFenceProperties> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkExternalFenceProperties value) {
             MemorySegment s = segment.asSlice(index * VkExternalFenceProperties.BYTES, VkExternalFenceProperties.BYTES);
             s.copyFrom(value.segment);
@@ -201,12 +206,13 @@ public record VkExternalFenceProperties(@NotNull MemorySegment segment) implemen
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkExternalFenceProperties pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkExternalFenceProperties pNext(@Nullable IPointer pointer) {
@@ -214,29 +220,29 @@ public record VkExternalFenceProperties(@NotNull MemorySegment segment) implemen
         return this;
     }
 
-    public @EnumType(VkExternalFenceHandleTypeFlags.class) int exportFromImportedHandleTypes() {
+    public @Bitmask(VkExternalFenceHandleTypeFlags.class) int exportFromImportedHandleTypes() {
         return segment.get(LAYOUT$exportFromImportedHandleTypes, OFFSET$exportFromImportedHandleTypes);
     }
 
-    public VkExternalFenceProperties exportFromImportedHandleTypes(@EnumType(VkExternalFenceHandleTypeFlags.class) int value) {
+    public VkExternalFenceProperties exportFromImportedHandleTypes(@Bitmask(VkExternalFenceHandleTypeFlags.class) int value) {
         segment.set(LAYOUT$exportFromImportedHandleTypes, OFFSET$exportFromImportedHandleTypes, value);
         return this;
     }
 
-    public @EnumType(VkExternalFenceHandleTypeFlags.class) int compatibleHandleTypes() {
+    public @Bitmask(VkExternalFenceHandleTypeFlags.class) int compatibleHandleTypes() {
         return segment.get(LAYOUT$compatibleHandleTypes, OFFSET$compatibleHandleTypes);
     }
 
-    public VkExternalFenceProperties compatibleHandleTypes(@EnumType(VkExternalFenceHandleTypeFlags.class) int value) {
+    public VkExternalFenceProperties compatibleHandleTypes(@Bitmask(VkExternalFenceHandleTypeFlags.class) int value) {
         segment.set(LAYOUT$compatibleHandleTypes, OFFSET$compatibleHandleTypes, value);
         return this;
     }
 
-    public @EnumType(VkExternalFenceFeatureFlags.class) int externalFenceFeatures() {
+    public @Bitmask(VkExternalFenceFeatureFlags.class) int externalFenceFeatures() {
         return segment.get(LAYOUT$externalFenceFeatures, OFFSET$externalFenceFeatures);
     }
 
-    public VkExternalFenceProperties externalFenceFeatures(@EnumType(VkExternalFenceFeatureFlags.class) int value) {
+    public VkExternalFenceProperties externalFenceFeatures(@Bitmask(VkExternalFenceFeatureFlags.class) int value) {
         segment.set(LAYOUT$externalFenceFeatures, OFFSET$externalFenceFeatures, value);
         return this;
     }

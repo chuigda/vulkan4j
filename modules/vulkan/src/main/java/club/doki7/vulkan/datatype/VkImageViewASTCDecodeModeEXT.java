@@ -87,6 +87,11 @@ public record VkImageViewASTCDecodeModeEXT(@NotNull MemorySegment segment) imple
             return new VkImageViewASTCDecodeModeEXT(segment.asSlice(index * VkImageViewASTCDecodeModeEXT.BYTES, VkImageViewASTCDecodeModeEXT.BYTES));
         }
 
+        public VkImageViewASTCDecodeModeEXT.Ptr at(long index, @NotNull Consumer<@NotNull VkImageViewASTCDecodeModeEXT> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkImageViewASTCDecodeModeEXT value) {
             MemorySegment s = segment.asSlice(index * VkImageViewASTCDecodeModeEXT.BYTES, VkImageViewASTCDecodeModeEXT.BYTES);
             s.copyFrom(value.segment);
@@ -199,12 +204,13 @@ public record VkImageViewASTCDecodeModeEXT(@NotNull MemorySegment segment) imple
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkImageViewASTCDecodeModeEXT pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkImageViewASTCDecodeModeEXT pNext(@Nullable IPointer pointer) {

@@ -94,6 +94,11 @@ public record VkClusterAccelerationStructureTriangleClusterInputNV(@NotNull Memo
             return new VkClusterAccelerationStructureTriangleClusterInputNV(segment.asSlice(index * VkClusterAccelerationStructureTriangleClusterInputNV.BYTES, VkClusterAccelerationStructureTriangleClusterInputNV.BYTES));
         }
 
+        public VkClusterAccelerationStructureTriangleClusterInputNV.Ptr at(long index, @NotNull Consumer<@NotNull VkClusterAccelerationStructureTriangleClusterInputNV> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkClusterAccelerationStructureTriangleClusterInputNV value) {
             MemorySegment s = segment.asSlice(index * VkClusterAccelerationStructureTriangleClusterInputNV.BYTES, VkClusterAccelerationStructureTriangleClusterInputNV.BYTES);
             s.copyFrom(value.segment);
@@ -206,12 +211,13 @@ public record VkClusterAccelerationStructureTriangleClusterInputNV(@NotNull Memo
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkClusterAccelerationStructureTriangleClusterInputNV pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkClusterAccelerationStructureTriangleClusterInputNV pNext(@Nullable IPointer pointer) {

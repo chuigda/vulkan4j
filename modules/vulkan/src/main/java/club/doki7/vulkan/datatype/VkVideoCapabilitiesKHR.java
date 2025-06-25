@@ -95,6 +95,11 @@ public record VkVideoCapabilitiesKHR(@NotNull MemorySegment segment) implements 
             return new VkVideoCapabilitiesKHR(segment.asSlice(index * VkVideoCapabilitiesKHR.BYTES, VkVideoCapabilitiesKHR.BYTES));
         }
 
+        public VkVideoCapabilitiesKHR.Ptr at(long index, @NotNull Consumer<@NotNull VkVideoCapabilitiesKHR> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkVideoCapabilitiesKHR value) {
             MemorySegment s = segment.asSlice(index * VkVideoCapabilitiesKHR.BYTES, VkVideoCapabilitiesKHR.BYTES);
             s.copyFrom(value.segment);
@@ -207,12 +212,13 @@ public record VkVideoCapabilitiesKHR(@NotNull MemorySegment segment) implements 
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkVideoCapabilitiesKHR pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkVideoCapabilitiesKHR pNext(@Nullable IPointer pointer) {
@@ -220,11 +226,11 @@ public record VkVideoCapabilitiesKHR(@NotNull MemorySegment segment) implements 
         return this;
     }
 
-    public @EnumType(VkVideoCapabilityFlagsKHR.class) int flags() {
+    public @Bitmask(VkVideoCapabilityFlagsKHR.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public VkVideoCapabilitiesKHR flags(@EnumType(VkVideoCapabilityFlagsKHR.class) int value) {
+    public VkVideoCapabilitiesKHR flags(@Bitmask(VkVideoCapabilityFlagsKHR.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
         return this;
     }

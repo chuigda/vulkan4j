@@ -96,6 +96,11 @@ public record VkPipelineDepthStencilStateCreateInfo(@NotNull MemorySegment segme
             return new VkPipelineDepthStencilStateCreateInfo(segment.asSlice(index * VkPipelineDepthStencilStateCreateInfo.BYTES, VkPipelineDepthStencilStateCreateInfo.BYTES));
         }
 
+        public VkPipelineDepthStencilStateCreateInfo.Ptr at(long index, @NotNull Consumer<@NotNull VkPipelineDepthStencilStateCreateInfo> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkPipelineDepthStencilStateCreateInfo value) {
             MemorySegment s = segment.asSlice(index * VkPipelineDepthStencilStateCreateInfo.BYTES, VkPipelineDepthStencilStateCreateInfo.BYTES);
             s.copyFrom(value.segment);
@@ -208,12 +213,13 @@ public record VkPipelineDepthStencilStateCreateInfo(@NotNull MemorySegment segme
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkPipelineDepthStencilStateCreateInfo pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkPipelineDepthStencilStateCreateInfo pNext(@Nullable IPointer pointer) {
@@ -221,11 +227,11 @@ public record VkPipelineDepthStencilStateCreateInfo(@NotNull MemorySegment segme
         return this;
     }
 
-    public @EnumType(VkPipelineDepthStencilStateCreateFlags.class) int flags() {
+    public @Bitmask(VkPipelineDepthStencilStateCreateFlags.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public VkPipelineDepthStencilStateCreateInfo flags(@EnumType(VkPipelineDepthStencilStateCreateFlags.class) int value) {
+    public VkPipelineDepthStencilStateCreateInfo flags(@Bitmask(VkPipelineDepthStencilStateCreateFlags.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
         return this;
     }

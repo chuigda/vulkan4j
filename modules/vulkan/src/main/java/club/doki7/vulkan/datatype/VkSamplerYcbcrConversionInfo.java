@@ -87,6 +87,11 @@ public record VkSamplerYcbcrConversionInfo(@NotNull MemorySegment segment) imple
             return new VkSamplerYcbcrConversionInfo(segment.asSlice(index * VkSamplerYcbcrConversionInfo.BYTES, VkSamplerYcbcrConversionInfo.BYTES));
         }
 
+        public VkSamplerYcbcrConversionInfo.Ptr at(long index, @NotNull Consumer<@NotNull VkSamplerYcbcrConversionInfo> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkSamplerYcbcrConversionInfo value) {
             MemorySegment s = segment.asSlice(index * VkSamplerYcbcrConversionInfo.BYTES, VkSamplerYcbcrConversionInfo.BYTES);
             s.copyFrom(value.segment);
@@ -199,12 +204,13 @@ public record VkSamplerYcbcrConversionInfo(@NotNull MemorySegment segment) imple
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkSamplerYcbcrConversionInfo pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkSamplerYcbcrConversionInfo pNext(@Nullable IPointer pointer) {

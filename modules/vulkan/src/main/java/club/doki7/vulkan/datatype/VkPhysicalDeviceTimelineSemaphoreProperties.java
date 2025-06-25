@@ -87,6 +87,11 @@ public record VkPhysicalDeviceTimelineSemaphoreProperties(@NotNull MemorySegment
             return new VkPhysicalDeviceTimelineSemaphoreProperties(segment.asSlice(index * VkPhysicalDeviceTimelineSemaphoreProperties.BYTES, VkPhysicalDeviceTimelineSemaphoreProperties.BYTES));
         }
 
+        public VkPhysicalDeviceTimelineSemaphoreProperties.Ptr at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceTimelineSemaphoreProperties> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkPhysicalDeviceTimelineSemaphoreProperties value) {
             MemorySegment s = segment.asSlice(index * VkPhysicalDeviceTimelineSemaphoreProperties.BYTES, VkPhysicalDeviceTimelineSemaphoreProperties.BYTES);
             s.copyFrom(value.segment);
@@ -199,12 +204,13 @@ public record VkPhysicalDeviceTimelineSemaphoreProperties(@NotNull MemorySegment
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkPhysicalDeviceTimelineSemaphoreProperties pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkPhysicalDeviceTimelineSemaphoreProperties pNext(@Nullable IPointer pointer) {

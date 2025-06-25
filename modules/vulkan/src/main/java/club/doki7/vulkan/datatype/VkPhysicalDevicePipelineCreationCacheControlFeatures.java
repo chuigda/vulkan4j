@@ -87,6 +87,11 @@ public record VkPhysicalDevicePipelineCreationCacheControlFeatures(@NotNull Memo
             return new VkPhysicalDevicePipelineCreationCacheControlFeatures(segment.asSlice(index * VkPhysicalDevicePipelineCreationCacheControlFeatures.BYTES, VkPhysicalDevicePipelineCreationCacheControlFeatures.BYTES));
         }
 
+        public VkPhysicalDevicePipelineCreationCacheControlFeatures.Ptr at(long index, @NotNull Consumer<@NotNull VkPhysicalDevicePipelineCreationCacheControlFeatures> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkPhysicalDevicePipelineCreationCacheControlFeatures value) {
             MemorySegment s = segment.asSlice(index * VkPhysicalDevicePipelineCreationCacheControlFeatures.BYTES, VkPhysicalDevicePipelineCreationCacheControlFeatures.BYTES);
             s.copyFrom(value.segment);
@@ -199,12 +204,13 @@ public record VkPhysicalDevicePipelineCreationCacheControlFeatures(@NotNull Memo
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkPhysicalDevicePipelineCreationCacheControlFeatures pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkPhysicalDevicePipelineCreationCacheControlFeatures pNext(@Nullable IPointer pointer) {

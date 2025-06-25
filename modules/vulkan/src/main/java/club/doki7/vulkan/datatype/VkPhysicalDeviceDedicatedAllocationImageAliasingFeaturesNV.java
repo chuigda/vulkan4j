@@ -87,6 +87,11 @@ public record VkPhysicalDeviceDedicatedAllocationImageAliasingFeaturesNV(@NotNul
             return new VkPhysicalDeviceDedicatedAllocationImageAliasingFeaturesNV(segment.asSlice(index * VkPhysicalDeviceDedicatedAllocationImageAliasingFeaturesNV.BYTES, VkPhysicalDeviceDedicatedAllocationImageAliasingFeaturesNV.BYTES));
         }
 
+        public VkPhysicalDeviceDedicatedAllocationImageAliasingFeaturesNV.Ptr at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceDedicatedAllocationImageAliasingFeaturesNV> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkPhysicalDeviceDedicatedAllocationImageAliasingFeaturesNV value) {
             MemorySegment s = segment.asSlice(index * VkPhysicalDeviceDedicatedAllocationImageAliasingFeaturesNV.BYTES, VkPhysicalDeviceDedicatedAllocationImageAliasingFeaturesNV.BYTES);
             s.copyFrom(value.segment);
@@ -199,12 +204,13 @@ public record VkPhysicalDeviceDedicatedAllocationImageAliasingFeaturesNV(@NotNul
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkPhysicalDeviceDedicatedAllocationImageAliasingFeaturesNV pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkPhysicalDeviceDedicatedAllocationImageAliasingFeaturesNV pNext(@Nullable IPointer pointer) {

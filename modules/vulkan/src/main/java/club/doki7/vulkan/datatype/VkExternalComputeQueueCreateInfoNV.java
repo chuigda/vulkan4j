@@ -87,6 +87,11 @@ public record VkExternalComputeQueueCreateInfoNV(@NotNull MemorySegment segment)
             return new VkExternalComputeQueueCreateInfoNV(segment.asSlice(index * VkExternalComputeQueueCreateInfoNV.BYTES, VkExternalComputeQueueCreateInfoNV.BYTES));
         }
 
+        public VkExternalComputeQueueCreateInfoNV.Ptr at(long index, @NotNull Consumer<@NotNull VkExternalComputeQueueCreateInfoNV> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkExternalComputeQueueCreateInfoNV value) {
             MemorySegment s = segment.asSlice(index * VkExternalComputeQueueCreateInfoNV.BYTES, VkExternalComputeQueueCreateInfoNV.BYTES);
             s.copyFrom(value.segment);
@@ -199,12 +204,13 @@ public record VkExternalComputeQueueCreateInfoNV(@NotNull MemorySegment segment)
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkExternalComputeQueueCreateInfoNV pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkExternalComputeQueueCreateInfoNV pNext(@Nullable IPointer pointer) {

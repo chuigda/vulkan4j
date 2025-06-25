@@ -87,6 +87,11 @@ public record VkQueueFamilyQueryResultStatusPropertiesKHR(@NotNull MemorySegment
             return new VkQueueFamilyQueryResultStatusPropertiesKHR(segment.asSlice(index * VkQueueFamilyQueryResultStatusPropertiesKHR.BYTES, VkQueueFamilyQueryResultStatusPropertiesKHR.BYTES));
         }
 
+        public VkQueueFamilyQueryResultStatusPropertiesKHR.Ptr at(long index, @NotNull Consumer<@NotNull VkQueueFamilyQueryResultStatusPropertiesKHR> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkQueueFamilyQueryResultStatusPropertiesKHR value) {
             MemorySegment s = segment.asSlice(index * VkQueueFamilyQueryResultStatusPropertiesKHR.BYTES, VkQueueFamilyQueryResultStatusPropertiesKHR.BYTES);
             s.copyFrom(value.segment);
@@ -199,12 +204,13 @@ public record VkQueueFamilyQueryResultStatusPropertiesKHR(@NotNull MemorySegment
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkQueueFamilyQueryResultStatusPropertiesKHR pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkQueueFamilyQueryResultStatusPropertiesKHR pNext(@Nullable IPointer pointer) {

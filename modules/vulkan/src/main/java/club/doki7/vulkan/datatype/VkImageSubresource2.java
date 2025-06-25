@@ -87,6 +87,11 @@ public record VkImageSubresource2(@NotNull MemorySegment segment) implements IVk
             return new VkImageSubresource2(segment.asSlice(index * VkImageSubresource2.BYTES, VkImageSubresource2.BYTES));
         }
 
+        public VkImageSubresource2.Ptr at(long index, @NotNull Consumer<@NotNull VkImageSubresource2> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkImageSubresource2 value) {
             MemorySegment s = segment.asSlice(index * VkImageSubresource2.BYTES, VkImageSubresource2.BYTES);
             s.copyFrom(value.segment);
@@ -199,12 +204,13 @@ public record VkImageSubresource2(@NotNull MemorySegment segment) implements IVk
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkImageSubresource2 pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkImageSubresource2 pNext(@Nullable IPointer pointer) {

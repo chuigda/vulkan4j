@@ -89,6 +89,11 @@ public record VkExportMemoryWin32HandleInfoKHR(@NotNull MemorySegment segment) i
             return new VkExportMemoryWin32HandleInfoKHR(segment.asSlice(index * VkExportMemoryWin32HandleInfoKHR.BYTES, VkExportMemoryWin32HandleInfoKHR.BYTES));
         }
 
+        public VkExportMemoryWin32HandleInfoKHR.Ptr at(long index, @NotNull Consumer<@NotNull VkExportMemoryWin32HandleInfoKHR> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkExportMemoryWin32HandleInfoKHR value) {
             MemorySegment s = segment.asSlice(index * VkExportMemoryWin32HandleInfoKHR.BYTES, VkExportMemoryWin32HandleInfoKHR.BYTES);
             s.copyFrom(value.segment);
@@ -201,12 +206,13 @@ public record VkExportMemoryWin32HandleInfoKHR(@NotNull MemorySegment segment) i
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkExportMemoryWin32HandleInfoKHR pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkExportMemoryWin32HandleInfoKHR pNext(@Nullable IPointer pointer) {
@@ -214,12 +220,13 @@ public record VkExportMemoryWin32HandleInfoKHR(@NotNull MemorySegment segment) i
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pAttributes() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pAttributes() {
         return segment.get(LAYOUT$pAttributes, OFFSET$pAttributes);
     }
 
-    public void pAttributes(@Pointer(comment="void*") MemorySegment value) {
+    public VkExportMemoryWin32HandleInfoKHR pAttributes(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pAttributes, OFFSET$pAttributes, value);
+        return this;
     }
 
     public VkExportMemoryWin32HandleInfoKHR pAttributes(@Nullable IPointer pointer) {
@@ -254,11 +261,11 @@ public record VkExportMemoryWin32HandleInfoKHR(@NotNull MemorySegment segment) i
         return this;
     }
 
-    public @Pointer(comment="uint16_t*") MemorySegment nameRaw() {
+    public @Pointer(comment="uint16_t*") @NotNull MemorySegment nameRaw() {
         return segment.get(LAYOUT$name, OFFSET$name);
     }
 
-    public void nameRaw(@Pointer(comment="uint16_t*") MemorySegment value) {
+    public void nameRaw(@Pointer(comment="uint16_t*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$name, OFFSET$name, value);
     }
 

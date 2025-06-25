@@ -89,6 +89,11 @@ public record VkWin32SurfaceCreateInfoKHR(@NotNull MemorySegment segment) implem
             return new VkWin32SurfaceCreateInfoKHR(segment.asSlice(index * VkWin32SurfaceCreateInfoKHR.BYTES, VkWin32SurfaceCreateInfoKHR.BYTES));
         }
 
+        public VkWin32SurfaceCreateInfoKHR.Ptr at(long index, @NotNull Consumer<@NotNull VkWin32SurfaceCreateInfoKHR> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkWin32SurfaceCreateInfoKHR value) {
             MemorySegment s = segment.asSlice(index * VkWin32SurfaceCreateInfoKHR.BYTES, VkWin32SurfaceCreateInfoKHR.BYTES);
             s.copyFrom(value.segment);
@@ -201,12 +206,13 @@ public record VkWin32SurfaceCreateInfoKHR(@NotNull MemorySegment segment) implem
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkWin32SurfaceCreateInfoKHR pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkWin32SurfaceCreateInfoKHR pNext(@Nullable IPointer pointer) {
@@ -214,21 +220,22 @@ public record VkWin32SurfaceCreateInfoKHR(@NotNull MemorySegment segment) implem
         return this;
     }
 
-    public @EnumType(VkWin32SurfaceCreateFlagsKHR.class) int flags() {
+    public @Bitmask(VkWin32SurfaceCreateFlagsKHR.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public VkWin32SurfaceCreateInfoKHR flags(@EnumType(VkWin32SurfaceCreateFlagsKHR.class) int value) {
+    public VkWin32SurfaceCreateInfoKHR flags(@Bitmask(VkWin32SurfaceCreateFlagsKHR.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
         return this;
     }
 
-    public @Pointer(comment="HINSTANCE") MemorySegment hinstance() {
+    public @Pointer(comment="HINSTANCE") @NotNull MemorySegment hinstance() {
         return segment.get(LAYOUT$hinstance, OFFSET$hinstance);
     }
 
-    public void hinstance(@Pointer(comment="HINSTANCE") MemorySegment value) {
+    public VkWin32SurfaceCreateInfoKHR hinstance(@Pointer(comment="HINSTANCE") @NotNull MemorySegment value) {
         segment.set(LAYOUT$hinstance, OFFSET$hinstance, value);
+        return this;
     }
 
     public VkWin32SurfaceCreateInfoKHR hinstance(@Nullable IPointer pointer) {
@@ -236,12 +243,13 @@ public record VkWin32SurfaceCreateInfoKHR(@NotNull MemorySegment segment) implem
         return this;
     }
 
-    public @Pointer(comment="HWND") MemorySegment hwnd() {
+    public @Pointer(comment="HWND") @NotNull MemorySegment hwnd() {
         return segment.get(LAYOUT$hwnd, OFFSET$hwnd);
     }
 
-    public void hwnd(@Pointer(comment="HWND") MemorySegment value) {
+    public VkWin32SurfaceCreateInfoKHR hwnd(@Pointer(comment="HWND") @NotNull MemorySegment value) {
         segment.set(LAYOUT$hwnd, OFFSET$hwnd, value);
+        return this;
     }
 
     public VkWin32SurfaceCreateInfoKHR hwnd(@Nullable IPointer pointer) {

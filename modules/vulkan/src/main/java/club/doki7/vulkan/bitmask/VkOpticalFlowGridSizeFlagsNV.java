@@ -13,7 +13,7 @@ public final class VkOpticalFlowGridSizeFlagsNV {
     public static final int _8X8 = 0x8;
     public static final int UNKNOWN = 0x0;
 
-    public static String explain(@EnumType(VkOpticalFlowGridSizeFlagsNV.class) int flags) {
+    public static String explain(@Bitmask(VkOpticalFlowGridSizeFlagsNV.class) int flags) {
         List<String> detectedFlagBits = new ArrayList<>();
         if ((flags & _1X1) != 0) {
             detectedFlagBits.add("VK_OPTICAL_FLOW_GRID_SIZE_1X1_BIT_NV");

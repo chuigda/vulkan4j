@@ -90,6 +90,11 @@ public record VkDeviceFaultInfoEXT(@NotNull MemorySegment segment) implements IV
             return new VkDeviceFaultInfoEXT(segment.asSlice(index * VkDeviceFaultInfoEXT.BYTES, VkDeviceFaultInfoEXT.BYTES));
         }
 
+        public VkDeviceFaultInfoEXT.Ptr at(long index, @NotNull Consumer<@NotNull VkDeviceFaultInfoEXT> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkDeviceFaultInfoEXT value) {
             MemorySegment s = segment.asSlice(index * VkDeviceFaultInfoEXT.BYTES, VkDeviceFaultInfoEXT.BYTES);
             s.copyFrom(value.segment);
@@ -202,12 +207,13 @@ public record VkDeviceFaultInfoEXT(@NotNull MemorySegment segment) implements IV
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkDeviceFaultInfoEXT pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkDeviceFaultInfoEXT pNext(@Nullable IPointer pointer) {
@@ -219,12 +225,19 @@ public record VkDeviceFaultInfoEXT(@NotNull MemorySegment segment) implements IV
         return new BytePtr(descriptionRaw());
     }
 
-    public VkDeviceFaultInfoEXT description(BytePtr value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$description, SIZE$description);
+    public VkDeviceFaultInfoEXT description(@NotNull Consumer<BytePtr> consumer) {
+        BytePtr ptr = description();
+        consumer.accept(ptr);
         return this;
     }
 
-    public MemorySegment descriptionRaw() {
+    public VkDeviceFaultInfoEXT description(BytePtr value) {
+        MemorySegment s = descriptionRaw();
+        s.copyFrom(value.segment());
+        return this;
+    }
+
+    public @NotNull MemorySegment descriptionRaw() {
         return segment.asSlice(OFFSET$description, SIZE$description);
     }
 
@@ -252,11 +265,11 @@ public record VkDeviceFaultInfoEXT(@NotNull MemorySegment segment) implements IV
         return new VkDeviceFaultAddressInfoEXT(s);
     }
 
-    public @Pointer(target=VkDeviceFaultAddressInfoEXT.class) MemorySegment pAddressInfosRaw() {
+    public @Pointer(target=VkDeviceFaultAddressInfoEXT.class) @NotNull MemorySegment pAddressInfosRaw() {
         return segment.get(LAYOUT$pAddressInfos, OFFSET$pAddressInfos);
     }
 
-    public void pAddressInfosRaw(@Pointer(target=VkDeviceFaultAddressInfoEXT.class) MemorySegment value) {
+    public void pAddressInfosRaw(@Pointer(target=VkDeviceFaultAddressInfoEXT.class) @NotNull MemorySegment value) {
         segment.set(LAYOUT$pAddressInfos, OFFSET$pAddressInfos, value);
     }
 
@@ -284,20 +297,21 @@ public record VkDeviceFaultInfoEXT(@NotNull MemorySegment segment) implements IV
         return new VkDeviceFaultVendorInfoEXT(s);
     }
 
-    public @Pointer(target=VkDeviceFaultVendorInfoEXT.class) MemorySegment pVendorInfosRaw() {
+    public @Pointer(target=VkDeviceFaultVendorInfoEXT.class) @NotNull MemorySegment pVendorInfosRaw() {
         return segment.get(LAYOUT$pVendorInfos, OFFSET$pVendorInfos);
     }
 
-    public void pVendorInfosRaw(@Pointer(target=VkDeviceFaultVendorInfoEXT.class) MemorySegment value) {
+    public void pVendorInfosRaw(@Pointer(target=VkDeviceFaultVendorInfoEXT.class) @NotNull MemorySegment value) {
         segment.set(LAYOUT$pVendorInfos, OFFSET$pVendorInfos, value);
     }
 
-    public @Pointer(comment="void*") MemorySegment pVendorBinaryData() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pVendorBinaryData() {
         return segment.get(LAYOUT$pVendorBinaryData, OFFSET$pVendorBinaryData);
     }
 
-    public void pVendorBinaryData(@Pointer(comment="void*") MemorySegment value) {
+    public VkDeviceFaultInfoEXT pVendorBinaryData(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pVendorBinaryData, OFFSET$pVendorBinaryData, value);
+        return this;
     }
 
     public VkDeviceFaultInfoEXT pVendorBinaryData(@Nullable IPointer pointer) {

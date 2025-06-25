@@ -88,6 +88,11 @@ public record VkDebugMarkerMarkerInfoEXT(@NotNull MemorySegment segment) impleme
             return new VkDebugMarkerMarkerInfoEXT(segment.asSlice(index * VkDebugMarkerMarkerInfoEXT.BYTES, VkDebugMarkerMarkerInfoEXT.BYTES));
         }
 
+        public VkDebugMarkerMarkerInfoEXT.Ptr at(long index, @NotNull Consumer<@NotNull VkDebugMarkerMarkerInfoEXT> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkDebugMarkerMarkerInfoEXT value) {
             MemorySegment s = segment.asSlice(index * VkDebugMarkerMarkerInfoEXT.BYTES, VkDebugMarkerMarkerInfoEXT.BYTES);
             s.copyFrom(value.segment);
@@ -200,12 +205,13 @@ public record VkDebugMarkerMarkerInfoEXT(@NotNull MemorySegment segment) impleme
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkDebugMarkerMarkerInfoEXT pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkDebugMarkerMarkerInfoEXT pNext(@Nullable IPointer pointer) {
@@ -231,11 +237,11 @@ public record VkDebugMarkerMarkerInfoEXT(@NotNull MemorySegment segment) impleme
         return this;
     }
 
-    public @Pointer(comment="int8_t*") MemorySegment pMarkerNameRaw() {
+    public @Pointer(comment="int8_t*") @NotNull MemorySegment pMarkerNameRaw() {
         return segment.get(LAYOUT$pMarkerName, OFFSET$pMarkerName);
     }
 
-    public void pMarkerNameRaw(@Pointer(comment="int8_t*") MemorySegment value) {
+    public void pMarkerNameRaw(@Pointer(comment="int8_t*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pMarkerName, OFFSET$pMarkerName, value);
     }
 
@@ -243,12 +249,19 @@ public record VkDebugMarkerMarkerInfoEXT(@NotNull MemorySegment segment) impleme
         return new FloatPtr(colorRaw());
     }
 
-    public VkDebugMarkerMarkerInfoEXT color(FloatPtr value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$color, SIZE$color);
+    public VkDebugMarkerMarkerInfoEXT color(@NotNull Consumer<FloatPtr> consumer) {
+        FloatPtr ptr = color();
+        consumer.accept(ptr);
         return this;
     }
 
-    public MemorySegment colorRaw() {
+    public VkDebugMarkerMarkerInfoEXT color(FloatPtr value) {
+        MemorySegment s = colorRaw();
+        s.copyFrom(value.segment());
+        return this;
+    }
+
+    public @NotNull MemorySegment colorRaw() {
         return segment.asSlice(OFFSET$color, SIZE$color);
     }
 

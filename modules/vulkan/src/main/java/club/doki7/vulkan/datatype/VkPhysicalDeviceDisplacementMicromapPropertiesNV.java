@@ -87,6 +87,11 @@ public record VkPhysicalDeviceDisplacementMicromapPropertiesNV(@NotNull MemorySe
             return new VkPhysicalDeviceDisplacementMicromapPropertiesNV(segment.asSlice(index * VkPhysicalDeviceDisplacementMicromapPropertiesNV.BYTES, VkPhysicalDeviceDisplacementMicromapPropertiesNV.BYTES));
         }
 
+        public VkPhysicalDeviceDisplacementMicromapPropertiesNV.Ptr at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceDisplacementMicromapPropertiesNV> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkPhysicalDeviceDisplacementMicromapPropertiesNV value) {
             MemorySegment s = segment.asSlice(index * VkPhysicalDeviceDisplacementMicromapPropertiesNV.BYTES, VkPhysicalDeviceDisplacementMicromapPropertiesNV.BYTES);
             s.copyFrom(value.segment);
@@ -199,12 +204,13 @@ public record VkPhysicalDeviceDisplacementMicromapPropertiesNV(@NotNull MemorySe
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkPhysicalDeviceDisplacementMicromapPropertiesNV pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkPhysicalDeviceDisplacementMicromapPropertiesNV pNext(@Nullable IPointer pointer) {

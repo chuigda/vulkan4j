@@ -87,6 +87,11 @@ public record VkPhysicalDeviceCopyMemoryIndirectPropertiesNV(@NotNull MemorySegm
             return new VkPhysicalDeviceCopyMemoryIndirectPropertiesNV(segment.asSlice(index * VkPhysicalDeviceCopyMemoryIndirectPropertiesNV.BYTES, VkPhysicalDeviceCopyMemoryIndirectPropertiesNV.BYTES));
         }
 
+        public VkPhysicalDeviceCopyMemoryIndirectPropertiesNV.Ptr at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceCopyMemoryIndirectPropertiesNV> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkPhysicalDeviceCopyMemoryIndirectPropertiesNV value) {
             MemorySegment s = segment.asSlice(index * VkPhysicalDeviceCopyMemoryIndirectPropertiesNV.BYTES, VkPhysicalDeviceCopyMemoryIndirectPropertiesNV.BYTES);
             s.copyFrom(value.segment);
@@ -199,12 +204,13 @@ public record VkPhysicalDeviceCopyMemoryIndirectPropertiesNV(@NotNull MemorySegm
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkPhysicalDeviceCopyMemoryIndirectPropertiesNV pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkPhysicalDeviceCopyMemoryIndirectPropertiesNV pNext(@Nullable IPointer pointer) {
@@ -212,11 +218,11 @@ public record VkPhysicalDeviceCopyMemoryIndirectPropertiesNV(@NotNull MemorySegm
         return this;
     }
 
-    public @EnumType(VkQueueFlags.class) int supportedQueues() {
+    public @Bitmask(VkQueueFlags.class) int supportedQueues() {
         return segment.get(LAYOUT$supportedQueues, OFFSET$supportedQueues);
     }
 
-    public VkPhysicalDeviceCopyMemoryIndirectPropertiesNV supportedQueues(@EnumType(VkQueueFlags.class) int value) {
+    public VkPhysicalDeviceCopyMemoryIndirectPropertiesNV supportedQueues(@Bitmask(VkQueueFlags.class) int value) {
         segment.set(LAYOUT$supportedQueues, OFFSET$supportedQueues, value);
         return this;
     }

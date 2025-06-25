@@ -90,6 +90,11 @@ public record VkDeviceQueueCreateInfo(@NotNull MemorySegment segment) implements
             return new VkDeviceQueueCreateInfo(segment.asSlice(index * VkDeviceQueueCreateInfo.BYTES, VkDeviceQueueCreateInfo.BYTES));
         }
 
+        public VkDeviceQueueCreateInfo.Ptr at(long index, @NotNull Consumer<@NotNull VkDeviceQueueCreateInfo> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkDeviceQueueCreateInfo value) {
             MemorySegment s = segment.asSlice(index * VkDeviceQueueCreateInfo.BYTES, VkDeviceQueueCreateInfo.BYTES);
             s.copyFrom(value.segment);
@@ -202,12 +207,13 @@ public record VkDeviceQueueCreateInfo(@NotNull MemorySegment segment) implements
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkDeviceQueueCreateInfo pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkDeviceQueueCreateInfo pNext(@Nullable IPointer pointer) {
@@ -215,11 +221,11 @@ public record VkDeviceQueueCreateInfo(@NotNull MemorySegment segment) implements
         return this;
     }
 
-    public @EnumType(VkDeviceQueueCreateFlags.class) int flags() {
+    public @Bitmask(VkDeviceQueueCreateFlags.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public VkDeviceQueueCreateInfo flags(@EnumType(VkDeviceQueueCreateFlags.class) int value) {
+    public VkDeviceQueueCreateInfo flags(@Bitmask(VkDeviceQueueCreateFlags.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
         return this;
     }
@@ -260,11 +266,11 @@ public record VkDeviceQueueCreateInfo(@NotNull MemorySegment segment) implements
         return this;
     }
 
-    public @Pointer(comment="float*") MemorySegment pQueuePrioritiesRaw() {
+    public @Pointer(comment="float*") @NotNull MemorySegment pQueuePrioritiesRaw() {
         return segment.get(LAYOUT$pQueuePriorities, OFFSET$pQueuePriorities);
     }
 
-    public void pQueuePrioritiesRaw(@Pointer(comment="float*") MemorySegment value) {
+    public void pQueuePrioritiesRaw(@Pointer(comment="float*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pQueuePriorities, OFFSET$pQueuePriorities, value);
     }
 

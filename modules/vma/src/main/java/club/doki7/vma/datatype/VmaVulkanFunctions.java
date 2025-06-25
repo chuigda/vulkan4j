@@ -121,6 +121,11 @@ public record VmaVulkanFunctions(@NotNull MemorySegment segment) implements IVma
             return new VmaVulkanFunctions(segment.asSlice(index * VmaVulkanFunctions.BYTES, VmaVulkanFunctions.BYTES));
         }
 
+        public VmaVulkanFunctions.Ptr at(long index, @NotNull Consumer<@NotNull VmaVulkanFunctions> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VmaVulkanFunctions value) {
             MemorySegment s = segment.asSlice(index * VmaVulkanFunctions.BYTES, VmaVulkanFunctions.BYTES);
             s.copyFrom(value.segment);
@@ -214,12 +219,13 @@ public record VmaVulkanFunctions(@NotNull MemorySegment segment) implements IVma
         return ret;
     }
 
-    public @Pointer(comment="PFN_vkGetInstanceProcAddr") MemorySegment getInstanceProcAddr() {
+    public @Pointer(comment="PFN_vkGetInstanceProcAddr") @NotNull MemorySegment getInstanceProcAddr() {
         return segment.get(LAYOUT$getInstanceProcAddr, OFFSET$getInstanceProcAddr);
     }
 
-    public void getInstanceProcAddr(@Pointer(comment="PFN_vkGetInstanceProcAddr") MemorySegment value) {
+    public VmaVulkanFunctions getInstanceProcAddr(@Pointer(comment="PFN_vkGetInstanceProcAddr") @NotNull MemorySegment value) {
         segment.set(LAYOUT$getInstanceProcAddr, OFFSET$getInstanceProcAddr, value);
+        return this;
     }
 
     public VmaVulkanFunctions getInstanceProcAddr(@Nullable IPointer pointer) {
@@ -227,12 +233,13 @@ public record VmaVulkanFunctions(@NotNull MemorySegment segment) implements IVma
         return this;
     }
 
-    public @Pointer(comment="PFN_vkGetDeviceProcAddr") MemorySegment getDeviceProcAddr() {
+    public @Pointer(comment="PFN_vkGetDeviceProcAddr") @NotNull MemorySegment getDeviceProcAddr() {
         return segment.get(LAYOUT$getDeviceProcAddr, OFFSET$getDeviceProcAddr);
     }
 
-    public void getDeviceProcAddr(@Pointer(comment="PFN_vkGetDeviceProcAddr") MemorySegment value) {
+    public VmaVulkanFunctions getDeviceProcAddr(@Pointer(comment="PFN_vkGetDeviceProcAddr") @NotNull MemorySegment value) {
         segment.set(LAYOUT$getDeviceProcAddr, OFFSET$getDeviceProcAddr, value);
+        return this;
     }
 
     public VmaVulkanFunctions getDeviceProcAddr(@Nullable IPointer pointer) {
@@ -240,12 +247,13 @@ public record VmaVulkanFunctions(@NotNull MemorySegment segment) implements IVma
         return this;
     }
 
-    public @Pointer(comment="PFN_vkGetPhysicalDeviceProperties") MemorySegment getPhysicalDeviceProperties() {
+    public @Pointer(comment="PFN_vkGetPhysicalDeviceProperties") @NotNull MemorySegment getPhysicalDeviceProperties() {
         return segment.get(LAYOUT$getPhysicalDeviceProperties, OFFSET$getPhysicalDeviceProperties);
     }
 
-    public void getPhysicalDeviceProperties(@Pointer(comment="PFN_vkGetPhysicalDeviceProperties") MemorySegment value) {
+    public VmaVulkanFunctions getPhysicalDeviceProperties(@Pointer(comment="PFN_vkGetPhysicalDeviceProperties") @NotNull MemorySegment value) {
         segment.set(LAYOUT$getPhysicalDeviceProperties, OFFSET$getPhysicalDeviceProperties, value);
+        return this;
     }
 
     public VmaVulkanFunctions getPhysicalDeviceProperties(@Nullable IPointer pointer) {
@@ -253,12 +261,13 @@ public record VmaVulkanFunctions(@NotNull MemorySegment segment) implements IVma
         return this;
     }
 
-    public @Pointer(comment="PFN_vkGetPhysicalDeviceMemoryProperties") MemorySegment getPhysicalDeviceMemoryProperties() {
+    public @Pointer(comment="PFN_vkGetPhysicalDeviceMemoryProperties") @NotNull MemorySegment getPhysicalDeviceMemoryProperties() {
         return segment.get(LAYOUT$getPhysicalDeviceMemoryProperties, OFFSET$getPhysicalDeviceMemoryProperties);
     }
 
-    public void getPhysicalDeviceMemoryProperties(@Pointer(comment="PFN_vkGetPhysicalDeviceMemoryProperties") MemorySegment value) {
+    public VmaVulkanFunctions getPhysicalDeviceMemoryProperties(@Pointer(comment="PFN_vkGetPhysicalDeviceMemoryProperties") @NotNull MemorySegment value) {
         segment.set(LAYOUT$getPhysicalDeviceMemoryProperties, OFFSET$getPhysicalDeviceMemoryProperties, value);
+        return this;
     }
 
     public VmaVulkanFunctions getPhysicalDeviceMemoryProperties(@Nullable IPointer pointer) {
@@ -266,12 +275,13 @@ public record VmaVulkanFunctions(@NotNull MemorySegment segment) implements IVma
         return this;
     }
 
-    public @Pointer(comment="PFN_vkAllocateMemory") MemorySegment allocateMemory() {
+    public @Pointer(comment="PFN_vkAllocateMemory") @NotNull MemorySegment allocateMemory() {
         return segment.get(LAYOUT$allocateMemory, OFFSET$allocateMemory);
     }
 
-    public void allocateMemory(@Pointer(comment="PFN_vkAllocateMemory") MemorySegment value) {
+    public VmaVulkanFunctions allocateMemory(@Pointer(comment="PFN_vkAllocateMemory") @NotNull MemorySegment value) {
         segment.set(LAYOUT$allocateMemory, OFFSET$allocateMemory, value);
+        return this;
     }
 
     public VmaVulkanFunctions allocateMemory(@Nullable IPointer pointer) {
@@ -279,12 +289,13 @@ public record VmaVulkanFunctions(@NotNull MemorySegment segment) implements IVma
         return this;
     }
 
-    public @Pointer(comment="PFN_vkFreeMemory") MemorySegment freeMemory() {
+    public @Pointer(comment="PFN_vkFreeMemory") @NotNull MemorySegment freeMemory() {
         return segment.get(LAYOUT$freeMemory, OFFSET$freeMemory);
     }
 
-    public void freeMemory(@Pointer(comment="PFN_vkFreeMemory") MemorySegment value) {
+    public VmaVulkanFunctions freeMemory(@Pointer(comment="PFN_vkFreeMemory") @NotNull MemorySegment value) {
         segment.set(LAYOUT$freeMemory, OFFSET$freeMemory, value);
+        return this;
     }
 
     public VmaVulkanFunctions freeMemory(@Nullable IPointer pointer) {
@@ -292,12 +303,13 @@ public record VmaVulkanFunctions(@NotNull MemorySegment segment) implements IVma
         return this;
     }
 
-    public @Pointer(comment="PFN_vkMapMemory") MemorySegment mapMemory() {
+    public @Pointer(comment="PFN_vkMapMemory") @NotNull MemorySegment mapMemory() {
         return segment.get(LAYOUT$mapMemory, OFFSET$mapMemory);
     }
 
-    public void mapMemory(@Pointer(comment="PFN_vkMapMemory") MemorySegment value) {
+    public VmaVulkanFunctions mapMemory(@Pointer(comment="PFN_vkMapMemory") @NotNull MemorySegment value) {
         segment.set(LAYOUT$mapMemory, OFFSET$mapMemory, value);
+        return this;
     }
 
     public VmaVulkanFunctions mapMemory(@Nullable IPointer pointer) {
@@ -305,12 +317,13 @@ public record VmaVulkanFunctions(@NotNull MemorySegment segment) implements IVma
         return this;
     }
 
-    public @Pointer(comment="PFN_vkUnmapMemory") MemorySegment unmapMemory() {
+    public @Pointer(comment="PFN_vkUnmapMemory") @NotNull MemorySegment unmapMemory() {
         return segment.get(LAYOUT$unmapMemory, OFFSET$unmapMemory);
     }
 
-    public void unmapMemory(@Pointer(comment="PFN_vkUnmapMemory") MemorySegment value) {
+    public VmaVulkanFunctions unmapMemory(@Pointer(comment="PFN_vkUnmapMemory") @NotNull MemorySegment value) {
         segment.set(LAYOUT$unmapMemory, OFFSET$unmapMemory, value);
+        return this;
     }
 
     public VmaVulkanFunctions unmapMemory(@Nullable IPointer pointer) {
@@ -318,12 +331,13 @@ public record VmaVulkanFunctions(@NotNull MemorySegment segment) implements IVma
         return this;
     }
 
-    public @Pointer(comment="PFN_vkFlushMappedMemoryRanges") MemorySegment flushMappedMemoryRanges() {
+    public @Pointer(comment="PFN_vkFlushMappedMemoryRanges") @NotNull MemorySegment flushMappedMemoryRanges() {
         return segment.get(LAYOUT$flushMappedMemoryRanges, OFFSET$flushMappedMemoryRanges);
     }
 
-    public void flushMappedMemoryRanges(@Pointer(comment="PFN_vkFlushMappedMemoryRanges") MemorySegment value) {
+    public VmaVulkanFunctions flushMappedMemoryRanges(@Pointer(comment="PFN_vkFlushMappedMemoryRanges") @NotNull MemorySegment value) {
         segment.set(LAYOUT$flushMappedMemoryRanges, OFFSET$flushMappedMemoryRanges, value);
+        return this;
     }
 
     public VmaVulkanFunctions flushMappedMemoryRanges(@Nullable IPointer pointer) {
@@ -331,12 +345,13 @@ public record VmaVulkanFunctions(@NotNull MemorySegment segment) implements IVma
         return this;
     }
 
-    public @Pointer(comment="PFN_vkInvalidateMappedMemoryRanges") MemorySegment invalidateMappedMemoryRanges() {
+    public @Pointer(comment="PFN_vkInvalidateMappedMemoryRanges") @NotNull MemorySegment invalidateMappedMemoryRanges() {
         return segment.get(LAYOUT$invalidateMappedMemoryRanges, OFFSET$invalidateMappedMemoryRanges);
     }
 
-    public void invalidateMappedMemoryRanges(@Pointer(comment="PFN_vkInvalidateMappedMemoryRanges") MemorySegment value) {
+    public VmaVulkanFunctions invalidateMappedMemoryRanges(@Pointer(comment="PFN_vkInvalidateMappedMemoryRanges") @NotNull MemorySegment value) {
         segment.set(LAYOUT$invalidateMappedMemoryRanges, OFFSET$invalidateMappedMemoryRanges, value);
+        return this;
     }
 
     public VmaVulkanFunctions invalidateMappedMemoryRanges(@Nullable IPointer pointer) {
@@ -344,12 +359,13 @@ public record VmaVulkanFunctions(@NotNull MemorySegment segment) implements IVma
         return this;
     }
 
-    public @Pointer(comment="PFN_vkBindBufferMemory") MemorySegment bindBufferMemory() {
+    public @Pointer(comment="PFN_vkBindBufferMemory") @NotNull MemorySegment bindBufferMemory() {
         return segment.get(LAYOUT$bindBufferMemory, OFFSET$bindBufferMemory);
     }
 
-    public void bindBufferMemory(@Pointer(comment="PFN_vkBindBufferMemory") MemorySegment value) {
+    public VmaVulkanFunctions bindBufferMemory(@Pointer(comment="PFN_vkBindBufferMemory") @NotNull MemorySegment value) {
         segment.set(LAYOUT$bindBufferMemory, OFFSET$bindBufferMemory, value);
+        return this;
     }
 
     public VmaVulkanFunctions bindBufferMemory(@Nullable IPointer pointer) {
@@ -357,12 +373,13 @@ public record VmaVulkanFunctions(@NotNull MemorySegment segment) implements IVma
         return this;
     }
 
-    public @Pointer(comment="PFN_vkBindImageMemory") MemorySegment bindImageMemory() {
+    public @Pointer(comment="PFN_vkBindImageMemory") @NotNull MemorySegment bindImageMemory() {
         return segment.get(LAYOUT$bindImageMemory, OFFSET$bindImageMemory);
     }
 
-    public void bindImageMemory(@Pointer(comment="PFN_vkBindImageMemory") MemorySegment value) {
+    public VmaVulkanFunctions bindImageMemory(@Pointer(comment="PFN_vkBindImageMemory") @NotNull MemorySegment value) {
         segment.set(LAYOUT$bindImageMemory, OFFSET$bindImageMemory, value);
+        return this;
     }
 
     public VmaVulkanFunctions bindImageMemory(@Nullable IPointer pointer) {
@@ -370,12 +387,13 @@ public record VmaVulkanFunctions(@NotNull MemorySegment segment) implements IVma
         return this;
     }
 
-    public @Pointer(comment="PFN_vkGetBufferMemoryRequirements") MemorySegment getBufferMemoryRequirements() {
+    public @Pointer(comment="PFN_vkGetBufferMemoryRequirements") @NotNull MemorySegment getBufferMemoryRequirements() {
         return segment.get(LAYOUT$getBufferMemoryRequirements, OFFSET$getBufferMemoryRequirements);
     }
 
-    public void getBufferMemoryRequirements(@Pointer(comment="PFN_vkGetBufferMemoryRequirements") MemorySegment value) {
+    public VmaVulkanFunctions getBufferMemoryRequirements(@Pointer(comment="PFN_vkGetBufferMemoryRequirements") @NotNull MemorySegment value) {
         segment.set(LAYOUT$getBufferMemoryRequirements, OFFSET$getBufferMemoryRequirements, value);
+        return this;
     }
 
     public VmaVulkanFunctions getBufferMemoryRequirements(@Nullable IPointer pointer) {
@@ -383,12 +401,13 @@ public record VmaVulkanFunctions(@NotNull MemorySegment segment) implements IVma
         return this;
     }
 
-    public @Pointer(comment="PFN_vkGetImageMemoryRequirements") MemorySegment getImageMemoryRequirements() {
+    public @Pointer(comment="PFN_vkGetImageMemoryRequirements") @NotNull MemorySegment getImageMemoryRequirements() {
         return segment.get(LAYOUT$getImageMemoryRequirements, OFFSET$getImageMemoryRequirements);
     }
 
-    public void getImageMemoryRequirements(@Pointer(comment="PFN_vkGetImageMemoryRequirements") MemorySegment value) {
+    public VmaVulkanFunctions getImageMemoryRequirements(@Pointer(comment="PFN_vkGetImageMemoryRequirements") @NotNull MemorySegment value) {
         segment.set(LAYOUT$getImageMemoryRequirements, OFFSET$getImageMemoryRequirements, value);
+        return this;
     }
 
     public VmaVulkanFunctions getImageMemoryRequirements(@Nullable IPointer pointer) {
@@ -396,12 +415,13 @@ public record VmaVulkanFunctions(@NotNull MemorySegment segment) implements IVma
         return this;
     }
 
-    public @Pointer(comment="PFN_vkCreateBuffer") MemorySegment createBuffer() {
+    public @Pointer(comment="PFN_vkCreateBuffer") @NotNull MemorySegment createBuffer() {
         return segment.get(LAYOUT$createBuffer, OFFSET$createBuffer);
     }
 
-    public void createBuffer(@Pointer(comment="PFN_vkCreateBuffer") MemorySegment value) {
+    public VmaVulkanFunctions createBuffer(@Pointer(comment="PFN_vkCreateBuffer") @NotNull MemorySegment value) {
         segment.set(LAYOUT$createBuffer, OFFSET$createBuffer, value);
+        return this;
     }
 
     public VmaVulkanFunctions createBuffer(@Nullable IPointer pointer) {
@@ -409,12 +429,13 @@ public record VmaVulkanFunctions(@NotNull MemorySegment segment) implements IVma
         return this;
     }
 
-    public @Pointer(comment="PFN_vkDestroyBuffer") MemorySegment destroyBuffer() {
+    public @Pointer(comment="PFN_vkDestroyBuffer") @NotNull MemorySegment destroyBuffer() {
         return segment.get(LAYOUT$destroyBuffer, OFFSET$destroyBuffer);
     }
 
-    public void destroyBuffer(@Pointer(comment="PFN_vkDestroyBuffer") MemorySegment value) {
+    public VmaVulkanFunctions destroyBuffer(@Pointer(comment="PFN_vkDestroyBuffer") @NotNull MemorySegment value) {
         segment.set(LAYOUT$destroyBuffer, OFFSET$destroyBuffer, value);
+        return this;
     }
 
     public VmaVulkanFunctions destroyBuffer(@Nullable IPointer pointer) {
@@ -422,12 +443,13 @@ public record VmaVulkanFunctions(@NotNull MemorySegment segment) implements IVma
         return this;
     }
 
-    public @Pointer(comment="PFN_vkCreateImage") MemorySegment createImage() {
+    public @Pointer(comment="PFN_vkCreateImage") @NotNull MemorySegment createImage() {
         return segment.get(LAYOUT$createImage, OFFSET$createImage);
     }
 
-    public void createImage(@Pointer(comment="PFN_vkCreateImage") MemorySegment value) {
+    public VmaVulkanFunctions createImage(@Pointer(comment="PFN_vkCreateImage") @NotNull MemorySegment value) {
         segment.set(LAYOUT$createImage, OFFSET$createImage, value);
+        return this;
     }
 
     public VmaVulkanFunctions createImage(@Nullable IPointer pointer) {
@@ -435,12 +457,13 @@ public record VmaVulkanFunctions(@NotNull MemorySegment segment) implements IVma
         return this;
     }
 
-    public @Pointer(comment="PFN_vkDestroyImage") MemorySegment destroyImage() {
+    public @Pointer(comment="PFN_vkDestroyImage") @NotNull MemorySegment destroyImage() {
         return segment.get(LAYOUT$destroyImage, OFFSET$destroyImage);
     }
 
-    public void destroyImage(@Pointer(comment="PFN_vkDestroyImage") MemorySegment value) {
+    public VmaVulkanFunctions destroyImage(@Pointer(comment="PFN_vkDestroyImage") @NotNull MemorySegment value) {
         segment.set(LAYOUT$destroyImage, OFFSET$destroyImage, value);
+        return this;
     }
 
     public VmaVulkanFunctions destroyImage(@Nullable IPointer pointer) {
@@ -448,12 +471,13 @@ public record VmaVulkanFunctions(@NotNull MemorySegment segment) implements IVma
         return this;
     }
 
-    public @Pointer(comment="PFN_vkCmdCopyBuffer") MemorySegment cmdCopyBuffer() {
+    public @Pointer(comment="PFN_vkCmdCopyBuffer") @NotNull MemorySegment cmdCopyBuffer() {
         return segment.get(LAYOUT$cmdCopyBuffer, OFFSET$cmdCopyBuffer);
     }
 
-    public void cmdCopyBuffer(@Pointer(comment="PFN_vkCmdCopyBuffer") MemorySegment value) {
+    public VmaVulkanFunctions cmdCopyBuffer(@Pointer(comment="PFN_vkCmdCopyBuffer") @NotNull MemorySegment value) {
         segment.set(LAYOUT$cmdCopyBuffer, OFFSET$cmdCopyBuffer, value);
+        return this;
     }
 
     public VmaVulkanFunctions cmdCopyBuffer(@Nullable IPointer pointer) {
@@ -461,12 +485,13 @@ public record VmaVulkanFunctions(@NotNull MemorySegment segment) implements IVma
         return this;
     }
 
-    public @Pointer(comment="PFN_vkGetBufferMemoryRequirements2KHR") MemorySegment getBufferMemoryRequirements2KHR() {
+    public @Pointer(comment="PFN_vkGetBufferMemoryRequirements2KHR") @NotNull MemorySegment getBufferMemoryRequirements2KHR() {
         return segment.get(LAYOUT$getBufferMemoryRequirements2KHR, OFFSET$getBufferMemoryRequirements2KHR);
     }
 
-    public void getBufferMemoryRequirements2KHR(@Pointer(comment="PFN_vkGetBufferMemoryRequirements2KHR") MemorySegment value) {
+    public VmaVulkanFunctions getBufferMemoryRequirements2KHR(@Pointer(comment="PFN_vkGetBufferMemoryRequirements2KHR") @NotNull MemorySegment value) {
         segment.set(LAYOUT$getBufferMemoryRequirements2KHR, OFFSET$getBufferMemoryRequirements2KHR, value);
+        return this;
     }
 
     public VmaVulkanFunctions getBufferMemoryRequirements2KHR(@Nullable IPointer pointer) {
@@ -474,12 +499,13 @@ public record VmaVulkanFunctions(@NotNull MemorySegment segment) implements IVma
         return this;
     }
 
-    public @Pointer(comment="PFN_vkGetImageMemoryRequirements2KHR") MemorySegment getImageMemoryRequirements2KHR() {
+    public @Pointer(comment="PFN_vkGetImageMemoryRequirements2KHR") @NotNull MemorySegment getImageMemoryRequirements2KHR() {
         return segment.get(LAYOUT$getImageMemoryRequirements2KHR, OFFSET$getImageMemoryRequirements2KHR);
     }
 
-    public void getImageMemoryRequirements2KHR(@Pointer(comment="PFN_vkGetImageMemoryRequirements2KHR") MemorySegment value) {
+    public VmaVulkanFunctions getImageMemoryRequirements2KHR(@Pointer(comment="PFN_vkGetImageMemoryRequirements2KHR") @NotNull MemorySegment value) {
         segment.set(LAYOUT$getImageMemoryRequirements2KHR, OFFSET$getImageMemoryRequirements2KHR, value);
+        return this;
     }
 
     public VmaVulkanFunctions getImageMemoryRequirements2KHR(@Nullable IPointer pointer) {
@@ -487,12 +513,13 @@ public record VmaVulkanFunctions(@NotNull MemorySegment segment) implements IVma
         return this;
     }
 
-    public @Pointer(comment="PFN_vkBindBufferMemory2KHR") MemorySegment bindBufferMemory2KHR() {
+    public @Pointer(comment="PFN_vkBindBufferMemory2KHR") @NotNull MemorySegment bindBufferMemory2KHR() {
         return segment.get(LAYOUT$bindBufferMemory2KHR, OFFSET$bindBufferMemory2KHR);
     }
 
-    public void bindBufferMemory2KHR(@Pointer(comment="PFN_vkBindBufferMemory2KHR") MemorySegment value) {
+    public VmaVulkanFunctions bindBufferMemory2KHR(@Pointer(comment="PFN_vkBindBufferMemory2KHR") @NotNull MemorySegment value) {
         segment.set(LAYOUT$bindBufferMemory2KHR, OFFSET$bindBufferMemory2KHR, value);
+        return this;
     }
 
     public VmaVulkanFunctions bindBufferMemory2KHR(@Nullable IPointer pointer) {
@@ -500,12 +527,13 @@ public record VmaVulkanFunctions(@NotNull MemorySegment segment) implements IVma
         return this;
     }
 
-    public @Pointer(comment="PFN_vkBindImageMemory2KHR") MemorySegment bindImageMemory2KHR() {
+    public @Pointer(comment="PFN_vkBindImageMemory2KHR") @NotNull MemorySegment bindImageMemory2KHR() {
         return segment.get(LAYOUT$bindImageMemory2KHR, OFFSET$bindImageMemory2KHR);
     }
 
-    public void bindImageMemory2KHR(@Pointer(comment="PFN_vkBindImageMemory2KHR") MemorySegment value) {
+    public VmaVulkanFunctions bindImageMemory2KHR(@Pointer(comment="PFN_vkBindImageMemory2KHR") @NotNull MemorySegment value) {
         segment.set(LAYOUT$bindImageMemory2KHR, OFFSET$bindImageMemory2KHR, value);
+        return this;
     }
 
     public VmaVulkanFunctions bindImageMemory2KHR(@Nullable IPointer pointer) {
@@ -513,12 +541,13 @@ public record VmaVulkanFunctions(@NotNull MemorySegment segment) implements IVma
         return this;
     }
 
-    public @Pointer(comment="PFN_vkGetPhysicalDeviceMemoryProperties2KHR") MemorySegment getPhysicalDeviceMemoryProperties2KHR() {
+    public @Pointer(comment="PFN_vkGetPhysicalDeviceMemoryProperties2KHR") @NotNull MemorySegment getPhysicalDeviceMemoryProperties2KHR() {
         return segment.get(LAYOUT$getPhysicalDeviceMemoryProperties2KHR, OFFSET$getPhysicalDeviceMemoryProperties2KHR);
     }
 
-    public void getPhysicalDeviceMemoryProperties2KHR(@Pointer(comment="PFN_vkGetPhysicalDeviceMemoryProperties2KHR") MemorySegment value) {
+    public VmaVulkanFunctions getPhysicalDeviceMemoryProperties2KHR(@Pointer(comment="PFN_vkGetPhysicalDeviceMemoryProperties2KHR") @NotNull MemorySegment value) {
         segment.set(LAYOUT$getPhysicalDeviceMemoryProperties2KHR, OFFSET$getPhysicalDeviceMemoryProperties2KHR, value);
+        return this;
     }
 
     public VmaVulkanFunctions getPhysicalDeviceMemoryProperties2KHR(@Nullable IPointer pointer) {
@@ -526,12 +555,13 @@ public record VmaVulkanFunctions(@NotNull MemorySegment segment) implements IVma
         return this;
     }
 
-    public @Pointer(comment="PFN_vkGetDeviceBufferMemoryRequirementsKHR") MemorySegment getDeviceBufferMemoryRequirements() {
+    public @Pointer(comment="PFN_vkGetDeviceBufferMemoryRequirementsKHR") @NotNull MemorySegment getDeviceBufferMemoryRequirements() {
         return segment.get(LAYOUT$getDeviceBufferMemoryRequirements, OFFSET$getDeviceBufferMemoryRequirements);
     }
 
-    public void getDeviceBufferMemoryRequirements(@Pointer(comment="PFN_vkGetDeviceBufferMemoryRequirementsKHR") MemorySegment value) {
+    public VmaVulkanFunctions getDeviceBufferMemoryRequirements(@Pointer(comment="PFN_vkGetDeviceBufferMemoryRequirementsKHR") @NotNull MemorySegment value) {
         segment.set(LAYOUT$getDeviceBufferMemoryRequirements, OFFSET$getDeviceBufferMemoryRequirements, value);
+        return this;
     }
 
     public VmaVulkanFunctions getDeviceBufferMemoryRequirements(@Nullable IPointer pointer) {
@@ -539,12 +569,13 @@ public record VmaVulkanFunctions(@NotNull MemorySegment segment) implements IVma
         return this;
     }
 
-    public @Pointer(comment="PFN_vkGetDeviceImageMemoryRequirementsKHR") MemorySegment getDeviceImageMemoryRequirements() {
+    public @Pointer(comment="PFN_vkGetDeviceImageMemoryRequirementsKHR") @NotNull MemorySegment getDeviceImageMemoryRequirements() {
         return segment.get(LAYOUT$getDeviceImageMemoryRequirements, OFFSET$getDeviceImageMemoryRequirements);
     }
 
-    public void getDeviceImageMemoryRequirements(@Pointer(comment="PFN_vkGetDeviceImageMemoryRequirementsKHR") MemorySegment value) {
+    public VmaVulkanFunctions getDeviceImageMemoryRequirements(@Pointer(comment="PFN_vkGetDeviceImageMemoryRequirementsKHR") @NotNull MemorySegment value) {
         segment.set(LAYOUT$getDeviceImageMemoryRequirements, OFFSET$getDeviceImageMemoryRequirements, value);
+        return this;
     }
 
     public VmaVulkanFunctions getDeviceImageMemoryRequirements(@Nullable IPointer pointer) {
@@ -552,12 +583,13 @@ public record VmaVulkanFunctions(@NotNull MemorySegment segment) implements IVma
         return this;
     }
 
-    public @Pointer(comment="PFN_vkGetMemoryWin32HandleKHR") MemorySegment getMemoryWin32HandleKHR() {
+    public @Pointer(comment="PFN_vkGetMemoryWin32HandleKHR") @NotNull MemorySegment getMemoryWin32HandleKHR() {
         return segment.get(LAYOUT$getMemoryWin32HandleKHR, OFFSET$getMemoryWin32HandleKHR);
     }
 
-    public void getMemoryWin32HandleKHR(@Pointer(comment="PFN_vkGetMemoryWin32HandleKHR") MemorySegment value) {
+    public VmaVulkanFunctions getMemoryWin32HandleKHR(@Pointer(comment="PFN_vkGetMemoryWin32HandleKHR") @NotNull MemorySegment value) {
         segment.set(LAYOUT$getMemoryWin32HandleKHR, OFFSET$getMemoryWin32HandleKHR, value);
+        return this;
     }
 
     public VmaVulkanFunctions getMemoryWin32HandleKHR(@Nullable IPointer pointer) {

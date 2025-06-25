@@ -93,6 +93,11 @@ public record VkBlitImageInfo2(@NotNull MemorySegment segment) implements IVkBli
             return new VkBlitImageInfo2(segment.asSlice(index * VkBlitImageInfo2.BYTES, VkBlitImageInfo2.BYTES));
         }
 
+        public VkBlitImageInfo2.Ptr at(long index, @NotNull Consumer<@NotNull VkBlitImageInfo2> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkBlitImageInfo2 value) {
             MemorySegment s = segment.asSlice(index * VkBlitImageInfo2.BYTES, VkBlitImageInfo2.BYTES);
             s.copyFrom(value.segment);
@@ -205,12 +210,13 @@ public record VkBlitImageInfo2(@NotNull MemorySegment segment) implements IVkBli
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkBlitImageInfo2 pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkBlitImageInfo2 pNext(@Nullable IPointer pointer) {
@@ -295,11 +301,11 @@ public record VkBlitImageInfo2(@NotNull MemorySegment segment) implements IVkBli
         return new VkImageBlit2(s);
     }
 
-    public @Pointer(target=VkImageBlit2.class) MemorySegment pRegionsRaw() {
+    public @Pointer(target=VkImageBlit2.class) @NotNull MemorySegment pRegionsRaw() {
         return segment.get(LAYOUT$pRegions, OFFSET$pRegions);
     }
 
-    public void pRegionsRaw(@Pointer(target=VkImageBlit2.class) MemorySegment value) {
+    public void pRegionsRaw(@Pointer(target=VkImageBlit2.class) @NotNull MemorySegment value) {
         segment.set(LAYOUT$pRegions, OFFSET$pRegions, value);
     }
 

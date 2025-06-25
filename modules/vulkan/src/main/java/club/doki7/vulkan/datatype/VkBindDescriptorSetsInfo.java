@@ -32,7 +32,7 @@ import static club.doki7.vulkan.VkConstants.*;
 ///     uint32_t descriptorSetCount; // @link substring="descriptorSetCount" target="#descriptorSetCount"
 ///     VkDescriptorSet const* pDescriptorSets; // @link substring="VkDescriptorSet" target="VkDescriptorSet" @link substring="pDescriptorSets" target="#pDescriptorSets"
 ///     uint32_t dynamicOffsetCount; // optional // @link substring="dynamicOffsetCount" target="#dynamicOffsetCount"
-///     uint32_t const* pDynamicOffsets; // @link substring="pDynamicOffsets" target="#pDynamicOffsets"
+///     uint32_t const* pDynamicOffsets; // optional // @link substring="pDynamicOffsets" target="#pDynamicOffsets"
 /// } VkBindDescriptorSetsInfo;
 /// }
 ///
@@ -91,6 +91,11 @@ public record VkBindDescriptorSetsInfo(@NotNull MemorySegment segment) implement
         /// indicate that the returned structure is a view of the original structure.
         public @NotNull VkBindDescriptorSetsInfo at(long index) {
             return new VkBindDescriptorSetsInfo(segment.asSlice(index * VkBindDescriptorSetsInfo.BYTES, VkBindDescriptorSetsInfo.BYTES));
+        }
+
+        public VkBindDescriptorSetsInfo.Ptr at(long index, @NotNull Consumer<@NotNull VkBindDescriptorSetsInfo> consumer) {
+            consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkBindDescriptorSetsInfo value) {
@@ -205,12 +210,13 @@ public record VkBindDescriptorSetsInfo(@NotNull MemorySegment segment) implement
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkBindDescriptorSetsInfo pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkBindDescriptorSetsInfo pNext(@Nullable IPointer pointer) {
@@ -218,11 +224,11 @@ public record VkBindDescriptorSetsInfo(@NotNull MemorySegment segment) implement
         return this;
     }
 
-    public @EnumType(VkShaderStageFlags.class) int stageFlags() {
+    public @Bitmask(VkShaderStageFlags.class) int stageFlags() {
         return segment.get(LAYOUT$stageFlags, OFFSET$stageFlags);
     }
 
-    public VkBindDescriptorSetsInfo stageFlags(@EnumType(VkShaderStageFlags.class) int value) {
+    public VkBindDescriptorSetsInfo stageFlags(@Bitmask(VkShaderStageFlags.class) int value) {
         segment.set(LAYOUT$stageFlags, OFFSET$stageFlags, value);
         return this;
     }
@@ -276,11 +282,11 @@ public record VkBindDescriptorSetsInfo(@NotNull MemorySegment segment) implement
         return this;
     }
 
-    public @Pointer(target=VkDescriptorSet.class) MemorySegment pDescriptorSetsRaw() {
+    public @Pointer(target=VkDescriptorSet.class) @NotNull MemorySegment pDescriptorSetsRaw() {
         return segment.get(LAYOUT$pDescriptorSets, OFFSET$pDescriptorSets);
     }
 
-    public void pDescriptorSetsRaw(@Pointer(target=VkDescriptorSet.class) MemorySegment value) {
+    public void pDescriptorSetsRaw(@Pointer(target=VkDescriptorSet.class) @NotNull MemorySegment value) {
         segment.set(LAYOUT$pDescriptorSets, OFFSET$pDescriptorSets, value);
     }
 
@@ -311,11 +317,11 @@ public record VkBindDescriptorSetsInfo(@NotNull MemorySegment segment) implement
         return this;
     }
 
-    public @Pointer(comment="uint32_t*") MemorySegment pDynamicOffsetsRaw() {
+    public @Pointer(comment="uint32_t*") @NotNull MemorySegment pDynamicOffsetsRaw() {
         return segment.get(LAYOUT$pDynamicOffsets, OFFSET$pDynamicOffsets);
     }
 
-    public void pDynamicOffsetsRaw(@Pointer(comment="uint32_t*") MemorySegment value) {
+    public void pDynamicOffsetsRaw(@Pointer(comment="uint32_t*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pDynamicOffsets, OFFSET$pDynamicOffsets, value);
     }
 

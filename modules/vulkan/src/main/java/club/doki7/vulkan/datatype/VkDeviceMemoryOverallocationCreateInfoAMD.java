@@ -87,6 +87,11 @@ public record VkDeviceMemoryOverallocationCreateInfoAMD(@NotNull MemorySegment s
             return new VkDeviceMemoryOverallocationCreateInfoAMD(segment.asSlice(index * VkDeviceMemoryOverallocationCreateInfoAMD.BYTES, VkDeviceMemoryOverallocationCreateInfoAMD.BYTES));
         }
 
+        public VkDeviceMemoryOverallocationCreateInfoAMD.Ptr at(long index, @NotNull Consumer<@NotNull VkDeviceMemoryOverallocationCreateInfoAMD> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkDeviceMemoryOverallocationCreateInfoAMD value) {
             MemorySegment s = segment.asSlice(index * VkDeviceMemoryOverallocationCreateInfoAMD.BYTES, VkDeviceMemoryOverallocationCreateInfoAMD.BYTES);
             s.copyFrom(value.segment);
@@ -199,12 +204,13 @@ public record VkDeviceMemoryOverallocationCreateInfoAMD(@NotNull MemorySegment s
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkDeviceMemoryOverallocationCreateInfoAMD pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkDeviceMemoryOverallocationCreateInfoAMD pNext(@Nullable IPointer pointer) {

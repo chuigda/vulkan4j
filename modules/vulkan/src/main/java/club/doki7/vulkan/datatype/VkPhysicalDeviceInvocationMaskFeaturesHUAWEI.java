@@ -87,6 +87,11 @@ public record VkPhysicalDeviceInvocationMaskFeaturesHUAWEI(@NotNull MemorySegmen
             return new VkPhysicalDeviceInvocationMaskFeaturesHUAWEI(segment.asSlice(index * VkPhysicalDeviceInvocationMaskFeaturesHUAWEI.BYTES, VkPhysicalDeviceInvocationMaskFeaturesHUAWEI.BYTES));
         }
 
+        public VkPhysicalDeviceInvocationMaskFeaturesHUAWEI.Ptr at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceInvocationMaskFeaturesHUAWEI> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkPhysicalDeviceInvocationMaskFeaturesHUAWEI value) {
             MemorySegment s = segment.asSlice(index * VkPhysicalDeviceInvocationMaskFeaturesHUAWEI.BYTES, VkPhysicalDeviceInvocationMaskFeaturesHUAWEI.BYTES);
             s.copyFrom(value.segment);
@@ -199,12 +204,13 @@ public record VkPhysicalDeviceInvocationMaskFeaturesHUAWEI(@NotNull MemorySegmen
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkPhysicalDeviceInvocationMaskFeaturesHUAWEI pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkPhysicalDeviceInvocationMaskFeaturesHUAWEI pNext(@Nullable IPointer pointer) {

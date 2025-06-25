@@ -11,7 +11,7 @@ public final class VkPresentScalingFlagsEXT {
     public static final int ONE_TO_ONE = 0x1;
     public static final int STRETCH = 0x4;
 
-    public static String explain(@EnumType(VkPresentScalingFlagsEXT.class) int flags) {
+    public static String explain(@Bitmask(VkPresentScalingFlagsEXT.class) int flags) {
         List<String> detectedFlagBits = new ArrayList<>();
         if ((flags & ASPECT_RATIO_STRETCH) != 0) {
             detectedFlagBits.add("VK_PRESENT_SCALING_ASPECT_RATIO_STRETCH_BIT_EXT");

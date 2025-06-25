@@ -88,6 +88,11 @@ public record VkDeviceImageSubresourceInfo(@NotNull MemorySegment segment) imple
             return new VkDeviceImageSubresourceInfo(segment.asSlice(index * VkDeviceImageSubresourceInfo.BYTES, VkDeviceImageSubresourceInfo.BYTES));
         }
 
+        public VkDeviceImageSubresourceInfo.Ptr at(long index, @NotNull Consumer<@NotNull VkDeviceImageSubresourceInfo> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkDeviceImageSubresourceInfo value) {
             MemorySegment s = segment.asSlice(index * VkDeviceImageSubresourceInfo.BYTES, VkDeviceImageSubresourceInfo.BYTES);
             s.copyFrom(value.segment);
@@ -200,12 +205,13 @@ public record VkDeviceImageSubresourceInfo(@NotNull MemorySegment segment) imple
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkDeviceImageSubresourceInfo pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkDeviceImageSubresourceInfo pNext(@Nullable IPointer pointer) {
@@ -237,11 +243,11 @@ public record VkDeviceImageSubresourceInfo(@NotNull MemorySegment segment) imple
         return new VkImageCreateInfo(s);
     }
 
-    public @Pointer(target=VkImageCreateInfo.class) MemorySegment pCreateInfoRaw() {
+    public @Pointer(target=VkImageCreateInfo.class) @NotNull MemorySegment pCreateInfoRaw() {
         return segment.get(LAYOUT$pCreateInfo, OFFSET$pCreateInfo);
     }
 
-    public void pCreateInfoRaw(@Pointer(target=VkImageCreateInfo.class) MemorySegment value) {
+    public void pCreateInfoRaw(@Pointer(target=VkImageCreateInfo.class) @NotNull MemorySegment value) {
         segment.set(LAYOUT$pCreateInfo, OFFSET$pCreateInfo, value);
     }
 
@@ -269,11 +275,11 @@ public record VkDeviceImageSubresourceInfo(@NotNull MemorySegment segment) imple
         return new VkImageSubresource2(s);
     }
 
-    public @Pointer(target=VkImageSubresource2.class) MemorySegment pSubresourceRaw() {
+    public @Pointer(target=VkImageSubresource2.class) @NotNull MemorySegment pSubresourceRaw() {
         return segment.get(LAYOUT$pSubresource, OFFSET$pSubresource);
     }
 
-    public void pSubresourceRaw(@Pointer(target=VkImageSubresource2.class) MemorySegment value) {
+    public void pSubresourceRaw(@Pointer(target=VkImageSubresource2.class) @NotNull MemorySegment value) {
         segment.set(LAYOUT$pSubresource, OFFSET$pSubresource, value);
     }
 

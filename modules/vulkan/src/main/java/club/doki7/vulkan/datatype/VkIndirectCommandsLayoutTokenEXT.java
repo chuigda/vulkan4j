@@ -89,6 +89,11 @@ public record VkIndirectCommandsLayoutTokenEXT(@NotNull MemorySegment segment) i
             return new VkIndirectCommandsLayoutTokenEXT(segment.asSlice(index * VkIndirectCommandsLayoutTokenEXT.BYTES, VkIndirectCommandsLayoutTokenEXT.BYTES));
         }
 
+        public VkIndirectCommandsLayoutTokenEXT.Ptr at(long index, @NotNull Consumer<@NotNull VkIndirectCommandsLayoutTokenEXT> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkIndirectCommandsLayoutTokenEXT value) {
             MemorySegment s = segment.asSlice(index * VkIndirectCommandsLayoutTokenEXT.BYTES, VkIndirectCommandsLayoutTokenEXT.BYTES);
             s.copyFrom(value.segment);
@@ -201,12 +206,13 @@ public record VkIndirectCommandsLayoutTokenEXT(@NotNull MemorySegment segment) i
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkIndirectCommandsLayoutTokenEXT pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkIndirectCommandsLayoutTokenEXT pNext(@Nullable IPointer pointer) {

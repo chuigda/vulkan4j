@@ -78,6 +78,11 @@ public record VkInputAttachmentAspectReference(@NotNull MemorySegment segment) i
             return new VkInputAttachmentAspectReference(segment.asSlice(index * VkInputAttachmentAspectReference.BYTES, VkInputAttachmentAspectReference.BYTES));
         }
 
+        public VkInputAttachmentAspectReference.Ptr at(long index, @NotNull Consumer<@NotNull VkInputAttachmentAspectReference> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkInputAttachmentAspectReference value) {
             MemorySegment s = segment.asSlice(index * VkInputAttachmentAspectReference.BYTES, VkInputAttachmentAspectReference.BYTES);
             s.copyFrom(value.segment);
@@ -189,11 +194,11 @@ public record VkInputAttachmentAspectReference(@NotNull MemorySegment segment) i
         return this;
     }
 
-    public @EnumType(VkImageAspectFlags.class) int aspectMask() {
+    public @Bitmask(VkImageAspectFlags.class) int aspectMask() {
         return segment.get(LAYOUT$aspectMask, OFFSET$aspectMask);
     }
 
-    public VkInputAttachmentAspectReference aspectMask(@EnumType(VkImageAspectFlags.class) int value) {
+    public VkInputAttachmentAspectReference aspectMask(@Bitmask(VkImageAspectFlags.class) int value) {
         segment.set(LAYOUT$aspectMask, OFFSET$aspectMask, value);
         return this;
     }

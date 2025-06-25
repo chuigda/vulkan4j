@@ -94,6 +94,11 @@ public record VkHdrMetadataEXT(@NotNull MemorySegment segment) implements IVkHdr
             return new VkHdrMetadataEXT(segment.asSlice(index * VkHdrMetadataEXT.BYTES, VkHdrMetadataEXT.BYTES));
         }
 
+        public VkHdrMetadataEXT.Ptr at(long index, @NotNull Consumer<@NotNull VkHdrMetadataEXT> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkHdrMetadataEXT value) {
             MemorySegment s = segment.asSlice(index * VkHdrMetadataEXT.BYTES, VkHdrMetadataEXT.BYTES);
             s.copyFrom(value.segment);
@@ -206,12 +211,13 @@ public record VkHdrMetadataEXT(@NotNull MemorySegment segment) implements IVkHdr
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkHdrMetadataEXT pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkHdrMetadataEXT pNext(@Nullable IPointer pointer) {

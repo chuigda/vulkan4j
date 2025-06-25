@@ -90,6 +90,11 @@ public record VkPerformanceCounterKHR(@NotNull MemorySegment segment) implements
             return new VkPerformanceCounterKHR(segment.asSlice(index * VkPerformanceCounterKHR.BYTES, VkPerformanceCounterKHR.BYTES));
         }
 
+        public VkPerformanceCounterKHR.Ptr at(long index, @NotNull Consumer<@NotNull VkPerformanceCounterKHR> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkPerformanceCounterKHR value) {
             MemorySegment s = segment.asSlice(index * VkPerformanceCounterKHR.BYTES, VkPerformanceCounterKHR.BYTES);
             s.copyFrom(value.segment);
@@ -202,12 +207,13 @@ public record VkPerformanceCounterKHR(@NotNull MemorySegment segment) implements
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkPerformanceCounterKHR pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkPerformanceCounterKHR pNext(@Nullable IPointer pointer) {
@@ -246,12 +252,19 @@ public record VkPerformanceCounterKHR(@NotNull MemorySegment segment) implements
         return new BytePtr(uuidRaw());
     }
 
-    public VkPerformanceCounterKHR uuid(@Unsigned BytePtr value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$uuid, SIZE$uuid);
+    public VkPerformanceCounterKHR uuid(@NotNull Consumer<BytePtr> consumer) {
+        @Unsigned BytePtr ptr = uuid();
+        consumer.accept(ptr);
         return this;
     }
 
-    public MemorySegment uuidRaw() {
+    public VkPerformanceCounterKHR uuid(@Unsigned BytePtr value) {
+        MemorySegment s = uuidRaw();
+        s.copyFrom(value.segment());
+        return this;
+    }
+
+    public @NotNull MemorySegment uuidRaw() {
         return segment.asSlice(OFFSET$uuid, SIZE$uuid);
     }
 

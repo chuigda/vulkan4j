@@ -77,6 +77,11 @@ public record StdVideoAV1TimingInfo(@NotNull MemorySegment segment) implements I
             return new StdVideoAV1TimingInfo(segment.asSlice(index * StdVideoAV1TimingInfo.BYTES, StdVideoAV1TimingInfo.BYTES));
         }
 
+        public StdVideoAV1TimingInfo.Ptr at(long index, @NotNull Consumer<@NotNull StdVideoAV1TimingInfo> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull StdVideoAV1TimingInfo value) {
             MemorySegment s = segment.asSlice(index * StdVideoAV1TimingInfo.BYTES, StdVideoAV1TimingInfo.BYTES);
             s.copyFrom(value.segment);

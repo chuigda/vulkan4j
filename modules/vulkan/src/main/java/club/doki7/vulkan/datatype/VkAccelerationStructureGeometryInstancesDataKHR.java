@@ -88,6 +88,11 @@ public record VkAccelerationStructureGeometryInstancesDataKHR(@NotNull MemorySeg
             return new VkAccelerationStructureGeometryInstancesDataKHR(segment.asSlice(index * VkAccelerationStructureGeometryInstancesDataKHR.BYTES, VkAccelerationStructureGeometryInstancesDataKHR.BYTES));
         }
 
+        public VkAccelerationStructureGeometryInstancesDataKHR.Ptr at(long index, @NotNull Consumer<@NotNull VkAccelerationStructureGeometryInstancesDataKHR> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkAccelerationStructureGeometryInstancesDataKHR value) {
             MemorySegment s = segment.asSlice(index * VkAccelerationStructureGeometryInstancesDataKHR.BYTES, VkAccelerationStructureGeometryInstancesDataKHR.BYTES);
             s.copyFrom(value.segment);
@@ -200,12 +205,13 @@ public record VkAccelerationStructureGeometryInstancesDataKHR(@NotNull MemorySeg
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkAccelerationStructureGeometryInstancesDataKHR pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkAccelerationStructureGeometryInstancesDataKHR pNext(@Nullable IPointer pointer) {

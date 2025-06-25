@@ -25,7 +25,7 @@ import static club.doki7.vulkan.VkConstants.*;
 /// {@snippet lang=c :
 /// typedef struct VkMutableDescriptorTypeListEXT {
 ///     uint32_t descriptorTypeCount; // optional // @link substring="descriptorTypeCount" target="#descriptorTypeCount"
-///     VkDescriptorType const* pDescriptorTypes; // @link substring="VkDescriptorType" target="VkDescriptorType" @link substring="pDescriptorTypes" target="#pDescriptorTypes"
+///     VkDescriptorType const* pDescriptorTypes; // optional // @link substring="VkDescriptorType" target="VkDescriptorType" @link substring="pDescriptorTypes" target="#pDescriptorTypes"
 /// } VkMutableDescriptorTypeListEXT;
 /// }
 ///
@@ -75,6 +75,11 @@ public record VkMutableDescriptorTypeListEXT(@NotNull MemorySegment segment) imp
         /// indicate that the returned structure is a view of the original structure.
         public @NotNull VkMutableDescriptorTypeListEXT at(long index) {
             return new VkMutableDescriptorTypeListEXT(segment.asSlice(index * VkMutableDescriptorTypeListEXT.BYTES, VkMutableDescriptorTypeListEXT.BYTES));
+        }
+
+        public VkMutableDescriptorTypeListEXT.Ptr at(long index, @NotNull Consumer<@NotNull VkMutableDescriptorTypeListEXT> consumer) {
+            consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkMutableDescriptorTypeListEXT value) {
@@ -198,11 +203,11 @@ public record VkMutableDescriptorTypeListEXT(@NotNull MemorySegment segment) imp
         return this;
     }
 
-    public @Pointer(target=VkDescriptorType.class) MemorySegment pDescriptorTypesRaw() {
+    public @Pointer(target=VkDescriptorType.class) @NotNull MemorySegment pDescriptorTypesRaw() {
         return segment.get(LAYOUT$pDescriptorTypes, OFFSET$pDescriptorTypes);
     }
 
-    public void pDescriptorTypesRaw(@Pointer(target=VkDescriptorType.class) MemorySegment value) {
+    public void pDescriptorTypesRaw(@Pointer(target=VkDescriptorType.class) @NotNull MemorySegment value) {
         segment.set(LAYOUT$pDescriptorTypes, OFFSET$pDescriptorTypes, value);
     }
 

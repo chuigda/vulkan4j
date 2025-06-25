@@ -79,6 +79,11 @@ public record VkQueueFamilyProperties(@NotNull MemorySegment segment) implements
             return new VkQueueFamilyProperties(segment.asSlice(index * VkQueueFamilyProperties.BYTES, VkQueueFamilyProperties.BYTES));
         }
 
+        public VkQueueFamilyProperties.Ptr at(long index, @NotNull Consumer<@NotNull VkQueueFamilyProperties> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkQueueFamilyProperties value) {
             MemorySegment s = segment.asSlice(index * VkQueueFamilyProperties.BYTES, VkQueueFamilyProperties.BYTES);
             s.copyFrom(value.segment);
@@ -172,11 +177,11 @@ public record VkQueueFamilyProperties(@NotNull MemorySegment segment) implements
         return ret;
     }
 
-    public @EnumType(VkQueueFlags.class) int queueFlags() {
+    public @Bitmask(VkQueueFlags.class) int queueFlags() {
         return segment.get(LAYOUT$queueFlags, OFFSET$queueFlags);
     }
 
-    public VkQueueFamilyProperties queueFlags(@EnumType(VkQueueFlags.class) int value) {
+    public VkQueueFamilyProperties queueFlags(@Bitmask(VkQueueFlags.class) int value) {
         segment.set(LAYOUT$queueFlags, OFFSET$queueFlags, value);
         return this;
     }

@@ -89,6 +89,11 @@ public record VkRenderingFragmentShadingRateAttachmentInfoKHR(@NotNull MemorySeg
             return new VkRenderingFragmentShadingRateAttachmentInfoKHR(segment.asSlice(index * VkRenderingFragmentShadingRateAttachmentInfoKHR.BYTES, VkRenderingFragmentShadingRateAttachmentInfoKHR.BYTES));
         }
 
+        public VkRenderingFragmentShadingRateAttachmentInfoKHR.Ptr at(long index, @NotNull Consumer<@NotNull VkRenderingFragmentShadingRateAttachmentInfoKHR> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkRenderingFragmentShadingRateAttachmentInfoKHR value) {
             MemorySegment s = segment.asSlice(index * VkRenderingFragmentShadingRateAttachmentInfoKHR.BYTES, VkRenderingFragmentShadingRateAttachmentInfoKHR.BYTES);
             s.copyFrom(value.segment);
@@ -201,12 +206,13 @@ public record VkRenderingFragmentShadingRateAttachmentInfoKHR(@NotNull MemorySeg
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkRenderingFragmentShadingRateAttachmentInfoKHR pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkRenderingFragmentShadingRateAttachmentInfoKHR pNext(@Nullable IPointer pointer) {

@@ -94,6 +94,11 @@ public record VkWriteDescriptorSet(@NotNull MemorySegment segment) implements IV
             return new VkWriteDescriptorSet(segment.asSlice(index * VkWriteDescriptorSet.BYTES, VkWriteDescriptorSet.BYTES));
         }
 
+        public VkWriteDescriptorSet.Ptr at(long index, @NotNull Consumer<@NotNull VkWriteDescriptorSet> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkWriteDescriptorSet value) {
             MemorySegment s = segment.asSlice(index * VkWriteDescriptorSet.BYTES, VkWriteDescriptorSet.BYTES);
             s.copyFrom(value.segment);
@@ -206,12 +211,13 @@ public record VkWriteDescriptorSet(@NotNull MemorySegment segment) implements IV
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkWriteDescriptorSet pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkWriteDescriptorSet pNext(@Nullable IPointer pointer) {
@@ -292,11 +298,11 @@ public record VkWriteDescriptorSet(@NotNull MemorySegment segment) implements IV
         return new VkDescriptorImageInfo(s);
     }
 
-    public @Pointer(target=VkDescriptorImageInfo.class) MemorySegment pImageInfoRaw() {
+    public @Pointer(target=VkDescriptorImageInfo.class) @NotNull MemorySegment pImageInfoRaw() {
         return segment.get(LAYOUT$pImageInfo, OFFSET$pImageInfo);
     }
 
-    public void pImageInfoRaw(@Pointer(target=VkDescriptorImageInfo.class) MemorySegment value) {
+    public void pImageInfoRaw(@Pointer(target=VkDescriptorImageInfo.class) @NotNull MemorySegment value) {
         segment.set(LAYOUT$pImageInfo, OFFSET$pImageInfo, value);
     }
 
@@ -324,11 +330,11 @@ public record VkWriteDescriptorSet(@NotNull MemorySegment segment) implements IV
         return new VkDescriptorBufferInfo(s);
     }
 
-    public @Pointer(target=VkDescriptorBufferInfo.class) MemorySegment pBufferInfoRaw() {
+    public @Pointer(target=VkDescriptorBufferInfo.class) @NotNull MemorySegment pBufferInfoRaw() {
         return segment.get(LAYOUT$pBufferInfo, OFFSET$pBufferInfo);
     }
 
-    public void pBufferInfoRaw(@Pointer(target=VkDescriptorBufferInfo.class) MemorySegment value) {
+    public void pBufferInfoRaw(@Pointer(target=VkDescriptorBufferInfo.class) @NotNull MemorySegment value) {
         segment.set(LAYOUT$pBufferInfo, OFFSET$pBufferInfo, value);
     }
 
@@ -350,11 +356,11 @@ public record VkWriteDescriptorSet(@NotNull MemorySegment segment) implements IV
         return this;
     }
 
-    public @Pointer(target=VkBufferView.class) MemorySegment pTexelBufferViewRaw() {
+    public @Pointer(target=VkBufferView.class) @NotNull MemorySegment pTexelBufferViewRaw() {
         return segment.get(LAYOUT$pTexelBufferView, OFFSET$pTexelBufferView);
     }
 
-    public void pTexelBufferViewRaw(@Pointer(target=VkBufferView.class) MemorySegment value) {
+    public void pTexelBufferViewRaw(@Pointer(target=VkBufferView.class) @NotNull MemorySegment value) {
         segment.set(LAYOUT$pTexelBufferView, OFFSET$pTexelBufferView, value);
     }
 

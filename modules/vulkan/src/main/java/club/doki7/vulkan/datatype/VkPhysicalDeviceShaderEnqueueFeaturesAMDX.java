@@ -88,6 +88,11 @@ public record VkPhysicalDeviceShaderEnqueueFeaturesAMDX(@NotNull MemorySegment s
             return new VkPhysicalDeviceShaderEnqueueFeaturesAMDX(segment.asSlice(index * VkPhysicalDeviceShaderEnqueueFeaturesAMDX.BYTES, VkPhysicalDeviceShaderEnqueueFeaturesAMDX.BYTES));
         }
 
+        public VkPhysicalDeviceShaderEnqueueFeaturesAMDX.Ptr at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceShaderEnqueueFeaturesAMDX> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkPhysicalDeviceShaderEnqueueFeaturesAMDX value) {
             MemorySegment s = segment.asSlice(index * VkPhysicalDeviceShaderEnqueueFeaturesAMDX.BYTES, VkPhysicalDeviceShaderEnqueueFeaturesAMDX.BYTES);
             s.copyFrom(value.segment);
@@ -200,12 +205,13 @@ public record VkPhysicalDeviceShaderEnqueueFeaturesAMDX(@NotNull MemorySegment s
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkPhysicalDeviceShaderEnqueueFeaturesAMDX pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkPhysicalDeviceShaderEnqueueFeaturesAMDX pNext(@Nullable IPointer pointer) {

@@ -92,6 +92,11 @@ public record VkCooperativeVectorPropertiesNV(@NotNull MemorySegment segment) im
             return new VkCooperativeVectorPropertiesNV(segment.asSlice(index * VkCooperativeVectorPropertiesNV.BYTES, VkCooperativeVectorPropertiesNV.BYTES));
         }
 
+        public VkCooperativeVectorPropertiesNV.Ptr at(long index, @NotNull Consumer<@NotNull VkCooperativeVectorPropertiesNV> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkCooperativeVectorPropertiesNV value) {
             MemorySegment s = segment.asSlice(index * VkCooperativeVectorPropertiesNV.BYTES, VkCooperativeVectorPropertiesNV.BYTES);
             s.copyFrom(value.segment);
@@ -204,12 +209,13 @@ public record VkCooperativeVectorPropertiesNV(@NotNull MemorySegment segment) im
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkCooperativeVectorPropertiesNV pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkCooperativeVectorPropertiesNV pNext(@Nullable IPointer pointer) {

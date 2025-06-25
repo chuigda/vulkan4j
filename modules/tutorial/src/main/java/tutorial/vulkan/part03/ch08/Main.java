@@ -1,16 +1,17 @@
 package tutorial.vulkan.part03.ch08;
 
 import club.doki7.ffm.NativeLayout;
+import club.doki7.ffm.annotation.Bitmask;
 import club.doki7.ffm.annotation.EnumType;
 import club.doki7.ffm.annotation.NativeType;
 import club.doki7.ffm.annotation.Pointer;
 import club.doki7.ffm.annotation.Unsigned;
+import club.doki7.ffm.library.ISharedLibrary;
 import club.doki7.ffm.ptr.BytePtr;
 import club.doki7.ffm.ptr.FloatPtr;
 import club.doki7.ffm.ptr.IntPtr;
 import club.doki7.ffm.ptr.PointerPtr;
 import club.doki7.glfw.GLFW;
-import club.doki7.glfw.GLFWConstants;
 import club.doki7.glfw.GLFWLoader;
 import club.doki7.glfw.handle.GLFWwindow;
 import club.doki7.vulkan.Version;
@@ -38,8 +39,6 @@ class Application {
     }
 
     private void initWindow() {
-        GLFWLoader.loadGLFWLibrary();
-        glfw = GLFWLoader.loadGLFW();
         if (glfw.init() != GLFW.TRUE) {
             throw new RuntimeException("Failed to initialize GLFW");
         }
@@ -54,8 +53,6 @@ class Application {
     }
 
     private void initVulkan() {
-        VulkanLoader.loadVulkanLibrary();
-        staticCommands = VulkanLoader.loadStaticCommands();
         entryCommands = VulkanLoader.loadEntryCommands(staticCommands);
 
         createInstance();
@@ -106,8 +103,9 @@ class Application {
                     .pApplicationInfo(appInfo);
 
             if (ENABLE_VALIDATION_LAYERS) {
-                instanceCreateInfo.enabledLayerCount(1)
-                        .ppEnabledLayerNames(PointerPtr.allocateV(arena, BytePtr.allocateString(arena, VALIDATION_LAYER_NAME)));
+                                instanceCreateInfo
+                        .enabledLayerCount(1)
+                        .ppEnabledLayerNames(PointerPtr.allocateStrings(arena, VALIDATION_LAYER_NAME));
 
                 var debugCreateInfo = VkDebugUtilsMessengerCreateInfoEXT.allocate(arena);
                 populateDebugMessengerCreateInfo(debugCreateInfo);
@@ -209,28 +207,28 @@ class Application {
                 deviceCreateInfo.queueCreateInfoCount(1).pQueueCreateInfos(queueCreateInfo);
             }
             else {
-                var queueCreateInfos = VkDeviceQueueCreateInfo.allocate(arena, 2);
-                queueCreateInfos.at(0)
-                        .queueCount(1)
-                        .queueFamilyIndex(indices.graphicsFamily())
-                        .pQueuePriorities(pQueuePriorities);
-                queueCreateInfos.at(1)
-                        .queueCount(1)
-                        .queueFamilyIndex(indices.presentFamily())
-                        .pQueuePriorities(pQueuePriorities);
+                var queueCreateInfos = VkDeviceQueueCreateInfo.allocate(arena, 2)
+                        .at(0, it -> it
+                                .queueCount(1)
+                                .queueFamilyIndex(indices.graphicsFamily())
+                                .pQueuePriorities(pQueuePriorities))
+                        .at(1, it -> it
+                                .queueCount(1)
+                                .queueFamilyIndex(indices.presentFamily())
+                                .pQueuePriorities(pQueuePriorities));
                 deviceCreateInfo.queueCreateInfoCount(2).pQueueCreateInfos(queueCreateInfos);
             }
             var deviceFeatures = VkPhysicalDeviceFeatures.allocate(arena);
             deviceCreateInfo.pEnabledFeatures(deviceFeatures);
 
             if (ENABLE_VALIDATION_LAYERS) {
-                deviceCreateInfo.enabledLayerCount(1)
-                        .ppEnabledLayerNames(PointerPtr.allocateV(arena, BytePtr.allocateString(arena, VALIDATION_LAYER_NAME)));
+                deviceCreateInfo
+                        .enabledLayerCount(1)
+                        .ppEnabledLayerNames(PointerPtr.allocateStrings(arena, VALIDATION_LAYER_NAME));
             }
 
             deviceCreateInfo.enabledExtensionCount(1);
-            var ppEnabledExtensionNames = PointerPtr.allocate(arena);
-            ppEnabledExtensionNames.write(BytePtr.allocateString(arena, VkConstants.KHR_SWAPCHAIN_EXTENSION_NAME));
+            var ppEnabledExtensionNames = PointerPtr.allocateStrings(arena, VkConstants.KHR_SWAPCHAIN_EXTENSION_NAME);
             deviceCreateInfo.ppEnabledExtensionNames(ppEnabledExtensionNames);
 
             var pDevice = VkDevice.Ptr.allocate(arena);
@@ -562,8 +560,8 @@ class Application {
     }
 
     private static @NativeType("VkBool32") @Unsigned int debugCallback(
-            @EnumType(VkDebugUtilsMessageSeverityFlagsEXT.class) int ignoredMessageSeverity,
-            @EnumType(VkDebugUtilsMessageTypeFlagsEXT.class) int ignoredMessageType,
+            @Bitmask(VkDebugUtilsMessageSeverityFlagsEXT.class) int ignoredMessageSeverity,
+            @Bitmask(VkDebugUtilsMessageTypeFlagsEXT.class) int ignoredMessageType,
             @Pointer(target=VkDebugUtilsMessengerCallbackDataEXT.class) MemorySegment pCallbackData,
             @Pointer(comment="void*") MemorySegment ignoredPUserData
     ) {
@@ -584,10 +582,8 @@ class Application {
         ).pfnUserCallback(UPCALL_debugCallback);
     }
 
-    private GLFW glfw;
     private GLFWwindow window;
 
-    private VkStaticCommands staticCommands;
     private VkEntryCommands entryCommands;
     private VkInstance instance;
     private VkInstanceCommands instanceCommands;
@@ -604,9 +600,13 @@ class Application {
     private VkExtent2D swapChainExtent;
     private VkImageView.Ptr swapChainImageViews;
 
+    private static final ISharedLibrary libGLFW = GLFWLoader.loadGLFWLibrary();
+    private static final GLFW glfw = GLFWLoader.loadGLFW(libGLFW);
     private static final int WIDTH = 800;
     private static final int HEIGHT = 600;
     private static final BytePtr WINDOW_TITLE = BytePtr.allocateString(Arena.global(), "Vulkan");
+    private static final ISharedLibrary libVulkan = VulkanLoader.loadVulkanLibrary();
+    private static final VkStaticCommands staticCommands = VulkanLoader.loadStaticCommands(libVulkan);
     private static final boolean ENABLE_VALIDATION_LAYERS = System.getProperty("validation") != null;
     private static final String VALIDATION_LAYER_NAME = "VK_LAYER_KHRONOS_validation";
     private static final MethodHandle HANDLE_debugCallback;

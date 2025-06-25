@@ -4029,9 +4029,10 @@ public final class SDL3 implements SDL3Constants {
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$SDL_wcslen);
         try {
-            return (long) hFunction.invokeExact(
+            MemorySegment s = (MemorySegment) hFunction.invokeExact(
                 wstr
             );
+            return s.address();
         } catch (Throwable e) {
             throw new RuntimeException(e);
         }
@@ -4070,10 +4071,11 @@ public final class SDL3 implements SDL3Constants {
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$SDL_wcsnlen);
         try {
-            return (long) hFunction.invokeExact(
+            MemorySegment s = (MemorySegment) hFunction.invokeExact(
                 wstr,
                 MemorySegment.ofAddress(maxlen)
             );
+            return s.address();
         } catch (Throwable e) {
             throw new RuntimeException(e);
         }
@@ -4109,11 +4111,12 @@ public final class SDL3 implements SDL3Constants {
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$SDL_wcslcpy);
         try {
-            return (long) hFunction.invokeExact(
+            MemorySegment s = (MemorySegment) hFunction.invokeExact(
                 dst,
                 src,
                 MemorySegment.ofAddress(maxlen)
             );
+            return s.address();
         } catch (Throwable e) {
             throw new RuntimeException(e);
         }
@@ -4151,11 +4154,12 @@ public final class SDL3 implements SDL3Constants {
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$SDL_wcslcat);
         try {
-            return (long) hFunction.invokeExact(
+            MemorySegment s = (MemorySegment) hFunction.invokeExact(
                 dst,
                 src,
                 MemorySegment.ofAddress(maxlen)
             );
+            return s.address();
         } catch (Throwable e) {
             throw new RuntimeException(e);
         }
@@ -4488,9 +4492,10 @@ public final class SDL3 implements SDL3Constants {
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$SDL_strlen);
         try {
-            return (long) hFunction.invokeExact(
+            MemorySegment s = (MemorySegment) hFunction.invokeExact(
                 (MemorySegment) (str != null ? str.segment() : MemorySegment.NULL)
             );
+            return s.address();
         } catch (Throwable e) {
             throw new RuntimeException(e);
         }
@@ -4522,10 +4527,11 @@ public final class SDL3 implements SDL3Constants {
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$SDL_strnlen);
         try {
-            return (long) hFunction.invokeExact(
+            MemorySegment s = (MemorySegment) hFunction.invokeExact(
                 (MemorySegment) (str != null ? str.segment() : MemorySegment.NULL),
                 MemorySegment.ofAddress(maxlen)
             );
+            return s.address();
         } catch (Throwable e) {
             throw new RuntimeException(e);
         }
@@ -4563,11 +4569,12 @@ public final class SDL3 implements SDL3Constants {
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$SDL_strlcpy);
         try {
-            return (long) hFunction.invokeExact(
+            MemorySegment s = (MemorySegment) hFunction.invokeExact(
                 (MemorySegment) (dst != null ? dst.segment() : MemorySegment.NULL),
                 (MemorySegment) (src != null ? src.segment() : MemorySegment.NULL),
                 MemorySegment.ofAddress(maxlen)
             );
+            return s.address();
         } catch (Throwable e) {
             throw new RuntimeException(e);
         }
@@ -4604,11 +4611,12 @@ public final class SDL3 implements SDL3Constants {
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$SDL_utf8strlcpy);
         try {
-            return (long) hFunction.invokeExact(
+            MemorySegment s = (MemorySegment) hFunction.invokeExact(
                 (MemorySegment) (dst != null ? dst.segment() : MemorySegment.NULL),
                 (MemorySegment) (src != null ? src.segment() : MemorySegment.NULL),
                 MemorySegment.ofAddress(dst_bytes)
             );
+            return s.address();
         } catch (Throwable e) {
             throw new RuntimeException(e);
         }
@@ -4645,11 +4653,12 @@ public final class SDL3 implements SDL3Constants {
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$SDL_strlcat);
         try {
-            return (long) hFunction.invokeExact(
+            MemorySegment s = (MemorySegment) hFunction.invokeExact(
                 (MemorySegment) (dst != null ? dst.segment() : MemorySegment.NULL),
                 (MemorySegment) (src != null ? src.segment() : MemorySegment.NULL),
                 MemorySegment.ofAddress(maxlen)
             );
+            return s.address();
         } catch (Throwable e) {
             throw new RuntimeException(e);
         }
@@ -5057,9 +5066,10 @@ public final class SDL3 implements SDL3Constants {
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$SDL_utf8strlen);
         try {
-            return (long) hFunction.invokeExact(
+            MemorySegment s = (MemorySegment) hFunction.invokeExact(
                 (MemorySegment) (str != null ? str.segment() : MemorySegment.NULL)
             );
+            return s.address();
         } catch (Throwable e) {
             throw new RuntimeException(e);
         }
@@ -5100,10 +5110,11 @@ public final class SDL3 implements SDL3Constants {
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$SDL_utf8strnlen);
         try {
-            return (long) hFunction.invokeExact(
+            MemorySegment s = (MemorySegment) hFunction.invokeExact(
                 (MemorySegment) (str != null ? str.segment() : MemorySegment.NULL),
                 MemorySegment.ofAddress(bytes)
             );
+            return s.address();
         } catch (Throwable e) {
             throw new RuntimeException(e);
         }
@@ -8094,13 +8105,14 @@ public final class SDL3 implements SDL3Constants {
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$SDL_iconv);
         try {
-            return (long) hFunction.invokeExact(
+            MemorySegment s = (MemorySegment) hFunction.invokeExact(
                 (MemorySegment) (cd != null ? cd.segment() : MemorySegment.NULL),
                 (MemorySegment) (inbuf != null ? inbuf.segment() : MemorySegment.NULL),
                 (MemorySegment) (inbytesleft != null ? inbytesleft.segment() : MemorySegment.NULL),
                 (MemorySegment) (outbuf != null ? outbuf.segment() : MemorySegment.NULL),
                 (MemorySegment) (outbytesleft != null ? outbytesleft.segment() : MemorySegment.NULL)
             );
+            return s.address();
         } catch (Throwable e) {
             throw new RuntimeException(e);
         }
@@ -12647,8 +12659,9 @@ public final class SDL3 implements SDL3Constants {
     public long getSIMDAlignment() {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$SDL_GetSIMDAlignment);
         try {
-            return (long) hFunction.invokeExact(
+            MemorySegment s = (MemorySegment) hFunction.invokeExact(
             );
+            return s.address();
         } catch (Throwable e) {
             throw new RuntimeException(e);
         }
@@ -21647,11 +21660,12 @@ public final class SDL3 implements SDL3Constants {
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$SDL_ReadIO);
         try {
-            return (long) hFunction.invokeExact(
+            MemorySegment s = (MemorySegment) hFunction.invokeExact(
                 (MemorySegment) (context != null ? context.segment() : MemorySegment.NULL),
                 ptr,
                 MemorySegment.ofAddress(size)
             );
+            return s.address();
         } catch (Throwable e) {
             throw new RuntimeException(e);
         }
@@ -21692,11 +21706,12 @@ public final class SDL3 implements SDL3Constants {
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$SDL_WriteIO);
         try {
-            return (long) hFunction.invokeExact(
+            MemorySegment s = (MemorySegment) hFunction.invokeExact(
                 (MemorySegment) (context != null ? context.segment() : MemorySegment.NULL),
                 ptr,
                 MemorySegment.ofAddress(size)
             );
+            return s.address();
         } catch (Throwable e) {
             throw new RuntimeException(e);
         }

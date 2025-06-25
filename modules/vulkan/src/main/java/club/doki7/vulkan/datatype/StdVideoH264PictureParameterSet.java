@@ -84,6 +84,11 @@ public record StdVideoH264PictureParameterSet(@NotNull MemorySegment segment) im
             return new StdVideoH264PictureParameterSet(segment.asSlice(index * StdVideoH264PictureParameterSet.BYTES, StdVideoH264PictureParameterSet.BYTES));
         }
 
+        public StdVideoH264PictureParameterSet.Ptr at(long index, @NotNull Consumer<@NotNull StdVideoH264PictureParameterSet> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull StdVideoH264PictureParameterSet value) {
             MemorySegment s = segment.asSlice(index * StdVideoH264PictureParameterSet.BYTES, StdVideoH264PictureParameterSet.BYTES);
             s.copyFrom(value.segment);
@@ -296,11 +301,11 @@ public record StdVideoH264PictureParameterSet(@NotNull MemorySegment segment) im
         return new StdVideoH264ScalingLists(s);
     }
 
-    public @Pointer(target=StdVideoH264ScalingLists.class) MemorySegment pScalingListsRaw() {
+    public @Pointer(target=StdVideoH264ScalingLists.class) @NotNull MemorySegment pScalingListsRaw() {
         return segment.get(LAYOUT$pScalingLists, OFFSET$pScalingLists);
     }
 
-    public void pScalingListsRaw(@Pointer(target=StdVideoH264ScalingLists.class) MemorySegment value) {
+    public void pScalingListsRaw(@Pointer(target=StdVideoH264ScalingLists.class) @NotNull MemorySegment value) {
         segment.set(LAYOUT$pScalingLists, OFFSET$pScalingLists, value);
     }
 

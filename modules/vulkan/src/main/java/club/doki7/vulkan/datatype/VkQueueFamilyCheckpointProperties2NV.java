@@ -87,6 +87,11 @@ public record VkQueueFamilyCheckpointProperties2NV(@NotNull MemorySegment segmen
             return new VkQueueFamilyCheckpointProperties2NV(segment.asSlice(index * VkQueueFamilyCheckpointProperties2NV.BYTES, VkQueueFamilyCheckpointProperties2NV.BYTES));
         }
 
+        public VkQueueFamilyCheckpointProperties2NV.Ptr at(long index, @NotNull Consumer<@NotNull VkQueueFamilyCheckpointProperties2NV> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkQueueFamilyCheckpointProperties2NV value) {
             MemorySegment s = segment.asSlice(index * VkQueueFamilyCheckpointProperties2NV.BYTES, VkQueueFamilyCheckpointProperties2NV.BYTES);
             s.copyFrom(value.segment);
@@ -199,12 +204,13 @@ public record VkQueueFamilyCheckpointProperties2NV(@NotNull MemorySegment segmen
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkQueueFamilyCheckpointProperties2NV pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkQueueFamilyCheckpointProperties2NV pNext(@Nullable IPointer pointer) {
@@ -212,11 +218,11 @@ public record VkQueueFamilyCheckpointProperties2NV(@NotNull MemorySegment segmen
         return this;
     }
 
-    public @EnumType(VkPipelineStageFlags2.class) long checkpointExecutionStageMask() {
+    public @Bitmask(VkPipelineStageFlags2.class) long checkpointExecutionStageMask() {
         return segment.get(LAYOUT$checkpointExecutionStageMask, OFFSET$checkpointExecutionStageMask);
     }
 
-    public VkQueueFamilyCheckpointProperties2NV checkpointExecutionStageMask(@EnumType(VkPipelineStageFlags2.class) long value) {
+    public VkQueueFamilyCheckpointProperties2NV checkpointExecutionStageMask(@Bitmask(VkPipelineStageFlags2.class) long value) {
         segment.set(LAYOUT$checkpointExecutionStageMask, OFFSET$checkpointExecutionStageMask, value);
         return this;
     }

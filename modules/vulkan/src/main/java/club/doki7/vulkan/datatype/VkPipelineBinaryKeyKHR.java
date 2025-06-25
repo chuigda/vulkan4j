@@ -88,6 +88,11 @@ public record VkPipelineBinaryKeyKHR(@NotNull MemorySegment segment) implements 
             return new VkPipelineBinaryKeyKHR(segment.asSlice(index * VkPipelineBinaryKeyKHR.BYTES, VkPipelineBinaryKeyKHR.BYTES));
         }
 
+        public VkPipelineBinaryKeyKHR.Ptr at(long index, @NotNull Consumer<@NotNull VkPipelineBinaryKeyKHR> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkPipelineBinaryKeyKHR value) {
             MemorySegment s = segment.asSlice(index * VkPipelineBinaryKeyKHR.BYTES, VkPipelineBinaryKeyKHR.BYTES);
             s.copyFrom(value.segment);
@@ -200,12 +205,13 @@ public record VkPipelineBinaryKeyKHR(@NotNull MemorySegment segment) implements 
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkPipelineBinaryKeyKHR pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkPipelineBinaryKeyKHR pNext(@Nullable IPointer pointer) {
@@ -226,12 +232,19 @@ public record VkPipelineBinaryKeyKHR(@NotNull MemorySegment segment) implements 
         return new BytePtr(keyRaw());
     }
 
-    public VkPipelineBinaryKeyKHR key(@Unsigned BytePtr value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$key, SIZE$key);
+    public VkPipelineBinaryKeyKHR key(@NotNull Consumer<BytePtr> consumer) {
+        @Unsigned BytePtr ptr = key();
+        consumer.accept(ptr);
         return this;
     }
 
-    public MemorySegment keyRaw() {
+    public VkPipelineBinaryKeyKHR key(@Unsigned BytePtr value) {
+        MemorySegment s = keyRaw();
+        s.copyFrom(value.segment());
+        return this;
+    }
+
+    public @NotNull MemorySegment keyRaw() {
         return segment.asSlice(OFFSET$key, SIZE$key);
     }
 

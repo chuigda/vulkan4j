@@ -27,7 +27,7 @@ import static club.doki7.vulkan.VkConstants.*;
 ///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
 ///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
 ///     uint32_t colorAttachmentCount; // optional // @link substring="colorAttachmentCount" target="#colorAttachmentCount"
-///     uint32_t const* pColorAttachmentLocations; // @link substring="pColorAttachmentLocations" target="#pColorAttachmentLocations"
+///     uint32_t const* pColorAttachmentLocations; // optional // @link substring="pColorAttachmentLocations" target="#pColorAttachmentLocations"
 /// } VkRenderingAttachmentLocationInfo;
 /// }
 ///
@@ -86,6 +86,11 @@ public record VkRenderingAttachmentLocationInfo(@NotNull MemorySegment segment) 
         /// indicate that the returned structure is a view of the original structure.
         public @NotNull VkRenderingAttachmentLocationInfo at(long index) {
             return new VkRenderingAttachmentLocationInfo(segment.asSlice(index * VkRenderingAttachmentLocationInfo.BYTES, VkRenderingAttachmentLocationInfo.BYTES));
+        }
+
+        public VkRenderingAttachmentLocationInfo.Ptr at(long index, @NotNull Consumer<@NotNull VkRenderingAttachmentLocationInfo> consumer) {
+            consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkRenderingAttachmentLocationInfo value) {
@@ -200,12 +205,13 @@ public record VkRenderingAttachmentLocationInfo(@NotNull MemorySegment segment) 
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkRenderingAttachmentLocationInfo pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkRenderingAttachmentLocationInfo pNext(@Nullable IPointer pointer) {
@@ -240,11 +246,11 @@ public record VkRenderingAttachmentLocationInfo(@NotNull MemorySegment segment) 
         return this;
     }
 
-    public @Pointer(comment="uint32_t*") MemorySegment pColorAttachmentLocationsRaw() {
+    public @Pointer(comment="uint32_t*") @NotNull MemorySegment pColorAttachmentLocationsRaw() {
         return segment.get(LAYOUT$pColorAttachmentLocations, OFFSET$pColorAttachmentLocations);
     }
 
-    public void pColorAttachmentLocationsRaw(@Pointer(comment="uint32_t*") MemorySegment value) {
+    public void pColorAttachmentLocationsRaw(@Pointer(comment="uint32_t*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pColorAttachmentLocations, OFFSET$pColorAttachmentLocations, value);
     }
 

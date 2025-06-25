@@ -87,6 +87,11 @@ public record VkPhysicalDeviceDepthClampControlFeaturesEXT(@NotNull MemorySegmen
             return new VkPhysicalDeviceDepthClampControlFeaturesEXT(segment.asSlice(index * VkPhysicalDeviceDepthClampControlFeaturesEXT.BYTES, VkPhysicalDeviceDepthClampControlFeaturesEXT.BYTES));
         }
 
+        public VkPhysicalDeviceDepthClampControlFeaturesEXT.Ptr at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceDepthClampControlFeaturesEXT> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkPhysicalDeviceDepthClampControlFeaturesEXT value) {
             MemorySegment s = segment.asSlice(index * VkPhysicalDeviceDepthClampControlFeaturesEXT.BYTES, VkPhysicalDeviceDepthClampControlFeaturesEXT.BYTES);
             s.copyFrom(value.segment);
@@ -199,12 +204,13 @@ public record VkPhysicalDeviceDepthClampControlFeaturesEXT(@NotNull MemorySegmen
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkPhysicalDeviceDepthClampControlFeaturesEXT pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkPhysicalDeviceDepthClampControlFeaturesEXT pNext(@Nullable IPointer pointer) {

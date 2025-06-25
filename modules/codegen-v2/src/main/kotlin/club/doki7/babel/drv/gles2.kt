@@ -7,11 +7,13 @@ import club.doki7.babel.extract.gles2.extractGLES2Registry
 import club.doki7.babel.registry.Command
 import club.doki7.babel.registry.Entity
 import club.doki7.babel.util.render
+import club.doki7.babel.util.setupLog
 import java.io.File
 
 private const val packageDir = "gles2/src/main/java/club/doki7/gles2"
 
 fun main() {
+    setupLog()
     gles2Main()
 }
 

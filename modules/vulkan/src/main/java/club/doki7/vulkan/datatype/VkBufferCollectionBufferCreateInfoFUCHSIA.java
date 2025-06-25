@@ -88,6 +88,11 @@ public record VkBufferCollectionBufferCreateInfoFUCHSIA(@NotNull MemorySegment s
             return new VkBufferCollectionBufferCreateInfoFUCHSIA(segment.asSlice(index * VkBufferCollectionBufferCreateInfoFUCHSIA.BYTES, VkBufferCollectionBufferCreateInfoFUCHSIA.BYTES));
         }
 
+        public VkBufferCollectionBufferCreateInfoFUCHSIA.Ptr at(long index, @NotNull Consumer<@NotNull VkBufferCollectionBufferCreateInfoFUCHSIA> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkBufferCollectionBufferCreateInfoFUCHSIA value) {
             MemorySegment s = segment.asSlice(index * VkBufferCollectionBufferCreateInfoFUCHSIA.BYTES, VkBufferCollectionBufferCreateInfoFUCHSIA.BYTES);
             s.copyFrom(value.segment);
@@ -200,12 +205,13 @@ public record VkBufferCollectionBufferCreateInfoFUCHSIA(@NotNull MemorySegment s
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkBufferCollectionBufferCreateInfoFUCHSIA pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkBufferCollectionBufferCreateInfoFUCHSIA pNext(@Nullable IPointer pointer) {

@@ -88,6 +88,11 @@ public record VkAmigoProfilingSubmitInfoSEC(@NotNull MemorySegment segment) impl
             return new VkAmigoProfilingSubmitInfoSEC(segment.asSlice(index * VkAmigoProfilingSubmitInfoSEC.BYTES, VkAmigoProfilingSubmitInfoSEC.BYTES));
         }
 
+        public VkAmigoProfilingSubmitInfoSEC.Ptr at(long index, @NotNull Consumer<@NotNull VkAmigoProfilingSubmitInfoSEC> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkAmigoProfilingSubmitInfoSEC value) {
             MemorySegment s = segment.asSlice(index * VkAmigoProfilingSubmitInfoSEC.BYTES, VkAmigoProfilingSubmitInfoSEC.BYTES);
             s.copyFrom(value.segment);
@@ -200,12 +205,13 @@ public record VkAmigoProfilingSubmitInfoSEC(@NotNull MemorySegment segment) impl
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkAmigoProfilingSubmitInfoSEC pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkAmigoProfilingSubmitInfoSEC pNext(@Nullable IPointer pointer) {

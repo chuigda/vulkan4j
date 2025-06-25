@@ -87,6 +87,11 @@ public record VkAccelerationStructureVersionInfoKHR(@NotNull MemorySegment segme
             return new VkAccelerationStructureVersionInfoKHR(segment.asSlice(index * VkAccelerationStructureVersionInfoKHR.BYTES, VkAccelerationStructureVersionInfoKHR.BYTES));
         }
 
+        public VkAccelerationStructureVersionInfoKHR.Ptr at(long index, @NotNull Consumer<@NotNull VkAccelerationStructureVersionInfoKHR> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkAccelerationStructureVersionInfoKHR value) {
             MemorySegment s = segment.asSlice(index * VkAccelerationStructureVersionInfoKHR.BYTES, VkAccelerationStructureVersionInfoKHR.BYTES);
             s.copyFrom(value.segment);
@@ -199,12 +204,13 @@ public record VkAccelerationStructureVersionInfoKHR(@NotNull MemorySegment segme
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkAccelerationStructureVersionInfoKHR pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkAccelerationStructureVersionInfoKHR pNext(@Nullable IPointer pointer) {
@@ -230,11 +236,11 @@ public record VkAccelerationStructureVersionInfoKHR(@NotNull MemorySegment segme
         return this;
     }
 
-    public @Pointer(comment="uint8_t*") MemorySegment pVersionDataRaw() {
+    public @Pointer(comment="uint8_t*") @NotNull MemorySegment pVersionDataRaw() {
         return segment.get(LAYOUT$pVersionData, OFFSET$pVersionData);
     }
 
-    public void pVersionDataRaw(@Pointer(comment="uint8_t*") MemorySegment value) {
+    public void pVersionDataRaw(@Pointer(comment="uint8_t*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pVersionData, OFFSET$pVersionData, value);
     }
 

@@ -77,6 +77,11 @@ public record VkShadingRatePaletteNV(@NotNull MemorySegment segment) implements 
             return new VkShadingRatePaletteNV(segment.asSlice(index * VkShadingRatePaletteNV.BYTES, VkShadingRatePaletteNV.BYTES));
         }
 
+        public VkShadingRatePaletteNV.Ptr at(long index, @NotNull Consumer<@NotNull VkShadingRatePaletteNV> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkShadingRatePaletteNV value) {
             MemorySegment s = segment.asSlice(index * VkShadingRatePaletteNV.BYTES, VkShadingRatePaletteNV.BYTES);
             s.copyFrom(value.segment);
@@ -198,11 +203,11 @@ public record VkShadingRatePaletteNV(@NotNull MemorySegment segment) implements 
         return this;
     }
 
-    public @Pointer(target=VkShadingRatePaletteEntryNV.class) MemorySegment pShadingRatePaletteEntriesRaw() {
+    public @Pointer(target=VkShadingRatePaletteEntryNV.class) @NotNull MemorySegment pShadingRatePaletteEntriesRaw() {
         return segment.get(LAYOUT$pShadingRatePaletteEntries, OFFSET$pShadingRatePaletteEntries);
     }
 
-    public void pShadingRatePaletteEntriesRaw(@Pointer(target=VkShadingRatePaletteEntryNV.class) MemorySegment value) {
+    public void pShadingRatePaletteEntriesRaw(@Pointer(target=VkShadingRatePaletteEntryNV.class) @NotNull MemorySegment value) {
         segment.set(LAYOUT$pShadingRatePaletteEntries, OFFSET$pShadingRatePaletteEntries, value);
     }
 

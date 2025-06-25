@@ -27,7 +27,7 @@ import static club.doki7.vulkan.VkConstants.*;
 ///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
 ///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
 ///     uint32_t attachmentCount; // optional // @link substring="attachmentCount" target="#attachmentCount"
-///     VkBool32 const* pColorWriteEnables; // @link substring="pColorWriteEnables" target="#pColorWriteEnables"
+///     VkBool32 const* pColorWriteEnables; // optional // @link substring="pColorWriteEnables" target="#pColorWriteEnables"
 /// } VkPipelineColorWriteCreateInfoEXT;
 /// }
 ///
@@ -86,6 +86,11 @@ public record VkPipelineColorWriteCreateInfoEXT(@NotNull MemorySegment segment) 
         /// indicate that the returned structure is a view of the original structure.
         public @NotNull VkPipelineColorWriteCreateInfoEXT at(long index) {
             return new VkPipelineColorWriteCreateInfoEXT(segment.asSlice(index * VkPipelineColorWriteCreateInfoEXT.BYTES, VkPipelineColorWriteCreateInfoEXT.BYTES));
+        }
+
+        public VkPipelineColorWriteCreateInfoEXT.Ptr at(long index, @NotNull Consumer<@NotNull VkPipelineColorWriteCreateInfoEXT> consumer) {
+            consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkPipelineColorWriteCreateInfoEXT value) {
@@ -200,12 +205,13 @@ public record VkPipelineColorWriteCreateInfoEXT(@NotNull MemorySegment segment) 
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkPipelineColorWriteCreateInfoEXT pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkPipelineColorWriteCreateInfoEXT pNext(@Nullable IPointer pointer) {
@@ -240,11 +246,11 @@ public record VkPipelineColorWriteCreateInfoEXT(@NotNull MemorySegment segment) 
         return this;
     }
 
-    public @Pointer(comment="uint32_t*") MemorySegment pColorWriteEnablesRaw() {
+    public @Pointer(comment="uint32_t*") @NotNull MemorySegment pColorWriteEnablesRaw() {
         return segment.get(LAYOUT$pColorWriteEnables, OFFSET$pColorWriteEnables);
     }
 
-    public void pColorWriteEnablesRaw(@Pointer(comment="uint32_t*") MemorySegment value) {
+    public void pColorWriteEnablesRaw(@Pointer(comment="uint32_t*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pColorWriteEnables, OFFSET$pColorWriteEnables, value);
     }
 

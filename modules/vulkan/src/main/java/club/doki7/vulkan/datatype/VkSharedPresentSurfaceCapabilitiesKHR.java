@@ -87,6 +87,11 @@ public record VkSharedPresentSurfaceCapabilitiesKHR(@NotNull MemorySegment segme
             return new VkSharedPresentSurfaceCapabilitiesKHR(segment.asSlice(index * VkSharedPresentSurfaceCapabilitiesKHR.BYTES, VkSharedPresentSurfaceCapabilitiesKHR.BYTES));
         }
 
+        public VkSharedPresentSurfaceCapabilitiesKHR.Ptr at(long index, @NotNull Consumer<@NotNull VkSharedPresentSurfaceCapabilitiesKHR> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkSharedPresentSurfaceCapabilitiesKHR value) {
             MemorySegment s = segment.asSlice(index * VkSharedPresentSurfaceCapabilitiesKHR.BYTES, VkSharedPresentSurfaceCapabilitiesKHR.BYTES);
             s.copyFrom(value.segment);
@@ -199,12 +204,13 @@ public record VkSharedPresentSurfaceCapabilitiesKHR(@NotNull MemorySegment segme
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkSharedPresentSurfaceCapabilitiesKHR pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkSharedPresentSurfaceCapabilitiesKHR pNext(@Nullable IPointer pointer) {
@@ -212,11 +218,11 @@ public record VkSharedPresentSurfaceCapabilitiesKHR(@NotNull MemorySegment segme
         return this;
     }
 
-    public @EnumType(VkImageUsageFlags.class) int sharedPresentSupportedUsageFlags() {
+    public @Bitmask(VkImageUsageFlags.class) int sharedPresentSupportedUsageFlags() {
         return segment.get(LAYOUT$sharedPresentSupportedUsageFlags, OFFSET$sharedPresentSupportedUsageFlags);
     }
 
-    public VkSharedPresentSurfaceCapabilitiesKHR sharedPresentSupportedUsageFlags(@EnumType(VkImageUsageFlags.class) int value) {
+    public VkSharedPresentSurfaceCapabilitiesKHR sharedPresentSupportedUsageFlags(@Bitmask(VkImageUsageFlags.class) int value) {
         segment.set(LAYOUT$sharedPresentSupportedUsageFlags, OFFSET$sharedPresentSupportedUsageFlags, value);
         return this;
     }

@@ -28,7 +28,7 @@ import static club.doki7.vulkan.VkConstants.*;
 ///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
 ///     VkValidationCacheCreateFlagsEXT flags; // optional // @link substring="VkValidationCacheCreateFlagsEXT" target="VkValidationCacheCreateFlagsEXT" @link substring="flags" target="#flags"
 ///     size_t initialDataSize; // optional // @link substring="initialDataSize" target="#initialDataSize"
-///     void const* pInitialData; // @link substring="pInitialData" target="#pInitialData"
+///     void const* pInitialData; // optional // @link substring="pInitialData" target="#pInitialData"
 /// } VkValidationCacheCreateInfoEXT;
 /// }
 ///
@@ -87,6 +87,11 @@ public record VkValidationCacheCreateInfoEXT(@NotNull MemorySegment segment) imp
         /// indicate that the returned structure is a view of the original structure.
         public @NotNull VkValidationCacheCreateInfoEXT at(long index) {
             return new VkValidationCacheCreateInfoEXT(segment.asSlice(index * VkValidationCacheCreateInfoEXT.BYTES, VkValidationCacheCreateInfoEXT.BYTES));
+        }
+
+        public VkValidationCacheCreateInfoEXT.Ptr at(long index, @NotNull Consumer<@NotNull VkValidationCacheCreateInfoEXT> consumer) {
+            consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkValidationCacheCreateInfoEXT value) {
@@ -201,12 +206,13 @@ public record VkValidationCacheCreateInfoEXT(@NotNull MemorySegment segment) imp
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkValidationCacheCreateInfoEXT pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkValidationCacheCreateInfoEXT pNext(@Nullable IPointer pointer) {
@@ -214,11 +220,11 @@ public record VkValidationCacheCreateInfoEXT(@NotNull MemorySegment segment) imp
         return this;
     }
 
-    public @EnumType(VkValidationCacheCreateFlagsEXT.class) int flags() {
+    public @Bitmask(VkValidationCacheCreateFlagsEXT.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public VkValidationCacheCreateInfoEXT flags(@EnumType(VkValidationCacheCreateFlagsEXT.class) int value) {
+    public VkValidationCacheCreateInfoEXT flags(@Bitmask(VkValidationCacheCreateFlagsEXT.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
         return this;
     }
@@ -232,12 +238,13 @@ public record VkValidationCacheCreateInfoEXT(@NotNull MemorySegment segment) imp
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pInitialData() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pInitialData() {
         return segment.get(LAYOUT$pInitialData, OFFSET$pInitialData);
     }
 
-    public void pInitialData(@Pointer(comment="void*") MemorySegment value) {
+    public VkValidationCacheCreateInfoEXT pInitialData(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pInitialData, OFFSET$pInitialData, value);
+        return this;
     }
 
     public VkValidationCacheCreateInfoEXT pInitialData(@Nullable IPointer pointer) {

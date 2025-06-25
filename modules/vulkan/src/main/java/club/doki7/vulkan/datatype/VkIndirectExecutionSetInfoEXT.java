@@ -77,6 +77,11 @@ public record VkIndirectExecutionSetInfoEXT(@NotNull MemorySegment segment) impl
             return new VkIndirectExecutionSetInfoEXT(segment.asSlice(index * VkIndirectExecutionSetInfoEXT.BYTES, VkIndirectExecutionSetInfoEXT.BYTES));
         }
 
+        public VkIndirectExecutionSetInfoEXT.Ptr at(long index, @NotNull Consumer<@NotNull VkIndirectExecutionSetInfoEXT> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkIndirectExecutionSetInfoEXT value) {
             MemorySegment s = segment.asSlice(index * VkIndirectExecutionSetInfoEXT.BYTES, VkIndirectExecutionSetInfoEXT.BYTES);
             s.copyFrom(value.segment);
@@ -194,11 +199,11 @@ public record VkIndirectExecutionSetInfoEXT(@NotNull MemorySegment segment) impl
         return new VkIndirectExecutionSetPipelineInfoEXT(s);
     }
 
-    public @Pointer(target=VkIndirectExecutionSetPipelineInfoEXT.class) MemorySegment pPipelineInfoRaw() {
+    public @Pointer(target=VkIndirectExecutionSetPipelineInfoEXT.class) @NotNull MemorySegment pPipelineInfoRaw() {
         return segment.get(LAYOUT$pPipelineInfo, OFFSET$pPipelineInfo);
     }
 
-    public void pPipelineInfoRaw(@Pointer(target=VkIndirectExecutionSetPipelineInfoEXT.class) MemorySegment value) {
+    public void pPipelineInfoRaw(@Pointer(target=VkIndirectExecutionSetPipelineInfoEXT.class) @NotNull MemorySegment value) {
         segment.set(LAYOUT$pPipelineInfo, OFFSET$pPipelineInfo, value);
     }
 
@@ -226,11 +231,11 @@ public record VkIndirectExecutionSetInfoEXT(@NotNull MemorySegment segment) impl
         return new VkIndirectExecutionSetShaderInfoEXT(s);
     }
 
-    public @Pointer(target=VkIndirectExecutionSetShaderInfoEXT.class) MemorySegment pShaderInfoRaw() {
+    public @Pointer(target=VkIndirectExecutionSetShaderInfoEXT.class) @NotNull MemorySegment pShaderInfoRaw() {
         return segment.get(LAYOUT$pShaderInfo, OFFSET$pShaderInfo);
     }
 
-    public void pShaderInfoRaw(@Pointer(target=VkIndirectExecutionSetShaderInfoEXT.class) MemorySegment value) {
+    public void pShaderInfoRaw(@Pointer(target=VkIndirectExecutionSetShaderInfoEXT.class) @NotNull MemorySegment value) {
         segment.set(LAYOUT$pShaderInfo, OFFSET$pShaderInfo, value);
     }
 

@@ -87,6 +87,11 @@ public record VkMemoryMapPlacedInfoEXT(@NotNull MemorySegment segment) implement
             return new VkMemoryMapPlacedInfoEXT(segment.asSlice(index * VkMemoryMapPlacedInfoEXT.BYTES, VkMemoryMapPlacedInfoEXT.BYTES));
         }
 
+        public VkMemoryMapPlacedInfoEXT.Ptr at(long index, @NotNull Consumer<@NotNull VkMemoryMapPlacedInfoEXT> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkMemoryMapPlacedInfoEXT value) {
             MemorySegment s = segment.asSlice(index * VkMemoryMapPlacedInfoEXT.BYTES, VkMemoryMapPlacedInfoEXT.BYTES);
             s.copyFrom(value.segment);
@@ -199,12 +204,13 @@ public record VkMemoryMapPlacedInfoEXT(@NotNull MemorySegment segment) implement
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkMemoryMapPlacedInfoEXT pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkMemoryMapPlacedInfoEXT pNext(@Nullable IPointer pointer) {
@@ -212,12 +218,13 @@ public record VkMemoryMapPlacedInfoEXT(@NotNull MemorySegment segment) implement
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pPlacedAddress() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pPlacedAddress() {
         return segment.get(LAYOUT$pPlacedAddress, OFFSET$pPlacedAddress);
     }
 
-    public void pPlacedAddress(@Pointer(comment="void*") MemorySegment value) {
+    public VkMemoryMapPlacedInfoEXT pPlacedAddress(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pPlacedAddress, OFFSET$pPlacedAddress, value);
+        return this;
     }
 
     public VkMemoryMapPlacedInfoEXT pPlacedAddress(@Nullable IPointer pointer) {

@@ -87,6 +87,11 @@ public record VkPhysicalDeviceMultisampledRenderToSingleSampledFeaturesEXT(@NotN
             return new VkPhysicalDeviceMultisampledRenderToSingleSampledFeaturesEXT(segment.asSlice(index * VkPhysicalDeviceMultisampledRenderToSingleSampledFeaturesEXT.BYTES, VkPhysicalDeviceMultisampledRenderToSingleSampledFeaturesEXT.BYTES));
         }
 
+        public VkPhysicalDeviceMultisampledRenderToSingleSampledFeaturesEXT.Ptr at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceMultisampledRenderToSingleSampledFeaturesEXT> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkPhysicalDeviceMultisampledRenderToSingleSampledFeaturesEXT value) {
             MemorySegment s = segment.asSlice(index * VkPhysicalDeviceMultisampledRenderToSingleSampledFeaturesEXT.BYTES, VkPhysicalDeviceMultisampledRenderToSingleSampledFeaturesEXT.BYTES);
             s.copyFrom(value.segment);
@@ -199,12 +204,13 @@ public record VkPhysicalDeviceMultisampledRenderToSingleSampledFeaturesEXT(@NotN
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkPhysicalDeviceMultisampledRenderToSingleSampledFeaturesEXT pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkPhysicalDeviceMultisampledRenderToSingleSampledFeaturesEXT pNext(@Nullable IPointer pointer) {

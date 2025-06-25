@@ -87,6 +87,11 @@ public record VkPhysicalDeviceUniformBufferStandardLayoutFeatures(@NotNull Memor
             return new VkPhysicalDeviceUniformBufferStandardLayoutFeatures(segment.asSlice(index * VkPhysicalDeviceUniformBufferStandardLayoutFeatures.BYTES, VkPhysicalDeviceUniformBufferStandardLayoutFeatures.BYTES));
         }
 
+        public VkPhysicalDeviceUniformBufferStandardLayoutFeatures.Ptr at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceUniformBufferStandardLayoutFeatures> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkPhysicalDeviceUniformBufferStandardLayoutFeatures value) {
             MemorySegment s = segment.asSlice(index * VkPhysicalDeviceUniformBufferStandardLayoutFeatures.BYTES, VkPhysicalDeviceUniformBufferStandardLayoutFeatures.BYTES);
             s.copyFrom(value.segment);
@@ -199,12 +204,13 @@ public record VkPhysicalDeviceUniformBufferStandardLayoutFeatures(@NotNull Memor
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkPhysicalDeviceUniformBufferStandardLayoutFeatures pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkPhysicalDeviceUniformBufferStandardLayoutFeatures pNext(@Nullable IPointer pointer) {

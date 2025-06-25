@@ -93,6 +93,11 @@ public record VkExecutionGraphPipelineCreateInfoAMDX(@NotNull MemorySegment segm
             return new VkExecutionGraphPipelineCreateInfoAMDX(segment.asSlice(index * VkExecutionGraphPipelineCreateInfoAMDX.BYTES, VkExecutionGraphPipelineCreateInfoAMDX.BYTES));
         }
 
+        public VkExecutionGraphPipelineCreateInfoAMDX.Ptr at(long index, @NotNull Consumer<@NotNull VkExecutionGraphPipelineCreateInfoAMDX> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkExecutionGraphPipelineCreateInfoAMDX value) {
             MemorySegment s = segment.asSlice(index * VkExecutionGraphPipelineCreateInfoAMDX.BYTES, VkExecutionGraphPipelineCreateInfoAMDX.BYTES);
             s.copyFrom(value.segment);
@@ -205,12 +210,13 @@ public record VkExecutionGraphPipelineCreateInfoAMDX(@NotNull MemorySegment segm
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkExecutionGraphPipelineCreateInfoAMDX pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkExecutionGraphPipelineCreateInfoAMDX pNext(@Nullable IPointer pointer) {
@@ -218,11 +224,11 @@ public record VkExecutionGraphPipelineCreateInfoAMDX(@NotNull MemorySegment segm
         return this;
     }
 
-    public @EnumType(VkPipelineCreateFlags.class) int flags() {
+    public @Bitmask(VkPipelineCreateFlags.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public VkExecutionGraphPipelineCreateInfoAMDX flags(@EnumType(VkPipelineCreateFlags.class) int value) {
+    public VkExecutionGraphPipelineCreateInfoAMDX flags(@Bitmask(VkPipelineCreateFlags.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
         return this;
     }
@@ -260,11 +266,11 @@ public record VkExecutionGraphPipelineCreateInfoAMDX(@NotNull MemorySegment segm
         return new VkPipelineShaderStageCreateInfo(s);
     }
 
-    public @Pointer(target=VkPipelineShaderStageCreateInfo.class) MemorySegment pStagesRaw() {
+    public @Pointer(target=VkPipelineShaderStageCreateInfo.class) @NotNull MemorySegment pStagesRaw() {
         return segment.get(LAYOUT$pStages, OFFSET$pStages);
     }
 
-    public void pStagesRaw(@Pointer(target=VkPipelineShaderStageCreateInfo.class) MemorySegment value) {
+    public void pStagesRaw(@Pointer(target=VkPipelineShaderStageCreateInfo.class) @NotNull MemorySegment value) {
         segment.set(LAYOUT$pStages, OFFSET$pStages, value);
     }
 
@@ -292,11 +298,11 @@ public record VkExecutionGraphPipelineCreateInfoAMDX(@NotNull MemorySegment segm
         return new VkPipelineLibraryCreateInfoKHR(s);
     }
 
-    public @Pointer(target=VkPipelineLibraryCreateInfoKHR.class) MemorySegment pLibraryInfoRaw() {
+    public @Pointer(target=VkPipelineLibraryCreateInfoKHR.class) @NotNull MemorySegment pLibraryInfoRaw() {
         return segment.get(LAYOUT$pLibraryInfo, OFFSET$pLibraryInfo);
     }
 
-    public void pLibraryInfoRaw(@Pointer(target=VkPipelineLibraryCreateInfoKHR.class) MemorySegment value) {
+    public void pLibraryInfoRaw(@Pointer(target=VkPipelineLibraryCreateInfoKHR.class) @NotNull MemorySegment value) {
         segment.set(LAYOUT$pLibraryInfo, OFFSET$pLibraryInfo, value);
     }
 

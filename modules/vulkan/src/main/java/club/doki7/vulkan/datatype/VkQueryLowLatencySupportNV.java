@@ -87,6 +87,11 @@ public record VkQueryLowLatencySupportNV(@NotNull MemorySegment segment) impleme
             return new VkQueryLowLatencySupportNV(segment.asSlice(index * VkQueryLowLatencySupportNV.BYTES, VkQueryLowLatencySupportNV.BYTES));
         }
 
+        public VkQueryLowLatencySupportNV.Ptr at(long index, @NotNull Consumer<@NotNull VkQueryLowLatencySupportNV> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkQueryLowLatencySupportNV value) {
             MemorySegment s = segment.asSlice(index * VkQueryLowLatencySupportNV.BYTES, VkQueryLowLatencySupportNV.BYTES);
             s.copyFrom(value.segment);
@@ -199,12 +204,13 @@ public record VkQueryLowLatencySupportNV(@NotNull MemorySegment segment) impleme
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkQueryLowLatencySupportNV pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkQueryLowLatencySupportNV pNext(@Nullable IPointer pointer) {
@@ -212,12 +218,13 @@ public record VkQueryLowLatencySupportNV(@NotNull MemorySegment segment) impleme
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pQueriedLowLatencyData() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pQueriedLowLatencyData() {
         return segment.get(LAYOUT$pQueriedLowLatencyData, OFFSET$pQueriedLowLatencyData);
     }
 
-    public void pQueriedLowLatencyData(@Pointer(comment="void*") MemorySegment value) {
+    public VkQueryLowLatencySupportNV pQueriedLowLatencyData(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pQueriedLowLatencyData, OFFSET$pQueriedLowLatencyData, value);
+        return this;
     }
 
     public VkQueryLowLatencySupportNV pQueriedLowLatencyData(@Nullable IPointer pointer) {

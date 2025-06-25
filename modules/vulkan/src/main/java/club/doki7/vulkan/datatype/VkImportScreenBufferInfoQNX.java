@@ -87,6 +87,11 @@ public record VkImportScreenBufferInfoQNX(@NotNull MemorySegment segment) implem
             return new VkImportScreenBufferInfoQNX(segment.asSlice(index * VkImportScreenBufferInfoQNX.BYTES, VkImportScreenBufferInfoQNX.BYTES));
         }
 
+        public VkImportScreenBufferInfoQNX.Ptr at(long index, @NotNull Consumer<@NotNull VkImportScreenBufferInfoQNX> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkImportScreenBufferInfoQNX value) {
             MemorySegment s = segment.asSlice(index * VkImportScreenBufferInfoQNX.BYTES, VkImportScreenBufferInfoQNX.BYTES);
             s.copyFrom(value.segment);
@@ -199,12 +204,13 @@ public record VkImportScreenBufferInfoQNX(@NotNull MemorySegment segment) implem
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkImportScreenBufferInfoQNX pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkImportScreenBufferInfoQNX pNext(@Nullable IPointer pointer) {
@@ -229,11 +235,11 @@ public record VkImportScreenBufferInfoQNX(@NotNull MemorySegment segment) implem
         return this;
     }
 
-    public @Pointer(comment="_screen_buffer*") MemorySegment bufferRaw() {
+    public @Pointer(comment="_screen_buffer*") @NotNull MemorySegment bufferRaw() {
         return segment.get(LAYOUT$buffer, OFFSET$buffer);
     }
 
-    public void bufferRaw(@Pointer(comment="_screen_buffer*") MemorySegment value) {
+    public void bufferRaw(@Pointer(comment="_screen_buffer*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$buffer, OFFSET$buffer, value);
     }
 

@@ -89,6 +89,11 @@ public record VkAttachmentReference2(@NotNull MemorySegment segment) implements 
             return new VkAttachmentReference2(segment.asSlice(index * VkAttachmentReference2.BYTES, VkAttachmentReference2.BYTES));
         }
 
+        public VkAttachmentReference2.Ptr at(long index, @NotNull Consumer<@NotNull VkAttachmentReference2> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkAttachmentReference2 value) {
             MemorySegment s = segment.asSlice(index * VkAttachmentReference2.BYTES, VkAttachmentReference2.BYTES);
             s.copyFrom(value.segment);
@@ -201,12 +206,13 @@ public record VkAttachmentReference2(@NotNull MemorySegment segment) implements 
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkAttachmentReference2 pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkAttachmentReference2 pNext(@Nullable IPointer pointer) {
@@ -232,11 +238,11 @@ public record VkAttachmentReference2(@NotNull MemorySegment segment) implements 
         return this;
     }
 
-    public @EnumType(VkImageAspectFlags.class) int aspectMask() {
+    public @Bitmask(VkImageAspectFlags.class) int aspectMask() {
         return segment.get(LAYOUT$aspectMask, OFFSET$aspectMask);
     }
 
-    public VkAttachmentReference2 aspectMask(@EnumType(VkImageAspectFlags.class) int value) {
+    public VkAttachmentReference2 aspectMask(@Bitmask(VkImageAspectFlags.class) int value) {
         segment.set(LAYOUT$aspectMask, OFFSET$aspectMask, value);
         return this;
     }

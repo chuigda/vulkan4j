@@ -88,6 +88,11 @@ public record VkSwapchainPresentModesCreateInfoEXT(@NotNull MemorySegment segmen
             return new VkSwapchainPresentModesCreateInfoEXT(segment.asSlice(index * VkSwapchainPresentModesCreateInfoEXT.BYTES, VkSwapchainPresentModesCreateInfoEXT.BYTES));
         }
 
+        public VkSwapchainPresentModesCreateInfoEXT.Ptr at(long index, @NotNull Consumer<@NotNull VkSwapchainPresentModesCreateInfoEXT> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkSwapchainPresentModesCreateInfoEXT value) {
             MemorySegment s = segment.asSlice(index * VkSwapchainPresentModesCreateInfoEXT.BYTES, VkSwapchainPresentModesCreateInfoEXT.BYTES);
             s.copyFrom(value.segment);
@@ -200,12 +205,13 @@ public record VkSwapchainPresentModesCreateInfoEXT(@NotNull MemorySegment segmen
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkSwapchainPresentModesCreateInfoEXT pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkSwapchainPresentModesCreateInfoEXT pNext(@Nullable IPointer pointer) {
@@ -241,11 +247,11 @@ public record VkSwapchainPresentModesCreateInfoEXT(@NotNull MemorySegment segmen
         return this;
     }
 
-    public @Pointer(target=VkPresentModeKHR.class) MemorySegment pPresentModesRaw() {
+    public @Pointer(target=VkPresentModeKHR.class) @NotNull MemorySegment pPresentModesRaw() {
         return segment.get(LAYOUT$pPresentModes, OFFSET$pPresentModes);
     }
 
-    public void pPresentModesRaw(@Pointer(target=VkPresentModeKHR.class) MemorySegment value) {
+    public void pPresentModesRaw(@Pointer(target=VkPresentModeKHR.class) @NotNull MemorySegment value) {
         segment.set(LAYOUT$pPresentModes, OFFSET$pPresentModes, value);
     }
 

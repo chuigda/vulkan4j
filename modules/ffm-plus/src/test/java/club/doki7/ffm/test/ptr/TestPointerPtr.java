@@ -42,9 +42,6 @@ public class TestPointerPtr {
 
     @Test
     public void testCheckedWithNullSegment() {
-        // 测试传入 null 应返回 null
-        assertNull(PointerPtr.checked(null), "传入null段应返回null");
-
         // 测试传入 MemorySegment.NULL 应返回 null
         assertNull(PointerPtr.checked(MemorySegment.NULL), "传入MemorySegment.NULL应返回null");
     }

@@ -93,6 +93,11 @@ public record VkPipelineMultisampleStateCreateInfo(@NotNull MemorySegment segmen
             return new VkPipelineMultisampleStateCreateInfo(segment.asSlice(index * VkPipelineMultisampleStateCreateInfo.BYTES, VkPipelineMultisampleStateCreateInfo.BYTES));
         }
 
+        public VkPipelineMultisampleStateCreateInfo.Ptr at(long index, @NotNull Consumer<@NotNull VkPipelineMultisampleStateCreateInfo> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkPipelineMultisampleStateCreateInfo value) {
             MemorySegment s = segment.asSlice(index * VkPipelineMultisampleStateCreateInfo.BYTES, VkPipelineMultisampleStateCreateInfo.BYTES);
             s.copyFrom(value.segment);
@@ -205,12 +210,13 @@ public record VkPipelineMultisampleStateCreateInfo(@NotNull MemorySegment segmen
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkPipelineMultisampleStateCreateInfo pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkPipelineMultisampleStateCreateInfo pNext(@Nullable IPointer pointer) {
@@ -218,20 +224,20 @@ public record VkPipelineMultisampleStateCreateInfo(@NotNull MemorySegment segmen
         return this;
     }
 
-    public @EnumType(VkPipelineMultisampleStateCreateFlags.class) int flags() {
+    public @Bitmask(VkPipelineMultisampleStateCreateFlags.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public VkPipelineMultisampleStateCreateInfo flags(@EnumType(VkPipelineMultisampleStateCreateFlags.class) int value) {
+    public VkPipelineMultisampleStateCreateInfo flags(@Bitmask(VkPipelineMultisampleStateCreateFlags.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
         return this;
     }
 
-    public @EnumType(VkSampleCountFlags.class) int rasterizationSamples() {
+    public @Bitmask(VkSampleCountFlags.class) int rasterizationSamples() {
         return segment.get(LAYOUT$rasterizationSamples, OFFSET$rasterizationSamples);
     }
 
-    public VkPipelineMultisampleStateCreateInfo rasterizationSamples(@EnumType(VkSampleCountFlags.class) int value) {
+    public VkPipelineMultisampleStateCreateInfo rasterizationSamples(@Bitmask(VkSampleCountFlags.class) int value) {
         segment.set(LAYOUT$rasterizationSamples, OFFSET$rasterizationSamples, value);
         return this;
     }
@@ -272,11 +278,11 @@ public record VkPipelineMultisampleStateCreateInfo(@NotNull MemorySegment segmen
         return this;
     }
 
-    public @Pointer(comment="uint32_t*") MemorySegment pSampleMaskRaw() {
+    public @Pointer(comment="uint32_t*") @NotNull MemorySegment pSampleMaskRaw() {
         return segment.get(LAYOUT$pSampleMask, OFFSET$pSampleMask);
     }
 
-    public void pSampleMaskRaw(@Pointer(comment="uint32_t*") MemorySegment value) {
+    public void pSampleMaskRaw(@Pointer(comment="uint32_t*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pSampleMask, OFFSET$pSampleMask, value);
     }
 

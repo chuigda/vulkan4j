@@ -88,6 +88,11 @@ public record VkPipelineIndirectDeviceAddressInfoNV(@NotNull MemorySegment segme
             return new VkPipelineIndirectDeviceAddressInfoNV(segment.asSlice(index * VkPipelineIndirectDeviceAddressInfoNV.BYTES, VkPipelineIndirectDeviceAddressInfoNV.BYTES));
         }
 
+        public VkPipelineIndirectDeviceAddressInfoNV.Ptr at(long index, @NotNull Consumer<@NotNull VkPipelineIndirectDeviceAddressInfoNV> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkPipelineIndirectDeviceAddressInfoNV value) {
             MemorySegment s = segment.asSlice(index * VkPipelineIndirectDeviceAddressInfoNV.BYTES, VkPipelineIndirectDeviceAddressInfoNV.BYTES);
             s.copyFrom(value.segment);
@@ -200,12 +205,13 @@ public record VkPipelineIndirectDeviceAddressInfoNV(@NotNull MemorySegment segme
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkPipelineIndirectDeviceAddressInfoNV pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkPipelineIndirectDeviceAddressInfoNV pNext(@Nullable IPointer pointer) {

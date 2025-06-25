@@ -88,6 +88,11 @@ public record VkWriteDescriptorSetAccelerationStructureNV(@NotNull MemorySegment
             return new VkWriteDescriptorSetAccelerationStructureNV(segment.asSlice(index * VkWriteDescriptorSetAccelerationStructureNV.BYTES, VkWriteDescriptorSetAccelerationStructureNV.BYTES));
         }
 
+        public VkWriteDescriptorSetAccelerationStructureNV.Ptr at(long index, @NotNull Consumer<@NotNull VkWriteDescriptorSetAccelerationStructureNV> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkWriteDescriptorSetAccelerationStructureNV value) {
             MemorySegment s = segment.asSlice(index * VkWriteDescriptorSetAccelerationStructureNV.BYTES, VkWriteDescriptorSetAccelerationStructureNV.BYTES);
             s.copyFrom(value.segment);
@@ -200,12 +205,13 @@ public record VkWriteDescriptorSetAccelerationStructureNV(@NotNull MemorySegment
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkWriteDescriptorSetAccelerationStructureNV pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkWriteDescriptorSetAccelerationStructureNV pNext(@Nullable IPointer pointer) {
@@ -240,11 +246,11 @@ public record VkWriteDescriptorSetAccelerationStructureNV(@NotNull MemorySegment
         return this;
     }
 
-    public @Pointer(target=VkAccelerationStructureNV.class) MemorySegment pAccelerationStructuresRaw() {
+    public @Pointer(target=VkAccelerationStructureNV.class) @NotNull MemorySegment pAccelerationStructuresRaw() {
         return segment.get(LAYOUT$pAccelerationStructures, OFFSET$pAccelerationStructures);
     }
 
-    public void pAccelerationStructuresRaw(@Pointer(target=VkAccelerationStructureNV.class) MemorySegment value) {
+    public void pAccelerationStructuresRaw(@Pointer(target=VkAccelerationStructureNV.class) @NotNull MemorySegment value) {
         segment.set(LAYOUT$pAccelerationStructures, OFFSET$pAccelerationStructures, value);
     }
 

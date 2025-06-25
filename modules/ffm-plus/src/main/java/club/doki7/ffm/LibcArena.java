@@ -1,5 +1,6 @@
 package club.doki7.ffm;
 
+import club.doki7.ffm.library.JavaSystemLibrary;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -8,8 +9,11 @@ import java.lang.foreign.FunctionDescriptor;
 import java.lang.foreign.MemorySegment;
 import java.lang.foreign.ValueLayout;
 import java.lang.invoke.MethodHandle;
+import java.util.Objects;
 
-public final class LibcArena implements Arena {
+public enum LibcArena implements Arena {
+    INSTANCE;
+
     private static final FunctionDescriptor DESCRIPTOR$aligned_alloc = FunctionDescriptor.of(
             ValueLayout.ADDRESS,
             NativeLayout.C_SIZE_T,
@@ -20,12 +24,14 @@ public final class LibcArena implements Arena {
             ValueLayout.ADDRESS
     );
 
-    private static final MethodHandle HANDLE$aligned_alloc =
-            Loader.loadFunction("aligned_alloc", DESCRIPTOR$aligned_alloc);
-    private static final MethodHandle HANDLE$free =
-            Loader.loadFunction("free", DESCRIPTOR$free);
-
-    private LibcArena() {}
+    private static final MethodHandle HANDLE$aligned_alloc = RawFunctionLoader.link(
+            Objects.requireNonNull(JavaSystemLibrary.INSTANCE.load("aligned_alloc")),
+            DESCRIPTOR$aligned_alloc
+    );
+    private static final MethodHandle HANDLE$free = RawFunctionLoader.link(
+            Objects.requireNonNull(JavaSystemLibrary.INSTANCE.load("free")),
+            DESCRIPTOR$free
+    );
 
     public void free(@NotNull MemorySegment ms) {
         try {
@@ -54,7 +60,10 @@ public final class LibcArena implements Arena {
 
         MemorySegment ms;
         try {
-            ms = (MemorySegment) HANDLE$aligned_alloc.invokeExact(byteAlignment, byteSize);
+            ms = (MemorySegment) HANDLE$aligned_alloc.invokeExact(
+                    MemorySegment.ofAddress(byteAlignment),
+                    MemorySegment.ofAddress(byteSize)
+            );
         } catch (Throwable _) {
             throw new RuntimeException("Failed to allocate memory");
         }
@@ -77,6 +86,4 @@ public final class LibcArena implements Arena {
     public void close() {
         throw new UnsupportedOperationException("Cannot close CArena");
     }
-
-    public static final LibcArena INSTANCE = new LibcArena();
 }

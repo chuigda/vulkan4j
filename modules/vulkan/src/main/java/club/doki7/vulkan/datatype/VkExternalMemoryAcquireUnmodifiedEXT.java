@@ -87,6 +87,11 @@ public record VkExternalMemoryAcquireUnmodifiedEXT(@NotNull MemorySegment segmen
             return new VkExternalMemoryAcquireUnmodifiedEXT(segment.asSlice(index * VkExternalMemoryAcquireUnmodifiedEXT.BYTES, VkExternalMemoryAcquireUnmodifiedEXT.BYTES));
         }
 
+        public VkExternalMemoryAcquireUnmodifiedEXT.Ptr at(long index, @NotNull Consumer<@NotNull VkExternalMemoryAcquireUnmodifiedEXT> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkExternalMemoryAcquireUnmodifiedEXT value) {
             MemorySegment s = segment.asSlice(index * VkExternalMemoryAcquireUnmodifiedEXT.BYTES, VkExternalMemoryAcquireUnmodifiedEXT.BYTES);
             s.copyFrom(value.segment);
@@ -199,12 +204,13 @@ public record VkExternalMemoryAcquireUnmodifiedEXT(@NotNull MemorySegment segmen
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkExternalMemoryAcquireUnmodifiedEXT pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkExternalMemoryAcquireUnmodifiedEXT pNext(@Nullable IPointer pointer) {

@@ -77,6 +77,11 @@ public record VkPartitionedAccelerationStructureWritePartitionTranslationDataNV(
             return new VkPartitionedAccelerationStructureWritePartitionTranslationDataNV(segment.asSlice(index * VkPartitionedAccelerationStructureWritePartitionTranslationDataNV.BYTES, VkPartitionedAccelerationStructureWritePartitionTranslationDataNV.BYTES));
         }
 
+        public VkPartitionedAccelerationStructureWritePartitionTranslationDataNV.Ptr at(long index, @NotNull Consumer<@NotNull VkPartitionedAccelerationStructureWritePartitionTranslationDataNV> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkPartitionedAccelerationStructureWritePartitionTranslationDataNV value) {
             MemorySegment s = segment.asSlice(index * VkPartitionedAccelerationStructureWritePartitionTranslationDataNV.BYTES, VkPartitionedAccelerationStructureWritePartitionTranslationDataNV.BYTES);
             s.copyFrom(value.segment);
@@ -183,12 +188,19 @@ public record VkPartitionedAccelerationStructureWritePartitionTranslationDataNV(
         return new FloatPtr(partitionTranslationRaw());
     }
 
-    public VkPartitionedAccelerationStructureWritePartitionTranslationDataNV partitionTranslation(FloatPtr value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$partitionTranslation, SIZE$partitionTranslation);
+    public VkPartitionedAccelerationStructureWritePartitionTranslationDataNV partitionTranslation(@NotNull Consumer<FloatPtr> consumer) {
+        FloatPtr ptr = partitionTranslation();
+        consumer.accept(ptr);
         return this;
     }
 
-    public MemorySegment partitionTranslationRaw() {
+    public VkPartitionedAccelerationStructureWritePartitionTranslationDataNV partitionTranslation(FloatPtr value) {
+        MemorySegment s = partitionTranslationRaw();
+        s.copyFrom(value.segment());
+        return this;
+    }
+
+    public @NotNull MemorySegment partitionTranslationRaw() {
         return segment.asSlice(OFFSET$partitionTranslation, SIZE$partitionTranslation);
     }
 

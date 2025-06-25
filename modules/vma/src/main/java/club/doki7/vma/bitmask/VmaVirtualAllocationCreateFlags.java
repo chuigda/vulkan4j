@@ -30,7 +30,7 @@ public final class VmaVirtualAllocationCreateFlags {
     /// This flag is only allowed for virtual blocks created with {@code VMA_VIRTUAL_BLOCK_CREATE_LINEAR_ALGORITHM_BIT} flag.
     public static final int UPPER_ADDRESS = VmaAllocationCreateFlags.UPPER_ADDRESS;
 
-    public static String explain(@EnumType(VmaVirtualAllocationCreateFlags.class) int flags) {
+    public static String explain(@Bitmask(VmaVirtualAllocationCreateFlags.class) int flags) {
         List<String> detectedFlagBits = new ArrayList<>();
         if ((flags & FLAG_BITS_MAX_ENUM) != 0) {
             detectedFlagBits.add("VMA_VIRTUAL_ALLOCATION_CREATE_FLAG_BITS_MAX_ENUM");

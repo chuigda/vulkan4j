@@ -90,6 +90,11 @@ public record VkPushDescriptorSetWithTemplateInfo(@NotNull MemorySegment segment
             return new VkPushDescriptorSetWithTemplateInfo(segment.asSlice(index * VkPushDescriptorSetWithTemplateInfo.BYTES, VkPushDescriptorSetWithTemplateInfo.BYTES));
         }
 
+        public VkPushDescriptorSetWithTemplateInfo.Ptr at(long index, @NotNull Consumer<@NotNull VkPushDescriptorSetWithTemplateInfo> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkPushDescriptorSetWithTemplateInfo value) {
             MemorySegment s = segment.asSlice(index * VkPushDescriptorSetWithTemplateInfo.BYTES, VkPushDescriptorSetWithTemplateInfo.BYTES);
             s.copyFrom(value.segment);
@@ -202,12 +207,13 @@ public record VkPushDescriptorSetWithTemplateInfo(@NotNull MemorySegment segment
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkPushDescriptorSetWithTemplateInfo pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkPushDescriptorSetWithTemplateInfo pNext(@Nullable IPointer pointer) {
@@ -250,12 +256,13 @@ public record VkPushDescriptorSetWithTemplateInfo(@NotNull MemorySegment segment
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pData() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pData() {
         return segment.get(LAYOUT$pData, OFFSET$pData);
     }
 
-    public void pData(@Pointer(comment="void*") MemorySegment value) {
+    public VkPushDescriptorSetWithTemplateInfo pData(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pData, OFFSET$pData, value);
+        return this;
     }
 
     public VkPushDescriptorSetWithTemplateInfo pData(@Nullable IPointer pointer) {

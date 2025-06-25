@@ -94,6 +94,11 @@ public record VkDescriptorUpdateTemplateCreateInfo(@NotNull MemorySegment segmen
             return new VkDescriptorUpdateTemplateCreateInfo(segment.asSlice(index * VkDescriptorUpdateTemplateCreateInfo.BYTES, VkDescriptorUpdateTemplateCreateInfo.BYTES));
         }
 
+        public VkDescriptorUpdateTemplateCreateInfo.Ptr at(long index, @NotNull Consumer<@NotNull VkDescriptorUpdateTemplateCreateInfo> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkDescriptorUpdateTemplateCreateInfo value) {
             MemorySegment s = segment.asSlice(index * VkDescriptorUpdateTemplateCreateInfo.BYTES, VkDescriptorUpdateTemplateCreateInfo.BYTES);
             s.copyFrom(value.segment);
@@ -206,12 +211,13 @@ public record VkDescriptorUpdateTemplateCreateInfo(@NotNull MemorySegment segmen
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkDescriptorUpdateTemplateCreateInfo pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkDescriptorUpdateTemplateCreateInfo pNext(@Nullable IPointer pointer) {
@@ -219,11 +225,11 @@ public record VkDescriptorUpdateTemplateCreateInfo(@NotNull MemorySegment segmen
         return this;
     }
 
-    public @EnumType(VkDescriptorUpdateTemplateCreateFlags.class) int flags() {
+    public @Bitmask(VkDescriptorUpdateTemplateCreateFlags.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public VkDescriptorUpdateTemplateCreateInfo flags(@EnumType(VkDescriptorUpdateTemplateCreateFlags.class) int value) {
+    public VkDescriptorUpdateTemplateCreateInfo flags(@Bitmask(VkDescriptorUpdateTemplateCreateFlags.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
         return this;
     }
@@ -261,11 +267,11 @@ public record VkDescriptorUpdateTemplateCreateInfo(@NotNull MemorySegment segmen
         return new VkDescriptorUpdateTemplateEntry(s);
     }
 
-    public @Pointer(target=VkDescriptorUpdateTemplateEntry.class) MemorySegment pDescriptorUpdateEntriesRaw() {
+    public @Pointer(target=VkDescriptorUpdateTemplateEntry.class) @NotNull MemorySegment pDescriptorUpdateEntriesRaw() {
         return segment.get(LAYOUT$pDescriptorUpdateEntries, OFFSET$pDescriptorUpdateEntries);
     }
 
-    public void pDescriptorUpdateEntriesRaw(@Pointer(target=VkDescriptorUpdateTemplateEntry.class) MemorySegment value) {
+    public void pDescriptorUpdateEntriesRaw(@Pointer(target=VkDescriptorUpdateTemplateEntry.class) @NotNull MemorySegment value) {
         segment.set(LAYOUT$pDescriptorUpdateEntries, OFFSET$pDescriptorUpdateEntries, value);
     }
 

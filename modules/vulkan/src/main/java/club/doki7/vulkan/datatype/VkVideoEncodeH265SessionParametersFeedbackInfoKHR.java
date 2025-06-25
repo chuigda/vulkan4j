@@ -89,6 +89,11 @@ public record VkVideoEncodeH265SessionParametersFeedbackInfoKHR(@NotNull MemoryS
             return new VkVideoEncodeH265SessionParametersFeedbackInfoKHR(segment.asSlice(index * VkVideoEncodeH265SessionParametersFeedbackInfoKHR.BYTES, VkVideoEncodeH265SessionParametersFeedbackInfoKHR.BYTES));
         }
 
+        public VkVideoEncodeH265SessionParametersFeedbackInfoKHR.Ptr at(long index, @NotNull Consumer<@NotNull VkVideoEncodeH265SessionParametersFeedbackInfoKHR> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkVideoEncodeH265SessionParametersFeedbackInfoKHR value) {
             MemorySegment s = segment.asSlice(index * VkVideoEncodeH265SessionParametersFeedbackInfoKHR.BYTES, VkVideoEncodeH265SessionParametersFeedbackInfoKHR.BYTES);
             s.copyFrom(value.segment);
@@ -201,12 +206,13 @@ public record VkVideoEncodeH265SessionParametersFeedbackInfoKHR(@NotNull MemoryS
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkVideoEncodeH265SessionParametersFeedbackInfoKHR pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkVideoEncodeH265SessionParametersFeedbackInfoKHR pNext(@Nullable IPointer pointer) {

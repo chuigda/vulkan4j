@@ -99,6 +99,11 @@ public record VmaVirtualAllocationCreateInfo(@NotNull MemorySegment segment) imp
             return new VmaVirtualAllocationCreateInfo(segment.asSlice(index * VmaVirtualAllocationCreateInfo.BYTES, VmaVirtualAllocationCreateInfo.BYTES));
         }
 
+        public VmaVirtualAllocationCreateInfo.Ptr at(long index, @NotNull Consumer<@NotNull VmaVirtualAllocationCreateInfo> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VmaVirtualAllocationCreateInfo value) {
             MemorySegment s = segment.asSlice(index * VmaVirtualAllocationCreateInfo.BYTES, VmaVirtualAllocationCreateInfo.BYTES);
             s.copyFrom(value.segment);
@@ -210,21 +215,22 @@ public record VmaVirtualAllocationCreateInfo(@NotNull MemorySegment segment) imp
         return this;
     }
 
-    public @EnumType(VmaVirtualAllocationCreateFlags.class) int flags() {
+    public @Bitmask(VmaVirtualAllocationCreateFlags.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public VmaVirtualAllocationCreateInfo flags(@EnumType(VmaVirtualAllocationCreateFlags.class) int value) {
+    public VmaVirtualAllocationCreateInfo flags(@Bitmask(VmaVirtualAllocationCreateFlags.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pUserData() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pUserData() {
         return segment.get(LAYOUT$pUserData, OFFSET$pUserData);
     }
 
-    public void pUserData(@Pointer(comment="void*") MemorySegment value) {
+    public VmaVirtualAllocationCreateInfo pUserData(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pUserData, OFFSET$pUserData, value);
+        return this;
     }
 
     public VmaVirtualAllocationCreateInfo pUserData(@Nullable IPointer pointer) {

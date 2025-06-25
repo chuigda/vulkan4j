@@ -29,9 +29,9 @@ import static club.doki7.vulkan.VkConstants.*;
 ///     VkInstanceCreateFlags flags; // optional // @link substring="VkInstanceCreateFlags" target="VkInstanceCreateFlags" @link substring="flags" target="#flags"
 ///     VkApplicationInfo const* pApplicationInfo; // optional // @link substring="VkApplicationInfo" target="VkApplicationInfo" @link substring="pApplicationInfo" target="#pApplicationInfo"
 ///     uint32_t enabledLayerCount; // optional // @link substring="enabledLayerCount" target="#enabledLayerCount"
-///     char const* const* ppEnabledLayerNames; // @link substring="ppEnabledLayerNames" target="#ppEnabledLayerNames"
+///     char const* const* ppEnabledLayerNames; // optional // @link substring="ppEnabledLayerNames" target="#ppEnabledLayerNames"
 ///     uint32_t enabledExtensionCount; // optional // @link substring="enabledExtensionCount" target="#enabledExtensionCount"
-///     char const* const* ppEnabledExtensionNames; // @link substring="ppEnabledExtensionNames" target="#ppEnabledExtensionNames"
+///     char const* const* ppEnabledExtensionNames; // optional // @link substring="ppEnabledExtensionNames" target="#ppEnabledExtensionNames"
 /// } VkInstanceCreateInfo;
 /// }
 ///
@@ -90,6 +90,11 @@ public record VkInstanceCreateInfo(@NotNull MemorySegment segment) implements IV
         /// indicate that the returned structure is a view of the original structure.
         public @NotNull VkInstanceCreateInfo at(long index) {
             return new VkInstanceCreateInfo(segment.asSlice(index * VkInstanceCreateInfo.BYTES, VkInstanceCreateInfo.BYTES));
+        }
+
+        public VkInstanceCreateInfo.Ptr at(long index, @NotNull Consumer<@NotNull VkInstanceCreateInfo> consumer) {
+            consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkInstanceCreateInfo value) {
@@ -204,12 +209,13 @@ public record VkInstanceCreateInfo(@NotNull MemorySegment segment) implements IV
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkInstanceCreateInfo pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkInstanceCreateInfo pNext(@Nullable IPointer pointer) {
@@ -217,11 +223,11 @@ public record VkInstanceCreateInfo(@NotNull MemorySegment segment) implements IV
         return this;
     }
 
-    public @EnumType(VkInstanceCreateFlags.class) int flags() {
+    public @Bitmask(VkInstanceCreateFlags.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public VkInstanceCreateInfo flags(@EnumType(VkInstanceCreateFlags.class) int value) {
+    public VkInstanceCreateInfo flags(@Bitmask(VkInstanceCreateFlags.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
         return this;
     }
@@ -250,11 +256,11 @@ public record VkInstanceCreateInfo(@NotNull MemorySegment segment) implements IV
         return new VkApplicationInfo(s);
     }
 
-    public @Pointer(target=VkApplicationInfo.class) MemorySegment pApplicationInfoRaw() {
+    public @Pointer(target=VkApplicationInfo.class) @NotNull MemorySegment pApplicationInfoRaw() {
         return segment.get(LAYOUT$pApplicationInfo, OFFSET$pApplicationInfo);
     }
 
-    public void pApplicationInfoRaw(@Pointer(target=VkApplicationInfo.class) MemorySegment value) {
+    public void pApplicationInfoRaw(@Pointer(target=VkApplicationInfo.class) @NotNull MemorySegment value) {
         segment.set(LAYOUT$pApplicationInfo, OFFSET$pApplicationInfo, value);
     }
 
@@ -284,11 +290,11 @@ public record VkInstanceCreateInfo(@NotNull MemorySegment segment) implements IV
         return this;
     }
 
-    public @Pointer(comment="void**") MemorySegment ppEnabledLayerNamesRaw() {
+    public @Pointer(comment="void**") @NotNull MemorySegment ppEnabledLayerNamesRaw() {
         return segment.get(LAYOUT$ppEnabledLayerNames, OFFSET$ppEnabledLayerNames);
     }
 
-    public void ppEnabledLayerNamesRaw(@Pointer(comment="void**") MemorySegment value) {
+    public void ppEnabledLayerNamesRaw(@Pointer(comment="void**") @NotNull MemorySegment value) {
         segment.set(LAYOUT$ppEnabledLayerNames, OFFSET$ppEnabledLayerNames, value);
     }
 
@@ -318,11 +324,11 @@ public record VkInstanceCreateInfo(@NotNull MemorySegment segment) implements IV
         return this;
     }
 
-    public @Pointer(comment="void**") MemorySegment ppEnabledExtensionNamesRaw() {
+    public @Pointer(comment="void**") @NotNull MemorySegment ppEnabledExtensionNamesRaw() {
         return segment.get(LAYOUT$ppEnabledExtensionNames, OFFSET$ppEnabledExtensionNames);
     }
 
-    public void ppEnabledExtensionNamesRaw(@Pointer(comment="void**") MemorySegment value) {
+    public void ppEnabledExtensionNamesRaw(@Pointer(comment="void**") @NotNull MemorySegment value) {
         segment.set(LAYOUT$ppEnabledExtensionNames, OFFSET$ppEnabledExtensionNames, value);
     }
 

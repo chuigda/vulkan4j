@@ -78,6 +78,11 @@ public record VkVideoEncodeAV1FrameSizeKHR(@NotNull MemorySegment segment) imple
             return new VkVideoEncodeAV1FrameSizeKHR(segment.asSlice(index * VkVideoEncodeAV1FrameSizeKHR.BYTES, VkVideoEncodeAV1FrameSizeKHR.BYTES));
         }
 
+        public VkVideoEncodeAV1FrameSizeKHR.Ptr at(long index, @NotNull Consumer<@NotNull VkVideoEncodeAV1FrameSizeKHR> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkVideoEncodeAV1FrameSizeKHR value) {
             MemorySegment s = segment.asSlice(index * VkVideoEncodeAV1FrameSizeKHR.BYTES, VkVideoEncodeAV1FrameSizeKHR.BYTES);
             s.copyFrom(value.segment);

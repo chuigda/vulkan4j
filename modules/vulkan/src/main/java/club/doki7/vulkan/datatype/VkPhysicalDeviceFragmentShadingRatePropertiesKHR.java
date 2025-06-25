@@ -103,6 +103,11 @@ public record VkPhysicalDeviceFragmentShadingRatePropertiesKHR(@NotNull MemorySe
             return new VkPhysicalDeviceFragmentShadingRatePropertiesKHR(segment.asSlice(index * VkPhysicalDeviceFragmentShadingRatePropertiesKHR.BYTES, VkPhysicalDeviceFragmentShadingRatePropertiesKHR.BYTES));
         }
 
+        public VkPhysicalDeviceFragmentShadingRatePropertiesKHR.Ptr at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceFragmentShadingRatePropertiesKHR> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkPhysicalDeviceFragmentShadingRatePropertiesKHR value) {
             MemorySegment s = segment.asSlice(index * VkPhysicalDeviceFragmentShadingRatePropertiesKHR.BYTES, VkPhysicalDeviceFragmentShadingRatePropertiesKHR.BYTES);
             s.copyFrom(value.segment);
@@ -215,12 +220,13 @@ public record VkPhysicalDeviceFragmentShadingRatePropertiesKHR(@NotNull MemorySe
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkPhysicalDeviceFragmentShadingRatePropertiesKHR pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkPhysicalDeviceFragmentShadingRatePropertiesKHR pNext(@Nullable IPointer pointer) {
@@ -324,11 +330,11 @@ public record VkPhysicalDeviceFragmentShadingRatePropertiesKHR(@NotNull MemorySe
         return this;
     }
 
-    public @EnumType(VkSampleCountFlags.class) int maxFragmentShadingRateRasterizationSamples() {
+    public @Bitmask(VkSampleCountFlags.class) int maxFragmentShadingRateRasterizationSamples() {
         return segment.get(LAYOUT$maxFragmentShadingRateRasterizationSamples, OFFSET$maxFragmentShadingRateRasterizationSamples);
     }
 
-    public VkPhysicalDeviceFragmentShadingRatePropertiesKHR maxFragmentShadingRateRasterizationSamples(@EnumType(VkSampleCountFlags.class) int value) {
+    public VkPhysicalDeviceFragmentShadingRatePropertiesKHR maxFragmentShadingRateRasterizationSamples(@Bitmask(VkSampleCountFlags.class) int value) {
         segment.set(LAYOUT$maxFragmentShadingRateRasterizationSamples, OFFSET$maxFragmentShadingRateRasterizationSamples, value);
         return this;
     }

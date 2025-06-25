@@ -91,6 +91,11 @@ public record VkCopyMemoryToImageInfo(@NotNull MemorySegment segment) implements
             return new VkCopyMemoryToImageInfo(segment.asSlice(index * VkCopyMemoryToImageInfo.BYTES, VkCopyMemoryToImageInfo.BYTES));
         }
 
+        public VkCopyMemoryToImageInfo.Ptr at(long index, @NotNull Consumer<@NotNull VkCopyMemoryToImageInfo> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkCopyMemoryToImageInfo value) {
             MemorySegment s = segment.asSlice(index * VkCopyMemoryToImageInfo.BYTES, VkCopyMemoryToImageInfo.BYTES);
             s.copyFrom(value.segment);
@@ -203,12 +208,13 @@ public record VkCopyMemoryToImageInfo(@NotNull MemorySegment segment) implements
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkCopyMemoryToImageInfo pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkCopyMemoryToImageInfo pNext(@Nullable IPointer pointer) {
@@ -216,11 +222,11 @@ public record VkCopyMemoryToImageInfo(@NotNull MemorySegment segment) implements
         return this;
     }
 
-    public @EnumType(VkHostImageCopyFlags.class) int flags() {
+    public @Bitmask(VkHostImageCopyFlags.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public VkCopyMemoryToImageInfo flags(@EnumType(VkHostImageCopyFlags.class) int value) {
+    public VkCopyMemoryToImageInfo flags(@Bitmask(VkHostImageCopyFlags.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
         return this;
     }
@@ -280,11 +286,11 @@ public record VkCopyMemoryToImageInfo(@NotNull MemorySegment segment) implements
         return new VkMemoryToImageCopy(s);
     }
 
-    public @Pointer(target=VkMemoryToImageCopy.class) MemorySegment pRegionsRaw() {
+    public @Pointer(target=VkMemoryToImageCopy.class) @NotNull MemorySegment pRegionsRaw() {
         return segment.get(LAYOUT$pRegions, OFFSET$pRegions);
     }
 
-    public void pRegionsRaw(@Pointer(target=VkMemoryToImageCopy.class) MemorySegment value) {
+    public void pRegionsRaw(@Pointer(target=VkMemoryToImageCopy.class) @NotNull MemorySegment value) {
         segment.set(LAYOUT$pRegions, OFFSET$pRegions, value);
     }
 

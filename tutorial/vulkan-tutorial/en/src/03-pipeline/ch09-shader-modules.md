@@ -1,6 +1,6 @@
 # Shader modules
 
-> [Java code](https://github.com/chuigda/vulkan4j/tree/master/modules/tutorial/src/main/java/tutorial/vulkan/part03/ch09/Main.java) | [C++ version](https://vulkan-tutorial.com/Drawing_a_triangle/Graphics_pipeline_basics/Shader_modules)
+> [Java code](https://github.com/club-doki7/vulkan4j/tree/master/modules/tutorial/src/main/java/tutorial/vulkan/part03/ch09/Main.java) | [C++ version](https://vulkan-tutorial.com/Drawing_a_triangle/Graphics_pipeline_basics/Shader_modules)
 
 Unlike earlier APIs, shader code in Vulkan has to be specified in a bytecode format as opposed to human-readable syntax like [GLSL](https://en.wikipedia.org/wiki/OpenGL_Shading_Language) and [HLSL](https://en.wikipedia.org/wiki/High-Level_Shading_Language). This bytecode format is called [SPIR-V](https://www.khronos.org/spir) and is designed to be used with both Vulkan and OpenCL (both Khronos APIs). It is a format that can be used to write graphics and compute shaders, but we will focus on shaders used in Vulkan's graphics pipelines in this tutorial.
 
@@ -269,10 +269,10 @@ We'll start by filling in the structure for the vertex shader, again in the `cre
 ```java
 var shaderStages = VkPipelineShaderStageCreateInfo.allocate(arena, 2);
 
-shaderStages.at(0)
+shaderStages.at(0, it -> it
         .stage(VkShaderStageFlags.VERTEX)
         .module(vertexShaderModule)
-        .pName(BytePtr.allocateString(arena, "main"));
+        .pName(BytePtr.allocateString(arena, "main")));
 ```
 
 The first step, is telling Vulkan in which pipeline stage the shader is going to be used. There is an enum value for each of the programmable stages described in the previous chapter.
@@ -284,10 +284,10 @@ There is one more (optional) member, `pSpecializationInfo`, which we won't be us
 Modifying the structure to suit the fragment shader is easy:
 
 ```java
-shaderStages.at(1)
+shaderStages.at(1, it -> it
         .stage(VkShaderStageFlags.FRAGMENT)
         .module(fragmentShaderModule)
-        .pName(BytePtr.allocateString(arena, "main"));
+        .pName(BytePtr.allocateString(arena, "main")));
 ```
 
 That's all there is describing the programmable stages of the pipeline. In the next chapter we'll look at the fixed-function stages.

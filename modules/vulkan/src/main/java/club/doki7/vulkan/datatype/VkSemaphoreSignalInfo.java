@@ -88,6 +88,11 @@ public record VkSemaphoreSignalInfo(@NotNull MemorySegment segment) implements I
             return new VkSemaphoreSignalInfo(segment.asSlice(index * VkSemaphoreSignalInfo.BYTES, VkSemaphoreSignalInfo.BYTES));
         }
 
+        public VkSemaphoreSignalInfo.Ptr at(long index, @NotNull Consumer<@NotNull VkSemaphoreSignalInfo> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkSemaphoreSignalInfo value) {
             MemorySegment s = segment.asSlice(index * VkSemaphoreSignalInfo.BYTES, VkSemaphoreSignalInfo.BYTES);
             s.copyFrom(value.segment);
@@ -200,12 +205,13 @@ public record VkSemaphoreSignalInfo(@NotNull MemorySegment segment) implements I
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkSemaphoreSignalInfo pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkSemaphoreSignalInfo pNext(@Nullable IPointer pointer) {

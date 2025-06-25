@@ -77,6 +77,11 @@ public record StdVideoAV1QuantizationFlags(@NotNull MemorySegment segment) imple
             return new StdVideoAV1QuantizationFlags(segment.asSlice(index * StdVideoAV1QuantizationFlags.BYTES, StdVideoAV1QuantizationFlags.BYTES));
         }
 
+        public StdVideoAV1QuantizationFlags.Ptr at(long index, @NotNull Consumer<@NotNull StdVideoAV1QuantizationFlags> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull StdVideoAV1QuantizationFlags value) {
             MemorySegment s = segment.asSlice(index * StdVideoAV1QuantizationFlags.BYTES, StdVideoAV1QuantizationFlags.BYTES);
             s.copyFrom(value.segment);

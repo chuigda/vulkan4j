@@ -3,7 +3,6 @@ package club.doki7.babel.drv
 import club.doki7.babel.codegen.CodegenOptions
 import club.doki7.babel.codegen.generateBitmask
 import club.doki7.babel.codegen.generateCommandFile
-import club.doki7.babel.codegen.generateConstants
 import club.doki7.babel.codegen.generateEnumeration
 import club.doki7.babel.codegen.generateFunctionTypedefs
 import club.doki7.babel.codegen.generateHandle
@@ -74,14 +73,14 @@ fun main() {
     for (opaqueTypedef in registry.opaqueTypedefs.values) {
         if (opaqueTypedef.isHandle) {
             val handle = OpaqueHandleTypedef(opaqueTypedef.name)
-            val handleDoc = generateHandle(registry, handle, codegenOptions)
+            val handleDoc = generateHandle(handle, codegenOptions)
             File("$packageDir/handle/${handle.name}.java")
                 .writeText(render(handleDoc))
         }
     }
 
     for (opaqueHandleTypedef in registry.opaqueHandleTypedefs.values) {
-        val handleDoc = generateHandle(registry, opaqueHandleTypedef, codegenOptions)
+        val handleDoc = generateHandle(opaqueHandleTypedef, codegenOptions)
         File("$packageDir/handle/${opaqueHandleTypedef.name}.java")
             .writeText(render(handleDoc))
     }

@@ -90,6 +90,11 @@ public record VkPhysicalDeviceImageProcessingPropertiesQCOM(@NotNull MemorySegme
             return new VkPhysicalDeviceImageProcessingPropertiesQCOM(segment.asSlice(index * VkPhysicalDeviceImageProcessingPropertiesQCOM.BYTES, VkPhysicalDeviceImageProcessingPropertiesQCOM.BYTES));
         }
 
+        public VkPhysicalDeviceImageProcessingPropertiesQCOM.Ptr at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceImageProcessingPropertiesQCOM> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkPhysicalDeviceImageProcessingPropertiesQCOM value) {
             MemorySegment s = segment.asSlice(index * VkPhysicalDeviceImageProcessingPropertiesQCOM.BYTES, VkPhysicalDeviceImageProcessingPropertiesQCOM.BYTES);
             s.copyFrom(value.segment);
@@ -202,12 +207,13 @@ public record VkPhysicalDeviceImageProcessingPropertiesQCOM(@NotNull MemorySegme
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkPhysicalDeviceImageProcessingPropertiesQCOM pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkPhysicalDeviceImageProcessingPropertiesQCOM pNext(@Nullable IPointer pointer) {

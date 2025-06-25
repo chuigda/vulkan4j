@@ -27,7 +27,7 @@ import static club.doki7.vulkan.VkConstants.*;
 ///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
 ///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
 ///     uint32_t swapchainCount; // @link substring="swapchainCount" target="#swapchainCount"
-///     VkPresentRegionKHR const* pRegions; // optional // @link substring="VkPresentRegionKHR" target="VkPresentRegionKHR" @link substring="pRegions" target="#pRegions"
+///     VkPresentRegionKHR const* pRegions; // @link substring="VkPresentRegionKHR" target="VkPresentRegionKHR" @link substring="pRegions" target="#pRegions"
 /// } VkPresentRegionsKHR;
 /// }
 ///
@@ -86,6 +86,11 @@ public record VkPresentRegionsKHR(@NotNull MemorySegment segment) implements IVk
         /// indicate that the returned structure is a view of the original structure.
         public @NotNull VkPresentRegionsKHR at(long index) {
             return new VkPresentRegionsKHR(segment.asSlice(index * VkPresentRegionsKHR.BYTES, VkPresentRegionsKHR.BYTES));
+        }
+
+        public VkPresentRegionsKHR.Ptr at(long index, @NotNull Consumer<@NotNull VkPresentRegionsKHR> consumer) {
+            consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkPresentRegionsKHR value) {
@@ -200,12 +205,13 @@ public record VkPresentRegionsKHR(@NotNull MemorySegment segment) implements IVk
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkPresentRegionsKHR pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkPresentRegionsKHR pNext(@Nullable IPointer pointer) {
@@ -246,11 +252,11 @@ public record VkPresentRegionsKHR(@NotNull MemorySegment segment) implements IVk
         return new VkPresentRegionKHR(s);
     }
 
-    public @Pointer(target=VkPresentRegionKHR.class) MemorySegment pRegionsRaw() {
+    public @Pointer(target=VkPresentRegionKHR.class) @NotNull MemorySegment pRegionsRaw() {
         return segment.get(LAYOUT$pRegions, OFFSET$pRegions);
     }
 
-    public void pRegionsRaw(@Pointer(target=VkPresentRegionKHR.class) MemorySegment value) {
+    public void pRegionsRaw(@Pointer(target=VkPresentRegionKHR.class) @NotNull MemorySegment value) {
         segment.set(LAYOUT$pRegions, OFFSET$pRegions, value);
     }
 

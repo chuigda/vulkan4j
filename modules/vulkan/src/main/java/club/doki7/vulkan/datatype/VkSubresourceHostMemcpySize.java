@@ -87,6 +87,11 @@ public record VkSubresourceHostMemcpySize(@NotNull MemorySegment segment) implem
             return new VkSubresourceHostMemcpySize(segment.asSlice(index * VkSubresourceHostMemcpySize.BYTES, VkSubresourceHostMemcpySize.BYTES));
         }
 
+        public VkSubresourceHostMemcpySize.Ptr at(long index, @NotNull Consumer<@NotNull VkSubresourceHostMemcpySize> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkSubresourceHostMemcpySize value) {
             MemorySegment s = segment.asSlice(index * VkSubresourceHostMemcpySize.BYTES, VkSubresourceHostMemcpySize.BYTES);
             s.copyFrom(value.segment);
@@ -199,12 +204,13 @@ public record VkSubresourceHostMemcpySize(@NotNull MemorySegment segment) implem
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkSubresourceHostMemcpySize pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkSubresourceHostMemcpySize pNext(@Nullable IPointer pointer) {

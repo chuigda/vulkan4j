@@ -87,6 +87,11 @@ public record VkPhysicalDeviceShaderQuadControlFeaturesKHR(@NotNull MemorySegmen
             return new VkPhysicalDeviceShaderQuadControlFeaturesKHR(segment.asSlice(index * VkPhysicalDeviceShaderQuadControlFeaturesKHR.BYTES, VkPhysicalDeviceShaderQuadControlFeaturesKHR.BYTES));
         }
 
+        public VkPhysicalDeviceShaderQuadControlFeaturesKHR.Ptr at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceShaderQuadControlFeaturesKHR> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkPhysicalDeviceShaderQuadControlFeaturesKHR value) {
             MemorySegment s = segment.asSlice(index * VkPhysicalDeviceShaderQuadControlFeaturesKHR.BYTES, VkPhysicalDeviceShaderQuadControlFeaturesKHR.BYTES);
             s.copyFrom(value.segment);
@@ -199,12 +204,13 @@ public record VkPhysicalDeviceShaderQuadControlFeaturesKHR(@NotNull MemorySegmen
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkPhysicalDeviceShaderQuadControlFeaturesKHR pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkPhysicalDeviceShaderQuadControlFeaturesKHR pNext(@Nullable IPointer pointer) {

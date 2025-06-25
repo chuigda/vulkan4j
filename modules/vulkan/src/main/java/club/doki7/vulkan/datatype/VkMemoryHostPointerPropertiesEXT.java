@@ -87,6 +87,11 @@ public record VkMemoryHostPointerPropertiesEXT(@NotNull MemorySegment segment) i
             return new VkMemoryHostPointerPropertiesEXT(segment.asSlice(index * VkMemoryHostPointerPropertiesEXT.BYTES, VkMemoryHostPointerPropertiesEXT.BYTES));
         }
 
+        public VkMemoryHostPointerPropertiesEXT.Ptr at(long index, @NotNull Consumer<@NotNull VkMemoryHostPointerPropertiesEXT> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkMemoryHostPointerPropertiesEXT value) {
             MemorySegment s = segment.asSlice(index * VkMemoryHostPointerPropertiesEXT.BYTES, VkMemoryHostPointerPropertiesEXT.BYTES);
             s.copyFrom(value.segment);
@@ -199,12 +204,13 @@ public record VkMemoryHostPointerPropertiesEXT(@NotNull MemorySegment segment) i
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkMemoryHostPointerPropertiesEXT pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkMemoryHostPointerPropertiesEXT pNext(@Nullable IPointer pointer) {

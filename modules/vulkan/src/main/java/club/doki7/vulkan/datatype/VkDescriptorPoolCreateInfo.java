@@ -29,7 +29,7 @@ import static club.doki7.vulkan.VkConstants.*;
 ///     VkDescriptorPoolCreateFlags flags; // optional // @link substring="VkDescriptorPoolCreateFlags" target="VkDescriptorPoolCreateFlags" @link substring="flags" target="#flags"
 ///     uint32_t maxSets; // @link substring="maxSets" target="#maxSets"
 ///     uint32_t poolSizeCount; // optional // @link substring="poolSizeCount" target="#poolSizeCount"
-///     VkDescriptorPoolSize const* pPoolSizes; // @link substring="VkDescriptorPoolSize" target="VkDescriptorPoolSize" @link substring="pPoolSizes" target="#pPoolSizes"
+///     VkDescriptorPoolSize const* pPoolSizes; // optional // @link substring="VkDescriptorPoolSize" target="VkDescriptorPoolSize" @link substring="pPoolSizes" target="#pPoolSizes"
 /// } VkDescriptorPoolCreateInfo;
 /// }
 ///
@@ -88,6 +88,11 @@ public record VkDescriptorPoolCreateInfo(@NotNull MemorySegment segment) impleme
         /// indicate that the returned structure is a view of the original structure.
         public @NotNull VkDescriptorPoolCreateInfo at(long index) {
             return new VkDescriptorPoolCreateInfo(segment.asSlice(index * VkDescriptorPoolCreateInfo.BYTES, VkDescriptorPoolCreateInfo.BYTES));
+        }
+
+        public VkDescriptorPoolCreateInfo.Ptr at(long index, @NotNull Consumer<@NotNull VkDescriptorPoolCreateInfo> consumer) {
+            consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkDescriptorPoolCreateInfo value) {
@@ -202,12 +207,13 @@ public record VkDescriptorPoolCreateInfo(@NotNull MemorySegment segment) impleme
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkDescriptorPoolCreateInfo pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkDescriptorPoolCreateInfo pNext(@Nullable IPointer pointer) {
@@ -215,11 +221,11 @@ public record VkDescriptorPoolCreateInfo(@NotNull MemorySegment segment) impleme
         return this;
     }
 
-    public @EnumType(VkDescriptorPoolCreateFlags.class) int flags() {
+    public @Bitmask(VkDescriptorPoolCreateFlags.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public VkDescriptorPoolCreateInfo flags(@EnumType(VkDescriptorPoolCreateFlags.class) int value) {
+    public VkDescriptorPoolCreateInfo flags(@Bitmask(VkDescriptorPoolCreateFlags.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
         return this;
     }
@@ -266,11 +272,11 @@ public record VkDescriptorPoolCreateInfo(@NotNull MemorySegment segment) impleme
         return new VkDescriptorPoolSize(s);
     }
 
-    public @Pointer(target=VkDescriptorPoolSize.class) MemorySegment pPoolSizesRaw() {
+    public @Pointer(target=VkDescriptorPoolSize.class) @NotNull MemorySegment pPoolSizesRaw() {
         return segment.get(LAYOUT$pPoolSizes, OFFSET$pPoolSizes);
     }
 
-    public void pPoolSizesRaw(@Pointer(target=VkDescriptorPoolSize.class) MemorySegment value) {
+    public void pPoolSizesRaw(@Pointer(target=VkDescriptorPoolSize.class) @NotNull MemorySegment value) {
         segment.set(LAYOUT$pPoolSizes, OFFSET$pPoolSizes, value);
     }
 

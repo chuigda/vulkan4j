@@ -87,6 +87,11 @@ public record VkAndroidHardwareBufferFormatResolvePropertiesANDROID(@NotNull Mem
             return new VkAndroidHardwareBufferFormatResolvePropertiesANDROID(segment.asSlice(index * VkAndroidHardwareBufferFormatResolvePropertiesANDROID.BYTES, VkAndroidHardwareBufferFormatResolvePropertiesANDROID.BYTES));
         }
 
+        public VkAndroidHardwareBufferFormatResolvePropertiesANDROID.Ptr at(long index, @NotNull Consumer<@NotNull VkAndroidHardwareBufferFormatResolvePropertiesANDROID> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkAndroidHardwareBufferFormatResolvePropertiesANDROID value) {
             MemorySegment s = segment.asSlice(index * VkAndroidHardwareBufferFormatResolvePropertiesANDROID.BYTES, VkAndroidHardwareBufferFormatResolvePropertiesANDROID.BYTES);
             s.copyFrom(value.segment);
@@ -199,12 +204,13 @@ public record VkAndroidHardwareBufferFormatResolvePropertiesANDROID(@NotNull Mem
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkAndroidHardwareBufferFormatResolvePropertiesANDROID pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkAndroidHardwareBufferFormatResolvePropertiesANDROID pNext(@Nullable IPointer pointer) {

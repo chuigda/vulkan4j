@@ -1,6 +1,6 @@
 # Combined image sampler
 
-> [Java code](https://github.com/chuigda/vulkan4j/tree/master/modules/tutorial/src/main/java/tutorial/vulkan/part08/ch26/Main.java) | [C++ version](https://vulkan-tutorial.com/Texture_mapping/Combined_image_sampler)
+> [Java code](https://github.com/club-doki7/vulkan4j/tree/master/modules/tutorial/src/main/java/tutorial/vulkan/part08/ch26/Main.java) | [C++ version](https://vulkan-tutorial.com/Texture_mapping/Combined_image_sampler)
 
 ## Introduction
 
@@ -13,17 +13,17 @@ We'll start by modifying the descriptor layout, descriptor pool and descriptor s
 Browse to the `createDescriptorSetLayout` function and add a `VkDescriptorSetLayoutBinding` for a combined image sampler descriptor:
 
 ```java
-var bindings = VkDescriptorSetLayoutBinding.allocate(arena, 2);
-bindings.at(0)
-        .binding(0)
-        .descriptorType(VkDescriptorType.UNIFORM_BUFFER)
-        .descriptorCount(1)
-        .stageFlags(VkShaderStageFlags.VERTEX);
-bindings.at(1)
-        .binding(1)
-        .descriptorCount(1)
-        .descriptorType(VkDescriptorType.COMBINED_IMAGE_SAMPLER)
-        .stageFlags(VkShaderStageFlags.FRAGMENT);
+var bindings = VkDescriptorSetLayoutBinding.allocate(arena, 2)
+        .at(0, it -> it
+                .binding(0)
+                .descriptorType(VkDescriptorType.UNIFORM_BUFFER)
+                .descriptorCount(1)
+                .stageFlags(VkShaderStageFlags.VERTEX))
+        .at(1, it -> it
+                .binding(1)
+                .descriptorCount(1)
+                .descriptorType(VkDescriptorType.COMBINED_IMAGE_SAMPLER)
+                .stageFlags(VkShaderStageFlags.FRAGMENT));
 
 var layoutInfo = VkDescriptorSetLayoutCreateInfo.allocate(arena)
         .bindingCount(2)
@@ -35,13 +35,13 @@ Make sure to set the `stageFlags` to indicate that we intend to use the combined
 We must also create a larger descriptor pool to make room for the allocation of the combined image sampler by adding another `VkPoolSize` of type `VkDescriptorType.COMBINED_IMAGE_SAMPLER` to the `VkDescriptorPoolCreateInfo`. Go to the `createDescriptorPool` function and modify it to include a `VkDescriptorPoolSize` for this descriptor:
 
 ```java
-var poolSizes = VkDescriptorPoolSize.allocate(arena, 2);
-poolSizes.at(0)
-        .type(VkDescriptorType.UNIFORM_BUFFER)
-        .descriptorCount(MAX_FRAMES_IN_FLIGHT);
-poolSizes.at(1)
-        .type(VkDescriptorType.COMBINED_IMAGE_SAMPLER)
-        .descriptorCount(MAX_FRAMES_IN_FLIGHT);
+var poolSizes = VkDescriptorPoolSize.allocate(arena, 2)
+        .at(0, it -> it
+                .type(VkDescriptorType.UNIFORM_BUFFER)
+                .descriptorCount(MAX_FRAMES_IN_FLIGHT))
+        .at(1, it -> it
+                .type(VkDescriptorType.COMBINED_IMAGE_SAMPLER)
+                .descriptorCount(MAX_FRAMES_IN_FLIGHT));
 
 var poolInfo = VkDescriptorPoolCreateInfo.allocate(arena)
         .poolSizeCount(2)
@@ -74,21 +74,21 @@ for (int i = 0; i < MAX_FRAMES_IN_FLIGHT; i++) {
 The resources for a combined image sampler structure must be specified in a `VkDescriptorImageInfo` struct, just like the buffer resource for a uniform buffer descriptor is specified in a `VkDescriptorBufferInfo` struct. This is where the objects from the previous chapter come together.
 
 ```java
-var descriptorWrite = VkWriteDescriptorSet.allocate(arena, 2);
-descriptorWrite.at(0)
-        .dstSet(descriptorSets.read(i))
-        .dstBinding(0)
-        .dstArrayElement(0)
-        .descriptorType(VkDescriptorType.UNIFORM_BUFFER)
-        .descriptorCount(1)
-        .pBufferInfo(bufferInfo);
-descriptorWrite.at(1)
-        .dstSet(descriptorSets.read(i))
-        .dstBinding(1)
-        .dstArrayElement(0)
-        .descriptorType(VkDescriptorType.COMBINED_IMAGE_SAMPLER)
-        .descriptorCount(1)
-        .pImageInfo(imageInfo);
+var descriptorWrite = VkWriteDescriptorSet.allocate(arena, 2)
+        .at(0, it -> it
+                .dstSet(descriptorSets.read(i))
+                .dstBinding(0)
+                .dstArrayElement(0)
+                .descriptorType(VkDescriptorType.UNIFORM_BUFFER)
+                .descriptorCount(1)
+                .pBufferInfo(bufferInfo))
+        .at(1, it -> it
+                .dstSet(descriptorSets.read(i))
+                .dstBinding(1)
+                .dstArrayElement(0)
+                .descriptorType(VkDescriptorType.COMBINED_IMAGE_SAMPLER)
+                .descriptorCount(1)
+                .pImageInfo(imageInfo));
 
 deviceCommands.updateDescriptorSets(device, 2, descriptorWrite, 0, null);
 ```
@@ -108,23 +108,22 @@ private static VkVertexInputBindingDescription getBindingDescription(Arena arena
 }
 
 private static VkVertexInputAttributeDescription.Ptr getAttributeDescriptions(Arena arena) {
-    var attributeDescriptions = VkVertexInputAttributeDescription.allocate(arena, 3);
-    attributeDescriptions.at(0)
-            .binding(0)
-            .location(0)
-            .format(VkFormat.R32G32_SFLOAT)
-            .offset(0);
-    attributeDescriptions.at(1)
-            .binding(0)
-            .location(1)
-            .format(VkFormat.R32G32B32_SFLOAT)
-            .offset(Float.BYTES * 2);
-    attributeDescriptions.at(2)
-            .binding(0)
-            .location(2)
-            .format(VkFormat.R32G32_SFLOAT)
-            .offset(Float.BYTES * 5);
-    return attributeDescriptions;
+    return VkVertexInputAttributeDescription.allocate(arena, 3)
+            .at(0, it -> it
+                    .binding(0)
+                    .location(0)
+                    .format(VkFormat.R32G32_SFLOAT)
+                    .offset(0))
+            .at(1, it -> it
+                    .binding(0)
+                    .location(1)
+                    .format(VkFormat.R32G32B32_SFLOAT)
+                    .offset(Float.BYTES * 2))
+            .at(2, it -> it
+                    .binding(0)
+                    .location(2)
+                    .format(VkFormat.R32G32_SFLOAT)
+                    .offset(Float.BYTES * 5));
 }
 ```
 

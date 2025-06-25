@@ -90,6 +90,11 @@ public record VkVideoEncodeH264GopRemainingFrameInfoKHR(@NotNull MemorySegment s
             return new VkVideoEncodeH264GopRemainingFrameInfoKHR(segment.asSlice(index * VkVideoEncodeH264GopRemainingFrameInfoKHR.BYTES, VkVideoEncodeH264GopRemainingFrameInfoKHR.BYTES));
         }
 
+        public VkVideoEncodeH264GopRemainingFrameInfoKHR.Ptr at(long index, @NotNull Consumer<@NotNull VkVideoEncodeH264GopRemainingFrameInfoKHR> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkVideoEncodeH264GopRemainingFrameInfoKHR value) {
             MemorySegment s = segment.asSlice(index * VkVideoEncodeH264GopRemainingFrameInfoKHR.BYTES, VkVideoEncodeH264GopRemainingFrameInfoKHR.BYTES);
             s.copyFrom(value.segment);
@@ -202,12 +207,13 @@ public record VkVideoEncodeH264GopRemainingFrameInfoKHR(@NotNull MemorySegment s
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkVideoEncodeH264GopRemainingFrameInfoKHR pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkVideoEncodeH264GopRemainingFrameInfoKHR pNext(@Nullable IPointer pointer) {

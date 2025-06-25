@@ -1,6 +1,6 @@
 # Window surface
 
-> [Java code](https://github.com/chuigda/vulkan4j/tree/master/modules/tutorial/src/main/java/tutorial/vulkan/part02/ch05/Main.java) | [C++ version](https://vulkan-tutorial.com/Drawing_a_triangle/Presentation/Window_surface)
+> [Java code](https://github.com/club-doki7/vulkan4j/tree/master/modules/tutorial/src/main/java/tutorial/vulkan/part02/ch05/Main.java) | [C++ version](https://vulkan-tutorial.com/Drawing_a_triangle/Presentation/Window_surface)
 
 Since Vulkan is a platform-agnostic API, it can not interface directly with the window system on its own. To establish the connection between Vulkan and the window system to present results to the screen, we need to use the WSI (Window System Integration) extensions. In this chapter we'll discuss the first one, which is `VK_KHR_surface`. It exposes a `VkSurfaceKHR` object that represents an abstract type of surface to present rendered images to. The surface in our program will be backed by the window that we've already opened with GLFW.
 
@@ -148,15 +148,15 @@ if (indices.graphicsFamily == indices.presentFamily) {
     deviceCreateInfo.queueCreateInfoCount(1).pQueueCreateInfos(queueCreateInfo);
 }
 else {
-    var queueCreateInfos = VkDeviceQueueCreateInfo.allocate(arena, 2);
-    queueCreateInfos.at(0)
-            .queueCount(1)
-            .queueFamilyIndex(indices.graphicsFamily())
-            .pQueuePriorities(pQueuePriorities);
-    queueCreateInfos.at(1)
-            .queueCount(1)
-            .queueFamilyIndex(indices.presentFamily())
-            .pQueuePriorities(pQueuePriorities);
+    var queueCreateInfos = VkDeviceQueueCreateInfo.allocate(arena, 2)
+            .at(0, it -> it
+                    .queueCount(1)
+                    .queueFamilyIndex(indices.graphicsFamily())
+                    .pQueuePriorities(pQueuePriorities))
+            .at(1, it -> it
+                    .queueCount(1)
+                    .queueFamilyIndex(indices.presentFamily())
+                    .pQueuePriorities(pQueuePriorities));
     deviceCreateInfo.queueCreateInfoCount(2).pQueueCreateInfos(queueCreateInfos);
 }
 ```

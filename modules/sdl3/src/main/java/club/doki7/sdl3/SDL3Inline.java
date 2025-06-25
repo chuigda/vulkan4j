@@ -1,5 +1,6 @@
 package club.doki7.sdl3;
 
+import club.doki7.ffm.annotation.Bitmask;
 import club.doki7.ffm.annotation.EnumType;
 import club.doki7.sdl3.datatype.ISDL_AtomicInt;
 import club.doki7.sdl3.datatype.SDL_AudioSpec;

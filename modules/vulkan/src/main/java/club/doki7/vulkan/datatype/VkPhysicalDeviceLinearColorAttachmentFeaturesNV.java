@@ -87,6 +87,11 @@ public record VkPhysicalDeviceLinearColorAttachmentFeaturesNV(@NotNull MemorySeg
             return new VkPhysicalDeviceLinearColorAttachmentFeaturesNV(segment.asSlice(index * VkPhysicalDeviceLinearColorAttachmentFeaturesNV.BYTES, VkPhysicalDeviceLinearColorAttachmentFeaturesNV.BYTES));
         }
 
+        public VkPhysicalDeviceLinearColorAttachmentFeaturesNV.Ptr at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceLinearColorAttachmentFeaturesNV> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkPhysicalDeviceLinearColorAttachmentFeaturesNV value) {
             MemorySegment s = segment.asSlice(index * VkPhysicalDeviceLinearColorAttachmentFeaturesNV.BYTES, VkPhysicalDeviceLinearColorAttachmentFeaturesNV.BYTES);
             s.copyFrom(value.segment);
@@ -199,12 +204,13 @@ public record VkPhysicalDeviceLinearColorAttachmentFeaturesNV(@NotNull MemorySeg
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkPhysicalDeviceLinearColorAttachmentFeaturesNV pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkPhysicalDeviceLinearColorAttachmentFeaturesNV pNext(@Nullable IPointer pointer) {

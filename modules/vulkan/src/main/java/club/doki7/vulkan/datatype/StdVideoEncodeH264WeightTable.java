@@ -84,6 +84,11 @@ public record StdVideoEncodeH264WeightTable(@NotNull MemorySegment segment) impl
             return new StdVideoEncodeH264WeightTable(segment.asSlice(index * StdVideoEncodeH264WeightTable.BYTES, StdVideoEncodeH264WeightTable.BYTES));
         }
 
+        public StdVideoEncodeH264WeightTable.Ptr at(long index, @NotNull Consumer<@NotNull StdVideoEncodeH264WeightTable> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull StdVideoEncodeH264WeightTable value) {
             MemorySegment s = segment.asSlice(index * StdVideoEncodeH264WeightTable.BYTES, StdVideoEncodeH264WeightTable.BYTES);
             s.copyFrom(value.segment);
@@ -213,12 +218,19 @@ public record StdVideoEncodeH264WeightTable(@NotNull MemorySegment segment) impl
         return new BytePtr(luma_weight_l0Raw());
     }
 
-    public StdVideoEncodeH264WeightTable luma_weight_l0(BytePtr value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$luma_weight_l0, SIZE$luma_weight_l0);
+    public StdVideoEncodeH264WeightTable luma_weight_l0(@NotNull Consumer<BytePtr> consumer) {
+        BytePtr ptr = luma_weight_l0();
+        consumer.accept(ptr);
         return this;
     }
 
-    public MemorySegment luma_weight_l0Raw() {
+    public StdVideoEncodeH264WeightTable luma_weight_l0(BytePtr value) {
+        MemorySegment s = luma_weight_l0Raw();
+        s.copyFrom(value.segment());
+        return this;
+    }
+
+    public @NotNull MemorySegment luma_weight_l0Raw() {
         return segment.asSlice(OFFSET$luma_weight_l0, SIZE$luma_weight_l0);
     }
 
@@ -226,12 +238,19 @@ public record StdVideoEncodeH264WeightTable(@NotNull MemorySegment segment) impl
         return new BytePtr(luma_offset_l0Raw());
     }
 
-    public StdVideoEncodeH264WeightTable luma_offset_l0(BytePtr value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$luma_offset_l0, SIZE$luma_offset_l0);
+    public StdVideoEncodeH264WeightTable luma_offset_l0(@NotNull Consumer<BytePtr> consumer) {
+        BytePtr ptr = luma_offset_l0();
+        consumer.accept(ptr);
         return this;
     }
 
-    public MemorySegment luma_offset_l0Raw() {
+    public StdVideoEncodeH264WeightTable luma_offset_l0(BytePtr value) {
+        MemorySegment s = luma_offset_l0Raw();
+        s.copyFrom(value.segment());
+        return this;
+    }
+
+    public @NotNull MemorySegment luma_offset_l0Raw() {
         return segment.asSlice(OFFSET$luma_offset_l0, SIZE$luma_offset_l0);
     }
 
@@ -239,12 +258,19 @@ public record StdVideoEncodeH264WeightTable(@NotNull MemorySegment segment) impl
         return new BytePtr(chroma_weight_l0Raw());
     }
 
-    public StdVideoEncodeH264WeightTable chroma_weight_l0(BytePtr value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$chroma_weight_l0, SIZE$chroma_weight_l0);
+    public StdVideoEncodeH264WeightTable chroma_weight_l0(@NotNull Consumer<BytePtr> consumer) {
+        BytePtr ptr = chroma_weight_l0();
+        consumer.accept(ptr);
         return this;
     }
 
-    public MemorySegment chroma_weight_l0Raw() {
+    public StdVideoEncodeH264WeightTable chroma_weight_l0(BytePtr value) {
+        MemorySegment s = chroma_weight_l0Raw();
+        s.copyFrom(value.segment());
+        return this;
+    }
+
+    public @NotNull MemorySegment chroma_weight_l0Raw() {
         return segment.asSlice(OFFSET$chroma_weight_l0, SIZE$chroma_weight_l0);
     }
 
@@ -252,12 +278,19 @@ public record StdVideoEncodeH264WeightTable(@NotNull MemorySegment segment) impl
         return new BytePtr(chroma_offset_l0Raw());
     }
 
-    public StdVideoEncodeH264WeightTable chroma_offset_l0(BytePtr value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$chroma_offset_l0, SIZE$chroma_offset_l0);
+    public StdVideoEncodeH264WeightTable chroma_offset_l0(@NotNull Consumer<BytePtr> consumer) {
+        BytePtr ptr = chroma_offset_l0();
+        consumer.accept(ptr);
         return this;
     }
 
-    public MemorySegment chroma_offset_l0Raw() {
+    public StdVideoEncodeH264WeightTable chroma_offset_l0(BytePtr value) {
+        MemorySegment s = chroma_offset_l0Raw();
+        s.copyFrom(value.segment());
+        return this;
+    }
+
+    public @NotNull MemorySegment chroma_offset_l0Raw() {
         return segment.asSlice(OFFSET$chroma_offset_l0, SIZE$chroma_offset_l0);
     }
 
@@ -265,12 +298,19 @@ public record StdVideoEncodeH264WeightTable(@NotNull MemorySegment segment) impl
         return new BytePtr(luma_weight_l1Raw());
     }
 
-    public StdVideoEncodeH264WeightTable luma_weight_l1(BytePtr value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$luma_weight_l1, SIZE$luma_weight_l1);
+    public StdVideoEncodeH264WeightTable luma_weight_l1(@NotNull Consumer<BytePtr> consumer) {
+        BytePtr ptr = luma_weight_l1();
+        consumer.accept(ptr);
         return this;
     }
 
-    public MemorySegment luma_weight_l1Raw() {
+    public StdVideoEncodeH264WeightTable luma_weight_l1(BytePtr value) {
+        MemorySegment s = luma_weight_l1Raw();
+        s.copyFrom(value.segment());
+        return this;
+    }
+
+    public @NotNull MemorySegment luma_weight_l1Raw() {
         return segment.asSlice(OFFSET$luma_weight_l1, SIZE$luma_weight_l1);
     }
 
@@ -278,12 +318,19 @@ public record StdVideoEncodeH264WeightTable(@NotNull MemorySegment segment) impl
         return new BytePtr(luma_offset_l1Raw());
     }
 
-    public StdVideoEncodeH264WeightTable luma_offset_l1(BytePtr value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$luma_offset_l1, SIZE$luma_offset_l1);
+    public StdVideoEncodeH264WeightTable luma_offset_l1(@NotNull Consumer<BytePtr> consumer) {
+        BytePtr ptr = luma_offset_l1();
+        consumer.accept(ptr);
         return this;
     }
 
-    public MemorySegment luma_offset_l1Raw() {
+    public StdVideoEncodeH264WeightTable luma_offset_l1(BytePtr value) {
+        MemorySegment s = luma_offset_l1Raw();
+        s.copyFrom(value.segment());
+        return this;
+    }
+
+    public @NotNull MemorySegment luma_offset_l1Raw() {
         return segment.asSlice(OFFSET$luma_offset_l1, SIZE$luma_offset_l1);
     }
 
@@ -291,12 +338,19 @@ public record StdVideoEncodeH264WeightTable(@NotNull MemorySegment segment) impl
         return new BytePtr(chroma_weight_l1Raw());
     }
 
-    public StdVideoEncodeH264WeightTable chroma_weight_l1(BytePtr value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$chroma_weight_l1, SIZE$chroma_weight_l1);
+    public StdVideoEncodeH264WeightTable chroma_weight_l1(@NotNull Consumer<BytePtr> consumer) {
+        BytePtr ptr = chroma_weight_l1();
+        consumer.accept(ptr);
         return this;
     }
 
-    public MemorySegment chroma_weight_l1Raw() {
+    public StdVideoEncodeH264WeightTable chroma_weight_l1(BytePtr value) {
+        MemorySegment s = chroma_weight_l1Raw();
+        s.copyFrom(value.segment());
+        return this;
+    }
+
+    public @NotNull MemorySegment chroma_weight_l1Raw() {
         return segment.asSlice(OFFSET$chroma_weight_l1, SIZE$chroma_weight_l1);
     }
 
@@ -304,12 +358,19 @@ public record StdVideoEncodeH264WeightTable(@NotNull MemorySegment segment) impl
         return new BytePtr(chroma_offset_l1Raw());
     }
 
-    public StdVideoEncodeH264WeightTable chroma_offset_l1(BytePtr value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$chroma_offset_l1, SIZE$chroma_offset_l1);
+    public StdVideoEncodeH264WeightTable chroma_offset_l1(@NotNull Consumer<BytePtr> consumer) {
+        BytePtr ptr = chroma_offset_l1();
+        consumer.accept(ptr);
         return this;
     }
 
-    public MemorySegment chroma_offset_l1Raw() {
+    public StdVideoEncodeH264WeightTable chroma_offset_l1(BytePtr value) {
+        MemorySegment s = chroma_offset_l1Raw();
+        s.copyFrom(value.segment());
+        return this;
+    }
+
+    public @NotNull MemorySegment chroma_offset_l1Raw() {
         return segment.asSlice(OFFSET$chroma_offset_l1, SIZE$chroma_offset_l1);
     }
 

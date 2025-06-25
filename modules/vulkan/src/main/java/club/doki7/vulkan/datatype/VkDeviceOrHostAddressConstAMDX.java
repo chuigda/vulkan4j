@@ -77,6 +77,11 @@ public record VkDeviceOrHostAddressConstAMDX(@NotNull MemorySegment segment) imp
             return new VkDeviceOrHostAddressConstAMDX(segment.asSlice(index * VkDeviceOrHostAddressConstAMDX.BYTES, VkDeviceOrHostAddressConstAMDX.BYTES));
         }
 
+        public VkDeviceOrHostAddressConstAMDX.Ptr at(long index, @NotNull Consumer<@NotNull VkDeviceOrHostAddressConstAMDX> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkDeviceOrHostAddressConstAMDX value) {
             MemorySegment s = segment.asSlice(index * VkDeviceOrHostAddressConstAMDX.BYTES, VkDeviceOrHostAddressConstAMDX.BYTES);
             s.copyFrom(value.segment);
@@ -179,12 +184,13 @@ public record VkDeviceOrHostAddressConstAMDX(@NotNull MemorySegment segment) imp
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment hostAddress() {
+    public @Pointer(comment="void*") @NotNull MemorySegment hostAddress() {
         return segment.get(LAYOUT$hostAddress, OFFSET$hostAddress);
     }
 
-    public void hostAddress(@Pointer(comment="void*") MemorySegment value) {
+    public VkDeviceOrHostAddressConstAMDX hostAddress(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$hostAddress, OFFSET$hostAddress, value);
+        return this;
     }
 
     public VkDeviceOrHostAddressConstAMDX hostAddress(@Nullable IPointer pointer) {

@@ -92,6 +92,11 @@ public record VkMemoryToImageCopy(@NotNull MemorySegment segment) implements IVk
             return new VkMemoryToImageCopy(segment.asSlice(index * VkMemoryToImageCopy.BYTES, VkMemoryToImageCopy.BYTES));
         }
 
+        public VkMemoryToImageCopy.Ptr at(long index, @NotNull Consumer<@NotNull VkMemoryToImageCopy> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkMemoryToImageCopy value) {
             MemorySegment s = segment.asSlice(index * VkMemoryToImageCopy.BYTES, VkMemoryToImageCopy.BYTES);
             s.copyFrom(value.segment);
@@ -204,12 +209,13 @@ public record VkMemoryToImageCopy(@NotNull MemorySegment segment) implements IVk
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkMemoryToImageCopy pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkMemoryToImageCopy pNext(@Nullable IPointer pointer) {
@@ -217,12 +223,13 @@ public record VkMemoryToImageCopy(@NotNull MemorySegment segment) implements IVk
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pHostPointer() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pHostPointer() {
         return segment.get(LAYOUT$pHostPointer, OFFSET$pHostPointer);
     }
 
-    public void pHostPointer(@Pointer(comment="void*") MemorySegment value) {
+    public VkMemoryToImageCopy pHostPointer(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pHostPointer, OFFSET$pHostPointer, value);
+        return this;
     }
 
     public VkMemoryToImageCopy pHostPointer(@Nullable IPointer pointer) {

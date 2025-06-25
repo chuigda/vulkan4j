@@ -6,4 +6,4 @@ src = "src"
 title = "Vulkan Tutorial (Java)"
 
 [output.html]
-git-repository-url = "https://github.com/chuigda/vulkan4j"
+git-repository-url = "https://github.com/club-doki7/vulkan4j"

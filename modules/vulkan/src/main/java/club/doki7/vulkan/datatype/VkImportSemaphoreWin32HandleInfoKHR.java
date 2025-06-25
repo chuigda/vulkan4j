@@ -91,6 +91,11 @@ public record VkImportSemaphoreWin32HandleInfoKHR(@NotNull MemorySegment segment
             return new VkImportSemaphoreWin32HandleInfoKHR(segment.asSlice(index * VkImportSemaphoreWin32HandleInfoKHR.BYTES, VkImportSemaphoreWin32HandleInfoKHR.BYTES));
         }
 
+        public VkImportSemaphoreWin32HandleInfoKHR.Ptr at(long index, @NotNull Consumer<@NotNull VkImportSemaphoreWin32HandleInfoKHR> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkImportSemaphoreWin32HandleInfoKHR value) {
             MemorySegment s = segment.asSlice(index * VkImportSemaphoreWin32HandleInfoKHR.BYTES, VkImportSemaphoreWin32HandleInfoKHR.BYTES);
             s.copyFrom(value.segment);
@@ -203,12 +208,13 @@ public record VkImportSemaphoreWin32HandleInfoKHR(@NotNull MemorySegment segment
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkImportSemaphoreWin32HandleInfoKHR pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkImportSemaphoreWin32HandleInfoKHR pNext(@Nullable IPointer pointer) {
@@ -229,30 +235,31 @@ public record VkImportSemaphoreWin32HandleInfoKHR(@NotNull MemorySegment segment
         return this;
     }
 
-    public @EnumType(VkSemaphoreImportFlags.class) int flags() {
+    public @Bitmask(VkSemaphoreImportFlags.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public VkImportSemaphoreWin32HandleInfoKHR flags(@EnumType(VkSemaphoreImportFlags.class) int value) {
+    public VkImportSemaphoreWin32HandleInfoKHR flags(@Bitmask(VkSemaphoreImportFlags.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
         return this;
     }
 
-    public @EnumType(VkExternalSemaphoreHandleTypeFlags.class) int handleType() {
+    public @Bitmask(VkExternalSemaphoreHandleTypeFlags.class) int handleType() {
         return segment.get(LAYOUT$handleType, OFFSET$handleType);
     }
 
-    public VkImportSemaphoreWin32HandleInfoKHR handleType(@EnumType(VkExternalSemaphoreHandleTypeFlags.class) int value) {
+    public VkImportSemaphoreWin32HandleInfoKHR handleType(@Bitmask(VkExternalSemaphoreHandleTypeFlags.class) int value) {
         segment.set(LAYOUT$handleType, OFFSET$handleType, value);
         return this;
     }
 
-    public @Pointer(comment="HANDLE") MemorySegment handle() {
+    public @Pointer(comment="HANDLE") @NotNull MemorySegment handle() {
         return segment.get(LAYOUT$handle, OFFSET$handle);
     }
 
-    public void handle(@Pointer(comment="HANDLE") MemorySegment value) {
+    public VkImportSemaphoreWin32HandleInfoKHR handle(@Pointer(comment="HANDLE") @NotNull MemorySegment value) {
         segment.set(LAYOUT$handle, OFFSET$handle, value);
+        return this;
     }
 
     public VkImportSemaphoreWin32HandleInfoKHR handle(@Nullable IPointer pointer) {
@@ -278,11 +285,11 @@ public record VkImportSemaphoreWin32HandleInfoKHR(@NotNull MemorySegment segment
         return this;
     }
 
-    public @Pointer(comment="uint16_t*") MemorySegment nameRaw() {
+    public @Pointer(comment="uint16_t*") @NotNull MemorySegment nameRaw() {
         return segment.get(LAYOUT$name, OFFSET$name);
     }
 
-    public void nameRaw(@Pointer(comment="uint16_t*") MemorySegment value) {
+    public void nameRaw(@Pointer(comment="uint16_t*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$name, OFFSET$name, value);
     }
 

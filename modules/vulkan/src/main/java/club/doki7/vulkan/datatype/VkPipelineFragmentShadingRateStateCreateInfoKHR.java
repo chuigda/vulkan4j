@@ -88,6 +88,11 @@ public record VkPipelineFragmentShadingRateStateCreateInfoKHR(@NotNull MemorySeg
             return new VkPipelineFragmentShadingRateStateCreateInfoKHR(segment.asSlice(index * VkPipelineFragmentShadingRateStateCreateInfoKHR.BYTES, VkPipelineFragmentShadingRateStateCreateInfoKHR.BYTES));
         }
 
+        public VkPipelineFragmentShadingRateStateCreateInfoKHR.Ptr at(long index, @NotNull Consumer<@NotNull VkPipelineFragmentShadingRateStateCreateInfoKHR> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkPipelineFragmentShadingRateStateCreateInfoKHR value) {
             MemorySegment s = segment.asSlice(index * VkPipelineFragmentShadingRateStateCreateInfoKHR.BYTES, VkPipelineFragmentShadingRateStateCreateInfoKHR.BYTES);
             s.copyFrom(value.segment);
@@ -200,12 +205,13 @@ public record VkPipelineFragmentShadingRateStateCreateInfoKHR(@NotNull MemorySeg
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkPipelineFragmentShadingRateStateCreateInfoKHR pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkPipelineFragmentShadingRateStateCreateInfoKHR pNext(@Nullable IPointer pointer) {
@@ -231,12 +237,19 @@ public record VkPipelineFragmentShadingRateStateCreateInfoKHR(@NotNull MemorySeg
         return new IntPtr(combinerOpsRaw());
     }
 
-    public VkPipelineFragmentShadingRateStateCreateInfoKHR combinerOps(@EnumType(VkFragmentShadingRateCombinerOpKHR.class) IntPtr value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$combinerOps, SIZE$combinerOps);
+    public VkPipelineFragmentShadingRateStateCreateInfoKHR combinerOps(@NotNull Consumer<IntPtr> consumer) {
+        @EnumType(VkFragmentShadingRateCombinerOpKHR.class) IntPtr ptr = combinerOps();
+        consumer.accept(ptr);
         return this;
     }
 
-    public MemorySegment combinerOpsRaw() {
+    public VkPipelineFragmentShadingRateStateCreateInfoKHR combinerOps(@EnumType(VkFragmentShadingRateCombinerOpKHR.class) IntPtr value) {
+        MemorySegment s = combinerOpsRaw();
+        s.copyFrom(value.segment());
+        return this;
+    }
+
+    public @NotNull MemorySegment combinerOpsRaw() {
         return segment.asSlice(OFFSET$combinerOps, SIZE$combinerOps);
     }
 

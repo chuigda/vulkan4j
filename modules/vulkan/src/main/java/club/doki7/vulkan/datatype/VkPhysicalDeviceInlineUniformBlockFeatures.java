@@ -88,6 +88,11 @@ public record VkPhysicalDeviceInlineUniformBlockFeatures(@NotNull MemorySegment 
             return new VkPhysicalDeviceInlineUniformBlockFeatures(segment.asSlice(index * VkPhysicalDeviceInlineUniformBlockFeatures.BYTES, VkPhysicalDeviceInlineUniformBlockFeatures.BYTES));
         }
 
+        public VkPhysicalDeviceInlineUniformBlockFeatures.Ptr at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceInlineUniformBlockFeatures> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkPhysicalDeviceInlineUniformBlockFeatures value) {
             MemorySegment s = segment.asSlice(index * VkPhysicalDeviceInlineUniformBlockFeatures.BYTES, VkPhysicalDeviceInlineUniformBlockFeatures.BYTES);
             s.copyFrom(value.segment);
@@ -200,12 +205,13 @@ public record VkPhysicalDeviceInlineUniformBlockFeatures(@NotNull MemorySegment 
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkPhysicalDeviceInlineUniformBlockFeatures pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkPhysicalDeviceInlineUniformBlockFeatures pNext(@Nullable IPointer pointer) {

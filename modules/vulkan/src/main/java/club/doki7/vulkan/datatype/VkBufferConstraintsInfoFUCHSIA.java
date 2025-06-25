@@ -89,6 +89,11 @@ public record VkBufferConstraintsInfoFUCHSIA(@NotNull MemorySegment segment) imp
             return new VkBufferConstraintsInfoFUCHSIA(segment.asSlice(index * VkBufferConstraintsInfoFUCHSIA.BYTES, VkBufferConstraintsInfoFUCHSIA.BYTES));
         }
 
+        public VkBufferConstraintsInfoFUCHSIA.Ptr at(long index, @NotNull Consumer<@NotNull VkBufferConstraintsInfoFUCHSIA> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkBufferConstraintsInfoFUCHSIA value) {
             MemorySegment s = segment.asSlice(index * VkBufferConstraintsInfoFUCHSIA.BYTES, VkBufferConstraintsInfoFUCHSIA.BYTES);
             s.copyFrom(value.segment);
@@ -201,12 +206,13 @@ public record VkBufferConstraintsInfoFUCHSIA(@NotNull MemorySegment segment) imp
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkBufferConstraintsInfoFUCHSIA pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkBufferConstraintsInfoFUCHSIA pNext(@Nullable IPointer pointer) {
@@ -228,11 +234,11 @@ public record VkBufferConstraintsInfoFUCHSIA(@NotNull MemorySegment segment) imp
         return this;
     }
 
-    public @EnumType(VkFormatFeatureFlags.class) int requiredFormatFeatures() {
+    public @Bitmask(VkFormatFeatureFlags.class) int requiredFormatFeatures() {
         return segment.get(LAYOUT$requiredFormatFeatures, OFFSET$requiredFormatFeatures);
     }
 
-    public VkBufferConstraintsInfoFUCHSIA requiredFormatFeatures(@EnumType(VkFormatFeatureFlags.class) int value) {
+    public VkBufferConstraintsInfoFUCHSIA requiredFormatFeatures(@Bitmask(VkFormatFeatureFlags.class) int value) {
         segment.set(LAYOUT$requiredFormatFeatures, OFFSET$requiredFormatFeatures, value);
         return this;
     }

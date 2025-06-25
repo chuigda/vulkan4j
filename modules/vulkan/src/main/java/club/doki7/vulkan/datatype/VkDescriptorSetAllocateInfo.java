@@ -89,6 +89,11 @@ public record VkDescriptorSetAllocateInfo(@NotNull MemorySegment segment) implem
             return new VkDescriptorSetAllocateInfo(segment.asSlice(index * VkDescriptorSetAllocateInfo.BYTES, VkDescriptorSetAllocateInfo.BYTES));
         }
 
+        public VkDescriptorSetAllocateInfo.Ptr at(long index, @NotNull Consumer<@NotNull VkDescriptorSetAllocateInfo> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkDescriptorSetAllocateInfo value) {
             MemorySegment s = segment.asSlice(index * VkDescriptorSetAllocateInfo.BYTES, VkDescriptorSetAllocateInfo.BYTES);
             s.copyFrom(value.segment);
@@ -201,12 +206,13 @@ public record VkDescriptorSetAllocateInfo(@NotNull MemorySegment segment) implem
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkDescriptorSetAllocateInfo pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkDescriptorSetAllocateInfo pNext(@Nullable IPointer pointer) {
@@ -254,11 +260,11 @@ public record VkDescriptorSetAllocateInfo(@NotNull MemorySegment segment) implem
         return this;
     }
 
-    public @Pointer(target=VkDescriptorSetLayout.class) MemorySegment pSetLayoutsRaw() {
+    public @Pointer(target=VkDescriptorSetLayout.class) @NotNull MemorySegment pSetLayoutsRaw() {
         return segment.get(LAYOUT$pSetLayouts, OFFSET$pSetLayouts);
     }
 
-    public void pSetLayoutsRaw(@Pointer(target=VkDescriptorSetLayout.class) MemorySegment value) {
+    public void pSetLayoutsRaw(@Pointer(target=VkDescriptorSetLayout.class) @NotNull MemorySegment value) {
         segment.set(LAYOUT$pSetLayouts, OFFSET$pSetLayouts, value);
     }
 

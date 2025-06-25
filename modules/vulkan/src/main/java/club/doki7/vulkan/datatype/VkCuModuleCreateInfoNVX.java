@@ -27,7 +27,7 @@ import static club.doki7.vulkan.VkConstants.*;
 ///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
 ///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
 ///     size_t dataSize; // optional // @link substring="dataSize" target="#dataSize"
-///     void const* pData; // @link substring="pData" target="#pData"
+///     void const* pData; // optional // @link substring="pData" target="#pData"
 /// } VkCuModuleCreateInfoNVX;
 /// }
 ///
@@ -86,6 +86,11 @@ public record VkCuModuleCreateInfoNVX(@NotNull MemorySegment segment) implements
         /// indicate that the returned structure is a view of the original structure.
         public @NotNull VkCuModuleCreateInfoNVX at(long index) {
             return new VkCuModuleCreateInfoNVX(segment.asSlice(index * VkCuModuleCreateInfoNVX.BYTES, VkCuModuleCreateInfoNVX.BYTES));
+        }
+
+        public VkCuModuleCreateInfoNVX.Ptr at(long index, @NotNull Consumer<@NotNull VkCuModuleCreateInfoNVX> consumer) {
+            consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkCuModuleCreateInfoNVX value) {
@@ -200,12 +205,13 @@ public record VkCuModuleCreateInfoNVX(@NotNull MemorySegment segment) implements
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkCuModuleCreateInfoNVX pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkCuModuleCreateInfoNVX pNext(@Nullable IPointer pointer) {
@@ -222,12 +228,13 @@ public record VkCuModuleCreateInfoNVX(@NotNull MemorySegment segment) implements
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pData() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pData() {
         return segment.get(LAYOUT$pData, OFFSET$pData);
     }
 
-    public void pData(@Pointer(comment="void*") MemorySegment value) {
+    public VkCuModuleCreateInfoNVX pData(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pData, OFFSET$pData, value);
+        return this;
     }
 
     public VkCuModuleCreateInfoNVX pData(@Nullable IPointer pointer) {

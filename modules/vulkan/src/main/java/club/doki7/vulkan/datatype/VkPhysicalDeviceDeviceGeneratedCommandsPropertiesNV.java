@@ -95,6 +95,11 @@ public record VkPhysicalDeviceDeviceGeneratedCommandsPropertiesNV(@NotNull Memor
             return new VkPhysicalDeviceDeviceGeneratedCommandsPropertiesNV(segment.asSlice(index * VkPhysicalDeviceDeviceGeneratedCommandsPropertiesNV.BYTES, VkPhysicalDeviceDeviceGeneratedCommandsPropertiesNV.BYTES));
         }
 
+        public VkPhysicalDeviceDeviceGeneratedCommandsPropertiesNV.Ptr at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceDeviceGeneratedCommandsPropertiesNV> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkPhysicalDeviceDeviceGeneratedCommandsPropertiesNV value) {
             MemorySegment s = segment.asSlice(index * VkPhysicalDeviceDeviceGeneratedCommandsPropertiesNV.BYTES, VkPhysicalDeviceDeviceGeneratedCommandsPropertiesNV.BYTES);
             s.copyFrom(value.segment);
@@ -207,12 +212,13 @@ public record VkPhysicalDeviceDeviceGeneratedCommandsPropertiesNV(@NotNull Memor
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkPhysicalDeviceDeviceGeneratedCommandsPropertiesNV pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkPhysicalDeviceDeviceGeneratedCommandsPropertiesNV pNext(@Nullable IPointer pointer) {

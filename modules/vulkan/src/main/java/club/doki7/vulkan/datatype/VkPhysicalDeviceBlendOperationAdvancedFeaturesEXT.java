@@ -87,6 +87,11 @@ public record VkPhysicalDeviceBlendOperationAdvancedFeaturesEXT(@NotNull MemoryS
             return new VkPhysicalDeviceBlendOperationAdvancedFeaturesEXT(segment.asSlice(index * VkPhysicalDeviceBlendOperationAdvancedFeaturesEXT.BYTES, VkPhysicalDeviceBlendOperationAdvancedFeaturesEXT.BYTES));
         }
 
+        public VkPhysicalDeviceBlendOperationAdvancedFeaturesEXT.Ptr at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceBlendOperationAdvancedFeaturesEXT> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkPhysicalDeviceBlendOperationAdvancedFeaturesEXT value) {
             MemorySegment s = segment.asSlice(index * VkPhysicalDeviceBlendOperationAdvancedFeaturesEXT.BYTES, VkPhysicalDeviceBlendOperationAdvancedFeaturesEXT.BYTES);
             s.copyFrom(value.segment);
@@ -199,12 +204,13 @@ public record VkPhysicalDeviceBlendOperationAdvancedFeaturesEXT(@NotNull MemoryS
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkPhysicalDeviceBlendOperationAdvancedFeaturesEXT pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkPhysicalDeviceBlendOperationAdvancedFeaturesEXT pNext(@Nullable IPointer pointer) {

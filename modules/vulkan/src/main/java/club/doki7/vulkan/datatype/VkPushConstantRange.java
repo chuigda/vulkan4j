@@ -78,6 +78,11 @@ public record VkPushConstantRange(@NotNull MemorySegment segment) implements IVk
             return new VkPushConstantRange(segment.asSlice(index * VkPushConstantRange.BYTES, VkPushConstantRange.BYTES));
         }
 
+        public VkPushConstantRange.Ptr at(long index, @NotNull Consumer<@NotNull VkPushConstantRange> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkPushConstantRange value) {
             MemorySegment s = segment.asSlice(index * VkPushConstantRange.BYTES, VkPushConstantRange.BYTES);
             s.copyFrom(value.segment);
@@ -171,11 +176,11 @@ public record VkPushConstantRange(@NotNull MemorySegment segment) implements IVk
         return ret;
     }
 
-    public @EnumType(VkShaderStageFlags.class) int stageFlags() {
+    public @Bitmask(VkShaderStageFlags.class) int stageFlags() {
         return segment.get(LAYOUT$stageFlags, OFFSET$stageFlags);
     }
 
-    public VkPushConstantRange stageFlags(@EnumType(VkShaderStageFlags.class) int value) {
+    public VkPushConstantRange stageFlags(@Bitmask(VkShaderStageFlags.class) int value) {
         segment.set(LAYOUT$stageFlags, OFFSET$stageFlags, value);
         return this;
     }

@@ -87,6 +87,11 @@ public record VkPhysicalDeviceExternalMemoryRDMAFeaturesNV(@NotNull MemorySegmen
             return new VkPhysicalDeviceExternalMemoryRDMAFeaturesNV(segment.asSlice(index * VkPhysicalDeviceExternalMemoryRDMAFeaturesNV.BYTES, VkPhysicalDeviceExternalMemoryRDMAFeaturesNV.BYTES));
         }
 
+        public VkPhysicalDeviceExternalMemoryRDMAFeaturesNV.Ptr at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceExternalMemoryRDMAFeaturesNV> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkPhysicalDeviceExternalMemoryRDMAFeaturesNV value) {
             MemorySegment s = segment.asSlice(index * VkPhysicalDeviceExternalMemoryRDMAFeaturesNV.BYTES, VkPhysicalDeviceExternalMemoryRDMAFeaturesNV.BYTES);
             s.copyFrom(value.segment);
@@ -199,12 +204,13 @@ public record VkPhysicalDeviceExternalMemoryRDMAFeaturesNV(@NotNull MemorySegmen
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkPhysicalDeviceExternalMemoryRDMAFeaturesNV pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkPhysicalDeviceExternalMemoryRDMAFeaturesNV pNext(@Nullable IPointer pointer) {

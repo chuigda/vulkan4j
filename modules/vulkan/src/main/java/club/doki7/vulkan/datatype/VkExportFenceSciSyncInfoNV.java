@@ -87,6 +87,11 @@ public record VkExportFenceSciSyncInfoNV(@NotNull MemorySegment segment) impleme
             return new VkExportFenceSciSyncInfoNV(segment.asSlice(index * VkExportFenceSciSyncInfoNV.BYTES, VkExportFenceSciSyncInfoNV.BYTES));
         }
 
+        public VkExportFenceSciSyncInfoNV.Ptr at(long index, @NotNull Consumer<@NotNull VkExportFenceSciSyncInfoNV> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkExportFenceSciSyncInfoNV value) {
             MemorySegment s = segment.asSlice(index * VkExportFenceSciSyncInfoNV.BYTES, VkExportFenceSciSyncInfoNV.BYTES);
             s.copyFrom(value.segment);
@@ -199,12 +204,13 @@ public record VkExportFenceSciSyncInfoNV(@NotNull MemorySegment segment) impleme
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkExportFenceSciSyncInfoNV pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkExportFenceSciSyncInfoNV pNext(@Nullable IPointer pointer) {
@@ -212,12 +218,13 @@ public record VkExportFenceSciSyncInfoNV(@NotNull MemorySegment segment) impleme
         return this;
     }
 
-    public @Pointer(comment="NvSciSyncAttrList") MemorySegment pAttributes() {
+    public @Pointer(comment="NvSciSyncAttrList") @NotNull MemorySegment pAttributes() {
         return segment.get(LAYOUT$pAttributes, OFFSET$pAttributes);
     }
 
-    public void pAttributes(@Pointer(comment="NvSciSyncAttrList") MemorySegment value) {
+    public VkExportFenceSciSyncInfoNV pAttributes(@Pointer(comment="NvSciSyncAttrList") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pAttributes, OFFSET$pAttributes, value);
+        return this;
     }
 
     public VkExportFenceSciSyncInfoNV pAttributes(@Nullable IPointer pointer) {

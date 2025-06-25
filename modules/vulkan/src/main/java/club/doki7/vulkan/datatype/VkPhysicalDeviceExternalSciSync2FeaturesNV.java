@@ -90,6 +90,11 @@ public record VkPhysicalDeviceExternalSciSync2FeaturesNV(@NotNull MemorySegment 
             return new VkPhysicalDeviceExternalSciSync2FeaturesNV(segment.asSlice(index * VkPhysicalDeviceExternalSciSync2FeaturesNV.BYTES, VkPhysicalDeviceExternalSciSync2FeaturesNV.BYTES));
         }
 
+        public VkPhysicalDeviceExternalSciSync2FeaturesNV.Ptr at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceExternalSciSync2FeaturesNV> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkPhysicalDeviceExternalSciSync2FeaturesNV value) {
             MemorySegment s = segment.asSlice(index * VkPhysicalDeviceExternalSciSync2FeaturesNV.BYTES, VkPhysicalDeviceExternalSciSync2FeaturesNV.BYTES);
             s.copyFrom(value.segment);
@@ -202,12 +207,13 @@ public record VkPhysicalDeviceExternalSciSync2FeaturesNV(@NotNull MemorySegment 
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkPhysicalDeviceExternalSciSync2FeaturesNV pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkPhysicalDeviceExternalSciSync2FeaturesNV pNext(@Nullable IPointer pointer) {

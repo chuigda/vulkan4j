@@ -74,6 +74,11 @@ public record StdVideoH265PredictorPaletteEntries(@NotNull MemorySegment segment
             return new StdVideoH265PredictorPaletteEntries(segment.asSlice(index * StdVideoH265PredictorPaletteEntries.BYTES, StdVideoH265PredictorPaletteEntries.BYTES));
         }
 
+        public StdVideoH265PredictorPaletteEntries.Ptr at(long index, @NotNull Consumer<@NotNull StdVideoH265PredictorPaletteEntries> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull StdVideoH265PredictorPaletteEntries value) {
             MemorySegment s = segment.asSlice(index * StdVideoH265PredictorPaletteEntries.BYTES, StdVideoH265PredictorPaletteEntries.BYTES);
             s.copyFrom(value.segment);
@@ -171,12 +176,19 @@ public record StdVideoH265PredictorPaletteEntries(@NotNull MemorySegment segment
         return new ShortPtr(PredictorPaletteEntriesRaw());
     }
 
-    public StdVideoH265PredictorPaletteEntries PredictorPaletteEntries(@Unsigned ShortPtr value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$PredictorPaletteEntries, SIZE$PredictorPaletteEntries);
+    public StdVideoH265PredictorPaletteEntries PredictorPaletteEntries(@NotNull Consumer<ShortPtr> consumer) {
+        @Unsigned ShortPtr ptr = PredictorPaletteEntries();
+        consumer.accept(ptr);
         return this;
     }
 
-    public MemorySegment PredictorPaletteEntriesRaw() {
+    public StdVideoH265PredictorPaletteEntries PredictorPaletteEntries(@Unsigned ShortPtr value) {
+        MemorySegment s = PredictorPaletteEntriesRaw();
+        s.copyFrom(value.segment());
+        return this;
+    }
+
+    public @NotNull MemorySegment PredictorPaletteEntriesRaw() {
         return segment.asSlice(OFFSET$PredictorPaletteEntries, SIZE$PredictorPaletteEntries);
     }
 

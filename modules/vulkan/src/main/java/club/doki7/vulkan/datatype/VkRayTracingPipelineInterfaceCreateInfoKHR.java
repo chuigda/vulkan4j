@@ -88,6 +88,11 @@ public record VkRayTracingPipelineInterfaceCreateInfoKHR(@NotNull MemorySegment 
             return new VkRayTracingPipelineInterfaceCreateInfoKHR(segment.asSlice(index * VkRayTracingPipelineInterfaceCreateInfoKHR.BYTES, VkRayTracingPipelineInterfaceCreateInfoKHR.BYTES));
         }
 
+        public VkRayTracingPipelineInterfaceCreateInfoKHR.Ptr at(long index, @NotNull Consumer<@NotNull VkRayTracingPipelineInterfaceCreateInfoKHR> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkRayTracingPipelineInterfaceCreateInfoKHR value) {
             MemorySegment s = segment.asSlice(index * VkRayTracingPipelineInterfaceCreateInfoKHR.BYTES, VkRayTracingPipelineInterfaceCreateInfoKHR.BYTES);
             s.copyFrom(value.segment);
@@ -200,12 +205,13 @@ public record VkRayTracingPipelineInterfaceCreateInfoKHR(@NotNull MemorySegment 
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkRayTracingPipelineInterfaceCreateInfoKHR pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkRayTracingPipelineInterfaceCreateInfoKHR pNext(@Nullable IPointer pointer) {

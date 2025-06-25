@@ -89,6 +89,11 @@ public record VkPipelineRasterizationConservativeStateCreateInfoEXT(@NotNull Mem
             return new VkPipelineRasterizationConservativeStateCreateInfoEXT(segment.asSlice(index * VkPipelineRasterizationConservativeStateCreateInfoEXT.BYTES, VkPipelineRasterizationConservativeStateCreateInfoEXT.BYTES));
         }
 
+        public VkPipelineRasterizationConservativeStateCreateInfoEXT.Ptr at(long index, @NotNull Consumer<@NotNull VkPipelineRasterizationConservativeStateCreateInfoEXT> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkPipelineRasterizationConservativeStateCreateInfoEXT value) {
             MemorySegment s = segment.asSlice(index * VkPipelineRasterizationConservativeStateCreateInfoEXT.BYTES, VkPipelineRasterizationConservativeStateCreateInfoEXT.BYTES);
             s.copyFrom(value.segment);
@@ -201,12 +206,13 @@ public record VkPipelineRasterizationConservativeStateCreateInfoEXT(@NotNull Mem
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkPipelineRasterizationConservativeStateCreateInfoEXT pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkPipelineRasterizationConservativeStateCreateInfoEXT pNext(@Nullable IPointer pointer) {
@@ -214,11 +220,11 @@ public record VkPipelineRasterizationConservativeStateCreateInfoEXT(@NotNull Mem
         return this;
     }
 
-    public @EnumType(VkPipelineRasterizationConservativeStateCreateFlagsEXT.class) int flags() {
+    public @Bitmask(VkPipelineRasterizationConservativeStateCreateFlagsEXT.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public VkPipelineRasterizationConservativeStateCreateInfoEXT flags(@EnumType(VkPipelineRasterizationConservativeStateCreateFlagsEXT.class) int value) {
+    public VkPipelineRasterizationConservativeStateCreateInfoEXT flags(@Bitmask(VkPipelineRasterizationConservativeStateCreateFlagsEXT.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
         return this;
     }

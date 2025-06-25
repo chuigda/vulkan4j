@@ -89,6 +89,11 @@ public record VkCopyAccelerationStructureInfoKHR(@NotNull MemorySegment segment)
             return new VkCopyAccelerationStructureInfoKHR(segment.asSlice(index * VkCopyAccelerationStructureInfoKHR.BYTES, VkCopyAccelerationStructureInfoKHR.BYTES));
         }
 
+        public VkCopyAccelerationStructureInfoKHR.Ptr at(long index, @NotNull Consumer<@NotNull VkCopyAccelerationStructureInfoKHR> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkCopyAccelerationStructureInfoKHR value) {
             MemorySegment s = segment.asSlice(index * VkCopyAccelerationStructureInfoKHR.BYTES, VkCopyAccelerationStructureInfoKHR.BYTES);
             s.copyFrom(value.segment);
@@ -201,12 +206,13 @@ public record VkCopyAccelerationStructureInfoKHR(@NotNull MemorySegment segment)
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkCopyAccelerationStructureInfoKHR pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkCopyAccelerationStructureInfoKHR pNext(@Nullable IPointer pointer) {

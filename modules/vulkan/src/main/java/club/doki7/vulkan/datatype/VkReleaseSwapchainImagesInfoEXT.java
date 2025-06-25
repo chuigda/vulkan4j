@@ -89,6 +89,11 @@ public record VkReleaseSwapchainImagesInfoEXT(@NotNull MemorySegment segment) im
             return new VkReleaseSwapchainImagesInfoEXT(segment.asSlice(index * VkReleaseSwapchainImagesInfoEXT.BYTES, VkReleaseSwapchainImagesInfoEXT.BYTES));
         }
 
+        public VkReleaseSwapchainImagesInfoEXT.Ptr at(long index, @NotNull Consumer<@NotNull VkReleaseSwapchainImagesInfoEXT> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkReleaseSwapchainImagesInfoEXT value) {
             MemorySegment s = segment.asSlice(index * VkReleaseSwapchainImagesInfoEXT.BYTES, VkReleaseSwapchainImagesInfoEXT.BYTES);
             s.copyFrom(value.segment);
@@ -201,12 +206,13 @@ public record VkReleaseSwapchainImagesInfoEXT(@NotNull MemorySegment segment) im
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkReleaseSwapchainImagesInfoEXT pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkReleaseSwapchainImagesInfoEXT pNext(@Nullable IPointer pointer) {
@@ -254,11 +260,11 @@ public record VkReleaseSwapchainImagesInfoEXT(@NotNull MemorySegment segment) im
         return this;
     }
 
-    public @Pointer(comment="uint32_t*") MemorySegment pImageIndicesRaw() {
+    public @Pointer(comment="uint32_t*") @NotNull MemorySegment pImageIndicesRaw() {
         return segment.get(LAYOUT$pImageIndices, OFFSET$pImageIndices);
     }
 
-    public void pImageIndicesRaw(@Pointer(comment="uint32_t*") MemorySegment value) {
+    public void pImageIndicesRaw(@Pointer(comment="uint32_t*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pImageIndices, OFFSET$pImageIndices, value);
     }
 

@@ -76,6 +76,11 @@ public record VkClusterAccelerationStructureMoveObjectsInfoNV(@NotNull MemorySeg
             return new VkClusterAccelerationStructureMoveObjectsInfoNV(segment.asSlice(index * VkClusterAccelerationStructureMoveObjectsInfoNV.BYTES, VkClusterAccelerationStructureMoveObjectsInfoNV.BYTES));
         }
 
+        public VkClusterAccelerationStructureMoveObjectsInfoNV.Ptr at(long index, @NotNull Consumer<@NotNull VkClusterAccelerationStructureMoveObjectsInfoNV> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkClusterAccelerationStructureMoveObjectsInfoNV value) {
             MemorySegment s = segment.asSlice(index * VkClusterAccelerationStructureMoveObjectsInfoNV.BYTES, VkClusterAccelerationStructureMoveObjectsInfoNV.BYTES);
             s.copyFrom(value.segment);

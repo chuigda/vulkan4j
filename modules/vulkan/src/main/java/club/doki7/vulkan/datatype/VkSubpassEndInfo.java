@@ -86,6 +86,11 @@ public record VkSubpassEndInfo(@NotNull MemorySegment segment) implements IVkSub
             return new VkSubpassEndInfo(segment.asSlice(index * VkSubpassEndInfo.BYTES, VkSubpassEndInfo.BYTES));
         }
 
+        public VkSubpassEndInfo.Ptr at(long index, @NotNull Consumer<@NotNull VkSubpassEndInfo> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkSubpassEndInfo value) {
             MemorySegment s = segment.asSlice(index * VkSubpassEndInfo.BYTES, VkSubpassEndInfo.BYTES);
             s.copyFrom(value.segment);
@@ -198,12 +203,13 @@ public record VkSubpassEndInfo(@NotNull MemorySegment segment) implements IVkSub
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkSubpassEndInfo pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkSubpassEndInfo pNext(@Nullable IPointer pointer) {

@@ -89,6 +89,11 @@ public record VkVideoEncodeH265PictureInfoKHR(@NotNull MemorySegment segment) im
             return new VkVideoEncodeH265PictureInfoKHR(segment.asSlice(index * VkVideoEncodeH265PictureInfoKHR.BYTES, VkVideoEncodeH265PictureInfoKHR.BYTES));
         }
 
+        public VkVideoEncodeH265PictureInfoKHR.Ptr at(long index, @NotNull Consumer<@NotNull VkVideoEncodeH265PictureInfoKHR> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkVideoEncodeH265PictureInfoKHR value) {
             MemorySegment s = segment.asSlice(index * VkVideoEncodeH265PictureInfoKHR.BYTES, VkVideoEncodeH265PictureInfoKHR.BYTES);
             s.copyFrom(value.segment);
@@ -201,12 +206,13 @@ public record VkVideoEncodeH265PictureInfoKHR(@NotNull MemorySegment segment) im
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkVideoEncodeH265PictureInfoKHR pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkVideoEncodeH265PictureInfoKHR pNext(@Nullable IPointer pointer) {
@@ -247,11 +253,11 @@ public record VkVideoEncodeH265PictureInfoKHR(@NotNull MemorySegment segment) im
         return new VkVideoEncodeH265NaluSliceSegmentInfoKHR(s);
     }
 
-    public @Pointer(target=VkVideoEncodeH265NaluSliceSegmentInfoKHR.class) MemorySegment pNaluSliceSegmentEntriesRaw() {
+    public @Pointer(target=VkVideoEncodeH265NaluSliceSegmentInfoKHR.class) @NotNull MemorySegment pNaluSliceSegmentEntriesRaw() {
         return segment.get(LAYOUT$pNaluSliceSegmentEntries, OFFSET$pNaluSliceSegmentEntries);
     }
 
-    public void pNaluSliceSegmentEntriesRaw(@Pointer(target=VkVideoEncodeH265NaluSliceSegmentInfoKHR.class) MemorySegment value) {
+    public void pNaluSliceSegmentEntriesRaw(@Pointer(target=VkVideoEncodeH265NaluSliceSegmentInfoKHR.class) @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNaluSliceSegmentEntries, OFFSET$pNaluSliceSegmentEntries, value);
     }
 
@@ -279,11 +285,11 @@ public record VkVideoEncodeH265PictureInfoKHR(@NotNull MemorySegment segment) im
         return new StdVideoEncodeH265PictureInfo(s);
     }
 
-    public @Pointer(target=StdVideoEncodeH265PictureInfo.class) MemorySegment pStdPictureInfoRaw() {
+    public @Pointer(target=StdVideoEncodeH265PictureInfo.class) @NotNull MemorySegment pStdPictureInfoRaw() {
         return segment.get(LAYOUT$pStdPictureInfo, OFFSET$pStdPictureInfo);
     }
 
-    public void pStdPictureInfoRaw(@Pointer(target=StdVideoEncodeH265PictureInfo.class) MemorySegment value) {
+    public void pStdPictureInfoRaw(@Pointer(target=StdVideoEncodeH265PictureInfo.class) @NotNull MemorySegment value) {
         segment.set(LAYOUT$pStdPictureInfo, OFFSET$pStdPictureInfo, value);
     }
 

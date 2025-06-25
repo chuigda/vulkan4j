@@ -87,6 +87,11 @@ public record VkOpticalFlowImageFormatInfoNV(@NotNull MemorySegment segment) imp
             return new VkOpticalFlowImageFormatInfoNV(segment.asSlice(index * VkOpticalFlowImageFormatInfoNV.BYTES, VkOpticalFlowImageFormatInfoNV.BYTES));
         }
 
+        public VkOpticalFlowImageFormatInfoNV.Ptr at(long index, @NotNull Consumer<@NotNull VkOpticalFlowImageFormatInfoNV> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkOpticalFlowImageFormatInfoNV value) {
             MemorySegment s = segment.asSlice(index * VkOpticalFlowImageFormatInfoNV.BYTES, VkOpticalFlowImageFormatInfoNV.BYTES);
             s.copyFrom(value.segment);
@@ -199,12 +204,13 @@ public record VkOpticalFlowImageFormatInfoNV(@NotNull MemorySegment segment) imp
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkOpticalFlowImageFormatInfoNV pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkOpticalFlowImageFormatInfoNV pNext(@Nullable IPointer pointer) {
@@ -212,11 +218,11 @@ public record VkOpticalFlowImageFormatInfoNV(@NotNull MemorySegment segment) imp
         return this;
     }
 
-    public @EnumType(VkOpticalFlowUsageFlagsNV.class) int usage() {
+    public @Bitmask(VkOpticalFlowUsageFlagsNV.class) int usage() {
         return segment.get(LAYOUT$usage, OFFSET$usage);
     }
 
-    public VkOpticalFlowImageFormatInfoNV usage(@EnumType(VkOpticalFlowUsageFlagsNV.class) int value) {
+    public VkOpticalFlowImageFormatInfoNV usage(@Bitmask(VkOpticalFlowUsageFlagsNV.class) int value) {
         segment.set(LAYOUT$usage, OFFSET$usage, value);
         return this;
     }

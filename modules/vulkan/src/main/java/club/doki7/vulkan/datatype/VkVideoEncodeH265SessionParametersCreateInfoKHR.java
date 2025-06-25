@@ -90,6 +90,11 @@ public record VkVideoEncodeH265SessionParametersCreateInfoKHR(@NotNull MemorySeg
             return new VkVideoEncodeH265SessionParametersCreateInfoKHR(segment.asSlice(index * VkVideoEncodeH265SessionParametersCreateInfoKHR.BYTES, VkVideoEncodeH265SessionParametersCreateInfoKHR.BYTES));
         }
 
+        public VkVideoEncodeH265SessionParametersCreateInfoKHR.Ptr at(long index, @NotNull Consumer<@NotNull VkVideoEncodeH265SessionParametersCreateInfoKHR> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkVideoEncodeH265SessionParametersCreateInfoKHR value) {
             MemorySegment s = segment.asSlice(index * VkVideoEncodeH265SessionParametersCreateInfoKHR.BYTES, VkVideoEncodeH265SessionParametersCreateInfoKHR.BYTES);
             s.copyFrom(value.segment);
@@ -202,12 +207,13 @@ public record VkVideoEncodeH265SessionParametersCreateInfoKHR(@NotNull MemorySeg
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkVideoEncodeH265SessionParametersCreateInfoKHR pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkVideoEncodeH265SessionParametersCreateInfoKHR pNext(@Nullable IPointer pointer) {
@@ -266,11 +272,11 @@ public record VkVideoEncodeH265SessionParametersCreateInfoKHR(@NotNull MemorySeg
         return new VkVideoEncodeH265SessionParametersAddInfoKHR(s);
     }
 
-    public @Pointer(target=VkVideoEncodeH265SessionParametersAddInfoKHR.class) MemorySegment pParametersAddInfoRaw() {
+    public @Pointer(target=VkVideoEncodeH265SessionParametersAddInfoKHR.class) @NotNull MemorySegment pParametersAddInfoRaw() {
         return segment.get(LAYOUT$pParametersAddInfo, OFFSET$pParametersAddInfo);
     }
 
-    public void pParametersAddInfoRaw(@Pointer(target=VkVideoEncodeH265SessionParametersAddInfoKHR.class) MemorySegment value) {
+    public void pParametersAddInfoRaw(@Pointer(target=VkVideoEncodeH265SessionParametersAddInfoKHR.class) @NotNull MemorySegment value) {
         segment.set(LAYOUT$pParametersAddInfo, OFFSET$pParametersAddInfo, value);
     }
 

@@ -27,7 +27,7 @@ import static club.doki7.vulkan.VkConstants.*;
 ///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
 ///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
 ///     uint32_t identifierSize; // optional // @link substring="identifierSize" target="#identifierSize"
-///     uint8_t const* pIdentifier; // @link substring="pIdentifier" target="#pIdentifier"
+///     uint8_t const* pIdentifier; // optional // @link substring="pIdentifier" target="#pIdentifier"
 /// } VkPipelineShaderStageModuleIdentifierCreateInfoEXT;
 /// }
 ///
@@ -86,6 +86,11 @@ public record VkPipelineShaderStageModuleIdentifierCreateInfoEXT(@NotNull Memory
         /// indicate that the returned structure is a view of the original structure.
         public @NotNull VkPipelineShaderStageModuleIdentifierCreateInfoEXT at(long index) {
             return new VkPipelineShaderStageModuleIdentifierCreateInfoEXT(segment.asSlice(index * VkPipelineShaderStageModuleIdentifierCreateInfoEXT.BYTES, VkPipelineShaderStageModuleIdentifierCreateInfoEXT.BYTES));
+        }
+
+        public VkPipelineShaderStageModuleIdentifierCreateInfoEXT.Ptr at(long index, @NotNull Consumer<@NotNull VkPipelineShaderStageModuleIdentifierCreateInfoEXT> consumer) {
+            consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkPipelineShaderStageModuleIdentifierCreateInfoEXT value) {
@@ -200,12 +205,13 @@ public record VkPipelineShaderStageModuleIdentifierCreateInfoEXT(@NotNull Memory
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkPipelineShaderStageModuleIdentifierCreateInfoEXT pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkPipelineShaderStageModuleIdentifierCreateInfoEXT pNext(@Nullable IPointer pointer) {
@@ -240,11 +246,11 @@ public record VkPipelineShaderStageModuleIdentifierCreateInfoEXT(@NotNull Memory
         return this;
     }
 
-    public @Pointer(comment="uint8_t*") MemorySegment pIdentifierRaw() {
+    public @Pointer(comment="uint8_t*") @NotNull MemorySegment pIdentifierRaw() {
         return segment.get(LAYOUT$pIdentifier, OFFSET$pIdentifier);
     }
 
-    public void pIdentifierRaw(@Pointer(comment="uint8_t*") MemorySegment value) {
+    public void pIdentifierRaw(@Pointer(comment="uint8_t*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pIdentifier, OFFSET$pIdentifier, value);
     }
 

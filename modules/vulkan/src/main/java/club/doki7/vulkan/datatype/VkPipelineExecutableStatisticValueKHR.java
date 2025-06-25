@@ -79,6 +79,11 @@ public record VkPipelineExecutableStatisticValueKHR(@NotNull MemorySegment segme
             return new VkPipelineExecutableStatisticValueKHR(segment.asSlice(index * VkPipelineExecutableStatisticValueKHR.BYTES, VkPipelineExecutableStatisticValueKHR.BYTES));
         }
 
+        public VkPipelineExecutableStatisticValueKHR.Ptr at(long index, @NotNull Consumer<@NotNull VkPipelineExecutableStatisticValueKHR> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkPipelineExecutableStatisticValueKHR value) {
             MemorySegment s = segment.asSlice(index * VkPipelineExecutableStatisticValueKHR.BYTES, VkPipelineExecutableStatisticValueKHR.BYTES);
             s.copyFrom(value.segment);

@@ -1,6 +1,6 @@
 # Physical devices and queue families
 
-> [Java code](https://github.com/chuigda/vulkan4j/tree/master/modules/tutorial/src/main/java/tutorial/vulkan/part01/ch03/Main.java) | [C++ version](https://vulkan-tutorial.com/Drawing_a_triangle/Setup/Physical_devices_and_queue_families)
+> [Java code](https://github.com/club-doki7/vulkan4j/tree/master/modules/tutorial/src/main/java/tutorial/vulkan/part01/ch03/Main.java) | [C++ version](https://vulkan-tutorial.com/Drawing_a_triangle/Setup/Physical_devices_and_queue_families)
 
 ## Selecting a physical device
 
@@ -46,7 +46,7 @@ private void pickPhysicalDevice() {
 Otherwise, we can now allocate an array to hold all the VkPhysicalDevice handles.
 
 ```java
-var pDevices = VkPhysicalDevice.Buffer.allocate(arena, deviceCount);
+var pDevices = VkPhysicalDevice.Ptr.allocate(arena, deviceCount);
 result = instanceCommands.vkEnumeratePhysicalDevices(instance, pDeviceCount, pDevices);
 if (result != VkResult.VK_SUCCESS) {
     throw new RuntimeException("Failed to enumerate physical devices, vulkan error code: " + VkResult.explain(result));

@@ -87,6 +87,11 @@ public record VkPhysicalDeviceShaderAtomicFloat16VectorFeaturesNV(@NotNull Memor
             return new VkPhysicalDeviceShaderAtomicFloat16VectorFeaturesNV(segment.asSlice(index * VkPhysicalDeviceShaderAtomicFloat16VectorFeaturesNV.BYTES, VkPhysicalDeviceShaderAtomicFloat16VectorFeaturesNV.BYTES));
         }
 
+        public VkPhysicalDeviceShaderAtomicFloat16VectorFeaturesNV.Ptr at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceShaderAtomicFloat16VectorFeaturesNV> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkPhysicalDeviceShaderAtomicFloat16VectorFeaturesNV value) {
             MemorySegment s = segment.asSlice(index * VkPhysicalDeviceShaderAtomicFloat16VectorFeaturesNV.BYTES, VkPhysicalDeviceShaderAtomicFloat16VectorFeaturesNV.BYTES);
             s.copyFrom(value.segment);
@@ -199,12 +204,13 @@ public record VkPhysicalDeviceShaderAtomicFloat16VectorFeaturesNV(@NotNull Memor
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkPhysicalDeviceShaderAtomicFloat16VectorFeaturesNV pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkPhysicalDeviceShaderAtomicFloat16VectorFeaturesNV pNext(@Nullable IPointer pointer) {

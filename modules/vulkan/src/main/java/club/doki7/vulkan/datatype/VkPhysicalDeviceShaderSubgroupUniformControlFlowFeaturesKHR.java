@@ -87,6 +87,11 @@ public record VkPhysicalDeviceShaderSubgroupUniformControlFlowFeaturesKHR(@NotNu
             return new VkPhysicalDeviceShaderSubgroupUniformControlFlowFeaturesKHR(segment.asSlice(index * VkPhysicalDeviceShaderSubgroupUniformControlFlowFeaturesKHR.BYTES, VkPhysicalDeviceShaderSubgroupUniformControlFlowFeaturesKHR.BYTES));
         }
 
+        public VkPhysicalDeviceShaderSubgroupUniformControlFlowFeaturesKHR.Ptr at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceShaderSubgroupUniformControlFlowFeaturesKHR> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkPhysicalDeviceShaderSubgroupUniformControlFlowFeaturesKHR value) {
             MemorySegment s = segment.asSlice(index * VkPhysicalDeviceShaderSubgroupUniformControlFlowFeaturesKHR.BYTES, VkPhysicalDeviceShaderSubgroupUniformControlFlowFeaturesKHR.BYTES);
             s.copyFrom(value.segment);
@@ -199,12 +204,13 @@ public record VkPhysicalDeviceShaderSubgroupUniformControlFlowFeaturesKHR(@NotNu
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkPhysicalDeviceShaderSubgroupUniformControlFlowFeaturesKHR pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkPhysicalDeviceShaderSubgroupUniformControlFlowFeaturesKHR pNext(@Nullable IPointer pointer) {

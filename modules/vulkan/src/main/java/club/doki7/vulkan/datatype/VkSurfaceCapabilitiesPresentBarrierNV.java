@@ -87,6 +87,11 @@ public record VkSurfaceCapabilitiesPresentBarrierNV(@NotNull MemorySegment segme
             return new VkSurfaceCapabilitiesPresentBarrierNV(segment.asSlice(index * VkSurfaceCapabilitiesPresentBarrierNV.BYTES, VkSurfaceCapabilitiesPresentBarrierNV.BYTES));
         }
 
+        public VkSurfaceCapabilitiesPresentBarrierNV.Ptr at(long index, @NotNull Consumer<@NotNull VkSurfaceCapabilitiesPresentBarrierNV> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkSurfaceCapabilitiesPresentBarrierNV value) {
             MemorySegment s = segment.asSlice(index * VkSurfaceCapabilitiesPresentBarrierNV.BYTES, VkSurfaceCapabilitiesPresentBarrierNV.BYTES);
             s.copyFrom(value.segment);
@@ -199,12 +204,13 @@ public record VkSurfaceCapabilitiesPresentBarrierNV(@NotNull MemorySegment segme
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkSurfaceCapabilitiesPresentBarrierNV pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkSurfaceCapabilitiesPresentBarrierNV pNext(@Nullable IPointer pointer) {

@@ -92,6 +92,11 @@ public record VkBufferImageCopy2(@NotNull MemorySegment segment) implements IVkB
             return new VkBufferImageCopy2(segment.asSlice(index * VkBufferImageCopy2.BYTES, VkBufferImageCopy2.BYTES));
         }
 
+        public VkBufferImageCopy2.Ptr at(long index, @NotNull Consumer<@NotNull VkBufferImageCopy2> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkBufferImageCopy2 value) {
             MemorySegment s = segment.asSlice(index * VkBufferImageCopy2.BYTES, VkBufferImageCopy2.BYTES);
             s.copyFrom(value.segment);
@@ -204,12 +209,13 @@ public record VkBufferImageCopy2(@NotNull MemorySegment segment) implements IVkB
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkBufferImageCopy2 pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkBufferImageCopy2 pNext(@Nullable IPointer pointer) {

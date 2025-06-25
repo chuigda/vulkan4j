@@ -90,6 +90,11 @@ public record VkTimelineSemaphoreSubmitInfo(@NotNull MemorySegment segment) impl
             return new VkTimelineSemaphoreSubmitInfo(segment.asSlice(index * VkTimelineSemaphoreSubmitInfo.BYTES, VkTimelineSemaphoreSubmitInfo.BYTES));
         }
 
+        public VkTimelineSemaphoreSubmitInfo.Ptr at(long index, @NotNull Consumer<@NotNull VkTimelineSemaphoreSubmitInfo> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkTimelineSemaphoreSubmitInfo value) {
             MemorySegment s = segment.asSlice(index * VkTimelineSemaphoreSubmitInfo.BYTES, VkTimelineSemaphoreSubmitInfo.BYTES);
             s.copyFrom(value.segment);
@@ -202,12 +207,13 @@ public record VkTimelineSemaphoreSubmitInfo(@NotNull MemorySegment segment) impl
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkTimelineSemaphoreSubmitInfo pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkTimelineSemaphoreSubmitInfo pNext(@Nullable IPointer pointer) {
@@ -242,11 +248,11 @@ public record VkTimelineSemaphoreSubmitInfo(@NotNull MemorySegment segment) impl
         return this;
     }
 
-    public @Pointer(comment="uint64_t*") MemorySegment pWaitSemaphoreValuesRaw() {
+    public @Pointer(comment="uint64_t*") @NotNull MemorySegment pWaitSemaphoreValuesRaw() {
         return segment.get(LAYOUT$pWaitSemaphoreValues, OFFSET$pWaitSemaphoreValues);
     }
 
-    public void pWaitSemaphoreValuesRaw(@Pointer(comment="uint64_t*") MemorySegment value) {
+    public void pWaitSemaphoreValuesRaw(@Pointer(comment="uint64_t*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pWaitSemaphoreValues, OFFSET$pWaitSemaphoreValues, value);
     }
 
@@ -277,11 +283,11 @@ public record VkTimelineSemaphoreSubmitInfo(@NotNull MemorySegment segment) impl
         return this;
     }
 
-    public @Pointer(comment="uint64_t*") MemorySegment pSignalSemaphoreValuesRaw() {
+    public @Pointer(comment="uint64_t*") @NotNull MemorySegment pSignalSemaphoreValuesRaw() {
         return segment.get(LAYOUT$pSignalSemaphoreValues, OFFSET$pSignalSemaphoreValues);
     }
 
-    public void pSignalSemaphoreValuesRaw(@Pointer(comment="uint64_t*") MemorySegment value) {
+    public void pSignalSemaphoreValuesRaw(@Pointer(comment="uint64_t*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pSignalSemaphoreValues, OFFSET$pSignalSemaphoreValues, value);
     }
 

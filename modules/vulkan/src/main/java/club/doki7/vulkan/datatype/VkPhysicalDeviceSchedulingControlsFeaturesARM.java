@@ -87,6 +87,11 @@ public record VkPhysicalDeviceSchedulingControlsFeaturesARM(@NotNull MemorySegme
             return new VkPhysicalDeviceSchedulingControlsFeaturesARM(segment.asSlice(index * VkPhysicalDeviceSchedulingControlsFeaturesARM.BYTES, VkPhysicalDeviceSchedulingControlsFeaturesARM.BYTES));
         }
 
+        public VkPhysicalDeviceSchedulingControlsFeaturesARM.Ptr at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceSchedulingControlsFeaturesARM> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkPhysicalDeviceSchedulingControlsFeaturesARM value) {
             MemorySegment s = segment.asSlice(index * VkPhysicalDeviceSchedulingControlsFeaturesARM.BYTES, VkPhysicalDeviceSchedulingControlsFeaturesARM.BYTES);
             s.copyFrom(value.segment);
@@ -199,12 +204,13 @@ public record VkPhysicalDeviceSchedulingControlsFeaturesARM(@NotNull MemorySegme
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkPhysicalDeviceSchedulingControlsFeaturesARM pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkPhysicalDeviceSchedulingControlsFeaturesARM pNext(@Nullable IPointer pointer) {

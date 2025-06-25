@@ -87,6 +87,11 @@ public record VkImportMetalIOSurfaceInfoEXT(@NotNull MemorySegment segment) impl
             return new VkImportMetalIOSurfaceInfoEXT(segment.asSlice(index * VkImportMetalIOSurfaceInfoEXT.BYTES, VkImportMetalIOSurfaceInfoEXT.BYTES));
         }
 
+        public VkImportMetalIOSurfaceInfoEXT.Ptr at(long index, @NotNull Consumer<@NotNull VkImportMetalIOSurfaceInfoEXT> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkImportMetalIOSurfaceInfoEXT value) {
             MemorySegment s = segment.asSlice(index * VkImportMetalIOSurfaceInfoEXT.BYTES, VkImportMetalIOSurfaceInfoEXT.BYTES);
             s.copyFrom(value.segment);
@@ -199,12 +204,13 @@ public record VkImportMetalIOSurfaceInfoEXT(@NotNull MemorySegment segment) impl
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkImportMetalIOSurfaceInfoEXT pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkImportMetalIOSurfaceInfoEXT pNext(@Nullable IPointer pointer) {
@@ -212,12 +218,13 @@ public record VkImportMetalIOSurfaceInfoEXT(@NotNull MemorySegment segment) impl
         return this;
     }
 
-    public @Pointer(comment="IOSurfaceRef") MemorySegment ioSurface() {
+    public @Pointer(comment="IOSurfaceRef") @NotNull MemorySegment ioSurface() {
         return segment.get(LAYOUT$ioSurface, OFFSET$ioSurface);
     }
 
-    public void ioSurface(@Pointer(comment="IOSurfaceRef") MemorySegment value) {
+    public VkImportMetalIOSurfaceInfoEXT ioSurface(@Pointer(comment="IOSurfaceRef") @NotNull MemorySegment value) {
         segment.set(LAYOUT$ioSurface, OFFSET$ioSurface, value);
+        return this;
     }
 
     public VkImportMetalIOSurfaceInfoEXT ioSurface(@Nullable IPointer pointer) {

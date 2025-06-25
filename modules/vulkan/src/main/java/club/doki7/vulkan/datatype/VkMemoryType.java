@@ -77,6 +77,11 @@ public record VkMemoryType(@NotNull MemorySegment segment) implements IVkMemoryT
             return new VkMemoryType(segment.asSlice(index * VkMemoryType.BYTES, VkMemoryType.BYTES));
         }
 
+        public VkMemoryType.Ptr at(long index, @NotNull Consumer<@NotNull VkMemoryType> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkMemoryType value) {
             MemorySegment s = segment.asSlice(index * VkMemoryType.BYTES, VkMemoryType.BYTES);
             s.copyFrom(value.segment);
@@ -170,11 +175,11 @@ public record VkMemoryType(@NotNull MemorySegment segment) implements IVkMemoryT
         return ret;
     }
 
-    public @EnumType(VkMemoryPropertyFlags.class) int propertyFlags() {
+    public @Bitmask(VkMemoryPropertyFlags.class) int propertyFlags() {
         return segment.get(LAYOUT$propertyFlags, OFFSET$propertyFlags);
     }
 
-    public VkMemoryType propertyFlags(@EnumType(VkMemoryPropertyFlags.class) int value) {
+    public VkMemoryType propertyFlags(@Bitmask(VkMemoryPropertyFlags.class) int value) {
         segment.set(LAYOUT$propertyFlags, OFFSET$propertyFlags, value);
         return this;
     }

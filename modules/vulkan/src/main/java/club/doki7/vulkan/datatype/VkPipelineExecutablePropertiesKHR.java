@@ -90,6 +90,11 @@ public record VkPipelineExecutablePropertiesKHR(@NotNull MemorySegment segment) 
             return new VkPipelineExecutablePropertiesKHR(segment.asSlice(index * VkPipelineExecutablePropertiesKHR.BYTES, VkPipelineExecutablePropertiesKHR.BYTES));
         }
 
+        public VkPipelineExecutablePropertiesKHR.Ptr at(long index, @NotNull Consumer<@NotNull VkPipelineExecutablePropertiesKHR> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkPipelineExecutablePropertiesKHR value) {
             MemorySegment s = segment.asSlice(index * VkPipelineExecutablePropertiesKHR.BYTES, VkPipelineExecutablePropertiesKHR.BYTES);
             s.copyFrom(value.segment);
@@ -202,12 +207,13 @@ public record VkPipelineExecutablePropertiesKHR(@NotNull MemorySegment segment) 
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkPipelineExecutablePropertiesKHR pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkPipelineExecutablePropertiesKHR pNext(@Nullable IPointer pointer) {
@@ -215,11 +221,11 @@ public record VkPipelineExecutablePropertiesKHR(@NotNull MemorySegment segment) 
         return this;
     }
 
-    public @EnumType(VkShaderStageFlags.class) int stages() {
+    public @Bitmask(VkShaderStageFlags.class) int stages() {
         return segment.get(LAYOUT$stages, OFFSET$stages);
     }
 
-    public VkPipelineExecutablePropertiesKHR stages(@EnumType(VkShaderStageFlags.class) int value) {
+    public VkPipelineExecutablePropertiesKHR stages(@Bitmask(VkShaderStageFlags.class) int value) {
         segment.set(LAYOUT$stages, OFFSET$stages, value);
         return this;
     }
@@ -228,12 +234,19 @@ public record VkPipelineExecutablePropertiesKHR(@NotNull MemorySegment segment) 
         return new BytePtr(nameRaw());
     }
 
-    public VkPipelineExecutablePropertiesKHR name(BytePtr value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$name, SIZE$name);
+    public VkPipelineExecutablePropertiesKHR name(@NotNull Consumer<BytePtr> consumer) {
+        BytePtr ptr = name();
+        consumer.accept(ptr);
         return this;
     }
 
-    public MemorySegment nameRaw() {
+    public VkPipelineExecutablePropertiesKHR name(BytePtr value) {
+        MemorySegment s = nameRaw();
+        s.copyFrom(value.segment());
+        return this;
+    }
+
+    public @NotNull MemorySegment nameRaw() {
         return segment.asSlice(OFFSET$name, SIZE$name);
     }
 
@@ -241,12 +254,19 @@ public record VkPipelineExecutablePropertiesKHR(@NotNull MemorySegment segment) 
         return new BytePtr(descriptionRaw());
     }
 
-    public VkPipelineExecutablePropertiesKHR description(BytePtr value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$description, SIZE$description);
+    public VkPipelineExecutablePropertiesKHR description(@NotNull Consumer<BytePtr> consumer) {
+        BytePtr ptr = description();
+        consumer.accept(ptr);
         return this;
     }
 
-    public MemorySegment descriptionRaw() {
+    public VkPipelineExecutablePropertiesKHR description(BytePtr value) {
+        MemorySegment s = descriptionRaw();
+        s.copyFrom(value.segment());
+        return this;
+    }
+
+    public @NotNull MemorySegment descriptionRaw() {
         return segment.asSlice(OFFSET$description, SIZE$description);
     }
 

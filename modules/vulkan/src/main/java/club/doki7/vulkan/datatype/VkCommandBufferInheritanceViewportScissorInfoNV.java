@@ -89,6 +89,11 @@ public record VkCommandBufferInheritanceViewportScissorInfoNV(@NotNull MemorySeg
             return new VkCommandBufferInheritanceViewportScissorInfoNV(segment.asSlice(index * VkCommandBufferInheritanceViewportScissorInfoNV.BYTES, VkCommandBufferInheritanceViewportScissorInfoNV.BYTES));
         }
 
+        public VkCommandBufferInheritanceViewportScissorInfoNV.Ptr at(long index, @NotNull Consumer<@NotNull VkCommandBufferInheritanceViewportScissorInfoNV> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkCommandBufferInheritanceViewportScissorInfoNV value) {
             MemorySegment s = segment.asSlice(index * VkCommandBufferInheritanceViewportScissorInfoNV.BYTES, VkCommandBufferInheritanceViewportScissorInfoNV.BYTES);
             s.copyFrom(value.segment);
@@ -201,12 +206,13 @@ public record VkCommandBufferInheritanceViewportScissorInfoNV(@NotNull MemorySeg
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkCommandBufferInheritanceViewportScissorInfoNV pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkCommandBufferInheritanceViewportScissorInfoNV pNext(@Nullable IPointer pointer) {
@@ -256,11 +262,11 @@ public record VkCommandBufferInheritanceViewportScissorInfoNV(@NotNull MemorySeg
         return new VkViewport(s);
     }
 
-    public @Pointer(target=VkViewport.class) MemorySegment pViewportDepthsRaw() {
+    public @Pointer(target=VkViewport.class) @NotNull MemorySegment pViewportDepthsRaw() {
         return segment.get(LAYOUT$pViewportDepths, OFFSET$pViewportDepths);
     }
 
-    public void pViewportDepthsRaw(@Pointer(target=VkViewport.class) MemorySegment value) {
+    public void pViewportDepthsRaw(@Pointer(target=VkViewport.class) @NotNull MemorySegment value) {
         segment.set(LAYOUT$pViewportDepths, OFFSET$pViewportDepths, value);
     }
 

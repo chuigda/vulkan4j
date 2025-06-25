@@ -35,9 +35,9 @@ import static club.doki7.vulkan.VkConstants.*;
 ///     uint32_t blockDimZ; // @link substring="blockDimZ" target="#blockDimZ"
 ///     uint32_t sharedMemBytes; // @link substring="sharedMemBytes" target="#sharedMemBytes"
 ///     size_t paramCount; // optional // @link substring="paramCount" target="#paramCount"
-///     void const* pParams; // @link substring="pParams" target="#pParams"
+///     void const* pParams; // optional // @link substring="pParams" target="#pParams"
 ///     size_t extraCount; // optional // @link substring="extraCount" target="#extraCount"
-///     void const* pExtras; // @link substring="pExtras" target="#pExtras"
+///     void const* pExtras; // optional // @link substring="pExtras" target="#pExtras"
 /// } VkCuLaunchInfoNVX;
 /// }
 ///
@@ -96,6 +96,11 @@ public record VkCuLaunchInfoNVX(@NotNull MemorySegment segment) implements IVkCu
         /// indicate that the returned structure is a view of the original structure.
         public @NotNull VkCuLaunchInfoNVX at(long index) {
             return new VkCuLaunchInfoNVX(segment.asSlice(index * VkCuLaunchInfoNVX.BYTES, VkCuLaunchInfoNVX.BYTES));
+        }
+
+        public VkCuLaunchInfoNVX.Ptr at(long index, @NotNull Consumer<@NotNull VkCuLaunchInfoNVX> consumer) {
+            consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkCuLaunchInfoNVX value) {
@@ -210,12 +215,13 @@ public record VkCuLaunchInfoNVX(@NotNull MemorySegment segment) implements IVkCu
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkCuLaunchInfoNVX pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkCuLaunchInfoNVX pNext(@Nullable IPointer pointer) {
@@ -308,12 +314,13 @@ public record VkCuLaunchInfoNVX(@NotNull MemorySegment segment) implements IVkCu
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pParams() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pParams() {
         return segment.get(LAYOUT$pParams, OFFSET$pParams);
     }
 
-    public void pParams(@Pointer(comment="void*") MemorySegment value) {
+    public VkCuLaunchInfoNVX pParams(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pParams, OFFSET$pParams, value);
+        return this;
     }
 
     public VkCuLaunchInfoNVX pParams(@Nullable IPointer pointer) {
@@ -330,12 +337,13 @@ public record VkCuLaunchInfoNVX(@NotNull MemorySegment segment) implements IVkCu
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pExtras() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pExtras() {
         return segment.get(LAYOUT$pExtras, OFFSET$pExtras);
     }
 
-    public void pExtras(@Pointer(comment="void*") MemorySegment value) {
+    public VkCuLaunchInfoNVX pExtras(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pExtras, OFFSET$pExtras, value);
+        return this;
     }
 
     public VkCuLaunchInfoNVX pExtras(@Nullable IPointer pointer) {

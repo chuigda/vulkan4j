@@ -1,6 +1,6 @@
 # Validation layers
 
-> [Java code](https://github.com/chuigda/vulkan4j/tree/master/modules/tutorial/src/main/java/tutorial/vulkan/part01/ch02/Main.java) | [C++ version](https://vulkan-tutorial.com/Drawing_a_triangle/Setup/Validation_layers)
+> [Java code](https://github.com/club-doki7/vulkan4j/tree/master/modules/tutorial/src/main/java/tutorial/vulkan/part01/ch02/Main.java) | [C++ version](https://vulkan-tutorial.com/Drawing_a_triangle/Setup/Validation_layers)
 
 ## What are validation layers?
 
@@ -110,12 +110,15 @@ Finally, modify the `VkInstanceCreateInfo` struct instantiation to include the v
 
 ```java
 if (ENABLE_VALIDATION_LAYERS) {
-    instanceCreateInfo.enabledLayerCount(1)
-        .ppEnabledLayerNames(PointerPtr.allocateV(arena, BytePtr.allocateString(arena, VALIDATION_LAYER_NAME)));
+    instanceCreateInfo
+            .enabledLayerCount(1)
+            .ppEnabledLayerNames(PointerPtr.allocateStrings(arena, VALIDATION_LAYER_NAME));
 }
 ```
 
 If the check was successful then `createInstance` should not ever return a `ERROR_LAYER_NOT_PRESENT` error, but you should run the program to make sure.
+
+> Note: `PointerPtr.allocateStrings` is a convenience method that allocates a `char const**` array of strings.
 
 ## Message callback
 
@@ -170,8 +173,8 @@ Now let's see what a debug callback function looks like. Add a new static member
 
 ```java
 private static @NativeType("VkBool32") @Unsigned int debugCallback(
-        @EnumType(VkDebugUtilsMessageSeverityFlagsEXT.class) int ignoredMessageSeverity,
-        @EnumType(VkDebugUtilsMessageTypeFlagsEXT.class) int ignoredMessageType,
+        @Bitmask(VkDebugUtilsMessageSeverityFlagsEXT.class) int ignoredMessageSeverity,
+        @Bitmask(VkDebugUtilsMessageTypeFlagsEXT.class) int ignoredMessageType,
         @Pointer(target=VkDebugUtilsMessengerCallbackDataEXT.class) MemorySegment pCallbackData,
         @Pointer(comment="void*") MemorySegment ignoredPUserData
 ) {

@@ -28,7 +28,7 @@ import static club.doki7.vulkan.VkConstants.*;
 ///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
 ///     VkPipelineCacheCreateFlags flags; // optional // @link substring="VkPipelineCacheCreateFlags" target="VkPipelineCacheCreateFlags" @link substring="flags" target="#flags"
 ///     size_t initialDataSize; // optional // @link substring="initialDataSize" target="#initialDataSize"
-///     void const* pInitialData; // @link substring="pInitialData" target="#pInitialData"
+///     void const* pInitialData; // optional // @link substring="pInitialData" target="#pInitialData"
 /// } VkPipelineCacheCreateInfo;
 /// }
 ///
@@ -87,6 +87,11 @@ public record VkPipelineCacheCreateInfo(@NotNull MemorySegment segment) implemen
         /// indicate that the returned structure is a view of the original structure.
         public @NotNull VkPipelineCacheCreateInfo at(long index) {
             return new VkPipelineCacheCreateInfo(segment.asSlice(index * VkPipelineCacheCreateInfo.BYTES, VkPipelineCacheCreateInfo.BYTES));
+        }
+
+        public VkPipelineCacheCreateInfo.Ptr at(long index, @NotNull Consumer<@NotNull VkPipelineCacheCreateInfo> consumer) {
+            consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkPipelineCacheCreateInfo value) {
@@ -201,12 +206,13 @@ public record VkPipelineCacheCreateInfo(@NotNull MemorySegment segment) implemen
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkPipelineCacheCreateInfo pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkPipelineCacheCreateInfo pNext(@Nullable IPointer pointer) {
@@ -214,11 +220,11 @@ public record VkPipelineCacheCreateInfo(@NotNull MemorySegment segment) implemen
         return this;
     }
 
-    public @EnumType(VkPipelineCacheCreateFlags.class) int flags() {
+    public @Bitmask(VkPipelineCacheCreateFlags.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public VkPipelineCacheCreateInfo flags(@EnumType(VkPipelineCacheCreateFlags.class) int value) {
+    public VkPipelineCacheCreateInfo flags(@Bitmask(VkPipelineCacheCreateFlags.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
         return this;
     }
@@ -232,12 +238,13 @@ public record VkPipelineCacheCreateInfo(@NotNull MemorySegment segment) implemen
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pInitialData() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pInitialData() {
         return segment.get(LAYOUT$pInitialData, OFFSET$pInitialData);
     }
 
-    public void pInitialData(@Pointer(comment="void*") MemorySegment value) {
+    public VkPipelineCacheCreateInfo pInitialData(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pInitialData, OFFSET$pInitialData, value);
+        return this;
     }
 
     public VkPipelineCacheCreateInfo pInitialData(@Nullable IPointer pointer) {

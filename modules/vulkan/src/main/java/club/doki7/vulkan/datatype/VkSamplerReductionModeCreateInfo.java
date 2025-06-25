@@ -87,6 +87,11 @@ public record VkSamplerReductionModeCreateInfo(@NotNull MemorySegment segment) i
             return new VkSamplerReductionModeCreateInfo(segment.asSlice(index * VkSamplerReductionModeCreateInfo.BYTES, VkSamplerReductionModeCreateInfo.BYTES));
         }
 
+        public VkSamplerReductionModeCreateInfo.Ptr at(long index, @NotNull Consumer<@NotNull VkSamplerReductionModeCreateInfo> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkSamplerReductionModeCreateInfo value) {
             MemorySegment s = segment.asSlice(index * VkSamplerReductionModeCreateInfo.BYTES, VkSamplerReductionModeCreateInfo.BYTES);
             s.copyFrom(value.segment);
@@ -199,12 +204,13 @@ public record VkSamplerReductionModeCreateInfo(@NotNull MemorySegment segment) i
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkSamplerReductionModeCreateInfo pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkSamplerReductionModeCreateInfo pNext(@Nullable IPointer pointer) {

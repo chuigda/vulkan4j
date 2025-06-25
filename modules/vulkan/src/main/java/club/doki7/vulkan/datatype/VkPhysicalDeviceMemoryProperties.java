@@ -79,6 +79,11 @@ public record VkPhysicalDeviceMemoryProperties(@NotNull MemorySegment segment) i
             return new VkPhysicalDeviceMemoryProperties(segment.asSlice(index * VkPhysicalDeviceMemoryProperties.BYTES, VkPhysicalDeviceMemoryProperties.BYTES));
         }
 
+        public VkPhysicalDeviceMemoryProperties.Ptr at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceMemoryProperties> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkPhysicalDeviceMemoryProperties value) {
             MemorySegment s = segment.asSlice(index * VkPhysicalDeviceMemoryProperties.BYTES, VkPhysicalDeviceMemoryProperties.BYTES);
             s.copyFrom(value.segment);
@@ -185,6 +190,12 @@ public record VkPhysicalDeviceMemoryProperties(@NotNull MemorySegment segment) i
         return new VkMemoryType.Ptr(memoryTypesRaw());
     }
 
+    public VkPhysicalDeviceMemoryProperties memoryTypes(@NotNull Consumer<VkMemoryType.Ptr> consumer) {
+        VkMemoryType.Ptr ptr = memoryTypes();
+        consumer.accept(ptr);
+        return this;
+    }
+
     public VkPhysicalDeviceMemoryProperties memoryTypes(VkMemoryType.Ptr value) {
         MemorySegment s = memoryTypesRaw();
         s.copyFrom(value.segment());
@@ -201,7 +212,7 @@ public record VkPhysicalDeviceMemoryProperties(@NotNull MemorySegment segment) i
         MemorySegment.copy(value.segment(), 0, s, index * VkMemoryType.BYTES, VkMemoryType.BYTES);
     }
 
-    public MemorySegment memoryTypesRaw() {
+    public @NotNull MemorySegment memoryTypesRaw() {
         return segment.asSlice(OFFSET$memoryTypes, SIZE$memoryTypes);
     }
 
@@ -216,6 +227,12 @@ public record VkPhysicalDeviceMemoryProperties(@NotNull MemorySegment segment) i
 
     public VkMemoryHeap.Ptr memoryHeaps() {
         return new VkMemoryHeap.Ptr(memoryHeapsRaw());
+    }
+
+    public VkPhysicalDeviceMemoryProperties memoryHeaps(@NotNull Consumer<VkMemoryHeap.Ptr> consumer) {
+        VkMemoryHeap.Ptr ptr = memoryHeaps();
+        consumer.accept(ptr);
+        return this;
     }
 
     public VkPhysicalDeviceMemoryProperties memoryHeaps(VkMemoryHeap.Ptr value) {
@@ -234,7 +251,7 @@ public record VkPhysicalDeviceMemoryProperties(@NotNull MemorySegment segment) i
         MemorySegment.copy(value.segment(), 0, s, index * VkMemoryHeap.BYTES, VkMemoryHeap.BYTES);
     }
 
-    public MemorySegment memoryHeapsRaw() {
+    public @NotNull MemorySegment memoryHeapsRaw() {
         return segment.asSlice(OFFSET$memoryHeaps, SIZE$memoryHeaps);
     }
 

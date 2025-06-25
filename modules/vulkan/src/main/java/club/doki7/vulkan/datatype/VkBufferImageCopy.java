@@ -81,6 +81,11 @@ public record VkBufferImageCopy(@NotNull MemorySegment segment) implements IVkBu
             return new VkBufferImageCopy(segment.asSlice(index * VkBufferImageCopy.BYTES, VkBufferImageCopy.BYTES));
         }
 
+        public VkBufferImageCopy.Ptr at(long index, @NotNull Consumer<@NotNull VkBufferImageCopy> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkBufferImageCopy value) {
             MemorySegment s = segment.asSlice(index * VkBufferImageCopy.BYTES, VkBufferImageCopy.BYTES);
             s.copyFrom(value.segment);

@@ -132,6 +132,11 @@ public record VmaPoolCreateInfo(@NotNull MemorySegment segment) implements IVmaP
             return new VmaPoolCreateInfo(segment.asSlice(index * VmaPoolCreateInfo.BYTES, VmaPoolCreateInfo.BYTES));
         }
 
+        public VmaPoolCreateInfo.Ptr at(long index, @NotNull Consumer<@NotNull VmaPoolCreateInfo> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VmaPoolCreateInfo value) {
             MemorySegment s = segment.asSlice(index * VmaPoolCreateInfo.BYTES, VmaPoolCreateInfo.BYTES);
             s.copyFrom(value.segment);
@@ -234,11 +239,11 @@ public record VmaPoolCreateInfo(@NotNull MemorySegment segment) implements IVmaP
         return this;
     }
 
-    public @EnumType(VmaPoolCreateFlags.class) int flags() {
+    public @Bitmask(VmaPoolCreateFlags.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public VmaPoolCreateInfo flags(@EnumType(VmaPoolCreateFlags.class) int value) {
+    public VmaPoolCreateInfo flags(@Bitmask(VmaPoolCreateFlags.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
         return this;
     }
@@ -288,12 +293,13 @@ public record VmaPoolCreateInfo(@NotNull MemorySegment segment) implements IVmaP
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pMemoryAllocateNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pMemoryAllocateNext() {
         return segment.get(LAYOUT$pMemoryAllocateNext, OFFSET$pMemoryAllocateNext);
     }
 
-    public void pMemoryAllocateNext(@Pointer(comment="void*") MemorySegment value) {
+    public VmaPoolCreateInfo pMemoryAllocateNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pMemoryAllocateNext, OFFSET$pMemoryAllocateNext, value);
+        return this;
     }
 
     public VmaPoolCreateInfo pMemoryAllocateNext(@Nullable IPointer pointer) {

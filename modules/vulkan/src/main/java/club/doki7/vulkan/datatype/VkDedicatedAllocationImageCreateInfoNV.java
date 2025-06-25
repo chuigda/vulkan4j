@@ -87,6 +87,11 @@ public record VkDedicatedAllocationImageCreateInfoNV(@NotNull MemorySegment segm
             return new VkDedicatedAllocationImageCreateInfoNV(segment.asSlice(index * VkDedicatedAllocationImageCreateInfoNV.BYTES, VkDedicatedAllocationImageCreateInfoNV.BYTES));
         }
 
+        public VkDedicatedAllocationImageCreateInfoNV.Ptr at(long index, @NotNull Consumer<@NotNull VkDedicatedAllocationImageCreateInfoNV> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkDedicatedAllocationImageCreateInfoNV value) {
             MemorySegment s = segment.asSlice(index * VkDedicatedAllocationImageCreateInfoNV.BYTES, VkDedicatedAllocationImageCreateInfoNV.BYTES);
             s.copyFrom(value.segment);
@@ -199,12 +204,13 @@ public record VkDedicatedAllocationImageCreateInfoNV(@NotNull MemorySegment segm
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkDedicatedAllocationImageCreateInfoNV pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkDedicatedAllocationImageCreateInfoNV pNext(@Nullable IPointer pointer) {

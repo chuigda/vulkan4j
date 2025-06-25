@@ -88,6 +88,11 @@ public record VkDrmFormatModifierPropertiesListEXT(@NotNull MemorySegment segmen
             return new VkDrmFormatModifierPropertiesListEXT(segment.asSlice(index * VkDrmFormatModifierPropertiesListEXT.BYTES, VkDrmFormatModifierPropertiesListEXT.BYTES));
         }
 
+        public VkDrmFormatModifierPropertiesListEXT.Ptr at(long index, @NotNull Consumer<@NotNull VkDrmFormatModifierPropertiesListEXT> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkDrmFormatModifierPropertiesListEXT value) {
             MemorySegment s = segment.asSlice(index * VkDrmFormatModifierPropertiesListEXT.BYTES, VkDrmFormatModifierPropertiesListEXT.BYTES);
             s.copyFrom(value.segment);
@@ -200,12 +205,13 @@ public record VkDrmFormatModifierPropertiesListEXT(@NotNull MemorySegment segmen
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkDrmFormatModifierPropertiesListEXT pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkDrmFormatModifierPropertiesListEXT pNext(@Nullable IPointer pointer) {
@@ -246,11 +252,11 @@ public record VkDrmFormatModifierPropertiesListEXT(@NotNull MemorySegment segmen
         return new VkDrmFormatModifierPropertiesEXT(s);
     }
 
-    public @Pointer(target=VkDrmFormatModifierPropertiesEXT.class) MemorySegment pDrmFormatModifierPropertiesRaw() {
+    public @Pointer(target=VkDrmFormatModifierPropertiesEXT.class) @NotNull MemorySegment pDrmFormatModifierPropertiesRaw() {
         return segment.get(LAYOUT$pDrmFormatModifierProperties, OFFSET$pDrmFormatModifierProperties);
     }
 
-    public void pDrmFormatModifierPropertiesRaw(@Pointer(target=VkDrmFormatModifierPropertiesEXT.class) MemorySegment value) {
+    public void pDrmFormatModifierPropertiesRaw(@Pointer(target=VkDrmFormatModifierPropertiesEXT.class) @NotNull MemorySegment value) {
         segment.set(LAYOUT$pDrmFormatModifierProperties, OFFSET$pDrmFormatModifierProperties, value);
     }
 

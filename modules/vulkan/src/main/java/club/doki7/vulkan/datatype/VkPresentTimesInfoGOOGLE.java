@@ -27,7 +27,7 @@ import static club.doki7.vulkan.VkConstants.*;
 ///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
 ///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
 ///     uint32_t swapchainCount; // @link substring="swapchainCount" target="#swapchainCount"
-///     VkPresentTimeGOOGLE const* pTimes; // optional // @link substring="VkPresentTimeGOOGLE" target="VkPresentTimeGOOGLE" @link substring="pTimes" target="#pTimes"
+///     VkPresentTimeGOOGLE const* pTimes; // @link substring="VkPresentTimeGOOGLE" target="VkPresentTimeGOOGLE" @link substring="pTimes" target="#pTimes"
 /// } VkPresentTimesInfoGOOGLE;
 /// }
 ///
@@ -86,6 +86,11 @@ public record VkPresentTimesInfoGOOGLE(@NotNull MemorySegment segment) implement
         /// indicate that the returned structure is a view of the original structure.
         public @NotNull VkPresentTimesInfoGOOGLE at(long index) {
             return new VkPresentTimesInfoGOOGLE(segment.asSlice(index * VkPresentTimesInfoGOOGLE.BYTES, VkPresentTimesInfoGOOGLE.BYTES));
+        }
+
+        public VkPresentTimesInfoGOOGLE.Ptr at(long index, @NotNull Consumer<@NotNull VkPresentTimesInfoGOOGLE> consumer) {
+            consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkPresentTimesInfoGOOGLE value) {
@@ -200,12 +205,13 @@ public record VkPresentTimesInfoGOOGLE(@NotNull MemorySegment segment) implement
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkPresentTimesInfoGOOGLE pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkPresentTimesInfoGOOGLE pNext(@Nullable IPointer pointer) {
@@ -246,11 +252,11 @@ public record VkPresentTimesInfoGOOGLE(@NotNull MemorySegment segment) implement
         return new VkPresentTimeGOOGLE(s);
     }
 
-    public @Pointer(target=VkPresentTimeGOOGLE.class) MemorySegment pTimesRaw() {
+    public @Pointer(target=VkPresentTimeGOOGLE.class) @NotNull MemorySegment pTimesRaw() {
         return segment.get(LAYOUT$pTimes, OFFSET$pTimes);
     }
 
-    public void pTimesRaw(@Pointer(target=VkPresentTimeGOOGLE.class) MemorySegment value) {
+    public void pTimesRaw(@Pointer(target=VkPresentTimeGOOGLE.class) @NotNull MemorySegment value) {
         segment.set(LAYOUT$pTimes, OFFSET$pTimes, value);
     }
 

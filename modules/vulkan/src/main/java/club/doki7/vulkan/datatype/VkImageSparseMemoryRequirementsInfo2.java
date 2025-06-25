@@ -87,6 +87,11 @@ public record VkImageSparseMemoryRequirementsInfo2(@NotNull MemorySegment segmen
             return new VkImageSparseMemoryRequirementsInfo2(segment.asSlice(index * VkImageSparseMemoryRequirementsInfo2.BYTES, VkImageSparseMemoryRequirementsInfo2.BYTES));
         }
 
+        public VkImageSparseMemoryRequirementsInfo2.Ptr at(long index, @NotNull Consumer<@NotNull VkImageSparseMemoryRequirementsInfo2> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkImageSparseMemoryRequirementsInfo2 value) {
             MemorySegment s = segment.asSlice(index * VkImageSparseMemoryRequirementsInfo2.BYTES, VkImageSparseMemoryRequirementsInfo2.BYTES);
             s.copyFrom(value.segment);
@@ -199,12 +204,13 @@ public record VkImageSparseMemoryRequirementsInfo2(@NotNull MemorySegment segmen
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkImageSparseMemoryRequirementsInfo2 pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkImageSparseMemoryRequirementsInfo2 pNext(@Nullable IPointer pointer) {

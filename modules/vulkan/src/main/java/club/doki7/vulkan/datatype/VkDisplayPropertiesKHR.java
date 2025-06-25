@@ -82,6 +82,11 @@ public record VkDisplayPropertiesKHR(@NotNull MemorySegment segment) implements 
             return new VkDisplayPropertiesKHR(segment.asSlice(index * VkDisplayPropertiesKHR.BYTES, VkDisplayPropertiesKHR.BYTES));
         }
 
+        public VkDisplayPropertiesKHR.Ptr at(long index, @NotNull Consumer<@NotNull VkDisplayPropertiesKHR> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkDisplayPropertiesKHR value) {
             MemorySegment s = segment.asSlice(index * VkDisplayPropertiesKHR.BYTES, VkDisplayPropertiesKHR.BYTES);
             s.copyFrom(value.segment);
@@ -206,11 +211,11 @@ public record VkDisplayPropertiesKHR(@NotNull MemorySegment segment) implements 
         return this;
     }
 
-    public @Pointer(comment="int8_t*") MemorySegment displayNameRaw() {
+    public @Pointer(comment="int8_t*") @NotNull MemorySegment displayNameRaw() {
         return segment.get(LAYOUT$displayName, OFFSET$displayName);
     }
 
-    public void displayNameRaw(@Pointer(comment="int8_t*") MemorySegment value) {
+    public void displayNameRaw(@Pointer(comment="int8_t*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$displayName, OFFSET$displayName, value);
     }
 
@@ -242,11 +247,11 @@ public record VkDisplayPropertiesKHR(@NotNull MemorySegment segment) implements 
         return this;
     }
 
-    public @EnumType(VkSurfaceTransformFlagsKHR.class) int supportedTransforms() {
+    public @Bitmask(VkSurfaceTransformFlagsKHR.class) int supportedTransforms() {
         return segment.get(LAYOUT$supportedTransforms, OFFSET$supportedTransforms);
     }
 
-    public VkDisplayPropertiesKHR supportedTransforms(@EnumType(VkSurfaceTransformFlagsKHR.class) int value) {
+    public VkDisplayPropertiesKHR supportedTransforms(@Bitmask(VkSurfaceTransformFlagsKHR.class) int value) {
         segment.set(LAYOUT$supportedTransforms, OFFSET$supportedTransforms, value);
         return this;
     }

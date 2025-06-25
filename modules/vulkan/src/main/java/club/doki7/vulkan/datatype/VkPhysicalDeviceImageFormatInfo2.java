@@ -91,6 +91,11 @@ public record VkPhysicalDeviceImageFormatInfo2(@NotNull MemorySegment segment) i
             return new VkPhysicalDeviceImageFormatInfo2(segment.asSlice(index * VkPhysicalDeviceImageFormatInfo2.BYTES, VkPhysicalDeviceImageFormatInfo2.BYTES));
         }
 
+        public VkPhysicalDeviceImageFormatInfo2.Ptr at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceImageFormatInfo2> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkPhysicalDeviceImageFormatInfo2 value) {
             MemorySegment s = segment.asSlice(index * VkPhysicalDeviceImageFormatInfo2.BYTES, VkPhysicalDeviceImageFormatInfo2.BYTES);
             s.copyFrom(value.segment);
@@ -203,12 +208,13 @@ public record VkPhysicalDeviceImageFormatInfo2(@NotNull MemorySegment segment) i
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkPhysicalDeviceImageFormatInfo2 pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkPhysicalDeviceImageFormatInfo2 pNext(@Nullable IPointer pointer) {
@@ -243,20 +249,20 @@ public record VkPhysicalDeviceImageFormatInfo2(@NotNull MemorySegment segment) i
         return this;
     }
 
-    public @EnumType(VkImageUsageFlags.class) int usage() {
+    public @Bitmask(VkImageUsageFlags.class) int usage() {
         return segment.get(LAYOUT$usage, OFFSET$usage);
     }
 
-    public VkPhysicalDeviceImageFormatInfo2 usage(@EnumType(VkImageUsageFlags.class) int value) {
+    public VkPhysicalDeviceImageFormatInfo2 usage(@Bitmask(VkImageUsageFlags.class) int value) {
         segment.set(LAYOUT$usage, OFFSET$usage, value);
         return this;
     }
 
-    public @EnumType(VkImageCreateFlags.class) int flags() {
+    public @Bitmask(VkImageCreateFlags.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public VkPhysicalDeviceImageFormatInfo2 flags(@EnumType(VkImageCreateFlags.class) int value) {
+    public VkPhysicalDeviceImageFormatInfo2 flags(@Bitmask(VkImageCreateFlags.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
         return this;
     }

@@ -84,6 +84,11 @@ public record VkPartitionedAccelerationStructureWriteInstanceDataNV(@NotNull Mem
             return new VkPartitionedAccelerationStructureWriteInstanceDataNV(segment.asSlice(index * VkPartitionedAccelerationStructureWriteInstanceDataNV.BYTES, VkPartitionedAccelerationStructureWriteInstanceDataNV.BYTES));
         }
 
+        public VkPartitionedAccelerationStructureWriteInstanceDataNV.Ptr at(long index, @NotNull Consumer<@NotNull VkPartitionedAccelerationStructureWriteInstanceDataNV> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkPartitionedAccelerationStructureWriteInstanceDataNV value) {
             MemorySegment s = segment.asSlice(index * VkPartitionedAccelerationStructureWriteInstanceDataNV.BYTES, VkPartitionedAccelerationStructureWriteInstanceDataNV.BYTES);
             s.copyFrom(value.segment);
@@ -195,12 +200,19 @@ public record VkPartitionedAccelerationStructureWriteInstanceDataNV(@NotNull Mem
         return new FloatPtr(explicitAABBRaw());
     }
 
-    public VkPartitionedAccelerationStructureWriteInstanceDataNV explicitAABB(FloatPtr value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$explicitAABB, SIZE$explicitAABB);
+    public VkPartitionedAccelerationStructureWriteInstanceDataNV explicitAABB(@NotNull Consumer<FloatPtr> consumer) {
+        FloatPtr ptr = explicitAABB();
+        consumer.accept(ptr);
         return this;
     }
 
-    public MemorySegment explicitAABBRaw() {
+    public VkPartitionedAccelerationStructureWriteInstanceDataNV explicitAABB(FloatPtr value) {
+        MemorySegment s = explicitAABBRaw();
+        s.copyFrom(value.segment());
+        return this;
+    }
+
+    public @NotNull MemorySegment explicitAABBRaw() {
         return segment.asSlice(OFFSET$explicitAABB, SIZE$explicitAABB);
     }
 
@@ -231,11 +243,11 @@ public record VkPartitionedAccelerationStructureWriteInstanceDataNV(@NotNull Mem
         return this;
     }
 
-    public @EnumType(VkPartitionedAccelerationStructureInstanceFlagsNV.class) int instanceFlags() {
+    public @Bitmask(VkPartitionedAccelerationStructureInstanceFlagsNV.class) int instanceFlags() {
         return segment.get(LAYOUT$instanceFlags, OFFSET$instanceFlags);
     }
 
-    public VkPartitionedAccelerationStructureWriteInstanceDataNV instanceFlags(@EnumType(VkPartitionedAccelerationStructureInstanceFlagsNV.class) int value) {
+    public VkPartitionedAccelerationStructureWriteInstanceDataNV instanceFlags(@Bitmask(VkPartitionedAccelerationStructureInstanceFlagsNV.class) int value) {
         segment.set(LAYOUT$instanceFlags, OFFSET$instanceFlags, value);
         return this;
     }

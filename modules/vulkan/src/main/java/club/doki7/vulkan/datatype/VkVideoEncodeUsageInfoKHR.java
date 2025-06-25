@@ -89,6 +89,11 @@ public record VkVideoEncodeUsageInfoKHR(@NotNull MemorySegment segment) implemen
             return new VkVideoEncodeUsageInfoKHR(segment.asSlice(index * VkVideoEncodeUsageInfoKHR.BYTES, VkVideoEncodeUsageInfoKHR.BYTES));
         }
 
+        public VkVideoEncodeUsageInfoKHR.Ptr at(long index, @NotNull Consumer<@NotNull VkVideoEncodeUsageInfoKHR> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkVideoEncodeUsageInfoKHR value) {
             MemorySegment s = segment.asSlice(index * VkVideoEncodeUsageInfoKHR.BYTES, VkVideoEncodeUsageInfoKHR.BYTES);
             s.copyFrom(value.segment);
@@ -201,12 +206,13 @@ public record VkVideoEncodeUsageInfoKHR(@NotNull MemorySegment segment) implemen
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkVideoEncodeUsageInfoKHR pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkVideoEncodeUsageInfoKHR pNext(@Nullable IPointer pointer) {
@@ -214,20 +220,20 @@ public record VkVideoEncodeUsageInfoKHR(@NotNull MemorySegment segment) implemen
         return this;
     }
 
-    public @EnumType(VkVideoEncodeUsageFlagsKHR.class) int videoUsageHints() {
+    public @Bitmask(VkVideoEncodeUsageFlagsKHR.class) int videoUsageHints() {
         return segment.get(LAYOUT$videoUsageHints, OFFSET$videoUsageHints);
     }
 
-    public VkVideoEncodeUsageInfoKHR videoUsageHints(@EnumType(VkVideoEncodeUsageFlagsKHR.class) int value) {
+    public VkVideoEncodeUsageInfoKHR videoUsageHints(@Bitmask(VkVideoEncodeUsageFlagsKHR.class) int value) {
         segment.set(LAYOUT$videoUsageHints, OFFSET$videoUsageHints, value);
         return this;
     }
 
-    public @EnumType(VkVideoEncodeContentFlagsKHR.class) int videoContentHints() {
+    public @Bitmask(VkVideoEncodeContentFlagsKHR.class) int videoContentHints() {
         return segment.get(LAYOUT$videoContentHints, OFFSET$videoContentHints);
     }
 
-    public VkVideoEncodeUsageInfoKHR videoContentHints(@EnumType(VkVideoEncodeContentFlagsKHR.class) int value) {
+    public VkVideoEncodeUsageInfoKHR videoContentHints(@Bitmask(VkVideoEncodeContentFlagsKHR.class) int value) {
         segment.set(LAYOUT$videoContentHints, OFFSET$videoContentHints, value);
         return this;
     }

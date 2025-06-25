@@ -78,6 +78,11 @@ public record VkAccelerationStructureMotionInstanceNV(@NotNull MemorySegment seg
             return new VkAccelerationStructureMotionInstanceNV(segment.asSlice(index * VkAccelerationStructureMotionInstanceNV.BYTES, VkAccelerationStructureMotionInstanceNV.BYTES));
         }
 
+        public VkAccelerationStructureMotionInstanceNV.Ptr at(long index, @NotNull Consumer<@NotNull VkAccelerationStructureMotionInstanceNV> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkAccelerationStructureMotionInstanceNV value) {
             MemorySegment s = segment.asSlice(index * VkAccelerationStructureMotionInstanceNV.BYTES, VkAccelerationStructureMotionInstanceNV.BYTES);
             s.copyFrom(value.segment);
@@ -180,11 +185,11 @@ public record VkAccelerationStructureMotionInstanceNV(@NotNull MemorySegment seg
         return this;
     }
 
-    public @EnumType(VkAccelerationStructureMotionInstanceFlagsNV.class) int flags() {
+    public @Bitmask(VkAccelerationStructureMotionInstanceFlagsNV.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public VkAccelerationStructureMotionInstanceNV flags(@EnumType(VkAccelerationStructureMotionInstanceFlagsNV.class) int value) {
+    public VkAccelerationStructureMotionInstanceNV flags(@Bitmask(VkAccelerationStructureMotionInstanceFlagsNV.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
         return this;
     }

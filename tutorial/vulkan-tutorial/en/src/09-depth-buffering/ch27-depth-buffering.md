@@ -1,6 +1,6 @@
 # Depth buffering
 
-> [Java code](https://github.com/chuigda/vulkan4j/tree/master/modules/tutorial/src/main/java/tutorial/vulkan/part09/ch27/Main.java) | [C++ version](https://vulkan-tutorial.com/Depth_buffering)
+> [Java code](https://github.com/club-doki7/vulkan4j/tree/master/modules/tutorial/src/main/java/tutorial/vulkan/part09/ch27/Main.java) | [C++ version](https://vulkan-tutorial.com/Depth_buffering)
 
 ## Introduction
 
@@ -31,23 +31,22 @@ private static VkVertexInputBindingDescription getBindingDescription(Arena arena
 }
 
 private static VkVertexInputAttributeDescription.Ptr getAttributeDescriptions(Arena arena) {
-    var attributeDescriptions = VkVertexInputAttributeDescription.allocate(arena, 3);
-    attributeDescriptions.at(0)
-            .binding(0)
-            .location(0)
-            .format(VkFormat.R32G32B32_SFLOAT)
-            .offset(0);
-    attributeDescriptions.at(1)
-            .binding(0)
-            .location(1)
-            .format(VkFormat.R32G32B32_SFLOAT)
-            .offset(Float.BYTES * 3);
-    attributeDescriptions.at(2)
-            .binding(0)
-            .location(2)
-            .format(VkFormat.R32G32_SFLOAT)
-            .offset(Float.BYTES * 6);
-    return attributeDescriptions;
+    return VkVertexInputAttributeDescription.allocate(arena, 3)
+            .at(0, it -> it
+                    .binding(0)
+                    .location(0)
+                    .format(VkFormat.R32G32B32_SFLOAT)
+                    .offset(0))
+            .at(1, it -> it
+                    .binding(0)
+                    .location(1)
+                    .format(VkFormat.R32G32B32_SFLOAT)
+                    .offset(Float.BYTES * 3))
+            .at(2, it -> it
+                    .binding(0)
+                    .location(2)
+                    .format(VkFormat.R32G32_SFLOAT)
+                    .offset(Float.BYTES * 6));
 }
 ```
 
@@ -148,7 +147,7 @@ We could simply go for the `VkFormat.D32_SFLOAT` format, because support for it 
 private @EnumType(VkFormat.class) int findSupportedFormat(
         @EnumType(VkFormat.class) int[] candidates,
         @EnumType(VkImageTiling.class) int tiling,
-        @EnumType(VkFormatFeatureFlags.class) int features
+        @Bitmask(VkFormatFeatureFlags.class) int features
 ) {
 }
 ```
@@ -187,7 +186,7 @@ If none of the candidate formats support the desired usage, then we can either r
 private @EnumType(VkFormat.class) int findSupportedFormat(
         @EnumType(VkFormat.class) int[] candidates,
         @EnumType(VkImageTiling.class) int tiling,
-        @EnumType(VkFormatFeatureFlags.class) int features
+        @Bitmask(VkFormatFeatureFlags.class) int features
 ) {
     for (var format : candidates) {
         try (var arena = Arena.ofConfined()) {
@@ -259,7 +258,7 @@ However, the createImageView function currently assumes that the subresource is 
 private VkImageView createImageView(
         VkImage image,
         @EnumType(VkFormat.class) int format,
-        @EnumType(VkImageAspectFlags.class) int aspect
+        @Bitmask(VkImageAspectFlags.class) int aspect
 ) {
     // ...
     subresourceRange.aspectMask(aspect);
@@ -346,18 +345,18 @@ The depth buffer will be read from to perform depth tests to see if a fragment i
 We're now going to modify `createRenderPass` to include a depth attachment. First specify the `VkAttachmentDescription`:
 
 ```java
-var attachments = VkAttachmentDescription.allocate(arena, 2);
-attachments.at(0)
+var attachments = VkAttachmentDescription.allocate(arena, 2)
+        .at(0, it -> it
         // ...
-attachments.at(1)
-        .format(findDepthFormat())
-        .samples(VkSampleCountFlags._1)
-        .loadOp(VkAttachmentLoadOp.CLEAR)
-        .storeOp(VkAttachmentStoreOp.DONT_CARE)
-        .stencilLoadOp(VkAttachmentLoadOp.DONT_CARE)
-        .stencilStoreOp(VkAttachmentStoreOp.DONT_CARE)
-        .initialLayout(VkImageLayout.UNDEFINED)
-        .finalLayout(VkImageLayout.DEPTH_STENCIL_ATTACHMENT_OPTIMAL);
+        ).at(1, it -> it
+                .format(findDepthFormat())
+                .samples(VkSampleCountFlags._1)
+                .loadOp(VkAttachmentLoadOp.CLEAR)
+                .storeOp(VkAttachmentStoreOp.DONT_CARE)
+                .stencilLoadOp(VkAttachmentLoadOp.DONT_CARE)
+                .stencilStoreOp(VkAttachmentStoreOp.DONT_CARE)
+                .initialLayout(VkImageLayout.UNDEFINED)
+                .finalLayout(VkImageLayout.DEPTH_STENCIL_ATTACHMENT_OPTIMAL));
 ```
 
 The `format` should be the same as the depth image itself. This time we don't care about storing the depth data (`storeOp`), because it will not be used after drawing has finished. This may allow the hardware to perform additional optimizations. Just like the color buffer, we don't care about the previous depth contents, so we can use `VkImageLayout.UNDEFINED` as `initialLayout`.

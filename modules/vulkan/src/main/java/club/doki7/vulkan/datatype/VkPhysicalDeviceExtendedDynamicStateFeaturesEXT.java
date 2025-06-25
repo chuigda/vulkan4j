@@ -87,6 +87,11 @@ public record VkPhysicalDeviceExtendedDynamicStateFeaturesEXT(@NotNull MemorySeg
             return new VkPhysicalDeviceExtendedDynamicStateFeaturesEXT(segment.asSlice(index * VkPhysicalDeviceExtendedDynamicStateFeaturesEXT.BYTES, VkPhysicalDeviceExtendedDynamicStateFeaturesEXT.BYTES));
         }
 
+        public VkPhysicalDeviceExtendedDynamicStateFeaturesEXT.Ptr at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceExtendedDynamicStateFeaturesEXT> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkPhysicalDeviceExtendedDynamicStateFeaturesEXT value) {
             MemorySegment s = segment.asSlice(index * VkPhysicalDeviceExtendedDynamicStateFeaturesEXT.BYTES, VkPhysicalDeviceExtendedDynamicStateFeaturesEXT.BYTES);
             s.copyFrom(value.segment);
@@ -199,12 +204,13 @@ public record VkPhysicalDeviceExtendedDynamicStateFeaturesEXT(@NotNull MemorySeg
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkPhysicalDeviceExtendedDynamicStateFeaturesEXT pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkPhysicalDeviceExtendedDynamicStateFeaturesEXT pNext(@Nullable IPointer pointer) {

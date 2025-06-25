@@ -91,6 +91,11 @@ public record VkPhysicalDeviceIDProperties(@NotNull MemorySegment segment) imple
             return new VkPhysicalDeviceIDProperties(segment.asSlice(index * VkPhysicalDeviceIDProperties.BYTES, VkPhysicalDeviceIDProperties.BYTES));
         }
 
+        public VkPhysicalDeviceIDProperties.Ptr at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceIDProperties> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkPhysicalDeviceIDProperties value) {
             MemorySegment s = segment.asSlice(index * VkPhysicalDeviceIDProperties.BYTES, VkPhysicalDeviceIDProperties.BYTES);
             s.copyFrom(value.segment);
@@ -203,12 +208,13 @@ public record VkPhysicalDeviceIDProperties(@NotNull MemorySegment segment) imple
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkPhysicalDeviceIDProperties pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkPhysicalDeviceIDProperties pNext(@Nullable IPointer pointer) {
@@ -220,12 +226,19 @@ public record VkPhysicalDeviceIDProperties(@NotNull MemorySegment segment) imple
         return new BytePtr(deviceUUIDRaw());
     }
 
-    public VkPhysicalDeviceIDProperties deviceUUID(@Unsigned BytePtr value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$deviceUUID, SIZE$deviceUUID);
+    public VkPhysicalDeviceIDProperties deviceUUID(@NotNull Consumer<BytePtr> consumer) {
+        @Unsigned BytePtr ptr = deviceUUID();
+        consumer.accept(ptr);
         return this;
     }
 
-    public MemorySegment deviceUUIDRaw() {
+    public VkPhysicalDeviceIDProperties deviceUUID(@Unsigned BytePtr value) {
+        MemorySegment s = deviceUUIDRaw();
+        s.copyFrom(value.segment());
+        return this;
+    }
+
+    public @NotNull MemorySegment deviceUUIDRaw() {
         return segment.asSlice(OFFSET$deviceUUID, SIZE$deviceUUID);
     }
 
@@ -233,12 +246,19 @@ public record VkPhysicalDeviceIDProperties(@NotNull MemorySegment segment) imple
         return new BytePtr(driverUUIDRaw());
     }
 
-    public VkPhysicalDeviceIDProperties driverUUID(@Unsigned BytePtr value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$driverUUID, SIZE$driverUUID);
+    public VkPhysicalDeviceIDProperties driverUUID(@NotNull Consumer<BytePtr> consumer) {
+        @Unsigned BytePtr ptr = driverUUID();
+        consumer.accept(ptr);
         return this;
     }
 
-    public MemorySegment driverUUIDRaw() {
+    public VkPhysicalDeviceIDProperties driverUUID(@Unsigned BytePtr value) {
+        MemorySegment s = driverUUIDRaw();
+        s.copyFrom(value.segment());
+        return this;
+    }
+
+    public @NotNull MemorySegment driverUUIDRaw() {
         return segment.asSlice(OFFSET$driverUUID, SIZE$driverUUID);
     }
 
@@ -246,12 +266,19 @@ public record VkPhysicalDeviceIDProperties(@NotNull MemorySegment segment) imple
         return new BytePtr(deviceLUIDRaw());
     }
 
-    public VkPhysicalDeviceIDProperties deviceLUID(@Unsigned BytePtr value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$deviceLUID, SIZE$deviceLUID);
+    public VkPhysicalDeviceIDProperties deviceLUID(@NotNull Consumer<BytePtr> consumer) {
+        @Unsigned BytePtr ptr = deviceLUID();
+        consumer.accept(ptr);
         return this;
     }
 
-    public MemorySegment deviceLUIDRaw() {
+    public VkPhysicalDeviceIDProperties deviceLUID(@Unsigned BytePtr value) {
+        MemorySegment s = deviceLUIDRaw();
+        s.copyFrom(value.segment());
+        return this;
+    }
+
+    public @NotNull MemorySegment deviceLUIDRaw() {
         return segment.asSlice(OFFSET$deviceLUID, SIZE$deviceLUID);
     }
 

@@ -28,7 +28,7 @@ import static club.doki7.vulkan.VkConstants.*;
 ///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
 ///     uint32_t viewMask; // @link substring="viewMask" target="#viewMask"
 ///     uint32_t colorAttachmentCount; // optional // @link substring="colorAttachmentCount" target="#colorAttachmentCount"
-///     VkFormat const* pColorAttachmentFormats; // @link substring="VkFormat" target="VkFormat" @link substring="pColorAttachmentFormats" target="#pColorAttachmentFormats"
+///     VkFormat const* pColorAttachmentFormats; // optional // @link substring="VkFormat" target="VkFormat" @link substring="pColorAttachmentFormats" target="#pColorAttachmentFormats"
 ///     VkFormat depthAttachmentFormat; // @link substring="VkFormat" target="VkFormat" @link substring="depthAttachmentFormat" target="#depthAttachmentFormat"
 ///     VkFormat stencilAttachmentFormat; // @link substring="VkFormat" target="VkFormat" @link substring="stencilAttachmentFormat" target="#stencilAttachmentFormat"
 /// } VkPipelineRenderingCreateInfo;
@@ -89,6 +89,11 @@ public record VkPipelineRenderingCreateInfo(@NotNull MemorySegment segment) impl
         /// indicate that the returned structure is a view of the original structure.
         public @NotNull VkPipelineRenderingCreateInfo at(long index) {
             return new VkPipelineRenderingCreateInfo(segment.asSlice(index * VkPipelineRenderingCreateInfo.BYTES, VkPipelineRenderingCreateInfo.BYTES));
+        }
+
+        public VkPipelineRenderingCreateInfo.Ptr at(long index, @NotNull Consumer<@NotNull VkPipelineRenderingCreateInfo> consumer) {
+            consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkPipelineRenderingCreateInfo value) {
@@ -203,12 +208,13 @@ public record VkPipelineRenderingCreateInfo(@NotNull MemorySegment segment) impl
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkPipelineRenderingCreateInfo pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkPipelineRenderingCreateInfo pNext(@Nullable IPointer pointer) {
@@ -253,11 +259,11 @@ public record VkPipelineRenderingCreateInfo(@NotNull MemorySegment segment) impl
         return this;
     }
 
-    public @Pointer(target=VkFormat.class) MemorySegment pColorAttachmentFormatsRaw() {
+    public @Pointer(target=VkFormat.class) @NotNull MemorySegment pColorAttachmentFormatsRaw() {
         return segment.get(LAYOUT$pColorAttachmentFormats, OFFSET$pColorAttachmentFormats);
     }
 
-    public void pColorAttachmentFormatsRaw(@Pointer(target=VkFormat.class) MemorySegment value) {
+    public void pColorAttachmentFormatsRaw(@Pointer(target=VkFormat.class) @NotNull MemorySegment value) {
         segment.set(LAYOUT$pColorAttachmentFormats, OFFSET$pColorAttachmentFormats, value);
     }
 

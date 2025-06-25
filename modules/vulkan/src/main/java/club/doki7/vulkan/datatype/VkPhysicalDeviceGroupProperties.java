@@ -89,6 +89,11 @@ public record VkPhysicalDeviceGroupProperties(@NotNull MemorySegment segment) im
             return new VkPhysicalDeviceGroupProperties(segment.asSlice(index * VkPhysicalDeviceGroupProperties.BYTES, VkPhysicalDeviceGroupProperties.BYTES));
         }
 
+        public VkPhysicalDeviceGroupProperties.Ptr at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceGroupProperties> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkPhysicalDeviceGroupProperties value) {
             MemorySegment s = segment.asSlice(index * VkPhysicalDeviceGroupProperties.BYTES, VkPhysicalDeviceGroupProperties.BYTES);
             s.copyFrom(value.segment);
@@ -201,12 +206,13 @@ public record VkPhysicalDeviceGroupProperties(@NotNull MemorySegment segment) im
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkPhysicalDeviceGroupProperties pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkPhysicalDeviceGroupProperties pNext(@Nullable IPointer pointer) {
@@ -223,7 +229,7 @@ public record VkPhysicalDeviceGroupProperties(@NotNull MemorySegment segment) im
         return this;
     }
 
-    public MemorySegment physicalDevicesRaw() {
+    public @NotNull MemorySegment physicalDevicesRaw() {
         return segment.asSlice(OFFSET$physicalDevices, SIZE$physicalDevices);
     }
 
@@ -231,8 +237,14 @@ public record VkPhysicalDeviceGroupProperties(@NotNull MemorySegment segment) im
         return new VkPhysicalDevice.Ptr(physicalDevicesRaw());
     }
 
+    public VkPhysicalDeviceGroupProperties physicalDevices(@NotNull Consumer<VkPhysicalDevice.Ptr> consumer) {
+        VkPhysicalDevice.Ptr ptr = physicalDevices();
+        consumer.accept(ptr);
+        return this;
+    }
     public VkPhysicalDeviceGroupProperties physicalDevices(VkPhysicalDevice.Ptr value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$physicalDevices, SIZE$physicalDevices);
+        MemorySegment s = physicalDevicesRaw();
+        s.copyFrom(value.segment());
         return this;
     }
 

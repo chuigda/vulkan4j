@@ -28,7 +28,7 @@ import static club.doki7.vulkan.VkConstants.*;
 ///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
 ///     VkImageCompressionFlagsEXT flags; // @link substring="VkImageCompressionFlagsEXT" target="VkImageCompressionFlagsEXT" @link substring="flags" target="#flags"
 ///     uint32_t compressionControlPlaneCount; // optional // @link substring="compressionControlPlaneCount" target="#compressionControlPlaneCount"
-///     VkImageCompressionFixedRateFlagsEXT* pFixedRateFlags; // @link substring="VkImageCompressionFixedRateFlagsEXT" target="VkImageCompressionFixedRateFlagsEXT" @link substring="pFixedRateFlags" target="#pFixedRateFlags"
+///     VkImageCompressionFixedRateFlagsEXT* pFixedRateFlags; // optional // @link substring="VkImageCompressionFixedRateFlagsEXT" target="VkImageCompressionFixedRateFlagsEXT" @link substring="pFixedRateFlags" target="#pFixedRateFlags"
 /// } VkImageCompressionControlEXT;
 /// }
 ///
@@ -87,6 +87,11 @@ public record VkImageCompressionControlEXT(@NotNull MemorySegment segment) imple
         /// indicate that the returned structure is a view of the original structure.
         public @NotNull VkImageCompressionControlEXT at(long index) {
             return new VkImageCompressionControlEXT(segment.asSlice(index * VkImageCompressionControlEXT.BYTES, VkImageCompressionControlEXT.BYTES));
+        }
+
+        public VkImageCompressionControlEXT.Ptr at(long index, @NotNull Consumer<@NotNull VkImageCompressionControlEXT> consumer) {
+            consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkImageCompressionControlEXT value) {
@@ -201,12 +206,13 @@ public record VkImageCompressionControlEXT(@NotNull MemorySegment segment) imple
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkImageCompressionControlEXT pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkImageCompressionControlEXT pNext(@Nullable IPointer pointer) {
@@ -214,11 +220,11 @@ public record VkImageCompressionControlEXT(@NotNull MemorySegment segment) imple
         return this;
     }
 
-    public @EnumType(VkImageCompressionFlagsEXT.class) int flags() {
+    public @Bitmask(VkImageCompressionFlagsEXT.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public VkImageCompressionControlEXT flags(@EnumType(VkImageCompressionFlagsEXT.class) int value) {
+    public VkImageCompressionControlEXT flags(@Bitmask(VkImageCompressionFlagsEXT.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
         return this;
     }
@@ -237,7 +243,7 @@ public record VkImageCompressionControlEXT(@NotNull MemorySegment segment) imple
     /// {@link IntPtr#size} property. It's up to user to track the size of the buffer,
     /// and use {@link IntPtr#reinterpret} to set the size before actually reading fro
     /// or writing to the buffer.
-    public @Nullable @EnumType(VkImageCompressionFixedRateFlagsEXT.class) IntPtr pFixedRateFlags() {
+    public @Nullable @Bitmask(VkImageCompressionFixedRateFlagsEXT.class) IntPtr pFixedRateFlags() {
         MemorySegment s = pFixedRateFlagsRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
@@ -245,17 +251,17 @@ public record VkImageCompressionControlEXT(@NotNull MemorySegment segment) imple
         return new IntPtr(s);
     }
 
-    public VkImageCompressionControlEXT pFixedRateFlags(@Nullable @EnumType(VkImageCompressionFixedRateFlagsEXT.class) IntPtr value) {
+    public VkImageCompressionControlEXT pFixedRateFlags(@Nullable @Bitmask(VkImageCompressionFixedRateFlagsEXT.class) IntPtr value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pFixedRateFlagsRaw(s);
         return this;
     }
 
-    public @Pointer(target=VkImageCompressionFixedRateFlagsEXT.class) MemorySegment pFixedRateFlagsRaw() {
+    public @Pointer(target=VkImageCompressionFixedRateFlagsEXT.class) @NotNull MemorySegment pFixedRateFlagsRaw() {
         return segment.get(LAYOUT$pFixedRateFlags, OFFSET$pFixedRateFlags);
     }
 
-    public void pFixedRateFlagsRaw(@Pointer(target=VkImageCompressionFixedRateFlagsEXT.class) MemorySegment value) {
+    public void pFixedRateFlagsRaw(@Pointer(target=VkImageCompressionFixedRateFlagsEXT.class) @NotNull MemorySegment value) {
         segment.set(LAYOUT$pFixedRateFlags, OFFSET$pFixedRateFlags, value);
     }
 

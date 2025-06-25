@@ -29,7 +29,7 @@ import static club.doki7.vulkan.VkConstants.*;
 ///     uint64_t drmFormatModifier; // @link substring="drmFormatModifier" target="#drmFormatModifier"
 ///     VkSharingMode sharingMode; // @link substring="VkSharingMode" target="VkSharingMode" @link substring="sharingMode" target="#sharingMode"
 ///     uint32_t queueFamilyIndexCount; // optional // @link substring="queueFamilyIndexCount" target="#queueFamilyIndexCount"
-///     uint32_t const* pQueueFamilyIndices; // @link substring="pQueueFamilyIndices" target="#pQueueFamilyIndices"
+///     uint32_t const* pQueueFamilyIndices; // optional // @link substring="pQueueFamilyIndices" target="#pQueueFamilyIndices"
 /// } VkPhysicalDeviceImageDrmFormatModifierInfoEXT;
 /// }
 ///
@@ -88,6 +88,11 @@ public record VkPhysicalDeviceImageDrmFormatModifierInfoEXT(@NotNull MemorySegme
         /// indicate that the returned structure is a view of the original structure.
         public @NotNull VkPhysicalDeviceImageDrmFormatModifierInfoEXT at(long index) {
             return new VkPhysicalDeviceImageDrmFormatModifierInfoEXT(segment.asSlice(index * VkPhysicalDeviceImageDrmFormatModifierInfoEXT.BYTES, VkPhysicalDeviceImageDrmFormatModifierInfoEXT.BYTES));
+        }
+
+        public VkPhysicalDeviceImageDrmFormatModifierInfoEXT.Ptr at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceImageDrmFormatModifierInfoEXT> consumer) {
+            consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkPhysicalDeviceImageDrmFormatModifierInfoEXT value) {
@@ -202,12 +207,13 @@ public record VkPhysicalDeviceImageDrmFormatModifierInfoEXT(@NotNull MemorySegme
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkPhysicalDeviceImageDrmFormatModifierInfoEXT pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkPhysicalDeviceImageDrmFormatModifierInfoEXT pNext(@Nullable IPointer pointer) {
@@ -260,11 +266,11 @@ public record VkPhysicalDeviceImageDrmFormatModifierInfoEXT(@NotNull MemorySegme
         return this;
     }
 
-    public @Pointer(comment="uint32_t*") MemorySegment pQueueFamilyIndicesRaw() {
+    public @Pointer(comment="uint32_t*") @NotNull MemorySegment pQueueFamilyIndicesRaw() {
         return segment.get(LAYOUT$pQueueFamilyIndices, OFFSET$pQueueFamilyIndices);
     }
 
-    public void pQueueFamilyIndicesRaw(@Pointer(comment="uint32_t*") MemorySegment value) {
+    public void pQueueFamilyIndicesRaw(@Pointer(comment="uint32_t*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pQueueFamilyIndices, OFFSET$pQueueFamilyIndices, value);
     }
 

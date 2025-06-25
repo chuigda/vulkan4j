@@ -87,6 +87,11 @@ public record VkPhysicalDeviceSubpassMergeFeedbackFeaturesEXT(@NotNull MemorySeg
             return new VkPhysicalDeviceSubpassMergeFeedbackFeaturesEXT(segment.asSlice(index * VkPhysicalDeviceSubpassMergeFeedbackFeaturesEXT.BYTES, VkPhysicalDeviceSubpassMergeFeedbackFeaturesEXT.BYTES));
         }
 
+        public VkPhysicalDeviceSubpassMergeFeedbackFeaturesEXT.Ptr at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceSubpassMergeFeedbackFeaturesEXT> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkPhysicalDeviceSubpassMergeFeedbackFeaturesEXT value) {
             MemorySegment s = segment.asSlice(index * VkPhysicalDeviceSubpassMergeFeedbackFeaturesEXT.BYTES, VkPhysicalDeviceSubpassMergeFeedbackFeaturesEXT.BYTES);
             s.copyFrom(value.segment);
@@ -199,12 +204,13 @@ public record VkPhysicalDeviceSubpassMergeFeedbackFeaturesEXT(@NotNull MemorySeg
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkPhysicalDeviceSubpassMergeFeedbackFeaturesEXT pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkPhysicalDeviceSubpassMergeFeedbackFeaturesEXT pNext(@Nullable IPointer pointer) {

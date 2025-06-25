@@ -28,7 +28,7 @@ import static club.doki7.vulkan.VkConstants.*;
 ///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
 ///     uint32_t deviceMask; // @link substring="deviceMask" target="#deviceMask"
 ///     uint32_t deviceRenderAreaCount; // optional // @link substring="deviceRenderAreaCount" target="#deviceRenderAreaCount"
-///     VkRect2D const* pDeviceRenderAreas; // @link substring="VkRect2D" target="VkRect2D" @link substring="pDeviceRenderAreas" target="#pDeviceRenderAreas"
+///     VkRect2D const* pDeviceRenderAreas; // optional // @link substring="VkRect2D" target="VkRect2D" @link substring="pDeviceRenderAreas" target="#pDeviceRenderAreas"
 /// } VkDeviceGroupRenderPassBeginInfo;
 /// }
 ///
@@ -87,6 +87,11 @@ public record VkDeviceGroupRenderPassBeginInfo(@NotNull MemorySegment segment) i
         /// indicate that the returned structure is a view of the original structure.
         public @NotNull VkDeviceGroupRenderPassBeginInfo at(long index) {
             return new VkDeviceGroupRenderPassBeginInfo(segment.asSlice(index * VkDeviceGroupRenderPassBeginInfo.BYTES, VkDeviceGroupRenderPassBeginInfo.BYTES));
+        }
+
+        public VkDeviceGroupRenderPassBeginInfo.Ptr at(long index, @NotNull Consumer<@NotNull VkDeviceGroupRenderPassBeginInfo> consumer) {
+            consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkDeviceGroupRenderPassBeginInfo value) {
@@ -201,12 +206,13 @@ public record VkDeviceGroupRenderPassBeginInfo(@NotNull MemorySegment segment) i
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkDeviceGroupRenderPassBeginInfo pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkDeviceGroupRenderPassBeginInfo pNext(@Nullable IPointer pointer) {
@@ -256,11 +262,11 @@ public record VkDeviceGroupRenderPassBeginInfo(@NotNull MemorySegment segment) i
         return new VkRect2D(s);
     }
 
-    public @Pointer(target=VkRect2D.class) MemorySegment pDeviceRenderAreasRaw() {
+    public @Pointer(target=VkRect2D.class) @NotNull MemorySegment pDeviceRenderAreasRaw() {
         return segment.get(LAYOUT$pDeviceRenderAreas, OFFSET$pDeviceRenderAreas);
     }
 
-    public void pDeviceRenderAreasRaw(@Pointer(target=VkRect2D.class) MemorySegment value) {
+    public void pDeviceRenderAreasRaw(@Pointer(target=VkRect2D.class) @NotNull MemorySegment value) {
         segment.set(LAYOUT$pDeviceRenderAreas, OFFSET$pDeviceRenderAreas, value);
     }
 

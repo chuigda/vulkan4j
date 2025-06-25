@@ -1,6 +1,7 @@
 package club.doki7.glfw.handle;
 
 import java.lang.foreign.*;
+import java.util.Collection;
 import java.util.List;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
@@ -87,11 +88,11 @@ public record GLFWwindow(@NotNull MemorySegment segment) implements IPointer {
             }
         }
 
-        public MemorySegment readRaw() {
+        public @NotNull MemorySegment readRaw() {
             return segment.get(ValueLayout.ADDRESS, 0);
         }
 
-        public MemorySegment readRaw(long index) {
+        public @NotNull MemorySegment readRaw(long index) {
             return segment.get(ValueLayout.ADDRESS, index * ValueLayout.ADDRESS.byteSize());
         }
 
@@ -146,10 +147,20 @@ public record GLFWwindow(@NotNull MemorySegment segment) implements IPointer {
             return new Ptr(arena.allocate(ValueLayout.ADDRESS, size));
         }
 
-        public static Ptr allocate(Arena arena, @Nullable GLFWwindow[] values) {
+        public static Ptr allocate(Arena arena, @Nullable GLFWwindow @NotNull [] values) {
             Ptr ret = allocate(arena, values.length);
             for (int i = 0; i < values.length; i++) {
                 ret.write(i, values[i]);
+            }
+            return ret;
+        }
+
+        public static Ptr allocate(Arena arena, @NotNull Collection<@Nullable GLFWwindow> values) {
+            Ptr ret = allocate(arena, values.size());
+            int i = 0;
+            for (@Nullable GLFWwindow value : values) {
+                ret.write(i, value);
+                i += 1;
             }
             return ret;
         }

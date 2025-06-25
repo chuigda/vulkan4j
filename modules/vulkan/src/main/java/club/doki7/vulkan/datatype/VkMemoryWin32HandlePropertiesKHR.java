@@ -87,6 +87,11 @@ public record VkMemoryWin32HandlePropertiesKHR(@NotNull MemorySegment segment) i
             return new VkMemoryWin32HandlePropertiesKHR(segment.asSlice(index * VkMemoryWin32HandlePropertiesKHR.BYTES, VkMemoryWin32HandlePropertiesKHR.BYTES));
         }
 
+        public VkMemoryWin32HandlePropertiesKHR.Ptr at(long index, @NotNull Consumer<@NotNull VkMemoryWin32HandlePropertiesKHR> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkMemoryWin32HandlePropertiesKHR value) {
             MemorySegment s = segment.asSlice(index * VkMemoryWin32HandlePropertiesKHR.BYTES, VkMemoryWin32HandlePropertiesKHR.BYTES);
             s.copyFrom(value.segment);
@@ -199,12 +204,13 @@ public record VkMemoryWin32HandlePropertiesKHR(@NotNull MemorySegment segment) i
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkMemoryWin32HandlePropertiesKHR pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkMemoryWin32HandlePropertiesKHR pNext(@Nullable IPointer pointer) {

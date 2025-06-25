@@ -88,6 +88,11 @@ public record VkPhysicalDeviceShadingRateImageFeaturesNV(@NotNull MemorySegment 
             return new VkPhysicalDeviceShadingRateImageFeaturesNV(segment.asSlice(index * VkPhysicalDeviceShadingRateImageFeaturesNV.BYTES, VkPhysicalDeviceShadingRateImageFeaturesNV.BYTES));
         }
 
+        public VkPhysicalDeviceShadingRateImageFeaturesNV.Ptr at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceShadingRateImageFeaturesNV> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkPhysicalDeviceShadingRateImageFeaturesNV value) {
             MemorySegment s = segment.asSlice(index * VkPhysicalDeviceShadingRateImageFeaturesNV.BYTES, VkPhysicalDeviceShadingRateImageFeaturesNV.BYTES);
             s.copyFrom(value.segment);
@@ -200,12 +205,13 @@ public record VkPhysicalDeviceShadingRateImageFeaturesNV(@NotNull MemorySegment 
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkPhysicalDeviceShadingRateImageFeaturesNV pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkPhysicalDeviceShadingRateImageFeaturesNV pNext(@Nullable IPointer pointer) {

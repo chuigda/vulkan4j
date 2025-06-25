@@ -28,7 +28,7 @@ This tutorial will not assume knowledge of OpenGL or Direct3D concepts, but it d
 
 If you want a C++ tutorial instead, see the original tutorial: <https://vulkan-tutorial.com>
 
-This tutorial uses the [`vulkan4j`](https://github.com/chuigda/vulkan4j) package to provide access to the Vulkan API from Java. `vulkan4j` provides raw bindings to the Vulkan API as well as a thin wrapper over said bindings to make them easier and more idiomatic to use from Java. What's more, `vulkan4j` is built on top of the [`Java 22 FFM`](https://openjdk.java.net/projects/panama/) APIs, which is slightly more advanced.
+This tutorial uses the [`vulkan4j`](https://github.com/club-doki7/vulkan4j) package to provide access to the Vulkan API from Java. `vulkan4j` provides raw bindings to the Vulkan API as well as a thin wrapper over said bindings to make them easier and more idiomatic to use from Java. What's more, `vulkan4j` is built on top of the [`Java 22 FFM`](https://openjdk.java.net/projects/panama/) APIs, which is slightly more advanced.
 
 If you want a Java vulkan tutorial that uses a more mature package, checkout these two LWJGL-based tutorials: [vulkanbook](https://github.com/lwjglgamedev/vulkanbook/tree/master), [Vulkan-Tutorial-Java](https://github.com/Naitsirc98/Vulkan-Tutorial-Java).
 
@@ -46,7 +46,7 @@ Although each chapter is written as a follow-up on the previous one, it is also 
 
 Every chapter will also start with a link to the final code for that chapter. You can refer to it if you have any doubts about the structure of the code, or if you're dealing with a bug and want to compare.
 
-This tutorial is intended to be a community effort. Vulkan is still a fairly new API and best practices haven't been fully established. If you have any type of feedback on the tutorial and site itself, then please don't hesitate to submit an issue or pull request to the [GitHub repository](https://github.com/chuigda/vulkan4j).
+This tutorial is intended to be a community effort. Vulkan is still a fairly new API and best practices haven't been fully established. If you have any type of feedback on the tutorial and site itself, then please don't hesitate to submit an issue or pull request to the [GitHub repository](https://github.com/club-doki7/vulkan4j).
 
 After you've gone through the ritual of drawing your very first Vulkan powered triangle onscreen, we'll start expanding the program to include linear transformations, textures and 3D models.
 

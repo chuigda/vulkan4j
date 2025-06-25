@@ -177,6 +177,27 @@ internal fun parseTypedefDecl(tokenizer: Tokenizer): TypedefDecl {
     }
 }
 
+internal fun parseNonPointerFunctionTypedefDecl(tokenizer: Tokenizer): TypedefDecl {
+    val triviaList = mutableListOf<String>()
+    skipTrivia(tokenizer, triviaList)
+    expectAndConsume(TokenKind.IDENT, tokenizer, "typedef")
+
+    val type = parseType(tokenizer)
+    skipTrivia(tokenizer, triviaList)
+
+    val nameToken = expectAndConsume(TokenKind.IDENT, tokenizer)
+    skipTrivia(tokenizer, triviaList)
+
+    val params = parseFunctionParamList(tokenizer)
+    val paramsList = params.map { Pair(it.name, it.type) }
+
+    skipTrivia(tokenizer, triviaList)
+    expectAndConsume(TokenKind.SYMBOL, tokenizer, ";")
+
+    val functionType = RawFunctionType(type, paramsList, mutableListOf())
+    return TypedefDecl(nameToken.value, functionType, triviaList)
+}
+
 internal fun parseInlineFunctionPointerField(tokenizer: Tokenizer): VarDecl {
     val triviaList = mutableListOf<String>()
 

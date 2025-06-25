@@ -87,6 +87,11 @@ public record VkPipelineViewportDepthClipControlCreateInfoEXT(@NotNull MemorySeg
             return new VkPipelineViewportDepthClipControlCreateInfoEXT(segment.asSlice(index * VkPipelineViewportDepthClipControlCreateInfoEXT.BYTES, VkPipelineViewportDepthClipControlCreateInfoEXT.BYTES));
         }
 
+        public VkPipelineViewportDepthClipControlCreateInfoEXT.Ptr at(long index, @NotNull Consumer<@NotNull VkPipelineViewportDepthClipControlCreateInfoEXT> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkPipelineViewportDepthClipControlCreateInfoEXT value) {
             MemorySegment s = segment.asSlice(index * VkPipelineViewportDepthClipControlCreateInfoEXT.BYTES, VkPipelineViewportDepthClipControlCreateInfoEXT.BYTES);
             s.copyFrom(value.segment);
@@ -199,12 +204,13 @@ public record VkPipelineViewportDepthClipControlCreateInfoEXT(@NotNull MemorySeg
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkPipelineViewportDepthClipControlCreateInfoEXT pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkPipelineViewportDepthClipControlCreateInfoEXT pNext(@Nullable IPointer pointer) {

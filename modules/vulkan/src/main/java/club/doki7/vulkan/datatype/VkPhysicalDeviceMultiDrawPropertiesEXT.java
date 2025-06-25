@@ -87,6 +87,11 @@ public record VkPhysicalDeviceMultiDrawPropertiesEXT(@NotNull MemorySegment segm
             return new VkPhysicalDeviceMultiDrawPropertiesEXT(segment.asSlice(index * VkPhysicalDeviceMultiDrawPropertiesEXT.BYTES, VkPhysicalDeviceMultiDrawPropertiesEXT.BYTES));
         }
 
+        public VkPhysicalDeviceMultiDrawPropertiesEXT.Ptr at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceMultiDrawPropertiesEXT> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkPhysicalDeviceMultiDrawPropertiesEXT value) {
             MemorySegment s = segment.asSlice(index * VkPhysicalDeviceMultiDrawPropertiesEXT.BYTES, VkPhysicalDeviceMultiDrawPropertiesEXT.BYTES);
             s.copyFrom(value.segment);
@@ -199,12 +204,13 @@ public record VkPhysicalDeviceMultiDrawPropertiesEXT(@NotNull MemorySegment segm
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkPhysicalDeviceMultiDrawPropertiesEXT pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkPhysicalDeviceMultiDrawPropertiesEXT pNext(@Nullable IPointer pointer) {

@@ -87,6 +87,11 @@ public record VkPhysicalDeviceDynamicRenderingUnusedAttachmentsFeaturesEXT(@NotN
             return new VkPhysicalDeviceDynamicRenderingUnusedAttachmentsFeaturesEXT(segment.asSlice(index * VkPhysicalDeviceDynamicRenderingUnusedAttachmentsFeaturesEXT.BYTES, VkPhysicalDeviceDynamicRenderingUnusedAttachmentsFeaturesEXT.BYTES));
         }
 
+        public VkPhysicalDeviceDynamicRenderingUnusedAttachmentsFeaturesEXT.Ptr at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceDynamicRenderingUnusedAttachmentsFeaturesEXT> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkPhysicalDeviceDynamicRenderingUnusedAttachmentsFeaturesEXT value) {
             MemorySegment s = segment.asSlice(index * VkPhysicalDeviceDynamicRenderingUnusedAttachmentsFeaturesEXT.BYTES, VkPhysicalDeviceDynamicRenderingUnusedAttachmentsFeaturesEXT.BYTES);
             s.copyFrom(value.segment);
@@ -199,12 +204,13 @@ public record VkPhysicalDeviceDynamicRenderingUnusedAttachmentsFeaturesEXT(@NotN
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkPhysicalDeviceDynamicRenderingUnusedAttachmentsFeaturesEXT pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkPhysicalDeviceDynamicRenderingUnusedAttachmentsFeaturesEXT pNext(@Nullable IPointer pointer) {

@@ -87,6 +87,11 @@ public record VkRayTracingPipelineClusterAccelerationStructureCreateInfoNV(@NotN
             return new VkRayTracingPipelineClusterAccelerationStructureCreateInfoNV(segment.asSlice(index * VkRayTracingPipelineClusterAccelerationStructureCreateInfoNV.BYTES, VkRayTracingPipelineClusterAccelerationStructureCreateInfoNV.BYTES));
         }
 
+        public VkRayTracingPipelineClusterAccelerationStructureCreateInfoNV.Ptr at(long index, @NotNull Consumer<@NotNull VkRayTracingPipelineClusterAccelerationStructureCreateInfoNV> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkRayTracingPipelineClusterAccelerationStructureCreateInfoNV value) {
             MemorySegment s = segment.asSlice(index * VkRayTracingPipelineClusterAccelerationStructureCreateInfoNV.BYTES, VkRayTracingPipelineClusterAccelerationStructureCreateInfoNV.BYTES);
             s.copyFrom(value.segment);
@@ -199,12 +204,13 @@ public record VkRayTracingPipelineClusterAccelerationStructureCreateInfoNV(@NotN
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkRayTracingPipelineClusterAccelerationStructureCreateInfoNV pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkRayTracingPipelineClusterAccelerationStructureCreateInfoNV pNext(@Nullable IPointer pointer) {

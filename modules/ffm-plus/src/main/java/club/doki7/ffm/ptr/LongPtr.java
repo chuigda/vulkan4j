@@ -4,7 +4,6 @@ import club.doki7.ffm.IPointer;
 import club.doki7.ffm.annotation.Unsafe;
 import club.doki7.ffm.annotation.UnsafeConstructor;
 import club.doki7.ffm.annotation.ValueBasedCandidate;
-import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -13,6 +12,7 @@ import java.lang.foreign.MemorySegment;
 import java.lang.foreign.ValueLayout;
 import java.nio.Buffer;
 import java.nio.LongBuffer;
+import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
 import java.util.NoSuchElementException;
@@ -106,12 +106,11 @@ public record LongPtr(@NotNull MemorySegment segment) implements IPointer, Itera
     /// considered "empty". See the documentation of {@link IPointer#segment()} for more details.
     ///
     /// @param segment the {@link MemorySegment} to use as the backing storage
-    /// @return {@code null} if {@code segment} is {@code null} or {@link MemorySegment#NULL},
+    /// @return {@code null} if {@code segment} is {@link MemorySegment#NULL},
     /// otherwise a new {@link LongPtr} that uses {@code segment} as backing storage
     /// @throws IllegalArgumentException if {@code segment} is not native or not properly aligned
-    @Contract("null -> null")
-    public static @Nullable LongPtr checked(@Nullable MemorySegment segment) {
-        if (segment == null || segment.equals(MemorySegment.NULL)) {
+    public static @Nullable LongPtr checked(@NotNull MemorySegment segment) {
+        if (segment.equals(MemorySegment.NULL)) {
             return null;
         }
 
@@ -172,6 +171,16 @@ public record LongPtr(@NotNull MemorySegment segment) implements IPointer, Itera
 
     public static @NotNull LongPtr allocate(@NotNull Arena arena, long @NotNull [] array) {
         return new LongPtr(arena.allocateFrom(ValueLayout.JAVA_LONG, array));
+    }
+
+    public static @NotNull LongPtr allocate(@NotNull Arena arena, Collection<Long> longs) {
+        LongPtr ret = allocate(arena, longs.size());
+        int i = 0;
+        for (long value : longs) {
+            ret.write(i, value);
+            i += 1;
+        }
+        return ret;
     }
 
     public static @NotNull LongPtr allocateV(@NotNull Arena arena, long value0, long ...values) {

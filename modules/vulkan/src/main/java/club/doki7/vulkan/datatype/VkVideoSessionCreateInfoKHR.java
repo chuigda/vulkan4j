@@ -95,6 +95,11 @@ public record VkVideoSessionCreateInfoKHR(@NotNull MemorySegment segment) implem
             return new VkVideoSessionCreateInfoKHR(segment.asSlice(index * VkVideoSessionCreateInfoKHR.BYTES, VkVideoSessionCreateInfoKHR.BYTES));
         }
 
+        public VkVideoSessionCreateInfoKHR.Ptr at(long index, @NotNull Consumer<@NotNull VkVideoSessionCreateInfoKHR> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkVideoSessionCreateInfoKHR value) {
             MemorySegment s = segment.asSlice(index * VkVideoSessionCreateInfoKHR.BYTES, VkVideoSessionCreateInfoKHR.BYTES);
             s.copyFrom(value.segment);
@@ -207,12 +212,13 @@ public record VkVideoSessionCreateInfoKHR(@NotNull MemorySegment segment) implem
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkVideoSessionCreateInfoKHR pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkVideoSessionCreateInfoKHR pNext(@Nullable IPointer pointer) {
@@ -229,11 +235,11 @@ public record VkVideoSessionCreateInfoKHR(@NotNull MemorySegment segment) implem
         return this;
     }
 
-    public @EnumType(VkVideoSessionCreateFlagsKHR.class) int flags() {
+    public @Bitmask(VkVideoSessionCreateFlagsKHR.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public VkVideoSessionCreateInfoKHR flags(@EnumType(VkVideoSessionCreateFlagsKHR.class) int value) {
+    public VkVideoSessionCreateInfoKHR flags(@Bitmask(VkVideoSessionCreateFlagsKHR.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
         return this;
     }
@@ -262,11 +268,11 @@ public record VkVideoSessionCreateInfoKHR(@NotNull MemorySegment segment) implem
         return new VkVideoProfileInfoKHR(s);
     }
 
-    public @Pointer(target=VkVideoProfileInfoKHR.class) MemorySegment pVideoProfileRaw() {
+    public @Pointer(target=VkVideoProfileInfoKHR.class) @NotNull MemorySegment pVideoProfileRaw() {
         return segment.get(LAYOUT$pVideoProfile, OFFSET$pVideoProfile);
     }
 
-    public void pVideoProfileRaw(@Pointer(target=VkVideoProfileInfoKHR.class) MemorySegment value) {
+    public void pVideoProfileRaw(@Pointer(target=VkVideoProfileInfoKHR.class) @NotNull MemorySegment value) {
         segment.set(LAYOUT$pVideoProfile, OFFSET$pVideoProfile, value);
     }
 
@@ -344,11 +350,11 @@ public record VkVideoSessionCreateInfoKHR(@NotNull MemorySegment segment) implem
         return new VkExtensionProperties(s);
     }
 
-    public @Pointer(target=VkExtensionProperties.class) MemorySegment pStdHeaderVersionRaw() {
+    public @Pointer(target=VkExtensionProperties.class) @NotNull MemorySegment pStdHeaderVersionRaw() {
         return segment.get(LAYOUT$pStdHeaderVersion, OFFSET$pStdHeaderVersion);
     }
 
-    public void pStdHeaderVersionRaw(@Pointer(target=VkExtensionProperties.class) MemorySegment value) {
+    public void pStdHeaderVersionRaw(@Pointer(target=VkExtensionProperties.class) @NotNull MemorySegment value) {
         segment.set(LAYOUT$pStdHeaderVersion, OFFSET$pStdHeaderVersion, value);
     }
 

@@ -90,6 +90,11 @@ public record VkVertexInputAttributeDescription2EXT(@NotNull MemorySegment segme
             return new VkVertexInputAttributeDescription2EXT(segment.asSlice(index * VkVertexInputAttributeDescription2EXT.BYTES, VkVertexInputAttributeDescription2EXT.BYTES));
         }
 
+        public VkVertexInputAttributeDescription2EXT.Ptr at(long index, @NotNull Consumer<@NotNull VkVertexInputAttributeDescription2EXT> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkVertexInputAttributeDescription2EXT value) {
             MemorySegment s = segment.asSlice(index * VkVertexInputAttributeDescription2EXT.BYTES, VkVertexInputAttributeDescription2EXT.BYTES);
             s.copyFrom(value.segment);
@@ -202,12 +207,13 @@ public record VkVertexInputAttributeDescription2EXT(@NotNull MemorySegment segme
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkVertexInputAttributeDescription2EXT pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkVertexInputAttributeDescription2EXT pNext(@Nullable IPointer pointer) {

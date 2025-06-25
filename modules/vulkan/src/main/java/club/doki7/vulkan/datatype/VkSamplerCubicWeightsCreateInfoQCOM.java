@@ -87,6 +87,11 @@ public record VkSamplerCubicWeightsCreateInfoQCOM(@NotNull MemorySegment segment
             return new VkSamplerCubicWeightsCreateInfoQCOM(segment.asSlice(index * VkSamplerCubicWeightsCreateInfoQCOM.BYTES, VkSamplerCubicWeightsCreateInfoQCOM.BYTES));
         }
 
+        public VkSamplerCubicWeightsCreateInfoQCOM.Ptr at(long index, @NotNull Consumer<@NotNull VkSamplerCubicWeightsCreateInfoQCOM> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkSamplerCubicWeightsCreateInfoQCOM value) {
             MemorySegment s = segment.asSlice(index * VkSamplerCubicWeightsCreateInfoQCOM.BYTES, VkSamplerCubicWeightsCreateInfoQCOM.BYTES);
             s.copyFrom(value.segment);
@@ -199,12 +204,13 @@ public record VkSamplerCubicWeightsCreateInfoQCOM(@NotNull MemorySegment segment
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkSamplerCubicWeightsCreateInfoQCOM pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkSamplerCubicWeightsCreateInfoQCOM pNext(@Nullable IPointer pointer) {

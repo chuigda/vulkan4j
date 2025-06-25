@@ -87,6 +87,11 @@ public record VkRenderPassFragmentDensityMapCreateInfoEXT(@NotNull MemorySegment
             return new VkRenderPassFragmentDensityMapCreateInfoEXT(segment.asSlice(index * VkRenderPassFragmentDensityMapCreateInfoEXT.BYTES, VkRenderPassFragmentDensityMapCreateInfoEXT.BYTES));
         }
 
+        public VkRenderPassFragmentDensityMapCreateInfoEXT.Ptr at(long index, @NotNull Consumer<@NotNull VkRenderPassFragmentDensityMapCreateInfoEXT> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkRenderPassFragmentDensityMapCreateInfoEXT value) {
             MemorySegment s = segment.asSlice(index * VkRenderPassFragmentDensityMapCreateInfoEXT.BYTES, VkRenderPassFragmentDensityMapCreateInfoEXT.BYTES);
             s.copyFrom(value.segment);
@@ -199,12 +204,13 @@ public record VkRenderPassFragmentDensityMapCreateInfoEXT(@NotNull MemorySegment
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkRenderPassFragmentDensityMapCreateInfoEXT pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkRenderPassFragmentDensityMapCreateInfoEXT pNext(@Nullable IPointer pointer) {

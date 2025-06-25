@@ -87,6 +87,11 @@ public record VkFormatProperties2(@NotNull MemorySegment segment) implements IVk
             return new VkFormatProperties2(segment.asSlice(index * VkFormatProperties2.BYTES, VkFormatProperties2.BYTES));
         }
 
+        public VkFormatProperties2.Ptr at(long index, @NotNull Consumer<@NotNull VkFormatProperties2> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkFormatProperties2 value) {
             MemorySegment s = segment.asSlice(index * VkFormatProperties2.BYTES, VkFormatProperties2.BYTES);
             s.copyFrom(value.segment);
@@ -199,12 +204,13 @@ public record VkFormatProperties2(@NotNull MemorySegment segment) implements IVk
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkFormatProperties2 pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkFormatProperties2 pNext(@Nullable IPointer pointer) {

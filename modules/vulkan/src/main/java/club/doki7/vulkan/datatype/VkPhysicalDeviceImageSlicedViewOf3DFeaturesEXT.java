@@ -87,6 +87,11 @@ public record VkPhysicalDeviceImageSlicedViewOf3DFeaturesEXT(@NotNull MemorySegm
             return new VkPhysicalDeviceImageSlicedViewOf3DFeaturesEXT(segment.asSlice(index * VkPhysicalDeviceImageSlicedViewOf3DFeaturesEXT.BYTES, VkPhysicalDeviceImageSlicedViewOf3DFeaturesEXT.BYTES));
         }
 
+        public VkPhysicalDeviceImageSlicedViewOf3DFeaturesEXT.Ptr at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceImageSlicedViewOf3DFeaturesEXT> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkPhysicalDeviceImageSlicedViewOf3DFeaturesEXT value) {
             MemorySegment s = segment.asSlice(index * VkPhysicalDeviceImageSlicedViewOf3DFeaturesEXT.BYTES, VkPhysicalDeviceImageSlicedViewOf3DFeaturesEXT.BYTES);
             s.copyFrom(value.segment);
@@ -199,12 +204,13 @@ public record VkPhysicalDeviceImageSlicedViewOf3DFeaturesEXT(@NotNull MemorySegm
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkPhysicalDeviceImageSlicedViewOf3DFeaturesEXT pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkPhysicalDeviceImageSlicedViewOf3DFeaturesEXT pNext(@Nullable IPointer pointer) {

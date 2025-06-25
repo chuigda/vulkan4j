@@ -27,7 +27,7 @@ import static club.doki7.vulkan.VkConstants.*;
 ///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
 ///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
 ///     uint32_t fragmentDensityOffsetCount; // optional // @link substring="fragmentDensityOffsetCount" target="#fragmentDensityOffsetCount"
-///     VkOffset2D const* pFragmentDensityOffsets; // @link substring="VkOffset2D" target="VkOffset2D" @link substring="pFragmentDensityOffsets" target="#pFragmentDensityOffsets"
+///     VkOffset2D const* pFragmentDensityOffsets; // optional // @link substring="VkOffset2D" target="VkOffset2D" @link substring="pFragmentDensityOffsets" target="#pFragmentDensityOffsets"
 /// } VkRenderPassFragmentDensityMapOffsetEndInfoEXT;
 /// }
 ///
@@ -86,6 +86,11 @@ public record VkRenderPassFragmentDensityMapOffsetEndInfoEXT(@NotNull MemorySegm
         /// indicate that the returned structure is a view of the original structure.
         public @NotNull VkRenderPassFragmentDensityMapOffsetEndInfoEXT at(long index) {
             return new VkRenderPassFragmentDensityMapOffsetEndInfoEXT(segment.asSlice(index * VkRenderPassFragmentDensityMapOffsetEndInfoEXT.BYTES, VkRenderPassFragmentDensityMapOffsetEndInfoEXT.BYTES));
+        }
+
+        public VkRenderPassFragmentDensityMapOffsetEndInfoEXT.Ptr at(long index, @NotNull Consumer<@NotNull VkRenderPassFragmentDensityMapOffsetEndInfoEXT> consumer) {
+            consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkRenderPassFragmentDensityMapOffsetEndInfoEXT value) {
@@ -200,12 +205,13 @@ public record VkRenderPassFragmentDensityMapOffsetEndInfoEXT(@NotNull MemorySegm
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkRenderPassFragmentDensityMapOffsetEndInfoEXT pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkRenderPassFragmentDensityMapOffsetEndInfoEXT pNext(@Nullable IPointer pointer) {
@@ -246,11 +252,11 @@ public record VkRenderPassFragmentDensityMapOffsetEndInfoEXT(@NotNull MemorySegm
         return new VkOffset2D(s);
     }
 
-    public @Pointer(target=VkOffset2D.class) MemorySegment pFragmentDensityOffsetsRaw() {
+    public @Pointer(target=VkOffset2D.class) @NotNull MemorySegment pFragmentDensityOffsetsRaw() {
         return segment.get(LAYOUT$pFragmentDensityOffsets, OFFSET$pFragmentDensityOffsets);
     }
 
-    public void pFragmentDensityOffsetsRaw(@Pointer(target=VkOffset2D.class) MemorySegment value) {
+    public void pFragmentDensityOffsetsRaw(@Pointer(target=VkOffset2D.class) @NotNull MemorySegment value) {
         segment.set(LAYOUT$pFragmentDensityOffsets, OFFSET$pFragmentDensityOffsets, value);
     }
 

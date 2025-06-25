@@ -88,6 +88,11 @@ public record VkPhysicalDeviceExternalComputeQueuePropertiesNV(@NotNull MemorySe
             return new VkPhysicalDeviceExternalComputeQueuePropertiesNV(segment.asSlice(index * VkPhysicalDeviceExternalComputeQueuePropertiesNV.BYTES, VkPhysicalDeviceExternalComputeQueuePropertiesNV.BYTES));
         }
 
+        public VkPhysicalDeviceExternalComputeQueuePropertiesNV.Ptr at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceExternalComputeQueuePropertiesNV> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkPhysicalDeviceExternalComputeQueuePropertiesNV value) {
             MemorySegment s = segment.asSlice(index * VkPhysicalDeviceExternalComputeQueuePropertiesNV.BYTES, VkPhysicalDeviceExternalComputeQueuePropertiesNV.BYTES);
             s.copyFrom(value.segment);
@@ -200,12 +205,13 @@ public record VkPhysicalDeviceExternalComputeQueuePropertiesNV(@NotNull MemorySe
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkPhysicalDeviceExternalComputeQueuePropertiesNV pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkPhysicalDeviceExternalComputeQueuePropertiesNV pNext(@Nullable IPointer pointer) {

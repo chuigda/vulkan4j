@@ -87,6 +87,11 @@ public record StdVideoH265ShortTermRefPicSet(@NotNull MemorySegment segment) imp
             return new StdVideoH265ShortTermRefPicSet(segment.asSlice(index * StdVideoH265ShortTermRefPicSet.BYTES, StdVideoH265ShortTermRefPicSet.BYTES));
         }
 
+        public StdVideoH265ShortTermRefPicSet.Ptr at(long index, @NotNull Consumer<@NotNull StdVideoH265ShortTermRefPicSet> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull StdVideoH265ShortTermRefPicSet value) {
             MemorySegment s = segment.asSlice(index * StdVideoH265ShortTermRefPicSet.BYTES, StdVideoH265ShortTermRefPicSet.BYTES);
             s.copyFrom(value.segment);
@@ -273,12 +278,19 @@ public record StdVideoH265ShortTermRefPicSet(@NotNull MemorySegment segment) imp
         return new ShortPtr(delta_poc_s0_minus1Raw());
     }
 
-    public StdVideoH265ShortTermRefPicSet delta_poc_s0_minus1(@Unsigned ShortPtr value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$delta_poc_s0_minus1, SIZE$delta_poc_s0_minus1);
+    public StdVideoH265ShortTermRefPicSet delta_poc_s0_minus1(@NotNull Consumer<ShortPtr> consumer) {
+        @Unsigned ShortPtr ptr = delta_poc_s0_minus1();
+        consumer.accept(ptr);
         return this;
     }
 
-    public MemorySegment delta_poc_s0_minus1Raw() {
+    public StdVideoH265ShortTermRefPicSet delta_poc_s0_minus1(@Unsigned ShortPtr value) {
+        MemorySegment s = delta_poc_s0_minus1Raw();
+        s.copyFrom(value.segment());
+        return this;
+    }
+
+    public @NotNull MemorySegment delta_poc_s0_minus1Raw() {
         return segment.asSlice(OFFSET$delta_poc_s0_minus1, SIZE$delta_poc_s0_minus1);
     }
 
@@ -286,12 +298,19 @@ public record StdVideoH265ShortTermRefPicSet(@NotNull MemorySegment segment) imp
         return new ShortPtr(delta_poc_s1_minus1Raw());
     }
 
-    public StdVideoH265ShortTermRefPicSet delta_poc_s1_minus1(@Unsigned ShortPtr value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$delta_poc_s1_minus1, SIZE$delta_poc_s1_minus1);
+    public StdVideoH265ShortTermRefPicSet delta_poc_s1_minus1(@NotNull Consumer<ShortPtr> consumer) {
+        @Unsigned ShortPtr ptr = delta_poc_s1_minus1();
+        consumer.accept(ptr);
         return this;
     }
 
-    public MemorySegment delta_poc_s1_minus1Raw() {
+    public StdVideoH265ShortTermRefPicSet delta_poc_s1_minus1(@Unsigned ShortPtr value) {
+        MemorySegment s = delta_poc_s1_minus1Raw();
+        s.copyFrom(value.segment());
+        return this;
+    }
+
+    public @NotNull MemorySegment delta_poc_s1_minus1Raw() {
         return segment.asSlice(OFFSET$delta_poc_s1_minus1, SIZE$delta_poc_s1_minus1);
     }
 

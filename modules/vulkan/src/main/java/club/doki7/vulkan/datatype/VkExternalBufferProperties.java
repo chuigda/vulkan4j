@@ -87,6 +87,11 @@ public record VkExternalBufferProperties(@NotNull MemorySegment segment) impleme
             return new VkExternalBufferProperties(segment.asSlice(index * VkExternalBufferProperties.BYTES, VkExternalBufferProperties.BYTES));
         }
 
+        public VkExternalBufferProperties.Ptr at(long index, @NotNull Consumer<@NotNull VkExternalBufferProperties> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkExternalBufferProperties value) {
             MemorySegment s = segment.asSlice(index * VkExternalBufferProperties.BYTES, VkExternalBufferProperties.BYTES);
             s.copyFrom(value.segment);
@@ -199,12 +204,13 @@ public record VkExternalBufferProperties(@NotNull MemorySegment segment) impleme
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkExternalBufferProperties pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkExternalBufferProperties pNext(@Nullable IPointer pointer) {

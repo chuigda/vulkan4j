@@ -89,6 +89,11 @@ public record VkDescriptorAddressInfoEXT(@NotNull MemorySegment segment) impleme
             return new VkDescriptorAddressInfoEXT(segment.asSlice(index * VkDescriptorAddressInfoEXT.BYTES, VkDescriptorAddressInfoEXT.BYTES));
         }
 
+        public VkDescriptorAddressInfoEXT.Ptr at(long index, @NotNull Consumer<@NotNull VkDescriptorAddressInfoEXT> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkDescriptorAddressInfoEXT value) {
             MemorySegment s = segment.asSlice(index * VkDescriptorAddressInfoEXT.BYTES, VkDescriptorAddressInfoEXT.BYTES);
             s.copyFrom(value.segment);
@@ -201,12 +206,13 @@ public record VkDescriptorAddressInfoEXT(@NotNull MemorySegment segment) impleme
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkDescriptorAddressInfoEXT pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkDescriptorAddressInfoEXT pNext(@Nullable IPointer pointer) {

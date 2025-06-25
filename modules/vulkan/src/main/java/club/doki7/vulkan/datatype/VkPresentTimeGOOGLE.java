@@ -77,6 +77,11 @@ public record VkPresentTimeGOOGLE(@NotNull MemorySegment segment) implements IVk
             return new VkPresentTimeGOOGLE(segment.asSlice(index * VkPresentTimeGOOGLE.BYTES, VkPresentTimeGOOGLE.BYTES));
         }
 
+        public VkPresentTimeGOOGLE.Ptr at(long index, @NotNull Consumer<@NotNull VkPresentTimeGOOGLE> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkPresentTimeGOOGLE value) {
             MemorySegment s = segment.asSlice(index * VkPresentTimeGOOGLE.BYTES, VkPresentTimeGOOGLE.BYTES);
             s.copyFrom(value.segment);

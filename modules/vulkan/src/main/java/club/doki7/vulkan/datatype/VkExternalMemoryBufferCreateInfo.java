@@ -87,6 +87,11 @@ public record VkExternalMemoryBufferCreateInfo(@NotNull MemorySegment segment) i
             return new VkExternalMemoryBufferCreateInfo(segment.asSlice(index * VkExternalMemoryBufferCreateInfo.BYTES, VkExternalMemoryBufferCreateInfo.BYTES));
         }
 
+        public VkExternalMemoryBufferCreateInfo.Ptr at(long index, @NotNull Consumer<@NotNull VkExternalMemoryBufferCreateInfo> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkExternalMemoryBufferCreateInfo value) {
             MemorySegment s = segment.asSlice(index * VkExternalMemoryBufferCreateInfo.BYTES, VkExternalMemoryBufferCreateInfo.BYTES);
             s.copyFrom(value.segment);
@@ -199,12 +204,13 @@ public record VkExternalMemoryBufferCreateInfo(@NotNull MemorySegment segment) i
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkExternalMemoryBufferCreateInfo pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkExternalMemoryBufferCreateInfo pNext(@Nullable IPointer pointer) {
@@ -212,11 +218,11 @@ public record VkExternalMemoryBufferCreateInfo(@NotNull MemorySegment segment) i
         return this;
     }
 
-    public @EnumType(VkExternalMemoryHandleTypeFlags.class) int handleTypes() {
+    public @Bitmask(VkExternalMemoryHandleTypeFlags.class) int handleTypes() {
         return segment.get(LAYOUT$handleTypes, OFFSET$handleTypes);
     }
 
-    public VkExternalMemoryBufferCreateInfo handleTypes(@EnumType(VkExternalMemoryHandleTypeFlags.class) int value) {
+    public VkExternalMemoryBufferCreateInfo handleTypes(@Bitmask(VkExternalMemoryHandleTypeFlags.class) int value) {
         segment.set(LAYOUT$handleTypes, OFFSET$handleTypes, value);
         return this;
     }

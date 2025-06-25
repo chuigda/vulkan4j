@@ -1,6 +1,9 @@
 package club.doki7.babel.ctype
 
+import club.doki7.babel.ctype.voidType
 import club.doki7.babel.registry.ArrayType
+import club.doki7.babel.registry.FunctionTypedef
+import club.doki7.babel.registry.Identifier
 import club.doki7.babel.registry.IdentifierType
 import club.doki7.babel.registry.OpaqueTypedef
 import club.doki7.babel.registry.PointerType
@@ -38,10 +41,10 @@ data class CPointerType(
     override var comment: String?,
 ) : CType, ICommentable<CPointerType> {
     override val jType: String = if (comment != null) {
-        """@Pointer(comment="$comment") MemorySegment"""
+        """@Pointer(comment="$comment") @NotNull MemorySegment"""
     }
     else {
-        """@Pointer(comment="void*") MemorySegment"""
+        """@Pointer(comment="void*") @NotNull MemorySegment"""
     }
 
     override val jLayout: String = if (pointee is CVoidType) {
@@ -277,12 +280,15 @@ data class CStructType(val name: String, val isUnion: Boolean): CType {
 
 data class CEnumType(
     val name: String,
+    val isBitmask: Boolean,
     val bitwidth: Int? = null
 ): CFixedSizeType {
+    private val annotationClassName = if (isBitmask) "Bitmask" else "EnumType"
+
     override val jType: String get() = when (bitwidth) {
-        null, 32 -> "@EnumType($name.class) int"
-        8 -> "@EnumType($name.class) byte"
-        64 -> "@EnumType($name.class) long"
+        null, 32 -> "@$annotationClassName($name.class) int"
+        8 -> "@$annotationClassName($name.class) byte"
+        64 -> "@$annotationClassName($name.class) long"
         else -> error("unsupported bitwidth: $bitwidth")
     }
 
@@ -316,9 +322,9 @@ data class CEnumType(
     }
 
     override val jPtrType: String = when (bitwidth) {
-        null, 32 -> "@EnumType($name.class) IntPtr"
-        8 -> "@EnumType($name.class) BytePtr"
-        64 -> "@EnumType($name.class) LongPtr"
+        null, 32 -> "@$annotationClassName($name.class) IntPtr"
+        8 -> "@$annotationClassName($name.class) BytePtr"
+        64 -> "@$annotationClassName($name.class) LongPtr"
         else -> error("unsupported bitwidth: $bitwidth")
     }
 
@@ -383,6 +389,7 @@ private val knownTypes = mapOf(
     "unsigned" to cUIntType,
     "unsigned int" to cUIntType,
     "long long" to int64Type,
+    "__int64" to int64Type,
 
     "long" to cLongType,
     "size_t" to cSizeType,
@@ -392,6 +399,9 @@ private val knownTypes = mapOf(
     "unsigned char" to uint8Type,
     "short" to int16Type,
     "unsigned short" to uint16Type,
+
+    // libc types
+    "timespec" to voidType.copy(cType = "timespec"), // used as a pointer
 
     // OpenGL base types
     "GLbyte" to int8Type.copyWithComment(comment = "GLbyte"),
@@ -460,32 +470,44 @@ private val knownTypes = mapOf(
 
     // Windows
     "DWORD" to uint32Type.copyWithComment(comment = "DWORD"),
+    "LONG" to int32Type.copyWithComment("LONG"),
     "HANDLE" to pvoidType("HANDLE"),
     "HINSTANCE" to pvoidType("HINSTANCE"),
     "HMONITOR" to pvoidType("HMONITOR"),
     "HWND" to pvoidType("HWND"),
+    "HDC" to pvoidType("HDC"),
+    "LARGE_INTEGER" to voidType, // used as a pointer
     "LPCWSTR" to CPointerType(uint16Type, const = true, pointerToOne = false, comment = "LPCWSTR"),
     "HGLRC" to pvoidType("HGLRC"),
     "SECURITY_ATTRIBUTES" to voidType.copy(cType = "SECURITY_ATTRIBUTES"),
 
-    // X11
+    // X11 Xlib
     "Display" to pvoidType("Display"),
     "RROutput" to cLongType.copy(comment = "RROutput"),
     "RRCrtc" to cLongType.copy(comment = "RRCrtc"),
     "VisualID" to cLongType.copy(comment = "VisualID"),
     "Window" to cLongType.copy(comment = "Window"),
+    "GLXFBConfig" to pvoidType("GLXFBConfig"),
+    "GLXDrawable" to cLongType.copyWithComment("GLXDrawable"),
     "GLXContext" to pvoidType("GLXContext"),
     "GLXWindow" to cLongType.copy(comment = "GLXWindow"),
     "XEvent" to voidType.copy(cType = "XEvent"),
+
+    // X11 XCB
     "xcb_connection_t" to voidType.copy(cType = "xcb_connection_t"),
     "xcb_visualid_t" to uint32Type.copyWithComment(comment = "xcb_visualid_t"),
     "xcb_window_t" to uint32Type.copyWithComment(comment = "xcb_window_t"),
     "xcb_handle_t" to uint32Type.copyWithComment(comment = "xcb_handle_t"),
+    "xcb_glx_fbconfig_t" to uint32Type.copyWithComment("xcb_glx_fbconfig_t"),
+    "xcb_glx_drawable_t" to uint32Type.copyWithComment("xcb_glx_drawable_t"),
+    "xcb_glx_context_t" to uint32Type.copyWithComment("xcb_glx_context_t"),
 
     // EGL
     "EGLDisplay" to pvoidType("EGLDisplay"),
     "EGLContext" to pvoidType("EGLContext"),
     "EGLSurface" to pvoidType("EGLSurface"),
+    "EGLConfig" to pvoidType("EGLConfig"),
+    "EGLenum" to uint32Type.copyWithComment("EGLenum"),
 
     // MESA
     "OSMesaContext" to pvoidType("OSMesaContext"),
@@ -498,15 +520,54 @@ private val knownTypes = mapOf(
 
     // FUCHSIA
     "zx_handle_t" to uint32Type.copyWithComment(comment = "zx_handle_t"),
+
+    // Microsoft Windows COM and Direct3D
+    "IUnknown" to pvoidType("IUnknown"),
+    "ID3D11Device" to pvoidType("ID3D11Device"),
+    "ID3D11Texture2D" to pvoidType("ID3D11Texture2D"),
+    "ID3D12CommandQueue" to pvoidType("ID3D12CommandQueue"),
+    "ID3D12Device" to pvoidType("ID3D12Device"),
+    "ID3D12Resource" to pvoidType("ID3D12Resource"),
+    "D3D_FEATURE_LEVEL" to uint32Type.copyWithComment("D3D_FEATURE_LEVEL"),
+
+    // JNI
+    "jobject" to pvoidType("jobject")
 )
 
-fun lowerType(registry: RegistryBase, refRegistries: List<RegistryBase>, type: Type): CType {
+fun lowerType(
+    registry: RegistryBase,
+    refRegistries: List<RegistryBase>,
+    type: Type,
+    importEnumerations: MutableSet<Pair<Identifier, Identifier>>? = null
+): CType {
     return when(type) {
         is ArrayType -> {
             if (!type.length.value.isNumeric()) {
                 if (!registry.constants.contains(type.length)
-                    && !refRegistries.any { it.constants.contains(type.length) }) {
+                    && !registry.enumConstantToEnumerationLookupAccel.contains(type.length.original)
+                    && !refRegistries.any {
+                        it.constants.contains(type.length)
+                        || it.enumConstantToEnumerationLookupAccel.contains(type.length.original)
+                    }) {
                     error("array type referred to an unknown constant ${type.length}")
+                }
+
+                if (registry.enumConstantToEnumerationLookupAccel.contains(type.length.original)) {
+                    val enum = registry.enumConstantToEnumerationLookupAccel[type.length.original]!!
+                    if (importEnumerations == null) {
+                        error("array type referred to an enumeration constant ${type.length}, but no importEnumerations set, caller will be unable to set the import")
+                    }
+                    importEnumerations.add(Pair(enum, type.length))
+                }
+
+                refRegistries.forEach {
+                    if (it.enumConstantToEnumerationLookupAccel.contains(type.length.original)) {
+                        val enum = it.enumConstantToEnumerationLookupAccel[type.length.original]!!
+                        if (importEnumerations == null) {
+                            error("array type referred to an enumeration constant ${type.length}, but no importEnumerations set, caller will be unable to set the import")
+                        }
+                        importEnumerations.add(Pair(enum, type.length))
+                    }
                 }
             }
 
@@ -515,6 +576,11 @@ fun lowerType(registry: RegistryBase, refRegistries: List<RegistryBase>, type: T
         }
         is PointerType -> {
             if (type.pointee is IdentifierType) {
+                val functionTypedef = lookupFunctionTypedef(registry, refRegistries, type.pointee)
+                if (functionTypedef != null && !functionTypedef.isPointer) {
+                    return CPointerType(voidType, false, pointerToOne = true, comment="${type.pointee.ident.value}*")
+                }
+
                 val opaqueTypedef = lookupOpaqueTypedef(registry, refRegistries, type.pointee)
                 if (opaqueTypedef != null) {
                     return if (opaqueTypedef.isHandle) {
@@ -560,6 +626,24 @@ fun lookupOpaqueTypedef(
     return null
 }
 
+fun lookupFunctionTypedef(
+    registry: RegistryBase,
+    refRegistries: List<RegistryBase>,
+    type: IdentifierType
+): FunctionTypedef? {
+    if (registry.functionTypedefs.contains(type.ident)) {
+        return registry.functionTypedefs[type.ident]
+    }
+
+    for (refRegistry in refRegistries) {
+        if (refRegistry.functionTypedefs.contains(type.ident)) {
+            return refRegistry.functionTypedefs[type.ident]
+        }
+    }
+
+    return null
+}
+
 fun lowerIdentifierType(
     registry: RegistryBase,
     refRegistries: List<RegistryBase>,
@@ -592,15 +676,19 @@ fun identifierTypeLookup(registry: RegistryBase, refRegistries: List<RegistryBas
         CStructType(type.ident.value, true)
     }
     else if (registry.enumerations.contains(type.ident)) {
-        CEnumType(type.ident.value)
+        CEnumType(type.ident.value, isBitmask = false)
     }
     else if (registry.bitmasks.contains(type.ident)) {
-        CEnumType(type.ident.value, bitwidth=registry.bitmasks[type.ident]!!.bitwidth)
+        CEnumType(type.ident.value, isBitmask = true, bitwidth=registry.bitmasks[type.ident]!!.bitwidth)
     }
     else if (registry.opaqueHandleTypedefs.contains(type.ident)) {
         CHandleType(type.ident.value)
     }
     else if (registry.functionTypedefs.contains(type.ident)) {
+        val functionTypedef = registry.functionTypedefs[type.ident]!!
+        if (!functionTypedef.isPointer) {
+            error("function typedef ${type.ident.value} is not a pointer type, should not be used individually")
+        }
         CPointerType(voidType, false, pointerToOne = true, comment=type.ident.value)
     }
     else if (registry.aliases.contains(type.ident)) {

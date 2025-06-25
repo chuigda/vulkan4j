@@ -28,9 +28,9 @@ import static club.doki7.vulkan.VkConstants.*;
 ///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
 ///     VkPipelineLayoutCreateFlags flags; // optional // @link substring="VkPipelineLayoutCreateFlags" target="VkPipelineLayoutCreateFlags" @link substring="flags" target="#flags"
 ///     uint32_t setLayoutCount; // optional // @link substring="setLayoutCount" target="#setLayoutCount"
-///     VkDescriptorSetLayout const* pSetLayouts; // @link substring="VkDescriptorSetLayout" target="VkDescriptorSetLayout" @link substring="pSetLayouts" target="#pSetLayouts"
+///     VkDescriptorSetLayout const* pSetLayouts; // optional // @link substring="VkDescriptorSetLayout" target="VkDescriptorSetLayout" @link substring="pSetLayouts" target="#pSetLayouts"
 ///     uint32_t pushConstantRangeCount; // optional // @link substring="pushConstantRangeCount" target="#pushConstantRangeCount"
-///     VkPushConstantRange const* pPushConstantRanges; // @link substring="VkPushConstantRange" target="VkPushConstantRange" @link substring="pPushConstantRanges" target="#pPushConstantRanges"
+///     VkPushConstantRange const* pPushConstantRanges; // optional // @link substring="VkPushConstantRange" target="VkPushConstantRange" @link substring="pPushConstantRanges" target="#pPushConstantRanges"
 /// } VkPipelineLayoutCreateInfo;
 /// }
 ///
@@ -89,6 +89,11 @@ public record VkPipelineLayoutCreateInfo(@NotNull MemorySegment segment) impleme
         /// indicate that the returned structure is a view of the original structure.
         public @NotNull VkPipelineLayoutCreateInfo at(long index) {
             return new VkPipelineLayoutCreateInfo(segment.asSlice(index * VkPipelineLayoutCreateInfo.BYTES, VkPipelineLayoutCreateInfo.BYTES));
+        }
+
+        public VkPipelineLayoutCreateInfo.Ptr at(long index, @NotNull Consumer<@NotNull VkPipelineLayoutCreateInfo> consumer) {
+            consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkPipelineLayoutCreateInfo value) {
@@ -203,12 +208,13 @@ public record VkPipelineLayoutCreateInfo(@NotNull MemorySegment segment) impleme
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkPipelineLayoutCreateInfo pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkPipelineLayoutCreateInfo pNext(@Nullable IPointer pointer) {
@@ -216,11 +222,11 @@ public record VkPipelineLayoutCreateInfo(@NotNull MemorySegment segment) impleme
         return this;
     }
 
-    public @EnumType(VkPipelineLayoutCreateFlags.class) int flags() {
+    public @Bitmask(VkPipelineLayoutCreateFlags.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public VkPipelineLayoutCreateInfo flags(@EnumType(VkPipelineLayoutCreateFlags.class) int value) {
+    public VkPipelineLayoutCreateInfo flags(@Bitmask(VkPipelineLayoutCreateFlags.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
         return this;
     }
@@ -252,11 +258,11 @@ public record VkPipelineLayoutCreateInfo(@NotNull MemorySegment segment) impleme
         return this;
     }
 
-    public @Pointer(target=VkDescriptorSetLayout.class) MemorySegment pSetLayoutsRaw() {
+    public @Pointer(target=VkDescriptorSetLayout.class) @NotNull MemorySegment pSetLayoutsRaw() {
         return segment.get(LAYOUT$pSetLayouts, OFFSET$pSetLayouts);
     }
 
-    public void pSetLayoutsRaw(@Pointer(target=VkDescriptorSetLayout.class) MemorySegment value) {
+    public void pSetLayoutsRaw(@Pointer(target=VkDescriptorSetLayout.class) @NotNull MemorySegment value) {
         segment.set(LAYOUT$pSetLayouts, OFFSET$pSetLayouts, value);
     }
 
@@ -293,11 +299,11 @@ public record VkPipelineLayoutCreateInfo(@NotNull MemorySegment segment) impleme
         return new VkPushConstantRange(s);
     }
 
-    public @Pointer(target=VkPushConstantRange.class) MemorySegment pPushConstantRangesRaw() {
+    public @Pointer(target=VkPushConstantRange.class) @NotNull MemorySegment pPushConstantRangesRaw() {
         return segment.get(LAYOUT$pPushConstantRanges, OFFSET$pPushConstantRanges);
     }
 
-    public void pPushConstantRangesRaw(@Pointer(target=VkPushConstantRange.class) MemorySegment value) {
+    public void pPushConstantRangesRaw(@Pointer(target=VkPushConstantRange.class) @NotNull MemorySegment value) {
         segment.set(LAYOUT$pPushConstantRanges, OFFSET$pPushConstantRanges, value);
     }
 

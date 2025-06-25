@@ -27,7 +27,7 @@ import static club.doki7.vulkan.VkConstants.*;
 ///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
 ///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
 ///     uint32_t binaryCount; // optional // @link substring="binaryCount" target="#binaryCount"
-///     VkPipelineBinaryKHR const* pPipelineBinaries; // @link substring="VkPipelineBinaryKHR" target="VkPipelineBinaryKHR" @link substring="pPipelineBinaries" target="#pPipelineBinaries"
+///     VkPipelineBinaryKHR const* pPipelineBinaries; // optional // @link substring="VkPipelineBinaryKHR" target="VkPipelineBinaryKHR" @link substring="pPipelineBinaries" target="#pPipelineBinaries"
 /// } VkPipelineBinaryInfoKHR;
 /// }
 ///
@@ -86,6 +86,11 @@ public record VkPipelineBinaryInfoKHR(@NotNull MemorySegment segment) implements
         /// indicate that the returned structure is a view of the original structure.
         public @NotNull VkPipelineBinaryInfoKHR at(long index) {
             return new VkPipelineBinaryInfoKHR(segment.asSlice(index * VkPipelineBinaryInfoKHR.BYTES, VkPipelineBinaryInfoKHR.BYTES));
+        }
+
+        public VkPipelineBinaryInfoKHR.Ptr at(long index, @NotNull Consumer<@NotNull VkPipelineBinaryInfoKHR> consumer) {
+            consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkPipelineBinaryInfoKHR value) {
@@ -200,12 +205,13 @@ public record VkPipelineBinaryInfoKHR(@NotNull MemorySegment segment) implements
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkPipelineBinaryInfoKHR pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkPipelineBinaryInfoKHR pNext(@Nullable IPointer pointer) {
@@ -240,11 +246,11 @@ public record VkPipelineBinaryInfoKHR(@NotNull MemorySegment segment) implements
         return this;
     }
 
-    public @Pointer(target=VkPipelineBinaryKHR.class) MemorySegment pPipelineBinariesRaw() {
+    public @Pointer(target=VkPipelineBinaryKHR.class) @NotNull MemorySegment pPipelineBinariesRaw() {
         return segment.get(LAYOUT$pPipelineBinaries, OFFSET$pPipelineBinaries);
     }
 
-    public void pPipelineBinariesRaw(@Pointer(target=VkPipelineBinaryKHR.class) MemorySegment value) {
+    public void pPipelineBinariesRaw(@Pointer(target=VkPipelineBinaryKHR.class) @NotNull MemorySegment value) {
         segment.set(LAYOUT$pPipelineBinaries, OFFSET$pPipelineBinaries, value);
     }
 

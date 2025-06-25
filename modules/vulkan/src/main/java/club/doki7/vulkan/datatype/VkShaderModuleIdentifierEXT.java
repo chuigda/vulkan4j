@@ -88,6 +88,11 @@ public record VkShaderModuleIdentifierEXT(@NotNull MemorySegment segment) implem
             return new VkShaderModuleIdentifierEXT(segment.asSlice(index * VkShaderModuleIdentifierEXT.BYTES, VkShaderModuleIdentifierEXT.BYTES));
         }
 
+        public VkShaderModuleIdentifierEXT.Ptr at(long index, @NotNull Consumer<@NotNull VkShaderModuleIdentifierEXT> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkShaderModuleIdentifierEXT value) {
             MemorySegment s = segment.asSlice(index * VkShaderModuleIdentifierEXT.BYTES, VkShaderModuleIdentifierEXT.BYTES);
             s.copyFrom(value.segment);
@@ -200,12 +205,13 @@ public record VkShaderModuleIdentifierEXT(@NotNull MemorySegment segment) implem
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkShaderModuleIdentifierEXT pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkShaderModuleIdentifierEXT pNext(@Nullable IPointer pointer) {
@@ -226,12 +232,19 @@ public record VkShaderModuleIdentifierEXT(@NotNull MemorySegment segment) implem
         return new BytePtr(identifierRaw());
     }
 
-    public VkShaderModuleIdentifierEXT identifier(@Unsigned BytePtr value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$identifier, SIZE$identifier);
+    public VkShaderModuleIdentifierEXT identifier(@NotNull Consumer<BytePtr> consumer) {
+        @Unsigned BytePtr ptr = identifier();
+        consumer.accept(ptr);
         return this;
     }
 
-    public MemorySegment identifierRaw() {
+    public VkShaderModuleIdentifierEXT identifier(@Unsigned BytePtr value) {
+        MemorySegment s = identifierRaw();
+        s.copyFrom(value.segment());
+        return this;
+    }
+
+    public @NotNull MemorySegment identifierRaw() {
         return segment.asSlice(OFFSET$identifier, SIZE$identifier);
     }
 

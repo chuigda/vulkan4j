@@ -95,6 +95,11 @@ public record VkRayTracingPipelineCreateInfoNV(@NotNull MemorySegment segment) i
             return new VkRayTracingPipelineCreateInfoNV(segment.asSlice(index * VkRayTracingPipelineCreateInfoNV.BYTES, VkRayTracingPipelineCreateInfoNV.BYTES));
         }
 
+        public VkRayTracingPipelineCreateInfoNV.Ptr at(long index, @NotNull Consumer<@NotNull VkRayTracingPipelineCreateInfoNV> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkRayTracingPipelineCreateInfoNV value) {
             MemorySegment s = segment.asSlice(index * VkRayTracingPipelineCreateInfoNV.BYTES, VkRayTracingPipelineCreateInfoNV.BYTES);
             s.copyFrom(value.segment);
@@ -207,12 +212,13 @@ public record VkRayTracingPipelineCreateInfoNV(@NotNull MemorySegment segment) i
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkRayTracingPipelineCreateInfoNV pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkRayTracingPipelineCreateInfoNV pNext(@Nullable IPointer pointer) {
@@ -220,11 +226,11 @@ public record VkRayTracingPipelineCreateInfoNV(@NotNull MemorySegment segment) i
         return this;
     }
 
-    public @EnumType(VkPipelineCreateFlags.class) int flags() {
+    public @Bitmask(VkPipelineCreateFlags.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public VkRayTracingPipelineCreateInfoNV flags(@EnumType(VkPipelineCreateFlags.class) int value) {
+    public VkRayTracingPipelineCreateInfoNV flags(@Bitmask(VkPipelineCreateFlags.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
         return this;
     }
@@ -262,11 +268,11 @@ public record VkRayTracingPipelineCreateInfoNV(@NotNull MemorySegment segment) i
         return new VkPipelineShaderStageCreateInfo(s);
     }
 
-    public @Pointer(target=VkPipelineShaderStageCreateInfo.class) MemorySegment pStagesRaw() {
+    public @Pointer(target=VkPipelineShaderStageCreateInfo.class) @NotNull MemorySegment pStagesRaw() {
         return segment.get(LAYOUT$pStages, OFFSET$pStages);
     }
 
-    public void pStagesRaw(@Pointer(target=VkPipelineShaderStageCreateInfo.class) MemorySegment value) {
+    public void pStagesRaw(@Pointer(target=VkPipelineShaderStageCreateInfo.class) @NotNull MemorySegment value) {
         segment.set(LAYOUT$pStages, OFFSET$pStages, value);
     }
 
@@ -303,11 +309,11 @@ public record VkRayTracingPipelineCreateInfoNV(@NotNull MemorySegment segment) i
         return new VkRayTracingShaderGroupCreateInfoNV(s);
     }
 
-    public @Pointer(target=VkRayTracingShaderGroupCreateInfoNV.class) MemorySegment pGroupsRaw() {
+    public @Pointer(target=VkRayTracingShaderGroupCreateInfoNV.class) @NotNull MemorySegment pGroupsRaw() {
         return segment.get(LAYOUT$pGroups, OFFSET$pGroups);
     }
 
-    public void pGroupsRaw(@Pointer(target=VkRayTracingShaderGroupCreateInfoNV.class) MemorySegment value) {
+    public void pGroupsRaw(@Pointer(target=VkRayTracingShaderGroupCreateInfoNV.class) @NotNull MemorySegment value) {
         segment.set(LAYOUT$pGroups, OFFSET$pGroups, value);
     }
 

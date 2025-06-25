@@ -88,6 +88,11 @@ public record StdVideoEncodeH265SliceSegmentHeader(@NotNull MemorySegment segmen
             return new StdVideoEncodeH265SliceSegmentHeader(segment.asSlice(index * StdVideoEncodeH265SliceSegmentHeader.BYTES, StdVideoEncodeH265SliceSegmentHeader.BYTES));
         }
 
+        public StdVideoEncodeH265SliceSegmentHeader.Ptr at(long index, @NotNull Consumer<@NotNull StdVideoEncodeH265SliceSegmentHeader> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull StdVideoEncodeH265SliceSegmentHeader value) {
             MemorySegment s = segment.asSlice(index * StdVideoEncodeH265SliceSegmentHeader.BYTES, StdVideoEncodeH265SliceSegmentHeader.BYTES);
             s.copyFrom(value.segment);
@@ -328,11 +333,11 @@ public record StdVideoEncodeH265SliceSegmentHeader(@NotNull MemorySegment segmen
         return new StdVideoEncodeH265WeightTable(s);
     }
 
-    public @Pointer(target=StdVideoEncodeH265WeightTable.class) MemorySegment pWeightTableRaw() {
+    public @Pointer(target=StdVideoEncodeH265WeightTable.class) @NotNull MemorySegment pWeightTableRaw() {
         return segment.get(LAYOUT$pWeightTable, OFFSET$pWeightTable);
     }
 
-    public void pWeightTableRaw(@Pointer(target=StdVideoEncodeH265WeightTable.class) MemorySegment value) {
+    public void pWeightTableRaw(@Pointer(target=StdVideoEncodeH265WeightTable.class) @NotNull MemorySegment value) {
         segment.set(LAYOUT$pWeightTable, OFFSET$pWeightTable, value);
     }
 

@@ -88,6 +88,11 @@ public record VkPhysicalDeviceSamplerFilterMinmaxProperties(@NotNull MemorySegme
             return new VkPhysicalDeviceSamplerFilterMinmaxProperties(segment.asSlice(index * VkPhysicalDeviceSamplerFilterMinmaxProperties.BYTES, VkPhysicalDeviceSamplerFilterMinmaxProperties.BYTES));
         }
 
+        public VkPhysicalDeviceSamplerFilterMinmaxProperties.Ptr at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceSamplerFilterMinmaxProperties> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkPhysicalDeviceSamplerFilterMinmaxProperties value) {
             MemorySegment s = segment.asSlice(index * VkPhysicalDeviceSamplerFilterMinmaxProperties.BYTES, VkPhysicalDeviceSamplerFilterMinmaxProperties.BYTES);
             s.copyFrom(value.segment);
@@ -200,12 +205,13 @@ public record VkPhysicalDeviceSamplerFilterMinmaxProperties(@NotNull MemorySegme
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkPhysicalDeviceSamplerFilterMinmaxProperties pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkPhysicalDeviceSamplerFilterMinmaxProperties pNext(@Nullable IPointer pointer) {

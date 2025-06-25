@@ -87,6 +87,11 @@ public record VkCopyCommandTransformInfoQCOM(@NotNull MemorySegment segment) imp
             return new VkCopyCommandTransformInfoQCOM(segment.asSlice(index * VkCopyCommandTransformInfoQCOM.BYTES, VkCopyCommandTransformInfoQCOM.BYTES));
         }
 
+        public VkCopyCommandTransformInfoQCOM.Ptr at(long index, @NotNull Consumer<@NotNull VkCopyCommandTransformInfoQCOM> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkCopyCommandTransformInfoQCOM value) {
             MemorySegment s = segment.asSlice(index * VkCopyCommandTransformInfoQCOM.BYTES, VkCopyCommandTransformInfoQCOM.BYTES);
             s.copyFrom(value.segment);
@@ -199,12 +204,13 @@ public record VkCopyCommandTransformInfoQCOM(@NotNull MemorySegment segment) imp
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkCopyCommandTransformInfoQCOM pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkCopyCommandTransformInfoQCOM pNext(@Nullable IPointer pointer) {
@@ -212,11 +218,11 @@ public record VkCopyCommandTransformInfoQCOM(@NotNull MemorySegment segment) imp
         return this;
     }
 
-    public @EnumType(VkSurfaceTransformFlagsKHR.class) int transform() {
+    public @Bitmask(VkSurfaceTransformFlagsKHR.class) int transform() {
         return segment.get(LAYOUT$transform, OFFSET$transform);
     }
 
-    public VkCopyCommandTransformInfoQCOM transform(@EnumType(VkSurfaceTransformFlagsKHR.class) int value) {
+    public VkCopyCommandTransformInfoQCOM transform(@Bitmask(VkSurfaceTransformFlagsKHR.class) int value) {
         segment.set(LAYOUT$transform, OFFSET$transform, value);
         return this;
     }

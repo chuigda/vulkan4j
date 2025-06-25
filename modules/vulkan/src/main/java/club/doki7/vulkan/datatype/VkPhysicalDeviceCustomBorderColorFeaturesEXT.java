@@ -88,6 +88,11 @@ public record VkPhysicalDeviceCustomBorderColorFeaturesEXT(@NotNull MemorySegmen
             return new VkPhysicalDeviceCustomBorderColorFeaturesEXT(segment.asSlice(index * VkPhysicalDeviceCustomBorderColorFeaturesEXT.BYTES, VkPhysicalDeviceCustomBorderColorFeaturesEXT.BYTES));
         }
 
+        public VkPhysicalDeviceCustomBorderColorFeaturesEXT.Ptr at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceCustomBorderColorFeaturesEXT> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkPhysicalDeviceCustomBorderColorFeaturesEXT value) {
             MemorySegment s = segment.asSlice(index * VkPhysicalDeviceCustomBorderColorFeaturesEXT.BYTES, VkPhysicalDeviceCustomBorderColorFeaturesEXT.BYTES);
             s.copyFrom(value.segment);
@@ -200,12 +205,13 @@ public record VkPhysicalDeviceCustomBorderColorFeaturesEXT(@NotNull MemorySegmen
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkPhysicalDeviceCustomBorderColorFeaturesEXT pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkPhysicalDeviceCustomBorderColorFeaturesEXT pNext(@Nullable IPointer pointer) {

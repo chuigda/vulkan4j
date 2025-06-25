@@ -90,6 +90,11 @@ public record VkPhysicalDeviceTexelBufferAlignmentProperties(@NotNull MemorySegm
             return new VkPhysicalDeviceTexelBufferAlignmentProperties(segment.asSlice(index * VkPhysicalDeviceTexelBufferAlignmentProperties.BYTES, VkPhysicalDeviceTexelBufferAlignmentProperties.BYTES));
         }
 
+        public VkPhysicalDeviceTexelBufferAlignmentProperties.Ptr at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceTexelBufferAlignmentProperties> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkPhysicalDeviceTexelBufferAlignmentProperties value) {
             MemorySegment s = segment.asSlice(index * VkPhysicalDeviceTexelBufferAlignmentProperties.BYTES, VkPhysicalDeviceTexelBufferAlignmentProperties.BYTES);
             s.copyFrom(value.segment);
@@ -202,12 +207,13 @@ public record VkPhysicalDeviceTexelBufferAlignmentProperties(@NotNull MemorySegm
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkPhysicalDeviceTexelBufferAlignmentProperties pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkPhysicalDeviceTexelBufferAlignmentProperties pNext(@Nullable IPointer pointer) {

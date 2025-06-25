@@ -87,6 +87,11 @@ public record VkSwapchainCounterCreateInfoEXT(@NotNull MemorySegment segment) im
             return new VkSwapchainCounterCreateInfoEXT(segment.asSlice(index * VkSwapchainCounterCreateInfoEXT.BYTES, VkSwapchainCounterCreateInfoEXT.BYTES));
         }
 
+        public VkSwapchainCounterCreateInfoEXT.Ptr at(long index, @NotNull Consumer<@NotNull VkSwapchainCounterCreateInfoEXT> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkSwapchainCounterCreateInfoEXT value) {
             MemorySegment s = segment.asSlice(index * VkSwapchainCounterCreateInfoEXT.BYTES, VkSwapchainCounterCreateInfoEXT.BYTES);
             s.copyFrom(value.segment);
@@ -199,12 +204,13 @@ public record VkSwapchainCounterCreateInfoEXT(@NotNull MemorySegment segment) im
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkSwapchainCounterCreateInfoEXT pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkSwapchainCounterCreateInfoEXT pNext(@Nullable IPointer pointer) {
@@ -212,11 +218,11 @@ public record VkSwapchainCounterCreateInfoEXT(@NotNull MemorySegment segment) im
         return this;
     }
 
-    public @EnumType(VkSurfaceCounterFlagsEXT.class) int surfaceCounters() {
+    public @Bitmask(VkSurfaceCounterFlagsEXT.class) int surfaceCounters() {
         return segment.get(LAYOUT$surfaceCounters, OFFSET$surfaceCounters);
     }
 
-    public VkSwapchainCounterCreateInfoEXT surfaceCounters(@EnumType(VkSurfaceCounterFlagsEXT.class) int value) {
+    public VkSwapchainCounterCreateInfoEXT surfaceCounters(@Bitmask(VkSurfaceCounterFlagsEXT.class) int value) {
         segment.set(LAYOUT$surfaceCounters, OFFSET$surfaceCounters, value);
         return this;
     }

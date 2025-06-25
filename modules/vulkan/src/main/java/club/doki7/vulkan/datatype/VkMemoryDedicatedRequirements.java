@@ -88,6 +88,11 @@ public record VkMemoryDedicatedRequirements(@NotNull MemorySegment segment) impl
             return new VkMemoryDedicatedRequirements(segment.asSlice(index * VkMemoryDedicatedRequirements.BYTES, VkMemoryDedicatedRequirements.BYTES));
         }
 
+        public VkMemoryDedicatedRequirements.Ptr at(long index, @NotNull Consumer<@NotNull VkMemoryDedicatedRequirements> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkMemoryDedicatedRequirements value) {
             MemorySegment s = segment.asSlice(index * VkMemoryDedicatedRequirements.BYTES, VkMemoryDedicatedRequirements.BYTES);
             s.copyFrom(value.segment);
@@ -200,12 +205,13 @@ public record VkMemoryDedicatedRequirements(@NotNull MemorySegment segment) impl
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkMemoryDedicatedRequirements pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkMemoryDedicatedRequirements pNext(@Nullable IPointer pointer) {

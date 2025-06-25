@@ -88,6 +88,11 @@ public record VkLatencySleepInfoNV(@NotNull MemorySegment segment) implements IV
             return new VkLatencySleepInfoNV(segment.asSlice(index * VkLatencySleepInfoNV.BYTES, VkLatencySleepInfoNV.BYTES));
         }
 
+        public VkLatencySleepInfoNV.Ptr at(long index, @NotNull Consumer<@NotNull VkLatencySleepInfoNV> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkLatencySleepInfoNV value) {
             MemorySegment s = segment.asSlice(index * VkLatencySleepInfoNV.BYTES, VkLatencySleepInfoNV.BYTES);
             s.copyFrom(value.segment);
@@ -200,12 +205,13 @@ public record VkLatencySleepInfoNV(@NotNull MemorySegment segment) implements IV
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkLatencySleepInfoNV pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkLatencySleepInfoNV pNext(@Nullable IPointer pointer) {

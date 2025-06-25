@@ -87,6 +87,11 @@ public record VkPhysicalDeviceVertexAttributeDivisorPropertiesEXT(@NotNull Memor
             return new VkPhysicalDeviceVertexAttributeDivisorPropertiesEXT(segment.asSlice(index * VkPhysicalDeviceVertexAttributeDivisorPropertiesEXT.BYTES, VkPhysicalDeviceVertexAttributeDivisorPropertiesEXT.BYTES));
         }
 
+        public VkPhysicalDeviceVertexAttributeDivisorPropertiesEXT.Ptr at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceVertexAttributeDivisorPropertiesEXT> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkPhysicalDeviceVertexAttributeDivisorPropertiesEXT value) {
             MemorySegment s = segment.asSlice(index * VkPhysicalDeviceVertexAttributeDivisorPropertiesEXT.BYTES, VkPhysicalDeviceVertexAttributeDivisorPropertiesEXT.BYTES);
             s.copyFrom(value.segment);
@@ -199,12 +204,13 @@ public record VkPhysicalDeviceVertexAttributeDivisorPropertiesEXT(@NotNull Memor
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkPhysicalDeviceVertexAttributeDivisorPropertiesEXT pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkPhysicalDeviceVertexAttributeDivisorPropertiesEXT pNext(@Nullable IPointer pointer) {

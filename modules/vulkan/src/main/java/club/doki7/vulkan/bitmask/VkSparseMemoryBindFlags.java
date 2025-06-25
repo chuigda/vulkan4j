@@ -9,7 +9,7 @@ import java.util.List;
 public final class VkSparseMemoryBindFlags {
     public static final int METADATA = 0x1;
 
-    public static String explain(@EnumType(VkSparseMemoryBindFlags.class) int flags) {
+    public static String explain(@Bitmask(VkSparseMemoryBindFlags.class) int flags) {
         List<String> detectedFlagBits = new ArrayList<>();
         if ((flags & METADATA) != 0) {
             detectedFlagBits.add("VK_SPARSE_MEMORY_BIND_METADATA_BIT");

@@ -92,6 +92,11 @@ public record VkPhysicalDeviceHostImageCopyProperties(@NotNull MemorySegment seg
             return new VkPhysicalDeviceHostImageCopyProperties(segment.asSlice(index * VkPhysicalDeviceHostImageCopyProperties.BYTES, VkPhysicalDeviceHostImageCopyProperties.BYTES));
         }
 
+        public VkPhysicalDeviceHostImageCopyProperties.Ptr at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceHostImageCopyProperties> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkPhysicalDeviceHostImageCopyProperties value) {
             MemorySegment s = segment.asSlice(index * VkPhysicalDeviceHostImageCopyProperties.BYTES, VkPhysicalDeviceHostImageCopyProperties.BYTES);
             s.copyFrom(value.segment);
@@ -204,12 +209,13 @@ public record VkPhysicalDeviceHostImageCopyProperties(@NotNull MemorySegment seg
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkPhysicalDeviceHostImageCopyProperties pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkPhysicalDeviceHostImageCopyProperties pNext(@Nullable IPointer pointer) {
@@ -245,11 +251,11 @@ public record VkPhysicalDeviceHostImageCopyProperties(@NotNull MemorySegment seg
         return this;
     }
 
-    public @Pointer(target=VkImageLayout.class) MemorySegment pCopySrcLayoutsRaw() {
+    public @Pointer(target=VkImageLayout.class) @NotNull MemorySegment pCopySrcLayoutsRaw() {
         return segment.get(LAYOUT$pCopySrcLayouts, OFFSET$pCopySrcLayouts);
     }
 
-    public void pCopySrcLayoutsRaw(@Pointer(target=VkImageLayout.class) MemorySegment value) {
+    public void pCopySrcLayoutsRaw(@Pointer(target=VkImageLayout.class) @NotNull MemorySegment value) {
         segment.set(LAYOUT$pCopySrcLayouts, OFFSET$pCopySrcLayouts, value);
     }
 
@@ -281,11 +287,11 @@ public record VkPhysicalDeviceHostImageCopyProperties(@NotNull MemorySegment seg
         return this;
     }
 
-    public @Pointer(target=VkImageLayout.class) MemorySegment pCopyDstLayoutsRaw() {
+    public @Pointer(target=VkImageLayout.class) @NotNull MemorySegment pCopyDstLayoutsRaw() {
         return segment.get(LAYOUT$pCopyDstLayouts, OFFSET$pCopyDstLayouts);
     }
 
-    public void pCopyDstLayoutsRaw(@Pointer(target=VkImageLayout.class) MemorySegment value) {
+    public void pCopyDstLayoutsRaw(@Pointer(target=VkImageLayout.class) @NotNull MemorySegment value) {
         segment.set(LAYOUT$pCopyDstLayouts, OFFSET$pCopyDstLayouts, value);
     }
 
@@ -293,12 +299,19 @@ public record VkPhysicalDeviceHostImageCopyProperties(@NotNull MemorySegment seg
         return new BytePtr(optimalTilingLayoutUUIDRaw());
     }
 
-    public VkPhysicalDeviceHostImageCopyProperties optimalTilingLayoutUUID(@Unsigned BytePtr value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$optimalTilingLayoutUUID, SIZE$optimalTilingLayoutUUID);
+    public VkPhysicalDeviceHostImageCopyProperties optimalTilingLayoutUUID(@NotNull Consumer<BytePtr> consumer) {
+        @Unsigned BytePtr ptr = optimalTilingLayoutUUID();
+        consumer.accept(ptr);
         return this;
     }
 
-    public MemorySegment optimalTilingLayoutUUIDRaw() {
+    public VkPhysicalDeviceHostImageCopyProperties optimalTilingLayoutUUID(@Unsigned BytePtr value) {
+        MemorySegment s = optimalTilingLayoutUUIDRaw();
+        s.copyFrom(value.segment());
+        return this;
+    }
+
+    public @NotNull MemorySegment optimalTilingLayoutUUIDRaw() {
         return segment.asSlice(OFFSET$optimalTilingLayoutUUID, SIZE$optimalTilingLayoutUUID);
     }
 

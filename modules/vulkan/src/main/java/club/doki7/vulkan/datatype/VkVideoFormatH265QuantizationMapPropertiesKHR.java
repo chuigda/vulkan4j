@@ -87,6 +87,11 @@ public record VkVideoFormatH265QuantizationMapPropertiesKHR(@NotNull MemorySegme
             return new VkVideoFormatH265QuantizationMapPropertiesKHR(segment.asSlice(index * VkVideoFormatH265QuantizationMapPropertiesKHR.BYTES, VkVideoFormatH265QuantizationMapPropertiesKHR.BYTES));
         }
 
+        public VkVideoFormatH265QuantizationMapPropertiesKHR.Ptr at(long index, @NotNull Consumer<@NotNull VkVideoFormatH265QuantizationMapPropertiesKHR> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkVideoFormatH265QuantizationMapPropertiesKHR value) {
             MemorySegment s = segment.asSlice(index * VkVideoFormatH265QuantizationMapPropertiesKHR.BYTES, VkVideoFormatH265QuantizationMapPropertiesKHR.BYTES);
             s.copyFrom(value.segment);
@@ -199,12 +204,13 @@ public record VkVideoFormatH265QuantizationMapPropertiesKHR(@NotNull MemorySegme
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkVideoFormatH265QuantizationMapPropertiesKHR pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkVideoFormatH265QuantizationMapPropertiesKHR pNext(@Nullable IPointer pointer) {
@@ -212,11 +218,11 @@ public record VkVideoFormatH265QuantizationMapPropertiesKHR(@NotNull MemorySegme
         return this;
     }
 
-    public @EnumType(VkVideoEncodeH265CtbSizeFlagsKHR.class) int compatibleCtbSizes() {
+    public @Bitmask(VkVideoEncodeH265CtbSizeFlagsKHR.class) int compatibleCtbSizes() {
         return segment.get(LAYOUT$compatibleCtbSizes, OFFSET$compatibleCtbSizes);
     }
 
-    public VkVideoFormatH265QuantizationMapPropertiesKHR compatibleCtbSizes(@EnumType(VkVideoEncodeH265CtbSizeFlagsKHR.class) int value) {
+    public VkVideoFormatH265QuantizationMapPropertiesKHR compatibleCtbSizes(@Bitmask(VkVideoEncodeH265CtbSizeFlagsKHR.class) int value) {
         segment.set(LAYOUT$compatibleCtbSizes, OFFSET$compatibleCtbSizes, value);
         return this;
     }

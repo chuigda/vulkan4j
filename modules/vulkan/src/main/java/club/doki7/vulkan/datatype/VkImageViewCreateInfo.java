@@ -92,6 +92,11 @@ public record VkImageViewCreateInfo(@NotNull MemorySegment segment) implements I
             return new VkImageViewCreateInfo(segment.asSlice(index * VkImageViewCreateInfo.BYTES, VkImageViewCreateInfo.BYTES));
         }
 
+        public VkImageViewCreateInfo.Ptr at(long index, @NotNull Consumer<@NotNull VkImageViewCreateInfo> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkImageViewCreateInfo value) {
             MemorySegment s = segment.asSlice(index * VkImageViewCreateInfo.BYTES, VkImageViewCreateInfo.BYTES);
             s.copyFrom(value.segment);
@@ -204,12 +209,13 @@ public record VkImageViewCreateInfo(@NotNull MemorySegment segment) implements I
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkImageViewCreateInfo pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkImageViewCreateInfo pNext(@Nullable IPointer pointer) {
@@ -217,11 +223,11 @@ public record VkImageViewCreateInfo(@NotNull MemorySegment segment) implements I
         return this;
     }
 
-    public @EnumType(VkImageViewCreateFlags.class) int flags() {
+    public @Bitmask(VkImageViewCreateFlags.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public VkImageViewCreateInfo flags(@EnumType(VkImageViewCreateFlags.class) int value) {
+    public VkImageViewCreateInfo flags(@Bitmask(VkImageViewCreateFlags.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
         return this;
     }

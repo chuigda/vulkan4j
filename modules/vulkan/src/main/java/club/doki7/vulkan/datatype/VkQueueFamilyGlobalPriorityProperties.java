@@ -88,6 +88,11 @@ public record VkQueueFamilyGlobalPriorityProperties(@NotNull MemorySegment segme
             return new VkQueueFamilyGlobalPriorityProperties(segment.asSlice(index * VkQueueFamilyGlobalPriorityProperties.BYTES, VkQueueFamilyGlobalPriorityProperties.BYTES));
         }
 
+        public VkQueueFamilyGlobalPriorityProperties.Ptr at(long index, @NotNull Consumer<@NotNull VkQueueFamilyGlobalPriorityProperties> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkQueueFamilyGlobalPriorityProperties value) {
             MemorySegment s = segment.asSlice(index * VkQueueFamilyGlobalPriorityProperties.BYTES, VkQueueFamilyGlobalPriorityProperties.BYTES);
             s.copyFrom(value.segment);
@@ -200,12 +205,13 @@ public record VkQueueFamilyGlobalPriorityProperties(@NotNull MemorySegment segme
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkQueueFamilyGlobalPriorityProperties pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkQueueFamilyGlobalPriorityProperties pNext(@Nullable IPointer pointer) {
@@ -226,12 +232,19 @@ public record VkQueueFamilyGlobalPriorityProperties(@NotNull MemorySegment segme
         return new IntPtr(prioritiesRaw());
     }
 
-    public VkQueueFamilyGlobalPriorityProperties priorities(@EnumType(VkQueueGlobalPriority.class) IntPtr value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$priorities, SIZE$priorities);
+    public VkQueueFamilyGlobalPriorityProperties priorities(@NotNull Consumer<IntPtr> consumer) {
+        @EnumType(VkQueueGlobalPriority.class) IntPtr ptr = priorities();
+        consumer.accept(ptr);
         return this;
     }
 
-    public MemorySegment prioritiesRaw() {
+    public VkQueueFamilyGlobalPriorityProperties priorities(@EnumType(VkQueueGlobalPriority.class) IntPtr value) {
+        MemorySegment s = prioritiesRaw();
+        s.copyFrom(value.segment());
+        return this;
+    }
+
+    public @NotNull MemorySegment prioritiesRaw() {
         return segment.asSlice(OFFSET$priorities, SIZE$priorities);
     }
 

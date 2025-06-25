@@ -27,11 +27,11 @@ import static club.doki7.vulkan.VkConstants.*;
 ///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
 ///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
 ///     uint32_t waitSemaphoreCount; // optional // @link substring="waitSemaphoreCount" target="#waitSemaphoreCount"
-///     uint32_t const* pWaitSemaphoreDeviceIndices; // @link substring="pWaitSemaphoreDeviceIndices" target="#pWaitSemaphoreDeviceIndices"
+///     uint32_t const* pWaitSemaphoreDeviceIndices; // optional // @link substring="pWaitSemaphoreDeviceIndices" target="#pWaitSemaphoreDeviceIndices"
 ///     uint32_t commandBufferCount; // optional // @link substring="commandBufferCount" target="#commandBufferCount"
-///     uint32_t const* pCommandBufferDeviceMasks; // @link substring="pCommandBufferDeviceMasks" target="#pCommandBufferDeviceMasks"
+///     uint32_t const* pCommandBufferDeviceMasks; // optional // @link substring="pCommandBufferDeviceMasks" target="#pCommandBufferDeviceMasks"
 ///     uint32_t signalSemaphoreCount; // optional // @link substring="signalSemaphoreCount" target="#signalSemaphoreCount"
-///     uint32_t const* pSignalSemaphoreDeviceIndices; // @link substring="pSignalSemaphoreDeviceIndices" target="#pSignalSemaphoreDeviceIndices"
+///     uint32_t const* pSignalSemaphoreDeviceIndices; // optional // @link substring="pSignalSemaphoreDeviceIndices" target="#pSignalSemaphoreDeviceIndices"
 /// } VkDeviceGroupSubmitInfo;
 /// }
 ///
@@ -90,6 +90,11 @@ public record VkDeviceGroupSubmitInfo(@NotNull MemorySegment segment) implements
         /// indicate that the returned structure is a view of the original structure.
         public @NotNull VkDeviceGroupSubmitInfo at(long index) {
             return new VkDeviceGroupSubmitInfo(segment.asSlice(index * VkDeviceGroupSubmitInfo.BYTES, VkDeviceGroupSubmitInfo.BYTES));
+        }
+
+        public VkDeviceGroupSubmitInfo.Ptr at(long index, @NotNull Consumer<@NotNull VkDeviceGroupSubmitInfo> consumer) {
+            consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkDeviceGroupSubmitInfo value) {
@@ -204,12 +209,13 @@ public record VkDeviceGroupSubmitInfo(@NotNull MemorySegment segment) implements
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkDeviceGroupSubmitInfo pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkDeviceGroupSubmitInfo pNext(@Nullable IPointer pointer) {
@@ -244,11 +250,11 @@ public record VkDeviceGroupSubmitInfo(@NotNull MemorySegment segment) implements
         return this;
     }
 
-    public @Pointer(comment="uint32_t*") MemorySegment pWaitSemaphoreDeviceIndicesRaw() {
+    public @Pointer(comment="uint32_t*") @NotNull MemorySegment pWaitSemaphoreDeviceIndicesRaw() {
         return segment.get(LAYOUT$pWaitSemaphoreDeviceIndices, OFFSET$pWaitSemaphoreDeviceIndices);
     }
 
-    public void pWaitSemaphoreDeviceIndicesRaw(@Pointer(comment="uint32_t*") MemorySegment value) {
+    public void pWaitSemaphoreDeviceIndicesRaw(@Pointer(comment="uint32_t*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pWaitSemaphoreDeviceIndices, OFFSET$pWaitSemaphoreDeviceIndices, value);
     }
 
@@ -279,11 +285,11 @@ public record VkDeviceGroupSubmitInfo(@NotNull MemorySegment segment) implements
         return this;
     }
 
-    public @Pointer(comment="uint32_t*") MemorySegment pCommandBufferDeviceMasksRaw() {
+    public @Pointer(comment="uint32_t*") @NotNull MemorySegment pCommandBufferDeviceMasksRaw() {
         return segment.get(LAYOUT$pCommandBufferDeviceMasks, OFFSET$pCommandBufferDeviceMasks);
     }
 
-    public void pCommandBufferDeviceMasksRaw(@Pointer(comment="uint32_t*") MemorySegment value) {
+    public void pCommandBufferDeviceMasksRaw(@Pointer(comment="uint32_t*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pCommandBufferDeviceMasks, OFFSET$pCommandBufferDeviceMasks, value);
     }
 
@@ -314,11 +320,11 @@ public record VkDeviceGroupSubmitInfo(@NotNull MemorySegment segment) implements
         return this;
     }
 
-    public @Pointer(comment="uint32_t*") MemorySegment pSignalSemaphoreDeviceIndicesRaw() {
+    public @Pointer(comment="uint32_t*") @NotNull MemorySegment pSignalSemaphoreDeviceIndicesRaw() {
         return segment.get(LAYOUT$pSignalSemaphoreDeviceIndices, OFFSET$pSignalSemaphoreDeviceIndices);
     }
 
-    public void pSignalSemaphoreDeviceIndicesRaw(@Pointer(comment="uint32_t*") MemorySegment value) {
+    public void pSignalSemaphoreDeviceIndicesRaw(@Pointer(comment="uint32_t*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pSignalSemaphoreDeviceIndices, OFFSET$pSignalSemaphoreDeviceIndices, value);
     }
 

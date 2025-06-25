@@ -88,6 +88,11 @@ public record VkPhysicalDeviceImage2DViewOf3DFeaturesEXT(@NotNull MemorySegment 
             return new VkPhysicalDeviceImage2DViewOf3DFeaturesEXT(segment.asSlice(index * VkPhysicalDeviceImage2DViewOf3DFeaturesEXT.BYTES, VkPhysicalDeviceImage2DViewOf3DFeaturesEXT.BYTES));
         }
 
+        public VkPhysicalDeviceImage2DViewOf3DFeaturesEXT.Ptr at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceImage2DViewOf3DFeaturesEXT> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkPhysicalDeviceImage2DViewOf3DFeaturesEXT value) {
             MemorySegment s = segment.asSlice(index * VkPhysicalDeviceImage2DViewOf3DFeaturesEXT.BYTES, VkPhysicalDeviceImage2DViewOf3DFeaturesEXT.BYTES);
             s.copyFrom(value.segment);
@@ -200,12 +205,13 @@ public record VkPhysicalDeviceImage2DViewOf3DFeaturesEXT(@NotNull MemorySegment 
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkPhysicalDeviceImage2DViewOf3DFeaturesEXT pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkPhysicalDeviceImage2DViewOf3DFeaturesEXT pNext(@Nullable IPointer pointer) {

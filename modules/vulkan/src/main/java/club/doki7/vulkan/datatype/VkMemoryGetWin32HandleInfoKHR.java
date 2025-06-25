@@ -88,6 +88,11 @@ public record VkMemoryGetWin32HandleInfoKHR(@NotNull MemorySegment segment) impl
             return new VkMemoryGetWin32HandleInfoKHR(segment.asSlice(index * VkMemoryGetWin32HandleInfoKHR.BYTES, VkMemoryGetWin32HandleInfoKHR.BYTES));
         }
 
+        public VkMemoryGetWin32HandleInfoKHR.Ptr at(long index, @NotNull Consumer<@NotNull VkMemoryGetWin32HandleInfoKHR> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkMemoryGetWin32HandleInfoKHR value) {
             MemorySegment s = segment.asSlice(index * VkMemoryGetWin32HandleInfoKHR.BYTES, VkMemoryGetWin32HandleInfoKHR.BYTES);
             s.copyFrom(value.segment);
@@ -200,12 +205,13 @@ public record VkMemoryGetWin32HandleInfoKHR(@NotNull MemorySegment segment) impl
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkMemoryGetWin32HandleInfoKHR pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkMemoryGetWin32HandleInfoKHR pNext(@Nullable IPointer pointer) {
@@ -226,11 +232,11 @@ public record VkMemoryGetWin32HandleInfoKHR(@NotNull MemorySegment segment) impl
         return this;
     }
 
-    public @EnumType(VkExternalMemoryHandleTypeFlags.class) int handleType() {
+    public @Bitmask(VkExternalMemoryHandleTypeFlags.class) int handleType() {
         return segment.get(LAYOUT$handleType, OFFSET$handleType);
     }
 
-    public VkMemoryGetWin32HandleInfoKHR handleType(@EnumType(VkExternalMemoryHandleTypeFlags.class) int value) {
+    public VkMemoryGetWin32HandleInfoKHR handleType(@Bitmask(VkExternalMemoryHandleTypeFlags.class) int value) {
         segment.set(LAYOUT$handleType, OFFSET$handleType, value);
         return this;
     }

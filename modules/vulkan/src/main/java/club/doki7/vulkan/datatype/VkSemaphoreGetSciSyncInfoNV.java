@@ -88,6 +88,11 @@ public record VkSemaphoreGetSciSyncInfoNV(@NotNull MemorySegment segment) implem
             return new VkSemaphoreGetSciSyncInfoNV(segment.asSlice(index * VkSemaphoreGetSciSyncInfoNV.BYTES, VkSemaphoreGetSciSyncInfoNV.BYTES));
         }
 
+        public VkSemaphoreGetSciSyncInfoNV.Ptr at(long index, @NotNull Consumer<@NotNull VkSemaphoreGetSciSyncInfoNV> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkSemaphoreGetSciSyncInfoNV value) {
             MemorySegment s = segment.asSlice(index * VkSemaphoreGetSciSyncInfoNV.BYTES, VkSemaphoreGetSciSyncInfoNV.BYTES);
             s.copyFrom(value.segment);
@@ -200,12 +205,13 @@ public record VkSemaphoreGetSciSyncInfoNV(@NotNull MemorySegment segment) implem
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkSemaphoreGetSciSyncInfoNV pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkSemaphoreGetSciSyncInfoNV pNext(@Nullable IPointer pointer) {
@@ -226,11 +232,11 @@ public record VkSemaphoreGetSciSyncInfoNV(@NotNull MemorySegment segment) implem
         return this;
     }
 
-    public @EnumType(VkExternalSemaphoreHandleTypeFlags.class) int handleType() {
+    public @Bitmask(VkExternalSemaphoreHandleTypeFlags.class) int handleType() {
         return segment.get(LAYOUT$handleType, OFFSET$handleType);
     }
 
-    public VkSemaphoreGetSciSyncInfoNV handleType(@EnumType(VkExternalSemaphoreHandleTypeFlags.class) int value) {
+    public VkSemaphoreGetSciSyncInfoNV handleType(@Bitmask(VkExternalSemaphoreHandleTypeFlags.class) int value) {
         segment.set(LAYOUT$handleType, OFFSET$handleType, value);
         return this;
     }

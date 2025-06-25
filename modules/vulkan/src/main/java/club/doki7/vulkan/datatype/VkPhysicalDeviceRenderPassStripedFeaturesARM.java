@@ -87,6 +87,11 @@ public record VkPhysicalDeviceRenderPassStripedFeaturesARM(@NotNull MemorySegmen
             return new VkPhysicalDeviceRenderPassStripedFeaturesARM(segment.asSlice(index * VkPhysicalDeviceRenderPassStripedFeaturesARM.BYTES, VkPhysicalDeviceRenderPassStripedFeaturesARM.BYTES));
         }
 
+        public VkPhysicalDeviceRenderPassStripedFeaturesARM.Ptr at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceRenderPassStripedFeaturesARM> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkPhysicalDeviceRenderPassStripedFeaturesARM value) {
             MemorySegment s = segment.asSlice(index * VkPhysicalDeviceRenderPassStripedFeaturesARM.BYTES, VkPhysicalDeviceRenderPassStripedFeaturesARM.BYTES);
             s.copyFrom(value.segment);
@@ -199,12 +204,13 @@ public record VkPhysicalDeviceRenderPassStripedFeaturesARM(@NotNull MemorySegmen
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkPhysicalDeviceRenderPassStripedFeaturesARM pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkPhysicalDeviceRenderPassStripedFeaturesARM pNext(@Nullable IPointer pointer) {

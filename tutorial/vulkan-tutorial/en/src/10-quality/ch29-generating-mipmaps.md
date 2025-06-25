@@ -1,6 +1,6 @@
 # Generating Mipmaps
 
-> [Java code](https://github.com/chuigda/vulkan4j/tree/master/modules/tutorial/src/main/java/tutorial/vulkan/part10/ch29/Main.java) | [C++ version](https://vulkan-tutorial.com/Generating_Mipmaps)
+> [Java code](https://github.com/club-doki7/vulkan4j/tree/master/modules/tutorial/src/main/java/tutorial/vulkan/part10/ch29/Main.java) | [C++ version](https://vulkan-tutorial.com/Generating_Mipmaps)
 
 ## Introduction
 
@@ -40,8 +40,8 @@ private Pair<VkImage, VkDeviceMemory> createImage(
         int mipLevels,
         @EnumType(VkFormat.class) int format,
         @EnumType(VkImageTiling.class) int tiling,
-        @EnumType(VkImageUsageFlags.class) int usage,
-        @EnumType(VkMemoryPropertyFlags.class) int properties
+        @Bitmask(VkImageUsageFlags.class) int usage,
+        @Bitmask(VkMemoryPropertyFlags.class) int properties
 ) {
     // ...
     imageInfo.mipLevels(mipLevels);
@@ -53,7 +53,7 @@ private Pair<VkImage, VkDeviceMemory> createImage(
 private VkImageView createImageView(
         VkImage image,
         @EnumType(VkFormat.class) int format,
-        @EnumType(VkImageAspectFlags.class) int aspect,
+        @Bitmask(VkImageAspectFlags.class) int aspect,
         int mipLevels
 ) {
     // ...

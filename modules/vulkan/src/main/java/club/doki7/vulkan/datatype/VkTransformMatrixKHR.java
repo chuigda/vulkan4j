@@ -76,6 +76,11 @@ public record VkTransformMatrixKHR(@NotNull MemorySegment segment) implements IV
             return new VkTransformMatrixKHR(segment.asSlice(index * VkTransformMatrixKHR.BYTES, VkTransformMatrixKHR.BYTES));
         }
 
+        public VkTransformMatrixKHR.Ptr at(long index, @NotNull Consumer<@NotNull VkTransformMatrixKHR> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkTransformMatrixKHR value) {
             MemorySegment s = segment.asSlice(index * VkTransformMatrixKHR.BYTES, VkTransformMatrixKHR.BYTES);
             s.copyFrom(value.segment);
@@ -173,12 +178,19 @@ public record VkTransformMatrixKHR(@NotNull MemorySegment segment) implements IV
         return new FloatPtr(matrixRaw());
     }
 
-    public VkTransformMatrixKHR matrix(FloatPtr value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$matrix, SIZE$matrix);
+    public VkTransformMatrixKHR matrix(@NotNull Consumer<FloatPtr> consumer) {
+        FloatPtr ptr = matrix();
+        consumer.accept(ptr);
         return this;
     }
 
-    public MemorySegment matrixRaw() {
+    public VkTransformMatrixKHR matrix(FloatPtr value) {
+        MemorySegment s = matrixRaw();
+        s.copyFrom(value.segment());
+        return this;
+    }
+
+    public @NotNull MemorySegment matrixRaw() {
         return segment.asSlice(OFFSET$matrix, SIZE$matrix);
     }
 

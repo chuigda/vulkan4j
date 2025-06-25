@@ -30,9 +30,9 @@ import static club.doki7.vulkan.VkConstants.*;
 ///     uint32_t queueCreateInfoCount; // @link substring="queueCreateInfoCount" target="#queueCreateInfoCount"
 ///     VkDeviceQueueCreateInfo const* pQueueCreateInfos; // @link substring="VkDeviceQueueCreateInfo" target="VkDeviceQueueCreateInfo" @link substring="pQueueCreateInfos" target="#pQueueCreateInfos"
 ///     uint32_t enabledLayerCount; // optional // @link substring="enabledLayerCount" target="#enabledLayerCount"
-///     char const* const* ppEnabledLayerNames; // @link substring="ppEnabledLayerNames" target="#ppEnabledLayerNames"
+///     char const* const* ppEnabledLayerNames; // optional // @link substring="ppEnabledLayerNames" target="#ppEnabledLayerNames"
 ///     uint32_t enabledExtensionCount; // optional // @link substring="enabledExtensionCount" target="#enabledExtensionCount"
-///     char const* const* ppEnabledExtensionNames; // @link substring="ppEnabledExtensionNames" target="#ppEnabledExtensionNames"
+///     char const* const* ppEnabledExtensionNames; // optional // @link substring="ppEnabledExtensionNames" target="#ppEnabledExtensionNames"
 ///     VkPhysicalDeviceFeatures const* pEnabledFeatures; // optional // @link substring="VkPhysicalDeviceFeatures" target="VkPhysicalDeviceFeatures" @link substring="pEnabledFeatures" target="#pEnabledFeatures"
 /// } VkDeviceCreateInfo;
 /// }
@@ -92,6 +92,11 @@ public record VkDeviceCreateInfo(@NotNull MemorySegment segment) implements IVkD
         /// indicate that the returned structure is a view of the original structure.
         public @NotNull VkDeviceCreateInfo at(long index) {
             return new VkDeviceCreateInfo(segment.asSlice(index * VkDeviceCreateInfo.BYTES, VkDeviceCreateInfo.BYTES));
+        }
+
+        public VkDeviceCreateInfo.Ptr at(long index, @NotNull Consumer<@NotNull VkDeviceCreateInfo> consumer) {
+            consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkDeviceCreateInfo value) {
@@ -206,12 +211,13 @@ public record VkDeviceCreateInfo(@NotNull MemorySegment segment) implements IVkD
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkDeviceCreateInfo pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkDeviceCreateInfo pNext(@Nullable IPointer pointer) {
@@ -219,11 +225,11 @@ public record VkDeviceCreateInfo(@NotNull MemorySegment segment) implements IVkD
         return this;
     }
 
-    public @EnumType(VkDeviceCreateFlags.class) int flags() {
+    public @Bitmask(VkDeviceCreateFlags.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public VkDeviceCreateInfo flags(@EnumType(VkDeviceCreateFlags.class) int value) {
+    public VkDeviceCreateInfo flags(@Bitmask(VkDeviceCreateFlags.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
         return this;
     }
@@ -261,11 +267,11 @@ public record VkDeviceCreateInfo(@NotNull MemorySegment segment) implements IVkD
         return new VkDeviceQueueCreateInfo(s);
     }
 
-    public @Pointer(target=VkDeviceQueueCreateInfo.class) MemorySegment pQueueCreateInfosRaw() {
+    public @Pointer(target=VkDeviceQueueCreateInfo.class) @NotNull MemorySegment pQueueCreateInfosRaw() {
         return segment.get(LAYOUT$pQueueCreateInfos, OFFSET$pQueueCreateInfos);
     }
 
-    public void pQueueCreateInfosRaw(@Pointer(target=VkDeviceQueueCreateInfo.class) MemorySegment value) {
+    public void pQueueCreateInfosRaw(@Pointer(target=VkDeviceQueueCreateInfo.class) @NotNull MemorySegment value) {
         segment.set(LAYOUT$pQueueCreateInfos, OFFSET$pQueueCreateInfos, value);
     }
 
@@ -295,11 +301,11 @@ public record VkDeviceCreateInfo(@NotNull MemorySegment segment) implements IVkD
         return this;
     }
 
-    public @Pointer(comment="void**") MemorySegment ppEnabledLayerNamesRaw() {
+    public @Pointer(comment="void**") @NotNull MemorySegment ppEnabledLayerNamesRaw() {
         return segment.get(LAYOUT$ppEnabledLayerNames, OFFSET$ppEnabledLayerNames);
     }
 
-    public void ppEnabledLayerNamesRaw(@Pointer(comment="void**") MemorySegment value) {
+    public void ppEnabledLayerNamesRaw(@Pointer(comment="void**") @NotNull MemorySegment value) {
         segment.set(LAYOUT$ppEnabledLayerNames, OFFSET$ppEnabledLayerNames, value);
     }
 
@@ -329,11 +335,11 @@ public record VkDeviceCreateInfo(@NotNull MemorySegment segment) implements IVkD
         return this;
     }
 
-    public @Pointer(comment="void**") MemorySegment ppEnabledExtensionNamesRaw() {
+    public @Pointer(comment="void**") @NotNull MemorySegment ppEnabledExtensionNamesRaw() {
         return segment.get(LAYOUT$ppEnabledExtensionNames, OFFSET$ppEnabledExtensionNames);
     }
 
-    public void ppEnabledExtensionNamesRaw(@Pointer(comment="void**") MemorySegment value) {
+    public void ppEnabledExtensionNamesRaw(@Pointer(comment="void**") @NotNull MemorySegment value) {
         segment.set(LAYOUT$ppEnabledExtensionNames, OFFSET$ppEnabledExtensionNames, value);
     }
 
@@ -361,11 +367,11 @@ public record VkDeviceCreateInfo(@NotNull MemorySegment segment) implements IVkD
         return new VkPhysicalDeviceFeatures(s);
     }
 
-    public @Pointer(target=VkPhysicalDeviceFeatures.class) MemorySegment pEnabledFeaturesRaw() {
+    public @Pointer(target=VkPhysicalDeviceFeatures.class) @NotNull MemorySegment pEnabledFeaturesRaw() {
         return segment.get(LAYOUT$pEnabledFeatures, OFFSET$pEnabledFeatures);
     }
 
-    public void pEnabledFeaturesRaw(@Pointer(target=VkPhysicalDeviceFeatures.class) MemorySegment value) {
+    public void pEnabledFeaturesRaw(@Pointer(target=VkPhysicalDeviceFeatures.class) @NotNull MemorySegment value) {
         segment.set(LAYOUT$pEnabledFeatures, OFFSET$pEnabledFeatures, value);
     }
 

@@ -102,6 +102,11 @@ public record GLFWallocator(@NotNull MemorySegment segment) implements IGLFWallo
             return new GLFWallocator(segment.asSlice(index * GLFWallocator.BYTES, GLFWallocator.BYTES));
         }
 
+        public GLFWallocator.Ptr at(long index, @NotNull Consumer<@NotNull GLFWallocator> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull GLFWallocator value) {
             MemorySegment s = segment.asSlice(index * GLFWallocator.BYTES, GLFWallocator.BYTES);
             s.copyFrom(value.segment);
@@ -195,12 +200,13 @@ public record GLFWallocator(@NotNull MemorySegment segment) implements IGLFWallo
         return ret;
     }
 
-    public @Pointer(comment="GLFWallocatefun") MemorySegment allocate() {
+    public @Pointer(comment="GLFWallocatefun") @NotNull MemorySegment allocate() {
         return segment.get(LAYOUT$allocate, OFFSET$allocate);
     }
 
-    public void allocate(@Pointer(comment="GLFWallocatefun") MemorySegment value) {
+    public GLFWallocator allocate(@Pointer(comment="GLFWallocatefun") @NotNull MemorySegment value) {
         segment.set(LAYOUT$allocate, OFFSET$allocate, value);
+        return this;
     }
 
     public GLFWallocator allocate(@Nullable IPointer pointer) {
@@ -208,12 +214,13 @@ public record GLFWallocator(@NotNull MemorySegment segment) implements IGLFWallo
         return this;
     }
 
-    public @Pointer(comment="GLFWreallocatefun") MemorySegment reallocate() {
+    public @Pointer(comment="GLFWreallocatefun") @NotNull MemorySegment reallocate() {
         return segment.get(LAYOUT$reallocate, OFFSET$reallocate);
     }
 
-    public void reallocate(@Pointer(comment="GLFWreallocatefun") MemorySegment value) {
+    public GLFWallocator reallocate(@Pointer(comment="GLFWreallocatefun") @NotNull MemorySegment value) {
         segment.set(LAYOUT$reallocate, OFFSET$reallocate, value);
+        return this;
     }
 
     public GLFWallocator reallocate(@Nullable IPointer pointer) {
@@ -221,12 +228,13 @@ public record GLFWallocator(@NotNull MemorySegment segment) implements IGLFWallo
         return this;
     }
 
-    public @Pointer(comment="GLFWdeallocatefun") MemorySegment deallocate() {
+    public @Pointer(comment="GLFWdeallocatefun") @NotNull MemorySegment deallocate() {
         return segment.get(LAYOUT$deallocate, OFFSET$deallocate);
     }
 
-    public void deallocate(@Pointer(comment="GLFWdeallocatefun") MemorySegment value) {
+    public GLFWallocator deallocate(@Pointer(comment="GLFWdeallocatefun") @NotNull MemorySegment value) {
         segment.set(LAYOUT$deallocate, OFFSET$deallocate, value);
+        return this;
     }
 
     public GLFWallocator deallocate(@Nullable IPointer pointer) {
@@ -234,12 +242,13 @@ public record GLFWallocator(@NotNull MemorySegment segment) implements IGLFWallo
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment user() {
+    public @Pointer(comment="void*") @NotNull MemorySegment user() {
         return segment.get(LAYOUT$user, OFFSET$user);
     }
 
-    public void user(@Pointer(comment="void*") MemorySegment value) {
+    public GLFWallocator user(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$user, OFFSET$user, value);
+        return this;
     }
 
     public GLFWallocator user(@Nullable IPointer pointer) {

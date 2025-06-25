@@ -27,7 +27,7 @@ import static club.doki7.vulkan.VkConstants.*;
 ///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
 ///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
 ///     uint32_t viewFormatCount; // optional // @link substring="viewFormatCount" target="#viewFormatCount"
-///     VkFormat const* pViewFormats; // @link substring="VkFormat" target="VkFormat" @link substring="pViewFormats" target="#pViewFormats"
+///     VkFormat const* pViewFormats; // optional // @link substring="VkFormat" target="VkFormat" @link substring="pViewFormats" target="#pViewFormats"
 /// } VkImageFormatListCreateInfo;
 /// }
 ///
@@ -86,6 +86,11 @@ public record VkImageFormatListCreateInfo(@NotNull MemorySegment segment) implem
         /// indicate that the returned structure is a view of the original structure.
         public @NotNull VkImageFormatListCreateInfo at(long index) {
             return new VkImageFormatListCreateInfo(segment.asSlice(index * VkImageFormatListCreateInfo.BYTES, VkImageFormatListCreateInfo.BYTES));
+        }
+
+        public VkImageFormatListCreateInfo.Ptr at(long index, @NotNull Consumer<@NotNull VkImageFormatListCreateInfo> consumer) {
+            consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkImageFormatListCreateInfo value) {
@@ -200,12 +205,13 @@ public record VkImageFormatListCreateInfo(@NotNull MemorySegment segment) implem
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkImageFormatListCreateInfo pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkImageFormatListCreateInfo pNext(@Nullable IPointer pointer) {
@@ -241,11 +247,11 @@ public record VkImageFormatListCreateInfo(@NotNull MemorySegment segment) implem
         return this;
     }
 
-    public @Pointer(target=VkFormat.class) MemorySegment pViewFormatsRaw() {
+    public @Pointer(target=VkFormat.class) @NotNull MemorySegment pViewFormatsRaw() {
         return segment.get(LAYOUT$pViewFormats, OFFSET$pViewFormats);
     }
 
-    public void pViewFormatsRaw(@Pointer(target=VkFormat.class) MemorySegment value) {
+    public void pViewFormatsRaw(@Pointer(target=VkFormat.class) @NotNull MemorySegment value) {
         segment.set(LAYOUT$pViewFormats, OFFSET$pViewFormats, value);
     }
 

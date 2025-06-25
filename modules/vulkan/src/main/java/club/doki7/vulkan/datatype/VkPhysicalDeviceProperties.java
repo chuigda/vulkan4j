@@ -84,6 +84,11 @@ public record VkPhysicalDeviceProperties(@NotNull MemorySegment segment) impleme
             return new VkPhysicalDeviceProperties(segment.asSlice(index * VkPhysicalDeviceProperties.BYTES, VkPhysicalDeviceProperties.BYTES));
         }
 
+        public VkPhysicalDeviceProperties.Ptr at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceProperties> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkPhysicalDeviceProperties value) {
             MemorySegment s = segment.asSlice(index * VkPhysicalDeviceProperties.BYTES, VkPhysicalDeviceProperties.BYTES);
             s.copyFrom(value.segment);
@@ -226,12 +231,19 @@ public record VkPhysicalDeviceProperties(@NotNull MemorySegment segment) impleme
         return new BytePtr(deviceNameRaw());
     }
 
-    public VkPhysicalDeviceProperties deviceName(BytePtr value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$deviceName, SIZE$deviceName);
+    public VkPhysicalDeviceProperties deviceName(@NotNull Consumer<BytePtr> consumer) {
+        BytePtr ptr = deviceName();
+        consumer.accept(ptr);
         return this;
     }
 
-    public MemorySegment deviceNameRaw() {
+    public VkPhysicalDeviceProperties deviceName(BytePtr value) {
+        MemorySegment s = deviceNameRaw();
+        s.copyFrom(value.segment());
+        return this;
+    }
+
+    public @NotNull MemorySegment deviceNameRaw() {
         return segment.asSlice(OFFSET$deviceName, SIZE$deviceName);
     }
 
@@ -239,12 +251,19 @@ public record VkPhysicalDeviceProperties(@NotNull MemorySegment segment) impleme
         return new BytePtr(pipelineCacheUUIDRaw());
     }
 
-    public VkPhysicalDeviceProperties pipelineCacheUUID(@Unsigned BytePtr value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$pipelineCacheUUID, SIZE$pipelineCacheUUID);
+    public VkPhysicalDeviceProperties pipelineCacheUUID(@NotNull Consumer<BytePtr> consumer) {
+        @Unsigned BytePtr ptr = pipelineCacheUUID();
+        consumer.accept(ptr);
         return this;
     }
 
-    public MemorySegment pipelineCacheUUIDRaw() {
+    public VkPhysicalDeviceProperties pipelineCacheUUID(@Unsigned BytePtr value) {
+        MemorySegment s = pipelineCacheUUIDRaw();
+        s.copyFrom(value.segment());
+        return this;
+    }
+
+    public @NotNull MemorySegment pipelineCacheUUIDRaw() {
         return segment.asSlice(OFFSET$pipelineCacheUUID, SIZE$pipelineCacheUUID);
     }
 

@@ -87,6 +87,11 @@ public record VkSwapchainLatencyCreateInfoNV(@NotNull MemorySegment segment) imp
             return new VkSwapchainLatencyCreateInfoNV(segment.asSlice(index * VkSwapchainLatencyCreateInfoNV.BYTES, VkSwapchainLatencyCreateInfoNV.BYTES));
         }
 
+        public VkSwapchainLatencyCreateInfoNV.Ptr at(long index, @NotNull Consumer<@NotNull VkSwapchainLatencyCreateInfoNV> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkSwapchainLatencyCreateInfoNV value) {
             MemorySegment s = segment.asSlice(index * VkSwapchainLatencyCreateInfoNV.BYTES, VkSwapchainLatencyCreateInfoNV.BYTES);
             s.copyFrom(value.segment);
@@ -199,12 +204,13 @@ public record VkSwapchainLatencyCreateInfoNV(@NotNull MemorySegment segment) imp
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkSwapchainLatencyCreateInfoNV pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkSwapchainLatencyCreateInfoNV pNext(@Nullable IPointer pointer) {

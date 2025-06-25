@@ -90,6 +90,11 @@ public record VkPhysicalDeviceSubgroupProperties(@NotNull MemorySegment segment)
             return new VkPhysicalDeviceSubgroupProperties(segment.asSlice(index * VkPhysicalDeviceSubgroupProperties.BYTES, VkPhysicalDeviceSubgroupProperties.BYTES));
         }
 
+        public VkPhysicalDeviceSubgroupProperties.Ptr at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceSubgroupProperties> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkPhysicalDeviceSubgroupProperties value) {
             MemorySegment s = segment.asSlice(index * VkPhysicalDeviceSubgroupProperties.BYTES, VkPhysicalDeviceSubgroupProperties.BYTES);
             s.copyFrom(value.segment);
@@ -202,12 +207,13 @@ public record VkPhysicalDeviceSubgroupProperties(@NotNull MemorySegment segment)
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkPhysicalDeviceSubgroupProperties pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkPhysicalDeviceSubgroupProperties pNext(@Nullable IPointer pointer) {
@@ -224,20 +230,20 @@ public record VkPhysicalDeviceSubgroupProperties(@NotNull MemorySegment segment)
         return this;
     }
 
-    public @EnumType(VkShaderStageFlags.class) int supportedStages() {
+    public @Bitmask(VkShaderStageFlags.class) int supportedStages() {
         return segment.get(LAYOUT$supportedStages, OFFSET$supportedStages);
     }
 
-    public VkPhysicalDeviceSubgroupProperties supportedStages(@EnumType(VkShaderStageFlags.class) int value) {
+    public VkPhysicalDeviceSubgroupProperties supportedStages(@Bitmask(VkShaderStageFlags.class) int value) {
         segment.set(LAYOUT$supportedStages, OFFSET$supportedStages, value);
         return this;
     }
 
-    public @EnumType(VkSubgroupFeatureFlags.class) int supportedOperations() {
+    public @Bitmask(VkSubgroupFeatureFlags.class) int supportedOperations() {
         return segment.get(LAYOUT$supportedOperations, OFFSET$supportedOperations);
     }
 
-    public VkPhysicalDeviceSubgroupProperties supportedOperations(@EnumType(VkSubgroupFeatureFlags.class) int value) {
+    public VkPhysicalDeviceSubgroupProperties supportedOperations(@Bitmask(VkSubgroupFeatureFlags.class) int value) {
         segment.set(LAYOUT$supportedOperations, OFFSET$supportedOperations, value);
         return this;
     }

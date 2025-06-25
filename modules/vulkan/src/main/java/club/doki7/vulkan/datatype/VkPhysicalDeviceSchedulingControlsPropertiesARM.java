@@ -87,6 +87,11 @@ public record VkPhysicalDeviceSchedulingControlsPropertiesARM(@NotNull MemorySeg
             return new VkPhysicalDeviceSchedulingControlsPropertiesARM(segment.asSlice(index * VkPhysicalDeviceSchedulingControlsPropertiesARM.BYTES, VkPhysicalDeviceSchedulingControlsPropertiesARM.BYTES));
         }
 
+        public VkPhysicalDeviceSchedulingControlsPropertiesARM.Ptr at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceSchedulingControlsPropertiesARM> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkPhysicalDeviceSchedulingControlsPropertiesARM value) {
             MemorySegment s = segment.asSlice(index * VkPhysicalDeviceSchedulingControlsPropertiesARM.BYTES, VkPhysicalDeviceSchedulingControlsPropertiesARM.BYTES);
             s.copyFrom(value.segment);
@@ -199,12 +204,13 @@ public record VkPhysicalDeviceSchedulingControlsPropertiesARM(@NotNull MemorySeg
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkPhysicalDeviceSchedulingControlsPropertiesARM pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkPhysicalDeviceSchedulingControlsPropertiesARM pNext(@Nullable IPointer pointer) {
@@ -212,11 +218,11 @@ public record VkPhysicalDeviceSchedulingControlsPropertiesARM(@NotNull MemorySeg
         return this;
     }
 
-    public @EnumType(VkPhysicalDeviceSchedulingControlsFlagsARM.class) long schedulingControlsFlags() {
+    public @Bitmask(VkPhysicalDeviceSchedulingControlsFlagsARM.class) long schedulingControlsFlags() {
         return segment.get(LAYOUT$schedulingControlsFlags, OFFSET$schedulingControlsFlags);
     }
 
-    public VkPhysicalDeviceSchedulingControlsPropertiesARM schedulingControlsFlags(@EnumType(VkPhysicalDeviceSchedulingControlsFlagsARM.class) long value) {
+    public VkPhysicalDeviceSchedulingControlsPropertiesARM schedulingControlsFlags(@Bitmask(VkPhysicalDeviceSchedulingControlsFlagsARM.class) long value) {
         segment.set(LAYOUT$schedulingControlsFlags, OFFSET$schedulingControlsFlags, value);
         return this;
     }

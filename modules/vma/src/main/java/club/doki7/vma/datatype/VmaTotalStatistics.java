@@ -84,6 +84,11 @@ public record VmaTotalStatistics(@NotNull MemorySegment segment) implements IVma
             return new VmaTotalStatistics(segment.asSlice(index * VmaTotalStatistics.BYTES, VmaTotalStatistics.BYTES));
         }
 
+        public VmaTotalStatistics.Ptr at(long index, @NotNull Consumer<@NotNull VmaTotalStatistics> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VmaTotalStatistics value) {
             MemorySegment s = segment.asSlice(index * VmaTotalStatistics.BYTES, VmaTotalStatistics.BYTES);
             s.copyFrom(value.segment);
@@ -181,6 +186,12 @@ public record VmaTotalStatistics(@NotNull MemorySegment segment) implements IVma
         return new VmaDetailedStatistics.Ptr(memoryTypeRaw());
     }
 
+    public VmaTotalStatistics memoryType(@NotNull Consumer<VmaDetailedStatistics.Ptr> consumer) {
+        VmaDetailedStatistics.Ptr ptr = memoryType();
+        consumer.accept(ptr);
+        return this;
+    }
+
     public VmaTotalStatistics memoryType(VmaDetailedStatistics.Ptr value) {
         MemorySegment s = memoryTypeRaw();
         s.copyFrom(value.segment());
@@ -197,12 +208,18 @@ public record VmaTotalStatistics(@NotNull MemorySegment segment) implements IVma
         MemorySegment.copy(value.segment(), 0, s, index * VmaDetailedStatistics.BYTES, VmaDetailedStatistics.BYTES);
     }
 
-    public MemorySegment memoryTypeRaw() {
+    public @NotNull MemorySegment memoryTypeRaw() {
         return segment.asSlice(OFFSET$memoryType, SIZE$memoryType);
     }
 
     public VmaDetailedStatistics.Ptr memoryHeap() {
         return new VmaDetailedStatistics.Ptr(memoryHeapRaw());
+    }
+
+    public VmaTotalStatistics memoryHeap(@NotNull Consumer<VmaDetailedStatistics.Ptr> consumer) {
+        VmaDetailedStatistics.Ptr ptr = memoryHeap();
+        consumer.accept(ptr);
+        return this;
     }
 
     public VmaTotalStatistics memoryHeap(VmaDetailedStatistics.Ptr value) {
@@ -221,7 +238,7 @@ public record VmaTotalStatistics(@NotNull MemorySegment segment) implements IVma
         MemorySegment.copy(value.segment(), 0, s, index * VmaDetailedStatistics.BYTES, VmaDetailedStatistics.BYTES);
     }
 
-    public MemorySegment memoryHeapRaw() {
+    public @NotNull MemorySegment memoryHeapRaw() {
         return segment.asSlice(OFFSET$memoryHeap, SIZE$memoryHeap);
     }
 

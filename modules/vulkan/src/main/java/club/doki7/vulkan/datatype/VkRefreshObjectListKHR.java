@@ -88,6 +88,11 @@ public record VkRefreshObjectListKHR(@NotNull MemorySegment segment) implements 
             return new VkRefreshObjectListKHR(segment.asSlice(index * VkRefreshObjectListKHR.BYTES, VkRefreshObjectListKHR.BYTES));
         }
 
+        public VkRefreshObjectListKHR.Ptr at(long index, @NotNull Consumer<@NotNull VkRefreshObjectListKHR> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkRefreshObjectListKHR value) {
             MemorySegment s = segment.asSlice(index * VkRefreshObjectListKHR.BYTES, VkRefreshObjectListKHR.BYTES);
             s.copyFrom(value.segment);
@@ -200,12 +205,13 @@ public record VkRefreshObjectListKHR(@NotNull MemorySegment segment) implements 
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkRefreshObjectListKHR pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkRefreshObjectListKHR pNext(@Nullable IPointer pointer) {
@@ -246,11 +252,11 @@ public record VkRefreshObjectListKHR(@NotNull MemorySegment segment) implements 
         return new VkRefreshObjectKHR(s);
     }
 
-    public @Pointer(target=VkRefreshObjectKHR.class) MemorySegment pObjectsRaw() {
+    public @Pointer(target=VkRefreshObjectKHR.class) @NotNull MemorySegment pObjectsRaw() {
         return segment.get(LAYOUT$pObjects, OFFSET$pObjects);
     }
 
-    public void pObjectsRaw(@Pointer(target=VkRefreshObjectKHR.class) MemorySegment value) {
+    public void pObjectsRaw(@Pointer(target=VkRefreshObjectKHR.class) @NotNull MemorySegment value) {
         segment.set(LAYOUT$pObjects, OFFSET$pObjects, value);
     }
 

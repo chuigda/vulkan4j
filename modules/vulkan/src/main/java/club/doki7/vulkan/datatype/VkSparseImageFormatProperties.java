@@ -78,6 +78,11 @@ public record VkSparseImageFormatProperties(@NotNull MemorySegment segment) impl
             return new VkSparseImageFormatProperties(segment.asSlice(index * VkSparseImageFormatProperties.BYTES, VkSparseImageFormatProperties.BYTES));
         }
 
+        public VkSparseImageFormatProperties.Ptr at(long index, @NotNull Consumer<@NotNull VkSparseImageFormatProperties> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkSparseImageFormatProperties value) {
             MemorySegment s = segment.asSlice(index * VkSparseImageFormatProperties.BYTES, VkSparseImageFormatProperties.BYTES);
             s.copyFrom(value.segment);
@@ -171,11 +176,11 @@ public record VkSparseImageFormatProperties(@NotNull MemorySegment segment) impl
         return ret;
     }
 
-    public @EnumType(VkImageAspectFlags.class) int aspectMask() {
+    public @Bitmask(VkImageAspectFlags.class) int aspectMask() {
         return segment.get(LAYOUT$aspectMask, OFFSET$aspectMask);
     }
 
-    public VkSparseImageFormatProperties aspectMask(@EnumType(VkImageAspectFlags.class) int value) {
+    public VkSparseImageFormatProperties aspectMask(@Bitmask(VkImageAspectFlags.class) int value) {
         segment.set(LAYOUT$aspectMask, OFFSET$aspectMask, value);
         return this;
     }
@@ -194,11 +199,11 @@ public record VkSparseImageFormatProperties(@NotNull MemorySegment segment) impl
         return this;
     }
 
-    public @EnumType(VkSparseImageFormatFlags.class) int flags() {
+    public @Bitmask(VkSparseImageFormatFlags.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public VkSparseImageFormatProperties flags(@EnumType(VkSparseImageFormatFlags.class) int value) {
+    public VkSparseImageFormatProperties flags(@Bitmask(VkSparseImageFormatFlags.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
         return this;
     }

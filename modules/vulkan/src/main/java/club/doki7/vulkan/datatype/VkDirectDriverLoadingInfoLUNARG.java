@@ -88,6 +88,11 @@ public record VkDirectDriverLoadingInfoLUNARG(@NotNull MemorySegment segment) im
             return new VkDirectDriverLoadingInfoLUNARG(segment.asSlice(index * VkDirectDriverLoadingInfoLUNARG.BYTES, VkDirectDriverLoadingInfoLUNARG.BYTES));
         }
 
+        public VkDirectDriverLoadingInfoLUNARG.Ptr at(long index, @NotNull Consumer<@NotNull VkDirectDriverLoadingInfoLUNARG> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkDirectDriverLoadingInfoLUNARG value) {
             MemorySegment s = segment.asSlice(index * VkDirectDriverLoadingInfoLUNARG.BYTES, VkDirectDriverLoadingInfoLUNARG.BYTES);
             s.copyFrom(value.segment);
@@ -200,12 +205,13 @@ public record VkDirectDriverLoadingInfoLUNARG(@NotNull MemorySegment segment) im
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkDirectDriverLoadingInfoLUNARG pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkDirectDriverLoadingInfoLUNARG pNext(@Nullable IPointer pointer) {
@@ -213,21 +219,22 @@ public record VkDirectDriverLoadingInfoLUNARG(@NotNull MemorySegment segment) im
         return this;
     }
 
-    public @EnumType(VkDirectDriverLoadingFlagsLUNARG.class) int flags() {
+    public @Bitmask(VkDirectDriverLoadingFlagsLUNARG.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public VkDirectDriverLoadingInfoLUNARG flags(@EnumType(VkDirectDriverLoadingFlagsLUNARG.class) int value) {
+    public VkDirectDriverLoadingInfoLUNARG flags(@Bitmask(VkDirectDriverLoadingFlagsLUNARG.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
         return this;
     }
 
-    public @Pointer(comment="PFN_vkGetInstanceProcAddrLUNARG") MemorySegment pfnGetInstanceProcAddr() {
+    public @Pointer(comment="PFN_vkGetInstanceProcAddrLUNARG") @NotNull MemorySegment pfnGetInstanceProcAddr() {
         return segment.get(LAYOUT$pfnGetInstanceProcAddr, OFFSET$pfnGetInstanceProcAddr);
     }
 
-    public void pfnGetInstanceProcAddr(@Pointer(comment="PFN_vkGetInstanceProcAddrLUNARG") MemorySegment value) {
+    public VkDirectDriverLoadingInfoLUNARG pfnGetInstanceProcAddr(@Pointer(comment="PFN_vkGetInstanceProcAddrLUNARG") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pfnGetInstanceProcAddr, OFFSET$pfnGetInstanceProcAddr, value);
+        return this;
     }
 
     public VkDirectDriverLoadingInfoLUNARG pfnGetInstanceProcAddr(@Nullable IPointer pointer) {

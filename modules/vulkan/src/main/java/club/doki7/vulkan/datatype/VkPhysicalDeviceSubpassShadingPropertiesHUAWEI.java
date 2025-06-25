@@ -87,6 +87,11 @@ public record VkPhysicalDeviceSubpassShadingPropertiesHUAWEI(@NotNull MemorySegm
             return new VkPhysicalDeviceSubpassShadingPropertiesHUAWEI(segment.asSlice(index * VkPhysicalDeviceSubpassShadingPropertiesHUAWEI.BYTES, VkPhysicalDeviceSubpassShadingPropertiesHUAWEI.BYTES));
         }
 
+        public VkPhysicalDeviceSubpassShadingPropertiesHUAWEI.Ptr at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceSubpassShadingPropertiesHUAWEI> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkPhysicalDeviceSubpassShadingPropertiesHUAWEI value) {
             MemorySegment s = segment.asSlice(index * VkPhysicalDeviceSubpassShadingPropertiesHUAWEI.BYTES, VkPhysicalDeviceSubpassShadingPropertiesHUAWEI.BYTES);
             s.copyFrom(value.segment);
@@ -199,12 +204,13 @@ public record VkPhysicalDeviceSubpassShadingPropertiesHUAWEI(@NotNull MemorySegm
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkPhysicalDeviceSubpassShadingPropertiesHUAWEI pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkPhysicalDeviceSubpassShadingPropertiesHUAWEI pNext(@Nullable IPointer pointer) {

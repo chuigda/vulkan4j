@@ -97,6 +97,11 @@ public record VmaAllocatorInfo(@NotNull MemorySegment segment) implements IVmaAl
             return new VmaAllocatorInfo(segment.asSlice(index * VmaAllocatorInfo.BYTES, VmaAllocatorInfo.BYTES));
         }
 
+        public VmaAllocatorInfo.Ptr at(long index, @NotNull Consumer<@NotNull VmaAllocatorInfo> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VmaAllocatorInfo value) {
             MemorySegment s = segment.asSlice(index * VmaAllocatorInfo.BYTES, VmaAllocatorInfo.BYTES);
             s.copyFrom(value.segment);

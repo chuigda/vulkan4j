@@ -88,6 +88,11 @@ public record VkIOSSurfaceCreateInfoMVK(@NotNull MemorySegment segment) implemen
             return new VkIOSSurfaceCreateInfoMVK(segment.asSlice(index * VkIOSSurfaceCreateInfoMVK.BYTES, VkIOSSurfaceCreateInfoMVK.BYTES));
         }
 
+        public VkIOSSurfaceCreateInfoMVK.Ptr at(long index, @NotNull Consumer<@NotNull VkIOSSurfaceCreateInfoMVK> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkIOSSurfaceCreateInfoMVK value) {
             MemorySegment s = segment.asSlice(index * VkIOSSurfaceCreateInfoMVK.BYTES, VkIOSSurfaceCreateInfoMVK.BYTES);
             s.copyFrom(value.segment);
@@ -200,12 +205,13 @@ public record VkIOSSurfaceCreateInfoMVK(@NotNull MemorySegment segment) implemen
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkIOSSurfaceCreateInfoMVK pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkIOSSurfaceCreateInfoMVK pNext(@Nullable IPointer pointer) {
@@ -213,21 +219,22 @@ public record VkIOSSurfaceCreateInfoMVK(@NotNull MemorySegment segment) implemen
         return this;
     }
 
-    public @EnumType(VkIOSSurfaceCreateFlagsMVK.class) int flags() {
+    public @Bitmask(VkIOSSurfaceCreateFlagsMVK.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public VkIOSSurfaceCreateInfoMVK flags(@EnumType(VkIOSSurfaceCreateFlagsMVK.class) int value) {
+    public VkIOSSurfaceCreateInfoMVK flags(@Bitmask(VkIOSSurfaceCreateFlagsMVK.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pView() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pView() {
         return segment.get(LAYOUT$pView, OFFSET$pView);
     }
 
-    public void pView(@Pointer(comment="void*") MemorySegment value) {
+    public VkIOSSurfaceCreateInfoMVK pView(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pView, OFFSET$pView, value);
+        return this;
     }
 
     public VkIOSSurfaceCreateInfoMVK pView(@Nullable IPointer pointer) {

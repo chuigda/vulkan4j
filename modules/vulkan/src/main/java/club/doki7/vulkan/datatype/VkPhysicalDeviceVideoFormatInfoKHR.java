@@ -87,6 +87,11 @@ public record VkPhysicalDeviceVideoFormatInfoKHR(@NotNull MemorySegment segment)
             return new VkPhysicalDeviceVideoFormatInfoKHR(segment.asSlice(index * VkPhysicalDeviceVideoFormatInfoKHR.BYTES, VkPhysicalDeviceVideoFormatInfoKHR.BYTES));
         }
 
+        public VkPhysicalDeviceVideoFormatInfoKHR.Ptr at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceVideoFormatInfoKHR> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkPhysicalDeviceVideoFormatInfoKHR value) {
             MemorySegment s = segment.asSlice(index * VkPhysicalDeviceVideoFormatInfoKHR.BYTES, VkPhysicalDeviceVideoFormatInfoKHR.BYTES);
             s.copyFrom(value.segment);
@@ -199,12 +204,13 @@ public record VkPhysicalDeviceVideoFormatInfoKHR(@NotNull MemorySegment segment)
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkPhysicalDeviceVideoFormatInfoKHR pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkPhysicalDeviceVideoFormatInfoKHR pNext(@Nullable IPointer pointer) {
@@ -212,11 +218,11 @@ public record VkPhysicalDeviceVideoFormatInfoKHR(@NotNull MemorySegment segment)
         return this;
     }
 
-    public @EnumType(VkImageUsageFlags.class) int imageUsage() {
+    public @Bitmask(VkImageUsageFlags.class) int imageUsage() {
         return segment.get(LAYOUT$imageUsage, OFFSET$imageUsage);
     }
 
-    public VkPhysicalDeviceVideoFormatInfoKHR imageUsage(@EnumType(VkImageUsageFlags.class) int value) {
+    public VkPhysicalDeviceVideoFormatInfoKHR imageUsage(@Bitmask(VkImageUsageFlags.class) int value) {
         segment.set(LAYOUT$imageUsage, OFFSET$imageUsage, value);
         return this;
     }

@@ -88,6 +88,11 @@ public record VkSemaphoreSciSyncCreateInfoNV(@NotNull MemorySegment segment) imp
             return new VkSemaphoreSciSyncCreateInfoNV(segment.asSlice(index * VkSemaphoreSciSyncCreateInfoNV.BYTES, VkSemaphoreSciSyncCreateInfoNV.BYTES));
         }
 
+        public VkSemaphoreSciSyncCreateInfoNV.Ptr at(long index, @NotNull Consumer<@NotNull VkSemaphoreSciSyncCreateInfoNV> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkSemaphoreSciSyncCreateInfoNV value) {
             MemorySegment s = segment.asSlice(index * VkSemaphoreSciSyncCreateInfoNV.BYTES, VkSemaphoreSciSyncCreateInfoNV.BYTES);
             s.copyFrom(value.segment);
@@ -200,12 +205,13 @@ public record VkSemaphoreSciSyncCreateInfoNV(@NotNull MemorySegment segment) imp
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkSemaphoreSciSyncCreateInfoNV pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkSemaphoreSciSyncCreateInfoNV pNext(@Nullable IPointer pointer) {
@@ -250,11 +256,11 @@ public record VkSemaphoreSciSyncCreateInfoNV(@NotNull MemorySegment segment) imp
         return new NvSciSyncFenceVKREF(s);
     }
 
-    public @Pointer(target=NvSciSyncFenceVKREF.class) MemorySegment pFenceRaw() {
+    public @Pointer(target=NvSciSyncFenceVKREF.class) @NotNull MemorySegment pFenceRaw() {
         return segment.get(LAYOUT$pFence, OFFSET$pFence);
     }
 
-    public void pFenceRaw(@Pointer(target=NvSciSyncFenceVKREF.class) MemorySegment value) {
+    public void pFenceRaw(@Pointer(target=NvSciSyncFenceVKREF.class) @NotNull MemorySegment value) {
         segment.set(LAYOUT$pFence, OFFSET$pFence, value);
     }
 

@@ -81,6 +81,11 @@ public record StdVideoDecodeH264PictureInfo(@NotNull MemorySegment segment) impl
             return new StdVideoDecodeH264PictureInfo(segment.asSlice(index * StdVideoDecodeH264PictureInfo.BYTES, StdVideoDecodeH264PictureInfo.BYTES));
         }
 
+        public StdVideoDecodeH264PictureInfo.Ptr at(long index, @NotNull Consumer<@NotNull StdVideoDecodeH264PictureInfo> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull StdVideoDecodeH264PictureInfo value) {
             MemorySegment s = segment.asSlice(index * StdVideoDecodeH264PictureInfo.BYTES, StdVideoDecodeH264PictureInfo.BYTES);
             s.copyFrom(value.segment);
@@ -230,12 +235,19 @@ public record StdVideoDecodeH264PictureInfo(@NotNull MemorySegment segment) impl
         return new IntPtr(PicOrderCntRaw());
     }
 
-    public StdVideoDecodeH264PictureInfo PicOrderCnt(IntPtr value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$PicOrderCnt, SIZE$PicOrderCnt);
+    public StdVideoDecodeH264PictureInfo PicOrderCnt(@NotNull Consumer<IntPtr> consumer) {
+        IntPtr ptr = PicOrderCnt();
+        consumer.accept(ptr);
         return this;
     }
 
-    public MemorySegment PicOrderCntRaw() {
+    public StdVideoDecodeH264PictureInfo PicOrderCnt(IntPtr value) {
+        MemorySegment s = PicOrderCntRaw();
+        s.copyFrom(value.segment());
+        return this;
+    }
+
+    public @NotNull MemorySegment PicOrderCntRaw() {
         return segment.asSlice(OFFSET$PicOrderCnt, SIZE$PicOrderCnt);
     }
 

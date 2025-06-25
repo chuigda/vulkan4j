@@ -94,6 +94,11 @@ public record VkPhysicalDeviceRayTracingPropertiesNV(@NotNull MemorySegment segm
             return new VkPhysicalDeviceRayTracingPropertiesNV(segment.asSlice(index * VkPhysicalDeviceRayTracingPropertiesNV.BYTES, VkPhysicalDeviceRayTracingPropertiesNV.BYTES));
         }
 
+        public VkPhysicalDeviceRayTracingPropertiesNV.Ptr at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceRayTracingPropertiesNV> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkPhysicalDeviceRayTracingPropertiesNV value) {
             MemorySegment s = segment.asSlice(index * VkPhysicalDeviceRayTracingPropertiesNV.BYTES, VkPhysicalDeviceRayTracingPropertiesNV.BYTES);
             s.copyFrom(value.segment);
@@ -206,12 +211,13 @@ public record VkPhysicalDeviceRayTracingPropertiesNV(@NotNull MemorySegment segm
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkPhysicalDeviceRayTracingPropertiesNV pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkPhysicalDeviceRayTracingPropertiesNV pNext(@Nullable IPointer pointer) {

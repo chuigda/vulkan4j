@@ -87,6 +87,11 @@ public record VkDeviceGroupCommandBufferBeginInfo(@NotNull MemorySegment segment
             return new VkDeviceGroupCommandBufferBeginInfo(segment.asSlice(index * VkDeviceGroupCommandBufferBeginInfo.BYTES, VkDeviceGroupCommandBufferBeginInfo.BYTES));
         }
 
+        public VkDeviceGroupCommandBufferBeginInfo.Ptr at(long index, @NotNull Consumer<@NotNull VkDeviceGroupCommandBufferBeginInfo> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkDeviceGroupCommandBufferBeginInfo value) {
             MemorySegment s = segment.asSlice(index * VkDeviceGroupCommandBufferBeginInfo.BYTES, VkDeviceGroupCommandBufferBeginInfo.BYTES);
             s.copyFrom(value.segment);
@@ -199,12 +204,13 @@ public record VkDeviceGroupCommandBufferBeginInfo(@NotNull MemorySegment segment
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkDeviceGroupCommandBufferBeginInfo pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkDeviceGroupCommandBufferBeginInfo pNext(@Nullable IPointer pointer) {

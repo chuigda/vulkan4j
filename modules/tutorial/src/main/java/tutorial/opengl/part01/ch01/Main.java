@@ -1,5 +1,6 @@
 package tutorial.opengl.part01.ch01;
 
+import club.doki7.ffm.library.ISharedLibrary;
 import club.doki7.glfw.GLFW;
 import club.doki7.glfw.GLFWLoader;
 
@@ -16,10 +17,11 @@ class Application {
 
 public class Main {
     public static void main(String[] args) {
-        GLFWLoader.loadGLFWLibrary();
-        GLFW glfw = GLFWLoader.loadGLFW();
+        try (ISharedLibrary libGLFW = GLFWLoader.loadGLFWLibrary()) {
+            GLFW glfw = GLFWLoader.loadGLFW(libGLFW);
 
-        Application application = new Application(glfw);
-        application.run();
+            Application application = new Application(glfw);
+            application.run();
+        }
     }
 }

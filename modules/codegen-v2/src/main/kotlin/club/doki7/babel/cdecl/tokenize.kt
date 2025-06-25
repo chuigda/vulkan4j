@@ -249,6 +249,14 @@ internal val knownTriviaMacros = setOf(
     "SDL_SCANF_FORMAT_STRING",
     "SDL_MALLOC",
 
+    "SHADERC_EXPORT",
+    "XRAPI_PTR",
+
+    "STBIDEF",
+    "STBTT_DEF",
+    "STBIRDEF",
+    "STBIWDEF",
+
     "extern"
 )
 

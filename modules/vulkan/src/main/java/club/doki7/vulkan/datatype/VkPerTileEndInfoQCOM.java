@@ -86,6 +86,11 @@ public record VkPerTileEndInfoQCOM(@NotNull MemorySegment segment) implements IV
             return new VkPerTileEndInfoQCOM(segment.asSlice(index * VkPerTileEndInfoQCOM.BYTES, VkPerTileEndInfoQCOM.BYTES));
         }
 
+        public VkPerTileEndInfoQCOM.Ptr at(long index, @NotNull Consumer<@NotNull VkPerTileEndInfoQCOM> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkPerTileEndInfoQCOM value) {
             MemorySegment s = segment.asSlice(index * VkPerTileEndInfoQCOM.BYTES, VkPerTileEndInfoQCOM.BYTES);
             s.copyFrom(value.segment);
@@ -198,12 +203,13 @@ public record VkPerTileEndInfoQCOM(@NotNull MemorySegment segment) implements IV
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkPerTileEndInfoQCOM pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkPerTileEndInfoQCOM pNext(@Nullable IPointer pointer) {

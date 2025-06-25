@@ -94,6 +94,11 @@ public record VkAndroidHardwareBufferFormatPropertiesANDROID(@NotNull MemorySegm
             return new VkAndroidHardwareBufferFormatPropertiesANDROID(segment.asSlice(index * VkAndroidHardwareBufferFormatPropertiesANDROID.BYTES, VkAndroidHardwareBufferFormatPropertiesANDROID.BYTES));
         }
 
+        public VkAndroidHardwareBufferFormatPropertiesANDROID.Ptr at(long index, @NotNull Consumer<@NotNull VkAndroidHardwareBufferFormatPropertiesANDROID> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkAndroidHardwareBufferFormatPropertiesANDROID value) {
             MemorySegment s = segment.asSlice(index * VkAndroidHardwareBufferFormatPropertiesANDROID.BYTES, VkAndroidHardwareBufferFormatPropertiesANDROID.BYTES);
             s.copyFrom(value.segment);
@@ -206,12 +211,13 @@ public record VkAndroidHardwareBufferFormatPropertiesANDROID(@NotNull MemorySegm
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkAndroidHardwareBufferFormatPropertiesANDROID pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkAndroidHardwareBufferFormatPropertiesANDROID pNext(@Nullable IPointer pointer) {
@@ -237,11 +243,11 @@ public record VkAndroidHardwareBufferFormatPropertiesANDROID(@NotNull MemorySegm
         return this;
     }
 
-    public @EnumType(VkFormatFeatureFlags.class) int formatFeatures() {
+    public @Bitmask(VkFormatFeatureFlags.class) int formatFeatures() {
         return segment.get(LAYOUT$formatFeatures, OFFSET$formatFeatures);
     }
 
-    public VkAndroidHardwareBufferFormatPropertiesANDROID formatFeatures(@EnumType(VkFormatFeatureFlags.class) int value) {
+    public VkAndroidHardwareBufferFormatPropertiesANDROID formatFeatures(@Bitmask(VkFormatFeatureFlags.class) int value) {
         segment.set(LAYOUT$formatFeatures, OFFSET$formatFeatures, value);
         return this;
     }

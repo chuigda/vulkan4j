@@ -88,6 +88,11 @@ public record VkImportMemoryWin32HandleInfoNV(@NotNull MemorySegment segment) im
             return new VkImportMemoryWin32HandleInfoNV(segment.asSlice(index * VkImportMemoryWin32HandleInfoNV.BYTES, VkImportMemoryWin32HandleInfoNV.BYTES));
         }
 
+        public VkImportMemoryWin32HandleInfoNV.Ptr at(long index, @NotNull Consumer<@NotNull VkImportMemoryWin32HandleInfoNV> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkImportMemoryWin32HandleInfoNV value) {
             MemorySegment s = segment.asSlice(index * VkImportMemoryWin32HandleInfoNV.BYTES, VkImportMemoryWin32HandleInfoNV.BYTES);
             s.copyFrom(value.segment);
@@ -200,12 +205,13 @@ public record VkImportMemoryWin32HandleInfoNV(@NotNull MemorySegment segment) im
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkImportMemoryWin32HandleInfoNV pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkImportMemoryWin32HandleInfoNV pNext(@Nullable IPointer pointer) {
@@ -213,21 +219,22 @@ public record VkImportMemoryWin32HandleInfoNV(@NotNull MemorySegment segment) im
         return this;
     }
 
-    public @EnumType(VkExternalMemoryHandleTypeFlagsNV.class) int handleType() {
+    public @Bitmask(VkExternalMemoryHandleTypeFlagsNV.class) int handleType() {
         return segment.get(LAYOUT$handleType, OFFSET$handleType);
     }
 
-    public VkImportMemoryWin32HandleInfoNV handleType(@EnumType(VkExternalMemoryHandleTypeFlagsNV.class) int value) {
+    public VkImportMemoryWin32HandleInfoNV handleType(@Bitmask(VkExternalMemoryHandleTypeFlagsNV.class) int value) {
         segment.set(LAYOUT$handleType, OFFSET$handleType, value);
         return this;
     }
 
-    public @Pointer(comment="HANDLE") MemorySegment handle() {
+    public @Pointer(comment="HANDLE") @NotNull MemorySegment handle() {
         return segment.get(LAYOUT$handle, OFFSET$handle);
     }
 
-    public void handle(@Pointer(comment="HANDLE") MemorySegment value) {
+    public VkImportMemoryWin32HandleInfoNV handle(@Pointer(comment="HANDLE") @NotNull MemorySegment value) {
         segment.set(LAYOUT$handle, OFFSET$handle, value);
+        return this;
     }
 
     public VkImportMemoryWin32HandleInfoNV handle(@Nullable IPointer pointer) {

@@ -136,6 +136,11 @@ public record VmaAllocationCreateInfo(@NotNull MemorySegment segment) implements
             return new VmaAllocationCreateInfo(segment.asSlice(index * VmaAllocationCreateInfo.BYTES, VmaAllocationCreateInfo.BYTES));
         }
 
+        public VmaAllocationCreateInfo.Ptr at(long index, @NotNull Consumer<@NotNull VmaAllocationCreateInfo> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VmaAllocationCreateInfo value) {
             MemorySegment s = segment.asSlice(index * VmaAllocationCreateInfo.BYTES, VmaAllocationCreateInfo.BYTES);
             s.copyFrom(value.segment);
@@ -229,11 +234,11 @@ public record VmaAllocationCreateInfo(@NotNull MemorySegment segment) implements
         return ret;
     }
 
-    public @EnumType(VmaAllocationCreateFlags.class) int flags() {
+    public @Bitmask(VmaAllocationCreateFlags.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public VmaAllocationCreateInfo flags(@EnumType(VmaAllocationCreateFlags.class) int value) {
+    public VmaAllocationCreateInfo flags(@Bitmask(VmaAllocationCreateFlags.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
         return this;
     }
@@ -247,20 +252,20 @@ public record VmaAllocationCreateInfo(@NotNull MemorySegment segment) implements
         return this;
     }
 
-    public @EnumType(VkMemoryPropertyFlags.class) int requiredFlags() {
+    public @Bitmask(VkMemoryPropertyFlags.class) int requiredFlags() {
         return segment.get(LAYOUT$requiredFlags, OFFSET$requiredFlags);
     }
 
-    public VmaAllocationCreateInfo requiredFlags(@EnumType(VkMemoryPropertyFlags.class) int value) {
+    public VmaAllocationCreateInfo requiredFlags(@Bitmask(VkMemoryPropertyFlags.class) int value) {
         segment.set(LAYOUT$requiredFlags, OFFSET$requiredFlags, value);
         return this;
     }
 
-    public @EnumType(VkMemoryPropertyFlags.class) int preferredFlags() {
+    public @Bitmask(VkMemoryPropertyFlags.class) int preferredFlags() {
         return segment.get(LAYOUT$preferredFlags, OFFSET$preferredFlags);
     }
 
-    public VmaAllocationCreateInfo preferredFlags(@EnumType(VkMemoryPropertyFlags.class) int value) {
+    public VmaAllocationCreateInfo preferredFlags(@Bitmask(VkMemoryPropertyFlags.class) int value) {
         segment.set(LAYOUT$preferredFlags, OFFSET$preferredFlags, value);
         return this;
     }
@@ -287,12 +292,13 @@ public record VmaAllocationCreateInfo(@NotNull MemorySegment segment) implements
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pUserData() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pUserData() {
         return segment.get(LAYOUT$pUserData, OFFSET$pUserData);
     }
 
-    public void pUserData(@Pointer(comment="void*") MemorySegment value) {
+    public VmaAllocationCreateInfo pUserData(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pUserData, OFFSET$pUserData, value);
+        return this;
     }
 
     public VmaAllocationCreateInfo pUserData(@Nullable IPointer pointer) {

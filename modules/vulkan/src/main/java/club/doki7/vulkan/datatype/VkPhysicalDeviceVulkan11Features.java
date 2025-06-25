@@ -98,6 +98,11 @@ public record VkPhysicalDeviceVulkan11Features(@NotNull MemorySegment segment) i
             return new VkPhysicalDeviceVulkan11Features(segment.asSlice(index * VkPhysicalDeviceVulkan11Features.BYTES, VkPhysicalDeviceVulkan11Features.BYTES));
         }
 
+        public VkPhysicalDeviceVulkan11Features.Ptr at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceVulkan11Features> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkPhysicalDeviceVulkan11Features value) {
             MemorySegment s = segment.asSlice(index * VkPhysicalDeviceVulkan11Features.BYTES, VkPhysicalDeviceVulkan11Features.BYTES);
             s.copyFrom(value.segment);
@@ -210,12 +215,13 @@ public record VkPhysicalDeviceVulkan11Features(@NotNull MemorySegment segment) i
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkPhysicalDeviceVulkan11Features pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkPhysicalDeviceVulkan11Features pNext(@Nullable IPointer pointer) {

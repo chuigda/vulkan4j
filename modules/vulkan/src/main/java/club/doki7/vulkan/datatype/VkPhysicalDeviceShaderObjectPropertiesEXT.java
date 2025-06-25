@@ -88,6 +88,11 @@ public record VkPhysicalDeviceShaderObjectPropertiesEXT(@NotNull MemorySegment s
             return new VkPhysicalDeviceShaderObjectPropertiesEXT(segment.asSlice(index * VkPhysicalDeviceShaderObjectPropertiesEXT.BYTES, VkPhysicalDeviceShaderObjectPropertiesEXT.BYTES));
         }
 
+        public VkPhysicalDeviceShaderObjectPropertiesEXT.Ptr at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceShaderObjectPropertiesEXT> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkPhysicalDeviceShaderObjectPropertiesEXT value) {
             MemorySegment s = segment.asSlice(index * VkPhysicalDeviceShaderObjectPropertiesEXT.BYTES, VkPhysicalDeviceShaderObjectPropertiesEXT.BYTES);
             s.copyFrom(value.segment);
@@ -200,12 +205,13 @@ public record VkPhysicalDeviceShaderObjectPropertiesEXT(@NotNull MemorySegment s
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkPhysicalDeviceShaderObjectPropertiesEXT pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkPhysicalDeviceShaderObjectPropertiesEXT pNext(@Nullable IPointer pointer) {
@@ -217,12 +223,19 @@ public record VkPhysicalDeviceShaderObjectPropertiesEXT(@NotNull MemorySegment s
         return new BytePtr(shaderBinaryUUIDRaw());
     }
 
-    public VkPhysicalDeviceShaderObjectPropertiesEXT shaderBinaryUUID(@Unsigned BytePtr value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$shaderBinaryUUID, SIZE$shaderBinaryUUID);
+    public VkPhysicalDeviceShaderObjectPropertiesEXT shaderBinaryUUID(@NotNull Consumer<BytePtr> consumer) {
+        @Unsigned BytePtr ptr = shaderBinaryUUID();
+        consumer.accept(ptr);
         return this;
     }
 
-    public MemorySegment shaderBinaryUUIDRaw() {
+    public VkPhysicalDeviceShaderObjectPropertiesEXT shaderBinaryUUID(@Unsigned BytePtr value) {
+        MemorySegment s = shaderBinaryUUIDRaw();
+        s.copyFrom(value.segment());
+        return this;
+    }
+
+    public @NotNull MemorySegment shaderBinaryUUIDRaw() {
         return segment.asSlice(OFFSET$shaderBinaryUUID, SIZE$shaderBinaryUUID);
     }
 

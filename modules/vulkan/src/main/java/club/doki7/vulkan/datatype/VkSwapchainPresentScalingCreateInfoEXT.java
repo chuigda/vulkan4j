@@ -89,6 +89,11 @@ public record VkSwapchainPresentScalingCreateInfoEXT(@NotNull MemorySegment segm
             return new VkSwapchainPresentScalingCreateInfoEXT(segment.asSlice(index * VkSwapchainPresentScalingCreateInfoEXT.BYTES, VkSwapchainPresentScalingCreateInfoEXT.BYTES));
         }
 
+        public VkSwapchainPresentScalingCreateInfoEXT.Ptr at(long index, @NotNull Consumer<@NotNull VkSwapchainPresentScalingCreateInfoEXT> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkSwapchainPresentScalingCreateInfoEXT value) {
             MemorySegment s = segment.asSlice(index * VkSwapchainPresentScalingCreateInfoEXT.BYTES, VkSwapchainPresentScalingCreateInfoEXT.BYTES);
             s.copyFrom(value.segment);
@@ -201,12 +206,13 @@ public record VkSwapchainPresentScalingCreateInfoEXT(@NotNull MemorySegment segm
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkSwapchainPresentScalingCreateInfoEXT pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkSwapchainPresentScalingCreateInfoEXT pNext(@Nullable IPointer pointer) {
@@ -214,29 +220,29 @@ public record VkSwapchainPresentScalingCreateInfoEXT(@NotNull MemorySegment segm
         return this;
     }
 
-    public @EnumType(VkPresentScalingFlagsEXT.class) int scalingBehavior() {
+    public @Bitmask(VkPresentScalingFlagsEXT.class) int scalingBehavior() {
         return segment.get(LAYOUT$scalingBehavior, OFFSET$scalingBehavior);
     }
 
-    public VkSwapchainPresentScalingCreateInfoEXT scalingBehavior(@EnumType(VkPresentScalingFlagsEXT.class) int value) {
+    public VkSwapchainPresentScalingCreateInfoEXT scalingBehavior(@Bitmask(VkPresentScalingFlagsEXT.class) int value) {
         segment.set(LAYOUT$scalingBehavior, OFFSET$scalingBehavior, value);
         return this;
     }
 
-    public @EnumType(VkPresentGravityFlagsEXT.class) int presentGravityX() {
+    public @Bitmask(VkPresentGravityFlagsEXT.class) int presentGravityX() {
         return segment.get(LAYOUT$presentGravityX, OFFSET$presentGravityX);
     }
 
-    public VkSwapchainPresentScalingCreateInfoEXT presentGravityX(@EnumType(VkPresentGravityFlagsEXT.class) int value) {
+    public VkSwapchainPresentScalingCreateInfoEXT presentGravityX(@Bitmask(VkPresentGravityFlagsEXT.class) int value) {
         segment.set(LAYOUT$presentGravityX, OFFSET$presentGravityX, value);
         return this;
     }
 
-    public @EnumType(VkPresentGravityFlagsEXT.class) int presentGravityY() {
+    public @Bitmask(VkPresentGravityFlagsEXT.class) int presentGravityY() {
         return segment.get(LAYOUT$presentGravityY, OFFSET$presentGravityY);
     }
 
-    public VkSwapchainPresentScalingCreateInfoEXT presentGravityY(@EnumType(VkPresentGravityFlagsEXT.class) int value) {
+    public VkSwapchainPresentScalingCreateInfoEXT presentGravityY(@Bitmask(VkPresentGravityFlagsEXT.class) int value) {
         segment.set(LAYOUT$presentGravityY, OFFSET$presentGravityY, value);
         return this;
     }

@@ -87,6 +87,11 @@ public record VkFenceCreateInfo(@NotNull MemorySegment segment) implements IVkFe
             return new VkFenceCreateInfo(segment.asSlice(index * VkFenceCreateInfo.BYTES, VkFenceCreateInfo.BYTES));
         }
 
+        public VkFenceCreateInfo.Ptr at(long index, @NotNull Consumer<@NotNull VkFenceCreateInfo> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkFenceCreateInfo value) {
             MemorySegment s = segment.asSlice(index * VkFenceCreateInfo.BYTES, VkFenceCreateInfo.BYTES);
             s.copyFrom(value.segment);
@@ -199,12 +204,13 @@ public record VkFenceCreateInfo(@NotNull MemorySegment segment) implements IVkFe
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkFenceCreateInfo pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkFenceCreateInfo pNext(@Nullable IPointer pointer) {
@@ -212,11 +218,11 @@ public record VkFenceCreateInfo(@NotNull MemorySegment segment) implements IVkFe
         return this;
     }
 
-    public @EnumType(VkFenceCreateFlags.class) int flags() {
+    public @Bitmask(VkFenceCreateFlags.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public VkFenceCreateInfo flags(@EnumType(VkFenceCreateFlags.class) int value) {
+    public VkFenceCreateInfo flags(@Bitmask(VkFenceCreateFlags.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
         return this;
     }

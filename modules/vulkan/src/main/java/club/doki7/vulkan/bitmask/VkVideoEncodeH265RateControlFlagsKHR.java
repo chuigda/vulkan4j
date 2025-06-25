@@ -13,7 +13,7 @@ public final class VkVideoEncodeH265RateControlFlagsKHR {
     public static final int VK_VIDEO_ENCODE_H265_RATE_CONTROL_REGULAR_GOP = 0x2;
     public static final int VK_VIDEO_ENCODE_H265_RATE_CONTROL_TEMPORAL_SUB_LAYER_PATTERN_DYADIC = 0x10;
 
-    public static String explain(@EnumType(VkVideoEncodeH265RateControlFlagsKHR.class) int flags) {
+    public static String explain(@Bitmask(VkVideoEncodeH265RateControlFlagsKHR.class) int flags) {
         List<String> detectedFlagBits = new ArrayList<>();
         if ((flags & VK_VIDEO_ENCODE_H265_RATE_CONTROL_ATTEMPT_HRD_COMPLIANCE) != 0) {
             detectedFlagBits.add("VK_VIDEO_ENCODE_H265_RATE_CONTROL_ATTEMPT_HRD_COMPLIANCE_BIT_KHR");

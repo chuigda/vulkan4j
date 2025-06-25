@@ -87,6 +87,11 @@ public record VkImagePlaneMemoryRequirementsInfo(@NotNull MemorySegment segment)
             return new VkImagePlaneMemoryRequirementsInfo(segment.asSlice(index * VkImagePlaneMemoryRequirementsInfo.BYTES, VkImagePlaneMemoryRequirementsInfo.BYTES));
         }
 
+        public VkImagePlaneMemoryRequirementsInfo.Ptr at(long index, @NotNull Consumer<@NotNull VkImagePlaneMemoryRequirementsInfo> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkImagePlaneMemoryRequirementsInfo value) {
             MemorySegment s = segment.asSlice(index * VkImagePlaneMemoryRequirementsInfo.BYTES, VkImagePlaneMemoryRequirementsInfo.BYTES);
             s.copyFrom(value.segment);
@@ -199,12 +204,13 @@ public record VkImagePlaneMemoryRequirementsInfo(@NotNull MemorySegment segment)
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkImagePlaneMemoryRequirementsInfo pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkImagePlaneMemoryRequirementsInfo pNext(@Nullable IPointer pointer) {
@@ -212,11 +218,11 @@ public record VkImagePlaneMemoryRequirementsInfo(@NotNull MemorySegment segment)
         return this;
     }
 
-    public @EnumType(VkImageAspectFlags.class) int planeAspect() {
+    public @Bitmask(VkImageAspectFlags.class) int planeAspect() {
         return segment.get(LAYOUT$planeAspect, OFFSET$planeAspect);
     }
 
-    public VkImagePlaneMemoryRequirementsInfo planeAspect(@EnumType(VkImageAspectFlags.class) int value) {
+    public VkImagePlaneMemoryRequirementsInfo planeAspect(@Bitmask(VkImageAspectFlags.class) int value) {
         segment.set(LAYOUT$planeAspect, OFFSET$planeAspect, value);
         return this;
     }

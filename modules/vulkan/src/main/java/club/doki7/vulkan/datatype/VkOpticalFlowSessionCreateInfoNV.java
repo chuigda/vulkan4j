@@ -95,6 +95,11 @@ public record VkOpticalFlowSessionCreateInfoNV(@NotNull MemorySegment segment) i
             return new VkOpticalFlowSessionCreateInfoNV(segment.asSlice(index * VkOpticalFlowSessionCreateInfoNV.BYTES, VkOpticalFlowSessionCreateInfoNV.BYTES));
         }
 
+        public VkOpticalFlowSessionCreateInfoNV.Ptr at(long index, @NotNull Consumer<@NotNull VkOpticalFlowSessionCreateInfoNV> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkOpticalFlowSessionCreateInfoNV value) {
             MemorySegment s = segment.asSlice(index * VkOpticalFlowSessionCreateInfoNV.BYTES, VkOpticalFlowSessionCreateInfoNV.BYTES);
             s.copyFrom(value.segment);
@@ -207,12 +212,13 @@ public record VkOpticalFlowSessionCreateInfoNV(@NotNull MemorySegment segment) i
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkOpticalFlowSessionCreateInfoNV pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkOpticalFlowSessionCreateInfoNV pNext(@Nullable IPointer pointer) {
@@ -265,20 +271,20 @@ public record VkOpticalFlowSessionCreateInfoNV(@NotNull MemorySegment segment) i
         return this;
     }
 
-    public @EnumType(VkOpticalFlowGridSizeFlagsNV.class) int outputGridSize() {
+    public @Bitmask(VkOpticalFlowGridSizeFlagsNV.class) int outputGridSize() {
         return segment.get(LAYOUT$outputGridSize, OFFSET$outputGridSize);
     }
 
-    public VkOpticalFlowSessionCreateInfoNV outputGridSize(@EnumType(VkOpticalFlowGridSizeFlagsNV.class) int value) {
+    public VkOpticalFlowSessionCreateInfoNV outputGridSize(@Bitmask(VkOpticalFlowGridSizeFlagsNV.class) int value) {
         segment.set(LAYOUT$outputGridSize, OFFSET$outputGridSize, value);
         return this;
     }
 
-    public @EnumType(VkOpticalFlowGridSizeFlagsNV.class) int hintGridSize() {
+    public @Bitmask(VkOpticalFlowGridSizeFlagsNV.class) int hintGridSize() {
         return segment.get(LAYOUT$hintGridSize, OFFSET$hintGridSize);
     }
 
-    public VkOpticalFlowSessionCreateInfoNV hintGridSize(@EnumType(VkOpticalFlowGridSizeFlagsNV.class) int value) {
+    public VkOpticalFlowSessionCreateInfoNV hintGridSize(@Bitmask(VkOpticalFlowGridSizeFlagsNV.class) int value) {
         segment.set(LAYOUT$hintGridSize, OFFSET$hintGridSize, value);
         return this;
     }
@@ -292,11 +298,11 @@ public record VkOpticalFlowSessionCreateInfoNV(@NotNull MemorySegment segment) i
         return this;
     }
 
-    public @EnumType(VkOpticalFlowSessionCreateFlagsNV.class) int flags() {
+    public @Bitmask(VkOpticalFlowSessionCreateFlagsNV.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public VkOpticalFlowSessionCreateInfoNV flags(@EnumType(VkOpticalFlowSessionCreateFlagsNV.class) int value) {
+    public VkOpticalFlowSessionCreateInfoNV flags(@Bitmask(VkOpticalFlowSessionCreateFlagsNV.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
         return this;
     }

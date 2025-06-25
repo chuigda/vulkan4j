@@ -87,6 +87,11 @@ public record VkImageViewMinLodCreateInfoEXT(@NotNull MemorySegment segment) imp
             return new VkImageViewMinLodCreateInfoEXT(segment.asSlice(index * VkImageViewMinLodCreateInfoEXT.BYTES, VkImageViewMinLodCreateInfoEXT.BYTES));
         }
 
+        public VkImageViewMinLodCreateInfoEXT.Ptr at(long index, @NotNull Consumer<@NotNull VkImageViewMinLodCreateInfoEXT> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkImageViewMinLodCreateInfoEXT value) {
             MemorySegment s = segment.asSlice(index * VkImageViewMinLodCreateInfoEXT.BYTES, VkImageViewMinLodCreateInfoEXT.BYTES);
             s.copyFrom(value.segment);
@@ -199,12 +204,13 @@ public record VkImageViewMinLodCreateInfoEXT(@NotNull MemorySegment segment) imp
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkImageViewMinLodCreateInfoEXT pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkImageViewMinLodCreateInfoEXT pNext(@Nullable IPointer pointer) {

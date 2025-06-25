@@ -76,6 +76,11 @@ public record VkRefreshCycleDurationGOOGLE(@NotNull MemorySegment segment) imple
             return new VkRefreshCycleDurationGOOGLE(segment.asSlice(index * VkRefreshCycleDurationGOOGLE.BYTES, VkRefreshCycleDurationGOOGLE.BYTES));
         }
 
+        public VkRefreshCycleDurationGOOGLE.Ptr at(long index, @NotNull Consumer<@NotNull VkRefreshCycleDurationGOOGLE> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkRefreshCycleDurationGOOGLE value) {
             MemorySegment s = segment.asSlice(index * VkRefreshCycleDurationGOOGLE.BYTES, VkRefreshCycleDurationGOOGLE.BYTES);
             s.copyFrom(value.segment);

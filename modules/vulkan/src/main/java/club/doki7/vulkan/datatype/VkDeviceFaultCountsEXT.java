@@ -89,6 +89,11 @@ public record VkDeviceFaultCountsEXT(@NotNull MemorySegment segment) implements 
             return new VkDeviceFaultCountsEXT(segment.asSlice(index * VkDeviceFaultCountsEXT.BYTES, VkDeviceFaultCountsEXT.BYTES));
         }
 
+        public VkDeviceFaultCountsEXT.Ptr at(long index, @NotNull Consumer<@NotNull VkDeviceFaultCountsEXT> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkDeviceFaultCountsEXT value) {
             MemorySegment s = segment.asSlice(index * VkDeviceFaultCountsEXT.BYTES, VkDeviceFaultCountsEXT.BYTES);
             s.copyFrom(value.segment);
@@ -201,12 +206,13 @@ public record VkDeviceFaultCountsEXT(@NotNull MemorySegment segment) implements 
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkDeviceFaultCountsEXT pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkDeviceFaultCountsEXT pNext(@Nullable IPointer pointer) {

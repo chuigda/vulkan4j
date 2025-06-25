@@ -80,7 +80,7 @@ internal fun vulkanMain(): Registry<VulkanRegistryExt> {
     }
 
     for (handle in vulkanRegistry.opaqueHandleTypedefs.values) {
-        val handleDoc = generateHandle(vulkanRegistry, handle, codegenOptions)
+        val handleDoc = generateHandle(handle, codegenOptions)
         File("$packageDir/handle/${handle.name}.java")
             .writeText(render(handleDoc))
     }

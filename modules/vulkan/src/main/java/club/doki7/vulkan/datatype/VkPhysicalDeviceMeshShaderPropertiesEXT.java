@@ -114,6 +114,11 @@ public record VkPhysicalDeviceMeshShaderPropertiesEXT(@NotNull MemorySegment seg
             return new VkPhysicalDeviceMeshShaderPropertiesEXT(segment.asSlice(index * VkPhysicalDeviceMeshShaderPropertiesEXT.BYTES, VkPhysicalDeviceMeshShaderPropertiesEXT.BYTES));
         }
 
+        public VkPhysicalDeviceMeshShaderPropertiesEXT.Ptr at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceMeshShaderPropertiesEXT> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkPhysicalDeviceMeshShaderPropertiesEXT value) {
             MemorySegment s = segment.asSlice(index * VkPhysicalDeviceMeshShaderPropertiesEXT.BYTES, VkPhysicalDeviceMeshShaderPropertiesEXT.BYTES);
             s.copyFrom(value.segment);
@@ -226,12 +231,13 @@ public record VkPhysicalDeviceMeshShaderPropertiesEXT(@NotNull MemorySegment seg
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkPhysicalDeviceMeshShaderPropertiesEXT pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkPhysicalDeviceMeshShaderPropertiesEXT pNext(@Nullable IPointer pointer) {
@@ -252,12 +258,19 @@ public record VkPhysicalDeviceMeshShaderPropertiesEXT(@NotNull MemorySegment seg
         return new IntPtr(maxTaskWorkGroupCountRaw());
     }
 
-    public VkPhysicalDeviceMeshShaderPropertiesEXT maxTaskWorkGroupCount(@Unsigned IntPtr value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$maxTaskWorkGroupCount, SIZE$maxTaskWorkGroupCount);
+    public VkPhysicalDeviceMeshShaderPropertiesEXT maxTaskWorkGroupCount(@NotNull Consumer<IntPtr> consumer) {
+        @Unsigned IntPtr ptr = maxTaskWorkGroupCount();
+        consumer.accept(ptr);
         return this;
     }
 
-    public MemorySegment maxTaskWorkGroupCountRaw() {
+    public VkPhysicalDeviceMeshShaderPropertiesEXT maxTaskWorkGroupCount(@Unsigned IntPtr value) {
+        MemorySegment s = maxTaskWorkGroupCountRaw();
+        s.copyFrom(value.segment());
+        return this;
+    }
+
+    public @NotNull MemorySegment maxTaskWorkGroupCountRaw() {
         return segment.asSlice(OFFSET$maxTaskWorkGroupCount, SIZE$maxTaskWorkGroupCount);
     }
 
@@ -274,12 +287,19 @@ public record VkPhysicalDeviceMeshShaderPropertiesEXT(@NotNull MemorySegment seg
         return new IntPtr(maxTaskWorkGroupSizeRaw());
     }
 
-    public VkPhysicalDeviceMeshShaderPropertiesEXT maxTaskWorkGroupSize(@Unsigned IntPtr value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$maxTaskWorkGroupSize, SIZE$maxTaskWorkGroupSize);
+    public VkPhysicalDeviceMeshShaderPropertiesEXT maxTaskWorkGroupSize(@NotNull Consumer<IntPtr> consumer) {
+        @Unsigned IntPtr ptr = maxTaskWorkGroupSize();
+        consumer.accept(ptr);
         return this;
     }
 
-    public MemorySegment maxTaskWorkGroupSizeRaw() {
+    public VkPhysicalDeviceMeshShaderPropertiesEXT maxTaskWorkGroupSize(@Unsigned IntPtr value) {
+        MemorySegment s = maxTaskWorkGroupSizeRaw();
+        s.copyFrom(value.segment());
+        return this;
+    }
+
+    public @NotNull MemorySegment maxTaskWorkGroupSizeRaw() {
         return segment.asSlice(OFFSET$maxTaskWorkGroupSize, SIZE$maxTaskWorkGroupSize);
     }
 
@@ -323,12 +343,19 @@ public record VkPhysicalDeviceMeshShaderPropertiesEXT(@NotNull MemorySegment seg
         return new IntPtr(maxMeshWorkGroupCountRaw());
     }
 
-    public VkPhysicalDeviceMeshShaderPropertiesEXT maxMeshWorkGroupCount(@Unsigned IntPtr value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$maxMeshWorkGroupCount, SIZE$maxMeshWorkGroupCount);
+    public VkPhysicalDeviceMeshShaderPropertiesEXT maxMeshWorkGroupCount(@NotNull Consumer<IntPtr> consumer) {
+        @Unsigned IntPtr ptr = maxMeshWorkGroupCount();
+        consumer.accept(ptr);
         return this;
     }
 
-    public MemorySegment maxMeshWorkGroupCountRaw() {
+    public VkPhysicalDeviceMeshShaderPropertiesEXT maxMeshWorkGroupCount(@Unsigned IntPtr value) {
+        MemorySegment s = maxMeshWorkGroupCountRaw();
+        s.copyFrom(value.segment());
+        return this;
+    }
+
+    public @NotNull MemorySegment maxMeshWorkGroupCountRaw() {
         return segment.asSlice(OFFSET$maxMeshWorkGroupCount, SIZE$maxMeshWorkGroupCount);
     }
 
@@ -345,12 +372,19 @@ public record VkPhysicalDeviceMeshShaderPropertiesEXT(@NotNull MemorySegment seg
         return new IntPtr(maxMeshWorkGroupSizeRaw());
     }
 
-    public VkPhysicalDeviceMeshShaderPropertiesEXT maxMeshWorkGroupSize(@Unsigned IntPtr value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$maxMeshWorkGroupSize, SIZE$maxMeshWorkGroupSize);
+    public VkPhysicalDeviceMeshShaderPropertiesEXT maxMeshWorkGroupSize(@NotNull Consumer<IntPtr> consumer) {
+        @Unsigned IntPtr ptr = maxMeshWorkGroupSize();
+        consumer.accept(ptr);
         return this;
     }
 
-    public MemorySegment maxMeshWorkGroupSizeRaw() {
+    public VkPhysicalDeviceMeshShaderPropertiesEXT maxMeshWorkGroupSize(@Unsigned IntPtr value) {
+        MemorySegment s = maxMeshWorkGroupSizeRaw();
+        s.copyFrom(value.segment());
+        return this;
+    }
+
+    public @NotNull MemorySegment maxMeshWorkGroupSizeRaw() {
         return segment.asSlice(OFFSET$maxMeshWorkGroupSize, SIZE$maxMeshWorkGroupSize);
     }
 

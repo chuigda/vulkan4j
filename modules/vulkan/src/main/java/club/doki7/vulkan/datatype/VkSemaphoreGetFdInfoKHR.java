@@ -88,6 +88,11 @@ public record VkSemaphoreGetFdInfoKHR(@NotNull MemorySegment segment) implements
             return new VkSemaphoreGetFdInfoKHR(segment.asSlice(index * VkSemaphoreGetFdInfoKHR.BYTES, VkSemaphoreGetFdInfoKHR.BYTES));
         }
 
+        public VkSemaphoreGetFdInfoKHR.Ptr at(long index, @NotNull Consumer<@NotNull VkSemaphoreGetFdInfoKHR> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkSemaphoreGetFdInfoKHR value) {
             MemorySegment s = segment.asSlice(index * VkSemaphoreGetFdInfoKHR.BYTES, VkSemaphoreGetFdInfoKHR.BYTES);
             s.copyFrom(value.segment);
@@ -200,12 +205,13 @@ public record VkSemaphoreGetFdInfoKHR(@NotNull MemorySegment segment) implements
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkSemaphoreGetFdInfoKHR pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkSemaphoreGetFdInfoKHR pNext(@Nullable IPointer pointer) {
@@ -226,11 +232,11 @@ public record VkSemaphoreGetFdInfoKHR(@NotNull MemorySegment segment) implements
         return this;
     }
 
-    public @EnumType(VkExternalSemaphoreHandleTypeFlags.class) int handleType() {
+    public @Bitmask(VkExternalSemaphoreHandleTypeFlags.class) int handleType() {
         return segment.get(LAYOUT$handleType, OFFSET$handleType);
     }
 
-    public VkSemaphoreGetFdInfoKHR handleType(@EnumType(VkExternalSemaphoreHandleTypeFlags.class) int value) {
+    public VkSemaphoreGetFdInfoKHR handleType(@Bitmask(VkExternalSemaphoreHandleTypeFlags.class) int value) {
         segment.set(LAYOUT$handleType, OFFSET$handleType, value);
         return this;
     }

@@ -91,6 +91,11 @@ public record VkPhysicalDeviceAccelerationStructureFeaturesKHR(@NotNull MemorySe
             return new VkPhysicalDeviceAccelerationStructureFeaturesKHR(segment.asSlice(index * VkPhysicalDeviceAccelerationStructureFeaturesKHR.BYTES, VkPhysicalDeviceAccelerationStructureFeaturesKHR.BYTES));
         }
 
+        public VkPhysicalDeviceAccelerationStructureFeaturesKHR.Ptr at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceAccelerationStructureFeaturesKHR> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkPhysicalDeviceAccelerationStructureFeaturesKHR value) {
             MemorySegment s = segment.asSlice(index * VkPhysicalDeviceAccelerationStructureFeaturesKHR.BYTES, VkPhysicalDeviceAccelerationStructureFeaturesKHR.BYTES);
             s.copyFrom(value.segment);
@@ -203,12 +208,13 @@ public record VkPhysicalDeviceAccelerationStructureFeaturesKHR(@NotNull MemorySe
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkPhysicalDeviceAccelerationStructureFeaturesKHR pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkPhysicalDeviceAccelerationStructureFeaturesKHR pNext(@Nullable IPointer pointer) {

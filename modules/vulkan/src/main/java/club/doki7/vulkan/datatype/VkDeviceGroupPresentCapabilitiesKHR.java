@@ -88,6 +88,11 @@ public record VkDeviceGroupPresentCapabilitiesKHR(@NotNull MemorySegment segment
             return new VkDeviceGroupPresentCapabilitiesKHR(segment.asSlice(index * VkDeviceGroupPresentCapabilitiesKHR.BYTES, VkDeviceGroupPresentCapabilitiesKHR.BYTES));
         }
 
+        public VkDeviceGroupPresentCapabilitiesKHR.Ptr at(long index, @NotNull Consumer<@NotNull VkDeviceGroupPresentCapabilitiesKHR> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkDeviceGroupPresentCapabilitiesKHR value) {
             MemorySegment s = segment.asSlice(index * VkDeviceGroupPresentCapabilitiesKHR.BYTES, VkDeviceGroupPresentCapabilitiesKHR.BYTES);
             s.copyFrom(value.segment);
@@ -200,12 +205,13 @@ public record VkDeviceGroupPresentCapabilitiesKHR(@NotNull MemorySegment segment
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkDeviceGroupPresentCapabilitiesKHR pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkDeviceGroupPresentCapabilitiesKHR pNext(@Nullable IPointer pointer) {
@@ -217,20 +223,27 @@ public record VkDeviceGroupPresentCapabilitiesKHR(@NotNull MemorySegment segment
         return new IntPtr(presentMaskRaw());
     }
 
-    public VkDeviceGroupPresentCapabilitiesKHR presentMask(@Unsigned IntPtr value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$presentMask, SIZE$presentMask);
+    public VkDeviceGroupPresentCapabilitiesKHR presentMask(@NotNull Consumer<IntPtr> consumer) {
+        @Unsigned IntPtr ptr = presentMask();
+        consumer.accept(ptr);
         return this;
     }
 
-    public MemorySegment presentMaskRaw() {
+    public VkDeviceGroupPresentCapabilitiesKHR presentMask(@Unsigned IntPtr value) {
+        MemorySegment s = presentMaskRaw();
+        s.copyFrom(value.segment());
+        return this;
+    }
+
+    public @NotNull MemorySegment presentMaskRaw() {
         return segment.asSlice(OFFSET$presentMask, SIZE$presentMask);
     }
 
-    public @EnumType(VkDeviceGroupPresentModeFlagsKHR.class) int modes() {
+    public @Bitmask(VkDeviceGroupPresentModeFlagsKHR.class) int modes() {
         return segment.get(LAYOUT$modes, OFFSET$modes);
     }
 
-    public VkDeviceGroupPresentCapabilitiesKHR modes(@EnumType(VkDeviceGroupPresentModeFlagsKHR.class) int value) {
+    public VkDeviceGroupPresentCapabilitiesKHR modes(@Bitmask(VkDeviceGroupPresentModeFlagsKHR.class) int value) {
         segment.set(LAYOUT$modes, OFFSET$modes, value);
         return this;
     }

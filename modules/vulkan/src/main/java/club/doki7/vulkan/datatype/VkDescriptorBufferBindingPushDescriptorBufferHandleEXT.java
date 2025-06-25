@@ -87,6 +87,11 @@ public record VkDescriptorBufferBindingPushDescriptorBufferHandleEXT(@NotNull Me
             return new VkDescriptorBufferBindingPushDescriptorBufferHandleEXT(segment.asSlice(index * VkDescriptorBufferBindingPushDescriptorBufferHandleEXT.BYTES, VkDescriptorBufferBindingPushDescriptorBufferHandleEXT.BYTES));
         }
 
+        public VkDescriptorBufferBindingPushDescriptorBufferHandleEXT.Ptr at(long index, @NotNull Consumer<@NotNull VkDescriptorBufferBindingPushDescriptorBufferHandleEXT> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkDescriptorBufferBindingPushDescriptorBufferHandleEXT value) {
             MemorySegment s = segment.asSlice(index * VkDescriptorBufferBindingPushDescriptorBufferHandleEXT.BYTES, VkDescriptorBufferBindingPushDescriptorBufferHandleEXT.BYTES);
             s.copyFrom(value.segment);
@@ -199,12 +204,13 @@ public record VkDescriptorBufferBindingPushDescriptorBufferHandleEXT(@NotNull Me
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkDescriptorBufferBindingPushDescriptorBufferHandleEXT pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkDescriptorBufferBindingPushDescriptorBufferHandleEXT pNext(@Nullable IPointer pointer) {

@@ -88,6 +88,11 @@ public record VkFenceGetSciSyncInfoNV(@NotNull MemorySegment segment) implements
             return new VkFenceGetSciSyncInfoNV(segment.asSlice(index * VkFenceGetSciSyncInfoNV.BYTES, VkFenceGetSciSyncInfoNV.BYTES));
         }
 
+        public VkFenceGetSciSyncInfoNV.Ptr at(long index, @NotNull Consumer<@NotNull VkFenceGetSciSyncInfoNV> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkFenceGetSciSyncInfoNV value) {
             MemorySegment s = segment.asSlice(index * VkFenceGetSciSyncInfoNV.BYTES, VkFenceGetSciSyncInfoNV.BYTES);
             s.copyFrom(value.segment);
@@ -200,12 +205,13 @@ public record VkFenceGetSciSyncInfoNV(@NotNull MemorySegment segment) implements
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkFenceGetSciSyncInfoNV pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkFenceGetSciSyncInfoNV pNext(@Nullable IPointer pointer) {
@@ -226,11 +232,11 @@ public record VkFenceGetSciSyncInfoNV(@NotNull MemorySegment segment) implements
         return this;
     }
 
-    public @EnumType(VkExternalFenceHandleTypeFlags.class) int handleType() {
+    public @Bitmask(VkExternalFenceHandleTypeFlags.class) int handleType() {
         return segment.get(LAYOUT$handleType, OFFSET$handleType);
     }
 
-    public VkFenceGetSciSyncInfoNV handleType(@EnumType(VkExternalFenceHandleTypeFlags.class) int value) {
+    public VkFenceGetSciSyncInfoNV handleType(@Bitmask(VkExternalFenceHandleTypeFlags.class) int value) {
         segment.set(LAYOUT$handleType, OFFSET$handleType, value);
         return this;
     }

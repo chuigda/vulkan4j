@@ -87,6 +87,11 @@ public record VkDevicePipelineBinaryInternalCacheControlKHR(@NotNull MemorySegme
             return new VkDevicePipelineBinaryInternalCacheControlKHR(segment.asSlice(index * VkDevicePipelineBinaryInternalCacheControlKHR.BYTES, VkDevicePipelineBinaryInternalCacheControlKHR.BYTES));
         }
 
+        public VkDevicePipelineBinaryInternalCacheControlKHR.Ptr at(long index, @NotNull Consumer<@NotNull VkDevicePipelineBinaryInternalCacheControlKHR> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkDevicePipelineBinaryInternalCacheControlKHR value) {
             MemorySegment s = segment.asSlice(index * VkDevicePipelineBinaryInternalCacheControlKHR.BYTES, VkDevicePipelineBinaryInternalCacheControlKHR.BYTES);
             s.copyFrom(value.segment);
@@ -199,12 +204,13 @@ public record VkDevicePipelineBinaryInternalCacheControlKHR(@NotNull MemorySegme
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkDevicePipelineBinaryInternalCacheControlKHR pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkDevicePipelineBinaryInternalCacheControlKHR pNext(@Nullable IPointer pointer) {

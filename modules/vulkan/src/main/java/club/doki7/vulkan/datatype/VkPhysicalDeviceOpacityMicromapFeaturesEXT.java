@@ -89,6 +89,11 @@ public record VkPhysicalDeviceOpacityMicromapFeaturesEXT(@NotNull MemorySegment 
             return new VkPhysicalDeviceOpacityMicromapFeaturesEXT(segment.asSlice(index * VkPhysicalDeviceOpacityMicromapFeaturesEXT.BYTES, VkPhysicalDeviceOpacityMicromapFeaturesEXT.BYTES));
         }
 
+        public VkPhysicalDeviceOpacityMicromapFeaturesEXT.Ptr at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceOpacityMicromapFeaturesEXT> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkPhysicalDeviceOpacityMicromapFeaturesEXT value) {
             MemorySegment s = segment.asSlice(index * VkPhysicalDeviceOpacityMicromapFeaturesEXT.BYTES, VkPhysicalDeviceOpacityMicromapFeaturesEXT.BYTES);
             s.copyFrom(value.segment);
@@ -201,12 +206,13 @@ public record VkPhysicalDeviceOpacityMicromapFeaturesEXT(@NotNull MemorySegment 
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkPhysicalDeviceOpacityMicromapFeaturesEXT pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkPhysicalDeviceOpacityMicromapFeaturesEXT pNext(@Nullable IPointer pointer) {

@@ -87,6 +87,11 @@ public record VkDeviceGroupSwapchainCreateInfoKHR(@NotNull MemorySegment segment
             return new VkDeviceGroupSwapchainCreateInfoKHR(segment.asSlice(index * VkDeviceGroupSwapchainCreateInfoKHR.BYTES, VkDeviceGroupSwapchainCreateInfoKHR.BYTES));
         }
 
+        public VkDeviceGroupSwapchainCreateInfoKHR.Ptr at(long index, @NotNull Consumer<@NotNull VkDeviceGroupSwapchainCreateInfoKHR> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkDeviceGroupSwapchainCreateInfoKHR value) {
             MemorySegment s = segment.asSlice(index * VkDeviceGroupSwapchainCreateInfoKHR.BYTES, VkDeviceGroupSwapchainCreateInfoKHR.BYTES);
             s.copyFrom(value.segment);
@@ -199,12 +204,13 @@ public record VkDeviceGroupSwapchainCreateInfoKHR(@NotNull MemorySegment segment
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkDeviceGroupSwapchainCreateInfoKHR pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkDeviceGroupSwapchainCreateInfoKHR pNext(@Nullable IPointer pointer) {
@@ -212,11 +218,11 @@ public record VkDeviceGroupSwapchainCreateInfoKHR(@NotNull MemorySegment segment
         return this;
     }
 
-    public @EnumType(VkDeviceGroupPresentModeFlagsKHR.class) int modes() {
+    public @Bitmask(VkDeviceGroupPresentModeFlagsKHR.class) int modes() {
         return segment.get(LAYOUT$modes, OFFSET$modes);
     }
 
-    public VkDeviceGroupSwapchainCreateInfoKHR modes(@EnumType(VkDeviceGroupPresentModeFlagsKHR.class) int value) {
+    public VkDeviceGroupSwapchainCreateInfoKHR modes(@Bitmask(VkDeviceGroupPresentModeFlagsKHR.class) int value) {
         segment.set(LAYOUT$modes, OFFSET$modes, value);
         return this;
     }

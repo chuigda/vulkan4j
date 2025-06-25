@@ -88,6 +88,11 @@ public record VkFragmentShadingRateAttachmentInfoKHR(@NotNull MemorySegment segm
             return new VkFragmentShadingRateAttachmentInfoKHR(segment.asSlice(index * VkFragmentShadingRateAttachmentInfoKHR.BYTES, VkFragmentShadingRateAttachmentInfoKHR.BYTES));
         }
 
+        public VkFragmentShadingRateAttachmentInfoKHR.Ptr at(long index, @NotNull Consumer<@NotNull VkFragmentShadingRateAttachmentInfoKHR> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkFragmentShadingRateAttachmentInfoKHR value) {
             MemorySegment s = segment.asSlice(index * VkFragmentShadingRateAttachmentInfoKHR.BYTES, VkFragmentShadingRateAttachmentInfoKHR.BYTES);
             s.copyFrom(value.segment);
@@ -200,12 +205,13 @@ public record VkFragmentShadingRateAttachmentInfoKHR(@NotNull MemorySegment segm
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkFragmentShadingRateAttachmentInfoKHR pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkFragmentShadingRateAttachmentInfoKHR pNext(@Nullable IPointer pointer) {
@@ -237,11 +243,11 @@ public record VkFragmentShadingRateAttachmentInfoKHR(@NotNull MemorySegment segm
         return new VkAttachmentReference2(s);
     }
 
-    public @Pointer(target=VkAttachmentReference2.class) MemorySegment pFragmentShadingRateAttachmentRaw() {
+    public @Pointer(target=VkAttachmentReference2.class) @NotNull MemorySegment pFragmentShadingRateAttachmentRaw() {
         return segment.get(LAYOUT$pFragmentShadingRateAttachment, OFFSET$pFragmentShadingRateAttachment);
     }
 
-    public void pFragmentShadingRateAttachmentRaw(@Pointer(target=VkAttachmentReference2.class) MemorySegment value) {
+    public void pFragmentShadingRateAttachmentRaw(@Pointer(target=VkAttachmentReference2.class) @NotNull MemorySegment value) {
         segment.set(LAYOUT$pFragmentShadingRateAttachment, OFFSET$pFragmentShadingRateAttachment, value);
     }
 

@@ -87,6 +87,11 @@ public record VkSubpassResolvePerformanceQueryEXT(@NotNull MemorySegment segment
             return new VkSubpassResolvePerformanceQueryEXT(segment.asSlice(index * VkSubpassResolvePerformanceQueryEXT.BYTES, VkSubpassResolvePerformanceQueryEXT.BYTES));
         }
 
+        public VkSubpassResolvePerformanceQueryEXT.Ptr at(long index, @NotNull Consumer<@NotNull VkSubpassResolvePerformanceQueryEXT> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkSubpassResolvePerformanceQueryEXT value) {
             MemorySegment s = segment.asSlice(index * VkSubpassResolvePerformanceQueryEXT.BYTES, VkSubpassResolvePerformanceQueryEXT.BYTES);
             s.copyFrom(value.segment);
@@ -199,12 +204,13 @@ public record VkSubpassResolvePerformanceQueryEXT(@NotNull MemorySegment segment
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkSubpassResolvePerformanceQueryEXT pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkSubpassResolvePerformanceQueryEXT pNext(@Nullable IPointer pointer) {

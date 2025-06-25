@@ -89,6 +89,11 @@ public record VkComputePipelineIndirectBufferInfoNV(@NotNull MemorySegment segme
             return new VkComputePipelineIndirectBufferInfoNV(segment.asSlice(index * VkComputePipelineIndirectBufferInfoNV.BYTES, VkComputePipelineIndirectBufferInfoNV.BYTES));
         }
 
+        public VkComputePipelineIndirectBufferInfoNV.Ptr at(long index, @NotNull Consumer<@NotNull VkComputePipelineIndirectBufferInfoNV> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkComputePipelineIndirectBufferInfoNV value) {
             MemorySegment s = segment.asSlice(index * VkComputePipelineIndirectBufferInfoNV.BYTES, VkComputePipelineIndirectBufferInfoNV.BYTES);
             s.copyFrom(value.segment);
@@ -201,12 +206,13 @@ public record VkComputePipelineIndirectBufferInfoNV(@NotNull MemorySegment segme
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkComputePipelineIndirectBufferInfoNV pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkComputePipelineIndirectBufferInfoNV pNext(@Nullable IPointer pointer) {

@@ -19,7 +19,7 @@ public final class VkImageAspectFlags {
     public static final int PLANE_2 = 0x40;
     public static final int STENCIL = 0x4;
 
-    public static String explain(@EnumType(VkImageAspectFlags.class) int flags) {
+    public static String explain(@Bitmask(VkImageAspectFlags.class) int flags) {
         List<String> detectedFlagBits = new ArrayList<>();
         if ((flags & COLOR) != 0) {
             detectedFlagBits.add("VK_IMAGE_ASPECT_COLOR_BIT");

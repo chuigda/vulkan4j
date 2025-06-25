@@ -79,6 +79,11 @@ public record VkExternalImageFormatPropertiesNV(@NotNull MemorySegment segment) 
             return new VkExternalImageFormatPropertiesNV(segment.asSlice(index * VkExternalImageFormatPropertiesNV.BYTES, VkExternalImageFormatPropertiesNV.BYTES));
         }
 
+        public VkExternalImageFormatPropertiesNV.Ptr at(long index, @NotNull Consumer<@NotNull VkExternalImageFormatPropertiesNV> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkExternalImageFormatPropertiesNV value) {
             MemorySegment s = segment.asSlice(index * VkExternalImageFormatPropertiesNV.BYTES, VkExternalImageFormatPropertiesNV.BYTES);
             s.copyFrom(value.segment);
@@ -186,29 +191,29 @@ public record VkExternalImageFormatPropertiesNV(@NotNull MemorySegment segment) 
         return this;
     }
 
-    public @EnumType(VkExternalMemoryFeatureFlagsNV.class) int externalMemoryFeatures() {
+    public @Bitmask(VkExternalMemoryFeatureFlagsNV.class) int externalMemoryFeatures() {
         return segment.get(LAYOUT$externalMemoryFeatures, OFFSET$externalMemoryFeatures);
     }
 
-    public VkExternalImageFormatPropertiesNV externalMemoryFeatures(@EnumType(VkExternalMemoryFeatureFlagsNV.class) int value) {
+    public VkExternalImageFormatPropertiesNV externalMemoryFeatures(@Bitmask(VkExternalMemoryFeatureFlagsNV.class) int value) {
         segment.set(LAYOUT$externalMemoryFeatures, OFFSET$externalMemoryFeatures, value);
         return this;
     }
 
-    public @EnumType(VkExternalMemoryHandleTypeFlagsNV.class) int exportFromImportedHandleTypes() {
+    public @Bitmask(VkExternalMemoryHandleTypeFlagsNV.class) int exportFromImportedHandleTypes() {
         return segment.get(LAYOUT$exportFromImportedHandleTypes, OFFSET$exportFromImportedHandleTypes);
     }
 
-    public VkExternalImageFormatPropertiesNV exportFromImportedHandleTypes(@EnumType(VkExternalMemoryHandleTypeFlagsNV.class) int value) {
+    public VkExternalImageFormatPropertiesNV exportFromImportedHandleTypes(@Bitmask(VkExternalMemoryHandleTypeFlagsNV.class) int value) {
         segment.set(LAYOUT$exportFromImportedHandleTypes, OFFSET$exportFromImportedHandleTypes, value);
         return this;
     }
 
-    public @EnumType(VkExternalMemoryHandleTypeFlagsNV.class) int compatibleHandleTypes() {
+    public @Bitmask(VkExternalMemoryHandleTypeFlagsNV.class) int compatibleHandleTypes() {
         return segment.get(LAYOUT$compatibleHandleTypes, OFFSET$compatibleHandleTypes);
     }
 
-    public VkExternalImageFormatPropertiesNV compatibleHandleTypes(@EnumType(VkExternalMemoryHandleTypeFlagsNV.class) int value) {
+    public VkExternalImageFormatPropertiesNV compatibleHandleTypes(@Bitmask(VkExternalMemoryHandleTypeFlagsNV.class) int value) {
         segment.set(LAYOUT$compatibleHandleTypes, OFFSET$compatibleHandleTypes, value);
         return this;
     }

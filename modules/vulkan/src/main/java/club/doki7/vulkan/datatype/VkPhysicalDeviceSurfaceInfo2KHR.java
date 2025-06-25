@@ -87,6 +87,11 @@ public record VkPhysicalDeviceSurfaceInfo2KHR(@NotNull MemorySegment segment) im
             return new VkPhysicalDeviceSurfaceInfo2KHR(segment.asSlice(index * VkPhysicalDeviceSurfaceInfo2KHR.BYTES, VkPhysicalDeviceSurfaceInfo2KHR.BYTES));
         }
 
+        public VkPhysicalDeviceSurfaceInfo2KHR.Ptr at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceSurfaceInfo2KHR> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkPhysicalDeviceSurfaceInfo2KHR value) {
             MemorySegment s = segment.asSlice(index * VkPhysicalDeviceSurfaceInfo2KHR.BYTES, VkPhysicalDeviceSurfaceInfo2KHR.BYTES);
             s.copyFrom(value.segment);
@@ -199,12 +204,13 @@ public record VkPhysicalDeviceSurfaceInfo2KHR(@NotNull MemorySegment segment) im
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkPhysicalDeviceSurfaceInfo2KHR pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkPhysicalDeviceSurfaceInfo2KHR pNext(@Nullable IPointer pointer) {

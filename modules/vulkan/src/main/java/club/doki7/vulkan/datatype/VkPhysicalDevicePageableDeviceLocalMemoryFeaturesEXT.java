@@ -87,6 +87,11 @@ public record VkPhysicalDevicePageableDeviceLocalMemoryFeaturesEXT(@NotNull Memo
             return new VkPhysicalDevicePageableDeviceLocalMemoryFeaturesEXT(segment.asSlice(index * VkPhysicalDevicePageableDeviceLocalMemoryFeaturesEXT.BYTES, VkPhysicalDevicePageableDeviceLocalMemoryFeaturesEXT.BYTES));
         }
 
+        public VkPhysicalDevicePageableDeviceLocalMemoryFeaturesEXT.Ptr at(long index, @NotNull Consumer<@NotNull VkPhysicalDevicePageableDeviceLocalMemoryFeaturesEXT> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkPhysicalDevicePageableDeviceLocalMemoryFeaturesEXT value) {
             MemorySegment s = segment.asSlice(index * VkPhysicalDevicePageableDeviceLocalMemoryFeaturesEXT.BYTES, VkPhysicalDevicePageableDeviceLocalMemoryFeaturesEXT.BYTES);
             s.copyFrom(value.segment);
@@ -199,12 +204,13 @@ public record VkPhysicalDevicePageableDeviceLocalMemoryFeaturesEXT(@NotNull Memo
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkPhysicalDevicePageableDeviceLocalMemoryFeaturesEXT pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkPhysicalDevicePageableDeviceLocalMemoryFeaturesEXT pNext(@Nullable IPointer pointer) {

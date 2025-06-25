@@ -87,6 +87,11 @@ public record VkPhysicalDeviceLayeredApiVulkanPropertiesKHR(@NotNull MemorySegme
             return new VkPhysicalDeviceLayeredApiVulkanPropertiesKHR(segment.asSlice(index * VkPhysicalDeviceLayeredApiVulkanPropertiesKHR.BYTES, VkPhysicalDeviceLayeredApiVulkanPropertiesKHR.BYTES));
         }
 
+        public VkPhysicalDeviceLayeredApiVulkanPropertiesKHR.Ptr at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceLayeredApiVulkanPropertiesKHR> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkPhysicalDeviceLayeredApiVulkanPropertiesKHR value) {
             MemorySegment s = segment.asSlice(index * VkPhysicalDeviceLayeredApiVulkanPropertiesKHR.BYTES, VkPhysicalDeviceLayeredApiVulkanPropertiesKHR.BYTES);
             s.copyFrom(value.segment);
@@ -199,12 +204,13 @@ public record VkPhysicalDeviceLayeredApiVulkanPropertiesKHR(@NotNull MemorySegme
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkPhysicalDeviceLayeredApiVulkanPropertiesKHR pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkPhysicalDeviceLayeredApiVulkanPropertiesKHR pNext(@Nullable IPointer pointer) {

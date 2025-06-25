@@ -287,6 +287,20 @@ private fun extractStructure(e: Element) =
             .filter { it.isVulkanAPI() }
             .toMutableList()
     ).apply {
+        for (member in members) {
+            if (member.len != null && member.len.isNotEmpty()) {
+                val lenPath0 = member.len[0]
+                if (lenPath0.original == "null-terminated") {
+                    continue
+                }
+                val lenMember = members.find { it.name == lenPath0 }
+                if (lenMember == null) {
+                    continue
+                }
+                member.optional = lenMember.optional
+            }
+        }
+
         setExt(VkStructureMetadata(
             api = e.getAttributeText("api"),
             structExtends = e.getAttributeText("structextends")

@@ -88,6 +88,11 @@ public record VkDebugUtilsLabelEXT(@NotNull MemorySegment segment) implements IV
             return new VkDebugUtilsLabelEXT(segment.asSlice(index * VkDebugUtilsLabelEXT.BYTES, VkDebugUtilsLabelEXT.BYTES));
         }
 
+        public VkDebugUtilsLabelEXT.Ptr at(long index, @NotNull Consumer<@NotNull VkDebugUtilsLabelEXT> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkDebugUtilsLabelEXT value) {
             MemorySegment s = segment.asSlice(index * VkDebugUtilsLabelEXT.BYTES, VkDebugUtilsLabelEXT.BYTES);
             s.copyFrom(value.segment);
@@ -200,12 +205,13 @@ public record VkDebugUtilsLabelEXT(@NotNull MemorySegment segment) implements IV
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkDebugUtilsLabelEXT pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkDebugUtilsLabelEXT pNext(@Nullable IPointer pointer) {
@@ -231,11 +237,11 @@ public record VkDebugUtilsLabelEXT(@NotNull MemorySegment segment) implements IV
         return this;
     }
 
-    public @Pointer(comment="int8_t*") MemorySegment pLabelNameRaw() {
+    public @Pointer(comment="int8_t*") @NotNull MemorySegment pLabelNameRaw() {
         return segment.get(LAYOUT$pLabelName, OFFSET$pLabelName);
     }
 
-    public void pLabelNameRaw(@Pointer(comment="int8_t*") MemorySegment value) {
+    public void pLabelNameRaw(@Pointer(comment="int8_t*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pLabelName, OFFSET$pLabelName, value);
     }
 
@@ -243,12 +249,19 @@ public record VkDebugUtilsLabelEXT(@NotNull MemorySegment segment) implements IV
         return new FloatPtr(colorRaw());
     }
 
-    public VkDebugUtilsLabelEXT color(FloatPtr value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$color, SIZE$color);
+    public VkDebugUtilsLabelEXT color(@NotNull Consumer<FloatPtr> consumer) {
+        FloatPtr ptr = color();
+        consumer.accept(ptr);
         return this;
     }
 
-    public MemorySegment colorRaw() {
+    public VkDebugUtilsLabelEXT color(FloatPtr value) {
+        MemorySegment s = colorRaw();
+        s.copyFrom(value.segment());
+        return this;
+    }
+
+    public @NotNull MemorySegment colorRaw() {
         return segment.asSlice(OFFSET$color, SIZE$color);
     }
 

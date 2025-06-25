@@ -88,6 +88,11 @@ public record VkAccelerationStructureMemoryRequirementsInfoNV(@NotNull MemorySeg
             return new VkAccelerationStructureMemoryRequirementsInfoNV(segment.asSlice(index * VkAccelerationStructureMemoryRequirementsInfoNV.BYTES, VkAccelerationStructureMemoryRequirementsInfoNV.BYTES));
         }
 
+        public VkAccelerationStructureMemoryRequirementsInfoNV.Ptr at(long index, @NotNull Consumer<@NotNull VkAccelerationStructureMemoryRequirementsInfoNV> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkAccelerationStructureMemoryRequirementsInfoNV value) {
             MemorySegment s = segment.asSlice(index * VkAccelerationStructureMemoryRequirementsInfoNV.BYTES, VkAccelerationStructureMemoryRequirementsInfoNV.BYTES);
             s.copyFrom(value.segment);
@@ -200,12 +205,13 @@ public record VkAccelerationStructureMemoryRequirementsInfoNV(@NotNull MemorySeg
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkAccelerationStructureMemoryRequirementsInfoNV pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkAccelerationStructureMemoryRequirementsInfoNV pNext(@Nullable IPointer pointer) {

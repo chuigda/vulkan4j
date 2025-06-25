@@ -1,6 +1,6 @@
 # Base code
 
-> [Java code](https://github.com/chuigda/vulkan4j/tree/master/modules/tutorial/src/main/java/tutorial/vulkan/part01/ch00/Main.java) | [C++ version](https://vulkan-tutorial.com/Drawing_a_triangle/Setup/Base_code)
+> [Java code](https://github.com/club-doki7/vulkan4j/tree/master/modules/tutorial/src/main/java/tutorial/vulkan/part01/ch00/Main.java) | [C++ version](https://vulkan-tutorial.com/Drawing_a_triangle/Setup/Base_code)
 
 ## General structure
 
@@ -70,22 +70,13 @@ private void initWindow() {
 Unlike in LWJGL or some other wrappers, with `vulkan4j`, you need to manually load both library and the library functions. Firstly we need to load GLFW native library into the JVM. This can be done with a single line of code:
 
 ```java
-GLFWLoader.loadGLFWLibrary();
+private static final libGLFW = GLFWLoader.loadGLFWLibrary();
 ```
 
-Then we want to load the GLFW functions. Add a private field to the `Application` class:
+Then we want to load the GLFW functions. Add another private field to the `Application` class:
 
 ```java
-private GLFW glfw;
-```
-
-And then initialize it in the `initWindow` function:
-
-```java
-private void initWindow() {
-    // ...
-    glfw = GLFWLoader.loadGLFW();
-}
+private static final GLFW glfw = GLFWLoader.loadGLFW(libGLFW);
 ```
 
 ### Initializing GLFW with `lwjgl-natives`

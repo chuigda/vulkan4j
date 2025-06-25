@@ -79,6 +79,11 @@ public record VkLayerProperties(@NotNull MemorySegment segment) implements IVkLa
             return new VkLayerProperties(segment.asSlice(index * VkLayerProperties.BYTES, VkLayerProperties.BYTES));
         }
 
+        public VkLayerProperties.Ptr at(long index, @NotNull Consumer<@NotNull VkLayerProperties> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkLayerProperties value) {
             MemorySegment s = segment.asSlice(index * VkLayerProperties.BYTES, VkLayerProperties.BYTES);
             s.copyFrom(value.segment);
@@ -176,12 +181,19 @@ public record VkLayerProperties(@NotNull MemorySegment segment) implements IVkLa
         return new BytePtr(layerNameRaw());
     }
 
-    public VkLayerProperties layerName(BytePtr value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$layerName, SIZE$layerName);
+    public VkLayerProperties layerName(@NotNull Consumer<BytePtr> consumer) {
+        BytePtr ptr = layerName();
+        consumer.accept(ptr);
         return this;
     }
 
-    public MemorySegment layerNameRaw() {
+    public VkLayerProperties layerName(BytePtr value) {
+        MemorySegment s = layerNameRaw();
+        s.copyFrom(value.segment());
+        return this;
+    }
+
+    public @NotNull MemorySegment layerNameRaw() {
         return segment.asSlice(OFFSET$layerName, SIZE$layerName);
     }
 
@@ -207,12 +219,19 @@ public record VkLayerProperties(@NotNull MemorySegment segment) implements IVkLa
         return new BytePtr(descriptionRaw());
     }
 
-    public VkLayerProperties description(BytePtr value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$description, SIZE$description);
+    public VkLayerProperties description(@NotNull Consumer<BytePtr> consumer) {
+        BytePtr ptr = description();
+        consumer.accept(ptr);
         return this;
     }
 
-    public MemorySegment descriptionRaw() {
+    public VkLayerProperties description(BytePtr value) {
+        MemorySegment s = descriptionRaw();
+        s.copyFrom(value.segment());
+        return this;
+    }
+
+    public @NotNull MemorySegment descriptionRaw() {
         return segment.asSlice(OFFSET$description, SIZE$description);
     }
 

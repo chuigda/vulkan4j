@@ -88,6 +88,11 @@ public record VkFilterCubicImageViewImageFormatPropertiesEXT(@NotNull MemorySegm
             return new VkFilterCubicImageViewImageFormatPropertiesEXT(segment.asSlice(index * VkFilterCubicImageViewImageFormatPropertiesEXT.BYTES, VkFilterCubicImageViewImageFormatPropertiesEXT.BYTES));
         }
 
+        public VkFilterCubicImageViewImageFormatPropertiesEXT.Ptr at(long index, @NotNull Consumer<@NotNull VkFilterCubicImageViewImageFormatPropertiesEXT> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkFilterCubicImageViewImageFormatPropertiesEXT value) {
             MemorySegment s = segment.asSlice(index * VkFilterCubicImageViewImageFormatPropertiesEXT.BYTES, VkFilterCubicImageViewImageFormatPropertiesEXT.BYTES);
             s.copyFrom(value.segment);
@@ -200,12 +205,13 @@ public record VkFilterCubicImageViewImageFormatPropertiesEXT(@NotNull MemorySegm
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkFilterCubicImageViewImageFormatPropertiesEXT pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkFilterCubicImageViewImageFormatPropertiesEXT pNext(@Nullable IPointer pointer) {

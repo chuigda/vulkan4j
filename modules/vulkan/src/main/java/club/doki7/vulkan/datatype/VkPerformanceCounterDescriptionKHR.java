@@ -90,6 +90,11 @@ public record VkPerformanceCounterDescriptionKHR(@NotNull MemorySegment segment)
             return new VkPerformanceCounterDescriptionKHR(segment.asSlice(index * VkPerformanceCounterDescriptionKHR.BYTES, VkPerformanceCounterDescriptionKHR.BYTES));
         }
 
+        public VkPerformanceCounterDescriptionKHR.Ptr at(long index, @NotNull Consumer<@NotNull VkPerformanceCounterDescriptionKHR> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkPerformanceCounterDescriptionKHR value) {
             MemorySegment s = segment.asSlice(index * VkPerformanceCounterDescriptionKHR.BYTES, VkPerformanceCounterDescriptionKHR.BYTES);
             s.copyFrom(value.segment);
@@ -202,12 +207,13 @@ public record VkPerformanceCounterDescriptionKHR(@NotNull MemorySegment segment)
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkPerformanceCounterDescriptionKHR pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkPerformanceCounterDescriptionKHR pNext(@Nullable IPointer pointer) {
@@ -215,11 +221,11 @@ public record VkPerformanceCounterDescriptionKHR(@NotNull MemorySegment segment)
         return this;
     }
 
-    public @EnumType(VkPerformanceCounterDescriptionFlagsKHR.class) int flags() {
+    public @Bitmask(VkPerformanceCounterDescriptionFlagsKHR.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public VkPerformanceCounterDescriptionKHR flags(@EnumType(VkPerformanceCounterDescriptionFlagsKHR.class) int value) {
+    public VkPerformanceCounterDescriptionKHR flags(@Bitmask(VkPerformanceCounterDescriptionFlagsKHR.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
         return this;
     }
@@ -228,12 +234,19 @@ public record VkPerformanceCounterDescriptionKHR(@NotNull MemorySegment segment)
         return new BytePtr(nameRaw());
     }
 
-    public VkPerformanceCounterDescriptionKHR name(BytePtr value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$name, SIZE$name);
+    public VkPerformanceCounterDescriptionKHR name(@NotNull Consumer<BytePtr> consumer) {
+        BytePtr ptr = name();
+        consumer.accept(ptr);
         return this;
     }
 
-    public MemorySegment nameRaw() {
+    public VkPerformanceCounterDescriptionKHR name(BytePtr value) {
+        MemorySegment s = nameRaw();
+        s.copyFrom(value.segment());
+        return this;
+    }
+
+    public @NotNull MemorySegment nameRaw() {
         return segment.asSlice(OFFSET$name, SIZE$name);
     }
 
@@ -241,12 +254,19 @@ public record VkPerformanceCounterDescriptionKHR(@NotNull MemorySegment segment)
         return new BytePtr(categoryRaw());
     }
 
-    public VkPerformanceCounterDescriptionKHR category(BytePtr value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$category, SIZE$category);
+    public VkPerformanceCounterDescriptionKHR category(@NotNull Consumer<BytePtr> consumer) {
+        BytePtr ptr = category();
+        consumer.accept(ptr);
         return this;
     }
 
-    public MemorySegment categoryRaw() {
+    public VkPerformanceCounterDescriptionKHR category(BytePtr value) {
+        MemorySegment s = categoryRaw();
+        s.copyFrom(value.segment());
+        return this;
+    }
+
+    public @NotNull MemorySegment categoryRaw() {
         return segment.asSlice(OFFSET$category, SIZE$category);
     }
 
@@ -254,12 +274,19 @@ public record VkPerformanceCounterDescriptionKHR(@NotNull MemorySegment segment)
         return new BytePtr(descriptionRaw());
     }
 
-    public VkPerformanceCounterDescriptionKHR description(BytePtr value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$description, SIZE$description);
+    public VkPerformanceCounterDescriptionKHR description(@NotNull Consumer<BytePtr> consumer) {
+        BytePtr ptr = description();
+        consumer.accept(ptr);
         return this;
     }
 
-    public MemorySegment descriptionRaw() {
+    public VkPerformanceCounterDescriptionKHR description(BytePtr value) {
+        MemorySegment s = descriptionRaw();
+        s.copyFrom(value.segment());
+        return this;
+    }
+
+    public @NotNull MemorySegment descriptionRaw() {
         return segment.asSlice(OFFSET$description, SIZE$description);
     }
 

@@ -93,6 +93,11 @@ public record GLFWgamepadstate(@NotNull MemorySegment segment) implements IGLFWg
             return new GLFWgamepadstate(segment.asSlice(index * GLFWgamepadstate.BYTES, GLFWgamepadstate.BYTES));
         }
 
+        public GLFWgamepadstate.Ptr at(long index, @NotNull Consumer<@NotNull GLFWgamepadstate> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull GLFWgamepadstate value) {
             MemorySegment s = segment.asSlice(index * GLFWgamepadstate.BYTES, GLFWgamepadstate.BYTES);
             s.copyFrom(value.segment);
@@ -190,12 +195,19 @@ public record GLFWgamepadstate(@NotNull MemorySegment segment) implements IGLFWg
         return new BytePtr(buttonsRaw());
     }
 
-    public GLFWgamepadstate buttons(BytePtr value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$buttons, SIZE$buttons);
+    public GLFWgamepadstate buttons(@NotNull Consumer<BytePtr> consumer) {
+        BytePtr ptr = buttons();
+        consumer.accept(ptr);
         return this;
     }
 
-    public MemorySegment buttonsRaw() {
+    public GLFWgamepadstate buttons(BytePtr value) {
+        MemorySegment s = buttonsRaw();
+        s.copyFrom(value.segment());
+        return this;
+    }
+
+    public @NotNull MemorySegment buttonsRaw() {
         return segment.asSlice(OFFSET$buttons, SIZE$buttons);
     }
 
@@ -203,12 +215,19 @@ public record GLFWgamepadstate(@NotNull MemorySegment segment) implements IGLFWg
         return new FloatPtr(axesRaw());
     }
 
-    public GLFWgamepadstate axes(FloatPtr value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$axes, SIZE$axes);
+    public GLFWgamepadstate axes(@NotNull Consumer<FloatPtr> consumer) {
+        FloatPtr ptr = axes();
+        consumer.accept(ptr);
         return this;
     }
 
-    public MemorySegment axesRaw() {
+    public GLFWgamepadstate axes(FloatPtr value) {
+        MemorySegment s = axesRaw();
+        s.copyFrom(value.segment());
+        return this;
+    }
+
+    public @NotNull MemorySegment axesRaw() {
         return segment.asSlice(OFFSET$axes, SIZE$axes);
     }
 

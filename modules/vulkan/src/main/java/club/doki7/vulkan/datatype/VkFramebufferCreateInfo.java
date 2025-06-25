@@ -29,7 +29,7 @@ import static club.doki7.vulkan.VkConstants.*;
 ///     VkFramebufferCreateFlags flags; // optional // @link substring="VkFramebufferCreateFlags" target="VkFramebufferCreateFlags" @link substring="flags" target="#flags"
 ///     VkRenderPass renderPass; // @link substring="VkRenderPass" target="VkRenderPass" @link substring="renderPass" target="#renderPass"
 ///     uint32_t attachmentCount; // optional // @link substring="attachmentCount" target="#attachmentCount"
-///     VkImageView const* pAttachments; // @link substring="VkImageView" target="VkImageView" @link substring="pAttachments" target="#pAttachments"
+///     VkImageView const* pAttachments; // optional // @link substring="VkImageView" target="VkImageView" @link substring="pAttachments" target="#pAttachments"
 ///     uint32_t width; // @link substring="width" target="#width"
 ///     uint32_t height; // @link substring="height" target="#height"
 ///     uint32_t layers; // @link substring="layers" target="#layers"
@@ -91,6 +91,11 @@ public record VkFramebufferCreateInfo(@NotNull MemorySegment segment) implements
         /// indicate that the returned structure is a view of the original structure.
         public @NotNull VkFramebufferCreateInfo at(long index) {
             return new VkFramebufferCreateInfo(segment.asSlice(index * VkFramebufferCreateInfo.BYTES, VkFramebufferCreateInfo.BYTES));
+        }
+
+        public VkFramebufferCreateInfo.Ptr at(long index, @NotNull Consumer<@NotNull VkFramebufferCreateInfo> consumer) {
+            consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkFramebufferCreateInfo value) {
@@ -205,12 +210,13 @@ public record VkFramebufferCreateInfo(@NotNull MemorySegment segment) implements
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkFramebufferCreateInfo pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkFramebufferCreateInfo pNext(@Nullable IPointer pointer) {
@@ -218,11 +224,11 @@ public record VkFramebufferCreateInfo(@NotNull MemorySegment segment) implements
         return this;
     }
 
-    public @EnumType(VkFramebufferCreateFlags.class) int flags() {
+    public @Bitmask(VkFramebufferCreateFlags.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public VkFramebufferCreateInfo flags(@EnumType(VkFramebufferCreateFlags.class) int value) {
+    public VkFramebufferCreateInfo flags(@Bitmask(VkFramebufferCreateFlags.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
         return this;
     }
@@ -267,11 +273,11 @@ public record VkFramebufferCreateInfo(@NotNull MemorySegment segment) implements
         return this;
     }
 
-    public @Pointer(target=VkImageView.class) MemorySegment pAttachmentsRaw() {
+    public @Pointer(target=VkImageView.class) @NotNull MemorySegment pAttachmentsRaw() {
         return segment.get(LAYOUT$pAttachments, OFFSET$pAttachments);
     }
 
-    public void pAttachmentsRaw(@Pointer(target=VkImageView.class) MemorySegment value) {
+    public void pAttachmentsRaw(@Pointer(target=VkImageView.class) @NotNull MemorySegment value) {
         segment.set(LAYOUT$pAttachments, OFFSET$pAttachments, value);
     }
 

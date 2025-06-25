@@ -90,6 +90,11 @@ public record VkImageConstraintsInfoFUCHSIA(@NotNull MemorySegment segment) impl
             return new VkImageConstraintsInfoFUCHSIA(segment.asSlice(index * VkImageConstraintsInfoFUCHSIA.BYTES, VkImageConstraintsInfoFUCHSIA.BYTES));
         }
 
+        public VkImageConstraintsInfoFUCHSIA.Ptr at(long index, @NotNull Consumer<@NotNull VkImageConstraintsInfoFUCHSIA> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkImageConstraintsInfoFUCHSIA value) {
             MemorySegment s = segment.asSlice(index * VkImageConstraintsInfoFUCHSIA.BYTES, VkImageConstraintsInfoFUCHSIA.BYTES);
             s.copyFrom(value.segment);
@@ -202,12 +207,13 @@ public record VkImageConstraintsInfoFUCHSIA(@NotNull MemorySegment segment) impl
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkImageConstraintsInfoFUCHSIA pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkImageConstraintsInfoFUCHSIA pNext(@Nullable IPointer pointer) {
@@ -248,11 +254,11 @@ public record VkImageConstraintsInfoFUCHSIA(@NotNull MemorySegment segment) impl
         return new VkImageFormatConstraintsInfoFUCHSIA(s);
     }
 
-    public @Pointer(target=VkImageFormatConstraintsInfoFUCHSIA.class) MemorySegment pFormatConstraintsRaw() {
+    public @Pointer(target=VkImageFormatConstraintsInfoFUCHSIA.class) @NotNull MemorySegment pFormatConstraintsRaw() {
         return segment.get(LAYOUT$pFormatConstraints, OFFSET$pFormatConstraints);
     }
 
-    public void pFormatConstraintsRaw(@Pointer(target=VkImageFormatConstraintsInfoFUCHSIA.class) MemorySegment value) {
+    public void pFormatConstraintsRaw(@Pointer(target=VkImageFormatConstraintsInfoFUCHSIA.class) @NotNull MemorySegment value) {
         segment.set(LAYOUT$pFormatConstraints, OFFSET$pFormatConstraints, value);
     }
 
@@ -270,11 +276,11 @@ public record VkImageConstraintsInfoFUCHSIA(@NotNull MemorySegment segment) impl
         return this;
     }
 
-    public @EnumType(VkImageConstraintsInfoFlagsFUCHSIA.class) int flags() {
+    public @Bitmask(VkImageConstraintsInfoFlagsFUCHSIA.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public VkImageConstraintsInfoFUCHSIA flags(@EnumType(VkImageConstraintsInfoFlagsFUCHSIA.class) int value) {
+    public VkImageConstraintsInfoFUCHSIA flags(@Bitmask(VkImageConstraintsInfoFlagsFUCHSIA.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
         return this;
     }

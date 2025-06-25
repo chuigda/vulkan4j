@@ -87,6 +87,11 @@ public record VkDeviceQueueGlobalPriorityCreateInfo(@NotNull MemorySegment segme
             return new VkDeviceQueueGlobalPriorityCreateInfo(segment.asSlice(index * VkDeviceQueueGlobalPriorityCreateInfo.BYTES, VkDeviceQueueGlobalPriorityCreateInfo.BYTES));
         }
 
+        public VkDeviceQueueGlobalPriorityCreateInfo.Ptr at(long index, @NotNull Consumer<@NotNull VkDeviceQueueGlobalPriorityCreateInfo> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkDeviceQueueGlobalPriorityCreateInfo value) {
             MemorySegment s = segment.asSlice(index * VkDeviceQueueGlobalPriorityCreateInfo.BYTES, VkDeviceQueueGlobalPriorityCreateInfo.BYTES);
             s.copyFrom(value.segment);
@@ -199,12 +204,13 @@ public record VkDeviceQueueGlobalPriorityCreateInfo(@NotNull MemorySegment segme
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkDeviceQueueGlobalPriorityCreateInfo pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkDeviceQueueGlobalPriorityCreateInfo pNext(@Nullable IPointer pointer) {

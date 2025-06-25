@@ -87,6 +87,11 @@ public record VkQueryPoolPerformanceQueryCreateInfoINTEL(@NotNull MemorySegment 
             return new VkQueryPoolPerformanceQueryCreateInfoINTEL(segment.asSlice(index * VkQueryPoolPerformanceQueryCreateInfoINTEL.BYTES, VkQueryPoolPerformanceQueryCreateInfoINTEL.BYTES));
         }
 
+        public VkQueryPoolPerformanceQueryCreateInfoINTEL.Ptr at(long index, @NotNull Consumer<@NotNull VkQueryPoolPerformanceQueryCreateInfoINTEL> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkQueryPoolPerformanceQueryCreateInfoINTEL value) {
             MemorySegment s = segment.asSlice(index * VkQueryPoolPerformanceQueryCreateInfoINTEL.BYTES, VkQueryPoolPerformanceQueryCreateInfoINTEL.BYTES);
             s.copyFrom(value.segment);
@@ -199,12 +204,13 @@ public record VkQueryPoolPerformanceQueryCreateInfoINTEL(@NotNull MemorySegment 
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkQueryPoolPerformanceQueryCreateInfoINTEL pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkQueryPoolPerformanceQueryCreateInfoINTEL pNext(@Nullable IPointer pointer) {

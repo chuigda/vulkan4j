@@ -77,6 +77,11 @@ public record VkPipelineBinaryDataKHR(@NotNull MemorySegment segment) implements
             return new VkPipelineBinaryDataKHR(segment.asSlice(index * VkPipelineBinaryDataKHR.BYTES, VkPipelineBinaryDataKHR.BYTES));
         }
 
+        public VkPipelineBinaryDataKHR.Ptr at(long index, @NotNull Consumer<@NotNull VkPipelineBinaryDataKHR> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkPipelineBinaryDataKHR value) {
             MemorySegment s = segment.asSlice(index * VkPipelineBinaryDataKHR.BYTES, VkPipelineBinaryDataKHR.BYTES);
             s.copyFrom(value.segment);
@@ -179,12 +184,13 @@ public record VkPipelineBinaryDataKHR(@NotNull MemorySegment segment) implements
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pData() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pData() {
         return segment.get(LAYOUT$pData, OFFSET$pData);
     }
 
-    public void pData(@Pointer(comment="void*") MemorySegment value) {
+    public VkPipelineBinaryDataKHR pData(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pData, OFFSET$pData, value);
+        return this;
     }
 
     public VkPipelineBinaryDataKHR pData(@Nullable IPointer pointer) {

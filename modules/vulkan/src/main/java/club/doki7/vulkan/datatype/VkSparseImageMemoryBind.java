@@ -81,6 +81,11 @@ public record VkSparseImageMemoryBind(@NotNull MemorySegment segment) implements
             return new VkSparseImageMemoryBind(segment.asSlice(index * VkSparseImageMemoryBind.BYTES, VkSparseImageMemoryBind.BYTES));
         }
 
+        public VkSparseImageMemoryBind.Ptr at(long index, @NotNull Consumer<@NotNull VkSparseImageMemoryBind> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkSparseImageMemoryBind value) {
             MemorySegment s = segment.asSlice(index * VkSparseImageMemoryBind.BYTES, VkSparseImageMemoryBind.BYTES);
             s.copyFrom(value.segment);
@@ -238,11 +243,11 @@ public record VkSparseImageMemoryBind(@NotNull MemorySegment segment) implements
         return this;
     }
 
-    public @EnumType(VkSparseMemoryBindFlags.class) int flags() {
+    public @Bitmask(VkSparseMemoryBindFlags.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public VkSparseImageMemoryBind flags(@EnumType(VkSparseMemoryBindFlags.class) int value) {
+    public VkSparseImageMemoryBind flags(@Bitmask(VkSparseMemoryBindFlags.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
         return this;
     }

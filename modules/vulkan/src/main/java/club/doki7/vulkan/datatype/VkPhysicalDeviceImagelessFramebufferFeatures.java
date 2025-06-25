@@ -87,6 +87,11 @@ public record VkPhysicalDeviceImagelessFramebufferFeatures(@NotNull MemorySegmen
             return new VkPhysicalDeviceImagelessFramebufferFeatures(segment.asSlice(index * VkPhysicalDeviceImagelessFramebufferFeatures.BYTES, VkPhysicalDeviceImagelessFramebufferFeatures.BYTES));
         }
 
+        public VkPhysicalDeviceImagelessFramebufferFeatures.Ptr at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceImagelessFramebufferFeatures> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkPhysicalDeviceImagelessFramebufferFeatures value) {
             MemorySegment s = segment.asSlice(index * VkPhysicalDeviceImagelessFramebufferFeatures.BYTES, VkPhysicalDeviceImagelessFramebufferFeatures.BYTES);
             s.copyFrom(value.segment);
@@ -199,12 +204,13 @@ public record VkPhysicalDeviceImagelessFramebufferFeatures(@NotNull MemorySegmen
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkPhysicalDeviceImagelessFramebufferFeatures pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkPhysicalDeviceImagelessFramebufferFeatures pNext(@Nullable IPointer pointer) {

@@ -87,6 +87,11 @@ public record VkPhysicalDeviceShaderObjectFeaturesEXT(@NotNull MemorySegment seg
             return new VkPhysicalDeviceShaderObjectFeaturesEXT(segment.asSlice(index * VkPhysicalDeviceShaderObjectFeaturesEXT.BYTES, VkPhysicalDeviceShaderObjectFeaturesEXT.BYTES));
         }
 
+        public VkPhysicalDeviceShaderObjectFeaturesEXT.Ptr at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceShaderObjectFeaturesEXT> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkPhysicalDeviceShaderObjectFeaturesEXT value) {
             MemorySegment s = segment.asSlice(index * VkPhysicalDeviceShaderObjectFeaturesEXT.BYTES, VkPhysicalDeviceShaderObjectFeaturesEXT.BYTES);
             s.copyFrom(value.segment);
@@ -199,12 +204,13 @@ public record VkPhysicalDeviceShaderObjectFeaturesEXT(@NotNull MemorySegment seg
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkPhysicalDeviceShaderObjectFeaturesEXT pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkPhysicalDeviceShaderObjectFeaturesEXT pNext(@Nullable IPointer pointer) {

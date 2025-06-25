@@ -87,6 +87,11 @@ public record VkMemoryMetalHandlePropertiesEXT(@NotNull MemorySegment segment) i
             return new VkMemoryMetalHandlePropertiesEXT(segment.asSlice(index * VkMemoryMetalHandlePropertiesEXT.BYTES, VkMemoryMetalHandlePropertiesEXT.BYTES));
         }
 
+        public VkMemoryMetalHandlePropertiesEXT.Ptr at(long index, @NotNull Consumer<@NotNull VkMemoryMetalHandlePropertiesEXT> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkMemoryMetalHandlePropertiesEXT value) {
             MemorySegment s = segment.asSlice(index * VkMemoryMetalHandlePropertiesEXT.BYTES, VkMemoryMetalHandlePropertiesEXT.BYTES);
             s.copyFrom(value.segment);
@@ -199,12 +204,13 @@ public record VkMemoryMetalHandlePropertiesEXT(@NotNull MemorySegment segment) i
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkMemoryMetalHandlePropertiesEXT pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkMemoryMetalHandlePropertiesEXT pNext(@Nullable IPointer pointer) {

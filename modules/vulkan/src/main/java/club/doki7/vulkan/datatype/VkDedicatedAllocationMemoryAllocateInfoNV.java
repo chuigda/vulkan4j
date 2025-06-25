@@ -88,6 +88,11 @@ public record VkDedicatedAllocationMemoryAllocateInfoNV(@NotNull MemorySegment s
             return new VkDedicatedAllocationMemoryAllocateInfoNV(segment.asSlice(index * VkDedicatedAllocationMemoryAllocateInfoNV.BYTES, VkDedicatedAllocationMemoryAllocateInfoNV.BYTES));
         }
 
+        public VkDedicatedAllocationMemoryAllocateInfoNV.Ptr at(long index, @NotNull Consumer<@NotNull VkDedicatedAllocationMemoryAllocateInfoNV> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkDedicatedAllocationMemoryAllocateInfoNV value) {
             MemorySegment s = segment.asSlice(index * VkDedicatedAllocationMemoryAllocateInfoNV.BYTES, VkDedicatedAllocationMemoryAllocateInfoNV.BYTES);
             s.copyFrom(value.segment);
@@ -200,12 +205,13 @@ public record VkDedicatedAllocationMemoryAllocateInfoNV(@NotNull MemorySegment s
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkDedicatedAllocationMemoryAllocateInfoNV pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkDedicatedAllocationMemoryAllocateInfoNV pNext(@Nullable IPointer pointer) {

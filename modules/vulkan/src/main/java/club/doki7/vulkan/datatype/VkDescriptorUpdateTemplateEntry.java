@@ -81,6 +81,11 @@ public record VkDescriptorUpdateTemplateEntry(@NotNull MemorySegment segment) im
             return new VkDescriptorUpdateTemplateEntry(segment.asSlice(index * VkDescriptorUpdateTemplateEntry.BYTES, VkDescriptorUpdateTemplateEntry.BYTES));
         }
 
+        public VkDescriptorUpdateTemplateEntry.Ptr at(long index, @NotNull Consumer<@NotNull VkDescriptorUpdateTemplateEntry> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkDescriptorUpdateTemplateEntry value) {
             MemorySegment s = segment.asSlice(index * VkDescriptorUpdateTemplateEntry.BYTES, VkDescriptorUpdateTemplateEntry.BYTES);
             s.copyFrom(value.segment);

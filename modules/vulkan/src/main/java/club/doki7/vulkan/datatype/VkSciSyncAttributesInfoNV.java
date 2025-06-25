@@ -88,6 +88,11 @@ public record VkSciSyncAttributesInfoNV(@NotNull MemorySegment segment) implemen
             return new VkSciSyncAttributesInfoNV(segment.asSlice(index * VkSciSyncAttributesInfoNV.BYTES, VkSciSyncAttributesInfoNV.BYTES));
         }
 
+        public VkSciSyncAttributesInfoNV.Ptr at(long index, @NotNull Consumer<@NotNull VkSciSyncAttributesInfoNV> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkSciSyncAttributesInfoNV value) {
             MemorySegment s = segment.asSlice(index * VkSciSyncAttributesInfoNV.BYTES, VkSciSyncAttributesInfoNV.BYTES);
             s.copyFrom(value.segment);
@@ -200,12 +205,13 @@ public record VkSciSyncAttributesInfoNV(@NotNull MemorySegment segment) implemen
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkSciSyncAttributesInfoNV pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkSciSyncAttributesInfoNV pNext(@Nullable IPointer pointer) {

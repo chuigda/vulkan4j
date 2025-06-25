@@ -12,7 +12,7 @@ public final class VkVideoEncodeContentFlagsKHR {
     public static final int DESKTOP = 0x2;
     public static final int RENDERED = 0x4;
 
-    public static String explain(@EnumType(VkVideoEncodeContentFlagsKHR.class) int flags) {
+    public static String explain(@Bitmask(VkVideoEncodeContentFlagsKHR.class) int flags) {
         List<String> detectedFlagBits = new ArrayList<>();
         if ((flags & CAMERA) != 0) {
             detectedFlagBits.add("VK_VIDEO_ENCODE_CONTENT_CAMERA_BIT_KHR");

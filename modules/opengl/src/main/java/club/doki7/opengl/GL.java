@@ -5,6 +5,7 @@ import java.lang.invoke.MethodHandle;
 import java.util.Objects;
 
 import org.jetbrains.annotations.Nullable;
+import org.jetbrains.annotations.NotNull;
 import club.doki7.ffm.NativeLayout;
 import club.doki7.ffm.RawFunctionLoader;
 import club.doki7.ffm.annotation.*;
@@ -3523,7 +3524,7 @@ public sealed class GL implements GLConstants permits GLCompatibility {
     public void bufferData(
         @NativeType("GLenum") int target,
         @NativeType("GLsizeiptr") long size,
-        @Pointer(comment="void*") MemorySegment data,
+        @Pointer(comment="void*") @NotNull MemorySegment data,
         @NativeType("GLenum") int usage
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glBufferData);
@@ -3584,7 +3585,7 @@ public sealed class GL implements GLConstants permits GLCompatibility {
     public void bufferStorage(
         @NativeType("GLenum") int target,
         @NativeType("GLsizeiptr") long size,
-        @Pointer(comment="void*") MemorySegment data,
+        @Pointer(comment="void*") @NotNull MemorySegment data,
         @NativeType("GLbitfield") @Unsigned int flags
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glBufferStorage);
@@ -3604,7 +3605,7 @@ public sealed class GL implements GLConstants permits GLCompatibility {
         @NativeType("GLenum") int target,
         @NativeType("GLintptr") long offset,
         @NativeType("GLsizeiptr") long size,
-        @Pointer(comment="void*") MemorySegment data
+        @Pointer(comment="void*") @NotNull MemorySegment data
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glBufferSubData);
         try {
@@ -3708,7 +3709,7 @@ public sealed class GL implements GLConstants permits GLCompatibility {
         @NativeType("GLenum") int internalformat,
         @NativeType("GLenum") int format,
         @NativeType("GLenum") int type,
-        @Pointer(comment="void*") MemorySegment data
+        @Pointer(comment="void*") @NotNull MemorySegment data
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glClearBufferData);
         try {
@@ -3731,7 +3732,7 @@ public sealed class GL implements GLConstants permits GLCompatibility {
         @NativeType("GLsizeiptr") long size,
         @NativeType("GLenum") int format,
         @NativeType("GLenum") int type,
-        @Pointer(comment="void*") MemorySegment data
+        @Pointer(comment="void*") @NotNull MemorySegment data
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glClearBufferSubData);
         try {
@@ -3882,7 +3883,7 @@ public sealed class GL implements GLConstants permits GLCompatibility {
         @NativeType("GLenum") int internalformat,
         @NativeType("GLenum") int format,
         @NativeType("GLenum") int type,
-        @Pointer(comment="void*") MemorySegment data
+        @Pointer(comment="void*") @NotNull MemorySegment data
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glClearNamedBufferData);
         try {
@@ -3903,7 +3904,7 @@ public sealed class GL implements GLConstants permits GLCompatibility {
         @NativeType("GLenum") int internalformat,
         @NativeType("GLenum") int format,
         @NativeType("GLenum") int type,
-        @Pointer(comment="void*") MemorySegment data
+        @Pointer(comment="void*") @NotNull MemorySegment data
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glClearNamedBufferDataEXT);
         try {
@@ -3926,7 +3927,7 @@ public sealed class GL implements GLConstants permits GLCompatibility {
         @NativeType("GLsizeiptr") long size,
         @NativeType("GLenum") int format,
         @NativeType("GLenum") int type,
-        @Pointer(comment="void*") MemorySegment data
+        @Pointer(comment="void*") @NotNull MemorySegment data
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glClearNamedBufferSubData);
         try {
@@ -3951,7 +3952,7 @@ public sealed class GL implements GLConstants permits GLCompatibility {
         @NativeType("GLsizeiptr") long size,
         @NativeType("GLenum") int format,
         @NativeType("GLenum") int type,
-        @Pointer(comment="void*") MemorySegment data
+        @Pointer(comment="void*") @NotNull MemorySegment data
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glClearNamedBufferSubDataEXT);
         try {
@@ -4065,7 +4066,7 @@ public sealed class GL implements GLConstants permits GLCompatibility {
         @NativeType("GLint") int level,
         @NativeType("GLenum") int format,
         @NativeType("GLenum") int type,
-        @Pointer(comment="void*") MemorySegment data
+        @Pointer(comment="void*") @NotNull MemorySegment data
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glClearTexImage);
         try {
@@ -4092,7 +4093,7 @@ public sealed class GL implements GLConstants permits GLCompatibility {
         @NativeType("GLsizei") int depth,
         @NativeType("GLenum") int format,
         @NativeType("GLenum") int type,
-        @Pointer(comment="void*") MemorySegment data
+        @Pointer(comment="void*") @NotNull MemorySegment data
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glClearTexSubImage);
         try {
@@ -4284,7 +4285,7 @@ public sealed class GL implements GLConstants permits GLCompatibility {
         @NativeType("GLsizei") int width,
         @NativeType("GLint") int border,
         @NativeType("GLsizei") int imageSize,
-        @Pointer(comment="void*") MemorySegment bits
+        @Pointer(comment="void*") @NotNull MemorySegment bits
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glCompressedMultiTexImage1DEXT);
         try {
@@ -4312,7 +4313,7 @@ public sealed class GL implements GLConstants permits GLCompatibility {
         @NativeType("GLsizei") int height,
         @NativeType("GLint") int border,
         @NativeType("GLsizei") int imageSize,
-        @Pointer(comment="void*") MemorySegment bits
+        @Pointer(comment="void*") @NotNull MemorySegment bits
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glCompressedMultiTexImage2DEXT);
         try {
@@ -4342,7 +4343,7 @@ public sealed class GL implements GLConstants permits GLCompatibility {
         @NativeType("GLsizei") int depth,
         @NativeType("GLint") int border,
         @NativeType("GLsizei") int imageSize,
-        @Pointer(comment="void*") MemorySegment bits
+        @Pointer(comment="void*") @NotNull MemorySegment bits
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glCompressedMultiTexImage3DEXT);
         try {
@@ -4371,7 +4372,7 @@ public sealed class GL implements GLConstants permits GLCompatibility {
         @NativeType("GLsizei") int width,
         @NativeType("GLenum") int format,
         @NativeType("GLsizei") int imageSize,
-        @Pointer(comment="void*") MemorySegment bits
+        @Pointer(comment="void*") @NotNull MemorySegment bits
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glCompressedMultiTexSubImage1DEXT);
         try {
@@ -4400,7 +4401,7 @@ public sealed class GL implements GLConstants permits GLCompatibility {
         @NativeType("GLsizei") int height,
         @NativeType("GLenum") int format,
         @NativeType("GLsizei") int imageSize,
-        @Pointer(comment="void*") MemorySegment bits
+        @Pointer(comment="void*") @NotNull MemorySegment bits
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glCompressedMultiTexSubImage2DEXT);
         try {
@@ -4433,7 +4434,7 @@ public sealed class GL implements GLConstants permits GLCompatibility {
         @NativeType("GLsizei") int depth,
         @NativeType("GLenum") int format,
         @NativeType("GLsizei") int imageSize,
-        @Pointer(comment="void*") MemorySegment bits
+        @Pointer(comment="void*") @NotNull MemorySegment bits
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glCompressedMultiTexSubImage3DEXT);
         try {
@@ -4463,7 +4464,7 @@ public sealed class GL implements GLConstants permits GLCompatibility {
         @NativeType("GLsizei") int width,
         @NativeType("GLint") int border,
         @NativeType("GLsizei") int imageSize,
-        @Pointer(comment="void*") MemorySegment data
+        @Pointer(comment="void*") @NotNull MemorySegment data
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glCompressedTexImage1D);
         try {
@@ -4489,7 +4490,7 @@ public sealed class GL implements GLConstants permits GLCompatibility {
         @NativeType("GLsizei") int height,
         @NativeType("GLint") int border,
         @NativeType("GLsizei") int imageSize,
-        @Pointer(comment="void*") MemorySegment data
+        @Pointer(comment="void*") @NotNull MemorySegment data
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glCompressedTexImage2D);
         try {
@@ -4517,7 +4518,7 @@ public sealed class GL implements GLConstants permits GLCompatibility {
         @NativeType("GLsizei") int depth,
         @NativeType("GLint") int border,
         @NativeType("GLsizei") int imageSize,
-        @Pointer(comment="void*") MemorySegment data
+        @Pointer(comment="void*") @NotNull MemorySegment data
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glCompressedTexImage3D);
         try {
@@ -4544,7 +4545,7 @@ public sealed class GL implements GLConstants permits GLCompatibility {
         @NativeType("GLsizei") int width,
         @NativeType("GLenum") int format,
         @NativeType("GLsizei") int imageSize,
-        @Pointer(comment="void*") MemorySegment data
+        @Pointer(comment="void*") @NotNull MemorySegment data
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glCompressedTexSubImage1D);
         try {
@@ -4571,7 +4572,7 @@ public sealed class GL implements GLConstants permits GLCompatibility {
         @NativeType("GLsizei") int height,
         @NativeType("GLenum") int format,
         @NativeType("GLsizei") int imageSize,
-        @Pointer(comment="void*") MemorySegment data
+        @Pointer(comment="void*") @NotNull MemorySegment data
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glCompressedTexSubImage2D);
         try {
@@ -4602,7 +4603,7 @@ public sealed class GL implements GLConstants permits GLCompatibility {
         @NativeType("GLsizei") int depth,
         @NativeType("GLenum") int format,
         @NativeType("GLsizei") int imageSize,
-        @Pointer(comment="void*") MemorySegment data
+        @Pointer(comment="void*") @NotNull MemorySegment data
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glCompressedTexSubImage3D);
         try {
@@ -4632,7 +4633,7 @@ public sealed class GL implements GLConstants permits GLCompatibility {
         @NativeType("GLsizei") int width,
         @NativeType("GLint") int border,
         @NativeType("GLsizei") int imageSize,
-        @Pointer(comment="void*") MemorySegment bits
+        @Pointer(comment="void*") @NotNull MemorySegment bits
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glCompressedTextureImage1DEXT);
         try {
@@ -4660,7 +4661,7 @@ public sealed class GL implements GLConstants permits GLCompatibility {
         @NativeType("GLsizei") int height,
         @NativeType("GLint") int border,
         @NativeType("GLsizei") int imageSize,
-        @Pointer(comment="void*") MemorySegment bits
+        @Pointer(comment="void*") @NotNull MemorySegment bits
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glCompressedTextureImage2DEXT);
         try {
@@ -4690,7 +4691,7 @@ public sealed class GL implements GLConstants permits GLCompatibility {
         @NativeType("GLsizei") int depth,
         @NativeType("GLint") int border,
         @NativeType("GLsizei") int imageSize,
-        @Pointer(comment="void*") MemorySegment bits
+        @Pointer(comment="void*") @NotNull MemorySegment bits
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glCompressedTextureImage3DEXT);
         try {
@@ -4718,7 +4719,7 @@ public sealed class GL implements GLConstants permits GLCompatibility {
         @NativeType("GLsizei") int width,
         @NativeType("GLenum") int format,
         @NativeType("GLsizei") int imageSize,
-        @Pointer(comment="void*") MemorySegment data
+        @Pointer(comment="void*") @NotNull MemorySegment data
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glCompressedTextureSubImage1D);
         try {
@@ -4744,7 +4745,7 @@ public sealed class GL implements GLConstants permits GLCompatibility {
         @NativeType("GLsizei") int width,
         @NativeType("GLenum") int format,
         @NativeType("GLsizei") int imageSize,
-        @Pointer(comment="void*") MemorySegment bits
+        @Pointer(comment="void*") @NotNull MemorySegment bits
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glCompressedTextureSubImage1DEXT);
         try {
@@ -4772,7 +4773,7 @@ public sealed class GL implements GLConstants permits GLCompatibility {
         @NativeType("GLsizei") int height,
         @NativeType("GLenum") int format,
         @NativeType("GLsizei") int imageSize,
-        @Pointer(comment="void*") MemorySegment data
+        @Pointer(comment="void*") @NotNull MemorySegment data
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glCompressedTextureSubImage2D);
         try {
@@ -4802,7 +4803,7 @@ public sealed class GL implements GLConstants permits GLCompatibility {
         @NativeType("GLsizei") int height,
         @NativeType("GLenum") int format,
         @NativeType("GLsizei") int imageSize,
-        @Pointer(comment="void*") MemorySegment bits
+        @Pointer(comment="void*") @NotNull MemorySegment bits
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glCompressedTextureSubImage2DEXT);
         try {
@@ -4834,7 +4835,7 @@ public sealed class GL implements GLConstants permits GLCompatibility {
         @NativeType("GLsizei") int depth,
         @NativeType("GLenum") int format,
         @NativeType("GLsizei") int imageSize,
-        @Pointer(comment="void*") MemorySegment data
+        @Pointer(comment="void*") @NotNull MemorySegment data
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glCompressedTextureSubImage3D);
         try {
@@ -4868,7 +4869,7 @@ public sealed class GL implements GLConstants permits GLCompatibility {
         @NativeType("GLsizei") int depth,
         @NativeType("GLenum") int format,
         @NativeType("GLsizei") int imageSize,
-        @Pointer(comment="void*") MemorySegment bits
+        @Pointer(comment="void*") @NotNull MemorySegment bits
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glCompressedTextureSubImage3DEXT);
         try {
@@ -5514,7 +5515,7 @@ public sealed class GL implements GLConstants permits GLCompatibility {
     public void coverFillPathInstancedNV(
         @NativeType("GLsizei") int numPaths,
         @NativeType("GLenum") int pathNameType,
-        @Pointer(comment="void*") MemorySegment paths,
+        @Pointer(comment="void*") @NotNull MemorySegment paths,
         @NativeType("GLuint") @Unsigned int pathBase,
         @NativeType("GLenum") int coverMode,
         @NativeType("GLenum") int transformType,
@@ -5554,7 +5555,7 @@ public sealed class GL implements GLConstants permits GLCompatibility {
     public void coverStrokePathInstancedNV(
         @NativeType("GLsizei") int numPaths,
         @NativeType("GLenum") int pathNameType,
-        @Pointer(comment="void*") MemorySegment paths,
+        @Pointer(comment="void*") @NotNull MemorySegment paths,
         @NativeType("GLuint") @Unsigned int pathBase,
         @NativeType("GLenum") int coverMode,
         @NativeType("GLenum") int transformType,
@@ -5829,8 +5830,8 @@ public sealed class GL implements GLConstants permits GLCompatibility {
     }
 
     public GLsync createSyncFromCLeventARB(
-        @Pointer(comment="_cl_context*") MemorySegment context,
-        @Pointer(comment="_cl_event*") MemorySegment event,
+        @Pointer(comment="_cl_context*") @NotNull MemorySegment context,
+        @Pointer(comment="_cl_event*") @NotNull MemorySegment event,
         @NativeType("GLbitfield") @Unsigned int flags
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glCreateSyncFromCLeventARB);
@@ -5907,8 +5908,8 @@ public sealed class GL implements GLConstants permits GLCompatibility {
     }
 
     public void debugMessageCallback(
-        @Pointer(comment="GLDEBUGPROC") MemorySegment callback,
-        @Pointer(comment="void*") MemorySegment userParam
+        @Pointer(comment="GLDEBUGPROC") @NotNull MemorySegment callback,
+        @Pointer(comment="void*") @NotNull MemorySegment userParam
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glDebugMessageCallback);
         try {
@@ -5922,8 +5923,8 @@ public sealed class GL implements GLConstants permits GLCompatibility {
     }
 
     public void debugMessageCallbackARB(
-        @Pointer(comment="GLDEBUGPROCARB") MemorySegment callback,
-        @Pointer(comment="void*") MemorySegment userParam
+        @Pointer(comment="GLDEBUGPROCARB") @NotNull MemorySegment callback,
+        @Pointer(comment="void*") @NotNull MemorySegment userParam
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glDebugMessageCallbackARB);
         try {
@@ -5937,8 +5938,8 @@ public sealed class GL implements GLConstants permits GLCompatibility {
     }
 
     public void debugMessageCallbackKHR(
-        @Pointer(comment="GLDEBUGPROCKHR") MemorySegment callback,
-        @Pointer(comment="void*") MemorySegment userParam
+        @Pointer(comment="GLDEBUGPROCKHR") @NotNull MemorySegment callback,
+        @Pointer(comment="void*") @NotNull MemorySegment userParam
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glDebugMessageCallbackKHR);
         try {
@@ -6738,7 +6739,7 @@ public sealed class GL implements GLConstants permits GLCompatibility {
 
     public void drawArraysIndirect(
         @NativeType("GLenum") int mode,
-        @Pointer(comment="void*") MemorySegment indirect
+        @Pointer(comment="void*") @NotNull MemorySegment indirect
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glDrawArraysIndirect);
         try {
@@ -6945,7 +6946,7 @@ public sealed class GL implements GLConstants permits GLCompatibility {
         @NativeType("GLenum") int mode,
         @NativeType("GLsizei") int count,
         @NativeType("GLenum") int type,
-        @Pointer(comment="void*") MemorySegment indices
+        @Pointer(comment="void*") @NotNull MemorySegment indices
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glDrawElements);
         try {
@@ -6964,7 +6965,7 @@ public sealed class GL implements GLConstants permits GLCompatibility {
         @NativeType("GLenum") int mode,
         @NativeType("GLsizei") int count,
         @NativeType("GLenum") int type,
-        @Pointer(comment="void*") MemorySegment indices,
+        @Pointer(comment="void*") @NotNull MemorySegment indices,
         @NativeType("GLint") int basevertex
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glDrawElementsBaseVertex);
@@ -6984,7 +6985,7 @@ public sealed class GL implements GLConstants permits GLCompatibility {
     public void drawElementsIndirect(
         @NativeType("GLenum") int mode,
         @NativeType("GLenum") int type,
-        @Pointer(comment="void*") MemorySegment indirect
+        @Pointer(comment="void*") @NotNull MemorySegment indirect
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glDrawElementsIndirect);
         try {
@@ -7002,7 +7003,7 @@ public sealed class GL implements GLConstants permits GLCompatibility {
         @NativeType("GLenum") int mode,
         @NativeType("GLsizei") int count,
         @NativeType("GLenum") int type,
-        @Pointer(comment="void*") MemorySegment indices,
+        @Pointer(comment="void*") @NotNull MemorySegment indices,
         @NativeType("GLsizei") int instancecount
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glDrawElementsInstanced);
@@ -7023,7 +7024,7 @@ public sealed class GL implements GLConstants permits GLCompatibility {
         @NativeType("GLenum") int mode,
         @NativeType("GLsizei") int count,
         @NativeType("GLenum") int type,
-        @Pointer(comment="void*") MemorySegment indices,
+        @Pointer(comment="void*") @NotNull MemorySegment indices,
         @NativeType("GLsizei") int primcount
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glDrawElementsInstancedARB);
@@ -7044,7 +7045,7 @@ public sealed class GL implements GLConstants permits GLCompatibility {
         @NativeType("GLenum") int mode,
         @NativeType("GLsizei") int count,
         @NativeType("GLenum") int type,
-        @Pointer(comment="void*") MemorySegment indices,
+        @Pointer(comment="void*") @NotNull MemorySegment indices,
         @NativeType("GLsizei") int instancecount,
         @NativeType("GLuint") @Unsigned int baseinstance
     ) {
@@ -7067,7 +7068,7 @@ public sealed class GL implements GLConstants permits GLCompatibility {
         @NativeType("GLenum") int mode,
         @NativeType("GLsizei") int count,
         @NativeType("GLenum") int type,
-        @Pointer(comment="void*") MemorySegment indices,
+        @Pointer(comment="void*") @NotNull MemorySegment indices,
         @NativeType("GLsizei") int instancecount,
         @NativeType("GLint") int basevertex
     ) {
@@ -7090,7 +7091,7 @@ public sealed class GL implements GLConstants permits GLCompatibility {
         @NativeType("GLenum") int mode,
         @NativeType("GLsizei") int count,
         @NativeType("GLenum") int type,
-        @Pointer(comment="void*") MemorySegment indices,
+        @Pointer(comment="void*") @NotNull MemorySegment indices,
         @NativeType("GLsizei") int instancecount,
         @NativeType("GLint") int basevertex,
         @NativeType("GLuint") @Unsigned int baseinstance
@@ -7115,7 +7116,7 @@ public sealed class GL implements GLConstants permits GLCompatibility {
         @NativeType("GLenum") int mode,
         @NativeType("GLsizei") int count,
         @NativeType("GLenum") int type,
-        @Pointer(comment="void*") MemorySegment indices,
+        @Pointer(comment="void*") @NotNull MemorySegment indices,
         @NativeType("GLsizei") int primcount
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glDrawElementsInstancedEXT);
@@ -7166,7 +7167,7 @@ public sealed class GL implements GLConstants permits GLCompatibility {
         @NativeType("GLuint") @Unsigned int end,
         @NativeType("GLsizei") int count,
         @NativeType("GLenum") int type,
-        @Pointer(comment="void*") MemorySegment indices
+        @Pointer(comment="void*") @NotNull MemorySegment indices
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glDrawRangeElements);
         try {
@@ -7189,7 +7190,7 @@ public sealed class GL implements GLConstants permits GLCompatibility {
         @NativeType("GLuint") @Unsigned int end,
         @NativeType("GLsizei") int count,
         @NativeType("GLenum") int type,
-        @Pointer(comment="void*") MemorySegment indices,
+        @Pointer(comment="void*") @NotNull MemorySegment indices,
         @NativeType("GLint") int basevertex
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glDrawRangeElementsBaseVertex);
@@ -8643,7 +8644,7 @@ public sealed class GL implements GLConstants permits GLCompatibility {
         @NativeType("GLenum") int target,
         @NativeType("GLintptr") long offset,
         @NativeType("GLsizeiptr") long size,
-        @Pointer(comment="void*") MemorySegment data
+        @Pointer(comment="void*") @NotNull MemorySegment data
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glGetBufferSubData);
         try {
@@ -8677,7 +8678,7 @@ public sealed class GL implements GLConstants permits GLCompatibility {
         @NativeType("GLenum") int texunit,
         @NativeType("GLenum") int target,
         @NativeType("GLint") int lod,
-        @Pointer(comment="void*") MemorySegment img
+        @Pointer(comment="void*") @NotNull MemorySegment img
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glGetCompressedMultiTexImageEXT);
         try {
@@ -8695,7 +8696,7 @@ public sealed class GL implements GLConstants permits GLCompatibility {
     public void getCompressedTexImage(
         @NativeType("GLenum") int target,
         @NativeType("GLint") int level,
-        @Pointer(comment="void*") MemorySegment img
+        @Pointer(comment="void*") @NotNull MemorySegment img
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glGetCompressedTexImage);
         try {
@@ -8713,7 +8714,7 @@ public sealed class GL implements GLConstants permits GLCompatibility {
         @NativeType("GLuint") @Unsigned int texture,
         @NativeType("GLint") int level,
         @NativeType("GLsizei") int bufSize,
-        @Pointer(comment="void*") MemorySegment pixels
+        @Pointer(comment="void*") @NotNull MemorySegment pixels
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glGetCompressedTextureImage);
         try {
@@ -8732,7 +8733,7 @@ public sealed class GL implements GLConstants permits GLCompatibility {
         @NativeType("GLuint") @Unsigned int texture,
         @NativeType("GLenum") int target,
         @NativeType("GLint") int lod,
-        @Pointer(comment="void*") MemorySegment img
+        @Pointer(comment="void*") @NotNull MemorySegment img
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glGetCompressedTextureImageEXT);
         try {
@@ -8757,7 +8758,7 @@ public sealed class GL implements GLConstants permits GLCompatibility {
         @NativeType("GLsizei") int height,
         @NativeType("GLsizei") int depth,
         @NativeType("GLsizei") int bufSize,
-        @Pointer(comment="void*") MemorySegment pixels
+        @Pointer(comment="void*") @NotNull MemorySegment pixels
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glGetCompressedTextureSubImage);
         try {
@@ -9501,7 +9502,7 @@ public sealed class GL implements GLConstants permits GLCompatibility {
         @NativeType("GLint") int level,
         @NativeType("GLenum") int format,
         @NativeType("GLenum") int type,
-        @Pointer(comment="void*") MemorySegment pixels
+        @Pointer(comment="void*") @NotNull MemorySegment pixels
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glGetMultiTexImageEXT);
         try {
@@ -9759,7 +9760,7 @@ public sealed class GL implements GLConstants permits GLCompatibility {
         @NativeType("GLuint") @Unsigned int buffer,
         @NativeType("GLintptr") long offset,
         @NativeType("GLsizeiptr") long size,
-        @Pointer(comment="void*") MemorySegment data
+        @Pointer(comment="void*") @NotNull MemorySegment data
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glGetNamedBufferSubData);
         try {
@@ -9778,7 +9779,7 @@ public sealed class GL implements GLConstants permits GLCompatibility {
         @NativeType("GLuint") @Unsigned int buffer,
         @NativeType("GLintptr") long offset,
         @NativeType("GLsizeiptr") long size,
-        @Pointer(comment="void*") MemorySegment data
+        @Pointer(comment="void*") @NotNull MemorySegment data
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glGetNamedBufferSubDataEXT);
         try {
@@ -9945,7 +9946,7 @@ public sealed class GL implements GLConstants permits GLCompatibility {
         @NativeType("GLuint") @Unsigned int program,
         @NativeType("GLenum") int target,
         @NativeType("GLenum") int pname,
-        @Pointer(comment="void*") MemorySegment string
+        @Pointer(comment="void*") @NotNull MemorySegment string
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glGetNamedProgramStringEXT);
         try {
@@ -10132,7 +10133,7 @@ public sealed class GL implements GLConstants permits GLCompatibility {
     }
 
     public void getObjectPtrLabel(
-        @Pointer(comment="void*") MemorySegment ptr,
+        @Pointer(comment="void*") @NotNull MemorySegment ptr,
         @NativeType("GLsizei") int bufSize,
         @Nullable @Pointer(comment="GLsizei") IntPtr length,
         @Nullable @Pointer(comment="GLchar") BytePtr label
@@ -10151,7 +10152,7 @@ public sealed class GL implements GLConstants permits GLCompatibility {
     }
 
     public void getObjectPtrLabelKHR(
-        @Pointer(comment="void*") MemorySegment ptr,
+        @Pointer(comment="void*") @NotNull MemorySegment ptr,
         @NativeType("GLsizei") int bufSize,
         @Nullable @Pointer(comment="GLsizei") IntPtr length,
         @Nullable @Pointer(comment="GLchar") BytePtr label
@@ -10256,7 +10257,7 @@ public sealed class GL implements GLConstants permits GLCompatibility {
         @NativeType("GLbitfield") @Unsigned int metricQueryMask,
         @NativeType("GLsizei") int numPaths,
         @NativeType("GLenum") int pathNameType,
-        @Pointer(comment="void*") MemorySegment paths,
+        @Pointer(comment="void*") @NotNull MemorySegment paths,
         @NativeType("GLuint") @Unsigned int pathBase,
         @NativeType("GLsizei") int stride,
         @Nullable @Pointer(comment="GLfloat") FloatPtr metrics
@@ -10315,7 +10316,7 @@ public sealed class GL implements GLConstants permits GLCompatibility {
         @NativeType("GLenum") int pathListMode,
         @NativeType("GLsizei") int numPaths,
         @NativeType("GLenum") int pathNameType,
-        @Pointer(comment="void*") MemorySegment paths,
+        @Pointer(comment="void*") @NotNull MemorySegment paths,
         @NativeType("GLuint") @Unsigned int pathBase,
         @NativeType("GLfloat") float advanceScale,
         @NativeType("GLfloat") float kerningScale,
@@ -10398,7 +10399,7 @@ public sealed class GL implements GLConstants permits GLCompatibility {
         @NativeType("GLuint") @Unsigned int group,
         @NativeType("GLuint") @Unsigned int counter,
         @NativeType("GLenum") int pname,
-        @Pointer(comment="void*") MemorySegment data
+        @Pointer(comment="void*") @NotNull MemorySegment data
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glGetPerfMonitorCounterInfoAMD);
         try {
@@ -10495,7 +10496,7 @@ public sealed class GL implements GLConstants permits GLCompatibility {
         @NativeType("GLuint") @Unsigned int queryHandle,
         @NativeType("GLuint") @Unsigned int flags,
         @NativeType("GLsizei") int dataSize,
-        @Pointer(comment="void*") MemorySegment data,
+        @Pointer(comment="void*") @NotNull MemorySegment data,
         @Nullable @Pointer(comment="GLuint") @Unsigned IntPtr bytesWritten
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glGetPerfQueryDataINTEL);
@@ -10621,7 +10622,7 @@ public sealed class GL implements GLConstants permits GLCompatibility {
         @NativeType("GLsizei") int bufSize,
         @Nullable @Pointer(comment="GLsizei") IntPtr length,
         @Nullable @Pointer(comment="GLenum") IntPtr binaryFormat,
-        @Pointer(comment="void*") MemorySegment binary
+        @Pointer(comment="void*") @NotNull MemorySegment binary
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glGetProgramBinary);
         try {
@@ -11389,7 +11390,7 @@ public sealed class GL implements GLConstants permits GLCompatibility {
         @NativeType("GLint") int level,
         @NativeType("GLenum") int format,
         @NativeType("GLenum") int type,
-        @Pointer(comment="void*") MemorySegment pixels
+        @Pointer(comment="void*") @NotNull MemorySegment pixels
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glGetTexImage);
         try {
@@ -11543,7 +11544,7 @@ public sealed class GL implements GLConstants permits GLCompatibility {
         @NativeType("GLenum") int format,
         @NativeType("GLenum") int type,
         @NativeType("GLsizei") int bufSize,
-        @Pointer(comment="void*") MemorySegment pixels
+        @Pointer(comment="void*") @NotNull MemorySegment pixels
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glGetTextureImage);
         try {
@@ -11566,7 +11567,7 @@ public sealed class GL implements GLConstants permits GLCompatibility {
         @NativeType("GLint") int level,
         @NativeType("GLenum") int format,
         @NativeType("GLenum") int type,
-        @Pointer(comment="void*") MemorySegment pixels
+        @Pointer(comment="void*") @NotNull MemorySegment pixels
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glGetTextureImageEXT);
         try {
@@ -11849,7 +11850,7 @@ public sealed class GL implements GLConstants permits GLCompatibility {
         @NativeType("GLenum") int format,
         @NativeType("GLenum") int type,
         @NativeType("GLsizei") int bufSize,
-        @Pointer(comment="void*") MemorySegment pixels
+        @Pointer(comment="void*") @NotNull MemorySegment pixels
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glGetTextureSubImage);
         try {
@@ -12417,7 +12418,7 @@ public sealed class GL implements GLConstants permits GLCompatibility {
         }
     }
 
-    public @Pointer(comment="GLVULKANPROCNV") MemorySegment getVkProcAddrNV(
+    public @Pointer(comment="GLVULKANPROCNV") @NotNull MemorySegment getVkProcAddrNV(
         @Nullable @Pointer(comment="GLchar") BytePtr name
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glGetVkProcAddrNV);
@@ -12434,7 +12435,7 @@ public sealed class GL implements GLConstants permits GLCompatibility {
         @NativeType("GLenum") int target,
         @NativeType("GLint") int lod,
         @NativeType("GLsizei") int bufSize,
-        @Pointer(comment="void*") MemorySegment pixels
+        @Pointer(comment="void*") @NotNull MemorySegment pixels
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glGetnCompressedTexImage);
         try {
@@ -12453,7 +12454,7 @@ public sealed class GL implements GLConstants permits GLCompatibility {
         @NativeType("GLenum") int target,
         @NativeType("GLint") int lod,
         @NativeType("GLsizei") int bufSize,
-        @Pointer(comment="void*") MemorySegment img
+        @Pointer(comment="void*") @NotNull MemorySegment img
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glGetnCompressedTexImageARB);
         try {
@@ -12474,7 +12475,7 @@ public sealed class GL implements GLConstants permits GLCompatibility {
         @NativeType("GLenum") int format,
         @NativeType("GLenum") int type,
         @NativeType("GLsizei") int bufSize,
-        @Pointer(comment="void*") MemorySegment pixels
+        @Pointer(comment="void*") @NotNull MemorySegment pixels
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glGetnTexImage);
         try {
@@ -12497,7 +12498,7 @@ public sealed class GL implements GLConstants permits GLCompatibility {
         @NativeType("GLenum") int format,
         @NativeType("GLenum") int type,
         @NativeType("GLsizei") int bufSize,
-        @Pointer(comment="void*") MemorySegment img
+        @Pointer(comment="void*") @NotNull MemorySegment img
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glGetnTexImageARB);
         try {
@@ -13608,7 +13609,7 @@ public sealed class GL implements GLConstants permits GLCompatibility {
         }
     }
 
-    public @Pointer(comment="void*") MemorySegment mapBuffer(
+    public @Pointer(comment="void*") @NotNull MemorySegment mapBuffer(
         @NativeType("GLenum") int target,
         @NativeType("GLenum") int access
     ) {
@@ -13623,7 +13624,7 @@ public sealed class GL implements GLConstants permits GLCompatibility {
         }
     }
 
-    public @Pointer(comment="void*") MemorySegment mapBufferRange(
+    public @Pointer(comment="void*") @NotNull MemorySegment mapBufferRange(
         @NativeType("GLenum") int target,
         @NativeType("GLintptr") long offset,
         @NativeType("GLsizeiptr") long length,
@@ -13642,7 +13643,7 @@ public sealed class GL implements GLConstants permits GLCompatibility {
         }
     }
 
-    public @Pointer(comment="void*") MemorySegment mapNamedBuffer(
+    public @Pointer(comment="void*") @NotNull MemorySegment mapNamedBuffer(
         @NativeType("GLuint") @Unsigned int buffer,
         @NativeType("GLenum") int access
     ) {
@@ -13657,7 +13658,7 @@ public sealed class GL implements GLConstants permits GLCompatibility {
         }
     }
 
-    public @Pointer(comment="void*") MemorySegment mapNamedBufferEXT(
+    public @Pointer(comment="void*") @NotNull MemorySegment mapNamedBufferEXT(
         @NativeType("GLuint") @Unsigned int buffer,
         @NativeType("GLenum") int access
     ) {
@@ -13672,7 +13673,7 @@ public sealed class GL implements GLConstants permits GLCompatibility {
         }
     }
 
-    public @Pointer(comment="void*") MemorySegment mapNamedBufferRange(
+    public @Pointer(comment="void*") @NotNull MemorySegment mapNamedBufferRange(
         @NativeType("GLuint") @Unsigned int buffer,
         @NativeType("GLintptr") long offset,
         @NativeType("GLsizeiptr") long length,
@@ -13691,7 +13692,7 @@ public sealed class GL implements GLConstants permits GLCompatibility {
         }
     }
 
-    public @Pointer(comment="void*") MemorySegment mapNamedBufferRangeEXT(
+    public @Pointer(comment="void*") @NotNull MemorySegment mapNamedBufferRangeEXT(
         @NativeType("GLuint") @Unsigned int buffer,
         @NativeType("GLintptr") long offset,
         @NativeType("GLsizeiptr") long length,
@@ -14226,7 +14227,7 @@ public sealed class GL implements GLConstants permits GLCompatibility {
 
     public void multiDrawArraysIndirect(
         @NativeType("GLenum") int mode,
-        @Pointer(comment="void*") MemorySegment indirect,
+        @Pointer(comment="void*") @NotNull MemorySegment indirect,
         @NativeType("GLsizei") int drawcount,
         @NativeType("GLsizei") int stride
     ) {
@@ -14245,7 +14246,7 @@ public sealed class GL implements GLConstants permits GLCompatibility {
 
     public void multiDrawArraysIndirectBindlessCountNV(
         @NativeType("GLenum") int mode,
-        @Pointer(comment="void*") MemorySegment indirect,
+        @Pointer(comment="void*") @NotNull MemorySegment indirect,
         @NativeType("GLsizei") int drawCount,
         @NativeType("GLsizei") int maxDrawCount,
         @NativeType("GLsizei") int stride,
@@ -14268,7 +14269,7 @@ public sealed class GL implements GLConstants permits GLCompatibility {
 
     public void multiDrawArraysIndirectBindlessNV(
         @NativeType("GLenum") int mode,
-        @Pointer(comment="void*") MemorySegment indirect,
+        @Pointer(comment="void*") @NotNull MemorySegment indirect,
         @NativeType("GLsizei") int drawCount,
         @NativeType("GLsizei") int stride,
         @NativeType("GLint") int vertexBufferCount
@@ -14289,7 +14290,7 @@ public sealed class GL implements GLConstants permits GLCompatibility {
 
     public void multiDrawArraysIndirectCount(
         @NativeType("GLenum") int mode,
-        @Pointer(comment="void*") MemorySegment indirect,
+        @Pointer(comment="void*") @NotNull MemorySegment indirect,
         @NativeType("GLintptr") long drawcount,
         @NativeType("GLsizei") int maxdrawcount,
         @NativeType("GLsizei") int stride
@@ -14310,7 +14311,7 @@ public sealed class GL implements GLConstants permits GLCompatibility {
 
     public void multiDrawArraysIndirectCountARB(
         @NativeType("GLenum") int mode,
-        @Pointer(comment="void*") MemorySegment indirect,
+        @Pointer(comment="void*") @NotNull MemorySegment indirect,
         @NativeType("GLintptr") long drawcount,
         @NativeType("GLsizei") int maxdrawcount,
         @NativeType("GLsizei") int stride
@@ -14376,7 +14377,7 @@ public sealed class GL implements GLConstants permits GLCompatibility {
     public void multiDrawElementsIndirect(
         @NativeType("GLenum") int mode,
         @NativeType("GLenum") int type,
-        @Pointer(comment="void*") MemorySegment indirect,
+        @Pointer(comment="void*") @NotNull MemorySegment indirect,
         @NativeType("GLsizei") int drawcount,
         @NativeType("GLsizei") int stride
     ) {
@@ -14397,7 +14398,7 @@ public sealed class GL implements GLConstants permits GLCompatibility {
     public void multiDrawElementsIndirectBindlessCountNV(
         @NativeType("GLenum") int mode,
         @NativeType("GLenum") int type,
-        @Pointer(comment="void*") MemorySegment indirect,
+        @Pointer(comment="void*") @NotNull MemorySegment indirect,
         @NativeType("GLsizei") int drawCount,
         @NativeType("GLsizei") int maxDrawCount,
         @NativeType("GLsizei") int stride,
@@ -14422,7 +14423,7 @@ public sealed class GL implements GLConstants permits GLCompatibility {
     public void multiDrawElementsIndirectBindlessNV(
         @NativeType("GLenum") int mode,
         @NativeType("GLenum") int type,
-        @Pointer(comment="void*") MemorySegment indirect,
+        @Pointer(comment="void*") @NotNull MemorySegment indirect,
         @NativeType("GLsizei") int drawCount,
         @NativeType("GLsizei") int stride,
         @NativeType("GLint") int vertexBufferCount
@@ -14445,7 +14446,7 @@ public sealed class GL implements GLConstants permits GLCompatibility {
     public void multiDrawElementsIndirectCount(
         @NativeType("GLenum") int mode,
         @NativeType("GLenum") int type,
-        @Pointer(comment="void*") MemorySegment indirect,
+        @Pointer(comment="void*") @NotNull MemorySegment indirect,
         @NativeType("GLintptr") long drawcount,
         @NativeType("GLsizei") int maxdrawcount,
         @NativeType("GLsizei") int stride
@@ -14468,7 +14469,7 @@ public sealed class GL implements GLConstants permits GLCompatibility {
     public void multiDrawElementsIndirectCountARB(
         @NativeType("GLenum") int mode,
         @NativeType("GLenum") int type,
-        @Pointer(comment="void*") MemorySegment indirect,
+        @Pointer(comment="void*") @NotNull MemorySegment indirect,
         @NativeType("GLintptr") long drawcount,
         @NativeType("GLsizei") int maxdrawcount,
         @NativeType("GLsizei") int stride
@@ -14548,7 +14549,7 @@ public sealed class GL implements GLConstants permits GLCompatibility {
         @NativeType("GLint") int size,
         @NativeType("GLenum") int type,
         @NativeType("GLsizei") int stride,
-        @Pointer(comment="void*") MemorySegment pointer
+        @Pointer(comment="void*") @NotNull MemorySegment pointer
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glMultiTexCoordPointerEXT);
         try {
@@ -14763,7 +14764,7 @@ public sealed class GL implements GLConstants permits GLCompatibility {
         @NativeType("GLint") int border,
         @NativeType("GLenum") int format,
         @NativeType("GLenum") int type,
-        @Pointer(comment="void*") MemorySegment pixels
+        @Pointer(comment="void*") @NotNull MemorySegment pixels
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glMultiTexImage1DEXT);
         try {
@@ -14793,7 +14794,7 @@ public sealed class GL implements GLConstants permits GLCompatibility {
         @NativeType("GLint") int border,
         @NativeType("GLenum") int format,
         @NativeType("GLenum") int type,
-        @Pointer(comment="void*") MemorySegment pixels
+        @Pointer(comment="void*") @NotNull MemorySegment pixels
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glMultiTexImage2DEXT);
         try {
@@ -14825,7 +14826,7 @@ public sealed class GL implements GLConstants permits GLCompatibility {
         @NativeType("GLint") int border,
         @NativeType("GLenum") int format,
         @NativeType("GLenum") int type,
-        @Pointer(comment="void*") MemorySegment pixels
+        @Pointer(comment="void*") @NotNull MemorySegment pixels
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glMultiTexImage3DEXT);
         try {
@@ -14986,7 +14987,7 @@ public sealed class GL implements GLConstants permits GLCompatibility {
         @NativeType("GLsizei") int width,
         @NativeType("GLenum") int format,
         @NativeType("GLenum") int type,
-        @Pointer(comment="void*") MemorySegment pixels
+        @Pointer(comment="void*") @NotNull MemorySegment pixels
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glMultiTexSubImage1DEXT);
         try {
@@ -15015,7 +15016,7 @@ public sealed class GL implements GLConstants permits GLCompatibility {
         @NativeType("GLsizei") int height,
         @NativeType("GLenum") int format,
         @NativeType("GLenum") int type,
-        @Pointer(comment="void*") MemorySegment pixels
+        @Pointer(comment="void*") @NotNull MemorySegment pixels
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glMultiTexSubImage2DEXT);
         try {
@@ -15048,7 +15049,7 @@ public sealed class GL implements GLConstants permits GLCompatibility {
         @NativeType("GLsizei") int depth,
         @NativeType("GLenum") int format,
         @NativeType("GLenum") int type,
-        @Pointer(comment="void*") MemorySegment pixels
+        @Pointer(comment="void*") @NotNull MemorySegment pixels
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glMultiTexSubImage3DEXT);
         try {
@@ -15091,7 +15092,7 @@ public sealed class GL implements GLConstants permits GLCompatibility {
     public void namedBufferData(
         @NativeType("GLuint") @Unsigned int buffer,
         @NativeType("GLsizeiptr") long size,
-        @Pointer(comment="void*") MemorySegment data,
+        @Pointer(comment="void*") @NotNull MemorySegment data,
         @NativeType("GLenum") int usage
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glNamedBufferData);
@@ -15110,7 +15111,7 @@ public sealed class GL implements GLConstants permits GLCompatibility {
     public void namedBufferDataEXT(
         @NativeType("GLuint") @Unsigned int buffer,
         @NativeType("GLsizeiptr") long size,
-        @Pointer(comment="void*") MemorySegment data,
+        @Pointer(comment="void*") @NotNull MemorySegment data,
         @NativeType("GLenum") int usage
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glNamedBufferDataEXT);
@@ -15190,7 +15191,7 @@ public sealed class GL implements GLConstants permits GLCompatibility {
     public void namedBufferStorage(
         @NativeType("GLuint") @Unsigned int buffer,
         @NativeType("GLsizeiptr") long size,
-        @Pointer(comment="void*") MemorySegment data,
+        @Pointer(comment="void*") @NotNull MemorySegment data,
         @NativeType("GLbitfield") @Unsigned int flags
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glNamedBufferStorage);
@@ -15209,7 +15210,7 @@ public sealed class GL implements GLConstants permits GLCompatibility {
     public void namedBufferStorageEXT(
         @NativeType("GLuint") @Unsigned int buffer,
         @NativeType("GLsizeiptr") long size,
-        @Pointer(comment="void*") MemorySegment data,
+        @Pointer(comment="void*") @NotNull MemorySegment data,
         @NativeType("GLbitfield") @Unsigned int flags
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glNamedBufferStorageEXT);
@@ -15229,7 +15230,7 @@ public sealed class GL implements GLConstants permits GLCompatibility {
         @NativeType("GLuint") @Unsigned int buffer,
         @NativeType("GLintptr") long offset,
         @NativeType("GLsizeiptr") long size,
-        @Pointer(comment="void*") MemorySegment data
+        @Pointer(comment="void*") @NotNull MemorySegment data
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glNamedBufferSubData);
         try {
@@ -15248,7 +15249,7 @@ public sealed class GL implements GLConstants permits GLCompatibility {
         @NativeType("GLuint") @Unsigned int buffer,
         @NativeType("GLintptr") long offset,
         @NativeType("GLsizeiptr") long size,
-        @Pointer(comment="void*") MemorySegment data
+        @Pointer(comment="void*") @NotNull MemorySegment data
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glNamedBufferSubDataEXT);
         try {
@@ -15874,7 +15875,7 @@ public sealed class GL implements GLConstants permits GLCompatibility {
         @NativeType("GLenum") int target,
         @NativeType("GLenum") int format,
         @NativeType("GLsizei") int len,
-        @Pointer(comment="void*") MemorySegment string
+        @Pointer(comment="void*") @NotNull MemorySegment string
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glNamedProgramStringEXT);
         try {
@@ -16091,7 +16092,7 @@ public sealed class GL implements GLConstants permits GLCompatibility {
     }
 
     public void objectPtrLabel(
-        @Pointer(comment="void*") MemorySegment ptr,
+        @Pointer(comment="void*") @NotNull MemorySegment ptr,
         @NativeType("GLsizei") int length,
         @Nullable @Pointer(comment="GLchar") BytePtr label
     ) {
@@ -16108,7 +16109,7 @@ public sealed class GL implements GLConstants permits GLCompatibility {
     }
 
     public void objectPtrLabelKHR(
-        @Pointer(comment="void*") MemorySegment ptr,
+        @Pointer(comment="void*") @NotNull MemorySegment ptr,
         @NativeType("GLsizei") int length,
         @Nullable @Pointer(comment="GLchar") BytePtr label
     ) {
@@ -16160,7 +16161,7 @@ public sealed class GL implements GLConstants permits GLCompatibility {
         @Nullable @Pointer(comment="GLubyte") @Unsigned BytePtr commands,
         @NativeType("GLsizei") int numCoords,
         @NativeType("GLenum") int coordType,
-        @Pointer(comment="void*") MemorySegment coords
+        @Pointer(comment="void*") @NotNull MemorySegment coords
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glPathCommandsNV);
         try {
@@ -16181,7 +16182,7 @@ public sealed class GL implements GLConstants permits GLCompatibility {
         @NativeType("GLuint") @Unsigned int path,
         @NativeType("GLsizei") int numCoords,
         @NativeType("GLenum") int coordType,
-        @Pointer(comment="void*") MemorySegment coords
+        @Pointer(comment="void*") @NotNull MemorySegment coords
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glPathCoordsNV);
         try {
@@ -16229,7 +16230,7 @@ public sealed class GL implements GLConstants permits GLCompatibility {
     public @NativeType("GLenum") int pathGlyphIndexArrayNV(
         @NativeType("GLuint") @Unsigned int firstPathName,
         @NativeType("GLenum") int fontTarget,
-        @Pointer(comment="void*") MemorySegment fontName,
+        @Pointer(comment="void*") @NotNull MemorySegment fontName,
         @NativeType("GLbitfield") @Unsigned int fontStyle,
         @NativeType("GLuint") @Unsigned int firstGlyphIndex,
         @NativeType("GLsizei") int numGlyphs,
@@ -16255,7 +16256,7 @@ public sealed class GL implements GLConstants permits GLCompatibility {
 
     public @NativeType("GLenum") int pathGlyphIndexRangeNV(
         @NativeType("GLenum") int fontTarget,
-        @Pointer(comment="void*") MemorySegment fontName,
+        @Pointer(comment="void*") @NotNull MemorySegment fontName,
         @NativeType("GLbitfield") @Unsigned int fontStyle,
         @NativeType("GLuint") @Unsigned int pathParameterTemplate,
         @NativeType("GLfloat") float emScale,
@@ -16279,7 +16280,7 @@ public sealed class GL implements GLConstants permits GLCompatibility {
     public void pathGlyphRangeNV(
         @NativeType("GLuint") @Unsigned int firstPathName,
         @NativeType("GLenum") int fontTarget,
-        @Pointer(comment="void*") MemorySegment fontName,
+        @Pointer(comment="void*") @NotNull MemorySegment fontName,
         @NativeType("GLbitfield") @Unsigned int fontStyle,
         @NativeType("GLuint") @Unsigned int firstGlyph,
         @NativeType("GLsizei") int numGlyphs,
@@ -16308,11 +16309,11 @@ public sealed class GL implements GLConstants permits GLCompatibility {
     public void pathGlyphsNV(
         @NativeType("GLuint") @Unsigned int firstPathName,
         @NativeType("GLenum") int fontTarget,
-        @Pointer(comment="void*") MemorySegment fontName,
+        @Pointer(comment="void*") @NotNull MemorySegment fontName,
         @NativeType("GLbitfield") @Unsigned int fontStyle,
         @NativeType("GLsizei") int numGlyphs,
         @NativeType("GLenum") int type,
-        @Pointer(comment="void*") MemorySegment charcodes,
+        @Pointer(comment="void*") @NotNull MemorySegment charcodes,
         @NativeType("GLenum") int handleMissingGlyphs,
         @NativeType("GLuint") @Unsigned int pathParameterTemplate,
         @NativeType("GLfloat") float emScale
@@ -16340,7 +16341,7 @@ public sealed class GL implements GLConstants permits GLCompatibility {
         @NativeType("GLuint") @Unsigned int firstPathName,
         @NativeType("GLenum") int fontTarget,
         @NativeType("GLsizeiptr") long fontSize,
-        @Pointer(comment="void*") MemorySegment fontData,
+        @Pointer(comment="void*") @NotNull MemorySegment fontData,
         @NativeType("GLsizei") int faceIndex,
         @NativeType("GLuint") @Unsigned int firstGlyphIndex,
         @NativeType("GLsizei") int numGlyphs,
@@ -16469,7 +16470,7 @@ public sealed class GL implements GLConstants permits GLCompatibility {
         @NativeType("GLuint") @Unsigned int path,
         @NativeType("GLenum") int format,
         @NativeType("GLsizei") int length,
-        @Pointer(comment="void*") MemorySegment pathString
+        @Pointer(comment="void*") @NotNull MemorySegment pathString
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glPathStringNV);
         try {
@@ -16492,7 +16493,7 @@ public sealed class GL implements GLConstants permits GLCompatibility {
         @Nullable @Pointer(comment="GLubyte") @Unsigned BytePtr commands,
         @NativeType("GLsizei") int numCoords,
         @NativeType("GLenum") int coordType,
-        @Pointer(comment="void*") MemorySegment coords
+        @Pointer(comment="void*") @NotNull MemorySegment coords
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glPathSubCommandsNV);
         try {
@@ -16516,7 +16517,7 @@ public sealed class GL implements GLConstants permits GLCompatibility {
         @NativeType("GLsizei") int coordStart,
         @NativeType("GLsizei") int numCoords,
         @NativeType("GLenum") int coordType,
-        @Pointer(comment="void*") MemorySegment coords
+        @Pointer(comment="void*") @NotNull MemorySegment coords
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glPathSubCoordsNV);
         try {
@@ -16809,7 +16810,7 @@ public sealed class GL implements GLConstants permits GLCompatibility {
     public void programBinary(
         @NativeType("GLuint") @Unsigned int program,
         @NativeType("GLenum") int binaryFormat,
-        @Pointer(comment="void*") MemorySegment binary,
+        @Pointer(comment="void*") @NotNull MemorySegment binary,
         @NativeType("GLsizei") int length
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glProgramBinary);
@@ -19433,7 +19434,7 @@ public sealed class GL implements GLConstants permits GLCompatibility {
         @NativeType("GLsizei") int height,
         @NativeType("GLenum") int format,
         @NativeType("GLenum") int type,
-        @Pointer(comment="void*") MemorySegment pixels
+        @Pointer(comment="void*") @NotNull MemorySegment pixels
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glReadPixels);
         try {
@@ -19459,7 +19460,7 @@ public sealed class GL implements GLConstants permits GLCompatibility {
         @NativeType("GLenum") int format,
         @NativeType("GLenum") int type,
         @NativeType("GLsizei") int bufSize,
-        @Pointer(comment="void*") MemorySegment data
+        @Pointer(comment="void*") @NotNull MemorySegment data
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glReadnPixels);
         try {
@@ -19486,7 +19487,7 @@ public sealed class GL implements GLConstants permits GLCompatibility {
         @NativeType("GLenum") int format,
         @NativeType("GLenum") int type,
         @NativeType("GLsizei") int bufSize,
-        @Pointer(comment="void*") MemorySegment data
+        @Pointer(comment="void*") @NotNull MemorySegment data
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glReadnPixelsARB);
         try {
@@ -19513,7 +19514,7 @@ public sealed class GL implements GLConstants permits GLCompatibility {
         @NativeType("GLenum") int format,
         @NativeType("GLenum") int type,
         @NativeType("GLsizei") int bufSize,
-        @Pointer(comment="void*") MemorySegment data
+        @Pointer(comment="void*") @NotNull MemorySegment data
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glReadnPixelsKHR);
         try {
@@ -19945,7 +19946,7 @@ public sealed class GL implements GLConstants permits GLCompatibility {
         @NativeType("GLsizei") int count,
         @Nullable @Pointer(comment="GLuint") @Unsigned IntPtr shaders,
         @NativeType("GLenum") int binaryFormat,
-        @Pointer(comment="void*") MemorySegment binary,
+        @Pointer(comment="void*") @NotNull MemorySegment binary,
         @NativeType("GLsizei") int length
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glShaderBinary);
@@ -20146,7 +20147,7 @@ public sealed class GL implements GLConstants permits GLCompatibility {
     public void stencilFillPathInstancedNV(
         @NativeType("GLsizei") int numPaths,
         @NativeType("GLenum") int pathNameType,
-        @Pointer(comment="void*") MemorySegment paths,
+        @Pointer(comment="void*") @NotNull MemorySegment paths,
         @NativeType("GLuint") @Unsigned int pathBase,
         @NativeType("GLenum") int fillMode,
         @NativeType("GLuint") @Unsigned int mask,
@@ -20290,7 +20291,7 @@ public sealed class GL implements GLConstants permits GLCompatibility {
     public void stencilStrokePathInstancedNV(
         @NativeType("GLsizei") int numPaths,
         @NativeType("GLenum") int pathNameType,
-        @Pointer(comment="void*") MemorySegment paths,
+        @Pointer(comment="void*") @NotNull MemorySegment paths,
         @NativeType("GLuint") @Unsigned int pathBase,
         @NativeType("GLint") int reference,
         @NativeType("GLuint") @Unsigned int mask,
@@ -20334,7 +20335,7 @@ public sealed class GL implements GLConstants permits GLCompatibility {
     public void stencilThenCoverFillPathInstancedNV(
         @NativeType("GLsizei") int numPaths,
         @NativeType("GLenum") int pathNameType,
-        @Pointer(comment="void*") MemorySegment paths,
+        @Pointer(comment="void*") @NotNull MemorySegment paths,
         @NativeType("GLuint") @Unsigned int pathBase,
         @NativeType("GLenum") int fillMode,
         @NativeType("GLuint") @Unsigned int mask,
@@ -20382,7 +20383,7 @@ public sealed class GL implements GLConstants permits GLCompatibility {
     public void stencilThenCoverStrokePathInstancedNV(
         @NativeType("GLsizei") int numPaths,
         @NativeType("GLenum") int pathNameType,
-        @Pointer(comment="void*") MemorySegment paths,
+        @Pointer(comment="void*") @NotNull MemorySegment paths,
         @NativeType("GLuint") @Unsigned int pathBase,
         @NativeType("GLint") int reference,
         @NativeType("GLuint") @Unsigned int mask,
@@ -20539,7 +20540,7 @@ public sealed class GL implements GLConstants permits GLCompatibility {
         @NativeType("GLint") int border,
         @NativeType("GLenum") int format,
         @NativeType("GLenum") int type,
-        @Pointer(comment="void*") MemorySegment pixels
+        @Pointer(comment="void*") @NotNull MemorySegment pixels
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glTexImage1D);
         try {
@@ -20567,7 +20568,7 @@ public sealed class GL implements GLConstants permits GLCompatibility {
         @NativeType("GLint") int border,
         @NativeType("GLenum") int format,
         @NativeType("GLenum") int type,
-        @Pointer(comment="void*") MemorySegment pixels
+        @Pointer(comment="void*") @NotNull MemorySegment pixels
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glTexImage2D);
         try {
@@ -20620,7 +20621,7 @@ public sealed class GL implements GLConstants permits GLCompatibility {
         @NativeType("GLint") int border,
         @NativeType("GLenum") int format,
         @NativeType("GLenum") int type,
-        @Pointer(comment="void*") MemorySegment pixels
+        @Pointer(comment="void*") @NotNull MemorySegment pixels
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glTexImage3D);
         try {
@@ -21013,7 +21014,7 @@ public sealed class GL implements GLConstants permits GLCompatibility {
         @NativeType("GLsizei") int width,
         @NativeType("GLenum") int format,
         @NativeType("GLenum") int type,
-        @Pointer(comment="void*") MemorySegment pixels
+        @Pointer(comment="void*") @NotNull MemorySegment pixels
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glTexSubImage1D);
         try {
@@ -21040,7 +21041,7 @@ public sealed class GL implements GLConstants permits GLCompatibility {
         @NativeType("GLsizei") int height,
         @NativeType("GLenum") int format,
         @NativeType("GLenum") int type,
-        @Pointer(comment="void*") MemorySegment pixels
+        @Pointer(comment="void*") @NotNull MemorySegment pixels
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glTexSubImage2D);
         try {
@@ -21071,7 +21072,7 @@ public sealed class GL implements GLConstants permits GLCompatibility {
         @NativeType("GLsizei") int depth,
         @NativeType("GLenum") int format,
         @NativeType("GLenum") int type,
-        @Pointer(comment="void*") MemorySegment pixels
+        @Pointer(comment="void*") @NotNull MemorySegment pixels
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glTexSubImage3D);
         try {
@@ -21219,7 +21220,7 @@ public sealed class GL implements GLConstants permits GLCompatibility {
         @NativeType("GLint") int border,
         @NativeType("GLenum") int format,
         @NativeType("GLenum") int type,
-        @Pointer(comment="void*") MemorySegment pixels
+        @Pointer(comment="void*") @NotNull MemorySegment pixels
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glTextureImage1DEXT);
         try {
@@ -21249,7 +21250,7 @@ public sealed class GL implements GLConstants permits GLCompatibility {
         @NativeType("GLint") int border,
         @NativeType("GLenum") int format,
         @NativeType("GLenum") int type,
-        @Pointer(comment="void*") MemorySegment pixels
+        @Pointer(comment="void*") @NotNull MemorySegment pixels
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glTextureImage2DEXT);
         try {
@@ -21281,7 +21282,7 @@ public sealed class GL implements GLConstants permits GLCompatibility {
         @NativeType("GLint") int border,
         @NativeType("GLenum") int format,
         @NativeType("GLenum") int type,
-        @Pointer(comment="void*") MemorySegment pixels
+        @Pointer(comment="void*") @NotNull MemorySegment pixels
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glTextureImage3DEXT);
         try {
@@ -21839,7 +21840,7 @@ public sealed class GL implements GLConstants permits GLCompatibility {
         @NativeType("GLsizei") int width,
         @NativeType("GLenum") int format,
         @NativeType("GLenum") int type,
-        @Pointer(comment="void*") MemorySegment pixels
+        @Pointer(comment="void*") @NotNull MemorySegment pixels
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glTextureSubImage1D);
         try {
@@ -21865,7 +21866,7 @@ public sealed class GL implements GLConstants permits GLCompatibility {
         @NativeType("GLsizei") int width,
         @NativeType("GLenum") int format,
         @NativeType("GLenum") int type,
-        @Pointer(comment="void*") MemorySegment pixels
+        @Pointer(comment="void*") @NotNull MemorySegment pixels
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glTextureSubImage1DEXT);
         try {
@@ -21893,7 +21894,7 @@ public sealed class GL implements GLConstants permits GLCompatibility {
         @NativeType("GLsizei") int height,
         @NativeType("GLenum") int format,
         @NativeType("GLenum") int type,
-        @Pointer(comment="void*") MemorySegment pixels
+        @Pointer(comment="void*") @NotNull MemorySegment pixels
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glTextureSubImage2D);
         try {
@@ -21923,7 +21924,7 @@ public sealed class GL implements GLConstants permits GLCompatibility {
         @NativeType("GLsizei") int height,
         @NativeType("GLenum") int format,
         @NativeType("GLenum") int type,
-        @Pointer(comment="void*") MemorySegment pixels
+        @Pointer(comment="void*") @NotNull MemorySegment pixels
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glTextureSubImage2DEXT);
         try {
@@ -21955,7 +21956,7 @@ public sealed class GL implements GLConstants permits GLCompatibility {
         @NativeType("GLsizei") int depth,
         @NativeType("GLenum") int format,
         @NativeType("GLenum") int type,
-        @Pointer(comment="void*") MemorySegment pixels
+        @Pointer(comment="void*") @NotNull MemorySegment pixels
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glTextureSubImage3D);
         try {
@@ -21989,7 +21990,7 @@ public sealed class GL implements GLConstants permits GLCompatibility {
         @NativeType("GLsizei") int depth,
         @NativeType("GLenum") int format,
         @NativeType("GLenum") int type,
-        @Pointer(comment="void*") MemorySegment pixels
+        @Pointer(comment="void*") @NotNull MemorySegment pixels
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glTextureSubImage3DEXT);
         try {
@@ -25174,7 +25175,7 @@ public sealed class GL implements GLConstants permits GLCompatibility {
         @NativeType("GLint") int size,
         @NativeType("GLenum") int type,
         @NativeType("GLsizei") int stride,
-        @Pointer(comment="void*") MemorySegment pointer
+        @Pointer(comment="void*") @NotNull MemorySegment pointer
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glVertexAttribIPointer);
         try {
@@ -25659,7 +25660,7 @@ public sealed class GL implements GLConstants permits GLCompatibility {
         @NativeType("GLint") int size,
         @NativeType("GLenum") int type,
         @NativeType("GLsizei") int stride,
-        @Pointer(comment="void*") MemorySegment pointer
+        @Pointer(comment="void*") @NotNull MemorySegment pointer
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glVertexAttribLPointer);
         try {
@@ -25833,7 +25834,7 @@ public sealed class GL implements GLConstants permits GLCompatibility {
         @NativeType("GLenum") int type,
         @NativeType("GLboolean") @Unsigned byte normalized,
         @NativeType("GLsizei") int stride,
-        @Pointer(comment="void*") MemorySegment pointer
+        @Pointer(comment="void*") @NotNull MemorySegment pointer
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glVertexAttribPointer);
         try {

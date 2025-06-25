@@ -27,7 +27,7 @@ import static club.doki7.vulkan.VkConstants.*;
 ///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
 ///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
 ///     uint32_t mutableDescriptorTypeListCount; // optional // @link substring="mutableDescriptorTypeListCount" target="#mutableDescriptorTypeListCount"
-///     VkMutableDescriptorTypeListEXT const* pMutableDescriptorTypeLists; // @link substring="VkMutableDescriptorTypeListEXT" target="VkMutableDescriptorTypeListEXT" @link substring="pMutableDescriptorTypeLists" target="#pMutableDescriptorTypeLists"
+///     VkMutableDescriptorTypeListEXT const* pMutableDescriptorTypeLists; // optional // @link substring="VkMutableDescriptorTypeListEXT" target="VkMutableDescriptorTypeListEXT" @link substring="pMutableDescriptorTypeLists" target="#pMutableDescriptorTypeLists"
 /// } VkMutableDescriptorTypeCreateInfoEXT;
 /// }
 ///
@@ -86,6 +86,11 @@ public record VkMutableDescriptorTypeCreateInfoEXT(@NotNull MemorySegment segmen
         /// indicate that the returned structure is a view of the original structure.
         public @NotNull VkMutableDescriptorTypeCreateInfoEXT at(long index) {
             return new VkMutableDescriptorTypeCreateInfoEXT(segment.asSlice(index * VkMutableDescriptorTypeCreateInfoEXT.BYTES, VkMutableDescriptorTypeCreateInfoEXT.BYTES));
+        }
+
+        public VkMutableDescriptorTypeCreateInfoEXT.Ptr at(long index, @NotNull Consumer<@NotNull VkMutableDescriptorTypeCreateInfoEXT> consumer) {
+            consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkMutableDescriptorTypeCreateInfoEXT value) {
@@ -200,12 +205,13 @@ public record VkMutableDescriptorTypeCreateInfoEXT(@NotNull MemorySegment segmen
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkMutableDescriptorTypeCreateInfoEXT pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkMutableDescriptorTypeCreateInfoEXT pNext(@Nullable IPointer pointer) {
@@ -246,11 +252,11 @@ public record VkMutableDescriptorTypeCreateInfoEXT(@NotNull MemorySegment segmen
         return new VkMutableDescriptorTypeListEXT(s);
     }
 
-    public @Pointer(target=VkMutableDescriptorTypeListEXT.class) MemorySegment pMutableDescriptorTypeListsRaw() {
+    public @Pointer(target=VkMutableDescriptorTypeListEXT.class) @NotNull MemorySegment pMutableDescriptorTypeListsRaw() {
         return segment.get(LAYOUT$pMutableDescriptorTypeLists, OFFSET$pMutableDescriptorTypeLists);
     }
 
-    public void pMutableDescriptorTypeListsRaw(@Pointer(target=VkMutableDescriptorTypeListEXT.class) MemorySegment value) {
+    public void pMutableDescriptorTypeListsRaw(@Pointer(target=VkMutableDescriptorTypeListEXT.class) @NotNull MemorySegment value) {
         segment.set(LAYOUT$pMutableDescriptorTypeLists, OFFSET$pMutableDescriptorTypeLists, value);
     }
 

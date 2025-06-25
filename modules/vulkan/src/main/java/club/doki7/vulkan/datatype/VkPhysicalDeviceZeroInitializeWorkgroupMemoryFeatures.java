@@ -87,6 +87,11 @@ public record VkPhysicalDeviceZeroInitializeWorkgroupMemoryFeatures(@NotNull Mem
             return new VkPhysicalDeviceZeroInitializeWorkgroupMemoryFeatures(segment.asSlice(index * VkPhysicalDeviceZeroInitializeWorkgroupMemoryFeatures.BYTES, VkPhysicalDeviceZeroInitializeWorkgroupMemoryFeatures.BYTES));
         }
 
+        public VkPhysicalDeviceZeroInitializeWorkgroupMemoryFeatures.Ptr at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceZeroInitializeWorkgroupMemoryFeatures> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkPhysicalDeviceZeroInitializeWorkgroupMemoryFeatures value) {
             MemorySegment s = segment.asSlice(index * VkPhysicalDeviceZeroInitializeWorkgroupMemoryFeatures.BYTES, VkPhysicalDeviceZeroInitializeWorkgroupMemoryFeatures.BYTES);
             s.copyFrom(value.segment);
@@ -199,12 +204,13 @@ public record VkPhysicalDeviceZeroInitializeWorkgroupMemoryFeatures(@NotNull Mem
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkPhysicalDeviceZeroInitializeWorkgroupMemoryFeatures pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkPhysicalDeviceZeroInitializeWorkgroupMemoryFeatures pNext(@Nullable IPointer pointer) {

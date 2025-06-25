@@ -87,6 +87,11 @@ public record VkVideoEncodeH265DpbSlotInfoKHR(@NotNull MemorySegment segment) im
             return new VkVideoEncodeH265DpbSlotInfoKHR(segment.asSlice(index * VkVideoEncodeH265DpbSlotInfoKHR.BYTES, VkVideoEncodeH265DpbSlotInfoKHR.BYTES));
         }
 
+        public VkVideoEncodeH265DpbSlotInfoKHR.Ptr at(long index, @NotNull Consumer<@NotNull VkVideoEncodeH265DpbSlotInfoKHR> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkVideoEncodeH265DpbSlotInfoKHR value) {
             MemorySegment s = segment.asSlice(index * VkVideoEncodeH265DpbSlotInfoKHR.BYTES, VkVideoEncodeH265DpbSlotInfoKHR.BYTES);
             s.copyFrom(value.segment);
@@ -199,12 +204,13 @@ public record VkVideoEncodeH265DpbSlotInfoKHR(@NotNull MemorySegment segment) im
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkVideoEncodeH265DpbSlotInfoKHR pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkVideoEncodeH265DpbSlotInfoKHR pNext(@Nullable IPointer pointer) {
@@ -236,11 +242,11 @@ public record VkVideoEncodeH265DpbSlotInfoKHR(@NotNull MemorySegment segment) im
         return new StdVideoEncodeH265ReferenceInfo(s);
     }
 
-    public @Pointer(target=StdVideoEncodeH265ReferenceInfo.class) MemorySegment pStdReferenceInfoRaw() {
+    public @Pointer(target=StdVideoEncodeH265ReferenceInfo.class) @NotNull MemorySegment pStdReferenceInfoRaw() {
         return segment.get(LAYOUT$pStdReferenceInfo, OFFSET$pStdReferenceInfo);
     }
 
-    public void pStdReferenceInfoRaw(@Pointer(target=StdVideoEncodeH265ReferenceInfo.class) MemorySegment value) {
+    public void pStdReferenceInfoRaw(@Pointer(target=StdVideoEncodeH265ReferenceInfo.class) @NotNull MemorySegment value) {
         segment.set(LAYOUT$pStdReferenceInfo, OFFSET$pStdReferenceInfo, value);
     }
 

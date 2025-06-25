@@ -89,6 +89,11 @@ public record VkPipelineColorBlendAdvancedStateCreateInfoEXT(@NotNull MemorySegm
             return new VkPipelineColorBlendAdvancedStateCreateInfoEXT(segment.asSlice(index * VkPipelineColorBlendAdvancedStateCreateInfoEXT.BYTES, VkPipelineColorBlendAdvancedStateCreateInfoEXT.BYTES));
         }
 
+        public VkPipelineColorBlendAdvancedStateCreateInfoEXT.Ptr at(long index, @NotNull Consumer<@NotNull VkPipelineColorBlendAdvancedStateCreateInfoEXT> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkPipelineColorBlendAdvancedStateCreateInfoEXT value) {
             MemorySegment s = segment.asSlice(index * VkPipelineColorBlendAdvancedStateCreateInfoEXT.BYTES, VkPipelineColorBlendAdvancedStateCreateInfoEXT.BYTES);
             s.copyFrom(value.segment);
@@ -201,12 +206,13 @@ public record VkPipelineColorBlendAdvancedStateCreateInfoEXT(@NotNull MemorySegm
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkPipelineColorBlendAdvancedStateCreateInfoEXT pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkPipelineColorBlendAdvancedStateCreateInfoEXT pNext(@Nullable IPointer pointer) {

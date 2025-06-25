@@ -87,6 +87,11 @@ public record VkPhysicalDeviceExternalFormatResolveFeaturesANDROID(@NotNull Memo
             return new VkPhysicalDeviceExternalFormatResolveFeaturesANDROID(segment.asSlice(index * VkPhysicalDeviceExternalFormatResolveFeaturesANDROID.BYTES, VkPhysicalDeviceExternalFormatResolveFeaturesANDROID.BYTES));
         }
 
+        public VkPhysicalDeviceExternalFormatResolveFeaturesANDROID.Ptr at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceExternalFormatResolveFeaturesANDROID> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkPhysicalDeviceExternalFormatResolveFeaturesANDROID value) {
             MemorySegment s = segment.asSlice(index * VkPhysicalDeviceExternalFormatResolveFeaturesANDROID.BYTES, VkPhysicalDeviceExternalFormatResolveFeaturesANDROID.BYTES);
             s.copyFrom(value.segment);
@@ -199,12 +204,13 @@ public record VkPhysicalDeviceExternalFormatResolveFeaturesANDROID(@NotNull Memo
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkPhysicalDeviceExternalFormatResolveFeaturesANDROID pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkPhysicalDeviceExternalFormatResolveFeaturesANDROID pNext(@Nullable IPointer pointer) {

@@ -87,6 +87,11 @@ public record VkPhysicalDeviceShaderMaximalReconvergenceFeaturesKHR(@NotNull Mem
             return new VkPhysicalDeviceShaderMaximalReconvergenceFeaturesKHR(segment.asSlice(index * VkPhysicalDeviceShaderMaximalReconvergenceFeaturesKHR.BYTES, VkPhysicalDeviceShaderMaximalReconvergenceFeaturesKHR.BYTES));
         }
 
+        public VkPhysicalDeviceShaderMaximalReconvergenceFeaturesKHR.Ptr at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceShaderMaximalReconvergenceFeaturesKHR> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkPhysicalDeviceShaderMaximalReconvergenceFeaturesKHR value) {
             MemorySegment s = segment.asSlice(index * VkPhysicalDeviceShaderMaximalReconvergenceFeaturesKHR.BYTES, VkPhysicalDeviceShaderMaximalReconvergenceFeaturesKHR.BYTES);
             s.copyFrom(value.segment);
@@ -199,12 +204,13 @@ public record VkPhysicalDeviceShaderMaximalReconvergenceFeaturesKHR(@NotNull Mem
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkPhysicalDeviceShaderMaximalReconvergenceFeaturesKHR pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkPhysicalDeviceShaderMaximalReconvergenceFeaturesKHR pNext(@Nullable IPointer pointer) {

@@ -80,6 +80,11 @@ public record VkDrawIndexedIndirectCommand(@NotNull MemorySegment segment) imple
             return new VkDrawIndexedIndirectCommand(segment.asSlice(index * VkDrawIndexedIndirectCommand.BYTES, VkDrawIndexedIndirectCommand.BYTES));
         }
 
+        public VkDrawIndexedIndirectCommand.Ptr at(long index, @NotNull Consumer<@NotNull VkDrawIndexedIndirectCommand> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkDrawIndexedIndirectCommand value) {
             MemorySegment s = segment.asSlice(index * VkDrawIndexedIndirectCommand.BYTES, VkDrawIndexedIndirectCommand.BYTES);
             s.copyFrom(value.segment);

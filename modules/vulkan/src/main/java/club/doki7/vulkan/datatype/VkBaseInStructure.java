@@ -77,6 +77,11 @@ public record VkBaseInStructure(@NotNull MemorySegment segment) implements IVkBa
             return new VkBaseInStructure(segment.asSlice(index * VkBaseInStructure.BYTES, VkBaseInStructure.BYTES));
         }
 
+        public VkBaseInStructure.Ptr at(long index, @NotNull Consumer<@NotNull VkBaseInStructure> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkBaseInStructure value) {
             MemorySegment s = segment.asSlice(index * VkBaseInStructure.BYTES, VkBaseInStructure.BYTES);
             s.copyFrom(value.segment);
@@ -203,11 +208,11 @@ public record VkBaseInStructure(@NotNull MemorySegment segment) implements IVkBa
         return new VkBaseInStructure(s);
     }
 
-    public @Pointer(target=VkBaseInStructure.class) MemorySegment pNextRaw() {
+    public @Pointer(target=VkBaseInStructure.class) @NotNull MemorySegment pNextRaw() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNextRaw(@Pointer(target=VkBaseInStructure.class) MemorySegment value) {
+    public void pNextRaw(@Pointer(target=VkBaseInStructure.class) @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 

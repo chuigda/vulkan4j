@@ -87,6 +87,11 @@ public record VkExportMemoryAllocateInfoNV(@NotNull MemorySegment segment) imple
             return new VkExportMemoryAllocateInfoNV(segment.asSlice(index * VkExportMemoryAllocateInfoNV.BYTES, VkExportMemoryAllocateInfoNV.BYTES));
         }
 
+        public VkExportMemoryAllocateInfoNV.Ptr at(long index, @NotNull Consumer<@NotNull VkExportMemoryAllocateInfoNV> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkExportMemoryAllocateInfoNV value) {
             MemorySegment s = segment.asSlice(index * VkExportMemoryAllocateInfoNV.BYTES, VkExportMemoryAllocateInfoNV.BYTES);
             s.copyFrom(value.segment);
@@ -199,12 +204,13 @@ public record VkExportMemoryAllocateInfoNV(@NotNull MemorySegment segment) imple
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkExportMemoryAllocateInfoNV pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkExportMemoryAllocateInfoNV pNext(@Nullable IPointer pointer) {
@@ -212,11 +218,11 @@ public record VkExportMemoryAllocateInfoNV(@NotNull MemorySegment segment) imple
         return this;
     }
 
-    public @EnumType(VkExternalMemoryHandleTypeFlagsNV.class) int handleTypes() {
+    public @Bitmask(VkExternalMemoryHandleTypeFlagsNV.class) int handleTypes() {
         return segment.get(LAYOUT$handleTypes, OFFSET$handleTypes);
     }
 
-    public VkExportMemoryAllocateInfoNV handleTypes(@EnumType(VkExternalMemoryHandleTypeFlagsNV.class) int value) {
+    public VkExportMemoryAllocateInfoNV handleTypes(@Bitmask(VkExternalMemoryHandleTypeFlagsNV.class) int value) {
         segment.set(LAYOUT$handleTypes, OFFSET$handleTypes, value);
         return this;
     }

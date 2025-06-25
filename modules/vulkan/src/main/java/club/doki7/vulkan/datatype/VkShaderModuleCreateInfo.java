@@ -89,6 +89,11 @@ public record VkShaderModuleCreateInfo(@NotNull MemorySegment segment) implement
             return new VkShaderModuleCreateInfo(segment.asSlice(index * VkShaderModuleCreateInfo.BYTES, VkShaderModuleCreateInfo.BYTES));
         }
 
+        public VkShaderModuleCreateInfo.Ptr at(long index, @NotNull Consumer<@NotNull VkShaderModuleCreateInfo> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkShaderModuleCreateInfo value) {
             MemorySegment s = segment.asSlice(index * VkShaderModuleCreateInfo.BYTES, VkShaderModuleCreateInfo.BYTES);
             s.copyFrom(value.segment);
@@ -201,12 +206,13 @@ public record VkShaderModuleCreateInfo(@NotNull MemorySegment segment) implement
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkShaderModuleCreateInfo pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkShaderModuleCreateInfo pNext(@Nullable IPointer pointer) {
@@ -214,11 +220,11 @@ public record VkShaderModuleCreateInfo(@NotNull MemorySegment segment) implement
         return this;
     }
 
-    public @EnumType(VkShaderModuleCreateFlags.class) int flags() {
+    public @Bitmask(VkShaderModuleCreateFlags.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public VkShaderModuleCreateInfo flags(@EnumType(VkShaderModuleCreateFlags.class) int value) {
+    public VkShaderModuleCreateInfo flags(@Bitmask(VkShaderModuleCreateFlags.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
         return this;
     }
@@ -250,11 +256,11 @@ public record VkShaderModuleCreateInfo(@NotNull MemorySegment segment) implement
         return this;
     }
 
-    public @Pointer(comment="uint32_t*") MemorySegment pCodeRaw() {
+    public @Pointer(comment="uint32_t*") @NotNull MemorySegment pCodeRaw() {
         return segment.get(LAYOUT$pCode, OFFSET$pCode);
     }
 
-    public void pCodeRaw(@Pointer(comment="uint32_t*") MemorySegment value) {
+    public void pCodeRaw(@Pointer(comment="uint32_t*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pCode, OFFSET$pCode, value);
     }
 

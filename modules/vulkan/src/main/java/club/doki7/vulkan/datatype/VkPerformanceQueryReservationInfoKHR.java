@@ -87,6 +87,11 @@ public record VkPerformanceQueryReservationInfoKHR(@NotNull MemorySegment segmen
             return new VkPerformanceQueryReservationInfoKHR(segment.asSlice(index * VkPerformanceQueryReservationInfoKHR.BYTES, VkPerformanceQueryReservationInfoKHR.BYTES));
         }
 
+        public VkPerformanceQueryReservationInfoKHR.Ptr at(long index, @NotNull Consumer<@NotNull VkPerformanceQueryReservationInfoKHR> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkPerformanceQueryReservationInfoKHR value) {
             MemorySegment s = segment.asSlice(index * VkPerformanceQueryReservationInfoKHR.BYTES, VkPerformanceQueryReservationInfoKHR.BYTES);
             s.copyFrom(value.segment);
@@ -199,12 +204,13 @@ public record VkPerformanceQueryReservationInfoKHR(@NotNull MemorySegment segmen
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkPerformanceQueryReservationInfoKHR pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkPerformanceQueryReservationInfoKHR pNext(@Nullable IPointer pointer) {

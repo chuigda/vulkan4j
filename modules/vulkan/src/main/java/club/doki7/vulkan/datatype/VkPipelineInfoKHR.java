@@ -87,6 +87,11 @@ public record VkPipelineInfoKHR(@NotNull MemorySegment segment) implements IVkPi
             return new VkPipelineInfoKHR(segment.asSlice(index * VkPipelineInfoKHR.BYTES, VkPipelineInfoKHR.BYTES));
         }
 
+        public VkPipelineInfoKHR.Ptr at(long index, @NotNull Consumer<@NotNull VkPipelineInfoKHR> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkPipelineInfoKHR value) {
             MemorySegment s = segment.asSlice(index * VkPipelineInfoKHR.BYTES, VkPipelineInfoKHR.BYTES);
             s.copyFrom(value.segment);
@@ -199,12 +204,13 @@ public record VkPipelineInfoKHR(@NotNull MemorySegment segment) implements IVkPi
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkPipelineInfoKHR pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkPipelineInfoKHR pNext(@Nullable IPointer pointer) {

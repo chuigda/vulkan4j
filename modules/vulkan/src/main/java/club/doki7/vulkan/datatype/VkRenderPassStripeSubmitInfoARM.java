@@ -88,6 +88,11 @@ public record VkRenderPassStripeSubmitInfoARM(@NotNull MemorySegment segment) im
             return new VkRenderPassStripeSubmitInfoARM(segment.asSlice(index * VkRenderPassStripeSubmitInfoARM.BYTES, VkRenderPassStripeSubmitInfoARM.BYTES));
         }
 
+        public VkRenderPassStripeSubmitInfoARM.Ptr at(long index, @NotNull Consumer<@NotNull VkRenderPassStripeSubmitInfoARM> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkRenderPassStripeSubmitInfoARM value) {
             MemorySegment s = segment.asSlice(index * VkRenderPassStripeSubmitInfoARM.BYTES, VkRenderPassStripeSubmitInfoARM.BYTES);
             s.copyFrom(value.segment);
@@ -200,12 +205,13 @@ public record VkRenderPassStripeSubmitInfoARM(@NotNull MemorySegment segment) im
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkRenderPassStripeSubmitInfoARM pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkRenderPassStripeSubmitInfoARM pNext(@Nullable IPointer pointer) {
@@ -246,11 +252,11 @@ public record VkRenderPassStripeSubmitInfoARM(@NotNull MemorySegment segment) im
         return new VkSemaphoreSubmitInfo(s);
     }
 
-    public @Pointer(target=VkSemaphoreSubmitInfo.class) MemorySegment pStripeSemaphoreInfosRaw() {
+    public @Pointer(target=VkSemaphoreSubmitInfo.class) @NotNull MemorySegment pStripeSemaphoreInfosRaw() {
         return segment.get(LAYOUT$pStripeSemaphoreInfos, OFFSET$pStripeSemaphoreInfos);
     }
 
-    public void pStripeSemaphoreInfosRaw(@Pointer(target=VkSemaphoreSubmitInfo.class) MemorySegment value) {
+    public void pStripeSemaphoreInfosRaw(@Pointer(target=VkSemaphoreSubmitInfo.class) @NotNull MemorySegment value) {
         segment.set(LAYOUT$pStripeSemaphoreInfos, OFFSET$pStripeSemaphoreInfos, value);
     }
 

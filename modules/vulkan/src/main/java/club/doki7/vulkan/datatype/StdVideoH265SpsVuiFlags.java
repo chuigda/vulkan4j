@@ -92,6 +92,11 @@ public record StdVideoH265SpsVuiFlags(@NotNull MemorySegment segment) implements
             return new StdVideoH265SpsVuiFlags(segment.asSlice(index * StdVideoH265SpsVuiFlags.BYTES, StdVideoH265SpsVuiFlags.BYTES));
         }
 
+        public StdVideoH265SpsVuiFlags.Ptr at(long index, @NotNull Consumer<@NotNull StdVideoH265SpsVuiFlags> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull StdVideoH265SpsVuiFlags value) {
             MemorySegment s = segment.asSlice(index * StdVideoH265SpsVuiFlags.BYTES, StdVideoH265SpsVuiFlags.BYTES);
             s.copyFrom(value.segment);

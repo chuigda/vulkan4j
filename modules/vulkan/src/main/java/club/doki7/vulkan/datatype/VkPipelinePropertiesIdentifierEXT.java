@@ -87,6 +87,11 @@ public record VkPipelinePropertiesIdentifierEXT(@NotNull MemorySegment segment) 
             return new VkPipelinePropertiesIdentifierEXT(segment.asSlice(index * VkPipelinePropertiesIdentifierEXT.BYTES, VkPipelinePropertiesIdentifierEXT.BYTES));
         }
 
+        public VkPipelinePropertiesIdentifierEXT.Ptr at(long index, @NotNull Consumer<@NotNull VkPipelinePropertiesIdentifierEXT> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkPipelinePropertiesIdentifierEXT value) {
             MemorySegment s = segment.asSlice(index * VkPipelinePropertiesIdentifierEXT.BYTES, VkPipelinePropertiesIdentifierEXT.BYTES);
             s.copyFrom(value.segment);
@@ -199,12 +204,13 @@ public record VkPipelinePropertiesIdentifierEXT(@NotNull MemorySegment segment) 
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkPipelinePropertiesIdentifierEXT pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkPipelinePropertiesIdentifierEXT pNext(@Nullable IPointer pointer) {
@@ -216,12 +222,19 @@ public record VkPipelinePropertiesIdentifierEXT(@NotNull MemorySegment segment) 
         return new BytePtr(pipelineIdentifierRaw());
     }
 
-    public VkPipelinePropertiesIdentifierEXT pipelineIdentifier(@Unsigned BytePtr value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$pipelineIdentifier, SIZE$pipelineIdentifier);
+    public VkPipelinePropertiesIdentifierEXT pipelineIdentifier(@NotNull Consumer<BytePtr> consumer) {
+        @Unsigned BytePtr ptr = pipelineIdentifier();
+        consumer.accept(ptr);
         return this;
     }
 
-    public MemorySegment pipelineIdentifierRaw() {
+    public VkPipelinePropertiesIdentifierEXT pipelineIdentifier(@Unsigned BytePtr value) {
+        MemorySegment s = pipelineIdentifierRaw();
+        s.copyFrom(value.segment());
+        return this;
+    }
+
+    public @NotNull MemorySegment pipelineIdentifierRaw() {
         return segment.asSlice(OFFSET$pipelineIdentifier, SIZE$pipelineIdentifier);
     }
 

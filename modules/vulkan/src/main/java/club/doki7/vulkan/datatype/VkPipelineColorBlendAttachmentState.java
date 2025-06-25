@@ -83,6 +83,11 @@ public record VkPipelineColorBlendAttachmentState(@NotNull MemorySegment segment
             return new VkPipelineColorBlendAttachmentState(segment.asSlice(index * VkPipelineColorBlendAttachmentState.BYTES, VkPipelineColorBlendAttachmentState.BYTES));
         }
 
+        public VkPipelineColorBlendAttachmentState.Ptr at(long index, @NotNull Consumer<@NotNull VkPipelineColorBlendAttachmentState> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkPipelineColorBlendAttachmentState value) {
             MemorySegment s = segment.asSlice(index * VkPipelineColorBlendAttachmentState.BYTES, VkPipelineColorBlendAttachmentState.BYTES);
             s.copyFrom(value.segment);
@@ -239,11 +244,11 @@ public record VkPipelineColorBlendAttachmentState(@NotNull MemorySegment segment
         return this;
     }
 
-    public @EnumType(VkColorComponentFlags.class) int colorWriteMask() {
+    public @Bitmask(VkColorComponentFlags.class) int colorWriteMask() {
         return segment.get(LAYOUT$colorWriteMask, OFFSET$colorWriteMask);
     }
 
-    public VkPipelineColorBlendAttachmentState colorWriteMask(@EnumType(VkColorComponentFlags.class) int value) {
+    public VkPipelineColorBlendAttachmentState colorWriteMask(@Bitmask(VkColorComponentFlags.class) int value) {
         segment.set(LAYOUT$colorWriteMask, OFFSET$colorWriteMask, value);
         return this;
     }

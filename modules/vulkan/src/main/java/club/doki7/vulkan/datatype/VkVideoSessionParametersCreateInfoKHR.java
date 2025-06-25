@@ -89,6 +89,11 @@ public record VkVideoSessionParametersCreateInfoKHR(@NotNull MemorySegment segme
             return new VkVideoSessionParametersCreateInfoKHR(segment.asSlice(index * VkVideoSessionParametersCreateInfoKHR.BYTES, VkVideoSessionParametersCreateInfoKHR.BYTES));
         }
 
+        public VkVideoSessionParametersCreateInfoKHR.Ptr at(long index, @NotNull Consumer<@NotNull VkVideoSessionParametersCreateInfoKHR> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkVideoSessionParametersCreateInfoKHR value) {
             MemorySegment s = segment.asSlice(index * VkVideoSessionParametersCreateInfoKHR.BYTES, VkVideoSessionParametersCreateInfoKHR.BYTES);
             s.copyFrom(value.segment);
@@ -201,12 +206,13 @@ public record VkVideoSessionParametersCreateInfoKHR(@NotNull MemorySegment segme
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkVideoSessionParametersCreateInfoKHR pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkVideoSessionParametersCreateInfoKHR pNext(@Nullable IPointer pointer) {
@@ -214,11 +220,11 @@ public record VkVideoSessionParametersCreateInfoKHR(@NotNull MemorySegment segme
         return this;
     }
 
-    public @EnumType(VkVideoSessionParametersCreateFlagsKHR.class) int flags() {
+    public @Bitmask(VkVideoSessionParametersCreateFlagsKHR.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public VkVideoSessionParametersCreateInfoKHR flags(@EnumType(VkVideoSessionParametersCreateFlagsKHR.class) int value) {
+    public VkVideoSessionParametersCreateInfoKHR flags(@Bitmask(VkVideoSessionParametersCreateFlagsKHR.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
         return this;
     }

@@ -33,7 +33,7 @@ import static club.doki7.vulkan.VkConstants.*;
 ///     VkAccelerationStructureKHR dstAccelerationStructure; // optional // @link substring="VkAccelerationStructureKHR" target="VkAccelerationStructureKHR" @link substring="dstAccelerationStructure" target="#dstAccelerationStructure"
 ///     uint32_t geometryCount; // optional // @link substring="geometryCount" target="#geometryCount"
 ///     VkAccelerationStructureGeometryKHR const* pGeometries; // optional // @link substring="VkAccelerationStructureGeometryKHR" target="VkAccelerationStructureGeometryKHR" @link substring="pGeometries" target="#pGeometries"
-///     VkAccelerationStructureGeometryKHR const* const* ppGeometries; // @link substring="VkAccelerationStructureGeometryKHR" target="VkAccelerationStructureGeometryKHR" @link substring="ppGeometries" target="#ppGeometries"
+///     VkAccelerationStructureGeometryKHR const* const* ppGeometries; // optional // @link substring="VkAccelerationStructureGeometryKHR" target="VkAccelerationStructureGeometryKHR" @link substring="ppGeometries" target="#ppGeometries"
 ///     VkDeviceOrHostAddressKHR scratchData; // @link substring="VkDeviceOrHostAddressKHR" target="VkDeviceOrHostAddressKHR" @link substring="scratchData" target="#scratchData"
 /// } VkAccelerationStructureBuildGeometryInfoKHR;
 /// }
@@ -93,6 +93,11 @@ public record VkAccelerationStructureBuildGeometryInfoKHR(@NotNull MemorySegment
         /// indicate that the returned structure is a view of the original structure.
         public @NotNull VkAccelerationStructureBuildGeometryInfoKHR at(long index) {
             return new VkAccelerationStructureBuildGeometryInfoKHR(segment.asSlice(index * VkAccelerationStructureBuildGeometryInfoKHR.BYTES, VkAccelerationStructureBuildGeometryInfoKHR.BYTES));
+        }
+
+        public VkAccelerationStructureBuildGeometryInfoKHR.Ptr at(long index, @NotNull Consumer<@NotNull VkAccelerationStructureBuildGeometryInfoKHR> consumer) {
+            consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkAccelerationStructureBuildGeometryInfoKHR value) {
@@ -207,12 +212,13 @@ public record VkAccelerationStructureBuildGeometryInfoKHR(@NotNull MemorySegment
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkAccelerationStructureBuildGeometryInfoKHR pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkAccelerationStructureBuildGeometryInfoKHR pNext(@Nullable IPointer pointer) {
@@ -229,11 +235,11 @@ public record VkAccelerationStructureBuildGeometryInfoKHR(@NotNull MemorySegment
         return this;
     }
 
-    public @EnumType(VkBuildAccelerationStructureFlagsKHR.class) int flags() {
+    public @Bitmask(VkBuildAccelerationStructureFlagsKHR.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public VkAccelerationStructureBuildGeometryInfoKHR flags(@EnumType(VkBuildAccelerationStructureFlagsKHR.class) int value) {
+    public VkAccelerationStructureBuildGeometryInfoKHR flags(@Bitmask(VkBuildAccelerationStructureFlagsKHR.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
         return this;
     }
@@ -306,11 +312,11 @@ public record VkAccelerationStructureBuildGeometryInfoKHR(@NotNull MemorySegment
         return new VkAccelerationStructureGeometryKHR(s);
     }
 
-    public @Pointer(target=VkAccelerationStructureGeometryKHR.class) MemorySegment pGeometriesRaw() {
+    public @Pointer(target=VkAccelerationStructureGeometryKHR.class) @NotNull MemorySegment pGeometriesRaw() {
         return segment.get(LAYOUT$pGeometries, OFFSET$pGeometries);
     }
 
-    public void pGeometriesRaw(@Pointer(target=VkAccelerationStructureGeometryKHR.class) MemorySegment value) {
+    public void pGeometriesRaw(@Pointer(target=VkAccelerationStructureGeometryKHR.class) @NotNull MemorySegment value) {
         segment.set(LAYOUT$pGeometries, OFFSET$pGeometries, value);
     }
 
@@ -331,11 +337,11 @@ public record VkAccelerationStructureBuildGeometryInfoKHR(@NotNull MemorySegment
         return this;
     }
 
-    public @Pointer(comment="void**") MemorySegment ppGeometriesRaw() {
+    public @Pointer(comment="void**") @NotNull MemorySegment ppGeometriesRaw() {
         return segment.get(LAYOUT$ppGeometries, OFFSET$ppGeometries);
     }
 
-    public void ppGeometriesRaw(@Pointer(comment="void**") MemorySegment value) {
+    public void ppGeometriesRaw(@Pointer(comment="void**") @NotNull MemorySegment value) {
         segment.set(LAYOUT$ppGeometries, OFFSET$ppGeometries, value);
     }
 

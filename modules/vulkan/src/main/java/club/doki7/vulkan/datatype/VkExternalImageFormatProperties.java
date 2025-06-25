@@ -87,6 +87,11 @@ public record VkExternalImageFormatProperties(@NotNull MemorySegment segment) im
             return new VkExternalImageFormatProperties(segment.asSlice(index * VkExternalImageFormatProperties.BYTES, VkExternalImageFormatProperties.BYTES));
         }
 
+        public VkExternalImageFormatProperties.Ptr at(long index, @NotNull Consumer<@NotNull VkExternalImageFormatProperties> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkExternalImageFormatProperties value) {
             MemorySegment s = segment.asSlice(index * VkExternalImageFormatProperties.BYTES, VkExternalImageFormatProperties.BYTES);
             s.copyFrom(value.segment);
@@ -199,12 +204,13 @@ public record VkExternalImageFormatProperties(@NotNull MemorySegment segment) im
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkExternalImageFormatProperties pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkExternalImageFormatProperties pNext(@Nullable IPointer pointer) {

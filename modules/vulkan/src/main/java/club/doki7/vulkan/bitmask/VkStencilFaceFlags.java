@@ -11,7 +11,7 @@ public final class VkStencilFaceFlags {
     public static final int FRONT_AND_BACK = 0x3;
     public static final int FRONT = 0x1;
 
-    public static String explain(@EnumType(VkStencilFaceFlags.class) int flags) {
+    public static String explain(@Bitmask(VkStencilFaceFlags.class) int flags) {
         List<String> detectedFlagBits = new ArrayList<>();
         if ((flags & BACK) != 0) {
             detectedFlagBits.add("VK_STENCIL_FACE_BACK_BIT");

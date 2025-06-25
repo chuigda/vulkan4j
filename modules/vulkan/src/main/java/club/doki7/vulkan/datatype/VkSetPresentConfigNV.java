@@ -88,6 +88,11 @@ public record VkSetPresentConfigNV(@NotNull MemorySegment segment) implements IV
             return new VkSetPresentConfigNV(segment.asSlice(index * VkSetPresentConfigNV.BYTES, VkSetPresentConfigNV.BYTES));
         }
 
+        public VkSetPresentConfigNV.Ptr at(long index, @NotNull Consumer<@NotNull VkSetPresentConfigNV> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkSetPresentConfigNV value) {
             MemorySegment s = segment.asSlice(index * VkSetPresentConfigNV.BYTES, VkSetPresentConfigNV.BYTES);
             s.copyFrom(value.segment);
@@ -200,12 +205,13 @@ public record VkSetPresentConfigNV(@NotNull MemorySegment segment) implements IV
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkSetPresentConfigNV pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkSetPresentConfigNV pNext(@Nullable IPointer pointer) {

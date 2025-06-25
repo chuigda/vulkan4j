@@ -1,6 +1,6 @@
 # Staging buffer
 
-> [Java code](https://github.com/chuigda/vulkan4j/tree/master/modules/tutorial/src/main/java/tutorial/vulkan/part06/ch20/Main.java) | [C++ version](https://vulkan-tutorial.com/Vertex_buffers/Staging_buffer)
+> [Java code](https://github.com/club-doki7/vulkan4j/tree/master/modules/tutorial/src/main/java/tutorial/vulkan/part06/ch20/Main.java) | [C++ version](https://vulkan-tutorial.com/Vertex_buffers/Staging_buffer)
 
 ## Introduction
 
@@ -29,8 +29,8 @@ private record Pair<T1, T2>(T1 first, T2 second) {}
 
 private Pair<VkBuffer, VkDeviceMemory> createBuffer(
         int size,
-        @EnumType(VkBufferUsageFlags.class) int usage,
-        @EnumType(VkMemoryPropertyFlags.class) int properties
+        @Bitmask(VkBufferUsageFlags.class) int usage,
+        @Bitmask(VkMemoryPropertyFlags.class) int properties
 ) {
     try (var arena = Arena.ofConfined()) {
         var bufferInfo = VkBufferCreateInfo.allocate(arena)

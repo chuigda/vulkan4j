@@ -27,9 +27,9 @@ import static club.doki7.vulkan.VkConstants.*;
 ///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
 ///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
 ///     uint32_t attachmentInitialSampleLocationsCount; // optional // @link substring="attachmentInitialSampleLocationsCount" target="#attachmentInitialSampleLocationsCount"
-///     VkAttachmentSampleLocationsEXT const* pAttachmentInitialSampleLocations; // @link substring="VkAttachmentSampleLocationsEXT" target="VkAttachmentSampleLocationsEXT" @link substring="pAttachmentInitialSampleLocations" target="#pAttachmentInitialSampleLocations"
+///     VkAttachmentSampleLocationsEXT const* pAttachmentInitialSampleLocations; // optional // @link substring="VkAttachmentSampleLocationsEXT" target="VkAttachmentSampleLocationsEXT" @link substring="pAttachmentInitialSampleLocations" target="#pAttachmentInitialSampleLocations"
 ///     uint32_t postSubpassSampleLocationsCount; // optional // @link substring="postSubpassSampleLocationsCount" target="#postSubpassSampleLocationsCount"
-///     VkSubpassSampleLocationsEXT const* pPostSubpassSampleLocations; // @link substring="VkSubpassSampleLocationsEXT" target="VkSubpassSampleLocationsEXT" @link substring="pPostSubpassSampleLocations" target="#pPostSubpassSampleLocations"
+///     VkSubpassSampleLocationsEXT const* pPostSubpassSampleLocations; // optional // @link substring="VkSubpassSampleLocationsEXT" target="VkSubpassSampleLocationsEXT" @link substring="pPostSubpassSampleLocations" target="#pPostSubpassSampleLocations"
 /// } VkRenderPassSampleLocationsBeginInfoEXT;
 /// }
 ///
@@ -88,6 +88,11 @@ public record VkRenderPassSampleLocationsBeginInfoEXT(@NotNull MemorySegment seg
         /// indicate that the returned structure is a view of the original structure.
         public @NotNull VkRenderPassSampleLocationsBeginInfoEXT at(long index) {
             return new VkRenderPassSampleLocationsBeginInfoEXT(segment.asSlice(index * VkRenderPassSampleLocationsBeginInfoEXT.BYTES, VkRenderPassSampleLocationsBeginInfoEXT.BYTES));
+        }
+
+        public VkRenderPassSampleLocationsBeginInfoEXT.Ptr at(long index, @NotNull Consumer<@NotNull VkRenderPassSampleLocationsBeginInfoEXT> consumer) {
+            consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkRenderPassSampleLocationsBeginInfoEXT value) {
@@ -202,12 +207,13 @@ public record VkRenderPassSampleLocationsBeginInfoEXT(@NotNull MemorySegment seg
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkRenderPassSampleLocationsBeginInfoEXT pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkRenderPassSampleLocationsBeginInfoEXT pNext(@Nullable IPointer pointer) {
@@ -248,11 +254,11 @@ public record VkRenderPassSampleLocationsBeginInfoEXT(@NotNull MemorySegment seg
         return new VkAttachmentSampleLocationsEXT(s);
     }
 
-    public @Pointer(target=VkAttachmentSampleLocationsEXT.class) MemorySegment pAttachmentInitialSampleLocationsRaw() {
+    public @Pointer(target=VkAttachmentSampleLocationsEXT.class) @NotNull MemorySegment pAttachmentInitialSampleLocationsRaw() {
         return segment.get(LAYOUT$pAttachmentInitialSampleLocations, OFFSET$pAttachmentInitialSampleLocations);
     }
 
-    public void pAttachmentInitialSampleLocationsRaw(@Pointer(target=VkAttachmentSampleLocationsEXT.class) MemorySegment value) {
+    public void pAttachmentInitialSampleLocationsRaw(@Pointer(target=VkAttachmentSampleLocationsEXT.class) @NotNull MemorySegment value) {
         segment.set(LAYOUT$pAttachmentInitialSampleLocations, OFFSET$pAttachmentInitialSampleLocations, value);
     }
 
@@ -289,11 +295,11 @@ public record VkRenderPassSampleLocationsBeginInfoEXT(@NotNull MemorySegment seg
         return new VkSubpassSampleLocationsEXT(s);
     }
 
-    public @Pointer(target=VkSubpassSampleLocationsEXT.class) MemorySegment pPostSubpassSampleLocationsRaw() {
+    public @Pointer(target=VkSubpassSampleLocationsEXT.class) @NotNull MemorySegment pPostSubpassSampleLocationsRaw() {
         return segment.get(LAYOUT$pPostSubpassSampleLocations, OFFSET$pPostSubpassSampleLocations);
     }
 
-    public void pPostSubpassSampleLocationsRaw(@Pointer(target=VkSubpassSampleLocationsEXT.class) MemorySegment value) {
+    public void pPostSubpassSampleLocationsRaw(@Pointer(target=VkSubpassSampleLocationsEXT.class) @NotNull MemorySegment value) {
         segment.set(LAYOUT$pPostSubpassSampleLocations, OFFSET$pPostSubpassSampleLocations, value);
     }
 

@@ -9,7 +9,7 @@ import java.util.List;
 public final class VkMemoryDecompressionMethodFlagsNV {
     public static final long GDEFLATE_1_0 = 0x1L;
 
-    public static String explain(@EnumType(VkMemoryDecompressionMethodFlagsNV.class) long flags) {
+    public static String explain(@Bitmask(VkMemoryDecompressionMethodFlagsNV.class) long flags) {
         List<String> detectedFlagBits = new ArrayList<>();
         if ((flags & GDEFLATE_1_0) != 0) {
             detectedFlagBits.add("VK_MEMORY_DECOMPRESSION_METHOD_GDEFLATE_1_0_BIT_NV");

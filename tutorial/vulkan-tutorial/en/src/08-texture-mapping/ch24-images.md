@@ -1,6 +1,6 @@
 # Images
 
-> [Java code](https://github.com/chuigda/vulkan4j/tree/master/modules/tutorial/src/main/java/tutorial/vulkan/part08/ch24/Main.java) | [C++ version](https://vulkan-tutorial.com/Texture_mapping/Images) 
+> [Java code](https://github.com/club-doki7/vulkan4j/tree/master/modules/tutorial/src/main/java/tutorial/vulkan/part08/ch24/Main.java) | [C++ version](https://vulkan-tutorial.com/Texture_mapping/Images) 
 
 ## Introduction
 
@@ -220,8 +220,8 @@ private Pair<VkImage, VkDeviceMemory> createImage(
         int height,
         @EnumType(VkFormat.class) int format,
         @EnumType(VkImageTiling.class) int tiling,
-        @EnumType(VkImageUsageFlags.class) int usage,
-        @EnumType(VkMemoryPropertyFlags.class) int properties
+        @Bitmask(VkImageUsageFlags.class) int usage,
+        @Bitmask(VkMemoryPropertyFlags.class) int properties
 ) {
     try (var arena = Arena.ofConfined()) {
         var imageInfo = VkImageCreateInfo.allocate(arena)
@@ -563,8 +563,8 @@ There are two transitions we need to handle:
 These rules are specified using the following access masks and pipeline stages:
 
 ```java
-@EnumType(VkPipelineStageFlags.class) int sourceStage;
-@EnumType(VkPipelineStageFlags.class) int destinationStage;
+@Bitmask(VkPipelineStageFlags.class) int sourceStage;
+@Bitmask(VkPipelineStageFlags.class) int destinationStage;
 
 if (oldLayout == VkImageLayout.UNDEFINED
     && newLayout == VkImageLayout.TRANSFER_DST_OPTIMAL) {

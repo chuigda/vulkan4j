@@ -77,6 +77,11 @@ public record VkPresentRegionKHR(@NotNull MemorySegment segment) implements IVkP
             return new VkPresentRegionKHR(segment.asSlice(index * VkPresentRegionKHR.BYTES, VkPresentRegionKHR.BYTES));
         }
 
+        public VkPresentRegionKHR.Ptr at(long index, @NotNull Consumer<@NotNull VkPresentRegionKHR> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkPresentRegionKHR value) {
             MemorySegment s = segment.asSlice(index * VkPresentRegionKHR.BYTES, VkPresentRegionKHR.BYTES);
             s.copyFrom(value.segment);
@@ -203,11 +208,11 @@ public record VkPresentRegionKHR(@NotNull MemorySegment segment) implements IVkP
         return new VkRectLayerKHR(s);
     }
 
-    public @Pointer(target=VkRectLayerKHR.class) MemorySegment pRectanglesRaw() {
+    public @Pointer(target=VkRectLayerKHR.class) @NotNull MemorySegment pRectanglesRaw() {
         return segment.get(LAYOUT$pRectangles, OFFSET$pRectangles);
     }
 
-    public void pRectanglesRaw(@Pointer(target=VkRectLayerKHR.class) MemorySegment value) {
+    public void pRectanglesRaw(@Pointer(target=VkRectLayerKHR.class) @NotNull MemorySegment value) {
         segment.set(LAYOUT$pRectangles, OFFSET$pRectangles, value);
     }
 

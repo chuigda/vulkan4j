@@ -87,6 +87,11 @@ public record VkSurfaceFormat2KHR(@NotNull MemorySegment segment) implements IVk
             return new VkSurfaceFormat2KHR(segment.asSlice(index * VkSurfaceFormat2KHR.BYTES, VkSurfaceFormat2KHR.BYTES));
         }
 
+        public VkSurfaceFormat2KHR.Ptr at(long index, @NotNull Consumer<@NotNull VkSurfaceFormat2KHR> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkSurfaceFormat2KHR value) {
             MemorySegment s = segment.asSlice(index * VkSurfaceFormat2KHR.BYTES, VkSurfaceFormat2KHR.BYTES);
             s.copyFrom(value.segment);
@@ -199,12 +204,13 @@ public record VkSurfaceFormat2KHR(@NotNull MemorySegment segment) implements IVk
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkSurfaceFormat2KHR pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkSurfaceFormat2KHR pNext(@Nullable IPointer pointer) {

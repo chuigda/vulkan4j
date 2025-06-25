@@ -29,7 +29,7 @@ import static club.doki7.vulkan.VkConstants.*;
 ///     VkPipelineDiscardRectangleStateCreateFlagsEXT flags; // optional // @link substring="VkPipelineDiscardRectangleStateCreateFlagsEXT" target="VkPipelineDiscardRectangleStateCreateFlagsEXT" @link substring="flags" target="#flags"
 ///     VkDiscardRectangleModeEXT discardRectangleMode; // @link substring="VkDiscardRectangleModeEXT" target="VkDiscardRectangleModeEXT" @link substring="discardRectangleMode" target="#discardRectangleMode"
 ///     uint32_t discardRectangleCount; // optional // @link substring="discardRectangleCount" target="#discardRectangleCount"
-///     VkRect2D const* pDiscardRectangles; // @link substring="VkRect2D" target="VkRect2D" @link substring="pDiscardRectangles" target="#pDiscardRectangles"
+///     VkRect2D const* pDiscardRectangles; // optional // @link substring="VkRect2D" target="VkRect2D" @link substring="pDiscardRectangles" target="#pDiscardRectangles"
 /// } VkPipelineDiscardRectangleStateCreateInfoEXT;
 /// }
 ///
@@ -88,6 +88,11 @@ public record VkPipelineDiscardRectangleStateCreateInfoEXT(@NotNull MemorySegmen
         /// indicate that the returned structure is a view of the original structure.
         public @NotNull VkPipelineDiscardRectangleStateCreateInfoEXT at(long index) {
             return new VkPipelineDiscardRectangleStateCreateInfoEXT(segment.asSlice(index * VkPipelineDiscardRectangleStateCreateInfoEXT.BYTES, VkPipelineDiscardRectangleStateCreateInfoEXT.BYTES));
+        }
+
+        public VkPipelineDiscardRectangleStateCreateInfoEXT.Ptr at(long index, @NotNull Consumer<@NotNull VkPipelineDiscardRectangleStateCreateInfoEXT> consumer) {
+            consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkPipelineDiscardRectangleStateCreateInfoEXT value) {
@@ -202,12 +207,13 @@ public record VkPipelineDiscardRectangleStateCreateInfoEXT(@NotNull MemorySegmen
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkPipelineDiscardRectangleStateCreateInfoEXT pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkPipelineDiscardRectangleStateCreateInfoEXT pNext(@Nullable IPointer pointer) {
@@ -215,11 +221,11 @@ public record VkPipelineDiscardRectangleStateCreateInfoEXT(@NotNull MemorySegmen
         return this;
     }
 
-    public @EnumType(VkPipelineDiscardRectangleStateCreateFlagsEXT.class) int flags() {
+    public @Bitmask(VkPipelineDiscardRectangleStateCreateFlagsEXT.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public VkPipelineDiscardRectangleStateCreateInfoEXT flags(@EnumType(VkPipelineDiscardRectangleStateCreateFlagsEXT.class) int value) {
+    public VkPipelineDiscardRectangleStateCreateInfoEXT flags(@Bitmask(VkPipelineDiscardRectangleStateCreateFlagsEXT.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
         return this;
     }
@@ -266,11 +272,11 @@ public record VkPipelineDiscardRectangleStateCreateInfoEXT(@NotNull MemorySegmen
         return new VkRect2D(s);
     }
 
-    public @Pointer(target=VkRect2D.class) MemorySegment pDiscardRectanglesRaw() {
+    public @Pointer(target=VkRect2D.class) @NotNull MemorySegment pDiscardRectanglesRaw() {
         return segment.get(LAYOUT$pDiscardRectangles, OFFSET$pDiscardRectangles);
     }
 
-    public void pDiscardRectanglesRaw(@Pointer(target=VkRect2D.class) MemorySegment value) {
+    public void pDiscardRectanglesRaw(@Pointer(target=VkRect2D.class) @NotNull MemorySegment value) {
         segment.set(LAYOUT$pDiscardRectangles, OFFSET$pDiscardRectangles, value);
     }
 

@@ -97,6 +97,11 @@ public record VkPhysicalDeviceOpticalFlowPropertiesNV(@NotNull MemorySegment seg
             return new VkPhysicalDeviceOpticalFlowPropertiesNV(segment.asSlice(index * VkPhysicalDeviceOpticalFlowPropertiesNV.BYTES, VkPhysicalDeviceOpticalFlowPropertiesNV.BYTES));
         }
 
+        public VkPhysicalDeviceOpticalFlowPropertiesNV.Ptr at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceOpticalFlowPropertiesNV> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkPhysicalDeviceOpticalFlowPropertiesNV value) {
             MemorySegment s = segment.asSlice(index * VkPhysicalDeviceOpticalFlowPropertiesNV.BYTES, VkPhysicalDeviceOpticalFlowPropertiesNV.BYTES);
             s.copyFrom(value.segment);
@@ -209,12 +214,13 @@ public record VkPhysicalDeviceOpticalFlowPropertiesNV(@NotNull MemorySegment seg
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkPhysicalDeviceOpticalFlowPropertiesNV pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkPhysicalDeviceOpticalFlowPropertiesNV pNext(@Nullable IPointer pointer) {
@@ -222,20 +228,20 @@ public record VkPhysicalDeviceOpticalFlowPropertiesNV(@NotNull MemorySegment seg
         return this;
     }
 
-    public @EnumType(VkOpticalFlowGridSizeFlagsNV.class) int supportedOutputGridSizes() {
+    public @Bitmask(VkOpticalFlowGridSizeFlagsNV.class) int supportedOutputGridSizes() {
         return segment.get(LAYOUT$supportedOutputGridSizes, OFFSET$supportedOutputGridSizes);
     }
 
-    public VkPhysicalDeviceOpticalFlowPropertiesNV supportedOutputGridSizes(@EnumType(VkOpticalFlowGridSizeFlagsNV.class) int value) {
+    public VkPhysicalDeviceOpticalFlowPropertiesNV supportedOutputGridSizes(@Bitmask(VkOpticalFlowGridSizeFlagsNV.class) int value) {
         segment.set(LAYOUT$supportedOutputGridSizes, OFFSET$supportedOutputGridSizes, value);
         return this;
     }
 
-    public @EnumType(VkOpticalFlowGridSizeFlagsNV.class) int supportedHintGridSizes() {
+    public @Bitmask(VkOpticalFlowGridSizeFlagsNV.class) int supportedHintGridSizes() {
         return segment.get(LAYOUT$supportedHintGridSizes, OFFSET$supportedHintGridSizes);
     }
 
-    public VkPhysicalDeviceOpticalFlowPropertiesNV supportedHintGridSizes(@EnumType(VkOpticalFlowGridSizeFlagsNV.class) int value) {
+    public VkPhysicalDeviceOpticalFlowPropertiesNV supportedHintGridSizes(@Bitmask(VkOpticalFlowGridSizeFlagsNV.class) int value) {
         segment.set(LAYOUT$supportedHintGridSizes, OFFSET$supportedHintGridSizes, value);
         return this;
     }

@@ -88,6 +88,11 @@ public record VkPhysicalDeviceLayeredApiPropertiesListKHR(@NotNull MemorySegment
             return new VkPhysicalDeviceLayeredApiPropertiesListKHR(segment.asSlice(index * VkPhysicalDeviceLayeredApiPropertiesListKHR.BYTES, VkPhysicalDeviceLayeredApiPropertiesListKHR.BYTES));
         }
 
+        public VkPhysicalDeviceLayeredApiPropertiesListKHR.Ptr at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceLayeredApiPropertiesListKHR> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkPhysicalDeviceLayeredApiPropertiesListKHR value) {
             MemorySegment s = segment.asSlice(index * VkPhysicalDeviceLayeredApiPropertiesListKHR.BYTES, VkPhysicalDeviceLayeredApiPropertiesListKHR.BYTES);
             s.copyFrom(value.segment);
@@ -200,12 +205,13 @@ public record VkPhysicalDeviceLayeredApiPropertiesListKHR(@NotNull MemorySegment
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkPhysicalDeviceLayeredApiPropertiesListKHR pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkPhysicalDeviceLayeredApiPropertiesListKHR pNext(@Nullable IPointer pointer) {
@@ -246,11 +252,11 @@ public record VkPhysicalDeviceLayeredApiPropertiesListKHR(@NotNull MemorySegment
         return new VkPhysicalDeviceLayeredApiPropertiesKHR(s);
     }
 
-    public @Pointer(target=VkPhysicalDeviceLayeredApiPropertiesKHR.class) MemorySegment pLayeredApisRaw() {
+    public @Pointer(target=VkPhysicalDeviceLayeredApiPropertiesKHR.class) @NotNull MemorySegment pLayeredApisRaw() {
         return segment.get(LAYOUT$pLayeredApis, OFFSET$pLayeredApis);
     }
 
-    public void pLayeredApisRaw(@Pointer(target=VkPhysicalDeviceLayeredApiPropertiesKHR.class) MemorySegment value) {
+    public void pLayeredApisRaw(@Pointer(target=VkPhysicalDeviceLayeredApiPropertiesKHR.class) @NotNull MemorySegment value) {
         segment.set(LAYOUT$pLayeredApis, OFFSET$pLayeredApis, value);
     }
 

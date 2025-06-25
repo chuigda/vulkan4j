@@ -88,6 +88,11 @@ public record VkIndirectExecutionSetPipelineInfoEXT(@NotNull MemorySegment segme
             return new VkIndirectExecutionSetPipelineInfoEXT(segment.asSlice(index * VkIndirectExecutionSetPipelineInfoEXT.BYTES, VkIndirectExecutionSetPipelineInfoEXT.BYTES));
         }
 
+        public VkIndirectExecutionSetPipelineInfoEXT.Ptr at(long index, @NotNull Consumer<@NotNull VkIndirectExecutionSetPipelineInfoEXT> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkIndirectExecutionSetPipelineInfoEXT value) {
             MemorySegment s = segment.asSlice(index * VkIndirectExecutionSetPipelineInfoEXT.BYTES, VkIndirectExecutionSetPipelineInfoEXT.BYTES);
             s.copyFrom(value.segment);
@@ -200,12 +205,13 @@ public record VkIndirectExecutionSetPipelineInfoEXT(@NotNull MemorySegment segme
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkIndirectExecutionSetPipelineInfoEXT pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkIndirectExecutionSetPipelineInfoEXT pNext(@Nullable IPointer pointer) {

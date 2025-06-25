@@ -90,6 +90,11 @@ public record VkVertexInputBindingDescription2EXT(@NotNull MemorySegment segment
             return new VkVertexInputBindingDescription2EXT(segment.asSlice(index * VkVertexInputBindingDescription2EXT.BYTES, VkVertexInputBindingDescription2EXT.BYTES));
         }
 
+        public VkVertexInputBindingDescription2EXT.Ptr at(long index, @NotNull Consumer<@NotNull VkVertexInputBindingDescription2EXT> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkVertexInputBindingDescription2EXT value) {
             MemorySegment s = segment.asSlice(index * VkVertexInputBindingDescription2EXT.BYTES, VkVertexInputBindingDescription2EXT.BYTES);
             s.copyFrom(value.segment);
@@ -202,12 +207,13 @@ public record VkVertexInputBindingDescription2EXT(@NotNull MemorySegment segment
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkVertexInputBindingDescription2EXT pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkVertexInputBindingDescription2EXT pNext(@Nullable IPointer pointer) {

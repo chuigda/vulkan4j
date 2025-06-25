@@ -88,6 +88,11 @@ public record VkMultiviewPerViewAttributesInfoNVX(@NotNull MemorySegment segment
             return new VkMultiviewPerViewAttributesInfoNVX(segment.asSlice(index * VkMultiviewPerViewAttributesInfoNVX.BYTES, VkMultiviewPerViewAttributesInfoNVX.BYTES));
         }
 
+        public VkMultiviewPerViewAttributesInfoNVX.Ptr at(long index, @NotNull Consumer<@NotNull VkMultiviewPerViewAttributesInfoNVX> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkMultiviewPerViewAttributesInfoNVX value) {
             MemorySegment s = segment.asSlice(index * VkMultiviewPerViewAttributesInfoNVX.BYTES, VkMultiviewPerViewAttributesInfoNVX.BYTES);
             s.copyFrom(value.segment);
@@ -200,12 +205,13 @@ public record VkMultiviewPerViewAttributesInfoNVX(@NotNull MemorySegment segment
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkMultiviewPerViewAttributesInfoNVX pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkMultiviewPerViewAttributesInfoNVX pNext(@Nullable IPointer pointer) {

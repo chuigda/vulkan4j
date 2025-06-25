@@ -9,7 +9,7 @@ import java.util.List;
 public final class VkMemoryUnmapFlags {
     public static final int RESERVE_EXT = 0x1;
 
-    public static String explain(@EnumType(VkMemoryUnmapFlags.class) int flags) {
+    public static String explain(@Bitmask(VkMemoryUnmapFlags.class) int flags) {
         List<String> detectedFlagBits = new ArrayList<>();
         if ((flags & RESERVE_EXT) != 0) {
             detectedFlagBits.add("VK_MEMORY_UNMAP_RESERVE_BIT_EXT");

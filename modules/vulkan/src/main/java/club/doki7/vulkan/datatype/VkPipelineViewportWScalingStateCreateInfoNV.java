@@ -28,7 +28,7 @@ import static club.doki7.vulkan.VkConstants.*;
 ///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
 ///     VkBool32 viewportWScalingEnable; // @link substring="viewportWScalingEnable" target="#viewportWScalingEnable"
 ///     uint32_t viewportCount; // @link substring="viewportCount" target="#viewportCount"
-///     VkViewportWScalingNV const* pViewportWScalings; // optional // @link substring="VkViewportWScalingNV" target="VkViewportWScalingNV" @link substring="pViewportWScalings" target="#pViewportWScalings"
+///     VkViewportWScalingNV const* pViewportWScalings; // @link substring="VkViewportWScalingNV" target="VkViewportWScalingNV" @link substring="pViewportWScalings" target="#pViewportWScalings"
 /// } VkPipelineViewportWScalingStateCreateInfoNV;
 /// }
 ///
@@ -87,6 +87,11 @@ public record VkPipelineViewportWScalingStateCreateInfoNV(@NotNull MemorySegment
         /// indicate that the returned structure is a view of the original structure.
         public @NotNull VkPipelineViewportWScalingStateCreateInfoNV at(long index) {
             return new VkPipelineViewportWScalingStateCreateInfoNV(segment.asSlice(index * VkPipelineViewportWScalingStateCreateInfoNV.BYTES, VkPipelineViewportWScalingStateCreateInfoNV.BYTES));
+        }
+
+        public VkPipelineViewportWScalingStateCreateInfoNV.Ptr at(long index, @NotNull Consumer<@NotNull VkPipelineViewportWScalingStateCreateInfoNV> consumer) {
+            consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkPipelineViewportWScalingStateCreateInfoNV value) {
@@ -201,12 +206,13 @@ public record VkPipelineViewportWScalingStateCreateInfoNV(@NotNull MemorySegment
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkPipelineViewportWScalingStateCreateInfoNV pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkPipelineViewportWScalingStateCreateInfoNV pNext(@Nullable IPointer pointer) {
@@ -256,11 +262,11 @@ public record VkPipelineViewportWScalingStateCreateInfoNV(@NotNull MemorySegment
         return new VkViewportWScalingNV(s);
     }
 
-    public @Pointer(target=VkViewportWScalingNV.class) MemorySegment pViewportWScalingsRaw() {
+    public @Pointer(target=VkViewportWScalingNV.class) @NotNull MemorySegment pViewportWScalingsRaw() {
         return segment.get(LAYOUT$pViewportWScalings, OFFSET$pViewportWScalings);
     }
 
-    public void pViewportWScalingsRaw(@Pointer(target=VkViewportWScalingNV.class) MemorySegment value) {
+    public void pViewportWScalingsRaw(@Pointer(target=VkViewportWScalingNV.class) @NotNull MemorySegment value) {
         segment.set(LAYOUT$pViewportWScalings, OFFSET$pViewportWScalings, value);
     }
 

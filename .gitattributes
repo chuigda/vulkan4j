@@ -43,4 +43,23 @@ modules/sdl3/src/main/java/club/doki7/sdl3/datatype/*.java linguist-generated
 modules/sdl3/src/main/java/club/doki7/sdl3/enumtype/*.java linguist-generated
 modules/sdl3/src/main/java/club/doki7/sdl3/handle/*.java linguist-generated
 
+modules/shaderc/src/main/java/club/doki7/shaderc/Shaderc.java linguist-generated
+modules/shaderc/src/main/java/club/doki7/shaderc/ShadercFunctionTypes.java linguist-generated
+modules/shaderc/src/main/java/club/doki7/shaderc/datatype/*.java linguist-generated
+modules/shaderc/src/main/java/club/doki7/shaderc/enumtype/*.java linguist-generated
+modules/shaderc/src/main/java/club/doki7/shaderc/handle/*.java linguist-generated
+
+modules/stb/src/main/java/club/doki7/stb/**/*.java linguist-generated
+modules/stb/src/main/java/club/doki7/stb/STBJavaTraceUtil.java linguist-detectable
+modules/stb/src/main/java/club/doki7/stb/image/STBIUtil.java linguist-detectable
+modules/stb/src/main/java/club/doki7/stb/imagewrite/STBWUtil.java linguist-detectable
+
+modules/openxr/src/main/java/club/doki7/openxr/XRConstants.java linguist-generated
+modules/openxr/src/main/java/club/doki7/openxr/XRFunctionTypes.java linguist-generated
+modules/openxr/src/main/java/club/doki7/openxr/bitmask/*.java linguist-generated
+modules/openxr/src/main/java/club/doki7/openxr/command/*.java linguist-generated
+modules/openxr/src/main/java/club/doki7/openxr/datatype/*.java linguist-generated
+modules/openxr/src/main/java/club/doki7/openxr/enumtype/*.java linguist-generated
+modules/openxr/src/main/java/club/doki7/openxr/handle/*.java linguist-generated
+
 modules/tutorial/src/main/java/**/*.java linguist-documentation

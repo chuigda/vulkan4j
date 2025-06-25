@@ -94,6 +94,11 @@ public record VkVideoEncodeH265QualityLevelPropertiesKHR(@NotNull MemorySegment 
             return new VkVideoEncodeH265QualityLevelPropertiesKHR(segment.asSlice(index * VkVideoEncodeH265QualityLevelPropertiesKHR.BYTES, VkVideoEncodeH265QualityLevelPropertiesKHR.BYTES));
         }
 
+        public VkVideoEncodeH265QualityLevelPropertiesKHR.Ptr at(long index, @NotNull Consumer<@NotNull VkVideoEncodeH265QualityLevelPropertiesKHR> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkVideoEncodeH265QualityLevelPropertiesKHR value) {
             MemorySegment s = segment.asSlice(index * VkVideoEncodeH265QualityLevelPropertiesKHR.BYTES, VkVideoEncodeH265QualityLevelPropertiesKHR.BYTES);
             s.copyFrom(value.segment);
@@ -206,12 +211,13 @@ public record VkVideoEncodeH265QualityLevelPropertiesKHR(@NotNull MemorySegment 
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkVideoEncodeH265QualityLevelPropertiesKHR pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkVideoEncodeH265QualityLevelPropertiesKHR pNext(@Nullable IPointer pointer) {
@@ -219,11 +225,11 @@ public record VkVideoEncodeH265QualityLevelPropertiesKHR(@NotNull MemorySegment 
         return this;
     }
 
-    public @EnumType(VkVideoEncodeH265RateControlFlagsKHR.class) int preferredRateControlFlags() {
+    public @Bitmask(VkVideoEncodeH265RateControlFlagsKHR.class) int preferredRateControlFlags() {
         return segment.get(LAYOUT$preferredRateControlFlags, OFFSET$preferredRateControlFlags);
     }
 
-    public VkVideoEncodeH265QualityLevelPropertiesKHR preferredRateControlFlags(@EnumType(VkVideoEncodeH265RateControlFlagsKHR.class) int value) {
+    public VkVideoEncodeH265QualityLevelPropertiesKHR preferredRateControlFlags(@Bitmask(VkVideoEncodeH265RateControlFlagsKHR.class) int value) {
         segment.set(LAYOUT$preferredRateControlFlags, OFFSET$preferredRateControlFlags, value);
         return this;
     }

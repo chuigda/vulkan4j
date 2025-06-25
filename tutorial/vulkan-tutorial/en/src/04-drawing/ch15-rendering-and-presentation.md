@@ -1,6 +1,6 @@
 # Rendering and presentation
 
-> [Java code](https://github.com/chuigda/vulkan4j/tree/master/modules/tutorial/src/main/java/tutorial/vulkan/part04/ch15/Main.java) | [C++ version](https://vulkan-tutorial.com/Drawing_a_triangle/Drawing/Rendering_and_presentation)
+> [Java code](https://github.com/club-doki7/vulkan4j/tree/master/modules/tutorial/src/main/java/tutorial/vulkan/part04/ch15/Main.java) | [C++ version](https://vulkan-tutorial.com/Drawing_a_triangle/Drawing/Rendering_and_presentation)
 
 This is the chapter where everything is going to come together. We're going to write the `drawFrame` function that will be called from the main loop to put the triangle on the screen. Let's start by creating the function and call it from `mainLoop`:
 

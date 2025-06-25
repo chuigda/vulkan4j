@@ -87,6 +87,11 @@ public record VkSysmemColorSpaceFUCHSIA(@NotNull MemorySegment segment) implemen
             return new VkSysmemColorSpaceFUCHSIA(segment.asSlice(index * VkSysmemColorSpaceFUCHSIA.BYTES, VkSysmemColorSpaceFUCHSIA.BYTES));
         }
 
+        public VkSysmemColorSpaceFUCHSIA.Ptr at(long index, @NotNull Consumer<@NotNull VkSysmemColorSpaceFUCHSIA> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkSysmemColorSpaceFUCHSIA value) {
             MemorySegment s = segment.asSlice(index * VkSysmemColorSpaceFUCHSIA.BYTES, VkSysmemColorSpaceFUCHSIA.BYTES);
             s.copyFrom(value.segment);
@@ -199,12 +204,13 @@ public record VkSysmemColorSpaceFUCHSIA(@NotNull MemorySegment segment) implemen
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkSysmemColorSpaceFUCHSIA pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkSysmemColorSpaceFUCHSIA pNext(@Nullable IPointer pointer) {

@@ -27,7 +27,7 @@ import static club.doki7.vulkan.VkConstants.*;
 ///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
 ///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
 ///     uint32_t settingCount; // optional // @link substring="settingCount" target="#settingCount"
-///     VkLayerSettingEXT const* pSettings; // @link substring="VkLayerSettingEXT" target="VkLayerSettingEXT" @link substring="pSettings" target="#pSettings"
+///     VkLayerSettingEXT const* pSettings; // optional // @link substring="VkLayerSettingEXT" target="VkLayerSettingEXT" @link substring="pSettings" target="#pSettings"
 /// } VkLayerSettingsCreateInfoEXT;
 /// }
 ///
@@ -86,6 +86,11 @@ public record VkLayerSettingsCreateInfoEXT(@NotNull MemorySegment segment) imple
         /// indicate that the returned structure is a view of the original structure.
         public @NotNull VkLayerSettingsCreateInfoEXT at(long index) {
             return new VkLayerSettingsCreateInfoEXT(segment.asSlice(index * VkLayerSettingsCreateInfoEXT.BYTES, VkLayerSettingsCreateInfoEXT.BYTES));
+        }
+
+        public VkLayerSettingsCreateInfoEXT.Ptr at(long index, @NotNull Consumer<@NotNull VkLayerSettingsCreateInfoEXT> consumer) {
+            consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkLayerSettingsCreateInfoEXT value) {
@@ -200,12 +205,13 @@ public record VkLayerSettingsCreateInfoEXT(@NotNull MemorySegment segment) imple
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkLayerSettingsCreateInfoEXT pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkLayerSettingsCreateInfoEXT pNext(@Nullable IPointer pointer) {
@@ -246,11 +252,11 @@ public record VkLayerSettingsCreateInfoEXT(@NotNull MemorySegment segment) imple
         return new VkLayerSettingEXT(s);
     }
 
-    public @Pointer(target=VkLayerSettingEXT.class) MemorySegment pSettingsRaw() {
+    public @Pointer(target=VkLayerSettingEXT.class) @NotNull MemorySegment pSettingsRaw() {
         return segment.get(LAYOUT$pSettings, OFFSET$pSettings);
     }
 
-    public void pSettingsRaw(@Pointer(target=VkLayerSettingEXT.class) MemorySegment value) {
+    public void pSettingsRaw(@Pointer(target=VkLayerSettingEXT.class) @NotNull MemorySegment value) {
         segment.set(LAYOUT$pSettings, OFFSET$pSettings, value);
     }
 

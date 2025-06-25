@@ -88,6 +88,11 @@ public record VkCommandPoolCreateInfo(@NotNull MemorySegment segment) implements
             return new VkCommandPoolCreateInfo(segment.asSlice(index * VkCommandPoolCreateInfo.BYTES, VkCommandPoolCreateInfo.BYTES));
         }
 
+        public VkCommandPoolCreateInfo.Ptr at(long index, @NotNull Consumer<@NotNull VkCommandPoolCreateInfo> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkCommandPoolCreateInfo value) {
             MemorySegment s = segment.asSlice(index * VkCommandPoolCreateInfo.BYTES, VkCommandPoolCreateInfo.BYTES);
             s.copyFrom(value.segment);
@@ -200,12 +205,13 @@ public record VkCommandPoolCreateInfo(@NotNull MemorySegment segment) implements
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkCommandPoolCreateInfo pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkCommandPoolCreateInfo pNext(@Nullable IPointer pointer) {
@@ -213,11 +219,11 @@ public record VkCommandPoolCreateInfo(@NotNull MemorySegment segment) implements
         return this;
     }
 
-    public @EnumType(VkCommandPoolCreateFlags.class) int flags() {
+    public @Bitmask(VkCommandPoolCreateFlags.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public VkCommandPoolCreateInfo flags(@EnumType(VkCommandPoolCreateFlags.class) int value) {
+    public VkCommandPoolCreateInfo flags(@Bitmask(VkCommandPoolCreateFlags.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
         return this;
     }

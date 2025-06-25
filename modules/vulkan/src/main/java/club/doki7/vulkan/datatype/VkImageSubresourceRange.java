@@ -80,6 +80,11 @@ public record VkImageSubresourceRange(@NotNull MemorySegment segment) implements
             return new VkImageSubresourceRange(segment.asSlice(index * VkImageSubresourceRange.BYTES, VkImageSubresourceRange.BYTES));
         }
 
+        public VkImageSubresourceRange.Ptr at(long index, @NotNull Consumer<@NotNull VkImageSubresourceRange> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkImageSubresourceRange value) {
             MemorySegment s = segment.asSlice(index * VkImageSubresourceRange.BYTES, VkImageSubresourceRange.BYTES);
             s.copyFrom(value.segment);
@@ -173,11 +178,11 @@ public record VkImageSubresourceRange(@NotNull MemorySegment segment) implements
         return ret;
     }
 
-    public @EnumType(VkImageAspectFlags.class) int aspectMask() {
+    public @Bitmask(VkImageAspectFlags.class) int aspectMask() {
         return segment.get(LAYOUT$aspectMask, OFFSET$aspectMask);
     }
 
-    public VkImageSubresourceRange aspectMask(@EnumType(VkImageAspectFlags.class) int value) {
+    public VkImageSubresourceRange aspectMask(@Bitmask(VkImageAspectFlags.class) int value) {
         segment.set(LAYOUT$aspectMask, OFFSET$aspectMask, value);
         return this;
     }

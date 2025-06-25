@@ -1,6 +1,6 @@
 # Image views
 
-> [Java code](https://github.com/chuigda/vulkan4j/tree/master/modules/tutorial/src/main/java/tutorial/vulkan/part02/ch07/Main.java) | [C++ version](https://vulkan-tutorial.com/Drawing_a_triangle/Presentation/Image_views)
+> [Java code](https://github.com/club-doki7/vulkan4j/tree/master/modules/tutorial/src/main/java/tutorial/vulkan/part02/ch07/Main.java) | [C++ version](https://vulkan-tutorial.com/Drawing_a_triangle/Presentation/Image_views)
 
 To use any `VkImage`, including those in the swap chain, in the render pipeline we have to create a `VkImageView` object. An image view is quite literally a view into an image. It describes how to access the image and which part of the image to access, for example if it should be treated as a 2D texture depth texture without any mipmapping levels.
 
@@ -37,9 +37,9 @@ Next, set up the loop that iterates over all the swap chain images.
 ```java
 try (var arena = Arena.ofConfined()) {
     var createInfo = VkImageViewCreateInfo.allocate(arena);
-    var pImageView = VkImageView.Buffer.allocate(arena);
+    var pImageView = VkImageView.Ptr.allocate(arena);
 
-    for (int i = 0; i < swapChainImages.length; i++) {
+    for (long i = 0; i < swapChainImages.size(); i++) {
     }
 }
 ```

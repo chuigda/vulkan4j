@@ -90,6 +90,11 @@ public record VkQueryPoolCreateInfo(@NotNull MemorySegment segment) implements I
             return new VkQueryPoolCreateInfo(segment.asSlice(index * VkQueryPoolCreateInfo.BYTES, VkQueryPoolCreateInfo.BYTES));
         }
 
+        public VkQueryPoolCreateInfo.Ptr at(long index, @NotNull Consumer<@NotNull VkQueryPoolCreateInfo> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkQueryPoolCreateInfo value) {
             MemorySegment s = segment.asSlice(index * VkQueryPoolCreateInfo.BYTES, VkQueryPoolCreateInfo.BYTES);
             s.copyFrom(value.segment);
@@ -202,12 +207,13 @@ public record VkQueryPoolCreateInfo(@NotNull MemorySegment segment) implements I
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkQueryPoolCreateInfo pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkQueryPoolCreateInfo pNext(@Nullable IPointer pointer) {
@@ -215,11 +221,11 @@ public record VkQueryPoolCreateInfo(@NotNull MemorySegment segment) implements I
         return this;
     }
 
-    public @EnumType(VkQueryPoolCreateFlags.class) int flags() {
+    public @Bitmask(VkQueryPoolCreateFlags.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public VkQueryPoolCreateInfo flags(@EnumType(VkQueryPoolCreateFlags.class) int value) {
+    public VkQueryPoolCreateInfo flags(@Bitmask(VkQueryPoolCreateFlags.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
         return this;
     }
@@ -242,11 +248,11 @@ public record VkQueryPoolCreateInfo(@NotNull MemorySegment segment) implements I
         return this;
     }
 
-    public @EnumType(VkQueryPipelineStatisticFlags.class) int pipelineStatistics() {
+    public @Bitmask(VkQueryPipelineStatisticFlags.class) int pipelineStatistics() {
         return segment.get(LAYOUT$pipelineStatistics, OFFSET$pipelineStatistics);
     }
 
-    public VkQueryPoolCreateInfo pipelineStatistics(@EnumType(VkQueryPipelineStatisticFlags.class) int value) {
+    public VkQueryPoolCreateInfo pipelineStatistics(@Bitmask(VkQueryPipelineStatisticFlags.class) int value) {
         segment.set(LAYOUT$pipelineStatistics, OFFSET$pipelineStatistics, value);
         return this;
     }

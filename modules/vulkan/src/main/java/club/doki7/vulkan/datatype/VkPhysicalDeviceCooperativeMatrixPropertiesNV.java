@@ -87,6 +87,11 @@ public record VkPhysicalDeviceCooperativeMatrixPropertiesNV(@NotNull MemorySegme
             return new VkPhysicalDeviceCooperativeMatrixPropertiesNV(segment.asSlice(index * VkPhysicalDeviceCooperativeMatrixPropertiesNV.BYTES, VkPhysicalDeviceCooperativeMatrixPropertiesNV.BYTES));
         }
 
+        public VkPhysicalDeviceCooperativeMatrixPropertiesNV.Ptr at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceCooperativeMatrixPropertiesNV> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkPhysicalDeviceCooperativeMatrixPropertiesNV value) {
             MemorySegment s = segment.asSlice(index * VkPhysicalDeviceCooperativeMatrixPropertiesNV.BYTES, VkPhysicalDeviceCooperativeMatrixPropertiesNV.BYTES);
             s.copyFrom(value.segment);
@@ -199,12 +204,13 @@ public record VkPhysicalDeviceCooperativeMatrixPropertiesNV(@NotNull MemorySegme
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkPhysicalDeviceCooperativeMatrixPropertiesNV pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkPhysicalDeviceCooperativeMatrixPropertiesNV pNext(@Nullable IPointer pointer) {
@@ -212,11 +218,11 @@ public record VkPhysicalDeviceCooperativeMatrixPropertiesNV(@NotNull MemorySegme
         return this;
     }
 
-    public @EnumType(VkShaderStageFlags.class) int cooperativeMatrixSupportedStages() {
+    public @Bitmask(VkShaderStageFlags.class) int cooperativeMatrixSupportedStages() {
         return segment.get(LAYOUT$cooperativeMatrixSupportedStages, OFFSET$cooperativeMatrixSupportedStages);
     }
 
-    public VkPhysicalDeviceCooperativeMatrixPropertiesNV cooperativeMatrixSupportedStages(@EnumType(VkShaderStageFlags.class) int value) {
+    public VkPhysicalDeviceCooperativeMatrixPropertiesNV cooperativeMatrixSupportedStages(@Bitmask(VkShaderStageFlags.class) int value) {
         segment.set(LAYOUT$cooperativeMatrixSupportedStages, OFFSET$cooperativeMatrixSupportedStages, value);
         return this;
     }

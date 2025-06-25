@@ -88,6 +88,11 @@ public record VkSamplerBorderColorComponentMappingCreateInfoEXT(@NotNull MemoryS
             return new VkSamplerBorderColorComponentMappingCreateInfoEXT(segment.asSlice(index * VkSamplerBorderColorComponentMappingCreateInfoEXT.BYTES, VkSamplerBorderColorComponentMappingCreateInfoEXT.BYTES));
         }
 
+        public VkSamplerBorderColorComponentMappingCreateInfoEXT.Ptr at(long index, @NotNull Consumer<@NotNull VkSamplerBorderColorComponentMappingCreateInfoEXT> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkSamplerBorderColorComponentMappingCreateInfoEXT value) {
             MemorySegment s = segment.asSlice(index * VkSamplerBorderColorComponentMappingCreateInfoEXT.BYTES, VkSamplerBorderColorComponentMappingCreateInfoEXT.BYTES);
             s.copyFrom(value.segment);
@@ -200,12 +205,13 @@ public record VkSamplerBorderColorComponentMappingCreateInfoEXT(@NotNull MemoryS
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkSamplerBorderColorComponentMappingCreateInfoEXT pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkSamplerBorderColorComponentMappingCreateInfoEXT pNext(@Nullable IPointer pointer) {

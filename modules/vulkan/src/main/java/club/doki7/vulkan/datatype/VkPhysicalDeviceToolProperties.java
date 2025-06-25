@@ -91,6 +91,11 @@ public record VkPhysicalDeviceToolProperties(@NotNull MemorySegment segment) imp
             return new VkPhysicalDeviceToolProperties(segment.asSlice(index * VkPhysicalDeviceToolProperties.BYTES, VkPhysicalDeviceToolProperties.BYTES));
         }
 
+        public VkPhysicalDeviceToolProperties.Ptr at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceToolProperties> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkPhysicalDeviceToolProperties value) {
             MemorySegment s = segment.asSlice(index * VkPhysicalDeviceToolProperties.BYTES, VkPhysicalDeviceToolProperties.BYTES);
             s.copyFrom(value.segment);
@@ -203,12 +208,13 @@ public record VkPhysicalDeviceToolProperties(@NotNull MemorySegment segment) imp
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkPhysicalDeviceToolProperties pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkPhysicalDeviceToolProperties pNext(@Nullable IPointer pointer) {
@@ -220,12 +226,19 @@ public record VkPhysicalDeviceToolProperties(@NotNull MemorySegment segment) imp
         return new BytePtr(nameRaw());
     }
 
-    public VkPhysicalDeviceToolProperties name(BytePtr value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$name, SIZE$name);
+    public VkPhysicalDeviceToolProperties name(@NotNull Consumer<BytePtr> consumer) {
+        BytePtr ptr = name();
+        consumer.accept(ptr);
         return this;
     }
 
-    public MemorySegment nameRaw() {
+    public VkPhysicalDeviceToolProperties name(BytePtr value) {
+        MemorySegment s = nameRaw();
+        s.copyFrom(value.segment());
+        return this;
+    }
+
+    public @NotNull MemorySegment nameRaw() {
         return segment.asSlice(OFFSET$name, SIZE$name);
     }
 
@@ -233,20 +246,27 @@ public record VkPhysicalDeviceToolProperties(@NotNull MemorySegment segment) imp
         return new BytePtr(versionRaw());
     }
 
-    public VkPhysicalDeviceToolProperties version(BytePtr value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$version, SIZE$version);
+    public VkPhysicalDeviceToolProperties version(@NotNull Consumer<BytePtr> consumer) {
+        BytePtr ptr = version();
+        consumer.accept(ptr);
         return this;
     }
 
-    public MemorySegment versionRaw() {
+    public VkPhysicalDeviceToolProperties version(BytePtr value) {
+        MemorySegment s = versionRaw();
+        s.copyFrom(value.segment());
+        return this;
+    }
+
+    public @NotNull MemorySegment versionRaw() {
         return segment.asSlice(OFFSET$version, SIZE$version);
     }
 
-    public @EnumType(VkToolPurposeFlags.class) int purposes() {
+    public @Bitmask(VkToolPurposeFlags.class) int purposes() {
         return segment.get(LAYOUT$purposes, OFFSET$purposes);
     }
 
-    public VkPhysicalDeviceToolProperties purposes(@EnumType(VkToolPurposeFlags.class) int value) {
+    public VkPhysicalDeviceToolProperties purposes(@Bitmask(VkToolPurposeFlags.class) int value) {
         segment.set(LAYOUT$purposes, OFFSET$purposes, value);
         return this;
     }
@@ -255,12 +275,19 @@ public record VkPhysicalDeviceToolProperties(@NotNull MemorySegment segment) imp
         return new BytePtr(descriptionRaw());
     }
 
-    public VkPhysicalDeviceToolProperties description(BytePtr value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$description, SIZE$description);
+    public VkPhysicalDeviceToolProperties description(@NotNull Consumer<BytePtr> consumer) {
+        BytePtr ptr = description();
+        consumer.accept(ptr);
         return this;
     }
 
-    public MemorySegment descriptionRaw() {
+    public VkPhysicalDeviceToolProperties description(BytePtr value) {
+        MemorySegment s = descriptionRaw();
+        s.copyFrom(value.segment());
+        return this;
+    }
+
+    public @NotNull MemorySegment descriptionRaw() {
         return segment.asSlice(OFFSET$description, SIZE$description);
     }
 
@@ -268,12 +295,19 @@ public record VkPhysicalDeviceToolProperties(@NotNull MemorySegment segment) imp
         return new BytePtr(layerRaw());
     }
 
-    public VkPhysicalDeviceToolProperties layer(BytePtr value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$layer, SIZE$layer);
+    public VkPhysicalDeviceToolProperties layer(@NotNull Consumer<BytePtr> consumer) {
+        BytePtr ptr = layer();
+        consumer.accept(ptr);
         return this;
     }
 
-    public MemorySegment layerRaw() {
+    public VkPhysicalDeviceToolProperties layer(BytePtr value) {
+        MemorySegment s = layerRaw();
+        s.copyFrom(value.segment());
+        return this;
+    }
+
+    public @NotNull MemorySegment layerRaw() {
         return segment.asSlice(OFFSET$layer, SIZE$layer);
     }
 

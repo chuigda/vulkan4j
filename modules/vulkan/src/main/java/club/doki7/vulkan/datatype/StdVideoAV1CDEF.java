@@ -79,6 +79,11 @@ public record StdVideoAV1CDEF(@NotNull MemorySegment segment) implements IStdVid
             return new StdVideoAV1CDEF(segment.asSlice(index * StdVideoAV1CDEF.BYTES, StdVideoAV1CDEF.BYTES));
         }
 
+        public StdVideoAV1CDEF.Ptr at(long index, @NotNull Consumer<@NotNull StdVideoAV1CDEF> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull StdVideoAV1CDEF value) {
             MemorySegment s = segment.asSlice(index * StdVideoAV1CDEF.BYTES, StdVideoAV1CDEF.BYTES);
             s.copyFrom(value.segment);
@@ -194,12 +199,19 @@ public record StdVideoAV1CDEF(@NotNull MemorySegment segment) implements IStdVid
         return new BytePtr(cdef_y_pri_strengthRaw());
     }
 
-    public StdVideoAV1CDEF cdef_y_pri_strength(@Unsigned BytePtr value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$cdef_y_pri_strength, SIZE$cdef_y_pri_strength);
+    public StdVideoAV1CDEF cdef_y_pri_strength(@NotNull Consumer<BytePtr> consumer) {
+        @Unsigned BytePtr ptr = cdef_y_pri_strength();
+        consumer.accept(ptr);
         return this;
     }
 
-    public MemorySegment cdef_y_pri_strengthRaw() {
+    public StdVideoAV1CDEF cdef_y_pri_strength(@Unsigned BytePtr value) {
+        MemorySegment s = cdef_y_pri_strengthRaw();
+        s.copyFrom(value.segment());
+        return this;
+    }
+
+    public @NotNull MemorySegment cdef_y_pri_strengthRaw() {
         return segment.asSlice(OFFSET$cdef_y_pri_strength, SIZE$cdef_y_pri_strength);
     }
 
@@ -207,12 +219,19 @@ public record StdVideoAV1CDEF(@NotNull MemorySegment segment) implements IStdVid
         return new BytePtr(cdef_y_sec_strengthRaw());
     }
 
-    public StdVideoAV1CDEF cdef_y_sec_strength(@Unsigned BytePtr value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$cdef_y_sec_strength, SIZE$cdef_y_sec_strength);
+    public StdVideoAV1CDEF cdef_y_sec_strength(@NotNull Consumer<BytePtr> consumer) {
+        @Unsigned BytePtr ptr = cdef_y_sec_strength();
+        consumer.accept(ptr);
         return this;
     }
 
-    public MemorySegment cdef_y_sec_strengthRaw() {
+    public StdVideoAV1CDEF cdef_y_sec_strength(@Unsigned BytePtr value) {
+        MemorySegment s = cdef_y_sec_strengthRaw();
+        s.copyFrom(value.segment());
+        return this;
+    }
+
+    public @NotNull MemorySegment cdef_y_sec_strengthRaw() {
         return segment.asSlice(OFFSET$cdef_y_sec_strength, SIZE$cdef_y_sec_strength);
     }
 
@@ -220,12 +239,19 @@ public record StdVideoAV1CDEF(@NotNull MemorySegment segment) implements IStdVid
         return new BytePtr(cdef_uv_pri_strengthRaw());
     }
 
-    public StdVideoAV1CDEF cdef_uv_pri_strength(@Unsigned BytePtr value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$cdef_uv_pri_strength, SIZE$cdef_uv_pri_strength);
+    public StdVideoAV1CDEF cdef_uv_pri_strength(@NotNull Consumer<BytePtr> consumer) {
+        @Unsigned BytePtr ptr = cdef_uv_pri_strength();
+        consumer.accept(ptr);
         return this;
     }
 
-    public MemorySegment cdef_uv_pri_strengthRaw() {
+    public StdVideoAV1CDEF cdef_uv_pri_strength(@Unsigned BytePtr value) {
+        MemorySegment s = cdef_uv_pri_strengthRaw();
+        s.copyFrom(value.segment());
+        return this;
+    }
+
+    public @NotNull MemorySegment cdef_uv_pri_strengthRaw() {
         return segment.asSlice(OFFSET$cdef_uv_pri_strength, SIZE$cdef_uv_pri_strength);
     }
 
@@ -233,12 +259,19 @@ public record StdVideoAV1CDEF(@NotNull MemorySegment segment) implements IStdVid
         return new BytePtr(cdef_uv_sec_strengthRaw());
     }
 
-    public StdVideoAV1CDEF cdef_uv_sec_strength(@Unsigned BytePtr value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$cdef_uv_sec_strength, SIZE$cdef_uv_sec_strength);
+    public StdVideoAV1CDEF cdef_uv_sec_strength(@NotNull Consumer<BytePtr> consumer) {
+        @Unsigned BytePtr ptr = cdef_uv_sec_strength();
+        consumer.accept(ptr);
         return this;
     }
 
-    public MemorySegment cdef_uv_sec_strengthRaw() {
+    public StdVideoAV1CDEF cdef_uv_sec_strength(@Unsigned BytePtr value) {
+        MemorySegment s = cdef_uv_sec_strengthRaw();
+        s.copyFrom(value.segment());
+        return this;
+    }
+
+    public @NotNull MemorySegment cdef_uv_sec_strengthRaw() {
         return segment.asSlice(OFFSET$cdef_uv_sec_strength, SIZE$cdef_uv_sec_strength);
     }
 

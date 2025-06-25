@@ -32,7 +32,7 @@ import static club.doki7.vulkan.VkConstants.*;
 ///     uint32_t baseTriangle; // @link substring="baseTriangle" target="#baseTriangle"
 ///     uint32_t usageCountsCount; // optional // @link substring="usageCountsCount" target="#usageCountsCount"
 ///     VkMicromapUsageEXT const* pUsageCounts; // optional // @link substring="VkMicromapUsageEXT" target="VkMicromapUsageEXT" @link substring="pUsageCounts" target="#pUsageCounts"
-///     VkMicromapUsageEXT const* const* ppUsageCounts; // @link substring="VkMicromapUsageEXT" target="VkMicromapUsageEXT" @link substring="ppUsageCounts" target="#ppUsageCounts"
+///     VkMicromapUsageEXT const* const* ppUsageCounts; // optional // @link substring="VkMicromapUsageEXT" target="VkMicromapUsageEXT" @link substring="ppUsageCounts" target="#ppUsageCounts"
 ///     VkMicromapEXT micromap; // optional // @link substring="VkMicromapEXT" target="VkMicromapEXT" @link substring="micromap" target="#micromap"
 /// } VkAccelerationStructureTrianglesOpacityMicromapEXT;
 /// }
@@ -92,6 +92,11 @@ public record VkAccelerationStructureTrianglesOpacityMicromapEXT(@NotNull Memory
         /// indicate that the returned structure is a view of the original structure.
         public @NotNull VkAccelerationStructureTrianglesOpacityMicromapEXT at(long index) {
             return new VkAccelerationStructureTrianglesOpacityMicromapEXT(segment.asSlice(index * VkAccelerationStructureTrianglesOpacityMicromapEXT.BYTES, VkAccelerationStructureTrianglesOpacityMicromapEXT.BYTES));
+        }
+
+        public VkAccelerationStructureTrianglesOpacityMicromapEXT.Ptr at(long index, @NotNull Consumer<@NotNull VkAccelerationStructureTrianglesOpacityMicromapEXT> consumer) {
+            consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkAccelerationStructureTrianglesOpacityMicromapEXT value) {
@@ -206,12 +211,13 @@ public record VkAccelerationStructureTrianglesOpacityMicromapEXT(@NotNull Memory
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkAccelerationStructureTrianglesOpacityMicromapEXT pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkAccelerationStructureTrianglesOpacityMicromapEXT pNext(@Nullable IPointer pointer) {
@@ -293,11 +299,11 @@ public record VkAccelerationStructureTrianglesOpacityMicromapEXT(@NotNull Memory
         return new VkMicromapUsageEXT(s);
     }
 
-    public @Pointer(target=VkMicromapUsageEXT.class) MemorySegment pUsageCountsRaw() {
+    public @Pointer(target=VkMicromapUsageEXT.class) @NotNull MemorySegment pUsageCountsRaw() {
         return segment.get(LAYOUT$pUsageCounts, OFFSET$pUsageCounts);
     }
 
-    public void pUsageCountsRaw(@Pointer(target=VkMicromapUsageEXT.class) MemorySegment value) {
+    public void pUsageCountsRaw(@Pointer(target=VkMicromapUsageEXT.class) @NotNull MemorySegment value) {
         segment.set(LAYOUT$pUsageCounts, OFFSET$pUsageCounts, value);
     }
 
@@ -318,11 +324,11 @@ public record VkAccelerationStructureTrianglesOpacityMicromapEXT(@NotNull Memory
         return this;
     }
 
-    public @Pointer(comment="void**") MemorySegment ppUsageCountsRaw() {
+    public @Pointer(comment="void**") @NotNull MemorySegment ppUsageCountsRaw() {
         return segment.get(LAYOUT$ppUsageCounts, OFFSET$ppUsageCounts);
     }
 
-    public void ppUsageCountsRaw(@Pointer(comment="void**") MemorySegment value) {
+    public void ppUsageCountsRaw(@Pointer(comment="void**") @NotNull MemorySegment value) {
         segment.set(LAYOUT$ppUsageCounts, OFFSET$ppUsageCounts, value);
     }
 

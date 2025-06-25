@@ -110,6 +110,11 @@ public record VmaDefragmentationPassMoveInfo(@NotNull MemorySegment segment) imp
             return new VmaDefragmentationPassMoveInfo(segment.asSlice(index * VmaDefragmentationPassMoveInfo.BYTES, VmaDefragmentationPassMoveInfo.BYTES));
         }
 
+        public VmaDefragmentationPassMoveInfo.Ptr at(long index, @NotNull Consumer<@NotNull VmaDefragmentationPassMoveInfo> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VmaDefragmentationPassMoveInfo value) {
             MemorySegment s = segment.asSlice(index * VmaDefragmentationPassMoveInfo.BYTES, VmaDefragmentationPassMoveInfo.BYTES);
             s.copyFrom(value.segment);
@@ -236,11 +241,11 @@ public record VmaDefragmentationPassMoveInfo(@NotNull MemorySegment segment) imp
         return new VmaDefragmentationMove(s);
     }
 
-    public @Pointer(target=VmaDefragmentationMove.class) MemorySegment pMovesRaw() {
+    public @Pointer(target=VmaDefragmentationMove.class) @NotNull MemorySegment pMovesRaw() {
         return segment.get(LAYOUT$pMoves, OFFSET$pMoves);
     }
 
-    public void pMovesRaw(@Pointer(target=VmaDefragmentationMove.class) MemorySegment value) {
+    public void pMovesRaw(@Pointer(target=VmaDefragmentationMove.class) @NotNull MemorySegment value) {
         segment.set(LAYOUT$pMoves, OFFSET$pMoves, value);
     }
 

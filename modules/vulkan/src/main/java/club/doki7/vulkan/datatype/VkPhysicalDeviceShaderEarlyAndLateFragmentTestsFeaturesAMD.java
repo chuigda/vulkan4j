@@ -87,6 +87,11 @@ public record VkPhysicalDeviceShaderEarlyAndLateFragmentTestsFeaturesAMD(@NotNul
             return new VkPhysicalDeviceShaderEarlyAndLateFragmentTestsFeaturesAMD(segment.asSlice(index * VkPhysicalDeviceShaderEarlyAndLateFragmentTestsFeaturesAMD.BYTES, VkPhysicalDeviceShaderEarlyAndLateFragmentTestsFeaturesAMD.BYTES));
         }
 
+        public VkPhysicalDeviceShaderEarlyAndLateFragmentTestsFeaturesAMD.Ptr at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceShaderEarlyAndLateFragmentTestsFeaturesAMD> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkPhysicalDeviceShaderEarlyAndLateFragmentTestsFeaturesAMD value) {
             MemorySegment s = segment.asSlice(index * VkPhysicalDeviceShaderEarlyAndLateFragmentTestsFeaturesAMD.BYTES, VkPhysicalDeviceShaderEarlyAndLateFragmentTestsFeaturesAMD.BYTES);
             s.copyFrom(value.segment);
@@ -199,12 +204,13 @@ public record VkPhysicalDeviceShaderEarlyAndLateFragmentTestsFeaturesAMD(@NotNul
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkPhysicalDeviceShaderEarlyAndLateFragmentTestsFeaturesAMD pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkPhysicalDeviceShaderEarlyAndLateFragmentTestsFeaturesAMD pNext(@Nullable IPointer pointer) {

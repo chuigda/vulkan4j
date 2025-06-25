@@ -87,6 +87,11 @@ public record VkMemoryPriorityAllocateInfoEXT(@NotNull MemorySegment segment) im
             return new VkMemoryPriorityAllocateInfoEXT(segment.asSlice(index * VkMemoryPriorityAllocateInfoEXT.BYTES, VkMemoryPriorityAllocateInfoEXT.BYTES));
         }
 
+        public VkMemoryPriorityAllocateInfoEXT.Ptr at(long index, @NotNull Consumer<@NotNull VkMemoryPriorityAllocateInfoEXT> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkMemoryPriorityAllocateInfoEXT value) {
             MemorySegment s = segment.asSlice(index * VkMemoryPriorityAllocateInfoEXT.BYTES, VkMemoryPriorityAllocateInfoEXT.BYTES);
             s.copyFrom(value.segment);
@@ -199,12 +204,13 @@ public record VkMemoryPriorityAllocateInfoEXT(@NotNull MemorySegment segment) im
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkMemoryPriorityAllocateInfoEXT pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkMemoryPriorityAllocateInfoEXT pNext(@Nullable IPointer pointer) {

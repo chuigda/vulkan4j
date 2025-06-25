@@ -88,6 +88,11 @@ public record VkMemoryGetRemoteAddressInfoNV(@NotNull MemorySegment segment) imp
             return new VkMemoryGetRemoteAddressInfoNV(segment.asSlice(index * VkMemoryGetRemoteAddressInfoNV.BYTES, VkMemoryGetRemoteAddressInfoNV.BYTES));
         }
 
+        public VkMemoryGetRemoteAddressInfoNV.Ptr at(long index, @NotNull Consumer<@NotNull VkMemoryGetRemoteAddressInfoNV> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkMemoryGetRemoteAddressInfoNV value) {
             MemorySegment s = segment.asSlice(index * VkMemoryGetRemoteAddressInfoNV.BYTES, VkMemoryGetRemoteAddressInfoNV.BYTES);
             s.copyFrom(value.segment);
@@ -200,12 +205,13 @@ public record VkMemoryGetRemoteAddressInfoNV(@NotNull MemorySegment segment) imp
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkMemoryGetRemoteAddressInfoNV pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkMemoryGetRemoteAddressInfoNV pNext(@Nullable IPointer pointer) {
@@ -226,11 +232,11 @@ public record VkMemoryGetRemoteAddressInfoNV(@NotNull MemorySegment segment) imp
         return this;
     }
 
-    public @EnumType(VkExternalMemoryHandleTypeFlags.class) int handleType() {
+    public @Bitmask(VkExternalMemoryHandleTypeFlags.class) int handleType() {
         return segment.get(LAYOUT$handleType, OFFSET$handleType);
     }
 
-    public VkMemoryGetRemoteAddressInfoNV handleType(@EnumType(VkExternalMemoryHandleTypeFlags.class) int value) {
+    public VkMemoryGetRemoteAddressInfoNV handleType(@Bitmask(VkExternalMemoryHandleTypeFlags.class) int value) {
         segment.set(LAYOUT$handleType, OFFSET$handleType, value);
         return this;
     }

@@ -1,6 +1,6 @@
 # Logical device and queues
 
-> [Java code](https://github.com/chuigda/vulkan4j/tree/master/modules/tutorial/src/main/java/tutorial/vulkan/part01/ch04/Main.java) | [C++ version](https://vulkan-tutorial.com/Drawing_a_triangle/Setup/Logical_device_and_queues)
+> [Java code](https://github.com/club-doki7/vulkan4j/tree/master/modules/tutorial/src/main/java/tutorial/vulkan/part01/ch04/Main.java) | [C++ version](https://vulkan-tutorial.com/Drawing_a_triangle/Setup/Logical_device_and_queues)
 
 ## Introduction
 
@@ -74,8 +74,9 @@ Previous implementations of Vulkan made a distinction between instance and devic
 
 ```java
 if (ENABLE_VALIDATION_LAYERS) {
-    deviceCreateInfo.enabledLayerCount(1)
-            .ppEnabledLayerNames(PointerPtr.allocateV(arena, BytePtr.allocateString(arena, VALIDATION_LAYER_NAME)));
+    deviceCreateInfo
+            .enabledLayerCount(1)
+            .ppEnabledLayerNames(PointerPtr.allocateStrings(arena, VALIDATION_LAYER_NAME));
 }
 ```
 

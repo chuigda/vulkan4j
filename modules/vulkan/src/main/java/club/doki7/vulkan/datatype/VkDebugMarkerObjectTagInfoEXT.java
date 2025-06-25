@@ -91,6 +91,11 @@ public record VkDebugMarkerObjectTagInfoEXT(@NotNull MemorySegment segment) impl
             return new VkDebugMarkerObjectTagInfoEXT(segment.asSlice(index * VkDebugMarkerObjectTagInfoEXT.BYTES, VkDebugMarkerObjectTagInfoEXT.BYTES));
         }
 
+        public VkDebugMarkerObjectTagInfoEXT.Ptr at(long index, @NotNull Consumer<@NotNull VkDebugMarkerObjectTagInfoEXT> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkDebugMarkerObjectTagInfoEXT value) {
             MemorySegment s = segment.asSlice(index * VkDebugMarkerObjectTagInfoEXT.BYTES, VkDebugMarkerObjectTagInfoEXT.BYTES);
             s.copyFrom(value.segment);
@@ -203,12 +208,13 @@ public record VkDebugMarkerObjectTagInfoEXT(@NotNull MemorySegment segment) impl
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkDebugMarkerObjectTagInfoEXT pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkDebugMarkerObjectTagInfoEXT pNext(@Nullable IPointer pointer) {
@@ -252,12 +258,13 @@ public record VkDebugMarkerObjectTagInfoEXT(@NotNull MemorySegment segment) impl
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pTag() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pTag() {
         return segment.get(LAYOUT$pTag, OFFSET$pTag);
     }
 
-    public void pTag(@Pointer(comment="void*") MemorySegment value) {
+    public VkDebugMarkerObjectTagInfoEXT pTag(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pTag, OFFSET$pTag, value);
+        return this;
     }
 
     public VkDebugMarkerObjectTagInfoEXT pTag(@Nullable IPointer pointer) {

@@ -93,6 +93,11 @@ public record VkBufferMemoryBarrier(@NotNull MemorySegment segment) implements I
             return new VkBufferMemoryBarrier(segment.asSlice(index * VkBufferMemoryBarrier.BYTES, VkBufferMemoryBarrier.BYTES));
         }
 
+        public VkBufferMemoryBarrier.Ptr at(long index, @NotNull Consumer<@NotNull VkBufferMemoryBarrier> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkBufferMemoryBarrier value) {
             MemorySegment s = segment.asSlice(index * VkBufferMemoryBarrier.BYTES, VkBufferMemoryBarrier.BYTES);
             s.copyFrom(value.segment);
@@ -205,12 +210,13 @@ public record VkBufferMemoryBarrier(@NotNull MemorySegment segment) implements I
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkBufferMemoryBarrier pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkBufferMemoryBarrier pNext(@Nullable IPointer pointer) {
@@ -218,20 +224,20 @@ public record VkBufferMemoryBarrier(@NotNull MemorySegment segment) implements I
         return this;
     }
 
-    public @EnumType(VkAccessFlags.class) int srcAccessMask() {
+    public @Bitmask(VkAccessFlags.class) int srcAccessMask() {
         return segment.get(LAYOUT$srcAccessMask, OFFSET$srcAccessMask);
     }
 
-    public VkBufferMemoryBarrier srcAccessMask(@EnumType(VkAccessFlags.class) int value) {
+    public VkBufferMemoryBarrier srcAccessMask(@Bitmask(VkAccessFlags.class) int value) {
         segment.set(LAYOUT$srcAccessMask, OFFSET$srcAccessMask, value);
         return this;
     }
 
-    public @EnumType(VkAccessFlags.class) int dstAccessMask() {
+    public @Bitmask(VkAccessFlags.class) int dstAccessMask() {
         return segment.get(LAYOUT$dstAccessMask, OFFSET$dstAccessMask);
     }
 
-    public VkBufferMemoryBarrier dstAccessMask(@EnumType(VkAccessFlags.class) int value) {
+    public VkBufferMemoryBarrier dstAccessMask(@Bitmask(VkAccessFlags.class) int value) {
         segment.set(LAYOUT$dstAccessMask, OFFSET$dstAccessMask, value);
         return this;
     }

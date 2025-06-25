@@ -29,13 +29,21 @@ private fun generateNonRefArrayAccessor(className: String, elementType: CNonRefT
     }
     +""
 
-    defun("public", className, member.name, "${elementType.jPtrType} value") {
-        +"MemorySegment.copy(value.segment(), 0, segment, ${member.offsetName}, ${member.sizeName});"
+    defun("public", className, member.name, "@NotNull Consumer<${elementType.jPtrTypeNoAnnotation}> consumer") {
+        +"${elementType.jPtrType} ptr = ${member.name}();"
+        +"consumer.accept(ptr);"
         +"return this;"
     }
     +""
 
-    defun("public", "MemorySegment", rawName) {
+    defun("public", className, member.name, "${elementType.jPtrType} value") {
+        +"MemorySegment s = $rawName();"
+        +"s.copyFrom(value.segment());"
+        +"return this;"
+    }
+    +""
+
+    defun("public", "@NotNull MemorySegment", rawName) {
         +"return segment.asSlice(${member.offsetName}, ${member.sizeName});"
     }
 }
@@ -45,6 +53,13 @@ private fun generateStructureArrayAccessor(className: String, elementType: CStru
 
     defun("public", "${elementType.name}.Ptr", member.name) {
         +"return new ${elementType.name}.Ptr($rawName());"
+    }
+    +""
+
+    defun("public", className, member.name, "@NotNull Consumer<${elementType.name}.Ptr> consumer") {
+        +"${elementType.name}.Ptr ptr = ${member.name}();"
+        +"consumer.accept(ptr);"
+        +"return this;"
     }
     +""
 
@@ -69,7 +84,7 @@ private fun generateStructureArrayAccessor(className: String, elementType: CStru
     }
     +""
 
-    defun("public", "MemorySegment", rawName) {
+    defun("public", "@NotNull MemorySegment", rawName) {
         +"return segment.asSlice(${member.offsetName}, ${member.sizeName});"
     }
 }
@@ -77,23 +92,27 @@ private fun generateStructureArrayAccessor(className: String, elementType: CStru
 private fun generateHandleArrayAccessor(className: String, elementType: CHandleType, member: LayoutField.Typed) = buildDoc {
     val rawName = "${member.name}Raw"
 
-    defun("public", "MemorySegment", rawName) {
+    defun("public", "@NotNull MemorySegment", rawName) {
         +"return segment.asSlice(${member.offsetName}, ${member.sizeName});"
     }
-
     +""
 
     defun("public", "${elementType.name}.Ptr", member.name) {
         +"return new ${elementType.name}.Ptr($rawName());"
     }
-
     +""
 
-    defun("public", className, member.name, "${elementType.name}.Ptr value") {
-        +"MemorySegment.copy(value.segment(), 0, segment, ${member.offsetName}, ${member.sizeName});"
+    defun("public", className, member.name, "@NotNull Consumer<${elementType.name}.Ptr> consumer") {
+        +"${elementType.name}.Ptr ptr = ${member.name}();"
+        +"consumer.accept(ptr);"
         +"return this;"
     }
 
+    defun("public", className, member.name, "${elementType.name}.Ptr value") {
+        +"MemorySegment s = $rawName();"
+        +"s.copyFrom(value.segment());"
+        +"return this;"
+    }
     +""
 
     val atName = "${member.name}At"
@@ -103,7 +122,6 @@ private fun generateHandleArrayAccessor(className: String, elementType: CHandleT
         +"MemorySegment deref = s.get(ValueLayout.ADDRESS, index * ValueLayout.ADDRESS.byteSize());"
         +"return new ${elementType.name}(deref);"
     }
-
     +""
 
     defun("public", "void", atName, "int index", "${elementType.name} value") {

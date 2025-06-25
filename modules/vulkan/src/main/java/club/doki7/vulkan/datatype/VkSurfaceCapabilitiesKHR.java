@@ -85,6 +85,11 @@ public record VkSurfaceCapabilitiesKHR(@NotNull MemorySegment segment) implement
             return new VkSurfaceCapabilitiesKHR(segment.asSlice(index * VkSurfaceCapabilitiesKHR.BYTES, VkSurfaceCapabilitiesKHR.BYTES));
         }
 
+        public VkSurfaceCapabilitiesKHR.Ptr at(long index, @NotNull Consumer<@NotNull VkSurfaceCapabilitiesKHR> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkSurfaceCapabilitiesKHR value) {
             MemorySegment s = segment.asSlice(index * VkSurfaceCapabilitiesKHR.BYTES, VkSurfaceCapabilitiesKHR.BYTES);
             s.copyFrom(value.segment);
@@ -247,38 +252,38 @@ public record VkSurfaceCapabilitiesKHR(@NotNull MemorySegment segment) implement
         return this;
     }
 
-    public @EnumType(VkSurfaceTransformFlagsKHR.class) int supportedTransforms() {
+    public @Bitmask(VkSurfaceTransformFlagsKHR.class) int supportedTransforms() {
         return segment.get(LAYOUT$supportedTransforms, OFFSET$supportedTransforms);
     }
 
-    public VkSurfaceCapabilitiesKHR supportedTransforms(@EnumType(VkSurfaceTransformFlagsKHR.class) int value) {
+    public VkSurfaceCapabilitiesKHR supportedTransforms(@Bitmask(VkSurfaceTransformFlagsKHR.class) int value) {
         segment.set(LAYOUT$supportedTransforms, OFFSET$supportedTransforms, value);
         return this;
     }
 
-    public @EnumType(VkSurfaceTransformFlagsKHR.class) int currentTransform() {
+    public @Bitmask(VkSurfaceTransformFlagsKHR.class) int currentTransform() {
         return segment.get(LAYOUT$currentTransform, OFFSET$currentTransform);
     }
 
-    public VkSurfaceCapabilitiesKHR currentTransform(@EnumType(VkSurfaceTransformFlagsKHR.class) int value) {
+    public VkSurfaceCapabilitiesKHR currentTransform(@Bitmask(VkSurfaceTransformFlagsKHR.class) int value) {
         segment.set(LAYOUT$currentTransform, OFFSET$currentTransform, value);
         return this;
     }
 
-    public @EnumType(VkCompositeAlphaFlagsKHR.class) int supportedCompositeAlpha() {
+    public @Bitmask(VkCompositeAlphaFlagsKHR.class) int supportedCompositeAlpha() {
         return segment.get(LAYOUT$supportedCompositeAlpha, OFFSET$supportedCompositeAlpha);
     }
 
-    public VkSurfaceCapabilitiesKHR supportedCompositeAlpha(@EnumType(VkCompositeAlphaFlagsKHR.class) int value) {
+    public VkSurfaceCapabilitiesKHR supportedCompositeAlpha(@Bitmask(VkCompositeAlphaFlagsKHR.class) int value) {
         segment.set(LAYOUT$supportedCompositeAlpha, OFFSET$supportedCompositeAlpha, value);
         return this;
     }
 
-    public @EnumType(VkImageUsageFlags.class) int supportedUsageFlags() {
+    public @Bitmask(VkImageUsageFlags.class) int supportedUsageFlags() {
         return segment.get(LAYOUT$supportedUsageFlags, OFFSET$supportedUsageFlags);
     }
 
-    public VkSurfaceCapabilitiesKHR supportedUsageFlags(@EnumType(VkImageUsageFlags.class) int value) {
+    public VkSurfaceCapabilitiesKHR supportedUsageFlags(@Bitmask(VkImageUsageFlags.class) int value) {
         segment.set(LAYOUT$supportedUsageFlags, OFFSET$supportedUsageFlags, value);
         return this;
     }

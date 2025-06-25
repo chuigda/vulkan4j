@@ -27,11 +27,11 @@ import static club.doki7.vulkan.VkConstants.*;
 ///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
 ///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
 ///     uint32_t waitSemaphoreCount; // optional // @link substring="waitSemaphoreCount" target="#waitSemaphoreCount"
-///     VkSemaphore const* pWaitSemaphores; // @link substring="VkSemaphore" target="VkSemaphore" @link substring="pWaitSemaphores" target="#pWaitSemaphores"
+///     VkSemaphore const* pWaitSemaphores; // optional // @link substring="VkSemaphore" target="VkSemaphore" @link substring="pWaitSemaphores" target="#pWaitSemaphores"
 ///     uint32_t swapchainCount; // @link substring="swapchainCount" target="#swapchainCount"
 ///     VkSwapchainKHR const* pSwapchains; // @link substring="VkSwapchainKHR" target="VkSwapchainKHR" @link substring="pSwapchains" target="#pSwapchains"
 ///     uint32_t const* pImageIndices; // @link substring="pImageIndices" target="#pImageIndices"
-///     VkResult* pResults; // optional // @link substring="VkResult" target="VkResult" @link substring="pResults" target="#pResults"
+///     VkResult* pResults; // @link substring="VkResult" target="VkResult" @link substring="pResults" target="#pResults"
 /// } VkPresentInfoKHR;
 /// }
 ///
@@ -90,6 +90,11 @@ public record VkPresentInfoKHR(@NotNull MemorySegment segment) implements IVkPre
         /// indicate that the returned structure is a view of the original structure.
         public @NotNull VkPresentInfoKHR at(long index) {
             return new VkPresentInfoKHR(segment.asSlice(index * VkPresentInfoKHR.BYTES, VkPresentInfoKHR.BYTES));
+        }
+
+        public VkPresentInfoKHR.Ptr at(long index, @NotNull Consumer<@NotNull VkPresentInfoKHR> consumer) {
+            consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkPresentInfoKHR value) {
@@ -204,12 +209,13 @@ public record VkPresentInfoKHR(@NotNull MemorySegment segment) implements IVkPre
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkPresentInfoKHR pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkPresentInfoKHR pNext(@Nullable IPointer pointer) {
@@ -244,11 +250,11 @@ public record VkPresentInfoKHR(@NotNull MemorySegment segment) implements IVkPre
         return this;
     }
 
-    public @Pointer(target=VkSemaphore.class) MemorySegment pWaitSemaphoresRaw() {
+    public @Pointer(target=VkSemaphore.class) @NotNull MemorySegment pWaitSemaphoresRaw() {
         return segment.get(LAYOUT$pWaitSemaphores, OFFSET$pWaitSemaphores);
     }
 
-    public void pWaitSemaphoresRaw(@Pointer(target=VkSemaphore.class) MemorySegment value) {
+    public void pWaitSemaphoresRaw(@Pointer(target=VkSemaphore.class) @NotNull MemorySegment value) {
         segment.set(LAYOUT$pWaitSemaphores, OFFSET$pWaitSemaphores, value);
     }
 
@@ -279,11 +285,11 @@ public record VkPresentInfoKHR(@NotNull MemorySegment segment) implements IVkPre
         return this;
     }
 
-    public @Pointer(target=VkSwapchainKHR.class) MemorySegment pSwapchainsRaw() {
+    public @Pointer(target=VkSwapchainKHR.class) @NotNull MemorySegment pSwapchainsRaw() {
         return segment.get(LAYOUT$pSwapchains, OFFSET$pSwapchains);
     }
 
-    public void pSwapchainsRaw(@Pointer(target=VkSwapchainKHR.class) MemorySegment value) {
+    public void pSwapchainsRaw(@Pointer(target=VkSwapchainKHR.class) @NotNull MemorySegment value) {
         segment.set(LAYOUT$pSwapchains, OFFSET$pSwapchains, value);
     }
 
@@ -305,11 +311,11 @@ public record VkPresentInfoKHR(@NotNull MemorySegment segment) implements IVkPre
         return this;
     }
 
-    public @Pointer(comment="uint32_t*") MemorySegment pImageIndicesRaw() {
+    public @Pointer(comment="uint32_t*") @NotNull MemorySegment pImageIndicesRaw() {
         return segment.get(LAYOUT$pImageIndices, OFFSET$pImageIndices);
     }
 
-    public void pImageIndicesRaw(@Pointer(comment="uint32_t*") MemorySegment value) {
+    public void pImageIndicesRaw(@Pointer(comment="uint32_t*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pImageIndices, OFFSET$pImageIndices, value);
     }
 
@@ -332,11 +338,11 @@ public record VkPresentInfoKHR(@NotNull MemorySegment segment) implements IVkPre
         return this;
     }
 
-    public @Pointer(target=VkResult.class) MemorySegment pResultsRaw() {
+    public @Pointer(target=VkResult.class) @NotNull MemorySegment pResultsRaw() {
         return segment.get(LAYOUT$pResults, OFFSET$pResults);
     }
 
-    public void pResultsRaw(@Pointer(target=VkResult.class) MemorySegment value) {
+    public void pResultsRaw(@Pointer(target=VkResult.class) @NotNull MemorySegment value) {
         segment.set(LAYOUT$pResults, OFFSET$pResults, value);
     }
 

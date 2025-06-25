@@ -88,6 +88,11 @@ public record VkRenderPassInputAttachmentAspectCreateInfo(@NotNull MemorySegment
             return new VkRenderPassInputAttachmentAspectCreateInfo(segment.asSlice(index * VkRenderPassInputAttachmentAspectCreateInfo.BYTES, VkRenderPassInputAttachmentAspectCreateInfo.BYTES));
         }
 
+        public VkRenderPassInputAttachmentAspectCreateInfo.Ptr at(long index, @NotNull Consumer<@NotNull VkRenderPassInputAttachmentAspectCreateInfo> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkRenderPassInputAttachmentAspectCreateInfo value) {
             MemorySegment s = segment.asSlice(index * VkRenderPassInputAttachmentAspectCreateInfo.BYTES, VkRenderPassInputAttachmentAspectCreateInfo.BYTES);
             s.copyFrom(value.segment);
@@ -200,12 +205,13 @@ public record VkRenderPassInputAttachmentAspectCreateInfo(@NotNull MemorySegment
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkRenderPassInputAttachmentAspectCreateInfo pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkRenderPassInputAttachmentAspectCreateInfo pNext(@Nullable IPointer pointer) {
@@ -246,11 +252,11 @@ public record VkRenderPassInputAttachmentAspectCreateInfo(@NotNull MemorySegment
         return new VkInputAttachmentAspectReference(s);
     }
 
-    public @Pointer(target=VkInputAttachmentAspectReference.class) MemorySegment pAspectReferencesRaw() {
+    public @Pointer(target=VkInputAttachmentAspectReference.class) @NotNull MemorySegment pAspectReferencesRaw() {
         return segment.get(LAYOUT$pAspectReferences, OFFSET$pAspectReferences);
     }
 
-    public void pAspectReferencesRaw(@Pointer(target=VkInputAttachmentAspectReference.class) MemorySegment value) {
+    public void pAspectReferencesRaw(@Pointer(target=VkInputAttachmentAspectReference.class) @NotNull MemorySegment value) {
         segment.set(LAYOUT$pAspectReferences, OFFSET$pAspectReferences, value);
     }
 

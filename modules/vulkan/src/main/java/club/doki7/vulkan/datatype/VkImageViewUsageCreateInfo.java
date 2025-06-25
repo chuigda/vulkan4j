@@ -87,6 +87,11 @@ public record VkImageViewUsageCreateInfo(@NotNull MemorySegment segment) impleme
             return new VkImageViewUsageCreateInfo(segment.asSlice(index * VkImageViewUsageCreateInfo.BYTES, VkImageViewUsageCreateInfo.BYTES));
         }
 
+        public VkImageViewUsageCreateInfo.Ptr at(long index, @NotNull Consumer<@NotNull VkImageViewUsageCreateInfo> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkImageViewUsageCreateInfo value) {
             MemorySegment s = segment.asSlice(index * VkImageViewUsageCreateInfo.BYTES, VkImageViewUsageCreateInfo.BYTES);
             s.copyFrom(value.segment);
@@ -199,12 +204,13 @@ public record VkImageViewUsageCreateInfo(@NotNull MemorySegment segment) impleme
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkImageViewUsageCreateInfo pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkImageViewUsageCreateInfo pNext(@Nullable IPointer pointer) {
@@ -212,11 +218,11 @@ public record VkImageViewUsageCreateInfo(@NotNull MemorySegment segment) impleme
         return this;
     }
 
-    public @EnumType(VkImageUsageFlags.class) int usage() {
+    public @Bitmask(VkImageUsageFlags.class) int usage() {
         return segment.get(LAYOUT$usage, OFFSET$usage);
     }
 
-    public VkImageViewUsageCreateInfo usage(@EnumType(VkImageUsageFlags.class) int value) {
+    public VkImageViewUsageCreateInfo usage(@Bitmask(VkImageUsageFlags.class) int value) {
         segment.set(LAYOUT$usage, OFFSET$usage, value);
         return this;
     }

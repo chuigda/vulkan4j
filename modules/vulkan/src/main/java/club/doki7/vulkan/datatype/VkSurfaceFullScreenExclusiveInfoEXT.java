@@ -87,6 +87,11 @@ public record VkSurfaceFullScreenExclusiveInfoEXT(@NotNull MemorySegment segment
             return new VkSurfaceFullScreenExclusiveInfoEXT(segment.asSlice(index * VkSurfaceFullScreenExclusiveInfoEXT.BYTES, VkSurfaceFullScreenExclusiveInfoEXT.BYTES));
         }
 
+        public VkSurfaceFullScreenExclusiveInfoEXT.Ptr at(long index, @NotNull Consumer<@NotNull VkSurfaceFullScreenExclusiveInfoEXT> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkSurfaceFullScreenExclusiveInfoEXT value) {
             MemorySegment s = segment.asSlice(index * VkSurfaceFullScreenExclusiveInfoEXT.BYTES, VkSurfaceFullScreenExclusiveInfoEXT.BYTES);
             s.copyFrom(value.segment);
@@ -199,12 +204,13 @@ public record VkSurfaceFullScreenExclusiveInfoEXT(@NotNull MemorySegment segment
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkSurfaceFullScreenExclusiveInfoEXT pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkSurfaceFullScreenExclusiveInfoEXT pNext(@Nullable IPointer pointer) {

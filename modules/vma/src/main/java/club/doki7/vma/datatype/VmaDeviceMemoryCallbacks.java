@@ -93,6 +93,11 @@ public record VmaDeviceMemoryCallbacks(@NotNull MemorySegment segment) implement
             return new VmaDeviceMemoryCallbacks(segment.asSlice(index * VmaDeviceMemoryCallbacks.BYTES, VmaDeviceMemoryCallbacks.BYTES));
         }
 
+        public VmaDeviceMemoryCallbacks.Ptr at(long index, @NotNull Consumer<@NotNull VmaDeviceMemoryCallbacks> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VmaDeviceMemoryCallbacks value) {
             MemorySegment s = segment.asSlice(index * VmaDeviceMemoryCallbacks.BYTES, VmaDeviceMemoryCallbacks.BYTES);
             s.copyFrom(value.segment);
@@ -186,12 +191,13 @@ public record VmaDeviceMemoryCallbacks(@NotNull MemorySegment segment) implement
         return ret;
     }
 
-    public @Pointer(comment="PFN_vmaAllocateDeviceMemoryFunction") MemorySegment pfnAllocate() {
+    public @Pointer(comment="PFN_vmaAllocateDeviceMemoryFunction") @NotNull MemorySegment pfnAllocate() {
         return segment.get(LAYOUT$pfnAllocate, OFFSET$pfnAllocate);
     }
 
-    public void pfnAllocate(@Pointer(comment="PFN_vmaAllocateDeviceMemoryFunction") MemorySegment value) {
+    public VmaDeviceMemoryCallbacks pfnAllocate(@Pointer(comment="PFN_vmaAllocateDeviceMemoryFunction") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pfnAllocate, OFFSET$pfnAllocate, value);
+        return this;
     }
 
     public VmaDeviceMemoryCallbacks pfnAllocate(@Nullable IPointer pointer) {
@@ -199,12 +205,13 @@ public record VmaDeviceMemoryCallbacks(@NotNull MemorySegment segment) implement
         return this;
     }
 
-    public @Pointer(comment="PFN_vmaFreeDeviceMemoryFunction") MemorySegment pfnFree() {
+    public @Pointer(comment="PFN_vmaFreeDeviceMemoryFunction") @NotNull MemorySegment pfnFree() {
         return segment.get(LAYOUT$pfnFree, OFFSET$pfnFree);
     }
 
-    public void pfnFree(@Pointer(comment="PFN_vmaFreeDeviceMemoryFunction") MemorySegment value) {
+    public VmaDeviceMemoryCallbacks pfnFree(@Pointer(comment="PFN_vmaFreeDeviceMemoryFunction") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pfnFree, OFFSET$pfnFree, value);
+        return this;
     }
 
     public VmaDeviceMemoryCallbacks pfnFree(@Nullable IPointer pointer) {
@@ -212,12 +219,13 @@ public record VmaDeviceMemoryCallbacks(@NotNull MemorySegment segment) implement
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pUserData() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pUserData() {
         return segment.get(LAYOUT$pUserData, OFFSET$pUserData);
     }
 
-    public void pUserData(@Pointer(comment="void*") MemorySegment value) {
+    public VmaDeviceMemoryCallbacks pUserData(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pUserData, OFFSET$pUserData, value);
+        return this;
     }
 
     public VmaDeviceMemoryCallbacks pUserData(@Nullable IPointer pointer) {

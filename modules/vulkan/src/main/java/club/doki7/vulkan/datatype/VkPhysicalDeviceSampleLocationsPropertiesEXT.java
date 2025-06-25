@@ -91,6 +91,11 @@ public record VkPhysicalDeviceSampleLocationsPropertiesEXT(@NotNull MemorySegmen
             return new VkPhysicalDeviceSampleLocationsPropertiesEXT(segment.asSlice(index * VkPhysicalDeviceSampleLocationsPropertiesEXT.BYTES, VkPhysicalDeviceSampleLocationsPropertiesEXT.BYTES));
         }
 
+        public VkPhysicalDeviceSampleLocationsPropertiesEXT.Ptr at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceSampleLocationsPropertiesEXT> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkPhysicalDeviceSampleLocationsPropertiesEXT value) {
             MemorySegment s = segment.asSlice(index * VkPhysicalDeviceSampleLocationsPropertiesEXT.BYTES, VkPhysicalDeviceSampleLocationsPropertiesEXT.BYTES);
             s.copyFrom(value.segment);
@@ -203,12 +208,13 @@ public record VkPhysicalDeviceSampleLocationsPropertiesEXT(@NotNull MemorySegmen
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkPhysicalDeviceSampleLocationsPropertiesEXT pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkPhysicalDeviceSampleLocationsPropertiesEXT pNext(@Nullable IPointer pointer) {
@@ -216,11 +222,11 @@ public record VkPhysicalDeviceSampleLocationsPropertiesEXT(@NotNull MemorySegmen
         return this;
     }
 
-    public @EnumType(VkSampleCountFlags.class) int sampleLocationSampleCounts() {
+    public @Bitmask(VkSampleCountFlags.class) int sampleLocationSampleCounts() {
         return segment.get(LAYOUT$sampleLocationSampleCounts, OFFSET$sampleLocationSampleCounts);
     }
 
-    public VkPhysicalDeviceSampleLocationsPropertiesEXT sampleLocationSampleCounts(@EnumType(VkSampleCountFlags.class) int value) {
+    public VkPhysicalDeviceSampleLocationsPropertiesEXT sampleLocationSampleCounts(@Bitmask(VkSampleCountFlags.class) int value) {
         segment.set(LAYOUT$sampleLocationSampleCounts, OFFSET$sampleLocationSampleCounts, value);
         return this;
     }
@@ -243,12 +249,19 @@ public record VkPhysicalDeviceSampleLocationsPropertiesEXT(@NotNull MemorySegmen
         return new FloatPtr(sampleLocationCoordinateRangeRaw());
     }
 
-    public VkPhysicalDeviceSampleLocationsPropertiesEXT sampleLocationCoordinateRange(FloatPtr value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$sampleLocationCoordinateRange, SIZE$sampleLocationCoordinateRange);
+    public VkPhysicalDeviceSampleLocationsPropertiesEXT sampleLocationCoordinateRange(@NotNull Consumer<FloatPtr> consumer) {
+        FloatPtr ptr = sampleLocationCoordinateRange();
+        consumer.accept(ptr);
         return this;
     }
 
-    public MemorySegment sampleLocationCoordinateRangeRaw() {
+    public VkPhysicalDeviceSampleLocationsPropertiesEXT sampleLocationCoordinateRange(FloatPtr value) {
+        MemorySegment s = sampleLocationCoordinateRangeRaw();
+        s.copyFrom(value.segment());
+        return this;
+    }
+
+    public @NotNull MemorySegment sampleLocationCoordinateRangeRaw() {
         return segment.asSlice(OFFSET$sampleLocationCoordinateRange, SIZE$sampleLocationCoordinateRange);
     }
 

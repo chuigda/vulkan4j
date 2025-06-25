@@ -2,7 +2,6 @@ package club.doki7.babel.registry
 
 import club.doki7.babel.util.Either
 import java.math.BigInteger
-
 interface IMergeable<Self: IMergeable<Self>> {
     fun merge(other: Self): Self
 }
@@ -22,6 +21,8 @@ interface RegistryBase {
     val opaqueTypedefs: MutableMap<Identifier, OpaqueTypedef>
     val structures: MutableMap<Identifier, Structure>
     val unions: MutableMap<Identifier, Structure>
+
+    val enumConstantToEnumerationLookupAccel: MutableMap<String, Identifier>
 }
 
 data class Registry<E: IMergeable<E>>(
@@ -35,6 +36,7 @@ data class Registry<E: IMergeable<E>>(
     override val opaqueTypedefs: MutableMap<Identifier, OpaqueTypedef> = mutableMapOf(),
     override val structures: MutableMap<Identifier, Structure> = mutableMapOf(),
     override val unions: MutableMap<Identifier, Structure> = mutableMapOf(),
+    override val enumConstantToEnumerationLookupAccel: MutableMap<String, Identifier> = mutableMapOf(),
 
     var ext: E
 ) : RegistryBase {
@@ -66,6 +68,18 @@ data class Registry<E: IMergeable<E>>(
 
         this.ext = this.ext.merge(other.ext)
     }
+
+    fun buildLookupAccel() {
+        this.enumConstantToEnumerationLookupAccel.clear()
+        for ((_, enumeration) in this.enumerations) {
+            for (variant in enumeration.variants) {
+                this.enumConstantToEnumerationLookupAccel.put(
+                    variant.name.original,
+                    enumeration.name
+                )
+            }
+        }
+    }
 }
 
 abstract class Entity(val name: Identifier, var doc: List<String>? = null) {
@@ -83,7 +97,7 @@ abstract class Entity(val name: Identifier, var doc: List<String>? = null) {
 
     fun rename(newName: String) = this.name.rename(newName)
 
-    fun rename(renamer: String.() -> String) = this.rename(renamer(this.name.original))
+    inline fun rename(renamer: String.() -> String) = this.rename(renamer(this.name.original))
 
     fun <T> setExt(extra: T) {
         this._ext = extra
@@ -170,6 +184,12 @@ class Command(
         errorCodes: List<Identifier>?
     ) : this(name.intern(), params, result, successCodes, errorCodes)
 
+    fun aliasBy(name: Identifier): Command {
+        return Command(
+            name, params, result, successCodes, errorCodes, this.name
+        ).also { it.setExt(this.ext<Any?>()) }
+    }
+
     override fun toStringImpl() =
         "Command(name=\"$name\", params=$params, result=$result, successCodes=$successCodes, errorCodes=$errorCodes"
 }
@@ -232,9 +252,12 @@ class EnumVariant(
 class FunctionTypedef(
     name: Identifier,
     val params: List<Type>,
-    val result: Type
+    val result: Type,
+    val isPointer: Boolean = true
 ) : Entity(name) {
     constructor(name: String, params: List<Type>, result: Type) : this(name.intern(), params, result)
+
+    constructor(name: String, params: List<Type>, result: Type, isPointer: Boolean) : this(name.intern(), params, result, isPointer)
 
     override fun toStringImpl() = "FunctionTypedef(name=\"$name\", params=$params, result=$result"
 }
@@ -273,7 +296,7 @@ class Member(
     val values: Identifier?,
     val len: List<Identifier>?,
     val altLen: String?,
-    val optional: Boolean,
+    var optional: Boolean,
     val bits: Int?
 ) : Entity(name) {
     override fun toStringImpl() = buildString {

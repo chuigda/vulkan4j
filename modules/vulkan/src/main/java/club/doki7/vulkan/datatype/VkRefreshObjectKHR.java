@@ -78,6 +78,11 @@ public record VkRefreshObjectKHR(@NotNull MemorySegment segment) implements IVkR
             return new VkRefreshObjectKHR(segment.asSlice(index * VkRefreshObjectKHR.BYTES, VkRefreshObjectKHR.BYTES));
         }
 
+        public VkRefreshObjectKHR.Ptr at(long index, @NotNull Consumer<@NotNull VkRefreshObjectKHR> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkRefreshObjectKHR value) {
             MemorySegment s = segment.asSlice(index * VkRefreshObjectKHR.BYTES, VkRefreshObjectKHR.BYTES);
             s.copyFrom(value.segment);
@@ -189,11 +194,11 @@ public record VkRefreshObjectKHR(@NotNull MemorySegment segment) implements IVkR
         return this;
     }
 
-    public @EnumType(VkRefreshObjectFlagsKHR.class) int flags() {
+    public @Bitmask(VkRefreshObjectFlagsKHR.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public VkRefreshObjectKHR flags(@EnumType(VkRefreshObjectFlagsKHR.class) int value) {
+    public VkRefreshObjectKHR flags(@Bitmask(VkRefreshObjectFlagsKHR.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
         return this;
     }

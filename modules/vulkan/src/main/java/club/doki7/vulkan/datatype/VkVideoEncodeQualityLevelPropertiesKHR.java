@@ -88,6 +88,11 @@ public record VkVideoEncodeQualityLevelPropertiesKHR(@NotNull MemorySegment segm
             return new VkVideoEncodeQualityLevelPropertiesKHR(segment.asSlice(index * VkVideoEncodeQualityLevelPropertiesKHR.BYTES, VkVideoEncodeQualityLevelPropertiesKHR.BYTES));
         }
 
+        public VkVideoEncodeQualityLevelPropertiesKHR.Ptr at(long index, @NotNull Consumer<@NotNull VkVideoEncodeQualityLevelPropertiesKHR> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkVideoEncodeQualityLevelPropertiesKHR value) {
             MemorySegment s = segment.asSlice(index * VkVideoEncodeQualityLevelPropertiesKHR.BYTES, VkVideoEncodeQualityLevelPropertiesKHR.BYTES);
             s.copyFrom(value.segment);
@@ -200,12 +205,13 @@ public record VkVideoEncodeQualityLevelPropertiesKHR(@NotNull MemorySegment segm
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkVideoEncodeQualityLevelPropertiesKHR pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkVideoEncodeQualityLevelPropertiesKHR pNext(@Nullable IPointer pointer) {
@@ -213,11 +219,11 @@ public record VkVideoEncodeQualityLevelPropertiesKHR(@NotNull MemorySegment segm
         return this;
     }
 
-    public @EnumType(VkVideoEncodeRateControlModeFlagsKHR.class) int preferredRateControlMode() {
+    public @Bitmask(VkVideoEncodeRateControlModeFlagsKHR.class) int preferredRateControlMode() {
         return segment.get(LAYOUT$preferredRateControlMode, OFFSET$preferredRateControlMode);
     }
 
-    public VkVideoEncodeQualityLevelPropertiesKHR preferredRateControlMode(@EnumType(VkVideoEncodeRateControlModeFlagsKHR.class) int value) {
+    public VkVideoEncodeQualityLevelPropertiesKHR preferredRateControlMode(@Bitmask(VkVideoEncodeRateControlModeFlagsKHR.class) int value) {
         segment.set(LAYOUT$preferredRateControlMode, OFFSET$preferredRateControlMode, value);
         return this;
     }

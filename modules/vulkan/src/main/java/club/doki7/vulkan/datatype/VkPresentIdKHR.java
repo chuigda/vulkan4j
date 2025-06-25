@@ -27,7 +27,7 @@ import static club.doki7.vulkan.VkConstants.*;
 ///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
 ///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
 ///     uint32_t swapchainCount; // @link substring="swapchainCount" target="#swapchainCount"
-///     uint64_t const* pPresentIds; // optional // @link substring="pPresentIds" target="#pPresentIds"
+///     uint64_t const* pPresentIds; // @link substring="pPresentIds" target="#pPresentIds"
 /// } VkPresentIdKHR;
 /// }
 ///
@@ -86,6 +86,11 @@ public record VkPresentIdKHR(@NotNull MemorySegment segment) implements IVkPrese
         /// indicate that the returned structure is a view of the original structure.
         public @NotNull VkPresentIdKHR at(long index) {
             return new VkPresentIdKHR(segment.asSlice(index * VkPresentIdKHR.BYTES, VkPresentIdKHR.BYTES));
+        }
+
+        public VkPresentIdKHR.Ptr at(long index, @NotNull Consumer<@NotNull VkPresentIdKHR> consumer) {
+            consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkPresentIdKHR value) {
@@ -200,12 +205,13 @@ public record VkPresentIdKHR(@NotNull MemorySegment segment) implements IVkPrese
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkPresentIdKHR pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkPresentIdKHR pNext(@Nullable IPointer pointer) {
@@ -240,11 +246,11 @@ public record VkPresentIdKHR(@NotNull MemorySegment segment) implements IVkPrese
         return this;
     }
 
-    public @Pointer(comment="uint64_t*") MemorySegment pPresentIdsRaw() {
+    public @Pointer(comment="uint64_t*") @NotNull MemorySegment pPresentIdsRaw() {
         return segment.get(LAYOUT$pPresentIds, OFFSET$pPresentIds);
     }
 
-    public void pPresentIdsRaw(@Pointer(comment="uint64_t*") MemorySegment value) {
+    public void pPresentIdsRaw(@Pointer(comment="uint64_t*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pPresentIds, OFFSET$pPresentIds, value);
     }
 

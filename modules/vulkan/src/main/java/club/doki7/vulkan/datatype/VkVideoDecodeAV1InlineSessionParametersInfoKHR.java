@@ -87,6 +87,11 @@ public record VkVideoDecodeAV1InlineSessionParametersInfoKHR(@NotNull MemorySegm
             return new VkVideoDecodeAV1InlineSessionParametersInfoKHR(segment.asSlice(index * VkVideoDecodeAV1InlineSessionParametersInfoKHR.BYTES, VkVideoDecodeAV1InlineSessionParametersInfoKHR.BYTES));
         }
 
+        public VkVideoDecodeAV1InlineSessionParametersInfoKHR.Ptr at(long index, @NotNull Consumer<@NotNull VkVideoDecodeAV1InlineSessionParametersInfoKHR> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkVideoDecodeAV1InlineSessionParametersInfoKHR value) {
             MemorySegment s = segment.asSlice(index * VkVideoDecodeAV1InlineSessionParametersInfoKHR.BYTES, VkVideoDecodeAV1InlineSessionParametersInfoKHR.BYTES);
             s.copyFrom(value.segment);
@@ -199,12 +204,13 @@ public record VkVideoDecodeAV1InlineSessionParametersInfoKHR(@NotNull MemorySegm
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkVideoDecodeAV1InlineSessionParametersInfoKHR pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkVideoDecodeAV1InlineSessionParametersInfoKHR pNext(@Nullable IPointer pointer) {
@@ -236,11 +242,11 @@ public record VkVideoDecodeAV1InlineSessionParametersInfoKHR(@NotNull MemorySegm
         return new StdVideoAV1SequenceHeader(s);
     }
 
-    public @Pointer(target=StdVideoAV1SequenceHeader.class) MemorySegment pStdSequenceHeaderRaw() {
+    public @Pointer(target=StdVideoAV1SequenceHeader.class) @NotNull MemorySegment pStdSequenceHeaderRaw() {
         return segment.get(LAYOUT$pStdSequenceHeader, OFFSET$pStdSequenceHeader);
     }
 
-    public void pStdSequenceHeaderRaw(@Pointer(target=StdVideoAV1SequenceHeader.class) MemorySegment value) {
+    public void pStdSequenceHeaderRaw(@Pointer(target=StdVideoAV1SequenceHeader.class) @NotNull MemorySegment value) {
         segment.set(LAYOUT$pStdSequenceHeader, OFFSET$pStdSequenceHeader, value);
     }
 

@@ -90,6 +90,11 @@ public record VkBindVideoSessionMemoryInfoKHR(@NotNull MemorySegment segment) im
             return new VkBindVideoSessionMemoryInfoKHR(segment.asSlice(index * VkBindVideoSessionMemoryInfoKHR.BYTES, VkBindVideoSessionMemoryInfoKHR.BYTES));
         }
 
+        public VkBindVideoSessionMemoryInfoKHR.Ptr at(long index, @NotNull Consumer<@NotNull VkBindVideoSessionMemoryInfoKHR> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkBindVideoSessionMemoryInfoKHR value) {
             MemorySegment s = segment.asSlice(index * VkBindVideoSessionMemoryInfoKHR.BYTES, VkBindVideoSessionMemoryInfoKHR.BYTES);
             s.copyFrom(value.segment);
@@ -202,12 +207,13 @@ public record VkBindVideoSessionMemoryInfoKHR(@NotNull MemorySegment segment) im
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkBindVideoSessionMemoryInfoKHR pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkBindVideoSessionMemoryInfoKHR pNext(@Nullable IPointer pointer) {

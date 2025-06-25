@@ -80,6 +80,11 @@ public record VkSparseMemoryBind(@NotNull MemorySegment segment) implements IVkS
             return new VkSparseMemoryBind(segment.asSlice(index * VkSparseMemoryBind.BYTES, VkSparseMemoryBind.BYTES));
         }
 
+        public VkSparseMemoryBind.Ptr at(long index, @NotNull Consumer<@NotNull VkSparseMemoryBind> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkSparseMemoryBind value) {
             MemorySegment s = segment.asSlice(index * VkSparseMemoryBind.BYTES, VkSparseMemoryBind.BYTES);
             s.copyFrom(value.segment);
@@ -213,11 +218,11 @@ public record VkSparseMemoryBind(@NotNull MemorySegment segment) implements IVkS
         return this;
     }
 
-    public @EnumType(VkSparseMemoryBindFlags.class) int flags() {
+    public @Bitmask(VkSparseMemoryBindFlags.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public VkSparseMemoryBind flags(@EnumType(VkSparseMemoryBindFlags.class) int value) {
+    public VkSparseMemoryBind flags(@Bitmask(VkSparseMemoryBindFlags.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
         return this;
     }

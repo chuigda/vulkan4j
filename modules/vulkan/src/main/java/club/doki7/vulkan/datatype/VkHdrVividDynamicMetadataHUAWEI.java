@@ -88,6 +88,11 @@ public record VkHdrVividDynamicMetadataHUAWEI(@NotNull MemorySegment segment) im
             return new VkHdrVividDynamicMetadataHUAWEI(segment.asSlice(index * VkHdrVividDynamicMetadataHUAWEI.BYTES, VkHdrVividDynamicMetadataHUAWEI.BYTES));
         }
 
+        public VkHdrVividDynamicMetadataHUAWEI.Ptr at(long index, @NotNull Consumer<@NotNull VkHdrVividDynamicMetadataHUAWEI> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkHdrVividDynamicMetadataHUAWEI value) {
             MemorySegment s = segment.asSlice(index * VkHdrVividDynamicMetadataHUAWEI.BYTES, VkHdrVividDynamicMetadataHUAWEI.BYTES);
             s.copyFrom(value.segment);
@@ -200,12 +205,13 @@ public record VkHdrVividDynamicMetadataHUAWEI(@NotNull MemorySegment segment) im
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkHdrVividDynamicMetadataHUAWEI pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkHdrVividDynamicMetadataHUAWEI pNext(@Nullable IPointer pointer) {
@@ -222,12 +228,13 @@ public record VkHdrVividDynamicMetadataHUAWEI(@NotNull MemorySegment segment) im
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pDynamicMetadata() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pDynamicMetadata() {
         return segment.get(LAYOUT$pDynamicMetadata, OFFSET$pDynamicMetadata);
     }
 
-    public void pDynamicMetadata(@Pointer(comment="void*") MemorySegment value) {
+    public VkHdrVividDynamicMetadataHUAWEI pDynamicMetadata(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pDynamicMetadata, OFFSET$pDynamicMetadata, value);
+        return this;
     }
 
     public VkHdrVividDynamicMetadataHUAWEI pDynamicMetadata(@Nullable IPointer pointer) {

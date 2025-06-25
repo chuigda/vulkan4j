@@ -87,6 +87,11 @@ public record VkPhysicalDeviceCubicClampFeaturesQCOM(@NotNull MemorySegment segm
             return new VkPhysicalDeviceCubicClampFeaturesQCOM(segment.asSlice(index * VkPhysicalDeviceCubicClampFeaturesQCOM.BYTES, VkPhysicalDeviceCubicClampFeaturesQCOM.BYTES));
         }
 
+        public VkPhysicalDeviceCubicClampFeaturesQCOM.Ptr at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceCubicClampFeaturesQCOM> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkPhysicalDeviceCubicClampFeaturesQCOM value) {
             MemorySegment s = segment.asSlice(index * VkPhysicalDeviceCubicClampFeaturesQCOM.BYTES, VkPhysicalDeviceCubicClampFeaturesQCOM.BYTES);
             s.copyFrom(value.segment);
@@ -199,12 +204,13 @@ public record VkPhysicalDeviceCubicClampFeaturesQCOM(@NotNull MemorySegment segm
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkPhysicalDeviceCubicClampFeaturesQCOM pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkPhysicalDeviceCubicClampFeaturesQCOM pNext(@Nullable IPointer pointer) {

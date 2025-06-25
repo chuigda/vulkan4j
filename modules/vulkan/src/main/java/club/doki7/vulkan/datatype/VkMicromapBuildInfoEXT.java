@@ -32,7 +32,7 @@ import static club.doki7.vulkan.VkConstants.*;
 ///     VkMicromapEXT dstMicromap; // optional // @link substring="VkMicromapEXT" target="VkMicromapEXT" @link substring="dstMicromap" target="#dstMicromap"
 ///     uint32_t usageCountsCount; // optional // @link substring="usageCountsCount" target="#usageCountsCount"
 ///     VkMicromapUsageEXT const* pUsageCounts; // optional // @link substring="VkMicromapUsageEXT" target="VkMicromapUsageEXT" @link substring="pUsageCounts" target="#pUsageCounts"
-///     VkMicromapUsageEXT const* const* ppUsageCounts; // @link substring="VkMicromapUsageEXT" target="VkMicromapUsageEXT" @link substring="ppUsageCounts" target="#ppUsageCounts"
+///     VkMicromapUsageEXT const* const* ppUsageCounts; // optional // @link substring="VkMicromapUsageEXT" target="VkMicromapUsageEXT" @link substring="ppUsageCounts" target="#ppUsageCounts"
 ///     VkDeviceOrHostAddressConstKHR data; // @link substring="VkDeviceOrHostAddressConstKHR" target="VkDeviceOrHostAddressConstKHR" @link substring="data" target="#data"
 ///     VkDeviceOrHostAddressKHR scratchData; // @link substring="VkDeviceOrHostAddressKHR" target="VkDeviceOrHostAddressKHR" @link substring="scratchData" target="#scratchData"
 ///     VkDeviceOrHostAddressConstKHR triangleArray; // @link substring="VkDeviceOrHostAddressConstKHR" target="VkDeviceOrHostAddressConstKHR" @link substring="triangleArray" target="#triangleArray"
@@ -95,6 +95,11 @@ public record VkMicromapBuildInfoEXT(@NotNull MemorySegment segment) implements 
         /// indicate that the returned structure is a view of the original structure.
         public @NotNull VkMicromapBuildInfoEXT at(long index) {
             return new VkMicromapBuildInfoEXT(segment.asSlice(index * VkMicromapBuildInfoEXT.BYTES, VkMicromapBuildInfoEXT.BYTES));
+        }
+
+        public VkMicromapBuildInfoEXT.Ptr at(long index, @NotNull Consumer<@NotNull VkMicromapBuildInfoEXT> consumer) {
+            consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkMicromapBuildInfoEXT value) {
@@ -209,12 +214,13 @@ public record VkMicromapBuildInfoEXT(@NotNull MemorySegment segment) implements 
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkMicromapBuildInfoEXT pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkMicromapBuildInfoEXT pNext(@Nullable IPointer pointer) {
@@ -231,11 +237,11 @@ public record VkMicromapBuildInfoEXT(@NotNull MemorySegment segment) implements 
         return this;
     }
 
-    public @EnumType(VkBuildMicromapFlagsEXT.class) int flags() {
+    public @Bitmask(VkBuildMicromapFlagsEXT.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public VkMicromapBuildInfoEXT flags(@EnumType(VkBuildMicromapFlagsEXT.class) int value) {
+    public VkMicromapBuildInfoEXT flags(@Bitmask(VkBuildMicromapFlagsEXT.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
         return this;
     }
@@ -295,11 +301,11 @@ public record VkMicromapBuildInfoEXT(@NotNull MemorySegment segment) implements 
         return new VkMicromapUsageEXT(s);
     }
 
-    public @Pointer(target=VkMicromapUsageEXT.class) MemorySegment pUsageCountsRaw() {
+    public @Pointer(target=VkMicromapUsageEXT.class) @NotNull MemorySegment pUsageCountsRaw() {
         return segment.get(LAYOUT$pUsageCounts, OFFSET$pUsageCounts);
     }
 
-    public void pUsageCountsRaw(@Pointer(target=VkMicromapUsageEXT.class) MemorySegment value) {
+    public void pUsageCountsRaw(@Pointer(target=VkMicromapUsageEXT.class) @NotNull MemorySegment value) {
         segment.set(LAYOUT$pUsageCounts, OFFSET$pUsageCounts, value);
     }
 
@@ -320,11 +326,11 @@ public record VkMicromapBuildInfoEXT(@NotNull MemorySegment segment) implements 
         return this;
     }
 
-    public @Pointer(comment="void**") MemorySegment ppUsageCountsRaw() {
+    public @Pointer(comment="void**") @NotNull MemorySegment ppUsageCountsRaw() {
         return segment.get(LAYOUT$ppUsageCounts, OFFSET$ppUsageCounts);
     }
 
-    public void ppUsageCountsRaw(@Pointer(comment="void**") MemorySegment value) {
+    public void ppUsageCountsRaw(@Pointer(comment="void**") @NotNull MemorySegment value) {
         segment.set(LAYOUT$ppUsageCounts, OFFSET$ppUsageCounts, value);
     }
 

@@ -87,6 +87,11 @@ public record VkPipelineCreateFlags2CreateInfo(@NotNull MemorySegment segment) i
             return new VkPipelineCreateFlags2CreateInfo(segment.asSlice(index * VkPipelineCreateFlags2CreateInfo.BYTES, VkPipelineCreateFlags2CreateInfo.BYTES));
         }
 
+        public VkPipelineCreateFlags2CreateInfo.Ptr at(long index, @NotNull Consumer<@NotNull VkPipelineCreateFlags2CreateInfo> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkPipelineCreateFlags2CreateInfo value) {
             MemorySegment s = segment.asSlice(index * VkPipelineCreateFlags2CreateInfo.BYTES, VkPipelineCreateFlags2CreateInfo.BYTES);
             s.copyFrom(value.segment);
@@ -199,12 +204,13 @@ public record VkPipelineCreateFlags2CreateInfo(@NotNull MemorySegment segment) i
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkPipelineCreateFlags2CreateInfo pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkPipelineCreateFlags2CreateInfo pNext(@Nullable IPointer pointer) {
@@ -212,11 +218,11 @@ public record VkPipelineCreateFlags2CreateInfo(@NotNull MemorySegment segment) i
         return this;
     }
 
-    public @EnumType(VkPipelineCreateFlags2.class) long flags() {
+    public @Bitmask(VkPipelineCreateFlags2.class) long flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public VkPipelineCreateFlags2CreateInfo flags(@EnumType(VkPipelineCreateFlags2.class) long value) {
+    public VkPipelineCreateFlags2CreateInfo flags(@Bitmask(VkPipelineCreateFlags2.class) long value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
         return this;
     }

@@ -89,6 +89,11 @@ public record VkPipelineCoverageToColorStateCreateInfoNV(@NotNull MemorySegment 
             return new VkPipelineCoverageToColorStateCreateInfoNV(segment.asSlice(index * VkPipelineCoverageToColorStateCreateInfoNV.BYTES, VkPipelineCoverageToColorStateCreateInfoNV.BYTES));
         }
 
+        public VkPipelineCoverageToColorStateCreateInfoNV.Ptr at(long index, @NotNull Consumer<@NotNull VkPipelineCoverageToColorStateCreateInfoNV> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkPipelineCoverageToColorStateCreateInfoNV value) {
             MemorySegment s = segment.asSlice(index * VkPipelineCoverageToColorStateCreateInfoNV.BYTES, VkPipelineCoverageToColorStateCreateInfoNV.BYTES);
             s.copyFrom(value.segment);
@@ -201,12 +206,13 @@ public record VkPipelineCoverageToColorStateCreateInfoNV(@NotNull MemorySegment 
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkPipelineCoverageToColorStateCreateInfoNV pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkPipelineCoverageToColorStateCreateInfoNV pNext(@Nullable IPointer pointer) {
@@ -214,11 +220,11 @@ public record VkPipelineCoverageToColorStateCreateInfoNV(@NotNull MemorySegment 
         return this;
     }
 
-    public @EnumType(VkPipelineCoverageToColorStateCreateFlagsNV.class) int flags() {
+    public @Bitmask(VkPipelineCoverageToColorStateCreateFlagsNV.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public VkPipelineCoverageToColorStateCreateInfoNV flags(@EnumType(VkPipelineCoverageToColorStateCreateFlagsNV.class) int value) {
+    public VkPipelineCoverageToColorStateCreateInfoNV flags(@Bitmask(VkPipelineCoverageToColorStateCreateFlagsNV.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
         return this;
     }

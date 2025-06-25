@@ -87,6 +87,11 @@ public record VkExternalFormatQNX(@NotNull MemorySegment segment) implements IVk
             return new VkExternalFormatQNX(segment.asSlice(index * VkExternalFormatQNX.BYTES, VkExternalFormatQNX.BYTES));
         }
 
+        public VkExternalFormatQNX.Ptr at(long index, @NotNull Consumer<@NotNull VkExternalFormatQNX> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkExternalFormatQNX value) {
             MemorySegment s = segment.asSlice(index * VkExternalFormatQNX.BYTES, VkExternalFormatQNX.BYTES);
             s.copyFrom(value.segment);
@@ -199,12 +204,13 @@ public record VkExternalFormatQNX(@NotNull MemorySegment segment) implements IVk
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkExternalFormatQNX pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkExternalFormatQNX pNext(@Nullable IPointer pointer) {

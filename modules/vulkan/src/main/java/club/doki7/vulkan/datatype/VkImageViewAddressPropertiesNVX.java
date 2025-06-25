@@ -88,6 +88,11 @@ public record VkImageViewAddressPropertiesNVX(@NotNull MemorySegment segment) im
             return new VkImageViewAddressPropertiesNVX(segment.asSlice(index * VkImageViewAddressPropertiesNVX.BYTES, VkImageViewAddressPropertiesNVX.BYTES));
         }
 
+        public VkImageViewAddressPropertiesNVX.Ptr at(long index, @NotNull Consumer<@NotNull VkImageViewAddressPropertiesNVX> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkImageViewAddressPropertiesNVX value) {
             MemorySegment s = segment.asSlice(index * VkImageViewAddressPropertiesNVX.BYTES, VkImageViewAddressPropertiesNVX.BYTES);
             s.copyFrom(value.segment);
@@ -200,12 +205,13 @@ public record VkImageViewAddressPropertiesNVX(@NotNull MemorySegment segment) im
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkImageViewAddressPropertiesNVX pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkImageViewAddressPropertiesNVX pNext(@Nullable IPointer pointer) {

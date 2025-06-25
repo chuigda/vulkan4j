@@ -27,7 +27,7 @@ import static club.doki7.vulkan.VkConstants.*;
 ///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
 ///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
 ///     uint32_t bindingCount; // optional // @link substring="bindingCount" target="#bindingCount"
-///     VkDescriptorBindingFlags const* pBindingFlags; // @link substring="VkDescriptorBindingFlags" target="VkDescriptorBindingFlags" @link substring="pBindingFlags" target="#pBindingFlags"
+///     VkDescriptorBindingFlags const* pBindingFlags; // optional // @link substring="VkDescriptorBindingFlags" target="VkDescriptorBindingFlags" @link substring="pBindingFlags" target="#pBindingFlags"
 /// } VkDescriptorSetLayoutBindingFlagsCreateInfo;
 /// }
 ///
@@ -86,6 +86,11 @@ public record VkDescriptorSetLayoutBindingFlagsCreateInfo(@NotNull MemorySegment
         /// indicate that the returned structure is a view of the original structure.
         public @NotNull VkDescriptorSetLayoutBindingFlagsCreateInfo at(long index) {
             return new VkDescriptorSetLayoutBindingFlagsCreateInfo(segment.asSlice(index * VkDescriptorSetLayoutBindingFlagsCreateInfo.BYTES, VkDescriptorSetLayoutBindingFlagsCreateInfo.BYTES));
+        }
+
+        public VkDescriptorSetLayoutBindingFlagsCreateInfo.Ptr at(long index, @NotNull Consumer<@NotNull VkDescriptorSetLayoutBindingFlagsCreateInfo> consumer) {
+            consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkDescriptorSetLayoutBindingFlagsCreateInfo value) {
@@ -200,12 +205,13 @@ public record VkDescriptorSetLayoutBindingFlagsCreateInfo(@NotNull MemorySegment
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkDescriptorSetLayoutBindingFlagsCreateInfo pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkDescriptorSetLayoutBindingFlagsCreateInfo pNext(@Nullable IPointer pointer) {
@@ -227,7 +233,7 @@ public record VkDescriptorSetLayoutBindingFlagsCreateInfo(@NotNull MemorySegment
     /// {@link IntPtr#size} property. It's up to user to track the size of the buffer,
     /// and use {@link IntPtr#reinterpret} to set the size before actually reading fro
     /// or writing to the buffer.
-    public @Nullable @EnumType(VkDescriptorBindingFlags.class) IntPtr pBindingFlags() {
+    public @Nullable @Bitmask(VkDescriptorBindingFlags.class) IntPtr pBindingFlags() {
         MemorySegment s = pBindingFlagsRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
@@ -235,17 +241,17 @@ public record VkDescriptorSetLayoutBindingFlagsCreateInfo(@NotNull MemorySegment
         return new IntPtr(s);
     }
 
-    public VkDescriptorSetLayoutBindingFlagsCreateInfo pBindingFlags(@Nullable @EnumType(VkDescriptorBindingFlags.class) IntPtr value) {
+    public VkDescriptorSetLayoutBindingFlagsCreateInfo pBindingFlags(@Nullable @Bitmask(VkDescriptorBindingFlags.class) IntPtr value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pBindingFlagsRaw(s);
         return this;
     }
 
-    public @Pointer(target=VkDescriptorBindingFlags.class) MemorySegment pBindingFlagsRaw() {
+    public @Pointer(target=VkDescriptorBindingFlags.class) @NotNull MemorySegment pBindingFlagsRaw() {
         return segment.get(LAYOUT$pBindingFlags, OFFSET$pBindingFlags);
     }
 
-    public void pBindingFlagsRaw(@Pointer(target=VkDescriptorBindingFlags.class) MemorySegment value) {
+    public void pBindingFlagsRaw(@Pointer(target=VkDescriptorBindingFlags.class) @NotNull MemorySegment value) {
         segment.set(LAYOUT$pBindingFlags, OFFSET$pBindingFlags, value);
     }
 

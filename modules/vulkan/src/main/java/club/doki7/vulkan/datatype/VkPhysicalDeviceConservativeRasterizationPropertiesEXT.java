@@ -95,6 +95,11 @@ public record VkPhysicalDeviceConservativeRasterizationPropertiesEXT(@NotNull Me
             return new VkPhysicalDeviceConservativeRasterizationPropertiesEXT(segment.asSlice(index * VkPhysicalDeviceConservativeRasterizationPropertiesEXT.BYTES, VkPhysicalDeviceConservativeRasterizationPropertiesEXT.BYTES));
         }
 
+        public VkPhysicalDeviceConservativeRasterizationPropertiesEXT.Ptr at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceConservativeRasterizationPropertiesEXT> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkPhysicalDeviceConservativeRasterizationPropertiesEXT value) {
             MemorySegment s = segment.asSlice(index * VkPhysicalDeviceConservativeRasterizationPropertiesEXT.BYTES, VkPhysicalDeviceConservativeRasterizationPropertiesEXT.BYTES);
             s.copyFrom(value.segment);
@@ -207,12 +212,13 @@ public record VkPhysicalDeviceConservativeRasterizationPropertiesEXT(@NotNull Me
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkPhysicalDeviceConservativeRasterizationPropertiesEXT pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkPhysicalDeviceConservativeRasterizationPropertiesEXT pNext(@Nullable IPointer pointer) {

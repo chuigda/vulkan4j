@@ -87,6 +87,11 @@ public record VkDisplayModeProperties2KHR(@NotNull MemorySegment segment) implem
             return new VkDisplayModeProperties2KHR(segment.asSlice(index * VkDisplayModeProperties2KHR.BYTES, VkDisplayModeProperties2KHR.BYTES));
         }
 
+        public VkDisplayModeProperties2KHR.Ptr at(long index, @NotNull Consumer<@NotNull VkDisplayModeProperties2KHR> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkDisplayModeProperties2KHR value) {
             MemorySegment s = segment.asSlice(index * VkDisplayModeProperties2KHR.BYTES, VkDisplayModeProperties2KHR.BYTES);
             s.copyFrom(value.segment);
@@ -199,12 +204,13 @@ public record VkDisplayModeProperties2KHR(@NotNull MemorySegment segment) implem
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkDisplayModeProperties2KHR pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkDisplayModeProperties2KHR pNext(@Nullable IPointer pointer) {

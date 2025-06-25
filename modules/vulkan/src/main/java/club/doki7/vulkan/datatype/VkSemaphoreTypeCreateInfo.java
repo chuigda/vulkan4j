@@ -88,6 +88,11 @@ public record VkSemaphoreTypeCreateInfo(@NotNull MemorySegment segment) implemen
             return new VkSemaphoreTypeCreateInfo(segment.asSlice(index * VkSemaphoreTypeCreateInfo.BYTES, VkSemaphoreTypeCreateInfo.BYTES));
         }
 
+        public VkSemaphoreTypeCreateInfo.Ptr at(long index, @NotNull Consumer<@NotNull VkSemaphoreTypeCreateInfo> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkSemaphoreTypeCreateInfo value) {
             MemorySegment s = segment.asSlice(index * VkSemaphoreTypeCreateInfo.BYTES, VkSemaphoreTypeCreateInfo.BYTES);
             s.copyFrom(value.segment);
@@ -200,12 +205,13 @@ public record VkSemaphoreTypeCreateInfo(@NotNull MemorySegment segment) implemen
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkSemaphoreTypeCreateInfo pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkSemaphoreTypeCreateInfo pNext(@Nullable IPointer pointer) {

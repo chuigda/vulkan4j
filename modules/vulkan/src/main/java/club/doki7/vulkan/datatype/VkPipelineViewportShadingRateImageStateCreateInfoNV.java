@@ -28,7 +28,7 @@ import static club.doki7.vulkan.VkConstants.*;
 ///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
 ///     VkBool32 shadingRateImageEnable; // @link substring="shadingRateImageEnable" target="#shadingRateImageEnable"
 ///     uint32_t viewportCount; // optional // @link substring="viewportCount" target="#viewportCount"
-///     VkShadingRatePaletteNV const* pShadingRatePalettes; // @link substring="VkShadingRatePaletteNV" target="VkShadingRatePaletteNV" @link substring="pShadingRatePalettes" target="#pShadingRatePalettes"
+///     VkShadingRatePaletteNV const* pShadingRatePalettes; // optional // @link substring="VkShadingRatePaletteNV" target="VkShadingRatePaletteNV" @link substring="pShadingRatePalettes" target="#pShadingRatePalettes"
 /// } VkPipelineViewportShadingRateImageStateCreateInfoNV;
 /// }
 ///
@@ -87,6 +87,11 @@ public record VkPipelineViewportShadingRateImageStateCreateInfoNV(@NotNull Memor
         /// indicate that the returned structure is a view of the original structure.
         public @NotNull VkPipelineViewportShadingRateImageStateCreateInfoNV at(long index) {
             return new VkPipelineViewportShadingRateImageStateCreateInfoNV(segment.asSlice(index * VkPipelineViewportShadingRateImageStateCreateInfoNV.BYTES, VkPipelineViewportShadingRateImageStateCreateInfoNV.BYTES));
+        }
+
+        public VkPipelineViewportShadingRateImageStateCreateInfoNV.Ptr at(long index, @NotNull Consumer<@NotNull VkPipelineViewportShadingRateImageStateCreateInfoNV> consumer) {
+            consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkPipelineViewportShadingRateImageStateCreateInfoNV value) {
@@ -201,12 +206,13 @@ public record VkPipelineViewportShadingRateImageStateCreateInfoNV(@NotNull Memor
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkPipelineViewportShadingRateImageStateCreateInfoNV pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkPipelineViewportShadingRateImageStateCreateInfoNV pNext(@Nullable IPointer pointer) {
@@ -256,11 +262,11 @@ public record VkPipelineViewportShadingRateImageStateCreateInfoNV(@NotNull Memor
         return new VkShadingRatePaletteNV(s);
     }
 
-    public @Pointer(target=VkShadingRatePaletteNV.class) MemorySegment pShadingRatePalettesRaw() {
+    public @Pointer(target=VkShadingRatePaletteNV.class) @NotNull MemorySegment pShadingRatePalettesRaw() {
         return segment.get(LAYOUT$pShadingRatePalettes, OFFSET$pShadingRatePalettes);
     }
 
-    public void pShadingRatePalettesRaw(@Pointer(target=VkShadingRatePaletteNV.class) MemorySegment value) {
+    public void pShadingRatePalettesRaw(@Pointer(target=VkShadingRatePaletteNV.class) @NotNull MemorySegment value) {
         segment.set(LAYOUT$pShadingRatePalettes, OFFSET$pShadingRatePalettes, value);
     }
 

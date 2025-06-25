@@ -89,6 +89,11 @@ public record VkPhysicalDeviceBufferDeviceAddressFeaturesEXT(@NotNull MemorySegm
             return new VkPhysicalDeviceBufferDeviceAddressFeaturesEXT(segment.asSlice(index * VkPhysicalDeviceBufferDeviceAddressFeaturesEXT.BYTES, VkPhysicalDeviceBufferDeviceAddressFeaturesEXT.BYTES));
         }
 
+        public VkPhysicalDeviceBufferDeviceAddressFeaturesEXT.Ptr at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceBufferDeviceAddressFeaturesEXT> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkPhysicalDeviceBufferDeviceAddressFeaturesEXT value) {
             MemorySegment s = segment.asSlice(index * VkPhysicalDeviceBufferDeviceAddressFeaturesEXT.BYTES, VkPhysicalDeviceBufferDeviceAddressFeaturesEXT.BYTES);
             s.copyFrom(value.segment);
@@ -201,12 +206,13 @@ public record VkPhysicalDeviceBufferDeviceAddressFeaturesEXT(@NotNull MemorySegm
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkPhysicalDeviceBufferDeviceAddressFeaturesEXT pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkPhysicalDeviceBufferDeviceAddressFeaturesEXT pNext(@Nullable IPointer pointer) {

@@ -87,6 +87,11 @@ public record VkBufferUsageFlags2CreateInfo(@NotNull MemorySegment segment) impl
             return new VkBufferUsageFlags2CreateInfo(segment.asSlice(index * VkBufferUsageFlags2CreateInfo.BYTES, VkBufferUsageFlags2CreateInfo.BYTES));
         }
 
+        public VkBufferUsageFlags2CreateInfo.Ptr at(long index, @NotNull Consumer<@NotNull VkBufferUsageFlags2CreateInfo> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkBufferUsageFlags2CreateInfo value) {
             MemorySegment s = segment.asSlice(index * VkBufferUsageFlags2CreateInfo.BYTES, VkBufferUsageFlags2CreateInfo.BYTES);
             s.copyFrom(value.segment);
@@ -199,12 +204,13 @@ public record VkBufferUsageFlags2CreateInfo(@NotNull MemorySegment segment) impl
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkBufferUsageFlags2CreateInfo pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkBufferUsageFlags2CreateInfo pNext(@Nullable IPointer pointer) {
@@ -212,11 +218,11 @@ public record VkBufferUsageFlags2CreateInfo(@NotNull MemorySegment segment) impl
         return this;
     }
 
-    public @EnumType(VkBufferUsageFlags2.class) long usage() {
+    public @Bitmask(VkBufferUsageFlags2.class) long usage() {
         return segment.get(LAYOUT$usage, OFFSET$usage);
     }
 
-    public VkBufferUsageFlags2CreateInfo usage(@EnumType(VkBufferUsageFlags2.class) long value) {
+    public VkBufferUsageFlags2CreateInfo usage(@Bitmask(VkBufferUsageFlags2.class) long value) {
         segment.set(LAYOUT$usage, OFFSET$usage, value);
         return this;
     }

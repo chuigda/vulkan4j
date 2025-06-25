@@ -90,6 +90,11 @@ public record VkRenderingInputAttachmentIndexInfo(@NotNull MemorySegment segment
             return new VkRenderingInputAttachmentIndexInfo(segment.asSlice(index * VkRenderingInputAttachmentIndexInfo.BYTES, VkRenderingInputAttachmentIndexInfo.BYTES));
         }
 
+        public VkRenderingInputAttachmentIndexInfo.Ptr at(long index, @NotNull Consumer<@NotNull VkRenderingInputAttachmentIndexInfo> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkRenderingInputAttachmentIndexInfo value) {
             MemorySegment s = segment.asSlice(index * VkRenderingInputAttachmentIndexInfo.BYTES, VkRenderingInputAttachmentIndexInfo.BYTES);
             s.copyFrom(value.segment);
@@ -202,12 +207,13 @@ public record VkRenderingInputAttachmentIndexInfo(@NotNull MemorySegment segment
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkRenderingInputAttachmentIndexInfo pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkRenderingInputAttachmentIndexInfo pNext(@Nullable IPointer pointer) {
@@ -242,11 +248,11 @@ public record VkRenderingInputAttachmentIndexInfo(@NotNull MemorySegment segment
         return this;
     }
 
-    public @Pointer(comment="uint32_t*") MemorySegment pColorAttachmentInputIndicesRaw() {
+    public @Pointer(comment="uint32_t*") @NotNull MemorySegment pColorAttachmentInputIndicesRaw() {
         return segment.get(LAYOUT$pColorAttachmentInputIndices, OFFSET$pColorAttachmentInputIndices);
     }
 
-    public void pColorAttachmentInputIndicesRaw(@Pointer(comment="uint32_t*") MemorySegment value) {
+    public void pColorAttachmentInputIndicesRaw(@Pointer(comment="uint32_t*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pColorAttachmentInputIndices, OFFSET$pColorAttachmentInputIndices, value);
     }
 
@@ -268,11 +274,11 @@ public record VkRenderingInputAttachmentIndexInfo(@NotNull MemorySegment segment
         return this;
     }
 
-    public @Pointer(comment="uint32_t*") MemorySegment pDepthInputAttachmentIndexRaw() {
+    public @Pointer(comment="uint32_t*") @NotNull MemorySegment pDepthInputAttachmentIndexRaw() {
         return segment.get(LAYOUT$pDepthInputAttachmentIndex, OFFSET$pDepthInputAttachmentIndex);
     }
 
-    public void pDepthInputAttachmentIndexRaw(@Pointer(comment="uint32_t*") MemorySegment value) {
+    public void pDepthInputAttachmentIndexRaw(@Pointer(comment="uint32_t*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pDepthInputAttachmentIndex, OFFSET$pDepthInputAttachmentIndex, value);
     }
 
@@ -294,11 +300,11 @@ public record VkRenderingInputAttachmentIndexInfo(@NotNull MemorySegment segment
         return this;
     }
 
-    public @Pointer(comment="uint32_t*") MemorySegment pStencilInputAttachmentIndexRaw() {
+    public @Pointer(comment="uint32_t*") @NotNull MemorySegment pStencilInputAttachmentIndexRaw() {
         return segment.get(LAYOUT$pStencilInputAttachmentIndex, OFFSET$pStencilInputAttachmentIndex);
     }
 
-    public void pStencilInputAttachmentIndexRaw(@Pointer(comment="uint32_t*") MemorySegment value) {
+    public void pStencilInputAttachmentIndexRaw(@Pointer(comment="uint32_t*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pStencilInputAttachmentIndex, OFFSET$pStencilInputAttachmentIndex, value);
     }
 

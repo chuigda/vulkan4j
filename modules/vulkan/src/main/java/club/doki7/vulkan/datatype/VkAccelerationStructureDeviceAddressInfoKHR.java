@@ -87,6 +87,11 @@ public record VkAccelerationStructureDeviceAddressInfoKHR(@NotNull MemorySegment
             return new VkAccelerationStructureDeviceAddressInfoKHR(segment.asSlice(index * VkAccelerationStructureDeviceAddressInfoKHR.BYTES, VkAccelerationStructureDeviceAddressInfoKHR.BYTES));
         }
 
+        public VkAccelerationStructureDeviceAddressInfoKHR.Ptr at(long index, @NotNull Consumer<@NotNull VkAccelerationStructureDeviceAddressInfoKHR> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkAccelerationStructureDeviceAddressInfoKHR value) {
             MemorySegment s = segment.asSlice(index * VkAccelerationStructureDeviceAddressInfoKHR.BYTES, VkAccelerationStructureDeviceAddressInfoKHR.BYTES);
             s.copyFrom(value.segment);
@@ -199,12 +204,13 @@ public record VkAccelerationStructureDeviceAddressInfoKHR(@NotNull MemorySegment
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkAccelerationStructureDeviceAddressInfoKHR pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkAccelerationStructureDeviceAddressInfoKHR pNext(@Nullable IPointer pointer) {

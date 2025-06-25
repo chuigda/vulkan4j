@@ -27,7 +27,7 @@ import static club.doki7.vulkan.VkConstants.*;
 ///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
 ///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
 ///     uint32_t colorAttachmentCount; // optional // @link substring="colorAttachmentCount" target="#colorAttachmentCount"
-///     VkSampleCountFlags const* pColorAttachmentSamples; // @link substring="VkSampleCountFlags" target="VkSampleCountFlags" @link substring="pColorAttachmentSamples" target="#pColorAttachmentSamples"
+///     VkSampleCountFlags const* pColorAttachmentSamples; // optional // @link substring="VkSampleCountFlags" target="VkSampleCountFlags" @link substring="pColorAttachmentSamples" target="#pColorAttachmentSamples"
 ///     VkSampleCountFlags depthStencilAttachmentSamples; // optional // @link substring="VkSampleCountFlags" target="VkSampleCountFlags" @link substring="depthStencilAttachmentSamples" target="#depthStencilAttachmentSamples"
 /// } VkAttachmentSampleCountInfoAMD;
 /// }
@@ -87,6 +87,11 @@ public record VkAttachmentSampleCountInfoAMD(@NotNull MemorySegment segment) imp
         /// indicate that the returned structure is a view of the original structure.
         public @NotNull VkAttachmentSampleCountInfoAMD at(long index) {
             return new VkAttachmentSampleCountInfoAMD(segment.asSlice(index * VkAttachmentSampleCountInfoAMD.BYTES, VkAttachmentSampleCountInfoAMD.BYTES));
+        }
+
+        public VkAttachmentSampleCountInfoAMD.Ptr at(long index, @NotNull Consumer<@NotNull VkAttachmentSampleCountInfoAMD> consumer) {
+            consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkAttachmentSampleCountInfoAMD value) {
@@ -201,12 +206,13 @@ public record VkAttachmentSampleCountInfoAMD(@NotNull MemorySegment segment) imp
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkAttachmentSampleCountInfoAMD pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkAttachmentSampleCountInfoAMD pNext(@Nullable IPointer pointer) {
@@ -228,7 +234,7 @@ public record VkAttachmentSampleCountInfoAMD(@NotNull MemorySegment segment) imp
     /// {@link IntPtr#size} property. It's up to user to track the size of the buffer,
     /// and use {@link IntPtr#reinterpret} to set the size before actually reading fro
     /// or writing to the buffer.
-    public @Nullable @EnumType(VkSampleCountFlags.class) IntPtr pColorAttachmentSamples() {
+    public @Nullable @Bitmask(VkSampleCountFlags.class) IntPtr pColorAttachmentSamples() {
         MemorySegment s = pColorAttachmentSamplesRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
@@ -236,25 +242,25 @@ public record VkAttachmentSampleCountInfoAMD(@NotNull MemorySegment segment) imp
         return new IntPtr(s);
     }
 
-    public VkAttachmentSampleCountInfoAMD pColorAttachmentSamples(@Nullable @EnumType(VkSampleCountFlags.class) IntPtr value) {
+    public VkAttachmentSampleCountInfoAMD pColorAttachmentSamples(@Nullable @Bitmask(VkSampleCountFlags.class) IntPtr value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pColorAttachmentSamplesRaw(s);
         return this;
     }
 
-    public @Pointer(target=VkSampleCountFlags.class) MemorySegment pColorAttachmentSamplesRaw() {
+    public @Pointer(target=VkSampleCountFlags.class) @NotNull MemorySegment pColorAttachmentSamplesRaw() {
         return segment.get(LAYOUT$pColorAttachmentSamples, OFFSET$pColorAttachmentSamples);
     }
 
-    public void pColorAttachmentSamplesRaw(@Pointer(target=VkSampleCountFlags.class) MemorySegment value) {
+    public void pColorAttachmentSamplesRaw(@Pointer(target=VkSampleCountFlags.class) @NotNull MemorySegment value) {
         segment.set(LAYOUT$pColorAttachmentSamples, OFFSET$pColorAttachmentSamples, value);
     }
 
-    public @EnumType(VkSampleCountFlags.class) int depthStencilAttachmentSamples() {
+    public @Bitmask(VkSampleCountFlags.class) int depthStencilAttachmentSamples() {
         return segment.get(LAYOUT$depthStencilAttachmentSamples, OFFSET$depthStencilAttachmentSamples);
     }
 
-    public VkAttachmentSampleCountInfoAMD depthStencilAttachmentSamples(@EnumType(VkSampleCountFlags.class) int value) {
+    public VkAttachmentSampleCountInfoAMD depthStencilAttachmentSamples(@Bitmask(VkSampleCountFlags.class) int value) {
         segment.set(LAYOUT$depthStencilAttachmentSamples, OFFSET$depthStencilAttachmentSamples, value);
         return this;
     }

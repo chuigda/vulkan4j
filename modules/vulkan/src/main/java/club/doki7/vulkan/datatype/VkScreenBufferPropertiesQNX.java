@@ -88,6 +88,11 @@ public record VkScreenBufferPropertiesQNX(@NotNull MemorySegment segment) implem
             return new VkScreenBufferPropertiesQNX(segment.asSlice(index * VkScreenBufferPropertiesQNX.BYTES, VkScreenBufferPropertiesQNX.BYTES));
         }
 
+        public VkScreenBufferPropertiesQNX.Ptr at(long index, @NotNull Consumer<@NotNull VkScreenBufferPropertiesQNX> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkScreenBufferPropertiesQNX value) {
             MemorySegment s = segment.asSlice(index * VkScreenBufferPropertiesQNX.BYTES, VkScreenBufferPropertiesQNX.BYTES);
             s.copyFrom(value.segment);
@@ -200,12 +205,13 @@ public record VkScreenBufferPropertiesQNX(@NotNull MemorySegment segment) implem
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkScreenBufferPropertiesQNX pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkScreenBufferPropertiesQNX pNext(@Nullable IPointer pointer) {

@@ -89,6 +89,11 @@ public record VkMappedMemoryRange(@NotNull MemorySegment segment) implements IVk
             return new VkMappedMemoryRange(segment.asSlice(index * VkMappedMemoryRange.BYTES, VkMappedMemoryRange.BYTES));
         }
 
+        public VkMappedMemoryRange.Ptr at(long index, @NotNull Consumer<@NotNull VkMappedMemoryRange> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkMappedMemoryRange value) {
             MemorySegment s = segment.asSlice(index * VkMappedMemoryRange.BYTES, VkMappedMemoryRange.BYTES);
             s.copyFrom(value.segment);
@@ -201,12 +206,13 @@ public record VkMappedMemoryRange(@NotNull MemorySegment segment) implements IVk
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkMappedMemoryRange pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkMappedMemoryRange pNext(@Nullable IPointer pointer) {

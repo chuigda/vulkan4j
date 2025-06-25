@@ -80,6 +80,11 @@ public record VkImageFormatProperties(@NotNull MemorySegment segment) implements
             return new VkImageFormatProperties(segment.asSlice(index * VkImageFormatProperties.BYTES, VkImageFormatProperties.BYTES));
         }
 
+        public VkImageFormatProperties.Ptr at(long index, @NotNull Consumer<@NotNull VkImageFormatProperties> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkImageFormatProperties value) {
             MemorySegment s = segment.asSlice(index * VkImageFormatProperties.BYTES, VkImageFormatProperties.BYTES);
             s.copyFrom(value.segment);
@@ -205,11 +210,11 @@ public record VkImageFormatProperties(@NotNull MemorySegment segment) implements
         return this;
     }
 
-    public @EnumType(VkSampleCountFlags.class) int sampleCounts() {
+    public @Bitmask(VkSampleCountFlags.class) int sampleCounts() {
         return segment.get(LAYOUT$sampleCounts, OFFSET$sampleCounts);
     }
 
-    public VkImageFormatProperties sampleCounts(@EnumType(VkSampleCountFlags.class) int value) {
+    public VkImageFormatProperties sampleCounts(@Bitmask(VkSampleCountFlags.class) int value) {
         segment.set(LAYOUT$sampleCounts, OFFSET$sampleCounts, value);
         return this;
     }

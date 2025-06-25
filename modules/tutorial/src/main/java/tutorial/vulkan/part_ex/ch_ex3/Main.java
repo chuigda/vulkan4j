@@ -1,14 +1,15 @@
 package tutorial.vulkan.part_ex.ch_ex3;
 
-import club.doki7.ffm.Loader;
 import club.doki7.ffm.NativeLayout;
+import club.doki7.ffm.annotation.Bitmask;
 import club.doki7.ffm.annotation.EnumType;
 import club.doki7.ffm.annotation.NativeType;
 import club.doki7.ffm.annotation.Pointer;
 import club.doki7.ffm.annotation.Unsigned;
+import club.doki7.ffm.library.ILibraryLoader;
+import club.doki7.ffm.library.ISharedLibrary;
 import club.doki7.ffm.ptr.*;
 import club.doki7.glfw.GLFW;
-import club.doki7.glfw.GLFWConstants;
 import club.doki7.glfw.GLFWFunctionTypes;
 import club.doki7.glfw.GLFWLoader;
 import club.doki7.glfw.handle.GLFWwindow;
@@ -58,8 +59,6 @@ class Application {
     }
 
     private void initWindow() {
-        GLFWLoader.loadGLFWLibrary();
-        glfw = GLFWLoader.loadGLFW();
         if (glfw.init() != GLFW.TRUE) {
             throw new RuntimeException("Failed to initialize GLFW");
         }
@@ -87,8 +86,6 @@ class Application {
     }
 
     private void initVulkan() {
-        VulkanLoader.loadVulkanLibrary();
-        staticCommands = VulkanLoader.loadStaticCommands();
         entryCommands = VulkanLoader.loadEntryCommands(staticCommands);
 
         createInstance();
@@ -173,8 +170,9 @@ class Application {
                     .pApplicationInfo(appInfo);
 
             if (ENABLE_VALIDATION_LAYERS) {
-                instanceCreateInfo.enabledLayerCount(1)
-                        .ppEnabledLayerNames(PointerPtr.allocateV(arena, BytePtr.allocateString(arena, VALIDATION_LAYER_NAME)));
+                                instanceCreateInfo
+                        .enabledLayerCount(1)
+                        .ppEnabledLayerNames(PointerPtr.allocateStrings(arena, VALIDATION_LAYER_NAME));
 
                 var debugCreateInfo = VkDebugUtilsMessengerCreateInfoEXT.allocate(arena);
                 populateDebugMessengerCreateInfo(debugCreateInfo);
@@ -277,15 +275,15 @@ class Application {
                 deviceCreateInfo.queueCreateInfoCount(1).pQueueCreateInfos(queueCreateInfo);
             }
             else {
-                var queueCreateInfos = VkDeviceQueueCreateInfo.allocate(arena, 2);
-                queueCreateInfos.at(0)
-                        .queueCount(1)
-                        .queueFamilyIndex(indices.graphicsFamily())
-                        .pQueuePriorities(pQueuePriorities);
-                queueCreateInfos.at(1)
-                        .queueCount(1)
-                        .queueFamilyIndex(indices.presentFamily())
-                        .pQueuePriorities(pQueuePriorities);
+                var queueCreateInfos = VkDeviceQueueCreateInfo.allocate(arena, 2)
+                        .at(0, it -> it
+                                .queueCount(1)
+                                .queueFamilyIndex(indices.graphicsFamily())
+                                .pQueuePriorities(pQueuePriorities))
+                        .at(1, it -> it
+                                .queueCount(1)
+                                .queueFamilyIndex(indices.presentFamily())
+                                .pQueuePriorities(pQueuePriorities));
                 deviceCreateInfo.queueCreateInfoCount(2).pQueueCreateInfos(queueCreateInfos);
             }
             var deviceFeatures = VkPhysicalDeviceFeatures.allocate(arena)
@@ -294,8 +292,9 @@ class Application {
             deviceCreateInfo.pEnabledFeatures(deviceFeatures);
 
             if (ENABLE_VALIDATION_LAYERS) {
-                deviceCreateInfo.enabledLayerCount(1)
-                        .ppEnabledLayerNames(PointerPtr.allocateV(arena, BytePtr.allocateString(arena, VALIDATION_LAYER_NAME)));
+                deviceCreateInfo
+                        .enabledLayerCount(1)
+                        .ppEnabledLayerNames(PointerPtr.allocateStrings(arena, VALIDATION_LAYER_NAME));
             }
 
             deviceCreateInfo.enabledExtensionCount(6);
@@ -330,9 +329,7 @@ class Application {
     }
 
     private void createVMA() {
-        System.loadLibrary("vma");
-        vma = new VMA(Loader::loadFunctionOrNull);
-        VMAJavaTraceUtil.enableJavaTraceForVMA();
+        VMAJavaTraceUtil.enableJavaTraceForVMA(libVMA);
 
         try (var arena = Arena.ofConfined()) {
             var vmaVulkanFunctions = VmaVulkanFunctions.allocate(arena);
@@ -440,17 +437,17 @@ class Application {
 
     private void createDescriptorSetLayout() {
         try (var arena = Arena.ofConfined()) {
-            var bindings = VkDescriptorSetLayoutBinding.allocate(arena, 2);
-            bindings.at(0)
-                    .binding(0)
-                    .descriptorType(VkDescriptorType.UNIFORM_BUFFER)
-                    .descriptorCount(1)
-                    .stageFlags(VkShaderStageFlags.VERTEX);
-            bindings.at(1)
-                    .binding(1)
-                    .descriptorCount(1)
-                    .descriptorType(VkDescriptorType.COMBINED_IMAGE_SAMPLER)
-                    .stageFlags(VkShaderStageFlags.FRAGMENT);
+            var bindings = VkDescriptorSetLayoutBinding.allocate(arena, 2)
+                    .at(0, it -> it
+                            .binding(0)
+                            .descriptorType(VkDescriptorType.UNIFORM_BUFFER)
+                            .descriptorCount(1)
+                            .stageFlags(VkShaderStageFlags.VERTEX))
+                    .at(1, it -> it
+                            .binding(1)
+                            .descriptorCount(1)
+                            .descriptorType(VkDescriptorType.COMBINED_IMAGE_SAMPLER)
+                            .stageFlags(VkShaderStageFlags.FRAGMENT));
 
             var layoutInfo = VkDescriptorSetLayoutCreateInfo.allocate(arena)
                     .bindingCount(2)
@@ -472,15 +469,15 @@ class Application {
             var vertexShaderModule = createShaderModule(vertShaderCode);
             var fragmentShaderModule = createShaderModule(fragShaderCode);
 
-            var shaderStages = VkPipelineShaderStageCreateInfo.allocate(arena, 2);
-            shaderStages.at(0)
-                    .stage(VkShaderStageFlags.VERTEX)
-                    .module(vertexShaderModule)
-                    .pName(BytePtr.allocateString(arena, "main"));
-            shaderStages.at(1)
-                    .stage(VkShaderStageFlags.FRAGMENT)
-                    .module(fragmentShaderModule)
-                    .pName(BytePtr.allocateString(arena, "main"));
+            var shaderStages = VkPipelineShaderStageCreateInfo.allocate(arena, 2)
+                    .at(0, it -> it
+                            .stage(VkShaderStageFlags.VERTEX)
+                            .module(vertexShaderModule)
+                            .pName(BytePtr.allocateString(arena, "main")))
+                    .at(1, it -> it
+                            .stage(VkShaderStageFlags.FRAGMENT)
+                            .module(fragmentShaderModule)
+                            .pName(BytePtr.allocateString(arena, "main")));
 
             var dynamicStates = IntPtr.allocateV(arena, VkDynamicState.VIEWPORT, VkDynamicState.SCISSOR);
 
@@ -684,6 +681,7 @@ class Application {
                     bufferSize,
                     VkBufferUsageFlags.TRANSFER_SRC,
                     VmaAllocationCreateFlags.HOST_ACCESS_RANDOM,
+                    VkMemoryPropertyFlags.HOST_COHERENT,
                     null
             );
             var stagingBuffer = pair.first;
@@ -701,6 +699,7 @@ class Application {
             pair = createBuffer(
                     bufferSize,
                     VkBufferUsageFlags.TRANSFER_DST | VkBufferUsageFlags.VERTEX_BUFFER,
+                    0,
                     0,
                     null
             );
@@ -721,6 +720,7 @@ class Application {
                     bufferSize,
                     VkBufferUsageFlags.TRANSFER_SRC,
                     VmaAllocationCreateFlags.HOST_ACCESS_RANDOM,
+                    VkMemoryPropertyFlags.HOST_COHERENT,
                     null
             );
             var stagingBuffer = pair.first;
@@ -738,6 +738,7 @@ class Application {
             pair = createBuffer(
                     bufferSize,
                     VkBufferUsageFlags.TRANSFER_DST | VkBufferUsageFlags.INDEX_BUFFER,
+                    0,
                     0,
                     null
             );
@@ -759,6 +760,7 @@ class Application {
                     bufferSize * Float.BYTES,
                     VkBufferUsageFlags.UNIFORM_BUFFER,
                     VmaAllocationCreateFlags.MAPPED | VmaAllocationCreateFlags.HOST_ACCESS_RANDOM,
+                    VkMemoryPropertyFlags.HOST_COHERENT,
                     allocationInfo
             );
             uniformBuffer = pair.first;
@@ -771,13 +773,13 @@ class Application {
 
     private void createDescriptorPool() {
         try (var arena = Arena.ofConfined()) {
-            var poolSizes = VkDescriptorPoolSize.allocate(arena, 2);
-            poolSizes.at(0)
-                    .type(VkDescriptorType.UNIFORM_BUFFER)
-                    .descriptorCount(MAX_FRAMES_IN_FLIGHT);
-            poolSizes.at(1)
-                    .type(VkDescriptorType.COMBINED_IMAGE_SAMPLER)
-                    .descriptorCount(MAX_FRAMES_IN_FLIGHT);
+            var poolSizes = VkDescriptorPoolSize.allocate(arena, 2)
+                    .at(0, it -> it
+                            .type(VkDescriptorType.UNIFORM_BUFFER)
+                            .descriptorCount(MAX_FRAMES_IN_FLIGHT))
+                    .at(1, it -> it
+                            .type(VkDescriptorType.COMBINED_IMAGE_SAMPLER)
+                            .descriptorCount(MAX_FRAMES_IN_FLIGHT));
 
             var poolInfo = VkDescriptorPoolCreateInfo.allocate(arena)
                     .poolSizeCount(2)
@@ -820,21 +822,22 @@ class Application {
                         .imageView(textureImageView)
                         .sampler(textureSampler);
 
-                var descriptorWrite = VkWriteDescriptorSet.allocate(arena, 2);
-                descriptorWrite.at(0)
-                        .dstSet(descriptorSets.read(i))
-                        .dstBinding(0)
-                        .dstArrayElement(0)
-                        .descriptorType(VkDescriptorType.UNIFORM_BUFFER)
-                        .descriptorCount(1)
-                        .pBufferInfo(bufferInfo);
-                descriptorWrite.at(1)
-                        .dstSet(descriptorSets.read(i))
-                        .dstBinding(1)
-                        .dstArrayElement(0)
-                        .descriptorType(VkDescriptorType.COMBINED_IMAGE_SAMPLER)
-                        .descriptorCount(1)
-                        .pImageInfo(imageInfo);
+                int finalI = i;
+                var descriptorWrite = VkWriteDescriptorSet.allocate(arena, 2)
+                        .at(0, it -> it
+                                .dstSet(descriptorSets.read(finalI))
+                                .dstBinding(0)
+                                .dstArrayElement(0)
+                                .descriptorType(VkDescriptorType.UNIFORM_BUFFER)
+                                .descriptorCount(1)
+                                .pBufferInfo(bufferInfo))
+                        .at(1, it -> it
+                                .dstSet(descriptorSets.read(finalI))
+                                .dstBinding(1)
+                                .dstArrayElement(0)
+                                .descriptorType(VkDescriptorType.COMBINED_IMAGE_SAMPLER)
+                                .descriptorCount(1)
+                                .pImageInfo(imageInfo));
 
                 deviceCommands.updateDescriptorSets(device, 2, descriptorWrite, 0, null);
             }
@@ -882,6 +885,7 @@ class Application {
                 imageSizeBytes,
                 VkBufferUsageFlags.TRANSFER_SRC,
                 VmaAllocationCreateFlags.HOST_ACCESS_RANDOM,
+                VkMemoryPropertyFlags.HOST_COHERENT,
                 null
         );
         var stagingBuffer = pair.first;
@@ -1521,8 +1525,9 @@ class Application {
 
     private Pair<VkBuffer, VmaAllocation> createBuffer(
             int size,
-            @EnumType(VkBufferUsageFlags.class) int usage,
-            @EnumType(VmaAllocationCreateFlags.class) int vmaAllocationCreationFlags,
+            @Bitmask(VkBufferUsageFlags.class) int usage,
+            @Bitmask(VmaAllocationCreateFlags.class) int vmaAllocationCreationFlags,
+            @Bitmask(VkMemoryPropertyFlags.class) int vkMemoryPropertyFlags,
             @Nullable @Pointer VmaAllocationInfo allocationInfo
     ) {
         try (var arena = Arena.ofConfined()) {
@@ -1533,7 +1538,8 @@ class Application {
 
             var allocationCreateInfo = VmaAllocationCreateInfo.allocate(arena)
                     .usage(VmaMemoryUsage.AUTO)
-                    .flags(vmaAllocationCreationFlags);
+                    .flags(vmaAllocationCreationFlags)
+                    .requiredFlags(vkMemoryPropertyFlags);
 
             var pBuffer = VkBuffer.Ptr.allocate(arena);
             var pAllocation = VmaAllocation.Ptr.allocate(arena);
@@ -1577,10 +1583,10 @@ class Application {
             int width,
             int height,
             int mipLevels,
-            @EnumType(VkSampleCountFlags.class) int numSamples,
+            @Bitmask(VkSampleCountFlags.class) int numSamples,
             @EnumType(VkFormat.class) int format,
             @EnumType(VkImageTiling.class) int tiling,
-            @EnumType(VkImageUsageFlags.class) int usage
+            @Bitmask(VkImageUsageFlags.class) int usage
     ) {
         try (var arena = Arena.ofConfined()) {
             var imageInfo = VkImageCreateInfo.allocate(arena)
@@ -1644,8 +1650,8 @@ class Application {
                 subResourceRange.aspectMask(VkImageAspectFlags.COLOR);
             }
 
-            @EnumType(VkPipelineStageFlags.class) int sourceStage;
-            @EnumType(VkPipelineStageFlags.class) int destinationStage;
+            @Bitmask(VkPipelineStageFlags.class) int sourceStage;
+            @Bitmask(VkPipelineStageFlags.class) int destinationStage;
 
             if (oldLayout == VkImageLayout.UNDEFINED
                 && newLayout == VkImageLayout.TRANSFER_DST_OPTIMAL) {
@@ -1773,7 +1779,7 @@ class Application {
     private VkImageView createImageView(
             VkImage image,
             @EnumType(VkFormat.class) int format,
-            @EnumType(VkImageAspectFlags.class) int aspect,
+            @Bitmask(VkImageAspectFlags.class) int aspect,
             int mipLevels
     ) {
         try (var arena = Arena.ofConfined()) {
@@ -1812,7 +1818,7 @@ class Application {
     private @EnumType(VkFormat.class) int findSupportedFormat(
             @EnumType(VkFormat.class) int[] candidates,
             @EnumType(VkImageTiling.class) int tiling,
-            @EnumType(VkFormatFeatureFlags.class) int features
+            @Bitmask(VkFormatFeatureFlags.class) int features
     ) {
         for (var format : candidates) {
             try (var arena = Arena.ofConfined()) {
@@ -1963,7 +1969,7 @@ class Application {
         }
     }
 
-    private @EnumType(VkSampleCountFlags.class) int getMaxUsableSampleCount() {
+    private @Bitmask(VkSampleCountFlags.class) int getMaxUsableSampleCount() {
         try (var arena = Arena.ofConfined()) {
             var physicalDeviceProperties = VkPhysicalDeviceProperties.allocate(arena);
             instanceCommands.getPhysicalDeviceProperties(physicalDevice, physicalDeviceProperties);
@@ -1995,8 +2001,8 @@ class Application {
     }
 
     private static @NativeType("VkBool32") @Unsigned int debugCallback(
-            @EnumType(VkDebugUtilsMessageSeverityFlagsEXT.class) int ignoredMessageSeverity,
-            @EnumType(VkDebugUtilsMessageTypeFlagsEXT.class) int ignoredMessageType,
+            @Bitmask(VkDebugUtilsMessageSeverityFlagsEXT.class) int ignoredMessageSeverity,
+            @Bitmask(VkDebugUtilsMessageTypeFlagsEXT.class) int ignoredMessageType,
             @Pointer(target=VkDebugUtilsMessengerCallbackDataEXT.class) MemorySegment pCallbackData,
             @Pointer(comment="void*") MemorySegment ignoredPUserData
     ) {
@@ -2040,41 +2046,37 @@ class Application {
     }
 
     private static VkVertexInputAttributeDescription.Ptr getAttributeDescriptions(Arena arena) {
-        var attributeDescriptions = VkVertexInputAttributeDescription.allocate(arena, 3);
-        attributeDescriptions.at(0)
-                .binding(0)
-                .location(0)
-                .format(VkFormat.R32G32B32_SFLOAT)
-                .offset(0);
-        attributeDescriptions.at(1)
-                .binding(0)
-                .location(1)
-                .format(VkFormat.R32G32B32_SFLOAT)
-                .offset(Float.BYTES * 3);
-        attributeDescriptions.at(2)
-                .binding(0)
-                .location(2)
-                .format(VkFormat.R32G32_SFLOAT)
-                .offset(Float.BYTES * 6);
-        return attributeDescriptions;
+        return VkVertexInputAttributeDescription.allocate(arena, 3)
+                .at(0, it -> it
+                        .binding(0)
+                        .location(0)
+                        .format(VkFormat.R32G32B32_SFLOAT)
+                        .offset(0))
+                .at(1, it -> it
+                        .binding(0)
+                        .location(1)
+                        .format(VkFormat.R32G32B32_SFLOAT)
+                        .offset(Float.BYTES * 3))
+                .at(2, it -> it
+                        .binding(0)
+                        .location(2)
+                        .format(VkFormat.R32G32_SFLOAT)
+                        .offset(Float.BYTES * 6));
     }
 
-    private GLFW glfw;
     private GLFWwindow window;
 
-    private VkStaticCommands staticCommands;
     private VkEntryCommands entryCommands;
     private VkInstance instance;
     private VkInstanceCommands instanceCommands;
     private VkDebugUtilsMessengerEXT debugMessenger;
     private VkPhysicalDevice physicalDevice;
-    private @EnumType(VkSampleCountFlags.class) int msaaSamples;
+    private @Bitmask(VkSampleCountFlags.class) int msaaSamples;
     private VkDevice device;
     private VkDeviceCommands deviceCommands;
     private VkQueue graphicsQueue;
     private VkSurfaceKHR surface;
     private VkQueue presentQueue;
-    private VMA vma;
     private VmaAllocator vmaAllocator;
     private VkSwapchainKHR swapChain;
     private VkImage.Ptr swapChainImages;
@@ -2115,9 +2117,13 @@ class Application {
     private VmaAllocation depthImageAllocation;
     private VkImageView depthImageView;
 
+    private static final ISharedLibrary libGLFW = GLFWLoader.loadGLFWLibrary();
+    private static final GLFW glfw = GLFWLoader.loadGLFW(libGLFW);
     private static final int WIDTH = 800;
     private static final int HEIGHT = 600;
     private static final BytePtr WINDOW_TITLE = BytePtr.allocateString(Arena.global(), "Vulkan");
+    private static final ISharedLibrary libVulkan = VulkanLoader.loadVulkanLibrary();
+    private static final VkStaticCommands staticCommands = VulkanLoader.loadStaticCommands(libVulkan);
     private static final boolean ENABLE_VALIDATION_LAYERS = System.getProperty("validation") != null;
     private static final String VALIDATION_LAYER_NAME = "VK_LAYER_KHRONOS_validation";
     private static final MethodHandle HANDLE_debugCallback;
@@ -2143,6 +2149,8 @@ class Application {
     private static final long startTime = System.currentTimeMillis();
     private static final String MODEL_PATH = "/model/viking_room.obj";
     private static final String TEXTURE_PATH = "/texture/viking_room.png";
+    private static final ISharedLibrary libVMA = ILibraryLoader.platformLoader().loadLibrary("vma");
+    private static final VMA vma = new VMA(libVMA);
 }
 
 public class Main {

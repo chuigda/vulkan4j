@@ -89,6 +89,11 @@ public record VkDepthBiasInfoEXT(@NotNull MemorySegment segment) implements IVkD
             return new VkDepthBiasInfoEXT(segment.asSlice(index * VkDepthBiasInfoEXT.BYTES, VkDepthBiasInfoEXT.BYTES));
         }
 
+        public VkDepthBiasInfoEXT.Ptr at(long index, @NotNull Consumer<@NotNull VkDepthBiasInfoEXT> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkDepthBiasInfoEXT value) {
             MemorySegment s = segment.asSlice(index * VkDepthBiasInfoEXT.BYTES, VkDepthBiasInfoEXT.BYTES);
             s.copyFrom(value.segment);
@@ -201,12 +206,13 @@ public record VkDepthBiasInfoEXT(@NotNull MemorySegment segment) implements IVkD
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkDepthBiasInfoEXT pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkDepthBiasInfoEXT pNext(@Nullable IPointer pointer) {

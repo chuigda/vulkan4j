@@ -76,6 +76,11 @@ public record VkBindPipelineIndirectCommandNV(@NotNull MemorySegment segment) im
             return new VkBindPipelineIndirectCommandNV(segment.asSlice(index * VkBindPipelineIndirectCommandNV.BYTES, VkBindPipelineIndirectCommandNV.BYTES));
         }
 
+        public VkBindPipelineIndirectCommandNV.Ptr at(long index, @NotNull Consumer<@NotNull VkBindPipelineIndirectCommandNV> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkBindPipelineIndirectCommandNV value) {
             MemorySegment s = segment.asSlice(index * VkBindPipelineIndirectCommandNV.BYTES, VkBindPipelineIndirectCommandNV.BYTES);
             s.copyFrom(value.segment);

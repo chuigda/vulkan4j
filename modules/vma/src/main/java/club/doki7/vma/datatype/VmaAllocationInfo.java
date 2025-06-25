@@ -140,6 +140,11 @@ public record VmaAllocationInfo(@NotNull MemorySegment segment) implements IVmaA
             return new VmaAllocationInfo(segment.asSlice(index * VmaAllocationInfo.BYTES, VmaAllocationInfo.BYTES));
         }
 
+        public VmaAllocationInfo.Ptr at(long index, @NotNull Consumer<@NotNull VmaAllocationInfo> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VmaAllocationInfo value) {
             MemorySegment s = segment.asSlice(index * VmaAllocationInfo.BYTES, VmaAllocationInfo.BYTES);
             s.copyFrom(value.segment);
@@ -273,12 +278,13 @@ public record VmaAllocationInfo(@NotNull MemorySegment segment) implements IVmaA
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pMappedData() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pMappedData() {
         return segment.get(LAYOUT$pMappedData, OFFSET$pMappedData);
     }
 
-    public void pMappedData(@Pointer(comment="void*") MemorySegment value) {
+    public VmaAllocationInfo pMappedData(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pMappedData, OFFSET$pMappedData, value);
+        return this;
     }
 
     public VmaAllocationInfo pMappedData(@Nullable IPointer pointer) {
@@ -286,12 +292,13 @@ public record VmaAllocationInfo(@NotNull MemorySegment segment) implements IVmaA
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pUserData() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pUserData() {
         return segment.get(LAYOUT$pUserData, OFFSET$pUserData);
     }
 
-    public void pUserData(@Pointer(comment="void*") MemorySegment value) {
+    public VmaAllocationInfo pUserData(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pUserData, OFFSET$pUserData, value);
+        return this;
     }
 
     public VmaAllocationInfo pUserData(@Nullable IPointer pointer) {
@@ -317,11 +324,11 @@ public record VmaAllocationInfo(@NotNull MemorySegment segment) implements IVmaA
         return this;
     }
 
-    public @Pointer(comment="int8_t*") MemorySegment pNameRaw() {
+    public @Pointer(comment="int8_t*") @NotNull MemorySegment pNameRaw() {
         return segment.get(LAYOUT$pName, OFFSET$pName);
     }
 
-    public void pNameRaw(@Pointer(comment="int8_t*") MemorySegment value) {
+    public void pNameRaw(@Pointer(comment="int8_t*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pName, OFFSET$pName, value);
     }
 

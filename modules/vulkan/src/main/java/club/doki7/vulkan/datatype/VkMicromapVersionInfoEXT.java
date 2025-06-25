@@ -87,6 +87,11 @@ public record VkMicromapVersionInfoEXT(@NotNull MemorySegment segment) implement
             return new VkMicromapVersionInfoEXT(segment.asSlice(index * VkMicromapVersionInfoEXT.BYTES, VkMicromapVersionInfoEXT.BYTES));
         }
 
+        public VkMicromapVersionInfoEXT.Ptr at(long index, @NotNull Consumer<@NotNull VkMicromapVersionInfoEXT> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkMicromapVersionInfoEXT value) {
             MemorySegment s = segment.asSlice(index * VkMicromapVersionInfoEXT.BYTES, VkMicromapVersionInfoEXT.BYTES);
             s.copyFrom(value.segment);
@@ -199,12 +204,13 @@ public record VkMicromapVersionInfoEXT(@NotNull MemorySegment segment) implement
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkMicromapVersionInfoEXT pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkMicromapVersionInfoEXT pNext(@Nullable IPointer pointer) {
@@ -230,11 +236,11 @@ public record VkMicromapVersionInfoEXT(@NotNull MemorySegment segment) implement
         return this;
     }
 
-    public @Pointer(comment="uint8_t*") MemorySegment pVersionDataRaw() {
+    public @Pointer(comment="uint8_t*") @NotNull MemorySegment pVersionDataRaw() {
         return segment.get(LAYOUT$pVersionData, OFFSET$pVersionData);
     }
 
-    public void pVersionDataRaw(@Pointer(comment="uint8_t*") MemorySegment value) {
+    public void pVersionDataRaw(@Pointer(comment="uint8_t*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pVersionData, OFFSET$pVersionData, value);
     }
 

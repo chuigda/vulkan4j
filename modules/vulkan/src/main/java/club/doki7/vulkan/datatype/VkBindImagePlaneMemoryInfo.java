@@ -87,6 +87,11 @@ public record VkBindImagePlaneMemoryInfo(@NotNull MemorySegment segment) impleme
             return new VkBindImagePlaneMemoryInfo(segment.asSlice(index * VkBindImagePlaneMemoryInfo.BYTES, VkBindImagePlaneMemoryInfo.BYTES));
         }
 
+        public VkBindImagePlaneMemoryInfo.Ptr at(long index, @NotNull Consumer<@NotNull VkBindImagePlaneMemoryInfo> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkBindImagePlaneMemoryInfo value) {
             MemorySegment s = segment.asSlice(index * VkBindImagePlaneMemoryInfo.BYTES, VkBindImagePlaneMemoryInfo.BYTES);
             s.copyFrom(value.segment);
@@ -199,12 +204,13 @@ public record VkBindImagePlaneMemoryInfo(@NotNull MemorySegment segment) impleme
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkBindImagePlaneMemoryInfo pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkBindImagePlaneMemoryInfo pNext(@Nullable IPointer pointer) {
@@ -212,11 +218,11 @@ public record VkBindImagePlaneMemoryInfo(@NotNull MemorySegment segment) impleme
         return this;
     }
 
-    public @EnumType(VkImageAspectFlags.class) int planeAspect() {
+    public @Bitmask(VkImageAspectFlags.class) int planeAspect() {
         return segment.get(LAYOUT$planeAspect, OFFSET$planeAspect);
     }
 
-    public VkBindImagePlaneMemoryInfo planeAspect(@EnumType(VkImageAspectFlags.class) int value) {
+    public VkBindImagePlaneMemoryInfo planeAspect(@Bitmask(VkImageAspectFlags.class) int value) {
         segment.set(LAYOUT$planeAspect, OFFSET$planeAspect, value);
         return this;
     }

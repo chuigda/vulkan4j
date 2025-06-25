@@ -11,7 +11,7 @@
 
     <name>glfw</name>
     <description>Java bindings for GLFW using Project Panama</description>
-    <url>https://github.com/chuigda/vulkan4j</url>
+    <url>https://github.com/club-doki7/vulkan4j</url>
 
     <inceptionYear>2024</inceptionYear>
     <organization>
@@ -29,7 +29,7 @@
     <developers>
         <developer>
             <name>Chuigda Whitegive</name>
-            <email>icey@icey.tech</email>
+            <email>chuigda@doki7.club</email>
             <organization>Doki Doki 7th Design Club!</organization>
         </developer>
         <developer>
@@ -42,11 +42,11 @@
     <scm>
         <connection>scm:git:git://github.com/chuigda/vulkan4j.git</connection>
         <developerConnection>scm:git:ssh://github.com:chuigda/vulkan4j.git</developerConnection>
-        <url>https://github.com/chuigda/vulkan4j</url>
+        <url>https://github.com/club-doki7/vulkan4j</url>
     </scm>
 
     <artifactId>glfw</artifactId>
-    <version>0.3.3</version>
+    <version>0.4.1</version>
     <packaging>jar</packaging>
 
     <properties>
@@ -58,13 +58,13 @@
         <dependency>
             <groupId>club.doki7</groupId>
             <artifactId>ffm-plus</artifactId>
-            <version>0.2.1</version>
+            <version>0.2.5</version>
             <scope>compile</scope>
         </dependency>
         <dependency>
             <groupId>club.doki7</groupId>
             <artifactId>vulkan</artifactId>
-            <version>0.3.3</version>
+            <version>0.4.1</version>
             <scope>compile</scope>
         </dependency>
         <dependency>

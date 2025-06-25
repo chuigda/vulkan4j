@@ -88,6 +88,11 @@ public record VkImportMemoryHostPointerInfoEXT(@NotNull MemorySegment segment) i
             return new VkImportMemoryHostPointerInfoEXT(segment.asSlice(index * VkImportMemoryHostPointerInfoEXT.BYTES, VkImportMemoryHostPointerInfoEXT.BYTES));
         }
 
+        public VkImportMemoryHostPointerInfoEXT.Ptr at(long index, @NotNull Consumer<@NotNull VkImportMemoryHostPointerInfoEXT> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkImportMemoryHostPointerInfoEXT value) {
             MemorySegment s = segment.asSlice(index * VkImportMemoryHostPointerInfoEXT.BYTES, VkImportMemoryHostPointerInfoEXT.BYTES);
             s.copyFrom(value.segment);
@@ -200,12 +205,13 @@ public record VkImportMemoryHostPointerInfoEXT(@NotNull MemorySegment segment) i
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkImportMemoryHostPointerInfoEXT pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkImportMemoryHostPointerInfoEXT pNext(@Nullable IPointer pointer) {
@@ -213,21 +219,22 @@ public record VkImportMemoryHostPointerInfoEXT(@NotNull MemorySegment segment) i
         return this;
     }
 
-    public @EnumType(VkExternalMemoryHandleTypeFlags.class) int handleType() {
+    public @Bitmask(VkExternalMemoryHandleTypeFlags.class) int handleType() {
         return segment.get(LAYOUT$handleType, OFFSET$handleType);
     }
 
-    public VkImportMemoryHostPointerInfoEXT handleType(@EnumType(VkExternalMemoryHandleTypeFlags.class) int value) {
+    public VkImportMemoryHostPointerInfoEXT handleType(@Bitmask(VkExternalMemoryHandleTypeFlags.class) int value) {
         segment.set(LAYOUT$handleType, OFFSET$handleType, value);
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pHostPointer() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pHostPointer() {
         return segment.get(LAYOUT$pHostPointer, OFFSET$pHostPointer);
     }
 
-    public void pHostPointer(@Pointer(comment="void*") MemorySegment value) {
+    public VkImportMemoryHostPointerInfoEXT pHostPointer(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pHostPointer, OFFSET$pHostPointer, value);
+        return this;
     }
 
     public VkImportMemoryHostPointerInfoEXT pHostPointer(@Nullable IPointer pointer) {

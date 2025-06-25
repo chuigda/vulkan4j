@@ -38,6 +38,7 @@ fun generateCommandFile(
     imports("java.util.Objects")
     +""
     imports("org.jetbrains.annotations.Nullable")
+    imports("org.jetbrains.annotations.NotNull")
     imports("club.doki7.ffm.NativeLayout")
     imports("club.doki7.ffm.RawFunctionLoader")
     imports("club.doki7.ffm.annotation.*")
@@ -51,8 +52,12 @@ fun generateCommandFile(
     if (registry.enumerations.isNotEmpty()) {
         imports("$packageName.enumtype.*")
     }
-    if (registry.opaqueHandleTypedefs.isNotEmpty()) {
+    if (registry.opaqueHandleTypedefs.isNotEmpty()
+        || registry.opaqueTypedefs.values.any { it.isHandle }) {
         imports("$packageName.handle.*")
+    }
+    if (implConstantClass && subpackage != null) {
+        imports("$packageName.${codegenOptions.constantClassName}")
     }
 
     codegenOptions.extraImport.forEach {
@@ -346,6 +351,21 @@ private fun generateResultConvert(retType: CType): Triple<String, String, String
         "",
         "return s.equals(MemorySegment.NULL) ? null : new ${retType.name}(s);"
     )
+    is CPlatformDependentIntType -> {
+        if (retType.cType == "size_t") {
+            Triple(
+                "MemorySegment s = (MemorySegment) ",
+                "",
+                "return s.address();"
+            )
+        } else {
+            Triple(
+                "return (${retType.jTypeNoAnnotation}) ",
+                "",
+                null
+            )
+        }
+    }
     is CNonRefType -> Triple(
         "return (${retType.jTypeNoAnnotation}) ",
         "",

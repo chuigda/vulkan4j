@@ -89,6 +89,11 @@ public record VkBindBufferMemoryInfo(@NotNull MemorySegment segment) implements 
             return new VkBindBufferMemoryInfo(segment.asSlice(index * VkBindBufferMemoryInfo.BYTES, VkBindBufferMemoryInfo.BYTES));
         }
 
+        public VkBindBufferMemoryInfo.Ptr at(long index, @NotNull Consumer<@NotNull VkBindBufferMemoryInfo> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkBindBufferMemoryInfo value) {
             MemorySegment s = segment.asSlice(index * VkBindBufferMemoryInfo.BYTES, VkBindBufferMemoryInfo.BYTES);
             s.copyFrom(value.segment);
@@ -201,12 +206,13 @@ public record VkBindBufferMemoryInfo(@NotNull MemorySegment segment) implements 
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkBindBufferMemoryInfo pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkBindBufferMemoryInfo pNext(@Nullable IPointer pointer) {

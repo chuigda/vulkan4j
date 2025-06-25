@@ -87,6 +87,11 @@ public record VkVideoDecodeUsageInfoKHR(@NotNull MemorySegment segment) implemen
             return new VkVideoDecodeUsageInfoKHR(segment.asSlice(index * VkVideoDecodeUsageInfoKHR.BYTES, VkVideoDecodeUsageInfoKHR.BYTES));
         }
 
+        public VkVideoDecodeUsageInfoKHR.Ptr at(long index, @NotNull Consumer<@NotNull VkVideoDecodeUsageInfoKHR> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkVideoDecodeUsageInfoKHR value) {
             MemorySegment s = segment.asSlice(index * VkVideoDecodeUsageInfoKHR.BYTES, VkVideoDecodeUsageInfoKHR.BYTES);
             s.copyFrom(value.segment);
@@ -199,12 +204,13 @@ public record VkVideoDecodeUsageInfoKHR(@NotNull MemorySegment segment) implemen
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkVideoDecodeUsageInfoKHR pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkVideoDecodeUsageInfoKHR pNext(@Nullable IPointer pointer) {
@@ -212,11 +218,11 @@ public record VkVideoDecodeUsageInfoKHR(@NotNull MemorySegment segment) implemen
         return this;
     }
 
-    public @EnumType(VkVideoDecodeUsageFlagsKHR.class) int videoUsageHints() {
+    public @Bitmask(VkVideoDecodeUsageFlagsKHR.class) int videoUsageHints() {
         return segment.get(LAYOUT$videoUsageHints, OFFSET$videoUsageHints);
     }
 
-    public VkVideoDecodeUsageInfoKHR videoUsageHints(@EnumType(VkVideoDecodeUsageFlagsKHR.class) int value) {
+    public VkVideoDecodeUsageInfoKHR videoUsageHints(@Bitmask(VkVideoDecodeUsageFlagsKHR.class) int value) {
         segment.set(LAYOUT$videoUsageHints, OFFSET$videoUsageHints, value);
         return this;
     }

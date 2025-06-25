@@ -32,7 +32,7 @@ import static club.doki7.vulkan.VkConstants.*;
 ///     uint32_t height; // @link substring="height" target="#height"
 ///     uint32_t layerCount; // @link substring="layerCount" target="#layerCount"
 ///     uint32_t viewFormatCount; // optional // @link substring="viewFormatCount" target="#viewFormatCount"
-///     VkFormat const* pViewFormats; // @link substring="VkFormat" target="VkFormat" @link substring="pViewFormats" target="#pViewFormats"
+///     VkFormat const* pViewFormats; // optional // @link substring="VkFormat" target="VkFormat" @link substring="pViewFormats" target="#pViewFormats"
 /// } VkFramebufferAttachmentImageInfo;
 /// }
 ///
@@ -91,6 +91,11 @@ public record VkFramebufferAttachmentImageInfo(@NotNull MemorySegment segment) i
         /// indicate that the returned structure is a view of the original structure.
         public @NotNull VkFramebufferAttachmentImageInfo at(long index) {
             return new VkFramebufferAttachmentImageInfo(segment.asSlice(index * VkFramebufferAttachmentImageInfo.BYTES, VkFramebufferAttachmentImageInfo.BYTES));
+        }
+
+        public VkFramebufferAttachmentImageInfo.Ptr at(long index, @NotNull Consumer<@NotNull VkFramebufferAttachmentImageInfo> consumer) {
+            consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkFramebufferAttachmentImageInfo value) {
@@ -205,12 +210,13 @@ public record VkFramebufferAttachmentImageInfo(@NotNull MemorySegment segment) i
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkFramebufferAttachmentImageInfo pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkFramebufferAttachmentImageInfo pNext(@Nullable IPointer pointer) {
@@ -218,20 +224,20 @@ public record VkFramebufferAttachmentImageInfo(@NotNull MemorySegment segment) i
         return this;
     }
 
-    public @EnumType(VkImageCreateFlags.class) int flags() {
+    public @Bitmask(VkImageCreateFlags.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public VkFramebufferAttachmentImageInfo flags(@EnumType(VkImageCreateFlags.class) int value) {
+    public VkFramebufferAttachmentImageInfo flags(@Bitmask(VkImageCreateFlags.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
         return this;
     }
 
-    public @EnumType(VkImageUsageFlags.class) int usage() {
+    public @Bitmask(VkImageUsageFlags.class) int usage() {
         return segment.get(LAYOUT$usage, OFFSET$usage);
     }
 
-    public VkFramebufferAttachmentImageInfo usage(@EnumType(VkImageUsageFlags.class) int value) {
+    public VkFramebufferAttachmentImageInfo usage(@Bitmask(VkImageUsageFlags.class) int value) {
         segment.set(LAYOUT$usage, OFFSET$usage, value);
         return this;
     }
@@ -291,11 +297,11 @@ public record VkFramebufferAttachmentImageInfo(@NotNull MemorySegment segment) i
         return this;
     }
 
-    public @Pointer(target=VkFormat.class) MemorySegment pViewFormatsRaw() {
+    public @Pointer(target=VkFormat.class) @NotNull MemorySegment pViewFormatsRaw() {
         return segment.get(LAYOUT$pViewFormats, OFFSET$pViewFormats);
     }
 
-    public void pViewFormatsRaw(@Pointer(target=VkFormat.class) MemorySegment value) {
+    public void pViewFormatsRaw(@Pointer(target=VkFormat.class) @NotNull MemorySegment value) {
         segment.set(LAYOUT$pViewFormats, OFFSET$pViewFormats, value);
     }
 

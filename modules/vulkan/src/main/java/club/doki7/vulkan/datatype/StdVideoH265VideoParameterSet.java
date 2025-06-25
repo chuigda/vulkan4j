@@ -85,6 +85,11 @@ public record StdVideoH265VideoParameterSet(@NotNull MemorySegment segment) impl
             return new StdVideoH265VideoParameterSet(segment.asSlice(index * StdVideoH265VideoParameterSet.BYTES, StdVideoH265VideoParameterSet.BYTES));
         }
 
+        public StdVideoH265VideoParameterSet.Ptr at(long index, @NotNull Consumer<@NotNull StdVideoH265VideoParameterSet> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull StdVideoH265VideoParameterSet value) {
             MemorySegment s = segment.asSlice(index * StdVideoH265VideoParameterSet.BYTES, StdVideoH265VideoParameterSet.BYTES);
             s.copyFrom(value.segment);
@@ -264,11 +269,11 @@ public record StdVideoH265VideoParameterSet(@NotNull MemorySegment segment) impl
         return new StdVideoH265DecPicBufMgr(s);
     }
 
-    public @Pointer(target=StdVideoH265DecPicBufMgr.class) MemorySegment pDecPicBufMgrRaw() {
+    public @Pointer(target=StdVideoH265DecPicBufMgr.class) @NotNull MemorySegment pDecPicBufMgrRaw() {
         return segment.get(LAYOUT$pDecPicBufMgr, OFFSET$pDecPicBufMgr);
     }
 
-    public void pDecPicBufMgrRaw(@Pointer(target=StdVideoH265DecPicBufMgr.class) MemorySegment value) {
+    public void pDecPicBufMgrRaw(@Pointer(target=StdVideoH265DecPicBufMgr.class) @NotNull MemorySegment value) {
         segment.set(LAYOUT$pDecPicBufMgr, OFFSET$pDecPicBufMgr, value);
     }
 
@@ -296,11 +301,11 @@ public record StdVideoH265VideoParameterSet(@NotNull MemorySegment segment) impl
         return new StdVideoH265HrdParameters(s);
     }
 
-    public @Pointer(target=StdVideoH265HrdParameters.class) MemorySegment pHrdParametersRaw() {
+    public @Pointer(target=StdVideoH265HrdParameters.class) @NotNull MemorySegment pHrdParametersRaw() {
         return segment.get(LAYOUT$pHrdParameters, OFFSET$pHrdParameters);
     }
 
-    public void pHrdParametersRaw(@Pointer(target=StdVideoH265HrdParameters.class) MemorySegment value) {
+    public void pHrdParametersRaw(@Pointer(target=StdVideoH265HrdParameters.class) @NotNull MemorySegment value) {
         segment.set(LAYOUT$pHrdParameters, OFFSET$pHrdParameters, value);
     }
 
@@ -328,11 +333,11 @@ public record StdVideoH265VideoParameterSet(@NotNull MemorySegment segment) impl
         return new StdVideoH265ProfileTierLevel(s);
     }
 
-    public @Pointer(target=StdVideoH265ProfileTierLevel.class) MemorySegment pProfileTierLevelRaw() {
+    public @Pointer(target=StdVideoH265ProfileTierLevel.class) @NotNull MemorySegment pProfileTierLevelRaw() {
         return segment.get(LAYOUT$pProfileTierLevel, OFFSET$pProfileTierLevel);
     }
 
-    public void pProfileTierLevelRaw(@Pointer(target=StdVideoH265ProfileTierLevel.class) MemorySegment value) {
+    public void pProfileTierLevelRaw(@Pointer(target=StdVideoH265ProfileTierLevel.class) @NotNull MemorySegment value) {
         segment.set(LAYOUT$pProfileTierLevel, OFFSET$pProfileTierLevel, value);
     }
 

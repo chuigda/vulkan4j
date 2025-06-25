@@ -90,6 +90,11 @@ public record VkImportSemaphoreZirconHandleInfoFUCHSIA(@NotNull MemorySegment se
             return new VkImportSemaphoreZirconHandleInfoFUCHSIA(segment.asSlice(index * VkImportSemaphoreZirconHandleInfoFUCHSIA.BYTES, VkImportSemaphoreZirconHandleInfoFUCHSIA.BYTES));
         }
 
+        public VkImportSemaphoreZirconHandleInfoFUCHSIA.Ptr at(long index, @NotNull Consumer<@NotNull VkImportSemaphoreZirconHandleInfoFUCHSIA> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkImportSemaphoreZirconHandleInfoFUCHSIA value) {
             MemorySegment s = segment.asSlice(index * VkImportSemaphoreZirconHandleInfoFUCHSIA.BYTES, VkImportSemaphoreZirconHandleInfoFUCHSIA.BYTES);
             s.copyFrom(value.segment);
@@ -202,12 +207,13 @@ public record VkImportSemaphoreZirconHandleInfoFUCHSIA(@NotNull MemorySegment se
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkImportSemaphoreZirconHandleInfoFUCHSIA pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkImportSemaphoreZirconHandleInfoFUCHSIA pNext(@Nullable IPointer pointer) {
@@ -228,20 +234,20 @@ public record VkImportSemaphoreZirconHandleInfoFUCHSIA(@NotNull MemorySegment se
         return this;
     }
 
-    public @EnumType(VkSemaphoreImportFlags.class) int flags() {
+    public @Bitmask(VkSemaphoreImportFlags.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public VkImportSemaphoreZirconHandleInfoFUCHSIA flags(@EnumType(VkSemaphoreImportFlags.class) int value) {
+    public VkImportSemaphoreZirconHandleInfoFUCHSIA flags(@Bitmask(VkSemaphoreImportFlags.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
         return this;
     }
 
-    public @EnumType(VkExternalSemaphoreHandleTypeFlags.class) int handleType() {
+    public @Bitmask(VkExternalSemaphoreHandleTypeFlags.class) int handleType() {
         return segment.get(LAYOUT$handleType, OFFSET$handleType);
     }
 
-    public VkImportSemaphoreZirconHandleInfoFUCHSIA handleType(@EnumType(VkExternalSemaphoreHandleTypeFlags.class) int value) {
+    public VkImportSemaphoreZirconHandleInfoFUCHSIA handleType(@Bitmask(VkExternalSemaphoreHandleTypeFlags.class) int value) {
         segment.set(LAYOUT$handleType, OFFSET$handleType, value);
         return this;
     }

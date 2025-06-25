@@ -88,6 +88,11 @@ public record VkSwapchainPresentFenceInfoEXT(@NotNull MemorySegment segment) imp
             return new VkSwapchainPresentFenceInfoEXT(segment.asSlice(index * VkSwapchainPresentFenceInfoEXT.BYTES, VkSwapchainPresentFenceInfoEXT.BYTES));
         }
 
+        public VkSwapchainPresentFenceInfoEXT.Ptr at(long index, @NotNull Consumer<@NotNull VkSwapchainPresentFenceInfoEXT> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkSwapchainPresentFenceInfoEXT value) {
             MemorySegment s = segment.asSlice(index * VkSwapchainPresentFenceInfoEXT.BYTES, VkSwapchainPresentFenceInfoEXT.BYTES);
             s.copyFrom(value.segment);
@@ -200,12 +205,13 @@ public record VkSwapchainPresentFenceInfoEXT(@NotNull MemorySegment segment) imp
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkSwapchainPresentFenceInfoEXT pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkSwapchainPresentFenceInfoEXT pNext(@Nullable IPointer pointer) {
@@ -240,11 +246,11 @@ public record VkSwapchainPresentFenceInfoEXT(@NotNull MemorySegment segment) imp
         return this;
     }
 
-    public @Pointer(target=VkFence.class) MemorySegment pFencesRaw() {
+    public @Pointer(target=VkFence.class) @NotNull MemorySegment pFencesRaw() {
         return segment.get(LAYOUT$pFences, OFFSET$pFences);
     }
 
-    public void pFencesRaw(@Pointer(target=VkFence.class) MemorySegment value) {
+    public void pFencesRaw(@Pointer(target=VkFence.class) @NotNull MemorySegment value) {
         segment.set(LAYOUT$pFences, OFFSET$pFences, value);
     }
 

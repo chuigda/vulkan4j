@@ -87,6 +87,11 @@ public record VkAccelerationStructureGeometryMotionTrianglesDataNV(@NotNull Memo
             return new VkAccelerationStructureGeometryMotionTrianglesDataNV(segment.asSlice(index * VkAccelerationStructureGeometryMotionTrianglesDataNV.BYTES, VkAccelerationStructureGeometryMotionTrianglesDataNV.BYTES));
         }
 
+        public VkAccelerationStructureGeometryMotionTrianglesDataNV.Ptr at(long index, @NotNull Consumer<@NotNull VkAccelerationStructureGeometryMotionTrianglesDataNV> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkAccelerationStructureGeometryMotionTrianglesDataNV value) {
             MemorySegment s = segment.asSlice(index * VkAccelerationStructureGeometryMotionTrianglesDataNV.BYTES, VkAccelerationStructureGeometryMotionTrianglesDataNV.BYTES);
             s.copyFrom(value.segment);
@@ -199,12 +204,13 @@ public record VkAccelerationStructureGeometryMotionTrianglesDataNV(@NotNull Memo
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkAccelerationStructureGeometryMotionTrianglesDataNV pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkAccelerationStructureGeometryMotionTrianglesDataNV pNext(@Nullable IPointer pointer) {

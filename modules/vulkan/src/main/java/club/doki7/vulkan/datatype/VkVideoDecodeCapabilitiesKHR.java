@@ -87,6 +87,11 @@ public record VkVideoDecodeCapabilitiesKHR(@NotNull MemorySegment segment) imple
             return new VkVideoDecodeCapabilitiesKHR(segment.asSlice(index * VkVideoDecodeCapabilitiesKHR.BYTES, VkVideoDecodeCapabilitiesKHR.BYTES));
         }
 
+        public VkVideoDecodeCapabilitiesKHR.Ptr at(long index, @NotNull Consumer<@NotNull VkVideoDecodeCapabilitiesKHR> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkVideoDecodeCapabilitiesKHR value) {
             MemorySegment s = segment.asSlice(index * VkVideoDecodeCapabilitiesKHR.BYTES, VkVideoDecodeCapabilitiesKHR.BYTES);
             s.copyFrom(value.segment);
@@ -199,12 +204,13 @@ public record VkVideoDecodeCapabilitiesKHR(@NotNull MemorySegment segment) imple
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkVideoDecodeCapabilitiesKHR pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkVideoDecodeCapabilitiesKHR pNext(@Nullable IPointer pointer) {
@@ -212,11 +218,11 @@ public record VkVideoDecodeCapabilitiesKHR(@NotNull MemorySegment segment) imple
         return this;
     }
 
-    public @EnumType(VkVideoDecodeCapabilityFlagsKHR.class) int flags() {
+    public @Bitmask(VkVideoDecodeCapabilityFlagsKHR.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public VkVideoDecodeCapabilitiesKHR flags(@EnumType(VkVideoDecodeCapabilityFlagsKHR.class) int value) {
+    public VkVideoDecodeCapabilitiesKHR flags(@Bitmask(VkVideoDecodeCapabilityFlagsKHR.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
         return this;
     }

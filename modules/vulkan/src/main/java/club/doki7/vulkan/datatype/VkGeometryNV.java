@@ -89,6 +89,11 @@ public record VkGeometryNV(@NotNull MemorySegment segment) implements IVkGeometr
             return new VkGeometryNV(segment.asSlice(index * VkGeometryNV.BYTES, VkGeometryNV.BYTES));
         }
 
+        public VkGeometryNV.Ptr at(long index, @NotNull Consumer<@NotNull VkGeometryNV> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkGeometryNV value) {
             MemorySegment s = segment.asSlice(index * VkGeometryNV.BYTES, VkGeometryNV.BYTES);
             s.copyFrom(value.segment);
@@ -201,12 +206,13 @@ public record VkGeometryNV(@NotNull MemorySegment segment) implements IVkGeometr
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkGeometryNV pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkGeometryNV pNext(@Nullable IPointer pointer) {
@@ -237,11 +243,11 @@ public record VkGeometryNV(@NotNull MemorySegment segment) implements IVkGeometr
         return this;
     }
 
-    public @EnumType(VkGeometryFlagsKHR.class) int flags() {
+    public @Bitmask(VkGeometryFlagsKHR.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public VkGeometryNV flags(@EnumType(VkGeometryFlagsKHR.class) int value) {
+    public VkGeometryNV flags(@Bitmask(VkGeometryFlagsKHR.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
         return this;
     }

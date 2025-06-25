@@ -12,7 +12,7 @@ public final class VkVideoEncodeAV1StdFlagsKHR {
     public static final int VK_VIDEO_ENCODE_AV1_STD_SKIP_MODE_PRESENT_UNSET = 0x2;
     public static final int VK_VIDEO_ENCODE_AV1_STD_UNIFORM_TILE_SPACING_FLAG_SET = 0x1;
 
-    public static String explain(@EnumType(VkVideoEncodeAV1StdFlagsKHR.class) int flags) {
+    public static String explain(@Bitmask(VkVideoEncodeAV1StdFlagsKHR.class) int flags) {
         List<String> detectedFlagBits = new ArrayList<>();
         if ((flags & VK_VIDEO_ENCODE_AV1_STD_DELTA_Q) != 0) {
             detectedFlagBits.add("VK_VIDEO_ENCODE_AV1_STD_DELTA_Q_BIT_KHR");

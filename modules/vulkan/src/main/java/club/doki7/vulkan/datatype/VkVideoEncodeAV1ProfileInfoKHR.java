@@ -87,6 +87,11 @@ public record VkVideoEncodeAV1ProfileInfoKHR(@NotNull MemorySegment segment) imp
             return new VkVideoEncodeAV1ProfileInfoKHR(segment.asSlice(index * VkVideoEncodeAV1ProfileInfoKHR.BYTES, VkVideoEncodeAV1ProfileInfoKHR.BYTES));
         }
 
+        public VkVideoEncodeAV1ProfileInfoKHR.Ptr at(long index, @NotNull Consumer<@NotNull VkVideoEncodeAV1ProfileInfoKHR> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkVideoEncodeAV1ProfileInfoKHR value) {
             MemorySegment s = segment.asSlice(index * VkVideoEncodeAV1ProfileInfoKHR.BYTES, VkVideoEncodeAV1ProfileInfoKHR.BYTES);
             s.copyFrom(value.segment);
@@ -199,12 +204,13 @@ public record VkVideoEncodeAV1ProfileInfoKHR(@NotNull MemorySegment segment) imp
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkVideoEncodeAV1ProfileInfoKHR pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkVideoEncodeAV1ProfileInfoKHR pNext(@Nullable IPointer pointer) {

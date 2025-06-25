@@ -90,6 +90,11 @@ public record VkPipelineExecutableStatisticKHR(@NotNull MemorySegment segment) i
             return new VkPipelineExecutableStatisticKHR(segment.asSlice(index * VkPipelineExecutableStatisticKHR.BYTES, VkPipelineExecutableStatisticKHR.BYTES));
         }
 
+        public VkPipelineExecutableStatisticKHR.Ptr at(long index, @NotNull Consumer<@NotNull VkPipelineExecutableStatisticKHR> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkPipelineExecutableStatisticKHR value) {
             MemorySegment s = segment.asSlice(index * VkPipelineExecutableStatisticKHR.BYTES, VkPipelineExecutableStatisticKHR.BYTES);
             s.copyFrom(value.segment);
@@ -202,12 +207,13 @@ public record VkPipelineExecutableStatisticKHR(@NotNull MemorySegment segment) i
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkPipelineExecutableStatisticKHR pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkPipelineExecutableStatisticKHR pNext(@Nullable IPointer pointer) {
@@ -219,12 +225,19 @@ public record VkPipelineExecutableStatisticKHR(@NotNull MemorySegment segment) i
         return new BytePtr(nameRaw());
     }
 
-    public VkPipelineExecutableStatisticKHR name(BytePtr value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$name, SIZE$name);
+    public VkPipelineExecutableStatisticKHR name(@NotNull Consumer<BytePtr> consumer) {
+        BytePtr ptr = name();
+        consumer.accept(ptr);
         return this;
     }
 
-    public MemorySegment nameRaw() {
+    public VkPipelineExecutableStatisticKHR name(BytePtr value) {
+        MemorySegment s = nameRaw();
+        s.copyFrom(value.segment());
+        return this;
+    }
+
+    public @NotNull MemorySegment nameRaw() {
         return segment.asSlice(OFFSET$name, SIZE$name);
     }
 
@@ -232,12 +245,19 @@ public record VkPipelineExecutableStatisticKHR(@NotNull MemorySegment segment) i
         return new BytePtr(descriptionRaw());
     }
 
-    public VkPipelineExecutableStatisticKHR description(BytePtr value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$description, SIZE$description);
+    public VkPipelineExecutableStatisticKHR description(@NotNull Consumer<BytePtr> consumer) {
+        BytePtr ptr = description();
+        consumer.accept(ptr);
         return this;
     }
 
-    public MemorySegment descriptionRaw() {
+    public VkPipelineExecutableStatisticKHR description(BytePtr value) {
+        MemorySegment s = descriptionRaw();
+        s.copyFrom(value.segment());
+        return this;
+    }
+
+    public @NotNull MemorySegment descriptionRaw() {
         return segment.asSlice(OFFSET$description, SIZE$description);
     }
 

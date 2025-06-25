@@ -87,6 +87,11 @@ public record VkPhysicalDeviceCoherentMemoryFeaturesAMD(@NotNull MemorySegment s
             return new VkPhysicalDeviceCoherentMemoryFeaturesAMD(segment.asSlice(index * VkPhysicalDeviceCoherentMemoryFeaturesAMD.BYTES, VkPhysicalDeviceCoherentMemoryFeaturesAMD.BYTES));
         }
 
+        public VkPhysicalDeviceCoherentMemoryFeaturesAMD.Ptr at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceCoherentMemoryFeaturesAMD> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkPhysicalDeviceCoherentMemoryFeaturesAMD value) {
             MemorySegment s = segment.asSlice(index * VkPhysicalDeviceCoherentMemoryFeaturesAMD.BYTES, VkPhysicalDeviceCoherentMemoryFeaturesAMD.BYTES);
             s.copyFrom(value.segment);
@@ -199,12 +204,13 @@ public record VkPhysicalDeviceCoherentMemoryFeaturesAMD(@NotNull MemorySegment s
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkPhysicalDeviceCoherentMemoryFeaturesAMD pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkPhysicalDeviceCoherentMemoryFeaturesAMD pNext(@Nullable IPointer pointer) {

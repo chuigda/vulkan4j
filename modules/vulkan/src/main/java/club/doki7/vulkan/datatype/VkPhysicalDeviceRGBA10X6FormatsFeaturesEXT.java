@@ -87,6 +87,11 @@ public record VkPhysicalDeviceRGBA10X6FormatsFeaturesEXT(@NotNull MemorySegment 
             return new VkPhysicalDeviceRGBA10X6FormatsFeaturesEXT(segment.asSlice(index * VkPhysicalDeviceRGBA10X6FormatsFeaturesEXT.BYTES, VkPhysicalDeviceRGBA10X6FormatsFeaturesEXT.BYTES));
         }
 
+        public VkPhysicalDeviceRGBA10X6FormatsFeaturesEXT.Ptr at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceRGBA10X6FormatsFeaturesEXT> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkPhysicalDeviceRGBA10X6FormatsFeaturesEXT value) {
             MemorySegment s = segment.asSlice(index * VkPhysicalDeviceRGBA10X6FormatsFeaturesEXT.BYTES, VkPhysicalDeviceRGBA10X6FormatsFeaturesEXT.BYTES);
             s.copyFrom(value.segment);
@@ -199,12 +204,13 @@ public record VkPhysicalDeviceRGBA10X6FormatsFeaturesEXT(@NotNull MemorySegment 
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkPhysicalDeviceRGBA10X6FormatsFeaturesEXT pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkPhysicalDeviceRGBA10X6FormatsFeaturesEXT pNext(@Nullable IPointer pointer) {

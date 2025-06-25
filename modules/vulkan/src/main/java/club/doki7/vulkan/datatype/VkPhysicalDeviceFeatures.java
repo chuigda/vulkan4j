@@ -130,6 +130,11 @@ public record VkPhysicalDeviceFeatures(@NotNull MemorySegment segment) implement
             return new VkPhysicalDeviceFeatures(segment.asSlice(index * VkPhysicalDeviceFeatures.BYTES, VkPhysicalDeviceFeatures.BYTES));
         }
 
+        public VkPhysicalDeviceFeatures.Ptr at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceFeatures> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkPhysicalDeviceFeatures value) {
             MemorySegment s = segment.asSlice(index * VkPhysicalDeviceFeatures.BYTES, VkPhysicalDeviceFeatures.BYTES);
             s.copyFrom(value.segment);

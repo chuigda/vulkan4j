@@ -10,7 +10,7 @@ public final class VkPerformanceCounterDescriptionFlagsKHR {
     public static final int CONCURRENTLY_IMPACTED = 0x2;
     public static final int PERFORMANCE_IMPACTING = 0x1;
 
-    public static String explain(@EnumType(VkPerformanceCounterDescriptionFlagsKHR.class) int flags) {
+    public static String explain(@Bitmask(VkPerformanceCounterDescriptionFlagsKHR.class) int flags) {
         List<String> detectedFlagBits = new ArrayList<>();
         if ((flags & CONCURRENTLY_IMPACTED) != 0) {
             detectedFlagBits.add("VK_PERFORMANCE_COUNTER_DESCRIPTION_CONCURRENTLY_IMPACTED_BIT_KHR");

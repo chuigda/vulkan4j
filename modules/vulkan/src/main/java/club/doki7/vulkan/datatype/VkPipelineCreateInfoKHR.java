@@ -86,6 +86,11 @@ public record VkPipelineCreateInfoKHR(@NotNull MemorySegment segment) implements
             return new VkPipelineCreateInfoKHR(segment.asSlice(index * VkPipelineCreateInfoKHR.BYTES, VkPipelineCreateInfoKHR.BYTES));
         }
 
+        public VkPipelineCreateInfoKHR.Ptr at(long index, @NotNull Consumer<@NotNull VkPipelineCreateInfoKHR> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkPipelineCreateInfoKHR value) {
             MemorySegment s = segment.asSlice(index * VkPipelineCreateInfoKHR.BYTES, VkPipelineCreateInfoKHR.BYTES);
             s.copyFrom(value.segment);
@@ -198,12 +203,13 @@ public record VkPipelineCreateInfoKHR(@NotNull MemorySegment segment) implements
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkPipelineCreateInfoKHR pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkPipelineCreateInfoKHR pNext(@Nullable IPointer pointer) {

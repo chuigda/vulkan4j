@@ -88,6 +88,11 @@ public record VkGeneratedCommandsShaderInfoEXT(@NotNull MemorySegment segment) i
             return new VkGeneratedCommandsShaderInfoEXT(segment.asSlice(index * VkGeneratedCommandsShaderInfoEXT.BYTES, VkGeneratedCommandsShaderInfoEXT.BYTES));
         }
 
+        public VkGeneratedCommandsShaderInfoEXT.Ptr at(long index, @NotNull Consumer<@NotNull VkGeneratedCommandsShaderInfoEXT> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkGeneratedCommandsShaderInfoEXT value) {
             MemorySegment s = segment.asSlice(index * VkGeneratedCommandsShaderInfoEXT.BYTES, VkGeneratedCommandsShaderInfoEXT.BYTES);
             s.copyFrom(value.segment);
@@ -200,12 +205,13 @@ public record VkGeneratedCommandsShaderInfoEXT(@NotNull MemorySegment segment) i
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkGeneratedCommandsShaderInfoEXT pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkGeneratedCommandsShaderInfoEXT pNext(@Nullable IPointer pointer) {
@@ -240,11 +246,11 @@ public record VkGeneratedCommandsShaderInfoEXT(@NotNull MemorySegment segment) i
         return this;
     }
 
-    public @Pointer(target=VkShaderEXT.class) MemorySegment pShadersRaw() {
+    public @Pointer(target=VkShaderEXT.class) @NotNull MemorySegment pShadersRaw() {
         return segment.get(LAYOUT$pShaders, OFFSET$pShaders);
     }
 
-    public void pShadersRaw(@Pointer(target=VkShaderEXT.class) MemorySegment value) {
+    public void pShadersRaw(@Pointer(target=VkShaderEXT.class) @NotNull MemorySegment value) {
         segment.set(LAYOUT$pShaders, OFFSET$pShaders, value);
     }
 

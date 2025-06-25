@@ -93,6 +93,11 @@ public record VkCopyDescriptorSet(@NotNull MemorySegment segment) implements IVk
             return new VkCopyDescriptorSet(segment.asSlice(index * VkCopyDescriptorSet.BYTES, VkCopyDescriptorSet.BYTES));
         }
 
+        public VkCopyDescriptorSet.Ptr at(long index, @NotNull Consumer<@NotNull VkCopyDescriptorSet> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkCopyDescriptorSet value) {
             MemorySegment s = segment.asSlice(index * VkCopyDescriptorSet.BYTES, VkCopyDescriptorSet.BYTES);
             s.copyFrom(value.segment);
@@ -205,12 +210,13 @@ public record VkCopyDescriptorSet(@NotNull MemorySegment segment) implements IVk
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkCopyDescriptorSet pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkCopyDescriptorSet pNext(@Nullable IPointer pointer) {

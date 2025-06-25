@@ -27,7 +27,7 @@ import static club.doki7.vulkan.VkConstants.*;
 ///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
 ///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
 ///     uint32_t setLayoutCount; // optional // @link substring="setLayoutCount" target="#setLayoutCount"
-///     VkDescriptorSetLayout const* pSetLayouts; // @link substring="VkDescriptorSetLayout" target="VkDescriptorSetLayout" @link substring="pSetLayouts" target="#pSetLayouts"
+///     VkDescriptorSetLayout const* pSetLayouts; // optional // @link substring="VkDescriptorSetLayout" target="VkDescriptorSetLayout" @link substring="pSetLayouts" target="#pSetLayouts"
 /// } VkIndirectExecutionSetShaderLayoutInfoEXT;
 /// }
 ///
@@ -86,6 +86,11 @@ public record VkIndirectExecutionSetShaderLayoutInfoEXT(@NotNull MemorySegment s
         /// indicate that the returned structure is a view of the original structure.
         public @NotNull VkIndirectExecutionSetShaderLayoutInfoEXT at(long index) {
             return new VkIndirectExecutionSetShaderLayoutInfoEXT(segment.asSlice(index * VkIndirectExecutionSetShaderLayoutInfoEXT.BYTES, VkIndirectExecutionSetShaderLayoutInfoEXT.BYTES));
+        }
+
+        public VkIndirectExecutionSetShaderLayoutInfoEXT.Ptr at(long index, @NotNull Consumer<@NotNull VkIndirectExecutionSetShaderLayoutInfoEXT> consumer) {
+            consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkIndirectExecutionSetShaderLayoutInfoEXT value) {
@@ -200,12 +205,13 @@ public record VkIndirectExecutionSetShaderLayoutInfoEXT(@NotNull MemorySegment s
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkIndirectExecutionSetShaderLayoutInfoEXT pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkIndirectExecutionSetShaderLayoutInfoEXT pNext(@Nullable IPointer pointer) {
@@ -240,11 +246,11 @@ public record VkIndirectExecutionSetShaderLayoutInfoEXT(@NotNull MemorySegment s
         return this;
     }
 
-    public @Pointer(target=VkDescriptorSetLayout.class) MemorySegment pSetLayoutsRaw() {
+    public @Pointer(target=VkDescriptorSetLayout.class) @NotNull MemorySegment pSetLayoutsRaw() {
         return segment.get(LAYOUT$pSetLayouts, OFFSET$pSetLayouts);
     }
 
-    public void pSetLayoutsRaw(@Pointer(target=VkDescriptorSetLayout.class) MemorySegment value) {
+    public void pSetLayoutsRaw(@Pointer(target=VkDescriptorSetLayout.class) @NotNull MemorySegment value) {
         segment.set(LAYOUT$pSetLayouts, OFFSET$pSetLayouts, value);
     }
 

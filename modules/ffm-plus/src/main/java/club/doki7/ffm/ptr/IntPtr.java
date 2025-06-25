@@ -4,7 +4,6 @@ import club.doki7.ffm.IPointer;
 import club.doki7.ffm.annotation.Unsafe;
 import club.doki7.ffm.annotation.UnsafeConstructor;
 import club.doki7.ffm.annotation.ValueBasedCandidate;
-import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -13,6 +12,7 @@ import java.lang.foreign.MemorySegment;
 import java.lang.foreign.ValueLayout;
 import java.nio.Buffer;
 import java.nio.IntBuffer;
+import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
 import java.util.NoSuchElementException;
@@ -105,12 +105,11 @@ public record IntPtr(@NotNull MemorySegment segment) implements IPointer, Iterab
     /// considered "empty". See the documentation of {@link IPointer#segment()} for more details.
     ///
     /// @param segment the {@link MemorySegment} to use as the backing storage
-    /// @return {@code null} if {@code segment} is {@code null} or {@link MemorySegment#NULL},
+    /// @return {@code null} if {@code segment} {@link MemorySegment#NULL},
     /// otherwise a new {@link IntPtr} that uses {@code segment} as backing storage
     /// @throws IllegalArgumentException if {@code segment} is not native or not properly aligned
-    @Contract("null -> null")
-    public static @Nullable IntPtr checked(@Nullable MemorySegment segment) {
-        if (segment == null || segment.equals(MemorySegment.NULL)) {
+    public static @Nullable IntPtr checked(@NotNull MemorySegment segment) {
+        if (segment.equals(MemorySegment.NULL)) {
             return null;
         }
 
@@ -171,6 +170,16 @@ public record IntPtr(@NotNull MemorySegment segment) implements IPointer, Iterab
 
     public static @NotNull IntPtr allocate(@NotNull Arena arena, int @NotNull [] array) {
         return new IntPtr(arena.allocateFrom(ValueLayout.JAVA_INT, array));
+    }
+
+    public static @NotNull IntPtr allocate(@NotNull Arena arena, Collection<Integer> ints) {
+        IntPtr ret = allocate(arena, ints.size());
+        int i = 0;
+        for (Integer value : ints) {
+            ret.write(i, value);
+            i += 1;
+        }
+        return ret;
     }
 
     public static @NotNull IntPtr allocateV(@NotNull Arena arena, int value0, int ...values) {

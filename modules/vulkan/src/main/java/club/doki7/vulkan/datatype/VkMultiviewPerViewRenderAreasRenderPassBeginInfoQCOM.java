@@ -27,7 +27,7 @@ import static club.doki7.vulkan.VkConstants.*;
 ///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
 ///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
 ///     uint32_t perViewRenderAreaCount; // optional // @link substring="perViewRenderAreaCount" target="#perViewRenderAreaCount"
-///     VkRect2D const* pPerViewRenderAreas; // @link substring="VkRect2D" target="VkRect2D" @link substring="pPerViewRenderAreas" target="#pPerViewRenderAreas"
+///     VkRect2D const* pPerViewRenderAreas; // optional // @link substring="VkRect2D" target="VkRect2D" @link substring="pPerViewRenderAreas" target="#pPerViewRenderAreas"
 /// } VkMultiviewPerViewRenderAreasRenderPassBeginInfoQCOM;
 /// }
 ///
@@ -86,6 +86,11 @@ public record VkMultiviewPerViewRenderAreasRenderPassBeginInfoQCOM(@NotNull Memo
         /// indicate that the returned structure is a view of the original structure.
         public @NotNull VkMultiviewPerViewRenderAreasRenderPassBeginInfoQCOM at(long index) {
             return new VkMultiviewPerViewRenderAreasRenderPassBeginInfoQCOM(segment.asSlice(index * VkMultiviewPerViewRenderAreasRenderPassBeginInfoQCOM.BYTES, VkMultiviewPerViewRenderAreasRenderPassBeginInfoQCOM.BYTES));
+        }
+
+        public VkMultiviewPerViewRenderAreasRenderPassBeginInfoQCOM.Ptr at(long index, @NotNull Consumer<@NotNull VkMultiviewPerViewRenderAreasRenderPassBeginInfoQCOM> consumer) {
+            consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkMultiviewPerViewRenderAreasRenderPassBeginInfoQCOM value) {
@@ -200,12 +205,13 @@ public record VkMultiviewPerViewRenderAreasRenderPassBeginInfoQCOM(@NotNull Memo
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkMultiviewPerViewRenderAreasRenderPassBeginInfoQCOM pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkMultiviewPerViewRenderAreasRenderPassBeginInfoQCOM pNext(@Nullable IPointer pointer) {
@@ -246,11 +252,11 @@ public record VkMultiviewPerViewRenderAreasRenderPassBeginInfoQCOM(@NotNull Memo
         return new VkRect2D(s);
     }
 
-    public @Pointer(target=VkRect2D.class) MemorySegment pPerViewRenderAreasRaw() {
+    public @Pointer(target=VkRect2D.class) @NotNull MemorySegment pPerViewRenderAreasRaw() {
         return segment.get(LAYOUT$pPerViewRenderAreas, OFFSET$pPerViewRenderAreas);
     }
 
-    public void pPerViewRenderAreasRaw(@Pointer(target=VkRect2D.class) MemorySegment value) {
+    public void pPerViewRenderAreasRaw(@Pointer(target=VkRect2D.class) @NotNull MemorySegment value) {
         segment.set(LAYOUT$pPerViewRenderAreas, OFFSET$pPerViewRenderAreas, value);
     }
 

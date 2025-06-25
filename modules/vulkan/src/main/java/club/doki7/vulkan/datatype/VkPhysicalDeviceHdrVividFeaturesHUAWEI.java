@@ -87,6 +87,11 @@ public record VkPhysicalDeviceHdrVividFeaturesHUAWEI(@NotNull MemorySegment segm
             return new VkPhysicalDeviceHdrVividFeaturesHUAWEI(segment.asSlice(index * VkPhysicalDeviceHdrVividFeaturesHUAWEI.BYTES, VkPhysicalDeviceHdrVividFeaturesHUAWEI.BYTES));
         }
 
+        public VkPhysicalDeviceHdrVividFeaturesHUAWEI.Ptr at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceHdrVividFeaturesHUAWEI> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkPhysicalDeviceHdrVividFeaturesHUAWEI value) {
             MemorySegment s = segment.asSlice(index * VkPhysicalDeviceHdrVividFeaturesHUAWEI.BYTES, VkPhysicalDeviceHdrVividFeaturesHUAWEI.BYTES);
             s.copyFrom(value.segment);
@@ -199,12 +204,13 @@ public record VkPhysicalDeviceHdrVividFeaturesHUAWEI(@NotNull MemorySegment segm
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkPhysicalDeviceHdrVividFeaturesHUAWEI pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkPhysicalDeviceHdrVividFeaturesHUAWEI pNext(@Nullable IPointer pointer) {

@@ -95,6 +95,11 @@ public record VkBufferMemoryBarrier2(@NotNull MemorySegment segment) implements 
             return new VkBufferMemoryBarrier2(segment.asSlice(index * VkBufferMemoryBarrier2.BYTES, VkBufferMemoryBarrier2.BYTES));
         }
 
+        public VkBufferMemoryBarrier2.Ptr at(long index, @NotNull Consumer<@NotNull VkBufferMemoryBarrier2> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkBufferMemoryBarrier2 value) {
             MemorySegment s = segment.asSlice(index * VkBufferMemoryBarrier2.BYTES, VkBufferMemoryBarrier2.BYTES);
             s.copyFrom(value.segment);
@@ -207,12 +212,13 @@ public record VkBufferMemoryBarrier2(@NotNull MemorySegment segment) implements 
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkBufferMemoryBarrier2 pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkBufferMemoryBarrier2 pNext(@Nullable IPointer pointer) {
@@ -220,38 +226,38 @@ public record VkBufferMemoryBarrier2(@NotNull MemorySegment segment) implements 
         return this;
     }
 
-    public @EnumType(VkPipelineStageFlags2.class) long srcStageMask() {
+    public @Bitmask(VkPipelineStageFlags2.class) long srcStageMask() {
         return segment.get(LAYOUT$srcStageMask, OFFSET$srcStageMask);
     }
 
-    public VkBufferMemoryBarrier2 srcStageMask(@EnumType(VkPipelineStageFlags2.class) long value) {
+    public VkBufferMemoryBarrier2 srcStageMask(@Bitmask(VkPipelineStageFlags2.class) long value) {
         segment.set(LAYOUT$srcStageMask, OFFSET$srcStageMask, value);
         return this;
     }
 
-    public @EnumType(VkAccessFlags2.class) long srcAccessMask() {
+    public @Bitmask(VkAccessFlags2.class) long srcAccessMask() {
         return segment.get(LAYOUT$srcAccessMask, OFFSET$srcAccessMask);
     }
 
-    public VkBufferMemoryBarrier2 srcAccessMask(@EnumType(VkAccessFlags2.class) long value) {
+    public VkBufferMemoryBarrier2 srcAccessMask(@Bitmask(VkAccessFlags2.class) long value) {
         segment.set(LAYOUT$srcAccessMask, OFFSET$srcAccessMask, value);
         return this;
     }
 
-    public @EnumType(VkPipelineStageFlags2.class) long dstStageMask() {
+    public @Bitmask(VkPipelineStageFlags2.class) long dstStageMask() {
         return segment.get(LAYOUT$dstStageMask, OFFSET$dstStageMask);
     }
 
-    public VkBufferMemoryBarrier2 dstStageMask(@EnumType(VkPipelineStageFlags2.class) long value) {
+    public VkBufferMemoryBarrier2 dstStageMask(@Bitmask(VkPipelineStageFlags2.class) long value) {
         segment.set(LAYOUT$dstStageMask, OFFSET$dstStageMask, value);
         return this;
     }
 
-    public @EnumType(VkAccessFlags2.class) long dstAccessMask() {
+    public @Bitmask(VkAccessFlags2.class) long dstAccessMask() {
         return segment.get(LAYOUT$dstAccessMask, OFFSET$dstAccessMask);
     }
 
-    public VkBufferMemoryBarrier2 dstAccessMask(@EnumType(VkAccessFlags2.class) long value) {
+    public VkBufferMemoryBarrier2 dstAccessMask(@Bitmask(VkAccessFlags2.class) long value) {
         segment.set(LAYOUT$dstAccessMask, OFFSET$dstAccessMask, value);
         return this;
     }

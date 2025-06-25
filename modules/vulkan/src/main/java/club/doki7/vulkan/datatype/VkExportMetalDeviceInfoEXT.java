@@ -87,6 +87,11 @@ public record VkExportMetalDeviceInfoEXT(@NotNull MemorySegment segment) impleme
             return new VkExportMetalDeviceInfoEXT(segment.asSlice(index * VkExportMetalDeviceInfoEXT.BYTES, VkExportMetalDeviceInfoEXT.BYTES));
         }
 
+        public VkExportMetalDeviceInfoEXT.Ptr at(long index, @NotNull Consumer<@NotNull VkExportMetalDeviceInfoEXT> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkExportMetalDeviceInfoEXT value) {
             MemorySegment s = segment.asSlice(index * VkExportMetalDeviceInfoEXT.BYTES, VkExportMetalDeviceInfoEXT.BYTES);
             s.copyFrom(value.segment);
@@ -199,12 +204,13 @@ public record VkExportMetalDeviceInfoEXT(@NotNull MemorySegment segment) impleme
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkExportMetalDeviceInfoEXT pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkExportMetalDeviceInfoEXT pNext(@Nullable IPointer pointer) {
@@ -212,12 +218,13 @@ public record VkExportMetalDeviceInfoEXT(@NotNull MemorySegment segment) impleme
         return this;
     }
 
-    public @Pointer(comment="MTLDevice_id") MemorySegment mtlDevice() {
+    public @Pointer(comment="MTLDevice_id") @NotNull MemorySegment mtlDevice() {
         return segment.get(LAYOUT$mtlDevice, OFFSET$mtlDevice);
     }
 
-    public void mtlDevice(@Pointer(comment="MTLDevice_id") MemorySegment value) {
+    public VkExportMetalDeviceInfoEXT mtlDevice(@Pointer(comment="MTLDevice_id") @NotNull MemorySegment value) {
         segment.set(LAYOUT$mtlDevice, OFFSET$mtlDevice, value);
+        return this;
     }
 
     public VkExportMetalDeviceInfoEXT mtlDevice(@Nullable IPointer pointer) {

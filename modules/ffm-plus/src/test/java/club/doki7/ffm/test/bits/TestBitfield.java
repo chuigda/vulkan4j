@@ -1,9 +1,12 @@
 package club.doki7.ffm.test.bits;
 
-import club.doki7.ffm.Loader;
+import club.doki7.ffm.RawFunctionLoader;
 import club.doki7.ffm.bits.BitfieldUtil;
+import club.doki7.ffm.library.ILibraryLoader;
+import club.doki7.ffm.library.ISharedLibrary;
 import club.doki7.ffm.ptr.BytePtr;
 import club.doki7.ffm.ptr.IntPtr;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import java.lang.foreign.Arena;
@@ -13,6 +16,8 @@ import java.lang.foreign.ValueLayout;
 import java.lang.invoke.MethodHandle;
 
 public class TestBitfield {
+    private static final ILibraryLoader libraryLoader = ILibraryLoader.platformLoader();
+    private static final ISharedLibrary library;
     static {
         String userDir = System.getProperty("user.dir");
         String path = userDir;
@@ -27,17 +32,22 @@ public class TestBitfield {
             path += "\\misc\\test_binary\\bitfield.dll";
         }
 
-        System.load(path);
+        library = libraryLoader.loadLibrary(path);
     }
 
     private static final FunctionDescriptor fnType = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS);
 
     @Test
     void test1() throws Throwable {
-        MethodHandle check1 = Loader.loadFunction("checkBitfield1", fnType);
-        MethodHandle check2 = Loader.loadFunction("checkBitfield2", fnType);
-        MethodHandle check3 = Loader.loadFunction("checkBitfield3", fnType);
-        MethodHandle check4 = Loader.loadFunction("checkBitfield4", fnType);
+        MethodHandle check1 = RawFunctionLoader.link(library.load("checkBitfield1"), fnType);
+        MethodHandle check2 = RawFunctionLoader.link(library.load("checkBitfield2"), fnType);
+        MethodHandle check3 = RawFunctionLoader.link(library.load("checkBitfield3"), fnType);
+        MethodHandle check4 = RawFunctionLoader.link(library.load("checkBitfield4"), fnType);
+
+        Assertions.assertNotNull(check1);
+        Assertions.assertNotNull(check2);
+        Assertions.assertNotNull(check3);
+        Assertions.assertNotNull(check4);
 
         try (Arena arena = Arena.ofConfined()) {
             BytePtr ptr = BytePtr.allocate(arena);
@@ -73,7 +83,8 @@ public class TestBitfield {
 
     @Test
     void test2() throws Throwable {
-        MethodHandle check5 = Loader.loadFunction("checkBitfield5", fnType);
+        MethodHandle check5 = RawFunctionLoader.link(library.load("checkBitfield5"), fnType);
+        Assertions.assertNotNull(check5);
 
         try (Arena arena = Arena.ofConfined()) {
             IntPtr ptr = IntPtr.allocate(arena);

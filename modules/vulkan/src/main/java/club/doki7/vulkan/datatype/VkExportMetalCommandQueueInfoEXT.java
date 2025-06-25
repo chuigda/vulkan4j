@@ -88,6 +88,11 @@ public record VkExportMetalCommandQueueInfoEXT(@NotNull MemorySegment segment) i
             return new VkExportMetalCommandQueueInfoEXT(segment.asSlice(index * VkExportMetalCommandQueueInfoEXT.BYTES, VkExportMetalCommandQueueInfoEXT.BYTES));
         }
 
+        public VkExportMetalCommandQueueInfoEXT.Ptr at(long index, @NotNull Consumer<@NotNull VkExportMetalCommandQueueInfoEXT> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkExportMetalCommandQueueInfoEXT value) {
             MemorySegment s = segment.asSlice(index * VkExportMetalCommandQueueInfoEXT.BYTES, VkExportMetalCommandQueueInfoEXT.BYTES);
             s.copyFrom(value.segment);
@@ -200,12 +205,13 @@ public record VkExportMetalCommandQueueInfoEXT(@NotNull MemorySegment segment) i
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkExportMetalCommandQueueInfoEXT pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkExportMetalCommandQueueInfoEXT pNext(@Nullable IPointer pointer) {
@@ -226,12 +232,13 @@ public record VkExportMetalCommandQueueInfoEXT(@NotNull MemorySegment segment) i
         return this;
     }
 
-    public @Pointer(comment="MTLCommandQueue_id") MemorySegment mtlCommandQueue() {
+    public @Pointer(comment="MTLCommandQueue_id") @NotNull MemorySegment mtlCommandQueue() {
         return segment.get(LAYOUT$mtlCommandQueue, OFFSET$mtlCommandQueue);
     }
 
-    public void mtlCommandQueue(@Pointer(comment="MTLCommandQueue_id") MemorySegment value) {
+    public VkExportMetalCommandQueueInfoEXT mtlCommandQueue(@Pointer(comment="MTLCommandQueue_id") @NotNull MemorySegment value) {
         segment.set(LAYOUT$mtlCommandQueue, OFFSET$mtlCommandQueue, value);
+        return this;
     }
 
     public VkExportMetalCommandQueueInfoEXT mtlCommandQueue(@Nullable IPointer pointer) {

@@ -88,6 +88,11 @@ public record VkAccelerationStructureCreateInfoNV(@NotNull MemorySegment segment
             return new VkAccelerationStructureCreateInfoNV(segment.asSlice(index * VkAccelerationStructureCreateInfoNV.BYTES, VkAccelerationStructureCreateInfoNV.BYTES));
         }
 
+        public VkAccelerationStructureCreateInfoNV.Ptr at(long index, @NotNull Consumer<@NotNull VkAccelerationStructureCreateInfoNV> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkAccelerationStructureCreateInfoNV value) {
             MemorySegment s = segment.asSlice(index * VkAccelerationStructureCreateInfoNV.BYTES, VkAccelerationStructureCreateInfoNV.BYTES);
             s.copyFrom(value.segment);
@@ -200,12 +205,13 @@ public record VkAccelerationStructureCreateInfoNV(@NotNull MemorySegment segment
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkAccelerationStructureCreateInfoNV pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkAccelerationStructureCreateInfoNV pNext(@Nullable IPointer pointer) {

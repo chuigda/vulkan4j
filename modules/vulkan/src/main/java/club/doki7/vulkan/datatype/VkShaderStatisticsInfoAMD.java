@@ -82,6 +82,11 @@ public record VkShaderStatisticsInfoAMD(@NotNull MemorySegment segment) implemen
             return new VkShaderStatisticsInfoAMD(segment.asSlice(index * VkShaderStatisticsInfoAMD.BYTES, VkShaderStatisticsInfoAMD.BYTES));
         }
 
+        public VkShaderStatisticsInfoAMD.Ptr at(long index, @NotNull Consumer<@NotNull VkShaderStatisticsInfoAMD> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkShaderStatisticsInfoAMD value) {
             MemorySegment s = segment.asSlice(index * VkShaderStatisticsInfoAMD.BYTES, VkShaderStatisticsInfoAMD.BYTES);
             s.copyFrom(value.segment);
@@ -175,11 +180,11 @@ public record VkShaderStatisticsInfoAMD(@NotNull MemorySegment segment) implemen
         return ret;
     }
 
-    public @EnumType(VkShaderStageFlags.class) int shaderStageMask() {
+    public @Bitmask(VkShaderStageFlags.class) int shaderStageMask() {
         return segment.get(LAYOUT$shaderStageMask, OFFSET$shaderStageMask);
     }
 
-    public VkShaderStatisticsInfoAMD shaderStageMask(@EnumType(VkShaderStageFlags.class) int value) {
+    public VkShaderStatisticsInfoAMD shaderStageMask(@Bitmask(VkShaderStageFlags.class) int value) {
         segment.set(LAYOUT$shaderStageMask, OFFSET$shaderStageMask, value);
         return this;
     }
@@ -238,12 +243,19 @@ public record VkShaderStatisticsInfoAMD(@NotNull MemorySegment segment) implemen
         return new IntPtr(computeWorkGroupSizeRaw());
     }
 
-    public VkShaderStatisticsInfoAMD computeWorkGroupSize(@Unsigned IntPtr value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$computeWorkGroupSize, SIZE$computeWorkGroupSize);
+    public VkShaderStatisticsInfoAMD computeWorkGroupSize(@NotNull Consumer<IntPtr> consumer) {
+        @Unsigned IntPtr ptr = computeWorkGroupSize();
+        consumer.accept(ptr);
         return this;
     }
 
-    public MemorySegment computeWorkGroupSizeRaw() {
+    public VkShaderStatisticsInfoAMD computeWorkGroupSize(@Unsigned IntPtr value) {
+        MemorySegment s = computeWorkGroupSizeRaw();
+        s.copyFrom(value.segment());
+        return this;
+    }
+
+    public @NotNull MemorySegment computeWorkGroupSizeRaw() {
         return segment.asSlice(OFFSET$computeWorkGroupSize, SIZE$computeWorkGroupSize);
     }
 

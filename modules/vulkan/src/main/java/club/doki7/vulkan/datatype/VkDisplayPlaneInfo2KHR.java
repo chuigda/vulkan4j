@@ -88,6 +88,11 @@ public record VkDisplayPlaneInfo2KHR(@NotNull MemorySegment segment) implements 
             return new VkDisplayPlaneInfo2KHR(segment.asSlice(index * VkDisplayPlaneInfo2KHR.BYTES, VkDisplayPlaneInfo2KHR.BYTES));
         }
 
+        public VkDisplayPlaneInfo2KHR.Ptr at(long index, @NotNull Consumer<@NotNull VkDisplayPlaneInfo2KHR> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkDisplayPlaneInfo2KHR value) {
             MemorySegment s = segment.asSlice(index * VkDisplayPlaneInfo2KHR.BYTES, VkDisplayPlaneInfo2KHR.BYTES);
             s.copyFrom(value.segment);
@@ -200,12 +205,13 @@ public record VkDisplayPlaneInfo2KHR(@NotNull MemorySegment segment) implements 
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkDisplayPlaneInfo2KHR pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkDisplayPlaneInfo2KHR pNext(@Nullable IPointer pointer) {

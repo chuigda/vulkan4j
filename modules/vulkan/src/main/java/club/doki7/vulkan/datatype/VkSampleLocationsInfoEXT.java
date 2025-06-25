@@ -29,7 +29,7 @@ import static club.doki7.vulkan.VkConstants.*;
 ///     VkSampleCountFlags sampleLocationsPerPixel; // @link substring="VkSampleCountFlags" target="VkSampleCountFlags" @link substring="sampleLocationsPerPixel" target="#sampleLocationsPerPixel"
 ///     VkExtent2D sampleLocationGridSize; // @link substring="VkExtent2D" target="VkExtent2D" @link substring="sampleLocationGridSize" target="#sampleLocationGridSize"
 ///     uint32_t sampleLocationsCount; // optional // @link substring="sampleLocationsCount" target="#sampleLocationsCount"
-///     VkSampleLocationEXT const* pSampleLocations; // @link substring="VkSampleLocationEXT" target="VkSampleLocationEXT" @link substring="pSampleLocations" target="#pSampleLocations"
+///     VkSampleLocationEXT const* pSampleLocations; // optional // @link substring="VkSampleLocationEXT" target="VkSampleLocationEXT" @link substring="pSampleLocations" target="#pSampleLocations"
 /// } VkSampleLocationsInfoEXT;
 /// }
 ///
@@ -88,6 +88,11 @@ public record VkSampleLocationsInfoEXT(@NotNull MemorySegment segment) implement
         /// indicate that the returned structure is a view of the original structure.
         public @NotNull VkSampleLocationsInfoEXT at(long index) {
             return new VkSampleLocationsInfoEXT(segment.asSlice(index * VkSampleLocationsInfoEXT.BYTES, VkSampleLocationsInfoEXT.BYTES));
+        }
+
+        public VkSampleLocationsInfoEXT.Ptr at(long index, @NotNull Consumer<@NotNull VkSampleLocationsInfoEXT> consumer) {
+            consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkSampleLocationsInfoEXT value) {
@@ -202,12 +207,13 @@ public record VkSampleLocationsInfoEXT(@NotNull MemorySegment segment) implement
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkSampleLocationsInfoEXT pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkSampleLocationsInfoEXT pNext(@Nullable IPointer pointer) {
@@ -215,11 +221,11 @@ public record VkSampleLocationsInfoEXT(@NotNull MemorySegment segment) implement
         return this;
     }
 
-    public @EnumType(VkSampleCountFlags.class) int sampleLocationsPerPixel() {
+    public @Bitmask(VkSampleCountFlags.class) int sampleLocationsPerPixel() {
         return segment.get(LAYOUT$sampleLocationsPerPixel, OFFSET$sampleLocationsPerPixel);
     }
 
-    public VkSampleLocationsInfoEXT sampleLocationsPerPixel(@EnumType(VkSampleCountFlags.class) int value) {
+    public VkSampleLocationsInfoEXT sampleLocationsPerPixel(@Bitmask(VkSampleCountFlags.class) int value) {
         segment.set(LAYOUT$sampleLocationsPerPixel, OFFSET$sampleLocationsPerPixel, value);
         return this;
     }
@@ -271,11 +277,11 @@ public record VkSampleLocationsInfoEXT(@NotNull MemorySegment segment) implement
         return new VkSampleLocationEXT(s);
     }
 
-    public @Pointer(target=VkSampleLocationEXT.class) MemorySegment pSampleLocationsRaw() {
+    public @Pointer(target=VkSampleLocationEXT.class) @NotNull MemorySegment pSampleLocationsRaw() {
         return segment.get(LAYOUT$pSampleLocations, OFFSET$pSampleLocations);
     }
 
-    public void pSampleLocationsRaw(@Pointer(target=VkSampleLocationEXT.class) MemorySegment value) {
+    public void pSampleLocationsRaw(@Pointer(target=VkSampleLocationEXT.class) @NotNull MemorySegment value) {
         segment.set(LAYOUT$pSampleLocations, OFFSET$pSampleLocations, value);
     }
 

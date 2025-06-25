@@ -87,6 +87,11 @@ public record VkSamplerYcbcrConversionImageFormatProperties(@NotNull MemorySegme
             return new VkSamplerYcbcrConversionImageFormatProperties(segment.asSlice(index * VkSamplerYcbcrConversionImageFormatProperties.BYTES, VkSamplerYcbcrConversionImageFormatProperties.BYTES));
         }
 
+        public VkSamplerYcbcrConversionImageFormatProperties.Ptr at(long index, @NotNull Consumer<@NotNull VkSamplerYcbcrConversionImageFormatProperties> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkSamplerYcbcrConversionImageFormatProperties value) {
             MemorySegment s = segment.asSlice(index * VkSamplerYcbcrConversionImageFormatProperties.BYTES, VkSamplerYcbcrConversionImageFormatProperties.BYTES);
             s.copyFrom(value.segment);
@@ -199,12 +204,13 @@ public record VkSamplerYcbcrConversionImageFormatProperties(@NotNull MemorySegme
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkSamplerYcbcrConversionImageFormatProperties pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkSamplerYcbcrConversionImageFormatProperties pNext(@Nullable IPointer pointer) {

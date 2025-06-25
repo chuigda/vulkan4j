@@ -87,6 +87,11 @@ public record VkPhysicalDeviceShaderImageFootprintFeaturesNV(@NotNull MemorySegm
             return new VkPhysicalDeviceShaderImageFootprintFeaturesNV(segment.asSlice(index * VkPhysicalDeviceShaderImageFootprintFeaturesNV.BYTES, VkPhysicalDeviceShaderImageFootprintFeaturesNV.BYTES));
         }
 
+        public VkPhysicalDeviceShaderImageFootprintFeaturesNV.Ptr at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceShaderImageFootprintFeaturesNV> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkPhysicalDeviceShaderImageFootprintFeaturesNV value) {
             MemorySegment s = segment.asSlice(index * VkPhysicalDeviceShaderImageFootprintFeaturesNV.BYTES, VkPhysicalDeviceShaderImageFootprintFeaturesNV.BYTES);
             s.copyFrom(value.segment);
@@ -199,12 +204,13 @@ public record VkPhysicalDeviceShaderImageFootprintFeaturesNV(@NotNull MemorySegm
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkPhysicalDeviceShaderImageFootprintFeaturesNV pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkPhysicalDeviceShaderImageFootprintFeaturesNV pNext(@Nullable IPointer pointer) {

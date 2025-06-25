@@ -92,6 +92,11 @@ public record VkRayTracingShaderGroupCreateInfoKHR(@NotNull MemorySegment segmen
             return new VkRayTracingShaderGroupCreateInfoKHR(segment.asSlice(index * VkRayTracingShaderGroupCreateInfoKHR.BYTES, VkRayTracingShaderGroupCreateInfoKHR.BYTES));
         }
 
+        public VkRayTracingShaderGroupCreateInfoKHR.Ptr at(long index, @NotNull Consumer<@NotNull VkRayTracingShaderGroupCreateInfoKHR> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkRayTracingShaderGroupCreateInfoKHR value) {
             MemorySegment s = segment.asSlice(index * VkRayTracingShaderGroupCreateInfoKHR.BYTES, VkRayTracingShaderGroupCreateInfoKHR.BYTES);
             s.copyFrom(value.segment);
@@ -204,12 +209,13 @@ public record VkRayTracingShaderGroupCreateInfoKHR(@NotNull MemorySegment segmen
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkRayTracingShaderGroupCreateInfoKHR pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkRayTracingShaderGroupCreateInfoKHR pNext(@Nullable IPointer pointer) {
@@ -262,12 +268,13 @@ public record VkRayTracingShaderGroupCreateInfoKHR(@NotNull MemorySegment segmen
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pShaderGroupCaptureReplayHandle() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pShaderGroupCaptureReplayHandle() {
         return segment.get(LAYOUT$pShaderGroupCaptureReplayHandle, OFFSET$pShaderGroupCaptureReplayHandle);
     }
 
-    public void pShaderGroupCaptureReplayHandle(@Pointer(comment="void*") MemorySegment value) {
+    public VkRayTracingShaderGroupCreateInfoKHR pShaderGroupCaptureReplayHandle(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pShaderGroupCaptureReplayHandle, OFFSET$pShaderGroupCaptureReplayHandle, value);
+        return this;
     }
 
     public VkRayTracingShaderGroupCreateInfoKHR pShaderGroupCaptureReplayHandle(@Nullable IPointer pointer) {

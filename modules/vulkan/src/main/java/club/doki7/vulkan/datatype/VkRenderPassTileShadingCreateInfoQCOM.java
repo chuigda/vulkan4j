@@ -88,6 +88,11 @@ public record VkRenderPassTileShadingCreateInfoQCOM(@NotNull MemorySegment segme
             return new VkRenderPassTileShadingCreateInfoQCOM(segment.asSlice(index * VkRenderPassTileShadingCreateInfoQCOM.BYTES, VkRenderPassTileShadingCreateInfoQCOM.BYTES));
         }
 
+        public VkRenderPassTileShadingCreateInfoQCOM.Ptr at(long index, @NotNull Consumer<@NotNull VkRenderPassTileShadingCreateInfoQCOM> consumer) {
+            consumer.accept(at(index));
+            return this;
+        }
+
         public void write(long index, @NotNull VkRenderPassTileShadingCreateInfoQCOM value) {
             MemorySegment s = segment.asSlice(index * VkRenderPassTileShadingCreateInfoQCOM.BYTES, VkRenderPassTileShadingCreateInfoQCOM.BYTES);
             s.copyFrom(value.segment);
@@ -200,12 +205,13 @@ public record VkRenderPassTileShadingCreateInfoQCOM(@NotNull MemorySegment segme
         return this;
     }
 
-    public @Pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") @NotNull MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@Pointer(comment="void*") MemorySegment value) {
+    public VkRenderPassTileShadingCreateInfoQCOM pNext(@Pointer(comment="void*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+        return this;
     }
 
     public VkRenderPassTileShadingCreateInfoQCOM pNext(@Nullable IPointer pointer) {
@@ -213,11 +219,11 @@ public record VkRenderPassTileShadingCreateInfoQCOM(@NotNull MemorySegment segme
         return this;
     }
 
-    public @EnumType(VkTileShadingRenderPassFlagsQCOM.class) int flags() {
+    public @Bitmask(VkTileShadingRenderPassFlagsQCOM.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public VkRenderPassTileShadingCreateInfoQCOM flags(@EnumType(VkTileShadingRenderPassFlagsQCOM.class) int value) {
+    public VkRenderPassTileShadingCreateInfoQCOM flags(@Bitmask(VkTileShadingRenderPassFlagsQCOM.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
         return this;
     }
