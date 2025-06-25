@@ -56,6 +56,9 @@ fun generateCommandFile(
         || registry.opaqueTypedefs.values.any { it.isHandle }) {
         imports("$packageName.handle.*")
     }
+    if (implConstantClass) {
+        imports("$packageName.${codegenOptions.constantClassName}")
+    }
 
     codegenOptions.extraImport.forEach {
         imports(it)

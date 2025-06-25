@@ -38,7 +38,7 @@ fun main() {
     openxrMain(vulkan, vulkanPlus, false)
 }
 
-internal fun openxrMain(
+private fun openxrMain(
     vulkanRegistry: Registry<VulkanRegistryExt>,
     vulkanAdditionRegistry: Registry<EmptyMergeable>,
     dryRun: Boolean
@@ -86,7 +86,7 @@ internal fun openxrMain(
 
 // OpenXR does not have the latest version, use version 1.1 as the latest.
 // this may need to be updated in the future if OpenXR updates their spec.
-fun openxrLinkProvider(e: Entity): String? = when (e) {
+private fun openxrLinkProvider(e: Entity): String? = when (e) {
     is Command, is Structure, is Bitmask, is Enumeration, is OpaqueHandleTypedef -> {
         val name = e.name.original
         "<a href=\"https://registry.khronos.org/OpenXR/specs/1.1/man/html/$name.html\"><code>$name</code></a>"
@@ -97,7 +97,7 @@ fun openxrLinkProvider(e: Entity): String? = when (e) {
 /**
  * @param dryRun for testing, only generate code, no writing
  */
-data class CodegenContext<T : IMergeable<T>>(
+private data class CodegenContext<T : IMergeable<T>>(
     val packageDir: String,
     val registry: Registry<T>,
     val codegenOptions: CodegenOptions,
@@ -162,13 +162,83 @@ data class CodegenContext<T : IMergeable<T>>(
     }
 
     fun generateCommands() {
+        val staticCommands = registry.commands.values
+            .filter { it -> staticCommands.contains(it.name.original) }
+            .sortedBy { it.name.original }
+            .toList()
+        generateCommandFile(
+            registry,
+            "XRStatic",
+            staticCommands,
+            codegenOptions,
+            false,
+            "command"
+        ).writeTo("command/XRStatic.java")
         generateCommandFile(
             registry,
             "XR",
-            registry.commands.values.toList(),
+            registry.commands.values.sortedBy { it.name.original }.toList(),
             codegenOptions,
             true,
-            null
-        ).writeTo("XR.java")
+            "command"
+        ).writeTo("command/XR.java")
     }
 }
+
+private val staticCommands = setOf(
+    "xrAcquireSwapchainImage",
+    "xrApplyHapticFeedback",
+    "xrAttachSessionActionSets",
+    "xrBeginFrame",
+    "xrBeginSession",
+    "xrCreateAction",
+    "xrCreateActionSet",
+    "xrCreateActionSpace",
+    "xrCreateInstance",
+    "xrCreateReferenceSpace",
+    "xrCreateSession",
+    "xrCreateSwapchain",
+    "xrDestroyAction",
+    "xrDestroyActionSet",
+    "xrDestroyInstance",
+    "xrDestroySession",
+    "xrDestroySpace",
+    "xrDestroySwapchain",
+    "xrEndFrame",
+    "xrEndSession",
+    "xrEnumerateApiLayerProperties",
+    "xrEnumerateBoundSourcesForAction",
+    "xrEnumerateEnvironmentBlendModes",
+    "xrEnumerateInstanceExtensionProperties",
+    "xrEnumerateReferenceSpaces",
+    "xrEnumerateSwapchainFormats",
+    "xrEnumerateSwapchainImages",
+    "xrEnumerateViewConfigurations",
+    "xrEnumerateViewConfigurationViews",
+    "xrGetActionStateBoolean",
+    "xrGetActionStateFloat",
+    "xrGetActionStatePose",
+    "xrGetActionStateVector2f",
+    "xrGetCurrentInteractionProfile",
+    "xrGetInputSourceLocalizedName",
+    "xrGetInstanceProcAddr",
+    "xrGetInstanceProperties",
+    "xrGetReferenceSpaceBoundsRect",
+    "xrGetSystem",
+    "xrGetSystemProperties",
+    "xrGetViewConfigurationProperties",
+    "xrLocateSpace",
+    "xrLocateViews",
+    "xrPathToString",
+    "xrPollEvent",
+    "xrReleaseSwapchainImage",
+    "xrRequestExitSession",
+    "xrResultToString",
+    "xrStopHapticFeedback",
+    "xrStringToPath",
+    "xrStructureTypeToString",
+    "xrSuggestInteractionProfileBindings",
+    "xrSyncActions",
+    "xrWaitFrame",
+    "xrWaitSwapchainImage"
+)

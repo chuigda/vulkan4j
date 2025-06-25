@@ -1,6 +1,7 @@
 module club.doki7.openxr {
     exports club.doki7.openxr;
     exports club.doki7.openxr.bitmask;
+    exports club.doki7.openxr.command;
     exports club.doki7.openxr.datatype;
     exports club.doki7.openxr.enumtype;
     exports club.doki7.openxr.handle;

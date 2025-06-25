@@ -6,9 +6,9 @@ import club.doki7.ffm.ptr.BytePtr;
 import club.doki7.ffm.ptr.IntPtr;
 import club.doki7.ffm.ptr.LongPtr;
 import club.doki7.ffm.ptr.PointerPtr;
-import club.doki7.openxr.XR;
 import club.doki7.openxr.XRConstants;
 import club.doki7.openxr.XRVersion;
+import club.doki7.openxr.command.XR;
 import club.doki7.openxr.datatype.*;
 import club.doki7.openxr.enumtype.XrFormFactor;
 import club.doki7.openxr.enumtype.XrResult;
@@ -58,7 +58,7 @@ public class OpenXRTutorial implements AutoCloseable {
 
             var apiLayerCountRaw = IntPtr.allocate(local);
             OPENXR_CHECK(
-                    xr.xrEnumerateApiLayerProperties(0, apiLayerCountRaw, null),
+                    xr.enumerateApiLayerProperties(0, apiLayerCountRaw, null),
                     "Failed to enumerate ApiLayerProperties."
             );
 
@@ -66,7 +66,7 @@ public class OpenXRTutorial implements AutoCloseable {
             var apiLayerPropertiesRaw = XrApiLayerProperties.allocate(local, apiLayerCount);
             // I am not sure if we have to pass "apiLayerCountRaw" as we obtained already.
             OPENXR_CHECK(
-                    xr.xrEnumerateApiLayerProperties(apiLayerCount, apiLayerCountRaw, apiLayerPropertiesRaw),
+                    xr.enumerateApiLayerProperties(apiLayerCount, apiLayerCountRaw, apiLayerPropertiesRaw),
                     "Failed to enumerate ApiLayerProperties."
             );
 
@@ -80,14 +80,14 @@ public class OpenXRTutorial implements AutoCloseable {
 
             var extensionCountRaw = IntPtr.allocate(local);
             OPENXR_CHECK(
-                    xr.xrEnumerateInstanceExtensionProperties(null, 0, extensionCountRaw, null),
+                    xr.enumerateInstanceExtensionProperties(null, 0, extensionCountRaw, null),
                     "Failed to enumerate InstanceExtensionProperties."
             );
 
             var extensionCount = extensionCountRaw.read();
             var extensionPropertiesRaw = XrExtensionProperties.allocate(arena, extensionCount);
             OPENXR_CHECK(
-                    xr.xrEnumerateInstanceExtensionProperties(null, extensionCount, extensionCountRaw, extensionPropertiesRaw),
+                    xr.enumerateInstanceExtensionProperties(null, extensionCount, extensionCountRaw, extensionPropertiesRaw),
                     "Failed to enumerate InstanceExtensionProperties."
             );
 
@@ -126,20 +126,20 @@ public class OpenXRTutorial implements AutoCloseable {
             instanceCI.enabledExtensionCount(activeInstanceExtensions.size());
             instanceCI.enabledExtensionNames(activeInstanceExtensionsRaw);     // TODO
             var instancePtr = XrInstance.Ptr.allocate(local);
-            OPENXR_CHECK(xr.xrCreateInstance(instanceCI, instancePtr), "Failed to create Instance.");
+            OPENXR_CHECK(xr.createInstance(instanceCI, instancePtr), "Failed to create Instance.");
             this.instance = instancePtr.read();
         }
     }
 
     public void destroyInstance() {
-        OPENXR_CHECK(xr.xrDestroyInstance(instance), "Failed to destroy Instance.");
+        OPENXR_CHECK(xr.destroyInstance(instance), "Failed to destroy Instance.");
     }
 
     public void getInstanceProperties() {
         try (var local = Arena.ofConfined()) {
             var ip = XrInstanceProperties.allocate(local);
             ip.type(XrStructureType.INSTANCE_PROPERTIES);
-            OPENXR_CHECK(xr.xrGetInstanceProperties(instance, ip), "Failed to get InstanceProperties.");
+            OPENXR_CHECK(xr.getInstanceProperties(instance, ip), "Failed to get InstanceProperties.");
 
             var version = XRVersion.decode(ip.runtimeVersion());
 
@@ -166,11 +166,11 @@ public class OpenXRTutorial implements AutoCloseable {
             systemGI.type(XrStructureType.SYSTEM_GET_INFO);
             systemGI.formFactor(XrFormFactor.HEAD_MOUNTED_DISPLAY);
             var systemIdRaw = LongPtr.allocate(local);
-            OPENXR_CHECK(xr.xrGetSystem(instance, systemGI, systemIdRaw), "Failed to get SystemID.");
+            OPENXR_CHECK(xr.getSystem(instance, systemGI, systemIdRaw), "Failed to get SystemID.");
 
             this.systemId = systemIdRaw.read();
             // Get the System's properties for some general information about the hardware and the vendor.
-            OPENXR_CHECK(xr.xrGetSystemProperties(instance, systemId, systemProperties), "Failed to get SystemProperties.");
+            OPENXR_CHECK(xr.getSystemProperties(instance, systemId, systemProperties), "Failed to get SystemProperties.");
         }
     }
 
