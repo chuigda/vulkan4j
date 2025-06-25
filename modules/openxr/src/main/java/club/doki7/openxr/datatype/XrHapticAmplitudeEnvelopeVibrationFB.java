@@ -173,7 +173,7 @@ public record XrHapticAmplitudeEnvelopeVibrationFB(@NotNull MemorySegment segmen
 
     public static XrHapticAmplitudeEnvelopeVibrationFB allocate(Arena arena) {
         XrHapticAmplitudeEnvelopeVibrationFB ret = new XrHapticAmplitudeEnvelopeVibrationFB(arena.allocate(LAYOUT));
-        ret.type(XrStructureType.XR_TYPE_HAPTIC_AMPLITUDE_ENVELOPE_VIBRATION_FB);
+        ret.type(XrStructureType.HAPTIC_AMPLITUDE_ENVELOPE_VIBRATION_FB);
         return ret;
     }
 
@@ -181,7 +181,7 @@ public record XrHapticAmplitudeEnvelopeVibrationFB(@NotNull MemorySegment segmen
         MemorySegment segment = arena.allocate(LAYOUT, count);
         XrHapticAmplitudeEnvelopeVibrationFB.Ptr ret = new XrHapticAmplitudeEnvelopeVibrationFB.Ptr(segment);
         for (long i = 0; i < count; i++) {
-            ret.at(i).type(XrStructureType.XR_TYPE_HAPTIC_AMPLITUDE_ENVELOPE_VIBRATION_FB);
+            ret.at(i).type(XrStructureType.HAPTIC_AMPLITUDE_ENVELOPE_VIBRATION_FB);
         }
         return ret;
     }
@@ -193,7 +193,7 @@ public record XrHapticAmplitudeEnvelopeVibrationFB(@NotNull MemorySegment segmen
     }
 
     public void autoInit() {
-        type(XrStructureType.XR_TYPE_HAPTIC_AMPLITUDE_ENVELOPE_VIBRATION_FB);
+        type(XrStructureType.HAPTIC_AMPLITUDE_ENVELOPE_VIBRATION_FB);
     }
 
     public @EnumType(XrStructureType.class) int type() {

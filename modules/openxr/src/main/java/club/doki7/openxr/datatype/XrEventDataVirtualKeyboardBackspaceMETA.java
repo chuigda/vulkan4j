@@ -171,7 +171,7 @@ public record XrEventDataVirtualKeyboardBackspaceMETA(@NotNull MemorySegment seg
 
     public static XrEventDataVirtualKeyboardBackspaceMETA allocate(Arena arena) {
         XrEventDataVirtualKeyboardBackspaceMETA ret = new XrEventDataVirtualKeyboardBackspaceMETA(arena.allocate(LAYOUT));
-        ret.type(XrStructureType.XR_TYPE_EVENT_DATA_VIRTUAL_KEYBOARD_BACKSPACE_META);
+        ret.type(XrStructureType.EVENT_DATA_VIRTUAL_KEYBOARD_BACKSPACE_META);
         return ret;
     }
 
@@ -179,7 +179,7 @@ public record XrEventDataVirtualKeyboardBackspaceMETA(@NotNull MemorySegment seg
         MemorySegment segment = arena.allocate(LAYOUT, count);
         XrEventDataVirtualKeyboardBackspaceMETA.Ptr ret = new XrEventDataVirtualKeyboardBackspaceMETA.Ptr(segment);
         for (long i = 0; i < count; i++) {
-            ret.at(i).type(XrStructureType.XR_TYPE_EVENT_DATA_VIRTUAL_KEYBOARD_BACKSPACE_META);
+            ret.at(i).type(XrStructureType.EVENT_DATA_VIRTUAL_KEYBOARD_BACKSPACE_META);
         }
         return ret;
     }
@@ -191,7 +191,7 @@ public record XrEventDataVirtualKeyboardBackspaceMETA(@NotNull MemorySegment seg
     }
 
     public void autoInit() {
-        type(XrStructureType.XR_TYPE_EVENT_DATA_VIRTUAL_KEYBOARD_BACKSPACE_META);
+        type(XrStructureType.EVENT_DATA_VIRTUAL_KEYBOARD_BACKSPACE_META);
     }
 
     public @EnumType(XrStructureType.class) int type() {

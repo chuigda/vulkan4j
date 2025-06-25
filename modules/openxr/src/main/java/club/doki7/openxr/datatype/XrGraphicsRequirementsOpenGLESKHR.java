@@ -172,7 +172,7 @@ public record XrGraphicsRequirementsOpenGLESKHR(@NotNull MemorySegment segment) 
 
     public static XrGraphicsRequirementsOpenGLESKHR allocate(Arena arena) {
         XrGraphicsRequirementsOpenGLESKHR ret = new XrGraphicsRequirementsOpenGLESKHR(arena.allocate(LAYOUT));
-        ret.type(XrStructureType.XR_TYPE_GRAPHICS_REQUIREMENTS_OPENGL_ES_KHR);
+        ret.type(XrStructureType.GRAPHICS_REQUIREMENTS_OPENGL_ES_KHR);
         return ret;
     }
 
@@ -180,7 +180,7 @@ public record XrGraphicsRequirementsOpenGLESKHR(@NotNull MemorySegment segment) 
         MemorySegment segment = arena.allocate(LAYOUT, count);
         XrGraphicsRequirementsOpenGLESKHR.Ptr ret = new XrGraphicsRequirementsOpenGLESKHR.Ptr(segment);
         for (long i = 0; i < count; i++) {
-            ret.at(i).type(XrStructureType.XR_TYPE_GRAPHICS_REQUIREMENTS_OPENGL_ES_KHR);
+            ret.at(i).type(XrStructureType.GRAPHICS_REQUIREMENTS_OPENGL_ES_KHR);
         }
         return ret;
     }
@@ -192,7 +192,7 @@ public record XrGraphicsRequirementsOpenGLESKHR(@NotNull MemorySegment segment) 
     }
 
     public void autoInit() {
-        type(XrStructureType.XR_TYPE_GRAPHICS_REQUIREMENTS_OPENGL_ES_KHR);
+        type(XrStructureType.GRAPHICS_REQUIREMENTS_OPENGL_ES_KHR);
     }
 
     public @EnumType(XrStructureType.class) int type() {

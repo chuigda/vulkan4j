@@ -173,7 +173,7 @@ public record XrSceneMeshIndicesUint16MSFT(@NotNull MemorySegment segment) imple
 
     public static XrSceneMeshIndicesUint16MSFT allocate(Arena arena) {
         XrSceneMeshIndicesUint16MSFT ret = new XrSceneMeshIndicesUint16MSFT(arena.allocate(LAYOUT));
-        ret.type(XrStructureType.XR_TYPE_SCENE_MESH_INDICES_UINT16_MSFT);
+        ret.type(XrStructureType.SCENE_MESH_INDICES_UINT16_MSFT);
         return ret;
     }
 
@@ -181,7 +181,7 @@ public record XrSceneMeshIndicesUint16MSFT(@NotNull MemorySegment segment) imple
         MemorySegment segment = arena.allocate(LAYOUT, count);
         XrSceneMeshIndicesUint16MSFT.Ptr ret = new XrSceneMeshIndicesUint16MSFT.Ptr(segment);
         for (long i = 0; i < count; i++) {
-            ret.at(i).type(XrStructureType.XR_TYPE_SCENE_MESH_INDICES_UINT16_MSFT);
+            ret.at(i).type(XrStructureType.SCENE_MESH_INDICES_UINT16_MSFT);
         }
         return ret;
     }
@@ -193,7 +193,7 @@ public record XrSceneMeshIndicesUint16MSFT(@NotNull MemorySegment segment) imple
     }
 
     public void autoInit() {
-        type(XrStructureType.XR_TYPE_SCENE_MESH_INDICES_UINT16_MSFT);
+        type(XrStructureType.SCENE_MESH_INDICES_UINT16_MSFT);
     }
 
     public @EnumType(XrStructureType.class) int type() {

@@ -173,7 +173,7 @@ public record XrFaceTrackerCreateInfo2FB(@NotNull MemorySegment segment) impleme
 
     public static XrFaceTrackerCreateInfo2FB allocate(Arena arena) {
         XrFaceTrackerCreateInfo2FB ret = new XrFaceTrackerCreateInfo2FB(arena.allocate(LAYOUT));
-        ret.type(XrStructureType.XR_TYPE_FACE_TRACKER_CREATE_INFO2_FB);
+        ret.type(XrStructureType.FACE_TRACKER_CREATE_INFO2_FB);
         return ret;
     }
 
@@ -181,7 +181,7 @@ public record XrFaceTrackerCreateInfo2FB(@NotNull MemorySegment segment) impleme
         MemorySegment segment = arena.allocate(LAYOUT, count);
         XrFaceTrackerCreateInfo2FB.Ptr ret = new XrFaceTrackerCreateInfo2FB.Ptr(segment);
         for (long i = 0; i < count; i++) {
-            ret.at(i).type(XrStructureType.XR_TYPE_FACE_TRACKER_CREATE_INFO2_FB);
+            ret.at(i).type(XrStructureType.FACE_TRACKER_CREATE_INFO2_FB);
         }
         return ret;
     }
@@ -193,7 +193,7 @@ public record XrFaceTrackerCreateInfo2FB(@NotNull MemorySegment segment) impleme
     }
 
     public void autoInit() {
-        type(XrStructureType.XR_TYPE_FACE_TRACKER_CREATE_INFO2_FB);
+        type(XrStructureType.FACE_TRACKER_CREATE_INFO2_FB);
     }
 
     public @EnumType(XrStructureType.class) int type() {

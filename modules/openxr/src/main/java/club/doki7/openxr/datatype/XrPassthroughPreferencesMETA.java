@@ -171,7 +171,7 @@ public record XrPassthroughPreferencesMETA(@NotNull MemorySegment segment) imple
 
     public static XrPassthroughPreferencesMETA allocate(Arena arena) {
         XrPassthroughPreferencesMETA ret = new XrPassthroughPreferencesMETA(arena.allocate(LAYOUT));
-        ret.type(XrStructureType.XR_TYPE_PASSTHROUGH_PREFERENCES_META);
+        ret.type(XrStructureType.PASSTHROUGH_PREFERENCES_META);
         return ret;
     }
 
@@ -179,7 +179,7 @@ public record XrPassthroughPreferencesMETA(@NotNull MemorySegment segment) imple
         MemorySegment segment = arena.allocate(LAYOUT, count);
         XrPassthroughPreferencesMETA.Ptr ret = new XrPassthroughPreferencesMETA.Ptr(segment);
         for (long i = 0; i < count; i++) {
-            ret.at(i).type(XrStructureType.XR_TYPE_PASSTHROUGH_PREFERENCES_META);
+            ret.at(i).type(XrStructureType.PASSTHROUGH_PREFERENCES_META);
         }
         return ret;
     }
@@ -191,7 +191,7 @@ public record XrPassthroughPreferencesMETA(@NotNull MemorySegment segment) imple
     }
 
     public void autoInit() {
-        type(XrStructureType.XR_TYPE_PASSTHROUGH_PREFERENCES_META);
+        type(XrStructureType.PASSTHROUGH_PREFERENCES_META);
     }
 
     public @EnumType(XrStructureType.class) int type() {

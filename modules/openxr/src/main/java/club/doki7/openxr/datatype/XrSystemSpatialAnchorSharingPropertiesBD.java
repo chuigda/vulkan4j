@@ -171,7 +171,7 @@ public record XrSystemSpatialAnchorSharingPropertiesBD(@NotNull MemorySegment se
 
     public static XrSystemSpatialAnchorSharingPropertiesBD allocate(Arena arena) {
         XrSystemSpatialAnchorSharingPropertiesBD ret = new XrSystemSpatialAnchorSharingPropertiesBD(arena.allocate(LAYOUT));
-        ret.type(XrStructureType.XR_TYPE_SYSTEM_SPATIAL_ANCHOR_SHARING_PROPERTIES_BD);
+        ret.type(XrStructureType.SYSTEM_SPATIAL_ANCHOR_SHARING_PROPERTIES_BD);
         return ret;
     }
 
@@ -179,7 +179,7 @@ public record XrSystemSpatialAnchorSharingPropertiesBD(@NotNull MemorySegment se
         MemorySegment segment = arena.allocate(LAYOUT, count);
         XrSystemSpatialAnchorSharingPropertiesBD.Ptr ret = new XrSystemSpatialAnchorSharingPropertiesBD.Ptr(segment);
         for (long i = 0; i < count; i++) {
-            ret.at(i).type(XrStructureType.XR_TYPE_SYSTEM_SPATIAL_ANCHOR_SHARING_PROPERTIES_BD);
+            ret.at(i).type(XrStructureType.SYSTEM_SPATIAL_ANCHOR_SHARING_PROPERTIES_BD);
         }
         return ret;
     }
@@ -191,7 +191,7 @@ public record XrSystemSpatialAnchorSharingPropertiesBD(@NotNull MemorySegment se
     }
 
     public void autoInit() {
-        type(XrStructureType.XR_TYPE_SYSTEM_SPATIAL_ANCHOR_SHARING_PROPERTIES_BD);
+        type(XrStructureType.SYSTEM_SPATIAL_ANCHOR_SHARING_PROPERTIES_BD);
     }
 
     public @EnumType(XrStructureType.class) int type() {

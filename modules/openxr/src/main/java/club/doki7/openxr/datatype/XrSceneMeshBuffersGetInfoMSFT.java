@@ -171,7 +171,7 @@ public record XrSceneMeshBuffersGetInfoMSFT(@NotNull MemorySegment segment) impl
 
     public static XrSceneMeshBuffersGetInfoMSFT allocate(Arena arena) {
         XrSceneMeshBuffersGetInfoMSFT ret = new XrSceneMeshBuffersGetInfoMSFT(arena.allocate(LAYOUT));
-        ret.type(XrStructureType.XR_TYPE_SCENE_MESH_BUFFERS_GET_INFO_MSFT);
+        ret.type(XrStructureType.SCENE_MESH_BUFFERS_GET_INFO_MSFT);
         return ret;
     }
 
@@ -179,7 +179,7 @@ public record XrSceneMeshBuffersGetInfoMSFT(@NotNull MemorySegment segment) impl
         MemorySegment segment = arena.allocate(LAYOUT, count);
         XrSceneMeshBuffersGetInfoMSFT.Ptr ret = new XrSceneMeshBuffersGetInfoMSFT.Ptr(segment);
         for (long i = 0; i < count; i++) {
-            ret.at(i).type(XrStructureType.XR_TYPE_SCENE_MESH_BUFFERS_GET_INFO_MSFT);
+            ret.at(i).type(XrStructureType.SCENE_MESH_BUFFERS_GET_INFO_MSFT);
         }
         return ret;
     }
@@ -191,7 +191,7 @@ public record XrSceneMeshBuffersGetInfoMSFT(@NotNull MemorySegment segment) impl
     }
 
     public void autoInit() {
-        type(XrStructureType.XR_TYPE_SCENE_MESH_BUFFERS_GET_INFO_MSFT);
+        type(XrStructureType.SCENE_MESH_BUFFERS_GET_INFO_MSFT);
     }
 
     public @EnumType(XrStructureType.class) int type() {

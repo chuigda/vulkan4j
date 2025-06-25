@@ -171,7 +171,7 @@ public record XrDebugUtilsLabelEXT(@NotNull MemorySegment segment) implements IX
 
     public static XrDebugUtilsLabelEXT allocate(Arena arena) {
         XrDebugUtilsLabelEXT ret = new XrDebugUtilsLabelEXT(arena.allocate(LAYOUT));
-        ret.type(XrStructureType.XR_TYPE_DEBUG_UTILS_LABEL_EXT);
+        ret.type(XrStructureType.DEBUG_UTILS_LABEL_EXT);
         return ret;
     }
 
@@ -179,7 +179,7 @@ public record XrDebugUtilsLabelEXT(@NotNull MemorySegment segment) implements IX
         MemorySegment segment = arena.allocate(LAYOUT, count);
         XrDebugUtilsLabelEXT.Ptr ret = new XrDebugUtilsLabelEXT.Ptr(segment);
         for (long i = 0; i < count; i++) {
-            ret.at(i).type(XrStructureType.XR_TYPE_DEBUG_UTILS_LABEL_EXT);
+            ret.at(i).type(XrStructureType.DEBUG_UTILS_LABEL_EXT);
         }
         return ret;
     }
@@ -191,7 +191,7 @@ public record XrDebugUtilsLabelEXT(@NotNull MemorySegment segment) implements IX
     }
 
     public void autoInit() {
-        type(XrStructureType.XR_TYPE_DEBUG_UTILS_LABEL_EXT);
+        type(XrStructureType.DEBUG_UTILS_LABEL_EXT);
     }
 
     public @EnumType(XrStructureType.class) int type() {

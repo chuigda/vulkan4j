@@ -171,7 +171,7 @@ public record XrUserCalibrationEnableEventsInfoML(@NotNull MemorySegment segment
 
     public static XrUserCalibrationEnableEventsInfoML allocate(Arena arena) {
         XrUserCalibrationEnableEventsInfoML ret = new XrUserCalibrationEnableEventsInfoML(arena.allocate(LAYOUT));
-        ret.type(XrStructureType.XR_TYPE_USER_CALIBRATION_ENABLE_EVENTS_INFO_ML);
+        ret.type(XrStructureType.USER_CALIBRATION_ENABLE_EVENTS_INFO_ML);
         return ret;
     }
 
@@ -179,7 +179,7 @@ public record XrUserCalibrationEnableEventsInfoML(@NotNull MemorySegment segment
         MemorySegment segment = arena.allocate(LAYOUT, count);
         XrUserCalibrationEnableEventsInfoML.Ptr ret = new XrUserCalibrationEnableEventsInfoML.Ptr(segment);
         for (long i = 0; i < count; i++) {
-            ret.at(i).type(XrStructureType.XR_TYPE_USER_CALIBRATION_ENABLE_EVENTS_INFO_ML);
+            ret.at(i).type(XrStructureType.USER_CALIBRATION_ENABLE_EVENTS_INFO_ML);
         }
         return ret;
     }
@@ -191,7 +191,7 @@ public record XrUserCalibrationEnableEventsInfoML(@NotNull MemorySegment segment
     }
 
     public void autoInit() {
-        type(XrStructureType.XR_TYPE_USER_CALIBRATION_ENABLE_EVENTS_INFO_ML);
+        type(XrStructureType.USER_CALIBRATION_ENABLE_EVENTS_INFO_ML);
     }
 
     public @EnumType(XrStructureType.class) int type() {

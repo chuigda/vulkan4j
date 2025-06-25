@@ -172,7 +172,7 @@ public record XrHolographicWindowAttachmentMSFT(@NotNull MemorySegment segment) 
 
     public static XrHolographicWindowAttachmentMSFT allocate(Arena arena) {
         XrHolographicWindowAttachmentMSFT ret = new XrHolographicWindowAttachmentMSFT(arena.allocate(LAYOUT));
-        ret.type(XrStructureType.XR_TYPE_HOLOGRAPHIC_WINDOW_ATTACHMENT_MSFT);
+        ret.type(XrStructureType.HOLOGRAPHIC_WINDOW_ATTACHMENT_MSFT);
         return ret;
     }
 
@@ -180,7 +180,7 @@ public record XrHolographicWindowAttachmentMSFT(@NotNull MemorySegment segment) 
         MemorySegment segment = arena.allocate(LAYOUT, count);
         XrHolographicWindowAttachmentMSFT.Ptr ret = new XrHolographicWindowAttachmentMSFT.Ptr(segment);
         for (long i = 0; i < count; i++) {
-            ret.at(i).type(XrStructureType.XR_TYPE_HOLOGRAPHIC_WINDOW_ATTACHMENT_MSFT);
+            ret.at(i).type(XrStructureType.HOLOGRAPHIC_WINDOW_ATTACHMENT_MSFT);
         }
         return ret;
     }
@@ -192,7 +192,7 @@ public record XrHolographicWindowAttachmentMSFT(@NotNull MemorySegment segment) 
     }
 
     public void autoInit() {
-        type(XrStructureType.XR_TYPE_HOLOGRAPHIC_WINDOW_ATTACHMENT_MSFT);
+        type(XrStructureType.HOLOGRAPHIC_WINDOW_ATTACHMENT_MSFT);
     }
 
     public @EnumType(XrStructureType.class) int type() {

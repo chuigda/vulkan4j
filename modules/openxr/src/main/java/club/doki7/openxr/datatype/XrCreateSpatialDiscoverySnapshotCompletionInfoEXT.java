@@ -173,7 +173,7 @@ public record XrCreateSpatialDiscoverySnapshotCompletionInfoEXT(@NotNull MemoryS
 
     public static XrCreateSpatialDiscoverySnapshotCompletionInfoEXT allocate(Arena arena) {
         XrCreateSpatialDiscoverySnapshotCompletionInfoEXT ret = new XrCreateSpatialDiscoverySnapshotCompletionInfoEXT(arena.allocate(LAYOUT));
-        ret.type(XrStructureType.XR_TYPE_CREATE_SPATIAL_DISCOVERY_SNAPSHOT_COMPLETION_INFO_EXT);
+        ret.type(XrStructureType.CREATE_SPATIAL_DISCOVERY_SNAPSHOT_COMPLETION_INFO_EXT);
         return ret;
     }
 
@@ -181,7 +181,7 @@ public record XrCreateSpatialDiscoverySnapshotCompletionInfoEXT(@NotNull MemoryS
         MemorySegment segment = arena.allocate(LAYOUT, count);
         XrCreateSpatialDiscoverySnapshotCompletionInfoEXT.Ptr ret = new XrCreateSpatialDiscoverySnapshotCompletionInfoEXT.Ptr(segment);
         for (long i = 0; i < count; i++) {
-            ret.at(i).type(XrStructureType.XR_TYPE_CREATE_SPATIAL_DISCOVERY_SNAPSHOT_COMPLETION_INFO_EXT);
+            ret.at(i).type(XrStructureType.CREATE_SPATIAL_DISCOVERY_SNAPSHOT_COMPLETION_INFO_EXT);
         }
         return ret;
     }
@@ -193,7 +193,7 @@ public record XrCreateSpatialDiscoverySnapshotCompletionInfoEXT(@NotNull MemoryS
     }
 
     public void autoInit() {
-        type(XrStructureType.XR_TYPE_CREATE_SPATIAL_DISCOVERY_SNAPSHOT_COMPLETION_INFO_EXT);
+        type(XrStructureType.CREATE_SPATIAL_DISCOVERY_SNAPSHOT_COMPLETION_INFO_EXT);
     }
 
     public @EnumType(XrStructureType.class) int type() {

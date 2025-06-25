@@ -171,7 +171,7 @@ public record XrMarkerDetectorStateML(@NotNull MemorySegment segment) implements
 
     public static XrMarkerDetectorStateML allocate(Arena arena) {
         XrMarkerDetectorStateML ret = new XrMarkerDetectorStateML(arena.allocate(LAYOUT));
-        ret.type(XrStructureType.XR_TYPE_MARKER_DETECTOR_STATE_ML);
+        ret.type(XrStructureType.MARKER_DETECTOR_STATE_ML);
         return ret;
     }
 
@@ -179,7 +179,7 @@ public record XrMarkerDetectorStateML(@NotNull MemorySegment segment) implements
         MemorySegment segment = arena.allocate(LAYOUT, count);
         XrMarkerDetectorStateML.Ptr ret = new XrMarkerDetectorStateML.Ptr(segment);
         for (long i = 0; i < count; i++) {
-            ret.at(i).type(XrStructureType.XR_TYPE_MARKER_DETECTOR_STATE_ML);
+            ret.at(i).type(XrStructureType.MARKER_DETECTOR_STATE_ML);
         }
         return ret;
     }
@@ -191,7 +191,7 @@ public record XrMarkerDetectorStateML(@NotNull MemorySegment segment) implements
     }
 
     public void autoInit() {
-        type(XrStructureType.XR_TYPE_MARKER_DETECTOR_STATE_ML);
+        type(XrStructureType.MARKER_DETECTOR_STATE_ML);
     }
 
     public @EnumType(XrStructureType.class) int type() {

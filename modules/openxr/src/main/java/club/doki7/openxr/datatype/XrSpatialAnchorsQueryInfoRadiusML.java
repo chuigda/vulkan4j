@@ -174,7 +174,7 @@ public record XrSpatialAnchorsQueryInfoRadiusML(@NotNull MemorySegment segment) 
 
     public static XrSpatialAnchorsQueryInfoRadiusML allocate(Arena arena) {
         XrSpatialAnchorsQueryInfoRadiusML ret = new XrSpatialAnchorsQueryInfoRadiusML(arena.allocate(LAYOUT));
-        ret.type(XrStructureType.XR_TYPE_SPATIAL_ANCHORS_QUERY_INFO_RADIUS_ML);
+        ret.type(XrStructureType.SPATIAL_ANCHORS_QUERY_INFO_RADIUS_ML);
         return ret;
     }
 
@@ -182,7 +182,7 @@ public record XrSpatialAnchorsQueryInfoRadiusML(@NotNull MemorySegment segment) 
         MemorySegment segment = arena.allocate(LAYOUT, count);
         XrSpatialAnchorsQueryInfoRadiusML.Ptr ret = new XrSpatialAnchorsQueryInfoRadiusML.Ptr(segment);
         for (long i = 0; i < count; i++) {
-            ret.at(i).type(XrStructureType.XR_TYPE_SPATIAL_ANCHORS_QUERY_INFO_RADIUS_ML);
+            ret.at(i).type(XrStructureType.SPATIAL_ANCHORS_QUERY_INFO_RADIUS_ML);
         }
         return ret;
     }
@@ -194,7 +194,7 @@ public record XrSpatialAnchorsQueryInfoRadiusML(@NotNull MemorySegment segment) 
     }
 
     public void autoInit() {
-        type(XrStructureType.XR_TYPE_SPATIAL_ANCHORS_QUERY_INFO_RADIUS_ML);
+        type(XrStructureType.SPATIAL_ANCHORS_QUERY_INFO_RADIUS_ML);
     }
 
     public @EnumType(XrStructureType.class) int type() {

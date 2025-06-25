@@ -171,7 +171,7 @@ public record XrSpaceStorageLocationFilterInfoFB(@NotNull MemorySegment segment)
 
     public static XrSpaceStorageLocationFilterInfoFB allocate(Arena arena) {
         XrSpaceStorageLocationFilterInfoFB ret = new XrSpaceStorageLocationFilterInfoFB(arena.allocate(LAYOUT));
-        ret.type(XrStructureType.XR_TYPE_SPACE_STORAGE_LOCATION_FILTER_INFO_FB);
+        ret.type(XrStructureType.SPACE_STORAGE_LOCATION_FILTER_INFO_FB);
         return ret;
     }
 
@@ -179,7 +179,7 @@ public record XrSpaceStorageLocationFilterInfoFB(@NotNull MemorySegment segment)
         MemorySegment segment = arena.allocate(LAYOUT, count);
         XrSpaceStorageLocationFilterInfoFB.Ptr ret = new XrSpaceStorageLocationFilterInfoFB.Ptr(segment);
         for (long i = 0; i < count; i++) {
-            ret.at(i).type(XrStructureType.XR_TYPE_SPACE_STORAGE_LOCATION_FILTER_INFO_FB);
+            ret.at(i).type(XrStructureType.SPACE_STORAGE_LOCATION_FILTER_INFO_FB);
         }
         return ret;
     }
@@ -191,7 +191,7 @@ public record XrSpaceStorageLocationFilterInfoFB(@NotNull MemorySegment segment)
     }
 
     public void autoInit() {
-        type(XrStructureType.XR_TYPE_SPACE_STORAGE_LOCATION_FILTER_INFO_FB);
+        type(XrStructureType.SPACE_STORAGE_LOCATION_FILTER_INFO_FB);
     }
 
     public @EnumType(XrStructureType.class) int type() {

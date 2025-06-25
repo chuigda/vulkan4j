@@ -170,7 +170,7 @@ public record XrSceneCreateInfoMSFT(@NotNull MemorySegment segment) implements I
 
     public static XrSceneCreateInfoMSFT allocate(Arena arena) {
         XrSceneCreateInfoMSFT ret = new XrSceneCreateInfoMSFT(arena.allocate(LAYOUT));
-        ret.type(XrStructureType.XR_TYPE_SCENE_CREATE_INFO_MSFT);
+        ret.type(XrStructureType.SCENE_CREATE_INFO_MSFT);
         return ret;
     }
 
@@ -178,7 +178,7 @@ public record XrSceneCreateInfoMSFT(@NotNull MemorySegment segment) implements I
         MemorySegment segment = arena.allocate(LAYOUT, count);
         XrSceneCreateInfoMSFT.Ptr ret = new XrSceneCreateInfoMSFT.Ptr(segment);
         for (long i = 0; i < count; i++) {
-            ret.at(i).type(XrStructureType.XR_TYPE_SCENE_CREATE_INFO_MSFT);
+            ret.at(i).type(XrStructureType.SCENE_CREATE_INFO_MSFT);
         }
         return ret;
     }
@@ -190,7 +190,7 @@ public record XrSceneCreateInfoMSFT(@NotNull MemorySegment segment) implements I
     }
 
     public void autoInit() {
-        type(XrStructureType.XR_TYPE_SCENE_CREATE_INFO_MSFT);
+        type(XrStructureType.SCENE_CREATE_INFO_MSFT);
     }
 
     public @EnumType(XrStructureType.class) int type() {

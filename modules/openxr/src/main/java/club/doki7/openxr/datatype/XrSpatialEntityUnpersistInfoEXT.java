@@ -171,7 +171,7 @@ public record XrSpatialEntityUnpersistInfoEXT(@NotNull MemorySegment segment) im
 
     public static XrSpatialEntityUnpersistInfoEXT allocate(Arena arena) {
         XrSpatialEntityUnpersistInfoEXT ret = new XrSpatialEntityUnpersistInfoEXT(arena.allocate(LAYOUT));
-        ret.type(XrStructureType.XR_TYPE_SPATIAL_ENTITY_UNPERSIST_INFO_EXT);
+        ret.type(XrStructureType.SPATIAL_ENTITY_UNPERSIST_INFO_EXT);
         return ret;
     }
 
@@ -179,7 +179,7 @@ public record XrSpatialEntityUnpersistInfoEXT(@NotNull MemorySegment segment) im
         MemorySegment segment = arena.allocate(LAYOUT, count);
         XrSpatialEntityUnpersistInfoEXT.Ptr ret = new XrSpatialEntityUnpersistInfoEXT.Ptr(segment);
         for (long i = 0; i < count; i++) {
-            ret.at(i).type(XrStructureType.XR_TYPE_SPATIAL_ENTITY_UNPERSIST_INFO_EXT);
+            ret.at(i).type(XrStructureType.SPATIAL_ENTITY_UNPERSIST_INFO_EXT);
         }
         return ret;
     }
@@ -191,7 +191,7 @@ public record XrSpatialEntityUnpersistInfoEXT(@NotNull MemorySegment segment) im
     }
 
     public void autoInit() {
-        type(XrStructureType.XR_TYPE_SPATIAL_ENTITY_UNPERSIST_INFO_EXT);
+        type(XrStructureType.SPATIAL_ENTITY_UNPERSIST_INFO_EXT);
     }
 
     public @EnumType(XrStructureType.class) int type() {

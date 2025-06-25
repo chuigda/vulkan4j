@@ -171,7 +171,7 @@ public record XrSystemNotificationsSetInfoML(@NotNull MemorySegment segment) imp
 
     public static XrSystemNotificationsSetInfoML allocate(Arena arena) {
         XrSystemNotificationsSetInfoML ret = new XrSystemNotificationsSetInfoML(arena.allocate(LAYOUT));
-        ret.type(XrStructureType.XR_TYPE_SYSTEM_NOTIFICATIONS_SET_INFO_ML);
+        ret.type(XrStructureType.SYSTEM_NOTIFICATIONS_SET_INFO_ML);
         return ret;
     }
 
@@ -179,7 +179,7 @@ public record XrSystemNotificationsSetInfoML(@NotNull MemorySegment segment) imp
         MemorySegment segment = arena.allocate(LAYOUT, count);
         XrSystemNotificationsSetInfoML.Ptr ret = new XrSystemNotificationsSetInfoML.Ptr(segment);
         for (long i = 0; i < count; i++) {
-            ret.at(i).type(XrStructureType.XR_TYPE_SYSTEM_NOTIFICATIONS_SET_INFO_ML);
+            ret.at(i).type(XrStructureType.SYSTEM_NOTIFICATIONS_SET_INFO_ML);
         }
         return ret;
     }
@@ -191,7 +191,7 @@ public record XrSystemNotificationsSetInfoML(@NotNull MemorySegment segment) imp
     }
 
     public void autoInit() {
-        type(XrStructureType.XR_TYPE_SYSTEM_NOTIFICATIONS_SET_INFO_ML);
+        type(XrStructureType.SYSTEM_NOTIFICATIONS_SET_INFO_ML);
     }
 
     public @EnumType(XrStructureType.class) int type() {

@@ -171,7 +171,7 @@ public record XrDevicePcmSampleRateStateFB(@NotNull MemorySegment segment) imple
 
     public static XrDevicePcmSampleRateStateFB allocate(Arena arena) {
         XrDevicePcmSampleRateStateFB ret = new XrDevicePcmSampleRateStateFB(arena.allocate(LAYOUT));
-        ret.type(XrStructureType.XR_TYPE_DEVICE_PCM_SAMPLE_RATE_STATE_FB);
+        ret.type(XrStructureType.DEVICE_PCM_SAMPLE_RATE_STATE_FB);
         return ret;
     }
 
@@ -179,7 +179,7 @@ public record XrDevicePcmSampleRateStateFB(@NotNull MemorySegment segment) imple
         MemorySegment segment = arena.allocate(LAYOUT, count);
         XrDevicePcmSampleRateStateFB.Ptr ret = new XrDevicePcmSampleRateStateFB.Ptr(segment);
         for (long i = 0; i < count; i++) {
-            ret.at(i).type(XrStructureType.XR_TYPE_DEVICE_PCM_SAMPLE_RATE_STATE_FB);
+            ret.at(i).type(XrStructureType.DEVICE_PCM_SAMPLE_RATE_STATE_FB);
         }
         return ret;
     }
@@ -191,7 +191,7 @@ public record XrDevicePcmSampleRateStateFB(@NotNull MemorySegment segment) imple
     }
 
     public void autoInit() {
-        type(XrStructureType.XR_TYPE_DEVICE_PCM_SAMPLE_RATE_STATE_FB);
+        type(XrStructureType.DEVICE_PCM_SAMPLE_RATE_STATE_FB);
     }
 
     public @EnumType(XrStructureType.class) int type() {

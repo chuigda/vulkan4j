@@ -172,7 +172,7 @@ public record XrSpaceVelocitiesKHR(@NotNull MemorySegment segment) implements IX
 
     public static XrSpaceVelocitiesKHR allocate(Arena arena) {
         XrSpaceVelocitiesKHR ret = new XrSpaceVelocitiesKHR(arena.allocate(LAYOUT));
-        ret.type(XrStructureType.XR_TYPE_SPACE_VELOCITIES);
+        ret.type(XrStructureType.SPACE_VELOCITIES);
         return ret;
     }
 
@@ -180,7 +180,7 @@ public record XrSpaceVelocitiesKHR(@NotNull MemorySegment segment) implements IX
         MemorySegment segment = arena.allocate(LAYOUT, count);
         XrSpaceVelocitiesKHR.Ptr ret = new XrSpaceVelocitiesKHR.Ptr(segment);
         for (long i = 0; i < count; i++) {
-            ret.at(i).type(XrStructureType.XR_TYPE_SPACE_VELOCITIES);
+            ret.at(i).type(XrStructureType.SPACE_VELOCITIES);
         }
         return ret;
     }
@@ -192,7 +192,7 @@ public record XrSpaceVelocitiesKHR(@NotNull MemorySegment segment) implements IX
     }
 
     public void autoInit() {
-        type(XrStructureType.XR_TYPE_SPACE_VELOCITIES);
+        type(XrStructureType.SPACE_VELOCITIES);
     }
 
     public @EnumType(XrStructureType.class) int type() {

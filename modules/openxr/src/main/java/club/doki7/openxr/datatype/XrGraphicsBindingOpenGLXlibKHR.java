@@ -175,7 +175,7 @@ public record XrGraphicsBindingOpenGLXlibKHR(@NotNull MemorySegment segment) imp
 
     public static XrGraphicsBindingOpenGLXlibKHR allocate(Arena arena) {
         XrGraphicsBindingOpenGLXlibKHR ret = new XrGraphicsBindingOpenGLXlibKHR(arena.allocate(LAYOUT));
-        ret.type(XrStructureType.XR_TYPE_GRAPHICS_BINDING_OPENGL_XLIB_KHR);
+        ret.type(XrStructureType.GRAPHICS_BINDING_OPENGL_XLIB_KHR);
         return ret;
     }
 
@@ -183,7 +183,7 @@ public record XrGraphicsBindingOpenGLXlibKHR(@NotNull MemorySegment segment) imp
         MemorySegment segment = arena.allocate(LAYOUT, count);
         XrGraphicsBindingOpenGLXlibKHR.Ptr ret = new XrGraphicsBindingOpenGLXlibKHR.Ptr(segment);
         for (long i = 0; i < count; i++) {
-            ret.at(i).type(XrStructureType.XR_TYPE_GRAPHICS_BINDING_OPENGL_XLIB_KHR);
+            ret.at(i).type(XrStructureType.GRAPHICS_BINDING_OPENGL_XLIB_KHR);
         }
         return ret;
     }
@@ -195,7 +195,7 @@ public record XrGraphicsBindingOpenGLXlibKHR(@NotNull MemorySegment segment) imp
     }
 
     public void autoInit() {
-        type(XrStructureType.XR_TYPE_GRAPHICS_BINDING_OPENGL_XLIB_KHR);
+        type(XrStructureType.GRAPHICS_BINDING_OPENGL_XLIB_KHR);
     }
 
     public @EnumType(XrStructureType.class) int type() {

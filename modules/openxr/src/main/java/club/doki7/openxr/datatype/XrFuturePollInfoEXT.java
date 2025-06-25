@@ -171,7 +171,7 @@ public record XrFuturePollInfoEXT(@NotNull MemorySegment segment) implements IXr
 
     public static XrFuturePollInfoEXT allocate(Arena arena) {
         XrFuturePollInfoEXT ret = new XrFuturePollInfoEXT(arena.allocate(LAYOUT));
-        ret.type(XrStructureType.XR_TYPE_FUTURE_POLL_INFO_EXT);
+        ret.type(XrStructureType.FUTURE_POLL_INFO_EXT);
         return ret;
     }
 
@@ -179,7 +179,7 @@ public record XrFuturePollInfoEXT(@NotNull MemorySegment segment) implements IXr
         MemorySegment segment = arena.allocate(LAYOUT, count);
         XrFuturePollInfoEXT.Ptr ret = new XrFuturePollInfoEXT.Ptr(segment);
         for (long i = 0; i < count; i++) {
-            ret.at(i).type(XrStructureType.XR_TYPE_FUTURE_POLL_INFO_EXT);
+            ret.at(i).type(XrStructureType.FUTURE_POLL_INFO_EXT);
         }
         return ret;
     }
@@ -191,7 +191,7 @@ public record XrFuturePollInfoEXT(@NotNull MemorySegment segment) implements IXr
     }
 
     public void autoInit() {
-        type(XrStructureType.XR_TYPE_FUTURE_POLL_INFO_EXT);
+        type(XrStructureType.FUTURE_POLL_INFO_EXT);
     }
 
     public @EnumType(XrStructureType.class) int type() {

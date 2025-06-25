@@ -171,7 +171,7 @@ public record XrHandTrackingCapsulesStateFB(@NotNull MemorySegment segment) impl
 
     public static XrHandTrackingCapsulesStateFB allocate(Arena arena) {
         XrHandTrackingCapsulesStateFB ret = new XrHandTrackingCapsulesStateFB(arena.allocate(LAYOUT));
-        ret.type(XrStructureType.XR_TYPE_HAND_TRACKING_CAPSULES_STATE_FB);
+        ret.type(XrStructureType.HAND_TRACKING_CAPSULES_STATE_FB);
         return ret;
     }
 
@@ -179,7 +179,7 @@ public record XrHandTrackingCapsulesStateFB(@NotNull MemorySegment segment) impl
         MemorySegment segment = arena.allocate(LAYOUT, count);
         XrHandTrackingCapsulesStateFB.Ptr ret = new XrHandTrackingCapsulesStateFB.Ptr(segment);
         for (long i = 0; i < count; i++) {
-            ret.at(i).type(XrStructureType.XR_TYPE_HAND_TRACKING_CAPSULES_STATE_FB);
+            ret.at(i).type(XrStructureType.HAND_TRACKING_CAPSULES_STATE_FB);
         }
         return ret;
     }
@@ -191,7 +191,7 @@ public record XrHandTrackingCapsulesStateFB(@NotNull MemorySegment segment) impl
     }
 
     public void autoInit() {
-        type(XrStructureType.XR_TYPE_HAND_TRACKING_CAPSULES_STATE_FB);
+        type(XrStructureType.HAND_TRACKING_CAPSULES_STATE_FB);
     }
 
     public @EnumType(XrStructureType.class) int type() {

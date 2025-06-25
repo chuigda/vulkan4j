@@ -172,7 +172,7 @@ public record XrLoaderInitInfoAndroidKHR(@NotNull MemorySegment segment) impleme
 
     public static XrLoaderInitInfoAndroidKHR allocate(Arena arena) {
         XrLoaderInitInfoAndroidKHR ret = new XrLoaderInitInfoAndroidKHR(arena.allocate(LAYOUT));
-        ret.type(XrStructureType.XR_TYPE_LOADER_INIT_INFO_ANDROID_KHR);
+        ret.type(XrStructureType.LOADER_INIT_INFO_ANDROID_KHR);
         return ret;
     }
 
@@ -180,7 +180,7 @@ public record XrLoaderInitInfoAndroidKHR(@NotNull MemorySegment segment) impleme
         MemorySegment segment = arena.allocate(LAYOUT, count);
         XrLoaderInitInfoAndroidKHR.Ptr ret = new XrLoaderInitInfoAndroidKHR.Ptr(segment);
         for (long i = 0; i < count; i++) {
-            ret.at(i).type(XrStructureType.XR_TYPE_LOADER_INIT_INFO_ANDROID_KHR);
+            ret.at(i).type(XrStructureType.LOADER_INIT_INFO_ANDROID_KHR);
         }
         return ret;
     }
@@ -192,7 +192,7 @@ public record XrLoaderInitInfoAndroidKHR(@NotNull MemorySegment segment) impleme
     }
 
     public void autoInit() {
-        type(XrStructureType.XR_TYPE_LOADER_INIT_INFO_ANDROID_KHR);
+        type(XrStructureType.LOADER_INIT_INFO_ANDROID_KHR);
     }
 
     public @EnumType(XrStructureType.class) int type() {

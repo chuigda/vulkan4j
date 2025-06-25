@@ -172,7 +172,7 @@ public record XrBindingModificationsKHR(@NotNull MemorySegment segment) implemen
 
     public static XrBindingModificationsKHR allocate(Arena arena) {
         XrBindingModificationsKHR ret = new XrBindingModificationsKHR(arena.allocate(LAYOUT));
-        ret.type(XrStructureType.XR_TYPE_BINDING_MODIFICATIONS_KHR);
+        ret.type(XrStructureType.BINDING_MODIFICATIONS_KHR);
         return ret;
     }
 
@@ -180,7 +180,7 @@ public record XrBindingModificationsKHR(@NotNull MemorySegment segment) implemen
         MemorySegment segment = arena.allocate(LAYOUT, count);
         XrBindingModificationsKHR.Ptr ret = new XrBindingModificationsKHR.Ptr(segment);
         for (long i = 0; i < count; i++) {
-            ret.at(i).type(XrStructureType.XR_TYPE_BINDING_MODIFICATIONS_KHR);
+            ret.at(i).type(XrStructureType.BINDING_MODIFICATIONS_KHR);
         }
         return ret;
     }
@@ -192,7 +192,7 @@ public record XrBindingModificationsKHR(@NotNull MemorySegment segment) implemen
     }
 
     public void autoInit() {
-        type(XrStructureType.XR_TYPE_BINDING_MODIFICATIONS_KHR);
+        type(XrStructureType.BINDING_MODIFICATIONS_KHR);
     }
 
     public @EnumType(XrStructureType.class) int type() {

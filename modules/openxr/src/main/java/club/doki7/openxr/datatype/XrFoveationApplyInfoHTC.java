@@ -173,7 +173,7 @@ public record XrFoveationApplyInfoHTC(@NotNull MemorySegment segment) implements
 
     public static XrFoveationApplyInfoHTC allocate(Arena arena) {
         XrFoveationApplyInfoHTC ret = new XrFoveationApplyInfoHTC(arena.allocate(LAYOUT));
-        ret.type(XrStructureType.XR_TYPE_FOVEATION_APPLY_INFO_HTC);
+        ret.type(XrStructureType.FOVEATION_APPLY_INFO_HTC);
         return ret;
     }
 
@@ -181,7 +181,7 @@ public record XrFoveationApplyInfoHTC(@NotNull MemorySegment segment) implements
         MemorySegment segment = arena.allocate(LAYOUT, count);
         XrFoveationApplyInfoHTC.Ptr ret = new XrFoveationApplyInfoHTC.Ptr(segment);
         for (long i = 0; i < count; i++) {
-            ret.at(i).type(XrStructureType.XR_TYPE_FOVEATION_APPLY_INFO_HTC);
+            ret.at(i).type(XrStructureType.FOVEATION_APPLY_INFO_HTC);
         }
         return ret;
     }
@@ -193,7 +193,7 @@ public record XrFoveationApplyInfoHTC(@NotNull MemorySegment segment) implements
     }
 
     public void autoInit() {
-        type(XrStructureType.XR_TYPE_FOVEATION_APPLY_INFO_HTC);
+        type(XrStructureType.FOVEATION_APPLY_INFO_HTC);
     }
 
     public @EnumType(XrStructureType.class) int type() {

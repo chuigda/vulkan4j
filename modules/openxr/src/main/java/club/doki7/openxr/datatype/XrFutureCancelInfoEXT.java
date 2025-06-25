@@ -171,7 +171,7 @@ public record XrFutureCancelInfoEXT(@NotNull MemorySegment segment) implements I
 
     public static XrFutureCancelInfoEXT allocate(Arena arena) {
         XrFutureCancelInfoEXT ret = new XrFutureCancelInfoEXT(arena.allocate(LAYOUT));
-        ret.type(XrStructureType.XR_TYPE_FUTURE_CANCEL_INFO_EXT);
+        ret.type(XrStructureType.FUTURE_CANCEL_INFO_EXT);
         return ret;
     }
 
@@ -179,7 +179,7 @@ public record XrFutureCancelInfoEXT(@NotNull MemorySegment segment) implements I
         MemorySegment segment = arena.allocate(LAYOUT, count);
         XrFutureCancelInfoEXT.Ptr ret = new XrFutureCancelInfoEXT.Ptr(segment);
         for (long i = 0; i < count; i++) {
-            ret.at(i).type(XrStructureType.XR_TYPE_FUTURE_CANCEL_INFO_EXT);
+            ret.at(i).type(XrStructureType.FUTURE_CANCEL_INFO_EXT);
         }
         return ret;
     }
@@ -191,7 +191,7 @@ public record XrFutureCancelInfoEXT(@NotNull MemorySegment segment) implements I
     }
 
     public void autoInit() {
-        type(XrStructureType.XR_TYPE_FUTURE_CANCEL_INFO_EXT);
+        type(XrStructureType.FUTURE_CANCEL_INFO_EXT);
     }
 
     public @EnumType(XrStructureType.class) int type() {

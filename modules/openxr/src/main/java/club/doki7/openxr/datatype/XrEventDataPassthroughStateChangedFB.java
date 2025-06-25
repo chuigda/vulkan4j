@@ -171,7 +171,7 @@ public record XrEventDataPassthroughStateChangedFB(@NotNull MemorySegment segmen
 
     public static XrEventDataPassthroughStateChangedFB allocate(Arena arena) {
         XrEventDataPassthroughStateChangedFB ret = new XrEventDataPassthroughStateChangedFB(arena.allocate(LAYOUT));
-        ret.type(XrStructureType.XR_TYPE_EVENT_DATA_PASSTHROUGH_STATE_CHANGED_FB);
+        ret.type(XrStructureType.EVENT_DATA_PASSTHROUGH_STATE_CHANGED_FB);
         return ret;
     }
 
@@ -179,7 +179,7 @@ public record XrEventDataPassthroughStateChangedFB(@NotNull MemorySegment segmen
         MemorySegment segment = arena.allocate(LAYOUT, count);
         XrEventDataPassthroughStateChangedFB.Ptr ret = new XrEventDataPassthroughStateChangedFB.Ptr(segment);
         for (long i = 0; i < count; i++) {
-            ret.at(i).type(XrStructureType.XR_TYPE_EVENT_DATA_PASSTHROUGH_STATE_CHANGED_FB);
+            ret.at(i).type(XrStructureType.EVENT_DATA_PASSTHROUGH_STATE_CHANGED_FB);
         }
         return ret;
     }
@@ -191,7 +191,7 @@ public record XrEventDataPassthroughStateChangedFB(@NotNull MemorySegment segmen
     }
 
     public void autoInit() {
-        type(XrStructureType.XR_TYPE_EVENT_DATA_PASSTHROUGH_STATE_CHANGED_FB);
+        type(XrStructureType.EVENT_DATA_PASSTHROUGH_STATE_CHANGED_FB);
     }
 
     public @EnumType(XrStructureType.class) int type() {

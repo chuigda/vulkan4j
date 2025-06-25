@@ -170,7 +170,7 @@ public record XrSpaceTriangleMeshGetInfoMETA(@NotNull MemorySegment segment) imp
 
     public static XrSpaceTriangleMeshGetInfoMETA allocate(Arena arena) {
         XrSpaceTriangleMeshGetInfoMETA ret = new XrSpaceTriangleMeshGetInfoMETA(arena.allocate(LAYOUT));
-        ret.type(XrStructureType.XR_TYPE_SPACE_TRIANGLE_MESH_GET_INFO_META);
+        ret.type(XrStructureType.SPACE_TRIANGLE_MESH_GET_INFO_META);
         return ret;
     }
 
@@ -178,7 +178,7 @@ public record XrSpaceTriangleMeshGetInfoMETA(@NotNull MemorySegment segment) imp
         MemorySegment segment = arena.allocate(LAYOUT, count);
         XrSpaceTriangleMeshGetInfoMETA.Ptr ret = new XrSpaceTriangleMeshGetInfoMETA.Ptr(segment);
         for (long i = 0; i < count; i++) {
-            ret.at(i).type(XrStructureType.XR_TYPE_SPACE_TRIANGLE_MESH_GET_INFO_META);
+            ret.at(i).type(XrStructureType.SPACE_TRIANGLE_MESH_GET_INFO_META);
         }
         return ret;
     }
@@ -190,7 +190,7 @@ public record XrSpaceTriangleMeshGetInfoMETA(@NotNull MemorySegment segment) imp
     }
 
     public void autoInit() {
-        type(XrStructureType.XR_TYPE_SPACE_TRIANGLE_MESH_GET_INFO_META);
+        type(XrStructureType.SPACE_TRIANGLE_MESH_GET_INFO_META);
     }
 
     public @EnumType(XrStructureType.class) int type() {

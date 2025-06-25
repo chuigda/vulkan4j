@@ -174,7 +174,7 @@ public record XrEventDataPerfSettingsEXT(@NotNull MemorySegment segment) impleme
 
     public static XrEventDataPerfSettingsEXT allocate(Arena arena) {
         XrEventDataPerfSettingsEXT ret = new XrEventDataPerfSettingsEXT(arena.allocate(LAYOUT));
-        ret.type(XrStructureType.XR_TYPE_EVENT_DATA_PERF_SETTINGS_EXT);
+        ret.type(XrStructureType.EVENT_DATA_PERF_SETTINGS_EXT);
         return ret;
     }
 
@@ -182,7 +182,7 @@ public record XrEventDataPerfSettingsEXT(@NotNull MemorySegment segment) impleme
         MemorySegment segment = arena.allocate(LAYOUT, count);
         XrEventDataPerfSettingsEXT.Ptr ret = new XrEventDataPerfSettingsEXT.Ptr(segment);
         for (long i = 0; i < count; i++) {
-            ret.at(i).type(XrStructureType.XR_TYPE_EVENT_DATA_PERF_SETTINGS_EXT);
+            ret.at(i).type(XrStructureType.EVENT_DATA_PERF_SETTINGS_EXT);
         }
         return ret;
     }
@@ -194,7 +194,7 @@ public record XrEventDataPerfSettingsEXT(@NotNull MemorySegment segment) impleme
     }
 
     public void autoInit() {
-        type(XrStructureType.XR_TYPE_EVENT_DATA_PERF_SETTINGS_EXT);
+        type(XrStructureType.EVENT_DATA_PERF_SETTINGS_EXT);
     }
 
     public @EnumType(XrStructureType.class) int type() {

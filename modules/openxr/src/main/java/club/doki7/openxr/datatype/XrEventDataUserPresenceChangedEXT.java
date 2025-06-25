@@ -172,7 +172,7 @@ public record XrEventDataUserPresenceChangedEXT(@NotNull MemorySegment segment) 
 
     public static XrEventDataUserPresenceChangedEXT allocate(Arena arena) {
         XrEventDataUserPresenceChangedEXT ret = new XrEventDataUserPresenceChangedEXT(arena.allocate(LAYOUT));
-        ret.type(XrStructureType.XR_TYPE_EVENT_DATA_USER_PRESENCE_CHANGED_EXT);
+        ret.type(XrStructureType.EVENT_DATA_USER_PRESENCE_CHANGED_EXT);
         return ret;
     }
 
@@ -180,7 +180,7 @@ public record XrEventDataUserPresenceChangedEXT(@NotNull MemorySegment segment) 
         MemorySegment segment = arena.allocate(LAYOUT, count);
         XrEventDataUserPresenceChangedEXT.Ptr ret = new XrEventDataUserPresenceChangedEXT.Ptr(segment);
         for (long i = 0; i < count; i++) {
-            ret.at(i).type(XrStructureType.XR_TYPE_EVENT_DATA_USER_PRESENCE_CHANGED_EXT);
+            ret.at(i).type(XrStructureType.EVENT_DATA_USER_PRESENCE_CHANGED_EXT);
         }
         return ret;
     }
@@ -192,7 +192,7 @@ public record XrEventDataUserPresenceChangedEXT(@NotNull MemorySegment segment) 
     }
 
     public void autoInit() {
-        type(XrStructureType.XR_TYPE_EVENT_DATA_USER_PRESENCE_CHANGED_EXT);
+        type(XrStructureType.EVENT_DATA_USER_PRESENCE_CHANGED_EXT);
     }
 
     public @EnumType(XrStructureType.class) int type() {

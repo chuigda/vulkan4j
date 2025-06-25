@@ -174,7 +174,7 @@ public record XrEventDataMarkerTrackingUpdateVARJO(@NotNull MemorySegment segmen
 
     public static XrEventDataMarkerTrackingUpdateVARJO allocate(Arena arena) {
         XrEventDataMarkerTrackingUpdateVARJO ret = new XrEventDataMarkerTrackingUpdateVARJO(arena.allocate(LAYOUT));
-        ret.type(XrStructureType.XR_TYPE_EVENT_DATA_MARKER_TRACKING_UPDATE_VARJO);
+        ret.type(XrStructureType.EVENT_DATA_MARKER_TRACKING_UPDATE_VARJO);
         return ret;
     }
 
@@ -182,7 +182,7 @@ public record XrEventDataMarkerTrackingUpdateVARJO(@NotNull MemorySegment segmen
         MemorySegment segment = arena.allocate(LAYOUT, count);
         XrEventDataMarkerTrackingUpdateVARJO.Ptr ret = new XrEventDataMarkerTrackingUpdateVARJO.Ptr(segment);
         for (long i = 0; i < count; i++) {
-            ret.at(i).type(XrStructureType.XR_TYPE_EVENT_DATA_MARKER_TRACKING_UPDATE_VARJO);
+            ret.at(i).type(XrStructureType.EVENT_DATA_MARKER_TRACKING_UPDATE_VARJO);
         }
         return ret;
     }
@@ -194,7 +194,7 @@ public record XrEventDataMarkerTrackingUpdateVARJO(@NotNull MemorySegment segmen
     }
 
     public void autoInit() {
-        type(XrStructureType.XR_TYPE_EVENT_DATA_MARKER_TRACKING_UPDATE_VARJO);
+        type(XrStructureType.EVENT_DATA_MARKER_TRACKING_UPDATE_VARJO);
     }
 
     public @EnumType(XrStructureType.class) int type() {

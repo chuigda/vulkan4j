@@ -171,7 +171,7 @@ public record XrEnvironmentDepthSwapchainCreateInfoMETA(@NotNull MemorySegment s
 
     public static XrEnvironmentDepthSwapchainCreateInfoMETA allocate(Arena arena) {
         XrEnvironmentDepthSwapchainCreateInfoMETA ret = new XrEnvironmentDepthSwapchainCreateInfoMETA(arena.allocate(LAYOUT));
-        ret.type(XrStructureType.XR_TYPE_ENVIRONMENT_DEPTH_SWAPCHAIN_CREATE_INFO_META);
+        ret.type(XrStructureType.ENVIRONMENT_DEPTH_SWAPCHAIN_CREATE_INFO_META);
         return ret;
     }
 
@@ -179,7 +179,7 @@ public record XrEnvironmentDepthSwapchainCreateInfoMETA(@NotNull MemorySegment s
         MemorySegment segment = arena.allocate(LAYOUT, count);
         XrEnvironmentDepthSwapchainCreateInfoMETA.Ptr ret = new XrEnvironmentDepthSwapchainCreateInfoMETA.Ptr(segment);
         for (long i = 0; i < count; i++) {
-            ret.at(i).type(XrStructureType.XR_TYPE_ENVIRONMENT_DEPTH_SWAPCHAIN_CREATE_INFO_META);
+            ret.at(i).type(XrStructureType.ENVIRONMENT_DEPTH_SWAPCHAIN_CREATE_INFO_META);
         }
         return ret;
     }
@@ -191,7 +191,7 @@ public record XrEnvironmentDepthSwapchainCreateInfoMETA(@NotNull MemorySegment s
     }
 
     public void autoInit() {
-        type(XrStructureType.XR_TYPE_ENVIRONMENT_DEPTH_SWAPCHAIN_CREATE_INFO_META);
+        type(XrStructureType.ENVIRONMENT_DEPTH_SWAPCHAIN_CREATE_INFO_META);
     }
 
     public @EnumType(XrStructureType.class) int type() {

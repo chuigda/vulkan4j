@@ -171,7 +171,7 @@ public record XrCompositionLayerSettingsFB(@NotNull MemorySegment segment) imple
 
     public static XrCompositionLayerSettingsFB allocate(Arena arena) {
         XrCompositionLayerSettingsFB ret = new XrCompositionLayerSettingsFB(arena.allocate(LAYOUT));
-        ret.type(XrStructureType.XR_TYPE_COMPOSITION_LAYER_SETTINGS_FB);
+        ret.type(XrStructureType.COMPOSITION_LAYER_SETTINGS_FB);
         return ret;
     }
 
@@ -179,7 +179,7 @@ public record XrCompositionLayerSettingsFB(@NotNull MemorySegment segment) imple
         MemorySegment segment = arena.allocate(LAYOUT, count);
         XrCompositionLayerSettingsFB.Ptr ret = new XrCompositionLayerSettingsFB.Ptr(segment);
         for (long i = 0; i < count; i++) {
-            ret.at(i).type(XrStructureType.XR_TYPE_COMPOSITION_LAYER_SETTINGS_FB);
+            ret.at(i).type(XrStructureType.COMPOSITION_LAYER_SETTINGS_FB);
         }
         return ret;
     }
@@ -191,7 +191,7 @@ public record XrCompositionLayerSettingsFB(@NotNull MemorySegment segment) imple
     }
 
     public void autoInit() {
-        type(XrStructureType.XR_TYPE_COMPOSITION_LAYER_SETTINGS_FB);
+        type(XrStructureType.COMPOSITION_LAYER_SETTINGS_FB);
     }
 
     public @EnumType(XrStructureType.class) int type() {

@@ -172,7 +172,7 @@ public record XrSystemSpaceWarpPropertiesFB(@NotNull MemorySegment segment) impl
 
     public static XrSystemSpaceWarpPropertiesFB allocate(Arena arena) {
         XrSystemSpaceWarpPropertiesFB ret = new XrSystemSpaceWarpPropertiesFB(arena.allocate(LAYOUT));
-        ret.type(XrStructureType.XR_TYPE_SYSTEM_SPACE_WARP_PROPERTIES_FB);
+        ret.type(XrStructureType.SYSTEM_SPACE_WARP_PROPERTIES_FB);
         return ret;
     }
 
@@ -180,7 +180,7 @@ public record XrSystemSpaceWarpPropertiesFB(@NotNull MemorySegment segment) impl
         MemorySegment segment = arena.allocate(LAYOUT, count);
         XrSystemSpaceWarpPropertiesFB.Ptr ret = new XrSystemSpaceWarpPropertiesFB.Ptr(segment);
         for (long i = 0; i < count; i++) {
-            ret.at(i).type(XrStructureType.XR_TYPE_SYSTEM_SPACE_WARP_PROPERTIES_FB);
+            ret.at(i).type(XrStructureType.SYSTEM_SPACE_WARP_PROPERTIES_FB);
         }
         return ret;
     }
@@ -192,7 +192,7 @@ public record XrSystemSpaceWarpPropertiesFB(@NotNull MemorySegment segment) impl
     }
 
     public void autoInit() {
-        type(XrStructureType.XR_TYPE_SYSTEM_SPACE_WARP_PROPERTIES_FB);
+        type(XrStructureType.SYSTEM_SPACE_WARP_PROPERTIES_FB);
     }
 
     public @EnumType(XrStructureType.class) int type() {

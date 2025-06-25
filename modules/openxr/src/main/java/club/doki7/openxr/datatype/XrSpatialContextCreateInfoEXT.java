@@ -172,7 +172,7 @@ public record XrSpatialContextCreateInfoEXT(@NotNull MemorySegment segment) impl
 
     public static XrSpatialContextCreateInfoEXT allocate(Arena arena) {
         XrSpatialContextCreateInfoEXT ret = new XrSpatialContextCreateInfoEXT(arena.allocate(LAYOUT));
-        ret.type(XrStructureType.XR_TYPE_SPATIAL_CONTEXT_CREATE_INFO_EXT);
+        ret.type(XrStructureType.SPATIAL_CONTEXT_CREATE_INFO_EXT);
         return ret;
     }
 
@@ -180,7 +180,7 @@ public record XrSpatialContextCreateInfoEXT(@NotNull MemorySegment segment) impl
         MemorySegment segment = arena.allocate(LAYOUT, count);
         XrSpatialContextCreateInfoEXT.Ptr ret = new XrSpatialContextCreateInfoEXT.Ptr(segment);
         for (long i = 0; i < count; i++) {
-            ret.at(i).type(XrStructureType.XR_TYPE_SPATIAL_CONTEXT_CREATE_INFO_EXT);
+            ret.at(i).type(XrStructureType.SPATIAL_CONTEXT_CREATE_INFO_EXT);
         }
         return ret;
     }
@@ -192,7 +192,7 @@ public record XrSpatialContextCreateInfoEXT(@NotNull MemorySegment segment) impl
     }
 
     public void autoInit() {
-        type(XrStructureType.XR_TYPE_SPATIAL_CONTEXT_CREATE_INFO_EXT);
+        type(XrStructureType.SPATIAL_CONTEXT_CREATE_INFO_EXT);
     }
 
     public @EnumType(XrStructureType.class) int type() {

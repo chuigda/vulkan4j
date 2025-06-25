@@ -171,7 +171,7 @@ public record XrRenderModelStateGetInfoEXT(@NotNull MemorySegment segment) imple
 
     public static XrRenderModelStateGetInfoEXT allocate(Arena arena) {
         XrRenderModelStateGetInfoEXT ret = new XrRenderModelStateGetInfoEXT(arena.allocate(LAYOUT));
-        ret.type(XrStructureType.XR_TYPE_RENDER_MODEL_STATE_GET_INFO_EXT);
+        ret.type(XrStructureType.RENDER_MODEL_STATE_GET_INFO_EXT);
         return ret;
     }
 
@@ -179,7 +179,7 @@ public record XrRenderModelStateGetInfoEXT(@NotNull MemorySegment segment) imple
         MemorySegment segment = arena.allocate(LAYOUT, count);
         XrRenderModelStateGetInfoEXT.Ptr ret = new XrRenderModelStateGetInfoEXT.Ptr(segment);
         for (long i = 0; i < count; i++) {
-            ret.at(i).type(XrStructureType.XR_TYPE_RENDER_MODEL_STATE_GET_INFO_EXT);
+            ret.at(i).type(XrStructureType.RENDER_MODEL_STATE_GET_INFO_EXT);
         }
         return ret;
     }
@@ -191,7 +191,7 @@ public record XrRenderModelStateGetInfoEXT(@NotNull MemorySegment segment) imple
     }
 
     public void autoInit() {
-        type(XrStructureType.XR_TYPE_RENDER_MODEL_STATE_GET_INFO_EXT);
+        type(XrStructureType.RENDER_MODEL_STATE_GET_INFO_EXT);
     }
 
     public @EnumType(XrStructureType.class) int type() {

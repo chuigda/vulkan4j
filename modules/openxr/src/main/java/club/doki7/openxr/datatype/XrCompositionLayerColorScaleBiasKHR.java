@@ -172,7 +172,7 @@ public record XrCompositionLayerColorScaleBiasKHR(@NotNull MemorySegment segment
 
     public static XrCompositionLayerColorScaleBiasKHR allocate(Arena arena) {
         XrCompositionLayerColorScaleBiasKHR ret = new XrCompositionLayerColorScaleBiasKHR(arena.allocate(LAYOUT));
-        ret.type(XrStructureType.XR_TYPE_COMPOSITION_LAYER_COLOR_SCALE_BIAS_KHR);
+        ret.type(XrStructureType.COMPOSITION_LAYER_COLOR_SCALE_BIAS_KHR);
         return ret;
     }
 
@@ -180,7 +180,7 @@ public record XrCompositionLayerColorScaleBiasKHR(@NotNull MemorySegment segment
         MemorySegment segment = arena.allocate(LAYOUT, count);
         XrCompositionLayerColorScaleBiasKHR.Ptr ret = new XrCompositionLayerColorScaleBiasKHR.Ptr(segment);
         for (long i = 0; i < count; i++) {
-            ret.at(i).type(XrStructureType.XR_TYPE_COMPOSITION_LAYER_COLOR_SCALE_BIAS_KHR);
+            ret.at(i).type(XrStructureType.COMPOSITION_LAYER_COLOR_SCALE_BIAS_KHR);
         }
         return ret;
     }
@@ -192,7 +192,7 @@ public record XrCompositionLayerColorScaleBiasKHR(@NotNull MemorySegment segment
     }
 
     public void autoInit() {
-        type(XrStructureType.XR_TYPE_COMPOSITION_LAYER_COLOR_SCALE_BIAS_KHR);
+        type(XrStructureType.COMPOSITION_LAYER_COLOR_SCALE_BIAS_KHR);
     }
 
     public @EnumType(XrStructureType.class) int type() {

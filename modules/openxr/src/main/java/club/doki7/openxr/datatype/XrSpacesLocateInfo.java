@@ -174,7 +174,7 @@ public record XrSpacesLocateInfo(@NotNull MemorySegment segment) implements IXrS
 
     public static XrSpacesLocateInfo allocate(Arena arena) {
         XrSpacesLocateInfo ret = new XrSpacesLocateInfo(arena.allocate(LAYOUT));
-        ret.type(XrStructureType.XR_TYPE_SPACES_LOCATE_INFO);
+        ret.type(XrStructureType.SPACES_LOCATE_INFO);
         return ret;
     }
 
@@ -182,7 +182,7 @@ public record XrSpacesLocateInfo(@NotNull MemorySegment segment) implements IXrS
         MemorySegment segment = arena.allocate(LAYOUT, count);
         XrSpacesLocateInfo.Ptr ret = new XrSpacesLocateInfo.Ptr(segment);
         for (long i = 0; i < count; i++) {
-            ret.at(i).type(XrStructureType.XR_TYPE_SPACES_LOCATE_INFO);
+            ret.at(i).type(XrStructureType.SPACES_LOCATE_INFO);
         }
         return ret;
     }
@@ -194,7 +194,7 @@ public record XrSpacesLocateInfo(@NotNull MemorySegment segment) implements IXrS
     }
 
     public void autoInit() {
-        type(XrStructureType.XR_TYPE_SPACES_LOCATE_INFO);
+        type(XrStructureType.SPACES_LOCATE_INFO);
     }
 
     public @EnumType(XrStructureType.class) int type() {

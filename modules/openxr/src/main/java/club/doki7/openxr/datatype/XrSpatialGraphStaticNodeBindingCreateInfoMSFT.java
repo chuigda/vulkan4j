@@ -173,7 +173,7 @@ public record XrSpatialGraphStaticNodeBindingCreateInfoMSFT(@NotNull MemorySegme
 
     public static XrSpatialGraphStaticNodeBindingCreateInfoMSFT allocate(Arena arena) {
         XrSpatialGraphStaticNodeBindingCreateInfoMSFT ret = new XrSpatialGraphStaticNodeBindingCreateInfoMSFT(arena.allocate(LAYOUT));
-        ret.type(XrStructureType.XR_TYPE_SPATIAL_GRAPH_STATIC_NODE_BINDING_CREATE_INFO_MSFT);
+        ret.type(XrStructureType.SPATIAL_GRAPH_STATIC_NODE_BINDING_CREATE_INFO_MSFT);
         return ret;
     }
 
@@ -181,7 +181,7 @@ public record XrSpatialGraphStaticNodeBindingCreateInfoMSFT(@NotNull MemorySegme
         MemorySegment segment = arena.allocate(LAYOUT, count);
         XrSpatialGraphStaticNodeBindingCreateInfoMSFT.Ptr ret = new XrSpatialGraphStaticNodeBindingCreateInfoMSFT.Ptr(segment);
         for (long i = 0; i < count; i++) {
-            ret.at(i).type(XrStructureType.XR_TYPE_SPATIAL_GRAPH_STATIC_NODE_BINDING_CREATE_INFO_MSFT);
+            ret.at(i).type(XrStructureType.SPATIAL_GRAPH_STATIC_NODE_BINDING_CREATE_INFO_MSFT);
         }
         return ret;
     }
@@ -193,7 +193,7 @@ public record XrSpatialGraphStaticNodeBindingCreateInfoMSFT(@NotNull MemorySegme
     }
 
     public void autoInit() {
-        type(XrStructureType.XR_TYPE_SPATIAL_GRAPH_STATIC_NODE_BINDING_CREATE_INFO_MSFT);
+        type(XrStructureType.SPATIAL_GRAPH_STATIC_NODE_BINDING_CREATE_INFO_MSFT);
     }
 
     public @EnumType(XrStructureType.class) int type() {

@@ -172,7 +172,7 @@ public record XrEventDataShareSpacesCompleteMETA(@NotNull MemorySegment segment)
 
     public static XrEventDataShareSpacesCompleteMETA allocate(Arena arena) {
         XrEventDataShareSpacesCompleteMETA ret = new XrEventDataShareSpacesCompleteMETA(arena.allocate(LAYOUT));
-        ret.type(XrStructureType.XR_TYPE_EVENT_DATA_SHARE_SPACES_COMPLETE_META);
+        ret.type(XrStructureType.EVENT_DATA_SHARE_SPACES_COMPLETE_META);
         return ret;
     }
 
@@ -180,7 +180,7 @@ public record XrEventDataShareSpacesCompleteMETA(@NotNull MemorySegment segment)
         MemorySegment segment = arena.allocate(LAYOUT, count);
         XrEventDataShareSpacesCompleteMETA.Ptr ret = new XrEventDataShareSpacesCompleteMETA.Ptr(segment);
         for (long i = 0; i < count; i++) {
-            ret.at(i).type(XrStructureType.XR_TYPE_EVENT_DATA_SHARE_SPACES_COMPLETE_META);
+            ret.at(i).type(XrStructureType.EVENT_DATA_SHARE_SPACES_COMPLETE_META);
         }
         return ret;
     }
@@ -192,7 +192,7 @@ public record XrEventDataShareSpacesCompleteMETA(@NotNull MemorySegment segment)
     }
 
     public void autoInit() {
-        type(XrStructureType.XR_TYPE_EVENT_DATA_SHARE_SPACES_COMPLETE_META);
+        type(XrStructureType.EVENT_DATA_SHARE_SPACES_COMPLETE_META);
     }
 
     public @EnumType(XrStructureType.class) int type() {

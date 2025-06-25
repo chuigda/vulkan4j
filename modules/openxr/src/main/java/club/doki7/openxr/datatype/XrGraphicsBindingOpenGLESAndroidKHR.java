@@ -173,7 +173,7 @@ public record XrGraphicsBindingOpenGLESAndroidKHR(@NotNull MemorySegment segment
 
     public static XrGraphicsBindingOpenGLESAndroidKHR allocate(Arena arena) {
         XrGraphicsBindingOpenGLESAndroidKHR ret = new XrGraphicsBindingOpenGLESAndroidKHR(arena.allocate(LAYOUT));
-        ret.type(XrStructureType.XR_TYPE_GRAPHICS_BINDING_OPENGL_ES_ANDROID_KHR);
+        ret.type(XrStructureType.GRAPHICS_BINDING_OPENGL_ES_ANDROID_KHR);
         return ret;
     }
 
@@ -181,7 +181,7 @@ public record XrGraphicsBindingOpenGLESAndroidKHR(@NotNull MemorySegment segment
         MemorySegment segment = arena.allocate(LAYOUT, count);
         XrGraphicsBindingOpenGLESAndroidKHR.Ptr ret = new XrGraphicsBindingOpenGLESAndroidKHR.Ptr(segment);
         for (long i = 0; i < count; i++) {
-            ret.at(i).type(XrStructureType.XR_TYPE_GRAPHICS_BINDING_OPENGL_ES_ANDROID_KHR);
+            ret.at(i).type(XrStructureType.GRAPHICS_BINDING_OPENGL_ES_ANDROID_KHR);
         }
         return ret;
     }
@@ -193,7 +193,7 @@ public record XrGraphicsBindingOpenGLESAndroidKHR(@NotNull MemorySegment segment
     }
 
     public void autoInit() {
-        type(XrStructureType.XR_TYPE_GRAPHICS_BINDING_OPENGL_ES_ANDROID_KHR);
+        type(XrStructureType.GRAPHICS_BINDING_OPENGL_ES_ANDROID_KHR);
     }
 
     public @EnumType(XrStructureType.class) int type() {

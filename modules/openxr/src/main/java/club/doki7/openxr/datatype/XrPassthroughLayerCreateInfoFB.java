@@ -173,7 +173,7 @@ public record XrPassthroughLayerCreateInfoFB(@NotNull MemorySegment segment) imp
 
     public static XrPassthroughLayerCreateInfoFB allocate(Arena arena) {
         XrPassthroughLayerCreateInfoFB ret = new XrPassthroughLayerCreateInfoFB(arena.allocate(LAYOUT));
-        ret.type(XrStructureType.XR_TYPE_PASSTHROUGH_LAYER_CREATE_INFO_FB);
+        ret.type(XrStructureType.PASSTHROUGH_LAYER_CREATE_INFO_FB);
         return ret;
     }
 
@@ -181,7 +181,7 @@ public record XrPassthroughLayerCreateInfoFB(@NotNull MemorySegment segment) imp
         MemorySegment segment = arena.allocate(LAYOUT, count);
         XrPassthroughLayerCreateInfoFB.Ptr ret = new XrPassthroughLayerCreateInfoFB.Ptr(segment);
         for (long i = 0; i < count; i++) {
-            ret.at(i).type(XrStructureType.XR_TYPE_PASSTHROUGH_LAYER_CREATE_INFO_FB);
+            ret.at(i).type(XrStructureType.PASSTHROUGH_LAYER_CREATE_INFO_FB);
         }
         return ret;
     }
@@ -193,7 +193,7 @@ public record XrPassthroughLayerCreateInfoFB(@NotNull MemorySegment segment) imp
     }
 
     public void autoInit() {
-        type(XrStructureType.XR_TYPE_PASSTHROUGH_LAYER_CREATE_INFO_FB);
+        type(XrStructureType.PASSTHROUGH_LAYER_CREATE_INFO_FB);
     }
 
     public @EnumType(XrStructureType.class) int type() {

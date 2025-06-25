@@ -171,7 +171,7 @@ public record XrGraphicsBindingD3D11KHR(@NotNull MemorySegment segment) implemen
 
     public static XrGraphicsBindingD3D11KHR allocate(Arena arena) {
         XrGraphicsBindingD3D11KHR ret = new XrGraphicsBindingD3D11KHR(arena.allocate(LAYOUT));
-        ret.type(XrStructureType.XR_TYPE_GRAPHICS_BINDING_D3D11_KHR);
+        ret.type(XrStructureType.GRAPHICS_BINDING_D3D11_KHR);
         return ret;
     }
 
@@ -179,7 +179,7 @@ public record XrGraphicsBindingD3D11KHR(@NotNull MemorySegment segment) implemen
         MemorySegment segment = arena.allocate(LAYOUT, count);
         XrGraphicsBindingD3D11KHR.Ptr ret = new XrGraphicsBindingD3D11KHR.Ptr(segment);
         for (long i = 0; i < count; i++) {
-            ret.at(i).type(XrStructureType.XR_TYPE_GRAPHICS_BINDING_D3D11_KHR);
+            ret.at(i).type(XrStructureType.GRAPHICS_BINDING_D3D11_KHR);
         }
         return ret;
     }
@@ -191,7 +191,7 @@ public record XrGraphicsBindingD3D11KHR(@NotNull MemorySegment segment) implemen
     }
 
     public void autoInit() {
-        type(XrStructureType.XR_TYPE_GRAPHICS_BINDING_D3D11_KHR);
+        type(XrStructureType.GRAPHICS_BINDING_D3D11_KHR);
     }
 
     public @EnumType(XrStructureType.class) int type() {

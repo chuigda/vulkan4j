@@ -172,7 +172,7 @@ public record XrVulkanSwapchainFormatListCreateInfoKHR(@NotNull MemorySegment se
 
     public static XrVulkanSwapchainFormatListCreateInfoKHR allocate(Arena arena) {
         XrVulkanSwapchainFormatListCreateInfoKHR ret = new XrVulkanSwapchainFormatListCreateInfoKHR(arena.allocate(LAYOUT));
-        ret.type(XrStructureType.XR_TYPE_VULKAN_SWAPCHAIN_FORMAT_LIST_CREATE_INFO_KHR);
+        ret.type(XrStructureType.VULKAN_SWAPCHAIN_FORMAT_LIST_CREATE_INFO_KHR);
         return ret;
     }
 
@@ -180,7 +180,7 @@ public record XrVulkanSwapchainFormatListCreateInfoKHR(@NotNull MemorySegment se
         MemorySegment segment = arena.allocate(LAYOUT, count);
         XrVulkanSwapchainFormatListCreateInfoKHR.Ptr ret = new XrVulkanSwapchainFormatListCreateInfoKHR.Ptr(segment);
         for (long i = 0; i < count; i++) {
-            ret.at(i).type(XrStructureType.XR_TYPE_VULKAN_SWAPCHAIN_FORMAT_LIST_CREATE_INFO_KHR);
+            ret.at(i).type(XrStructureType.VULKAN_SWAPCHAIN_FORMAT_LIST_CREATE_INFO_KHR);
         }
         return ret;
     }
@@ -192,7 +192,7 @@ public record XrVulkanSwapchainFormatListCreateInfoKHR(@NotNull MemorySegment se
     }
 
     public void autoInit() {
-        type(XrStructureType.XR_TYPE_VULKAN_SWAPCHAIN_FORMAT_LIST_CREATE_INFO_KHR);
+        type(XrStructureType.VULKAN_SWAPCHAIN_FORMAT_LIST_CREATE_INFO_KHR);
     }
 
     public @EnumType(XrStructureType.class) int type() {

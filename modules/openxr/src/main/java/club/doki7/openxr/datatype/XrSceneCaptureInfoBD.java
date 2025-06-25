@@ -170,7 +170,7 @@ public record XrSceneCaptureInfoBD(@NotNull MemorySegment segment) implements IX
 
     public static XrSceneCaptureInfoBD allocate(Arena arena) {
         XrSceneCaptureInfoBD ret = new XrSceneCaptureInfoBD(arena.allocate(LAYOUT));
-        ret.type(XrStructureType.XR_TYPE_SCENE_CAPTURE_INFO_BD);
+        ret.type(XrStructureType.SCENE_CAPTURE_INFO_BD);
         return ret;
     }
 
@@ -178,7 +178,7 @@ public record XrSceneCaptureInfoBD(@NotNull MemorySegment segment) implements IX
         MemorySegment segment = arena.allocate(LAYOUT, count);
         XrSceneCaptureInfoBD.Ptr ret = new XrSceneCaptureInfoBD.Ptr(segment);
         for (long i = 0; i < count; i++) {
-            ret.at(i).type(XrStructureType.XR_TYPE_SCENE_CAPTURE_INFO_BD);
+            ret.at(i).type(XrStructureType.SCENE_CAPTURE_INFO_BD);
         }
         return ret;
     }
@@ -190,7 +190,7 @@ public record XrSceneCaptureInfoBD(@NotNull MemorySegment segment) implements IX
     }
 
     public void autoInit() {
-        type(XrStructureType.XR_TYPE_SCENE_CAPTURE_INFO_BD);
+        type(XrStructureType.SCENE_CAPTURE_INFO_BD);
     }
 
     public @EnumType(XrStructureType.class) int type() {

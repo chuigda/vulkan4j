@@ -170,7 +170,7 @@ public record XrEyeTrackerCreateInfoFB(@NotNull MemorySegment segment) implement
 
     public static XrEyeTrackerCreateInfoFB allocate(Arena arena) {
         XrEyeTrackerCreateInfoFB ret = new XrEyeTrackerCreateInfoFB(arena.allocate(LAYOUT));
-        ret.type(XrStructureType.XR_TYPE_EYE_TRACKER_CREATE_INFO_FB);
+        ret.type(XrStructureType.EYE_TRACKER_CREATE_INFO_FB);
         return ret;
     }
 
@@ -178,7 +178,7 @@ public record XrEyeTrackerCreateInfoFB(@NotNull MemorySegment segment) implement
         MemorySegment segment = arena.allocate(LAYOUT, count);
         XrEyeTrackerCreateInfoFB.Ptr ret = new XrEyeTrackerCreateInfoFB.Ptr(segment);
         for (long i = 0; i < count; i++) {
-            ret.at(i).type(XrStructureType.XR_TYPE_EYE_TRACKER_CREATE_INFO_FB);
+            ret.at(i).type(XrStructureType.EYE_TRACKER_CREATE_INFO_FB);
         }
         return ret;
     }
@@ -190,7 +190,7 @@ public record XrEyeTrackerCreateInfoFB(@NotNull MemorySegment segment) implement
     }
 
     public void autoInit() {
-        type(XrStructureType.XR_TYPE_EYE_TRACKER_CREATE_INFO_FB);
+        type(XrStructureType.EYE_TRACKER_CREATE_INFO_FB);
     }
 
     public @EnumType(XrStructureType.class) int type() {

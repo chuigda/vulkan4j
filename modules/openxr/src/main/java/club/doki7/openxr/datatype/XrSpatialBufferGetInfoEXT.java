@@ -171,7 +171,7 @@ public record XrSpatialBufferGetInfoEXT(@NotNull MemorySegment segment) implemen
 
     public static XrSpatialBufferGetInfoEXT allocate(Arena arena) {
         XrSpatialBufferGetInfoEXT ret = new XrSpatialBufferGetInfoEXT(arena.allocate(LAYOUT));
-        ret.type(XrStructureType.XR_TYPE_SPATIAL_BUFFER_GET_INFO_EXT);
+        ret.type(XrStructureType.SPATIAL_BUFFER_GET_INFO_EXT);
         return ret;
     }
 
@@ -179,7 +179,7 @@ public record XrSpatialBufferGetInfoEXT(@NotNull MemorySegment segment) implemen
         MemorySegment segment = arena.allocate(LAYOUT, count);
         XrSpatialBufferGetInfoEXT.Ptr ret = new XrSpatialBufferGetInfoEXT.Ptr(segment);
         for (long i = 0; i < count; i++) {
-            ret.at(i).type(XrStructureType.XR_TYPE_SPATIAL_BUFFER_GET_INFO_EXT);
+            ret.at(i).type(XrStructureType.SPATIAL_BUFFER_GET_INFO_EXT);
         }
         return ret;
     }
@@ -191,7 +191,7 @@ public record XrSpatialBufferGetInfoEXT(@NotNull MemorySegment segment) implemen
     }
 
     public void autoInit() {
-        type(XrStructureType.XR_TYPE_SPATIAL_BUFFER_GET_INFO_EXT);
+        type(XrStructureType.SPATIAL_BUFFER_GET_INFO_EXT);
     }
 
     public @EnumType(XrStructureType.class) int type() {

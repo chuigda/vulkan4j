@@ -170,7 +170,7 @@ public record XrSimultaneousHandsAndControllersTrackingResumeInfoMETA(@NotNull M
 
     public static XrSimultaneousHandsAndControllersTrackingResumeInfoMETA allocate(Arena arena) {
         XrSimultaneousHandsAndControllersTrackingResumeInfoMETA ret = new XrSimultaneousHandsAndControllersTrackingResumeInfoMETA(arena.allocate(LAYOUT));
-        ret.type(XrStructureType.XR_TYPE_SIMULTANEOUS_HANDS_AND_CONTROLLERS_TRACKING_RESUME_INFO_META);
+        ret.type(XrStructureType.SIMULTANEOUS_HANDS_AND_CONTROLLERS_TRACKING_RESUME_INFO_META);
         return ret;
     }
 
@@ -178,7 +178,7 @@ public record XrSimultaneousHandsAndControllersTrackingResumeInfoMETA(@NotNull M
         MemorySegment segment = arena.allocate(LAYOUT, count);
         XrSimultaneousHandsAndControllersTrackingResumeInfoMETA.Ptr ret = new XrSimultaneousHandsAndControllersTrackingResumeInfoMETA.Ptr(segment);
         for (long i = 0; i < count; i++) {
-            ret.at(i).type(XrStructureType.XR_TYPE_SIMULTANEOUS_HANDS_AND_CONTROLLERS_TRACKING_RESUME_INFO_META);
+            ret.at(i).type(XrStructureType.SIMULTANEOUS_HANDS_AND_CONTROLLERS_TRACKING_RESUME_INFO_META);
         }
         return ret;
     }
@@ -190,7 +190,7 @@ public record XrSimultaneousHandsAndControllersTrackingResumeInfoMETA(@NotNull M
     }
 
     public void autoInit() {
-        type(XrStructureType.XR_TYPE_SIMULTANEOUS_HANDS_AND_CONTROLLERS_TRACKING_RESUME_INFO_META);
+        type(XrStructureType.SIMULTANEOUS_HANDS_AND_CONTROLLERS_TRACKING_RESUME_INFO_META);
     }
 
     public @EnumType(XrStructureType.class) int type() {

@@ -172,7 +172,7 @@ public record XrCompositionLayerDepthTestVARJO(@NotNull MemorySegment segment) i
 
     public static XrCompositionLayerDepthTestVARJO allocate(Arena arena) {
         XrCompositionLayerDepthTestVARJO ret = new XrCompositionLayerDepthTestVARJO(arena.allocate(LAYOUT));
-        ret.type(XrStructureType.XR_TYPE_COMPOSITION_LAYER_DEPTH_TEST_VARJO);
+        ret.type(XrStructureType.COMPOSITION_LAYER_DEPTH_TEST_VARJO);
         return ret;
     }
 
@@ -180,7 +180,7 @@ public record XrCompositionLayerDepthTestVARJO(@NotNull MemorySegment segment) i
         MemorySegment segment = arena.allocate(LAYOUT, count);
         XrCompositionLayerDepthTestVARJO.Ptr ret = new XrCompositionLayerDepthTestVARJO.Ptr(segment);
         for (long i = 0; i < count; i++) {
-            ret.at(i).type(XrStructureType.XR_TYPE_COMPOSITION_LAYER_DEPTH_TEST_VARJO);
+            ret.at(i).type(XrStructureType.COMPOSITION_LAYER_DEPTH_TEST_VARJO);
         }
         return ret;
     }
@@ -192,7 +192,7 @@ public record XrCompositionLayerDepthTestVARJO(@NotNull MemorySegment segment) i
     }
 
     public void autoInit() {
-        type(XrStructureType.XR_TYPE_COMPOSITION_LAYER_DEPTH_TEST_VARJO);
+        type(XrStructureType.COMPOSITION_LAYER_DEPTH_TEST_VARJO);
     }
 
     public @EnumType(XrStructureType.class) int type() {

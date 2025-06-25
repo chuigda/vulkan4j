@@ -175,7 +175,7 @@ public record XrSpaceQueryInfoFB(@NotNull MemorySegment segment) implements IXrS
 
     public static XrSpaceQueryInfoFB allocate(Arena arena) {
         XrSpaceQueryInfoFB ret = new XrSpaceQueryInfoFB(arena.allocate(LAYOUT));
-        ret.type(XrStructureType.XR_TYPE_SPACE_QUERY_INFO_FB);
+        ret.type(XrStructureType.SPACE_QUERY_INFO_FB);
         return ret;
     }
 
@@ -183,7 +183,7 @@ public record XrSpaceQueryInfoFB(@NotNull MemorySegment segment) implements IXrS
         MemorySegment segment = arena.allocate(LAYOUT, count);
         XrSpaceQueryInfoFB.Ptr ret = new XrSpaceQueryInfoFB.Ptr(segment);
         for (long i = 0; i < count; i++) {
-            ret.at(i).type(XrStructureType.XR_TYPE_SPACE_QUERY_INFO_FB);
+            ret.at(i).type(XrStructureType.SPACE_QUERY_INFO_FB);
         }
         return ret;
     }
@@ -195,7 +195,7 @@ public record XrSpaceQueryInfoFB(@NotNull MemorySegment segment) implements IXrS
     }
 
     public void autoInit() {
-        type(XrStructureType.XR_TYPE_SPACE_QUERY_INFO_FB);
+        type(XrStructureType.SPACE_QUERY_INFO_FB);
     }
 
     public @EnumType(XrStructureType.class) int type() {

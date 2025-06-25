@@ -171,7 +171,7 @@ public record XrSystemHandTrackingPropertiesEXT(@NotNull MemorySegment segment) 
 
     public static XrSystemHandTrackingPropertiesEXT allocate(Arena arena) {
         XrSystemHandTrackingPropertiesEXT ret = new XrSystemHandTrackingPropertiesEXT(arena.allocate(LAYOUT));
-        ret.type(XrStructureType.XR_TYPE_SYSTEM_HAND_TRACKING_PROPERTIES_EXT);
+        ret.type(XrStructureType.SYSTEM_HAND_TRACKING_PROPERTIES_EXT);
         return ret;
     }
 
@@ -179,7 +179,7 @@ public record XrSystemHandTrackingPropertiesEXT(@NotNull MemorySegment segment) 
         MemorySegment segment = arena.allocate(LAYOUT, count);
         XrSystemHandTrackingPropertiesEXT.Ptr ret = new XrSystemHandTrackingPropertiesEXT.Ptr(segment);
         for (long i = 0; i < count; i++) {
-            ret.at(i).type(XrStructureType.XR_TYPE_SYSTEM_HAND_TRACKING_PROPERTIES_EXT);
+            ret.at(i).type(XrStructureType.SYSTEM_HAND_TRACKING_PROPERTIES_EXT);
         }
         return ret;
     }
@@ -191,7 +191,7 @@ public record XrSystemHandTrackingPropertiesEXT(@NotNull MemorySegment segment) 
     }
 
     public void autoInit() {
-        type(XrStructureType.XR_TYPE_SYSTEM_HAND_TRACKING_PROPERTIES_EXT);
+        type(XrStructureType.SYSTEM_HAND_TRACKING_PROPERTIES_EXT);
     }
 
     public @EnumType(XrStructureType.class) int type() {

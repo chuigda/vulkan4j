@@ -174,7 +174,7 @@ public record XrDebugUtilsMessengerCreateInfoEXT(@NotNull MemorySegment segment)
 
     public static XrDebugUtilsMessengerCreateInfoEXT allocate(Arena arena) {
         XrDebugUtilsMessengerCreateInfoEXT ret = new XrDebugUtilsMessengerCreateInfoEXT(arena.allocate(LAYOUT));
-        ret.type(XrStructureType.XR_TYPE_DEBUG_UTILS_MESSENGER_CREATE_INFO_EXT);
+        ret.type(XrStructureType.DEBUG_UTILS_MESSENGER_CREATE_INFO_EXT);
         return ret;
     }
 
@@ -182,7 +182,7 @@ public record XrDebugUtilsMessengerCreateInfoEXT(@NotNull MemorySegment segment)
         MemorySegment segment = arena.allocate(LAYOUT, count);
         XrDebugUtilsMessengerCreateInfoEXT.Ptr ret = new XrDebugUtilsMessengerCreateInfoEXT.Ptr(segment);
         for (long i = 0; i < count; i++) {
-            ret.at(i).type(XrStructureType.XR_TYPE_DEBUG_UTILS_MESSENGER_CREATE_INFO_EXT);
+            ret.at(i).type(XrStructureType.DEBUG_UTILS_MESSENGER_CREATE_INFO_EXT);
         }
         return ret;
     }
@@ -194,7 +194,7 @@ public record XrDebugUtilsMessengerCreateInfoEXT(@NotNull MemorySegment segment)
     }
 
     public void autoInit() {
-        type(XrStructureType.XR_TYPE_DEBUG_UTILS_MESSENGER_CREATE_INFO_EXT);
+        type(XrStructureType.DEBUG_UTILS_MESSENGER_CREATE_INFO_EXT);
     }
 
     public @EnumType(XrStructureType.class) int type() {

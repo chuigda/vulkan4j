@@ -173,7 +173,7 @@ public record XrCompositionLayerReprojectionPlaneOverrideMSFT(@NotNull MemorySeg
 
     public static XrCompositionLayerReprojectionPlaneOverrideMSFT allocate(Arena arena) {
         XrCompositionLayerReprojectionPlaneOverrideMSFT ret = new XrCompositionLayerReprojectionPlaneOverrideMSFT(arena.allocate(LAYOUT));
-        ret.type(XrStructureType.XR_TYPE_COMPOSITION_LAYER_REPROJECTION_PLANE_OVERRIDE_MSFT);
+        ret.type(XrStructureType.COMPOSITION_LAYER_REPROJECTION_PLANE_OVERRIDE_MSFT);
         return ret;
     }
 
@@ -181,7 +181,7 @@ public record XrCompositionLayerReprojectionPlaneOverrideMSFT(@NotNull MemorySeg
         MemorySegment segment = arena.allocate(LAYOUT, count);
         XrCompositionLayerReprojectionPlaneOverrideMSFT.Ptr ret = new XrCompositionLayerReprojectionPlaneOverrideMSFT.Ptr(segment);
         for (long i = 0; i < count; i++) {
-            ret.at(i).type(XrStructureType.XR_TYPE_COMPOSITION_LAYER_REPROJECTION_PLANE_OVERRIDE_MSFT);
+            ret.at(i).type(XrStructureType.COMPOSITION_LAYER_REPROJECTION_PLANE_OVERRIDE_MSFT);
         }
         return ret;
     }
@@ -193,7 +193,7 @@ public record XrCompositionLayerReprojectionPlaneOverrideMSFT(@NotNull MemorySeg
     }
 
     public void autoInit() {
-        type(XrStructureType.XR_TYPE_COMPOSITION_LAYER_REPROJECTION_PLANE_OVERRIDE_MSFT);
+        type(XrStructureType.COMPOSITION_LAYER_REPROJECTION_PLANE_OVERRIDE_MSFT);
     }
 
     public @EnumType(XrStructureType.class) int type() {

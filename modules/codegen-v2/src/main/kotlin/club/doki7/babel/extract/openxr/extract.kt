@@ -12,14 +12,17 @@ internal val log = Logger.getLogger("c.d.b.extract.openxr")
 private val inputDir = Path("codegen-v2/input")
 
 fun extractRawOpenXRRegistry(): Registry<OpenXRRegistryExt> {
-    return inputDir.resolve("xr.xml")
+    val ret = inputDir.resolve("xr.xml")
         .toFile()
         .readText()
         .parseXML()
         .extractEntities()
+        .filterEntities()
+    ret.extendEntities()
+    return ret
 }
 
-private fun <T : Entity> Sequence<T>.associate(): MutableMap<Identifier, T> {
+private fun <T: Entity> Sequence<T>.associate(): MutableMap<Identifier, T> {
     return associateByTo(mutableMapOf(), Entity::name)
 }
 
@@ -71,9 +74,6 @@ private fun Element.extractEntities(): Registry<OpenXRRegistryExt> {
         .map(::extractCommand)
         .associate()
         .toMutableMap()
-    // TODO correctly implement command filtering
-    commands.remove("xrGetAudioOutputDeviceGuidOculus".intern())
-    commands.remove("xrGetAudioInputDeviceGuidOculus".intern())
 
     val funcs = e.query("types/type[@category='funcpointer']")
         .map(::extractFunctionTypedef)
@@ -95,7 +95,6 @@ private fun Element.extractEntities(): Registry<OpenXRRegistryExt> {
     val extensions = e.query("extensions/extension")
         .map(::extractExtension)
         .filter { it.supported != "disabled" }
-        .filter { it.name.original != "XR_OCULUS_audio_device_guid" } // TODO: requires full wchar_t support to work
         .associate()
 
     return Registry(
@@ -282,7 +281,7 @@ private fun extractBitflag(e: Element): Bitflag {
     val name by e.attrs
 
     val bitposNum = bitpos!!.parseDecOrHex()
-    return Bitflag(name!!, BigInteger.valueOf(1).shiftLeft(bitposNum.toInt()))
+    return Bitflag(name!!, BigInteger.ONE.shiftLeft(bitposNum.toInt()))
 }
 
 /**
@@ -443,6 +442,7 @@ private fun extractRequireValue(e: Element): RequireValue {
     val offset by e.attrs
     val dir by e.attrs
     val alias by e.attrs
+    val extnumber by e.attrs
 
     return RequireValue(
         name!!,
@@ -451,7 +451,8 @@ private fun extractRequireValue(e: Element): RequireValue {
         bitpos?.parseDecOrHex(),
         offset?.parseDecOrHex(),
         dir == "-",
-        alias
+        alias,
+        extnumber?.parseDecOrHex()
     )
 }
 

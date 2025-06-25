@@ -171,7 +171,7 @@ public record XrEventDataEyeCalibrationChangedML(@NotNull MemorySegment segment)
 
     public static XrEventDataEyeCalibrationChangedML allocate(Arena arena) {
         XrEventDataEyeCalibrationChangedML ret = new XrEventDataEyeCalibrationChangedML(arena.allocate(LAYOUT));
-        ret.type(XrStructureType.XR_TYPE_EVENT_DATA_EYE_CALIBRATION_CHANGED_ML);
+        ret.type(XrStructureType.EVENT_DATA_EYE_CALIBRATION_CHANGED_ML);
         return ret;
     }
 
@@ -179,7 +179,7 @@ public record XrEventDataEyeCalibrationChangedML(@NotNull MemorySegment segment)
         MemorySegment segment = arena.allocate(LAYOUT, count);
         XrEventDataEyeCalibrationChangedML.Ptr ret = new XrEventDataEyeCalibrationChangedML.Ptr(segment);
         for (long i = 0; i < count; i++) {
-            ret.at(i).type(XrStructureType.XR_TYPE_EVENT_DATA_EYE_CALIBRATION_CHANGED_ML);
+            ret.at(i).type(XrStructureType.EVENT_DATA_EYE_CALIBRATION_CHANGED_ML);
         }
         return ret;
     }
@@ -191,7 +191,7 @@ public record XrEventDataEyeCalibrationChangedML(@NotNull MemorySegment segment)
     }
 
     public void autoInit() {
-        type(XrStructureType.XR_TYPE_EVENT_DATA_EYE_CALIBRATION_CHANGED_ML);
+        type(XrStructureType.EVENT_DATA_EYE_CALIBRATION_CHANGED_ML);
     }
 
     public @EnumType(XrStructureType.class) int type() {

@@ -173,7 +173,7 @@ public record XrSpatialAnchorsCreateInfoFromUuidsML(@NotNull MemorySegment segme
 
     public static XrSpatialAnchorsCreateInfoFromUuidsML allocate(Arena arena) {
         XrSpatialAnchorsCreateInfoFromUuidsML ret = new XrSpatialAnchorsCreateInfoFromUuidsML(arena.allocate(LAYOUT));
-        ret.type(XrStructureType.XR_TYPE_SPATIAL_ANCHORS_CREATE_INFO_FROM_UUIDS_ML);
+        ret.type(XrStructureType.SPATIAL_ANCHORS_CREATE_INFO_FROM_UUIDS_ML);
         return ret;
     }
 
@@ -181,7 +181,7 @@ public record XrSpatialAnchorsCreateInfoFromUuidsML(@NotNull MemorySegment segme
         MemorySegment segment = arena.allocate(LAYOUT, count);
         XrSpatialAnchorsCreateInfoFromUuidsML.Ptr ret = new XrSpatialAnchorsCreateInfoFromUuidsML.Ptr(segment);
         for (long i = 0; i < count; i++) {
-            ret.at(i).type(XrStructureType.XR_TYPE_SPATIAL_ANCHORS_CREATE_INFO_FROM_UUIDS_ML);
+            ret.at(i).type(XrStructureType.SPATIAL_ANCHORS_CREATE_INFO_FROM_UUIDS_ML);
         }
         return ret;
     }
@@ -193,7 +193,7 @@ public record XrSpatialAnchorsCreateInfoFromUuidsML(@NotNull MemorySegment segme
     }
 
     public void autoInit() {
-        type(XrStructureType.XR_TYPE_SPATIAL_ANCHORS_CREATE_INFO_FROM_UUIDS_ML);
+        type(XrStructureType.SPATIAL_ANCHORS_CREATE_INFO_FROM_UUIDS_ML);
     }
 
     public @EnumType(XrStructureType.class) int type() {

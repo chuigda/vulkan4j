@@ -174,7 +174,7 @@ public record XrFacialExpressionBlendShapePropertiesML(@NotNull MemorySegment se
 
     public static XrFacialExpressionBlendShapePropertiesML allocate(Arena arena) {
         XrFacialExpressionBlendShapePropertiesML ret = new XrFacialExpressionBlendShapePropertiesML(arena.allocate(LAYOUT));
-        ret.type(XrStructureType.XR_TYPE_FACIAL_EXPRESSION_BLEND_SHAPE_PROPERTIES_ML);
+        ret.type(XrStructureType.FACIAL_EXPRESSION_BLEND_SHAPE_PROPERTIES_ML);
         return ret;
     }
 
@@ -182,7 +182,7 @@ public record XrFacialExpressionBlendShapePropertiesML(@NotNull MemorySegment se
         MemorySegment segment = arena.allocate(LAYOUT, count);
         XrFacialExpressionBlendShapePropertiesML.Ptr ret = new XrFacialExpressionBlendShapePropertiesML.Ptr(segment);
         for (long i = 0; i < count; i++) {
-            ret.at(i).type(XrStructureType.XR_TYPE_FACIAL_EXPRESSION_BLEND_SHAPE_PROPERTIES_ML);
+            ret.at(i).type(XrStructureType.FACIAL_EXPRESSION_BLEND_SHAPE_PROPERTIES_ML);
         }
         return ret;
     }
@@ -194,7 +194,7 @@ public record XrFacialExpressionBlendShapePropertiesML(@NotNull MemorySegment se
     }
 
     public void autoInit() {
-        type(XrStructureType.XR_TYPE_FACIAL_EXPRESSION_BLEND_SHAPE_PROPERTIES_ML);
+        type(XrStructureType.FACIAL_EXPRESSION_BLEND_SHAPE_PROPERTIES_ML);
     }
 
     public @EnumType(XrStructureType.class) int type() {

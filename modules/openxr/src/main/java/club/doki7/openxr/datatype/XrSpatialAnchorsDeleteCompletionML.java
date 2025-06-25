@@ -171,7 +171,7 @@ public record XrSpatialAnchorsDeleteCompletionML(@NotNull MemorySegment segment)
 
     public static XrSpatialAnchorsDeleteCompletionML allocate(Arena arena) {
         XrSpatialAnchorsDeleteCompletionML ret = new XrSpatialAnchorsDeleteCompletionML(arena.allocate(LAYOUT));
-        ret.type(XrStructureType.XR_TYPE_SPATIAL_ANCHORS_DELETE_COMPLETION_ML);
+        ret.type(XrStructureType.SPATIAL_ANCHORS_DELETE_COMPLETION_ML);
         return ret;
     }
 
@@ -179,7 +179,7 @@ public record XrSpatialAnchorsDeleteCompletionML(@NotNull MemorySegment segment)
         MemorySegment segment = arena.allocate(LAYOUT, count);
         XrSpatialAnchorsDeleteCompletionML.Ptr ret = new XrSpatialAnchorsDeleteCompletionML.Ptr(segment);
         for (long i = 0; i < count; i++) {
-            ret.at(i).type(XrStructureType.XR_TYPE_SPATIAL_ANCHORS_DELETE_COMPLETION_ML);
+            ret.at(i).type(XrStructureType.SPATIAL_ANCHORS_DELETE_COMPLETION_ML);
         }
         return ret;
     }
@@ -191,7 +191,7 @@ public record XrSpatialAnchorsDeleteCompletionML(@NotNull MemorySegment segment)
     }
 
     public void autoInit() {
-        type(XrStructureType.XR_TYPE_SPATIAL_ANCHORS_DELETE_COMPLETION_ML);
+        type(XrStructureType.SPATIAL_ANCHORS_DELETE_COMPLETION_ML);
     }
 
     public @EnumType(XrStructureType.class) int type() {

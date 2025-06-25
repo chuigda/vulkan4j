@@ -172,7 +172,7 @@ public record XrFoveationCustomModeInfoHTC(@NotNull MemorySegment segment) imple
 
     public static XrFoveationCustomModeInfoHTC allocate(Arena arena) {
         XrFoveationCustomModeInfoHTC ret = new XrFoveationCustomModeInfoHTC(arena.allocate(LAYOUT));
-        ret.type(XrStructureType.XR_TYPE_FOVEATION_CUSTOM_MODE_INFO_HTC);
+        ret.type(XrStructureType.FOVEATION_CUSTOM_MODE_INFO_HTC);
         return ret;
     }
 
@@ -180,7 +180,7 @@ public record XrFoveationCustomModeInfoHTC(@NotNull MemorySegment segment) imple
         MemorySegment segment = arena.allocate(LAYOUT, count);
         XrFoveationCustomModeInfoHTC.Ptr ret = new XrFoveationCustomModeInfoHTC.Ptr(segment);
         for (long i = 0; i < count; i++) {
-            ret.at(i).type(XrStructureType.XR_TYPE_FOVEATION_CUSTOM_MODE_INFO_HTC);
+            ret.at(i).type(XrStructureType.FOVEATION_CUSTOM_MODE_INFO_HTC);
         }
         return ret;
     }
@@ -192,7 +192,7 @@ public record XrFoveationCustomModeInfoHTC(@NotNull MemorySegment segment) imple
     }
 
     public void autoInit() {
-        type(XrStructureType.XR_TYPE_FOVEATION_CUSTOM_MODE_INFO_HTC);
+        type(XrStructureType.FOVEATION_CUSTOM_MODE_INFO_HTC);
     }
 
     public @EnumType(XrStructureType.class) int type() {

@@ -176,7 +176,7 @@ public record XrVisibilityMaskKHR(@NotNull MemorySegment segment) implements IXr
 
     public static XrVisibilityMaskKHR allocate(Arena arena) {
         XrVisibilityMaskKHR ret = new XrVisibilityMaskKHR(arena.allocate(LAYOUT));
-        ret.type(XrStructureType.XR_TYPE_VISIBILITY_MASK_KHR);
+        ret.type(XrStructureType.VISIBILITY_MASK_KHR);
         return ret;
     }
 
@@ -184,7 +184,7 @@ public record XrVisibilityMaskKHR(@NotNull MemorySegment segment) implements IXr
         MemorySegment segment = arena.allocate(LAYOUT, count);
         XrVisibilityMaskKHR.Ptr ret = new XrVisibilityMaskKHR.Ptr(segment);
         for (long i = 0; i < count; i++) {
-            ret.at(i).type(XrStructureType.XR_TYPE_VISIBILITY_MASK_KHR);
+            ret.at(i).type(XrStructureType.VISIBILITY_MASK_KHR);
         }
         return ret;
     }
@@ -196,7 +196,7 @@ public record XrVisibilityMaskKHR(@NotNull MemorySegment segment) implements IXr
     }
 
     public void autoInit() {
-        type(XrStructureType.XR_TYPE_VISIBILITY_MASK_KHR);
+        type(XrStructureType.VISIBILITY_MASK_KHR);
     }
 
     public @EnumType(XrStructureType.class) int type() {

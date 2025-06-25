@@ -173,7 +173,7 @@ public record XrPassthroughColorMapInterpolatedLutMETA(@NotNull MemorySegment se
 
     public static XrPassthroughColorMapInterpolatedLutMETA allocate(Arena arena) {
         XrPassthroughColorMapInterpolatedLutMETA ret = new XrPassthroughColorMapInterpolatedLutMETA(arena.allocate(LAYOUT));
-        ret.type(XrStructureType.XR_TYPE_PASSTHROUGH_COLOR_MAP_INTERPOLATED_LUT_META);
+        ret.type(XrStructureType.PASSTHROUGH_COLOR_MAP_INTERPOLATED_LUT_META);
         return ret;
     }
 
@@ -181,7 +181,7 @@ public record XrPassthroughColorMapInterpolatedLutMETA(@NotNull MemorySegment se
         MemorySegment segment = arena.allocate(LAYOUT, count);
         XrPassthroughColorMapInterpolatedLutMETA.Ptr ret = new XrPassthroughColorMapInterpolatedLutMETA.Ptr(segment);
         for (long i = 0; i < count; i++) {
-            ret.at(i).type(XrStructureType.XR_TYPE_PASSTHROUGH_COLOR_MAP_INTERPOLATED_LUT_META);
+            ret.at(i).type(XrStructureType.PASSTHROUGH_COLOR_MAP_INTERPOLATED_LUT_META);
         }
         return ret;
     }
@@ -193,7 +193,7 @@ public record XrPassthroughColorMapInterpolatedLutMETA(@NotNull MemorySegment se
     }
 
     public void autoInit() {
-        type(XrStructureType.XR_TYPE_PASSTHROUGH_COLOR_MAP_INTERPOLATED_LUT_META);
+        type(XrStructureType.PASSTHROUGH_COLOR_MAP_INTERPOLATED_LUT_META);
     }
 
     public @EnumType(XrStructureType.class) int type() {

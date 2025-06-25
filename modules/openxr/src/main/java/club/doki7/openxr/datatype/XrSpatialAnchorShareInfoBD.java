@@ -171,7 +171,7 @@ public record XrSpatialAnchorShareInfoBD(@NotNull MemorySegment segment) impleme
 
     public static XrSpatialAnchorShareInfoBD allocate(Arena arena) {
         XrSpatialAnchorShareInfoBD ret = new XrSpatialAnchorShareInfoBD(arena.allocate(LAYOUT));
-        ret.type(XrStructureType.XR_TYPE_SPATIAL_ANCHOR_SHARE_INFO_BD);
+        ret.type(XrStructureType.SPATIAL_ANCHOR_SHARE_INFO_BD);
         return ret;
     }
 
@@ -179,7 +179,7 @@ public record XrSpatialAnchorShareInfoBD(@NotNull MemorySegment segment) impleme
         MemorySegment segment = arena.allocate(LAYOUT, count);
         XrSpatialAnchorShareInfoBD.Ptr ret = new XrSpatialAnchorShareInfoBD.Ptr(segment);
         for (long i = 0; i < count; i++) {
-            ret.at(i).type(XrStructureType.XR_TYPE_SPATIAL_ANCHOR_SHARE_INFO_BD);
+            ret.at(i).type(XrStructureType.SPATIAL_ANCHOR_SHARE_INFO_BD);
         }
         return ret;
     }
@@ -191,7 +191,7 @@ public record XrSpatialAnchorShareInfoBD(@NotNull MemorySegment segment) impleme
     }
 
     public void autoInit() {
-        type(XrStructureType.XR_TYPE_SPATIAL_ANCHOR_SHARE_INFO_BD);
+        type(XrStructureType.SPATIAL_ANCHOR_SHARE_INFO_BD);
     }
 
     public @EnumType(XrStructureType.class) int type() {

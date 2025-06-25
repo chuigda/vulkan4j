@@ -171,7 +171,7 @@ public record XrVisualMeshComputeLodInfoMSFT(@NotNull MemorySegment segment) imp
 
     public static XrVisualMeshComputeLodInfoMSFT allocate(Arena arena) {
         XrVisualMeshComputeLodInfoMSFT ret = new XrVisualMeshComputeLodInfoMSFT(arena.allocate(LAYOUT));
-        ret.type(XrStructureType.XR_TYPE_VISUAL_MESH_COMPUTE_LOD_INFO_MSFT);
+        ret.type(XrStructureType.VISUAL_MESH_COMPUTE_LOD_INFO_MSFT);
         return ret;
     }
 
@@ -179,7 +179,7 @@ public record XrVisualMeshComputeLodInfoMSFT(@NotNull MemorySegment segment) imp
         MemorySegment segment = arena.allocate(LAYOUT, count);
         XrVisualMeshComputeLodInfoMSFT.Ptr ret = new XrVisualMeshComputeLodInfoMSFT.Ptr(segment);
         for (long i = 0; i < count; i++) {
-            ret.at(i).type(XrStructureType.XR_TYPE_VISUAL_MESH_COMPUTE_LOD_INFO_MSFT);
+            ret.at(i).type(XrStructureType.VISUAL_MESH_COMPUTE_LOD_INFO_MSFT);
         }
         return ret;
     }
@@ -191,7 +191,7 @@ public record XrVisualMeshComputeLodInfoMSFT(@NotNull MemorySegment segment) imp
     }
 
     public void autoInit() {
-        type(XrStructureType.XR_TYPE_VISUAL_MESH_COMPUTE_LOD_INFO_MSFT);
+        type(XrStructureType.VISUAL_MESH_COMPUTE_LOD_INFO_MSFT);
     }
 
     public @EnumType(XrStructureType.class) int type() {

@@ -171,7 +171,7 @@ public record XrSystemHeadsetIdPropertiesMETA(@NotNull MemorySegment segment) im
 
     public static XrSystemHeadsetIdPropertiesMETA allocate(Arena arena) {
         XrSystemHeadsetIdPropertiesMETA ret = new XrSystemHeadsetIdPropertiesMETA(arena.allocate(LAYOUT));
-        ret.type(XrStructureType.XR_TYPE_SYSTEM_HEADSET_ID_PROPERTIES_META);
+        ret.type(XrStructureType.SYSTEM_HEADSET_ID_PROPERTIES_META);
         return ret;
     }
 
@@ -179,7 +179,7 @@ public record XrSystemHeadsetIdPropertiesMETA(@NotNull MemorySegment segment) im
         MemorySegment segment = arena.allocate(LAYOUT, count);
         XrSystemHeadsetIdPropertiesMETA.Ptr ret = new XrSystemHeadsetIdPropertiesMETA.Ptr(segment);
         for (long i = 0; i < count; i++) {
-            ret.at(i).type(XrStructureType.XR_TYPE_SYSTEM_HEADSET_ID_PROPERTIES_META);
+            ret.at(i).type(XrStructureType.SYSTEM_HEADSET_ID_PROPERTIES_META);
         }
         return ret;
     }
@@ -191,7 +191,7 @@ public record XrSystemHeadsetIdPropertiesMETA(@NotNull MemorySegment segment) im
     }
 
     public void autoInit() {
-        type(XrStructureType.XR_TYPE_SYSTEM_HEADSET_ID_PROPERTIES_META);
+        type(XrStructureType.SYSTEM_HEADSET_ID_PROPERTIES_META);
     }
 
     public @EnumType(XrStructureType.class) int type() {

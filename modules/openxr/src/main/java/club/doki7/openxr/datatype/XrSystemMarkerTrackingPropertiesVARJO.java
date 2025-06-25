@@ -171,7 +171,7 @@ public record XrSystemMarkerTrackingPropertiesVARJO(@NotNull MemorySegment segme
 
     public static XrSystemMarkerTrackingPropertiesVARJO allocate(Arena arena) {
         XrSystemMarkerTrackingPropertiesVARJO ret = new XrSystemMarkerTrackingPropertiesVARJO(arena.allocate(LAYOUT));
-        ret.type(XrStructureType.XR_TYPE_SYSTEM_MARKER_TRACKING_PROPERTIES_VARJO);
+        ret.type(XrStructureType.SYSTEM_MARKER_TRACKING_PROPERTIES_VARJO);
         return ret;
     }
 
@@ -179,7 +179,7 @@ public record XrSystemMarkerTrackingPropertiesVARJO(@NotNull MemorySegment segme
         MemorySegment segment = arena.allocate(LAYOUT, count);
         XrSystemMarkerTrackingPropertiesVARJO.Ptr ret = new XrSystemMarkerTrackingPropertiesVARJO.Ptr(segment);
         for (long i = 0; i < count; i++) {
-            ret.at(i).type(XrStructureType.XR_TYPE_SYSTEM_MARKER_TRACKING_PROPERTIES_VARJO);
+            ret.at(i).type(XrStructureType.SYSTEM_MARKER_TRACKING_PROPERTIES_VARJO);
         }
         return ret;
     }
@@ -191,7 +191,7 @@ public record XrSystemMarkerTrackingPropertiesVARJO(@NotNull MemorySegment segme
     }
 
     public void autoInit() {
-        type(XrStructureType.XR_TYPE_SYSTEM_MARKER_TRACKING_PROPERTIES_VARJO);
+        type(XrStructureType.SYSTEM_MARKER_TRACKING_PROPERTIES_VARJO);
     }
 
     public @EnumType(XrStructureType.class) int type() {

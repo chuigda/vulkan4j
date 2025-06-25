@@ -178,7 +178,7 @@ public record XrCompositionLayerSpaceWarpInfoFB(@NotNull MemorySegment segment) 
 
     public static XrCompositionLayerSpaceWarpInfoFB allocate(Arena arena) {
         XrCompositionLayerSpaceWarpInfoFB ret = new XrCompositionLayerSpaceWarpInfoFB(arena.allocate(LAYOUT));
-        ret.type(XrStructureType.XR_TYPE_COMPOSITION_LAYER_SPACE_WARP_INFO_FB);
+        ret.type(XrStructureType.COMPOSITION_LAYER_SPACE_WARP_INFO_FB);
         return ret;
     }
 
@@ -186,7 +186,7 @@ public record XrCompositionLayerSpaceWarpInfoFB(@NotNull MemorySegment segment) 
         MemorySegment segment = arena.allocate(LAYOUT, count);
         XrCompositionLayerSpaceWarpInfoFB.Ptr ret = new XrCompositionLayerSpaceWarpInfoFB.Ptr(segment);
         for (long i = 0; i < count; i++) {
-            ret.at(i).type(XrStructureType.XR_TYPE_COMPOSITION_LAYER_SPACE_WARP_INFO_FB);
+            ret.at(i).type(XrStructureType.COMPOSITION_LAYER_SPACE_WARP_INFO_FB);
         }
         return ret;
     }
@@ -198,7 +198,7 @@ public record XrCompositionLayerSpaceWarpInfoFB(@NotNull MemorySegment segment) 
     }
 
     public void autoInit() {
-        type(XrStructureType.XR_TYPE_COMPOSITION_LAYER_SPACE_WARP_INFO_FB);
+        type(XrStructureType.COMPOSITION_LAYER_SPACE_WARP_INFO_FB);
     }
 
     public @EnumType(XrStructureType.class) int type() {

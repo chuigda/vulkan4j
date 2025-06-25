@@ -171,7 +171,7 @@ public record XrLocalDimmingFrameEndInfoMETA(@NotNull MemorySegment segment) imp
 
     public static XrLocalDimmingFrameEndInfoMETA allocate(Arena arena) {
         XrLocalDimmingFrameEndInfoMETA ret = new XrLocalDimmingFrameEndInfoMETA(arena.allocate(LAYOUT));
-        ret.type(XrStructureType.XR_TYPE_LOCAL_DIMMING_FRAME_END_INFO_META);
+        ret.type(XrStructureType.LOCAL_DIMMING_FRAME_END_INFO_META);
         return ret;
     }
 
@@ -179,7 +179,7 @@ public record XrLocalDimmingFrameEndInfoMETA(@NotNull MemorySegment segment) imp
         MemorySegment segment = arena.allocate(LAYOUT, count);
         XrLocalDimmingFrameEndInfoMETA.Ptr ret = new XrLocalDimmingFrameEndInfoMETA.Ptr(segment);
         for (long i = 0; i < count; i++) {
-            ret.at(i).type(XrStructureType.XR_TYPE_LOCAL_DIMMING_FRAME_END_INFO_META);
+            ret.at(i).type(XrStructureType.LOCAL_DIMMING_FRAME_END_INFO_META);
         }
         return ret;
     }
@@ -191,7 +191,7 @@ public record XrLocalDimmingFrameEndInfoMETA(@NotNull MemorySegment segment) imp
     }
 
     public void autoInit() {
-        type(XrStructureType.XR_TYPE_LOCAL_DIMMING_FRAME_END_INFO_META);
+        type(XrStructureType.LOCAL_DIMMING_FRAME_END_INFO_META);
     }
 
     public @EnumType(XrStructureType.class) int type() {

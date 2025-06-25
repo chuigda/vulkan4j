@@ -173,7 +173,7 @@ public record XrSpatialAnchorCreateInfoBD(@NotNull MemorySegment segment) implem
 
     public static XrSpatialAnchorCreateInfoBD allocate(Arena arena) {
         XrSpatialAnchorCreateInfoBD ret = new XrSpatialAnchorCreateInfoBD(arena.allocate(LAYOUT));
-        ret.type(XrStructureType.XR_TYPE_SPATIAL_ANCHOR_CREATE_INFO_BD);
+        ret.type(XrStructureType.SPATIAL_ANCHOR_CREATE_INFO_BD);
         return ret;
     }
 
@@ -181,7 +181,7 @@ public record XrSpatialAnchorCreateInfoBD(@NotNull MemorySegment segment) implem
         MemorySegment segment = arena.allocate(LAYOUT, count);
         XrSpatialAnchorCreateInfoBD.Ptr ret = new XrSpatialAnchorCreateInfoBD.Ptr(segment);
         for (long i = 0; i < count; i++) {
-            ret.at(i).type(XrStructureType.XR_TYPE_SPATIAL_ANCHOR_CREATE_INFO_BD);
+            ret.at(i).type(XrStructureType.SPATIAL_ANCHOR_CREATE_INFO_BD);
         }
         return ret;
     }
@@ -193,7 +193,7 @@ public record XrSpatialAnchorCreateInfoBD(@NotNull MemorySegment segment) implem
     }
 
     public void autoInit() {
-        type(XrStructureType.XR_TYPE_SPATIAL_ANCHOR_CREATE_INFO_BD);
+        type(XrStructureType.SPATIAL_ANCHOR_CREATE_INFO_BD);
     }
 
     public @EnumType(XrStructureType.class) int type() {

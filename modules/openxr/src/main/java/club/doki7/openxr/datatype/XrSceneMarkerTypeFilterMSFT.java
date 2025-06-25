@@ -172,7 +172,7 @@ public record XrSceneMarkerTypeFilterMSFT(@NotNull MemorySegment segment) implem
 
     public static XrSceneMarkerTypeFilterMSFT allocate(Arena arena) {
         XrSceneMarkerTypeFilterMSFT ret = new XrSceneMarkerTypeFilterMSFT(arena.allocate(LAYOUT));
-        ret.type(XrStructureType.XR_TYPE_SCENE_MARKER_TYPE_FILTER_MSFT);
+        ret.type(XrStructureType.SCENE_MARKER_TYPE_FILTER_MSFT);
         return ret;
     }
 
@@ -180,7 +180,7 @@ public record XrSceneMarkerTypeFilterMSFT(@NotNull MemorySegment segment) implem
         MemorySegment segment = arena.allocate(LAYOUT, count);
         XrSceneMarkerTypeFilterMSFT.Ptr ret = new XrSceneMarkerTypeFilterMSFT.Ptr(segment);
         for (long i = 0; i < count; i++) {
-            ret.at(i).type(XrStructureType.XR_TYPE_SCENE_MARKER_TYPE_FILTER_MSFT);
+            ret.at(i).type(XrStructureType.SCENE_MARKER_TYPE_FILTER_MSFT);
         }
         return ret;
     }
@@ -192,7 +192,7 @@ public record XrSceneMarkerTypeFilterMSFT(@NotNull MemorySegment segment) implem
     }
 
     public void autoInit() {
-        type(XrStructureType.XR_TYPE_SCENE_MARKER_TYPE_FILTER_MSFT);
+        type(XrStructureType.SCENE_MARKER_TYPE_FILTER_MSFT);
     }
 
     public @EnumType(XrStructureType.class) int type() {

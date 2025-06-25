@@ -171,7 +171,7 @@ public record XrAndroidSurfaceSwapchainCreateInfoFB(@NotNull MemorySegment segme
 
     public static XrAndroidSurfaceSwapchainCreateInfoFB allocate(Arena arena) {
         XrAndroidSurfaceSwapchainCreateInfoFB ret = new XrAndroidSurfaceSwapchainCreateInfoFB(arena.allocate(LAYOUT));
-        ret.type(XrStructureType.XR_TYPE_ANDROID_SURFACE_SWAPCHAIN_CREATE_INFO_FB);
+        ret.type(XrStructureType.ANDROID_SURFACE_SWAPCHAIN_CREATE_INFO_FB);
         return ret;
     }
 
@@ -179,7 +179,7 @@ public record XrAndroidSurfaceSwapchainCreateInfoFB(@NotNull MemorySegment segme
         MemorySegment segment = arena.allocate(LAYOUT, count);
         XrAndroidSurfaceSwapchainCreateInfoFB.Ptr ret = new XrAndroidSurfaceSwapchainCreateInfoFB.Ptr(segment);
         for (long i = 0; i < count; i++) {
-            ret.at(i).type(XrStructureType.XR_TYPE_ANDROID_SURFACE_SWAPCHAIN_CREATE_INFO_FB);
+            ret.at(i).type(XrStructureType.ANDROID_SURFACE_SWAPCHAIN_CREATE_INFO_FB);
         }
         return ret;
     }
@@ -191,7 +191,7 @@ public record XrAndroidSurfaceSwapchainCreateInfoFB(@NotNull MemorySegment segme
     }
 
     public void autoInit() {
-        type(XrStructureType.XR_TYPE_ANDROID_SURFACE_SWAPCHAIN_CREATE_INFO_FB);
+        type(XrStructureType.ANDROID_SURFACE_SWAPCHAIN_CREATE_INFO_FB);
     }
 
     public @EnumType(XrStructureType.class) int type() {

@@ -171,7 +171,7 @@ public record XrSystemMarkerUnderstandingPropertiesML(@NotNull MemorySegment seg
 
     public static XrSystemMarkerUnderstandingPropertiesML allocate(Arena arena) {
         XrSystemMarkerUnderstandingPropertiesML ret = new XrSystemMarkerUnderstandingPropertiesML(arena.allocate(LAYOUT));
-        ret.type(XrStructureType.XR_TYPE_SYSTEM_MARKER_UNDERSTANDING_PROPERTIES_ML);
+        ret.type(XrStructureType.SYSTEM_MARKER_UNDERSTANDING_PROPERTIES_ML);
         return ret;
     }
 
@@ -179,7 +179,7 @@ public record XrSystemMarkerUnderstandingPropertiesML(@NotNull MemorySegment seg
         MemorySegment segment = arena.allocate(LAYOUT, count);
         XrSystemMarkerUnderstandingPropertiesML.Ptr ret = new XrSystemMarkerUnderstandingPropertiesML.Ptr(segment);
         for (long i = 0; i < count; i++) {
-            ret.at(i).type(XrStructureType.XR_TYPE_SYSTEM_MARKER_UNDERSTANDING_PROPERTIES_ML);
+            ret.at(i).type(XrStructureType.SYSTEM_MARKER_UNDERSTANDING_PROPERTIES_ML);
         }
         return ret;
     }
@@ -191,7 +191,7 @@ public record XrSystemMarkerUnderstandingPropertiesML(@NotNull MemorySegment seg
     }
 
     public void autoInit() {
-        type(XrStructureType.XR_TYPE_SYSTEM_MARKER_UNDERSTANDING_PROPERTIES_ML);
+        type(XrStructureType.SYSTEM_MARKER_UNDERSTANDING_PROPERTIES_ML);
     }
 
     public @EnumType(XrStructureType.class) int type() {

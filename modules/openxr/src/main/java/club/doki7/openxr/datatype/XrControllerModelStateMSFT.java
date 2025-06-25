@@ -173,7 +173,7 @@ public record XrControllerModelStateMSFT(@NotNull MemorySegment segment) impleme
 
     public static XrControllerModelStateMSFT allocate(Arena arena) {
         XrControllerModelStateMSFT ret = new XrControllerModelStateMSFT(arena.allocate(LAYOUT));
-        ret.type(XrStructureType.XR_TYPE_CONTROLLER_MODEL_STATE_MSFT);
+        ret.type(XrStructureType.CONTROLLER_MODEL_STATE_MSFT);
         return ret;
     }
 
@@ -181,7 +181,7 @@ public record XrControllerModelStateMSFT(@NotNull MemorySegment segment) impleme
         MemorySegment segment = arena.allocate(LAYOUT, count);
         XrControllerModelStateMSFT.Ptr ret = new XrControllerModelStateMSFT.Ptr(segment);
         for (long i = 0; i < count; i++) {
-            ret.at(i).type(XrStructureType.XR_TYPE_CONTROLLER_MODEL_STATE_MSFT);
+            ret.at(i).type(XrStructureType.CONTROLLER_MODEL_STATE_MSFT);
         }
         return ret;
     }
@@ -193,7 +193,7 @@ public record XrControllerModelStateMSFT(@NotNull MemorySegment segment) impleme
     }
 
     public void autoInit() {
-        type(XrStructureType.XR_TYPE_CONTROLLER_MODEL_STATE_MSFT);
+        type(XrStructureType.CONTROLLER_MODEL_STATE_MSFT);
     }
 
     public @EnumType(XrStructureType.class) int type() {

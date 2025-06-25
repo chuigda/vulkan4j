@@ -171,7 +171,7 @@ public record XrSpatialMarkerSizeEXT(@NotNull MemorySegment segment) implements 
 
     public static XrSpatialMarkerSizeEXT allocate(Arena arena) {
         XrSpatialMarkerSizeEXT ret = new XrSpatialMarkerSizeEXT(arena.allocate(LAYOUT));
-        ret.type(XrStructureType.XR_TYPE_SPATIAL_MARKER_SIZE_EXT);
+        ret.type(XrStructureType.SPATIAL_MARKER_SIZE_EXT);
         return ret;
     }
 
@@ -179,7 +179,7 @@ public record XrSpatialMarkerSizeEXT(@NotNull MemorySegment segment) implements 
         MemorySegment segment = arena.allocate(LAYOUT, count);
         XrSpatialMarkerSizeEXT.Ptr ret = new XrSpatialMarkerSizeEXT.Ptr(segment);
         for (long i = 0; i < count; i++) {
-            ret.at(i).type(XrStructureType.XR_TYPE_SPATIAL_MARKER_SIZE_EXT);
+            ret.at(i).type(XrStructureType.SPATIAL_MARKER_SIZE_EXT);
         }
         return ret;
     }
@@ -191,7 +191,7 @@ public record XrSpatialMarkerSizeEXT(@NotNull MemorySegment segment) implements 
     }
 
     public void autoInit() {
-        type(XrStructureType.XR_TYPE_SPATIAL_MARKER_SIZE_EXT);
+        type(XrStructureType.SPATIAL_MARKER_SIZE_EXT);
     }
 
     public @EnumType(XrStructureType.class) int type() {

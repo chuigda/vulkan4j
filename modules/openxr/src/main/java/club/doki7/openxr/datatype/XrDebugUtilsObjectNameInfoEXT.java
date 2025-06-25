@@ -173,7 +173,7 @@ public record XrDebugUtilsObjectNameInfoEXT(@NotNull MemorySegment segment) impl
 
     public static XrDebugUtilsObjectNameInfoEXT allocate(Arena arena) {
         XrDebugUtilsObjectNameInfoEXT ret = new XrDebugUtilsObjectNameInfoEXT(arena.allocate(LAYOUT));
-        ret.type(XrStructureType.XR_TYPE_DEBUG_UTILS_OBJECT_NAME_INFO_EXT);
+        ret.type(XrStructureType.DEBUG_UTILS_OBJECT_NAME_INFO_EXT);
         return ret;
     }
 
@@ -181,7 +181,7 @@ public record XrDebugUtilsObjectNameInfoEXT(@NotNull MemorySegment segment) impl
         MemorySegment segment = arena.allocate(LAYOUT, count);
         XrDebugUtilsObjectNameInfoEXT.Ptr ret = new XrDebugUtilsObjectNameInfoEXT.Ptr(segment);
         for (long i = 0; i < count; i++) {
-            ret.at(i).type(XrStructureType.XR_TYPE_DEBUG_UTILS_OBJECT_NAME_INFO_EXT);
+            ret.at(i).type(XrStructureType.DEBUG_UTILS_OBJECT_NAME_INFO_EXT);
         }
         return ret;
     }
@@ -193,7 +193,7 @@ public record XrDebugUtilsObjectNameInfoEXT(@NotNull MemorySegment segment) impl
     }
 
     public void autoInit() {
-        type(XrStructureType.XR_TYPE_DEBUG_UTILS_OBJECT_NAME_INFO_EXT);
+        type(XrStructureType.DEBUG_UTILS_OBJECT_NAME_INFO_EXT);
     }
 
     public @EnumType(XrStructureType.class) int type() {

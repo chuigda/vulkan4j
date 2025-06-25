@@ -172,7 +172,7 @@ public record XrSemanticLabelsSupportInfoFB(@NotNull MemorySegment segment) impl
 
     public static XrSemanticLabelsSupportInfoFB allocate(Arena arena) {
         XrSemanticLabelsSupportInfoFB ret = new XrSemanticLabelsSupportInfoFB(arena.allocate(LAYOUT));
-        ret.type(XrStructureType.XR_TYPE_SEMANTIC_LABELS_SUPPORT_INFO_FB);
+        ret.type(XrStructureType.SEMANTIC_LABELS_SUPPORT_INFO_FB);
         return ret;
     }
 
@@ -180,7 +180,7 @@ public record XrSemanticLabelsSupportInfoFB(@NotNull MemorySegment segment) impl
         MemorySegment segment = arena.allocate(LAYOUT, count);
         XrSemanticLabelsSupportInfoFB.Ptr ret = new XrSemanticLabelsSupportInfoFB.Ptr(segment);
         for (long i = 0; i < count; i++) {
-            ret.at(i).type(XrStructureType.XR_TYPE_SEMANTIC_LABELS_SUPPORT_INFO_FB);
+            ret.at(i).type(XrStructureType.SEMANTIC_LABELS_SUPPORT_INFO_FB);
         }
         return ret;
     }
@@ -192,7 +192,7 @@ public record XrSemanticLabelsSupportInfoFB(@NotNull MemorySegment segment) impl
     }
 
     public void autoInit() {
-        type(XrStructureType.XR_TYPE_SEMANTIC_LABELS_SUPPORT_INFO_FB);
+        type(XrStructureType.SEMANTIC_LABELS_SUPPORT_INFO_FB);
     }
 
     public @EnumType(XrStructureType.class) int type() {

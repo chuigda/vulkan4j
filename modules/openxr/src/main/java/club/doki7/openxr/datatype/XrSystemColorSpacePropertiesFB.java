@@ -171,7 +171,7 @@ public record XrSystemColorSpacePropertiesFB(@NotNull MemorySegment segment) imp
 
     public static XrSystemColorSpacePropertiesFB allocate(Arena arena) {
         XrSystemColorSpacePropertiesFB ret = new XrSystemColorSpacePropertiesFB(arena.allocate(LAYOUT));
-        ret.type(XrStructureType.XR_TYPE_SYSTEM_COLOR_SPACE_PROPERTIES_FB);
+        ret.type(XrStructureType.SYSTEM_COLOR_SPACE_PROPERTIES_FB);
         return ret;
     }
 
@@ -179,7 +179,7 @@ public record XrSystemColorSpacePropertiesFB(@NotNull MemorySegment segment) imp
         MemorySegment segment = arena.allocate(LAYOUT, count);
         XrSystemColorSpacePropertiesFB.Ptr ret = new XrSystemColorSpacePropertiesFB.Ptr(segment);
         for (long i = 0; i < count; i++) {
-            ret.at(i).type(XrStructureType.XR_TYPE_SYSTEM_COLOR_SPACE_PROPERTIES_FB);
+            ret.at(i).type(XrStructureType.SYSTEM_COLOR_SPACE_PROPERTIES_FB);
         }
         return ret;
     }
@@ -191,7 +191,7 @@ public record XrSystemColorSpacePropertiesFB(@NotNull MemorySegment segment) imp
     }
 
     public void autoInit() {
-        type(XrStructureType.XR_TYPE_SYSTEM_COLOR_SPACE_PROPERTIES_FB);
+        type(XrStructureType.SYSTEM_COLOR_SPACE_PROPERTIES_FB);
     }
 
     public @EnumType(XrStructureType.class) int type() {

@@ -171,7 +171,7 @@ public record XrFaceExpressionInfoFB(@NotNull MemorySegment segment) implements 
 
     public static XrFaceExpressionInfoFB allocate(Arena arena) {
         XrFaceExpressionInfoFB ret = new XrFaceExpressionInfoFB(arena.allocate(LAYOUT));
-        ret.type(XrStructureType.XR_TYPE_FACE_EXPRESSION_INFO_FB);
+        ret.type(XrStructureType.FACE_EXPRESSION_INFO_FB);
         return ret;
     }
 
@@ -179,7 +179,7 @@ public record XrFaceExpressionInfoFB(@NotNull MemorySegment segment) implements 
         MemorySegment segment = arena.allocate(LAYOUT, count);
         XrFaceExpressionInfoFB.Ptr ret = new XrFaceExpressionInfoFB.Ptr(segment);
         for (long i = 0; i < count; i++) {
-            ret.at(i).type(XrStructureType.XR_TYPE_FACE_EXPRESSION_INFO_FB);
+            ret.at(i).type(XrStructureType.FACE_EXPRESSION_INFO_FB);
         }
         return ret;
     }
@@ -191,7 +191,7 @@ public record XrFaceExpressionInfoFB(@NotNull MemorySegment segment) implements 
     }
 
     public void autoInit() {
-        type(XrStructureType.XR_TYPE_FACE_EXPRESSION_INFO_FB);
+        type(XrStructureType.FACE_EXPRESSION_INFO_FB);
     }
 
     public @EnumType(XrStructureType.class) int type() {

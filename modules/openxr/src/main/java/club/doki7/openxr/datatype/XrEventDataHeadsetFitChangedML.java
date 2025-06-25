@@ -172,7 +172,7 @@ public record XrEventDataHeadsetFitChangedML(@NotNull MemorySegment segment) imp
 
     public static XrEventDataHeadsetFitChangedML allocate(Arena arena) {
         XrEventDataHeadsetFitChangedML ret = new XrEventDataHeadsetFitChangedML(arena.allocate(LAYOUT));
-        ret.type(XrStructureType.XR_TYPE_EVENT_DATA_HEADSET_FIT_CHANGED_ML);
+        ret.type(XrStructureType.EVENT_DATA_HEADSET_FIT_CHANGED_ML);
         return ret;
     }
 
@@ -180,7 +180,7 @@ public record XrEventDataHeadsetFitChangedML(@NotNull MemorySegment segment) imp
         MemorySegment segment = arena.allocate(LAYOUT, count);
         XrEventDataHeadsetFitChangedML.Ptr ret = new XrEventDataHeadsetFitChangedML.Ptr(segment);
         for (long i = 0; i < count; i++) {
-            ret.at(i).type(XrStructureType.XR_TYPE_EVENT_DATA_HEADSET_FIT_CHANGED_ML);
+            ret.at(i).type(XrStructureType.EVENT_DATA_HEADSET_FIT_CHANGED_ML);
         }
         return ret;
     }
@@ -192,7 +192,7 @@ public record XrEventDataHeadsetFitChangedML(@NotNull MemorySegment segment) imp
     }
 
     public void autoInit() {
-        type(XrStructureType.XR_TYPE_EVENT_DATA_HEADSET_FIT_CHANGED_ML);
+        type(XrStructureType.EVENT_DATA_HEADSET_FIT_CHANGED_ML);
     }
 
     public @EnumType(XrStructureType.class) int type() {

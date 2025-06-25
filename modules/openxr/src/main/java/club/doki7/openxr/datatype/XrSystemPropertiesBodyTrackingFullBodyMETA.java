@@ -171,7 +171,7 @@ public record XrSystemPropertiesBodyTrackingFullBodyMETA(@NotNull MemorySegment 
 
     public static XrSystemPropertiesBodyTrackingFullBodyMETA allocate(Arena arena) {
         XrSystemPropertiesBodyTrackingFullBodyMETA ret = new XrSystemPropertiesBodyTrackingFullBodyMETA(arena.allocate(LAYOUT));
-        ret.type(XrStructureType.XR_TYPE_SYSTEM_PROPERTIES_BODY_TRACKING_FULL_BODY_META);
+        ret.type(XrStructureType.SYSTEM_PROPERTIES_BODY_TRACKING_FULL_BODY_META);
         return ret;
     }
 
@@ -179,7 +179,7 @@ public record XrSystemPropertiesBodyTrackingFullBodyMETA(@NotNull MemorySegment 
         MemorySegment segment = arena.allocate(LAYOUT, count);
         XrSystemPropertiesBodyTrackingFullBodyMETA.Ptr ret = new XrSystemPropertiesBodyTrackingFullBodyMETA.Ptr(segment);
         for (long i = 0; i < count; i++) {
-            ret.at(i).type(XrStructureType.XR_TYPE_SYSTEM_PROPERTIES_BODY_TRACKING_FULL_BODY_META);
+            ret.at(i).type(XrStructureType.SYSTEM_PROPERTIES_BODY_TRACKING_FULL_BODY_META);
         }
         return ret;
     }
@@ -191,7 +191,7 @@ public record XrSystemPropertiesBodyTrackingFullBodyMETA(@NotNull MemorySegment 
     }
 
     public void autoInit() {
-        type(XrStructureType.XR_TYPE_SYSTEM_PROPERTIES_BODY_TRACKING_FULL_BODY_META);
+        type(XrStructureType.SYSTEM_PROPERTIES_BODY_TRACKING_FULL_BODY_META);
     }
 
     public @EnumType(XrStructureType.class) int type() {

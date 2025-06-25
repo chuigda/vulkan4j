@@ -171,7 +171,7 @@ public record XrWorldMeshBufferRecommendedSizeInfoML(@NotNull MemorySegment segm
 
     public static XrWorldMeshBufferRecommendedSizeInfoML allocate(Arena arena) {
         XrWorldMeshBufferRecommendedSizeInfoML ret = new XrWorldMeshBufferRecommendedSizeInfoML(arena.allocate(LAYOUT));
-        ret.type(XrStructureType.XR_TYPE_WORLD_MESH_BUFFER_RECOMMENDED_SIZE_INFO_ML);
+        ret.type(XrStructureType.WORLD_MESH_BUFFER_RECOMMENDED_SIZE_INFO_ML);
         return ret;
     }
 
@@ -179,7 +179,7 @@ public record XrWorldMeshBufferRecommendedSizeInfoML(@NotNull MemorySegment segm
         MemorySegment segment = arena.allocate(LAYOUT, count);
         XrWorldMeshBufferRecommendedSizeInfoML.Ptr ret = new XrWorldMeshBufferRecommendedSizeInfoML.Ptr(segment);
         for (long i = 0; i < count; i++) {
-            ret.at(i).type(XrStructureType.XR_TYPE_WORLD_MESH_BUFFER_RECOMMENDED_SIZE_INFO_ML);
+            ret.at(i).type(XrStructureType.WORLD_MESH_BUFFER_RECOMMENDED_SIZE_INFO_ML);
         }
         return ret;
     }
@@ -191,7 +191,7 @@ public record XrWorldMeshBufferRecommendedSizeInfoML(@NotNull MemorySegment segm
     }
 
     public void autoInit() {
-        type(XrStructureType.XR_TYPE_WORLD_MESH_BUFFER_RECOMMENDED_SIZE_INFO_ML);
+        type(XrStructureType.WORLD_MESH_BUFFER_RECOMMENDED_SIZE_INFO_ML);
     }
 
     public @EnumType(XrStructureType.class) int type() {

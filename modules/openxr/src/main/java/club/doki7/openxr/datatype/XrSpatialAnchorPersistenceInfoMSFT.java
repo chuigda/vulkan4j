@@ -172,7 +172,7 @@ public record XrSpatialAnchorPersistenceInfoMSFT(@NotNull MemorySegment segment)
 
     public static XrSpatialAnchorPersistenceInfoMSFT allocate(Arena arena) {
         XrSpatialAnchorPersistenceInfoMSFT ret = new XrSpatialAnchorPersistenceInfoMSFT(arena.allocate(LAYOUT));
-        ret.type(XrStructureType.XR_TYPE_SPATIAL_ANCHOR_PERSISTENCE_INFO_MSFT);
+        ret.type(XrStructureType.SPATIAL_ANCHOR_PERSISTENCE_INFO_MSFT);
         return ret;
     }
 
@@ -180,7 +180,7 @@ public record XrSpatialAnchorPersistenceInfoMSFT(@NotNull MemorySegment segment)
         MemorySegment segment = arena.allocate(LAYOUT, count);
         XrSpatialAnchorPersistenceInfoMSFT.Ptr ret = new XrSpatialAnchorPersistenceInfoMSFT.Ptr(segment);
         for (long i = 0; i < count; i++) {
-            ret.at(i).type(XrStructureType.XR_TYPE_SPATIAL_ANCHOR_PERSISTENCE_INFO_MSFT);
+            ret.at(i).type(XrStructureType.SPATIAL_ANCHOR_PERSISTENCE_INFO_MSFT);
         }
         return ret;
     }
@@ -192,7 +192,7 @@ public record XrSpatialAnchorPersistenceInfoMSFT(@NotNull MemorySegment segment)
     }
 
     public void autoInit() {
-        type(XrStructureType.XR_TYPE_SPATIAL_ANCHOR_PERSISTENCE_INFO_MSFT);
+        type(XrStructureType.SPATIAL_ANCHOR_PERSISTENCE_INFO_MSFT);
     }
 
     public @EnumType(XrStructureType.class) int type() {

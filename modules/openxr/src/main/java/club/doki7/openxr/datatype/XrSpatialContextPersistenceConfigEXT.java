@@ -172,7 +172,7 @@ public record XrSpatialContextPersistenceConfigEXT(@NotNull MemorySegment segmen
 
     public static XrSpatialContextPersistenceConfigEXT allocate(Arena arena) {
         XrSpatialContextPersistenceConfigEXT ret = new XrSpatialContextPersistenceConfigEXT(arena.allocate(LAYOUT));
-        ret.type(XrStructureType.XR_TYPE_SPATIAL_CONTEXT_PERSISTENCE_CONFIG_EXT);
+        ret.type(XrStructureType.SPATIAL_CONTEXT_PERSISTENCE_CONFIG_EXT);
         return ret;
     }
 
@@ -180,7 +180,7 @@ public record XrSpatialContextPersistenceConfigEXT(@NotNull MemorySegment segmen
         MemorySegment segment = arena.allocate(LAYOUT, count);
         XrSpatialContextPersistenceConfigEXT.Ptr ret = new XrSpatialContextPersistenceConfigEXT.Ptr(segment);
         for (long i = 0; i < count; i++) {
-            ret.at(i).type(XrStructureType.XR_TYPE_SPATIAL_CONTEXT_PERSISTENCE_CONFIG_EXT);
+            ret.at(i).type(XrStructureType.SPATIAL_CONTEXT_PERSISTENCE_CONFIG_EXT);
         }
         return ret;
     }
@@ -192,7 +192,7 @@ public record XrSpatialContextPersistenceConfigEXT(@NotNull MemorySegment segmen
     }
 
     public void autoInit() {
-        type(XrStructureType.XR_TYPE_SPATIAL_CONTEXT_PERSISTENCE_CONFIG_EXT);
+        type(XrStructureType.SPATIAL_CONTEXT_PERSISTENCE_CONFIG_EXT);
     }
 
     public @EnumType(XrStructureType.class) int type() {

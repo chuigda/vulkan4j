@@ -170,7 +170,7 @@ public record XrQueriedSenseDataGetInfoBD(@NotNull MemorySegment segment) implem
 
     public static XrQueriedSenseDataGetInfoBD allocate(Arena arena) {
         XrQueriedSenseDataGetInfoBD ret = new XrQueriedSenseDataGetInfoBD(arena.allocate(LAYOUT));
-        ret.type(XrStructureType.XR_TYPE_QUERIED_SENSE_DATA_GET_INFO_BD);
+        ret.type(XrStructureType.QUERIED_SENSE_DATA_GET_INFO_BD);
         return ret;
     }
 
@@ -178,7 +178,7 @@ public record XrQueriedSenseDataGetInfoBD(@NotNull MemorySegment segment) implem
         MemorySegment segment = arena.allocate(LAYOUT, count);
         XrQueriedSenseDataGetInfoBD.Ptr ret = new XrQueriedSenseDataGetInfoBD.Ptr(segment);
         for (long i = 0; i < count; i++) {
-            ret.at(i).type(XrStructureType.XR_TYPE_QUERIED_SENSE_DATA_GET_INFO_BD);
+            ret.at(i).type(XrStructureType.QUERIED_SENSE_DATA_GET_INFO_BD);
         }
         return ret;
     }
@@ -190,7 +190,7 @@ public record XrQueriedSenseDataGetInfoBD(@NotNull MemorySegment segment) implem
     }
 
     public void autoInit() {
-        type(XrStructureType.XR_TYPE_QUERIED_SENSE_DATA_GET_INFO_BD);
+        type(XrStructureType.QUERIED_SENSE_DATA_GET_INFO_BD);
     }
 
     public @EnumType(XrStructureType.class) int type() {

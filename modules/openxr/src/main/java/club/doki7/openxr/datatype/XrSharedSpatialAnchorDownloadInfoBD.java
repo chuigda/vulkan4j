@@ -171,7 +171,7 @@ public record XrSharedSpatialAnchorDownloadInfoBD(@NotNull MemorySegment segment
 
     public static XrSharedSpatialAnchorDownloadInfoBD allocate(Arena arena) {
         XrSharedSpatialAnchorDownloadInfoBD ret = new XrSharedSpatialAnchorDownloadInfoBD(arena.allocate(LAYOUT));
-        ret.type(XrStructureType.XR_TYPE_SHARED_SPATIAL_ANCHOR_DOWNLOAD_INFO_BD);
+        ret.type(XrStructureType.SHARED_SPATIAL_ANCHOR_DOWNLOAD_INFO_BD);
         return ret;
     }
 
@@ -179,7 +179,7 @@ public record XrSharedSpatialAnchorDownloadInfoBD(@NotNull MemorySegment segment
         MemorySegment segment = arena.allocate(LAYOUT, count);
         XrSharedSpatialAnchorDownloadInfoBD.Ptr ret = new XrSharedSpatialAnchorDownloadInfoBD.Ptr(segment);
         for (long i = 0; i < count; i++) {
-            ret.at(i).type(XrStructureType.XR_TYPE_SHARED_SPATIAL_ANCHOR_DOWNLOAD_INFO_BD);
+            ret.at(i).type(XrStructureType.SHARED_SPATIAL_ANCHOR_DOWNLOAD_INFO_BD);
         }
         return ret;
     }
@@ -191,7 +191,7 @@ public record XrSharedSpatialAnchorDownloadInfoBD(@NotNull MemorySegment segment
     }
 
     public void autoInit() {
-        type(XrStructureType.XR_TYPE_SHARED_SPATIAL_ANCHOR_DOWNLOAD_INFO_BD);
+        type(XrStructureType.SHARED_SPATIAL_ANCHOR_DOWNLOAD_INFO_BD);
     }
 
     public @EnumType(XrStructureType.class) int type() {

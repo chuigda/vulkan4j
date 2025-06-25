@@ -172,7 +172,7 @@ public record XrBodySkeletonFB(@NotNull MemorySegment segment) implements IXrBod
 
     public static XrBodySkeletonFB allocate(Arena arena) {
         XrBodySkeletonFB ret = new XrBodySkeletonFB(arena.allocate(LAYOUT));
-        ret.type(XrStructureType.XR_TYPE_BODY_SKELETON_FB);
+        ret.type(XrStructureType.BODY_SKELETON_FB);
         return ret;
     }
 
@@ -180,7 +180,7 @@ public record XrBodySkeletonFB(@NotNull MemorySegment segment) implements IXrBod
         MemorySegment segment = arena.allocate(LAYOUT, count);
         XrBodySkeletonFB.Ptr ret = new XrBodySkeletonFB.Ptr(segment);
         for (long i = 0; i < count; i++) {
-            ret.at(i).type(XrStructureType.XR_TYPE_BODY_SKELETON_FB);
+            ret.at(i).type(XrStructureType.BODY_SKELETON_FB);
         }
         return ret;
     }
@@ -192,7 +192,7 @@ public record XrBodySkeletonFB(@NotNull MemorySegment segment) implements IXrBod
     }
 
     public void autoInit() {
-        type(XrStructureType.XR_TYPE_BODY_SKELETON_FB);
+        type(XrStructureType.BODY_SKELETON_FB);
     }
 
     public @EnumType(XrStructureType.class) int type() {

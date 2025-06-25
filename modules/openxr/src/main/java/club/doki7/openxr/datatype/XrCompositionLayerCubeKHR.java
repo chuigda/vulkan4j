@@ -176,7 +176,7 @@ public record XrCompositionLayerCubeKHR(@NotNull MemorySegment segment) implemen
 
     public static XrCompositionLayerCubeKHR allocate(Arena arena) {
         XrCompositionLayerCubeKHR ret = new XrCompositionLayerCubeKHR(arena.allocate(LAYOUT));
-        ret.type(XrStructureType.XR_TYPE_COMPOSITION_LAYER_CUBE_KHR);
+        ret.type(XrStructureType.COMPOSITION_LAYER_CUBE_KHR);
         return ret;
     }
 
@@ -184,7 +184,7 @@ public record XrCompositionLayerCubeKHR(@NotNull MemorySegment segment) implemen
         MemorySegment segment = arena.allocate(LAYOUT, count);
         XrCompositionLayerCubeKHR.Ptr ret = new XrCompositionLayerCubeKHR.Ptr(segment);
         for (long i = 0; i < count; i++) {
-            ret.at(i).type(XrStructureType.XR_TYPE_COMPOSITION_LAYER_CUBE_KHR);
+            ret.at(i).type(XrStructureType.COMPOSITION_LAYER_CUBE_KHR);
         }
         return ret;
     }
@@ -196,7 +196,7 @@ public record XrCompositionLayerCubeKHR(@NotNull MemorySegment segment) implemen
     }
 
     public void autoInit() {
-        type(XrStructureType.XR_TYPE_COMPOSITION_LAYER_CUBE_KHR);
+        type(XrStructureType.COMPOSITION_LAYER_CUBE_KHR);
     }
 
     public @EnumType(XrStructureType.class) int type() {

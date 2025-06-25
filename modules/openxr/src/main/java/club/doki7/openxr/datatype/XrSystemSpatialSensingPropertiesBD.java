@@ -171,7 +171,7 @@ public record XrSystemSpatialSensingPropertiesBD(@NotNull MemorySegment segment)
 
     public static XrSystemSpatialSensingPropertiesBD allocate(Arena arena) {
         XrSystemSpatialSensingPropertiesBD ret = new XrSystemSpatialSensingPropertiesBD(arena.allocate(LAYOUT));
-        ret.type(XrStructureType.XR_TYPE_SYSTEM_SPATIAL_SENSING_PROPERTIES_BD);
+        ret.type(XrStructureType.SYSTEM_SPATIAL_SENSING_PROPERTIES_BD);
         return ret;
     }
 
@@ -179,7 +179,7 @@ public record XrSystemSpatialSensingPropertiesBD(@NotNull MemorySegment segment)
         MemorySegment segment = arena.allocate(LAYOUT, count);
         XrSystemSpatialSensingPropertiesBD.Ptr ret = new XrSystemSpatialSensingPropertiesBD.Ptr(segment);
         for (long i = 0; i < count; i++) {
-            ret.at(i).type(XrStructureType.XR_TYPE_SYSTEM_SPATIAL_SENSING_PROPERTIES_BD);
+            ret.at(i).type(XrStructureType.SYSTEM_SPATIAL_SENSING_PROPERTIES_BD);
         }
         return ret;
     }
@@ -191,7 +191,7 @@ public record XrSystemSpatialSensingPropertiesBD(@NotNull MemorySegment segment)
     }
 
     public void autoInit() {
-        type(XrStructureType.XR_TYPE_SYSTEM_SPATIAL_SENSING_PROPERTIES_BD);
+        type(XrStructureType.SYSTEM_SPATIAL_SENSING_PROPERTIES_BD);
     }
 
     public @EnumType(XrStructureType.class) int type() {

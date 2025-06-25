@@ -185,7 +185,7 @@ public record XrHandTrackingMeshFB(@NotNull MemorySegment segment) implements IX
 
     public static XrHandTrackingMeshFB allocate(Arena arena) {
         XrHandTrackingMeshFB ret = new XrHandTrackingMeshFB(arena.allocate(LAYOUT));
-        ret.type(XrStructureType.XR_TYPE_HAND_TRACKING_MESH_FB);
+        ret.type(XrStructureType.HAND_TRACKING_MESH_FB);
         return ret;
     }
 
@@ -193,7 +193,7 @@ public record XrHandTrackingMeshFB(@NotNull MemorySegment segment) implements IX
         MemorySegment segment = arena.allocate(LAYOUT, count);
         XrHandTrackingMeshFB.Ptr ret = new XrHandTrackingMeshFB.Ptr(segment);
         for (long i = 0; i < count; i++) {
-            ret.at(i).type(XrStructureType.XR_TYPE_HAND_TRACKING_MESH_FB);
+            ret.at(i).type(XrStructureType.HAND_TRACKING_MESH_FB);
         }
         return ret;
     }
@@ -205,7 +205,7 @@ public record XrHandTrackingMeshFB(@NotNull MemorySegment segment) implements IX
     }
 
     public void autoInit() {
-        type(XrStructureType.XR_TYPE_HAND_TRACKING_MESH_FB);
+        type(XrStructureType.HAND_TRACKING_MESH_FB);
     }
 
     public @EnumType(XrStructureType.class) int type() {

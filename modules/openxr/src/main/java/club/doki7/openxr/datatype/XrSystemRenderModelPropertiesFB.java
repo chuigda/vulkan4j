@@ -171,7 +171,7 @@ public record XrSystemRenderModelPropertiesFB(@NotNull MemorySegment segment) im
 
     public static XrSystemRenderModelPropertiesFB allocate(Arena arena) {
         XrSystemRenderModelPropertiesFB ret = new XrSystemRenderModelPropertiesFB(arena.allocate(LAYOUT));
-        ret.type(XrStructureType.XR_TYPE_SYSTEM_RENDER_MODEL_PROPERTIES_FB);
+        ret.type(XrStructureType.SYSTEM_RENDER_MODEL_PROPERTIES_FB);
         return ret;
     }
 
@@ -179,7 +179,7 @@ public record XrSystemRenderModelPropertiesFB(@NotNull MemorySegment segment) im
         MemorySegment segment = arena.allocate(LAYOUT, count);
         XrSystemRenderModelPropertiesFB.Ptr ret = new XrSystemRenderModelPropertiesFB.Ptr(segment);
         for (long i = 0; i < count; i++) {
-            ret.at(i).type(XrStructureType.XR_TYPE_SYSTEM_RENDER_MODEL_PROPERTIES_FB);
+            ret.at(i).type(XrStructureType.SYSTEM_RENDER_MODEL_PROPERTIES_FB);
         }
         return ret;
     }
@@ -191,7 +191,7 @@ public record XrSystemRenderModelPropertiesFB(@NotNull MemorySegment segment) im
     }
 
     public void autoInit() {
-        type(XrStructureType.XR_TYPE_SYSTEM_RENDER_MODEL_PROPERTIES_FB);
+        type(XrStructureType.SYSTEM_RENDER_MODEL_PROPERTIES_FB);
     }
 
     public @EnumType(XrStructureType.class) int type() {

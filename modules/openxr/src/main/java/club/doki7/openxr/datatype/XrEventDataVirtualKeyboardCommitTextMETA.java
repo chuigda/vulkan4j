@@ -172,7 +172,7 @@ public record XrEventDataVirtualKeyboardCommitTextMETA(@NotNull MemorySegment se
 
     public static XrEventDataVirtualKeyboardCommitTextMETA allocate(Arena arena) {
         XrEventDataVirtualKeyboardCommitTextMETA ret = new XrEventDataVirtualKeyboardCommitTextMETA(arena.allocate(LAYOUT));
-        ret.type(XrStructureType.XR_TYPE_EVENT_DATA_VIRTUAL_KEYBOARD_COMMIT_TEXT_META);
+        ret.type(XrStructureType.EVENT_DATA_VIRTUAL_KEYBOARD_COMMIT_TEXT_META);
         return ret;
     }
 
@@ -180,7 +180,7 @@ public record XrEventDataVirtualKeyboardCommitTextMETA(@NotNull MemorySegment se
         MemorySegment segment = arena.allocate(LAYOUT, count);
         XrEventDataVirtualKeyboardCommitTextMETA.Ptr ret = new XrEventDataVirtualKeyboardCommitTextMETA.Ptr(segment);
         for (long i = 0; i < count; i++) {
-            ret.at(i).type(XrStructureType.XR_TYPE_EVENT_DATA_VIRTUAL_KEYBOARD_COMMIT_TEXT_META);
+            ret.at(i).type(XrStructureType.EVENT_DATA_VIRTUAL_KEYBOARD_COMMIT_TEXT_META);
         }
         return ret;
     }
@@ -192,7 +192,7 @@ public record XrEventDataVirtualKeyboardCommitTextMETA(@NotNull MemorySegment se
     }
 
     public void autoInit() {
-        type(XrStructureType.XR_TYPE_EVENT_DATA_VIRTUAL_KEYBOARD_COMMIT_TEXT_META);
+        type(XrStructureType.EVENT_DATA_VIRTUAL_KEYBOARD_COMMIT_TEXT_META);
     }
 
     public @EnumType(XrStructureType.class) int type() {

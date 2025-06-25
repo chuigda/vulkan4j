@@ -172,7 +172,7 @@ public record XrScenePlaneAlignmentFilterInfoMSFT(@NotNull MemorySegment segment
 
     public static XrScenePlaneAlignmentFilterInfoMSFT allocate(Arena arena) {
         XrScenePlaneAlignmentFilterInfoMSFT ret = new XrScenePlaneAlignmentFilterInfoMSFT(arena.allocate(LAYOUT));
-        ret.type(XrStructureType.XR_TYPE_SCENE_PLANE_ALIGNMENT_FILTER_INFO_MSFT);
+        ret.type(XrStructureType.SCENE_PLANE_ALIGNMENT_FILTER_INFO_MSFT);
         return ret;
     }
 
@@ -180,7 +180,7 @@ public record XrScenePlaneAlignmentFilterInfoMSFT(@NotNull MemorySegment segment
         MemorySegment segment = arena.allocate(LAYOUT, count);
         XrScenePlaneAlignmentFilterInfoMSFT.Ptr ret = new XrScenePlaneAlignmentFilterInfoMSFT.Ptr(segment);
         for (long i = 0; i < count; i++) {
-            ret.at(i).type(XrStructureType.XR_TYPE_SCENE_PLANE_ALIGNMENT_FILTER_INFO_MSFT);
+            ret.at(i).type(XrStructureType.SCENE_PLANE_ALIGNMENT_FILTER_INFO_MSFT);
         }
         return ret;
     }
@@ -192,7 +192,7 @@ public record XrScenePlaneAlignmentFilterInfoMSFT(@NotNull MemorySegment segment
     }
 
     public void autoInit() {
-        type(XrStructureType.XR_TYPE_SCENE_PLANE_ALIGNMENT_FILTER_INFO_MSFT);
+        type(XrStructureType.SCENE_PLANE_ALIGNMENT_FILTER_INFO_MSFT);
     }
 
     public @EnumType(XrStructureType.class) int type() {

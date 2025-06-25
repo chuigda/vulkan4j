@@ -175,7 +175,7 @@ public record XrWorldMeshGetInfoML(@NotNull MemorySegment segment) implements IX
 
     public static XrWorldMeshGetInfoML allocate(Arena arena) {
         XrWorldMeshGetInfoML ret = new XrWorldMeshGetInfoML(arena.allocate(LAYOUT));
-        ret.type(XrStructureType.XR_TYPE_WORLD_MESH_GET_INFO_ML);
+        ret.type(XrStructureType.WORLD_MESH_GET_INFO_ML);
         return ret;
     }
 
@@ -183,7 +183,7 @@ public record XrWorldMeshGetInfoML(@NotNull MemorySegment segment) implements IX
         MemorySegment segment = arena.allocate(LAYOUT, count);
         XrWorldMeshGetInfoML.Ptr ret = new XrWorldMeshGetInfoML.Ptr(segment);
         for (long i = 0; i < count; i++) {
-            ret.at(i).type(XrStructureType.XR_TYPE_WORLD_MESH_GET_INFO_ML);
+            ret.at(i).type(XrStructureType.WORLD_MESH_GET_INFO_ML);
         }
         return ret;
     }
@@ -195,7 +195,7 @@ public record XrWorldMeshGetInfoML(@NotNull MemorySegment segment) implements IX
     }
 
     public void autoInit() {
-        type(XrStructureType.XR_TYPE_WORLD_MESH_GET_INFO_ML);
+        type(XrStructureType.WORLD_MESH_GET_INFO_ML);
     }
 
     public @EnumType(XrStructureType.class) int type() {

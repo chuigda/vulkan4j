@@ -172,7 +172,7 @@ public record XrActiveActionSetPrioritiesEXT(@NotNull MemorySegment segment) imp
 
     public static XrActiveActionSetPrioritiesEXT allocate(Arena arena) {
         XrActiveActionSetPrioritiesEXT ret = new XrActiveActionSetPrioritiesEXT(arena.allocate(LAYOUT));
-        ret.type(XrStructureType.XR_TYPE_ACTIVE_ACTION_SET_PRIORITIES_EXT);
+        ret.type(XrStructureType.ACTIVE_ACTION_SET_PRIORITIES_EXT);
         return ret;
     }
 
@@ -180,7 +180,7 @@ public record XrActiveActionSetPrioritiesEXT(@NotNull MemorySegment segment) imp
         MemorySegment segment = arena.allocate(LAYOUT, count);
         XrActiveActionSetPrioritiesEXT.Ptr ret = new XrActiveActionSetPrioritiesEXT.Ptr(segment);
         for (long i = 0; i < count; i++) {
-            ret.at(i).type(XrStructureType.XR_TYPE_ACTIVE_ACTION_SET_PRIORITIES_EXT);
+            ret.at(i).type(XrStructureType.ACTIVE_ACTION_SET_PRIORITIES_EXT);
         }
         return ret;
     }
@@ -192,7 +192,7 @@ public record XrActiveActionSetPrioritiesEXT(@NotNull MemorySegment segment) imp
     }
 
     public void autoInit() {
-        type(XrStructureType.XR_TYPE_ACTIVE_ACTION_SET_PRIORITIES_EXT);
+        type(XrStructureType.ACTIVE_ACTION_SET_PRIORITIES_EXT);
     }
 
     public @EnumType(XrStructureType.class) int type() {

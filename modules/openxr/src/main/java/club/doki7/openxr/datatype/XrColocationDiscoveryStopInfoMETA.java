@@ -170,7 +170,7 @@ public record XrColocationDiscoveryStopInfoMETA(@NotNull MemorySegment segment) 
 
     public static XrColocationDiscoveryStopInfoMETA allocate(Arena arena) {
         XrColocationDiscoveryStopInfoMETA ret = new XrColocationDiscoveryStopInfoMETA(arena.allocate(LAYOUT));
-        ret.type(XrStructureType.XR_TYPE_COLOCATION_DISCOVERY_STOP_INFO_META);
+        ret.type(XrStructureType.COLOCATION_DISCOVERY_STOP_INFO_META);
         return ret;
     }
 
@@ -178,7 +178,7 @@ public record XrColocationDiscoveryStopInfoMETA(@NotNull MemorySegment segment) 
         MemorySegment segment = arena.allocate(LAYOUT, count);
         XrColocationDiscoveryStopInfoMETA.Ptr ret = new XrColocationDiscoveryStopInfoMETA.Ptr(segment);
         for (long i = 0; i < count; i++) {
-            ret.at(i).type(XrStructureType.XR_TYPE_COLOCATION_DISCOVERY_STOP_INFO_META);
+            ret.at(i).type(XrStructureType.COLOCATION_DISCOVERY_STOP_INFO_META);
         }
         return ret;
     }
@@ -190,7 +190,7 @@ public record XrColocationDiscoveryStopInfoMETA(@NotNull MemorySegment segment) 
     }
 
     public void autoInit() {
-        type(XrStructureType.XR_TYPE_COLOCATION_DISCOVERY_STOP_INFO_META);
+        type(XrStructureType.COLOCATION_DISCOVERY_STOP_INFO_META);
     }
 
     public @EnumType(XrStructureType.class) int type() {

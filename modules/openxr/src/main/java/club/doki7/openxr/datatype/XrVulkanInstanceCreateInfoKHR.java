@@ -175,7 +175,7 @@ public record XrVulkanInstanceCreateInfoKHR(@NotNull MemorySegment segment) impl
 
     public static XrVulkanInstanceCreateInfoKHR allocate(Arena arena) {
         XrVulkanInstanceCreateInfoKHR ret = new XrVulkanInstanceCreateInfoKHR(arena.allocate(LAYOUT));
-        ret.type(XrStructureType.XR_TYPE_VULKAN_INSTANCE_CREATE_INFO_KHR);
+        ret.type(XrStructureType.VULKAN_INSTANCE_CREATE_INFO_KHR);
         return ret;
     }
 
@@ -183,7 +183,7 @@ public record XrVulkanInstanceCreateInfoKHR(@NotNull MemorySegment segment) impl
         MemorySegment segment = arena.allocate(LAYOUT, count);
         XrVulkanInstanceCreateInfoKHR.Ptr ret = new XrVulkanInstanceCreateInfoKHR.Ptr(segment);
         for (long i = 0; i < count; i++) {
-            ret.at(i).type(XrStructureType.XR_TYPE_VULKAN_INSTANCE_CREATE_INFO_KHR);
+            ret.at(i).type(XrStructureType.VULKAN_INSTANCE_CREATE_INFO_KHR);
         }
         return ret;
     }
@@ -195,7 +195,7 @@ public record XrVulkanInstanceCreateInfoKHR(@NotNull MemorySegment segment) impl
     }
 
     public void autoInit() {
-        type(XrStructureType.XR_TYPE_VULKAN_INSTANCE_CREATE_INFO_KHR);
+        type(XrStructureType.VULKAN_INSTANCE_CREATE_INFO_KHR);
     }
 
     public @EnumType(XrStructureType.class) int type() {

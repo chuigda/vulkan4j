@@ -172,7 +172,7 @@ public record XrShareSpacesRecipientGroupsMETA(@NotNull MemorySegment segment) i
 
     public static XrShareSpacesRecipientGroupsMETA allocate(Arena arena) {
         XrShareSpacesRecipientGroupsMETA ret = new XrShareSpacesRecipientGroupsMETA(arena.allocate(LAYOUT));
-        ret.type(XrStructureType.XR_TYPE_SHARE_SPACES_RECIPIENT_GROUPS_META);
+        ret.type(XrStructureType.SHARE_SPACES_RECIPIENT_GROUPS_META);
         return ret;
     }
 
@@ -180,7 +180,7 @@ public record XrShareSpacesRecipientGroupsMETA(@NotNull MemorySegment segment) i
         MemorySegment segment = arena.allocate(LAYOUT, count);
         XrShareSpacesRecipientGroupsMETA.Ptr ret = new XrShareSpacesRecipientGroupsMETA.Ptr(segment);
         for (long i = 0; i < count; i++) {
-            ret.at(i).type(XrStructureType.XR_TYPE_SHARE_SPACES_RECIPIENT_GROUPS_META);
+            ret.at(i).type(XrStructureType.SHARE_SPACES_RECIPIENT_GROUPS_META);
         }
         return ret;
     }
@@ -192,7 +192,7 @@ public record XrShareSpacesRecipientGroupsMETA(@NotNull MemorySegment segment) i
     }
 
     public void autoInit() {
-        type(XrStructureType.XR_TYPE_SHARE_SPACES_RECIPIENT_GROUPS_META);
+        type(XrStructureType.SHARE_SPACES_RECIPIENT_GROUPS_META);
     }
 
     public @EnumType(XrStructureType.class) int type() {

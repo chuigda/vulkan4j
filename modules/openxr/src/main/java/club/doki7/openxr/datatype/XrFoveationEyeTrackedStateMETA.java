@@ -172,7 +172,7 @@ public record XrFoveationEyeTrackedStateMETA(@NotNull MemorySegment segment) imp
 
     public static XrFoveationEyeTrackedStateMETA allocate(Arena arena) {
         XrFoveationEyeTrackedStateMETA ret = new XrFoveationEyeTrackedStateMETA(arena.allocate(LAYOUT));
-        ret.type(XrStructureType.XR_TYPE_FOVEATION_EYE_TRACKED_STATE_META);
+        ret.type(XrStructureType.FOVEATION_EYE_TRACKED_STATE_META);
         return ret;
     }
 
@@ -180,7 +180,7 @@ public record XrFoveationEyeTrackedStateMETA(@NotNull MemorySegment segment) imp
         MemorySegment segment = arena.allocate(LAYOUT, count);
         XrFoveationEyeTrackedStateMETA.Ptr ret = new XrFoveationEyeTrackedStateMETA.Ptr(segment);
         for (long i = 0; i < count; i++) {
-            ret.at(i).type(XrStructureType.XR_TYPE_FOVEATION_EYE_TRACKED_STATE_META);
+            ret.at(i).type(XrStructureType.FOVEATION_EYE_TRACKED_STATE_META);
         }
         return ret;
     }
@@ -192,7 +192,7 @@ public record XrFoveationEyeTrackedStateMETA(@NotNull MemorySegment segment) imp
     }
 
     public void autoInit() {
-        type(XrStructureType.XR_TYPE_FOVEATION_EYE_TRACKED_STATE_META);
+        type(XrStructureType.FOVEATION_EYE_TRACKED_STATE_META);
     }
 
     public @EnumType(XrStructureType.class) int type() {

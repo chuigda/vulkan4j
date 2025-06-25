@@ -173,7 +173,7 @@ public record XrSystemHandTrackingMeshPropertiesMSFT(@NotNull MemorySegment segm
 
     public static XrSystemHandTrackingMeshPropertiesMSFT allocate(Arena arena) {
         XrSystemHandTrackingMeshPropertiesMSFT ret = new XrSystemHandTrackingMeshPropertiesMSFT(arena.allocate(LAYOUT));
-        ret.type(XrStructureType.XR_TYPE_SYSTEM_HAND_TRACKING_MESH_PROPERTIES_MSFT);
+        ret.type(XrStructureType.SYSTEM_HAND_TRACKING_MESH_PROPERTIES_MSFT);
         return ret;
     }
 
@@ -181,7 +181,7 @@ public record XrSystemHandTrackingMeshPropertiesMSFT(@NotNull MemorySegment segm
         MemorySegment segment = arena.allocate(LAYOUT, count);
         XrSystemHandTrackingMeshPropertiesMSFT.Ptr ret = new XrSystemHandTrackingMeshPropertiesMSFT.Ptr(segment);
         for (long i = 0; i < count; i++) {
-            ret.at(i).type(XrStructureType.XR_TYPE_SYSTEM_HAND_TRACKING_MESH_PROPERTIES_MSFT);
+            ret.at(i).type(XrStructureType.SYSTEM_HAND_TRACKING_MESH_PROPERTIES_MSFT);
         }
         return ret;
     }
@@ -193,7 +193,7 @@ public record XrSystemHandTrackingMeshPropertiesMSFT(@NotNull MemorySegment segm
     }
 
     public void autoInit() {
-        type(XrStructureType.XR_TYPE_SYSTEM_HAND_TRACKING_MESH_PROPERTIES_MSFT);
+        type(XrStructureType.SYSTEM_HAND_TRACKING_MESH_PROPERTIES_MSFT);
     }
 
     public @EnumType(XrStructureType.class) int type() {

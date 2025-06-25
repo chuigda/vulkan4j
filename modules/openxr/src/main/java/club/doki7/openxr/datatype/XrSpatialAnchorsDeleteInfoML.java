@@ -172,7 +172,7 @@ public record XrSpatialAnchorsDeleteInfoML(@NotNull MemorySegment segment) imple
 
     public static XrSpatialAnchorsDeleteInfoML allocate(Arena arena) {
         XrSpatialAnchorsDeleteInfoML ret = new XrSpatialAnchorsDeleteInfoML(arena.allocate(LAYOUT));
-        ret.type(XrStructureType.XR_TYPE_SPATIAL_ANCHORS_DELETE_INFO_ML);
+        ret.type(XrStructureType.SPATIAL_ANCHORS_DELETE_INFO_ML);
         return ret;
     }
 
@@ -180,7 +180,7 @@ public record XrSpatialAnchorsDeleteInfoML(@NotNull MemorySegment segment) imple
         MemorySegment segment = arena.allocate(LAYOUT, count);
         XrSpatialAnchorsDeleteInfoML.Ptr ret = new XrSpatialAnchorsDeleteInfoML.Ptr(segment);
         for (long i = 0; i < count; i++) {
-            ret.at(i).type(XrStructureType.XR_TYPE_SPATIAL_ANCHORS_DELETE_INFO_ML);
+            ret.at(i).type(XrStructureType.SPATIAL_ANCHORS_DELETE_INFO_ML);
         }
         return ret;
     }
@@ -192,7 +192,7 @@ public record XrSpatialAnchorsDeleteInfoML(@NotNull MemorySegment segment) imple
     }
 
     public void autoInit() {
-        type(XrStructureType.XR_TYPE_SPATIAL_ANCHORS_DELETE_INFO_ML);
+        type(XrStructureType.SPATIAL_ANCHORS_DELETE_INFO_ML);
     }
 
     public @EnumType(XrStructureType.class) int type() {

@@ -171,7 +171,7 @@ public record XrFuturePollResultEXT(@NotNull MemorySegment segment) implements I
 
     public static XrFuturePollResultEXT allocate(Arena arena) {
         XrFuturePollResultEXT ret = new XrFuturePollResultEXT(arena.allocate(LAYOUT));
-        ret.type(XrStructureType.XR_TYPE_FUTURE_POLL_RESULT_EXT);
+        ret.type(XrStructureType.FUTURE_POLL_RESULT_EXT);
         return ret;
     }
 
@@ -179,7 +179,7 @@ public record XrFuturePollResultEXT(@NotNull MemorySegment segment) implements I
         MemorySegment segment = arena.allocate(LAYOUT, count);
         XrFuturePollResultEXT.Ptr ret = new XrFuturePollResultEXT.Ptr(segment);
         for (long i = 0; i < count; i++) {
-            ret.at(i).type(XrStructureType.XR_TYPE_FUTURE_POLL_RESULT_EXT);
+            ret.at(i).type(XrStructureType.FUTURE_POLL_RESULT_EXT);
         }
         return ret;
     }
@@ -191,7 +191,7 @@ public record XrFuturePollResultEXT(@NotNull MemorySegment segment) implements I
     }
 
     public void autoInit() {
-        type(XrStructureType.XR_TYPE_FUTURE_POLL_RESULT_EXT);
+        type(XrStructureType.FUTURE_POLL_RESULT_EXT);
     }
 
     public @EnumType(XrStructureType.class) int type() {

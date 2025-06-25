@@ -172,7 +172,7 @@ public record XrGlobalDimmerFrameEndInfoML(@NotNull MemorySegment segment) imple
 
     public static XrGlobalDimmerFrameEndInfoML allocate(Arena arena) {
         XrGlobalDimmerFrameEndInfoML ret = new XrGlobalDimmerFrameEndInfoML(arena.allocate(LAYOUT));
-        ret.type(XrStructureType.XR_TYPE_GLOBAL_DIMMER_FRAME_END_INFO_ML);
+        ret.type(XrStructureType.GLOBAL_DIMMER_FRAME_END_INFO_ML);
         return ret;
     }
 
@@ -180,7 +180,7 @@ public record XrGlobalDimmerFrameEndInfoML(@NotNull MemorySegment segment) imple
         MemorySegment segment = arena.allocate(LAYOUT, count);
         XrGlobalDimmerFrameEndInfoML.Ptr ret = new XrGlobalDimmerFrameEndInfoML.Ptr(segment);
         for (long i = 0; i < count; i++) {
-            ret.at(i).type(XrStructureType.XR_TYPE_GLOBAL_DIMMER_FRAME_END_INFO_ML);
+            ret.at(i).type(XrStructureType.GLOBAL_DIMMER_FRAME_END_INFO_ML);
         }
         return ret;
     }
@@ -192,7 +192,7 @@ public record XrGlobalDimmerFrameEndInfoML(@NotNull MemorySegment segment) imple
     }
 
     public void autoInit() {
-        type(XrStructureType.XR_TYPE_GLOBAL_DIMMER_FRAME_END_INFO_ML);
+        type(XrStructureType.GLOBAL_DIMMER_FRAME_END_INFO_ML);
     }
 
     public @EnumType(XrStructureType.class) int type() {

@@ -172,7 +172,7 @@ public record XrHandMeshSpaceCreateInfoMSFT(@NotNull MemorySegment segment) impl
 
     public static XrHandMeshSpaceCreateInfoMSFT allocate(Arena arena) {
         XrHandMeshSpaceCreateInfoMSFT ret = new XrHandMeshSpaceCreateInfoMSFT(arena.allocate(LAYOUT));
-        ret.type(XrStructureType.XR_TYPE_HAND_MESH_SPACE_CREATE_INFO_MSFT);
+        ret.type(XrStructureType.HAND_MESH_SPACE_CREATE_INFO_MSFT);
         return ret;
     }
 
@@ -180,7 +180,7 @@ public record XrHandMeshSpaceCreateInfoMSFT(@NotNull MemorySegment segment) impl
         MemorySegment segment = arena.allocate(LAYOUT, count);
         XrHandMeshSpaceCreateInfoMSFT.Ptr ret = new XrHandMeshSpaceCreateInfoMSFT.Ptr(segment);
         for (long i = 0; i < count; i++) {
-            ret.at(i).type(XrStructureType.XR_TYPE_HAND_MESH_SPACE_CREATE_INFO_MSFT);
+            ret.at(i).type(XrStructureType.HAND_MESH_SPACE_CREATE_INFO_MSFT);
         }
         return ret;
     }
@@ -192,7 +192,7 @@ public record XrHandMeshSpaceCreateInfoMSFT(@NotNull MemorySegment segment) impl
     }
 
     public void autoInit() {
-        type(XrStructureType.XR_TYPE_HAND_MESH_SPACE_CREATE_INFO_MSFT);
+        type(XrStructureType.HAND_MESH_SPACE_CREATE_INFO_MSFT);
     }
 
     public @EnumType(XrStructureType.class) int type() {

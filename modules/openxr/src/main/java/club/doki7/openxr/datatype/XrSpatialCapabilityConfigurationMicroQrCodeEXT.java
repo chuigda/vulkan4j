@@ -173,7 +173,7 @@ public record XrSpatialCapabilityConfigurationMicroQrCodeEXT(@NotNull MemorySegm
 
     public static XrSpatialCapabilityConfigurationMicroQrCodeEXT allocate(Arena arena) {
         XrSpatialCapabilityConfigurationMicroQrCodeEXT ret = new XrSpatialCapabilityConfigurationMicroQrCodeEXT(arena.allocate(LAYOUT));
-        ret.type(XrStructureType.XR_TYPE_SPATIAL_CAPABILITY_CONFIGURATION_MICRO_QR_CODE_EXT);
+        ret.type(XrStructureType.SPATIAL_CAPABILITY_CONFIGURATION_MICRO_QR_CODE_EXT);
         return ret;
     }
 
@@ -181,7 +181,7 @@ public record XrSpatialCapabilityConfigurationMicroQrCodeEXT(@NotNull MemorySegm
         MemorySegment segment = arena.allocate(LAYOUT, count);
         XrSpatialCapabilityConfigurationMicroQrCodeEXT.Ptr ret = new XrSpatialCapabilityConfigurationMicroQrCodeEXT.Ptr(segment);
         for (long i = 0; i < count; i++) {
-            ret.at(i).type(XrStructureType.XR_TYPE_SPATIAL_CAPABILITY_CONFIGURATION_MICRO_QR_CODE_EXT);
+            ret.at(i).type(XrStructureType.SPATIAL_CAPABILITY_CONFIGURATION_MICRO_QR_CODE_EXT);
         }
         return ret;
     }
@@ -193,7 +193,7 @@ public record XrSpatialCapabilityConfigurationMicroQrCodeEXT(@NotNull MemorySegm
     }
 
     public void autoInit() {
-        type(XrStructureType.XR_TYPE_SPATIAL_CAPABILITY_CONFIGURATION_MICRO_QR_CODE_EXT);
+        type(XrStructureType.SPATIAL_CAPABILITY_CONFIGURATION_MICRO_QR_CODE_EXT);
     }
 
     public @EnumType(XrStructureType.class) int type() {

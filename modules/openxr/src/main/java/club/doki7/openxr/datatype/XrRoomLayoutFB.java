@@ -175,7 +175,7 @@ public record XrRoomLayoutFB(@NotNull MemorySegment segment) implements IXrRoomL
 
     public static XrRoomLayoutFB allocate(Arena arena) {
         XrRoomLayoutFB ret = new XrRoomLayoutFB(arena.allocate(LAYOUT));
-        ret.type(XrStructureType.XR_TYPE_ROOM_LAYOUT_FB);
+        ret.type(XrStructureType.ROOM_LAYOUT_FB);
         return ret;
     }
 
@@ -183,7 +183,7 @@ public record XrRoomLayoutFB(@NotNull MemorySegment segment) implements IXrRoomL
         MemorySegment segment = arena.allocate(LAYOUT, count);
         XrRoomLayoutFB.Ptr ret = new XrRoomLayoutFB.Ptr(segment);
         for (long i = 0; i < count; i++) {
-            ret.at(i).type(XrStructureType.XR_TYPE_ROOM_LAYOUT_FB);
+            ret.at(i).type(XrStructureType.ROOM_LAYOUT_FB);
         }
         return ret;
     }
@@ -195,7 +195,7 @@ public record XrRoomLayoutFB(@NotNull MemorySegment segment) implements IXrRoomL
     }
 
     public void autoInit() {
-        type(XrStructureType.XR_TYPE_ROOM_LAYOUT_FB);
+        type(XrStructureType.ROOM_LAYOUT_FB);
     }
 
     public @EnumType(XrStructureType.class) int type() {

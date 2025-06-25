@@ -171,7 +171,7 @@ public record XrSystemSpatialMeshPropertiesBD(@NotNull MemorySegment segment) im
 
     public static XrSystemSpatialMeshPropertiesBD allocate(Arena arena) {
         XrSystemSpatialMeshPropertiesBD ret = new XrSystemSpatialMeshPropertiesBD(arena.allocate(LAYOUT));
-        ret.type(XrStructureType.XR_TYPE_SYSTEM_SPATIAL_MESH_PROPERTIES_BD);
+        ret.type(XrStructureType.SYSTEM_SPATIAL_MESH_PROPERTIES_BD);
         return ret;
     }
 
@@ -179,7 +179,7 @@ public record XrSystemSpatialMeshPropertiesBD(@NotNull MemorySegment segment) im
         MemorySegment segment = arena.allocate(LAYOUT, count);
         XrSystemSpatialMeshPropertiesBD.Ptr ret = new XrSystemSpatialMeshPropertiesBD.Ptr(segment);
         for (long i = 0; i < count; i++) {
-            ret.at(i).type(XrStructureType.XR_TYPE_SYSTEM_SPATIAL_MESH_PROPERTIES_BD);
+            ret.at(i).type(XrStructureType.SYSTEM_SPATIAL_MESH_PROPERTIES_BD);
         }
         return ret;
     }
@@ -191,7 +191,7 @@ public record XrSystemSpatialMeshPropertiesBD(@NotNull MemorySegment segment) im
     }
 
     public void autoInit() {
-        type(XrStructureType.XR_TYPE_SYSTEM_SPATIAL_MESH_PROPERTIES_BD);
+        type(XrStructureType.SYSTEM_SPATIAL_MESH_PROPERTIES_BD);
     }
 
     public @EnumType(XrStructureType.class) int type() {

@@ -173,7 +173,7 @@ public record XrQueriedSenseDataBD(@NotNull MemorySegment segment) implements IX
 
     public static XrQueriedSenseDataBD allocate(Arena arena) {
         XrQueriedSenseDataBD ret = new XrQueriedSenseDataBD(arena.allocate(LAYOUT));
-        ret.type(XrStructureType.XR_TYPE_QUERIED_SENSE_DATA_BD);
+        ret.type(XrStructureType.QUERIED_SENSE_DATA_BD);
         return ret;
     }
 
@@ -181,7 +181,7 @@ public record XrQueriedSenseDataBD(@NotNull MemorySegment segment) implements IX
         MemorySegment segment = arena.allocate(LAYOUT, count);
         XrQueriedSenseDataBD.Ptr ret = new XrQueriedSenseDataBD.Ptr(segment);
         for (long i = 0; i < count; i++) {
-            ret.at(i).type(XrStructureType.XR_TYPE_QUERIED_SENSE_DATA_BD);
+            ret.at(i).type(XrStructureType.QUERIED_SENSE_DATA_BD);
         }
         return ret;
     }
@@ -193,7 +193,7 @@ public record XrQueriedSenseDataBD(@NotNull MemorySegment segment) implements IX
     }
 
     public void autoInit() {
-        type(XrStructureType.XR_TYPE_QUERIED_SENSE_DATA_BD);
+        type(XrStructureType.QUERIED_SENSE_DATA_BD);
     }
 
     public @EnumType(XrStructureType.class) int type() {

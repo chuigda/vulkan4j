@@ -171,7 +171,7 @@ public record XrGraphicsRequirementsMetalKHR(@NotNull MemorySegment segment) imp
 
     public static XrGraphicsRequirementsMetalKHR allocate(Arena arena) {
         XrGraphicsRequirementsMetalKHR ret = new XrGraphicsRequirementsMetalKHR(arena.allocate(LAYOUT));
-        ret.type(XrStructureType.XR_TYPE_GRAPHICS_REQUIREMENTS_METAL_KHR);
+        ret.type(XrStructureType.GRAPHICS_REQUIREMENTS_METAL_KHR);
         return ret;
     }
 
@@ -179,7 +179,7 @@ public record XrGraphicsRequirementsMetalKHR(@NotNull MemorySegment segment) imp
         MemorySegment segment = arena.allocate(LAYOUT, count);
         XrGraphicsRequirementsMetalKHR.Ptr ret = new XrGraphicsRequirementsMetalKHR.Ptr(segment);
         for (long i = 0; i < count; i++) {
-            ret.at(i).type(XrStructureType.XR_TYPE_GRAPHICS_REQUIREMENTS_METAL_KHR);
+            ret.at(i).type(XrStructureType.GRAPHICS_REQUIREMENTS_METAL_KHR);
         }
         return ret;
     }
@@ -191,7 +191,7 @@ public record XrGraphicsRequirementsMetalKHR(@NotNull MemorySegment segment) imp
     }
 
     public void autoInit() {
-        type(XrStructureType.XR_TYPE_GRAPHICS_REQUIREMENTS_METAL_KHR);
+        type(XrStructureType.GRAPHICS_REQUIREMENTS_METAL_KHR);
     }
 
     public @EnumType(XrStructureType.class) int type() {

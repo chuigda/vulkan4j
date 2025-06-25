@@ -172,7 +172,7 @@ public record XrVulkanGraphicsDeviceGetInfoKHR(@NotNull MemorySegment segment) i
 
     public static XrVulkanGraphicsDeviceGetInfoKHR allocate(Arena arena) {
         XrVulkanGraphicsDeviceGetInfoKHR ret = new XrVulkanGraphicsDeviceGetInfoKHR(arena.allocate(LAYOUT));
-        ret.type(XrStructureType.XR_TYPE_VULKAN_GRAPHICS_DEVICE_GET_INFO_KHR);
+        ret.type(XrStructureType.VULKAN_GRAPHICS_DEVICE_GET_INFO_KHR);
         return ret;
     }
 
@@ -180,7 +180,7 @@ public record XrVulkanGraphicsDeviceGetInfoKHR(@NotNull MemorySegment segment) i
         MemorySegment segment = arena.allocate(LAYOUT, count);
         XrVulkanGraphicsDeviceGetInfoKHR.Ptr ret = new XrVulkanGraphicsDeviceGetInfoKHR.Ptr(segment);
         for (long i = 0; i < count; i++) {
-            ret.at(i).type(XrStructureType.XR_TYPE_VULKAN_GRAPHICS_DEVICE_GET_INFO_KHR);
+            ret.at(i).type(XrStructureType.VULKAN_GRAPHICS_DEVICE_GET_INFO_KHR);
         }
         return ret;
     }
@@ -192,7 +192,7 @@ public record XrVulkanGraphicsDeviceGetInfoKHR(@NotNull MemorySegment segment) i
     }
 
     public void autoInit() {
-        type(XrStructureType.XR_TYPE_VULKAN_GRAPHICS_DEVICE_GET_INFO_KHR);
+        type(XrStructureType.VULKAN_GRAPHICS_DEVICE_GET_INFO_KHR);
     }
 
     public @EnumType(XrStructureType.class) int type() {

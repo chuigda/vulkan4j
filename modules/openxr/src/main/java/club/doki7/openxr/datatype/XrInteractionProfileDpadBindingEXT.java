@@ -179,7 +179,7 @@ public record XrInteractionProfileDpadBindingEXT(@NotNull MemorySegment segment)
 
     public static XrInteractionProfileDpadBindingEXT allocate(Arena arena) {
         XrInteractionProfileDpadBindingEXT ret = new XrInteractionProfileDpadBindingEXT(arena.allocate(LAYOUT));
-        ret.type(XrStructureType.XR_TYPE_INTERACTION_PROFILE_DPAD_BINDING_EXT);
+        ret.type(XrStructureType.INTERACTION_PROFILE_DPAD_BINDING_EXT);
         return ret;
     }
 
@@ -187,7 +187,7 @@ public record XrInteractionProfileDpadBindingEXT(@NotNull MemorySegment segment)
         MemorySegment segment = arena.allocate(LAYOUT, count);
         XrInteractionProfileDpadBindingEXT.Ptr ret = new XrInteractionProfileDpadBindingEXT.Ptr(segment);
         for (long i = 0; i < count; i++) {
-            ret.at(i).type(XrStructureType.XR_TYPE_INTERACTION_PROFILE_DPAD_BINDING_EXT);
+            ret.at(i).type(XrStructureType.INTERACTION_PROFILE_DPAD_BINDING_EXT);
         }
         return ret;
     }
@@ -199,7 +199,7 @@ public record XrInteractionProfileDpadBindingEXT(@NotNull MemorySegment segment)
     }
 
     public void autoInit() {
-        type(XrStructureType.XR_TYPE_INTERACTION_PROFILE_DPAD_BINDING_EXT);
+        type(XrStructureType.INTERACTION_PROFILE_DPAD_BINDING_EXT);
     }
 
     public @EnumType(XrStructureType.class) int type() {

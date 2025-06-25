@@ -172,7 +172,7 @@ public record XrSpatialComponentAnchorListEXT(@NotNull MemorySegment segment) im
 
     public static XrSpatialComponentAnchorListEXT allocate(Arena arena) {
         XrSpatialComponentAnchorListEXT ret = new XrSpatialComponentAnchorListEXT(arena.allocate(LAYOUT));
-        ret.type(XrStructureType.XR_TYPE_SPATIAL_COMPONENT_ANCHOR_LIST_EXT);
+        ret.type(XrStructureType.SPATIAL_COMPONENT_ANCHOR_LIST_EXT);
         return ret;
     }
 
@@ -180,7 +180,7 @@ public record XrSpatialComponentAnchorListEXT(@NotNull MemorySegment segment) im
         MemorySegment segment = arena.allocate(LAYOUT, count);
         XrSpatialComponentAnchorListEXT.Ptr ret = new XrSpatialComponentAnchorListEXT.Ptr(segment);
         for (long i = 0; i < count; i++) {
-            ret.at(i).type(XrStructureType.XR_TYPE_SPATIAL_COMPONENT_ANCHOR_LIST_EXT);
+            ret.at(i).type(XrStructureType.SPATIAL_COMPONENT_ANCHOR_LIST_EXT);
         }
         return ret;
     }
@@ -192,7 +192,7 @@ public record XrSpatialComponentAnchorListEXT(@NotNull MemorySegment segment) im
     }
 
     public void autoInit() {
-        type(XrStructureType.XR_TYPE_SPATIAL_COMPONENT_ANCHOR_LIST_EXT);
+        type(XrStructureType.SPATIAL_COMPONENT_ANCHOR_LIST_EXT);
     }
 
     public @EnumType(XrStructureType.class) int type() {

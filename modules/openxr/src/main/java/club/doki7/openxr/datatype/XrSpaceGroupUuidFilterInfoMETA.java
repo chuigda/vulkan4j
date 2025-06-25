@@ -171,7 +171,7 @@ public record XrSpaceGroupUuidFilterInfoMETA(@NotNull MemorySegment segment) imp
 
     public static XrSpaceGroupUuidFilterInfoMETA allocate(Arena arena) {
         XrSpaceGroupUuidFilterInfoMETA ret = new XrSpaceGroupUuidFilterInfoMETA(arena.allocate(LAYOUT));
-        ret.type(XrStructureType.XR_TYPE_SPACE_GROUP_UUID_FILTER_INFO_META);
+        ret.type(XrStructureType.SPACE_GROUP_UUID_FILTER_INFO_META);
         return ret;
     }
 
@@ -179,7 +179,7 @@ public record XrSpaceGroupUuidFilterInfoMETA(@NotNull MemorySegment segment) imp
         MemorySegment segment = arena.allocate(LAYOUT, count);
         XrSpaceGroupUuidFilterInfoMETA.Ptr ret = new XrSpaceGroupUuidFilterInfoMETA.Ptr(segment);
         for (long i = 0; i < count; i++) {
-            ret.at(i).type(XrStructureType.XR_TYPE_SPACE_GROUP_UUID_FILTER_INFO_META);
+            ret.at(i).type(XrStructureType.SPACE_GROUP_UUID_FILTER_INFO_META);
         }
         return ret;
     }
@@ -191,7 +191,7 @@ public record XrSpaceGroupUuidFilterInfoMETA(@NotNull MemorySegment segment) imp
     }
 
     public void autoInit() {
-        type(XrStructureType.XR_TYPE_SPACE_GROUP_UUID_FILTER_INFO_META);
+        type(XrStructureType.SPACE_GROUP_UUID_FILTER_INFO_META);
     }
 
     public @EnumType(XrStructureType.class) int type() {

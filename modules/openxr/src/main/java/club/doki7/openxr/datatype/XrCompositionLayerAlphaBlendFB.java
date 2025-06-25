@@ -174,7 +174,7 @@ public record XrCompositionLayerAlphaBlendFB(@NotNull MemorySegment segment) imp
 
     public static XrCompositionLayerAlphaBlendFB allocate(Arena arena) {
         XrCompositionLayerAlphaBlendFB ret = new XrCompositionLayerAlphaBlendFB(arena.allocate(LAYOUT));
-        ret.type(XrStructureType.XR_TYPE_COMPOSITION_LAYER_ALPHA_BLEND_FB);
+        ret.type(XrStructureType.COMPOSITION_LAYER_ALPHA_BLEND_FB);
         return ret;
     }
 
@@ -182,7 +182,7 @@ public record XrCompositionLayerAlphaBlendFB(@NotNull MemorySegment segment) imp
         MemorySegment segment = arena.allocate(LAYOUT, count);
         XrCompositionLayerAlphaBlendFB.Ptr ret = new XrCompositionLayerAlphaBlendFB.Ptr(segment);
         for (long i = 0; i < count; i++) {
-            ret.at(i).type(XrStructureType.XR_TYPE_COMPOSITION_LAYER_ALPHA_BLEND_FB);
+            ret.at(i).type(XrStructureType.COMPOSITION_LAYER_ALPHA_BLEND_FB);
         }
         return ret;
     }
@@ -194,7 +194,7 @@ public record XrCompositionLayerAlphaBlendFB(@NotNull MemorySegment segment) imp
     }
 
     public void autoInit() {
-        type(XrStructureType.XR_TYPE_COMPOSITION_LAYER_ALPHA_BLEND_FB);
+        type(XrStructureType.COMPOSITION_LAYER_ALPHA_BLEND_FB);
     }
 
     public @EnumType(XrStructureType.class) int type() {

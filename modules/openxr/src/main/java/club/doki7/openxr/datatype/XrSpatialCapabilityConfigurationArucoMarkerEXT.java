@@ -174,7 +174,7 @@ public record XrSpatialCapabilityConfigurationArucoMarkerEXT(@NotNull MemorySegm
 
     public static XrSpatialCapabilityConfigurationArucoMarkerEXT allocate(Arena arena) {
         XrSpatialCapabilityConfigurationArucoMarkerEXT ret = new XrSpatialCapabilityConfigurationArucoMarkerEXT(arena.allocate(LAYOUT));
-        ret.type(XrStructureType.XR_TYPE_SPATIAL_CAPABILITY_CONFIGURATION_ARUCO_MARKER_EXT);
+        ret.type(XrStructureType.SPATIAL_CAPABILITY_CONFIGURATION_ARUCO_MARKER_EXT);
         return ret;
     }
 
@@ -182,7 +182,7 @@ public record XrSpatialCapabilityConfigurationArucoMarkerEXT(@NotNull MemorySegm
         MemorySegment segment = arena.allocate(LAYOUT, count);
         XrSpatialCapabilityConfigurationArucoMarkerEXT.Ptr ret = new XrSpatialCapabilityConfigurationArucoMarkerEXT.Ptr(segment);
         for (long i = 0; i < count; i++) {
-            ret.at(i).type(XrStructureType.XR_TYPE_SPATIAL_CAPABILITY_CONFIGURATION_ARUCO_MARKER_EXT);
+            ret.at(i).type(XrStructureType.SPATIAL_CAPABILITY_CONFIGURATION_ARUCO_MARKER_EXT);
         }
         return ret;
     }
@@ -194,7 +194,7 @@ public record XrSpatialCapabilityConfigurationArucoMarkerEXT(@NotNull MemorySegm
     }
 
     public void autoInit() {
-        type(XrStructureType.XR_TYPE_SPATIAL_CAPABILITY_CONFIGURATION_ARUCO_MARKER_EXT);
+        type(XrStructureType.SPATIAL_CAPABILITY_CONFIGURATION_ARUCO_MARKER_EXT);
     }
 
     public @EnumType(XrStructureType.class) int type() {

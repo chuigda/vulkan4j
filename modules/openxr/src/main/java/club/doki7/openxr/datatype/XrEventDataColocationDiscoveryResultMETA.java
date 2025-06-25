@@ -174,7 +174,7 @@ public record XrEventDataColocationDiscoveryResultMETA(@NotNull MemorySegment se
 
     public static XrEventDataColocationDiscoveryResultMETA allocate(Arena arena) {
         XrEventDataColocationDiscoveryResultMETA ret = new XrEventDataColocationDiscoveryResultMETA(arena.allocate(LAYOUT));
-        ret.type(XrStructureType.XR_TYPE_EVENT_DATA_COLOCATION_DISCOVERY_RESULT_META);
+        ret.type(XrStructureType.EVENT_DATA_COLOCATION_DISCOVERY_RESULT_META);
         return ret;
     }
 
@@ -182,7 +182,7 @@ public record XrEventDataColocationDiscoveryResultMETA(@NotNull MemorySegment se
         MemorySegment segment = arena.allocate(LAYOUT, count);
         XrEventDataColocationDiscoveryResultMETA.Ptr ret = new XrEventDataColocationDiscoveryResultMETA.Ptr(segment);
         for (long i = 0; i < count; i++) {
-            ret.at(i).type(XrStructureType.XR_TYPE_EVENT_DATA_COLOCATION_DISCOVERY_RESULT_META);
+            ret.at(i).type(XrStructureType.EVENT_DATA_COLOCATION_DISCOVERY_RESULT_META);
         }
         return ret;
     }
@@ -194,7 +194,7 @@ public record XrEventDataColocationDiscoveryResultMETA(@NotNull MemorySegment se
     }
 
     public void autoInit() {
-        type(XrStructureType.XR_TYPE_EVENT_DATA_COLOCATION_DISCOVERY_RESULT_META);
+        type(XrStructureType.EVENT_DATA_COLOCATION_DISCOVERY_RESULT_META);
     }
 
     public @EnumType(XrStructureType.class) int type() {

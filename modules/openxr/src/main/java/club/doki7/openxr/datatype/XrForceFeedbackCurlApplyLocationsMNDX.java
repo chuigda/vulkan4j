@@ -172,7 +172,7 @@ public record XrForceFeedbackCurlApplyLocationsMNDX(@NotNull MemorySegment segme
 
     public static XrForceFeedbackCurlApplyLocationsMNDX allocate(Arena arena) {
         XrForceFeedbackCurlApplyLocationsMNDX ret = new XrForceFeedbackCurlApplyLocationsMNDX(arena.allocate(LAYOUT));
-        ret.type(XrStructureType.XR_TYPE_FORCE_FEEDBACK_CURL_APPLY_LOCATIONS_MNDX);
+        ret.type(XrStructureType.FORCE_FEEDBACK_CURL_APPLY_LOCATIONS_MNDX);
         return ret;
     }
 
@@ -180,7 +180,7 @@ public record XrForceFeedbackCurlApplyLocationsMNDX(@NotNull MemorySegment segme
         MemorySegment segment = arena.allocate(LAYOUT, count);
         XrForceFeedbackCurlApplyLocationsMNDX.Ptr ret = new XrForceFeedbackCurlApplyLocationsMNDX.Ptr(segment);
         for (long i = 0; i < count; i++) {
-            ret.at(i).type(XrStructureType.XR_TYPE_FORCE_FEEDBACK_CURL_APPLY_LOCATIONS_MNDX);
+            ret.at(i).type(XrStructureType.FORCE_FEEDBACK_CURL_APPLY_LOCATIONS_MNDX);
         }
         return ret;
     }
@@ -192,7 +192,7 @@ public record XrForceFeedbackCurlApplyLocationsMNDX(@NotNull MemorySegment segme
     }
 
     public void autoInit() {
-        type(XrStructureType.XR_TYPE_FORCE_FEEDBACK_CURL_APPLY_LOCATIONS_MNDX);
+        type(XrStructureType.FORCE_FEEDBACK_CURL_APPLY_LOCATIONS_MNDX);
     }
 
     public @EnumType(XrStructureType.class) int type() {

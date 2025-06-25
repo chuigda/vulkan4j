@@ -173,7 +173,7 @@ public record XrPassthroughColorLutCreateInfoMETA(@NotNull MemorySegment segment
 
     public static XrPassthroughColorLutCreateInfoMETA allocate(Arena arena) {
         XrPassthroughColorLutCreateInfoMETA ret = new XrPassthroughColorLutCreateInfoMETA(arena.allocate(LAYOUT));
-        ret.type(XrStructureType.XR_TYPE_PASSTHROUGH_COLOR_LUT_CREATE_INFO_META);
+        ret.type(XrStructureType.PASSTHROUGH_COLOR_LUT_CREATE_INFO_META);
         return ret;
     }
 
@@ -181,7 +181,7 @@ public record XrPassthroughColorLutCreateInfoMETA(@NotNull MemorySegment segment
         MemorySegment segment = arena.allocate(LAYOUT, count);
         XrPassthroughColorLutCreateInfoMETA.Ptr ret = new XrPassthroughColorLutCreateInfoMETA.Ptr(segment);
         for (long i = 0; i < count; i++) {
-            ret.at(i).type(XrStructureType.XR_TYPE_PASSTHROUGH_COLOR_LUT_CREATE_INFO_META);
+            ret.at(i).type(XrStructureType.PASSTHROUGH_COLOR_LUT_CREATE_INFO_META);
         }
         return ret;
     }
@@ -193,7 +193,7 @@ public record XrPassthroughColorLutCreateInfoMETA(@NotNull MemorySegment segment
     }
 
     public void autoInit() {
-        type(XrStructureType.XR_TYPE_PASSTHROUGH_COLOR_LUT_CREATE_INFO_META);
+        type(XrStructureType.PASSTHROUGH_COLOR_LUT_CREATE_INFO_META);
     }
 
     public @EnumType(XrStructureType.class) int type() {

@@ -172,7 +172,7 @@ public record XrMarkerDetectorCreateInfoML(@NotNull MemorySegment segment) imple
 
     public static XrMarkerDetectorCreateInfoML allocate(Arena arena) {
         XrMarkerDetectorCreateInfoML ret = new XrMarkerDetectorCreateInfoML(arena.allocate(LAYOUT));
-        ret.type(XrStructureType.XR_TYPE_MARKER_DETECTOR_CREATE_INFO_ML);
+        ret.type(XrStructureType.MARKER_DETECTOR_CREATE_INFO_ML);
         return ret;
     }
 
@@ -180,7 +180,7 @@ public record XrMarkerDetectorCreateInfoML(@NotNull MemorySegment segment) imple
         MemorySegment segment = arena.allocate(LAYOUT, count);
         XrMarkerDetectorCreateInfoML.Ptr ret = new XrMarkerDetectorCreateInfoML.Ptr(segment);
         for (long i = 0; i < count; i++) {
-            ret.at(i).type(XrStructureType.XR_TYPE_MARKER_DETECTOR_CREATE_INFO_ML);
+            ret.at(i).type(XrStructureType.MARKER_DETECTOR_CREATE_INFO_ML);
         }
         return ret;
     }
@@ -192,7 +192,7 @@ public record XrMarkerDetectorCreateInfoML(@NotNull MemorySegment segment) imple
     }
 
     public void autoInit() {
-        type(XrStructureType.XR_TYPE_MARKER_DETECTOR_CREATE_INFO_ML);
+        type(XrStructureType.MARKER_DETECTOR_CREATE_INFO_ML);
     }
 
     public @EnumType(XrStructureType.class) int type() {

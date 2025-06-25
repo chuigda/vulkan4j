@@ -172,7 +172,7 @@ public record XrSpatialComponentDataQueryConditionEXT(@NotNull MemorySegment seg
 
     public static XrSpatialComponentDataQueryConditionEXT allocate(Arena arena) {
         XrSpatialComponentDataQueryConditionEXT ret = new XrSpatialComponentDataQueryConditionEXT(arena.allocate(LAYOUT));
-        ret.type(XrStructureType.XR_TYPE_SPATIAL_COMPONENT_DATA_QUERY_CONDITION_EXT);
+        ret.type(XrStructureType.SPATIAL_COMPONENT_DATA_QUERY_CONDITION_EXT);
         return ret;
     }
 
@@ -180,7 +180,7 @@ public record XrSpatialComponentDataQueryConditionEXT(@NotNull MemorySegment seg
         MemorySegment segment = arena.allocate(LAYOUT, count);
         XrSpatialComponentDataQueryConditionEXT.Ptr ret = new XrSpatialComponentDataQueryConditionEXT.Ptr(segment);
         for (long i = 0; i < count; i++) {
-            ret.at(i).type(XrStructureType.XR_TYPE_SPATIAL_COMPONENT_DATA_QUERY_CONDITION_EXT);
+            ret.at(i).type(XrStructureType.SPATIAL_COMPONENT_DATA_QUERY_CONDITION_EXT);
         }
         return ret;
     }
@@ -192,7 +192,7 @@ public record XrSpatialComponentDataQueryConditionEXT(@NotNull MemorySegment seg
     }
 
     public void autoInit() {
-        type(XrStructureType.XR_TYPE_SPATIAL_COMPONENT_DATA_QUERY_CONDITION_EXT);
+        type(XrStructureType.SPATIAL_COMPONENT_DATA_QUERY_CONDITION_EXT);
     }
 
     public @EnumType(XrStructureType.class) int type() {

@@ -176,7 +176,7 @@ public record XrFaceExpressionWeightsFB(@NotNull MemorySegment segment) implemen
 
     public static XrFaceExpressionWeightsFB allocate(Arena arena) {
         XrFaceExpressionWeightsFB ret = new XrFaceExpressionWeightsFB(arena.allocate(LAYOUT));
-        ret.type(XrStructureType.XR_TYPE_FACE_EXPRESSION_WEIGHTS_FB);
+        ret.type(XrStructureType.FACE_EXPRESSION_WEIGHTS_FB);
         return ret;
     }
 
@@ -184,7 +184,7 @@ public record XrFaceExpressionWeightsFB(@NotNull MemorySegment segment) implemen
         MemorySegment segment = arena.allocate(LAYOUT, count);
         XrFaceExpressionWeightsFB.Ptr ret = new XrFaceExpressionWeightsFB.Ptr(segment);
         for (long i = 0; i < count; i++) {
-            ret.at(i).type(XrStructureType.XR_TYPE_FACE_EXPRESSION_WEIGHTS_FB);
+            ret.at(i).type(XrStructureType.FACE_EXPRESSION_WEIGHTS_FB);
         }
         return ret;
     }
@@ -196,7 +196,7 @@ public record XrFaceExpressionWeightsFB(@NotNull MemorySegment segment) implemen
     }
 
     public void autoInit() {
-        type(XrStructureType.XR_TYPE_FACE_EXPRESSION_WEIGHTS_FB);
+        type(XrStructureType.FACE_EXPRESSION_WEIGHTS_FB);
     }
 
     public @EnumType(XrStructureType.class) int type() {

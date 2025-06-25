@@ -176,7 +176,7 @@ public record XrSpatialEntityComponentDataTriangleMeshBD(@NotNull MemorySegment 
 
     public static XrSpatialEntityComponentDataTriangleMeshBD allocate(Arena arena) {
         XrSpatialEntityComponentDataTriangleMeshBD ret = new XrSpatialEntityComponentDataTriangleMeshBD(arena.allocate(LAYOUT));
-        ret.type(XrStructureType.XR_TYPE_SPATIAL_ENTITY_COMPONENT_DATA_TRIANGLE_MESH_BD);
+        ret.type(XrStructureType.SPATIAL_ENTITY_COMPONENT_DATA_TRIANGLE_MESH_BD);
         return ret;
     }
 
@@ -184,7 +184,7 @@ public record XrSpatialEntityComponentDataTriangleMeshBD(@NotNull MemorySegment 
         MemorySegment segment = arena.allocate(LAYOUT, count);
         XrSpatialEntityComponentDataTriangleMeshBD.Ptr ret = new XrSpatialEntityComponentDataTriangleMeshBD.Ptr(segment);
         for (long i = 0; i < count; i++) {
-            ret.at(i).type(XrStructureType.XR_TYPE_SPATIAL_ENTITY_COMPONENT_DATA_TRIANGLE_MESH_BD);
+            ret.at(i).type(XrStructureType.SPATIAL_ENTITY_COMPONENT_DATA_TRIANGLE_MESH_BD);
         }
         return ret;
     }
@@ -196,7 +196,7 @@ public record XrSpatialEntityComponentDataTriangleMeshBD(@NotNull MemorySegment 
     }
 
     public void autoInit() {
-        type(XrStructureType.XR_TYPE_SPATIAL_ENTITY_COMPONENT_DATA_TRIANGLE_MESH_BD);
+        type(XrStructureType.SPATIAL_ENTITY_COMPONENT_DATA_TRIANGLE_MESH_BD);
     }
 
     public @EnumType(XrStructureType.class) int type() {

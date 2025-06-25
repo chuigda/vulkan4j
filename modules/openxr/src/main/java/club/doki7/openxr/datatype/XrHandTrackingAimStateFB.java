@@ -176,7 +176,7 @@ public record XrHandTrackingAimStateFB(@NotNull MemorySegment segment) implement
 
     public static XrHandTrackingAimStateFB allocate(Arena arena) {
         XrHandTrackingAimStateFB ret = new XrHandTrackingAimStateFB(arena.allocate(LAYOUT));
-        ret.type(XrStructureType.XR_TYPE_HAND_TRACKING_AIM_STATE_FB);
+        ret.type(XrStructureType.HAND_TRACKING_AIM_STATE_FB);
         return ret;
     }
 
@@ -184,7 +184,7 @@ public record XrHandTrackingAimStateFB(@NotNull MemorySegment segment) implement
         MemorySegment segment = arena.allocate(LAYOUT, count);
         XrHandTrackingAimStateFB.Ptr ret = new XrHandTrackingAimStateFB.Ptr(segment);
         for (long i = 0; i < count; i++) {
-            ret.at(i).type(XrStructureType.XR_TYPE_HAND_TRACKING_AIM_STATE_FB);
+            ret.at(i).type(XrStructureType.HAND_TRACKING_AIM_STATE_FB);
         }
         return ret;
     }
@@ -196,7 +196,7 @@ public record XrHandTrackingAimStateFB(@NotNull MemorySegment segment) implement
     }
 
     public void autoInit() {
-        type(XrStructureType.XR_TYPE_HAND_TRACKING_AIM_STATE_FB);
+        type(XrStructureType.HAND_TRACKING_AIM_STATE_FB);
     }
 
     public @EnumType(XrStructureType.class) int type() {

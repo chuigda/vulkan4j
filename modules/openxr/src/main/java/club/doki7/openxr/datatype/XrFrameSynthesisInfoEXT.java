@@ -180,7 +180,7 @@ public record XrFrameSynthesisInfoEXT(@NotNull MemorySegment segment) implements
 
     public static XrFrameSynthesisInfoEXT allocate(Arena arena) {
         XrFrameSynthesisInfoEXT ret = new XrFrameSynthesisInfoEXT(arena.allocate(LAYOUT));
-        ret.type(XrStructureType.XR_TYPE_FRAME_SYNTHESIS_INFO_EXT);
+        ret.type(XrStructureType.FRAME_SYNTHESIS_INFO_EXT);
         return ret;
     }
 
@@ -188,7 +188,7 @@ public record XrFrameSynthesisInfoEXT(@NotNull MemorySegment segment) implements
         MemorySegment segment = arena.allocate(LAYOUT, count);
         XrFrameSynthesisInfoEXT.Ptr ret = new XrFrameSynthesisInfoEXT.Ptr(segment);
         for (long i = 0; i < count; i++) {
-            ret.at(i).type(XrStructureType.XR_TYPE_FRAME_SYNTHESIS_INFO_EXT);
+            ret.at(i).type(XrStructureType.FRAME_SYNTHESIS_INFO_EXT);
         }
         return ret;
     }
@@ -200,7 +200,7 @@ public record XrFrameSynthesisInfoEXT(@NotNull MemorySegment segment) implements
     }
 
     public void autoInit() {
-        type(XrStructureType.XR_TYPE_FRAME_SYNTHESIS_INFO_EXT);
+        type(XrStructureType.FRAME_SYNTHESIS_INFO_EXT);
     }
 
     public @EnumType(XrStructureType.class) int type() {

@@ -171,7 +171,7 @@ public record XrGraphicsBindingOpenGLWaylandKHR(@NotNull MemorySegment segment) 
 
     public static XrGraphicsBindingOpenGLWaylandKHR allocate(Arena arena) {
         XrGraphicsBindingOpenGLWaylandKHR ret = new XrGraphicsBindingOpenGLWaylandKHR(arena.allocate(LAYOUT));
-        ret.type(XrStructureType.XR_TYPE_GRAPHICS_BINDING_OPENGL_WAYLAND_KHR);
+        ret.type(XrStructureType.GRAPHICS_BINDING_OPENGL_WAYLAND_KHR);
         return ret;
     }
 
@@ -179,7 +179,7 @@ public record XrGraphicsBindingOpenGLWaylandKHR(@NotNull MemorySegment segment) 
         MemorySegment segment = arena.allocate(LAYOUT, count);
         XrGraphicsBindingOpenGLWaylandKHR.Ptr ret = new XrGraphicsBindingOpenGLWaylandKHR.Ptr(segment);
         for (long i = 0; i < count; i++) {
-            ret.at(i).type(XrStructureType.XR_TYPE_GRAPHICS_BINDING_OPENGL_WAYLAND_KHR);
+            ret.at(i).type(XrStructureType.GRAPHICS_BINDING_OPENGL_WAYLAND_KHR);
         }
         return ret;
     }
@@ -191,7 +191,7 @@ public record XrGraphicsBindingOpenGLWaylandKHR(@NotNull MemorySegment segment) 
     }
 
     public void autoInit() {
-        type(XrStructureType.XR_TYPE_GRAPHICS_BINDING_OPENGL_WAYLAND_KHR);
+        type(XrStructureType.GRAPHICS_BINDING_OPENGL_WAYLAND_KHR);
     }
 
     public @EnumType(XrStructureType.class) int type() {

@@ -171,7 +171,7 @@ public record XrMarkerDetectorAprilTagInfoML(@NotNull MemorySegment segment) imp
 
     public static XrMarkerDetectorAprilTagInfoML allocate(Arena arena) {
         XrMarkerDetectorAprilTagInfoML ret = new XrMarkerDetectorAprilTagInfoML(arena.allocate(LAYOUT));
-        ret.type(XrStructureType.XR_TYPE_MARKER_DETECTOR_APRIL_TAG_INFO_ML);
+        ret.type(XrStructureType.MARKER_DETECTOR_APRIL_TAG_INFO_ML);
         return ret;
     }
 
@@ -179,7 +179,7 @@ public record XrMarkerDetectorAprilTagInfoML(@NotNull MemorySegment segment) imp
         MemorySegment segment = arena.allocate(LAYOUT, count);
         XrMarkerDetectorAprilTagInfoML.Ptr ret = new XrMarkerDetectorAprilTagInfoML.Ptr(segment);
         for (long i = 0; i < count; i++) {
-            ret.at(i).type(XrStructureType.XR_TYPE_MARKER_DETECTOR_APRIL_TAG_INFO_ML);
+            ret.at(i).type(XrStructureType.MARKER_DETECTOR_APRIL_TAG_INFO_ML);
         }
         return ret;
     }
@@ -191,7 +191,7 @@ public record XrMarkerDetectorAprilTagInfoML(@NotNull MemorySegment segment) imp
     }
 
     public void autoInit() {
-        type(XrStructureType.XR_TYPE_MARKER_DETECTOR_APRIL_TAG_INFO_ML);
+        type(XrStructureType.MARKER_DETECTOR_APRIL_TAG_INFO_ML);
     }
 
     public @EnumType(XrStructureType.class) int type() {

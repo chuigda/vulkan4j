@@ -171,7 +171,7 @@ public record XrSystemAnchorPropertiesHTC(@NotNull MemorySegment segment) implem
 
     public static XrSystemAnchorPropertiesHTC allocate(Arena arena) {
         XrSystemAnchorPropertiesHTC ret = new XrSystemAnchorPropertiesHTC(arena.allocate(LAYOUT));
-        ret.type(XrStructureType.XR_TYPE_SYSTEM_ANCHOR_PROPERTIES_HTC);
+        ret.type(XrStructureType.SYSTEM_ANCHOR_PROPERTIES_HTC);
         return ret;
     }
 
@@ -179,7 +179,7 @@ public record XrSystemAnchorPropertiesHTC(@NotNull MemorySegment segment) implem
         MemorySegment segment = arena.allocate(LAYOUT, count);
         XrSystemAnchorPropertiesHTC.Ptr ret = new XrSystemAnchorPropertiesHTC.Ptr(segment);
         for (long i = 0; i < count; i++) {
-            ret.at(i).type(XrStructureType.XR_TYPE_SYSTEM_ANCHOR_PROPERTIES_HTC);
+            ret.at(i).type(XrStructureType.SYSTEM_ANCHOR_PROPERTIES_HTC);
         }
         return ret;
     }
@@ -191,7 +191,7 @@ public record XrSystemAnchorPropertiesHTC(@NotNull MemorySegment segment) implem
     }
 
     public void autoInit() {
-        type(XrStructureType.XR_TYPE_SYSTEM_ANCHOR_PROPERTIES_HTC);
+        type(XrStructureType.SYSTEM_ANCHOR_PROPERTIES_HTC);
     }
 
     public @EnumType(XrStructureType.class) int type() {

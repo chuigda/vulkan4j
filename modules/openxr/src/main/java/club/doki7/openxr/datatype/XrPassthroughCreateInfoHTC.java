@@ -171,7 +171,7 @@ public record XrPassthroughCreateInfoHTC(@NotNull MemorySegment segment) impleme
 
     public static XrPassthroughCreateInfoHTC allocate(Arena arena) {
         XrPassthroughCreateInfoHTC ret = new XrPassthroughCreateInfoHTC(arena.allocate(LAYOUT));
-        ret.type(XrStructureType.XR_TYPE_PASSTHROUGH_CREATE_INFO_HTC);
+        ret.type(XrStructureType.PASSTHROUGH_CREATE_INFO_HTC);
         return ret;
     }
 
@@ -179,7 +179,7 @@ public record XrPassthroughCreateInfoHTC(@NotNull MemorySegment segment) impleme
         MemorySegment segment = arena.allocate(LAYOUT, count);
         XrPassthroughCreateInfoHTC.Ptr ret = new XrPassthroughCreateInfoHTC.Ptr(segment);
         for (long i = 0; i < count; i++) {
-            ret.at(i).type(XrStructureType.XR_TYPE_PASSTHROUGH_CREATE_INFO_HTC);
+            ret.at(i).type(XrStructureType.PASSTHROUGH_CREATE_INFO_HTC);
         }
         return ret;
     }
@@ -191,7 +191,7 @@ public record XrPassthroughCreateInfoHTC(@NotNull MemorySegment segment) impleme
     }
 
     public void autoInit() {
-        type(XrStructureType.XR_TYPE_PASSTHROUGH_CREATE_INFO_HTC);
+        type(XrStructureType.PASSTHROUGH_CREATE_INFO_HTC);
     }
 
     public @EnumType(XrStructureType.class) int type() {

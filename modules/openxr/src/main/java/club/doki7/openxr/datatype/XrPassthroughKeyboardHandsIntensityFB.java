@@ -172,7 +172,7 @@ public record XrPassthroughKeyboardHandsIntensityFB(@NotNull MemorySegment segme
 
     public static XrPassthroughKeyboardHandsIntensityFB allocate(Arena arena) {
         XrPassthroughKeyboardHandsIntensityFB ret = new XrPassthroughKeyboardHandsIntensityFB(arena.allocate(LAYOUT));
-        ret.type(XrStructureType.XR_TYPE_PASSTHROUGH_KEYBOARD_HANDS_INTENSITY_FB);
+        ret.type(XrStructureType.PASSTHROUGH_KEYBOARD_HANDS_INTENSITY_FB);
         return ret;
     }
 
@@ -180,7 +180,7 @@ public record XrPassthroughKeyboardHandsIntensityFB(@NotNull MemorySegment segme
         MemorySegment segment = arena.allocate(LAYOUT, count);
         XrPassthroughKeyboardHandsIntensityFB.Ptr ret = new XrPassthroughKeyboardHandsIntensityFB.Ptr(segment);
         for (long i = 0; i < count; i++) {
-            ret.at(i).type(XrStructureType.XR_TYPE_PASSTHROUGH_KEYBOARD_HANDS_INTENSITY_FB);
+            ret.at(i).type(XrStructureType.PASSTHROUGH_KEYBOARD_HANDS_INTENSITY_FB);
         }
         return ret;
     }
@@ -192,7 +192,7 @@ public record XrPassthroughKeyboardHandsIntensityFB(@NotNull MemorySegment segme
     }
 
     public void autoInit() {
-        type(XrStructureType.XR_TYPE_PASSTHROUGH_KEYBOARD_HANDS_INTENSITY_FB);
+        type(XrStructureType.PASSTHROUGH_KEYBOARD_HANDS_INTENSITY_FB);
     }
 
     public @EnumType(XrStructureType.class) int type() {

@@ -175,7 +175,7 @@ public record XrGraphicsBindingVulkanKHR(@NotNull MemorySegment segment) impleme
 
     public static XrGraphicsBindingVulkanKHR allocate(Arena arena) {
         XrGraphicsBindingVulkanKHR ret = new XrGraphicsBindingVulkanKHR(arena.allocate(LAYOUT));
-        ret.type(XrStructureType.XR_TYPE_GRAPHICS_BINDING_VULKAN_KHR);
+        ret.type(XrStructureType.GRAPHICS_BINDING_VULKAN_KHR);
         return ret;
     }
 
@@ -183,7 +183,7 @@ public record XrGraphicsBindingVulkanKHR(@NotNull MemorySegment segment) impleme
         MemorySegment segment = arena.allocate(LAYOUT, count);
         XrGraphicsBindingVulkanKHR.Ptr ret = new XrGraphicsBindingVulkanKHR.Ptr(segment);
         for (long i = 0; i < count; i++) {
-            ret.at(i).type(XrStructureType.XR_TYPE_GRAPHICS_BINDING_VULKAN_KHR);
+            ret.at(i).type(XrStructureType.GRAPHICS_BINDING_VULKAN_KHR);
         }
         return ret;
     }
@@ -195,7 +195,7 @@ public record XrGraphicsBindingVulkanKHR(@NotNull MemorySegment segment) impleme
     }
 
     public void autoInit() {
-        type(XrStructureType.XR_TYPE_GRAPHICS_BINDING_VULKAN_KHR);
+        type(XrStructureType.GRAPHICS_BINDING_VULKAN_KHR);
     }
 
     public @EnumType(XrStructureType.class) int type() {

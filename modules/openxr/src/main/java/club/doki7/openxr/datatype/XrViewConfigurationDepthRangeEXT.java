@@ -174,7 +174,7 @@ public record XrViewConfigurationDepthRangeEXT(@NotNull MemorySegment segment) i
 
     public static XrViewConfigurationDepthRangeEXT allocate(Arena arena) {
         XrViewConfigurationDepthRangeEXT ret = new XrViewConfigurationDepthRangeEXT(arena.allocate(LAYOUT));
-        ret.type(XrStructureType.XR_TYPE_VIEW_CONFIGURATION_DEPTH_RANGE_EXT);
+        ret.type(XrStructureType.VIEW_CONFIGURATION_DEPTH_RANGE_EXT);
         return ret;
     }
 
@@ -182,7 +182,7 @@ public record XrViewConfigurationDepthRangeEXT(@NotNull MemorySegment segment) i
         MemorySegment segment = arena.allocate(LAYOUT, count);
         XrViewConfigurationDepthRangeEXT.Ptr ret = new XrViewConfigurationDepthRangeEXT.Ptr(segment);
         for (long i = 0; i < count; i++) {
-            ret.at(i).type(XrStructureType.XR_TYPE_VIEW_CONFIGURATION_DEPTH_RANGE_EXT);
+            ret.at(i).type(XrStructureType.VIEW_CONFIGURATION_DEPTH_RANGE_EXT);
         }
         return ret;
     }
@@ -194,7 +194,7 @@ public record XrViewConfigurationDepthRangeEXT(@NotNull MemorySegment segment) i
     }
 
     public void autoInit() {
-        type(XrStructureType.XR_TYPE_VIEW_CONFIGURATION_DEPTH_RANGE_EXT);
+        type(XrStructureType.VIEW_CONFIGURATION_DEPTH_RANGE_EXT);
     }
 
     public @EnumType(XrStructureType.class) int type() {

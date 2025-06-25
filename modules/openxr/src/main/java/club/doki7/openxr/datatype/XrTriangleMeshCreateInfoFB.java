@@ -176,7 +176,7 @@ public record XrTriangleMeshCreateInfoFB(@NotNull MemorySegment segment) impleme
 
     public static XrTriangleMeshCreateInfoFB allocate(Arena arena) {
         XrTriangleMeshCreateInfoFB ret = new XrTriangleMeshCreateInfoFB(arena.allocate(LAYOUT));
-        ret.type(XrStructureType.XR_TYPE_TRIANGLE_MESH_CREATE_INFO_FB);
+        ret.type(XrStructureType.TRIANGLE_MESH_CREATE_INFO_FB);
         return ret;
     }
 
@@ -184,7 +184,7 @@ public record XrTriangleMeshCreateInfoFB(@NotNull MemorySegment segment) impleme
         MemorySegment segment = arena.allocate(LAYOUT, count);
         XrTriangleMeshCreateInfoFB.Ptr ret = new XrTriangleMeshCreateInfoFB.Ptr(segment);
         for (long i = 0; i < count; i++) {
-            ret.at(i).type(XrStructureType.XR_TYPE_TRIANGLE_MESH_CREATE_INFO_FB);
+            ret.at(i).type(XrStructureType.TRIANGLE_MESH_CREATE_INFO_FB);
         }
         return ret;
     }
@@ -196,7 +196,7 @@ public record XrTriangleMeshCreateInfoFB(@NotNull MemorySegment segment) impleme
     }
 
     public void autoInit() {
-        type(XrStructureType.XR_TYPE_TRIANGLE_MESH_CREATE_INFO_FB);
+        type(XrStructureType.TRIANGLE_MESH_CREATE_INFO_FB);
     }
 
     public @EnumType(XrStructureType.class) int type() {

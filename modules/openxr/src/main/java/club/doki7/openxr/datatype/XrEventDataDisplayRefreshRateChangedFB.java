@@ -172,7 +172,7 @@ public record XrEventDataDisplayRefreshRateChangedFB(@NotNull MemorySegment segm
 
     public static XrEventDataDisplayRefreshRateChangedFB allocate(Arena arena) {
         XrEventDataDisplayRefreshRateChangedFB ret = new XrEventDataDisplayRefreshRateChangedFB(arena.allocate(LAYOUT));
-        ret.type(XrStructureType.XR_TYPE_EVENT_DATA_DISPLAY_REFRESH_RATE_CHANGED_FB);
+        ret.type(XrStructureType.EVENT_DATA_DISPLAY_REFRESH_RATE_CHANGED_FB);
         return ret;
     }
 
@@ -180,7 +180,7 @@ public record XrEventDataDisplayRefreshRateChangedFB(@NotNull MemorySegment segm
         MemorySegment segment = arena.allocate(LAYOUT, count);
         XrEventDataDisplayRefreshRateChangedFB.Ptr ret = new XrEventDataDisplayRefreshRateChangedFB.Ptr(segment);
         for (long i = 0; i < count; i++) {
-            ret.at(i).type(XrStructureType.XR_TYPE_EVENT_DATA_DISPLAY_REFRESH_RATE_CHANGED_FB);
+            ret.at(i).type(XrStructureType.EVENT_DATA_DISPLAY_REFRESH_RATE_CHANGED_FB);
         }
         return ret;
     }
@@ -192,7 +192,7 @@ public record XrEventDataDisplayRefreshRateChangedFB(@NotNull MemorySegment segm
     }
 
     public void autoInit() {
-        type(XrStructureType.XR_TYPE_EVENT_DATA_DISPLAY_REFRESH_RATE_CHANGED_FB);
+        type(XrStructureType.EVENT_DATA_DISPLAY_REFRESH_RATE_CHANGED_FB);
     }
 
     public @EnumType(XrStructureType.class) int type() {

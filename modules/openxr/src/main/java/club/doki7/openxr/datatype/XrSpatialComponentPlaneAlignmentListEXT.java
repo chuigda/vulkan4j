@@ -172,7 +172,7 @@ public record XrSpatialComponentPlaneAlignmentListEXT(@NotNull MemorySegment seg
 
     public static XrSpatialComponentPlaneAlignmentListEXT allocate(Arena arena) {
         XrSpatialComponentPlaneAlignmentListEXT ret = new XrSpatialComponentPlaneAlignmentListEXT(arena.allocate(LAYOUT));
-        ret.type(XrStructureType.XR_TYPE_SPATIAL_COMPONENT_PLANE_ALIGNMENT_LIST_EXT);
+        ret.type(XrStructureType.SPATIAL_COMPONENT_PLANE_ALIGNMENT_LIST_EXT);
         return ret;
     }
 
@@ -180,7 +180,7 @@ public record XrSpatialComponentPlaneAlignmentListEXT(@NotNull MemorySegment seg
         MemorySegment segment = arena.allocate(LAYOUT, count);
         XrSpatialComponentPlaneAlignmentListEXT.Ptr ret = new XrSpatialComponentPlaneAlignmentListEXT.Ptr(segment);
         for (long i = 0; i < count; i++) {
-            ret.at(i).type(XrStructureType.XR_TYPE_SPATIAL_COMPONENT_PLANE_ALIGNMENT_LIST_EXT);
+            ret.at(i).type(XrStructureType.SPATIAL_COMPONENT_PLANE_ALIGNMENT_LIST_EXT);
         }
         return ret;
     }
@@ -192,7 +192,7 @@ public record XrSpatialComponentPlaneAlignmentListEXT(@NotNull MemorySegment seg
     }
 
     public void autoInit() {
-        type(XrStructureType.XR_TYPE_SPATIAL_COMPONENT_PLANE_ALIGNMENT_LIST_EXT);
+        type(XrStructureType.SPATIAL_COMPONENT_PLANE_ALIGNMENT_LIST_EXT);
     }
 
     public @EnumType(XrStructureType.class) int type() {

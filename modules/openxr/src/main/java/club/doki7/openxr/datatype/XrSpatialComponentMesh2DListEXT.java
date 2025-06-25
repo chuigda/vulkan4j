@@ -172,7 +172,7 @@ public record XrSpatialComponentMesh2DListEXT(@NotNull MemorySegment segment) im
 
     public static XrSpatialComponentMesh2DListEXT allocate(Arena arena) {
         XrSpatialComponentMesh2DListEXT ret = new XrSpatialComponentMesh2DListEXT(arena.allocate(LAYOUT));
-        ret.type(XrStructureType.XR_TYPE_SPATIAL_COMPONENT_MESH_2D_LIST_EXT);
+        ret.type(XrStructureType.SPATIAL_COMPONENT_MESH_2D_LIST_EXT);
         return ret;
     }
 
@@ -180,7 +180,7 @@ public record XrSpatialComponentMesh2DListEXT(@NotNull MemorySegment segment) im
         MemorySegment segment = arena.allocate(LAYOUT, count);
         XrSpatialComponentMesh2DListEXT.Ptr ret = new XrSpatialComponentMesh2DListEXT.Ptr(segment);
         for (long i = 0; i < count; i++) {
-            ret.at(i).type(XrStructureType.XR_TYPE_SPATIAL_COMPONENT_MESH_2D_LIST_EXT);
+            ret.at(i).type(XrStructureType.SPATIAL_COMPONENT_MESH_2D_LIST_EXT);
         }
         return ret;
     }
@@ -192,7 +192,7 @@ public record XrSpatialComponentMesh2DListEXT(@NotNull MemorySegment segment) im
     }
 
     public void autoInit() {
-        type(XrStructureType.XR_TYPE_SPATIAL_COMPONENT_MESH_2D_LIST_EXT);
+        type(XrStructureType.SPATIAL_COMPONENT_MESH_2D_LIST_EXT);
     }
 
     public @EnumType(XrStructureType.class) int type() {

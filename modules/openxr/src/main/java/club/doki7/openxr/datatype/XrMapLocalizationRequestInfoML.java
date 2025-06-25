@@ -171,7 +171,7 @@ public record XrMapLocalizationRequestInfoML(@NotNull MemorySegment segment) imp
 
     public static XrMapLocalizationRequestInfoML allocate(Arena arena) {
         XrMapLocalizationRequestInfoML ret = new XrMapLocalizationRequestInfoML(arena.allocate(LAYOUT));
-        ret.type(XrStructureType.XR_TYPE_MAP_LOCALIZATION_REQUEST_INFO_ML);
+        ret.type(XrStructureType.MAP_LOCALIZATION_REQUEST_INFO_ML);
         return ret;
     }
 
@@ -179,7 +179,7 @@ public record XrMapLocalizationRequestInfoML(@NotNull MemorySegment segment) imp
         MemorySegment segment = arena.allocate(LAYOUT, count);
         XrMapLocalizationRequestInfoML.Ptr ret = new XrMapLocalizationRequestInfoML.Ptr(segment);
         for (long i = 0; i < count; i++) {
-            ret.at(i).type(XrStructureType.XR_TYPE_MAP_LOCALIZATION_REQUEST_INFO_ML);
+            ret.at(i).type(XrStructureType.MAP_LOCALIZATION_REQUEST_INFO_ML);
         }
         return ret;
     }
@@ -191,7 +191,7 @@ public record XrMapLocalizationRequestInfoML(@NotNull MemorySegment segment) imp
     }
 
     public void autoInit() {
-        type(XrStructureType.XR_TYPE_MAP_LOCALIZATION_REQUEST_INFO_ML);
+        type(XrStructureType.MAP_LOCALIZATION_REQUEST_INFO_ML);
     }
 
     public @EnumType(XrStructureType.class) int type() {

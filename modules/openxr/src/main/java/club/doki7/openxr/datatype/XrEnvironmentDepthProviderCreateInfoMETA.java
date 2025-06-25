@@ -171,7 +171,7 @@ public record XrEnvironmentDepthProviderCreateInfoMETA(@NotNull MemorySegment se
 
     public static XrEnvironmentDepthProviderCreateInfoMETA allocate(Arena arena) {
         XrEnvironmentDepthProviderCreateInfoMETA ret = new XrEnvironmentDepthProviderCreateInfoMETA(arena.allocate(LAYOUT));
-        ret.type(XrStructureType.XR_TYPE_ENVIRONMENT_DEPTH_PROVIDER_CREATE_INFO_META);
+        ret.type(XrStructureType.ENVIRONMENT_DEPTH_PROVIDER_CREATE_INFO_META);
         return ret;
     }
 
@@ -179,7 +179,7 @@ public record XrEnvironmentDepthProviderCreateInfoMETA(@NotNull MemorySegment se
         MemorySegment segment = arena.allocate(LAYOUT, count);
         XrEnvironmentDepthProviderCreateInfoMETA.Ptr ret = new XrEnvironmentDepthProviderCreateInfoMETA.Ptr(segment);
         for (long i = 0; i < count; i++) {
-            ret.at(i).type(XrStructureType.XR_TYPE_ENVIRONMENT_DEPTH_PROVIDER_CREATE_INFO_META);
+            ret.at(i).type(XrStructureType.ENVIRONMENT_DEPTH_PROVIDER_CREATE_INFO_META);
         }
         return ret;
     }
@@ -191,7 +191,7 @@ public record XrEnvironmentDepthProviderCreateInfoMETA(@NotNull MemorySegment se
     }
 
     public void autoInit() {
-        type(XrStructureType.XR_TYPE_ENVIRONMENT_DEPTH_PROVIDER_CREATE_INFO_META);
+        type(XrStructureType.ENVIRONMENT_DEPTH_PROVIDER_CREATE_INFO_META);
     }
 
     public @EnumType(XrStructureType.class) int type() {

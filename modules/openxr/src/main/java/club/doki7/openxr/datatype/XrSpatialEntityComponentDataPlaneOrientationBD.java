@@ -171,7 +171,7 @@ public record XrSpatialEntityComponentDataPlaneOrientationBD(@NotNull MemorySegm
 
     public static XrSpatialEntityComponentDataPlaneOrientationBD allocate(Arena arena) {
         XrSpatialEntityComponentDataPlaneOrientationBD ret = new XrSpatialEntityComponentDataPlaneOrientationBD(arena.allocate(LAYOUT));
-        ret.type(XrStructureType.XR_TYPE_SPATIAL_ENTITY_COMPONENT_DATA_PLANE_ORIENTATION_BD);
+        ret.type(XrStructureType.SPATIAL_ENTITY_COMPONENT_DATA_PLANE_ORIENTATION_BD);
         return ret;
     }
 
@@ -179,7 +179,7 @@ public record XrSpatialEntityComponentDataPlaneOrientationBD(@NotNull MemorySegm
         MemorySegment segment = arena.allocate(LAYOUT, count);
         XrSpatialEntityComponentDataPlaneOrientationBD.Ptr ret = new XrSpatialEntityComponentDataPlaneOrientationBD.Ptr(segment);
         for (long i = 0; i < count; i++) {
-            ret.at(i).type(XrStructureType.XR_TYPE_SPATIAL_ENTITY_COMPONENT_DATA_PLANE_ORIENTATION_BD);
+            ret.at(i).type(XrStructureType.SPATIAL_ENTITY_COMPONENT_DATA_PLANE_ORIENTATION_BD);
         }
         return ret;
     }
@@ -191,7 +191,7 @@ public record XrSpatialEntityComponentDataPlaneOrientationBD(@NotNull MemorySegm
     }
 
     public void autoInit() {
-        type(XrStructureType.XR_TYPE_SPATIAL_ENTITY_COMPONENT_DATA_PLANE_ORIENTATION_BD);
+        type(XrStructureType.SPATIAL_ENTITY_COMPONENT_DATA_PLANE_ORIENTATION_BD);
     }
 
     public @EnumType(XrStructureType.class) int type() {

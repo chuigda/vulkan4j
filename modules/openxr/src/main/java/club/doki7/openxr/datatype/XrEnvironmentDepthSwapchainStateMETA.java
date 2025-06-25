@@ -172,7 +172,7 @@ public record XrEnvironmentDepthSwapchainStateMETA(@NotNull MemorySegment segmen
 
     public static XrEnvironmentDepthSwapchainStateMETA allocate(Arena arena) {
         XrEnvironmentDepthSwapchainStateMETA ret = new XrEnvironmentDepthSwapchainStateMETA(arena.allocate(LAYOUT));
-        ret.type(XrStructureType.XR_TYPE_ENVIRONMENT_DEPTH_SWAPCHAIN_STATE_META);
+        ret.type(XrStructureType.ENVIRONMENT_DEPTH_SWAPCHAIN_STATE_META);
         return ret;
     }
 
@@ -180,7 +180,7 @@ public record XrEnvironmentDepthSwapchainStateMETA(@NotNull MemorySegment segmen
         MemorySegment segment = arena.allocate(LAYOUT, count);
         XrEnvironmentDepthSwapchainStateMETA.Ptr ret = new XrEnvironmentDepthSwapchainStateMETA.Ptr(segment);
         for (long i = 0; i < count; i++) {
-            ret.at(i).type(XrStructureType.XR_TYPE_ENVIRONMENT_DEPTH_SWAPCHAIN_STATE_META);
+            ret.at(i).type(XrStructureType.ENVIRONMENT_DEPTH_SWAPCHAIN_STATE_META);
         }
         return ret;
     }
@@ -192,7 +192,7 @@ public record XrEnvironmentDepthSwapchainStateMETA(@NotNull MemorySegment segmen
     }
 
     public void autoInit() {
-        type(XrStructureType.XR_TYPE_ENVIRONMENT_DEPTH_SWAPCHAIN_STATE_META);
+        type(XrStructureType.ENVIRONMENT_DEPTH_SWAPCHAIN_STATE_META);
     }
 
     public @EnumType(XrStructureType.class) int type() {

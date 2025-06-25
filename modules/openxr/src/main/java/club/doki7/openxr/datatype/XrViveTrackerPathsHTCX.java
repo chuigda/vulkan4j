@@ -172,7 +172,7 @@ public record XrViveTrackerPathsHTCX(@NotNull MemorySegment segment) implements 
 
     public static XrViveTrackerPathsHTCX allocate(Arena arena) {
         XrViveTrackerPathsHTCX ret = new XrViveTrackerPathsHTCX(arena.allocate(LAYOUT));
-        ret.type(XrStructureType.XR_TYPE_VIVE_TRACKER_PATHS_HTCX);
+        ret.type(XrStructureType.VIVE_TRACKER_PATHS_HTCX);
         return ret;
     }
 
@@ -180,7 +180,7 @@ public record XrViveTrackerPathsHTCX(@NotNull MemorySegment segment) implements 
         MemorySegment segment = arena.allocate(LAYOUT, count);
         XrViveTrackerPathsHTCX.Ptr ret = new XrViveTrackerPathsHTCX.Ptr(segment);
         for (long i = 0; i < count; i++) {
-            ret.at(i).type(XrStructureType.XR_TYPE_VIVE_TRACKER_PATHS_HTCX);
+            ret.at(i).type(XrStructureType.VIVE_TRACKER_PATHS_HTCX);
         }
         return ret;
     }
@@ -192,7 +192,7 @@ public record XrViveTrackerPathsHTCX(@NotNull MemorySegment segment) implements 
     }
 
     public void autoInit() {
-        type(XrStructureType.XR_TYPE_VIVE_TRACKER_PATHS_HTCX);
+        type(XrStructureType.VIVE_TRACKER_PATHS_HTCX);
     }
 
     public @EnumType(XrStructureType.class) int type() {

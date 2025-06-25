@@ -173,7 +173,7 @@ public record XrBoundary2DFB(@NotNull MemorySegment segment) implements IXrBound
 
     public static XrBoundary2DFB allocate(Arena arena) {
         XrBoundary2DFB ret = new XrBoundary2DFB(arena.allocate(LAYOUT));
-        ret.type(XrStructureType.XR_TYPE_BOUNDARY_2D_FB);
+        ret.type(XrStructureType.BOUNDARY_2D_FB);
         return ret;
     }
 
@@ -181,7 +181,7 @@ public record XrBoundary2DFB(@NotNull MemorySegment segment) implements IXrBound
         MemorySegment segment = arena.allocate(LAYOUT, count);
         XrBoundary2DFB.Ptr ret = new XrBoundary2DFB.Ptr(segment);
         for (long i = 0; i < count; i++) {
-            ret.at(i).type(XrStructureType.XR_TYPE_BOUNDARY_2D_FB);
+            ret.at(i).type(XrStructureType.BOUNDARY_2D_FB);
         }
         return ret;
     }
@@ -193,7 +193,7 @@ public record XrBoundary2DFB(@NotNull MemorySegment segment) implements IXrBound
     }
 
     public void autoInit() {
-        type(XrStructureType.XR_TYPE_BOUNDARY_2D_FB);
+        type(XrStructureType.BOUNDARY_2D_FB);
     }
 
     public @EnumType(XrStructureType.class) int type() {

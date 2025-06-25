@@ -171,7 +171,7 @@ public record XrSystemForceFeedbackCurlPropertiesMNDX(@NotNull MemorySegment seg
 
     public static XrSystemForceFeedbackCurlPropertiesMNDX allocate(Arena arena) {
         XrSystemForceFeedbackCurlPropertiesMNDX ret = new XrSystemForceFeedbackCurlPropertiesMNDX(arena.allocate(LAYOUT));
-        ret.type(XrStructureType.XR_TYPE_SYSTEM_FORCE_FEEDBACK_CURL_PROPERTIES_MNDX);
+        ret.type(XrStructureType.SYSTEM_FORCE_FEEDBACK_CURL_PROPERTIES_MNDX);
         return ret;
     }
 
@@ -179,7 +179,7 @@ public record XrSystemForceFeedbackCurlPropertiesMNDX(@NotNull MemorySegment seg
         MemorySegment segment = arena.allocate(LAYOUT, count);
         XrSystemForceFeedbackCurlPropertiesMNDX.Ptr ret = new XrSystemForceFeedbackCurlPropertiesMNDX.Ptr(segment);
         for (long i = 0; i < count; i++) {
-            ret.at(i).type(XrStructureType.XR_TYPE_SYSTEM_FORCE_FEEDBACK_CURL_PROPERTIES_MNDX);
+            ret.at(i).type(XrStructureType.SYSTEM_FORCE_FEEDBACK_CURL_PROPERTIES_MNDX);
         }
         return ret;
     }
@@ -191,7 +191,7 @@ public record XrSystemForceFeedbackCurlPropertiesMNDX(@NotNull MemorySegment seg
     }
 
     public void autoInit() {
-        type(XrStructureType.XR_TYPE_SYSTEM_FORCE_FEEDBACK_CURL_PROPERTIES_MNDX);
+        type(XrStructureType.SYSTEM_FORCE_FEEDBACK_CURL_PROPERTIES_MNDX);
     }
 
     public @EnumType(XrStructureType.class) int type() {

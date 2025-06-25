@@ -171,7 +171,7 @@ public record XrPassthroughColorMapMonoToMonoFB(@NotNull MemorySegment segment) 
 
     public static XrPassthroughColorMapMonoToMonoFB allocate(Arena arena) {
         XrPassthroughColorMapMonoToMonoFB ret = new XrPassthroughColorMapMonoToMonoFB(arena.allocate(LAYOUT));
-        ret.type(XrStructureType.XR_TYPE_PASSTHROUGH_COLOR_MAP_MONO_TO_MONO_FB);
+        ret.type(XrStructureType.PASSTHROUGH_COLOR_MAP_MONO_TO_MONO_FB);
         return ret;
     }
 
@@ -179,7 +179,7 @@ public record XrPassthroughColorMapMonoToMonoFB(@NotNull MemorySegment segment) 
         MemorySegment segment = arena.allocate(LAYOUT, count);
         XrPassthroughColorMapMonoToMonoFB.Ptr ret = new XrPassthroughColorMapMonoToMonoFB.Ptr(segment);
         for (long i = 0; i < count; i++) {
-            ret.at(i).type(XrStructureType.XR_TYPE_PASSTHROUGH_COLOR_MAP_MONO_TO_MONO_FB);
+            ret.at(i).type(XrStructureType.PASSTHROUGH_COLOR_MAP_MONO_TO_MONO_FB);
         }
         return ret;
     }
@@ -191,7 +191,7 @@ public record XrPassthroughColorMapMonoToMonoFB(@NotNull MemorySegment segment) 
     }
 
     public void autoInit() {
-        type(XrStructureType.XR_TYPE_PASSTHROUGH_COLOR_MAP_MONO_TO_MONO_FB);
+        type(XrStructureType.PASSTHROUGH_COLOR_MAP_MONO_TO_MONO_FB);
     }
 
     public @EnumType(XrStructureType.class) int type() {

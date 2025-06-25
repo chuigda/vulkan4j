@@ -171,7 +171,7 @@ public record XrFoveatedViewConfigurationViewVARJO(@NotNull MemorySegment segmen
 
     public static XrFoveatedViewConfigurationViewVARJO allocate(Arena arena) {
         XrFoveatedViewConfigurationViewVARJO ret = new XrFoveatedViewConfigurationViewVARJO(arena.allocate(LAYOUT));
-        ret.type(XrStructureType.XR_TYPE_FOVEATED_VIEW_CONFIGURATION_VIEW_VARJO);
+        ret.type(XrStructureType.FOVEATED_VIEW_CONFIGURATION_VIEW_VARJO);
         return ret;
     }
 
@@ -179,7 +179,7 @@ public record XrFoveatedViewConfigurationViewVARJO(@NotNull MemorySegment segmen
         MemorySegment segment = arena.allocate(LAYOUT, count);
         XrFoveatedViewConfigurationViewVARJO.Ptr ret = new XrFoveatedViewConfigurationViewVARJO.Ptr(segment);
         for (long i = 0; i < count; i++) {
-            ret.at(i).type(XrStructureType.XR_TYPE_FOVEATED_VIEW_CONFIGURATION_VIEW_VARJO);
+            ret.at(i).type(XrStructureType.FOVEATED_VIEW_CONFIGURATION_VIEW_VARJO);
         }
         return ret;
     }
@@ -191,7 +191,7 @@ public record XrFoveatedViewConfigurationViewVARJO(@NotNull MemorySegment segmen
     }
 
     public void autoInit() {
-        type(XrStructureType.XR_TYPE_FOVEATED_VIEW_CONFIGURATION_VIEW_VARJO);
+        type(XrStructureType.FOVEATED_VIEW_CONFIGURATION_VIEW_VARJO);
     }
 
     public @EnumType(XrStructureType.class) int type() {

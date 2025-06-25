@@ -171,7 +171,7 @@ public record XrPassthroughColorHTC(@NotNull MemorySegment segment) implements I
 
     public static XrPassthroughColorHTC allocate(Arena arena) {
         XrPassthroughColorHTC ret = new XrPassthroughColorHTC(arena.allocate(LAYOUT));
-        ret.type(XrStructureType.XR_TYPE_PASSTHROUGH_COLOR_HTC);
+        ret.type(XrStructureType.PASSTHROUGH_COLOR_HTC);
         return ret;
     }
 
@@ -179,7 +179,7 @@ public record XrPassthroughColorHTC(@NotNull MemorySegment segment) implements I
         MemorySegment segment = arena.allocate(LAYOUT, count);
         XrPassthroughColorHTC.Ptr ret = new XrPassthroughColorHTC.Ptr(segment);
         for (long i = 0; i < count; i++) {
-            ret.at(i).type(XrStructureType.XR_TYPE_PASSTHROUGH_COLOR_HTC);
+            ret.at(i).type(XrStructureType.PASSTHROUGH_COLOR_HTC);
         }
         return ret;
     }
@@ -191,7 +191,7 @@ public record XrPassthroughColorHTC(@NotNull MemorySegment segment) implements I
     }
 
     public void autoInit() {
-        type(XrStructureType.XR_TYPE_PASSTHROUGH_COLOR_HTC);
+        type(XrStructureType.PASSTHROUGH_COLOR_HTC);
     }
 
     public @EnumType(XrStructureType.class) int type() {

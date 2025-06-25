@@ -171,7 +171,7 @@ public record XrSpaceComponentFilterInfoFB(@NotNull MemorySegment segment) imple
 
     public static XrSpaceComponentFilterInfoFB allocate(Arena arena) {
         XrSpaceComponentFilterInfoFB ret = new XrSpaceComponentFilterInfoFB(arena.allocate(LAYOUT));
-        ret.type(XrStructureType.XR_TYPE_SPACE_COMPONENT_FILTER_INFO_FB);
+        ret.type(XrStructureType.SPACE_COMPONENT_FILTER_INFO_FB);
         return ret;
     }
 
@@ -179,7 +179,7 @@ public record XrSpaceComponentFilterInfoFB(@NotNull MemorySegment segment) imple
         MemorySegment segment = arena.allocate(LAYOUT, count);
         XrSpaceComponentFilterInfoFB.Ptr ret = new XrSpaceComponentFilterInfoFB.Ptr(segment);
         for (long i = 0; i < count; i++) {
-            ret.at(i).type(XrStructureType.XR_TYPE_SPACE_COMPONENT_FILTER_INFO_FB);
+            ret.at(i).type(XrStructureType.SPACE_COMPONENT_FILTER_INFO_FB);
         }
         return ret;
     }
@@ -191,7 +191,7 @@ public record XrSpaceComponentFilterInfoFB(@NotNull MemorySegment segment) imple
     }
 
     public void autoInit() {
-        type(XrStructureType.XR_TYPE_SPACE_COMPONENT_FILTER_INFO_FB);
+        type(XrStructureType.SPACE_COMPONENT_FILTER_INFO_FB);
     }
 
     public @EnumType(XrStructureType.class) int type() {

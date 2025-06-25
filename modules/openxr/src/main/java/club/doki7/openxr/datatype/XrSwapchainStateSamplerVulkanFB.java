@@ -181,7 +181,7 @@ public record XrSwapchainStateSamplerVulkanFB(@NotNull MemorySegment segment) im
 
     public static XrSwapchainStateSamplerVulkanFB allocate(Arena arena) {
         XrSwapchainStateSamplerVulkanFB ret = new XrSwapchainStateSamplerVulkanFB(arena.allocate(LAYOUT));
-        ret.type(XrStructureType.XR_TYPE_SWAPCHAIN_STATE_SAMPLER_VULKAN_FB);
+        ret.type(XrStructureType.SWAPCHAIN_STATE_SAMPLER_VULKAN_FB);
         return ret;
     }
 
@@ -189,7 +189,7 @@ public record XrSwapchainStateSamplerVulkanFB(@NotNull MemorySegment segment) im
         MemorySegment segment = arena.allocate(LAYOUT, count);
         XrSwapchainStateSamplerVulkanFB.Ptr ret = new XrSwapchainStateSamplerVulkanFB.Ptr(segment);
         for (long i = 0; i < count; i++) {
-            ret.at(i).type(XrStructureType.XR_TYPE_SWAPCHAIN_STATE_SAMPLER_VULKAN_FB);
+            ret.at(i).type(XrStructureType.SWAPCHAIN_STATE_SAMPLER_VULKAN_FB);
         }
         return ret;
     }
@@ -201,7 +201,7 @@ public record XrSwapchainStateSamplerVulkanFB(@NotNull MemorySegment segment) im
     }
 
     public void autoInit() {
-        type(XrStructureType.XR_TYPE_SWAPCHAIN_STATE_SAMPLER_VULKAN_FB);
+        type(XrStructureType.SWAPCHAIN_STATE_SAMPLER_VULKAN_FB);
     }
 
     public @EnumType(XrStructureType.class) int type() {

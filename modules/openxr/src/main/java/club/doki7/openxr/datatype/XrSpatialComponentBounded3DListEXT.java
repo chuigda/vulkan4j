@@ -172,7 +172,7 @@ public record XrSpatialComponentBounded3DListEXT(@NotNull MemorySegment segment)
 
     public static XrSpatialComponentBounded3DListEXT allocate(Arena arena) {
         XrSpatialComponentBounded3DListEXT ret = new XrSpatialComponentBounded3DListEXT(arena.allocate(LAYOUT));
-        ret.type(XrStructureType.XR_TYPE_SPATIAL_COMPONENT_BOUNDED_3D_LIST_EXT);
+        ret.type(XrStructureType.SPATIAL_COMPONENT_BOUNDED_3D_LIST_EXT);
         return ret;
     }
 
@@ -180,7 +180,7 @@ public record XrSpatialComponentBounded3DListEXT(@NotNull MemorySegment segment)
         MemorySegment segment = arena.allocate(LAYOUT, count);
         XrSpatialComponentBounded3DListEXT.Ptr ret = new XrSpatialComponentBounded3DListEXT.Ptr(segment);
         for (long i = 0; i < count; i++) {
-            ret.at(i).type(XrStructureType.XR_TYPE_SPATIAL_COMPONENT_BOUNDED_3D_LIST_EXT);
+            ret.at(i).type(XrStructureType.SPATIAL_COMPONENT_BOUNDED_3D_LIST_EXT);
         }
         return ret;
     }
@@ -192,7 +192,7 @@ public record XrSpatialComponentBounded3DListEXT(@NotNull MemorySegment segment)
     }
 
     public void autoInit() {
-        type(XrStructureType.XR_TYPE_SPATIAL_COMPONENT_BOUNDED_3D_LIST_EXT);
+        type(XrStructureType.SPATIAL_COMPONENT_BOUNDED_3D_LIST_EXT);
     }
 
     public @EnumType(XrStructureType.class) int type() {

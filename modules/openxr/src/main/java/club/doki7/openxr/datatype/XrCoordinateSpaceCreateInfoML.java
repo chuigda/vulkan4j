@@ -172,7 +172,7 @@ public record XrCoordinateSpaceCreateInfoML(@NotNull MemorySegment segment) impl
 
     public static XrCoordinateSpaceCreateInfoML allocate(Arena arena) {
         XrCoordinateSpaceCreateInfoML ret = new XrCoordinateSpaceCreateInfoML(arena.allocate(LAYOUT));
-        ret.type(XrStructureType.XR_TYPE_COORDINATE_SPACE_CREATE_INFO_ML);
+        ret.type(XrStructureType.COORDINATE_SPACE_CREATE_INFO_ML);
         return ret;
     }
 
@@ -180,7 +180,7 @@ public record XrCoordinateSpaceCreateInfoML(@NotNull MemorySegment segment) impl
         MemorySegment segment = arena.allocate(LAYOUT, count);
         XrCoordinateSpaceCreateInfoML.Ptr ret = new XrCoordinateSpaceCreateInfoML.Ptr(segment);
         for (long i = 0; i < count; i++) {
-            ret.at(i).type(XrStructureType.XR_TYPE_COORDINATE_SPACE_CREATE_INFO_ML);
+            ret.at(i).type(XrStructureType.COORDINATE_SPACE_CREATE_INFO_ML);
         }
         return ret;
     }
@@ -192,7 +192,7 @@ public record XrCoordinateSpaceCreateInfoML(@NotNull MemorySegment segment) impl
     }
 
     public void autoInit() {
-        type(XrStructureType.XR_TYPE_COORDINATE_SPACE_CREATE_INFO_ML);
+        type(XrStructureType.COORDINATE_SPACE_CREATE_INFO_ML);
     }
 
     public @EnumType(XrStructureType.class) int type() {

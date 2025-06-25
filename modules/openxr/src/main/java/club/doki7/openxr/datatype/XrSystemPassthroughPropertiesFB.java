@@ -171,7 +171,7 @@ public record XrSystemPassthroughPropertiesFB(@NotNull MemorySegment segment) im
 
     public static XrSystemPassthroughPropertiesFB allocate(Arena arena) {
         XrSystemPassthroughPropertiesFB ret = new XrSystemPassthroughPropertiesFB(arena.allocate(LAYOUT));
-        ret.type(XrStructureType.XR_TYPE_SYSTEM_PASSTHROUGH_PROPERTIES_FB);
+        ret.type(XrStructureType.SYSTEM_PASSTHROUGH_PROPERTIES_FB);
         return ret;
     }
 
@@ -179,7 +179,7 @@ public record XrSystemPassthroughPropertiesFB(@NotNull MemorySegment segment) im
         MemorySegment segment = arena.allocate(LAYOUT, count);
         XrSystemPassthroughPropertiesFB.Ptr ret = new XrSystemPassthroughPropertiesFB.Ptr(segment);
         for (long i = 0; i < count; i++) {
-            ret.at(i).type(XrStructureType.XR_TYPE_SYSTEM_PASSTHROUGH_PROPERTIES_FB);
+            ret.at(i).type(XrStructureType.SYSTEM_PASSTHROUGH_PROPERTIES_FB);
         }
         return ret;
     }
@@ -191,7 +191,7 @@ public record XrSystemPassthroughPropertiesFB(@NotNull MemorySegment segment) im
     }
 
     public void autoInit() {
-        type(XrStructureType.XR_TYPE_SYSTEM_PASSTHROUGH_PROPERTIES_FB);
+        type(XrStructureType.SYSTEM_PASSTHROUGH_PROPERTIES_FB);
     }
 
     public @EnumType(XrStructureType.class) int type() {

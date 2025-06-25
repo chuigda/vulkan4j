@@ -171,7 +171,7 @@ public record XrPerformanceMetricsStateMETA(@NotNull MemorySegment segment) impl
 
     public static XrPerformanceMetricsStateMETA allocate(Arena arena) {
         XrPerformanceMetricsStateMETA ret = new XrPerformanceMetricsStateMETA(arena.allocate(LAYOUT));
-        ret.type(XrStructureType.XR_TYPE_PERFORMANCE_METRICS_STATE_META);
+        ret.type(XrStructureType.PERFORMANCE_METRICS_STATE_META);
         return ret;
     }
 
@@ -179,7 +179,7 @@ public record XrPerformanceMetricsStateMETA(@NotNull MemorySegment segment) impl
         MemorySegment segment = arena.allocate(LAYOUT, count);
         XrPerformanceMetricsStateMETA.Ptr ret = new XrPerformanceMetricsStateMETA.Ptr(segment);
         for (long i = 0; i < count; i++) {
-            ret.at(i).type(XrStructureType.XR_TYPE_PERFORMANCE_METRICS_STATE_META);
+            ret.at(i).type(XrStructureType.PERFORMANCE_METRICS_STATE_META);
         }
         return ret;
     }
@@ -191,7 +191,7 @@ public record XrPerformanceMetricsStateMETA(@NotNull MemorySegment segment) impl
     }
 
     public void autoInit() {
-        type(XrStructureType.XR_TYPE_PERFORMANCE_METRICS_STATE_META);
+        type(XrStructureType.PERFORMANCE_METRICS_STATE_META);
     }
 
     public @EnumType(XrStructureType.class) int type() {

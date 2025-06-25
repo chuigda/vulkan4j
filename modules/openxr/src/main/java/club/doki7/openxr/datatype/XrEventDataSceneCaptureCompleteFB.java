@@ -172,7 +172,7 @@ public record XrEventDataSceneCaptureCompleteFB(@NotNull MemorySegment segment) 
 
     public static XrEventDataSceneCaptureCompleteFB allocate(Arena arena) {
         XrEventDataSceneCaptureCompleteFB ret = new XrEventDataSceneCaptureCompleteFB(arena.allocate(LAYOUT));
-        ret.type(XrStructureType.XR_TYPE_EVENT_DATA_SCENE_CAPTURE_COMPLETE_FB);
+        ret.type(XrStructureType.EVENT_DATA_SCENE_CAPTURE_COMPLETE_FB);
         return ret;
     }
 
@@ -180,7 +180,7 @@ public record XrEventDataSceneCaptureCompleteFB(@NotNull MemorySegment segment) 
         MemorySegment segment = arena.allocate(LAYOUT, count);
         XrEventDataSceneCaptureCompleteFB.Ptr ret = new XrEventDataSceneCaptureCompleteFB.Ptr(segment);
         for (long i = 0; i < count; i++) {
-            ret.at(i).type(XrStructureType.XR_TYPE_EVENT_DATA_SCENE_CAPTURE_COMPLETE_FB);
+            ret.at(i).type(XrStructureType.EVENT_DATA_SCENE_CAPTURE_COMPLETE_FB);
         }
         return ret;
     }
@@ -192,7 +192,7 @@ public record XrEventDataSceneCaptureCompleteFB(@NotNull MemorySegment segment) 
     }
 
     public void autoInit() {
-        type(XrStructureType.XR_TYPE_EVENT_DATA_SCENE_CAPTURE_COMPLETE_FB);
+        type(XrStructureType.EVENT_DATA_SCENE_CAPTURE_COMPLETE_FB);
     }
 
     public @EnumType(XrStructureType.class) int type() {

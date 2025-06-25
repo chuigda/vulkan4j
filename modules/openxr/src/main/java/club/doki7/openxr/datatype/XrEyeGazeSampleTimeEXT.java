@@ -171,7 +171,7 @@ public record XrEyeGazeSampleTimeEXT(@NotNull MemorySegment segment) implements 
 
     public static XrEyeGazeSampleTimeEXT allocate(Arena arena) {
         XrEyeGazeSampleTimeEXT ret = new XrEyeGazeSampleTimeEXT(arena.allocate(LAYOUT));
-        ret.type(XrStructureType.XR_TYPE_EYE_GAZE_SAMPLE_TIME_EXT);
+        ret.type(XrStructureType.EYE_GAZE_SAMPLE_TIME_EXT);
         return ret;
     }
 
@@ -179,7 +179,7 @@ public record XrEyeGazeSampleTimeEXT(@NotNull MemorySegment segment) implements 
         MemorySegment segment = arena.allocate(LAYOUT, count);
         XrEyeGazeSampleTimeEXT.Ptr ret = new XrEyeGazeSampleTimeEXT.Ptr(segment);
         for (long i = 0; i < count; i++) {
-            ret.at(i).type(XrStructureType.XR_TYPE_EYE_GAZE_SAMPLE_TIME_EXT);
+            ret.at(i).type(XrStructureType.EYE_GAZE_SAMPLE_TIME_EXT);
         }
         return ret;
     }
@@ -191,7 +191,7 @@ public record XrEyeGazeSampleTimeEXT(@NotNull MemorySegment segment) implements 
     }
 
     public void autoInit() {
-        type(XrStructureType.XR_TYPE_EYE_GAZE_SAMPLE_TIME_EXT);
+        type(XrStructureType.EYE_GAZE_SAMPLE_TIME_EXT);
     }
 
     public @EnumType(XrStructureType.class) int type() {

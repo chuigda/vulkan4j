@@ -175,7 +175,7 @@ public record XrWorldMeshBlockStateML(@NotNull MemorySegment segment) implements
 
     public static XrWorldMeshBlockStateML allocate(Arena arena) {
         XrWorldMeshBlockStateML ret = new XrWorldMeshBlockStateML(arena.allocate(LAYOUT));
-        ret.type(XrStructureType.XR_TYPE_WORLD_MESH_BLOCK_STATE_ML);
+        ret.type(XrStructureType.WORLD_MESH_BLOCK_STATE_ML);
         return ret;
     }
 
@@ -183,7 +183,7 @@ public record XrWorldMeshBlockStateML(@NotNull MemorySegment segment) implements
         MemorySegment segment = arena.allocate(LAYOUT, count);
         XrWorldMeshBlockStateML.Ptr ret = new XrWorldMeshBlockStateML.Ptr(segment);
         for (long i = 0; i < count; i++) {
-            ret.at(i).type(XrStructureType.XR_TYPE_WORLD_MESH_BLOCK_STATE_ML);
+            ret.at(i).type(XrStructureType.WORLD_MESH_BLOCK_STATE_ML);
         }
         return ret;
     }
@@ -195,7 +195,7 @@ public record XrWorldMeshBlockStateML(@NotNull MemorySegment segment) implements
     }
 
     public void autoInit() {
-        type(XrStructureType.XR_TYPE_WORLD_MESH_BLOCK_STATE_ML);
+        type(XrStructureType.WORLD_MESH_BLOCK_STATE_ML);
     }
 
     public @EnumType(XrStructureType.class) int type() {

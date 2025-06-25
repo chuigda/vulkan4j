@@ -171,7 +171,7 @@ public record XrSpatialFilterTrackingStateEXT(@NotNull MemorySegment segment) im
 
     public static XrSpatialFilterTrackingStateEXT allocate(Arena arena) {
         XrSpatialFilterTrackingStateEXT ret = new XrSpatialFilterTrackingStateEXT(arena.allocate(LAYOUT));
-        ret.type(XrStructureType.XR_TYPE_SPATIAL_FILTER_TRACKING_STATE_EXT);
+        ret.type(XrStructureType.SPATIAL_FILTER_TRACKING_STATE_EXT);
         return ret;
     }
 
@@ -179,7 +179,7 @@ public record XrSpatialFilterTrackingStateEXT(@NotNull MemorySegment segment) im
         MemorySegment segment = arena.allocate(LAYOUT, count);
         XrSpatialFilterTrackingStateEXT.Ptr ret = new XrSpatialFilterTrackingStateEXT.Ptr(segment);
         for (long i = 0; i < count; i++) {
-            ret.at(i).type(XrStructureType.XR_TYPE_SPATIAL_FILTER_TRACKING_STATE_EXT);
+            ret.at(i).type(XrStructureType.SPATIAL_FILTER_TRACKING_STATE_EXT);
         }
         return ret;
     }
@@ -191,7 +191,7 @@ public record XrSpatialFilterTrackingStateEXT(@NotNull MemorySegment segment) im
     }
 
     public void autoInit() {
-        type(XrStructureType.XR_TYPE_SPATIAL_FILTER_TRACKING_STATE_EXT);
+        type(XrStructureType.SPATIAL_FILTER_TRACKING_STATE_EXT);
     }
 
     public @EnumType(XrStructureType.class) int type() {

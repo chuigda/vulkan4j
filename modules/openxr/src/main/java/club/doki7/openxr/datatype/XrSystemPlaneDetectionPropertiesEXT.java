@@ -171,7 +171,7 @@ public record XrSystemPlaneDetectionPropertiesEXT(@NotNull MemorySegment segment
 
     public static XrSystemPlaneDetectionPropertiesEXT allocate(Arena arena) {
         XrSystemPlaneDetectionPropertiesEXT ret = new XrSystemPlaneDetectionPropertiesEXT(arena.allocate(LAYOUT));
-        ret.type(XrStructureType.XR_TYPE_SYSTEM_PLANE_DETECTION_PROPERTIES_EXT);
+        ret.type(XrStructureType.SYSTEM_PLANE_DETECTION_PROPERTIES_EXT);
         return ret;
     }
 
@@ -179,7 +179,7 @@ public record XrSystemPlaneDetectionPropertiesEXT(@NotNull MemorySegment segment
         MemorySegment segment = arena.allocate(LAYOUT, count);
         XrSystemPlaneDetectionPropertiesEXT.Ptr ret = new XrSystemPlaneDetectionPropertiesEXT.Ptr(segment);
         for (long i = 0; i < count; i++) {
-            ret.at(i).type(XrStructureType.XR_TYPE_SYSTEM_PLANE_DETECTION_PROPERTIES_EXT);
+            ret.at(i).type(XrStructureType.SYSTEM_PLANE_DETECTION_PROPERTIES_EXT);
         }
         return ret;
     }
@@ -191,7 +191,7 @@ public record XrSystemPlaneDetectionPropertiesEXT(@NotNull MemorySegment segment
     }
 
     public void autoInit() {
-        type(XrStructureType.XR_TYPE_SYSTEM_PLANE_DETECTION_PROPERTIES_EXT);
+        type(XrStructureType.SYSTEM_PLANE_DETECTION_PROPERTIES_EXT);
     }
 
     public @EnumType(XrStructureType.class) int type() {

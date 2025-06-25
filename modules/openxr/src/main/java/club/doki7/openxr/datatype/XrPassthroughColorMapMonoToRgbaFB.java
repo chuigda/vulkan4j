@@ -171,7 +171,7 @@ public record XrPassthroughColorMapMonoToRgbaFB(@NotNull MemorySegment segment) 
 
     public static XrPassthroughColorMapMonoToRgbaFB allocate(Arena arena) {
         XrPassthroughColorMapMonoToRgbaFB ret = new XrPassthroughColorMapMonoToRgbaFB(arena.allocate(LAYOUT));
-        ret.type(XrStructureType.XR_TYPE_PASSTHROUGH_COLOR_MAP_MONO_TO_RGBA_FB);
+        ret.type(XrStructureType.PASSTHROUGH_COLOR_MAP_MONO_TO_RGBA_FB);
         return ret;
     }
 
@@ -179,7 +179,7 @@ public record XrPassthroughColorMapMonoToRgbaFB(@NotNull MemorySegment segment) 
         MemorySegment segment = arena.allocate(LAYOUT, count);
         XrPassthroughColorMapMonoToRgbaFB.Ptr ret = new XrPassthroughColorMapMonoToRgbaFB.Ptr(segment);
         for (long i = 0; i < count; i++) {
-            ret.at(i).type(XrStructureType.XR_TYPE_PASSTHROUGH_COLOR_MAP_MONO_TO_RGBA_FB);
+            ret.at(i).type(XrStructureType.PASSTHROUGH_COLOR_MAP_MONO_TO_RGBA_FB);
         }
         return ret;
     }
@@ -191,7 +191,7 @@ public record XrPassthroughColorMapMonoToRgbaFB(@NotNull MemorySegment segment) 
     }
 
     public void autoInit() {
-        type(XrStructureType.XR_TYPE_PASSTHROUGH_COLOR_MAP_MONO_TO_RGBA_FB);
+        type(XrStructureType.PASSTHROUGH_COLOR_MAP_MONO_TO_RGBA_FB);
     }
 
     public @EnumType(XrStructureType.class) int type() {

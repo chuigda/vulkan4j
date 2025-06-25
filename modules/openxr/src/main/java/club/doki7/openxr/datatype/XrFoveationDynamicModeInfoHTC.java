@@ -171,7 +171,7 @@ public record XrFoveationDynamicModeInfoHTC(@NotNull MemorySegment segment) impl
 
     public static XrFoveationDynamicModeInfoHTC allocate(Arena arena) {
         XrFoveationDynamicModeInfoHTC ret = new XrFoveationDynamicModeInfoHTC(arena.allocate(LAYOUT));
-        ret.type(XrStructureType.XR_TYPE_FOVEATION_DYNAMIC_MODE_INFO_HTC);
+        ret.type(XrStructureType.FOVEATION_DYNAMIC_MODE_INFO_HTC);
         return ret;
     }
 
@@ -179,7 +179,7 @@ public record XrFoveationDynamicModeInfoHTC(@NotNull MemorySegment segment) impl
         MemorySegment segment = arena.allocate(LAYOUT, count);
         XrFoveationDynamicModeInfoHTC.Ptr ret = new XrFoveationDynamicModeInfoHTC.Ptr(segment);
         for (long i = 0; i < count; i++) {
-            ret.at(i).type(XrStructureType.XR_TYPE_FOVEATION_DYNAMIC_MODE_INFO_HTC);
+            ret.at(i).type(XrStructureType.FOVEATION_DYNAMIC_MODE_INFO_HTC);
         }
         return ret;
     }
@@ -191,7 +191,7 @@ public record XrFoveationDynamicModeInfoHTC(@NotNull MemorySegment segment) impl
     }
 
     public void autoInit() {
-        type(XrStructureType.XR_TYPE_FOVEATION_DYNAMIC_MODE_INFO_HTC);
+        type(XrStructureType.FOVEATION_DYNAMIC_MODE_INFO_HTC);
     }
 
     public @EnumType(XrStructureType.class) int type() {

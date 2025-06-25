@@ -179,7 +179,7 @@ public record XrCompositionLayerEquirect2KHR(@NotNull MemorySegment segment) imp
 
     public static XrCompositionLayerEquirect2KHR allocate(Arena arena) {
         XrCompositionLayerEquirect2KHR ret = new XrCompositionLayerEquirect2KHR(arena.allocate(LAYOUT));
-        ret.type(XrStructureType.XR_TYPE_COMPOSITION_LAYER_EQUIRECT2_KHR);
+        ret.type(XrStructureType.COMPOSITION_LAYER_EQUIRECT2_KHR);
         return ret;
     }
 
@@ -187,7 +187,7 @@ public record XrCompositionLayerEquirect2KHR(@NotNull MemorySegment segment) imp
         MemorySegment segment = arena.allocate(LAYOUT, count);
         XrCompositionLayerEquirect2KHR.Ptr ret = new XrCompositionLayerEquirect2KHR.Ptr(segment);
         for (long i = 0; i < count; i++) {
-            ret.at(i).type(XrStructureType.XR_TYPE_COMPOSITION_LAYER_EQUIRECT2_KHR);
+            ret.at(i).type(XrStructureType.COMPOSITION_LAYER_EQUIRECT2_KHR);
         }
         return ret;
     }
@@ -199,7 +199,7 @@ public record XrCompositionLayerEquirect2KHR(@NotNull MemorySegment segment) imp
     }
 
     public void autoInit() {
-        type(XrStructureType.XR_TYPE_COMPOSITION_LAYER_EQUIRECT2_KHR);
+        type(XrStructureType.COMPOSITION_LAYER_EQUIRECT2_KHR);
     }
 
     public @EnumType(XrStructureType.class) int type() {

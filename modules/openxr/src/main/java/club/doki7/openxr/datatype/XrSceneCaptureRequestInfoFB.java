@@ -172,7 +172,7 @@ public record XrSceneCaptureRequestInfoFB(@NotNull MemorySegment segment) implem
 
     public static XrSceneCaptureRequestInfoFB allocate(Arena arena) {
         XrSceneCaptureRequestInfoFB ret = new XrSceneCaptureRequestInfoFB(arena.allocate(LAYOUT));
-        ret.type(XrStructureType.XR_TYPE_SCENE_CAPTURE_REQUEST_INFO_FB);
+        ret.type(XrStructureType.SCENE_CAPTURE_REQUEST_INFO_FB);
         return ret;
     }
 
@@ -180,7 +180,7 @@ public record XrSceneCaptureRequestInfoFB(@NotNull MemorySegment segment) implem
         MemorySegment segment = arena.allocate(LAYOUT, count);
         XrSceneCaptureRequestInfoFB.Ptr ret = new XrSceneCaptureRequestInfoFB.Ptr(segment);
         for (long i = 0; i < count; i++) {
-            ret.at(i).type(XrStructureType.XR_TYPE_SCENE_CAPTURE_REQUEST_INFO_FB);
+            ret.at(i).type(XrStructureType.SCENE_CAPTURE_REQUEST_INFO_FB);
         }
         return ret;
     }
@@ -192,7 +192,7 @@ public record XrSceneCaptureRequestInfoFB(@NotNull MemorySegment segment) implem
     }
 
     public void autoInit() {
-        type(XrStructureType.XR_TYPE_SCENE_CAPTURE_REQUEST_INFO_FB);
+        type(XrStructureType.SCENE_CAPTURE_REQUEST_INFO_FB);
     }
 
     public @EnumType(XrStructureType.class) int type() {

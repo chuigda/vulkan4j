@@ -78,6 +78,14 @@ public final class XrLipExpressionHTC {
     public static final int TONGUE_DOWNRIGHT_MORPH = 0x23;
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XR_LIP_EXPRESSION_TONGUE_DOWNLEFT_MORPH_HTC.html"><code>XR_LIP_EXPRESSION_TONGUE_DOWNLEFT_MORPH_HTC</code></a>
     public static final int TONGUE_DOWNLEFT_MORPH = 0x24;
+    /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XR_LIP_EXPRESSION_MOUTH_SMILE_RIGHT_HTC.html"><code>XR_LIP_EXPRESSION_MOUTH_SMILE_RIGHT_HTC</code></a>
+    public static final int MOUTH_SMILE_RIGHT = MOUTH_RAISER_RIGHT;
+    /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XR_LIP_EXPRESSION_MOUTH_SMILE_LEFT_HTC.html"><code>XR_LIP_EXPRESSION_MOUTH_SMILE_LEFT_HTC</code></a>
+    public static final int MOUTH_SMILE_LEFT = MOUTH_RAISER_LEFT;
+    /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XR_LIP_EXPRESSION_MOUTH_SAD_RIGHT_HTC.html"><code>XR_LIP_EXPRESSION_MOUTH_SAD_RIGHT_HTC</code></a>
+    public static final int MOUTH_SAD_RIGHT = MOUTH_STRETCHER_RIGHT;
+    /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XR_LIP_EXPRESSION_MOUTH_SAD_LEFT_HTC.html"><code>XR_LIP_EXPRESSION_MOUTH_SAD_LEFT_HTC</code></a>
+    public static final int MOUTH_SAD_LEFT = MOUTH_STRETCHER_LEFT;
 
     public static String explain(@EnumType(XrLipExpressionHTC.class) int value) {
         return switch (value) {

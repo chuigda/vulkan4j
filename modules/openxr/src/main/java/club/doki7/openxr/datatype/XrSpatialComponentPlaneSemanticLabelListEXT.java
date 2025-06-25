@@ -172,7 +172,7 @@ public record XrSpatialComponentPlaneSemanticLabelListEXT(@NotNull MemorySegment
 
     public static XrSpatialComponentPlaneSemanticLabelListEXT allocate(Arena arena) {
         XrSpatialComponentPlaneSemanticLabelListEXT ret = new XrSpatialComponentPlaneSemanticLabelListEXT(arena.allocate(LAYOUT));
-        ret.type(XrStructureType.XR_TYPE_SPATIAL_COMPONENT_PLANE_SEMANTIC_LABEL_LIST_EXT);
+        ret.type(XrStructureType.SPATIAL_COMPONENT_PLANE_SEMANTIC_LABEL_LIST_EXT);
         return ret;
     }
 
@@ -180,7 +180,7 @@ public record XrSpatialComponentPlaneSemanticLabelListEXT(@NotNull MemorySegment
         MemorySegment segment = arena.allocate(LAYOUT, count);
         XrSpatialComponentPlaneSemanticLabelListEXT.Ptr ret = new XrSpatialComponentPlaneSemanticLabelListEXT.Ptr(segment);
         for (long i = 0; i < count; i++) {
-            ret.at(i).type(XrStructureType.XR_TYPE_SPATIAL_COMPONENT_PLANE_SEMANTIC_LABEL_LIST_EXT);
+            ret.at(i).type(XrStructureType.SPATIAL_COMPONENT_PLANE_SEMANTIC_LABEL_LIST_EXT);
         }
         return ret;
     }
@@ -192,7 +192,7 @@ public record XrSpatialComponentPlaneSemanticLabelListEXT(@NotNull MemorySegment
     }
 
     public void autoInit() {
-        type(XrStructureType.XR_TYPE_SPATIAL_COMPONENT_PLANE_SEMANTIC_LABEL_LIST_EXT);
+        type(XrStructureType.SPATIAL_COMPONENT_PLANE_SEMANTIC_LABEL_LIST_EXT);
     }
 
     public @EnumType(XrStructureType.class) int type() {

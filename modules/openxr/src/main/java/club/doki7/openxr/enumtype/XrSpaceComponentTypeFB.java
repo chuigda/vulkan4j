@@ -20,6 +20,8 @@ public final class XrSpaceComponentTypeFB {
     public static final int ROOM_LAYOUT = 0x6;
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XR_SPACE_COMPONENT_TYPE_SPACE_CONTAINER_FB.html"><code>XR_SPACE_COMPONENT_TYPE_SPACE_CONTAINER_FB</code></a>
     public static final int SPACE_CONTAINER = 0x7;
+    /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XR_SPACE_COMPONENT_TYPE_TRIANGLE_MESH_META.html"><code>XR_SPACE_COMPONENT_TYPE_TRIANGLE_MESH_META</code></a>
+    public static final int TRIANGLE_MESH_META = 0x3b9ee4c8;
 
     public static String explain(@EnumType(XrSpaceComponentTypeFB.class) int value) {
         return switch (value) {
@@ -31,6 +33,7 @@ public final class XrSpaceComponentTypeFB {
             case XrSpaceComponentTypeFB.SHARABLE -> "XR_SPACE_COMPONENT_TYPE_SHARABLE_FB";
             case XrSpaceComponentTypeFB.SPACE_CONTAINER -> "XR_SPACE_COMPONENT_TYPE_SPACE_CONTAINER_FB";
             case XrSpaceComponentTypeFB.STORABLE -> "XR_SPACE_COMPONENT_TYPE_STORABLE_FB";
+            case XrSpaceComponentTypeFB.TRIANGLE_MESH_META -> "XR_SPACE_COMPONENT_TYPE_TRIANGLE_MESH_META";
             default -> "UNKNOWN(" + value + ")";
         };
     }

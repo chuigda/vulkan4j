@@ -173,7 +173,7 @@ public record XrLocalizationMapML(@NotNull MemorySegment segment) implements IXr
 
     public static XrLocalizationMapML allocate(Arena arena) {
         XrLocalizationMapML ret = new XrLocalizationMapML(arena.allocate(LAYOUT));
-        ret.type(XrStructureType.XR_TYPE_LOCALIZATION_MAP_ML);
+        ret.type(XrStructureType.LOCALIZATION_MAP_ML);
         return ret;
     }
 
@@ -181,7 +181,7 @@ public record XrLocalizationMapML(@NotNull MemorySegment segment) implements IXr
         MemorySegment segment = arena.allocate(LAYOUT, count);
         XrLocalizationMapML.Ptr ret = new XrLocalizationMapML.Ptr(segment);
         for (long i = 0; i < count; i++) {
-            ret.at(i).type(XrStructureType.XR_TYPE_LOCALIZATION_MAP_ML);
+            ret.at(i).type(XrStructureType.LOCALIZATION_MAP_ML);
         }
         return ret;
     }
@@ -193,7 +193,7 @@ public record XrLocalizationMapML(@NotNull MemorySegment segment) implements IXr
     }
 
     public void autoInit() {
-        type(XrStructureType.XR_TYPE_LOCALIZATION_MAP_ML);
+        type(XrStructureType.LOCALIZATION_MAP_ML);
     }
 
     public @EnumType(XrStructureType.class) int type() {

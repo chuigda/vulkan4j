@@ -172,7 +172,7 @@ public record XrEyeGazesFB(@NotNull MemorySegment segment) implements IXrEyeGaze
 
     public static XrEyeGazesFB allocate(Arena arena) {
         XrEyeGazesFB ret = new XrEyeGazesFB(arena.allocate(LAYOUT));
-        ret.type(XrStructureType.XR_TYPE_EYE_GAZES_FB);
+        ret.type(XrStructureType.EYE_GAZES_FB);
         return ret;
     }
 
@@ -180,7 +180,7 @@ public record XrEyeGazesFB(@NotNull MemorySegment segment) implements IXrEyeGaze
         MemorySegment segment = arena.allocate(LAYOUT, count);
         XrEyeGazesFB.Ptr ret = new XrEyeGazesFB.Ptr(segment);
         for (long i = 0; i < count; i++) {
-            ret.at(i).type(XrStructureType.XR_TYPE_EYE_GAZES_FB);
+            ret.at(i).type(XrStructureType.EYE_GAZES_FB);
         }
         return ret;
     }
@@ -192,7 +192,7 @@ public record XrEyeGazesFB(@NotNull MemorySegment segment) implements IXrEyeGaze
     }
 
     public void autoInit() {
-        type(XrStructureType.XR_TYPE_EYE_GAZES_FB);
+        type(XrStructureType.EYE_GAZES_FB);
     }
 
     public @EnumType(XrStructureType.class) int type() {

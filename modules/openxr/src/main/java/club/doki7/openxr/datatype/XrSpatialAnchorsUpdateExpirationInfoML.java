@@ -173,7 +173,7 @@ public record XrSpatialAnchorsUpdateExpirationInfoML(@NotNull MemorySegment segm
 
     public static XrSpatialAnchorsUpdateExpirationInfoML allocate(Arena arena) {
         XrSpatialAnchorsUpdateExpirationInfoML ret = new XrSpatialAnchorsUpdateExpirationInfoML(arena.allocate(LAYOUT));
-        ret.type(XrStructureType.XR_TYPE_SPATIAL_ANCHORS_UPDATE_EXPIRATION_INFO_ML);
+        ret.type(XrStructureType.SPATIAL_ANCHORS_UPDATE_EXPIRATION_INFO_ML);
         return ret;
     }
 
@@ -181,7 +181,7 @@ public record XrSpatialAnchorsUpdateExpirationInfoML(@NotNull MemorySegment segm
         MemorySegment segment = arena.allocate(LAYOUT, count);
         XrSpatialAnchorsUpdateExpirationInfoML.Ptr ret = new XrSpatialAnchorsUpdateExpirationInfoML.Ptr(segment);
         for (long i = 0; i < count; i++) {
-            ret.at(i).type(XrStructureType.XR_TYPE_SPATIAL_ANCHORS_UPDATE_EXPIRATION_INFO_ML);
+            ret.at(i).type(XrStructureType.SPATIAL_ANCHORS_UPDATE_EXPIRATION_INFO_ML);
         }
         return ret;
     }
@@ -193,7 +193,7 @@ public record XrSpatialAnchorsUpdateExpirationInfoML(@NotNull MemorySegment segm
     }
 
     public void autoInit() {
-        type(XrStructureType.XR_TYPE_SPATIAL_ANCHORS_UPDATE_EXPIRATION_INFO_ML);
+        type(XrStructureType.SPATIAL_ANCHORS_UPDATE_EXPIRATION_INFO_ML);
     }
 
     public @EnumType(XrStructureType.class) int type() {

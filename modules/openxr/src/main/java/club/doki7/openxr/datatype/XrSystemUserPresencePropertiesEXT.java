@@ -171,7 +171,7 @@ public record XrSystemUserPresencePropertiesEXT(@NotNull MemorySegment segment) 
 
     public static XrSystemUserPresencePropertiesEXT allocate(Arena arena) {
         XrSystemUserPresencePropertiesEXT ret = new XrSystemUserPresencePropertiesEXT(arena.allocate(LAYOUT));
-        ret.type(XrStructureType.XR_TYPE_SYSTEM_USER_PRESENCE_PROPERTIES_EXT);
+        ret.type(XrStructureType.SYSTEM_USER_PRESENCE_PROPERTIES_EXT);
         return ret;
     }
 
@@ -179,7 +179,7 @@ public record XrSystemUserPresencePropertiesEXT(@NotNull MemorySegment segment) 
         MemorySegment segment = arena.allocate(LAYOUT, count);
         XrSystemUserPresencePropertiesEXT.Ptr ret = new XrSystemUserPresencePropertiesEXT.Ptr(segment);
         for (long i = 0; i < count; i++) {
-            ret.at(i).type(XrStructureType.XR_TYPE_SYSTEM_USER_PRESENCE_PROPERTIES_EXT);
+            ret.at(i).type(XrStructureType.SYSTEM_USER_PRESENCE_PROPERTIES_EXT);
         }
         return ret;
     }
@@ -191,7 +191,7 @@ public record XrSystemUserPresencePropertiesEXT(@NotNull MemorySegment segment) 
     }
 
     public void autoInit() {
-        type(XrStructureType.XR_TYPE_SYSTEM_USER_PRESENCE_PROPERTIES_EXT);
+        type(XrStructureType.SYSTEM_USER_PRESENCE_PROPERTIES_EXT);
     }
 
     public @EnumType(XrStructureType.class) int type() {

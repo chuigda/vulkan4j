@@ -171,7 +171,7 @@ public record XrSwapchainImageD3D12KHR(@NotNull MemorySegment segment) implement
 
     public static XrSwapchainImageD3D12KHR allocate(Arena arena) {
         XrSwapchainImageD3D12KHR ret = new XrSwapchainImageD3D12KHR(arena.allocate(LAYOUT));
-        ret.type(XrStructureType.XR_TYPE_SWAPCHAIN_IMAGE_D3D12_KHR);
+        ret.type(XrStructureType.SWAPCHAIN_IMAGE_D3D12_KHR);
         return ret;
     }
 
@@ -179,7 +179,7 @@ public record XrSwapchainImageD3D12KHR(@NotNull MemorySegment segment) implement
         MemorySegment segment = arena.allocate(LAYOUT, count);
         XrSwapchainImageD3D12KHR.Ptr ret = new XrSwapchainImageD3D12KHR.Ptr(segment);
         for (long i = 0; i < count; i++) {
-            ret.at(i).type(XrStructureType.XR_TYPE_SWAPCHAIN_IMAGE_D3D12_KHR);
+            ret.at(i).type(XrStructureType.SWAPCHAIN_IMAGE_D3D12_KHR);
         }
         return ret;
     }
@@ -191,7 +191,7 @@ public record XrSwapchainImageD3D12KHR(@NotNull MemorySegment segment) implement
     }
 
     public void autoInit() {
-        type(XrStructureType.XR_TYPE_SWAPCHAIN_IMAGE_D3D12_KHR);
+        type(XrStructureType.SWAPCHAIN_IMAGE_D3D12_KHR);
     }
 
     public @EnumType(XrStructureType.class) int type() {

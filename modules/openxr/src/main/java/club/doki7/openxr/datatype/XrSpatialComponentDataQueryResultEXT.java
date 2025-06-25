@@ -176,7 +176,7 @@ public record XrSpatialComponentDataQueryResultEXT(@NotNull MemorySegment segmen
 
     public static XrSpatialComponentDataQueryResultEXT allocate(Arena arena) {
         XrSpatialComponentDataQueryResultEXT ret = new XrSpatialComponentDataQueryResultEXT(arena.allocate(LAYOUT));
-        ret.type(XrStructureType.XR_TYPE_SPATIAL_COMPONENT_DATA_QUERY_RESULT_EXT);
+        ret.type(XrStructureType.SPATIAL_COMPONENT_DATA_QUERY_RESULT_EXT);
         return ret;
     }
 
@@ -184,7 +184,7 @@ public record XrSpatialComponentDataQueryResultEXT(@NotNull MemorySegment segmen
         MemorySegment segment = arena.allocate(LAYOUT, count);
         XrSpatialComponentDataQueryResultEXT.Ptr ret = new XrSpatialComponentDataQueryResultEXT.Ptr(segment);
         for (long i = 0; i < count; i++) {
-            ret.at(i).type(XrStructureType.XR_TYPE_SPATIAL_COMPONENT_DATA_QUERY_RESULT_EXT);
+            ret.at(i).type(XrStructureType.SPATIAL_COMPONENT_DATA_QUERY_RESULT_EXT);
         }
         return ret;
     }
@@ -196,7 +196,7 @@ public record XrSpatialComponentDataQueryResultEXT(@NotNull MemorySegment segmen
     }
 
     public void autoInit() {
-        type(XrStructureType.XR_TYPE_SPATIAL_COMPONENT_DATA_QUERY_RESULT_EXT);
+        type(XrStructureType.SPATIAL_COMPONENT_DATA_QUERY_RESULT_EXT);
     }
 
     public @EnumType(XrStructureType.class) int type() {

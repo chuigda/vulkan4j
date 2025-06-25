@@ -173,7 +173,7 @@ public record XrEventDataVisibilityMaskChangedKHR(@NotNull MemorySegment segment
 
     public static XrEventDataVisibilityMaskChangedKHR allocate(Arena arena) {
         XrEventDataVisibilityMaskChangedKHR ret = new XrEventDataVisibilityMaskChangedKHR(arena.allocate(LAYOUT));
-        ret.type(XrStructureType.XR_TYPE_EVENT_DATA_VISIBILITY_MASK_CHANGED_KHR);
+        ret.type(XrStructureType.EVENT_DATA_VISIBILITY_MASK_CHANGED_KHR);
         return ret;
     }
 
@@ -181,7 +181,7 @@ public record XrEventDataVisibilityMaskChangedKHR(@NotNull MemorySegment segment
         MemorySegment segment = arena.allocate(LAYOUT, count);
         XrEventDataVisibilityMaskChangedKHR.Ptr ret = new XrEventDataVisibilityMaskChangedKHR.Ptr(segment);
         for (long i = 0; i < count; i++) {
-            ret.at(i).type(XrStructureType.XR_TYPE_EVENT_DATA_VISIBILITY_MASK_CHANGED_KHR);
+            ret.at(i).type(XrStructureType.EVENT_DATA_VISIBILITY_MASK_CHANGED_KHR);
         }
         return ret;
     }
@@ -193,7 +193,7 @@ public record XrEventDataVisibilityMaskChangedKHR(@NotNull MemorySegment segment
     }
 
     public void autoInit() {
-        type(XrStructureType.XR_TYPE_EVENT_DATA_VISIBILITY_MASK_CHANGED_KHR);
+        type(XrStructureType.EVENT_DATA_VISIBILITY_MASK_CHANGED_KHR);
     }
 
     public @EnumType(XrStructureType.class) int type() {

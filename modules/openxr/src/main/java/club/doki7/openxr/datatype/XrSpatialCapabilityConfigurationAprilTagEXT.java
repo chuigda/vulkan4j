@@ -174,7 +174,7 @@ public record XrSpatialCapabilityConfigurationAprilTagEXT(@NotNull MemorySegment
 
     public static XrSpatialCapabilityConfigurationAprilTagEXT allocate(Arena arena) {
         XrSpatialCapabilityConfigurationAprilTagEXT ret = new XrSpatialCapabilityConfigurationAprilTagEXT(arena.allocate(LAYOUT));
-        ret.type(XrStructureType.XR_TYPE_SPATIAL_CAPABILITY_CONFIGURATION_APRIL_TAG_EXT);
+        ret.type(XrStructureType.SPATIAL_CAPABILITY_CONFIGURATION_APRIL_TAG_EXT);
         return ret;
     }
 
@@ -182,7 +182,7 @@ public record XrSpatialCapabilityConfigurationAprilTagEXT(@NotNull MemorySegment
         MemorySegment segment = arena.allocate(LAYOUT, count);
         XrSpatialCapabilityConfigurationAprilTagEXT.Ptr ret = new XrSpatialCapabilityConfigurationAprilTagEXT.Ptr(segment);
         for (long i = 0; i < count; i++) {
-            ret.at(i).type(XrStructureType.XR_TYPE_SPATIAL_CAPABILITY_CONFIGURATION_APRIL_TAG_EXT);
+            ret.at(i).type(XrStructureType.SPATIAL_CAPABILITY_CONFIGURATION_APRIL_TAG_EXT);
         }
         return ret;
     }
@@ -194,7 +194,7 @@ public record XrSpatialCapabilityConfigurationAprilTagEXT(@NotNull MemorySegment
     }
 
     public void autoInit() {
-        type(XrStructureType.XR_TYPE_SPATIAL_CAPABILITY_CONFIGURATION_APRIL_TAG_EXT);
+        type(XrStructureType.SPATIAL_CAPABILITY_CONFIGURATION_APRIL_TAG_EXT);
     }
 
     public @EnumType(XrStructureType.class) int type() {

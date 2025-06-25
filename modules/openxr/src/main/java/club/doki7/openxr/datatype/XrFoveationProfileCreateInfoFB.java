@@ -170,7 +170,7 @@ public record XrFoveationProfileCreateInfoFB(@NotNull MemorySegment segment) imp
 
     public static XrFoveationProfileCreateInfoFB allocate(Arena arena) {
         XrFoveationProfileCreateInfoFB ret = new XrFoveationProfileCreateInfoFB(arena.allocate(LAYOUT));
-        ret.type(XrStructureType.XR_TYPE_FOVEATION_PROFILE_CREATE_INFO_FB);
+        ret.type(XrStructureType.FOVEATION_PROFILE_CREATE_INFO_FB);
         return ret;
     }
 
@@ -178,7 +178,7 @@ public record XrFoveationProfileCreateInfoFB(@NotNull MemorySegment segment) imp
         MemorySegment segment = arena.allocate(LAYOUT, count);
         XrFoveationProfileCreateInfoFB.Ptr ret = new XrFoveationProfileCreateInfoFB.Ptr(segment);
         for (long i = 0; i < count; i++) {
-            ret.at(i).type(XrStructureType.XR_TYPE_FOVEATION_PROFILE_CREATE_INFO_FB);
+            ret.at(i).type(XrStructureType.FOVEATION_PROFILE_CREATE_INFO_FB);
         }
         return ret;
     }
@@ -190,7 +190,7 @@ public record XrFoveationProfileCreateInfoFB(@NotNull MemorySegment segment) imp
     }
 
     public void autoInit() {
-        type(XrStructureType.XR_TYPE_FOVEATION_PROFILE_CREATE_INFO_FB);
+        type(XrStructureType.FOVEATION_PROFILE_CREATE_INFO_FB);
     }
 
     public @EnumType(XrStructureType.class) int type() {

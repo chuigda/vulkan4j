@@ -171,7 +171,7 @@ public record XrSerializedSceneFragmentDataGetInfoMSFT(@NotNull MemorySegment se
 
     public static XrSerializedSceneFragmentDataGetInfoMSFT allocate(Arena arena) {
         XrSerializedSceneFragmentDataGetInfoMSFT ret = new XrSerializedSceneFragmentDataGetInfoMSFT(arena.allocate(LAYOUT));
-        ret.type(XrStructureType.XR_TYPE_SERIALIZED_SCENE_FRAGMENT_DATA_GET_INFO_MSFT);
+        ret.type(XrStructureType.SERIALIZED_SCENE_FRAGMENT_DATA_GET_INFO_MSFT);
         return ret;
     }
 
@@ -179,7 +179,7 @@ public record XrSerializedSceneFragmentDataGetInfoMSFT(@NotNull MemorySegment se
         MemorySegment segment = arena.allocate(LAYOUT, count);
         XrSerializedSceneFragmentDataGetInfoMSFT.Ptr ret = new XrSerializedSceneFragmentDataGetInfoMSFT.Ptr(segment);
         for (long i = 0; i < count; i++) {
-            ret.at(i).type(XrStructureType.XR_TYPE_SERIALIZED_SCENE_FRAGMENT_DATA_GET_INFO_MSFT);
+            ret.at(i).type(XrStructureType.SERIALIZED_SCENE_FRAGMENT_DATA_GET_INFO_MSFT);
         }
         return ret;
     }
@@ -191,7 +191,7 @@ public record XrSerializedSceneFragmentDataGetInfoMSFT(@NotNull MemorySegment se
     }
 
     public void autoInit() {
-        type(XrStructureType.XR_TYPE_SERIALIZED_SCENE_FRAGMENT_DATA_GET_INFO_MSFT);
+        type(XrStructureType.SERIALIZED_SCENE_FRAGMENT_DATA_GET_INFO_MSFT);
     }
 
     public @EnumType(XrStructureType.class) int type() {

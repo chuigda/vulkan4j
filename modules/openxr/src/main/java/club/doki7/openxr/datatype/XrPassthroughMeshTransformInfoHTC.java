@@ -178,7 +178,7 @@ public record XrPassthroughMeshTransformInfoHTC(@NotNull MemorySegment segment) 
 
     public static XrPassthroughMeshTransformInfoHTC allocate(Arena arena) {
         XrPassthroughMeshTransformInfoHTC ret = new XrPassthroughMeshTransformInfoHTC(arena.allocate(LAYOUT));
-        ret.type(XrStructureType.XR_TYPE_PASSTHROUGH_MESH_TRANSFORM_INFO_HTC);
+        ret.type(XrStructureType.PASSTHROUGH_MESH_TRANSFORM_INFO_HTC);
         return ret;
     }
 
@@ -186,7 +186,7 @@ public record XrPassthroughMeshTransformInfoHTC(@NotNull MemorySegment segment) 
         MemorySegment segment = arena.allocate(LAYOUT, count);
         XrPassthroughMeshTransformInfoHTC.Ptr ret = new XrPassthroughMeshTransformInfoHTC.Ptr(segment);
         for (long i = 0; i < count; i++) {
-            ret.at(i).type(XrStructureType.XR_TYPE_PASSTHROUGH_MESH_TRANSFORM_INFO_HTC);
+            ret.at(i).type(XrStructureType.PASSTHROUGH_MESH_TRANSFORM_INFO_HTC);
         }
         return ret;
     }
@@ -198,7 +198,7 @@ public record XrPassthroughMeshTransformInfoHTC(@NotNull MemorySegment segment) 
     }
 
     public void autoInit() {
-        type(XrStructureType.XR_TYPE_PASSTHROUGH_MESH_TRANSFORM_INFO_HTC);
+        type(XrStructureType.PASSTHROUGH_MESH_TRANSFORM_INFO_HTC);
     }
 
     public @EnumType(XrStructureType.class) int type() {

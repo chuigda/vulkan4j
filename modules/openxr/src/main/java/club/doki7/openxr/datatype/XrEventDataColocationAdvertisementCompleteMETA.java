@@ -172,7 +172,7 @@ public record XrEventDataColocationAdvertisementCompleteMETA(@NotNull MemorySegm
 
     public static XrEventDataColocationAdvertisementCompleteMETA allocate(Arena arena) {
         XrEventDataColocationAdvertisementCompleteMETA ret = new XrEventDataColocationAdvertisementCompleteMETA(arena.allocate(LAYOUT));
-        ret.type(XrStructureType.XR_TYPE_EVENT_DATA_COLOCATION_ADVERTISEMENT_COMPLETE_META);
+        ret.type(XrStructureType.EVENT_DATA_COLOCATION_ADVERTISEMENT_COMPLETE_META);
         return ret;
     }
 
@@ -180,7 +180,7 @@ public record XrEventDataColocationAdvertisementCompleteMETA(@NotNull MemorySegm
         MemorySegment segment = arena.allocate(LAYOUT, count);
         XrEventDataColocationAdvertisementCompleteMETA.Ptr ret = new XrEventDataColocationAdvertisementCompleteMETA.Ptr(segment);
         for (long i = 0; i < count; i++) {
-            ret.at(i).type(XrStructureType.XR_TYPE_EVENT_DATA_COLOCATION_ADVERTISEMENT_COMPLETE_META);
+            ret.at(i).type(XrStructureType.EVENT_DATA_COLOCATION_ADVERTISEMENT_COMPLETE_META);
         }
         return ret;
     }
@@ -192,7 +192,7 @@ public record XrEventDataColocationAdvertisementCompleteMETA(@NotNull MemorySegm
     }
 
     public void autoInit() {
-        type(XrStructureType.XR_TYPE_EVENT_DATA_COLOCATION_ADVERTISEMENT_COMPLETE_META);
+        type(XrStructureType.EVENT_DATA_COLOCATION_ADVERTISEMENT_COMPLETE_META);
     }
 
     public @EnumType(XrStructureType.class) int type() {

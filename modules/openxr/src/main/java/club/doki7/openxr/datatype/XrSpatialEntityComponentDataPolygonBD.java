@@ -173,7 +173,7 @@ public record XrSpatialEntityComponentDataPolygonBD(@NotNull MemorySegment segme
 
     public static XrSpatialEntityComponentDataPolygonBD allocate(Arena arena) {
         XrSpatialEntityComponentDataPolygonBD ret = new XrSpatialEntityComponentDataPolygonBD(arena.allocate(LAYOUT));
-        ret.type(XrStructureType.XR_TYPE_SPATIAL_ENTITY_COMPONENT_DATA_POLYGON_BD);
+        ret.type(XrStructureType.SPATIAL_ENTITY_COMPONENT_DATA_POLYGON_BD);
         return ret;
     }
 
@@ -181,7 +181,7 @@ public record XrSpatialEntityComponentDataPolygonBD(@NotNull MemorySegment segme
         MemorySegment segment = arena.allocate(LAYOUT, count);
         XrSpatialEntityComponentDataPolygonBD.Ptr ret = new XrSpatialEntityComponentDataPolygonBD.Ptr(segment);
         for (long i = 0; i < count; i++) {
-            ret.at(i).type(XrStructureType.XR_TYPE_SPATIAL_ENTITY_COMPONENT_DATA_POLYGON_BD);
+            ret.at(i).type(XrStructureType.SPATIAL_ENTITY_COMPONENT_DATA_POLYGON_BD);
         }
         return ret;
     }
@@ -193,7 +193,7 @@ public record XrSpatialEntityComponentDataPolygonBD(@NotNull MemorySegment segme
     }
 
     public void autoInit() {
-        type(XrStructureType.XR_TYPE_SPATIAL_ENTITY_COMPONENT_DATA_POLYGON_BD);
+        type(XrStructureType.SPATIAL_ENTITY_COMPONENT_DATA_POLYGON_BD);
     }
 
     public @EnumType(XrStructureType.class) int type() {

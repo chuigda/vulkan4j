@@ -174,7 +174,7 @@ public record XrGraphicsBindingEGLMNDX(@NotNull MemorySegment segment) implement
 
     public static XrGraphicsBindingEGLMNDX allocate(Arena arena) {
         XrGraphicsBindingEGLMNDX ret = new XrGraphicsBindingEGLMNDX(arena.allocate(LAYOUT));
-        ret.type(XrStructureType.XR_TYPE_GRAPHICS_BINDING_EGL_MNDX);
+        ret.type(XrStructureType.GRAPHICS_BINDING_EGL_MNDX);
         return ret;
     }
 
@@ -182,7 +182,7 @@ public record XrGraphicsBindingEGLMNDX(@NotNull MemorySegment segment) implement
         MemorySegment segment = arena.allocate(LAYOUT, count);
         XrGraphicsBindingEGLMNDX.Ptr ret = new XrGraphicsBindingEGLMNDX.Ptr(segment);
         for (long i = 0; i < count; i++) {
-            ret.at(i).type(XrStructureType.XR_TYPE_GRAPHICS_BINDING_EGL_MNDX);
+            ret.at(i).type(XrStructureType.GRAPHICS_BINDING_EGL_MNDX);
         }
         return ret;
     }
@@ -194,7 +194,7 @@ public record XrGraphicsBindingEGLMNDX(@NotNull MemorySegment segment) implement
     }
 
     public void autoInit() {
-        type(XrStructureType.XR_TYPE_GRAPHICS_BINDING_EGL_MNDX);
+        type(XrStructureType.GRAPHICS_BINDING_EGL_MNDX);
     }
 
     public @EnumType(XrStructureType.class) int type() {

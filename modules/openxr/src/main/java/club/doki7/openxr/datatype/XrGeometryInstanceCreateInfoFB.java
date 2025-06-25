@@ -175,7 +175,7 @@ public record XrGeometryInstanceCreateInfoFB(@NotNull MemorySegment segment) imp
 
     public static XrGeometryInstanceCreateInfoFB allocate(Arena arena) {
         XrGeometryInstanceCreateInfoFB ret = new XrGeometryInstanceCreateInfoFB(arena.allocate(LAYOUT));
-        ret.type(XrStructureType.XR_TYPE_GEOMETRY_INSTANCE_CREATE_INFO_FB);
+        ret.type(XrStructureType.GEOMETRY_INSTANCE_CREATE_INFO_FB);
         return ret;
     }
 
@@ -183,7 +183,7 @@ public record XrGeometryInstanceCreateInfoFB(@NotNull MemorySegment segment) imp
         MemorySegment segment = arena.allocate(LAYOUT, count);
         XrGeometryInstanceCreateInfoFB.Ptr ret = new XrGeometryInstanceCreateInfoFB.Ptr(segment);
         for (long i = 0; i < count; i++) {
-            ret.at(i).type(XrStructureType.XR_TYPE_GEOMETRY_INSTANCE_CREATE_INFO_FB);
+            ret.at(i).type(XrStructureType.GEOMETRY_INSTANCE_CREATE_INFO_FB);
         }
         return ret;
     }
@@ -195,7 +195,7 @@ public record XrGeometryInstanceCreateInfoFB(@NotNull MemorySegment segment) imp
     }
 
     public void autoInit() {
-        type(XrStructureType.XR_TYPE_GEOMETRY_INSTANCE_CREATE_INFO_FB);
+        type(XrStructureType.GEOMETRY_INSTANCE_CREATE_INFO_FB);
     }
 
     public @EnumType(XrStructureType.class) int type() {

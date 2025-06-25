@@ -172,7 +172,7 @@ public record XrGraphicsRequirementsD3D11KHR(@NotNull MemorySegment segment) imp
 
     public static XrGraphicsRequirementsD3D11KHR allocate(Arena arena) {
         XrGraphicsRequirementsD3D11KHR ret = new XrGraphicsRequirementsD3D11KHR(arena.allocate(LAYOUT));
-        ret.type(XrStructureType.XR_TYPE_GRAPHICS_REQUIREMENTS_D3D11_KHR);
+        ret.type(XrStructureType.GRAPHICS_REQUIREMENTS_D3D11_KHR);
         return ret;
     }
 
@@ -180,7 +180,7 @@ public record XrGraphicsRequirementsD3D11KHR(@NotNull MemorySegment segment) imp
         MemorySegment segment = arena.allocate(LAYOUT, count);
         XrGraphicsRequirementsD3D11KHR.Ptr ret = new XrGraphicsRequirementsD3D11KHR.Ptr(segment);
         for (long i = 0; i < count; i++) {
-            ret.at(i).type(XrStructureType.XR_TYPE_GRAPHICS_REQUIREMENTS_D3D11_KHR);
+            ret.at(i).type(XrStructureType.GRAPHICS_REQUIREMENTS_D3D11_KHR);
         }
         return ret;
     }
@@ -192,7 +192,7 @@ public record XrGraphicsRequirementsD3D11KHR(@NotNull MemorySegment segment) imp
     }
 
     public void autoInit() {
-        type(XrStructureType.XR_TYPE_GRAPHICS_REQUIREMENTS_D3D11_KHR);
+        type(XrStructureType.GRAPHICS_REQUIREMENTS_D3D11_KHR);
     }
 
     public @EnumType(XrStructureType.class) int type() {

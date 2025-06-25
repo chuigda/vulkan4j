@@ -174,7 +174,7 @@ public record XrFacialExpressionsHTC(@NotNull MemorySegment segment) implements 
 
     public static XrFacialExpressionsHTC allocate(Arena arena) {
         XrFacialExpressionsHTC ret = new XrFacialExpressionsHTC(arena.allocate(LAYOUT));
-        ret.type(XrStructureType.XR_TYPE_FACIAL_EXPRESSIONS_HTC);
+        ret.type(XrStructureType.FACIAL_EXPRESSIONS_HTC);
         return ret;
     }
 
@@ -182,7 +182,7 @@ public record XrFacialExpressionsHTC(@NotNull MemorySegment segment) implements 
         MemorySegment segment = arena.allocate(LAYOUT, count);
         XrFacialExpressionsHTC.Ptr ret = new XrFacialExpressionsHTC.Ptr(segment);
         for (long i = 0; i < count; i++) {
-            ret.at(i).type(XrStructureType.XR_TYPE_FACIAL_EXPRESSIONS_HTC);
+            ret.at(i).type(XrStructureType.FACIAL_EXPRESSIONS_HTC);
         }
         return ret;
     }
@@ -194,7 +194,7 @@ public record XrFacialExpressionsHTC(@NotNull MemorySegment segment) implements 
     }
 
     public void autoInit() {
-        type(XrStructureType.XR_TYPE_FACIAL_EXPRESSIONS_HTC);
+        type(XrStructureType.FACIAL_EXPRESSIONS_HTC);
     }
 
     public @EnumType(XrStructureType.class) int type() {

@@ -172,7 +172,7 @@ public record XrSwapchainStateFoveationFB(@NotNull MemorySegment segment) implem
 
     public static XrSwapchainStateFoveationFB allocate(Arena arena) {
         XrSwapchainStateFoveationFB ret = new XrSwapchainStateFoveationFB(arena.allocate(LAYOUT));
-        ret.type(XrStructureType.XR_TYPE_SWAPCHAIN_STATE_FOVEATION_FB);
+        ret.type(XrStructureType.SWAPCHAIN_STATE_FOVEATION_FB);
         return ret;
     }
 
@@ -180,7 +180,7 @@ public record XrSwapchainStateFoveationFB(@NotNull MemorySegment segment) implem
         MemorySegment segment = arena.allocate(LAYOUT, count);
         XrSwapchainStateFoveationFB.Ptr ret = new XrSwapchainStateFoveationFB.Ptr(segment);
         for (long i = 0; i < count; i++) {
-            ret.at(i).type(XrStructureType.XR_TYPE_SWAPCHAIN_STATE_FOVEATION_FB);
+            ret.at(i).type(XrStructureType.SWAPCHAIN_STATE_FOVEATION_FB);
         }
         return ret;
     }
@@ -192,7 +192,7 @@ public record XrSwapchainStateFoveationFB(@NotNull MemorySegment segment) implem
     }
 
     public void autoInit() {
-        type(XrStructureType.XR_TYPE_SWAPCHAIN_STATE_FOVEATION_FB);
+        type(XrStructureType.SWAPCHAIN_STATE_FOVEATION_FB);
     }
 
     public @EnumType(XrStructureType.class) int type() {

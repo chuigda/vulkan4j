@@ -172,7 +172,7 @@ public record XrSpatialDiscoveryPersistenceUuidFilterEXT(@NotNull MemorySegment 
 
     public static XrSpatialDiscoveryPersistenceUuidFilterEXT allocate(Arena arena) {
         XrSpatialDiscoveryPersistenceUuidFilterEXT ret = new XrSpatialDiscoveryPersistenceUuidFilterEXT(arena.allocate(LAYOUT));
-        ret.type(XrStructureType.XR_TYPE_SPATIAL_DISCOVERY_PERSISTENCE_UUID_FILTER_EXT);
+        ret.type(XrStructureType.SPATIAL_DISCOVERY_PERSISTENCE_UUID_FILTER_EXT);
         return ret;
     }
 
@@ -180,7 +180,7 @@ public record XrSpatialDiscoveryPersistenceUuidFilterEXT(@NotNull MemorySegment 
         MemorySegment segment = arena.allocate(LAYOUT, count);
         XrSpatialDiscoveryPersistenceUuidFilterEXT.Ptr ret = new XrSpatialDiscoveryPersistenceUuidFilterEXT.Ptr(segment);
         for (long i = 0; i < count; i++) {
-            ret.at(i).type(XrStructureType.XR_TYPE_SPATIAL_DISCOVERY_PERSISTENCE_UUID_FILTER_EXT);
+            ret.at(i).type(XrStructureType.SPATIAL_DISCOVERY_PERSISTENCE_UUID_FILTER_EXT);
         }
         return ret;
     }
@@ -192,7 +192,7 @@ public record XrSpatialDiscoveryPersistenceUuidFilterEXT(@NotNull MemorySegment 
     }
 
     public void autoInit() {
-        type(XrStructureType.XR_TYPE_SPATIAL_DISCOVERY_PERSISTENCE_UUID_FILTER_EXT);
+        type(XrStructureType.SPATIAL_DISCOVERY_PERSISTENCE_UUID_FILTER_EXT);
     }
 
     public @EnumType(XrStructureType.class) int type() {

@@ -172,7 +172,7 @@ public record XrEnvironmentDepthImageViewMETA(@NotNull MemorySegment segment) im
 
     public static XrEnvironmentDepthImageViewMETA allocate(Arena arena) {
         XrEnvironmentDepthImageViewMETA ret = new XrEnvironmentDepthImageViewMETA(arena.allocate(LAYOUT));
-        ret.type(XrStructureType.XR_TYPE_ENVIRONMENT_DEPTH_IMAGE_VIEW_META);
+        ret.type(XrStructureType.ENVIRONMENT_DEPTH_IMAGE_VIEW_META);
         return ret;
     }
 
@@ -180,7 +180,7 @@ public record XrEnvironmentDepthImageViewMETA(@NotNull MemorySegment segment) im
         MemorySegment segment = arena.allocate(LAYOUT, count);
         XrEnvironmentDepthImageViewMETA.Ptr ret = new XrEnvironmentDepthImageViewMETA.Ptr(segment);
         for (long i = 0; i < count; i++) {
-            ret.at(i).type(XrStructureType.XR_TYPE_ENVIRONMENT_DEPTH_IMAGE_VIEW_META);
+            ret.at(i).type(XrStructureType.ENVIRONMENT_DEPTH_IMAGE_VIEW_META);
         }
         return ret;
     }
@@ -192,7 +192,7 @@ public record XrEnvironmentDepthImageViewMETA(@NotNull MemorySegment segment) im
     }
 
     public void autoInit() {
-        type(XrStructureType.XR_TYPE_ENVIRONMENT_DEPTH_IMAGE_VIEW_META);
+        type(XrStructureType.ENVIRONMENT_DEPTH_IMAGE_VIEW_META);
     }
 
     public @EnumType(XrStructureType.class) int type() {

@@ -177,7 +177,7 @@ public record XrPlaneDetectorLocationEXT(@NotNull MemorySegment segment) impleme
 
     public static XrPlaneDetectorLocationEXT allocate(Arena arena) {
         XrPlaneDetectorLocationEXT ret = new XrPlaneDetectorLocationEXT(arena.allocate(LAYOUT));
-        ret.type(XrStructureType.XR_TYPE_PLANE_DETECTOR_LOCATION_EXT);
+        ret.type(XrStructureType.PLANE_DETECTOR_LOCATION_EXT);
         return ret;
     }
 
@@ -185,7 +185,7 @@ public record XrPlaneDetectorLocationEXT(@NotNull MemorySegment segment) impleme
         MemorySegment segment = arena.allocate(LAYOUT, count);
         XrPlaneDetectorLocationEXT.Ptr ret = new XrPlaneDetectorLocationEXT.Ptr(segment);
         for (long i = 0; i < count; i++) {
-            ret.at(i).type(XrStructureType.XR_TYPE_PLANE_DETECTOR_LOCATION_EXT);
+            ret.at(i).type(XrStructureType.PLANE_DETECTOR_LOCATION_EXT);
         }
         return ret;
     }
@@ -197,7 +197,7 @@ public record XrPlaneDetectorLocationEXT(@NotNull MemorySegment segment) impleme
     }
 
     public void autoInit() {
-        type(XrStructureType.XR_TYPE_PLANE_DETECTOR_LOCATION_EXT);
+        type(XrStructureType.PLANE_DETECTOR_LOCATION_EXT);
     }
 
     public @EnumType(XrStructureType.class) int type() {

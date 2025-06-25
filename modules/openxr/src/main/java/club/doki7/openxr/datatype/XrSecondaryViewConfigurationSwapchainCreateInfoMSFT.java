@@ -171,7 +171,7 @@ public record XrSecondaryViewConfigurationSwapchainCreateInfoMSFT(@NotNull Memor
 
     public static XrSecondaryViewConfigurationSwapchainCreateInfoMSFT allocate(Arena arena) {
         XrSecondaryViewConfigurationSwapchainCreateInfoMSFT ret = new XrSecondaryViewConfigurationSwapchainCreateInfoMSFT(arena.allocate(LAYOUT));
-        ret.type(XrStructureType.XR_TYPE_SECONDARY_VIEW_CONFIGURATION_SWAPCHAIN_CREATE_INFO_MSFT);
+        ret.type(XrStructureType.SECONDARY_VIEW_CONFIGURATION_SWAPCHAIN_CREATE_INFO_MSFT);
         return ret;
     }
 
@@ -179,7 +179,7 @@ public record XrSecondaryViewConfigurationSwapchainCreateInfoMSFT(@NotNull Memor
         MemorySegment segment = arena.allocate(LAYOUT, count);
         XrSecondaryViewConfigurationSwapchainCreateInfoMSFT.Ptr ret = new XrSecondaryViewConfigurationSwapchainCreateInfoMSFT.Ptr(segment);
         for (long i = 0; i < count; i++) {
-            ret.at(i).type(XrStructureType.XR_TYPE_SECONDARY_VIEW_CONFIGURATION_SWAPCHAIN_CREATE_INFO_MSFT);
+            ret.at(i).type(XrStructureType.SECONDARY_VIEW_CONFIGURATION_SWAPCHAIN_CREATE_INFO_MSFT);
         }
         return ret;
     }
@@ -191,7 +191,7 @@ public record XrSecondaryViewConfigurationSwapchainCreateInfoMSFT(@NotNull Memor
     }
 
     public void autoInit() {
-        type(XrStructureType.XR_TYPE_SECONDARY_VIEW_CONFIGURATION_SWAPCHAIN_CREATE_INFO_MSFT);
+        type(XrStructureType.SECONDARY_VIEW_CONFIGURATION_SWAPCHAIN_CREATE_INFO_MSFT);
     }
 
     public @EnumType(XrStructureType.class) int type() {

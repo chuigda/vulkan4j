@@ -171,7 +171,7 @@ public record XrEventDataSenseDataUpdatedBD(@NotNull MemorySegment segment) impl
 
     public static XrEventDataSenseDataUpdatedBD allocate(Arena arena) {
         XrEventDataSenseDataUpdatedBD ret = new XrEventDataSenseDataUpdatedBD(arena.allocate(LAYOUT));
-        ret.type(XrStructureType.XR_TYPE_EVENT_DATA_SENSE_DATA_UPDATED_BD);
+        ret.type(XrStructureType.EVENT_DATA_SENSE_DATA_UPDATED_BD);
         return ret;
     }
 
@@ -179,7 +179,7 @@ public record XrEventDataSenseDataUpdatedBD(@NotNull MemorySegment segment) impl
         MemorySegment segment = arena.allocate(LAYOUT, count);
         XrEventDataSenseDataUpdatedBD.Ptr ret = new XrEventDataSenseDataUpdatedBD.Ptr(segment);
         for (long i = 0; i < count; i++) {
-            ret.at(i).type(XrStructureType.XR_TYPE_EVENT_DATA_SENSE_DATA_UPDATED_BD);
+            ret.at(i).type(XrStructureType.EVENT_DATA_SENSE_DATA_UPDATED_BD);
         }
         return ret;
     }
@@ -191,7 +191,7 @@ public record XrEventDataSenseDataUpdatedBD(@NotNull MemorySegment segment) impl
     }
 
     public void autoInit() {
-        type(XrStructureType.XR_TYPE_EVENT_DATA_SENSE_DATA_UPDATED_BD);
+        type(XrStructureType.EVENT_DATA_SENSE_DATA_UPDATED_BD);
     }
 
     public @EnumType(XrStructureType.class) int type() {

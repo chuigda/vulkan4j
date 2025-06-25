@@ -173,7 +173,7 @@ public record XrRenderModelAssetDataEXT(@NotNull MemorySegment segment) implemen
 
     public static XrRenderModelAssetDataEXT allocate(Arena arena) {
         XrRenderModelAssetDataEXT ret = new XrRenderModelAssetDataEXT(arena.allocate(LAYOUT));
-        ret.type(XrStructureType.XR_TYPE_RENDER_MODEL_ASSET_DATA_EXT);
+        ret.type(XrStructureType.RENDER_MODEL_ASSET_DATA_EXT);
         return ret;
     }
 
@@ -181,7 +181,7 @@ public record XrRenderModelAssetDataEXT(@NotNull MemorySegment segment) implemen
         MemorySegment segment = arena.allocate(LAYOUT, count);
         XrRenderModelAssetDataEXT.Ptr ret = new XrRenderModelAssetDataEXT.Ptr(segment);
         for (long i = 0; i < count; i++) {
-            ret.at(i).type(XrStructureType.XR_TYPE_RENDER_MODEL_ASSET_DATA_EXT);
+            ret.at(i).type(XrStructureType.RENDER_MODEL_ASSET_DATA_EXT);
         }
         return ret;
     }
@@ -193,7 +193,7 @@ public record XrRenderModelAssetDataEXT(@NotNull MemorySegment segment) implemen
     }
 
     public void autoInit() {
-        type(XrStructureType.XR_TYPE_RENDER_MODEL_ASSET_DATA_EXT);
+        type(XrStructureType.RENDER_MODEL_ASSET_DATA_EXT);
     }
 
     public @EnumType(XrStructureType.class) int type() {

@@ -171,7 +171,7 @@ public record XrBodyTrackerCreateInfoBD(@NotNull MemorySegment segment) implemen
 
     public static XrBodyTrackerCreateInfoBD allocate(Arena arena) {
         XrBodyTrackerCreateInfoBD ret = new XrBodyTrackerCreateInfoBD(arena.allocate(LAYOUT));
-        ret.type(XrStructureType.XR_TYPE_BODY_TRACKER_CREATE_INFO_BD);
+        ret.type(XrStructureType.BODY_TRACKER_CREATE_INFO_BD);
         return ret;
     }
 
@@ -179,7 +179,7 @@ public record XrBodyTrackerCreateInfoBD(@NotNull MemorySegment segment) implemen
         MemorySegment segment = arena.allocate(LAYOUT, count);
         XrBodyTrackerCreateInfoBD.Ptr ret = new XrBodyTrackerCreateInfoBD.Ptr(segment);
         for (long i = 0; i < count; i++) {
-            ret.at(i).type(XrStructureType.XR_TYPE_BODY_TRACKER_CREATE_INFO_BD);
+            ret.at(i).type(XrStructureType.BODY_TRACKER_CREATE_INFO_BD);
         }
         return ret;
     }
@@ -191,7 +191,7 @@ public record XrBodyTrackerCreateInfoBD(@NotNull MemorySegment segment) implemen
     }
 
     public void autoInit() {
-        type(XrStructureType.XR_TYPE_BODY_TRACKER_CREATE_INFO_BD);
+        type(XrStructureType.BODY_TRACKER_CREATE_INFO_BD);
     }
 
     public @EnumType(XrStructureType.class) int type() {

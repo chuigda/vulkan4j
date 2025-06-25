@@ -171,7 +171,7 @@ public record XrSystemSpatialEntityGroupSharingPropertiesMETA(@NotNull MemorySeg
 
     public static XrSystemSpatialEntityGroupSharingPropertiesMETA allocate(Arena arena) {
         XrSystemSpatialEntityGroupSharingPropertiesMETA ret = new XrSystemSpatialEntityGroupSharingPropertiesMETA(arena.allocate(LAYOUT));
-        ret.type(XrStructureType.XR_TYPE_SYSTEM_SPATIAL_ENTITY_GROUP_SHARING_PROPERTIES_META);
+        ret.type(XrStructureType.SYSTEM_SPATIAL_ENTITY_GROUP_SHARING_PROPERTIES_META);
         return ret;
     }
 
@@ -179,7 +179,7 @@ public record XrSystemSpatialEntityGroupSharingPropertiesMETA(@NotNull MemorySeg
         MemorySegment segment = arena.allocate(LAYOUT, count);
         XrSystemSpatialEntityGroupSharingPropertiesMETA.Ptr ret = new XrSystemSpatialEntityGroupSharingPropertiesMETA.Ptr(segment);
         for (long i = 0; i < count; i++) {
-            ret.at(i).type(XrStructureType.XR_TYPE_SYSTEM_SPATIAL_ENTITY_GROUP_SHARING_PROPERTIES_META);
+            ret.at(i).type(XrStructureType.SYSTEM_SPATIAL_ENTITY_GROUP_SHARING_PROPERTIES_META);
         }
         return ret;
     }
@@ -191,7 +191,7 @@ public record XrSystemSpatialEntityGroupSharingPropertiesMETA(@NotNull MemorySeg
     }
 
     public void autoInit() {
-        type(XrStructureType.XR_TYPE_SYSTEM_SPATIAL_ENTITY_GROUP_SHARING_PROPERTIES_META);
+        type(XrStructureType.SYSTEM_SPATIAL_ENTITY_GROUP_SHARING_PROPERTIES_META);
     }
 
     public @EnumType(XrStructureType.class) int type() {

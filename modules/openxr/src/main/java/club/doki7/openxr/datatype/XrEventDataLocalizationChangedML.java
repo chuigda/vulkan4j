@@ -175,7 +175,7 @@ public record XrEventDataLocalizationChangedML(@NotNull MemorySegment segment) i
 
     public static XrEventDataLocalizationChangedML allocate(Arena arena) {
         XrEventDataLocalizationChangedML ret = new XrEventDataLocalizationChangedML(arena.allocate(LAYOUT));
-        ret.type(XrStructureType.XR_TYPE_EVENT_DATA_LOCALIZATION_CHANGED_ML);
+        ret.type(XrStructureType.EVENT_DATA_LOCALIZATION_CHANGED_ML);
         return ret;
     }
 
@@ -183,7 +183,7 @@ public record XrEventDataLocalizationChangedML(@NotNull MemorySegment segment) i
         MemorySegment segment = arena.allocate(LAYOUT, count);
         XrEventDataLocalizationChangedML.Ptr ret = new XrEventDataLocalizationChangedML.Ptr(segment);
         for (long i = 0; i < count; i++) {
-            ret.at(i).type(XrStructureType.XR_TYPE_EVENT_DATA_LOCALIZATION_CHANGED_ML);
+            ret.at(i).type(XrStructureType.EVENT_DATA_LOCALIZATION_CHANGED_ML);
         }
         return ret;
     }
@@ -195,7 +195,7 @@ public record XrEventDataLocalizationChangedML(@NotNull MemorySegment segment) i
     }
 
     public void autoInit() {
-        type(XrStructureType.XR_TYPE_EVENT_DATA_LOCALIZATION_CHANGED_ML);
+        type(XrStructureType.EVENT_DATA_LOCALIZATION_CHANGED_ML);
     }
 
     public @EnumType(XrStructureType.class) int type() {

@@ -180,7 +180,7 @@ public record XrSwapchainStateSamplerOpenGLESFB(@NotNull MemorySegment segment) 
 
     public static XrSwapchainStateSamplerOpenGLESFB allocate(Arena arena) {
         XrSwapchainStateSamplerOpenGLESFB ret = new XrSwapchainStateSamplerOpenGLESFB(arena.allocate(LAYOUT));
-        ret.type(XrStructureType.XR_TYPE_SWAPCHAIN_STATE_SAMPLER_OPENGL_ES_FB);
+        ret.type(XrStructureType.SWAPCHAIN_STATE_SAMPLER_OPENGL_ES_FB);
         return ret;
     }
 
@@ -188,7 +188,7 @@ public record XrSwapchainStateSamplerOpenGLESFB(@NotNull MemorySegment segment) 
         MemorySegment segment = arena.allocate(LAYOUT, count);
         XrSwapchainStateSamplerOpenGLESFB.Ptr ret = new XrSwapchainStateSamplerOpenGLESFB.Ptr(segment);
         for (long i = 0; i < count; i++) {
-            ret.at(i).type(XrStructureType.XR_TYPE_SWAPCHAIN_STATE_SAMPLER_OPENGL_ES_FB);
+            ret.at(i).type(XrStructureType.SWAPCHAIN_STATE_SAMPLER_OPENGL_ES_FB);
         }
         return ret;
     }
@@ -200,7 +200,7 @@ public record XrSwapchainStateSamplerOpenGLESFB(@NotNull MemorySegment segment) 
     }
 
     public void autoInit() {
-        type(XrStructureType.XR_TYPE_SWAPCHAIN_STATE_SAMPLER_OPENGL_ES_FB);
+        type(XrStructureType.SWAPCHAIN_STATE_SAMPLER_OPENGL_ES_FB);
     }
 
     public @EnumType(XrStructureType.class) int type() {

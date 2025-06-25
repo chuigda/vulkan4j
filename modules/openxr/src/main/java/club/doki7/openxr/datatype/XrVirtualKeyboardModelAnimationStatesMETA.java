@@ -173,7 +173,7 @@ public record XrVirtualKeyboardModelAnimationStatesMETA(@NotNull MemorySegment s
 
     public static XrVirtualKeyboardModelAnimationStatesMETA allocate(Arena arena) {
         XrVirtualKeyboardModelAnimationStatesMETA ret = new XrVirtualKeyboardModelAnimationStatesMETA(arena.allocate(LAYOUT));
-        ret.type(XrStructureType.XR_TYPE_VIRTUAL_KEYBOARD_MODEL_ANIMATION_STATES_META);
+        ret.type(XrStructureType.VIRTUAL_KEYBOARD_MODEL_ANIMATION_STATES_META);
         return ret;
     }
 
@@ -181,7 +181,7 @@ public record XrVirtualKeyboardModelAnimationStatesMETA(@NotNull MemorySegment s
         MemorySegment segment = arena.allocate(LAYOUT, count);
         XrVirtualKeyboardModelAnimationStatesMETA.Ptr ret = new XrVirtualKeyboardModelAnimationStatesMETA.Ptr(segment);
         for (long i = 0; i < count; i++) {
-            ret.at(i).type(XrStructureType.XR_TYPE_VIRTUAL_KEYBOARD_MODEL_ANIMATION_STATES_META);
+            ret.at(i).type(XrStructureType.VIRTUAL_KEYBOARD_MODEL_ANIMATION_STATES_META);
         }
         return ret;
     }
@@ -193,7 +193,7 @@ public record XrVirtualKeyboardModelAnimationStatesMETA(@NotNull MemorySegment s
     }
 
     public void autoInit() {
-        type(XrStructureType.XR_TYPE_VIRTUAL_KEYBOARD_MODEL_ANIMATION_STATES_META);
+        type(XrStructureType.VIRTUAL_KEYBOARD_MODEL_ANIMATION_STATES_META);
     }
 
     public @EnumType(XrStructureType.class) int type() {

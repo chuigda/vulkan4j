@@ -171,7 +171,7 @@ public record XrEventDataPassthroughLayerResumedMETA(@NotNull MemorySegment segm
 
     public static XrEventDataPassthroughLayerResumedMETA allocate(Arena arena) {
         XrEventDataPassthroughLayerResumedMETA ret = new XrEventDataPassthroughLayerResumedMETA(arena.allocate(LAYOUT));
-        ret.type(XrStructureType.XR_TYPE_EVENT_DATA_PASSTHROUGH_LAYER_RESUMED_META);
+        ret.type(XrStructureType.EVENT_DATA_PASSTHROUGH_LAYER_RESUMED_META);
         return ret;
     }
 
@@ -179,7 +179,7 @@ public record XrEventDataPassthroughLayerResumedMETA(@NotNull MemorySegment segm
         MemorySegment segment = arena.allocate(LAYOUT, count);
         XrEventDataPassthroughLayerResumedMETA.Ptr ret = new XrEventDataPassthroughLayerResumedMETA.Ptr(segment);
         for (long i = 0; i < count; i++) {
-            ret.at(i).type(XrStructureType.XR_TYPE_EVENT_DATA_PASSTHROUGH_LAYER_RESUMED_META);
+            ret.at(i).type(XrStructureType.EVENT_DATA_PASSTHROUGH_LAYER_RESUMED_META);
         }
         return ret;
     }
@@ -191,7 +191,7 @@ public record XrEventDataPassthroughLayerResumedMETA(@NotNull MemorySegment segm
     }
 
     public void autoInit() {
-        type(XrStructureType.XR_TYPE_EVENT_DATA_PASSTHROUGH_LAYER_RESUMED_META);
+        type(XrStructureType.EVENT_DATA_PASSTHROUGH_LAYER_RESUMED_META);
     }
 
     public @EnumType(XrStructureType.class) int type() {

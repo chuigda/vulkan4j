@@ -172,7 +172,7 @@ public record XrWorldMeshBlockRequestML(@NotNull MemorySegment segment) implemen
 
     public static XrWorldMeshBlockRequestML allocate(Arena arena) {
         XrWorldMeshBlockRequestML ret = new XrWorldMeshBlockRequestML(arena.allocate(LAYOUT));
-        ret.type(XrStructureType.XR_TYPE_WORLD_MESH_BLOCK_REQUEST_ML);
+        ret.type(XrStructureType.WORLD_MESH_BLOCK_REQUEST_ML);
         return ret;
     }
 
@@ -180,7 +180,7 @@ public record XrWorldMeshBlockRequestML(@NotNull MemorySegment segment) implemen
         MemorySegment segment = arena.allocate(LAYOUT, count);
         XrWorldMeshBlockRequestML.Ptr ret = new XrWorldMeshBlockRequestML.Ptr(segment);
         for (long i = 0; i < count; i++) {
-            ret.at(i).type(XrStructureType.XR_TYPE_WORLD_MESH_BLOCK_REQUEST_ML);
+            ret.at(i).type(XrStructureType.WORLD_MESH_BLOCK_REQUEST_ML);
         }
         return ret;
     }
@@ -192,7 +192,7 @@ public record XrWorldMeshBlockRequestML(@NotNull MemorySegment segment) implemen
     }
 
     public void autoInit() {
-        type(XrStructureType.XR_TYPE_WORLD_MESH_BLOCK_REQUEST_ML);
+        type(XrStructureType.WORLD_MESH_BLOCK_REQUEST_ML);
     }
 
     public @EnumType(XrStructureType.class) int type() {

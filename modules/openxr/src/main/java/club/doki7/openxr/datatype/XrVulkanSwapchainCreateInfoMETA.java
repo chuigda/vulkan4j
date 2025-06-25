@@ -172,7 +172,7 @@ public record XrVulkanSwapchainCreateInfoMETA(@NotNull MemorySegment segment) im
 
     public static XrVulkanSwapchainCreateInfoMETA allocate(Arena arena) {
         XrVulkanSwapchainCreateInfoMETA ret = new XrVulkanSwapchainCreateInfoMETA(arena.allocate(LAYOUT));
-        ret.type(XrStructureType.XR_TYPE_VULKAN_SWAPCHAIN_CREATE_INFO_META);
+        ret.type(XrStructureType.VULKAN_SWAPCHAIN_CREATE_INFO_META);
         return ret;
     }
 
@@ -180,7 +180,7 @@ public record XrVulkanSwapchainCreateInfoMETA(@NotNull MemorySegment segment) im
         MemorySegment segment = arena.allocate(LAYOUT, count);
         XrVulkanSwapchainCreateInfoMETA.Ptr ret = new XrVulkanSwapchainCreateInfoMETA.Ptr(segment);
         for (long i = 0; i < count; i++) {
-            ret.at(i).type(XrStructureType.XR_TYPE_VULKAN_SWAPCHAIN_CREATE_INFO_META);
+            ret.at(i).type(XrStructureType.VULKAN_SWAPCHAIN_CREATE_INFO_META);
         }
         return ret;
     }
@@ -192,7 +192,7 @@ public record XrVulkanSwapchainCreateInfoMETA(@NotNull MemorySegment segment) im
     }
 
     public void autoInit() {
-        type(XrStructureType.XR_TYPE_VULKAN_SWAPCHAIN_CREATE_INFO_META);
+        type(XrStructureType.VULKAN_SWAPCHAIN_CREATE_INFO_META);
     }
 
     public @EnumType(XrStructureType.class) int type() {

@@ -170,7 +170,7 @@ public record XrInteractionRenderModelIdsEnumerateInfoEXT(@NotNull MemorySegment
 
     public static XrInteractionRenderModelIdsEnumerateInfoEXT allocate(Arena arena) {
         XrInteractionRenderModelIdsEnumerateInfoEXT ret = new XrInteractionRenderModelIdsEnumerateInfoEXT(arena.allocate(LAYOUT));
-        ret.type(XrStructureType.XR_TYPE_INTERACTION_RENDER_MODEL_IDS_ENUMERATE_INFO_EXT);
+        ret.type(XrStructureType.INTERACTION_RENDER_MODEL_IDS_ENUMERATE_INFO_EXT);
         return ret;
     }
 
@@ -178,7 +178,7 @@ public record XrInteractionRenderModelIdsEnumerateInfoEXT(@NotNull MemorySegment
         MemorySegment segment = arena.allocate(LAYOUT, count);
         XrInteractionRenderModelIdsEnumerateInfoEXT.Ptr ret = new XrInteractionRenderModelIdsEnumerateInfoEXT.Ptr(segment);
         for (long i = 0; i < count; i++) {
-            ret.at(i).type(XrStructureType.XR_TYPE_INTERACTION_RENDER_MODEL_IDS_ENUMERATE_INFO_EXT);
+            ret.at(i).type(XrStructureType.INTERACTION_RENDER_MODEL_IDS_ENUMERATE_INFO_EXT);
         }
         return ret;
     }
@@ -190,7 +190,7 @@ public record XrInteractionRenderModelIdsEnumerateInfoEXT(@NotNull MemorySegment
     }
 
     public void autoInit() {
-        type(XrStructureType.XR_TYPE_INTERACTION_RENDER_MODEL_IDS_ENUMERATE_INFO_EXT);
+        type(XrStructureType.INTERACTION_RENDER_MODEL_IDS_ENUMERATE_INFO_EXT);
     }
 
     public @EnumType(XrStructureType.class) int type() {

@@ -175,7 +175,7 @@ public record XrCompositionLayerDepthInfoKHR(@NotNull MemorySegment segment) imp
 
     public static XrCompositionLayerDepthInfoKHR allocate(Arena arena) {
         XrCompositionLayerDepthInfoKHR ret = new XrCompositionLayerDepthInfoKHR(arena.allocate(LAYOUT));
-        ret.type(XrStructureType.XR_TYPE_COMPOSITION_LAYER_DEPTH_INFO_KHR);
+        ret.type(XrStructureType.COMPOSITION_LAYER_DEPTH_INFO_KHR);
         return ret;
     }
 
@@ -183,7 +183,7 @@ public record XrCompositionLayerDepthInfoKHR(@NotNull MemorySegment segment) imp
         MemorySegment segment = arena.allocate(LAYOUT, count);
         XrCompositionLayerDepthInfoKHR.Ptr ret = new XrCompositionLayerDepthInfoKHR.Ptr(segment);
         for (long i = 0; i < count; i++) {
-            ret.at(i).type(XrStructureType.XR_TYPE_COMPOSITION_LAYER_DEPTH_INFO_KHR);
+            ret.at(i).type(XrStructureType.COMPOSITION_LAYER_DEPTH_INFO_KHR);
         }
         return ret;
     }
@@ -195,7 +195,7 @@ public record XrCompositionLayerDepthInfoKHR(@NotNull MemorySegment segment) imp
     }
 
     public void autoInit() {
-        type(XrStructureType.XR_TYPE_COMPOSITION_LAYER_DEPTH_INFO_KHR);
+        type(XrStructureType.COMPOSITION_LAYER_DEPTH_INFO_KHR);
     }
 
     public @EnumType(XrStructureType.class) int type() {

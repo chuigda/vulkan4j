@@ -171,7 +171,7 @@ public record XrDevicePcmSampleRateGetInfoFB(@NotNull MemorySegment segment) imp
 
     public static XrDevicePcmSampleRateGetInfoFB allocate(Arena arena) {
         XrDevicePcmSampleRateGetInfoFB ret = new XrDevicePcmSampleRateGetInfoFB(arena.allocate(LAYOUT));
-        ret.type(XrStructureType.XR_TYPE_DEVICE_PCM_SAMPLE_RATE_STATE_FB);
+        ret.type(XrStructureType.DEVICE_PCM_SAMPLE_RATE_STATE_FB);
         return ret;
     }
 
@@ -179,7 +179,7 @@ public record XrDevicePcmSampleRateGetInfoFB(@NotNull MemorySegment segment) imp
         MemorySegment segment = arena.allocate(LAYOUT, count);
         XrDevicePcmSampleRateGetInfoFB.Ptr ret = new XrDevicePcmSampleRateGetInfoFB.Ptr(segment);
         for (long i = 0; i < count; i++) {
-            ret.at(i).type(XrStructureType.XR_TYPE_DEVICE_PCM_SAMPLE_RATE_STATE_FB);
+            ret.at(i).type(XrStructureType.DEVICE_PCM_SAMPLE_RATE_STATE_FB);
         }
         return ret;
     }
@@ -191,7 +191,7 @@ public record XrDevicePcmSampleRateGetInfoFB(@NotNull MemorySegment segment) imp
     }
 
     public void autoInit() {
-        type(XrStructureType.XR_TYPE_DEVICE_PCM_SAMPLE_RATE_STATE_FB);
+        type(XrStructureType.DEVICE_PCM_SAMPLE_RATE_STATE_FB);
     }
 
     public @EnumType(XrStructureType.class) int type() {

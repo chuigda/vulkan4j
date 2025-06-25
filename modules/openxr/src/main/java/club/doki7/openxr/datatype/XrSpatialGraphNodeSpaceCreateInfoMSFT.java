@@ -173,7 +173,7 @@ public record XrSpatialGraphNodeSpaceCreateInfoMSFT(@NotNull MemorySegment segme
 
     public static XrSpatialGraphNodeSpaceCreateInfoMSFT allocate(Arena arena) {
         XrSpatialGraphNodeSpaceCreateInfoMSFT ret = new XrSpatialGraphNodeSpaceCreateInfoMSFT(arena.allocate(LAYOUT));
-        ret.type(XrStructureType.XR_TYPE_SPATIAL_GRAPH_NODE_SPACE_CREATE_INFO_MSFT);
+        ret.type(XrStructureType.SPATIAL_GRAPH_NODE_SPACE_CREATE_INFO_MSFT);
         return ret;
     }
 
@@ -181,7 +181,7 @@ public record XrSpatialGraphNodeSpaceCreateInfoMSFT(@NotNull MemorySegment segme
         MemorySegment segment = arena.allocate(LAYOUT, count);
         XrSpatialGraphNodeSpaceCreateInfoMSFT.Ptr ret = new XrSpatialGraphNodeSpaceCreateInfoMSFT.Ptr(segment);
         for (long i = 0; i < count; i++) {
-            ret.at(i).type(XrStructureType.XR_TYPE_SPATIAL_GRAPH_NODE_SPACE_CREATE_INFO_MSFT);
+            ret.at(i).type(XrStructureType.SPATIAL_GRAPH_NODE_SPACE_CREATE_INFO_MSFT);
         }
         return ret;
     }
@@ -193,7 +193,7 @@ public record XrSpatialGraphNodeSpaceCreateInfoMSFT(@NotNull MemorySegment segme
     }
 
     public void autoInit() {
-        type(XrStructureType.XR_TYPE_SPATIAL_GRAPH_NODE_SPACE_CREATE_INFO_MSFT);
+        type(XrStructureType.SPATIAL_GRAPH_NODE_SPACE_CREATE_INFO_MSFT);
     }
 
     public @EnumType(XrStructureType.class) int type() {

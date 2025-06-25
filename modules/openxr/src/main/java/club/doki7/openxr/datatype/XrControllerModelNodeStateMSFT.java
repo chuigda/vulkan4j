@@ -171,7 +171,7 @@ public record XrControllerModelNodeStateMSFT(@NotNull MemorySegment segment) imp
 
     public static XrControllerModelNodeStateMSFT allocate(Arena arena) {
         XrControllerModelNodeStateMSFT ret = new XrControllerModelNodeStateMSFT(arena.allocate(LAYOUT));
-        ret.type(XrStructureType.XR_TYPE_CONTROLLER_MODEL_NODE_STATE_MSFT);
+        ret.type(XrStructureType.CONTROLLER_MODEL_NODE_STATE_MSFT);
         return ret;
     }
 
@@ -179,7 +179,7 @@ public record XrControllerModelNodeStateMSFT(@NotNull MemorySegment segment) imp
         MemorySegment segment = arena.allocate(LAYOUT, count);
         XrControllerModelNodeStateMSFT.Ptr ret = new XrControllerModelNodeStateMSFT.Ptr(segment);
         for (long i = 0; i < count; i++) {
-            ret.at(i).type(XrStructureType.XR_TYPE_CONTROLLER_MODEL_NODE_STATE_MSFT);
+            ret.at(i).type(XrStructureType.CONTROLLER_MODEL_NODE_STATE_MSFT);
         }
         return ret;
     }
@@ -191,7 +191,7 @@ public record XrControllerModelNodeStateMSFT(@NotNull MemorySegment segment) imp
     }
 
     public void autoInit() {
-        type(XrStructureType.XR_TYPE_CONTROLLER_MODEL_NODE_STATE_MSFT);
+        type(XrStructureType.CONTROLLER_MODEL_NODE_STATE_MSFT);
     }
 
     public @EnumType(XrStructureType.class) int type() {

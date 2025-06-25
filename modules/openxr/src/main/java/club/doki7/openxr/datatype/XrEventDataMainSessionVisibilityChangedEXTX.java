@@ -172,7 +172,7 @@ public record XrEventDataMainSessionVisibilityChangedEXTX(@NotNull MemorySegment
 
     public static XrEventDataMainSessionVisibilityChangedEXTX allocate(Arena arena) {
         XrEventDataMainSessionVisibilityChangedEXTX ret = new XrEventDataMainSessionVisibilityChangedEXTX(arena.allocate(LAYOUT));
-        ret.type(XrStructureType.XR_TYPE_EVENT_DATA_MAIN_SESSION_VISIBILITY_CHANGED_EXTX);
+        ret.type(XrStructureType.EVENT_DATA_MAIN_SESSION_VISIBILITY_CHANGED_EXTX);
         return ret;
     }
 
@@ -180,7 +180,7 @@ public record XrEventDataMainSessionVisibilityChangedEXTX(@NotNull MemorySegment
         MemorySegment segment = arena.allocate(LAYOUT, count);
         XrEventDataMainSessionVisibilityChangedEXTX.Ptr ret = new XrEventDataMainSessionVisibilityChangedEXTX.Ptr(segment);
         for (long i = 0; i < count; i++) {
-            ret.at(i).type(XrStructureType.XR_TYPE_EVENT_DATA_MAIN_SESSION_VISIBILITY_CHANGED_EXTX);
+            ret.at(i).type(XrStructureType.EVENT_DATA_MAIN_SESSION_VISIBILITY_CHANGED_EXTX);
         }
         return ret;
     }
@@ -192,7 +192,7 @@ public record XrEventDataMainSessionVisibilityChangedEXTX(@NotNull MemorySegment
     }
 
     public void autoInit() {
-        type(XrStructureType.XR_TYPE_EVENT_DATA_MAIN_SESSION_VISIBILITY_CHANGED_EXTX);
+        type(XrStructureType.EVENT_DATA_MAIN_SESSION_VISIBILITY_CHANGED_EXTX);
     }
 
     public @EnumType(XrStructureType.class) int type() {

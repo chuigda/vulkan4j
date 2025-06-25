@@ -171,7 +171,7 @@ public record XrSpaceUserCreateInfoFB(@NotNull MemorySegment segment) implements
 
     public static XrSpaceUserCreateInfoFB allocate(Arena arena) {
         XrSpaceUserCreateInfoFB ret = new XrSpaceUserCreateInfoFB(arena.allocate(LAYOUT));
-        ret.type(XrStructureType.XR_TYPE_SPACE_USER_CREATE_INFO_FB);
+        ret.type(XrStructureType.SPACE_USER_CREATE_INFO_FB);
         return ret;
     }
 
@@ -179,7 +179,7 @@ public record XrSpaceUserCreateInfoFB(@NotNull MemorySegment segment) implements
         MemorySegment segment = arena.allocate(LAYOUT, count);
         XrSpaceUserCreateInfoFB.Ptr ret = new XrSpaceUserCreateInfoFB.Ptr(segment);
         for (long i = 0; i < count; i++) {
-            ret.at(i).type(XrStructureType.XR_TYPE_SPACE_USER_CREATE_INFO_FB);
+            ret.at(i).type(XrStructureType.SPACE_USER_CREATE_INFO_FB);
         }
         return ret;
     }
@@ -191,7 +191,7 @@ public record XrSpaceUserCreateInfoFB(@NotNull MemorySegment segment) implements
     }
 
     public void autoInit() {
-        type(XrStructureType.XR_TYPE_SPACE_USER_CREATE_INFO_FB);
+        type(XrStructureType.SPACE_USER_CREATE_INFO_FB);
     }
 
     public @EnumType(XrStructureType.class) int type() {

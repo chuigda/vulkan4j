@@ -171,7 +171,7 @@ public record XrKeyboardSpaceCreateInfoFB(@NotNull MemorySegment segment) implem
 
     public static XrKeyboardSpaceCreateInfoFB allocate(Arena arena) {
         XrKeyboardSpaceCreateInfoFB ret = new XrKeyboardSpaceCreateInfoFB(arena.allocate(LAYOUT));
-        ret.type(XrStructureType.XR_TYPE_KEYBOARD_SPACE_CREATE_INFO_FB);
+        ret.type(XrStructureType.KEYBOARD_SPACE_CREATE_INFO_FB);
         return ret;
     }
 
@@ -179,7 +179,7 @@ public record XrKeyboardSpaceCreateInfoFB(@NotNull MemorySegment segment) implem
         MemorySegment segment = arena.allocate(LAYOUT, count);
         XrKeyboardSpaceCreateInfoFB.Ptr ret = new XrKeyboardSpaceCreateInfoFB.Ptr(segment);
         for (long i = 0; i < count; i++) {
-            ret.at(i).type(XrStructureType.XR_TYPE_KEYBOARD_SPACE_CREATE_INFO_FB);
+            ret.at(i).type(XrStructureType.KEYBOARD_SPACE_CREATE_INFO_FB);
         }
         return ret;
     }
@@ -191,7 +191,7 @@ public record XrKeyboardSpaceCreateInfoFB(@NotNull MemorySegment segment) implem
     }
 
     public void autoInit() {
-        type(XrStructureType.XR_TYPE_KEYBOARD_SPACE_CREATE_INFO_FB);
+        type(XrStructureType.KEYBOARD_SPACE_CREATE_INFO_FB);
     }
 
     public @EnumType(XrStructureType.class) int type() {

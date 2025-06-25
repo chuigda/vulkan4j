@@ -172,7 +172,7 @@ public record XrSenseDataFilterSemanticBD(@NotNull MemorySegment segment) implem
 
     public static XrSenseDataFilterSemanticBD allocate(Arena arena) {
         XrSenseDataFilterSemanticBD ret = new XrSenseDataFilterSemanticBD(arena.allocate(LAYOUT));
-        ret.type(XrStructureType.XR_TYPE_SENSE_DATA_FILTER_SEMANTIC_BD);
+        ret.type(XrStructureType.SENSE_DATA_FILTER_SEMANTIC_BD);
         return ret;
     }
 
@@ -180,7 +180,7 @@ public record XrSenseDataFilterSemanticBD(@NotNull MemorySegment segment) implem
         MemorySegment segment = arena.allocate(LAYOUT, count);
         XrSenseDataFilterSemanticBD.Ptr ret = new XrSenseDataFilterSemanticBD.Ptr(segment);
         for (long i = 0; i < count; i++) {
-            ret.at(i).type(XrStructureType.XR_TYPE_SENSE_DATA_FILTER_SEMANTIC_BD);
+            ret.at(i).type(XrStructureType.SENSE_DATA_FILTER_SEMANTIC_BD);
         }
         return ret;
     }
@@ -192,7 +192,7 @@ public record XrSenseDataFilterSemanticBD(@NotNull MemorySegment segment) implem
     }
 
     public void autoInit() {
-        type(XrStructureType.XR_TYPE_SENSE_DATA_FILTER_SEMANTIC_BD);
+        type(XrStructureType.SENSE_DATA_FILTER_SEMANTIC_BD);
     }
 
     public @EnumType(XrStructureType.class) int type() {

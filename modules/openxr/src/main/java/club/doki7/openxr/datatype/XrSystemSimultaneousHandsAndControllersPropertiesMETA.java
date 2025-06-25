@@ -171,7 +171,7 @@ public record XrSystemSimultaneousHandsAndControllersPropertiesMETA(@NotNull Mem
 
     public static XrSystemSimultaneousHandsAndControllersPropertiesMETA allocate(Arena arena) {
         XrSystemSimultaneousHandsAndControllersPropertiesMETA ret = new XrSystemSimultaneousHandsAndControllersPropertiesMETA(arena.allocate(LAYOUT));
-        ret.type(XrStructureType.XR_TYPE_SYSTEM_SIMULTANEOUS_HANDS_AND_CONTROLLERS_PROPERTIES_META);
+        ret.type(XrStructureType.SYSTEM_SIMULTANEOUS_HANDS_AND_CONTROLLERS_PROPERTIES_META);
         return ret;
     }
 
@@ -179,7 +179,7 @@ public record XrSystemSimultaneousHandsAndControllersPropertiesMETA(@NotNull Mem
         MemorySegment segment = arena.allocate(LAYOUT, count);
         XrSystemSimultaneousHandsAndControllersPropertiesMETA.Ptr ret = new XrSystemSimultaneousHandsAndControllersPropertiesMETA.Ptr(segment);
         for (long i = 0; i < count; i++) {
-            ret.at(i).type(XrStructureType.XR_TYPE_SYSTEM_SIMULTANEOUS_HANDS_AND_CONTROLLERS_PROPERTIES_META);
+            ret.at(i).type(XrStructureType.SYSTEM_SIMULTANEOUS_HANDS_AND_CONTROLLERS_PROPERTIES_META);
         }
         return ret;
     }
@@ -191,7 +191,7 @@ public record XrSystemSimultaneousHandsAndControllersPropertiesMETA(@NotNull Mem
     }
 
     public void autoInit() {
-        type(XrStructureType.XR_TYPE_SYSTEM_SIMULTANEOUS_HANDS_AND_CONTROLLERS_PROPERTIES_META);
+        type(XrStructureType.SYSTEM_SIMULTANEOUS_HANDS_AND_CONTROLLERS_PROPERTIES_META);
     }
 
     public @EnumType(XrStructureType.class) int type() {

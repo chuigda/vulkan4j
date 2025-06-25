@@ -173,7 +173,7 @@ public record XrCompositionLayerPassthroughFB(@NotNull MemorySegment segment) im
 
     public static XrCompositionLayerPassthroughFB allocate(Arena arena) {
         XrCompositionLayerPassthroughFB ret = new XrCompositionLayerPassthroughFB(arena.allocate(LAYOUT));
-        ret.type(XrStructureType.XR_TYPE_COMPOSITION_LAYER_PASSTHROUGH_FB);
+        ret.type(XrStructureType.COMPOSITION_LAYER_PASSTHROUGH_FB);
         return ret;
     }
 
@@ -181,7 +181,7 @@ public record XrCompositionLayerPassthroughFB(@NotNull MemorySegment segment) im
         MemorySegment segment = arena.allocate(LAYOUT, count);
         XrCompositionLayerPassthroughFB.Ptr ret = new XrCompositionLayerPassthroughFB.Ptr(segment);
         for (long i = 0; i < count; i++) {
-            ret.at(i).type(XrStructureType.XR_TYPE_COMPOSITION_LAYER_PASSTHROUGH_FB);
+            ret.at(i).type(XrStructureType.COMPOSITION_LAYER_PASSTHROUGH_FB);
         }
         return ret;
     }
@@ -193,7 +193,7 @@ public record XrCompositionLayerPassthroughFB(@NotNull MemorySegment segment) im
     }
 
     public void autoInit() {
-        type(XrStructureType.XR_TYPE_COMPOSITION_LAYER_PASSTHROUGH_FB);
+        type(XrStructureType.COMPOSITION_LAYER_PASSTHROUGH_FB);
     }
 
     public @EnumType(XrStructureType.class) int type() {

@@ -173,7 +173,7 @@ public record XrCreateSpatialPersistenceContextCompletionEXT(@NotNull MemorySegm
 
     public static XrCreateSpatialPersistenceContextCompletionEXT allocate(Arena arena) {
         XrCreateSpatialPersistenceContextCompletionEXT ret = new XrCreateSpatialPersistenceContextCompletionEXT(arena.allocate(LAYOUT));
-        ret.type(XrStructureType.XR_TYPE_CREATE_SPATIAL_PERSISTENCE_CONTEXT_COMPLETION_EXT);
+        ret.type(XrStructureType.CREATE_SPATIAL_PERSISTENCE_CONTEXT_COMPLETION_EXT);
         return ret;
     }
 
@@ -181,7 +181,7 @@ public record XrCreateSpatialPersistenceContextCompletionEXT(@NotNull MemorySegm
         MemorySegment segment = arena.allocate(LAYOUT, count);
         XrCreateSpatialPersistenceContextCompletionEXT.Ptr ret = new XrCreateSpatialPersistenceContextCompletionEXT.Ptr(segment);
         for (long i = 0; i < count; i++) {
-            ret.at(i).type(XrStructureType.XR_TYPE_CREATE_SPATIAL_PERSISTENCE_CONTEXT_COMPLETION_EXT);
+            ret.at(i).type(XrStructureType.CREATE_SPATIAL_PERSISTENCE_CONTEXT_COMPLETION_EXT);
         }
         return ret;
     }
@@ -193,7 +193,7 @@ public record XrCreateSpatialPersistenceContextCompletionEXT(@NotNull MemorySegm
     }
 
     public void autoInit() {
-        type(XrStructureType.XR_TYPE_CREATE_SPATIAL_PERSISTENCE_CONTEXT_COMPLETION_EXT);
+        type(XrStructureType.CREATE_SPATIAL_PERSISTENCE_CONTEXT_COMPLETION_EXT);
     }
 
     public @EnumType(XrStructureType.class) int type() {

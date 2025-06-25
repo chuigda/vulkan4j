@@ -170,7 +170,7 @@ public record XrWorldMeshDetectorCreateInfoML(@NotNull MemorySegment segment) im
 
     public static XrWorldMeshDetectorCreateInfoML allocate(Arena arena) {
         XrWorldMeshDetectorCreateInfoML ret = new XrWorldMeshDetectorCreateInfoML(arena.allocate(LAYOUT));
-        ret.type(XrStructureType.XR_TYPE_WORLD_MESH_DETECTOR_CREATE_INFO_ML);
+        ret.type(XrStructureType.WORLD_MESH_DETECTOR_CREATE_INFO_ML);
         return ret;
     }
 
@@ -178,7 +178,7 @@ public record XrWorldMeshDetectorCreateInfoML(@NotNull MemorySegment segment) im
         MemorySegment segment = arena.allocate(LAYOUT, count);
         XrWorldMeshDetectorCreateInfoML.Ptr ret = new XrWorldMeshDetectorCreateInfoML.Ptr(segment);
         for (long i = 0; i < count; i++) {
-            ret.at(i).type(XrStructureType.XR_TYPE_WORLD_MESH_DETECTOR_CREATE_INFO_ML);
+            ret.at(i).type(XrStructureType.WORLD_MESH_DETECTOR_CREATE_INFO_ML);
         }
         return ret;
     }
@@ -190,7 +190,7 @@ public record XrWorldMeshDetectorCreateInfoML(@NotNull MemorySegment segment) im
     }
 
     public void autoInit() {
-        type(XrStructureType.XR_TYPE_WORLD_MESH_DETECTOR_CREATE_INFO_ML);
+        type(XrStructureType.WORLD_MESH_DETECTOR_CREATE_INFO_ML);
     }
 
     public @EnumType(XrStructureType.class) int type() {

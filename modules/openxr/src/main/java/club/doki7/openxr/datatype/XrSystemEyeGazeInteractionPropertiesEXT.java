@@ -171,7 +171,7 @@ public record XrSystemEyeGazeInteractionPropertiesEXT(@NotNull MemorySegment seg
 
     public static XrSystemEyeGazeInteractionPropertiesEXT allocate(Arena arena) {
         XrSystemEyeGazeInteractionPropertiesEXT ret = new XrSystemEyeGazeInteractionPropertiesEXT(arena.allocate(LAYOUT));
-        ret.type(XrStructureType.XR_TYPE_SYSTEM_EYE_GAZE_INTERACTION_PROPERTIES_EXT);
+        ret.type(XrStructureType.SYSTEM_EYE_GAZE_INTERACTION_PROPERTIES_EXT);
         return ret;
     }
 
@@ -179,7 +179,7 @@ public record XrSystemEyeGazeInteractionPropertiesEXT(@NotNull MemorySegment seg
         MemorySegment segment = arena.allocate(LAYOUT, count);
         XrSystemEyeGazeInteractionPropertiesEXT.Ptr ret = new XrSystemEyeGazeInteractionPropertiesEXT.Ptr(segment);
         for (long i = 0; i < count; i++) {
-            ret.at(i).type(XrStructureType.XR_TYPE_SYSTEM_EYE_GAZE_INTERACTION_PROPERTIES_EXT);
+            ret.at(i).type(XrStructureType.SYSTEM_EYE_GAZE_INTERACTION_PROPERTIES_EXT);
         }
         return ret;
     }
@@ -191,7 +191,7 @@ public record XrSystemEyeGazeInteractionPropertiesEXT(@NotNull MemorySegment seg
     }
 
     public void autoInit() {
-        type(XrStructureType.XR_TYPE_SYSTEM_EYE_GAZE_INTERACTION_PROPERTIES_EXT);
+        type(XrStructureType.SYSTEM_EYE_GAZE_INTERACTION_PROPERTIES_EXT);
     }
 
     public @EnumType(XrStructureType.class) int type() {

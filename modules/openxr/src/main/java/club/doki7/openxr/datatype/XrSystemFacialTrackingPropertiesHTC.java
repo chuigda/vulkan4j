@@ -172,7 +172,7 @@ public record XrSystemFacialTrackingPropertiesHTC(@NotNull MemorySegment segment
 
     public static XrSystemFacialTrackingPropertiesHTC allocate(Arena arena) {
         XrSystemFacialTrackingPropertiesHTC ret = new XrSystemFacialTrackingPropertiesHTC(arena.allocate(LAYOUT));
-        ret.type(XrStructureType.XR_TYPE_SYSTEM_FACIAL_TRACKING_PROPERTIES_HTC);
+        ret.type(XrStructureType.SYSTEM_FACIAL_TRACKING_PROPERTIES_HTC);
         return ret;
     }
 
@@ -180,7 +180,7 @@ public record XrSystemFacialTrackingPropertiesHTC(@NotNull MemorySegment segment
         MemorySegment segment = arena.allocate(LAYOUT, count);
         XrSystemFacialTrackingPropertiesHTC.Ptr ret = new XrSystemFacialTrackingPropertiesHTC.Ptr(segment);
         for (long i = 0; i < count; i++) {
-            ret.at(i).type(XrStructureType.XR_TYPE_SYSTEM_FACIAL_TRACKING_PROPERTIES_HTC);
+            ret.at(i).type(XrStructureType.SYSTEM_FACIAL_TRACKING_PROPERTIES_HTC);
         }
         return ret;
     }
@@ -192,7 +192,7 @@ public record XrSystemFacialTrackingPropertiesHTC(@NotNull MemorySegment segment
     }
 
     public void autoInit() {
-        type(XrStructureType.XR_TYPE_SYSTEM_FACIAL_TRACKING_PROPERTIES_HTC);
+        type(XrStructureType.SYSTEM_FACIAL_TRACKING_PROPERTIES_HTC);
     }
 
     public @EnumType(XrStructureType.class) int type() {

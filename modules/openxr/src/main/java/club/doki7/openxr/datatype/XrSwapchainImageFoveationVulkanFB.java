@@ -173,7 +173,7 @@ public record XrSwapchainImageFoveationVulkanFB(@NotNull MemorySegment segment) 
 
     public static XrSwapchainImageFoveationVulkanFB allocate(Arena arena) {
         XrSwapchainImageFoveationVulkanFB ret = new XrSwapchainImageFoveationVulkanFB(arena.allocate(LAYOUT));
-        ret.type(XrStructureType.XR_TYPE_SWAPCHAIN_IMAGE_FOVEATION_VULKAN_FB);
+        ret.type(XrStructureType.SWAPCHAIN_IMAGE_FOVEATION_VULKAN_FB);
         return ret;
     }
 
@@ -181,7 +181,7 @@ public record XrSwapchainImageFoveationVulkanFB(@NotNull MemorySegment segment) 
         MemorySegment segment = arena.allocate(LAYOUT, count);
         XrSwapchainImageFoveationVulkanFB.Ptr ret = new XrSwapchainImageFoveationVulkanFB.Ptr(segment);
         for (long i = 0; i < count; i++) {
-            ret.at(i).type(XrStructureType.XR_TYPE_SWAPCHAIN_IMAGE_FOVEATION_VULKAN_FB);
+            ret.at(i).type(XrStructureType.SWAPCHAIN_IMAGE_FOVEATION_VULKAN_FB);
         }
         return ret;
     }
@@ -193,7 +193,7 @@ public record XrSwapchainImageFoveationVulkanFB(@NotNull MemorySegment segment) 
     }
 
     public void autoInit() {
-        type(XrStructureType.XR_TYPE_SWAPCHAIN_IMAGE_FOVEATION_VULKAN_FB);
+        type(XrStructureType.SWAPCHAIN_IMAGE_FOVEATION_VULKAN_FB);
     }
 
     public @EnumType(XrStructureType.class) int type() {

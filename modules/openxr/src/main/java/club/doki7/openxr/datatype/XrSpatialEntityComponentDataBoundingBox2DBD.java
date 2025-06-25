@@ -171,7 +171,7 @@ public record XrSpatialEntityComponentDataBoundingBox2DBD(@NotNull MemorySegment
 
     public static XrSpatialEntityComponentDataBoundingBox2DBD allocate(Arena arena) {
         XrSpatialEntityComponentDataBoundingBox2DBD ret = new XrSpatialEntityComponentDataBoundingBox2DBD(arena.allocate(LAYOUT));
-        ret.type(XrStructureType.XR_TYPE_SPATIAL_ENTITY_COMPONENT_DATA_BOUNDING_BOX_2D_BD);
+        ret.type(XrStructureType.SPATIAL_ENTITY_COMPONENT_DATA_BOUNDING_BOX_2D_BD);
         return ret;
     }
 
@@ -179,7 +179,7 @@ public record XrSpatialEntityComponentDataBoundingBox2DBD(@NotNull MemorySegment
         MemorySegment segment = arena.allocate(LAYOUT, count);
         XrSpatialEntityComponentDataBoundingBox2DBD.Ptr ret = new XrSpatialEntityComponentDataBoundingBox2DBD.Ptr(segment);
         for (long i = 0; i < count; i++) {
-            ret.at(i).type(XrStructureType.XR_TYPE_SPATIAL_ENTITY_COMPONENT_DATA_BOUNDING_BOX_2D_BD);
+            ret.at(i).type(XrStructureType.SPATIAL_ENTITY_COMPONENT_DATA_BOUNDING_BOX_2D_BD);
         }
         return ret;
     }
@@ -191,7 +191,7 @@ public record XrSpatialEntityComponentDataBoundingBox2DBD(@NotNull MemorySegment
     }
 
     public void autoInit() {
-        type(XrStructureType.XR_TYPE_SPATIAL_ENTITY_COMPONENT_DATA_BOUNDING_BOX_2D_BD);
+        type(XrStructureType.SPATIAL_ENTITY_COMPONENT_DATA_BOUNDING_BOX_2D_BD);
     }
 
     public @EnumType(XrStructureType.class) int type() {

@@ -176,7 +176,7 @@ public record XrInteractionProfileAnalogThresholdVALVE(@NotNull MemorySegment se
 
     public static XrInteractionProfileAnalogThresholdVALVE allocate(Arena arena) {
         XrInteractionProfileAnalogThresholdVALVE ret = new XrInteractionProfileAnalogThresholdVALVE(arena.allocate(LAYOUT));
-        ret.type(XrStructureType.XR_TYPE_INTERACTION_PROFILE_ANALOG_THRESHOLD_VALVE);
+        ret.type(XrStructureType.INTERACTION_PROFILE_ANALOG_THRESHOLD_VALVE);
         return ret;
     }
 
@@ -184,7 +184,7 @@ public record XrInteractionProfileAnalogThresholdVALVE(@NotNull MemorySegment se
         MemorySegment segment = arena.allocate(LAYOUT, count);
         XrInteractionProfileAnalogThresholdVALVE.Ptr ret = new XrInteractionProfileAnalogThresholdVALVE.Ptr(segment);
         for (long i = 0; i < count; i++) {
-            ret.at(i).type(XrStructureType.XR_TYPE_INTERACTION_PROFILE_ANALOG_THRESHOLD_VALVE);
+            ret.at(i).type(XrStructureType.INTERACTION_PROFILE_ANALOG_THRESHOLD_VALVE);
         }
         return ret;
     }
@@ -196,7 +196,7 @@ public record XrInteractionProfileAnalogThresholdVALVE(@NotNull MemorySegment se
     }
 
     public void autoInit() {
-        type(XrStructureType.XR_TYPE_INTERACTION_PROFILE_ANALOG_THRESHOLD_VALVE);
+        type(XrStructureType.INTERACTION_PROFILE_ANALOG_THRESHOLD_VALVE);
     }
 
     public @EnumType(XrStructureType.class) int type() {

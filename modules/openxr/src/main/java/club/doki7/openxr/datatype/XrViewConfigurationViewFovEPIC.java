@@ -172,7 +172,7 @@ public record XrViewConfigurationViewFovEPIC(@NotNull MemorySegment segment) imp
 
     public static XrViewConfigurationViewFovEPIC allocate(Arena arena) {
         XrViewConfigurationViewFovEPIC ret = new XrViewConfigurationViewFovEPIC(arena.allocate(LAYOUT));
-        ret.type(XrStructureType.XR_TYPE_VIEW_CONFIGURATION_VIEW_FOV_EPIC);
+        ret.type(XrStructureType.VIEW_CONFIGURATION_VIEW_FOV_EPIC);
         return ret;
     }
 
@@ -180,7 +180,7 @@ public record XrViewConfigurationViewFovEPIC(@NotNull MemorySegment segment) imp
         MemorySegment segment = arena.allocate(LAYOUT, count);
         XrViewConfigurationViewFovEPIC.Ptr ret = new XrViewConfigurationViewFovEPIC.Ptr(segment);
         for (long i = 0; i < count; i++) {
-            ret.at(i).type(XrStructureType.XR_TYPE_VIEW_CONFIGURATION_VIEW_FOV_EPIC);
+            ret.at(i).type(XrStructureType.VIEW_CONFIGURATION_VIEW_FOV_EPIC);
         }
         return ret;
     }
@@ -192,7 +192,7 @@ public record XrViewConfigurationViewFovEPIC(@NotNull MemorySegment segment) imp
     }
 
     public void autoInit() {
-        type(XrStructureType.XR_TYPE_VIEW_CONFIGURATION_VIEW_FOV_EPIC);
+        type(XrStructureType.VIEW_CONFIGURATION_VIEW_FOV_EPIC);
     }
 
     public @EnumType(XrStructureType.class) int type() {

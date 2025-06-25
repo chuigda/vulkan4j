@@ -171,7 +171,7 @@ public record XrFutureCompletionEXT(@NotNull MemorySegment segment) implements I
 
     public static XrFutureCompletionEXT allocate(Arena arena) {
         XrFutureCompletionEXT ret = new XrFutureCompletionEXT(arena.allocate(LAYOUT));
-        ret.type(XrStructureType.XR_TYPE_FUTURE_COMPLETION_EXT);
+        ret.type(XrStructureType.FUTURE_COMPLETION_EXT);
         return ret;
     }
 
@@ -179,7 +179,7 @@ public record XrFutureCompletionEXT(@NotNull MemorySegment segment) implements I
         MemorySegment segment = arena.allocate(LAYOUT, count);
         XrFutureCompletionEXT.Ptr ret = new XrFutureCompletionEXT.Ptr(segment);
         for (long i = 0; i < count; i++) {
-            ret.at(i).type(XrStructureType.XR_TYPE_FUTURE_COMPLETION_EXT);
+            ret.at(i).type(XrStructureType.FUTURE_COMPLETION_EXT);
         }
         return ret;
     }
@@ -191,7 +191,7 @@ public record XrFutureCompletionEXT(@NotNull MemorySegment segment) implements I
     }
 
     public void autoInit() {
-        type(XrStructureType.XR_TYPE_FUTURE_COMPLETION_EXT);
+        type(XrStructureType.FUTURE_COMPLETION_EXT);
     }
 
     public @EnumType(XrStructureType.class) int type() {

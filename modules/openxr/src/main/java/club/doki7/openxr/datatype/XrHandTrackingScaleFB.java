@@ -174,7 +174,7 @@ public record XrHandTrackingScaleFB(@NotNull MemorySegment segment) implements I
 
     public static XrHandTrackingScaleFB allocate(Arena arena) {
         XrHandTrackingScaleFB ret = new XrHandTrackingScaleFB(arena.allocate(LAYOUT));
-        ret.type(XrStructureType.XR_TYPE_HAND_TRACKING_SCALE_FB);
+        ret.type(XrStructureType.HAND_TRACKING_SCALE_FB);
         return ret;
     }
 
@@ -182,7 +182,7 @@ public record XrHandTrackingScaleFB(@NotNull MemorySegment segment) implements I
         MemorySegment segment = arena.allocate(LAYOUT, count);
         XrHandTrackingScaleFB.Ptr ret = new XrHandTrackingScaleFB.Ptr(segment);
         for (long i = 0; i < count; i++) {
-            ret.at(i).type(XrStructureType.XR_TYPE_HAND_TRACKING_SCALE_FB);
+            ret.at(i).type(XrStructureType.HAND_TRACKING_SCALE_FB);
         }
         return ret;
     }
@@ -194,7 +194,7 @@ public record XrHandTrackingScaleFB(@NotNull MemorySegment segment) implements I
     }
 
     public void autoInit() {
-        type(XrStructureType.XR_TYPE_HAND_TRACKING_SCALE_FB);
+        type(XrStructureType.HAND_TRACKING_SCALE_FB);
     }
 
     public @EnumType(XrStructureType.class) int type() {

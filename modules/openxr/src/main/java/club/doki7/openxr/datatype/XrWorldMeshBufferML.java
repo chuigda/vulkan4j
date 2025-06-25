@@ -172,7 +172,7 @@ public record XrWorldMeshBufferML(@NotNull MemorySegment segment) implements IXr
 
     public static XrWorldMeshBufferML allocate(Arena arena) {
         XrWorldMeshBufferML ret = new XrWorldMeshBufferML(arena.allocate(LAYOUT));
-        ret.type(XrStructureType.XR_TYPE_WORLD_MESH_BUFFER_ML);
+        ret.type(XrStructureType.WORLD_MESH_BUFFER_ML);
         return ret;
     }
 
@@ -180,7 +180,7 @@ public record XrWorldMeshBufferML(@NotNull MemorySegment segment) implements IXr
         MemorySegment segment = arena.allocate(LAYOUT, count);
         XrWorldMeshBufferML.Ptr ret = new XrWorldMeshBufferML.Ptr(segment);
         for (long i = 0; i < count; i++) {
-            ret.at(i).type(XrStructureType.XR_TYPE_WORLD_MESH_BUFFER_ML);
+            ret.at(i).type(XrStructureType.WORLD_MESH_BUFFER_ML);
         }
         return ret;
     }
@@ -192,7 +192,7 @@ public record XrWorldMeshBufferML(@NotNull MemorySegment segment) implements IXr
     }
 
     public void autoInit() {
-        type(XrStructureType.XR_TYPE_WORLD_MESH_BUFFER_ML);
+        type(XrStructureType.WORLD_MESH_BUFFER_ML);
     }
 
     public @EnumType(XrStructureType.class) int type() {

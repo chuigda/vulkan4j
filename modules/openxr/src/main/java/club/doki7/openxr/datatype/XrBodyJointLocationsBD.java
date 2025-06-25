@@ -173,7 +173,7 @@ public record XrBodyJointLocationsBD(@NotNull MemorySegment segment) implements 
 
     public static XrBodyJointLocationsBD allocate(Arena arena) {
         XrBodyJointLocationsBD ret = new XrBodyJointLocationsBD(arena.allocate(LAYOUT));
-        ret.type(XrStructureType.XR_TYPE_BODY_JOINT_LOCATIONS_BD);
+        ret.type(XrStructureType.BODY_JOINT_LOCATIONS_BD);
         return ret;
     }
 
@@ -181,7 +181,7 @@ public record XrBodyJointLocationsBD(@NotNull MemorySegment segment) implements 
         MemorySegment segment = arena.allocate(LAYOUT, count);
         XrBodyJointLocationsBD.Ptr ret = new XrBodyJointLocationsBD.Ptr(segment);
         for (long i = 0; i < count; i++) {
-            ret.at(i).type(XrStructureType.XR_TYPE_BODY_JOINT_LOCATIONS_BD);
+            ret.at(i).type(XrStructureType.BODY_JOINT_LOCATIONS_BD);
         }
         return ret;
     }
@@ -193,7 +193,7 @@ public record XrBodyJointLocationsBD(@NotNull MemorySegment segment) implements 
     }
 
     public void autoInit() {
-        type(XrStructureType.XR_TYPE_BODY_JOINT_LOCATIONS_BD);
+        type(XrStructureType.BODY_JOINT_LOCATIONS_BD);
     }
 
     public @EnumType(XrStructureType.class) int type() {

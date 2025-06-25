@@ -171,7 +171,7 @@ public record XrGraphicsBindingMetalKHR(@NotNull MemorySegment segment) implemen
 
     public static XrGraphicsBindingMetalKHR allocate(Arena arena) {
         XrGraphicsBindingMetalKHR ret = new XrGraphicsBindingMetalKHR(arena.allocate(LAYOUT));
-        ret.type(XrStructureType.XR_TYPE_GRAPHICS_BINDING_METAL_KHR);
+        ret.type(XrStructureType.GRAPHICS_BINDING_METAL_KHR);
         return ret;
     }
 
@@ -179,7 +179,7 @@ public record XrGraphicsBindingMetalKHR(@NotNull MemorySegment segment) implemen
         MemorySegment segment = arena.allocate(LAYOUT, count);
         XrGraphicsBindingMetalKHR.Ptr ret = new XrGraphicsBindingMetalKHR.Ptr(segment);
         for (long i = 0; i < count; i++) {
-            ret.at(i).type(XrStructureType.XR_TYPE_GRAPHICS_BINDING_METAL_KHR);
+            ret.at(i).type(XrStructureType.GRAPHICS_BINDING_METAL_KHR);
         }
         return ret;
     }
@@ -191,7 +191,7 @@ public record XrGraphicsBindingMetalKHR(@NotNull MemorySegment segment) implemen
     }
 
     public void autoInit() {
-        type(XrStructureType.XR_TYPE_GRAPHICS_BINDING_METAL_KHR);
+        type(XrStructureType.GRAPHICS_BINDING_METAL_KHR);
     }
 
     public @EnumType(XrStructureType.class) int type() {

@@ -172,7 +172,7 @@ public record XrSceneMeshesMSFT(@NotNull MemorySegment segment) implements IXrSc
 
     public static XrSceneMeshesMSFT allocate(Arena arena) {
         XrSceneMeshesMSFT ret = new XrSceneMeshesMSFT(arena.allocate(LAYOUT));
-        ret.type(XrStructureType.XR_TYPE_SCENE_MESHES_MSFT);
+        ret.type(XrStructureType.SCENE_MESHES_MSFT);
         return ret;
     }
 
@@ -180,7 +180,7 @@ public record XrSceneMeshesMSFT(@NotNull MemorySegment segment) implements IXrSc
         MemorySegment segment = arena.allocate(LAYOUT, count);
         XrSceneMeshesMSFT.Ptr ret = new XrSceneMeshesMSFT.Ptr(segment);
         for (long i = 0; i < count; i++) {
-            ret.at(i).type(XrStructureType.XR_TYPE_SCENE_MESHES_MSFT);
+            ret.at(i).type(XrStructureType.SCENE_MESHES_MSFT);
         }
         return ret;
     }
@@ -192,7 +192,7 @@ public record XrSceneMeshesMSFT(@NotNull MemorySegment segment) implements IXrSc
     }
 
     public void autoInit() {
-        type(XrStructureType.XR_TYPE_SCENE_MESHES_MSFT);
+        type(XrStructureType.SCENE_MESHES_MSFT);
     }
 
     public @EnumType(XrStructureType.class) int type() {

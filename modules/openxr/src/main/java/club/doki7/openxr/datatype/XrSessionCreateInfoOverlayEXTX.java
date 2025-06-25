@@ -172,7 +172,7 @@ public record XrSessionCreateInfoOverlayEXTX(@NotNull MemorySegment segment) imp
 
     public static XrSessionCreateInfoOverlayEXTX allocate(Arena arena) {
         XrSessionCreateInfoOverlayEXTX ret = new XrSessionCreateInfoOverlayEXTX(arena.allocate(LAYOUT));
-        ret.type(XrStructureType.XR_TYPE_SESSION_CREATE_INFO_OVERLAY_EXTX);
+        ret.type(XrStructureType.SESSION_CREATE_INFO_OVERLAY_EXTX);
         return ret;
     }
 
@@ -180,7 +180,7 @@ public record XrSessionCreateInfoOverlayEXTX(@NotNull MemorySegment segment) imp
         MemorySegment segment = arena.allocate(LAYOUT, count);
         XrSessionCreateInfoOverlayEXTX.Ptr ret = new XrSessionCreateInfoOverlayEXTX.Ptr(segment);
         for (long i = 0; i < count; i++) {
-            ret.at(i).type(XrStructureType.XR_TYPE_SESSION_CREATE_INFO_OVERLAY_EXTX);
+            ret.at(i).type(XrStructureType.SESSION_CREATE_INFO_OVERLAY_EXTX);
         }
         return ret;
     }
@@ -192,7 +192,7 @@ public record XrSessionCreateInfoOverlayEXTX(@NotNull MemorySegment segment) imp
     }
 
     public void autoInit() {
-        type(XrStructureType.XR_TYPE_SESSION_CREATE_INFO_OVERLAY_EXTX);
+        type(XrStructureType.SESSION_CREATE_INFO_OVERLAY_EXTX);
     }
 
     public @EnumType(XrStructureType.class) int type() {

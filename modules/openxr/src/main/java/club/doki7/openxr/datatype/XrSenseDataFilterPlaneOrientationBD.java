@@ -172,7 +172,7 @@ public record XrSenseDataFilterPlaneOrientationBD(@NotNull MemorySegment segment
 
     public static XrSenseDataFilterPlaneOrientationBD allocate(Arena arena) {
         XrSenseDataFilterPlaneOrientationBD ret = new XrSenseDataFilterPlaneOrientationBD(arena.allocate(LAYOUT));
-        ret.type(XrStructureType.XR_TYPE_SENSE_DATA_FILTER_PLANE_ORIENTATION_BD);
+        ret.type(XrStructureType.SENSE_DATA_FILTER_PLANE_ORIENTATION_BD);
         return ret;
     }
 
@@ -180,7 +180,7 @@ public record XrSenseDataFilterPlaneOrientationBD(@NotNull MemorySegment segment
         MemorySegment segment = arena.allocate(LAYOUT, count);
         XrSenseDataFilterPlaneOrientationBD.Ptr ret = new XrSenseDataFilterPlaneOrientationBD.Ptr(segment);
         for (long i = 0; i < count; i++) {
-            ret.at(i).type(XrStructureType.XR_TYPE_SENSE_DATA_FILTER_PLANE_ORIENTATION_BD);
+            ret.at(i).type(XrStructureType.SENSE_DATA_FILTER_PLANE_ORIENTATION_BD);
         }
         return ret;
     }
@@ -192,7 +192,7 @@ public record XrSenseDataFilterPlaneOrientationBD(@NotNull MemorySegment segment
     }
 
     public void autoInit() {
-        type(XrStructureType.XR_TYPE_SENSE_DATA_FILTER_PLANE_ORIENTATION_BD);
+        type(XrStructureType.SENSE_DATA_FILTER_PLANE_ORIENTATION_BD);
     }
 
     public @EnumType(XrStructureType.class) int type() {

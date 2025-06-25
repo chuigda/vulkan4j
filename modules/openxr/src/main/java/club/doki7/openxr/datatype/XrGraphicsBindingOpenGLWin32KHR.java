@@ -172,7 +172,7 @@ public record XrGraphicsBindingOpenGLWin32KHR(@NotNull MemorySegment segment) im
 
     public static XrGraphicsBindingOpenGLWin32KHR allocate(Arena arena) {
         XrGraphicsBindingOpenGLWin32KHR ret = new XrGraphicsBindingOpenGLWin32KHR(arena.allocate(LAYOUT));
-        ret.type(XrStructureType.XR_TYPE_GRAPHICS_BINDING_OPENGL_WIN32_KHR);
+        ret.type(XrStructureType.GRAPHICS_BINDING_OPENGL_WIN32_KHR);
         return ret;
     }
 
@@ -180,7 +180,7 @@ public record XrGraphicsBindingOpenGLWin32KHR(@NotNull MemorySegment segment) im
         MemorySegment segment = arena.allocate(LAYOUT, count);
         XrGraphicsBindingOpenGLWin32KHR.Ptr ret = new XrGraphicsBindingOpenGLWin32KHR.Ptr(segment);
         for (long i = 0; i < count; i++) {
-            ret.at(i).type(XrStructureType.XR_TYPE_GRAPHICS_BINDING_OPENGL_WIN32_KHR);
+            ret.at(i).type(XrStructureType.GRAPHICS_BINDING_OPENGL_WIN32_KHR);
         }
         return ret;
     }
@@ -192,7 +192,7 @@ public record XrGraphicsBindingOpenGLWin32KHR(@NotNull MemorySegment segment) im
     }
 
     public void autoInit() {
-        type(XrStructureType.XR_TYPE_GRAPHICS_BINDING_OPENGL_WIN32_KHR);
+        type(XrStructureType.GRAPHICS_BINDING_OPENGL_WIN32_KHR);
     }
 
     public @EnumType(XrStructureType.class) int type() {

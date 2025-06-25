@@ -173,7 +173,7 @@ public record XrPersistSpatialEntityCompletionEXT(@NotNull MemorySegment segment
 
     public static XrPersistSpatialEntityCompletionEXT allocate(Arena arena) {
         XrPersistSpatialEntityCompletionEXT ret = new XrPersistSpatialEntityCompletionEXT(arena.allocate(LAYOUT));
-        ret.type(XrStructureType.XR_TYPE_PERSIST_SPATIAL_ENTITY_COMPLETION_EXT);
+        ret.type(XrStructureType.PERSIST_SPATIAL_ENTITY_COMPLETION_EXT);
         return ret;
     }
 
@@ -181,7 +181,7 @@ public record XrPersistSpatialEntityCompletionEXT(@NotNull MemorySegment segment
         MemorySegment segment = arena.allocate(LAYOUT, count);
         XrPersistSpatialEntityCompletionEXT.Ptr ret = new XrPersistSpatialEntityCompletionEXT.Ptr(segment);
         for (long i = 0; i < count; i++) {
-            ret.at(i).type(XrStructureType.XR_TYPE_PERSIST_SPATIAL_ENTITY_COMPLETION_EXT);
+            ret.at(i).type(XrStructureType.PERSIST_SPATIAL_ENTITY_COMPLETION_EXT);
         }
         return ret;
     }
@@ -193,7 +193,7 @@ public record XrPersistSpatialEntityCompletionEXT(@NotNull MemorySegment segment
     }
 
     public void autoInit() {
-        type(XrStructureType.XR_TYPE_PERSIST_SPATIAL_ENTITY_COMPLETION_EXT);
+        type(XrStructureType.PERSIST_SPATIAL_ENTITY_COMPLETION_EXT);
     }
 
     public @EnumType(XrStructureType.class) int type() {

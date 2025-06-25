@@ -172,7 +172,7 @@ public record XrFrameEndInfoML(@NotNull MemorySegment segment) implements IXrFra
 
     public static XrFrameEndInfoML allocate(Arena arena) {
         XrFrameEndInfoML ret = new XrFrameEndInfoML(arena.allocate(LAYOUT));
-        ret.type(XrStructureType.XR_TYPE_FRAME_END_INFO_ML);
+        ret.type(XrStructureType.FRAME_END_INFO_ML);
         return ret;
     }
 
@@ -180,7 +180,7 @@ public record XrFrameEndInfoML(@NotNull MemorySegment segment) implements IXrFra
         MemorySegment segment = arena.allocate(LAYOUT, count);
         XrFrameEndInfoML.Ptr ret = new XrFrameEndInfoML.Ptr(segment);
         for (long i = 0; i < count; i++) {
-            ret.at(i).type(XrStructureType.XR_TYPE_FRAME_END_INFO_ML);
+            ret.at(i).type(XrStructureType.FRAME_END_INFO_ML);
         }
         return ret;
     }
@@ -192,7 +192,7 @@ public record XrFrameEndInfoML(@NotNull MemorySegment segment) implements IXrFra
     }
 
     public void autoInit() {
-        type(XrStructureType.XR_TYPE_FRAME_END_INFO_ML);
+        type(XrStructureType.FRAME_END_INFO_ML);
     }
 
     public @EnumType(XrStructureType.class) int type() {

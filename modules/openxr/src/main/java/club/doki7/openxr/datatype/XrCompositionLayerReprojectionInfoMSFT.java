@@ -171,7 +171,7 @@ public record XrCompositionLayerReprojectionInfoMSFT(@NotNull MemorySegment segm
 
     public static XrCompositionLayerReprojectionInfoMSFT allocate(Arena arena) {
         XrCompositionLayerReprojectionInfoMSFT ret = new XrCompositionLayerReprojectionInfoMSFT(arena.allocate(LAYOUT));
-        ret.type(XrStructureType.XR_TYPE_COMPOSITION_LAYER_REPROJECTION_INFO_MSFT);
+        ret.type(XrStructureType.COMPOSITION_LAYER_REPROJECTION_INFO_MSFT);
         return ret;
     }
 
@@ -179,7 +179,7 @@ public record XrCompositionLayerReprojectionInfoMSFT(@NotNull MemorySegment segm
         MemorySegment segment = arena.allocate(LAYOUT, count);
         XrCompositionLayerReprojectionInfoMSFT.Ptr ret = new XrCompositionLayerReprojectionInfoMSFT.Ptr(segment);
         for (long i = 0; i < count; i++) {
-            ret.at(i).type(XrStructureType.XR_TYPE_COMPOSITION_LAYER_REPROJECTION_INFO_MSFT);
+            ret.at(i).type(XrStructureType.COMPOSITION_LAYER_REPROJECTION_INFO_MSFT);
         }
         return ret;
     }
@@ -191,7 +191,7 @@ public record XrCompositionLayerReprojectionInfoMSFT(@NotNull MemorySegment segm
     }
 
     public void autoInit() {
-        type(XrStructureType.XR_TYPE_COMPOSITION_LAYER_REPROJECTION_INFO_MSFT);
+        type(XrStructureType.COMPOSITION_LAYER_REPROJECTION_INFO_MSFT);
     }
 
     public @EnumType(XrStructureType.class) int type() {

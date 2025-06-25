@@ -173,7 +173,7 @@ public record XrExternalCameraOCULUS(@NotNull MemorySegment segment) implements 
 
     public static XrExternalCameraOCULUS allocate(Arena arena) {
         XrExternalCameraOCULUS ret = new XrExternalCameraOCULUS(arena.allocate(LAYOUT));
-        ret.type(XrStructureType.XR_TYPE_EXTERNAL_CAMERA_OCULUS);
+        ret.type(XrStructureType.EXTERNAL_CAMERA_OCULUS);
         return ret;
     }
 
@@ -181,7 +181,7 @@ public record XrExternalCameraOCULUS(@NotNull MemorySegment segment) implements 
         MemorySegment segment = arena.allocate(LAYOUT, count);
         XrExternalCameraOCULUS.Ptr ret = new XrExternalCameraOCULUS.Ptr(segment);
         for (long i = 0; i < count; i++) {
-            ret.at(i).type(XrStructureType.XR_TYPE_EXTERNAL_CAMERA_OCULUS);
+            ret.at(i).type(XrStructureType.EXTERNAL_CAMERA_OCULUS);
         }
         return ret;
     }
@@ -193,7 +193,7 @@ public record XrExternalCameraOCULUS(@NotNull MemorySegment segment) implements 
     }
 
     public void autoInit() {
-        type(XrStructureType.XR_TYPE_EXTERNAL_CAMERA_OCULUS);
+        type(XrStructureType.EXTERNAL_CAMERA_OCULUS);
     }
 
     public @EnumType(XrStructureType.class) int type() {

@@ -176,7 +176,7 @@ public record XrVulkanDeviceCreateInfoKHR(@NotNull MemorySegment segment) implem
 
     public static XrVulkanDeviceCreateInfoKHR allocate(Arena arena) {
         XrVulkanDeviceCreateInfoKHR ret = new XrVulkanDeviceCreateInfoKHR(arena.allocate(LAYOUT));
-        ret.type(XrStructureType.XR_TYPE_VULKAN_DEVICE_CREATE_INFO_KHR);
+        ret.type(XrStructureType.VULKAN_DEVICE_CREATE_INFO_KHR);
         return ret;
     }
 
@@ -184,7 +184,7 @@ public record XrVulkanDeviceCreateInfoKHR(@NotNull MemorySegment segment) implem
         MemorySegment segment = arena.allocate(LAYOUT, count);
         XrVulkanDeviceCreateInfoKHR.Ptr ret = new XrVulkanDeviceCreateInfoKHR.Ptr(segment);
         for (long i = 0; i < count; i++) {
-            ret.at(i).type(XrStructureType.XR_TYPE_VULKAN_DEVICE_CREATE_INFO_KHR);
+            ret.at(i).type(XrStructureType.VULKAN_DEVICE_CREATE_INFO_KHR);
         }
         return ret;
     }
@@ -196,7 +196,7 @@ public record XrVulkanDeviceCreateInfoKHR(@NotNull MemorySegment segment) implem
     }
 
     public void autoInit() {
-        type(XrStructureType.XR_TYPE_VULKAN_DEVICE_CREATE_INFO_KHR);
+        type(XrStructureType.VULKAN_DEVICE_CREATE_INFO_KHR);
     }
 
     public @EnumType(XrStructureType.class) int type() {

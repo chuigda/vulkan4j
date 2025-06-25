@@ -170,7 +170,7 @@ public record XrInteractionRenderModelSubactionPathInfoEXT(@NotNull MemorySegmen
 
     public static XrInteractionRenderModelSubactionPathInfoEXT allocate(Arena arena) {
         XrInteractionRenderModelSubactionPathInfoEXT ret = new XrInteractionRenderModelSubactionPathInfoEXT(arena.allocate(LAYOUT));
-        ret.type(XrStructureType.XR_TYPE_INTERACTION_RENDER_MODEL_SUBACTION_PATH_INFO_EXT);
+        ret.type(XrStructureType.INTERACTION_RENDER_MODEL_SUBACTION_PATH_INFO_EXT);
         return ret;
     }
 
@@ -178,7 +178,7 @@ public record XrInteractionRenderModelSubactionPathInfoEXT(@NotNull MemorySegmen
         MemorySegment segment = arena.allocate(LAYOUT, count);
         XrInteractionRenderModelSubactionPathInfoEXT.Ptr ret = new XrInteractionRenderModelSubactionPathInfoEXT.Ptr(segment);
         for (long i = 0; i < count; i++) {
-            ret.at(i).type(XrStructureType.XR_TYPE_INTERACTION_RENDER_MODEL_SUBACTION_PATH_INFO_EXT);
+            ret.at(i).type(XrStructureType.INTERACTION_RENDER_MODEL_SUBACTION_PATH_INFO_EXT);
         }
         return ret;
     }
@@ -190,7 +190,7 @@ public record XrInteractionRenderModelSubactionPathInfoEXT(@NotNull MemorySegmen
     }
 
     public void autoInit() {
-        type(XrStructureType.XR_TYPE_INTERACTION_RENDER_MODEL_SUBACTION_PATH_INFO_EXT);
+        type(XrStructureType.INTERACTION_RENDER_MODEL_SUBACTION_PATH_INFO_EXT);
     }
 
     public @EnumType(XrStructureType.class) int type() {

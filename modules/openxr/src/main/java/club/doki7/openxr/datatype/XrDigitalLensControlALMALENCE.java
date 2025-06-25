@@ -171,7 +171,7 @@ public record XrDigitalLensControlALMALENCE(@NotNull MemorySegment segment) impl
 
     public static XrDigitalLensControlALMALENCE allocate(Arena arena) {
         XrDigitalLensControlALMALENCE ret = new XrDigitalLensControlALMALENCE(arena.allocate(LAYOUT));
-        ret.type(XrStructureType.XR_TYPE_DIGITAL_LENS_CONTROL_ALMALENCE);
+        ret.type(XrStructureType.DIGITAL_LENS_CONTROL_ALMALENCE);
         return ret;
     }
 
@@ -179,7 +179,7 @@ public record XrDigitalLensControlALMALENCE(@NotNull MemorySegment segment) impl
         MemorySegment segment = arena.allocate(LAYOUT, count);
         XrDigitalLensControlALMALENCE.Ptr ret = new XrDigitalLensControlALMALENCE.Ptr(segment);
         for (long i = 0; i < count; i++) {
-            ret.at(i).type(XrStructureType.XR_TYPE_DIGITAL_LENS_CONTROL_ALMALENCE);
+            ret.at(i).type(XrStructureType.DIGITAL_LENS_CONTROL_ALMALENCE);
         }
         return ret;
     }
@@ -191,7 +191,7 @@ public record XrDigitalLensControlALMALENCE(@NotNull MemorySegment segment) impl
     }
 
     public void autoInit() {
-        type(XrStructureType.XR_TYPE_DIGITAL_LENS_CONTROL_ALMALENCE);
+        type(XrStructureType.DIGITAL_LENS_CONTROL_ALMALENCE);
     }
 
     public @EnumType(XrStructureType.class) int type() {

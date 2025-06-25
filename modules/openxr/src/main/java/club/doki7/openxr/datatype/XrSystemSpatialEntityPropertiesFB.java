@@ -171,7 +171,7 @@ public record XrSystemSpatialEntityPropertiesFB(@NotNull MemorySegment segment) 
 
     public static XrSystemSpatialEntityPropertiesFB allocate(Arena arena) {
         XrSystemSpatialEntityPropertiesFB ret = new XrSystemSpatialEntityPropertiesFB(arena.allocate(LAYOUT));
-        ret.type(XrStructureType.XR_TYPE_SYSTEM_SPATIAL_ENTITY_PROPERTIES_FB);
+        ret.type(XrStructureType.SYSTEM_SPATIAL_ENTITY_PROPERTIES_FB);
         return ret;
     }
 
@@ -179,7 +179,7 @@ public record XrSystemSpatialEntityPropertiesFB(@NotNull MemorySegment segment) 
         MemorySegment segment = arena.allocate(LAYOUT, count);
         XrSystemSpatialEntityPropertiesFB.Ptr ret = new XrSystemSpatialEntityPropertiesFB.Ptr(segment);
         for (long i = 0; i < count; i++) {
-            ret.at(i).type(XrStructureType.XR_TYPE_SYSTEM_SPATIAL_ENTITY_PROPERTIES_FB);
+            ret.at(i).type(XrStructureType.SYSTEM_SPATIAL_ENTITY_PROPERTIES_FB);
         }
         return ret;
     }
@@ -191,7 +191,7 @@ public record XrSystemSpatialEntityPropertiesFB(@NotNull MemorySegment segment) 
     }
 
     public void autoInit() {
-        type(XrStructureType.XR_TYPE_SYSTEM_SPATIAL_ENTITY_PROPERTIES_FB);
+        type(XrStructureType.SYSTEM_SPATIAL_ENTITY_PROPERTIES_FB);
     }
 
     public @EnumType(XrStructureType.class) int type() {

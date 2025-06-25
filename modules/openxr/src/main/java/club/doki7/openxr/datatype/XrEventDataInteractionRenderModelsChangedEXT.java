@@ -170,7 +170,7 @@ public record XrEventDataInteractionRenderModelsChangedEXT(@NotNull MemorySegmen
 
     public static XrEventDataInteractionRenderModelsChangedEXT allocate(Arena arena) {
         XrEventDataInteractionRenderModelsChangedEXT ret = new XrEventDataInteractionRenderModelsChangedEXT(arena.allocate(LAYOUT));
-        ret.type(XrStructureType.XR_TYPE_EVENT_DATA_INTERACTION_RENDER_MODELS_CHANGED_EXT);
+        ret.type(XrStructureType.EVENT_DATA_INTERACTION_RENDER_MODELS_CHANGED_EXT);
         return ret;
     }
 
@@ -178,7 +178,7 @@ public record XrEventDataInteractionRenderModelsChangedEXT(@NotNull MemorySegmen
         MemorySegment segment = arena.allocate(LAYOUT, count);
         XrEventDataInteractionRenderModelsChangedEXT.Ptr ret = new XrEventDataInteractionRenderModelsChangedEXT.Ptr(segment);
         for (long i = 0; i < count; i++) {
-            ret.at(i).type(XrStructureType.XR_TYPE_EVENT_DATA_INTERACTION_RENDER_MODELS_CHANGED_EXT);
+            ret.at(i).type(XrStructureType.EVENT_DATA_INTERACTION_RENDER_MODELS_CHANGED_EXT);
         }
         return ret;
     }
@@ -190,7 +190,7 @@ public record XrEventDataInteractionRenderModelsChangedEXT(@NotNull MemorySegmen
     }
 
     public void autoInit() {
-        type(XrStructureType.XR_TYPE_EVENT_DATA_INTERACTION_RENDER_MODELS_CHANGED_EXT);
+        type(XrStructureType.EVENT_DATA_INTERACTION_RENDER_MODELS_CHANGED_EXT);
     }
 
     public @EnumType(XrStructureType.class) int type() {

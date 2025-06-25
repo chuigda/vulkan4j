@@ -172,7 +172,7 @@ public record XrGraphicsRequirementsVulkanKHR(@NotNull MemorySegment segment) im
 
     public static XrGraphicsRequirementsVulkanKHR allocate(Arena arena) {
         XrGraphicsRequirementsVulkanKHR ret = new XrGraphicsRequirementsVulkanKHR(arena.allocate(LAYOUT));
-        ret.type(XrStructureType.XR_TYPE_GRAPHICS_REQUIREMENTS_VULKAN_KHR);
+        ret.type(XrStructureType.GRAPHICS_REQUIREMENTS_VULKAN_KHR);
         return ret;
     }
 
@@ -180,7 +180,7 @@ public record XrGraphicsRequirementsVulkanKHR(@NotNull MemorySegment segment) im
         MemorySegment segment = arena.allocate(LAYOUT, count);
         XrGraphicsRequirementsVulkanKHR.Ptr ret = new XrGraphicsRequirementsVulkanKHR.Ptr(segment);
         for (long i = 0; i < count; i++) {
-            ret.at(i).type(XrStructureType.XR_TYPE_GRAPHICS_REQUIREMENTS_VULKAN_KHR);
+            ret.at(i).type(XrStructureType.GRAPHICS_REQUIREMENTS_VULKAN_KHR);
         }
         return ret;
     }
@@ -192,7 +192,7 @@ public record XrGraphicsRequirementsVulkanKHR(@NotNull MemorySegment segment) im
     }
 
     public void autoInit() {
-        type(XrStructureType.XR_TYPE_GRAPHICS_REQUIREMENTS_VULKAN_KHR);
+        type(XrStructureType.GRAPHICS_REQUIREMENTS_VULKAN_KHR);
     }
 
     public @EnumType(XrStructureType.class) int type() {

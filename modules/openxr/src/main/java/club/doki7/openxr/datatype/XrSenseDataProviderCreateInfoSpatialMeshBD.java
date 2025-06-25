@@ -172,7 +172,7 @@ public record XrSenseDataProviderCreateInfoSpatialMeshBD(@NotNull MemorySegment 
 
     public static XrSenseDataProviderCreateInfoSpatialMeshBD allocate(Arena arena) {
         XrSenseDataProviderCreateInfoSpatialMeshBD ret = new XrSenseDataProviderCreateInfoSpatialMeshBD(arena.allocate(LAYOUT));
-        ret.type(XrStructureType.XR_TYPE_SENSE_DATA_PROVIDER_CREATE_INFO_SPATIAL_MESH_BD);
+        ret.type(XrStructureType.SENSE_DATA_PROVIDER_CREATE_INFO_SPATIAL_MESH_BD);
         return ret;
     }
 
@@ -180,7 +180,7 @@ public record XrSenseDataProviderCreateInfoSpatialMeshBD(@NotNull MemorySegment 
         MemorySegment segment = arena.allocate(LAYOUT, count);
         XrSenseDataProviderCreateInfoSpatialMeshBD.Ptr ret = new XrSenseDataProviderCreateInfoSpatialMeshBD.Ptr(segment);
         for (long i = 0; i < count; i++) {
-            ret.at(i).type(XrStructureType.XR_TYPE_SENSE_DATA_PROVIDER_CREATE_INFO_SPATIAL_MESH_BD);
+            ret.at(i).type(XrStructureType.SENSE_DATA_PROVIDER_CREATE_INFO_SPATIAL_MESH_BD);
         }
         return ret;
     }
@@ -192,7 +192,7 @@ public record XrSenseDataProviderCreateInfoSpatialMeshBD(@NotNull MemorySegment 
     }
 
     public void autoInit() {
-        type(XrStructureType.XR_TYPE_SENSE_DATA_PROVIDER_CREATE_INFO_SPATIAL_MESH_BD);
+        type(XrStructureType.SENSE_DATA_PROVIDER_CREATE_INFO_SPATIAL_MESH_BD);
     }
 
     public @EnumType(XrStructureType.class) int type() {

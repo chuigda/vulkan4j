@@ -173,7 +173,7 @@ public record XrSpatialCapabilityConfigurationPlaneTrackingEXT(@NotNull MemorySe
 
     public static XrSpatialCapabilityConfigurationPlaneTrackingEXT allocate(Arena arena) {
         XrSpatialCapabilityConfigurationPlaneTrackingEXT ret = new XrSpatialCapabilityConfigurationPlaneTrackingEXT(arena.allocate(LAYOUT));
-        ret.type(XrStructureType.XR_TYPE_SPATIAL_CAPABILITY_CONFIGURATION_PLANE_TRACKING_EXT);
+        ret.type(XrStructureType.SPATIAL_CAPABILITY_CONFIGURATION_PLANE_TRACKING_EXT);
         return ret;
     }
 
@@ -181,7 +181,7 @@ public record XrSpatialCapabilityConfigurationPlaneTrackingEXT(@NotNull MemorySe
         MemorySegment segment = arena.allocate(LAYOUT, count);
         XrSpatialCapabilityConfigurationPlaneTrackingEXT.Ptr ret = new XrSpatialCapabilityConfigurationPlaneTrackingEXT.Ptr(segment);
         for (long i = 0; i < count; i++) {
-            ret.at(i).type(XrStructureType.XR_TYPE_SPATIAL_CAPABILITY_CONFIGURATION_PLANE_TRACKING_EXT);
+            ret.at(i).type(XrStructureType.SPATIAL_CAPABILITY_CONFIGURATION_PLANE_TRACKING_EXT);
         }
         return ret;
     }
@@ -193,7 +193,7 @@ public record XrSpatialCapabilityConfigurationPlaneTrackingEXT(@NotNull MemorySe
     }
 
     public void autoInit() {
-        type(XrStructureType.XR_TYPE_SPATIAL_CAPABILITY_CONFIGURATION_PLANE_TRACKING_EXT);
+        type(XrStructureType.SPATIAL_CAPABILITY_CONFIGURATION_PLANE_TRACKING_EXT);
     }
 
     public @EnumType(XrStructureType.class) int type() {

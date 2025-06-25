@@ -171,7 +171,7 @@ public record XrFacialTrackerCreateInfoHTC(@NotNull MemorySegment segment) imple
 
     public static XrFacialTrackerCreateInfoHTC allocate(Arena arena) {
         XrFacialTrackerCreateInfoHTC ret = new XrFacialTrackerCreateInfoHTC(arena.allocate(LAYOUT));
-        ret.type(XrStructureType.XR_TYPE_FACIAL_TRACKER_CREATE_INFO_HTC);
+        ret.type(XrStructureType.FACIAL_TRACKER_CREATE_INFO_HTC);
         return ret;
     }
 
@@ -179,7 +179,7 @@ public record XrFacialTrackerCreateInfoHTC(@NotNull MemorySegment segment) imple
         MemorySegment segment = arena.allocate(LAYOUT, count);
         XrFacialTrackerCreateInfoHTC.Ptr ret = new XrFacialTrackerCreateInfoHTC.Ptr(segment);
         for (long i = 0; i < count; i++) {
-            ret.at(i).type(XrStructureType.XR_TYPE_FACIAL_TRACKER_CREATE_INFO_HTC);
+            ret.at(i).type(XrStructureType.FACIAL_TRACKER_CREATE_INFO_HTC);
         }
         return ret;
     }
@@ -191,7 +191,7 @@ public record XrFacialTrackerCreateInfoHTC(@NotNull MemorySegment segment) imple
     }
 
     public void autoInit() {
-        type(XrStructureType.XR_TYPE_FACIAL_TRACKER_CREATE_INFO_HTC);
+        type(XrStructureType.FACIAL_TRACKER_CREATE_INFO_HTC);
     }
 
     public @EnumType(XrStructureType.class) int type() {

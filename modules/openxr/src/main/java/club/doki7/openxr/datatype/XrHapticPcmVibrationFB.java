@@ -175,7 +175,7 @@ public record XrHapticPcmVibrationFB(@NotNull MemorySegment segment) implements 
 
     public static XrHapticPcmVibrationFB allocate(Arena arena) {
         XrHapticPcmVibrationFB ret = new XrHapticPcmVibrationFB(arena.allocate(LAYOUT));
-        ret.type(XrStructureType.XR_TYPE_HAPTIC_PCM_VIBRATION_FB);
+        ret.type(XrStructureType.HAPTIC_PCM_VIBRATION_FB);
         return ret;
     }
 
@@ -183,7 +183,7 @@ public record XrHapticPcmVibrationFB(@NotNull MemorySegment segment) implements 
         MemorySegment segment = arena.allocate(LAYOUT, count);
         XrHapticPcmVibrationFB.Ptr ret = new XrHapticPcmVibrationFB.Ptr(segment);
         for (long i = 0; i < count; i++) {
-            ret.at(i).type(XrStructureType.XR_TYPE_HAPTIC_PCM_VIBRATION_FB);
+            ret.at(i).type(XrStructureType.HAPTIC_PCM_VIBRATION_FB);
         }
         return ret;
     }
@@ -195,7 +195,7 @@ public record XrHapticPcmVibrationFB(@NotNull MemorySegment segment) implements 
     }
 
     public void autoInit() {
-        type(XrStructureType.XR_TYPE_HAPTIC_PCM_VIBRATION_FB);
+        type(XrStructureType.HAPTIC_PCM_VIBRATION_FB);
     }
 
     public @EnumType(XrStructureType.class) int type() {

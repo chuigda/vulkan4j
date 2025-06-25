@@ -171,7 +171,7 @@ public record XrControllerModelKeyStateMSFT(@NotNull MemorySegment segment) impl
 
     public static XrControllerModelKeyStateMSFT allocate(Arena arena) {
         XrControllerModelKeyStateMSFT ret = new XrControllerModelKeyStateMSFT(arena.allocate(LAYOUT));
-        ret.type(XrStructureType.XR_TYPE_CONTROLLER_MODEL_KEY_STATE_MSFT);
+        ret.type(XrStructureType.CONTROLLER_MODEL_KEY_STATE_MSFT);
         return ret;
     }
 
@@ -179,7 +179,7 @@ public record XrControllerModelKeyStateMSFT(@NotNull MemorySegment segment) impl
         MemorySegment segment = arena.allocate(LAYOUT, count);
         XrControllerModelKeyStateMSFT.Ptr ret = new XrControllerModelKeyStateMSFT.Ptr(segment);
         for (long i = 0; i < count; i++) {
-            ret.at(i).type(XrStructureType.XR_TYPE_CONTROLLER_MODEL_KEY_STATE_MSFT);
+            ret.at(i).type(XrStructureType.CONTROLLER_MODEL_KEY_STATE_MSFT);
         }
         return ret;
     }
@@ -191,7 +191,7 @@ public record XrControllerModelKeyStateMSFT(@NotNull MemorySegment segment) impl
     }
 
     public void autoInit() {
-        type(XrStructureType.XR_TYPE_CONTROLLER_MODEL_KEY_STATE_MSFT);
+        type(XrStructureType.CONTROLLER_MODEL_KEY_STATE_MSFT);
     }
 
     public @EnumType(XrStructureType.class) int type() {

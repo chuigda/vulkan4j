@@ -172,7 +172,7 @@ public record XrFuturePollResultProgressBD(@NotNull MemorySegment segment) imple
 
     public static XrFuturePollResultProgressBD allocate(Arena arena) {
         XrFuturePollResultProgressBD ret = new XrFuturePollResultProgressBD(arena.allocate(LAYOUT));
-        ret.type(XrStructureType.XR_TYPE_FUTURE_POLL_RESULT_PROGRESS_BD);
+        ret.type(XrStructureType.FUTURE_POLL_RESULT_PROGRESS_BD);
         return ret;
     }
 
@@ -180,7 +180,7 @@ public record XrFuturePollResultProgressBD(@NotNull MemorySegment segment) imple
         MemorySegment segment = arena.allocate(LAYOUT, count);
         XrFuturePollResultProgressBD.Ptr ret = new XrFuturePollResultProgressBD.Ptr(segment);
         for (long i = 0; i < count; i++) {
-            ret.at(i).type(XrStructureType.XR_TYPE_FUTURE_POLL_RESULT_PROGRESS_BD);
+            ret.at(i).type(XrStructureType.FUTURE_POLL_RESULT_PROGRESS_BD);
         }
         return ret;
     }
@@ -192,7 +192,7 @@ public record XrFuturePollResultProgressBD(@NotNull MemorySegment segment) imple
     }
 
     public void autoInit() {
-        type(XrStructureType.XR_TYPE_FUTURE_POLL_RESULT_PROGRESS_BD);
+        type(XrStructureType.FUTURE_POLL_RESULT_PROGRESS_BD);
     }
 
     public @EnumType(XrStructureType.class) int type() {

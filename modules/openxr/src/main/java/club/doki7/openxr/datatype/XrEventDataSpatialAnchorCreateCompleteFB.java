@@ -174,7 +174,7 @@ public record XrEventDataSpatialAnchorCreateCompleteFB(@NotNull MemorySegment se
 
     public static XrEventDataSpatialAnchorCreateCompleteFB allocate(Arena arena) {
         XrEventDataSpatialAnchorCreateCompleteFB ret = new XrEventDataSpatialAnchorCreateCompleteFB(arena.allocate(LAYOUT));
-        ret.type(XrStructureType.XR_TYPE_EVENT_DATA_SPATIAL_ANCHOR_CREATE_COMPLETE_FB);
+        ret.type(XrStructureType.EVENT_DATA_SPATIAL_ANCHOR_CREATE_COMPLETE_FB);
         return ret;
     }
 
@@ -182,7 +182,7 @@ public record XrEventDataSpatialAnchorCreateCompleteFB(@NotNull MemorySegment se
         MemorySegment segment = arena.allocate(LAYOUT, count);
         XrEventDataSpatialAnchorCreateCompleteFB.Ptr ret = new XrEventDataSpatialAnchorCreateCompleteFB.Ptr(segment);
         for (long i = 0; i < count; i++) {
-            ret.at(i).type(XrStructureType.XR_TYPE_EVENT_DATA_SPATIAL_ANCHOR_CREATE_COMPLETE_FB);
+            ret.at(i).type(XrStructureType.EVENT_DATA_SPATIAL_ANCHOR_CREATE_COMPLETE_FB);
         }
         return ret;
     }
@@ -194,7 +194,7 @@ public record XrEventDataSpatialAnchorCreateCompleteFB(@NotNull MemorySegment se
     }
 
     public void autoInit() {
-        type(XrStructureType.XR_TYPE_EVENT_DATA_SPATIAL_ANCHOR_CREATE_COMPLETE_FB);
+        type(XrStructureType.EVENT_DATA_SPATIAL_ANCHOR_CREATE_COMPLETE_FB);
     }
 
     public @EnumType(XrStructureType.class) int type() {

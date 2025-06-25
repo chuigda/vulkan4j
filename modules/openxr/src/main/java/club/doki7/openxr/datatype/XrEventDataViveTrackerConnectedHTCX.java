@@ -171,7 +171,7 @@ public record XrEventDataViveTrackerConnectedHTCX(@NotNull MemorySegment segment
 
     public static XrEventDataViveTrackerConnectedHTCX allocate(Arena arena) {
         XrEventDataViveTrackerConnectedHTCX ret = new XrEventDataViveTrackerConnectedHTCX(arena.allocate(LAYOUT));
-        ret.type(XrStructureType.XR_TYPE_EVENT_DATA_VIVE_TRACKER_CONNECTED_HTCX);
+        ret.type(XrStructureType.EVENT_DATA_VIVE_TRACKER_CONNECTED_HTCX);
         return ret;
     }
 
@@ -179,7 +179,7 @@ public record XrEventDataViveTrackerConnectedHTCX(@NotNull MemorySegment segment
         MemorySegment segment = arena.allocate(LAYOUT, count);
         XrEventDataViveTrackerConnectedHTCX.Ptr ret = new XrEventDataViveTrackerConnectedHTCX.Ptr(segment);
         for (long i = 0; i < count; i++) {
-            ret.at(i).type(XrStructureType.XR_TYPE_EVENT_DATA_VIVE_TRACKER_CONNECTED_HTCX);
+            ret.at(i).type(XrStructureType.EVENT_DATA_VIVE_TRACKER_CONNECTED_HTCX);
         }
         return ret;
     }
@@ -191,7 +191,7 @@ public record XrEventDataViveTrackerConnectedHTCX(@NotNull MemorySegment segment
     }
 
     public void autoInit() {
-        type(XrStructureType.XR_TYPE_EVENT_DATA_VIVE_TRACKER_CONNECTED_HTCX);
+        type(XrStructureType.EVENT_DATA_VIVE_TRACKER_CONNECTED_HTCX);
     }
 
     public @EnumType(XrStructureType.class) int type() {

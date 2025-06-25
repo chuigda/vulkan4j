@@ -171,7 +171,7 @@ public record XrHandPoseTypeInfoMSFT(@NotNull MemorySegment segment) implements 
 
     public static XrHandPoseTypeInfoMSFT allocate(Arena arena) {
         XrHandPoseTypeInfoMSFT ret = new XrHandPoseTypeInfoMSFT(arena.allocate(LAYOUT));
-        ret.type(XrStructureType.XR_TYPE_HAND_POSE_TYPE_INFO_MSFT);
+        ret.type(XrStructureType.HAND_POSE_TYPE_INFO_MSFT);
         return ret;
     }
 
@@ -179,7 +179,7 @@ public record XrHandPoseTypeInfoMSFT(@NotNull MemorySegment segment) implements 
         MemorySegment segment = arena.allocate(LAYOUT, count);
         XrHandPoseTypeInfoMSFT.Ptr ret = new XrHandPoseTypeInfoMSFT.Ptr(segment);
         for (long i = 0; i < count; i++) {
-            ret.at(i).type(XrStructureType.XR_TYPE_HAND_POSE_TYPE_INFO_MSFT);
+            ret.at(i).type(XrStructureType.HAND_POSE_TYPE_INFO_MSFT);
         }
         return ret;
     }
@@ -191,7 +191,7 @@ public record XrHandPoseTypeInfoMSFT(@NotNull MemorySegment segment) implements 
     }
 
     public void autoInit() {
-        type(XrStructureType.XR_TYPE_HAND_POSE_TYPE_INFO_MSFT);
+        type(XrStructureType.HAND_POSE_TYPE_INFO_MSFT);
     }
 
     public @EnumType(XrStructureType.class) int type() {

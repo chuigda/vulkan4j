@@ -174,7 +174,7 @@ public record XrCompositionLayerPassthroughHTC(@NotNull MemorySegment segment) i
 
     public static XrCompositionLayerPassthroughHTC allocate(Arena arena) {
         XrCompositionLayerPassthroughHTC ret = new XrCompositionLayerPassthroughHTC(arena.allocate(LAYOUT));
-        ret.type(XrStructureType.XR_TYPE_COMPOSITION_LAYER_PASSTHROUGH_HTC);
+        ret.type(XrStructureType.COMPOSITION_LAYER_PASSTHROUGH_HTC);
         return ret;
     }
 
@@ -182,7 +182,7 @@ public record XrCompositionLayerPassthroughHTC(@NotNull MemorySegment segment) i
         MemorySegment segment = arena.allocate(LAYOUT, count);
         XrCompositionLayerPassthroughHTC.Ptr ret = new XrCompositionLayerPassthroughHTC.Ptr(segment);
         for (long i = 0; i < count; i++) {
-            ret.at(i).type(XrStructureType.XR_TYPE_COMPOSITION_LAYER_PASSTHROUGH_HTC);
+            ret.at(i).type(XrStructureType.COMPOSITION_LAYER_PASSTHROUGH_HTC);
         }
         return ret;
     }
@@ -194,7 +194,7 @@ public record XrCompositionLayerPassthroughHTC(@NotNull MemorySegment segment) i
     }
 
     public void autoInit() {
-        type(XrStructureType.XR_TYPE_COMPOSITION_LAYER_PASSTHROUGH_HTC);
+        type(XrStructureType.COMPOSITION_LAYER_PASSTHROUGH_HTC);
     }
 
     public @EnumType(XrStructureType.class) int type() {

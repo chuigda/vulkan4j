@@ -175,7 +175,7 @@ public record XrWorldMeshStateRequestCompletionML(@NotNull MemorySegment segment
 
     public static XrWorldMeshStateRequestCompletionML allocate(Arena arena) {
         XrWorldMeshStateRequestCompletionML ret = new XrWorldMeshStateRequestCompletionML(arena.allocate(LAYOUT));
-        ret.type(XrStructureType.XR_TYPE_WORLD_MESH_STATE_REQUEST_COMPLETION_ML);
+        ret.type(XrStructureType.WORLD_MESH_STATE_REQUEST_COMPLETION_ML);
         return ret;
     }
 
@@ -183,7 +183,7 @@ public record XrWorldMeshStateRequestCompletionML(@NotNull MemorySegment segment
         MemorySegment segment = arena.allocate(LAYOUT, count);
         XrWorldMeshStateRequestCompletionML.Ptr ret = new XrWorldMeshStateRequestCompletionML.Ptr(segment);
         for (long i = 0; i < count; i++) {
-            ret.at(i).type(XrStructureType.XR_TYPE_WORLD_MESH_STATE_REQUEST_COMPLETION_ML);
+            ret.at(i).type(XrStructureType.WORLD_MESH_STATE_REQUEST_COMPLETION_ML);
         }
         return ret;
     }
@@ -195,7 +195,7 @@ public record XrWorldMeshStateRequestCompletionML(@NotNull MemorySegment segment
     }
 
     public void autoInit() {
-        type(XrStructureType.XR_TYPE_WORLD_MESH_STATE_REQUEST_COMPLETION_ML);
+        type(XrStructureType.WORLD_MESH_STATE_REQUEST_COMPLETION_ML);
     }
 
     public @EnumType(XrStructureType.class) int type() {

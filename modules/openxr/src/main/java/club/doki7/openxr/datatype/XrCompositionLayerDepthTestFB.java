@@ -172,7 +172,7 @@ public record XrCompositionLayerDepthTestFB(@NotNull MemorySegment segment) impl
 
     public static XrCompositionLayerDepthTestFB allocate(Arena arena) {
         XrCompositionLayerDepthTestFB ret = new XrCompositionLayerDepthTestFB(arena.allocate(LAYOUT));
-        ret.type(XrStructureType.XR_TYPE_COMPOSITION_LAYER_DEPTH_TEST_FB);
+        ret.type(XrStructureType.COMPOSITION_LAYER_DEPTH_TEST_FB);
         return ret;
     }
 
@@ -180,7 +180,7 @@ public record XrCompositionLayerDepthTestFB(@NotNull MemorySegment segment) impl
         MemorySegment segment = arena.allocate(LAYOUT, count);
         XrCompositionLayerDepthTestFB.Ptr ret = new XrCompositionLayerDepthTestFB.Ptr(segment);
         for (long i = 0; i < count; i++) {
-            ret.at(i).type(XrStructureType.XR_TYPE_COMPOSITION_LAYER_DEPTH_TEST_FB);
+            ret.at(i).type(XrStructureType.COMPOSITION_LAYER_DEPTH_TEST_FB);
         }
         return ret;
     }
@@ -192,7 +192,7 @@ public record XrCompositionLayerDepthTestFB(@NotNull MemorySegment segment) impl
     }
 
     public void autoInit() {
-        type(XrStructureType.XR_TYPE_COMPOSITION_LAYER_DEPTH_TEST_FB);
+        type(XrStructureType.COMPOSITION_LAYER_DEPTH_TEST_FB);
     }
 
     public @EnumType(XrStructureType.class) int type() {

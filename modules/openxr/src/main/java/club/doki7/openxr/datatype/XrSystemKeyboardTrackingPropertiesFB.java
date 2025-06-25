@@ -171,7 +171,7 @@ public record XrSystemKeyboardTrackingPropertiesFB(@NotNull MemorySegment segmen
 
     public static XrSystemKeyboardTrackingPropertiesFB allocate(Arena arena) {
         XrSystemKeyboardTrackingPropertiesFB ret = new XrSystemKeyboardTrackingPropertiesFB(arena.allocate(LAYOUT));
-        ret.type(XrStructureType.XR_TYPE_SYSTEM_KEYBOARD_TRACKING_PROPERTIES_FB);
+        ret.type(XrStructureType.SYSTEM_KEYBOARD_TRACKING_PROPERTIES_FB);
         return ret;
     }
 
@@ -179,7 +179,7 @@ public record XrSystemKeyboardTrackingPropertiesFB(@NotNull MemorySegment segmen
         MemorySegment segment = arena.allocate(LAYOUT, count);
         XrSystemKeyboardTrackingPropertiesFB.Ptr ret = new XrSystemKeyboardTrackingPropertiesFB.Ptr(segment);
         for (long i = 0; i < count; i++) {
-            ret.at(i).type(XrStructureType.XR_TYPE_SYSTEM_KEYBOARD_TRACKING_PROPERTIES_FB);
+            ret.at(i).type(XrStructureType.SYSTEM_KEYBOARD_TRACKING_PROPERTIES_FB);
         }
         return ret;
     }
@@ -191,7 +191,7 @@ public record XrSystemKeyboardTrackingPropertiesFB(@NotNull MemorySegment segmen
     }
 
     public void autoInit() {
-        type(XrStructureType.XR_TYPE_SYSTEM_KEYBOARD_TRACKING_PROPERTIES_FB);
+        type(XrStructureType.SYSTEM_KEYBOARD_TRACKING_PROPERTIES_FB);
     }
 
     public @EnumType(XrStructureType.class) int type() {

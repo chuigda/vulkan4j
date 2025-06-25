@@ -171,7 +171,7 @@ public record XrEventDataSpaceQueryResultsAvailableFB(@NotNull MemorySegment seg
 
     public static XrEventDataSpaceQueryResultsAvailableFB allocate(Arena arena) {
         XrEventDataSpaceQueryResultsAvailableFB ret = new XrEventDataSpaceQueryResultsAvailableFB(arena.allocate(LAYOUT));
-        ret.type(XrStructureType.XR_TYPE_EVENT_DATA_SPACE_QUERY_RESULTS_AVAILABLE_FB);
+        ret.type(XrStructureType.EVENT_DATA_SPACE_QUERY_RESULTS_AVAILABLE_FB);
         return ret;
     }
 
@@ -179,7 +179,7 @@ public record XrEventDataSpaceQueryResultsAvailableFB(@NotNull MemorySegment seg
         MemorySegment segment = arena.allocate(LAYOUT, count);
         XrEventDataSpaceQueryResultsAvailableFB.Ptr ret = new XrEventDataSpaceQueryResultsAvailableFB.Ptr(segment);
         for (long i = 0; i < count; i++) {
-            ret.at(i).type(XrStructureType.XR_TYPE_EVENT_DATA_SPACE_QUERY_RESULTS_AVAILABLE_FB);
+            ret.at(i).type(XrStructureType.EVENT_DATA_SPACE_QUERY_RESULTS_AVAILABLE_FB);
         }
         return ret;
     }
@@ -191,7 +191,7 @@ public record XrEventDataSpaceQueryResultsAvailableFB(@NotNull MemorySegment seg
     }
 
     public void autoInit() {
-        type(XrStructureType.XR_TYPE_EVENT_DATA_SPACE_QUERY_RESULTS_AVAILABLE_FB);
+        type(XrStructureType.EVENT_DATA_SPACE_QUERY_RESULTS_AVAILABLE_FB);
     }
 
     public @EnumType(XrStructureType.class) int type() {

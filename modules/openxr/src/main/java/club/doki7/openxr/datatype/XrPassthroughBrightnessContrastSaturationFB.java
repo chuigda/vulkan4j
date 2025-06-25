@@ -173,7 +173,7 @@ public record XrPassthroughBrightnessContrastSaturationFB(@NotNull MemorySegment
 
     public static XrPassthroughBrightnessContrastSaturationFB allocate(Arena arena) {
         XrPassthroughBrightnessContrastSaturationFB ret = new XrPassthroughBrightnessContrastSaturationFB(arena.allocate(LAYOUT));
-        ret.type(XrStructureType.XR_TYPE_PASSTHROUGH_BRIGHTNESS_CONTRAST_SATURATION_FB);
+        ret.type(XrStructureType.PASSTHROUGH_BRIGHTNESS_CONTRAST_SATURATION_FB);
         return ret;
     }
 
@@ -181,7 +181,7 @@ public record XrPassthroughBrightnessContrastSaturationFB(@NotNull MemorySegment
         MemorySegment segment = arena.allocate(LAYOUT, count);
         XrPassthroughBrightnessContrastSaturationFB.Ptr ret = new XrPassthroughBrightnessContrastSaturationFB.Ptr(segment);
         for (long i = 0; i < count; i++) {
-            ret.at(i).type(XrStructureType.XR_TYPE_PASSTHROUGH_BRIGHTNESS_CONTRAST_SATURATION_FB);
+            ret.at(i).type(XrStructureType.PASSTHROUGH_BRIGHTNESS_CONTRAST_SATURATION_FB);
         }
         return ret;
     }
@@ -193,7 +193,7 @@ public record XrPassthroughBrightnessContrastSaturationFB(@NotNull MemorySegment
     }
 
     public void autoInit() {
-        type(XrStructureType.XR_TYPE_PASSTHROUGH_BRIGHTNESS_CONTRAST_SATURATION_FB);
+        type(XrStructureType.PASSTHROUGH_BRIGHTNESS_CONTRAST_SATURATION_FB);
     }
 
     public @EnumType(XrStructureType.class) int type() {

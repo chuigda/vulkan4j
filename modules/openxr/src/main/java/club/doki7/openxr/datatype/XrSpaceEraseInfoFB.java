@@ -172,7 +172,7 @@ public record XrSpaceEraseInfoFB(@NotNull MemorySegment segment) implements IXrS
 
     public static XrSpaceEraseInfoFB allocate(Arena arena) {
         XrSpaceEraseInfoFB ret = new XrSpaceEraseInfoFB(arena.allocate(LAYOUT));
-        ret.type(XrStructureType.XR_TYPE_SPACE_ERASE_INFO_FB);
+        ret.type(XrStructureType.SPACE_ERASE_INFO_FB);
         return ret;
     }
 
@@ -180,7 +180,7 @@ public record XrSpaceEraseInfoFB(@NotNull MemorySegment segment) implements IXrS
         MemorySegment segment = arena.allocate(LAYOUT, count);
         XrSpaceEraseInfoFB.Ptr ret = new XrSpaceEraseInfoFB.Ptr(segment);
         for (long i = 0; i < count; i++) {
-            ret.at(i).type(XrStructureType.XR_TYPE_SPACE_ERASE_INFO_FB);
+            ret.at(i).type(XrStructureType.SPACE_ERASE_INFO_FB);
         }
         return ret;
     }
@@ -192,7 +192,7 @@ public record XrSpaceEraseInfoFB(@NotNull MemorySegment segment) implements IXrS
     }
 
     public void autoInit() {
-        type(XrStructureType.XR_TYPE_SPACE_ERASE_INFO_FB);
+        type(XrStructureType.SPACE_ERASE_INFO_FB);
     }
 
     public @EnumType(XrStructureType.class) int type() {

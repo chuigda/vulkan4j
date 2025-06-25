@@ -173,7 +173,7 @@ public record XrSpatialAnchorsCreateInfoFromPoseML(@NotNull MemorySegment segmen
 
     public static XrSpatialAnchorsCreateInfoFromPoseML allocate(Arena arena) {
         XrSpatialAnchorsCreateInfoFromPoseML ret = new XrSpatialAnchorsCreateInfoFromPoseML(arena.allocate(LAYOUT));
-        ret.type(XrStructureType.XR_TYPE_SPATIAL_ANCHORS_CREATE_INFO_FROM_POSE_ML);
+        ret.type(XrStructureType.SPATIAL_ANCHORS_CREATE_INFO_FROM_POSE_ML);
         return ret;
     }
 
@@ -181,7 +181,7 @@ public record XrSpatialAnchorsCreateInfoFromPoseML(@NotNull MemorySegment segmen
         MemorySegment segment = arena.allocate(LAYOUT, count);
         XrSpatialAnchorsCreateInfoFromPoseML.Ptr ret = new XrSpatialAnchorsCreateInfoFromPoseML.Ptr(segment);
         for (long i = 0; i < count; i++) {
-            ret.at(i).type(XrStructureType.XR_TYPE_SPATIAL_ANCHORS_CREATE_INFO_FROM_POSE_ML);
+            ret.at(i).type(XrStructureType.SPATIAL_ANCHORS_CREATE_INFO_FROM_POSE_ML);
         }
         return ret;
     }
@@ -193,7 +193,7 @@ public record XrSpatialAnchorsCreateInfoFromPoseML(@NotNull MemorySegment segmen
     }
 
     public void autoInit() {
-        type(XrStructureType.XR_TYPE_SPATIAL_ANCHORS_CREATE_INFO_FROM_POSE_ML);
+        type(XrStructureType.SPATIAL_ANCHORS_CREATE_INFO_FROM_POSE_ML);
     }
 
     public @EnumType(XrStructureType.class) int type() {

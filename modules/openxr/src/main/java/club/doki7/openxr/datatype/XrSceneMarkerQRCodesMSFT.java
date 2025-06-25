@@ -172,7 +172,7 @@ public record XrSceneMarkerQRCodesMSFT(@NotNull MemorySegment segment) implement
 
     public static XrSceneMarkerQRCodesMSFT allocate(Arena arena) {
         XrSceneMarkerQRCodesMSFT ret = new XrSceneMarkerQRCodesMSFT(arena.allocate(LAYOUT));
-        ret.type(XrStructureType.XR_TYPE_SCENE_MARKER_QR_CODES_MSFT);
+        ret.type(XrStructureType.SCENE_MARKER_QR_CODES_MSFT);
         return ret;
     }
 
@@ -180,7 +180,7 @@ public record XrSceneMarkerQRCodesMSFT(@NotNull MemorySegment segment) implement
         MemorySegment segment = arena.allocate(LAYOUT, count);
         XrSceneMarkerQRCodesMSFT.Ptr ret = new XrSceneMarkerQRCodesMSFT.Ptr(segment);
         for (long i = 0; i < count; i++) {
-            ret.at(i).type(XrStructureType.XR_TYPE_SCENE_MARKER_QR_CODES_MSFT);
+            ret.at(i).type(XrStructureType.SCENE_MARKER_QR_CODES_MSFT);
         }
         return ret;
     }
@@ -192,7 +192,7 @@ public record XrSceneMarkerQRCodesMSFT(@NotNull MemorySegment segment) implement
     }
 
     public void autoInit() {
-        type(XrStructureType.XR_TYPE_SCENE_MARKER_QR_CODES_MSFT);
+        type(XrStructureType.SCENE_MARKER_QR_CODES_MSFT);
     }
 
     public @EnumType(XrStructureType.class) int type() {

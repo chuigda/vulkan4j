@@ -173,7 +173,7 @@ public record XrPlaneDetectorPolygonBufferEXT(@NotNull MemorySegment segment) im
 
     public static XrPlaneDetectorPolygonBufferEXT allocate(Arena arena) {
         XrPlaneDetectorPolygonBufferEXT ret = new XrPlaneDetectorPolygonBufferEXT(arena.allocate(LAYOUT));
-        ret.type(XrStructureType.XR_TYPE_PLANE_DETECTOR_POLYGON_BUFFER_EXT);
+        ret.type(XrStructureType.PLANE_DETECTOR_POLYGON_BUFFER_EXT);
         return ret;
     }
 
@@ -181,7 +181,7 @@ public record XrPlaneDetectorPolygonBufferEXT(@NotNull MemorySegment segment) im
         MemorySegment segment = arena.allocate(LAYOUT, count);
         XrPlaneDetectorPolygonBufferEXT.Ptr ret = new XrPlaneDetectorPolygonBufferEXT.Ptr(segment);
         for (long i = 0; i < count; i++) {
-            ret.at(i).type(XrStructureType.XR_TYPE_PLANE_DETECTOR_POLYGON_BUFFER_EXT);
+            ret.at(i).type(XrStructureType.PLANE_DETECTOR_POLYGON_BUFFER_EXT);
         }
         return ret;
     }
@@ -193,7 +193,7 @@ public record XrPlaneDetectorPolygonBufferEXT(@NotNull MemorySegment segment) im
     }
 
     public void autoInit() {
-        type(XrStructureType.XR_TYPE_PLANE_DETECTOR_POLYGON_BUFFER_EXT);
+        type(XrStructureType.PLANE_DETECTOR_POLYGON_BUFFER_EXT);
     }
 
     public @EnumType(XrStructureType.class) int type() {

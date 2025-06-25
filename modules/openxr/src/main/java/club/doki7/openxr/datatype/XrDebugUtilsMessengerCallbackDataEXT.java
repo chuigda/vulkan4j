@@ -177,7 +177,7 @@ public record XrDebugUtilsMessengerCallbackDataEXT(@NotNull MemorySegment segmen
 
     public static XrDebugUtilsMessengerCallbackDataEXT allocate(Arena arena) {
         XrDebugUtilsMessengerCallbackDataEXT ret = new XrDebugUtilsMessengerCallbackDataEXT(arena.allocate(LAYOUT));
-        ret.type(XrStructureType.XR_TYPE_DEBUG_UTILS_MESSENGER_CALLBACK_DATA_EXT);
+        ret.type(XrStructureType.DEBUG_UTILS_MESSENGER_CALLBACK_DATA_EXT);
         return ret;
     }
 
@@ -185,7 +185,7 @@ public record XrDebugUtilsMessengerCallbackDataEXT(@NotNull MemorySegment segmen
         MemorySegment segment = arena.allocate(LAYOUT, count);
         XrDebugUtilsMessengerCallbackDataEXT.Ptr ret = new XrDebugUtilsMessengerCallbackDataEXT.Ptr(segment);
         for (long i = 0; i < count; i++) {
-            ret.at(i).type(XrStructureType.XR_TYPE_DEBUG_UTILS_MESSENGER_CALLBACK_DATA_EXT);
+            ret.at(i).type(XrStructureType.DEBUG_UTILS_MESSENGER_CALLBACK_DATA_EXT);
         }
         return ret;
     }
@@ -197,7 +197,7 @@ public record XrDebugUtilsMessengerCallbackDataEXT(@NotNull MemorySegment segmen
     }
 
     public void autoInit() {
-        type(XrStructureType.XR_TYPE_DEBUG_UTILS_MESSENGER_CALLBACK_DATA_EXT);
+        type(XrStructureType.DEBUG_UTILS_MESSENGER_CALLBACK_DATA_EXT);
     }
 
     public @EnumType(XrStructureType.class) int type() {

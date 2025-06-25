@@ -171,7 +171,7 @@ public record XrSwapchainImageVulkanKHR(@NotNull MemorySegment segment) implemen
 
     public static XrSwapchainImageVulkanKHR allocate(Arena arena) {
         XrSwapchainImageVulkanKHR ret = new XrSwapchainImageVulkanKHR(arena.allocate(LAYOUT));
-        ret.type(XrStructureType.XR_TYPE_SWAPCHAIN_IMAGE_VULKAN_KHR);
+        ret.type(XrStructureType.SWAPCHAIN_IMAGE_VULKAN_KHR);
         return ret;
     }
 
@@ -179,7 +179,7 @@ public record XrSwapchainImageVulkanKHR(@NotNull MemorySegment segment) implemen
         MemorySegment segment = arena.allocate(LAYOUT, count);
         XrSwapchainImageVulkanKHR.Ptr ret = new XrSwapchainImageVulkanKHR.Ptr(segment);
         for (long i = 0; i < count; i++) {
-            ret.at(i).type(XrStructureType.XR_TYPE_SWAPCHAIN_IMAGE_VULKAN_KHR);
+            ret.at(i).type(XrStructureType.SWAPCHAIN_IMAGE_VULKAN_KHR);
         }
         return ret;
     }
@@ -191,7 +191,7 @@ public record XrSwapchainImageVulkanKHR(@NotNull MemorySegment segment) implemen
     }
 
     public void autoInit() {
-        type(XrStructureType.XR_TYPE_SWAPCHAIN_IMAGE_VULKAN_KHR);
+        type(XrStructureType.SWAPCHAIN_IMAGE_VULKAN_KHR);
     }
 
     public @EnumType(XrStructureType.class) int type() {

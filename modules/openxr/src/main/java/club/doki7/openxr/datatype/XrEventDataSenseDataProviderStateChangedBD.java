@@ -172,7 +172,7 @@ public record XrEventDataSenseDataProviderStateChangedBD(@NotNull MemorySegment 
 
     public static XrEventDataSenseDataProviderStateChangedBD allocate(Arena arena) {
         XrEventDataSenseDataProviderStateChangedBD ret = new XrEventDataSenseDataProviderStateChangedBD(arena.allocate(LAYOUT));
-        ret.type(XrStructureType.XR_TYPE_EVENT_DATA_SENSE_DATA_PROVIDER_STATE_CHANGED_BD);
+        ret.type(XrStructureType.EVENT_DATA_SENSE_DATA_PROVIDER_STATE_CHANGED_BD);
         return ret;
     }
 
@@ -180,7 +180,7 @@ public record XrEventDataSenseDataProviderStateChangedBD(@NotNull MemorySegment 
         MemorySegment segment = arena.allocate(LAYOUT, count);
         XrEventDataSenseDataProviderStateChangedBD.Ptr ret = new XrEventDataSenseDataProviderStateChangedBD.Ptr(segment);
         for (long i = 0; i < count; i++) {
-            ret.at(i).type(XrStructureType.XR_TYPE_EVENT_DATA_SENSE_DATA_PROVIDER_STATE_CHANGED_BD);
+            ret.at(i).type(XrStructureType.EVENT_DATA_SENSE_DATA_PROVIDER_STATE_CHANGED_BD);
         }
         return ret;
     }
@@ -192,7 +192,7 @@ public record XrEventDataSenseDataProviderStateChangedBD(@NotNull MemorySegment 
     }
 
     public void autoInit() {
-        type(XrStructureType.XR_TYPE_EVENT_DATA_SENSE_DATA_PROVIDER_STATE_CHANGED_BD);
+        type(XrStructureType.EVENT_DATA_SENSE_DATA_PROVIDER_STATE_CHANGED_BD);
     }
 
     public @EnumType(XrStructureType.class) int type() {

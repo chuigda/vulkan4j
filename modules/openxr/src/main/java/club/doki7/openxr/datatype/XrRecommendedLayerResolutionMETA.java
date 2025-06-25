@@ -172,7 +172,7 @@ public record XrRecommendedLayerResolutionMETA(@NotNull MemorySegment segment) i
 
     public static XrRecommendedLayerResolutionMETA allocate(Arena arena) {
         XrRecommendedLayerResolutionMETA ret = new XrRecommendedLayerResolutionMETA(arena.allocate(LAYOUT));
-        ret.type(XrStructureType.XR_TYPE_RECOMMENDED_LAYER_RESOLUTION_META);
+        ret.type(XrStructureType.RECOMMENDED_LAYER_RESOLUTION_META);
         return ret;
     }
 
@@ -180,7 +180,7 @@ public record XrRecommendedLayerResolutionMETA(@NotNull MemorySegment segment) i
         MemorySegment segment = arena.allocate(LAYOUT, count);
         XrRecommendedLayerResolutionMETA.Ptr ret = new XrRecommendedLayerResolutionMETA.Ptr(segment);
         for (long i = 0; i < count; i++) {
-            ret.at(i).type(XrStructureType.XR_TYPE_RECOMMENDED_LAYER_RESOLUTION_META);
+            ret.at(i).type(XrStructureType.RECOMMENDED_LAYER_RESOLUTION_META);
         }
         return ret;
     }
@@ -192,7 +192,7 @@ public record XrRecommendedLayerResolutionMETA(@NotNull MemorySegment segment) i
     }
 
     public void autoInit() {
-        type(XrStructureType.XR_TYPE_RECOMMENDED_LAYER_RESOLUTION_META);
+        type(XrStructureType.RECOMMENDED_LAYER_RESOLUTION_META);
     }
 
     public @EnumType(XrStructureType.class) int type() {

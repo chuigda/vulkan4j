@@ -172,7 +172,7 @@ public record XrSpaceVelocities(@NotNull MemorySegment segment) implements IXrSp
 
     public static XrSpaceVelocities allocate(Arena arena) {
         XrSpaceVelocities ret = new XrSpaceVelocities(arena.allocate(LAYOUT));
-        ret.type(XrStructureType.XR_TYPE_SPACE_VELOCITIES);
+        ret.type(XrStructureType.SPACE_VELOCITIES);
         return ret;
     }
 
@@ -180,7 +180,7 @@ public record XrSpaceVelocities(@NotNull MemorySegment segment) implements IXrSp
         MemorySegment segment = arena.allocate(LAYOUT, count);
         XrSpaceVelocities.Ptr ret = new XrSpaceVelocities.Ptr(segment);
         for (long i = 0; i < count; i++) {
-            ret.at(i).type(XrStructureType.XR_TYPE_SPACE_VELOCITIES);
+            ret.at(i).type(XrStructureType.SPACE_VELOCITIES);
         }
         return ret;
     }
@@ -192,7 +192,7 @@ public record XrSpaceVelocities(@NotNull MemorySegment segment) implements IXrSp
     }
 
     public void autoInit() {
-        type(XrStructureType.XR_TYPE_SPACE_VELOCITIES);
+        type(XrStructureType.SPACE_VELOCITIES);
     }
 
     public @EnumType(XrStructureType.class) int type() {

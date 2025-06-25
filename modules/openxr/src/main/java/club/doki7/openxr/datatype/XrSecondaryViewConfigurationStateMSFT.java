@@ -172,7 +172,7 @@ public record XrSecondaryViewConfigurationStateMSFT(@NotNull MemorySegment segme
 
     public static XrSecondaryViewConfigurationStateMSFT allocate(Arena arena) {
         XrSecondaryViewConfigurationStateMSFT ret = new XrSecondaryViewConfigurationStateMSFT(arena.allocate(LAYOUT));
-        ret.type(XrStructureType.XR_TYPE_SECONDARY_VIEW_CONFIGURATION_STATE_MSFT);
+        ret.type(XrStructureType.SECONDARY_VIEW_CONFIGURATION_STATE_MSFT);
         return ret;
     }
 
@@ -180,7 +180,7 @@ public record XrSecondaryViewConfigurationStateMSFT(@NotNull MemorySegment segme
         MemorySegment segment = arena.allocate(LAYOUT, count);
         XrSecondaryViewConfigurationStateMSFT.Ptr ret = new XrSecondaryViewConfigurationStateMSFT.Ptr(segment);
         for (long i = 0; i < count; i++) {
-            ret.at(i).type(XrStructureType.XR_TYPE_SECONDARY_VIEW_CONFIGURATION_STATE_MSFT);
+            ret.at(i).type(XrStructureType.SECONDARY_VIEW_CONFIGURATION_STATE_MSFT);
         }
         return ret;
     }
@@ -192,7 +192,7 @@ public record XrSecondaryViewConfigurationStateMSFT(@NotNull MemorySegment segme
     }
 
     public void autoInit() {
-        type(XrStructureType.XR_TYPE_SECONDARY_VIEW_CONFIGURATION_STATE_MSFT);
+        type(XrStructureType.SECONDARY_VIEW_CONFIGURATION_STATE_MSFT);
     }
 
     public @EnumType(XrStructureType.class) int type() {

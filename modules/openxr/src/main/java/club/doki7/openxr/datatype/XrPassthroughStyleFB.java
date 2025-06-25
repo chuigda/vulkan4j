@@ -172,7 +172,7 @@ public record XrPassthroughStyleFB(@NotNull MemorySegment segment) implements IX
 
     public static XrPassthroughStyleFB allocate(Arena arena) {
         XrPassthroughStyleFB ret = new XrPassthroughStyleFB(arena.allocate(LAYOUT));
-        ret.type(XrStructureType.XR_TYPE_PASSTHROUGH_STYLE_FB);
+        ret.type(XrStructureType.PASSTHROUGH_STYLE_FB);
         return ret;
     }
 
@@ -180,7 +180,7 @@ public record XrPassthroughStyleFB(@NotNull MemorySegment segment) implements IX
         MemorySegment segment = arena.allocate(LAYOUT, count);
         XrPassthroughStyleFB.Ptr ret = new XrPassthroughStyleFB.Ptr(segment);
         for (long i = 0; i < count; i++) {
-            ret.at(i).type(XrStructureType.XR_TYPE_PASSTHROUGH_STYLE_FB);
+            ret.at(i).type(XrStructureType.PASSTHROUGH_STYLE_FB);
         }
         return ret;
     }
@@ -192,7 +192,7 @@ public record XrPassthroughStyleFB(@NotNull MemorySegment segment) implements IX
     }
 
     public void autoInit() {
-        type(XrStructureType.XR_TYPE_PASSTHROUGH_STYLE_FB);
+        type(XrStructureType.PASSTHROUGH_STYLE_FB);
     }
 
     public @EnumType(XrStructureType.class) int type() {

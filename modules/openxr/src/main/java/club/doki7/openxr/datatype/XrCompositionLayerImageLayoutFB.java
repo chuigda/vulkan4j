@@ -171,7 +171,7 @@ public record XrCompositionLayerImageLayoutFB(@NotNull MemorySegment segment) im
 
     public static XrCompositionLayerImageLayoutFB allocate(Arena arena) {
         XrCompositionLayerImageLayoutFB ret = new XrCompositionLayerImageLayoutFB(arena.allocate(LAYOUT));
-        ret.type(XrStructureType.XR_TYPE_COMPOSITION_LAYER_IMAGE_LAYOUT_FB);
+        ret.type(XrStructureType.COMPOSITION_LAYER_IMAGE_LAYOUT_FB);
         return ret;
     }
 
@@ -179,7 +179,7 @@ public record XrCompositionLayerImageLayoutFB(@NotNull MemorySegment segment) im
         MemorySegment segment = arena.allocate(LAYOUT, count);
         XrCompositionLayerImageLayoutFB.Ptr ret = new XrCompositionLayerImageLayoutFB.Ptr(segment);
         for (long i = 0; i < count; i++) {
-            ret.at(i).type(XrStructureType.XR_TYPE_COMPOSITION_LAYER_IMAGE_LAYOUT_FB);
+            ret.at(i).type(XrStructureType.COMPOSITION_LAYER_IMAGE_LAYOUT_FB);
         }
         return ret;
     }
@@ -191,7 +191,7 @@ public record XrCompositionLayerImageLayoutFB(@NotNull MemorySegment segment) im
     }
 
     public void autoInit() {
-        type(XrStructureType.XR_TYPE_COMPOSITION_LAYER_IMAGE_LAYOUT_FB);
+        type(XrStructureType.COMPOSITION_LAYER_IMAGE_LAYOUT_FB);
     }
 
     public @EnumType(XrStructureType.class) int type() {

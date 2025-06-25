@@ -172,7 +172,7 @@ public record XrFacialExpressionClientCreateInfoML(@NotNull MemorySegment segmen
 
     public static XrFacialExpressionClientCreateInfoML allocate(Arena arena) {
         XrFacialExpressionClientCreateInfoML ret = new XrFacialExpressionClientCreateInfoML(arena.allocate(LAYOUT));
-        ret.type(XrStructureType.XR_TYPE_FACIAL_EXPRESSION_CLIENT_CREATE_INFO_ML);
+        ret.type(XrStructureType.FACIAL_EXPRESSION_CLIENT_CREATE_INFO_ML);
         return ret;
     }
 
@@ -180,7 +180,7 @@ public record XrFacialExpressionClientCreateInfoML(@NotNull MemorySegment segmen
         MemorySegment segment = arena.allocate(LAYOUT, count);
         XrFacialExpressionClientCreateInfoML.Ptr ret = new XrFacialExpressionClientCreateInfoML.Ptr(segment);
         for (long i = 0; i < count; i++) {
-            ret.at(i).type(XrStructureType.XR_TYPE_FACIAL_EXPRESSION_CLIENT_CREATE_INFO_ML);
+            ret.at(i).type(XrStructureType.FACIAL_EXPRESSION_CLIENT_CREATE_INFO_ML);
         }
         return ret;
     }
@@ -192,7 +192,7 @@ public record XrFacialExpressionClientCreateInfoML(@NotNull MemorySegment segmen
     }
 
     public void autoInit() {
-        type(XrStructureType.XR_TYPE_FACIAL_EXPRESSION_CLIENT_CREATE_INFO_ML);
+        type(XrStructureType.FACIAL_EXPRESSION_CLIENT_CREATE_INFO_ML);
     }
 
     public @EnumType(XrStructureType.class) int type() {
