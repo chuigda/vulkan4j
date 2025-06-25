@@ -41,6 +41,11 @@
         </dependency>
         <dependency>
             <groupId>club.doki7</groupId>
+            <artifactId>openxr</artifactId>
+            <version>0.4.0</version>
+        </dependency>
+        <dependency>
+            <groupId>club.doki7</groupId>
             <artifactId>vma</artifactId>
             <version>0.4.0</version>
         </dependency>
