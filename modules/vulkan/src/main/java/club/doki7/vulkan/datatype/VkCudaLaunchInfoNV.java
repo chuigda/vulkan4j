@@ -98,8 +98,9 @@ public record VkCudaLaunchInfoNV(@NotNull MemorySegment segment) implements IVkC
             return new VkCudaLaunchInfoNV(segment.asSlice(index * VkCudaLaunchInfoNV.BYTES, VkCudaLaunchInfoNV.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkCudaLaunchInfoNV> consumer) {
+        public VkCudaLaunchInfoNV.Ptr at(long index, @NotNull Consumer<@NotNull VkCudaLaunchInfoNV> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkCudaLaunchInfoNV value) {

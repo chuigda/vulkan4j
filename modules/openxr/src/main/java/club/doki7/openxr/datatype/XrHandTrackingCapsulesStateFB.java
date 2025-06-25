@@ -91,8 +91,9 @@ public record XrHandTrackingCapsulesStateFB(@NotNull MemorySegment segment) impl
             return new XrHandTrackingCapsulesStateFB(segment.asSlice(index * XrHandTrackingCapsulesStateFB.BYTES, XrHandTrackingCapsulesStateFB.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull XrHandTrackingCapsulesStateFB> consumer) {
+        public XrHandTrackingCapsulesStateFB.Ptr at(long index, @NotNull Consumer<@NotNull XrHandTrackingCapsulesStateFB> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull XrHandTrackingCapsulesStateFB value) {

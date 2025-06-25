@@ -95,8 +95,9 @@ public record VkVideoSessionCreateInfoKHR(@NotNull MemorySegment segment) implem
             return new VkVideoSessionCreateInfoKHR(segment.asSlice(index * VkVideoSessionCreateInfoKHR.BYTES, VkVideoSessionCreateInfoKHR.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkVideoSessionCreateInfoKHR> consumer) {
+        public VkVideoSessionCreateInfoKHR.Ptr at(long index, @NotNull Consumer<@NotNull VkVideoSessionCreateInfoKHR> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkVideoSessionCreateInfoKHR value) {

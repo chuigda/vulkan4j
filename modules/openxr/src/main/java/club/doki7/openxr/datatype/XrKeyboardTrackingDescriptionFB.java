@@ -83,8 +83,9 @@ public record XrKeyboardTrackingDescriptionFB(@NotNull MemorySegment segment) im
             return new XrKeyboardTrackingDescriptionFB(segment.asSlice(index * XrKeyboardTrackingDescriptionFB.BYTES, XrKeyboardTrackingDescriptionFB.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull XrKeyboardTrackingDescriptionFB> consumer) {
+        public XrKeyboardTrackingDescriptionFB.Ptr at(long index, @NotNull Consumer<@NotNull XrKeyboardTrackingDescriptionFB> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull XrKeyboardTrackingDescriptionFB value) {

@@ -87,8 +87,9 @@ public record VkProtectedSubmitInfo(@NotNull MemorySegment segment) implements I
             return new VkProtectedSubmitInfo(segment.asSlice(index * VkProtectedSubmitInfo.BYTES, VkProtectedSubmitInfo.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkProtectedSubmitInfo> consumer) {
+        public VkProtectedSubmitInfo.Ptr at(long index, @NotNull Consumer<@NotNull VkProtectedSubmitInfo> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkProtectedSubmitInfo value) {

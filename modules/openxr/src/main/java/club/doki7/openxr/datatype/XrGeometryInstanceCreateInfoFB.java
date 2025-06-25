@@ -95,8 +95,9 @@ public record XrGeometryInstanceCreateInfoFB(@NotNull MemorySegment segment) imp
             return new XrGeometryInstanceCreateInfoFB(segment.asSlice(index * XrGeometryInstanceCreateInfoFB.BYTES, XrGeometryInstanceCreateInfoFB.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull XrGeometryInstanceCreateInfoFB> consumer) {
+        public XrGeometryInstanceCreateInfoFB.Ptr at(long index, @NotNull Consumer<@NotNull XrGeometryInstanceCreateInfoFB> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull XrGeometryInstanceCreateInfoFB value) {

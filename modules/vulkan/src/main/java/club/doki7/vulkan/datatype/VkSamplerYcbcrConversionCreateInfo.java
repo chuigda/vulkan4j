@@ -94,8 +94,9 @@ public record VkSamplerYcbcrConversionCreateInfo(@NotNull MemorySegment segment)
             return new VkSamplerYcbcrConversionCreateInfo(segment.asSlice(index * VkSamplerYcbcrConversionCreateInfo.BYTES, VkSamplerYcbcrConversionCreateInfo.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkSamplerYcbcrConversionCreateInfo> consumer) {
+        public VkSamplerYcbcrConversionCreateInfo.Ptr at(long index, @NotNull Consumer<@NotNull VkSamplerYcbcrConversionCreateInfo> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkSamplerYcbcrConversionCreateInfo value) {

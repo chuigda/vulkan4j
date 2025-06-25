@@ -91,8 +91,9 @@ public record XrSceneComponentParentFilterInfoMSFT(@NotNull MemorySegment segmen
             return new XrSceneComponentParentFilterInfoMSFT(segment.asSlice(index * XrSceneComponentParentFilterInfoMSFT.BYTES, XrSceneComponentParentFilterInfoMSFT.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull XrSceneComponentParentFilterInfoMSFT> consumer) {
+        public XrSceneComponentParentFilterInfoMSFT.Ptr at(long index, @NotNull Consumer<@NotNull XrSceneComponentParentFilterInfoMSFT> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull XrSceneComponentParentFilterInfoMSFT value) {

@@ -91,8 +91,9 @@ public record XrSpatialBufferGetInfoEXT(@NotNull MemorySegment segment) implemen
             return new XrSpatialBufferGetInfoEXT(segment.asSlice(index * XrSpatialBufferGetInfoEXT.BYTES, XrSpatialBufferGetInfoEXT.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull XrSpatialBufferGetInfoEXT> consumer) {
+        public XrSpatialBufferGetInfoEXT.Ptr at(long index, @NotNull Consumer<@NotNull XrSpatialBufferGetInfoEXT> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull XrSpatialBufferGetInfoEXT value) {

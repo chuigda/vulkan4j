@@ -87,8 +87,9 @@ public record VkPhysicalDeviceShaderIntegerFunctions2FeaturesINTEL(@NotNull Memo
             return new VkPhysicalDeviceShaderIntegerFunctions2FeaturesINTEL(segment.asSlice(index * VkPhysicalDeviceShaderIntegerFunctions2FeaturesINTEL.BYTES, VkPhysicalDeviceShaderIntegerFunctions2FeaturesINTEL.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceShaderIntegerFunctions2FeaturesINTEL> consumer) {
+        public VkPhysicalDeviceShaderIntegerFunctions2FeaturesINTEL.Ptr at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceShaderIntegerFunctions2FeaturesINTEL> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkPhysicalDeviceShaderIntegerFunctions2FeaturesINTEL value) {

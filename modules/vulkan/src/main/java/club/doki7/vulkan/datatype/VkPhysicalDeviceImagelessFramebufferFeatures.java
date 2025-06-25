@@ -87,8 +87,9 @@ public record VkPhysicalDeviceImagelessFramebufferFeatures(@NotNull MemorySegmen
             return new VkPhysicalDeviceImagelessFramebufferFeatures(segment.asSlice(index * VkPhysicalDeviceImagelessFramebufferFeatures.BYTES, VkPhysicalDeviceImagelessFramebufferFeatures.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceImagelessFramebufferFeatures> consumer) {
+        public VkPhysicalDeviceImagelessFramebufferFeatures.Ptr at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceImagelessFramebufferFeatures> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkPhysicalDeviceImagelessFramebufferFeatures value) {

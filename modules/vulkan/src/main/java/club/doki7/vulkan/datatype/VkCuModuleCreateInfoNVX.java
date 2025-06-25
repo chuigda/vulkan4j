@@ -88,8 +88,9 @@ public record VkCuModuleCreateInfoNVX(@NotNull MemorySegment segment) implements
             return new VkCuModuleCreateInfoNVX(segment.asSlice(index * VkCuModuleCreateInfoNVX.BYTES, VkCuModuleCreateInfoNVX.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkCuModuleCreateInfoNVX> consumer) {
+        public VkCuModuleCreateInfoNVX.Ptr at(long index, @NotNull Consumer<@NotNull VkCuModuleCreateInfoNVX> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkCuModuleCreateInfoNVX value) {

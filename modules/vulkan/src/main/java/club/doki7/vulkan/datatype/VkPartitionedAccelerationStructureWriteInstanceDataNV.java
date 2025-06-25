@@ -84,8 +84,9 @@ public record VkPartitionedAccelerationStructureWriteInstanceDataNV(@NotNull Mem
             return new VkPartitionedAccelerationStructureWriteInstanceDataNV(segment.asSlice(index * VkPartitionedAccelerationStructureWriteInstanceDataNV.BYTES, VkPartitionedAccelerationStructureWriteInstanceDataNV.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkPartitionedAccelerationStructureWriteInstanceDataNV> consumer) {
+        public VkPartitionedAccelerationStructureWriteInstanceDataNV.Ptr at(long index, @NotNull Consumer<@NotNull VkPartitionedAccelerationStructureWriteInstanceDataNV> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkPartitionedAccelerationStructureWriteInstanceDataNV value) {

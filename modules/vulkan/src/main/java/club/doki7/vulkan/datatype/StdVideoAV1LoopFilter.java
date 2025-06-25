@@ -80,8 +80,9 @@ public record StdVideoAV1LoopFilter(@NotNull MemorySegment segment) implements I
             return new StdVideoAV1LoopFilter(segment.asSlice(index * StdVideoAV1LoopFilter.BYTES, StdVideoAV1LoopFilter.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull StdVideoAV1LoopFilter> consumer) {
+        public StdVideoAV1LoopFilter.Ptr at(long index, @NotNull Consumer<@NotNull StdVideoAV1LoopFilter> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull StdVideoAV1LoopFilter value) {

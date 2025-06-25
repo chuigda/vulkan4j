@@ -91,8 +91,9 @@ public record XrEventDataPassthroughStateChangedFB(@NotNull MemorySegment segmen
             return new XrEventDataPassthroughStateChangedFB(segment.asSlice(index * XrEventDataPassthroughStateChangedFB.BYTES, XrEventDataPassthroughStateChangedFB.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull XrEventDataPassthroughStateChangedFB> consumer) {
+        public XrEventDataPassthroughStateChangedFB.Ptr at(long index, @NotNull Consumer<@NotNull XrEventDataPassthroughStateChangedFB> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull XrEventDataPassthroughStateChangedFB value) {

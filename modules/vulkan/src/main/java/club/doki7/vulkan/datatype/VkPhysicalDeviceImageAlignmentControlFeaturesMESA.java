@@ -87,8 +87,9 @@ public record VkPhysicalDeviceImageAlignmentControlFeaturesMESA(@NotNull MemoryS
             return new VkPhysicalDeviceImageAlignmentControlFeaturesMESA(segment.asSlice(index * VkPhysicalDeviceImageAlignmentControlFeaturesMESA.BYTES, VkPhysicalDeviceImageAlignmentControlFeaturesMESA.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceImageAlignmentControlFeaturesMESA> consumer) {
+        public VkPhysicalDeviceImageAlignmentControlFeaturesMESA.Ptr at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceImageAlignmentControlFeaturesMESA> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkPhysicalDeviceImageAlignmentControlFeaturesMESA value) {

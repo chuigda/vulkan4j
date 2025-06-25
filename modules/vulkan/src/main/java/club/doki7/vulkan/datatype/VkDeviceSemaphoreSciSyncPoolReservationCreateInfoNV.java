@@ -87,8 +87,9 @@ public record VkDeviceSemaphoreSciSyncPoolReservationCreateInfoNV(@NotNull Memor
             return new VkDeviceSemaphoreSciSyncPoolReservationCreateInfoNV(segment.asSlice(index * VkDeviceSemaphoreSciSyncPoolReservationCreateInfoNV.BYTES, VkDeviceSemaphoreSciSyncPoolReservationCreateInfoNV.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkDeviceSemaphoreSciSyncPoolReservationCreateInfoNV> consumer) {
+        public VkDeviceSemaphoreSciSyncPoolReservationCreateInfoNV.Ptr at(long index, @NotNull Consumer<@NotNull VkDeviceSemaphoreSciSyncPoolReservationCreateInfoNV> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkDeviceSemaphoreSciSyncPoolReservationCreateInfoNV value) {

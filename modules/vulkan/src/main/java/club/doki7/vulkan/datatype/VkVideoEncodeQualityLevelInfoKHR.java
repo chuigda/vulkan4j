@@ -87,8 +87,9 @@ public record VkVideoEncodeQualityLevelInfoKHR(@NotNull MemorySegment segment) i
             return new VkVideoEncodeQualityLevelInfoKHR(segment.asSlice(index * VkVideoEncodeQualityLevelInfoKHR.BYTES, VkVideoEncodeQualityLevelInfoKHR.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkVideoEncodeQualityLevelInfoKHR> consumer) {
+        public VkVideoEncodeQualityLevelInfoKHR.Ptr at(long index, @NotNull Consumer<@NotNull VkVideoEncodeQualityLevelInfoKHR> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkVideoEncodeQualityLevelInfoKHR value) {

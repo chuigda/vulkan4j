@@ -98,8 +98,9 @@ public record VkCuLaunchInfoNVX(@NotNull MemorySegment segment) implements IVkCu
             return new VkCuLaunchInfoNVX(segment.asSlice(index * VkCuLaunchInfoNVX.BYTES, VkCuLaunchInfoNVX.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkCuLaunchInfoNVX> consumer) {
+        public VkCuLaunchInfoNVX.Ptr at(long index, @NotNull Consumer<@NotNull VkCuLaunchInfoNVX> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkCuLaunchInfoNVX value) {

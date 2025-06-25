@@ -80,8 +80,9 @@ public record VkPerformanceValueDataINTEL(@NotNull MemorySegment segment) implem
             return new VkPerformanceValueDataINTEL(segment.asSlice(index * VkPerformanceValueDataINTEL.BYTES, VkPerformanceValueDataINTEL.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkPerformanceValueDataINTEL> consumer) {
+        public VkPerformanceValueDataINTEL.Ptr at(long index, @NotNull Consumer<@NotNull VkPerformanceValueDataINTEL> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkPerformanceValueDataINTEL value) {

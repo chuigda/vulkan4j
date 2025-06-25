@@ -87,8 +87,9 @@ public record VkPerformanceStreamMarkerInfoINTEL(@NotNull MemorySegment segment)
             return new VkPerformanceStreamMarkerInfoINTEL(segment.asSlice(index * VkPerformanceStreamMarkerInfoINTEL.BYTES, VkPerformanceStreamMarkerInfoINTEL.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkPerformanceStreamMarkerInfoINTEL> consumer) {
+        public VkPerformanceStreamMarkerInfoINTEL.Ptr at(long index, @NotNull Consumer<@NotNull VkPerformanceStreamMarkerInfoINTEL> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkPerformanceStreamMarkerInfoINTEL value) {

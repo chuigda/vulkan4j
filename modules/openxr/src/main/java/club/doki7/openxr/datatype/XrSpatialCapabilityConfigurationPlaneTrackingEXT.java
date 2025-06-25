@@ -93,8 +93,9 @@ public record XrSpatialCapabilityConfigurationPlaneTrackingEXT(@NotNull MemorySe
             return new XrSpatialCapabilityConfigurationPlaneTrackingEXT(segment.asSlice(index * XrSpatialCapabilityConfigurationPlaneTrackingEXT.BYTES, XrSpatialCapabilityConfigurationPlaneTrackingEXT.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull XrSpatialCapabilityConfigurationPlaneTrackingEXT> consumer) {
+        public XrSpatialCapabilityConfigurationPlaneTrackingEXT.Ptr at(long index, @NotNull Consumer<@NotNull XrSpatialCapabilityConfigurationPlaneTrackingEXT> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull XrSpatialCapabilityConfigurationPlaneTrackingEXT value) {

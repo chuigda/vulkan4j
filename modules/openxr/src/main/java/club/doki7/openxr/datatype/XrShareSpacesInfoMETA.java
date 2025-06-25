@@ -93,8 +93,9 @@ public record XrShareSpacesInfoMETA(@NotNull MemorySegment segment) implements I
             return new XrShareSpacesInfoMETA(segment.asSlice(index * XrShareSpacesInfoMETA.BYTES, XrShareSpacesInfoMETA.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull XrShareSpacesInfoMETA> consumer) {
+        public XrShareSpacesInfoMETA.Ptr at(long index, @NotNull Consumer<@NotNull XrShareSpacesInfoMETA> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull XrShareSpacesInfoMETA value) {

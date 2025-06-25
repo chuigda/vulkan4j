@@ -82,8 +82,9 @@ public record XrHandJointVelocityEXT(@NotNull MemorySegment segment) implements 
             return new XrHandJointVelocityEXT(segment.asSlice(index * XrHandJointVelocityEXT.BYTES, XrHandJointVelocityEXT.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull XrHandJointVelocityEXT> consumer) {
+        public XrHandJointVelocityEXT.Ptr at(long index, @NotNull Consumer<@NotNull XrHandJointVelocityEXT> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull XrHandJointVelocityEXT value) {

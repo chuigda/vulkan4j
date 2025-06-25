@@ -93,8 +93,9 @@ public record VkFramebufferAttachmentImageInfo(@NotNull MemorySegment segment) i
             return new VkFramebufferAttachmentImageInfo(segment.asSlice(index * VkFramebufferAttachmentImageInfo.BYTES, VkFramebufferAttachmentImageInfo.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkFramebufferAttachmentImageInfo> consumer) {
+        public VkFramebufferAttachmentImageInfo.Ptr at(long index, @NotNull Consumer<@NotNull VkFramebufferAttachmentImageInfo> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkFramebufferAttachmentImageInfo value) {

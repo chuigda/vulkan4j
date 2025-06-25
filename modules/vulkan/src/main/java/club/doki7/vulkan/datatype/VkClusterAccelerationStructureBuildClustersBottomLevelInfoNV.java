@@ -78,8 +78,9 @@ public record VkClusterAccelerationStructureBuildClustersBottomLevelInfoNV(@NotN
             return new VkClusterAccelerationStructureBuildClustersBottomLevelInfoNV(segment.asSlice(index * VkClusterAccelerationStructureBuildClustersBottomLevelInfoNV.BYTES, VkClusterAccelerationStructureBuildClustersBottomLevelInfoNV.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkClusterAccelerationStructureBuildClustersBottomLevelInfoNV> consumer) {
+        public VkClusterAccelerationStructureBuildClustersBottomLevelInfoNV.Ptr at(long index, @NotNull Consumer<@NotNull VkClusterAccelerationStructureBuildClustersBottomLevelInfoNV> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkClusterAccelerationStructureBuildClustersBottomLevelInfoNV value) {

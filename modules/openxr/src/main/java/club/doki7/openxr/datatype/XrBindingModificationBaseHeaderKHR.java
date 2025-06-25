@@ -81,8 +81,9 @@ public record XrBindingModificationBaseHeaderKHR(@NotNull MemorySegment segment)
             return new XrBindingModificationBaseHeaderKHR(segment.asSlice(index * XrBindingModificationBaseHeaderKHR.BYTES, XrBindingModificationBaseHeaderKHR.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull XrBindingModificationBaseHeaderKHR> consumer) {
+        public XrBindingModificationBaseHeaderKHR.Ptr at(long index, @NotNull Consumer<@NotNull XrBindingModificationBaseHeaderKHR> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull XrBindingModificationBaseHeaderKHR value) {

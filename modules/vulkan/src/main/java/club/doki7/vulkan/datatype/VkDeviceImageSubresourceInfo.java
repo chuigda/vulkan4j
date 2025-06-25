@@ -88,8 +88,9 @@ public record VkDeviceImageSubresourceInfo(@NotNull MemorySegment segment) imple
             return new VkDeviceImageSubresourceInfo(segment.asSlice(index * VkDeviceImageSubresourceInfo.BYTES, VkDeviceImageSubresourceInfo.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkDeviceImageSubresourceInfo> consumer) {
+        public VkDeviceImageSubresourceInfo.Ptr at(long index, @NotNull Consumer<@NotNull VkDeviceImageSubresourceInfo> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkDeviceImageSubresourceInfo value) {

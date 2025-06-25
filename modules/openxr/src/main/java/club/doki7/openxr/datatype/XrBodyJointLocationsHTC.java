@@ -95,8 +95,9 @@ public record XrBodyJointLocationsHTC(@NotNull MemorySegment segment) implements
             return new XrBodyJointLocationsHTC(segment.asSlice(index * XrBodyJointLocationsHTC.BYTES, XrBodyJointLocationsHTC.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull XrBodyJointLocationsHTC> consumer) {
+        public XrBodyJointLocationsHTC.Ptr at(long index, @NotNull Consumer<@NotNull XrBodyJointLocationsHTC> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull XrBodyJointLocationsHTC value) {

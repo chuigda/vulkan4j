@@ -92,8 +92,9 @@ public record XrGraphicsRequirementsOpenGLKHR(@NotNull MemorySegment segment) im
             return new XrGraphicsRequirementsOpenGLKHR(segment.asSlice(index * XrGraphicsRequirementsOpenGLKHR.BYTES, XrGraphicsRequirementsOpenGLKHR.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull XrGraphicsRequirementsOpenGLKHR> consumer) {
+        public XrGraphicsRequirementsOpenGLKHR.Ptr at(long index, @NotNull Consumer<@NotNull XrGraphicsRequirementsOpenGLKHR> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull XrGraphicsRequirementsOpenGLKHR value) {

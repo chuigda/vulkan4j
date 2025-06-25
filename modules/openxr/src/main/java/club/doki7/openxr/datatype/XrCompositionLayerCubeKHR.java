@@ -96,8 +96,9 @@ public record XrCompositionLayerCubeKHR(@NotNull MemorySegment segment) implemen
             return new XrCompositionLayerCubeKHR(segment.asSlice(index * XrCompositionLayerCubeKHR.BYTES, XrCompositionLayerCubeKHR.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull XrCompositionLayerCubeKHR> consumer) {
+        public XrCompositionLayerCubeKHR.Ptr at(long index, @NotNull Consumer<@NotNull XrCompositionLayerCubeKHR> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull XrCompositionLayerCubeKHR value) {

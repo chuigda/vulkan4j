@@ -91,8 +91,9 @@ public record XrWorldMeshBufferRecommendedSizeInfoML(@NotNull MemorySegment segm
             return new XrWorldMeshBufferRecommendedSizeInfoML(segment.asSlice(index * XrWorldMeshBufferRecommendedSizeInfoML.BYTES, XrWorldMeshBufferRecommendedSizeInfoML.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull XrWorldMeshBufferRecommendedSizeInfoML> consumer) {
+        public XrWorldMeshBufferRecommendedSizeInfoML.Ptr at(long index, @NotNull Consumer<@NotNull XrWorldMeshBufferRecommendedSizeInfoML> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull XrWorldMeshBufferRecommendedSizeInfoML value) {

@@ -94,8 +94,9 @@ public record XrViewConfigurationDepthRangeEXT(@NotNull MemorySegment segment) i
             return new XrViewConfigurationDepthRangeEXT(segment.asSlice(index * XrViewConfigurationDepthRangeEXT.BYTES, XrViewConfigurationDepthRangeEXT.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull XrViewConfigurationDepthRangeEXT> consumer) {
+        public XrViewConfigurationDepthRangeEXT.Ptr at(long index, @NotNull Consumer<@NotNull XrViewConfigurationDepthRangeEXT> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull XrViewConfigurationDepthRangeEXT value) {

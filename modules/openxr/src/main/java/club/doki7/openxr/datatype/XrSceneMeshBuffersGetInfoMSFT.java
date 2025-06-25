@@ -91,8 +91,9 @@ public record XrSceneMeshBuffersGetInfoMSFT(@NotNull MemorySegment segment) impl
             return new XrSceneMeshBuffersGetInfoMSFT(segment.asSlice(index * XrSceneMeshBuffersGetInfoMSFT.BYTES, XrSceneMeshBuffersGetInfoMSFT.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull XrSceneMeshBuffersGetInfoMSFT> consumer) {
+        public XrSceneMeshBuffersGetInfoMSFT.Ptr at(long index, @NotNull Consumer<@NotNull XrSceneMeshBuffersGetInfoMSFT> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull XrSceneMeshBuffersGetInfoMSFT value) {

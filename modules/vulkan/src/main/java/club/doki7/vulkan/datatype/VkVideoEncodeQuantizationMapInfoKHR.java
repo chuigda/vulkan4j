@@ -88,8 +88,9 @@ public record VkVideoEncodeQuantizationMapInfoKHR(@NotNull MemorySegment segment
             return new VkVideoEncodeQuantizationMapInfoKHR(segment.asSlice(index * VkVideoEncodeQuantizationMapInfoKHR.BYTES, VkVideoEncodeQuantizationMapInfoKHR.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkVideoEncodeQuantizationMapInfoKHR> consumer) {
+        public VkVideoEncodeQuantizationMapInfoKHR.Ptr at(long index, @NotNull Consumer<@NotNull VkVideoEncodeQuantizationMapInfoKHR> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkVideoEncodeQuantizationMapInfoKHR value) {

@@ -88,8 +88,9 @@ public record VkPhysicalDeviceFaultFeaturesEXT(@NotNull MemorySegment segment) i
             return new VkPhysicalDeviceFaultFeaturesEXT(segment.asSlice(index * VkPhysicalDeviceFaultFeaturesEXT.BYTES, VkPhysicalDeviceFaultFeaturesEXT.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceFaultFeaturesEXT> consumer) {
+        public VkPhysicalDeviceFaultFeaturesEXT.Ptr at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceFaultFeaturesEXT> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkPhysicalDeviceFaultFeaturesEXT value) {

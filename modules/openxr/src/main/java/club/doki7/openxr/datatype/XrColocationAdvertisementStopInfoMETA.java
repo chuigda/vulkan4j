@@ -90,8 +90,9 @@ public record XrColocationAdvertisementStopInfoMETA(@NotNull MemorySegment segme
             return new XrColocationAdvertisementStopInfoMETA(segment.asSlice(index * XrColocationAdvertisementStopInfoMETA.BYTES, XrColocationAdvertisementStopInfoMETA.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull XrColocationAdvertisementStopInfoMETA> consumer) {
+        public XrColocationAdvertisementStopInfoMETA.Ptr at(long index, @NotNull Consumer<@NotNull XrColocationAdvertisementStopInfoMETA> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull XrColocationAdvertisementStopInfoMETA value) {

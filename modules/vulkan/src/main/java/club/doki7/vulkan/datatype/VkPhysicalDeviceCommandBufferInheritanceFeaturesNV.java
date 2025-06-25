@@ -87,8 +87,9 @@ public record VkPhysicalDeviceCommandBufferInheritanceFeaturesNV(@NotNull Memory
             return new VkPhysicalDeviceCommandBufferInheritanceFeaturesNV(segment.asSlice(index * VkPhysicalDeviceCommandBufferInheritanceFeaturesNV.BYTES, VkPhysicalDeviceCommandBufferInheritanceFeaturesNV.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceCommandBufferInheritanceFeaturesNV> consumer) {
+        public VkPhysicalDeviceCommandBufferInheritanceFeaturesNV.Ptr at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceCommandBufferInheritanceFeaturesNV> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkPhysicalDeviceCommandBufferInheritanceFeaturesNV value) {

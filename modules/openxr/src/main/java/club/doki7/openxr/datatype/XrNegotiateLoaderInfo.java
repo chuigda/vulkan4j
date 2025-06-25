@@ -86,8 +86,9 @@ public record XrNegotiateLoaderInfo(@NotNull MemorySegment segment) implements I
             return new XrNegotiateLoaderInfo(segment.asSlice(index * XrNegotiateLoaderInfo.BYTES, XrNegotiateLoaderInfo.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull XrNegotiateLoaderInfo> consumer) {
+        public XrNegotiateLoaderInfo.Ptr at(long index, @NotNull Consumer<@NotNull XrNegotiateLoaderInfo> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull XrNegotiateLoaderInfo value) {

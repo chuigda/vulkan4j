@@ -77,8 +77,9 @@ public record VkViewportWScalingNV(@NotNull MemorySegment segment) implements IV
             return new VkViewportWScalingNV(segment.asSlice(index * VkViewportWScalingNV.BYTES, VkViewportWScalingNV.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkViewportWScalingNV> consumer) {
+        public VkViewportWScalingNV.Ptr at(long index, @NotNull Consumer<@NotNull VkViewportWScalingNV> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkViewportWScalingNV value) {

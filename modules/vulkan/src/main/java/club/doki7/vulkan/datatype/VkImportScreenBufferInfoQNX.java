@@ -87,8 +87,9 @@ public record VkImportScreenBufferInfoQNX(@NotNull MemorySegment segment) implem
             return new VkImportScreenBufferInfoQNX(segment.asSlice(index * VkImportScreenBufferInfoQNX.BYTES, VkImportScreenBufferInfoQNX.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkImportScreenBufferInfoQNX> consumer) {
+        public VkImportScreenBufferInfoQNX.Ptr at(long index, @NotNull Consumer<@NotNull VkImportScreenBufferInfoQNX> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkImportScreenBufferInfoQNX value) {

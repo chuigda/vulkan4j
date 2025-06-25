@@ -87,8 +87,9 @@ public record VkPhysicalDevicePipelineExecutablePropertiesFeaturesKHR(@NotNull M
             return new VkPhysicalDevicePipelineExecutablePropertiesFeaturesKHR(segment.asSlice(index * VkPhysicalDevicePipelineExecutablePropertiesFeaturesKHR.BYTES, VkPhysicalDevicePipelineExecutablePropertiesFeaturesKHR.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkPhysicalDevicePipelineExecutablePropertiesFeaturesKHR> consumer) {
+        public VkPhysicalDevicePipelineExecutablePropertiesFeaturesKHR.Ptr at(long index, @NotNull Consumer<@NotNull VkPhysicalDevicePipelineExecutablePropertiesFeaturesKHR> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkPhysicalDevicePipelineExecutablePropertiesFeaturesKHR value) {

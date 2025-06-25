@@ -87,8 +87,9 @@ public record VkPhysicalDeviceAmigoProfilingFeaturesSEC(@NotNull MemorySegment s
             return new VkPhysicalDeviceAmigoProfilingFeaturesSEC(segment.asSlice(index * VkPhysicalDeviceAmigoProfilingFeaturesSEC.BYTES, VkPhysicalDeviceAmigoProfilingFeaturesSEC.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceAmigoProfilingFeaturesSEC> consumer) {
+        public VkPhysicalDeviceAmigoProfilingFeaturesSEC.Ptr at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceAmigoProfilingFeaturesSEC> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkPhysicalDeviceAmigoProfilingFeaturesSEC value) {

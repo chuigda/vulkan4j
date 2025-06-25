@@ -88,8 +88,9 @@ public record VkPipelineColorWriteCreateInfoEXT(@NotNull MemorySegment segment) 
             return new VkPipelineColorWriteCreateInfoEXT(segment.asSlice(index * VkPipelineColorWriteCreateInfoEXT.BYTES, VkPipelineColorWriteCreateInfoEXT.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkPipelineColorWriteCreateInfoEXT> consumer) {
+        public VkPipelineColorWriteCreateInfoEXT.Ptr at(long index, @NotNull Consumer<@NotNull VkPipelineColorWriteCreateInfoEXT> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkPipelineColorWriteCreateInfoEXT value) {

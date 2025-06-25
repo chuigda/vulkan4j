@@ -91,8 +91,9 @@ public record XrVirtualKeyboardModelVisibilitySetInfoMETA(@NotNull MemorySegment
             return new XrVirtualKeyboardModelVisibilitySetInfoMETA(segment.asSlice(index * XrVirtualKeyboardModelVisibilitySetInfoMETA.BYTES, XrVirtualKeyboardModelVisibilitySetInfoMETA.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull XrVirtualKeyboardModelVisibilitySetInfoMETA> consumer) {
+        public XrVirtualKeyboardModelVisibilitySetInfoMETA.Ptr at(long index, @NotNull Consumer<@NotNull XrVirtualKeyboardModelVisibilitySetInfoMETA> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull XrVirtualKeyboardModelVisibilitySetInfoMETA value) {

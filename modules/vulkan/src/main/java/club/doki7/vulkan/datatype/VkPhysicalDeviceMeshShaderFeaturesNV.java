@@ -88,8 +88,9 @@ public record VkPhysicalDeviceMeshShaderFeaturesNV(@NotNull MemorySegment segmen
             return new VkPhysicalDeviceMeshShaderFeaturesNV(segment.asSlice(index * VkPhysicalDeviceMeshShaderFeaturesNV.BYTES, VkPhysicalDeviceMeshShaderFeaturesNV.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceMeshShaderFeaturesNV> consumer) {
+        public VkPhysicalDeviceMeshShaderFeaturesNV.Ptr at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceMeshShaderFeaturesNV> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkPhysicalDeviceMeshShaderFeaturesNV value) {

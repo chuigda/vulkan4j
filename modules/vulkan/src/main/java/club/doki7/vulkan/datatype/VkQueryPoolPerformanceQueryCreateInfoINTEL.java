@@ -87,8 +87,9 @@ public record VkQueryPoolPerformanceQueryCreateInfoINTEL(@NotNull MemorySegment 
             return new VkQueryPoolPerformanceQueryCreateInfoINTEL(segment.asSlice(index * VkQueryPoolPerformanceQueryCreateInfoINTEL.BYTES, VkQueryPoolPerformanceQueryCreateInfoINTEL.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkQueryPoolPerformanceQueryCreateInfoINTEL> consumer) {
+        public VkQueryPoolPerformanceQueryCreateInfoINTEL.Ptr at(long index, @NotNull Consumer<@NotNull VkQueryPoolPerformanceQueryCreateInfoINTEL> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkQueryPoolPerformanceQueryCreateInfoINTEL value) {

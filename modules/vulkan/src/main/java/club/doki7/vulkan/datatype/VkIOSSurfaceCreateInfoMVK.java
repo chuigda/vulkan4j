@@ -88,8 +88,9 @@ public record VkIOSSurfaceCreateInfoMVK(@NotNull MemorySegment segment) implemen
             return new VkIOSSurfaceCreateInfoMVK(segment.asSlice(index * VkIOSSurfaceCreateInfoMVK.BYTES, VkIOSSurfaceCreateInfoMVK.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkIOSSurfaceCreateInfoMVK> consumer) {
+        public VkIOSSurfaceCreateInfoMVK.Ptr at(long index, @NotNull Consumer<@NotNull VkIOSSurfaceCreateInfoMVK> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkIOSSurfaceCreateInfoMVK value) {

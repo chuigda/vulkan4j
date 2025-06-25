@@ -87,8 +87,9 @@ public record VkPhysicalDeviceVertexAttributeDivisorPropertiesEXT(@NotNull Memor
             return new VkPhysicalDeviceVertexAttributeDivisorPropertiesEXT(segment.asSlice(index * VkPhysicalDeviceVertexAttributeDivisorPropertiesEXT.BYTES, VkPhysicalDeviceVertexAttributeDivisorPropertiesEXT.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceVertexAttributeDivisorPropertiesEXT> consumer) {
+        public VkPhysicalDeviceVertexAttributeDivisorPropertiesEXT.Ptr at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceVertexAttributeDivisorPropertiesEXT> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkPhysicalDeviceVertexAttributeDivisorPropertiesEXT value) {

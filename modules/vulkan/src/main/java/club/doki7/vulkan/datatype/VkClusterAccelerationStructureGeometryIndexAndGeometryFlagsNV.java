@@ -79,8 +79,9 @@ public record VkClusterAccelerationStructureGeometryIndexAndGeometryFlagsNV(@Not
             return new VkClusterAccelerationStructureGeometryIndexAndGeometryFlagsNV(segment.asSlice(index * VkClusterAccelerationStructureGeometryIndexAndGeometryFlagsNV.BYTES, VkClusterAccelerationStructureGeometryIndexAndGeometryFlagsNV.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkClusterAccelerationStructureGeometryIndexAndGeometryFlagsNV> consumer) {
+        public VkClusterAccelerationStructureGeometryIndexAndGeometryFlagsNV.Ptr at(long index, @NotNull Consumer<@NotNull VkClusterAccelerationStructureGeometryIndexAndGeometryFlagsNV> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkClusterAccelerationStructureGeometryIndexAndGeometryFlagsNV value) {

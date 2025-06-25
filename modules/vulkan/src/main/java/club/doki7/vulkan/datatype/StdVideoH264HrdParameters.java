@@ -84,8 +84,9 @@ public record StdVideoH264HrdParameters(@NotNull MemorySegment segment) implemen
             return new StdVideoH264HrdParameters(segment.asSlice(index * StdVideoH264HrdParameters.BYTES, StdVideoH264HrdParameters.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull StdVideoH264HrdParameters> consumer) {
+        public StdVideoH264HrdParameters.Ptr at(long index, @NotNull Consumer<@NotNull StdVideoH264HrdParameters> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull StdVideoH264HrdParameters value) {

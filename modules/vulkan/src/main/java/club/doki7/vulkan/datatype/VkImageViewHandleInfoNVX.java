@@ -89,8 +89,9 @@ public record VkImageViewHandleInfoNVX(@NotNull MemorySegment segment) implement
             return new VkImageViewHandleInfoNVX(segment.asSlice(index * VkImageViewHandleInfoNVX.BYTES, VkImageViewHandleInfoNVX.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkImageViewHandleInfoNVX> consumer) {
+        public VkImageViewHandleInfoNVX.Ptr at(long index, @NotNull Consumer<@NotNull VkImageViewHandleInfoNVX> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkImageViewHandleInfoNVX value) {

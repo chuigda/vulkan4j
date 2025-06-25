@@ -81,8 +81,9 @@ public record XrFaceExpressionStatusFB(@NotNull MemorySegment segment) implement
             return new XrFaceExpressionStatusFB(segment.asSlice(index * XrFaceExpressionStatusFB.BYTES, XrFaceExpressionStatusFB.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull XrFaceExpressionStatusFB> consumer) {
+        public XrFaceExpressionStatusFB.Ptr at(long index, @NotNull Consumer<@NotNull XrFaceExpressionStatusFB> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull XrFaceExpressionStatusFB value) {

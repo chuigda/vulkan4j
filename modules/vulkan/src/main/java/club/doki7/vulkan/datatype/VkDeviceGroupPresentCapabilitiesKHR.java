@@ -88,8 +88,9 @@ public record VkDeviceGroupPresentCapabilitiesKHR(@NotNull MemorySegment segment
             return new VkDeviceGroupPresentCapabilitiesKHR(segment.asSlice(index * VkDeviceGroupPresentCapabilitiesKHR.BYTES, VkDeviceGroupPresentCapabilitiesKHR.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkDeviceGroupPresentCapabilitiesKHR> consumer) {
+        public VkDeviceGroupPresentCapabilitiesKHR.Ptr at(long index, @NotNull Consumer<@NotNull VkDeviceGroupPresentCapabilitiesKHR> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkDeviceGroupPresentCapabilitiesKHR value) {

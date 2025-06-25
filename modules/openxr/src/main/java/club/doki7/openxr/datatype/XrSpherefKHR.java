@@ -81,8 +81,9 @@ public record XrSpherefKHR(@NotNull MemorySegment segment) implements IXrSpheref
             return new XrSpherefKHR(segment.asSlice(index * XrSpherefKHR.BYTES, XrSpherefKHR.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull XrSpherefKHR> consumer) {
+        public XrSpherefKHR.Ptr at(long index, @NotNull Consumer<@NotNull XrSpherefKHR> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull XrSpherefKHR value) {

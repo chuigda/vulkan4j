@@ -87,8 +87,9 @@ public record VkExportMemoryAllocateInfo(@NotNull MemorySegment segment) impleme
             return new VkExportMemoryAllocateInfo(segment.asSlice(index * VkExportMemoryAllocateInfo.BYTES, VkExportMemoryAllocateInfo.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkExportMemoryAllocateInfo> consumer) {
+        public VkExportMemoryAllocateInfo.Ptr at(long index, @NotNull Consumer<@NotNull VkExportMemoryAllocateInfo> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkExportMemoryAllocateInfo value) {

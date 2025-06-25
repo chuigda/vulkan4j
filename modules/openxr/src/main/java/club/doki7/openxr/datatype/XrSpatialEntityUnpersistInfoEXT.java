@@ -91,8 +91,9 @@ public record XrSpatialEntityUnpersistInfoEXT(@NotNull MemorySegment segment) im
             return new XrSpatialEntityUnpersistInfoEXT(segment.asSlice(index * XrSpatialEntityUnpersistInfoEXT.BYTES, XrSpatialEntityUnpersistInfoEXT.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull XrSpatialEntityUnpersistInfoEXT> consumer) {
+        public XrSpatialEntityUnpersistInfoEXT.Ptr at(long index, @NotNull Consumer<@NotNull XrSpatialEntityUnpersistInfoEXT> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull XrSpatialEntityUnpersistInfoEXT value) {

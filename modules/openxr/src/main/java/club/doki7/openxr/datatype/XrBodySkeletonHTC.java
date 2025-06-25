@@ -92,8 +92,9 @@ public record XrBodySkeletonHTC(@NotNull MemorySegment segment) implements IXrBo
             return new XrBodySkeletonHTC(segment.asSlice(index * XrBodySkeletonHTC.BYTES, XrBodySkeletonHTC.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull XrBodySkeletonHTC> consumer) {
+        public XrBodySkeletonHTC.Ptr at(long index, @NotNull Consumer<@NotNull XrBodySkeletonHTC> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull XrBodySkeletonHTC value) {

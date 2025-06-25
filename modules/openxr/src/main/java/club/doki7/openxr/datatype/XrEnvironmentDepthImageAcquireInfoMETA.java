@@ -92,8 +92,9 @@ public record XrEnvironmentDepthImageAcquireInfoMETA(@NotNull MemorySegment segm
             return new XrEnvironmentDepthImageAcquireInfoMETA(segment.asSlice(index * XrEnvironmentDepthImageAcquireInfoMETA.BYTES, XrEnvironmentDepthImageAcquireInfoMETA.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull XrEnvironmentDepthImageAcquireInfoMETA> consumer) {
+        public XrEnvironmentDepthImageAcquireInfoMETA.Ptr at(long index, @NotNull Consumer<@NotNull XrEnvironmentDepthImageAcquireInfoMETA> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull XrEnvironmentDepthImageAcquireInfoMETA value) {

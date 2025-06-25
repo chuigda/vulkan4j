@@ -87,8 +87,9 @@ public record VkSurfaceFullScreenExclusiveWin32InfoEXT(@NotNull MemorySegment se
             return new VkSurfaceFullScreenExclusiveWin32InfoEXT(segment.asSlice(index * VkSurfaceFullScreenExclusiveWin32InfoEXT.BYTES, VkSurfaceFullScreenExclusiveWin32InfoEXT.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkSurfaceFullScreenExclusiveWin32InfoEXT> consumer) {
+        public VkSurfaceFullScreenExclusiveWin32InfoEXT.Ptr at(long index, @NotNull Consumer<@NotNull VkSurfaceFullScreenExclusiveWin32InfoEXT> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkSurfaceFullScreenExclusiveWin32InfoEXT value) {

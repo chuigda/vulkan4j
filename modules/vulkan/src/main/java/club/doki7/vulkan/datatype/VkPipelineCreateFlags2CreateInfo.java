@@ -87,8 +87,9 @@ public record VkPipelineCreateFlags2CreateInfo(@NotNull MemorySegment segment) i
             return new VkPipelineCreateFlags2CreateInfo(segment.asSlice(index * VkPipelineCreateFlags2CreateInfo.BYTES, VkPipelineCreateFlags2CreateInfo.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkPipelineCreateFlags2CreateInfo> consumer) {
+        public VkPipelineCreateFlags2CreateInfo.Ptr at(long index, @NotNull Consumer<@NotNull VkPipelineCreateFlags2CreateInfo> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkPipelineCreateFlags2CreateInfo value) {

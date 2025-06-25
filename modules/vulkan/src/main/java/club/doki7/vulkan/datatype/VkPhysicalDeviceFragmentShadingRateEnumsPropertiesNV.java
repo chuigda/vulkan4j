@@ -87,8 +87,9 @@ public record VkPhysicalDeviceFragmentShadingRateEnumsPropertiesNV(@NotNull Memo
             return new VkPhysicalDeviceFragmentShadingRateEnumsPropertiesNV(segment.asSlice(index * VkPhysicalDeviceFragmentShadingRateEnumsPropertiesNV.BYTES, VkPhysicalDeviceFragmentShadingRateEnumsPropertiesNV.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceFragmentShadingRateEnumsPropertiesNV> consumer) {
+        public VkPhysicalDeviceFragmentShadingRateEnumsPropertiesNV.Ptr at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceFragmentShadingRateEnumsPropertiesNV> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkPhysicalDeviceFragmentShadingRateEnumsPropertiesNV value) {

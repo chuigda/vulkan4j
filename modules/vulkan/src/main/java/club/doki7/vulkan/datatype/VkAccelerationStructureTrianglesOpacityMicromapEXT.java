@@ -94,8 +94,9 @@ public record VkAccelerationStructureTrianglesOpacityMicromapEXT(@NotNull Memory
             return new VkAccelerationStructureTrianglesOpacityMicromapEXT(segment.asSlice(index * VkAccelerationStructureTrianglesOpacityMicromapEXT.BYTES, VkAccelerationStructureTrianglesOpacityMicromapEXT.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkAccelerationStructureTrianglesOpacityMicromapEXT> consumer) {
+        public VkAccelerationStructureTrianglesOpacityMicromapEXT.Ptr at(long index, @NotNull Consumer<@NotNull VkAccelerationStructureTrianglesOpacityMicromapEXT> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkAccelerationStructureTrianglesOpacityMicromapEXT value) {

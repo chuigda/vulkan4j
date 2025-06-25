@@ -80,8 +80,9 @@ public record VkPhysicalDeviceSparseProperties(@NotNull MemorySegment segment) i
             return new VkPhysicalDeviceSparseProperties(segment.asSlice(index * VkPhysicalDeviceSparseProperties.BYTES, VkPhysicalDeviceSparseProperties.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceSparseProperties> consumer) {
+        public VkPhysicalDeviceSparseProperties.Ptr at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceSparseProperties> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkPhysicalDeviceSparseProperties value) {

@@ -87,8 +87,9 @@ public record VkSwapchainPresentBarrierCreateInfoNV(@NotNull MemorySegment segme
             return new VkSwapchainPresentBarrierCreateInfoNV(segment.asSlice(index * VkSwapchainPresentBarrierCreateInfoNV.BYTES, VkSwapchainPresentBarrierCreateInfoNV.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkSwapchainPresentBarrierCreateInfoNV> consumer) {
+        public VkSwapchainPresentBarrierCreateInfoNV.Ptr at(long index, @NotNull Consumer<@NotNull VkSwapchainPresentBarrierCreateInfoNV> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkSwapchainPresentBarrierCreateInfoNV value) {

@@ -88,8 +88,9 @@ public record VkPhysicalDeviceShaderSubgroupRotateFeatures(@NotNull MemorySegmen
             return new VkPhysicalDeviceShaderSubgroupRotateFeatures(segment.asSlice(index * VkPhysicalDeviceShaderSubgroupRotateFeatures.BYTES, VkPhysicalDeviceShaderSubgroupRotateFeatures.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceShaderSubgroupRotateFeatures> consumer) {
+        public VkPhysicalDeviceShaderSubgroupRotateFeatures.Ptr at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceShaderSubgroupRotateFeatures> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkPhysicalDeviceShaderSubgroupRotateFeatures value) {

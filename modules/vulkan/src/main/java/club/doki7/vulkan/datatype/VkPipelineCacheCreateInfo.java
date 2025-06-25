@@ -89,8 +89,9 @@ public record VkPipelineCacheCreateInfo(@NotNull MemorySegment segment) implemen
             return new VkPipelineCacheCreateInfo(segment.asSlice(index * VkPipelineCacheCreateInfo.BYTES, VkPipelineCacheCreateInfo.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkPipelineCacheCreateInfo> consumer) {
+        public VkPipelineCacheCreateInfo.Ptr at(long index, @NotNull Consumer<@NotNull VkPipelineCacheCreateInfo> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkPipelineCacheCreateInfo value) {

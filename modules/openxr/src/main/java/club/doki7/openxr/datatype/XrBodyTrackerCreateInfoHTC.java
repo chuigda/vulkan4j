@@ -91,8 +91,9 @@ public record XrBodyTrackerCreateInfoHTC(@NotNull MemorySegment segment) impleme
             return new XrBodyTrackerCreateInfoHTC(segment.asSlice(index * XrBodyTrackerCreateInfoHTC.BYTES, XrBodyTrackerCreateInfoHTC.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull XrBodyTrackerCreateInfoHTC> consumer) {
+        public XrBodyTrackerCreateInfoHTC.Ptr at(long index, @NotNull Consumer<@NotNull XrBodyTrackerCreateInfoHTC> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull XrBodyTrackerCreateInfoHTC value) {

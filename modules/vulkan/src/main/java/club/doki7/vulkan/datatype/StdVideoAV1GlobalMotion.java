@@ -75,8 +75,9 @@ public record StdVideoAV1GlobalMotion(@NotNull MemorySegment segment) implements
             return new StdVideoAV1GlobalMotion(segment.asSlice(index * StdVideoAV1GlobalMotion.BYTES, StdVideoAV1GlobalMotion.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull StdVideoAV1GlobalMotion> consumer) {
+        public StdVideoAV1GlobalMotion.Ptr at(long index, @NotNull Consumer<@NotNull StdVideoAV1GlobalMotion> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull StdVideoAV1GlobalMotion value) {

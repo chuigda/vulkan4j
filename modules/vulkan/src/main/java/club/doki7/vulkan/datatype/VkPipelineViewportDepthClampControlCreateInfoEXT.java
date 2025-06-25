@@ -88,8 +88,9 @@ public record VkPipelineViewportDepthClampControlCreateInfoEXT(@NotNull MemorySe
             return new VkPipelineViewportDepthClampControlCreateInfoEXT(segment.asSlice(index * VkPipelineViewportDepthClampControlCreateInfoEXT.BYTES, VkPipelineViewportDepthClampControlCreateInfoEXT.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkPipelineViewportDepthClampControlCreateInfoEXT> consumer) {
+        public VkPipelineViewportDepthClampControlCreateInfoEXT.Ptr at(long index, @NotNull Consumer<@NotNull VkPipelineViewportDepthClampControlCreateInfoEXT> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkPipelineViewportDepthClampControlCreateInfoEXT value) {

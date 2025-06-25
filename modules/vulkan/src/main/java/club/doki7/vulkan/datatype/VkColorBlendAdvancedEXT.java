@@ -80,8 +80,9 @@ public record VkColorBlendAdvancedEXT(@NotNull MemorySegment segment) implements
             return new VkColorBlendAdvancedEXT(segment.asSlice(index * VkColorBlendAdvancedEXT.BYTES, VkColorBlendAdvancedEXT.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkColorBlendAdvancedEXT> consumer) {
+        public VkColorBlendAdvancedEXT.Ptr at(long index, @NotNull Consumer<@NotNull VkColorBlendAdvancedEXT> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkColorBlendAdvancedEXT value) {

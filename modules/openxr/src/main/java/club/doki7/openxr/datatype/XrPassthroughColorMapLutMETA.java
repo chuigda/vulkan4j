@@ -92,8 +92,9 @@ public record XrPassthroughColorMapLutMETA(@NotNull MemorySegment segment) imple
             return new XrPassthroughColorMapLutMETA(segment.asSlice(index * XrPassthroughColorMapLutMETA.BYTES, XrPassthroughColorMapLutMETA.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull XrPassthroughColorMapLutMETA> consumer) {
+        public XrPassthroughColorMapLutMETA.Ptr at(long index, @NotNull Consumer<@NotNull XrPassthroughColorMapLutMETA> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull XrPassthroughColorMapLutMETA value) {

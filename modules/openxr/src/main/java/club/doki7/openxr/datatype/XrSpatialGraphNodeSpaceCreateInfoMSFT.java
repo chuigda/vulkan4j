@@ -93,8 +93,9 @@ public record XrSpatialGraphNodeSpaceCreateInfoMSFT(@NotNull MemorySegment segme
             return new XrSpatialGraphNodeSpaceCreateInfoMSFT(segment.asSlice(index * XrSpatialGraphNodeSpaceCreateInfoMSFT.BYTES, XrSpatialGraphNodeSpaceCreateInfoMSFT.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull XrSpatialGraphNodeSpaceCreateInfoMSFT> consumer) {
+        public XrSpatialGraphNodeSpaceCreateInfoMSFT.Ptr at(long index, @NotNull Consumer<@NotNull XrSpatialGraphNodeSpaceCreateInfoMSFT> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull XrSpatialGraphNodeSpaceCreateInfoMSFT value) {

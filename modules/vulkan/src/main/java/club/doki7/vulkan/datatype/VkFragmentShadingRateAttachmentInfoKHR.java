@@ -88,8 +88,9 @@ public record VkFragmentShadingRateAttachmentInfoKHR(@NotNull MemorySegment segm
             return new VkFragmentShadingRateAttachmentInfoKHR(segment.asSlice(index * VkFragmentShadingRateAttachmentInfoKHR.BYTES, VkFragmentShadingRateAttachmentInfoKHR.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkFragmentShadingRateAttachmentInfoKHR> consumer) {
+        public VkFragmentShadingRateAttachmentInfoKHR.Ptr at(long index, @NotNull Consumer<@NotNull VkFragmentShadingRateAttachmentInfoKHR> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkFragmentShadingRateAttachmentInfoKHR value) {

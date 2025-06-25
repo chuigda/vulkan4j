@@ -78,8 +78,9 @@ public record StdVideoDecodeAV1ReferenceInfo(@NotNull MemorySegment segment) imp
             return new StdVideoDecodeAV1ReferenceInfo(segment.asSlice(index * StdVideoDecodeAV1ReferenceInfo.BYTES, StdVideoDecodeAV1ReferenceInfo.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull StdVideoDecodeAV1ReferenceInfo> consumer) {
+        public StdVideoDecodeAV1ReferenceInfo.Ptr at(long index, @NotNull Consumer<@NotNull StdVideoDecodeAV1ReferenceInfo> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull StdVideoDecodeAV1ReferenceInfo value) {

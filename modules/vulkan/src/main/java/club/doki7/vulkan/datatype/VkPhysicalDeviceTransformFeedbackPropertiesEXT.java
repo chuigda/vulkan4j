@@ -96,8 +96,9 @@ public record VkPhysicalDeviceTransformFeedbackPropertiesEXT(@NotNull MemorySegm
             return new VkPhysicalDeviceTransformFeedbackPropertiesEXT(segment.asSlice(index * VkPhysicalDeviceTransformFeedbackPropertiesEXT.BYTES, VkPhysicalDeviceTransformFeedbackPropertiesEXT.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceTransformFeedbackPropertiesEXT> consumer) {
+        public VkPhysicalDeviceTransformFeedbackPropertiesEXT.Ptr at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceTransformFeedbackPropertiesEXT> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkPhysicalDeviceTransformFeedbackPropertiesEXT value) {

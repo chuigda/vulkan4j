@@ -87,8 +87,9 @@ public record VkImageViewCaptureDescriptorDataInfoEXT(@NotNull MemorySegment seg
             return new VkImageViewCaptureDescriptorDataInfoEXT(segment.asSlice(index * VkImageViewCaptureDescriptorDataInfoEXT.BYTES, VkImageViewCaptureDescriptorDataInfoEXT.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkImageViewCaptureDescriptorDataInfoEXT> consumer) {
+        public VkImageViewCaptureDescriptorDataInfoEXT.Ptr at(long index, @NotNull Consumer<@NotNull VkImageViewCaptureDescriptorDataInfoEXT> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkImageViewCaptureDescriptorDataInfoEXT value) {

@@ -87,8 +87,9 @@ public record VkPhysicalDeviceUniformBufferStandardLayoutFeatures(@NotNull Memor
             return new VkPhysicalDeviceUniformBufferStandardLayoutFeatures(segment.asSlice(index * VkPhysicalDeviceUniformBufferStandardLayoutFeatures.BYTES, VkPhysicalDeviceUniformBufferStandardLayoutFeatures.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceUniformBufferStandardLayoutFeatures> consumer) {
+        public VkPhysicalDeviceUniformBufferStandardLayoutFeatures.Ptr at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceUniformBufferStandardLayoutFeatures> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkPhysicalDeviceUniformBufferStandardLayoutFeatures value) {

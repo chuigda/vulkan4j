@@ -88,8 +88,9 @@ public record VkRayTracingPipelineInterfaceCreateInfoKHR(@NotNull MemorySegment 
             return new VkRayTracingPipelineInterfaceCreateInfoKHR(segment.asSlice(index * VkRayTracingPipelineInterfaceCreateInfoKHR.BYTES, VkRayTracingPipelineInterfaceCreateInfoKHR.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkRayTracingPipelineInterfaceCreateInfoKHR> consumer) {
+        public VkRayTracingPipelineInterfaceCreateInfoKHR.Ptr at(long index, @NotNull Consumer<@NotNull VkRayTracingPipelineInterfaceCreateInfoKHR> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkRayTracingPipelineInterfaceCreateInfoKHR value) {

@@ -88,8 +88,9 @@ public record VkHdrVividDynamicMetadataHUAWEI(@NotNull MemorySegment segment) im
             return new VkHdrVividDynamicMetadataHUAWEI(segment.asSlice(index * VkHdrVividDynamicMetadataHUAWEI.BYTES, VkHdrVividDynamicMetadataHUAWEI.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkHdrVividDynamicMetadataHUAWEI> consumer) {
+        public VkHdrVividDynamicMetadataHUAWEI.Ptr at(long index, @NotNull Consumer<@NotNull VkHdrVividDynamicMetadataHUAWEI> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkHdrVividDynamicMetadataHUAWEI value) {

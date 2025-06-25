@@ -88,8 +88,9 @@ public record VkPhysicalDeviceRayTracingLinearSweptSpheresFeaturesNV(@NotNull Me
             return new VkPhysicalDeviceRayTracingLinearSweptSpheresFeaturesNV(segment.asSlice(index * VkPhysicalDeviceRayTracingLinearSweptSpheresFeaturesNV.BYTES, VkPhysicalDeviceRayTracingLinearSweptSpheresFeaturesNV.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceRayTracingLinearSweptSpheresFeaturesNV> consumer) {
+        public VkPhysicalDeviceRayTracingLinearSweptSpheresFeaturesNV.Ptr at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceRayTracingLinearSweptSpheresFeaturesNV> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkPhysicalDeviceRayTracingLinearSweptSpheresFeaturesNV value) {

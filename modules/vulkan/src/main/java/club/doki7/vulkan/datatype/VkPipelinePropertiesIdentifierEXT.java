@@ -87,8 +87,9 @@ public record VkPipelinePropertiesIdentifierEXT(@NotNull MemorySegment segment) 
             return new VkPipelinePropertiesIdentifierEXT(segment.asSlice(index * VkPipelinePropertiesIdentifierEXT.BYTES, VkPipelinePropertiesIdentifierEXT.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkPipelinePropertiesIdentifierEXT> consumer) {
+        public VkPipelinePropertiesIdentifierEXT.Ptr at(long index, @NotNull Consumer<@NotNull VkPipelinePropertiesIdentifierEXT> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkPipelinePropertiesIdentifierEXT value) {

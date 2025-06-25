@@ -91,8 +91,9 @@ public record XrGraphicsBindingOpenGLWaylandKHR(@NotNull MemorySegment segment) 
             return new XrGraphicsBindingOpenGLWaylandKHR(segment.asSlice(index * XrGraphicsBindingOpenGLWaylandKHR.BYTES, XrGraphicsBindingOpenGLWaylandKHR.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull XrGraphicsBindingOpenGLWaylandKHR> consumer) {
+        public XrGraphicsBindingOpenGLWaylandKHR.Ptr at(long index, @NotNull Consumer<@NotNull XrGraphicsBindingOpenGLWaylandKHR> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull XrGraphicsBindingOpenGLWaylandKHR value) {

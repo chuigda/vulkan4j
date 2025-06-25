@@ -90,8 +90,9 @@ public record XrSimultaneousHandsAndControllersTrackingPauseInfoMETA(@NotNull Me
             return new XrSimultaneousHandsAndControllersTrackingPauseInfoMETA(segment.asSlice(index * XrSimultaneousHandsAndControllersTrackingPauseInfoMETA.BYTES, XrSimultaneousHandsAndControllersTrackingPauseInfoMETA.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull XrSimultaneousHandsAndControllersTrackingPauseInfoMETA> consumer) {
+        public XrSimultaneousHandsAndControllersTrackingPauseInfoMETA.Ptr at(long index, @NotNull Consumer<@NotNull XrSimultaneousHandsAndControllersTrackingPauseInfoMETA> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull XrSimultaneousHandsAndControllersTrackingPauseInfoMETA value) {

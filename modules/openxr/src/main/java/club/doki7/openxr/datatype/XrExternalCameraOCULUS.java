@@ -93,8 +93,9 @@ public record XrExternalCameraOCULUS(@NotNull MemorySegment segment) implements 
             return new XrExternalCameraOCULUS(segment.asSlice(index * XrExternalCameraOCULUS.BYTES, XrExternalCameraOCULUS.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull XrExternalCameraOCULUS> consumer) {
+        public XrExternalCameraOCULUS.Ptr at(long index, @NotNull Consumer<@NotNull XrExternalCameraOCULUS> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull XrExternalCameraOCULUS value) {

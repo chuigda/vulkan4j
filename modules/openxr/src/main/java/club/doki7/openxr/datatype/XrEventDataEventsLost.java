@@ -91,8 +91,9 @@ public record XrEventDataEventsLost(@NotNull MemorySegment segment) implements I
             return new XrEventDataEventsLost(segment.asSlice(index * XrEventDataEventsLost.BYTES, XrEventDataEventsLost.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull XrEventDataEventsLost> consumer) {
+        public XrEventDataEventsLost.Ptr at(long index, @NotNull Consumer<@NotNull XrEventDataEventsLost> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull XrEventDataEventsLost value) {

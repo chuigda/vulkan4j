@@ -89,8 +89,9 @@ public record VkPhysicalDeviceShaderBfloat16FeaturesKHR(@NotNull MemorySegment s
             return new VkPhysicalDeviceShaderBfloat16FeaturesKHR(segment.asSlice(index * VkPhysicalDeviceShaderBfloat16FeaturesKHR.BYTES, VkPhysicalDeviceShaderBfloat16FeaturesKHR.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceShaderBfloat16FeaturesKHR> consumer) {
+        public VkPhysicalDeviceShaderBfloat16FeaturesKHR.Ptr at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceShaderBfloat16FeaturesKHR> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkPhysicalDeviceShaderBfloat16FeaturesKHR value) {

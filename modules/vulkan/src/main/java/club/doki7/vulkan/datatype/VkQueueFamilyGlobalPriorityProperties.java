@@ -88,8 +88,9 @@ public record VkQueueFamilyGlobalPriorityProperties(@NotNull MemorySegment segme
             return new VkQueueFamilyGlobalPriorityProperties(segment.asSlice(index * VkQueueFamilyGlobalPriorityProperties.BYTES, VkQueueFamilyGlobalPriorityProperties.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkQueueFamilyGlobalPriorityProperties> consumer) {
+        public VkQueueFamilyGlobalPriorityProperties.Ptr at(long index, @NotNull Consumer<@NotNull VkQueueFamilyGlobalPriorityProperties> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkQueueFamilyGlobalPriorityProperties value) {

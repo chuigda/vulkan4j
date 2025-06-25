@@ -81,8 +81,9 @@ public record XrEventDataBaseHeader(@NotNull MemorySegment segment) implements I
             return new XrEventDataBaseHeader(segment.asSlice(index * XrEventDataBaseHeader.BYTES, XrEventDataBaseHeader.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull XrEventDataBaseHeader> consumer) {
+        public XrEventDataBaseHeader.Ptr at(long index, @NotNull Consumer<@NotNull XrEventDataBaseHeader> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull XrEventDataBaseHeader value) {

@@ -94,8 +94,9 @@ public record XrEventDataMarkerTrackingUpdateVARJO(@NotNull MemorySegment segmen
             return new XrEventDataMarkerTrackingUpdateVARJO(segment.asSlice(index * XrEventDataMarkerTrackingUpdateVARJO.BYTES, XrEventDataMarkerTrackingUpdateVARJO.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull XrEventDataMarkerTrackingUpdateVARJO> consumer) {
+        public XrEventDataMarkerTrackingUpdateVARJO.Ptr at(long index, @NotNull Consumer<@NotNull XrEventDataMarkerTrackingUpdateVARJO> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull XrEventDataMarkerTrackingUpdateVARJO value) {

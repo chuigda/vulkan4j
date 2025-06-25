@@ -87,8 +87,9 @@ public record VkPhysicalDeviceLinearColorAttachmentFeaturesNV(@NotNull MemorySeg
             return new VkPhysicalDeviceLinearColorAttachmentFeaturesNV(segment.asSlice(index * VkPhysicalDeviceLinearColorAttachmentFeaturesNV.BYTES, VkPhysicalDeviceLinearColorAttachmentFeaturesNV.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceLinearColorAttachmentFeaturesNV> consumer) {
+        public VkPhysicalDeviceLinearColorAttachmentFeaturesNV.Ptr at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceLinearColorAttachmentFeaturesNV> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkPhysicalDeviceLinearColorAttachmentFeaturesNV value) {

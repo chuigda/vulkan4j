@@ -87,8 +87,9 @@ public record VkSamplerYcbcrConversionImageFormatProperties(@NotNull MemorySegme
             return new VkSamplerYcbcrConversionImageFormatProperties(segment.asSlice(index * VkSamplerYcbcrConversionImageFormatProperties.BYTES, VkSamplerYcbcrConversionImageFormatProperties.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkSamplerYcbcrConversionImageFormatProperties> consumer) {
+        public VkSamplerYcbcrConversionImageFormatProperties.Ptr at(long index, @NotNull Consumer<@NotNull VkSamplerYcbcrConversionImageFormatProperties> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkSamplerYcbcrConversionImageFormatProperties value) {

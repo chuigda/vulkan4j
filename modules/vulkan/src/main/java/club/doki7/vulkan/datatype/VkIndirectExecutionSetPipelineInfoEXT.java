@@ -88,8 +88,9 @@ public record VkIndirectExecutionSetPipelineInfoEXT(@NotNull MemorySegment segme
             return new VkIndirectExecutionSetPipelineInfoEXT(segment.asSlice(index * VkIndirectExecutionSetPipelineInfoEXT.BYTES, VkIndirectExecutionSetPipelineInfoEXT.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkIndirectExecutionSetPipelineInfoEXT> consumer) {
+        public VkIndirectExecutionSetPipelineInfoEXT.Ptr at(long index, @NotNull Consumer<@NotNull VkIndirectExecutionSetPipelineInfoEXT> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkIndirectExecutionSetPipelineInfoEXT value) {

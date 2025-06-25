@@ -94,8 +94,9 @@ public record XrSpatialCapabilityConfigurationArucoMarkerEXT(@NotNull MemorySegm
             return new XrSpatialCapabilityConfigurationArucoMarkerEXT(segment.asSlice(index * XrSpatialCapabilityConfigurationArucoMarkerEXT.BYTES, XrSpatialCapabilityConfigurationArucoMarkerEXT.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull XrSpatialCapabilityConfigurationArucoMarkerEXT> consumer) {
+        public XrSpatialCapabilityConfigurationArucoMarkerEXT.Ptr at(long index, @NotNull Consumer<@NotNull XrSpatialCapabilityConfigurationArucoMarkerEXT> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull XrSpatialCapabilityConfigurationArucoMarkerEXT value) {

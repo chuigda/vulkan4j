@@ -88,8 +88,9 @@ public record VkMemoryBarrierAccessFlags3KHR(@NotNull MemorySegment segment) imp
             return new VkMemoryBarrierAccessFlags3KHR(segment.asSlice(index * VkMemoryBarrierAccessFlags3KHR.BYTES, VkMemoryBarrierAccessFlags3KHR.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkMemoryBarrierAccessFlags3KHR> consumer) {
+        public VkMemoryBarrierAccessFlags3KHR.Ptr at(long index, @NotNull Consumer<@NotNull VkMemoryBarrierAccessFlags3KHR> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkMemoryBarrierAccessFlags3KHR value) {

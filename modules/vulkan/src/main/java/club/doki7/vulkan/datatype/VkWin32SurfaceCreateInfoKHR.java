@@ -89,8 +89,9 @@ public record VkWin32SurfaceCreateInfoKHR(@NotNull MemorySegment segment) implem
             return new VkWin32SurfaceCreateInfoKHR(segment.asSlice(index * VkWin32SurfaceCreateInfoKHR.BYTES, VkWin32SurfaceCreateInfoKHR.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkWin32SurfaceCreateInfoKHR> consumer) {
+        public VkWin32SurfaceCreateInfoKHR.Ptr at(long index, @NotNull Consumer<@NotNull VkWin32SurfaceCreateInfoKHR> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkWin32SurfaceCreateInfoKHR value) {

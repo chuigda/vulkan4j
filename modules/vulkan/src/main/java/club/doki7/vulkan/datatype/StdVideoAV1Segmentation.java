@@ -75,8 +75,9 @@ public record StdVideoAV1Segmentation(@NotNull MemorySegment segment) implements
             return new StdVideoAV1Segmentation(segment.asSlice(index * StdVideoAV1Segmentation.BYTES, StdVideoAV1Segmentation.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull StdVideoAV1Segmentation> consumer) {
+        public StdVideoAV1Segmentation.Ptr at(long index, @NotNull Consumer<@NotNull StdVideoAV1Segmentation> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull StdVideoAV1Segmentation value) {

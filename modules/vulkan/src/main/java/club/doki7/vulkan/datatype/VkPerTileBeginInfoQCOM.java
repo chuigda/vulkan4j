@@ -86,8 +86,9 @@ public record VkPerTileBeginInfoQCOM(@NotNull MemorySegment segment) implements 
             return new VkPerTileBeginInfoQCOM(segment.asSlice(index * VkPerTileBeginInfoQCOM.BYTES, VkPerTileBeginInfoQCOM.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkPerTileBeginInfoQCOM> consumer) {
+        public VkPerTileBeginInfoQCOM.Ptr at(long index, @NotNull Consumer<@NotNull VkPerTileBeginInfoQCOM> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkPerTileBeginInfoQCOM value) {

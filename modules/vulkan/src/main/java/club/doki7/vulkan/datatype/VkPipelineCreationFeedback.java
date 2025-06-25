@@ -77,8 +77,9 @@ public record VkPipelineCreationFeedback(@NotNull MemorySegment segment) impleme
             return new VkPipelineCreationFeedback(segment.asSlice(index * VkPipelineCreationFeedback.BYTES, VkPipelineCreationFeedback.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkPipelineCreationFeedback> consumer) {
+        public VkPipelineCreationFeedback.Ptr at(long index, @NotNull Consumer<@NotNull VkPipelineCreationFeedback> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkPipelineCreationFeedback value) {

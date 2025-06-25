@@ -77,8 +77,9 @@ public record VkShadingRatePaletteNV(@NotNull MemorySegment segment) implements 
             return new VkShadingRatePaletteNV(segment.asSlice(index * VkShadingRatePaletteNV.BYTES, VkShadingRatePaletteNV.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkShadingRatePaletteNV> consumer) {
+        public VkShadingRatePaletteNV.Ptr at(long index, @NotNull Consumer<@NotNull VkShadingRatePaletteNV> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkShadingRatePaletteNV value) {

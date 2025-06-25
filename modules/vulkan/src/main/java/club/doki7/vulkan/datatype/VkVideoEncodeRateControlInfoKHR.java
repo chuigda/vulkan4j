@@ -92,8 +92,9 @@ public record VkVideoEncodeRateControlInfoKHR(@NotNull MemorySegment segment) im
             return new VkVideoEncodeRateControlInfoKHR(segment.asSlice(index * VkVideoEncodeRateControlInfoKHR.BYTES, VkVideoEncodeRateControlInfoKHR.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkVideoEncodeRateControlInfoKHR> consumer) {
+        public VkVideoEncodeRateControlInfoKHR.Ptr at(long index, @NotNull Consumer<@NotNull VkVideoEncodeRateControlInfoKHR> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkVideoEncodeRateControlInfoKHR value) {

@@ -92,8 +92,9 @@ public record XrHandTrackingDataSourceStateEXT(@NotNull MemorySegment segment) i
             return new XrHandTrackingDataSourceStateEXT(segment.asSlice(index * XrHandTrackingDataSourceStateEXT.BYTES, XrHandTrackingDataSourceStateEXT.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull XrHandTrackingDataSourceStateEXT> consumer) {
+        public XrHandTrackingDataSourceStateEXT.Ptr at(long index, @NotNull Consumer<@NotNull XrHandTrackingDataSourceStateEXT> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull XrHandTrackingDataSourceStateEXT value) {

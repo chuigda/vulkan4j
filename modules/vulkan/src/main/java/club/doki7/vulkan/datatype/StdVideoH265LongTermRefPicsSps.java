@@ -75,8 +75,9 @@ public record StdVideoH265LongTermRefPicsSps(@NotNull MemorySegment segment) imp
             return new StdVideoH265LongTermRefPicsSps(segment.asSlice(index * StdVideoH265LongTermRefPicsSps.BYTES, StdVideoH265LongTermRefPicsSps.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull StdVideoH265LongTermRefPicsSps> consumer) {
+        public StdVideoH265LongTermRefPicsSps.Ptr at(long index, @NotNull Consumer<@NotNull StdVideoH265LongTermRefPicsSps> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull StdVideoH265LongTermRefPicsSps value) {

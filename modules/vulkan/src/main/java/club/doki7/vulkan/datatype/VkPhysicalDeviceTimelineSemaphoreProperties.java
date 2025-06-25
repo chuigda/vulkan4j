@@ -87,8 +87,9 @@ public record VkPhysicalDeviceTimelineSemaphoreProperties(@NotNull MemorySegment
             return new VkPhysicalDeviceTimelineSemaphoreProperties(segment.asSlice(index * VkPhysicalDeviceTimelineSemaphoreProperties.BYTES, VkPhysicalDeviceTimelineSemaphoreProperties.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceTimelineSemaphoreProperties> consumer) {
+        public VkPhysicalDeviceTimelineSemaphoreProperties.Ptr at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceTimelineSemaphoreProperties> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkPhysicalDeviceTimelineSemaphoreProperties value) {

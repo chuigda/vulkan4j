@@ -92,8 +92,9 @@ public record XrEventDataSenseDataProviderStateChangedBD(@NotNull MemorySegment 
             return new XrEventDataSenseDataProviderStateChangedBD(segment.asSlice(index * XrEventDataSenseDataProviderStateChangedBD.BYTES, XrEventDataSenseDataProviderStateChangedBD.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull XrEventDataSenseDataProviderStateChangedBD> consumer) {
+        public XrEventDataSenseDataProviderStateChangedBD.Ptr at(long index, @NotNull Consumer<@NotNull XrEventDataSenseDataProviderStateChangedBD> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull XrEventDataSenseDataProviderStateChangedBD value) {

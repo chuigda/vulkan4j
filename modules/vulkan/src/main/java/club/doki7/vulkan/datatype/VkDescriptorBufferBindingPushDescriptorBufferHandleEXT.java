@@ -87,8 +87,9 @@ public record VkDescriptorBufferBindingPushDescriptorBufferHandleEXT(@NotNull Me
             return new VkDescriptorBufferBindingPushDescriptorBufferHandleEXT(segment.asSlice(index * VkDescriptorBufferBindingPushDescriptorBufferHandleEXT.BYTES, VkDescriptorBufferBindingPushDescriptorBufferHandleEXT.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkDescriptorBufferBindingPushDescriptorBufferHandleEXT> consumer) {
+        public VkDescriptorBufferBindingPushDescriptorBufferHandleEXT.Ptr at(long index, @NotNull Consumer<@NotNull VkDescriptorBufferBindingPushDescriptorBufferHandleEXT> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkDescriptorBufferBindingPushDescriptorBufferHandleEXT value) {

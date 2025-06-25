@@ -92,8 +92,9 @@ public record XrSceneMarkerQRCodesMSFT(@NotNull MemorySegment segment) implement
             return new XrSceneMarkerQRCodesMSFT(segment.asSlice(index * XrSceneMarkerQRCodesMSFT.BYTES, XrSceneMarkerQRCodesMSFT.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull XrSceneMarkerQRCodesMSFT> consumer) {
+        public XrSceneMarkerQRCodesMSFT.Ptr at(long index, @NotNull Consumer<@NotNull XrSceneMarkerQRCodesMSFT> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull XrSceneMarkerQRCodesMSFT value) {

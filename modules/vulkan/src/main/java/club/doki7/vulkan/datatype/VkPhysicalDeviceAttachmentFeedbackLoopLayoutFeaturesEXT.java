@@ -87,8 +87,9 @@ public record VkPhysicalDeviceAttachmentFeedbackLoopLayoutFeaturesEXT(@NotNull M
             return new VkPhysicalDeviceAttachmentFeedbackLoopLayoutFeaturesEXT(segment.asSlice(index * VkPhysicalDeviceAttachmentFeedbackLoopLayoutFeaturesEXT.BYTES, VkPhysicalDeviceAttachmentFeedbackLoopLayoutFeaturesEXT.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceAttachmentFeedbackLoopLayoutFeaturesEXT> consumer) {
+        public VkPhysicalDeviceAttachmentFeedbackLoopLayoutFeaturesEXT.Ptr at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceAttachmentFeedbackLoopLayoutFeaturesEXT> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkPhysicalDeviceAttachmentFeedbackLoopLayoutFeaturesEXT value) {

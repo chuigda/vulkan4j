@@ -83,8 +83,9 @@ public record StdVideoAV1TileInfo(@NotNull MemorySegment segment) implements ISt
             return new StdVideoAV1TileInfo(segment.asSlice(index * StdVideoAV1TileInfo.BYTES, StdVideoAV1TileInfo.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull StdVideoAV1TileInfo> consumer) {
+        public StdVideoAV1TileInfo.Ptr at(long index, @NotNull Consumer<@NotNull StdVideoAV1TileInfo> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull StdVideoAV1TileInfo value) {

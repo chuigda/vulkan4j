@@ -90,8 +90,9 @@ public record XrSenseDataProviderStartInfoBD(@NotNull MemorySegment segment) imp
             return new XrSenseDataProviderStartInfoBD(segment.asSlice(index * XrSenseDataProviderStartInfoBD.BYTES, XrSenseDataProviderStartInfoBD.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull XrSenseDataProviderStartInfoBD> consumer) {
+        public XrSenseDataProviderStartInfoBD.Ptr at(long index, @NotNull Consumer<@NotNull XrSenseDataProviderStartInfoBD> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull XrSenseDataProviderStartInfoBD value) {

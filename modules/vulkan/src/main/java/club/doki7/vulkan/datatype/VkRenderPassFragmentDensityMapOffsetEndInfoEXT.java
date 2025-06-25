@@ -88,8 +88,9 @@ public record VkRenderPassFragmentDensityMapOffsetEndInfoEXT(@NotNull MemorySegm
             return new VkRenderPassFragmentDensityMapOffsetEndInfoEXT(segment.asSlice(index * VkRenderPassFragmentDensityMapOffsetEndInfoEXT.BYTES, VkRenderPassFragmentDensityMapOffsetEndInfoEXT.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkRenderPassFragmentDensityMapOffsetEndInfoEXT> consumer) {
+        public VkRenderPassFragmentDensityMapOffsetEndInfoEXT.Ptr at(long index, @NotNull Consumer<@NotNull VkRenderPassFragmentDensityMapOffsetEndInfoEXT> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkRenderPassFragmentDensityMapOffsetEndInfoEXT value) {

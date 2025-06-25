@@ -91,8 +91,9 @@ public record XrMarkerDetectorAprilTagInfoML(@NotNull MemorySegment segment) imp
             return new XrMarkerDetectorAprilTagInfoML(segment.asSlice(index * XrMarkerDetectorAprilTagInfoML.BYTES, XrMarkerDetectorAprilTagInfoML.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull XrMarkerDetectorAprilTagInfoML> consumer) {
+        public XrMarkerDetectorAprilTagInfoML.Ptr at(long index, @NotNull Consumer<@NotNull XrMarkerDetectorAprilTagInfoML> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull XrMarkerDetectorAprilTagInfoML value) {

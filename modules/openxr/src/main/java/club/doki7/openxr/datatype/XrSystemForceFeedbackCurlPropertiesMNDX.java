@@ -91,8 +91,9 @@ public record XrSystemForceFeedbackCurlPropertiesMNDX(@NotNull MemorySegment seg
             return new XrSystemForceFeedbackCurlPropertiesMNDX(segment.asSlice(index * XrSystemForceFeedbackCurlPropertiesMNDX.BYTES, XrSystemForceFeedbackCurlPropertiesMNDX.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull XrSystemForceFeedbackCurlPropertiesMNDX> consumer) {
+        public XrSystemForceFeedbackCurlPropertiesMNDX.Ptr at(long index, @NotNull Consumer<@NotNull XrSystemForceFeedbackCurlPropertiesMNDX> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull XrSystemForceFeedbackCurlPropertiesMNDX value) {

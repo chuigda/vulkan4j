@@ -95,8 +95,9 @@ public record XrActionCreateInfo(@NotNull MemorySegment segment) implements IXrA
             return new XrActionCreateInfo(segment.asSlice(index * XrActionCreateInfo.BYTES, XrActionCreateInfo.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull XrActionCreateInfo> consumer) {
+        public XrActionCreateInfo.Ptr at(long index, @NotNull Consumer<@NotNull XrActionCreateInfo> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull XrActionCreateInfo value) {

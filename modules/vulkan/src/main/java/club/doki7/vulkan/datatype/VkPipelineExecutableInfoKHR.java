@@ -88,8 +88,9 @@ public record VkPipelineExecutableInfoKHR(@NotNull MemorySegment segment) implem
             return new VkPipelineExecutableInfoKHR(segment.asSlice(index * VkPipelineExecutableInfoKHR.BYTES, VkPipelineExecutableInfoKHR.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkPipelineExecutableInfoKHR> consumer) {
+        public VkPipelineExecutableInfoKHR.Ptr at(long index, @NotNull Consumer<@NotNull VkPipelineExecutableInfoKHR> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkPipelineExecutableInfoKHR value) {

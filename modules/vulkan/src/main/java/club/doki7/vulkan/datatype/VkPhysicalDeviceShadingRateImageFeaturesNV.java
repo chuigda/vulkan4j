@@ -88,8 +88,9 @@ public record VkPhysicalDeviceShadingRateImageFeaturesNV(@NotNull MemorySegment 
             return new VkPhysicalDeviceShadingRateImageFeaturesNV(segment.asSlice(index * VkPhysicalDeviceShadingRateImageFeaturesNV.BYTES, VkPhysicalDeviceShadingRateImageFeaturesNV.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceShadingRateImageFeaturesNV> consumer) {
+        public VkPhysicalDeviceShadingRateImageFeaturesNV.Ptr at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceShadingRateImageFeaturesNV> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkPhysicalDeviceShadingRateImageFeaturesNV value) {

@@ -87,8 +87,9 @@ public record VkPhysicalDeviceExtendedDynamicStateFeaturesEXT(@NotNull MemorySeg
             return new VkPhysicalDeviceExtendedDynamicStateFeaturesEXT(segment.asSlice(index * VkPhysicalDeviceExtendedDynamicStateFeaturesEXT.BYTES, VkPhysicalDeviceExtendedDynamicStateFeaturesEXT.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceExtendedDynamicStateFeaturesEXT> consumer) {
+        public VkPhysicalDeviceExtendedDynamicStateFeaturesEXT.Ptr at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceExtendedDynamicStateFeaturesEXT> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkPhysicalDeviceExtendedDynamicStateFeaturesEXT value) {

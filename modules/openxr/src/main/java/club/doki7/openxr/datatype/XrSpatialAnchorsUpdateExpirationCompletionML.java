@@ -91,8 +91,9 @@ public record XrSpatialAnchorsUpdateExpirationCompletionML(@NotNull MemorySegmen
             return new XrSpatialAnchorsUpdateExpirationCompletionML(segment.asSlice(index * XrSpatialAnchorsUpdateExpirationCompletionML.BYTES, XrSpatialAnchorsUpdateExpirationCompletionML.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull XrSpatialAnchorsUpdateExpirationCompletionML> consumer) {
+        public XrSpatialAnchorsUpdateExpirationCompletionML.Ptr at(long index, @NotNull Consumer<@NotNull XrSpatialAnchorsUpdateExpirationCompletionML> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull XrSpatialAnchorsUpdateExpirationCompletionML value) {

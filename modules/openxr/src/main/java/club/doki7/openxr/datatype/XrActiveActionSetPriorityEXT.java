@@ -81,8 +81,9 @@ public record XrActiveActionSetPriorityEXT(@NotNull MemorySegment segment) imple
             return new XrActiveActionSetPriorityEXT(segment.asSlice(index * XrActiveActionSetPriorityEXT.BYTES, XrActiveActionSetPriorityEXT.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull XrActiveActionSetPriorityEXT> consumer) {
+        public XrActiveActionSetPriorityEXT.Ptr at(long index, @NotNull Consumer<@NotNull XrActiveActionSetPriorityEXT> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull XrActiveActionSetPriorityEXT value) {

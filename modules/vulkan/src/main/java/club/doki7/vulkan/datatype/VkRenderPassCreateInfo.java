@@ -93,8 +93,9 @@ public record VkRenderPassCreateInfo(@NotNull MemorySegment segment) implements 
             return new VkRenderPassCreateInfo(segment.asSlice(index * VkRenderPassCreateInfo.BYTES, VkRenderPassCreateInfo.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkRenderPassCreateInfo> consumer) {
+        public VkRenderPassCreateInfo.Ptr at(long index, @NotNull Consumer<@NotNull VkRenderPassCreateInfo> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkRenderPassCreateInfo value) {

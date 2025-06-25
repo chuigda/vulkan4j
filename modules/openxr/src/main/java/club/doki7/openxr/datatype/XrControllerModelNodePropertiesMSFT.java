@@ -92,8 +92,9 @@ public record XrControllerModelNodePropertiesMSFT(@NotNull MemorySegment segment
             return new XrControllerModelNodePropertiesMSFT(segment.asSlice(index * XrControllerModelNodePropertiesMSFT.BYTES, XrControllerModelNodePropertiesMSFT.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull XrControllerModelNodePropertiesMSFT> consumer) {
+        public XrControllerModelNodePropertiesMSFT.Ptr at(long index, @NotNull Consumer<@NotNull XrControllerModelNodePropertiesMSFT> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull XrControllerModelNodePropertiesMSFT value) {

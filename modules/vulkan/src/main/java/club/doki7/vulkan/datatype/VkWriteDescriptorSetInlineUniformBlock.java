@@ -88,8 +88,9 @@ public record VkWriteDescriptorSetInlineUniformBlock(@NotNull MemorySegment segm
             return new VkWriteDescriptorSetInlineUniformBlock(segment.asSlice(index * VkWriteDescriptorSetInlineUniformBlock.BYTES, VkWriteDescriptorSetInlineUniformBlock.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkWriteDescriptorSetInlineUniformBlock> consumer) {
+        public VkWriteDescriptorSetInlineUniformBlock.Ptr at(long index, @NotNull Consumer<@NotNull VkWriteDescriptorSetInlineUniformBlock> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkWriteDescriptorSetInlineUniformBlock value) {

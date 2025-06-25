@@ -89,8 +89,9 @@ public record VkDeviceFaultCountsEXT(@NotNull MemorySegment segment) implements 
             return new VkDeviceFaultCountsEXT(segment.asSlice(index * VkDeviceFaultCountsEXT.BYTES, VkDeviceFaultCountsEXT.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkDeviceFaultCountsEXT> consumer) {
+        public VkDeviceFaultCountsEXT.Ptr at(long index, @NotNull Consumer<@NotNull VkDeviceFaultCountsEXT> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkDeviceFaultCountsEXT value) {

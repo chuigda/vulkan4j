@@ -93,8 +93,9 @@ public record XrSwapchainImageFoveationVulkanFB(@NotNull MemorySegment segment) 
             return new XrSwapchainImageFoveationVulkanFB(segment.asSlice(index * XrSwapchainImageFoveationVulkanFB.BYTES, XrSwapchainImageFoveationVulkanFB.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull XrSwapchainImageFoveationVulkanFB> consumer) {
+        public XrSwapchainImageFoveationVulkanFB.Ptr at(long index, @NotNull Consumer<@NotNull XrSwapchainImageFoveationVulkanFB> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull XrSwapchainImageFoveationVulkanFB value) {

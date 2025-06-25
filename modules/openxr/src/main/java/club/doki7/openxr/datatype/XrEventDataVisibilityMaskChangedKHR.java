@@ -93,8 +93,9 @@ public record XrEventDataVisibilityMaskChangedKHR(@NotNull MemorySegment segment
             return new XrEventDataVisibilityMaskChangedKHR(segment.asSlice(index * XrEventDataVisibilityMaskChangedKHR.BYTES, XrEventDataVisibilityMaskChangedKHR.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull XrEventDataVisibilityMaskChangedKHR> consumer) {
+        public XrEventDataVisibilityMaskChangedKHR.Ptr at(long index, @NotNull Consumer<@NotNull XrEventDataVisibilityMaskChangedKHR> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull XrEventDataVisibilityMaskChangedKHR value) {

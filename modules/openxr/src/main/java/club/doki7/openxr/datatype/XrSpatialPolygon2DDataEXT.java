@@ -81,8 +81,9 @@ public record XrSpatialPolygon2DDataEXT(@NotNull MemorySegment segment) implemen
             return new XrSpatialPolygon2DDataEXT(segment.asSlice(index * XrSpatialPolygon2DDataEXT.BYTES, XrSpatialPolygon2DDataEXT.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull XrSpatialPolygon2DDataEXT> consumer) {
+        public XrSpatialPolygon2DDataEXT.Ptr at(long index, @NotNull Consumer<@NotNull XrSpatialPolygon2DDataEXT> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull XrSpatialPolygon2DDataEXT value) {

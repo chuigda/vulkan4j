@@ -87,8 +87,9 @@ public record VkExternalComputeQueueDataParamsNV(@NotNull MemorySegment segment)
             return new VkExternalComputeQueueDataParamsNV(segment.asSlice(index * VkExternalComputeQueueDataParamsNV.BYTES, VkExternalComputeQueueDataParamsNV.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkExternalComputeQueueDataParamsNV> consumer) {
+        public VkExternalComputeQueueDataParamsNV.Ptr at(long index, @NotNull Consumer<@NotNull VkExternalComputeQueueDataParamsNV> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkExternalComputeQueueDataParamsNV value) {

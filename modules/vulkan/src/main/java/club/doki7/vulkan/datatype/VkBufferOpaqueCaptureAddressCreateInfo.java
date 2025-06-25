@@ -87,8 +87,9 @@ public record VkBufferOpaqueCaptureAddressCreateInfo(@NotNull MemorySegment segm
             return new VkBufferOpaqueCaptureAddressCreateInfo(segment.asSlice(index * VkBufferOpaqueCaptureAddressCreateInfo.BYTES, VkBufferOpaqueCaptureAddressCreateInfo.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkBufferOpaqueCaptureAddressCreateInfo> consumer) {
+        public VkBufferOpaqueCaptureAddressCreateInfo.Ptr at(long index, @NotNull Consumer<@NotNull VkBufferOpaqueCaptureAddressCreateInfo> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkBufferOpaqueCaptureAddressCreateInfo value) {

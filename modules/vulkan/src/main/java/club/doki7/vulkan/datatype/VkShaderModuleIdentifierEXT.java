@@ -88,8 +88,9 @@ public record VkShaderModuleIdentifierEXT(@NotNull MemorySegment segment) implem
             return new VkShaderModuleIdentifierEXT(segment.asSlice(index * VkShaderModuleIdentifierEXT.BYTES, VkShaderModuleIdentifierEXT.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkShaderModuleIdentifierEXT> consumer) {
+        public VkShaderModuleIdentifierEXT.Ptr at(long index, @NotNull Consumer<@NotNull VkShaderModuleIdentifierEXT> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkShaderModuleIdentifierEXT value) {

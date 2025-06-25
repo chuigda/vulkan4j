@@ -90,8 +90,9 @@ public record XrRenderModelAssetPropertiesGetInfoEXT(@NotNull MemorySegment segm
             return new XrRenderModelAssetPropertiesGetInfoEXT(segment.asSlice(index * XrRenderModelAssetPropertiesGetInfoEXT.BYTES, XrRenderModelAssetPropertiesGetInfoEXT.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull XrRenderModelAssetPropertiesGetInfoEXT> consumer) {
+        public XrRenderModelAssetPropertiesGetInfoEXT.Ptr at(long index, @NotNull Consumer<@NotNull XrRenderModelAssetPropertiesGetInfoEXT> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull XrRenderModelAssetPropertiesGetInfoEXT value) {

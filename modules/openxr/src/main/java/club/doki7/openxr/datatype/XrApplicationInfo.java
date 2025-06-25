@@ -84,8 +84,9 @@ public record XrApplicationInfo(@NotNull MemorySegment segment) implements IXrAp
             return new XrApplicationInfo(segment.asSlice(index * XrApplicationInfo.BYTES, XrApplicationInfo.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull XrApplicationInfo> consumer) {
+        public XrApplicationInfo.Ptr at(long index, @NotNull Consumer<@NotNull XrApplicationInfo> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull XrApplicationInfo value) {

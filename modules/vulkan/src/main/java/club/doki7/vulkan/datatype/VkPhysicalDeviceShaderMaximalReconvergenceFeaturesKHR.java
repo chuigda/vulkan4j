@@ -87,8 +87,9 @@ public record VkPhysicalDeviceShaderMaximalReconvergenceFeaturesKHR(@NotNull Mem
             return new VkPhysicalDeviceShaderMaximalReconvergenceFeaturesKHR(segment.asSlice(index * VkPhysicalDeviceShaderMaximalReconvergenceFeaturesKHR.BYTES, VkPhysicalDeviceShaderMaximalReconvergenceFeaturesKHR.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceShaderMaximalReconvergenceFeaturesKHR> consumer) {
+        public VkPhysicalDeviceShaderMaximalReconvergenceFeaturesKHR.Ptr at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceShaderMaximalReconvergenceFeaturesKHR> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkPhysicalDeviceShaderMaximalReconvergenceFeaturesKHR value) {

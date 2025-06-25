@@ -88,8 +88,9 @@ public record VkViSurfaceCreateInfoNN(@NotNull MemorySegment segment) implements
             return new VkViSurfaceCreateInfoNN(segment.asSlice(index * VkViSurfaceCreateInfoNN.BYTES, VkViSurfaceCreateInfoNN.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkViSurfaceCreateInfoNN> consumer) {
+        public VkViSurfaceCreateInfoNN.Ptr at(long index, @NotNull Consumer<@NotNull VkViSurfaceCreateInfoNN> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkViSurfaceCreateInfoNN value) {

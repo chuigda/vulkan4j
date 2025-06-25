@@ -90,8 +90,9 @@ public record VkPhysicalDevice16BitStorageFeatures(@NotNull MemorySegment segmen
             return new VkPhysicalDevice16BitStorageFeatures(segment.asSlice(index * VkPhysicalDevice16BitStorageFeatures.BYTES, VkPhysicalDevice16BitStorageFeatures.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkPhysicalDevice16BitStorageFeatures> consumer) {
+        public VkPhysicalDevice16BitStorageFeatures.Ptr at(long index, @NotNull Consumer<@NotNull VkPhysicalDevice16BitStorageFeatures> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkPhysicalDevice16BitStorageFeatures value) {

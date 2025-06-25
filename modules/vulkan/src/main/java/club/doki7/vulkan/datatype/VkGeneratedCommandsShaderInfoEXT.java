@@ -88,8 +88,9 @@ public record VkGeneratedCommandsShaderInfoEXT(@NotNull MemorySegment segment) i
             return new VkGeneratedCommandsShaderInfoEXT(segment.asSlice(index * VkGeneratedCommandsShaderInfoEXT.BYTES, VkGeneratedCommandsShaderInfoEXT.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkGeneratedCommandsShaderInfoEXT> consumer) {
+        public VkGeneratedCommandsShaderInfoEXT.Ptr at(long index, @NotNull Consumer<@NotNull VkGeneratedCommandsShaderInfoEXT> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkGeneratedCommandsShaderInfoEXT value) {

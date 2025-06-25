@@ -90,8 +90,9 @@ public record VkSemaphoreWaitInfo(@NotNull MemorySegment segment) implements IVk
             return new VkSemaphoreWaitInfo(segment.asSlice(index * VkSemaphoreWaitInfo.BYTES, VkSemaphoreWaitInfo.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkSemaphoreWaitInfo> consumer) {
+        public VkSemaphoreWaitInfo.Ptr at(long index, @NotNull Consumer<@NotNull VkSemaphoreWaitInfo> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkSemaphoreWaitInfo value) {

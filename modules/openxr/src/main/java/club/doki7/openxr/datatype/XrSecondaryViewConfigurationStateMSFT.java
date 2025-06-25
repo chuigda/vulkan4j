@@ -92,8 +92,9 @@ public record XrSecondaryViewConfigurationStateMSFT(@NotNull MemorySegment segme
             return new XrSecondaryViewConfigurationStateMSFT(segment.asSlice(index * XrSecondaryViewConfigurationStateMSFT.BYTES, XrSecondaryViewConfigurationStateMSFT.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull XrSecondaryViewConfigurationStateMSFT> consumer) {
+        public XrSecondaryViewConfigurationStateMSFT.Ptr at(long index, @NotNull Consumer<@NotNull XrSecondaryViewConfigurationStateMSFT> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull XrSecondaryViewConfigurationStateMSFT value) {

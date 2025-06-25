@@ -87,8 +87,9 @@ public record VkBufferUsageFlags2CreateInfo(@NotNull MemorySegment segment) impl
             return new VkBufferUsageFlags2CreateInfo(segment.asSlice(index * VkBufferUsageFlags2CreateInfo.BYTES, VkBufferUsageFlags2CreateInfo.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkBufferUsageFlags2CreateInfo> consumer) {
+        public VkBufferUsageFlags2CreateInfo.Ptr at(long index, @NotNull Consumer<@NotNull VkBufferUsageFlags2CreateInfo> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkBufferUsageFlags2CreateInfo value) {

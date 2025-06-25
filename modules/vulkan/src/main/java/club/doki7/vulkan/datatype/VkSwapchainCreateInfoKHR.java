@@ -102,8 +102,9 @@ public record VkSwapchainCreateInfoKHR(@NotNull MemorySegment segment) implement
             return new VkSwapchainCreateInfoKHR(segment.asSlice(index * VkSwapchainCreateInfoKHR.BYTES, VkSwapchainCreateInfoKHR.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkSwapchainCreateInfoKHR> consumer) {
+        public VkSwapchainCreateInfoKHR.Ptr at(long index, @NotNull Consumer<@NotNull VkSwapchainCreateInfoKHR> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkSwapchainCreateInfoKHR value) {

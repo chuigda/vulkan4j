@@ -92,8 +92,9 @@ public record XrSenseDataFilterPlaneOrientationBD(@NotNull MemorySegment segment
             return new XrSenseDataFilterPlaneOrientationBD(segment.asSlice(index * XrSenseDataFilterPlaneOrientationBD.BYTES, XrSenseDataFilterPlaneOrientationBD.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull XrSenseDataFilterPlaneOrientationBD> consumer) {
+        public XrSenseDataFilterPlaneOrientationBD.Ptr at(long index, @NotNull Consumer<@NotNull XrSenseDataFilterPlaneOrientationBD> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull XrSenseDataFilterPlaneOrientationBD value) {

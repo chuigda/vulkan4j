@@ -88,8 +88,9 @@ public record VkPhysicalDeviceCooperativeMatrixFeaturesNV(@NotNull MemorySegment
             return new VkPhysicalDeviceCooperativeMatrixFeaturesNV(segment.asSlice(index * VkPhysicalDeviceCooperativeMatrixFeaturesNV.BYTES, VkPhysicalDeviceCooperativeMatrixFeaturesNV.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceCooperativeMatrixFeaturesNV> consumer) {
+        public VkPhysicalDeviceCooperativeMatrixFeaturesNV.Ptr at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceCooperativeMatrixFeaturesNV> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkPhysicalDeviceCooperativeMatrixFeaturesNV value) {

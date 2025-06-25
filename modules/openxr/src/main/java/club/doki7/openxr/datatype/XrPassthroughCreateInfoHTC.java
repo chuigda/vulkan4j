@@ -91,8 +91,9 @@ public record XrPassthroughCreateInfoHTC(@NotNull MemorySegment segment) impleme
             return new XrPassthroughCreateInfoHTC(segment.asSlice(index * XrPassthroughCreateInfoHTC.BYTES, XrPassthroughCreateInfoHTC.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull XrPassthroughCreateInfoHTC> consumer) {
+        public XrPassthroughCreateInfoHTC.Ptr at(long index, @NotNull Consumer<@NotNull XrPassthroughCreateInfoHTC> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull XrPassthroughCreateInfoHTC value) {

@@ -93,8 +93,9 @@ public record XrSpatialAnchorCreateInfoEXT(@NotNull MemorySegment segment) imple
             return new XrSpatialAnchorCreateInfoEXT(segment.asSlice(index * XrSpatialAnchorCreateInfoEXT.BYTES, XrSpatialAnchorCreateInfoEXT.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull XrSpatialAnchorCreateInfoEXT> consumer) {
+        public XrSpatialAnchorCreateInfoEXT.Ptr at(long index, @NotNull Consumer<@NotNull XrSpatialAnchorCreateInfoEXT> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull XrSpatialAnchorCreateInfoEXT value) {

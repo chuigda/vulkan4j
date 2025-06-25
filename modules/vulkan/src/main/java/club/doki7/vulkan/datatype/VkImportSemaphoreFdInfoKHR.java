@@ -90,8 +90,9 @@ public record VkImportSemaphoreFdInfoKHR(@NotNull MemorySegment segment) impleme
             return new VkImportSemaphoreFdInfoKHR(segment.asSlice(index * VkImportSemaphoreFdInfoKHR.BYTES, VkImportSemaphoreFdInfoKHR.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkImportSemaphoreFdInfoKHR> consumer) {
+        public VkImportSemaphoreFdInfoKHR.Ptr at(long index, @NotNull Consumer<@NotNull VkImportSemaphoreFdInfoKHR> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkImportSemaphoreFdInfoKHR value) {

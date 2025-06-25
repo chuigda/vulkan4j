@@ -89,8 +89,9 @@ public record VkDebugMarkerObjectNameInfoEXT(@NotNull MemorySegment segment) imp
             return new VkDebugMarkerObjectNameInfoEXT(segment.asSlice(index * VkDebugMarkerObjectNameInfoEXT.BYTES, VkDebugMarkerObjectNameInfoEXT.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkDebugMarkerObjectNameInfoEXT> consumer) {
+        public VkDebugMarkerObjectNameInfoEXT.Ptr at(long index, @NotNull Consumer<@NotNull VkDebugMarkerObjectNameInfoEXT> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkDebugMarkerObjectNameInfoEXT value) {

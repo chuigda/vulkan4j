@@ -89,8 +89,9 @@ public record VkPipelineFragmentShadingRateEnumStateCreateInfoNV(@NotNull Memory
             return new VkPipelineFragmentShadingRateEnumStateCreateInfoNV(segment.asSlice(index * VkPipelineFragmentShadingRateEnumStateCreateInfoNV.BYTES, VkPipelineFragmentShadingRateEnumStateCreateInfoNV.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkPipelineFragmentShadingRateEnumStateCreateInfoNV> consumer) {
+        public VkPipelineFragmentShadingRateEnumStateCreateInfoNV.Ptr at(long index, @NotNull Consumer<@NotNull VkPipelineFragmentShadingRateEnumStateCreateInfoNV> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkPipelineFragmentShadingRateEnumStateCreateInfoNV value) {

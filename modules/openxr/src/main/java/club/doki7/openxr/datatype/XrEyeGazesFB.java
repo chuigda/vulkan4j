@@ -93,8 +93,9 @@ public record XrEyeGazesFB(@NotNull MemorySegment segment) implements IXrEyeGaze
             return new XrEyeGazesFB(segment.asSlice(index * XrEyeGazesFB.BYTES, XrEyeGazesFB.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull XrEyeGazesFB> consumer) {
+        public XrEyeGazesFB.Ptr at(long index, @NotNull Consumer<@NotNull XrEyeGazesFB> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull XrEyeGazesFB value) {

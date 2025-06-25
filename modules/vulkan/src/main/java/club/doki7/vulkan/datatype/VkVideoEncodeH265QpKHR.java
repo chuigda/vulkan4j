@@ -78,8 +78,9 @@ public record VkVideoEncodeH265QpKHR(@NotNull MemorySegment segment) implements 
             return new VkVideoEncodeH265QpKHR(segment.asSlice(index * VkVideoEncodeH265QpKHR.BYTES, VkVideoEncodeH265QpKHR.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkVideoEncodeH265QpKHR> consumer) {
+        public VkVideoEncodeH265QpKHR.Ptr at(long index, @NotNull Consumer<@NotNull VkVideoEncodeH265QpKHR> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkVideoEncodeH265QpKHR value) {

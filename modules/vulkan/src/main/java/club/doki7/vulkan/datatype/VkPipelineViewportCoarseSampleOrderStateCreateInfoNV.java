@@ -89,8 +89,9 @@ public record VkPipelineViewportCoarseSampleOrderStateCreateInfoNV(@NotNull Memo
             return new VkPipelineViewportCoarseSampleOrderStateCreateInfoNV(segment.asSlice(index * VkPipelineViewportCoarseSampleOrderStateCreateInfoNV.BYTES, VkPipelineViewportCoarseSampleOrderStateCreateInfoNV.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkPipelineViewportCoarseSampleOrderStateCreateInfoNV> consumer) {
+        public VkPipelineViewportCoarseSampleOrderStateCreateInfoNV.Ptr at(long index, @NotNull Consumer<@NotNull VkPipelineViewportCoarseSampleOrderStateCreateInfoNV> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkPipelineViewportCoarseSampleOrderStateCreateInfoNV value) {

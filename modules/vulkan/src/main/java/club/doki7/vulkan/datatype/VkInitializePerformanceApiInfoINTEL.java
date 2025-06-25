@@ -87,8 +87,9 @@ public record VkInitializePerformanceApiInfoINTEL(@NotNull MemorySegment segment
             return new VkInitializePerformanceApiInfoINTEL(segment.asSlice(index * VkInitializePerformanceApiInfoINTEL.BYTES, VkInitializePerformanceApiInfoINTEL.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkInitializePerformanceApiInfoINTEL> consumer) {
+        public VkInitializePerformanceApiInfoINTEL.Ptr at(long index, @NotNull Consumer<@NotNull VkInitializePerformanceApiInfoINTEL> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkInitializePerformanceApiInfoINTEL value) {

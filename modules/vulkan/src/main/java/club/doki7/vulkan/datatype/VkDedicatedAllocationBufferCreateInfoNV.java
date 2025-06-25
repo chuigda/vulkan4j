@@ -87,8 +87,9 @@ public record VkDedicatedAllocationBufferCreateInfoNV(@NotNull MemorySegment seg
             return new VkDedicatedAllocationBufferCreateInfoNV(segment.asSlice(index * VkDedicatedAllocationBufferCreateInfoNV.BYTES, VkDedicatedAllocationBufferCreateInfoNV.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkDedicatedAllocationBufferCreateInfoNV> consumer) {
+        public VkDedicatedAllocationBufferCreateInfoNV.Ptr at(long index, @NotNull Consumer<@NotNull VkDedicatedAllocationBufferCreateInfoNV> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkDedicatedAllocationBufferCreateInfoNV value) {

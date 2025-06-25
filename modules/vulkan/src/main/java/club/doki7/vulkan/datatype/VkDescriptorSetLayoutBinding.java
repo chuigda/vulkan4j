@@ -80,8 +80,9 @@ public record VkDescriptorSetLayoutBinding(@NotNull MemorySegment segment) imple
             return new VkDescriptorSetLayoutBinding(segment.asSlice(index * VkDescriptorSetLayoutBinding.BYTES, VkDescriptorSetLayoutBinding.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkDescriptorSetLayoutBinding> consumer) {
+        public VkDescriptorSetLayoutBinding.Ptr at(long index, @NotNull Consumer<@NotNull VkDescriptorSetLayoutBinding> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkDescriptorSetLayoutBinding value) {

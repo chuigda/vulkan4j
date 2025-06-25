@@ -77,8 +77,9 @@ public record VkBaseInStructure(@NotNull MemorySegment segment) implements IVkBa
             return new VkBaseInStructure(segment.asSlice(index * VkBaseInStructure.BYTES, VkBaseInStructure.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkBaseInStructure> consumer) {
+        public VkBaseInStructure.Ptr at(long index, @NotNull Consumer<@NotNull VkBaseInStructure> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkBaseInStructure value) {

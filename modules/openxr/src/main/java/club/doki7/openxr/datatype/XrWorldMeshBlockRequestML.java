@@ -92,8 +92,9 @@ public record XrWorldMeshBlockRequestML(@NotNull MemorySegment segment) implemen
             return new XrWorldMeshBlockRequestML(segment.asSlice(index * XrWorldMeshBlockRequestML.BYTES, XrWorldMeshBlockRequestML.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull XrWorldMeshBlockRequestML> consumer) {
+        public XrWorldMeshBlockRequestML.Ptr at(long index, @NotNull Consumer<@NotNull XrWorldMeshBlockRequestML> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull XrWorldMeshBlockRequestML value) {

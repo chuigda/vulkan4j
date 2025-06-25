@@ -91,8 +91,9 @@ public record VkPhysicalDeviceSparseImageFormatInfo2(@NotNull MemorySegment segm
             return new VkPhysicalDeviceSparseImageFormatInfo2(segment.asSlice(index * VkPhysicalDeviceSparseImageFormatInfo2.BYTES, VkPhysicalDeviceSparseImageFormatInfo2.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceSparseImageFormatInfo2> consumer) {
+        public VkPhysicalDeviceSparseImageFormatInfo2.Ptr at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceSparseImageFormatInfo2> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkPhysicalDeviceSparseImageFormatInfo2 value) {

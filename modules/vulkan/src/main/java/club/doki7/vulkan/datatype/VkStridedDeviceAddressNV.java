@@ -77,8 +77,9 @@ public record VkStridedDeviceAddressNV(@NotNull MemorySegment segment) implement
             return new VkStridedDeviceAddressNV(segment.asSlice(index * VkStridedDeviceAddressNV.BYTES, VkStridedDeviceAddressNV.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkStridedDeviceAddressNV> consumer) {
+        public VkStridedDeviceAddressNV.Ptr at(long index, @NotNull Consumer<@NotNull VkStridedDeviceAddressNV> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkStridedDeviceAddressNV value) {

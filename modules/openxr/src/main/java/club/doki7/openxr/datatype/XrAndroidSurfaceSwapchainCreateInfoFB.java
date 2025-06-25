@@ -91,8 +91,9 @@ public record XrAndroidSurfaceSwapchainCreateInfoFB(@NotNull MemorySegment segme
             return new XrAndroidSurfaceSwapchainCreateInfoFB(segment.asSlice(index * XrAndroidSurfaceSwapchainCreateInfoFB.BYTES, XrAndroidSurfaceSwapchainCreateInfoFB.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull XrAndroidSurfaceSwapchainCreateInfoFB> consumer) {
+        public XrAndroidSurfaceSwapchainCreateInfoFB.Ptr at(long index, @NotNull Consumer<@NotNull XrAndroidSurfaceSwapchainCreateInfoFB> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull XrAndroidSurfaceSwapchainCreateInfoFB value) {

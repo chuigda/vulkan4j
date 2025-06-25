@@ -87,8 +87,9 @@ public record VkPhysicalDeviceCustomBorderColorPropertiesEXT(@NotNull MemorySegm
             return new VkPhysicalDeviceCustomBorderColorPropertiesEXT(segment.asSlice(index * VkPhysicalDeviceCustomBorderColorPropertiesEXT.BYTES, VkPhysicalDeviceCustomBorderColorPropertiesEXT.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceCustomBorderColorPropertiesEXT> consumer) {
+        public VkPhysicalDeviceCustomBorderColorPropertiesEXT.Ptr at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceCustomBorderColorPropertiesEXT> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkPhysicalDeviceCustomBorderColorPropertiesEXT value) {

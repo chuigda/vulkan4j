@@ -79,8 +79,9 @@ public record StdVideoH265ProfileTierLevelFlags(@NotNull MemorySegment segment) 
             return new StdVideoH265ProfileTierLevelFlags(segment.asSlice(index * StdVideoH265ProfileTierLevelFlags.BYTES, StdVideoH265ProfileTierLevelFlags.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull StdVideoH265ProfileTierLevelFlags> consumer) {
+        public StdVideoH265ProfileTierLevelFlags.Ptr at(long index, @NotNull Consumer<@NotNull StdVideoH265ProfileTierLevelFlags> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull StdVideoH265ProfileTierLevelFlags value) {

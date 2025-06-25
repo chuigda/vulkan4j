@@ -88,8 +88,9 @@ public record VkPhysicalDeviceExternalMemorySciBufFeaturesNV(@NotNull MemorySegm
             return new VkPhysicalDeviceExternalMemorySciBufFeaturesNV(segment.asSlice(index * VkPhysicalDeviceExternalMemorySciBufFeaturesNV.BYTES, VkPhysicalDeviceExternalMemorySciBufFeaturesNV.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceExternalMemorySciBufFeaturesNV> consumer) {
+        public VkPhysicalDeviceExternalMemorySciBufFeaturesNV.Ptr at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceExternalMemorySciBufFeaturesNV> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkPhysicalDeviceExternalMemorySciBufFeaturesNV value) {

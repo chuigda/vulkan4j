@@ -91,8 +91,9 @@ public record VkRenderingAreaInfo(@NotNull MemorySegment segment) implements IVk
             return new VkRenderingAreaInfo(segment.asSlice(index * VkRenderingAreaInfo.BYTES, VkRenderingAreaInfo.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkRenderingAreaInfo> consumer) {
+        public VkRenderingAreaInfo.Ptr at(long index, @NotNull Consumer<@NotNull VkRenderingAreaInfo> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkRenderingAreaInfo value) {

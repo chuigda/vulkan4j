@@ -87,8 +87,9 @@ public record VkPrivateDataSlotCreateInfo(@NotNull MemorySegment segment) implem
             return new VkPrivateDataSlotCreateInfo(segment.asSlice(index * VkPrivateDataSlotCreateInfo.BYTES, VkPrivateDataSlotCreateInfo.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkPrivateDataSlotCreateInfo> consumer) {
+        public VkPrivateDataSlotCreateInfo.Ptr at(long index, @NotNull Consumer<@NotNull VkPrivateDataSlotCreateInfo> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkPrivateDataSlotCreateInfo value) {

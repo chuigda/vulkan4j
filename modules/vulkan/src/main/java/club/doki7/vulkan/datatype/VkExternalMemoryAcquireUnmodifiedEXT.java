@@ -87,8 +87,9 @@ public record VkExternalMemoryAcquireUnmodifiedEXT(@NotNull MemorySegment segmen
             return new VkExternalMemoryAcquireUnmodifiedEXT(segment.asSlice(index * VkExternalMemoryAcquireUnmodifiedEXT.BYTES, VkExternalMemoryAcquireUnmodifiedEXT.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkExternalMemoryAcquireUnmodifiedEXT> consumer) {
+        public VkExternalMemoryAcquireUnmodifiedEXT.Ptr at(long index, @NotNull Consumer<@NotNull VkExternalMemoryAcquireUnmodifiedEXT> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkExternalMemoryAcquireUnmodifiedEXT value) {

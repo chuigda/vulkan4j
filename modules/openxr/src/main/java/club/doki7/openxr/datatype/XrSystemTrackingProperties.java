@@ -81,8 +81,9 @@ public record XrSystemTrackingProperties(@NotNull MemorySegment segment) impleme
             return new XrSystemTrackingProperties(segment.asSlice(index * XrSystemTrackingProperties.BYTES, XrSystemTrackingProperties.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull XrSystemTrackingProperties> consumer) {
+        public XrSystemTrackingProperties.Ptr at(long index, @NotNull Consumer<@NotNull XrSystemTrackingProperties> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull XrSystemTrackingProperties value) {

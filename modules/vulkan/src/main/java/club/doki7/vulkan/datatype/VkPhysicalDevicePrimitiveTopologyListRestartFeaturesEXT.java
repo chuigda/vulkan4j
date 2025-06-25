@@ -88,8 +88,9 @@ public record VkPhysicalDevicePrimitiveTopologyListRestartFeaturesEXT(@NotNull M
             return new VkPhysicalDevicePrimitiveTopologyListRestartFeaturesEXT(segment.asSlice(index * VkPhysicalDevicePrimitiveTopologyListRestartFeaturesEXT.BYTES, VkPhysicalDevicePrimitiveTopologyListRestartFeaturesEXT.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkPhysicalDevicePrimitiveTopologyListRestartFeaturesEXT> consumer) {
+        public VkPhysicalDevicePrimitiveTopologyListRestartFeaturesEXT.Ptr at(long index, @NotNull Consumer<@NotNull VkPhysicalDevicePrimitiveTopologyListRestartFeaturesEXT> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkPhysicalDevicePrimitiveTopologyListRestartFeaturesEXT value) {

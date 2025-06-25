@@ -91,8 +91,9 @@ public record XrSystemSpatialEntityPropertiesFB(@NotNull MemorySegment segment) 
             return new XrSystemSpatialEntityPropertiesFB(segment.asSlice(index * XrSystemSpatialEntityPropertiesFB.BYTES, XrSystemSpatialEntityPropertiesFB.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull XrSystemSpatialEntityPropertiesFB> consumer) {
+        public XrSystemSpatialEntityPropertiesFB.Ptr at(long index, @NotNull Consumer<@NotNull XrSystemSpatialEntityPropertiesFB> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull XrSystemSpatialEntityPropertiesFB value) {

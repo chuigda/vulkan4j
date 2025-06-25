@@ -93,8 +93,9 @@ public record VkWin32KeyedMutexAcquireReleaseInfoKHR(@NotNull MemorySegment segm
             return new VkWin32KeyedMutexAcquireReleaseInfoKHR(segment.asSlice(index * VkWin32KeyedMutexAcquireReleaseInfoKHR.BYTES, VkWin32KeyedMutexAcquireReleaseInfoKHR.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkWin32KeyedMutexAcquireReleaseInfoKHR> consumer) {
+        public VkWin32KeyedMutexAcquireReleaseInfoKHR.Ptr at(long index, @NotNull Consumer<@NotNull VkWin32KeyedMutexAcquireReleaseInfoKHR> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkWin32KeyedMutexAcquireReleaseInfoKHR value) {

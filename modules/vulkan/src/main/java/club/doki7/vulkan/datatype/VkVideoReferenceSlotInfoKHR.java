@@ -88,8 +88,9 @@ public record VkVideoReferenceSlotInfoKHR(@NotNull MemorySegment segment) implem
             return new VkVideoReferenceSlotInfoKHR(segment.asSlice(index * VkVideoReferenceSlotInfoKHR.BYTES, VkVideoReferenceSlotInfoKHR.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkVideoReferenceSlotInfoKHR> consumer) {
+        public VkVideoReferenceSlotInfoKHR.Ptr at(long index, @NotNull Consumer<@NotNull VkVideoReferenceSlotInfoKHR> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkVideoReferenceSlotInfoKHR value) {

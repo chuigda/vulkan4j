@@ -87,8 +87,9 @@ public record VkDisplayPowerInfoEXT(@NotNull MemorySegment segment) implements I
             return new VkDisplayPowerInfoEXT(segment.asSlice(index * VkDisplayPowerInfoEXT.BYTES, VkDisplayPowerInfoEXT.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkDisplayPowerInfoEXT> consumer) {
+        public VkDisplayPowerInfoEXT.Ptr at(long index, @NotNull Consumer<@NotNull VkDisplayPowerInfoEXT> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkDisplayPowerInfoEXT value) {

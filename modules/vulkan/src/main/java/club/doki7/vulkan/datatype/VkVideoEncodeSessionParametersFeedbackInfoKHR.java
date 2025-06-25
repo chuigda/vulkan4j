@@ -87,8 +87,9 @@ public record VkVideoEncodeSessionParametersFeedbackInfoKHR(@NotNull MemorySegme
             return new VkVideoEncodeSessionParametersFeedbackInfoKHR(segment.asSlice(index * VkVideoEncodeSessionParametersFeedbackInfoKHR.BYTES, VkVideoEncodeSessionParametersFeedbackInfoKHR.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkVideoEncodeSessionParametersFeedbackInfoKHR> consumer) {
+        public VkVideoEncodeSessionParametersFeedbackInfoKHR.Ptr at(long index, @NotNull Consumer<@NotNull VkVideoEncodeSessionParametersFeedbackInfoKHR> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkVideoEncodeSessionParametersFeedbackInfoKHR value) {

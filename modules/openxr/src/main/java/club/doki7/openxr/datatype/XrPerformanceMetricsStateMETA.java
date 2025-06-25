@@ -91,8 +91,9 @@ public record XrPerformanceMetricsStateMETA(@NotNull MemorySegment segment) impl
             return new XrPerformanceMetricsStateMETA(segment.asSlice(index * XrPerformanceMetricsStateMETA.BYTES, XrPerformanceMetricsStateMETA.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull XrPerformanceMetricsStateMETA> consumer) {
+        public XrPerformanceMetricsStateMETA.Ptr at(long index, @NotNull Consumer<@NotNull XrPerformanceMetricsStateMETA> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull XrPerformanceMetricsStateMETA value) {

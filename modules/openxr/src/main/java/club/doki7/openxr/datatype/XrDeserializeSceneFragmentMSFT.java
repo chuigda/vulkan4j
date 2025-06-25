@@ -81,8 +81,9 @@ public record XrDeserializeSceneFragmentMSFT(@NotNull MemorySegment segment) imp
             return new XrDeserializeSceneFragmentMSFT(segment.asSlice(index * XrDeserializeSceneFragmentMSFT.BYTES, XrDeserializeSceneFragmentMSFT.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull XrDeserializeSceneFragmentMSFT> consumer) {
+        public XrDeserializeSceneFragmentMSFT.Ptr at(long index, @NotNull Consumer<@NotNull XrDeserializeSceneFragmentMSFT> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull XrDeserializeSceneFragmentMSFT value) {

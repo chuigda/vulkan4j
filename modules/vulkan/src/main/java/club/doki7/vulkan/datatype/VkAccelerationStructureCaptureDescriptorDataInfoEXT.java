@@ -88,8 +88,9 @@ public record VkAccelerationStructureCaptureDescriptorDataInfoEXT(@NotNull Memor
             return new VkAccelerationStructureCaptureDescriptorDataInfoEXT(segment.asSlice(index * VkAccelerationStructureCaptureDescriptorDataInfoEXT.BYTES, VkAccelerationStructureCaptureDescriptorDataInfoEXT.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkAccelerationStructureCaptureDescriptorDataInfoEXT> consumer) {
+        public VkAccelerationStructureCaptureDescriptorDataInfoEXT.Ptr at(long index, @NotNull Consumer<@NotNull VkAccelerationStructureCaptureDescriptorDataInfoEXT> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkAccelerationStructureCaptureDescriptorDataInfoEXT value) {

@@ -92,8 +92,9 @@ public record XrReferenceSpaceCreateInfo(@NotNull MemorySegment segment) impleme
             return new XrReferenceSpaceCreateInfo(segment.asSlice(index * XrReferenceSpaceCreateInfo.BYTES, XrReferenceSpaceCreateInfo.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull XrReferenceSpaceCreateInfo> consumer) {
+        public XrReferenceSpaceCreateInfo.Ptr at(long index, @NotNull Consumer<@NotNull XrReferenceSpaceCreateInfo> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull XrReferenceSpaceCreateInfo value) {

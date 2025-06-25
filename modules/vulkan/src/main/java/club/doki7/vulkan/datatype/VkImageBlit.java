@@ -79,8 +79,9 @@ public record VkImageBlit(@NotNull MemorySegment segment) implements IVkImageBli
             return new VkImageBlit(segment.asSlice(index * VkImageBlit.BYTES, VkImageBlit.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkImageBlit> consumer) {
+        public VkImageBlit.Ptr at(long index, @NotNull Consumer<@NotNull VkImageBlit> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkImageBlit value) {

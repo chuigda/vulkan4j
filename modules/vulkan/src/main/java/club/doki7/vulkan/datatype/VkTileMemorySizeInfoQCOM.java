@@ -87,8 +87,9 @@ public record VkTileMemorySizeInfoQCOM(@NotNull MemorySegment segment) implement
             return new VkTileMemorySizeInfoQCOM(segment.asSlice(index * VkTileMemorySizeInfoQCOM.BYTES, VkTileMemorySizeInfoQCOM.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkTileMemorySizeInfoQCOM> consumer) {
+        public VkTileMemorySizeInfoQCOM.Ptr at(long index, @NotNull Consumer<@NotNull VkTileMemorySizeInfoQCOM> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkTileMemorySizeInfoQCOM value) {

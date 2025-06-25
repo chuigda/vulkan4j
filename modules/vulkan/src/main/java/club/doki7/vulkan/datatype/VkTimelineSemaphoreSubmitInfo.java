@@ -90,8 +90,9 @@ public record VkTimelineSemaphoreSubmitInfo(@NotNull MemorySegment segment) impl
             return new VkTimelineSemaphoreSubmitInfo(segment.asSlice(index * VkTimelineSemaphoreSubmitInfo.BYTES, VkTimelineSemaphoreSubmitInfo.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkTimelineSemaphoreSubmitInfo> consumer) {
+        public VkTimelineSemaphoreSubmitInfo.Ptr at(long index, @NotNull Consumer<@NotNull VkTimelineSemaphoreSubmitInfo> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkTimelineSemaphoreSubmitInfo value) {

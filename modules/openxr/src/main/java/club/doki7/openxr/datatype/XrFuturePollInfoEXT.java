@@ -91,8 +91,9 @@ public record XrFuturePollInfoEXT(@NotNull MemorySegment segment) implements IXr
             return new XrFuturePollInfoEXT(segment.asSlice(index * XrFuturePollInfoEXT.BYTES, XrFuturePollInfoEXT.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull XrFuturePollInfoEXT> consumer) {
+        public XrFuturePollInfoEXT.Ptr at(long index, @NotNull Consumer<@NotNull XrFuturePollInfoEXT> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull XrFuturePollInfoEXT value) {

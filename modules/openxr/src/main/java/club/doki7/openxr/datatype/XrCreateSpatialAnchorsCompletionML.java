@@ -93,8 +93,9 @@ public record XrCreateSpatialAnchorsCompletionML(@NotNull MemorySegment segment)
             return new XrCreateSpatialAnchorsCompletionML(segment.asSlice(index * XrCreateSpatialAnchorsCompletionML.BYTES, XrCreateSpatialAnchorsCompletionML.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull XrCreateSpatialAnchorsCompletionML> consumer) {
+        public XrCreateSpatialAnchorsCompletionML.Ptr at(long index, @NotNull Consumer<@NotNull XrCreateSpatialAnchorsCompletionML> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull XrCreateSpatialAnchorsCompletionML value) {

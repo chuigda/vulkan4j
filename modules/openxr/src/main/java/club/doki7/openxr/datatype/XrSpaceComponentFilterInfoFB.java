@@ -91,8 +91,9 @@ public record XrSpaceComponentFilterInfoFB(@NotNull MemorySegment segment) imple
             return new XrSpaceComponentFilterInfoFB(segment.asSlice(index * XrSpaceComponentFilterInfoFB.BYTES, XrSpaceComponentFilterInfoFB.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull XrSpaceComponentFilterInfoFB> consumer) {
+        public XrSpaceComponentFilterInfoFB.Ptr at(long index, @NotNull Consumer<@NotNull XrSpaceComponentFilterInfoFB> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull XrSpaceComponentFilterInfoFB value) {

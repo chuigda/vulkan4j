@@ -89,8 +89,9 @@ public record VkDirectDriverLoadingListLUNARG(@NotNull MemorySegment segment) im
             return new VkDirectDriverLoadingListLUNARG(segment.asSlice(index * VkDirectDriverLoadingListLUNARG.BYTES, VkDirectDriverLoadingListLUNARG.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkDirectDriverLoadingListLUNARG> consumer) {
+        public VkDirectDriverLoadingListLUNARG.Ptr at(long index, @NotNull Consumer<@NotNull VkDirectDriverLoadingListLUNARG> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkDirectDriverLoadingListLUNARG value) {

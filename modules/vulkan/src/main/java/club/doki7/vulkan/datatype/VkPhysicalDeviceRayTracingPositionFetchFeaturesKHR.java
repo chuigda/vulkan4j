@@ -87,8 +87,9 @@ public record VkPhysicalDeviceRayTracingPositionFetchFeaturesKHR(@NotNull Memory
             return new VkPhysicalDeviceRayTracingPositionFetchFeaturesKHR(segment.asSlice(index * VkPhysicalDeviceRayTracingPositionFetchFeaturesKHR.BYTES, VkPhysicalDeviceRayTracingPositionFetchFeaturesKHR.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceRayTracingPositionFetchFeaturesKHR> consumer) {
+        public VkPhysicalDeviceRayTracingPositionFetchFeaturesKHR.Ptr at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceRayTracingPositionFetchFeaturesKHR> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkPhysicalDeviceRayTracingPositionFetchFeaturesKHR value) {

@@ -90,8 +90,9 @@ public record VkPipelineDiscardRectangleStateCreateInfoEXT(@NotNull MemorySegmen
             return new VkPipelineDiscardRectangleStateCreateInfoEXT(segment.asSlice(index * VkPipelineDiscardRectangleStateCreateInfoEXT.BYTES, VkPipelineDiscardRectangleStateCreateInfoEXT.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkPipelineDiscardRectangleStateCreateInfoEXT> consumer) {
+        public VkPipelineDiscardRectangleStateCreateInfoEXT.Ptr at(long index, @NotNull Consumer<@NotNull VkPipelineDiscardRectangleStateCreateInfoEXT> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkPipelineDiscardRectangleStateCreateInfoEXT value) {

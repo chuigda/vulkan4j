@@ -92,8 +92,9 @@ public record XrPassthroughKeyboardHandsIntensityFB(@NotNull MemorySegment segme
             return new XrPassthroughKeyboardHandsIntensityFB(segment.asSlice(index * XrPassthroughKeyboardHandsIntensityFB.BYTES, XrPassthroughKeyboardHandsIntensityFB.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull XrPassthroughKeyboardHandsIntensityFB> consumer) {
+        public XrPassthroughKeyboardHandsIntensityFB.Ptr at(long index, @NotNull Consumer<@NotNull XrPassthroughKeyboardHandsIntensityFB> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull XrPassthroughKeyboardHandsIntensityFB value) {

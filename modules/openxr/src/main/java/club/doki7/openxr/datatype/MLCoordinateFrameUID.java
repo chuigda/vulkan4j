@@ -80,8 +80,9 @@ public record MLCoordinateFrameUID(@NotNull MemorySegment segment) implements IM
             return new MLCoordinateFrameUID(segment.asSlice(index * MLCoordinateFrameUID.BYTES, MLCoordinateFrameUID.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull MLCoordinateFrameUID> consumer) {
+        public MLCoordinateFrameUID.Ptr at(long index, @NotNull Consumer<@NotNull MLCoordinateFrameUID> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull MLCoordinateFrameUID value) {

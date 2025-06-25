@@ -84,8 +84,9 @@ public record StdVideoEncodeH265WeightTable(@NotNull MemorySegment segment) impl
             return new StdVideoEncodeH265WeightTable(segment.asSlice(index * StdVideoEncodeH265WeightTable.BYTES, StdVideoEncodeH265WeightTable.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull StdVideoEncodeH265WeightTable> consumer) {
+        public StdVideoEncodeH265WeightTable.Ptr at(long index, @NotNull Consumer<@NotNull StdVideoEncodeH265WeightTable> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull StdVideoEncodeH265WeightTable value) {

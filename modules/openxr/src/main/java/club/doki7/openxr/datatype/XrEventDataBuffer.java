@@ -91,8 +91,9 @@ public record XrEventDataBuffer(@NotNull MemorySegment segment) implements IXrEv
             return new XrEventDataBuffer(segment.asSlice(index * XrEventDataBuffer.BYTES, XrEventDataBuffer.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull XrEventDataBuffer> consumer) {
+        public XrEventDataBuffer.Ptr at(long index, @NotNull Consumer<@NotNull XrEventDataBuffer> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull XrEventDataBuffer value) {

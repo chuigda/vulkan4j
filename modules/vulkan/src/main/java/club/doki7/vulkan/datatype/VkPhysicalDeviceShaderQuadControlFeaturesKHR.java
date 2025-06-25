@@ -87,8 +87,9 @@ public record VkPhysicalDeviceShaderQuadControlFeaturesKHR(@NotNull MemorySegmen
             return new VkPhysicalDeviceShaderQuadControlFeaturesKHR(segment.asSlice(index * VkPhysicalDeviceShaderQuadControlFeaturesKHR.BYTES, VkPhysicalDeviceShaderQuadControlFeaturesKHR.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceShaderQuadControlFeaturesKHR> consumer) {
+        public VkPhysicalDeviceShaderQuadControlFeaturesKHR.Ptr at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceShaderQuadControlFeaturesKHR> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkPhysicalDeviceShaderQuadControlFeaturesKHR value) {

@@ -87,8 +87,9 @@ public record VkPhysicalDeviceSubpassMergeFeedbackFeaturesEXT(@NotNull MemorySeg
             return new VkPhysicalDeviceSubpassMergeFeedbackFeaturesEXT(segment.asSlice(index * VkPhysicalDeviceSubpassMergeFeedbackFeaturesEXT.BYTES, VkPhysicalDeviceSubpassMergeFeedbackFeaturesEXT.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceSubpassMergeFeedbackFeaturesEXT> consumer) {
+        public VkPhysicalDeviceSubpassMergeFeedbackFeaturesEXT.Ptr at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceSubpassMergeFeedbackFeaturesEXT> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkPhysicalDeviceSubpassMergeFeedbackFeaturesEXT value) {

@@ -90,8 +90,9 @@ public record VkPhysicalDeviceTexelBufferAlignmentProperties(@NotNull MemorySegm
             return new VkPhysicalDeviceTexelBufferAlignmentProperties(segment.asSlice(index * VkPhysicalDeviceTexelBufferAlignmentProperties.BYTES, VkPhysicalDeviceTexelBufferAlignmentProperties.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceTexelBufferAlignmentProperties> consumer) {
+        public VkPhysicalDeviceTexelBufferAlignmentProperties.Ptr at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceTexelBufferAlignmentProperties> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkPhysicalDeviceTexelBufferAlignmentProperties value) {

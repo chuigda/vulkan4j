@@ -98,8 +98,9 @@ public record XrPassthroughMeshTransformInfoHTC(@NotNull MemorySegment segment) 
             return new XrPassthroughMeshTransformInfoHTC(segment.asSlice(index * XrPassthroughMeshTransformInfoHTC.BYTES, XrPassthroughMeshTransformInfoHTC.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull XrPassthroughMeshTransformInfoHTC> consumer) {
+        public XrPassthroughMeshTransformInfoHTC.Ptr at(long index, @NotNull Consumer<@NotNull XrPassthroughMeshTransformInfoHTC> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull XrPassthroughMeshTransformInfoHTC value) {

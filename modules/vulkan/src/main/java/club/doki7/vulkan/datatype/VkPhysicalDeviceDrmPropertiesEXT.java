@@ -92,8 +92,9 @@ public record VkPhysicalDeviceDrmPropertiesEXT(@NotNull MemorySegment segment) i
             return new VkPhysicalDeviceDrmPropertiesEXT(segment.asSlice(index * VkPhysicalDeviceDrmPropertiesEXT.BYTES, VkPhysicalDeviceDrmPropertiesEXT.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceDrmPropertiesEXT> consumer) {
+        public VkPhysicalDeviceDrmPropertiesEXT.Ptr at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceDrmPropertiesEXT> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkPhysicalDeviceDrmPropertiesEXT value) {

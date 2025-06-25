@@ -74,8 +74,9 @@ public record NvSciSyncFenceVKREF(@NotNull MemorySegment segment) implements INv
             return new NvSciSyncFenceVKREF(segment.asSlice(index * NvSciSyncFenceVKREF.BYTES, NvSciSyncFenceVKREF.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull NvSciSyncFenceVKREF> consumer) {
+        public NvSciSyncFenceVKREF.Ptr at(long index, @NotNull Consumer<@NotNull NvSciSyncFenceVKREF> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull NvSciSyncFenceVKREF value) {

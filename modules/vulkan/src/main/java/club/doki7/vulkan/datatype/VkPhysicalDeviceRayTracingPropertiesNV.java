@@ -94,8 +94,9 @@ public record VkPhysicalDeviceRayTracingPropertiesNV(@NotNull MemorySegment segm
             return new VkPhysicalDeviceRayTracingPropertiesNV(segment.asSlice(index * VkPhysicalDeviceRayTracingPropertiesNV.BYTES, VkPhysicalDeviceRayTracingPropertiesNV.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceRayTracingPropertiesNV> consumer) {
+        public VkPhysicalDeviceRayTracingPropertiesNV.Ptr at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceRayTracingPropertiesNV> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkPhysicalDeviceRayTracingPropertiesNV value) {

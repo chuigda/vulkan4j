@@ -102,8 +102,9 @@ public record GLFWallocator(@NotNull MemorySegment segment) implements IGLFWallo
             return new GLFWallocator(segment.asSlice(index * GLFWallocator.BYTES, GLFWallocator.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull GLFWallocator> consumer) {
+        public GLFWallocator.Ptr at(long index, @NotNull Consumer<@NotNull GLFWallocator> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull GLFWallocator value) {

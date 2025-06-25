@@ -88,8 +88,9 @@ public record VkImageViewAddressPropertiesNVX(@NotNull MemorySegment segment) im
             return new VkImageViewAddressPropertiesNVX(segment.asSlice(index * VkImageViewAddressPropertiesNVX.BYTES, VkImageViewAddressPropertiesNVX.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkImageViewAddressPropertiesNVX> consumer) {
+        public VkImageViewAddressPropertiesNVX.Ptr at(long index, @NotNull Consumer<@NotNull VkImageViewAddressPropertiesNVX> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkImageViewAddressPropertiesNVX value) {

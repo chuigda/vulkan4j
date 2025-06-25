@@ -87,8 +87,9 @@ public record VkAndroidHardwareBufferUsageANDROID(@NotNull MemorySegment segment
             return new VkAndroidHardwareBufferUsageANDROID(segment.asSlice(index * VkAndroidHardwareBufferUsageANDROID.BYTES, VkAndroidHardwareBufferUsageANDROID.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkAndroidHardwareBufferUsageANDROID> consumer) {
+        public VkAndroidHardwareBufferUsageANDROID.Ptr at(long index, @NotNull Consumer<@NotNull VkAndroidHardwareBufferUsageANDROID> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkAndroidHardwareBufferUsageANDROID value) {

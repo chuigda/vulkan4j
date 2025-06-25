@@ -94,8 +94,9 @@ public record VkDescriptorUpdateTemplateCreateInfo(@NotNull MemorySegment segmen
             return new VkDescriptorUpdateTemplateCreateInfo(segment.asSlice(index * VkDescriptorUpdateTemplateCreateInfo.BYTES, VkDescriptorUpdateTemplateCreateInfo.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkDescriptorUpdateTemplateCreateInfo> consumer) {
+        public VkDescriptorUpdateTemplateCreateInfo.Ptr at(long index, @NotNull Consumer<@NotNull VkDescriptorUpdateTemplateCreateInfo> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkDescriptorUpdateTemplateCreateInfo value) {

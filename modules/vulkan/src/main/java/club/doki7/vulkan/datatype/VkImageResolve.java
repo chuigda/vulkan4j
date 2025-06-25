@@ -80,8 +80,9 @@ public record VkImageResolve(@NotNull MemorySegment segment) implements IVkImage
             return new VkImageResolve(segment.asSlice(index * VkImageResolve.BYTES, VkImageResolve.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkImageResolve> consumer) {
+        public VkImageResolve.Ptr at(long index, @NotNull Consumer<@NotNull VkImageResolve> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkImageResolve value) {

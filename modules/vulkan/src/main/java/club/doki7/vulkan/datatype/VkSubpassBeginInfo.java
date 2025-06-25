@@ -87,8 +87,9 @@ public record VkSubpassBeginInfo(@NotNull MemorySegment segment) implements IVkS
             return new VkSubpassBeginInfo(segment.asSlice(index * VkSubpassBeginInfo.BYTES, VkSubpassBeginInfo.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkSubpassBeginInfo> consumer) {
+        public VkSubpassBeginInfo.Ptr at(long index, @NotNull Consumer<@NotNull VkSubpassBeginInfo> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkSubpassBeginInfo value) {

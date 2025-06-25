@@ -81,8 +81,9 @@ public record XrSceneComponentLocationMSFT(@NotNull MemorySegment segment) imple
             return new XrSceneComponentLocationMSFT(segment.asSlice(index * XrSceneComponentLocationMSFT.BYTES, XrSceneComponentLocationMSFT.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull XrSceneComponentLocationMSFT> consumer) {
+        public XrSceneComponentLocationMSFT.Ptr at(long index, @NotNull Consumer<@NotNull XrSceneComponentLocationMSFT> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull XrSceneComponentLocationMSFT value) {

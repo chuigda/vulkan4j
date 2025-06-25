@@ -92,8 +92,9 @@ public record XrSpatialComponentMarkerListEXT(@NotNull MemorySegment segment) im
             return new XrSpatialComponentMarkerListEXT(segment.asSlice(index * XrSpatialComponentMarkerListEXT.BYTES, XrSpatialComponentMarkerListEXT.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull XrSpatialComponentMarkerListEXT> consumer) {
+        public XrSpatialComponentMarkerListEXT.Ptr at(long index, @NotNull Consumer<@NotNull XrSpatialComponentMarkerListEXT> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull XrSpatialComponentMarkerListEXT value) {

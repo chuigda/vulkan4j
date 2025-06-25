@@ -79,8 +79,9 @@ public record VkVertexInputAttributeDescription(@NotNull MemorySegment segment) 
             return new VkVertexInputAttributeDescription(segment.asSlice(index * VkVertexInputAttributeDescription.BYTES, VkVertexInputAttributeDescription.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkVertexInputAttributeDescription> consumer) {
+        public VkVertexInputAttributeDescription.Ptr at(long index, @NotNull Consumer<@NotNull VkVertexInputAttributeDescription> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkVertexInputAttributeDescription value) {

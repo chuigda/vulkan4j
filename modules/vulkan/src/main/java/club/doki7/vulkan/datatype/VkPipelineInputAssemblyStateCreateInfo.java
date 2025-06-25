@@ -89,8 +89,9 @@ public record VkPipelineInputAssemblyStateCreateInfo(@NotNull MemorySegment segm
             return new VkPipelineInputAssemblyStateCreateInfo(segment.asSlice(index * VkPipelineInputAssemblyStateCreateInfo.BYTES, VkPipelineInputAssemblyStateCreateInfo.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkPipelineInputAssemblyStateCreateInfo> consumer) {
+        public VkPipelineInputAssemblyStateCreateInfo.Ptr at(long index, @NotNull Consumer<@NotNull VkPipelineInputAssemblyStateCreateInfo> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkPipelineInputAssemblyStateCreateInfo value) {

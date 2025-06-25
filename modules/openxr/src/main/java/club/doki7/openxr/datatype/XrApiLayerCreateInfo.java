@@ -85,8 +85,9 @@ public record XrApiLayerCreateInfo(@NotNull MemorySegment segment) implements IX
             return new XrApiLayerCreateInfo(segment.asSlice(index * XrApiLayerCreateInfo.BYTES, XrApiLayerCreateInfo.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull XrApiLayerCreateInfo> consumer) {
+        public XrApiLayerCreateInfo.Ptr at(long index, @NotNull Consumer<@NotNull XrApiLayerCreateInfo> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull XrApiLayerCreateInfo value) {

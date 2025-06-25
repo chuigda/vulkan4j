@@ -88,8 +88,9 @@ public record VkImportMemoryFdInfoKHR(@NotNull MemorySegment segment) implements
             return new VkImportMemoryFdInfoKHR(segment.asSlice(index * VkImportMemoryFdInfoKHR.BYTES, VkImportMemoryFdInfoKHR.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkImportMemoryFdInfoKHR> consumer) {
+        public VkImportMemoryFdInfoKHR.Ptr at(long index, @NotNull Consumer<@NotNull VkImportMemoryFdInfoKHR> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkImportMemoryFdInfoKHR value) {

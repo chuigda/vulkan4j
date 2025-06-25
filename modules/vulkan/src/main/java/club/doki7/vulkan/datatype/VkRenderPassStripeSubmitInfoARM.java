@@ -88,8 +88,9 @@ public record VkRenderPassStripeSubmitInfoARM(@NotNull MemorySegment segment) im
             return new VkRenderPassStripeSubmitInfoARM(segment.asSlice(index * VkRenderPassStripeSubmitInfoARM.BYTES, VkRenderPassStripeSubmitInfoARM.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkRenderPassStripeSubmitInfoARM> consumer) {
+        public VkRenderPassStripeSubmitInfoARM.Ptr at(long index, @NotNull Consumer<@NotNull VkRenderPassStripeSubmitInfoARM> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkRenderPassStripeSubmitInfoARM value) {

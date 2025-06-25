@@ -88,8 +88,9 @@ public record VkMemoryUnmapInfo(@NotNull MemorySegment segment) implements IVkMe
             return new VkMemoryUnmapInfo(segment.asSlice(index * VkMemoryUnmapInfo.BYTES, VkMemoryUnmapInfo.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkMemoryUnmapInfo> consumer) {
+        public VkMemoryUnmapInfo.Ptr at(long index, @NotNull Consumer<@NotNull VkMemoryUnmapInfo> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkMemoryUnmapInfo value) {

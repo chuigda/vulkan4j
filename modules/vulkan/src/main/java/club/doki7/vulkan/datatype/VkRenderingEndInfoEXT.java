@@ -86,8 +86,9 @@ public record VkRenderingEndInfoEXT(@NotNull MemorySegment segment) implements I
             return new VkRenderingEndInfoEXT(segment.asSlice(index * VkRenderingEndInfoEXT.BYTES, VkRenderingEndInfoEXT.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkRenderingEndInfoEXT> consumer) {
+        public VkRenderingEndInfoEXT.Ptr at(long index, @NotNull Consumer<@NotNull VkRenderingEndInfoEXT> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkRenderingEndInfoEXT value) {

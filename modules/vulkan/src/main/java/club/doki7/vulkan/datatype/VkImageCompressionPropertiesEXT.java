@@ -88,8 +88,9 @@ public record VkImageCompressionPropertiesEXT(@NotNull MemorySegment segment) im
             return new VkImageCompressionPropertiesEXT(segment.asSlice(index * VkImageCompressionPropertiesEXT.BYTES, VkImageCompressionPropertiesEXT.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkImageCompressionPropertiesEXT> consumer) {
+        public VkImageCompressionPropertiesEXT.Ptr at(long index, @NotNull Consumer<@NotNull VkImageCompressionPropertiesEXT> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkImageCompressionPropertiesEXT value) {

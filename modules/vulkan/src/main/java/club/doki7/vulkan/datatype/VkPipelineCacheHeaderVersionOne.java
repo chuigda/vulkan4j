@@ -80,8 +80,9 @@ public record VkPipelineCacheHeaderVersionOne(@NotNull MemorySegment segment) im
             return new VkPipelineCacheHeaderVersionOne(segment.asSlice(index * VkPipelineCacheHeaderVersionOne.BYTES, VkPipelineCacheHeaderVersionOne.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkPipelineCacheHeaderVersionOne> consumer) {
+        public VkPipelineCacheHeaderVersionOne.Ptr at(long index, @NotNull Consumer<@NotNull VkPipelineCacheHeaderVersionOne> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkPipelineCacheHeaderVersionOne value) {

@@ -92,8 +92,9 @@ public record XrSenseDataFilterUuidBD(@NotNull MemorySegment segment) implements
             return new XrSenseDataFilterUuidBD(segment.asSlice(index * XrSenseDataFilterUuidBD.BYTES, XrSenseDataFilterUuidBD.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull XrSenseDataFilterUuidBD> consumer) {
+        public XrSenseDataFilterUuidBD.Ptr at(long index, @NotNull Consumer<@NotNull XrSenseDataFilterUuidBD> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull XrSenseDataFilterUuidBD value) {

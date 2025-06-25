@@ -3,12 +3,33 @@
 ### Quality of Life updates
 
 - `allocate` functions now have a `allocate(Arena, Collection<T>)` overloading.
-- `StructureType.Ptr.at` and `StructureType.arrayField` methods now also have an overloading accepting a `Consumer<T>`, thus also supporting LWJGL-alike `set` style methods:
+- `StructureType.Ptr.at` and `StructureType.arrayField` methods now also have an overloading accepting a `Consumer<T>`, thus also supporting LWJGL-alike `set` style methods. For example:
+    ```c
+    struct StructureType { int field1; int field2; } structures[2];
+    structures[0].field = value00;
+    structures[1].field = value01;
+    structures[1].field = value10;
+    structures[1].field = value11;
+    ```
+    can now be written as:
     ```java
-    structure.arrayField(it -> {
-        it.write(0, value0);
-        it.write(1, value1);
-    });
+    StructureType.Ptr structures = StructureType.allocate(arena, 2)
+        .at(0, it -> it.field1(value00).field2(value01))
+        .at(1, it -> it.field2(value10).field2(value11));
+    ```
+    while
+    ```c
+    struct StructureType { int arrayField[2] } structure;
+    structure.arrayField[0] = value0;
+    structure.arrayField[1] = value1;
+    ```
+    can now be written as:
+    ```java
+    StructureType structure = StructureType.allocate(arena)
+        .arrayField(it -> {
+            it.write(0, value0);
+            it.write(1, value1);
+        });
     ```
 - Added a handy `writeString` method for `BytePtr`.
 - Added a handy `allocateStrings` method for `PointerPtr` for conveniently allocating `char const**` arrays. Such arrays are widely used in Vulkan and OpenXR APIs.

@@ -90,8 +90,9 @@ public record VkGraphicsShaderGroupCreateInfoNV(@NotNull MemorySegment segment) 
             return new VkGraphicsShaderGroupCreateInfoNV(segment.asSlice(index * VkGraphicsShaderGroupCreateInfoNV.BYTES, VkGraphicsShaderGroupCreateInfoNV.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkGraphicsShaderGroupCreateInfoNV> consumer) {
+        public VkGraphicsShaderGroupCreateInfoNV.Ptr at(long index, @NotNull Consumer<@NotNull VkGraphicsShaderGroupCreateInfoNV> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkGraphicsShaderGroupCreateInfoNV value) {

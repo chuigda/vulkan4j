@@ -87,8 +87,9 @@ public record StdVideoH265ShortTermRefPicSet(@NotNull MemorySegment segment) imp
             return new StdVideoH265ShortTermRefPicSet(segment.asSlice(index * StdVideoH265ShortTermRefPicSet.BYTES, StdVideoH265ShortTermRefPicSet.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull StdVideoH265ShortTermRefPicSet> consumer) {
+        public StdVideoH265ShortTermRefPicSet.Ptr at(long index, @NotNull Consumer<@NotNull StdVideoH265ShortTermRefPicSet> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull StdVideoH265ShortTermRefPicSet value) {

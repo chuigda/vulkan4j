@@ -88,8 +88,9 @@ public record VkPhysicalDeviceMemoryBudgetPropertiesEXT(@NotNull MemorySegment s
             return new VkPhysicalDeviceMemoryBudgetPropertiesEXT(segment.asSlice(index * VkPhysicalDeviceMemoryBudgetPropertiesEXT.BYTES, VkPhysicalDeviceMemoryBudgetPropertiesEXT.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceMemoryBudgetPropertiesEXT> consumer) {
+        public VkPhysicalDeviceMemoryBudgetPropertiesEXT.Ptr at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceMemoryBudgetPropertiesEXT> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkPhysicalDeviceMemoryBudgetPropertiesEXT value) {

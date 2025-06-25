@@ -87,8 +87,9 @@ public record VkDisplayPlaneCapabilities2KHR(@NotNull MemorySegment segment) imp
             return new VkDisplayPlaneCapabilities2KHR(segment.asSlice(index * VkDisplayPlaneCapabilities2KHR.BYTES, VkDisplayPlaneCapabilities2KHR.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkDisplayPlaneCapabilities2KHR> consumer) {
+        public VkDisplayPlaneCapabilities2KHR.Ptr at(long index, @NotNull Consumer<@NotNull VkDisplayPlaneCapabilities2KHR> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkDisplayPlaneCapabilities2KHR value) {

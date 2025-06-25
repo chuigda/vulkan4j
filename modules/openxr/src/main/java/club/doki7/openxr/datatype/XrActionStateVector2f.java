@@ -94,8 +94,9 @@ public record XrActionStateVector2f(@NotNull MemorySegment segment) implements I
             return new XrActionStateVector2f(segment.asSlice(index * XrActionStateVector2f.BYTES, XrActionStateVector2f.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull XrActionStateVector2f> consumer) {
+        public XrActionStateVector2f.Ptr at(long index, @NotNull Consumer<@NotNull XrActionStateVector2f> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull XrActionStateVector2f value) {

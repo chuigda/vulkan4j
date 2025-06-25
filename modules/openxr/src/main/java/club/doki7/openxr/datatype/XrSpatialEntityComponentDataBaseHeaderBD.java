@@ -81,8 +81,9 @@ public record XrSpatialEntityComponentDataBaseHeaderBD(@NotNull MemorySegment se
             return new XrSpatialEntityComponentDataBaseHeaderBD(segment.asSlice(index * XrSpatialEntityComponentDataBaseHeaderBD.BYTES, XrSpatialEntityComponentDataBaseHeaderBD.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull XrSpatialEntityComponentDataBaseHeaderBD> consumer) {
+        public XrSpatialEntityComponentDataBaseHeaderBD.Ptr at(long index, @NotNull Consumer<@NotNull XrSpatialEntityComponentDataBaseHeaderBD> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull XrSpatialEntityComponentDataBaseHeaderBD value) {

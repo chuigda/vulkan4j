@@ -88,8 +88,9 @@ public record VkPhysicalDeviceOpacityMicromapPropertiesEXT(@NotNull MemorySegmen
             return new VkPhysicalDeviceOpacityMicromapPropertiesEXT(segment.asSlice(index * VkPhysicalDeviceOpacityMicromapPropertiesEXT.BYTES, VkPhysicalDeviceOpacityMicromapPropertiesEXT.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceOpacityMicromapPropertiesEXT> consumer) {
+        public VkPhysicalDeviceOpacityMicromapPropertiesEXT.Ptr at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceOpacityMicromapPropertiesEXT> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkPhysicalDeviceOpacityMicromapPropertiesEXT value) {

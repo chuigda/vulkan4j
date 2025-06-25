@@ -92,8 +92,9 @@ public record XrEventDataUserPresenceChangedEXT(@NotNull MemorySegment segment) 
             return new XrEventDataUserPresenceChangedEXT(segment.asSlice(index * XrEventDataUserPresenceChangedEXT.BYTES, XrEventDataUserPresenceChangedEXT.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull XrEventDataUserPresenceChangedEXT> consumer) {
+        public XrEventDataUserPresenceChangedEXT.Ptr at(long index, @NotNull Consumer<@NotNull XrEventDataUserPresenceChangedEXT> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull XrEventDataUserPresenceChangedEXT value) {

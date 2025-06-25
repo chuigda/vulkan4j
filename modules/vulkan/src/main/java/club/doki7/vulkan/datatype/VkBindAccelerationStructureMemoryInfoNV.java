@@ -91,8 +91,9 @@ public record VkBindAccelerationStructureMemoryInfoNV(@NotNull MemorySegment seg
             return new VkBindAccelerationStructureMemoryInfoNV(segment.asSlice(index * VkBindAccelerationStructureMemoryInfoNV.BYTES, VkBindAccelerationStructureMemoryInfoNV.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkBindAccelerationStructureMemoryInfoNV> consumer) {
+        public VkBindAccelerationStructureMemoryInfoNV.Ptr at(long index, @NotNull Consumer<@NotNull VkBindAccelerationStructureMemoryInfoNV> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkBindAccelerationStructureMemoryInfoNV value) {

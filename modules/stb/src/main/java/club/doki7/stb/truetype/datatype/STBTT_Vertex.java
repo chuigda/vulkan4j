@@ -79,8 +79,9 @@ public record STBTT_Vertex(@NotNull MemorySegment segment) implements ISTBTT_Ver
             return new STBTT_Vertex(segment.asSlice(index * STBTT_Vertex.BYTES, STBTT_Vertex.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull STBTT_Vertex> consumer) {
+        public STBTT_Vertex.Ptr at(long index, @NotNull Consumer<@NotNull STBTT_Vertex> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull STBTT_Vertex value) {

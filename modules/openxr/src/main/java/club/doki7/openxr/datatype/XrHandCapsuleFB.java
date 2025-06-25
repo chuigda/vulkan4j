@@ -82,8 +82,9 @@ public record XrHandCapsuleFB(@NotNull MemorySegment segment) implements IXrHand
             return new XrHandCapsuleFB(segment.asSlice(index * XrHandCapsuleFB.BYTES, XrHandCapsuleFB.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull XrHandCapsuleFB> consumer) {
+        public XrHandCapsuleFB.Ptr at(long index, @NotNull Consumer<@NotNull XrHandCapsuleFB> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull XrHandCapsuleFB value) {

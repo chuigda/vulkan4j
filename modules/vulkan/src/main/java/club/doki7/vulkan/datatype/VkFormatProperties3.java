@@ -89,8 +89,9 @@ public record VkFormatProperties3(@NotNull MemorySegment segment) implements IVk
             return new VkFormatProperties3(segment.asSlice(index * VkFormatProperties3.BYTES, VkFormatProperties3.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkFormatProperties3> consumer) {
+        public VkFormatProperties3.Ptr at(long index, @NotNull Consumer<@NotNull VkFormatProperties3> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkFormatProperties3 value) {

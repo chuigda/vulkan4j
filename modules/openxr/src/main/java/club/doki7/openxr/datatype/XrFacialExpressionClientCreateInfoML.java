@@ -92,8 +92,9 @@ public record XrFacialExpressionClientCreateInfoML(@NotNull MemorySegment segmen
             return new XrFacialExpressionClientCreateInfoML(segment.asSlice(index * XrFacialExpressionClientCreateInfoML.BYTES, XrFacialExpressionClientCreateInfoML.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull XrFacialExpressionClientCreateInfoML> consumer) {
+        public XrFacialExpressionClientCreateInfoML.Ptr at(long index, @NotNull Consumer<@NotNull XrFacialExpressionClientCreateInfoML> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull XrFacialExpressionClientCreateInfoML value) {

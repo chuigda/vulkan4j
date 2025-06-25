@@ -91,8 +91,9 @@ public record VkImportFenceWin32HandleInfoKHR(@NotNull MemorySegment segment) im
             return new VkImportFenceWin32HandleInfoKHR(segment.asSlice(index * VkImportFenceWin32HandleInfoKHR.BYTES, VkImportFenceWin32HandleInfoKHR.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkImportFenceWin32HandleInfoKHR> consumer) {
+        public VkImportFenceWin32HandleInfoKHR.Ptr at(long index, @NotNull Consumer<@NotNull VkImportFenceWin32HandleInfoKHR> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkImportFenceWin32HandleInfoKHR value) {

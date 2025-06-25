@@ -76,8 +76,9 @@ public record StdVideoH265DecPicBufMgr(@NotNull MemorySegment segment) implement
             return new StdVideoH265DecPicBufMgr(segment.asSlice(index * StdVideoH265DecPicBufMgr.BYTES, StdVideoH265DecPicBufMgr.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull StdVideoH265DecPicBufMgr> consumer) {
+        public StdVideoH265DecPicBufMgr.Ptr at(long index, @NotNull Consumer<@NotNull StdVideoH265DecPicBufMgr> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull StdVideoH265DecPicBufMgr value) {

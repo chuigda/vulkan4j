@@ -95,8 +95,9 @@ public record VkAttachmentDescription2(@NotNull MemorySegment segment) implement
             return new VkAttachmentDescription2(segment.asSlice(index * VkAttachmentDescription2.BYTES, VkAttachmentDescription2.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkAttachmentDescription2> consumer) {
+        public VkAttachmentDescription2.Ptr at(long index, @NotNull Consumer<@NotNull VkAttachmentDescription2> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkAttachmentDescription2 value) {

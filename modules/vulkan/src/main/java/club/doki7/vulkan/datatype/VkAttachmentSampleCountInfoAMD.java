@@ -89,8 +89,9 @@ public record VkAttachmentSampleCountInfoAMD(@NotNull MemorySegment segment) imp
             return new VkAttachmentSampleCountInfoAMD(segment.asSlice(index * VkAttachmentSampleCountInfoAMD.BYTES, VkAttachmentSampleCountInfoAMD.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkAttachmentSampleCountInfoAMD> consumer) {
+        public VkAttachmentSampleCountInfoAMD.Ptr at(long index, @NotNull Consumer<@NotNull VkAttachmentSampleCountInfoAMD> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkAttachmentSampleCountInfoAMD value) {

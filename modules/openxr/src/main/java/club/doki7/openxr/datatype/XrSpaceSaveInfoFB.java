@@ -93,8 +93,9 @@ public record XrSpaceSaveInfoFB(@NotNull MemorySegment segment) implements IXrSp
             return new XrSpaceSaveInfoFB(segment.asSlice(index * XrSpaceSaveInfoFB.BYTES, XrSpaceSaveInfoFB.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull XrSpaceSaveInfoFB> consumer) {
+        public XrSpaceSaveInfoFB.Ptr at(long index, @NotNull Consumer<@NotNull XrSpaceSaveInfoFB> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull XrSpaceSaveInfoFB value) {

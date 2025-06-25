@@ -111,8 +111,9 @@ public record VkPhysicalDeviceVulkan14Properties(@NotNull MemorySegment segment)
             return new VkPhysicalDeviceVulkan14Properties(segment.asSlice(index * VkPhysicalDeviceVulkan14Properties.BYTES, VkPhysicalDeviceVulkan14Properties.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceVulkan14Properties> consumer) {
+        public VkPhysicalDeviceVulkan14Properties.Ptr at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceVulkan14Properties> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkPhysicalDeviceVulkan14Properties value) {

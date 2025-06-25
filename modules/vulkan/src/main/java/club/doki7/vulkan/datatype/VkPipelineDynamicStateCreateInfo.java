@@ -89,8 +89,9 @@ public record VkPipelineDynamicStateCreateInfo(@NotNull MemorySegment segment) i
             return new VkPipelineDynamicStateCreateInfo(segment.asSlice(index * VkPipelineDynamicStateCreateInfo.BYTES, VkPipelineDynamicStateCreateInfo.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkPipelineDynamicStateCreateInfo> consumer) {
+        public VkPipelineDynamicStateCreateInfo.Ptr at(long index, @NotNull Consumer<@NotNull VkPipelineDynamicStateCreateInfo> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkPipelineDynamicStateCreateInfo value) {

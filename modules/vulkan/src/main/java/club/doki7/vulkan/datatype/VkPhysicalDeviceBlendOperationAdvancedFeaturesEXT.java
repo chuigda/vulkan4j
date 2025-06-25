@@ -87,8 +87,9 @@ public record VkPhysicalDeviceBlendOperationAdvancedFeaturesEXT(@NotNull MemoryS
             return new VkPhysicalDeviceBlendOperationAdvancedFeaturesEXT(segment.asSlice(index * VkPhysicalDeviceBlendOperationAdvancedFeaturesEXT.BYTES, VkPhysicalDeviceBlendOperationAdvancedFeaturesEXT.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceBlendOperationAdvancedFeaturesEXT> consumer) {
+        public VkPhysicalDeviceBlendOperationAdvancedFeaturesEXT.Ptr at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceBlendOperationAdvancedFeaturesEXT> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkPhysicalDeviceBlendOperationAdvancedFeaturesEXT value) {

@@ -91,8 +91,9 @@ public record XrSpatialMarkerStaticOptimizationEXT(@NotNull MemorySegment segmen
             return new XrSpatialMarkerStaticOptimizationEXT(segment.asSlice(index * XrSpatialMarkerStaticOptimizationEXT.BYTES, XrSpatialMarkerStaticOptimizationEXT.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull XrSpatialMarkerStaticOptimizationEXT> consumer) {
+        public XrSpatialMarkerStaticOptimizationEXT.Ptr at(long index, @NotNull Consumer<@NotNull XrSpatialMarkerStaticOptimizationEXT> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull XrSpatialMarkerStaticOptimizationEXT value) {

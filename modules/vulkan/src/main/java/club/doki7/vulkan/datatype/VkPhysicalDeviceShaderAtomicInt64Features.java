@@ -88,8 +88,9 @@ public record VkPhysicalDeviceShaderAtomicInt64Features(@NotNull MemorySegment s
             return new VkPhysicalDeviceShaderAtomicInt64Features(segment.asSlice(index * VkPhysicalDeviceShaderAtomicInt64Features.BYTES, VkPhysicalDeviceShaderAtomicInt64Features.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceShaderAtomicInt64Features> consumer) {
+        public VkPhysicalDeviceShaderAtomicInt64Features.Ptr at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceShaderAtomicInt64Features> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkPhysicalDeviceShaderAtomicInt64Features value) {

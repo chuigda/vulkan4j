@@ -91,8 +91,9 @@ public record XrSpatialEntityLocationGetInfoBD(@NotNull MemorySegment segment) i
             return new XrSpatialEntityLocationGetInfoBD(segment.asSlice(index * XrSpatialEntityLocationGetInfoBD.BYTES, XrSpatialEntityLocationGetInfoBD.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull XrSpatialEntityLocationGetInfoBD> consumer) {
+        public XrSpatialEntityLocationGetInfoBD.Ptr at(long index, @NotNull Consumer<@NotNull XrSpatialEntityLocationGetInfoBD> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull XrSpatialEntityLocationGetInfoBD value) {

@@ -91,8 +91,9 @@ public record VkPipelineExecutableInternalRepresentationKHR(@NotNull MemorySegme
             return new VkPipelineExecutableInternalRepresentationKHR(segment.asSlice(index * VkPipelineExecutableInternalRepresentationKHR.BYTES, VkPipelineExecutableInternalRepresentationKHR.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkPipelineExecutableInternalRepresentationKHR> consumer) {
+        public VkPipelineExecutableInternalRepresentationKHR.Ptr at(long index, @NotNull Consumer<@NotNull VkPipelineExecutableInternalRepresentationKHR> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkPipelineExecutableInternalRepresentationKHR value) {

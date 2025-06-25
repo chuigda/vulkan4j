@@ -89,8 +89,9 @@ public record VkVideoEncodeUsageInfoKHR(@NotNull MemorySegment segment) implemen
             return new VkVideoEncodeUsageInfoKHR(segment.asSlice(index * VkVideoEncodeUsageInfoKHR.BYTES, VkVideoEncodeUsageInfoKHR.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkVideoEncodeUsageInfoKHR> consumer) {
+        public VkVideoEncodeUsageInfoKHR.Ptr at(long index, @NotNull Consumer<@NotNull VkVideoEncodeUsageInfoKHR> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkVideoEncodeUsageInfoKHR value) {

@@ -84,8 +84,9 @@ public record VmaTotalStatistics(@NotNull MemorySegment segment) implements IVma
             return new VmaTotalStatistics(segment.asSlice(index * VmaTotalStatistics.BYTES, VmaTotalStatistics.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VmaTotalStatistics> consumer) {
+        public VmaTotalStatistics.Ptr at(long index, @NotNull Consumer<@NotNull VmaTotalStatistics> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VmaTotalStatistics value) {

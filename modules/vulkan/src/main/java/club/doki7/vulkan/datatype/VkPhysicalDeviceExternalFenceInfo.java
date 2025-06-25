@@ -87,8 +87,9 @@ public record VkPhysicalDeviceExternalFenceInfo(@NotNull MemorySegment segment) 
             return new VkPhysicalDeviceExternalFenceInfo(segment.asSlice(index * VkPhysicalDeviceExternalFenceInfo.BYTES, VkPhysicalDeviceExternalFenceInfo.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceExternalFenceInfo> consumer) {
+        public VkPhysicalDeviceExternalFenceInfo.Ptr at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceExternalFenceInfo> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkPhysicalDeviceExternalFenceInfo value) {

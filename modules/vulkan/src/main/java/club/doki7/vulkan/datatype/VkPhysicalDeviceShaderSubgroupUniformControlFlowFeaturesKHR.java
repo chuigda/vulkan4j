@@ -87,8 +87,9 @@ public record VkPhysicalDeviceShaderSubgroupUniformControlFlowFeaturesKHR(@NotNu
             return new VkPhysicalDeviceShaderSubgroupUniformControlFlowFeaturesKHR(segment.asSlice(index * VkPhysicalDeviceShaderSubgroupUniformControlFlowFeaturesKHR.BYTES, VkPhysicalDeviceShaderSubgroupUniformControlFlowFeaturesKHR.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceShaderSubgroupUniformControlFlowFeaturesKHR> consumer) {
+        public VkPhysicalDeviceShaderSubgroupUniformControlFlowFeaturesKHR.Ptr at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceShaderSubgroupUniformControlFlowFeaturesKHR> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkPhysicalDeviceShaderSubgroupUniformControlFlowFeaturesKHR value) {

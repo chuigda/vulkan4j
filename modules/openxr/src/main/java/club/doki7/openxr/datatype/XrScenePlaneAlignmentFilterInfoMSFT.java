@@ -92,8 +92,9 @@ public record XrScenePlaneAlignmentFilterInfoMSFT(@NotNull MemorySegment segment
             return new XrScenePlaneAlignmentFilterInfoMSFT(segment.asSlice(index * XrScenePlaneAlignmentFilterInfoMSFT.BYTES, XrScenePlaneAlignmentFilterInfoMSFT.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull XrScenePlaneAlignmentFilterInfoMSFT> consumer) {
+        public XrScenePlaneAlignmentFilterInfoMSFT.Ptr at(long index, @NotNull Consumer<@NotNull XrScenePlaneAlignmentFilterInfoMSFT> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull XrScenePlaneAlignmentFilterInfoMSFT value) {

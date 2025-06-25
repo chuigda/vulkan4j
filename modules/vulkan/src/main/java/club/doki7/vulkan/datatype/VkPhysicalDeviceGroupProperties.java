@@ -89,8 +89,9 @@ public record VkPhysicalDeviceGroupProperties(@NotNull MemorySegment segment) im
             return new VkPhysicalDeviceGroupProperties(segment.asSlice(index * VkPhysicalDeviceGroupProperties.BYTES, VkPhysicalDeviceGroupProperties.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceGroupProperties> consumer) {
+        public VkPhysicalDeviceGroupProperties.Ptr at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceGroupProperties> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkPhysicalDeviceGroupProperties value) {

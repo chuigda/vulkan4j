@@ -92,8 +92,9 @@ public record XrSpatialAnchorsDeleteInfoML(@NotNull MemorySegment segment) imple
             return new XrSpatialAnchorsDeleteInfoML(segment.asSlice(index * XrSpatialAnchorsDeleteInfoML.BYTES, XrSpatialAnchorsDeleteInfoML.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull XrSpatialAnchorsDeleteInfoML> consumer) {
+        public XrSpatialAnchorsDeleteInfoML.Ptr at(long index, @NotNull Consumer<@NotNull XrSpatialAnchorsDeleteInfoML> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull XrSpatialAnchorsDeleteInfoML value) {

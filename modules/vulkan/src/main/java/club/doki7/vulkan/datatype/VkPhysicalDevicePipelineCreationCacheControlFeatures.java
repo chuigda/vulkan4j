@@ -87,8 +87,9 @@ public record VkPhysicalDevicePipelineCreationCacheControlFeatures(@NotNull Memo
             return new VkPhysicalDevicePipelineCreationCacheControlFeatures(segment.asSlice(index * VkPhysicalDevicePipelineCreationCacheControlFeatures.BYTES, VkPhysicalDevicePipelineCreationCacheControlFeatures.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkPhysicalDevicePipelineCreationCacheControlFeatures> consumer) {
+        public VkPhysicalDevicePipelineCreationCacheControlFeatures.Ptr at(long index, @NotNull Consumer<@NotNull VkPhysicalDevicePipelineCreationCacheControlFeatures> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkPhysicalDevicePipelineCreationCacheControlFeatures value) {

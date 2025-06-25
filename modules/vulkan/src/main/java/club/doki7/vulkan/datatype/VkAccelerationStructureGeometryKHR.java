@@ -89,8 +89,9 @@ public record VkAccelerationStructureGeometryKHR(@NotNull MemorySegment segment)
             return new VkAccelerationStructureGeometryKHR(segment.asSlice(index * VkAccelerationStructureGeometryKHR.BYTES, VkAccelerationStructureGeometryKHR.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkAccelerationStructureGeometryKHR> consumer) {
+        public VkAccelerationStructureGeometryKHR.Ptr at(long index, @NotNull Consumer<@NotNull VkAccelerationStructureGeometryKHR> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkAccelerationStructureGeometryKHR value) {

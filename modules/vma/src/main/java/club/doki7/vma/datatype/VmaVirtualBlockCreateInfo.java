@@ -95,8 +95,9 @@ public record VmaVirtualBlockCreateInfo(@NotNull MemorySegment segment) implemen
             return new VmaVirtualBlockCreateInfo(segment.asSlice(index * VmaVirtualBlockCreateInfo.BYTES, VmaVirtualBlockCreateInfo.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VmaVirtualBlockCreateInfo> consumer) {
+        public VmaVirtualBlockCreateInfo.Ptr at(long index, @NotNull Consumer<@NotNull VmaVirtualBlockCreateInfo> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VmaVirtualBlockCreateInfo value) {

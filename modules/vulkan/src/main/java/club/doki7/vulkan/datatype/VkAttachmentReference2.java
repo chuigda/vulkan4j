@@ -89,8 +89,9 @@ public record VkAttachmentReference2(@NotNull MemorySegment segment) implements 
             return new VkAttachmentReference2(segment.asSlice(index * VkAttachmentReference2.BYTES, VkAttachmentReference2.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkAttachmentReference2> consumer) {
+        public VkAttachmentReference2.Ptr at(long index, @NotNull Consumer<@NotNull VkAttachmentReference2> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkAttachmentReference2 value) {

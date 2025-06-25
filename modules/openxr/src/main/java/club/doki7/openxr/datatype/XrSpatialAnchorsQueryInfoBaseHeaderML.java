@@ -81,8 +81,9 @@ public record XrSpatialAnchorsQueryInfoBaseHeaderML(@NotNull MemorySegment segme
             return new XrSpatialAnchorsQueryInfoBaseHeaderML(segment.asSlice(index * XrSpatialAnchorsQueryInfoBaseHeaderML.BYTES, XrSpatialAnchorsQueryInfoBaseHeaderML.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull XrSpatialAnchorsQueryInfoBaseHeaderML> consumer) {
+        public XrSpatialAnchorsQueryInfoBaseHeaderML.Ptr at(long index, @NotNull Consumer<@NotNull XrSpatialAnchorsQueryInfoBaseHeaderML> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull XrSpatialAnchorsQueryInfoBaseHeaderML value) {

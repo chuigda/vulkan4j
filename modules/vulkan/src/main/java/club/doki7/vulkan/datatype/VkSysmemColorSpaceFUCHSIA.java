@@ -87,8 +87,9 @@ public record VkSysmemColorSpaceFUCHSIA(@NotNull MemorySegment segment) implemen
             return new VkSysmemColorSpaceFUCHSIA(segment.asSlice(index * VkSysmemColorSpaceFUCHSIA.BYTES, VkSysmemColorSpaceFUCHSIA.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkSysmemColorSpaceFUCHSIA> consumer) {
+        public VkSysmemColorSpaceFUCHSIA.Ptr at(long index, @NotNull Consumer<@NotNull VkSysmemColorSpaceFUCHSIA> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkSysmemColorSpaceFUCHSIA value) {

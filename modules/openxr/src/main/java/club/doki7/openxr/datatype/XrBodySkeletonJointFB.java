@@ -82,8 +82,9 @@ public record XrBodySkeletonJointFB(@NotNull MemorySegment segment) implements I
             return new XrBodySkeletonJointFB(segment.asSlice(index * XrBodySkeletonJointFB.BYTES, XrBodySkeletonJointFB.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull XrBodySkeletonJointFB> consumer) {
+        public XrBodySkeletonJointFB.Ptr at(long index, @NotNull Consumer<@NotNull XrBodySkeletonJointFB> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull XrBodySkeletonJointFB value) {

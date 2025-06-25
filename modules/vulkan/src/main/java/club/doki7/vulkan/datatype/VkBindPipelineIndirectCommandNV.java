@@ -76,8 +76,9 @@ public record VkBindPipelineIndirectCommandNV(@NotNull MemorySegment segment) im
             return new VkBindPipelineIndirectCommandNV(segment.asSlice(index * VkBindPipelineIndirectCommandNV.BYTES, VkBindPipelineIndirectCommandNV.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkBindPipelineIndirectCommandNV> consumer) {
+        public VkBindPipelineIndirectCommandNV.Ptr at(long index, @NotNull Consumer<@NotNull VkBindPipelineIndirectCommandNV> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkBindPipelineIndirectCommandNV value) {

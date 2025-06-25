@@ -80,8 +80,9 @@ public record VkShaderResourceUsageAMD(@NotNull MemorySegment segment) implement
             return new VkShaderResourceUsageAMD(segment.asSlice(index * VkShaderResourceUsageAMD.BYTES, VkShaderResourceUsageAMD.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkShaderResourceUsageAMD> consumer) {
+        public VkShaderResourceUsageAMD.Ptr at(long index, @NotNull Consumer<@NotNull VkShaderResourceUsageAMD> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkShaderResourceUsageAMD value) {

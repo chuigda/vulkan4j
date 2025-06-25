@@ -76,8 +76,9 @@ public record StdVideoEncodeH264RefListModEntry(@NotNull MemorySegment segment) 
             return new StdVideoEncodeH264RefListModEntry(segment.asSlice(index * StdVideoEncodeH264RefListModEntry.BYTES, StdVideoEncodeH264RefListModEntry.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull StdVideoEncodeH264RefListModEntry> consumer) {
+        public StdVideoEncodeH264RefListModEntry.Ptr at(long index, @NotNull Consumer<@NotNull StdVideoEncodeH264RefListModEntry> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull StdVideoEncodeH264RefListModEntry value) {

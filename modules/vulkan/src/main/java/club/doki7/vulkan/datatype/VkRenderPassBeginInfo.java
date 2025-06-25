@@ -91,8 +91,9 @@ public record VkRenderPassBeginInfo(@NotNull MemorySegment segment) implements I
             return new VkRenderPassBeginInfo(segment.asSlice(index * VkRenderPassBeginInfo.BYTES, VkRenderPassBeginInfo.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkRenderPassBeginInfo> consumer) {
+        public VkRenderPassBeginInfo.Ptr at(long index, @NotNull Consumer<@NotNull VkRenderPassBeginInfo> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkRenderPassBeginInfo value) {

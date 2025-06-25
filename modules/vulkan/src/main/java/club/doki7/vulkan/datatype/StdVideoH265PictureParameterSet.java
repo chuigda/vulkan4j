@@ -109,8 +109,9 @@ public record StdVideoH265PictureParameterSet(@NotNull MemorySegment segment) im
             return new StdVideoH265PictureParameterSet(segment.asSlice(index * StdVideoH265PictureParameterSet.BYTES, StdVideoH265PictureParameterSet.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull StdVideoH265PictureParameterSet> consumer) {
+        public StdVideoH265PictureParameterSet.Ptr at(long index, @NotNull Consumer<@NotNull StdVideoH265PictureParameterSet> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull StdVideoH265PictureParameterSet value) {

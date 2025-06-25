@@ -86,8 +86,9 @@ public record VkSubpassEndInfo(@NotNull MemorySegment segment) implements IVkSub
             return new VkSubpassEndInfo(segment.asSlice(index * VkSubpassEndInfo.BYTES, VkSubpassEndInfo.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkSubpassEndInfo> consumer) {
+        public VkSubpassEndInfo.Ptr at(long index, @NotNull Consumer<@NotNull VkSubpassEndInfo> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkSubpassEndInfo value) {

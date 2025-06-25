@@ -92,8 +92,9 @@ public record XrInstanceProperties(@NotNull MemorySegment segment) implements IX
             return new XrInstanceProperties(segment.asSlice(index * XrInstanceProperties.BYTES, XrInstanceProperties.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull XrInstanceProperties> consumer) {
+        public XrInstanceProperties.Ptr at(long index, @NotNull Consumer<@NotNull XrInstanceProperties> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull XrInstanceProperties value) {

@@ -93,8 +93,9 @@ public record XrRenderModelBufferFB(@NotNull MemorySegment segment) implements I
             return new XrRenderModelBufferFB(segment.asSlice(index * XrRenderModelBufferFB.BYTES, XrRenderModelBufferFB.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull XrRenderModelBufferFB> consumer) {
+        public XrRenderModelBufferFB.Ptr at(long index, @NotNull Consumer<@NotNull XrRenderModelBufferFB> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull XrRenderModelBufferFB value) {

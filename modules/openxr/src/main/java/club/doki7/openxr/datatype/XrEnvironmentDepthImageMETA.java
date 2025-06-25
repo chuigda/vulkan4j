@@ -94,8 +94,9 @@ public record XrEnvironmentDepthImageMETA(@NotNull MemorySegment segment) implem
             return new XrEnvironmentDepthImageMETA(segment.asSlice(index * XrEnvironmentDepthImageMETA.BYTES, XrEnvironmentDepthImageMETA.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull XrEnvironmentDepthImageMETA> consumer) {
+        public XrEnvironmentDepthImageMETA.Ptr at(long index, @NotNull Consumer<@NotNull XrEnvironmentDepthImageMETA> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull XrEnvironmentDepthImageMETA value) {

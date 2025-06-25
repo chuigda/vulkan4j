@@ -87,8 +87,9 @@ public record VkDeviceDiagnosticsConfigCreateInfoNV(@NotNull MemorySegment segme
             return new VkDeviceDiagnosticsConfigCreateInfoNV(segment.asSlice(index * VkDeviceDiagnosticsConfigCreateInfoNV.BYTES, VkDeviceDiagnosticsConfigCreateInfoNV.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkDeviceDiagnosticsConfigCreateInfoNV> consumer) {
+        public VkDeviceDiagnosticsConfigCreateInfoNV.Ptr at(long index, @NotNull Consumer<@NotNull VkDeviceDiagnosticsConfigCreateInfoNV> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkDeviceDiagnosticsConfigCreateInfoNV value) {

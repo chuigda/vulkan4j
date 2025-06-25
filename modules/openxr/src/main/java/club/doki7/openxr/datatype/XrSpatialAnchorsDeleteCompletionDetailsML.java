@@ -92,8 +92,9 @@ public record XrSpatialAnchorsDeleteCompletionDetailsML(@NotNull MemorySegment s
             return new XrSpatialAnchorsDeleteCompletionDetailsML(segment.asSlice(index * XrSpatialAnchorsDeleteCompletionDetailsML.BYTES, XrSpatialAnchorsDeleteCompletionDetailsML.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull XrSpatialAnchorsDeleteCompletionDetailsML> consumer) {
+        public XrSpatialAnchorsDeleteCompletionDetailsML.Ptr at(long index, @NotNull Consumer<@NotNull XrSpatialAnchorsDeleteCompletionDetailsML> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull XrSpatialAnchorsDeleteCompletionDetailsML value) {

@@ -96,8 +96,9 @@ public record XrSpatialUpdateSnapshotCreateInfoEXT(@NotNull MemorySegment segmen
             return new XrSpatialUpdateSnapshotCreateInfoEXT(segment.asSlice(index * XrSpatialUpdateSnapshotCreateInfoEXT.BYTES, XrSpatialUpdateSnapshotCreateInfoEXT.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull XrSpatialUpdateSnapshotCreateInfoEXT> consumer) {
+        public XrSpatialUpdateSnapshotCreateInfoEXT.Ptr at(long index, @NotNull Consumer<@NotNull XrSpatialUpdateSnapshotCreateInfoEXT> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull XrSpatialUpdateSnapshotCreateInfoEXT value) {

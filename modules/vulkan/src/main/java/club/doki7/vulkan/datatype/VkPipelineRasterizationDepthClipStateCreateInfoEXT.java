@@ -88,8 +88,9 @@ public record VkPipelineRasterizationDepthClipStateCreateInfoEXT(@NotNull Memory
             return new VkPipelineRasterizationDepthClipStateCreateInfoEXT(segment.asSlice(index * VkPipelineRasterizationDepthClipStateCreateInfoEXT.BYTES, VkPipelineRasterizationDepthClipStateCreateInfoEXT.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkPipelineRasterizationDepthClipStateCreateInfoEXT> consumer) {
+        public VkPipelineRasterizationDepthClipStateCreateInfoEXT.Ptr at(long index, @NotNull Consumer<@NotNull VkPipelineRasterizationDepthClipStateCreateInfoEXT> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkPipelineRasterizationDepthClipStateCreateInfoEXT value) {

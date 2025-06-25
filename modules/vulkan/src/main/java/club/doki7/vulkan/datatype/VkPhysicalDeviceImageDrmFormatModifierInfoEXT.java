@@ -90,8 +90,9 @@ public record VkPhysicalDeviceImageDrmFormatModifierInfoEXT(@NotNull MemorySegme
             return new VkPhysicalDeviceImageDrmFormatModifierInfoEXT(segment.asSlice(index * VkPhysicalDeviceImageDrmFormatModifierInfoEXT.BYTES, VkPhysicalDeviceImageDrmFormatModifierInfoEXT.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceImageDrmFormatModifierInfoEXT> consumer) {
+        public VkPhysicalDeviceImageDrmFormatModifierInfoEXT.Ptr at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceImageDrmFormatModifierInfoEXT> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkPhysicalDeviceImageDrmFormatModifierInfoEXT value) {

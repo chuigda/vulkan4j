@@ -88,8 +88,9 @@ public record VkExportMetalCommandQueueInfoEXT(@NotNull MemorySegment segment) i
             return new VkExportMetalCommandQueueInfoEXT(segment.asSlice(index * VkExportMetalCommandQueueInfoEXT.BYTES, VkExportMetalCommandQueueInfoEXT.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkExportMetalCommandQueueInfoEXT> consumer) {
+        public VkExportMetalCommandQueueInfoEXT.Ptr at(long index, @NotNull Consumer<@NotNull VkExportMetalCommandQueueInfoEXT> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkExportMetalCommandQueueInfoEXT value) {

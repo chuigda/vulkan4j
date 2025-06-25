@@ -90,8 +90,9 @@ public record VkPerformanceCounterDescriptionKHR(@NotNull MemorySegment segment)
             return new VkPerformanceCounterDescriptionKHR(segment.asSlice(index * VkPerformanceCounterDescriptionKHR.BYTES, VkPerformanceCounterDescriptionKHR.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkPerformanceCounterDescriptionKHR> consumer) {
+        public VkPerformanceCounterDescriptionKHR.Ptr at(long index, @NotNull Consumer<@NotNull VkPerformanceCounterDescriptionKHR> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkPerformanceCounterDescriptionKHR value) {

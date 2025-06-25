@@ -98,8 +98,9 @@ public record VkConvertCooperativeVectorMatrixInfoNV(@NotNull MemorySegment segm
             return new VkConvertCooperativeVectorMatrixInfoNV(segment.asSlice(index * VkConvertCooperativeVectorMatrixInfoNV.BYTES, VkConvertCooperativeVectorMatrixInfoNV.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkConvertCooperativeVectorMatrixInfoNV> consumer) {
+        public VkConvertCooperativeVectorMatrixInfoNV.Ptr at(long index, @NotNull Consumer<@NotNull VkConvertCooperativeVectorMatrixInfoNV> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkConvertCooperativeVectorMatrixInfoNV value) {

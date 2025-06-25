@@ -91,8 +91,9 @@ public record VkVideoBeginCodingInfoKHR(@NotNull MemorySegment segment) implemen
             return new VkVideoBeginCodingInfoKHR(segment.asSlice(index * VkVideoBeginCodingInfoKHR.BYTES, VkVideoBeginCodingInfoKHR.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkVideoBeginCodingInfoKHR> consumer) {
+        public VkVideoBeginCodingInfoKHR.Ptr at(long index, @NotNull Consumer<@NotNull VkVideoBeginCodingInfoKHR> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkVideoBeginCodingInfoKHR value) {

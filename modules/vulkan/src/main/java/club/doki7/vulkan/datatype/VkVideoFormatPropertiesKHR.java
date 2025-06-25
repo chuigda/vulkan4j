@@ -92,8 +92,9 @@ public record VkVideoFormatPropertiesKHR(@NotNull MemorySegment segment) impleme
             return new VkVideoFormatPropertiesKHR(segment.asSlice(index * VkVideoFormatPropertiesKHR.BYTES, VkVideoFormatPropertiesKHR.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkVideoFormatPropertiesKHR> consumer) {
+        public VkVideoFormatPropertiesKHR.Ptr at(long index, @NotNull Consumer<@NotNull VkVideoFormatPropertiesKHR> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkVideoFormatPropertiesKHR value) {

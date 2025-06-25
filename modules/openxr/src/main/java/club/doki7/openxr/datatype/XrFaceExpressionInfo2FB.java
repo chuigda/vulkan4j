@@ -91,8 +91,9 @@ public record XrFaceExpressionInfo2FB(@NotNull MemorySegment segment) implements
             return new XrFaceExpressionInfo2FB(segment.asSlice(index * XrFaceExpressionInfo2FB.BYTES, XrFaceExpressionInfo2FB.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull XrFaceExpressionInfo2FB> consumer) {
+        public XrFaceExpressionInfo2FB.Ptr at(long index, @NotNull Consumer<@NotNull XrFaceExpressionInfo2FB> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull XrFaceExpressionInfo2FB value) {

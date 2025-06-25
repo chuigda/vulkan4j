@@ -91,8 +91,9 @@ public record XrEnvironmentDepthSwapchainCreateInfoMETA(@NotNull MemorySegment s
             return new XrEnvironmentDepthSwapchainCreateInfoMETA(segment.asSlice(index * XrEnvironmentDepthSwapchainCreateInfoMETA.BYTES, XrEnvironmentDepthSwapchainCreateInfoMETA.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull XrEnvironmentDepthSwapchainCreateInfoMETA> consumer) {
+        public XrEnvironmentDepthSwapchainCreateInfoMETA.Ptr at(long index, @NotNull Consumer<@NotNull XrEnvironmentDepthSwapchainCreateInfoMETA> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull XrEnvironmentDepthSwapchainCreateInfoMETA value) {

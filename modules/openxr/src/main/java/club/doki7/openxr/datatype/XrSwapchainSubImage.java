@@ -82,8 +82,9 @@ public record XrSwapchainSubImage(@NotNull MemorySegment segment) implements IXr
             return new XrSwapchainSubImage(segment.asSlice(index * XrSwapchainSubImage.BYTES, XrSwapchainSubImage.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull XrSwapchainSubImage> consumer) {
+        public XrSwapchainSubImage.Ptr at(long index, @NotNull Consumer<@NotNull XrSwapchainSubImage> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull XrSwapchainSubImage value) {

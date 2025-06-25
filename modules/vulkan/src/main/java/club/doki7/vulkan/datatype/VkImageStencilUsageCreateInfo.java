@@ -87,8 +87,9 @@ public record VkImageStencilUsageCreateInfo(@NotNull MemorySegment segment) impl
             return new VkImageStencilUsageCreateInfo(segment.asSlice(index * VkImageStencilUsageCreateInfo.BYTES, VkImageStencilUsageCreateInfo.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkImageStencilUsageCreateInfo> consumer) {
+        public VkImageStencilUsageCreateInfo.Ptr at(long index, @NotNull Consumer<@NotNull VkImageStencilUsageCreateInfo> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkImageStencilUsageCreateInfo value) {

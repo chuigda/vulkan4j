@@ -90,8 +90,9 @@ public record VkSampleLocationsInfoEXT(@NotNull MemorySegment segment) implement
             return new VkSampleLocationsInfoEXT(segment.asSlice(index * VkSampleLocationsInfoEXT.BYTES, VkSampleLocationsInfoEXT.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkSampleLocationsInfoEXT> consumer) {
+        public VkSampleLocationsInfoEXT.Ptr at(long index, @NotNull Consumer<@NotNull VkSampleLocationsInfoEXT> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkSampleLocationsInfoEXT value) {

@@ -77,8 +77,9 @@ public record StdVideoAV1LoopFilterFlags(@NotNull MemorySegment segment) impleme
             return new StdVideoAV1LoopFilterFlags(segment.asSlice(index * StdVideoAV1LoopFilterFlags.BYTES, StdVideoAV1LoopFilterFlags.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull StdVideoAV1LoopFilterFlags> consumer) {
+        public StdVideoAV1LoopFilterFlags.Ptr at(long index, @NotNull Consumer<@NotNull StdVideoAV1LoopFilterFlags> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull StdVideoAV1LoopFilterFlags value) {

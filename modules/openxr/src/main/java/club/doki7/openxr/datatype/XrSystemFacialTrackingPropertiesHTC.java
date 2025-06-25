@@ -92,8 +92,9 @@ public record XrSystemFacialTrackingPropertiesHTC(@NotNull MemorySegment segment
             return new XrSystemFacialTrackingPropertiesHTC(segment.asSlice(index * XrSystemFacialTrackingPropertiesHTC.BYTES, XrSystemFacialTrackingPropertiesHTC.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull XrSystemFacialTrackingPropertiesHTC> consumer) {
+        public XrSystemFacialTrackingPropertiesHTC.Ptr at(long index, @NotNull Consumer<@NotNull XrSystemFacialTrackingPropertiesHTC> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull XrSystemFacialTrackingPropertiesHTC value) {

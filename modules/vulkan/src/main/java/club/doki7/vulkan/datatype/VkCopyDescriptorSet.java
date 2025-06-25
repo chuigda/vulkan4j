@@ -93,8 +93,9 @@ public record VkCopyDescriptorSet(@NotNull MemorySegment segment) implements IVk
             return new VkCopyDescriptorSet(segment.asSlice(index * VkCopyDescriptorSet.BYTES, VkCopyDescriptorSet.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkCopyDescriptorSet> consumer) {
+        public VkCopyDescriptorSet.Ptr at(long index, @NotNull Consumer<@NotNull VkCopyDescriptorSet> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkCopyDescriptorSet value) {

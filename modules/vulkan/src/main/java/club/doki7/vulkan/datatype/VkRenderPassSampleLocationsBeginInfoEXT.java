@@ -90,8 +90,9 @@ public record VkRenderPassSampleLocationsBeginInfoEXT(@NotNull MemorySegment seg
             return new VkRenderPassSampleLocationsBeginInfoEXT(segment.asSlice(index * VkRenderPassSampleLocationsBeginInfoEXT.BYTES, VkRenderPassSampleLocationsBeginInfoEXT.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkRenderPassSampleLocationsBeginInfoEXT> consumer) {
+        public VkRenderPassSampleLocationsBeginInfoEXT.Ptr at(long index, @NotNull Consumer<@NotNull VkRenderPassSampleLocationsBeginInfoEXT> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkRenderPassSampleLocationsBeginInfoEXT value) {

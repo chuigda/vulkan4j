@@ -95,8 +95,9 @@ public record VkPhysicalDeviceDeviceGeneratedCommandsPropertiesNV(@NotNull Memor
             return new VkPhysicalDeviceDeviceGeneratedCommandsPropertiesNV(segment.asSlice(index * VkPhysicalDeviceDeviceGeneratedCommandsPropertiesNV.BYTES, VkPhysicalDeviceDeviceGeneratedCommandsPropertiesNV.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceDeviceGeneratedCommandsPropertiesNV> consumer) {
+        public VkPhysicalDeviceDeviceGeneratedCommandsPropertiesNV.Ptr at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceDeviceGeneratedCommandsPropertiesNV> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkPhysicalDeviceDeviceGeneratedCommandsPropertiesNV value) {

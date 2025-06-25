@@ -90,8 +90,9 @@ public record VkHostImageLayoutTransitionInfo(@NotNull MemorySegment segment) im
             return new VkHostImageLayoutTransitionInfo(segment.asSlice(index * VkHostImageLayoutTransitionInfo.BYTES, VkHostImageLayoutTransitionInfo.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkHostImageLayoutTransitionInfo> consumer) {
+        public VkHostImageLayoutTransitionInfo.Ptr at(long index, @NotNull Consumer<@NotNull VkHostImageLayoutTransitionInfo> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkHostImageLayoutTransitionInfo value) {

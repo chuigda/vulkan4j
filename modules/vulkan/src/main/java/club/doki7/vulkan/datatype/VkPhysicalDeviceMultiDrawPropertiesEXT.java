@@ -87,8 +87,9 @@ public record VkPhysicalDeviceMultiDrawPropertiesEXT(@NotNull MemorySegment segm
             return new VkPhysicalDeviceMultiDrawPropertiesEXT(segment.asSlice(index * VkPhysicalDeviceMultiDrawPropertiesEXT.BYTES, VkPhysicalDeviceMultiDrawPropertiesEXT.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceMultiDrawPropertiesEXT> consumer) {
+        public VkPhysicalDeviceMultiDrawPropertiesEXT.Ptr at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceMultiDrawPropertiesEXT> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkPhysicalDeviceMultiDrawPropertiesEXT value) {

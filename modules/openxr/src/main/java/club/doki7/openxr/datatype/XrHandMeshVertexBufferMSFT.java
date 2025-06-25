@@ -83,8 +83,9 @@ public record XrHandMeshVertexBufferMSFT(@NotNull MemorySegment segment) impleme
             return new XrHandMeshVertexBufferMSFT(segment.asSlice(index * XrHandMeshVertexBufferMSFT.BYTES, XrHandMeshVertexBufferMSFT.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull XrHandMeshVertexBufferMSFT> consumer) {
+        public XrHandMeshVertexBufferMSFT.Ptr at(long index, @NotNull Consumer<@NotNull XrHandMeshVertexBufferMSFT> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull XrHandMeshVertexBufferMSFT value) {

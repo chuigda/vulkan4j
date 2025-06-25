@@ -91,8 +91,9 @@ public record XrRenderModelPathInfoFB(@NotNull MemorySegment segment) implements
             return new XrRenderModelPathInfoFB(segment.asSlice(index * XrRenderModelPathInfoFB.BYTES, XrRenderModelPathInfoFB.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull XrRenderModelPathInfoFB> consumer) {
+        public XrRenderModelPathInfoFB.Ptr at(long index, @NotNull Consumer<@NotNull XrRenderModelPathInfoFB> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull XrRenderModelPathInfoFB value) {

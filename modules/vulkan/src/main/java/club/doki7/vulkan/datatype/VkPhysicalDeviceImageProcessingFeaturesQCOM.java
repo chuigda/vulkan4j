@@ -89,8 +89,9 @@ public record VkPhysicalDeviceImageProcessingFeaturesQCOM(@NotNull MemorySegment
             return new VkPhysicalDeviceImageProcessingFeaturesQCOM(segment.asSlice(index * VkPhysicalDeviceImageProcessingFeaturesQCOM.BYTES, VkPhysicalDeviceImageProcessingFeaturesQCOM.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceImageProcessingFeaturesQCOM> consumer) {
+        public VkPhysicalDeviceImageProcessingFeaturesQCOM.Ptr at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceImageProcessingFeaturesQCOM> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkPhysicalDeviceImageProcessingFeaturesQCOM value) {

@@ -96,8 +96,9 @@ public record XrSpaceTriangleMeshMETA(@NotNull MemorySegment segment) implements
             return new XrSpaceTriangleMeshMETA(segment.asSlice(index * XrSpaceTriangleMeshMETA.BYTES, XrSpaceTriangleMeshMETA.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull XrSpaceTriangleMeshMETA> consumer) {
+        public XrSpaceTriangleMeshMETA.Ptr at(long index, @NotNull Consumer<@NotNull XrSpaceTriangleMeshMETA> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull XrSpaceTriangleMeshMETA value) {

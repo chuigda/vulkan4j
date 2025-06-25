@@ -79,8 +79,9 @@ public record VkImageSubresourceLayers(@NotNull MemorySegment segment) implement
             return new VkImageSubresourceLayers(segment.asSlice(index * VkImageSubresourceLayers.BYTES, VkImageSubresourceLayers.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkImageSubresourceLayers> consumer) {
+        public VkImageSubresourceLayers.Ptr at(long index, @NotNull Consumer<@NotNull VkImageSubresourceLayers> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkImageSubresourceLayers value) {

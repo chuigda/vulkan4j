@@ -87,8 +87,9 @@ public record VkExternalMemoryImageCreateInfoNV(@NotNull MemorySegment segment) 
             return new VkExternalMemoryImageCreateInfoNV(segment.asSlice(index * VkExternalMemoryImageCreateInfoNV.BYTES, VkExternalMemoryImageCreateInfoNV.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkExternalMemoryImageCreateInfoNV> consumer) {
+        public VkExternalMemoryImageCreateInfoNV.Ptr at(long index, @NotNull Consumer<@NotNull VkExternalMemoryImageCreateInfoNV> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkExternalMemoryImageCreateInfoNV value) {

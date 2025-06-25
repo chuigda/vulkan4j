@@ -86,8 +86,9 @@ public record VkDeviceFaultVendorBinaryHeaderVersionOneEXT(@NotNull MemorySegmen
             return new VkDeviceFaultVendorBinaryHeaderVersionOneEXT(segment.asSlice(index * VkDeviceFaultVendorBinaryHeaderVersionOneEXT.BYTES, VkDeviceFaultVendorBinaryHeaderVersionOneEXT.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkDeviceFaultVendorBinaryHeaderVersionOneEXT> consumer) {
+        public VkDeviceFaultVendorBinaryHeaderVersionOneEXT.Ptr at(long index, @NotNull Consumer<@NotNull VkDeviceFaultVendorBinaryHeaderVersionOneEXT> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkDeviceFaultVendorBinaryHeaderVersionOneEXT value) {

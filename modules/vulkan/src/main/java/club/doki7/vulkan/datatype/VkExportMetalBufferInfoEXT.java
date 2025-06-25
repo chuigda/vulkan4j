@@ -88,8 +88,9 @@ public record VkExportMetalBufferInfoEXT(@NotNull MemorySegment segment) impleme
             return new VkExportMetalBufferInfoEXT(segment.asSlice(index * VkExportMetalBufferInfoEXT.BYTES, VkExportMetalBufferInfoEXT.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkExportMetalBufferInfoEXT> consumer) {
+        public VkExportMetalBufferInfoEXT.Ptr at(long index, @NotNull Consumer<@NotNull VkExportMetalBufferInfoEXT> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkExportMetalBufferInfoEXT value) {

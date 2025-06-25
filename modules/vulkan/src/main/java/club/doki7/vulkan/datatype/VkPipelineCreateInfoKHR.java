@@ -86,8 +86,9 @@ public record VkPipelineCreateInfoKHR(@NotNull MemorySegment segment) implements
             return new VkPipelineCreateInfoKHR(segment.asSlice(index * VkPipelineCreateInfoKHR.BYTES, VkPipelineCreateInfoKHR.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkPipelineCreateInfoKHR> consumer) {
+        public VkPipelineCreateInfoKHR.Ptr at(long index, @NotNull Consumer<@NotNull VkPipelineCreateInfoKHR> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkPipelineCreateInfoKHR value) {

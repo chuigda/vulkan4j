@@ -87,8 +87,9 @@ public record VkPhysicalDeviceHostQueryResetFeatures(@NotNull MemorySegment segm
             return new VkPhysicalDeviceHostQueryResetFeatures(segment.asSlice(index * VkPhysicalDeviceHostQueryResetFeatures.BYTES, VkPhysicalDeviceHostQueryResetFeatures.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceHostQueryResetFeatures> consumer) {
+        public VkPhysicalDeviceHostQueryResetFeatures.Ptr at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceHostQueryResetFeatures> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkPhysicalDeviceHostQueryResetFeatures value) {

@@ -94,8 +94,9 @@ public record GLFWgammaramp(@NotNull MemorySegment segment) implements IGLFWgamm
             return new GLFWgammaramp(segment.asSlice(index * GLFWgammaramp.BYTES, GLFWgammaramp.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull GLFWgammaramp> consumer) {
+        public GLFWgammaramp.Ptr at(long index, @NotNull Consumer<@NotNull GLFWgammaramp> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull GLFWgammaramp value) {

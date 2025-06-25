@@ -82,8 +82,9 @@ public record XrFutureCompletionBaseHeaderEXT(@NotNull MemorySegment segment) im
             return new XrFutureCompletionBaseHeaderEXT(segment.asSlice(index * XrFutureCompletionBaseHeaderEXT.BYTES, XrFutureCompletionBaseHeaderEXT.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull XrFutureCompletionBaseHeaderEXT> consumer) {
+        public XrFutureCompletionBaseHeaderEXT.Ptr at(long index, @NotNull Consumer<@NotNull XrFutureCompletionBaseHeaderEXT> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull XrFutureCompletionBaseHeaderEXT value) {

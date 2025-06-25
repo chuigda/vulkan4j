@@ -89,8 +89,9 @@ public record VkDirectFBSurfaceCreateInfoEXT(@NotNull MemorySegment segment) imp
             return new VkDirectFBSurfaceCreateInfoEXT(segment.asSlice(index * VkDirectFBSurfaceCreateInfoEXT.BYTES, VkDirectFBSurfaceCreateInfoEXT.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkDirectFBSurfaceCreateInfoEXT> consumer) {
+        public VkDirectFBSurfaceCreateInfoEXT.Ptr at(long index, @NotNull Consumer<@NotNull VkDirectFBSurfaceCreateInfoEXT> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkDirectFBSurfaceCreateInfoEXT value) {

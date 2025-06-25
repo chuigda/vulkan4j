@@ -80,8 +80,9 @@ public record XrBodySkeletonJointHTC(@NotNull MemorySegment segment) implements 
             return new XrBodySkeletonJointHTC(segment.asSlice(index * XrBodySkeletonJointHTC.BYTES, XrBodySkeletonJointHTC.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull XrBodySkeletonJointHTC> consumer) {
+        public XrBodySkeletonJointHTC.Ptr at(long index, @NotNull Consumer<@NotNull XrBodySkeletonJointHTC> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull XrBodySkeletonJointHTC value) {

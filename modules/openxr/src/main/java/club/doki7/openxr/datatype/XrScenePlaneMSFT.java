@@ -83,8 +83,9 @@ public record XrScenePlaneMSFT(@NotNull MemorySegment segment) implements IXrSce
             return new XrScenePlaneMSFT(segment.asSlice(index * XrScenePlaneMSFT.BYTES, XrScenePlaneMSFT.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull XrScenePlaneMSFT> consumer) {
+        public XrScenePlaneMSFT.Ptr at(long index, @NotNull Consumer<@NotNull XrScenePlaneMSFT> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull XrScenePlaneMSFT value) {

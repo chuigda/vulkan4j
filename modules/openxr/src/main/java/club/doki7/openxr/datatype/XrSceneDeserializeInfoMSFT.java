@@ -92,8 +92,9 @@ public record XrSceneDeserializeInfoMSFT(@NotNull MemorySegment segment) impleme
             return new XrSceneDeserializeInfoMSFT(segment.asSlice(index * XrSceneDeserializeInfoMSFT.BYTES, XrSceneDeserializeInfoMSFT.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull XrSceneDeserializeInfoMSFT> consumer) {
+        public XrSceneDeserializeInfoMSFT.Ptr at(long index, @NotNull Consumer<@NotNull XrSceneDeserializeInfoMSFT> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull XrSceneDeserializeInfoMSFT value) {

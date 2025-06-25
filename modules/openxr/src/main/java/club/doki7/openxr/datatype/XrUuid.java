@@ -80,8 +80,9 @@ public record XrUuid(@NotNull MemorySegment segment) implements IXrUuid {
             return new XrUuid(segment.asSlice(index * XrUuid.BYTES, XrUuid.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull XrUuid> consumer) {
+        public XrUuid.Ptr at(long index, @NotNull Consumer<@NotNull XrUuid> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull XrUuid value) {

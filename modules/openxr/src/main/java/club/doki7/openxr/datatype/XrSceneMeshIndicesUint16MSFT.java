@@ -93,8 +93,9 @@ public record XrSceneMeshIndicesUint16MSFT(@NotNull MemorySegment segment) imple
             return new XrSceneMeshIndicesUint16MSFT(segment.asSlice(index * XrSceneMeshIndicesUint16MSFT.BYTES, XrSceneMeshIndicesUint16MSFT.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull XrSceneMeshIndicesUint16MSFT> consumer) {
+        public XrSceneMeshIndicesUint16MSFT.Ptr at(long index, @NotNull Consumer<@NotNull XrSceneMeshIndicesUint16MSFT> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull XrSceneMeshIndicesUint16MSFT value) {

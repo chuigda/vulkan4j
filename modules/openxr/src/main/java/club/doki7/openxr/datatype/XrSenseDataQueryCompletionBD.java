@@ -92,8 +92,9 @@ public record XrSenseDataQueryCompletionBD(@NotNull MemorySegment segment) imple
             return new XrSenseDataQueryCompletionBD(segment.asSlice(index * XrSenseDataQueryCompletionBD.BYTES, XrSenseDataQueryCompletionBD.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull XrSenseDataQueryCompletionBD> consumer) {
+        public XrSenseDataQueryCompletionBD.Ptr at(long index, @NotNull Consumer<@NotNull XrSenseDataQueryCompletionBD> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull XrSenseDataQueryCompletionBD value) {

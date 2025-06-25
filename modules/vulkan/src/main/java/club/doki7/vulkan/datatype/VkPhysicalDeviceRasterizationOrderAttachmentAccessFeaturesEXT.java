@@ -89,8 +89,9 @@ public record VkPhysicalDeviceRasterizationOrderAttachmentAccessFeaturesEXT(@Not
             return new VkPhysicalDeviceRasterizationOrderAttachmentAccessFeaturesEXT(segment.asSlice(index * VkPhysicalDeviceRasterizationOrderAttachmentAccessFeaturesEXT.BYTES, VkPhysicalDeviceRasterizationOrderAttachmentAccessFeaturesEXT.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceRasterizationOrderAttachmentAccessFeaturesEXT> consumer) {
+        public VkPhysicalDeviceRasterizationOrderAttachmentAccessFeaturesEXT.Ptr at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceRasterizationOrderAttachmentAccessFeaturesEXT> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkPhysicalDeviceRasterizationOrderAttachmentAccessFeaturesEXT value) {

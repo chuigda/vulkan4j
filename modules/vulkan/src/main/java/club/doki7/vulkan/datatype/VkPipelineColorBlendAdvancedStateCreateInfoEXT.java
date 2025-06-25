@@ -89,8 +89,9 @@ public record VkPipelineColorBlendAdvancedStateCreateInfoEXT(@NotNull MemorySegm
             return new VkPipelineColorBlendAdvancedStateCreateInfoEXT(segment.asSlice(index * VkPipelineColorBlendAdvancedStateCreateInfoEXT.BYTES, VkPipelineColorBlendAdvancedStateCreateInfoEXT.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkPipelineColorBlendAdvancedStateCreateInfoEXT> consumer) {
+        public VkPipelineColorBlendAdvancedStateCreateInfoEXT.Ptr at(long index, @NotNull Consumer<@NotNull VkPipelineColorBlendAdvancedStateCreateInfoEXT> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkPipelineColorBlendAdvancedStateCreateInfoEXT value) {

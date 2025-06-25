@@ -91,8 +91,9 @@ public record VkPhysicalDeviceIDProperties(@NotNull MemorySegment segment) imple
             return new VkPhysicalDeviceIDProperties(segment.asSlice(index * VkPhysicalDeviceIDProperties.BYTES, VkPhysicalDeviceIDProperties.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceIDProperties> consumer) {
+        public VkPhysicalDeviceIDProperties.Ptr at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceIDProperties> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkPhysicalDeviceIDProperties value) {

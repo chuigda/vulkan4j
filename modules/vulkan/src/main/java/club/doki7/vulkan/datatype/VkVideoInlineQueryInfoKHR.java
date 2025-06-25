@@ -89,8 +89,9 @@ public record VkVideoInlineQueryInfoKHR(@NotNull MemorySegment segment) implemen
             return new VkVideoInlineQueryInfoKHR(segment.asSlice(index * VkVideoInlineQueryInfoKHR.BYTES, VkVideoInlineQueryInfoKHR.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkVideoInlineQueryInfoKHR> consumer) {
+        public VkVideoInlineQueryInfoKHR.Ptr at(long index, @NotNull Consumer<@NotNull VkVideoInlineQueryInfoKHR> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkVideoInlineQueryInfoKHR value) {

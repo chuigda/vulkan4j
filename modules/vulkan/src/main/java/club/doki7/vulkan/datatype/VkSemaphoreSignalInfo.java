@@ -88,8 +88,9 @@ public record VkSemaphoreSignalInfo(@NotNull MemorySegment segment) implements I
             return new VkSemaphoreSignalInfo(segment.asSlice(index * VkSemaphoreSignalInfo.BYTES, VkSemaphoreSignalInfo.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkSemaphoreSignalInfo> consumer) {
+        public VkSemaphoreSignalInfo.Ptr at(long index, @NotNull Consumer<@NotNull VkSemaphoreSignalInfo> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkSemaphoreSignalInfo value) {

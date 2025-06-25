@@ -92,8 +92,9 @@ public record XrSpatialComponentPlaneAlignmentListEXT(@NotNull MemorySegment seg
             return new XrSpatialComponentPlaneAlignmentListEXT(segment.asSlice(index * XrSpatialComponentPlaneAlignmentListEXT.BYTES, XrSpatialComponentPlaneAlignmentListEXT.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull XrSpatialComponentPlaneAlignmentListEXT> consumer) {
+        public XrSpatialComponentPlaneAlignmentListEXT.Ptr at(long index, @NotNull Consumer<@NotNull XrSpatialComponentPlaneAlignmentListEXT> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull XrSpatialComponentPlaneAlignmentListEXT value) {

@@ -88,8 +88,9 @@ public record VkMemoryGetFdInfoKHR(@NotNull MemorySegment segment) implements IV
             return new VkMemoryGetFdInfoKHR(segment.asSlice(index * VkMemoryGetFdInfoKHR.BYTES, VkMemoryGetFdInfoKHR.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkMemoryGetFdInfoKHR> consumer) {
+        public VkMemoryGetFdInfoKHR.Ptr at(long index, @NotNull Consumer<@NotNull VkMemoryGetFdInfoKHR> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkMemoryGetFdInfoKHR value) {

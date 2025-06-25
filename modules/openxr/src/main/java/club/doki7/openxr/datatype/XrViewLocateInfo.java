@@ -93,8 +93,9 @@ public record XrViewLocateInfo(@NotNull MemorySegment segment) implements IXrVie
             return new XrViewLocateInfo(segment.asSlice(index * XrViewLocateInfo.BYTES, XrViewLocateInfo.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull XrViewLocateInfo> consumer) {
+        public XrViewLocateInfo.Ptr at(long index, @NotNull Consumer<@NotNull XrViewLocateInfo> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull XrViewLocateInfo value) {

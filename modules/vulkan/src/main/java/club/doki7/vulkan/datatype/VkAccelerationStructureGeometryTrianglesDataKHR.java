@@ -93,8 +93,9 @@ public record VkAccelerationStructureGeometryTrianglesDataKHR(@NotNull MemorySeg
             return new VkAccelerationStructureGeometryTrianglesDataKHR(segment.asSlice(index * VkAccelerationStructureGeometryTrianglesDataKHR.BYTES, VkAccelerationStructureGeometryTrianglesDataKHR.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkAccelerationStructureGeometryTrianglesDataKHR> consumer) {
+        public VkAccelerationStructureGeometryTrianglesDataKHR.Ptr at(long index, @NotNull Consumer<@NotNull VkAccelerationStructureGeometryTrianglesDataKHR> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkAccelerationStructureGeometryTrianglesDataKHR value) {

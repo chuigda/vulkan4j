@@ -89,8 +89,9 @@ public record VkImageViewSampleWeightCreateInfoQCOM(@NotNull MemorySegment segme
             return new VkImageViewSampleWeightCreateInfoQCOM(segment.asSlice(index * VkImageViewSampleWeightCreateInfoQCOM.BYTES, VkImageViewSampleWeightCreateInfoQCOM.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkImageViewSampleWeightCreateInfoQCOM> consumer) {
+        public VkImageViewSampleWeightCreateInfoQCOM.Ptr at(long index, @NotNull Consumer<@NotNull VkImageViewSampleWeightCreateInfoQCOM> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkImageViewSampleWeightCreateInfoQCOM value) {

@@ -92,8 +92,9 @@ public record XrSwapchainStateFoveationFB(@NotNull MemorySegment segment) implem
             return new XrSwapchainStateFoveationFB(segment.asSlice(index * XrSwapchainStateFoveationFB.BYTES, XrSwapchainStateFoveationFB.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull XrSwapchainStateFoveationFB> consumer) {
+        public XrSwapchainStateFoveationFB.Ptr at(long index, @NotNull Consumer<@NotNull XrSwapchainStateFoveationFB> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull XrSwapchainStateFoveationFB value) {

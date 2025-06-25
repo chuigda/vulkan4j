@@ -92,8 +92,9 @@ public record XrSpatialComponentPlaneSemanticLabelListEXT(@NotNull MemorySegment
             return new XrSpatialComponentPlaneSemanticLabelListEXT(segment.asSlice(index * XrSpatialComponentPlaneSemanticLabelListEXT.BYTES, XrSpatialComponentPlaneSemanticLabelListEXT.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull XrSpatialComponentPlaneSemanticLabelListEXT> consumer) {
+        public XrSpatialComponentPlaneSemanticLabelListEXT.Ptr at(long index, @NotNull Consumer<@NotNull XrSpatialComponentPlaneSemanticLabelListEXT> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull XrSpatialComponentPlaneSemanticLabelListEXT value) {

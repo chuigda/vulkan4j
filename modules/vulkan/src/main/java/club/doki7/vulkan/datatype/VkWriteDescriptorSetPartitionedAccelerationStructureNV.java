@@ -88,8 +88,9 @@ public record VkWriteDescriptorSetPartitionedAccelerationStructureNV(@NotNull Me
             return new VkWriteDescriptorSetPartitionedAccelerationStructureNV(segment.asSlice(index * VkWriteDescriptorSetPartitionedAccelerationStructureNV.BYTES, VkWriteDescriptorSetPartitionedAccelerationStructureNV.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkWriteDescriptorSetPartitionedAccelerationStructureNV> consumer) {
+        public VkWriteDescriptorSetPartitionedAccelerationStructureNV.Ptr at(long index, @NotNull Consumer<@NotNull VkWriteDescriptorSetPartitionedAccelerationStructureNV> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkWriteDescriptorSetPartitionedAccelerationStructureNV value) {

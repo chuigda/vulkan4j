@@ -87,8 +87,9 @@ public record VkMemoryMetalHandlePropertiesEXT(@NotNull MemorySegment segment) i
             return new VkMemoryMetalHandlePropertiesEXT(segment.asSlice(index * VkMemoryMetalHandlePropertiesEXT.BYTES, VkMemoryMetalHandlePropertiesEXT.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkMemoryMetalHandlePropertiesEXT> consumer) {
+        public VkMemoryMetalHandlePropertiesEXT.Ptr at(long index, @NotNull Consumer<@NotNull VkMemoryMetalHandlePropertiesEXT> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkMemoryMetalHandlePropertiesEXT value) {

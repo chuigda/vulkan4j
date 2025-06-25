@@ -87,8 +87,9 @@ public record VkImageViewMinLodCreateInfoEXT(@NotNull MemorySegment segment) imp
             return new VkImageViewMinLodCreateInfoEXT(segment.asSlice(index * VkImageViewMinLodCreateInfoEXT.BYTES, VkImageViewMinLodCreateInfoEXT.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkImageViewMinLodCreateInfoEXT> consumer) {
+        public VkImageViewMinLodCreateInfoEXT.Ptr at(long index, @NotNull Consumer<@NotNull VkImageViewMinLodCreateInfoEXT> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkImageViewMinLodCreateInfoEXT value) {

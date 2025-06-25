@@ -93,8 +93,9 @@ public record VkClusterAccelerationStructureBuildTriangleClusterInfoNV(@NotNull 
             return new VkClusterAccelerationStructureBuildTriangleClusterInfoNV(segment.asSlice(index * VkClusterAccelerationStructureBuildTriangleClusterInfoNV.BYTES, VkClusterAccelerationStructureBuildTriangleClusterInfoNV.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkClusterAccelerationStructureBuildTriangleClusterInfoNV> consumer) {
+        public VkClusterAccelerationStructureBuildTriangleClusterInfoNV.Ptr at(long index, @NotNull Consumer<@NotNull VkClusterAccelerationStructureBuildTriangleClusterInfoNV> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkClusterAccelerationStructureBuildTriangleClusterInfoNV value) {

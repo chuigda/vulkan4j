@@ -90,8 +90,9 @@ public record VkDeviceFaultInfoEXT(@NotNull MemorySegment segment) implements IV
             return new VkDeviceFaultInfoEXT(segment.asSlice(index * VkDeviceFaultInfoEXT.BYTES, VkDeviceFaultInfoEXT.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkDeviceFaultInfoEXT> consumer) {
+        public VkDeviceFaultInfoEXT.Ptr at(long index, @NotNull Consumer<@NotNull VkDeviceFaultInfoEXT> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkDeviceFaultInfoEXT value) {

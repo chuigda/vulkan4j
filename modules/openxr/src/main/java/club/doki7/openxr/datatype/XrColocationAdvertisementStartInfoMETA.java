@@ -92,8 +92,9 @@ public record XrColocationAdvertisementStartInfoMETA(@NotNull MemorySegment segm
             return new XrColocationAdvertisementStartInfoMETA(segment.asSlice(index * XrColocationAdvertisementStartInfoMETA.BYTES, XrColocationAdvertisementStartInfoMETA.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull XrColocationAdvertisementStartInfoMETA> consumer) {
+        public XrColocationAdvertisementStartInfoMETA.Ptr at(long index, @NotNull Consumer<@NotNull XrColocationAdvertisementStartInfoMETA> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull XrColocationAdvertisementStartInfoMETA value) {

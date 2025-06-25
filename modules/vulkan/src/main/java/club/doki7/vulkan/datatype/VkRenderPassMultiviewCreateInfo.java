@@ -92,8 +92,9 @@ public record VkRenderPassMultiviewCreateInfo(@NotNull MemorySegment segment) im
             return new VkRenderPassMultiviewCreateInfo(segment.asSlice(index * VkRenderPassMultiviewCreateInfo.BYTES, VkRenderPassMultiviewCreateInfo.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkRenderPassMultiviewCreateInfo> consumer) {
+        public VkRenderPassMultiviewCreateInfo.Ptr at(long index, @NotNull Consumer<@NotNull VkRenderPassMultiviewCreateInfo> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkRenderPassMultiviewCreateInfo value) {

@@ -77,8 +77,9 @@ public record StdVideoEncodeH264SliceHeaderFlags(@NotNull MemorySegment segment)
             return new StdVideoEncodeH264SliceHeaderFlags(segment.asSlice(index * StdVideoEncodeH264SliceHeaderFlags.BYTES, StdVideoEncodeH264SliceHeaderFlags.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull StdVideoEncodeH264SliceHeaderFlags> consumer) {
+        public StdVideoEncodeH264SliceHeaderFlags.Ptr at(long index, @NotNull Consumer<@NotNull StdVideoEncodeH264SliceHeaderFlags> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull StdVideoEncodeH264SliceHeaderFlags value) {

@@ -108,8 +108,9 @@ public record VmaDefragmentationInfo(@NotNull MemorySegment segment) implements 
             return new VmaDefragmentationInfo(segment.asSlice(index * VmaDefragmentationInfo.BYTES, VmaDefragmentationInfo.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VmaDefragmentationInfo> consumer) {
+        public VmaDefragmentationInfo.Ptr at(long index, @NotNull Consumer<@NotNull VmaDefragmentationInfo> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VmaDefragmentationInfo value) {

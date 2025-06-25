@@ -75,8 +75,9 @@ public record StdVideoAV1LoopRestoration(@NotNull MemorySegment segment) impleme
             return new StdVideoAV1LoopRestoration(segment.asSlice(index * StdVideoAV1LoopRestoration.BYTES, StdVideoAV1LoopRestoration.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull StdVideoAV1LoopRestoration> consumer) {
+        public StdVideoAV1LoopRestoration.Ptr at(long index, @NotNull Consumer<@NotNull StdVideoAV1LoopRestoration> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull StdVideoAV1LoopRestoration value) {

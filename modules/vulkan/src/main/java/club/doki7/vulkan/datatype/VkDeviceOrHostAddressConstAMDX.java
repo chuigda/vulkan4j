@@ -77,8 +77,9 @@ public record VkDeviceOrHostAddressConstAMDX(@NotNull MemorySegment segment) imp
             return new VkDeviceOrHostAddressConstAMDX(segment.asSlice(index * VkDeviceOrHostAddressConstAMDX.BYTES, VkDeviceOrHostAddressConstAMDX.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkDeviceOrHostAddressConstAMDX> consumer) {
+        public VkDeviceOrHostAddressConstAMDX.Ptr at(long index, @NotNull Consumer<@NotNull VkDeviceOrHostAddressConstAMDX> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkDeviceOrHostAddressConstAMDX value) {

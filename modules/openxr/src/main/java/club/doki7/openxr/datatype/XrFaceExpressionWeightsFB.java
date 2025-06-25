@@ -96,8 +96,9 @@ public record XrFaceExpressionWeightsFB(@NotNull MemorySegment segment) implemen
             return new XrFaceExpressionWeightsFB(segment.asSlice(index * XrFaceExpressionWeightsFB.BYTES, XrFaceExpressionWeightsFB.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull XrFaceExpressionWeightsFB> consumer) {
+        public XrFaceExpressionWeightsFB.Ptr at(long index, @NotNull Consumer<@NotNull XrFaceExpressionWeightsFB> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull XrFaceExpressionWeightsFB value) {

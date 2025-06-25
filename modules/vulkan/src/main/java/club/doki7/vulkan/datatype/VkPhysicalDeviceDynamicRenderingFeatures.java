@@ -87,8 +87,9 @@ public record VkPhysicalDeviceDynamicRenderingFeatures(@NotNull MemorySegment se
             return new VkPhysicalDeviceDynamicRenderingFeatures(segment.asSlice(index * VkPhysicalDeviceDynamicRenderingFeatures.BYTES, VkPhysicalDeviceDynamicRenderingFeatures.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceDynamicRenderingFeatures> consumer) {
+        public VkPhysicalDeviceDynamicRenderingFeatures.Ptr at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceDynamicRenderingFeatures> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkPhysicalDeviceDynamicRenderingFeatures value) {

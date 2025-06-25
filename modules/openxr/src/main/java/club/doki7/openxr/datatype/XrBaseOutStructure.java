@@ -81,8 +81,9 @@ public record XrBaseOutStructure(@NotNull MemorySegment segment) implements IXrB
             return new XrBaseOutStructure(segment.asSlice(index * XrBaseOutStructure.BYTES, XrBaseOutStructure.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull XrBaseOutStructure> consumer) {
+        public XrBaseOutStructure.Ptr at(long index, @NotNull Consumer<@NotNull XrBaseOutStructure> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull XrBaseOutStructure value) {

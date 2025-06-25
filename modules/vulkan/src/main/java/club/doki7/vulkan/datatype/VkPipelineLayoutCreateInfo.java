@@ -91,8 +91,9 @@ public record VkPipelineLayoutCreateInfo(@NotNull MemorySegment segment) impleme
             return new VkPipelineLayoutCreateInfo(segment.asSlice(index * VkPipelineLayoutCreateInfo.BYTES, VkPipelineLayoutCreateInfo.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkPipelineLayoutCreateInfo> consumer) {
+        public VkPipelineLayoutCreateInfo.Ptr at(long index, @NotNull Consumer<@NotNull VkPipelineLayoutCreateInfo> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkPipelineLayoutCreateInfo value) {

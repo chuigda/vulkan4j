@@ -80,8 +80,9 @@ public record VkImageFormatProperties(@NotNull MemorySegment segment) implements
             return new VkImageFormatProperties(segment.asSlice(index * VkImageFormatProperties.BYTES, VkImageFormatProperties.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkImageFormatProperties> consumer) {
+        public VkImageFormatProperties.Ptr at(long index, @NotNull Consumer<@NotNull VkImageFormatProperties> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkImageFormatProperties value) {

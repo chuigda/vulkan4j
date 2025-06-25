@@ -91,8 +91,9 @@ public record XrSystemSpatialEntityGroupSharingPropertiesMETA(@NotNull MemorySeg
             return new XrSystemSpatialEntityGroupSharingPropertiesMETA(segment.asSlice(index * XrSystemSpatialEntityGroupSharingPropertiesMETA.BYTES, XrSystemSpatialEntityGroupSharingPropertiesMETA.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull XrSystemSpatialEntityGroupSharingPropertiesMETA> consumer) {
+        public XrSystemSpatialEntityGroupSharingPropertiesMETA.Ptr at(long index, @NotNull Consumer<@NotNull XrSystemSpatialEntityGroupSharingPropertiesMETA> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull XrSystemSpatialEntityGroupSharingPropertiesMETA value) {

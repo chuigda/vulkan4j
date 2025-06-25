@@ -94,8 +94,9 @@ public record XrEventDataPerfSettingsEXT(@NotNull MemorySegment segment) impleme
             return new XrEventDataPerfSettingsEXT(segment.asSlice(index * XrEventDataPerfSettingsEXT.BYTES, XrEventDataPerfSettingsEXT.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull XrEventDataPerfSettingsEXT> consumer) {
+        public XrEventDataPerfSettingsEXT.Ptr at(long index, @NotNull Consumer<@NotNull XrEventDataPerfSettingsEXT> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull XrEventDataPerfSettingsEXT value) {

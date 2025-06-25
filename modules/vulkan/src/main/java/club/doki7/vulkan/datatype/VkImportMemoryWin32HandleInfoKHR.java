@@ -89,8 +89,9 @@ public record VkImportMemoryWin32HandleInfoKHR(@NotNull MemorySegment segment) i
             return new VkImportMemoryWin32HandleInfoKHR(segment.asSlice(index * VkImportMemoryWin32HandleInfoKHR.BYTES, VkImportMemoryWin32HandleInfoKHR.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkImportMemoryWin32HandleInfoKHR> consumer) {
+        public VkImportMemoryWin32HandleInfoKHR.Ptr at(long index, @NotNull Consumer<@NotNull VkImportMemoryWin32HandleInfoKHR> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkImportMemoryWin32HandleInfoKHR value) {

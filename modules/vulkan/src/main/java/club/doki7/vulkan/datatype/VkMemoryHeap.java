@@ -77,8 +77,9 @@ public record VkMemoryHeap(@NotNull MemorySegment segment) implements IVkMemoryH
             return new VkMemoryHeap(segment.asSlice(index * VkMemoryHeap.BYTES, VkMemoryHeap.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkMemoryHeap> consumer) {
+        public VkMemoryHeap.Ptr at(long index, @NotNull Consumer<@NotNull VkMemoryHeap> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkMemoryHeap value) {

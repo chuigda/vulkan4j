@@ -87,8 +87,9 @@ public record VkPhysicalDeviceZeroInitializeWorkgroupMemoryFeatures(@NotNull Mem
             return new VkPhysicalDeviceZeroInitializeWorkgroupMemoryFeatures(segment.asSlice(index * VkPhysicalDeviceZeroInitializeWorkgroupMemoryFeatures.BYTES, VkPhysicalDeviceZeroInitializeWorkgroupMemoryFeatures.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceZeroInitializeWorkgroupMemoryFeatures> consumer) {
+        public VkPhysicalDeviceZeroInitializeWorkgroupMemoryFeatures.Ptr at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceZeroInitializeWorkgroupMemoryFeatures> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkPhysicalDeviceZeroInitializeWorkgroupMemoryFeatures value) {

@@ -88,8 +88,9 @@ public record VkVideoSessionMemoryRequirementsKHR(@NotNull MemorySegment segment
             return new VkVideoSessionMemoryRequirementsKHR(segment.asSlice(index * VkVideoSessionMemoryRequirementsKHR.BYTES, VkVideoSessionMemoryRequirementsKHR.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkVideoSessionMemoryRequirementsKHR> consumer) {
+        public VkVideoSessionMemoryRequirementsKHR.Ptr at(long index, @NotNull Consumer<@NotNull VkVideoSessionMemoryRequirementsKHR> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkVideoSessionMemoryRequirementsKHR value) {

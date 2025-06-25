@@ -89,8 +89,9 @@ public record VkAccelerationStructureBuildSizesInfoKHR(@NotNull MemorySegment se
             return new VkAccelerationStructureBuildSizesInfoKHR(segment.asSlice(index * VkAccelerationStructureBuildSizesInfoKHR.BYTES, VkAccelerationStructureBuildSizesInfoKHR.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkAccelerationStructureBuildSizesInfoKHR> consumer) {
+        public VkAccelerationStructureBuildSizesInfoKHR.Ptr at(long index, @NotNull Consumer<@NotNull VkAccelerationStructureBuildSizesInfoKHR> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkAccelerationStructureBuildSizesInfoKHR value) {

@@ -86,8 +86,9 @@ public record XrApiLayerNextInfo(@NotNull MemorySegment segment) implements IXrA
             return new XrApiLayerNextInfo(segment.asSlice(index * XrApiLayerNextInfo.BYTES, XrApiLayerNextInfo.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull XrApiLayerNextInfo> consumer) {
+        public XrApiLayerNextInfo.Ptr at(long index, @NotNull Consumer<@NotNull XrApiLayerNextInfo> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull XrApiLayerNextInfo value) {

@@ -88,8 +88,9 @@ public record VkCudaModuleCreateInfoNV(@NotNull MemorySegment segment) implement
             return new VkCudaModuleCreateInfoNV(segment.asSlice(index * VkCudaModuleCreateInfoNV.BYTES, VkCudaModuleCreateInfoNV.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkCudaModuleCreateInfoNV> consumer) {
+        public VkCudaModuleCreateInfoNV.Ptr at(long index, @NotNull Consumer<@NotNull VkCudaModuleCreateInfoNV> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkCudaModuleCreateInfoNV value) {

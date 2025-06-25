@@ -87,8 +87,9 @@ public record VkPhysicalDeviceYcbcrImageArraysFeaturesEXT(@NotNull MemorySegment
             return new VkPhysicalDeviceYcbcrImageArraysFeaturesEXT(segment.asSlice(index * VkPhysicalDeviceYcbcrImageArraysFeaturesEXT.BYTES, VkPhysicalDeviceYcbcrImageArraysFeaturesEXT.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceYcbcrImageArraysFeaturesEXT> consumer) {
+        public VkPhysicalDeviceYcbcrImageArraysFeaturesEXT.Ptr at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceYcbcrImageArraysFeaturesEXT> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkPhysicalDeviceYcbcrImageArraysFeaturesEXT value) {

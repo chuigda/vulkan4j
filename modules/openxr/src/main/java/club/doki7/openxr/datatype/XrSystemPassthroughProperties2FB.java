@@ -91,8 +91,9 @@ public record XrSystemPassthroughProperties2FB(@NotNull MemorySegment segment) i
             return new XrSystemPassthroughProperties2FB(segment.asSlice(index * XrSystemPassthroughProperties2FB.BYTES, XrSystemPassthroughProperties2FB.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull XrSystemPassthroughProperties2FB> consumer) {
+        public XrSystemPassthroughProperties2FB.Ptr at(long index, @NotNull Consumer<@NotNull XrSystemPassthroughProperties2FB> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull XrSystemPassthroughProperties2FB value) {

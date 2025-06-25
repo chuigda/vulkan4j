@@ -78,8 +78,9 @@ public record VkSparseImageMemoryBindInfo(@NotNull MemorySegment segment) implem
             return new VkSparseImageMemoryBindInfo(segment.asSlice(index * VkSparseImageMemoryBindInfo.BYTES, VkSparseImageMemoryBindInfo.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkSparseImageMemoryBindInfo> consumer) {
+        public VkSparseImageMemoryBindInfo.Ptr at(long index, @NotNull Consumer<@NotNull VkSparseImageMemoryBindInfo> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkSparseImageMemoryBindInfo value) {

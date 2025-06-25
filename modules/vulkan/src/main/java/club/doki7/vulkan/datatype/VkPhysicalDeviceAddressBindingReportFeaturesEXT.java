@@ -87,8 +87,9 @@ public record VkPhysicalDeviceAddressBindingReportFeaturesEXT(@NotNull MemorySeg
             return new VkPhysicalDeviceAddressBindingReportFeaturesEXT(segment.asSlice(index * VkPhysicalDeviceAddressBindingReportFeaturesEXT.BYTES, VkPhysicalDeviceAddressBindingReportFeaturesEXT.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceAddressBindingReportFeaturesEXT> consumer) {
+        public VkPhysicalDeviceAddressBindingReportFeaturesEXT.Ptr at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceAddressBindingReportFeaturesEXT> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkPhysicalDeviceAddressBindingReportFeaturesEXT value) {

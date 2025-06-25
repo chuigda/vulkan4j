@@ -94,8 +94,9 @@ public record XrSpacesLocateInfo(@NotNull MemorySegment segment) implements IXrS
             return new XrSpacesLocateInfo(segment.asSlice(index * XrSpacesLocateInfo.BYTES, XrSpacesLocateInfo.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull XrSpacesLocateInfo> consumer) {
+        public XrSpacesLocateInfo.Ptr at(long index, @NotNull Consumer<@NotNull XrSpacesLocateInfo> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull XrSpacesLocateInfo value) {

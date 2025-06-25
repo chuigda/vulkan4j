@@ -80,8 +80,9 @@ public record StdVideoEncodeH265LongTermRefPics(@NotNull MemorySegment segment) 
             return new StdVideoEncodeH265LongTermRefPics(segment.asSlice(index * StdVideoEncodeH265LongTermRefPics.BYTES, StdVideoEncodeH265LongTermRefPics.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull StdVideoEncodeH265LongTermRefPics> consumer) {
+        public StdVideoEncodeH265LongTermRefPics.Ptr at(long index, @NotNull Consumer<@NotNull StdVideoEncodeH265LongTermRefPics> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull StdVideoEncodeH265LongTermRefPics value) {

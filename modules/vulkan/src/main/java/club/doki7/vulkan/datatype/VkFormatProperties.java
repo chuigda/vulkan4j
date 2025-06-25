@@ -78,8 +78,9 @@ public record VkFormatProperties(@NotNull MemorySegment segment) implements IVkF
             return new VkFormatProperties(segment.asSlice(index * VkFormatProperties.BYTES, VkFormatProperties.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkFormatProperties> consumer) {
+        public VkFormatProperties.Ptr at(long index, @NotNull Consumer<@NotNull VkFormatProperties> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkFormatProperties value) {

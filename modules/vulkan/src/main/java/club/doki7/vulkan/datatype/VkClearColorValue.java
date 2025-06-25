@@ -78,8 +78,9 @@ public record VkClearColorValue(@NotNull MemorySegment segment) implements IVkCl
             return new VkClearColorValue(segment.asSlice(index * VkClearColorValue.BYTES, VkClearColorValue.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkClearColorValue> consumer) {
+        public VkClearColorValue.Ptr at(long index, @NotNull Consumer<@NotNull VkClearColorValue> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkClearColorValue value) {

@@ -87,8 +87,9 @@ public record VkPerformanceQuerySubmitInfoKHR(@NotNull MemorySegment segment) im
             return new VkPerformanceQuerySubmitInfoKHR(segment.asSlice(index * VkPerformanceQuerySubmitInfoKHR.BYTES, VkPerformanceQuerySubmitInfoKHR.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkPerformanceQuerySubmitInfoKHR> consumer) {
+        public VkPerformanceQuerySubmitInfoKHR.Ptr at(long index, @NotNull Consumer<@NotNull VkPerformanceQuerySubmitInfoKHR> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkPerformanceQuerySubmitInfoKHR value) {

@@ -94,8 +94,9 @@ public record VkPhysicalDeviceAccelerationStructurePropertiesKHR(@NotNull Memory
             return new VkPhysicalDeviceAccelerationStructurePropertiesKHR(segment.asSlice(index * VkPhysicalDeviceAccelerationStructurePropertiesKHR.BYTES, VkPhysicalDeviceAccelerationStructurePropertiesKHR.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceAccelerationStructurePropertiesKHR> consumer) {
+        public VkPhysicalDeviceAccelerationStructurePropertiesKHR.Ptr at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceAccelerationStructurePropertiesKHR> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkPhysicalDeviceAccelerationStructurePropertiesKHR value) {

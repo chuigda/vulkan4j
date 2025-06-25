@@ -87,8 +87,9 @@ public record VkPhysicalDeviceExtendedSparseAddressSpaceFeaturesNV(@NotNull Memo
             return new VkPhysicalDeviceExtendedSparseAddressSpaceFeaturesNV(segment.asSlice(index * VkPhysicalDeviceExtendedSparseAddressSpaceFeaturesNV.BYTES, VkPhysicalDeviceExtendedSparseAddressSpaceFeaturesNV.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceExtendedSparseAddressSpaceFeaturesNV> consumer) {
+        public VkPhysicalDeviceExtendedSparseAddressSpaceFeaturesNV.Ptr at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceExtendedSparseAddressSpaceFeaturesNV> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkPhysicalDeviceExtendedSparseAddressSpaceFeaturesNV value) {

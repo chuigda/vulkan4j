@@ -91,8 +91,9 @@ public record XrSystemAnchorPropertiesHTC(@NotNull MemorySegment segment) implem
             return new XrSystemAnchorPropertiesHTC(segment.asSlice(index * XrSystemAnchorPropertiesHTC.BYTES, XrSystemAnchorPropertiesHTC.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull XrSystemAnchorPropertiesHTC> consumer) {
+        public XrSystemAnchorPropertiesHTC.Ptr at(long index, @NotNull Consumer<@NotNull XrSystemAnchorPropertiesHTC> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull XrSystemAnchorPropertiesHTC value) {

@@ -92,8 +92,9 @@ public record XrHandJointsLocateInfoEXT(@NotNull MemorySegment segment) implemen
             return new XrHandJointsLocateInfoEXT(segment.asSlice(index * XrHandJointsLocateInfoEXT.BYTES, XrHandJointsLocateInfoEXT.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull XrHandJointsLocateInfoEXT> consumer) {
+        public XrHandJointsLocateInfoEXT.Ptr at(long index, @NotNull Consumer<@NotNull XrHandJointsLocateInfoEXT> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull XrHandJointsLocateInfoEXT value) {

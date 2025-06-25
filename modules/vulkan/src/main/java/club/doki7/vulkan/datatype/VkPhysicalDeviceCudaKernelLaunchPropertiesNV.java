@@ -88,8 +88,9 @@ public record VkPhysicalDeviceCudaKernelLaunchPropertiesNV(@NotNull MemorySegmen
             return new VkPhysicalDeviceCudaKernelLaunchPropertiesNV(segment.asSlice(index * VkPhysicalDeviceCudaKernelLaunchPropertiesNV.BYTES, VkPhysicalDeviceCudaKernelLaunchPropertiesNV.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceCudaKernelLaunchPropertiesNV> consumer) {
+        public VkPhysicalDeviceCudaKernelLaunchPropertiesNV.Ptr at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceCudaKernelLaunchPropertiesNV> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkPhysicalDeviceCudaKernelLaunchPropertiesNV value) {

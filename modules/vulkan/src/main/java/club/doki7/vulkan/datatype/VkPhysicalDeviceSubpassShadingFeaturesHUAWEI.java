@@ -87,8 +87,9 @@ public record VkPhysicalDeviceSubpassShadingFeaturesHUAWEI(@NotNull MemorySegmen
             return new VkPhysicalDeviceSubpassShadingFeaturesHUAWEI(segment.asSlice(index * VkPhysicalDeviceSubpassShadingFeaturesHUAWEI.BYTES, VkPhysicalDeviceSubpassShadingFeaturesHUAWEI.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceSubpassShadingFeaturesHUAWEI> consumer) {
+        public VkPhysicalDeviceSubpassShadingFeaturesHUAWEI.Ptr at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceSubpassShadingFeaturesHUAWEI> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkPhysicalDeviceSubpassShadingFeaturesHUAWEI value) {

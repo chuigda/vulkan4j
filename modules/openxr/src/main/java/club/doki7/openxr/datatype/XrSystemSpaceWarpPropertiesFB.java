@@ -92,8 +92,9 @@ public record XrSystemSpaceWarpPropertiesFB(@NotNull MemorySegment segment) impl
             return new XrSystemSpaceWarpPropertiesFB(segment.asSlice(index * XrSystemSpaceWarpPropertiesFB.BYTES, XrSystemSpaceWarpPropertiesFB.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull XrSystemSpaceWarpPropertiesFB> consumer) {
+        public XrSystemSpaceWarpPropertiesFB.Ptr at(long index, @NotNull Consumer<@NotNull XrSystemSpaceWarpPropertiesFB> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull XrSystemSpaceWarpPropertiesFB value) {

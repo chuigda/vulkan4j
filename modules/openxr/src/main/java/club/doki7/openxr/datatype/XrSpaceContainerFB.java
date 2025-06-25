@@ -93,8 +93,9 @@ public record XrSpaceContainerFB(@NotNull MemorySegment segment) implements IXrS
             return new XrSpaceContainerFB(segment.asSlice(index * XrSpaceContainerFB.BYTES, XrSpaceContainerFB.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull XrSpaceContainerFB> consumer) {
+        public XrSpaceContainerFB.Ptr at(long index, @NotNull Consumer<@NotNull XrSpaceContainerFB> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull XrSpaceContainerFB value) {

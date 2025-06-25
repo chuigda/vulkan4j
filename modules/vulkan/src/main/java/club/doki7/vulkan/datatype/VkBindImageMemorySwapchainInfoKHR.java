@@ -88,8 +88,9 @@ public record VkBindImageMemorySwapchainInfoKHR(@NotNull MemorySegment segment) 
             return new VkBindImageMemorySwapchainInfoKHR(segment.asSlice(index * VkBindImageMemorySwapchainInfoKHR.BYTES, VkBindImageMemorySwapchainInfoKHR.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkBindImageMemorySwapchainInfoKHR> consumer) {
+        public VkBindImageMemorySwapchainInfoKHR.Ptr at(long index, @NotNull Consumer<@NotNull VkBindImageMemorySwapchainInfoKHR> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkBindImageMemorySwapchainInfoKHR value) {

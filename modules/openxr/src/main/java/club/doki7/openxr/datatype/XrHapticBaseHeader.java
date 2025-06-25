@@ -81,8 +81,9 @@ public record XrHapticBaseHeader(@NotNull MemorySegment segment) implements IXrH
             return new XrHapticBaseHeader(segment.asSlice(index * XrHapticBaseHeader.BYTES, XrHapticBaseHeader.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull XrHapticBaseHeader> consumer) {
+        public XrHapticBaseHeader.Ptr at(long index, @NotNull Consumer<@NotNull XrHapticBaseHeader> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull XrHapticBaseHeader value) {

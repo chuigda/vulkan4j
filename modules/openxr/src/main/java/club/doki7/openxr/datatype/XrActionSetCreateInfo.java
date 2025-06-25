@@ -93,8 +93,9 @@ public record XrActionSetCreateInfo(@NotNull MemorySegment segment) implements I
             return new XrActionSetCreateInfo(segment.asSlice(index * XrActionSetCreateInfo.BYTES, XrActionSetCreateInfo.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull XrActionSetCreateInfo> consumer) {
+        public XrActionSetCreateInfo.Ptr at(long index, @NotNull Consumer<@NotNull XrActionSetCreateInfo> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull XrActionSetCreateInfo value) {

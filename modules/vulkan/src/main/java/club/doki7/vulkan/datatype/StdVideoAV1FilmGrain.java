@@ -98,8 +98,9 @@ public record StdVideoAV1FilmGrain(@NotNull MemorySegment segment) implements IS
             return new StdVideoAV1FilmGrain(segment.asSlice(index * StdVideoAV1FilmGrain.BYTES, StdVideoAV1FilmGrain.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull StdVideoAV1FilmGrain> consumer) {
+        public StdVideoAV1FilmGrain.Ptr at(long index, @NotNull Consumer<@NotNull StdVideoAV1FilmGrain> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull StdVideoAV1FilmGrain value) {

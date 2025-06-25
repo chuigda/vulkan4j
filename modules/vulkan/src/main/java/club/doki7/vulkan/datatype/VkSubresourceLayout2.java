@@ -87,8 +87,9 @@ public record VkSubresourceLayout2(@NotNull MemorySegment segment) implements IV
             return new VkSubresourceLayout2(segment.asSlice(index * VkSubresourceLayout2.BYTES, VkSubresourceLayout2.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkSubresourceLayout2> consumer) {
+        public VkSubresourceLayout2.Ptr at(long index, @NotNull Consumer<@NotNull VkSubresourceLayout2> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkSubresourceLayout2 value) {

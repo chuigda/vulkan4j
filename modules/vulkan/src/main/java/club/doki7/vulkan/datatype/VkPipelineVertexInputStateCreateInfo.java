@@ -91,8 +91,9 @@ public record VkPipelineVertexInputStateCreateInfo(@NotNull MemorySegment segmen
             return new VkPipelineVertexInputStateCreateInfo(segment.asSlice(index * VkPipelineVertexInputStateCreateInfo.BYTES, VkPipelineVertexInputStateCreateInfo.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkPipelineVertexInputStateCreateInfo> consumer) {
+        public VkPipelineVertexInputStateCreateInfo.Ptr at(long index, @NotNull Consumer<@NotNull VkPipelineVertexInputStateCreateInfo> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkPipelineVertexInputStateCreateInfo value) {

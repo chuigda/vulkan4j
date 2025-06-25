@@ -88,8 +88,9 @@ public record VkIndirectExecutionSetCreateInfoEXT(@NotNull MemorySegment segment
             return new VkIndirectExecutionSetCreateInfoEXT(segment.asSlice(index * VkIndirectExecutionSetCreateInfoEXT.BYTES, VkIndirectExecutionSetCreateInfoEXT.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkIndirectExecutionSetCreateInfoEXT> consumer) {
+        public VkIndirectExecutionSetCreateInfoEXT.Ptr at(long index, @NotNull Consumer<@NotNull VkIndirectExecutionSetCreateInfoEXT> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkIndirectExecutionSetCreateInfoEXT value) {

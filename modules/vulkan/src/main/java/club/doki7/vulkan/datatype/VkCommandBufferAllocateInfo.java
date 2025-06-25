@@ -89,8 +89,9 @@ public record VkCommandBufferAllocateInfo(@NotNull MemorySegment segment) implem
             return new VkCommandBufferAllocateInfo(segment.asSlice(index * VkCommandBufferAllocateInfo.BYTES, VkCommandBufferAllocateInfo.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkCommandBufferAllocateInfo> consumer) {
+        public VkCommandBufferAllocateInfo.Ptr at(long index, @NotNull Consumer<@NotNull VkCommandBufferAllocateInfo> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkCommandBufferAllocateInfo value) {

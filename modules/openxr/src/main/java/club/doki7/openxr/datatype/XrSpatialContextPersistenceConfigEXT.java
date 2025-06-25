@@ -92,8 +92,9 @@ public record XrSpatialContextPersistenceConfigEXT(@NotNull MemorySegment segmen
             return new XrSpatialContextPersistenceConfigEXT(segment.asSlice(index * XrSpatialContextPersistenceConfigEXT.BYTES, XrSpatialContextPersistenceConfigEXT.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull XrSpatialContextPersistenceConfigEXT> consumer) {
+        public XrSpatialContextPersistenceConfigEXT.Ptr at(long index, @NotNull Consumer<@NotNull XrSpatialContextPersistenceConfigEXT> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull XrSpatialContextPersistenceConfigEXT value) {

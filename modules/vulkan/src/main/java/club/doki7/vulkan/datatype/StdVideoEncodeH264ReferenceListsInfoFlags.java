@@ -77,8 +77,9 @@ public record StdVideoEncodeH264ReferenceListsInfoFlags(@NotNull MemorySegment s
             return new StdVideoEncodeH264ReferenceListsInfoFlags(segment.asSlice(index * StdVideoEncodeH264ReferenceListsInfoFlags.BYTES, StdVideoEncodeH264ReferenceListsInfoFlags.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull StdVideoEncodeH264ReferenceListsInfoFlags> consumer) {
+        public StdVideoEncodeH264ReferenceListsInfoFlags.Ptr at(long index, @NotNull Consumer<@NotNull StdVideoEncodeH264ReferenceListsInfoFlags> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull StdVideoEncodeH264ReferenceListsInfoFlags value) {

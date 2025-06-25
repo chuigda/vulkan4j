@@ -100,8 +100,9 @@ public record XrFrameSynthesisInfoEXT(@NotNull MemorySegment segment) implements
             return new XrFrameSynthesisInfoEXT(segment.asSlice(index * XrFrameSynthesisInfoEXT.BYTES, XrFrameSynthesisInfoEXT.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull XrFrameSynthesisInfoEXT> consumer) {
+        public XrFrameSynthesisInfoEXT.Ptr at(long index, @NotNull Consumer<@NotNull XrFrameSynthesisInfoEXT> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull XrFrameSynthesisInfoEXT value) {

@@ -89,8 +89,9 @@ public record VkDeviceQueueInfo2(@NotNull MemorySegment segment) implements IVkD
             return new VkDeviceQueueInfo2(segment.asSlice(index * VkDeviceQueueInfo2.BYTES, VkDeviceQueueInfo2.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkDeviceQueueInfo2> consumer) {
+        public VkDeviceQueueInfo2.Ptr at(long index, @NotNull Consumer<@NotNull VkDeviceQueueInfo2> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkDeviceQueueInfo2 value) {

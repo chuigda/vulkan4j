@@ -91,8 +91,9 @@ public record XrLocalDimmingFrameEndInfoMETA(@NotNull MemorySegment segment) imp
             return new XrLocalDimmingFrameEndInfoMETA(segment.asSlice(index * XrLocalDimmingFrameEndInfoMETA.BYTES, XrLocalDimmingFrameEndInfoMETA.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull XrLocalDimmingFrameEndInfoMETA> consumer) {
+        public XrLocalDimmingFrameEndInfoMETA.Ptr at(long index, @NotNull Consumer<@NotNull XrLocalDimmingFrameEndInfoMETA> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull XrLocalDimmingFrameEndInfoMETA value) {

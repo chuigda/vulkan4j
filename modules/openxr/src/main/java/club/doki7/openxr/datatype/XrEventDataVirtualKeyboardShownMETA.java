@@ -91,8 +91,9 @@ public record XrEventDataVirtualKeyboardShownMETA(@NotNull MemorySegment segment
             return new XrEventDataVirtualKeyboardShownMETA(segment.asSlice(index * XrEventDataVirtualKeyboardShownMETA.BYTES, XrEventDataVirtualKeyboardShownMETA.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull XrEventDataVirtualKeyboardShownMETA> consumer) {
+        public XrEventDataVirtualKeyboardShownMETA.Ptr at(long index, @NotNull Consumer<@NotNull XrEventDataVirtualKeyboardShownMETA> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull XrEventDataVirtualKeyboardShownMETA value) {

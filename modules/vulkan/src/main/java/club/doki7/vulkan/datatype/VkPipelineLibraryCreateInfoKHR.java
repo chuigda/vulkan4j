@@ -88,8 +88,9 @@ public record VkPipelineLibraryCreateInfoKHR(@NotNull MemorySegment segment) imp
             return new VkPipelineLibraryCreateInfoKHR(segment.asSlice(index * VkPipelineLibraryCreateInfoKHR.BYTES, VkPipelineLibraryCreateInfoKHR.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkPipelineLibraryCreateInfoKHR> consumer) {
+        public VkPipelineLibraryCreateInfoKHR.Ptr at(long index, @NotNull Consumer<@NotNull VkPipelineLibraryCreateInfoKHR> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkPipelineLibraryCreateInfoKHR value) {

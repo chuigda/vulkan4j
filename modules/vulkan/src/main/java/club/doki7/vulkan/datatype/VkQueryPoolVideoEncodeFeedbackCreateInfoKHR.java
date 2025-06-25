@@ -87,8 +87,9 @@ public record VkQueryPoolVideoEncodeFeedbackCreateInfoKHR(@NotNull MemorySegment
             return new VkQueryPoolVideoEncodeFeedbackCreateInfoKHR(segment.asSlice(index * VkQueryPoolVideoEncodeFeedbackCreateInfoKHR.BYTES, VkQueryPoolVideoEncodeFeedbackCreateInfoKHR.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkQueryPoolVideoEncodeFeedbackCreateInfoKHR> consumer) {
+        public VkQueryPoolVideoEncodeFeedbackCreateInfoKHR.Ptr at(long index, @NotNull Consumer<@NotNull VkQueryPoolVideoEncodeFeedbackCreateInfoKHR> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkQueryPoolVideoEncodeFeedbackCreateInfoKHR value) {

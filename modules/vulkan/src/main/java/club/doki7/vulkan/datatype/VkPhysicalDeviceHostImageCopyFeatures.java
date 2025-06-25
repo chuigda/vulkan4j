@@ -87,8 +87,9 @@ public record VkPhysicalDeviceHostImageCopyFeatures(@NotNull MemorySegment segme
             return new VkPhysicalDeviceHostImageCopyFeatures(segment.asSlice(index * VkPhysicalDeviceHostImageCopyFeatures.BYTES, VkPhysicalDeviceHostImageCopyFeatures.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceHostImageCopyFeatures> consumer) {
+        public VkPhysicalDeviceHostImageCopyFeatures.Ptr at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceHostImageCopyFeatures> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkPhysicalDeviceHostImageCopyFeatures value) {

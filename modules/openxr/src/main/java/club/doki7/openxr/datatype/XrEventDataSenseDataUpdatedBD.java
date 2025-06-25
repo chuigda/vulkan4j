@@ -91,8 +91,9 @@ public record XrEventDataSenseDataUpdatedBD(@NotNull MemorySegment segment) impl
             return new XrEventDataSenseDataUpdatedBD(segment.asSlice(index * XrEventDataSenseDataUpdatedBD.BYTES, XrEventDataSenseDataUpdatedBD.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull XrEventDataSenseDataUpdatedBD> consumer) {
+        public XrEventDataSenseDataUpdatedBD.Ptr at(long index, @NotNull Consumer<@NotNull XrEventDataSenseDataUpdatedBD> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull XrEventDataSenseDataUpdatedBD value) {

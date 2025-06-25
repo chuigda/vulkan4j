@@ -78,8 +78,9 @@ public record VkMultiDrawIndexedInfoEXT(@NotNull MemorySegment segment) implemen
             return new VkMultiDrawIndexedInfoEXT(segment.asSlice(index * VkMultiDrawIndexedInfoEXT.BYTES, VkMultiDrawIndexedInfoEXT.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkMultiDrawIndexedInfoEXT> consumer) {
+        public VkMultiDrawIndexedInfoEXT.Ptr at(long index, @NotNull Consumer<@NotNull VkMultiDrawIndexedInfoEXT> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkMultiDrawIndexedInfoEXT value) {

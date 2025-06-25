@@ -96,8 +96,9 @@ public record VkImageMemoryBarrier2(@NotNull MemorySegment segment) implements I
             return new VkImageMemoryBarrier2(segment.asSlice(index * VkImageMemoryBarrier2.BYTES, VkImageMemoryBarrier2.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkImageMemoryBarrier2> consumer) {
+        public VkImageMemoryBarrier2.Ptr at(long index, @NotNull Consumer<@NotNull VkImageMemoryBarrier2> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkImageMemoryBarrier2 value) {

@@ -91,8 +91,9 @@ public record XrSystemNotificationsSetInfoML(@NotNull MemorySegment segment) imp
             return new XrSystemNotificationsSetInfoML(segment.asSlice(index * XrSystemNotificationsSetInfoML.BYTES, XrSystemNotificationsSetInfoML.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull XrSystemNotificationsSetInfoML> consumer) {
+        public XrSystemNotificationsSetInfoML.Ptr at(long index, @NotNull Consumer<@NotNull XrSystemNotificationsSetInfoML> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull XrSystemNotificationsSetInfoML value) {

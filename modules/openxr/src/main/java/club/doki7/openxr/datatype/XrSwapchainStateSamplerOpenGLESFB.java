@@ -100,8 +100,9 @@ public record XrSwapchainStateSamplerOpenGLESFB(@NotNull MemorySegment segment) 
             return new XrSwapchainStateSamplerOpenGLESFB(segment.asSlice(index * XrSwapchainStateSamplerOpenGLESFB.BYTES, XrSwapchainStateSamplerOpenGLESFB.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull XrSwapchainStateSamplerOpenGLESFB> consumer) {
+        public XrSwapchainStateSamplerOpenGLESFB.Ptr at(long index, @NotNull Consumer<@NotNull XrSwapchainStateSamplerOpenGLESFB> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull XrSwapchainStateSamplerOpenGLESFB value) {

@@ -86,8 +86,9 @@ public record VkDispatchTileInfoQCOM(@NotNull MemorySegment segment) implements 
             return new VkDispatchTileInfoQCOM(segment.asSlice(index * VkDispatchTileInfoQCOM.BYTES, VkDispatchTileInfoQCOM.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkDispatchTileInfoQCOM> consumer) {
+        public VkDispatchTileInfoQCOM.Ptr at(long index, @NotNull Consumer<@NotNull VkDispatchTileInfoQCOM> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkDispatchTileInfoQCOM value) {

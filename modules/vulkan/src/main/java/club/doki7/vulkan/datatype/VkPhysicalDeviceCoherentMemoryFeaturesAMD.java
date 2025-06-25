@@ -87,8 +87,9 @@ public record VkPhysicalDeviceCoherentMemoryFeaturesAMD(@NotNull MemorySegment s
             return new VkPhysicalDeviceCoherentMemoryFeaturesAMD(segment.asSlice(index * VkPhysicalDeviceCoherentMemoryFeaturesAMD.BYTES, VkPhysicalDeviceCoherentMemoryFeaturesAMD.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceCoherentMemoryFeaturesAMD> consumer) {
+        public VkPhysicalDeviceCoherentMemoryFeaturesAMD.Ptr at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceCoherentMemoryFeaturesAMD> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkPhysicalDeviceCoherentMemoryFeaturesAMD value) {

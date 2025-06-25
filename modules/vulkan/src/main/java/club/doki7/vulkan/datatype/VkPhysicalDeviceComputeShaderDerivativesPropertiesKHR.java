@@ -87,8 +87,9 @@ public record VkPhysicalDeviceComputeShaderDerivativesPropertiesKHR(@NotNull Mem
             return new VkPhysicalDeviceComputeShaderDerivativesPropertiesKHR(segment.asSlice(index * VkPhysicalDeviceComputeShaderDerivativesPropertiesKHR.BYTES, VkPhysicalDeviceComputeShaderDerivativesPropertiesKHR.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceComputeShaderDerivativesPropertiesKHR> consumer) {
+        public VkPhysicalDeviceComputeShaderDerivativesPropertiesKHR.Ptr at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceComputeShaderDerivativesPropertiesKHR> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkPhysicalDeviceComputeShaderDerivativesPropertiesKHR value) {

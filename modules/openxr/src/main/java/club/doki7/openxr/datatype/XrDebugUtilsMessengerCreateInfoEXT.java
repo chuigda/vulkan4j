@@ -94,8 +94,9 @@ public record XrDebugUtilsMessengerCreateInfoEXT(@NotNull MemorySegment segment)
             return new XrDebugUtilsMessengerCreateInfoEXT(segment.asSlice(index * XrDebugUtilsMessengerCreateInfoEXT.BYTES, XrDebugUtilsMessengerCreateInfoEXT.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull XrDebugUtilsMessengerCreateInfoEXT> consumer) {
+        public XrDebugUtilsMessengerCreateInfoEXT.Ptr at(long index, @NotNull Consumer<@NotNull XrDebugUtilsMessengerCreateInfoEXT> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull XrDebugUtilsMessengerCreateInfoEXT value) {

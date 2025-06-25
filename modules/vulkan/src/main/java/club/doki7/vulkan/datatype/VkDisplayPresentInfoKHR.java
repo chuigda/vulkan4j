@@ -89,8 +89,9 @@ public record VkDisplayPresentInfoKHR(@NotNull MemorySegment segment) implements
             return new VkDisplayPresentInfoKHR(segment.asSlice(index * VkDisplayPresentInfoKHR.BYTES, VkDisplayPresentInfoKHR.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkDisplayPresentInfoKHR> consumer) {
+        public VkDisplayPresentInfoKHR.Ptr at(long index, @NotNull Consumer<@NotNull VkDisplayPresentInfoKHR> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkDisplayPresentInfoKHR value) {

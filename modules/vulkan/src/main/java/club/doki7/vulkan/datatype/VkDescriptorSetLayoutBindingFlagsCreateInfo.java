@@ -88,8 +88,9 @@ public record VkDescriptorSetLayoutBindingFlagsCreateInfo(@NotNull MemorySegment
             return new VkDescriptorSetLayoutBindingFlagsCreateInfo(segment.asSlice(index * VkDescriptorSetLayoutBindingFlagsCreateInfo.BYTES, VkDescriptorSetLayoutBindingFlagsCreateInfo.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkDescriptorSetLayoutBindingFlagsCreateInfo> consumer) {
+        public VkDescriptorSetLayoutBindingFlagsCreateInfo.Ptr at(long index, @NotNull Consumer<@NotNull VkDescriptorSetLayoutBindingFlagsCreateInfo> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkDescriptorSetLayoutBindingFlagsCreateInfo value) {

@@ -95,8 +95,9 @@ public record VkRayTracingPipelineCreateInfoNV(@NotNull MemorySegment segment) i
             return new VkRayTracingPipelineCreateInfoNV(segment.asSlice(index * VkRayTracingPipelineCreateInfoNV.BYTES, VkRayTracingPipelineCreateInfoNV.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkRayTracingPipelineCreateInfoNV> consumer) {
+        public VkRayTracingPipelineCreateInfoNV.Ptr at(long index, @NotNull Consumer<@NotNull VkRayTracingPipelineCreateInfoNV> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkRayTracingPipelineCreateInfoNV value) {

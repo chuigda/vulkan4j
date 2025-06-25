@@ -90,8 +90,9 @@ public record VkMemoryMapInfo(@NotNull MemorySegment segment) implements IVkMemo
             return new VkMemoryMapInfo(segment.asSlice(index * VkMemoryMapInfo.BYTES, VkMemoryMapInfo.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkMemoryMapInfo> consumer) {
+        public VkMemoryMapInfo.Ptr at(long index, @NotNull Consumer<@NotNull VkMemoryMapInfo> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkMemoryMapInfo value) {

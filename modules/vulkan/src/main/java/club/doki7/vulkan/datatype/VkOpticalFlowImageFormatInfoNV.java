@@ -87,8 +87,9 @@ public record VkOpticalFlowImageFormatInfoNV(@NotNull MemorySegment segment) imp
             return new VkOpticalFlowImageFormatInfoNV(segment.asSlice(index * VkOpticalFlowImageFormatInfoNV.BYTES, VkOpticalFlowImageFormatInfoNV.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkOpticalFlowImageFormatInfoNV> consumer) {
+        public VkOpticalFlowImageFormatInfoNV.Ptr at(long index, @NotNull Consumer<@NotNull VkOpticalFlowImageFormatInfoNV> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkOpticalFlowImageFormatInfoNV value) {

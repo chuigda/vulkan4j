@@ -87,8 +87,9 @@ public record VkPhysicalDeviceVertexAttributeRobustnessFeaturesEXT(@NotNull Memo
             return new VkPhysicalDeviceVertexAttributeRobustnessFeaturesEXT(segment.asSlice(index * VkPhysicalDeviceVertexAttributeRobustnessFeaturesEXT.BYTES, VkPhysicalDeviceVertexAttributeRobustnessFeaturesEXT.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceVertexAttributeRobustnessFeaturesEXT> consumer) {
+        public VkPhysicalDeviceVertexAttributeRobustnessFeaturesEXT.Ptr at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceVertexAttributeRobustnessFeaturesEXT> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkPhysicalDeviceVertexAttributeRobustnessFeaturesEXT value) {

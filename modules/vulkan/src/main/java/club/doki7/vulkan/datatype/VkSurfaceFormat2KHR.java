@@ -87,8 +87,9 @@ public record VkSurfaceFormat2KHR(@NotNull MemorySegment segment) implements IVk
             return new VkSurfaceFormat2KHR(segment.asSlice(index * VkSurfaceFormat2KHR.BYTES, VkSurfaceFormat2KHR.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkSurfaceFormat2KHR> consumer) {
+        public VkSurfaceFormat2KHR.Ptr at(long index, @NotNull Consumer<@NotNull VkSurfaceFormat2KHR> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkSurfaceFormat2KHR value) {

@@ -88,8 +88,9 @@ public record VkPhysicalDeviceLayeredApiPropertiesListKHR(@NotNull MemorySegment
             return new VkPhysicalDeviceLayeredApiPropertiesListKHR(segment.asSlice(index * VkPhysicalDeviceLayeredApiPropertiesListKHR.BYTES, VkPhysicalDeviceLayeredApiPropertiesListKHR.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceLayeredApiPropertiesListKHR> consumer) {
+        public VkPhysicalDeviceLayeredApiPropertiesListKHR.Ptr at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceLayeredApiPropertiesListKHR> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkPhysicalDeviceLayeredApiPropertiesListKHR value) {

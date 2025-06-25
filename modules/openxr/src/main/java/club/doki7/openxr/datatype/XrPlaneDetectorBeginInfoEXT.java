@@ -100,8 +100,9 @@ public record XrPlaneDetectorBeginInfoEXT(@NotNull MemorySegment segment) implem
             return new XrPlaneDetectorBeginInfoEXT(segment.asSlice(index * XrPlaneDetectorBeginInfoEXT.BYTES, XrPlaneDetectorBeginInfoEXT.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull XrPlaneDetectorBeginInfoEXT> consumer) {
+        public XrPlaneDetectorBeginInfoEXT.Ptr at(long index, @NotNull Consumer<@NotNull XrPlaneDetectorBeginInfoEXT> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull XrPlaneDetectorBeginInfoEXT value) {

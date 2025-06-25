@@ -92,8 +92,9 @@ public record XrExtensionProperties(@NotNull MemorySegment segment) implements I
             return new XrExtensionProperties(segment.asSlice(index * XrExtensionProperties.BYTES, XrExtensionProperties.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull XrExtensionProperties> consumer) {
+        public XrExtensionProperties.Ptr at(long index, @NotNull Consumer<@NotNull XrExtensionProperties> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull XrExtensionProperties value) {

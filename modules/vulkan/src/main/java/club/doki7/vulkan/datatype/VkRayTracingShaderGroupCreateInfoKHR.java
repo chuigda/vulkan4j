@@ -92,8 +92,9 @@ public record VkRayTracingShaderGroupCreateInfoKHR(@NotNull MemorySegment segmen
             return new VkRayTracingShaderGroupCreateInfoKHR(segment.asSlice(index * VkRayTracingShaderGroupCreateInfoKHR.BYTES, VkRayTracingShaderGroupCreateInfoKHR.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkRayTracingShaderGroupCreateInfoKHR> consumer) {
+        public VkRayTracingShaderGroupCreateInfoKHR.Ptr at(long index, @NotNull Consumer<@NotNull VkRayTracingShaderGroupCreateInfoKHR> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkRayTracingShaderGroupCreateInfoKHR value) {

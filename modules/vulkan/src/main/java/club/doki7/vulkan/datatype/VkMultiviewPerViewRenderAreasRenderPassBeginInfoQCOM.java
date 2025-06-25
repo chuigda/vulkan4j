@@ -88,8 +88,9 @@ public record VkMultiviewPerViewRenderAreasRenderPassBeginInfoQCOM(@NotNull Memo
             return new VkMultiviewPerViewRenderAreasRenderPassBeginInfoQCOM(segment.asSlice(index * VkMultiviewPerViewRenderAreasRenderPassBeginInfoQCOM.BYTES, VkMultiviewPerViewRenderAreasRenderPassBeginInfoQCOM.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkMultiviewPerViewRenderAreasRenderPassBeginInfoQCOM> consumer) {
+        public VkMultiviewPerViewRenderAreasRenderPassBeginInfoQCOM.Ptr at(long index, @NotNull Consumer<@NotNull VkMultiviewPerViewRenderAreasRenderPassBeginInfoQCOM> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkMultiviewPerViewRenderAreasRenderPassBeginInfoQCOM value) {

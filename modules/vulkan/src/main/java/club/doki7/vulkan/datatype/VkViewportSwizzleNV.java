@@ -79,8 +79,9 @@ public record VkViewportSwizzleNV(@NotNull MemorySegment segment) implements IVk
             return new VkViewportSwizzleNV(segment.asSlice(index * VkViewportSwizzleNV.BYTES, VkViewportSwizzleNV.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkViewportSwizzleNV> consumer) {
+        public VkViewportSwizzleNV.Ptr at(long index, @NotNull Consumer<@NotNull VkViewportSwizzleNV> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkViewportSwizzleNV value) {

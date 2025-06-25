@@ -79,8 +79,9 @@ public record VkDrawIndirectCommand(@NotNull MemorySegment segment) implements I
             return new VkDrawIndirectCommand(segment.asSlice(index * VkDrawIndirectCommand.BYTES, VkDrawIndirectCommand.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkDrawIndirectCommand> consumer) {
+        public VkDrawIndirectCommand.Ptr at(long index, @NotNull Consumer<@NotNull VkDrawIndirectCommand> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkDrawIndirectCommand value) {

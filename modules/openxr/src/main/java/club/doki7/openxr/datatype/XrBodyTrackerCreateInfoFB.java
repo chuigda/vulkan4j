@@ -91,8 +91,9 @@ public record XrBodyTrackerCreateInfoFB(@NotNull MemorySegment segment) implemen
             return new XrBodyTrackerCreateInfoFB(segment.asSlice(index * XrBodyTrackerCreateInfoFB.BYTES, XrBodyTrackerCreateInfoFB.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull XrBodyTrackerCreateInfoFB> consumer) {
+        public XrBodyTrackerCreateInfoFB.Ptr at(long index, @NotNull Consumer<@NotNull XrBodyTrackerCreateInfoFB> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull XrBodyTrackerCreateInfoFB value) {

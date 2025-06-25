@@ -90,8 +90,9 @@ public record VkValidationFeaturesEXT(@NotNull MemorySegment segment) implements
             return new VkValidationFeaturesEXT(segment.asSlice(index * VkValidationFeaturesEXT.BYTES, VkValidationFeaturesEXT.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkValidationFeaturesEXT> consumer) {
+        public VkValidationFeaturesEXT.Ptr at(long index, @NotNull Consumer<@NotNull VkValidationFeaturesEXT> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkValidationFeaturesEXT value) {

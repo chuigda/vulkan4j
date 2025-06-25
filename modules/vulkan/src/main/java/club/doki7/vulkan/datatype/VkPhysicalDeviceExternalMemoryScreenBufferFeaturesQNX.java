@@ -87,8 +87,9 @@ public record VkPhysicalDeviceExternalMemoryScreenBufferFeaturesQNX(@NotNull Mem
             return new VkPhysicalDeviceExternalMemoryScreenBufferFeaturesQNX(segment.asSlice(index * VkPhysicalDeviceExternalMemoryScreenBufferFeaturesQNX.BYTES, VkPhysicalDeviceExternalMemoryScreenBufferFeaturesQNX.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceExternalMemoryScreenBufferFeaturesQNX> consumer) {
+        public VkPhysicalDeviceExternalMemoryScreenBufferFeaturesQNX.Ptr at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceExternalMemoryScreenBufferFeaturesQNX> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkPhysicalDeviceExternalMemoryScreenBufferFeaturesQNX value) {

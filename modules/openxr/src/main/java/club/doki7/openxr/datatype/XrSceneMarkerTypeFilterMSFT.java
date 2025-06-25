@@ -92,8 +92,9 @@ public record XrSceneMarkerTypeFilterMSFT(@NotNull MemorySegment segment) implem
             return new XrSceneMarkerTypeFilterMSFT(segment.asSlice(index * XrSceneMarkerTypeFilterMSFT.BYTES, XrSceneMarkerTypeFilterMSFT.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull XrSceneMarkerTypeFilterMSFT> consumer) {
+        public XrSceneMarkerTypeFilterMSFT.Ptr at(long index, @NotNull Consumer<@NotNull XrSceneMarkerTypeFilterMSFT> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull XrSceneMarkerTypeFilterMSFT value) {

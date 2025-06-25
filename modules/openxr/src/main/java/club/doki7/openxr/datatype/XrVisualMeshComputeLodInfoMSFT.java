@@ -91,8 +91,9 @@ public record XrVisualMeshComputeLodInfoMSFT(@NotNull MemorySegment segment) imp
             return new XrVisualMeshComputeLodInfoMSFT(segment.asSlice(index * XrVisualMeshComputeLodInfoMSFT.BYTES, XrVisualMeshComputeLodInfoMSFT.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull XrVisualMeshComputeLodInfoMSFT> consumer) {
+        public XrVisualMeshComputeLodInfoMSFT.Ptr at(long index, @NotNull Consumer<@NotNull XrVisualMeshComputeLodInfoMSFT> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull XrVisualMeshComputeLodInfoMSFT value) {

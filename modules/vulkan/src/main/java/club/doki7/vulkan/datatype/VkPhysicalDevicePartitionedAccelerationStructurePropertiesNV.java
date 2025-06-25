@@ -87,8 +87,9 @@ public record VkPhysicalDevicePartitionedAccelerationStructurePropertiesNV(@NotN
             return new VkPhysicalDevicePartitionedAccelerationStructurePropertiesNV(segment.asSlice(index * VkPhysicalDevicePartitionedAccelerationStructurePropertiesNV.BYTES, VkPhysicalDevicePartitionedAccelerationStructurePropertiesNV.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkPhysicalDevicePartitionedAccelerationStructurePropertiesNV> consumer) {
+        public VkPhysicalDevicePartitionedAccelerationStructurePropertiesNV.Ptr at(long index, @NotNull Consumer<@NotNull VkPhysicalDevicePartitionedAccelerationStructurePropertiesNV> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkPhysicalDevicePartitionedAccelerationStructurePropertiesNV value) {

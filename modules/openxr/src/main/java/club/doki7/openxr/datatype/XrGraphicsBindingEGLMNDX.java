@@ -94,8 +94,9 @@ public record XrGraphicsBindingEGLMNDX(@NotNull MemorySegment segment) implement
             return new XrGraphicsBindingEGLMNDX(segment.asSlice(index * XrGraphicsBindingEGLMNDX.BYTES, XrGraphicsBindingEGLMNDX.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull XrGraphicsBindingEGLMNDX> consumer) {
+        public XrGraphicsBindingEGLMNDX.Ptr at(long index, @NotNull Consumer<@NotNull XrGraphicsBindingEGLMNDX> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull XrGraphicsBindingEGLMNDX value) {

@@ -88,8 +88,9 @@ public record VkBufferCollectionImageCreateInfoFUCHSIA(@NotNull MemorySegment se
             return new VkBufferCollectionImageCreateInfoFUCHSIA(segment.asSlice(index * VkBufferCollectionImageCreateInfoFUCHSIA.BYTES, VkBufferCollectionImageCreateInfoFUCHSIA.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkBufferCollectionImageCreateInfoFUCHSIA> consumer) {
+        public VkBufferCollectionImageCreateInfoFUCHSIA.Ptr at(long index, @NotNull Consumer<@NotNull VkBufferCollectionImageCreateInfoFUCHSIA> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkBufferCollectionImageCreateInfoFUCHSIA value) {

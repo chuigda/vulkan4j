@@ -77,8 +77,9 @@ public record VkMultiDrawInfoEXT(@NotNull MemorySegment segment) implements IVkM
             return new VkMultiDrawInfoEXT(segment.asSlice(index * VkMultiDrawInfoEXT.BYTES, VkMultiDrawInfoEXT.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkMultiDrawInfoEXT> consumer) {
+        public VkMultiDrawInfoEXT.Ptr at(long index, @NotNull Consumer<@NotNull VkMultiDrawInfoEXT> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkMultiDrawInfoEXT value) {

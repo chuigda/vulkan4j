@@ -77,8 +77,9 @@ public record VkClearDepthStencilValue(@NotNull MemorySegment segment) implement
             return new VkClearDepthStencilValue(segment.asSlice(index * VkClearDepthStencilValue.BYTES, VkClearDepthStencilValue.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkClearDepthStencilValue> consumer) {
+        public VkClearDepthStencilValue.Ptr at(long index, @NotNull Consumer<@NotNull VkClearDepthStencilValue> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkClearDepthStencilValue value) {

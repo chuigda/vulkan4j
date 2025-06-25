@@ -76,8 +76,9 @@ public record ShadercIncludeResult(@NotNull MemorySegment segment) implements IS
             return new ShadercIncludeResult(segment.asSlice(index * ShadercIncludeResult.BYTES, ShadercIncludeResult.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull ShadercIncludeResult> consumer) {
+        public ShadercIncludeResult.Ptr at(long index, @NotNull Consumer<@NotNull ShadercIncludeResult> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull ShadercIncludeResult value) {

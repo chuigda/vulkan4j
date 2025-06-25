@@ -90,8 +90,9 @@ public record XrInteractionRenderModelSubactionPathInfoEXT(@NotNull MemorySegmen
             return new XrInteractionRenderModelSubactionPathInfoEXT(segment.asSlice(index * XrInteractionRenderModelSubactionPathInfoEXT.BYTES, XrInteractionRenderModelSubactionPathInfoEXT.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull XrInteractionRenderModelSubactionPathInfoEXT> consumer) {
+        public XrInteractionRenderModelSubactionPathInfoEXT.Ptr at(long index, @NotNull Consumer<@NotNull XrInteractionRenderModelSubactionPathInfoEXT> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull XrInteractionRenderModelSubactionPathInfoEXT value) {

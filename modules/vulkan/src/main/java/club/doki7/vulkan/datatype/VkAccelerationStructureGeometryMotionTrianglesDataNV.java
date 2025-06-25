@@ -87,8 +87,9 @@ public record VkAccelerationStructureGeometryMotionTrianglesDataNV(@NotNull Memo
             return new VkAccelerationStructureGeometryMotionTrianglesDataNV(segment.asSlice(index * VkAccelerationStructureGeometryMotionTrianglesDataNV.BYTES, VkAccelerationStructureGeometryMotionTrianglesDataNV.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkAccelerationStructureGeometryMotionTrianglesDataNV> consumer) {
+        public VkAccelerationStructureGeometryMotionTrianglesDataNV.Ptr at(long index, @NotNull Consumer<@NotNull VkAccelerationStructureGeometryMotionTrianglesDataNV> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkAccelerationStructureGeometryMotionTrianglesDataNV value) {

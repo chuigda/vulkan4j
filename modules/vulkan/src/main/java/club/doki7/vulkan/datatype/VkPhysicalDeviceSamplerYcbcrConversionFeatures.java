@@ -87,8 +87,9 @@ public record VkPhysicalDeviceSamplerYcbcrConversionFeatures(@NotNull MemorySegm
             return new VkPhysicalDeviceSamplerYcbcrConversionFeatures(segment.asSlice(index * VkPhysicalDeviceSamplerYcbcrConversionFeatures.BYTES, VkPhysicalDeviceSamplerYcbcrConversionFeatures.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceSamplerYcbcrConversionFeatures> consumer) {
+        public VkPhysicalDeviceSamplerYcbcrConversionFeatures.Ptr at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceSamplerYcbcrConversionFeatures> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkPhysicalDeviceSamplerYcbcrConversionFeatures value) {

@@ -87,8 +87,9 @@ public record VkDeviceMemoryOverallocationCreateInfoAMD(@NotNull MemorySegment s
             return new VkDeviceMemoryOverallocationCreateInfoAMD(segment.asSlice(index * VkDeviceMemoryOverallocationCreateInfoAMD.BYTES, VkDeviceMemoryOverallocationCreateInfoAMD.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkDeviceMemoryOverallocationCreateInfoAMD> consumer) {
+        public VkDeviceMemoryOverallocationCreateInfoAMD.Ptr at(long index, @NotNull Consumer<@NotNull VkDeviceMemoryOverallocationCreateInfoAMD> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkDeviceMemoryOverallocationCreateInfoAMD value) {

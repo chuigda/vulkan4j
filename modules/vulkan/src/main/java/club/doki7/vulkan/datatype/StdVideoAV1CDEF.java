@@ -79,8 +79,9 @@ public record StdVideoAV1CDEF(@NotNull MemorySegment segment) implements IStdVid
             return new StdVideoAV1CDEF(segment.asSlice(index * StdVideoAV1CDEF.BYTES, StdVideoAV1CDEF.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull StdVideoAV1CDEF> consumer) {
+        public StdVideoAV1CDEF.Ptr at(long index, @NotNull Consumer<@NotNull StdVideoAV1CDEF> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull StdVideoAV1CDEF value) {

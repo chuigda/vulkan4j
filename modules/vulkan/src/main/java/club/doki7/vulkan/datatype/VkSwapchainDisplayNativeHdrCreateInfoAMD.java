@@ -87,8 +87,9 @@ public record VkSwapchainDisplayNativeHdrCreateInfoAMD(@NotNull MemorySegment se
             return new VkSwapchainDisplayNativeHdrCreateInfoAMD(segment.asSlice(index * VkSwapchainDisplayNativeHdrCreateInfoAMD.BYTES, VkSwapchainDisplayNativeHdrCreateInfoAMD.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkSwapchainDisplayNativeHdrCreateInfoAMD> consumer) {
+        public VkSwapchainDisplayNativeHdrCreateInfoAMD.Ptr at(long index, @NotNull Consumer<@NotNull VkSwapchainDisplayNativeHdrCreateInfoAMD> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkSwapchainDisplayNativeHdrCreateInfoAMD value) {

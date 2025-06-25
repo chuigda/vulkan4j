@@ -92,8 +92,9 @@ public record XrGraphicsRequirementsVulkanKHR(@NotNull MemorySegment segment) im
             return new XrGraphicsRequirementsVulkanKHR(segment.asSlice(index * XrGraphicsRequirementsVulkanKHR.BYTES, XrGraphicsRequirementsVulkanKHR.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull XrGraphicsRequirementsVulkanKHR> consumer) {
+        public XrGraphicsRequirementsVulkanKHR.Ptr at(long index, @NotNull Consumer<@NotNull XrGraphicsRequirementsVulkanKHR> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull XrGraphicsRequirementsVulkanKHR value) {

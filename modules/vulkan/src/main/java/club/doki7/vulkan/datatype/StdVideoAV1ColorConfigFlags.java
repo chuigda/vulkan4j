@@ -79,8 +79,9 @@ public record StdVideoAV1ColorConfigFlags(@NotNull MemorySegment segment) implem
             return new StdVideoAV1ColorConfigFlags(segment.asSlice(index * StdVideoAV1ColorConfigFlags.BYTES, StdVideoAV1ColorConfigFlags.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull StdVideoAV1ColorConfigFlags> consumer) {
+        public StdVideoAV1ColorConfigFlags.Ptr at(long index, @NotNull Consumer<@NotNull StdVideoAV1ColorConfigFlags> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull StdVideoAV1ColorConfigFlags value) {

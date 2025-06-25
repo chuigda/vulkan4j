@@ -89,8 +89,9 @@ public record VkPhysicalDeviceExternalFormatResolvePropertiesANDROID(@NotNull Me
             return new VkPhysicalDeviceExternalFormatResolvePropertiesANDROID(segment.asSlice(index * VkPhysicalDeviceExternalFormatResolvePropertiesANDROID.BYTES, VkPhysicalDeviceExternalFormatResolvePropertiesANDROID.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceExternalFormatResolvePropertiesANDROID> consumer) {
+        public VkPhysicalDeviceExternalFormatResolvePropertiesANDROID.Ptr at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceExternalFormatResolvePropertiesANDROID> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkPhysicalDeviceExternalFormatResolvePropertiesANDROID value) {

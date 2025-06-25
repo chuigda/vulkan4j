@@ -81,8 +81,9 @@ public record XrSpatialBufferEXT(@NotNull MemorySegment segment) implements IXrS
             return new XrSpatialBufferEXT(segment.asSlice(index * XrSpatialBufferEXT.BYTES, XrSpatialBufferEXT.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull XrSpatialBufferEXT> consumer) {
+        public XrSpatialBufferEXT.Ptr at(long index, @NotNull Consumer<@NotNull XrSpatialBufferEXT> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull XrSpatialBufferEXT value) {

@@ -88,8 +88,9 @@ public record VkCheckpointDataNV(@NotNull MemorySegment segment) implements IVkC
             return new VkCheckpointDataNV(segment.asSlice(index * VkCheckpointDataNV.BYTES, VkCheckpointDataNV.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkCheckpointDataNV> consumer) {
+        public VkCheckpointDataNV.Ptr at(long index, @NotNull Consumer<@NotNull VkCheckpointDataNV> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkCheckpointDataNV value) {

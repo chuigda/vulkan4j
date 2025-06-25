@@ -77,8 +77,9 @@ public record VkPartitionedAccelerationStructureWritePartitionTranslationDataNV(
             return new VkPartitionedAccelerationStructureWritePartitionTranslationDataNV(segment.asSlice(index * VkPartitionedAccelerationStructureWritePartitionTranslationDataNV.BYTES, VkPartitionedAccelerationStructureWritePartitionTranslationDataNV.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkPartitionedAccelerationStructureWritePartitionTranslationDataNV> consumer) {
+        public VkPartitionedAccelerationStructureWritePartitionTranslationDataNV.Ptr at(long index, @NotNull Consumer<@NotNull VkPartitionedAccelerationStructureWritePartitionTranslationDataNV> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkPartitionedAccelerationStructureWritePartitionTranslationDataNV value) {

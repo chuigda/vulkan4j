@@ -89,8 +89,9 @@ public record VkPipelineBinaryCreateInfoKHR(@NotNull MemorySegment segment) impl
             return new VkPipelineBinaryCreateInfoKHR(segment.asSlice(index * VkPipelineBinaryCreateInfoKHR.BYTES, VkPipelineBinaryCreateInfoKHR.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkPipelineBinaryCreateInfoKHR> consumer) {
+        public VkPipelineBinaryCreateInfoKHR.Ptr at(long index, @NotNull Consumer<@NotNull VkPipelineBinaryCreateInfoKHR> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkPipelineBinaryCreateInfoKHR value) {

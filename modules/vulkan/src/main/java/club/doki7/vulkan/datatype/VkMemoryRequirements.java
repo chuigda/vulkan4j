@@ -78,8 +78,9 @@ public record VkMemoryRequirements(@NotNull MemorySegment segment) implements IV
             return new VkMemoryRequirements(segment.asSlice(index * VkMemoryRequirements.BYTES, VkMemoryRequirements.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkMemoryRequirements> consumer) {
+        public VkMemoryRequirements.Ptr at(long index, @NotNull Consumer<@NotNull VkMemoryRequirements> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkMemoryRequirements value) {

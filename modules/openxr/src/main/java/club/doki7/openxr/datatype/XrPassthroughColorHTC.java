@@ -91,8 +91,9 @@ public record XrPassthroughColorHTC(@NotNull MemorySegment segment) implements I
             return new XrPassthroughColorHTC(segment.asSlice(index * XrPassthroughColorHTC.BYTES, XrPassthroughColorHTC.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull XrPassthroughColorHTC> consumer) {
+        public XrPassthroughColorHTC.Ptr at(long index, @NotNull Consumer<@NotNull XrPassthroughColorHTC> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull XrPassthroughColorHTC value) {

@@ -92,8 +92,9 @@ public record XrHandMeshUpdateInfoMSFT(@NotNull MemorySegment segment) implement
             return new XrHandMeshUpdateInfoMSFT(segment.asSlice(index * XrHandMeshUpdateInfoMSFT.BYTES, XrHandMeshUpdateInfoMSFT.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull XrHandMeshUpdateInfoMSFT> consumer) {
+        public XrHandMeshUpdateInfoMSFT.Ptr at(long index, @NotNull Consumer<@NotNull XrHandMeshUpdateInfoMSFT> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull XrHandMeshUpdateInfoMSFT value) {

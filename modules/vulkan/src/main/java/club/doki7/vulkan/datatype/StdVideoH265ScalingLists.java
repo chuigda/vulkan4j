@@ -79,8 +79,9 @@ public record StdVideoH265ScalingLists(@NotNull MemorySegment segment) implement
             return new StdVideoH265ScalingLists(segment.asSlice(index * StdVideoH265ScalingLists.BYTES, StdVideoH265ScalingLists.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull StdVideoH265ScalingLists> consumer) {
+        public StdVideoH265ScalingLists.Ptr at(long index, @NotNull Consumer<@NotNull StdVideoH265ScalingLists> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull StdVideoH265ScalingLists value) {

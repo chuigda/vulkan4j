@@ -79,8 +79,9 @@ public record VkLayerProperties(@NotNull MemorySegment segment) implements IVkLa
             return new VkLayerProperties(segment.asSlice(index * VkLayerProperties.BYTES, VkLayerProperties.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkLayerProperties> consumer) {
+        public VkLayerProperties.Ptr at(long index, @NotNull Consumer<@NotNull VkLayerProperties> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkLayerProperties value) {

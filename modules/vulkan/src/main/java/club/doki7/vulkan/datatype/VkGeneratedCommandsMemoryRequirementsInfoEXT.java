@@ -90,8 +90,9 @@ public record VkGeneratedCommandsMemoryRequirementsInfoEXT(@NotNull MemorySegmen
             return new VkGeneratedCommandsMemoryRequirementsInfoEXT(segment.asSlice(index * VkGeneratedCommandsMemoryRequirementsInfoEXT.BYTES, VkGeneratedCommandsMemoryRequirementsInfoEXT.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkGeneratedCommandsMemoryRequirementsInfoEXT> consumer) {
+        public VkGeneratedCommandsMemoryRequirementsInfoEXT.Ptr at(long index, @NotNull Consumer<@NotNull VkGeneratedCommandsMemoryRequirementsInfoEXT> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkGeneratedCommandsMemoryRequirementsInfoEXT value) {

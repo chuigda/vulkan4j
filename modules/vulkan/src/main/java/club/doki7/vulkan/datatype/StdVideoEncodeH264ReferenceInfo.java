@@ -80,8 +80,9 @@ public record StdVideoEncodeH264ReferenceInfo(@NotNull MemorySegment segment) im
             return new StdVideoEncodeH264ReferenceInfo(segment.asSlice(index * StdVideoEncodeH264ReferenceInfo.BYTES, StdVideoEncodeH264ReferenceInfo.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull StdVideoEncodeH264ReferenceInfo> consumer) {
+        public StdVideoEncodeH264ReferenceInfo.Ptr at(long index, @NotNull Consumer<@NotNull StdVideoEncodeH264ReferenceInfo> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull StdVideoEncodeH264ReferenceInfo value) {

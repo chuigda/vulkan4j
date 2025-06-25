@@ -78,8 +78,9 @@ public record VkSpecializationMapEntry(@NotNull MemorySegment segment) implement
             return new VkSpecializationMapEntry(segment.asSlice(index * VkSpecializationMapEntry.BYTES, VkSpecializationMapEntry.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkSpecializationMapEntry> consumer) {
+        public VkSpecializationMapEntry.Ptr at(long index, @NotNull Consumer<@NotNull VkSpecializationMapEntry> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkSpecializationMapEntry value) {

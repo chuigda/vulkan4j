@@ -78,8 +78,9 @@ public record VkDeviceFaultAddressInfoEXT(@NotNull MemorySegment segment) implem
             return new VkDeviceFaultAddressInfoEXT(segment.asSlice(index * VkDeviceFaultAddressInfoEXT.BYTES, VkDeviceFaultAddressInfoEXT.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkDeviceFaultAddressInfoEXT> consumer) {
+        public VkDeviceFaultAddressInfoEXT.Ptr at(long index, @NotNull Consumer<@NotNull VkDeviceFaultAddressInfoEXT> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkDeviceFaultAddressInfoEXT value) {

@@ -93,8 +93,9 @@ public record XrFoveationApplyInfoHTC(@NotNull MemorySegment segment) implements
             return new XrFoveationApplyInfoHTC(segment.asSlice(index * XrFoveationApplyInfoHTC.BYTES, XrFoveationApplyInfoHTC.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull XrFoveationApplyInfoHTC> consumer) {
+        public XrFoveationApplyInfoHTC.Ptr at(long index, @NotNull Consumer<@NotNull XrFoveationApplyInfoHTC> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull XrFoveationApplyInfoHTC value) {

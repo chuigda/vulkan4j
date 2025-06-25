@@ -87,8 +87,9 @@ public record VkPhysicalDeviceDisplacementMicromapFeaturesNV(@NotNull MemorySegm
             return new VkPhysicalDeviceDisplacementMicromapFeaturesNV(segment.asSlice(index * VkPhysicalDeviceDisplacementMicromapFeaturesNV.BYTES, VkPhysicalDeviceDisplacementMicromapFeaturesNV.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceDisplacementMicromapFeaturesNV> consumer) {
+        public VkPhysicalDeviceDisplacementMicromapFeaturesNV.Ptr at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceDisplacementMicromapFeaturesNV> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkPhysicalDeviceDisplacementMicromapFeaturesNV value) {

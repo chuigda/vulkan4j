@@ -87,8 +87,9 @@ public record VkPhysicalDeviceMultisampledRenderToSingleSampledFeaturesEXT(@NotN
             return new VkPhysicalDeviceMultisampledRenderToSingleSampledFeaturesEXT(segment.asSlice(index * VkPhysicalDeviceMultisampledRenderToSingleSampledFeaturesEXT.BYTES, VkPhysicalDeviceMultisampledRenderToSingleSampledFeaturesEXT.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceMultisampledRenderToSingleSampledFeaturesEXT> consumer) {
+        public VkPhysicalDeviceMultisampledRenderToSingleSampledFeaturesEXT.Ptr at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceMultisampledRenderToSingleSampledFeaturesEXT> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkPhysicalDeviceMultisampledRenderToSingleSampledFeaturesEXT value) {

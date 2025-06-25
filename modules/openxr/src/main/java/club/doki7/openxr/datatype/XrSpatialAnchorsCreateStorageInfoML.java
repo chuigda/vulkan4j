@@ -90,8 +90,9 @@ public record XrSpatialAnchorsCreateStorageInfoML(@NotNull MemorySegment segment
             return new XrSpatialAnchorsCreateStorageInfoML(segment.asSlice(index * XrSpatialAnchorsCreateStorageInfoML.BYTES, XrSpatialAnchorsCreateStorageInfoML.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull XrSpatialAnchorsCreateStorageInfoML> consumer) {
+        public XrSpatialAnchorsCreateStorageInfoML.Ptr at(long index, @NotNull Consumer<@NotNull XrSpatialAnchorsCreateStorageInfoML> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull XrSpatialAnchorsCreateStorageInfoML value) {

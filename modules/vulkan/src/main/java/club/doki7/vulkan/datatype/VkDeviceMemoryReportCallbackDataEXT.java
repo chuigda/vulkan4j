@@ -93,8 +93,9 @@ public record VkDeviceMemoryReportCallbackDataEXT(@NotNull MemorySegment segment
             return new VkDeviceMemoryReportCallbackDataEXT(segment.asSlice(index * VkDeviceMemoryReportCallbackDataEXT.BYTES, VkDeviceMemoryReportCallbackDataEXT.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkDeviceMemoryReportCallbackDataEXT> consumer) {
+        public VkDeviceMemoryReportCallbackDataEXT.Ptr at(long index, @NotNull Consumer<@NotNull VkDeviceMemoryReportCallbackDataEXT> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkDeviceMemoryReportCallbackDataEXT value) {

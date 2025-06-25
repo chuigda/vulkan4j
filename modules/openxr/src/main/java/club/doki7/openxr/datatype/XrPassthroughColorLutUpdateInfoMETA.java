@@ -91,8 +91,9 @@ public record XrPassthroughColorLutUpdateInfoMETA(@NotNull MemorySegment segment
             return new XrPassthroughColorLutUpdateInfoMETA(segment.asSlice(index * XrPassthroughColorLutUpdateInfoMETA.BYTES, XrPassthroughColorLutUpdateInfoMETA.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull XrPassthroughColorLutUpdateInfoMETA> consumer) {
+        public XrPassthroughColorLutUpdateInfoMETA.Ptr at(long index, @NotNull Consumer<@NotNull XrPassthroughColorLutUpdateInfoMETA> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull XrPassthroughColorLutUpdateInfoMETA value) {

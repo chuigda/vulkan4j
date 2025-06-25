@@ -81,8 +81,9 @@ public record XrShareSpacesRecipientBaseHeaderMETA(@NotNull MemorySegment segmen
             return new XrShareSpacesRecipientBaseHeaderMETA(segment.asSlice(index * XrShareSpacesRecipientBaseHeaderMETA.BYTES, XrShareSpacesRecipientBaseHeaderMETA.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull XrShareSpacesRecipientBaseHeaderMETA> consumer) {
+        public XrShareSpacesRecipientBaseHeaderMETA.Ptr at(long index, @NotNull Consumer<@NotNull XrShareSpacesRecipientBaseHeaderMETA> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull XrShareSpacesRecipientBaseHeaderMETA value) {

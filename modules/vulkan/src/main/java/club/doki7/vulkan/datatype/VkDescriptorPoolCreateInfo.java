@@ -90,8 +90,9 @@ public record VkDescriptorPoolCreateInfo(@NotNull MemorySegment segment) impleme
             return new VkDescriptorPoolCreateInfo(segment.asSlice(index * VkDescriptorPoolCreateInfo.BYTES, VkDescriptorPoolCreateInfo.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkDescriptorPoolCreateInfo> consumer) {
+        public VkDescriptorPoolCreateInfo.Ptr at(long index, @NotNull Consumer<@NotNull VkDescriptorPoolCreateInfo> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkDescriptorPoolCreateInfo value) {

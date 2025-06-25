@@ -91,8 +91,9 @@ public record XrFoveatedViewConfigurationViewVARJO(@NotNull MemorySegment segmen
             return new XrFoveatedViewConfigurationViewVARJO(segment.asSlice(index * XrFoveatedViewConfigurationViewVARJO.BYTES, XrFoveatedViewConfigurationViewVARJO.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull XrFoveatedViewConfigurationViewVARJO> consumer) {
+        public XrFoveatedViewConfigurationViewVARJO.Ptr at(long index, @NotNull Consumer<@NotNull XrFoveatedViewConfigurationViewVARJO> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull XrFoveatedViewConfigurationViewVARJO value) {

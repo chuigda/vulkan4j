@@ -94,8 +94,9 @@ public record XrSpatialAnchorsQueryInfoRadiusML(@NotNull MemorySegment segment) 
             return new XrSpatialAnchorsQueryInfoRadiusML(segment.asSlice(index * XrSpatialAnchorsQueryInfoRadiusML.BYTES, XrSpatialAnchorsQueryInfoRadiusML.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull XrSpatialAnchorsQueryInfoRadiusML> consumer) {
+        public XrSpatialAnchorsQueryInfoRadiusML.Ptr at(long index, @NotNull Consumer<@NotNull XrSpatialAnchorsQueryInfoRadiusML> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull XrSpatialAnchorsQueryInfoRadiusML value) {

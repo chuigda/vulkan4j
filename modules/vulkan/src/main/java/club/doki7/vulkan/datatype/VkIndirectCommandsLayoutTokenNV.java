@@ -99,8 +99,9 @@ public record VkIndirectCommandsLayoutTokenNV(@NotNull MemorySegment segment) im
             return new VkIndirectCommandsLayoutTokenNV(segment.asSlice(index * VkIndirectCommandsLayoutTokenNV.BYTES, VkIndirectCommandsLayoutTokenNV.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkIndirectCommandsLayoutTokenNV> consumer) {
+        public VkIndirectCommandsLayoutTokenNV.Ptr at(long index, @NotNull Consumer<@NotNull VkIndirectCommandsLayoutTokenNV> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkIndirectCommandsLayoutTokenNV value) {

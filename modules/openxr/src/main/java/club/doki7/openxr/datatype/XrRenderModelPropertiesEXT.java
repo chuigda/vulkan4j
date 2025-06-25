@@ -92,8 +92,9 @@ public record XrRenderModelPropertiesEXT(@NotNull MemorySegment segment) impleme
             return new XrRenderModelPropertiesEXT(segment.asSlice(index * XrRenderModelPropertiesEXT.BYTES, XrRenderModelPropertiesEXT.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull XrRenderModelPropertiesEXT> consumer) {
+        public XrRenderModelPropertiesEXT.Ptr at(long index, @NotNull Consumer<@NotNull XrRenderModelPropertiesEXT> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull XrRenderModelPropertiesEXT value) {

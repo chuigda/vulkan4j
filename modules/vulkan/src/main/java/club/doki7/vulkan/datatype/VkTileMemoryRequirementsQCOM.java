@@ -88,8 +88,9 @@ public record VkTileMemoryRequirementsQCOM(@NotNull MemorySegment segment) imple
             return new VkTileMemoryRequirementsQCOM(segment.asSlice(index * VkTileMemoryRequirementsQCOM.BYTES, VkTileMemoryRequirementsQCOM.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkTileMemoryRequirementsQCOM> consumer) {
+        public VkTileMemoryRequirementsQCOM.Ptr at(long index, @NotNull Consumer<@NotNull VkTileMemoryRequirementsQCOM> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkTileMemoryRequirementsQCOM value) {

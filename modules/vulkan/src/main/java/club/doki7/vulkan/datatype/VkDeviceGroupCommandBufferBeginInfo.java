@@ -87,8 +87,9 @@ public record VkDeviceGroupCommandBufferBeginInfo(@NotNull MemorySegment segment
             return new VkDeviceGroupCommandBufferBeginInfo(segment.asSlice(index * VkDeviceGroupCommandBufferBeginInfo.BYTES, VkDeviceGroupCommandBufferBeginInfo.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkDeviceGroupCommandBufferBeginInfo> consumer) {
+        public VkDeviceGroupCommandBufferBeginInfo.Ptr at(long index, @NotNull Consumer<@NotNull VkDeviceGroupCommandBufferBeginInfo> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkDeviceGroupCommandBufferBeginInfo value) {

@@ -87,8 +87,9 @@ public record VkPhysicalDeviceTextureCompressionASTCHDRFeatures(@NotNull MemoryS
             return new VkPhysicalDeviceTextureCompressionASTCHDRFeatures(segment.asSlice(index * VkPhysicalDeviceTextureCompressionASTCHDRFeatures.BYTES, VkPhysicalDeviceTextureCompressionASTCHDRFeatures.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceTextureCompressionASTCHDRFeatures> consumer) {
+        public VkPhysicalDeviceTextureCompressionASTCHDRFeatures.Ptr at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceTextureCompressionASTCHDRFeatures> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkPhysicalDeviceTextureCompressionASTCHDRFeatures value) {

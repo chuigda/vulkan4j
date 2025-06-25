@@ -87,8 +87,9 @@ public record VkPhysicalDeviceDepthClipEnableFeaturesEXT(@NotNull MemorySegment 
             return new VkPhysicalDeviceDepthClipEnableFeaturesEXT(segment.asSlice(index * VkPhysicalDeviceDepthClipEnableFeaturesEXT.BYTES, VkPhysicalDeviceDepthClipEnableFeaturesEXT.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceDepthClipEnableFeaturesEXT> consumer) {
+        public VkPhysicalDeviceDepthClipEnableFeaturesEXT.Ptr at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceDepthClipEnableFeaturesEXT> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkPhysicalDeviceDepthClipEnableFeaturesEXT value) {

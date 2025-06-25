@@ -93,8 +93,9 @@ public record XrSpatialCapabilityConfigurationAnchorEXT(@NotNull MemorySegment s
             return new XrSpatialCapabilityConfigurationAnchorEXT(segment.asSlice(index * XrSpatialCapabilityConfigurationAnchorEXT.BYTES, XrSpatialCapabilityConfigurationAnchorEXT.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull XrSpatialCapabilityConfigurationAnchorEXT> consumer) {
+        public XrSpatialCapabilityConfigurationAnchorEXT.Ptr at(long index, @NotNull Consumer<@NotNull XrSpatialCapabilityConfigurationAnchorEXT> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull XrSpatialCapabilityConfigurationAnchorEXT value) {

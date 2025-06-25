@@ -87,8 +87,9 @@ public record VkPhysicalDeviceGraphicsPipelineLibraryFeaturesEXT(@NotNull Memory
             return new VkPhysicalDeviceGraphicsPipelineLibraryFeaturesEXT(segment.asSlice(index * VkPhysicalDeviceGraphicsPipelineLibraryFeaturesEXT.BYTES, VkPhysicalDeviceGraphicsPipelineLibraryFeaturesEXT.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceGraphicsPipelineLibraryFeaturesEXT> consumer) {
+        public VkPhysicalDeviceGraphicsPipelineLibraryFeaturesEXT.Ptr at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceGraphicsPipelineLibraryFeaturesEXT> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkPhysicalDeviceGraphicsPipelineLibraryFeaturesEXT value) {

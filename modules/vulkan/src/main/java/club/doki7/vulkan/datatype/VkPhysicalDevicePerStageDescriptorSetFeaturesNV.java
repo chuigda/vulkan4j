@@ -88,8 +88,9 @@ public record VkPhysicalDevicePerStageDescriptorSetFeaturesNV(@NotNull MemorySeg
             return new VkPhysicalDevicePerStageDescriptorSetFeaturesNV(segment.asSlice(index * VkPhysicalDevicePerStageDescriptorSetFeaturesNV.BYTES, VkPhysicalDevicePerStageDescriptorSetFeaturesNV.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkPhysicalDevicePerStageDescriptorSetFeaturesNV> consumer) {
+        public VkPhysicalDevicePerStageDescriptorSetFeaturesNV.Ptr at(long index, @NotNull Consumer<@NotNull VkPhysicalDevicePerStageDescriptorSetFeaturesNV> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkPhysicalDevicePerStageDescriptorSetFeaturesNV value) {

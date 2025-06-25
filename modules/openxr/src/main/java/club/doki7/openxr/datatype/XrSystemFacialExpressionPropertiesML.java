@@ -91,8 +91,9 @@ public record XrSystemFacialExpressionPropertiesML(@NotNull MemorySegment segmen
             return new XrSystemFacialExpressionPropertiesML(segment.asSlice(index * XrSystemFacialExpressionPropertiesML.BYTES, XrSystemFacialExpressionPropertiesML.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull XrSystemFacialExpressionPropertiesML> consumer) {
+        public XrSystemFacialExpressionPropertiesML.Ptr at(long index, @NotNull Consumer<@NotNull XrSystemFacialExpressionPropertiesML> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull XrSystemFacialExpressionPropertiesML value) {

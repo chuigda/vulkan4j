@@ -96,8 +96,9 @@ public record VkGeneratedCommandsInfoEXT(@NotNull MemorySegment segment) impleme
             return new VkGeneratedCommandsInfoEXT(segment.asSlice(index * VkGeneratedCommandsInfoEXT.BYTES, VkGeneratedCommandsInfoEXT.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkGeneratedCommandsInfoEXT> consumer) {
+        public VkGeneratedCommandsInfoEXT.Ptr at(long index, @NotNull Consumer<@NotNull VkGeneratedCommandsInfoEXT> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkGeneratedCommandsInfoEXT value) {

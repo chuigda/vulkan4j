@@ -93,8 +93,9 @@ public record XrCompositionLayerProjectionView(@NotNull MemorySegment segment) i
             return new XrCompositionLayerProjectionView(segment.asSlice(index * XrCompositionLayerProjectionView.BYTES, XrCompositionLayerProjectionView.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull XrCompositionLayerProjectionView> consumer) {
+        public XrCompositionLayerProjectionView.Ptr at(long index, @NotNull Consumer<@NotNull XrCompositionLayerProjectionView> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull XrCompositionLayerProjectionView value) {

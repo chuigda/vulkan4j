@@ -88,8 +88,9 @@ public record VkPipelineSampleLocationsStateCreateInfoEXT(@NotNull MemorySegment
             return new VkPipelineSampleLocationsStateCreateInfoEXT(segment.asSlice(index * VkPipelineSampleLocationsStateCreateInfoEXT.BYTES, VkPipelineSampleLocationsStateCreateInfoEXT.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkPipelineSampleLocationsStateCreateInfoEXT> consumer) {
+        public VkPipelineSampleLocationsStateCreateInfoEXT.Ptr at(long index, @NotNull Consumer<@NotNull VkPipelineSampleLocationsStateCreateInfoEXT> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkPipelineSampleLocationsStateCreateInfoEXT value) {

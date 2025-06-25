@@ -81,8 +81,9 @@ public record VkClusterAccelerationStructureInstantiateClusterInfoNV(@NotNull Me
             return new VkClusterAccelerationStructureInstantiateClusterInfoNV(segment.asSlice(index * VkClusterAccelerationStructureInstantiateClusterInfoNV.BYTES, VkClusterAccelerationStructureInstantiateClusterInfoNV.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkClusterAccelerationStructureInstantiateClusterInfoNV> consumer) {
+        public VkClusterAccelerationStructureInstantiateClusterInfoNV.Ptr at(long index, @NotNull Consumer<@NotNull VkClusterAccelerationStructureInstantiateClusterInfoNV> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkClusterAccelerationStructureInstantiateClusterInfoNV value) {

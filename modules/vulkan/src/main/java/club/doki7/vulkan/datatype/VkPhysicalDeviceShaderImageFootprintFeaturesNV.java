@@ -87,8 +87,9 @@ public record VkPhysicalDeviceShaderImageFootprintFeaturesNV(@NotNull MemorySegm
             return new VkPhysicalDeviceShaderImageFootprintFeaturesNV(segment.asSlice(index * VkPhysicalDeviceShaderImageFootprintFeaturesNV.BYTES, VkPhysicalDeviceShaderImageFootprintFeaturesNV.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceShaderImageFootprintFeaturesNV> consumer) {
+        public VkPhysicalDeviceShaderImageFootprintFeaturesNV.Ptr at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceShaderImageFootprintFeaturesNV> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkPhysicalDeviceShaderImageFootprintFeaturesNV value) {

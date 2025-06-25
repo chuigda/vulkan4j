@@ -89,8 +89,9 @@ public record VkPerformanceOverrideInfoINTEL(@NotNull MemorySegment segment) imp
             return new VkPerformanceOverrideInfoINTEL(segment.asSlice(index * VkPerformanceOverrideInfoINTEL.BYTES, VkPerformanceOverrideInfoINTEL.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkPerformanceOverrideInfoINTEL> consumer) {
+        public VkPerformanceOverrideInfoINTEL.Ptr at(long index, @NotNull Consumer<@NotNull VkPerformanceOverrideInfoINTEL> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkPerformanceOverrideInfoINTEL value) {

@@ -77,8 +77,9 @@ public record VkVertexInputBindingDivisorDescription(@NotNull MemorySegment segm
             return new VkVertexInputBindingDivisorDescription(segment.asSlice(index * VkVertexInputBindingDivisorDescription.BYTES, VkVertexInputBindingDivisorDescription.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkVertexInputBindingDivisorDescription> consumer) {
+        public VkVertexInputBindingDivisorDescription.Ptr at(long index, @NotNull Consumer<@NotNull VkVertexInputBindingDivisorDescription> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkVertexInputBindingDivisorDescription value) {

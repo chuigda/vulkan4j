@@ -89,8 +89,9 @@ public record VkGeometryNV(@NotNull MemorySegment segment) implements IVkGeometr
             return new VkGeometryNV(segment.asSlice(index * VkGeometryNV.BYTES, VkGeometryNV.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkGeometryNV> consumer) {
+        public VkGeometryNV.Ptr at(long index, @NotNull Consumer<@NotNull VkGeometryNV> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkGeometryNV value) {

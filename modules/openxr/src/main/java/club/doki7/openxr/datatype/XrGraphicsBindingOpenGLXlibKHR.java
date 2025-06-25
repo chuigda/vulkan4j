@@ -95,8 +95,9 @@ public record XrGraphicsBindingOpenGLXlibKHR(@NotNull MemorySegment segment) imp
             return new XrGraphicsBindingOpenGLXlibKHR(segment.asSlice(index * XrGraphicsBindingOpenGLXlibKHR.BYTES, XrGraphicsBindingOpenGLXlibKHR.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull XrGraphicsBindingOpenGLXlibKHR> consumer) {
+        public XrGraphicsBindingOpenGLXlibKHR.Ptr at(long index, @NotNull Consumer<@NotNull XrGraphicsBindingOpenGLXlibKHR> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull XrGraphicsBindingOpenGLXlibKHR value) {

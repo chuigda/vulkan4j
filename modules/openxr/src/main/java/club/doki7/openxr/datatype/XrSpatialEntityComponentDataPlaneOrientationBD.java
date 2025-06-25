@@ -91,8 +91,9 @@ public record XrSpatialEntityComponentDataPlaneOrientationBD(@NotNull MemorySegm
             return new XrSpatialEntityComponentDataPlaneOrientationBD(segment.asSlice(index * XrSpatialEntityComponentDataPlaneOrientationBD.BYTES, XrSpatialEntityComponentDataPlaneOrientationBD.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull XrSpatialEntityComponentDataPlaneOrientationBD> consumer) {
+        public XrSpatialEntityComponentDataPlaneOrientationBD.Ptr at(long index, @NotNull Consumer<@NotNull XrSpatialEntityComponentDataPlaneOrientationBD> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull XrSpatialEntityComponentDataPlaneOrientationBD value) {

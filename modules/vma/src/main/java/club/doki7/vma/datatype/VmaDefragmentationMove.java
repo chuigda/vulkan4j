@@ -93,8 +93,9 @@ public record VmaDefragmentationMove(@NotNull MemorySegment segment) implements 
             return new VmaDefragmentationMove(segment.asSlice(index * VmaDefragmentationMove.BYTES, VmaDefragmentationMove.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VmaDefragmentationMove> consumer) {
+        public VmaDefragmentationMove.Ptr at(long index, @NotNull Consumer<@NotNull VmaDefragmentationMove> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VmaDefragmentationMove value) {

@@ -91,8 +91,9 @@ public record XrEventDataSpatialDiscoveryRecommendedEXT(@NotNull MemorySegment s
             return new XrEventDataSpatialDiscoveryRecommendedEXT(segment.asSlice(index * XrEventDataSpatialDiscoveryRecommendedEXT.BYTES, XrEventDataSpatialDiscoveryRecommendedEXT.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull XrEventDataSpatialDiscoveryRecommendedEXT> consumer) {
+        public XrEventDataSpatialDiscoveryRecommendedEXT.Ptr at(long index, @NotNull Consumer<@NotNull XrEventDataSpatialDiscoveryRecommendedEXT> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull XrEventDataSpatialDiscoveryRecommendedEXT value) {

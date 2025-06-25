@@ -76,8 +76,9 @@ public record VkTransformMatrixKHR(@NotNull MemorySegment segment) implements IV
             return new VkTransformMatrixKHR(segment.asSlice(index * VkTransformMatrixKHR.BYTES, VkTransformMatrixKHR.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkTransformMatrixKHR> consumer) {
+        public VkTransformMatrixKHR.Ptr at(long index, @NotNull Consumer<@NotNull VkTransformMatrixKHR> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkTransformMatrixKHR value) {

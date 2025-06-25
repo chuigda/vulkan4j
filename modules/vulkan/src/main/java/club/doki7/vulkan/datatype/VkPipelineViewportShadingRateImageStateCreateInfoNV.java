@@ -89,8 +89,9 @@ public record VkPipelineViewportShadingRateImageStateCreateInfoNV(@NotNull Memor
             return new VkPipelineViewportShadingRateImageStateCreateInfoNV(segment.asSlice(index * VkPipelineViewportShadingRateImageStateCreateInfoNV.BYTES, VkPipelineViewportShadingRateImageStateCreateInfoNV.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkPipelineViewportShadingRateImageStateCreateInfoNV> consumer) {
+        public VkPipelineViewportShadingRateImageStateCreateInfoNV.Ptr at(long index, @NotNull Consumer<@NotNull VkPipelineViewportShadingRateImageStateCreateInfoNV> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkPipelineViewportShadingRateImageStateCreateInfoNV value) {

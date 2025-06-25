@@ -87,8 +87,9 @@ public record VkPhysicalDeviceImageRobustnessFeatures(@NotNull MemorySegment seg
             return new VkPhysicalDeviceImageRobustnessFeatures(segment.asSlice(index * VkPhysicalDeviceImageRobustnessFeatures.BYTES, VkPhysicalDeviceImageRobustnessFeatures.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceImageRobustnessFeatures> consumer) {
+        public VkPhysicalDeviceImageRobustnessFeatures.Ptr at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceImageRobustnessFeatures> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkPhysicalDeviceImageRobustnessFeatures value) {

@@ -79,8 +79,9 @@ public record VkCoarseSampleOrderCustomNV(@NotNull MemorySegment segment) implem
             return new VkCoarseSampleOrderCustomNV(segment.asSlice(index * VkCoarseSampleOrderCustomNV.BYTES, VkCoarseSampleOrderCustomNV.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkCoarseSampleOrderCustomNV> consumer) {
+        public VkCoarseSampleOrderCustomNV.Ptr at(long index, @NotNull Consumer<@NotNull VkCoarseSampleOrderCustomNV> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkCoarseSampleOrderCustomNV value) {

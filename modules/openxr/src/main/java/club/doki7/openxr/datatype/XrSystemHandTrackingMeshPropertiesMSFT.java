@@ -93,8 +93,9 @@ public record XrSystemHandTrackingMeshPropertiesMSFT(@NotNull MemorySegment segm
             return new XrSystemHandTrackingMeshPropertiesMSFT(segment.asSlice(index * XrSystemHandTrackingMeshPropertiesMSFT.BYTES, XrSystemHandTrackingMeshPropertiesMSFT.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull XrSystemHandTrackingMeshPropertiesMSFT> consumer) {
+        public XrSystemHandTrackingMeshPropertiesMSFT.Ptr at(long index, @NotNull Consumer<@NotNull XrSystemHandTrackingMeshPropertiesMSFT> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull XrSystemHandTrackingMeshPropertiesMSFT value) {

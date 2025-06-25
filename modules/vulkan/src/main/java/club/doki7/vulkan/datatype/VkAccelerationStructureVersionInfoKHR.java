@@ -87,8 +87,9 @@ public record VkAccelerationStructureVersionInfoKHR(@NotNull MemorySegment segme
             return new VkAccelerationStructureVersionInfoKHR(segment.asSlice(index * VkAccelerationStructureVersionInfoKHR.BYTES, VkAccelerationStructureVersionInfoKHR.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkAccelerationStructureVersionInfoKHR> consumer) {
+        public VkAccelerationStructureVersionInfoKHR.Ptr at(long index, @NotNull Consumer<@NotNull VkAccelerationStructureVersionInfoKHR> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkAccelerationStructureVersionInfoKHR value) {

@@ -89,8 +89,9 @@ public record VkPipelineCoverageToColorStateCreateInfoNV(@NotNull MemorySegment 
             return new VkPipelineCoverageToColorStateCreateInfoNV(segment.asSlice(index * VkPipelineCoverageToColorStateCreateInfoNV.BYTES, VkPipelineCoverageToColorStateCreateInfoNV.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkPipelineCoverageToColorStateCreateInfoNV> consumer) {
+        public VkPipelineCoverageToColorStateCreateInfoNV.Ptr at(long index, @NotNull Consumer<@NotNull VkPipelineCoverageToColorStateCreateInfoNV> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkPipelineCoverageToColorStateCreateInfoNV value) {

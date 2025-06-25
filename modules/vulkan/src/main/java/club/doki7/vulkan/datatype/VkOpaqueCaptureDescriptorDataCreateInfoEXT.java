@@ -87,8 +87,9 @@ public record VkOpaqueCaptureDescriptorDataCreateInfoEXT(@NotNull MemorySegment 
             return new VkOpaqueCaptureDescriptorDataCreateInfoEXT(segment.asSlice(index * VkOpaqueCaptureDescriptorDataCreateInfoEXT.BYTES, VkOpaqueCaptureDescriptorDataCreateInfoEXT.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkOpaqueCaptureDescriptorDataCreateInfoEXT> consumer) {
+        public VkOpaqueCaptureDescriptorDataCreateInfoEXT.Ptr at(long index, @NotNull Consumer<@NotNull VkOpaqueCaptureDescriptorDataCreateInfoEXT> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkOpaqueCaptureDescriptorDataCreateInfoEXT value) {

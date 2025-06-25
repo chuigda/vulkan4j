@@ -87,8 +87,9 @@ public record VkImageMemoryRequirementsInfo2(@NotNull MemorySegment segment) imp
             return new VkImageMemoryRequirementsInfo2(segment.asSlice(index * VkImageMemoryRequirementsInfo2.BYTES, VkImageMemoryRequirementsInfo2.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkImageMemoryRequirementsInfo2> consumer) {
+        public VkImageMemoryRequirementsInfo2.Ptr at(long index, @NotNull Consumer<@NotNull VkImageMemoryRequirementsInfo2> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkImageMemoryRequirementsInfo2 value) {

@@ -92,8 +92,9 @@ public record XrBodyJointsLocateInfoFB(@NotNull MemorySegment segment) implement
             return new XrBodyJointsLocateInfoFB(segment.asSlice(index * XrBodyJointsLocateInfoFB.BYTES, XrBodyJointsLocateInfoFB.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull XrBodyJointsLocateInfoFB> consumer) {
+        public XrBodyJointsLocateInfoFB.Ptr at(long index, @NotNull Consumer<@NotNull XrBodyJointsLocateInfoFB> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull XrBodyJointsLocateInfoFB value) {

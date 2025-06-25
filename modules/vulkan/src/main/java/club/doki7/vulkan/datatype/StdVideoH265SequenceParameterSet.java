@@ -112,8 +112,9 @@ public record StdVideoH265SequenceParameterSet(@NotNull MemorySegment segment) i
             return new StdVideoH265SequenceParameterSet(segment.asSlice(index * StdVideoH265SequenceParameterSet.BYTES, StdVideoH265SequenceParameterSet.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull StdVideoH265SequenceParameterSet> consumer) {
+        public StdVideoH265SequenceParameterSet.Ptr at(long index, @NotNull Consumer<@NotNull StdVideoH265SequenceParameterSet> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull StdVideoH265SequenceParameterSet value) {

@@ -87,8 +87,9 @@ public record VkVideoDecodeH264DpbSlotInfoKHR(@NotNull MemorySegment segment) im
             return new VkVideoDecodeH264DpbSlotInfoKHR(segment.asSlice(index * VkVideoDecodeH264DpbSlotInfoKHR.BYTES, VkVideoDecodeH264DpbSlotInfoKHR.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkVideoDecodeH264DpbSlotInfoKHR> consumer) {
+        public VkVideoDecodeH264DpbSlotInfoKHR.Ptr at(long index, @NotNull Consumer<@NotNull VkVideoDecodeH264DpbSlotInfoKHR> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkVideoDecodeH264DpbSlotInfoKHR value) {

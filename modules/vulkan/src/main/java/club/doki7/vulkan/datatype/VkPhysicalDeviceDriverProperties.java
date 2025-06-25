@@ -90,8 +90,9 @@ public record VkPhysicalDeviceDriverProperties(@NotNull MemorySegment segment) i
             return new VkPhysicalDeviceDriverProperties(segment.asSlice(index * VkPhysicalDeviceDriverProperties.BYTES, VkPhysicalDeviceDriverProperties.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceDriverProperties> consumer) {
+        public VkPhysicalDeviceDriverProperties.Ptr at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceDriverProperties> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkPhysicalDeviceDriverProperties value) {

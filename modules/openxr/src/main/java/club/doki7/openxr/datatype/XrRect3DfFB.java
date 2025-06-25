@@ -81,8 +81,9 @@ public record XrRect3DfFB(@NotNull MemorySegment segment) implements IXrRect3DfF
             return new XrRect3DfFB(segment.asSlice(index * XrRect3DfFB.BYTES, XrRect3DfFB.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull XrRect3DfFB> consumer) {
+        public XrRect3DfFB.Ptr at(long index, @NotNull Consumer<@NotNull XrRect3DfFB> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull XrRect3DfFB value) {

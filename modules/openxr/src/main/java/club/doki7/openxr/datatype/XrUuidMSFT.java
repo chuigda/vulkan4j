@@ -80,8 +80,9 @@ public record XrUuidMSFT(@NotNull MemorySegment segment) implements IXrUuidMSFT 
             return new XrUuidMSFT(segment.asSlice(index * XrUuidMSFT.BYTES, XrUuidMSFT.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull XrUuidMSFT> consumer) {
+        public XrUuidMSFT.Ptr at(long index, @NotNull Consumer<@NotNull XrUuidMSFT> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull XrUuidMSFT value) {

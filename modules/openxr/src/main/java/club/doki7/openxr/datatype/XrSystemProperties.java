@@ -95,8 +95,9 @@ public record XrSystemProperties(@NotNull MemorySegment segment) implements IXrS
             return new XrSystemProperties(segment.asSlice(index * XrSystemProperties.BYTES, XrSystemProperties.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull XrSystemProperties> consumer) {
+        public XrSystemProperties.Ptr at(long index, @NotNull Consumer<@NotNull XrSystemProperties> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull XrSystemProperties value) {

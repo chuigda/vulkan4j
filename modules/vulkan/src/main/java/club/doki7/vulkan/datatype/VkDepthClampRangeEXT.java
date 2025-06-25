@@ -77,8 +77,9 @@ public record VkDepthClampRangeEXT(@NotNull MemorySegment segment) implements IV
             return new VkDepthClampRangeEXT(segment.asSlice(index * VkDepthClampRangeEXT.BYTES, VkDepthClampRangeEXT.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkDepthClampRangeEXT> consumer) {
+        public VkDepthClampRangeEXT.Ptr at(long index, @NotNull Consumer<@NotNull VkDepthClampRangeEXT> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkDepthClampRangeEXT value) {

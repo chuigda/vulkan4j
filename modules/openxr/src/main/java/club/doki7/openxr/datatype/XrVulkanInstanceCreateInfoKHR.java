@@ -95,8 +95,9 @@ public record XrVulkanInstanceCreateInfoKHR(@NotNull MemorySegment segment) impl
             return new XrVulkanInstanceCreateInfoKHR(segment.asSlice(index * XrVulkanInstanceCreateInfoKHR.BYTES, XrVulkanInstanceCreateInfoKHR.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull XrVulkanInstanceCreateInfoKHR> consumer) {
+        public XrVulkanInstanceCreateInfoKHR.Ptr at(long index, @NotNull Consumer<@NotNull XrVulkanInstanceCreateInfoKHR> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull XrVulkanInstanceCreateInfoKHR value) {

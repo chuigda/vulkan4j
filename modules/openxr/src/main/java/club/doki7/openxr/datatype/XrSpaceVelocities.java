@@ -92,8 +92,9 @@ public record XrSpaceVelocities(@NotNull MemorySegment segment) implements IXrSp
             return new XrSpaceVelocities(segment.asSlice(index * XrSpaceVelocities.BYTES, XrSpaceVelocities.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull XrSpaceVelocities> consumer) {
+        public XrSpaceVelocities.Ptr at(long index, @NotNull Consumer<@NotNull XrSpaceVelocities> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull XrSpaceVelocities value) {

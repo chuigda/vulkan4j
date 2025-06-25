@@ -88,8 +88,9 @@ public record VkValidationFlagsEXT(@NotNull MemorySegment segment) implements IV
             return new VkValidationFlagsEXT(segment.asSlice(index * VkValidationFlagsEXT.BYTES, VkValidationFlagsEXT.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkValidationFlagsEXT> consumer) {
+        public VkValidationFlagsEXT.Ptr at(long index, @NotNull Consumer<@NotNull VkValidationFlagsEXT> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkValidationFlagsEXT value) {

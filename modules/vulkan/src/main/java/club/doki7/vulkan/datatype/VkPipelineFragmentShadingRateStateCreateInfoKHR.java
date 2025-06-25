@@ -88,8 +88,9 @@ public record VkPipelineFragmentShadingRateStateCreateInfoKHR(@NotNull MemorySeg
             return new VkPipelineFragmentShadingRateStateCreateInfoKHR(segment.asSlice(index * VkPipelineFragmentShadingRateStateCreateInfoKHR.BYTES, VkPipelineFragmentShadingRateStateCreateInfoKHR.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkPipelineFragmentShadingRateStateCreateInfoKHR> consumer) {
+        public VkPipelineFragmentShadingRateStateCreateInfoKHR.Ptr at(long index, @NotNull Consumer<@NotNull VkPipelineFragmentShadingRateStateCreateInfoKHR> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkPipelineFragmentShadingRateStateCreateInfoKHR value) {

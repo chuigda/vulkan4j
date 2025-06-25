@@ -90,8 +90,9 @@ public record XrSwapchainImageAcquireInfo(@NotNull MemorySegment segment) implem
             return new XrSwapchainImageAcquireInfo(segment.asSlice(index * XrSwapchainImageAcquireInfo.BYTES, XrSwapchainImageAcquireInfo.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull XrSwapchainImageAcquireInfo> consumer) {
+        public XrSwapchainImageAcquireInfo.Ptr at(long index, @NotNull Consumer<@NotNull XrSwapchainImageAcquireInfo> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull XrSwapchainImageAcquireInfo value) {

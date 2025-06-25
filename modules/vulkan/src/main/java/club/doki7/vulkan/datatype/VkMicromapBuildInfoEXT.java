@@ -97,8 +97,9 @@ public record VkMicromapBuildInfoEXT(@NotNull MemorySegment segment) implements 
             return new VkMicromapBuildInfoEXT(segment.asSlice(index * VkMicromapBuildInfoEXT.BYTES, VkMicromapBuildInfoEXT.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkMicromapBuildInfoEXT> consumer) {
+        public VkMicromapBuildInfoEXT.Ptr at(long index, @NotNull Consumer<@NotNull VkMicromapBuildInfoEXT> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkMicromapBuildInfoEXT value) {

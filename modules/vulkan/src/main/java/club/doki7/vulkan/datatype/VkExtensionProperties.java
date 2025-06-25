@@ -77,8 +77,9 @@ public record VkExtensionProperties(@NotNull MemorySegment segment) implements I
             return new VkExtensionProperties(segment.asSlice(index * VkExtensionProperties.BYTES, VkExtensionProperties.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkExtensionProperties> consumer) {
+        public VkExtensionProperties.Ptr at(long index, @NotNull Consumer<@NotNull VkExtensionProperties> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkExtensionProperties value) {

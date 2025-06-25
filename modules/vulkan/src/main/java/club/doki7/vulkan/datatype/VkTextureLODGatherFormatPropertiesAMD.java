@@ -87,8 +87,9 @@ public record VkTextureLODGatherFormatPropertiesAMD(@NotNull MemorySegment segme
             return new VkTextureLODGatherFormatPropertiesAMD(segment.asSlice(index * VkTextureLODGatherFormatPropertiesAMD.BYTES, VkTextureLODGatherFormatPropertiesAMD.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkTextureLODGatherFormatPropertiesAMD> consumer) {
+        public VkTextureLODGatherFormatPropertiesAMD.Ptr at(long index, @NotNull Consumer<@NotNull VkTextureLODGatherFormatPropertiesAMD> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkTextureLODGatherFormatPropertiesAMD value) {

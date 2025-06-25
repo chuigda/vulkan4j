@@ -83,8 +83,9 @@ public record XrVector4f(@NotNull MemorySegment segment) implements IXrVector4f 
             return new XrVector4f(segment.asSlice(index * XrVector4f.BYTES, XrVector4f.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull XrVector4f> consumer) {
+        public XrVector4f.Ptr at(long index, @NotNull Consumer<@NotNull XrVector4f> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull XrVector4f value) {

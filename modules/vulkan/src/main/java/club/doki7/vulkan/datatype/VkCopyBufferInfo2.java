@@ -90,8 +90,9 @@ public record VkCopyBufferInfo2(@NotNull MemorySegment segment) implements IVkCo
             return new VkCopyBufferInfo2(segment.asSlice(index * VkCopyBufferInfo2.BYTES, VkCopyBufferInfo2.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkCopyBufferInfo2> consumer) {
+        public VkCopyBufferInfo2.Ptr at(long index, @NotNull Consumer<@NotNull VkCopyBufferInfo2> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkCopyBufferInfo2 value) {

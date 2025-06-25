@@ -82,8 +82,9 @@ public record XrSceneFrustumBoundMSFT(@NotNull MemorySegment segment) implements
             return new XrSceneFrustumBoundMSFT(segment.asSlice(index * XrSceneFrustumBoundMSFT.BYTES, XrSceneFrustumBoundMSFT.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull XrSceneFrustumBoundMSFT> consumer) {
+        public XrSceneFrustumBoundMSFT.Ptr at(long index, @NotNull Consumer<@NotNull XrSceneFrustumBoundMSFT> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull XrSceneFrustumBoundMSFT value) {

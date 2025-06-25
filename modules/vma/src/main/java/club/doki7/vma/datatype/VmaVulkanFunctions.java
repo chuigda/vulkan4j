@@ -121,8 +121,9 @@ public record VmaVulkanFunctions(@NotNull MemorySegment segment) implements IVma
             return new VmaVulkanFunctions(segment.asSlice(index * VmaVulkanFunctions.BYTES, VmaVulkanFunctions.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VmaVulkanFunctions> consumer) {
+        public VmaVulkanFunctions.Ptr at(long index, @NotNull Consumer<@NotNull VmaVulkanFunctions> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VmaVulkanFunctions value) {

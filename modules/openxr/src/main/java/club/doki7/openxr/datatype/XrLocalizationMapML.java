@@ -93,8 +93,9 @@ public record XrLocalizationMapML(@NotNull MemorySegment segment) implements IXr
             return new XrLocalizationMapML(segment.asSlice(index * XrLocalizationMapML.BYTES, XrLocalizationMapML.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull XrLocalizationMapML> consumer) {
+        public XrLocalizationMapML.Ptr at(long index, @NotNull Consumer<@NotNull XrLocalizationMapML> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull XrLocalizationMapML value) {

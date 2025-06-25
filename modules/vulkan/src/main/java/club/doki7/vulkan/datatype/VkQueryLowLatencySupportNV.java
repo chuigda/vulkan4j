@@ -87,8 +87,9 @@ public record VkQueryLowLatencySupportNV(@NotNull MemorySegment segment) impleme
             return new VkQueryLowLatencySupportNV(segment.asSlice(index * VkQueryLowLatencySupportNV.BYTES, VkQueryLowLatencySupportNV.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkQueryLowLatencySupportNV> consumer) {
+        public VkQueryLowLatencySupportNV.Ptr at(long index, @NotNull Consumer<@NotNull VkQueryLowLatencySupportNV> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkQueryLowLatencySupportNV value) {

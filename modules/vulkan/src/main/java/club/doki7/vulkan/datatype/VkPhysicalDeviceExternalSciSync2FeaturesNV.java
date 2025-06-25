@@ -90,8 +90,9 @@ public record VkPhysicalDeviceExternalSciSync2FeaturesNV(@NotNull MemorySegment 
             return new VkPhysicalDeviceExternalSciSync2FeaturesNV(segment.asSlice(index * VkPhysicalDeviceExternalSciSync2FeaturesNV.BYTES, VkPhysicalDeviceExternalSciSync2FeaturesNV.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceExternalSciSync2FeaturesNV> consumer) {
+        public VkPhysicalDeviceExternalSciSync2FeaturesNV.Ptr at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceExternalSciSync2FeaturesNV> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkPhysicalDeviceExternalSciSync2FeaturesNV value) {

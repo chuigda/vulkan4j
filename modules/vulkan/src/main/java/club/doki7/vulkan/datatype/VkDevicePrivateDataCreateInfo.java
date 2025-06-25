@@ -87,8 +87,9 @@ public record VkDevicePrivateDataCreateInfo(@NotNull MemorySegment segment) impl
             return new VkDevicePrivateDataCreateInfo(segment.asSlice(index * VkDevicePrivateDataCreateInfo.BYTES, VkDevicePrivateDataCreateInfo.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkDevicePrivateDataCreateInfo> consumer) {
+        public VkDevicePrivateDataCreateInfo.Ptr at(long index, @NotNull Consumer<@NotNull VkDevicePrivateDataCreateInfo> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkDevicePrivateDataCreateInfo value) {

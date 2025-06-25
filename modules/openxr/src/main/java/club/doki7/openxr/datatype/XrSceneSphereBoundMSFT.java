@@ -81,8 +81,9 @@ public record XrSceneSphereBoundMSFT(@NotNull MemorySegment segment) implements 
             return new XrSceneSphereBoundMSFT(segment.asSlice(index * XrSceneSphereBoundMSFT.BYTES, XrSceneSphereBoundMSFT.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull XrSceneSphereBoundMSFT> consumer) {
+        public XrSceneSphereBoundMSFT.Ptr at(long index, @NotNull Consumer<@NotNull XrSceneSphereBoundMSFT> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull XrSceneSphereBoundMSFT value) {

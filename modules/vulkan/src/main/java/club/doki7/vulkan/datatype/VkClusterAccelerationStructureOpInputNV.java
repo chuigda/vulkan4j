@@ -78,8 +78,9 @@ public record VkClusterAccelerationStructureOpInputNV(@NotNull MemorySegment seg
             return new VkClusterAccelerationStructureOpInputNV(segment.asSlice(index * VkClusterAccelerationStructureOpInputNV.BYTES, VkClusterAccelerationStructureOpInputNV.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkClusterAccelerationStructureOpInputNV> consumer) {
+        public VkClusterAccelerationStructureOpInputNV.Ptr at(long index, @NotNull Consumer<@NotNull VkClusterAccelerationStructureOpInputNV> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkClusterAccelerationStructureOpInputNV value) {

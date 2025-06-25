@@ -87,8 +87,9 @@ public record VkExternalMemoryBufferCreateInfo(@NotNull MemorySegment segment) i
             return new VkExternalMemoryBufferCreateInfo(segment.asSlice(index * VkExternalMemoryBufferCreateInfo.BYTES, VkExternalMemoryBufferCreateInfo.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkExternalMemoryBufferCreateInfo> consumer) {
+        public VkExternalMemoryBufferCreateInfo.Ptr at(long index, @NotNull Consumer<@NotNull VkExternalMemoryBufferCreateInfo> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkExternalMemoryBufferCreateInfo value) {

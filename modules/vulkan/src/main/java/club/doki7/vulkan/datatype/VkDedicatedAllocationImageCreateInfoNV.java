@@ -87,8 +87,9 @@ public record VkDedicatedAllocationImageCreateInfoNV(@NotNull MemorySegment segm
             return new VkDedicatedAllocationImageCreateInfoNV(segment.asSlice(index * VkDedicatedAllocationImageCreateInfoNV.BYTES, VkDedicatedAllocationImageCreateInfoNV.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkDedicatedAllocationImageCreateInfoNV> consumer) {
+        public VkDedicatedAllocationImageCreateInfoNV.Ptr at(long index, @NotNull Consumer<@NotNull VkDedicatedAllocationImageCreateInfoNV> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkDedicatedAllocationImageCreateInfoNV value) {

@@ -95,8 +95,9 @@ public record VkAccelerationStructureBuildGeometryInfoKHR(@NotNull MemorySegment
             return new VkAccelerationStructureBuildGeometryInfoKHR(segment.asSlice(index * VkAccelerationStructureBuildGeometryInfoKHR.BYTES, VkAccelerationStructureBuildGeometryInfoKHR.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkAccelerationStructureBuildGeometryInfoKHR> consumer) {
+        public VkAccelerationStructureBuildGeometryInfoKHR.Ptr at(long index, @NotNull Consumer<@NotNull VkAccelerationStructureBuildGeometryInfoKHR> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkAccelerationStructureBuildGeometryInfoKHR value) {

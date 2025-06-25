@@ -74,8 +74,9 @@ public record StdVideoH265PredictorPaletteEntries(@NotNull MemorySegment segment
             return new StdVideoH265PredictorPaletteEntries(segment.asSlice(index * StdVideoH265PredictorPaletteEntries.BYTES, StdVideoH265PredictorPaletteEntries.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull StdVideoH265PredictorPaletteEntries> consumer) {
+        public StdVideoH265PredictorPaletteEntries.Ptr at(long index, @NotNull Consumer<@NotNull StdVideoH265PredictorPaletteEntries> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull StdVideoH265PredictorPaletteEntries value) {

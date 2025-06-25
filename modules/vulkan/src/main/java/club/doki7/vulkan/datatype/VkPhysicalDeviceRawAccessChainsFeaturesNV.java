@@ -87,8 +87,9 @@ public record VkPhysicalDeviceRawAccessChainsFeaturesNV(@NotNull MemorySegment s
             return new VkPhysicalDeviceRawAccessChainsFeaturesNV(segment.asSlice(index * VkPhysicalDeviceRawAccessChainsFeaturesNV.BYTES, VkPhysicalDeviceRawAccessChainsFeaturesNV.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceRawAccessChainsFeaturesNV> consumer) {
+        public VkPhysicalDeviceRawAccessChainsFeaturesNV.Ptr at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceRawAccessChainsFeaturesNV> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkPhysicalDeviceRawAccessChainsFeaturesNV value) {

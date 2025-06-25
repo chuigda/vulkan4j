@@ -90,8 +90,9 @@ public record VkPipelineRobustnessCreateInfo(@NotNull MemorySegment segment) imp
             return new VkPipelineRobustnessCreateInfo(segment.asSlice(index * VkPipelineRobustnessCreateInfo.BYTES, VkPipelineRobustnessCreateInfo.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkPipelineRobustnessCreateInfo> consumer) {
+        public VkPipelineRobustnessCreateInfo.Ptr at(long index, @NotNull Consumer<@NotNull VkPipelineRobustnessCreateInfo> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkPipelineRobustnessCreateInfo value) {

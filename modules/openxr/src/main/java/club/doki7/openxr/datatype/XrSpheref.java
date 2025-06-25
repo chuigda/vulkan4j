@@ -81,8 +81,9 @@ public record XrSpheref(@NotNull MemorySegment segment) implements IXrSpheref {
             return new XrSpheref(segment.asSlice(index * XrSpheref.BYTES, XrSpheref.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull XrSpheref> consumer) {
+        public XrSpheref.Ptr at(long index, @NotNull Consumer<@NotNull XrSpheref> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull XrSpheref value) {

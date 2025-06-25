@@ -77,8 +77,9 @@ public record VkSubpassSampleLocationsEXT(@NotNull MemorySegment segment) implem
             return new VkSubpassSampleLocationsEXT(segment.asSlice(index * VkSubpassSampleLocationsEXT.BYTES, VkSubpassSampleLocationsEXT.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkSubpassSampleLocationsEXT> consumer) {
+        public VkSubpassSampleLocationsEXT.Ptr at(long index, @NotNull Consumer<@NotNull VkSubpassSampleLocationsEXT> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkSubpassSampleLocationsEXT value) {

@@ -87,8 +87,9 @@ public record VkPhysicalDeviceShaderTerminateInvocationFeatures(@NotNull MemoryS
             return new VkPhysicalDeviceShaderTerminateInvocationFeatures(segment.asSlice(index * VkPhysicalDeviceShaderTerminateInvocationFeatures.BYTES, VkPhysicalDeviceShaderTerminateInvocationFeatures.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceShaderTerminateInvocationFeatures> consumer) {
+        public VkPhysicalDeviceShaderTerminateInvocationFeatures.Ptr at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceShaderTerminateInvocationFeatures> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkPhysicalDeviceShaderTerminateInvocationFeatures value) {

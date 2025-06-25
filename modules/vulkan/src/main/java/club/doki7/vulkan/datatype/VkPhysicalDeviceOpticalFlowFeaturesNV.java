@@ -87,8 +87,9 @@ public record VkPhysicalDeviceOpticalFlowFeaturesNV(@NotNull MemorySegment segme
             return new VkPhysicalDeviceOpticalFlowFeaturesNV(segment.asSlice(index * VkPhysicalDeviceOpticalFlowFeaturesNV.BYTES, VkPhysicalDeviceOpticalFlowFeaturesNV.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceOpticalFlowFeaturesNV> consumer) {
+        public VkPhysicalDeviceOpticalFlowFeaturesNV.Ptr at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceOpticalFlowFeaturesNV> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkPhysicalDeviceOpticalFlowFeaturesNV value) {

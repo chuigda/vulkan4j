@@ -100,8 +100,9 @@ public record StdVideoEncodeAV1PictureInfo(@NotNull MemorySegment segment) imple
             return new StdVideoEncodeAV1PictureInfo(segment.asSlice(index * StdVideoEncodeAV1PictureInfo.BYTES, StdVideoEncodeAV1PictureInfo.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull StdVideoEncodeAV1PictureInfo> consumer) {
+        public StdVideoEncodeAV1PictureInfo.Ptr at(long index, @NotNull Consumer<@NotNull StdVideoEncodeAV1PictureInfo> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull StdVideoEncodeAV1PictureInfo value) {

@@ -91,8 +91,9 @@ public record XrPassthroughColorMapMonoToMonoFB(@NotNull MemorySegment segment) 
             return new XrPassthroughColorMapMonoToMonoFB(segment.asSlice(index * XrPassthroughColorMapMonoToMonoFB.BYTES, XrPassthroughColorMapMonoToMonoFB.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull XrPassthroughColorMapMonoToMonoFB> consumer) {
+        public XrPassthroughColorMapMonoToMonoFB.Ptr at(long index, @NotNull Consumer<@NotNull XrPassthroughColorMapMonoToMonoFB> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull XrPassthroughColorMapMonoToMonoFB value) {

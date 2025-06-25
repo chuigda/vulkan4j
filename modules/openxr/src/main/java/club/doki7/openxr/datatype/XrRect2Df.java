@@ -81,8 +81,9 @@ public record XrRect2Df(@NotNull MemorySegment segment) implements IXrRect2Df {
             return new XrRect2Df(segment.asSlice(index * XrRect2Df.BYTES, XrRect2Df.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull XrRect2Df> consumer) {
+        public XrRect2Df.Ptr at(long index, @NotNull Consumer<@NotNull XrRect2Df> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull XrRect2Df value) {

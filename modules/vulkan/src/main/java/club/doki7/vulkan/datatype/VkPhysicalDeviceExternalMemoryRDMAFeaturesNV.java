@@ -87,8 +87,9 @@ public record VkPhysicalDeviceExternalMemoryRDMAFeaturesNV(@NotNull MemorySegmen
             return new VkPhysicalDeviceExternalMemoryRDMAFeaturesNV(segment.asSlice(index * VkPhysicalDeviceExternalMemoryRDMAFeaturesNV.BYTES, VkPhysicalDeviceExternalMemoryRDMAFeaturesNV.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceExternalMemoryRDMAFeaturesNV> consumer) {
+        public VkPhysicalDeviceExternalMemoryRDMAFeaturesNV.Ptr at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceExternalMemoryRDMAFeaturesNV> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkPhysicalDeviceExternalMemoryRDMAFeaturesNV value) {

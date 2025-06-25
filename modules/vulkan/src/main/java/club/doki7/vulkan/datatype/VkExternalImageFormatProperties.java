@@ -87,8 +87,9 @@ public record VkExternalImageFormatProperties(@NotNull MemorySegment segment) im
             return new VkExternalImageFormatProperties(segment.asSlice(index * VkExternalImageFormatProperties.BYTES, VkExternalImageFormatProperties.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkExternalImageFormatProperties> consumer) {
+        public VkExternalImageFormatProperties.Ptr at(long index, @NotNull Consumer<@NotNull VkExternalImageFormatProperties> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkExternalImageFormatProperties value) {

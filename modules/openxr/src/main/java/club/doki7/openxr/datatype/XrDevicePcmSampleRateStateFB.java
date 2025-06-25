@@ -91,8 +91,9 @@ public record XrDevicePcmSampleRateStateFB(@NotNull MemorySegment segment) imple
             return new XrDevicePcmSampleRateStateFB(segment.asSlice(index * XrDevicePcmSampleRateStateFB.BYTES, XrDevicePcmSampleRateStateFB.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull XrDevicePcmSampleRateStateFB> consumer) {
+        public XrDevicePcmSampleRateStateFB.Ptr at(long index, @NotNull Consumer<@NotNull XrDevicePcmSampleRateStateFB> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull XrDevicePcmSampleRateStateFB value) {

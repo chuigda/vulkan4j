@@ -88,8 +88,9 @@ public record VkDescriptorBufferBindingInfoEXT(@NotNull MemorySegment segment) i
             return new VkDescriptorBufferBindingInfoEXT(segment.asSlice(index * VkDescriptorBufferBindingInfoEXT.BYTES, VkDescriptorBufferBindingInfoEXT.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkDescriptorBufferBindingInfoEXT> consumer) {
+        public VkDescriptorBufferBindingInfoEXT.Ptr at(long index, @NotNull Consumer<@NotNull VkDescriptorBufferBindingInfoEXT> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkDescriptorBufferBindingInfoEXT value) {

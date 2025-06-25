@@ -92,8 +92,9 @@ public record XrHandMeshSpaceCreateInfoMSFT(@NotNull MemorySegment segment) impl
             return new XrHandMeshSpaceCreateInfoMSFT(segment.asSlice(index * XrHandMeshSpaceCreateInfoMSFT.BYTES, XrHandMeshSpaceCreateInfoMSFT.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull XrHandMeshSpaceCreateInfoMSFT> consumer) {
+        public XrHandMeshSpaceCreateInfoMSFT.Ptr at(long index, @NotNull Consumer<@NotNull XrHandMeshSpaceCreateInfoMSFT> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull XrHandMeshSpaceCreateInfoMSFT value) {

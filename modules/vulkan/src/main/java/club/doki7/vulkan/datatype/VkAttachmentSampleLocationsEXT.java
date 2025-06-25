@@ -77,8 +77,9 @@ public record VkAttachmentSampleLocationsEXT(@NotNull MemorySegment segment) imp
             return new VkAttachmentSampleLocationsEXT(segment.asSlice(index * VkAttachmentSampleLocationsEXT.BYTES, VkAttachmentSampleLocationsEXT.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkAttachmentSampleLocationsEXT> consumer) {
+        public VkAttachmentSampleLocationsEXT.Ptr at(long index, @NotNull Consumer<@NotNull VkAttachmentSampleLocationsEXT> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkAttachmentSampleLocationsEXT value) {

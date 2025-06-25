@@ -88,8 +88,9 @@ public record VkPipelineBinaryKeyKHR(@NotNull MemorySegment segment) implements 
             return new VkPipelineBinaryKeyKHR(segment.asSlice(index * VkPipelineBinaryKeyKHR.BYTES, VkPipelineBinaryKeyKHR.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkPipelineBinaryKeyKHR> consumer) {
+        public VkPipelineBinaryKeyKHR.Ptr at(long index, @NotNull Consumer<@NotNull VkPipelineBinaryKeyKHR> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkPipelineBinaryKeyKHR value) {

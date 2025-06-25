@@ -92,8 +92,9 @@ public record XrSessionActionSetsAttachInfo(@NotNull MemorySegment segment) impl
             return new XrSessionActionSetsAttachInfo(segment.asSlice(index * XrSessionActionSetsAttachInfo.BYTES, XrSessionActionSetsAttachInfo.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull XrSessionActionSetsAttachInfo> consumer) {
+        public XrSessionActionSetsAttachInfo.Ptr at(long index, @NotNull Consumer<@NotNull XrSessionActionSetsAttachInfo> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull XrSessionActionSetsAttachInfo value) {

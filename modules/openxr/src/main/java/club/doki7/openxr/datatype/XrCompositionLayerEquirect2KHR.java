@@ -99,8 +99,9 @@ public record XrCompositionLayerEquirect2KHR(@NotNull MemorySegment segment) imp
             return new XrCompositionLayerEquirect2KHR(segment.asSlice(index * XrCompositionLayerEquirect2KHR.BYTES, XrCompositionLayerEquirect2KHR.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull XrCompositionLayerEquirect2KHR> consumer) {
+        public XrCompositionLayerEquirect2KHR.Ptr at(long index, @NotNull Consumer<@NotNull XrCompositionLayerEquirect2KHR> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull XrCompositionLayerEquirect2KHR value) {

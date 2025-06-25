@@ -88,8 +88,9 @@ public record VkBindBufferMemoryDeviceGroupInfo(@NotNull MemorySegment segment) 
             return new VkBindBufferMemoryDeviceGroupInfo(segment.asSlice(index * VkBindBufferMemoryDeviceGroupInfo.BYTES, VkBindBufferMemoryDeviceGroupInfo.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkBindBufferMemoryDeviceGroupInfo> consumer) {
+        public VkBindBufferMemoryDeviceGroupInfo.Ptr at(long index, @NotNull Consumer<@NotNull VkBindBufferMemoryDeviceGroupInfo> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkBindBufferMemoryDeviceGroupInfo value) {

@@ -95,8 +95,9 @@ public record XrWorldMeshStateRequestCompletionML(@NotNull MemorySegment segment
             return new XrWorldMeshStateRequestCompletionML(segment.asSlice(index * XrWorldMeshStateRequestCompletionML.BYTES, XrWorldMeshStateRequestCompletionML.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull XrWorldMeshStateRequestCompletionML> consumer) {
+        public XrWorldMeshStateRequestCompletionML.Ptr at(long index, @NotNull Consumer<@NotNull XrWorldMeshStateRequestCompletionML> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull XrWorldMeshStateRequestCompletionML value) {

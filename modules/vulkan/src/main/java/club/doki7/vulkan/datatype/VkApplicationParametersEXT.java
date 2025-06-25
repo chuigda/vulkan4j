@@ -90,8 +90,9 @@ public record VkApplicationParametersEXT(@NotNull MemorySegment segment) impleme
             return new VkApplicationParametersEXT(segment.asSlice(index * VkApplicationParametersEXT.BYTES, VkApplicationParametersEXT.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkApplicationParametersEXT> consumer) {
+        public VkApplicationParametersEXT.Ptr at(long index, @NotNull Consumer<@NotNull VkApplicationParametersEXT> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkApplicationParametersEXT value) {

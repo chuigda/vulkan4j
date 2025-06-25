@@ -91,8 +91,9 @@ public record VkCopyBufferToImageInfo2(@NotNull MemorySegment segment) implement
             return new VkCopyBufferToImageInfo2(segment.asSlice(index * VkCopyBufferToImageInfo2.BYTES, VkCopyBufferToImageInfo2.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkCopyBufferToImageInfo2> consumer) {
+        public VkCopyBufferToImageInfo2.Ptr at(long index, @NotNull Consumer<@NotNull VkCopyBufferToImageInfo2> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkCopyBufferToImageInfo2 value) {

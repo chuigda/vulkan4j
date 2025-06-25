@@ -88,8 +88,9 @@ public record VkDescriptorSetVariableDescriptorCountAllocateInfo(@NotNull Memory
             return new VkDescriptorSetVariableDescriptorCountAllocateInfo(segment.asSlice(index * VkDescriptorSetVariableDescriptorCountAllocateInfo.BYTES, VkDescriptorSetVariableDescriptorCountAllocateInfo.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkDescriptorSetVariableDescriptorCountAllocateInfo> consumer) {
+        public VkDescriptorSetVariableDescriptorCountAllocateInfo.Ptr at(long index, @NotNull Consumer<@NotNull VkDescriptorSetVariableDescriptorCountAllocateInfo> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkDescriptorSetVariableDescriptorCountAllocateInfo value) {

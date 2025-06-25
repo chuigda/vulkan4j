@@ -81,8 +81,9 @@ public record XrSwapchainImageBaseHeader(@NotNull MemorySegment segment) impleme
             return new XrSwapchainImageBaseHeader(segment.asSlice(index * XrSwapchainImageBaseHeader.BYTES, XrSwapchainImageBaseHeader.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull XrSwapchainImageBaseHeader> consumer) {
+        public XrSwapchainImageBaseHeader.Ptr at(long index, @NotNull Consumer<@NotNull XrSwapchainImageBaseHeader> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull XrSwapchainImageBaseHeader value) {

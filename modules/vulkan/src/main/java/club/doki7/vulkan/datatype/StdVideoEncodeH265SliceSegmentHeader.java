@@ -88,8 +88,9 @@ public record StdVideoEncodeH265SliceSegmentHeader(@NotNull MemorySegment segmen
             return new StdVideoEncodeH265SliceSegmentHeader(segment.asSlice(index * StdVideoEncodeH265SliceSegmentHeader.BYTES, StdVideoEncodeH265SliceSegmentHeader.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull StdVideoEncodeH265SliceSegmentHeader> consumer) {
+        public StdVideoEncodeH265SliceSegmentHeader.Ptr at(long index, @NotNull Consumer<@NotNull StdVideoEncodeH265SliceSegmentHeader> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull StdVideoEncodeH265SliceSegmentHeader value) {

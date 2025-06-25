@@ -92,8 +92,9 @@ public record XrMarkerDetectorCreateInfoML(@NotNull MemorySegment segment) imple
             return new XrMarkerDetectorCreateInfoML(segment.asSlice(index * XrMarkerDetectorCreateInfoML.BYTES, XrMarkerDetectorCreateInfoML.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull XrMarkerDetectorCreateInfoML> consumer) {
+        public XrMarkerDetectorCreateInfoML.Ptr at(long index, @NotNull Consumer<@NotNull XrMarkerDetectorCreateInfoML> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull XrMarkerDetectorCreateInfoML value) {

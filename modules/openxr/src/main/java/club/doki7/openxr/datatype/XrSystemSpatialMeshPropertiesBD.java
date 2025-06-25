@@ -91,8 +91,9 @@ public record XrSystemSpatialMeshPropertiesBD(@NotNull MemorySegment segment) im
             return new XrSystemSpatialMeshPropertiesBD(segment.asSlice(index * XrSystemSpatialMeshPropertiesBD.BYTES, XrSystemSpatialMeshPropertiesBD.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull XrSystemSpatialMeshPropertiesBD> consumer) {
+        public XrSystemSpatialMeshPropertiesBD.Ptr at(long index, @NotNull Consumer<@NotNull XrSystemSpatialMeshPropertiesBD> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull XrSystemSpatialMeshPropertiesBD value) {

@@ -91,8 +91,9 @@ public record VkRayTracingShaderGroupCreateInfoNV(@NotNull MemorySegment segment
             return new VkRayTracingShaderGroupCreateInfoNV(segment.asSlice(index * VkRayTracingShaderGroupCreateInfoNV.BYTES, VkRayTracingShaderGroupCreateInfoNV.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkRayTracingShaderGroupCreateInfoNV> consumer) {
+        public VkRayTracingShaderGroupCreateInfoNV.Ptr at(long index, @NotNull Consumer<@NotNull VkRayTracingShaderGroupCreateInfoNV> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkRayTracingShaderGroupCreateInfoNV value) {

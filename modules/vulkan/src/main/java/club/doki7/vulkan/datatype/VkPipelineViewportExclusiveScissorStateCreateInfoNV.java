@@ -88,8 +88,9 @@ public record VkPipelineViewportExclusiveScissorStateCreateInfoNV(@NotNull Memor
             return new VkPipelineViewportExclusiveScissorStateCreateInfoNV(segment.asSlice(index * VkPipelineViewportExclusiveScissorStateCreateInfoNV.BYTES, VkPipelineViewportExclusiveScissorStateCreateInfoNV.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkPipelineViewportExclusiveScissorStateCreateInfoNV> consumer) {
+        public VkPipelineViewportExclusiveScissorStateCreateInfoNV.Ptr at(long index, @NotNull Consumer<@NotNull VkPipelineViewportExclusiveScissorStateCreateInfoNV> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkPipelineViewportExclusiveScissorStateCreateInfoNV value) {

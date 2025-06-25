@@ -76,8 +76,9 @@ public record VkIndirectCommandsPushConstantTokenEXT(@NotNull MemorySegment segm
             return new VkIndirectCommandsPushConstantTokenEXT(segment.asSlice(index * VkIndirectCommandsPushConstantTokenEXT.BYTES, VkIndirectCommandsPushConstantTokenEXT.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkIndirectCommandsPushConstantTokenEXT> consumer) {
+        public VkIndirectCommandsPushConstantTokenEXT.Ptr at(long index, @NotNull Consumer<@NotNull VkIndirectCommandsPushConstantTokenEXT> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkIndirectCommandsPushConstantTokenEXT value) {

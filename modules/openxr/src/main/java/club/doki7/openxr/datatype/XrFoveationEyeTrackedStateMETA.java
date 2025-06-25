@@ -92,8 +92,9 @@ public record XrFoveationEyeTrackedStateMETA(@NotNull MemorySegment segment) imp
             return new XrFoveationEyeTrackedStateMETA(segment.asSlice(index * XrFoveationEyeTrackedStateMETA.BYTES, XrFoveationEyeTrackedStateMETA.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull XrFoveationEyeTrackedStateMETA> consumer) {
+        public XrFoveationEyeTrackedStateMETA.Ptr at(long index, @NotNull Consumer<@NotNull XrFoveationEyeTrackedStateMETA> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull XrFoveationEyeTrackedStateMETA value) {

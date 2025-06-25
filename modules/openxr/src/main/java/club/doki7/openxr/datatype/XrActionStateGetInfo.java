@@ -92,8 +92,9 @@ public record XrActionStateGetInfo(@NotNull MemorySegment segment) implements IX
             return new XrActionStateGetInfo(segment.asSlice(index * XrActionStateGetInfo.BYTES, XrActionStateGetInfo.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull XrActionStateGetInfo> consumer) {
+        public XrActionStateGetInfo.Ptr at(long index, @NotNull Consumer<@NotNull XrActionStateGetInfo> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull XrActionStateGetInfo value) {

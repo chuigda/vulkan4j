@@ -87,8 +87,9 @@ public record VkPhysicalDeviceMaintenance6Features(@NotNull MemorySegment segmen
             return new VkPhysicalDeviceMaintenance6Features(segment.asSlice(index * VkPhysicalDeviceMaintenance6Features.BYTES, VkPhysicalDeviceMaintenance6Features.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceMaintenance6Features> consumer) {
+        public VkPhysicalDeviceMaintenance6Features.Ptr at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceMaintenance6Features> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkPhysicalDeviceMaintenance6Features value) {

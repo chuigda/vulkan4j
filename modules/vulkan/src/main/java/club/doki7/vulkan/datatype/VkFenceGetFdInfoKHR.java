@@ -88,8 +88,9 @@ public record VkFenceGetFdInfoKHR(@NotNull MemorySegment segment) implements IVk
             return new VkFenceGetFdInfoKHR(segment.asSlice(index * VkFenceGetFdInfoKHR.BYTES, VkFenceGetFdInfoKHR.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkFenceGetFdInfoKHR> consumer) {
+        public VkFenceGetFdInfoKHR.Ptr at(long index, @NotNull Consumer<@NotNull VkFenceGetFdInfoKHR> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkFenceGetFdInfoKHR value) {

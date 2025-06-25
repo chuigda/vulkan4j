@@ -91,8 +91,9 @@ public record XrSystemKeyboardTrackingPropertiesFB(@NotNull MemorySegment segmen
             return new XrSystemKeyboardTrackingPropertiesFB(segment.asSlice(index * XrSystemKeyboardTrackingPropertiesFB.BYTES, XrSystemKeyboardTrackingPropertiesFB.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull XrSystemKeyboardTrackingPropertiesFB> consumer) {
+        public XrSystemKeyboardTrackingPropertiesFB.Ptr at(long index, @NotNull Consumer<@NotNull XrSystemKeyboardTrackingPropertiesFB> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull XrSystemKeyboardTrackingPropertiesFB value) {

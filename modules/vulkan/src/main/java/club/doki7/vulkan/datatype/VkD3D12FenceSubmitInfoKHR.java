@@ -90,8 +90,9 @@ public record VkD3D12FenceSubmitInfoKHR(@NotNull MemorySegment segment) implemen
             return new VkD3D12FenceSubmitInfoKHR(segment.asSlice(index * VkD3D12FenceSubmitInfoKHR.BYTES, VkD3D12FenceSubmitInfoKHR.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkD3D12FenceSubmitInfoKHR> consumer) {
+        public VkD3D12FenceSubmitInfoKHR.Ptr at(long index, @NotNull Consumer<@NotNull VkD3D12FenceSubmitInfoKHR> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkD3D12FenceSubmitInfoKHR value) {

@@ -95,8 +95,9 @@ public record XrEventDataSpaceSaveCompleteFB(@NotNull MemorySegment segment) imp
             return new XrEventDataSpaceSaveCompleteFB(segment.asSlice(index * XrEventDataSpaceSaveCompleteFB.BYTES, XrEventDataSpaceSaveCompleteFB.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull XrEventDataSpaceSaveCompleteFB> consumer) {
+        public XrEventDataSpaceSaveCompleteFB.Ptr at(long index, @NotNull Consumer<@NotNull XrEventDataSpaceSaveCompleteFB> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull XrEventDataSpaceSaveCompleteFB value) {

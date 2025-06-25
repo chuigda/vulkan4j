@@ -87,8 +87,9 @@ public record VkPhysicalDeviceVideoEncodeAV1FeaturesKHR(@NotNull MemorySegment s
             return new VkPhysicalDeviceVideoEncodeAV1FeaturesKHR(segment.asSlice(index * VkPhysicalDeviceVideoEncodeAV1FeaturesKHR.BYTES, VkPhysicalDeviceVideoEncodeAV1FeaturesKHR.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceVideoEncodeAV1FeaturesKHR> consumer) {
+        public VkPhysicalDeviceVideoEncodeAV1FeaturesKHR.Ptr at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceVideoEncodeAV1FeaturesKHR> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkPhysicalDeviceVideoEncodeAV1FeaturesKHR value) {

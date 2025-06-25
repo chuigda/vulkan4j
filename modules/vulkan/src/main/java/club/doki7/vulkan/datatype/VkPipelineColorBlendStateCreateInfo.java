@@ -92,8 +92,9 @@ public record VkPipelineColorBlendStateCreateInfo(@NotNull MemorySegment segment
             return new VkPipelineColorBlendStateCreateInfo(segment.asSlice(index * VkPipelineColorBlendStateCreateInfo.BYTES, VkPipelineColorBlendStateCreateInfo.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkPipelineColorBlendStateCreateInfo> consumer) {
+        public VkPipelineColorBlendStateCreateInfo.Ptr at(long index, @NotNull Consumer<@NotNull VkPipelineColorBlendStateCreateInfo> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkPipelineColorBlendStateCreateInfo value) {

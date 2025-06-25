@@ -88,8 +88,9 @@ public record VkSurfacePresentModeCompatibilityEXT(@NotNull MemorySegment segmen
             return new VkSurfacePresentModeCompatibilityEXT(segment.asSlice(index * VkSurfacePresentModeCompatibilityEXT.BYTES, VkSurfacePresentModeCompatibilityEXT.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkSurfacePresentModeCompatibilityEXT> consumer) {
+        public VkSurfacePresentModeCompatibilityEXT.Ptr at(long index, @NotNull Consumer<@NotNull VkSurfacePresentModeCompatibilityEXT> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkSurfacePresentModeCompatibilityEXT value) {

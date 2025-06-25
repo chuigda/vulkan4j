@@ -87,8 +87,9 @@ public record VkPhysicalDeviceShaderFloatControls2Features(@NotNull MemorySegmen
             return new VkPhysicalDeviceShaderFloatControls2Features(segment.asSlice(index * VkPhysicalDeviceShaderFloatControls2Features.BYTES, VkPhysicalDeviceShaderFloatControls2Features.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceShaderFloatControls2Features> consumer) {
+        public VkPhysicalDeviceShaderFloatControls2Features.Ptr at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceShaderFloatControls2Features> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkPhysicalDeviceShaderFloatControls2Features value) {

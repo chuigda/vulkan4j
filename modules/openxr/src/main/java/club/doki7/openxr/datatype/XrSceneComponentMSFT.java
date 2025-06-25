@@ -83,8 +83,9 @@ public record XrSceneComponentMSFT(@NotNull MemorySegment segment) implements IX
             return new XrSceneComponentMSFT(segment.asSlice(index * XrSceneComponentMSFT.BYTES, XrSceneComponentMSFT.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull XrSceneComponentMSFT> consumer) {
+        public XrSceneComponentMSFT.Ptr at(long index, @NotNull Consumer<@NotNull XrSceneComponentMSFT> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull XrSceneComponentMSFT value) {

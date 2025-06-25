@@ -81,8 +81,9 @@ public record XrPosef(@NotNull MemorySegment segment) implements IXrPosef {
             return new XrPosef(segment.asSlice(index * XrPosef.BYTES, XrPosef.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull XrPosef> consumer) {
+        public XrPosef.Ptr at(long index, @NotNull Consumer<@NotNull XrPosef> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull XrPosef value) {

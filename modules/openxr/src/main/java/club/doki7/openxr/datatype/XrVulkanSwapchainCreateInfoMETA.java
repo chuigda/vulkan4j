@@ -92,8 +92,9 @@ public record XrVulkanSwapchainCreateInfoMETA(@NotNull MemorySegment segment) im
             return new XrVulkanSwapchainCreateInfoMETA(segment.asSlice(index * XrVulkanSwapchainCreateInfoMETA.BYTES, XrVulkanSwapchainCreateInfoMETA.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull XrVulkanSwapchainCreateInfoMETA> consumer) {
+        public XrVulkanSwapchainCreateInfoMETA.Ptr at(long index, @NotNull Consumer<@NotNull XrVulkanSwapchainCreateInfoMETA> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull XrVulkanSwapchainCreateInfoMETA value) {

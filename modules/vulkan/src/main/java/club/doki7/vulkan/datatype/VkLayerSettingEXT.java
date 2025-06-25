@@ -80,8 +80,9 @@ public record VkLayerSettingEXT(@NotNull MemorySegment segment) implements IVkLa
             return new VkLayerSettingEXT(segment.asSlice(index * VkLayerSettingEXT.BYTES, VkLayerSettingEXT.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkLayerSettingEXT> consumer) {
+        public VkLayerSettingEXT.Ptr at(long index, @NotNull Consumer<@NotNull VkLayerSettingEXT> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkLayerSettingEXT value) {

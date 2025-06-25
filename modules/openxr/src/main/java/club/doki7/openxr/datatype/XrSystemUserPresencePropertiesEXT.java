@@ -91,8 +91,9 @@ public record XrSystemUserPresencePropertiesEXT(@NotNull MemorySegment segment) 
             return new XrSystemUserPresencePropertiesEXT(segment.asSlice(index * XrSystemUserPresencePropertiesEXT.BYTES, XrSystemUserPresencePropertiesEXT.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull XrSystemUserPresencePropertiesEXT> consumer) {
+        public XrSystemUserPresencePropertiesEXT.Ptr at(long index, @NotNull Consumer<@NotNull XrSystemUserPresencePropertiesEXT> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull XrSystemUserPresencePropertiesEXT value) {

@@ -90,8 +90,9 @@ public record XrEyeTrackerCreateInfoFB(@NotNull MemorySegment segment) implement
             return new XrEyeTrackerCreateInfoFB(segment.asSlice(index * XrEyeTrackerCreateInfoFB.BYTES, XrEyeTrackerCreateInfoFB.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull XrEyeTrackerCreateInfoFB> consumer) {
+        public XrEyeTrackerCreateInfoFB.Ptr at(long index, @NotNull Consumer<@NotNull XrEyeTrackerCreateInfoFB> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull XrEyeTrackerCreateInfoFB value) {

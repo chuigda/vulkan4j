@@ -87,8 +87,9 @@ public record VkBindMemoryStatus(@NotNull MemorySegment segment) implements IVkB
             return new VkBindMemoryStatus(segment.asSlice(index * VkBindMemoryStatus.BYTES, VkBindMemoryStatus.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkBindMemoryStatus> consumer) {
+        public VkBindMemoryStatus.Ptr at(long index, @NotNull Consumer<@NotNull VkBindMemoryStatus> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkBindMemoryStatus value) {

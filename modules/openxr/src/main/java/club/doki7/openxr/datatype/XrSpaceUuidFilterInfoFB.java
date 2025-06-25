@@ -92,8 +92,9 @@ public record XrSpaceUuidFilterInfoFB(@NotNull MemorySegment segment) implements
             return new XrSpaceUuidFilterInfoFB(segment.asSlice(index * XrSpaceUuidFilterInfoFB.BYTES, XrSpaceUuidFilterInfoFB.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull XrSpaceUuidFilterInfoFB> consumer) {
+        public XrSpaceUuidFilterInfoFB.Ptr at(long index, @NotNull Consumer<@NotNull XrSpaceUuidFilterInfoFB> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull XrSpaceUuidFilterInfoFB value) {

@@ -91,8 +91,9 @@ public record XrSessionBeginInfo(@NotNull MemorySegment segment) implements IXrS
             return new XrSessionBeginInfo(segment.asSlice(index * XrSessionBeginInfo.BYTES, XrSessionBeginInfo.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull XrSessionBeginInfo> consumer) {
+        public XrSessionBeginInfo.Ptr at(long index, @NotNull Consumer<@NotNull XrSessionBeginInfo> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull XrSessionBeginInfo value) {

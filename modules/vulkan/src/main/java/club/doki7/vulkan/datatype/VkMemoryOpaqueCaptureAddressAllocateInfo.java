@@ -87,8 +87,9 @@ public record VkMemoryOpaqueCaptureAddressAllocateInfo(@NotNull MemorySegment se
             return new VkMemoryOpaqueCaptureAddressAllocateInfo(segment.asSlice(index * VkMemoryOpaqueCaptureAddressAllocateInfo.BYTES, VkMemoryOpaqueCaptureAddressAllocateInfo.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkMemoryOpaqueCaptureAddressAllocateInfo> consumer) {
+        public VkMemoryOpaqueCaptureAddressAllocateInfo.Ptr at(long index, @NotNull Consumer<@NotNull VkMemoryOpaqueCaptureAddressAllocateInfo> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkMemoryOpaqueCaptureAddressAllocateInfo value) {

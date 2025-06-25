@@ -90,8 +90,9 @@ public record VkPipelineExecutableStatisticKHR(@NotNull MemorySegment segment) i
             return new VkPipelineExecutableStatisticKHR(segment.asSlice(index * VkPipelineExecutableStatisticKHR.BYTES, VkPipelineExecutableStatisticKHR.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkPipelineExecutableStatisticKHR> consumer) {
+        public VkPipelineExecutableStatisticKHR.Ptr at(long index, @NotNull Consumer<@NotNull VkPipelineExecutableStatisticKHR> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkPipelineExecutableStatisticKHR value) {

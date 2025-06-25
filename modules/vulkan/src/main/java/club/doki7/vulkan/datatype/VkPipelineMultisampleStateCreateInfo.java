@@ -93,8 +93,9 @@ public record VkPipelineMultisampleStateCreateInfo(@NotNull MemorySegment segmen
             return new VkPipelineMultisampleStateCreateInfo(segment.asSlice(index * VkPipelineMultisampleStateCreateInfo.BYTES, VkPipelineMultisampleStateCreateInfo.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkPipelineMultisampleStateCreateInfo> consumer) {
+        public VkPipelineMultisampleStateCreateInfo.Ptr at(long index, @NotNull Consumer<@NotNull VkPipelineMultisampleStateCreateInfo> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkPipelineMultisampleStateCreateInfo value) {

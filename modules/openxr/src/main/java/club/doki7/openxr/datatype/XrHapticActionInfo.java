@@ -92,8 +92,9 @@ public record XrHapticActionInfo(@NotNull MemorySegment segment) implements IXrH
             return new XrHapticActionInfo(segment.asSlice(index * XrHapticActionInfo.BYTES, XrHapticActionInfo.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull XrHapticActionInfo> consumer) {
+        public XrHapticActionInfo.Ptr at(long index, @NotNull Consumer<@NotNull XrHapticActionInfo> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull XrHapticActionInfo value) {

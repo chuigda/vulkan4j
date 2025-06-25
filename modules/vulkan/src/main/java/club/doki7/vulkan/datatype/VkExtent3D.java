@@ -78,8 +78,9 @@ public record VkExtent3D(@NotNull MemorySegment segment) implements IVkExtent3D 
             return new VkExtent3D(segment.asSlice(index * VkExtent3D.BYTES, VkExtent3D.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkExtent3D> consumer) {
+        public VkExtent3D.Ptr at(long index, @NotNull Consumer<@NotNull VkExtent3D> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkExtent3D value) {

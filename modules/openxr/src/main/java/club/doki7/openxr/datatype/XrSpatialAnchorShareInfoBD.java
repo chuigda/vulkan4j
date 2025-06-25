@@ -91,8 +91,9 @@ public record XrSpatialAnchorShareInfoBD(@NotNull MemorySegment segment) impleme
             return new XrSpatialAnchorShareInfoBD(segment.asSlice(index * XrSpatialAnchorShareInfoBD.BYTES, XrSpatialAnchorShareInfoBD.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull XrSpatialAnchorShareInfoBD> consumer) {
+        public XrSpatialAnchorShareInfoBD.Ptr at(long index, @NotNull Consumer<@NotNull XrSpatialAnchorShareInfoBD> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull XrSpatialAnchorShareInfoBD value) {

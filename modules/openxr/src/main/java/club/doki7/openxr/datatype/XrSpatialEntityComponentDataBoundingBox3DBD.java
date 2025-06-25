@@ -91,8 +91,9 @@ public record XrSpatialEntityComponentDataBoundingBox3DBD(@NotNull MemorySegment
             return new XrSpatialEntityComponentDataBoundingBox3DBD(segment.asSlice(index * XrSpatialEntityComponentDataBoundingBox3DBD.BYTES, XrSpatialEntityComponentDataBoundingBox3DBD.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull XrSpatialEntityComponentDataBoundingBox3DBD> consumer) {
+        public XrSpatialEntityComponentDataBoundingBox3DBD.Ptr at(long index, @NotNull Consumer<@NotNull XrSpatialEntityComponentDataBoundingBox3DBD> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull XrSpatialEntityComponentDataBoundingBox3DBD value) {

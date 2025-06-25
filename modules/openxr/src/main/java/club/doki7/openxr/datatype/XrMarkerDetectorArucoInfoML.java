@@ -91,8 +91,9 @@ public record XrMarkerDetectorArucoInfoML(@NotNull MemorySegment segment) implem
             return new XrMarkerDetectorArucoInfoML(segment.asSlice(index * XrMarkerDetectorArucoInfoML.BYTES, XrMarkerDetectorArucoInfoML.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull XrMarkerDetectorArucoInfoML> consumer) {
+        public XrMarkerDetectorArucoInfoML.Ptr at(long index, @NotNull Consumer<@NotNull XrMarkerDetectorArucoInfoML> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull XrMarkerDetectorArucoInfoML value) {

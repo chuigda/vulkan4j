@@ -87,8 +87,9 @@ public record VkPhysicalDeviceShaderEarlyAndLateFragmentTestsFeaturesAMD(@NotNul
             return new VkPhysicalDeviceShaderEarlyAndLateFragmentTestsFeaturesAMD(segment.asSlice(index * VkPhysicalDeviceShaderEarlyAndLateFragmentTestsFeaturesAMD.BYTES, VkPhysicalDeviceShaderEarlyAndLateFragmentTestsFeaturesAMD.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceShaderEarlyAndLateFragmentTestsFeaturesAMD> consumer) {
+        public VkPhysicalDeviceShaderEarlyAndLateFragmentTestsFeaturesAMD.Ptr at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceShaderEarlyAndLateFragmentTestsFeaturesAMD> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkPhysicalDeviceShaderEarlyAndLateFragmentTestsFeaturesAMD value) {

@@ -93,8 +93,9 @@ public record XrHapticVibration(@NotNull MemorySegment segment) implements IXrHa
             return new XrHapticVibration(segment.asSlice(index * XrHapticVibration.BYTES, XrHapticVibration.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull XrHapticVibration> consumer) {
+        public XrHapticVibration.Ptr at(long index, @NotNull Consumer<@NotNull XrHapticVibration> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull XrHapticVibration value) {

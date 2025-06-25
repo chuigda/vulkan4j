@@ -93,8 +93,9 @@ public record XrSpatialCapabilityComponentTypesEXT(@NotNull MemorySegment segmen
             return new XrSpatialCapabilityComponentTypesEXT(segment.asSlice(index * XrSpatialCapabilityComponentTypesEXT.BYTES, XrSpatialCapabilityComponentTypesEXT.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull XrSpatialCapabilityComponentTypesEXT> consumer) {
+        public XrSpatialCapabilityComponentTypesEXT.Ptr at(long index, @NotNull Consumer<@NotNull XrSpatialCapabilityComponentTypesEXT> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull XrSpatialCapabilityComponentTypesEXT value) {

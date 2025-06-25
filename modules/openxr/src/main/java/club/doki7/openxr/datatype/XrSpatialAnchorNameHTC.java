@@ -80,8 +80,9 @@ public record XrSpatialAnchorNameHTC(@NotNull MemorySegment segment) implements 
             return new XrSpatialAnchorNameHTC(segment.asSlice(index * XrSpatialAnchorNameHTC.BYTES, XrSpatialAnchorNameHTC.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull XrSpatialAnchorNameHTC> consumer) {
+        public XrSpatialAnchorNameHTC.Ptr at(long index, @NotNull Consumer<@NotNull XrSpatialAnchorNameHTC> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull XrSpatialAnchorNameHTC value) {

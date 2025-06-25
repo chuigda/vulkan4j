@@ -81,8 +81,9 @@ public record XrBoxfKHR(@NotNull MemorySegment segment) implements IXrBoxfKHR {
             return new XrBoxfKHR(segment.asSlice(index * XrBoxfKHR.BYTES, XrBoxfKHR.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull XrBoxfKHR> consumer) {
+        public XrBoxfKHR.Ptr at(long index, @NotNull Consumer<@NotNull XrBoxfKHR> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull XrBoxfKHR value) {

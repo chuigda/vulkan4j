@@ -93,8 +93,9 @@ public record GLFWgamepadstate(@NotNull MemorySegment segment) implements IGLFWg
             return new GLFWgamepadstate(segment.asSlice(index * GLFWgamepadstate.BYTES, GLFWgamepadstate.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull GLFWgamepadstate> consumer) {
+        public GLFWgamepadstate.Ptr at(long index, @NotNull Consumer<@NotNull GLFWgamepadstate> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull GLFWgamepadstate value) {

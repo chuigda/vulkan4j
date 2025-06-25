@@ -140,8 +140,9 @@ public record VmaAllocationInfo(@NotNull MemorySegment segment) implements IVmaA
             return new VmaAllocationInfo(segment.asSlice(index * VmaAllocationInfo.BYTES, VmaAllocationInfo.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VmaAllocationInfo> consumer) {
+        public VmaAllocationInfo.Ptr at(long index, @NotNull Consumer<@NotNull VmaAllocationInfo> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VmaAllocationInfo value) {

@@ -90,8 +90,9 @@ public record VkSemaphoreSubmitInfo(@NotNull MemorySegment segment) implements I
             return new VkSemaphoreSubmitInfo(segment.asSlice(index * VkSemaphoreSubmitInfo.BYTES, VkSemaphoreSubmitInfo.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkSemaphoreSubmitInfo> consumer) {
+        public VkSemaphoreSubmitInfo.Ptr at(long index, @NotNull Consumer<@NotNull VkSemaphoreSubmitInfo> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkSemaphoreSubmitInfo value) {

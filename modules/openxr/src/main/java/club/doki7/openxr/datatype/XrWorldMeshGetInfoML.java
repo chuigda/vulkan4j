@@ -95,8 +95,9 @@ public record XrWorldMeshGetInfoML(@NotNull MemorySegment segment) implements IX
             return new XrWorldMeshGetInfoML(segment.asSlice(index * XrWorldMeshGetInfoML.BYTES, XrWorldMeshGetInfoML.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull XrWorldMeshGetInfoML> consumer) {
+        public XrWorldMeshGetInfoML.Ptr at(long index, @NotNull Consumer<@NotNull XrWorldMeshGetInfoML> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull XrWorldMeshGetInfoML value) {

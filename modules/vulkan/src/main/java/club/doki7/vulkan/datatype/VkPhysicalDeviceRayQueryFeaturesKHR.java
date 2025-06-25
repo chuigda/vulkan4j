@@ -87,8 +87,9 @@ public record VkPhysicalDeviceRayQueryFeaturesKHR(@NotNull MemorySegment segment
             return new VkPhysicalDeviceRayQueryFeaturesKHR(segment.asSlice(index * VkPhysicalDeviceRayQueryFeaturesKHR.BYTES, VkPhysicalDeviceRayQueryFeaturesKHR.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceRayQueryFeaturesKHR> consumer) {
+        public VkPhysicalDeviceRayQueryFeaturesKHR.Ptr at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceRayQueryFeaturesKHR> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkPhysicalDeviceRayQueryFeaturesKHR value) {

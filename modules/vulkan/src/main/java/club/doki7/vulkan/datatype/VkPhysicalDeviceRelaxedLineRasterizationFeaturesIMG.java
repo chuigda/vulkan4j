@@ -87,8 +87,9 @@ public record VkPhysicalDeviceRelaxedLineRasterizationFeaturesIMG(@NotNull Memor
             return new VkPhysicalDeviceRelaxedLineRasterizationFeaturesIMG(segment.asSlice(index * VkPhysicalDeviceRelaxedLineRasterizationFeaturesIMG.BYTES, VkPhysicalDeviceRelaxedLineRasterizationFeaturesIMG.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceRelaxedLineRasterizationFeaturesIMG> consumer) {
+        public VkPhysicalDeviceRelaxedLineRasterizationFeaturesIMG.Ptr at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceRelaxedLineRasterizationFeaturesIMG> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkPhysicalDeviceRelaxedLineRasterizationFeaturesIMG value) {

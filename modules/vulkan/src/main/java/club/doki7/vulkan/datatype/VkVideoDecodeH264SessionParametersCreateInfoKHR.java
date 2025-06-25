@@ -89,8 +89,9 @@ public record VkVideoDecodeH264SessionParametersCreateInfoKHR(@NotNull MemorySeg
             return new VkVideoDecodeH264SessionParametersCreateInfoKHR(segment.asSlice(index * VkVideoDecodeH264SessionParametersCreateInfoKHR.BYTES, VkVideoDecodeH264SessionParametersCreateInfoKHR.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkVideoDecodeH264SessionParametersCreateInfoKHR> consumer) {
+        public VkVideoDecodeH264SessionParametersCreateInfoKHR.Ptr at(long index, @NotNull Consumer<@NotNull VkVideoDecodeH264SessionParametersCreateInfoKHR> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkVideoDecodeH264SessionParametersCreateInfoKHR value) {

@@ -93,8 +93,9 @@ public record XrSpatialAnchorsCreateInfoFromPoseML(@NotNull MemorySegment segmen
             return new XrSpatialAnchorsCreateInfoFromPoseML(segment.asSlice(index * XrSpatialAnchorsCreateInfoFromPoseML.BYTES, XrSpatialAnchorsCreateInfoFromPoseML.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull XrSpatialAnchorsCreateInfoFromPoseML> consumer) {
+        public XrSpatialAnchorsCreateInfoFromPoseML.Ptr at(long index, @NotNull Consumer<@NotNull XrSpatialAnchorsCreateInfoFromPoseML> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull XrSpatialAnchorsCreateInfoFromPoseML value) {

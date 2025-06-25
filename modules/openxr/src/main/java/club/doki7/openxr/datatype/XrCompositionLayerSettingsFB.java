@@ -91,8 +91,9 @@ public record XrCompositionLayerSettingsFB(@NotNull MemorySegment segment) imple
             return new XrCompositionLayerSettingsFB(segment.asSlice(index * XrCompositionLayerSettingsFB.BYTES, XrCompositionLayerSettingsFB.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull XrCompositionLayerSettingsFB> consumer) {
+        public XrCompositionLayerSettingsFB.Ptr at(long index, @NotNull Consumer<@NotNull XrCompositionLayerSettingsFB> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull XrCompositionLayerSettingsFB value) {

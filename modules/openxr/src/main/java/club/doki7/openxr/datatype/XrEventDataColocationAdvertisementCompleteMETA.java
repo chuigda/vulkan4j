@@ -92,8 +92,9 @@ public record XrEventDataColocationAdvertisementCompleteMETA(@NotNull MemorySegm
             return new XrEventDataColocationAdvertisementCompleteMETA(segment.asSlice(index * XrEventDataColocationAdvertisementCompleteMETA.BYTES, XrEventDataColocationAdvertisementCompleteMETA.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull XrEventDataColocationAdvertisementCompleteMETA> consumer) {
+        public XrEventDataColocationAdvertisementCompleteMETA.Ptr at(long index, @NotNull Consumer<@NotNull XrEventDataColocationAdvertisementCompleteMETA> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull XrEventDataColocationAdvertisementCompleteMETA value) {

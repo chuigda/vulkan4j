@@ -74,8 +74,9 @@ public record STBTT_Buf(@NotNull MemorySegment segment) implements ISTBTT_Buf {
             return new STBTT_Buf(segment.asSlice(index * STBTT_Buf.BYTES, STBTT_Buf.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull STBTT_Buf> consumer) {
+        public STBTT_Buf.Ptr at(long index, @NotNull Consumer<@NotNull STBTT_Buf> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull STBTT_Buf value) {

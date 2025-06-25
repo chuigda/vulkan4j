@@ -87,8 +87,9 @@ public record VkPhysicalDevicePageableDeviceLocalMemoryFeaturesEXT(@NotNull Memo
             return new VkPhysicalDevicePageableDeviceLocalMemoryFeaturesEXT(segment.asSlice(index * VkPhysicalDevicePageableDeviceLocalMemoryFeaturesEXT.BYTES, VkPhysicalDevicePageableDeviceLocalMemoryFeaturesEXT.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkPhysicalDevicePageableDeviceLocalMemoryFeaturesEXT> consumer) {
+        public VkPhysicalDevicePageableDeviceLocalMemoryFeaturesEXT.Ptr at(long index, @NotNull Consumer<@NotNull VkPhysicalDevicePageableDeviceLocalMemoryFeaturesEXT> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkPhysicalDevicePageableDeviceLocalMemoryFeaturesEXT value) {

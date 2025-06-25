@@ -89,8 +89,9 @@ public record VkPhysicalDeviceMapMemoryPlacedFeaturesEXT(@NotNull MemorySegment 
             return new VkPhysicalDeviceMapMemoryPlacedFeaturesEXT(segment.asSlice(index * VkPhysicalDeviceMapMemoryPlacedFeaturesEXT.BYTES, VkPhysicalDeviceMapMemoryPlacedFeaturesEXT.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceMapMemoryPlacedFeaturesEXT> consumer) {
+        public VkPhysicalDeviceMapMemoryPlacedFeaturesEXT.Ptr at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceMapMemoryPlacedFeaturesEXT> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkPhysicalDeviceMapMemoryPlacedFeaturesEXT value) {

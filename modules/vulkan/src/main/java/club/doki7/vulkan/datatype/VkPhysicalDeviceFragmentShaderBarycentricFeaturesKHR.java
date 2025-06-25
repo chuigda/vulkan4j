@@ -87,8 +87,9 @@ public record VkPhysicalDeviceFragmentShaderBarycentricFeaturesKHR(@NotNull Memo
             return new VkPhysicalDeviceFragmentShaderBarycentricFeaturesKHR(segment.asSlice(index * VkPhysicalDeviceFragmentShaderBarycentricFeaturesKHR.BYTES, VkPhysicalDeviceFragmentShaderBarycentricFeaturesKHR.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceFragmentShaderBarycentricFeaturesKHR> consumer) {
+        public VkPhysicalDeviceFragmentShaderBarycentricFeaturesKHR.Ptr at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceFragmentShaderBarycentricFeaturesKHR> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkPhysicalDeviceFragmentShaderBarycentricFeaturesKHR value) {

@@ -93,8 +93,9 @@ public record VkDependencyInfo(@NotNull MemorySegment segment) implements IVkDep
             return new VkDependencyInfo(segment.asSlice(index * VkDependencyInfo.BYTES, VkDependencyInfo.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkDependencyInfo> consumer) {
+        public VkDependencyInfo.Ptr at(long index, @NotNull Consumer<@NotNull VkDependencyInfo> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkDependencyInfo value) {

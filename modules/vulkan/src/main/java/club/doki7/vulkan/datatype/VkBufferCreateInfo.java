@@ -92,8 +92,9 @@ public record VkBufferCreateInfo(@NotNull MemorySegment segment) implements IVkB
             return new VkBufferCreateInfo(segment.asSlice(index * VkBufferCreateInfo.BYTES, VkBufferCreateInfo.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkBufferCreateInfo> consumer) {
+        public VkBufferCreateInfo.Ptr at(long index, @NotNull Consumer<@NotNull VkBufferCreateInfo> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkBufferCreateInfo value) {

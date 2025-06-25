@@ -89,8 +89,9 @@ public record VkImportSemaphoreSciSyncInfoNV(@NotNull MemorySegment segment) imp
             return new VkImportSemaphoreSciSyncInfoNV(segment.asSlice(index * VkImportSemaphoreSciSyncInfoNV.BYTES, VkImportSemaphoreSciSyncInfoNV.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkImportSemaphoreSciSyncInfoNV> consumer) {
+        public VkImportSemaphoreSciSyncInfoNV.Ptr at(long index, @NotNull Consumer<@NotNull VkImportSemaphoreSciSyncInfoNV> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkImportSemaphoreSciSyncInfoNV value) {

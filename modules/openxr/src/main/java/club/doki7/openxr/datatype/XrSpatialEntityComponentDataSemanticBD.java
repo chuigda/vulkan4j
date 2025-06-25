@@ -93,8 +93,9 @@ public record XrSpatialEntityComponentDataSemanticBD(@NotNull MemorySegment segm
             return new XrSpatialEntityComponentDataSemanticBD(segment.asSlice(index * XrSpatialEntityComponentDataSemanticBD.BYTES, XrSpatialEntityComponentDataSemanticBD.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull XrSpatialEntityComponentDataSemanticBD> consumer) {
+        public XrSpatialEntityComponentDataSemanticBD.Ptr at(long index, @NotNull Consumer<@NotNull XrSpatialEntityComponentDataSemanticBD> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull XrSpatialEntityComponentDataSemanticBD value) {

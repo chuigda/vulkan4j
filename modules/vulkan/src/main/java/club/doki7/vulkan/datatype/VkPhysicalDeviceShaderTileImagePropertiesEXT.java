@@ -89,8 +89,9 @@ public record VkPhysicalDeviceShaderTileImagePropertiesEXT(@NotNull MemorySegmen
             return new VkPhysicalDeviceShaderTileImagePropertiesEXT(segment.asSlice(index * VkPhysicalDeviceShaderTileImagePropertiesEXT.BYTES, VkPhysicalDeviceShaderTileImagePropertiesEXT.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceShaderTileImagePropertiesEXT> consumer) {
+        public VkPhysicalDeviceShaderTileImagePropertiesEXT.Ptr at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceShaderTileImagePropertiesEXT> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkPhysicalDeviceShaderTileImagePropertiesEXT value) {

@@ -92,8 +92,9 @@ public record XrSwapchainStateAndroidSurfaceDimensionsFB(@NotNull MemorySegment 
             return new XrSwapchainStateAndroidSurfaceDimensionsFB(segment.asSlice(index * XrSwapchainStateAndroidSurfaceDimensionsFB.BYTES, XrSwapchainStateAndroidSurfaceDimensionsFB.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull XrSwapchainStateAndroidSurfaceDimensionsFB> consumer) {
+        public XrSwapchainStateAndroidSurfaceDimensionsFB.Ptr at(long index, @NotNull Consumer<@NotNull XrSwapchainStateAndroidSurfaceDimensionsFB> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull XrSwapchainStateAndroidSurfaceDimensionsFB value) {

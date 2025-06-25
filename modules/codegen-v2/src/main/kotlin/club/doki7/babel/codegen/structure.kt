@@ -302,8 +302,9 @@ fun generateStructure(
             }
             +""
 
-            defun("public", "void", "at", "long index", "@NotNull Consumer<@NotNull ${className}> consumer") {
+            defun("public", "$className.Ptr", "at", "long index", "@NotNull Consumer<@NotNull ${className}> consumer") {
                 +"consumer.accept(at(index));"
+                +"return this;"
             }
             +""
 

@@ -92,8 +92,9 @@ public record XrInteractionRenderModelTopLevelUserPathGetInfoEXT(@NotNull Memory
             return new XrInteractionRenderModelTopLevelUserPathGetInfoEXT(segment.asSlice(index * XrInteractionRenderModelTopLevelUserPathGetInfoEXT.BYTES, XrInteractionRenderModelTopLevelUserPathGetInfoEXT.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull XrInteractionRenderModelTopLevelUserPathGetInfoEXT> consumer) {
+        public XrInteractionRenderModelTopLevelUserPathGetInfoEXT.Ptr at(long index, @NotNull Consumer<@NotNull XrInteractionRenderModelTopLevelUserPathGetInfoEXT> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull XrInteractionRenderModelTopLevelUserPathGetInfoEXT value) {

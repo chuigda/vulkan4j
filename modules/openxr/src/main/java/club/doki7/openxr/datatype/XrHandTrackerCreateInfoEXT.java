@@ -92,8 +92,9 @@ public record XrHandTrackerCreateInfoEXT(@NotNull MemorySegment segment) impleme
             return new XrHandTrackerCreateInfoEXT(segment.asSlice(index * XrHandTrackerCreateInfoEXT.BYTES, XrHandTrackerCreateInfoEXT.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull XrHandTrackerCreateInfoEXT> consumer) {
+        public XrHandTrackerCreateInfoEXT.Ptr at(long index, @NotNull Consumer<@NotNull XrHandTrackerCreateInfoEXT> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull XrHandTrackerCreateInfoEXT value) {

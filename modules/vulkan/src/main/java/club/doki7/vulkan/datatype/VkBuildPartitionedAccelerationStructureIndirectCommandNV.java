@@ -78,8 +78,9 @@ public record VkBuildPartitionedAccelerationStructureIndirectCommandNV(@NotNull 
             return new VkBuildPartitionedAccelerationStructureIndirectCommandNV(segment.asSlice(index * VkBuildPartitionedAccelerationStructureIndirectCommandNV.BYTES, VkBuildPartitionedAccelerationStructureIndirectCommandNV.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkBuildPartitionedAccelerationStructureIndirectCommandNV> consumer) {
+        public VkBuildPartitionedAccelerationStructureIndirectCommandNV.Ptr at(long index, @NotNull Consumer<@NotNull VkBuildPartitionedAccelerationStructureIndirectCommandNV> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkBuildPartitionedAccelerationStructureIndirectCommandNV value) {

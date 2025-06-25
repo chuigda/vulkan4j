@@ -91,8 +91,9 @@ public record VkSurfacePresentScalingCapabilitiesEXT(@NotNull MemorySegment segm
             return new VkSurfacePresentScalingCapabilitiesEXT(segment.asSlice(index * VkSurfacePresentScalingCapabilitiesEXT.BYTES, VkSurfacePresentScalingCapabilitiesEXT.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkSurfacePresentScalingCapabilitiesEXT> consumer) {
+        public VkSurfacePresentScalingCapabilitiesEXT.Ptr at(long index, @NotNull Consumer<@NotNull VkSurfacePresentScalingCapabilitiesEXT> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkSurfacePresentScalingCapabilitiesEXT value) {

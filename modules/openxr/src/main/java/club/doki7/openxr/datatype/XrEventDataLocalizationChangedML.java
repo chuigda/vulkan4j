@@ -95,8 +95,9 @@ public record XrEventDataLocalizationChangedML(@NotNull MemorySegment segment) i
             return new XrEventDataLocalizationChangedML(segment.asSlice(index * XrEventDataLocalizationChangedML.BYTES, XrEventDataLocalizationChangedML.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull XrEventDataLocalizationChangedML> consumer) {
+        public XrEventDataLocalizationChangedML.Ptr at(long index, @NotNull Consumer<@NotNull XrEventDataLocalizationChangedML> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull XrEventDataLocalizationChangedML value) {

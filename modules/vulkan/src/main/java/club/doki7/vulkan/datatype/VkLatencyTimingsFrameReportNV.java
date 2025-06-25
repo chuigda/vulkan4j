@@ -100,8 +100,9 @@ public record VkLatencyTimingsFrameReportNV(@NotNull MemorySegment segment) impl
             return new VkLatencyTimingsFrameReportNV(segment.asSlice(index * VkLatencyTimingsFrameReportNV.BYTES, VkLatencyTimingsFrameReportNV.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkLatencyTimingsFrameReportNV> consumer) {
+        public VkLatencyTimingsFrameReportNV.Ptr at(long index, @NotNull Consumer<@NotNull VkLatencyTimingsFrameReportNV> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkLatencyTimingsFrameReportNV value) {

@@ -82,8 +82,9 @@ public record VkStencilOpState(@NotNull MemorySegment segment) implements IVkSte
             return new VkStencilOpState(segment.asSlice(index * VkStencilOpState.BYTES, VkStencilOpState.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkStencilOpState> consumer) {
+        public VkStencilOpState.Ptr at(long index, @NotNull Consumer<@NotNull VkStencilOpState> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkStencilOpState value) {

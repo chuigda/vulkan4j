@@ -92,8 +92,9 @@ public record XrCompositionLayerDepthTestVARJO(@NotNull MemorySegment segment) i
             return new XrCompositionLayerDepthTestVARJO(segment.asSlice(index * XrCompositionLayerDepthTestVARJO.BYTES, XrCompositionLayerDepthTestVARJO.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull XrCompositionLayerDepthTestVARJO> consumer) {
+        public XrCompositionLayerDepthTestVARJO.Ptr at(long index, @NotNull Consumer<@NotNull XrCompositionLayerDepthTestVARJO> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull XrCompositionLayerDepthTestVARJO value) {

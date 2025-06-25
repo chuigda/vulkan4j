@@ -87,8 +87,9 @@ public record VkSamplerCaptureDescriptorDataInfoEXT(@NotNull MemorySegment segme
             return new VkSamplerCaptureDescriptorDataInfoEXT(segment.asSlice(index * VkSamplerCaptureDescriptorDataInfoEXT.BYTES, VkSamplerCaptureDescriptorDataInfoEXT.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkSamplerCaptureDescriptorDataInfoEXT> consumer) {
+        public VkSamplerCaptureDescriptorDataInfoEXT.Ptr at(long index, @NotNull Consumer<@NotNull VkSamplerCaptureDescriptorDataInfoEXT> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkSamplerCaptureDescriptorDataInfoEXT value) {

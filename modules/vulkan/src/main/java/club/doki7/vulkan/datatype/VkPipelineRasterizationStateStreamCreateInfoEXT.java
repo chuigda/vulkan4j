@@ -88,8 +88,9 @@ public record VkPipelineRasterizationStateStreamCreateInfoEXT(@NotNull MemorySeg
             return new VkPipelineRasterizationStateStreamCreateInfoEXT(segment.asSlice(index * VkPipelineRasterizationStateStreamCreateInfoEXT.BYTES, VkPipelineRasterizationStateStreamCreateInfoEXT.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkPipelineRasterizationStateStreamCreateInfoEXT> consumer) {
+        public VkPipelineRasterizationStateStreamCreateInfoEXT.Ptr at(long index, @NotNull Consumer<@NotNull VkPipelineRasterizationStateStreamCreateInfoEXT> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkPipelineRasterizationStateStreamCreateInfoEXT value) {

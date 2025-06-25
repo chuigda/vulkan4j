@@ -82,8 +82,9 @@ public record VkShaderStatisticsInfoAMD(@NotNull MemorySegment segment) implemen
             return new VkShaderStatisticsInfoAMD(segment.asSlice(index * VkShaderStatisticsInfoAMD.BYTES, VkShaderStatisticsInfoAMD.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkShaderStatisticsInfoAMD> consumer) {
+        public VkShaderStatisticsInfoAMD.Ptr at(long index, @NotNull Consumer<@NotNull VkShaderStatisticsInfoAMD> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkShaderStatisticsInfoAMD value) {

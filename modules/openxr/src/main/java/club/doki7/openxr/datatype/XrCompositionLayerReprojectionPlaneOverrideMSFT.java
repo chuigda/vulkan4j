@@ -93,8 +93,9 @@ public record XrCompositionLayerReprojectionPlaneOverrideMSFT(@NotNull MemorySeg
             return new XrCompositionLayerReprojectionPlaneOverrideMSFT(segment.asSlice(index * XrCompositionLayerReprojectionPlaneOverrideMSFT.BYTES, XrCompositionLayerReprojectionPlaneOverrideMSFT.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull XrCompositionLayerReprojectionPlaneOverrideMSFT> consumer) {
+        public XrCompositionLayerReprojectionPlaneOverrideMSFT.Ptr at(long index, @NotNull Consumer<@NotNull XrCompositionLayerReprojectionPlaneOverrideMSFT> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull XrCompositionLayerReprojectionPlaneOverrideMSFT value) {

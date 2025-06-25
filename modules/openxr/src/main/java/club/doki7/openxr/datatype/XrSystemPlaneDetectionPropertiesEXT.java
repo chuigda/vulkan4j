@@ -91,8 +91,9 @@ public record XrSystemPlaneDetectionPropertiesEXT(@NotNull MemorySegment segment
             return new XrSystemPlaneDetectionPropertiesEXT(segment.asSlice(index * XrSystemPlaneDetectionPropertiesEXT.BYTES, XrSystemPlaneDetectionPropertiesEXT.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull XrSystemPlaneDetectionPropertiesEXT> consumer) {
+        public XrSystemPlaneDetectionPropertiesEXT.Ptr at(long index, @NotNull Consumer<@NotNull XrSystemPlaneDetectionPropertiesEXT> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull XrSystemPlaneDetectionPropertiesEXT value) {

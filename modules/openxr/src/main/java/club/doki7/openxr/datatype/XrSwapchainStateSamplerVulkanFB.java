@@ -101,8 +101,9 @@ public record XrSwapchainStateSamplerVulkanFB(@NotNull MemorySegment segment) im
             return new XrSwapchainStateSamplerVulkanFB(segment.asSlice(index * XrSwapchainStateSamplerVulkanFB.BYTES, XrSwapchainStateSamplerVulkanFB.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull XrSwapchainStateSamplerVulkanFB> consumer) {
+        public XrSwapchainStateSamplerVulkanFB.Ptr at(long index, @NotNull Consumer<@NotNull XrSwapchainStateSamplerVulkanFB> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull XrSwapchainStateSamplerVulkanFB value) {

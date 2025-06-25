@@ -91,8 +91,9 @@ public record XrRenderModelStateGetInfoEXT(@NotNull MemorySegment segment) imple
             return new XrRenderModelStateGetInfoEXT(segment.asSlice(index * XrRenderModelStateGetInfoEXT.BYTES, XrRenderModelStateGetInfoEXT.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull XrRenderModelStateGetInfoEXT> consumer) {
+        public XrRenderModelStateGetInfoEXT.Ptr at(long index, @NotNull Consumer<@NotNull XrRenderModelStateGetInfoEXT> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull XrRenderModelStateGetInfoEXT value) {

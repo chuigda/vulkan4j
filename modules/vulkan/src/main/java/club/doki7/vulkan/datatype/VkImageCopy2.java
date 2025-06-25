@@ -91,8 +91,9 @@ public record VkImageCopy2(@NotNull MemorySegment segment) implements IVkImageCo
             return new VkImageCopy2(segment.asSlice(index * VkImageCopy2.BYTES, VkImageCopy2.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkImageCopy2> consumer) {
+        public VkImageCopy2.Ptr at(long index, @NotNull Consumer<@NotNull VkImageCopy2> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkImageCopy2 value) {

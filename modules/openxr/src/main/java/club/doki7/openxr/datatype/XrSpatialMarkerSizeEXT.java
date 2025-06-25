@@ -91,8 +91,9 @@ public record XrSpatialMarkerSizeEXT(@NotNull MemorySegment segment) implements 
             return new XrSpatialMarkerSizeEXT(segment.asSlice(index * XrSpatialMarkerSizeEXT.BYTES, XrSpatialMarkerSizeEXT.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull XrSpatialMarkerSizeEXT> consumer) {
+        public XrSpatialMarkerSizeEXT.Ptr at(long index, @NotNull Consumer<@NotNull XrSpatialMarkerSizeEXT> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull XrSpatialMarkerSizeEXT value) {

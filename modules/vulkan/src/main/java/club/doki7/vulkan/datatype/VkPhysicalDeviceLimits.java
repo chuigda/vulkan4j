@@ -181,8 +181,9 @@ public record VkPhysicalDeviceLimits(@NotNull MemorySegment segment) implements 
             return new VkPhysicalDeviceLimits(segment.asSlice(index * VkPhysicalDeviceLimits.BYTES, VkPhysicalDeviceLimits.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceLimits> consumer) {
+        public VkPhysicalDeviceLimits.Ptr at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceLimits> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkPhysicalDeviceLimits value) {

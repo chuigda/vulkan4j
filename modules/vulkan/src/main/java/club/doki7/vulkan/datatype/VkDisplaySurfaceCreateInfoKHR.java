@@ -94,8 +94,9 @@ public record VkDisplaySurfaceCreateInfoKHR(@NotNull MemorySegment segment) impl
             return new VkDisplaySurfaceCreateInfoKHR(segment.asSlice(index * VkDisplaySurfaceCreateInfoKHR.BYTES, VkDisplaySurfaceCreateInfoKHR.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkDisplaySurfaceCreateInfoKHR> consumer) {
+        public VkDisplaySurfaceCreateInfoKHR.Ptr at(long index, @NotNull Consumer<@NotNull VkDisplaySurfaceCreateInfoKHR> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkDisplaySurfaceCreateInfoKHR value) {

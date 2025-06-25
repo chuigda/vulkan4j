@@ -85,8 +85,9 @@ public record StdVideoEncodeH265PictureInfo(@NotNull MemorySegment segment) impl
             return new StdVideoEncodeH265PictureInfo(segment.asSlice(index * StdVideoEncodeH265PictureInfo.BYTES, StdVideoEncodeH265PictureInfo.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull StdVideoEncodeH265PictureInfo> consumer) {
+        public StdVideoEncodeH265PictureInfo.Ptr at(long index, @NotNull Consumer<@NotNull StdVideoEncodeH265PictureInfo> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull StdVideoEncodeH265PictureInfo value) {

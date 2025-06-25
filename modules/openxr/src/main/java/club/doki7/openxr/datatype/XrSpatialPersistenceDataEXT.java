@@ -81,8 +81,9 @@ public record XrSpatialPersistenceDataEXT(@NotNull MemorySegment segment) implem
             return new XrSpatialPersistenceDataEXT(segment.asSlice(index * XrSpatialPersistenceDataEXT.BYTES, XrSpatialPersistenceDataEXT.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull XrSpatialPersistenceDataEXT> consumer) {
+        public XrSpatialPersistenceDataEXT.Ptr at(long index, @NotNull Consumer<@NotNull XrSpatialPersistenceDataEXT> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull XrSpatialPersistenceDataEXT value) {

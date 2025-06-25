@@ -92,8 +92,9 @@ public record XrFrameSynthesisConfigViewEXT(@NotNull MemorySegment segment) impl
             return new XrFrameSynthesisConfigViewEXT(segment.asSlice(index * XrFrameSynthesisConfigViewEXT.BYTES, XrFrameSynthesisConfigViewEXT.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull XrFrameSynthesisConfigViewEXT> consumer) {
+        public XrFrameSynthesisConfigViewEXT.Ptr at(long index, @NotNull Consumer<@NotNull XrFrameSynthesisConfigViewEXT> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull XrFrameSynthesisConfigViewEXT value) {

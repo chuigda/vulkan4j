@@ -87,8 +87,9 @@ public record VkDisplayEventInfoEXT(@NotNull MemorySegment segment) implements I
             return new VkDisplayEventInfoEXT(segment.asSlice(index * VkDisplayEventInfoEXT.BYTES, VkDisplayEventInfoEXT.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkDisplayEventInfoEXT> consumer) {
+        public VkDisplayEventInfoEXT.Ptr at(long index, @NotNull Consumer<@NotNull VkDisplayEventInfoEXT> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkDisplayEventInfoEXT value) {

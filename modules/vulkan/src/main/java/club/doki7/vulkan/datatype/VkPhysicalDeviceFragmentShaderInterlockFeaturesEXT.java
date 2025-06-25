@@ -89,8 +89,9 @@ public record VkPhysicalDeviceFragmentShaderInterlockFeaturesEXT(@NotNull Memory
             return new VkPhysicalDeviceFragmentShaderInterlockFeaturesEXT(segment.asSlice(index * VkPhysicalDeviceFragmentShaderInterlockFeaturesEXT.BYTES, VkPhysicalDeviceFragmentShaderInterlockFeaturesEXT.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceFragmentShaderInterlockFeaturesEXT> consumer) {
+        public VkPhysicalDeviceFragmentShaderInterlockFeaturesEXT.Ptr at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceFragmentShaderInterlockFeaturesEXT> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkPhysicalDeviceFragmentShaderInterlockFeaturesEXT value) {

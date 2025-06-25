@@ -78,8 +78,9 @@ public record StdVideoEncodeH264RefPicMarkingEntry(@NotNull MemorySegment segmen
             return new StdVideoEncodeH264RefPicMarkingEntry(segment.asSlice(index * StdVideoEncodeH264RefPicMarkingEntry.BYTES, StdVideoEncodeH264RefPicMarkingEntry.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull StdVideoEncodeH264RefPicMarkingEntry> consumer) {
+        public StdVideoEncodeH264RefPicMarkingEntry.Ptr at(long index, @NotNull Consumer<@NotNull StdVideoEncodeH264RefPicMarkingEntry> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull StdVideoEncodeH264RefPicMarkingEntry value) {

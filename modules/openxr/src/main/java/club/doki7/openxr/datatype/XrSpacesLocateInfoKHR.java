@@ -94,8 +94,9 @@ public record XrSpacesLocateInfoKHR(@NotNull MemorySegment segment) implements I
             return new XrSpacesLocateInfoKHR(segment.asSlice(index * XrSpacesLocateInfoKHR.BYTES, XrSpacesLocateInfoKHR.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull XrSpacesLocateInfoKHR> consumer) {
+        public XrSpacesLocateInfoKHR.Ptr at(long index, @NotNull Consumer<@NotNull XrSpacesLocateInfoKHR> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull XrSpacesLocateInfoKHR value) {

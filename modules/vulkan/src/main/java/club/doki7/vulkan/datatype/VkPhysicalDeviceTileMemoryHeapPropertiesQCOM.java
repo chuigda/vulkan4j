@@ -88,8 +88,9 @@ public record VkPhysicalDeviceTileMemoryHeapPropertiesQCOM(@NotNull MemorySegmen
             return new VkPhysicalDeviceTileMemoryHeapPropertiesQCOM(segment.asSlice(index * VkPhysicalDeviceTileMemoryHeapPropertiesQCOM.BYTES, VkPhysicalDeviceTileMemoryHeapPropertiesQCOM.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceTileMemoryHeapPropertiesQCOM> consumer) {
+        public VkPhysicalDeviceTileMemoryHeapPropertiesQCOM.Ptr at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceTileMemoryHeapPropertiesQCOM> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkPhysicalDeviceTileMemoryHeapPropertiesQCOM value) {

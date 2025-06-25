@@ -79,8 +79,9 @@ public record VkSpecializationInfo(@NotNull MemorySegment segment) implements IV
             return new VkSpecializationInfo(segment.asSlice(index * VkSpecializationInfo.BYTES, VkSpecializationInfo.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkSpecializationInfo> consumer) {
+        public VkSpecializationInfo.Ptr at(long index, @NotNull Consumer<@NotNull VkSpecializationInfo> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkSpecializationInfo value) {

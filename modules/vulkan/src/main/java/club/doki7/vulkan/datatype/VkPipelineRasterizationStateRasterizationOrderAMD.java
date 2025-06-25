@@ -87,8 +87,9 @@ public record VkPipelineRasterizationStateRasterizationOrderAMD(@NotNull MemoryS
             return new VkPipelineRasterizationStateRasterizationOrderAMD(segment.asSlice(index * VkPipelineRasterizationStateRasterizationOrderAMD.BYTES, VkPipelineRasterizationStateRasterizationOrderAMD.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkPipelineRasterizationStateRasterizationOrderAMD> consumer) {
+        public VkPipelineRasterizationStateRasterizationOrderAMD.Ptr at(long index, @NotNull Consumer<@NotNull VkPipelineRasterizationStateRasterizationOrderAMD> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkPipelineRasterizationStateRasterizationOrderAMD value) {

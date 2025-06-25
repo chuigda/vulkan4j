@@ -91,8 +91,9 @@ public record XrEnvironmentDepthProviderCreateInfoMETA(@NotNull MemorySegment se
             return new XrEnvironmentDepthProviderCreateInfoMETA(segment.asSlice(index * XrEnvironmentDepthProviderCreateInfoMETA.BYTES, XrEnvironmentDepthProviderCreateInfoMETA.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull XrEnvironmentDepthProviderCreateInfoMETA> consumer) {
+        public XrEnvironmentDepthProviderCreateInfoMETA.Ptr at(long index, @NotNull Consumer<@NotNull XrEnvironmentDepthProviderCreateInfoMETA> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull XrEnvironmentDepthProviderCreateInfoMETA value) {

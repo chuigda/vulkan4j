@@ -78,8 +78,9 @@ public record StdVideoH265SubLayerHrdParameters(@NotNull MemorySegment segment) 
             return new StdVideoH265SubLayerHrdParameters(segment.asSlice(index * StdVideoH265SubLayerHrdParameters.BYTES, StdVideoH265SubLayerHrdParameters.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull StdVideoH265SubLayerHrdParameters> consumer) {
+        public StdVideoH265SubLayerHrdParameters.Ptr at(long index, @NotNull Consumer<@NotNull StdVideoH265SubLayerHrdParameters> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull StdVideoH265SubLayerHrdParameters value) {

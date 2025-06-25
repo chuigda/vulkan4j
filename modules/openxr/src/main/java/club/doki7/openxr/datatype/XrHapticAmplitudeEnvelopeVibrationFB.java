@@ -93,8 +93,9 @@ public record XrHapticAmplitudeEnvelopeVibrationFB(@NotNull MemorySegment segmen
             return new XrHapticAmplitudeEnvelopeVibrationFB(segment.asSlice(index * XrHapticAmplitudeEnvelopeVibrationFB.BYTES, XrHapticAmplitudeEnvelopeVibrationFB.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull XrHapticAmplitudeEnvelopeVibrationFB> consumer) {
+        public XrHapticAmplitudeEnvelopeVibrationFB.Ptr at(long index, @NotNull Consumer<@NotNull XrHapticAmplitudeEnvelopeVibrationFB> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull XrHapticAmplitudeEnvelopeVibrationFB value) {

@@ -87,8 +87,9 @@ public record VkSurfaceFullScreenExclusiveInfoEXT(@NotNull MemorySegment segment
             return new VkSurfaceFullScreenExclusiveInfoEXT(segment.asSlice(index * VkSurfaceFullScreenExclusiveInfoEXT.BYTES, VkSurfaceFullScreenExclusiveInfoEXT.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkSurfaceFullScreenExclusiveInfoEXT> consumer) {
+        public VkSurfaceFullScreenExclusiveInfoEXT.Ptr at(long index, @NotNull Consumer<@NotNull VkSurfaceFullScreenExclusiveInfoEXT> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkSurfaceFullScreenExclusiveInfoEXT value) {

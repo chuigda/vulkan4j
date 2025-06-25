@@ -95,8 +95,9 @@ public record VkBufferMemoryBarrier2(@NotNull MemorySegment segment) implements 
             return new VkBufferMemoryBarrier2(segment.asSlice(index * VkBufferMemoryBarrier2.BYTES, VkBufferMemoryBarrier2.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkBufferMemoryBarrier2> consumer) {
+        public VkBufferMemoryBarrier2.Ptr at(long index, @NotNull Consumer<@NotNull VkBufferMemoryBarrier2> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkBufferMemoryBarrier2 value) {

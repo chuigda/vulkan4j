@@ -87,8 +87,9 @@ public record VkPhysicalDevicePipelineProtectedAccessFeatures(@NotNull MemorySeg
             return new VkPhysicalDevicePipelineProtectedAccessFeatures(segment.asSlice(index * VkPhysicalDevicePipelineProtectedAccessFeatures.BYTES, VkPhysicalDevicePipelineProtectedAccessFeatures.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkPhysicalDevicePipelineProtectedAccessFeatures> consumer) {
+        public VkPhysicalDevicePipelineProtectedAccessFeatures.Ptr at(long index, @NotNull Consumer<@NotNull VkPhysicalDevicePipelineProtectedAccessFeatures> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkPhysicalDevicePipelineProtectedAccessFeatures value) {

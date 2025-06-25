@@ -90,8 +90,9 @@ public record VkDeviceQueueCreateInfo(@NotNull MemorySegment segment) implements
             return new VkDeviceQueueCreateInfo(segment.asSlice(index * VkDeviceQueueCreateInfo.BYTES, VkDeviceQueueCreateInfo.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkDeviceQueueCreateInfo> consumer) {
+        public VkDeviceQueueCreateInfo.Ptr at(long index, @NotNull Consumer<@NotNull VkDeviceQueueCreateInfo> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkDeviceQueueCreateInfo value) {

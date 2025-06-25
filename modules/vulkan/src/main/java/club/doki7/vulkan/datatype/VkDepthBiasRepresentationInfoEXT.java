@@ -88,8 +88,9 @@ public record VkDepthBiasRepresentationInfoEXT(@NotNull MemorySegment segment) i
             return new VkDepthBiasRepresentationInfoEXT(segment.asSlice(index * VkDepthBiasRepresentationInfoEXT.BYTES, VkDepthBiasRepresentationInfoEXT.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkDepthBiasRepresentationInfoEXT> consumer) {
+        public VkDepthBiasRepresentationInfoEXT.Ptr at(long index, @NotNull Consumer<@NotNull VkDepthBiasRepresentationInfoEXT> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkDepthBiasRepresentationInfoEXT value) {

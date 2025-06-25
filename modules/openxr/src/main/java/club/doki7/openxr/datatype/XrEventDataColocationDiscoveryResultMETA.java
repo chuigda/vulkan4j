@@ -94,8 +94,9 @@ public record XrEventDataColocationDiscoveryResultMETA(@NotNull MemorySegment se
             return new XrEventDataColocationDiscoveryResultMETA(segment.asSlice(index * XrEventDataColocationDiscoveryResultMETA.BYTES, XrEventDataColocationDiscoveryResultMETA.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull XrEventDataColocationDiscoveryResultMETA> consumer) {
+        public XrEventDataColocationDiscoveryResultMETA.Ptr at(long index, @NotNull Consumer<@NotNull XrEventDataColocationDiscoveryResultMETA> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull XrEventDataColocationDiscoveryResultMETA value) {

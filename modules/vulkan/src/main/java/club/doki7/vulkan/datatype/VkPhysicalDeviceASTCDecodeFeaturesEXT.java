@@ -87,8 +87,9 @@ public record VkPhysicalDeviceASTCDecodeFeaturesEXT(@NotNull MemorySegment segme
             return new VkPhysicalDeviceASTCDecodeFeaturesEXT(segment.asSlice(index * VkPhysicalDeviceASTCDecodeFeaturesEXT.BYTES, VkPhysicalDeviceASTCDecodeFeaturesEXT.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceASTCDecodeFeaturesEXT> consumer) {
+        public VkPhysicalDeviceASTCDecodeFeaturesEXT.Ptr at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceASTCDecodeFeaturesEXT> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkPhysicalDeviceASTCDecodeFeaturesEXT value) {

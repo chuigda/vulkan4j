@@ -87,8 +87,9 @@ public record VkPhysicalDeviceMultiviewPerViewViewportsFeaturesQCOM(@NotNull Mem
             return new VkPhysicalDeviceMultiviewPerViewViewportsFeaturesQCOM(segment.asSlice(index * VkPhysicalDeviceMultiviewPerViewViewportsFeaturesQCOM.BYTES, VkPhysicalDeviceMultiviewPerViewViewportsFeaturesQCOM.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceMultiviewPerViewViewportsFeaturesQCOM> consumer) {
+        public VkPhysicalDeviceMultiviewPerViewViewportsFeaturesQCOM.Ptr at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceMultiviewPerViewViewportsFeaturesQCOM> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkPhysicalDeviceMultiviewPerViewViewportsFeaturesQCOM value) {

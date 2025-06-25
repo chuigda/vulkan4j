@@ -92,8 +92,9 @@ public record XrMarkerSpaceCreateInfoVARJO(@NotNull MemorySegment segment) imple
             return new XrMarkerSpaceCreateInfoVARJO(segment.asSlice(index * XrMarkerSpaceCreateInfoVARJO.BYTES, XrMarkerSpaceCreateInfoVARJO.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull XrMarkerSpaceCreateInfoVARJO> consumer) {
+        public XrMarkerSpaceCreateInfoVARJO.Ptr at(long index, @NotNull Consumer<@NotNull XrMarkerSpaceCreateInfoVARJO> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull XrMarkerSpaceCreateInfoVARJO value) {

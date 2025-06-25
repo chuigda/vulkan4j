@@ -90,8 +90,9 @@ public record VkImportFenceFdInfoKHR(@NotNull MemorySegment segment) implements 
             return new VkImportFenceFdInfoKHR(segment.asSlice(index * VkImportFenceFdInfoKHR.BYTES, VkImportFenceFdInfoKHR.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkImportFenceFdInfoKHR> consumer) {
+        public VkImportFenceFdInfoKHR.Ptr at(long index, @NotNull Consumer<@NotNull VkImportFenceFdInfoKHR> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkImportFenceFdInfoKHR value) {

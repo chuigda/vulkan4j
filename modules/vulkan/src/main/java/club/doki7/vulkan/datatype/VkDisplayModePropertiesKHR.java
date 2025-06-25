@@ -77,8 +77,9 @@ public record VkDisplayModePropertiesKHR(@NotNull MemorySegment segment) impleme
             return new VkDisplayModePropertiesKHR(segment.asSlice(index * VkDisplayModePropertiesKHR.BYTES, VkDisplayModePropertiesKHR.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkDisplayModePropertiesKHR> consumer) {
+        public VkDisplayModePropertiesKHR.Ptr at(long index, @NotNull Consumer<@NotNull VkDisplayModePropertiesKHR> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkDisplayModePropertiesKHR value) {

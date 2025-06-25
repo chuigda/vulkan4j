@@ -75,8 +75,9 @@ public record STBIR_PROFILEINFO(@NotNull MemorySegment segment) implements ISTBI
             return new STBIR_PROFILEINFO(segment.asSlice(index * STBIR_PROFILEINFO.BYTES, STBIR_PROFILEINFO.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull STBIR_PROFILEINFO> consumer) {
+        public STBIR_PROFILEINFO.Ptr at(long index, @NotNull Consumer<@NotNull STBIR_PROFILEINFO> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull STBIR_PROFILEINFO value) {

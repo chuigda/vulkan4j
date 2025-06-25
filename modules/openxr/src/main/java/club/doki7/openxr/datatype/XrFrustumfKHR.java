@@ -83,8 +83,9 @@ public record XrFrustumfKHR(@NotNull MemorySegment segment) implements IXrFrustu
             return new XrFrustumfKHR(segment.asSlice(index * XrFrustumfKHR.BYTES, XrFrustumfKHR.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull XrFrustumfKHR> consumer) {
+        public XrFrustumfKHR.Ptr at(long index, @NotNull Consumer<@NotNull XrFrustumfKHR> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull XrFrustumfKHR value) {

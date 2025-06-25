@@ -88,8 +88,9 @@ public record VkDebugUtilsLabelEXT(@NotNull MemorySegment segment) implements IV
             return new VkDebugUtilsLabelEXT(segment.asSlice(index * VkDebugUtilsLabelEXT.BYTES, VkDebugUtilsLabelEXT.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkDebugUtilsLabelEXT> consumer) {
+        public VkDebugUtilsLabelEXT.Ptr at(long index, @NotNull Consumer<@NotNull VkDebugUtilsLabelEXT> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkDebugUtilsLabelEXT value) {

@@ -80,8 +80,9 @@ public record VkSparseImageMemoryRequirements(@NotNull MemorySegment segment) im
             return new VkSparseImageMemoryRequirements(segment.asSlice(index * VkSparseImageMemoryRequirements.BYTES, VkSparseImageMemoryRequirements.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkSparseImageMemoryRequirements> consumer) {
+        public VkSparseImageMemoryRequirements.Ptr at(long index, @NotNull Consumer<@NotNull VkSparseImageMemoryRequirements> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkSparseImageMemoryRequirements value) {

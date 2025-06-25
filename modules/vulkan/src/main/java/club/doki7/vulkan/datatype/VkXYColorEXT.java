@@ -77,8 +77,9 @@ public record VkXYColorEXT(@NotNull MemorySegment segment) implements IVkXYColor
             return new VkXYColorEXT(segment.asSlice(index * VkXYColorEXT.BYTES, VkXYColorEXT.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkXYColorEXT> consumer) {
+        public VkXYColorEXT.Ptr at(long index, @NotNull Consumer<@NotNull VkXYColorEXT> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkXYColorEXT value) {

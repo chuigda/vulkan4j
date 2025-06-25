@@ -88,8 +88,9 @@ public record VkVideoDecodeH264CapabilitiesKHR(@NotNull MemorySegment segment) i
             return new VkVideoDecodeH264CapabilitiesKHR(segment.asSlice(index * VkVideoDecodeH264CapabilitiesKHR.BYTES, VkVideoDecodeH264CapabilitiesKHR.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkVideoDecodeH264CapabilitiesKHR> consumer) {
+        public VkVideoDecodeH264CapabilitiesKHR.Ptr at(long index, @NotNull Consumer<@NotNull VkVideoDecodeH264CapabilitiesKHR> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkVideoDecodeH264CapabilitiesKHR value) {

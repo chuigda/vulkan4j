@@ -91,8 +91,9 @@ public record XrEventDataPassthroughLayerResumedMETA(@NotNull MemorySegment segm
             return new XrEventDataPassthroughLayerResumedMETA(segment.asSlice(index * XrEventDataPassthroughLayerResumedMETA.BYTES, XrEventDataPassthroughLayerResumedMETA.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull XrEventDataPassthroughLayerResumedMETA> consumer) {
+        public XrEventDataPassthroughLayerResumedMETA.Ptr at(long index, @NotNull Consumer<@NotNull XrEventDataPassthroughLayerResumedMETA> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull XrEventDataPassthroughLayerResumedMETA value) {

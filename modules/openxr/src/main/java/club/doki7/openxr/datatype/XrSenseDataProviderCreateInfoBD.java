@@ -91,8 +91,9 @@ public record XrSenseDataProviderCreateInfoBD(@NotNull MemorySegment segment) im
             return new XrSenseDataProviderCreateInfoBD(segment.asSlice(index * XrSenseDataProviderCreateInfoBD.BYTES, XrSenseDataProviderCreateInfoBD.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull XrSenseDataProviderCreateInfoBD> consumer) {
+        public XrSenseDataProviderCreateInfoBD.Ptr at(long index, @NotNull Consumer<@NotNull XrSenseDataProviderCreateInfoBD> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull XrSenseDataProviderCreateInfoBD value) {

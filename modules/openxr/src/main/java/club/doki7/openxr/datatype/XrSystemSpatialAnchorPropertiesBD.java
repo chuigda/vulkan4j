@@ -91,8 +91,9 @@ public record XrSystemSpatialAnchorPropertiesBD(@NotNull MemorySegment segment) 
             return new XrSystemSpatialAnchorPropertiesBD(segment.asSlice(index * XrSystemSpatialAnchorPropertiesBD.BYTES, XrSystemSpatialAnchorPropertiesBD.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull XrSystemSpatialAnchorPropertiesBD> consumer) {
+        public XrSystemSpatialAnchorPropertiesBD.Ptr at(long index, @NotNull Consumer<@NotNull XrSystemSpatialAnchorPropertiesBD> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull XrSystemSpatialAnchorPropertiesBD value) {

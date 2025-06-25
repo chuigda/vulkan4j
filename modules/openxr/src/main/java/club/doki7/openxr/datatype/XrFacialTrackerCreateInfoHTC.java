@@ -91,8 +91,9 @@ public record XrFacialTrackerCreateInfoHTC(@NotNull MemorySegment segment) imple
             return new XrFacialTrackerCreateInfoHTC(segment.asSlice(index * XrFacialTrackerCreateInfoHTC.BYTES, XrFacialTrackerCreateInfoHTC.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull XrFacialTrackerCreateInfoHTC> consumer) {
+        public XrFacialTrackerCreateInfoHTC.Ptr at(long index, @NotNull Consumer<@NotNull XrFacialTrackerCreateInfoHTC> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull XrFacialTrackerCreateInfoHTC value) {

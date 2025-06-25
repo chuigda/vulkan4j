@@ -87,8 +87,9 @@ public record VkPhysicalDeviceSeparateDepthStencilLayoutsFeatures(@NotNull Memor
             return new VkPhysicalDeviceSeparateDepthStencilLayoutsFeatures(segment.asSlice(index * VkPhysicalDeviceSeparateDepthStencilLayoutsFeatures.BYTES, VkPhysicalDeviceSeparateDepthStencilLayoutsFeatures.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceSeparateDepthStencilLayoutsFeatures> consumer) {
+        public VkPhysicalDeviceSeparateDepthStencilLayoutsFeatures.Ptr at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceSeparateDepthStencilLayoutsFeatures> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkPhysicalDeviceSeparateDepthStencilLayoutsFeatures value) {

@@ -91,8 +91,9 @@ public record XrSystemMarkerTrackingPropertiesVARJO(@NotNull MemorySegment segme
             return new XrSystemMarkerTrackingPropertiesVARJO(segment.asSlice(index * XrSystemMarkerTrackingPropertiesVARJO.BYTES, XrSystemMarkerTrackingPropertiesVARJO.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull XrSystemMarkerTrackingPropertiesVARJO> consumer) {
+        public XrSystemMarkerTrackingPropertiesVARJO.Ptr at(long index, @NotNull Consumer<@NotNull XrSystemMarkerTrackingPropertiesVARJO> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull XrSystemMarkerTrackingPropertiesVARJO value) {

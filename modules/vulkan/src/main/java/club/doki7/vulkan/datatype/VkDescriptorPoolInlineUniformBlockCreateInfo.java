@@ -87,8 +87,9 @@ public record VkDescriptorPoolInlineUniformBlockCreateInfo(@NotNull MemorySegmen
             return new VkDescriptorPoolInlineUniformBlockCreateInfo(segment.asSlice(index * VkDescriptorPoolInlineUniformBlockCreateInfo.BYTES, VkDescriptorPoolInlineUniformBlockCreateInfo.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkDescriptorPoolInlineUniformBlockCreateInfo> consumer) {
+        public VkDescriptorPoolInlineUniformBlockCreateInfo.Ptr at(long index, @NotNull Consumer<@NotNull VkDescriptorPoolInlineUniformBlockCreateInfo> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkDescriptorPoolInlineUniformBlockCreateInfo value) {

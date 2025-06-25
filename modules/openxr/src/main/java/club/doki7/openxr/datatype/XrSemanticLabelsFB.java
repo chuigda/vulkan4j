@@ -93,8 +93,9 @@ public record XrSemanticLabelsFB(@NotNull MemorySegment segment) implements IXrS
             return new XrSemanticLabelsFB(segment.asSlice(index * XrSemanticLabelsFB.BYTES, XrSemanticLabelsFB.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull XrSemanticLabelsFB> consumer) {
+        public XrSemanticLabelsFB.Ptr at(long index, @NotNull Consumer<@NotNull XrSemanticLabelsFB> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull XrSemanticLabelsFB value) {

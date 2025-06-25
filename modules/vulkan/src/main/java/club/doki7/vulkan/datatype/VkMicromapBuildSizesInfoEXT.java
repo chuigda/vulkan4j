@@ -89,8 +89,9 @@ public record VkMicromapBuildSizesInfoEXT(@NotNull MemorySegment segment) implem
             return new VkMicromapBuildSizesInfoEXT(segment.asSlice(index * VkMicromapBuildSizesInfoEXT.BYTES, VkMicromapBuildSizesInfoEXT.BYTES));
         }
 
-        public void at(long index, @NotNull Consumer<@NotNull VkMicromapBuildSizesInfoEXT> consumer) {
+        public VkMicromapBuildSizesInfoEXT.Ptr at(long index, @NotNull Consumer<@NotNull VkMicromapBuildSizesInfoEXT> consumer) {
             consumer.accept(at(index));
+            return this;
         }
 
         public void write(long index, @NotNull VkMicromapBuildSizesInfoEXT value) {
