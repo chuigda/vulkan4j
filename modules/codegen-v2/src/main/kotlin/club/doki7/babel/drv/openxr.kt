@@ -15,6 +15,7 @@ import club.doki7.babel.extract.vulkan.VulkanRegistryExt
 import club.doki7.babel.extract.vulkan.extractVulkanRegistry
 import club.doki7.babel.extract.vulkanAdditionalRegistry
 import club.doki7.babel.registry.Bitmask
+import club.doki7.babel.registry.Command
 import club.doki7.babel.registry.EmptyMergeable
 import club.doki7.babel.registry.Entity
 import club.doki7.babel.registry.Enumeration
@@ -83,11 +84,14 @@ internal fun openxrMain(
     return reg
 }
 
-// OpenXR does not have latest version, use version 1.1 as the latest.
+// OpenXR does not have the latest version, use version 1.1 as the latest.
 // this may need to be updated in the future if OpenXR updates their spec.
-fun openxrLinkProvider(e: Entity): String {
-    val name = e.name.original
-    return "<a href=\"https://registry.khronos.org/OpenXR/specs/1.1/man/html/$name.html\"><code>$name</code></a>"
+fun openxrLinkProvider(e: Entity): String? = when (e) {
+    is Command, is Structure, is Bitmask, is Enumeration, is OpaqueHandleTypedef -> {
+        val name = e.name.original
+        "<a href=\"https://registry.khronos.org/OpenXR/specs/1.1/man/html/$name.html\"><code>$name</code></a>"
+    }
+    else -> null
 }
 
 /**

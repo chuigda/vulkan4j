@@ -12,7 +12,6 @@ import java.util.List;
 
 /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XrCompositionLayerSpaceWarpInfoFlagsFB.html"><code>XrCompositionLayerSpaceWarpInfoFlagsFB</code></a>
 public final class XrCompositionLayerSpaceWarpInfoFlagsFB {
-    /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XR_COMPOSITION_LAYER_SPACE_WARP_INFO_FRAME_SKIP_BIT_FB.html"><code>XR_COMPOSITION_LAYER_SPACE_WARP_INFO_FRAME_SKIP_BIT_FB</code></a>
     public static final long FRAME_SKIP = 0x1L;
 
     public static String explain(@Bitmask(XrCompositionLayerSpaceWarpInfoFlagsFB.class) long flags) {

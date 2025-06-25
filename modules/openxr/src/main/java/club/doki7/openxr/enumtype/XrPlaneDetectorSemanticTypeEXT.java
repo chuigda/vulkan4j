@@ -4,15 +4,10 @@ import club.doki7.ffm.annotation.*;
 
 /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XrPlaneDetectorSemanticTypeEXT.html"><code>XrPlaneDetectorSemanticTypeEXT</code></a>
 public final class XrPlaneDetectorSemanticTypeEXT {
-    /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XR_PLANE_DETECTOR_SEMANTIC_TYPE_UNDEFINED_EXT.html"><code>XR_PLANE_DETECTOR_SEMANTIC_TYPE_UNDEFINED_EXT</code></a>
     public static final int UNDEFINED = 0x0;
-    /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XR_PLANE_DETECTOR_SEMANTIC_TYPE_CEILING_EXT.html"><code>XR_PLANE_DETECTOR_SEMANTIC_TYPE_CEILING_EXT</code></a>
     public static final int CEILING = 0x1;
-    /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XR_PLANE_DETECTOR_SEMANTIC_TYPE_FLOOR_EXT.html"><code>XR_PLANE_DETECTOR_SEMANTIC_TYPE_FLOOR_EXT</code></a>
     public static final int FLOOR = 0x2;
-    /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XR_PLANE_DETECTOR_SEMANTIC_TYPE_WALL_EXT.html"><code>XR_PLANE_DETECTOR_SEMANTIC_TYPE_WALL_EXT</code></a>
     public static final int WALL = 0x3;
-    /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XR_PLANE_DETECTOR_SEMANTIC_TYPE_PLATFORM_EXT.html"><code>XR_PLANE_DETECTOR_SEMANTIC_TYPE_PLATFORM_EXT</code></a>
     public static final int PLATFORM = 0x4;
 
     public static String explain(@EnumType(XrPlaneDetectorSemanticTypeEXT.class) int value) {

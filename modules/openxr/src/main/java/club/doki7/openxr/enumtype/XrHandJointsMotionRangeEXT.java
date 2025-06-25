@@ -4,9 +4,7 @@ import club.doki7.ffm.annotation.*;
 
 /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XrHandJointsMotionRangeEXT.html"><code>XrHandJointsMotionRangeEXT</code></a>
 public final class XrHandJointsMotionRangeEXT {
-    /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XR_HAND_JOINTS_MOTION_RANGE_UNOBSTRUCTED_EXT.html"><code>XR_HAND_JOINTS_MOTION_RANGE_UNOBSTRUCTED_EXT</code></a>
     public static final int UNOBSTRUCTED = 0x1;
-    /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XR_HAND_JOINTS_MOTION_RANGE_CONFORMING_TO_CONTROLLER_EXT.html"><code>XR_HAND_JOINTS_MOTION_RANGE_CONFORMING_TO_CONTROLLER_EXT</code></a>
     public static final int CONFORMING_TO_CONTROLLER = 0x2;
 
     public static String explain(@EnumType(XrHandJointsMotionRangeEXT.class) int value) {

@@ -12,7 +12,6 @@ import java.util.List;
 
 /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XrTriangleMeshFlagsFB.html"><code>XrTriangleMeshFlagsFB</code></a>
 public final class XrTriangleMeshFlagsFB {
-    /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XR_TRIANGLE_MESH_MUTABLE_BIT_FB.html"><code>XR_TRIANGLE_MESH_MUTABLE_BIT_FB</code></a>
     public static final long MUTABLE = 0x1L;
 
     public static String explain(@Bitmask(XrTriangleMeshFlagsFB.class) long flags) {

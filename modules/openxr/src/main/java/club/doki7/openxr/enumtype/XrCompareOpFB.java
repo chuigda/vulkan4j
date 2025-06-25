@@ -4,21 +4,13 @@ import club.doki7.ffm.annotation.*;
 
 /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XrCompareOpFB.html"><code>XrCompareOpFB</code></a>
 public final class XrCompareOpFB {
-    /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XR_COMPARE_OP_NEVER_FB.html"><code>XR_COMPARE_OP_NEVER_FB</code></a>
     public static final int NEVER = 0x0;
-    /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XR_COMPARE_OP_LESS_FB.html"><code>XR_COMPARE_OP_LESS_FB</code></a>
     public static final int LESS = 0x1;
-    /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XR_COMPARE_OP_EQUAL_FB.html"><code>XR_COMPARE_OP_EQUAL_FB</code></a>
     public static final int EQUAL = 0x2;
-    /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XR_COMPARE_OP_LESS_OR_EQUAL_FB.html"><code>XR_COMPARE_OP_LESS_OR_EQUAL_FB</code></a>
     public static final int LESS_OR_EQUAL = 0x3;
-    /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XR_COMPARE_OP_GREATER_FB.html"><code>XR_COMPARE_OP_GREATER_FB</code></a>
     public static final int GREATER = 0x4;
-    /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XR_COMPARE_OP_NOT_EQUAL_FB.html"><code>XR_COMPARE_OP_NOT_EQUAL_FB</code></a>
     public static final int NOT_EQUAL = 0x5;
-    /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XR_COMPARE_OP_GREATER_OR_EQUAL_FB.html"><code>XR_COMPARE_OP_GREATER_OR_EQUAL_FB</code></a>
     public static final int GREATER_OR_EQUAL = 0x6;
-    /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XR_COMPARE_OP_ALWAYS_FB.html"><code>XR_COMPARE_OP_ALWAYS_FB</code></a>
     public static final int ALWAYS = 0x7;
 
     public static String explain(@EnumType(XrCompareOpFB.class) int value) {

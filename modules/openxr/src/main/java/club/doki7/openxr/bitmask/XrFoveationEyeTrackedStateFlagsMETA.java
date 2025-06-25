@@ -12,7 +12,6 @@ import java.util.List;
 
 /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XrFoveationEyeTrackedStateFlagsMETA.html"><code>XrFoveationEyeTrackedStateFlagsMETA</code></a>
 public final class XrFoveationEyeTrackedStateFlagsMETA {
-    /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XR_FOVEATION_EYE_TRACKED_STATE_VALID_BIT_META.html"><code>XR_FOVEATION_EYE_TRACKED_STATE_VALID_BIT_META</code></a>
     public static final long VALID = 0x1L;
 
     public static String explain(@Bitmask(XrFoveationEyeTrackedStateFlagsMETA.class) long flags) {

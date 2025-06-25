@@ -4,11 +4,8 @@ import club.doki7.ffm.annotation.*;
 
 /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XrSpatialAnchorConfidenceML.html"><code>XrSpatialAnchorConfidenceML</code></a>
 public final class XrSpatialAnchorConfidenceML {
-    /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XR_SPATIAL_ANCHOR_CONFIDENCE_LOW_ML.html"><code>XR_SPATIAL_ANCHOR_CONFIDENCE_LOW_ML</code></a>
     public static final int LOW = 0x0;
-    /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XR_SPATIAL_ANCHOR_CONFIDENCE_MEDIUM_ML.html"><code>XR_SPATIAL_ANCHOR_CONFIDENCE_MEDIUM_ML</code></a>
     public static final int MEDIUM = 0x1;
-    /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XR_SPATIAL_ANCHOR_CONFIDENCE_HIGH_ML.html"><code>XR_SPATIAL_ANCHOR_CONFIDENCE_HIGH_ML</code></a>
     public static final int HIGH = 0x2;
 
     public static String explain(@EnumType(XrSpatialAnchorConfidenceML.class) int value) {

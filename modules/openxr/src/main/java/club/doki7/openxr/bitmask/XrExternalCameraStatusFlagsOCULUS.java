@@ -12,15 +12,10 @@ import java.util.List;
 
 /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XrExternalCameraStatusFlagsOCULUS.html"><code>XrExternalCameraStatusFlagsOCULUS</code></a>
 public final class XrExternalCameraStatusFlagsOCULUS {
-    /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XR_EXTERNAL_CAMERA_STATUS_CALIBRATED_BIT_OCULUS.html"><code>XR_EXTERNAL_CAMERA_STATUS_CALIBRATED_BIT_OCULUS</code></a>
     public static final long CALIBRATED = 0x8L;
-    /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XR_EXTERNAL_CAMERA_STATUS_CALIBRATING_BIT_OCULUS.html"><code>XR_EXTERNAL_CAMERA_STATUS_CALIBRATING_BIT_OCULUS</code></a>
     public static final long CALIBRATING = 0x2L;
-    /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XR_EXTERNAL_CAMERA_STATUS_CALIBRATION_FAILED_BIT_OCULUS.html"><code>XR_EXTERNAL_CAMERA_STATUS_CALIBRATION_FAILED_BIT_OCULUS</code></a>
     public static final long CALIBRATION_FAILED = 0x4L;
-    /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XR_EXTERNAL_CAMERA_STATUS_CAPTURING_BIT_OCULUS.html"><code>XR_EXTERNAL_CAMERA_STATUS_CAPTURING_BIT_OCULUS</code></a>
     public static final long CAPTURING = 0x10L;
-    /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XR_EXTERNAL_CAMERA_STATUS_CONNECTED_BIT_OCULUS.html"><code>XR_EXTERNAL_CAMERA_STATUS_CONNECTED_BIT_OCULUS</code></a>
     public static final long CONNECTED = 0x1L;
 
     public static String explain(@Bitmask(XrExternalCameraStatusFlagsOCULUS.class) long flags) {

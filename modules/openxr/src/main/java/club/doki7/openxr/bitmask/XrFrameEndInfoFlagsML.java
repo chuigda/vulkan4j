@@ -12,9 +12,7 @@ import java.util.List;
 
 /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XrFrameEndInfoFlagsML.html"><code>XrFrameEndInfoFlagsML</code></a>
 public final class XrFrameEndInfoFlagsML {
-    /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XR_FRAME_END_INFO_PROTECTED_BIT_ML.html"><code>XR_FRAME_END_INFO_PROTECTED_BIT_ML</code></a>
     public static final long PROTECTED = 0x1L;
-    /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XR_FRAME_END_INFO_VIGNETTE_BIT_ML.html"><code>XR_FRAME_END_INFO_VIGNETTE_BIT_ML</code></a>
     public static final long VIGNETTE = 0x2L;
 
     public static String explain(@Bitmask(XrFrameEndInfoFlagsML.class) long flags) {

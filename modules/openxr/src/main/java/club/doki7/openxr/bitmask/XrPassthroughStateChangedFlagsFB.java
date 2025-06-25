@@ -12,13 +12,9 @@ import java.util.List;
 
 /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XrPassthroughStateChangedFlagsFB.html"><code>XrPassthroughStateChangedFlagsFB</code></a>
 public final class XrPassthroughStateChangedFlagsFB {
-    /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XR_PASSTHROUGH_STATE_CHANGED_NON_RECOVERABLE_ERROR_BIT_FB.html"><code>XR_PASSTHROUGH_STATE_CHANGED_NON_RECOVERABLE_ERROR_BIT_FB</code></a>
     public static final long NON_RECOVERABLE_ERROR = 0x2L;
-    /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XR_PASSTHROUGH_STATE_CHANGED_RECOVERABLE_ERROR_BIT_FB.html"><code>XR_PASSTHROUGH_STATE_CHANGED_RECOVERABLE_ERROR_BIT_FB</code></a>
     public static final long RECOVERABLE_ERROR = 0x4L;
-    /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XR_PASSTHROUGH_STATE_CHANGED_REINIT_REQUIRED_BIT_FB.html"><code>XR_PASSTHROUGH_STATE_CHANGED_REINIT_REQUIRED_BIT_FB</code></a>
     public static final long REINIT_REQUIRED = 0x1L;
-    /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XR_PASSTHROUGH_STATE_CHANGED_RESTORED_ERROR_BIT_FB.html"><code>XR_PASSTHROUGH_STATE_CHANGED_RESTORED_ERROR_BIT_FB</code></a>
     public static final long RESTORED_ERROR = 0x8L;
 
     public static String explain(@Bitmask(XrPassthroughStateChangedFlagsFB.class) long flags) {

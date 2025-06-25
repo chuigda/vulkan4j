@@ -4,9 +4,7 @@ import club.doki7.ffm.annotation.*;
 
 /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XrFormFactor.html"><code>XrFormFactor</code></a>
 public final class XrFormFactor {
-    /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XR_FORM_FACTOR_HEAD_MOUNTED_DISPLAY.html"><code>XR_FORM_FACTOR_HEAD_MOUNTED_DISPLAY</code></a>
     public static final int HEAD_MOUNTED_DISPLAY = 0x1;
-    /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XR_FORM_FACTOR_HANDHELD_DISPLAY.html"><code>XR_FORM_FACTOR_HANDHELD_DISPLAY</code></a>
     public static final int HANDHELD_DISPLAY = 0x2;
 
     public static String explain(@EnumType(XrFormFactor.class) int value) {

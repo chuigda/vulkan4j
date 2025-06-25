@@ -4,9 +4,7 @@ import club.doki7.ffm.annotation.*;
 
 /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XrSpatialPersistenceStateEXT.html"><code>XrSpatialPersistenceStateEXT</code></a>
 public final class XrSpatialPersistenceStateEXT {
-    /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XR_SPATIAL_PERSISTENCE_STATE_LOADED_EXT.html"><code>XR_SPATIAL_PERSISTENCE_STATE_LOADED_EXT</code></a>
     public static final int LOADED = 0x1;
-    /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XR_SPATIAL_PERSISTENCE_STATE_NOT_FOUND_EXT.html"><code>XR_SPATIAL_PERSISTENCE_STATE_NOT_FOUND_EXT</code></a>
     public static final int NOT_FOUND = 0x2;
 
     public static String explain(@EnumType(XrSpatialPersistenceStateEXT.class) int value) {

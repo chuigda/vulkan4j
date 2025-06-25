@@ -4,23 +4,14 @@ import club.doki7.ffm.annotation.*;
 
 /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XrSpaceComponentTypeFB.html"><code>XrSpaceComponentTypeFB</code></a>
 public final class XrSpaceComponentTypeFB {
-    /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XR_SPACE_COMPONENT_TYPE_LOCATABLE_FB.html"><code>XR_SPACE_COMPONENT_TYPE_LOCATABLE_FB</code></a>
     public static final int LOCATABLE = 0x0;
-    /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XR_SPACE_COMPONENT_TYPE_STORABLE_FB.html"><code>XR_SPACE_COMPONENT_TYPE_STORABLE_FB</code></a>
     public static final int STORABLE = 0x1;
-    /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XR_SPACE_COMPONENT_TYPE_SHARABLE_FB.html"><code>XR_SPACE_COMPONENT_TYPE_SHARABLE_FB</code></a>
     public static final int SHARABLE = 0x2;
-    /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XR_SPACE_COMPONENT_TYPE_BOUNDED_2D_FB.html"><code>XR_SPACE_COMPONENT_TYPE_BOUNDED_2D_FB</code></a>
     public static final int BOUNDED_2D = 0x3;
-    /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XR_SPACE_COMPONENT_TYPE_BOUNDED_3D_FB.html"><code>XR_SPACE_COMPONENT_TYPE_BOUNDED_3D_FB</code></a>
     public static final int BOUNDED_3D = 0x4;
-    /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XR_SPACE_COMPONENT_TYPE_SEMANTIC_LABELS_FB.html"><code>XR_SPACE_COMPONENT_TYPE_SEMANTIC_LABELS_FB</code></a>
     public static final int SEMANTIC_LABELS = 0x5;
-    /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XR_SPACE_COMPONENT_TYPE_ROOM_LAYOUT_FB.html"><code>XR_SPACE_COMPONENT_TYPE_ROOM_LAYOUT_FB</code></a>
     public static final int ROOM_LAYOUT = 0x6;
-    /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XR_SPACE_COMPONENT_TYPE_SPACE_CONTAINER_FB.html"><code>XR_SPACE_COMPONENT_TYPE_SPACE_CONTAINER_FB</code></a>
     public static final int SPACE_CONTAINER = 0x7;
-    /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XR_SPACE_COMPONENT_TYPE_TRIANGLE_MESH_META.html"><code>XR_SPACE_COMPONENT_TYPE_TRIANGLE_MESH_META</code></a>
     public static final int TRIANGLE_MESH_META = 0x3b9ee4c8;
 
     public static String explain(@EnumType(XrSpaceComponentTypeFB.class) int value) {

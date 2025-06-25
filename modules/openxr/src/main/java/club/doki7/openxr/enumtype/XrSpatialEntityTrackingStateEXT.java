@@ -4,11 +4,8 @@ import club.doki7.ffm.annotation.*;
 
 /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XrSpatialEntityTrackingStateEXT.html"><code>XrSpatialEntityTrackingStateEXT</code></a>
 public final class XrSpatialEntityTrackingStateEXT {
-    /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XR_SPATIAL_ENTITY_TRACKING_STATE_STOPPED_EXT.html"><code>XR_SPATIAL_ENTITY_TRACKING_STATE_STOPPED_EXT</code></a>
     public static final int STOPPED = 0x1;
-    /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XR_SPATIAL_ENTITY_TRACKING_STATE_PAUSED_EXT.html"><code>XR_SPATIAL_ENTITY_TRACKING_STATE_PAUSED_EXT</code></a>
     public static final int PAUSED = 0x2;
-    /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XR_SPATIAL_ENTITY_TRACKING_STATE_TRACKING_EXT.html"><code>XR_SPATIAL_ENTITY_TRACKING_STATE_TRACKING_EXT</code></a>
     public static final int TRACKING = 0x3;
 
     public static String explain(@EnumType(XrSpatialEntityTrackingStateEXT.class) int value) {

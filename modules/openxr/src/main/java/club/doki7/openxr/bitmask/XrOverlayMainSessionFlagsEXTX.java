@@ -12,7 +12,6 @@ import java.util.List;
 
 /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XrOverlayMainSessionFlagsEXTX.html"><code>XrOverlayMainSessionFlagsEXTX</code></a>
 public final class XrOverlayMainSessionFlagsEXTX {
-    /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XR_OVERLAY_MAIN_SESSION_ENABLED_COMPOSITION_LAYER_INFO_DEPTH_BIT_EXTX.html"><code>XR_OVERLAY_MAIN_SESSION_ENABLED_COMPOSITION_LAYER_INFO_DEPTH_BIT_EXTX</code></a>
     public static final long ENABLED_COMPOSITION_LAYER_INFO_DEPTH = 0x1L;
 
     public static String explain(@Bitmask(XrOverlayMainSessionFlagsEXTX.class) long flags) {

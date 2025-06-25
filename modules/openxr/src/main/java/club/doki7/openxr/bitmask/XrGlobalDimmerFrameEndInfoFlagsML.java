@@ -12,7 +12,6 @@ import java.util.List;
 
 /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XrGlobalDimmerFrameEndInfoFlagsML.html"><code>XrGlobalDimmerFrameEndInfoFlagsML</code></a>
 public final class XrGlobalDimmerFrameEndInfoFlagsML {
-    /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XR_GLOBAL_DIMMER_FRAME_END_INFO_ENABLED_BIT_ML.html"><code>XR_GLOBAL_DIMMER_FRAME_END_INFO_ENABLED_BIT_ML</code></a>
     public static final long ENABLED = 0x1L;
 
     public static String explain(@Bitmask(XrGlobalDimmerFrameEndInfoFlagsML.class) long flags) {

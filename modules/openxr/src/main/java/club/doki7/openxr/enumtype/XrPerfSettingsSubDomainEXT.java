@@ -4,11 +4,8 @@ import club.doki7.ffm.annotation.*;
 
 /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XrPerfSettingsSubDomainEXT.html"><code>XrPerfSettingsSubDomainEXT</code></a>
 public final class XrPerfSettingsSubDomainEXT {
-    /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XR_PERF_SETTINGS_SUB_DOMAIN_COMPOSITING_EXT.html"><code>XR_PERF_SETTINGS_SUB_DOMAIN_COMPOSITING_EXT</code></a>
     public static final int COMPOSITING = 0x1;
-    /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XR_PERF_SETTINGS_SUB_DOMAIN_RENDERING_EXT.html"><code>XR_PERF_SETTINGS_SUB_DOMAIN_RENDERING_EXT</code></a>
     public static final int RENDERING = 0x2;
-    /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XR_PERF_SETTINGS_SUB_DOMAIN_THERMAL_EXT.html"><code>XR_PERF_SETTINGS_SUB_DOMAIN_THERMAL_EXT</code></a>
     public static final int THERMAL = 0x3;
 
     public static String explain(@EnumType(XrPerfSettingsSubDomainEXT.class) int value) {

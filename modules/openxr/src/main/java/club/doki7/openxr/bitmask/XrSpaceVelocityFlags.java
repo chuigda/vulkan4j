@@ -12,9 +12,7 @@ import java.util.List;
 
 /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XrSpaceVelocityFlags.html"><code>XrSpaceVelocityFlags</code></a>
 public final class XrSpaceVelocityFlags {
-    /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XR_SPACE_VELOCITY_ANGULAR_VALID_BIT.html"><code>XR_SPACE_VELOCITY_ANGULAR_VALID_BIT</code></a>
     public static final long ANGULAR_VALID = 0x2L;
-    /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XR_SPACE_VELOCITY_LINEAR_VALID_BIT.html"><code>XR_SPACE_VELOCITY_LINEAR_VALID_BIT</code></a>
     public static final long LINEAR_VALID = 0x1L;
 
     public static String explain(@Bitmask(XrSpaceVelocityFlags.class) long flags) {

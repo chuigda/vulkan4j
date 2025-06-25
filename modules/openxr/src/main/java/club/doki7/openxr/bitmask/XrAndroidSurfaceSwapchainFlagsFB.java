@@ -12,9 +12,7 @@ import java.util.List;
 
 /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XrAndroidSurfaceSwapchainFlagsFB.html"><code>XrAndroidSurfaceSwapchainFlagsFB</code></a>
 public final class XrAndroidSurfaceSwapchainFlagsFB {
-    /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XR_ANDROID_SURFACE_SWAPCHAIN_SYNCHRONOUS_BIT_FB.html"><code>XR_ANDROID_SURFACE_SWAPCHAIN_SYNCHRONOUS_BIT_FB</code></a>
     public static final long SYNCHRONOUS = 0x1L;
-    /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XR_ANDROID_SURFACE_SWAPCHAIN_USE_TIMESTAMPS_BIT_FB.html"><code>XR_ANDROID_SURFACE_SWAPCHAIN_USE_TIMESTAMPS_BIT_FB</code></a>
     public static final long USE_TIMESTAMPS = 0x2L;
 
     public static String explain(@Bitmask(XrAndroidSurfaceSwapchainFlagsFB.class) long flags) {

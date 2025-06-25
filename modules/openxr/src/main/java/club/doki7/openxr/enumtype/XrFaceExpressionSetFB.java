@@ -4,7 +4,6 @@ import club.doki7.ffm.annotation.*;
 
 /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XrFaceExpressionSetFB.html"><code>XrFaceExpressionSetFB</code></a>
 public final class XrFaceExpressionSetFB {
-    /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XR_FACE_EXPRESSION_SET_DEFAULT_FB.html"><code>XR_FACE_EXPRESSION_SET_DEFAULT_FB</code></a>
     public static final int DEFAULT = 0x0;
 
     public static String explain(@EnumType(XrFaceExpressionSetFB.class) int value) {

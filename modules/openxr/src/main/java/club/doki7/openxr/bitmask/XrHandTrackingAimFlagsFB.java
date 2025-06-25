@@ -12,23 +12,14 @@ import java.util.List;
 
 /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XrHandTrackingAimFlagsFB.html"><code>XrHandTrackingAimFlagsFB</code></a>
 public final class XrHandTrackingAimFlagsFB {
-    /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XR_HAND_TRACKING_AIM_COMPUTED_BIT_FB.html"><code>XR_HAND_TRACKING_AIM_COMPUTED_BIT_FB</code></a>
     public static final long COMPUTED = 0x1L;
-    /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XR_HAND_TRACKING_AIM_DOMINANT_HAND_BIT_FB.html"><code>XR_HAND_TRACKING_AIM_DOMINANT_HAND_BIT_FB</code></a>
     public static final long DOMINANT_HAND = 0x80L;
-    /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XR_HAND_TRACKING_AIM_INDEX_PINCHING_BIT_FB.html"><code>XR_HAND_TRACKING_AIM_INDEX_PINCHING_BIT_FB</code></a>
     public static final long INDEX_PINCHING = 0x4L;
-    /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XR_HAND_TRACKING_AIM_LITTLE_PINCHING_BIT_FB.html"><code>XR_HAND_TRACKING_AIM_LITTLE_PINCHING_BIT_FB</code></a>
     public static final long LITTLE_PINCHING = 0x20L;
-    /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XR_HAND_TRACKING_AIM_MENU_PRESSED_BIT_FB.html"><code>XR_HAND_TRACKING_AIM_MENU_PRESSED_BIT_FB</code></a>
     public static final long MENU_PRESSED = 0x100L;
-    /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XR_HAND_TRACKING_AIM_MIDDLE_PINCHING_BIT_FB.html"><code>XR_HAND_TRACKING_AIM_MIDDLE_PINCHING_BIT_FB</code></a>
     public static final long MIDDLE_PINCHING = 0x8L;
-    /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XR_HAND_TRACKING_AIM_RING_PINCHING_BIT_FB.html"><code>XR_HAND_TRACKING_AIM_RING_PINCHING_BIT_FB</code></a>
     public static final long RING_PINCHING = 0x10L;
-    /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XR_HAND_TRACKING_AIM_SYSTEM_GESTURE_BIT_FB.html"><code>XR_HAND_TRACKING_AIM_SYSTEM_GESTURE_BIT_FB</code></a>
     public static final long SYSTEM_GESTURE = 0x40L;
-    /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XR_HAND_TRACKING_AIM_VALID_BIT_FB.html"><code>XR_HAND_TRACKING_AIM_VALID_BIT_FB</code></a>
     public static final long VALID = 0x2L;
 
     public static String explain(@Bitmask(XrHandTrackingAimFlagsFB.class) long flags) {

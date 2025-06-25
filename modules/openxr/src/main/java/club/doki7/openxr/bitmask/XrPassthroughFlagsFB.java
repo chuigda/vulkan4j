@@ -12,9 +12,7 @@ import java.util.List;
 
 /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XrPassthroughFlagsFB.html"><code>XrPassthroughFlagsFB</code></a>
 public final class XrPassthroughFlagsFB {
-    /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XR_PASSTHROUGH_IS_RUNNING_AT_CREATION_BIT_FB.html"><code>XR_PASSTHROUGH_IS_RUNNING_AT_CREATION_BIT_FB</code></a>
     public static final long IS_RUNNING_AT_CREATION = 0x1L;
-    /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XR_PASSTHROUGH_LAYER_DEPTH_BIT_FB.html"><code>XR_PASSTHROUGH_LAYER_DEPTH_BIT_FB</code></a>
     public static final long LAYER_DEPTH = 0x2L;
 
     public static String explain(@Bitmask(XrPassthroughFlagsFB.class) long flags) {

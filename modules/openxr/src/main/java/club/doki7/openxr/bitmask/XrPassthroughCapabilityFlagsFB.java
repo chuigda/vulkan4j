@@ -12,11 +12,8 @@ import java.util.List;
 
 /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XrPassthroughCapabilityFlagsFB.html"><code>XrPassthroughCapabilityFlagsFB</code></a>
 public final class XrPassthroughCapabilityFlagsFB {
-    /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XR_PASSTHROUGH_CAPABILITY_BIT_FB.html"><code>XR_PASSTHROUGH_CAPABILITY_BIT_FB</code></a>
     public static final long BIT = 0x1L;
-    /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XR_PASSTHROUGH_CAPABILITY_COLOR_BIT_FB.html"><code>XR_PASSTHROUGH_CAPABILITY_COLOR_BIT_FB</code></a>
     public static final long COLOR = 0x2L;
-    /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XR_PASSTHROUGH_CAPABILITY_LAYER_DEPTH_BIT_FB.html"><code>XR_PASSTHROUGH_CAPABILITY_LAYER_DEPTH_BIT_FB</code></a>
     public static final long LAYER_DEPTH = 0x4L;
 
     public static String explain(@Bitmask(XrPassthroughCapabilityFlagsFB.class) long flags) {

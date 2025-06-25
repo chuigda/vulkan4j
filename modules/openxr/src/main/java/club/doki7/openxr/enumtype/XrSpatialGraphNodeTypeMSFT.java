@@ -4,9 +4,7 @@ import club.doki7.ffm.annotation.*;
 
 /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XrSpatialGraphNodeTypeMSFT.html"><code>XrSpatialGraphNodeTypeMSFT</code></a>
 public final class XrSpatialGraphNodeTypeMSFT {
-    /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XR_SPATIAL_GRAPH_NODE_TYPE_STATIC_MSFT.html"><code>XR_SPATIAL_GRAPH_NODE_TYPE_STATIC_MSFT</code></a>
     public static final int STATIC = 0x1;
-    /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XR_SPATIAL_GRAPH_NODE_TYPE_DYNAMIC_MSFT.html"><code>XR_SPATIAL_GRAPH_NODE_TYPE_DYNAMIC_MSFT</code></a>
     public static final int DYNAMIC = 0x2;
 
     public static String explain(@EnumType(XrSpatialGraphNodeTypeMSFT.class) int value) {

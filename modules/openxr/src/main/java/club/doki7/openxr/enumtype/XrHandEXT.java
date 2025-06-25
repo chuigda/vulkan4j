@@ -4,9 +4,7 @@ import club.doki7.ffm.annotation.*;
 
 /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XrHandEXT.html"><code>XrHandEXT</code></a>
 public final class XrHandEXT {
-    /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XR_HAND_LEFT_EXT.html"><code>XR_HAND_LEFT_EXT</code></a>
     public static final int LEFT = 0x1;
-    /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XR_HAND_RIGHT_EXT.html"><code>XR_HAND_RIGHT_EXT</code></a>
     public static final int RIGHT = 0x2;
 
     public static String explain(@EnumType(XrHandEXT.class) int value) {

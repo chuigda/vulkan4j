@@ -4,11 +4,8 @@ import club.doki7.ffm.annotation.*;
 
 /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XrSceneComputeConsistencyMSFT.html"><code>XrSceneComputeConsistencyMSFT</code></a>
 public final class XrSceneComputeConsistencyMSFT {
-    /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XR_SCENE_COMPUTE_CONSISTENCY_SNAPSHOT_COMPLETE_MSFT.html"><code>XR_SCENE_COMPUTE_CONSISTENCY_SNAPSHOT_COMPLETE_MSFT</code></a>
     public static final int SNAPSHOT_COMPLETE = 0x1;
-    /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XR_SCENE_COMPUTE_CONSISTENCY_SNAPSHOT_INCOMPLETE_FAST_MSFT.html"><code>XR_SCENE_COMPUTE_CONSISTENCY_SNAPSHOT_INCOMPLETE_FAST_MSFT</code></a>
     public static final int SNAPSHOT_INCOMPLETE_FAST = 0x2;
-    /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XR_SCENE_COMPUTE_CONSISTENCY_OCCLUSION_OPTIMIZED_MSFT.html"><code>XR_SCENE_COMPUTE_CONSISTENCY_OCCLUSION_OPTIMIZED_MSFT</code></a>
     public static final int OCCLUSION_OPTIMIZED = 0x3;
 
     public static String explain(@EnumType(XrSceneComputeConsistencyMSFT.class) int value) {

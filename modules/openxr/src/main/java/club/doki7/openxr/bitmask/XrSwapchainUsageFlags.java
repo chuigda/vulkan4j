@@ -12,19 +12,12 @@ import java.util.List;
 
 /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XrSwapchainUsageFlags.html"><code>XrSwapchainUsageFlags</code></a>
 public final class XrSwapchainUsageFlags {
-    /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XR_SWAPCHAIN_USAGE_COLOR_ATTACHMENT_BIT.html"><code>XR_SWAPCHAIN_USAGE_COLOR_ATTACHMENT_BIT</code></a>
     public static final long COLOR_ATTACHMENT = 0x1L;
-    /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XR_SWAPCHAIN_USAGE_DEPTH_STENCIL_ATTACHMENT_BIT.html"><code>XR_SWAPCHAIN_USAGE_DEPTH_STENCIL_ATTACHMENT_BIT</code></a>
     public static final long DEPTH_STENCIL_ATTACHMENT = 0x2L;
-    /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XR_SWAPCHAIN_USAGE_MUTABLE_FORMAT_BIT.html"><code>XR_SWAPCHAIN_USAGE_MUTABLE_FORMAT_BIT</code></a>
     public static final long MUTABLE_FORMAT = 0x40L;
-    /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XR_SWAPCHAIN_USAGE_SAMPLED_BIT.html"><code>XR_SWAPCHAIN_USAGE_SAMPLED_BIT</code></a>
     public static final long SAMPLED = 0x20L;
-    /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XR_SWAPCHAIN_USAGE_TRANSFER_DST_BIT.html"><code>XR_SWAPCHAIN_USAGE_TRANSFER_DST_BIT</code></a>
     public static final long TRANSFER_DST = 0x10L;
-    /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XR_SWAPCHAIN_USAGE_TRANSFER_SRC_BIT.html"><code>XR_SWAPCHAIN_USAGE_TRANSFER_SRC_BIT</code></a>
     public static final long TRANSFER_SRC = 0x8L;
-    /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XR_SWAPCHAIN_USAGE_UNORDERED_ACCESS_BIT.html"><code>XR_SWAPCHAIN_USAGE_UNORDERED_ACCESS_BIT</code></a>
     public static final long UNORDERED_ACCESS = 0x4L;
 
     public static String explain(@Bitmask(XrSwapchainUsageFlags.class) long flags) {

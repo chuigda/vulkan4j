@@ -12,13 +12,9 @@ import java.util.List;
 
 /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XrDebugUtilsMessageSeverityFlagsEXT.html"><code>XrDebugUtilsMessageSeverityFlagsEXT</code></a>
 public final class XrDebugUtilsMessageSeverityFlagsEXT {
-    /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XR_DEBUG_UTILS_MESSAGE_SEVERITY_ERROR_BIT_EXT.html"><code>XR_DEBUG_UTILS_MESSAGE_SEVERITY_ERROR_BIT_EXT</code></a>
     public static final long ERROR = 0x1000L;
-    /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XR_DEBUG_UTILS_MESSAGE_SEVERITY_INFO_BIT_EXT.html"><code>XR_DEBUG_UTILS_MESSAGE_SEVERITY_INFO_BIT_EXT</code></a>
     public static final long INFO = 0x10L;
-    /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XR_DEBUG_UTILS_MESSAGE_SEVERITY_VERBOSE_BIT_EXT.html"><code>XR_DEBUG_UTILS_MESSAGE_SEVERITY_VERBOSE_BIT_EXT</code></a>
     public static final long VERBOSE = 0x1L;
-    /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XR_DEBUG_UTILS_MESSAGE_SEVERITY_WARNING_BIT_EXT.html"><code>XR_DEBUG_UTILS_MESSAGE_SEVERITY_WARNING_BIT_EXT</code></a>
     public static final long WARNING = 0x100L;
 
     public static String explain(@Bitmask(XrDebugUtilsMessageSeverityFlagsEXT.class) long flags) {

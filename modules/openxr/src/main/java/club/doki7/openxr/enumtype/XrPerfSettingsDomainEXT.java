@@ -4,9 +4,7 @@ import club.doki7.ffm.annotation.*;
 
 /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XrPerfSettingsDomainEXT.html"><code>XrPerfSettingsDomainEXT</code></a>
 public final class XrPerfSettingsDomainEXT {
-    /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XR_PERF_SETTINGS_DOMAIN_CPU_EXT.html"><code>XR_PERF_SETTINGS_DOMAIN_CPU_EXT</code></a>
     public static final int CPU = 0x1;
-    /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XR_PERF_SETTINGS_DOMAIN_GPU_EXT.html"><code>XR_PERF_SETTINGS_DOMAIN_GPU_EXT</code></a>
     public static final int GPU = 0x2;
 
     public static String explain(@EnumType(XrPerfSettingsDomainEXT.class) int value) {

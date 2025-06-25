@@ -4,27 +4,16 @@ import club.doki7.ffm.annotation.*;
 
 /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XrSpatialComponentTypeEXT.html"><code>XrSpatialComponentTypeEXT</code></a>
 public final class XrSpatialComponentTypeEXT {
-    /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XR_SPATIAL_COMPONENT_TYPE_BOUNDED_2D_EXT.html"><code>XR_SPATIAL_COMPONENT_TYPE_BOUNDED_2D_EXT</code></a>
     public static final int BOUNDED_2D = 0x1;
-    /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XR_SPATIAL_COMPONENT_TYPE_BOUNDED_3D_EXT.html"><code>XR_SPATIAL_COMPONENT_TYPE_BOUNDED_3D_EXT</code></a>
     public static final int BOUNDED_3D = 0x2;
-    /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XR_SPATIAL_COMPONENT_TYPE_PARENT_EXT.html"><code>XR_SPATIAL_COMPONENT_TYPE_PARENT_EXT</code></a>
     public static final int PARENT = 0x3;
-    /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XR_SPATIAL_COMPONENT_TYPE_MESH_3D_EXT.html"><code>XR_SPATIAL_COMPONENT_TYPE_MESH_3D_EXT</code></a>
     public static final int MESH_3D = 0x4;
-    /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XR_SPATIAL_COMPONENT_TYPE_PLANE_ALIGNMENT_EXT.html"><code>XR_SPATIAL_COMPONENT_TYPE_PLANE_ALIGNMENT_EXT</code></a>
     public static final int PLANE_ALIGNMENT = 0x3ba61888;
-    /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XR_SPATIAL_COMPONENT_TYPE_MESH_2D_EXT.html"><code>XR_SPATIAL_COMPONENT_TYPE_MESH_2D_EXT</code></a>
     public static final int MESH_2D = 0x3ba61889;
-    /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XR_SPATIAL_COMPONENT_TYPE_POLYGON_2D_EXT.html"><code>XR_SPATIAL_COMPONENT_TYPE_POLYGON_2D_EXT</code></a>
     public static final int POLYGON_2D = 0x3ba6188a;
-    /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XR_SPATIAL_COMPONENT_TYPE_PLANE_SEMANTIC_LABEL_EXT.html"><code>XR_SPATIAL_COMPONENT_TYPE_PLANE_SEMANTIC_LABEL_EXT</code></a>
     public static final int PLANE_SEMANTIC_LABEL = 0x3ba6188b;
-    /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XR_SPATIAL_COMPONENT_TYPE_MARKER_EXT.html"><code>XR_SPATIAL_COMPONENT_TYPE_MARKER_EXT</code></a>
     public static final int MARKER = 0x3ba62058;
-    /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XR_SPATIAL_COMPONENT_TYPE_ANCHOR_EXT.html"><code>XR_SPATIAL_COMPONENT_TYPE_ANCHOR_EXT</code></a>
     public static final int ANCHOR = 0x3ba66a90;
-    /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XR_SPATIAL_COMPONENT_TYPE_PERSISTENCE_EXT.html"><code>XR_SPATIAL_COMPONENT_TYPE_PERSISTENCE_EXT</code></a>
     public static final int PERSISTENCE = 0x3ba66e78;
 
     public static String explain(@EnumType(XrSpatialComponentTypeEXT.class) int value) {

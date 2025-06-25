@@ -4,17 +4,11 @@ import club.doki7.ffm.annotation.*;
 
 /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XrSceneComputeFeatureMSFT.html"><code>XrSceneComputeFeatureMSFT</code></a>
 public final class XrSceneComputeFeatureMSFT {
-    /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XR_SCENE_COMPUTE_FEATURE_PLANE_MSFT.html"><code>XR_SCENE_COMPUTE_FEATURE_PLANE_MSFT</code></a>
     public static final int PLANE = 0x1;
-    /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XR_SCENE_COMPUTE_FEATURE_PLANE_MESH_MSFT.html"><code>XR_SCENE_COMPUTE_FEATURE_PLANE_MESH_MSFT</code></a>
     public static final int PLANE_MESH = 0x2;
-    /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XR_SCENE_COMPUTE_FEATURE_VISUAL_MESH_MSFT.html"><code>XR_SCENE_COMPUTE_FEATURE_VISUAL_MESH_MSFT</code></a>
     public static final int VISUAL_MESH = 0x3;
-    /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XR_SCENE_COMPUTE_FEATURE_COLLIDER_MESH_MSFT.html"><code>XR_SCENE_COMPUTE_FEATURE_COLLIDER_MESH_MSFT</code></a>
     public static final int COLLIDER_MESH = 0x4;
-    /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XR_SCENE_COMPUTE_FEATURE_SERIALIZE_SCENE_MSFT.html"><code>XR_SCENE_COMPUTE_FEATURE_SERIALIZE_SCENE_MSFT</code></a>
     public static final int SERIALIZE_SCENE = 0x3b9c48d0;
-    /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XR_SCENE_COMPUTE_FEATURE_MARKER_MSFT.html"><code>XR_SCENE_COMPUTE_FEATURE_MARKER_MSFT</code></a>
     public static final int MARKER = 0x3b9d0838;
 
     public static String explain(@EnumType(XrSceneComputeFeatureMSFT.class) int value) {

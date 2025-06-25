@@ -4,13 +4,9 @@ import club.doki7.ffm.annotation.*;
 
 /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XrExternalCameraAttachedToDeviceOCULUS.html"><code>XrExternalCameraAttachedToDeviceOCULUS</code></a>
 public final class XrExternalCameraAttachedToDeviceOCULUS {
-    /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XR_EXTERNAL_CAMERA_ATTACHED_TO_DEVICE_NONE_OCULUS.html"><code>XR_EXTERNAL_CAMERA_ATTACHED_TO_DEVICE_NONE_OCULUS</code></a>
     public static final int NONE = 0x0;
-    /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XR_EXTERNAL_CAMERA_ATTACHED_TO_DEVICE_HMD_OCULUS.html"><code>XR_EXTERNAL_CAMERA_ATTACHED_TO_DEVICE_HMD_OCULUS</code></a>
     public static final int HMD = 0x1;
-    /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XR_EXTERNAL_CAMERA_ATTACHED_TO_DEVICE_LTOUCH_OCULUS.html"><code>XR_EXTERNAL_CAMERA_ATTACHED_TO_DEVICE_LTOUCH_OCULUS</code></a>
     public static final int LTOUCH = 0x2;
-    /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XR_EXTERNAL_CAMERA_ATTACHED_TO_DEVICE_RTOUCH_OCULUS.html"><code>XR_EXTERNAL_CAMERA_ATTACHED_TO_DEVICE_RTOUCH_OCULUS</code></a>
     public static final int RTOUCH = 0x3;
 
     public static String explain(@EnumType(XrExternalCameraAttachedToDeviceOCULUS.class) int value) {

@@ -4,13 +4,9 @@ import club.doki7.ffm.annotation.*;
 
 /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XrPlaneDetectorOrientationEXT.html"><code>XrPlaneDetectorOrientationEXT</code></a>
 public final class XrPlaneDetectorOrientationEXT {
-    /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XR_PLANE_DETECTOR_ORIENTATION_HORIZONTAL_UPWARD_EXT.html"><code>XR_PLANE_DETECTOR_ORIENTATION_HORIZONTAL_UPWARD_EXT</code></a>
     public static final int HORIZONTAL_UPWARD = 0x0;
-    /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XR_PLANE_DETECTOR_ORIENTATION_HORIZONTAL_DOWNWARD_EXT.html"><code>XR_PLANE_DETECTOR_ORIENTATION_HORIZONTAL_DOWNWARD_EXT</code></a>
     public static final int HORIZONTAL_DOWNWARD = 0x1;
-    /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XR_PLANE_DETECTOR_ORIENTATION_VERTICAL_EXT.html"><code>XR_PLANE_DETECTOR_ORIENTATION_VERTICAL_EXT</code></a>
     public static final int VERTICAL = 0x2;
-    /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XR_PLANE_DETECTOR_ORIENTATION_ARBITRARY_EXT.html"><code>XR_PLANE_DETECTOR_ORIENTATION_ARBITRARY_EXT</code></a>
     public static final int ARBITRARY = 0x3;
 
     public static String explain(@EnumType(XrPlaneDetectorOrientationEXT.class) int value) {

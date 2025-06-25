@@ -12,9 +12,7 @@ import java.util.List;
 
 /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XrKeyboardTrackingQueryFlagsFB.html"><code>XrKeyboardTrackingQueryFlagsFB</code></a>
 public final class XrKeyboardTrackingQueryFlagsFB {
-    /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XR_KEYBOARD_TRACKING_QUERY_LOCAL_BIT_FB.html"><code>XR_KEYBOARD_TRACKING_QUERY_LOCAL_BIT_FB</code></a>
     public static final long LOCAL = 0x2L;
-    /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XR_KEYBOARD_TRACKING_QUERY_REMOTE_BIT_FB.html"><code>XR_KEYBOARD_TRACKING_QUERY_REMOTE_BIT_FB</code></a>
     public static final long REMOTE = 0x4L;
 
     public static String explain(@Bitmask(XrKeyboardTrackingQueryFlagsFB.class) long flags) {

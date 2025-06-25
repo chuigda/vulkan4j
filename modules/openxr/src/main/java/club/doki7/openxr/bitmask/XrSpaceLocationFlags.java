@@ -12,13 +12,9 @@ import java.util.List;
 
 /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XrSpaceLocationFlags.html"><code>XrSpaceLocationFlags</code></a>
 public final class XrSpaceLocationFlags {
-    /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XR_SPACE_LOCATION_ORIENTATION_TRACKED_BIT.html"><code>XR_SPACE_LOCATION_ORIENTATION_TRACKED_BIT</code></a>
     public static final long ORIENTATION_TRACKED = 0x4L;
-    /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XR_SPACE_LOCATION_ORIENTATION_VALID_BIT.html"><code>XR_SPACE_LOCATION_ORIENTATION_VALID_BIT</code></a>
     public static final long ORIENTATION_VALID = 0x1L;
-    /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XR_SPACE_LOCATION_POSITION_TRACKED_BIT.html"><code>XR_SPACE_LOCATION_POSITION_TRACKED_BIT</code></a>
     public static final long POSITION_TRACKED = 0x8L;
-    /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XR_SPACE_LOCATION_POSITION_VALID_BIT.html"><code>XR_SPACE_LOCATION_POSITION_VALID_BIT</code></a>
     public static final long POSITION_VALID = 0x2L;
 
     public static String explain(@Bitmask(XrSpaceLocationFlags.class) long flags) {

@@ -4,7 +4,6 @@ import club.doki7.ffm.annotation.*;
 
 /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XrSceneMarkerTypeMSFT.html"><code>XrSceneMarkerTypeMSFT</code></a>
 public final class XrSceneMarkerTypeMSFT {
-    /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XR_SCENE_MARKER_TYPE_QR_CODE_MSFT.html"><code>XR_SCENE_MARKER_TYPE_QR_CODE_MSFT</code></a>
     public static final int QR_CODE = 0x1;
 
     public static String explain(@EnumType(XrSceneMarkerTypeMSFT.class) int value) {

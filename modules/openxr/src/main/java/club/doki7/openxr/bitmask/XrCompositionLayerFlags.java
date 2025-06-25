@@ -12,11 +12,8 @@ import java.util.List;
 
 /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XrCompositionLayerFlags.html"><code>XrCompositionLayerFlags</code></a>
 public final class XrCompositionLayerFlags {
-    /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XR_COMPOSITION_LAYER_BLEND_TEXTURE_SOURCE_ALPHA_BIT.html"><code>XR_COMPOSITION_LAYER_BLEND_TEXTURE_SOURCE_ALPHA_BIT</code></a>
     public static final long BLEND_TEXTURE_SOURCE_ALPHA = 0x2L;
-    /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XR_COMPOSITION_LAYER_CORRECT_CHROMATIC_ABERRATION_BIT.html"><code>XR_COMPOSITION_LAYER_CORRECT_CHROMATIC_ABERRATION_BIT</code></a>
     public static final long CORRECT_CHROMATIC_ABERRATION = 0x1L;
-    /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XR_COMPOSITION_LAYER_UNPREMULTIPLIED_ALPHA_BIT.html"><code>XR_COMPOSITION_LAYER_UNPREMULTIPLIED_ALPHA_BIT</code></a>
     public static final long UNPREMULTIPLIED_ALPHA = 0x4L;
 
     public static String explain(@Bitmask(XrCompositionLayerFlags.class) long flags) {

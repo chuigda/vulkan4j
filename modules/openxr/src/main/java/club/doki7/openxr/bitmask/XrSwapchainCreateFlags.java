@@ -12,9 +12,7 @@ import java.util.List;
 
 /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XrSwapchainCreateFlags.html"><code>XrSwapchainCreateFlags</code></a>
 public final class XrSwapchainCreateFlags {
-    /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XR_SWAPCHAIN_CREATE_PROTECTED_CONTENT_BIT.html"><code>XR_SWAPCHAIN_CREATE_PROTECTED_CONTENT_BIT</code></a>
     public static final long PROTECTED_CONTENT = 0x1L;
-    /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XR_SWAPCHAIN_CREATE_STATIC_IMAGE_BIT.html"><code>XR_SWAPCHAIN_CREATE_STATIC_IMAGE_BIT</code></a>
     public static final long STATIC_IMAGE = 0x2L;
 
     public static String explain(@Bitmask(XrSwapchainCreateFlags.class) long flags) {

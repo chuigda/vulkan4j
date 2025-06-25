@@ -12,9 +12,7 @@ import java.util.List;
 
 /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XrCompositionLayerSecureContentFlagsFB.html"><code>XrCompositionLayerSecureContentFlagsFB</code></a>
 public final class XrCompositionLayerSecureContentFlagsFB {
-    /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XR_COMPOSITION_LAYER_SECURE_CONTENT_EXCLUDE_LAYER_BIT_FB.html"><code>XR_COMPOSITION_LAYER_SECURE_CONTENT_EXCLUDE_LAYER_BIT_FB</code></a>
     public static final long EXCLUDE_LAYER = 0x1L;
-    /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XR_COMPOSITION_LAYER_SECURE_CONTENT_REPLACE_LAYER_BIT_FB.html"><code>XR_COMPOSITION_LAYER_SECURE_CONTENT_REPLACE_LAYER_BIT_FB</code></a>
     public static final long REPLACE_LAYER = 0x2L;
 
     public static String explain(@Bitmask(XrCompositionLayerSecureContentFlagsFB.class) long flags) {

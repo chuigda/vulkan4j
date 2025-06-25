@@ -4,9 +4,7 @@ import club.doki7.ffm.annotation.*;
 
 /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XrMarkerDetectorCameraML.html"><code>XrMarkerDetectorCameraML</code></a>
 public final class XrMarkerDetectorCameraML {
-    /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XR_MARKER_DETECTOR_CAMERA_RGB_CAMERA_ML.html"><code>XR_MARKER_DETECTOR_CAMERA_RGB_CAMERA_ML</code></a>
     public static final int RGB_CAMERA = 0x0;
-    /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XR_MARKER_DETECTOR_CAMERA_WORLD_CAMERAS_ML.html"><code>XR_MARKER_DETECTOR_CAMERA_WORLD_CAMERAS_ML</code></a>
     public static final int WORLD_CAMERAS = 0x1;
 
     public static String explain(@EnumType(XrMarkerDetectorCameraML.class) int value) {

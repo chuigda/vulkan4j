@@ -4,15 +4,10 @@ import club.doki7.ffm.annotation.*;
 
 /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XrTrackingOptimizationSettingsHintQCOM.html"><code>XrTrackingOptimizationSettingsHintQCOM</code></a>
 public final class XrTrackingOptimizationSettingsHintQCOM {
-    /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XR_TRACKING_OPTIMIZATION_SETTINGS_HINT_NONE_QCOM.html"><code>XR_TRACKING_OPTIMIZATION_SETTINGS_HINT_NONE_QCOM</code></a>
     public static final int NONE = 0x0;
-    /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XR_TRACKING_OPTIMIZATION_SETTINGS_HINT_LONG_RANGE_PRIORIZATION_QCOM.html"><code>XR_TRACKING_OPTIMIZATION_SETTINGS_HINT_LONG_RANGE_PRIORIZATION_QCOM</code></a>
     public static final int LONG_RANGE_PRIORIZATION = 0x1;
-    /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XR_TRACKING_OPTIMIZATION_SETTINGS_HINT_CLOSE_RANGE_PRIORIZATION_QCOM.html"><code>XR_TRACKING_OPTIMIZATION_SETTINGS_HINT_CLOSE_RANGE_PRIORIZATION_QCOM</code></a>
     public static final int CLOSE_RANGE_PRIORIZATION = 0x2;
-    /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XR_TRACKING_OPTIMIZATION_SETTINGS_HINT_LOW_POWER_PRIORIZATION_QCOM.html"><code>XR_TRACKING_OPTIMIZATION_SETTINGS_HINT_LOW_POWER_PRIORIZATION_QCOM</code></a>
     public static final int LOW_POWER_PRIORIZATION = 0x3;
-    /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XR_TRACKING_OPTIMIZATION_SETTINGS_HINT_HIGH_POWER_PRIORIZATION_QCOM.html"><code>XR_TRACKING_OPTIMIZATION_SETTINGS_HINT_HIGH_POWER_PRIORIZATION_QCOM</code></a>
     public static final int HIGH_POWER_PRIORIZATION = 0x4;
 
     public static String explain(@EnumType(XrTrackingOptimizationSettingsHintQCOM.class) int value) {

@@ -4,13 +4,9 @@ import club.doki7.ffm.annotation.*;
 
 /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XrHeadsetFitStatusML.html"><code>XrHeadsetFitStatusML</code></a>
 public final class XrHeadsetFitStatusML {
-    /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XR_HEADSET_FIT_STATUS_UNKNOWN_ML.html"><code>XR_HEADSET_FIT_STATUS_UNKNOWN_ML</code></a>
     public static final int UNKNOWN = 0x0;
-    /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XR_HEADSET_FIT_STATUS_NOT_WORN_ML.html"><code>XR_HEADSET_FIT_STATUS_NOT_WORN_ML</code></a>
     public static final int NOT_WORN = 0x1;
-    /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XR_HEADSET_FIT_STATUS_GOOD_FIT_ML.html"><code>XR_HEADSET_FIT_STATUS_GOOD_FIT_ML</code></a>
     public static final int GOOD_FIT = 0x2;
-    /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XR_HEADSET_FIT_STATUS_BAD_FIT_ML.html"><code>XR_HEADSET_FIT_STATUS_BAD_FIT_ML</code></a>
     public static final int BAD_FIT = 0x3;
 
     public static String explain(@EnumType(XrHeadsetFitStatusML.class) int value) {

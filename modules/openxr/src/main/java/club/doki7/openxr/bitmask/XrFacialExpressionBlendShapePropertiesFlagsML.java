@@ -12,9 +12,7 @@ import java.util.List;
 
 /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XrFacialExpressionBlendShapePropertiesFlagsML.html"><code>XrFacialExpressionBlendShapePropertiesFlagsML</code></a>
 public final class XrFacialExpressionBlendShapePropertiesFlagsML {
-    /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XR_FACIAL_EXPRESSION_BLEND_SHAPE_PROPERTIES_TRACKED_BIT_ML.html"><code>XR_FACIAL_EXPRESSION_BLEND_SHAPE_PROPERTIES_TRACKED_BIT_ML</code></a>
     public static final long TRACKED = 0x2L;
-    /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XR_FACIAL_EXPRESSION_BLEND_SHAPE_PROPERTIES_VALID_BIT_ML.html"><code>XR_FACIAL_EXPRESSION_BLEND_SHAPE_PROPERTIES_VALID_BIT_ML</code></a>
     public static final long VALID = 0x1L;
 
     public static String explain(@Bitmask(XrFacialExpressionBlendShapePropertiesFlagsML.class) long flags) {

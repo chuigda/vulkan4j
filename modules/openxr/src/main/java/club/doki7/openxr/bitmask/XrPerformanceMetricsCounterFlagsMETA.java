@@ -12,11 +12,8 @@ import java.util.List;
 
 /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XrPerformanceMetricsCounterFlagsMETA.html"><code>XrPerformanceMetricsCounterFlagsMETA</code></a>
 public final class XrPerformanceMetricsCounterFlagsMETA {
-    /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XR_PERFORMANCE_METRICS_COUNTER_ANY_VALUE_VALID_BIT_META.html"><code>XR_PERFORMANCE_METRICS_COUNTER_ANY_VALUE_VALID_BIT_META</code></a>
     public static final long ANY_VALUE_VALID = 0x1L;
-    /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XR_PERFORMANCE_METRICS_COUNTER_FLOAT_VALUE_VALID_BIT_META.html"><code>XR_PERFORMANCE_METRICS_COUNTER_FLOAT_VALUE_VALID_BIT_META</code></a>
     public static final long FLOAT_VALUE_VALID = 0x4L;
-    /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XR_PERFORMANCE_METRICS_COUNTER_UINT_VALUE_VALID_BIT_META.html"><code>XR_PERFORMANCE_METRICS_COUNTER_UINT_VALUE_VALID_BIT_META</code></a>
     public static final long UINT_VALUE_VALID = 0x2L;
 
     public static String explain(@Bitmask(XrPerformanceMetricsCounterFlagsMETA.class) long flags) {

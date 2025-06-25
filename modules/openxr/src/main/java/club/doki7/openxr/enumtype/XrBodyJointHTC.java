@@ -4,57 +4,31 @@ import club.doki7.ffm.annotation.*;
 
 /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XrBodyJointHTC.html"><code>XrBodyJointHTC</code></a>
 public final class XrBodyJointHTC {
-    /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XR_BODY_JOINT_PELVIS_HTC.html"><code>XR_BODY_JOINT_PELVIS_HTC</code></a>
     public static final int PELVIS = 0x0;
-    /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XR_BODY_JOINT_LEFT_HIP_HTC.html"><code>XR_BODY_JOINT_LEFT_HIP_HTC</code></a>
     public static final int LEFT_HIP = 0x1;
-    /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XR_BODY_JOINT_LEFT_KNEE_HTC.html"><code>XR_BODY_JOINT_LEFT_KNEE_HTC</code></a>
     public static final int LEFT_KNEE = 0x2;
-    /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XR_BODY_JOINT_LEFT_ANKLE_HTC.html"><code>XR_BODY_JOINT_LEFT_ANKLE_HTC</code></a>
     public static final int LEFT_ANKLE = 0x3;
-    /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XR_BODY_JOINT_LEFT_FEET_HTC.html"><code>XR_BODY_JOINT_LEFT_FEET_HTC</code></a>
     public static final int LEFT_FEET = 0x4;
-    /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XR_BODY_JOINT_RIGHT_HIP_HTC.html"><code>XR_BODY_JOINT_RIGHT_HIP_HTC</code></a>
     public static final int RIGHT_HIP = 0x5;
-    /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XR_BODY_JOINT_RIGHT_KNEE_HTC.html"><code>XR_BODY_JOINT_RIGHT_KNEE_HTC</code></a>
     public static final int RIGHT_KNEE = 0x6;
-    /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XR_BODY_JOINT_RIGHT_ANKLE_HTC.html"><code>XR_BODY_JOINT_RIGHT_ANKLE_HTC</code></a>
     public static final int RIGHT_ANKLE = 0x7;
-    /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XR_BODY_JOINT_RIGHT_FEET_HTC.html"><code>XR_BODY_JOINT_RIGHT_FEET_HTC</code></a>
     public static final int RIGHT_FEET = 0x8;
-    /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XR_BODY_JOINT_WAIST_HTC.html"><code>XR_BODY_JOINT_WAIST_HTC</code></a>
     public static final int WAIST = 0x9;
-    /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XR_BODY_JOINT_SPINE_LOWER_HTC.html"><code>XR_BODY_JOINT_SPINE_LOWER_HTC</code></a>
     public static final int SPINE_LOWER = 0xa;
-    /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XR_BODY_JOINT_SPINE_MIDDLE_HTC.html"><code>XR_BODY_JOINT_SPINE_MIDDLE_HTC</code></a>
     public static final int SPINE_MIDDLE = 0xb;
-    /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XR_BODY_JOINT_SPINE_HIGH_HTC.html"><code>XR_BODY_JOINT_SPINE_HIGH_HTC</code></a>
     public static final int SPINE_HIGH = 0xc;
-    /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XR_BODY_JOINT_CHEST_HTC.html"><code>XR_BODY_JOINT_CHEST_HTC</code></a>
     public static final int CHEST = 0xd;
-    /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XR_BODY_JOINT_NECK_HTC.html"><code>XR_BODY_JOINT_NECK_HTC</code></a>
     public static final int NECK = 0xe;
-    /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XR_BODY_JOINT_HEAD_HTC.html"><code>XR_BODY_JOINT_HEAD_HTC</code></a>
     public static final int HEAD = 0xf;
-    /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XR_BODY_JOINT_LEFT_CLAVICLE_HTC.html"><code>XR_BODY_JOINT_LEFT_CLAVICLE_HTC</code></a>
     public static final int LEFT_CLAVICLE = 0x10;
-    /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XR_BODY_JOINT_LEFT_SCAPULA_HTC.html"><code>XR_BODY_JOINT_LEFT_SCAPULA_HTC</code></a>
     public static final int LEFT_SCAPULA = 0x11;
-    /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XR_BODY_JOINT_LEFT_ARM_HTC.html"><code>XR_BODY_JOINT_LEFT_ARM_HTC</code></a>
     public static final int LEFT_ARM = 0x12;
-    /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XR_BODY_JOINT_LEFT_ELBOW_HTC.html"><code>XR_BODY_JOINT_LEFT_ELBOW_HTC</code></a>
     public static final int LEFT_ELBOW = 0x13;
-    /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XR_BODY_JOINT_LEFT_WRIST_HTC.html"><code>XR_BODY_JOINT_LEFT_WRIST_HTC</code></a>
     public static final int LEFT_WRIST = 0x14;
-    /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XR_BODY_JOINT_RIGHT_CLAVICLE_HTC.html"><code>XR_BODY_JOINT_RIGHT_CLAVICLE_HTC</code></a>
     public static final int RIGHT_CLAVICLE = 0x15;
-    /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XR_BODY_JOINT_RIGHT_SCAPULA_HTC.html"><code>XR_BODY_JOINT_RIGHT_SCAPULA_HTC</code></a>
     public static final int RIGHT_SCAPULA = 0x16;
-    /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XR_BODY_JOINT_RIGHT_ARM_HTC.html"><code>XR_BODY_JOINT_RIGHT_ARM_HTC</code></a>
     public static final int RIGHT_ARM = 0x17;
-    /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XR_BODY_JOINT_RIGHT_ELBOW_HTC.html"><code>XR_BODY_JOINT_RIGHT_ELBOW_HTC</code></a>
     public static final int RIGHT_ELBOW = 0x18;
-    /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XR_BODY_JOINT_RIGHT_WRIST_HTC.html"><code>XR_BODY_JOINT_RIGHT_WRIST_HTC</code></a>
     public static final int RIGHT_WRIST = 0x19;
 
     public static String explain(@EnumType(XrBodyJointHTC.class) int value) {

@@ -4,13 +4,9 @@ import club.doki7.ffm.annotation.*;
 
 /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XrFoveationModeHTC.html"><code>XrFoveationModeHTC</code></a>
 public final class XrFoveationModeHTC {
-    /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XR_FOVEATION_MODE_DISABLE_HTC.html"><code>XR_FOVEATION_MODE_DISABLE_HTC</code></a>
     public static final int DISABLE = 0x0;
-    /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XR_FOVEATION_MODE_FIXED_HTC.html"><code>XR_FOVEATION_MODE_FIXED_HTC</code></a>
     public static final int FIXED = 0x1;
-    /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XR_FOVEATION_MODE_DYNAMIC_HTC.html"><code>XR_FOVEATION_MODE_DYNAMIC_HTC</code></a>
     public static final int DYNAMIC = 0x2;
-    /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XR_FOVEATION_MODE_CUSTOM_HTC.html"><code>XR_FOVEATION_MODE_CUSTOM_HTC</code></a>
     public static final int CUSTOM = 0x3;
 
     public static String explain(@EnumType(XrFoveationModeHTC.class) int value) {

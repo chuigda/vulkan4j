@@ -12,19 +12,12 @@ import java.util.List;
 
 /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XrPlaneDetectionCapabilityFlagsEXT.html"><code>XrPlaneDetectionCapabilityFlagsEXT</code></a>
 public final class XrPlaneDetectionCapabilityFlagsEXT {
-    /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XR_PLANE_DETECTION_CAPABILITY_ORIENTATION_BIT_EXT.html"><code>XR_PLANE_DETECTION_CAPABILITY_ORIENTATION_BIT_EXT</code></a>
     public static final long ORIENTATION = 0x40L;
-    /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XR_PLANE_DETECTION_CAPABILITY_PLANE_DETECTION_BIT_EXT.html"><code>XR_PLANE_DETECTION_CAPABILITY_PLANE_DETECTION_BIT_EXT</code></a>
     public static final long PLANE_DETECTION = 0x1L;
-    /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XR_PLANE_DETECTION_CAPABILITY_PLANE_HOLES_BIT_EXT.html"><code>XR_PLANE_DETECTION_CAPABILITY_PLANE_HOLES_BIT_EXT</code></a>
     public static final long PLANE_HOLES = 0x2L;
-    /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XR_PLANE_DETECTION_CAPABILITY_SEMANTIC_CEILING_BIT_EXT.html"><code>XR_PLANE_DETECTION_CAPABILITY_SEMANTIC_CEILING_BIT_EXT</code></a>
     public static final long SEMANTIC_CEILING = 0x4L;
-    /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XR_PLANE_DETECTION_CAPABILITY_SEMANTIC_FLOOR_BIT_EXT.html"><code>XR_PLANE_DETECTION_CAPABILITY_SEMANTIC_FLOOR_BIT_EXT</code></a>
     public static final long SEMANTIC_FLOOR = 0x8L;
-    /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XR_PLANE_DETECTION_CAPABILITY_SEMANTIC_PLATFORM_BIT_EXT.html"><code>XR_PLANE_DETECTION_CAPABILITY_SEMANTIC_PLATFORM_BIT_EXT</code></a>
     public static final long SEMANTIC_PLATFORM = 0x20L;
-    /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XR_PLANE_DETECTION_CAPABILITY_SEMANTIC_WALL_BIT_EXT.html"><code>XR_PLANE_DETECTION_CAPABILITY_SEMANTIC_WALL_BIT_EXT</code></a>
     public static final long SEMANTIC_WALL = 0x10L;
 
     public static String explain(@Bitmask(XrPlaneDetectionCapabilityFlagsEXT.class) long flags) {
