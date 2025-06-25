@@ -60,5 +60,6 @@ modules/openxr/src/main/java/club/doki7/openxr/bitmask/*.java linguist-generated
 modules/openxr/src/main/java/club/doki7/openxr/command/*.java linguist-generated
 modules/openxr/src/main/java/club/doki7/openxr/datatype/*.java linguist-generated
 modules/openxr/src/main/java/club/doki7/openxr/enumtype/*.java linguist-generated
+modules/openxr/src/main/java/club/doki7/openxr/handle/*.java linguist-generated
 
 modules/tutorial/src/main/java/**/*.java linguist-documentation
