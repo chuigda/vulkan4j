@@ -269,10 +269,10 @@ We'll start by filling in the structure for the vertex shader, again in the `cre
 ```java
 var shaderStages = VkPipelineShaderStageCreateInfo.allocate(arena, 2);
 
-shaderStages.at(0)
+shaderStages.at(0, it -> it
         .stage(VkShaderStageFlags.VERTEX)
         .module(vertexShaderModule)
-        .pName(BytePtr.allocateString(arena, "main"));
+        .pName(BytePtr.allocateString(arena, "main")));
 ```
 
 The first step, is telling Vulkan in which pipeline stage the shader is going to be used. There is an enum value for each of the programmable stages described in the previous chapter.
@@ -284,10 +284,10 @@ There is one more (optional) member, `pSpecializationInfo`, which we won't be us
 Modifying the structure to suit the fragment shader is easy:
 
 ```java
-shaderStages.at(1)
+shaderStages.at(1, it -> it
         .stage(VkShaderStageFlags.FRAGMENT)
         .module(fragmentShaderModule)
-        .pName(BytePtr.allocateString(arena, "main"));
+        .pName(BytePtr.allocateString(arena, "main")));
 ```
 
 That's all there is describing the programmable stages of the pipeline. In the next chapter we'll look at the fixed-function stages.
