@@ -205,15 +205,15 @@ class Application {
                 deviceCreateInfo.queueCreateInfoCount(1).pQueueCreateInfos(queueCreateInfo);
             }
             else {
-                var queueCreateInfos = VkDeviceQueueCreateInfo.allocate(arena, 2);
-                queueCreateInfos.at(0)
-                        .queueCount(1)
-                        .queueFamilyIndex(indices.graphicsFamily())
-                        .pQueuePriorities(pQueuePriorities);
-                queueCreateInfos.at(1)
-                        .queueCount(1)
-                        .queueFamilyIndex(indices.presentFamily())
-                        .pQueuePriorities(pQueuePriorities);
+                var queueCreateInfos = VkDeviceQueueCreateInfo.allocate(arena, 2)
+                        .at(0, it -> it
+                                .queueCount(1)
+                                .queueFamilyIndex(indices.graphicsFamily())
+                                .pQueuePriorities(pQueuePriorities))
+                        .at(1, it -> it
+                                .queueCount(1)
+                                .queueFamilyIndex(indices.presentFamily())
+                                .pQueuePriorities(pQueuePriorities));
                 deviceCreateInfo.queueCreateInfoCount(2).pQueueCreateInfos(queueCreateInfos);
             }
             var deviceFeatures = VkPhysicalDeviceFeatures.allocate(arena);

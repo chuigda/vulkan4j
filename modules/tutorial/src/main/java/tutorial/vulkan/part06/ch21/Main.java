@@ -239,15 +239,15 @@ class Application {
                 deviceCreateInfo.queueCreateInfoCount(1).pQueueCreateInfos(queueCreateInfo);
             }
             else {
-                var queueCreateInfos = VkDeviceQueueCreateInfo.allocate(arena, 2);
-                queueCreateInfos.at(0)
-                        .queueCount(1)
-                        .queueFamilyIndex(indices.graphicsFamily())
-                        .pQueuePriorities(pQueuePriorities);
-                queueCreateInfos.at(1)
-                        .queueCount(1)
-                        .queueFamilyIndex(indices.presentFamily())
-                        .pQueuePriorities(pQueuePriorities);
+                var queueCreateInfos = VkDeviceQueueCreateInfo.allocate(arena, 2)
+                        .at(0, it -> it
+                                .queueCount(1)
+                                .queueFamilyIndex(indices.graphicsFamily())
+                                .pQueuePriorities(pQueuePriorities))
+                        .at(1, it -> it
+                                .queueCount(1)
+                                .queueFamilyIndex(indices.presentFamily())
+                                .pQueuePriorities(pQueuePriorities));
                 deviceCreateInfo.queueCreateInfoCount(2).pQueueCreateInfos(queueCreateInfos);
             }
             var deviceFeatures = VkPhysicalDeviceFeatures.allocate(arena);
@@ -430,15 +430,15 @@ class Application {
             var vertexShaderModule = createShaderModule(vertShaderCode);
             var fragmentShaderModule = createShaderModule(fragShaderCode);
 
-            var shaderStages = VkPipelineShaderStageCreateInfo.allocate(arena, 2);
-            shaderStages.at(0)
-                    .stage(VkShaderStageFlags.VERTEX)
-                    .module(vertexShaderModule)
-                    .pName(BytePtr.allocateString(arena, "main"));
-            shaderStages.at(1)
-                    .stage(VkShaderStageFlags.FRAGMENT)
-                    .module(fragmentShaderModule)
-                    .pName(BytePtr.allocateString(arena, "main"));
+            var shaderStages = VkPipelineShaderStageCreateInfo.allocate(arena, 2)
+                    .at(0, it -> it
+                            .stage(VkShaderStageFlags.VERTEX)
+                            .module(vertexShaderModule)
+                            .pName(BytePtr.allocateString(arena, "main")))
+                    .at(1, it -> it
+                            .stage(VkShaderStageFlags.FRAGMENT)
+                            .module(fragmentShaderModule)
+                            .pName(BytePtr.allocateString(arena, "main")));
 
             var dynamicStates = IntPtr.allocateV(arena, VkDynamicState.VIEWPORT, VkDynamicState.SCISSOR);
 
@@ -1226,18 +1226,17 @@ class Application {
     }
 
     private static VkVertexInputAttributeDescription.Ptr getAttributeDescriptions(Arena arena) {
-        var attributeDescriptions = VkVertexInputAttributeDescription.allocate(arena, 2);
-        attributeDescriptions.at(0)
-                .binding(0)
-                .location(0)
-                .format(VkFormat.R32G32_SFLOAT)
-                .offset(0);
-        attributeDescriptions.at(1)
-                .binding(0)
-                .location(1)
-                .format(VkFormat.R32G32B32_SFLOAT)
-                .offset(Float.BYTES * 2);
-        return attributeDescriptions;
+        return VkVertexInputAttributeDescription.allocate(arena, 2)
+                .at(0, it -> it
+                        .binding(0)
+                        .location(0)
+                        .format(VkFormat.R32G32_SFLOAT)
+                        .offset(0))
+                .at(1, it -> it
+                        .binding(0)
+                        .location(1)
+                        .format(VkFormat.R32G32B32_SFLOAT)
+                        .offset(Float.BYTES * 2));
     }
 
     private GLFWwindow window;

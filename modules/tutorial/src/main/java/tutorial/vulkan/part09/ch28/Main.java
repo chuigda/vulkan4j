@@ -268,15 +268,15 @@ class Application {
                 deviceCreateInfo.queueCreateInfoCount(1).pQueueCreateInfos(queueCreateInfo);
             }
             else {
-                var queueCreateInfos = VkDeviceQueueCreateInfo.allocate(arena, 2);
-                queueCreateInfos.at(0)
-                        .queueCount(1)
-                        .queueFamilyIndex(indices.graphicsFamily())
-                        .pQueuePriorities(pQueuePriorities);
-                queueCreateInfos.at(1)
-                        .queueCount(1)
-                        .queueFamilyIndex(indices.presentFamily())
-                        .pQueuePriorities(pQueuePriorities);
+                var queueCreateInfos = VkDeviceQueueCreateInfo.allocate(arena, 2)
+                        .at(0, it -> it
+                                .queueCount(1)
+                                .queueFamilyIndex(indices.graphicsFamily())
+                                .pQueuePriorities(pQueuePriorities))
+                        .at(1, it -> it
+                                .queueCount(1)
+                                .queueFamilyIndex(indices.presentFamily())
+                                .pQueuePriorities(pQueuePriorities));
                 deviceCreateInfo.queueCreateInfoCount(2).pQueueCreateInfos(queueCreateInfos);
             }
             var deviceFeatures = VkPhysicalDeviceFeatures.allocate(arena)
@@ -388,26 +388,25 @@ class Application {
 
     private void createRenderPass() {
         try (var arena = Arena.ofConfined()) {
-            var attachments = VkAttachmentDescription.allocate(arena, 2);
-            attachments.at(0)
-                    .format(swapChainImageFormat)
-                    .samples(VkSampleCountFlags._1)
-                    .loadOp(VkAttachmentLoadOp.CLEAR)
-                    .storeOp(VkAttachmentStoreOp.STORE)
-                    .stencilLoadOp(VkAttachmentLoadOp.DONT_CARE)
-                    .stencilStoreOp(VkAttachmentStoreOp.DONT_CARE)
-                    .initialLayout(VkImageLayout.UNDEFINED)
-                    .finalLayout(VkImageLayout.PRESENT_SRC_KHR);
-
-            attachments.at(1)
-                    .format(findDepthFormat())
-                    .samples(VkSampleCountFlags._1)
-                    .loadOp(VkAttachmentLoadOp.CLEAR)
-                    .storeOp(VkAttachmentStoreOp.DONT_CARE)
-                    .stencilLoadOp(VkAttachmentLoadOp.DONT_CARE)
-                    .stencilStoreOp(VkAttachmentStoreOp.DONT_CARE)
-                    .initialLayout(VkImageLayout.UNDEFINED)
-                    .finalLayout(VkImageLayout.DEPTH_STENCIL_ATTACHMENT_OPTIMAL);
+            var attachments = VkAttachmentDescription.allocate(arena, 2)
+                    .at(0, it -> it
+                            .format(swapChainImageFormat)
+                            .samples(VkSampleCountFlags._1)
+                            .loadOp(VkAttachmentLoadOp.CLEAR)
+                            .storeOp(VkAttachmentStoreOp.STORE)
+                            .stencilLoadOp(VkAttachmentLoadOp.DONT_CARE)
+                            .stencilStoreOp(VkAttachmentStoreOp.DONT_CARE)
+                            .initialLayout(VkImageLayout.UNDEFINED)
+                            .finalLayout(VkImageLayout.PRESENT_SRC_KHR))
+                    .at(1, it -> it
+                            .format(findDepthFormat())
+                            .samples(VkSampleCountFlags._1)
+                            .loadOp(VkAttachmentLoadOp.CLEAR)
+                            .storeOp(VkAttachmentStoreOp.DONT_CARE)
+                            .stencilLoadOp(VkAttachmentLoadOp.DONT_CARE)
+                            .stencilStoreOp(VkAttachmentStoreOp.DONT_CARE)
+                            .initialLayout(VkImageLayout.UNDEFINED)
+                            .finalLayout(VkImageLayout.DEPTH_STENCIL_ATTACHMENT_OPTIMAL));
 
             var colorAttachmentRef = VkAttachmentReference.allocate(arena)
                     .attachment(0)
@@ -453,17 +452,17 @@ class Application {
 
     private void createDescriptorSetLayout() {
         try (var arena = Arena.ofConfined()) {
-            var bindings = VkDescriptorSetLayoutBinding.allocate(arena, 2);
-            bindings.at(0)
-                    .binding(0)
-                    .descriptorType(VkDescriptorType.UNIFORM_BUFFER)
-                    .descriptorCount(1)
-                    .stageFlags(VkShaderStageFlags.VERTEX);
-            bindings.at(1)
-                    .binding(1)
-                    .descriptorCount(1)
-                    .descriptorType(VkDescriptorType.COMBINED_IMAGE_SAMPLER)
-                    .stageFlags(VkShaderStageFlags.FRAGMENT);
+            var bindings = VkDescriptorSetLayoutBinding.allocate(arena, 2)
+                    .at(0, it -> it
+                            .binding(0)
+                            .descriptorType(VkDescriptorType.UNIFORM_BUFFER)
+                            .descriptorCount(1)
+                            .stageFlags(VkShaderStageFlags.VERTEX))
+                    .at(1, it -> it
+                            .binding(1)
+                            .descriptorCount(1)
+                            .descriptorType(VkDescriptorType.COMBINED_IMAGE_SAMPLER)
+                            .stageFlags(VkShaderStageFlags.FRAGMENT));
 
             var layoutInfo = VkDescriptorSetLayoutCreateInfo.allocate(arena)
                     .bindingCount(2)
@@ -485,15 +484,15 @@ class Application {
             var vertexShaderModule = createShaderModule(vertShaderCode);
             var fragmentShaderModule = createShaderModule(fragShaderCode);
 
-            var shaderStages = VkPipelineShaderStageCreateInfo.allocate(arena, 2);
-            shaderStages.at(0)
-                    .stage(VkShaderStageFlags.VERTEX)
-                    .module(vertexShaderModule)
-                    .pName(BytePtr.allocateString(arena, "main"));
-            shaderStages.at(1)
-                    .stage(VkShaderStageFlags.FRAGMENT)
-                    .module(fragmentShaderModule)
-                    .pName(BytePtr.allocateString(arena, "main"));
+            var shaderStages = VkPipelineShaderStageCreateInfo.allocate(arena, 2)
+                    .at(0, it -> it
+                            .stage(VkShaderStageFlags.VERTEX)
+                            .module(vertexShaderModule)
+                            .pName(BytePtr.allocateString(arena, "main")))
+                    .at(1, it -> it
+                            .stage(VkShaderStageFlags.FRAGMENT)
+                            .module(fragmentShaderModule)
+                            .pName(BytePtr.allocateString(arena, "main")));
 
             var dynamicStates = IntPtr.allocateV(arena, VkDynamicState.VIEWPORT, VkDynamicState.SCISSOR);
 
@@ -793,13 +792,13 @@ class Application {
 
     private void createDescriptorPool() {
         try (var arena = Arena.ofConfined()) {
-            var poolSizes = VkDescriptorPoolSize.allocate(arena, 2);
-            poolSizes.at(0)
-                    .type(VkDescriptorType.UNIFORM_BUFFER)
-                    .descriptorCount(MAX_FRAMES_IN_FLIGHT);
-            poolSizes.at(1)
-                    .type(VkDescriptorType.COMBINED_IMAGE_SAMPLER)
-                    .descriptorCount(MAX_FRAMES_IN_FLIGHT);
+            var poolSizes = VkDescriptorPoolSize.allocate(arena, 2)
+                    .at(0, it -> it
+                            .type(VkDescriptorType.UNIFORM_BUFFER)
+                            .descriptorCount(MAX_FRAMES_IN_FLIGHT))
+                    .at(1, it -> it
+                            .type(VkDescriptorType.COMBINED_IMAGE_SAMPLER)
+                            .descriptorCount(MAX_FRAMES_IN_FLIGHT));
 
             var poolInfo = VkDescriptorPoolCreateInfo.allocate(arena)
                     .poolSizeCount(2)
@@ -842,21 +841,22 @@ class Application {
                         .imageView(textureImageView)
                         .sampler(textureSampler);
 
-                var descriptorWrite = VkWriteDescriptorSet.allocate(arena, 2);
-                descriptorWrite.at(0)
-                        .dstSet(descriptorSets.read(i))
-                        .dstBinding(0)
-                        .dstArrayElement(0)
-                        .descriptorType(VkDescriptorType.UNIFORM_BUFFER)
-                        .descriptorCount(1)
-                        .pBufferInfo(bufferInfo);
-                descriptorWrite.at(1)
-                        .dstSet(descriptorSets.read(i))
-                        .dstBinding(1)
-                        .dstArrayElement(0)
-                        .descriptorType(VkDescriptorType.COMBINED_IMAGE_SAMPLER)
-                        .descriptorCount(1)
-                        .pImageInfo(imageInfo);
+                int finalI = i;
+                var descriptorWrite = VkWriteDescriptorSet.allocate(arena, 2)
+                        .at(0, it -> it
+                                .dstSet(descriptorSets.read(finalI))
+                                .dstBinding(0)
+                                .dstArrayElement(0)
+                                .descriptorType(VkDescriptorType.UNIFORM_BUFFER)
+                                .descriptorCount(1)
+                                .pBufferInfo(bufferInfo))
+                        .at(1, it -> it
+                                .dstSet(descriptorSets.read(finalI))
+                                .dstBinding(1)
+                                .dstArrayElement(0)
+                                .descriptorType(VkDescriptorType.COMBINED_IMAGE_SAMPLER)
+                                .descriptorCount(1)
+                                .pImageInfo(imageInfo));
 
                 deviceCommands.updateDescriptorSets(device, 2, descriptorWrite, 0, null);
             }
@@ -1864,23 +1864,22 @@ class Application {
     }
 
     private static VkVertexInputAttributeDescription.Ptr getAttributeDescriptions(Arena arena) {
-        var attributeDescriptions = VkVertexInputAttributeDescription.allocate(arena, 3);
-        attributeDescriptions.at(0)
-                .binding(0)
-                .location(0)
-                .format(VkFormat.R32G32B32_SFLOAT)
-                .offset(0);
-        attributeDescriptions.at(1)
-                .binding(0)
-                .location(1)
-                .format(VkFormat.R32G32B32_SFLOAT)
-                .offset(Float.BYTES * 3);
-        attributeDescriptions.at(2)
-                .binding(0)
-                .location(2)
-                .format(VkFormat.R32G32_SFLOAT)
-                .offset(Float.BYTES * 6);
-        return attributeDescriptions;
+        return VkVertexInputAttributeDescription.allocate(arena, 3)
+                .at(0, it -> it
+                        .binding(0)
+                        .location(0)
+                        .format(VkFormat.R32G32B32_SFLOAT)
+                        .offset(0))
+                .at(1, it -> it
+                        .binding(0)
+                        .location(1)
+                        .format(VkFormat.R32G32B32_SFLOAT)
+                        .offset(Float.BYTES * 3))
+                .at(2, it -> it
+                        .binding(0)
+                        .location(2)
+                        .format(VkFormat.R32G32_SFLOAT)
+                        .offset(Float.BYTES * 6));
     }
 
     private GLFWwindow window;
