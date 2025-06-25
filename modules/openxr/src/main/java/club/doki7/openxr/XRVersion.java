@@ -13,8 +13,8 @@ public record XRVersion(
     public static final XRVersion XR_API_VERSION_1_1 = new XRVersion((short) 1, (short) 1, XR_CURRENT_API_VERSION.patch());
 
     public static XRVersion decode(@Unsigned long version) {
-        var major = (short) ((version >> 48) & 0xFFFF);
-        var minor = (short) ((version >> 32) & 0xFFFF);
+        var major = (short) ((version >> 48) & 0xFFFFL);
+        var minor = (short) ((version >> 32) & 0xFFFFL);
         var patch = (int) (version & 0xFFFFFFFFL);
 
         return new XRVersion(major, minor, patch);
