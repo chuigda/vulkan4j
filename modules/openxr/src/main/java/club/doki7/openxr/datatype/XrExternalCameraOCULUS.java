@@ -30,7 +30,7 @@ import club.doki7.vulkan.handle.*;
 /// typedef struct XrExternalCameraOCULUS {
 ///     XrStructureType type; // @link substring="XrStructureType" target="XrStructureType" @link substring="type" target="#type"
 ///     void const* next; // @link substring="next" target="#next"
-///     char name; // @link substring="name" target="#name"
+///     char[XR_MAX_EXTERNAL_CAMERA_NAME_SIZE_OCULUS] name; // @link substring="name" target="#name"
 ///     XrExternalCameraIntrinsicsOCULUS intrinsics; // @link substring="XrExternalCameraIntrinsicsOCULUS" target="XrExternalCameraIntrinsicsOCULUS" @link substring="intrinsics" target="#intrinsics"
 ///     XrExternalCameraExtrinsicsOCULUS extrinsics; // @link substring="XrExternalCameraExtrinsicsOCULUS" target="XrExternalCameraExtrinsicsOCULUS" @link substring="extrinsics" target="#extrinsics"
 /// } XrExternalCameraOCULUS;
@@ -219,13 +219,17 @@ public record XrExternalCameraOCULUS(@NotNull MemorySegment segment) implements 
         return this;
     }
 
-    public byte name() {
-        return segment.get(LAYOUT$name, OFFSET$name);
+    public BytePtr name() {
+        return new BytePtr(nameRaw());
     }
 
-    public XrExternalCameraOCULUS name(byte value) {
-        segment.set(LAYOUT$name, OFFSET$name, value);
+    public XrExternalCameraOCULUS name(BytePtr value) {
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$name, SIZE$name);
         return this;
+    }
+
+    public @NotNull MemorySegment nameRaw() {
+        return segment.asSlice(OFFSET$name, SIZE$name);
     }
 
     public @NotNull XrExternalCameraIntrinsicsOCULUS intrinsics() {
@@ -259,7 +263,7 @@ public record XrExternalCameraOCULUS(@NotNull MemorySegment segment) implements 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(
         ValueLayout.JAVA_INT.withName("type"),
         ValueLayout.ADDRESS.withName("next"),
-        ValueLayout.JAVA_BYTE.withName("name"),
+        MemoryLayout.sequenceLayout(MAX_EXTERNAL_CAMERA_NAME_SIZE_OCULUS, ValueLayout.JAVA_BYTE).withName("name"),
         XrExternalCameraIntrinsicsOCULUS.LAYOUT.withName("intrinsics"),
         XrExternalCameraExtrinsicsOCULUS.LAYOUT.withName("extrinsics")
     );
@@ -273,7 +277,7 @@ public record XrExternalCameraOCULUS(@NotNull MemorySegment segment) implements 
 
     public static final OfInt LAYOUT$type = (OfInt) LAYOUT.select(PATH$type);
     public static final AddressLayout LAYOUT$next = (AddressLayout) LAYOUT.select(PATH$next);
-    public static final OfByte LAYOUT$name = (OfByte) LAYOUT.select(PATH$name);
+    public static final SequenceLayout LAYOUT$name = (SequenceLayout) LAYOUT.select(PATH$name);
     public static final StructLayout LAYOUT$intrinsics = (StructLayout) LAYOUT.select(PATH$intrinsics);
     public static final StructLayout LAYOUT$extrinsics = (StructLayout) LAYOUT.select(PATH$extrinsics);
 

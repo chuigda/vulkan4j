@@ -145,21 +145,29 @@ private fun extractMacroConstant(e: Element): Constant? {
     if (!defineText.startsWith("#define")) return null
 
     val name = e.getFirstElement("name")!!
+    val nameString = name.textContent.trim()
     val definedAs = name.nextSibling!!.textContent.trim()
+
+    if (ignoredDefineConstants.contains(nameString)) {
+        return null
+    }
 
     // function `#define`
     if (definedAs.startsWith('(')) return null
 
-    val type = when {
-        definedAs.endsWith("LL") -> "int64_t"
-        definedAs.endsWith("u") -> "uint32_t"
-        // TODO: really?
-        definedAs.contains("sizeof") -> "uint64_t"
-        else -> "int32_t"
+    val (type, value) = when {
+        definedAs.endsWith("LL") -> Pair("int64_t", definedAs.replace("LL", "L"))
+        definedAs.endsWith("u") -> Pair("uint32_t", definedAs.removeSuffix("u"))
+        else -> Pair("uint32_t", definedAs)
     }
 
-    return Constant(name.textContent.trim(), IdentifierType(type), definedAs)
+    return Constant(nameString, IdentifierType(type), value)
 }
+
+private val ignoredDefineConstants = setOf(
+    "XR_FACE_EXPRESSSION_SET_DEFAULT_FB",
+    "XR_MAX_EVENT_DATA_SIZE",
+)
 
 /**
  * @param e in form `<type>typedef <type>TYPE</type> <name>NAME</name></type>`

@@ -31,7 +31,7 @@ import club.doki7.vulkan.handle.*;
 ///     XrStructureType type; // @link substring="XrStructureType" target="XrStructureType" @link substring="type" target="#type"
 ///     void const* next; // @link substring="next" target="#next"
 ///     XrVirtualKeyboardMETA keyboard; // @link substring="XrVirtualKeyboardMETA" target="XrVirtualKeyboardMETA" @link substring="keyboard" target="#keyboard"
-///     char text; // @link substring="text" target="#text"
+///     char[XR_MAX_VIRTUAL_KEYBOARD_COMMIT_TEXT_SIZE_META] text; // @link substring="text" target="#text"
 /// } XrEventDataVirtualKeyboardCommitTextMETA;
 /// }
 ///
@@ -231,20 +231,24 @@ public record XrEventDataVirtualKeyboardCommitTextMETA(@NotNull MemorySegment se
         return this;
     }
 
-    public byte text() {
-        return segment.get(LAYOUT$text, OFFSET$text);
+    public BytePtr text() {
+        return new BytePtr(textRaw());
     }
 
-    public XrEventDataVirtualKeyboardCommitTextMETA text(byte value) {
-        segment.set(LAYOUT$text, OFFSET$text, value);
+    public XrEventDataVirtualKeyboardCommitTextMETA text(BytePtr value) {
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$text, SIZE$text);
         return this;
+    }
+
+    public @NotNull MemorySegment textRaw() {
+        return segment.asSlice(OFFSET$text, SIZE$text);
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(
         ValueLayout.JAVA_INT.withName("type"),
         ValueLayout.ADDRESS.withName("next"),
         ValueLayout.ADDRESS.withName("keyboard"),
-        ValueLayout.JAVA_BYTE.withName("text")
+        MemoryLayout.sequenceLayout(MAX_VIRTUAL_KEYBOARD_COMMIT_TEXT_SIZE_META, ValueLayout.JAVA_BYTE).withName("text")
     );
     public static final long BYTES = LAYOUT.byteSize();
 
@@ -256,7 +260,7 @@ public record XrEventDataVirtualKeyboardCommitTextMETA(@NotNull MemorySegment se
     public static final OfInt LAYOUT$type = (OfInt) LAYOUT.select(PATH$type);
     public static final AddressLayout LAYOUT$next = (AddressLayout) LAYOUT.select(PATH$next);
     public static final AddressLayout LAYOUT$keyboard = (AddressLayout) LAYOUT.select(PATH$keyboard);
-    public static final OfByte LAYOUT$text = (OfByte) LAYOUT.select(PATH$text);
+    public static final SequenceLayout LAYOUT$text = (SequenceLayout) LAYOUT.select(PATH$text);
 
     public static final long SIZE$type = LAYOUT$type.byteSize();
     public static final long SIZE$next = LAYOUT$next.byteSize();

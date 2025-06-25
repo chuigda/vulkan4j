@@ -31,7 +31,7 @@ import club.doki7.vulkan.handle.*;
 ///     XrLoaderInterfaceStructs structType; // @link substring="XrLoaderInterfaceStructs" target="XrLoaderInterfaceStructs" @link substring="structType" target="#structType"
 ///     uint32_t structVersion; // @link substring="structVersion" target="#structVersion"
 ///     size_t structSize; // @link substring="structSize" target="#structSize"
-///     char layerName; // @link substring="layerName" target="#layerName"
+///     char[XR_MAX_API_LAYER_NAME_SIZE] layerName; // @link substring="layerName" target="#layerName"
 ///     PFN_xrGetInstanceProcAddr nextGetInstanceProcAddr; // @link substring="nextGetInstanceProcAddr" target="#nextGetInstanceProcAddr"
 ///     PFN_xrCreateApiLayerInstance nextCreateApiLayerInstance; // @link substring="nextCreateApiLayerInstance" target="#nextCreateApiLayerInstance"
 ///     XrApiLayerNextInfo* next; // @link substring="XrApiLayerNextInfo" target="XrApiLayerNextInfo" @link substring="next" target="#next"
@@ -206,13 +206,17 @@ public record XrApiLayerNextInfo(@NotNull MemorySegment segment) implements IXrA
         return this;
     }
 
-    public byte layerName() {
-        return segment.get(LAYOUT$layerName, OFFSET$layerName);
+    public BytePtr layerName() {
+        return new BytePtr(layerNameRaw());
     }
 
-    public XrApiLayerNextInfo layerName(byte value) {
-        segment.set(LAYOUT$layerName, OFFSET$layerName, value);
+    public XrApiLayerNextInfo layerName(BytePtr value) {
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$layerName, SIZE$layerName);
         return this;
+    }
+
+    public @NotNull MemorySegment layerNameRaw() {
+        return segment.asSlice(OFFSET$layerName, SIZE$layerName);
     }
 
     public @Pointer(comment="PFN_xrGetInstanceProcAddr") @NotNull MemorySegment nextGetInstanceProcAddr() {
@@ -279,7 +283,7 @@ public record XrApiLayerNextInfo(@NotNull MemorySegment segment) implements IXrA
         ValueLayout.JAVA_INT.withName("structType"),
         ValueLayout.JAVA_INT.withName("structVersion"),
         NativeLayout.C_SIZE_T.withName("structSize"),
-        ValueLayout.JAVA_BYTE.withName("layerName"),
+        MemoryLayout.sequenceLayout(MAX_API_LAYER_NAME_SIZE, ValueLayout.JAVA_BYTE).withName("layerName"),
         ValueLayout.ADDRESS.withName("nextGetInstanceProcAddr"),
         ValueLayout.ADDRESS.withName("nextCreateApiLayerInstance"),
         ValueLayout.ADDRESS.withName("next")
@@ -296,7 +300,7 @@ public record XrApiLayerNextInfo(@NotNull MemorySegment segment) implements IXrA
 
     public static final OfInt LAYOUT$structType = (OfInt) LAYOUT.select(PATH$structType);
     public static final OfInt LAYOUT$structVersion = (OfInt) LAYOUT.select(PATH$structVersion);
-    public static final OfByte LAYOUT$layerName = (OfByte) LAYOUT.select(PATH$layerName);
+    public static final SequenceLayout LAYOUT$layerName = (SequenceLayout) LAYOUT.select(PATH$layerName);
     public static final AddressLayout LAYOUT$nextGetInstanceProcAddr = (AddressLayout) LAYOUT.select(PATH$nextGetInstanceProcAddr);
     public static final AddressLayout LAYOUT$nextCreateApiLayerInstance = (AddressLayout) LAYOUT.select(PATH$nextCreateApiLayerInstance);
     public static final AddressLayout LAYOUT$next = (AddressLayout) LAYOUT.select(PATH$next);

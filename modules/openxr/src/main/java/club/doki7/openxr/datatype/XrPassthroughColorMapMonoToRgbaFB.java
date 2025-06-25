@@ -30,7 +30,7 @@ import club.doki7.vulkan.handle.*;
 /// typedef struct XrPassthroughColorMapMonoToRgbaFB {
 ///     XrStructureType type; // @link substring="XrStructureType" target="XrStructureType" @link substring="type" target="#type"
 ///     void const* next; // @link substring="next" target="#next"
-///     XrColor4f textureColorMap; // @link substring="XrColor4f" target="XrColor4f" @link substring="textureColorMap" target="#textureColorMap"
+///     XrColor4f[XR_PASSTHROUGH_COLOR_MAP_MONO_SIZE_FB] textureColorMap; // @link substring="XrColor4f" target="XrColor4f" @link substring="textureColorMap" target="#textureColorMap"
 /// } XrPassthroughColorMapMonoToRgbaFB;
 /// }
 ///
@@ -217,24 +217,34 @@ public record XrPassthroughColorMapMonoToRgbaFB(@NotNull MemorySegment segment) 
         return this;
     }
 
-    public @NotNull XrColor4f textureColorMap() {
-        return new XrColor4f(segment.asSlice(OFFSET$textureColorMap, LAYOUT$textureColorMap));
+    public XrColor4f.Ptr textureColorMap() {
+        return new XrColor4f.Ptr(textureColorMapRaw());
     }
 
-    public XrPassthroughColorMapMonoToRgbaFB textureColorMap(@NotNull XrColor4f value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$textureColorMap, SIZE$textureColorMap);
+    public XrPassthroughColorMapMonoToRgbaFB textureColorMap(XrColor4f.Ptr value) {
+        MemorySegment s = textureColorMapRaw();
+        s.copyFrom(value.segment());
         return this;
     }
 
-    public XrPassthroughColorMapMonoToRgbaFB textureColorMap(Consumer<@NotNull XrColor4f> consumer) {
-        consumer.accept(textureColorMap());
-        return this;
+    public XrColor4f textureColorMapAt(int index) {
+        MemorySegment s = textureColorMapRaw();
+        return new XrColor4f(s.asSlice(index * XrColor4f.BYTES, XrColor4f.BYTES));
+    }
+
+    public void textureColorMapAt(int index, XrColor4f value) {
+        MemorySegment s = textureColorMapRaw();
+        MemorySegment.copy(value.segment(), 0, s, index * XrColor4f.BYTES, XrColor4f.BYTES);
+    }
+
+    public @NotNull MemorySegment textureColorMapRaw() {
+        return segment.asSlice(OFFSET$textureColorMap, SIZE$textureColorMap);
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(
         ValueLayout.JAVA_INT.withName("type"),
         ValueLayout.ADDRESS.withName("next"),
-        XrColor4f.LAYOUT.withName("textureColorMap")
+        MemoryLayout.sequenceLayout(PASSTHROUGH_COLOR_MAP_MONO_SIZE_FB, XrColor4f.LAYOUT).withName("textureColorMap")
     );
     public static final long BYTES = LAYOUT.byteSize();
 
@@ -244,7 +254,7 @@ public record XrPassthroughColorMapMonoToRgbaFB(@NotNull MemorySegment segment) 
 
     public static final OfInt LAYOUT$type = (OfInt) LAYOUT.select(PATH$type);
     public static final AddressLayout LAYOUT$next = (AddressLayout) LAYOUT.select(PATH$next);
-    public static final StructLayout LAYOUT$textureColorMap = (StructLayout) LAYOUT.select(PATH$textureColorMap);
+    public static final SequenceLayout LAYOUT$textureColorMap = (SequenceLayout) LAYOUT.select(PATH$textureColorMap);
 
     public static final long SIZE$type = LAYOUT$type.byteSize();
     public static final long SIZE$next = LAYOUT$next.byteSize();

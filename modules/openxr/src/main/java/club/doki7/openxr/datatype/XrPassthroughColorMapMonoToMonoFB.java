@@ -30,7 +30,7 @@ import club.doki7.vulkan.handle.*;
 /// typedef struct XrPassthroughColorMapMonoToMonoFB {
 ///     XrStructureType type; // @link substring="XrStructureType" target="XrStructureType" @link substring="type" target="#type"
 ///     void const* next; // @link substring="next" target="#next"
-///     uint8_t textureColorMap; // @link substring="textureColorMap" target="#textureColorMap"
+///     uint8_t[XR_PASSTHROUGH_COLOR_MAP_MONO_SIZE_FB] textureColorMap; // @link substring="textureColorMap" target="#textureColorMap"
 /// } XrPassthroughColorMapMonoToMonoFB;
 /// }
 ///
@@ -217,19 +217,23 @@ public record XrPassthroughColorMapMonoToMonoFB(@NotNull MemorySegment segment) 
         return this;
     }
 
-    public @Unsigned byte textureColorMap() {
-        return segment.get(LAYOUT$textureColorMap, OFFSET$textureColorMap);
+    public @Unsigned BytePtr textureColorMap() {
+        return new BytePtr(textureColorMapRaw());
     }
 
-    public XrPassthroughColorMapMonoToMonoFB textureColorMap(@Unsigned byte value) {
-        segment.set(LAYOUT$textureColorMap, OFFSET$textureColorMap, value);
+    public XrPassthroughColorMapMonoToMonoFB textureColorMap(@Unsigned BytePtr value) {
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$textureColorMap, SIZE$textureColorMap);
         return this;
+    }
+
+    public @NotNull MemorySegment textureColorMapRaw() {
+        return segment.asSlice(OFFSET$textureColorMap, SIZE$textureColorMap);
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(
         ValueLayout.JAVA_INT.withName("type"),
         ValueLayout.ADDRESS.withName("next"),
-        ValueLayout.JAVA_BYTE.withName("textureColorMap")
+        MemoryLayout.sequenceLayout(PASSTHROUGH_COLOR_MAP_MONO_SIZE_FB, ValueLayout.JAVA_BYTE).withName("textureColorMap")
     );
     public static final long BYTES = LAYOUT.byteSize();
 
@@ -239,7 +243,7 @@ public record XrPassthroughColorMapMonoToMonoFB(@NotNull MemorySegment segment) 
 
     public static final OfInt LAYOUT$type = (OfInt) LAYOUT.select(PATH$type);
     public static final AddressLayout LAYOUT$next = (AddressLayout) LAYOUT.select(PATH$next);
-    public static final OfByte LAYOUT$textureColorMap = (OfByte) LAYOUT.select(PATH$textureColorMap);
+    public static final SequenceLayout LAYOUT$textureColorMap = (SequenceLayout) LAYOUT.select(PATH$textureColorMap);
 
     public static final long SIZE$type = LAYOUT$type.byteSize();
     public static final long SIZE$next = LAYOUT$next.byteSize();

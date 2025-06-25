@@ -16,6 +16,7 @@ import club.doki7.ffm.ptr.*;
 import club.doki7.openxr.bitmask.*;
 import club.doki7.openxr.handle.*;
 import club.doki7.openxr.enumtype.*;
+import static club.doki7.openxr.enumtype.XrEyePositionFB.COUNT;
 import static club.doki7.openxr.XRConstants.*;
 import club.doki7.vulkan.bitmask.*;
 import club.doki7.vulkan.datatype.*;
@@ -30,7 +31,7 @@ import club.doki7.vulkan.handle.*;
 /// typedef struct XrEyeGazesFB {
 ///     XrStructureType type; // @link substring="XrStructureType" target="XrStructureType" @link substring="type" target="#type"
 ///     void* next; // @link substring="next" target="#next"
-///     XrEyeGazeFB gaze; // @link substring="XrEyeGazeFB" target="XrEyeGazeFB" @link substring="gaze" target="#gaze"
+///     XrEyeGazeFB[XR_EYE_POSITION_COUNT_FB] gaze; // @link substring="XrEyeGazeFB" target="XrEyeGazeFB" @link substring="gaze" target="#gaze"
 ///     XrTime time; // @link substring="time" target="#time"
 /// } XrEyeGazesFB;
 /// }
@@ -218,18 +219,28 @@ public record XrEyeGazesFB(@NotNull MemorySegment segment) implements IXrEyeGaze
         return this;
     }
 
-    public @NotNull XrEyeGazeFB gaze() {
-        return new XrEyeGazeFB(segment.asSlice(OFFSET$gaze, LAYOUT$gaze));
+    public XrEyeGazeFB.Ptr gaze() {
+        return new XrEyeGazeFB.Ptr(gazeRaw());
     }
 
-    public XrEyeGazesFB gaze(@NotNull XrEyeGazeFB value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$gaze, SIZE$gaze);
+    public XrEyeGazesFB gaze(XrEyeGazeFB.Ptr value) {
+        MemorySegment s = gazeRaw();
+        s.copyFrom(value.segment());
         return this;
     }
 
-    public XrEyeGazesFB gaze(Consumer<@NotNull XrEyeGazeFB> consumer) {
-        consumer.accept(gaze());
-        return this;
+    public XrEyeGazeFB gazeAt(int index) {
+        MemorySegment s = gazeRaw();
+        return new XrEyeGazeFB(s.asSlice(index * XrEyeGazeFB.BYTES, XrEyeGazeFB.BYTES));
+    }
+
+    public void gazeAt(int index, XrEyeGazeFB value) {
+        MemorySegment s = gazeRaw();
+        MemorySegment.copy(value.segment(), 0, s, index * XrEyeGazeFB.BYTES, XrEyeGazeFB.BYTES);
+    }
+
+    public @NotNull MemorySegment gazeRaw() {
+        return segment.asSlice(OFFSET$gaze, SIZE$gaze);
     }
 
     public @NativeType("XrTime") long time() {
@@ -244,7 +255,7 @@ public record XrEyeGazesFB(@NotNull MemorySegment segment) implements IXrEyeGaze
     public static final StructLayout LAYOUT = NativeLayout.structLayout(
         ValueLayout.JAVA_INT.withName("type"),
         ValueLayout.ADDRESS.withName("next"),
-        XrEyeGazeFB.LAYOUT.withName("gaze"),
+        MemoryLayout.sequenceLayout(COUNT, XrEyeGazeFB.LAYOUT).withName("gaze"),
         ValueLayout.JAVA_LONG.withName("time")
     );
     public static final long BYTES = LAYOUT.byteSize();
@@ -256,7 +267,7 @@ public record XrEyeGazesFB(@NotNull MemorySegment segment) implements IXrEyeGaze
 
     public static final OfInt LAYOUT$type = (OfInt) LAYOUT.select(PATH$type);
     public static final AddressLayout LAYOUT$next = (AddressLayout) LAYOUT.select(PATH$next);
-    public static final StructLayout LAYOUT$gaze = (StructLayout) LAYOUT.select(PATH$gaze);
+    public static final SequenceLayout LAYOUT$gaze = (SequenceLayout) LAYOUT.select(PATH$gaze);
     public static final OfLong LAYOUT$time = (OfLong) LAYOUT.select(PATH$time);
 
     public static final long SIZE$type = LAYOUT$type.byteSize();

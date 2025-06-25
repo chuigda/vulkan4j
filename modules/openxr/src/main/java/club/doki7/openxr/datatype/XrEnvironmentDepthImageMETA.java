@@ -33,7 +33,7 @@ import club.doki7.vulkan.handle.*;
 ///     uint32_t swapchainIndex; // @link substring="swapchainIndex" target="#swapchainIndex"
 ///     float nearZ; // @link substring="nearZ" target="#nearZ"
 ///     float farZ; // @link substring="farZ" target="#farZ"
-///     XrEnvironmentDepthImageViewMETA views; // @link substring="XrEnvironmentDepthImageViewMETA" target="XrEnvironmentDepthImageViewMETA" @link substring="views" target="#views"
+///     XrEnvironmentDepthImageViewMETA[2] views; // @link substring="XrEnvironmentDepthImageViewMETA" target="XrEnvironmentDepthImageViewMETA" @link substring="views" target="#views"
 /// } XrEnvironmentDepthImageMETA;
 /// }
 ///
@@ -247,18 +247,28 @@ public record XrEnvironmentDepthImageMETA(@NotNull MemorySegment segment) implem
         return this;
     }
 
-    public @NotNull XrEnvironmentDepthImageViewMETA views() {
-        return new XrEnvironmentDepthImageViewMETA(segment.asSlice(OFFSET$views, LAYOUT$views));
+    public XrEnvironmentDepthImageViewMETA.Ptr views() {
+        return new XrEnvironmentDepthImageViewMETA.Ptr(viewsRaw());
     }
 
-    public XrEnvironmentDepthImageMETA views(@NotNull XrEnvironmentDepthImageViewMETA value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$views, SIZE$views);
+    public XrEnvironmentDepthImageMETA views(XrEnvironmentDepthImageViewMETA.Ptr value) {
+        MemorySegment s = viewsRaw();
+        s.copyFrom(value.segment());
         return this;
     }
 
-    public XrEnvironmentDepthImageMETA views(Consumer<@NotNull XrEnvironmentDepthImageViewMETA> consumer) {
-        consumer.accept(views());
-        return this;
+    public XrEnvironmentDepthImageViewMETA viewsAt(int index) {
+        MemorySegment s = viewsRaw();
+        return new XrEnvironmentDepthImageViewMETA(s.asSlice(index * XrEnvironmentDepthImageViewMETA.BYTES, XrEnvironmentDepthImageViewMETA.BYTES));
+    }
+
+    public void viewsAt(int index, XrEnvironmentDepthImageViewMETA value) {
+        MemorySegment s = viewsRaw();
+        MemorySegment.copy(value.segment(), 0, s, index * XrEnvironmentDepthImageViewMETA.BYTES, XrEnvironmentDepthImageViewMETA.BYTES);
+    }
+
+    public @NotNull MemorySegment viewsRaw() {
+        return segment.asSlice(OFFSET$views, SIZE$views);
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(
@@ -267,7 +277,7 @@ public record XrEnvironmentDepthImageMETA(@NotNull MemorySegment segment) implem
         ValueLayout.JAVA_INT.withName("swapchainIndex"),
         ValueLayout.JAVA_FLOAT.withName("nearZ"),
         ValueLayout.JAVA_FLOAT.withName("farZ"),
-        XrEnvironmentDepthImageViewMETA.LAYOUT.withName("views")
+        MemoryLayout.sequenceLayout(2, XrEnvironmentDepthImageViewMETA.LAYOUT).withName("views")
     );
     public static final long BYTES = LAYOUT.byteSize();
 
@@ -283,7 +293,7 @@ public record XrEnvironmentDepthImageMETA(@NotNull MemorySegment segment) implem
     public static final OfInt LAYOUT$swapchainIndex = (OfInt) LAYOUT.select(PATH$swapchainIndex);
     public static final OfFloat LAYOUT$nearZ = (OfFloat) LAYOUT.select(PATH$nearZ);
     public static final OfFloat LAYOUT$farZ = (OfFloat) LAYOUT.select(PATH$farZ);
-    public static final StructLayout LAYOUT$views = (StructLayout) LAYOUT.select(PATH$views);
+    public static final SequenceLayout LAYOUT$views = (SequenceLayout) LAYOUT.select(PATH$views);
 
     public static final long SIZE$type = LAYOUT$type.byteSize();
     public static final long SIZE$next = LAYOUT$next.byteSize();

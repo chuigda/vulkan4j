@@ -28,7 +28,7 @@ import club.doki7.vulkan.handle.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct XrRenderModelAssetNodePropertiesEXT {
-///     char uniqueName; // @link substring="uniqueName" target="#uniqueName"
+///     char[XR_MAX_RENDER_MODEL_ASSET_NODE_NAME_SIZE_EXT] uniqueName; // @link substring="uniqueName" target="#uniqueName"
 /// } XrRenderModelAssetNodePropertiesEXT;
 /// }
 ///
@@ -173,23 +173,27 @@ public record XrRenderModelAssetNodePropertiesEXT(@NotNull MemorySegment segment
         return ret;
     }
 
-    public byte uniqueName() {
-        return segment.get(LAYOUT$uniqueName, OFFSET$uniqueName);
+    public BytePtr uniqueName() {
+        return new BytePtr(uniqueNameRaw());
     }
 
-    public XrRenderModelAssetNodePropertiesEXT uniqueName(byte value) {
-        segment.set(LAYOUT$uniqueName, OFFSET$uniqueName, value);
+    public XrRenderModelAssetNodePropertiesEXT uniqueName(BytePtr value) {
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$uniqueName, SIZE$uniqueName);
         return this;
     }
 
+    public @NotNull MemorySegment uniqueNameRaw() {
+        return segment.asSlice(OFFSET$uniqueName, SIZE$uniqueName);
+    }
+
     public static final StructLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_BYTE.withName("uniqueName")
+        MemoryLayout.sequenceLayout(MAX_RENDER_MODEL_ASSET_NODE_NAME_SIZE_EXT, ValueLayout.JAVA_BYTE).withName("uniqueName")
     );
     public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$uniqueName = PathElement.groupElement("uniqueName");
 
-    public static final OfByte LAYOUT$uniqueName = (OfByte) LAYOUT.select(PATH$uniqueName);
+    public static final SequenceLayout LAYOUT$uniqueName = (SequenceLayout) LAYOUT.select(PATH$uniqueName);
 
     public static final long SIZE$uniqueName = LAYOUT$uniqueName.byteSize();
 

@@ -33,7 +33,7 @@ import club.doki7.vulkan.handle.*;
 ///     XrAsyncRequestIdFB discoveryRequestId; // @link substring="discoveryRequestId" target="#discoveryRequestId"
 ///     XrUuid advertisementUuid; // @link substring="XrUuid" target="XrUuid" @link substring="advertisementUuid" target="#advertisementUuid"
 ///     uint32_t bufferSize; // @link substring="bufferSize" target="#bufferSize"
-///     uint8_t buffer; // @link substring="buffer" target="#buffer"
+///     uint8_t[XR_MAX_COLOCATION_DISCOVERY_BUFFER_SIZE_META] buffer; // @link substring="buffer" target="#buffer"
 /// } XrEventDataColocationDiscoveryResultMETA;
 /// }
 ///
@@ -252,13 +252,17 @@ public record XrEventDataColocationDiscoveryResultMETA(@NotNull MemorySegment se
         return this;
     }
 
-    public @Unsigned byte buffer() {
-        return segment.get(LAYOUT$buffer, OFFSET$buffer);
+    public @Unsigned BytePtr buffer() {
+        return new BytePtr(bufferRaw());
     }
 
-    public XrEventDataColocationDiscoveryResultMETA buffer(@Unsigned byte value) {
-        segment.set(LAYOUT$buffer, OFFSET$buffer, value);
+    public XrEventDataColocationDiscoveryResultMETA buffer(@Unsigned BytePtr value) {
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$buffer, SIZE$buffer);
         return this;
+    }
+
+    public @NotNull MemorySegment bufferRaw() {
+        return segment.asSlice(OFFSET$buffer, SIZE$buffer);
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(
@@ -267,7 +271,7 @@ public record XrEventDataColocationDiscoveryResultMETA(@NotNull MemorySegment se
         ValueLayout.JAVA_LONG.withName("discoveryRequestId"),
         XrUuid.LAYOUT.withName("advertisementUuid"),
         ValueLayout.JAVA_INT.withName("bufferSize"),
-        ValueLayout.JAVA_BYTE.withName("buffer")
+        MemoryLayout.sequenceLayout(MAX_COLOCATION_DISCOVERY_BUFFER_SIZE_META, ValueLayout.JAVA_BYTE).withName("buffer")
     );
     public static final long BYTES = LAYOUT.byteSize();
 
@@ -283,7 +287,7 @@ public record XrEventDataColocationDiscoveryResultMETA(@NotNull MemorySegment se
     public static final OfLong LAYOUT$discoveryRequestId = (OfLong) LAYOUT.select(PATH$discoveryRequestId);
     public static final StructLayout LAYOUT$advertisementUuid = (StructLayout) LAYOUT.select(PATH$advertisementUuid);
     public static final OfInt LAYOUT$bufferSize = (OfInt) LAYOUT.select(PATH$bufferSize);
-    public static final OfByte LAYOUT$buffer = (OfByte) LAYOUT.select(PATH$buffer);
+    public static final SequenceLayout LAYOUT$buffer = (SequenceLayout) LAYOUT.select(PATH$buffer);
 
     public static final long SIZE$type = LAYOUT$type.byteSize();
     public static final long SIZE$next = LAYOUT$next.byteSize();

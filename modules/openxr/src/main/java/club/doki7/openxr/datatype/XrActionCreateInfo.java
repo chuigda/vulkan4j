@@ -30,11 +30,11 @@ import club.doki7.vulkan.handle.*;
 /// typedef struct XrActionCreateInfo {
 ///     XrStructureType type; // @link substring="XrStructureType" target="XrStructureType" @link substring="type" target="#type"
 ///     void const* next; // @link substring="next" target="#next"
-///     char actionName; // @link substring="actionName" target="#actionName"
+///     char[XR_MAX_ACTION_NAME_SIZE] actionName; // @link substring="actionName" target="#actionName"
 ///     XrActionType actionType; // @link substring="XrActionType" target="XrActionType" @link substring="actionType" target="#actionType"
 ///     uint32_t countSubactionPaths; // optional // @link substring="countSubactionPaths" target="#countSubactionPaths"
 ///     XrPath const* subactionPaths; // optional // @link substring="subactionPaths" target="#subactionPaths"
-///     char localizedActionName; // @link substring="localizedActionName" target="#localizedActionName"
+///     char[XR_MAX_LOCALIZED_ACTION_NAME_SIZE] localizedActionName; // @link substring="localizedActionName" target="#localizedActionName"
 /// } XrActionCreateInfo;
 /// }
 ///
@@ -221,13 +221,17 @@ public record XrActionCreateInfo(@NotNull MemorySegment segment) implements IXrA
         return this;
     }
 
-    public byte actionName() {
-        return segment.get(LAYOUT$actionName, OFFSET$actionName);
+    public BytePtr actionName() {
+        return new BytePtr(actionNameRaw());
     }
 
-    public XrActionCreateInfo actionName(byte value) {
-        segment.set(LAYOUT$actionName, OFFSET$actionName, value);
+    public XrActionCreateInfo actionName(BytePtr value) {
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$actionName, SIZE$actionName);
         return this;
+    }
+
+    public @NotNull MemorySegment actionNameRaw() {
+        return segment.asSlice(OFFSET$actionName, SIZE$actionName);
     }
 
     public @EnumType(XrActionType.class) int actionType() {
@@ -274,23 +278,27 @@ public record XrActionCreateInfo(@NotNull MemorySegment segment) implements IXrA
         segment.set(LAYOUT$subactionPaths, OFFSET$subactionPaths, value);
     }
 
-    public byte localizedActionName() {
-        return segment.get(LAYOUT$localizedActionName, OFFSET$localizedActionName);
+    public BytePtr localizedActionName() {
+        return new BytePtr(localizedActionNameRaw());
     }
 
-    public XrActionCreateInfo localizedActionName(byte value) {
-        segment.set(LAYOUT$localizedActionName, OFFSET$localizedActionName, value);
+    public XrActionCreateInfo localizedActionName(BytePtr value) {
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$localizedActionName, SIZE$localizedActionName);
         return this;
+    }
+
+    public @NotNull MemorySegment localizedActionNameRaw() {
+        return segment.asSlice(OFFSET$localizedActionName, SIZE$localizedActionName);
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(
         ValueLayout.JAVA_INT.withName("type"),
         ValueLayout.ADDRESS.withName("next"),
-        ValueLayout.JAVA_BYTE.withName("actionName"),
+        MemoryLayout.sequenceLayout(MAX_ACTION_NAME_SIZE, ValueLayout.JAVA_BYTE).withName("actionName"),
         ValueLayout.JAVA_INT.withName("actionType"),
         ValueLayout.JAVA_INT.withName("countSubactionPaths"),
         ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_LONG).withName("subactionPaths"),
-        ValueLayout.JAVA_BYTE.withName("localizedActionName")
+        MemoryLayout.sequenceLayout(MAX_LOCALIZED_ACTION_NAME_SIZE, ValueLayout.JAVA_BYTE).withName("localizedActionName")
     );
     public static final long BYTES = LAYOUT.byteSize();
 
@@ -304,11 +312,11 @@ public record XrActionCreateInfo(@NotNull MemorySegment segment) implements IXrA
 
     public static final OfInt LAYOUT$type = (OfInt) LAYOUT.select(PATH$type);
     public static final AddressLayout LAYOUT$next = (AddressLayout) LAYOUT.select(PATH$next);
-    public static final OfByte LAYOUT$actionName = (OfByte) LAYOUT.select(PATH$actionName);
+    public static final SequenceLayout LAYOUT$actionName = (SequenceLayout) LAYOUT.select(PATH$actionName);
     public static final OfInt LAYOUT$actionType = (OfInt) LAYOUT.select(PATH$actionType);
     public static final OfInt LAYOUT$countSubactionPaths = (OfInt) LAYOUT.select(PATH$countSubactionPaths);
     public static final AddressLayout LAYOUT$subactionPaths = (AddressLayout) LAYOUT.select(PATH$subactionPaths);
-    public static final OfByte LAYOUT$localizedActionName = (OfByte) LAYOUT.select(PATH$localizedActionName);
+    public static final SequenceLayout LAYOUT$localizedActionName = (SequenceLayout) LAYOUT.select(PATH$localizedActionName);
 
     public static final long SIZE$type = LAYOUT$type.byteSize();
     public static final long SIZE$next = LAYOUT$next.byteSize();

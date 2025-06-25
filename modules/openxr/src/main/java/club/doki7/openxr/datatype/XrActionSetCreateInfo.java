@@ -30,8 +30,8 @@ import club.doki7.vulkan.handle.*;
 /// typedef struct XrActionSetCreateInfo {
 ///     XrStructureType type; // @link substring="XrStructureType" target="XrStructureType" @link substring="type" target="#type"
 ///     void const* next; // @link substring="next" target="#next"
-///     char actionSetName; // @link substring="actionSetName" target="#actionSetName"
-///     char localizedActionSetName; // @link substring="localizedActionSetName" target="#localizedActionSetName"
+///     char[XR_MAX_ACTION_SET_NAME_SIZE] actionSetName; // @link substring="actionSetName" target="#actionSetName"
+///     char[XR_MAX_LOCALIZED_ACTION_SET_NAME_SIZE] localizedActionSetName; // @link substring="localizedActionSetName" target="#localizedActionSetName"
 ///     uint32_t priority; // @link substring="priority" target="#priority"
 /// } XrActionSetCreateInfo;
 /// }
@@ -219,22 +219,30 @@ public record XrActionSetCreateInfo(@NotNull MemorySegment segment) implements I
         return this;
     }
 
-    public byte actionSetName() {
-        return segment.get(LAYOUT$actionSetName, OFFSET$actionSetName);
+    public BytePtr actionSetName() {
+        return new BytePtr(actionSetNameRaw());
     }
 
-    public XrActionSetCreateInfo actionSetName(byte value) {
-        segment.set(LAYOUT$actionSetName, OFFSET$actionSetName, value);
+    public XrActionSetCreateInfo actionSetName(BytePtr value) {
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$actionSetName, SIZE$actionSetName);
         return this;
     }
 
-    public byte localizedActionSetName() {
-        return segment.get(LAYOUT$localizedActionSetName, OFFSET$localizedActionSetName);
+    public @NotNull MemorySegment actionSetNameRaw() {
+        return segment.asSlice(OFFSET$actionSetName, SIZE$actionSetName);
     }
 
-    public XrActionSetCreateInfo localizedActionSetName(byte value) {
-        segment.set(LAYOUT$localizedActionSetName, OFFSET$localizedActionSetName, value);
+    public BytePtr localizedActionSetName() {
+        return new BytePtr(localizedActionSetNameRaw());
+    }
+
+    public XrActionSetCreateInfo localizedActionSetName(BytePtr value) {
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$localizedActionSetName, SIZE$localizedActionSetName);
         return this;
+    }
+
+    public @NotNull MemorySegment localizedActionSetNameRaw() {
+        return segment.asSlice(OFFSET$localizedActionSetName, SIZE$localizedActionSetName);
     }
 
     public @Unsigned int priority() {
@@ -249,8 +257,8 @@ public record XrActionSetCreateInfo(@NotNull MemorySegment segment) implements I
     public static final StructLayout LAYOUT = NativeLayout.structLayout(
         ValueLayout.JAVA_INT.withName("type"),
         ValueLayout.ADDRESS.withName("next"),
-        ValueLayout.JAVA_BYTE.withName("actionSetName"),
-        ValueLayout.JAVA_BYTE.withName("localizedActionSetName"),
+        MemoryLayout.sequenceLayout(MAX_ACTION_SET_NAME_SIZE, ValueLayout.JAVA_BYTE).withName("actionSetName"),
+        MemoryLayout.sequenceLayout(MAX_LOCALIZED_ACTION_SET_NAME_SIZE, ValueLayout.JAVA_BYTE).withName("localizedActionSetName"),
         ValueLayout.JAVA_INT.withName("priority")
     );
     public static final long BYTES = LAYOUT.byteSize();
@@ -263,8 +271,8 @@ public record XrActionSetCreateInfo(@NotNull MemorySegment segment) implements I
 
     public static final OfInt LAYOUT$type = (OfInt) LAYOUT.select(PATH$type);
     public static final AddressLayout LAYOUT$next = (AddressLayout) LAYOUT.select(PATH$next);
-    public static final OfByte LAYOUT$actionSetName = (OfByte) LAYOUT.select(PATH$actionSetName);
-    public static final OfByte LAYOUT$localizedActionSetName = (OfByte) LAYOUT.select(PATH$localizedActionSetName);
+    public static final SequenceLayout LAYOUT$actionSetName = (SequenceLayout) LAYOUT.select(PATH$actionSetName);
+    public static final SequenceLayout LAYOUT$localizedActionSetName = (SequenceLayout) LAYOUT.select(PATH$localizedActionSetName);
     public static final OfInt LAYOUT$priority = (OfInt) LAYOUT.select(PATH$priority);
 
     public static final long SIZE$type = LAYOUT$type.byteSize();

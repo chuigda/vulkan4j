@@ -30,7 +30,7 @@ import club.doki7.vulkan.handle.*;
 /// typedef struct XrSpatialGraphNodeBindingPropertiesMSFT {
 ///     XrStructureType type; // @link substring="XrStructureType" target="XrStructureType" @link substring="type" target="#type"
 ///     void* next; // @link substring="next" target="#next"
-///     uint8_t nodeId; // @link substring="nodeId" target="#nodeId"
+///     uint8_t[XR_GUID_SIZE_MSFT] nodeId; // @link substring="nodeId" target="#nodeId"
 ///     XrPosef poseInNodeSpace; // @link substring="XrPosef" target="XrPosef" @link substring="poseInNodeSpace" target="#poseInNodeSpace"
 /// } XrSpatialGraphNodeBindingPropertiesMSFT;
 /// }
@@ -218,13 +218,17 @@ public record XrSpatialGraphNodeBindingPropertiesMSFT(@NotNull MemorySegment seg
         return this;
     }
 
-    public @Unsigned byte nodeId() {
-        return segment.get(LAYOUT$nodeId, OFFSET$nodeId);
+    public @Unsigned BytePtr nodeId() {
+        return new BytePtr(nodeIdRaw());
     }
 
-    public XrSpatialGraphNodeBindingPropertiesMSFT nodeId(@Unsigned byte value) {
-        segment.set(LAYOUT$nodeId, OFFSET$nodeId, value);
+    public XrSpatialGraphNodeBindingPropertiesMSFT nodeId(@Unsigned BytePtr value) {
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$nodeId, SIZE$nodeId);
         return this;
+    }
+
+    public @NotNull MemorySegment nodeIdRaw() {
+        return segment.asSlice(OFFSET$nodeId, SIZE$nodeId);
     }
 
     public @NotNull XrPosef poseInNodeSpace() {
@@ -244,7 +248,7 @@ public record XrSpatialGraphNodeBindingPropertiesMSFT(@NotNull MemorySegment seg
     public static final StructLayout LAYOUT = NativeLayout.structLayout(
         ValueLayout.JAVA_INT.withName("type"),
         ValueLayout.ADDRESS.withName("next"),
-        ValueLayout.JAVA_BYTE.withName("nodeId"),
+        MemoryLayout.sequenceLayout(GUID_SIZE_MSFT, ValueLayout.JAVA_BYTE).withName("nodeId"),
         XrPosef.LAYOUT.withName("poseInNodeSpace")
     );
     public static final long BYTES = LAYOUT.byteSize();
@@ -256,7 +260,7 @@ public record XrSpatialGraphNodeBindingPropertiesMSFT(@NotNull MemorySegment seg
 
     public static final OfInt LAYOUT$type = (OfInt) LAYOUT.select(PATH$type);
     public static final AddressLayout LAYOUT$next = (AddressLayout) LAYOUT.select(PATH$next);
-    public static final OfByte LAYOUT$nodeId = (OfByte) LAYOUT.select(PATH$nodeId);
+    public static final SequenceLayout LAYOUT$nodeId = (SequenceLayout) LAYOUT.select(PATH$nodeId);
     public static final StructLayout LAYOUT$poseInNodeSpace = (StructLayout) LAYOUT.select(PATH$poseInNodeSpace);
 
     public static final long SIZE$type = LAYOUT$type.byteSize();

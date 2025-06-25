@@ -218,6 +218,7 @@ class Glfw3HeaderParser(lines: List<String>) : HeaderParser<Registry<EmptyMergea
             opaqueTypedefs,
             structures,
             mutableMapOf(),
+            mutableMapOf(),
             EmptyMergeable()
         )
     }

@@ -30,7 +30,7 @@ import club.doki7.vulkan.handle.*;
 /// typedef struct XrFoveationEyeTrackedStateMETA {
 ///     XrStructureType type; // @link substring="XrStructureType" target="XrStructureType" @link substring="type" target="#type"
 ///     void* next; // @link substring="next" target="#next"
-///     XrVector2f foveationCenter; // @link substring="XrVector2f" target="XrVector2f" @link substring="foveationCenter" target="#foveationCenter"
+///     XrVector2f[XR_FOVEATION_CENTER_SIZE_META] foveationCenter; // @link substring="XrVector2f" target="XrVector2f" @link substring="foveationCenter" target="#foveationCenter"
 ///     XrFoveationEyeTrackedStateFlagsMETA flags; // @link substring="XrFoveationEyeTrackedStateFlagsMETA" target="XrFoveationEyeTrackedStateFlagsMETA" @link substring="flags" target="#flags"
 /// } XrFoveationEyeTrackedStateMETA;
 /// }
@@ -218,18 +218,28 @@ public record XrFoveationEyeTrackedStateMETA(@NotNull MemorySegment segment) imp
         return this;
     }
 
-    public @NotNull XrVector2f foveationCenter() {
-        return new XrVector2f(segment.asSlice(OFFSET$foveationCenter, LAYOUT$foveationCenter));
+    public XrVector2f.Ptr foveationCenter() {
+        return new XrVector2f.Ptr(foveationCenterRaw());
     }
 
-    public XrFoveationEyeTrackedStateMETA foveationCenter(@NotNull XrVector2f value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$foveationCenter, SIZE$foveationCenter);
+    public XrFoveationEyeTrackedStateMETA foveationCenter(XrVector2f.Ptr value) {
+        MemorySegment s = foveationCenterRaw();
+        s.copyFrom(value.segment());
         return this;
     }
 
-    public XrFoveationEyeTrackedStateMETA foveationCenter(Consumer<@NotNull XrVector2f> consumer) {
-        consumer.accept(foveationCenter());
-        return this;
+    public XrVector2f foveationCenterAt(int index) {
+        MemorySegment s = foveationCenterRaw();
+        return new XrVector2f(s.asSlice(index * XrVector2f.BYTES, XrVector2f.BYTES));
+    }
+
+    public void foveationCenterAt(int index, XrVector2f value) {
+        MemorySegment s = foveationCenterRaw();
+        MemorySegment.copy(value.segment(), 0, s, index * XrVector2f.BYTES, XrVector2f.BYTES);
+    }
+
+    public @NotNull MemorySegment foveationCenterRaw() {
+        return segment.asSlice(OFFSET$foveationCenter, SIZE$foveationCenter);
     }
 
     public @Bitmask(XrFoveationEyeTrackedStateFlagsMETA.class) long flags() {
@@ -244,7 +254,7 @@ public record XrFoveationEyeTrackedStateMETA(@NotNull MemorySegment segment) imp
     public static final StructLayout LAYOUT = NativeLayout.structLayout(
         ValueLayout.JAVA_INT.withName("type"),
         ValueLayout.ADDRESS.withName("next"),
-        XrVector2f.LAYOUT.withName("foveationCenter"),
+        MemoryLayout.sequenceLayout(FOVEATION_CENTER_SIZE_META, XrVector2f.LAYOUT).withName("foveationCenter"),
         ValueLayout.JAVA_LONG.withName("flags")
     );
     public static final long BYTES = LAYOUT.byteSize();
@@ -256,7 +266,7 @@ public record XrFoveationEyeTrackedStateMETA(@NotNull MemorySegment segment) imp
 
     public static final OfInt LAYOUT$type = (OfInt) LAYOUT.select(PATH$type);
     public static final AddressLayout LAYOUT$next = (AddressLayout) LAYOUT.select(PATH$next);
-    public static final StructLayout LAYOUT$foveationCenter = (StructLayout) LAYOUT.select(PATH$foveationCenter);
+    public static final SequenceLayout LAYOUT$foveationCenter = (SequenceLayout) LAYOUT.select(PATH$foveationCenter);
     public static final OfLong LAYOUT$flags = (OfLong) LAYOUT.select(PATH$flags);
 
     public static final long SIZE$type = LAYOUT$type.byteSize();

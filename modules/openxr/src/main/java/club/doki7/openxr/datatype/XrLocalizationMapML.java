@@ -30,7 +30,7 @@ import club.doki7.vulkan.handle.*;
 /// typedef struct XrLocalizationMapML {
 ///     XrStructureType type; // @link substring="XrStructureType" target="XrStructureType" @link substring="type" target="#type"
 ///     void* next; // @link substring="next" target="#next"
-///     char name; // optional // @link substring="name" target="#name"
+///     char[XR_MAX_LOCALIZATION_MAP_NAME_LENGTH_ML] name; // optional // @link substring="name" target="#name"
 ///     XrUuidEXT mapUuid; // optional // @link substring="XrUuidEXT" target="XrUuidEXT" @link substring="mapUuid" target="#mapUuid"
 ///     XrLocalizationMapTypeML mapType; // optional // @link substring="XrLocalizationMapTypeML" target="XrLocalizationMapTypeML" @link substring="mapType" target="#mapType"
 /// } XrLocalizationMapML;
@@ -219,13 +219,17 @@ public record XrLocalizationMapML(@NotNull MemorySegment segment) implements IXr
         return this;
     }
 
-    public byte name() {
-        return segment.get(LAYOUT$name, OFFSET$name);
+    public BytePtr name() {
+        return new BytePtr(nameRaw());
     }
 
-    public XrLocalizationMapML name(byte value) {
-        segment.set(LAYOUT$name, OFFSET$name, value);
+    public XrLocalizationMapML name(BytePtr value) {
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$name, SIZE$name);
         return this;
+    }
+
+    public @NotNull MemorySegment nameRaw() {
+        return segment.asSlice(OFFSET$name, SIZE$name);
     }
 
     public @NotNull XrUuidEXT mapUuid() {
@@ -254,7 +258,7 @@ public record XrLocalizationMapML(@NotNull MemorySegment segment) implements IXr
     public static final StructLayout LAYOUT = NativeLayout.structLayout(
         ValueLayout.JAVA_INT.withName("type"),
         ValueLayout.ADDRESS.withName("next"),
-        ValueLayout.JAVA_BYTE.withName("name"),
+        MemoryLayout.sequenceLayout(MAX_LOCALIZATION_MAP_NAME_LENGTH_ML, ValueLayout.JAVA_BYTE).withName("name"),
         XrUuidEXT.LAYOUT.withName("mapUuid"),
         ValueLayout.JAVA_INT.withName("mapType")
     );
@@ -268,7 +272,7 @@ public record XrLocalizationMapML(@NotNull MemorySegment segment) implements IXr
 
     public static final OfInt LAYOUT$type = (OfInt) LAYOUT.select(PATH$type);
     public static final AddressLayout LAYOUT$next = (AddressLayout) LAYOUT.select(PATH$next);
-    public static final OfByte LAYOUT$name = (OfByte) LAYOUT.select(PATH$name);
+    public static final SequenceLayout LAYOUT$name = (SequenceLayout) LAYOUT.select(PATH$name);
     public static final StructLayout LAYOUT$mapUuid = (StructLayout) LAYOUT.select(PATH$mapUuid);
     public static final OfInt LAYOUT$mapType = (OfInt) LAYOUT.select(PATH$mapType);
 

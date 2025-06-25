@@ -31,7 +31,7 @@ import club.doki7.vulkan.handle.*;
 ///     XrStructureType type; // @link substring="XrStructureType" target="XrStructureType" @link substring="type" target="#type"
 ///     void* next; // @link substring="next" target="#next"
 ///     uint32_t vendorId; // @link substring="vendorId" target="#vendorId"
-///     char modelName; // @link substring="modelName" target="#modelName"
+///     char[XR_MAX_RENDER_MODEL_NAME_SIZE_FB] modelName; // @link substring="modelName" target="#modelName"
 ///     XrRenderModelKeyFB modelKey; // @link substring="modelKey" target="#modelKey"
 ///     uint32_t modelVersion; // @link substring="modelVersion" target="#modelVersion"
 ///     XrRenderModelFlagsFB flags; // @link substring="XrRenderModelFlagsFB" target="XrRenderModelFlagsFB" @link substring="flags" target="#flags"
@@ -230,13 +230,17 @@ public record XrRenderModelPropertiesFB(@NotNull MemorySegment segment) implemen
         return this;
     }
 
-    public byte modelName() {
-        return segment.get(LAYOUT$modelName, OFFSET$modelName);
+    public BytePtr modelName() {
+        return new BytePtr(modelNameRaw());
     }
 
-    public XrRenderModelPropertiesFB modelName(byte value) {
-        segment.set(LAYOUT$modelName, OFFSET$modelName, value);
+    public XrRenderModelPropertiesFB modelName(BytePtr value) {
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$modelName, SIZE$modelName);
         return this;
+    }
+
+    public @NotNull MemorySegment modelNameRaw() {
+        return segment.asSlice(OFFSET$modelName, SIZE$modelName);
     }
 
     public @NativeType("XrRenderModelKeyFB") @Unsigned long modelKey() {
@@ -270,7 +274,7 @@ public record XrRenderModelPropertiesFB(@NotNull MemorySegment segment) implemen
         ValueLayout.JAVA_INT.withName("type"),
         ValueLayout.ADDRESS.withName("next"),
         ValueLayout.JAVA_INT.withName("vendorId"),
-        ValueLayout.JAVA_BYTE.withName("modelName"),
+        MemoryLayout.sequenceLayout(MAX_RENDER_MODEL_NAME_SIZE_FB, ValueLayout.JAVA_BYTE).withName("modelName"),
         ValueLayout.JAVA_LONG.withName("modelKey"),
         ValueLayout.JAVA_INT.withName("modelVersion"),
         ValueLayout.JAVA_LONG.withName("flags")
@@ -288,7 +292,7 @@ public record XrRenderModelPropertiesFB(@NotNull MemorySegment segment) implemen
     public static final OfInt LAYOUT$type = (OfInt) LAYOUT.select(PATH$type);
     public static final AddressLayout LAYOUT$next = (AddressLayout) LAYOUT.select(PATH$next);
     public static final OfInt LAYOUT$vendorId = (OfInt) LAYOUT.select(PATH$vendorId);
-    public static final OfByte LAYOUT$modelName = (OfByte) LAYOUT.select(PATH$modelName);
+    public static final SequenceLayout LAYOUT$modelName = (SequenceLayout) LAYOUT.select(PATH$modelName);
     public static final OfLong LAYOUT$modelKey = (OfLong) LAYOUT.select(PATH$modelKey);
     public static final OfInt LAYOUT$modelVersion = (OfInt) LAYOUT.select(PATH$modelVersion);
     public static final OfLong LAYOUT$flags = (OfLong) LAYOUT.select(PATH$flags);

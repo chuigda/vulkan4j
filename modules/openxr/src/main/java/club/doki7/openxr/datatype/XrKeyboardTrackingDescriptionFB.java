@@ -31,7 +31,7 @@ import club.doki7.vulkan.handle.*;
 ///     uint64_t trackedKeyboardId; // @link substring="trackedKeyboardId" target="#trackedKeyboardId"
 ///     XrVector3f size; // @link substring="XrVector3f" target="XrVector3f" @link substring="size" target="#size"
 ///     XrKeyboardTrackingFlagsFB flags; // @link substring="XrKeyboardTrackingFlagsFB" target="XrKeyboardTrackingFlagsFB" @link substring="flags" target="#flags"
-///     char name; // @link substring="name" target="#name"
+///     char[XR_MAX_KEYBOARD_TRACKING_NAME_SIZE_FB] name; // @link substring="name" target="#name"
 /// } XrKeyboardTrackingDescriptionFB;
 /// }
 ///
@@ -208,20 +208,24 @@ public record XrKeyboardTrackingDescriptionFB(@NotNull MemorySegment segment) im
         return this;
     }
 
-    public byte name() {
-        return segment.get(LAYOUT$name, OFFSET$name);
+    public BytePtr name() {
+        return new BytePtr(nameRaw());
     }
 
-    public XrKeyboardTrackingDescriptionFB name(byte value) {
-        segment.set(LAYOUT$name, OFFSET$name, value);
+    public XrKeyboardTrackingDescriptionFB name(BytePtr value) {
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$name, SIZE$name);
         return this;
+    }
+
+    public @NotNull MemorySegment nameRaw() {
+        return segment.asSlice(OFFSET$name, SIZE$name);
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(
         ValueLayout.JAVA_LONG.withName("trackedKeyboardId"),
         XrVector3f.LAYOUT.withName("size"),
         ValueLayout.JAVA_LONG.withName("flags"),
-        ValueLayout.JAVA_BYTE.withName("name")
+        MemoryLayout.sequenceLayout(MAX_KEYBOARD_TRACKING_NAME_SIZE_FB, ValueLayout.JAVA_BYTE).withName("name")
     );
     public static final long BYTES = LAYOUT.byteSize();
 
@@ -233,7 +237,7 @@ public record XrKeyboardTrackingDescriptionFB(@NotNull MemorySegment segment) im
     public static final OfLong LAYOUT$trackedKeyboardId = (OfLong) LAYOUT.select(PATH$trackedKeyboardId);
     public static final StructLayout LAYOUT$size = (StructLayout) LAYOUT.select(PATH$size);
     public static final OfLong LAYOUT$flags = (OfLong) LAYOUT.select(PATH$flags);
-    public static final OfByte LAYOUT$name = (OfByte) LAYOUT.select(PATH$name);
+    public static final SequenceLayout LAYOUT$name = (SequenceLayout) LAYOUT.select(PATH$name);
 
     public static final long SIZE$trackedKeyboardId = LAYOUT$trackedKeyboardId.byteSize();
     public static final long SIZE$size = LAYOUT$size.byteSize();

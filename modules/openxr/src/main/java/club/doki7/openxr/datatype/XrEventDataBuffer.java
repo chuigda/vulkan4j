@@ -30,7 +30,7 @@ import club.doki7.vulkan.handle.*;
 /// typedef struct XrEventDataBuffer {
 ///     XrStructureType type; // @link substring="XrStructureType" target="XrStructureType" @link substring="type" target="#type"
 ///     void const* next; // @link substring="next" target="#next"
-///     uint8_t varying; // @link substring="varying" target="#varying"
+///     uint8_t[4000] varying; // @link substring="varying" target="#varying"
 /// } XrEventDataBuffer;
 /// }
 ///
@@ -217,19 +217,23 @@ public record XrEventDataBuffer(@NotNull MemorySegment segment) implements IXrEv
         return this;
     }
 
-    public @Unsigned byte varying() {
-        return segment.get(LAYOUT$varying, OFFSET$varying);
+    public @Unsigned BytePtr varying() {
+        return new BytePtr(varyingRaw());
     }
 
-    public XrEventDataBuffer varying(@Unsigned byte value) {
-        segment.set(LAYOUT$varying, OFFSET$varying, value);
+    public XrEventDataBuffer varying(@Unsigned BytePtr value) {
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$varying, SIZE$varying);
         return this;
+    }
+
+    public @NotNull MemorySegment varyingRaw() {
+        return segment.asSlice(OFFSET$varying, SIZE$varying);
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(
         ValueLayout.JAVA_INT.withName("type"),
         ValueLayout.ADDRESS.withName("next"),
-        ValueLayout.JAVA_BYTE.withName("varying")
+        MemoryLayout.sequenceLayout(4000, ValueLayout.JAVA_BYTE).withName("varying")
     );
     public static final long BYTES = LAYOUT.byteSize();
 
@@ -239,7 +243,7 @@ public record XrEventDataBuffer(@NotNull MemorySegment segment) implements IXrEv
 
     public static final OfInt LAYOUT$type = (OfInt) LAYOUT.select(PATH$type);
     public static final AddressLayout LAYOUT$next = (AddressLayout) LAYOUT.select(PATH$next);
-    public static final OfByte LAYOUT$varying = (OfByte) LAYOUT.select(PATH$varying);
+    public static final SequenceLayout LAYOUT$varying = (SequenceLayout) LAYOUT.select(PATH$varying);
 
     public static final long SIZE$type = LAYOUT$type.byteSize();
     public static final long SIZE$next = LAYOUT$next.byteSize();

@@ -21,6 +21,8 @@ interface RegistryBase {
     val opaqueTypedefs: MutableMap<Identifier, OpaqueTypedef>
     val structures: MutableMap<Identifier, Structure>
     val unions: MutableMap<Identifier, Structure>
+
+    val enumConstantToEnumerationLookupAccel: MutableMap<String, Identifier>
 }
 
 data class Registry<E: IMergeable<E>>(
@@ -34,6 +36,7 @@ data class Registry<E: IMergeable<E>>(
     override val opaqueTypedefs: MutableMap<Identifier, OpaqueTypedef> = mutableMapOf(),
     override val structures: MutableMap<Identifier, Structure> = mutableMapOf(),
     override val unions: MutableMap<Identifier, Structure> = mutableMapOf(),
+    override val enumConstantToEnumerationLookupAccel: MutableMap<String, Identifier> = mutableMapOf(),
 
     var ext: E
 ) : RegistryBase {
@@ -64,6 +67,18 @@ data class Registry<E: IMergeable<E>>(
         this.unions.putAll(other.unions)
 
         this.ext = this.ext.merge(other.ext)
+    }
+
+    fun buildLookupAccel() {
+        this.enumConstantToEnumerationLookupAccel.clear()
+        for ((_, enumeration) in this.enumerations) {
+            for (variant in enumeration.variants) {
+                this.enumConstantToEnumerationLookupAccel.put(
+                    variant.name.original,
+                    enumeration.name
+                )
+            }
+        }
     }
 }
 

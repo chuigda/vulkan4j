@@ -32,7 +32,7 @@ import club.doki7.vulkan.handle.*;
 ///     void* next; // @link substring="next" target="#next"
 ///     XrSystemId systemId; // @link substring="systemId" target="#systemId"
 ///     uint32_t vendorId; // @link substring="vendorId" target="#vendorId"
-///     char systemName; // @link substring="systemName" target="#systemName"
+///     char[XR_MAX_SYSTEM_NAME_SIZE] systemName; // @link substring="systemName" target="#systemName"
 ///     XrSystemGraphicsProperties graphicsProperties; // @link substring="XrSystemGraphicsProperties" target="XrSystemGraphicsProperties" @link substring="graphicsProperties" target="#graphicsProperties"
 ///     XrSystemTrackingProperties trackingProperties; // @link substring="XrSystemTrackingProperties" target="XrSystemTrackingProperties" @link substring="trackingProperties" target="#trackingProperties"
 /// } XrSystemProperties;
@@ -239,13 +239,17 @@ public record XrSystemProperties(@NotNull MemorySegment segment) implements IXrS
         return this;
     }
 
-    public byte systemName() {
-        return segment.get(LAYOUT$systemName, OFFSET$systemName);
+    public BytePtr systemName() {
+        return new BytePtr(systemNameRaw());
     }
 
-    public XrSystemProperties systemName(byte value) {
-        segment.set(LAYOUT$systemName, OFFSET$systemName, value);
+    public XrSystemProperties systemName(BytePtr value) {
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$systemName, SIZE$systemName);
         return this;
+    }
+
+    public @NotNull MemorySegment systemNameRaw() {
+        return segment.asSlice(OFFSET$systemName, SIZE$systemName);
     }
 
     public @NotNull XrSystemGraphicsProperties graphicsProperties() {
@@ -281,7 +285,7 @@ public record XrSystemProperties(@NotNull MemorySegment segment) implements IXrS
         ValueLayout.ADDRESS.withName("next"),
         ValueLayout.JAVA_LONG.withName("systemId"),
         ValueLayout.JAVA_INT.withName("vendorId"),
-        ValueLayout.JAVA_BYTE.withName("systemName"),
+        MemoryLayout.sequenceLayout(MAX_SYSTEM_NAME_SIZE, ValueLayout.JAVA_BYTE).withName("systemName"),
         XrSystemGraphicsProperties.LAYOUT.withName("graphicsProperties"),
         XrSystemTrackingProperties.LAYOUT.withName("trackingProperties")
     );
@@ -299,7 +303,7 @@ public record XrSystemProperties(@NotNull MemorySegment segment) implements IXrS
     public static final AddressLayout LAYOUT$next = (AddressLayout) LAYOUT.select(PATH$next);
     public static final OfLong LAYOUT$systemId = (OfLong) LAYOUT.select(PATH$systemId);
     public static final OfInt LAYOUT$vendorId = (OfInt) LAYOUT.select(PATH$vendorId);
-    public static final OfByte LAYOUT$systemName = (OfByte) LAYOUT.select(PATH$systemName);
+    public static final SequenceLayout LAYOUT$systemName = (SequenceLayout) LAYOUT.select(PATH$systemName);
     public static final StructLayout LAYOUT$graphicsProperties = (StructLayout) LAYOUT.select(PATH$graphicsProperties);
     public static final StructLayout LAYOUT$trackingProperties = (StructLayout) LAYOUT.select(PATH$trackingProperties);
 

@@ -32,7 +32,7 @@ import club.doki7.vulkan.handle.*;
 ///     uint32_t structVersion; // @link substring="structVersion" target="#structVersion"
 ///     size_t structSize; // @link substring="structSize" target="#structSize"
 ///     void* loaderInstance; // @link substring="loaderInstance" target="#loaderInstance"
-///     char settings_file_location; // @link substring="settings_file_location" target="#settings_file_location"
+///     char[XR_API_LAYER_MAX_SETTINGS_PATH_SIZE] settings_file_location; // @link substring="settings_file_location" target="#settings_file_location"
 ///     XrApiLayerNextInfo* nextInfo; // @link substring="XrApiLayerNextInfo" target="XrApiLayerNextInfo" @link substring="nextInfo" target="#nextInfo"
 /// } XrApiLayerCreateInfo;
 /// }
@@ -219,13 +219,17 @@ public record XrApiLayerCreateInfo(@NotNull MemorySegment segment) implements IX
         return this;
     }
 
-    public byte settings_file_location() {
-        return segment.get(LAYOUT$settings_file_location, OFFSET$settings_file_location);
+    public BytePtr settings_file_location() {
+        return new BytePtr(settings_file_locationRaw());
     }
 
-    public XrApiLayerCreateInfo settings_file_location(byte value) {
-        segment.set(LAYOUT$settings_file_location, OFFSET$settings_file_location, value);
+    public XrApiLayerCreateInfo settings_file_location(BytePtr value) {
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$settings_file_location, SIZE$settings_file_location);
         return this;
+    }
+
+    public @NotNull MemorySegment settings_file_locationRaw() {
+        return segment.asSlice(OFFSET$settings_file_location, SIZE$settings_file_location);
     }
 
     public XrApiLayerCreateInfo nextInfo(@Nullable IXrApiLayerNextInfo value) {
@@ -265,7 +269,7 @@ public record XrApiLayerCreateInfo(@NotNull MemorySegment segment) implements IX
         ValueLayout.JAVA_INT.withName("structVersion"),
         NativeLayout.C_SIZE_T.withName("structSize"),
         ValueLayout.ADDRESS.withName("loaderInstance"),
-        ValueLayout.JAVA_BYTE.withName("settings_file_location"),
+        MemoryLayout.sequenceLayout(API_LAYER_MAX_SETTINGS_PATH_SIZE, ValueLayout.JAVA_BYTE).withName("settings_file_location"),
         ValueLayout.ADDRESS.withTargetLayout(XrApiLayerNextInfo.LAYOUT).withName("nextInfo")
     );
     public static final long BYTES = LAYOUT.byteSize();
@@ -280,7 +284,7 @@ public record XrApiLayerCreateInfo(@NotNull MemorySegment segment) implements IX
     public static final OfInt LAYOUT$structType = (OfInt) LAYOUT.select(PATH$structType);
     public static final OfInt LAYOUT$structVersion = (OfInt) LAYOUT.select(PATH$structVersion);
     public static final AddressLayout LAYOUT$loaderInstance = (AddressLayout) LAYOUT.select(PATH$loaderInstance);
-    public static final OfByte LAYOUT$settings_file_location = (OfByte) LAYOUT.select(PATH$settings_file_location);
+    public static final SequenceLayout LAYOUT$settings_file_location = (SequenceLayout) LAYOUT.select(PATH$settings_file_location);
     public static final AddressLayout LAYOUT$nextInfo = (AddressLayout) LAYOUT.select(PATH$nextInfo);
 
     public static final long SIZE$structType = LAYOUT$structType.byteSize();

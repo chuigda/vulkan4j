@@ -28,7 +28,7 @@ import club.doki7.vulkan.handle.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct XrUuidEXT {
-///     uint8_t data; // @link substring="data" target="#data"
+///     uint8_t[XR_UUID_SIZE] data; // @link substring="data" target="#data"
 /// } XrUuidEXT;
 /// }
 ///
@@ -173,23 +173,27 @@ public record XrUuidEXT(@NotNull MemorySegment segment) implements IXrUuidEXT {
         return ret;
     }
 
-    public @Unsigned byte data() {
-        return segment.get(LAYOUT$data, OFFSET$data);
+    public @Unsigned BytePtr data() {
+        return new BytePtr(dataRaw());
     }
 
-    public XrUuidEXT data(@Unsigned byte value) {
-        segment.set(LAYOUT$data, OFFSET$data, value);
+    public XrUuidEXT data(@Unsigned BytePtr value) {
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$data, SIZE$data);
         return this;
     }
 
+    public @NotNull MemorySegment dataRaw() {
+        return segment.asSlice(OFFSET$data, SIZE$data);
+    }
+
     public static final StructLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_BYTE.withName("data")
+        MemoryLayout.sequenceLayout(UUID_SIZE, ValueLayout.JAVA_BYTE).withName("data")
     );
     public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$data = PathElement.groupElement("data");
 
-    public static final OfByte LAYOUT$data = (OfByte) LAYOUT.select(PATH$data);
+    public static final SequenceLayout LAYOUT$data = (SequenceLayout) LAYOUT.select(PATH$data);
 
     public static final long SIZE$data = LAYOUT$data.byteSize();
 

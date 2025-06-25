@@ -31,7 +31,7 @@ import club.doki7.vulkan.handle.*;
 ///     XrStructureType type; // @link substring="XrStructureType" target="XrStructureType" @link substring="type" target="#type"
 ///     void* next; // @link substring="next" target="#next"
 ///     XrVersion runtimeVersion; // @link substring="runtimeVersion" target="#runtimeVersion"
-///     char runtimeName; // @link substring="runtimeName" target="#runtimeName"
+///     char[XR_MAX_RUNTIME_NAME_SIZE] runtimeName; // @link substring="runtimeName" target="#runtimeName"
 /// } XrInstanceProperties;
 /// }
 ///
@@ -227,20 +227,24 @@ public record XrInstanceProperties(@NotNull MemorySegment segment) implements IX
         return this;
     }
 
-    public byte runtimeName() {
-        return segment.get(LAYOUT$runtimeName, OFFSET$runtimeName);
+    public BytePtr runtimeName() {
+        return new BytePtr(runtimeNameRaw());
     }
 
-    public XrInstanceProperties runtimeName(byte value) {
-        segment.set(LAYOUT$runtimeName, OFFSET$runtimeName, value);
+    public XrInstanceProperties runtimeName(BytePtr value) {
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$runtimeName, SIZE$runtimeName);
         return this;
+    }
+
+    public @NotNull MemorySegment runtimeNameRaw() {
+        return segment.asSlice(OFFSET$runtimeName, SIZE$runtimeName);
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(
         ValueLayout.JAVA_INT.withName("type"),
         ValueLayout.ADDRESS.withName("next"),
         ValueLayout.JAVA_LONG.withName("runtimeVersion"),
-        ValueLayout.JAVA_BYTE.withName("runtimeName")
+        MemoryLayout.sequenceLayout(MAX_RUNTIME_NAME_SIZE, ValueLayout.JAVA_BYTE).withName("runtimeName")
     );
     public static final long BYTES = LAYOUT.byteSize();
 
@@ -252,7 +256,7 @@ public record XrInstanceProperties(@NotNull MemorySegment segment) implements IX
     public static final OfInt LAYOUT$type = (OfInt) LAYOUT.select(PATH$type);
     public static final AddressLayout LAYOUT$next = (AddressLayout) LAYOUT.select(PATH$next);
     public static final OfLong LAYOUT$runtimeVersion = (OfLong) LAYOUT.select(PATH$runtimeVersion);
-    public static final OfByte LAYOUT$runtimeName = (OfByte) LAYOUT.select(PATH$runtimeName);
+    public static final SequenceLayout LAYOUT$runtimeName = (SequenceLayout) LAYOUT.select(PATH$runtimeName);
 
     public static final long SIZE$type = LAYOUT$type.byteSize();
     public static final long SIZE$next = LAYOUT$next.byteSize();

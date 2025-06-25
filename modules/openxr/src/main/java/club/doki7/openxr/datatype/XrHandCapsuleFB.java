@@ -28,7 +28,7 @@ import club.doki7.vulkan.handle.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct XrHandCapsuleFB {
-///     XrVector3f points; // @link substring="XrVector3f" target="XrVector3f" @link substring="points" target="#points"
+///     XrVector3f[XR_HAND_TRACKING_CAPSULE_POINT_COUNT_FB] points; // @link substring="XrVector3f" target="XrVector3f" @link substring="points" target="#points"
 ///     float radius; // @link substring="radius" target="#radius"
 ///     XrHandJointEXT joint; // @link substring="XrHandJointEXT" target="XrHandJointEXT" @link substring="joint" target="#joint"
 /// } XrHandCapsuleFB;
@@ -175,18 +175,28 @@ public record XrHandCapsuleFB(@NotNull MemorySegment segment) implements IXrHand
         return ret;
     }
 
-    public @NotNull XrVector3f points() {
-        return new XrVector3f(segment.asSlice(OFFSET$points, LAYOUT$points));
+    public XrVector3f.Ptr points() {
+        return new XrVector3f.Ptr(pointsRaw());
     }
 
-    public XrHandCapsuleFB points(@NotNull XrVector3f value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$points, SIZE$points);
+    public XrHandCapsuleFB points(XrVector3f.Ptr value) {
+        MemorySegment s = pointsRaw();
+        s.copyFrom(value.segment());
         return this;
     }
 
-    public XrHandCapsuleFB points(Consumer<@NotNull XrVector3f> consumer) {
-        consumer.accept(points());
-        return this;
+    public XrVector3f pointsAt(int index) {
+        MemorySegment s = pointsRaw();
+        return new XrVector3f(s.asSlice(index * XrVector3f.BYTES, XrVector3f.BYTES));
+    }
+
+    public void pointsAt(int index, XrVector3f value) {
+        MemorySegment s = pointsRaw();
+        MemorySegment.copy(value.segment(), 0, s, index * XrVector3f.BYTES, XrVector3f.BYTES);
+    }
+
+    public @NotNull MemorySegment pointsRaw() {
+        return segment.asSlice(OFFSET$points, SIZE$points);
     }
 
     public float radius() {
@@ -208,7 +218,7 @@ public record XrHandCapsuleFB(@NotNull MemorySegment segment) implements IXrHand
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(
-        XrVector3f.LAYOUT.withName("points"),
+        MemoryLayout.sequenceLayout(HAND_TRACKING_CAPSULE_POINT_COUNT_FB, XrVector3f.LAYOUT).withName("points"),
         ValueLayout.JAVA_FLOAT.withName("radius"),
         ValueLayout.JAVA_INT.withName("joint")
     );
@@ -218,7 +228,7 @@ public record XrHandCapsuleFB(@NotNull MemorySegment segment) implements IXrHand
     public static final PathElement PATH$radius = PathElement.groupElement("radius");
     public static final PathElement PATH$joint = PathElement.groupElement("joint");
 
-    public static final StructLayout LAYOUT$points = (StructLayout) LAYOUT.select(PATH$points);
+    public static final SequenceLayout LAYOUT$points = (SequenceLayout) LAYOUT.select(PATH$points);
     public static final OfFloat LAYOUT$radius = (OfFloat) LAYOUT.select(PATH$radius);
     public static final OfInt LAYOUT$joint = (OfInt) LAYOUT.select(PATH$joint);
 

@@ -30,8 +30,8 @@ import club.doki7.vulkan.handle.*;
 /// typedef struct XrControllerModelNodePropertiesMSFT {
 ///     XrStructureType type; // @link substring="XrStructureType" target="XrStructureType" @link substring="type" target="#type"
 ///     void* next; // @link substring="next" target="#next"
-///     char parentNodeName; // @link substring="parentNodeName" target="#parentNodeName"
-///     char nodeName; // @link substring="nodeName" target="#nodeName"
+///     char[XR_MAX_CONTROLLER_MODEL_NODE_NAME_SIZE_MSFT] parentNodeName; // @link substring="parentNodeName" target="#parentNodeName"
+///     char[XR_MAX_CONTROLLER_MODEL_NODE_NAME_SIZE_MSFT] nodeName; // @link substring="nodeName" target="#nodeName"
 /// } XrControllerModelNodePropertiesMSFT;
 /// }
 ///
@@ -218,29 +218,37 @@ public record XrControllerModelNodePropertiesMSFT(@NotNull MemorySegment segment
         return this;
     }
 
-    public byte parentNodeName() {
-        return segment.get(LAYOUT$parentNodeName, OFFSET$parentNodeName);
+    public BytePtr parentNodeName() {
+        return new BytePtr(parentNodeNameRaw());
     }
 
-    public XrControllerModelNodePropertiesMSFT parentNodeName(byte value) {
-        segment.set(LAYOUT$parentNodeName, OFFSET$parentNodeName, value);
+    public XrControllerModelNodePropertiesMSFT parentNodeName(BytePtr value) {
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$parentNodeName, SIZE$parentNodeName);
         return this;
     }
 
-    public byte nodeName() {
-        return segment.get(LAYOUT$nodeName, OFFSET$nodeName);
+    public @NotNull MemorySegment parentNodeNameRaw() {
+        return segment.asSlice(OFFSET$parentNodeName, SIZE$parentNodeName);
     }
 
-    public XrControllerModelNodePropertiesMSFT nodeName(byte value) {
-        segment.set(LAYOUT$nodeName, OFFSET$nodeName, value);
+    public BytePtr nodeName() {
+        return new BytePtr(nodeNameRaw());
+    }
+
+    public XrControllerModelNodePropertiesMSFT nodeName(BytePtr value) {
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$nodeName, SIZE$nodeName);
         return this;
+    }
+
+    public @NotNull MemorySegment nodeNameRaw() {
+        return segment.asSlice(OFFSET$nodeName, SIZE$nodeName);
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(
         ValueLayout.JAVA_INT.withName("type"),
         ValueLayout.ADDRESS.withName("next"),
-        ValueLayout.JAVA_BYTE.withName("parentNodeName"),
-        ValueLayout.JAVA_BYTE.withName("nodeName")
+        MemoryLayout.sequenceLayout(MAX_CONTROLLER_MODEL_NODE_NAME_SIZE_MSFT, ValueLayout.JAVA_BYTE).withName("parentNodeName"),
+        MemoryLayout.sequenceLayout(MAX_CONTROLLER_MODEL_NODE_NAME_SIZE_MSFT, ValueLayout.JAVA_BYTE).withName("nodeName")
     );
     public static final long BYTES = LAYOUT.byteSize();
 
@@ -251,8 +259,8 @@ public record XrControllerModelNodePropertiesMSFT(@NotNull MemorySegment segment
 
     public static final OfInt LAYOUT$type = (OfInt) LAYOUT.select(PATH$type);
     public static final AddressLayout LAYOUT$next = (AddressLayout) LAYOUT.select(PATH$next);
-    public static final OfByte LAYOUT$parentNodeName = (OfByte) LAYOUT.select(PATH$parentNodeName);
-    public static final OfByte LAYOUT$nodeName = (OfByte) LAYOUT.select(PATH$nodeName);
+    public static final SequenceLayout LAYOUT$parentNodeName = (SequenceLayout) LAYOUT.select(PATH$parentNodeName);
+    public static final SequenceLayout LAYOUT$nodeName = (SequenceLayout) LAYOUT.select(PATH$nodeName);
 
     public static final long SIZE$type = LAYOUT$type.byteSize();
     public static final long SIZE$next = LAYOUT$next.byteSize();

@@ -3,6 +3,7 @@ package club.doki7.babel.ctype
 import club.doki7.babel.ctype.voidType
 import club.doki7.babel.registry.ArrayType
 import club.doki7.babel.registry.FunctionTypedef
+import club.doki7.babel.registry.Identifier
 import club.doki7.babel.registry.IdentifierType
 import club.doki7.babel.registry.OpaqueTypedef
 import club.doki7.babel.registry.PointerType
@@ -533,13 +534,40 @@ private val knownTypes = mapOf(
     "jobject" to pvoidType("jobject")
 )
 
-fun lowerType(registry: RegistryBase, refRegistries: List<RegistryBase>, type: Type): CType {
+fun lowerType(
+    registry: RegistryBase,
+    refRegistries: List<RegistryBase>,
+    type: Type,
+    importEnumerations: MutableSet<Pair<Identifier, Identifier>>? = null
+): CType {
     return when(type) {
         is ArrayType -> {
             if (!type.length.value.isNumeric()) {
                 if (!registry.constants.contains(type.length)
-                    && !refRegistries.any { it.constants.contains(type.length) }) {
+                    && !registry.enumConstantToEnumerationLookupAccel.contains(type.length.original)
+                    && !refRegistries.any {
+                        it.constants.contains(type.length)
+                        || it.enumConstantToEnumerationLookupAccel.contains(type.length.original)
+                    }) {
                     error("array type referred to an unknown constant ${type.length}")
+                }
+
+                if (registry.enumConstantToEnumerationLookupAccel.contains(type.length.original)) {
+                    val enum = registry.enumConstantToEnumerationLookupAccel[type.length.original]!!
+                    if (importEnumerations == null) {
+                        error("array type referred to an enumeration constant ${type.length}, but no importEnumerations set, caller will be unable to set the import")
+                    }
+                    importEnumerations.add(Pair(enum, type.length))
+                }
+
+                refRegistries.forEach {
+                    if (it.enumConstantToEnumerationLookupAccel.contains(type.length.original)) {
+                        val enum = it.enumConstantToEnumerationLookupAccel[type.length.original]!!
+                        if (importEnumerations == null) {
+                            error("array type referred to an enumeration constant ${type.length}, but no importEnumerations set, caller will be unable to set the import")
+                        }
+                        importEnumerations.add(Pair(enum, type.length))
+                    }
                 }
             }
 

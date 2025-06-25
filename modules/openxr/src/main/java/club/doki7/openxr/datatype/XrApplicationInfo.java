@@ -28,9 +28,9 @@ import club.doki7.vulkan.handle.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct XrApplicationInfo {
-///     char applicationName; // @link substring="applicationName" target="#applicationName"
+///     char[XR_MAX_APPLICATION_NAME_SIZE] applicationName; // @link substring="applicationName" target="#applicationName"
 ///     uint32_t applicationVersion; // @link substring="applicationVersion" target="#applicationVersion"
-///     char engineName; // @link substring="engineName" target="#engineName"
+///     char[XR_MAX_ENGINE_NAME_SIZE] engineName; // @link substring="engineName" target="#engineName"
 ///     uint32_t engineVersion; // @link substring="engineVersion" target="#engineVersion"
 ///     XrVersion apiVersion; // @link substring="apiVersion" target="#apiVersion"
 /// } XrApplicationInfo;
@@ -177,13 +177,17 @@ public record XrApplicationInfo(@NotNull MemorySegment segment) implements IXrAp
         return ret;
     }
 
-    public byte applicationName() {
-        return segment.get(LAYOUT$applicationName, OFFSET$applicationName);
+    public BytePtr applicationName() {
+        return new BytePtr(applicationNameRaw());
     }
 
-    public XrApplicationInfo applicationName(byte value) {
-        segment.set(LAYOUT$applicationName, OFFSET$applicationName, value);
+    public XrApplicationInfo applicationName(BytePtr value) {
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$applicationName, SIZE$applicationName);
         return this;
+    }
+
+    public @NotNull MemorySegment applicationNameRaw() {
+        return segment.asSlice(OFFSET$applicationName, SIZE$applicationName);
     }
 
     public @Unsigned int applicationVersion() {
@@ -195,13 +199,17 @@ public record XrApplicationInfo(@NotNull MemorySegment segment) implements IXrAp
         return this;
     }
 
-    public byte engineName() {
-        return segment.get(LAYOUT$engineName, OFFSET$engineName);
+    public BytePtr engineName() {
+        return new BytePtr(engineNameRaw());
     }
 
-    public XrApplicationInfo engineName(byte value) {
-        segment.set(LAYOUT$engineName, OFFSET$engineName, value);
+    public XrApplicationInfo engineName(BytePtr value) {
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$engineName, SIZE$engineName);
         return this;
+    }
+
+    public @NotNull MemorySegment engineNameRaw() {
+        return segment.asSlice(OFFSET$engineName, SIZE$engineName);
     }
 
     public @Unsigned int engineVersion() {
@@ -223,9 +231,9 @@ public record XrApplicationInfo(@NotNull MemorySegment segment) implements IXrAp
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_BYTE.withName("applicationName"),
+        MemoryLayout.sequenceLayout(MAX_APPLICATION_NAME_SIZE, ValueLayout.JAVA_BYTE).withName("applicationName"),
         ValueLayout.JAVA_INT.withName("applicationVersion"),
-        ValueLayout.JAVA_BYTE.withName("engineName"),
+        MemoryLayout.sequenceLayout(MAX_ENGINE_NAME_SIZE, ValueLayout.JAVA_BYTE).withName("engineName"),
         ValueLayout.JAVA_INT.withName("engineVersion"),
         ValueLayout.JAVA_LONG.withName("apiVersion")
     );
@@ -237,9 +245,9 @@ public record XrApplicationInfo(@NotNull MemorySegment segment) implements IXrAp
     public static final PathElement PATH$engineVersion = PathElement.groupElement("engineVersion");
     public static final PathElement PATH$apiVersion = PathElement.groupElement("apiVersion");
 
-    public static final OfByte LAYOUT$applicationName = (OfByte) LAYOUT.select(PATH$applicationName);
+    public static final SequenceLayout LAYOUT$applicationName = (SequenceLayout) LAYOUT.select(PATH$applicationName);
     public static final OfInt LAYOUT$applicationVersion = (OfInt) LAYOUT.select(PATH$applicationVersion);
-    public static final OfByte LAYOUT$engineName = (OfByte) LAYOUT.select(PATH$engineName);
+    public static final SequenceLayout LAYOUT$engineName = (SequenceLayout) LAYOUT.select(PATH$engineName);
     public static final OfInt LAYOUT$engineVersion = (OfInt) LAYOUT.select(PATH$engineVersion);
     public static final OfLong LAYOUT$apiVersion = (OfLong) LAYOUT.select(PATH$apiVersion);
 

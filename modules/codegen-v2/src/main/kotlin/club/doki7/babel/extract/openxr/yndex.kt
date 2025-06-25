@@ -6,5 +6,6 @@ fun extractOpenXRRegistry(): Registry<OpenXRRegistryExt> {
     val registry = extractRawOpenXRRegistry()
     registry.renameEntities()
     registry.addDependencies()
+    registry.buildLookupAccel()
     return registry
 }

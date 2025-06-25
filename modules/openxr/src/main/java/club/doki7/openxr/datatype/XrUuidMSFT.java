@@ -28,7 +28,7 @@ import club.doki7.vulkan.handle.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct XrUuidMSFT {
-///     uint8_t bytes; // @link substring="bytes" target="#bytes"
+///     uint8_t[16] bytes; // @link substring="bytes" target="#bytes"
 /// } XrUuidMSFT;
 /// }
 ///
@@ -173,23 +173,27 @@ public record XrUuidMSFT(@NotNull MemorySegment segment) implements IXrUuidMSFT 
         return ret;
     }
 
-    public @Unsigned byte bytes() {
-        return segment.get(LAYOUT$bytes, OFFSET$bytes);
+    public @Unsigned BytePtr bytes() {
+        return new BytePtr(bytesRaw());
     }
 
-    public XrUuidMSFT bytes(@Unsigned byte value) {
-        segment.set(LAYOUT$bytes, OFFSET$bytes, value);
+    public XrUuidMSFT bytes(@Unsigned BytePtr value) {
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$bytes, SIZE$bytes);
         return this;
     }
 
+    public @NotNull MemorySegment bytesRaw() {
+        return segment.asSlice(OFFSET$bytes, SIZE$bytes);
+    }
+
     public static final StructLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_BYTE.withName("bytes")
+        MemoryLayout.sequenceLayout(16, ValueLayout.JAVA_BYTE).withName("bytes")
     );
     public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$bytes = PathElement.groupElement("bytes");
 
-    public static final OfByte LAYOUT$bytes = (OfByte) LAYOUT.select(PATH$bytes);
+    public static final SequenceLayout LAYOUT$bytes = (SequenceLayout) LAYOUT.select(PATH$bytes);
 
     public static final long SIZE$bytes = LAYOUT$bytes.byteSize();
 

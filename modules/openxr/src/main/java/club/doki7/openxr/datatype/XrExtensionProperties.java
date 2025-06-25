@@ -30,7 +30,7 @@ import club.doki7.vulkan.handle.*;
 /// typedef struct XrExtensionProperties {
 ///     XrStructureType type; // @link substring="XrStructureType" target="XrStructureType" @link substring="type" target="#type"
 ///     void* next; // @link substring="next" target="#next"
-///     char extensionName; // @link substring="extensionName" target="#extensionName"
+///     char[XR_MAX_EXTENSION_NAME_SIZE] extensionName; // @link substring="extensionName" target="#extensionName"
 ///     uint32_t extensionVersion; // @link substring="extensionVersion" target="#extensionVersion"
 /// } XrExtensionProperties;
 /// }
@@ -218,13 +218,17 @@ public record XrExtensionProperties(@NotNull MemorySegment segment) implements I
         return this;
     }
 
-    public byte extensionName() {
-        return segment.get(LAYOUT$extensionName, OFFSET$extensionName);
+    public BytePtr extensionName() {
+        return new BytePtr(extensionNameRaw());
     }
 
-    public XrExtensionProperties extensionName(byte value) {
-        segment.set(LAYOUT$extensionName, OFFSET$extensionName, value);
+    public XrExtensionProperties extensionName(BytePtr value) {
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$extensionName, SIZE$extensionName);
         return this;
+    }
+
+    public @NotNull MemorySegment extensionNameRaw() {
+        return segment.asSlice(OFFSET$extensionName, SIZE$extensionName);
     }
 
     public @Unsigned int extensionVersion() {
@@ -239,7 +243,7 @@ public record XrExtensionProperties(@NotNull MemorySegment segment) implements I
     public static final StructLayout LAYOUT = NativeLayout.structLayout(
         ValueLayout.JAVA_INT.withName("type"),
         ValueLayout.ADDRESS.withName("next"),
-        ValueLayout.JAVA_BYTE.withName("extensionName"),
+        MemoryLayout.sequenceLayout(MAX_EXTENSION_NAME_SIZE, ValueLayout.JAVA_BYTE).withName("extensionName"),
         ValueLayout.JAVA_INT.withName("extensionVersion")
     );
     public static final long BYTES = LAYOUT.byteSize();
@@ -251,7 +255,7 @@ public record XrExtensionProperties(@NotNull MemorySegment segment) implements I
 
     public static final OfInt LAYOUT$type = (OfInt) LAYOUT.select(PATH$type);
     public static final AddressLayout LAYOUT$next = (AddressLayout) LAYOUT.select(PATH$next);
-    public static final OfByte LAYOUT$extensionName = (OfByte) LAYOUT.select(PATH$extensionName);
+    public static final SequenceLayout LAYOUT$extensionName = (SequenceLayout) LAYOUT.select(PATH$extensionName);
     public static final OfInt LAYOUT$extensionVersion = (OfInt) LAYOUT.select(PATH$extensionVersion);
 
     public static final long SIZE$type = LAYOUT$type.byteSize();

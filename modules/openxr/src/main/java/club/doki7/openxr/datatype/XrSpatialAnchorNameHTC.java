@@ -28,7 +28,7 @@ import club.doki7.vulkan.handle.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct XrSpatialAnchorNameHTC {
-///     char name; // @link substring="name" target="#name"
+///     char[XR_MAX_SPATIAL_ANCHOR_NAME_SIZE_HTC] name; // @link substring="name" target="#name"
 /// } XrSpatialAnchorNameHTC;
 /// }
 ///
@@ -173,23 +173,27 @@ public record XrSpatialAnchorNameHTC(@NotNull MemorySegment segment) implements 
         return ret;
     }
 
-    public byte name() {
-        return segment.get(LAYOUT$name, OFFSET$name);
+    public BytePtr name() {
+        return new BytePtr(nameRaw());
     }
 
-    public XrSpatialAnchorNameHTC name(byte value) {
-        segment.set(LAYOUT$name, OFFSET$name, value);
+    public XrSpatialAnchorNameHTC name(BytePtr value) {
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$name, SIZE$name);
         return this;
     }
 
+    public @NotNull MemorySegment nameRaw() {
+        return segment.asSlice(OFFSET$name, SIZE$name);
+    }
+
     public static final StructLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_BYTE.withName("name")
+        MemoryLayout.sequenceLayout(MAX_SPATIAL_ANCHOR_NAME_SIZE_HTC, ValueLayout.JAVA_BYTE).withName("name")
     );
     public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$name = PathElement.groupElement("name");
 
-    public static final OfByte LAYOUT$name = (OfByte) LAYOUT.select(PATH$name);
+    public static final SequenceLayout LAYOUT$name = (SequenceLayout) LAYOUT.select(PATH$name);
 
     public static final long SIZE$name = LAYOUT$name.byteSize();
 

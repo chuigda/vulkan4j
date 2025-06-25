@@ -30,10 +30,10 @@ import club.doki7.vulkan.handle.*;
 /// typedef struct XrApiLayerProperties {
 ///     XrStructureType type; // @link substring="XrStructureType" target="XrStructureType" @link substring="type" target="#type"
 ///     void* next; // @link substring="next" target="#next"
-///     char layerName; // @link substring="layerName" target="#layerName"
+///     char[XR_MAX_API_LAYER_NAME_SIZE] layerName; // @link substring="layerName" target="#layerName"
 ///     XrVersion specVersion; // @link substring="specVersion" target="#specVersion"
 ///     uint32_t layerVersion; // @link substring="layerVersion" target="#layerVersion"
-///     char description; // @link substring="description" target="#description"
+///     char[XR_MAX_API_LAYER_DESCRIPTION_SIZE] description; // @link substring="description" target="#description"
 /// } XrApiLayerProperties;
 /// }
 ///
@@ -220,13 +220,17 @@ public record XrApiLayerProperties(@NotNull MemorySegment segment) implements IX
         return this;
     }
 
-    public byte layerName() {
-        return segment.get(LAYOUT$layerName, OFFSET$layerName);
+    public BytePtr layerName() {
+        return new BytePtr(layerNameRaw());
     }
 
-    public XrApiLayerProperties layerName(byte value) {
-        segment.set(LAYOUT$layerName, OFFSET$layerName, value);
+    public XrApiLayerProperties layerName(BytePtr value) {
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$layerName, SIZE$layerName);
         return this;
+    }
+
+    public @NotNull MemorySegment layerNameRaw() {
+        return segment.asSlice(OFFSET$layerName, SIZE$layerName);
     }
 
     public @NativeType("XrVersion") @Unsigned long specVersion() {
@@ -247,22 +251,26 @@ public record XrApiLayerProperties(@NotNull MemorySegment segment) implements IX
         return this;
     }
 
-    public byte description() {
-        return segment.get(LAYOUT$description, OFFSET$description);
+    public BytePtr description() {
+        return new BytePtr(descriptionRaw());
     }
 
-    public XrApiLayerProperties description(byte value) {
-        segment.set(LAYOUT$description, OFFSET$description, value);
+    public XrApiLayerProperties description(BytePtr value) {
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$description, SIZE$description);
         return this;
+    }
+
+    public @NotNull MemorySegment descriptionRaw() {
+        return segment.asSlice(OFFSET$description, SIZE$description);
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(
         ValueLayout.JAVA_INT.withName("type"),
         ValueLayout.ADDRESS.withName("next"),
-        ValueLayout.JAVA_BYTE.withName("layerName"),
+        MemoryLayout.sequenceLayout(MAX_API_LAYER_NAME_SIZE, ValueLayout.JAVA_BYTE).withName("layerName"),
         ValueLayout.JAVA_LONG.withName("specVersion"),
         ValueLayout.JAVA_INT.withName("layerVersion"),
-        ValueLayout.JAVA_BYTE.withName("description")
+        MemoryLayout.sequenceLayout(MAX_API_LAYER_DESCRIPTION_SIZE, ValueLayout.JAVA_BYTE).withName("description")
     );
     public static final long BYTES = LAYOUT.byteSize();
 
@@ -275,10 +283,10 @@ public record XrApiLayerProperties(@NotNull MemorySegment segment) implements IX
 
     public static final OfInt LAYOUT$type = (OfInt) LAYOUT.select(PATH$type);
     public static final AddressLayout LAYOUT$next = (AddressLayout) LAYOUT.select(PATH$next);
-    public static final OfByte LAYOUT$layerName = (OfByte) LAYOUT.select(PATH$layerName);
+    public static final SequenceLayout LAYOUT$layerName = (SequenceLayout) LAYOUT.select(PATH$layerName);
     public static final OfLong LAYOUT$specVersion = (OfLong) LAYOUT.select(PATH$specVersion);
     public static final OfInt LAYOUT$layerVersion = (OfInt) LAYOUT.select(PATH$layerVersion);
-    public static final OfByte LAYOUT$description = (OfByte) LAYOUT.select(PATH$description);
+    public static final SequenceLayout LAYOUT$description = (SequenceLayout) LAYOUT.select(PATH$description);
 
     public static final long SIZE$type = LAYOUT$type.byteSize();
     public static final long SIZE$next = LAYOUT$next.byteSize();

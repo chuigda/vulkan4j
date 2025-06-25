@@ -30,7 +30,7 @@ import club.doki7.vulkan.handle.*;
 /// typedef struct XrHandTrackingCapsulesStateFB {
 ///     XrStructureType type; // @link substring="XrStructureType" target="XrStructureType" @link substring="type" target="#type"
 ///     void* next; // @link substring="next" target="#next"
-///     XrHandCapsuleFB capsules; // @link substring="XrHandCapsuleFB" target="XrHandCapsuleFB" @link substring="capsules" target="#capsules"
+///     XrHandCapsuleFB[XR_HAND_TRACKING_CAPSULE_COUNT_FB] capsules; // @link substring="XrHandCapsuleFB" target="XrHandCapsuleFB" @link substring="capsules" target="#capsules"
 /// } XrHandTrackingCapsulesStateFB;
 /// }
 ///
@@ -217,24 +217,34 @@ public record XrHandTrackingCapsulesStateFB(@NotNull MemorySegment segment) impl
         return this;
     }
 
-    public @NotNull XrHandCapsuleFB capsules() {
-        return new XrHandCapsuleFB(segment.asSlice(OFFSET$capsules, LAYOUT$capsules));
+    public XrHandCapsuleFB.Ptr capsules() {
+        return new XrHandCapsuleFB.Ptr(capsulesRaw());
     }
 
-    public XrHandTrackingCapsulesStateFB capsules(@NotNull XrHandCapsuleFB value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$capsules, SIZE$capsules);
+    public XrHandTrackingCapsulesStateFB capsules(XrHandCapsuleFB.Ptr value) {
+        MemorySegment s = capsulesRaw();
+        s.copyFrom(value.segment());
         return this;
     }
 
-    public XrHandTrackingCapsulesStateFB capsules(Consumer<@NotNull XrHandCapsuleFB> consumer) {
-        consumer.accept(capsules());
-        return this;
+    public XrHandCapsuleFB capsulesAt(int index) {
+        MemorySegment s = capsulesRaw();
+        return new XrHandCapsuleFB(s.asSlice(index * XrHandCapsuleFB.BYTES, XrHandCapsuleFB.BYTES));
+    }
+
+    public void capsulesAt(int index, XrHandCapsuleFB value) {
+        MemorySegment s = capsulesRaw();
+        MemorySegment.copy(value.segment(), 0, s, index * XrHandCapsuleFB.BYTES, XrHandCapsuleFB.BYTES);
+    }
+
+    public @NotNull MemorySegment capsulesRaw() {
+        return segment.asSlice(OFFSET$capsules, SIZE$capsules);
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(
         ValueLayout.JAVA_INT.withName("type"),
         ValueLayout.ADDRESS.withName("next"),
-        XrHandCapsuleFB.LAYOUT.withName("capsules")
+        MemoryLayout.sequenceLayout(HAND_TRACKING_CAPSULE_COUNT_FB, XrHandCapsuleFB.LAYOUT).withName("capsules")
     );
     public static final long BYTES = LAYOUT.byteSize();
 
@@ -244,7 +254,7 @@ public record XrHandTrackingCapsulesStateFB(@NotNull MemorySegment segment) impl
 
     public static final OfInt LAYOUT$type = (OfInt) LAYOUT.select(PATH$type);
     public static final AddressLayout LAYOUT$next = (AddressLayout) LAYOUT.select(PATH$next);
-    public static final StructLayout LAYOUT$capsules = (StructLayout) LAYOUT.select(PATH$capsules);
+    public static final SequenceLayout LAYOUT$capsules = (SequenceLayout) LAYOUT.select(PATH$capsules);
 
     public static final long SIZE$type = LAYOUT$type.byteSize();
     public static final long SIZE$next = LAYOUT$next.byteSize();
