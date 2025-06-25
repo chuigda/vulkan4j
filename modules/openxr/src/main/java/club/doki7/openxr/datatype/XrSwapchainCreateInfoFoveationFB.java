@@ -217,11 +217,11 @@ public record XrSwapchainCreateInfoFoveationFB(@NotNull MemorySegment segment) i
         return this;
     }
 
-    public @Bitmask(XrSwapchainCreateFoveationFlagsFB.class) int flags() {
+    public @Bitmask(XrSwapchainCreateFoveationFlagsFB.class) long flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public XrSwapchainCreateInfoFoveationFB flags(@Bitmask(XrSwapchainCreateFoveationFlagsFB.class) int value) {
+    public XrSwapchainCreateInfoFoveationFB flags(@Bitmask(XrSwapchainCreateFoveationFlagsFB.class) long value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
         return this;
     }
@@ -229,7 +229,7 @@ public record XrSwapchainCreateInfoFoveationFB(@NotNull MemorySegment segment) i
     public static final StructLayout LAYOUT = NativeLayout.structLayout(
         ValueLayout.JAVA_INT.withName("type"),
         ValueLayout.ADDRESS.withName("next"),
-        ValueLayout.JAVA_INT.withName("flags")
+        ValueLayout.JAVA_LONG.withName("flags")
     );
     public static final long BYTES = LAYOUT.byteSize();
 
@@ -239,7 +239,7 @@ public record XrSwapchainCreateInfoFoveationFB(@NotNull MemorySegment segment) i
 
     public static final OfInt LAYOUT$type = (OfInt) LAYOUT.select(PATH$type);
     public static final AddressLayout LAYOUT$next = (AddressLayout) LAYOUT.select(PATH$next);
-    public static final OfInt LAYOUT$flags = (OfInt) LAYOUT.select(PATH$flags);
+    public static final OfLong LAYOUT$flags = (OfLong) LAYOUT.select(PATH$flags);
 
     public static final long SIZE$type = LAYOUT$type.byteSize();
     public static final long SIZE$next = LAYOUT$next.byteSize();

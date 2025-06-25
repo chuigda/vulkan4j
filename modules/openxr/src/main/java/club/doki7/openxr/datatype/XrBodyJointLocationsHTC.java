@@ -221,11 +221,11 @@ public record XrBodyJointLocationsHTC(@NotNull MemorySegment segment) implements
         return this;
     }
 
-    public @Bitmask(XrSpaceLocationFlags.class) int combinedLocationFlags() {
+    public @Bitmask(XrSpaceLocationFlags.class) long combinedLocationFlags() {
         return segment.get(LAYOUT$combinedLocationFlags, OFFSET$combinedLocationFlags);
     }
 
-    public XrBodyJointLocationsHTC combinedLocationFlags(@Bitmask(XrSpaceLocationFlags.class) int value) {
+    public XrBodyJointLocationsHTC combinedLocationFlags(@Bitmask(XrSpaceLocationFlags.class) long value) {
         segment.set(LAYOUT$combinedLocationFlags, OFFSET$combinedLocationFlags, value);
         return this;
     }
@@ -292,7 +292,7 @@ public record XrBodyJointLocationsHTC(@NotNull MemorySegment segment) implements
     public static final StructLayout LAYOUT = NativeLayout.structLayout(
         ValueLayout.JAVA_INT.withName("type"),
         ValueLayout.ADDRESS.withName("next"),
-        ValueLayout.JAVA_INT.withName("combinedLocationFlags"),
+        ValueLayout.JAVA_LONG.withName("combinedLocationFlags"),
         ValueLayout.JAVA_INT.withName("confidenceLevel"),
         ValueLayout.JAVA_INT.withName("jointLocationCount"),
         ValueLayout.ADDRESS.withTargetLayout(XrBodyJointLocationHTC.LAYOUT).withName("jointLocations"),
@@ -310,7 +310,7 @@ public record XrBodyJointLocationsHTC(@NotNull MemorySegment segment) implements
 
     public static final OfInt LAYOUT$type = (OfInt) LAYOUT.select(PATH$type);
     public static final AddressLayout LAYOUT$next = (AddressLayout) LAYOUT.select(PATH$next);
-    public static final OfInt LAYOUT$combinedLocationFlags = (OfInt) LAYOUT.select(PATH$combinedLocationFlags);
+    public static final OfLong LAYOUT$combinedLocationFlags = (OfLong) LAYOUT.select(PATH$combinedLocationFlags);
     public static final OfInt LAYOUT$confidenceLevel = (OfInt) LAYOUT.select(PATH$confidenceLevel);
     public static final OfInt LAYOUT$jointLocationCount = (OfInt) LAYOUT.select(PATH$jointLocationCount);
     public static final AddressLayout LAYOUT$jointLocations = (AddressLayout) LAYOUT.select(PATH$jointLocations);

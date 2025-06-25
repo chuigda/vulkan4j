@@ -13,11 +13,11 @@ import java.util.List;
 /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XrPassthroughFlagsFB.html"><code>XrPassthroughFlagsFB</code></a>
 public final class XrPassthroughFlagsFB {
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XR_PASSTHROUGH_IS_RUNNING_AT_CREATION_BIT_FB.html"><code>XR_PASSTHROUGH_IS_RUNNING_AT_CREATION_BIT_FB</code></a>
-    public static final int IS_RUNNING_AT_CREATION = 0x0;
+    public static final long IS_RUNNING_AT_CREATION = 0x1L;
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XR_PASSTHROUGH_LAYER_DEPTH_BIT_FB.html"><code>XR_PASSTHROUGH_LAYER_DEPTH_BIT_FB</code></a>
-    public static final int LAYER_DEPTH = 0x1;
+    public static final long LAYER_DEPTH = 0x2L;
 
-    public static String explain(@Bitmask(XrPassthroughFlagsFB.class) int flags) {
+    public static String explain(@Bitmask(XrPassthroughFlagsFB.class) long flags) {
         List<String> detectedFlagBits = new ArrayList<>();
         if ((flags & IS_RUNNING_AT_CREATION) != 0) {
             detectedFlagBits.add("XR_PASSTHROUGH_IS_RUNNING_AT_CREATION_BIT_FB");
@@ -27,7 +27,7 @@ public final class XrPassthroughFlagsFB {
         }
 
         if (detectedFlagBits.isEmpty()) {
-            return "NONE(" + Integer.toBinaryString(flags) + ")";
+            return "NONE(" + Long.toBinaryString(flags) + ")";
         }
         return String.join(" | ", detectedFlagBits);
     }

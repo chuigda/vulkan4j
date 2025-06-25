@@ -2168,8 +2168,8 @@ public final class XR implements XRConstants {
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrSubmitDebugUtilsMessageEXT.html"><code>xrSubmitDebugUtilsMessageEXT</code></a>
     public @EnumType(XrResult.class) int xrSubmitDebugUtilsMessageEXT(
         XrInstance instance,
-        @Bitmask(XrDebugUtilsMessageSeverityFlagsEXT.class) int messageSeverity,
-        @Bitmask(XrDebugUtilsMessageTypeFlagsEXT.class) int messageTypes,
+        @Bitmask(XrDebugUtilsMessageSeverityFlagsEXT.class) long messageSeverity,
+        @Bitmask(XrDebugUtilsMessageTypeFlagsEXT.class) long messageTypes,
         @Pointer IXrDebugUtilsMessengerCallbackDataEXT callbackData
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$xrSubmitDebugUtilsMessageEXT);
@@ -9097,8 +9097,8 @@ public final class XR implements XRConstants {
         public static final FunctionDescriptor DESCRIPTOR$xrSubmitDebugUtilsMessageEXT = FunctionDescriptor.of(
             ValueLayout.JAVA_INT,
             ValueLayout.ADDRESS,
-            ValueLayout.JAVA_INT,
-            ValueLayout.JAVA_INT,
+            ValueLayout.JAVA_LONG,
+            ValueLayout.JAVA_LONG,
             ValueLayout.ADDRESS.withTargetLayout(XrDebugUtilsMessengerCallbackDataEXT.LAYOUT)
         );
 

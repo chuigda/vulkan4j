@@ -217,11 +217,11 @@ public record XrEventDataPassthroughStateChangedFB(@NotNull MemorySegment segmen
         return this;
     }
 
-    public @Bitmask(XrPassthroughStateChangedFlagsFB.class) int flags() {
+    public @Bitmask(XrPassthroughStateChangedFlagsFB.class) long flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public XrEventDataPassthroughStateChangedFB flags(@Bitmask(XrPassthroughStateChangedFlagsFB.class) int value) {
+    public XrEventDataPassthroughStateChangedFB flags(@Bitmask(XrPassthroughStateChangedFlagsFB.class) long value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
         return this;
     }
@@ -229,7 +229,7 @@ public record XrEventDataPassthroughStateChangedFB(@NotNull MemorySegment segmen
     public static final StructLayout LAYOUT = NativeLayout.structLayout(
         ValueLayout.JAVA_INT.withName("type"),
         ValueLayout.ADDRESS.withName("next"),
-        ValueLayout.JAVA_INT.withName("flags")
+        ValueLayout.JAVA_LONG.withName("flags")
     );
     public static final long BYTES = LAYOUT.byteSize();
 
@@ -239,7 +239,7 @@ public record XrEventDataPassthroughStateChangedFB(@NotNull MemorySegment segmen
 
     public static final OfInt LAYOUT$type = (OfInt) LAYOUT.select(PATH$type);
     public static final AddressLayout LAYOUT$next = (AddressLayout) LAYOUT.select(PATH$next);
-    public static final OfInt LAYOUT$flags = (OfInt) LAYOUT.select(PATH$flags);
+    public static final OfLong LAYOUT$flags = (OfLong) LAYOUT.select(PATH$flags);
 
     public static final long SIZE$type = LAYOUT$type.byteSize();
     public static final long SIZE$next = LAYOUT$next.byteSize();

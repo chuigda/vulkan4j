@@ -174,11 +174,11 @@ public record XrBodyJointLocationBD(@NotNull MemorySegment segment) implements I
         return ret;
     }
 
-    public @Bitmask(XrSpaceLocationFlags.class) int locationFlags() {
+    public @Bitmask(XrSpaceLocationFlags.class) long locationFlags() {
         return segment.get(LAYOUT$locationFlags, OFFSET$locationFlags);
     }
 
-    public XrBodyJointLocationBD locationFlags(@Bitmask(XrSpaceLocationFlags.class) int value) {
+    public XrBodyJointLocationBD locationFlags(@Bitmask(XrSpaceLocationFlags.class) long value) {
         segment.set(LAYOUT$locationFlags, OFFSET$locationFlags, value);
         return this;
     }
@@ -198,7 +198,7 @@ public record XrBodyJointLocationBD(@NotNull MemorySegment segment) implements I
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("locationFlags"),
+        ValueLayout.JAVA_LONG.withName("locationFlags"),
         XrPosef.LAYOUT.withName("pose")
     );
     public static final long BYTES = LAYOUT.byteSize();
@@ -206,7 +206,7 @@ public record XrBodyJointLocationBD(@NotNull MemorySegment segment) implements I
     public static final PathElement PATH$locationFlags = PathElement.groupElement("locationFlags");
     public static final PathElement PATH$pose = PathElement.groupElement("pose");
 
-    public static final OfInt LAYOUT$locationFlags = (OfInt) LAYOUT.select(PATH$locationFlags);
+    public static final OfLong LAYOUT$locationFlags = (OfLong) LAYOUT.select(PATH$locationFlags);
     public static final StructLayout LAYOUT$pose = (StructLayout) LAYOUT.select(PATH$pose);
 
     public static final long SIZE$locationFlags = LAYOUT$locationFlags.byteSize();

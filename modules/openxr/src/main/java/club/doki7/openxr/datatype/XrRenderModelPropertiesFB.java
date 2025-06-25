@@ -257,11 +257,11 @@ public record XrRenderModelPropertiesFB(@NotNull MemorySegment segment) implemen
         return this;
     }
 
-    public @Bitmask(XrRenderModelFlagsFB.class) int flags() {
+    public @Bitmask(XrRenderModelFlagsFB.class) long flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public XrRenderModelPropertiesFB flags(@Bitmask(XrRenderModelFlagsFB.class) int value) {
+    public XrRenderModelPropertiesFB flags(@Bitmask(XrRenderModelFlagsFB.class) long value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
         return this;
     }
@@ -273,7 +273,7 @@ public record XrRenderModelPropertiesFB(@NotNull MemorySegment segment) implemen
         ValueLayout.JAVA_BYTE.withName("modelName"),
         ValueLayout.JAVA_LONG.withName("modelKey"),
         ValueLayout.JAVA_INT.withName("modelVersion"),
-        ValueLayout.JAVA_INT.withName("flags")
+        ValueLayout.JAVA_LONG.withName("flags")
     );
     public static final long BYTES = LAYOUT.byteSize();
 
@@ -291,7 +291,7 @@ public record XrRenderModelPropertiesFB(@NotNull MemorySegment segment) implemen
     public static final OfByte LAYOUT$modelName = (OfByte) LAYOUT.select(PATH$modelName);
     public static final OfLong LAYOUT$modelKey = (OfLong) LAYOUT.select(PATH$modelKey);
     public static final OfInt LAYOUT$modelVersion = (OfInt) LAYOUT.select(PATH$modelVersion);
-    public static final OfInt LAYOUT$flags = (OfInt) LAYOUT.select(PATH$flags);
+    public static final OfLong LAYOUT$flags = (OfLong) LAYOUT.select(PATH$flags);
 
     public static final long SIZE$type = LAYOUT$type.byteSize();
     public static final long SIZE$next = LAYOUT$next.byteSize();

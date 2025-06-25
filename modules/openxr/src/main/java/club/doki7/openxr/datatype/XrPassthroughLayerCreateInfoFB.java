@@ -232,11 +232,11 @@ public record XrPassthroughLayerCreateInfoFB(@NotNull MemorySegment segment) imp
         return this;
     }
 
-    public @Bitmask(XrPassthroughFlagsFB.class) int flags() {
+    public @Bitmask(XrPassthroughFlagsFB.class) long flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public XrPassthroughLayerCreateInfoFB flags(@Bitmask(XrPassthroughFlagsFB.class) int value) {
+    public XrPassthroughLayerCreateInfoFB flags(@Bitmask(XrPassthroughFlagsFB.class) long value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
         return this;
     }
@@ -254,7 +254,7 @@ public record XrPassthroughLayerCreateInfoFB(@NotNull MemorySegment segment) imp
         ValueLayout.JAVA_INT.withName("type"),
         ValueLayout.ADDRESS.withName("next"),
         ValueLayout.ADDRESS.withName("passthrough"),
-        ValueLayout.JAVA_INT.withName("flags"),
+        ValueLayout.JAVA_LONG.withName("flags"),
         ValueLayout.JAVA_INT.withName("purpose")
     );
     public static final long BYTES = LAYOUT.byteSize();
@@ -268,7 +268,7 @@ public record XrPassthroughLayerCreateInfoFB(@NotNull MemorySegment segment) imp
     public static final OfInt LAYOUT$type = (OfInt) LAYOUT.select(PATH$type);
     public static final AddressLayout LAYOUT$next = (AddressLayout) LAYOUT.select(PATH$next);
     public static final AddressLayout LAYOUT$passthrough = (AddressLayout) LAYOUT.select(PATH$passthrough);
-    public static final OfInt LAYOUT$flags = (OfInt) LAYOUT.select(PATH$flags);
+    public static final OfLong LAYOUT$flags = (OfLong) LAYOUT.select(PATH$flags);
     public static final OfInt LAYOUT$purpose = (OfInt) LAYOUT.select(PATH$purpose);
 
     public static final long SIZE$type = LAYOUT$type.byteSize();

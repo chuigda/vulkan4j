@@ -230,11 +230,11 @@ public record XrVulkanInstanceCreateInfoKHR(@NotNull MemorySegment segment) impl
         return this;
     }
 
-    public @Bitmask(XrVulkanInstanceCreateFlagsKHR.class) int createFlags() {
+    public @Bitmask(XrVulkanInstanceCreateFlagsKHR.class) long createFlags() {
         return segment.get(LAYOUT$createFlags, OFFSET$createFlags);
     }
 
-    public XrVulkanInstanceCreateInfoKHR createFlags(@Bitmask(XrVulkanInstanceCreateFlagsKHR.class) int value) {
+    public XrVulkanInstanceCreateInfoKHR createFlags(@Bitmask(XrVulkanInstanceCreateFlagsKHR.class) long value) {
         segment.set(LAYOUT$createFlags, OFFSET$createFlags, value);
         return this;
     }
@@ -321,7 +321,7 @@ public record XrVulkanInstanceCreateInfoKHR(@NotNull MemorySegment segment) impl
         ValueLayout.JAVA_INT.withName("type"),
         ValueLayout.ADDRESS.withName("next"),
         ValueLayout.JAVA_LONG.withName("systemId"),
-        ValueLayout.JAVA_INT.withName("createFlags"),
+        ValueLayout.JAVA_LONG.withName("createFlags"),
         ValueLayout.ADDRESS.withName("pfnGetInstanceProcAddr"),
         ValueLayout.ADDRESS.withTargetLayout(VkInstanceCreateInfo.LAYOUT).withName("vulkanCreateInfo"),
         ValueLayout.ADDRESS.withTargetLayout(VkAllocationCallbacks.LAYOUT).withName("vulkanAllocator")
@@ -339,7 +339,7 @@ public record XrVulkanInstanceCreateInfoKHR(@NotNull MemorySegment segment) impl
     public static final OfInt LAYOUT$type = (OfInt) LAYOUT.select(PATH$type);
     public static final AddressLayout LAYOUT$next = (AddressLayout) LAYOUT.select(PATH$next);
     public static final OfLong LAYOUT$systemId = (OfLong) LAYOUT.select(PATH$systemId);
-    public static final OfInt LAYOUT$createFlags = (OfInt) LAYOUT.select(PATH$createFlags);
+    public static final OfLong LAYOUT$createFlags = (OfLong) LAYOUT.select(PATH$createFlags);
     public static final AddressLayout LAYOUT$pfnGetInstanceProcAddr = (AddressLayout) LAYOUT.select(PATH$pfnGetInstanceProcAddr);
     public static final AddressLayout LAYOUT$vulkanCreateInfo = (AddressLayout) LAYOUT.select(PATH$vulkanCreateInfo);
     public static final AddressLayout LAYOUT$vulkanAllocator = (AddressLayout) LAYOUT.select(PATH$vulkanAllocator);

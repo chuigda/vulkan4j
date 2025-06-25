@@ -13,13 +13,13 @@ import java.util.List;
 /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XrInputSourceLocalizedNameFlags.html"><code>XrInputSourceLocalizedNameFlags</code></a>
 public final class XrInputSourceLocalizedNameFlags {
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XR_INPUT_SOURCE_LOCALIZED_NAME_COMPONENT_BIT.html"><code>XR_INPUT_SOURCE_LOCALIZED_NAME_COMPONENT_BIT</code></a>
-    public static final int COMPONENT = 0x2;
+    public static final long COMPONENT = 0x4L;
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XR_INPUT_SOURCE_LOCALIZED_NAME_INTERACTION_PROFILE_BIT.html"><code>XR_INPUT_SOURCE_LOCALIZED_NAME_INTERACTION_PROFILE_BIT</code></a>
-    public static final int INTERACTION_PROFILE = 0x1;
+    public static final long INTERACTION_PROFILE = 0x2L;
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XR_INPUT_SOURCE_LOCALIZED_NAME_USER_PATH_BIT.html"><code>XR_INPUT_SOURCE_LOCALIZED_NAME_USER_PATH_BIT</code></a>
-    public static final int USER_PATH = 0x0;
+    public static final long USER_PATH = 0x1L;
 
-    public static String explain(@Bitmask(XrInputSourceLocalizedNameFlags.class) int flags) {
+    public static String explain(@Bitmask(XrInputSourceLocalizedNameFlags.class) long flags) {
         List<String> detectedFlagBits = new ArrayList<>();
         if ((flags & COMPONENT) != 0) {
             detectedFlagBits.add("XR_INPUT_SOURCE_LOCALIZED_NAME_COMPONENT_BIT");
@@ -32,7 +32,7 @@ public final class XrInputSourceLocalizedNameFlags {
         }
 
         if (detectedFlagBits.isEmpty()) {
-            return "NONE(" + Integer.toBinaryString(flags) + ")";
+            return "NONE(" + Long.toBinaryString(flags) + ")";
         }
         return String.join(" | ", detectedFlagBits);
     }

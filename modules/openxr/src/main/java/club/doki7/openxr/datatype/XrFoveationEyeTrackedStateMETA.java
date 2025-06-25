@@ -232,11 +232,11 @@ public record XrFoveationEyeTrackedStateMETA(@NotNull MemorySegment segment) imp
         return this;
     }
 
-    public @Bitmask(XrFoveationEyeTrackedStateFlagsMETA.class) int flags() {
+    public @Bitmask(XrFoveationEyeTrackedStateFlagsMETA.class) long flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public XrFoveationEyeTrackedStateMETA flags(@Bitmask(XrFoveationEyeTrackedStateFlagsMETA.class) int value) {
+    public XrFoveationEyeTrackedStateMETA flags(@Bitmask(XrFoveationEyeTrackedStateFlagsMETA.class) long value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
         return this;
     }
@@ -245,7 +245,7 @@ public record XrFoveationEyeTrackedStateMETA(@NotNull MemorySegment segment) imp
         ValueLayout.JAVA_INT.withName("type"),
         ValueLayout.ADDRESS.withName("next"),
         XrVector2f.LAYOUT.withName("foveationCenter"),
-        ValueLayout.JAVA_INT.withName("flags")
+        ValueLayout.JAVA_LONG.withName("flags")
     );
     public static final long BYTES = LAYOUT.byteSize();
 
@@ -257,7 +257,7 @@ public record XrFoveationEyeTrackedStateMETA(@NotNull MemorySegment segment) imp
     public static final OfInt LAYOUT$type = (OfInt) LAYOUT.select(PATH$type);
     public static final AddressLayout LAYOUT$next = (AddressLayout) LAYOUT.select(PATH$next);
     public static final StructLayout LAYOUT$foveationCenter = (StructLayout) LAYOUT.select(PATH$foveationCenter);
-    public static final OfInt LAYOUT$flags = (OfInt) LAYOUT.select(PATH$flags);
+    public static final OfLong LAYOUT$flags = (OfLong) LAYOUT.select(PATH$flags);
 
     public static final long SIZE$type = LAYOUT$type.byteSize();
     public static final long SIZE$next = LAYOUT$next.byteSize();

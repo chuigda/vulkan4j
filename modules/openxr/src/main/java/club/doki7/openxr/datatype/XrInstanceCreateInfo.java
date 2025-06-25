@@ -222,11 +222,11 @@ public record XrInstanceCreateInfo(@NotNull MemorySegment segment) implements IX
         return this;
     }
 
-    public @Bitmask(XrInstanceCreateFlags.class) int createFlags() {
+    public @Bitmask(XrInstanceCreateFlags.class) long createFlags() {
         return segment.get(LAYOUT$createFlags, OFFSET$createFlags);
     }
 
-    public XrInstanceCreateInfo createFlags(@Bitmask(XrInstanceCreateFlags.class) int value) {
+    public XrInstanceCreateInfo createFlags(@Bitmask(XrInstanceCreateFlags.class) long value) {
         segment.set(LAYOUT$createFlags, OFFSET$createFlags, value);
         return this;
     }
@@ -316,7 +316,7 @@ public record XrInstanceCreateInfo(@NotNull MemorySegment segment) implements IX
     public static final StructLayout LAYOUT = NativeLayout.structLayout(
         ValueLayout.JAVA_INT.withName("type"),
         ValueLayout.ADDRESS.withName("next"),
-        ValueLayout.JAVA_INT.withName("createFlags"),
+        ValueLayout.JAVA_LONG.withName("createFlags"),
         XrApplicationInfo.LAYOUT.withName("applicationInfo"),
         ValueLayout.JAVA_INT.withName("enabledApiLayerCount"),
         ValueLayout.ADDRESS.withTargetLayout(ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_BYTE)).withName("enabledApiLayerNames"),
@@ -336,7 +336,7 @@ public record XrInstanceCreateInfo(@NotNull MemorySegment segment) implements IX
 
     public static final OfInt LAYOUT$type = (OfInt) LAYOUT.select(PATH$type);
     public static final AddressLayout LAYOUT$next = (AddressLayout) LAYOUT.select(PATH$next);
-    public static final OfInt LAYOUT$createFlags = (OfInt) LAYOUT.select(PATH$createFlags);
+    public static final OfLong LAYOUT$createFlags = (OfLong) LAYOUT.select(PATH$createFlags);
     public static final StructLayout LAYOUT$applicationInfo = (StructLayout) LAYOUT.select(PATH$applicationInfo);
     public static final OfInt LAYOUT$enabledApiLayerCount = (OfInt) LAYOUT.select(PATH$enabledApiLayerCount);
     public static final AddressLayout LAYOUT$enabledApiLayerNames = (AddressLayout) LAYOUT.select(PATH$enabledApiLayerNames);

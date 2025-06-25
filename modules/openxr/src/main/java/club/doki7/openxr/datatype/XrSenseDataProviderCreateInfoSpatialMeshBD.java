@@ -218,11 +218,11 @@ public record XrSenseDataProviderCreateInfoSpatialMeshBD(@NotNull MemorySegment 
         return this;
     }
 
-    public @Bitmask(XrSpatialMeshConfigFlagsBD.class) int configFlags() {
+    public @Bitmask(XrSpatialMeshConfigFlagsBD.class) long configFlags() {
         return segment.get(LAYOUT$configFlags, OFFSET$configFlags);
     }
 
-    public XrSenseDataProviderCreateInfoSpatialMeshBD configFlags(@Bitmask(XrSpatialMeshConfigFlagsBD.class) int value) {
+    public XrSenseDataProviderCreateInfoSpatialMeshBD configFlags(@Bitmask(XrSpatialMeshConfigFlagsBD.class) long value) {
         segment.set(LAYOUT$configFlags, OFFSET$configFlags, value);
         return this;
     }
@@ -239,7 +239,7 @@ public record XrSenseDataProviderCreateInfoSpatialMeshBD(@NotNull MemorySegment 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(
         ValueLayout.JAVA_INT.withName("type"),
         ValueLayout.ADDRESS.withName("next"),
-        ValueLayout.JAVA_INT.withName("configFlags"),
+        ValueLayout.JAVA_LONG.withName("configFlags"),
         ValueLayout.JAVA_INT.withName("lod")
     );
     public static final long BYTES = LAYOUT.byteSize();
@@ -251,7 +251,7 @@ public record XrSenseDataProviderCreateInfoSpatialMeshBD(@NotNull MemorySegment 
 
     public static final OfInt LAYOUT$type = (OfInt) LAYOUT.select(PATH$type);
     public static final AddressLayout LAYOUT$next = (AddressLayout) LAYOUT.select(PATH$next);
-    public static final OfInt LAYOUT$configFlags = (OfInt) LAYOUT.select(PATH$configFlags);
+    public static final OfLong LAYOUT$configFlags = (OfLong) LAYOUT.select(PATH$configFlags);
     public static final OfInt LAYOUT$lod = (OfInt) LAYOUT.select(PATH$lod);
 
     public static final long SIZE$type = LAYOUT$type.byteSize();

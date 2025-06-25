@@ -224,11 +224,11 @@ public record XrCompositionLayerEquirectKHR(@NotNull MemorySegment segment) impl
         return this;
     }
 
-    public @Bitmask(XrCompositionLayerFlags.class) int layerFlags() {
+    public @Bitmask(XrCompositionLayerFlags.class) long layerFlags() {
         return segment.get(LAYOUT$layerFlags, OFFSET$layerFlags);
     }
 
-    public XrCompositionLayerEquirectKHR layerFlags(@Bitmask(XrCompositionLayerFlags.class) int value) {
+    public XrCompositionLayerEquirectKHR layerFlags(@Bitmask(XrCompositionLayerFlags.class) long value) {
         segment.set(LAYOUT$layerFlags, OFFSET$layerFlags, value);
         return this;
     }
@@ -323,7 +323,7 @@ public record XrCompositionLayerEquirectKHR(@NotNull MemorySegment segment) impl
     public static final StructLayout LAYOUT = NativeLayout.structLayout(
         ValueLayout.JAVA_INT.withName("type"),
         ValueLayout.ADDRESS.withName("next"),
-        ValueLayout.JAVA_INT.withName("layerFlags"),
+        ValueLayout.JAVA_LONG.withName("layerFlags"),
         ValueLayout.ADDRESS.withName("space"),
         ValueLayout.JAVA_INT.withName("eyeVisibility"),
         XrSwapchainSubImage.LAYOUT.withName("subImage"),
@@ -347,7 +347,7 @@ public record XrCompositionLayerEquirectKHR(@NotNull MemorySegment segment) impl
 
     public static final OfInt LAYOUT$type = (OfInt) LAYOUT.select(PATH$type);
     public static final AddressLayout LAYOUT$next = (AddressLayout) LAYOUT.select(PATH$next);
-    public static final OfInt LAYOUT$layerFlags = (OfInt) LAYOUT.select(PATH$layerFlags);
+    public static final OfLong LAYOUT$layerFlags = (OfLong) LAYOUT.select(PATH$layerFlags);
     public static final AddressLayout LAYOUT$space = (AddressLayout) LAYOUT.select(PATH$space);
     public static final OfInt LAYOUT$eyeVisibility = (OfInt) LAYOUT.select(PATH$eyeVisibility);
     public static final StructLayout LAYOUT$subImage = (StructLayout) LAYOUT.select(PATH$subImage);

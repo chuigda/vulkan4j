@@ -226,11 +226,11 @@ public record XrFrameSynthesisInfoEXT(@NotNull MemorySegment segment) implements
         return this;
     }
 
-    public @Bitmask(XrFrameSynthesisInfoFlagsEXT.class) int layerFlags() {
+    public @Bitmask(XrFrameSynthesisInfoFlagsEXT.class) long layerFlags() {
         return segment.get(LAYOUT$layerFlags, OFFSET$layerFlags);
     }
 
-    public XrFrameSynthesisInfoEXT layerFlags(@Bitmask(XrFrameSynthesisInfoFlagsEXT.class) int value) {
+    public XrFrameSynthesisInfoEXT layerFlags(@Bitmask(XrFrameSynthesisInfoFlagsEXT.class) long value) {
         segment.set(LAYOUT$layerFlags, OFFSET$layerFlags, value);
         return this;
     }
@@ -344,7 +344,7 @@ public record XrFrameSynthesisInfoEXT(@NotNull MemorySegment segment) implements
     public static final StructLayout LAYOUT = NativeLayout.structLayout(
         ValueLayout.JAVA_INT.withName("type"),
         ValueLayout.ADDRESS.withName("next"),
-        ValueLayout.JAVA_INT.withName("layerFlags"),
+        ValueLayout.JAVA_LONG.withName("layerFlags"),
         XrSwapchainSubImage.LAYOUT.withName("motionVectorSubImage"),
         XrVector4f.LAYOUT.withName("motionVectorScale"),
         XrVector4f.LAYOUT.withName("motionVectorOffset"),
@@ -372,7 +372,7 @@ public record XrFrameSynthesisInfoEXT(@NotNull MemorySegment segment) implements
 
     public static final OfInt LAYOUT$type = (OfInt) LAYOUT.select(PATH$type);
     public static final AddressLayout LAYOUT$next = (AddressLayout) LAYOUT.select(PATH$next);
-    public static final OfInt LAYOUT$layerFlags = (OfInt) LAYOUT.select(PATH$layerFlags);
+    public static final OfLong LAYOUT$layerFlags = (OfLong) LAYOUT.select(PATH$layerFlags);
     public static final StructLayout LAYOUT$motionVectorSubImage = (StructLayout) LAYOUT.select(PATH$motionVectorSubImage);
     public static final StructLayout LAYOUT$motionVectorScale = (StructLayout) LAYOUT.select(PATH$motionVectorScale);
     public static final StructLayout LAYOUT$motionVectorOffset = (StructLayout) LAYOUT.select(PATH$motionVectorOffset);

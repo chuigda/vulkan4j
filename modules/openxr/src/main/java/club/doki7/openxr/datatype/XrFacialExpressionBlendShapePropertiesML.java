@@ -238,11 +238,11 @@ public record XrFacialExpressionBlendShapePropertiesML(@NotNull MemorySegment se
         return this;
     }
 
-    public @Bitmask(XrFacialExpressionBlendShapePropertiesFlagsML.class) int flags() {
+    public @Bitmask(XrFacialExpressionBlendShapePropertiesFlagsML.class) long flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public XrFacialExpressionBlendShapePropertiesML flags(@Bitmask(XrFacialExpressionBlendShapePropertiesFlagsML.class) int value) {
+    public XrFacialExpressionBlendShapePropertiesML flags(@Bitmask(XrFacialExpressionBlendShapePropertiesFlagsML.class) long value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
         return this;
     }
@@ -261,7 +261,7 @@ public record XrFacialExpressionBlendShapePropertiesML(@NotNull MemorySegment se
         ValueLayout.ADDRESS.withName("next"),
         ValueLayout.JAVA_INT.withName("requestedFacialBlendShape"),
         ValueLayout.JAVA_FLOAT.withName("weight"),
-        ValueLayout.JAVA_INT.withName("flags"),
+        ValueLayout.JAVA_LONG.withName("flags"),
         ValueLayout.JAVA_LONG.withName("time")
     );
     public static final long BYTES = LAYOUT.byteSize();
@@ -277,7 +277,7 @@ public record XrFacialExpressionBlendShapePropertiesML(@NotNull MemorySegment se
     public static final AddressLayout LAYOUT$next = (AddressLayout) LAYOUT.select(PATH$next);
     public static final OfInt LAYOUT$requestedFacialBlendShape = (OfInt) LAYOUT.select(PATH$requestedFacialBlendShape);
     public static final OfFloat LAYOUT$weight = (OfFloat) LAYOUT.select(PATH$weight);
-    public static final OfInt LAYOUT$flags = (OfInt) LAYOUT.select(PATH$flags);
+    public static final OfLong LAYOUT$flags = (OfLong) LAYOUT.select(PATH$flags);
     public static final OfLong LAYOUT$time = (OfLong) LAYOUT.select(PATH$time);
 
     public static final long SIZE$type = LAYOUT$type.byteSize();

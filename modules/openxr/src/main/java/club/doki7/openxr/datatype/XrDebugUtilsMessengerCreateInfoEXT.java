@@ -220,20 +220,20 @@ public record XrDebugUtilsMessengerCreateInfoEXT(@NotNull MemorySegment segment)
         return this;
     }
 
-    public @Bitmask(XrDebugUtilsMessageSeverityFlagsEXT.class) int messageSeverities() {
+    public @Bitmask(XrDebugUtilsMessageSeverityFlagsEXT.class) long messageSeverities() {
         return segment.get(LAYOUT$messageSeverities, OFFSET$messageSeverities);
     }
 
-    public XrDebugUtilsMessengerCreateInfoEXT messageSeverities(@Bitmask(XrDebugUtilsMessageSeverityFlagsEXT.class) int value) {
+    public XrDebugUtilsMessengerCreateInfoEXT messageSeverities(@Bitmask(XrDebugUtilsMessageSeverityFlagsEXT.class) long value) {
         segment.set(LAYOUT$messageSeverities, OFFSET$messageSeverities, value);
         return this;
     }
 
-    public @Bitmask(XrDebugUtilsMessageTypeFlagsEXT.class) int messageTypes() {
+    public @Bitmask(XrDebugUtilsMessageTypeFlagsEXT.class) long messageTypes() {
         return segment.get(LAYOUT$messageTypes, OFFSET$messageTypes);
     }
 
-    public XrDebugUtilsMessengerCreateInfoEXT messageTypes(@Bitmask(XrDebugUtilsMessageTypeFlagsEXT.class) int value) {
+    public XrDebugUtilsMessengerCreateInfoEXT messageTypes(@Bitmask(XrDebugUtilsMessageTypeFlagsEXT.class) long value) {
         segment.set(LAYOUT$messageTypes, OFFSET$messageTypes, value);
         return this;
     }
@@ -269,8 +269,8 @@ public record XrDebugUtilsMessengerCreateInfoEXT(@NotNull MemorySegment segment)
     public static final StructLayout LAYOUT = NativeLayout.structLayout(
         ValueLayout.JAVA_INT.withName("type"),
         ValueLayout.ADDRESS.withName("next"),
-        ValueLayout.JAVA_INT.withName("messageSeverities"),
-        ValueLayout.JAVA_INT.withName("messageTypes"),
+        ValueLayout.JAVA_LONG.withName("messageSeverities"),
+        ValueLayout.JAVA_LONG.withName("messageTypes"),
         ValueLayout.ADDRESS.withName("userCallback"),
         ValueLayout.ADDRESS.withName("userData")
     );
@@ -285,8 +285,8 @@ public record XrDebugUtilsMessengerCreateInfoEXT(@NotNull MemorySegment segment)
 
     public static final OfInt LAYOUT$type = (OfInt) LAYOUT.select(PATH$type);
     public static final AddressLayout LAYOUT$next = (AddressLayout) LAYOUT.select(PATH$next);
-    public static final OfInt LAYOUT$messageSeverities = (OfInt) LAYOUT.select(PATH$messageSeverities);
-    public static final OfInt LAYOUT$messageTypes = (OfInt) LAYOUT.select(PATH$messageTypes);
+    public static final OfLong LAYOUT$messageSeverities = (OfLong) LAYOUT.select(PATH$messageSeverities);
+    public static final OfLong LAYOUT$messageTypes = (OfLong) LAYOUT.select(PATH$messageTypes);
     public static final AddressLayout LAYOUT$userCallback = (AddressLayout) LAYOUT.select(PATH$userCallback);
     public static final AddressLayout LAYOUT$userData = (AddressLayout) LAYOUT.select(PATH$userData);
 

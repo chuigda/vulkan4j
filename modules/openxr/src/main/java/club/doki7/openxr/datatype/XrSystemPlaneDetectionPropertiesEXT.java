@@ -217,11 +217,11 @@ public record XrSystemPlaneDetectionPropertiesEXT(@NotNull MemorySegment segment
         return this;
     }
 
-    public @Bitmask(XrPlaneDetectionCapabilityFlagsEXT.class) int supportedFeatures() {
+    public @Bitmask(XrPlaneDetectionCapabilityFlagsEXT.class) long supportedFeatures() {
         return segment.get(LAYOUT$supportedFeatures, OFFSET$supportedFeatures);
     }
 
-    public XrSystemPlaneDetectionPropertiesEXT supportedFeatures(@Bitmask(XrPlaneDetectionCapabilityFlagsEXT.class) int value) {
+    public XrSystemPlaneDetectionPropertiesEXT supportedFeatures(@Bitmask(XrPlaneDetectionCapabilityFlagsEXT.class) long value) {
         segment.set(LAYOUT$supportedFeatures, OFFSET$supportedFeatures, value);
         return this;
     }
@@ -229,7 +229,7 @@ public record XrSystemPlaneDetectionPropertiesEXT(@NotNull MemorySegment segment
     public static final StructLayout LAYOUT = NativeLayout.structLayout(
         ValueLayout.JAVA_INT.withName("type"),
         ValueLayout.ADDRESS.withName("next"),
-        ValueLayout.JAVA_INT.withName("supportedFeatures")
+        ValueLayout.JAVA_LONG.withName("supportedFeatures")
     );
     public static final long BYTES = LAYOUT.byteSize();
 
@@ -239,7 +239,7 @@ public record XrSystemPlaneDetectionPropertiesEXT(@NotNull MemorySegment segment
 
     public static final OfInt LAYOUT$type = (OfInt) LAYOUT.select(PATH$type);
     public static final AddressLayout LAYOUT$next = (AddressLayout) LAYOUT.select(PATH$next);
-    public static final OfInt LAYOUT$supportedFeatures = (OfInt) LAYOUT.select(PATH$supportedFeatures);
+    public static final OfLong LAYOUT$supportedFeatures = (OfLong) LAYOUT.select(PATH$supportedFeatures);
 
     public static final long SIZE$type = LAYOUT$type.byteSize();
     public static final long SIZE$next = LAYOUT$next.byteSize();

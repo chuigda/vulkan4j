@@ -199,11 +199,11 @@ public record XrKeyboardTrackingDescriptionFB(@NotNull MemorySegment segment) im
         return this;
     }
 
-    public @Bitmask(XrKeyboardTrackingFlagsFB.class) int flags() {
+    public @Bitmask(XrKeyboardTrackingFlagsFB.class) long flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public XrKeyboardTrackingDescriptionFB flags(@Bitmask(XrKeyboardTrackingFlagsFB.class) int value) {
+    public XrKeyboardTrackingDescriptionFB flags(@Bitmask(XrKeyboardTrackingFlagsFB.class) long value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
         return this;
     }
@@ -220,7 +220,7 @@ public record XrKeyboardTrackingDescriptionFB(@NotNull MemorySegment segment) im
     public static final StructLayout LAYOUT = NativeLayout.structLayout(
         ValueLayout.JAVA_LONG.withName("trackedKeyboardId"),
         XrVector3f.LAYOUT.withName("size"),
-        ValueLayout.JAVA_INT.withName("flags"),
+        ValueLayout.JAVA_LONG.withName("flags"),
         ValueLayout.JAVA_BYTE.withName("name")
     );
     public static final long BYTES = LAYOUT.byteSize();
@@ -232,7 +232,7 @@ public record XrKeyboardTrackingDescriptionFB(@NotNull MemorySegment segment) im
 
     public static final OfLong LAYOUT$trackedKeyboardId = (OfLong) LAYOUT.select(PATH$trackedKeyboardId);
     public static final StructLayout LAYOUT$size = (StructLayout) LAYOUT.select(PATH$size);
-    public static final OfInt LAYOUT$flags = (OfInt) LAYOUT.select(PATH$flags);
+    public static final OfLong LAYOUT$flags = (OfLong) LAYOUT.select(PATH$flags);
     public static final OfByte LAYOUT$name = (OfByte) LAYOUT.select(PATH$name);
 
     public static final long SIZE$trackedKeyboardId = LAYOUT$trackedKeyboardId.byteSize();

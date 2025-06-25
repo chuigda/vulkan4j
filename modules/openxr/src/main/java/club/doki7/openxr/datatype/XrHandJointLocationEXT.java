@@ -175,11 +175,11 @@ public record XrHandJointLocationEXT(@NotNull MemorySegment segment) implements 
         return ret;
     }
 
-    public @Bitmask(XrSpaceLocationFlags.class) int locationFlags() {
+    public @Bitmask(XrSpaceLocationFlags.class) long locationFlags() {
         return segment.get(LAYOUT$locationFlags, OFFSET$locationFlags);
     }
 
-    public XrHandJointLocationEXT locationFlags(@Bitmask(XrSpaceLocationFlags.class) int value) {
+    public XrHandJointLocationEXT locationFlags(@Bitmask(XrSpaceLocationFlags.class) long value) {
         segment.set(LAYOUT$locationFlags, OFFSET$locationFlags, value);
         return this;
     }
@@ -208,7 +208,7 @@ public record XrHandJointLocationEXT(@NotNull MemorySegment segment) implements 
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("locationFlags"),
+        ValueLayout.JAVA_LONG.withName("locationFlags"),
         XrPosef.LAYOUT.withName("pose"),
         ValueLayout.JAVA_FLOAT.withName("radius")
     );
@@ -218,7 +218,7 @@ public record XrHandJointLocationEXT(@NotNull MemorySegment segment) implements 
     public static final PathElement PATH$pose = PathElement.groupElement("pose");
     public static final PathElement PATH$radius = PathElement.groupElement("radius");
 
-    public static final OfInt LAYOUT$locationFlags = (OfInt) LAYOUT.select(PATH$locationFlags);
+    public static final OfLong LAYOUT$locationFlags = (OfLong) LAYOUT.select(PATH$locationFlags);
     public static final StructLayout LAYOUT$pose = (StructLayout) LAYOUT.select(PATH$pose);
     public static final OfFloat LAYOUT$radius = (OfFloat) LAYOUT.select(PATH$radius);
 

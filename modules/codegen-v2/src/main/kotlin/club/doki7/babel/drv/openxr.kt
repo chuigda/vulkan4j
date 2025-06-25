@@ -83,9 +83,10 @@ internal fun openxrMain(
     return reg
 }
 
+// OpenXR does not have latest version, use version 1.1 as the latest.
+// this may need to be updated in the future if OpenXR updates their spec.
 fun openxrLinkProvider(e: Entity): String {
     val name = e.name.original
-    // TODO: open xr doesn't have 'latest' version
     return "<a href=\"https://registry.khronos.org/OpenXR/specs/1.1/man/html/$name.html\"><code>$name</code></a>"
 }
 

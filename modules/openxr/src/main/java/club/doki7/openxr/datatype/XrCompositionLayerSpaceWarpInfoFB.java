@@ -224,11 +224,11 @@ public record XrCompositionLayerSpaceWarpInfoFB(@NotNull MemorySegment segment) 
         return this;
     }
 
-    public @Bitmask(XrCompositionLayerSpaceWarpInfoFlagsFB.class) int layerFlags() {
+    public @Bitmask(XrCompositionLayerSpaceWarpInfoFlagsFB.class) long layerFlags() {
         return segment.get(LAYOUT$layerFlags, OFFSET$layerFlags);
     }
 
-    public XrCompositionLayerSpaceWarpInfoFB layerFlags(@Bitmask(XrCompositionLayerSpaceWarpInfoFlagsFB.class) int value) {
+    public XrCompositionLayerSpaceWarpInfoFB layerFlags(@Bitmask(XrCompositionLayerSpaceWarpInfoFlagsFB.class) long value) {
         segment.set(LAYOUT$layerFlags, OFFSET$layerFlags, value);
         return this;
     }
@@ -314,7 +314,7 @@ public record XrCompositionLayerSpaceWarpInfoFB(@NotNull MemorySegment segment) 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(
         ValueLayout.JAVA_INT.withName("type"),
         ValueLayout.ADDRESS.withName("next"),
-        ValueLayout.JAVA_INT.withName("layerFlags"),
+        ValueLayout.JAVA_LONG.withName("layerFlags"),
         XrSwapchainSubImage.LAYOUT.withName("motionVectorSubImage"),
         XrPosef.LAYOUT.withName("appSpaceDeltaPose"),
         XrSwapchainSubImage.LAYOUT.withName("depthSubImage"),
@@ -338,7 +338,7 @@ public record XrCompositionLayerSpaceWarpInfoFB(@NotNull MemorySegment segment) 
 
     public static final OfInt LAYOUT$type = (OfInt) LAYOUT.select(PATH$type);
     public static final AddressLayout LAYOUT$next = (AddressLayout) LAYOUT.select(PATH$next);
-    public static final OfInt LAYOUT$layerFlags = (OfInt) LAYOUT.select(PATH$layerFlags);
+    public static final OfLong LAYOUT$layerFlags = (OfLong) LAYOUT.select(PATH$layerFlags);
     public static final StructLayout LAYOUT$motionVectorSubImage = (StructLayout) LAYOUT.select(PATH$motionVectorSubImage);
     public static final StructLayout LAYOUT$appSpaceDeltaPose = (StructLayout) LAYOUT.select(PATH$appSpaceDeltaPose);
     public static final StructLayout LAYOUT$depthSubImage = (StructLayout) LAYOUT.select(PATH$depthSubImage);

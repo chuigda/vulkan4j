@@ -217,11 +217,11 @@ public record XrSystemPassthroughProperties2FB(@NotNull MemorySegment segment) i
         return this;
     }
 
-    public @Bitmask(XrPassthroughCapabilityFlagsFB.class) int capabilities() {
+    public @Bitmask(XrPassthroughCapabilityFlagsFB.class) long capabilities() {
         return segment.get(LAYOUT$capabilities, OFFSET$capabilities);
     }
 
-    public XrSystemPassthroughProperties2FB capabilities(@Bitmask(XrPassthroughCapabilityFlagsFB.class) int value) {
+    public XrSystemPassthroughProperties2FB capabilities(@Bitmask(XrPassthroughCapabilityFlagsFB.class) long value) {
         segment.set(LAYOUT$capabilities, OFFSET$capabilities, value);
         return this;
     }
@@ -229,7 +229,7 @@ public record XrSystemPassthroughProperties2FB(@NotNull MemorySegment segment) i
     public static final StructLayout LAYOUT = NativeLayout.structLayout(
         ValueLayout.JAVA_INT.withName("type"),
         ValueLayout.ADDRESS.withName("next"),
-        ValueLayout.JAVA_INT.withName("capabilities")
+        ValueLayout.JAVA_LONG.withName("capabilities")
     );
     public static final long BYTES = LAYOUT.byteSize();
 
@@ -239,7 +239,7 @@ public record XrSystemPassthroughProperties2FB(@NotNull MemorySegment segment) i
 
     public static final OfInt LAYOUT$type = (OfInt) LAYOUT.select(PATH$type);
     public static final AddressLayout LAYOUT$next = (AddressLayout) LAYOUT.select(PATH$next);
-    public static final OfInt LAYOUT$capabilities = (OfInt) LAYOUT.select(PATH$capabilities);
+    public static final OfLong LAYOUT$capabilities = (OfLong) LAYOUT.select(PATH$capabilities);
 
     public static final long SIZE$type = LAYOUT$type.byteSize();
     public static final long SIZE$next = LAYOUT$next.byteSize();

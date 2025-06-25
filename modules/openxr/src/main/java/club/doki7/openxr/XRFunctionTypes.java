@@ -16,8 +16,8 @@ public final class XRFunctionTypes {
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/PFN_xrDebugUtilsMessengerCallbackEXT.html"><code>PFN_xrDebugUtilsMessengerCallbackEXT</code></a>
     public static final FunctionDescriptor PFN_xrDebugUtilsMessengerCallbackEXT = FunctionDescriptor.of(
         ValueLayout.JAVA_INT,
-        ValueLayout.JAVA_INT,
-        ValueLayout.JAVA_INT,
+        ValueLayout.JAVA_LONG,
+        ValueLayout.JAVA_LONG,
         ValueLayout.ADDRESS.withTargetLayout(XrDebugUtilsMessengerCallbackDataEXT.LAYOUT),
         ValueLayout.ADDRESS
     );

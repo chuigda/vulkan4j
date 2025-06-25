@@ -217,11 +217,11 @@ public record XrAndroidSurfaceSwapchainCreateInfoFB(@NotNull MemorySegment segme
         return this;
     }
 
-    public @Bitmask(XrAndroidSurfaceSwapchainFlagsFB.class) int createFlags() {
+    public @Bitmask(XrAndroidSurfaceSwapchainFlagsFB.class) long createFlags() {
         return segment.get(LAYOUT$createFlags, OFFSET$createFlags);
     }
 
-    public XrAndroidSurfaceSwapchainCreateInfoFB createFlags(@Bitmask(XrAndroidSurfaceSwapchainFlagsFB.class) int value) {
+    public XrAndroidSurfaceSwapchainCreateInfoFB createFlags(@Bitmask(XrAndroidSurfaceSwapchainFlagsFB.class) long value) {
         segment.set(LAYOUT$createFlags, OFFSET$createFlags, value);
         return this;
     }
@@ -229,7 +229,7 @@ public record XrAndroidSurfaceSwapchainCreateInfoFB(@NotNull MemorySegment segme
     public static final StructLayout LAYOUT = NativeLayout.structLayout(
         ValueLayout.JAVA_INT.withName("type"),
         ValueLayout.ADDRESS.withName("next"),
-        ValueLayout.JAVA_INT.withName("createFlags")
+        ValueLayout.JAVA_LONG.withName("createFlags")
     );
     public static final long BYTES = LAYOUT.byteSize();
 
@@ -239,7 +239,7 @@ public record XrAndroidSurfaceSwapchainCreateInfoFB(@NotNull MemorySegment segme
 
     public static final OfInt LAYOUT$type = (OfInt) LAYOUT.select(PATH$type);
     public static final AddressLayout LAYOUT$next = (AddressLayout) LAYOUT.select(PATH$next);
-    public static final OfInt LAYOUT$createFlags = (OfInt) LAYOUT.select(PATH$createFlags);
+    public static final OfLong LAYOUT$createFlags = (OfLong) LAYOUT.select(PATH$createFlags);
 
     public static final long SIZE$type = LAYOUT$type.byteSize();
     public static final long SIZE$next = LAYOUT$next.byteSize();

@@ -4,6 +4,7 @@ import club.doki7.babel.cdecl.*
 import club.doki7.babel.registry.*
 import club.doki7.babel.util.*
 import org.w3c.dom.Element
+import java.math.BigInteger
 import java.util.logging.Logger
 import kotlin.io.path.Path
 
@@ -279,7 +280,9 @@ private fun String.sanitizeFlagBits() = replace("FlagBits", "Flags")
 private fun extractBitflag(e: Element): Bitflag {
     val bitpos by e.attrs
     val name by e.attrs
-    return Bitflag(name!!, bitpos!!.toBigInteger())
+
+    val bitposNum = bitpos!!.parseDecOrHex()
+    return Bitflag(name!!, BigInteger.valueOf(1).shiftLeft(bitposNum.toInt()))
 }
 
 /**
@@ -291,8 +294,7 @@ private fun extractBitmask(e: Element): Bitmask {
         .map(::extractBitflag)
         .toMutableList()
 
-    // TODO: i am not sure whether if bitwidth should be null
-    return Bitmask(name!!.sanitizeFlagBits(), null, flags)
+    return Bitmask(name!!.sanitizeFlagBits(), 64, flags)
 }
 
 /**

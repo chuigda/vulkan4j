@@ -218,11 +218,11 @@ public record XrSessionCreateInfo(@NotNull MemorySegment segment) implements IXr
         return this;
     }
 
-    public @Bitmask(XrSessionCreateFlags.class) int createFlags() {
+    public @Bitmask(XrSessionCreateFlags.class) long createFlags() {
         return segment.get(LAYOUT$createFlags, OFFSET$createFlags);
     }
 
-    public XrSessionCreateInfo createFlags(@Bitmask(XrSessionCreateFlags.class) int value) {
+    public XrSessionCreateInfo createFlags(@Bitmask(XrSessionCreateFlags.class) long value) {
         segment.set(LAYOUT$createFlags, OFFSET$createFlags, value);
         return this;
     }
@@ -239,7 +239,7 @@ public record XrSessionCreateInfo(@NotNull MemorySegment segment) implements IXr
     public static final StructLayout LAYOUT = NativeLayout.structLayout(
         ValueLayout.JAVA_INT.withName("type"),
         ValueLayout.ADDRESS.withName("next"),
-        ValueLayout.JAVA_INT.withName("createFlags"),
+        ValueLayout.JAVA_LONG.withName("createFlags"),
         ValueLayout.JAVA_LONG.withName("systemId")
     );
     public static final long BYTES = LAYOUT.byteSize();
@@ -251,7 +251,7 @@ public record XrSessionCreateInfo(@NotNull MemorySegment segment) implements IXr
 
     public static final OfInt LAYOUT$type = (OfInt) LAYOUT.select(PATH$type);
     public static final AddressLayout LAYOUT$next = (AddressLayout) LAYOUT.select(PATH$next);
-    public static final OfInt LAYOUT$createFlags = (OfInt) LAYOUT.select(PATH$createFlags);
+    public static final OfLong LAYOUT$createFlags = (OfLong) LAYOUT.select(PATH$createFlags);
     public static final OfLong LAYOUT$systemId = (OfLong) LAYOUT.select(PATH$systemId);
 
     public static final long SIZE$type = LAYOUT$type.byteSize();

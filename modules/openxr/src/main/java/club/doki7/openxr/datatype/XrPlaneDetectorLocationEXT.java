@@ -232,11 +232,11 @@ public record XrPlaneDetectorLocationEXT(@NotNull MemorySegment segment) impleme
         return this;
     }
 
-    public @Bitmask(XrSpaceLocationFlags.class) int locationFlags() {
+    public @Bitmask(XrSpaceLocationFlags.class) long locationFlags() {
         return segment.get(LAYOUT$locationFlags, OFFSET$locationFlags);
     }
 
-    public XrPlaneDetectorLocationEXT locationFlags(@Bitmask(XrSpaceLocationFlags.class) int value) {
+    public XrPlaneDetectorLocationEXT locationFlags(@Bitmask(XrSpaceLocationFlags.class) long value) {
         segment.set(LAYOUT$locationFlags, OFFSET$locationFlags, value);
         return this;
     }
@@ -300,7 +300,7 @@ public record XrPlaneDetectorLocationEXT(@NotNull MemorySegment segment) impleme
         ValueLayout.JAVA_INT.withName("type"),
         ValueLayout.ADDRESS.withName("next"),
         ValueLayout.JAVA_LONG.withName("planeId"),
-        ValueLayout.JAVA_INT.withName("locationFlags"),
+        ValueLayout.JAVA_LONG.withName("locationFlags"),
         XrPosef.LAYOUT.withName("pose"),
         XrExtent2Df.LAYOUT.withName("extents"),
         ValueLayout.JAVA_INT.withName("orientation"),
@@ -322,7 +322,7 @@ public record XrPlaneDetectorLocationEXT(@NotNull MemorySegment segment) impleme
     public static final OfInt LAYOUT$type = (OfInt) LAYOUT.select(PATH$type);
     public static final AddressLayout LAYOUT$next = (AddressLayout) LAYOUT.select(PATH$next);
     public static final OfLong LAYOUT$planeId = (OfLong) LAYOUT.select(PATH$planeId);
-    public static final OfInt LAYOUT$locationFlags = (OfInt) LAYOUT.select(PATH$locationFlags);
+    public static final OfLong LAYOUT$locationFlags = (OfLong) LAYOUT.select(PATH$locationFlags);
     public static final StructLayout LAYOUT$pose = (StructLayout) LAYOUT.select(PATH$pose);
     public static final StructLayout LAYOUT$extents = (StructLayout) LAYOUT.select(PATH$extents);
     public static final OfInt LAYOUT$orientation = (OfInt) LAYOUT.select(PATH$orientation);

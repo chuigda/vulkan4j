@@ -13,11 +13,11 @@ import java.util.List;
 /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XrSpaceVelocityFlags.html"><code>XrSpaceVelocityFlags</code></a>
 public final class XrSpaceVelocityFlags {
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XR_SPACE_VELOCITY_ANGULAR_VALID_BIT.html"><code>XR_SPACE_VELOCITY_ANGULAR_VALID_BIT</code></a>
-    public static final int ANGULAR_VALID = 0x1;
+    public static final long ANGULAR_VALID = 0x2L;
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XR_SPACE_VELOCITY_LINEAR_VALID_BIT.html"><code>XR_SPACE_VELOCITY_LINEAR_VALID_BIT</code></a>
-    public static final int LINEAR_VALID = 0x0;
+    public static final long LINEAR_VALID = 0x1L;
 
-    public static String explain(@Bitmask(XrSpaceVelocityFlags.class) int flags) {
+    public static String explain(@Bitmask(XrSpaceVelocityFlags.class) long flags) {
         List<String> detectedFlagBits = new ArrayList<>();
         if ((flags & ANGULAR_VALID) != 0) {
             detectedFlagBits.add("XR_SPACE_VELOCITY_ANGULAR_VALID_BIT");
@@ -27,7 +27,7 @@ public final class XrSpaceVelocityFlags {
         }
 
         if (detectedFlagBits.isEmpty()) {
-            return "NONE(" + Integer.toBinaryString(flags) + ")";
+            return "NONE(" + Long.toBinaryString(flags) + ")";
         }
         return String.join(" | ", detectedFlagBits);
     }

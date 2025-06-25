@@ -217,11 +217,11 @@ public record XrViewState(@NotNull MemorySegment segment) implements IXrViewStat
         return this;
     }
 
-    public @Bitmask(XrViewStateFlags.class) int viewStateFlags() {
+    public @Bitmask(XrViewStateFlags.class) long viewStateFlags() {
         return segment.get(LAYOUT$viewStateFlags, OFFSET$viewStateFlags);
     }
 
-    public XrViewState viewStateFlags(@Bitmask(XrViewStateFlags.class) int value) {
+    public XrViewState viewStateFlags(@Bitmask(XrViewStateFlags.class) long value) {
         segment.set(LAYOUT$viewStateFlags, OFFSET$viewStateFlags, value);
         return this;
     }
@@ -229,7 +229,7 @@ public record XrViewState(@NotNull MemorySegment segment) implements IXrViewStat
     public static final StructLayout LAYOUT = NativeLayout.structLayout(
         ValueLayout.JAVA_INT.withName("type"),
         ValueLayout.ADDRESS.withName("next"),
-        ValueLayout.JAVA_INT.withName("viewStateFlags")
+        ValueLayout.JAVA_LONG.withName("viewStateFlags")
     );
     public static final long BYTES = LAYOUT.byteSize();
 
@@ -239,7 +239,7 @@ public record XrViewState(@NotNull MemorySegment segment) implements IXrViewStat
 
     public static final OfInt LAYOUT$type = (OfInt) LAYOUT.select(PATH$type);
     public static final AddressLayout LAYOUT$next = (AddressLayout) LAYOUT.select(PATH$next);
-    public static final OfInt LAYOUT$viewStateFlags = (OfInt) LAYOUT.select(PATH$viewStateFlags);
+    public static final OfLong LAYOUT$viewStateFlags = (OfLong) LAYOUT.select(PATH$viewStateFlags);
 
     public static final long SIZE$type = LAYOUT$type.byteSize();
     public static final long SIZE$next = LAYOUT$next.byteSize();

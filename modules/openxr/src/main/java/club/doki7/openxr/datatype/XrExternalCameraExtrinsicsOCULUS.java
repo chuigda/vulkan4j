@@ -185,11 +185,11 @@ public record XrExternalCameraExtrinsicsOCULUS(@NotNull MemorySegment segment) i
         return this;
     }
 
-    public @Bitmask(XrExternalCameraStatusFlagsOCULUS.class) int cameraStatusFlags() {
+    public @Bitmask(XrExternalCameraStatusFlagsOCULUS.class) long cameraStatusFlags() {
         return segment.get(LAYOUT$cameraStatusFlags, OFFSET$cameraStatusFlags);
     }
 
-    public XrExternalCameraExtrinsicsOCULUS cameraStatusFlags(@Bitmask(XrExternalCameraStatusFlagsOCULUS.class) int value) {
+    public XrExternalCameraExtrinsicsOCULUS cameraStatusFlags(@Bitmask(XrExternalCameraStatusFlagsOCULUS.class) long value) {
         segment.set(LAYOUT$cameraStatusFlags, OFFSET$cameraStatusFlags, value);
         return this;
     }
@@ -219,7 +219,7 @@ public record XrExternalCameraExtrinsicsOCULUS(@NotNull MemorySegment segment) i
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(
         ValueLayout.JAVA_LONG.withName("lastChangeTime"),
-        ValueLayout.JAVA_INT.withName("cameraStatusFlags"),
+        ValueLayout.JAVA_LONG.withName("cameraStatusFlags"),
         ValueLayout.JAVA_INT.withName("attachedToDevice"),
         XrPosef.LAYOUT.withName("relativePose")
     );
@@ -231,7 +231,7 @@ public record XrExternalCameraExtrinsicsOCULUS(@NotNull MemorySegment segment) i
     public static final PathElement PATH$relativePose = PathElement.groupElement("relativePose");
 
     public static final OfLong LAYOUT$lastChangeTime = (OfLong) LAYOUT.select(PATH$lastChangeTime);
-    public static final OfInt LAYOUT$cameraStatusFlags = (OfInt) LAYOUT.select(PATH$cameraStatusFlags);
+    public static final OfLong LAYOUT$cameraStatusFlags = (OfLong) LAYOUT.select(PATH$cameraStatusFlags);
     public static final OfInt LAYOUT$attachedToDevice = (OfInt) LAYOUT.select(PATH$attachedToDevice);
     public static final StructLayout LAYOUT$relativePose = (StructLayout) LAYOUT.select(PATH$relativePose);
 

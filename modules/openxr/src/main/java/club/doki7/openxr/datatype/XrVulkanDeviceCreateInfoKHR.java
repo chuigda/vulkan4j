@@ -231,11 +231,11 @@ public record XrVulkanDeviceCreateInfoKHR(@NotNull MemorySegment segment) implem
         return this;
     }
 
-    public @Bitmask(XrVulkanDeviceCreateFlagsKHR.class) int createFlags() {
+    public @Bitmask(XrVulkanDeviceCreateFlagsKHR.class) long createFlags() {
         return segment.get(LAYOUT$createFlags, OFFSET$createFlags);
     }
 
-    public XrVulkanDeviceCreateInfoKHR createFlags(@Bitmask(XrVulkanDeviceCreateFlagsKHR.class) int value) {
+    public XrVulkanDeviceCreateInfoKHR createFlags(@Bitmask(XrVulkanDeviceCreateFlagsKHR.class) long value) {
         segment.set(LAYOUT$createFlags, OFFSET$createFlags, value);
         return this;
     }
@@ -335,7 +335,7 @@ public record XrVulkanDeviceCreateInfoKHR(@NotNull MemorySegment segment) implem
         ValueLayout.JAVA_INT.withName("type"),
         ValueLayout.ADDRESS.withName("next"),
         ValueLayout.JAVA_LONG.withName("systemId"),
-        ValueLayout.JAVA_INT.withName("createFlags"),
+        ValueLayout.JAVA_LONG.withName("createFlags"),
         ValueLayout.ADDRESS.withName("pfnGetInstanceProcAddr"),
         ValueLayout.ADDRESS.withName("vulkanPhysicalDevice"),
         ValueLayout.ADDRESS.withTargetLayout(VkDeviceCreateInfo.LAYOUT).withName("vulkanCreateInfo"),
@@ -355,7 +355,7 @@ public record XrVulkanDeviceCreateInfoKHR(@NotNull MemorySegment segment) implem
     public static final OfInt LAYOUT$type = (OfInt) LAYOUT.select(PATH$type);
     public static final AddressLayout LAYOUT$next = (AddressLayout) LAYOUT.select(PATH$next);
     public static final OfLong LAYOUT$systemId = (OfLong) LAYOUT.select(PATH$systemId);
-    public static final OfInt LAYOUT$createFlags = (OfInt) LAYOUT.select(PATH$createFlags);
+    public static final OfLong LAYOUT$createFlags = (OfLong) LAYOUT.select(PATH$createFlags);
     public static final AddressLayout LAYOUT$pfnGetInstanceProcAddr = (AddressLayout) LAYOUT.select(PATH$pfnGetInstanceProcAddr);
     public static final AddressLayout LAYOUT$vulkanPhysicalDevice = (AddressLayout) LAYOUT.select(PATH$vulkanPhysicalDevice);
     public static final AddressLayout LAYOUT$vulkanCreateInfo = (AddressLayout) LAYOUT.select(PATH$vulkanCreateInfo);

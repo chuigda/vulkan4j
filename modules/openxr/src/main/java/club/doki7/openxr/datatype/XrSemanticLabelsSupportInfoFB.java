@@ -218,11 +218,11 @@ public record XrSemanticLabelsSupportInfoFB(@NotNull MemorySegment segment) impl
         return this;
     }
 
-    public @Bitmask(XrSemanticLabelsSupportFlagsFB.class) int flags() {
+    public @Bitmask(XrSemanticLabelsSupportFlagsFB.class) long flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public XrSemanticLabelsSupportInfoFB flags(@Bitmask(XrSemanticLabelsSupportFlagsFB.class) int value) {
+    public XrSemanticLabelsSupportInfoFB flags(@Bitmask(XrSemanticLabelsSupportFlagsFB.class) long value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
         return this;
     }
@@ -256,7 +256,7 @@ public record XrSemanticLabelsSupportInfoFB(@NotNull MemorySegment segment) impl
     public static final StructLayout LAYOUT = NativeLayout.structLayout(
         ValueLayout.JAVA_INT.withName("type"),
         ValueLayout.ADDRESS.withName("next"),
-        ValueLayout.JAVA_INT.withName("flags"),
+        ValueLayout.JAVA_LONG.withName("flags"),
         ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_BYTE).withName("recognizedLabels")
     );
     public static final long BYTES = LAYOUT.byteSize();
@@ -268,7 +268,7 @@ public record XrSemanticLabelsSupportInfoFB(@NotNull MemorySegment segment) impl
 
     public static final OfInt LAYOUT$type = (OfInt) LAYOUT.select(PATH$type);
     public static final AddressLayout LAYOUT$next = (AddressLayout) LAYOUT.select(PATH$next);
-    public static final OfInt LAYOUT$flags = (OfInt) LAYOUT.select(PATH$flags);
+    public static final OfLong LAYOUT$flags = (OfLong) LAYOUT.select(PATH$flags);
     public static final AddressLayout LAYOUT$recognizedLabels = (AddressLayout) LAYOUT.select(PATH$recognizedLabels);
 
     public static final long SIZE$type = LAYOUT$type.byteSize();

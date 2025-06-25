@@ -13,21 +13,21 @@ import java.util.List;
 /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XrPlaneDetectionCapabilityFlagsEXT.html"><code>XrPlaneDetectionCapabilityFlagsEXT</code></a>
 public final class XrPlaneDetectionCapabilityFlagsEXT {
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XR_PLANE_DETECTION_CAPABILITY_ORIENTATION_BIT_EXT.html"><code>XR_PLANE_DETECTION_CAPABILITY_ORIENTATION_BIT_EXT</code></a>
-    public static final int ORIENTATION = 0x6;
+    public static final long ORIENTATION = 0x40L;
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XR_PLANE_DETECTION_CAPABILITY_PLANE_DETECTION_BIT_EXT.html"><code>XR_PLANE_DETECTION_CAPABILITY_PLANE_DETECTION_BIT_EXT</code></a>
-    public static final int PLANE_DETECTION = 0x0;
+    public static final long PLANE_DETECTION = 0x1L;
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XR_PLANE_DETECTION_CAPABILITY_PLANE_HOLES_BIT_EXT.html"><code>XR_PLANE_DETECTION_CAPABILITY_PLANE_HOLES_BIT_EXT</code></a>
-    public static final int PLANE_HOLES = 0x1;
+    public static final long PLANE_HOLES = 0x2L;
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XR_PLANE_DETECTION_CAPABILITY_SEMANTIC_CEILING_BIT_EXT.html"><code>XR_PLANE_DETECTION_CAPABILITY_SEMANTIC_CEILING_BIT_EXT</code></a>
-    public static final int SEMANTIC_CEILING = 0x2;
+    public static final long SEMANTIC_CEILING = 0x4L;
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XR_PLANE_DETECTION_CAPABILITY_SEMANTIC_FLOOR_BIT_EXT.html"><code>XR_PLANE_DETECTION_CAPABILITY_SEMANTIC_FLOOR_BIT_EXT</code></a>
-    public static final int SEMANTIC_FLOOR = 0x3;
+    public static final long SEMANTIC_FLOOR = 0x8L;
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XR_PLANE_DETECTION_CAPABILITY_SEMANTIC_PLATFORM_BIT_EXT.html"><code>XR_PLANE_DETECTION_CAPABILITY_SEMANTIC_PLATFORM_BIT_EXT</code></a>
-    public static final int SEMANTIC_PLATFORM = 0x5;
+    public static final long SEMANTIC_PLATFORM = 0x20L;
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XR_PLANE_DETECTION_CAPABILITY_SEMANTIC_WALL_BIT_EXT.html"><code>XR_PLANE_DETECTION_CAPABILITY_SEMANTIC_WALL_BIT_EXT</code></a>
-    public static final int SEMANTIC_WALL = 0x4;
+    public static final long SEMANTIC_WALL = 0x10L;
 
-    public static String explain(@Bitmask(XrPlaneDetectionCapabilityFlagsEXT.class) int flags) {
+    public static String explain(@Bitmask(XrPlaneDetectionCapabilityFlagsEXT.class) long flags) {
         List<String> detectedFlagBits = new ArrayList<>();
         if ((flags & ORIENTATION) != 0) {
             detectedFlagBits.add("XR_PLANE_DETECTION_CAPABILITY_ORIENTATION_BIT_EXT");
@@ -52,7 +52,7 @@ public final class XrPlaneDetectionCapabilityFlagsEXT {
         }
 
         if (detectedFlagBits.isEmpty()) {
-            return "NONE(" + Integer.toBinaryString(flags) + ")";
+            return "NONE(" + Long.toBinaryString(flags) + ")";
         }
         return String.join(" | ", detectedFlagBits);
     }

@@ -13,15 +13,15 @@ import java.util.List;
 /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XrKeyboardTrackingFlagsFB.html"><code>XrKeyboardTrackingFlagsFB</code></a>
 public final class XrKeyboardTrackingFlagsFB {
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XR_KEYBOARD_TRACKING_CONNECTED_BIT_FB.html"><code>XR_KEYBOARD_TRACKING_CONNECTED_BIT_FB</code></a>
-    public static final int CONNECTED = 0x3;
+    public static final long CONNECTED = 0x8L;
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XR_KEYBOARD_TRACKING_EXISTS_BIT_FB.html"><code>XR_KEYBOARD_TRACKING_EXISTS_BIT_FB</code></a>
-    public static final int EXISTS = 0x0;
+    public static final long EXISTS = 0x1L;
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XR_KEYBOARD_TRACKING_LOCAL_BIT_FB.html"><code>XR_KEYBOARD_TRACKING_LOCAL_BIT_FB</code></a>
-    public static final int LOCAL = 0x1;
+    public static final long LOCAL = 0x2L;
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XR_KEYBOARD_TRACKING_REMOTE_BIT_FB.html"><code>XR_KEYBOARD_TRACKING_REMOTE_BIT_FB</code></a>
-    public static final int REMOTE = 0x2;
+    public static final long REMOTE = 0x4L;
 
-    public static String explain(@Bitmask(XrKeyboardTrackingFlagsFB.class) int flags) {
+    public static String explain(@Bitmask(XrKeyboardTrackingFlagsFB.class) long flags) {
         List<String> detectedFlagBits = new ArrayList<>();
         if ((flags & CONNECTED) != 0) {
             detectedFlagBits.add("XR_KEYBOARD_TRACKING_CONNECTED_BIT_FB");
@@ -37,7 +37,7 @@ public final class XrKeyboardTrackingFlagsFB {
         }
 
         if (detectedFlagBits.isEmpty()) {
-            return "NONE(" + Integer.toBinaryString(flags) + ")";
+            return "NONE(" + Long.toBinaryString(flags) + ")";
         }
         return String.join(" | ", detectedFlagBits);
     }

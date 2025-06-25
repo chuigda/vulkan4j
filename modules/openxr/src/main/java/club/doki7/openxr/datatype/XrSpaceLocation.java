@@ -218,11 +218,11 @@ public record XrSpaceLocation(@NotNull MemorySegment segment) implements IXrSpac
         return this;
     }
 
-    public @Bitmask(XrSpaceLocationFlags.class) int locationFlags() {
+    public @Bitmask(XrSpaceLocationFlags.class) long locationFlags() {
         return segment.get(LAYOUT$locationFlags, OFFSET$locationFlags);
     }
 
-    public XrSpaceLocation locationFlags(@Bitmask(XrSpaceLocationFlags.class) int value) {
+    public XrSpaceLocation locationFlags(@Bitmask(XrSpaceLocationFlags.class) long value) {
         segment.set(LAYOUT$locationFlags, OFFSET$locationFlags, value);
         return this;
     }
@@ -244,7 +244,7 @@ public record XrSpaceLocation(@NotNull MemorySegment segment) implements IXrSpac
     public static final StructLayout LAYOUT = NativeLayout.structLayout(
         ValueLayout.JAVA_INT.withName("type"),
         ValueLayout.ADDRESS.withName("next"),
-        ValueLayout.JAVA_INT.withName("locationFlags"),
+        ValueLayout.JAVA_LONG.withName("locationFlags"),
         XrPosef.LAYOUT.withName("pose")
     );
     public static final long BYTES = LAYOUT.byteSize();
@@ -256,7 +256,7 @@ public record XrSpaceLocation(@NotNull MemorySegment segment) implements IXrSpac
 
     public static final OfInt LAYOUT$type = (OfInt) LAYOUT.select(PATH$type);
     public static final AddressLayout LAYOUT$next = (AddressLayout) LAYOUT.select(PATH$next);
-    public static final OfInt LAYOUT$locationFlags = (OfInt) LAYOUT.select(PATH$locationFlags);
+    public static final OfLong LAYOUT$locationFlags = (OfLong) LAYOUT.select(PATH$locationFlags);
     public static final StructLayout LAYOUT$pose = (StructLayout) LAYOUT.select(PATH$pose);
 
     public static final long SIZE$type = LAYOUT$type.byteSize();

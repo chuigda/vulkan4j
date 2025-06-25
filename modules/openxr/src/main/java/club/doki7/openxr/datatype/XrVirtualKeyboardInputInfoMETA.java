@@ -256,11 +256,11 @@ public record XrVirtualKeyboardInputInfoMETA(@NotNull MemorySegment segment) imp
         return this;
     }
 
-    public @Bitmask(XrVirtualKeyboardInputStateFlagsMETA.class) int inputState() {
+    public @Bitmask(XrVirtualKeyboardInputStateFlagsMETA.class) long inputState() {
         return segment.get(LAYOUT$inputState, OFFSET$inputState);
     }
 
-    public XrVirtualKeyboardInputInfoMETA inputState(@Bitmask(XrVirtualKeyboardInputStateFlagsMETA.class) int value) {
+    public XrVirtualKeyboardInputInfoMETA inputState(@Bitmask(XrVirtualKeyboardInputStateFlagsMETA.class) long value) {
         segment.set(LAYOUT$inputState, OFFSET$inputState, value);
         return this;
     }
@@ -271,7 +271,7 @@ public record XrVirtualKeyboardInputInfoMETA(@NotNull MemorySegment segment) imp
         ValueLayout.JAVA_INT.withName("inputSource"),
         ValueLayout.ADDRESS.withName("inputSpace"),
         XrPosef.LAYOUT.withName("inputPoseInSpace"),
-        ValueLayout.JAVA_INT.withName("inputState")
+        ValueLayout.JAVA_LONG.withName("inputState")
     );
     public static final long BYTES = LAYOUT.byteSize();
 
@@ -287,7 +287,7 @@ public record XrVirtualKeyboardInputInfoMETA(@NotNull MemorySegment segment) imp
     public static final OfInt LAYOUT$inputSource = (OfInt) LAYOUT.select(PATH$inputSource);
     public static final AddressLayout LAYOUT$inputSpace = (AddressLayout) LAYOUT.select(PATH$inputSpace);
     public static final StructLayout LAYOUT$inputPoseInSpace = (StructLayout) LAYOUT.select(PATH$inputPoseInSpace);
-    public static final OfInt LAYOUT$inputState = (OfInt) LAYOUT.select(PATH$inputState);
+    public static final OfLong LAYOUT$inputState = (OfLong) LAYOUT.select(PATH$inputState);
 
     public static final long SIZE$type = LAYOUT$type.byteSize();
     public static final long SIZE$next = LAYOUT$next.byteSize();

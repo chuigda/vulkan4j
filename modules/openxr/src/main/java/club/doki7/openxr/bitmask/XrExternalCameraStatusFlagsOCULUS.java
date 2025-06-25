@@ -13,17 +13,17 @@ import java.util.List;
 /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XrExternalCameraStatusFlagsOCULUS.html"><code>XrExternalCameraStatusFlagsOCULUS</code></a>
 public final class XrExternalCameraStatusFlagsOCULUS {
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XR_EXTERNAL_CAMERA_STATUS_CALIBRATED_BIT_OCULUS.html"><code>XR_EXTERNAL_CAMERA_STATUS_CALIBRATED_BIT_OCULUS</code></a>
-    public static final int CALIBRATED = 0x3;
+    public static final long CALIBRATED = 0x8L;
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XR_EXTERNAL_CAMERA_STATUS_CALIBRATING_BIT_OCULUS.html"><code>XR_EXTERNAL_CAMERA_STATUS_CALIBRATING_BIT_OCULUS</code></a>
-    public static final int CALIBRATING = 0x1;
+    public static final long CALIBRATING = 0x2L;
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XR_EXTERNAL_CAMERA_STATUS_CALIBRATION_FAILED_BIT_OCULUS.html"><code>XR_EXTERNAL_CAMERA_STATUS_CALIBRATION_FAILED_BIT_OCULUS</code></a>
-    public static final int CALIBRATION_FAILED = 0x2;
+    public static final long CALIBRATION_FAILED = 0x4L;
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XR_EXTERNAL_CAMERA_STATUS_CAPTURING_BIT_OCULUS.html"><code>XR_EXTERNAL_CAMERA_STATUS_CAPTURING_BIT_OCULUS</code></a>
-    public static final int CAPTURING = 0x4;
+    public static final long CAPTURING = 0x10L;
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XR_EXTERNAL_CAMERA_STATUS_CONNECTED_BIT_OCULUS.html"><code>XR_EXTERNAL_CAMERA_STATUS_CONNECTED_BIT_OCULUS</code></a>
-    public static final int CONNECTED = 0x0;
+    public static final long CONNECTED = 0x1L;
 
-    public static String explain(@Bitmask(XrExternalCameraStatusFlagsOCULUS.class) int flags) {
+    public static String explain(@Bitmask(XrExternalCameraStatusFlagsOCULUS.class) long flags) {
         List<String> detectedFlagBits = new ArrayList<>();
         if ((flags & CALIBRATED) != 0) {
             detectedFlagBits.add("XR_EXTERNAL_CAMERA_STATUS_CALIBRATED_BIT_OCULUS");
@@ -42,7 +42,7 @@ public final class XrExternalCameraStatusFlagsOCULUS {
         }
 
         if (detectedFlagBits.isEmpty()) {
-            return "NONE(" + Integer.toBinaryString(flags) + ")";
+            return "NONE(" + Long.toBinaryString(flags) + ")";
         }
         return String.join(" | ", detectedFlagBits);
     }

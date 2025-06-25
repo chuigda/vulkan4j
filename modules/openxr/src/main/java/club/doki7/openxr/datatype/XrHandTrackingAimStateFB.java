@@ -222,11 +222,11 @@ public record XrHandTrackingAimStateFB(@NotNull MemorySegment segment) implement
         return this;
     }
 
-    public @Bitmask(XrHandTrackingAimFlagsFB.class) int status() {
+    public @Bitmask(XrHandTrackingAimFlagsFB.class) long status() {
         return segment.get(LAYOUT$status, OFFSET$status);
     }
 
-    public XrHandTrackingAimStateFB status(@Bitmask(XrHandTrackingAimFlagsFB.class) int value) {
+    public XrHandTrackingAimStateFB status(@Bitmask(XrHandTrackingAimFlagsFB.class) long value) {
         segment.set(LAYOUT$status, OFFSET$status, value);
         return this;
     }
@@ -284,7 +284,7 @@ public record XrHandTrackingAimStateFB(@NotNull MemorySegment segment) implement
     public static final StructLayout LAYOUT = NativeLayout.structLayout(
         ValueLayout.JAVA_INT.withName("type"),
         ValueLayout.ADDRESS.withName("next"),
-        ValueLayout.JAVA_INT.withName("status"),
+        ValueLayout.JAVA_LONG.withName("status"),
         XrPosef.LAYOUT.withName("aimPose"),
         ValueLayout.JAVA_FLOAT.withName("pinchStrengthIndex"),
         ValueLayout.JAVA_FLOAT.withName("pinchStrengthMiddle"),
@@ -304,7 +304,7 @@ public record XrHandTrackingAimStateFB(@NotNull MemorySegment segment) implement
 
     public static final OfInt LAYOUT$type = (OfInt) LAYOUT.select(PATH$type);
     public static final AddressLayout LAYOUT$next = (AddressLayout) LAYOUT.select(PATH$next);
-    public static final OfInt LAYOUT$status = (OfInt) LAYOUT.select(PATH$status);
+    public static final OfLong LAYOUT$status = (OfLong) LAYOUT.select(PATH$status);
     public static final StructLayout LAYOUT$aimPose = (StructLayout) LAYOUT.select(PATH$aimPose);
     public static final OfFloat LAYOUT$pinchStrengthIndex = (OfFloat) LAYOUT.select(PATH$pinchStrengthIndex);
     public static final OfFloat LAYOUT$pinchStrengthMiddle = (OfFloat) LAYOUT.select(PATH$pinchStrengthMiddle);

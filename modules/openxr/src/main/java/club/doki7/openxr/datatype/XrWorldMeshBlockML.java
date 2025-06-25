@@ -260,11 +260,11 @@ public record XrWorldMeshBlockML(@NotNull MemorySegment segment) implements IXrW
         return this;
     }
 
-    public @Bitmask(XrWorldMeshDetectorFlagsML.class) int flags() {
+    public @Bitmask(XrWorldMeshDetectorFlagsML.class) long flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public XrWorldMeshBlockML flags(@Bitmask(XrWorldMeshDetectorFlagsML.class) int value) {
+    public XrWorldMeshBlockML flags(@Bitmask(XrWorldMeshDetectorFlagsML.class) long value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
         return this;
     }
@@ -427,7 +427,7 @@ public record XrWorldMeshBlockML(@NotNull MemorySegment segment) implements IXrW
         XrUuidEXT.LAYOUT.withName("uuid"),
         ValueLayout.JAVA_INT.withName("blockResult"),
         ValueLayout.JAVA_INT.withName("lod"),
-        ValueLayout.JAVA_INT.withName("flags"),
+        ValueLayout.JAVA_LONG.withName("flags"),
         ValueLayout.JAVA_INT.withName("indexCount"),
         ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_SHORT).withName("indexBuffer"),
         ValueLayout.JAVA_INT.withName("vertexCount"),
@@ -459,7 +459,7 @@ public record XrWorldMeshBlockML(@NotNull MemorySegment segment) implements IXrW
     public static final StructLayout LAYOUT$uuid = (StructLayout) LAYOUT.select(PATH$uuid);
     public static final OfInt LAYOUT$blockResult = (OfInt) LAYOUT.select(PATH$blockResult);
     public static final OfInt LAYOUT$lod = (OfInt) LAYOUT.select(PATH$lod);
-    public static final OfInt LAYOUT$flags = (OfInt) LAYOUT.select(PATH$flags);
+    public static final OfLong LAYOUT$flags = (OfLong) LAYOUT.select(PATH$flags);
     public static final OfInt LAYOUT$indexCount = (OfInt) LAYOUT.select(PATH$indexCount);
     public static final AddressLayout LAYOUT$indexBuffer = (AddressLayout) LAYOUT.select(PATH$indexBuffer);
     public static final OfInt LAYOUT$vertexCount = (OfInt) LAYOUT.select(PATH$vertexCount);

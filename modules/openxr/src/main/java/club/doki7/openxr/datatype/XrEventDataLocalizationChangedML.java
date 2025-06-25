@@ -266,11 +266,11 @@ public record XrEventDataLocalizationChangedML(@NotNull MemorySegment segment) i
         return this;
     }
 
-    public @Bitmask(XrLocalizationMapErrorFlagsML.class) int errorFlags() {
+    public @Bitmask(XrLocalizationMapErrorFlagsML.class) long errorFlags() {
         return segment.get(LAYOUT$errorFlags, OFFSET$errorFlags);
     }
 
-    public XrEventDataLocalizationChangedML errorFlags(@Bitmask(XrLocalizationMapErrorFlagsML.class) int value) {
+    public XrEventDataLocalizationChangedML errorFlags(@Bitmask(XrLocalizationMapErrorFlagsML.class) long value) {
         segment.set(LAYOUT$errorFlags, OFFSET$errorFlags, value);
         return this;
     }
@@ -282,7 +282,7 @@ public record XrEventDataLocalizationChangedML(@NotNull MemorySegment segment) i
         ValueLayout.JAVA_INT.withName("state"),
         XrLocalizationMapML.LAYOUT.withName("map"),
         ValueLayout.JAVA_INT.withName("confidence"),
-        ValueLayout.JAVA_INT.withName("errorFlags")
+        ValueLayout.JAVA_LONG.withName("errorFlags")
     );
     public static final long BYTES = LAYOUT.byteSize();
 
@@ -300,7 +300,7 @@ public record XrEventDataLocalizationChangedML(@NotNull MemorySegment segment) i
     public static final OfInt LAYOUT$state = (OfInt) LAYOUT.select(PATH$state);
     public static final StructLayout LAYOUT$map = (StructLayout) LAYOUT.select(PATH$map);
     public static final OfInt LAYOUT$confidence = (OfInt) LAYOUT.select(PATH$confidence);
-    public static final OfInt LAYOUT$errorFlags = (OfInt) LAYOUT.select(PATH$errorFlags);
+    public static final OfLong LAYOUT$errorFlags = (OfLong) LAYOUT.select(PATH$errorFlags);
 
     public static final long SIZE$type = LAYOUT$type.byteSize();
     public static final long SIZE$next = LAYOUT$next.byteSize();

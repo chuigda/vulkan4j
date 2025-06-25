@@ -13,15 +13,15 @@ import java.util.List;
 /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XrDebugUtilsMessageTypeFlagsEXT.html"><code>XrDebugUtilsMessageTypeFlagsEXT</code></a>
 public final class XrDebugUtilsMessageTypeFlagsEXT {
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XR_DEBUG_UTILS_MESSAGE_TYPE_CONFORMANCE_BIT_EXT.html"><code>XR_DEBUG_UTILS_MESSAGE_TYPE_CONFORMANCE_BIT_EXT</code></a>
-    public static final int CONFORMANCE = 0x3;
+    public static final long CONFORMANCE = 0x8L;
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XR_DEBUG_UTILS_MESSAGE_TYPE_GENERAL_BIT_EXT.html"><code>XR_DEBUG_UTILS_MESSAGE_TYPE_GENERAL_BIT_EXT</code></a>
-    public static final int GENERAL = 0x0;
+    public static final long GENERAL = 0x1L;
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XR_DEBUG_UTILS_MESSAGE_TYPE_PERFORMANCE_BIT_EXT.html"><code>XR_DEBUG_UTILS_MESSAGE_TYPE_PERFORMANCE_BIT_EXT</code></a>
-    public static final int PERFORMANCE = 0x2;
+    public static final long PERFORMANCE = 0x4L;
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XR_DEBUG_UTILS_MESSAGE_TYPE_VALIDATION_BIT_EXT.html"><code>XR_DEBUG_UTILS_MESSAGE_TYPE_VALIDATION_BIT_EXT</code></a>
-    public static final int VALIDATION = 0x1;
+    public static final long VALIDATION = 0x2L;
 
-    public static String explain(@Bitmask(XrDebugUtilsMessageTypeFlagsEXT.class) int flags) {
+    public static String explain(@Bitmask(XrDebugUtilsMessageTypeFlagsEXT.class) long flags) {
         List<String> detectedFlagBits = new ArrayList<>();
         if ((flags & CONFORMANCE) != 0) {
             detectedFlagBits.add("XR_DEBUG_UTILS_MESSAGE_TYPE_CONFORMANCE_BIT_EXT");
@@ -37,7 +37,7 @@ public final class XrDebugUtilsMessageTypeFlagsEXT {
         }
 
         if (detectedFlagBits.isEmpty()) {
-            return "NONE(" + Integer.toBinaryString(flags) + ")";
+            return "NONE(" + Long.toBinaryString(flags) + ")";
         }
         return String.join(" | ", detectedFlagBits);
     }

@@ -13,11 +13,11 @@ import java.util.List;
 /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XrFacialExpressionBlendShapePropertiesFlagsML.html"><code>XrFacialExpressionBlendShapePropertiesFlagsML</code></a>
 public final class XrFacialExpressionBlendShapePropertiesFlagsML {
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XR_FACIAL_EXPRESSION_BLEND_SHAPE_PROPERTIES_TRACKED_BIT_ML.html"><code>XR_FACIAL_EXPRESSION_BLEND_SHAPE_PROPERTIES_TRACKED_BIT_ML</code></a>
-    public static final int TRACKED = 0x1;
+    public static final long TRACKED = 0x2L;
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XR_FACIAL_EXPRESSION_BLEND_SHAPE_PROPERTIES_VALID_BIT_ML.html"><code>XR_FACIAL_EXPRESSION_BLEND_SHAPE_PROPERTIES_VALID_BIT_ML</code></a>
-    public static final int VALID = 0x0;
+    public static final long VALID = 0x1L;
 
-    public static String explain(@Bitmask(XrFacialExpressionBlendShapePropertiesFlagsML.class) int flags) {
+    public static String explain(@Bitmask(XrFacialExpressionBlendShapePropertiesFlagsML.class) long flags) {
         List<String> detectedFlagBits = new ArrayList<>();
         if ((flags & TRACKED) != 0) {
             detectedFlagBits.add("XR_FACIAL_EXPRESSION_BLEND_SHAPE_PROPERTIES_TRACKED_BIT_ML");
@@ -27,7 +27,7 @@ public final class XrFacialExpressionBlendShapePropertiesFlagsML {
         }
 
         if (detectedFlagBits.isEmpty()) {
-            return "NONE(" + Integer.toBinaryString(flags) + ")";
+            return "NONE(" + Long.toBinaryString(flags) + ")";
         }
         return String.join(" | ", detectedFlagBits);
     }

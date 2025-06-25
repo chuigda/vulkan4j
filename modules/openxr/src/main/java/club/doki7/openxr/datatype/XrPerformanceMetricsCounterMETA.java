@@ -220,11 +220,11 @@ public record XrPerformanceMetricsCounterMETA(@NotNull MemorySegment segment) im
         return this;
     }
 
-    public @Bitmask(XrPerformanceMetricsCounterFlagsMETA.class) int counterFlags() {
+    public @Bitmask(XrPerformanceMetricsCounterFlagsMETA.class) long counterFlags() {
         return segment.get(LAYOUT$counterFlags, OFFSET$counterFlags);
     }
 
-    public XrPerformanceMetricsCounterMETA counterFlags(@Bitmask(XrPerformanceMetricsCounterFlagsMETA.class) int value) {
+    public XrPerformanceMetricsCounterMETA counterFlags(@Bitmask(XrPerformanceMetricsCounterFlagsMETA.class) long value) {
         segment.set(LAYOUT$counterFlags, OFFSET$counterFlags, value);
         return this;
     }
@@ -259,7 +259,7 @@ public record XrPerformanceMetricsCounterMETA(@NotNull MemorySegment segment) im
     public static final StructLayout LAYOUT = NativeLayout.structLayout(
         ValueLayout.JAVA_INT.withName("type"),
         ValueLayout.ADDRESS.withName("next"),
-        ValueLayout.JAVA_INT.withName("counterFlags"),
+        ValueLayout.JAVA_LONG.withName("counterFlags"),
         ValueLayout.JAVA_INT.withName("counterUnit"),
         ValueLayout.JAVA_INT.withName("uintValue"),
         ValueLayout.JAVA_FLOAT.withName("floatValue")
@@ -275,7 +275,7 @@ public record XrPerformanceMetricsCounterMETA(@NotNull MemorySegment segment) im
 
     public static final OfInt LAYOUT$type = (OfInt) LAYOUT.select(PATH$type);
     public static final AddressLayout LAYOUT$next = (AddressLayout) LAYOUT.select(PATH$next);
-    public static final OfInt LAYOUT$counterFlags = (OfInt) LAYOUT.select(PATH$counterFlags);
+    public static final OfLong LAYOUT$counterFlags = (OfLong) LAYOUT.select(PATH$counterFlags);
     public static final OfInt LAYOUT$counterUnit = (OfInt) LAYOUT.select(PATH$counterUnit);
     public static final OfInt LAYOUT$uintValue = (OfInt) LAYOUT.select(PATH$uintValue);
     public static final OfFloat LAYOUT$floatValue = (OfFloat) LAYOUT.select(PATH$floatValue);

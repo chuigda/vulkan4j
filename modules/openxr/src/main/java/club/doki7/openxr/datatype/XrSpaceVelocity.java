@@ -219,11 +219,11 @@ public record XrSpaceVelocity(@NotNull MemorySegment segment) implements IXrSpac
         return this;
     }
 
-    public @Bitmask(XrSpaceVelocityFlags.class) int velocityFlags() {
+    public @Bitmask(XrSpaceVelocityFlags.class) long velocityFlags() {
         return segment.get(LAYOUT$velocityFlags, OFFSET$velocityFlags);
     }
 
-    public XrSpaceVelocity velocityFlags(@Bitmask(XrSpaceVelocityFlags.class) int value) {
+    public XrSpaceVelocity velocityFlags(@Bitmask(XrSpaceVelocityFlags.class) long value) {
         segment.set(LAYOUT$velocityFlags, OFFSET$velocityFlags, value);
         return this;
     }
@@ -259,7 +259,7 @@ public record XrSpaceVelocity(@NotNull MemorySegment segment) implements IXrSpac
     public static final StructLayout LAYOUT = NativeLayout.structLayout(
         ValueLayout.JAVA_INT.withName("type"),
         ValueLayout.ADDRESS.withName("next"),
-        ValueLayout.JAVA_INT.withName("velocityFlags"),
+        ValueLayout.JAVA_LONG.withName("velocityFlags"),
         XrVector3f.LAYOUT.withName("linearVelocity"),
         XrVector3f.LAYOUT.withName("angularVelocity")
     );
@@ -273,7 +273,7 @@ public record XrSpaceVelocity(@NotNull MemorySegment segment) implements IXrSpac
 
     public static final OfInt LAYOUT$type = (OfInt) LAYOUT.select(PATH$type);
     public static final AddressLayout LAYOUT$next = (AddressLayout) LAYOUT.select(PATH$next);
-    public static final OfInt LAYOUT$velocityFlags = (OfInt) LAYOUT.select(PATH$velocityFlags);
+    public static final OfLong LAYOUT$velocityFlags = (OfLong) LAYOUT.select(PATH$velocityFlags);
     public static final StructLayout LAYOUT$linearVelocity = (StructLayout) LAYOUT.select(PATH$linearVelocity);
     public static final StructLayout LAYOUT$angularVelocity = (StructLayout) LAYOUT.select(PATH$angularVelocity);
 

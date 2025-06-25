@@ -227,11 +227,11 @@ public record XrEventDataMainSessionVisibilityChangedEXTX(@NotNull MemorySegment
         return this;
     }
 
-    public @Bitmask(XrOverlayMainSessionFlagsEXTX.class) int flags() {
+    public @Bitmask(XrOverlayMainSessionFlagsEXTX.class) long flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public XrEventDataMainSessionVisibilityChangedEXTX flags(@Bitmask(XrOverlayMainSessionFlagsEXTX.class) int value) {
+    public XrEventDataMainSessionVisibilityChangedEXTX flags(@Bitmask(XrOverlayMainSessionFlagsEXTX.class) long value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
         return this;
     }
@@ -240,7 +240,7 @@ public record XrEventDataMainSessionVisibilityChangedEXTX(@NotNull MemorySegment
         ValueLayout.JAVA_INT.withName("type"),
         ValueLayout.ADDRESS.withName("next"),
         ValueLayout.JAVA_INT.withName("visible"),
-        ValueLayout.JAVA_INT.withName("flags")
+        ValueLayout.JAVA_LONG.withName("flags")
     );
     public static final long BYTES = LAYOUT.byteSize();
 
@@ -252,7 +252,7 @@ public record XrEventDataMainSessionVisibilityChangedEXTX(@NotNull MemorySegment
     public static final OfInt LAYOUT$type = (OfInt) LAYOUT.select(PATH$type);
     public static final AddressLayout LAYOUT$next = (AddressLayout) LAYOUT.select(PATH$next);
     public static final OfInt LAYOUT$visible = (OfInt) LAYOUT.select(PATH$visible);
-    public static final OfInt LAYOUT$flags = (OfInt) LAYOUT.select(PATH$flags);
+    public static final OfLong LAYOUT$flags = (OfLong) LAYOUT.select(PATH$flags);
 
     public static final long SIZE$type = LAYOUT$type.byteSize();
     public static final long SIZE$next = LAYOUT$next.byteSize();

@@ -225,20 +225,20 @@ public record XrSwapchainCreateInfo(@NotNull MemorySegment segment) implements I
         return this;
     }
 
-    public @Bitmask(XrSwapchainCreateFlags.class) int createFlags() {
+    public @Bitmask(XrSwapchainCreateFlags.class) long createFlags() {
         return segment.get(LAYOUT$createFlags, OFFSET$createFlags);
     }
 
-    public XrSwapchainCreateInfo createFlags(@Bitmask(XrSwapchainCreateFlags.class) int value) {
+    public XrSwapchainCreateInfo createFlags(@Bitmask(XrSwapchainCreateFlags.class) long value) {
         segment.set(LAYOUT$createFlags, OFFSET$createFlags, value);
         return this;
     }
 
-    public @Bitmask(XrSwapchainUsageFlags.class) int usageFlags() {
+    public @Bitmask(XrSwapchainUsageFlags.class) long usageFlags() {
         return segment.get(LAYOUT$usageFlags, OFFSET$usageFlags);
     }
 
-    public XrSwapchainCreateInfo usageFlags(@Bitmask(XrSwapchainUsageFlags.class) int value) {
+    public XrSwapchainCreateInfo usageFlags(@Bitmask(XrSwapchainUsageFlags.class) long value) {
         segment.set(LAYOUT$usageFlags, OFFSET$usageFlags, value);
         return this;
     }
@@ -309,8 +309,8 @@ public record XrSwapchainCreateInfo(@NotNull MemorySegment segment) implements I
     public static final StructLayout LAYOUT = NativeLayout.structLayout(
         ValueLayout.JAVA_INT.withName("type"),
         ValueLayout.ADDRESS.withName("next"),
-        ValueLayout.JAVA_INT.withName("createFlags"),
-        ValueLayout.JAVA_INT.withName("usageFlags"),
+        ValueLayout.JAVA_LONG.withName("createFlags"),
+        ValueLayout.JAVA_LONG.withName("usageFlags"),
         ValueLayout.JAVA_LONG.withName("format"),
         ValueLayout.JAVA_INT.withName("sampleCount"),
         ValueLayout.JAVA_INT.withName("width"),
@@ -335,8 +335,8 @@ public record XrSwapchainCreateInfo(@NotNull MemorySegment segment) implements I
 
     public static final OfInt LAYOUT$type = (OfInt) LAYOUT.select(PATH$type);
     public static final AddressLayout LAYOUT$next = (AddressLayout) LAYOUT.select(PATH$next);
-    public static final OfInt LAYOUT$createFlags = (OfInt) LAYOUT.select(PATH$createFlags);
-    public static final OfInt LAYOUT$usageFlags = (OfInt) LAYOUT.select(PATH$usageFlags);
+    public static final OfLong LAYOUT$createFlags = (OfLong) LAYOUT.select(PATH$createFlags);
+    public static final OfLong LAYOUT$usageFlags = (OfLong) LAYOUT.select(PATH$usageFlags);
     public static final OfLong LAYOUT$format = (OfLong) LAYOUT.select(PATH$format);
     public static final OfInt LAYOUT$sampleCount = (OfInt) LAYOUT.select(PATH$sampleCount);
     public static final OfInt LAYOUT$width = (OfInt) LAYOUT.select(PATH$width);

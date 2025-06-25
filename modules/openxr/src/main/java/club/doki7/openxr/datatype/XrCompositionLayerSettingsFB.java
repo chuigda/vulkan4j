@@ -217,11 +217,11 @@ public record XrCompositionLayerSettingsFB(@NotNull MemorySegment segment) imple
         return this;
     }
 
-    public @Bitmask(XrCompositionLayerSettingsFlagsFB.class) int layerFlags() {
+    public @Bitmask(XrCompositionLayerSettingsFlagsFB.class) long layerFlags() {
         return segment.get(LAYOUT$layerFlags, OFFSET$layerFlags);
     }
 
-    public XrCompositionLayerSettingsFB layerFlags(@Bitmask(XrCompositionLayerSettingsFlagsFB.class) int value) {
+    public XrCompositionLayerSettingsFB layerFlags(@Bitmask(XrCompositionLayerSettingsFlagsFB.class) long value) {
         segment.set(LAYOUT$layerFlags, OFFSET$layerFlags, value);
         return this;
     }
@@ -229,7 +229,7 @@ public record XrCompositionLayerSettingsFB(@NotNull MemorySegment segment) imple
     public static final StructLayout LAYOUT = NativeLayout.structLayout(
         ValueLayout.JAVA_INT.withName("type"),
         ValueLayout.ADDRESS.withName("next"),
-        ValueLayout.JAVA_INT.withName("layerFlags")
+        ValueLayout.JAVA_LONG.withName("layerFlags")
     );
     public static final long BYTES = LAYOUT.byteSize();
 
@@ -239,7 +239,7 @@ public record XrCompositionLayerSettingsFB(@NotNull MemorySegment segment) imple
 
     public static final OfInt LAYOUT$type = (OfInt) LAYOUT.select(PATH$type);
     public static final AddressLayout LAYOUT$next = (AddressLayout) LAYOUT.select(PATH$next);
-    public static final OfInt LAYOUT$layerFlags = (OfInt) LAYOUT.select(PATH$layerFlags);
+    public static final OfLong LAYOUT$layerFlags = (OfLong) LAYOUT.select(PATH$layerFlags);
 
     public static final long SIZE$type = LAYOUT$type.byteSize();
     public static final long SIZE$next = LAYOUT$next.byteSize();

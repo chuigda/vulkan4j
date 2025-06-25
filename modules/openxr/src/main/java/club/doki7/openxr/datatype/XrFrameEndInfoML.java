@@ -227,11 +227,11 @@ public record XrFrameEndInfoML(@NotNull MemorySegment segment) implements IXrFra
         return this;
     }
 
-    public @Bitmask(XrFrameEndInfoFlagsML.class) int flags() {
+    public @Bitmask(XrFrameEndInfoFlagsML.class) long flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public XrFrameEndInfoML flags(@Bitmask(XrFrameEndInfoFlagsML.class) int value) {
+    public XrFrameEndInfoML flags(@Bitmask(XrFrameEndInfoFlagsML.class) long value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
         return this;
     }
@@ -240,7 +240,7 @@ public record XrFrameEndInfoML(@NotNull MemorySegment segment) implements IXrFra
         ValueLayout.JAVA_INT.withName("type"),
         ValueLayout.ADDRESS.withName("next"),
         ValueLayout.JAVA_FLOAT.withName("focusDistance"),
-        ValueLayout.JAVA_INT.withName("flags")
+        ValueLayout.JAVA_LONG.withName("flags")
     );
     public static final long BYTES = LAYOUT.byteSize();
 
@@ -252,7 +252,7 @@ public record XrFrameEndInfoML(@NotNull MemorySegment segment) implements IXrFra
     public static final OfInt LAYOUT$type = (OfInt) LAYOUT.select(PATH$type);
     public static final AddressLayout LAYOUT$next = (AddressLayout) LAYOUT.select(PATH$next);
     public static final OfFloat LAYOUT$focusDistance = (OfFloat) LAYOUT.select(PATH$focusDistance);
-    public static final OfInt LAYOUT$flags = (OfInt) LAYOUT.select(PATH$flags);
+    public static final OfLong LAYOUT$flags = (OfLong) LAYOUT.select(PATH$flags);
 
     public static final long SIZE$type = LAYOUT$type.byteSize();
     public static final long SIZE$next = LAYOUT$next.byteSize();

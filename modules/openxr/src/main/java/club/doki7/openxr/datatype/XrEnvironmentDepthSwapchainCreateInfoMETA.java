@@ -217,11 +217,11 @@ public record XrEnvironmentDepthSwapchainCreateInfoMETA(@NotNull MemorySegment s
         return this;
     }
 
-    public @Bitmask(XrEnvironmentDepthSwapchainCreateFlagsMETA.class) int createFlags() {
+    public @Bitmask(XrEnvironmentDepthSwapchainCreateFlagsMETA.class) long createFlags() {
         return segment.get(LAYOUT$createFlags, OFFSET$createFlags);
     }
 
-    public XrEnvironmentDepthSwapchainCreateInfoMETA createFlags(@Bitmask(XrEnvironmentDepthSwapchainCreateFlagsMETA.class) int value) {
+    public XrEnvironmentDepthSwapchainCreateInfoMETA createFlags(@Bitmask(XrEnvironmentDepthSwapchainCreateFlagsMETA.class) long value) {
         segment.set(LAYOUT$createFlags, OFFSET$createFlags, value);
         return this;
     }
@@ -229,7 +229,7 @@ public record XrEnvironmentDepthSwapchainCreateInfoMETA(@NotNull MemorySegment s
     public static final StructLayout LAYOUT = NativeLayout.structLayout(
         ValueLayout.JAVA_INT.withName("type"),
         ValueLayout.ADDRESS.withName("next"),
-        ValueLayout.JAVA_INT.withName("createFlags")
+        ValueLayout.JAVA_LONG.withName("createFlags")
     );
     public static final long BYTES = LAYOUT.byteSize();
 
@@ -239,7 +239,7 @@ public record XrEnvironmentDepthSwapchainCreateInfoMETA(@NotNull MemorySegment s
 
     public static final OfInt LAYOUT$type = (OfInt) LAYOUT.select(PATH$type);
     public static final AddressLayout LAYOUT$next = (AddressLayout) LAYOUT.select(PATH$next);
-    public static final OfInt LAYOUT$createFlags = (OfInt) LAYOUT.select(PATH$createFlags);
+    public static final OfLong LAYOUT$createFlags = (OfLong) LAYOUT.select(PATH$createFlags);
 
     public static final long SIZE$type = LAYOUT$type.byteSize();
     public static final long SIZE$next = LAYOUT$next.byteSize();

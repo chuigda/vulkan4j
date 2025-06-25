@@ -219,11 +219,11 @@ public record XrCompositionLayerPassthroughFB(@NotNull MemorySegment segment) im
         return this;
     }
 
-    public @Bitmask(XrCompositionLayerFlags.class) int flags() {
+    public @Bitmask(XrCompositionLayerFlags.class) long flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public XrCompositionLayerPassthroughFB flags(@Bitmask(XrCompositionLayerFlags.class) int value) {
+    public XrCompositionLayerPassthroughFB flags(@Bitmask(XrCompositionLayerFlags.class) long value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
         return this;
     }
@@ -257,7 +257,7 @@ public record XrCompositionLayerPassthroughFB(@NotNull MemorySegment segment) im
     public static final StructLayout LAYOUT = NativeLayout.structLayout(
         ValueLayout.JAVA_INT.withName("type"),
         ValueLayout.ADDRESS.withName("next"),
-        ValueLayout.JAVA_INT.withName("flags"),
+        ValueLayout.JAVA_LONG.withName("flags"),
         ValueLayout.ADDRESS.withName("space"),
         ValueLayout.ADDRESS.withName("layerHandle")
     );
@@ -271,7 +271,7 @@ public record XrCompositionLayerPassthroughFB(@NotNull MemorySegment segment) im
 
     public static final OfInt LAYOUT$type = (OfInt) LAYOUT.select(PATH$type);
     public static final AddressLayout LAYOUT$next = (AddressLayout) LAYOUT.select(PATH$next);
-    public static final OfInt LAYOUT$flags = (OfInt) LAYOUT.select(PATH$flags);
+    public static final OfLong LAYOUT$flags = (OfLong) LAYOUT.select(PATH$flags);
     public static final AddressLayout LAYOUT$space = (AddressLayout) LAYOUT.select(PATH$space);
     public static final AddressLayout LAYOUT$layerHandle = (AddressLayout) LAYOUT.select(PATH$layerHandle);
 

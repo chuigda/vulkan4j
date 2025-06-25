@@ -222,11 +222,11 @@ public record XrTriangleMeshCreateInfoFB(@NotNull MemorySegment segment) impleme
         return this;
     }
 
-    public @Bitmask(XrTriangleMeshFlagsFB.class) int flags() {
+    public @Bitmask(XrTriangleMeshFlagsFB.class) long flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public XrTriangleMeshCreateInfoFB flags(@Bitmask(XrTriangleMeshFlagsFB.class) int value) {
+    public XrTriangleMeshCreateInfoFB flags(@Bitmask(XrTriangleMeshFlagsFB.class) long value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
         return this;
     }
@@ -319,7 +319,7 @@ public record XrTriangleMeshCreateInfoFB(@NotNull MemorySegment segment) impleme
     public static final StructLayout LAYOUT = NativeLayout.structLayout(
         ValueLayout.JAVA_INT.withName("type"),
         ValueLayout.ADDRESS.withName("next"),
-        ValueLayout.JAVA_INT.withName("flags"),
+        ValueLayout.JAVA_LONG.withName("flags"),
         ValueLayout.JAVA_INT.withName("windingOrder"),
         ValueLayout.JAVA_INT.withName("vertexCount"),
         ValueLayout.ADDRESS.withTargetLayout(XrVector3f.LAYOUT).withName("vertexBuffer"),
@@ -339,7 +339,7 @@ public record XrTriangleMeshCreateInfoFB(@NotNull MemorySegment segment) impleme
 
     public static final OfInt LAYOUT$type = (OfInt) LAYOUT.select(PATH$type);
     public static final AddressLayout LAYOUT$next = (AddressLayout) LAYOUT.select(PATH$next);
-    public static final OfInt LAYOUT$flags = (OfInt) LAYOUT.select(PATH$flags);
+    public static final OfLong LAYOUT$flags = (OfLong) LAYOUT.select(PATH$flags);
     public static final OfInt LAYOUT$windingOrder = (OfInt) LAYOUT.select(PATH$windingOrder);
     public static final OfInt LAYOUT$vertexCount = (OfInt) LAYOUT.select(PATH$vertexCount);
     public static final AddressLayout LAYOUT$vertexBuffer = (AddressLayout) LAYOUT.select(PATH$vertexBuffer);

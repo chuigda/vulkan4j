@@ -227,11 +227,11 @@ public record XrInputSourceLocalizedNameGetInfo(@NotNull MemorySegment segment) 
         return this;
     }
 
-    public @Bitmask(XrInputSourceLocalizedNameFlags.class) int whichComponents() {
+    public @Bitmask(XrInputSourceLocalizedNameFlags.class) long whichComponents() {
         return segment.get(LAYOUT$whichComponents, OFFSET$whichComponents);
     }
 
-    public XrInputSourceLocalizedNameGetInfo whichComponents(@Bitmask(XrInputSourceLocalizedNameFlags.class) int value) {
+    public XrInputSourceLocalizedNameGetInfo whichComponents(@Bitmask(XrInputSourceLocalizedNameFlags.class) long value) {
         segment.set(LAYOUT$whichComponents, OFFSET$whichComponents, value);
         return this;
     }
@@ -240,7 +240,7 @@ public record XrInputSourceLocalizedNameGetInfo(@NotNull MemorySegment segment) 
         ValueLayout.JAVA_INT.withName("type"),
         ValueLayout.ADDRESS.withName("next"),
         ValueLayout.JAVA_LONG.withName("sourcePath"),
-        ValueLayout.JAVA_INT.withName("whichComponents")
+        ValueLayout.JAVA_LONG.withName("whichComponents")
     );
     public static final long BYTES = LAYOUT.byteSize();
 
@@ -252,7 +252,7 @@ public record XrInputSourceLocalizedNameGetInfo(@NotNull MemorySegment segment) 
     public static final OfInt LAYOUT$type = (OfInt) LAYOUT.select(PATH$type);
     public static final AddressLayout LAYOUT$next = (AddressLayout) LAYOUT.select(PATH$next);
     public static final OfLong LAYOUT$sourcePath = (OfLong) LAYOUT.select(PATH$sourcePath);
-    public static final OfInt LAYOUT$whichComponents = (OfInt) LAYOUT.select(PATH$whichComponents);
+    public static final OfLong LAYOUT$whichComponents = (OfLong) LAYOUT.select(PATH$whichComponents);
 
     public static final long SIZE$type = LAYOUT$type.byteSize();
     public static final long SIZE$next = LAYOUT$next.byteSize();

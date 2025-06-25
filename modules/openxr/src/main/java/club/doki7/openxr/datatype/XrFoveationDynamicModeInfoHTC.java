@@ -217,11 +217,11 @@ public record XrFoveationDynamicModeInfoHTC(@NotNull MemorySegment segment) impl
         return this;
     }
 
-    public @Bitmask(XrFoveationDynamicFlagsHTC.class) int dynamicFlags() {
+    public @Bitmask(XrFoveationDynamicFlagsHTC.class) long dynamicFlags() {
         return segment.get(LAYOUT$dynamicFlags, OFFSET$dynamicFlags);
     }
 
-    public XrFoveationDynamicModeInfoHTC dynamicFlags(@Bitmask(XrFoveationDynamicFlagsHTC.class) int value) {
+    public XrFoveationDynamicModeInfoHTC dynamicFlags(@Bitmask(XrFoveationDynamicFlagsHTC.class) long value) {
         segment.set(LAYOUT$dynamicFlags, OFFSET$dynamicFlags, value);
         return this;
     }
@@ -229,7 +229,7 @@ public record XrFoveationDynamicModeInfoHTC(@NotNull MemorySegment segment) impl
     public static final StructLayout LAYOUT = NativeLayout.structLayout(
         ValueLayout.JAVA_INT.withName("type"),
         ValueLayout.ADDRESS.withName("next"),
-        ValueLayout.JAVA_INT.withName("dynamicFlags")
+        ValueLayout.JAVA_LONG.withName("dynamicFlags")
     );
     public static final long BYTES = LAYOUT.byteSize();
 
@@ -239,7 +239,7 @@ public record XrFoveationDynamicModeInfoHTC(@NotNull MemorySegment segment) impl
 
     public static final OfInt LAYOUT$type = (OfInt) LAYOUT.select(PATH$type);
     public static final AddressLayout LAYOUT$next = (AddressLayout) LAYOUT.select(PATH$next);
-    public static final OfInt LAYOUT$dynamicFlags = (OfInt) LAYOUT.select(PATH$dynamicFlags);
+    public static final OfLong LAYOUT$dynamicFlags = (OfLong) LAYOUT.select(PATH$dynamicFlags);
 
     public static final long SIZE$type = LAYOUT$type.byteSize();
     public static final long SIZE$next = LAYOUT$next.byteSize();

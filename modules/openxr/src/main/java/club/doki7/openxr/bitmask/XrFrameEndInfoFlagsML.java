@@ -13,11 +13,11 @@ import java.util.List;
 /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XrFrameEndInfoFlagsML.html"><code>XrFrameEndInfoFlagsML</code></a>
 public final class XrFrameEndInfoFlagsML {
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XR_FRAME_END_INFO_PROTECTED_BIT_ML.html"><code>XR_FRAME_END_INFO_PROTECTED_BIT_ML</code></a>
-    public static final int PROTECTED = 0x0;
+    public static final long PROTECTED = 0x1L;
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/XR_FRAME_END_INFO_VIGNETTE_BIT_ML.html"><code>XR_FRAME_END_INFO_VIGNETTE_BIT_ML</code></a>
-    public static final int VIGNETTE = 0x1;
+    public static final long VIGNETTE = 0x2L;
 
-    public static String explain(@Bitmask(XrFrameEndInfoFlagsML.class) int flags) {
+    public static String explain(@Bitmask(XrFrameEndInfoFlagsML.class) long flags) {
         List<String> detectedFlagBits = new ArrayList<>();
         if ((flags & PROTECTED) != 0) {
             detectedFlagBits.add("XR_FRAME_END_INFO_PROTECTED_BIT_ML");
@@ -27,7 +27,7 @@ public final class XrFrameEndInfoFlagsML {
         }
 
         if (detectedFlagBits.isEmpty()) {
-            return "NONE(" + Integer.toBinaryString(flags) + ")";
+            return "NONE(" + Long.toBinaryString(flags) + ")";
         }
         return String.join(" | ", detectedFlagBits);
     }

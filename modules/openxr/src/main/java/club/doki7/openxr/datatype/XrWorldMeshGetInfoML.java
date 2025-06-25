@@ -221,11 +221,11 @@ public record XrWorldMeshGetInfoML(@NotNull MemorySegment segment) implements IX
         return this;
     }
 
-    public @Bitmask(XrWorldMeshDetectorFlagsML.class) int flags() {
+    public @Bitmask(XrWorldMeshDetectorFlagsML.class) long flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public XrWorldMeshGetInfoML flags(@Bitmask(XrWorldMeshDetectorFlagsML.class) int value) {
+    public XrWorldMeshGetInfoML flags(@Bitmask(XrWorldMeshDetectorFlagsML.class) long value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
         return this;
     }
@@ -292,7 +292,7 @@ public record XrWorldMeshGetInfoML(@NotNull MemorySegment segment) implements IX
     public static final StructLayout LAYOUT = NativeLayout.structLayout(
         ValueLayout.JAVA_INT.withName("type"),
         ValueLayout.ADDRESS.withName("next"),
-        ValueLayout.JAVA_INT.withName("flags"),
+        ValueLayout.JAVA_LONG.withName("flags"),
         ValueLayout.JAVA_FLOAT.withName("fillHoleLength"),
         ValueLayout.JAVA_FLOAT.withName("disconnectedComponentArea"),
         ValueLayout.JAVA_INT.withName("blockCount"),
@@ -310,7 +310,7 @@ public record XrWorldMeshGetInfoML(@NotNull MemorySegment segment) implements IX
 
     public static final OfInt LAYOUT$type = (OfInt) LAYOUT.select(PATH$type);
     public static final AddressLayout LAYOUT$next = (AddressLayout) LAYOUT.select(PATH$next);
-    public static final OfInt LAYOUT$flags = (OfInt) LAYOUT.select(PATH$flags);
+    public static final OfLong LAYOUT$flags = (OfLong) LAYOUT.select(PATH$flags);
     public static final OfFloat LAYOUT$fillHoleLength = (OfFloat) LAYOUT.select(PATH$fillHoleLength);
     public static final OfFloat LAYOUT$disconnectedComponentArea = (OfFloat) LAYOUT.select(PATH$disconnectedComponentArea);
     public static final OfInt LAYOUT$blockCount = (OfInt) LAYOUT.select(PATH$blockCount);

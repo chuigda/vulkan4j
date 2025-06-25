@@ -175,11 +175,11 @@ public record XrHandJointVelocityEXT(@NotNull MemorySegment segment) implements 
         return ret;
     }
 
-    public @Bitmask(XrSpaceVelocityFlags.class) int velocityFlags() {
+    public @Bitmask(XrSpaceVelocityFlags.class) long velocityFlags() {
         return segment.get(LAYOUT$velocityFlags, OFFSET$velocityFlags);
     }
 
-    public XrHandJointVelocityEXT velocityFlags(@Bitmask(XrSpaceVelocityFlags.class) int value) {
+    public XrHandJointVelocityEXT velocityFlags(@Bitmask(XrSpaceVelocityFlags.class) long value) {
         segment.set(LAYOUT$velocityFlags, OFFSET$velocityFlags, value);
         return this;
     }
@@ -213,7 +213,7 @@ public record XrHandJointVelocityEXT(@NotNull MemorySegment segment) implements 
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("velocityFlags"),
+        ValueLayout.JAVA_LONG.withName("velocityFlags"),
         XrVector3f.LAYOUT.withName("linearVelocity"),
         XrVector3f.LAYOUT.withName("angularVelocity")
     );
@@ -223,7 +223,7 @@ public record XrHandJointVelocityEXT(@NotNull MemorySegment segment) implements 
     public static final PathElement PATH$linearVelocity = PathElement.groupElement("linearVelocity");
     public static final PathElement PATH$angularVelocity = PathElement.groupElement("angularVelocity");
 
-    public static final OfInt LAYOUT$velocityFlags = (OfInt) LAYOUT.select(PATH$velocityFlags);
+    public static final OfLong LAYOUT$velocityFlags = (OfLong) LAYOUT.select(PATH$velocityFlags);
     public static final StructLayout LAYOUT$linearVelocity = (StructLayout) LAYOUT.select(PATH$linearVelocity);
     public static final StructLayout LAYOUT$angularVelocity = (StructLayout) LAYOUT.select(PATH$angularVelocity);
 
