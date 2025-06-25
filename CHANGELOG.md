@@ -12,10 +12,10 @@ Upgrade `ffm-plus` to v0.2.5, and other wrapper modules to v0.4.1.
 - `StructureType.Ptr.at` and `StructureType.arrayField` methods now also have an overloading accepting a `Consumer<T>`, thus also supporting LWJGL-alike `set` style methods. For example:
     ```c
     struct StructureType { int field1; int field2; } structures[2];
-    structures[0].field = value00;
-    structures[1].field = value01;
-    structures[1].field = value10;
-    structures[1].field = value11;
+    structures[0].field1 = value00;
+    structures[0].field2 = value01;
+    structures[1].field1 = value10;
+    structures[1].field2 = value11;
     ```
     can now be written as:
     ```java
