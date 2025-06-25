@@ -1,8 +1,12 @@
 ## Unreleased v0.4.1
 
+### Quality of Life updates
+
+- For array fields of structures, accessor `structure.field(PtrType ptr)` only copies `ptr.segment().byteSize()` bytes from `ptr` to the field, instead of attempting to copy the whole array. This makes it easier to work with C-style null-terminated strings.
+
 ### Bugfixes
 
-- Fixed `BytePtr.checked` which was not previouly marked as `static`.
+- Fixed `BytePtr.checked` which was not previously marked as `static`.
 
 ### Minor changes
 
