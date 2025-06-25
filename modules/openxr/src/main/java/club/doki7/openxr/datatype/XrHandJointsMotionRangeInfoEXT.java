@@ -91,6 +91,10 @@ public record XrHandJointsMotionRangeInfoEXT(@NotNull MemorySegment segment) imp
             return new XrHandJointsMotionRangeInfoEXT(segment.asSlice(index * XrHandJointsMotionRangeInfoEXT.BYTES, XrHandJointsMotionRangeInfoEXT.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull XrHandJointsMotionRangeInfoEXT> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull XrHandJointsMotionRangeInfoEXT value) {
             MemorySegment s = segment.asSlice(index * XrHandJointsMotionRangeInfoEXT.BYTES, XrHandJointsMotionRangeInfoEXT.BYTES);
             s.copyFrom(value.segment);

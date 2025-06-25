@@ -81,6 +81,10 @@ public record XrSpatialAnchorsCreateInfoBaseHeaderML(@NotNull MemorySegment segm
             return new XrSpatialAnchorsCreateInfoBaseHeaderML(segment.asSlice(index * XrSpatialAnchorsCreateInfoBaseHeaderML.BYTES, XrSpatialAnchorsCreateInfoBaseHeaderML.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull XrSpatialAnchorsCreateInfoBaseHeaderML> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull XrSpatialAnchorsCreateInfoBaseHeaderML value) {
             MemorySegment s = segment.asSlice(index * XrSpatialAnchorsCreateInfoBaseHeaderML.BYTES, XrSpatialAnchorsCreateInfoBaseHeaderML.BYTES);
             s.copyFrom(value.segment);

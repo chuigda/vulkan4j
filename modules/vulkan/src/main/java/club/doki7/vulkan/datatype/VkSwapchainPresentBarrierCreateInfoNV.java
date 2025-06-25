@@ -87,6 +87,10 @@ public record VkSwapchainPresentBarrierCreateInfoNV(@NotNull MemorySegment segme
             return new VkSwapchainPresentBarrierCreateInfoNV(segment.asSlice(index * VkSwapchainPresentBarrierCreateInfoNV.BYTES, VkSwapchainPresentBarrierCreateInfoNV.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull VkSwapchainPresentBarrierCreateInfoNV> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull VkSwapchainPresentBarrierCreateInfoNV value) {
             MemorySegment s = segment.asSlice(index * VkSwapchainPresentBarrierCreateInfoNV.BYTES, VkSwapchainPresentBarrierCreateInfoNV.BYTES);
             s.copyFrom(value.segment);

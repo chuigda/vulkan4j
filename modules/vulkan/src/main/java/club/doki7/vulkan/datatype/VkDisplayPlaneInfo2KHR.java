@@ -88,6 +88,10 @@ public record VkDisplayPlaneInfo2KHR(@NotNull MemorySegment segment) implements 
             return new VkDisplayPlaneInfo2KHR(segment.asSlice(index * VkDisplayPlaneInfo2KHR.BYTES, VkDisplayPlaneInfo2KHR.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull VkDisplayPlaneInfo2KHR> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull VkDisplayPlaneInfo2KHR value) {
             MemorySegment s = segment.asSlice(index * VkDisplayPlaneInfo2KHR.BYTES, VkDisplayPlaneInfo2KHR.BYTES);
             s.copyFrom(value.segment);

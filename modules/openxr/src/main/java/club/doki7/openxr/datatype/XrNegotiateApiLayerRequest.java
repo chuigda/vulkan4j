@@ -86,6 +86,10 @@ public record XrNegotiateApiLayerRequest(@NotNull MemorySegment segment) impleme
             return new XrNegotiateApiLayerRequest(segment.asSlice(index * XrNegotiateApiLayerRequest.BYTES, XrNegotiateApiLayerRequest.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull XrNegotiateApiLayerRequest> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull XrNegotiateApiLayerRequest value) {
             MemorySegment s = segment.asSlice(index * XrNegotiateApiLayerRequest.BYTES, XrNegotiateApiLayerRequest.BYTES);
             s.copyFrom(value.segment);

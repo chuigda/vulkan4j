@@ -87,6 +87,10 @@ public record VkBufferDeviceAddressInfo(@NotNull MemorySegment segment) implemen
             return new VkBufferDeviceAddressInfo(segment.asSlice(index * VkBufferDeviceAddressInfo.BYTES, VkBufferDeviceAddressInfo.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull VkBufferDeviceAddressInfo> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull VkBufferDeviceAddressInfo value) {
             MemorySegment s = segment.asSlice(index * VkBufferDeviceAddressInfo.BYTES, VkBufferDeviceAddressInfo.BYTES);
             s.copyFrom(value.segment);

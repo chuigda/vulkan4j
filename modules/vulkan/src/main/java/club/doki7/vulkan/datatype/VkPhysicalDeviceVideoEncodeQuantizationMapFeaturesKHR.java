@@ -87,6 +87,10 @@ public record VkPhysicalDeviceVideoEncodeQuantizationMapFeaturesKHR(@NotNull Mem
             return new VkPhysicalDeviceVideoEncodeQuantizationMapFeaturesKHR(segment.asSlice(index * VkPhysicalDeviceVideoEncodeQuantizationMapFeaturesKHR.BYTES, VkPhysicalDeviceVideoEncodeQuantizationMapFeaturesKHR.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceVideoEncodeQuantizationMapFeaturesKHR> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull VkPhysicalDeviceVideoEncodeQuantizationMapFeaturesKHR value) {
             MemorySegment s = segment.asSlice(index * VkPhysicalDeviceVideoEncodeQuantizationMapFeaturesKHR.BYTES, VkPhysicalDeviceVideoEncodeQuantizationMapFeaturesKHR.BYTES);
             s.copyFrom(value.segment);

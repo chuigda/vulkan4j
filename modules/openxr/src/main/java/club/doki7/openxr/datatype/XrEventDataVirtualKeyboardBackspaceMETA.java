@@ -91,6 +91,10 @@ public record XrEventDataVirtualKeyboardBackspaceMETA(@NotNull MemorySegment seg
             return new XrEventDataVirtualKeyboardBackspaceMETA(segment.asSlice(index * XrEventDataVirtualKeyboardBackspaceMETA.BYTES, XrEventDataVirtualKeyboardBackspaceMETA.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull XrEventDataVirtualKeyboardBackspaceMETA> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull XrEventDataVirtualKeyboardBackspaceMETA value) {
             MemorySegment s = segment.asSlice(index * XrEventDataVirtualKeyboardBackspaceMETA.BYTES, XrEventDataVirtualKeyboardBackspaceMETA.BYTES);
             s.copyFrom(value.segment);

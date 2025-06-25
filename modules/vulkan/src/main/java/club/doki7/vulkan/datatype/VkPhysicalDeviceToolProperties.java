@@ -91,6 +91,10 @@ public record VkPhysicalDeviceToolProperties(@NotNull MemorySegment segment) imp
             return new VkPhysicalDeviceToolProperties(segment.asSlice(index * VkPhysicalDeviceToolProperties.BYTES, VkPhysicalDeviceToolProperties.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceToolProperties> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull VkPhysicalDeviceToolProperties value) {
             MemorySegment s = segment.asSlice(index * VkPhysicalDeviceToolProperties.BYTES, VkPhysicalDeviceToolProperties.BYTES);
             s.copyFrom(value.segment);
@@ -221,6 +225,12 @@ public record VkPhysicalDeviceToolProperties(@NotNull MemorySegment segment) imp
         return new BytePtr(nameRaw());
     }
 
+    public VkPhysicalDeviceToolProperties name(@NotNull Consumer<BytePtr> consumer) {
+        BytePtr ptr = name();
+        consumer.accept(ptr);
+        return this;
+    }
+
     public VkPhysicalDeviceToolProperties name(BytePtr value) {
         MemorySegment s = nameRaw();
         s.copyFrom(value.segment());
@@ -233,6 +243,12 @@ public record VkPhysicalDeviceToolProperties(@NotNull MemorySegment segment) imp
 
     public BytePtr version() {
         return new BytePtr(versionRaw());
+    }
+
+    public VkPhysicalDeviceToolProperties version(@NotNull Consumer<BytePtr> consumer) {
+        BytePtr ptr = version();
+        consumer.accept(ptr);
+        return this;
     }
 
     public VkPhysicalDeviceToolProperties version(BytePtr value) {
@@ -258,6 +274,12 @@ public record VkPhysicalDeviceToolProperties(@NotNull MemorySegment segment) imp
         return new BytePtr(descriptionRaw());
     }
 
+    public VkPhysicalDeviceToolProperties description(@NotNull Consumer<BytePtr> consumer) {
+        BytePtr ptr = description();
+        consumer.accept(ptr);
+        return this;
+    }
+
     public VkPhysicalDeviceToolProperties description(BytePtr value) {
         MemorySegment s = descriptionRaw();
         s.copyFrom(value.segment());
@@ -270,6 +292,12 @@ public record VkPhysicalDeviceToolProperties(@NotNull MemorySegment segment) imp
 
     public BytePtr layer() {
         return new BytePtr(layerRaw());
+    }
+
+    public VkPhysicalDeviceToolProperties layer(@NotNull Consumer<BytePtr> consumer) {
+        BytePtr ptr = layer();
+        consumer.accept(ptr);
+        return this;
     }
 
     public VkPhysicalDeviceToolProperties layer(BytePtr value) {

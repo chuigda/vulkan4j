@@ -87,6 +87,10 @@ public record VkCalibratedTimestampInfoKHR(@NotNull MemorySegment segment) imple
             return new VkCalibratedTimestampInfoKHR(segment.asSlice(index * VkCalibratedTimestampInfoKHR.BYTES, VkCalibratedTimestampInfoKHR.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull VkCalibratedTimestampInfoKHR> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull VkCalibratedTimestampInfoKHR value) {
             MemorySegment s = segment.asSlice(index * VkCalibratedTimestampInfoKHR.BYTES, VkCalibratedTimestampInfoKHR.BYTES);
             s.copyFrom(value.segment);

@@ -78,6 +78,10 @@ public record VkCopyMemoryIndirectCommandNV(@NotNull MemorySegment segment) impl
             return new VkCopyMemoryIndirectCommandNV(segment.asSlice(index * VkCopyMemoryIndirectCommandNV.BYTES, VkCopyMemoryIndirectCommandNV.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull VkCopyMemoryIndirectCommandNV> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull VkCopyMemoryIndirectCommandNV value) {
             MemorySegment s = segment.asSlice(index * VkCopyMemoryIndirectCommandNV.BYTES, VkCopyMemoryIndirectCommandNV.BYTES);
             s.copyFrom(value.segment);

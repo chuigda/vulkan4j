@@ -94,6 +94,10 @@ public record XrCompositionLayerAlphaBlendFB(@NotNull MemorySegment segment) imp
             return new XrCompositionLayerAlphaBlendFB(segment.asSlice(index * XrCompositionLayerAlphaBlendFB.BYTES, XrCompositionLayerAlphaBlendFB.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull XrCompositionLayerAlphaBlendFB> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull XrCompositionLayerAlphaBlendFB value) {
             MemorySegment s = segment.asSlice(index * XrCompositionLayerAlphaBlendFB.BYTES, XrCompositionLayerAlphaBlendFB.BYTES);
             s.copyFrom(value.segment);

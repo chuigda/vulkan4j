@@ -98,6 +98,10 @@ public record VkConvertCooperativeVectorMatrixInfoNV(@NotNull MemorySegment segm
             return new VkConvertCooperativeVectorMatrixInfoNV(segment.asSlice(index * VkConvertCooperativeVectorMatrixInfoNV.BYTES, VkConvertCooperativeVectorMatrixInfoNV.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull VkConvertCooperativeVectorMatrixInfoNV> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull VkConvertCooperativeVectorMatrixInfoNV value) {
             MemorySegment s = segment.asSlice(index * VkConvertCooperativeVectorMatrixInfoNV.BYTES, VkConvertCooperativeVectorMatrixInfoNV.BYTES);
             s.copyFrom(value.segment);

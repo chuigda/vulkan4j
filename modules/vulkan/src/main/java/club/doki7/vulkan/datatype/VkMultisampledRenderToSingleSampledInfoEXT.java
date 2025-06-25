@@ -88,6 +88,10 @@ public record VkMultisampledRenderToSingleSampledInfoEXT(@NotNull MemorySegment 
             return new VkMultisampledRenderToSingleSampledInfoEXT(segment.asSlice(index * VkMultisampledRenderToSingleSampledInfoEXT.BYTES, VkMultisampledRenderToSingleSampledInfoEXT.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull VkMultisampledRenderToSingleSampledInfoEXT> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull VkMultisampledRenderToSingleSampledInfoEXT value) {
             MemorySegment s = segment.asSlice(index * VkMultisampledRenderToSingleSampledInfoEXT.BYTES, VkMultisampledRenderToSingleSampledInfoEXT.BYTES);
             s.copyFrom(value.segment);

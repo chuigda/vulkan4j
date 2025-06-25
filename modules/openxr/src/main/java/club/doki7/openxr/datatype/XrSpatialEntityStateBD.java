@@ -93,6 +93,10 @@ public record XrSpatialEntityStateBD(@NotNull MemorySegment segment) implements 
             return new XrSpatialEntityStateBD(segment.asSlice(index * XrSpatialEntityStateBD.BYTES, XrSpatialEntityStateBD.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull XrSpatialEntityStateBD> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull XrSpatialEntityStateBD value) {
             MemorySegment s = segment.asSlice(index * XrSpatialEntityStateBD.BYTES, XrSpatialEntityStateBD.BYTES);
             s.copyFrom(value.segment);

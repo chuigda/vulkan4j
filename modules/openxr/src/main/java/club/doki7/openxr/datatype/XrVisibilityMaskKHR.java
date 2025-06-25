@@ -96,6 +96,10 @@ public record XrVisibilityMaskKHR(@NotNull MemorySegment segment) implements IXr
             return new XrVisibilityMaskKHR(segment.asSlice(index * XrVisibilityMaskKHR.BYTES, XrVisibilityMaskKHR.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull XrVisibilityMaskKHR> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull XrVisibilityMaskKHR value) {
             MemorySegment s = segment.asSlice(index * XrVisibilityMaskKHR.BYTES, XrVisibilityMaskKHR.BYTES);
             s.copyFrom(value.segment);

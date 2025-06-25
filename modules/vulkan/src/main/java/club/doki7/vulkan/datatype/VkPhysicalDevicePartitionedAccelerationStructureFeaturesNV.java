@@ -87,6 +87,10 @@ public record VkPhysicalDevicePartitionedAccelerationStructureFeaturesNV(@NotNul
             return new VkPhysicalDevicePartitionedAccelerationStructureFeaturesNV(segment.asSlice(index * VkPhysicalDevicePartitionedAccelerationStructureFeaturesNV.BYTES, VkPhysicalDevicePartitionedAccelerationStructureFeaturesNV.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull VkPhysicalDevicePartitionedAccelerationStructureFeaturesNV> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull VkPhysicalDevicePartitionedAccelerationStructureFeaturesNV value) {
             MemorySegment s = segment.asSlice(index * VkPhysicalDevicePartitionedAccelerationStructureFeaturesNV.BYTES, VkPhysicalDevicePartitionedAccelerationStructureFeaturesNV.BYTES);
             s.copyFrom(value.segment);

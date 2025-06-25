@@ -92,6 +92,10 @@ public record VkVideoEncodeH265SessionParametersGetInfoKHR(@NotNull MemorySegmen
             return new VkVideoEncodeH265SessionParametersGetInfoKHR(segment.asSlice(index * VkVideoEncodeH265SessionParametersGetInfoKHR.BYTES, VkVideoEncodeH265SessionParametersGetInfoKHR.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull VkVideoEncodeH265SessionParametersGetInfoKHR> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull VkVideoEncodeH265SessionParametersGetInfoKHR value) {
             MemorySegment s = segment.asSlice(index * VkVideoEncodeH265SessionParametersGetInfoKHR.BYTES, VkVideoEncodeH265SessionParametersGetInfoKHR.BYTES);
             s.copyFrom(value.segment);

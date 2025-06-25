@@ -87,6 +87,10 @@ public record VkDevicePrivateDataCreateInfo(@NotNull MemorySegment segment) impl
             return new VkDevicePrivateDataCreateInfo(segment.asSlice(index * VkDevicePrivateDataCreateInfo.BYTES, VkDevicePrivateDataCreateInfo.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull VkDevicePrivateDataCreateInfo> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull VkDevicePrivateDataCreateInfo value) {
             MemorySegment s = segment.asSlice(index * VkDevicePrivateDataCreateInfo.BYTES, VkDevicePrivateDataCreateInfo.BYTES);
             s.copyFrom(value.segment);

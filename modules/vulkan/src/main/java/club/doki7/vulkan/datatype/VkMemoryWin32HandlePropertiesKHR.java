@@ -87,6 +87,10 @@ public record VkMemoryWin32HandlePropertiesKHR(@NotNull MemorySegment segment) i
             return new VkMemoryWin32HandlePropertiesKHR(segment.asSlice(index * VkMemoryWin32HandlePropertiesKHR.BYTES, VkMemoryWin32HandlePropertiesKHR.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull VkMemoryWin32HandlePropertiesKHR> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull VkMemoryWin32HandlePropertiesKHR value) {
             MemorySegment s = segment.asSlice(index * VkMemoryWin32HandlePropertiesKHR.BYTES, VkMemoryWin32HandlePropertiesKHR.BYTES);
             s.copyFrom(value.segment);

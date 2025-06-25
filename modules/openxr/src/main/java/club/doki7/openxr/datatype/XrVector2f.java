@@ -81,6 +81,10 @@ public record XrVector2f(@NotNull MemorySegment segment) implements IXrVector2f 
             return new XrVector2f(segment.asSlice(index * XrVector2f.BYTES, XrVector2f.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull XrVector2f> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull XrVector2f value) {
             MemorySegment s = segment.asSlice(index * XrVector2f.BYTES, XrVector2f.BYTES);
             s.copyFrom(value.segment);

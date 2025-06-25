@@ -97,6 +97,10 @@ public record StdVideoDecodeAV1PictureInfo(@NotNull MemorySegment segment) imple
             return new StdVideoDecodeAV1PictureInfo(segment.asSlice(index * StdVideoDecodeAV1PictureInfo.BYTES, StdVideoDecodeAV1PictureInfo.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull StdVideoDecodeAV1PictureInfo> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull StdVideoDecodeAV1PictureInfo value) {
             MemorySegment s = segment.asSlice(index * StdVideoDecodeAV1PictureInfo.BYTES, StdVideoDecodeAV1PictureInfo.BYTES);
             s.copyFrom(value.segment);
@@ -290,6 +294,12 @@ public record StdVideoDecodeAV1PictureInfo(@NotNull MemorySegment segment) imple
         return new BytePtr(SkipModeFrameRaw());
     }
 
+    public StdVideoDecodeAV1PictureInfo SkipModeFrame(@NotNull Consumer<BytePtr> consumer) {
+        @Unsigned BytePtr ptr = SkipModeFrame();
+        consumer.accept(ptr);
+        return this;
+    }
+
     public StdVideoDecodeAV1PictureInfo SkipModeFrame(@Unsigned BytePtr value) {
         MemorySegment s = SkipModeFrameRaw();
         s.copyFrom(value.segment());
@@ -314,6 +324,12 @@ public record StdVideoDecodeAV1PictureInfo(@NotNull MemorySegment segment) imple
         return new BytePtr(OrderHintsRaw());
     }
 
+    public StdVideoDecodeAV1PictureInfo OrderHints(@NotNull Consumer<BytePtr> consumer) {
+        @Unsigned BytePtr ptr = OrderHints();
+        consumer.accept(ptr);
+        return this;
+    }
+
     public StdVideoDecodeAV1PictureInfo OrderHints(@Unsigned BytePtr value) {
         MemorySegment s = OrderHintsRaw();
         s.copyFrom(value.segment());
@@ -326,6 +342,12 @@ public record StdVideoDecodeAV1PictureInfo(@NotNull MemorySegment segment) imple
 
     public @Unsigned IntPtr expectedFrameId() {
         return new IntPtr(expectedFrameIdRaw());
+    }
+
+    public StdVideoDecodeAV1PictureInfo expectedFrameId(@NotNull Consumer<IntPtr> consumer) {
+        @Unsigned IntPtr ptr = expectedFrameId();
+        consumer.accept(ptr);
+        return this;
     }
 
     public StdVideoDecodeAV1PictureInfo expectedFrameId(@Unsigned IntPtr value) {

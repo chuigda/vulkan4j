@@ -91,6 +91,10 @@ public record XrPassthroughPreferencesMETA(@NotNull MemorySegment segment) imple
             return new XrPassthroughPreferencesMETA(segment.asSlice(index * XrPassthroughPreferencesMETA.BYTES, XrPassthroughPreferencesMETA.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull XrPassthroughPreferencesMETA> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull XrPassthroughPreferencesMETA value) {
             MemorySegment s = segment.asSlice(index * XrPassthroughPreferencesMETA.BYTES, XrPassthroughPreferencesMETA.BYTES);
             s.copyFrom(value.segment);

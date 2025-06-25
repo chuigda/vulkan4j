@@ -92,6 +92,10 @@ public record VkImageFormatConstraintsInfoFUCHSIA(@NotNull MemorySegment segment
             return new VkImageFormatConstraintsInfoFUCHSIA(segment.asSlice(index * VkImageFormatConstraintsInfoFUCHSIA.BYTES, VkImageFormatConstraintsInfoFUCHSIA.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull VkImageFormatConstraintsInfoFUCHSIA> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull VkImageFormatConstraintsInfoFUCHSIA value) {
             MemorySegment s = segment.asSlice(index * VkImageFormatConstraintsInfoFUCHSIA.BYTES, VkImageFormatConstraintsInfoFUCHSIA.BYTES);
             s.copyFrom(value.segment);

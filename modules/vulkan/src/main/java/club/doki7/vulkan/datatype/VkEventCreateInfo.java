@@ -87,6 +87,10 @@ public record VkEventCreateInfo(@NotNull MemorySegment segment) implements IVkEv
             return new VkEventCreateInfo(segment.asSlice(index * VkEventCreateInfo.BYTES, VkEventCreateInfo.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull VkEventCreateInfo> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull VkEventCreateInfo value) {
             MemorySegment s = segment.asSlice(index * VkEventCreateInfo.BYTES, VkEventCreateInfo.BYTES);
             s.copyFrom(value.segment);

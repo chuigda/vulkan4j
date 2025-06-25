@@ -92,6 +92,10 @@ public record XrFoveationEyeTrackedStateMETA(@NotNull MemorySegment segment) imp
             return new XrFoveationEyeTrackedStateMETA(segment.asSlice(index * XrFoveationEyeTrackedStateMETA.BYTES, XrFoveationEyeTrackedStateMETA.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull XrFoveationEyeTrackedStateMETA> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull XrFoveationEyeTrackedStateMETA value) {
             MemorySegment s = segment.asSlice(index * XrFoveationEyeTrackedStateMETA.BYTES, XrFoveationEyeTrackedStateMETA.BYTES);
             s.copyFrom(value.segment);
@@ -220,6 +224,12 @@ public record XrFoveationEyeTrackedStateMETA(@NotNull MemorySegment segment) imp
 
     public XrVector2f.Ptr foveationCenter() {
         return new XrVector2f.Ptr(foveationCenterRaw());
+    }
+
+    public XrFoveationEyeTrackedStateMETA foveationCenter(@NotNull Consumer<XrVector2f.Ptr> consumer) {
+        XrVector2f.Ptr ptr = foveationCenter();
+        consumer.accept(ptr);
+        return this;
     }
 
     public XrFoveationEyeTrackedStateMETA foveationCenter(XrVector2f.Ptr value) {

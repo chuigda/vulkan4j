@@ -80,6 +80,10 @@ public record StdVideoAV1LoopFilter(@NotNull MemorySegment segment) implements I
             return new StdVideoAV1LoopFilter(segment.asSlice(index * StdVideoAV1LoopFilter.BYTES, StdVideoAV1LoopFilter.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull StdVideoAV1LoopFilter> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull StdVideoAV1LoopFilter value) {
             MemorySegment s = segment.asSlice(index * StdVideoAV1LoopFilter.BYTES, StdVideoAV1LoopFilter.BYTES);
             s.copyFrom(value.segment);
@@ -191,6 +195,12 @@ public record StdVideoAV1LoopFilter(@NotNull MemorySegment segment) implements I
         return new BytePtr(loop_filter_levelRaw());
     }
 
+    public StdVideoAV1LoopFilter loop_filter_level(@NotNull Consumer<BytePtr> consumer) {
+        @Unsigned BytePtr ptr = loop_filter_level();
+        consumer.accept(ptr);
+        return this;
+    }
+
     public StdVideoAV1LoopFilter loop_filter_level(@Unsigned BytePtr value) {
         MemorySegment s = loop_filter_levelRaw();
         s.copyFrom(value.segment());
@@ -223,6 +233,12 @@ public record StdVideoAV1LoopFilter(@NotNull MemorySegment segment) implements I
         return new BytePtr(loop_filter_ref_deltasRaw());
     }
 
+    public StdVideoAV1LoopFilter loop_filter_ref_deltas(@NotNull Consumer<BytePtr> consumer) {
+        BytePtr ptr = loop_filter_ref_deltas();
+        consumer.accept(ptr);
+        return this;
+    }
+
     public StdVideoAV1LoopFilter loop_filter_ref_deltas(BytePtr value) {
         MemorySegment s = loop_filter_ref_deltasRaw();
         s.copyFrom(value.segment());
@@ -244,6 +260,12 @@ public record StdVideoAV1LoopFilter(@NotNull MemorySegment segment) implements I
 
     public BytePtr loop_filter_mode_deltas() {
         return new BytePtr(loop_filter_mode_deltasRaw());
+    }
+
+    public StdVideoAV1LoopFilter loop_filter_mode_deltas(@NotNull Consumer<BytePtr> consumer) {
+        BytePtr ptr = loop_filter_mode_deltas();
+        consumer.accept(ptr);
+        return this;
     }
 
     public StdVideoAV1LoopFilter loop_filter_mode_deltas(BytePtr value) {

@@ -94,6 +94,10 @@ public record XrSpaceShareInfoFB(@NotNull MemorySegment segment) implements IXrS
             return new XrSpaceShareInfoFB(segment.asSlice(index * XrSpaceShareInfoFB.BYTES, XrSpaceShareInfoFB.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull XrSpaceShareInfoFB> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull XrSpaceShareInfoFB value) {
             MemorySegment s = segment.asSlice(index * XrSpaceShareInfoFB.BYTES, XrSpaceShareInfoFB.BYTES);
             s.copyFrom(value.segment);

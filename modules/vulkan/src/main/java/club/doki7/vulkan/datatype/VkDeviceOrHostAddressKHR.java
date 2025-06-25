@@ -77,6 +77,10 @@ public record VkDeviceOrHostAddressKHR(@NotNull MemorySegment segment) implement
             return new VkDeviceOrHostAddressKHR(segment.asSlice(index * VkDeviceOrHostAddressKHR.BYTES, VkDeviceOrHostAddressKHR.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull VkDeviceOrHostAddressKHR> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull VkDeviceOrHostAddressKHR value) {
             MemorySegment s = segment.asSlice(index * VkDeviceOrHostAddressKHR.BYTES, VkDeviceOrHostAddressKHR.BYTES);
             s.copyFrom(value.segment);

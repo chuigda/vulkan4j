@@ -92,6 +92,10 @@ public record XrSpatialAnchorSpaceCreateInfoMSFT(@NotNull MemorySegment segment)
             return new XrSpatialAnchorSpaceCreateInfoMSFT(segment.asSlice(index * XrSpatialAnchorSpaceCreateInfoMSFT.BYTES, XrSpatialAnchorSpaceCreateInfoMSFT.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull XrSpatialAnchorSpaceCreateInfoMSFT> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull XrSpatialAnchorSpaceCreateInfoMSFT value) {
             MemorySegment s = segment.asSlice(index * XrSpatialAnchorSpaceCreateInfoMSFT.BYTES, XrSpatialAnchorSpaceCreateInfoMSFT.BYTES);
             s.copyFrom(value.segment);

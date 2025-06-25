@@ -93,6 +93,10 @@ public record VkBindDescriptorSetsInfo(@NotNull MemorySegment segment) implement
             return new VkBindDescriptorSetsInfo(segment.asSlice(index * VkBindDescriptorSetsInfo.BYTES, VkBindDescriptorSetsInfo.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull VkBindDescriptorSetsInfo> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull VkBindDescriptorSetsInfo value) {
             MemorySegment s = segment.asSlice(index * VkBindDescriptorSetsInfo.BYTES, VkBindDescriptorSetsInfo.BYTES);
             s.copyFrom(value.segment);

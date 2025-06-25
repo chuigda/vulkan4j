@@ -91,6 +91,10 @@ public record XrSceneComponentsGetInfoMSFT(@NotNull MemorySegment segment) imple
             return new XrSceneComponentsGetInfoMSFT(segment.asSlice(index * XrSceneComponentsGetInfoMSFT.BYTES, XrSceneComponentsGetInfoMSFT.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull XrSceneComponentsGetInfoMSFT> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull XrSceneComponentsGetInfoMSFT value) {
             MemorySegment s = segment.asSlice(index * XrSceneComponentsGetInfoMSFT.BYTES, XrSceneComponentsGetInfoMSFT.BYTES);
             s.copyFrom(value.segment);

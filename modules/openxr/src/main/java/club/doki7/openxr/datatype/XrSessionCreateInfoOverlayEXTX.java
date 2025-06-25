@@ -92,6 +92,10 @@ public record XrSessionCreateInfoOverlayEXTX(@NotNull MemorySegment segment) imp
             return new XrSessionCreateInfoOverlayEXTX(segment.asSlice(index * XrSessionCreateInfoOverlayEXTX.BYTES, XrSessionCreateInfoOverlayEXTX.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull XrSessionCreateInfoOverlayEXTX> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull XrSessionCreateInfoOverlayEXTX value) {
             MemorySegment s = segment.asSlice(index * XrSessionCreateInfoOverlayEXTX.BYTES, XrSessionCreateInfoOverlayEXTX.BYTES);
             s.copyFrom(value.segment);

@@ -88,6 +88,10 @@ public record VkRayTracingPipelineInterfaceCreateInfoKHR(@NotNull MemorySegment 
             return new VkRayTracingPipelineInterfaceCreateInfoKHR(segment.asSlice(index * VkRayTracingPipelineInterfaceCreateInfoKHR.BYTES, VkRayTracingPipelineInterfaceCreateInfoKHR.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull VkRayTracingPipelineInterfaceCreateInfoKHR> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull VkRayTracingPipelineInterfaceCreateInfoKHR value) {
             MemorySegment s = segment.asSlice(index * VkRayTracingPipelineInterfaceCreateInfoKHR.BYTES, VkRayTracingPipelineInterfaceCreateInfoKHR.BYTES);
             s.copyFrom(value.segment);

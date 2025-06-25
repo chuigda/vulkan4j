@@ -96,6 +96,10 @@ public record XrCompositionLayerQuad(@NotNull MemorySegment segment) implements 
             return new XrCompositionLayerQuad(segment.asSlice(index * XrCompositionLayerQuad.BYTES, XrCompositionLayerQuad.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull XrCompositionLayerQuad> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull XrCompositionLayerQuad value) {
             MemorySegment s = segment.asSlice(index * XrCompositionLayerQuad.BYTES, XrCompositionLayerQuad.BYTES);
             s.copyFrom(value.segment);

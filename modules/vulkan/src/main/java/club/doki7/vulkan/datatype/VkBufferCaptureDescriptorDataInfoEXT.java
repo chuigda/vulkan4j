@@ -87,6 +87,10 @@ public record VkBufferCaptureDescriptorDataInfoEXT(@NotNull MemorySegment segmen
             return new VkBufferCaptureDescriptorDataInfoEXT(segment.asSlice(index * VkBufferCaptureDescriptorDataInfoEXT.BYTES, VkBufferCaptureDescriptorDataInfoEXT.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull VkBufferCaptureDescriptorDataInfoEXT> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull VkBufferCaptureDescriptorDataInfoEXT value) {
             MemorySegment s = segment.asSlice(index * VkBufferCaptureDescriptorDataInfoEXT.BYTES, VkBufferCaptureDescriptorDataInfoEXT.BYTES);
             s.copyFrom(value.segment);

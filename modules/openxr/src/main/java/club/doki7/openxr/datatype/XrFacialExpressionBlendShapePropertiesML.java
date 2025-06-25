@@ -94,6 +94,10 @@ public record XrFacialExpressionBlendShapePropertiesML(@NotNull MemorySegment se
             return new XrFacialExpressionBlendShapePropertiesML(segment.asSlice(index * XrFacialExpressionBlendShapePropertiesML.BYTES, XrFacialExpressionBlendShapePropertiesML.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull XrFacialExpressionBlendShapePropertiesML> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull XrFacialExpressionBlendShapePropertiesML value) {
             MemorySegment s = segment.asSlice(index * XrFacialExpressionBlendShapePropertiesML.BYTES, XrFacialExpressionBlendShapePropertiesML.BYTES);
             s.copyFrom(value.segment);

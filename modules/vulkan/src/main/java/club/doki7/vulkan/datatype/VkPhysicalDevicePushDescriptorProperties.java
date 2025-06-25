@@ -87,6 +87,10 @@ public record VkPhysicalDevicePushDescriptorProperties(@NotNull MemorySegment se
             return new VkPhysicalDevicePushDescriptorProperties(segment.asSlice(index * VkPhysicalDevicePushDescriptorProperties.BYTES, VkPhysicalDevicePushDescriptorProperties.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull VkPhysicalDevicePushDescriptorProperties> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull VkPhysicalDevicePushDescriptorProperties value) {
             MemorySegment s = segment.asSlice(index * VkPhysicalDevicePushDescriptorProperties.BYTES, VkPhysicalDevicePushDescriptorProperties.BYTES);
             s.copyFrom(value.segment);

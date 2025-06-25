@@ -79,6 +79,10 @@ public record VkAccelerationStructureBuildRangeInfoKHR(@NotNull MemorySegment se
             return new VkAccelerationStructureBuildRangeInfoKHR(segment.asSlice(index * VkAccelerationStructureBuildRangeInfoKHR.BYTES, VkAccelerationStructureBuildRangeInfoKHR.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull VkAccelerationStructureBuildRangeInfoKHR> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull VkAccelerationStructureBuildRangeInfoKHR value) {
             MemorySegment s = segment.asSlice(index * VkAccelerationStructureBuildRangeInfoKHR.BYTES, VkAccelerationStructureBuildRangeInfoKHR.BYTES);
             s.copyFrom(value.segment);

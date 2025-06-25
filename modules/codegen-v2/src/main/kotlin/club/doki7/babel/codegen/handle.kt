@@ -16,6 +16,7 @@ fun generateHandle(
     +"package $packageName.handle;"
     +""
     imports("java.lang.foreign.*")
+    imports("java.util.Collection")
     imports("java.util.List")
     imports("java.util.Iterator")
     imports("java.util.NoSuchElementException")
@@ -203,11 +204,24 @@ fun generateHandle(
             }
             +""
 
-            defun("public static", "Ptr", "allocate", "Arena arena", "@Nullable $className[] values") {
+            defun("public static", "Ptr", "allocate", "Arena arena", "@Nullable $className @NotNull [] values") {
                 +"Ptr ret = allocate(arena, values.length);"
                 +"for (int i = 0; i < values.length; i++) {"
                 indent {
                     +"ret.write(i, values[i]);"
+                }
+                +"}"
+                +"return ret;"
+            }
+            +""
+
+            defun("public static", "Ptr", "allocate", "Arena arena", "@NotNull Collection<@Nullable $className> values") {
+                +"Ptr ret = allocate(arena, values.size());"
+                +"int i = 0;"
+                +"for (@Nullable $className value : values) {"
+                indent {
+                    +"ret.write(i, value);"
+                    +"i += 1;"
                 }
                 +"}"
                 +"return ret;"

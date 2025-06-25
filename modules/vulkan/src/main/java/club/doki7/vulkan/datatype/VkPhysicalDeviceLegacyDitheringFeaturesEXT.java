@@ -87,6 +87,10 @@ public record VkPhysicalDeviceLegacyDitheringFeaturesEXT(@NotNull MemorySegment 
             return new VkPhysicalDeviceLegacyDitheringFeaturesEXT(segment.asSlice(index * VkPhysicalDeviceLegacyDitheringFeaturesEXT.BYTES, VkPhysicalDeviceLegacyDitheringFeaturesEXT.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceLegacyDitheringFeaturesEXT> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull VkPhysicalDeviceLegacyDitheringFeaturesEXT value) {
             MemorySegment s = segment.asSlice(index * VkPhysicalDeviceLegacyDitheringFeaturesEXT.BYTES, VkPhysicalDeviceLegacyDitheringFeaturesEXT.BYTES);
             s.copyFrom(value.segment);

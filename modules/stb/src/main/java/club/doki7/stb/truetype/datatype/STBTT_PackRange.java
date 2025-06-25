@@ -78,6 +78,10 @@ public record STBTT_PackRange(@NotNull MemorySegment segment) implements ISTBTT_
             return new STBTT_PackRange(segment.asSlice(index * STBTT_PackRange.BYTES, STBTT_PackRange.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull STBTT_PackRange> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull STBTT_PackRange value) {
             MemorySegment s = segment.asSlice(index * STBTT_PackRange.BYTES, STBTT_PackRange.BYTES);
             s.copyFrom(value.segment);

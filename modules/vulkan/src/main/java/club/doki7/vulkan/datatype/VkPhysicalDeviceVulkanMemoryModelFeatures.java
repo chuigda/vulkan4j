@@ -89,6 +89,10 @@ public record VkPhysicalDeviceVulkanMemoryModelFeatures(@NotNull MemorySegment s
             return new VkPhysicalDeviceVulkanMemoryModelFeatures(segment.asSlice(index * VkPhysicalDeviceVulkanMemoryModelFeatures.BYTES, VkPhysicalDeviceVulkanMemoryModelFeatures.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceVulkanMemoryModelFeatures> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull VkPhysicalDeviceVulkanMemoryModelFeatures value) {
             MemorySegment s = segment.asSlice(index * VkPhysicalDeviceVulkanMemoryModelFeatures.BYTES, VkPhysicalDeviceVulkanMemoryModelFeatures.BYTES);
             s.copyFrom(value.segment);

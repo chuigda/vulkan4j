@@ -78,6 +78,10 @@ public record VkRenderPassSubpassFeedbackInfoEXT(@NotNull MemorySegment segment)
             return new VkRenderPassSubpassFeedbackInfoEXT(segment.asSlice(index * VkRenderPassSubpassFeedbackInfoEXT.BYTES, VkRenderPassSubpassFeedbackInfoEXT.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull VkRenderPassSubpassFeedbackInfoEXT> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull VkRenderPassSubpassFeedbackInfoEXT value) {
             MemorySegment s = segment.asSlice(index * VkRenderPassSubpassFeedbackInfoEXT.BYTES, VkRenderPassSubpassFeedbackInfoEXT.BYTES);
             s.copyFrom(value.segment);
@@ -182,6 +186,12 @@ public record VkRenderPassSubpassFeedbackInfoEXT(@NotNull MemorySegment segment)
 
     public BytePtr description() {
         return new BytePtr(descriptionRaw());
+    }
+
+    public VkRenderPassSubpassFeedbackInfoEXT description(@NotNull Consumer<BytePtr> consumer) {
+        BytePtr ptr = description();
+        consumer.accept(ptr);
+        return this;
     }
 
     public VkRenderPassSubpassFeedbackInfoEXT description(BytePtr value) {

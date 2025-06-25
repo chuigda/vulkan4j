@@ -96,6 +96,10 @@ public record VkPipelineDepthStencilStateCreateInfo(@NotNull MemorySegment segme
             return new VkPipelineDepthStencilStateCreateInfo(segment.asSlice(index * VkPipelineDepthStencilStateCreateInfo.BYTES, VkPipelineDepthStencilStateCreateInfo.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull VkPipelineDepthStencilStateCreateInfo> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull VkPipelineDepthStencilStateCreateInfo value) {
             MemorySegment s = segment.asSlice(index * VkPipelineDepthStencilStateCreateInfo.BYTES, VkPipelineDepthStencilStateCreateInfo.BYTES);
             s.copyFrom(value.segment);

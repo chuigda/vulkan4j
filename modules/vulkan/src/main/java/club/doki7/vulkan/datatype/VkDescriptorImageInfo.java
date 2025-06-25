@@ -78,6 +78,10 @@ public record VkDescriptorImageInfo(@NotNull MemorySegment segment) implements I
             return new VkDescriptorImageInfo(segment.asSlice(index * VkDescriptorImageInfo.BYTES, VkDescriptorImageInfo.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull VkDescriptorImageInfo> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull VkDescriptorImageInfo value) {
             MemorySegment s = segment.asSlice(index * VkDescriptorImageInfo.BYTES, VkDescriptorImageInfo.BYTES);
             s.copyFrom(value.segment);

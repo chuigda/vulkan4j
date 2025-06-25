@@ -87,6 +87,10 @@ public record VkImageFormatProperties2(@NotNull MemorySegment segment) implement
             return new VkImageFormatProperties2(segment.asSlice(index * VkImageFormatProperties2.BYTES, VkImageFormatProperties2.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull VkImageFormatProperties2> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull VkImageFormatProperties2 value) {
             MemorySegment s = segment.asSlice(index * VkImageFormatProperties2.BYTES, VkImageFormatProperties2.BYTES);
             s.copyFrom(value.segment);

@@ -95,6 +95,10 @@ public record XrGraphicsBindingVulkan2KHR(@NotNull MemorySegment segment) implem
             return new XrGraphicsBindingVulkan2KHR(segment.asSlice(index * XrGraphicsBindingVulkan2KHR.BYTES, XrGraphicsBindingVulkan2KHR.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull XrGraphicsBindingVulkan2KHR> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull XrGraphicsBindingVulkan2KHR value) {
             MemorySegment s = segment.asSlice(index * XrGraphicsBindingVulkan2KHR.BYTES, XrGraphicsBindingVulkan2KHR.BYTES);
             s.copyFrom(value.segment);

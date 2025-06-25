@@ -96,6 +96,10 @@ public record XrSpatialEntityComponentDataTriangleMeshBD(@NotNull MemorySegment 
             return new XrSpatialEntityComponentDataTriangleMeshBD(segment.asSlice(index * XrSpatialEntityComponentDataTriangleMeshBD.BYTES, XrSpatialEntityComponentDataTriangleMeshBD.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull XrSpatialEntityComponentDataTriangleMeshBD> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull XrSpatialEntityComponentDataTriangleMeshBD value) {
             MemorySegment s = segment.asSlice(index * XrSpatialEntityComponentDataTriangleMeshBD.BYTES, XrSpatialEntityComponentDataTriangleMeshBD.BYTES);
             s.copyFrom(value.segment);

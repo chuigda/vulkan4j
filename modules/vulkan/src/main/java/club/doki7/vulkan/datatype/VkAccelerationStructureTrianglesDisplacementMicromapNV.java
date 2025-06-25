@@ -102,6 +102,10 @@ public record VkAccelerationStructureTrianglesDisplacementMicromapNV(@NotNull Me
             return new VkAccelerationStructureTrianglesDisplacementMicromapNV(segment.asSlice(index * VkAccelerationStructureTrianglesDisplacementMicromapNV.BYTES, VkAccelerationStructureTrianglesDisplacementMicromapNV.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull VkAccelerationStructureTrianglesDisplacementMicromapNV> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull VkAccelerationStructureTrianglesDisplacementMicromapNV value) {
             MemorySegment s = segment.asSlice(index * VkAccelerationStructureTrianglesDisplacementMicromapNV.BYTES, VkAccelerationStructureTrianglesDisplacementMicromapNV.BYTES);
             s.copyFrom(value.segment);

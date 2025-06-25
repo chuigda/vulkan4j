@@ -87,6 +87,10 @@ public record VkDisplayModeProperties2KHR(@NotNull MemorySegment segment) implem
             return new VkDisplayModeProperties2KHR(segment.asSlice(index * VkDisplayModeProperties2KHR.BYTES, VkDisplayModeProperties2KHR.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull VkDisplayModeProperties2KHR> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull VkDisplayModeProperties2KHR value) {
             MemorySegment s = segment.asSlice(index * VkDisplayModeProperties2KHR.BYTES, VkDisplayModeProperties2KHR.BYTES);
             s.copyFrom(value.segment);

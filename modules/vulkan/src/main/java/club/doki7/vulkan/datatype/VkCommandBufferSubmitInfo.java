@@ -88,6 +88,10 @@ public record VkCommandBufferSubmitInfo(@NotNull MemorySegment segment) implemen
             return new VkCommandBufferSubmitInfo(segment.asSlice(index * VkCommandBufferSubmitInfo.BYTES, VkCommandBufferSubmitInfo.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull VkCommandBufferSubmitInfo> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull VkCommandBufferSubmitInfo value) {
             MemorySegment s = segment.asSlice(index * VkCommandBufferSubmitInfo.BYTES, VkCommandBufferSubmitInfo.BYTES);
             s.copyFrom(value.segment);

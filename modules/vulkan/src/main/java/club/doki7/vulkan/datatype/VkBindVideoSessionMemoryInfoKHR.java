@@ -90,6 +90,10 @@ public record VkBindVideoSessionMemoryInfoKHR(@NotNull MemorySegment segment) im
             return new VkBindVideoSessionMemoryInfoKHR(segment.asSlice(index * VkBindVideoSessionMemoryInfoKHR.BYTES, VkBindVideoSessionMemoryInfoKHR.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull VkBindVideoSessionMemoryInfoKHR> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull VkBindVideoSessionMemoryInfoKHR value) {
             MemorySegment s = segment.asSlice(index * VkBindVideoSessionMemoryInfoKHR.BYTES, VkBindVideoSessionMemoryInfoKHR.BYTES);
             s.copyFrom(value.segment);

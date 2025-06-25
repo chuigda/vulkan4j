@@ -92,6 +92,10 @@ public record VkResolveImageInfo2(@NotNull MemorySegment segment) implements IVk
             return new VkResolveImageInfo2(segment.asSlice(index * VkResolveImageInfo2.BYTES, VkResolveImageInfo2.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull VkResolveImageInfo2> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull VkResolveImageInfo2 value) {
             MemorySegment s = segment.asSlice(index * VkResolveImageInfo2.BYTES, VkResolveImageInfo2.BYTES);
             s.copyFrom(value.segment);

@@ -89,6 +89,10 @@ public record VkBindImageMemoryInfo(@NotNull MemorySegment segment) implements I
             return new VkBindImageMemoryInfo(segment.asSlice(index * VkBindImageMemoryInfo.BYTES, VkBindImageMemoryInfo.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull VkBindImageMemoryInfo> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull VkBindImageMemoryInfo value) {
             MemorySegment s = segment.asSlice(index * VkBindImageMemoryInfo.BYTES, VkBindImageMemoryInfo.BYTES);
             s.copyFrom(value.segment);

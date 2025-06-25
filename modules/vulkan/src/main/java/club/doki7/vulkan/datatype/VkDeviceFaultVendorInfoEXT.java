@@ -78,6 +78,10 @@ public record VkDeviceFaultVendorInfoEXT(@NotNull MemorySegment segment) impleme
             return new VkDeviceFaultVendorInfoEXT(segment.asSlice(index * VkDeviceFaultVendorInfoEXT.BYTES, VkDeviceFaultVendorInfoEXT.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull VkDeviceFaultVendorInfoEXT> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull VkDeviceFaultVendorInfoEXT value) {
             MemorySegment s = segment.asSlice(index * VkDeviceFaultVendorInfoEXT.BYTES, VkDeviceFaultVendorInfoEXT.BYTES);
             s.copyFrom(value.segment);
@@ -173,6 +177,12 @@ public record VkDeviceFaultVendorInfoEXT(@NotNull MemorySegment segment) impleme
 
     public BytePtr description() {
         return new BytePtr(descriptionRaw());
+    }
+
+    public VkDeviceFaultVendorInfoEXT description(@NotNull Consumer<BytePtr> consumer) {
+        BytePtr ptr = description();
+        consumer.accept(ptr);
+        return this;
     }
 
     public VkDeviceFaultVendorInfoEXT description(BytePtr value) {

@@ -89,6 +89,10 @@ public record VkImageDrmFormatModifierExplicitCreateInfoEXT(@NotNull MemorySegme
             return new VkImageDrmFormatModifierExplicitCreateInfoEXT(segment.asSlice(index * VkImageDrmFormatModifierExplicitCreateInfoEXT.BYTES, VkImageDrmFormatModifierExplicitCreateInfoEXT.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull VkImageDrmFormatModifierExplicitCreateInfoEXT> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull VkImageDrmFormatModifierExplicitCreateInfoEXT value) {
             MemorySegment s = segment.asSlice(index * VkImageDrmFormatModifierExplicitCreateInfoEXT.BYTES, VkImageDrmFormatModifierExplicitCreateInfoEXT.BYTES);
             s.copyFrom(value.segment);

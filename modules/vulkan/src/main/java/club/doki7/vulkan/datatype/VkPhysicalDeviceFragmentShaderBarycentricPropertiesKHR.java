@@ -87,6 +87,10 @@ public record VkPhysicalDeviceFragmentShaderBarycentricPropertiesKHR(@NotNull Me
             return new VkPhysicalDeviceFragmentShaderBarycentricPropertiesKHR(segment.asSlice(index * VkPhysicalDeviceFragmentShaderBarycentricPropertiesKHR.BYTES, VkPhysicalDeviceFragmentShaderBarycentricPropertiesKHR.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceFragmentShaderBarycentricPropertiesKHR> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull VkPhysicalDeviceFragmentShaderBarycentricPropertiesKHR value) {
             MemorySegment s = segment.asSlice(index * VkPhysicalDeviceFragmentShaderBarycentricPropertiesKHR.BYTES, VkPhysicalDeviceFragmentShaderBarycentricPropertiesKHR.BYTES);
             s.copyFrom(value.segment);

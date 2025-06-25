@@ -88,6 +88,10 @@ public record VkPresentTimesInfoGOOGLE(@NotNull MemorySegment segment) implement
             return new VkPresentTimesInfoGOOGLE(segment.asSlice(index * VkPresentTimesInfoGOOGLE.BYTES, VkPresentTimesInfoGOOGLE.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull VkPresentTimesInfoGOOGLE> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull VkPresentTimesInfoGOOGLE value) {
             MemorySegment s = segment.asSlice(index * VkPresentTimesInfoGOOGLE.BYTES, VkPresentTimesInfoGOOGLE.BYTES);
             s.copyFrom(value.segment);

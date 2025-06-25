@@ -84,6 +84,10 @@ public record XrSpatialCapabilityConfigurationBaseHeaderEXT(@NotNull MemorySegme
             return new XrSpatialCapabilityConfigurationBaseHeaderEXT(segment.asSlice(index * XrSpatialCapabilityConfigurationBaseHeaderEXT.BYTES, XrSpatialCapabilityConfigurationBaseHeaderEXT.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull XrSpatialCapabilityConfigurationBaseHeaderEXT> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull XrSpatialCapabilityConfigurationBaseHeaderEXT value) {
             MemorySegment s = segment.asSlice(index * XrSpatialCapabilityConfigurationBaseHeaderEXT.BYTES, XrSpatialCapabilityConfigurationBaseHeaderEXT.BYTES);
             s.copyFrom(value.segment);

@@ -87,6 +87,10 @@ public record VkGeneratedCommandsPipelineInfoEXT(@NotNull MemorySegment segment)
             return new VkGeneratedCommandsPipelineInfoEXT(segment.asSlice(index * VkGeneratedCommandsPipelineInfoEXT.BYTES, VkGeneratedCommandsPipelineInfoEXT.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull VkGeneratedCommandsPipelineInfoEXT> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull VkGeneratedCommandsPipelineInfoEXT value) {
             MemorySegment s = segment.asSlice(index * VkGeneratedCommandsPipelineInfoEXT.BYTES, VkGeneratedCommandsPipelineInfoEXT.BYTES);
             s.copyFrom(value.segment);

@@ -91,6 +91,10 @@ public record XrWorldMeshBufferSizeML(@NotNull MemorySegment segment) implements
             return new XrWorldMeshBufferSizeML(segment.asSlice(index * XrWorldMeshBufferSizeML.BYTES, XrWorldMeshBufferSizeML.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull XrWorldMeshBufferSizeML> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull XrWorldMeshBufferSizeML value) {
             MemorySegment s = segment.asSlice(index * XrWorldMeshBufferSizeML.BYTES, XrWorldMeshBufferSizeML.BYTES);
             s.copyFrom(value.segment);

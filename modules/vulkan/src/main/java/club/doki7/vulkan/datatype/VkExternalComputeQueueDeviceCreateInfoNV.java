@@ -87,6 +87,10 @@ public record VkExternalComputeQueueDeviceCreateInfoNV(@NotNull MemorySegment se
             return new VkExternalComputeQueueDeviceCreateInfoNV(segment.asSlice(index * VkExternalComputeQueueDeviceCreateInfoNV.BYTES, VkExternalComputeQueueDeviceCreateInfoNV.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull VkExternalComputeQueueDeviceCreateInfoNV> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull VkExternalComputeQueueDeviceCreateInfoNV value) {
             MemorySegment s = segment.asSlice(index * VkExternalComputeQueueDeviceCreateInfoNV.BYTES, VkExternalComputeQueueDeviceCreateInfoNV.BYTES);
             s.copyFrom(value.segment);

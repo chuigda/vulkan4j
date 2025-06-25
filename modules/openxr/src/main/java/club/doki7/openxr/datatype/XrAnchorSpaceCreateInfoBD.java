@@ -92,6 +92,10 @@ public record XrAnchorSpaceCreateInfoBD(@NotNull MemorySegment segment) implemen
             return new XrAnchorSpaceCreateInfoBD(segment.asSlice(index * XrAnchorSpaceCreateInfoBD.BYTES, XrAnchorSpaceCreateInfoBD.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull XrAnchorSpaceCreateInfoBD> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull XrAnchorSpaceCreateInfoBD value) {
             MemorySegment s = segment.asSlice(index * XrAnchorSpaceCreateInfoBD.BYTES, XrAnchorSpaceCreateInfoBD.BYTES);
             s.copyFrom(value.segment);

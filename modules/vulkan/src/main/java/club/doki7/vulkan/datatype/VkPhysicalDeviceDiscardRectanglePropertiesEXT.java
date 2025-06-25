@@ -87,6 +87,10 @@ public record VkPhysicalDeviceDiscardRectanglePropertiesEXT(@NotNull MemorySegme
             return new VkPhysicalDeviceDiscardRectanglePropertiesEXT(segment.asSlice(index * VkPhysicalDeviceDiscardRectanglePropertiesEXT.BYTES, VkPhysicalDeviceDiscardRectanglePropertiesEXT.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceDiscardRectanglePropertiesEXT> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull VkPhysicalDeviceDiscardRectanglePropertiesEXT value) {
             MemorySegment s = segment.asSlice(index * VkPhysicalDeviceDiscardRectanglePropertiesEXT.BYTES, VkPhysicalDeviceDiscardRectanglePropertiesEXT.BYTES);
             s.copyFrom(value.segment);

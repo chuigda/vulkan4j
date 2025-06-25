@@ -87,6 +87,10 @@ public record VkPhysicalDeviceSynchronization2Features(@NotNull MemorySegment se
             return new VkPhysicalDeviceSynchronization2Features(segment.asSlice(index * VkPhysicalDeviceSynchronization2Features.BYTES, VkPhysicalDeviceSynchronization2Features.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceSynchronization2Features> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull VkPhysicalDeviceSynchronization2Features value) {
             MemorySegment s = segment.asSlice(index * VkPhysicalDeviceSynchronization2Features.BYTES, VkPhysicalDeviceSynchronization2Features.BYTES);
             s.copyFrom(value.segment);

@@ -91,6 +91,10 @@ public record VkRenderingAreaInfo(@NotNull MemorySegment segment) implements IVk
             return new VkRenderingAreaInfo(segment.asSlice(index * VkRenderingAreaInfo.BYTES, VkRenderingAreaInfo.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull VkRenderingAreaInfo> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull VkRenderingAreaInfo value) {
             MemorySegment s = segment.asSlice(index * VkRenderingAreaInfo.BYTES, VkRenderingAreaInfo.BYTES);
             s.copyFrom(value.segment);

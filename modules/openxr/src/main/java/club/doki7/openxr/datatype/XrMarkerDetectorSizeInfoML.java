@@ -91,6 +91,10 @@ public record XrMarkerDetectorSizeInfoML(@NotNull MemorySegment segment) impleme
             return new XrMarkerDetectorSizeInfoML(segment.asSlice(index * XrMarkerDetectorSizeInfoML.BYTES, XrMarkerDetectorSizeInfoML.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull XrMarkerDetectorSizeInfoML> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull XrMarkerDetectorSizeInfoML value) {
             MemorySegment s = segment.asSlice(index * XrMarkerDetectorSizeInfoML.BYTES, XrMarkerDetectorSizeInfoML.BYTES);
             s.copyFrom(value.segment);

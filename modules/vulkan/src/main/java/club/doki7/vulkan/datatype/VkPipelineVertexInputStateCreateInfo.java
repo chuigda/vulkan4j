@@ -91,6 +91,10 @@ public record VkPipelineVertexInputStateCreateInfo(@NotNull MemorySegment segmen
             return new VkPipelineVertexInputStateCreateInfo(segment.asSlice(index * VkPipelineVertexInputStateCreateInfo.BYTES, VkPipelineVertexInputStateCreateInfo.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull VkPipelineVertexInputStateCreateInfo> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull VkPipelineVertexInputStateCreateInfo value) {
             MemorySegment s = segment.asSlice(index * VkPipelineVertexInputStateCreateInfo.BYTES, VkPipelineVertexInputStateCreateInfo.BYTES);
             s.copyFrom(value.segment);

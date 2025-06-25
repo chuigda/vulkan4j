@@ -91,6 +91,10 @@ public record XrEventDataEyeCalibrationChangedML(@NotNull MemorySegment segment)
             return new XrEventDataEyeCalibrationChangedML(segment.asSlice(index * XrEventDataEyeCalibrationChangedML.BYTES, XrEventDataEyeCalibrationChangedML.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull XrEventDataEyeCalibrationChangedML> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull XrEventDataEyeCalibrationChangedML value) {
             MemorySegment s = segment.asSlice(index * XrEventDataEyeCalibrationChangedML.BYTES, XrEventDataEyeCalibrationChangedML.BYTES);
             s.copyFrom(value.segment);

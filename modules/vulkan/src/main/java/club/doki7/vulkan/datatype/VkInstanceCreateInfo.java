@@ -92,6 +92,10 @@ public record VkInstanceCreateInfo(@NotNull MemorySegment segment) implements IV
             return new VkInstanceCreateInfo(segment.asSlice(index * VkInstanceCreateInfo.BYTES, VkInstanceCreateInfo.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull VkInstanceCreateInfo> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull VkInstanceCreateInfo value) {
             MemorySegment s = segment.asSlice(index * VkInstanceCreateInfo.BYTES, VkInstanceCreateInfo.BYTES);
             s.copyFrom(value.segment);

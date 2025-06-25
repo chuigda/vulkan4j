@@ -90,6 +90,10 @@ public record XrSimultaneousHandsAndControllersTrackingResumeInfoMETA(@NotNull M
             return new XrSimultaneousHandsAndControllersTrackingResumeInfoMETA(segment.asSlice(index * XrSimultaneousHandsAndControllersTrackingResumeInfoMETA.BYTES, XrSimultaneousHandsAndControllersTrackingResumeInfoMETA.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull XrSimultaneousHandsAndControllersTrackingResumeInfoMETA> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull XrSimultaneousHandsAndControllersTrackingResumeInfoMETA value) {
             MemorySegment s = segment.asSlice(index * XrSimultaneousHandsAndControllersTrackingResumeInfoMETA.BYTES, XrSimultaneousHandsAndControllersTrackingResumeInfoMETA.BYTES);
             s.copyFrom(value.segment);

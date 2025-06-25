@@ -1,6 +1,7 @@
 package club.doki7.stb.truetype.handle;
 
 import java.lang.foreign.*;
+import java.util.Collection;
 import java.util.List;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
@@ -138,10 +139,20 @@ public record STBRP_Rect(@NotNull MemorySegment segment) implements IPointer {
             return new Ptr(arena.allocate(ValueLayout.ADDRESS, size));
         }
 
-        public static Ptr allocate(Arena arena, @Nullable STBRP_Rect[] values) {
+        public static Ptr allocate(Arena arena, @Nullable STBRP_Rect @NotNull [] values) {
             Ptr ret = allocate(arena, values.length);
             for (int i = 0; i < values.length; i++) {
                 ret.write(i, values[i]);
+            }
+            return ret;
+        }
+
+        public static Ptr allocate(Arena arena, @NotNull Collection<@Nullable STBRP_Rect> values) {
+            Ptr ret = allocate(arena, values.size());
+            int i = 0;
+            for (@Nullable STBRP_Rect value : values) {
+                ret.write(i, value);
+                i += 1;
             }
             return ret;
         }

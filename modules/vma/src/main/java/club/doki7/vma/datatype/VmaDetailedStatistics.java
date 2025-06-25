@@ -106,6 +106,10 @@ public record VmaDetailedStatistics(@NotNull MemorySegment segment) implements I
             return new VmaDetailedStatistics(segment.asSlice(index * VmaDetailedStatistics.BYTES, VmaDetailedStatistics.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull VmaDetailedStatistics> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull VmaDetailedStatistics value) {
             MemorySegment s = segment.asSlice(index * VmaDetailedStatistics.BYTES, VmaDetailedStatistics.BYTES);
             s.copyFrom(value.segment);

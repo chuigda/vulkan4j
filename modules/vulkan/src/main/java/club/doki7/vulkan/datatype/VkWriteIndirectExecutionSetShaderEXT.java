@@ -88,6 +88,10 @@ public record VkWriteIndirectExecutionSetShaderEXT(@NotNull MemorySegment segmen
             return new VkWriteIndirectExecutionSetShaderEXT(segment.asSlice(index * VkWriteIndirectExecutionSetShaderEXT.BYTES, VkWriteIndirectExecutionSetShaderEXT.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull VkWriteIndirectExecutionSetShaderEXT> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull VkWriteIndirectExecutionSetShaderEXT value) {
             MemorySegment s = segment.asSlice(index * VkWriteIndirectExecutionSetShaderEXT.BYTES, VkWriteIndirectExecutionSetShaderEXT.BYTES);
             s.copyFrom(value.segment);

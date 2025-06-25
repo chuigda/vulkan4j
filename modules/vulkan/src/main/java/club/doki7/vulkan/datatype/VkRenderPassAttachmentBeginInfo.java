@@ -88,6 +88,10 @@ public record VkRenderPassAttachmentBeginInfo(@NotNull MemorySegment segment) im
             return new VkRenderPassAttachmentBeginInfo(segment.asSlice(index * VkRenderPassAttachmentBeginInfo.BYTES, VkRenderPassAttachmentBeginInfo.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull VkRenderPassAttachmentBeginInfo> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull VkRenderPassAttachmentBeginInfo value) {
             MemorySegment s = segment.asSlice(index * VkRenderPassAttachmentBeginInfo.BYTES, VkRenderPassAttachmentBeginInfo.BYTES);
             s.copyFrom(value.segment);

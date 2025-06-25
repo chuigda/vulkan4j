@@ -79,6 +79,10 @@ public record VkConformanceVersion(@NotNull MemorySegment segment) implements IV
             return new VkConformanceVersion(segment.asSlice(index * VkConformanceVersion.BYTES, VkConformanceVersion.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull VkConformanceVersion> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull VkConformanceVersion value) {
             MemorySegment s = segment.asSlice(index * VkConformanceVersion.BYTES, VkConformanceVersion.BYTES);
             s.copyFrom(value.segment);

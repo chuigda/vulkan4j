@@ -90,6 +90,10 @@ public record VkVideoPictureResourceInfoKHR(@NotNull MemorySegment segment) impl
             return new VkVideoPictureResourceInfoKHR(segment.asSlice(index * VkVideoPictureResourceInfoKHR.BYTES, VkVideoPictureResourceInfoKHR.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull VkVideoPictureResourceInfoKHR> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull VkVideoPictureResourceInfoKHR value) {
             MemorySegment s = segment.asSlice(index * VkVideoPictureResourceInfoKHR.BYTES, VkVideoPictureResourceInfoKHR.BYTES);
             s.copyFrom(value.segment);

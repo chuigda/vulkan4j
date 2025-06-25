@@ -88,6 +88,10 @@ public record VkSetPresentConfigNV(@NotNull MemorySegment segment) implements IV
             return new VkSetPresentConfigNV(segment.asSlice(index * VkSetPresentConfigNV.BYTES, VkSetPresentConfigNV.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull VkSetPresentConfigNV> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull VkSetPresentConfigNV value) {
             MemorySegment s = segment.asSlice(index * VkSetPresentConfigNV.BYTES, VkSetPresentConfigNV.BYTES);
             s.copyFrom(value.segment);

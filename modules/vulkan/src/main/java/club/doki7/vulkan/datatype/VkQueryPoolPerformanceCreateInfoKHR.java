@@ -89,6 +89,10 @@ public record VkQueryPoolPerformanceCreateInfoKHR(@NotNull MemorySegment segment
             return new VkQueryPoolPerformanceCreateInfoKHR(segment.asSlice(index * VkQueryPoolPerformanceCreateInfoKHR.BYTES, VkQueryPoolPerformanceCreateInfoKHR.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull VkQueryPoolPerformanceCreateInfoKHR> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull VkQueryPoolPerformanceCreateInfoKHR value) {
             MemorySegment s = segment.asSlice(index * VkQueryPoolPerformanceCreateInfoKHR.BYTES, VkQueryPoolPerformanceCreateInfoKHR.BYTES);
             s.copyFrom(value.segment);

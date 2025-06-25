@@ -88,6 +88,10 @@ public record VkImageFormatListCreateInfo(@NotNull MemorySegment segment) implem
             return new VkImageFormatListCreateInfo(segment.asSlice(index * VkImageFormatListCreateInfo.BYTES, VkImageFormatListCreateInfo.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull VkImageFormatListCreateInfo> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull VkImageFormatListCreateInfo value) {
             MemorySegment s = segment.asSlice(index * VkImageFormatListCreateInfo.BYTES, VkImageFormatListCreateInfo.BYTES);
             s.copyFrom(value.segment);

@@ -95,6 +95,10 @@ public record VkRenderPassCreateInfo2(@NotNull MemorySegment segment) implements
             return new VkRenderPassCreateInfo2(segment.asSlice(index * VkRenderPassCreateInfo2.BYTES, VkRenderPassCreateInfo2.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull VkRenderPassCreateInfo2> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull VkRenderPassCreateInfo2 value) {
             MemorySegment s = segment.asSlice(index * VkRenderPassCreateInfo2.BYTES, VkRenderPassCreateInfo2.BYTES);
             s.copyFrom(value.segment);

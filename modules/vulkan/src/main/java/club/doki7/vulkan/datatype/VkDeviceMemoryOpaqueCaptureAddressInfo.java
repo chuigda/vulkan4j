@@ -87,6 +87,10 @@ public record VkDeviceMemoryOpaqueCaptureAddressInfo(@NotNull MemorySegment segm
             return new VkDeviceMemoryOpaqueCaptureAddressInfo(segment.asSlice(index * VkDeviceMemoryOpaqueCaptureAddressInfo.BYTES, VkDeviceMemoryOpaqueCaptureAddressInfo.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull VkDeviceMemoryOpaqueCaptureAddressInfo> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull VkDeviceMemoryOpaqueCaptureAddressInfo value) {
             MemorySegment s = segment.asSlice(index * VkDeviceMemoryOpaqueCaptureAddressInfo.BYTES, VkDeviceMemoryOpaqueCaptureAddressInfo.BYTES);
             s.copyFrom(value.segment);

@@ -88,6 +88,10 @@ public record VkPhysicalDeviceExternalComputeQueuePropertiesNV(@NotNull MemorySe
             return new VkPhysicalDeviceExternalComputeQueuePropertiesNV(segment.asSlice(index * VkPhysicalDeviceExternalComputeQueuePropertiesNV.BYTES, VkPhysicalDeviceExternalComputeQueuePropertiesNV.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceExternalComputeQueuePropertiesNV> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull VkPhysicalDeviceExternalComputeQueuePropertiesNV value) {
             MemorySegment s = segment.asSlice(index * VkPhysicalDeviceExternalComputeQueuePropertiesNV.BYTES, VkPhysicalDeviceExternalComputeQueuePropertiesNV.BYTES);
             s.copyFrom(value.segment);

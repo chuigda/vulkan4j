@@ -87,6 +87,10 @@ public record VkMemoryPriorityAllocateInfoEXT(@NotNull MemorySegment segment) im
             return new VkMemoryPriorityAllocateInfoEXT(segment.asSlice(index * VkMemoryPriorityAllocateInfoEXT.BYTES, VkMemoryPriorityAllocateInfoEXT.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull VkMemoryPriorityAllocateInfoEXT> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull VkMemoryPriorityAllocateInfoEXT value) {
             MemorySegment s = segment.asSlice(index * VkMemoryPriorityAllocateInfoEXT.BYTES, VkMemoryPriorityAllocateInfoEXT.BYTES);
             s.copyFrom(value.segment);

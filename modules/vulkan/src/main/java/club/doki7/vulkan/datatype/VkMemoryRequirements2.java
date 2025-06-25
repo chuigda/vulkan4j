@@ -87,6 +87,10 @@ public record VkMemoryRequirements2(@NotNull MemorySegment segment) implements I
             return new VkMemoryRequirements2(segment.asSlice(index * VkMemoryRequirements2.BYTES, VkMemoryRequirements2.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull VkMemoryRequirements2> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull VkMemoryRequirements2 value) {
             MemorySegment s = segment.asSlice(index * VkMemoryRequirements2.BYTES, VkMemoryRequirements2.BYTES);
             s.copyFrom(value.segment);

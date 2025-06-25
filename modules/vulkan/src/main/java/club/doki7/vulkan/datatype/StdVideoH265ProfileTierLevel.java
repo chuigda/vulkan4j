@@ -76,6 +76,10 @@ public record StdVideoH265ProfileTierLevel(@NotNull MemorySegment segment) imple
             return new StdVideoH265ProfileTierLevel(segment.asSlice(index * StdVideoH265ProfileTierLevel.BYTES, StdVideoH265ProfileTierLevel.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull StdVideoH265ProfileTierLevel> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull StdVideoH265ProfileTierLevel value) {
             MemorySegment s = segment.asSlice(index * StdVideoH265ProfileTierLevel.BYTES, StdVideoH265ProfileTierLevel.BYTES);
             s.copyFrom(value.segment);

@@ -85,6 +85,10 @@ public record VkSubpassDescription(@NotNull MemorySegment segment) implements IV
             return new VkSubpassDescription(segment.asSlice(index * VkSubpassDescription.BYTES, VkSubpassDescription.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull VkSubpassDescription> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull VkSubpassDescription value) {
             MemorySegment s = segment.asSlice(index * VkSubpassDescription.BYTES, VkSubpassDescription.BYTES);
             s.copyFrom(value.segment);

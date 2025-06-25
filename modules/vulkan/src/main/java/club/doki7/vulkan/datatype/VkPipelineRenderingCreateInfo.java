@@ -91,6 +91,10 @@ public record VkPipelineRenderingCreateInfo(@NotNull MemorySegment segment) impl
             return new VkPipelineRenderingCreateInfo(segment.asSlice(index * VkPipelineRenderingCreateInfo.BYTES, VkPipelineRenderingCreateInfo.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull VkPipelineRenderingCreateInfo> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull VkPipelineRenderingCreateInfo value) {
             MemorySegment s = segment.asSlice(index * VkPipelineRenderingCreateInfo.BYTES, VkPipelineRenderingCreateInfo.BYTES);
             s.copyFrom(value.segment);

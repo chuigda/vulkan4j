@@ -102,6 +102,10 @@ public record XrWorldMeshBlockML(@NotNull MemorySegment segment) implements IXrW
             return new XrWorldMeshBlockML(segment.asSlice(index * XrWorldMeshBlockML.BYTES, XrWorldMeshBlockML.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull XrWorldMeshBlockML> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull XrWorldMeshBlockML value) {
             MemorySegment s = segment.asSlice(index * XrWorldMeshBlockML.BYTES, XrWorldMeshBlockML.BYTES);
             s.copyFrom(value.segment);

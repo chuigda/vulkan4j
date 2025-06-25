@@ -92,6 +92,10 @@ public record XrWorldMeshRequestCompletionInfoML(@NotNull MemorySegment segment)
             return new XrWorldMeshRequestCompletionInfoML(segment.asSlice(index * XrWorldMeshRequestCompletionInfoML.BYTES, XrWorldMeshRequestCompletionInfoML.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull XrWorldMeshRequestCompletionInfoML> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull XrWorldMeshRequestCompletionInfoML value) {
             MemorySegment s = segment.asSlice(index * XrWorldMeshRequestCompletionInfoML.BYTES, XrWorldMeshRequestCompletionInfoML.BYTES);
             s.copyFrom(value.segment);

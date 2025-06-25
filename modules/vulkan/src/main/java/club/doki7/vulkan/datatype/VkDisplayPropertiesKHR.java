@@ -82,6 +82,10 @@ public record VkDisplayPropertiesKHR(@NotNull MemorySegment segment) implements 
             return new VkDisplayPropertiesKHR(segment.asSlice(index * VkDisplayPropertiesKHR.BYTES, VkDisplayPropertiesKHR.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull VkDisplayPropertiesKHR> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull VkDisplayPropertiesKHR value) {
             MemorySegment s = segment.asSlice(index * VkDisplayPropertiesKHR.BYTES, VkDisplayPropertiesKHR.BYTES);
             s.copyFrom(value.segment);

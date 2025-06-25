@@ -87,6 +87,10 @@ public record VkPhysicalDevicePipelineLibraryGroupHandlesFeaturesEXT(@NotNull Me
             return new VkPhysicalDevicePipelineLibraryGroupHandlesFeaturesEXT(segment.asSlice(index * VkPhysicalDevicePipelineLibraryGroupHandlesFeaturesEXT.BYTES, VkPhysicalDevicePipelineLibraryGroupHandlesFeaturesEXT.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull VkPhysicalDevicePipelineLibraryGroupHandlesFeaturesEXT> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull VkPhysicalDevicePipelineLibraryGroupHandlesFeaturesEXT value) {
             MemorySegment s = segment.asSlice(index * VkPhysicalDevicePipelineLibraryGroupHandlesFeaturesEXT.BYTES, VkPhysicalDevicePipelineLibraryGroupHandlesFeaturesEXT.BYTES);
             s.copyFrom(value.segment);

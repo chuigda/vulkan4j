@@ -87,6 +87,10 @@ public record VkGraphicsPipelineLibraryCreateInfoEXT(@NotNull MemorySegment segm
             return new VkGraphicsPipelineLibraryCreateInfoEXT(segment.asSlice(index * VkGraphicsPipelineLibraryCreateInfoEXT.BYTES, VkGraphicsPipelineLibraryCreateInfoEXT.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull VkGraphicsPipelineLibraryCreateInfoEXT> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull VkGraphicsPipelineLibraryCreateInfoEXT value) {
             MemorySegment s = segment.asSlice(index * VkGraphicsPipelineLibraryCreateInfoEXT.BYTES, VkGraphicsPipelineLibraryCreateInfoEXT.BYTES);
             s.copyFrom(value.segment);

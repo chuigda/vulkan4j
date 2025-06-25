@@ -89,6 +89,10 @@ public record VkPhysicalDeviceExternalBufferInfo(@NotNull MemorySegment segment)
             return new VkPhysicalDeviceExternalBufferInfo(segment.asSlice(index * VkPhysicalDeviceExternalBufferInfo.BYTES, VkPhysicalDeviceExternalBufferInfo.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceExternalBufferInfo> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull VkPhysicalDeviceExternalBufferInfo value) {
             MemorySegment s = segment.asSlice(index * VkPhysicalDeviceExternalBufferInfo.BYTES, VkPhysicalDeviceExternalBufferInfo.BYTES);
             s.copyFrom(value.segment);

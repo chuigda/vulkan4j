@@ -81,6 +81,10 @@ public record XrSpaceFilterInfoBaseHeaderFB(@NotNull MemorySegment segment) impl
             return new XrSpaceFilterInfoBaseHeaderFB(segment.asSlice(index * XrSpaceFilterInfoBaseHeaderFB.BYTES, XrSpaceFilterInfoBaseHeaderFB.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull XrSpaceFilterInfoBaseHeaderFB> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull XrSpaceFilterInfoBaseHeaderFB value) {
             MemorySegment s = segment.asSlice(index * XrSpaceFilterInfoBaseHeaderFB.BYTES, XrSpaceFilterInfoBaseHeaderFB.BYTES);
             s.copyFrom(value.segment);

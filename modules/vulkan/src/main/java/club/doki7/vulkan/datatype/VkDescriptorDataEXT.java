@@ -85,6 +85,10 @@ public record VkDescriptorDataEXT(@NotNull MemorySegment segment) implements IVk
             return new VkDescriptorDataEXT(segment.asSlice(index * VkDescriptorDataEXT.BYTES, VkDescriptorDataEXT.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull VkDescriptorDataEXT> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull VkDescriptorDataEXT value) {
             MemorySegment s = segment.asSlice(index * VkDescriptorDataEXT.BYTES, VkDescriptorDataEXT.BYTES);
             s.copyFrom(value.segment);

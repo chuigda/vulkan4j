@@ -87,6 +87,10 @@ public record VkPhysicalDeviceImageCompressionControlFeaturesEXT(@NotNull Memory
             return new VkPhysicalDeviceImageCompressionControlFeaturesEXT(segment.asSlice(index * VkPhysicalDeviceImageCompressionControlFeaturesEXT.BYTES, VkPhysicalDeviceImageCompressionControlFeaturesEXT.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceImageCompressionControlFeaturesEXT> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull VkPhysicalDeviceImageCompressionControlFeaturesEXT value) {
             MemorySegment s = segment.asSlice(index * VkPhysicalDeviceImageCompressionControlFeaturesEXT.BYTES, VkPhysicalDeviceImageCompressionControlFeaturesEXT.BYTES);
             s.copyFrom(value.segment);

@@ -87,6 +87,10 @@ public record VkSemaphoreSciSyncPoolCreateInfoNV(@NotNull MemorySegment segment)
             return new VkSemaphoreSciSyncPoolCreateInfoNV(segment.asSlice(index * VkSemaphoreSciSyncPoolCreateInfoNV.BYTES, VkSemaphoreSciSyncPoolCreateInfoNV.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull VkSemaphoreSciSyncPoolCreateInfoNV> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull VkSemaphoreSciSyncPoolCreateInfoNV value) {
             MemorySegment s = segment.asSlice(index * VkSemaphoreSciSyncPoolCreateInfoNV.BYTES, VkSemaphoreSciSyncPoolCreateInfoNV.BYTES);
             s.copyFrom(value.segment);

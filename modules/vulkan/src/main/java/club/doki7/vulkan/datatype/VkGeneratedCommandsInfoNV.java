@@ -99,6 +99,10 @@ public record VkGeneratedCommandsInfoNV(@NotNull MemorySegment segment) implemen
             return new VkGeneratedCommandsInfoNV(segment.asSlice(index * VkGeneratedCommandsInfoNV.BYTES, VkGeneratedCommandsInfoNV.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull VkGeneratedCommandsInfoNV> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull VkGeneratedCommandsInfoNV value) {
             MemorySegment s = segment.asSlice(index * VkGeneratedCommandsInfoNV.BYTES, VkGeneratedCommandsInfoNV.BYTES);
             s.copyFrom(value.segment);

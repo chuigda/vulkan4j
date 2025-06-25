@@ -87,6 +87,10 @@ public record VkPhysicalDeviceFrameBoundaryFeaturesEXT(@NotNull MemorySegment se
             return new VkPhysicalDeviceFrameBoundaryFeaturesEXT(segment.asSlice(index * VkPhysicalDeviceFrameBoundaryFeaturesEXT.BYTES, VkPhysicalDeviceFrameBoundaryFeaturesEXT.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceFrameBoundaryFeaturesEXT> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull VkPhysicalDeviceFrameBoundaryFeaturesEXT value) {
             MemorySegment s = segment.asSlice(index * VkPhysicalDeviceFrameBoundaryFeaturesEXT.BYTES, VkPhysicalDeviceFrameBoundaryFeaturesEXT.BYTES);
             s.copyFrom(value.segment);

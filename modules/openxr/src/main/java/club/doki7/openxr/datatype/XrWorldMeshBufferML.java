@@ -92,6 +92,10 @@ public record XrWorldMeshBufferML(@NotNull MemorySegment segment) implements IXr
             return new XrWorldMeshBufferML(segment.asSlice(index * XrWorldMeshBufferML.BYTES, XrWorldMeshBufferML.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull XrWorldMeshBufferML> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull XrWorldMeshBufferML value) {
             MemorySegment s = segment.asSlice(index * XrWorldMeshBufferML.BYTES, XrWorldMeshBufferML.BYTES);
             s.copyFrom(value.segment);

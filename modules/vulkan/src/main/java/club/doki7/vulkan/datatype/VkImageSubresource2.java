@@ -87,6 +87,10 @@ public record VkImageSubresource2(@NotNull MemorySegment segment) implements IVk
             return new VkImageSubresource2(segment.asSlice(index * VkImageSubresource2.BYTES, VkImageSubresource2.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull VkImageSubresource2> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull VkImageSubresource2 value) {
             MemorySegment s = segment.asSlice(index * VkImageSubresource2.BYTES, VkImageSubresource2.BYTES);
             s.copyFrom(value.segment);

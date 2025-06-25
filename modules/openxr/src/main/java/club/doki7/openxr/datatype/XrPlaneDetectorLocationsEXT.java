@@ -93,6 +93,10 @@ public record XrPlaneDetectorLocationsEXT(@NotNull MemorySegment segment) implem
             return new XrPlaneDetectorLocationsEXT(segment.asSlice(index * XrPlaneDetectorLocationsEXT.BYTES, XrPlaneDetectorLocationsEXT.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull XrPlaneDetectorLocationsEXT> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull XrPlaneDetectorLocationsEXT value) {
             MemorySegment s = segment.asSlice(index * XrPlaneDetectorLocationsEXT.BYTES, XrPlaneDetectorLocationsEXT.BYTES);
             s.copyFrom(value.segment);

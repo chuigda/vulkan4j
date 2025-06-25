@@ -88,6 +88,10 @@ public record VkVideoEncodeH265SessionCreateInfoKHR(@NotNull MemorySegment segme
             return new VkVideoEncodeH265SessionCreateInfoKHR(segment.asSlice(index * VkVideoEncodeH265SessionCreateInfoKHR.BYTES, VkVideoEncodeH265SessionCreateInfoKHR.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull VkVideoEncodeH265SessionCreateInfoKHR> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull VkVideoEncodeH265SessionCreateInfoKHR value) {
             MemorySegment s = segment.asSlice(index * VkVideoEncodeH265SessionCreateInfoKHR.BYTES, VkVideoEncodeH265SessionCreateInfoKHR.BYTES);
             s.copyFrom(value.segment);

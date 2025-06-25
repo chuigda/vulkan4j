@@ -89,6 +89,10 @@ public record VkDeviceGroupRenderPassBeginInfo(@NotNull MemorySegment segment) i
             return new VkDeviceGroupRenderPassBeginInfo(segment.asSlice(index * VkDeviceGroupRenderPassBeginInfo.BYTES, VkDeviceGroupRenderPassBeginInfo.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull VkDeviceGroupRenderPassBeginInfo> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull VkDeviceGroupRenderPassBeginInfo value) {
             MemorySegment s = segment.asSlice(index * VkDeviceGroupRenderPassBeginInfo.BYTES, VkDeviceGroupRenderPassBeginInfo.BYTES);
             s.copyFrom(value.segment);

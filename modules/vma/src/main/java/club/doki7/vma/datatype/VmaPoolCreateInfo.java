@@ -132,6 +132,10 @@ public record VmaPoolCreateInfo(@NotNull MemorySegment segment) implements IVmaP
             return new VmaPoolCreateInfo(segment.asSlice(index * VmaPoolCreateInfo.BYTES, VmaPoolCreateInfo.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull VmaPoolCreateInfo> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull VmaPoolCreateInfo value) {
             MemorySegment s = segment.asSlice(index * VmaPoolCreateInfo.BYTES, VmaPoolCreateInfo.BYTES);
             s.copyFrom(value.segment);

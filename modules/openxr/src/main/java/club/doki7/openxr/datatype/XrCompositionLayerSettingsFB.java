@@ -91,6 +91,10 @@ public record XrCompositionLayerSettingsFB(@NotNull MemorySegment segment) imple
             return new XrCompositionLayerSettingsFB(segment.asSlice(index * XrCompositionLayerSettingsFB.BYTES, XrCompositionLayerSettingsFB.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull XrCompositionLayerSettingsFB> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull XrCompositionLayerSettingsFB value) {
             MemorySegment s = segment.asSlice(index * XrCompositionLayerSettingsFB.BYTES, XrCompositionLayerSettingsFB.BYTES);
             s.copyFrom(value.segment);

@@ -81,6 +81,10 @@ public record XrSpheref(@NotNull MemorySegment segment) implements IXrSpheref {
             return new XrSpheref(segment.asSlice(index * XrSpheref.BYTES, XrSpheref.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull XrSpheref> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull XrSpheref value) {
             MemorySegment s = segment.asSlice(index * XrSpheref.BYTES, XrSpheref.BYTES);
             s.copyFrom(value.segment);

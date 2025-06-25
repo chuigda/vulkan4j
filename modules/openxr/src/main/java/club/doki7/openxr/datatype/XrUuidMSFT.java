@@ -80,6 +80,10 @@ public record XrUuidMSFT(@NotNull MemorySegment segment) implements IXrUuidMSFT 
             return new XrUuidMSFT(segment.asSlice(index * XrUuidMSFT.BYTES, XrUuidMSFT.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull XrUuidMSFT> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull XrUuidMSFT value) {
             MemorySegment s = segment.asSlice(index * XrUuidMSFT.BYTES, XrUuidMSFT.BYTES);
             s.copyFrom(value.segment);
@@ -175,6 +179,12 @@ public record XrUuidMSFT(@NotNull MemorySegment segment) implements IXrUuidMSFT 
 
     public @Unsigned BytePtr bytes() {
         return new BytePtr(bytesRaw());
+    }
+
+    public XrUuidMSFT bytes(@NotNull Consumer<BytePtr> consumer) {
+        @Unsigned BytePtr ptr = bytes();
+        consumer.accept(ptr);
+        return this;
     }
 
     public XrUuidMSFT bytes(@Unsigned BytePtr value) {

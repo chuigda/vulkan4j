@@ -101,6 +101,10 @@ public record VkPhysicalDeviceVulkan11Properties(@NotNull MemorySegment segment)
             return new VkPhysicalDeviceVulkan11Properties(segment.asSlice(index * VkPhysicalDeviceVulkan11Properties.BYTES, VkPhysicalDeviceVulkan11Properties.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceVulkan11Properties> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull VkPhysicalDeviceVulkan11Properties value) {
             MemorySegment s = segment.asSlice(index * VkPhysicalDeviceVulkan11Properties.BYTES, VkPhysicalDeviceVulkan11Properties.BYTES);
             s.copyFrom(value.segment);
@@ -231,6 +235,12 @@ public record VkPhysicalDeviceVulkan11Properties(@NotNull MemorySegment segment)
         return new BytePtr(deviceUUIDRaw());
     }
 
+    public VkPhysicalDeviceVulkan11Properties deviceUUID(@NotNull Consumer<BytePtr> consumer) {
+        @Unsigned BytePtr ptr = deviceUUID();
+        consumer.accept(ptr);
+        return this;
+    }
+
     public VkPhysicalDeviceVulkan11Properties deviceUUID(@Unsigned BytePtr value) {
         MemorySegment s = deviceUUIDRaw();
         s.copyFrom(value.segment());
@@ -245,6 +255,12 @@ public record VkPhysicalDeviceVulkan11Properties(@NotNull MemorySegment segment)
         return new BytePtr(driverUUIDRaw());
     }
 
+    public VkPhysicalDeviceVulkan11Properties driverUUID(@NotNull Consumer<BytePtr> consumer) {
+        @Unsigned BytePtr ptr = driverUUID();
+        consumer.accept(ptr);
+        return this;
+    }
+
     public VkPhysicalDeviceVulkan11Properties driverUUID(@Unsigned BytePtr value) {
         MemorySegment s = driverUUIDRaw();
         s.copyFrom(value.segment());
@@ -257,6 +273,12 @@ public record VkPhysicalDeviceVulkan11Properties(@NotNull MemorySegment segment)
 
     public @Unsigned BytePtr deviceLUID() {
         return new BytePtr(deviceLUIDRaw());
+    }
+
+    public VkPhysicalDeviceVulkan11Properties deviceLUID(@NotNull Consumer<BytePtr> consumer) {
+        @Unsigned BytePtr ptr = deviceLUID();
+        consumer.accept(ptr);
+        return this;
     }
 
     public VkPhysicalDeviceVulkan11Properties deviceLUID(@Unsigned BytePtr value) {

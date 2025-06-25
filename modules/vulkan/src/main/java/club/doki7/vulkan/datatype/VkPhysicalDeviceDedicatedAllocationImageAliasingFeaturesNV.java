@@ -87,6 +87,10 @@ public record VkPhysicalDeviceDedicatedAllocationImageAliasingFeaturesNV(@NotNul
             return new VkPhysicalDeviceDedicatedAllocationImageAliasingFeaturesNV(segment.asSlice(index * VkPhysicalDeviceDedicatedAllocationImageAliasingFeaturesNV.BYTES, VkPhysicalDeviceDedicatedAllocationImageAliasingFeaturesNV.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceDedicatedAllocationImageAliasingFeaturesNV> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull VkPhysicalDeviceDedicatedAllocationImageAliasingFeaturesNV value) {
             MemorySegment s = segment.asSlice(index * VkPhysicalDeviceDedicatedAllocationImageAliasingFeaturesNV.BYTES, VkPhysicalDeviceDedicatedAllocationImageAliasingFeaturesNV.BYTES);
             s.copyFrom(value.segment);

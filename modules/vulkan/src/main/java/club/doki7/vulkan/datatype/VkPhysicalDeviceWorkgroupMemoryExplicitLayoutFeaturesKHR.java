@@ -90,6 +90,10 @@ public record VkPhysicalDeviceWorkgroupMemoryExplicitLayoutFeaturesKHR(@NotNull 
             return new VkPhysicalDeviceWorkgroupMemoryExplicitLayoutFeaturesKHR(segment.asSlice(index * VkPhysicalDeviceWorkgroupMemoryExplicitLayoutFeaturesKHR.BYTES, VkPhysicalDeviceWorkgroupMemoryExplicitLayoutFeaturesKHR.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceWorkgroupMemoryExplicitLayoutFeaturesKHR> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull VkPhysicalDeviceWorkgroupMemoryExplicitLayoutFeaturesKHR value) {
             MemorySegment s = segment.asSlice(index * VkPhysicalDeviceWorkgroupMemoryExplicitLayoutFeaturesKHR.BYTES, VkPhysicalDeviceWorkgroupMemoryExplicitLayoutFeaturesKHR.BYTES);
             s.copyFrom(value.segment);

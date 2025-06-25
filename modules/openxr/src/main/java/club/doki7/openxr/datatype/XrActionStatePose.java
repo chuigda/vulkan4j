@@ -91,6 +91,10 @@ public record XrActionStatePose(@NotNull MemorySegment segment) implements IXrAc
             return new XrActionStatePose(segment.asSlice(index * XrActionStatePose.BYTES, XrActionStatePose.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull XrActionStatePose> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull XrActionStatePose value) {
             MemorySegment s = segment.asSlice(index * XrActionStatePose.BYTES, XrActionStatePose.BYTES);
             s.copyFrom(value.segment);

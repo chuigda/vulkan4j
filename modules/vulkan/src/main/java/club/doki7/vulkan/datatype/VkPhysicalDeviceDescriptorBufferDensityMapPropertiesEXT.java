@@ -87,6 +87,10 @@ public record VkPhysicalDeviceDescriptorBufferDensityMapPropertiesEXT(@NotNull M
             return new VkPhysicalDeviceDescriptorBufferDensityMapPropertiesEXT(segment.asSlice(index * VkPhysicalDeviceDescriptorBufferDensityMapPropertiesEXT.BYTES, VkPhysicalDeviceDescriptorBufferDensityMapPropertiesEXT.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceDescriptorBufferDensityMapPropertiesEXT> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull VkPhysicalDeviceDescriptorBufferDensityMapPropertiesEXT value) {
             MemorySegment s = segment.asSlice(index * VkPhysicalDeviceDescriptorBufferDensityMapPropertiesEXT.BYTES, VkPhysicalDeviceDescriptorBufferDensityMapPropertiesEXT.BYTES);
             s.copyFrom(value.segment);

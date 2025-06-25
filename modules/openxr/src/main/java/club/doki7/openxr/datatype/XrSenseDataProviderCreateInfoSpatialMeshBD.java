@@ -92,6 +92,10 @@ public record XrSenseDataProviderCreateInfoSpatialMeshBD(@NotNull MemorySegment 
             return new XrSenseDataProviderCreateInfoSpatialMeshBD(segment.asSlice(index * XrSenseDataProviderCreateInfoSpatialMeshBD.BYTES, XrSenseDataProviderCreateInfoSpatialMeshBD.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull XrSenseDataProviderCreateInfoSpatialMeshBD> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull XrSenseDataProviderCreateInfoSpatialMeshBD value) {
             MemorySegment s = segment.asSlice(index * XrSenseDataProviderCreateInfoSpatialMeshBD.BYTES, XrSenseDataProviderCreateInfoSpatialMeshBD.BYTES);
             s.copyFrom(value.segment);

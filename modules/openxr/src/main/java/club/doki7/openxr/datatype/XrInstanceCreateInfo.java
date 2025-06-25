@@ -96,6 +96,10 @@ public record XrInstanceCreateInfo(@NotNull MemorySegment segment) implements IX
             return new XrInstanceCreateInfo(segment.asSlice(index * XrInstanceCreateInfo.BYTES, XrInstanceCreateInfo.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull XrInstanceCreateInfo> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull XrInstanceCreateInfo value) {
             MemorySegment s = segment.asSlice(index * XrInstanceCreateInfo.BYTES, XrInstanceCreateInfo.BYTES);
             s.copyFrom(value.segment);

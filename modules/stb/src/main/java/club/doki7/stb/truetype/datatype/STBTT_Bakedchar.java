@@ -78,6 +78,10 @@ public record STBTT_Bakedchar(@NotNull MemorySegment segment) implements ISTBTT_
             return new STBTT_Bakedchar(segment.asSlice(index * STBTT_Bakedchar.BYTES, STBTT_Bakedchar.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull STBTT_Bakedchar> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull STBTT_Bakedchar value) {
             MemorySegment s = segment.asSlice(index * STBTT_Bakedchar.BYTES, STBTT_Bakedchar.BYTES);
             s.copyFrom(value.segment);

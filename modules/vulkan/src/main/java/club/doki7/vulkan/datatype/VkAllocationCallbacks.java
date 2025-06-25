@@ -81,6 +81,10 @@ public record VkAllocationCallbacks(@NotNull MemorySegment segment) implements I
             return new VkAllocationCallbacks(segment.asSlice(index * VkAllocationCallbacks.BYTES, VkAllocationCallbacks.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull VkAllocationCallbacks> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull VkAllocationCallbacks value) {
             MemorySegment s = segment.asSlice(index * VkAllocationCallbacks.BYTES, VkAllocationCallbacks.BYTES);
             s.copyFrom(value.segment);

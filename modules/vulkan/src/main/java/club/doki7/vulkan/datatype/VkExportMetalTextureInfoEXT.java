@@ -91,6 +91,10 @@ public record VkExportMetalTextureInfoEXT(@NotNull MemorySegment segment) implem
             return new VkExportMetalTextureInfoEXT(segment.asSlice(index * VkExportMetalTextureInfoEXT.BYTES, VkExportMetalTextureInfoEXT.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull VkExportMetalTextureInfoEXT> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull VkExportMetalTextureInfoEXT value) {
             MemorySegment s = segment.asSlice(index * VkExportMetalTextureInfoEXT.BYTES, VkExportMetalTextureInfoEXT.BYTES);
             s.copyFrom(value.segment);

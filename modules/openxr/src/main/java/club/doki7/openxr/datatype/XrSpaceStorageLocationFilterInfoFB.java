@@ -91,6 +91,10 @@ public record XrSpaceStorageLocationFilterInfoFB(@NotNull MemorySegment segment)
             return new XrSpaceStorageLocationFilterInfoFB(segment.asSlice(index * XrSpaceStorageLocationFilterInfoFB.BYTES, XrSpaceStorageLocationFilterInfoFB.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull XrSpaceStorageLocationFilterInfoFB> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull XrSpaceStorageLocationFilterInfoFB value) {
             MemorySegment s = segment.asSlice(index * XrSpaceStorageLocationFilterInfoFB.BYTES, XrSpaceStorageLocationFilterInfoFB.BYTES);
             s.copyFrom(value.segment);

@@ -91,6 +91,10 @@ public record XrSystemSimultaneousHandsAndControllersPropertiesMETA(@NotNull Mem
             return new XrSystemSimultaneousHandsAndControllersPropertiesMETA(segment.asSlice(index * XrSystemSimultaneousHandsAndControllersPropertiesMETA.BYTES, XrSystemSimultaneousHandsAndControllersPropertiesMETA.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull XrSystemSimultaneousHandsAndControllersPropertiesMETA> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull XrSystemSimultaneousHandsAndControllersPropertiesMETA value) {
             MemorySegment s = segment.asSlice(index * XrSystemSimultaneousHandsAndControllersPropertiesMETA.BYTES, XrSystemSimultaneousHandsAndControllersPropertiesMETA.BYTES);
             s.copyFrom(value.segment);

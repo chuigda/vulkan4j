@@ -88,6 +88,10 @@ public record VkPipelineVertexInputDivisorStateCreateInfo(@NotNull MemorySegment
             return new VkPipelineVertexInputDivisorStateCreateInfo(segment.asSlice(index * VkPipelineVertexInputDivisorStateCreateInfo.BYTES, VkPipelineVertexInputDivisorStateCreateInfo.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull VkPipelineVertexInputDivisorStateCreateInfo> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull VkPipelineVertexInputDivisorStateCreateInfo value) {
             MemorySegment s = segment.asSlice(index * VkPipelineVertexInputDivisorStateCreateInfo.BYTES, VkPipelineVertexInputDivisorStateCreateInfo.BYTES);
             s.copyFrom(value.segment);

@@ -87,6 +87,10 @@ public record VkExportMetalObjectCreateInfoEXT(@NotNull MemorySegment segment) i
             return new VkExportMetalObjectCreateInfoEXT(segment.asSlice(index * VkExportMetalObjectCreateInfoEXT.BYTES, VkExportMetalObjectCreateInfoEXT.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull VkExportMetalObjectCreateInfoEXT> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull VkExportMetalObjectCreateInfoEXT value) {
             MemorySegment s = segment.asSlice(index * VkExportMetalObjectCreateInfoEXT.BYTES, VkExportMetalObjectCreateInfoEXT.BYTES);
             s.copyFrom(value.segment);

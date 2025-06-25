@@ -88,6 +88,10 @@ public record VkSamplerBorderColorComponentMappingCreateInfoEXT(@NotNull MemoryS
             return new VkSamplerBorderColorComponentMappingCreateInfoEXT(segment.asSlice(index * VkSamplerBorderColorComponentMappingCreateInfoEXT.BYTES, VkSamplerBorderColorComponentMappingCreateInfoEXT.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull VkSamplerBorderColorComponentMappingCreateInfoEXT> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull VkSamplerBorderColorComponentMappingCreateInfoEXT value) {
             MemorySegment s = segment.asSlice(index * VkSamplerBorderColorComponentMappingCreateInfoEXT.BYTES, VkSamplerBorderColorComponentMappingCreateInfoEXT.BYTES);
             s.copyFrom(value.segment);

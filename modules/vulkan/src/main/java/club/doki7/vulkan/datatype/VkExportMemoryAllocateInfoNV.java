@@ -87,6 +87,10 @@ public record VkExportMemoryAllocateInfoNV(@NotNull MemorySegment segment) imple
             return new VkExportMemoryAllocateInfoNV(segment.asSlice(index * VkExportMemoryAllocateInfoNV.BYTES, VkExportMemoryAllocateInfoNV.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull VkExportMemoryAllocateInfoNV> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull VkExportMemoryAllocateInfoNV value) {
             MemorySegment s = segment.asSlice(index * VkExportMemoryAllocateInfoNV.BYTES, VkExportMemoryAllocateInfoNV.BYTES);
             s.copyFrom(value.segment);

@@ -93,6 +93,10 @@ public record XrSpatialAnchorsUpdateExpirationInfoML(@NotNull MemorySegment segm
             return new XrSpatialAnchorsUpdateExpirationInfoML(segment.asSlice(index * XrSpatialAnchorsUpdateExpirationInfoML.BYTES, XrSpatialAnchorsUpdateExpirationInfoML.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull XrSpatialAnchorsUpdateExpirationInfoML> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull XrSpatialAnchorsUpdateExpirationInfoML value) {
             MemorySegment s = segment.asSlice(index * XrSpatialAnchorsUpdateExpirationInfoML.BYTES, XrSpatialAnchorsUpdateExpirationInfoML.BYTES);
             s.copyFrom(value.segment);

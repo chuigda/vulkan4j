@@ -87,6 +87,10 @@ public record VkMemoryFdPropertiesKHR(@NotNull MemorySegment segment) implements
             return new VkMemoryFdPropertiesKHR(segment.asSlice(index * VkMemoryFdPropertiesKHR.BYTES, VkMemoryFdPropertiesKHR.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull VkMemoryFdPropertiesKHR> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull VkMemoryFdPropertiesKHR value) {
             MemorySegment s = segment.asSlice(index * VkMemoryFdPropertiesKHR.BYTES, VkMemoryFdPropertiesKHR.BYTES);
             s.copyFrom(value.segment);

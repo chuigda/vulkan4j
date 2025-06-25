@@ -91,6 +91,10 @@ public record XrCompositionLayerImageLayoutFB(@NotNull MemorySegment segment) im
             return new XrCompositionLayerImageLayoutFB(segment.asSlice(index * XrCompositionLayerImageLayoutFB.BYTES, XrCompositionLayerImageLayoutFB.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull XrCompositionLayerImageLayoutFB> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull XrCompositionLayerImageLayoutFB value) {
             MemorySegment s = segment.asSlice(index * XrCompositionLayerImageLayoutFB.BYTES, XrCompositionLayerImageLayoutFB.BYTES);
             s.copyFrom(value.segment);

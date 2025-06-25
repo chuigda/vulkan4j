@@ -88,6 +88,10 @@ public record VkMultiviewPerViewRenderAreasRenderPassBeginInfoQCOM(@NotNull Memo
             return new VkMultiviewPerViewRenderAreasRenderPassBeginInfoQCOM(segment.asSlice(index * VkMultiviewPerViewRenderAreasRenderPassBeginInfoQCOM.BYTES, VkMultiviewPerViewRenderAreasRenderPassBeginInfoQCOM.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull VkMultiviewPerViewRenderAreasRenderPassBeginInfoQCOM> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull VkMultiviewPerViewRenderAreasRenderPassBeginInfoQCOM value) {
             MemorySegment s = segment.asSlice(index * VkMultiviewPerViewRenderAreasRenderPassBeginInfoQCOM.BYTES, VkMultiviewPerViewRenderAreasRenderPassBeginInfoQCOM.BYTES);
             s.copyFrom(value.segment);

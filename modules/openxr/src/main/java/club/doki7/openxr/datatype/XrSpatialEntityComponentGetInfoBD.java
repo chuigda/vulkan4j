@@ -92,6 +92,10 @@ public record XrSpatialEntityComponentGetInfoBD(@NotNull MemorySegment segment) 
             return new XrSpatialEntityComponentGetInfoBD(segment.asSlice(index * XrSpatialEntityComponentGetInfoBD.BYTES, XrSpatialEntityComponentGetInfoBD.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull XrSpatialEntityComponentGetInfoBD> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull XrSpatialEntityComponentGetInfoBD value) {
             MemorySegment s = segment.asSlice(index * XrSpatialEntityComponentGetInfoBD.BYTES, XrSpatialEntityComponentGetInfoBD.BYTES);
             s.copyFrom(value.segment);

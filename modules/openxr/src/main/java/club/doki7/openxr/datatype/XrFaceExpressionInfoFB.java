@@ -91,6 +91,10 @@ public record XrFaceExpressionInfoFB(@NotNull MemorySegment segment) implements 
             return new XrFaceExpressionInfoFB(segment.asSlice(index * XrFaceExpressionInfoFB.BYTES, XrFaceExpressionInfoFB.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull XrFaceExpressionInfoFB> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull XrFaceExpressionInfoFB value) {
             MemorySegment s = segment.asSlice(index * XrFaceExpressionInfoFB.BYTES, XrFaceExpressionInfoFB.BYTES);
             s.copyFrom(value.segment);

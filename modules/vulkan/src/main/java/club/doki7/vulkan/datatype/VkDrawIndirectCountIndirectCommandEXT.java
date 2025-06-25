@@ -78,6 +78,10 @@ public record VkDrawIndirectCountIndirectCommandEXT(@NotNull MemorySegment segme
             return new VkDrawIndirectCountIndirectCommandEXT(segment.asSlice(index * VkDrawIndirectCountIndirectCommandEXT.BYTES, VkDrawIndirectCountIndirectCommandEXT.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull VkDrawIndirectCountIndirectCommandEXT> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull VkDrawIndirectCountIndirectCommandEXT value) {
             MemorySegment s = segment.asSlice(index * VkDrawIndirectCountIndirectCommandEXT.BYTES, VkDrawIndirectCountIndirectCommandEXT.BYTES);
             s.copyFrom(value.segment);

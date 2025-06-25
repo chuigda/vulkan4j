@@ -75,6 +75,10 @@ public record StdVideoH265LongTermRefPicsSps(@NotNull MemorySegment segment) imp
             return new StdVideoH265LongTermRefPicsSps(segment.asSlice(index * StdVideoH265LongTermRefPicsSps.BYTES, StdVideoH265LongTermRefPicsSps.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull StdVideoH265LongTermRefPicsSps> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull StdVideoH265LongTermRefPicsSps value) {
             MemorySegment s = segment.asSlice(index * StdVideoH265LongTermRefPicsSps.BYTES, StdVideoH265LongTermRefPicsSps.BYTES);
             s.copyFrom(value.segment);
@@ -179,6 +183,12 @@ public record StdVideoH265LongTermRefPicsSps(@NotNull MemorySegment segment) imp
 
     public @Unsigned IntPtr lt_ref_pic_poc_lsb_sps() {
         return new IntPtr(lt_ref_pic_poc_lsb_spsRaw());
+    }
+
+    public StdVideoH265LongTermRefPicsSps lt_ref_pic_poc_lsb_sps(@NotNull Consumer<IntPtr> consumer) {
+        @Unsigned IntPtr ptr = lt_ref_pic_poc_lsb_sps();
+        consumer.accept(ptr);
+        return this;
     }
 
     public StdVideoH265LongTermRefPicsSps lt_ref_pic_poc_lsb_sps(@Unsigned IntPtr value) {

@@ -76,6 +76,10 @@ public record StdVideoH265ShortTermRefPicSetFlags(@NotNull MemorySegment segment
             return new StdVideoH265ShortTermRefPicSetFlags(segment.asSlice(index * StdVideoH265ShortTermRefPicSetFlags.BYTES, StdVideoH265ShortTermRefPicSetFlags.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull StdVideoH265ShortTermRefPicSetFlags> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull StdVideoH265ShortTermRefPicSetFlags value) {
             MemorySegment s = segment.asSlice(index * StdVideoH265ShortTermRefPicSetFlags.BYTES, StdVideoH265ShortTermRefPicSetFlags.BYTES);
             s.copyFrom(value.segment);

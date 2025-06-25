@@ -96,6 +96,10 @@ public record XrMarkerDetectorCustomProfileInfoML(@NotNull MemorySegment segment
             return new XrMarkerDetectorCustomProfileInfoML(segment.asSlice(index * XrMarkerDetectorCustomProfileInfoML.BYTES, XrMarkerDetectorCustomProfileInfoML.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull XrMarkerDetectorCustomProfileInfoML> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull XrMarkerDetectorCustomProfileInfoML value) {
             MemorySegment s = segment.asSlice(index * XrMarkerDetectorCustomProfileInfoML.BYTES, XrMarkerDetectorCustomProfileInfoML.BYTES);
             s.copyFrom(value.segment);

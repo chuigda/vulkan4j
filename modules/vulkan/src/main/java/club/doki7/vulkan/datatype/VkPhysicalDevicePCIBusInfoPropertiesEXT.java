@@ -90,6 +90,10 @@ public record VkPhysicalDevicePCIBusInfoPropertiesEXT(@NotNull MemorySegment seg
             return new VkPhysicalDevicePCIBusInfoPropertiesEXT(segment.asSlice(index * VkPhysicalDevicePCIBusInfoPropertiesEXT.BYTES, VkPhysicalDevicePCIBusInfoPropertiesEXT.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull VkPhysicalDevicePCIBusInfoPropertiesEXT> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull VkPhysicalDevicePCIBusInfoPropertiesEXT value) {
             MemorySegment s = segment.asSlice(index * VkPhysicalDevicePCIBusInfoPropertiesEXT.BYTES, VkPhysicalDevicePCIBusInfoPropertiesEXT.BYTES);
             s.copyFrom(value.segment);

@@ -98,6 +98,10 @@ public record StdVideoAV1FilmGrain(@NotNull MemorySegment segment) implements IS
             return new StdVideoAV1FilmGrain(segment.asSlice(index * StdVideoAV1FilmGrain.BYTES, StdVideoAV1FilmGrain.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull StdVideoAV1FilmGrain> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull StdVideoAV1FilmGrain value) {
             MemorySegment s = segment.asSlice(index * StdVideoAV1FilmGrain.BYTES, StdVideoAV1FilmGrain.BYTES);
             s.copyFrom(value.segment);
@@ -272,6 +276,12 @@ public record StdVideoAV1FilmGrain(@NotNull MemorySegment segment) implements IS
         return new BytePtr(point_y_valueRaw());
     }
 
+    public StdVideoAV1FilmGrain point_y_value(@NotNull Consumer<BytePtr> consumer) {
+        @Unsigned BytePtr ptr = point_y_value();
+        consumer.accept(ptr);
+        return this;
+    }
+
     public StdVideoAV1FilmGrain point_y_value(@Unsigned BytePtr value) {
         MemorySegment s = point_y_valueRaw();
         s.copyFrom(value.segment());
@@ -284,6 +294,12 @@ public record StdVideoAV1FilmGrain(@NotNull MemorySegment segment) implements IS
 
     public @Unsigned BytePtr point_y_scaling() {
         return new BytePtr(point_y_scalingRaw());
+    }
+
+    public StdVideoAV1FilmGrain point_y_scaling(@NotNull Consumer<BytePtr> consumer) {
+        @Unsigned BytePtr ptr = point_y_scaling();
+        consumer.accept(ptr);
+        return this;
     }
 
     public StdVideoAV1FilmGrain point_y_scaling(@Unsigned BytePtr value) {
@@ -309,6 +325,12 @@ public record StdVideoAV1FilmGrain(@NotNull MemorySegment segment) implements IS
         return new BytePtr(point_cb_valueRaw());
     }
 
+    public StdVideoAV1FilmGrain point_cb_value(@NotNull Consumer<BytePtr> consumer) {
+        @Unsigned BytePtr ptr = point_cb_value();
+        consumer.accept(ptr);
+        return this;
+    }
+
     public StdVideoAV1FilmGrain point_cb_value(@Unsigned BytePtr value) {
         MemorySegment s = point_cb_valueRaw();
         s.copyFrom(value.segment());
@@ -321,6 +343,12 @@ public record StdVideoAV1FilmGrain(@NotNull MemorySegment segment) implements IS
 
     public @Unsigned BytePtr point_cb_scaling() {
         return new BytePtr(point_cb_scalingRaw());
+    }
+
+    public StdVideoAV1FilmGrain point_cb_scaling(@NotNull Consumer<BytePtr> consumer) {
+        @Unsigned BytePtr ptr = point_cb_scaling();
+        consumer.accept(ptr);
+        return this;
     }
 
     public StdVideoAV1FilmGrain point_cb_scaling(@Unsigned BytePtr value) {
@@ -346,6 +374,12 @@ public record StdVideoAV1FilmGrain(@NotNull MemorySegment segment) implements IS
         return new BytePtr(point_cr_valueRaw());
     }
 
+    public StdVideoAV1FilmGrain point_cr_value(@NotNull Consumer<BytePtr> consumer) {
+        @Unsigned BytePtr ptr = point_cr_value();
+        consumer.accept(ptr);
+        return this;
+    }
+
     public StdVideoAV1FilmGrain point_cr_value(@Unsigned BytePtr value) {
         MemorySegment s = point_cr_valueRaw();
         s.copyFrom(value.segment());
@@ -358,6 +392,12 @@ public record StdVideoAV1FilmGrain(@NotNull MemorySegment segment) implements IS
 
     public @Unsigned BytePtr point_cr_scaling() {
         return new BytePtr(point_cr_scalingRaw());
+    }
+
+    public StdVideoAV1FilmGrain point_cr_scaling(@NotNull Consumer<BytePtr> consumer) {
+        @Unsigned BytePtr ptr = point_cr_scaling();
+        consumer.accept(ptr);
+        return this;
     }
 
     public StdVideoAV1FilmGrain point_cr_scaling(@Unsigned BytePtr value) {
@@ -374,6 +414,12 @@ public record StdVideoAV1FilmGrain(@NotNull MemorySegment segment) implements IS
         return new BytePtr(ar_coeffs_y_plus_128Raw());
     }
 
+    public StdVideoAV1FilmGrain ar_coeffs_y_plus_128(@NotNull Consumer<BytePtr> consumer) {
+        BytePtr ptr = ar_coeffs_y_plus_128();
+        consumer.accept(ptr);
+        return this;
+    }
+
     public StdVideoAV1FilmGrain ar_coeffs_y_plus_128(BytePtr value) {
         MemorySegment s = ar_coeffs_y_plus_128Raw();
         s.copyFrom(value.segment());
@@ -388,6 +434,12 @@ public record StdVideoAV1FilmGrain(@NotNull MemorySegment segment) implements IS
         return new BytePtr(ar_coeffs_cb_plus_128Raw());
     }
 
+    public StdVideoAV1FilmGrain ar_coeffs_cb_plus_128(@NotNull Consumer<BytePtr> consumer) {
+        BytePtr ptr = ar_coeffs_cb_plus_128();
+        consumer.accept(ptr);
+        return this;
+    }
+
     public StdVideoAV1FilmGrain ar_coeffs_cb_plus_128(BytePtr value) {
         MemorySegment s = ar_coeffs_cb_plus_128Raw();
         s.copyFrom(value.segment());
@@ -400,6 +452,12 @@ public record StdVideoAV1FilmGrain(@NotNull MemorySegment segment) implements IS
 
     public BytePtr ar_coeffs_cr_plus_128() {
         return new BytePtr(ar_coeffs_cr_plus_128Raw());
+    }
+
+    public StdVideoAV1FilmGrain ar_coeffs_cr_plus_128(@NotNull Consumer<BytePtr> consumer) {
+        BytePtr ptr = ar_coeffs_cr_plus_128();
+        consumer.accept(ptr);
+        return this;
     }
 
     public StdVideoAV1FilmGrain ar_coeffs_cr_plus_128(BytePtr value) {

@@ -92,6 +92,10 @@ public record XrActionStateGetInfo(@NotNull MemorySegment segment) implements IX
             return new XrActionStateGetInfo(segment.asSlice(index * XrActionStateGetInfo.BYTES, XrActionStateGetInfo.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull XrActionStateGetInfo> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull XrActionStateGetInfo value) {
             MemorySegment s = segment.asSlice(index * XrActionStateGetInfo.BYTES, XrActionStateGetInfo.BYTES);
             s.copyFrom(value.segment);

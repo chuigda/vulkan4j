@@ -77,6 +77,10 @@ public record VkAttachmentReference(@NotNull MemorySegment segment) implements I
             return new VkAttachmentReference(segment.asSlice(index * VkAttachmentReference.BYTES, VkAttachmentReference.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull VkAttachmentReference> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull VkAttachmentReference value) {
             MemorySegment s = segment.asSlice(index * VkAttachmentReference.BYTES, VkAttachmentReference.BYTES);
             s.copyFrom(value.segment);

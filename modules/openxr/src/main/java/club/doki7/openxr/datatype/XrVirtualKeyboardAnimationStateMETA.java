@@ -92,6 +92,10 @@ public record XrVirtualKeyboardAnimationStateMETA(@NotNull MemorySegment segment
             return new XrVirtualKeyboardAnimationStateMETA(segment.asSlice(index * XrVirtualKeyboardAnimationStateMETA.BYTES, XrVirtualKeyboardAnimationStateMETA.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull XrVirtualKeyboardAnimationStateMETA> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull XrVirtualKeyboardAnimationStateMETA value) {
             MemorySegment s = segment.asSlice(index * XrVirtualKeyboardAnimationStateMETA.BYTES, XrVirtualKeyboardAnimationStateMETA.BYTES);
             s.copyFrom(value.segment);

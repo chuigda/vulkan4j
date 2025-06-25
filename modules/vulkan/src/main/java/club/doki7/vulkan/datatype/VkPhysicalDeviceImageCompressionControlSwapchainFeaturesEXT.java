@@ -87,6 +87,10 @@ public record VkPhysicalDeviceImageCompressionControlSwapchainFeaturesEXT(@NotNu
             return new VkPhysicalDeviceImageCompressionControlSwapchainFeaturesEXT(segment.asSlice(index * VkPhysicalDeviceImageCompressionControlSwapchainFeaturesEXT.BYTES, VkPhysicalDeviceImageCompressionControlSwapchainFeaturesEXT.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceImageCompressionControlSwapchainFeaturesEXT> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull VkPhysicalDeviceImageCompressionControlSwapchainFeaturesEXT value) {
             MemorySegment s = segment.asSlice(index * VkPhysicalDeviceImageCompressionControlSwapchainFeaturesEXT.BYTES, VkPhysicalDeviceImageCompressionControlSwapchainFeaturesEXT.BYTES);
             s.copyFrom(value.segment);

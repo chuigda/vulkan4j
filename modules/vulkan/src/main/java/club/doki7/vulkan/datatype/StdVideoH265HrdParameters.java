@@ -88,6 +88,10 @@ public record StdVideoH265HrdParameters(@NotNull MemorySegment segment) implemen
             return new StdVideoH265HrdParameters(segment.asSlice(index * StdVideoH265HrdParameters.BYTES, StdVideoH265HrdParameters.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull StdVideoH265HrdParameters> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull StdVideoH265HrdParameters value) {
             MemorySegment s = segment.asSlice(index * StdVideoH265HrdParameters.BYTES, StdVideoH265HrdParameters.BYTES);
             s.copyFrom(value.segment);
@@ -280,6 +284,12 @@ public record StdVideoH265HrdParameters(@NotNull MemorySegment segment) implemen
         return new BytePtr(cpb_cnt_minus1Raw());
     }
 
+    public StdVideoH265HrdParameters cpb_cnt_minus1(@NotNull Consumer<BytePtr> consumer) {
+        @Unsigned BytePtr ptr = cpb_cnt_minus1();
+        consumer.accept(ptr);
+        return this;
+    }
+
     public StdVideoH265HrdParameters cpb_cnt_minus1(@Unsigned BytePtr value) {
         MemorySegment s = cpb_cnt_minus1Raw();
         s.copyFrom(value.segment());
@@ -292,6 +302,12 @@ public record StdVideoH265HrdParameters(@NotNull MemorySegment segment) implemen
 
     public @Unsigned ShortPtr elemental_duration_in_tc_minus1() {
         return new ShortPtr(elemental_duration_in_tc_minus1Raw());
+    }
+
+    public StdVideoH265HrdParameters elemental_duration_in_tc_minus1(@NotNull Consumer<ShortPtr> consumer) {
+        @Unsigned ShortPtr ptr = elemental_duration_in_tc_minus1();
+        consumer.accept(ptr);
+        return this;
     }
 
     public StdVideoH265HrdParameters elemental_duration_in_tc_minus1(@Unsigned ShortPtr value) {

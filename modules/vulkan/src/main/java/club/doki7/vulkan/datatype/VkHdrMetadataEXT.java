@@ -94,6 +94,10 @@ public record VkHdrMetadataEXT(@NotNull MemorySegment segment) implements IVkHdr
             return new VkHdrMetadataEXT(segment.asSlice(index * VkHdrMetadataEXT.BYTES, VkHdrMetadataEXT.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull VkHdrMetadataEXT> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull VkHdrMetadataEXT value) {
             MemorySegment s = segment.asSlice(index * VkHdrMetadataEXT.BYTES, VkHdrMetadataEXT.BYTES);
             s.copyFrom(value.segment);

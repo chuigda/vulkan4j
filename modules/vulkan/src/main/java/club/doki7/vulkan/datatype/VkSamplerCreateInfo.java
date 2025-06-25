@@ -102,6 +102,10 @@ public record VkSamplerCreateInfo(@NotNull MemorySegment segment) implements IVk
             return new VkSamplerCreateInfo(segment.asSlice(index * VkSamplerCreateInfo.BYTES, VkSamplerCreateInfo.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull VkSamplerCreateInfo> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull VkSamplerCreateInfo value) {
             MemorySegment s = segment.asSlice(index * VkSamplerCreateInfo.BYTES, VkSamplerCreateInfo.BYTES);
             s.copyFrom(value.segment);

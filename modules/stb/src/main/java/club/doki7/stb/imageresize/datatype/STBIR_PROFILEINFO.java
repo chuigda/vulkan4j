@@ -75,6 +75,10 @@ public record STBIR_PROFILEINFO(@NotNull MemorySegment segment) implements ISTBI
             return new STBIR_PROFILEINFO(segment.asSlice(index * STBIR_PROFILEINFO.BYTES, STBIR_PROFILEINFO.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull STBIR_PROFILEINFO> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull STBIR_PROFILEINFO value) {
             MemorySegment s = segment.asSlice(index * STBIR_PROFILEINFO.BYTES, STBIR_PROFILEINFO.BYTES);
             s.copyFrom(value.segment);
@@ -179,6 +183,12 @@ public record STBIR_PROFILEINFO(@NotNull MemorySegment segment) implements ISTBI
 
     public @Pointer(comment="stbir_uint64") LongPtr clocks() {
         return new LongPtr(clocksRaw());
+    }
+
+    public STBIR_PROFILEINFO clocks(@NotNull Consumer<LongPtr> consumer) {
+        @Pointer(comment="stbir_uint64") LongPtr ptr = clocks();
+        consumer.accept(ptr);
+        return this;
     }
 
     public STBIR_PROFILEINFO clocks(@Pointer(comment="stbir_uint64") LongPtr value) {

@@ -81,6 +81,10 @@ public record XrSpatialPolygon2DDataEXT(@NotNull MemorySegment segment) implemen
             return new XrSpatialPolygon2DDataEXT(segment.asSlice(index * XrSpatialPolygon2DDataEXT.BYTES, XrSpatialPolygon2DDataEXT.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull XrSpatialPolygon2DDataEXT> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull XrSpatialPolygon2DDataEXT value) {
             MemorySegment s = segment.asSlice(index * XrSpatialPolygon2DDataEXT.BYTES, XrSpatialPolygon2DDataEXT.BYTES);
             s.copyFrom(value.segment);

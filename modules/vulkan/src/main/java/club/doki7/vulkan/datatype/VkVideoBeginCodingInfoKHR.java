@@ -91,6 +91,10 @@ public record VkVideoBeginCodingInfoKHR(@NotNull MemorySegment segment) implemen
             return new VkVideoBeginCodingInfoKHR(segment.asSlice(index * VkVideoBeginCodingInfoKHR.BYTES, VkVideoBeginCodingInfoKHR.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull VkVideoBeginCodingInfoKHR> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull VkVideoBeginCodingInfoKHR value) {
             MemorySegment s = segment.asSlice(index * VkVideoBeginCodingInfoKHR.BYTES, VkVideoBeginCodingInfoKHR.BYTES);
             s.copyFrom(value.segment);

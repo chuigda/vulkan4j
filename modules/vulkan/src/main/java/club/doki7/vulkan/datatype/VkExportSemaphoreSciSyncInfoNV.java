@@ -87,6 +87,10 @@ public record VkExportSemaphoreSciSyncInfoNV(@NotNull MemorySegment segment) imp
             return new VkExportSemaphoreSciSyncInfoNV(segment.asSlice(index * VkExportSemaphoreSciSyncInfoNV.BYTES, VkExportSemaphoreSciSyncInfoNV.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull VkExportSemaphoreSciSyncInfoNV> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull VkExportSemaphoreSciSyncInfoNV value) {
             MemorySegment s = segment.asSlice(index * VkExportSemaphoreSciSyncInfoNV.BYTES, VkExportSemaphoreSciSyncInfoNV.BYTES);
             s.copyFrom(value.segment);

@@ -92,6 +92,10 @@ public record VkIndirectCommandsLayoutCreateInfoEXT(@NotNull MemorySegment segme
             return new VkIndirectCommandsLayoutCreateInfoEXT(segment.asSlice(index * VkIndirectCommandsLayoutCreateInfoEXT.BYTES, VkIndirectCommandsLayoutCreateInfoEXT.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull VkIndirectCommandsLayoutCreateInfoEXT> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull VkIndirectCommandsLayoutCreateInfoEXT value) {
             MemorySegment s = segment.asSlice(index * VkIndirectCommandsLayoutCreateInfoEXT.BYTES, VkIndirectCommandsLayoutCreateInfoEXT.BYTES);
             s.copyFrom(value.segment);

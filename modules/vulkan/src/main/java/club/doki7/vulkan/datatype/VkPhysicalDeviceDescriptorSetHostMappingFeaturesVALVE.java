@@ -87,6 +87,10 @@ public record VkPhysicalDeviceDescriptorSetHostMappingFeaturesVALVE(@NotNull Mem
             return new VkPhysicalDeviceDescriptorSetHostMappingFeaturesVALVE(segment.asSlice(index * VkPhysicalDeviceDescriptorSetHostMappingFeaturesVALVE.BYTES, VkPhysicalDeviceDescriptorSetHostMappingFeaturesVALVE.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceDescriptorSetHostMappingFeaturesVALVE> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull VkPhysicalDeviceDescriptorSetHostMappingFeaturesVALVE value) {
             MemorySegment s = segment.asSlice(index * VkPhysicalDeviceDescriptorSetHostMappingFeaturesVALVE.BYTES, VkPhysicalDeviceDescriptorSetHostMappingFeaturesVALVE.BYTES);
             s.copyFrom(value.segment);

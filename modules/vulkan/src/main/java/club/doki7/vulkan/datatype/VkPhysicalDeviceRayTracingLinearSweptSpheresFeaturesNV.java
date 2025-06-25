@@ -88,6 +88,10 @@ public record VkPhysicalDeviceRayTracingLinearSweptSpheresFeaturesNV(@NotNull Me
             return new VkPhysicalDeviceRayTracingLinearSweptSpheresFeaturesNV(segment.asSlice(index * VkPhysicalDeviceRayTracingLinearSweptSpheresFeaturesNV.BYTES, VkPhysicalDeviceRayTracingLinearSweptSpheresFeaturesNV.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceRayTracingLinearSweptSpheresFeaturesNV> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull VkPhysicalDeviceRayTracingLinearSweptSpheresFeaturesNV value) {
             MemorySegment s = segment.asSlice(index * VkPhysicalDeviceRayTracingLinearSweptSpheresFeaturesNV.BYTES, VkPhysicalDeviceRayTracingLinearSweptSpheresFeaturesNV.BYTES);
             s.copyFrom(value.segment);

@@ -93,6 +93,10 @@ public record XrActionSpaceCreateInfo(@NotNull MemorySegment segment) implements
             return new XrActionSpaceCreateInfo(segment.asSlice(index * XrActionSpaceCreateInfo.BYTES, XrActionSpaceCreateInfo.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull XrActionSpaceCreateInfo> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull XrActionSpaceCreateInfo value) {
             MemorySegment s = segment.asSlice(index * XrActionSpaceCreateInfo.BYTES, XrActionSpaceCreateInfo.BYTES);
             s.copyFrom(value.segment);

@@ -87,6 +87,10 @@ public record VkImageViewUsageCreateInfo(@NotNull MemorySegment segment) impleme
             return new VkImageViewUsageCreateInfo(segment.asSlice(index * VkImageViewUsageCreateInfo.BYTES, VkImageViewUsageCreateInfo.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull VkImageViewUsageCreateInfo> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull VkImageViewUsageCreateInfo value) {
             MemorySegment s = segment.asSlice(index * VkImageViewUsageCreateInfo.BYTES, VkImageViewUsageCreateInfo.BYTES);
             s.copyFrom(value.segment);

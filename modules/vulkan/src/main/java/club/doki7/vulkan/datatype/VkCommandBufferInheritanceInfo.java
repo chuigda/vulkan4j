@@ -92,6 +92,10 @@ public record VkCommandBufferInheritanceInfo(@NotNull MemorySegment segment) imp
             return new VkCommandBufferInheritanceInfo(segment.asSlice(index * VkCommandBufferInheritanceInfo.BYTES, VkCommandBufferInheritanceInfo.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull VkCommandBufferInheritanceInfo> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull VkCommandBufferInheritanceInfo value) {
             MemorySegment s = segment.asSlice(index * VkCommandBufferInheritanceInfo.BYTES, VkCommandBufferInheritanceInfo.BYTES);
             s.copyFrom(value.segment);

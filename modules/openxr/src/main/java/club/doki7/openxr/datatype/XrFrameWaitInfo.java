@@ -90,6 +90,10 @@ public record XrFrameWaitInfo(@NotNull MemorySegment segment) implements IXrFram
             return new XrFrameWaitInfo(segment.asSlice(index * XrFrameWaitInfo.BYTES, XrFrameWaitInfo.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull XrFrameWaitInfo> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull XrFrameWaitInfo value) {
             MemorySegment s = segment.asSlice(index * XrFrameWaitInfo.BYTES, XrFrameWaitInfo.BYTES);
             s.copyFrom(value.segment);

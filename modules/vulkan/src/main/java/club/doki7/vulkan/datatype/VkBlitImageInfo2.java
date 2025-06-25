@@ -93,6 +93,10 @@ public record VkBlitImageInfo2(@NotNull MemorySegment segment) implements IVkBli
             return new VkBlitImageInfo2(segment.asSlice(index * VkBlitImageInfo2.BYTES, VkBlitImageInfo2.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull VkBlitImageInfo2> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull VkBlitImageInfo2 value) {
             MemorySegment s = segment.asSlice(index * VkBlitImageInfo2.BYTES, VkBlitImageInfo2.BYTES);
             s.copyFrom(value.segment);

@@ -96,6 +96,10 @@ public record VkDebugUtilsMessengerCallbackDataEXT(@NotNull MemorySegment segmen
             return new VkDebugUtilsMessengerCallbackDataEXT(segment.asSlice(index * VkDebugUtilsMessengerCallbackDataEXT.BYTES, VkDebugUtilsMessengerCallbackDataEXT.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull VkDebugUtilsMessengerCallbackDataEXT> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull VkDebugUtilsMessengerCallbackDataEXT value) {
             MemorySegment s = segment.asSlice(index * VkDebugUtilsMessengerCallbackDataEXT.BYTES, VkDebugUtilsMessengerCallbackDataEXT.BYTES);
             s.copyFrom(value.segment);

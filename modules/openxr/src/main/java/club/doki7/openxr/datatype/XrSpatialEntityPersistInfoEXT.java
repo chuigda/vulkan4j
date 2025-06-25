@@ -92,6 +92,10 @@ public record XrSpatialEntityPersistInfoEXT(@NotNull MemorySegment segment) impl
             return new XrSpatialEntityPersistInfoEXT(segment.asSlice(index * XrSpatialEntityPersistInfoEXT.BYTES, XrSpatialEntityPersistInfoEXT.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull XrSpatialEntityPersistInfoEXT> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull XrSpatialEntityPersistInfoEXT value) {
             MemorySegment s = segment.asSlice(index * XrSpatialEntityPersistInfoEXT.BYTES, XrSpatialEntityPersistInfoEXT.BYTES);
             s.copyFrom(value.segment);

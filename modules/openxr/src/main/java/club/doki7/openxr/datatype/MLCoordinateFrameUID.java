@@ -80,6 +80,10 @@ public record MLCoordinateFrameUID(@NotNull MemorySegment segment) implements IM
             return new MLCoordinateFrameUID(segment.asSlice(index * MLCoordinateFrameUID.BYTES, MLCoordinateFrameUID.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull MLCoordinateFrameUID> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull MLCoordinateFrameUID value) {
             MemorySegment s = segment.asSlice(index * MLCoordinateFrameUID.BYTES, MLCoordinateFrameUID.BYTES);
             s.copyFrom(value.segment);
@@ -175,6 +179,12 @@ public record MLCoordinateFrameUID(@NotNull MemorySegment segment) implements IM
 
     public @Unsigned LongPtr data() {
         return new LongPtr(dataRaw());
+    }
+
+    public MLCoordinateFrameUID data(@NotNull Consumer<LongPtr> consumer) {
+        @Unsigned LongPtr ptr = data();
+        consumer.accept(ptr);
+        return this;
     }
 
     public MLCoordinateFrameUID data(@Unsigned LongPtr value) {

@@ -95,6 +95,10 @@ public record XrHandMeshMSFT(@NotNull MemorySegment segment) implements IXrHandM
             return new XrHandMeshMSFT(segment.asSlice(index * XrHandMeshMSFT.BYTES, XrHandMeshMSFT.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull XrHandMeshMSFT> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull XrHandMeshMSFT value) {
             MemorySegment s = segment.asSlice(index * XrHandMeshMSFT.BYTES, XrHandMeshMSFT.BYTES);
             s.copyFrom(value.segment);

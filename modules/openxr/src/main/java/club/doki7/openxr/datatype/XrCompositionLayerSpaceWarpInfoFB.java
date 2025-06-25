@@ -98,6 +98,10 @@ public record XrCompositionLayerSpaceWarpInfoFB(@NotNull MemorySegment segment) 
             return new XrCompositionLayerSpaceWarpInfoFB(segment.asSlice(index * XrCompositionLayerSpaceWarpInfoFB.BYTES, XrCompositionLayerSpaceWarpInfoFB.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull XrCompositionLayerSpaceWarpInfoFB> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull XrCompositionLayerSpaceWarpInfoFB value) {
             MemorySegment s = segment.asSlice(index * XrCompositionLayerSpaceWarpInfoFB.BYTES, XrCompositionLayerSpaceWarpInfoFB.BYTES);
             s.copyFrom(value.segment);

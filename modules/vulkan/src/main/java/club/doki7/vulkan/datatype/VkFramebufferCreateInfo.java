@@ -93,6 +93,10 @@ public record VkFramebufferCreateInfo(@NotNull MemorySegment segment) implements
             return new VkFramebufferCreateInfo(segment.asSlice(index * VkFramebufferCreateInfo.BYTES, VkFramebufferCreateInfo.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull VkFramebufferCreateInfo> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull VkFramebufferCreateInfo value) {
             MemorySegment s = segment.asSlice(index * VkFramebufferCreateInfo.BYTES, VkFramebufferCreateInfo.BYTES);
             s.copyFrom(value.segment);

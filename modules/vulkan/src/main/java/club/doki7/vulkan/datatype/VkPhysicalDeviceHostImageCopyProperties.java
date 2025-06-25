@@ -92,6 +92,10 @@ public record VkPhysicalDeviceHostImageCopyProperties(@NotNull MemorySegment seg
             return new VkPhysicalDeviceHostImageCopyProperties(segment.asSlice(index * VkPhysicalDeviceHostImageCopyProperties.BYTES, VkPhysicalDeviceHostImageCopyProperties.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceHostImageCopyProperties> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull VkPhysicalDeviceHostImageCopyProperties value) {
             MemorySegment s = segment.asSlice(index * VkPhysicalDeviceHostImageCopyProperties.BYTES, VkPhysicalDeviceHostImageCopyProperties.BYTES);
             s.copyFrom(value.segment);
@@ -292,6 +296,12 @@ public record VkPhysicalDeviceHostImageCopyProperties(@NotNull MemorySegment seg
 
     public @Unsigned BytePtr optimalTilingLayoutUUID() {
         return new BytePtr(optimalTilingLayoutUUIDRaw());
+    }
+
+    public VkPhysicalDeviceHostImageCopyProperties optimalTilingLayoutUUID(@NotNull Consumer<BytePtr> consumer) {
+        @Unsigned BytePtr ptr = optimalTilingLayoutUUID();
+        consumer.accept(ptr);
+        return this;
     }
 
     public VkPhysicalDeviceHostImageCopyProperties optimalTilingLayoutUUID(@Unsigned BytePtr value) {

@@ -92,6 +92,10 @@ public record XrCompositionLayerColorScaleBiasKHR(@NotNull MemorySegment segment
             return new XrCompositionLayerColorScaleBiasKHR(segment.asSlice(index * XrCompositionLayerColorScaleBiasKHR.BYTES, XrCompositionLayerColorScaleBiasKHR.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull XrCompositionLayerColorScaleBiasKHR> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull XrCompositionLayerColorScaleBiasKHR value) {
             MemorySegment s = segment.asSlice(index * XrCompositionLayerColorScaleBiasKHR.BYTES, XrCompositionLayerColorScaleBiasKHR.BYTES);
             s.copyFrom(value.segment);

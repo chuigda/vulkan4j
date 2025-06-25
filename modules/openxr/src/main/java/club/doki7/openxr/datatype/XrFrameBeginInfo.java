@@ -90,6 +90,10 @@ public record XrFrameBeginInfo(@NotNull MemorySegment segment) implements IXrFra
             return new XrFrameBeginInfo(segment.asSlice(index * XrFrameBeginInfo.BYTES, XrFrameBeginInfo.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull XrFrameBeginInfo> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull XrFrameBeginInfo value) {
             MemorySegment s = segment.asSlice(index * XrFrameBeginInfo.BYTES, XrFrameBeginInfo.BYTES);
             s.copyFrom(value.segment);

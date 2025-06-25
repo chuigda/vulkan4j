@@ -94,6 +94,10 @@ public record XrEnvironmentDepthImageMETA(@NotNull MemorySegment segment) implem
             return new XrEnvironmentDepthImageMETA(segment.asSlice(index * XrEnvironmentDepthImageMETA.BYTES, XrEnvironmentDepthImageMETA.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull XrEnvironmentDepthImageMETA> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull XrEnvironmentDepthImageMETA value) {
             MemorySegment s = segment.asSlice(index * XrEnvironmentDepthImageMETA.BYTES, XrEnvironmentDepthImageMETA.BYTES);
             s.copyFrom(value.segment);
@@ -249,6 +253,12 @@ public record XrEnvironmentDepthImageMETA(@NotNull MemorySegment segment) implem
 
     public XrEnvironmentDepthImageViewMETA.Ptr views() {
         return new XrEnvironmentDepthImageViewMETA.Ptr(viewsRaw());
+    }
+
+    public XrEnvironmentDepthImageMETA views(@NotNull Consumer<XrEnvironmentDepthImageViewMETA.Ptr> consumer) {
+        XrEnvironmentDepthImageViewMETA.Ptr ptr = views();
+        consumer.accept(ptr);
+        return this;
     }
 
     public XrEnvironmentDepthImageMETA views(XrEnvironmentDepthImageViewMETA.Ptr value) {

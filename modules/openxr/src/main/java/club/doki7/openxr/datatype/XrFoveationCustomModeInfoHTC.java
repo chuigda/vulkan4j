@@ -92,6 +92,10 @@ public record XrFoveationCustomModeInfoHTC(@NotNull MemorySegment segment) imple
             return new XrFoveationCustomModeInfoHTC(segment.asSlice(index * XrFoveationCustomModeInfoHTC.BYTES, XrFoveationCustomModeInfoHTC.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull XrFoveationCustomModeInfoHTC> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull XrFoveationCustomModeInfoHTC value) {
             MemorySegment s = segment.asSlice(index * XrFoveationCustomModeInfoHTC.BYTES, XrFoveationCustomModeInfoHTC.BYTES);
             s.copyFrom(value.segment);

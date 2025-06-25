@@ -79,6 +79,10 @@ public record VkLayerProperties(@NotNull MemorySegment segment) implements IVkLa
             return new VkLayerProperties(segment.asSlice(index * VkLayerProperties.BYTES, VkLayerProperties.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull VkLayerProperties> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull VkLayerProperties value) {
             MemorySegment s = segment.asSlice(index * VkLayerProperties.BYTES, VkLayerProperties.BYTES);
             s.copyFrom(value.segment);
@@ -176,6 +180,12 @@ public record VkLayerProperties(@NotNull MemorySegment segment) implements IVkLa
         return new BytePtr(layerNameRaw());
     }
 
+    public VkLayerProperties layerName(@NotNull Consumer<BytePtr> consumer) {
+        BytePtr ptr = layerName();
+        consumer.accept(ptr);
+        return this;
+    }
+
     public VkLayerProperties layerName(BytePtr value) {
         MemorySegment s = layerNameRaw();
         s.copyFrom(value.segment());
@@ -206,6 +216,12 @@ public record VkLayerProperties(@NotNull MemorySegment segment) implements IVkLa
 
     public BytePtr description() {
         return new BytePtr(descriptionRaw());
+    }
+
+    public VkLayerProperties description(@NotNull Consumer<BytePtr> consumer) {
+        BytePtr ptr = description();
+        consumer.accept(ptr);
+        return this;
     }
 
     public VkLayerProperties description(BytePtr value) {

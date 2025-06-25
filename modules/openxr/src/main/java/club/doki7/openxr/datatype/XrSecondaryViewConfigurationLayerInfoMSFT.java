@@ -94,6 +94,10 @@ public record XrSecondaryViewConfigurationLayerInfoMSFT(@NotNull MemorySegment s
             return new XrSecondaryViewConfigurationLayerInfoMSFT(segment.asSlice(index * XrSecondaryViewConfigurationLayerInfoMSFT.BYTES, XrSecondaryViewConfigurationLayerInfoMSFT.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull XrSecondaryViewConfigurationLayerInfoMSFT> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull XrSecondaryViewConfigurationLayerInfoMSFT value) {
             MemorySegment s = segment.asSlice(index * XrSecondaryViewConfigurationLayerInfoMSFT.BYTES, XrSecondaryViewConfigurationLayerInfoMSFT.BYTES);
             s.copyFrom(value.segment);

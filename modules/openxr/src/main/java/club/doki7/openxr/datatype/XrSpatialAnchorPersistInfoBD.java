@@ -92,6 +92,10 @@ public record XrSpatialAnchorPersistInfoBD(@NotNull MemorySegment segment) imple
             return new XrSpatialAnchorPersistInfoBD(segment.asSlice(index * XrSpatialAnchorPersistInfoBD.BYTES, XrSpatialAnchorPersistInfoBD.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull XrSpatialAnchorPersistInfoBD> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull XrSpatialAnchorPersistInfoBD value) {
             MemorySegment s = segment.asSlice(index * XrSpatialAnchorPersistInfoBD.BYTES, XrSpatialAnchorPersistInfoBD.BYTES);
             s.copyFrom(value.segment);

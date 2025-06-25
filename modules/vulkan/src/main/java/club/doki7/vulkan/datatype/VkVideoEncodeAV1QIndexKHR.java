@@ -78,6 +78,10 @@ public record VkVideoEncodeAV1QIndexKHR(@NotNull MemorySegment segment) implemen
             return new VkVideoEncodeAV1QIndexKHR(segment.asSlice(index * VkVideoEncodeAV1QIndexKHR.BYTES, VkVideoEncodeAV1QIndexKHR.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull VkVideoEncodeAV1QIndexKHR> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull VkVideoEncodeAV1QIndexKHR value) {
             MemorySegment s = segment.asSlice(index * VkVideoEncodeAV1QIndexKHR.BYTES, VkVideoEncodeAV1QIndexKHR.BYTES);
             s.copyFrom(value.segment);

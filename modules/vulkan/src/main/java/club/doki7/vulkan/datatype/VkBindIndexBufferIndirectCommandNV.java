@@ -78,6 +78,10 @@ public record VkBindIndexBufferIndirectCommandNV(@NotNull MemorySegment segment)
             return new VkBindIndexBufferIndirectCommandNV(segment.asSlice(index * VkBindIndexBufferIndirectCommandNV.BYTES, VkBindIndexBufferIndirectCommandNV.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull VkBindIndexBufferIndirectCommandNV> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull VkBindIndexBufferIndirectCommandNV value) {
             MemorySegment s = segment.asSlice(index * VkBindIndexBufferIndirectCommandNV.BYTES, VkBindIndexBufferIndirectCommandNV.BYTES);
             s.copyFrom(value.segment);

@@ -78,6 +78,10 @@ public record VkExternalMemoryProperties(@NotNull MemorySegment segment) impleme
             return new VkExternalMemoryProperties(segment.asSlice(index * VkExternalMemoryProperties.BYTES, VkExternalMemoryProperties.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull VkExternalMemoryProperties> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull VkExternalMemoryProperties value) {
             MemorySegment s = segment.asSlice(index * VkExternalMemoryProperties.BYTES, VkExternalMemoryProperties.BYTES);
             s.copyFrom(value.segment);

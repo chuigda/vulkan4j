@@ -89,6 +89,10 @@ public record VkPipelineViewportShadingRateImageStateCreateInfoNV(@NotNull Memor
             return new VkPipelineViewportShadingRateImageStateCreateInfoNV(segment.asSlice(index * VkPipelineViewportShadingRateImageStateCreateInfoNV.BYTES, VkPipelineViewportShadingRateImageStateCreateInfoNV.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull VkPipelineViewportShadingRateImageStateCreateInfoNV> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull VkPipelineViewportShadingRateImageStateCreateInfoNV value) {
             MemorySegment s = segment.asSlice(index * VkPipelineViewportShadingRateImageStateCreateInfoNV.BYTES, VkPipelineViewportShadingRateImageStateCreateInfoNV.BYTES);
             s.copyFrom(value.segment);

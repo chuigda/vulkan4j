@@ -92,6 +92,10 @@ public record XrLocalizationMapImportInfoML(@NotNull MemorySegment segment) impl
             return new XrLocalizationMapImportInfoML(segment.asSlice(index * XrLocalizationMapImportInfoML.BYTES, XrLocalizationMapImportInfoML.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull XrLocalizationMapImportInfoML> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull XrLocalizationMapImportInfoML value) {
             MemorySegment s = segment.asSlice(index * XrLocalizationMapImportInfoML.BYTES, XrLocalizationMapImportInfoML.BYTES);
             s.copyFrom(value.segment);

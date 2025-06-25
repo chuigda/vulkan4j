@@ -87,6 +87,10 @@ public record VkPhysicalDeviceNestedCommandBufferPropertiesEXT(@NotNull MemorySe
             return new VkPhysicalDeviceNestedCommandBufferPropertiesEXT(segment.asSlice(index * VkPhysicalDeviceNestedCommandBufferPropertiesEXT.BYTES, VkPhysicalDeviceNestedCommandBufferPropertiesEXT.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceNestedCommandBufferPropertiesEXT> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull VkPhysicalDeviceNestedCommandBufferPropertiesEXT value) {
             MemorySegment s = segment.asSlice(index * VkPhysicalDeviceNestedCommandBufferPropertiesEXT.BYTES, VkPhysicalDeviceNestedCommandBufferPropertiesEXT.BYTES);
             s.copyFrom(value.segment);

@@ -87,6 +87,10 @@ public record VkPipelineRepresentativeFragmentTestStateCreateInfoNV(@NotNull Mem
             return new VkPipelineRepresentativeFragmentTestStateCreateInfoNV(segment.asSlice(index * VkPipelineRepresentativeFragmentTestStateCreateInfoNV.BYTES, VkPipelineRepresentativeFragmentTestStateCreateInfoNV.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull VkPipelineRepresentativeFragmentTestStateCreateInfoNV> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull VkPipelineRepresentativeFragmentTestStateCreateInfoNV value) {
             MemorySegment s = segment.asSlice(index * VkPipelineRepresentativeFragmentTestStateCreateInfoNV.BYTES, VkPipelineRepresentativeFragmentTestStateCreateInfoNV.BYTES);
             s.copyFrom(value.segment);

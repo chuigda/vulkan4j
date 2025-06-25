@@ -94,6 +94,10 @@ public record VkWriteDescriptorSet(@NotNull MemorySegment segment) implements IV
             return new VkWriteDescriptorSet(segment.asSlice(index * VkWriteDescriptorSet.BYTES, VkWriteDescriptorSet.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull VkWriteDescriptorSet> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull VkWriteDescriptorSet value) {
             MemorySegment s = segment.asSlice(index * VkWriteDescriptorSet.BYTES, VkWriteDescriptorSet.BYTES);
             s.copyFrom(value.segment);

@@ -95,6 +95,10 @@ public record XrEventDataReferenceSpaceChangePending(@NotNull MemorySegment segm
             return new XrEventDataReferenceSpaceChangePending(segment.asSlice(index * XrEventDataReferenceSpaceChangePending.BYTES, XrEventDataReferenceSpaceChangePending.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull XrEventDataReferenceSpaceChangePending> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull XrEventDataReferenceSpaceChangePending value) {
             MemorySegment s = segment.asSlice(index * XrEventDataReferenceSpaceChangePending.BYTES, XrEventDataReferenceSpaceChangePending.BYTES);
             s.copyFrom(value.segment);

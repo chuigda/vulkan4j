@@ -109,6 +109,10 @@ public record StdVideoH265PictureParameterSet(@NotNull MemorySegment segment) im
             return new StdVideoH265PictureParameterSet(segment.asSlice(index * StdVideoH265PictureParameterSet.BYTES, StdVideoH265PictureParameterSet.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull StdVideoH265PictureParameterSet> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull StdVideoH265PictureParameterSet value) {
             MemorySegment s = segment.asSlice(index * StdVideoH265PictureParameterSet.BYTES, StdVideoH265PictureParameterSet.BYTES);
             s.copyFrom(value.segment);
@@ -364,6 +368,12 @@ public record StdVideoH265PictureParameterSet(@NotNull MemorySegment segment) im
         return new BytePtr(cb_qp_offset_listRaw());
     }
 
+    public StdVideoH265PictureParameterSet cb_qp_offset_list(@NotNull Consumer<BytePtr> consumer) {
+        BytePtr ptr = cb_qp_offset_list();
+        consumer.accept(ptr);
+        return this;
+    }
+
     public StdVideoH265PictureParameterSet cb_qp_offset_list(BytePtr value) {
         MemorySegment s = cb_qp_offset_listRaw();
         s.copyFrom(value.segment());
@@ -376,6 +386,12 @@ public record StdVideoH265PictureParameterSet(@NotNull MemorySegment segment) im
 
     public BytePtr cr_qp_offset_list() {
         return new BytePtr(cr_qp_offset_listRaw());
+    }
+
+    public StdVideoH265PictureParameterSet cr_qp_offset_list(@NotNull Consumer<BytePtr> consumer) {
+        BytePtr ptr = cr_qp_offset_list();
+        consumer.accept(ptr);
+        return this;
     }
 
     public StdVideoH265PictureParameterSet cr_qp_offset_list(BytePtr value) {
@@ -484,6 +500,12 @@ public record StdVideoH265PictureParameterSet(@NotNull MemorySegment segment) im
         return new ShortPtr(column_width_minus1Raw());
     }
 
+    public StdVideoH265PictureParameterSet column_width_minus1(@NotNull Consumer<ShortPtr> consumer) {
+        @Unsigned ShortPtr ptr = column_width_minus1();
+        consumer.accept(ptr);
+        return this;
+    }
+
     public StdVideoH265PictureParameterSet column_width_minus1(@Unsigned ShortPtr value) {
         MemorySegment s = column_width_minus1Raw();
         s.copyFrom(value.segment());
@@ -496,6 +518,12 @@ public record StdVideoH265PictureParameterSet(@NotNull MemorySegment segment) im
 
     public @Unsigned ShortPtr row_height_minus1() {
         return new ShortPtr(row_height_minus1Raw());
+    }
+
+    public StdVideoH265PictureParameterSet row_height_minus1(@NotNull Consumer<ShortPtr> consumer) {
+        @Unsigned ShortPtr ptr = row_height_minus1();
+        consumer.accept(ptr);
+        return this;
     }
 
     public StdVideoH265PictureParameterSet row_height_minus1(@Unsigned ShortPtr value) {

@@ -93,6 +93,10 @@ public record XrLocalizationMapML(@NotNull MemorySegment segment) implements IXr
             return new XrLocalizationMapML(segment.asSlice(index * XrLocalizationMapML.BYTES, XrLocalizationMapML.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull XrLocalizationMapML> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull XrLocalizationMapML value) {
             MemorySegment s = segment.asSlice(index * XrLocalizationMapML.BYTES, XrLocalizationMapML.BYTES);
             s.copyFrom(value.segment);
@@ -221,6 +225,12 @@ public record XrLocalizationMapML(@NotNull MemorySegment segment) implements IXr
 
     public BytePtr name() {
         return new BytePtr(nameRaw());
+    }
+
+    public XrLocalizationMapML name(@NotNull Consumer<BytePtr> consumer) {
+        BytePtr ptr = name();
+        consumer.accept(ptr);
+        return this;
     }
 
     public XrLocalizationMapML name(BytePtr value) {

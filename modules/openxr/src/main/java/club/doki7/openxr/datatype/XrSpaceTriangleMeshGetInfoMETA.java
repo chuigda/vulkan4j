@@ -90,6 +90,10 @@ public record XrSpaceTriangleMeshGetInfoMETA(@NotNull MemorySegment segment) imp
             return new XrSpaceTriangleMeshGetInfoMETA(segment.asSlice(index * XrSpaceTriangleMeshGetInfoMETA.BYTES, XrSpaceTriangleMeshGetInfoMETA.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull XrSpaceTriangleMeshGetInfoMETA> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull XrSpaceTriangleMeshGetInfoMETA value) {
             MemorySegment s = segment.asSlice(index * XrSpaceTriangleMeshGetInfoMETA.BYTES, XrSpaceTriangleMeshGetInfoMETA.BYTES);
             s.copyFrom(value.segment);

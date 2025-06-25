@@ -94,6 +94,10 @@ public record VkDeviceCreateInfo(@NotNull MemorySegment segment) implements IVkD
             return new VkDeviceCreateInfo(segment.asSlice(index * VkDeviceCreateInfo.BYTES, VkDeviceCreateInfo.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull VkDeviceCreateInfo> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull VkDeviceCreateInfo value) {
             MemorySegment s = segment.asSlice(index * VkDeviceCreateInfo.BYTES, VkDeviceCreateInfo.BYTES);
             s.copyFrom(value.segment);

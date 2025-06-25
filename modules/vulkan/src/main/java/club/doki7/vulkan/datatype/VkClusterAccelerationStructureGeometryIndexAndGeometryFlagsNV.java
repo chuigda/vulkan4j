@@ -79,6 +79,10 @@ public record VkClusterAccelerationStructureGeometryIndexAndGeometryFlagsNV(@Not
             return new VkClusterAccelerationStructureGeometryIndexAndGeometryFlagsNV(segment.asSlice(index * VkClusterAccelerationStructureGeometryIndexAndGeometryFlagsNV.BYTES, VkClusterAccelerationStructureGeometryIndexAndGeometryFlagsNV.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull VkClusterAccelerationStructureGeometryIndexAndGeometryFlagsNV> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull VkClusterAccelerationStructureGeometryIndexAndGeometryFlagsNV value) {
             MemorySegment s = segment.asSlice(index * VkClusterAccelerationStructureGeometryIndexAndGeometryFlagsNV.BYTES, VkClusterAccelerationStructureGeometryIndexAndGeometryFlagsNV.BYTES);
             s.copyFrom(value.segment);

@@ -78,6 +78,10 @@ public record StdVideoEncodeAV1OperatingPointInfoFlags(@NotNull MemorySegment se
             return new StdVideoEncodeAV1OperatingPointInfoFlags(segment.asSlice(index * StdVideoEncodeAV1OperatingPointInfoFlags.BYTES, StdVideoEncodeAV1OperatingPointInfoFlags.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull StdVideoEncodeAV1OperatingPointInfoFlags> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull StdVideoEncodeAV1OperatingPointInfoFlags value) {
             MemorySegment s = segment.asSlice(index * StdVideoEncodeAV1OperatingPointInfoFlags.BYTES, StdVideoEncodeAV1OperatingPointInfoFlags.BYTES);
             s.copyFrom(value.segment);

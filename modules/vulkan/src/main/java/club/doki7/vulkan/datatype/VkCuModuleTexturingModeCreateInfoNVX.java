@@ -87,6 +87,10 @@ public record VkCuModuleTexturingModeCreateInfoNVX(@NotNull MemorySegment segmen
             return new VkCuModuleTexturingModeCreateInfoNVX(segment.asSlice(index * VkCuModuleTexturingModeCreateInfoNVX.BYTES, VkCuModuleTexturingModeCreateInfoNVX.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull VkCuModuleTexturingModeCreateInfoNVX> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull VkCuModuleTexturingModeCreateInfoNVX value) {
             MemorySegment s = segment.asSlice(index * VkCuModuleTexturingModeCreateInfoNVX.BYTES, VkCuModuleTexturingModeCreateInfoNVX.BYTES);
             s.copyFrom(value.segment);

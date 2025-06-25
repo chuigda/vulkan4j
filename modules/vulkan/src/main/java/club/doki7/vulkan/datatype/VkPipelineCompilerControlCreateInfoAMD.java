@@ -87,6 +87,10 @@ public record VkPipelineCompilerControlCreateInfoAMD(@NotNull MemorySegment segm
             return new VkPipelineCompilerControlCreateInfoAMD(segment.asSlice(index * VkPipelineCompilerControlCreateInfoAMD.BYTES, VkPipelineCompilerControlCreateInfoAMD.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull VkPipelineCompilerControlCreateInfoAMD> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull VkPipelineCompilerControlCreateInfoAMD value) {
             MemorySegment s = segment.asSlice(index * VkPipelineCompilerControlCreateInfoAMD.BYTES, VkPipelineCompilerControlCreateInfoAMD.BYTES);
             s.copyFrom(value.segment);

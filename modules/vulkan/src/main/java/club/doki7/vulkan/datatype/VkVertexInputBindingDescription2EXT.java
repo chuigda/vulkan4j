@@ -90,6 +90,10 @@ public record VkVertexInputBindingDescription2EXT(@NotNull MemorySegment segment
             return new VkVertexInputBindingDescription2EXT(segment.asSlice(index * VkVertexInputBindingDescription2EXT.BYTES, VkVertexInputBindingDescription2EXT.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull VkVertexInputBindingDescription2EXT> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull VkVertexInputBindingDescription2EXT value) {
             MemorySegment s = segment.asSlice(index * VkVertexInputBindingDescription2EXT.BYTES, VkVertexInputBindingDescription2EXT.BYTES);
             s.copyFrom(value.segment);

@@ -77,6 +77,10 @@ public record VkBaseOutStructure(@NotNull MemorySegment segment) implements IVkB
             return new VkBaseOutStructure(segment.asSlice(index * VkBaseOutStructure.BYTES, VkBaseOutStructure.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull VkBaseOutStructure> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull VkBaseOutStructure value) {
             MemorySegment s = segment.asSlice(index * VkBaseOutStructure.BYTES, VkBaseOutStructure.BYTES);
             s.copyFrom(value.segment);

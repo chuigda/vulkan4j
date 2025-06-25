@@ -77,6 +77,10 @@ public record VkMemoryType(@NotNull MemorySegment segment) implements IVkMemoryT
             return new VkMemoryType(segment.asSlice(index * VkMemoryType.BYTES, VkMemoryType.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull VkMemoryType> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull VkMemoryType value) {
             MemorySegment s = segment.asSlice(index * VkMemoryType.BYTES, VkMemoryType.BYTES);
             s.copyFrom(value.segment);

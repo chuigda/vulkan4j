@@ -92,6 +92,10 @@ public record VkVideoEncodeH264RateControlLayerInfoKHR(@NotNull MemorySegment se
             return new VkVideoEncodeH264RateControlLayerInfoKHR(segment.asSlice(index * VkVideoEncodeH264RateControlLayerInfoKHR.BYTES, VkVideoEncodeH264RateControlLayerInfoKHR.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull VkVideoEncodeH264RateControlLayerInfoKHR> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull VkVideoEncodeH264RateControlLayerInfoKHR value) {
             MemorySegment s = segment.asSlice(index * VkVideoEncodeH264RateControlLayerInfoKHR.BYTES, VkVideoEncodeH264RateControlLayerInfoKHR.BYTES);
             s.copyFrom(value.segment);

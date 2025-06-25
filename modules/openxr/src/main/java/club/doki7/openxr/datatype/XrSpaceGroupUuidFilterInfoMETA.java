@@ -91,6 +91,10 @@ public record XrSpaceGroupUuidFilterInfoMETA(@NotNull MemorySegment segment) imp
             return new XrSpaceGroupUuidFilterInfoMETA(segment.asSlice(index * XrSpaceGroupUuidFilterInfoMETA.BYTES, XrSpaceGroupUuidFilterInfoMETA.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull XrSpaceGroupUuidFilterInfoMETA> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull XrSpaceGroupUuidFilterInfoMETA value) {
             MemorySegment s = segment.asSlice(index * XrSpaceGroupUuidFilterInfoMETA.BYTES, XrSpaceGroupUuidFilterInfoMETA.BYTES);
             s.copyFrom(value.segment);

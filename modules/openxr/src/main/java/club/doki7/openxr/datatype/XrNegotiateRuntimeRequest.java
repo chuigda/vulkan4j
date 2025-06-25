@@ -85,6 +85,10 @@ public record XrNegotiateRuntimeRequest(@NotNull MemorySegment segment) implemen
             return new XrNegotiateRuntimeRequest(segment.asSlice(index * XrNegotiateRuntimeRequest.BYTES, XrNegotiateRuntimeRequest.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull XrNegotiateRuntimeRequest> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull XrNegotiateRuntimeRequest value) {
             MemorySegment s = segment.asSlice(index * XrNegotiateRuntimeRequest.BYTES, XrNegotiateRuntimeRequest.BYTES);
             s.copyFrom(value.segment);

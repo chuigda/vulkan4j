@@ -98,6 +98,10 @@ public record VkPhysicalDeviceShaderAtomicFloatFeaturesEXT(@NotNull MemorySegmen
             return new VkPhysicalDeviceShaderAtomicFloatFeaturesEXT(segment.asSlice(index * VkPhysicalDeviceShaderAtomicFloatFeaturesEXT.BYTES, VkPhysicalDeviceShaderAtomicFloatFeaturesEXT.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceShaderAtomicFloatFeaturesEXT> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull VkPhysicalDeviceShaderAtomicFloatFeaturesEXT value) {
             MemorySegment s = segment.asSlice(index * VkPhysicalDeviceShaderAtomicFloatFeaturesEXT.BYTES, VkPhysicalDeviceShaderAtomicFloatFeaturesEXT.BYTES);
             s.copyFrom(value.segment);

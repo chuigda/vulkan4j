@@ -80,6 +80,10 @@ public record VkDecompressMemoryRegionNV(@NotNull MemorySegment segment) impleme
             return new VkDecompressMemoryRegionNV(segment.asSlice(index * VkDecompressMemoryRegionNV.BYTES, VkDecompressMemoryRegionNV.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull VkDecompressMemoryRegionNV> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull VkDecompressMemoryRegionNV value) {
             MemorySegment s = segment.asSlice(index * VkDecompressMemoryRegionNV.BYTES, VkDecompressMemoryRegionNV.BYTES);
             s.copyFrom(value.segment);

@@ -88,6 +88,10 @@ public record VkRenderingFragmentDensityMapAttachmentInfoEXT(@NotNull MemorySegm
             return new VkRenderingFragmentDensityMapAttachmentInfoEXT(segment.asSlice(index * VkRenderingFragmentDensityMapAttachmentInfoEXT.BYTES, VkRenderingFragmentDensityMapAttachmentInfoEXT.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull VkRenderingFragmentDensityMapAttachmentInfoEXT> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull VkRenderingFragmentDensityMapAttachmentInfoEXT value) {
             MemorySegment s = segment.asSlice(index * VkRenderingFragmentDensityMapAttachmentInfoEXT.BYTES, VkRenderingFragmentDensityMapAttachmentInfoEXT.BYTES);
             s.copyFrom(value.segment);

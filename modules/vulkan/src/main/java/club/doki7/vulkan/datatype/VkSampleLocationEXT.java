@@ -77,6 +77,10 @@ public record VkSampleLocationEXT(@NotNull MemorySegment segment) implements IVk
             return new VkSampleLocationEXT(segment.asSlice(index * VkSampleLocationEXT.BYTES, VkSampleLocationEXT.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull VkSampleLocationEXT> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull VkSampleLocationEXT value) {
             MemorySegment s = segment.asSlice(index * VkSampleLocationEXT.BYTES, VkSampleLocationEXT.BYTES);
             s.copyFrom(value.segment);

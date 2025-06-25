@@ -92,6 +92,10 @@ public record XrEnvironmentDepthSwapchainStateMETA(@NotNull MemorySegment segmen
             return new XrEnvironmentDepthSwapchainStateMETA(segment.asSlice(index * XrEnvironmentDepthSwapchainStateMETA.BYTES, XrEnvironmentDepthSwapchainStateMETA.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull XrEnvironmentDepthSwapchainStateMETA> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull XrEnvironmentDepthSwapchainStateMETA value) {
             MemorySegment s = segment.asSlice(index * XrEnvironmentDepthSwapchainStateMETA.BYTES, XrEnvironmentDepthSwapchainStateMETA.BYTES);
             s.copyFrom(value.segment);

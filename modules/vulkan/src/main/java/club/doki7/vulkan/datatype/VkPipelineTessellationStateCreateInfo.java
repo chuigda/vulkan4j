@@ -88,6 +88,10 @@ public record VkPipelineTessellationStateCreateInfo(@NotNull MemorySegment segme
             return new VkPipelineTessellationStateCreateInfo(segment.asSlice(index * VkPipelineTessellationStateCreateInfo.BYTES, VkPipelineTessellationStateCreateInfo.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull VkPipelineTessellationStateCreateInfo> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull VkPipelineTessellationStateCreateInfo value) {
             MemorySegment s = segment.asSlice(index * VkPipelineTessellationStateCreateInfo.BYTES, VkPipelineTessellationStateCreateInfo.BYTES);
             s.copyFrom(value.segment);

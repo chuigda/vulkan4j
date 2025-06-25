@@ -87,6 +87,10 @@ public record VkImportMetalSharedEventInfoEXT(@NotNull MemorySegment segment) im
             return new VkImportMetalSharedEventInfoEXT(segment.asSlice(index * VkImportMetalSharedEventInfoEXT.BYTES, VkImportMetalSharedEventInfoEXT.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull VkImportMetalSharedEventInfoEXT> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull VkImportMetalSharedEventInfoEXT value) {
             MemorySegment s = segment.asSlice(index * VkImportMetalSharedEventInfoEXT.BYTES, VkImportMetalSharedEventInfoEXT.BYTES);
             s.copyFrom(value.segment);

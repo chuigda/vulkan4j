@@ -77,6 +77,10 @@ public record VkExtent2D(@NotNull MemorySegment segment) implements IVkExtent2D 
             return new VkExtent2D(segment.asSlice(index * VkExtent2D.BYTES, VkExtent2D.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull VkExtent2D> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull VkExtent2D value) {
             MemorySegment s = segment.asSlice(index * VkExtent2D.BYTES, VkExtent2D.BYTES);
             s.copyFrom(value.segment);

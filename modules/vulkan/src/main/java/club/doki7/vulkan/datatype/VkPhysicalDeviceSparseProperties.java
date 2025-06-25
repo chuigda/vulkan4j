@@ -80,6 +80,10 @@ public record VkPhysicalDeviceSparseProperties(@NotNull MemorySegment segment) i
             return new VkPhysicalDeviceSparseProperties(segment.asSlice(index * VkPhysicalDeviceSparseProperties.BYTES, VkPhysicalDeviceSparseProperties.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceSparseProperties> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull VkPhysicalDeviceSparseProperties value) {
             MemorySegment s = segment.asSlice(index * VkPhysicalDeviceSparseProperties.BYTES, VkPhysicalDeviceSparseProperties.BYTES);
             s.copyFrom(value.segment);

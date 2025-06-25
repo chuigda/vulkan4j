@@ -87,6 +87,10 @@ public record VkPhysicalDeviceShaderDemoteToHelperInvocationFeatures(@NotNull Me
             return new VkPhysicalDeviceShaderDemoteToHelperInvocationFeatures(segment.asSlice(index * VkPhysicalDeviceShaderDemoteToHelperInvocationFeatures.BYTES, VkPhysicalDeviceShaderDemoteToHelperInvocationFeatures.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceShaderDemoteToHelperInvocationFeatures> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull VkPhysicalDeviceShaderDemoteToHelperInvocationFeatures value) {
             MemorySegment s = segment.asSlice(index * VkPhysicalDeviceShaderDemoteToHelperInvocationFeatures.BYTES, VkPhysicalDeviceShaderDemoteToHelperInvocationFeatures.BYTES);
             s.copyFrom(value.segment);

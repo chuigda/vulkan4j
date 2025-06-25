@@ -87,6 +87,10 @@ public record VkPhysicalDeviceMaintenance8FeaturesKHR(@NotNull MemorySegment seg
             return new VkPhysicalDeviceMaintenance8FeaturesKHR(segment.asSlice(index * VkPhysicalDeviceMaintenance8FeaturesKHR.BYTES, VkPhysicalDeviceMaintenance8FeaturesKHR.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceMaintenance8FeaturesKHR> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull VkPhysicalDeviceMaintenance8FeaturesKHR value) {
             MemorySegment s = segment.asSlice(index * VkPhysicalDeviceMaintenance8FeaturesKHR.BYTES, VkPhysicalDeviceMaintenance8FeaturesKHR.BYTES);
             s.copyFrom(value.segment);

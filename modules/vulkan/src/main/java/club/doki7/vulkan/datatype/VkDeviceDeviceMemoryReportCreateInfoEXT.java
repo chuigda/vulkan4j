@@ -89,6 +89,10 @@ public record VkDeviceDeviceMemoryReportCreateInfoEXT(@NotNull MemorySegment seg
             return new VkDeviceDeviceMemoryReportCreateInfoEXT(segment.asSlice(index * VkDeviceDeviceMemoryReportCreateInfoEXT.BYTES, VkDeviceDeviceMemoryReportCreateInfoEXT.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull VkDeviceDeviceMemoryReportCreateInfoEXT> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull VkDeviceDeviceMemoryReportCreateInfoEXT value) {
             MemorySegment s = segment.asSlice(index * VkDeviceDeviceMemoryReportCreateInfoEXT.BYTES, VkDeviceDeviceMemoryReportCreateInfoEXT.BYTES);
             s.copyFrom(value.segment);

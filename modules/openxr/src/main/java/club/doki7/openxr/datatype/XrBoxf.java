@@ -81,6 +81,10 @@ public record XrBoxf(@NotNull MemorySegment segment) implements IXrBoxf {
             return new XrBoxf(segment.asSlice(index * XrBoxf.BYTES, XrBoxf.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull XrBoxf> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull XrBoxf value) {
             MemorySegment s = segment.asSlice(index * XrBoxf.BYTES, XrBoxf.BYTES);
             s.copyFrom(value.segment);

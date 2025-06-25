@@ -91,6 +91,10 @@ public record XrSystemEyeTrackingPropertiesFB(@NotNull MemorySegment segment) im
             return new XrSystemEyeTrackingPropertiesFB(segment.asSlice(index * XrSystemEyeTrackingPropertiesFB.BYTES, XrSystemEyeTrackingPropertiesFB.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull XrSystemEyeTrackingPropertiesFB> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull XrSystemEyeTrackingPropertiesFB value) {
             MemorySegment s = segment.asSlice(index * XrSystemEyeTrackingPropertiesFB.BYTES, XrSystemEyeTrackingPropertiesFB.BYTES);
             s.copyFrom(value.segment);

@@ -74,6 +74,10 @@ public record NvSciSyncFenceVKREF(@NotNull MemorySegment segment) implements INv
             return new NvSciSyncFenceVKREF(segment.asSlice(index * NvSciSyncFenceVKREF.BYTES, NvSciSyncFenceVKREF.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull NvSciSyncFenceVKREF> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull NvSciSyncFenceVKREF value) {
             MemorySegment s = segment.asSlice(index * NvSciSyncFenceVKREF.BYTES, NvSciSyncFenceVKREF.BYTES);
             s.copyFrom(value.segment);
@@ -169,6 +173,12 @@ public record NvSciSyncFenceVKREF(@NotNull MemorySegment segment) implements INv
 
     public @Unsigned LongPtr payload() {
         return new LongPtr(payloadRaw());
+    }
+
+    public NvSciSyncFenceVKREF payload(@NotNull Consumer<LongPtr> consumer) {
+        @Unsigned LongPtr ptr = payload();
+        consumer.accept(ptr);
+        return this;
     }
 
     public NvSciSyncFenceVKREF payload(@Unsigned LongPtr value) {

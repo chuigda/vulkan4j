@@ -94,6 +94,10 @@ public record XrVirtualKeyboardLocationInfoMETA(@NotNull MemorySegment segment) 
             return new XrVirtualKeyboardLocationInfoMETA(segment.asSlice(index * XrVirtualKeyboardLocationInfoMETA.BYTES, XrVirtualKeyboardLocationInfoMETA.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull XrVirtualKeyboardLocationInfoMETA> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull XrVirtualKeyboardLocationInfoMETA value) {
             MemorySegment s = segment.asSlice(index * XrVirtualKeyboardLocationInfoMETA.BYTES, XrVirtualKeyboardLocationInfoMETA.BYTES);
             s.copyFrom(value.segment);

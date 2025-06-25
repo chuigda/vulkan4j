@@ -91,6 +91,10 @@ public record VkPipelineExecutableInternalRepresentationKHR(@NotNull MemorySegme
             return new VkPipelineExecutableInternalRepresentationKHR(segment.asSlice(index * VkPipelineExecutableInternalRepresentationKHR.BYTES, VkPipelineExecutableInternalRepresentationKHR.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull VkPipelineExecutableInternalRepresentationKHR> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull VkPipelineExecutableInternalRepresentationKHR value) {
             MemorySegment s = segment.asSlice(index * VkPipelineExecutableInternalRepresentationKHR.BYTES, VkPipelineExecutableInternalRepresentationKHR.BYTES);
             s.copyFrom(value.segment);
@@ -221,6 +225,12 @@ public record VkPipelineExecutableInternalRepresentationKHR(@NotNull MemorySegme
         return new BytePtr(nameRaw());
     }
 
+    public VkPipelineExecutableInternalRepresentationKHR name(@NotNull Consumer<BytePtr> consumer) {
+        BytePtr ptr = name();
+        consumer.accept(ptr);
+        return this;
+    }
+
     public VkPipelineExecutableInternalRepresentationKHR name(BytePtr value) {
         MemorySegment s = nameRaw();
         s.copyFrom(value.segment());
@@ -233,6 +243,12 @@ public record VkPipelineExecutableInternalRepresentationKHR(@NotNull MemorySegme
 
     public BytePtr description() {
         return new BytePtr(descriptionRaw());
+    }
+
+    public VkPipelineExecutableInternalRepresentationKHR description(@NotNull Consumer<BytePtr> consumer) {
+        BytePtr ptr = description();
+        consumer.accept(ptr);
+        return this;
     }
 
     public VkPipelineExecutableInternalRepresentationKHR description(BytePtr value) {

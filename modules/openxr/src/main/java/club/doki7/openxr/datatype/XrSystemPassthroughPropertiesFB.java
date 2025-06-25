@@ -91,6 +91,10 @@ public record XrSystemPassthroughPropertiesFB(@NotNull MemorySegment segment) im
             return new XrSystemPassthroughPropertiesFB(segment.asSlice(index * XrSystemPassthroughPropertiesFB.BYTES, XrSystemPassthroughPropertiesFB.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull XrSystemPassthroughPropertiesFB> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull XrSystemPassthroughPropertiesFB value) {
             MemorySegment s = segment.asSlice(index * XrSystemPassthroughPropertiesFB.BYTES, XrSystemPassthroughPropertiesFB.BYTES);
             s.copyFrom(value.segment);

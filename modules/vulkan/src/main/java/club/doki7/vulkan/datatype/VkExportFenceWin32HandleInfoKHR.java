@@ -89,6 +89,10 @@ public record VkExportFenceWin32HandleInfoKHR(@NotNull MemorySegment segment) im
             return new VkExportFenceWin32HandleInfoKHR(segment.asSlice(index * VkExportFenceWin32HandleInfoKHR.BYTES, VkExportFenceWin32HandleInfoKHR.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull VkExportFenceWin32HandleInfoKHR> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull VkExportFenceWin32HandleInfoKHR value) {
             MemorySegment s = segment.asSlice(index * VkExportFenceWin32HandleInfoKHR.BYTES, VkExportFenceWin32HandleInfoKHR.BYTES);
             s.copyFrom(value.segment);

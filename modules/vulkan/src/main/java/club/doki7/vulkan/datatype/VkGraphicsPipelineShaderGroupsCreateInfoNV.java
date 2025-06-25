@@ -90,6 +90,10 @@ public record VkGraphicsPipelineShaderGroupsCreateInfoNV(@NotNull MemorySegment 
             return new VkGraphicsPipelineShaderGroupsCreateInfoNV(segment.asSlice(index * VkGraphicsPipelineShaderGroupsCreateInfoNV.BYTES, VkGraphicsPipelineShaderGroupsCreateInfoNV.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull VkGraphicsPipelineShaderGroupsCreateInfoNV> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull VkGraphicsPipelineShaderGroupsCreateInfoNV value) {
             MemorySegment s = segment.asSlice(index * VkGraphicsPipelineShaderGroupsCreateInfoNV.BYTES, VkGraphicsPipelineShaderGroupsCreateInfoNV.BYTES);
             s.copyFrom(value.segment);

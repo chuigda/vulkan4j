@@ -87,6 +87,10 @@ public record VkReleaseCapturedPipelineDataInfoKHR(@NotNull MemorySegment segmen
             return new VkReleaseCapturedPipelineDataInfoKHR(segment.asSlice(index * VkReleaseCapturedPipelineDataInfoKHR.BYTES, VkReleaseCapturedPipelineDataInfoKHR.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull VkReleaseCapturedPipelineDataInfoKHR> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull VkReleaseCapturedPipelineDataInfoKHR value) {
             MemorySegment s = segment.asSlice(index * VkReleaseCapturedPipelineDataInfoKHR.BYTES, VkReleaseCapturedPipelineDataInfoKHR.BYTES);
             s.copyFrom(value.segment);

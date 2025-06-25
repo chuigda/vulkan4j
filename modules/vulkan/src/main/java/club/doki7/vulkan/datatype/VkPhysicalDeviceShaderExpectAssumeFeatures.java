@@ -87,6 +87,10 @@ public record VkPhysicalDeviceShaderExpectAssumeFeatures(@NotNull MemorySegment 
             return new VkPhysicalDeviceShaderExpectAssumeFeatures(segment.asSlice(index * VkPhysicalDeviceShaderExpectAssumeFeatures.BYTES, VkPhysicalDeviceShaderExpectAssumeFeatures.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceShaderExpectAssumeFeatures> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull VkPhysicalDeviceShaderExpectAssumeFeatures value) {
             MemorySegment s = segment.asSlice(index * VkPhysicalDeviceShaderExpectAssumeFeatures.BYTES, VkPhysicalDeviceShaderExpectAssumeFeatures.BYTES);
             s.copyFrom(value.segment);

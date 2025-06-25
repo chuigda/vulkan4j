@@ -98,6 +98,10 @@ public record VmaAllocationInfo2(@NotNull MemorySegment segment) implements IVma
             return new VmaAllocationInfo2(segment.asSlice(index * VmaAllocationInfo2.BYTES, VmaAllocationInfo2.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull VmaAllocationInfo2> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull VmaAllocationInfo2 value) {
             MemorySegment s = segment.asSlice(index * VmaAllocationInfo2.BYTES, VmaAllocationInfo2.BYTES);
             s.copyFrom(value.segment);

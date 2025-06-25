@@ -89,6 +89,10 @@ public record VkPipelineViewportCoarseSampleOrderStateCreateInfoNV(@NotNull Memo
             return new VkPipelineViewportCoarseSampleOrderStateCreateInfoNV(segment.asSlice(index * VkPipelineViewportCoarseSampleOrderStateCreateInfoNV.BYTES, VkPipelineViewportCoarseSampleOrderStateCreateInfoNV.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull VkPipelineViewportCoarseSampleOrderStateCreateInfoNV> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull VkPipelineViewportCoarseSampleOrderStateCreateInfoNV value) {
             MemorySegment s = segment.asSlice(index * VkPipelineViewportCoarseSampleOrderStateCreateInfoNV.BYTES, VkPipelineViewportCoarseSampleOrderStateCreateInfoNV.BYTES);
             s.copyFrom(value.segment);

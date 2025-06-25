@@ -96,6 +96,10 @@ public record XrViewConfigurationView(@NotNull MemorySegment segment) implements
             return new XrViewConfigurationView(segment.asSlice(index * XrViewConfigurationView.BYTES, XrViewConfigurationView.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull XrViewConfigurationView> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull XrViewConfigurationView value) {
             MemorySegment s = segment.asSlice(index * XrViewConfigurationView.BYTES, XrViewConfigurationView.BYTES);
             s.copyFrom(value.segment);

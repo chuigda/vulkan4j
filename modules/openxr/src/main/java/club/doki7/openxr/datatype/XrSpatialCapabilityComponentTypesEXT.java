@@ -93,6 +93,10 @@ public record XrSpatialCapabilityComponentTypesEXT(@NotNull MemorySegment segmen
             return new XrSpatialCapabilityComponentTypesEXT(segment.asSlice(index * XrSpatialCapabilityComponentTypesEXT.BYTES, XrSpatialCapabilityComponentTypesEXT.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull XrSpatialCapabilityComponentTypesEXT> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull XrSpatialCapabilityComponentTypesEXT value) {
             MemorySegment s = segment.asSlice(index * XrSpatialCapabilityComponentTypesEXT.BYTES, XrSpatialCapabilityComponentTypesEXT.BYTES);
             s.copyFrom(value.segment);

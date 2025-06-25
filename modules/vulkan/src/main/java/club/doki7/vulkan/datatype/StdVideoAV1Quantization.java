@@ -83,6 +83,10 @@ public record StdVideoAV1Quantization(@NotNull MemorySegment segment) implements
             return new StdVideoAV1Quantization(segment.asSlice(index * StdVideoAV1Quantization.BYTES, StdVideoAV1Quantization.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull StdVideoAV1Quantization> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull StdVideoAV1Quantization value) {
             MemorySegment s = segment.asSlice(index * StdVideoAV1Quantization.BYTES, StdVideoAV1Quantization.BYTES);
             s.copyFrom(value.segment);

@@ -94,6 +94,10 @@ public record VkVideoDecodeInfoKHR(@NotNull MemorySegment segment) implements IV
             return new VkVideoDecodeInfoKHR(segment.asSlice(index * VkVideoDecodeInfoKHR.BYTES, VkVideoDecodeInfoKHR.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull VkVideoDecodeInfoKHR> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull VkVideoDecodeInfoKHR value) {
             MemorySegment s = segment.asSlice(index * VkVideoDecodeInfoKHR.BYTES, VkVideoDecodeInfoKHR.BYTES);
             s.copyFrom(value.segment);

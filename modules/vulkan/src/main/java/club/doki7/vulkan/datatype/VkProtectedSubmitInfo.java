@@ -87,6 +87,10 @@ public record VkProtectedSubmitInfo(@NotNull MemorySegment segment) implements I
             return new VkProtectedSubmitInfo(segment.asSlice(index * VkProtectedSubmitInfo.BYTES, VkProtectedSubmitInfo.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull VkProtectedSubmitInfo> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull VkProtectedSubmitInfo value) {
             MemorySegment s = segment.asSlice(index * VkProtectedSubmitInfo.BYTES, VkProtectedSubmitInfo.BYTES);
             s.copyFrom(value.segment);

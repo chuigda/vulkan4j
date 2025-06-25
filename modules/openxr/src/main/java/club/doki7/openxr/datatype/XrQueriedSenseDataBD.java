@@ -93,6 +93,10 @@ public record XrQueriedSenseDataBD(@NotNull MemorySegment segment) implements IX
             return new XrQueriedSenseDataBD(segment.asSlice(index * XrQueriedSenseDataBD.BYTES, XrQueriedSenseDataBD.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull XrQueriedSenseDataBD> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull XrQueriedSenseDataBD value) {
             MemorySegment s = segment.asSlice(index * XrQueriedSenseDataBD.BYTES, XrQueriedSenseDataBD.BYTES);
             s.copyFrom(value.segment);

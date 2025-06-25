@@ -88,6 +88,10 @@ public record VkSubpassShadingPipelineCreateInfoHUAWEI(@NotNull MemorySegment se
             return new VkSubpassShadingPipelineCreateInfoHUAWEI(segment.asSlice(index * VkSubpassShadingPipelineCreateInfoHUAWEI.BYTES, VkSubpassShadingPipelineCreateInfoHUAWEI.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull VkSubpassShadingPipelineCreateInfoHUAWEI> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull VkSubpassShadingPipelineCreateInfoHUAWEI value) {
             MemorySegment s = segment.asSlice(index * VkSubpassShadingPipelineCreateInfoHUAWEI.BYTES, VkSubpassShadingPipelineCreateInfoHUAWEI.BYTES);
             s.copyFrom(value.segment);

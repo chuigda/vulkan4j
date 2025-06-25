@@ -92,6 +92,10 @@ public record XrSpaceComponentStatusFB(@NotNull MemorySegment segment) implement
             return new XrSpaceComponentStatusFB(segment.asSlice(index * XrSpaceComponentStatusFB.BYTES, XrSpaceComponentStatusFB.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull XrSpaceComponentStatusFB> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull XrSpaceComponentStatusFB value) {
             MemorySegment s = segment.asSlice(index * XrSpaceComponentStatusFB.BYTES, XrSpaceComponentStatusFB.BYTES);
             s.copyFrom(value.segment);

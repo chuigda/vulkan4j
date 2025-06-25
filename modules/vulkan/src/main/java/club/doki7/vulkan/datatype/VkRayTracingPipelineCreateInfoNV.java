@@ -95,6 +95,10 @@ public record VkRayTracingPipelineCreateInfoNV(@NotNull MemorySegment segment) i
             return new VkRayTracingPipelineCreateInfoNV(segment.asSlice(index * VkRayTracingPipelineCreateInfoNV.BYTES, VkRayTracingPipelineCreateInfoNV.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull VkRayTracingPipelineCreateInfoNV> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull VkRayTracingPipelineCreateInfoNV value) {
             MemorySegment s = segment.asSlice(index * VkRayTracingPipelineCreateInfoNV.BYTES, VkRayTracingPipelineCreateInfoNV.BYTES);
             s.copyFrom(value.segment);

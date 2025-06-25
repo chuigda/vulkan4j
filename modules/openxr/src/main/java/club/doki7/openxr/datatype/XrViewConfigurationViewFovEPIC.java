@@ -92,6 +92,10 @@ public record XrViewConfigurationViewFovEPIC(@NotNull MemorySegment segment) imp
             return new XrViewConfigurationViewFovEPIC(segment.asSlice(index * XrViewConfigurationViewFovEPIC.BYTES, XrViewConfigurationViewFovEPIC.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull XrViewConfigurationViewFovEPIC> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull XrViewConfigurationViewFovEPIC value) {
             MemorySegment s = segment.asSlice(index * XrViewConfigurationViewFovEPIC.BYTES, XrViewConfigurationViewFovEPIC.BYTES);
             s.copyFrom(value.segment);

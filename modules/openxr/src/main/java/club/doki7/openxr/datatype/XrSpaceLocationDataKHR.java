@@ -81,6 +81,10 @@ public record XrSpaceLocationDataKHR(@NotNull MemorySegment segment) implements 
             return new XrSpaceLocationDataKHR(segment.asSlice(index * XrSpaceLocationDataKHR.BYTES, XrSpaceLocationDataKHR.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull XrSpaceLocationDataKHR> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull XrSpaceLocationDataKHR value) {
             MemorySegment s = segment.asSlice(index * XrSpaceLocationDataKHR.BYTES, XrSpaceLocationDataKHR.BYTES);
             s.copyFrom(value.segment);

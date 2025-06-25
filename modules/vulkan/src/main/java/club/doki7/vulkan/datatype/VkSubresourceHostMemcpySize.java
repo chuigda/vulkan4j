@@ -87,6 +87,10 @@ public record VkSubresourceHostMemcpySize(@NotNull MemorySegment segment) implem
             return new VkSubresourceHostMemcpySize(segment.asSlice(index * VkSubresourceHostMemcpySize.BYTES, VkSubresourceHostMemcpySize.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull VkSubresourceHostMemcpySize> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull VkSubresourceHostMemcpySize value) {
             MemorySegment s = segment.asSlice(index * VkSubresourceHostMemcpySize.BYTES, VkSubresourceHostMemcpySize.BYTES);
             s.copyFrom(value.segment);

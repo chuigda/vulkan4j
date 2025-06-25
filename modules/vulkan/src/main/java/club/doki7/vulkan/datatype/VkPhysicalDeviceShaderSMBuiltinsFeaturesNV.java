@@ -87,6 +87,10 @@ public record VkPhysicalDeviceShaderSMBuiltinsFeaturesNV(@NotNull MemorySegment 
             return new VkPhysicalDeviceShaderSMBuiltinsFeaturesNV(segment.asSlice(index * VkPhysicalDeviceShaderSMBuiltinsFeaturesNV.BYTES, VkPhysicalDeviceShaderSMBuiltinsFeaturesNV.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceShaderSMBuiltinsFeaturesNV> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull VkPhysicalDeviceShaderSMBuiltinsFeaturesNV value) {
             MemorySegment s = segment.asSlice(index * VkPhysicalDeviceShaderSMBuiltinsFeaturesNV.BYTES, VkPhysicalDeviceShaderSMBuiltinsFeaturesNV.BYTES);
             s.copyFrom(value.segment);

@@ -90,6 +90,10 @@ public record VkPhysicalDeviceSubgroupProperties(@NotNull MemorySegment segment)
             return new VkPhysicalDeviceSubgroupProperties(segment.asSlice(index * VkPhysicalDeviceSubgroupProperties.BYTES, VkPhysicalDeviceSubgroupProperties.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceSubgroupProperties> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull VkPhysicalDeviceSubgroupProperties value) {
             MemorySegment s = segment.asSlice(index * VkPhysicalDeviceSubgroupProperties.BYTES, VkPhysicalDeviceSubgroupProperties.BYTES);
             s.copyFrom(value.segment);

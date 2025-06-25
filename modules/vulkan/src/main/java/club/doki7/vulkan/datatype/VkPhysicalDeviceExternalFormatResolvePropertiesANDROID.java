@@ -89,6 +89,10 @@ public record VkPhysicalDeviceExternalFormatResolvePropertiesANDROID(@NotNull Me
             return new VkPhysicalDeviceExternalFormatResolvePropertiesANDROID(segment.asSlice(index * VkPhysicalDeviceExternalFormatResolvePropertiesANDROID.BYTES, VkPhysicalDeviceExternalFormatResolvePropertiesANDROID.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceExternalFormatResolvePropertiesANDROID> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull VkPhysicalDeviceExternalFormatResolvePropertiesANDROID value) {
             MemorySegment s = segment.asSlice(index * VkPhysicalDeviceExternalFormatResolvePropertiesANDROID.BYTES, VkPhysicalDeviceExternalFormatResolvePropertiesANDROID.BYTES);
             s.copyFrom(value.segment);

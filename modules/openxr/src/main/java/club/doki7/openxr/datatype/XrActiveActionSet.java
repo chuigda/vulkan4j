@@ -81,6 +81,10 @@ public record XrActiveActionSet(@NotNull MemorySegment segment) implements IXrAc
             return new XrActiveActionSet(segment.asSlice(index * XrActiveActionSet.BYTES, XrActiveActionSet.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull XrActiveActionSet> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull XrActiveActionSet value) {
             MemorySegment s = segment.asSlice(index * XrActiveActionSet.BYTES, XrActiveActionSet.BYTES);
             s.copyFrom(value.segment);

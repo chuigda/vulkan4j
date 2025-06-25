@@ -82,6 +82,10 @@ public record XrColor3f(@NotNull MemorySegment segment) implements IXrColor3f {
             return new XrColor3f(segment.asSlice(index * XrColor3f.BYTES, XrColor3f.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull XrColor3f> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull XrColor3f value) {
             MemorySegment s = segment.asSlice(index * XrColor3f.BYTES, XrColor3f.BYTES);
             s.copyFrom(value.segment);

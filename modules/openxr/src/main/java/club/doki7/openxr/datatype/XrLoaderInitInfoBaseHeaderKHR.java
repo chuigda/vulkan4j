@@ -81,6 +81,10 @@ public record XrLoaderInitInfoBaseHeaderKHR(@NotNull MemorySegment segment) impl
             return new XrLoaderInitInfoBaseHeaderKHR(segment.asSlice(index * XrLoaderInitInfoBaseHeaderKHR.BYTES, XrLoaderInitInfoBaseHeaderKHR.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull XrLoaderInitInfoBaseHeaderKHR> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull XrLoaderInitInfoBaseHeaderKHR value) {
             MemorySegment s = segment.asSlice(index * XrLoaderInitInfoBaseHeaderKHR.BYTES, XrLoaderInitInfoBaseHeaderKHR.BYTES);
             s.copyFrom(value.segment);

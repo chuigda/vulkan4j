@@ -88,6 +88,10 @@ public record VkPipelineShaderStageModuleIdentifierCreateInfoEXT(@NotNull Memory
             return new VkPipelineShaderStageModuleIdentifierCreateInfoEXT(segment.asSlice(index * VkPipelineShaderStageModuleIdentifierCreateInfoEXT.BYTES, VkPipelineShaderStageModuleIdentifierCreateInfoEXT.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull VkPipelineShaderStageModuleIdentifierCreateInfoEXT> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull VkPipelineShaderStageModuleIdentifierCreateInfoEXT value) {
             MemorySegment s = segment.asSlice(index * VkPipelineShaderStageModuleIdentifierCreateInfoEXT.BYTES, VkPipelineShaderStageModuleIdentifierCreateInfoEXT.BYTES);
             s.copyFrom(value.segment);

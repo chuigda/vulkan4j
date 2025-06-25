@@ -87,6 +87,10 @@ public record VkExternalFormatQNX(@NotNull MemorySegment segment) implements IVk
             return new VkExternalFormatQNX(segment.asSlice(index * VkExternalFormatQNX.BYTES, VkExternalFormatQNX.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull VkExternalFormatQNX> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull VkExternalFormatQNX value) {
             MemorySegment s = segment.asSlice(index * VkExternalFormatQNX.BYTES, VkExternalFormatQNX.BYTES);
             s.copyFrom(value.segment);

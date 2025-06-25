@@ -92,6 +92,10 @@ public record XrSceneComponentLocationsMSFT(@NotNull MemorySegment segment) impl
             return new XrSceneComponentLocationsMSFT(segment.asSlice(index * XrSceneComponentLocationsMSFT.BYTES, XrSceneComponentLocationsMSFT.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull XrSceneComponentLocationsMSFT> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull XrSceneComponentLocationsMSFT value) {
             MemorySegment s = segment.asSlice(index * XrSceneComponentLocationsMSFT.BYTES, XrSceneComponentLocationsMSFT.BYTES);
             s.copyFrom(value.segment);

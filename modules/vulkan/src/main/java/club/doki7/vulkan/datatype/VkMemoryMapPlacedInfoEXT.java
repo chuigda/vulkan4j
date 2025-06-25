@@ -87,6 +87,10 @@ public record VkMemoryMapPlacedInfoEXT(@NotNull MemorySegment segment) implement
             return new VkMemoryMapPlacedInfoEXT(segment.asSlice(index * VkMemoryMapPlacedInfoEXT.BYTES, VkMemoryMapPlacedInfoEXT.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull VkMemoryMapPlacedInfoEXT> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull VkMemoryMapPlacedInfoEXT value) {
             MemorySegment s = segment.asSlice(index * VkMemoryMapPlacedInfoEXT.BYTES, VkMemoryMapPlacedInfoEXT.BYTES);
             s.copyFrom(value.segment);

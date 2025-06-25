@@ -87,6 +87,10 @@ public record VkPhysicalDeviceRenderPassStripedFeaturesARM(@NotNull MemorySegmen
             return new VkPhysicalDeviceRenderPassStripedFeaturesARM(segment.asSlice(index * VkPhysicalDeviceRenderPassStripedFeaturesARM.BYTES, VkPhysicalDeviceRenderPassStripedFeaturesARM.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceRenderPassStripedFeaturesARM> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull VkPhysicalDeviceRenderPassStripedFeaturesARM value) {
             MemorySegment s = segment.asSlice(index * VkPhysicalDeviceRenderPassStripedFeaturesARM.BYTES, VkPhysicalDeviceRenderPassStripedFeaturesARM.BYTES);
             s.copyFrom(value.segment);

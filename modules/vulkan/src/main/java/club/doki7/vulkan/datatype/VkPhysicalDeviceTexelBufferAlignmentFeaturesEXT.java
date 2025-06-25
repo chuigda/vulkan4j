@@ -87,6 +87,10 @@ public record VkPhysicalDeviceTexelBufferAlignmentFeaturesEXT(@NotNull MemorySeg
             return new VkPhysicalDeviceTexelBufferAlignmentFeaturesEXT(segment.asSlice(index * VkPhysicalDeviceTexelBufferAlignmentFeaturesEXT.BYTES, VkPhysicalDeviceTexelBufferAlignmentFeaturesEXT.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceTexelBufferAlignmentFeaturesEXT> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull VkPhysicalDeviceTexelBufferAlignmentFeaturesEXT value) {
             MemorySegment s = segment.asSlice(index * VkPhysicalDeviceTexelBufferAlignmentFeaturesEXT.BYTES, VkPhysicalDeviceTexelBufferAlignmentFeaturesEXT.BYTES);
             s.copyFrom(value.segment);

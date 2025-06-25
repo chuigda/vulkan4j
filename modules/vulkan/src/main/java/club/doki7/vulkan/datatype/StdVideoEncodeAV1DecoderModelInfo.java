@@ -78,6 +78,10 @@ public record StdVideoEncodeAV1DecoderModelInfo(@NotNull MemorySegment segment) 
             return new StdVideoEncodeAV1DecoderModelInfo(segment.asSlice(index * StdVideoEncodeAV1DecoderModelInfo.BYTES, StdVideoEncodeAV1DecoderModelInfo.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull StdVideoEncodeAV1DecoderModelInfo> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull StdVideoEncodeAV1DecoderModelInfo value) {
             MemorySegment s = segment.asSlice(index * StdVideoEncodeAV1DecoderModelInfo.BYTES, StdVideoEncodeAV1DecoderModelInfo.BYTES);
             s.copyFrom(value.segment);

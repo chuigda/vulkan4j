@@ -88,6 +88,10 @@ public record VkPhysicalDeviceConditionalRenderingFeaturesEXT(@NotNull MemorySeg
             return new VkPhysicalDeviceConditionalRenderingFeaturesEXT(segment.asSlice(index * VkPhysicalDeviceConditionalRenderingFeaturesEXT.BYTES, VkPhysicalDeviceConditionalRenderingFeaturesEXT.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceConditionalRenderingFeaturesEXT> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull VkPhysicalDeviceConditionalRenderingFeaturesEXT value) {
             MemorySegment s = segment.asSlice(index * VkPhysicalDeviceConditionalRenderingFeaturesEXT.BYTES, VkPhysicalDeviceConditionalRenderingFeaturesEXT.BYTES);
             s.copyFrom(value.segment);

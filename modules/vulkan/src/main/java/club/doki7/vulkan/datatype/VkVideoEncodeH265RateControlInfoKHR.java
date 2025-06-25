@@ -91,6 +91,10 @@ public record VkVideoEncodeH265RateControlInfoKHR(@NotNull MemorySegment segment
             return new VkVideoEncodeH265RateControlInfoKHR(segment.asSlice(index * VkVideoEncodeH265RateControlInfoKHR.BYTES, VkVideoEncodeH265RateControlInfoKHR.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull VkVideoEncodeH265RateControlInfoKHR> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull VkVideoEncodeH265RateControlInfoKHR value) {
             MemorySegment s = segment.asSlice(index * VkVideoEncodeH265RateControlInfoKHR.BYTES, VkVideoEncodeH265RateControlInfoKHR.BYTES);
             s.copyFrom(value.segment);

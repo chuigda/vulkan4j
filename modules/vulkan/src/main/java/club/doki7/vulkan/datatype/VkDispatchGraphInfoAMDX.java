@@ -79,6 +79,10 @@ public record VkDispatchGraphInfoAMDX(@NotNull MemorySegment segment) implements
             return new VkDispatchGraphInfoAMDX(segment.asSlice(index * VkDispatchGraphInfoAMDX.BYTES, VkDispatchGraphInfoAMDX.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull VkDispatchGraphInfoAMDX> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull VkDispatchGraphInfoAMDX value) {
             MemorySegment s = segment.asSlice(index * VkDispatchGraphInfoAMDX.BYTES, VkDispatchGraphInfoAMDX.BYTES);
             s.copyFrom(value.segment);

@@ -81,6 +81,10 @@ public record VkColorBlendEquationEXT(@NotNull MemorySegment segment) implements
             return new VkColorBlendEquationEXT(segment.asSlice(index * VkColorBlendEquationEXT.BYTES, VkColorBlendEquationEXT.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull VkColorBlendEquationEXT> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull VkColorBlendEquationEXT value) {
             MemorySegment s = segment.asSlice(index * VkColorBlendEquationEXT.BYTES, VkColorBlendEquationEXT.BYTES);
             s.copyFrom(value.segment);

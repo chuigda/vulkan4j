@@ -88,6 +88,10 @@ public record VkAndroidSurfaceCreateInfoKHR(@NotNull MemorySegment segment) impl
             return new VkAndroidSurfaceCreateInfoKHR(segment.asSlice(index * VkAndroidSurfaceCreateInfoKHR.BYTES, VkAndroidSurfaceCreateInfoKHR.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull VkAndroidSurfaceCreateInfoKHR> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull VkAndroidSurfaceCreateInfoKHR value) {
             MemorySegment s = segment.asSlice(index * VkAndroidSurfaceCreateInfoKHR.BYTES, VkAndroidSurfaceCreateInfoKHR.BYTES);
             s.copyFrom(value.segment);

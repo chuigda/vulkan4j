@@ -88,6 +88,10 @@ public record VkCuModuleCreateInfoNVX(@NotNull MemorySegment segment) implements
             return new VkCuModuleCreateInfoNVX(segment.asSlice(index * VkCuModuleCreateInfoNVX.BYTES, VkCuModuleCreateInfoNVX.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull VkCuModuleCreateInfoNVX> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull VkCuModuleCreateInfoNVX value) {
             MemorySegment s = segment.asSlice(index * VkCuModuleCreateInfoNVX.BYTES, VkCuModuleCreateInfoNVX.BYTES);
             s.copyFrom(value.segment);

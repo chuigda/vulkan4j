@@ -94,6 +94,10 @@ public record XrEventDataSpatialAnchorCreateCompleteFB(@NotNull MemorySegment se
             return new XrEventDataSpatialAnchorCreateCompleteFB(segment.asSlice(index * XrEventDataSpatialAnchorCreateCompleteFB.BYTES, XrEventDataSpatialAnchorCreateCompleteFB.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull XrEventDataSpatialAnchorCreateCompleteFB> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull XrEventDataSpatialAnchorCreateCompleteFB value) {
             MemorySegment s = segment.asSlice(index * XrEventDataSpatialAnchorCreateCompleteFB.BYTES, XrEventDataSpatialAnchorCreateCompleteFB.BYTES);
             s.copyFrom(value.segment);

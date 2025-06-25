@@ -87,6 +87,10 @@ public record VkBufferOpaqueCaptureAddressCreateInfo(@NotNull MemorySegment segm
             return new VkBufferOpaqueCaptureAddressCreateInfo(segment.asSlice(index * VkBufferOpaqueCaptureAddressCreateInfo.BYTES, VkBufferOpaqueCaptureAddressCreateInfo.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull VkBufferOpaqueCaptureAddressCreateInfo> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull VkBufferOpaqueCaptureAddressCreateInfo value) {
             MemorySegment s = segment.asSlice(index * VkBufferOpaqueCaptureAddressCreateInfo.BYTES, VkBufferOpaqueCaptureAddressCreateInfo.BYTES);
             s.copyFrom(value.segment);

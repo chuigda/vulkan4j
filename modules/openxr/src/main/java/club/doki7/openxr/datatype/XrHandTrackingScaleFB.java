@@ -94,6 +94,10 @@ public record XrHandTrackingScaleFB(@NotNull MemorySegment segment) implements I
             return new XrHandTrackingScaleFB(segment.asSlice(index * XrHandTrackingScaleFB.BYTES, XrHandTrackingScaleFB.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull XrHandTrackingScaleFB> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull XrHandTrackingScaleFB value) {
             MemorySegment s = segment.asSlice(index * XrHandTrackingScaleFB.BYTES, XrHandTrackingScaleFB.BYTES);
             s.copyFrom(value.segment);

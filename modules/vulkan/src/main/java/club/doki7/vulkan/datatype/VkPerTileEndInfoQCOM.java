@@ -86,6 +86,10 @@ public record VkPerTileEndInfoQCOM(@NotNull MemorySegment segment) implements IV
             return new VkPerTileEndInfoQCOM(segment.asSlice(index * VkPerTileEndInfoQCOM.BYTES, VkPerTileEndInfoQCOM.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull VkPerTileEndInfoQCOM> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull VkPerTileEndInfoQCOM value) {
             MemorySegment s = segment.asSlice(index * VkPerTileEndInfoQCOM.BYTES, VkPerTileEndInfoQCOM.BYTES);
             s.copyFrom(value.segment);

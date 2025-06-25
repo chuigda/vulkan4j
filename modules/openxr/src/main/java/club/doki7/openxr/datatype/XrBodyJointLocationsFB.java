@@ -96,6 +96,10 @@ public record XrBodyJointLocationsFB(@NotNull MemorySegment segment) implements 
             return new XrBodyJointLocationsFB(segment.asSlice(index * XrBodyJointLocationsFB.BYTES, XrBodyJointLocationsFB.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull XrBodyJointLocationsFB> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull XrBodyJointLocationsFB value) {
             MemorySegment s = segment.asSlice(index * XrBodyJointLocationsFB.BYTES, XrBodyJointLocationsFB.BYTES);
             s.copyFrom(value.segment);

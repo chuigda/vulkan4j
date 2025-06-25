@@ -302,6 +302,11 @@ fun generateStructure(
             }
             +""
 
+            defun("public", "void", "at", "long index", "@NotNull Consumer<@NotNull ${className}> consumer") {
+                +"consumer.accept(at(index));"
+            }
+            +""
+
             defun("public", "void", "write", "long index", "@NotNull $className value") {
                 +"MemorySegment s = segment.asSlice(index * $className.BYTES, $className.BYTES);"
                 +"s.copyFrom(value.segment);"

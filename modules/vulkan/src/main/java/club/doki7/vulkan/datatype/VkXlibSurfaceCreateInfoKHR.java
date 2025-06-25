@@ -89,6 +89,10 @@ public record VkXlibSurfaceCreateInfoKHR(@NotNull MemorySegment segment) impleme
             return new VkXlibSurfaceCreateInfoKHR(segment.asSlice(index * VkXlibSurfaceCreateInfoKHR.BYTES, VkXlibSurfaceCreateInfoKHR.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull VkXlibSurfaceCreateInfoKHR> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull VkXlibSurfaceCreateInfoKHR value) {
             MemorySegment s = segment.asSlice(index * VkXlibSurfaceCreateInfoKHR.BYTES, VkXlibSurfaceCreateInfoKHR.BYTES);
             s.copyFrom(value.segment);

@@ -75,6 +75,10 @@ public record StdVideoAV1GlobalMotion(@NotNull MemorySegment segment) implements
             return new StdVideoAV1GlobalMotion(segment.asSlice(index * StdVideoAV1GlobalMotion.BYTES, StdVideoAV1GlobalMotion.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull StdVideoAV1GlobalMotion> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull StdVideoAV1GlobalMotion value) {
             MemorySegment s = segment.asSlice(index * StdVideoAV1GlobalMotion.BYTES, StdVideoAV1GlobalMotion.BYTES);
             s.copyFrom(value.segment);
@@ -172,6 +176,12 @@ public record StdVideoAV1GlobalMotion(@NotNull MemorySegment segment) implements
         return new BytePtr(GmTypeRaw());
     }
 
+    public StdVideoAV1GlobalMotion GmType(@NotNull Consumer<BytePtr> consumer) {
+        @Unsigned BytePtr ptr = GmType();
+        consumer.accept(ptr);
+        return this;
+    }
+
     public StdVideoAV1GlobalMotion GmType(@Unsigned BytePtr value) {
         MemorySegment s = GmTypeRaw();
         s.copyFrom(value.segment());
@@ -184,6 +194,12 @@ public record StdVideoAV1GlobalMotion(@NotNull MemorySegment segment) implements
 
     public IntPtr gm_params() {
         return new IntPtr(gm_paramsRaw());
+    }
+
+    public StdVideoAV1GlobalMotion gm_params(@NotNull Consumer<IntPtr> consumer) {
+        IntPtr ptr = gm_params();
+        consumer.accept(ptr);
+        return this;
     }
 
     public StdVideoAV1GlobalMotion gm_params(IntPtr value) {

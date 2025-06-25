@@ -91,6 +91,10 @@ public record VkPushConstantsInfo(@NotNull MemorySegment segment) implements IVk
             return new VkPushConstantsInfo(segment.asSlice(index * VkPushConstantsInfo.BYTES, VkPushConstantsInfo.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull VkPushConstantsInfo> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull VkPushConstantsInfo value) {
             MemorySegment s = segment.asSlice(index * VkPushConstantsInfo.BYTES, VkPushConstantsInfo.BYTES);
             s.copyFrom(value.segment);

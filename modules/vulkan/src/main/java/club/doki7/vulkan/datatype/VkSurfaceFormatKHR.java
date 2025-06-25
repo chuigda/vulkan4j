@@ -77,6 +77,10 @@ public record VkSurfaceFormatKHR(@NotNull MemorySegment segment) implements IVkS
             return new VkSurfaceFormatKHR(segment.asSlice(index * VkSurfaceFormatKHR.BYTES, VkSurfaceFormatKHR.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull VkSurfaceFormatKHR> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull VkSurfaceFormatKHR value) {
             MemorySegment s = segment.asSlice(index * VkSurfaceFormatKHR.BYTES, VkSurfaceFormatKHR.BYTES);
             s.copyFrom(value.segment);

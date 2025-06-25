@@ -91,6 +91,10 @@ public record XrSystemSpatialEntitySharingPropertiesMETA(@NotNull MemorySegment 
             return new XrSystemSpatialEntitySharingPropertiesMETA(segment.asSlice(index * XrSystemSpatialEntitySharingPropertiesMETA.BYTES, XrSystemSpatialEntitySharingPropertiesMETA.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull XrSystemSpatialEntitySharingPropertiesMETA> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull XrSystemSpatialEntitySharingPropertiesMETA value) {
             MemorySegment s = segment.asSlice(index * XrSystemSpatialEntitySharingPropertiesMETA.BYTES, XrSystemSpatialEntitySharingPropertiesMETA.BYTES);
             s.copyFrom(value.segment);

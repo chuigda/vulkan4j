@@ -87,6 +87,10 @@ public record VkPhysicalDeviceYcbcr2Plane444FormatsFeaturesEXT(@NotNull MemorySe
             return new VkPhysicalDeviceYcbcr2Plane444FormatsFeaturesEXT(segment.asSlice(index * VkPhysicalDeviceYcbcr2Plane444FormatsFeaturesEXT.BYTES, VkPhysicalDeviceYcbcr2Plane444FormatsFeaturesEXT.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceYcbcr2Plane444FormatsFeaturesEXT> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull VkPhysicalDeviceYcbcr2Plane444FormatsFeaturesEXT value) {
             MemorySegment s = segment.asSlice(index * VkPhysicalDeviceYcbcr2Plane444FormatsFeaturesEXT.BYTES, VkPhysicalDeviceYcbcr2Plane444FormatsFeaturesEXT.BYTES);
             s.copyFrom(value.segment);

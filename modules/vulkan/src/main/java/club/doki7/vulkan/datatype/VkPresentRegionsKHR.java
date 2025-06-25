@@ -88,6 +88,10 @@ public record VkPresentRegionsKHR(@NotNull MemorySegment segment) implements IVk
             return new VkPresentRegionsKHR(segment.asSlice(index * VkPresentRegionsKHR.BYTES, VkPresentRegionsKHR.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull VkPresentRegionsKHR> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull VkPresentRegionsKHR value) {
             MemorySegment s = segment.asSlice(index * VkPresentRegionsKHR.BYTES, VkPresentRegionsKHR.BYTES);
             s.copyFrom(value.segment);

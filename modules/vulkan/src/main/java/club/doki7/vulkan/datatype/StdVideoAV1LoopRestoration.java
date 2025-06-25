@@ -75,6 +75,10 @@ public record StdVideoAV1LoopRestoration(@NotNull MemorySegment segment) impleme
             return new StdVideoAV1LoopRestoration(segment.asSlice(index * StdVideoAV1LoopRestoration.BYTES, StdVideoAV1LoopRestoration.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull StdVideoAV1LoopRestoration> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull StdVideoAV1LoopRestoration value) {
             MemorySegment s = segment.asSlice(index * StdVideoAV1LoopRestoration.BYTES, StdVideoAV1LoopRestoration.BYTES);
             s.copyFrom(value.segment);
@@ -172,6 +176,12 @@ public record StdVideoAV1LoopRestoration(@NotNull MemorySegment segment) impleme
         return new IntPtr(FrameRestorationTypeRaw());
     }
 
+    public StdVideoAV1LoopRestoration FrameRestorationType(@NotNull Consumer<IntPtr> consumer) {
+        @EnumType(StdVideoAV1FrameRestorationType.class) IntPtr ptr = FrameRestorationType();
+        consumer.accept(ptr);
+        return this;
+    }
+
     public StdVideoAV1LoopRestoration FrameRestorationType(@EnumType(StdVideoAV1FrameRestorationType.class) IntPtr value) {
         MemorySegment s = FrameRestorationTypeRaw();
         s.copyFrom(value.segment());
@@ -184,6 +194,12 @@ public record StdVideoAV1LoopRestoration(@NotNull MemorySegment segment) impleme
 
     public @Unsigned ShortPtr LoopRestorationSize() {
         return new ShortPtr(LoopRestorationSizeRaw());
+    }
+
+    public StdVideoAV1LoopRestoration LoopRestorationSize(@NotNull Consumer<ShortPtr> consumer) {
+        @Unsigned ShortPtr ptr = LoopRestorationSize();
+        consumer.accept(ptr);
+        return this;
     }
 
     public StdVideoAV1LoopRestoration LoopRestorationSize(@Unsigned ShortPtr value) {

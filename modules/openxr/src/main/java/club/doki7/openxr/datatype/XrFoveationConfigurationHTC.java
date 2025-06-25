@@ -82,6 +82,10 @@ public record XrFoveationConfigurationHTC(@NotNull MemorySegment segment) implem
             return new XrFoveationConfigurationHTC(segment.asSlice(index * XrFoveationConfigurationHTC.BYTES, XrFoveationConfigurationHTC.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull XrFoveationConfigurationHTC> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull XrFoveationConfigurationHTC value) {
             MemorySegment s = segment.asSlice(index * XrFoveationConfigurationHTC.BYTES, XrFoveationConfigurationHTC.BYTES);
             s.copyFrom(value.segment);

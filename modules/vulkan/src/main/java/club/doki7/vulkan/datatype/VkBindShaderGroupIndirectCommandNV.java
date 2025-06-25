@@ -76,6 +76,10 @@ public record VkBindShaderGroupIndirectCommandNV(@NotNull MemorySegment segment)
             return new VkBindShaderGroupIndirectCommandNV(segment.asSlice(index * VkBindShaderGroupIndirectCommandNV.BYTES, VkBindShaderGroupIndirectCommandNV.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull VkBindShaderGroupIndirectCommandNV> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull VkBindShaderGroupIndirectCommandNV value) {
             MemorySegment s = segment.asSlice(index * VkBindShaderGroupIndirectCommandNV.BYTES, VkBindShaderGroupIndirectCommandNV.BYTES);
             s.copyFrom(value.segment);

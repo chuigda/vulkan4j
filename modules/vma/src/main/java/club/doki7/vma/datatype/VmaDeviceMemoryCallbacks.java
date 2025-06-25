@@ -93,6 +93,10 @@ public record VmaDeviceMemoryCallbacks(@NotNull MemorySegment segment) implement
             return new VmaDeviceMemoryCallbacks(segment.asSlice(index * VmaDeviceMemoryCallbacks.BYTES, VmaDeviceMemoryCallbacks.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull VmaDeviceMemoryCallbacks> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull VmaDeviceMemoryCallbacks value) {
             MemorySegment s = segment.asSlice(index * VmaDeviceMemoryCallbacks.BYTES, VmaDeviceMemoryCallbacks.BYTES);
             s.copyFrom(value.segment);

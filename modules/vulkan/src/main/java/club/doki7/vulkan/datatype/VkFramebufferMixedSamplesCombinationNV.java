@@ -90,6 +90,10 @@ public record VkFramebufferMixedSamplesCombinationNV(@NotNull MemorySegment segm
             return new VkFramebufferMixedSamplesCombinationNV(segment.asSlice(index * VkFramebufferMixedSamplesCombinationNV.BYTES, VkFramebufferMixedSamplesCombinationNV.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull VkFramebufferMixedSamplesCombinationNV> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull VkFramebufferMixedSamplesCombinationNV value) {
             MemorySegment s = segment.asSlice(index * VkFramebufferMixedSamplesCombinationNV.BYTES, VkFramebufferMixedSamplesCombinationNV.BYTES);
             s.copyFrom(value.segment);

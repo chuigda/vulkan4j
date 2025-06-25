@@ -76,6 +76,10 @@ public record StdVideoEncodeH264RefListModEntry(@NotNull MemorySegment segment) 
             return new StdVideoEncodeH264RefListModEntry(segment.asSlice(index * StdVideoEncodeH264RefListModEntry.BYTES, StdVideoEncodeH264RefListModEntry.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull StdVideoEncodeH264RefListModEntry> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull StdVideoEncodeH264RefListModEntry value) {
             MemorySegment s = segment.asSlice(index * StdVideoEncodeH264RefListModEntry.BYTES, StdVideoEncodeH264RefListModEntry.BYTES);
             s.copyFrom(value.segment);

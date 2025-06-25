@@ -91,6 +91,10 @@ public record XrDigitalLensControlALMALENCE(@NotNull MemorySegment segment) impl
             return new XrDigitalLensControlALMALENCE(segment.asSlice(index * XrDigitalLensControlALMALENCE.BYTES, XrDigitalLensControlALMALENCE.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull XrDigitalLensControlALMALENCE> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull XrDigitalLensControlALMALENCE value) {
             MemorySegment s = segment.asSlice(index * XrDigitalLensControlALMALENCE.BYTES, XrDigitalLensControlALMALENCE.BYTES);
             s.copyFrom(value.segment);

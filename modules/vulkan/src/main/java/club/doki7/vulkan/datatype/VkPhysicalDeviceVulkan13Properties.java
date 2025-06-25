@@ -131,6 +131,10 @@ public record VkPhysicalDeviceVulkan13Properties(@NotNull MemorySegment segment)
             return new VkPhysicalDeviceVulkan13Properties(segment.asSlice(index * VkPhysicalDeviceVulkan13Properties.BYTES, VkPhysicalDeviceVulkan13Properties.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceVulkan13Properties> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull VkPhysicalDeviceVulkan13Properties value) {
             MemorySegment s = segment.asSlice(index * VkPhysicalDeviceVulkan13Properties.BYTES, VkPhysicalDeviceVulkan13Properties.BYTES);
             s.copyFrom(value.segment);

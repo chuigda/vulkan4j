@@ -91,6 +91,10 @@ public record VkPipelineCoverageModulationStateCreateInfoNV(@NotNull MemorySegme
             return new VkPipelineCoverageModulationStateCreateInfoNV(segment.asSlice(index * VkPipelineCoverageModulationStateCreateInfoNV.BYTES, VkPipelineCoverageModulationStateCreateInfoNV.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull VkPipelineCoverageModulationStateCreateInfoNV> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull VkPipelineCoverageModulationStateCreateInfoNV value) {
             MemorySegment s = segment.asSlice(index * VkPipelineCoverageModulationStateCreateInfoNV.BYTES, VkPipelineCoverageModulationStateCreateInfoNV.BYTES);
             s.copyFrom(value.segment);

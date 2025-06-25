@@ -82,6 +82,10 @@ public record XrOffset3DfFB(@NotNull MemorySegment segment) implements IXrOffset
             return new XrOffset3DfFB(segment.asSlice(index * XrOffset3DfFB.BYTES, XrOffset3DfFB.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull XrOffset3DfFB> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull XrOffset3DfFB value) {
             MemorySegment s = segment.asSlice(index * XrOffset3DfFB.BYTES, XrOffset3DfFB.BYTES);
             s.copyFrom(value.segment);

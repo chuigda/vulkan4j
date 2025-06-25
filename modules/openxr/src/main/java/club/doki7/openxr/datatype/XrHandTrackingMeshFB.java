@@ -105,6 +105,10 @@ public record XrHandTrackingMeshFB(@NotNull MemorySegment segment) implements IX
             return new XrHandTrackingMeshFB(segment.asSlice(index * XrHandTrackingMeshFB.BYTES, XrHandTrackingMeshFB.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull XrHandTrackingMeshFB> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull XrHandTrackingMeshFB value) {
             MemorySegment s = segment.asSlice(index * XrHandTrackingMeshFB.BYTES, XrHandTrackingMeshFB.BYTES);
             s.copyFrom(value.segment);

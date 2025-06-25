@@ -89,6 +89,10 @@ public record StdVideoH264SequenceParameterSetVui(@NotNull MemorySegment segment
             return new StdVideoH264SequenceParameterSetVui(segment.asSlice(index * StdVideoH264SequenceParameterSetVui.BYTES, StdVideoH264SequenceParameterSetVui.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull StdVideoH264SequenceParameterSetVui> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull StdVideoH264SequenceParameterSetVui value) {
             MemorySegment s = segment.asSlice(index * StdVideoH264SequenceParameterSetVui.BYTES, StdVideoH264SequenceParameterSetVui.BYTES);
             s.copyFrom(value.segment);

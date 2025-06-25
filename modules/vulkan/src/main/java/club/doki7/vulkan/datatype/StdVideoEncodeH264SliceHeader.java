@@ -83,6 +83,10 @@ public record StdVideoEncodeH264SliceHeader(@NotNull MemorySegment segment) impl
             return new StdVideoEncodeH264SliceHeader(segment.asSlice(index * StdVideoEncodeH264SliceHeader.BYTES, StdVideoEncodeH264SliceHeader.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull StdVideoEncodeH264SliceHeader> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull StdVideoEncodeH264SliceHeader value) {
             MemorySegment s = segment.asSlice(index * StdVideoEncodeH264SliceHeader.BYTES, StdVideoEncodeH264SliceHeader.BYTES);
             s.copyFrom(value.segment);

@@ -90,6 +90,10 @@ public record XrColocationDiscoveryStopInfoMETA(@NotNull MemorySegment segment) 
             return new XrColocationDiscoveryStopInfoMETA(segment.asSlice(index * XrColocationDiscoveryStopInfoMETA.BYTES, XrColocationDiscoveryStopInfoMETA.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull XrColocationDiscoveryStopInfoMETA> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull XrColocationDiscoveryStopInfoMETA value) {
             MemorySegment s = segment.asSlice(index * XrColocationDiscoveryStopInfoMETA.BYTES, XrColocationDiscoveryStopInfoMETA.BYTES);
             s.copyFrom(value.segment);

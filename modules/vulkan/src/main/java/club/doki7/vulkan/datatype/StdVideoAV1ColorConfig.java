@@ -82,6 +82,10 @@ public record StdVideoAV1ColorConfig(@NotNull MemorySegment segment) implements 
             return new StdVideoAV1ColorConfig(segment.asSlice(index * StdVideoAV1ColorConfig.BYTES, StdVideoAV1ColorConfig.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull StdVideoAV1ColorConfig> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull StdVideoAV1ColorConfig value) {
             MemorySegment s = segment.asSlice(index * StdVideoAV1ColorConfig.BYTES, StdVideoAV1ColorConfig.BYTES);
             s.copyFrom(value.segment);

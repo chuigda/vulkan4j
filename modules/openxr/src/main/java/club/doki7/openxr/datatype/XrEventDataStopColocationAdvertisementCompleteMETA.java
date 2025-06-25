@@ -92,6 +92,10 @@ public record XrEventDataStopColocationAdvertisementCompleteMETA(@NotNull Memory
             return new XrEventDataStopColocationAdvertisementCompleteMETA(segment.asSlice(index * XrEventDataStopColocationAdvertisementCompleteMETA.BYTES, XrEventDataStopColocationAdvertisementCompleteMETA.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull XrEventDataStopColocationAdvertisementCompleteMETA> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull XrEventDataStopColocationAdvertisementCompleteMETA value) {
             MemorySegment s = segment.asSlice(index * XrEventDataStopColocationAdvertisementCompleteMETA.BYTES, XrEventDataStopColocationAdvertisementCompleteMETA.BYTES);
             s.copyFrom(value.segment);

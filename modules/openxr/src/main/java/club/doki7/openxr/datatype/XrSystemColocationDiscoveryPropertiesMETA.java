@@ -91,6 +91,10 @@ public record XrSystemColocationDiscoveryPropertiesMETA(@NotNull MemorySegment s
             return new XrSystemColocationDiscoveryPropertiesMETA(segment.asSlice(index * XrSystemColocationDiscoveryPropertiesMETA.BYTES, XrSystemColocationDiscoveryPropertiesMETA.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull XrSystemColocationDiscoveryPropertiesMETA> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull XrSystemColocationDiscoveryPropertiesMETA value) {
             MemorySegment s = segment.asSlice(index * XrSystemColocationDiscoveryPropertiesMETA.BYTES, XrSystemColocationDiscoveryPropertiesMETA.BYTES);
             s.copyFrom(value.segment);

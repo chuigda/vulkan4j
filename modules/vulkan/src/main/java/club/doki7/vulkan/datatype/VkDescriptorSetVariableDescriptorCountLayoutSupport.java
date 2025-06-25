@@ -87,6 +87,10 @@ public record VkDescriptorSetVariableDescriptorCountLayoutSupport(@NotNull Memor
             return new VkDescriptorSetVariableDescriptorCountLayoutSupport(segment.asSlice(index * VkDescriptorSetVariableDescriptorCountLayoutSupport.BYTES, VkDescriptorSetVariableDescriptorCountLayoutSupport.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull VkDescriptorSetVariableDescriptorCountLayoutSupport> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull VkDescriptorSetVariableDescriptorCountLayoutSupport value) {
             MemorySegment s = segment.asSlice(index * VkDescriptorSetVariableDescriptorCountLayoutSupport.BYTES, VkDescriptorSetVariableDescriptorCountLayoutSupport.BYTES);
             s.copyFrom(value.segment);

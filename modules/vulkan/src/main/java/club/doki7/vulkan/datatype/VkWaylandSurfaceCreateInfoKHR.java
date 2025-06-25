@@ -89,6 +89,10 @@ public record VkWaylandSurfaceCreateInfoKHR(@NotNull MemorySegment segment) impl
             return new VkWaylandSurfaceCreateInfoKHR(segment.asSlice(index * VkWaylandSurfaceCreateInfoKHR.BYTES, VkWaylandSurfaceCreateInfoKHR.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull VkWaylandSurfaceCreateInfoKHR> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull VkWaylandSurfaceCreateInfoKHR value) {
             MemorySegment s = segment.asSlice(index * VkWaylandSurfaceCreateInfoKHR.BYTES, VkWaylandSurfaceCreateInfoKHR.BYTES);
             s.copyFrom(value.segment);

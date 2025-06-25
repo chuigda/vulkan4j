@@ -90,6 +90,10 @@ public record VkPhysicalDeviceClusterCullingShaderPropertiesHUAWEI(@NotNull Memo
             return new VkPhysicalDeviceClusterCullingShaderPropertiesHUAWEI(segment.asSlice(index * VkPhysicalDeviceClusterCullingShaderPropertiesHUAWEI.BYTES, VkPhysicalDeviceClusterCullingShaderPropertiesHUAWEI.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceClusterCullingShaderPropertiesHUAWEI> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull VkPhysicalDeviceClusterCullingShaderPropertiesHUAWEI value) {
             MemorySegment s = segment.asSlice(index * VkPhysicalDeviceClusterCullingShaderPropertiesHUAWEI.BYTES, VkPhysicalDeviceClusterCullingShaderPropertiesHUAWEI.BYTES);
             s.copyFrom(value.segment);
@@ -220,6 +224,12 @@ public record VkPhysicalDeviceClusterCullingShaderPropertiesHUAWEI(@NotNull Memo
         return new IntPtr(maxWorkGroupCountRaw());
     }
 
+    public VkPhysicalDeviceClusterCullingShaderPropertiesHUAWEI maxWorkGroupCount(@NotNull Consumer<IntPtr> consumer) {
+        @Unsigned IntPtr ptr = maxWorkGroupCount();
+        consumer.accept(ptr);
+        return this;
+    }
+
     public VkPhysicalDeviceClusterCullingShaderPropertiesHUAWEI maxWorkGroupCount(@Unsigned IntPtr value) {
         MemorySegment s = maxWorkGroupCountRaw();
         s.copyFrom(value.segment());
@@ -232,6 +242,12 @@ public record VkPhysicalDeviceClusterCullingShaderPropertiesHUAWEI(@NotNull Memo
 
     public @Unsigned IntPtr maxWorkGroupSize() {
         return new IntPtr(maxWorkGroupSizeRaw());
+    }
+
+    public VkPhysicalDeviceClusterCullingShaderPropertiesHUAWEI maxWorkGroupSize(@NotNull Consumer<IntPtr> consumer) {
+        @Unsigned IntPtr ptr = maxWorkGroupSize();
+        consumer.accept(ptr);
+        return this;
     }
 
     public VkPhysicalDeviceClusterCullingShaderPropertiesHUAWEI maxWorkGroupSize(@Unsigned IntPtr value) {

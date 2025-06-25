@@ -91,6 +91,10 @@ public record VkPhysicalDeviceRayTracingPipelineFeaturesKHR(@NotNull MemorySegme
             return new VkPhysicalDeviceRayTracingPipelineFeaturesKHR(segment.asSlice(index * VkPhysicalDeviceRayTracingPipelineFeaturesKHR.BYTES, VkPhysicalDeviceRayTracingPipelineFeaturesKHR.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceRayTracingPipelineFeaturesKHR> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull VkPhysicalDeviceRayTracingPipelineFeaturesKHR value) {
             MemorySegment s = segment.asSlice(index * VkPhysicalDeviceRayTracingPipelineFeaturesKHR.BYTES, VkPhysicalDeviceRayTracingPipelineFeaturesKHR.BYTES);
             s.copyFrom(value.segment);

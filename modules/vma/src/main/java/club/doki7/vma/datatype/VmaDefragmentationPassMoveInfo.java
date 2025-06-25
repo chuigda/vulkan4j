@@ -110,6 +110,10 @@ public record VmaDefragmentationPassMoveInfo(@NotNull MemorySegment segment) imp
             return new VmaDefragmentationPassMoveInfo(segment.asSlice(index * VmaDefragmentationPassMoveInfo.BYTES, VmaDefragmentationPassMoveInfo.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull VmaDefragmentationPassMoveInfo> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull VmaDefragmentationPassMoveInfo value) {
             MemorySegment s = segment.asSlice(index * VmaDefragmentationPassMoveInfo.BYTES, VmaDefragmentationPassMoveInfo.BYTES);
             s.copyFrom(value.segment);

@@ -94,6 +94,10 @@ public record VkRenderingAttachmentInfo(@NotNull MemorySegment segment) implemen
             return new VkRenderingAttachmentInfo(segment.asSlice(index * VkRenderingAttachmentInfo.BYTES, VkRenderingAttachmentInfo.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull VkRenderingAttachmentInfo> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull VkRenderingAttachmentInfo value) {
             MemorySegment s = segment.asSlice(index * VkRenderingAttachmentInfo.BYTES, VkRenderingAttachmentInfo.BYTES);
             s.copyFrom(value.segment);

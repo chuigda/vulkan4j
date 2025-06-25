@@ -78,6 +78,10 @@ public record VkDispatchIndirectCommand(@NotNull MemorySegment segment) implemen
             return new VkDispatchIndirectCommand(segment.asSlice(index * VkDispatchIndirectCommand.BYTES, VkDispatchIndirectCommand.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull VkDispatchIndirectCommand> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull VkDispatchIndirectCommand value) {
             MemorySegment s = segment.asSlice(index * VkDispatchIndirectCommand.BYTES, VkDispatchIndirectCommand.BYTES);
             s.copyFrom(value.segment);

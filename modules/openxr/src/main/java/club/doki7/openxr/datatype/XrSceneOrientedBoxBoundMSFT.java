@@ -81,6 +81,10 @@ public record XrSceneOrientedBoxBoundMSFT(@NotNull MemorySegment segment) implem
             return new XrSceneOrientedBoxBoundMSFT(segment.asSlice(index * XrSceneOrientedBoxBoundMSFT.BYTES, XrSceneOrientedBoxBoundMSFT.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull XrSceneOrientedBoxBoundMSFT> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull XrSceneOrientedBoxBoundMSFT value) {
             MemorySegment s = segment.asSlice(index * XrSceneOrientedBoxBoundMSFT.BYTES, XrSceneOrientedBoxBoundMSFT.BYTES);
             s.copyFrom(value.segment);

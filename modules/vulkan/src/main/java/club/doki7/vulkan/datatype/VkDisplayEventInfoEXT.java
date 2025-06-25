@@ -87,6 +87,10 @@ public record VkDisplayEventInfoEXT(@NotNull MemorySegment segment) implements I
             return new VkDisplayEventInfoEXT(segment.asSlice(index * VkDisplayEventInfoEXT.BYTES, VkDisplayEventInfoEXT.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull VkDisplayEventInfoEXT> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull VkDisplayEventInfoEXT value) {
             MemorySegment s = segment.asSlice(index * VkDisplayEventInfoEXT.BYTES, VkDisplayEventInfoEXT.BYTES);
             s.copyFrom(value.segment);

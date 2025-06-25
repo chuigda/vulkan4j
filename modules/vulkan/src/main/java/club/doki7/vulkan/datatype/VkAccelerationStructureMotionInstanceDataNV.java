@@ -78,6 +78,10 @@ public record VkAccelerationStructureMotionInstanceDataNV(@NotNull MemorySegment
             return new VkAccelerationStructureMotionInstanceDataNV(segment.asSlice(index * VkAccelerationStructureMotionInstanceDataNV.BYTES, VkAccelerationStructureMotionInstanceDataNV.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull VkAccelerationStructureMotionInstanceDataNV> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull VkAccelerationStructureMotionInstanceDataNV value) {
             MemorySegment s = segment.asSlice(index * VkAccelerationStructureMotionInstanceDataNV.BYTES, VkAccelerationStructureMotionInstanceDataNV.BYTES);
             s.copyFrom(value.segment);

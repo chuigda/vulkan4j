@@ -82,6 +82,10 @@ public record XrSpaceVelocityDataKHR(@NotNull MemorySegment segment) implements 
             return new XrSpaceVelocityDataKHR(segment.asSlice(index * XrSpaceVelocityDataKHR.BYTES, XrSpaceVelocityDataKHR.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull XrSpaceVelocityDataKHR> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull XrSpaceVelocityDataKHR value) {
             MemorySegment s = segment.asSlice(index * XrSpaceVelocityDataKHR.BYTES, XrSpaceVelocityDataKHR.BYTES);
             s.copyFrom(value.segment);

@@ -84,6 +84,10 @@ public record StdVideoEncodeH265WeightTable(@NotNull MemorySegment segment) impl
             return new StdVideoEncodeH265WeightTable(segment.asSlice(index * StdVideoEncodeH265WeightTable.BYTES, StdVideoEncodeH265WeightTable.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull StdVideoEncodeH265WeightTable> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull StdVideoEncodeH265WeightTable value) {
             MemorySegment s = segment.asSlice(index * StdVideoEncodeH265WeightTable.BYTES, StdVideoEncodeH265WeightTable.BYTES);
             s.copyFrom(value.segment);
@@ -213,6 +217,12 @@ public record StdVideoEncodeH265WeightTable(@NotNull MemorySegment segment) impl
         return new BytePtr(delta_luma_weight_l0Raw());
     }
 
+    public StdVideoEncodeH265WeightTable delta_luma_weight_l0(@NotNull Consumer<BytePtr> consumer) {
+        BytePtr ptr = delta_luma_weight_l0();
+        consumer.accept(ptr);
+        return this;
+    }
+
     public StdVideoEncodeH265WeightTable delta_luma_weight_l0(BytePtr value) {
         MemorySegment s = delta_luma_weight_l0Raw();
         s.copyFrom(value.segment());
@@ -225,6 +235,12 @@ public record StdVideoEncodeH265WeightTable(@NotNull MemorySegment segment) impl
 
     public BytePtr luma_offset_l0() {
         return new BytePtr(luma_offset_l0Raw());
+    }
+
+    public StdVideoEncodeH265WeightTable luma_offset_l0(@NotNull Consumer<BytePtr> consumer) {
+        BytePtr ptr = luma_offset_l0();
+        consumer.accept(ptr);
+        return this;
     }
 
     public StdVideoEncodeH265WeightTable luma_offset_l0(BytePtr value) {
@@ -241,6 +257,12 @@ public record StdVideoEncodeH265WeightTable(@NotNull MemorySegment segment) impl
         return new BytePtr(delta_chroma_weight_l0Raw());
     }
 
+    public StdVideoEncodeH265WeightTable delta_chroma_weight_l0(@NotNull Consumer<BytePtr> consumer) {
+        BytePtr ptr = delta_chroma_weight_l0();
+        consumer.accept(ptr);
+        return this;
+    }
+
     public StdVideoEncodeH265WeightTable delta_chroma_weight_l0(BytePtr value) {
         MemorySegment s = delta_chroma_weight_l0Raw();
         s.copyFrom(value.segment());
@@ -253,6 +275,12 @@ public record StdVideoEncodeH265WeightTable(@NotNull MemorySegment segment) impl
 
     public BytePtr delta_chroma_offset_l0() {
         return new BytePtr(delta_chroma_offset_l0Raw());
+    }
+
+    public StdVideoEncodeH265WeightTable delta_chroma_offset_l0(@NotNull Consumer<BytePtr> consumer) {
+        BytePtr ptr = delta_chroma_offset_l0();
+        consumer.accept(ptr);
+        return this;
     }
 
     public StdVideoEncodeH265WeightTable delta_chroma_offset_l0(BytePtr value) {
@@ -269,6 +297,12 @@ public record StdVideoEncodeH265WeightTable(@NotNull MemorySegment segment) impl
         return new BytePtr(delta_luma_weight_l1Raw());
     }
 
+    public StdVideoEncodeH265WeightTable delta_luma_weight_l1(@NotNull Consumer<BytePtr> consumer) {
+        BytePtr ptr = delta_luma_weight_l1();
+        consumer.accept(ptr);
+        return this;
+    }
+
     public StdVideoEncodeH265WeightTable delta_luma_weight_l1(BytePtr value) {
         MemorySegment s = delta_luma_weight_l1Raw();
         s.copyFrom(value.segment());
@@ -281,6 +315,12 @@ public record StdVideoEncodeH265WeightTable(@NotNull MemorySegment segment) impl
 
     public BytePtr luma_offset_l1() {
         return new BytePtr(luma_offset_l1Raw());
+    }
+
+    public StdVideoEncodeH265WeightTable luma_offset_l1(@NotNull Consumer<BytePtr> consumer) {
+        BytePtr ptr = luma_offset_l1();
+        consumer.accept(ptr);
+        return this;
     }
 
     public StdVideoEncodeH265WeightTable luma_offset_l1(BytePtr value) {
@@ -297,6 +337,12 @@ public record StdVideoEncodeH265WeightTable(@NotNull MemorySegment segment) impl
         return new BytePtr(delta_chroma_weight_l1Raw());
     }
 
+    public StdVideoEncodeH265WeightTable delta_chroma_weight_l1(@NotNull Consumer<BytePtr> consumer) {
+        BytePtr ptr = delta_chroma_weight_l1();
+        consumer.accept(ptr);
+        return this;
+    }
+
     public StdVideoEncodeH265WeightTable delta_chroma_weight_l1(BytePtr value) {
         MemorySegment s = delta_chroma_weight_l1Raw();
         s.copyFrom(value.segment());
@@ -309,6 +355,12 @@ public record StdVideoEncodeH265WeightTable(@NotNull MemorySegment segment) impl
 
     public BytePtr delta_chroma_offset_l1() {
         return new BytePtr(delta_chroma_offset_l1Raw());
+    }
+
+    public StdVideoEncodeH265WeightTable delta_chroma_offset_l1(@NotNull Consumer<BytePtr> consumer) {
+        BytePtr ptr = delta_chroma_offset_l1();
+        consumer.accept(ptr);
+        return this;
     }
 
     public StdVideoEncodeH265WeightTable delta_chroma_offset_l1(BytePtr value) {

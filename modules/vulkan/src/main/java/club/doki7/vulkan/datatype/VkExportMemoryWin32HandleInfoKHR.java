@@ -89,6 +89,10 @@ public record VkExportMemoryWin32HandleInfoKHR(@NotNull MemorySegment segment) i
             return new VkExportMemoryWin32HandleInfoKHR(segment.asSlice(index * VkExportMemoryWin32HandleInfoKHR.BYTES, VkExportMemoryWin32HandleInfoKHR.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull VkExportMemoryWin32HandleInfoKHR> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull VkExportMemoryWin32HandleInfoKHR value) {
             MemorySegment s = segment.asSlice(index * VkExportMemoryWin32HandleInfoKHR.BYTES, VkExportMemoryWin32HandleInfoKHR.BYTES);
             s.copyFrom(value.segment);

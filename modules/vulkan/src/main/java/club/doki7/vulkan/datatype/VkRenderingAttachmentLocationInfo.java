@@ -88,6 +88,10 @@ public record VkRenderingAttachmentLocationInfo(@NotNull MemorySegment segment) 
             return new VkRenderingAttachmentLocationInfo(segment.asSlice(index * VkRenderingAttachmentLocationInfo.BYTES, VkRenderingAttachmentLocationInfo.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull VkRenderingAttachmentLocationInfo> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull VkRenderingAttachmentLocationInfo value) {
             MemorySegment s = segment.asSlice(index * VkRenderingAttachmentLocationInfo.BYTES, VkRenderingAttachmentLocationInfo.BYTES);
             s.copyFrom(value.segment);

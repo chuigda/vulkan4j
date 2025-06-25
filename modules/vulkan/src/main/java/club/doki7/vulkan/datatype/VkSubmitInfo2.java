@@ -93,6 +93,10 @@ public record VkSubmitInfo2(@NotNull MemorySegment segment) implements IVkSubmit
             return new VkSubmitInfo2(segment.asSlice(index * VkSubmitInfo2.BYTES, VkSubmitInfo2.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull VkSubmitInfo2> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull VkSubmitInfo2 value) {
             MemorySegment s = segment.asSlice(index * VkSubmitInfo2.BYTES, VkSubmitInfo2.BYTES);
             s.copyFrom(value.segment);

@@ -92,6 +92,10 @@ public record XrSpatialComponentMesh3DListEXT(@NotNull MemorySegment segment) im
             return new XrSpatialComponentMesh3DListEXT(segment.asSlice(index * XrSpatialComponentMesh3DListEXT.BYTES, XrSpatialComponentMesh3DListEXT.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull XrSpatialComponentMesh3DListEXT> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull XrSpatialComponentMesh3DListEXT value) {
             MemorySegment s = segment.asSlice(index * XrSpatialComponentMesh3DListEXT.BYTES, XrSpatialComponentMesh3DListEXT.BYTES);
             s.copyFrom(value.segment);

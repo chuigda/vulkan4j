@@ -92,6 +92,10 @@ public record XrHandMeshSpaceCreateInfoMSFT(@NotNull MemorySegment segment) impl
             return new XrHandMeshSpaceCreateInfoMSFT(segment.asSlice(index * XrHandMeshSpaceCreateInfoMSFT.BYTES, XrHandMeshSpaceCreateInfoMSFT.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull XrHandMeshSpaceCreateInfoMSFT> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull XrHandMeshSpaceCreateInfoMSFT value) {
             MemorySegment s = segment.asSlice(index * XrHandMeshSpaceCreateInfoMSFT.BYTES, XrHandMeshSpaceCreateInfoMSFT.BYTES);
             s.copyFrom(value.segment);

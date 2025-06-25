@@ -87,6 +87,10 @@ public record VkPhysicalDeviceProtectedMemoryProperties(@NotNull MemorySegment s
             return new VkPhysicalDeviceProtectedMemoryProperties(segment.asSlice(index * VkPhysicalDeviceProtectedMemoryProperties.BYTES, VkPhysicalDeviceProtectedMemoryProperties.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceProtectedMemoryProperties> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull VkPhysicalDeviceProtectedMemoryProperties value) {
             MemorySegment s = segment.asSlice(index * VkPhysicalDeviceProtectedMemoryProperties.BYTES, VkPhysicalDeviceProtectedMemoryProperties.BYTES);
             s.copyFrom(value.segment);

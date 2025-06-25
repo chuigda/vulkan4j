@@ -77,6 +77,10 @@ public record VkDescriptorPoolSize(@NotNull MemorySegment segment) implements IV
             return new VkDescriptorPoolSize(segment.asSlice(index * VkDescriptorPoolSize.BYTES, VkDescriptorPoolSize.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull VkDescriptorPoolSize> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull VkDescriptorPoolSize value) {
             MemorySegment s = segment.asSlice(index * VkDescriptorPoolSize.BYTES, VkDescriptorPoolSize.BYTES);
             s.copyFrom(value.segment);

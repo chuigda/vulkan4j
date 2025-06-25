@@ -78,6 +78,10 @@ public record VkCoarseSampleLocationNV(@NotNull MemorySegment segment) implement
             return new VkCoarseSampleLocationNV(segment.asSlice(index * VkCoarseSampleLocationNV.BYTES, VkCoarseSampleLocationNV.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull VkCoarseSampleLocationNV> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull VkCoarseSampleLocationNV value) {
             MemorySegment s = segment.asSlice(index * VkCoarseSampleLocationNV.BYTES, VkCoarseSampleLocationNV.BYTES);
             s.copyFrom(value.segment);

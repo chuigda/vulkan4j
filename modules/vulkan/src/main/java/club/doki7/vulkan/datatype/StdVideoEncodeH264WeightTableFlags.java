@@ -77,6 +77,10 @@ public record StdVideoEncodeH264WeightTableFlags(@NotNull MemorySegment segment)
             return new StdVideoEncodeH264WeightTableFlags(segment.asSlice(index * StdVideoEncodeH264WeightTableFlags.BYTES, StdVideoEncodeH264WeightTableFlags.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull StdVideoEncodeH264WeightTableFlags> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull StdVideoEncodeH264WeightTableFlags value) {
             MemorySegment s = segment.asSlice(index * StdVideoEncodeH264WeightTableFlags.BYTES, StdVideoEncodeH264WeightTableFlags.BYTES);
             s.copyFrom(value.segment);

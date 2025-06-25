@@ -89,6 +89,10 @@ public record VkDescriptorSetLayoutCreateInfo(@NotNull MemorySegment segment) im
             return new VkDescriptorSetLayoutCreateInfo(segment.asSlice(index * VkDescriptorSetLayoutCreateInfo.BYTES, VkDescriptorSetLayoutCreateInfo.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull VkDescriptorSetLayoutCreateInfo> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull VkDescriptorSetLayoutCreateInfo value) {
             MemorySegment s = segment.asSlice(index * VkDescriptorSetLayoutCreateInfo.BYTES, VkDescriptorSetLayoutCreateInfo.BYTES);
             s.copyFrom(value.segment);

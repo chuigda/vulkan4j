@@ -88,6 +88,10 @@ public record VkLayerSettingsCreateInfoEXT(@NotNull MemorySegment segment) imple
             return new VkLayerSettingsCreateInfoEXT(segment.asSlice(index * VkLayerSettingsCreateInfoEXT.BYTES, VkLayerSettingsCreateInfoEXT.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull VkLayerSettingsCreateInfoEXT> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull VkLayerSettingsCreateInfoEXT value) {
             MemorySegment s = segment.asSlice(index * VkLayerSettingsCreateInfoEXT.BYTES, VkLayerSettingsCreateInfoEXT.BYTES);
             s.copyFrom(value.segment);

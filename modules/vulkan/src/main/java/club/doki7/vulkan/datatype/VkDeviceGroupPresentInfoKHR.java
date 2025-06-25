@@ -89,6 +89,10 @@ public record VkDeviceGroupPresentInfoKHR(@NotNull MemorySegment segment) implem
             return new VkDeviceGroupPresentInfoKHR(segment.asSlice(index * VkDeviceGroupPresentInfoKHR.BYTES, VkDeviceGroupPresentInfoKHR.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull VkDeviceGroupPresentInfoKHR> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull VkDeviceGroupPresentInfoKHR value) {
             MemorySegment s = segment.asSlice(index * VkDeviceGroupPresentInfoKHR.BYTES, VkDeviceGroupPresentInfoKHR.BYTES);
             s.copyFrom(value.segment);

@@ -87,6 +87,10 @@ public record VkPhysicalDeviceDeviceGeneratedCommandsFeaturesNV(@NotNull MemoryS
             return new VkPhysicalDeviceDeviceGeneratedCommandsFeaturesNV(segment.asSlice(index * VkPhysicalDeviceDeviceGeneratedCommandsFeaturesNV.BYTES, VkPhysicalDeviceDeviceGeneratedCommandsFeaturesNV.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceDeviceGeneratedCommandsFeaturesNV> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull VkPhysicalDeviceDeviceGeneratedCommandsFeaturesNV value) {
             MemorySegment s = segment.asSlice(index * VkPhysicalDeviceDeviceGeneratedCommandsFeaturesNV.BYTES, VkPhysicalDeviceDeviceGeneratedCommandsFeaturesNV.BYTES);
             s.copyFrom(value.segment);

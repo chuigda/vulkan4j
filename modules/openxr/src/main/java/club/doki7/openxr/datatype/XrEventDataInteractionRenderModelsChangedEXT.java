@@ -90,6 +90,10 @@ public record XrEventDataInteractionRenderModelsChangedEXT(@NotNull MemorySegmen
             return new XrEventDataInteractionRenderModelsChangedEXT(segment.asSlice(index * XrEventDataInteractionRenderModelsChangedEXT.BYTES, XrEventDataInteractionRenderModelsChangedEXT.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull XrEventDataInteractionRenderModelsChangedEXT> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull XrEventDataInteractionRenderModelsChangedEXT value) {
             MemorySegment s = segment.asSlice(index * XrEventDataInteractionRenderModelsChangedEXT.BYTES, XrEventDataInteractionRenderModelsChangedEXT.BYTES);
             s.copyFrom(value.segment);

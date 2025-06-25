@@ -87,6 +87,10 @@ public record VkSharedPresentSurfaceCapabilitiesKHR(@NotNull MemorySegment segme
             return new VkSharedPresentSurfaceCapabilitiesKHR(segment.asSlice(index * VkSharedPresentSurfaceCapabilitiesKHR.BYTES, VkSharedPresentSurfaceCapabilitiesKHR.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull VkSharedPresentSurfaceCapabilitiesKHR> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull VkSharedPresentSurfaceCapabilitiesKHR value) {
             MemorySegment s = segment.asSlice(index * VkSharedPresentSurfaceCapabilitiesKHR.BYTES, VkSharedPresentSurfaceCapabilitiesKHR.BYTES);
             s.copyFrom(value.segment);

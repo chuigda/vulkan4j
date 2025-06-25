@@ -91,6 +91,10 @@ public record VkPushDescriptorSetInfo(@NotNull MemorySegment segment) implements
             return new VkPushDescriptorSetInfo(segment.asSlice(index * VkPushDescriptorSetInfo.BYTES, VkPushDescriptorSetInfo.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull VkPushDescriptorSetInfo> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull VkPushDescriptorSetInfo value) {
             MemorySegment s = segment.asSlice(index * VkPushDescriptorSetInfo.BYTES, VkPushDescriptorSetInfo.BYTES);
             s.copyFrom(value.segment);

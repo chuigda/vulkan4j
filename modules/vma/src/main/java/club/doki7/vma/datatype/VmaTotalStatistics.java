@@ -84,6 +84,10 @@ public record VmaTotalStatistics(@NotNull MemorySegment segment) implements IVma
             return new VmaTotalStatistics(segment.asSlice(index * VmaTotalStatistics.BYTES, VmaTotalStatistics.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull VmaTotalStatistics> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull VmaTotalStatistics value) {
             MemorySegment s = segment.asSlice(index * VmaTotalStatistics.BYTES, VmaTotalStatistics.BYTES);
             s.copyFrom(value.segment);
@@ -181,6 +185,12 @@ public record VmaTotalStatistics(@NotNull MemorySegment segment) implements IVma
         return new VmaDetailedStatistics.Ptr(memoryTypeRaw());
     }
 
+    public VmaTotalStatistics memoryType(@NotNull Consumer<VmaDetailedStatistics.Ptr> consumer) {
+        VmaDetailedStatistics.Ptr ptr = memoryType();
+        consumer.accept(ptr);
+        return this;
+    }
+
     public VmaTotalStatistics memoryType(VmaDetailedStatistics.Ptr value) {
         MemorySegment s = memoryTypeRaw();
         s.copyFrom(value.segment());
@@ -203,6 +213,12 @@ public record VmaTotalStatistics(@NotNull MemorySegment segment) implements IVma
 
     public VmaDetailedStatistics.Ptr memoryHeap() {
         return new VmaDetailedStatistics.Ptr(memoryHeapRaw());
+    }
+
+    public VmaTotalStatistics memoryHeap(@NotNull Consumer<VmaDetailedStatistics.Ptr> consumer) {
+        VmaDetailedStatistics.Ptr ptr = memoryHeap();
+        consumer.accept(ptr);
+        return this;
     }
 
     public VmaTotalStatistics memoryHeap(VmaDetailedStatistics.Ptr value) {

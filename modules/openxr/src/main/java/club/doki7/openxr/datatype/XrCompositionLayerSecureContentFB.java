@@ -91,6 +91,10 @@ public record XrCompositionLayerSecureContentFB(@NotNull MemorySegment segment) 
             return new XrCompositionLayerSecureContentFB(segment.asSlice(index * XrCompositionLayerSecureContentFB.BYTES, XrCompositionLayerSecureContentFB.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull XrCompositionLayerSecureContentFB> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull XrCompositionLayerSecureContentFB value) {
             MemorySegment s = segment.asSlice(index * XrCompositionLayerSecureContentFB.BYTES, XrCompositionLayerSecureContentFB.BYTES);
             s.copyFrom(value.segment);

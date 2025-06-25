@@ -87,6 +87,10 @@ public record VkPhysicalDeviceExternalSemaphoreInfo(@NotNull MemorySegment segme
             return new VkPhysicalDeviceExternalSemaphoreInfo(segment.asSlice(index * VkPhysicalDeviceExternalSemaphoreInfo.BYTES, VkPhysicalDeviceExternalSemaphoreInfo.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceExternalSemaphoreInfo> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull VkPhysicalDeviceExternalSemaphoreInfo value) {
             MemorySegment s = segment.asSlice(index * VkPhysicalDeviceExternalSemaphoreInfo.BYTES, VkPhysicalDeviceExternalSemaphoreInfo.BYTES);
             s.copyFrom(value.segment);

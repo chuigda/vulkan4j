@@ -93,6 +93,10 @@ public record XrGraphicsBindingOpenGLESAndroidKHR(@NotNull MemorySegment segment
             return new XrGraphicsBindingOpenGLESAndroidKHR(segment.asSlice(index * XrGraphicsBindingOpenGLESAndroidKHR.BYTES, XrGraphicsBindingOpenGLESAndroidKHR.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull XrGraphicsBindingOpenGLESAndroidKHR> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull XrGraphicsBindingOpenGLESAndroidKHR value) {
             MemorySegment s = segment.asSlice(index * XrGraphicsBindingOpenGLESAndroidKHR.BYTES, XrGraphicsBindingOpenGLESAndroidKHR.BYTES);
             s.copyFrom(value.segment);

@@ -88,6 +88,10 @@ public record VkDeviceGroupDeviceCreateInfo(@NotNull MemorySegment segment) impl
             return new VkDeviceGroupDeviceCreateInfo(segment.asSlice(index * VkDeviceGroupDeviceCreateInfo.BYTES, VkDeviceGroupDeviceCreateInfo.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull VkDeviceGroupDeviceCreateInfo> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull VkDeviceGroupDeviceCreateInfo value) {
             MemorySegment s = segment.asSlice(index * VkDeviceGroupDeviceCreateInfo.BYTES, VkDeviceGroupDeviceCreateInfo.BYTES);
             s.copyFrom(value.segment);

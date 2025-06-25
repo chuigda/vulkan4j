@@ -88,6 +88,10 @@ public record VkStreamDescriptorSurfaceCreateInfoGGP(@NotNull MemorySegment segm
             return new VkStreamDescriptorSurfaceCreateInfoGGP(segment.asSlice(index * VkStreamDescriptorSurfaceCreateInfoGGP.BYTES, VkStreamDescriptorSurfaceCreateInfoGGP.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull VkStreamDescriptorSurfaceCreateInfoGGP> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull VkStreamDescriptorSurfaceCreateInfoGGP value) {
             MemorySegment s = segment.asSlice(index * VkStreamDescriptorSurfaceCreateInfoGGP.BYTES, VkStreamDescriptorSurfaceCreateInfoGGP.BYTES);
             s.copyFrom(value.segment);

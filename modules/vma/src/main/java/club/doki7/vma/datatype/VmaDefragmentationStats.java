@@ -90,6 +90,10 @@ public record VmaDefragmentationStats(@NotNull MemorySegment segment) implements
             return new VmaDefragmentationStats(segment.asSlice(index * VmaDefragmentationStats.BYTES, VmaDefragmentationStats.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull VmaDefragmentationStats> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull VmaDefragmentationStats value) {
             MemorySegment s = segment.asSlice(index * VmaDefragmentationStats.BYTES, VmaDefragmentationStats.BYTES);
             s.copyFrom(value.segment);

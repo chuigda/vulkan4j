@@ -83,6 +83,10 @@ public record XrQuaternionf(@NotNull MemorySegment segment) implements IXrQuater
             return new XrQuaternionf(segment.asSlice(index * XrQuaternionf.BYTES, XrQuaternionf.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull XrQuaternionf> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull XrQuaternionf value) {
             MemorySegment s = segment.asSlice(index * XrQuaternionf.BYTES, XrQuaternionf.BYTES);
             s.copyFrom(value.segment);

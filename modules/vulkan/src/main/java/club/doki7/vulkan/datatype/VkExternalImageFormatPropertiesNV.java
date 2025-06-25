@@ -79,6 +79,10 @@ public record VkExternalImageFormatPropertiesNV(@NotNull MemorySegment segment) 
             return new VkExternalImageFormatPropertiesNV(segment.asSlice(index * VkExternalImageFormatPropertiesNV.BYTES, VkExternalImageFormatPropertiesNV.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull VkExternalImageFormatPropertiesNV> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull VkExternalImageFormatPropertiesNV value) {
             MemorySegment s = segment.asSlice(index * VkExternalImageFormatPropertiesNV.BYTES, VkExternalImageFormatPropertiesNV.BYTES);
             s.copyFrom(value.segment);

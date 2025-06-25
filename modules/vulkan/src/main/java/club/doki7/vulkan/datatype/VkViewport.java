@@ -81,6 +81,10 @@ public record VkViewport(@NotNull MemorySegment segment) implements IVkViewport 
             return new VkViewport(segment.asSlice(index * VkViewport.BYTES, VkViewport.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull VkViewport> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull VkViewport value) {
             MemorySegment s = segment.asSlice(index * VkViewport.BYTES, VkViewport.BYTES);
             s.copyFrom(value.segment);

@@ -88,6 +88,10 @@ public record VkPhysicalDeviceSamplerFilterMinmaxProperties(@NotNull MemorySegme
             return new VkPhysicalDeviceSamplerFilterMinmaxProperties(segment.asSlice(index * VkPhysicalDeviceSamplerFilterMinmaxProperties.BYTES, VkPhysicalDeviceSamplerFilterMinmaxProperties.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceSamplerFilterMinmaxProperties> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull VkPhysicalDeviceSamplerFilterMinmaxProperties value) {
             MemorySegment s = segment.asSlice(index * VkPhysicalDeviceSamplerFilterMinmaxProperties.BYTES, VkPhysicalDeviceSamplerFilterMinmaxProperties.BYTES);
             s.copyFrom(value.segment);

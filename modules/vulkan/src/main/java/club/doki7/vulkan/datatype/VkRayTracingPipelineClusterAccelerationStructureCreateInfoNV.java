@@ -87,6 +87,10 @@ public record VkRayTracingPipelineClusterAccelerationStructureCreateInfoNV(@NotN
             return new VkRayTracingPipelineClusterAccelerationStructureCreateInfoNV(segment.asSlice(index * VkRayTracingPipelineClusterAccelerationStructureCreateInfoNV.BYTES, VkRayTracingPipelineClusterAccelerationStructureCreateInfoNV.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull VkRayTracingPipelineClusterAccelerationStructureCreateInfoNV> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull VkRayTracingPipelineClusterAccelerationStructureCreateInfoNV value) {
             MemorySegment s = segment.asSlice(index * VkRayTracingPipelineClusterAccelerationStructureCreateInfoNV.BYTES, VkRayTracingPipelineClusterAccelerationStructureCreateInfoNV.BYTES);
             s.copyFrom(value.segment);

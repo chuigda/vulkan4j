@@ -91,6 +91,10 @@ public record XrSystemSpatialScenePropertiesBD(@NotNull MemorySegment segment) i
             return new XrSystemSpatialScenePropertiesBD(segment.asSlice(index * XrSystemSpatialScenePropertiesBD.BYTES, XrSystemSpatialScenePropertiesBD.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull XrSystemSpatialScenePropertiesBD> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull XrSystemSpatialScenePropertiesBD value) {
             MemorySegment s = segment.asSlice(index * XrSystemSpatialScenePropertiesBD.BYTES, XrSystemSpatialScenePropertiesBD.BYTES);
             s.copyFrom(value.segment);

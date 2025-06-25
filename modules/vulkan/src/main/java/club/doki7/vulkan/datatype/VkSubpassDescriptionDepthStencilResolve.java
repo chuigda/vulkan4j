@@ -89,6 +89,10 @@ public record VkSubpassDescriptionDepthStencilResolve(@NotNull MemorySegment seg
             return new VkSubpassDescriptionDepthStencilResolve(segment.asSlice(index * VkSubpassDescriptionDepthStencilResolve.BYTES, VkSubpassDescriptionDepthStencilResolve.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull VkSubpassDescriptionDepthStencilResolve> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull VkSubpassDescriptionDepthStencilResolve value) {
             MemorySegment s = segment.asSlice(index * VkSubpassDescriptionDepthStencilResolve.BYTES, VkSubpassDescriptionDepthStencilResolve.BYTES);
             s.copyFrom(value.segment);

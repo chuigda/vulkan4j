@@ -90,6 +90,10 @@ public record XrSceneMeshBuffersMSFT(@NotNull MemorySegment segment) implements 
             return new XrSceneMeshBuffersMSFT(segment.asSlice(index * XrSceneMeshBuffersMSFT.BYTES, XrSceneMeshBuffersMSFT.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull XrSceneMeshBuffersMSFT> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull XrSceneMeshBuffersMSFT value) {
             MemorySegment s = segment.asSlice(index * XrSceneMeshBuffersMSFT.BYTES, XrSceneMeshBuffersMSFT.BYTES);
             s.copyFrom(value.segment);

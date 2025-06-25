@@ -87,6 +87,10 @@ public record VkPhysicalDevicePointClippingProperties(@NotNull MemorySegment seg
             return new VkPhysicalDevicePointClippingProperties(segment.asSlice(index * VkPhysicalDevicePointClippingProperties.BYTES, VkPhysicalDevicePointClippingProperties.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull VkPhysicalDevicePointClippingProperties> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull VkPhysicalDevicePointClippingProperties value) {
             MemorySegment s = segment.asSlice(index * VkPhysicalDevicePointClippingProperties.BYTES, VkPhysicalDevicePointClippingProperties.BYTES);
             s.copyFrom(value.segment);

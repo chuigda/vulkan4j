@@ -90,6 +90,10 @@ public record VkVideoEncodeH265GopRemainingFrameInfoKHR(@NotNull MemorySegment s
             return new VkVideoEncodeH265GopRemainingFrameInfoKHR(segment.asSlice(index * VkVideoEncodeH265GopRemainingFrameInfoKHR.BYTES, VkVideoEncodeH265GopRemainingFrameInfoKHR.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull VkVideoEncodeH265GopRemainingFrameInfoKHR> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull VkVideoEncodeH265GopRemainingFrameInfoKHR value) {
             MemorySegment s = segment.asSlice(index * VkVideoEncodeH265GopRemainingFrameInfoKHR.BYTES, VkVideoEncodeH265GopRemainingFrameInfoKHR.BYTES);
             s.copyFrom(value.segment);

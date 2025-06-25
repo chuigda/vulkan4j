@@ -92,6 +92,10 @@ public record XrEventDataShareSpacesCompleteMETA(@NotNull MemorySegment segment)
             return new XrEventDataShareSpacesCompleteMETA(segment.asSlice(index * XrEventDataShareSpacesCompleteMETA.BYTES, XrEventDataShareSpacesCompleteMETA.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull XrEventDataShareSpacesCompleteMETA> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull XrEventDataShareSpacesCompleteMETA value) {
             MemorySegment s = segment.asSlice(index * XrEventDataShareSpacesCompleteMETA.BYTES, XrEventDataShareSpacesCompleteMETA.BYTES);
             s.copyFrom(value.segment);

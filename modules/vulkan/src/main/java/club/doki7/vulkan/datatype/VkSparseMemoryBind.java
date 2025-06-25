@@ -80,6 +80,10 @@ public record VkSparseMemoryBind(@NotNull MemorySegment segment) implements IVkS
             return new VkSparseMemoryBind(segment.asSlice(index * VkSparseMemoryBind.BYTES, VkSparseMemoryBind.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull VkSparseMemoryBind> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull VkSparseMemoryBind value) {
             MemorySegment s = segment.asSlice(index * VkSparseMemoryBind.BYTES, VkSparseMemoryBind.BYTES);
             s.copyFrom(value.segment);

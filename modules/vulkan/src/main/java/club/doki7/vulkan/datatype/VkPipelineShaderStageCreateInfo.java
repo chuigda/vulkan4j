@@ -91,6 +91,10 @@ public record VkPipelineShaderStageCreateInfo(@NotNull MemorySegment segment) im
             return new VkPipelineShaderStageCreateInfo(segment.asSlice(index * VkPipelineShaderStageCreateInfo.BYTES, VkPipelineShaderStageCreateInfo.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull VkPipelineShaderStageCreateInfo> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull VkPipelineShaderStageCreateInfo value) {
             MemorySegment s = segment.asSlice(index * VkPipelineShaderStageCreateInfo.BYTES, VkPipelineShaderStageCreateInfo.BYTES);
             s.copyFrom(value.segment);

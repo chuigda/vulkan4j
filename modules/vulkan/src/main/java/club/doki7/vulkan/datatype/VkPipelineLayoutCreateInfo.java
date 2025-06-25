@@ -91,6 +91,10 @@ public record VkPipelineLayoutCreateInfo(@NotNull MemorySegment segment) impleme
             return new VkPipelineLayoutCreateInfo(segment.asSlice(index * VkPipelineLayoutCreateInfo.BYTES, VkPipelineLayoutCreateInfo.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull VkPipelineLayoutCreateInfo> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull VkPipelineLayoutCreateInfo value) {
             MemorySegment s = segment.asSlice(index * VkPipelineLayoutCreateInfo.BYTES, VkPipelineLayoutCreateInfo.BYTES);
             s.copyFrom(value.segment);

@@ -86,6 +86,10 @@ public record VkSubpassEndInfo(@NotNull MemorySegment segment) implements IVkSub
             return new VkSubpassEndInfo(segment.asSlice(index * VkSubpassEndInfo.BYTES, VkSubpassEndInfo.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull VkSubpassEndInfo> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull VkSubpassEndInfo value) {
             MemorySegment s = segment.asSlice(index * VkSubpassEndInfo.BYTES, VkSubpassEndInfo.BYTES);
             s.copyFrom(value.segment);

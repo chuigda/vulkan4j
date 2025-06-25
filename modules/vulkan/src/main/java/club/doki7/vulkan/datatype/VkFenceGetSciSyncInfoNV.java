@@ -88,6 +88,10 @@ public record VkFenceGetSciSyncInfoNV(@NotNull MemorySegment segment) implements
             return new VkFenceGetSciSyncInfoNV(segment.asSlice(index * VkFenceGetSciSyncInfoNV.BYTES, VkFenceGetSciSyncInfoNV.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull VkFenceGetSciSyncInfoNV> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull VkFenceGetSciSyncInfoNV value) {
             MemorySegment s = segment.asSlice(index * VkFenceGetSciSyncInfoNV.BYTES, VkFenceGetSciSyncInfoNV.BYTES);
             s.copyFrom(value.segment);

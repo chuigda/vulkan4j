@@ -93,6 +93,10 @@ public record XrCreateSpatialDiscoverySnapshotCompletionInfoEXT(@NotNull MemoryS
             return new XrCreateSpatialDiscoverySnapshotCompletionInfoEXT(segment.asSlice(index * XrCreateSpatialDiscoverySnapshotCompletionInfoEXT.BYTES, XrCreateSpatialDiscoverySnapshotCompletionInfoEXT.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull XrCreateSpatialDiscoverySnapshotCompletionInfoEXT> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull XrCreateSpatialDiscoverySnapshotCompletionInfoEXT value) {
             MemorySegment s = segment.asSlice(index * XrCreateSpatialDiscoverySnapshotCompletionInfoEXT.BYTES, XrCreateSpatialDiscoverySnapshotCompletionInfoEXT.BYTES);
             s.copyFrom(value.segment);

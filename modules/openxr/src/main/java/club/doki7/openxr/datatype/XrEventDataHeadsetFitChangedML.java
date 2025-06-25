@@ -92,6 +92,10 @@ public record XrEventDataHeadsetFitChangedML(@NotNull MemorySegment segment) imp
             return new XrEventDataHeadsetFitChangedML(segment.asSlice(index * XrEventDataHeadsetFitChangedML.BYTES, XrEventDataHeadsetFitChangedML.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull XrEventDataHeadsetFitChangedML> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull XrEventDataHeadsetFitChangedML value) {
             MemorySegment s = segment.asSlice(index * XrEventDataHeadsetFitChangedML.BYTES, XrEventDataHeadsetFitChangedML.BYTES);
             s.copyFrom(value.segment);

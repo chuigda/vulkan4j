@@ -88,6 +88,10 @@ public record VkWriteDescriptorSetInlineUniformBlock(@NotNull MemorySegment segm
             return new VkWriteDescriptorSetInlineUniformBlock(segment.asSlice(index * VkWriteDescriptorSetInlineUniformBlock.BYTES, VkWriteDescriptorSetInlineUniformBlock.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull VkWriteDescriptorSetInlineUniformBlock> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull VkWriteDescriptorSetInlineUniformBlock value) {
             MemorySegment s = segment.asSlice(index * VkWriteDescriptorSetInlineUniformBlock.BYTES, VkWriteDescriptorSetInlineUniformBlock.BYTES);
             s.copyFrom(value.segment);

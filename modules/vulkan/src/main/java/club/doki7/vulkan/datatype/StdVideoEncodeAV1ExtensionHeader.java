@@ -75,6 +75,10 @@ public record StdVideoEncodeAV1ExtensionHeader(@NotNull MemorySegment segment) i
             return new StdVideoEncodeAV1ExtensionHeader(segment.asSlice(index * StdVideoEncodeAV1ExtensionHeader.BYTES, StdVideoEncodeAV1ExtensionHeader.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull StdVideoEncodeAV1ExtensionHeader> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull StdVideoEncodeAV1ExtensionHeader value) {
             MemorySegment s = segment.asSlice(index * StdVideoEncodeAV1ExtensionHeader.BYTES, StdVideoEncodeAV1ExtensionHeader.BYTES);
             s.copyFrom(value.segment);

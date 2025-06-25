@@ -90,6 +90,10 @@ public record VkMemoryMapInfo(@NotNull MemorySegment segment) implements IVkMemo
             return new VkMemoryMapInfo(segment.asSlice(index * VkMemoryMapInfo.BYTES, VkMemoryMapInfo.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull VkMemoryMapInfo> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull VkMemoryMapInfo value) {
             MemorySegment s = segment.asSlice(index * VkMemoryMapInfo.BYTES, VkMemoryMapInfo.BYTES);
             s.copyFrom(value.segment);

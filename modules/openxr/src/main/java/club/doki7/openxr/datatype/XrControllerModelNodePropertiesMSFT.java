@@ -92,6 +92,10 @@ public record XrControllerModelNodePropertiesMSFT(@NotNull MemorySegment segment
             return new XrControllerModelNodePropertiesMSFT(segment.asSlice(index * XrControllerModelNodePropertiesMSFT.BYTES, XrControllerModelNodePropertiesMSFT.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull XrControllerModelNodePropertiesMSFT> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull XrControllerModelNodePropertiesMSFT value) {
             MemorySegment s = segment.asSlice(index * XrControllerModelNodePropertiesMSFT.BYTES, XrControllerModelNodePropertiesMSFT.BYTES);
             s.copyFrom(value.segment);
@@ -222,6 +226,12 @@ public record XrControllerModelNodePropertiesMSFT(@NotNull MemorySegment segment
         return new BytePtr(parentNodeNameRaw());
     }
 
+    public XrControllerModelNodePropertiesMSFT parentNodeName(@NotNull Consumer<BytePtr> consumer) {
+        BytePtr ptr = parentNodeName();
+        consumer.accept(ptr);
+        return this;
+    }
+
     public XrControllerModelNodePropertiesMSFT parentNodeName(BytePtr value) {
         MemorySegment s = parentNodeNameRaw();
         s.copyFrom(value.segment());
@@ -234,6 +244,12 @@ public record XrControllerModelNodePropertiesMSFT(@NotNull MemorySegment segment
 
     public BytePtr nodeName() {
         return new BytePtr(nodeNameRaw());
+    }
+
+    public XrControllerModelNodePropertiesMSFT nodeName(@NotNull Consumer<BytePtr> consumer) {
+        BytePtr ptr = nodeName();
+        consumer.accept(ptr);
+        return this;
     }
 
     public XrControllerModelNodePropertiesMSFT nodeName(BytePtr value) {

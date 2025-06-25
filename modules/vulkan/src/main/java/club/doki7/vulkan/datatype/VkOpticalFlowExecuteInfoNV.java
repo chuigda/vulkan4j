@@ -89,6 +89,10 @@ public record VkOpticalFlowExecuteInfoNV(@NotNull MemorySegment segment) impleme
             return new VkOpticalFlowExecuteInfoNV(segment.asSlice(index * VkOpticalFlowExecuteInfoNV.BYTES, VkOpticalFlowExecuteInfoNV.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull VkOpticalFlowExecuteInfoNV> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull VkOpticalFlowExecuteInfoNV value) {
             MemorySegment s = segment.asSlice(index * VkOpticalFlowExecuteInfoNV.BYTES, VkOpticalFlowExecuteInfoNV.BYTES);
             s.copyFrom(value.segment);

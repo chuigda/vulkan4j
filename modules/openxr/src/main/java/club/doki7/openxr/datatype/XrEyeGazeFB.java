@@ -82,6 +82,10 @@ public record XrEyeGazeFB(@NotNull MemorySegment segment) implements IXrEyeGazeF
             return new XrEyeGazeFB(segment.asSlice(index * XrEyeGazeFB.BYTES, XrEyeGazeFB.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull XrEyeGazeFB> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull XrEyeGazeFB value) {
             MemorySegment s = segment.asSlice(index * XrEyeGazeFB.BYTES, XrEyeGazeFB.BYTES);
             s.copyFrom(value.segment);

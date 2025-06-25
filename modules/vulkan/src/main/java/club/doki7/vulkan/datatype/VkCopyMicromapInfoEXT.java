@@ -89,6 +89,10 @@ public record VkCopyMicromapInfoEXT(@NotNull MemorySegment segment) implements I
             return new VkCopyMicromapInfoEXT(segment.asSlice(index * VkCopyMicromapInfoEXT.BYTES, VkCopyMicromapInfoEXT.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull VkCopyMicromapInfoEXT> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull VkCopyMicromapInfoEXT value) {
             MemorySegment s = segment.asSlice(index * VkCopyMicromapInfoEXT.BYTES, VkCopyMicromapInfoEXT.BYTES);
             s.copyFrom(value.segment);

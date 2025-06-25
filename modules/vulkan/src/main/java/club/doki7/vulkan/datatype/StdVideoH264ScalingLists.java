@@ -77,6 +77,10 @@ public record StdVideoH264ScalingLists(@NotNull MemorySegment segment) implement
             return new StdVideoH264ScalingLists(segment.asSlice(index * StdVideoH264ScalingLists.BYTES, StdVideoH264ScalingLists.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull StdVideoH264ScalingLists> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull StdVideoH264ScalingLists value) {
             MemorySegment s = segment.asSlice(index * StdVideoH264ScalingLists.BYTES, StdVideoH264ScalingLists.BYTES);
             s.copyFrom(value.segment);
@@ -192,6 +196,12 @@ public record StdVideoH264ScalingLists(@NotNull MemorySegment segment) implement
         return new BytePtr(ScalingList4x4Raw());
     }
 
+    public StdVideoH264ScalingLists ScalingList4x4(@NotNull Consumer<BytePtr> consumer) {
+        @Unsigned BytePtr ptr = ScalingList4x4();
+        consumer.accept(ptr);
+        return this;
+    }
+
     public StdVideoH264ScalingLists ScalingList4x4(@Unsigned BytePtr value) {
         MemorySegment s = ScalingList4x4Raw();
         s.copyFrom(value.segment());
@@ -204,6 +214,12 @@ public record StdVideoH264ScalingLists(@NotNull MemorySegment segment) implement
 
     public @Unsigned BytePtr ScalingList8x8() {
         return new BytePtr(ScalingList8x8Raw());
+    }
+
+    public StdVideoH264ScalingLists ScalingList8x8(@NotNull Consumer<BytePtr> consumer) {
+        @Unsigned BytePtr ptr = ScalingList8x8();
+        consumer.accept(ptr);
+        return this;
     }
 
     public StdVideoH264ScalingLists ScalingList8x8(@Unsigned BytePtr value) {

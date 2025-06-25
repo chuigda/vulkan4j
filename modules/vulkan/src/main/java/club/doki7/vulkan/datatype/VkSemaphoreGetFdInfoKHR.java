@@ -88,6 +88,10 @@ public record VkSemaphoreGetFdInfoKHR(@NotNull MemorySegment segment) implements
             return new VkSemaphoreGetFdInfoKHR(segment.asSlice(index * VkSemaphoreGetFdInfoKHR.BYTES, VkSemaphoreGetFdInfoKHR.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull VkSemaphoreGetFdInfoKHR> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull VkSemaphoreGetFdInfoKHR value) {
             MemorySegment s = segment.asSlice(index * VkSemaphoreGetFdInfoKHR.BYTES, VkSemaphoreGetFdInfoKHR.BYTES);
             s.copyFrom(value.segment);

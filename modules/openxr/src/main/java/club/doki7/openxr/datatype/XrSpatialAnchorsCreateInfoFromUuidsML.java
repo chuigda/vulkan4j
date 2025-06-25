@@ -93,6 +93,10 @@ public record XrSpatialAnchorsCreateInfoFromUuidsML(@NotNull MemorySegment segme
             return new XrSpatialAnchorsCreateInfoFromUuidsML(segment.asSlice(index * XrSpatialAnchorsCreateInfoFromUuidsML.BYTES, XrSpatialAnchorsCreateInfoFromUuidsML.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull XrSpatialAnchorsCreateInfoFromUuidsML> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull XrSpatialAnchorsCreateInfoFromUuidsML value) {
             MemorySegment s = segment.asSlice(index * XrSpatialAnchorsCreateInfoFromUuidsML.BYTES, XrSpatialAnchorsCreateInfoFromUuidsML.BYTES);
             s.copyFrom(value.segment);

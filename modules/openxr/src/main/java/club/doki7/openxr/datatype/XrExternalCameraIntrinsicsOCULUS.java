@@ -84,6 +84,10 @@ public record XrExternalCameraIntrinsicsOCULUS(@NotNull MemorySegment segment) i
             return new XrExternalCameraIntrinsicsOCULUS(segment.asSlice(index * XrExternalCameraIntrinsicsOCULUS.BYTES, XrExternalCameraIntrinsicsOCULUS.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull XrExternalCameraIntrinsicsOCULUS> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull XrExternalCameraIntrinsicsOCULUS value) {
             MemorySegment s = segment.asSlice(index * XrExternalCameraIntrinsicsOCULUS.BYTES, XrExternalCameraIntrinsicsOCULUS.BYTES);
             s.copyFrom(value.segment);

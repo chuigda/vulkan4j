@@ -91,6 +91,10 @@ public record XrSystemColorSpacePropertiesFB(@NotNull MemorySegment segment) imp
             return new XrSystemColorSpacePropertiesFB(segment.asSlice(index * XrSystemColorSpacePropertiesFB.BYTES, XrSystemColorSpacePropertiesFB.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull XrSystemColorSpacePropertiesFB> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull XrSystemColorSpacePropertiesFB value) {
             MemorySegment s = segment.asSlice(index * XrSystemColorSpacePropertiesFB.BYTES, XrSystemColorSpacePropertiesFB.BYTES);
             s.copyFrom(value.segment);

@@ -81,6 +81,10 @@ public record XrPassthroughColorLutDataMETA(@NotNull MemorySegment segment) impl
             return new XrPassthroughColorLutDataMETA(segment.asSlice(index * XrPassthroughColorLutDataMETA.BYTES, XrPassthroughColorLutDataMETA.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull XrPassthroughColorLutDataMETA> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull XrPassthroughColorLutDataMETA value) {
             MemorySegment s = segment.asSlice(index * XrPassthroughColorLutDataMETA.BYTES, XrPassthroughColorLutDataMETA.BYTES);
             s.copyFrom(value.segment);

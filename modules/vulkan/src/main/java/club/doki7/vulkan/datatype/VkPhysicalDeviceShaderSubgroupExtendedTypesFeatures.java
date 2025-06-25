@@ -87,6 +87,10 @@ public record VkPhysicalDeviceShaderSubgroupExtendedTypesFeatures(@NotNull Memor
             return new VkPhysicalDeviceShaderSubgroupExtendedTypesFeatures(segment.asSlice(index * VkPhysicalDeviceShaderSubgroupExtendedTypesFeatures.BYTES, VkPhysicalDeviceShaderSubgroupExtendedTypesFeatures.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceShaderSubgroupExtendedTypesFeatures> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull VkPhysicalDeviceShaderSubgroupExtendedTypesFeatures value) {
             MemorySegment s = segment.asSlice(index * VkPhysicalDeviceShaderSubgroupExtendedTypesFeatures.BYTES, VkPhysicalDeviceShaderSubgroupExtendedTypesFeatures.BYTES);
             s.copyFrom(value.segment);

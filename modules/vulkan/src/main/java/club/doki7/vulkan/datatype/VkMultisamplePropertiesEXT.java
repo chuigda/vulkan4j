@@ -87,6 +87,10 @@ public record VkMultisamplePropertiesEXT(@NotNull MemorySegment segment) impleme
             return new VkMultisamplePropertiesEXT(segment.asSlice(index * VkMultisamplePropertiesEXT.BYTES, VkMultisamplePropertiesEXT.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull VkMultisamplePropertiesEXT> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull VkMultisamplePropertiesEXT value) {
             MemorySegment s = segment.asSlice(index * VkMultisamplePropertiesEXT.BYTES, VkMultisamplePropertiesEXT.BYTES);
             s.copyFrom(value.segment);

@@ -91,6 +91,10 @@ public record VkPhysicalDeviceSampleLocationsPropertiesEXT(@NotNull MemorySegmen
             return new VkPhysicalDeviceSampleLocationsPropertiesEXT(segment.asSlice(index * VkPhysicalDeviceSampleLocationsPropertiesEXT.BYTES, VkPhysicalDeviceSampleLocationsPropertiesEXT.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceSampleLocationsPropertiesEXT> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull VkPhysicalDeviceSampleLocationsPropertiesEXT value) {
             MemorySegment s = segment.asSlice(index * VkPhysicalDeviceSampleLocationsPropertiesEXT.BYTES, VkPhysicalDeviceSampleLocationsPropertiesEXT.BYTES);
             s.copyFrom(value.segment);
@@ -242,6 +246,12 @@ public record VkPhysicalDeviceSampleLocationsPropertiesEXT(@NotNull MemorySegmen
 
     public FloatPtr sampleLocationCoordinateRange() {
         return new FloatPtr(sampleLocationCoordinateRangeRaw());
+    }
+
+    public VkPhysicalDeviceSampleLocationsPropertiesEXT sampleLocationCoordinateRange(@NotNull Consumer<FloatPtr> consumer) {
+        FloatPtr ptr = sampleLocationCoordinateRange();
+        consumer.accept(ptr);
+        return this;
     }
 
     public VkPhysicalDeviceSampleLocationsPropertiesEXT sampleLocationCoordinateRange(FloatPtr value) {

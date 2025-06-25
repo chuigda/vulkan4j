@@ -87,6 +87,10 @@ public record VkDisplaySurfaceStereoCreateInfoNV(@NotNull MemorySegment segment)
             return new VkDisplaySurfaceStereoCreateInfoNV(segment.asSlice(index * VkDisplaySurfaceStereoCreateInfoNV.BYTES, VkDisplaySurfaceStereoCreateInfoNV.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull VkDisplaySurfaceStereoCreateInfoNV> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull VkDisplaySurfaceStereoCreateInfoNV value) {
             MemorySegment s = segment.asSlice(index * VkDisplaySurfaceStereoCreateInfoNV.BYTES, VkDisplaySurfaceStereoCreateInfoNV.BYTES);
             s.copyFrom(value.segment);

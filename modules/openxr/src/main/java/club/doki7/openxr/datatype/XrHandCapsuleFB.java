@@ -82,6 +82,10 @@ public record XrHandCapsuleFB(@NotNull MemorySegment segment) implements IXrHand
             return new XrHandCapsuleFB(segment.asSlice(index * XrHandCapsuleFB.BYTES, XrHandCapsuleFB.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull XrHandCapsuleFB> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull XrHandCapsuleFB value) {
             MemorySegment s = segment.asSlice(index * XrHandCapsuleFB.BYTES, XrHandCapsuleFB.BYTES);
             s.copyFrom(value.segment);
@@ -177,6 +181,12 @@ public record XrHandCapsuleFB(@NotNull MemorySegment segment) implements IXrHand
 
     public XrVector3f.Ptr points() {
         return new XrVector3f.Ptr(pointsRaw());
+    }
+
+    public XrHandCapsuleFB points(@NotNull Consumer<XrVector3f.Ptr> consumer) {
+        XrVector3f.Ptr ptr = points();
+        consumer.accept(ptr);
+        return this;
     }
 
     public XrHandCapsuleFB points(XrVector3f.Ptr value) {

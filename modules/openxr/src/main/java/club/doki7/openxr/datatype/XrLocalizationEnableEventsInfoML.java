@@ -91,6 +91,10 @@ public record XrLocalizationEnableEventsInfoML(@NotNull MemorySegment segment) i
             return new XrLocalizationEnableEventsInfoML(segment.asSlice(index * XrLocalizationEnableEventsInfoML.BYTES, XrLocalizationEnableEventsInfoML.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull XrLocalizationEnableEventsInfoML> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull XrLocalizationEnableEventsInfoML value) {
             MemorySegment s = segment.asSlice(index * XrLocalizationEnableEventsInfoML.BYTES, XrLocalizationEnableEventsInfoML.BYTES);
             s.copyFrom(value.segment);

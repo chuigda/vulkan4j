@@ -87,6 +87,10 @@ public record VkMicromapVersionInfoEXT(@NotNull MemorySegment segment) implement
             return new VkMicromapVersionInfoEXT(segment.asSlice(index * VkMicromapVersionInfoEXT.BYTES, VkMicromapVersionInfoEXT.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull VkMicromapVersionInfoEXT> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull VkMicromapVersionInfoEXT value) {
             MemorySegment s = segment.asSlice(index * VkMicromapVersionInfoEXT.BYTES, VkMicromapVersionInfoEXT.BYTES);
             s.copyFrom(value.segment);

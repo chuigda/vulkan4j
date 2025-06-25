@@ -79,6 +79,10 @@ public record StdVideoAV1CDEF(@NotNull MemorySegment segment) implements IStdVid
             return new StdVideoAV1CDEF(segment.asSlice(index * StdVideoAV1CDEF.BYTES, StdVideoAV1CDEF.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull StdVideoAV1CDEF> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull StdVideoAV1CDEF value) {
             MemorySegment s = segment.asSlice(index * StdVideoAV1CDEF.BYTES, StdVideoAV1CDEF.BYTES);
             s.copyFrom(value.segment);
@@ -194,6 +198,12 @@ public record StdVideoAV1CDEF(@NotNull MemorySegment segment) implements IStdVid
         return new BytePtr(cdef_y_pri_strengthRaw());
     }
 
+    public StdVideoAV1CDEF cdef_y_pri_strength(@NotNull Consumer<BytePtr> consumer) {
+        @Unsigned BytePtr ptr = cdef_y_pri_strength();
+        consumer.accept(ptr);
+        return this;
+    }
+
     public StdVideoAV1CDEF cdef_y_pri_strength(@Unsigned BytePtr value) {
         MemorySegment s = cdef_y_pri_strengthRaw();
         s.copyFrom(value.segment());
@@ -206,6 +216,12 @@ public record StdVideoAV1CDEF(@NotNull MemorySegment segment) implements IStdVid
 
     public @Unsigned BytePtr cdef_y_sec_strength() {
         return new BytePtr(cdef_y_sec_strengthRaw());
+    }
+
+    public StdVideoAV1CDEF cdef_y_sec_strength(@NotNull Consumer<BytePtr> consumer) {
+        @Unsigned BytePtr ptr = cdef_y_sec_strength();
+        consumer.accept(ptr);
+        return this;
     }
 
     public StdVideoAV1CDEF cdef_y_sec_strength(@Unsigned BytePtr value) {
@@ -222,6 +238,12 @@ public record StdVideoAV1CDEF(@NotNull MemorySegment segment) implements IStdVid
         return new BytePtr(cdef_uv_pri_strengthRaw());
     }
 
+    public StdVideoAV1CDEF cdef_uv_pri_strength(@NotNull Consumer<BytePtr> consumer) {
+        @Unsigned BytePtr ptr = cdef_uv_pri_strength();
+        consumer.accept(ptr);
+        return this;
+    }
+
     public StdVideoAV1CDEF cdef_uv_pri_strength(@Unsigned BytePtr value) {
         MemorySegment s = cdef_uv_pri_strengthRaw();
         s.copyFrom(value.segment());
@@ -234,6 +256,12 @@ public record StdVideoAV1CDEF(@NotNull MemorySegment segment) implements IStdVid
 
     public @Unsigned BytePtr cdef_uv_sec_strength() {
         return new BytePtr(cdef_uv_sec_strengthRaw());
+    }
+
+    public StdVideoAV1CDEF cdef_uv_sec_strength(@NotNull Consumer<BytePtr> consumer) {
+        @Unsigned BytePtr ptr = cdef_uv_sec_strength();
+        consumer.accept(ptr);
+        return this;
     }
 
     public StdVideoAV1CDEF cdef_uv_sec_strength(@Unsigned BytePtr value) {

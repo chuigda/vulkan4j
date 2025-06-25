@@ -87,6 +87,10 @@ public record VkPhysicalDeviceExtendedDynamicState3PropertiesEXT(@NotNull Memory
             return new VkPhysicalDeviceExtendedDynamicState3PropertiesEXT(segment.asSlice(index * VkPhysicalDeviceExtendedDynamicState3PropertiesEXT.BYTES, VkPhysicalDeviceExtendedDynamicState3PropertiesEXT.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceExtendedDynamicState3PropertiesEXT> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull VkPhysicalDeviceExtendedDynamicState3PropertiesEXT value) {
             MemorySegment s = segment.asSlice(index * VkPhysicalDeviceExtendedDynamicState3PropertiesEXT.BYTES, VkPhysicalDeviceExtendedDynamicState3PropertiesEXT.BYTES);
             s.copyFrom(value.segment);

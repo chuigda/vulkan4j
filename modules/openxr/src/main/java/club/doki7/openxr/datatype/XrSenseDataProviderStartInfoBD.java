@@ -90,6 +90,10 @@ public record XrSenseDataProviderStartInfoBD(@NotNull MemorySegment segment) imp
             return new XrSenseDataProviderStartInfoBD(segment.asSlice(index * XrSenseDataProviderStartInfoBD.BYTES, XrSenseDataProviderStartInfoBD.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull XrSenseDataProviderStartInfoBD> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull XrSenseDataProviderStartInfoBD value) {
             MemorySegment s = segment.asSlice(index * XrSenseDataProviderStartInfoBD.BYTES, XrSenseDataProviderStartInfoBD.BYTES);
             s.copyFrom(value.segment);

@@ -92,6 +92,10 @@ public record XrEnvironmentDepthImageViewMETA(@NotNull MemorySegment segment) im
             return new XrEnvironmentDepthImageViewMETA(segment.asSlice(index * XrEnvironmentDepthImageViewMETA.BYTES, XrEnvironmentDepthImageViewMETA.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull XrEnvironmentDepthImageViewMETA> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull XrEnvironmentDepthImageViewMETA value) {
             MemorySegment s = segment.asSlice(index * XrEnvironmentDepthImageViewMETA.BYTES, XrEnvironmentDepthImageViewMETA.BYTES);
             s.copyFrom(value.segment);

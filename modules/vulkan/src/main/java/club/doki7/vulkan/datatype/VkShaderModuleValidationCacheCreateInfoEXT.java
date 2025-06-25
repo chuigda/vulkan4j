@@ -87,6 +87,10 @@ public record VkShaderModuleValidationCacheCreateInfoEXT(@NotNull MemorySegment 
             return new VkShaderModuleValidationCacheCreateInfoEXT(segment.asSlice(index * VkShaderModuleValidationCacheCreateInfoEXT.BYTES, VkShaderModuleValidationCacheCreateInfoEXT.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull VkShaderModuleValidationCacheCreateInfoEXT> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull VkShaderModuleValidationCacheCreateInfoEXT value) {
             MemorySegment s = segment.asSlice(index * VkShaderModuleValidationCacheCreateInfoEXT.BYTES, VkShaderModuleValidationCacheCreateInfoEXT.BYTES);
             s.copyFrom(value.segment);

@@ -100,6 +100,10 @@ public record VkPhysicalDeviceTileShadingFeaturesQCOM(@NotNull MemorySegment seg
             return new VkPhysicalDeviceTileShadingFeaturesQCOM(segment.asSlice(index * VkPhysicalDeviceTileShadingFeaturesQCOM.BYTES, VkPhysicalDeviceTileShadingFeaturesQCOM.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceTileShadingFeaturesQCOM> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull VkPhysicalDeviceTileShadingFeaturesQCOM value) {
             MemorySegment s = segment.asSlice(index * VkPhysicalDeviceTileShadingFeaturesQCOM.BYTES, VkPhysicalDeviceTileShadingFeaturesQCOM.BYTES);
             s.copyFrom(value.segment);

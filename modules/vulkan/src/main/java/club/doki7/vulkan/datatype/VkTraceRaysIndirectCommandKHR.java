@@ -78,6 +78,10 @@ public record VkTraceRaysIndirectCommandKHR(@NotNull MemorySegment segment) impl
             return new VkTraceRaysIndirectCommandKHR(segment.asSlice(index * VkTraceRaysIndirectCommandKHR.BYTES, VkTraceRaysIndirectCommandKHR.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull VkTraceRaysIndirectCommandKHR> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull VkTraceRaysIndirectCommandKHR value) {
             MemorySegment s = segment.asSlice(index * VkTraceRaysIndirectCommandKHR.BYTES, VkTraceRaysIndirectCommandKHR.BYTES);
             s.copyFrom(value.segment);

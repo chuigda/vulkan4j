@@ -96,6 +96,10 @@ public record VkBindSparseInfo(@NotNull MemorySegment segment) implements IVkBin
             return new VkBindSparseInfo(segment.asSlice(index * VkBindSparseInfo.BYTES, VkBindSparseInfo.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull VkBindSparseInfo> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull VkBindSparseInfo value) {
             MemorySegment s = segment.asSlice(index * VkBindSparseInfo.BYTES, VkBindSparseInfo.BYTES);
             s.copyFrom(value.segment);

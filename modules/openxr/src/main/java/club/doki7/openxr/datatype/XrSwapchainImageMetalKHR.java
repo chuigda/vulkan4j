@@ -91,6 +91,10 @@ public record XrSwapchainImageMetalKHR(@NotNull MemorySegment segment) implement
             return new XrSwapchainImageMetalKHR(segment.asSlice(index * XrSwapchainImageMetalKHR.BYTES, XrSwapchainImageMetalKHR.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull XrSwapchainImageMetalKHR> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull XrSwapchainImageMetalKHR value) {
             MemorySegment s = segment.asSlice(index * XrSwapchainImageMetalKHR.BYTES, XrSwapchainImageMetalKHR.BYTES);
             s.copyFrom(value.segment);

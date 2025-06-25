@@ -87,6 +87,10 @@ public record VkBindImagePlaneMemoryInfo(@NotNull MemorySegment segment) impleme
             return new VkBindImagePlaneMemoryInfo(segment.asSlice(index * VkBindImagePlaneMemoryInfo.BYTES, VkBindImagePlaneMemoryInfo.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull VkBindImagePlaneMemoryInfo> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull VkBindImagePlaneMemoryInfo value) {
             MemorySegment s = segment.asSlice(index * VkBindImagePlaneMemoryInfo.BYTES, VkBindImagePlaneMemoryInfo.BYTES);
             s.copyFrom(value.segment);

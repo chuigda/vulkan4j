@@ -88,6 +88,10 @@ public record VkDeviceGroupBindSparseInfo(@NotNull MemorySegment segment) implem
             return new VkDeviceGroupBindSparseInfo(segment.asSlice(index * VkDeviceGroupBindSparseInfo.BYTES, VkDeviceGroupBindSparseInfo.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull VkDeviceGroupBindSparseInfo> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull VkDeviceGroupBindSparseInfo value) {
             MemorySegment s = segment.asSlice(index * VkDeviceGroupBindSparseInfo.BYTES, VkDeviceGroupBindSparseInfo.BYTES);
             s.copyFrom(value.segment);

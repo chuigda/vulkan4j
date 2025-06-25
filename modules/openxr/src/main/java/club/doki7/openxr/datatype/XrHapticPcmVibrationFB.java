@@ -95,6 +95,10 @@ public record XrHapticPcmVibrationFB(@NotNull MemorySegment segment) implements 
             return new XrHapticPcmVibrationFB(segment.asSlice(index * XrHapticPcmVibrationFB.BYTES, XrHapticPcmVibrationFB.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull XrHapticPcmVibrationFB> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull XrHapticPcmVibrationFB value) {
             MemorySegment s = segment.asSlice(index * XrHapticPcmVibrationFB.BYTES, XrHapticPcmVibrationFB.BYTES);
             s.copyFrom(value.segment);

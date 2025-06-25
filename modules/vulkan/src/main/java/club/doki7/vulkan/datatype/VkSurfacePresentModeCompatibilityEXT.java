@@ -88,6 +88,10 @@ public record VkSurfacePresentModeCompatibilityEXT(@NotNull MemorySegment segmen
             return new VkSurfacePresentModeCompatibilityEXT(segment.asSlice(index * VkSurfacePresentModeCompatibilityEXT.BYTES, VkSurfacePresentModeCompatibilityEXT.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull VkSurfacePresentModeCompatibilityEXT> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull VkSurfacePresentModeCompatibilityEXT value) {
             MemorySegment s = segment.asSlice(index * VkSurfacePresentModeCompatibilityEXT.BYTES, VkSurfacePresentModeCompatibilityEXT.BYTES);
             s.copyFrom(value.segment);

@@ -91,6 +91,10 @@ public record XrSystemFoveationEyeTrackedPropertiesMETA(@NotNull MemorySegment s
             return new XrSystemFoveationEyeTrackedPropertiesMETA(segment.asSlice(index * XrSystemFoveationEyeTrackedPropertiesMETA.BYTES, XrSystemFoveationEyeTrackedPropertiesMETA.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull XrSystemFoveationEyeTrackedPropertiesMETA> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull XrSystemFoveationEyeTrackedPropertiesMETA value) {
             MemorySegment s = segment.asSlice(index * XrSystemFoveationEyeTrackedPropertiesMETA.BYTES, XrSystemFoveationEyeTrackedPropertiesMETA.BYTES);
             s.copyFrom(value.segment);

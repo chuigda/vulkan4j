@@ -91,6 +91,10 @@ public record XrSpaceUserCreateInfoFB(@NotNull MemorySegment segment) implements
             return new XrSpaceUserCreateInfoFB(segment.asSlice(index * XrSpaceUserCreateInfoFB.BYTES, XrSpaceUserCreateInfoFB.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull XrSpaceUserCreateInfoFB> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull XrSpaceUserCreateInfoFB value) {
             MemorySegment s = segment.asSlice(index * XrSpaceUserCreateInfoFB.BYTES, XrSpaceUserCreateInfoFB.BYTES);
             s.copyFrom(value.segment);

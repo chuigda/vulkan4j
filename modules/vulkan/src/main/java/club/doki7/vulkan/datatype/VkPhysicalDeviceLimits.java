@@ -181,6 +181,10 @@ public record VkPhysicalDeviceLimits(@NotNull MemorySegment segment) implements 
             return new VkPhysicalDeviceLimits(segment.asSlice(index * VkPhysicalDeviceLimits.BYTES, VkPhysicalDeviceLimits.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceLimits> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull VkPhysicalDeviceLimits value) {
             MemorySegment s = segment.asSlice(index * VkPhysicalDeviceLimits.BYTES, VkPhysicalDeviceLimits.BYTES);
             s.copyFrom(value.segment);
@@ -746,6 +750,12 @@ public record VkPhysicalDeviceLimits(@NotNull MemorySegment segment) implements 
         return new IntPtr(maxComputeWorkGroupCountRaw());
     }
 
+    public VkPhysicalDeviceLimits maxComputeWorkGroupCount(@NotNull Consumer<IntPtr> consumer) {
+        @Unsigned IntPtr ptr = maxComputeWorkGroupCount();
+        consumer.accept(ptr);
+        return this;
+    }
+
     public VkPhysicalDeviceLimits maxComputeWorkGroupCount(@Unsigned IntPtr value) {
         MemorySegment s = maxComputeWorkGroupCountRaw();
         s.copyFrom(value.segment());
@@ -767,6 +777,12 @@ public record VkPhysicalDeviceLimits(@NotNull MemorySegment segment) implements 
 
     public @Unsigned IntPtr maxComputeWorkGroupSize() {
         return new IntPtr(maxComputeWorkGroupSizeRaw());
+    }
+
+    public VkPhysicalDeviceLimits maxComputeWorkGroupSize(@NotNull Consumer<IntPtr> consumer) {
+        @Unsigned IntPtr ptr = maxComputeWorkGroupSize();
+        consumer.accept(ptr);
+        return this;
     }
 
     public VkPhysicalDeviceLimits maxComputeWorkGroupSize(@Unsigned IntPtr value) {
@@ -855,6 +871,12 @@ public record VkPhysicalDeviceLimits(@NotNull MemorySegment segment) implements 
         return new IntPtr(maxViewportDimensionsRaw());
     }
 
+    public VkPhysicalDeviceLimits maxViewportDimensions(@NotNull Consumer<IntPtr> consumer) {
+        @Unsigned IntPtr ptr = maxViewportDimensions();
+        consumer.accept(ptr);
+        return this;
+    }
+
     public VkPhysicalDeviceLimits maxViewportDimensions(@Unsigned IntPtr value) {
         MemorySegment s = maxViewportDimensionsRaw();
         s.copyFrom(value.segment());
@@ -867,6 +889,12 @@ public record VkPhysicalDeviceLimits(@NotNull MemorySegment segment) implements 
 
     public FloatPtr viewportBoundsRange() {
         return new FloatPtr(viewportBoundsRangeRaw());
+    }
+
+    public VkPhysicalDeviceLimits viewportBoundsRange(@NotNull Consumer<FloatPtr> consumer) {
+        FloatPtr ptr = viewportBoundsRange();
+        consumer.accept(ptr);
+        return this;
     }
 
     public VkPhysicalDeviceLimits viewportBoundsRange(FloatPtr value) {
@@ -1171,6 +1199,12 @@ public record VkPhysicalDeviceLimits(@NotNull MemorySegment segment) implements 
         return new FloatPtr(pointSizeRangeRaw());
     }
 
+    public VkPhysicalDeviceLimits pointSizeRange(@NotNull Consumer<FloatPtr> consumer) {
+        FloatPtr ptr = pointSizeRange();
+        consumer.accept(ptr);
+        return this;
+    }
+
     public VkPhysicalDeviceLimits pointSizeRange(FloatPtr value) {
         MemorySegment s = pointSizeRangeRaw();
         s.copyFrom(value.segment());
@@ -1183,6 +1217,12 @@ public record VkPhysicalDeviceLimits(@NotNull MemorySegment segment) implements 
 
     public FloatPtr lineWidthRange() {
         return new FloatPtr(lineWidthRangeRaw());
+    }
+
+    public VkPhysicalDeviceLimits lineWidthRange(@NotNull Consumer<FloatPtr> consumer) {
+        FloatPtr ptr = lineWidthRange();
+        consumer.accept(ptr);
+        return this;
     }
 
     public VkPhysicalDeviceLimits lineWidthRange(FloatPtr value) {

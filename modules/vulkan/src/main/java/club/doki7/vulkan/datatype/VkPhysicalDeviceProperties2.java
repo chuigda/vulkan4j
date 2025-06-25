@@ -87,6 +87,10 @@ public record VkPhysicalDeviceProperties2(@NotNull MemorySegment segment) implem
             return new VkPhysicalDeviceProperties2(segment.asSlice(index * VkPhysicalDeviceProperties2.BYTES, VkPhysicalDeviceProperties2.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceProperties2> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull VkPhysicalDeviceProperties2 value) {
             MemorySegment s = segment.asSlice(index * VkPhysicalDeviceProperties2.BYTES, VkPhysicalDeviceProperties2.BYTES);
             s.copyFrom(value.segment);

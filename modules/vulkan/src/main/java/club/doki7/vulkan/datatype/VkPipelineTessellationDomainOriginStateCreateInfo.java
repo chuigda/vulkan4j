@@ -87,6 +87,10 @@ public record VkPipelineTessellationDomainOriginStateCreateInfo(@NotNull MemoryS
             return new VkPipelineTessellationDomainOriginStateCreateInfo(segment.asSlice(index * VkPipelineTessellationDomainOriginStateCreateInfo.BYTES, VkPipelineTessellationDomainOriginStateCreateInfo.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull VkPipelineTessellationDomainOriginStateCreateInfo> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull VkPipelineTessellationDomainOriginStateCreateInfo value) {
             MemorySegment s = segment.asSlice(index * VkPipelineTessellationDomainOriginStateCreateInfo.BYTES, VkPipelineTessellationDomainOriginStateCreateInfo.BYTES);
             s.copyFrom(value.segment);

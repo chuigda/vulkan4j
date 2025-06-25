@@ -90,6 +90,10 @@ public record VkPhysicalDeviceDepthBiasControlFeaturesEXT(@NotNull MemorySegment
             return new VkPhysicalDeviceDepthBiasControlFeaturesEXT(segment.asSlice(index * VkPhysicalDeviceDepthBiasControlFeaturesEXT.BYTES, VkPhysicalDeviceDepthBiasControlFeaturesEXT.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceDepthBiasControlFeaturesEXT> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull VkPhysicalDeviceDepthBiasControlFeaturesEXT value) {
             MemorySegment s = segment.asSlice(index * VkPhysicalDeviceDepthBiasControlFeaturesEXT.BYTES, VkPhysicalDeviceDepthBiasControlFeaturesEXT.BYTES);
             s.copyFrom(value.segment);

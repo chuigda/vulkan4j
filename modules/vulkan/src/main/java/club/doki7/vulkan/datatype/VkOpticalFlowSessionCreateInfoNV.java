@@ -95,6 +95,10 @@ public record VkOpticalFlowSessionCreateInfoNV(@NotNull MemorySegment segment) i
             return new VkOpticalFlowSessionCreateInfoNV(segment.asSlice(index * VkOpticalFlowSessionCreateInfoNV.BYTES, VkOpticalFlowSessionCreateInfoNV.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull VkOpticalFlowSessionCreateInfoNV> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull VkOpticalFlowSessionCreateInfoNV value) {
             MemorySegment s = segment.asSlice(index * VkOpticalFlowSessionCreateInfoNV.BYTES, VkOpticalFlowSessionCreateInfoNV.BYTES);
             s.copyFrom(value.segment);

@@ -87,6 +87,10 @@ public record VkPhysicalDeviceImageRobustnessFeatures(@NotNull MemorySegment seg
             return new VkPhysicalDeviceImageRobustnessFeatures(segment.asSlice(index * VkPhysicalDeviceImageRobustnessFeatures.BYTES, VkPhysicalDeviceImageRobustnessFeatures.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceImageRobustnessFeatures> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull VkPhysicalDeviceImageRobustnessFeatures value) {
             MemorySegment s = segment.asSlice(index * VkPhysicalDeviceImageRobustnessFeatures.BYTES, VkPhysicalDeviceImageRobustnessFeatures.BYTES);
             s.copyFrom(value.segment);

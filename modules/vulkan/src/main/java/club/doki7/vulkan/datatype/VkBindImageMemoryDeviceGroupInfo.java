@@ -90,6 +90,10 @@ public record VkBindImageMemoryDeviceGroupInfo(@NotNull MemorySegment segment) i
             return new VkBindImageMemoryDeviceGroupInfo(segment.asSlice(index * VkBindImageMemoryDeviceGroupInfo.BYTES, VkBindImageMemoryDeviceGroupInfo.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull VkBindImageMemoryDeviceGroupInfo> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull VkBindImageMemoryDeviceGroupInfo value) {
             MemorySegment s = segment.asSlice(index * VkBindImageMemoryDeviceGroupInfo.BYTES, VkBindImageMemoryDeviceGroupInfo.BYTES);
             s.copyFrom(value.segment);

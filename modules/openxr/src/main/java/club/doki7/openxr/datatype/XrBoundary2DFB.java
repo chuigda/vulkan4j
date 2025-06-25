@@ -93,6 +93,10 @@ public record XrBoundary2DFB(@NotNull MemorySegment segment) implements IXrBound
             return new XrBoundary2DFB(segment.asSlice(index * XrBoundary2DFB.BYTES, XrBoundary2DFB.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull XrBoundary2DFB> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull XrBoundary2DFB value) {
             MemorySegment s = segment.asSlice(index * XrBoundary2DFB.BYTES, XrBoundary2DFB.BYTES);
             s.copyFrom(value.segment);

@@ -78,6 +78,10 @@ public record VkOffset3D(@NotNull MemorySegment segment) implements IVkOffset3D 
             return new VkOffset3D(segment.asSlice(index * VkOffset3D.BYTES, VkOffset3D.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull VkOffset3D> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull VkOffset3D value) {
             MemorySegment s = segment.asSlice(index * VkOffset3D.BYTES, VkOffset3D.BYTES);
             s.copyFrom(value.segment);

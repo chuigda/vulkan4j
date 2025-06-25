@@ -99,6 +99,10 @@ public record VkImageCreateInfo(@NotNull MemorySegment segment) implements IVkIm
             return new VkImageCreateInfo(segment.asSlice(index * VkImageCreateInfo.BYTES, VkImageCreateInfo.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull VkImageCreateInfo> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull VkImageCreateInfo value) {
             MemorySegment s = segment.asSlice(index * VkImageCreateInfo.BYTES, VkImageCreateInfo.BYTES);
             s.copyFrom(value.segment);

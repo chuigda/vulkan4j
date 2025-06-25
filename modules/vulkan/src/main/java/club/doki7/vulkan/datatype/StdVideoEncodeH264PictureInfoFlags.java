@@ -80,6 +80,10 @@ public record StdVideoEncodeH264PictureInfoFlags(@NotNull MemorySegment segment)
             return new StdVideoEncodeH264PictureInfoFlags(segment.asSlice(index * StdVideoEncodeH264PictureInfoFlags.BYTES, StdVideoEncodeH264PictureInfoFlags.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull StdVideoEncodeH264PictureInfoFlags> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull StdVideoEncodeH264PictureInfoFlags value) {
             MemorySegment s = segment.asSlice(index * StdVideoEncodeH264PictureInfoFlags.BYTES, StdVideoEncodeH264PictureInfoFlags.BYTES);
             s.copyFrom(value.segment);

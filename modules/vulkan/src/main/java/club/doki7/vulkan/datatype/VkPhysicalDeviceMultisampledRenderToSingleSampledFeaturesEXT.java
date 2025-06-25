@@ -87,6 +87,10 @@ public record VkPhysicalDeviceMultisampledRenderToSingleSampledFeaturesEXT(@NotN
             return new VkPhysicalDeviceMultisampledRenderToSingleSampledFeaturesEXT(segment.asSlice(index * VkPhysicalDeviceMultisampledRenderToSingleSampledFeaturesEXT.BYTES, VkPhysicalDeviceMultisampledRenderToSingleSampledFeaturesEXT.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceMultisampledRenderToSingleSampledFeaturesEXT> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull VkPhysicalDeviceMultisampledRenderToSingleSampledFeaturesEXT value) {
             MemorySegment s = segment.asSlice(index * VkPhysicalDeviceMultisampledRenderToSingleSampledFeaturesEXT.BYTES, VkPhysicalDeviceMultisampledRenderToSingleSampledFeaturesEXT.BYTES);
             s.copyFrom(value.segment);

@@ -87,6 +87,10 @@ public record VkLatencySubmissionPresentIdNV(@NotNull MemorySegment segment) imp
             return new VkLatencySubmissionPresentIdNV(segment.asSlice(index * VkLatencySubmissionPresentIdNV.BYTES, VkLatencySubmissionPresentIdNV.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull VkLatencySubmissionPresentIdNV> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull VkLatencySubmissionPresentIdNV value) {
             MemorySegment s = segment.asSlice(index * VkLatencySubmissionPresentIdNV.BYTES, VkLatencySubmissionPresentIdNV.BYTES);
             s.copyFrom(value.segment);

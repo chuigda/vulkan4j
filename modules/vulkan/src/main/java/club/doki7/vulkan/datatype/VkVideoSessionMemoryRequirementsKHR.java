@@ -88,6 +88,10 @@ public record VkVideoSessionMemoryRequirementsKHR(@NotNull MemorySegment segment
             return new VkVideoSessionMemoryRequirementsKHR(segment.asSlice(index * VkVideoSessionMemoryRequirementsKHR.BYTES, VkVideoSessionMemoryRequirementsKHR.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull VkVideoSessionMemoryRequirementsKHR> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull VkVideoSessionMemoryRequirementsKHR value) {
             MemorySegment s = segment.asSlice(index * VkVideoSessionMemoryRequirementsKHR.BYTES, VkVideoSessionMemoryRequirementsKHR.BYTES);
             s.copyFrom(value.segment);

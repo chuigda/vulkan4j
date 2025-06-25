@@ -83,6 +83,10 @@ public record VkAccelerationStructureSRTMotionInstanceNV(@NotNull MemorySegment 
             return new VkAccelerationStructureSRTMotionInstanceNV(segment.asSlice(index * VkAccelerationStructureSRTMotionInstanceNV.BYTES, VkAccelerationStructureSRTMotionInstanceNV.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull VkAccelerationStructureSRTMotionInstanceNV> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull VkAccelerationStructureSRTMotionInstanceNV value) {
             MemorySegment s = segment.asSlice(index * VkAccelerationStructureSRTMotionInstanceNV.BYTES, VkAccelerationStructureSRTMotionInstanceNV.BYTES);
             s.copyFrom(value.segment);

@@ -88,6 +88,10 @@ public record VkAccelerationStructureCaptureDescriptorDataInfoEXT(@NotNull Memor
             return new VkAccelerationStructureCaptureDescriptorDataInfoEXT(segment.asSlice(index * VkAccelerationStructureCaptureDescriptorDataInfoEXT.BYTES, VkAccelerationStructureCaptureDescriptorDataInfoEXT.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull VkAccelerationStructureCaptureDescriptorDataInfoEXT> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull VkAccelerationStructureCaptureDescriptorDataInfoEXT value) {
             MemorySegment s = segment.asSlice(index * VkAccelerationStructureCaptureDescriptorDataInfoEXT.BYTES, VkAccelerationStructureCaptureDescriptorDataInfoEXT.BYTES);
             s.copyFrom(value.segment);

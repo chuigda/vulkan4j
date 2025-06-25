@@ -87,6 +87,10 @@ public record VkPerformanceMarkerInfoINTEL(@NotNull MemorySegment segment) imple
             return new VkPerformanceMarkerInfoINTEL(segment.asSlice(index * VkPerformanceMarkerInfoINTEL.BYTES, VkPerformanceMarkerInfoINTEL.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull VkPerformanceMarkerInfoINTEL> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull VkPerformanceMarkerInfoINTEL value) {
             MemorySegment s = segment.asSlice(index * VkPerformanceMarkerInfoINTEL.BYTES, VkPerformanceMarkerInfoINTEL.BYTES);
             s.copyFrom(value.segment);

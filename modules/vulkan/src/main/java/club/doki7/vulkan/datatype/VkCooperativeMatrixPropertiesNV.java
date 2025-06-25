@@ -94,6 +94,10 @@ public record VkCooperativeMatrixPropertiesNV(@NotNull MemorySegment segment) im
             return new VkCooperativeMatrixPropertiesNV(segment.asSlice(index * VkCooperativeMatrixPropertiesNV.BYTES, VkCooperativeMatrixPropertiesNV.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull VkCooperativeMatrixPropertiesNV> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull VkCooperativeMatrixPropertiesNV value) {
             MemorySegment s = segment.asSlice(index * VkCooperativeMatrixPropertiesNV.BYTES, VkCooperativeMatrixPropertiesNV.BYTES);
             s.copyFrom(value.segment);

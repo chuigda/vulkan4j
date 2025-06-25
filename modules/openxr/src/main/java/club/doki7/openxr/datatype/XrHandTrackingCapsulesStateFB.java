@@ -91,6 +91,10 @@ public record XrHandTrackingCapsulesStateFB(@NotNull MemorySegment segment) impl
             return new XrHandTrackingCapsulesStateFB(segment.asSlice(index * XrHandTrackingCapsulesStateFB.BYTES, XrHandTrackingCapsulesStateFB.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull XrHandTrackingCapsulesStateFB> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull XrHandTrackingCapsulesStateFB value) {
             MemorySegment s = segment.asSlice(index * XrHandTrackingCapsulesStateFB.BYTES, XrHandTrackingCapsulesStateFB.BYTES);
             s.copyFrom(value.segment);
@@ -219,6 +223,12 @@ public record XrHandTrackingCapsulesStateFB(@NotNull MemorySegment segment) impl
 
     public XrHandCapsuleFB.Ptr capsules() {
         return new XrHandCapsuleFB.Ptr(capsulesRaw());
+    }
+
+    public XrHandTrackingCapsulesStateFB capsules(@NotNull Consumer<XrHandCapsuleFB.Ptr> consumer) {
+        XrHandCapsuleFB.Ptr ptr = capsules();
+        consumer.accept(ptr);
+        return this;
     }
 
     public XrHandTrackingCapsulesStateFB capsules(XrHandCapsuleFB.Ptr value) {

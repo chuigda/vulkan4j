@@ -87,6 +87,10 @@ public record VkQueueFamilyCheckpointProperties2NV(@NotNull MemorySegment segmen
             return new VkQueueFamilyCheckpointProperties2NV(segment.asSlice(index * VkQueueFamilyCheckpointProperties2NV.BYTES, VkQueueFamilyCheckpointProperties2NV.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull VkQueueFamilyCheckpointProperties2NV> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull VkQueueFamilyCheckpointProperties2NV value) {
             MemorySegment s = segment.asSlice(index * VkQueueFamilyCheckpointProperties2NV.BYTES, VkQueueFamilyCheckpointProperties2NV.BYTES);
             s.copyFrom(value.segment);

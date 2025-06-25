@@ -87,6 +87,10 @@ public record VkVideoEncodeH264ProfileInfoKHR(@NotNull MemorySegment segment) im
             return new VkVideoEncodeH264ProfileInfoKHR(segment.asSlice(index * VkVideoEncodeH264ProfileInfoKHR.BYTES, VkVideoEncodeH264ProfileInfoKHR.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull VkVideoEncodeH264ProfileInfoKHR> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull VkVideoEncodeH264ProfileInfoKHR value) {
             MemorySegment s = segment.asSlice(index * VkVideoEncodeH264ProfileInfoKHR.BYTES, VkVideoEncodeH264ProfileInfoKHR.BYTES);
             s.copyFrom(value.segment);

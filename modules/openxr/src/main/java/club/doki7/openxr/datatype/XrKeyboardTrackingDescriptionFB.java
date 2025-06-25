@@ -83,6 +83,10 @@ public record XrKeyboardTrackingDescriptionFB(@NotNull MemorySegment segment) im
             return new XrKeyboardTrackingDescriptionFB(segment.asSlice(index * XrKeyboardTrackingDescriptionFB.BYTES, XrKeyboardTrackingDescriptionFB.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull XrKeyboardTrackingDescriptionFB> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull XrKeyboardTrackingDescriptionFB value) {
             MemorySegment s = segment.asSlice(index * XrKeyboardTrackingDescriptionFB.BYTES, XrKeyboardTrackingDescriptionFB.BYTES);
             s.copyFrom(value.segment);
@@ -210,6 +214,12 @@ public record XrKeyboardTrackingDescriptionFB(@NotNull MemorySegment segment) im
 
     public BytePtr name() {
         return new BytePtr(nameRaw());
+    }
+
+    public XrKeyboardTrackingDescriptionFB name(@NotNull Consumer<BytePtr> consumer) {
+        BytePtr ptr = name();
+        consumer.accept(ptr);
+        return this;
     }
 
     public XrKeyboardTrackingDescriptionFB name(BytePtr value) {

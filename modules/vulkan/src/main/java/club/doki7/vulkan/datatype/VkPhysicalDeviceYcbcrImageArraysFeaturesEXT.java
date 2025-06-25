@@ -87,6 +87,10 @@ public record VkPhysicalDeviceYcbcrImageArraysFeaturesEXT(@NotNull MemorySegment
             return new VkPhysicalDeviceYcbcrImageArraysFeaturesEXT(segment.asSlice(index * VkPhysicalDeviceYcbcrImageArraysFeaturesEXT.BYTES, VkPhysicalDeviceYcbcrImageArraysFeaturesEXT.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceYcbcrImageArraysFeaturesEXT> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull VkPhysicalDeviceYcbcrImageArraysFeaturesEXT value) {
             MemorySegment s = segment.asSlice(index * VkPhysicalDeviceYcbcrImageArraysFeaturesEXT.BYTES, VkPhysicalDeviceYcbcrImageArraysFeaturesEXT.BYTES);
             s.copyFrom(value.segment);

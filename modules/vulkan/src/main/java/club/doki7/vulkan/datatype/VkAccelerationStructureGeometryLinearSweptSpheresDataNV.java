@@ -97,6 +97,10 @@ public record VkAccelerationStructureGeometryLinearSweptSpheresDataNV(@NotNull M
             return new VkAccelerationStructureGeometryLinearSweptSpheresDataNV(segment.asSlice(index * VkAccelerationStructureGeometryLinearSweptSpheresDataNV.BYTES, VkAccelerationStructureGeometryLinearSweptSpheresDataNV.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull VkAccelerationStructureGeometryLinearSweptSpheresDataNV> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull VkAccelerationStructureGeometryLinearSweptSpheresDataNV value) {
             MemorySegment s = segment.asSlice(index * VkAccelerationStructureGeometryLinearSweptSpheresDataNV.BYTES, VkAccelerationStructureGeometryLinearSweptSpheresDataNV.BYTES);
             s.copyFrom(value.segment);

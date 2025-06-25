@@ -87,6 +87,10 @@ public record VkSurfaceProtectedCapabilitiesKHR(@NotNull MemorySegment segment) 
             return new VkSurfaceProtectedCapabilitiesKHR(segment.asSlice(index * VkSurfaceProtectedCapabilitiesKHR.BYTES, VkSurfaceProtectedCapabilitiesKHR.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull VkSurfaceProtectedCapabilitiesKHR> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull VkSurfaceProtectedCapabilitiesKHR value) {
             MemorySegment s = segment.asSlice(index * VkSurfaceProtectedCapabilitiesKHR.BYTES, VkSurfaceProtectedCapabilitiesKHR.BYTES);
             s.copyFrom(value.segment);

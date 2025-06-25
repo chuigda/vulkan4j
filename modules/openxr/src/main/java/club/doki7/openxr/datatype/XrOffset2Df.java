@@ -81,6 +81,10 @@ public record XrOffset2Df(@NotNull MemorySegment segment) implements IXrOffset2D
             return new XrOffset2Df(segment.asSlice(index * XrOffset2Df.BYTES, XrOffset2Df.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull XrOffset2Df> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull XrOffset2Df value) {
             MemorySegment s = segment.asSlice(index * XrOffset2Df.BYTES, XrOffset2Df.BYTES);
             s.copyFrom(value.segment);

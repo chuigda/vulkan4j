@@ -89,6 +89,10 @@ public record VkVideoSessionParametersCreateInfoKHR(@NotNull MemorySegment segme
             return new VkVideoSessionParametersCreateInfoKHR(segment.asSlice(index * VkVideoSessionParametersCreateInfoKHR.BYTES, VkVideoSessionParametersCreateInfoKHR.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull VkVideoSessionParametersCreateInfoKHR> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull VkVideoSessionParametersCreateInfoKHR value) {
             MemorySegment s = segment.asSlice(index * VkVideoSessionParametersCreateInfoKHR.BYTES, VkVideoSessionParametersCreateInfoKHR.BYTES);
             s.copyFrom(value.segment);

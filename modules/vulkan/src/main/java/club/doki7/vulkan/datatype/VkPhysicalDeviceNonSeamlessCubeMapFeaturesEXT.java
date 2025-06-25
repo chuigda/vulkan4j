@@ -87,6 +87,10 @@ public record VkPhysicalDeviceNonSeamlessCubeMapFeaturesEXT(@NotNull MemorySegme
             return new VkPhysicalDeviceNonSeamlessCubeMapFeaturesEXT(segment.asSlice(index * VkPhysicalDeviceNonSeamlessCubeMapFeaturesEXT.BYTES, VkPhysicalDeviceNonSeamlessCubeMapFeaturesEXT.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceNonSeamlessCubeMapFeaturesEXT> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull VkPhysicalDeviceNonSeamlessCubeMapFeaturesEXT value) {
             MemorySegment s = segment.asSlice(index * VkPhysicalDeviceNonSeamlessCubeMapFeaturesEXT.BYTES, VkPhysicalDeviceNonSeamlessCubeMapFeaturesEXT.BYTES);
             s.copyFrom(value.segment);

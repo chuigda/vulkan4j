@@ -82,6 +82,10 @@ public record VkAccelerationStructureInstanceKHR(@NotNull MemorySegment segment)
             return new VkAccelerationStructureInstanceKHR(segment.asSlice(index * VkAccelerationStructureInstanceKHR.BYTES, VkAccelerationStructureInstanceKHR.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull VkAccelerationStructureInstanceKHR> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull VkAccelerationStructureInstanceKHR value) {
             MemorySegment s = segment.asSlice(index * VkAccelerationStructureInstanceKHR.BYTES, VkAccelerationStructureInstanceKHR.BYTES);
             s.copyFrom(value.segment);

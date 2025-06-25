@@ -83,6 +83,10 @@ public record XrCompositionLayerBaseHeader(@NotNull MemorySegment segment) imple
             return new XrCompositionLayerBaseHeader(segment.asSlice(index * XrCompositionLayerBaseHeader.BYTES, XrCompositionLayerBaseHeader.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull XrCompositionLayerBaseHeader> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull XrCompositionLayerBaseHeader value) {
             MemorySegment s = segment.asSlice(index * XrCompositionLayerBaseHeader.BYTES, XrCompositionLayerBaseHeader.BYTES);
             s.copyFrom(value.segment);

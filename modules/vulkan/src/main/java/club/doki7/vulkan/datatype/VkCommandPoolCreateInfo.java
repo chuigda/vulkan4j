@@ -88,6 +88,10 @@ public record VkCommandPoolCreateInfo(@NotNull MemorySegment segment) implements
             return new VkCommandPoolCreateInfo(segment.asSlice(index * VkCommandPoolCreateInfo.BYTES, VkCommandPoolCreateInfo.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull VkCommandPoolCreateInfo> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull VkCommandPoolCreateInfo value) {
             MemorySegment s = segment.asSlice(index * VkCommandPoolCreateInfo.BYTES, VkCommandPoolCreateInfo.BYTES);
             s.copyFrom(value.segment);

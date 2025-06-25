@@ -83,6 +83,10 @@ public record XrSceneMarkerMSFT(@NotNull MemorySegment segment) implements IXrSc
             return new XrSceneMarkerMSFT(segment.asSlice(index * XrSceneMarkerMSFT.BYTES, XrSceneMarkerMSFT.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull XrSceneMarkerMSFT> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull XrSceneMarkerMSFT value) {
             MemorySegment s = segment.asSlice(index * XrSceneMarkerMSFT.BYTES, XrSceneMarkerMSFT.BYTES);
             s.copyFrom(value.segment);

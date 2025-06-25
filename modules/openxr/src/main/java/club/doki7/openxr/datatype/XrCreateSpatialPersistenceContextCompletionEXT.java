@@ -93,6 +93,10 @@ public record XrCreateSpatialPersistenceContextCompletionEXT(@NotNull MemorySegm
             return new XrCreateSpatialPersistenceContextCompletionEXT(segment.asSlice(index * XrCreateSpatialPersistenceContextCompletionEXT.BYTES, XrCreateSpatialPersistenceContextCompletionEXT.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull XrCreateSpatialPersistenceContextCompletionEXT> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull XrCreateSpatialPersistenceContextCompletionEXT value) {
             MemorySegment s = segment.asSlice(index * XrCreateSpatialPersistenceContextCompletionEXT.BYTES, XrCreateSpatialPersistenceContextCompletionEXT.BYTES);
             s.copyFrom(value.segment);

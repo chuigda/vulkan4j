@@ -88,6 +88,10 @@ public record VkWriteIndirectExecutionSetPipelineEXT(@NotNull MemorySegment segm
             return new VkWriteIndirectExecutionSetPipelineEXT(segment.asSlice(index * VkWriteIndirectExecutionSetPipelineEXT.BYTES, VkWriteIndirectExecutionSetPipelineEXT.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull VkWriteIndirectExecutionSetPipelineEXT> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull VkWriteIndirectExecutionSetPipelineEXT value) {
             MemorySegment s = segment.asSlice(index * VkWriteIndirectExecutionSetPipelineEXT.BYTES, VkWriteIndirectExecutionSetPipelineEXT.BYTES);
             s.copyFrom(value.segment);

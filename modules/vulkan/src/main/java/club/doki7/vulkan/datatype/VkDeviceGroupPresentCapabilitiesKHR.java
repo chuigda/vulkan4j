@@ -88,6 +88,10 @@ public record VkDeviceGroupPresentCapabilitiesKHR(@NotNull MemorySegment segment
             return new VkDeviceGroupPresentCapabilitiesKHR(segment.asSlice(index * VkDeviceGroupPresentCapabilitiesKHR.BYTES, VkDeviceGroupPresentCapabilitiesKHR.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull VkDeviceGroupPresentCapabilitiesKHR> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull VkDeviceGroupPresentCapabilitiesKHR value) {
             MemorySegment s = segment.asSlice(index * VkDeviceGroupPresentCapabilitiesKHR.BYTES, VkDeviceGroupPresentCapabilitiesKHR.BYTES);
             s.copyFrom(value.segment);
@@ -216,6 +220,12 @@ public record VkDeviceGroupPresentCapabilitiesKHR(@NotNull MemorySegment segment
 
     public @Unsigned IntPtr presentMask() {
         return new IntPtr(presentMaskRaw());
+    }
+
+    public VkDeviceGroupPresentCapabilitiesKHR presentMask(@NotNull Consumer<IntPtr> consumer) {
+        @Unsigned IntPtr ptr = presentMask();
+        consumer.accept(ptr);
+        return this;
     }
 
     public VkDeviceGroupPresentCapabilitiesKHR presentMask(@Unsigned IntPtr value) {

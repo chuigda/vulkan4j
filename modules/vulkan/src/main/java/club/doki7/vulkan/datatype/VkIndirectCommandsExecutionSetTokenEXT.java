@@ -77,6 +77,10 @@ public record VkIndirectCommandsExecutionSetTokenEXT(@NotNull MemorySegment segm
             return new VkIndirectCommandsExecutionSetTokenEXT(segment.asSlice(index * VkIndirectCommandsExecutionSetTokenEXT.BYTES, VkIndirectCommandsExecutionSetTokenEXT.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull VkIndirectCommandsExecutionSetTokenEXT> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull VkIndirectCommandsExecutionSetTokenEXT value) {
             MemorySegment s = segment.asSlice(index * VkIndirectCommandsExecutionSetTokenEXT.BYTES, VkIndirectCommandsExecutionSetTokenEXT.BYTES);
             s.copyFrom(value.segment);

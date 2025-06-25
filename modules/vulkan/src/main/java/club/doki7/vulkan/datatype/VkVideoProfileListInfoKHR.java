@@ -88,6 +88,10 @@ public record VkVideoProfileListInfoKHR(@NotNull MemorySegment segment) implemen
             return new VkVideoProfileListInfoKHR(segment.asSlice(index * VkVideoProfileListInfoKHR.BYTES, VkVideoProfileListInfoKHR.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull VkVideoProfileListInfoKHR> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull VkVideoProfileListInfoKHR value) {
             MemorySegment s = segment.asSlice(index * VkVideoProfileListInfoKHR.BYTES, VkVideoProfileListInfoKHR.BYTES);
             s.copyFrom(value.segment);

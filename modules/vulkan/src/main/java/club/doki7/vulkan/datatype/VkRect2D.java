@@ -77,6 +77,10 @@ public record VkRect2D(@NotNull MemorySegment segment) implements IVkRect2D {
             return new VkRect2D(segment.asSlice(index * VkRect2D.BYTES, VkRect2D.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull VkRect2D> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull VkRect2D value) {
             MemorySegment s = segment.asSlice(index * VkRect2D.BYTES, VkRect2D.BYTES);
             s.copyFrom(value.segment);

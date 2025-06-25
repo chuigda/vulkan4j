@@ -87,6 +87,10 @@ public record VkSurfaceCapabilitiesPresentBarrierNV(@NotNull MemorySegment segme
             return new VkSurfaceCapabilitiesPresentBarrierNV(segment.asSlice(index * VkSurfaceCapabilitiesPresentBarrierNV.BYTES, VkSurfaceCapabilitiesPresentBarrierNV.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull VkSurfaceCapabilitiesPresentBarrierNV> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull VkSurfaceCapabilitiesPresentBarrierNV value) {
             MemorySegment s = segment.asSlice(index * VkSurfaceCapabilitiesPresentBarrierNV.BYTES, VkSurfaceCapabilitiesPresentBarrierNV.BYTES);
             s.copyFrom(value.segment);

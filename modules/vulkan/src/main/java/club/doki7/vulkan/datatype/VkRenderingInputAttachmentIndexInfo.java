@@ -90,6 +90,10 @@ public record VkRenderingInputAttachmentIndexInfo(@NotNull MemorySegment segment
             return new VkRenderingInputAttachmentIndexInfo(segment.asSlice(index * VkRenderingInputAttachmentIndexInfo.BYTES, VkRenderingInputAttachmentIndexInfo.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull VkRenderingInputAttachmentIndexInfo> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull VkRenderingInputAttachmentIndexInfo value) {
             MemorySegment s = segment.asSlice(index * VkRenderingInputAttachmentIndexInfo.BYTES, VkRenderingInputAttachmentIndexInfo.BYTES);
             s.copyFrom(value.segment);

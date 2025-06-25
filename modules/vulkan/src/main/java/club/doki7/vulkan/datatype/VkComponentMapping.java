@@ -79,6 +79,10 @@ public record VkComponentMapping(@NotNull MemorySegment segment) implements IVkC
             return new VkComponentMapping(segment.asSlice(index * VkComponentMapping.BYTES, VkComponentMapping.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull VkComponentMapping> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull VkComponentMapping value) {
             MemorySegment s = segment.asSlice(index * VkComponentMapping.BYTES, VkComponentMapping.BYTES);
             s.copyFrom(value.segment);

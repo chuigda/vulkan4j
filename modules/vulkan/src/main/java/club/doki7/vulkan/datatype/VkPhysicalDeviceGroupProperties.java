@@ -89,6 +89,10 @@ public record VkPhysicalDeviceGroupProperties(@NotNull MemorySegment segment) im
             return new VkPhysicalDeviceGroupProperties(segment.asSlice(index * VkPhysicalDeviceGroupProperties.BYTES, VkPhysicalDeviceGroupProperties.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceGroupProperties> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull VkPhysicalDeviceGroupProperties value) {
             MemorySegment s = segment.asSlice(index * VkPhysicalDeviceGroupProperties.BYTES, VkPhysicalDeviceGroupProperties.BYTES);
             s.copyFrom(value.segment);
@@ -232,6 +236,11 @@ public record VkPhysicalDeviceGroupProperties(@NotNull MemorySegment segment) im
         return new VkPhysicalDevice.Ptr(physicalDevicesRaw());
     }
 
+    public VkPhysicalDeviceGroupProperties physicalDevices(@NotNull Consumer<VkPhysicalDevice.Ptr> consumer) {
+        VkPhysicalDevice.Ptr ptr = physicalDevices();
+        consumer.accept(ptr);
+        return this;
+    }
     public VkPhysicalDeviceGroupProperties physicalDevices(VkPhysicalDevice.Ptr value) {
         MemorySegment s = physicalDevicesRaw();
         s.copyFrom(value.segment());

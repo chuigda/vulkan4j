@@ -88,6 +88,10 @@ public record VkPipelineBinaryKeyKHR(@NotNull MemorySegment segment) implements 
             return new VkPipelineBinaryKeyKHR(segment.asSlice(index * VkPipelineBinaryKeyKHR.BYTES, VkPipelineBinaryKeyKHR.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull VkPipelineBinaryKeyKHR> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull VkPipelineBinaryKeyKHR value) {
             MemorySegment s = segment.asSlice(index * VkPipelineBinaryKeyKHR.BYTES, VkPipelineBinaryKeyKHR.BYTES);
             s.copyFrom(value.segment);
@@ -225,6 +229,12 @@ public record VkPipelineBinaryKeyKHR(@NotNull MemorySegment segment) implements 
 
     public @Unsigned BytePtr key() {
         return new BytePtr(keyRaw());
+    }
+
+    public VkPipelineBinaryKeyKHR key(@NotNull Consumer<BytePtr> consumer) {
+        @Unsigned BytePtr ptr = key();
+        consumer.accept(ptr);
+        return this;
     }
 
     public VkPipelineBinaryKeyKHR key(@Unsigned BytePtr value) {

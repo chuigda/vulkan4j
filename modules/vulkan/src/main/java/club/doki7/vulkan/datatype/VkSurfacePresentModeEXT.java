@@ -87,6 +87,10 @@ public record VkSurfacePresentModeEXT(@NotNull MemorySegment segment) implements
             return new VkSurfacePresentModeEXT(segment.asSlice(index * VkSurfacePresentModeEXT.BYTES, VkSurfacePresentModeEXT.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull VkSurfacePresentModeEXT> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull VkSurfacePresentModeEXT value) {
             MemorySegment s = segment.asSlice(index * VkSurfacePresentModeEXT.BYTES, VkSurfacePresentModeEXT.BYTES);
             s.copyFrom(value.segment);

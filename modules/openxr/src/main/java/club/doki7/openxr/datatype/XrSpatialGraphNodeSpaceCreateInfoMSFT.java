@@ -93,6 +93,10 @@ public record XrSpatialGraphNodeSpaceCreateInfoMSFT(@NotNull MemorySegment segme
             return new XrSpatialGraphNodeSpaceCreateInfoMSFT(segment.asSlice(index * XrSpatialGraphNodeSpaceCreateInfoMSFT.BYTES, XrSpatialGraphNodeSpaceCreateInfoMSFT.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull XrSpatialGraphNodeSpaceCreateInfoMSFT> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull XrSpatialGraphNodeSpaceCreateInfoMSFT value) {
             MemorySegment s = segment.asSlice(index * XrSpatialGraphNodeSpaceCreateInfoMSFT.BYTES, XrSpatialGraphNodeSpaceCreateInfoMSFT.BYTES);
             s.copyFrom(value.segment);
@@ -230,6 +234,12 @@ public record XrSpatialGraphNodeSpaceCreateInfoMSFT(@NotNull MemorySegment segme
 
     public @Unsigned BytePtr nodeId() {
         return new BytePtr(nodeIdRaw());
+    }
+
+    public XrSpatialGraphNodeSpaceCreateInfoMSFT nodeId(@NotNull Consumer<BytePtr> consumer) {
+        @Unsigned BytePtr ptr = nodeId();
+        consumer.accept(ptr);
+        return this;
     }
 
     public XrSpatialGraphNodeSpaceCreateInfoMSFT nodeId(@Unsigned BytePtr value) {

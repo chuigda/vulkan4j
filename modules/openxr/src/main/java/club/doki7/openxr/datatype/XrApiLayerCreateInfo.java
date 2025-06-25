@@ -85,6 +85,10 @@ public record XrApiLayerCreateInfo(@NotNull MemorySegment segment) implements IX
             return new XrApiLayerCreateInfo(segment.asSlice(index * XrApiLayerCreateInfo.BYTES, XrApiLayerCreateInfo.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull XrApiLayerCreateInfo> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull XrApiLayerCreateInfo value) {
             MemorySegment s = segment.asSlice(index * XrApiLayerCreateInfo.BYTES, XrApiLayerCreateInfo.BYTES);
             s.copyFrom(value.segment);
@@ -221,6 +225,12 @@ public record XrApiLayerCreateInfo(@NotNull MemorySegment segment) implements IX
 
     public BytePtr settings_file_location() {
         return new BytePtr(settings_file_locationRaw());
+    }
+
+    public XrApiLayerCreateInfo settings_file_location(@NotNull Consumer<BytePtr> consumer) {
+        BytePtr ptr = settings_file_location();
+        consumer.accept(ptr);
+        return this;
     }
 
     public XrApiLayerCreateInfo settings_file_location(BytePtr value) {

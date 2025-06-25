@@ -87,6 +87,10 @@ public record VkPerformanceConfigurationAcquireInfoINTEL(@NotNull MemorySegment 
             return new VkPerformanceConfigurationAcquireInfoINTEL(segment.asSlice(index * VkPerformanceConfigurationAcquireInfoINTEL.BYTES, VkPerformanceConfigurationAcquireInfoINTEL.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull VkPerformanceConfigurationAcquireInfoINTEL> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull VkPerformanceConfigurationAcquireInfoINTEL value) {
             MemorySegment s = segment.asSlice(index * VkPerformanceConfigurationAcquireInfoINTEL.BYTES, VkPerformanceConfigurationAcquireInfoINTEL.BYTES);
             s.copyFrom(value.segment);

@@ -92,6 +92,10 @@ public record XrVulkanSwapchainFormatListCreateInfoKHR(@NotNull MemorySegment se
             return new XrVulkanSwapchainFormatListCreateInfoKHR(segment.asSlice(index * XrVulkanSwapchainFormatListCreateInfoKHR.BYTES, XrVulkanSwapchainFormatListCreateInfoKHR.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull XrVulkanSwapchainFormatListCreateInfoKHR> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull XrVulkanSwapchainFormatListCreateInfoKHR value) {
             MemorySegment s = segment.asSlice(index * XrVulkanSwapchainFormatListCreateInfoKHR.BYTES, XrVulkanSwapchainFormatListCreateInfoKHR.BYTES);
             s.copyFrom(value.segment);

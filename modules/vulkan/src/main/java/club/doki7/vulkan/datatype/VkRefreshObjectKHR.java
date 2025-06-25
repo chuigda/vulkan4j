@@ -78,6 +78,10 @@ public record VkRefreshObjectKHR(@NotNull MemorySegment segment) implements IVkR
             return new VkRefreshObjectKHR(segment.asSlice(index * VkRefreshObjectKHR.BYTES, VkRefreshObjectKHR.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull VkRefreshObjectKHR> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull VkRefreshObjectKHR value) {
             MemorySegment s = segment.asSlice(index * VkRefreshObjectKHR.BYTES, VkRefreshObjectKHR.BYTES);
             s.copyFrom(value.segment);

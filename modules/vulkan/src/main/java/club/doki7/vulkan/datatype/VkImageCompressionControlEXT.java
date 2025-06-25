@@ -89,6 +89,10 @@ public record VkImageCompressionControlEXT(@NotNull MemorySegment segment) imple
             return new VkImageCompressionControlEXT(segment.asSlice(index * VkImageCompressionControlEXT.BYTES, VkImageCompressionControlEXT.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull VkImageCompressionControlEXT> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull VkImageCompressionControlEXT value) {
             MemorySegment s = segment.asSlice(index * VkImageCompressionControlEXT.BYTES, VkImageCompressionControlEXT.BYTES);
             s.copyFrom(value.segment);

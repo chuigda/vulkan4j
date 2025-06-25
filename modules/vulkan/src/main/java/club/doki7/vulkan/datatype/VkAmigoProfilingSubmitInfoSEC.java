@@ -88,6 +88,10 @@ public record VkAmigoProfilingSubmitInfoSEC(@NotNull MemorySegment segment) impl
             return new VkAmigoProfilingSubmitInfoSEC(segment.asSlice(index * VkAmigoProfilingSubmitInfoSEC.BYTES, VkAmigoProfilingSubmitInfoSEC.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull VkAmigoProfilingSubmitInfoSEC> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull VkAmigoProfilingSubmitInfoSEC value) {
             MemorySegment s = segment.asSlice(index * VkAmigoProfilingSubmitInfoSEC.BYTES, VkAmigoProfilingSubmitInfoSEC.BYTES);
             s.copyFrom(value.segment);

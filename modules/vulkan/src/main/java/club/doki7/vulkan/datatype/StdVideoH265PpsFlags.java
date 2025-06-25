@@ -105,6 +105,10 @@ public record StdVideoH265PpsFlags(@NotNull MemorySegment segment) implements IS
             return new StdVideoH265PpsFlags(segment.asSlice(index * StdVideoH265PpsFlags.BYTES, StdVideoH265PpsFlags.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull StdVideoH265PpsFlags> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull StdVideoH265PpsFlags value) {
             MemorySegment s = segment.asSlice(index * StdVideoH265PpsFlags.BYTES, StdVideoH265PpsFlags.BYTES);
             s.copyFrom(value.segment);

@@ -75,6 +75,10 @@ public record StdVideoDecodeH265ReferenceInfo(@NotNull MemorySegment segment) im
             return new StdVideoDecodeH265ReferenceInfo(segment.asSlice(index * StdVideoDecodeH265ReferenceInfo.BYTES, StdVideoDecodeH265ReferenceInfo.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull StdVideoDecodeH265ReferenceInfo> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull StdVideoDecodeH265ReferenceInfo value) {
             MemorySegment s = segment.asSlice(index * StdVideoDecodeH265ReferenceInfo.BYTES, StdVideoDecodeH265ReferenceInfo.BYTES);
             s.copyFrom(value.segment);

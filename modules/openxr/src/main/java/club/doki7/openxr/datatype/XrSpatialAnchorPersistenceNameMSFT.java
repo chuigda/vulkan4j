@@ -80,6 +80,10 @@ public record XrSpatialAnchorPersistenceNameMSFT(@NotNull MemorySegment segment)
             return new XrSpatialAnchorPersistenceNameMSFT(segment.asSlice(index * XrSpatialAnchorPersistenceNameMSFT.BYTES, XrSpatialAnchorPersistenceNameMSFT.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull XrSpatialAnchorPersistenceNameMSFT> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull XrSpatialAnchorPersistenceNameMSFT value) {
             MemorySegment s = segment.asSlice(index * XrSpatialAnchorPersistenceNameMSFT.BYTES, XrSpatialAnchorPersistenceNameMSFT.BYTES);
             s.copyFrom(value.segment);
@@ -175,6 +179,12 @@ public record XrSpatialAnchorPersistenceNameMSFT(@NotNull MemorySegment segment)
 
     public BytePtr name() {
         return new BytePtr(nameRaw());
+    }
+
+    public XrSpatialAnchorPersistenceNameMSFT name(@NotNull Consumer<BytePtr> consumer) {
+        BytePtr ptr = name();
+        consumer.accept(ptr);
+        return this;
     }
 
     public XrSpatialAnchorPersistenceNameMSFT name(BytePtr value) {

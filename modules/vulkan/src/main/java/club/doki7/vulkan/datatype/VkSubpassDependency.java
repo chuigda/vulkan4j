@@ -82,6 +82,10 @@ public record VkSubpassDependency(@NotNull MemorySegment segment) implements IVk
             return new VkSubpassDependency(segment.asSlice(index * VkSubpassDependency.BYTES, VkSubpassDependency.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull VkSubpassDependency> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull VkSubpassDependency value) {
             MemorySegment s = segment.asSlice(index * VkSubpassDependency.BYTES, VkSubpassDependency.BYTES);
             s.copyFrom(value.segment);

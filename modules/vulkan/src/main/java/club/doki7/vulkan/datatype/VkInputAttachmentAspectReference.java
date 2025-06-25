@@ -78,6 +78,10 @@ public record VkInputAttachmentAspectReference(@NotNull MemorySegment segment) i
             return new VkInputAttachmentAspectReference(segment.asSlice(index * VkInputAttachmentAspectReference.BYTES, VkInputAttachmentAspectReference.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull VkInputAttachmentAspectReference> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull VkInputAttachmentAspectReference value) {
             MemorySegment s = segment.asSlice(index * VkInputAttachmentAspectReference.BYTES, VkInputAttachmentAspectReference.BYTES);
             s.copyFrom(value.segment);

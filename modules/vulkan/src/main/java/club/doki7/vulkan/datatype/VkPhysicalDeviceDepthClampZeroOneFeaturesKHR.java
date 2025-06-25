@@ -87,6 +87,10 @@ public record VkPhysicalDeviceDepthClampZeroOneFeaturesKHR(@NotNull MemorySegmen
             return new VkPhysicalDeviceDepthClampZeroOneFeaturesKHR(segment.asSlice(index * VkPhysicalDeviceDepthClampZeroOneFeaturesKHR.BYTES, VkPhysicalDeviceDepthClampZeroOneFeaturesKHR.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceDepthClampZeroOneFeaturesKHR> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull VkPhysicalDeviceDepthClampZeroOneFeaturesKHR value) {
             MemorySegment s = segment.asSlice(index * VkPhysicalDeviceDepthClampZeroOneFeaturesKHR.BYTES, VkPhysicalDeviceDepthClampZeroOneFeaturesKHR.BYTES);
             s.copyFrom(value.segment);

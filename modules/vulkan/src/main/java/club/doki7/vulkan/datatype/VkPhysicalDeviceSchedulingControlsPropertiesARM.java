@@ -87,6 +87,10 @@ public record VkPhysicalDeviceSchedulingControlsPropertiesARM(@NotNull MemorySeg
             return new VkPhysicalDeviceSchedulingControlsPropertiesARM(segment.asSlice(index * VkPhysicalDeviceSchedulingControlsPropertiesARM.BYTES, VkPhysicalDeviceSchedulingControlsPropertiesARM.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceSchedulingControlsPropertiesARM> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull VkPhysicalDeviceSchedulingControlsPropertiesARM value) {
             MemorySegment s = segment.asSlice(index * VkPhysicalDeviceSchedulingControlsPropertiesARM.BYTES, VkPhysicalDeviceSchedulingControlsPropertiesARM.BYTES);
             s.copyFrom(value.segment);

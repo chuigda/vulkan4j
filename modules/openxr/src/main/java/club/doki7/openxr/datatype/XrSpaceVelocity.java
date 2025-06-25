@@ -93,6 +93,10 @@ public record XrSpaceVelocity(@NotNull MemorySegment segment) implements IXrSpac
             return new XrSpaceVelocity(segment.asSlice(index * XrSpaceVelocity.BYTES, XrSpaceVelocity.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull XrSpaceVelocity> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull XrSpaceVelocity value) {
             MemorySegment s = segment.asSlice(index * XrSpaceVelocity.BYTES, XrSpaceVelocity.BYTES);
             s.copyFrom(value.segment);

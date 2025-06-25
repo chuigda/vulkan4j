@@ -80,6 +80,10 @@ public record XrSpatialAnchorNameHTC(@NotNull MemorySegment segment) implements 
             return new XrSpatialAnchorNameHTC(segment.asSlice(index * XrSpatialAnchorNameHTC.BYTES, XrSpatialAnchorNameHTC.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull XrSpatialAnchorNameHTC> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull XrSpatialAnchorNameHTC value) {
             MemorySegment s = segment.asSlice(index * XrSpatialAnchorNameHTC.BYTES, XrSpatialAnchorNameHTC.BYTES);
             s.copyFrom(value.segment);
@@ -175,6 +179,12 @@ public record XrSpatialAnchorNameHTC(@NotNull MemorySegment segment) implements 
 
     public BytePtr name() {
         return new BytePtr(nameRaw());
+    }
+
+    public XrSpatialAnchorNameHTC name(@NotNull Consumer<BytePtr> consumer) {
+        BytePtr ptr = name();
+        consumer.accept(ptr);
+        return this;
     }
 
     public XrSpatialAnchorNameHTC name(BytePtr value) {

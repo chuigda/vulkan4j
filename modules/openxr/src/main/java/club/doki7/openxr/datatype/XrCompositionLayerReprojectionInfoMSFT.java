@@ -91,6 +91,10 @@ public record XrCompositionLayerReprojectionInfoMSFT(@NotNull MemorySegment segm
             return new XrCompositionLayerReprojectionInfoMSFT(segment.asSlice(index * XrCompositionLayerReprojectionInfoMSFT.BYTES, XrCompositionLayerReprojectionInfoMSFT.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull XrCompositionLayerReprojectionInfoMSFT> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull XrCompositionLayerReprojectionInfoMSFT value) {
             MemorySegment s = segment.asSlice(index * XrCompositionLayerReprojectionInfoMSFT.BYTES, XrCompositionLayerReprojectionInfoMSFT.BYTES);
             s.copyFrom(value.segment);

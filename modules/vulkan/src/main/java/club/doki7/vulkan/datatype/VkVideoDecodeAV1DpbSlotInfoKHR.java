@@ -87,6 +87,10 @@ public record VkVideoDecodeAV1DpbSlotInfoKHR(@NotNull MemorySegment segment) imp
             return new VkVideoDecodeAV1DpbSlotInfoKHR(segment.asSlice(index * VkVideoDecodeAV1DpbSlotInfoKHR.BYTES, VkVideoDecodeAV1DpbSlotInfoKHR.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull VkVideoDecodeAV1DpbSlotInfoKHR> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull VkVideoDecodeAV1DpbSlotInfoKHR value) {
             MemorySegment s = segment.asSlice(index * VkVideoDecodeAV1DpbSlotInfoKHR.BYTES, VkVideoDecodeAV1DpbSlotInfoKHR.BYTES);
             s.copyFrom(value.segment);

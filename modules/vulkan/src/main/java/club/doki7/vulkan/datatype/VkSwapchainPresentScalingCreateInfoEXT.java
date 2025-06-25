@@ -89,6 +89,10 @@ public record VkSwapchainPresentScalingCreateInfoEXT(@NotNull MemorySegment segm
             return new VkSwapchainPresentScalingCreateInfoEXT(segment.asSlice(index * VkSwapchainPresentScalingCreateInfoEXT.BYTES, VkSwapchainPresentScalingCreateInfoEXT.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull VkSwapchainPresentScalingCreateInfoEXT> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull VkSwapchainPresentScalingCreateInfoEXT value) {
             MemorySegment s = segment.asSlice(index * VkSwapchainPresentScalingCreateInfoEXT.BYTES, VkSwapchainPresentScalingCreateInfoEXT.BYTES);
             s.copyFrom(value.segment);

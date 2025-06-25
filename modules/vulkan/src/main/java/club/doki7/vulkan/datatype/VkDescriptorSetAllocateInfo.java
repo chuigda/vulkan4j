@@ -89,6 +89,10 @@ public record VkDescriptorSetAllocateInfo(@NotNull MemorySegment segment) implem
             return new VkDescriptorSetAllocateInfo(segment.asSlice(index * VkDescriptorSetAllocateInfo.BYTES, VkDescriptorSetAllocateInfo.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull VkDescriptorSetAllocateInfo> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull VkDescriptorSetAllocateInfo value) {
             MemorySegment s = segment.asSlice(index * VkDescriptorSetAllocateInfo.BYTES, VkDescriptorSetAllocateInfo.BYTES);
             s.copyFrom(value.segment);

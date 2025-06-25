@@ -87,6 +87,10 @@ public record VkPhysicalDeviceRGBA10X6FormatsFeaturesEXT(@NotNull MemorySegment 
             return new VkPhysicalDeviceRGBA10X6FormatsFeaturesEXT(segment.asSlice(index * VkPhysicalDeviceRGBA10X6FormatsFeaturesEXT.BYTES, VkPhysicalDeviceRGBA10X6FormatsFeaturesEXT.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceRGBA10X6FormatsFeaturesEXT> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull VkPhysicalDeviceRGBA10X6FormatsFeaturesEXT value) {
             MemorySegment s = segment.asSlice(index * VkPhysicalDeviceRGBA10X6FormatsFeaturesEXT.BYTES, VkPhysicalDeviceRGBA10X6FormatsFeaturesEXT.BYTES);
             s.copyFrom(value.segment);

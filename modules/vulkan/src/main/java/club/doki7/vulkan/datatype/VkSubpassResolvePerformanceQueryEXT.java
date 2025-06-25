@@ -87,6 +87,10 @@ public record VkSubpassResolvePerformanceQueryEXT(@NotNull MemorySegment segment
             return new VkSubpassResolvePerformanceQueryEXT(segment.asSlice(index * VkSubpassResolvePerformanceQueryEXT.BYTES, VkSubpassResolvePerformanceQueryEXT.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull VkSubpassResolvePerformanceQueryEXT> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull VkSubpassResolvePerformanceQueryEXT value) {
             MemorySegment s = segment.asSlice(index * VkSubpassResolvePerformanceQueryEXT.BYTES, VkSubpassResolvePerformanceQueryEXT.BYTES);
             s.copyFrom(value.segment);

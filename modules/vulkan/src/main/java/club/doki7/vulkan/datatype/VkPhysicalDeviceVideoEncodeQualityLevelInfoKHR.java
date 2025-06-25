@@ -88,6 +88,10 @@ public record VkPhysicalDeviceVideoEncodeQualityLevelInfoKHR(@NotNull MemorySegm
             return new VkPhysicalDeviceVideoEncodeQualityLevelInfoKHR(segment.asSlice(index * VkPhysicalDeviceVideoEncodeQualityLevelInfoKHR.BYTES, VkPhysicalDeviceVideoEncodeQualityLevelInfoKHR.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceVideoEncodeQualityLevelInfoKHR> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull VkPhysicalDeviceVideoEncodeQualityLevelInfoKHR value) {
             MemorySegment s = segment.asSlice(index * VkPhysicalDeviceVideoEncodeQualityLevelInfoKHR.BYTES, VkPhysicalDeviceVideoEncodeQualityLevelInfoKHR.BYTES);
             s.copyFrom(value.segment);

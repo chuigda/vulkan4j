@@ -92,6 +92,10 @@ public record XrHandTrackingDataSourceInfoEXT(@NotNull MemorySegment segment) im
             return new XrHandTrackingDataSourceInfoEXT(segment.asSlice(index * XrHandTrackingDataSourceInfoEXT.BYTES, XrHandTrackingDataSourceInfoEXT.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull XrHandTrackingDataSourceInfoEXT> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull XrHandTrackingDataSourceInfoEXT value) {
             MemorySegment s = segment.asSlice(index * XrHandTrackingDataSourceInfoEXT.BYTES, XrHandTrackingDataSourceInfoEXT.BYTES);
             s.copyFrom(value.segment);

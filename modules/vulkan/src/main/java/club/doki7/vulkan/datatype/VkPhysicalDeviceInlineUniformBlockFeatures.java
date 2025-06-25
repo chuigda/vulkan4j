@@ -88,6 +88,10 @@ public record VkPhysicalDeviceInlineUniformBlockFeatures(@NotNull MemorySegment 
             return new VkPhysicalDeviceInlineUniformBlockFeatures(segment.asSlice(index * VkPhysicalDeviceInlineUniformBlockFeatures.BYTES, VkPhysicalDeviceInlineUniformBlockFeatures.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceInlineUniformBlockFeatures> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull VkPhysicalDeviceInlineUniformBlockFeatures value) {
             MemorySegment s = segment.asSlice(index * VkPhysicalDeviceInlineUniformBlockFeatures.BYTES, VkPhysicalDeviceInlineUniformBlockFeatures.BYTES);
             s.copyFrom(value.segment);

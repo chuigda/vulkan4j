@@ -92,6 +92,10 @@ public record XrSessionCreateInfo(@NotNull MemorySegment segment) implements IXr
             return new XrSessionCreateInfo(segment.asSlice(index * XrSessionCreateInfo.BYTES, XrSessionCreateInfo.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull XrSessionCreateInfo> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull XrSessionCreateInfo value) {
             MemorySegment s = segment.asSlice(index * XrSessionCreateInfo.BYTES, XrSessionCreateInfo.BYTES);
             s.copyFrom(value.segment);

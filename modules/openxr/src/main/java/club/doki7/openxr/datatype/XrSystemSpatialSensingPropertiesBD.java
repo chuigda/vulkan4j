@@ -91,6 +91,10 @@ public record XrSystemSpatialSensingPropertiesBD(@NotNull MemorySegment segment)
             return new XrSystemSpatialSensingPropertiesBD(segment.asSlice(index * XrSystemSpatialSensingPropertiesBD.BYTES, XrSystemSpatialSensingPropertiesBD.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull XrSystemSpatialSensingPropertiesBD> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull XrSystemSpatialSensingPropertiesBD value) {
             MemorySegment s = segment.asSlice(index * XrSystemSpatialSensingPropertiesBD.BYTES, XrSystemSpatialSensingPropertiesBD.BYTES);
             s.copyFrom(value.segment);

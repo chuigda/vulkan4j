@@ -91,6 +91,10 @@ public record XrSystemFaceTrackingPropertiesFB(@NotNull MemorySegment segment) i
             return new XrSystemFaceTrackingPropertiesFB(segment.asSlice(index * XrSystemFaceTrackingPropertiesFB.BYTES, XrSystemFaceTrackingPropertiesFB.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull XrSystemFaceTrackingPropertiesFB> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull XrSystemFaceTrackingPropertiesFB value) {
             MemorySegment s = segment.asSlice(index * XrSystemFaceTrackingPropertiesFB.BYTES, XrSystemFaceTrackingPropertiesFB.BYTES);
             s.copyFrom(value.segment);

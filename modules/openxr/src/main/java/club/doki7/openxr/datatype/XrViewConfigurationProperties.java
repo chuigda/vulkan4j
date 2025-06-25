@@ -92,6 +92,10 @@ public record XrViewConfigurationProperties(@NotNull MemorySegment segment) impl
             return new XrViewConfigurationProperties(segment.asSlice(index * XrViewConfigurationProperties.BYTES, XrViewConfigurationProperties.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull XrViewConfigurationProperties> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull XrViewConfigurationProperties value) {
             MemorySegment s = segment.asSlice(index * XrViewConfigurationProperties.BYTES, XrViewConfigurationProperties.BYTES);
             s.copyFrom(value.segment);

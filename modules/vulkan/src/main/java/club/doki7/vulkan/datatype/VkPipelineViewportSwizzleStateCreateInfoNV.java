@@ -89,6 +89,10 @@ public record VkPipelineViewportSwizzleStateCreateInfoNV(@NotNull MemorySegment 
             return new VkPipelineViewportSwizzleStateCreateInfoNV(segment.asSlice(index * VkPipelineViewportSwizzleStateCreateInfoNV.BYTES, VkPipelineViewportSwizzleStateCreateInfoNV.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull VkPipelineViewportSwizzleStateCreateInfoNV> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull VkPipelineViewportSwizzleStateCreateInfoNV value) {
             MemorySegment s = segment.asSlice(index * VkPipelineViewportSwizzleStateCreateInfoNV.BYTES, VkPipelineViewportSwizzleStateCreateInfoNV.BYTES);
             s.copyFrom(value.segment);

@@ -87,6 +87,10 @@ public record VkPhysicalDeviceColorWriteEnableFeaturesEXT(@NotNull MemorySegment
             return new VkPhysicalDeviceColorWriteEnableFeaturesEXT(segment.asSlice(index * VkPhysicalDeviceColorWriteEnableFeaturesEXT.BYTES, VkPhysicalDeviceColorWriteEnableFeaturesEXT.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceColorWriteEnableFeaturesEXT> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull VkPhysicalDeviceColorWriteEnableFeaturesEXT value) {
             MemorySegment s = segment.asSlice(index * VkPhysicalDeviceColorWriteEnableFeaturesEXT.BYTES, VkPhysicalDeviceColorWriteEnableFeaturesEXT.BYTES);
             s.copyFrom(value.segment);

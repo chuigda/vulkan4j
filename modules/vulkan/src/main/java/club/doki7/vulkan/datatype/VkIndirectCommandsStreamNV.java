@@ -77,6 +77,10 @@ public record VkIndirectCommandsStreamNV(@NotNull MemorySegment segment) impleme
             return new VkIndirectCommandsStreamNV(segment.asSlice(index * VkIndirectCommandsStreamNV.BYTES, VkIndirectCommandsStreamNV.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull VkIndirectCommandsStreamNV> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull VkIndirectCommandsStreamNV value) {
             MemorySegment s = segment.asSlice(index * VkIndirectCommandsStreamNV.BYTES, VkIndirectCommandsStreamNV.BYTES);
             s.copyFrom(value.segment);

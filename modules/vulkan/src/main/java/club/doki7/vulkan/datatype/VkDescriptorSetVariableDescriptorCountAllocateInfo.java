@@ -88,6 +88,10 @@ public record VkDescriptorSetVariableDescriptorCountAllocateInfo(@NotNull Memory
             return new VkDescriptorSetVariableDescriptorCountAllocateInfo(segment.asSlice(index * VkDescriptorSetVariableDescriptorCountAllocateInfo.BYTES, VkDescriptorSetVariableDescriptorCountAllocateInfo.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull VkDescriptorSetVariableDescriptorCountAllocateInfo> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull VkDescriptorSetVariableDescriptorCountAllocateInfo value) {
             MemorySegment s = segment.asSlice(index * VkDescriptorSetVariableDescriptorCountAllocateInfo.BYTES, VkDescriptorSetVariableDescriptorCountAllocateInfo.BYTES);
             s.copyFrom(value.segment);

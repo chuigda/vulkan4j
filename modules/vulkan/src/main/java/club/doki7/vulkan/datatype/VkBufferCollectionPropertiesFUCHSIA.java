@@ -97,6 +97,10 @@ public record VkBufferCollectionPropertiesFUCHSIA(@NotNull MemorySegment segment
             return new VkBufferCollectionPropertiesFUCHSIA(segment.asSlice(index * VkBufferCollectionPropertiesFUCHSIA.BYTES, VkBufferCollectionPropertiesFUCHSIA.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull VkBufferCollectionPropertiesFUCHSIA> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull VkBufferCollectionPropertiesFUCHSIA value) {
             MemorySegment s = segment.asSlice(index * VkBufferCollectionPropertiesFUCHSIA.BYTES, VkBufferCollectionPropertiesFUCHSIA.BYTES);
             s.copyFrom(value.segment);

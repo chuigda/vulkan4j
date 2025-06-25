@@ -91,6 +91,10 @@ public record VkPipelineViewportStateCreateInfo(@NotNull MemorySegment segment) 
             return new VkPipelineViewportStateCreateInfo(segment.asSlice(index * VkPipelineViewportStateCreateInfo.BYTES, VkPipelineViewportStateCreateInfo.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull VkPipelineViewportStateCreateInfo> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull VkPipelineViewportStateCreateInfo value) {
             MemorySegment s = segment.asSlice(index * VkPipelineViewportStateCreateInfo.BYTES, VkPipelineViewportStateCreateInfo.BYTES);
             s.copyFrom(value.segment);

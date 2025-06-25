@@ -88,6 +88,10 @@ public record VkAttachmentDescriptionStencilLayout(@NotNull MemorySegment segmen
             return new VkAttachmentDescriptionStencilLayout(segment.asSlice(index * VkAttachmentDescriptionStencilLayout.BYTES, VkAttachmentDescriptionStencilLayout.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull VkAttachmentDescriptionStencilLayout> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull VkAttachmentDescriptionStencilLayout value) {
             MemorySegment s = segment.asSlice(index * VkAttachmentDescriptionStencilLayout.BYTES, VkAttachmentDescriptionStencilLayout.BYTES);
             s.copyFrom(value.segment);

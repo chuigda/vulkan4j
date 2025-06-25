@@ -93,6 +93,10 @@ public record XrControllerModelStateMSFT(@NotNull MemorySegment segment) impleme
             return new XrControllerModelStateMSFT(segment.asSlice(index * XrControllerModelStateMSFT.BYTES, XrControllerModelStateMSFT.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull XrControllerModelStateMSFT> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull XrControllerModelStateMSFT value) {
             MemorySegment s = segment.asSlice(index * XrControllerModelStateMSFT.BYTES, XrControllerModelStateMSFT.BYTES);
             s.copyFrom(value.segment);

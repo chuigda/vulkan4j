@@ -87,6 +87,10 @@ public record VkPhysicalDevicePresentModeFifoLatestReadyFeaturesEXT(@NotNull Mem
             return new VkPhysicalDevicePresentModeFifoLatestReadyFeaturesEXT(segment.asSlice(index * VkPhysicalDevicePresentModeFifoLatestReadyFeaturesEXT.BYTES, VkPhysicalDevicePresentModeFifoLatestReadyFeaturesEXT.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull VkPhysicalDevicePresentModeFifoLatestReadyFeaturesEXT> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull VkPhysicalDevicePresentModeFifoLatestReadyFeaturesEXT value) {
             MemorySegment s = segment.asSlice(index * VkPhysicalDevicePresentModeFifoLatestReadyFeaturesEXT.BYTES, VkPhysicalDevicePresentModeFifoLatestReadyFeaturesEXT.BYTES);
             s.copyFrom(value.segment);

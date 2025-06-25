@@ -93,6 +93,10 @@ public record VkVideoEncodeAV1PictureInfoKHR(@NotNull MemorySegment segment) imp
             return new VkVideoEncodeAV1PictureInfoKHR(segment.asSlice(index * VkVideoEncodeAV1PictureInfoKHR.BYTES, VkVideoEncodeAV1PictureInfoKHR.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull VkVideoEncodeAV1PictureInfoKHR> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull VkVideoEncodeAV1PictureInfoKHR value) {
             MemorySegment s = segment.asSlice(index * VkVideoEncodeAV1PictureInfoKHR.BYTES, VkVideoEncodeAV1PictureInfoKHR.BYTES);
             s.copyFrom(value.segment);
@@ -280,6 +284,12 @@ public record VkVideoEncodeAV1PictureInfoKHR(@NotNull MemorySegment segment) imp
 
     public IntPtr referenceNameSlotIndices() {
         return new IntPtr(referenceNameSlotIndicesRaw());
+    }
+
+    public VkVideoEncodeAV1PictureInfoKHR referenceNameSlotIndices(@NotNull Consumer<IntPtr> consumer) {
+        IntPtr ptr = referenceNameSlotIndices();
+        consumer.accept(ptr);
+        return this;
     }
 
     public VkVideoEncodeAV1PictureInfoKHR referenceNameSlotIndices(IntPtr value) {

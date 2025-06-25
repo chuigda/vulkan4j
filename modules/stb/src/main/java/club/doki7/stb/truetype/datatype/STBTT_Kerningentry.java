@@ -74,6 +74,10 @@ public record STBTT_Kerningentry(@NotNull MemorySegment segment) implements ISTB
             return new STBTT_Kerningentry(segment.asSlice(index * STBTT_Kerningentry.BYTES, STBTT_Kerningentry.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull STBTT_Kerningentry> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull STBTT_Kerningentry value) {
             MemorySegment s = segment.asSlice(index * STBTT_Kerningentry.BYTES, STBTT_Kerningentry.BYTES);
             s.copyFrom(value.segment);

@@ -91,6 +91,10 @@ public record XrSystemVirtualKeyboardPropertiesMETA(@NotNull MemorySegment segme
             return new XrSystemVirtualKeyboardPropertiesMETA(segment.asSlice(index * XrSystemVirtualKeyboardPropertiesMETA.BYTES, XrSystemVirtualKeyboardPropertiesMETA.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull XrSystemVirtualKeyboardPropertiesMETA> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull XrSystemVirtualKeyboardPropertiesMETA value) {
             MemorySegment s = segment.asSlice(index * XrSystemVirtualKeyboardPropertiesMETA.BYTES, XrSystemVirtualKeyboardPropertiesMETA.BYTES);
             s.copyFrom(value.segment);

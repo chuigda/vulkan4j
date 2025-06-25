@@ -87,6 +87,10 @@ public record VkPhysicalDeviceShaderSubgroupUniformControlFlowFeaturesKHR(@NotNu
             return new VkPhysicalDeviceShaderSubgroupUniformControlFlowFeaturesKHR(segment.asSlice(index * VkPhysicalDeviceShaderSubgroupUniformControlFlowFeaturesKHR.BYTES, VkPhysicalDeviceShaderSubgroupUniformControlFlowFeaturesKHR.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceShaderSubgroupUniformControlFlowFeaturesKHR> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull VkPhysicalDeviceShaderSubgroupUniformControlFlowFeaturesKHR value) {
             MemorySegment s = segment.asSlice(index * VkPhysicalDeviceShaderSubgroupUniformControlFlowFeaturesKHR.BYTES, VkPhysicalDeviceShaderSubgroupUniformControlFlowFeaturesKHR.BYTES);
             s.copyFrom(value.segment);

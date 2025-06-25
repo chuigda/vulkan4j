@@ -78,6 +78,10 @@ public record VkBuildPartitionedAccelerationStructureIndirectCommandNV(@NotNull 
             return new VkBuildPartitionedAccelerationStructureIndirectCommandNV(segment.asSlice(index * VkBuildPartitionedAccelerationStructureIndirectCommandNV.BYTES, VkBuildPartitionedAccelerationStructureIndirectCommandNV.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull VkBuildPartitionedAccelerationStructureIndirectCommandNV> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull VkBuildPartitionedAccelerationStructureIndirectCommandNV value) {
             MemorySegment s = segment.asSlice(index * VkBuildPartitionedAccelerationStructureIndirectCommandNV.BYTES, VkBuildPartitionedAccelerationStructureIndirectCommandNV.BYTES);
             s.copyFrom(value.segment);

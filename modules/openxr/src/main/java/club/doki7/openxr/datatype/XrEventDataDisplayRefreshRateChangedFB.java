@@ -92,6 +92,10 @@ public record XrEventDataDisplayRefreshRateChangedFB(@NotNull MemorySegment segm
             return new XrEventDataDisplayRefreshRateChangedFB(segment.asSlice(index * XrEventDataDisplayRefreshRateChangedFB.BYTES, XrEventDataDisplayRefreshRateChangedFB.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull XrEventDataDisplayRefreshRateChangedFB> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull XrEventDataDisplayRefreshRateChangedFB value) {
             MemorySegment s = segment.asSlice(index * XrEventDataDisplayRefreshRateChangedFB.BYTES, XrEventDataDisplayRefreshRateChangedFB.BYTES);
             s.copyFrom(value.segment);

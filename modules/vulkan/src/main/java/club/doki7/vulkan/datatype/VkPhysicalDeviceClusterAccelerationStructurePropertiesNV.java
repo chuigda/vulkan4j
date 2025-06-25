@@ -94,6 +94,10 @@ public record VkPhysicalDeviceClusterAccelerationStructurePropertiesNV(@NotNull 
             return new VkPhysicalDeviceClusterAccelerationStructurePropertiesNV(segment.asSlice(index * VkPhysicalDeviceClusterAccelerationStructurePropertiesNV.BYTES, VkPhysicalDeviceClusterAccelerationStructurePropertiesNV.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceClusterAccelerationStructurePropertiesNV> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull VkPhysicalDeviceClusterAccelerationStructurePropertiesNV value) {
             MemorySegment s = segment.asSlice(index * VkPhysicalDeviceClusterAccelerationStructurePropertiesNV.BYTES, VkPhysicalDeviceClusterAccelerationStructurePropertiesNV.BYTES);
             s.copyFrom(value.segment);

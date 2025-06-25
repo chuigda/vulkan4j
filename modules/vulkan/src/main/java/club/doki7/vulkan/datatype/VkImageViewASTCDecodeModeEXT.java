@@ -87,6 +87,10 @@ public record VkImageViewASTCDecodeModeEXT(@NotNull MemorySegment segment) imple
             return new VkImageViewASTCDecodeModeEXT(segment.asSlice(index * VkImageViewASTCDecodeModeEXT.BYTES, VkImageViewASTCDecodeModeEXT.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull VkImageViewASTCDecodeModeEXT> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull VkImageViewASTCDecodeModeEXT value) {
             MemorySegment s = segment.asSlice(index * VkImageViewASTCDecodeModeEXT.BYTES, VkImageViewASTCDecodeModeEXT.BYTES);
             s.copyFrom(value.segment);

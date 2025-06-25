@@ -78,6 +78,10 @@ public record VkVideoEncodeH265FrameSizeKHR(@NotNull MemorySegment segment) impl
             return new VkVideoEncodeH265FrameSizeKHR(segment.asSlice(index * VkVideoEncodeH265FrameSizeKHR.BYTES, VkVideoEncodeH265FrameSizeKHR.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull VkVideoEncodeH265FrameSizeKHR> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull VkVideoEncodeH265FrameSizeKHR value) {
             MemorySegment s = segment.asSlice(index * VkVideoEncodeH265FrameSizeKHR.BYTES, VkVideoEncodeH265FrameSizeKHR.BYTES);
             s.copyFrom(value.segment);

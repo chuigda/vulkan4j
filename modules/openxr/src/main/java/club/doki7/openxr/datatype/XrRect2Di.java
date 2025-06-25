@@ -81,6 +81,10 @@ public record XrRect2Di(@NotNull MemorySegment segment) implements IXrRect2Di {
             return new XrRect2Di(segment.asSlice(index * XrRect2Di.BYTES, XrRect2Di.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull XrRect2Di> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull XrRect2Di value) {
             MemorySegment s = segment.asSlice(index * XrRect2Di.BYTES, XrRect2Di.BYTES);
             s.copyFrom(value.segment);

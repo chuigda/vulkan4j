@@ -87,6 +87,10 @@ public record VkExternalFormatANDROID(@NotNull MemorySegment segment) implements
             return new VkExternalFormatANDROID(segment.asSlice(index * VkExternalFormatANDROID.BYTES, VkExternalFormatANDROID.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull VkExternalFormatANDROID> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull VkExternalFormatANDROID value) {
             MemorySegment s = segment.asSlice(index * VkExternalFormatANDROID.BYTES, VkExternalFormatANDROID.BYTES);
             s.copyFrom(value.segment);

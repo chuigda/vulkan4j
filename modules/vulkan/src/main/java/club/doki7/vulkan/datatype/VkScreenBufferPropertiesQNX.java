@@ -88,6 +88,10 @@ public record VkScreenBufferPropertiesQNX(@NotNull MemorySegment segment) implem
             return new VkScreenBufferPropertiesQNX(segment.asSlice(index * VkScreenBufferPropertiesQNX.BYTES, VkScreenBufferPropertiesQNX.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull VkScreenBufferPropertiesQNX> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull VkScreenBufferPropertiesQNX value) {
             MemorySegment s = segment.asSlice(index * VkScreenBufferPropertiesQNX.BYTES, VkScreenBufferPropertiesQNX.BYTES);
             s.copyFrom(value.segment);

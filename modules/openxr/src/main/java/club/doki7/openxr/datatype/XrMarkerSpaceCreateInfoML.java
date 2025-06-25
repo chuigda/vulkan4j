@@ -93,6 +93,10 @@ public record XrMarkerSpaceCreateInfoML(@NotNull MemorySegment segment) implemen
             return new XrMarkerSpaceCreateInfoML(segment.asSlice(index * XrMarkerSpaceCreateInfoML.BYTES, XrMarkerSpaceCreateInfoML.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull XrMarkerSpaceCreateInfoML> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull XrMarkerSpaceCreateInfoML value) {
             MemorySegment s = segment.asSlice(index * XrMarkerSpaceCreateInfoML.BYTES, XrMarkerSpaceCreateInfoML.BYTES);
             s.copyFrom(value.segment);

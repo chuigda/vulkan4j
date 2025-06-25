@@ -92,6 +92,10 @@ public record XrSpaceLocation(@NotNull MemorySegment segment) implements IXrSpac
             return new XrSpaceLocation(segment.asSlice(index * XrSpaceLocation.BYTES, XrSpaceLocation.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull XrSpaceLocation> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull XrSpaceLocation value) {
             MemorySegment s = segment.asSlice(index * XrSpaceLocation.BYTES, XrSpaceLocation.BYTES);
             s.copyFrom(value.segment);

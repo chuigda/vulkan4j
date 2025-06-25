@@ -91,6 +91,10 @@ public record XrPassthroughColorHTC(@NotNull MemorySegment segment) implements I
             return new XrPassthroughColorHTC(segment.asSlice(index * XrPassthroughColorHTC.BYTES, XrPassthroughColorHTC.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull XrPassthroughColorHTC> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull XrPassthroughColorHTC value) {
             MemorySegment s = segment.asSlice(index * XrPassthroughColorHTC.BYTES, XrPassthroughColorHTC.BYTES);
             s.copyFrom(value.segment);

@@ -91,6 +91,10 @@ public record STBTT_Fontinfo(@NotNull MemorySegment segment) implements ISTBTT_F
             return new STBTT_Fontinfo(segment.asSlice(index * STBTT_Fontinfo.BYTES, STBTT_Fontinfo.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull STBTT_Fontinfo> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull STBTT_Fontinfo value) {
             MemorySegment s = segment.asSlice(index * STBTT_Fontinfo.BYTES, STBTT_Fontinfo.BYTES);
             s.copyFrom(value.segment);

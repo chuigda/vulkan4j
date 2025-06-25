@@ -87,6 +87,10 @@ public record VkPhysicalDeviceAntiLagFeaturesAMD(@NotNull MemorySegment segment)
             return new VkPhysicalDeviceAntiLagFeaturesAMD(segment.asSlice(index * VkPhysicalDeviceAntiLagFeaturesAMD.BYTES, VkPhysicalDeviceAntiLagFeaturesAMD.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceAntiLagFeaturesAMD> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull VkPhysicalDeviceAntiLagFeaturesAMD value) {
             MemorySegment s = segment.asSlice(index * VkPhysicalDeviceAntiLagFeaturesAMD.BYTES, VkPhysicalDeviceAntiLagFeaturesAMD.BYTES);
             s.copyFrom(value.segment);

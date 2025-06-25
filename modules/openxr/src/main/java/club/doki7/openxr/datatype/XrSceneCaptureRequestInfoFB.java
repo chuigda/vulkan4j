@@ -92,6 +92,10 @@ public record XrSceneCaptureRequestInfoFB(@NotNull MemorySegment segment) implem
             return new XrSceneCaptureRequestInfoFB(segment.asSlice(index * XrSceneCaptureRequestInfoFB.BYTES, XrSceneCaptureRequestInfoFB.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull XrSceneCaptureRequestInfoFB> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull XrSceneCaptureRequestInfoFB value) {
             MemorySegment s = segment.asSlice(index * XrSceneCaptureRequestInfoFB.BYTES, XrSceneCaptureRequestInfoFB.BYTES);
             s.copyFrom(value.segment);

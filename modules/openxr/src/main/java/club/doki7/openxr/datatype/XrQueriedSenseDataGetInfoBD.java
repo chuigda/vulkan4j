@@ -90,6 +90,10 @@ public record XrQueriedSenseDataGetInfoBD(@NotNull MemorySegment segment) implem
             return new XrQueriedSenseDataGetInfoBD(segment.asSlice(index * XrQueriedSenseDataGetInfoBD.BYTES, XrQueriedSenseDataGetInfoBD.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull XrQueriedSenseDataGetInfoBD> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull XrQueriedSenseDataGetInfoBD value) {
             MemorySegment s = segment.asSlice(index * XrQueriedSenseDataGetInfoBD.BYTES, XrQueriedSenseDataGetInfoBD.BYTES);
             s.copyFrom(value.segment);

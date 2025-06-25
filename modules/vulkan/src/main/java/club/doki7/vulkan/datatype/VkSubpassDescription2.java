@@ -97,6 +97,10 @@ public record VkSubpassDescription2(@NotNull MemorySegment segment) implements I
             return new VkSubpassDescription2(segment.asSlice(index * VkSubpassDescription2.BYTES, VkSubpassDescription2.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull VkSubpassDescription2> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull VkSubpassDescription2 value) {
             MemorySegment s = segment.asSlice(index * VkSubpassDescription2.BYTES, VkSubpassDescription2.BYTES);
             s.copyFrom(value.segment);

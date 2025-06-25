@@ -92,6 +92,10 @@ public record XrSpatialComponentPersistenceListEXT(@NotNull MemorySegment segmen
             return new XrSpatialComponentPersistenceListEXT(segment.asSlice(index * XrSpatialComponentPersistenceListEXT.BYTES, XrSpatialComponentPersistenceListEXT.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull XrSpatialComponentPersistenceListEXT> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull XrSpatialComponentPersistenceListEXT value) {
             MemorySegment s = segment.asSlice(index * XrSpatialComponentPersistenceListEXT.BYTES, XrSpatialComponentPersistenceListEXT.BYTES);
             s.copyFrom(value.segment);

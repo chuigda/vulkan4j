@@ -77,6 +77,10 @@ public record VkMutableDescriptorTypeListEXT(@NotNull MemorySegment segment) imp
             return new VkMutableDescriptorTypeListEXT(segment.asSlice(index * VkMutableDescriptorTypeListEXT.BYTES, VkMutableDescriptorTypeListEXT.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull VkMutableDescriptorTypeListEXT> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull VkMutableDescriptorTypeListEXT value) {
             MemorySegment s = segment.asSlice(index * VkMutableDescriptorTypeListEXT.BYTES, VkMutableDescriptorTypeListEXT.BYTES);
             s.copyFrom(value.segment);

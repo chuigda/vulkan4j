@@ -77,6 +77,10 @@ public record VkIndirectExecutionSetInfoEXT(@NotNull MemorySegment segment) impl
             return new VkIndirectExecutionSetInfoEXT(segment.asSlice(index * VkIndirectExecutionSetInfoEXT.BYTES, VkIndirectExecutionSetInfoEXT.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull VkIndirectExecutionSetInfoEXT> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull VkIndirectExecutionSetInfoEXT value) {
             MemorySegment s = segment.asSlice(index * VkIndirectExecutionSetInfoEXT.BYTES, VkIndirectExecutionSetInfoEXT.BYTES);
             s.copyFrom(value.segment);

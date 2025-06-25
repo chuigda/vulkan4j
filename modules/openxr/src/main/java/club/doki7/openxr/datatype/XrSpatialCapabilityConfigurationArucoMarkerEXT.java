@@ -94,6 +94,10 @@ public record XrSpatialCapabilityConfigurationArucoMarkerEXT(@NotNull MemorySegm
             return new XrSpatialCapabilityConfigurationArucoMarkerEXT(segment.asSlice(index * XrSpatialCapabilityConfigurationArucoMarkerEXT.BYTES, XrSpatialCapabilityConfigurationArucoMarkerEXT.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull XrSpatialCapabilityConfigurationArucoMarkerEXT> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull XrSpatialCapabilityConfigurationArucoMarkerEXT value) {
             MemorySegment s = segment.asSlice(index * XrSpatialCapabilityConfigurationArucoMarkerEXT.BYTES, XrSpatialCapabilityConfigurationArucoMarkerEXT.BYTES);
             s.copyFrom(value.segment);

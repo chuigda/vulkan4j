@@ -92,6 +92,10 @@ public record XrSpatialComponentBounded2DListEXT(@NotNull MemorySegment segment)
             return new XrSpatialComponentBounded2DListEXT(segment.asSlice(index * XrSpatialComponentBounded2DListEXT.BYTES, XrSpatialComponentBounded2DListEXT.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull XrSpatialComponentBounded2DListEXT> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull XrSpatialComponentBounded2DListEXT value) {
             MemorySegment s = segment.asSlice(index * XrSpatialComponentBounded2DListEXT.BYTES, XrSpatialComponentBounded2DListEXT.BYTES);
             s.copyFrom(value.segment);

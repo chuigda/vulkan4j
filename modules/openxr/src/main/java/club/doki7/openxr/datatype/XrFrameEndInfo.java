@@ -94,6 +94,10 @@ public record XrFrameEndInfo(@NotNull MemorySegment segment) implements IXrFrame
             return new XrFrameEndInfo(segment.asSlice(index * XrFrameEndInfo.BYTES, XrFrameEndInfo.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull XrFrameEndInfo> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull XrFrameEndInfo value) {
             MemorySegment s = segment.asSlice(index * XrFrameEndInfo.BYTES, XrFrameEndInfo.BYTES);
             s.copyFrom(value.segment);

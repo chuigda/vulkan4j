@@ -92,6 +92,10 @@ public record XrSpatialAnchorsPublishCompletionDetailsML(@NotNull MemorySegment 
             return new XrSpatialAnchorsPublishCompletionDetailsML(segment.asSlice(index * XrSpatialAnchorsPublishCompletionDetailsML.BYTES, XrSpatialAnchorsPublishCompletionDetailsML.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull XrSpatialAnchorsPublishCompletionDetailsML> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull XrSpatialAnchorsPublishCompletionDetailsML value) {
             MemorySegment s = segment.asSlice(index * XrSpatialAnchorsPublishCompletionDetailsML.BYTES, XrSpatialAnchorsPublishCompletionDetailsML.BYTES);
             s.copyFrom(value.segment);

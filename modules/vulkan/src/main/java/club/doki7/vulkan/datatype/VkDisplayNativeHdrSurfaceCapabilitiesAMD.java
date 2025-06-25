@@ -87,6 +87,10 @@ public record VkDisplayNativeHdrSurfaceCapabilitiesAMD(@NotNull MemorySegment se
             return new VkDisplayNativeHdrSurfaceCapabilitiesAMD(segment.asSlice(index * VkDisplayNativeHdrSurfaceCapabilitiesAMD.BYTES, VkDisplayNativeHdrSurfaceCapabilitiesAMD.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull VkDisplayNativeHdrSurfaceCapabilitiesAMD> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull VkDisplayNativeHdrSurfaceCapabilitiesAMD value) {
             MemorySegment s = segment.asSlice(index * VkDisplayNativeHdrSurfaceCapabilitiesAMD.BYTES, VkDisplayNativeHdrSurfaceCapabilitiesAMD.BYTES);
             s.copyFrom(value.segment);

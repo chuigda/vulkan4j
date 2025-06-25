@@ -92,6 +92,10 @@ public record XrSemanticLabelsSupportInfoFB(@NotNull MemorySegment segment) impl
             return new XrSemanticLabelsSupportInfoFB(segment.asSlice(index * XrSemanticLabelsSupportInfoFB.BYTES, XrSemanticLabelsSupportInfoFB.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull XrSemanticLabelsSupportInfoFB> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull XrSemanticLabelsSupportInfoFB value) {
             MemorySegment s = segment.asSlice(index * XrSemanticLabelsSupportInfoFB.BYTES, XrSemanticLabelsSupportInfoFB.BYTES);
             s.copyFrom(value.segment);

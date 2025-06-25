@@ -87,6 +87,10 @@ public record VkDeviceQueueShaderCoreControlCreateInfoARM(@NotNull MemorySegment
             return new VkDeviceQueueShaderCoreControlCreateInfoARM(segment.asSlice(index * VkDeviceQueueShaderCoreControlCreateInfoARM.BYTES, VkDeviceQueueShaderCoreControlCreateInfoARM.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull VkDeviceQueueShaderCoreControlCreateInfoARM> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull VkDeviceQueueShaderCoreControlCreateInfoARM value) {
             MemorySegment s = segment.asSlice(index * VkDeviceQueueShaderCoreControlCreateInfoARM.BYTES, VkDeviceQueueShaderCoreControlCreateInfoARM.BYTES);
             s.copyFrom(value.segment);

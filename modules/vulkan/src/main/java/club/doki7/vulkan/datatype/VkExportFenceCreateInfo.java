@@ -87,6 +87,10 @@ public record VkExportFenceCreateInfo(@NotNull MemorySegment segment) implements
             return new VkExportFenceCreateInfo(segment.asSlice(index * VkExportFenceCreateInfo.BYTES, VkExportFenceCreateInfo.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull VkExportFenceCreateInfo> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull VkExportFenceCreateInfo value) {
             MemorySegment s = segment.asSlice(index * VkExportFenceCreateInfo.BYTES, VkExportFenceCreateInfo.BYTES);
             s.copyFrom(value.segment);

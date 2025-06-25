@@ -88,6 +88,10 @@ public record VkDescriptorGetInfoEXT(@NotNull MemorySegment segment) implements 
             return new VkDescriptorGetInfoEXT(segment.asSlice(index * VkDescriptorGetInfoEXT.BYTES, VkDescriptorGetInfoEXT.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull VkDescriptorGetInfoEXT> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull VkDescriptorGetInfoEXT value) {
             MemorySegment s = segment.asSlice(index * VkDescriptorGetInfoEXT.BYTES, VkDescriptorGetInfoEXT.BYTES);
             s.copyFrom(value.segment);

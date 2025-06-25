@@ -91,6 +91,10 @@ public record VkAccelerationStructureInfoNV(@NotNull MemorySegment segment) impl
             return new VkAccelerationStructureInfoNV(segment.asSlice(index * VkAccelerationStructureInfoNV.BYTES, VkAccelerationStructureInfoNV.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull VkAccelerationStructureInfoNV> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull VkAccelerationStructureInfoNV value) {
             MemorySegment s = segment.asSlice(index * VkAccelerationStructureInfoNV.BYTES, VkAccelerationStructureInfoNV.BYTES);
             s.copyFrom(value.segment);

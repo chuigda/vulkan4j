@@ -89,6 +89,10 @@ public record VkValidationCacheCreateInfoEXT(@NotNull MemorySegment segment) imp
             return new VkValidationCacheCreateInfoEXT(segment.asSlice(index * VkValidationCacheCreateInfoEXT.BYTES, VkValidationCacheCreateInfoEXT.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull VkValidationCacheCreateInfoEXT> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull VkValidationCacheCreateInfoEXT value) {
             MemorySegment s = segment.asSlice(index * VkValidationCacheCreateInfoEXT.BYTES, VkValidationCacheCreateInfoEXT.BYTES);
             s.copyFrom(value.segment);

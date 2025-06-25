@@ -88,6 +88,10 @@ public record VkDescriptorSetBindingReferenceVALVE(@NotNull MemorySegment segmen
             return new VkDescriptorSetBindingReferenceVALVE(segment.asSlice(index * VkDescriptorSetBindingReferenceVALVE.BYTES, VkDescriptorSetBindingReferenceVALVE.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull VkDescriptorSetBindingReferenceVALVE> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull VkDescriptorSetBindingReferenceVALVE value) {
             MemorySegment s = segment.asSlice(index * VkDescriptorSetBindingReferenceVALVE.BYTES, VkDescriptorSetBindingReferenceVALVE.BYTES);
             s.copyFrom(value.segment);

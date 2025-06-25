@@ -91,6 +91,10 @@ public record XrBoundSourcesForActionEnumerateInfo(@NotNull MemorySegment segmen
             return new XrBoundSourcesForActionEnumerateInfo(segment.asSlice(index * XrBoundSourcesForActionEnumerateInfo.BYTES, XrBoundSourcesForActionEnumerateInfo.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull XrBoundSourcesForActionEnumerateInfo> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull XrBoundSourcesForActionEnumerateInfo value) {
             MemorySegment s = segment.asSlice(index * XrBoundSourcesForActionEnumerateInfo.BYTES, XrBoundSourcesForActionEnumerateInfo.BYTES);
             s.copyFrom(value.segment);

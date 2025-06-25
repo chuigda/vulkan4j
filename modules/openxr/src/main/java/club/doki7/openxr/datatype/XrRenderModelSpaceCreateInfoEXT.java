@@ -91,6 +91,10 @@ public record XrRenderModelSpaceCreateInfoEXT(@NotNull MemorySegment segment) im
             return new XrRenderModelSpaceCreateInfoEXT(segment.asSlice(index * XrRenderModelSpaceCreateInfoEXT.BYTES, XrRenderModelSpaceCreateInfoEXT.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull XrRenderModelSpaceCreateInfoEXT> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull XrRenderModelSpaceCreateInfoEXT value) {
             MemorySegment s = segment.asSlice(index * XrRenderModelSpaceCreateInfoEXT.BYTES, XrRenderModelSpaceCreateInfoEXT.BYTES);
             s.copyFrom(value.segment);

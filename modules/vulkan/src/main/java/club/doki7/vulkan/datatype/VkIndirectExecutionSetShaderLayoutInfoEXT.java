@@ -88,6 +88,10 @@ public record VkIndirectExecutionSetShaderLayoutInfoEXT(@NotNull MemorySegment s
             return new VkIndirectExecutionSetShaderLayoutInfoEXT(segment.asSlice(index * VkIndirectExecutionSetShaderLayoutInfoEXT.BYTES, VkIndirectExecutionSetShaderLayoutInfoEXT.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull VkIndirectExecutionSetShaderLayoutInfoEXT> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull VkIndirectExecutionSetShaderLayoutInfoEXT value) {
             MemorySegment s = segment.asSlice(index * VkIndirectExecutionSetShaderLayoutInfoEXT.BYTES, VkIndirectExecutionSetShaderLayoutInfoEXT.BYTES);
             s.copyFrom(value.segment);

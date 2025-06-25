@@ -95,6 +95,10 @@ public record VkVideoCapabilitiesKHR(@NotNull MemorySegment segment) implements 
             return new VkVideoCapabilitiesKHR(segment.asSlice(index * VkVideoCapabilitiesKHR.BYTES, VkVideoCapabilitiesKHR.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull VkVideoCapabilitiesKHR> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull VkVideoCapabilitiesKHR value) {
             MemorySegment s = segment.asSlice(index * VkVideoCapabilitiesKHR.BYTES, VkVideoCapabilitiesKHR.BYTES);
             s.copyFrom(value.segment);

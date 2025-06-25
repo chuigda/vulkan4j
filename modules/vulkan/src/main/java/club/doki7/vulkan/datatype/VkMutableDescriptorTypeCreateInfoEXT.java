@@ -88,6 +88,10 @@ public record VkMutableDescriptorTypeCreateInfoEXT(@NotNull MemorySegment segmen
             return new VkMutableDescriptorTypeCreateInfoEXT(segment.asSlice(index * VkMutableDescriptorTypeCreateInfoEXT.BYTES, VkMutableDescriptorTypeCreateInfoEXT.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull VkMutableDescriptorTypeCreateInfoEXT> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull VkMutableDescriptorTypeCreateInfoEXT value) {
             MemorySegment s = segment.asSlice(index * VkMutableDescriptorTypeCreateInfoEXT.BYTES, VkMutableDescriptorTypeCreateInfoEXT.BYTES);
             s.copyFrom(value.segment);

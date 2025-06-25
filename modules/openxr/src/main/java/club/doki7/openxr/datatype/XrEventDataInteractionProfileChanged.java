@@ -91,6 +91,10 @@ public record XrEventDataInteractionProfileChanged(@NotNull MemorySegment segmen
             return new XrEventDataInteractionProfileChanged(segment.asSlice(index * XrEventDataInteractionProfileChanged.BYTES, XrEventDataInteractionProfileChanged.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull XrEventDataInteractionProfileChanged> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull XrEventDataInteractionProfileChanged value) {
             MemorySegment s = segment.asSlice(index * XrEventDataInteractionProfileChanged.BYTES, XrEventDataInteractionProfileChanged.BYTES);
             s.copyFrom(value.segment);

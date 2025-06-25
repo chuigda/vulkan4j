@@ -92,6 +92,10 @@ public record VkDeviceGroupSubmitInfo(@NotNull MemorySegment segment) implements
             return new VkDeviceGroupSubmitInfo(segment.asSlice(index * VkDeviceGroupSubmitInfo.BYTES, VkDeviceGroupSubmitInfo.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull VkDeviceGroupSubmitInfo> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull VkDeviceGroupSubmitInfo value) {
             MemorySegment s = segment.asSlice(index * VkDeviceGroupSubmitInfo.BYTES, VkDeviceGroupSubmitInfo.BYTES);
             s.copyFrom(value.segment);

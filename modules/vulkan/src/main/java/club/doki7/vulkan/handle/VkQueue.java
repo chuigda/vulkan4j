@@ -1,6 +1,7 @@
 package club.doki7.vulkan.handle;
 
 import java.lang.foreign.*;
+import java.util.Collection;
 import java.util.List;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
@@ -140,10 +141,20 @@ public record VkQueue(@NotNull MemorySegment segment) implements IPointer {
             return new Ptr(arena.allocate(ValueLayout.ADDRESS, size));
         }
 
-        public static Ptr allocate(Arena arena, @Nullable VkQueue[] values) {
+        public static Ptr allocate(Arena arena, @Nullable VkQueue @NotNull [] values) {
             Ptr ret = allocate(arena, values.length);
             for (int i = 0; i < values.length; i++) {
                 ret.write(i, values[i]);
+            }
+            return ret;
+        }
+
+        public static Ptr allocate(Arena arena, @NotNull Collection<@Nullable VkQueue> values) {
+            Ptr ret = allocate(arena, values.size());
+            int i = 0;
+            for (@Nullable VkQueue value : values) {
+                ret.write(i, value);
+                i += 1;
             }
             return ret;
         }

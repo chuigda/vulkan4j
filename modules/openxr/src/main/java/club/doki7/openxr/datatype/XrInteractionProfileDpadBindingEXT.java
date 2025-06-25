@@ -99,6 +99,10 @@ public record XrInteractionProfileDpadBindingEXT(@NotNull MemorySegment segment)
             return new XrInteractionProfileDpadBindingEXT(segment.asSlice(index * XrInteractionProfileDpadBindingEXT.BYTES, XrInteractionProfileDpadBindingEXT.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull XrInteractionProfileDpadBindingEXT> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull XrInteractionProfileDpadBindingEXT value) {
             MemorySegment s = segment.asSlice(index * XrInteractionProfileDpadBindingEXT.BYTES, XrInteractionProfileDpadBindingEXT.BYTES);
             s.copyFrom(value.segment);

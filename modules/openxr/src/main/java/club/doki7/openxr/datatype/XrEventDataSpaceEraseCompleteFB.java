@@ -95,6 +95,10 @@ public record XrEventDataSpaceEraseCompleteFB(@NotNull MemorySegment segment) im
             return new XrEventDataSpaceEraseCompleteFB(segment.asSlice(index * XrEventDataSpaceEraseCompleteFB.BYTES, XrEventDataSpaceEraseCompleteFB.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull XrEventDataSpaceEraseCompleteFB> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull XrEventDataSpaceEraseCompleteFB value) {
             MemorySegment s = segment.asSlice(index * XrEventDataSpaceEraseCompleteFB.BYTES, XrEventDataSpaceEraseCompleteFB.BYTES);
             s.copyFrom(value.segment);

@@ -87,6 +87,10 @@ public record VkPhysicalDeviceClusterCullingShaderVrsFeaturesHUAWEI(@NotNull Mem
             return new VkPhysicalDeviceClusterCullingShaderVrsFeaturesHUAWEI(segment.asSlice(index * VkPhysicalDeviceClusterCullingShaderVrsFeaturesHUAWEI.BYTES, VkPhysicalDeviceClusterCullingShaderVrsFeaturesHUAWEI.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceClusterCullingShaderVrsFeaturesHUAWEI> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull VkPhysicalDeviceClusterCullingShaderVrsFeaturesHUAWEI value) {
             MemorySegment s = segment.asSlice(index * VkPhysicalDeviceClusterCullingShaderVrsFeaturesHUAWEI.BYTES, VkPhysicalDeviceClusterCullingShaderVrsFeaturesHUAWEI.BYTES);
             s.copyFrom(value.segment);

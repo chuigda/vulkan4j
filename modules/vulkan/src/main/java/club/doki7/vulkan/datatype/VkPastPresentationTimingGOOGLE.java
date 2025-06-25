@@ -80,6 +80,10 @@ public record VkPastPresentationTimingGOOGLE(@NotNull MemorySegment segment) imp
             return new VkPastPresentationTimingGOOGLE(segment.asSlice(index * VkPastPresentationTimingGOOGLE.BYTES, VkPastPresentationTimingGOOGLE.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull VkPastPresentationTimingGOOGLE> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull VkPastPresentationTimingGOOGLE value) {
             MemorySegment s = segment.asSlice(index * VkPastPresentationTimingGOOGLE.BYTES, VkPastPresentationTimingGOOGLE.BYTES);
             s.copyFrom(value.segment);

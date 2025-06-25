@@ -88,6 +88,10 @@ public record VkMemoryUnmapInfo(@NotNull MemorySegment segment) implements IVkMe
             return new VkMemoryUnmapInfo(segment.asSlice(index * VkMemoryUnmapInfo.BYTES, VkMemoryUnmapInfo.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull VkMemoryUnmapInfo> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull VkMemoryUnmapInfo value) {
             MemorySegment s = segment.asSlice(index * VkMemoryUnmapInfo.BYTES, VkMemoryUnmapInfo.BYTES);
             s.copyFrom(value.segment);

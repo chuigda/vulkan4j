@@ -91,6 +91,10 @@ public record XrSecondaryViewConfigurationSwapchainCreateInfoMSFT(@NotNull Memor
             return new XrSecondaryViewConfigurationSwapchainCreateInfoMSFT(segment.asSlice(index * XrSecondaryViewConfigurationSwapchainCreateInfoMSFT.BYTES, XrSecondaryViewConfigurationSwapchainCreateInfoMSFT.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull XrSecondaryViewConfigurationSwapchainCreateInfoMSFT> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull XrSecondaryViewConfigurationSwapchainCreateInfoMSFT value) {
             MemorySegment s = segment.asSlice(index * XrSecondaryViewConfigurationSwapchainCreateInfoMSFT.BYTES, XrSecondaryViewConfigurationSwapchainCreateInfoMSFT.BYTES);
             s.copyFrom(value.segment);

@@ -87,6 +87,10 @@ public record VkSwapchainLatencyCreateInfoNV(@NotNull MemorySegment segment) imp
             return new VkSwapchainLatencyCreateInfoNV(segment.asSlice(index * VkSwapchainLatencyCreateInfoNV.BYTES, VkSwapchainLatencyCreateInfoNV.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull VkSwapchainLatencyCreateInfoNV> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull VkSwapchainLatencyCreateInfoNV value) {
             MemorySegment s = segment.asSlice(index * VkSwapchainLatencyCreateInfoNV.BYTES, VkSwapchainLatencyCreateInfoNV.BYTES);
             s.copyFrom(value.segment);

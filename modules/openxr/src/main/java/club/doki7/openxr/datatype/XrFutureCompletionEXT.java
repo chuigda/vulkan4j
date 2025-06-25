@@ -91,6 +91,10 @@ public record XrFutureCompletionEXT(@NotNull MemorySegment segment) implements I
             return new XrFutureCompletionEXT(segment.asSlice(index * XrFutureCompletionEXT.BYTES, XrFutureCompletionEXT.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull XrFutureCompletionEXT> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull XrFutureCompletionEXT value) {
             MemorySegment s = segment.asSlice(index * XrFutureCompletionEXT.BYTES, XrFutureCompletionEXT.BYTES);
             s.copyFrom(value.segment);

@@ -2,7 +2,16 @@
 
 ### Quality of Life updates
 
+- `allocate` functions now have a `allocate(Arena, Collection<T>)` overloading.
+- `StructureType.Ptr.at` and `StructureType.arrayField` methods now also have an overloading accepting a `Consumer<T>`, thus also supporting LWJGL-alike `set` style methods:
+    ```java
+    structure.arrayField(it -> {
+        it.write(0, value0);
+        it.write(1, value1);
+    });
+    ```
 - Added a handy `writeString` method for `BytePtr`.
+- Added a handy `allocateStrings` method for `PointerPtr` for conveniently allocating `char const**` arrays. Such arrays are widely used in Vulkan and OpenXR APIs.
 - For array fields of structures, accessor `structure.field(PtrType ptr)` only copies `ptr.segment().byteSize()` bytes from `ptr` to the field, instead of attempting to copy the whole array. This makes it easier to work with C-style null-terminated strings, which would cause an overflow in previous versions.
 
 ### Bugfixes

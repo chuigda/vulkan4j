@@ -91,6 +91,10 @@ public record XrSerializedSceneFragmentDataGetInfoMSFT(@NotNull MemorySegment se
             return new XrSerializedSceneFragmentDataGetInfoMSFT(segment.asSlice(index * XrSerializedSceneFragmentDataGetInfoMSFT.BYTES, XrSerializedSceneFragmentDataGetInfoMSFT.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull XrSerializedSceneFragmentDataGetInfoMSFT> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull XrSerializedSceneFragmentDataGetInfoMSFT value) {
             MemorySegment s = segment.asSlice(index * XrSerializedSceneFragmentDataGetInfoMSFT.BYTES, XrSerializedSceneFragmentDataGetInfoMSFT.BYTES);
             s.copyFrom(value.segment);

@@ -94,6 +94,10 @@ public record XrCompositionLayerProjection(@NotNull MemorySegment segment) imple
             return new XrCompositionLayerProjection(segment.asSlice(index * XrCompositionLayerProjection.BYTES, XrCompositionLayerProjection.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull XrCompositionLayerProjection> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull XrCompositionLayerProjection value) {
             MemorySegment s = segment.asSlice(index * XrCompositionLayerProjection.BYTES, XrCompositionLayerProjection.BYTES);
             s.copyFrom(value.segment);

@@ -88,6 +88,10 @@ public record VkQueueFamilyGlobalPriorityProperties(@NotNull MemorySegment segme
             return new VkQueueFamilyGlobalPriorityProperties(segment.asSlice(index * VkQueueFamilyGlobalPriorityProperties.BYTES, VkQueueFamilyGlobalPriorityProperties.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull VkQueueFamilyGlobalPriorityProperties> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull VkQueueFamilyGlobalPriorityProperties value) {
             MemorySegment s = segment.asSlice(index * VkQueueFamilyGlobalPriorityProperties.BYTES, VkQueueFamilyGlobalPriorityProperties.BYTES);
             s.copyFrom(value.segment);
@@ -225,6 +229,12 @@ public record VkQueueFamilyGlobalPriorityProperties(@NotNull MemorySegment segme
 
     public @EnumType(VkQueueGlobalPriority.class) IntPtr priorities() {
         return new IntPtr(prioritiesRaw());
+    }
+
+    public VkQueueFamilyGlobalPriorityProperties priorities(@NotNull Consumer<IntPtr> consumer) {
+        @EnumType(VkQueueGlobalPriority.class) IntPtr ptr = priorities();
+        consumer.accept(ptr);
+        return this;
     }
 
     public VkQueueFamilyGlobalPriorityProperties priorities(@EnumType(VkQueueGlobalPriority.class) IntPtr value) {

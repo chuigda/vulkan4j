@@ -94,6 +94,10 @@ public record VkSamplerYcbcrConversionCreateInfo(@NotNull MemorySegment segment)
             return new VkSamplerYcbcrConversionCreateInfo(segment.asSlice(index * VkSamplerYcbcrConversionCreateInfo.BYTES, VkSamplerYcbcrConversionCreateInfo.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull VkSamplerYcbcrConversionCreateInfo> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull VkSamplerYcbcrConversionCreateInfo value) {
             MemorySegment s = segment.asSlice(index * VkSamplerYcbcrConversionCreateInfo.BYTES, VkSamplerYcbcrConversionCreateInfo.BYTES);
             s.copyFrom(value.segment);

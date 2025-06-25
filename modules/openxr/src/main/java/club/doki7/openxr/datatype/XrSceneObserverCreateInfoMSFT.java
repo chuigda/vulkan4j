@@ -90,6 +90,10 @@ public record XrSceneObserverCreateInfoMSFT(@NotNull MemorySegment segment) impl
             return new XrSceneObserverCreateInfoMSFT(segment.asSlice(index * XrSceneObserverCreateInfoMSFT.BYTES, XrSceneObserverCreateInfoMSFT.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull XrSceneObserverCreateInfoMSFT> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull XrSceneObserverCreateInfoMSFT value) {
             MemorySegment s = segment.asSlice(index * XrSceneObserverCreateInfoMSFT.BYTES, XrSceneObserverCreateInfoMSFT.BYTES);
             s.copyFrom(value.segment);

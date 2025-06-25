@@ -81,6 +81,10 @@ public record XrSpaceQueryResultFB(@NotNull MemorySegment segment) implements IX
             return new XrSpaceQueryResultFB(segment.asSlice(index * XrSpaceQueryResultFB.BYTES, XrSpaceQueryResultFB.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull XrSpaceQueryResultFB> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull XrSpaceQueryResultFB value) {
             MemorySegment s = segment.asSlice(index * XrSpaceQueryResultFB.BYTES, XrSpaceQueryResultFB.BYTES);
             s.copyFrom(value.segment);

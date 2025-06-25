@@ -81,6 +81,10 @@ public record XrSwapchainStateBaseHeaderFB(@NotNull MemorySegment segment) imple
             return new XrSwapchainStateBaseHeaderFB(segment.asSlice(index * XrSwapchainStateBaseHeaderFB.BYTES, XrSwapchainStateBaseHeaderFB.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull XrSwapchainStateBaseHeaderFB> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull XrSwapchainStateBaseHeaderFB value) {
             MemorySegment s = segment.asSlice(index * XrSwapchainStateBaseHeaderFB.BYTES, XrSwapchainStateBaseHeaderFB.BYTES);
             s.copyFrom(value.segment);

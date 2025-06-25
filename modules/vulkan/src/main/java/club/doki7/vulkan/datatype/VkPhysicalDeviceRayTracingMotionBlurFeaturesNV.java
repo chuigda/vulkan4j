@@ -88,6 +88,10 @@ public record VkPhysicalDeviceRayTracingMotionBlurFeaturesNV(@NotNull MemorySegm
             return new VkPhysicalDeviceRayTracingMotionBlurFeaturesNV(segment.asSlice(index * VkPhysicalDeviceRayTracingMotionBlurFeaturesNV.BYTES, VkPhysicalDeviceRayTracingMotionBlurFeaturesNV.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull VkPhysicalDeviceRayTracingMotionBlurFeaturesNV> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull VkPhysicalDeviceRayTracingMotionBlurFeaturesNV value) {
             MemorySegment s = segment.asSlice(index * VkPhysicalDeviceRayTracingMotionBlurFeaturesNV.BYTES, VkPhysicalDeviceRayTracingMotionBlurFeaturesNV.BYTES);
             s.copyFrom(value.segment);

@@ -89,6 +89,10 @@ public record VkExternalSemaphoreProperties(@NotNull MemorySegment segment) impl
             return new VkExternalSemaphoreProperties(segment.asSlice(index * VkExternalSemaphoreProperties.BYTES, VkExternalSemaphoreProperties.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull VkExternalSemaphoreProperties> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull VkExternalSemaphoreProperties value) {
             MemorySegment s = segment.asSlice(index * VkExternalSemaphoreProperties.BYTES, VkExternalSemaphoreProperties.BYTES);
             s.copyFrom(value.segment);

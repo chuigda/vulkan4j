@@ -16,7 +16,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.NoSuchElementException;
 
-/// Reperesents a pointer to pointer(s) in native memory.
+/// Represents a pointer to pointer(s) in native memory.
 ///
 /// The property {@link #segment()} should always be not-null
 /// ({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to

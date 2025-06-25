@@ -88,6 +88,10 @@ public record VkImportMemoryHostPointerInfoEXT(@NotNull MemorySegment segment) i
             return new VkImportMemoryHostPointerInfoEXT(segment.asSlice(index * VkImportMemoryHostPointerInfoEXT.BYTES, VkImportMemoryHostPointerInfoEXT.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull VkImportMemoryHostPointerInfoEXT> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull VkImportMemoryHostPointerInfoEXT value) {
             MemorySegment s = segment.asSlice(index * VkImportMemoryHostPointerInfoEXT.BYTES, VkImportMemoryHostPointerInfoEXT.BYTES);
             s.copyFrom(value.segment);

@@ -89,6 +89,10 @@ public record VkCopyMemoryToAccelerationStructureInfoKHR(@NotNull MemorySegment 
             return new VkCopyMemoryToAccelerationStructureInfoKHR(segment.asSlice(index * VkCopyMemoryToAccelerationStructureInfoKHR.BYTES, VkCopyMemoryToAccelerationStructureInfoKHR.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull VkCopyMemoryToAccelerationStructureInfoKHR> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull VkCopyMemoryToAccelerationStructureInfoKHR value) {
             MemorySegment s = segment.asSlice(index * VkCopyMemoryToAccelerationStructureInfoKHR.BYTES, VkCopyMemoryToAccelerationStructureInfoKHR.BYTES);
             s.copyFrom(value.segment);

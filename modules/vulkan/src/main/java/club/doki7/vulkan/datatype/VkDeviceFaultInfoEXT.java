@@ -90,6 +90,10 @@ public record VkDeviceFaultInfoEXT(@NotNull MemorySegment segment) implements IV
             return new VkDeviceFaultInfoEXT(segment.asSlice(index * VkDeviceFaultInfoEXT.BYTES, VkDeviceFaultInfoEXT.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull VkDeviceFaultInfoEXT> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull VkDeviceFaultInfoEXT value) {
             MemorySegment s = segment.asSlice(index * VkDeviceFaultInfoEXT.BYTES, VkDeviceFaultInfoEXT.BYTES);
             s.copyFrom(value.segment);
@@ -218,6 +222,12 @@ public record VkDeviceFaultInfoEXT(@NotNull MemorySegment segment) implements IV
 
     public BytePtr description() {
         return new BytePtr(descriptionRaw());
+    }
+
+    public VkDeviceFaultInfoEXT description(@NotNull Consumer<BytePtr> consumer) {
+        BytePtr ptr = description();
+        consumer.accept(ptr);
+        return this;
     }
 
     public VkDeviceFaultInfoEXT description(BytePtr value) {

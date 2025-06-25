@@ -87,6 +87,10 @@ public record VkRenderPassCreationControlEXT(@NotNull MemorySegment segment) imp
             return new VkRenderPassCreationControlEXT(segment.asSlice(index * VkRenderPassCreationControlEXT.BYTES, VkRenderPassCreationControlEXT.BYTES));
         }
 
+        public void at(long index, @NotNull Consumer<@NotNull VkRenderPassCreationControlEXT> consumer) {
+            consumer.accept(at(index));
+        }
+
         public void write(long index, @NotNull VkRenderPassCreationControlEXT value) {
             MemorySegment s = segment.asSlice(index * VkRenderPassCreationControlEXT.BYTES, VkRenderPassCreationControlEXT.BYTES);
             s.copyFrom(value.segment);
