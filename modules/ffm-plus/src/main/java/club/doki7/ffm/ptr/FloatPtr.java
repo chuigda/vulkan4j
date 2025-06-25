@@ -12,6 +12,7 @@ import java.lang.foreign.MemorySegment;
 import java.lang.foreign.ValueLayout;
 import java.nio.Buffer;
 import java.nio.FloatBuffer;
+import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
 import java.util.NoSuchElementException;
@@ -169,6 +170,16 @@ public record FloatPtr(@NotNull MemorySegment segment) implements IPointer, Iter
 
     public static @NotNull FloatPtr allocate(@NotNull Arena arena, float @NotNull [] array) {
         return new FloatPtr(arena.allocateFrom(ValueLayout.JAVA_FLOAT, array));
+    }
+
+    public static @NotNull FloatPtr allocate(@NotNull Arena arena, Collection<Float> floats) {
+        FloatPtr ret = allocate(arena, floats.size());
+        int i = 0;
+        for (Float f : floats) {
+            ret.write(i, f);
+            i += 1;
+        }
+        return ret;
     }
 
     public static @NotNull FloatPtr allocateV(@NotNull Arena arena, float value0, float ...values) {

@@ -12,6 +12,7 @@ import java.lang.foreign.MemorySegment;
 import java.lang.foreign.ValueLayout;
 import java.nio.Buffer;
 import java.nio.ShortBuffer;
+import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
 import java.util.NoSuchElementException;
@@ -171,6 +172,16 @@ public record ShortPtr(@NotNull MemorySegment segment) implements IPointer, Iter
 
     public static @NotNull ShortPtr allocate(@NotNull Arena arena, short @NotNull [] array) {
         return new ShortPtr(arena.allocateFrom(ValueLayout.JAVA_SHORT, array));
+    }
+
+    public static @NotNull ShortPtr allocate(@NotNull Arena arena, Collection<Short> shorts) {
+        ShortPtr ret = allocate(arena, shorts.size());
+        int i = 0;
+        for (Short value : shorts) {
+            ret.write(i, value);
+            i += 1;
+        }
+        return ret;
     }
 
     public static @NotNull ShortPtr allocateV(@NotNull Arena arena, short value0, short ...values) {

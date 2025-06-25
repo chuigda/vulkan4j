@@ -12,6 +12,7 @@ import java.lang.foreign.MemorySegment;
 import java.lang.foreign.ValueLayout;
 import java.nio.Buffer;
 import java.nio.IntBuffer;
+import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
 import java.util.NoSuchElementException;
@@ -169,6 +170,16 @@ public record IntPtr(@NotNull MemorySegment segment) implements IPointer, Iterab
 
     public static @NotNull IntPtr allocate(@NotNull Arena arena, int @NotNull [] array) {
         return new IntPtr(arena.allocateFrom(ValueLayout.JAVA_INT, array));
+    }
+
+    public static @NotNull IntPtr allocate(@NotNull Arena arena, Collection<Integer> ints) {
+        IntPtr ret = allocate(arena, ints.size());
+        int i = 0;
+        for (Integer value : ints) {
+            ret.write(i, value);
+            i += 1;
+        }
+        return ret;
     }
 
     public static @NotNull IntPtr allocateV(@NotNull Arena arena, int value0, int ...values) {
