@@ -110,12 +110,15 @@ Finally, modify the `VkInstanceCreateInfo` struct instantiation to include the v
 
 ```java
 if (ENABLE_VALIDATION_LAYERS) {
-    instanceCreateInfo.enabledLayerCount(1)
-        .ppEnabledLayerNames(PointerPtr.allocateV(arena, BytePtr.allocateString(arena, VALIDATION_LAYER_NAME)));
+    instanceCreateInfo
+            .enabledLayerCount(1)
+            .ppEnabledLayerNames(PointerPtr.allocateStrings(arena, VALIDATION_LAYER_NAME));
 }
 ```
 
 If the check was successful then `createInstance` should not ever return a `ERROR_LAYER_NOT_PRESENT` error, but you should run the program to make sure.
+
+> Note: `PointerPtr.allocateStrings` is a convenience method that allocates a `char const**` array of strings.
 
 ## Message callback
 
