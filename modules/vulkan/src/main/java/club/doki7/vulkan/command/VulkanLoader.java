@@ -64,13 +64,7 @@ public final class VulkanLoader {
     /// @throws IllegalArgumentException see {@link Linker#downcallHandle(MemorySegment, FunctionDescriptor, Linker.Option...)}
     /// @throws IllegalCallerException see {@link Linker#downcallHandle(MemorySegment, FunctionDescriptor, Linker.Option...)}
     public static @NotNull VkStaticCommands loadStaticCommands(ISharedLibrary libVulkan) {
-        return new VkStaticCommands(name -> {
-            MemorySegment segment = libVulkan.load(name);
-            if (segment.equals(MemorySegment.NULL)) {
-                throw new RuntimeException("Vulkan static function " + name + " not found");
-            }
-            return segment;
-        });
+        return new VkStaticCommands(libVulkan);
     }
 
     /// Load Vulkan entry commands.

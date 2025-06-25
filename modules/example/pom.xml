@@ -41,6 +41,11 @@
         </dependency>
         <dependency>
             <groupId>club.doki7</groupId>
+            <artifactId>openxr</artifactId>
+            <version>0.4.0</version>
+        </dependency>
+        <dependency>
+            <groupId>club.doki7</groupId>
             <artifactId>vma</artifactId>
             <version>0.4.0</version>
         </dependency>
@@ -59,6 +64,11 @@
             <artifactId>glfw</artifactId>
             <version>0.4.0</version>
             <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>club.doki7</groupId>
+            <artifactId>openxr</artifactId>
+            <version>0.4.0</version>
         </dependency>
     </dependencies>
 </project>

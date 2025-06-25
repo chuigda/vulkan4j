@@ -36,6 +36,7 @@ internal fun renameVariantOrBitflag(
     // Find the extension author suffix in the parent name, if any.
     // E.g., `EXT` in `DebugReportObjectTypeEXT`.
     val extension =
+        // TODO: use takeLastWhile
         parent
             .reversed()
             .takeWhile { it.isUpperCase() }

@@ -1,7 +1,9 @@
 package club.doki7.babel.ctype
 
+import club.doki7.babel.ctype.voidType
 import club.doki7.babel.registry.ArrayType
 import club.doki7.babel.registry.FunctionTypedef
+import club.doki7.babel.registry.Identifier
 import club.doki7.babel.registry.IdentifierType
 import club.doki7.babel.registry.OpaqueTypedef
 import club.doki7.babel.registry.PointerType
@@ -398,6 +400,9 @@ private val knownTypes = mapOf(
     "short" to int16Type,
     "unsigned short" to uint16Type,
 
+    // libc types
+    "timespec" to voidType.copy(cType = "timespec"), // used as a pointer
+
     // OpenGL base types
     "GLbyte" to int8Type.copyWithComment(comment = "GLbyte"),
     "GLubyte" to uint8Type.copyWithComment(comment = "GLubyte"),
@@ -465,32 +470,44 @@ private val knownTypes = mapOf(
 
     // Windows
     "DWORD" to uint32Type.copyWithComment(comment = "DWORD"),
+    "LONG" to int32Type.copyWithComment("LONG"),
     "HANDLE" to pvoidType("HANDLE"),
     "HINSTANCE" to pvoidType("HINSTANCE"),
     "HMONITOR" to pvoidType("HMONITOR"),
     "HWND" to pvoidType("HWND"),
+    "HDC" to pvoidType("HDC"),
+    "LARGE_INTEGER" to voidType, // used as a pointer
     "LPCWSTR" to CPointerType(uint16Type, const = true, pointerToOne = false, comment = "LPCWSTR"),
     "HGLRC" to pvoidType("HGLRC"),
     "SECURITY_ATTRIBUTES" to voidType.copy(cType = "SECURITY_ATTRIBUTES"),
 
-    // X11
+    // X11 Xlib
     "Display" to pvoidType("Display"),
     "RROutput" to cLongType.copy(comment = "RROutput"),
     "RRCrtc" to cLongType.copy(comment = "RRCrtc"),
     "VisualID" to cLongType.copy(comment = "VisualID"),
     "Window" to cLongType.copy(comment = "Window"),
+    "GLXFBConfig" to pvoidType("GLXFBConfig"),
+    "GLXDrawable" to cLongType.copyWithComment("GLXDrawable"),
     "GLXContext" to pvoidType("GLXContext"),
     "GLXWindow" to cLongType.copy(comment = "GLXWindow"),
     "XEvent" to voidType.copy(cType = "XEvent"),
+
+    // X11 XCB
     "xcb_connection_t" to voidType.copy(cType = "xcb_connection_t"),
     "xcb_visualid_t" to uint32Type.copyWithComment(comment = "xcb_visualid_t"),
     "xcb_window_t" to uint32Type.copyWithComment(comment = "xcb_window_t"),
     "xcb_handle_t" to uint32Type.copyWithComment(comment = "xcb_handle_t"),
+    "xcb_glx_fbconfig_t" to uint32Type.copyWithComment("xcb_glx_fbconfig_t"),
+    "xcb_glx_drawable_t" to uint32Type.copyWithComment("xcb_glx_drawable_t"),
+    "xcb_glx_context_t" to uint32Type.copyWithComment("xcb_glx_context_t"),
 
     // EGL
     "EGLDisplay" to pvoidType("EGLDisplay"),
     "EGLContext" to pvoidType("EGLContext"),
     "EGLSurface" to pvoidType("EGLSurface"),
+    "EGLConfig" to pvoidType("EGLConfig"),
+    "EGLenum" to uint32Type.copyWithComment("EGLenum"),
 
     // MESA
     "OSMesaContext" to pvoidType("OSMesaContext"),
@@ -503,15 +520,54 @@ private val knownTypes = mapOf(
 
     // FUCHSIA
     "zx_handle_t" to uint32Type.copyWithComment(comment = "zx_handle_t"),
+
+    // Microsoft Windows COM and Direct3D
+    "IUnknown" to pvoidType("IUnknown"),
+    "ID3D11Device" to pvoidType("ID3D11Device"),
+    "ID3D11Texture2D" to pvoidType("ID3D11Texture2D"),
+    "ID3D12CommandQueue" to pvoidType("ID3D12CommandQueue"),
+    "ID3D12Device" to pvoidType("ID3D12Device"),
+    "ID3D12Resource" to pvoidType("ID3D12Resource"),
+    "D3D_FEATURE_LEVEL" to uint32Type.copyWithComment("D3D_FEATURE_LEVEL"),
+
+    // JNI
+    "jobject" to pvoidType("jobject")
 )
 
-fun lowerType(registry: RegistryBase, refRegistries: List<RegistryBase>, type: Type): CType {
+fun lowerType(
+    registry: RegistryBase,
+    refRegistries: List<RegistryBase>,
+    type: Type,
+    importEnumerations: MutableSet<Pair<Identifier, Identifier>>? = null
+): CType {
     return when(type) {
         is ArrayType -> {
             if (!type.length.value.isNumeric()) {
                 if (!registry.constants.contains(type.length)
-                    && !refRegistries.any { it.constants.contains(type.length) }) {
+                    && !registry.enumConstantToEnumerationLookupAccel.contains(type.length.original)
+                    && !refRegistries.any {
+                        it.constants.contains(type.length)
+                        || it.enumConstantToEnumerationLookupAccel.contains(type.length.original)
+                    }) {
                     error("array type referred to an unknown constant ${type.length}")
+                }
+
+                if (registry.enumConstantToEnumerationLookupAccel.contains(type.length.original)) {
+                    val enum = registry.enumConstantToEnumerationLookupAccel[type.length.original]!!
+                    if (importEnumerations == null) {
+                        error("array type referred to an enumeration constant ${type.length}, but no importEnumerations set, caller will be unable to set the import")
+                    }
+                    importEnumerations.add(Pair(enum, type.length))
+                }
+
+                refRegistries.forEach {
+                    if (it.enumConstantToEnumerationLookupAccel.contains(type.length.original)) {
+                        val enum = it.enumConstantToEnumerationLookupAccel[type.length.original]!!
+                        if (importEnumerations == null) {
+                            error("array type referred to an enumeration constant ${type.length}, but no importEnumerations set, caller will be unable to set the import")
+                        }
+                        importEnumerations.add(Pair(enum, type.length))
+                    }
                 }
             }
 

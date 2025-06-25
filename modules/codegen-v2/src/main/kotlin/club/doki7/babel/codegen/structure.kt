@@ -3,6 +3,7 @@ package club.doki7.babel.codegen
 import club.doki7.babel.codegen.accessor.*
 import club.doki7.babel.ctype.*
 import club.doki7.babel.ctype.lowerType
+import club.doki7.babel.registry.Identifier
 import club.doki7.babel.registry.IdentifierType
 import club.doki7.babel.registry.PointerType
 import club.doki7.babel.registry.RegistryBase
@@ -94,11 +95,14 @@ fun generateStructure(
     val originalTypeName = structure.name.original
     val layouts = mutableListOf<LayoutField>()
 
+    val importEnums = mutableSetOf<Pair<Identifier, Identifier>>()
+
     lowerMemberTypes(
         registryBase,
         codegenOptions,
         structure,
         layouts,
+        importEnums
     )
 
     /// region import
@@ -133,6 +137,11 @@ fun generateStructure(
 
     if (registryBase.enumerations.isNotEmpty()) {
         imports("$packageName.enumtype.*")
+    }
+    if (importEnums.isNotEmpty()) {
+        for (enum in importEnums) {
+            imports("$packageName.enumtype.${enum.first}.${enum.second}", true)
+        }
     }
 
     if (registryBase.constants.isNotEmpty()) {
@@ -540,11 +549,12 @@ private fun lowerMemberTypes(
     codegenOptions: CodegenOptions,
     structure: Structure,
     layouts: MutableList<LayoutField>,
+    importEnums: MutableSet<Pair<Identifier, Identifier>>
 ) {
     var i = 0
     while (i < structure.members.size) {
         val current = structure.members[i]
-        val cType = lowerType(registry, codegenOptions.refRegistries, current.type)
+        val cType = lowerType(registry, codegenOptions.refRegistries, current.type, importEnums)
         if (current.bits != null) {
             val storageUnitBits = (cType as CFixedSizeType).byteSize * 8
             var storageUnitBegin = i

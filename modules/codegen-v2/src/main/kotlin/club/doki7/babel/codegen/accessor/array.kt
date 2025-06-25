@@ -30,7 +30,8 @@ private fun generateNonRefArrayAccessor(className: String, elementType: CNonRefT
     +""
 
     defun("public", className, member.name, "${elementType.jPtrType} value") {
-        +"MemorySegment.copy(value.segment(), 0, segment, ${member.offsetName}, ${member.sizeName});"
+        +"MemorySegment s = $rawName();"
+        +"s.copyFrom(value.segment());"
         +"return this;"
     }
     +""
@@ -90,7 +91,8 @@ private fun generateHandleArrayAccessor(className: String, elementType: CHandleT
     +""
 
     defun("public", className, member.name, "${elementType.name}.Ptr value") {
-        +"MemorySegment.copy(value.segment(), 0, segment, ${member.offsetName}, ${member.sizeName});"
+        +"MemorySegment s = $rawName();"
+        +"s.copyFrom(value.segment());"
         +"return this;"
     }
 

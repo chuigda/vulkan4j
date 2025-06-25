@@ -21,6 +21,8 @@ interface RegistryBase {
     val opaqueTypedefs: MutableMap<Identifier, OpaqueTypedef>
     val structures: MutableMap<Identifier, Structure>
     val unions: MutableMap<Identifier, Structure>
+
+    val enumConstantToEnumerationLookupAccel: MutableMap<String, Identifier>
 }
 
 data class Registry<E: IMergeable<E>>(
@@ -34,6 +36,7 @@ data class Registry<E: IMergeable<E>>(
     override val opaqueTypedefs: MutableMap<Identifier, OpaqueTypedef> = mutableMapOf(),
     override val structures: MutableMap<Identifier, Structure> = mutableMapOf(),
     override val unions: MutableMap<Identifier, Structure> = mutableMapOf(),
+    override val enumConstantToEnumerationLookupAccel: MutableMap<String, Identifier> = mutableMapOf(),
 
     var ext: E
 ) : RegistryBase {
@@ -65,6 +68,18 @@ data class Registry<E: IMergeable<E>>(
 
         this.ext = this.ext.merge(other.ext)
     }
+
+    fun buildLookupAccel() {
+        this.enumConstantToEnumerationLookupAccel.clear()
+        for ((_, enumeration) in this.enumerations) {
+            for (variant in enumeration.variants) {
+                this.enumConstantToEnumerationLookupAccel.put(
+                    variant.name.original,
+                    enumeration.name
+                )
+            }
+        }
+    }
 }
 
 abstract class Entity(val name: Identifier, var doc: List<String>? = null) {
@@ -82,7 +97,7 @@ abstract class Entity(val name: Identifier, var doc: List<String>? = null) {
 
     fun rename(newName: String) = this.name.rename(newName)
 
-    fun rename(renamer: String.() -> String) = this.rename(renamer(this.name.original))
+    inline fun rename(renamer: String.() -> String) = this.rename(renamer(this.name.original))
 
     fun <T> setExt(extra: T) {
         this._ext = extra
@@ -168,6 +183,12 @@ class Command(
         successCodes: List<Identifier>?,
         errorCodes: List<Identifier>?
     ) : this(name.intern(), params, result, successCodes, errorCodes)
+
+    fun aliasBy(name: Identifier): Command {
+        return Command(
+            name, params, result, successCodes, errorCodes, this.name
+        ).also { it.setExt(this.ext<Any?>()) }
+    }
 
     override fun toStringImpl() =
         "Command(name=\"$name\", params=$params, result=$result, successCodes=$successCodes, errorCodes=$errorCodes"
