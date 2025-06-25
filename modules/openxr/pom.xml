@@ -9,8 +9,44 @@
         <version>${revision}</version>
     </parent>
 
+    <name>openxr</name>
+    <description>OpenXR Java bindings implemented with Java 22 FFM (Project Panama) API</description>
+    <url>https://github/chuigda/vulkan4j</url>
+
+    <inceptionYear>2024</inceptionYear>
+    <organization>
+        <name>Doki Doki 7th Design Club!</name>
+        <url>https://doki7.club</url>
+    </organization>
+
+    <licenses>
+        <license>
+            <name>The 3-Clause BSD License</name>
+            <url>https://opensource.org/licenses/BSD-3-Clause</url>
+        </license>
+    </licenses>
+
+    <developers>
+        <developer>
+            <name>Hoshino Tented</name>
+            <email>hoshinotented@qq.com</email>
+            <organization>Doki Doki 7th Design Club!</organization>
+        </developer>
+        <developer>
+            <name>Chuigda Whitegive</name>
+            <email>chuigda@doki7.club</email>
+            <organization>Doki Doki 7th Design Club!</organization>
+        </developer>
+    </developers>
+
+    <scm>
+        <connection>scm:git:git://github.com/chuigda/vulkan4j.git</connection>
+        <developerConnection>scm:git:ssh://github.com:chuigda/vulkan4j.git</developerConnection>
+        <url>https://github.com/club-doki7/vulkan4j</url>
+    </scm>
+
     <artifactId>openxr</artifactId>
-    <version>0.4.0</version>
+    <version>0.4.1</version>
     <packaging>jar</packaging>
 
     <properties>
@@ -21,13 +57,13 @@
         <dependency>
             <groupId>club.doki7</groupId>
             <artifactId>ffm-plus</artifactId>
-            <version>0.2.4</version>
+            <version>0.2.5</version>
             <scope>compile</scope>
         </dependency>
         <dependency>
             <groupId>club.doki7</groupId>
             <artifactId>vulkan</artifactId>
-            <version>0.4.0</version>
+            <version>0.4.1</version>
             <scope>compile</scope>
         </dependency>
         <dependency>

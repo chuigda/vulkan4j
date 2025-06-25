@@ -1,5 +1,11 @@
 ## Unreleased v0.4.1
 
+Upgrade `ffm-plus` to v0.2.5, and other wrapper modules to v0.4.1.
+
+### New bindings
+
+- Added `openxr` module, which provides bindings for OpenXR 1.0 - 1.1. This module is generated from the official OpenXR XML registry files. **However, our team haven't tested it out thoroughly by writing a complete dog feeding OpenXR application due to lacking VR development experience. This module may contain bugs. Issus and PRs are welcome!**
+
 ### Quality of Life updates
 
 - `allocate` functions now have a `allocate(Arena, Collection<T>)` overloading.
