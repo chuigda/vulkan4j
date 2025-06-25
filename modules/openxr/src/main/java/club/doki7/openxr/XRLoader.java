@@ -20,7 +20,7 @@ public final class XRLoader {
         return new XRStatic(library);
     }
 
-    public static @NotNull XR loadXR(@NotNull XRStatic xrStatic, @NotNull XrInstance instance) {
+    public static @NotNull XR loadXR(@NotNull XrInstance instance, @NotNull XRStatic xrStatic) {
         return new XR(name -> {
             try (Arena arena = Arena.ofConfined()) {
                 PointerPtr pFunction = PointerPtr.allocate(arena);
