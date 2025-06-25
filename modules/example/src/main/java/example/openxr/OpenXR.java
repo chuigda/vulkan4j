@@ -37,6 +37,7 @@ public final class OpenXR {
 
             XR xr = XRLoader.loadXR(instance, xrStatic);
             System.err.println("OpenXR instance created successfully: " + instance);
+            xr.destroyInstance(instance);
         }
     }
 }
