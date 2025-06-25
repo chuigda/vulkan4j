@@ -1,4 +1,4 @@
-## Unreleased v0.4.1
+## v0.4.1
 
 Upgrade `ffm-plus` to v0.2.5, and other wrapper modules to v0.4.1.
 
@@ -81,6 +81,7 @@ Upgrade `ffm-plus` to v0.2.4, and other wrapper modules to v0.4.0.
 
 ### Known issues
 
+- `WindowsLibraryLoader` does not give correct Windows error code on library loading failure (#126). This issue is still under investigation.
 - `LibcArena` does not work on Windows platform due to the lack of `aligned_alloc` support. `ShadercUtil` using `LibcArena` is also affected.
 
 ## v0.3.4
