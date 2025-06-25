@@ -230,7 +230,8 @@ public record VkPipelineExecutablePropertiesKHR(@NotNull MemorySegment segment) 
     }
 
     public VkPipelineExecutablePropertiesKHR name(BytePtr value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$name, SIZE$name);
+        MemorySegment s = nameRaw();
+        s.copyFrom(value.segment());
         return this;
     }
 
@@ -243,7 +244,8 @@ public record VkPipelineExecutablePropertiesKHR(@NotNull MemorySegment segment) 
     }
 
     public VkPipelineExecutablePropertiesKHR description(BytePtr value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$description, SIZE$description);
+        MemorySegment s = descriptionRaw();
+        s.copyFrom(value.segment());
         return this;
     }
 

@@ -221,7 +221,8 @@ public record VkDeviceFaultInfoEXT(@NotNull MemorySegment segment) implements IV
     }
 
     public VkDeviceFaultInfoEXT description(BytePtr value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$description, SIZE$description);
+        MemorySegment s = descriptionRaw();
+        s.copyFrom(value.segment());
         return this;
     }
 

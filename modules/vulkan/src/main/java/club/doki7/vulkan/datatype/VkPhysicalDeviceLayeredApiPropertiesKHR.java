@@ -248,7 +248,8 @@ public record VkPhysicalDeviceLayeredApiPropertiesKHR(@NotNull MemorySegment seg
     }
 
     public VkPhysicalDeviceLayeredApiPropertiesKHR deviceName(BytePtr value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$deviceName, SIZE$deviceName);
+        MemorySegment s = deviceNameRaw();
+        s.copyFrom(value.segment());
         return this;
     }
 

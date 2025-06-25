@@ -485,7 +485,8 @@ public record VkPhysicalDeviceVulkan14Properties(@NotNull MemorySegment segment)
     }
 
     public VkPhysicalDeviceVulkan14Properties optimalTilingLayoutUUID(@Unsigned BytePtr value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$optimalTilingLayoutUUID, SIZE$optimalTilingLayoutUUID);
+        MemorySegment s = optimalTilingLayoutUUIDRaw();
+        s.copyFrom(value.segment());
         return this;
     }
 

@@ -230,7 +230,8 @@ public record VkPhysicalDeviceDriverProperties(@NotNull MemorySegment segment) i
     }
 
     public VkPhysicalDeviceDriverProperties driverName(BytePtr value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$driverName, SIZE$driverName);
+        MemorySegment s = driverNameRaw();
+        s.copyFrom(value.segment());
         return this;
     }
 
@@ -243,7 +244,8 @@ public record VkPhysicalDeviceDriverProperties(@NotNull MemorySegment segment) i
     }
 
     public VkPhysicalDeviceDriverProperties driverInfo(BytePtr value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$driverInfo, SIZE$driverInfo);
+        MemorySegment s = driverInfoRaw();
+        s.copyFrom(value.segment());
         return this;
     }
 

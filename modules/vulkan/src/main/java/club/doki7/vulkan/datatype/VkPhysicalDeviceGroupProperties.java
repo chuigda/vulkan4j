@@ -233,7 +233,8 @@ public record VkPhysicalDeviceGroupProperties(@NotNull MemorySegment segment) im
     }
 
     public VkPhysicalDeviceGroupProperties physicalDevices(VkPhysicalDevice.Ptr value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$physicalDevices, SIZE$physicalDevices);
+        MemorySegment s = physicalDevicesRaw();
+        s.copyFrom(value.segment());
         return this;
     }
 

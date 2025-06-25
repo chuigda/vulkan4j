@@ -219,7 +219,8 @@ public record VkPhysicalDeviceShaderObjectPropertiesEXT(@NotNull MemorySegment s
     }
 
     public VkPhysicalDeviceShaderObjectPropertiesEXT shaderBinaryUUID(@Unsigned BytePtr value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$shaderBinaryUUID, SIZE$shaderBinaryUUID);
+        MemorySegment s = shaderBinaryUUIDRaw();
+        s.copyFrom(value.segment());
         return this;
     }
 

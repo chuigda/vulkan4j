@@ -177,7 +177,8 @@ public record StdVideoH265ScalingLists(@NotNull MemorySegment segment) implement
     }
 
     public StdVideoH265ScalingLists ScalingList4x4(@Unsigned BytePtr value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$ScalingList4x4, SIZE$ScalingList4x4);
+        MemorySegment s = ScalingList4x4Raw();
+        s.copyFrom(value.segment());
         return this;
     }
 
@@ -190,7 +191,8 @@ public record StdVideoH265ScalingLists(@NotNull MemorySegment segment) implement
     }
 
     public StdVideoH265ScalingLists ScalingList8x8(@Unsigned BytePtr value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$ScalingList8x8, SIZE$ScalingList8x8);
+        MemorySegment s = ScalingList8x8Raw();
+        s.copyFrom(value.segment());
         return this;
     }
 
@@ -203,7 +205,8 @@ public record StdVideoH265ScalingLists(@NotNull MemorySegment segment) implement
     }
 
     public StdVideoH265ScalingLists ScalingList16x16(@Unsigned BytePtr value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$ScalingList16x16, SIZE$ScalingList16x16);
+        MemorySegment s = ScalingList16x16Raw();
+        s.copyFrom(value.segment());
         return this;
     }
 
@@ -216,7 +219,8 @@ public record StdVideoH265ScalingLists(@NotNull MemorySegment segment) implement
     }
 
     public StdVideoH265ScalingLists ScalingList32x32(@Unsigned BytePtr value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$ScalingList32x32, SIZE$ScalingList32x32);
+        MemorySegment s = ScalingList32x32Raw();
+        s.copyFrom(value.segment());
         return this;
     }
 
@@ -229,7 +233,8 @@ public record StdVideoH265ScalingLists(@NotNull MemorySegment segment) implement
     }
 
     public StdVideoH265ScalingLists ScalingListDCCoef16x16(@Unsigned BytePtr value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$ScalingListDCCoef16x16, SIZE$ScalingListDCCoef16x16);
+        MemorySegment s = ScalingListDCCoef16x16Raw();
+        s.copyFrom(value.segment());
         return this;
     }
 
@@ -242,7 +247,8 @@ public record StdVideoH265ScalingLists(@NotNull MemorySegment segment) implement
     }
 
     public StdVideoH265ScalingLists ScalingListDCCoef32x32(@Unsigned BytePtr value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$ScalingListDCCoef32x32, SIZE$ScalingListDCCoef32x32);
+        MemorySegment s = ScalingListDCCoef32x32Raw();
+        s.copyFrom(value.segment());
         return this;
     }
 

@@ -295,7 +295,8 @@ public record VkPhysicalDeviceHostImageCopyProperties(@NotNull MemorySegment seg
     }
 
     public VkPhysicalDeviceHostImageCopyProperties optimalTilingLayoutUUID(@Unsigned BytePtr value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$optimalTilingLayoutUUID, SIZE$optimalTilingLayoutUUID);
+        MemorySegment s = optimalTilingLayoutUUIDRaw();
+        s.copyFrom(value.segment());
         return this;
     }
 

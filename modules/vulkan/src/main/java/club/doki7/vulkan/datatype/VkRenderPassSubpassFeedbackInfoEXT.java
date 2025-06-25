@@ -185,7 +185,8 @@ public record VkRenderPassSubpassFeedbackInfoEXT(@NotNull MemorySegment segment)
     }
 
     public VkRenderPassSubpassFeedbackInfoEXT description(BytePtr value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$description, SIZE$description);
+        MemorySegment s = descriptionRaw();
+        s.copyFrom(value.segment());
         return this;
     }
 

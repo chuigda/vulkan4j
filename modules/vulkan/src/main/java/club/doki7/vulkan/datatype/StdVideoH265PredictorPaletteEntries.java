@@ -172,7 +172,8 @@ public record StdVideoH265PredictorPaletteEntries(@NotNull MemorySegment segment
     }
 
     public StdVideoH265PredictorPaletteEntries PredictorPaletteEntries(@Unsigned ShortPtr value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$PredictorPaletteEntries, SIZE$PredictorPaletteEntries);
+        MemorySegment s = PredictorPaletteEntriesRaw();
+        s.copyFrom(value.segment());
         return this;
     }
 

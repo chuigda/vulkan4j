@@ -245,7 +245,8 @@ public record VkDebugUtilsLabelEXT(@NotNull MemorySegment segment) implements IV
     }
 
     public VkDebugUtilsLabelEXT color(FloatPtr value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$color, SIZE$color);
+        MemorySegment s = colorRaw();
+        s.copyFrom(value.segment());
         return this;
     }
 

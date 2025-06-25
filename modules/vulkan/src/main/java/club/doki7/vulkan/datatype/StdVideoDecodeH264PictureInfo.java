@@ -231,7 +231,8 @@ public record StdVideoDecodeH264PictureInfo(@NotNull MemorySegment segment) impl
     }
 
     public StdVideoDecodeH264PictureInfo PicOrderCnt(IntPtr value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$PicOrderCnt, SIZE$PicOrderCnt);
+        MemorySegment s = PicOrderCntRaw();
+        s.copyFrom(value.segment());
         return this;
     }
 

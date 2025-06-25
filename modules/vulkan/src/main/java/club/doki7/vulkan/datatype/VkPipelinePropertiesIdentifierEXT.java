@@ -218,7 +218,8 @@ public record VkPipelinePropertiesIdentifierEXT(@NotNull MemorySegment segment) 
     }
 
     public VkPipelinePropertiesIdentifierEXT pipelineIdentifier(@Unsigned BytePtr value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$pipelineIdentifier, SIZE$pipelineIdentifier);
+        MemorySegment s = pipelineIdentifierRaw();
+        s.copyFrom(value.segment());
         return this;
     }
 

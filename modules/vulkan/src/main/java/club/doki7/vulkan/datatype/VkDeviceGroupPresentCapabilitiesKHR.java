@@ -219,7 +219,8 @@ public record VkDeviceGroupPresentCapabilitiesKHR(@NotNull MemorySegment segment
     }
 
     public VkDeviceGroupPresentCapabilitiesKHR presentMask(@Unsigned IntPtr value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$presentMask, SIZE$presentMask);
+        MemorySegment s = presentMaskRaw();
+        s.copyFrom(value.segment());
         return this;
     }
 

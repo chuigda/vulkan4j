@@ -217,7 +217,8 @@ public record StdVideoDecodeAV1ReferenceInfo(@NotNull MemorySegment segment) imp
     }
 
     public StdVideoDecodeAV1ReferenceInfo SavedOrderHints(@Unsigned BytePtr value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$SavedOrderHints, SIZE$SavedOrderHints);
+        MemorySegment s = SavedOrderHintsRaw();
+        s.copyFrom(value.segment());
         return this;
     }
 

@@ -221,7 +221,8 @@ public record VkPhysicalDeviceClusterCullingShaderPropertiesHUAWEI(@NotNull Memo
     }
 
     public VkPhysicalDeviceClusterCullingShaderPropertiesHUAWEI maxWorkGroupCount(@Unsigned IntPtr value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$maxWorkGroupCount, SIZE$maxWorkGroupCount);
+        MemorySegment s = maxWorkGroupCountRaw();
+        s.copyFrom(value.segment());
         return this;
     }
 
@@ -234,7 +235,8 @@ public record VkPhysicalDeviceClusterCullingShaderPropertiesHUAWEI(@NotNull Memo
     }
 
     public VkPhysicalDeviceClusterCullingShaderPropertiesHUAWEI maxWorkGroupSize(@Unsigned IntPtr value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$maxWorkGroupSize, SIZE$maxWorkGroupSize);
+        MemorySegment s = maxWorkGroupSizeRaw();
+        s.copyFrom(value.segment());
         return this;
     }
 

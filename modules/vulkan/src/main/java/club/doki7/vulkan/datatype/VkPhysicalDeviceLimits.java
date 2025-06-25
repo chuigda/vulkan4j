@@ -747,7 +747,8 @@ public record VkPhysicalDeviceLimits(@NotNull MemorySegment segment) implements 
     }
 
     public VkPhysicalDeviceLimits maxComputeWorkGroupCount(@Unsigned IntPtr value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$maxComputeWorkGroupCount, SIZE$maxComputeWorkGroupCount);
+        MemorySegment s = maxComputeWorkGroupCountRaw();
+        s.copyFrom(value.segment());
         return this;
     }
 
@@ -769,7 +770,8 @@ public record VkPhysicalDeviceLimits(@NotNull MemorySegment segment) implements 
     }
 
     public VkPhysicalDeviceLimits maxComputeWorkGroupSize(@Unsigned IntPtr value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$maxComputeWorkGroupSize, SIZE$maxComputeWorkGroupSize);
+        MemorySegment s = maxComputeWorkGroupSizeRaw();
+        s.copyFrom(value.segment());
         return this;
     }
 
@@ -854,7 +856,8 @@ public record VkPhysicalDeviceLimits(@NotNull MemorySegment segment) implements 
     }
 
     public VkPhysicalDeviceLimits maxViewportDimensions(@Unsigned IntPtr value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$maxViewportDimensions, SIZE$maxViewportDimensions);
+        MemorySegment s = maxViewportDimensionsRaw();
+        s.copyFrom(value.segment());
         return this;
     }
 
@@ -867,7 +870,8 @@ public record VkPhysicalDeviceLimits(@NotNull MemorySegment segment) implements 
     }
 
     public VkPhysicalDeviceLimits viewportBoundsRange(FloatPtr value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$viewportBoundsRange, SIZE$viewportBoundsRange);
+        MemorySegment s = viewportBoundsRangeRaw();
+        s.copyFrom(value.segment());
         return this;
     }
 
@@ -1168,7 +1172,8 @@ public record VkPhysicalDeviceLimits(@NotNull MemorySegment segment) implements 
     }
 
     public VkPhysicalDeviceLimits pointSizeRange(FloatPtr value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$pointSizeRange, SIZE$pointSizeRange);
+        MemorySegment s = pointSizeRangeRaw();
+        s.copyFrom(value.segment());
         return this;
     }
 
@@ -1181,7 +1186,8 @@ public record VkPhysicalDeviceLimits(@NotNull MemorySegment segment) implements 
     }
 
     public VkPhysicalDeviceLimits lineWidthRange(FloatPtr value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$lineWidthRange, SIZE$lineWidthRange);
+        MemorySegment s = lineWidthRangeRaw();
+        s.copyFrom(value.segment());
         return this;
     }
 

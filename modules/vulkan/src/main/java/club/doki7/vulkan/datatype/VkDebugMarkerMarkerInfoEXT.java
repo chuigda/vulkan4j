@@ -245,7 +245,8 @@ public record VkDebugMarkerMarkerInfoEXT(@NotNull MemorySegment segment) impleme
     }
 
     public VkDebugMarkerMarkerInfoEXT color(FloatPtr value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$color, SIZE$color);
+        MemorySegment s = colorRaw();
+        s.copyFrom(value.segment());
         return this;
     }
 

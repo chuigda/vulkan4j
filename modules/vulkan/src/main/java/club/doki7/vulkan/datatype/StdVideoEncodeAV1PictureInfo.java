@@ -329,7 +329,8 @@ public record StdVideoEncodeAV1PictureInfo(@NotNull MemorySegment segment) imple
     }
 
     public StdVideoEncodeAV1PictureInfo ref_order_hint(@Unsigned BytePtr value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$ref_order_hint, SIZE$ref_order_hint);
+        MemorySegment s = ref_order_hintRaw();
+        s.copyFrom(value.segment());
         return this;
     }
 
@@ -342,7 +343,8 @@ public record StdVideoEncodeAV1PictureInfo(@NotNull MemorySegment segment) imple
     }
 
     public StdVideoEncodeAV1PictureInfo ref_frame_idx(BytePtr value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$ref_frame_idx, SIZE$ref_frame_idx);
+        MemorySegment s = ref_frame_idxRaw();
+        s.copyFrom(value.segment());
         return this;
     }
 
@@ -356,7 +358,8 @@ public record StdVideoEncodeAV1PictureInfo(@NotNull MemorySegment segment) imple
     }
 
     public StdVideoEncodeAV1PictureInfo delta_frame_id_minus_1(@Unsigned IntPtr value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$delta_frame_id_minus_1, SIZE$delta_frame_id_minus_1);
+        MemorySegment s = delta_frame_id_minus_1Raw();
+        s.copyFrom(value.segment());
         return this;
     }
 

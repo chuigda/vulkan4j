@@ -255,7 +255,8 @@ public record VkVideoDecodeAV1PictureInfoKHR(@NotNull MemorySegment segment) imp
     }
 
     public VkVideoDecodeAV1PictureInfoKHR referenceNameSlotIndices(IntPtr value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$referenceNameSlotIndices, SIZE$referenceNameSlotIndices);
+        MemorySegment s = referenceNameSlotIndicesRaw();
+        s.copyFrom(value.segment());
         return this;
     }
 

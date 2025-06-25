@@ -191,7 +191,8 @@ public record GLFWgamepadstate(@NotNull MemorySegment segment) implements IGLFWg
     }
 
     public GLFWgamepadstate buttons(BytePtr value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$buttons, SIZE$buttons);
+        MemorySegment s = buttonsRaw();
+        s.copyFrom(value.segment());
         return this;
     }
 
@@ -204,7 +205,8 @@ public record GLFWgamepadstate(@NotNull MemorySegment segment) implements IGLFWg
     }
 
     public GLFWgamepadstate axes(FloatPtr value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$axes, SIZE$axes);
+        MemorySegment s = axesRaw();
+        s.copyFrom(value.segment());
         return this;
     }
 

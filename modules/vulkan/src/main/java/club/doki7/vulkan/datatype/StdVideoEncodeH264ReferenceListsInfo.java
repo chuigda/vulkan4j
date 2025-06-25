@@ -215,7 +215,8 @@ public record StdVideoEncodeH264ReferenceListsInfo(@NotNull MemorySegment segmen
     }
 
     public StdVideoEncodeH264ReferenceListsInfo RefPicList0(@Unsigned BytePtr value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$RefPicList0, SIZE$RefPicList0);
+        MemorySegment s = RefPicList0Raw();
+        s.copyFrom(value.segment());
         return this;
     }
 
@@ -228,7 +229,8 @@ public record StdVideoEncodeH264ReferenceListsInfo(@NotNull MemorySegment segmen
     }
 
     public StdVideoEncodeH264ReferenceListsInfo RefPicList1(@Unsigned BytePtr value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$RefPicList1, SIZE$RefPicList1);
+        MemorySegment s = RefPicList1Raw();
+        s.copyFrom(value.segment());
         return this;
     }
 

@@ -238,7 +238,8 @@ public record VkPipelineFragmentShadingRateEnumStateCreateInfoNV(@NotNull Memory
     }
 
     public VkPipelineFragmentShadingRateEnumStateCreateInfoNV combinerOps(@EnumType(VkFragmentShadingRateCombinerOpKHR.class) IntPtr value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$combinerOps, SIZE$combinerOps);
+        MemorySegment s = combinerOpsRaw();
+        s.copyFrom(value.segment());
         return this;
     }
 

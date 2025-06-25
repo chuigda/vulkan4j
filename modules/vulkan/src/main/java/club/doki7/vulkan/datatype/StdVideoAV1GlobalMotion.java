@@ -173,7 +173,8 @@ public record StdVideoAV1GlobalMotion(@NotNull MemorySegment segment) implements
     }
 
     public StdVideoAV1GlobalMotion GmType(@Unsigned BytePtr value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$GmType, SIZE$GmType);
+        MemorySegment s = GmTypeRaw();
+        s.copyFrom(value.segment());
         return this;
     }
 
@@ -186,7 +187,8 @@ public record StdVideoAV1GlobalMotion(@NotNull MemorySegment segment) implements
     }
 
     public StdVideoAV1GlobalMotion gm_params(IntPtr value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$gm_params, SIZE$gm_params);
+        MemorySegment s = gm_paramsRaw();
+        s.copyFrom(value.segment());
         return this;
     }
 

@@ -176,7 +176,8 @@ public record VkDeviceFaultVendorInfoEXT(@NotNull MemorySegment segment) impleme
     }
 
     public VkDeviceFaultVendorInfoEXT description(BytePtr value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$description, SIZE$description);
+        MemorySegment s = descriptionRaw();
+        s.copyFrom(value.segment());
         return this;
     }
 

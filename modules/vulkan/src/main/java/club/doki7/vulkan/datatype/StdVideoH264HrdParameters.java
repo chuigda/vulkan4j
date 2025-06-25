@@ -210,7 +210,8 @@ public record StdVideoH264HrdParameters(@NotNull MemorySegment segment) implemen
     }
 
     public StdVideoH264HrdParameters bit_rate_value_minus1(@Unsigned IntPtr value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$bit_rate_value_minus1, SIZE$bit_rate_value_minus1);
+        MemorySegment s = bit_rate_value_minus1Raw();
+        s.copyFrom(value.segment());
         return this;
     }
 
@@ -223,7 +224,8 @@ public record StdVideoH264HrdParameters(@NotNull MemorySegment segment) implemen
     }
 
     public StdVideoH264HrdParameters cpb_size_value_minus1(@Unsigned IntPtr value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$cpb_size_value_minus1, SIZE$cpb_size_value_minus1);
+        MemorySegment s = cpb_size_value_minus1Raw();
+        s.copyFrom(value.segment());
         return this;
     }
 
@@ -236,7 +238,8 @@ public record StdVideoH264HrdParameters(@NotNull MemorySegment segment) implemen
     }
 
     public StdVideoH264HrdParameters cbr_flag(@Unsigned BytePtr value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$cbr_flag, SIZE$cbr_flag);
+        MemorySegment s = cbr_flagRaw();
+        s.copyFrom(value.segment());
         return this;
     }
 

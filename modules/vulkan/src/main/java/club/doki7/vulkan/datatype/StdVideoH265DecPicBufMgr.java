@@ -174,7 +174,8 @@ public record StdVideoH265DecPicBufMgr(@NotNull MemorySegment segment) implement
     }
 
     public StdVideoH265DecPicBufMgr max_latency_increase_plus1(@Unsigned IntPtr value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$max_latency_increase_plus1, SIZE$max_latency_increase_plus1);
+        MemorySegment s = max_latency_increase_plus1Raw();
+        s.copyFrom(value.segment());
         return this;
     }
 
@@ -187,7 +188,8 @@ public record StdVideoH265DecPicBufMgr(@NotNull MemorySegment segment) implement
     }
 
     public StdVideoH265DecPicBufMgr max_dec_pic_buffering_minus1(@Unsigned BytePtr value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$max_dec_pic_buffering_minus1, SIZE$max_dec_pic_buffering_minus1);
+        MemorySegment s = max_dec_pic_buffering_minus1Raw();
+        s.copyFrom(value.segment());
         return this;
     }
 
@@ -200,7 +202,8 @@ public record StdVideoH265DecPicBufMgr(@NotNull MemorySegment segment) implement
     }
 
     public StdVideoH265DecPicBufMgr max_num_reorder_pics(@Unsigned BytePtr value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$max_num_reorder_pics, SIZE$max_num_reorder_pics);
+        MemorySegment s = max_num_reorder_picsRaw();
+        s.copyFrom(value.segment());
         return this;
     }
 

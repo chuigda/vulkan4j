@@ -230,7 +230,8 @@ public record VkPerformanceCounterDescriptionKHR(@NotNull MemorySegment segment)
     }
 
     public VkPerformanceCounterDescriptionKHR name(BytePtr value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$name, SIZE$name);
+        MemorySegment s = nameRaw();
+        s.copyFrom(value.segment());
         return this;
     }
 
@@ -243,7 +244,8 @@ public record VkPerformanceCounterDescriptionKHR(@NotNull MemorySegment segment)
     }
 
     public VkPerformanceCounterDescriptionKHR category(BytePtr value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$category, SIZE$category);
+        MemorySegment s = categoryRaw();
+        s.copyFrom(value.segment());
         return this;
     }
 
@@ -256,7 +258,8 @@ public record VkPerformanceCounterDescriptionKHR(@NotNull MemorySegment segment)
     }
 
     public VkPerformanceCounterDescriptionKHR description(BytePtr value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$description, SIZE$description);
+        MemorySegment s = descriptionRaw();
+        s.copyFrom(value.segment());
         return this;
     }
 

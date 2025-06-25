@@ -239,7 +239,8 @@ public record VkShaderStatisticsInfoAMD(@NotNull MemorySegment segment) implemen
     }
 
     public VkShaderStatisticsInfoAMD computeWorkGroupSize(@Unsigned IntPtr value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$computeWorkGroupSize, SIZE$computeWorkGroupSize);
+        MemorySegment s = computeWorkGroupSizeRaw();
+        s.copyFrom(value.segment());
         return this;
     }
 

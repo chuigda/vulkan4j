@@ -291,7 +291,8 @@ public record StdVideoDecodeAV1PictureInfo(@NotNull MemorySegment segment) imple
     }
 
     public StdVideoDecodeAV1PictureInfo SkipModeFrame(@Unsigned BytePtr value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$SkipModeFrame, SIZE$SkipModeFrame);
+        MemorySegment s = SkipModeFrameRaw();
+        s.copyFrom(value.segment());
         return this;
     }
 
@@ -314,7 +315,8 @@ public record StdVideoDecodeAV1PictureInfo(@NotNull MemorySegment segment) imple
     }
 
     public StdVideoDecodeAV1PictureInfo OrderHints(@Unsigned BytePtr value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$OrderHints, SIZE$OrderHints);
+        MemorySegment s = OrderHintsRaw();
+        s.copyFrom(value.segment());
         return this;
     }
 
@@ -327,7 +329,8 @@ public record StdVideoDecodeAV1PictureInfo(@NotNull MemorySegment segment) imple
     }
 
     public StdVideoDecodeAV1PictureInfo expectedFrameId(@Unsigned IntPtr value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$expectedFrameId, SIZE$expectedFrameId);
+        MemorySegment s = expectedFrameIdRaw();
+        s.copyFrom(value.segment());
         return this;
     }
 

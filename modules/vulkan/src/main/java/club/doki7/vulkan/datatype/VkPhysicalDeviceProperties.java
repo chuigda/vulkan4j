@@ -227,7 +227,8 @@ public record VkPhysicalDeviceProperties(@NotNull MemorySegment segment) impleme
     }
 
     public VkPhysicalDeviceProperties deviceName(BytePtr value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$deviceName, SIZE$deviceName);
+        MemorySegment s = deviceNameRaw();
+        s.copyFrom(value.segment());
         return this;
     }
 
@@ -240,7 +241,8 @@ public record VkPhysicalDeviceProperties(@NotNull MemorySegment segment) impleme
     }
 
     public VkPhysicalDeviceProperties pipelineCacheUUID(@Unsigned BytePtr value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$pipelineCacheUUID, SIZE$pipelineCacheUUID);
+        MemorySegment s = pipelineCacheUUIDRaw();
+        s.copyFrom(value.segment());
         return this;
     }
 

@@ -228,7 +228,8 @@ public record VkQueueFamilyGlobalPriorityProperties(@NotNull MemorySegment segme
     }
 
     public VkQueueFamilyGlobalPriorityProperties priorities(@EnumType(VkQueueGlobalPriority.class) IntPtr value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$priorities, SIZE$priorities);
+        MemorySegment s = prioritiesRaw();
+        s.copyFrom(value.segment());
         return this;
     }
 

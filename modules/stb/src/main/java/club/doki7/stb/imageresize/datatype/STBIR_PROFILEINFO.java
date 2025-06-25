@@ -182,7 +182,8 @@ public record STBIR_PROFILEINFO(@NotNull MemorySegment segment) implements ISTBI
     }
 
     public STBIR_PROFILEINFO clocks(@Pointer(comment="stbir_uint64") LongPtr value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$clocks, SIZE$clocks);
+        MemorySegment s = clocksRaw();
+        s.copyFrom(value.segment());
         return this;
     }
 

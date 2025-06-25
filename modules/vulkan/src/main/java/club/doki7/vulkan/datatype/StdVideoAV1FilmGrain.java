@@ -273,7 +273,8 @@ public record StdVideoAV1FilmGrain(@NotNull MemorySegment segment) implements IS
     }
 
     public StdVideoAV1FilmGrain point_y_value(@Unsigned BytePtr value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$point_y_value, SIZE$point_y_value);
+        MemorySegment s = point_y_valueRaw();
+        s.copyFrom(value.segment());
         return this;
     }
 
@@ -286,7 +287,8 @@ public record StdVideoAV1FilmGrain(@NotNull MemorySegment segment) implements IS
     }
 
     public StdVideoAV1FilmGrain point_y_scaling(@Unsigned BytePtr value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$point_y_scaling, SIZE$point_y_scaling);
+        MemorySegment s = point_y_scalingRaw();
+        s.copyFrom(value.segment());
         return this;
     }
 
@@ -308,7 +310,8 @@ public record StdVideoAV1FilmGrain(@NotNull MemorySegment segment) implements IS
     }
 
     public StdVideoAV1FilmGrain point_cb_value(@Unsigned BytePtr value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$point_cb_value, SIZE$point_cb_value);
+        MemorySegment s = point_cb_valueRaw();
+        s.copyFrom(value.segment());
         return this;
     }
 
@@ -321,7 +324,8 @@ public record StdVideoAV1FilmGrain(@NotNull MemorySegment segment) implements IS
     }
 
     public StdVideoAV1FilmGrain point_cb_scaling(@Unsigned BytePtr value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$point_cb_scaling, SIZE$point_cb_scaling);
+        MemorySegment s = point_cb_scalingRaw();
+        s.copyFrom(value.segment());
         return this;
     }
 
@@ -343,7 +347,8 @@ public record StdVideoAV1FilmGrain(@NotNull MemorySegment segment) implements IS
     }
 
     public StdVideoAV1FilmGrain point_cr_value(@Unsigned BytePtr value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$point_cr_value, SIZE$point_cr_value);
+        MemorySegment s = point_cr_valueRaw();
+        s.copyFrom(value.segment());
         return this;
     }
 
@@ -356,7 +361,8 @@ public record StdVideoAV1FilmGrain(@NotNull MemorySegment segment) implements IS
     }
 
     public StdVideoAV1FilmGrain point_cr_scaling(@Unsigned BytePtr value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$point_cr_scaling, SIZE$point_cr_scaling);
+        MemorySegment s = point_cr_scalingRaw();
+        s.copyFrom(value.segment());
         return this;
     }
 
@@ -369,7 +375,8 @@ public record StdVideoAV1FilmGrain(@NotNull MemorySegment segment) implements IS
     }
 
     public StdVideoAV1FilmGrain ar_coeffs_y_plus_128(BytePtr value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$ar_coeffs_y_plus_128, SIZE$ar_coeffs_y_plus_128);
+        MemorySegment s = ar_coeffs_y_plus_128Raw();
+        s.copyFrom(value.segment());
         return this;
     }
 
@@ -382,7 +389,8 @@ public record StdVideoAV1FilmGrain(@NotNull MemorySegment segment) implements IS
     }
 
     public StdVideoAV1FilmGrain ar_coeffs_cb_plus_128(BytePtr value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$ar_coeffs_cb_plus_128, SIZE$ar_coeffs_cb_plus_128);
+        MemorySegment s = ar_coeffs_cb_plus_128Raw();
+        s.copyFrom(value.segment());
         return this;
     }
 
@@ -395,7 +403,8 @@ public record StdVideoAV1FilmGrain(@NotNull MemorySegment segment) implements IS
     }
 
     public StdVideoAV1FilmGrain ar_coeffs_cr_plus_128(BytePtr value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$ar_coeffs_cr_plus_128, SIZE$ar_coeffs_cr_plus_128);
+        MemorySegment s = ar_coeffs_cr_plus_128Raw();
+        s.copyFrom(value.segment());
         return this;
     }
 

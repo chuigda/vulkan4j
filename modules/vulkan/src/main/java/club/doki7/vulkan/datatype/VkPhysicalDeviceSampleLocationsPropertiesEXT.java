@@ -245,7 +245,8 @@ public record VkPhysicalDeviceSampleLocationsPropertiesEXT(@NotNull MemorySegmen
     }
 
     public VkPhysicalDeviceSampleLocationsPropertiesEXT sampleLocationCoordinateRange(FloatPtr value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$sampleLocationCoordinateRange, SIZE$sampleLocationCoordinateRange);
+        MemorySegment s = sampleLocationCoordinateRangeRaw();
+        s.copyFrom(value.segment());
         return this;
     }
 

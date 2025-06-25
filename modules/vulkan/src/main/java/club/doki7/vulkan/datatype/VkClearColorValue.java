@@ -176,7 +176,8 @@ public record VkClearColorValue(@NotNull MemorySegment segment) implements IVkCl
     }
 
     public VkClearColorValue float32(FloatPtr value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$float32, SIZE$float32);
+        MemorySegment s = float32Raw();
+        s.copyFrom(value.segment());
         return this;
     }
 
@@ -189,7 +190,8 @@ public record VkClearColorValue(@NotNull MemorySegment segment) implements IVkCl
     }
 
     public VkClearColorValue int32(IntPtr value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$int32, SIZE$int32);
+        MemorySegment s = int32Raw();
+        s.copyFrom(value.segment());
         return this;
     }
 
@@ -202,7 +204,8 @@ public record VkClearColorValue(@NotNull MemorySegment segment) implements IVkCl
     }
 
     public VkClearColorValue uint32(@Unsigned IntPtr value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$uint32, SIZE$uint32);
+        MemorySegment s = uint32Raw();
+        s.copyFrom(value.segment());
         return this;
     }
 

@@ -172,7 +172,8 @@ public record NvSciSyncFenceVKREF(@NotNull MemorySegment segment) implements INv
     }
 
     public NvSciSyncFenceVKREF payload(@Unsigned LongPtr value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$payload, SIZE$payload);
+        MemorySegment s = payloadRaw();
+        s.copyFrom(value.segment());
         return this;
     }
 

@@ -210,7 +210,8 @@ public record StdVideoEncodeH265ReferenceListsInfo(@NotNull MemorySegment segmen
     }
 
     public StdVideoEncodeH265ReferenceListsInfo RefPicList0(@Unsigned BytePtr value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$RefPicList0, SIZE$RefPicList0);
+        MemorySegment s = RefPicList0Raw();
+        s.copyFrom(value.segment());
         return this;
     }
 
@@ -223,7 +224,8 @@ public record StdVideoEncodeH265ReferenceListsInfo(@NotNull MemorySegment segmen
     }
 
     public StdVideoEncodeH265ReferenceListsInfo RefPicList1(@Unsigned BytePtr value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$RefPicList1, SIZE$RefPicList1);
+        MemorySegment s = RefPicList1Raw();
+        s.copyFrom(value.segment());
         return this;
     }
 
@@ -236,7 +238,8 @@ public record StdVideoEncodeH265ReferenceListsInfo(@NotNull MemorySegment segmen
     }
 
     public StdVideoEncodeH265ReferenceListsInfo list_entry_l0(@Unsigned BytePtr value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$list_entry_l0, SIZE$list_entry_l0);
+        MemorySegment s = list_entry_l0Raw();
+        s.copyFrom(value.segment());
         return this;
     }
 
@@ -249,7 +252,8 @@ public record StdVideoEncodeH265ReferenceListsInfo(@NotNull MemorySegment segmen
     }
 
     public StdVideoEncodeH265ReferenceListsInfo list_entry_l1(@Unsigned BytePtr value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$list_entry_l1, SIZE$list_entry_l1);
+        MemorySegment s = list_entry_l1Raw();
+        s.copyFrom(value.segment());
         return this;
     }
 

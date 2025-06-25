@@ -176,7 +176,8 @@ public record StdVideoH265SubLayerHrdParameters(@NotNull MemorySegment segment) 
     }
 
     public StdVideoH265SubLayerHrdParameters bit_rate_value_minus1(@Unsigned IntPtr value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$bit_rate_value_minus1, SIZE$bit_rate_value_minus1);
+        MemorySegment s = bit_rate_value_minus1Raw();
+        s.copyFrom(value.segment());
         return this;
     }
 
@@ -189,7 +190,8 @@ public record StdVideoH265SubLayerHrdParameters(@NotNull MemorySegment segment) 
     }
 
     public StdVideoH265SubLayerHrdParameters cpb_size_value_minus1(@Unsigned IntPtr value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$cpb_size_value_minus1, SIZE$cpb_size_value_minus1);
+        MemorySegment s = cpb_size_value_minus1Raw();
+        s.copyFrom(value.segment());
         return this;
     }
 
@@ -202,7 +204,8 @@ public record StdVideoH265SubLayerHrdParameters(@NotNull MemorySegment segment) 
     }
 
     public StdVideoH265SubLayerHrdParameters cpb_size_du_value_minus1(@Unsigned IntPtr value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$cpb_size_du_value_minus1, SIZE$cpb_size_du_value_minus1);
+        MemorySegment s = cpb_size_du_value_minus1Raw();
+        s.copyFrom(value.segment());
         return this;
     }
 
@@ -215,7 +218,8 @@ public record StdVideoH265SubLayerHrdParameters(@NotNull MemorySegment segment) 
     }
 
     public StdVideoH265SubLayerHrdParameters bit_rate_du_value_minus1(@Unsigned IntPtr value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$bit_rate_du_value_minus1, SIZE$bit_rate_du_value_minus1);
+        MemorySegment s = bit_rate_du_value_minus1Raw();
+        s.copyFrom(value.segment());
         return this;
     }
 

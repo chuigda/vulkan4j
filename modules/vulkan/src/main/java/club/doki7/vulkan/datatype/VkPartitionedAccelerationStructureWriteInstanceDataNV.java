@@ -196,7 +196,8 @@ public record VkPartitionedAccelerationStructureWriteInstanceDataNV(@NotNull Mem
     }
 
     public VkPartitionedAccelerationStructureWriteInstanceDataNV explicitAABB(FloatPtr value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$explicitAABB, SIZE$explicitAABB);
+        MemorySegment s = explicitAABBRaw();
+        s.copyFrom(value.segment());
         return this;
     }
 

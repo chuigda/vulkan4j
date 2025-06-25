@@ -229,7 +229,8 @@ public record VkDeviceFaultVendorBinaryHeaderVersionOneEXT(@NotNull MemorySegmen
     }
 
     public VkDeviceFaultVendorBinaryHeaderVersionOneEXT pipelineCacheUUID(@Unsigned BytePtr value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$pipelineCacheUUID, SIZE$pipelineCacheUUID);
+        MemorySegment s = pipelineCacheUUIDRaw();
+        s.copyFrom(value.segment());
         return this;
     }
 

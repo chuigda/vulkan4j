@@ -182,7 +182,8 @@ public record StdVideoH265LongTermRefPicsSps(@NotNull MemorySegment segment) imp
     }
 
     public StdVideoH265LongTermRefPicsSps lt_ref_pic_poc_lsb_sps(@Unsigned IntPtr value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$lt_ref_pic_poc_lsb_sps, SIZE$lt_ref_pic_poc_lsb_sps);
+        MemorySegment s = lt_ref_pic_poc_lsb_spsRaw();
+        s.copyFrom(value.segment());
         return this;
     }
 

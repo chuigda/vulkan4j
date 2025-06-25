@@ -228,7 +228,8 @@ public record VkShaderModuleIdentifierEXT(@NotNull MemorySegment segment) implem
     }
 
     public VkShaderModuleIdentifierEXT identifier(@Unsigned BytePtr value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$identifier, SIZE$identifier);
+        MemorySegment s = identifierRaw();
+        s.copyFrom(value.segment());
         return this;
     }
 

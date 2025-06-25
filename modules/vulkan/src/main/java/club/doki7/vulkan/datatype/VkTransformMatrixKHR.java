@@ -174,7 +174,8 @@ public record VkTransformMatrixKHR(@NotNull MemorySegment segment) implements IV
     }
 
     public VkTransformMatrixKHR matrix(FloatPtr value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$matrix, SIZE$matrix);
+        MemorySegment s = matrixRaw();
+        s.copyFrom(value.segment());
         return this;
     }
 

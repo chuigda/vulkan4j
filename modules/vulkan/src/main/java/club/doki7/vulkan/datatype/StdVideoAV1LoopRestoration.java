@@ -173,7 +173,8 @@ public record StdVideoAV1LoopRestoration(@NotNull MemorySegment segment) impleme
     }
 
     public StdVideoAV1LoopRestoration FrameRestorationType(@EnumType(StdVideoAV1FrameRestorationType.class) IntPtr value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$FrameRestorationType, SIZE$FrameRestorationType);
+        MemorySegment s = FrameRestorationTypeRaw();
+        s.copyFrom(value.segment());
         return this;
     }
 
@@ -186,7 +187,8 @@ public record StdVideoAV1LoopRestoration(@NotNull MemorySegment segment) impleme
     }
 
     public StdVideoAV1LoopRestoration LoopRestorationSize(@Unsigned ShortPtr value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$LoopRestorationSize, SIZE$LoopRestorationSize);
+        MemorySegment s = LoopRestorationSizeRaw();
+        s.copyFrom(value.segment());
         return this;
     }
 

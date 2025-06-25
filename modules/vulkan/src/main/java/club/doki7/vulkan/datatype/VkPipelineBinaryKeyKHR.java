@@ -228,7 +228,8 @@ public record VkPipelineBinaryKeyKHR(@NotNull MemorySegment segment) implements 
     }
 
     public VkPipelineBinaryKeyKHR key(@Unsigned BytePtr value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$key, SIZE$key);
+        MemorySegment s = keyRaw();
+        s.copyFrom(value.segment());
         return this;
     }
 

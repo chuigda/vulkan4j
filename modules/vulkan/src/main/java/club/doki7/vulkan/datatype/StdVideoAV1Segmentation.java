@@ -173,7 +173,8 @@ public record StdVideoAV1Segmentation(@NotNull MemorySegment segment) implements
     }
 
     public StdVideoAV1Segmentation FeatureEnabled(@Unsigned BytePtr value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$FeatureEnabled, SIZE$FeatureEnabled);
+        MemorySegment s = FeatureEnabledRaw();
+        s.copyFrom(value.segment());
         return this;
     }
 
@@ -186,7 +187,8 @@ public record StdVideoAV1Segmentation(@NotNull MemorySegment segment) implements
     }
 
     public StdVideoAV1Segmentation FeatureData(ShortPtr value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$FeatureData, SIZE$FeatureData);
+        MemorySegment s = FeatureDataRaw();
+        s.copyFrom(value.segment());
         return this;
     }
 

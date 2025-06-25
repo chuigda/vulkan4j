@@ -281,7 +281,8 @@ public record StdVideoH265HrdParameters(@NotNull MemorySegment segment) implemen
     }
 
     public StdVideoH265HrdParameters cpb_cnt_minus1(@Unsigned BytePtr value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$cpb_cnt_minus1, SIZE$cpb_cnt_minus1);
+        MemorySegment s = cpb_cnt_minus1Raw();
+        s.copyFrom(value.segment());
         return this;
     }
 
@@ -294,7 +295,8 @@ public record StdVideoH265HrdParameters(@NotNull MemorySegment segment) implemen
     }
 
     public StdVideoH265HrdParameters elemental_duration_in_tc_minus1(@Unsigned ShortPtr value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$elemental_duration_in_tc_minus1, SIZE$elemental_duration_in_tc_minus1);
+        MemorySegment s = elemental_duration_in_tc_minus1Raw();
+        s.copyFrom(value.segment());
         return this;
     }
 

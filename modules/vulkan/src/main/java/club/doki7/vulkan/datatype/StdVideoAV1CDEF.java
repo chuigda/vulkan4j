@@ -195,7 +195,8 @@ public record StdVideoAV1CDEF(@NotNull MemorySegment segment) implements IStdVid
     }
 
     public StdVideoAV1CDEF cdef_y_pri_strength(@Unsigned BytePtr value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$cdef_y_pri_strength, SIZE$cdef_y_pri_strength);
+        MemorySegment s = cdef_y_pri_strengthRaw();
+        s.copyFrom(value.segment());
         return this;
     }
 
@@ -208,7 +209,8 @@ public record StdVideoAV1CDEF(@NotNull MemorySegment segment) implements IStdVid
     }
 
     public StdVideoAV1CDEF cdef_y_sec_strength(@Unsigned BytePtr value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$cdef_y_sec_strength, SIZE$cdef_y_sec_strength);
+        MemorySegment s = cdef_y_sec_strengthRaw();
+        s.copyFrom(value.segment());
         return this;
     }
 
@@ -221,7 +223,8 @@ public record StdVideoAV1CDEF(@NotNull MemorySegment segment) implements IStdVid
     }
 
     public StdVideoAV1CDEF cdef_uv_pri_strength(@Unsigned BytePtr value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$cdef_uv_pri_strength, SIZE$cdef_uv_pri_strength);
+        MemorySegment s = cdef_uv_pri_strengthRaw();
+        s.copyFrom(value.segment());
         return this;
     }
 
@@ -234,7 +237,8 @@ public record StdVideoAV1CDEF(@NotNull MemorySegment segment) implements IStdVid
     }
 
     public StdVideoAV1CDEF cdef_uv_sec_strength(@Unsigned BytePtr value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$cdef_uv_sec_strength, SIZE$cdef_uv_sec_strength);
+        MemorySegment s = cdef_uv_sec_strengthRaw();
+        s.copyFrom(value.segment());
         return this;
     }
 

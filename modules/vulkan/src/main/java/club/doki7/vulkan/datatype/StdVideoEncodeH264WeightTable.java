@@ -214,7 +214,8 @@ public record StdVideoEncodeH264WeightTable(@NotNull MemorySegment segment) impl
     }
 
     public StdVideoEncodeH264WeightTable luma_weight_l0(BytePtr value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$luma_weight_l0, SIZE$luma_weight_l0);
+        MemorySegment s = luma_weight_l0Raw();
+        s.copyFrom(value.segment());
         return this;
     }
 
@@ -227,7 +228,8 @@ public record StdVideoEncodeH264WeightTable(@NotNull MemorySegment segment) impl
     }
 
     public StdVideoEncodeH264WeightTable luma_offset_l0(BytePtr value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$luma_offset_l0, SIZE$luma_offset_l0);
+        MemorySegment s = luma_offset_l0Raw();
+        s.copyFrom(value.segment());
         return this;
     }
 
@@ -240,7 +242,8 @@ public record StdVideoEncodeH264WeightTable(@NotNull MemorySegment segment) impl
     }
 
     public StdVideoEncodeH264WeightTable chroma_weight_l0(BytePtr value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$chroma_weight_l0, SIZE$chroma_weight_l0);
+        MemorySegment s = chroma_weight_l0Raw();
+        s.copyFrom(value.segment());
         return this;
     }
 
@@ -253,7 +256,8 @@ public record StdVideoEncodeH264WeightTable(@NotNull MemorySegment segment) impl
     }
 
     public StdVideoEncodeH264WeightTable chroma_offset_l0(BytePtr value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$chroma_offset_l0, SIZE$chroma_offset_l0);
+        MemorySegment s = chroma_offset_l0Raw();
+        s.copyFrom(value.segment());
         return this;
     }
 
@@ -266,7 +270,8 @@ public record StdVideoEncodeH264WeightTable(@NotNull MemorySegment segment) impl
     }
 
     public StdVideoEncodeH264WeightTable luma_weight_l1(BytePtr value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$luma_weight_l1, SIZE$luma_weight_l1);
+        MemorySegment s = luma_weight_l1Raw();
+        s.copyFrom(value.segment());
         return this;
     }
 
@@ -279,7 +284,8 @@ public record StdVideoEncodeH264WeightTable(@NotNull MemorySegment segment) impl
     }
 
     public StdVideoEncodeH264WeightTable luma_offset_l1(BytePtr value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$luma_offset_l1, SIZE$luma_offset_l1);
+        MemorySegment s = luma_offset_l1Raw();
+        s.copyFrom(value.segment());
         return this;
     }
 
@@ -292,7 +298,8 @@ public record StdVideoEncodeH264WeightTable(@NotNull MemorySegment segment) impl
     }
 
     public StdVideoEncodeH264WeightTable chroma_weight_l1(BytePtr value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$chroma_weight_l1, SIZE$chroma_weight_l1);
+        MemorySegment s = chroma_weight_l1Raw();
+        s.copyFrom(value.segment());
         return this;
     }
 
@@ -305,7 +312,8 @@ public record StdVideoEncodeH264WeightTable(@NotNull MemorySegment segment) impl
     }
 
     public StdVideoEncodeH264WeightTable chroma_offset_l1(BytePtr value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$chroma_offset_l1, SIZE$chroma_offset_l1);
+        MemorySegment s = chroma_offset_l1Raw();
+        s.copyFrom(value.segment());
         return this;
     }
 

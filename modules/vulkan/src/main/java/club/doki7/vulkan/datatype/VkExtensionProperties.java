@@ -175,7 +175,8 @@ public record VkExtensionProperties(@NotNull MemorySegment segment) implements I
     }
 
     public VkExtensionProperties extensionName(BytePtr value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$extensionName, SIZE$extensionName);
+        MemorySegment s = extensionNameRaw();
+        s.copyFrom(value.segment());
         return this;
     }
 

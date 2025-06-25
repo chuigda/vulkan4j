@@ -219,7 +219,8 @@ public record VkPhysicalDeviceMemoryBudgetPropertiesEXT(@NotNull MemorySegment s
     }
 
     public VkPhysicalDeviceMemoryBudgetPropertiesEXT heapBudget(@Pointer(comment="VkDeviceSize") @Unsigned LongPtr value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$heapBudget, SIZE$heapBudget);
+        MemorySegment s = heapBudgetRaw();
+        s.copyFrom(value.segment());
         return this;
     }
 
@@ -232,7 +233,8 @@ public record VkPhysicalDeviceMemoryBudgetPropertiesEXT(@NotNull MemorySegment s
     }
 
     public VkPhysicalDeviceMemoryBudgetPropertiesEXT heapUsage(@Pointer(comment="VkDeviceSize") @Unsigned LongPtr value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$heapUsage, SIZE$heapUsage);
+        MemorySegment s = heapUsageRaw();
+        s.copyFrom(value.segment());
         return this;
     }
 

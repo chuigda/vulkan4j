@@ -193,7 +193,8 @@ public record StdVideoH264ScalingLists(@NotNull MemorySegment segment) implement
     }
 
     public StdVideoH264ScalingLists ScalingList4x4(@Unsigned BytePtr value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$ScalingList4x4, SIZE$ScalingList4x4);
+        MemorySegment s = ScalingList4x4Raw();
+        s.copyFrom(value.segment());
         return this;
     }
 
@@ -206,7 +207,8 @@ public record StdVideoH264ScalingLists(@NotNull MemorySegment segment) implement
     }
 
     public StdVideoH264ScalingLists ScalingList8x8(@Unsigned BytePtr value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$ScalingList8x8, SIZE$ScalingList8x8);
+        MemorySegment s = ScalingList8x8Raw();
+        s.copyFrom(value.segment());
         return this;
     }
 

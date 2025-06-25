@@ -248,7 +248,8 @@ public record VkPerformanceCounterKHR(@NotNull MemorySegment segment) implements
     }
 
     public VkPerformanceCounterKHR uuid(@Unsigned BytePtr value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$uuid, SIZE$uuid);
+        MemorySegment s = uuidRaw();
+        s.copyFrom(value.segment());
         return this;
     }
 

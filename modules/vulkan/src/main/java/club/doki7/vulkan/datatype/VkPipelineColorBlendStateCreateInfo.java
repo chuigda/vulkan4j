@@ -291,7 +291,8 @@ public record VkPipelineColorBlendStateCreateInfo(@NotNull MemorySegment segment
     }
 
     public VkPipelineColorBlendStateCreateInfo blendConstants(FloatPtr value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$blendConstants, SIZE$blendConstants);
+        MemorySegment s = blendConstantsRaw();
+        s.copyFrom(value.segment());
         return this;
     }
 

@@ -177,7 +177,8 @@ public record VkLayerProperties(@NotNull MemorySegment segment) implements IVkLa
     }
 
     public VkLayerProperties layerName(BytePtr value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$layerName, SIZE$layerName);
+        MemorySegment s = layerNameRaw();
+        s.copyFrom(value.segment());
         return this;
     }
 
@@ -208,7 +209,8 @@ public record VkLayerProperties(@NotNull MemorySegment segment) implements IVkLa
     }
 
     public VkLayerProperties description(BytePtr value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$description, SIZE$description);
+        MemorySegment s = descriptionRaw();
+        s.copyFrom(value.segment());
         return this;
     }
 

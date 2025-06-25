@@ -274,7 +274,8 @@ public record StdVideoH265ShortTermRefPicSet(@NotNull MemorySegment segment) imp
     }
 
     public StdVideoH265ShortTermRefPicSet delta_poc_s0_minus1(@Unsigned ShortPtr value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$delta_poc_s0_minus1, SIZE$delta_poc_s0_minus1);
+        MemorySegment s = delta_poc_s0_minus1Raw();
+        s.copyFrom(value.segment());
         return this;
     }
 
@@ -287,7 +288,8 @@ public record StdVideoH265ShortTermRefPicSet(@NotNull MemorySegment segment) imp
     }
 
     public StdVideoH265ShortTermRefPicSet delta_poc_s1_minus1(@Unsigned ShortPtr value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$delta_poc_s1_minus1, SIZE$delta_poc_s1_minus1);
+        MemorySegment s = delta_poc_s1_minus1Raw();
+        s.copyFrom(value.segment());
         return this;
     }
 

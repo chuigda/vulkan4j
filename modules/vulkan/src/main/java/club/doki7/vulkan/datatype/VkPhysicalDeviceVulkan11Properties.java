@@ -232,7 +232,8 @@ public record VkPhysicalDeviceVulkan11Properties(@NotNull MemorySegment segment)
     }
 
     public VkPhysicalDeviceVulkan11Properties deviceUUID(@Unsigned BytePtr value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$deviceUUID, SIZE$deviceUUID);
+        MemorySegment s = deviceUUIDRaw();
+        s.copyFrom(value.segment());
         return this;
     }
 
@@ -245,7 +246,8 @@ public record VkPhysicalDeviceVulkan11Properties(@NotNull MemorySegment segment)
     }
 
     public VkPhysicalDeviceVulkan11Properties driverUUID(@Unsigned BytePtr value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$driverUUID, SIZE$driverUUID);
+        MemorySegment s = driverUUIDRaw();
+        s.copyFrom(value.segment());
         return this;
     }
 
@@ -258,7 +260,8 @@ public record VkPhysicalDeviceVulkan11Properties(@NotNull MemorySegment segment)
     }
 
     public VkPhysicalDeviceVulkan11Properties deviceLUID(@Unsigned BytePtr value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$deviceLUID, SIZE$deviceLUID);
+        MemorySegment s = deviceLUIDRaw();
+        s.copyFrom(value.segment());
         return this;
     }
 

@@ -184,7 +184,8 @@ public record VkPartitionedAccelerationStructureWritePartitionTranslationDataNV(
     }
 
     public VkPartitionedAccelerationStructureWritePartitionTranslationDataNV partitionTranslation(FloatPtr value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$partitionTranslation, SIZE$partitionTranslation);
+        MemorySegment s = partitionTranslationRaw();
+        s.copyFrom(value.segment());
         return this;
     }
 
