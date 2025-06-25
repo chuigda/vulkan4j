@@ -232,7 +232,8 @@ public record XrInstanceProperties(@NotNull MemorySegment segment) implements IX
     }
 
     public XrInstanceProperties runtimeName(BytePtr value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$runtimeName, SIZE$runtimeName);
+        MemorySegment s = runtimeNameRaw();
+        s.copyFrom(value.segment());
         return this;
     }
 

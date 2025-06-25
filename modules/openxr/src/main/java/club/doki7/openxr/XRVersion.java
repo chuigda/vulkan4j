@@ -4,17 +4,16 @@ import club.doki7.ffm.annotation.Unsigned;
 
 /// Utility class for encoding/decoding OpenXR API versions
 public record XRVersion(
-        @Unsigned short major,
-        @Unsigned short minor,
+        @Unsigned int major,
+        @Unsigned int minor,
         @Unsigned int patch
 ) {
-    public static final XRVersion XR_CURRENT_API_VERSION = new XRVersion((short) 1, (short) 1, 49);
-    public static final XRVersion XR_API_VERSION_1_0 = new XRVersion((short) 1, (short) 0, XR_CURRENT_API_VERSION.patch());
-    public static final XRVersion XR_API_VERSION_1_1 = new XRVersion((short) 1, (short) 1, XR_CURRENT_API_VERSION.patch());
+    public static final XRVersion XR_API_VERSION_1_0 = new XRVersion(1, 0, 0);
+    public static final XRVersion XR_API_VERSION_1_1 = new XRVersion(1, 1, 0);
 
     public static XRVersion decode(@Unsigned long version) {
-        var major = (short) ((version >> 48) & 0xFFFFL);
-        var minor = (short) ((version >> 32) & 0xFFFFL);
+        var major = (int) ((version >> 48) & 0xFFFFL);
+        var minor = (int) ((version >> 32) & 0xFFFFL);
         var patch = (int) (version & 0xFFFFFFFFL);
 
         return new XRVersion(major, minor, patch);

@@ -178,7 +178,8 @@ public record MLCoordinateFrameUID(@NotNull MemorySegment segment) implements IM
     }
 
     public MLCoordinateFrameUID data(@Unsigned LongPtr value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$data, SIZE$data);
+        MemorySegment s = dataRaw();
+        s.copyFrom(value.segment());
         return this;
     }
 

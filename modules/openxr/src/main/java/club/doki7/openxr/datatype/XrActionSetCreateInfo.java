@@ -224,7 +224,8 @@ public record XrActionSetCreateInfo(@NotNull MemorySegment segment) implements I
     }
 
     public XrActionSetCreateInfo actionSetName(BytePtr value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$actionSetName, SIZE$actionSetName);
+        MemorySegment s = actionSetNameRaw();
+        s.copyFrom(value.segment());
         return this;
     }
 
@@ -237,7 +238,8 @@ public record XrActionSetCreateInfo(@NotNull MemorySegment segment) implements I
     }
 
     public XrActionSetCreateInfo localizedActionSetName(BytePtr value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$localizedActionSetName, SIZE$localizedActionSetName);
+        MemorySegment s = localizedActionSetNameRaw();
+        s.copyFrom(value.segment());
         return this;
     }
 

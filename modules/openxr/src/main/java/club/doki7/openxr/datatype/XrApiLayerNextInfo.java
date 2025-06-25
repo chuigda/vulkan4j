@@ -211,7 +211,8 @@ public record XrApiLayerNextInfo(@NotNull MemorySegment segment) implements IXrA
     }
 
     public XrApiLayerNextInfo layerName(BytePtr value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$layerName, SIZE$layerName);
+        MemorySegment s = layerNameRaw();
+        s.copyFrom(value.segment());
         return this;
     }
 

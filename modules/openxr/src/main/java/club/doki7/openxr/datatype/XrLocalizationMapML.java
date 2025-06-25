@@ -224,7 +224,8 @@ public record XrLocalizationMapML(@NotNull MemorySegment segment) implements IXr
     }
 
     public XrLocalizationMapML name(BytePtr value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$name, SIZE$name);
+        MemorySegment s = nameRaw();
+        s.copyFrom(value.segment());
         return this;
     }
 

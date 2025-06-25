@@ -178,7 +178,8 @@ public record XrSpatialAnchorPersistenceNameMSFT(@NotNull MemorySegment segment)
     }
 
     public XrSpatialAnchorPersistenceNameMSFT name(BytePtr value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$name, SIZE$name);
+        MemorySegment s = nameRaw();
+        s.copyFrom(value.segment());
         return this;
     }
 

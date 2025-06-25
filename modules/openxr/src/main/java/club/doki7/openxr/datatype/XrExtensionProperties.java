@@ -223,7 +223,8 @@ public record XrExtensionProperties(@NotNull MemorySegment segment) implements I
     }
 
     public XrExtensionProperties extensionName(BytePtr value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$extensionName, SIZE$extensionName);
+        MemorySegment s = extensionNameRaw();
+        s.copyFrom(value.segment());
         return this;
     }
 

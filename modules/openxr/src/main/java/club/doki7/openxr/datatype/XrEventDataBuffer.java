@@ -222,7 +222,8 @@ public record XrEventDataBuffer(@NotNull MemorySegment segment) implements IXrEv
     }
 
     public XrEventDataBuffer varying(@Unsigned BytePtr value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$varying, SIZE$varying);
+        MemorySegment s = varyingRaw();
+        s.copyFrom(value.segment());
         return this;
     }
 

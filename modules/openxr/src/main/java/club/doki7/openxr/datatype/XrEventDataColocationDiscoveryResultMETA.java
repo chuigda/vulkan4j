@@ -257,7 +257,8 @@ public record XrEventDataColocationDiscoveryResultMETA(@NotNull MemorySegment se
     }
 
     public XrEventDataColocationDiscoveryResultMETA buffer(@Unsigned BytePtr value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$buffer, SIZE$buffer);
+        MemorySegment s = bufferRaw();
+        s.copyFrom(value.segment());
         return this;
     }
 

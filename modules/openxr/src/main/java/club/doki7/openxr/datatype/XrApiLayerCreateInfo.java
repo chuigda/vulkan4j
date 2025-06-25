@@ -224,7 +224,8 @@ public record XrApiLayerCreateInfo(@NotNull MemorySegment segment) implements IX
     }
 
     public XrApiLayerCreateInfo settings_file_location(BytePtr value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$settings_file_location, SIZE$settings_file_location);
+        MemorySegment s = settings_file_locationRaw();
+        s.copyFrom(value.segment());
         return this;
     }
 

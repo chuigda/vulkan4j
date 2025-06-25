@@ -178,7 +178,8 @@ public record XrRenderModelAssetNodePropertiesEXT(@NotNull MemorySegment segment
     }
 
     public XrRenderModelAssetNodePropertiesEXT uniqueName(BytePtr value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$uniqueName, SIZE$uniqueName);
+        MemorySegment s = uniqueNameRaw();
+        s.copyFrom(value.segment());
         return this;
     }
 

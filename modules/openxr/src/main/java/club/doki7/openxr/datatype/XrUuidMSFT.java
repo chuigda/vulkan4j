@@ -178,7 +178,8 @@ public record XrUuidMSFT(@NotNull MemorySegment segment) implements IXrUuidMSFT 
     }
 
     public XrUuidMSFT bytes(@Unsigned BytePtr value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$bytes, SIZE$bytes);
+        MemorySegment s = bytesRaw();
+        s.copyFrom(value.segment());
         return this;
     }
 

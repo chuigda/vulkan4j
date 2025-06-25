@@ -236,7 +236,8 @@ public record XrEventDataVirtualKeyboardCommitTextMETA(@NotNull MemorySegment se
     }
 
     public XrEventDataVirtualKeyboardCommitTextMETA text(BytePtr value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$text, SIZE$text);
+        MemorySegment s = textRaw();
+        s.copyFrom(value.segment());
         return this;
     }
 

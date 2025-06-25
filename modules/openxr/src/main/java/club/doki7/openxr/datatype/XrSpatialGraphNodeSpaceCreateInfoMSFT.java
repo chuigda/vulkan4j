@@ -233,7 +233,8 @@ public record XrSpatialGraphNodeSpaceCreateInfoMSFT(@NotNull MemorySegment segme
     }
 
     public XrSpatialGraphNodeSpaceCreateInfoMSFT nodeId(@Unsigned BytePtr value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$nodeId, SIZE$nodeId);
+        MemorySegment s = nodeIdRaw();
+        s.copyFrom(value.segment());
         return this;
     }
 

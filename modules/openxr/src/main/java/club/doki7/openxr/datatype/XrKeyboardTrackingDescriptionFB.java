@@ -213,7 +213,8 @@ public record XrKeyboardTrackingDescriptionFB(@NotNull MemorySegment segment) im
     }
 
     public XrKeyboardTrackingDescriptionFB name(BytePtr value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$name, SIZE$name);
+        MemorySegment s = nameRaw();
+        s.copyFrom(value.segment());
         return this;
     }
 

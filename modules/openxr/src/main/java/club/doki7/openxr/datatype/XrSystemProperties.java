@@ -244,7 +244,8 @@ public record XrSystemProperties(@NotNull MemorySegment segment) implements IXrS
     }
 
     public XrSystemProperties systemName(BytePtr value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$systemName, SIZE$systemName);
+        MemorySegment s = systemNameRaw();
+        s.copyFrom(value.segment());
         return this;
     }
 

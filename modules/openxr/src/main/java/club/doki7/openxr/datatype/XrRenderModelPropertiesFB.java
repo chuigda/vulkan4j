@@ -235,7 +235,8 @@ public record XrRenderModelPropertiesFB(@NotNull MemorySegment segment) implemen
     }
 
     public XrRenderModelPropertiesFB modelName(BytePtr value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$modelName, SIZE$modelName);
+        MemorySegment s = modelNameRaw();
+        s.copyFrom(value.segment());
         return this;
     }
 

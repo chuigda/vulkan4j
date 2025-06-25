@@ -182,7 +182,8 @@ public record XrApplicationInfo(@NotNull MemorySegment segment) implements IXrAp
     }
 
     public XrApplicationInfo applicationName(BytePtr value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$applicationName, SIZE$applicationName);
+        MemorySegment s = applicationNameRaw();
+        s.copyFrom(value.segment());
         return this;
     }
 
@@ -204,7 +205,8 @@ public record XrApplicationInfo(@NotNull MemorySegment segment) implements IXrAp
     }
 
     public XrApplicationInfo engineName(BytePtr value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$engineName, SIZE$engineName);
+        MemorySegment s = engineNameRaw();
+        s.copyFrom(value.segment());
         return this;
     }
 

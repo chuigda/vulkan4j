@@ -223,7 +223,8 @@ public record XrControllerModelNodePropertiesMSFT(@NotNull MemorySegment segment
     }
 
     public XrControllerModelNodePropertiesMSFT parentNodeName(BytePtr value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$parentNodeName, SIZE$parentNodeName);
+        MemorySegment s = parentNodeNameRaw();
+        s.copyFrom(value.segment());
         return this;
     }
 
@@ -236,7 +237,8 @@ public record XrControllerModelNodePropertiesMSFT(@NotNull MemorySegment segment
     }
 
     public XrControllerModelNodePropertiesMSFT nodeName(BytePtr value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$nodeName, SIZE$nodeName);
+        MemorySegment s = nodeNameRaw();
+        s.copyFrom(value.segment());
         return this;
     }
 

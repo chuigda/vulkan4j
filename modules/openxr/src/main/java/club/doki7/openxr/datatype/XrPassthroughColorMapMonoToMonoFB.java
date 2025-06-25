@@ -222,7 +222,8 @@ public record XrPassthroughColorMapMonoToMonoFB(@NotNull MemorySegment segment) 
     }
 
     public XrPassthroughColorMapMonoToMonoFB textureColorMap(@Unsigned BytePtr value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$textureColorMap, SIZE$textureColorMap);
+        MemorySegment s = textureColorMapRaw();
+        s.copyFrom(value.segment());
         return this;
     }
 

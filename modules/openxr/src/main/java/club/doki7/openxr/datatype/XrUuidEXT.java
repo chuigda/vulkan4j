@@ -178,7 +178,8 @@ public record XrUuidEXT(@NotNull MemorySegment segment) implements IXrUuidEXT {
     }
 
     public XrUuidEXT data(@Unsigned BytePtr value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$data, SIZE$data);
+        MemorySegment s = dataRaw();
+        s.copyFrom(value.segment());
         return this;
     }
 

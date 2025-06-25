@@ -226,7 +226,8 @@ public record XrActionCreateInfo(@NotNull MemorySegment segment) implements IXrA
     }
 
     public XrActionCreateInfo actionName(BytePtr value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$actionName, SIZE$actionName);
+        MemorySegment s = actionNameRaw();
+        s.copyFrom(value.segment());
         return this;
     }
 
@@ -283,7 +284,8 @@ public record XrActionCreateInfo(@NotNull MemorySegment segment) implements IXrA
     }
 
     public XrActionCreateInfo localizedActionName(BytePtr value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$localizedActionName, SIZE$localizedActionName);
+        MemorySegment s = localizedActionNameRaw();
+        s.copyFrom(value.segment());
         return this;
     }
 
