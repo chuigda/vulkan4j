@@ -20,14 +20,14 @@ internal fun Registry<OpenXRRegistryExt>.renameEntities() {
         }
     }
 
-    commands.forEach { (_, cmd) ->
-        cmd.rename { removePrefix("xr"); ensureLowerCamelCase() }
-        putEntityIfNameReplaced(cmd)
+    commands.values.forEach {
+        it.rename { removePrefix("xr").ensureLowerCamelCase() }
+        putEntityIfNameReplaced(it)
     }
 
-    constants.forEach { (_, con) ->
-        con.rename { removePrefix("XR_") }
-        putEntityIfNameReplaced(con)
+    constants.values.forEach {
+        it.rename { removePrefix("XR_") }
+        putEntityIfNameReplaced(it)
     }
 
     for (enum in enumerations.values) {

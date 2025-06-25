@@ -407,6 +407,9 @@ private fun extractParam(e: Element): Param {
     val optional by e.attrs
 
     return Param(name, type, len?.intern(), null, optional == "true").apply {
+        if (len == null && type is PointerType) {
+            type.pointerToOne = true
+        }
         setExt(XrParamMetadata(externsync))
     }
 }

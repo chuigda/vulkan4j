@@ -818,9 +818,9 @@ public final class XR implements XRConstants {
     // region command wrappers
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrNegotiateLoaderRuntimeInterface.html"><code>xrNegotiateLoaderRuntimeInterface</code></a>
-    public @EnumType(XrResult.class) int xrNegotiateLoaderRuntimeInterface(
-        @Pointer IXrNegotiateLoaderInfo loaderInfo,
-        @Pointer IXrNegotiateRuntimeRequest runtimeRequest
+    public @EnumType(XrResult.class) int negotiateLoaderRuntimeInterface(
+        @Pointer XrNegotiateLoaderInfo loaderInfo,
+        @Pointer XrNegotiateRuntimeRequest runtimeRequest
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$xrNegotiateLoaderRuntimeInterface);
         try {
@@ -834,10 +834,10 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrNegotiateLoaderApiLayerInterface.html"><code>xrNegotiateLoaderApiLayerInterface</code></a>
-    public @EnumType(XrResult.class) int xrNegotiateLoaderApiLayerInterface(
-        @Pointer IXrNegotiateLoaderInfo loaderInfo,
+    public @EnumType(XrResult.class) int negotiateLoaderApiLayerInterface(
+        @Pointer XrNegotiateLoaderInfo loaderInfo,
         BytePtr layerName,
-        @Pointer IXrNegotiateApiLayerRequest apiLayerRequest
+        @Pointer XrNegotiateApiLayerRequest apiLayerRequest
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$xrNegotiateLoaderApiLayerInterface);
         try {
@@ -852,9 +852,9 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrCreateApiLayerInstance.html"><code>xrCreateApiLayerInstance</code></a>
-    public @EnumType(XrResult.class) int xrCreateApiLayerInstance(
-        @Pointer IXrInstanceCreateInfo info,
-        @Pointer IXrApiLayerCreateInfo layerInfo,
+    public @EnumType(XrResult.class) int createApiLayerInstance(
+        @Pointer XrInstanceCreateInfo info,
+        @Pointer XrApiLayerCreateInfo layerInfo,
         @Pointer XrInstance.Ptr instance
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$xrCreateApiLayerInstance);
@@ -870,7 +870,7 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrGetInstanceProcAddr.html"><code>xrGetInstanceProcAddr</code></a>
-    public @EnumType(XrResult.class) int xrGetInstanceProcAddr(
+    public @EnumType(XrResult.class) int getInstanceProcAddr(
         @Nullable XrInstance instance,
         BytePtr name,
         PointerPtr function
@@ -888,7 +888,7 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrEnumerateApiLayerProperties.html"><code>xrEnumerateApiLayerProperties</code></a>
-    public @EnumType(XrResult.class) int xrEnumerateApiLayerProperties(
+    public @EnumType(XrResult.class) int enumerateApiLayerProperties(
         @Unsigned int propertyCapacityInput,
         @Unsigned IntPtr propertyCountOutput,
         @Nullable @Pointer IXrApiLayerProperties properties
@@ -906,7 +906,7 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrEnumerateInstanceExtensionProperties.html"><code>xrEnumerateInstanceExtensionProperties</code></a>
-    public @EnumType(XrResult.class) int xrEnumerateInstanceExtensionProperties(
+    public @EnumType(XrResult.class) int enumerateInstanceExtensionProperties(
         @Nullable BytePtr layerName,
         @Unsigned int propertyCapacityInput,
         @Unsigned IntPtr propertyCountOutput,
@@ -926,8 +926,8 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrCreateInstance.html"><code>xrCreateInstance</code></a>
-    public @EnumType(XrResult.class) int xrCreateInstance(
-        @Pointer IXrInstanceCreateInfo createInfo,
+    public @EnumType(XrResult.class) int createInstance(
+        @Pointer XrInstanceCreateInfo createInfo,
         @Pointer XrInstance.Ptr instance
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$xrCreateInstance);
@@ -942,7 +942,7 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrDestroyInstance.html"><code>xrDestroyInstance</code></a>
-    public @EnumType(XrResult.class) int xrDestroyInstance(
+    public @EnumType(XrResult.class) int destroyInstance(
         XrInstance instance
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$xrDestroyInstance);
@@ -956,7 +956,7 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrResultToString.html"><code>xrResultToString</code></a>
-    public @EnumType(XrResult.class) int xrResultToString(
+    public @EnumType(XrResult.class) int resultToString(
         XrInstance instance,
         @EnumType(XrResult.class) int value,
         byte buffer
@@ -974,7 +974,7 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrStructureTypeToString.html"><code>xrStructureTypeToString</code></a>
-    public @EnumType(XrResult.class) int xrStructureTypeToString(
+    public @EnumType(XrResult.class) int structureTypeToString(
         XrInstance instance,
         @EnumType(XrStructureType.class) int value,
         byte buffer
@@ -992,7 +992,7 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrStructureTypeToString2KHR.html"><code>xrStructureTypeToString2KHR</code></a>
-    public @EnumType(XrResult.class) int xrStructureTypeToString2KHR(
+    public @EnumType(XrResult.class) int structureTypeToString2KHR(
         XrInstance instance,
         @EnumType(XrStructureType.class) int value,
         byte buffer
@@ -1010,9 +1010,9 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrGetInstanceProperties.html"><code>xrGetInstanceProperties</code></a>
-    public @EnumType(XrResult.class) int xrGetInstanceProperties(
+    public @EnumType(XrResult.class) int getInstanceProperties(
         XrInstance instance,
-        @Pointer IXrInstanceProperties instanceProperties
+        @Pointer XrInstanceProperties instanceProperties
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$xrGetInstanceProperties);
         try {
@@ -1026,9 +1026,9 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrGetSystem.html"><code>xrGetSystem</code></a>
-    public @EnumType(XrResult.class) int xrGetSystem(
+    public @EnumType(XrResult.class) int getSystem(
         XrInstance instance,
-        @Pointer IXrSystemGetInfo getInfo,
+        @Pointer XrSystemGetInfo getInfo,
         @Pointer(comment="XrSystemId") @Unsigned LongPtr systemId
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$xrGetSystem);
@@ -1044,10 +1044,10 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrGetSystemProperties.html"><code>xrGetSystemProperties</code></a>
-    public @EnumType(XrResult.class) int xrGetSystemProperties(
+    public @EnumType(XrResult.class) int getSystemProperties(
         XrInstance instance,
         @NativeType("XrSystemId") @Unsigned long systemId,
-        @Pointer IXrSystemProperties properties
+        @Pointer XrSystemProperties properties
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$xrGetSystemProperties);
         try {
@@ -1062,9 +1062,9 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrCreateSession.html"><code>xrCreateSession</code></a>
-    public @EnumType(XrResult.class) int xrCreateSession(
+    public @EnumType(XrResult.class) int createSession(
         XrInstance instance,
-        @Pointer IXrSessionCreateInfo createInfo,
+        @Pointer XrSessionCreateInfo createInfo,
         @Pointer XrSession.Ptr session
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$xrCreateSession);
@@ -1080,7 +1080,7 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrDestroySession.html"><code>xrDestroySession</code></a>
-    public @EnumType(XrResult.class) int xrDestroySession(
+    public @EnumType(XrResult.class) int destroySession(
         XrSession session
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$xrDestroySession);
@@ -1094,7 +1094,7 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrDestroySpace.html"><code>xrDestroySpace</code></a>
-    public @EnumType(XrResult.class) int xrDestroySpace(
+    public @EnumType(XrResult.class) int destroySpace(
         XrSpace space
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$xrDestroySpace);
@@ -1108,7 +1108,7 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrEnumerateSwapchainFormats.html"><code>xrEnumerateSwapchainFormats</code></a>
-    public @EnumType(XrResult.class) int xrEnumerateSwapchainFormats(
+    public @EnumType(XrResult.class) int enumerateSwapchainFormats(
         XrSession session,
         @Unsigned int formatCapacityInput,
         @Unsigned IntPtr formatCountOutput,
@@ -1128,9 +1128,9 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrCreateSwapchain.html"><code>xrCreateSwapchain</code></a>
-    public @EnumType(XrResult.class) int xrCreateSwapchain(
+    public @EnumType(XrResult.class) int createSwapchain(
         XrSession session,
-        @Pointer IXrSwapchainCreateInfo createInfo,
+        @Pointer XrSwapchainCreateInfo createInfo,
         @Pointer XrSwapchain.Ptr swapchain
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$xrCreateSwapchain);
@@ -1146,7 +1146,7 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrDestroySwapchain.html"><code>xrDestroySwapchain</code></a>
-    public @EnumType(XrResult.class) int xrDestroySwapchain(
+    public @EnumType(XrResult.class) int destroySwapchain(
         XrSwapchain swapchain
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$xrDestroySwapchain);
@@ -1160,7 +1160,7 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrEnumerateSwapchainImages.html"><code>xrEnumerateSwapchainImages</code></a>
-    public @EnumType(XrResult.class) int xrEnumerateSwapchainImages(
+    public @EnumType(XrResult.class) int enumerateSwapchainImages(
         XrSwapchain swapchain,
         @Unsigned int imageCapacityInput,
         @Unsigned IntPtr imageCountOutput,
@@ -1180,9 +1180,9 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrAcquireSwapchainImage.html"><code>xrAcquireSwapchainImage</code></a>
-    public @EnumType(XrResult.class) int xrAcquireSwapchainImage(
+    public @EnumType(XrResult.class) int acquireSwapchainImage(
         XrSwapchain swapchain,
-        @Nullable @Pointer IXrSwapchainImageAcquireInfo acquireInfo,
+        @Nullable @Pointer XrSwapchainImageAcquireInfo acquireInfo,
         @Unsigned IntPtr index
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$xrAcquireSwapchainImage);
@@ -1198,9 +1198,9 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrWaitSwapchainImage.html"><code>xrWaitSwapchainImage</code></a>
-    public @EnumType(XrResult.class) int xrWaitSwapchainImage(
+    public @EnumType(XrResult.class) int waitSwapchainImage(
         XrSwapchain swapchain,
-        @Pointer IXrSwapchainImageWaitInfo waitInfo
+        @Pointer XrSwapchainImageWaitInfo waitInfo
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$xrWaitSwapchainImage);
         try {
@@ -1214,9 +1214,9 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrReleaseSwapchainImage.html"><code>xrReleaseSwapchainImage</code></a>
-    public @EnumType(XrResult.class) int xrReleaseSwapchainImage(
+    public @EnumType(XrResult.class) int releaseSwapchainImage(
         XrSwapchain swapchain,
-        @Nullable @Pointer IXrSwapchainImageReleaseInfo releaseInfo
+        @Nullable @Pointer XrSwapchainImageReleaseInfo releaseInfo
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$xrReleaseSwapchainImage);
         try {
@@ -1230,9 +1230,9 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrBeginSession.html"><code>xrBeginSession</code></a>
-    public @EnumType(XrResult.class) int xrBeginSession(
+    public @EnumType(XrResult.class) int beginSession(
         XrSession session,
-        @Pointer IXrSessionBeginInfo beginInfo
+        @Pointer XrSessionBeginInfo beginInfo
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$xrBeginSession);
         try {
@@ -1246,7 +1246,7 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrEndSession.html"><code>xrEndSession</code></a>
-    public @EnumType(XrResult.class) int xrEndSession(
+    public @EnumType(XrResult.class) int endSession(
         XrSession session
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$xrEndSession);
@@ -1260,7 +1260,7 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrRequestExitSession.html"><code>xrRequestExitSession</code></a>
-    public @EnumType(XrResult.class) int xrRequestExitSession(
+    public @EnumType(XrResult.class) int requestExitSession(
         XrSession session
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$xrRequestExitSession);
@@ -1274,7 +1274,7 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrEnumerateReferenceSpaces.html"><code>xrEnumerateReferenceSpaces</code></a>
-    public @EnumType(XrResult.class) int xrEnumerateReferenceSpaces(
+    public @EnumType(XrResult.class) int enumerateReferenceSpaces(
         XrSession session,
         @Unsigned int spaceCapacityInput,
         @Unsigned IntPtr spaceCountOutput,
@@ -1294,9 +1294,9 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrCreateReferenceSpace.html"><code>xrCreateReferenceSpace</code></a>
-    public @EnumType(XrResult.class) int xrCreateReferenceSpace(
+    public @EnumType(XrResult.class) int createReferenceSpace(
         XrSession session,
-        @Pointer IXrReferenceSpaceCreateInfo createInfo,
+        @Pointer XrReferenceSpaceCreateInfo createInfo,
         @Pointer XrSpace.Ptr space
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$xrCreateReferenceSpace);
@@ -1312,9 +1312,9 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrCreateActionSpace.html"><code>xrCreateActionSpace</code></a>
-    public @EnumType(XrResult.class) int xrCreateActionSpace(
+    public @EnumType(XrResult.class) int createActionSpace(
         XrSession session,
-        @Pointer IXrActionSpaceCreateInfo createInfo,
+        @Pointer XrActionSpaceCreateInfo createInfo,
         @Pointer XrSpace.Ptr space
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$xrCreateActionSpace);
@@ -1330,11 +1330,11 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrLocateSpace.html"><code>xrLocateSpace</code></a>
-    public @EnumType(XrResult.class) int xrLocateSpace(
+    public @EnumType(XrResult.class) int locateSpace(
         XrSpace space,
         XrSpace baseSpace,
         @NativeType("XrTime") long time,
-        @Pointer IXrSpaceLocation location
+        @Pointer XrSpaceLocation location
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$xrLocateSpace);
         try {
@@ -1350,7 +1350,7 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrEnumerateViewConfigurations.html"><code>xrEnumerateViewConfigurations</code></a>
-    public @EnumType(XrResult.class) int xrEnumerateViewConfigurations(
+    public @EnumType(XrResult.class) int enumerateViewConfigurations(
         XrInstance instance,
         @NativeType("XrSystemId") @Unsigned long systemId,
         @Unsigned int viewConfigurationTypeCapacityInput,
@@ -1372,7 +1372,7 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrEnumerateEnvironmentBlendModes.html"><code>xrEnumerateEnvironmentBlendModes</code></a>
-    public @EnumType(XrResult.class) int xrEnumerateEnvironmentBlendModes(
+    public @EnumType(XrResult.class) int enumerateEnvironmentBlendModes(
         XrInstance instance,
         @NativeType("XrSystemId") @Unsigned long systemId,
         @EnumType(XrViewConfigurationType.class) int viewConfigurationType,
@@ -1396,11 +1396,11 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrGetViewConfigurationProperties.html"><code>xrGetViewConfigurationProperties</code></a>
-    public @EnumType(XrResult.class) int xrGetViewConfigurationProperties(
+    public @EnumType(XrResult.class) int getViewConfigurationProperties(
         XrInstance instance,
         @NativeType("XrSystemId") @Unsigned long systemId,
         @EnumType(XrViewConfigurationType.class) int viewConfigurationType,
-        @Pointer IXrViewConfigurationProperties configurationProperties
+        @Pointer XrViewConfigurationProperties configurationProperties
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$xrGetViewConfigurationProperties);
         try {
@@ -1416,7 +1416,7 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrEnumerateViewConfigurationViews.html"><code>xrEnumerateViewConfigurationViews</code></a>
-    public @EnumType(XrResult.class) int xrEnumerateViewConfigurationViews(
+    public @EnumType(XrResult.class) int enumerateViewConfigurationViews(
         XrInstance instance,
         @NativeType("XrSystemId") @Unsigned long systemId,
         @EnumType(XrViewConfigurationType.class) int viewConfigurationType,
@@ -1440,9 +1440,9 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrBeginFrame.html"><code>xrBeginFrame</code></a>
-    public @EnumType(XrResult.class) int xrBeginFrame(
+    public @EnumType(XrResult.class) int beginFrame(
         XrSession session,
-        @Nullable @Pointer IXrFrameBeginInfo frameBeginInfo
+        @Nullable @Pointer XrFrameBeginInfo frameBeginInfo
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$xrBeginFrame);
         try {
@@ -1456,10 +1456,10 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrLocateViews.html"><code>xrLocateViews</code></a>
-    public @EnumType(XrResult.class) int xrLocateViews(
+    public @EnumType(XrResult.class) int locateViews(
         XrSession session,
-        @Pointer IXrViewLocateInfo viewLocateInfo,
-        @Pointer IXrViewState viewState,
+        @Pointer XrViewLocateInfo viewLocateInfo,
+        @Pointer XrViewState viewState,
         @Unsigned int viewCapacityInput,
         @Unsigned IntPtr viewCountOutput,
         @Nullable @Pointer IXrView views
@@ -1480,9 +1480,9 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrEndFrame.html"><code>xrEndFrame</code></a>
-    public @EnumType(XrResult.class) int xrEndFrame(
+    public @EnumType(XrResult.class) int endFrame(
         XrSession session,
-        @Pointer IXrFrameEndInfo frameEndInfo
+        @Pointer XrFrameEndInfo frameEndInfo
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$xrEndFrame);
         try {
@@ -1496,10 +1496,10 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrWaitFrame.html"><code>xrWaitFrame</code></a>
-    public @EnumType(XrResult.class) int xrWaitFrame(
+    public @EnumType(XrResult.class) int waitFrame(
         XrSession session,
-        @Nullable @Pointer IXrFrameWaitInfo frameWaitInfo,
-        @Pointer IXrFrameState frameState
+        @Nullable @Pointer XrFrameWaitInfo frameWaitInfo,
+        @Pointer XrFrameState frameState
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$xrWaitFrame);
         try {
@@ -1514,10 +1514,10 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrApplyHapticFeedback.html"><code>xrApplyHapticFeedback</code></a>
-    public @EnumType(XrResult.class) int xrApplyHapticFeedback(
+    public @EnumType(XrResult.class) int applyHapticFeedback(
         XrSession session,
-        @Pointer IXrHapticActionInfo hapticActionInfo,
-        @Pointer IXrHapticBaseHeader hapticFeedback
+        @Pointer XrHapticActionInfo hapticActionInfo,
+        @Pointer XrHapticBaseHeader hapticFeedback
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$xrApplyHapticFeedback);
         try {
@@ -1532,9 +1532,9 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrStopHapticFeedback.html"><code>xrStopHapticFeedback</code></a>
-    public @EnumType(XrResult.class) int xrStopHapticFeedback(
+    public @EnumType(XrResult.class) int stopHapticFeedback(
         XrSession session,
-        @Pointer IXrHapticActionInfo hapticActionInfo
+        @Pointer XrHapticActionInfo hapticActionInfo
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$xrStopHapticFeedback);
         try {
@@ -1548,9 +1548,9 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrPollEvent.html"><code>xrPollEvent</code></a>
-    public @EnumType(XrResult.class) int xrPollEvent(
+    public @EnumType(XrResult.class) int pollEvent(
         XrInstance instance,
-        @Pointer IXrEventDataBuffer eventData
+        @Pointer XrEventDataBuffer eventData
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$xrPollEvent);
         try {
@@ -1564,7 +1564,7 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrStringToPath.html"><code>xrStringToPath</code></a>
-    public @EnumType(XrResult.class) int xrStringToPath(
+    public @EnumType(XrResult.class) int stringToPath(
         XrInstance instance,
         BytePtr pathString,
         @Pointer(comment="XrPath") @Unsigned LongPtr path
@@ -1582,7 +1582,7 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrPathToString.html"><code>xrPathToString</code></a>
-    public @EnumType(XrResult.class) int xrPathToString(
+    public @EnumType(XrResult.class) int pathToString(
         XrInstance instance,
         @NativeType("XrPath") @Unsigned long path,
         @Unsigned int bufferCapacityInput,
@@ -1604,10 +1604,10 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrGetReferenceSpaceBoundsRect.html"><code>xrGetReferenceSpaceBoundsRect</code></a>
-    public @EnumType(XrResult.class) int xrGetReferenceSpaceBoundsRect(
+    public @EnumType(XrResult.class) int getReferenceSpaceBoundsRect(
         XrSession session,
         @EnumType(XrReferenceSpaceType.class) int referenceSpaceType,
-        @Pointer IXrExtent2Df bounds
+        @Pointer XrExtent2Df bounds
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$xrGetReferenceSpaceBoundsRect);
         try {
@@ -1622,7 +1622,7 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrSetAndroidApplicationThreadKHR.html"><code>xrSetAndroidApplicationThreadKHR</code></a>
-    public @EnumType(XrResult.class) int xrSetAndroidApplicationThreadKHR(
+    public @EnumType(XrResult.class) int setAndroidApplicationThreadKHR(
         XrSession session,
         @EnumType(XrAndroidThreadTypeKHR.class) int threadType,
         @Unsigned int threadId
@@ -1640,9 +1640,9 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrCreateSwapchainAndroidSurfaceKHR.html"><code>xrCreateSwapchainAndroidSurfaceKHR</code></a>
-    public @EnumType(XrResult.class) int xrCreateSwapchainAndroidSurfaceKHR(
+    public @EnumType(XrResult.class) int createSwapchainAndroidSurfaceKHR(
         XrSession session,
-        @Pointer IXrSwapchainCreateInfo info,
+        @Pointer XrSwapchainCreateInfo info,
         @Pointer XrSwapchain.Ptr swapchain,
         PointerPtr surface
     ) {
@@ -1660,10 +1660,10 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrGetActionStateBoolean.html"><code>xrGetActionStateBoolean</code></a>
-    public @EnumType(XrResult.class) int xrGetActionStateBoolean(
+    public @EnumType(XrResult.class) int getActionStateBoolean(
         XrSession session,
-        @Pointer IXrActionStateGetInfo getInfo,
-        @Pointer IXrActionStateBoolean state
+        @Pointer XrActionStateGetInfo getInfo,
+        @Pointer XrActionStateBoolean state
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$xrGetActionStateBoolean);
         try {
@@ -1678,10 +1678,10 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrGetActionStateFloat.html"><code>xrGetActionStateFloat</code></a>
-    public @EnumType(XrResult.class) int xrGetActionStateFloat(
+    public @EnumType(XrResult.class) int getActionStateFloat(
         XrSession session,
-        @Pointer IXrActionStateGetInfo getInfo,
-        @Pointer IXrActionStateFloat state
+        @Pointer XrActionStateGetInfo getInfo,
+        @Pointer XrActionStateFloat state
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$xrGetActionStateFloat);
         try {
@@ -1696,10 +1696,10 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrGetActionStateVector2f.html"><code>xrGetActionStateVector2f</code></a>
-    public @EnumType(XrResult.class) int xrGetActionStateVector2f(
+    public @EnumType(XrResult.class) int getActionStateVector2f(
         XrSession session,
-        @Pointer IXrActionStateGetInfo getInfo,
-        @Pointer IXrActionStateVector2f state
+        @Pointer XrActionStateGetInfo getInfo,
+        @Pointer XrActionStateVector2f state
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$xrGetActionStateVector2f);
         try {
@@ -1714,10 +1714,10 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrGetActionStatePose.html"><code>xrGetActionStatePose</code></a>
-    public @EnumType(XrResult.class) int xrGetActionStatePose(
+    public @EnumType(XrResult.class) int getActionStatePose(
         XrSession session,
-        @Pointer IXrActionStateGetInfo getInfo,
-        @Pointer IXrActionStatePose state
+        @Pointer XrActionStateGetInfo getInfo,
+        @Pointer XrActionStatePose state
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$xrGetActionStatePose);
         try {
@@ -1732,9 +1732,9 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrCreateActionSet.html"><code>xrCreateActionSet</code></a>
-    public @EnumType(XrResult.class) int xrCreateActionSet(
+    public @EnumType(XrResult.class) int createActionSet(
         XrInstance instance,
-        @Pointer IXrActionSetCreateInfo createInfo,
+        @Pointer XrActionSetCreateInfo createInfo,
         @Pointer XrActionSet.Ptr actionSet
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$xrCreateActionSet);
@@ -1750,7 +1750,7 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrDestroyActionSet.html"><code>xrDestroyActionSet</code></a>
-    public @EnumType(XrResult.class) int xrDestroyActionSet(
+    public @EnumType(XrResult.class) int destroyActionSet(
         XrActionSet actionSet
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$xrDestroyActionSet);
@@ -1764,9 +1764,9 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrCreateAction.html"><code>xrCreateAction</code></a>
-    public @EnumType(XrResult.class) int xrCreateAction(
+    public @EnumType(XrResult.class) int createAction(
         XrActionSet actionSet,
-        @Pointer IXrActionCreateInfo createInfo,
+        @Pointer XrActionCreateInfo createInfo,
         @Pointer XrAction.Ptr action
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$xrCreateAction);
@@ -1782,7 +1782,7 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrDestroyAction.html"><code>xrDestroyAction</code></a>
-    public @EnumType(XrResult.class) int xrDestroyAction(
+    public @EnumType(XrResult.class) int destroyAction(
         XrAction action
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$xrDestroyAction);
@@ -1796,9 +1796,9 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrSuggestInteractionProfileBindings.html"><code>xrSuggestInteractionProfileBindings</code></a>
-    public @EnumType(XrResult.class) int xrSuggestInteractionProfileBindings(
+    public @EnumType(XrResult.class) int suggestInteractionProfileBindings(
         XrInstance instance,
-        @Pointer IXrInteractionProfileSuggestedBinding suggestedBindings
+        @Pointer XrInteractionProfileSuggestedBinding suggestedBindings
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$xrSuggestInteractionProfileBindings);
         try {
@@ -1812,9 +1812,9 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrAttachSessionActionSets.html"><code>xrAttachSessionActionSets</code></a>
-    public @EnumType(XrResult.class) int xrAttachSessionActionSets(
+    public @EnumType(XrResult.class) int attachSessionActionSets(
         XrSession session,
-        @Pointer IXrSessionActionSetsAttachInfo attachInfo
+        @Pointer XrSessionActionSetsAttachInfo attachInfo
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$xrAttachSessionActionSets);
         try {
@@ -1828,10 +1828,10 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrGetCurrentInteractionProfile.html"><code>xrGetCurrentInteractionProfile</code></a>
-    public @EnumType(XrResult.class) int xrGetCurrentInteractionProfile(
+    public @EnumType(XrResult.class) int getCurrentInteractionProfile(
         XrSession session,
         @NativeType("XrPath") @Unsigned long topLevelUserPath,
-        @Pointer IXrInteractionProfileState interactionProfile
+        @Pointer XrInteractionProfileState interactionProfile
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$xrGetCurrentInteractionProfile);
         try {
@@ -1846,9 +1846,9 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrSyncActions.html"><code>xrSyncActions</code></a>
-    public @EnumType(XrResult.class) int xrSyncActions(
+    public @EnumType(XrResult.class) int syncActions(
         XrSession session,
-        @Pointer IXrActionsSyncInfo syncInfo
+        @Pointer XrActionsSyncInfo syncInfo
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$xrSyncActions);
         try {
@@ -1862,9 +1862,9 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrEnumerateBoundSourcesForAction.html"><code>xrEnumerateBoundSourcesForAction</code></a>
-    public @EnumType(XrResult.class) int xrEnumerateBoundSourcesForAction(
+    public @EnumType(XrResult.class) int enumerateBoundSourcesForAction(
         XrSession session,
-        @Pointer IXrBoundSourcesForActionEnumerateInfo enumerateInfo,
+        @Pointer XrBoundSourcesForActionEnumerateInfo enumerateInfo,
         @Unsigned int sourceCapacityInput,
         @Unsigned IntPtr sourceCountOutput,
         @Nullable @Pointer(comment="XrPath") @Unsigned LongPtr sources
@@ -1884,9 +1884,9 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrGetInputSourceLocalizedName.html"><code>xrGetInputSourceLocalizedName</code></a>
-    public @EnumType(XrResult.class) int xrGetInputSourceLocalizedName(
+    public @EnumType(XrResult.class) int getInputSourceLocalizedName(
         XrSession session,
-        @Pointer IXrInputSourceLocalizedNameGetInfo getInfo,
+        @Pointer XrInputSourceLocalizedNameGetInfo getInfo,
         @Unsigned int bufferCapacityInput,
         @Unsigned IntPtr bufferCountOutput,
         @Nullable BytePtr buffer
@@ -1906,7 +1906,7 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrGetVulkanInstanceExtensionsKHR.html"><code>xrGetVulkanInstanceExtensionsKHR</code></a>
-    public @EnumType(XrResult.class) int xrGetVulkanInstanceExtensionsKHR(
+    public @EnumType(XrResult.class) int getVulkanInstanceExtensionsKHR(
         XrInstance instance,
         @NativeType("XrSystemId") @Unsigned long systemId,
         @Unsigned int bufferCapacityInput,
@@ -1928,7 +1928,7 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrGetVulkanDeviceExtensionsKHR.html"><code>xrGetVulkanDeviceExtensionsKHR</code></a>
-    public @EnumType(XrResult.class) int xrGetVulkanDeviceExtensionsKHR(
+    public @EnumType(XrResult.class) int getVulkanDeviceExtensionsKHR(
         XrInstance instance,
         @NativeType("XrSystemId") @Unsigned long systemId,
         @Unsigned int bufferCapacityInput,
@@ -1950,7 +1950,7 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrGetVulkanGraphicsDeviceKHR.html"><code>xrGetVulkanGraphicsDeviceKHR</code></a>
-    public @EnumType(XrResult.class) int xrGetVulkanGraphicsDeviceKHR(
+    public @EnumType(XrResult.class) int getVulkanGraphicsDeviceKHR(
         XrInstance instance,
         @NativeType("XrSystemId") @Unsigned long systemId,
         VkInstance vkInstance,
@@ -1970,10 +1970,10 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrGetOpenGLGraphicsRequirementsKHR.html"><code>xrGetOpenGLGraphicsRequirementsKHR</code></a>
-    public @EnumType(XrResult.class) int xrGetOpenGLGraphicsRequirementsKHR(
+    public @EnumType(XrResult.class) int getOpenGLGraphicsRequirementsKHR(
         XrInstance instance,
         @NativeType("XrSystemId") @Unsigned long systemId,
-        @Pointer IXrGraphicsRequirementsOpenGLKHR graphicsRequirements
+        @Pointer XrGraphicsRequirementsOpenGLKHR graphicsRequirements
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$xrGetOpenGLGraphicsRequirementsKHR);
         try {
@@ -1988,10 +1988,10 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrGetOpenGLESGraphicsRequirementsKHR.html"><code>xrGetOpenGLESGraphicsRequirementsKHR</code></a>
-    public @EnumType(XrResult.class) int xrGetOpenGLESGraphicsRequirementsKHR(
+    public @EnumType(XrResult.class) int getOpenGLESGraphicsRequirementsKHR(
         XrInstance instance,
         @NativeType("XrSystemId") @Unsigned long systemId,
-        @Pointer IXrGraphicsRequirementsOpenGLESKHR graphicsRequirements
+        @Pointer XrGraphicsRequirementsOpenGLESKHR graphicsRequirements
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$xrGetOpenGLESGraphicsRequirementsKHR);
         try {
@@ -2006,10 +2006,10 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrGetVulkanGraphicsRequirementsKHR.html"><code>xrGetVulkanGraphicsRequirementsKHR</code></a>
-    public @EnumType(XrResult.class) int xrGetVulkanGraphicsRequirementsKHR(
+    public @EnumType(XrResult.class) int getVulkanGraphicsRequirementsKHR(
         XrInstance instance,
         @NativeType("XrSystemId") @Unsigned long systemId,
-        @Pointer IXrGraphicsRequirementsVulkanKHR graphicsRequirements
+        @Pointer XrGraphicsRequirementsVulkanKHR graphicsRequirements
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$xrGetVulkanGraphicsRequirementsKHR);
         try {
@@ -2024,10 +2024,10 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrGetD3D11GraphicsRequirementsKHR.html"><code>xrGetD3D11GraphicsRequirementsKHR</code></a>
-    public @EnumType(XrResult.class) int xrGetD3D11GraphicsRequirementsKHR(
+    public @EnumType(XrResult.class) int getD3D11GraphicsRequirementsKHR(
         XrInstance instance,
         @NativeType("XrSystemId") @Unsigned long systemId,
-        @Pointer IXrGraphicsRequirementsD3D11KHR graphicsRequirements
+        @Pointer XrGraphicsRequirementsD3D11KHR graphicsRequirements
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$xrGetD3D11GraphicsRequirementsKHR);
         try {
@@ -2042,10 +2042,10 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrGetD3D12GraphicsRequirementsKHR.html"><code>xrGetD3D12GraphicsRequirementsKHR</code></a>
-    public @EnumType(XrResult.class) int xrGetD3D12GraphicsRequirementsKHR(
+    public @EnumType(XrResult.class) int getD3D12GraphicsRequirementsKHR(
         XrInstance instance,
         @NativeType("XrSystemId") @Unsigned long systemId,
-        @Pointer IXrGraphicsRequirementsD3D12KHR graphicsRequirements
+        @Pointer XrGraphicsRequirementsD3D12KHR graphicsRequirements
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$xrGetD3D12GraphicsRequirementsKHR);
         try {
@@ -2060,10 +2060,10 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrGetMetalGraphicsRequirementsKHR.html"><code>xrGetMetalGraphicsRequirementsKHR</code></a>
-    public @EnumType(XrResult.class) int xrGetMetalGraphicsRequirementsKHR(
+    public @EnumType(XrResult.class) int getMetalGraphicsRequirementsKHR(
         XrInstance instance,
         @NativeType("XrSystemId") @Unsigned long systemId,
-        @Pointer IXrGraphicsRequirementsMetalKHR graphicsRequirements
+        @Pointer XrGraphicsRequirementsMetalKHR graphicsRequirements
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$xrGetMetalGraphicsRequirementsKHR);
         try {
@@ -2078,7 +2078,7 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrPerfSettingsSetPerformanceLevelEXT.html"><code>xrPerfSettingsSetPerformanceLevelEXT</code></a>
-    public @EnumType(XrResult.class) int xrPerfSettingsSetPerformanceLevelEXT(
+    public @EnumType(XrResult.class) int perfSettingsSetPerformanceLevelEXT(
         XrSession session,
         @EnumType(XrPerfSettingsDomainEXT.class) int domain,
         @EnumType(XrPerfSettingsLevelEXT.class) int level
@@ -2096,7 +2096,7 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrThermalGetTemperatureTrendEXT.html"><code>xrThermalGetTemperatureTrendEXT</code></a>
-    public @EnumType(XrResult.class) int xrThermalGetTemperatureTrendEXT(
+    public @EnumType(XrResult.class) int thermalGetTemperatureTrendEXT(
         XrSession session,
         @EnumType(XrPerfSettingsDomainEXT.class) int domain,
         @EnumType(XrPerfSettingsNotificationLevelEXT.class) IntPtr notificationLevel,
@@ -2118,9 +2118,9 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrSetDebugUtilsObjectNameEXT.html"><code>xrSetDebugUtilsObjectNameEXT</code></a>
-    public @EnumType(XrResult.class) int xrSetDebugUtilsObjectNameEXT(
+    public @EnumType(XrResult.class) int setDebugUtilsObjectNameEXT(
         XrInstance instance,
-        @Pointer IXrDebugUtilsObjectNameInfoEXT nameInfo
+        @Pointer XrDebugUtilsObjectNameInfoEXT nameInfo
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$xrSetDebugUtilsObjectNameEXT);
         try {
@@ -2134,9 +2134,9 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrCreateDebugUtilsMessengerEXT.html"><code>xrCreateDebugUtilsMessengerEXT</code></a>
-    public @EnumType(XrResult.class) int xrCreateDebugUtilsMessengerEXT(
+    public @EnumType(XrResult.class) int createDebugUtilsMessengerEXT(
         XrInstance instance,
-        @Pointer IXrDebugUtilsMessengerCreateInfoEXT createInfo,
+        @Pointer XrDebugUtilsMessengerCreateInfoEXT createInfo,
         @Pointer XrDebugUtilsMessengerEXT.Ptr messenger
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$xrCreateDebugUtilsMessengerEXT);
@@ -2152,7 +2152,7 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrDestroyDebugUtilsMessengerEXT.html"><code>xrDestroyDebugUtilsMessengerEXT</code></a>
-    public @EnumType(XrResult.class) int xrDestroyDebugUtilsMessengerEXT(
+    public @EnumType(XrResult.class) int destroyDebugUtilsMessengerEXT(
         XrDebugUtilsMessengerEXT messenger
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$xrDestroyDebugUtilsMessengerEXT);
@@ -2166,11 +2166,11 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrSubmitDebugUtilsMessageEXT.html"><code>xrSubmitDebugUtilsMessageEXT</code></a>
-    public @EnumType(XrResult.class) int xrSubmitDebugUtilsMessageEXT(
+    public @EnumType(XrResult.class) int submitDebugUtilsMessageEXT(
         XrInstance instance,
         @Bitmask(XrDebugUtilsMessageSeverityFlagsEXT.class) long messageSeverity,
         @Bitmask(XrDebugUtilsMessageTypeFlagsEXT.class) long messageTypes,
-        @Pointer IXrDebugUtilsMessengerCallbackDataEXT callbackData
+        @Pointer XrDebugUtilsMessengerCallbackDataEXT callbackData
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$xrSubmitDebugUtilsMessageEXT);
         try {
@@ -2186,9 +2186,9 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrSessionBeginDebugUtilsLabelRegionEXT.html"><code>xrSessionBeginDebugUtilsLabelRegionEXT</code></a>
-    public @EnumType(XrResult.class) int xrSessionBeginDebugUtilsLabelRegionEXT(
+    public @EnumType(XrResult.class) int sessionBeginDebugUtilsLabelRegionEXT(
         XrSession session,
-        @Pointer IXrDebugUtilsLabelEXT labelInfo
+        @Pointer XrDebugUtilsLabelEXT labelInfo
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$xrSessionBeginDebugUtilsLabelRegionEXT);
         try {
@@ -2202,7 +2202,7 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrSessionEndDebugUtilsLabelRegionEXT.html"><code>xrSessionEndDebugUtilsLabelRegionEXT</code></a>
-    public @EnumType(XrResult.class) int xrSessionEndDebugUtilsLabelRegionEXT(
+    public @EnumType(XrResult.class) int sessionEndDebugUtilsLabelRegionEXT(
         XrSession session
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$xrSessionEndDebugUtilsLabelRegionEXT);
@@ -2216,9 +2216,9 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrSessionInsertDebugUtilsLabelEXT.html"><code>xrSessionInsertDebugUtilsLabelEXT</code></a>
-    public @EnumType(XrResult.class) int xrSessionInsertDebugUtilsLabelEXT(
+    public @EnumType(XrResult.class) int sessionInsertDebugUtilsLabelEXT(
         XrSession session,
-        @Pointer IXrDebugUtilsLabelEXT labelInfo
+        @Pointer XrDebugUtilsLabelEXT labelInfo
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$xrSessionInsertDebugUtilsLabelEXT);
         try {
@@ -2232,7 +2232,7 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrConvertTimeToWin32PerformanceCounterKHR.html"><code>xrConvertTimeToWin32PerformanceCounterKHR</code></a>
-    public @EnumType(XrResult.class) int xrConvertTimeToWin32PerformanceCounterKHR(
+    public @EnumType(XrResult.class) int convertTimeToWin32PerformanceCounterKHR(
         XrInstance instance,
         @NativeType("XrTime") long time,
         @Pointer(comment="void*") @NotNull MemorySegment performanceCounter
@@ -2250,7 +2250,7 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrConvertWin32PerformanceCounterToTimeKHR.html"><code>xrConvertWin32PerformanceCounterToTimeKHR</code></a>
-    public @EnumType(XrResult.class) int xrConvertWin32PerformanceCounterToTimeKHR(
+    public @EnumType(XrResult.class) int convertWin32PerformanceCounterToTimeKHR(
         XrInstance instance,
         @Pointer(comment="void*") @NotNull MemorySegment performanceCounter,
         @Pointer(comment="XrTime") LongPtr time
@@ -2268,9 +2268,9 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrCreateVulkanInstanceKHR.html"><code>xrCreateVulkanInstanceKHR</code></a>
-    public @EnumType(XrResult.class) int xrCreateVulkanInstanceKHR(
+    public @EnumType(XrResult.class) int createVulkanInstanceKHR(
         XrInstance instance,
-        @Pointer IXrVulkanInstanceCreateInfoKHR createInfo,
+        @Pointer XrVulkanInstanceCreateInfoKHR createInfo,
         @Pointer VkInstance.Ptr vulkanInstance,
         @EnumType(VkResult.class) IntPtr vulkanResult
     ) {
@@ -2288,9 +2288,9 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrCreateVulkanDeviceKHR.html"><code>xrCreateVulkanDeviceKHR</code></a>
-    public @EnumType(XrResult.class) int xrCreateVulkanDeviceKHR(
+    public @EnumType(XrResult.class) int createVulkanDeviceKHR(
         XrInstance instance,
-        @Pointer IXrVulkanDeviceCreateInfoKHR createInfo,
+        @Pointer XrVulkanDeviceCreateInfoKHR createInfo,
         @Pointer VkDevice.Ptr vulkanDevice,
         @EnumType(VkResult.class) IntPtr vulkanResult
     ) {
@@ -2308,9 +2308,9 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrGetVulkanGraphicsDevice2KHR.html"><code>xrGetVulkanGraphicsDevice2KHR</code></a>
-    public @EnumType(XrResult.class) int xrGetVulkanGraphicsDevice2KHR(
+    public @EnumType(XrResult.class) int getVulkanGraphicsDevice2KHR(
         XrInstance instance,
-        @Pointer IXrVulkanGraphicsDeviceGetInfoKHR getInfo,
+        @Pointer XrVulkanGraphicsDeviceGetInfoKHR getInfo,
         @Pointer VkPhysicalDevice.Ptr vulkanPhysicalDevice
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$xrGetVulkanGraphicsDevice2KHR);
@@ -2326,7 +2326,7 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrConvertTimeToTimespecTimeKHR.html"><code>xrConvertTimeToTimespecTimeKHR</code></a>
-    public @EnumType(XrResult.class) int xrConvertTimeToTimespecTimeKHR(
+    public @EnumType(XrResult.class) int convertTimeToTimespecTimeKHR(
         XrInstance instance,
         @NativeType("XrTime") long time,
         @Pointer(comment="void*") @NotNull MemorySegment timespecTime
@@ -2344,7 +2344,7 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrConvertTimespecTimeToTimeKHR.html"><code>xrConvertTimespecTimeToTimeKHR</code></a>
-    public @EnumType(XrResult.class) int xrConvertTimespecTimeToTimeKHR(
+    public @EnumType(XrResult.class) int convertTimespecTimeToTimeKHR(
         XrInstance instance,
         @Pointer(comment="void*") @NotNull MemorySegment timespecTime,
         @Pointer(comment="XrTime") LongPtr time
@@ -2362,12 +2362,12 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrGetVisibilityMaskKHR.html"><code>xrGetVisibilityMaskKHR</code></a>
-    public @EnumType(XrResult.class) int xrGetVisibilityMaskKHR(
+    public @EnumType(XrResult.class) int getVisibilityMaskKHR(
         XrSession session,
         @EnumType(XrViewConfigurationType.class) int viewConfigurationType,
         @Unsigned int viewIndex,
         @EnumType(XrVisibilityMaskTypeKHR.class) int visibilityMaskType,
-        @Pointer IXrVisibilityMaskKHR visibilityMask
+        @Pointer XrVisibilityMaskKHR visibilityMask
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$xrGetVisibilityMaskKHR);
         try {
@@ -2384,9 +2384,9 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrCreateSpatialAnchorMSFT.html"><code>xrCreateSpatialAnchorMSFT</code></a>
-    public @EnumType(XrResult.class) int xrCreateSpatialAnchorMSFT(
+    public @EnumType(XrResult.class) int createSpatialAnchorMSFT(
         XrSession session,
-        @Pointer IXrSpatialAnchorCreateInfoMSFT createInfo,
+        @Pointer XrSpatialAnchorCreateInfoMSFT createInfo,
         @Pointer XrSpatialAnchorMSFT.Ptr anchor
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$xrCreateSpatialAnchorMSFT);
@@ -2402,9 +2402,9 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrCreateSpatialAnchorSpaceMSFT.html"><code>xrCreateSpatialAnchorSpaceMSFT</code></a>
-    public @EnumType(XrResult.class) int xrCreateSpatialAnchorSpaceMSFT(
+    public @EnumType(XrResult.class) int createSpatialAnchorSpaceMSFT(
         XrSession session,
-        @Pointer IXrSpatialAnchorSpaceCreateInfoMSFT createInfo,
+        @Pointer XrSpatialAnchorSpaceCreateInfoMSFT createInfo,
         @Pointer XrSpace.Ptr space
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$xrCreateSpatialAnchorSpaceMSFT);
@@ -2420,7 +2420,7 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrDestroySpatialAnchorMSFT.html"><code>xrDestroySpatialAnchorMSFT</code></a>
-    public @EnumType(XrResult.class) int xrDestroySpatialAnchorMSFT(
+    public @EnumType(XrResult.class) int destroySpatialAnchorMSFT(
         XrSpatialAnchorMSFT anchor
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$xrDestroySpatialAnchorMSFT);
@@ -2434,7 +2434,7 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrSetInputDeviceActiveEXT.html"><code>xrSetInputDeviceActiveEXT</code></a>
-    public @EnumType(XrResult.class) int xrSetInputDeviceActiveEXT(
+    public @EnumType(XrResult.class) int setInputDeviceActiveEXT(
         XrSession session,
         @NativeType("XrPath") @Unsigned long interactionProfile,
         @NativeType("XrPath") @Unsigned long topLevelPath,
@@ -2454,7 +2454,7 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrSetInputDeviceStateBoolEXT.html"><code>xrSetInputDeviceStateBoolEXT</code></a>
-    public @EnumType(XrResult.class) int xrSetInputDeviceStateBoolEXT(
+    public @EnumType(XrResult.class) int setInputDeviceStateBoolEXT(
         XrSession session,
         @NativeType("XrPath") @Unsigned long topLevelPath,
         @NativeType("XrPath") @Unsigned long inputSourcePath,
@@ -2474,7 +2474,7 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrSetInputDeviceStateFloatEXT.html"><code>xrSetInputDeviceStateFloatEXT</code></a>
-    public @EnumType(XrResult.class) int xrSetInputDeviceStateFloatEXT(
+    public @EnumType(XrResult.class) int setInputDeviceStateFloatEXT(
         XrSession session,
         @NativeType("XrPath") @Unsigned long topLevelPath,
         @NativeType("XrPath") @Unsigned long inputSourcePath,
@@ -2494,7 +2494,7 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrSetInputDeviceStateVector2fEXT.html"><code>xrSetInputDeviceStateVector2fEXT</code></a>
-    public @EnumType(XrResult.class) int xrSetInputDeviceStateVector2fEXT(
+    public @EnumType(XrResult.class) int setInputDeviceStateVector2fEXT(
         XrSession session,
         @NativeType("XrPath") @Unsigned long topLevelPath,
         @NativeType("XrPath") @Unsigned long inputSourcePath,
@@ -2514,7 +2514,7 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrSetInputDeviceLocationEXT.html"><code>xrSetInputDeviceLocationEXT</code></a>
-    public @EnumType(XrResult.class) int xrSetInputDeviceLocationEXT(
+    public @EnumType(XrResult.class) int setInputDeviceLocationEXT(
         XrSession session,
         @NativeType("XrPath") @Unsigned long topLevelPath,
         @NativeType("XrPath") @Unsigned long inputSourcePath,
@@ -2536,8 +2536,8 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrInitializeLoaderKHR.html"><code>xrInitializeLoaderKHR</code></a>
-    public @EnumType(XrResult.class) int xrInitializeLoaderKHR(
-        @Pointer IXrLoaderInitInfoBaseHeaderKHR loaderInitInfo
+    public @EnumType(XrResult.class) int initializeLoaderKHR(
+        @Pointer XrLoaderInitInfoBaseHeaderKHR loaderInitInfo
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$xrInitializeLoaderKHR);
         try {
@@ -2550,9 +2550,9 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrCreateSpatialGraphNodeSpaceMSFT.html"><code>xrCreateSpatialGraphNodeSpaceMSFT</code></a>
-    public @EnumType(XrResult.class) int xrCreateSpatialGraphNodeSpaceMSFT(
+    public @EnumType(XrResult.class) int createSpatialGraphNodeSpaceMSFT(
         XrSession session,
-        @Pointer IXrSpatialGraphNodeSpaceCreateInfoMSFT createInfo,
+        @Pointer XrSpatialGraphNodeSpaceCreateInfoMSFT createInfo,
         @Pointer XrSpace.Ptr space
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$xrCreateSpatialGraphNodeSpaceMSFT);
@@ -2568,9 +2568,9 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrTryCreateSpatialGraphStaticNodeBindingMSFT.html"><code>xrTryCreateSpatialGraphStaticNodeBindingMSFT</code></a>
-    public @EnumType(XrResult.class) int xrTryCreateSpatialGraphStaticNodeBindingMSFT(
+    public @EnumType(XrResult.class) int tryCreateSpatialGraphStaticNodeBindingMSFT(
         XrSession session,
-        @Pointer IXrSpatialGraphStaticNodeBindingCreateInfoMSFT createInfo,
+        @Pointer XrSpatialGraphStaticNodeBindingCreateInfoMSFT createInfo,
         @Pointer XrSpatialGraphNodeBindingMSFT.Ptr nodeBinding
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$xrTryCreateSpatialGraphStaticNodeBindingMSFT);
@@ -2586,7 +2586,7 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrDestroySpatialGraphNodeBindingMSFT.html"><code>xrDestroySpatialGraphNodeBindingMSFT</code></a>
-    public @EnumType(XrResult.class) int xrDestroySpatialGraphNodeBindingMSFT(
+    public @EnumType(XrResult.class) int destroySpatialGraphNodeBindingMSFT(
         XrSpatialGraphNodeBindingMSFT nodeBinding
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$xrDestroySpatialGraphNodeBindingMSFT);
@@ -2600,10 +2600,10 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrGetSpatialGraphNodeBindingPropertiesMSFT.html"><code>xrGetSpatialGraphNodeBindingPropertiesMSFT</code></a>
-    public @EnumType(XrResult.class) int xrGetSpatialGraphNodeBindingPropertiesMSFT(
+    public @EnumType(XrResult.class) int getSpatialGraphNodeBindingPropertiesMSFT(
         XrSpatialGraphNodeBindingMSFT nodeBinding,
-        @Nullable @Pointer IXrSpatialGraphNodeBindingPropertiesGetInfoMSFT getInfo,
-        @Pointer IXrSpatialGraphNodeBindingPropertiesMSFT properties
+        @Nullable @Pointer XrSpatialGraphNodeBindingPropertiesGetInfoMSFT getInfo,
+        @Pointer XrSpatialGraphNodeBindingPropertiesMSFT properties
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$xrGetSpatialGraphNodeBindingPropertiesMSFT);
         try {
@@ -2618,9 +2618,9 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrCreateHandTrackerEXT.html"><code>xrCreateHandTrackerEXT</code></a>
-    public @EnumType(XrResult.class) int xrCreateHandTrackerEXT(
+    public @EnumType(XrResult.class) int createHandTrackerEXT(
         XrSession session,
-        @Pointer IXrHandTrackerCreateInfoEXT createInfo,
+        @Pointer XrHandTrackerCreateInfoEXT createInfo,
         @Pointer XrHandTrackerEXT.Ptr handTracker
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$xrCreateHandTrackerEXT);
@@ -2636,7 +2636,7 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrDestroyHandTrackerEXT.html"><code>xrDestroyHandTrackerEXT</code></a>
-    public @EnumType(XrResult.class) int xrDestroyHandTrackerEXT(
+    public @EnumType(XrResult.class) int destroyHandTrackerEXT(
         XrHandTrackerEXT handTracker
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$xrDestroyHandTrackerEXT);
@@ -2650,10 +2650,10 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrLocateHandJointsEXT.html"><code>xrLocateHandJointsEXT</code></a>
-    public @EnumType(XrResult.class) int xrLocateHandJointsEXT(
+    public @EnumType(XrResult.class) int locateHandJointsEXT(
         XrHandTrackerEXT handTracker,
-        @Pointer IXrHandJointsLocateInfoEXT locateInfo,
-        @Pointer IXrHandJointLocationsEXT locations
+        @Pointer XrHandJointsLocateInfoEXT locateInfo,
+        @Pointer XrHandJointLocationsEXT locations
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$xrLocateHandJointsEXT);
         try {
@@ -2668,9 +2668,9 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrCreateFaceTrackerFB.html"><code>xrCreateFaceTrackerFB</code></a>
-    public @EnumType(XrResult.class) int xrCreateFaceTrackerFB(
+    public @EnumType(XrResult.class) int createFaceTrackerFB(
         XrSession session,
-        @Pointer IXrFaceTrackerCreateInfoFB createInfo,
+        @Pointer XrFaceTrackerCreateInfoFB createInfo,
         @Pointer XrFaceTrackerFB.Ptr faceTracker
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$xrCreateFaceTrackerFB);
@@ -2686,7 +2686,7 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrDestroyFaceTrackerFB.html"><code>xrDestroyFaceTrackerFB</code></a>
-    public @EnumType(XrResult.class) int xrDestroyFaceTrackerFB(
+    public @EnumType(XrResult.class) int destroyFaceTrackerFB(
         XrFaceTrackerFB faceTracker
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$xrDestroyFaceTrackerFB);
@@ -2700,10 +2700,10 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrGetFaceExpressionWeightsFB.html"><code>xrGetFaceExpressionWeightsFB</code></a>
-    public @EnumType(XrResult.class) int xrGetFaceExpressionWeightsFB(
+    public @EnumType(XrResult.class) int getFaceExpressionWeightsFB(
         XrFaceTrackerFB faceTracker,
-        @Pointer IXrFaceExpressionInfoFB expressionInfo,
-        @Pointer IXrFaceExpressionWeightsFB expressionWeights
+        @Pointer XrFaceExpressionInfoFB expressionInfo,
+        @Pointer XrFaceExpressionWeightsFB expressionWeights
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$xrGetFaceExpressionWeightsFB);
         try {
@@ -2718,9 +2718,9 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrCreateFaceTracker2FB.html"><code>xrCreateFaceTracker2FB</code></a>
-    public @EnumType(XrResult.class) int xrCreateFaceTracker2FB(
+    public @EnumType(XrResult.class) int createFaceTracker2FB(
         XrSession session,
-        @Pointer IXrFaceTrackerCreateInfo2FB createInfo,
+        @Pointer XrFaceTrackerCreateInfo2FB createInfo,
         @Pointer XrFaceTracker2FB.Ptr faceTracker
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$xrCreateFaceTracker2FB);
@@ -2736,7 +2736,7 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrDestroyFaceTracker2FB.html"><code>xrDestroyFaceTracker2FB</code></a>
-    public @EnumType(XrResult.class) int xrDestroyFaceTracker2FB(
+    public @EnumType(XrResult.class) int destroyFaceTracker2FB(
         XrFaceTracker2FB faceTracker
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$xrDestroyFaceTracker2FB);
@@ -2750,10 +2750,10 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrGetFaceExpressionWeights2FB.html"><code>xrGetFaceExpressionWeights2FB</code></a>
-    public @EnumType(XrResult.class) int xrGetFaceExpressionWeights2FB(
+    public @EnumType(XrResult.class) int getFaceExpressionWeights2FB(
         XrFaceTracker2FB faceTracker,
-        @Pointer IXrFaceExpressionInfo2FB expressionInfo,
-        @Pointer IXrFaceExpressionWeights2FB expressionWeights
+        @Pointer XrFaceExpressionInfo2FB expressionInfo,
+        @Pointer XrFaceExpressionWeights2FB expressionWeights
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$xrGetFaceExpressionWeights2FB);
         try {
@@ -2768,9 +2768,9 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrCreateBodyTrackerFB.html"><code>xrCreateBodyTrackerFB</code></a>
-    public @EnumType(XrResult.class) int xrCreateBodyTrackerFB(
+    public @EnumType(XrResult.class) int createBodyTrackerFB(
         XrSession session,
-        @Pointer IXrBodyTrackerCreateInfoFB createInfo,
+        @Pointer XrBodyTrackerCreateInfoFB createInfo,
         @Pointer XrBodyTrackerFB.Ptr bodyTracker
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$xrCreateBodyTrackerFB);
@@ -2786,7 +2786,7 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrDestroyBodyTrackerFB.html"><code>xrDestroyBodyTrackerFB</code></a>
-    public @EnumType(XrResult.class) int xrDestroyBodyTrackerFB(
+    public @EnumType(XrResult.class) int destroyBodyTrackerFB(
         XrBodyTrackerFB bodyTracker
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$xrDestroyBodyTrackerFB);
@@ -2800,10 +2800,10 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrLocateBodyJointsFB.html"><code>xrLocateBodyJointsFB</code></a>
-    public @EnumType(XrResult.class) int xrLocateBodyJointsFB(
+    public @EnumType(XrResult.class) int locateBodyJointsFB(
         XrBodyTrackerFB bodyTracker,
-        @Pointer IXrBodyJointsLocateInfoFB locateInfo,
-        @Pointer IXrBodyJointLocationsFB locations
+        @Pointer XrBodyJointsLocateInfoFB locateInfo,
+        @Pointer XrBodyJointLocationsFB locations
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$xrLocateBodyJointsFB);
         try {
@@ -2818,9 +2818,9 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrGetBodySkeletonFB.html"><code>xrGetBodySkeletonFB</code></a>
-    public @EnumType(XrResult.class) int xrGetBodySkeletonFB(
+    public @EnumType(XrResult.class) int getBodySkeletonFB(
         XrBodyTrackerFB bodyTracker,
-        @Pointer IXrBodySkeletonFB skeleton
+        @Pointer XrBodySkeletonFB skeleton
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$xrGetBodySkeletonFB);
         try {
@@ -2834,9 +2834,9 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrCreateEyeTrackerFB.html"><code>xrCreateEyeTrackerFB</code></a>
-    public @EnumType(XrResult.class) int xrCreateEyeTrackerFB(
+    public @EnumType(XrResult.class) int createEyeTrackerFB(
         XrSession session,
-        @Pointer IXrEyeTrackerCreateInfoFB createInfo,
+        @Pointer XrEyeTrackerCreateInfoFB createInfo,
         @Pointer XrEyeTrackerFB.Ptr eyeTracker
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$xrCreateEyeTrackerFB);
@@ -2852,7 +2852,7 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrDestroyEyeTrackerFB.html"><code>xrDestroyEyeTrackerFB</code></a>
-    public @EnumType(XrResult.class) int xrDestroyEyeTrackerFB(
+    public @EnumType(XrResult.class) int destroyEyeTrackerFB(
         XrEyeTrackerFB eyeTracker
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$xrDestroyEyeTrackerFB);
@@ -2866,10 +2866,10 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrGetEyeGazesFB.html"><code>xrGetEyeGazesFB</code></a>
-    public @EnumType(XrResult.class) int xrGetEyeGazesFB(
+    public @EnumType(XrResult.class) int getEyeGazesFB(
         XrEyeTrackerFB eyeTracker,
-        @Pointer IXrEyeGazesInfoFB gazeInfo,
-        @Pointer IXrEyeGazesFB eyeGazes
+        @Pointer XrEyeGazesInfoFB gazeInfo,
+        @Pointer XrEyeGazesFB eyeGazes
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$xrGetEyeGazesFB);
         try {
@@ -2884,9 +2884,9 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrCreateHandMeshSpaceMSFT.html"><code>xrCreateHandMeshSpaceMSFT</code></a>
-    public @EnumType(XrResult.class) int xrCreateHandMeshSpaceMSFT(
+    public @EnumType(XrResult.class) int createHandMeshSpaceMSFT(
         XrHandTrackerEXT handTracker,
-        @Pointer IXrHandMeshSpaceCreateInfoMSFT createInfo,
+        @Pointer XrHandMeshSpaceCreateInfoMSFT createInfo,
         @Pointer XrSpace.Ptr space
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$xrCreateHandMeshSpaceMSFT);
@@ -2902,10 +2902,10 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrUpdateHandMeshMSFT.html"><code>xrUpdateHandMeshMSFT</code></a>
-    public @EnumType(XrResult.class) int xrUpdateHandMeshMSFT(
+    public @EnumType(XrResult.class) int updateHandMeshMSFT(
         XrHandTrackerEXT handTracker,
-        @Pointer IXrHandMeshUpdateInfoMSFT updateInfo,
-        @Pointer IXrHandMeshMSFT handMesh
+        @Pointer XrHandMeshUpdateInfoMSFT updateInfo,
+        @Pointer XrHandMeshMSFT handMesh
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$xrUpdateHandMeshMSFT);
         try {
@@ -2920,10 +2920,10 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrGetControllerModelKeyMSFT.html"><code>xrGetControllerModelKeyMSFT</code></a>
-    public @EnumType(XrResult.class) int xrGetControllerModelKeyMSFT(
+    public @EnumType(XrResult.class) int getControllerModelKeyMSFT(
         XrSession session,
         @NativeType("XrPath") @Unsigned long topLevelUserPath,
-        @Pointer IXrControllerModelKeyStateMSFT controllerModelKeyState
+        @Pointer XrControllerModelKeyStateMSFT controllerModelKeyState
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$xrGetControllerModelKeyMSFT);
         try {
@@ -2938,7 +2938,7 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrLoadControllerModelMSFT.html"><code>xrLoadControllerModelMSFT</code></a>
-    public @EnumType(XrResult.class) int xrLoadControllerModelMSFT(
+    public @EnumType(XrResult.class) int loadControllerModelMSFT(
         XrSession session,
         @NativeType("XrControllerModelKeyMSFT") @Unsigned long modelKey,
         @Unsigned int bufferCapacityInput,
@@ -2960,10 +2960,10 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrGetControllerModelPropertiesMSFT.html"><code>xrGetControllerModelPropertiesMSFT</code></a>
-    public @EnumType(XrResult.class) int xrGetControllerModelPropertiesMSFT(
+    public @EnumType(XrResult.class) int getControllerModelPropertiesMSFT(
         XrSession session,
         @NativeType("XrControllerModelKeyMSFT") @Unsigned long modelKey,
-        @Pointer IXrControllerModelPropertiesMSFT properties
+        @Pointer XrControllerModelPropertiesMSFT properties
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$xrGetControllerModelPropertiesMSFT);
         try {
@@ -2978,10 +2978,10 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrGetControllerModelStateMSFT.html"><code>xrGetControllerModelStateMSFT</code></a>
-    public @EnumType(XrResult.class) int xrGetControllerModelStateMSFT(
+    public @EnumType(XrResult.class) int getControllerModelStateMSFT(
         XrSession session,
         @NativeType("XrControllerModelKeyMSFT") @Unsigned long modelKey,
-        @Pointer IXrControllerModelStateMSFT state
+        @Pointer XrControllerModelStateMSFT state
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$xrGetControllerModelStateMSFT);
         try {
@@ -2996,7 +2996,7 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrEnumerateSceneComputeFeaturesMSFT.html"><code>xrEnumerateSceneComputeFeaturesMSFT</code></a>
-    public @EnumType(XrResult.class) int xrEnumerateSceneComputeFeaturesMSFT(
+    public @EnumType(XrResult.class) int enumerateSceneComputeFeaturesMSFT(
         XrInstance instance,
         @NativeType("XrSystemId") @Unsigned long systemId,
         @Unsigned int featureCapacityInput,
@@ -3018,9 +3018,9 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrCreateSceneObserverMSFT.html"><code>xrCreateSceneObserverMSFT</code></a>
-    public @EnumType(XrResult.class) int xrCreateSceneObserverMSFT(
+    public @EnumType(XrResult.class) int createSceneObserverMSFT(
         XrSession session,
-        @Nullable @Pointer IXrSceneObserverCreateInfoMSFT createInfo,
+        @Nullable @Pointer XrSceneObserverCreateInfoMSFT createInfo,
         @Pointer XrSceneObserverMSFT.Ptr sceneObserver
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$xrCreateSceneObserverMSFT);
@@ -3036,7 +3036,7 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrDestroySceneObserverMSFT.html"><code>xrDestroySceneObserverMSFT</code></a>
-    public @EnumType(XrResult.class) int xrDestroySceneObserverMSFT(
+    public @EnumType(XrResult.class) int destroySceneObserverMSFT(
         XrSceneObserverMSFT sceneObserver
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$xrDestroySceneObserverMSFT);
@@ -3050,9 +3050,9 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrCreateSceneMSFT.html"><code>xrCreateSceneMSFT</code></a>
-    public @EnumType(XrResult.class) int xrCreateSceneMSFT(
+    public @EnumType(XrResult.class) int createSceneMSFT(
         XrSceneObserverMSFT sceneObserver,
-        @Nullable @Pointer IXrSceneCreateInfoMSFT createInfo,
+        @Nullable @Pointer XrSceneCreateInfoMSFT createInfo,
         @Pointer XrSceneMSFT.Ptr scene
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$xrCreateSceneMSFT);
@@ -3068,7 +3068,7 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrDestroySceneMSFT.html"><code>xrDestroySceneMSFT</code></a>
-    public @EnumType(XrResult.class) int xrDestroySceneMSFT(
+    public @EnumType(XrResult.class) int destroySceneMSFT(
         XrSceneMSFT scene
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$xrDestroySceneMSFT);
@@ -3082,9 +3082,9 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrComputeNewSceneMSFT.html"><code>xrComputeNewSceneMSFT</code></a>
-    public @EnumType(XrResult.class) int xrComputeNewSceneMSFT(
+    public @EnumType(XrResult.class) int computeNewSceneMSFT(
         XrSceneObserverMSFT sceneObserver,
-        @Pointer IXrNewSceneComputeInfoMSFT computeInfo
+        @Pointer XrNewSceneComputeInfoMSFT computeInfo
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$xrComputeNewSceneMSFT);
         try {
@@ -3098,7 +3098,7 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrGetSceneComputeStateMSFT.html"><code>xrGetSceneComputeStateMSFT</code></a>
-    public @EnumType(XrResult.class) int xrGetSceneComputeStateMSFT(
+    public @EnumType(XrResult.class) int getSceneComputeStateMSFT(
         XrSceneObserverMSFT sceneObserver,
         @EnumType(XrSceneComputeStateMSFT.class) IntPtr state
     ) {
@@ -3114,10 +3114,10 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrGetSceneComponentsMSFT.html"><code>xrGetSceneComponentsMSFT</code></a>
-    public @EnumType(XrResult.class) int xrGetSceneComponentsMSFT(
+    public @EnumType(XrResult.class) int getSceneComponentsMSFT(
         XrSceneMSFT scene,
-        @Pointer IXrSceneComponentsGetInfoMSFT getInfo,
-        @Pointer IXrSceneComponentsMSFT components
+        @Pointer XrSceneComponentsGetInfoMSFT getInfo,
+        @Pointer XrSceneComponentsMSFT components
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$xrGetSceneComponentsMSFT);
         try {
@@ -3132,10 +3132,10 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrLocateSceneComponentsMSFT.html"><code>xrLocateSceneComponentsMSFT</code></a>
-    public @EnumType(XrResult.class) int xrLocateSceneComponentsMSFT(
+    public @EnumType(XrResult.class) int locateSceneComponentsMSFT(
         XrSceneMSFT scene,
-        @Pointer IXrSceneComponentsLocateInfoMSFT locateInfo,
-        @Pointer IXrSceneComponentLocationsMSFT locations
+        @Pointer XrSceneComponentsLocateInfoMSFT locateInfo,
+        @Pointer XrSceneComponentLocationsMSFT locations
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$xrLocateSceneComponentsMSFT);
         try {
@@ -3150,10 +3150,10 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrGetSceneMeshBuffersMSFT.html"><code>xrGetSceneMeshBuffersMSFT</code></a>
-    public @EnumType(XrResult.class) int xrGetSceneMeshBuffersMSFT(
+    public @EnumType(XrResult.class) int getSceneMeshBuffersMSFT(
         XrSceneMSFT scene,
-        @Pointer IXrSceneMeshBuffersGetInfoMSFT getInfo,
-        @Pointer IXrSceneMeshBuffersMSFT buffers
+        @Pointer XrSceneMeshBuffersGetInfoMSFT getInfo,
+        @Pointer XrSceneMeshBuffersMSFT buffers
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$xrGetSceneMeshBuffersMSFT);
         try {
@@ -3168,9 +3168,9 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrDeserializeSceneMSFT.html"><code>xrDeserializeSceneMSFT</code></a>
-    public @EnumType(XrResult.class) int xrDeserializeSceneMSFT(
+    public @EnumType(XrResult.class) int deserializeSceneMSFT(
         XrSceneObserverMSFT sceneObserver,
-        @Pointer IXrSceneDeserializeInfoMSFT deserializeInfo
+        @Pointer XrSceneDeserializeInfoMSFT deserializeInfo
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$xrDeserializeSceneMSFT);
         try {
@@ -3184,9 +3184,9 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrGetSerializedSceneFragmentDataMSFT.html"><code>xrGetSerializedSceneFragmentDataMSFT</code></a>
-    public @EnumType(XrResult.class) int xrGetSerializedSceneFragmentDataMSFT(
+    public @EnumType(XrResult.class) int getSerializedSceneFragmentDataMSFT(
         XrSceneMSFT scene,
-        @Pointer IXrSerializedSceneFragmentDataGetInfoMSFT getInfo,
+        @Pointer XrSerializedSceneFragmentDataGetInfoMSFT getInfo,
         @Unsigned int countInput,
         @Unsigned IntPtr readOutput,
         @Nullable @Unsigned BytePtr buffer
@@ -3206,9 +3206,9 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrGetSceneMarkerRawDataMSFT.html"><code>xrGetSceneMarkerRawDataMSFT</code></a>
-    public @EnumType(XrResult.class) int xrGetSceneMarkerRawDataMSFT(
+    public @EnumType(XrResult.class) int getSceneMarkerRawDataMSFT(
         XrSceneMSFT scene,
-        @Pointer IXrUuidMSFT markerId,
+        @Pointer XrUuidMSFT markerId,
         @Unsigned int bufferCapacityInput,
         @Unsigned IntPtr bufferCountOutput,
         @Nullable @Unsigned BytePtr buffer
@@ -3228,9 +3228,9 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrGetSceneMarkerDecodedStringMSFT.html"><code>xrGetSceneMarkerDecodedStringMSFT</code></a>
-    public @EnumType(XrResult.class) int xrGetSceneMarkerDecodedStringMSFT(
+    public @EnumType(XrResult.class) int getSceneMarkerDecodedStringMSFT(
         XrSceneMSFT scene,
-        @Pointer IXrUuidMSFT markerId,
+        @Pointer XrUuidMSFT markerId,
         @Unsigned int bufferCapacityInput,
         @Unsigned IntPtr bufferCountOutput,
         @Nullable BytePtr buffer
@@ -3250,7 +3250,7 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrEnumerateDisplayRefreshRatesFB.html"><code>xrEnumerateDisplayRefreshRatesFB</code></a>
-    public @EnumType(XrResult.class) int xrEnumerateDisplayRefreshRatesFB(
+    public @EnumType(XrResult.class) int enumerateDisplayRefreshRatesFB(
         XrSession session,
         @Unsigned int displayRefreshRateCapacityInput,
         @Unsigned IntPtr displayRefreshRateCountOutput,
@@ -3270,7 +3270,7 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrGetDisplayRefreshRateFB.html"><code>xrGetDisplayRefreshRateFB</code></a>
-    public @EnumType(XrResult.class) int xrGetDisplayRefreshRateFB(
+    public @EnumType(XrResult.class) int getDisplayRefreshRateFB(
         XrSession session,
         FloatPtr displayRefreshRate
     ) {
@@ -3286,7 +3286,7 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrRequestDisplayRefreshRateFB.html"><code>xrRequestDisplayRefreshRateFB</code></a>
-    public @EnumType(XrResult.class) int xrRequestDisplayRefreshRateFB(
+    public @EnumType(XrResult.class) int requestDisplayRefreshRateFB(
         XrSession session,
         float displayRefreshRate
     ) {
@@ -3302,7 +3302,7 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrCreateSpatialAnchorFromPerceptionAnchorMSFT.html"><code>xrCreateSpatialAnchorFromPerceptionAnchorMSFT</code></a>
-    public @EnumType(XrResult.class) int xrCreateSpatialAnchorFromPerceptionAnchorMSFT(
+    public @EnumType(XrResult.class) int createSpatialAnchorFromPerceptionAnchorMSFT(
         XrSession session,
         PointerPtr perceptionAnchor,
         @Pointer XrSpatialAnchorMSFT.Ptr anchor
@@ -3320,7 +3320,7 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrTryGetPerceptionAnchorFromSpatialAnchorMSFT.html"><code>xrTryGetPerceptionAnchorFromSpatialAnchorMSFT</code></a>
-    public @EnumType(XrResult.class) int xrTryGetPerceptionAnchorFromSpatialAnchorMSFT(
+    public @EnumType(XrResult.class) int tryGetPerceptionAnchorFromSpatialAnchorMSFT(
         XrSession session,
         XrSpatialAnchorMSFT anchor,
         PointerPtr perceptionAnchor
@@ -3338,9 +3338,9 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrUpdateSwapchainFB.html"><code>xrUpdateSwapchainFB</code></a>
-    public @EnumType(XrResult.class) int xrUpdateSwapchainFB(
+    public @EnumType(XrResult.class) int updateSwapchainFB(
         XrSwapchain swapchain,
-        @Pointer IXrSwapchainStateBaseHeaderFB state
+        @Pointer XrSwapchainStateBaseHeaderFB state
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$xrUpdateSwapchainFB);
         try {
@@ -3354,9 +3354,9 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrGetSwapchainStateFB.html"><code>xrGetSwapchainStateFB</code></a>
-    public @EnumType(XrResult.class) int xrGetSwapchainStateFB(
+    public @EnumType(XrResult.class) int getSwapchainStateFB(
         XrSwapchain swapchain,
-        @Pointer IXrSwapchainStateBaseHeaderFB state
+        @Pointer XrSwapchainStateBaseHeaderFB state
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$xrGetSwapchainStateFB);
         try {
@@ -3370,7 +3370,7 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrEnumerateColorSpacesFB.html"><code>xrEnumerateColorSpacesFB</code></a>
-    public @EnumType(XrResult.class) int xrEnumerateColorSpacesFB(
+    public @EnumType(XrResult.class) int enumerateColorSpacesFB(
         XrSession session,
         @Unsigned int colorSpaceCapacityInput,
         @Unsigned IntPtr colorSpaceCountOutput,
@@ -3390,7 +3390,7 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrSetColorSpaceFB.html"><code>xrSetColorSpaceFB</code></a>
-    public @EnumType(XrResult.class) int xrSetColorSpaceFB(
+    public @EnumType(XrResult.class) int setColorSpaceFB(
         XrSession session,
         @EnumType(XrColorSpaceFB.class) int colorSpace
     ) {
@@ -3406,9 +3406,9 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrCreateFoveationProfileFB.html"><code>xrCreateFoveationProfileFB</code></a>
-    public @EnumType(XrResult.class) int xrCreateFoveationProfileFB(
+    public @EnumType(XrResult.class) int createFoveationProfileFB(
         XrSession session,
-        @Pointer IXrFoveationProfileCreateInfoFB createInfo,
+        @Pointer XrFoveationProfileCreateInfoFB createInfo,
         @Pointer XrFoveationProfileFB.Ptr profile
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$xrCreateFoveationProfileFB);
@@ -3424,7 +3424,7 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrDestroyFoveationProfileFB.html"><code>xrDestroyFoveationProfileFB</code></a>
-    public @EnumType(XrResult.class) int xrDestroyFoveationProfileFB(
+    public @EnumType(XrResult.class) int destroyFoveationProfileFB(
         XrFoveationProfileFB profile
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$xrDestroyFoveationProfileFB);
@@ -3438,9 +3438,9 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrGetFoveationEyeTrackedStateMETA.html"><code>xrGetFoveationEyeTrackedStateMETA</code></a>
-    public @EnumType(XrResult.class) int xrGetFoveationEyeTrackedStateMETA(
+    public @EnumType(XrResult.class) int getFoveationEyeTrackedStateMETA(
         XrSession session,
-        @Pointer IXrFoveationEyeTrackedStateMETA foveationState
+        @Pointer XrFoveationEyeTrackedStateMETA foveationState
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$xrGetFoveationEyeTrackedStateMETA);
         try {
@@ -3454,9 +3454,9 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrGetHandMeshFB.html"><code>xrGetHandMeshFB</code></a>
-    public @EnumType(XrResult.class) int xrGetHandMeshFB(
+    public @EnumType(XrResult.class) int getHandMeshFB(
         XrHandTrackerEXT handTracker,
-        @Pointer IXrHandTrackingMeshFB mesh
+        @Pointer XrHandTrackingMeshFB mesh
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$xrGetHandMeshFB);
         try {
@@ -3470,7 +3470,7 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrEnumerateRenderModelPathsFB.html"><code>xrEnumerateRenderModelPathsFB</code></a>
-    public @EnumType(XrResult.class) int xrEnumerateRenderModelPathsFB(
+    public @EnumType(XrResult.class) int enumerateRenderModelPathsFB(
         XrSession session,
         @Unsigned int pathCapacityInput,
         @Unsigned IntPtr pathCountOutput,
@@ -3490,10 +3490,10 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrGetRenderModelPropertiesFB.html"><code>xrGetRenderModelPropertiesFB</code></a>
-    public @EnumType(XrResult.class) int xrGetRenderModelPropertiesFB(
+    public @EnumType(XrResult.class) int getRenderModelPropertiesFB(
         XrSession session,
         @NativeType("XrPath") @Unsigned long path,
-        @Pointer IXrRenderModelPropertiesFB properties
+        @Pointer XrRenderModelPropertiesFB properties
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$xrGetRenderModelPropertiesFB);
         try {
@@ -3508,10 +3508,10 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrLoadRenderModelFB.html"><code>xrLoadRenderModelFB</code></a>
-    public @EnumType(XrResult.class) int xrLoadRenderModelFB(
+    public @EnumType(XrResult.class) int loadRenderModelFB(
         XrSession session,
-        @Pointer IXrRenderModelLoadInfoFB info,
-        @Pointer IXrRenderModelBufferFB buffer
+        @Pointer XrRenderModelLoadInfoFB info,
+        @Pointer XrRenderModelBufferFB buffer
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$xrLoadRenderModelFB);
         try {
@@ -3526,10 +3526,10 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrQuerySystemTrackedKeyboardFB.html"><code>xrQuerySystemTrackedKeyboardFB</code></a>
-    public @EnumType(XrResult.class) int xrQuerySystemTrackedKeyboardFB(
+    public @EnumType(XrResult.class) int querySystemTrackedKeyboardFB(
         XrSession session,
-        @Pointer IXrKeyboardTrackingQueryFB queryInfo,
-        @Pointer IXrKeyboardTrackingDescriptionFB keyboard
+        @Pointer XrKeyboardTrackingQueryFB queryInfo,
+        @Pointer XrKeyboardTrackingDescriptionFB keyboard
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$xrQuerySystemTrackedKeyboardFB);
         try {
@@ -3544,9 +3544,9 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrCreateKeyboardSpaceFB.html"><code>xrCreateKeyboardSpaceFB</code></a>
-    public @EnumType(XrResult.class) int xrCreateKeyboardSpaceFB(
+    public @EnumType(XrResult.class) int createKeyboardSpaceFB(
         XrSession session,
-        @Pointer IXrKeyboardSpaceCreateInfoFB createInfo,
+        @Pointer XrKeyboardSpaceCreateInfoFB createInfo,
         @Pointer XrSpace.Ptr keyboardSpace
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$xrCreateKeyboardSpaceFB);
@@ -3562,7 +3562,7 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrSetEnvironmentDepthEstimationVARJO.html"><code>xrSetEnvironmentDepthEstimationVARJO</code></a>
-    public @EnumType(XrResult.class) int xrSetEnvironmentDepthEstimationVARJO(
+    public @EnumType(XrResult.class) int setEnvironmentDepthEstimationVARJO(
         XrSession session,
         @NativeType("XrBool32") @Unsigned int enabled
     ) {
@@ -3578,7 +3578,7 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrEnumerateReprojectionModesMSFT.html"><code>xrEnumerateReprojectionModesMSFT</code></a>
-    public @EnumType(XrResult.class) int xrEnumerateReprojectionModesMSFT(
+    public @EnumType(XrResult.class) int enumerateReprojectionModesMSFT(
         XrInstance instance,
         @NativeType("XrSystemId") @Unsigned long systemId,
         @EnumType(XrViewConfigurationType.class) int viewConfigurationType,
@@ -3602,9 +3602,9 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrCreateSpatialAnchorFB.html"><code>xrCreateSpatialAnchorFB</code></a>
-    public @EnumType(XrResult.class) int xrCreateSpatialAnchorFB(
+    public @EnumType(XrResult.class) int createSpatialAnchorFB(
         XrSession session,
-        @Pointer IXrSpatialAnchorCreateInfoFB info,
+        @Pointer XrSpatialAnchorCreateInfoFB info,
         @Pointer(comment="XrAsyncRequestIdFB") @Unsigned LongPtr requestId
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$xrCreateSpatialAnchorFB);
@@ -3620,9 +3620,9 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrGetSpaceUuidFB.html"><code>xrGetSpaceUuidFB</code></a>
-    public @EnumType(XrResult.class) int xrGetSpaceUuidFB(
+    public @EnumType(XrResult.class) int getSpaceUuidFB(
         XrSpace space,
-        @Pointer IXrUuidEXT uuid
+        @Pointer XrUuidEXT uuid
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$xrGetSpaceUuidFB);
         try {
@@ -3636,7 +3636,7 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrEnumerateSpaceSupportedComponentsFB.html"><code>xrEnumerateSpaceSupportedComponentsFB</code></a>
-    public @EnumType(XrResult.class) int xrEnumerateSpaceSupportedComponentsFB(
+    public @EnumType(XrResult.class) int enumerateSpaceSupportedComponentsFB(
         XrSpace space,
         @Unsigned int componentTypeCapacityInput,
         @Unsigned IntPtr componentTypeCountOutput,
@@ -3656,9 +3656,9 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrSetSpaceComponentStatusFB.html"><code>xrSetSpaceComponentStatusFB</code></a>
-    public @EnumType(XrResult.class) int xrSetSpaceComponentStatusFB(
+    public @EnumType(XrResult.class) int setSpaceComponentStatusFB(
         XrSpace space,
-        @Pointer IXrSpaceComponentStatusSetInfoFB info,
+        @Pointer XrSpaceComponentStatusSetInfoFB info,
         @Pointer(comment="XrAsyncRequestIdFB") @Unsigned LongPtr requestId
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$xrSetSpaceComponentStatusFB);
@@ -3674,10 +3674,10 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrGetSpaceComponentStatusFB.html"><code>xrGetSpaceComponentStatusFB</code></a>
-    public @EnumType(XrResult.class) int xrGetSpaceComponentStatusFB(
+    public @EnumType(XrResult.class) int getSpaceComponentStatusFB(
         XrSpace space,
         @EnumType(XrSpaceComponentTypeFB.class) int componentType,
-        @Pointer IXrSpaceComponentStatusFB status
+        @Pointer XrSpaceComponentStatusFB status
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$xrGetSpaceComponentStatusFB);
         try {
@@ -3692,9 +3692,9 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrCreateTriangleMeshFB.html"><code>xrCreateTriangleMeshFB</code></a>
-    public @EnumType(XrResult.class) int xrCreateTriangleMeshFB(
+    public @EnumType(XrResult.class) int createTriangleMeshFB(
         XrSession session,
-        @Pointer IXrTriangleMeshCreateInfoFB createInfo,
+        @Pointer XrTriangleMeshCreateInfoFB createInfo,
         @Pointer XrTriangleMeshFB.Ptr outTriangleMesh
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$xrCreateTriangleMeshFB);
@@ -3710,7 +3710,7 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrDestroyTriangleMeshFB.html"><code>xrDestroyTriangleMeshFB</code></a>
-    public @EnumType(XrResult.class) int xrDestroyTriangleMeshFB(
+    public @EnumType(XrResult.class) int destroyTriangleMeshFB(
         XrTriangleMeshFB mesh
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$xrDestroyTriangleMeshFB);
@@ -3724,7 +3724,7 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrTriangleMeshGetVertexBufferFB.html"><code>xrTriangleMeshGetVertexBufferFB</code></a>
-    public @EnumType(XrResult.class) int xrTriangleMeshGetVertexBufferFB(
+    public @EnumType(XrResult.class) int triangleMeshGetVertexBufferFB(
         XrTriangleMeshFB mesh,
         PointerPtr outVertexBuffer
     ) {
@@ -3740,7 +3740,7 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrTriangleMeshGetIndexBufferFB.html"><code>xrTriangleMeshGetIndexBufferFB</code></a>
-    public @EnumType(XrResult.class) int xrTriangleMeshGetIndexBufferFB(
+    public @EnumType(XrResult.class) int triangleMeshGetIndexBufferFB(
         XrTriangleMeshFB mesh,
         PointerPtr outIndexBuffer
     ) {
@@ -3756,7 +3756,7 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrTriangleMeshBeginUpdateFB.html"><code>xrTriangleMeshBeginUpdateFB</code></a>
-    public @EnumType(XrResult.class) int xrTriangleMeshBeginUpdateFB(
+    public @EnumType(XrResult.class) int triangleMeshBeginUpdateFB(
         XrTriangleMeshFB mesh
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$xrTriangleMeshBeginUpdateFB);
@@ -3770,7 +3770,7 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrTriangleMeshEndUpdateFB.html"><code>xrTriangleMeshEndUpdateFB</code></a>
-    public @EnumType(XrResult.class) int xrTriangleMeshEndUpdateFB(
+    public @EnumType(XrResult.class) int triangleMeshEndUpdateFB(
         XrTriangleMeshFB mesh,
         @Unsigned int vertexCount,
         @Unsigned int triangleCount
@@ -3788,7 +3788,7 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrTriangleMeshBeginVertexBufferUpdateFB.html"><code>xrTriangleMeshBeginVertexBufferUpdateFB</code></a>
-    public @EnumType(XrResult.class) int xrTriangleMeshBeginVertexBufferUpdateFB(
+    public @EnumType(XrResult.class) int triangleMeshBeginVertexBufferUpdateFB(
         XrTriangleMeshFB mesh,
         @Unsigned IntPtr outVertexCount
     ) {
@@ -3804,7 +3804,7 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrTriangleMeshEndVertexBufferUpdateFB.html"><code>xrTriangleMeshEndVertexBufferUpdateFB</code></a>
-    public @EnumType(XrResult.class) int xrTriangleMeshEndVertexBufferUpdateFB(
+    public @EnumType(XrResult.class) int triangleMeshEndVertexBufferUpdateFB(
         XrTriangleMeshFB mesh
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$xrTriangleMeshEndVertexBufferUpdateFB);
@@ -3818,9 +3818,9 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrCreatePassthroughFB.html"><code>xrCreatePassthroughFB</code></a>
-    public @EnumType(XrResult.class) int xrCreatePassthroughFB(
+    public @EnumType(XrResult.class) int createPassthroughFB(
         XrSession session,
-        @Pointer IXrPassthroughCreateInfoFB createInfo,
+        @Pointer XrPassthroughCreateInfoFB createInfo,
         @Pointer XrPassthroughFB.Ptr outPassthrough
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$xrCreatePassthroughFB);
@@ -3836,7 +3836,7 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrDestroyPassthroughFB.html"><code>xrDestroyPassthroughFB</code></a>
-    public @EnumType(XrResult.class) int xrDestroyPassthroughFB(
+    public @EnumType(XrResult.class) int destroyPassthroughFB(
         XrPassthroughFB passthrough
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$xrDestroyPassthroughFB);
@@ -3850,7 +3850,7 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrPassthroughStartFB.html"><code>xrPassthroughStartFB</code></a>
-    public @EnumType(XrResult.class) int xrPassthroughStartFB(
+    public @EnumType(XrResult.class) int passthroughStartFB(
         XrPassthroughFB passthrough
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$xrPassthroughStartFB);
@@ -3864,7 +3864,7 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrPassthroughPauseFB.html"><code>xrPassthroughPauseFB</code></a>
-    public @EnumType(XrResult.class) int xrPassthroughPauseFB(
+    public @EnumType(XrResult.class) int passthroughPauseFB(
         XrPassthroughFB passthrough
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$xrPassthroughPauseFB);
@@ -3878,9 +3878,9 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrCreatePassthroughLayerFB.html"><code>xrCreatePassthroughLayerFB</code></a>
-    public @EnumType(XrResult.class) int xrCreatePassthroughLayerFB(
+    public @EnumType(XrResult.class) int createPassthroughLayerFB(
         XrSession session,
-        @Pointer IXrPassthroughLayerCreateInfoFB createInfo,
+        @Pointer XrPassthroughLayerCreateInfoFB createInfo,
         @Pointer XrPassthroughLayerFB.Ptr outLayer
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$xrCreatePassthroughLayerFB);
@@ -3896,7 +3896,7 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrDestroyPassthroughLayerFB.html"><code>xrDestroyPassthroughLayerFB</code></a>
-    public @EnumType(XrResult.class) int xrDestroyPassthroughLayerFB(
+    public @EnumType(XrResult.class) int destroyPassthroughLayerFB(
         XrPassthroughLayerFB layer
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$xrDestroyPassthroughLayerFB);
@@ -3910,7 +3910,7 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrPassthroughLayerPauseFB.html"><code>xrPassthroughLayerPauseFB</code></a>
-    public @EnumType(XrResult.class) int xrPassthroughLayerPauseFB(
+    public @EnumType(XrResult.class) int passthroughLayerPauseFB(
         XrPassthroughLayerFB layer
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$xrPassthroughLayerPauseFB);
@@ -3924,7 +3924,7 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrPassthroughLayerResumeFB.html"><code>xrPassthroughLayerResumeFB</code></a>
-    public @EnumType(XrResult.class) int xrPassthroughLayerResumeFB(
+    public @EnumType(XrResult.class) int passthroughLayerResumeFB(
         XrPassthroughLayerFB layer
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$xrPassthroughLayerResumeFB);
@@ -3938,9 +3938,9 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrPassthroughLayerSetStyleFB.html"><code>xrPassthroughLayerSetStyleFB</code></a>
-    public @EnumType(XrResult.class) int xrPassthroughLayerSetStyleFB(
+    public @EnumType(XrResult.class) int passthroughLayerSetStyleFB(
         XrPassthroughLayerFB layer,
-        @Pointer IXrPassthroughStyleFB style
+        @Pointer XrPassthroughStyleFB style
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$xrPassthroughLayerSetStyleFB);
         try {
@@ -3954,9 +3954,9 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrCreateGeometryInstanceFB.html"><code>xrCreateGeometryInstanceFB</code></a>
-    public @EnumType(XrResult.class) int xrCreateGeometryInstanceFB(
+    public @EnumType(XrResult.class) int createGeometryInstanceFB(
         XrSession session,
-        @Pointer IXrGeometryInstanceCreateInfoFB createInfo,
+        @Pointer XrGeometryInstanceCreateInfoFB createInfo,
         @Pointer XrGeometryInstanceFB.Ptr outGeometryInstance
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$xrCreateGeometryInstanceFB);
@@ -3972,7 +3972,7 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrDestroyGeometryInstanceFB.html"><code>xrDestroyGeometryInstanceFB</code></a>
-    public @EnumType(XrResult.class) int xrDestroyGeometryInstanceFB(
+    public @EnumType(XrResult.class) int destroyGeometryInstanceFB(
         XrGeometryInstanceFB instance
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$xrDestroyGeometryInstanceFB);
@@ -3986,9 +3986,9 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrGeometryInstanceSetTransformFB.html"><code>xrGeometryInstanceSetTransformFB</code></a>
-    public @EnumType(XrResult.class) int xrGeometryInstanceSetTransformFB(
+    public @EnumType(XrResult.class) int geometryInstanceSetTransformFB(
         XrGeometryInstanceFB instance,
-        @Pointer IXrGeometryInstanceTransformFB transformation
+        @Pointer XrGeometryInstanceTransformFB transformation
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$xrGeometryInstanceSetTransformFB);
         try {
@@ -4002,9 +4002,9 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrQuerySpacesFB.html"><code>xrQuerySpacesFB</code></a>
-    public @EnumType(XrResult.class) int xrQuerySpacesFB(
+    public @EnumType(XrResult.class) int querySpacesFB(
         XrSession session,
-        @Pointer IXrSpaceQueryInfoBaseHeaderFB info,
+        @Pointer XrSpaceQueryInfoBaseHeaderFB info,
         @Pointer(comment="XrAsyncRequestIdFB") @Unsigned LongPtr requestId
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$xrQuerySpacesFB);
@@ -4020,10 +4020,10 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrRetrieveSpaceQueryResultsFB.html"><code>xrRetrieveSpaceQueryResultsFB</code></a>
-    public @EnumType(XrResult.class) int xrRetrieveSpaceQueryResultsFB(
+    public @EnumType(XrResult.class) int retrieveSpaceQueryResultsFB(
         XrSession session,
         @NativeType("XrAsyncRequestIdFB") @Unsigned long requestId,
-        @Pointer IXrSpaceQueryResultsFB results
+        @Pointer XrSpaceQueryResultsFB results
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$xrRetrieveSpaceQueryResultsFB);
         try {
@@ -4038,9 +4038,9 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrSaveSpaceFB.html"><code>xrSaveSpaceFB</code></a>
-    public @EnumType(XrResult.class) int xrSaveSpaceFB(
+    public @EnumType(XrResult.class) int saveSpaceFB(
         XrSession session,
-        @Pointer IXrSpaceSaveInfoFB info,
+        @Pointer XrSpaceSaveInfoFB info,
         @Pointer(comment="XrAsyncRequestIdFB") @Unsigned LongPtr requestId
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$xrSaveSpaceFB);
@@ -4056,9 +4056,9 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrEraseSpaceFB.html"><code>xrEraseSpaceFB</code></a>
-    public @EnumType(XrResult.class) int xrEraseSpaceFB(
+    public @EnumType(XrResult.class) int eraseSpaceFB(
         XrSession session,
-        @Pointer IXrSpaceEraseInfoFB info,
+        @Pointer XrSpaceEraseInfoFB info,
         @Pointer(comment="XrAsyncRequestIdFB") @Unsigned LongPtr requestId
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$xrEraseSpaceFB);
@@ -4074,9 +4074,9 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrSaveSpaceListFB.html"><code>xrSaveSpaceListFB</code></a>
-    public @EnumType(XrResult.class) int xrSaveSpaceListFB(
+    public @EnumType(XrResult.class) int saveSpaceListFB(
         XrSession session,
-        @Pointer IXrSpaceListSaveInfoFB info,
+        @Pointer XrSpaceListSaveInfoFB info,
         @Pointer(comment="XrAsyncRequestIdFB") @Unsigned LongPtr requestId
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$xrSaveSpaceListFB);
@@ -4092,9 +4092,9 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrShareSpacesFB.html"><code>xrShareSpacesFB</code></a>
-    public @EnumType(XrResult.class) int xrShareSpacesFB(
+    public @EnumType(XrResult.class) int shareSpacesFB(
         XrSession session,
-        @Pointer IXrSpaceShareInfoFB info,
+        @Pointer XrSpaceShareInfoFB info,
         @Pointer(comment="XrAsyncRequestIdFB") @Unsigned LongPtr requestId
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$xrShareSpacesFB);
@@ -4110,10 +4110,10 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrGetSpaceContainerFB.html"><code>xrGetSpaceContainerFB</code></a>
-    public @EnumType(XrResult.class) int xrGetSpaceContainerFB(
+    public @EnumType(XrResult.class) int getSpaceContainerFB(
         XrSession session,
         XrSpace space,
-        @Pointer IXrSpaceContainerFB spaceContainerOutput
+        @Pointer XrSpaceContainerFB spaceContainerOutput
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$xrGetSpaceContainerFB);
         try {
@@ -4128,10 +4128,10 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrGetSpaceTriangleMeshMETA.html"><code>xrGetSpaceTriangleMeshMETA</code></a>
-    public @EnumType(XrResult.class) int xrGetSpaceTriangleMeshMETA(
+    public @EnumType(XrResult.class) int getSpaceTriangleMeshMETA(
         XrSpace space,
-        @Pointer IXrSpaceTriangleMeshGetInfoMETA getInfo,
-        @Pointer IXrSpaceTriangleMeshMETA triangleMeshOutput
+        @Pointer XrSpaceTriangleMeshGetInfoMETA getInfo,
+        @Pointer XrSpaceTriangleMeshMETA triangleMeshOutput
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$xrGetSpaceTriangleMeshMETA);
         try {
@@ -4146,10 +4146,10 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrGetSpaceBoundingBox2DFB.html"><code>xrGetSpaceBoundingBox2DFB</code></a>
-    public @EnumType(XrResult.class) int xrGetSpaceBoundingBox2DFB(
+    public @EnumType(XrResult.class) int getSpaceBoundingBox2DFB(
         XrSession session,
         XrSpace space,
-        @Pointer IXrRect2Df boundingBox2DOutput
+        @Pointer XrRect2Df boundingBox2DOutput
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$xrGetSpaceBoundingBox2DFB);
         try {
@@ -4164,10 +4164,10 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrGetSpaceBoundingBox3DFB.html"><code>xrGetSpaceBoundingBox3DFB</code></a>
-    public @EnumType(XrResult.class) int xrGetSpaceBoundingBox3DFB(
+    public @EnumType(XrResult.class) int getSpaceBoundingBox3DFB(
         XrSession session,
         XrSpace space,
-        @Pointer IXrRect3DfFB boundingBox3DOutput
+        @Pointer XrRect3DfFB boundingBox3DOutput
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$xrGetSpaceBoundingBox3DFB);
         try {
@@ -4182,10 +4182,10 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrGetSpaceSemanticLabelsFB.html"><code>xrGetSpaceSemanticLabelsFB</code></a>
-    public @EnumType(XrResult.class) int xrGetSpaceSemanticLabelsFB(
+    public @EnumType(XrResult.class) int getSpaceSemanticLabelsFB(
         XrSession session,
         XrSpace space,
-        @Pointer IXrSemanticLabelsFB semanticLabelsOutput
+        @Pointer XrSemanticLabelsFB semanticLabelsOutput
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$xrGetSpaceSemanticLabelsFB);
         try {
@@ -4200,10 +4200,10 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrGetSpaceBoundary2DFB.html"><code>xrGetSpaceBoundary2DFB</code></a>
-    public @EnumType(XrResult.class) int xrGetSpaceBoundary2DFB(
+    public @EnumType(XrResult.class) int getSpaceBoundary2DFB(
         XrSession session,
         XrSpace space,
-        @Pointer IXrBoundary2DFB boundary2DOutput
+        @Pointer XrBoundary2DFB boundary2DOutput
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$xrGetSpaceBoundary2DFB);
         try {
@@ -4218,10 +4218,10 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrGetSpaceRoomLayoutFB.html"><code>xrGetSpaceRoomLayoutFB</code></a>
-    public @EnumType(XrResult.class) int xrGetSpaceRoomLayoutFB(
+    public @EnumType(XrResult.class) int getSpaceRoomLayoutFB(
         XrSession session,
         XrSpace space,
-        @Pointer IXrRoomLayoutFB roomLayoutOutput
+        @Pointer XrRoomLayoutFB roomLayoutOutput
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$xrGetSpaceRoomLayoutFB);
         try {
@@ -4236,9 +4236,9 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrRequestSceneCaptureFB.html"><code>xrRequestSceneCaptureFB</code></a>
-    public @EnumType(XrResult.class) int xrRequestSceneCaptureFB(
+    public @EnumType(XrResult.class) int requestSceneCaptureFB(
         XrSession session,
-        @Pointer IXrSceneCaptureRequestInfoFB info,
+        @Pointer XrSceneCaptureRequestInfoFB info,
         @Pointer(comment="XrAsyncRequestIdFB") @Unsigned LongPtr requestId
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$xrRequestSceneCaptureFB);
@@ -4254,9 +4254,9 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrPassthroughLayerSetKeyboardHandsIntensityFB.html"><code>xrPassthroughLayerSetKeyboardHandsIntensityFB</code></a>
-    public @EnumType(XrResult.class) int xrPassthroughLayerSetKeyboardHandsIntensityFB(
+    public @EnumType(XrResult.class) int passthroughLayerSetKeyboardHandsIntensityFB(
         XrPassthroughLayerFB layer,
-        @Pointer IXrPassthroughKeyboardHandsIntensityFB intensity
+        @Pointer XrPassthroughKeyboardHandsIntensityFB intensity
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$xrPassthroughLayerSetKeyboardHandsIntensityFB);
         try {
@@ -4270,9 +4270,9 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrStartColocationDiscoveryMETA.html"><code>xrStartColocationDiscoveryMETA</code></a>
-    public @EnumType(XrResult.class) int xrStartColocationDiscoveryMETA(
+    public @EnumType(XrResult.class) int startColocationDiscoveryMETA(
         XrSession session,
-        @Pointer IXrColocationDiscoveryStartInfoMETA info,
+        @Pointer XrColocationDiscoveryStartInfoMETA info,
         @Pointer(comment="XrAsyncRequestIdFB") @Unsigned LongPtr discoveryRequestId
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$xrStartColocationDiscoveryMETA);
@@ -4288,9 +4288,9 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrStopColocationDiscoveryMETA.html"><code>xrStopColocationDiscoveryMETA</code></a>
-    public @EnumType(XrResult.class) int xrStopColocationDiscoveryMETA(
+    public @EnumType(XrResult.class) int stopColocationDiscoveryMETA(
         XrSession session,
-        @Pointer IXrColocationDiscoveryStopInfoMETA info,
+        @Pointer XrColocationDiscoveryStopInfoMETA info,
         @Pointer(comment="XrAsyncRequestIdFB") @Unsigned LongPtr requestId
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$xrStopColocationDiscoveryMETA);
@@ -4306,9 +4306,9 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrStartColocationAdvertisementMETA.html"><code>xrStartColocationAdvertisementMETA</code></a>
-    public @EnumType(XrResult.class) int xrStartColocationAdvertisementMETA(
+    public @EnumType(XrResult.class) int startColocationAdvertisementMETA(
         XrSession session,
-        @Pointer IXrColocationAdvertisementStartInfoMETA info,
+        @Pointer XrColocationAdvertisementStartInfoMETA info,
         @Pointer(comment="XrAsyncRequestIdFB") @Unsigned LongPtr advertisementRequestId
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$xrStartColocationAdvertisementMETA);
@@ -4324,9 +4324,9 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrStopColocationAdvertisementMETA.html"><code>xrStopColocationAdvertisementMETA</code></a>
-    public @EnumType(XrResult.class) int xrStopColocationAdvertisementMETA(
+    public @EnumType(XrResult.class) int stopColocationAdvertisementMETA(
         XrSession session,
-        @Pointer IXrColocationAdvertisementStopInfoMETA info,
+        @Pointer XrColocationAdvertisementStopInfoMETA info,
         @Pointer(comment="XrAsyncRequestIdFB") @Unsigned LongPtr requestId
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$xrStopColocationAdvertisementMETA);
@@ -4342,9 +4342,9 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrShareSpacesMETA.html"><code>xrShareSpacesMETA</code></a>
-    public @EnumType(XrResult.class) int xrShareSpacesMETA(
+    public @EnumType(XrResult.class) int shareSpacesMETA(
         XrSession session,
-        @Pointer IXrShareSpacesInfoMETA info,
+        @Pointer XrShareSpacesInfoMETA info,
         @Pointer(comment="XrAsyncRequestIdFB") @Unsigned LongPtr requestId
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$xrShareSpacesMETA);
@@ -4360,7 +4360,7 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrCreateSpatialAnchorStoreConnectionMSFT.html"><code>xrCreateSpatialAnchorStoreConnectionMSFT</code></a>
-    public @EnumType(XrResult.class) int xrCreateSpatialAnchorStoreConnectionMSFT(
+    public @EnumType(XrResult.class) int createSpatialAnchorStoreConnectionMSFT(
         XrSession session,
         @Pointer XrSpatialAnchorStoreConnectionMSFT.Ptr spatialAnchorStore
     ) {
@@ -4376,7 +4376,7 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrDestroySpatialAnchorStoreConnectionMSFT.html"><code>xrDestroySpatialAnchorStoreConnectionMSFT</code></a>
-    public @EnumType(XrResult.class) int xrDestroySpatialAnchorStoreConnectionMSFT(
+    public @EnumType(XrResult.class) int destroySpatialAnchorStoreConnectionMSFT(
         XrSpatialAnchorStoreConnectionMSFT spatialAnchorStore
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$xrDestroySpatialAnchorStoreConnectionMSFT);
@@ -4390,9 +4390,9 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrPersistSpatialAnchorMSFT.html"><code>xrPersistSpatialAnchorMSFT</code></a>
-    public @EnumType(XrResult.class) int xrPersistSpatialAnchorMSFT(
+    public @EnumType(XrResult.class) int persistSpatialAnchorMSFT(
         XrSpatialAnchorStoreConnectionMSFT spatialAnchorStore,
-        @Pointer IXrSpatialAnchorPersistenceInfoMSFT spatialAnchorPersistenceInfo
+        @Pointer XrSpatialAnchorPersistenceInfoMSFT spatialAnchorPersistenceInfo
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$xrPersistSpatialAnchorMSFT);
         try {
@@ -4406,7 +4406,7 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrEnumeratePersistedSpatialAnchorNamesMSFT.html"><code>xrEnumeratePersistedSpatialAnchorNamesMSFT</code></a>
-    public @EnumType(XrResult.class) int xrEnumeratePersistedSpatialAnchorNamesMSFT(
+    public @EnumType(XrResult.class) int enumeratePersistedSpatialAnchorNamesMSFT(
         XrSpatialAnchorStoreConnectionMSFT spatialAnchorStore,
         @Unsigned int spatialAnchorNameCapacityInput,
         @Unsigned IntPtr spatialAnchorNameCountOutput,
@@ -4426,9 +4426,9 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrCreateSpatialAnchorFromPersistedNameMSFT.html"><code>xrCreateSpatialAnchorFromPersistedNameMSFT</code></a>
-    public @EnumType(XrResult.class) int xrCreateSpatialAnchorFromPersistedNameMSFT(
+    public @EnumType(XrResult.class) int createSpatialAnchorFromPersistedNameMSFT(
         XrSession session,
-        @Pointer IXrSpatialAnchorFromPersistedAnchorCreateInfoMSFT spatialAnchorCreateInfo,
+        @Pointer XrSpatialAnchorFromPersistedAnchorCreateInfoMSFT spatialAnchorCreateInfo,
         @Pointer XrSpatialAnchorMSFT.Ptr spatialAnchor
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$xrCreateSpatialAnchorFromPersistedNameMSFT);
@@ -4444,9 +4444,9 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrUnpersistSpatialAnchorMSFT.html"><code>xrUnpersistSpatialAnchorMSFT</code></a>
-    public @EnumType(XrResult.class) int xrUnpersistSpatialAnchorMSFT(
+    public @EnumType(XrResult.class) int unpersistSpatialAnchorMSFT(
         XrSpatialAnchorStoreConnectionMSFT spatialAnchorStore,
-        @Pointer IXrSpatialAnchorPersistenceNameMSFT spatialAnchorPersistenceName
+        @Pointer XrSpatialAnchorPersistenceNameMSFT spatialAnchorPersistenceName
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$xrUnpersistSpatialAnchorMSFT);
         try {
@@ -4460,7 +4460,7 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrClearSpatialAnchorStoreMSFT.html"><code>xrClearSpatialAnchorStoreMSFT</code></a>
-    public @EnumType(XrResult.class) int xrClearSpatialAnchorStoreMSFT(
+    public @EnumType(XrResult.class) int clearSpatialAnchorStoreMSFT(
         XrSpatialAnchorStoreConnectionMSFT spatialAnchorStore
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$xrClearSpatialAnchorStoreMSFT);
@@ -4474,9 +4474,9 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrCreateBodyTrackerBD.html"><code>xrCreateBodyTrackerBD</code></a>
-    public @EnumType(XrResult.class) int xrCreateBodyTrackerBD(
+    public @EnumType(XrResult.class) int createBodyTrackerBD(
         XrSession session,
-        @Pointer IXrBodyTrackerCreateInfoBD createInfo,
+        @Pointer XrBodyTrackerCreateInfoBD createInfo,
         @Pointer XrBodyTrackerBD.Ptr bodyTracker
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$xrCreateBodyTrackerBD);
@@ -4492,7 +4492,7 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrDestroyBodyTrackerBD.html"><code>xrDestroyBodyTrackerBD</code></a>
-    public @EnumType(XrResult.class) int xrDestroyBodyTrackerBD(
+    public @EnumType(XrResult.class) int destroyBodyTrackerBD(
         XrBodyTrackerBD bodyTracker
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$xrDestroyBodyTrackerBD);
@@ -4506,10 +4506,10 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrLocateBodyJointsBD.html"><code>xrLocateBodyJointsBD</code></a>
-    public @EnumType(XrResult.class) int xrLocateBodyJointsBD(
+    public @EnumType(XrResult.class) int locateBodyJointsBD(
         XrBodyTrackerBD bodyTracker,
-        @Pointer IXrBodyJointsLocateInfoBD locateInfo,
-        @Pointer IXrBodyJointLocationsBD locations
+        @Pointer XrBodyJointsLocateInfoBD locateInfo,
+        @Pointer XrBodyJointLocationsBD locations
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$xrLocateBodyJointsBD);
         try {
@@ -4524,9 +4524,9 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrCreateFacialTrackerHTC.html"><code>xrCreateFacialTrackerHTC</code></a>
-    public @EnumType(XrResult.class) int xrCreateFacialTrackerHTC(
+    public @EnumType(XrResult.class) int createFacialTrackerHTC(
         XrSession session,
-        @Pointer IXrFacialTrackerCreateInfoHTC createInfo,
+        @Pointer XrFacialTrackerCreateInfoHTC createInfo,
         @Pointer XrFacialTrackerHTC.Ptr facialTracker
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$xrCreateFacialTrackerHTC);
@@ -4542,7 +4542,7 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrDestroyFacialTrackerHTC.html"><code>xrDestroyFacialTrackerHTC</code></a>
-    public @EnumType(XrResult.class) int xrDestroyFacialTrackerHTC(
+    public @EnumType(XrResult.class) int destroyFacialTrackerHTC(
         XrFacialTrackerHTC facialTracker
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$xrDestroyFacialTrackerHTC);
@@ -4556,9 +4556,9 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrGetFacialExpressionsHTC.html"><code>xrGetFacialExpressionsHTC</code></a>
-    public @EnumType(XrResult.class) int xrGetFacialExpressionsHTC(
+    public @EnumType(XrResult.class) int getFacialExpressionsHTC(
         XrFacialTrackerHTC facialTracker,
-        @Pointer IXrFacialExpressionsHTC facialExpressions
+        @Pointer XrFacialExpressionsHTC facialExpressions
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$xrGetFacialExpressionsHTC);
         try {
@@ -4572,9 +4572,9 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrCreatePassthroughHTC.html"><code>xrCreatePassthroughHTC</code></a>
-    public @EnumType(XrResult.class) int xrCreatePassthroughHTC(
+    public @EnumType(XrResult.class) int createPassthroughHTC(
         XrSession session,
-        @Pointer IXrPassthroughCreateInfoHTC createInfo,
+        @Pointer XrPassthroughCreateInfoHTC createInfo,
         @Pointer XrPassthroughHTC.Ptr passthrough
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$xrCreatePassthroughHTC);
@@ -4590,7 +4590,7 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrDestroyPassthroughHTC.html"><code>xrDestroyPassthroughHTC</code></a>
-    public @EnumType(XrResult.class) int xrDestroyPassthroughHTC(
+    public @EnumType(XrResult.class) int destroyPassthroughHTC(
         XrPassthroughHTC passthrough
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$xrDestroyPassthroughHTC);
@@ -4604,9 +4604,9 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrCreateSpatialAnchorHTC.html"><code>xrCreateSpatialAnchorHTC</code></a>
-    public @EnumType(XrResult.class) int xrCreateSpatialAnchorHTC(
+    public @EnumType(XrResult.class) int createSpatialAnchorHTC(
         XrSession session,
-        @Pointer IXrSpatialAnchorCreateInfoHTC createInfo,
+        @Pointer XrSpatialAnchorCreateInfoHTC createInfo,
         @Pointer XrSpace.Ptr anchor
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$xrCreateSpatialAnchorHTC);
@@ -4622,9 +4622,9 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrGetSpatialAnchorNameHTC.html"><code>xrGetSpatialAnchorNameHTC</code></a>
-    public @EnumType(XrResult.class) int xrGetSpatialAnchorNameHTC(
+    public @EnumType(XrResult.class) int getSpatialAnchorNameHTC(
         XrSpace anchor,
-        @Pointer IXrSpatialAnchorNameHTC name
+        @Pointer XrSpatialAnchorNameHTC name
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$xrGetSpatialAnchorNameHTC);
         try {
@@ -4638,7 +4638,7 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrEnumerateViveTrackerPathsHTCX.html"><code>xrEnumerateViveTrackerPathsHTCX</code></a>
-    public @EnumType(XrResult.class) int xrEnumerateViveTrackerPathsHTCX(
+    public @EnumType(XrResult.class) int enumerateViveTrackerPathsHTCX(
         XrInstance instance,
         @Unsigned int pathCapacityInput,
         @Unsigned IntPtr pathCountOutput,
@@ -4658,9 +4658,9 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrCreateBodyTrackerHTC.html"><code>xrCreateBodyTrackerHTC</code></a>
-    public @EnumType(XrResult.class) int xrCreateBodyTrackerHTC(
+    public @EnumType(XrResult.class) int createBodyTrackerHTC(
         XrSession session,
-        @Pointer IXrBodyTrackerCreateInfoHTC createInfo,
+        @Pointer XrBodyTrackerCreateInfoHTC createInfo,
         @Pointer XrBodyTrackerHTC.Ptr bodyTracker
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$xrCreateBodyTrackerHTC);
@@ -4676,7 +4676,7 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrDestroyBodyTrackerHTC.html"><code>xrDestroyBodyTrackerHTC</code></a>
-    public @EnumType(XrResult.class) int xrDestroyBodyTrackerHTC(
+    public @EnumType(XrResult.class) int destroyBodyTrackerHTC(
         XrBodyTrackerHTC bodyTracker
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$xrDestroyBodyTrackerHTC);
@@ -4690,10 +4690,10 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrLocateBodyJointsHTC.html"><code>xrLocateBodyJointsHTC</code></a>
-    public @EnumType(XrResult.class) int xrLocateBodyJointsHTC(
+    public @EnumType(XrResult.class) int locateBodyJointsHTC(
         XrBodyTrackerHTC bodyTracker,
-        @Pointer IXrBodyJointsLocateInfoHTC locateInfo,
-        @Pointer IXrBodyJointLocationsHTC locations
+        @Pointer XrBodyJointsLocateInfoHTC locateInfo,
+        @Pointer XrBodyJointLocationsHTC locations
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$xrLocateBodyJointsHTC);
         try {
@@ -4708,11 +4708,11 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrGetBodySkeletonHTC.html"><code>xrGetBodySkeletonHTC</code></a>
-    public @EnumType(XrResult.class) int xrGetBodySkeletonHTC(
+    public @EnumType(XrResult.class) int getBodySkeletonHTC(
         XrBodyTrackerHTC bodyTracker,
         XrSpace baseSpace,
         @Unsigned int skeletonGenerationId,
-        @Pointer IXrBodySkeletonHTC skeleton
+        @Pointer XrBodySkeletonHTC skeleton
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$xrGetBodySkeletonHTC);
         try {
@@ -4728,7 +4728,7 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrSetMarkerTrackingVARJO.html"><code>xrSetMarkerTrackingVARJO</code></a>
-    public @EnumType(XrResult.class) int xrSetMarkerTrackingVARJO(
+    public @EnumType(XrResult.class) int setMarkerTrackingVARJO(
         XrSession session,
         @NativeType("XrBool32") @Unsigned int enabled
     ) {
@@ -4744,7 +4744,7 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrSetMarkerTrackingTimeoutVARJO.html"><code>xrSetMarkerTrackingTimeoutVARJO</code></a>
-    public @EnumType(XrResult.class) int xrSetMarkerTrackingTimeoutVARJO(
+    public @EnumType(XrResult.class) int setMarkerTrackingTimeoutVARJO(
         XrSession session,
         @Unsigned long markerId,
         @NativeType("XrDuration") long timeout
@@ -4762,7 +4762,7 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrSetMarkerTrackingPredictionVARJO.html"><code>xrSetMarkerTrackingPredictionVARJO</code></a>
-    public @EnumType(XrResult.class) int xrSetMarkerTrackingPredictionVARJO(
+    public @EnumType(XrResult.class) int setMarkerTrackingPredictionVARJO(
         XrSession session,
         @Unsigned long markerId,
         @NativeType("XrBool32") @Unsigned int enable
@@ -4780,10 +4780,10 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrGetMarkerSizeVARJO.html"><code>xrGetMarkerSizeVARJO</code></a>
-    public @EnumType(XrResult.class) int xrGetMarkerSizeVARJO(
+    public @EnumType(XrResult.class) int getMarkerSizeVARJO(
         XrSession session,
         @Unsigned long markerId,
-        @Pointer IXrExtent2Df size
+        @Pointer XrExtent2Df size
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$xrGetMarkerSizeVARJO);
         try {
@@ -4798,9 +4798,9 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrCreateMarkerSpaceVARJO.html"><code>xrCreateMarkerSpaceVARJO</code></a>
-    public @EnumType(XrResult.class) int xrCreateMarkerSpaceVARJO(
+    public @EnumType(XrResult.class) int createMarkerSpaceVARJO(
         XrSession session,
-        @Pointer IXrMarkerSpaceCreateInfoVARJO createInfo,
+        @Pointer XrMarkerSpaceCreateInfoVARJO createInfo,
         @Pointer XrSpace.Ptr space
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$xrCreateMarkerSpaceVARJO);
@@ -4816,9 +4816,9 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrSetDigitalLensControlALMALENCE.html"><code>xrSetDigitalLensControlALMALENCE</code></a>
-    public @EnumType(XrResult.class) int xrSetDigitalLensControlALMALENCE(
+    public @EnumType(XrResult.class) int setDigitalLensControlALMALENCE(
         XrSession session,
-        @Pointer IXrDigitalLensControlALMALENCE digitalLensControl
+        @Pointer XrDigitalLensControlALMALENCE digitalLensControl
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$xrSetDigitalLensControlALMALENCE);
         try {
@@ -4832,7 +4832,7 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrSetViewOffsetVARJO.html"><code>xrSetViewOffsetVARJO</code></a>
-    public @EnumType(XrResult.class) int xrSetViewOffsetVARJO(
+    public @EnumType(XrResult.class) int setViewOffsetVARJO(
         XrSession session,
         float offset
     ) {
@@ -4848,7 +4848,7 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrEnumerateExternalCamerasOCULUS.html"><code>xrEnumerateExternalCamerasOCULUS</code></a>
-    public @EnumType(XrResult.class) int xrEnumerateExternalCamerasOCULUS(
+    public @EnumType(XrResult.class) int enumerateExternalCamerasOCULUS(
         XrSession session,
         @Unsigned int cameraCapacityInput,
         @Unsigned IntPtr cameraCountOutput,
@@ -4868,9 +4868,9 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrCreatePassthroughColorLutMETA.html"><code>xrCreatePassthroughColorLutMETA</code></a>
-    public @EnumType(XrResult.class) int xrCreatePassthroughColorLutMETA(
+    public @EnumType(XrResult.class) int createPassthroughColorLutMETA(
         XrPassthroughFB passthrough,
-        @Pointer IXrPassthroughColorLutCreateInfoMETA createInfo,
+        @Pointer XrPassthroughColorLutCreateInfoMETA createInfo,
         @Pointer XrPassthroughColorLutMETA.Ptr colorLut
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$xrCreatePassthroughColorLutMETA);
@@ -4886,7 +4886,7 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrDestroyPassthroughColorLutMETA.html"><code>xrDestroyPassthroughColorLutMETA</code></a>
-    public @EnumType(XrResult.class) int xrDestroyPassthroughColorLutMETA(
+    public @EnumType(XrResult.class) int destroyPassthroughColorLutMETA(
         XrPassthroughColorLutMETA colorLut
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$xrDestroyPassthroughColorLutMETA);
@@ -4900,9 +4900,9 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrUpdatePassthroughColorLutMETA.html"><code>xrUpdatePassthroughColorLutMETA</code></a>
-    public @EnumType(XrResult.class) int xrUpdatePassthroughColorLutMETA(
+    public @EnumType(XrResult.class) int updatePassthroughColorLutMETA(
         XrPassthroughColorLutMETA colorLut,
-        @Pointer IXrPassthroughColorLutUpdateInfoMETA updateInfo
+        @Pointer XrPassthroughColorLutUpdateInfoMETA updateInfo
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$xrUpdatePassthroughColorLutMETA);
         try {
@@ -4916,7 +4916,7 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrEnumeratePerformanceMetricsCounterPathsMETA.html"><code>xrEnumeratePerformanceMetricsCounterPathsMETA</code></a>
-    public @EnumType(XrResult.class) int xrEnumeratePerformanceMetricsCounterPathsMETA(
+    public @EnumType(XrResult.class) int enumeratePerformanceMetricsCounterPathsMETA(
         XrInstance instance,
         @Unsigned int counterPathCapacityInput,
         @Unsigned IntPtr counterPathCountOutput,
@@ -4936,9 +4936,9 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrSetPerformanceMetricsStateMETA.html"><code>xrSetPerformanceMetricsStateMETA</code></a>
-    public @EnumType(XrResult.class) int xrSetPerformanceMetricsStateMETA(
+    public @EnumType(XrResult.class) int setPerformanceMetricsStateMETA(
         XrSession session,
-        @Pointer IXrPerformanceMetricsStateMETA state
+        @Pointer XrPerformanceMetricsStateMETA state
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$xrSetPerformanceMetricsStateMETA);
         try {
@@ -4952,9 +4952,9 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrGetPerformanceMetricsStateMETA.html"><code>xrGetPerformanceMetricsStateMETA</code></a>
-    public @EnumType(XrResult.class) int xrGetPerformanceMetricsStateMETA(
+    public @EnumType(XrResult.class) int getPerformanceMetricsStateMETA(
         XrSession session,
-        @Pointer IXrPerformanceMetricsStateMETA state
+        @Pointer XrPerformanceMetricsStateMETA state
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$xrGetPerformanceMetricsStateMETA);
         try {
@@ -4968,10 +4968,10 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrQueryPerformanceMetricsCounterMETA.html"><code>xrQueryPerformanceMetricsCounterMETA</code></a>
-    public @EnumType(XrResult.class) int xrQueryPerformanceMetricsCounterMETA(
+    public @EnumType(XrResult.class) int queryPerformanceMetricsCounterMETA(
         XrSession session,
         @NativeType("XrPath") @Unsigned long counterPath,
-        @Pointer IXrPerformanceMetricsCounterMETA counter
+        @Pointer XrPerformanceMetricsCounterMETA counter
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$xrQueryPerformanceMetricsCounterMETA);
         try {
@@ -4986,9 +4986,9 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrGetPassthroughPreferencesMETA.html"><code>xrGetPassthroughPreferencesMETA</code></a>
-    public @EnumType(XrResult.class) int xrGetPassthroughPreferencesMETA(
+    public @EnumType(XrResult.class) int getPassthroughPreferencesMETA(
         XrSession session,
-        @Pointer IXrPassthroughPreferencesMETA preferences
+        @Pointer XrPassthroughPreferencesMETA preferences
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$xrGetPassthroughPreferencesMETA);
         try {
@@ -5002,9 +5002,9 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrApplyFoveationHTC.html"><code>xrApplyFoveationHTC</code></a>
-    public @EnumType(XrResult.class) int xrApplyFoveationHTC(
+    public @EnumType(XrResult.class) int applyFoveationHTC(
         XrSession session,
-        @Pointer IXrFoveationApplyInfoHTC applyInfo
+        @Pointer XrFoveationApplyInfoHTC applyInfo
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$xrApplyFoveationHTC);
         try {
@@ -5018,9 +5018,9 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrCreateSpaceFromCoordinateFrameUIDML.html"><code>xrCreateSpaceFromCoordinateFrameUIDML</code></a>
-    public @EnumType(XrResult.class) int xrCreateSpaceFromCoordinateFrameUIDML(
+    public @EnumType(XrResult.class) int createSpaceFromCoordinateFrameUIDML(
         XrSession session,
-        @Pointer IXrCoordinateSpaceCreateInfoML createInfo,
+        @Pointer XrCoordinateSpaceCreateInfoML createInfo,
         @Pointer XrSpace.Ptr space
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$xrCreateSpaceFromCoordinateFrameUIDML);
@@ -5036,10 +5036,10 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrGetDeviceSampleRateFB.html"><code>xrGetDeviceSampleRateFB</code></a>
-    public @EnumType(XrResult.class) int xrGetDeviceSampleRateFB(
+    public @EnumType(XrResult.class) int getDeviceSampleRateFB(
         XrSession session,
-        @Pointer IXrHapticActionInfo hapticActionInfo,
-        @Pointer IXrDevicePcmSampleRateGetInfoFB deviceSampleRate
+        @Pointer XrHapticActionInfo hapticActionInfo,
+        @Pointer XrDevicePcmSampleRateGetInfoFB deviceSampleRate
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$xrGetDeviceSampleRateFB);
         try {
@@ -5054,7 +5054,7 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrSetTrackingOptimizationSettingsHintQCOM.html"><code>xrSetTrackingOptimizationSettingsHintQCOM</code></a>
-    public @EnumType(XrResult.class) int xrSetTrackingOptimizationSettingsHintQCOM(
+    public @EnumType(XrResult.class) int setTrackingOptimizationSettingsHintQCOM(
         XrSession session,
         @EnumType(XrTrackingOptimizationSettingsDomainQCOM.class) int domain,
         @EnumType(XrTrackingOptimizationSettingsHintQCOM.class) int hint
@@ -5072,9 +5072,9 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrCreateSpaceUserFB.html"><code>xrCreateSpaceUserFB</code></a>
-    public @EnumType(XrResult.class) int xrCreateSpaceUserFB(
+    public @EnumType(XrResult.class) int createSpaceUserFB(
         XrSession session,
-        @Pointer IXrSpaceUserCreateInfoFB info,
+        @Pointer XrSpaceUserCreateInfoFB info,
         @Pointer XrSpaceUserFB.Ptr user
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$xrCreateSpaceUserFB);
@@ -5090,7 +5090,7 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrGetSpaceUserIdFB.html"><code>xrGetSpaceUserIdFB</code></a>
-    public @EnumType(XrResult.class) int xrGetSpaceUserIdFB(
+    public @EnumType(XrResult.class) int getSpaceUserIdFB(
         XrSpaceUserFB user,
         @Pointer(comment="XrSpaceUserIdFB") @Unsigned LongPtr userId
     ) {
@@ -5106,7 +5106,7 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrDestroySpaceUserFB.html"><code>xrDestroySpaceUserFB</code></a>
-    public @EnumType(XrResult.class) int xrDestroySpaceUserFB(
+    public @EnumType(XrResult.class) int destroySpaceUserFB(
         XrSpaceUserFB user
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$xrDestroySpaceUserFB);
@@ -5120,10 +5120,10 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrGetRecommendedLayerResolutionMETA.html"><code>xrGetRecommendedLayerResolutionMETA</code></a>
-    public @EnumType(XrResult.class) int xrGetRecommendedLayerResolutionMETA(
+    public @EnumType(XrResult.class) int getRecommendedLayerResolutionMETA(
         XrSession session,
-        @Pointer IXrRecommendedLayerResolutionGetInfoMETA info,
-        @Pointer IXrRecommendedLayerResolutionMETA resolution
+        @Pointer XrRecommendedLayerResolutionGetInfoMETA info,
+        @Pointer XrRecommendedLayerResolutionMETA resolution
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$xrGetRecommendedLayerResolutionMETA);
         try {
@@ -5138,9 +5138,9 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrApplyForceFeedbackCurlMNDX.html"><code>xrApplyForceFeedbackCurlMNDX</code></a>
-    public @EnumType(XrResult.class) int xrApplyForceFeedbackCurlMNDX(
+    public @EnumType(XrResult.class) int applyForceFeedbackCurlMNDX(
         XrHandTrackerEXT handTracker,
-        @Pointer IXrForceFeedbackCurlApplyLocationsMNDX locations
+        @Pointer XrForceFeedbackCurlApplyLocationsMNDX locations
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$xrApplyForceFeedbackCurlMNDX);
         try {
@@ -5154,9 +5154,9 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrCreatePlaneDetectorEXT.html"><code>xrCreatePlaneDetectorEXT</code></a>
-    public @EnumType(XrResult.class) int xrCreatePlaneDetectorEXT(
+    public @EnumType(XrResult.class) int createPlaneDetectorEXT(
         XrSession session,
-        @Pointer IXrPlaneDetectorCreateInfoEXT createInfo,
+        @Pointer XrPlaneDetectorCreateInfoEXT createInfo,
         @Pointer XrPlaneDetectorEXT.Ptr planeDetector
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$xrCreatePlaneDetectorEXT);
@@ -5172,7 +5172,7 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrDestroyPlaneDetectorEXT.html"><code>xrDestroyPlaneDetectorEXT</code></a>
-    public @EnumType(XrResult.class) int xrDestroyPlaneDetectorEXT(
+    public @EnumType(XrResult.class) int destroyPlaneDetectorEXT(
         XrPlaneDetectorEXT planeDetector
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$xrDestroyPlaneDetectorEXT);
@@ -5186,9 +5186,9 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrBeginPlaneDetectionEXT.html"><code>xrBeginPlaneDetectionEXT</code></a>
-    public @EnumType(XrResult.class) int xrBeginPlaneDetectionEXT(
+    public @EnumType(XrResult.class) int beginPlaneDetectionEXT(
         XrPlaneDetectorEXT planeDetector,
-        @Pointer IXrPlaneDetectorBeginInfoEXT beginInfo
+        @Pointer XrPlaneDetectorBeginInfoEXT beginInfo
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$xrBeginPlaneDetectionEXT);
         try {
@@ -5202,7 +5202,7 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrGetPlaneDetectionStateEXT.html"><code>xrGetPlaneDetectionStateEXT</code></a>
-    public @EnumType(XrResult.class) int xrGetPlaneDetectionStateEXT(
+    public @EnumType(XrResult.class) int getPlaneDetectionStateEXT(
         XrPlaneDetectorEXT planeDetector,
         @EnumType(XrPlaneDetectionStateEXT.class) IntPtr state
     ) {
@@ -5218,10 +5218,10 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrGetPlaneDetectionsEXT.html"><code>xrGetPlaneDetectionsEXT</code></a>
-    public @EnumType(XrResult.class) int xrGetPlaneDetectionsEXT(
+    public @EnumType(XrResult.class) int getPlaneDetectionsEXT(
         XrPlaneDetectorEXT planeDetector,
-        @Pointer IXrPlaneDetectorGetInfoEXT info,
-        @Pointer IXrPlaneDetectorLocationsEXT locations
+        @Pointer XrPlaneDetectorGetInfoEXT info,
+        @Pointer XrPlaneDetectorLocationsEXT locations
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$xrGetPlaneDetectionsEXT);
         try {
@@ -5236,11 +5236,11 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrGetPlanePolygonBufferEXT.html"><code>xrGetPlanePolygonBufferEXT</code></a>
-    public @EnumType(XrResult.class) int xrGetPlanePolygonBufferEXT(
+    public @EnumType(XrResult.class) int getPlanePolygonBufferEXT(
         XrPlaneDetectorEXT planeDetector,
         @Unsigned long planeId,
         @Unsigned int polygonBufferIndex,
-        @Pointer IXrPlaneDetectorPolygonBufferEXT polygonBuffer
+        @Pointer XrPlaneDetectorPolygonBufferEXT polygonBuffer
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$xrGetPlanePolygonBufferEXT);
         try {
@@ -5256,9 +5256,9 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrCreateVirtualKeyboardMETA.html"><code>xrCreateVirtualKeyboardMETA</code></a>
-    public @EnumType(XrResult.class) int xrCreateVirtualKeyboardMETA(
+    public @EnumType(XrResult.class) int createVirtualKeyboardMETA(
         XrSession session,
-        @Pointer IXrVirtualKeyboardCreateInfoMETA createInfo,
+        @Pointer XrVirtualKeyboardCreateInfoMETA createInfo,
         @Pointer XrVirtualKeyboardMETA.Ptr keyboard
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$xrCreateVirtualKeyboardMETA);
@@ -5274,7 +5274,7 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrDestroyVirtualKeyboardMETA.html"><code>xrDestroyVirtualKeyboardMETA</code></a>
-    public @EnumType(XrResult.class) int xrDestroyVirtualKeyboardMETA(
+    public @EnumType(XrResult.class) int destroyVirtualKeyboardMETA(
         XrVirtualKeyboardMETA keyboard
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$xrDestroyVirtualKeyboardMETA);
@@ -5288,10 +5288,10 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrCreateVirtualKeyboardSpaceMETA.html"><code>xrCreateVirtualKeyboardSpaceMETA</code></a>
-    public @EnumType(XrResult.class) int xrCreateVirtualKeyboardSpaceMETA(
+    public @EnumType(XrResult.class) int createVirtualKeyboardSpaceMETA(
         XrSession session,
         XrVirtualKeyboardMETA keyboard,
-        @Pointer IXrVirtualKeyboardSpaceCreateInfoMETA createInfo,
+        @Pointer XrVirtualKeyboardSpaceCreateInfoMETA createInfo,
         @Pointer XrSpace.Ptr keyboardSpace
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$xrCreateVirtualKeyboardSpaceMETA);
@@ -5308,9 +5308,9 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrSuggestVirtualKeyboardLocationMETA.html"><code>xrSuggestVirtualKeyboardLocationMETA</code></a>
-    public @EnumType(XrResult.class) int xrSuggestVirtualKeyboardLocationMETA(
+    public @EnumType(XrResult.class) int suggestVirtualKeyboardLocationMETA(
         XrVirtualKeyboardMETA keyboard,
-        @Pointer IXrVirtualKeyboardLocationInfoMETA locationInfo
+        @Pointer XrVirtualKeyboardLocationInfoMETA locationInfo
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$xrSuggestVirtualKeyboardLocationMETA);
         try {
@@ -5324,7 +5324,7 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrGetVirtualKeyboardScaleMETA.html"><code>xrGetVirtualKeyboardScaleMETA</code></a>
-    public @EnumType(XrResult.class) int xrGetVirtualKeyboardScaleMETA(
+    public @EnumType(XrResult.class) int getVirtualKeyboardScaleMETA(
         XrVirtualKeyboardMETA keyboard,
         FloatPtr scale
     ) {
@@ -5340,9 +5340,9 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrSetVirtualKeyboardModelVisibilityMETA.html"><code>xrSetVirtualKeyboardModelVisibilityMETA</code></a>
-    public @EnumType(XrResult.class) int xrSetVirtualKeyboardModelVisibilityMETA(
+    public @EnumType(XrResult.class) int setVirtualKeyboardModelVisibilityMETA(
         XrVirtualKeyboardMETA keyboard,
-        @Pointer IXrVirtualKeyboardModelVisibilitySetInfoMETA modelVisibility
+        @Pointer XrVirtualKeyboardModelVisibilitySetInfoMETA modelVisibility
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$xrSetVirtualKeyboardModelVisibilityMETA);
         try {
@@ -5356,9 +5356,9 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrGetVirtualKeyboardModelAnimationStatesMETA.html"><code>xrGetVirtualKeyboardModelAnimationStatesMETA</code></a>
-    public @EnumType(XrResult.class) int xrGetVirtualKeyboardModelAnimationStatesMETA(
+    public @EnumType(XrResult.class) int getVirtualKeyboardModelAnimationStatesMETA(
         XrVirtualKeyboardMETA keyboard,
-        @Pointer IXrVirtualKeyboardModelAnimationStatesMETA animationStates
+        @Pointer XrVirtualKeyboardModelAnimationStatesMETA animationStates
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$xrGetVirtualKeyboardModelAnimationStatesMETA);
         try {
@@ -5372,7 +5372,7 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrGetVirtualKeyboardDirtyTexturesMETA.html"><code>xrGetVirtualKeyboardDirtyTexturesMETA</code></a>
-    public @EnumType(XrResult.class) int xrGetVirtualKeyboardDirtyTexturesMETA(
+    public @EnumType(XrResult.class) int getVirtualKeyboardDirtyTexturesMETA(
         XrVirtualKeyboardMETA keyboard,
         @Unsigned int textureIdCapacityInput,
         @Unsigned IntPtr textureIdCountOutput,
@@ -5392,10 +5392,10 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrGetVirtualKeyboardTextureDataMETA.html"><code>xrGetVirtualKeyboardTextureDataMETA</code></a>
-    public @EnumType(XrResult.class) int xrGetVirtualKeyboardTextureDataMETA(
+    public @EnumType(XrResult.class) int getVirtualKeyboardTextureDataMETA(
         XrVirtualKeyboardMETA keyboard,
         @Unsigned long textureId,
-        @Pointer IXrVirtualKeyboardTextureDataMETA textureData
+        @Pointer XrVirtualKeyboardTextureDataMETA textureData
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$xrGetVirtualKeyboardTextureDataMETA);
         try {
@@ -5410,10 +5410,10 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrSendVirtualKeyboardInputMETA.html"><code>xrSendVirtualKeyboardInputMETA</code></a>
-    public @EnumType(XrResult.class) int xrSendVirtualKeyboardInputMETA(
+    public @EnumType(XrResult.class) int sendVirtualKeyboardInputMETA(
         XrVirtualKeyboardMETA keyboard,
-        @Pointer IXrVirtualKeyboardInputInfoMETA info,
-        @Pointer IXrPosef interactorRootPose
+        @Pointer XrVirtualKeyboardInputInfoMETA info,
+        @Pointer XrPosef interactorRootPose
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$xrSendVirtualKeyboardInputMETA);
         try {
@@ -5428,9 +5428,9 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrChangeVirtualKeyboardTextContextMETA.html"><code>xrChangeVirtualKeyboardTextContextMETA</code></a>
-    public @EnumType(XrResult.class) int xrChangeVirtualKeyboardTextContextMETA(
+    public @EnumType(XrResult.class) int changeVirtualKeyboardTextContextMETA(
         XrVirtualKeyboardMETA keyboard,
-        @Pointer IXrVirtualKeyboardTextContextChangeInfoMETA changeInfo
+        @Pointer XrVirtualKeyboardTextContextChangeInfoMETA changeInfo
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$xrChangeVirtualKeyboardTextContextMETA);
         try {
@@ -5444,9 +5444,9 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrEnableUserCalibrationEventsML.html"><code>xrEnableUserCalibrationEventsML</code></a>
-    public @EnumType(XrResult.class) int xrEnableUserCalibrationEventsML(
+    public @EnumType(XrResult.class) int enableUserCalibrationEventsML(
         XrInstance instance,
-        @Pointer IXrUserCalibrationEnableEventsInfoML enableInfo
+        @Pointer XrUserCalibrationEnableEventsInfoML enableInfo
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$xrEnableUserCalibrationEventsML);
         try {
@@ -5460,9 +5460,9 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrEnableLocalizationEventsML.html"><code>xrEnableLocalizationEventsML</code></a>
-    public @EnumType(XrResult.class) int xrEnableLocalizationEventsML(
+    public @EnumType(XrResult.class) int enableLocalizationEventsML(
         XrSession session,
-        @Pointer IXrLocalizationEnableEventsInfoML info
+        @Pointer XrLocalizationEnableEventsInfoML info
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$xrEnableLocalizationEventsML);
         try {
@@ -5476,9 +5476,9 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrQueryLocalizationMapsML.html"><code>xrQueryLocalizationMapsML</code></a>
-    public @EnumType(XrResult.class) int xrQueryLocalizationMapsML(
+    public @EnumType(XrResult.class) int queryLocalizationMapsML(
         XrSession session,
-        @Nullable @Pointer IXrLocalizationMapQueryInfoBaseHeaderML queryInfo,
+        @Nullable @Pointer XrLocalizationMapQueryInfoBaseHeaderML queryInfo,
         @Unsigned int mapCapacityInput,
         @Unsigned IntPtr mapCountOutput,
         @Nullable @Pointer IXrLocalizationMapML maps
@@ -5498,9 +5498,9 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrRequestMapLocalizationML.html"><code>xrRequestMapLocalizationML</code></a>
-    public @EnumType(XrResult.class) int xrRequestMapLocalizationML(
+    public @EnumType(XrResult.class) int requestMapLocalizationML(
         XrSession session,
-        @Pointer IXrMapLocalizationRequestInfoML requestInfo
+        @Pointer XrMapLocalizationRequestInfoML requestInfo
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$xrRequestMapLocalizationML);
         try {
@@ -5514,10 +5514,10 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrImportLocalizationMapML.html"><code>xrImportLocalizationMapML</code></a>
-    public @EnumType(XrResult.class) int xrImportLocalizationMapML(
+    public @EnumType(XrResult.class) int importLocalizationMapML(
         XrSession session,
-        @Pointer IXrLocalizationMapImportInfoML importInfo,
-        @Nullable @Pointer IXrUuidEXT mapUuid
+        @Pointer XrLocalizationMapImportInfoML importInfo,
+        @Nullable @Pointer XrUuidEXT mapUuid
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$xrImportLocalizationMapML);
         try {
@@ -5532,9 +5532,9 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrCreateExportedLocalizationMapML.html"><code>xrCreateExportedLocalizationMapML</code></a>
-    public @EnumType(XrResult.class) int xrCreateExportedLocalizationMapML(
+    public @EnumType(XrResult.class) int createExportedLocalizationMapML(
         XrSession session,
-        @Pointer IXrUuidEXT mapUuid,
+        @Pointer XrUuidEXT mapUuid,
         @Pointer XrExportedLocalizationMapML.Ptr map
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$xrCreateExportedLocalizationMapML);
@@ -5550,7 +5550,7 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrDestroyExportedLocalizationMapML.html"><code>xrDestroyExportedLocalizationMapML</code></a>
-    public @EnumType(XrResult.class) int xrDestroyExportedLocalizationMapML(
+    public @EnumType(XrResult.class) int destroyExportedLocalizationMapML(
         XrExportedLocalizationMapML map
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$xrDestroyExportedLocalizationMapML);
@@ -5564,7 +5564,7 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrGetExportedLocalizationMapDataML.html"><code>xrGetExportedLocalizationMapDataML</code></a>
-    public @EnumType(XrResult.class) int xrGetExportedLocalizationMapDataML(
+    public @EnumType(XrResult.class) int getExportedLocalizationMapDataML(
         XrExportedLocalizationMapML map,
         @Unsigned int bufferCapacityInput,
         @Unsigned IntPtr bufferCountOutput,
@@ -5584,9 +5584,9 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrCreateMarkerDetectorML.html"><code>xrCreateMarkerDetectorML</code></a>
-    public @EnumType(XrResult.class) int xrCreateMarkerDetectorML(
+    public @EnumType(XrResult.class) int createMarkerDetectorML(
         XrSession session,
-        @Pointer IXrMarkerDetectorCreateInfoML createInfo,
+        @Pointer XrMarkerDetectorCreateInfoML createInfo,
         @Pointer XrMarkerDetectorML.Ptr markerDetector
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$xrCreateMarkerDetectorML);
@@ -5602,7 +5602,7 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrDestroyMarkerDetectorML.html"><code>xrDestroyMarkerDetectorML</code></a>
-    public @EnumType(XrResult.class) int xrDestroyMarkerDetectorML(
+    public @EnumType(XrResult.class) int destroyMarkerDetectorML(
         XrMarkerDetectorML markerDetector
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$xrDestroyMarkerDetectorML);
@@ -5616,9 +5616,9 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrSnapshotMarkerDetectorML.html"><code>xrSnapshotMarkerDetectorML</code></a>
-    public @EnumType(XrResult.class) int xrSnapshotMarkerDetectorML(
+    public @EnumType(XrResult.class) int snapshotMarkerDetectorML(
         XrMarkerDetectorML markerDetector,
-        @Pointer IXrMarkerDetectorSnapshotInfoML snapshotInfo
+        @Pointer XrMarkerDetectorSnapshotInfoML snapshotInfo
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$xrSnapshotMarkerDetectorML);
         try {
@@ -5632,9 +5632,9 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrGetMarkerDetectorStateML.html"><code>xrGetMarkerDetectorStateML</code></a>
-    public @EnumType(XrResult.class) int xrGetMarkerDetectorStateML(
+    public @EnumType(XrResult.class) int getMarkerDetectorStateML(
         XrMarkerDetectorML markerDetector,
-        @Pointer IXrMarkerDetectorStateML state
+        @Pointer XrMarkerDetectorStateML state
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$xrGetMarkerDetectorStateML);
         try {
@@ -5648,7 +5648,7 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrGetMarkersML.html"><code>xrGetMarkersML</code></a>
-    public @EnumType(XrResult.class) int xrGetMarkersML(
+    public @EnumType(XrResult.class) int getMarkersML(
         XrMarkerDetectorML markerDetector,
         @Unsigned int markerCapacityInput,
         @Unsigned IntPtr markerCountOutput,
@@ -5668,7 +5668,7 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrGetMarkerReprojectionErrorML.html"><code>xrGetMarkerReprojectionErrorML</code></a>
-    public @EnumType(XrResult.class) int xrGetMarkerReprojectionErrorML(
+    public @EnumType(XrResult.class) int getMarkerReprojectionErrorML(
         XrMarkerDetectorML markerDetector,
         @NativeType("XrMarkerML") @Unsigned long marker,
         FloatPtr reprojectionErrorMeters
@@ -5686,7 +5686,7 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrGetMarkerLengthML.html"><code>xrGetMarkerLengthML</code></a>
-    public @EnumType(XrResult.class) int xrGetMarkerLengthML(
+    public @EnumType(XrResult.class) int getMarkerLengthML(
         XrMarkerDetectorML markerDetector,
         @NativeType("XrMarkerML") @Unsigned long marker,
         FloatPtr meters
@@ -5704,7 +5704,7 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrGetMarkerNumberML.html"><code>xrGetMarkerNumberML</code></a>
-    public @EnumType(XrResult.class) int xrGetMarkerNumberML(
+    public @EnumType(XrResult.class) int getMarkerNumberML(
         XrMarkerDetectorML markerDetector,
         @NativeType("XrMarkerML") @Unsigned long marker,
         @Unsigned LongPtr number
@@ -5722,7 +5722,7 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrGetMarkerStringML.html"><code>xrGetMarkerStringML</code></a>
-    public @EnumType(XrResult.class) int xrGetMarkerStringML(
+    public @EnumType(XrResult.class) int getMarkerStringML(
         XrMarkerDetectorML markerDetector,
         @NativeType("XrMarkerML") @Unsigned long marker,
         @Unsigned int bufferCapacityInput,
@@ -5744,9 +5744,9 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrCreateMarkerSpaceML.html"><code>xrCreateMarkerSpaceML</code></a>
-    public @EnumType(XrResult.class) int xrCreateMarkerSpaceML(
+    public @EnumType(XrResult.class) int createMarkerSpaceML(
         XrSession session,
-        @Pointer IXrMarkerSpaceCreateInfoML createInfo,
+        @Pointer XrMarkerSpaceCreateInfoML createInfo,
         @Pointer XrSpace.Ptr space
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$xrCreateMarkerSpaceML);
@@ -5762,10 +5762,10 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrPollFutureEXT.html"><code>xrPollFutureEXT</code></a>
-    public @EnumType(XrResult.class) int xrPollFutureEXT(
+    public @EnumType(XrResult.class) int pollFutureEXT(
         XrInstance instance,
-        @Pointer IXrFuturePollInfoEXT pollInfo,
-        @Pointer IXrFuturePollResultEXT pollResult
+        @Pointer XrFuturePollInfoEXT pollInfo,
+        @Pointer XrFuturePollResultEXT pollResult
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$xrPollFutureEXT);
         try {
@@ -5780,9 +5780,9 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrCancelFutureEXT.html"><code>xrCancelFutureEXT</code></a>
-    public @EnumType(XrResult.class) int xrCancelFutureEXT(
+    public @EnumType(XrResult.class) int cancelFutureEXT(
         XrInstance instance,
-        @Pointer IXrFutureCancelInfoEXT cancelInfo
+        @Pointer XrFutureCancelInfoEXT cancelInfo
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$xrCancelFutureEXT);
         try {
@@ -5796,9 +5796,9 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrCreateEnvironmentDepthProviderMETA.html"><code>xrCreateEnvironmentDepthProviderMETA</code></a>
-    public @EnumType(XrResult.class) int xrCreateEnvironmentDepthProviderMETA(
+    public @EnumType(XrResult.class) int createEnvironmentDepthProviderMETA(
         XrSession session,
-        @Pointer IXrEnvironmentDepthProviderCreateInfoMETA createInfo,
+        @Pointer XrEnvironmentDepthProviderCreateInfoMETA createInfo,
         @Pointer XrEnvironmentDepthProviderMETA.Ptr environmentDepthProvider
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$xrCreateEnvironmentDepthProviderMETA);
@@ -5814,7 +5814,7 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrDestroyEnvironmentDepthProviderMETA.html"><code>xrDestroyEnvironmentDepthProviderMETA</code></a>
-    public @EnumType(XrResult.class) int xrDestroyEnvironmentDepthProviderMETA(
+    public @EnumType(XrResult.class) int destroyEnvironmentDepthProviderMETA(
         XrEnvironmentDepthProviderMETA environmentDepthProvider
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$xrDestroyEnvironmentDepthProviderMETA);
@@ -5828,7 +5828,7 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrStartEnvironmentDepthProviderMETA.html"><code>xrStartEnvironmentDepthProviderMETA</code></a>
-    public @EnumType(XrResult.class) int xrStartEnvironmentDepthProviderMETA(
+    public @EnumType(XrResult.class) int startEnvironmentDepthProviderMETA(
         XrEnvironmentDepthProviderMETA environmentDepthProvider
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$xrStartEnvironmentDepthProviderMETA);
@@ -5842,7 +5842,7 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrStopEnvironmentDepthProviderMETA.html"><code>xrStopEnvironmentDepthProviderMETA</code></a>
-    public @EnumType(XrResult.class) int xrStopEnvironmentDepthProviderMETA(
+    public @EnumType(XrResult.class) int stopEnvironmentDepthProviderMETA(
         XrEnvironmentDepthProviderMETA environmentDepthProvider
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$xrStopEnvironmentDepthProviderMETA);
@@ -5856,9 +5856,9 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrCreateEnvironmentDepthSwapchainMETA.html"><code>xrCreateEnvironmentDepthSwapchainMETA</code></a>
-    public @EnumType(XrResult.class) int xrCreateEnvironmentDepthSwapchainMETA(
+    public @EnumType(XrResult.class) int createEnvironmentDepthSwapchainMETA(
         XrEnvironmentDepthProviderMETA environmentDepthProvider,
-        @Pointer IXrEnvironmentDepthSwapchainCreateInfoMETA createInfo,
+        @Pointer XrEnvironmentDepthSwapchainCreateInfoMETA createInfo,
         @Pointer XrEnvironmentDepthSwapchainMETA.Ptr swapchain
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$xrCreateEnvironmentDepthSwapchainMETA);
@@ -5874,7 +5874,7 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrDestroyEnvironmentDepthSwapchainMETA.html"><code>xrDestroyEnvironmentDepthSwapchainMETA</code></a>
-    public @EnumType(XrResult.class) int xrDestroyEnvironmentDepthSwapchainMETA(
+    public @EnumType(XrResult.class) int destroyEnvironmentDepthSwapchainMETA(
         XrEnvironmentDepthSwapchainMETA swapchain
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$xrDestroyEnvironmentDepthSwapchainMETA);
@@ -5888,7 +5888,7 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrEnumerateEnvironmentDepthSwapchainImagesMETA.html"><code>xrEnumerateEnvironmentDepthSwapchainImagesMETA</code></a>
-    public @EnumType(XrResult.class) int xrEnumerateEnvironmentDepthSwapchainImagesMETA(
+    public @EnumType(XrResult.class) int enumerateEnvironmentDepthSwapchainImagesMETA(
         XrEnvironmentDepthSwapchainMETA swapchain,
         @Unsigned int imageCapacityInput,
         @Unsigned IntPtr imageCountOutput,
@@ -5908,9 +5908,9 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrGetEnvironmentDepthSwapchainStateMETA.html"><code>xrGetEnvironmentDepthSwapchainStateMETA</code></a>
-    public @EnumType(XrResult.class) int xrGetEnvironmentDepthSwapchainStateMETA(
+    public @EnumType(XrResult.class) int getEnvironmentDepthSwapchainStateMETA(
         XrEnvironmentDepthSwapchainMETA swapchain,
-        @Pointer IXrEnvironmentDepthSwapchainStateMETA state
+        @Pointer XrEnvironmentDepthSwapchainStateMETA state
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$xrGetEnvironmentDepthSwapchainStateMETA);
         try {
@@ -5924,10 +5924,10 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrAcquireEnvironmentDepthImageMETA.html"><code>xrAcquireEnvironmentDepthImageMETA</code></a>
-    public @EnumType(XrResult.class) int xrAcquireEnvironmentDepthImageMETA(
+    public @EnumType(XrResult.class) int acquireEnvironmentDepthImageMETA(
         XrEnvironmentDepthProviderMETA environmentDepthProvider,
-        @Pointer IXrEnvironmentDepthImageAcquireInfoMETA acquireInfo,
-        @Pointer IXrEnvironmentDepthImageMETA environmentDepthImage
+        @Pointer XrEnvironmentDepthImageAcquireInfoMETA acquireInfo,
+        @Pointer XrEnvironmentDepthImageMETA environmentDepthImage
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$xrAcquireEnvironmentDepthImageMETA);
         try {
@@ -5942,9 +5942,9 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrSetEnvironmentDepthHandRemovalMETA.html"><code>xrSetEnvironmentDepthHandRemovalMETA</code></a>
-    public @EnumType(XrResult.class) int xrSetEnvironmentDepthHandRemovalMETA(
+    public @EnumType(XrResult.class) int setEnvironmentDepthHandRemovalMETA(
         XrEnvironmentDepthProviderMETA environmentDepthProvider,
-        @Pointer IXrEnvironmentDepthHandRemovalSetInfoMETA setInfo
+        @Pointer XrEnvironmentDepthHandRemovalSetInfoMETA setInfo
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$xrSetEnvironmentDepthHandRemovalMETA);
         try {
@@ -5958,9 +5958,9 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrCreateFacialExpressionClientML.html"><code>xrCreateFacialExpressionClientML</code></a>
-    public @EnumType(XrResult.class) int xrCreateFacialExpressionClientML(
+    public @EnumType(XrResult.class) int createFacialExpressionClientML(
         XrSession session,
-        @Pointer IXrFacialExpressionClientCreateInfoML createInfo,
+        @Pointer XrFacialExpressionClientCreateInfoML createInfo,
         @Pointer XrFacialExpressionClientML.Ptr facialExpressionClient
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$xrCreateFacialExpressionClientML);
@@ -5976,7 +5976,7 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrDestroyFacialExpressionClientML.html"><code>xrDestroyFacialExpressionClientML</code></a>
-    public @EnumType(XrResult.class) int xrDestroyFacialExpressionClientML(
+    public @EnumType(XrResult.class) int destroyFacialExpressionClientML(
         XrFacialExpressionClientML facialExpressionClient
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$xrDestroyFacialExpressionClientML);
@@ -5990,9 +5990,9 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrGetFacialExpressionBlendShapePropertiesML.html"><code>xrGetFacialExpressionBlendShapePropertiesML</code></a>
-    public @EnumType(XrResult.class) int xrGetFacialExpressionBlendShapePropertiesML(
+    public @EnumType(XrResult.class) int getFacialExpressionBlendShapePropertiesML(
         XrFacialExpressionClientML facialExpressionClient,
-        @Pointer IXrFacialExpressionBlendShapeGetInfoML blendShapeGetInfo,
+        @Pointer XrFacialExpressionBlendShapeGetInfoML blendShapeGetInfo,
         @Unsigned int blendShapeCount,
         @Pointer IXrFacialExpressionBlendShapePropertiesML blendShapes
     ) {
@@ -6010,10 +6010,10 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrLocateSpaces.html"><code>xrLocateSpaces</code></a>
-    public @EnumType(XrResult.class) int xrLocateSpaces(
+    public @EnumType(XrResult.class) int locateSpaces(
         XrSession session,
-        @Pointer IXrSpacesLocateInfo locateInfo,
-        @Pointer IXrSpaceLocations spaceLocations
+        @Pointer XrSpacesLocateInfo locateInfo,
+        @Pointer XrSpaceLocations spaceLocations
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$xrLocateSpaces);
         try {
@@ -6028,7 +6028,7 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrEnumerateSpatialCapabilitiesEXT.html"><code>xrEnumerateSpatialCapabilitiesEXT</code></a>
-    public @EnumType(XrResult.class) int xrEnumerateSpatialCapabilitiesEXT(
+    public @EnumType(XrResult.class) int enumerateSpatialCapabilitiesEXT(
         XrInstance instance,
         @NativeType("XrSystemId") @Unsigned long systemId,
         @Unsigned int capabilityCapacityInput,
@@ -6050,11 +6050,11 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrEnumerateSpatialCapabilityComponentTypesEXT.html"><code>xrEnumerateSpatialCapabilityComponentTypesEXT</code></a>
-    public @EnumType(XrResult.class) int xrEnumerateSpatialCapabilityComponentTypesEXT(
+    public @EnumType(XrResult.class) int enumerateSpatialCapabilityComponentTypesEXT(
         XrInstance instance,
         @NativeType("XrSystemId") @Unsigned long systemId,
         @EnumType(XrSpatialCapabilityEXT.class) int capability,
-        @Pointer IXrSpatialCapabilityComponentTypesEXT capabilityComponents
+        @Pointer XrSpatialCapabilityComponentTypesEXT capabilityComponents
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$xrEnumerateSpatialCapabilityComponentTypesEXT);
         try {
@@ -6070,7 +6070,7 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrEnumerateSpatialCapabilityFeaturesEXT.html"><code>xrEnumerateSpatialCapabilityFeaturesEXT</code></a>
-    public @EnumType(XrResult.class) int xrEnumerateSpatialCapabilityFeaturesEXT(
+    public @EnumType(XrResult.class) int enumerateSpatialCapabilityFeaturesEXT(
         XrInstance instance,
         @NativeType("XrSystemId") @Unsigned long systemId,
         @EnumType(XrSpatialCapabilityEXT.class) int capability,
@@ -6094,9 +6094,9 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrCreateSpatialContextAsyncEXT.html"><code>xrCreateSpatialContextAsyncEXT</code></a>
-    public @EnumType(XrResult.class) int xrCreateSpatialContextAsyncEXT(
+    public @EnumType(XrResult.class) int createSpatialContextAsyncEXT(
         XrSession session,
-        @Pointer IXrSpatialContextCreateInfoEXT createInfo,
+        @Pointer XrSpatialContextCreateInfoEXT createInfo,
         @Pointer XrFutureEXT.Ptr future
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$xrCreateSpatialContextAsyncEXT);
@@ -6112,10 +6112,10 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrCreateSpatialContextCompleteEXT.html"><code>xrCreateSpatialContextCompleteEXT</code></a>
-    public @EnumType(XrResult.class) int xrCreateSpatialContextCompleteEXT(
+    public @EnumType(XrResult.class) int createSpatialContextCompleteEXT(
         XrSession session,
         XrFutureEXT future,
-        @Pointer IXrCreateSpatialContextCompletionEXT completion
+        @Pointer XrCreateSpatialContextCompletionEXT completion
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$xrCreateSpatialContextCompleteEXT);
         try {
@@ -6130,7 +6130,7 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrDestroySpatialContextEXT.html"><code>xrDestroySpatialContextEXT</code></a>
-    public @EnumType(XrResult.class) int xrDestroySpatialContextEXT(
+    public @EnumType(XrResult.class) int destroySpatialContextEXT(
         XrSpatialContextEXT spatialContext
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$xrDestroySpatialContextEXT);
@@ -6144,9 +6144,9 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrCreateSpatialDiscoverySnapshotAsyncEXT.html"><code>xrCreateSpatialDiscoverySnapshotAsyncEXT</code></a>
-    public @EnumType(XrResult.class) int xrCreateSpatialDiscoverySnapshotAsyncEXT(
+    public @EnumType(XrResult.class) int createSpatialDiscoverySnapshotAsyncEXT(
         XrSpatialContextEXT spatialContext,
-        @Pointer IXrSpatialDiscoverySnapshotCreateInfoEXT createInfo,
+        @Pointer XrSpatialDiscoverySnapshotCreateInfoEXT createInfo,
         @Pointer XrFutureEXT.Ptr future
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$xrCreateSpatialDiscoverySnapshotAsyncEXT);
@@ -6162,10 +6162,10 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrCreateSpatialDiscoverySnapshotCompleteEXT.html"><code>xrCreateSpatialDiscoverySnapshotCompleteEXT</code></a>
-    public @EnumType(XrResult.class) int xrCreateSpatialDiscoverySnapshotCompleteEXT(
+    public @EnumType(XrResult.class) int createSpatialDiscoverySnapshotCompleteEXT(
         XrSpatialContextEXT spatialContext,
-        @Pointer IXrCreateSpatialDiscoverySnapshotCompletionInfoEXT createSnapshotCompletionInfo,
-        @Pointer IXrCreateSpatialDiscoverySnapshotCompletionEXT completion
+        @Pointer XrCreateSpatialDiscoverySnapshotCompletionInfoEXT createSnapshotCompletionInfo,
+        @Pointer XrCreateSpatialDiscoverySnapshotCompletionEXT completion
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$xrCreateSpatialDiscoverySnapshotCompleteEXT);
         try {
@@ -6180,10 +6180,10 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrQuerySpatialComponentDataEXT.html"><code>xrQuerySpatialComponentDataEXT</code></a>
-    public @EnumType(XrResult.class) int xrQuerySpatialComponentDataEXT(
+    public @EnumType(XrResult.class) int querySpatialComponentDataEXT(
         XrSpatialSnapshotEXT snapshot,
-        @Pointer IXrSpatialComponentDataQueryConditionEXT queryCondition,
-        @Pointer IXrSpatialComponentDataQueryResultEXT queryResult
+        @Pointer XrSpatialComponentDataQueryConditionEXT queryCondition,
+        @Pointer XrSpatialComponentDataQueryResultEXT queryResult
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$xrQuerySpatialComponentDataEXT);
         try {
@@ -6198,7 +6198,7 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrDestroySpatialSnapshotEXT.html"><code>xrDestroySpatialSnapshotEXT</code></a>
-    public @EnumType(XrResult.class) int xrDestroySpatialSnapshotEXT(
+    public @EnumType(XrResult.class) int destroySpatialSnapshotEXT(
         XrSpatialSnapshotEXT snapshot
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$xrDestroySpatialSnapshotEXT);
@@ -6212,9 +6212,9 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrCreateSpatialEntityFromIdEXT.html"><code>xrCreateSpatialEntityFromIdEXT</code></a>
-    public @EnumType(XrResult.class) int xrCreateSpatialEntityFromIdEXT(
+    public @EnumType(XrResult.class) int createSpatialEntityFromIdEXT(
         XrSpatialContextEXT spatialContext,
-        @Pointer IXrSpatialEntityFromIdCreateInfoEXT createInfo,
+        @Pointer XrSpatialEntityFromIdCreateInfoEXT createInfo,
         @Pointer XrSpatialEntityEXT.Ptr spatialEntity
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$xrCreateSpatialEntityFromIdEXT);
@@ -6230,7 +6230,7 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrDestroySpatialEntityEXT.html"><code>xrDestroySpatialEntityEXT</code></a>
-    public @EnumType(XrResult.class) int xrDestroySpatialEntityEXT(
+    public @EnumType(XrResult.class) int destroySpatialEntityEXT(
         XrSpatialEntityEXT spatialEntity
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$xrDestroySpatialEntityEXT);
@@ -6244,9 +6244,9 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrCreateSpatialUpdateSnapshotEXT.html"><code>xrCreateSpatialUpdateSnapshotEXT</code></a>
-    public @EnumType(XrResult.class) int xrCreateSpatialUpdateSnapshotEXT(
+    public @EnumType(XrResult.class) int createSpatialUpdateSnapshotEXT(
         XrSpatialContextEXT spatialContext,
-        @Pointer IXrSpatialUpdateSnapshotCreateInfoEXT createInfo,
+        @Pointer XrSpatialUpdateSnapshotCreateInfoEXT createInfo,
         @Pointer XrSpatialSnapshotEXT.Ptr snapshot
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$xrCreateSpatialUpdateSnapshotEXT);
@@ -6262,9 +6262,9 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrGetSpatialBufferStringEXT.html"><code>xrGetSpatialBufferStringEXT</code></a>
-    public @EnumType(XrResult.class) int xrGetSpatialBufferStringEXT(
+    public @EnumType(XrResult.class) int getSpatialBufferStringEXT(
         XrSpatialSnapshotEXT snapshot,
-        @Pointer IXrSpatialBufferGetInfoEXT info,
+        @Pointer XrSpatialBufferGetInfoEXT info,
         @Unsigned int bufferCapacityInput,
         @Unsigned IntPtr bufferCountOutput,
         @Nullable BytePtr buffer
@@ -6284,9 +6284,9 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrGetSpatialBufferUint8EXT.html"><code>xrGetSpatialBufferUint8EXT</code></a>
-    public @EnumType(XrResult.class) int xrGetSpatialBufferUint8EXT(
+    public @EnumType(XrResult.class) int getSpatialBufferUint8EXT(
         XrSpatialSnapshotEXT snapshot,
-        @Pointer IXrSpatialBufferGetInfoEXT info,
+        @Pointer XrSpatialBufferGetInfoEXT info,
         @Unsigned int bufferCapacityInput,
         @Unsigned IntPtr bufferCountOutput,
         @Nullable @Unsigned BytePtr buffer
@@ -6306,9 +6306,9 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrGetSpatialBufferUint16EXT.html"><code>xrGetSpatialBufferUint16EXT</code></a>
-    public @EnumType(XrResult.class) int xrGetSpatialBufferUint16EXT(
+    public @EnumType(XrResult.class) int getSpatialBufferUint16EXT(
         XrSpatialSnapshotEXT snapshot,
-        @Pointer IXrSpatialBufferGetInfoEXT info,
+        @Pointer XrSpatialBufferGetInfoEXT info,
         @Unsigned int bufferCapacityInput,
         @Unsigned IntPtr bufferCountOutput,
         @Nullable @Unsigned ShortPtr buffer
@@ -6328,9 +6328,9 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrGetSpatialBufferUint32EXT.html"><code>xrGetSpatialBufferUint32EXT</code></a>
-    public @EnumType(XrResult.class) int xrGetSpatialBufferUint32EXT(
+    public @EnumType(XrResult.class) int getSpatialBufferUint32EXT(
         XrSpatialSnapshotEXT snapshot,
-        @Pointer IXrSpatialBufferGetInfoEXT info,
+        @Pointer XrSpatialBufferGetInfoEXT info,
         @Unsigned int bufferCapacityInput,
         @Unsigned IntPtr bufferCountOutput,
         @Nullable @Unsigned IntPtr buffer
@@ -6350,9 +6350,9 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrGetSpatialBufferFloatEXT.html"><code>xrGetSpatialBufferFloatEXT</code></a>
-    public @EnumType(XrResult.class) int xrGetSpatialBufferFloatEXT(
+    public @EnumType(XrResult.class) int getSpatialBufferFloatEXT(
         XrSpatialSnapshotEXT snapshot,
-        @Pointer IXrSpatialBufferGetInfoEXT info,
+        @Pointer XrSpatialBufferGetInfoEXT info,
         @Unsigned int bufferCapacityInput,
         @Unsigned IntPtr bufferCountOutput,
         @Nullable FloatPtr buffer
@@ -6372,9 +6372,9 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrGetSpatialBufferVector2fEXT.html"><code>xrGetSpatialBufferVector2fEXT</code></a>
-    public @EnumType(XrResult.class) int xrGetSpatialBufferVector2fEXT(
+    public @EnumType(XrResult.class) int getSpatialBufferVector2fEXT(
         XrSpatialSnapshotEXT snapshot,
-        @Pointer IXrSpatialBufferGetInfoEXT info,
+        @Pointer XrSpatialBufferGetInfoEXT info,
         @Unsigned int bufferCapacityInput,
         @Unsigned IntPtr bufferCountOutput,
         @Nullable @Pointer IXrVector2f buffer
@@ -6394,9 +6394,9 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrGetSpatialBufferVector3fEXT.html"><code>xrGetSpatialBufferVector3fEXT</code></a>
-    public @EnumType(XrResult.class) int xrGetSpatialBufferVector3fEXT(
+    public @EnumType(XrResult.class) int getSpatialBufferVector3fEXT(
         XrSpatialSnapshotEXT snapshot,
-        @Pointer IXrSpatialBufferGetInfoEXT info,
+        @Pointer XrSpatialBufferGetInfoEXT info,
         @Unsigned int bufferCapacityInput,
         @Unsigned IntPtr bufferCountOutput,
         @Nullable @Pointer IXrVector3f buffer
@@ -6416,9 +6416,9 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrCreateSpatialAnchorEXT.html"><code>xrCreateSpatialAnchorEXT</code></a>
-    public @EnumType(XrResult.class) int xrCreateSpatialAnchorEXT(
+    public @EnumType(XrResult.class) int createSpatialAnchorEXT(
         XrSpatialContextEXT spatialContext,
-        @Pointer IXrSpatialAnchorCreateInfoEXT createInfo,
+        @Pointer XrSpatialAnchorCreateInfoEXT createInfo,
         @Pointer(comment="XrSpatialEntityIdEXT") @Unsigned LongPtr anchorEntityId,
         @Pointer XrSpatialEntityEXT.Ptr anchorEntity
     ) {
@@ -6436,7 +6436,7 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrEnumerateSpatialPersistenceScopesEXT.html"><code>xrEnumerateSpatialPersistenceScopesEXT</code></a>
-    public @EnumType(XrResult.class) int xrEnumerateSpatialPersistenceScopesEXT(
+    public @EnumType(XrResult.class) int enumerateSpatialPersistenceScopesEXT(
         XrInstance instance,
         @NativeType("XrSystemId") @Unsigned long systemId,
         @Unsigned int persistenceScopeCapacityInput,
@@ -6458,9 +6458,9 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrCreateSpatialPersistenceContextAsyncEXT.html"><code>xrCreateSpatialPersistenceContextAsyncEXT</code></a>
-    public @EnumType(XrResult.class) int xrCreateSpatialPersistenceContextAsyncEXT(
+    public @EnumType(XrResult.class) int createSpatialPersistenceContextAsyncEXT(
         XrSession session,
-        @Pointer IXrSpatialPersistenceContextCreateInfoEXT createInfo,
+        @Pointer XrSpatialPersistenceContextCreateInfoEXT createInfo,
         @Pointer XrFutureEXT.Ptr future
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$xrCreateSpatialPersistenceContextAsyncEXT);
@@ -6476,10 +6476,10 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrCreateSpatialPersistenceContextCompleteEXT.html"><code>xrCreateSpatialPersistenceContextCompleteEXT</code></a>
-    public @EnumType(XrResult.class) int xrCreateSpatialPersistenceContextCompleteEXT(
+    public @EnumType(XrResult.class) int createSpatialPersistenceContextCompleteEXT(
         XrSession session,
         XrFutureEXT future,
-        @Pointer IXrCreateSpatialPersistenceContextCompletionEXT completion
+        @Pointer XrCreateSpatialPersistenceContextCompletionEXT completion
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$xrCreateSpatialPersistenceContextCompleteEXT);
         try {
@@ -6494,7 +6494,7 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrDestroySpatialPersistenceContextEXT.html"><code>xrDestroySpatialPersistenceContextEXT</code></a>
-    public @EnumType(XrResult.class) int xrDestroySpatialPersistenceContextEXT(
+    public @EnumType(XrResult.class) int destroySpatialPersistenceContextEXT(
         XrSpatialPersistenceContextEXT persistenceContext
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$xrDestroySpatialPersistenceContextEXT);
@@ -6508,9 +6508,9 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrPersistSpatialEntityAsyncEXT.html"><code>xrPersistSpatialEntityAsyncEXT</code></a>
-    public @EnumType(XrResult.class) int xrPersistSpatialEntityAsyncEXT(
+    public @EnumType(XrResult.class) int persistSpatialEntityAsyncEXT(
         XrSpatialPersistenceContextEXT persistenceContext,
-        @Pointer IXrSpatialEntityPersistInfoEXT persistInfo,
+        @Pointer XrSpatialEntityPersistInfoEXT persistInfo,
         @Pointer XrFutureEXT.Ptr future
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$xrPersistSpatialEntityAsyncEXT);
@@ -6526,10 +6526,10 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrPersistSpatialEntityCompleteEXT.html"><code>xrPersistSpatialEntityCompleteEXT</code></a>
-    public @EnumType(XrResult.class) int xrPersistSpatialEntityCompleteEXT(
+    public @EnumType(XrResult.class) int persistSpatialEntityCompleteEXT(
         XrSpatialPersistenceContextEXT persistenceContext,
         XrFutureEXT future,
-        @Pointer IXrPersistSpatialEntityCompletionEXT completion
+        @Pointer XrPersistSpatialEntityCompletionEXT completion
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$xrPersistSpatialEntityCompleteEXT);
         try {
@@ -6544,9 +6544,9 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrUnpersistSpatialEntityAsyncEXT.html"><code>xrUnpersistSpatialEntityAsyncEXT</code></a>
-    public @EnumType(XrResult.class) int xrUnpersistSpatialEntityAsyncEXT(
+    public @EnumType(XrResult.class) int unpersistSpatialEntityAsyncEXT(
         XrSpatialPersistenceContextEXT persistenceContext,
-        @Pointer IXrSpatialEntityUnpersistInfoEXT unpersistInfo,
+        @Pointer XrSpatialEntityUnpersistInfoEXT unpersistInfo,
         @Pointer XrFutureEXT.Ptr future
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$xrUnpersistSpatialEntityAsyncEXT);
@@ -6562,10 +6562,10 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrUnpersistSpatialEntityCompleteEXT.html"><code>xrUnpersistSpatialEntityCompleteEXT</code></a>
-    public @EnumType(XrResult.class) int xrUnpersistSpatialEntityCompleteEXT(
+    public @EnumType(XrResult.class) int unpersistSpatialEntityCompleteEXT(
         XrSpatialPersistenceContextEXT persistenceContext,
         XrFutureEXT future,
-        @Pointer IXrUnpersistSpatialEntityCompletionEXT completion
+        @Pointer XrUnpersistSpatialEntityCompletionEXT completion
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$xrUnpersistSpatialEntityCompleteEXT);
         try {
@@ -6580,9 +6580,9 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrSetSystemNotificationsML.html"><code>xrSetSystemNotificationsML</code></a>
-    public @EnumType(XrResult.class) int xrSetSystemNotificationsML(
+    public @EnumType(XrResult.class) int setSystemNotificationsML(
         XrInstance instance,
-        @Pointer IXrSystemNotificationsSetInfoML info
+        @Pointer XrSystemNotificationsSetInfoML info
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$xrSetSystemNotificationsML);
         try {
@@ -6596,9 +6596,9 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrCreateSpatialAnchorsAsyncML.html"><code>xrCreateSpatialAnchorsAsyncML</code></a>
-    public @EnumType(XrResult.class) int xrCreateSpatialAnchorsAsyncML(
+    public @EnumType(XrResult.class) int createSpatialAnchorsAsyncML(
         XrSession session,
-        @Pointer IXrSpatialAnchorsCreateInfoBaseHeaderML createInfo,
+        @Pointer XrSpatialAnchorsCreateInfoBaseHeaderML createInfo,
         @Pointer XrFutureEXT.Ptr future
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$xrCreateSpatialAnchorsAsyncML);
@@ -6614,10 +6614,10 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrCreateSpatialAnchorsCompleteML.html"><code>xrCreateSpatialAnchorsCompleteML</code></a>
-    public @EnumType(XrResult.class) int xrCreateSpatialAnchorsCompleteML(
+    public @EnumType(XrResult.class) int createSpatialAnchorsCompleteML(
         XrSession session,
         XrFutureEXT future,
-        @Pointer IXrCreateSpatialAnchorsCompletionML completion
+        @Pointer XrCreateSpatialAnchorsCompletionML completion
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$xrCreateSpatialAnchorsCompleteML);
         try {
@@ -6632,9 +6632,9 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrGetSpatialAnchorStateML.html"><code>xrGetSpatialAnchorStateML</code></a>
-    public @EnumType(XrResult.class) int xrGetSpatialAnchorStateML(
+    public @EnumType(XrResult.class) int getSpatialAnchorStateML(
         XrSpace anchor,
-        @Pointer IXrSpatialAnchorStateML state
+        @Pointer XrSpatialAnchorStateML state
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$xrGetSpatialAnchorStateML);
         try {
@@ -6648,9 +6648,9 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrCreateSpatialAnchorsStorageML.html"><code>xrCreateSpatialAnchorsStorageML</code></a>
-    public @EnumType(XrResult.class) int xrCreateSpatialAnchorsStorageML(
+    public @EnumType(XrResult.class) int createSpatialAnchorsStorageML(
         XrSession session,
-        @Pointer IXrSpatialAnchorsCreateStorageInfoML createInfo,
+        @Pointer XrSpatialAnchorsCreateStorageInfoML createInfo,
         @Pointer XrSpatialAnchorsStorageML.Ptr storage
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$xrCreateSpatialAnchorsStorageML);
@@ -6666,7 +6666,7 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrDestroySpatialAnchorsStorageML.html"><code>xrDestroySpatialAnchorsStorageML</code></a>
-    public @EnumType(XrResult.class) int xrDestroySpatialAnchorsStorageML(
+    public @EnumType(XrResult.class) int destroySpatialAnchorsStorageML(
         XrSpatialAnchorsStorageML storage
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$xrDestroySpatialAnchorsStorageML);
@@ -6680,9 +6680,9 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrQuerySpatialAnchorsAsyncML.html"><code>xrQuerySpatialAnchorsAsyncML</code></a>
-    public @EnumType(XrResult.class) int xrQuerySpatialAnchorsAsyncML(
+    public @EnumType(XrResult.class) int querySpatialAnchorsAsyncML(
         XrSpatialAnchorsStorageML storage,
-        @Pointer IXrSpatialAnchorsQueryInfoBaseHeaderML queryInfo,
+        @Pointer XrSpatialAnchorsQueryInfoBaseHeaderML queryInfo,
         @Pointer XrFutureEXT.Ptr future
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$xrQuerySpatialAnchorsAsyncML);
@@ -6698,10 +6698,10 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrQuerySpatialAnchorsCompleteML.html"><code>xrQuerySpatialAnchorsCompleteML</code></a>
-    public @EnumType(XrResult.class) int xrQuerySpatialAnchorsCompleteML(
+    public @EnumType(XrResult.class) int querySpatialAnchorsCompleteML(
         XrSpatialAnchorsStorageML storage,
         XrFutureEXT future,
-        @Pointer IXrSpatialAnchorsQueryCompletionML completion
+        @Pointer XrSpatialAnchorsQueryCompletionML completion
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$xrQuerySpatialAnchorsCompleteML);
         try {
@@ -6716,9 +6716,9 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrPublishSpatialAnchorsAsyncML.html"><code>xrPublishSpatialAnchorsAsyncML</code></a>
-    public @EnumType(XrResult.class) int xrPublishSpatialAnchorsAsyncML(
+    public @EnumType(XrResult.class) int publishSpatialAnchorsAsyncML(
         XrSpatialAnchorsStorageML storage,
-        @Pointer IXrSpatialAnchorsPublishInfoML publishInfo,
+        @Pointer XrSpatialAnchorsPublishInfoML publishInfo,
         @Pointer XrFutureEXT.Ptr future
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$xrPublishSpatialAnchorsAsyncML);
@@ -6734,10 +6734,10 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrPublishSpatialAnchorsCompleteML.html"><code>xrPublishSpatialAnchorsCompleteML</code></a>
-    public @EnumType(XrResult.class) int xrPublishSpatialAnchorsCompleteML(
+    public @EnumType(XrResult.class) int publishSpatialAnchorsCompleteML(
         XrSpatialAnchorsStorageML storage,
         XrFutureEXT future,
-        @Pointer IXrSpatialAnchorsPublishCompletionML completion
+        @Pointer XrSpatialAnchorsPublishCompletionML completion
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$xrPublishSpatialAnchorsCompleteML);
         try {
@@ -6752,9 +6752,9 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrDeleteSpatialAnchorsAsyncML.html"><code>xrDeleteSpatialAnchorsAsyncML</code></a>
-    public @EnumType(XrResult.class) int xrDeleteSpatialAnchorsAsyncML(
+    public @EnumType(XrResult.class) int deleteSpatialAnchorsAsyncML(
         XrSpatialAnchorsStorageML storage,
-        @Pointer IXrSpatialAnchorsDeleteInfoML deleteInfo,
+        @Pointer XrSpatialAnchorsDeleteInfoML deleteInfo,
         @Pointer XrFutureEXT.Ptr future
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$xrDeleteSpatialAnchorsAsyncML);
@@ -6770,10 +6770,10 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrDeleteSpatialAnchorsCompleteML.html"><code>xrDeleteSpatialAnchorsCompleteML</code></a>
-    public @EnumType(XrResult.class) int xrDeleteSpatialAnchorsCompleteML(
+    public @EnumType(XrResult.class) int deleteSpatialAnchorsCompleteML(
         XrSpatialAnchorsStorageML storage,
         XrFutureEXT future,
-        @Pointer IXrSpatialAnchorsDeleteCompletionML completion
+        @Pointer XrSpatialAnchorsDeleteCompletionML completion
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$xrDeleteSpatialAnchorsCompleteML);
         try {
@@ -6788,9 +6788,9 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrUpdateSpatialAnchorsExpirationAsyncML.html"><code>xrUpdateSpatialAnchorsExpirationAsyncML</code></a>
-    public @EnumType(XrResult.class) int xrUpdateSpatialAnchorsExpirationAsyncML(
+    public @EnumType(XrResult.class) int updateSpatialAnchorsExpirationAsyncML(
         XrSpatialAnchorsStorageML storage,
-        @Pointer IXrSpatialAnchorsUpdateExpirationInfoML updateInfo,
+        @Pointer XrSpatialAnchorsUpdateExpirationInfoML updateInfo,
         @Pointer XrFutureEXT.Ptr future
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$xrUpdateSpatialAnchorsExpirationAsyncML);
@@ -6806,10 +6806,10 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrUpdateSpatialAnchorsExpirationCompleteML.html"><code>xrUpdateSpatialAnchorsExpirationCompleteML</code></a>
-    public @EnumType(XrResult.class) int xrUpdateSpatialAnchorsExpirationCompleteML(
+    public @EnumType(XrResult.class) int updateSpatialAnchorsExpirationCompleteML(
         XrSpatialAnchorsStorageML storage,
         XrFutureEXT future,
-        @Pointer IXrSpatialAnchorsUpdateExpirationCompletionML completion
+        @Pointer XrSpatialAnchorsUpdateExpirationCompletionML completion
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$xrUpdateSpatialAnchorsExpirationCompleteML);
         try {
@@ -6824,9 +6824,9 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrCreateWorldMeshDetectorML.html"><code>xrCreateWorldMeshDetectorML</code></a>
-    public @EnumType(XrResult.class) int xrCreateWorldMeshDetectorML(
+    public @EnumType(XrResult.class) int createWorldMeshDetectorML(
         XrSession session,
-        @Pointer IXrWorldMeshDetectorCreateInfoML createInfo,
+        @Pointer XrWorldMeshDetectorCreateInfoML createInfo,
         @Pointer XrWorldMeshDetectorML.Ptr detector
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$xrCreateWorldMeshDetectorML);
@@ -6842,7 +6842,7 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrDestroyWorldMeshDetectorML.html"><code>xrDestroyWorldMeshDetectorML</code></a>
-    public @EnumType(XrResult.class) int xrDestroyWorldMeshDetectorML(
+    public @EnumType(XrResult.class) int destroyWorldMeshDetectorML(
         XrWorldMeshDetectorML detector
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$xrDestroyWorldMeshDetectorML);
@@ -6856,9 +6856,9 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrRequestWorldMeshStateAsyncML.html"><code>xrRequestWorldMeshStateAsyncML</code></a>
-    public @EnumType(XrResult.class) int xrRequestWorldMeshStateAsyncML(
+    public @EnumType(XrResult.class) int requestWorldMeshStateAsyncML(
         XrWorldMeshDetectorML detector,
-        @Pointer IXrWorldMeshStateRequestInfoML stateRequest,
+        @Pointer XrWorldMeshStateRequestInfoML stateRequest,
         @Pointer XrFutureEXT.Ptr future
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$xrRequestWorldMeshStateAsyncML);
@@ -6874,10 +6874,10 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrRequestWorldMeshStateCompleteML.html"><code>xrRequestWorldMeshStateCompleteML</code></a>
-    public @EnumType(XrResult.class) int xrRequestWorldMeshStateCompleteML(
+    public @EnumType(XrResult.class) int requestWorldMeshStateCompleteML(
         XrWorldMeshDetectorML detector,
         XrFutureEXT future,
-        @Pointer IXrWorldMeshStateRequestCompletionML completion
+        @Pointer XrWorldMeshStateRequestCompletionML completion
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$xrRequestWorldMeshStateCompleteML);
         try {
@@ -6892,10 +6892,10 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrGetWorldMeshBufferRecommendSizeML.html"><code>xrGetWorldMeshBufferRecommendSizeML</code></a>
-    public @EnumType(XrResult.class) int xrGetWorldMeshBufferRecommendSizeML(
+    public @EnumType(XrResult.class) int getWorldMeshBufferRecommendSizeML(
         XrWorldMeshDetectorML detector,
-        @Pointer IXrWorldMeshBufferRecommendedSizeInfoML sizeInfo,
-        @Pointer IXrWorldMeshBufferSizeML size
+        @Pointer XrWorldMeshBufferRecommendedSizeInfoML sizeInfo,
+        @Pointer XrWorldMeshBufferSizeML size
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$xrGetWorldMeshBufferRecommendSizeML);
         try {
@@ -6910,10 +6910,10 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrAllocateWorldMeshBufferML.html"><code>xrAllocateWorldMeshBufferML</code></a>
-    public @EnumType(XrResult.class) int xrAllocateWorldMeshBufferML(
+    public @EnumType(XrResult.class) int allocateWorldMeshBufferML(
         XrWorldMeshDetectorML detector,
-        @Pointer IXrWorldMeshBufferSizeML size,
-        @Pointer IXrWorldMeshBufferML buffer
+        @Pointer XrWorldMeshBufferSizeML size,
+        @Pointer XrWorldMeshBufferML buffer
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$xrAllocateWorldMeshBufferML);
         try {
@@ -6928,9 +6928,9 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrFreeWorldMeshBufferML.html"><code>xrFreeWorldMeshBufferML</code></a>
-    public @EnumType(XrResult.class) int xrFreeWorldMeshBufferML(
+    public @EnumType(XrResult.class) int freeWorldMeshBufferML(
         XrWorldMeshDetectorML detector,
-        @Pointer IXrWorldMeshBufferML buffer
+        @Pointer XrWorldMeshBufferML buffer
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$xrFreeWorldMeshBufferML);
         try {
@@ -6944,10 +6944,10 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrRequestWorldMeshAsyncML.html"><code>xrRequestWorldMeshAsyncML</code></a>
-    public @EnumType(XrResult.class) int xrRequestWorldMeshAsyncML(
+    public @EnumType(XrResult.class) int requestWorldMeshAsyncML(
         XrWorldMeshDetectorML detector,
-        @Pointer IXrWorldMeshGetInfoML getInfo,
-        @Pointer IXrWorldMeshBufferML buffer,
+        @Pointer XrWorldMeshGetInfoML getInfo,
+        @Pointer XrWorldMeshBufferML buffer,
         @Pointer XrFutureEXT.Ptr future
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$xrRequestWorldMeshAsyncML);
@@ -6964,11 +6964,11 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrRequestWorldMeshCompleteML.html"><code>xrRequestWorldMeshCompleteML</code></a>
-    public @EnumType(XrResult.class) int xrRequestWorldMeshCompleteML(
+    public @EnumType(XrResult.class) int requestWorldMeshCompleteML(
         XrWorldMeshDetectorML detector,
-        @Pointer IXrWorldMeshRequestCompletionInfoML completionInfo,
+        @Pointer XrWorldMeshRequestCompletionInfoML completionInfo,
         XrFutureEXT future,
-        @Pointer IXrWorldMeshRequestCompletionML completion
+        @Pointer XrWorldMeshRequestCompletionML completion
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$xrRequestWorldMeshCompleteML);
         try {
@@ -6984,9 +6984,9 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrCreateRenderModelEXT.html"><code>xrCreateRenderModelEXT</code></a>
-    public @EnumType(XrResult.class) int xrCreateRenderModelEXT(
+    public @EnumType(XrResult.class) int createRenderModelEXT(
         XrSession session,
-        @Pointer IXrRenderModelCreateInfoEXT createInfo,
+        @Pointer XrRenderModelCreateInfoEXT createInfo,
         @Pointer XrRenderModelEXT.Ptr renderModel
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$xrCreateRenderModelEXT);
@@ -7002,7 +7002,7 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrDestroyRenderModelEXT.html"><code>xrDestroyRenderModelEXT</code></a>
-    public @EnumType(XrResult.class) int xrDestroyRenderModelEXT(
+    public @EnumType(XrResult.class) int destroyRenderModelEXT(
         XrRenderModelEXT renderModel
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$xrDestroyRenderModelEXT);
@@ -7016,10 +7016,10 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrGetRenderModelPropertiesEXT.html"><code>xrGetRenderModelPropertiesEXT</code></a>
-    public @EnumType(XrResult.class) int xrGetRenderModelPropertiesEXT(
+    public @EnumType(XrResult.class) int getRenderModelPropertiesEXT(
         XrRenderModelEXT renderModel,
-        @Nullable @Pointer IXrRenderModelPropertiesGetInfoEXT getInfo,
-        @Pointer IXrRenderModelPropertiesEXT properties
+        @Nullable @Pointer XrRenderModelPropertiesGetInfoEXT getInfo,
+        @Pointer XrRenderModelPropertiesEXT properties
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$xrGetRenderModelPropertiesEXT);
         try {
@@ -7034,9 +7034,9 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrCreateRenderModelSpaceEXT.html"><code>xrCreateRenderModelSpaceEXT</code></a>
-    public @EnumType(XrResult.class) int xrCreateRenderModelSpaceEXT(
+    public @EnumType(XrResult.class) int createRenderModelSpaceEXT(
         XrSession session,
-        @Pointer IXrRenderModelSpaceCreateInfoEXT createInfo,
+        @Pointer XrRenderModelSpaceCreateInfoEXT createInfo,
         @Pointer XrSpace.Ptr space
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$xrCreateRenderModelSpaceEXT);
@@ -7052,9 +7052,9 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrCreateRenderModelAssetEXT.html"><code>xrCreateRenderModelAssetEXT</code></a>
-    public @EnumType(XrResult.class) int xrCreateRenderModelAssetEXT(
+    public @EnumType(XrResult.class) int createRenderModelAssetEXT(
         XrSession session,
-        @Pointer IXrRenderModelAssetCreateInfoEXT createInfo,
+        @Pointer XrRenderModelAssetCreateInfoEXT createInfo,
         @Pointer XrRenderModelAssetEXT.Ptr asset
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$xrCreateRenderModelAssetEXT);
@@ -7070,7 +7070,7 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrDestroyRenderModelAssetEXT.html"><code>xrDestroyRenderModelAssetEXT</code></a>
-    public @EnumType(XrResult.class) int xrDestroyRenderModelAssetEXT(
+    public @EnumType(XrResult.class) int destroyRenderModelAssetEXT(
         XrRenderModelAssetEXT asset
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$xrDestroyRenderModelAssetEXT);
@@ -7084,10 +7084,10 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrGetRenderModelAssetDataEXT.html"><code>xrGetRenderModelAssetDataEXT</code></a>
-    public @EnumType(XrResult.class) int xrGetRenderModelAssetDataEXT(
+    public @EnumType(XrResult.class) int getRenderModelAssetDataEXT(
         XrRenderModelAssetEXT asset,
-        @Nullable @Pointer IXrRenderModelAssetDataGetInfoEXT getInfo,
-        @Pointer IXrRenderModelAssetDataEXT buffer
+        @Nullable @Pointer XrRenderModelAssetDataGetInfoEXT getInfo,
+        @Pointer XrRenderModelAssetDataEXT buffer
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$xrGetRenderModelAssetDataEXT);
         try {
@@ -7102,10 +7102,10 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrGetRenderModelAssetPropertiesEXT.html"><code>xrGetRenderModelAssetPropertiesEXT</code></a>
-    public @EnumType(XrResult.class) int xrGetRenderModelAssetPropertiesEXT(
+    public @EnumType(XrResult.class) int getRenderModelAssetPropertiesEXT(
         XrRenderModelAssetEXT asset,
-        @Nullable @Pointer IXrRenderModelAssetPropertiesGetInfoEXT getInfo,
-        @Pointer IXrRenderModelAssetPropertiesEXT properties
+        @Nullable @Pointer XrRenderModelAssetPropertiesGetInfoEXT getInfo,
+        @Pointer XrRenderModelAssetPropertiesEXT properties
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$xrGetRenderModelAssetPropertiesEXT);
         try {
@@ -7120,10 +7120,10 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrGetRenderModelStateEXT.html"><code>xrGetRenderModelStateEXT</code></a>
-    public @EnumType(XrResult.class) int xrGetRenderModelStateEXT(
+    public @EnumType(XrResult.class) int getRenderModelStateEXT(
         XrRenderModelEXT renderModel,
-        @Pointer IXrRenderModelStateGetInfoEXT getInfo,
-        @Pointer IXrRenderModelStateEXT state
+        @Pointer XrRenderModelStateGetInfoEXT getInfo,
+        @Pointer XrRenderModelStateEXT state
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$xrGetRenderModelStateEXT);
         try {
@@ -7138,9 +7138,9 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrEnumerateInteractionRenderModelIdsEXT.html"><code>xrEnumerateInteractionRenderModelIdsEXT</code></a>
-    public @EnumType(XrResult.class) int xrEnumerateInteractionRenderModelIdsEXT(
+    public @EnumType(XrResult.class) int enumerateInteractionRenderModelIdsEXT(
         XrSession session,
-        @Pointer IXrInteractionRenderModelIdsEnumerateInfoEXT getInfo,
+        @Pointer XrInteractionRenderModelIdsEnumerateInfoEXT getInfo,
         @Unsigned int renderModelIdCapacityInput,
         @Unsigned IntPtr renderModelIdCountOutput,
         @Nullable @Pointer(comment="XrRenderModelIdEXT") @Unsigned LongPtr renderModelIds
@@ -7160,9 +7160,9 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrEnumerateRenderModelSubactionPathsEXT.html"><code>xrEnumerateRenderModelSubactionPathsEXT</code></a>
-    public @EnumType(XrResult.class) int xrEnumerateRenderModelSubactionPathsEXT(
+    public @EnumType(XrResult.class) int enumerateRenderModelSubactionPathsEXT(
         XrRenderModelEXT renderModel,
-        @Nullable @Pointer IXrInteractionRenderModelSubactionPathInfoEXT info,
+        @Nullable @Pointer XrInteractionRenderModelSubactionPathInfoEXT info,
         @Unsigned int pathCapacityInput,
         @Unsigned IntPtr pathCountOutput,
         @Nullable @Pointer(comment="XrPath") @Unsigned LongPtr paths
@@ -7182,9 +7182,9 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrGetRenderModelPoseTopLevelUserPathEXT.html"><code>xrGetRenderModelPoseTopLevelUserPathEXT</code></a>
-    public @EnumType(XrResult.class) int xrGetRenderModelPoseTopLevelUserPathEXT(
+    public @EnumType(XrResult.class) int getRenderModelPoseTopLevelUserPathEXT(
         XrRenderModelEXT renderModel,
-        @Pointer IXrInteractionRenderModelTopLevelUserPathGetInfoEXT info,
+        @Pointer XrInteractionRenderModelTopLevelUserPathGetInfoEXT info,
         @Pointer(comment="XrPath") @Unsigned LongPtr topLevelUserPath
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$xrGetRenderModelPoseTopLevelUserPathEXT);
@@ -7200,10 +7200,10 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrGetSpatialEntityUuidBD.html"><code>xrGetSpatialEntityUuidBD</code></a>
-    public @EnumType(XrResult.class) int xrGetSpatialEntityUuidBD(
+    public @EnumType(XrResult.class) int getSpatialEntityUuidBD(
         XrSenseDataSnapshotBD snapshot,
         @NativeType("XrSpatialEntityIdBD") @Unsigned long entityId,
-        @Pointer IXrUuidEXT uuid
+        @Pointer XrUuidEXT uuid
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$xrGetSpatialEntityUuidBD);
         try {
@@ -7218,7 +7218,7 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrEnumerateSpatialEntityComponentTypesBD.html"><code>xrEnumerateSpatialEntityComponentTypesBD</code></a>
-    public @EnumType(XrResult.class) int xrEnumerateSpatialEntityComponentTypesBD(
+    public @EnumType(XrResult.class) int enumerateSpatialEntityComponentTypesBD(
         XrSenseDataSnapshotBD snapshot,
         @NativeType("XrSpatialEntityIdBD") @Unsigned long entityId,
         @Unsigned int componentTypeCapacityInput,
@@ -7240,10 +7240,10 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrGetSpatialEntityComponentDataBD.html"><code>xrGetSpatialEntityComponentDataBD</code></a>
-    public @EnumType(XrResult.class) int xrGetSpatialEntityComponentDataBD(
+    public @EnumType(XrResult.class) int getSpatialEntityComponentDataBD(
         XrSenseDataSnapshotBD snapshot,
-        @Pointer IXrSpatialEntityComponentGetInfoBD getInfo,
-        @Pointer IXrSpatialEntityComponentDataBaseHeaderBD componentData
+        @Pointer XrSpatialEntityComponentGetInfoBD getInfo,
+        @Pointer XrSpatialEntityComponentDataBaseHeaderBD componentData
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$xrGetSpatialEntityComponentDataBD);
         try {
@@ -7258,9 +7258,9 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrCreateSenseDataProviderBD.html"><code>xrCreateSenseDataProviderBD</code></a>
-    public @EnumType(XrResult.class) int xrCreateSenseDataProviderBD(
+    public @EnumType(XrResult.class) int createSenseDataProviderBD(
         XrSession session,
-        @Pointer IXrSenseDataProviderCreateInfoBD createInfo,
+        @Pointer XrSenseDataProviderCreateInfoBD createInfo,
         @Pointer XrSenseDataProviderBD.Ptr provider
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$xrCreateSenseDataProviderBD);
@@ -7276,9 +7276,9 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrStartSenseDataProviderAsyncBD.html"><code>xrStartSenseDataProviderAsyncBD</code></a>
-    public @EnumType(XrResult.class) int xrStartSenseDataProviderAsyncBD(
+    public @EnumType(XrResult.class) int startSenseDataProviderAsyncBD(
         XrSenseDataProviderBD provider,
-        @Pointer IXrSenseDataProviderStartInfoBD startInfo,
+        @Pointer XrSenseDataProviderStartInfoBD startInfo,
         @Pointer XrFutureEXT.Ptr future
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$xrStartSenseDataProviderAsyncBD);
@@ -7294,10 +7294,10 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrStartSenseDataProviderCompleteBD.html"><code>xrStartSenseDataProviderCompleteBD</code></a>
-    public @EnumType(XrResult.class) int xrStartSenseDataProviderCompleteBD(
+    public @EnumType(XrResult.class) int startSenseDataProviderCompleteBD(
         XrSession session,
         XrFutureEXT future,
-        @Pointer IXrFutureCompletionEXT completion
+        @Pointer XrFutureCompletionEXT completion
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$xrStartSenseDataProviderCompleteBD);
         try {
@@ -7312,7 +7312,7 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrGetSenseDataProviderStateBD.html"><code>xrGetSenseDataProviderStateBD</code></a>
-    public @EnumType(XrResult.class) int xrGetSenseDataProviderStateBD(
+    public @EnumType(XrResult.class) int getSenseDataProviderStateBD(
         XrSenseDataProviderBD provider,
         @EnumType(XrSenseDataProviderStateBD.class) IntPtr state
     ) {
@@ -7328,9 +7328,9 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrQuerySenseDataAsyncBD.html"><code>xrQuerySenseDataAsyncBD</code></a>
-    public @EnumType(XrResult.class) int xrQuerySenseDataAsyncBD(
+    public @EnumType(XrResult.class) int querySenseDataAsyncBD(
         XrSenseDataProviderBD provider,
-        @Pointer IXrSenseDataQueryInfoBD queryInfo,
+        @Pointer XrSenseDataQueryInfoBD queryInfo,
         @Pointer XrFutureEXT.Ptr future
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$xrQuerySenseDataAsyncBD);
@@ -7346,10 +7346,10 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrQuerySenseDataCompleteBD.html"><code>xrQuerySenseDataCompleteBD</code></a>
-    public @EnumType(XrResult.class) int xrQuerySenseDataCompleteBD(
+    public @EnumType(XrResult.class) int querySenseDataCompleteBD(
         XrSenseDataProviderBD provider,
         XrFutureEXT future,
-        @Pointer IXrSenseDataQueryCompletionBD completion
+        @Pointer XrSenseDataQueryCompletionBD completion
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$xrQuerySenseDataCompleteBD);
         try {
@@ -7364,7 +7364,7 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrDestroySenseDataSnapshotBD.html"><code>xrDestroySenseDataSnapshotBD</code></a>
-    public @EnumType(XrResult.class) int xrDestroySenseDataSnapshotBD(
+    public @EnumType(XrResult.class) int destroySenseDataSnapshotBD(
         XrSenseDataSnapshotBD snapshot
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$xrDestroySenseDataSnapshotBD);
@@ -7378,10 +7378,10 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrGetQueriedSenseDataBD.html"><code>xrGetQueriedSenseDataBD</code></a>
-    public @EnumType(XrResult.class) int xrGetQueriedSenseDataBD(
+    public @EnumType(XrResult.class) int getQueriedSenseDataBD(
         XrSenseDataSnapshotBD snapshot,
-        @Pointer IXrQueriedSenseDataGetInfoBD getInfo,
-        @Pointer IXrQueriedSenseDataBD queriedSenseData
+        @Pointer XrQueriedSenseDataGetInfoBD getInfo,
+        @Pointer XrQueriedSenseDataBD queriedSenseData
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$xrGetQueriedSenseDataBD);
         try {
@@ -7396,7 +7396,7 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrStopSenseDataProviderBD.html"><code>xrStopSenseDataProviderBD</code></a>
-    public @EnumType(XrResult.class) int xrStopSenseDataProviderBD(
+    public @EnumType(XrResult.class) int stopSenseDataProviderBD(
         XrSenseDataProviderBD provider
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$xrStopSenseDataProviderBD);
@@ -7410,7 +7410,7 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrDestroySenseDataProviderBD.html"><code>xrDestroySenseDataProviderBD</code></a>
-    public @EnumType(XrResult.class) int xrDestroySenseDataProviderBD(
+    public @EnumType(XrResult.class) int destroySenseDataProviderBD(
         XrSenseDataProviderBD provider
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$xrDestroySenseDataProviderBD);
@@ -7424,9 +7424,9 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrCreateSpatialEntityAnchorBD.html"><code>xrCreateSpatialEntityAnchorBD</code></a>
-    public @EnumType(XrResult.class) int xrCreateSpatialEntityAnchorBD(
+    public @EnumType(XrResult.class) int createSpatialEntityAnchorBD(
         XrSenseDataProviderBD provider,
-        @Pointer IXrSpatialEntityAnchorCreateInfoBD createInfo,
+        @Pointer XrSpatialEntityAnchorCreateInfoBD createInfo,
         @Pointer XrAnchorBD.Ptr anchor
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$xrCreateSpatialEntityAnchorBD);
@@ -7442,7 +7442,7 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrDestroyAnchorBD.html"><code>xrDestroyAnchorBD</code></a>
-    public @EnumType(XrResult.class) int xrDestroyAnchorBD(
+    public @EnumType(XrResult.class) int destroyAnchorBD(
         XrAnchorBD anchor
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$xrDestroyAnchorBD);
@@ -7456,9 +7456,9 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrGetAnchorUuidBD.html"><code>xrGetAnchorUuidBD</code></a>
-    public @EnumType(XrResult.class) int xrGetAnchorUuidBD(
+    public @EnumType(XrResult.class) int getAnchorUuidBD(
         XrAnchorBD anchor,
-        @Pointer IXrUuidEXT uuid
+        @Pointer XrUuidEXT uuid
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$xrGetAnchorUuidBD);
         try {
@@ -7472,9 +7472,9 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrCreateAnchorSpaceBD.html"><code>xrCreateAnchorSpaceBD</code></a>
-    public @EnumType(XrResult.class) int xrCreateAnchorSpaceBD(
+    public @EnumType(XrResult.class) int createAnchorSpaceBD(
         XrSession session,
-        @Pointer IXrAnchorSpaceCreateInfoBD createInfo,
+        @Pointer XrAnchorSpaceCreateInfoBD createInfo,
         @Pointer XrSpace.Ptr space
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$xrCreateAnchorSpaceBD);
@@ -7490,9 +7490,9 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrCreateSpatialAnchorAsyncBD.html"><code>xrCreateSpatialAnchorAsyncBD</code></a>
-    public @EnumType(XrResult.class) int xrCreateSpatialAnchorAsyncBD(
+    public @EnumType(XrResult.class) int createSpatialAnchorAsyncBD(
         XrSenseDataProviderBD provider,
-        @Pointer IXrSpatialAnchorCreateInfoBD info,
+        @Pointer XrSpatialAnchorCreateInfoBD info,
         @Pointer XrFutureEXT.Ptr future
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$xrCreateSpatialAnchorAsyncBD);
@@ -7508,10 +7508,10 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrCreateSpatialAnchorCompleteBD.html"><code>xrCreateSpatialAnchorCompleteBD</code></a>
-    public @EnumType(XrResult.class) int xrCreateSpatialAnchorCompleteBD(
+    public @EnumType(XrResult.class) int createSpatialAnchorCompleteBD(
         XrSenseDataProviderBD provider,
         XrFutureEXT future,
-        @Pointer IXrSpatialAnchorCreateCompletionBD completion
+        @Pointer XrSpatialAnchorCreateCompletionBD completion
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$xrCreateSpatialAnchorCompleteBD);
         try {
@@ -7526,9 +7526,9 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrPersistSpatialAnchorAsyncBD.html"><code>xrPersistSpatialAnchorAsyncBD</code></a>
-    public @EnumType(XrResult.class) int xrPersistSpatialAnchorAsyncBD(
+    public @EnumType(XrResult.class) int persistSpatialAnchorAsyncBD(
         XrSenseDataProviderBD provider,
-        @Pointer IXrSpatialAnchorPersistInfoBD info,
+        @Pointer XrSpatialAnchorPersistInfoBD info,
         @Pointer XrFutureEXT.Ptr future
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$xrPersistSpatialAnchorAsyncBD);
@@ -7544,10 +7544,10 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrPersistSpatialAnchorCompleteBD.html"><code>xrPersistSpatialAnchorCompleteBD</code></a>
-    public @EnumType(XrResult.class) int xrPersistSpatialAnchorCompleteBD(
+    public @EnumType(XrResult.class) int persistSpatialAnchorCompleteBD(
         XrSenseDataProviderBD provider,
         XrFutureEXT future,
-        @Pointer IXrFutureCompletionEXT completion
+        @Pointer XrFutureCompletionEXT completion
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$xrPersistSpatialAnchorCompleteBD);
         try {
@@ -7562,9 +7562,9 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrUnpersistSpatialAnchorAsyncBD.html"><code>xrUnpersistSpatialAnchorAsyncBD</code></a>
-    public @EnumType(XrResult.class) int xrUnpersistSpatialAnchorAsyncBD(
+    public @EnumType(XrResult.class) int unpersistSpatialAnchorAsyncBD(
         XrSenseDataProviderBD provider,
-        @Pointer IXrSpatialAnchorUnpersistInfoBD info,
+        @Pointer XrSpatialAnchorUnpersistInfoBD info,
         @Pointer XrFutureEXT.Ptr future
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$xrUnpersistSpatialAnchorAsyncBD);
@@ -7580,10 +7580,10 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrUnpersistSpatialAnchorCompleteBD.html"><code>xrUnpersistSpatialAnchorCompleteBD</code></a>
-    public @EnumType(XrResult.class) int xrUnpersistSpatialAnchorCompleteBD(
+    public @EnumType(XrResult.class) int unpersistSpatialAnchorCompleteBD(
         XrSenseDataProviderBD provider,
         XrFutureEXT future,
-        @Pointer IXrFutureCompletionEXT completion
+        @Pointer XrFutureCompletionEXT completion
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$xrUnpersistSpatialAnchorCompleteBD);
         try {
@@ -7598,9 +7598,9 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrShareSpatialAnchorAsyncBD.html"><code>xrShareSpatialAnchorAsyncBD</code></a>
-    public @EnumType(XrResult.class) int xrShareSpatialAnchorAsyncBD(
+    public @EnumType(XrResult.class) int shareSpatialAnchorAsyncBD(
         XrSenseDataProviderBD provider,
-        @Pointer IXrSpatialAnchorShareInfoBD info,
+        @Pointer XrSpatialAnchorShareInfoBD info,
         @Pointer XrFutureEXT.Ptr future
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$xrShareSpatialAnchorAsyncBD);
@@ -7616,10 +7616,10 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrShareSpatialAnchorCompleteBD.html"><code>xrShareSpatialAnchorCompleteBD</code></a>
-    public @EnumType(XrResult.class) int xrShareSpatialAnchorCompleteBD(
+    public @EnumType(XrResult.class) int shareSpatialAnchorCompleteBD(
         XrSenseDataProviderBD provider,
         XrFutureEXT future,
-        @Pointer IXrFutureCompletionEXT completion
+        @Pointer XrFutureCompletionEXT completion
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$xrShareSpatialAnchorCompleteBD);
         try {
@@ -7634,9 +7634,9 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrDownloadSharedSpatialAnchorAsyncBD.html"><code>xrDownloadSharedSpatialAnchorAsyncBD</code></a>
-    public @EnumType(XrResult.class) int xrDownloadSharedSpatialAnchorAsyncBD(
+    public @EnumType(XrResult.class) int downloadSharedSpatialAnchorAsyncBD(
         XrSenseDataProviderBD provider,
-        @Pointer IXrSharedSpatialAnchorDownloadInfoBD info,
+        @Pointer XrSharedSpatialAnchorDownloadInfoBD info,
         @Pointer XrFutureEXT.Ptr future
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$xrDownloadSharedSpatialAnchorAsyncBD);
@@ -7652,10 +7652,10 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrDownloadSharedSpatialAnchorCompleteBD.html"><code>xrDownloadSharedSpatialAnchorCompleteBD</code></a>
-    public @EnumType(XrResult.class) int xrDownloadSharedSpatialAnchorCompleteBD(
+    public @EnumType(XrResult.class) int downloadSharedSpatialAnchorCompleteBD(
         XrSenseDataProviderBD provider,
         XrFutureEXT future,
-        @Pointer IXrFutureCompletionEXT completion
+        @Pointer XrFutureCompletionEXT completion
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$xrDownloadSharedSpatialAnchorCompleteBD);
         try {
@@ -7670,9 +7670,9 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrCaptureSceneAsyncBD.html"><code>xrCaptureSceneAsyncBD</code></a>
-    public @EnumType(XrResult.class) int xrCaptureSceneAsyncBD(
+    public @EnumType(XrResult.class) int captureSceneAsyncBD(
         XrSenseDataProviderBD provider,
-        @Pointer IXrSceneCaptureInfoBD info,
+        @Pointer XrSceneCaptureInfoBD info,
         @Pointer XrFutureEXT.Ptr future
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$xrCaptureSceneAsyncBD);
@@ -7688,10 +7688,10 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrCaptureSceneCompleteBD.html"><code>xrCaptureSceneCompleteBD</code></a>
-    public @EnumType(XrResult.class) int xrCaptureSceneCompleteBD(
+    public @EnumType(XrResult.class) int captureSceneCompleteBD(
         XrSenseDataProviderBD provider,
         XrFutureEXT future,
-        @Pointer IXrFutureCompletionEXT completion
+        @Pointer XrFutureCompletionEXT completion
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$xrCaptureSceneCompleteBD);
         try {
@@ -7706,9 +7706,9 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrResumeSimultaneousHandsAndControllersTrackingMETA.html"><code>xrResumeSimultaneousHandsAndControllersTrackingMETA</code></a>
-    public @EnumType(XrResult.class) int xrResumeSimultaneousHandsAndControllersTrackingMETA(
+    public @EnumType(XrResult.class) int resumeSimultaneousHandsAndControllersTrackingMETA(
         XrSession session,
-        @Pointer IXrSimultaneousHandsAndControllersTrackingResumeInfoMETA resumeInfo
+        @Pointer XrSimultaneousHandsAndControllersTrackingResumeInfoMETA resumeInfo
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$xrResumeSimultaneousHandsAndControllersTrackingMETA);
         try {
@@ -7722,9 +7722,9 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrPauseSimultaneousHandsAndControllersTrackingMETA.html"><code>xrPauseSimultaneousHandsAndControllersTrackingMETA</code></a>
-    public @EnumType(XrResult.class) int xrPauseSimultaneousHandsAndControllersTrackingMETA(
+    public @EnumType(XrResult.class) int pauseSimultaneousHandsAndControllersTrackingMETA(
         XrSession session,
-        @Pointer IXrSimultaneousHandsAndControllersTrackingPauseInfoMETA pauseInfo
+        @Pointer XrSimultaneousHandsAndControllersTrackingPauseInfoMETA pauseInfo
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$xrPauseSimultaneousHandsAndControllersTrackingMETA);
         try {
@@ -7738,10 +7738,10 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrGetVulkanGraphicsRequirements2KHR.html"><code>xrGetVulkanGraphicsRequirements2KHR</code></a>
-    public @EnumType(XrResult.class) int xrGetVulkanGraphicsRequirements2KHR(
+    public @EnumType(XrResult.class) int getVulkanGraphicsRequirements2KHR(
         XrInstance instance,
         @NativeType("XrSystemId") @Unsigned long systemId,
-        @Pointer IXrGraphicsRequirementsVulkanKHR graphicsRequirements
+        @Pointer XrGraphicsRequirementsVulkanKHR graphicsRequirements
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$xrGetVulkanGraphicsRequirements2KHR);
         try {
@@ -7756,10 +7756,10 @@ public final class XR implements XRConstants {
     }
 
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrLocateSpacesKHR.html"><code>xrLocateSpacesKHR</code></a>
-    public @EnumType(XrResult.class) int xrLocateSpacesKHR(
+    public @EnumType(XrResult.class) int locateSpacesKHR(
         XrSession session,
-        @Pointer IXrSpacesLocateInfo locateInfo,
-        @Pointer IXrSpaceLocations spaceLocations
+        @Pointer XrSpacesLocateInfo locateInfo,
+        @Pointer XrSpaceLocations spaceLocations
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$xrLocateSpacesKHR);
         try {
