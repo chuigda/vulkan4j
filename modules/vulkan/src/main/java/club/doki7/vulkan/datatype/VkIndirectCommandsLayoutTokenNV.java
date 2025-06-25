@@ -37,8 +37,8 @@ import static club.doki7.vulkan.VkConstants.*;
 ///     uint32_t pushconstantSize; // @link substring="pushconstantSize" target="#pushconstantSize"
 ///     VkIndirectStateFlagsNV indirectStateFlags; // optional // @link substring="VkIndirectStateFlagsNV" target="VkIndirectStateFlagsNV" @link substring="indirectStateFlags" target="#indirectStateFlags"
 ///     uint32_t indexTypeCount; // optional // @link substring="indexTypeCount" target="#indexTypeCount"
-///     VkIndexType const* pIndexTypes; // @link substring="VkIndexType" target="VkIndexType" @link substring="pIndexTypes" target="#pIndexTypes"
-///     uint32_t const* pIndexTypeValues; // @link substring="pIndexTypeValues" target="#pIndexTypeValues"
+///     VkIndexType const* pIndexTypes; // optional // @link substring="VkIndexType" target="VkIndexType" @link substring="pIndexTypes" target="#pIndexTypes"
+///     uint32_t const* pIndexTypeValues; // optional // @link substring="pIndexTypeValues" target="#pIndexTypeValues"
 /// } VkIndirectCommandsLayoutTokenNV;
 /// }
 ///

@@ -29,7 +29,7 @@ import static club.doki7.vulkan.VkConstants.*;
 ///     VkVideoEncodeRateControlFlagsKHR flags; // optional // @link substring="VkVideoEncodeRateControlFlagsKHR" target="VkVideoEncodeRateControlFlagsKHR" @link substring="flags" target="#flags"
 ///     VkVideoEncodeRateControlModeFlagsKHR rateControlMode; // optional // @link substring="VkVideoEncodeRateControlModeFlagsKHR" target="VkVideoEncodeRateControlModeFlagsKHR" @link substring="rateControlMode" target="#rateControlMode"
 ///     uint32_t layerCount; // optional // @link substring="layerCount" target="#layerCount"
-///     VkVideoEncodeRateControlLayerInfoKHR const* pLayers; // @link substring="VkVideoEncodeRateControlLayerInfoKHR" target="VkVideoEncodeRateControlLayerInfoKHR" @link substring="pLayers" target="#pLayers"
+///     VkVideoEncodeRateControlLayerInfoKHR const* pLayers; // optional // @link substring="VkVideoEncodeRateControlLayerInfoKHR" target="VkVideoEncodeRateControlLayerInfoKHR" @link substring="pLayers" target="#pLayers"
 ///     uint32_t virtualBufferSizeInMs; // @link substring="virtualBufferSizeInMs" target="#virtualBufferSizeInMs"
 ///     uint32_t initialVirtualBufferSizeInMs; // @link substring="initialVirtualBufferSizeInMs" target="#initialVirtualBufferSizeInMs"
 /// } VkVideoEncodeRateControlInfoKHR;

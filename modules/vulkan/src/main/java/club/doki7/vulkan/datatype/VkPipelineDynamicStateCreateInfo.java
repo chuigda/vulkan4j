@@ -28,7 +28,7 @@ import static club.doki7.vulkan.VkConstants.*;
 ///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
 ///     VkPipelineDynamicStateCreateFlags flags; // optional // @link substring="VkPipelineDynamicStateCreateFlags" target="VkPipelineDynamicStateCreateFlags" @link substring="flags" target="#flags"
 ///     uint32_t dynamicStateCount; // optional // @link substring="dynamicStateCount" target="#dynamicStateCount"
-///     VkDynamicState const* pDynamicStates; // @link substring="VkDynamicState" target="VkDynamicState" @link substring="pDynamicStates" target="#pDynamicStates"
+///     VkDynamicState const* pDynamicStates; // optional // @link substring="VkDynamicState" target="VkDynamicState" @link substring="pDynamicStates" target="#pDynamicStates"
 /// } VkPipelineDynamicStateCreateInfo;
 /// }
 ///

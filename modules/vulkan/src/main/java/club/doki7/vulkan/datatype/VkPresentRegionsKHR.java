@@ -27,7 +27,7 @@ import static club.doki7.vulkan.VkConstants.*;
 ///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
 ///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
 ///     uint32_t swapchainCount; // @link substring="swapchainCount" target="#swapchainCount"
-///     VkPresentRegionKHR const* pRegions; // optional // @link substring="VkPresentRegionKHR" target="VkPresentRegionKHR" @link substring="pRegions" target="#pRegions"
+///     VkPresentRegionKHR const* pRegions; // @link substring="VkPresentRegionKHR" target="VkPresentRegionKHR" @link substring="pRegions" target="#pRegions"
 /// } VkPresentRegionsKHR;
 /// }
 ///

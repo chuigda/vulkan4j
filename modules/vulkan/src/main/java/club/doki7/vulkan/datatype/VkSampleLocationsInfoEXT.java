@@ -29,7 +29,7 @@ import static club.doki7.vulkan.VkConstants.*;
 ///     VkSampleCountFlags sampleLocationsPerPixel; // @link substring="VkSampleCountFlags" target="VkSampleCountFlags" @link substring="sampleLocationsPerPixel" target="#sampleLocationsPerPixel"
 ///     VkExtent2D sampleLocationGridSize; // @link substring="VkExtent2D" target="VkExtent2D" @link substring="sampleLocationGridSize" target="#sampleLocationGridSize"
 ///     uint32_t sampleLocationsCount; // optional // @link substring="sampleLocationsCount" target="#sampleLocationsCount"
-///     VkSampleLocationEXT const* pSampleLocations; // @link substring="VkSampleLocationEXT" target="VkSampleLocationEXT" @link substring="pSampleLocations" target="#pSampleLocations"
+///     VkSampleLocationEXT const* pSampleLocations; // optional // @link substring="VkSampleLocationEXT" target="VkSampleLocationEXT" @link substring="pSampleLocations" target="#pSampleLocations"
 /// } VkSampleLocationsInfoEXT;
 /// }
 ///

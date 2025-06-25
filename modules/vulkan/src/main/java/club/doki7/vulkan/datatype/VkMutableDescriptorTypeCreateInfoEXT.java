@@ -27,7 +27,7 @@ import static club.doki7.vulkan.VkConstants.*;
 ///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
 ///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
 ///     uint32_t mutableDescriptorTypeListCount; // optional // @link substring="mutableDescriptorTypeListCount" target="#mutableDescriptorTypeListCount"
-///     VkMutableDescriptorTypeListEXT const* pMutableDescriptorTypeLists; // @link substring="VkMutableDescriptorTypeListEXT" target="VkMutableDescriptorTypeListEXT" @link substring="pMutableDescriptorTypeLists" target="#pMutableDescriptorTypeLists"
+///     VkMutableDescriptorTypeListEXT const* pMutableDescriptorTypeLists; // optional // @link substring="VkMutableDescriptorTypeListEXT" target="VkMutableDescriptorTypeListEXT" @link substring="pMutableDescriptorTypeLists" target="#pMutableDescriptorTypeLists"
 /// } VkMutableDescriptorTypeCreateInfoEXT;
 /// }
 ///

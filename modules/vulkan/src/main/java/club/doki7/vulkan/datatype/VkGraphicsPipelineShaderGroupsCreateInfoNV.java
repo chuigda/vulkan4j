@@ -27,9 +27,9 @@ import static club.doki7.vulkan.VkConstants.*;
 ///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
 ///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
 ///     uint32_t groupCount; // optional // @link substring="groupCount" target="#groupCount"
-///     VkGraphicsShaderGroupCreateInfoNV const* pGroups; // @link substring="VkGraphicsShaderGroupCreateInfoNV" target="VkGraphicsShaderGroupCreateInfoNV" @link substring="pGroups" target="#pGroups"
+///     VkGraphicsShaderGroupCreateInfoNV const* pGroups; // optional // @link substring="VkGraphicsShaderGroupCreateInfoNV" target="VkGraphicsShaderGroupCreateInfoNV" @link substring="pGroups" target="#pGroups"
 ///     uint32_t pipelineCount; // optional // @link substring="pipelineCount" target="#pipelineCount"
-///     VkPipeline const* pPipelines; // @link substring="VkPipeline" target="VkPipeline" @link substring="pPipelines" target="#pPipelines"
+///     VkPipeline const* pPipelines; // optional // @link substring="VkPipeline" target="VkPipeline" @link substring="pPipelines" target="#pPipelines"
 /// } VkGraphicsPipelineShaderGroupsCreateInfoNV;
 /// }
 ///

@@ -27,11 +27,11 @@ import static club.doki7.vulkan.VkConstants.*;
 ///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
 ///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
 ///     uint32_t stdVPSCount; // optional // @link substring="stdVPSCount" target="#stdVPSCount"
-///     StdVideoH265VideoParameterSet const* pStdVPSs; // @link substring="StdVideoH265VideoParameterSet" target="StdVideoH265VideoParameterSet" @link substring="pStdVPSs" target="#pStdVPSs"
+///     StdVideoH265VideoParameterSet const* pStdVPSs; // optional // @link substring="StdVideoH265VideoParameterSet" target="StdVideoH265VideoParameterSet" @link substring="pStdVPSs" target="#pStdVPSs"
 ///     uint32_t stdSPSCount; // optional // @link substring="stdSPSCount" target="#stdSPSCount"
-///     StdVideoH265SequenceParameterSet const* pStdSPSs; // @link substring="StdVideoH265SequenceParameterSet" target="StdVideoH265SequenceParameterSet" @link substring="pStdSPSs" target="#pStdSPSs"
+///     StdVideoH265SequenceParameterSet const* pStdSPSs; // optional // @link substring="StdVideoH265SequenceParameterSet" target="StdVideoH265SequenceParameterSet" @link substring="pStdSPSs" target="#pStdSPSs"
 ///     uint32_t stdPPSCount; // optional // @link substring="stdPPSCount" target="#stdPPSCount"
-///     StdVideoH265PictureParameterSet const* pStdPPSs; // @link substring="StdVideoH265PictureParameterSet" target="StdVideoH265PictureParameterSet" @link substring="pStdPPSs" target="#pStdPPSs"
+///     StdVideoH265PictureParameterSet const* pStdPPSs; // optional // @link substring="StdVideoH265PictureParameterSet" target="StdVideoH265PictureParameterSet" @link substring="pStdPPSs" target="#pStdPPSs"
 /// } VkVideoDecodeH265SessionParametersAddInfoKHR;
 /// }
 ///

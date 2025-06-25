@@ -27,7 +27,7 @@ import static club.doki7.vulkan.VkConstants.*;
 ///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
 ///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
 ///     uint32_t descriptorSetCount; // optional // @link substring="descriptorSetCount" target="#descriptorSetCount"
-///     uint32_t const* pDescriptorCounts; // @link substring="pDescriptorCounts" target="#pDescriptorCounts"
+///     uint32_t const* pDescriptorCounts; // optional // @link substring="pDescriptorCounts" target="#pDescriptorCounts"
 /// } VkDescriptorSetVariableDescriptorCountAllocateInfo;
 /// }
 ///

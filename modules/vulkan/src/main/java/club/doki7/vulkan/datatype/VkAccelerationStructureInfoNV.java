@@ -30,7 +30,7 @@ import static club.doki7.vulkan.VkConstants.*;
 ///     VkBuildAccelerationStructureFlagsNV flags; // optional // @link substring="VkBuildAccelerationStructureFlagsKHR" target="VkBuildAccelerationStructureFlagsNV" @link substring="flags" target="#flags"
 ///     uint32_t instanceCount; // optional // @link substring="instanceCount" target="#instanceCount"
 ///     uint32_t geometryCount; // optional // @link substring="geometryCount" target="#geometryCount"
-///     VkGeometryNV const* pGeometries; // @link substring="VkGeometryNV" target="VkGeometryNV" @link substring="pGeometries" target="#pGeometries"
+///     VkGeometryNV const* pGeometries; // optional // @link substring="VkGeometryNV" target="VkGeometryNV" @link substring="pGeometries" target="#pGeometries"
 /// } VkAccelerationStructureInfoNV;
 /// }
 ///

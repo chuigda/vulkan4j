@@ -32,7 +32,7 @@ import static club.doki7.vulkan.VkConstants.*;
 ///     uint32_t descriptorSetCount; // @link substring="descriptorSetCount" target="#descriptorSetCount"
 ///     VkDescriptorSet const* pDescriptorSets; // @link substring="VkDescriptorSet" target="VkDescriptorSet" @link substring="pDescriptorSets" target="#pDescriptorSets"
 ///     uint32_t dynamicOffsetCount; // optional // @link substring="dynamicOffsetCount" target="#dynamicOffsetCount"
-///     uint32_t const* pDynamicOffsets; // @link substring="pDynamicOffsets" target="#pDynamicOffsets"
+///     uint32_t const* pDynamicOffsets; // optional // @link substring="pDynamicOffsets" target="#pDynamicOffsets"
 /// } VkBindDescriptorSetsInfo;
 /// }
 ///

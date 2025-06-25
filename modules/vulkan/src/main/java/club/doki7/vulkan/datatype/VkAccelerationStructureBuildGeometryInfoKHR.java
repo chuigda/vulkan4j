@@ -33,7 +33,7 @@ import static club.doki7.vulkan.VkConstants.*;
 ///     VkAccelerationStructureKHR dstAccelerationStructure; // optional // @link substring="VkAccelerationStructureKHR" target="VkAccelerationStructureKHR" @link substring="dstAccelerationStructure" target="#dstAccelerationStructure"
 ///     uint32_t geometryCount; // optional // @link substring="geometryCount" target="#geometryCount"
 ///     VkAccelerationStructureGeometryKHR const* pGeometries; // optional // @link substring="VkAccelerationStructureGeometryKHR" target="VkAccelerationStructureGeometryKHR" @link substring="pGeometries" target="#pGeometries"
-///     VkAccelerationStructureGeometryKHR const* const* ppGeometries; // @link substring="VkAccelerationStructureGeometryKHR" target="VkAccelerationStructureGeometryKHR" @link substring="ppGeometries" target="#ppGeometries"
+///     VkAccelerationStructureGeometryKHR const* const* ppGeometries; // optional // @link substring="VkAccelerationStructureGeometryKHR" target="VkAccelerationStructureGeometryKHR" @link substring="ppGeometries" target="#ppGeometries"
 ///     VkDeviceOrHostAddressKHR scratchData; // @link substring="VkDeviceOrHostAddressKHR" target="VkDeviceOrHostAddressKHR" @link substring="scratchData" target="#scratchData"
 /// } VkAccelerationStructureBuildGeometryInfoKHR;
 /// }

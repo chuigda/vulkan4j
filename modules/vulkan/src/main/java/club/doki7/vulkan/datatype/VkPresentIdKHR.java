@@ -27,7 +27,7 @@ import static club.doki7.vulkan.VkConstants.*;
 ///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
 ///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
 ///     uint32_t swapchainCount; // @link substring="swapchainCount" target="#swapchainCount"
-///     uint64_t const* pPresentIds; // optional // @link substring="pPresentIds" target="#pPresentIds"
+///     uint64_t const* pPresentIds; // @link substring="pPresentIds" target="#pPresentIds"
 /// } VkPresentIdKHR;
 /// }
 ///

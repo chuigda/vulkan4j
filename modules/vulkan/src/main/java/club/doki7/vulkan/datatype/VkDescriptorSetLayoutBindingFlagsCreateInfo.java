@@ -27,7 +27,7 @@ import static club.doki7.vulkan.VkConstants.*;
 ///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
 ///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
 ///     uint32_t bindingCount; // optional // @link substring="bindingCount" target="#bindingCount"
-///     VkDescriptorBindingFlags const* pBindingFlags; // @link substring="VkDescriptorBindingFlags" target="VkDescriptorBindingFlags" @link substring="pBindingFlags" target="#pBindingFlags"
+///     VkDescriptorBindingFlags const* pBindingFlags; // optional // @link substring="VkDescriptorBindingFlags" target="VkDescriptorBindingFlags" @link substring="pBindingFlags" target="#pBindingFlags"
 /// } VkDescriptorSetLayoutBindingFlagsCreateInfo;
 /// }
 ///

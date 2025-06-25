@@ -28,11 +28,11 @@ import static club.doki7.vulkan.VkConstants.*;
 ///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
 ///     VkRenderPassCreateFlags flags; // optional // @link substring="VkRenderPassCreateFlags" target="VkRenderPassCreateFlags" @link substring="flags" target="#flags"
 ///     uint32_t attachmentCount; // optional // @link substring="attachmentCount" target="#attachmentCount"
-///     VkAttachmentDescription const* pAttachments; // @link substring="VkAttachmentDescription" target="VkAttachmentDescription" @link substring="pAttachments" target="#pAttachments"
+///     VkAttachmentDescription const* pAttachments; // optional // @link substring="VkAttachmentDescription" target="VkAttachmentDescription" @link substring="pAttachments" target="#pAttachments"
 ///     uint32_t subpassCount; // @link substring="subpassCount" target="#subpassCount"
 ///     VkSubpassDescription const* pSubpasses; // @link substring="VkSubpassDescription" target="VkSubpassDescription" @link substring="pSubpasses" target="#pSubpasses"
 ///     uint32_t dependencyCount; // optional // @link substring="dependencyCount" target="#dependencyCount"
-///     VkSubpassDependency const* pDependencies; // @link substring="VkSubpassDependency" target="VkSubpassDependency" @link substring="pDependencies" target="#pDependencies"
+///     VkSubpassDependency const* pDependencies; // optional // @link substring="VkSubpassDependency" target="VkSubpassDependency" @link substring="pDependencies" target="#pDependencies"
 /// } VkRenderPassCreateInfo;
 /// }
 ///

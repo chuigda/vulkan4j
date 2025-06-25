@@ -29,7 +29,7 @@ import static club.doki7.vulkan.VkConstants.*;
 ///     uint64_t drmFormatModifier; // @link substring="drmFormatModifier" target="#drmFormatModifier"
 ///     VkSharingMode sharingMode; // @link substring="VkSharingMode" target="VkSharingMode" @link substring="sharingMode" target="#sharingMode"
 ///     uint32_t queueFamilyIndexCount; // optional // @link substring="queueFamilyIndexCount" target="#queueFamilyIndexCount"
-///     uint32_t const* pQueueFamilyIndices; // @link substring="pQueueFamilyIndices" target="#pQueueFamilyIndices"
+///     uint32_t const* pQueueFamilyIndices; // optional // @link substring="pQueueFamilyIndices" target="#pQueueFamilyIndices"
 /// } VkPhysicalDeviceImageDrmFormatModifierInfoEXT;
 /// }
 ///

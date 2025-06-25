@@ -30,7 +30,7 @@ import static club.doki7.vulkan.VkConstants.*;
 ///     char[VK_MAX_DESCRIPTION_SIZE] description; // @link substring="description" target="#description"
 ///     VkBool32 isText; // @link substring="isText" target="#isText"
 ///     size_t dataSize; // @link substring="dataSize" target="#dataSize"
-///     void* pData; // optional // @link substring="pData" target="#pData"
+///     void* pData; // @link substring="pData" target="#pData"
 /// } VkPipelineExecutableInternalRepresentationKHR;
 /// }
 ///

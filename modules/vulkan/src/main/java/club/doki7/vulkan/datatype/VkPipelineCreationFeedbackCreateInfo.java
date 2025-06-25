@@ -28,7 +28,7 @@ import static club.doki7.vulkan.VkConstants.*;
 ///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
 ///     VkPipelineCreationFeedback* pPipelineCreationFeedback; // @link substring="VkPipelineCreationFeedback" target="VkPipelineCreationFeedback" @link substring="pPipelineCreationFeedback" target="#pPipelineCreationFeedback"
 ///     uint32_t pipelineStageCreationFeedbackCount; // optional // @link substring="pipelineStageCreationFeedbackCount" target="#pipelineStageCreationFeedbackCount"
-///     VkPipelineCreationFeedback* pPipelineStageCreationFeedbacks; // @link substring="VkPipelineCreationFeedback" target="VkPipelineCreationFeedback" @link substring="pPipelineStageCreationFeedbacks" target="#pPipelineStageCreationFeedbacks"
+///     VkPipelineCreationFeedback* pPipelineStageCreationFeedbacks; // optional // @link substring="VkPipelineCreationFeedback" target="VkPipelineCreationFeedback" @link substring="pPipelineStageCreationFeedbacks" target="#pPipelineStageCreationFeedbacks"
 /// } VkPipelineCreationFeedbackCreateInfo;
 /// }
 ///

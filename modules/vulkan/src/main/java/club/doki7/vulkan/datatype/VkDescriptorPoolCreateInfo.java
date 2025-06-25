@@ -29,7 +29,7 @@ import static club.doki7.vulkan.VkConstants.*;
 ///     VkDescriptorPoolCreateFlags flags; // optional // @link substring="VkDescriptorPoolCreateFlags" target="VkDescriptorPoolCreateFlags" @link substring="flags" target="#flags"
 ///     uint32_t maxSets; // @link substring="maxSets" target="#maxSets"
 ///     uint32_t poolSizeCount; // optional // @link substring="poolSizeCount" target="#poolSizeCount"
-///     VkDescriptorPoolSize const* pPoolSizes; // @link substring="VkDescriptorPoolSize" target="VkDescriptorPoolSize" @link substring="pPoolSizes" target="#pPoolSizes"
+///     VkDescriptorPoolSize const* pPoolSizes; // optional // @link substring="VkDescriptorPoolSize" target="VkDescriptorPoolSize" @link substring="pPoolSizes" target="#pPoolSizes"
 /// } VkDescriptorPoolCreateInfo;
 /// }
 ///

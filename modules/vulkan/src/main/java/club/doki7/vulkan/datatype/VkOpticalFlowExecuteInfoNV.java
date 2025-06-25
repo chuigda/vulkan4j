@@ -28,7 +28,7 @@ import static club.doki7.vulkan.VkConstants.*;
 ///     void* pNext; // optional // @link substring="pNext" target="#pNext"
 ///     VkOpticalFlowExecuteFlagsNV flags; // optional // @link substring="VkOpticalFlowExecuteFlagsNV" target="VkOpticalFlowExecuteFlagsNV" @link substring="flags" target="#flags"
 ///     uint32_t regionCount; // optional // @link substring="regionCount" target="#regionCount"
-///     VkRect2D const* pRegions; // @link substring="VkRect2D" target="VkRect2D" @link substring="pRegions" target="#pRegions"
+///     VkRect2D const* pRegions; // optional // @link substring="VkRect2D" target="VkRect2D" @link substring="pRegions" target="#pRegions"
 /// } VkOpticalFlowExecuteInfoNV;
 /// }
 ///

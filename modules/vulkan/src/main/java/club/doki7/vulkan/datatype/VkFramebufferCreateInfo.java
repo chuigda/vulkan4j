@@ -29,7 +29,7 @@ import static club.doki7.vulkan.VkConstants.*;
 ///     VkFramebufferCreateFlags flags; // optional // @link substring="VkFramebufferCreateFlags" target="VkFramebufferCreateFlags" @link substring="flags" target="#flags"
 ///     VkRenderPass renderPass; // @link substring="VkRenderPass" target="VkRenderPass" @link substring="renderPass" target="#renderPass"
 ///     uint32_t attachmentCount; // optional // @link substring="attachmentCount" target="#attachmentCount"
-///     VkImageView const* pAttachments; // @link substring="VkImageView" target="VkImageView" @link substring="pAttachments" target="#pAttachments"
+///     VkImageView const* pAttachments; // optional // @link substring="VkImageView" target="VkImageView" @link substring="pAttachments" target="#pAttachments"
 ///     uint32_t width; // @link substring="width" target="#width"
 ///     uint32_t height; // @link substring="height" target="#height"
 ///     uint32_t layers; // @link substring="layers" target="#layers"

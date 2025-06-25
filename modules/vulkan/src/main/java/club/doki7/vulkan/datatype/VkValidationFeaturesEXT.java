@@ -27,9 +27,9 @@ import static club.doki7.vulkan.VkConstants.*;
 ///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
 ///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
 ///     uint32_t enabledValidationFeatureCount; // optional // @link substring="enabledValidationFeatureCount" target="#enabledValidationFeatureCount"
-///     VkValidationFeatureEnableEXT const* pEnabledValidationFeatures; // @link substring="VkValidationFeatureEnableEXT" target="VkValidationFeatureEnableEXT" @link substring="pEnabledValidationFeatures" target="#pEnabledValidationFeatures"
+///     VkValidationFeatureEnableEXT const* pEnabledValidationFeatures; // optional // @link substring="VkValidationFeatureEnableEXT" target="VkValidationFeatureEnableEXT" @link substring="pEnabledValidationFeatures" target="#pEnabledValidationFeatures"
 ///     uint32_t disabledValidationFeatureCount; // optional // @link substring="disabledValidationFeatureCount" target="#disabledValidationFeatureCount"
-///     VkValidationFeatureDisableEXT const* pDisabledValidationFeatures; // @link substring="VkValidationFeatureDisableEXT" target="VkValidationFeatureDisableEXT" @link substring="pDisabledValidationFeatures" target="#pDisabledValidationFeatures"
+///     VkValidationFeatureDisableEXT const* pDisabledValidationFeatures; // optional // @link substring="VkValidationFeatureDisableEXT" target="VkValidationFeatureDisableEXT" @link substring="pDisabledValidationFeatures" target="#pDisabledValidationFeatures"
 /// } VkValidationFeaturesEXT;
 /// }
 ///

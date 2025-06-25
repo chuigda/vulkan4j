@@ -27,7 +27,7 @@ import static club.doki7.vulkan.VkConstants.*;
 ///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
 ///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
 ///     uint32_t exclusiveScissorCount; // optional // @link substring="exclusiveScissorCount" target="#exclusiveScissorCount"
-///     VkRect2D const* pExclusiveScissors; // @link substring="VkRect2D" target="VkRect2D" @link substring="pExclusiveScissors" target="#pExclusiveScissors"
+///     VkRect2D const* pExclusiveScissors; // optional // @link substring="VkRect2D" target="VkRect2D" @link substring="pExclusiveScissors" target="#pExclusiveScissors"
 /// } VkPipelineViewportExclusiveScissorStateCreateInfoNV;
 /// }
 ///

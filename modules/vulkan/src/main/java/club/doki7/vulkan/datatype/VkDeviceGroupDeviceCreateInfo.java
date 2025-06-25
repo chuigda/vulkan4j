@@ -27,7 +27,7 @@ import static club.doki7.vulkan.VkConstants.*;
 ///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
 ///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
 ///     uint32_t physicalDeviceCount; // optional // @link substring="physicalDeviceCount" target="#physicalDeviceCount"
-///     VkPhysicalDevice const* pPhysicalDevices; // @link substring="VkPhysicalDevice" target="VkPhysicalDevice" @link substring="pPhysicalDevices" target="#pPhysicalDevices"
+///     VkPhysicalDevice const* pPhysicalDevices; // optional // @link substring="VkPhysicalDevice" target="VkPhysicalDevice" @link substring="pPhysicalDevices" target="#pPhysicalDevices"
 /// } VkDeviceGroupDeviceCreateInfo;
 /// }
 ///

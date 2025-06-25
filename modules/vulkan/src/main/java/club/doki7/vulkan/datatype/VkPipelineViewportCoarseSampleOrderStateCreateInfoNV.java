@@ -28,7 +28,7 @@ import static club.doki7.vulkan.VkConstants.*;
 ///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
 ///     VkCoarseSampleOrderTypeNV sampleOrderType; // @link substring="VkCoarseSampleOrderTypeNV" target="VkCoarseSampleOrderTypeNV" @link substring="sampleOrderType" target="#sampleOrderType"
 ///     uint32_t customSampleOrderCount; // optional // @link substring="customSampleOrderCount" target="#customSampleOrderCount"
-///     VkCoarseSampleOrderCustomNV const* pCustomSampleOrders; // @link substring="VkCoarseSampleOrderCustomNV" target="VkCoarseSampleOrderCustomNV" @link substring="pCustomSampleOrders" target="#pCustomSampleOrders"
+///     VkCoarseSampleOrderCustomNV const* pCustomSampleOrders; // optional // @link substring="VkCoarseSampleOrderCustomNV" target="VkCoarseSampleOrderCustomNV" @link substring="pCustomSampleOrders" target="#pCustomSampleOrders"
 /// } VkPipelineViewportCoarseSampleOrderStateCreateInfoNV;
 /// }
 ///

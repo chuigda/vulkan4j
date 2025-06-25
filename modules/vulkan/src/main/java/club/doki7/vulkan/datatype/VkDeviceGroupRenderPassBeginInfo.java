@@ -28,7 +28,7 @@ import static club.doki7.vulkan.VkConstants.*;
 ///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
 ///     uint32_t deviceMask; // @link substring="deviceMask" target="#deviceMask"
 ///     uint32_t deviceRenderAreaCount; // optional // @link substring="deviceRenderAreaCount" target="#deviceRenderAreaCount"
-///     VkRect2D const* pDeviceRenderAreas; // @link substring="VkRect2D" target="VkRect2D" @link substring="pDeviceRenderAreas" target="#pDeviceRenderAreas"
+///     VkRect2D const* pDeviceRenderAreas; // optional // @link substring="VkRect2D" target="VkRect2D" @link substring="pDeviceRenderAreas" target="#pDeviceRenderAreas"
 /// } VkDeviceGroupRenderPassBeginInfo;
 /// }
 ///

@@ -31,7 +31,7 @@ import club.doki7.vulkan.handle.*;
 ///     XrStructureType type; // @link substring="XrStructureType" target="XrStructureType" @link substring="type" target="#type"
 ///     void const* next; // @link substring="next" target="#next"
 ///     uint32_t requestedDataSourceCount; // optional // @link substring="requestedDataSourceCount" target="#requestedDataSourceCount"
-///     XrHandTrackingDataSourceEXT* requestedDataSources; // @link substring="XrHandTrackingDataSourceEXT" target="XrHandTrackingDataSourceEXT" @link substring="requestedDataSources" target="#requestedDataSources"
+///     XrHandTrackingDataSourceEXT* requestedDataSources; // optional // @link substring="XrHandTrackingDataSourceEXT" target="XrHandTrackingDataSourceEXT" @link substring="requestedDataSources" target="#requestedDataSources"
 /// } XrHandTrackingDataSourceInfoEXT;
 /// }
 ///

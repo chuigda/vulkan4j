@@ -27,9 +27,9 @@ import static club.doki7.vulkan.VkConstants.*;
 ///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
 ///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
 ///     uint32_t deviceIndexCount; // optional // @link substring="deviceIndexCount" target="#deviceIndexCount"
-///     uint32_t const* pDeviceIndices; // @link substring="pDeviceIndices" target="#pDeviceIndices"
+///     uint32_t const* pDeviceIndices; // optional // @link substring="pDeviceIndices" target="#pDeviceIndices"
 ///     uint32_t splitInstanceBindRegionCount; // optional // @link substring="splitInstanceBindRegionCount" target="#splitInstanceBindRegionCount"
-///     VkRect2D const* pSplitInstanceBindRegions; // @link substring="VkRect2D" target="VkRect2D" @link substring="pSplitInstanceBindRegions" target="#pSplitInstanceBindRegions"
+///     VkRect2D const* pSplitInstanceBindRegions; // optional // @link substring="VkRect2D" target="VkRect2D" @link substring="pSplitInstanceBindRegions" target="#pSplitInstanceBindRegions"
 /// } VkBindImageMemoryDeviceGroupInfo;
 /// }
 ///

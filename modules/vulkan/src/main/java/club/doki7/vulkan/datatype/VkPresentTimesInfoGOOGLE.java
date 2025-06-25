@@ -27,7 +27,7 @@ import static club.doki7.vulkan.VkConstants.*;
 ///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
 ///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
 ///     uint32_t swapchainCount; // @link substring="swapchainCount" target="#swapchainCount"
-///     VkPresentTimeGOOGLE const* pTimes; // optional // @link substring="VkPresentTimeGOOGLE" target="VkPresentTimeGOOGLE" @link substring="pTimes" target="#pTimes"
+///     VkPresentTimeGOOGLE const* pTimes; // @link substring="VkPresentTimeGOOGLE" target="VkPresentTimeGOOGLE" @link substring="pTimes" target="#pTimes"
 /// } VkPresentTimesInfoGOOGLE;
 /// }
 ///

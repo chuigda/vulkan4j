@@ -27,7 +27,7 @@ import static club.doki7.vulkan.VkConstants.*;
 ///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
 ///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
 ///     uint32_t attachmentImageInfoCount; // optional // @link substring="attachmentImageInfoCount" target="#attachmentImageInfoCount"
-///     VkFramebufferAttachmentImageInfo const* pAttachmentImageInfos; // @link substring="VkFramebufferAttachmentImageInfo" target="VkFramebufferAttachmentImageInfo" @link substring="pAttachmentImageInfos" target="#pAttachmentImageInfos"
+///     VkFramebufferAttachmentImageInfo const* pAttachmentImageInfos; // optional // @link substring="VkFramebufferAttachmentImageInfo" target="VkFramebufferAttachmentImageInfo" @link substring="pAttachmentImageInfos" target="#pAttachmentImageInfos"
 /// } VkFramebufferAttachmentsCreateInfo;
 /// }
 ///

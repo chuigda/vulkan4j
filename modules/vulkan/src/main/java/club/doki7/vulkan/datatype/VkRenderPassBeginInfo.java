@@ -30,7 +30,7 @@ import static club.doki7.vulkan.VkConstants.*;
 ///     VkFramebuffer framebuffer; // @link substring="VkFramebuffer" target="VkFramebuffer" @link substring="framebuffer" target="#framebuffer"
 ///     VkRect2D renderArea; // @link substring="VkRect2D" target="VkRect2D" @link substring="renderArea" target="#renderArea"
 ///     uint32_t clearValueCount; // optional // @link substring="clearValueCount" target="#clearValueCount"
-///     VkClearValue const* pClearValues; // @link substring="VkClearValue" target="VkClearValue" @link substring="pClearValues" target="#pClearValues"
+///     VkClearValue const* pClearValues; // optional // @link substring="VkClearValue" target="VkClearValue" @link substring="pClearValues" target="#pClearValues"
 /// } VkRenderPassBeginInfo;
 /// }
 ///

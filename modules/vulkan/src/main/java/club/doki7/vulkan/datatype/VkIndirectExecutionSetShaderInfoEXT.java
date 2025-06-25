@@ -28,10 +28,10 @@ import static club.doki7.vulkan.VkConstants.*;
 ///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
 ///     uint32_t shaderCount; // @link substring="shaderCount" target="#shaderCount"
 ///     VkShaderEXT const* pInitialShaders; // @link substring="VkShaderEXT" target="VkShaderEXT" @link substring="pInitialShaders" target="#pInitialShaders"
-///     VkIndirectExecutionSetShaderLayoutInfoEXT const* pSetLayoutInfos; // optional // @link substring="VkIndirectExecutionSetShaderLayoutInfoEXT" target="VkIndirectExecutionSetShaderLayoutInfoEXT" @link substring="pSetLayoutInfos" target="#pSetLayoutInfos"
+///     VkIndirectExecutionSetShaderLayoutInfoEXT const* pSetLayoutInfos; // @link substring="VkIndirectExecutionSetShaderLayoutInfoEXT" target="VkIndirectExecutionSetShaderLayoutInfoEXT" @link substring="pSetLayoutInfos" target="#pSetLayoutInfos"
 ///     uint32_t maxShaderCount; // @link substring="maxShaderCount" target="#maxShaderCount"
 ///     uint32_t pushConstantRangeCount; // optional // @link substring="pushConstantRangeCount" target="#pushConstantRangeCount"
-///     VkPushConstantRange const* pPushConstantRanges; // @link substring="VkPushConstantRange" target="VkPushConstantRange" @link substring="pPushConstantRanges" target="#pPushConstantRanges"
+///     VkPushConstantRange const* pPushConstantRanges; // optional // @link substring="VkPushConstantRange" target="VkPushConstantRange" @link substring="pPushConstantRanges" target="#pPushConstantRanges"
 /// } VkIndirectExecutionSetShaderInfoEXT;
 /// }
 ///

@@ -32,7 +32,7 @@ import static club.doki7.vulkan.VkConstants.*;
 ///     VkMicromapEXT dstMicromap; // optional // @link substring="VkMicromapEXT" target="VkMicromapEXT" @link substring="dstMicromap" target="#dstMicromap"
 ///     uint32_t usageCountsCount; // optional // @link substring="usageCountsCount" target="#usageCountsCount"
 ///     VkMicromapUsageEXT const* pUsageCounts; // optional // @link substring="VkMicromapUsageEXT" target="VkMicromapUsageEXT" @link substring="pUsageCounts" target="#pUsageCounts"
-///     VkMicromapUsageEXT const* const* ppUsageCounts; // @link substring="VkMicromapUsageEXT" target="VkMicromapUsageEXT" @link substring="ppUsageCounts" target="#ppUsageCounts"
+///     VkMicromapUsageEXT const* const* ppUsageCounts; // optional // @link substring="VkMicromapUsageEXT" target="VkMicromapUsageEXT" @link substring="ppUsageCounts" target="#ppUsageCounts"
 ///     VkDeviceOrHostAddressConstKHR data; // @link substring="VkDeviceOrHostAddressConstKHR" target="VkDeviceOrHostAddressConstKHR" @link substring="data" target="#data"
 ///     VkDeviceOrHostAddressKHR scratchData; // @link substring="VkDeviceOrHostAddressKHR" target="VkDeviceOrHostAddressKHR" @link substring="scratchData" target="#scratchData"
 ///     VkDeviceOrHostAddressConstKHR triangleArray; // @link substring="VkDeviceOrHostAddressConstKHR" target="VkDeviceOrHostAddressConstKHR" @link substring="triangleArray" target="#triangleArray"

@@ -27,7 +27,7 @@ import static club.doki7.vulkan.VkConstants.*;
 ///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
 ///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
 ///     size_t dataSize; // optional // @link substring="dataSize" target="#dataSize"
-///     void const* pData; // @link substring="pData" target="#pData"
+///     void const* pData; // optional // @link substring="pData" target="#pData"
 /// } VkCuModuleCreateInfoNVX;
 /// }
 ///

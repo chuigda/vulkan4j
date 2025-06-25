@@ -28,7 +28,7 @@ import static club.doki7.vulkan.VkConstants.*;
 ///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
 ///     VkBool32 viewportWScalingEnable; // @link substring="viewportWScalingEnable" target="#viewportWScalingEnable"
 ///     uint32_t viewportCount; // @link substring="viewportCount" target="#viewportCount"
-///     VkViewportWScalingNV const* pViewportWScalings; // optional // @link substring="VkViewportWScalingNV" target="VkViewportWScalingNV" @link substring="pViewportWScalings" target="#pViewportWScalings"
+///     VkViewportWScalingNV const* pViewportWScalings; // @link substring="VkViewportWScalingNV" target="VkViewportWScalingNV" @link substring="pViewportWScalings" target="#pViewportWScalings"
 /// } VkPipelineViewportWScalingStateCreateInfoNV;
 /// }
 ///

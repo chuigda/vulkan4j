@@ -30,13 +30,13 @@ import static club.doki7.vulkan.VkConstants.*;
 ///     VkPipelineBindPoint pipelineBindPoint; // @link substring="VkPipelineBindPoint" target="VkPipelineBindPoint" @link substring="pipelineBindPoint" target="#pipelineBindPoint"
 ///     uint32_t viewMask; // @link substring="viewMask" target="#viewMask"
 ///     uint32_t inputAttachmentCount; // optional // @link substring="inputAttachmentCount" target="#inputAttachmentCount"
-///     VkAttachmentReference2 const* pInputAttachments; // @link substring="VkAttachmentReference2" target="VkAttachmentReference2" @link substring="pInputAttachments" target="#pInputAttachments"
+///     VkAttachmentReference2 const* pInputAttachments; // optional // @link substring="VkAttachmentReference2" target="VkAttachmentReference2" @link substring="pInputAttachments" target="#pInputAttachments"
 ///     uint32_t colorAttachmentCount; // optional // @link substring="colorAttachmentCount" target="#colorAttachmentCount"
-///     VkAttachmentReference2 const* pColorAttachments; // @link substring="VkAttachmentReference2" target="VkAttachmentReference2" @link substring="pColorAttachments" target="#pColorAttachments"
+///     VkAttachmentReference2 const* pColorAttachments; // optional // @link substring="VkAttachmentReference2" target="VkAttachmentReference2" @link substring="pColorAttachments" target="#pColorAttachments"
 ///     VkAttachmentReference2 const* pResolveAttachments; // optional // @link substring="VkAttachmentReference2" target="VkAttachmentReference2" @link substring="pResolveAttachments" target="#pResolveAttachments"
 ///     VkAttachmentReference2 const* pDepthStencilAttachment; // optional // @link substring="VkAttachmentReference2" target="VkAttachmentReference2" @link substring="pDepthStencilAttachment" target="#pDepthStencilAttachment"
 ///     uint32_t preserveAttachmentCount; // optional // @link substring="preserveAttachmentCount" target="#preserveAttachmentCount"
-///     uint32_t const* pPreserveAttachments; // @link substring="pPreserveAttachments" target="#pPreserveAttachments"
+///     uint32_t const* pPreserveAttachments; // optional // @link substring="pPreserveAttachments" target="#pPreserveAttachments"
 /// } VkSubpassDescription2;
 /// }
 ///

@@ -27,7 +27,7 @@ import static club.doki7.vulkan.VkConstants.*;
 ///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
 ///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
 ///     uint32_t perViewRenderAreaCount; // optional // @link substring="perViewRenderAreaCount" target="#perViewRenderAreaCount"
-///     VkRect2D const* pPerViewRenderAreas; // @link substring="VkRect2D" target="VkRect2D" @link substring="pPerViewRenderAreas" target="#pPerViewRenderAreas"
+///     VkRect2D const* pPerViewRenderAreas; // optional // @link substring="VkRect2D" target="VkRect2D" @link substring="pPerViewRenderAreas" target="#pPerViewRenderAreas"
 /// } VkMultiviewPerViewRenderAreasRenderPassBeginInfoQCOM;
 /// }
 ///

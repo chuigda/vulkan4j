@@ -28,7 +28,7 @@ import static club.doki7.vulkan.VkConstants.*;
 ///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
 ///     VkBool32 shadingRateImageEnable; // @link substring="shadingRateImageEnable" target="#shadingRateImageEnable"
 ///     uint32_t viewportCount; // optional // @link substring="viewportCount" target="#viewportCount"
-///     VkShadingRatePaletteNV const* pShadingRatePalettes; // @link substring="VkShadingRatePaletteNV" target="VkShadingRatePaletteNV" @link substring="pShadingRatePalettes" target="#pShadingRatePalettes"
+///     VkShadingRatePaletteNV const* pShadingRatePalettes; // optional // @link substring="VkShadingRatePaletteNV" target="VkShadingRatePaletteNV" @link substring="pShadingRatePalettes" target="#pShadingRatePalettes"
 /// } VkPipelineViewportShadingRateImageStateCreateInfoNV;
 /// }
 ///

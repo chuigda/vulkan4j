@@ -25,7 +25,7 @@ import static club.doki7.vulkan.VkConstants.*;
 /// {@snippet lang=c :
 /// typedef struct VkMutableDescriptorTypeListEXT {
 ///     uint32_t descriptorTypeCount; // optional // @link substring="descriptorTypeCount" target="#descriptorTypeCount"
-///     VkDescriptorType const* pDescriptorTypes; // @link substring="VkDescriptorType" target="VkDescriptorType" @link substring="pDescriptorTypes" target="#pDescriptorTypes"
+///     VkDescriptorType const* pDescriptorTypes; // optional // @link substring="VkDescriptorType" target="VkDescriptorType" @link substring="pDescriptorTypes" target="#pDescriptorTypes"
 /// } VkMutableDescriptorTypeListEXT;
 /// }
 ///

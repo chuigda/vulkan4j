@@ -28,9 +28,9 @@ import static club.doki7.vulkan.VkConstants.*;
 ///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
 ///     VkPipelineVertexInputStateCreateFlags flags; // optional // @link substring="VkPipelineVertexInputStateCreateFlags" target="VkPipelineVertexInputStateCreateFlags" @link substring="flags" target="#flags"
 ///     uint32_t vertexBindingDescriptionCount; // optional // @link substring="vertexBindingDescriptionCount" target="#vertexBindingDescriptionCount"
-///     VkVertexInputBindingDescription const* pVertexBindingDescriptions; // @link substring="VkVertexInputBindingDescription" target="VkVertexInputBindingDescription" @link substring="pVertexBindingDescriptions" target="#pVertexBindingDescriptions"
+///     VkVertexInputBindingDescription const* pVertexBindingDescriptions; // optional // @link substring="VkVertexInputBindingDescription" target="VkVertexInputBindingDescription" @link substring="pVertexBindingDescriptions" target="#pVertexBindingDescriptions"
 ///     uint32_t vertexAttributeDescriptionCount; // optional // @link substring="vertexAttributeDescriptionCount" target="#vertexAttributeDescriptionCount"
-///     VkVertexInputAttributeDescription const* pVertexAttributeDescriptions; // @link substring="VkVertexInputAttributeDescription" target="VkVertexInputAttributeDescription" @link substring="pVertexAttributeDescriptions" target="#pVertexAttributeDescriptions"
+///     VkVertexInputAttributeDescription const* pVertexAttributeDescriptions; // optional // @link substring="VkVertexInputAttributeDescription" target="VkVertexInputAttributeDescription" @link substring="pVertexAttributeDescriptions" target="#pVertexAttributeDescriptions"
 /// } VkPipelineVertexInputStateCreateInfo;
 /// }
 ///

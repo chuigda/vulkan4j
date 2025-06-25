@@ -30,7 +30,7 @@ import static club.doki7.vulkan.VkConstants.*;
 ///     VkDeviceMemory memory; // @link substring="VkDeviceMemory" target="VkDeviceMemory" @link substring="memory" target="#memory"
 ///     VkDeviceSize memoryOffset; // @link substring="memoryOffset" target="#memoryOffset"
 ///     uint32_t deviceIndexCount; // optional // @link substring="deviceIndexCount" target="#deviceIndexCount"
-///     uint32_t const* pDeviceIndices; // @link substring="pDeviceIndices" target="#pDeviceIndices"
+///     uint32_t const* pDeviceIndices; // optional // @link substring="pDeviceIndices" target="#pDeviceIndices"
 /// } VkBindAccelerationStructureMemoryInfoNV;
 /// }
 ///

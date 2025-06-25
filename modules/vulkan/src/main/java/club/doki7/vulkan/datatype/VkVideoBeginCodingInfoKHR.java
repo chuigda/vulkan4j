@@ -30,7 +30,7 @@ import static club.doki7.vulkan.VkConstants.*;
 ///     VkVideoSessionKHR videoSession; // @link substring="VkVideoSessionKHR" target="VkVideoSessionKHR" @link substring="videoSession" target="#videoSession"
 ///     VkVideoSessionParametersKHR videoSessionParameters; // optional // @link substring="VkVideoSessionParametersKHR" target="VkVideoSessionParametersKHR" @link substring="videoSessionParameters" target="#videoSessionParameters"
 ///     uint32_t referenceSlotCount; // optional // @link substring="referenceSlotCount" target="#referenceSlotCount"
-///     VkVideoReferenceSlotInfoKHR const* pReferenceSlots; // @link substring="VkVideoReferenceSlotInfoKHR" target="VkVideoReferenceSlotInfoKHR" @link substring="pReferenceSlots" target="#pReferenceSlots"
+///     VkVideoReferenceSlotInfoKHR const* pReferenceSlots; // optional // @link substring="VkVideoReferenceSlotInfoKHR" target="VkVideoReferenceSlotInfoKHR" @link substring="pReferenceSlots" target="#pReferenceSlots"
 /// } VkVideoBeginCodingInfoKHR;
 /// }
 ///

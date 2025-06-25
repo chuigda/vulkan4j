@@ -27,9 +27,9 @@ import static club.doki7.vulkan.VkConstants.*;
 ///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
 ///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
 ///     uint32_t attachmentInitialSampleLocationsCount; // optional // @link substring="attachmentInitialSampleLocationsCount" target="#attachmentInitialSampleLocationsCount"
-///     VkAttachmentSampleLocationsEXT const* pAttachmentInitialSampleLocations; // @link substring="VkAttachmentSampleLocationsEXT" target="VkAttachmentSampleLocationsEXT" @link substring="pAttachmentInitialSampleLocations" target="#pAttachmentInitialSampleLocations"
+///     VkAttachmentSampleLocationsEXT const* pAttachmentInitialSampleLocations; // optional // @link substring="VkAttachmentSampleLocationsEXT" target="VkAttachmentSampleLocationsEXT" @link substring="pAttachmentInitialSampleLocations" target="#pAttachmentInitialSampleLocations"
 ///     uint32_t postSubpassSampleLocationsCount; // optional // @link substring="postSubpassSampleLocationsCount" target="#postSubpassSampleLocationsCount"
-///     VkSubpassSampleLocationsEXT const* pPostSubpassSampleLocations; // @link substring="VkSubpassSampleLocationsEXT" target="VkSubpassSampleLocationsEXT" @link substring="pPostSubpassSampleLocations" target="#pPostSubpassSampleLocations"
+///     VkSubpassSampleLocationsEXT const* pPostSubpassSampleLocations; // optional // @link substring="VkSubpassSampleLocationsEXT" target="VkSubpassSampleLocationsEXT" @link substring="pPostSubpassSampleLocations" target="#pPostSubpassSampleLocations"
 /// } VkRenderPassSampleLocationsBeginInfoEXT;
 /// }
 ///

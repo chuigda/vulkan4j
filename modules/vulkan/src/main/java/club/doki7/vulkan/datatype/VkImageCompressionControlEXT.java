@@ -28,7 +28,7 @@ import static club.doki7.vulkan.VkConstants.*;
 ///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
 ///     VkImageCompressionFlagsEXT flags; // @link substring="VkImageCompressionFlagsEXT" target="VkImageCompressionFlagsEXT" @link substring="flags" target="#flags"
 ///     uint32_t compressionControlPlaneCount; // optional // @link substring="compressionControlPlaneCount" target="#compressionControlPlaneCount"
-///     VkImageCompressionFixedRateFlagsEXT* pFixedRateFlags; // @link substring="VkImageCompressionFixedRateFlagsEXT" target="VkImageCompressionFixedRateFlagsEXT" @link substring="pFixedRateFlags" target="#pFixedRateFlags"
+///     VkImageCompressionFixedRateFlagsEXT* pFixedRateFlags; // optional // @link substring="VkImageCompressionFixedRateFlagsEXT" target="VkImageCompressionFixedRateFlagsEXT" @link substring="pFixedRateFlags" target="#pFixedRateFlags"
 /// } VkImageCompressionControlEXT;
 /// }
 ///

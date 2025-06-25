@@ -27,15 +27,15 @@ import static club.doki7.vulkan.VkConstants.*;
 ///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
 ///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
 ///     uint32_t waitSemaphoreCount; // optional // @link substring="waitSemaphoreCount" target="#waitSemaphoreCount"
-///     VkSemaphore const* pWaitSemaphores; // @link substring="VkSemaphore" target="VkSemaphore" @link substring="pWaitSemaphores" target="#pWaitSemaphores"
+///     VkSemaphore const* pWaitSemaphores; // optional // @link substring="VkSemaphore" target="VkSemaphore" @link substring="pWaitSemaphores" target="#pWaitSemaphores"
 ///     uint32_t bufferBindCount; // optional // @link substring="bufferBindCount" target="#bufferBindCount"
-///     VkSparseBufferMemoryBindInfo const* pBufferBinds; // @link substring="VkSparseBufferMemoryBindInfo" target="VkSparseBufferMemoryBindInfo" @link substring="pBufferBinds" target="#pBufferBinds"
+///     VkSparseBufferMemoryBindInfo const* pBufferBinds; // optional // @link substring="VkSparseBufferMemoryBindInfo" target="VkSparseBufferMemoryBindInfo" @link substring="pBufferBinds" target="#pBufferBinds"
 ///     uint32_t imageOpaqueBindCount; // optional // @link substring="imageOpaqueBindCount" target="#imageOpaqueBindCount"
-///     VkSparseImageOpaqueMemoryBindInfo const* pImageOpaqueBinds; // @link substring="VkSparseImageOpaqueMemoryBindInfo" target="VkSparseImageOpaqueMemoryBindInfo" @link substring="pImageOpaqueBinds" target="#pImageOpaqueBinds"
+///     VkSparseImageOpaqueMemoryBindInfo const* pImageOpaqueBinds; // optional // @link substring="VkSparseImageOpaqueMemoryBindInfo" target="VkSparseImageOpaqueMemoryBindInfo" @link substring="pImageOpaqueBinds" target="#pImageOpaqueBinds"
 ///     uint32_t imageBindCount; // optional // @link substring="imageBindCount" target="#imageBindCount"
-///     VkSparseImageMemoryBindInfo const* pImageBinds; // @link substring="VkSparseImageMemoryBindInfo" target="VkSparseImageMemoryBindInfo" @link substring="pImageBinds" target="#pImageBinds"
+///     VkSparseImageMemoryBindInfo const* pImageBinds; // optional // @link substring="VkSparseImageMemoryBindInfo" target="VkSparseImageMemoryBindInfo" @link substring="pImageBinds" target="#pImageBinds"
 ///     uint32_t signalSemaphoreCount; // optional // @link substring="signalSemaphoreCount" target="#signalSemaphoreCount"
-///     VkSemaphore const* pSignalSemaphores; // @link substring="VkSemaphore" target="VkSemaphore" @link substring="pSignalSemaphores" target="#pSignalSemaphores"
+///     VkSemaphore const* pSignalSemaphores; // optional // @link substring="VkSemaphore" target="VkSemaphore" @link substring="pSignalSemaphores" target="#pSignalSemaphores"
 /// } VkBindSparseInfo;
 /// }
 ///

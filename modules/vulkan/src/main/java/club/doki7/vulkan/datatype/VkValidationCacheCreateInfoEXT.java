@@ -28,7 +28,7 @@ import static club.doki7.vulkan.VkConstants.*;
 ///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
 ///     VkValidationCacheCreateFlagsEXT flags; // optional // @link substring="VkValidationCacheCreateFlagsEXT" target="VkValidationCacheCreateFlagsEXT" @link substring="flags" target="#flags"
 ///     size_t initialDataSize; // optional // @link substring="initialDataSize" target="#initialDataSize"
-///     void const* pInitialData; // @link substring="pInitialData" target="#pInitialData"
+///     void const* pInitialData; // optional // @link substring="pInitialData" target="#pInitialData"
 /// } VkValidationCacheCreateInfoEXT;
 /// }
 ///

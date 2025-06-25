@@ -27,7 +27,7 @@ import static club.doki7.vulkan.VkConstants.*;
 ///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
 ///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
 ///     uint32_t identifierSize; // optional // @link substring="identifierSize" target="#identifierSize"
-///     uint8_t const* pIdentifier; // @link substring="pIdentifier" target="#pIdentifier"
+///     uint8_t const* pIdentifier; // optional // @link substring="pIdentifier" target="#pIdentifier"
 /// } VkPipelineShaderStageModuleIdentifierCreateInfoEXT;
 /// }
 ///

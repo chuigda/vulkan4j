@@ -28,7 +28,7 @@ import static club.doki7.vulkan.VkConstants.*;
 ///     char const* pSettingName; // @link substring="pSettingName" target="#pSettingName"
 ///     VkLayerSettingTypeEXT type; // @link substring="VkLayerSettingTypeEXT" target="VkLayerSettingTypeEXT" @link substring="type" target="#type"
 ///     uint32_t valueCount; // optional // @link substring="valueCount" target="#valueCount"
-///     void const* pValues; // @link substring="pValues" target="#pValues"
+///     void const* pValues; // optional // @link substring="pValues" target="#pValues"
 /// } VkLayerSettingEXT;
 /// }
 ///

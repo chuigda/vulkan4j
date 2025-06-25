@@ -27,7 +27,7 @@ import static club.doki7.vulkan.VkConstants.*;
 ///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
 ///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
 ///     uint32_t colorAttachmentCount; // optional // @link substring="colorAttachmentCount" target="#colorAttachmentCount"
-///     uint32_t const* pColorAttachmentLocations; // @link substring="pColorAttachmentLocations" target="#pColorAttachmentLocations"
+///     uint32_t const* pColorAttachmentLocations; // optional // @link substring="pColorAttachmentLocations" target="#pColorAttachmentLocations"
 /// } VkRenderingAttachmentLocationInfo;
 /// }
 ///
