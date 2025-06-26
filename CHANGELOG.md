@@ -1,3 +1,11 @@
+## UNRELEASED v0.4.2
+
+Upgrade `ffm-plus` to v0.2.6, and other wrapper modules to v0.4.2.
+
+### Bugfixes
+
+- Fixed #126 via forcing the loading order of `WindowsUtil` (and `UnixUtil`) classes.
+
 ## v0.4.1
 
 Upgrade `ffm-plus` to v0.2.5, and other wrapper modules to v0.4.1.
