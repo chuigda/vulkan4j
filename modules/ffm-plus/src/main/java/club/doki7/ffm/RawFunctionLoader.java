@@ -25,4 +25,16 @@ public interface RawFunctionLoader {
 
         return nativeLinker.downcallHandle(segment, descriptor);
     }
+
+    static @Nullable MethodHandle linkWithOptions(
+            @NotNull MemorySegment segment,
+            FunctionDescriptor descriptor,
+            Linker.Option ...options
+    ) {
+        if (segment.equals(MemorySegment.NULL)) {
+            return null;
+        }
+
+        return nativeLinker.downcallHandle(segment, descriptor, options);
+    }
 }
