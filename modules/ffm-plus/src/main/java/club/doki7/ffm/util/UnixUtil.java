@@ -23,6 +23,9 @@ public final class UnixUtil {
     /// not reset.
     public static void forceLoad() {}
 
+    /// Retrieves the calling thread's last error message from the dynamic linker (`dlerror`).
+    ///
+    /// @return The last error message as a string, or `null` if there is no error.
     public static @Nullable String dlerror() {
         try {
             MethodHandle h = Objects.requireNonNull(hDlerror);
