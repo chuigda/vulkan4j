@@ -4,13 +4,15 @@ import club.doki7.ffm.RawFunctionLoader;
 import club.doki7.ffm.library.JavaSystemLibrary;
 import org.jetbrains.annotations.Nullable;
 
-import java.lang.foreign.FunctionDescriptor;
-import java.lang.foreign.MemorySegment;
-import java.lang.foreign.ValueLayout;
+import java.lang.foreign.*;
 import java.lang.invoke.MethodHandle;
 import java.util.Objects;
 
 public final class WindowsUtil {
+    /// @deprecated According to documentation of {@link java.lang.foreign.Linker.Option Linker.Option},
+    /// Windows `GetLastError` should be retrieved via `captureCallState`. This function is not
+    /// correctly implemented and has known bugs.
+    @Deprecated(forRemoval = true, since = "0.4.2")
     public static int getLastError() {
         try {
             MethodHandle h = Objects.requireNonNull(hGetLastError);

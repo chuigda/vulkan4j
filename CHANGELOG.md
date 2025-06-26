@@ -1,3 +1,14 @@
+## UNRELEASED v0.4.2
+
+### Functionality updates
+
+- Deprecated `WindowsUtil.getLastError` method. Please use the Java's officially recommended `Linker.Option.captureCallState` instead.
+
+### Bugfixes
+
+- Fixed issue #126 by using `Linker.Option.captureCallState` to retrieve `GetLastError` code.
+- In the static initializer of `UnixLibraryLoader`, `UnixUtil.forceLoad` is now called automatically to ensure that result of `dlerror` won't be overwritten by the loading of `dlerror` function itself.
+
 ## v0.4.1
 
 Upgrade `ffm-plus` to v0.2.5, and other wrapper modules to v0.4.1.
@@ -57,7 +68,6 @@ Upgrade `ffm-plus` to v0.2.4, and other wrapper modules to v0.4.0.
 
 - Add new annotation `@Bitmask` and use it to mark bitmask types. Original `@EnumType` annotation should only be applied to non-composable enums. This won't break build, but you'll see IDE warnings if you are using our [ffm-plus-inspection](https://github.com/club-doki7/ffm-plus-inspection) plugin.
 - All `MemorySegment`s are now `@NotNull` by default. APIs previously accepts `null` `MemorySegment` will now throw `NullPointerException` if you pass `null`. Always use `MemorySegment.NULL`.
-- Deprecated `Loader` class and its methods. If you need to load basic functions (like `libc` functions) from "global" scope, use `JavaSystemLibrary.INSTANCE.load` instead; if you need to load functions from a specific library, use `ILibraryLoader` and `ISharedLibrary` interface instead.
 - Updated `VulkanLoader`, `GLFWLoader`, `VMAJavaTraceUtil` and `STBJavaTraceUtil` APIs to use `ILibraryLoader` and `ISharedLibrary` accordingly.
 
 ### New bindings
@@ -73,6 +83,7 @@ Upgrade `ffm-plus` to v0.2.4, and other wrapper modules to v0.4.0.
 - Added `ILibraryLoader` and `ISharedLibrary` interface to reduce global `System.load`/`System.loadLibrary` calls. This allows you to load libraries in a more controlled manner.
   - This feature uses `LoadLibraryW` + `GetProcAddress` on Windows platform, `dlopen` + `dlsym` on Linux/FreeBSD/macOS platform.
   - macOS library bundle (`.framework`) is not supported yet.
+- Deprecated `Loader` class and its methods. If you need to load basic functions (like `libc` functions) from "global" scope, use `JavaSystemLibrary.INSTANCE.load` instead; if you need to load functions from a specific library, use `ILibraryLoader` and `ISharedLibrary` interface instead.
 
 ### Quality of Life updates
 

@@ -50,11 +50,9 @@ public enum UnixLibraryLoader implements ILibraryLoader {
     private static final @Nullable MethodHandle hDlopen;
     static {
         MemorySegment pfnDlopen = JavaSystemLibrary.INSTANCE.load("dlopen");
-        if (pfnDlopen.equals(MemorySegment.NULL)) {
-            hDlopen = null;
-        } else {
-            hDlopen = RawFunctionLoader.link(pfnDlopen, DESCRIPTOR$dlopen);
-        }
+        hDlopen = RawFunctionLoader.link(pfnDlopen, DESCRIPTOR$dlopen);
+
+        UnixUtil.forceLoad();
     }
 
     private static final int RTLD_LAZY = 0x1;
