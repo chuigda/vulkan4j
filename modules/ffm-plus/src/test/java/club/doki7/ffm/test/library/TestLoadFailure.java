@@ -1,7 +1,6 @@
 package club.doki7.ffm.test.library;
 
 import club.doki7.ffm.library.ISharedLibrary;
-import club.doki7.ffm.library.UnixLibrary;
 import club.doki7.ffm.library.UnixLibraryLoader;
 import club.doki7.ffm.library.WindowsLibraryLoader;
 import org.junit.jupiter.api.Assertions;
