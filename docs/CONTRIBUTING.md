@@ -4,10 +4,10 @@ Thanks for your participating `vulkan4j` development! To keep things efficient, 
 
 ### Communication
 
-- **Bug Reports**: Please use [GitHub Issues](https://github.com/club-doki7/vulkan4j/issues).
+- **Bug Reports & Feature Requests**: Please use [GitHub Issues](https://github.com/club-doki7/vulkan4j/issues).
 - **Development Discussion & Questions**: Please use [GitHub Discussions](https://github.com/club-doki7/vulkan4j/discussions).
 - **Quick Questions & General Chat**: Feel free to join our [Discord](https://discord.gg/UsmRvrt4gg) channel.
-- *__Criticizing & Blaming Author__*: Use the [Shittalking issue](https://github.com/club-doki7/vulkan4j/issues/1).
+- *__Criticizing & Blaming Author__*: Use this [dedicated issue](https://github.com/club-doki7/vulkan4j/issues/1).
 
 ### Development Environment Setup
 
@@ -15,7 +15,7 @@ Thanks for your participating `vulkan4j` development! To keep things efficient, 
 2. **JDK Version**: This project requires **Java 22 or higher**.
 3. **IDE Setup**:
 
-    To ensure your IDE correctly recognizes the project structure, **DO NOT** open the project root (`vulkan4j`). Instead, open the `vulkan4j/modules` directory as the project root.
+    To ensure your IDE correctly recognizes the project structure, **DO NOT** open the repository root directory (`vulkan4j`). Instead, open the `vulkan4j/modules` directory as the project root (because our `pom.xml` is here).
 
     If your development machine has limited resources, you can also open only the specific submodule you intend to work on (e.g., `vulkan4j/modules/ffm-plus`).
 
@@ -37,12 +37,13 @@ We use the "Fork & Pull Request" model for collaboration:
 2. **Line Length**: **100** characters is preferred, but **120** characters is acceptable if you have a good reason for that.
 3. **Line Ending**: Use **LF** (`\n`) line endings for all text files.
 4. **Ensure a newline at the end of files**
-5. *__Common Java/Kotlin code styles__*: _I think I don't need to repeat them here, wright?_
-6. **Null-Safety Annotations**
+5. **Null-Safety Annotations**
 
     We use `org.jetbrains.annotations:26.0.2` for null-safety. The rules are:
     - **Non-Null by Default**: All reference types (parameters, return values, fields) are non-null by default. You are **RECOMMENDED** but not required to add the `@NotNull` annotation.
     - **Explicit Nullable**: You **MUST** use the `@Nullable` annotation to explicitly mark any reference that can actually be `null`.
+
+> [`.editorconfig`](./.editorconfig)
 
 ### Testing Things Out
 
@@ -50,7 +51,7 @@ We use the "Fork & Pull Request" model for collaboration:
 
     This module has dedicated unit tests.
 
-    To run certain test cases, you need to execute the build scripts in the `misc` directory to generate required native binaries. You can skip this if you're not working on related features; the CI will catch it anyway.
+    To run certain test cases, you need to run the build scripts in the `misc/test_binary` directory to generate required native binaries. You can skip this if you're not working on related features; the CI will catch it anyway.
 
 2. **Modifying Existing API Bindings**
 
@@ -74,12 +75,17 @@ When adding a binding for a new C/C++ API, follow these steps:
     Create a new metadata extractor module for the API under `club.doki7.babel.extract`.
 
     - When parsing header files, we recommend using the `hparse` and `cdecl` modules together. The `stb` and `vma` bindings serve as good examples.
-    - **Code Reuse Policy**: If you see a feature you need that **seems to** exist in another extractor (e.g., struct parsing), **DO NOT try to reuse code. Instead, COPY AND PASTE the code you need into your new module.** There are many C-dialects among the world, and the extraction requirements for different APIs have many subtle but important differences. If you reuse code by importing things, your code may break when the original module is updated, or you may break other modules when updating your module vice versa. Creating a "unified" parser trying to handle all APIs is a even more terrible idea, as it will lead to a lot of branches and complexity, and make the code even harder to maintain.
-  - **Nullability Rules**:
+    - To automatically handle "syntax trivia" level macros, you can add these macros to the `knownTriviaMacros` and `knownTriviaCallLikeMacros` sets in the `tokenize.kt` file.
+    - **Code Reuse Policy**: If you see a feature you need that **seems to** exist in another extractor (e.g., struct parsing), **DO NOT** try to reuse code in the first place. Instead, most times you'll find that you actually want to **COPY AND PASTE** the code you found into your new module. This is a deliberate trade-off, and here is why:
+
+      There are many de-facto C-dialects among the world, and the extraction requirements for different APIs have many subtle but important differences. If you reuse code by importing things, your code may break when the original module is updated, or you may break other modules when updating your module vice versa. Creating a "unified" parser trying to handle all APIs is a even more terrible idea, as it will lead to a lot of branches and complexity, making the code hard to maintain.
+
+      Only if you find something to be **general enough** to be reused across multiple extractors (like `detectFunctionAlikeMacro`, `skipPreprocessor` or `parseStructFieldDecl`) should you consider extracting and promoting them into `hparse` or `cdecl` modules.
+    - **Nullability Rules**:
       - **Pointer function parameters** are **nullable** by default unless explicitly marked as non-null (e.g., via a `VMA_NOT_NULL` macro).
       - **Structure fields** are **non-null** by default unless explicitly marked as nullable.
-  - **Pointer to one vs pointer to many**: Mark pointer function parameter as `pointerToOne` if you are sure it points to a single object. Don't do this if you're not 100% sure about this.
-  - The extractor is responsible for renaming parsed objects. Refer to existing modules for examples.
+    - **Pointer to one vs pointer to many**: Mark pointer function parameter as `pointerToOne` if you are sure it points to a single object. Don't do this if you're not 100% sure about this.
+    - The extractor is responsible for renaming parsed objects. Refer to existing modules for examples.
 
 3. **Create a Code Generation Driver**
     In the `club.doki7.babel.drv` module, create a new Kotlin file with a `main` function to drive code generation. Again, refer to existing modules for examples.
