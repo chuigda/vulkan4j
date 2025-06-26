@@ -27,7 +27,7 @@ public enum WindowsLibraryLoader implements ILibraryLoader {
 
             MemorySegment result;
             try {
-                result = (MemorySegment) h.invokeExact(lpLibName, capturedState);
+                result = (MemorySegment) h.invokeExact(capturedState, lpLibName);
             } catch (Throwable e) {
                 throw new UnsatisfiedLinkError(e.getMessage());
             }
