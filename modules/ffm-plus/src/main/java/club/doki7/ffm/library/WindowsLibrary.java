@@ -52,13 +52,7 @@ public final class WindowsLibrary implements ISharedLibrary {
     static {
         MemorySegment pfnGetProcAddress = JavaSystemLibrary.INSTANCE.load("GetProcAddress");
         MemorySegment pfnFreeLibrary = JavaSystemLibrary.INSTANCE.load("FreeLibrary");
-        if (pfnGetProcAddress.equals(MemorySegment.NULL)
-            || pfnFreeLibrary.equals(MemorySegment.NULL)) {
-            hGetProcAddress = null;
-            hFreeLibrary = null;
-        } else {
-            hGetProcAddress = RawFunctionLoader.link(pfnGetProcAddress, DESCRIPTOR$GetProcAddress);
-            hFreeLibrary = RawFunctionLoader.link(pfnFreeLibrary, DESCRIPTOR$FreeLibrary);
-        }
+        hGetProcAddress = RawFunctionLoader.link(pfnGetProcAddress, DESCRIPTOR$GetProcAddress);
+        hFreeLibrary = RawFunctionLoader.link(pfnFreeLibrary, DESCRIPTOR$FreeLibrary);
     }
 }

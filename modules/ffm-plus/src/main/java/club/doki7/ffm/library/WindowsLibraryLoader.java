@@ -55,11 +55,9 @@ public enum WindowsLibraryLoader implements ILibraryLoader {
             }
 
             MemorySegment pfnLoadLibraryW = JavaSystemLibrary.INSTANCE.load("LoadLibraryW");
-            if (pfnLoadLibraryW.equals(MemorySegment.NULL)) {
-                hLoadLibraryW = null;
-            } else {
-                hLoadLibraryW = RawFunctionLoader.link(pfnLoadLibraryW, DESCRIPTOR$LoadLibraryW);
-            }
+            hLoadLibraryW = RawFunctionLoader.link(pfnLoadLibraryW, DESCRIPTOR$LoadLibraryW);
+
+            WindowsUtil.forceLoad();
         } else {
             hLoadLibraryW = null;
         }

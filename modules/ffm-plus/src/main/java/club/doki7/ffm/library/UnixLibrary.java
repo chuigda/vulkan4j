@@ -54,12 +54,7 @@ public final class UnixLibrary implements ISharedLibrary {
     static {
         MemorySegment pfnDlsym = JavaSystemLibrary.INSTANCE.load("dlsym");
         MemorySegment pfnDlclose = JavaSystemLibrary.INSTANCE.load("dlclose");
-        if (pfnDlsym.equals(MemorySegment.NULL) || pfnDlclose.equals(MemorySegment.NULL)) {
-            hDlsym = null;
-            hDlclose = null;
-        } else {
-            hDlsym = RawFunctionLoader.link(pfnDlsym, DESCRIPTOR$dlsym);
-            hDlclose = RawFunctionLoader.link(pfnDlclose, DESCRIPTOR$dlclose);
-        }
+        hDlsym = RawFunctionLoader.link(pfnDlsym, DESCRIPTOR$dlsym);
+        hDlclose = RawFunctionLoader.link(pfnDlclose, DESCRIPTOR$dlclose);
     }
 }
