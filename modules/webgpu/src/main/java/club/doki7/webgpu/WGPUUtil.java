@@ -5,6 +5,7 @@ import club.doki7.ffm.annotation.*;
 import club.doki7.webgpu.datatype.WGPUStringView;
 import club.doki7.webgpu.enumtype.WGPUDeviceLostReason;
 import club.doki7.webgpu.enumtype.WGPUErrorType;
+import club.doki7.webgpu.enumtype.WGPUQueueWorkDoneStatus;
 import club.doki7.webgpu.handle.WGPUDevice;
 import org.jetbrains.annotations.Nullable;
 
@@ -71,7 +72,7 @@ public final class WGPUUtil {
         void accept(
                 @Nullable WGPUDevice device,
                 @EnumType(WGPUDeviceLostReason.class) int reason,
-                String message
+                @Nullable String message
         );
     }
 
@@ -88,7 +89,7 @@ public final class WGPUUtil {
         void accept(
                 @Nullable WGPUDevice device,
                 @EnumType(WGPUErrorType.class) int errorType,
-                String message
+                @Nullable String message
         );
     }
 
@@ -96,6 +97,19 @@ public final class WGPUUtil {
         return Linker.nativeLinker().upcallStub(
                 MH_onUncapturedError.bindTo(callback),
                 WGPUFunctionTypes.WGPUUncapturedErrorCallback,
+                arena
+        );
+    }
+
+    @FunctionalInterface
+    public interface QueueWorkDoneCallback {
+        void accept(@EnumType(WGPUQueueWorkDoneStatus.class) int status);
+    }
+
+    public static MemorySegment makeQueueWorkDoneCallback(QueueWorkDoneCallback callback, Arena arena) {
+        return Linker.nativeLinker().upcallStub(
+                MH_onQueueWorkDone.bindTo(callback),
+                WGPUFunctionTypes.WGPUQueueWorkDoneCallback,
                 arena
         );
     }
@@ -111,7 +125,7 @@ public final class WGPUUtil {
         @Nullable WGPUDevice device = deviceSegment.equals(MemorySegment.NULL)
                 ? null
                 : new WGPUDevice(deviceSegment);
-        String messageString = WGPUUtil.readStringView(message);
+        @Nullable String messageString = WGPUUtil.readStringView(message);
         callback.accept(device, errorType, messageString);
     }
 
@@ -126,12 +140,22 @@ public final class WGPUUtil {
         @Nullable WGPUDevice device = deviceSegment.equals(MemorySegment.NULL)
                 ? null
                 : new WGPUDevice(deviceSegment);
-        String messageString = WGPUUtil.readStringView(message);
+        @Nullable String messageString = WGPUUtil.readStringView(message);
         callback.accept(device, errorType, messageString);
+    }
+
+    private static void onQueueWorkDone(
+            QueueWorkDoneCallback callback,
+            @EnumType(WGPUQueueWorkDoneStatus.class) int status,
+            @Pointer(comment="void*") MemorySegment ignoredUserData1,
+            @Pointer(comment="void*") MemorySegment ignoredUserData2
+    ) {
+        callback.accept(status);
     }
 
     private static final MethodHandle MH_onDeviceLost;
     private static final MethodHandle MH_onUncapturedError;
+    private static final MethodHandle MH_onQueueWorkDone;
 
     static {
         try {
@@ -149,6 +173,13 @@ public final class WGPUUtil {
                     WGPUFunctionTypes.WGPUUncapturedErrorCallback
                             .toMethodType()
                             .insertParameterTypes(0, UncapturedErrorCallback.class)
+            );
+            MH_onQueueWorkDone = lookup.findStatic(
+                    WGPUUtil.class,
+                    "onQueueWorkDone",
+                    WGPUFunctionTypes.WGPUQueueWorkDoneCallback
+                            .toMethodType()
+                            .insertParameterTypes(0, QueueWorkDoneCallback.class)
             );
         } catch (NoSuchMethodException | IllegalAccessException e) {
             throw new RuntimeException(e);

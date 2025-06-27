@@ -111,11 +111,10 @@ private fun extractObjectMethods(
                     optional = arg.optional
                 ))
 
-                val elementType = classifyType(arg.type.removeSurrounding("array<", ">"), arg.pointer)
-                val arrayType = PointerType(elementType, const = arg.pointer == "immutable")
+                val type = classifyType(arg.type.removeSurrounding("array<", ">"), arg.pointer)
                 params.add(Param(
                     name = renameWGPUVar(arg.name),
-                    type = arrayType,
+                    type = type,
                     len = null,
                     argLen = null,
                     optional = arg.optional
@@ -240,8 +239,7 @@ private fun extractStructures(registry: RegistryBase, structs: List<IDLStructure
 
         struct.members.forEach { member ->
             if (isIDLTypeArray(member.type)) {
-                val elementType = classifyType(member.type.removeSurrounding("array<", ">"), null)
-                val arrayType = PointerType(elementType, const = member.pointer == "immutable")
+                val type = classifyType(member.type.removeSurrounding("array<", ">"), member.pointer)
                 members.add(Member(
                     name = renameWGPUVar(singularize(member.name)) + "Count",
                     type = IdentifierType("size_t"),
@@ -253,7 +251,7 @@ private fun extractStructures(registry: RegistryBase, structs: List<IDLStructure
                 ))
                 members.add(Member(
                     name = renameWGPUVar(member.name),
-                    type = arrayType,
+                    type = type,
                     values = null,
                     len = null,
                     altLen = null,

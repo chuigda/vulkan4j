@@ -9,6 +9,8 @@ import club.doki7.webgpu.WGPUUtil;
 import club.doki7.webgpu.datatype.*;
 import club.doki7.webgpu.enumtype.*;
 import club.doki7.webgpu.handle.WGPUAdapter;
+import club.doki7.webgpu.handle.WGPUCommandBuffer;
+import club.doki7.webgpu.handle.WGPUQueue;
 
 import java.lang.foreign.Arena;
 import java.util.ArrayList;
@@ -26,6 +28,7 @@ class Application {
             var instanceDescriptor = WGPUInstanceDescriptor.allocate(arena);
             var instance = Objects.requireNonNull(wgpu.createInstance(instanceDescriptor));
 
+            // region adapter initialization
             var requestAdapterOptions = WGPURequestAdapterOptions.allocate(arena);
             var requestAdapterResult = WGPUSync.instanceRequestAdapter(
                     wgpu,
@@ -81,7 +84,9 @@ class Application {
             System.out.println("  Adapter Type: " + WGPUAdapterType.explain(adapterInfo.adapterType()));
             System.out.println("  Vendor ID: 0x" + Integer.toUnsignedString(adapterInfo.vendorId(), 16));
             System.out.println("  Device ID: 0x" + Integer.toUnsignedString(adapterInfo.deviceId(), 16));
+            // endregion
 
+            // region device initialization
             WGPUDeviceDescriptor deviceDescriptor = WGPUDeviceDescriptor.allocate(arena)
                     .label(WGPUUtil.createStringView(arena, "Example Device"))
                     .defaultQueue(it -> it.label(WGPUUtil.createStringView(arena, "Default Queue")))
@@ -125,9 +130,46 @@ class Application {
             System.out.println("  Max Texture Dimension 2D: " + limits.maxTextureDimension2d());
             System.out.println("  Max Texture Dimension 3D: " + limits.maxTextureDimension3d());
             System.out.println("  Max Texture Array Layers: " + limits.maxTextureArrayLayers());
+            // endregion
 
+            // region queue initialization
+            WGPUQueue queue = Objects.requireNonNull(wgpu.deviceGetQueue(device));
+            wgpu.queueOnSubmittedWorkDone(arena, queue, WGPUQueueWorkDoneCallbackInfo.allocate(arena)
+                    .callback(WGPUUtil.makeQueueWorkDoneCallback(
+                            workDoneStatus -> System.err.println(
+                                    "Queue work finished with: "
+                                    + WGPUQueueWorkDoneStatus.explain(workDoneStatus)
+                            ),
+                            arena
+                    )));
+            // endregion
+
+            // region command buffer encoding
+            var encoderDesc = WGPUCommandEncoderDescriptor.allocate(arena)
+                    .label(WGPUUtil.createStringView(arena, "Example Command Buffer Encoder"));
+            var encoder = Objects.requireNonNull(wgpu.deviceCreateCommandEncoder(device, encoderDesc));
+
+            wgpu.commandEncoderInsertDebugMarker(encoder, WGPUUtil.createStringView(arena, "Do one thing"));
+            wgpu.commandEncoderInsertDebugMarker(encoder, WGPUUtil.createStringView(arena, "Do another thing"));
+
+            var commandBufferDescriptor = WGPUCommandBufferDescriptor.allocate(arena)
+                    .label(WGPUUtil.createStringView(arena, "Example Command Buffer"));
+            var commandBuffer = Objects.requireNonNull(wgpu.commandEncoderFinish(encoder, commandBufferDescriptor));
+            wgpu.commandEncoderRelease(encoder);
+            // endregion
+
+            // region command buffer submission and device polling
+            wgpu.queueSubmit(queue, 1, WGPUCommandBuffer.Ptr.allocateV(arena, commandBuffer));
+            wgpu.commandBufferRelease(commandBuffer);
+
+            Thread.sleep(1000);
+            // endregion
+
+            wgpu.queueRelease(queue);
             wgpu.deviceRelease(device);
             wgpu.instanceRelease(instance);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
         }
     }
 }

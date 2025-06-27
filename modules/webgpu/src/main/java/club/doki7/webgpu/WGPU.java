@@ -1176,7 +1176,7 @@ public final class WGPU implements WGPUConstants {
         @Unsigned int groupIndex,
         @Nullable WGPUBindGroup group,
         long dynamicOffsetCount,
-        PointerPtr dynamicOffsets
+        @Unsigned IntPtr dynamicOffsets
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$wgpuComputePassEncoderSetBindGroup);
         try {
@@ -2016,7 +2016,7 @@ public final class WGPU implements WGPUConstants {
     public void queueSubmit(
         WGPUQueue queue,
         long commandCount,
-        PointerPtr commands
+        @Pointer WGPUCommandBuffer.Ptr commands
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$wgpuQueueSubmit);
         try {
@@ -2255,7 +2255,7 @@ public final class WGPU implements WGPUConstants {
         @Unsigned int groupIndex,
         @Nullable WGPUBindGroup group,
         long dynamicOffsetCount,
-        PointerPtr dynamicOffsets
+        @Unsigned IntPtr dynamicOffsets
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$wgpuRenderBundleEncoderSetBindGroup);
         try {
@@ -2506,7 +2506,7 @@ public final class WGPU implements WGPUConstants {
     public void renderPassEncoderExecuteBundles(
         WGPURenderPassEncoder renderPassEncoder,
         long bundleCount,
-        PointerPtr bundles
+        @Pointer WGPURenderBundle.Ptr bundles
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$wgpuRenderPassEncoderExecuteBundles);
         try {
@@ -2581,7 +2581,7 @@ public final class WGPU implements WGPUConstants {
         @Unsigned int groupIndex,
         @Nullable WGPUBindGroup group,
         long dynamicOffsetCount,
-        PointerPtr dynamicOffsets
+        @Unsigned IntPtr dynamicOffsets
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$wgpuRenderPassEncoderSetBindGroup);
         try {
@@ -3882,7 +3882,7 @@ public final class WGPU implements WGPUConstants {
             ValueLayout.JAVA_INT,
             ValueLayout.ADDRESS,
             NativeLayout.C_SIZE_T,
-            ValueLayout.ADDRESS.withTargetLayout(ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_INT))
+            ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_INT)
         );
 
         public static final FunctionDescriptor DESCRIPTOR$wgpuComputePassEncoderSetLabel = FunctionDescriptor.ofVoid(
@@ -4177,7 +4177,7 @@ public final class WGPU implements WGPUConstants {
         public static final FunctionDescriptor DESCRIPTOR$wgpuQueueSubmit = FunctionDescriptor.ofVoid(
             ValueLayout.ADDRESS,
             NativeLayout.C_SIZE_T,
-            ValueLayout.ADDRESS.withTargetLayout(ValueLayout.ADDRESS.withTargetLayout(ValueLayout.ADDRESS))
+            ValueLayout.ADDRESS.withTargetLayout(ValueLayout.ADDRESS)
         );
 
         public static final FunctionDescriptor DESCRIPTOR$wgpuQueueWriteBuffer = FunctionDescriptor.ofVoid(
@@ -4263,7 +4263,7 @@ public final class WGPU implements WGPUConstants {
             ValueLayout.JAVA_INT,
             ValueLayout.ADDRESS,
             NativeLayout.C_SIZE_T,
-            ValueLayout.ADDRESS.withTargetLayout(ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_INT))
+            ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_INT)
         );
 
         public static final FunctionDescriptor DESCRIPTOR$wgpuRenderBundleEncoderSetIndexBuffer = FunctionDescriptor.ofVoid(
@@ -4350,7 +4350,7 @@ public final class WGPU implements WGPUConstants {
         public static final FunctionDescriptor DESCRIPTOR$wgpuRenderPassEncoderExecuteBundles = FunctionDescriptor.ofVoid(
             ValueLayout.ADDRESS,
             NativeLayout.C_SIZE_T,
-            ValueLayout.ADDRESS.withTargetLayout(ValueLayout.ADDRESS.withTargetLayout(ValueLayout.ADDRESS))
+            ValueLayout.ADDRESS.withTargetLayout(ValueLayout.ADDRESS)
         );
 
         public static final FunctionDescriptor DESCRIPTOR$wgpuRenderPassEncoderInsertDebugMarker = FunctionDescriptor.ofVoid(
@@ -4376,7 +4376,7 @@ public final class WGPU implements WGPUConstants {
             ValueLayout.JAVA_INT,
             ValueLayout.ADDRESS,
             NativeLayout.C_SIZE_T,
-            ValueLayout.ADDRESS.withTargetLayout(ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_INT))
+            ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_INT)
         );
 
         public static final FunctionDescriptor DESCRIPTOR$wgpuRenderPassEncoderSetBlendConstant = FunctionDescriptor.ofVoid(
