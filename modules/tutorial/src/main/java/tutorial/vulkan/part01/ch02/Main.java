@@ -52,7 +52,7 @@ class Application {
 
         glfw.windowHint(GLFW.CLIENT_API, GLFW.NO_API);
         glfw.windowHint(GLFW.RESIZABLE, GLFW.FALSE);
-        window = glfw.createWindow(WIDTH, HEIGHT, WINDOW_TITLE, null, null);
+        window = Objects.requireNonNull(glfw.createWindow(WIDTH, HEIGHT, WINDOW_TITLE, null, null));
     }
 
     private void initVulkan() {

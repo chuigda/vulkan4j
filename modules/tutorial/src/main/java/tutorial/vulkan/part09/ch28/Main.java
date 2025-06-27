@@ -55,7 +55,7 @@ class Application {
         }
 
         glfw.windowHint(GLFW.CLIENT_API, GLFW.NO_API);
-        window = glfw.createWindow(WIDTH, HEIGHT, WINDOW_TITLE, null, null);
+        window = Objects.requireNonNull(glfw.createWindow(WIDTH, HEIGHT, WINDOW_TITLE, null, null));
 
         try {
             var handle = MethodHandles.lookup().findVirtual(
