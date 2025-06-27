@@ -1,4 +1,5 @@
 *.xml
+*.yml
 *.h
 *.tar.gz
 SDL3-3.2.14
