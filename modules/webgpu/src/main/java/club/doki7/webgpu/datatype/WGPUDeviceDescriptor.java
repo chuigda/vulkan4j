@@ -29,8 +29,8 @@ import static club.doki7.webgpu.WGPUConstants.*;
 ///     WGPUFeatureName const* requiredFeatures; // @link substring="WGPUFeatureName" target="WGPUFeatureName" @link substring="requiredFeatures" target="#requiredFeatures"
 ///     WGPULimits const* requiredLimits; // optional // @link substring="WGPULimits" target="WGPULimits" @link substring="requiredLimits" target="#requiredLimits"
 ///     WGPUQueueDescriptor defaultQueue; // @link substring="WGPUQueueDescriptor" target="WGPUQueueDescriptor" @link substring="defaultQueue" target="#defaultQueue"
-///     PFN_wgpuDeviceLost deviceLostCallbackInfo; // @link substring="deviceLostCallbackInfo" target="#deviceLostCallbackInfo"
-///     PFN_wgpuUncapturedError uncapturedErrorCallbackInfo; // @link substring="uncapturedErrorCallbackInfo" target="#uncapturedErrorCallbackInfo"
+///     WGPUDeviceLostCallback deviceLostCallbackInfo; // @link substring="deviceLostCallbackInfo" target="#deviceLostCallbackInfo"
+///     WGPUUncapturedErrorCallback uncapturedErrorCallbackInfo; // @link substring="uncapturedErrorCallbackInfo" target="#uncapturedErrorCallbackInfo"
 /// } WGPUDeviceDescriptor;
 /// }
 ///
@@ -297,11 +297,11 @@ public record WGPUDeviceDescriptor(@NotNull MemorySegment segment) implements IW
         return this;
     }
 
-    public @Pointer(comment="PFN_wgpuDeviceLost") @NotNull MemorySegment deviceLostCallbackInfo() {
+    public @Pointer(comment="WGPUDeviceLostCallback") @NotNull MemorySegment deviceLostCallbackInfo() {
         return segment.get(LAYOUT$deviceLostCallbackInfo, OFFSET$deviceLostCallbackInfo);
     }
 
-    public WGPUDeviceDescriptor deviceLostCallbackInfo(@Pointer(comment="PFN_wgpuDeviceLost") @NotNull MemorySegment value) {
+    public WGPUDeviceDescriptor deviceLostCallbackInfo(@Pointer(comment="WGPUDeviceLostCallback") @NotNull MemorySegment value) {
         segment.set(LAYOUT$deviceLostCallbackInfo, OFFSET$deviceLostCallbackInfo, value);
         return this;
     }
@@ -311,11 +311,11 @@ public record WGPUDeviceDescriptor(@NotNull MemorySegment segment) implements IW
         return this;
     }
 
-    public @Pointer(comment="PFN_wgpuUncapturedError") @NotNull MemorySegment uncapturedErrorCallbackInfo() {
+    public @Pointer(comment="WGPUUncapturedErrorCallback") @NotNull MemorySegment uncapturedErrorCallbackInfo() {
         return segment.get(LAYOUT$uncapturedErrorCallbackInfo, OFFSET$uncapturedErrorCallbackInfo);
     }
 
-    public WGPUDeviceDescriptor uncapturedErrorCallbackInfo(@Pointer(comment="PFN_wgpuUncapturedError") @NotNull MemorySegment value) {
+    public WGPUDeviceDescriptor uncapturedErrorCallbackInfo(@Pointer(comment="WGPUUncapturedErrorCallback") @NotNull MemorySegment value) {
         segment.set(LAYOUT$uncapturedErrorCallbackInfo, OFFSET$uncapturedErrorCallbackInfo, value);
         return this;
     }

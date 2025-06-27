@@ -3,6 +3,7 @@ package example.webgpu;
 import club.doki7.ffm.library.ILibraryLoader;
 import club.doki7.ffm.library.ISharedLibrary;
 import club.doki7.webgpu.WGPU;
+import club.doki7.webgpu.WGPUSync;
 import club.doki7.webgpu.datatype.WGPUInstanceDescriptor;
 import club.doki7.webgpu.datatype.WGPURequestAdapterOptions;
 
@@ -21,8 +22,12 @@ class Application {
             var instanceDescriptor = WGPUInstanceDescriptor.allocate(arena);
             var instance = Objects.requireNonNull(wgpu.createInstance(instanceDescriptor));
 
-//            var requestAdapterOptions = WGPURequestAdapterOptions.allocate(arena);
-//            wgpu.instanceRequestAdapter(instance, requestAdapterOptions);
+            var requestAdapterOptions = WGPURequestAdapterOptions.allocate(arena);
+            var requestAdapterResult = WGPUSync.instanceRequestAdapter(
+                    wgpu,
+                    instance,
+                    requestAdapterOptions
+            );
 
             wgpu.instanceRelease(instance);
         }

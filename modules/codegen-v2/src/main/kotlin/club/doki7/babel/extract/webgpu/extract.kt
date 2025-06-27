@@ -105,18 +105,11 @@ private fun extractObjectMethods(
 
         if (method.callback != null) {
             params.add(Param(
-                name = "callback",
-                type = classifyType(method.callback, null),
+                name = "callbackInfo",
+                type = classifyCallbackInfoType(method.callback),
                 len = null,
                 argLen = null,
                 optional = false
-            ))
-            params.add(Param(
-                name = "userdata",
-                type = PointerType(IdentifierType("void"), const = false),
-                len = null,
-                argLen = null,
-                optional = true
             ))
         }
 
@@ -138,10 +131,67 @@ private fun extractObjectMethods(
 
 private fun extractFunctionTypedefs(registry: RegistryBase, callbacks: List<IDLCallback>) {
     for (callback in callbacks) {
+        val callbackName = renameWGPUFunctionPointer(callback.name)
+        val params = callback.args.map { arg -> classifyType(arg.type, arg.pointer) }.toMutableList()
+        params.add(PointerType(IdentifierType("void"))) // userdata1
+        params.add(PointerType(IdentifierType("void"))) // userdata2
+
         registry.functionTypedefs.putEntityIfAbsent(FunctionTypedef(
-            name = renameWGPUFunctionPointer(callback.name),
-            params = callback.args.map { arg -> classifyType(arg.type, arg.pointer) }.toList(),
+            name = callbackName,
+            params = params,
             result = IdentifierType("void")
+        ))
+
+        val callbackInfoName = "${callbackName}Info"
+        registry.structures.putEntityIfAbsent(Structure(
+            name = callbackInfoName,
+            members = mutableListOf(
+                Member(
+                    name = "nextInChain",
+                    type = PointerType(IdentifierType("WGPUChainedStruct"), const = true),
+                    values = null,
+                    len = null,
+                    altLen = null,
+                    optional = true,
+                    bits = null
+                ),
+                Member(
+                    name = "mode",
+                    type = IdentifierType("WGPUCallbackMode"),
+                    values = null,
+                    len = null,
+                    altLen = null,
+                    optional = false,
+                    bits = null
+                ),
+                Member(
+                    name = "callback",
+                    type = IdentifierType(callbackName),
+                    values = null,
+                    len = null,
+                    altLen = null,
+                    optional = true,
+                    bits = null
+                ),
+                Member(
+                    name = "userdata1",
+                    type = PointerType(IdentifierType("void"), const = false),
+                    values = null,
+                    len = null,
+                    altLen = null,
+                    optional = true,
+                    bits = null
+                ),
+                Member(
+                    name = "userdata2",
+                    type = PointerType(IdentifierType("void"), const = false),
+                    values = null,
+                    len = null,
+                    altLen = null,
+                    optional = true,
+                    bits = null
+                )
+            )
         ))
     }
 }
@@ -262,6 +312,11 @@ private fun extractFunctionParam(arg: IDLFunctionArg): Param = Param(
     argLen = null,
     optional = arg.optional
 )
+
+private fun classifyCallbackInfoType(callbackString: String): IdentifierType {
+    val typeName = renameWGPUFunctionPointer(callbackString.removePrefix("callback.")) + "Info"
+    return IdentifierType(typeName)
+}
 
 private val coreStructures = listOf(
     Structure(

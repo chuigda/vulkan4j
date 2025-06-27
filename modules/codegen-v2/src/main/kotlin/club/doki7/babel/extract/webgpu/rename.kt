@@ -9,7 +9,7 @@ internal fun renameWGPUFunction(name: String) =
         it.lowercase().replaceFirstChar { c -> c.uppercase() }
     }
 
-internal fun renameWGPUFunctionPointer(name: String) = "PFN_" + renameWGPUFunction(name)
+internal fun renameWGPUFunctionPointer(name: String) = renameWGPUType(name) + "Callback"
 
 internal fun renameWGPUVar(name: String) = buildString {
     name.split('_').forEachIndexed { index, part ->
