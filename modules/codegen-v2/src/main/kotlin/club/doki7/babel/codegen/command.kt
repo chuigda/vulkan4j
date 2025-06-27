@@ -182,10 +182,10 @@ private fun generateCommandWrapper(
 
     if (paramIOTypes.isNotEmpty()) {
         +"public $retIOType ${loweredCommand.command.name}("
-        if (loweredCommand.result is CStructType) {
-            +"SegmentAllocator allocator,"
-        }
         indent {
+            if (loweredCommand.result is CStructType) {
+                +"SegmentAllocator allocator,"
+            }
             for ((index, param) in loweredCommand.command.params.withIndex()) {
                 val paramIOType = paramIOTypes[index]
                 if (index != paramIOTypes.size - 1) {

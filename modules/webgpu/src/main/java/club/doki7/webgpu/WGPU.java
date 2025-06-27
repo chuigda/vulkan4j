@@ -478,7 +478,7 @@ public final class WGPU implements WGPUConstants {
     }
 
     public WGPUFuture adapterRequestDevice(
-    SegmentAllocator allocator,
+        SegmentAllocator allocator,
         WGPUAdapter adapter,
         @Nullable @Pointer IWGPUDeviceDescriptor descriptor,
         WGPURequestDeviceCallbackInfo callbackInfo
@@ -678,7 +678,7 @@ public final class WGPU implements WGPUConstants {
     }
 
     public WGPUFuture bufferMapAsync(
-    SegmentAllocator allocator,
+        SegmentAllocator allocator,
         WGPUBuffer buffer,
         @Bitmask(WGPUMapMode.class) long mode,
         long offset,
@@ -1385,7 +1385,7 @@ public final class WGPU implements WGPUConstants {
     }
 
     public WGPUFuture deviceCreateComputePipelineAsync(
-    SegmentAllocator allocator,
+        SegmentAllocator allocator,
         WGPUDevice device,
         @Pointer IWGPUComputePipelineDescriptor descriptor,
         WGPUCreateComputePipelineAsyncCallbackInfo callbackInfo
@@ -1468,7 +1468,7 @@ public final class WGPU implements WGPUConstants {
     }
 
     public WGPUFuture deviceCreateRenderPipelineAsync(
-    SegmentAllocator allocator,
+        SegmentAllocator allocator,
         WGPUDevice device,
         @Pointer IWGPURenderPipelineDescriptor descriptor,
         WGPUCreateRenderPipelineAsyncCallbackInfo callbackInfo
@@ -1548,7 +1548,7 @@ public final class WGPU implements WGPUConstants {
     }
 
     public WGPUAdapterInfo deviceGetAdapterInfo(
-    SegmentAllocator allocator,
+        SegmentAllocator allocator,
         WGPUDevice device
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$wgpuDeviceGetAdapterInfo);
@@ -1593,7 +1593,7 @@ public final class WGPU implements WGPUConstants {
     }
 
     public WGPUFuture deviceGetLostFuture(
-    SegmentAllocator allocator,
+        SegmentAllocator allocator,
         WGPUDevice device
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$wgpuDeviceGetLostFuture);
@@ -1637,7 +1637,7 @@ public final class WGPU implements WGPUConstants {
     }
 
     public WGPUFuture devicePopErrorScope(
-    SegmentAllocator allocator,
+        SegmentAllocator allocator,
         WGPUDevice device,
         WGPUPopErrorScopeCallbackInfo callbackInfo
     ) {
@@ -1795,7 +1795,7 @@ public final class WGPU implements WGPUConstants {
     }
 
     public WGPUFuture instanceRequestAdapter(
-    SegmentAllocator allocator,
+        SegmentAllocator allocator,
         WGPUInstance instance,
         @Nullable @Pointer IWGPURequestAdapterOptions options,
         WGPURequestAdapterCallbackInfo callbackInfo
@@ -1967,7 +1967,7 @@ public final class WGPU implements WGPUConstants {
     }
 
     public WGPUFuture queueOnSubmittedWorkDone(
-    SegmentAllocator allocator,
+        SegmentAllocator allocator,
         WGPUQueue queue,
         WGPUQueueWorkDoneCallbackInfo callbackInfo
     ) {
@@ -2847,7 +2847,7 @@ public final class WGPU implements WGPUConstants {
     }
 
     public WGPUFuture shaderModuleGetCompilationInfo(
-    SegmentAllocator allocator,
+        SegmentAllocator allocator,
         WGPUShaderModule shaderModule,
         WGPUCompilationInfoCallbackInfo callbackInfo
     ) {
