@@ -7373,7 +7373,7 @@ public final class GLCompatibility extends GL {
         }
     }
 
-    public GLsync importSyncEXT(
+    public @Nullable GLsync importSyncEXT(
         @NativeType("GLenum") int external_sync_type,
         @NativeType("GLintptr") long external_sync,
         @NativeType("GLbitfield") @Unsigned int flags

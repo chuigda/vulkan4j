@@ -556,7 +556,7 @@ public final class WGPU implements WGPUConstants {
         }
     }
 
-    public WGPUComputePassEncoder commandEncoderBeginComputePass(
+    public @Nullable WGPUComputePassEncoder commandEncoderBeginComputePass(
         WGPUCommandEncoder commandEncoder,
         @Nullable @Pointer IWGPUComputePassDescriptor descriptor
     ) {
@@ -572,7 +572,7 @@ public final class WGPU implements WGPUConstants {
         }
     }
 
-    public WGPURenderPassEncoder commandEncoderBeginRenderPass(
+    public @Nullable WGPURenderPassEncoder commandEncoderBeginRenderPass(
         WGPUCommandEncoder commandEncoder,
         @Pointer IWGPURenderPassDescriptor descriptor
     ) {
@@ -687,7 +687,7 @@ public final class WGPU implements WGPUConstants {
         }
     }
 
-    public WGPUCommandBuffer commandEncoderFinish(
+    public @Nullable WGPUCommandBuffer commandEncoderFinish(
         WGPUCommandEncoder commandEncoder,
         @Nullable @Pointer IWGPUCommandBufferDescriptor descriptor
     ) {
@@ -942,7 +942,7 @@ public final class WGPU implements WGPUConstants {
         }
     }
 
-    public WGPUBindGroupLayout computePipelineGetBindGroupLayout(
+    public @Nullable WGPUBindGroupLayout computePipelineGetBindGroupLayout(
         WGPUComputePipeline computePipeline,
         @Unsigned int groupIndex
     ) {
@@ -973,7 +973,7 @@ public final class WGPU implements WGPUConstants {
         }
     }
 
-    public WGPUInstance createInstance(
+    public @Nullable WGPUInstance createInstance(
         @Nullable @Pointer IWGPUInstanceDescriptor descriptor
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$wgpuCreateInstance);
@@ -987,7 +987,7 @@ public final class WGPU implements WGPUConstants {
         }
     }
 
-    public WGPUBindGroup deviceCreateBindGroup(
+    public @Nullable WGPUBindGroup deviceCreateBindGroup(
         WGPUDevice device,
         @Pointer IWGPUBindGroupDescriptor descriptor
     ) {
@@ -1003,7 +1003,7 @@ public final class WGPU implements WGPUConstants {
         }
     }
 
-    public WGPUBindGroupLayout deviceCreateBindGroupLayout(
+    public @Nullable WGPUBindGroupLayout deviceCreateBindGroupLayout(
         WGPUDevice device,
         @Pointer IWGPUBindGroupLayoutDescriptor descriptor
     ) {
@@ -1019,7 +1019,7 @@ public final class WGPU implements WGPUConstants {
         }
     }
 
-    public WGPUBuffer deviceCreateBuffer(
+    public @Nullable WGPUBuffer deviceCreateBuffer(
         WGPUDevice device,
         @Pointer IWGPUBufferDescriptor descriptor
     ) {
@@ -1035,7 +1035,7 @@ public final class WGPU implements WGPUConstants {
         }
     }
 
-    public WGPUCommandEncoder deviceCreateCommandEncoder(
+    public @Nullable WGPUCommandEncoder deviceCreateCommandEncoder(
         WGPUDevice device,
         @Nullable @Pointer IWGPUCommandEncoderDescriptor descriptor
     ) {
@@ -1051,7 +1051,7 @@ public final class WGPU implements WGPUConstants {
         }
     }
 
-    public WGPUComputePipeline deviceCreateComputePipeline(
+    public @Nullable WGPUComputePipeline deviceCreateComputePipeline(
         WGPUDevice device,
         @Pointer IWGPUComputePipelineDescriptor descriptor
     ) {
@@ -1082,7 +1082,7 @@ public final class WGPU implements WGPUConstants {
         }
     }
 
-    public WGPUPipelineLayout deviceCreatePipelineLayout(
+    public @Nullable WGPUPipelineLayout deviceCreatePipelineLayout(
         WGPUDevice device,
         @Pointer IWGPUPipelineLayoutDescriptor descriptor
     ) {
@@ -1098,7 +1098,7 @@ public final class WGPU implements WGPUConstants {
         }
     }
 
-    public WGPUQuerySet deviceCreateQuerySet(
+    public @Nullable WGPUQuerySet deviceCreateQuerySet(
         WGPUDevice device,
         @Pointer IWGPUQuerySetDescriptor descriptor
     ) {
@@ -1114,7 +1114,7 @@ public final class WGPU implements WGPUConstants {
         }
     }
 
-    public WGPURenderBundleEncoder deviceCreateRenderBundleEncoder(
+    public @Nullable WGPURenderBundleEncoder deviceCreateRenderBundleEncoder(
         WGPUDevice device,
         @Pointer IWGPURenderBundleEncoderDescriptor descriptor
     ) {
@@ -1130,7 +1130,7 @@ public final class WGPU implements WGPUConstants {
         }
     }
 
-    public WGPURenderPipeline deviceCreateRenderPipeline(
+    public @Nullable WGPURenderPipeline deviceCreateRenderPipeline(
         WGPUDevice device,
         @Pointer IWGPURenderPipelineDescriptor descriptor
     ) {
@@ -1161,7 +1161,7 @@ public final class WGPU implements WGPUConstants {
         }
     }
 
-    public WGPUSampler deviceCreateSampler(
+    public @Nullable WGPUSampler deviceCreateSampler(
         WGPUDevice device,
         @Nullable @Pointer IWGPUSamplerDescriptor descriptor
     ) {
@@ -1177,7 +1177,7 @@ public final class WGPU implements WGPUConstants {
         }
     }
 
-    public WGPUShaderModule deviceCreateShaderModule(
+    public @Nullable WGPUShaderModule deviceCreateShaderModule(
         WGPUDevice device,
         @Pointer IWGPUShaderModuleDescriptor descriptor
     ) {
@@ -1193,7 +1193,7 @@ public final class WGPU implements WGPUConstants {
         }
     }
 
-    public WGPUTexture deviceCreateTexture(
+    public @Nullable WGPUTexture deviceCreateTexture(
         WGPUDevice device,
         @Pointer IWGPUTextureDescriptor descriptor
     ) {
@@ -1278,7 +1278,7 @@ public final class WGPU implements WGPUConstants {
         }
     }
 
-    public WGPUQueue deviceGetQueue(
+    public @Nullable WGPUQueue deviceGetQueue(
         WGPUDevice device
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$wgpuDeviceGetQueue);
@@ -1363,7 +1363,7 @@ public final class WGPU implements WGPUConstants {
         }
     }
 
-    public WGPUSurface instanceCreateSurface(
+    public @Nullable WGPUSurface instanceCreateSurface(
         WGPUInstance instance,
         @Pointer IWGPUSurfaceDescriptor descriptor
     ) {
@@ -1690,7 +1690,7 @@ public final class WGPU implements WGPUConstants {
         }
     }
 
-    public WGPURenderBundle renderBundleEncoderFinish(
+    public @Nullable WGPURenderBundle renderBundleEncoderFinish(
         WGPURenderBundleEncoder renderBundleEncoder,
         @Nullable @Pointer IWGPURenderBundleDescriptor descriptor
     ) {
@@ -2199,7 +2199,7 @@ public final class WGPU implements WGPUConstants {
         }
     }
 
-    public WGPUBindGroupLayout renderPipelineGetBindGroupLayout(
+    public @Nullable WGPUBindGroupLayout renderPipelineGetBindGroupLayout(
         WGPURenderPipeline renderPipeline,
         @Unsigned int groupIndex
     ) {
@@ -2361,7 +2361,7 @@ public final class WGPU implements WGPUConstants {
         }
     }
 
-    public WGPUTextureView textureCreateView(
+    public @Nullable WGPUTextureView textureCreateView(
         WGPUTexture texture,
         @Nullable @Pointer IWGPUTextureViewDescriptor descriptor
     ) {

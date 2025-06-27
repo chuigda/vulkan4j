@@ -137,7 +137,7 @@ public final class STBI {
         }
     }
 
-    public BytePtr failureReason() {
+    public @Nullable BytePtr failureReason() {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$stbi_failure_reason);
         try {
             MemorySegment s = (MemorySegment) hFunction.invokeExact(
@@ -360,7 +360,7 @@ public final class STBI {
         }
     }
 
-    public @Pointer(comment="stbi_uc") BytePtr load(
+    public @Nullable @Pointer(comment="stbi_uc") BytePtr load(
         @Nullable BytePtr filename,
         @Nullable IntPtr x,
         @Nullable IntPtr y,
@@ -382,7 +382,7 @@ public final class STBI {
         }
     }
 
-    public @Pointer(comment="stbi_us") ShortPtr load16(
+    public @Nullable @Pointer(comment="stbi_us") ShortPtr load16(
         @Nullable BytePtr filename,
         @Nullable IntPtr x,
         @Nullable IntPtr y,
@@ -404,7 +404,7 @@ public final class STBI {
         }
     }
 
-    public @Pointer(comment="stbi_us") ShortPtr load16FromCallbacks(
+    public @Nullable @Pointer(comment="stbi_us") ShortPtr load16FromCallbacks(
         @Nullable @Pointer ISTBI_IoCallbacks clbk,
         @Pointer(comment="void*") @NotNull MemorySegment user,
         @Nullable IntPtr x,
@@ -428,7 +428,7 @@ public final class STBI {
         }
     }
 
-    public @Pointer(comment="stbi_us") ShortPtr load16FromMemory(
+    public @Nullable @Pointer(comment="stbi_us") ShortPtr load16FromMemory(
         @Nullable @Pointer(comment="stbi_uc") BytePtr buffer,
         int len,
         @Nullable IntPtr x,
@@ -452,7 +452,7 @@ public final class STBI {
         }
     }
 
-    public @Pointer(comment="stbi_uc") BytePtr loadFromCallbacks(
+    public @Nullable @Pointer(comment="stbi_uc") BytePtr loadFromCallbacks(
         @Nullable @Pointer ISTBI_IoCallbacks clbk,
         @Pointer(comment="void*") @NotNull MemorySegment user,
         @Nullable IntPtr x,
@@ -476,7 +476,7 @@ public final class STBI {
         }
     }
 
-    public @Pointer(comment="stbi_uc") BytePtr loadFromMemory(
+    public @Nullable @Pointer(comment="stbi_uc") BytePtr loadFromMemory(
         @Nullable @Pointer(comment="stbi_uc") BytePtr buffer,
         int len,
         @Nullable IntPtr x,
@@ -500,7 +500,7 @@ public final class STBI {
         }
     }
 
-    public @Pointer(comment="stbi_uc") BytePtr loadGifFromMemory(
+    public @Nullable @Pointer(comment="stbi_uc") BytePtr loadGifFromMemory(
         @Nullable @Pointer(comment="stbi_uc") BytePtr buffer,
         int len,
         @Nullable PointerPtr delays,
@@ -528,7 +528,7 @@ public final class STBI {
         }
     }
 
-    public FloatPtr loadf(
+    public @Nullable FloatPtr loadf(
         @Nullable BytePtr filename,
         @Nullable IntPtr x,
         @Nullable IntPtr y,
@@ -550,7 +550,7 @@ public final class STBI {
         }
     }
 
-    public FloatPtr loadfFromCallbacks(
+    public @Nullable FloatPtr loadfFromCallbacks(
         @Nullable @Pointer ISTBI_IoCallbacks clbk,
         @Pointer(comment="void*") @NotNull MemorySegment user,
         @Nullable IntPtr x,
@@ -574,7 +574,7 @@ public final class STBI {
         }
     }
 
-    public FloatPtr loadfFromMemory(
+    public @Nullable FloatPtr loadfFromMemory(
         @Nullable @Pointer(comment="stbi_uc") BytePtr buffer,
         int len,
         @Nullable IntPtr x,
@@ -669,7 +669,7 @@ public final class STBI {
         }
     }
 
-    public BytePtr zlibDecodeMalloc(
+    public @Nullable BytePtr zlibDecodeMalloc(
         @Nullable BytePtr buffer,
         int len,
         @Nullable IntPtr outlen
@@ -687,7 +687,7 @@ public final class STBI {
         }
     }
 
-    public BytePtr zlibDecodeMallocGuesssize(
+    public @Nullable BytePtr zlibDecodeMallocGuesssize(
         @Nullable BytePtr buffer,
         int len,
         int initialSize,
@@ -707,7 +707,7 @@ public final class STBI {
         }
     }
 
-    public BytePtr zlibDecodeMallocGuesssizeHeaderflag(
+    public @Nullable BytePtr zlibDecodeMallocGuesssizeHeaderflag(
         @Nullable BytePtr buffer,
         int len,
         int initialSize,
@@ -748,7 +748,7 @@ public final class STBI {
         }
     }
 
-    public BytePtr zlibDecodeNoheaderMalloc(
+    public @Nullable BytePtr zlibDecodeNoheaderMalloc(
         @Nullable BytePtr buffer,
         int len,
         @Nullable IntPtr outlen

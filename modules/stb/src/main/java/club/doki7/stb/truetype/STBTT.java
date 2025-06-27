@@ -217,7 +217,7 @@ public final class STBTT {
         }
     }
 
-    public BytePtr findSVGDoc(
+    public @Nullable BytePtr findSVGDoc(
         @Nullable @Pointer ISTBTT_Fontinfo info,
         int gl
     ) {
@@ -305,7 +305,7 @@ public final class STBTT {
         }
     }
 
-    public BytePtr getCodepointBitmap(
+    public @Nullable BytePtr getCodepointBitmap(
         @Nullable @Pointer ISTBTT_Fontinfo info,
         float scaleX,
         float scaleY,
@@ -391,7 +391,7 @@ public final class STBTT {
         }
     }
 
-    public BytePtr getCodepointBitmapSubpixel(
+    public @Nullable BytePtr getCodepointBitmapSubpixel(
         @Nullable @Pointer ISTBTT_Fontinfo info,
         float scaleX,
         float scaleY,
@@ -482,7 +482,7 @@ public final class STBTT {
         }
     }
 
-    public BytePtr getCodepointSDF(
+    public @Nullable BytePtr getCodepointSDF(
         @Nullable @Pointer ISTBTT_Fontinfo info,
         float scale,
         int codepoint,
@@ -569,7 +569,7 @@ public final class STBTT {
         }
     }
 
-    public BytePtr getFontNameString(
+    public @Nullable BytePtr getFontNameString(
         @Nullable @Pointer ISTBTT_Fontinfo font,
         @Nullable IntPtr length,
         int platformid,
@@ -646,7 +646,7 @@ public final class STBTT {
         }
     }
 
-    public BytePtr getGlyphBitmap(
+    public @Nullable BytePtr getGlyphBitmap(
         @Nullable @Pointer ISTBTT_Fontinfo info,
         float scaleX,
         float scaleY,
@@ -732,7 +732,7 @@ public final class STBTT {
         }
     }
 
-    public BytePtr getGlyphBitmapSubpixel(
+    public @Nullable BytePtr getGlyphBitmapSubpixel(
         @Nullable @Pointer ISTBTT_Fontinfo info,
         float scaleX,
         float scaleY,
@@ -823,7 +823,7 @@ public final class STBTT {
         }
     }
 
-    public BytePtr getGlyphSDF(
+    public @Nullable BytePtr getGlyphSDF(
         @Nullable @Pointer ISTBTT_Fontinfo info,
         float scale,
         int glyph,

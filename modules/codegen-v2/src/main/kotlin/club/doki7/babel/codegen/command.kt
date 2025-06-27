@@ -167,7 +167,7 @@ private fun generateCommandWrapper(
         callArgs.add(generateInputConvert(paramCType, param))
     }
 
-    val retIOType = generateInputOutputType(loweredCommand.result, false)
+    val retIOType = generateInputOutputType(loweredCommand.result, true)
 
     val callArgsDoc = buildDoc {
         callArgs.forEachIndexed { idx, it -> +if (idx != callArgs.size - 1) "$it, " else it }
