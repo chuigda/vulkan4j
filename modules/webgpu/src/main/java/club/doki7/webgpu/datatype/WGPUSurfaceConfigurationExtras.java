@@ -18,15 +18,15 @@ import club.doki7.webgpu.handle.*;
 import club.doki7.webgpu.enumtype.*;
 import static club.doki7.webgpu.WGPUConstants.*;
 
-/// Represents a pointer to a {@code WGPUSurfaceConfigurationExtras WGPU_STRUCTURE_ATTRIBUTE} structure in native memory.
+/// Represents a pointer to a {@code WGPUSurfaceConfigurationExtras} structure in native memory.
 ///
 /// ## Structure
 ///
 /// {@snippet lang=c :
-/// typedef struct WGPUSurfaceConfigurationExtras WGPU_STRUCTURE_ATTRIBUTE {
+/// typedef struct WGPUSurfaceConfigurationExtras {
 ///     WGPUChainedStruct chain; // @link substring="WGPUChainedStruct" target="WGPUChainedStruct" @link substring="chain" target="#chain"
 ///     uint32_t desiredMaximumFrameLatency; // @link substring="desiredMaximumFrameLatency" target="#desiredMaximumFrameLatency"
-/// } WGPUSurfaceConfigurationExtras WGPU_STRUCTURE_ATTRIBUTE;
+/// } WGPUSurfaceConfigurationExtras;
 /// }
 ///
 /// ## Contracts
@@ -40,29 +40,29 @@ import static club.doki7.webgpu.WGPUConstants.*;
 /// perform any runtime check. The constructor can be useful for automatic code generators.
 @ValueBasedCandidate
 @UnsafeConstructor
-public record WGPUSurfaceConfigurationExtras WGPU_STRUCTURE_ATTRIBUTE(@NotNull MemorySegment segment) implements IWGPUSurfaceConfigurationExtras WGPU_STRUCTURE_ATTRIBUTE {
+public record WGPUSurfaceConfigurationExtras(@NotNull MemorySegment segment) implements IWGPUSurfaceConfigurationExtras {
     /// Represents a pointer to / an array of null structure(s) in native memory.
     ///
-    /// Technically speaking, this type has no difference with {@link WGPUSurfaceConfigurationExtras WGPU_STRUCTURE_ATTRIBUTE}. This type
+    /// Technically speaking, this type has no difference with {@link WGPUSurfaceConfigurationExtras}. This type
     /// is introduced mainly for user to distinguish between a pointer to a single structure
     /// and a pointer to (potentially) an array of structure(s). APIs should use interface
-    /// IWGPUSurfaceConfigurationExtras WGPU_STRUCTURE_ATTRIBUTE to handle both types uniformly. See package level documentation for more
+    /// IWGPUSurfaceConfigurationExtras to handle both types uniformly. See package level documentation for more
     /// details.
     ///
     /// ## Contracts
     ///
     /// The property {@link #segment()} should always be not-null
     /// ({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to
-    /// {@code WGPUSurfaceConfigurationExtras WGPU_STRUCTURE_ATTRIBUTE.LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+    /// {@code WGPUSurfaceConfigurationExtras.LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
     /// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
     ///
     /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
     /// perform any runtime check. The constructor can be useful for automatic code generators.
     @ValueBasedCandidate
     @UnsafeConstructor
-    public record Ptr(@NotNull MemorySegment segment) implements IWGPUSurfaceConfigurationExtras WGPU_STRUCTURE_ATTRIBUTE, Iterable<WGPUSurfaceConfigurationExtras WGPU_STRUCTURE_ATTRIBUTE> {
+    public record Ptr(@NotNull MemorySegment segment) implements IWGPUSurfaceConfigurationExtras, Iterable<WGPUSurfaceConfigurationExtras> {
         public long size() {
-            return segment.byteSize() / WGPUSurfaceConfigurationExtras WGPU_STRUCTURE_ATTRIBUTE.BYTES;
+            return segment.byteSize() / WGPUSurfaceConfigurationExtras.BYTES;
         }
 
         /// Returns (a pointer to) the structure at the given index.
@@ -71,17 +71,17 @@ public record WGPUSurfaceConfigurationExtras WGPU_STRUCTURE_ATTRIBUTE(@NotNull M
         /// example), modification on returned structure will be reflected on the original
         /// structure array. So this function is called {@code at} to explicitly
         /// indicate that the returned structure is a view of the original structure.
-        public @NotNull WGPUSurfaceConfigurationExtras WGPU_STRUCTURE_ATTRIBUTE at(long index) {
-            return new WGPUSurfaceConfigurationExtras WGPU_STRUCTURE_ATTRIBUTE(segment.asSlice(index * WGPUSurfaceConfigurationExtras WGPU_STRUCTURE_ATTRIBUTE.BYTES, WGPUSurfaceConfigurationExtras WGPU_STRUCTURE_ATTRIBUTE.BYTES));
+        public @NotNull WGPUSurfaceConfigurationExtras at(long index) {
+            return new WGPUSurfaceConfigurationExtras(segment.asSlice(index * WGPUSurfaceConfigurationExtras.BYTES, WGPUSurfaceConfigurationExtras.BYTES));
         }
 
-        public WGPUSurfaceConfigurationExtras WGPU_STRUCTURE_ATTRIBUTE.Ptr at(long index, @NotNull Consumer<@NotNull WGPUSurfaceConfigurationExtras WGPU_STRUCTURE_ATTRIBUTE> consumer) {
+        public WGPUSurfaceConfigurationExtras.Ptr at(long index, @NotNull Consumer<@NotNull WGPUSurfaceConfigurationExtras> consumer) {
             consumer.accept(at(index));
             return this;
         }
 
-        public void write(long index, @NotNull WGPUSurfaceConfigurationExtras WGPU_STRUCTURE_ATTRIBUTE value) {
-            MemorySegment s = segment.asSlice(index * WGPUSurfaceConfigurationExtras WGPU_STRUCTURE_ATTRIBUTE.BYTES, WGPUSurfaceConfigurationExtras WGPU_STRUCTURE_ATTRIBUTE.BYTES);
+        public void write(long index, @NotNull WGPUSurfaceConfigurationExtras value) {
+            MemorySegment s = segment.asSlice(index * WGPUSurfaceConfigurationExtras.BYTES, WGPUSurfaceConfigurationExtras.BYTES);
             s.copyFrom(value.segment);
         }
 
@@ -99,11 +99,11 @@ public record WGPUSurfaceConfigurationExtras WGPU_STRUCTURE_ATTRIBUTE(@NotNull M
         /// instead.
         @Unsafe
         public @NotNull Ptr reinterpret(long newSize) {
-            return new Ptr(segment.reinterpret(newSize * WGPUSurfaceConfigurationExtras WGPU_STRUCTURE_ATTRIBUTE.BYTES));
+            return new Ptr(segment.reinterpret(newSize * WGPUSurfaceConfigurationExtras.BYTES));
         }
 
         public @NotNull Ptr offset(long offset) {
-            return new Ptr(segment.asSlice(offset * WGPUSurfaceConfigurationExtras WGPU_STRUCTURE_ATTRIBUTE.BYTES));
+            return new Ptr(segment.asSlice(offset * WGPUSurfaceConfigurationExtras.BYTES));
         }
 
         /// Note that this function uses the {@link List#subList(int, int)} semantics (left inclusive,
@@ -111,17 +111,17 @@ public record WGPUSurfaceConfigurationExtras WGPU_STRUCTURE_ATTRIBUTE(@NotNull M
         /// (offset + newSize). Be careful with the difference
         public @NotNull Ptr slice(long start, long end) {
             return new Ptr(segment.asSlice(
-                start * WGPUSurfaceConfigurationExtras WGPU_STRUCTURE_ATTRIBUTE.BYTES,
-                (end - start) * WGPUSurfaceConfigurationExtras WGPU_STRUCTURE_ATTRIBUTE.BYTES
+                start * WGPUSurfaceConfigurationExtras.BYTES,
+                (end - start) * WGPUSurfaceConfigurationExtras.BYTES
             ));
         }
 
         public Ptr slice(long end) {
-            return new Ptr(segment.asSlice(0, end * WGPUSurfaceConfigurationExtras WGPU_STRUCTURE_ATTRIBUTE.BYTES));
+            return new Ptr(segment.asSlice(0, end * WGPUSurfaceConfigurationExtras.BYTES));
         }
 
-        public WGPUSurfaceConfigurationExtras WGPU_STRUCTURE_ATTRIBUTE[] toArray() {
-            WGPUSurfaceConfigurationExtras WGPU_STRUCTURE_ATTRIBUTE[] ret = new WGPUSurfaceConfigurationExtras WGPU_STRUCTURE_ATTRIBUTE[(int) size()];
+        public WGPUSurfaceConfigurationExtras[] toArray() {
+            WGPUSurfaceConfigurationExtras[] ret = new WGPUSurfaceConfigurationExtras[(int) size()];
             for (long i = 0; i < size(); i++) {
                 ret[(int) i] = at(i);
             }
@@ -129,28 +129,28 @@ public record WGPUSurfaceConfigurationExtras WGPU_STRUCTURE_ATTRIBUTE(@NotNull M
         }
 
         @Override
-        public @NotNull Iterator<WGPUSurfaceConfigurationExtras WGPU_STRUCTURE_ATTRIBUTE> iterator() {
+        public @NotNull Iterator<WGPUSurfaceConfigurationExtras> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        private static final class Iter implements Iterator<WGPUSurfaceConfigurationExtras WGPU_STRUCTURE_ATTRIBUTE> {
+        private static final class Iter implements Iterator<WGPUSurfaceConfigurationExtras> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }
 
             @Override
             public boolean hasNext() {
-                return segment.byteSize() >= WGPUSurfaceConfigurationExtras WGPU_STRUCTURE_ATTRIBUTE.BYTES;
+                return segment.byteSize() >= WGPUSurfaceConfigurationExtras.BYTES;
             }
 
             @Override
-            public WGPUSurfaceConfigurationExtras WGPU_STRUCTURE_ATTRIBUTE next() {
+            public WGPUSurfaceConfigurationExtras next() {
                 if (!hasNext()) {
                     throw new NoSuchElementException();
                 }
-                WGPUSurfaceConfigurationExtras WGPU_STRUCTURE_ATTRIBUTE ret = new WGPUSurfaceConfigurationExtras WGPU_STRUCTURE_ATTRIBUTE(segment.asSlice(0, WGPUSurfaceConfigurationExtras WGPU_STRUCTURE_ATTRIBUTE.BYTES));
-                segment = segment.asSlice(WGPUSurfaceConfigurationExtras WGPU_STRUCTURE_ATTRIBUTE.BYTES);
+                WGPUSurfaceConfigurationExtras ret = new WGPUSurfaceConfigurationExtras(segment.asSlice(0, WGPUSurfaceConfigurationExtras.BYTES));
+                segment = segment.asSlice(WGPUSurfaceConfigurationExtras.BYTES);
                 return ret;
             }
 
@@ -158,17 +158,17 @@ public record WGPUSurfaceConfigurationExtras WGPU_STRUCTURE_ATTRIBUTE(@NotNull M
         }
     }
 
-    public static WGPUSurfaceConfigurationExtras WGPU_STRUCTURE_ATTRIBUTE allocate(Arena arena) {
-        return new WGPUSurfaceConfigurationExtras WGPU_STRUCTURE_ATTRIBUTE(arena.allocate(LAYOUT));
+    public static WGPUSurfaceConfigurationExtras allocate(Arena arena) {
+        return new WGPUSurfaceConfigurationExtras(arena.allocate(LAYOUT));
     }
 
-    public static WGPUSurfaceConfigurationExtras WGPU_STRUCTURE_ATTRIBUTE.Ptr allocate(Arena arena, long count) {
+    public static WGPUSurfaceConfigurationExtras.Ptr allocate(Arena arena, long count) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
-        return new WGPUSurfaceConfigurationExtras WGPU_STRUCTURE_ATTRIBUTE.Ptr(segment);
+        return new WGPUSurfaceConfigurationExtras.Ptr(segment);
     }
 
-    public static WGPUSurfaceConfigurationExtras WGPU_STRUCTURE_ATTRIBUTE clone(Arena arena, WGPUSurfaceConfigurationExtras WGPU_STRUCTURE_ATTRIBUTE src) {
-        WGPUSurfaceConfigurationExtras WGPU_STRUCTURE_ATTRIBUTE ret = allocate(arena);
+    public static WGPUSurfaceConfigurationExtras clone(Arena arena, WGPUSurfaceConfigurationExtras src) {
+        WGPUSurfaceConfigurationExtras ret = allocate(arena);
         ret.segment.copyFrom(src.segment);
         return ret;
     }
@@ -177,12 +177,12 @@ public record WGPUSurfaceConfigurationExtras WGPU_STRUCTURE_ATTRIBUTE(@NotNull M
         return new WGPUChainedStruct(segment.asSlice(OFFSET$chain, LAYOUT$chain));
     }
 
-    public WGPUSurfaceConfigurationExtras WGPU_STRUCTURE_ATTRIBUTE chain(@NotNull WGPUChainedStruct value) {
+    public WGPUSurfaceConfigurationExtras chain(@NotNull WGPUChainedStruct value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$chain, SIZE$chain);
         return this;
     }
 
-    public WGPUSurfaceConfigurationExtras WGPU_STRUCTURE_ATTRIBUTE chain(Consumer<@NotNull WGPUChainedStruct> consumer) {
+    public WGPUSurfaceConfigurationExtras chain(Consumer<@NotNull WGPUChainedStruct> consumer) {
         consumer.accept(chain());
         return this;
     }
@@ -191,7 +191,7 @@ public record WGPUSurfaceConfigurationExtras WGPU_STRUCTURE_ATTRIBUTE(@NotNull M
         return segment.get(LAYOUT$desiredMaximumFrameLatency, OFFSET$desiredMaximumFrameLatency);
     }
 
-    public WGPUSurfaceConfigurationExtras WGPU_STRUCTURE_ATTRIBUTE desiredMaximumFrameLatency(@Unsigned int value) {
+    public WGPUSurfaceConfigurationExtras desiredMaximumFrameLatency(@Unsigned int value) {
         segment.set(LAYOUT$desiredMaximumFrameLatency, OFFSET$desiredMaximumFrameLatency, value);
         return this;
     }

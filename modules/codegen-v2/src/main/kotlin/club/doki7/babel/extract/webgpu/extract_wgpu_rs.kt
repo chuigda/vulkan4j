@@ -203,6 +203,7 @@ private fun parseAndSaveStructure(
     lines: List<String>,
     index: Int
 ): Int {
+    val structureName = lines[index].removeSurrounding("typedef struct", "{").trim()
     val next = hparse(
         structureParseConfig,
         registry,
@@ -211,10 +212,6 @@ private fun parseAndSaveStructure(
         if (lines[index].endsWith("{")) index + 1 else index + 2
     )
     assert(lines[next].startsWith("}") && lines[next].endsWith(";"))
-    val structureName = lines[next]
-        .removePrefix("}")
-        .removeSuffix(";")
-        .trim()
 
     val fieldVarDecls = cx["fields"] as MutableList<VarDecl>
     cx.remove("fields")

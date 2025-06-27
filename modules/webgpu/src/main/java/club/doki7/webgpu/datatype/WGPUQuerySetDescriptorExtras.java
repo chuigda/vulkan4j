@@ -18,16 +18,16 @@ import club.doki7.webgpu.handle.*;
 import club.doki7.webgpu.enumtype.*;
 import static club.doki7.webgpu.WGPUConstants.*;
 
-/// Represents a pointer to a {@code WGPUQuerySetDescriptorExtras WGPU_STRUCTURE_ATTRIBUTE} structure in native memory.
+/// Represents a pointer to a {@code WGPUQuerySetDescriptorExtras} structure in native memory.
 ///
 /// ## Structure
 ///
 /// {@snippet lang=c :
-/// typedef struct WGPUQuerySetDescriptorExtras WGPU_STRUCTURE_ATTRIBUTE {
+/// typedef struct WGPUQuerySetDescriptorExtras {
 ///     WGPUChainedStruct chain; // @link substring="WGPUChainedStruct" target="WGPUChainedStruct" @link substring="chain" target="#chain"
 ///     WGPUPipelineStatisticName const* pipelineStatistics; // @link substring="WGPUPipelineStatisticName" target="WGPUPipelineStatisticName" @link substring="pipelineStatistics" target="#pipelineStatistics"
 ///     size_t pipelineStatisticCount; // @link substring="pipelineStatisticCount" target="#pipelineStatisticCount"
-/// } WGPUQuerySetDescriptorExtras WGPU_STRUCTURE_ATTRIBUTE;
+/// } WGPUQuerySetDescriptorExtras;
 /// }
 ///
 /// ## Contracts
@@ -41,29 +41,29 @@ import static club.doki7.webgpu.WGPUConstants.*;
 /// perform any runtime check. The constructor can be useful for automatic code generators.
 @ValueBasedCandidate
 @UnsafeConstructor
-public record WGPUQuerySetDescriptorExtras WGPU_STRUCTURE_ATTRIBUTE(@NotNull MemorySegment segment) implements IWGPUQuerySetDescriptorExtras WGPU_STRUCTURE_ATTRIBUTE {
+public record WGPUQuerySetDescriptorExtras(@NotNull MemorySegment segment) implements IWGPUQuerySetDescriptorExtras {
     /// Represents a pointer to / an array of null structure(s) in native memory.
     ///
-    /// Technically speaking, this type has no difference with {@link WGPUQuerySetDescriptorExtras WGPU_STRUCTURE_ATTRIBUTE}. This type
+    /// Technically speaking, this type has no difference with {@link WGPUQuerySetDescriptorExtras}. This type
     /// is introduced mainly for user to distinguish between a pointer to a single structure
     /// and a pointer to (potentially) an array of structure(s). APIs should use interface
-    /// IWGPUQuerySetDescriptorExtras WGPU_STRUCTURE_ATTRIBUTE to handle both types uniformly. See package level documentation for more
+    /// IWGPUQuerySetDescriptorExtras to handle both types uniformly. See package level documentation for more
     /// details.
     ///
     /// ## Contracts
     ///
     /// The property {@link #segment()} should always be not-null
     /// ({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to
-    /// {@code WGPUQuerySetDescriptorExtras WGPU_STRUCTURE_ATTRIBUTE.LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+    /// {@code WGPUQuerySetDescriptorExtras.LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
     /// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
     ///
     /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
     /// perform any runtime check. The constructor can be useful for automatic code generators.
     @ValueBasedCandidate
     @UnsafeConstructor
-    public record Ptr(@NotNull MemorySegment segment) implements IWGPUQuerySetDescriptorExtras WGPU_STRUCTURE_ATTRIBUTE, Iterable<WGPUQuerySetDescriptorExtras WGPU_STRUCTURE_ATTRIBUTE> {
+    public record Ptr(@NotNull MemorySegment segment) implements IWGPUQuerySetDescriptorExtras, Iterable<WGPUQuerySetDescriptorExtras> {
         public long size() {
-            return segment.byteSize() / WGPUQuerySetDescriptorExtras WGPU_STRUCTURE_ATTRIBUTE.BYTES;
+            return segment.byteSize() / WGPUQuerySetDescriptorExtras.BYTES;
         }
 
         /// Returns (a pointer to) the structure at the given index.
@@ -72,17 +72,17 @@ public record WGPUQuerySetDescriptorExtras WGPU_STRUCTURE_ATTRIBUTE(@NotNull Mem
         /// example), modification on returned structure will be reflected on the original
         /// structure array. So this function is called {@code at} to explicitly
         /// indicate that the returned structure is a view of the original structure.
-        public @NotNull WGPUQuerySetDescriptorExtras WGPU_STRUCTURE_ATTRIBUTE at(long index) {
-            return new WGPUQuerySetDescriptorExtras WGPU_STRUCTURE_ATTRIBUTE(segment.asSlice(index * WGPUQuerySetDescriptorExtras WGPU_STRUCTURE_ATTRIBUTE.BYTES, WGPUQuerySetDescriptorExtras WGPU_STRUCTURE_ATTRIBUTE.BYTES));
+        public @NotNull WGPUQuerySetDescriptorExtras at(long index) {
+            return new WGPUQuerySetDescriptorExtras(segment.asSlice(index * WGPUQuerySetDescriptorExtras.BYTES, WGPUQuerySetDescriptorExtras.BYTES));
         }
 
-        public WGPUQuerySetDescriptorExtras WGPU_STRUCTURE_ATTRIBUTE.Ptr at(long index, @NotNull Consumer<@NotNull WGPUQuerySetDescriptorExtras WGPU_STRUCTURE_ATTRIBUTE> consumer) {
+        public WGPUQuerySetDescriptorExtras.Ptr at(long index, @NotNull Consumer<@NotNull WGPUQuerySetDescriptorExtras> consumer) {
             consumer.accept(at(index));
             return this;
         }
 
-        public void write(long index, @NotNull WGPUQuerySetDescriptorExtras WGPU_STRUCTURE_ATTRIBUTE value) {
-            MemorySegment s = segment.asSlice(index * WGPUQuerySetDescriptorExtras WGPU_STRUCTURE_ATTRIBUTE.BYTES, WGPUQuerySetDescriptorExtras WGPU_STRUCTURE_ATTRIBUTE.BYTES);
+        public void write(long index, @NotNull WGPUQuerySetDescriptorExtras value) {
+            MemorySegment s = segment.asSlice(index * WGPUQuerySetDescriptorExtras.BYTES, WGPUQuerySetDescriptorExtras.BYTES);
             s.copyFrom(value.segment);
         }
 
@@ -100,11 +100,11 @@ public record WGPUQuerySetDescriptorExtras WGPU_STRUCTURE_ATTRIBUTE(@NotNull Mem
         /// instead.
         @Unsafe
         public @NotNull Ptr reinterpret(long newSize) {
-            return new Ptr(segment.reinterpret(newSize * WGPUQuerySetDescriptorExtras WGPU_STRUCTURE_ATTRIBUTE.BYTES));
+            return new Ptr(segment.reinterpret(newSize * WGPUQuerySetDescriptorExtras.BYTES));
         }
 
         public @NotNull Ptr offset(long offset) {
-            return new Ptr(segment.asSlice(offset * WGPUQuerySetDescriptorExtras WGPU_STRUCTURE_ATTRIBUTE.BYTES));
+            return new Ptr(segment.asSlice(offset * WGPUQuerySetDescriptorExtras.BYTES));
         }
 
         /// Note that this function uses the {@link List#subList(int, int)} semantics (left inclusive,
@@ -112,17 +112,17 @@ public record WGPUQuerySetDescriptorExtras WGPU_STRUCTURE_ATTRIBUTE(@NotNull Mem
         /// (offset + newSize). Be careful with the difference
         public @NotNull Ptr slice(long start, long end) {
             return new Ptr(segment.asSlice(
-                start * WGPUQuerySetDescriptorExtras WGPU_STRUCTURE_ATTRIBUTE.BYTES,
-                (end - start) * WGPUQuerySetDescriptorExtras WGPU_STRUCTURE_ATTRIBUTE.BYTES
+                start * WGPUQuerySetDescriptorExtras.BYTES,
+                (end - start) * WGPUQuerySetDescriptorExtras.BYTES
             ));
         }
 
         public Ptr slice(long end) {
-            return new Ptr(segment.asSlice(0, end * WGPUQuerySetDescriptorExtras WGPU_STRUCTURE_ATTRIBUTE.BYTES));
+            return new Ptr(segment.asSlice(0, end * WGPUQuerySetDescriptorExtras.BYTES));
         }
 
-        public WGPUQuerySetDescriptorExtras WGPU_STRUCTURE_ATTRIBUTE[] toArray() {
-            WGPUQuerySetDescriptorExtras WGPU_STRUCTURE_ATTRIBUTE[] ret = new WGPUQuerySetDescriptorExtras WGPU_STRUCTURE_ATTRIBUTE[(int) size()];
+        public WGPUQuerySetDescriptorExtras[] toArray() {
+            WGPUQuerySetDescriptorExtras[] ret = new WGPUQuerySetDescriptorExtras[(int) size()];
             for (long i = 0; i < size(); i++) {
                 ret[(int) i] = at(i);
             }
@@ -130,28 +130,28 @@ public record WGPUQuerySetDescriptorExtras WGPU_STRUCTURE_ATTRIBUTE(@NotNull Mem
         }
 
         @Override
-        public @NotNull Iterator<WGPUQuerySetDescriptorExtras WGPU_STRUCTURE_ATTRIBUTE> iterator() {
+        public @NotNull Iterator<WGPUQuerySetDescriptorExtras> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        private static final class Iter implements Iterator<WGPUQuerySetDescriptorExtras WGPU_STRUCTURE_ATTRIBUTE> {
+        private static final class Iter implements Iterator<WGPUQuerySetDescriptorExtras> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }
 
             @Override
             public boolean hasNext() {
-                return segment.byteSize() >= WGPUQuerySetDescriptorExtras WGPU_STRUCTURE_ATTRIBUTE.BYTES;
+                return segment.byteSize() >= WGPUQuerySetDescriptorExtras.BYTES;
             }
 
             @Override
-            public WGPUQuerySetDescriptorExtras WGPU_STRUCTURE_ATTRIBUTE next() {
+            public WGPUQuerySetDescriptorExtras next() {
                 if (!hasNext()) {
                     throw new NoSuchElementException();
                 }
-                WGPUQuerySetDescriptorExtras WGPU_STRUCTURE_ATTRIBUTE ret = new WGPUQuerySetDescriptorExtras WGPU_STRUCTURE_ATTRIBUTE(segment.asSlice(0, WGPUQuerySetDescriptorExtras WGPU_STRUCTURE_ATTRIBUTE.BYTES));
-                segment = segment.asSlice(WGPUQuerySetDescriptorExtras WGPU_STRUCTURE_ATTRIBUTE.BYTES);
+                WGPUQuerySetDescriptorExtras ret = new WGPUQuerySetDescriptorExtras(segment.asSlice(0, WGPUQuerySetDescriptorExtras.BYTES));
+                segment = segment.asSlice(WGPUQuerySetDescriptorExtras.BYTES);
                 return ret;
             }
 
@@ -159,17 +159,17 @@ public record WGPUQuerySetDescriptorExtras WGPU_STRUCTURE_ATTRIBUTE(@NotNull Mem
         }
     }
 
-    public static WGPUQuerySetDescriptorExtras WGPU_STRUCTURE_ATTRIBUTE allocate(Arena arena) {
-        return new WGPUQuerySetDescriptorExtras WGPU_STRUCTURE_ATTRIBUTE(arena.allocate(LAYOUT));
+    public static WGPUQuerySetDescriptorExtras allocate(Arena arena) {
+        return new WGPUQuerySetDescriptorExtras(arena.allocate(LAYOUT));
     }
 
-    public static WGPUQuerySetDescriptorExtras WGPU_STRUCTURE_ATTRIBUTE.Ptr allocate(Arena arena, long count) {
+    public static WGPUQuerySetDescriptorExtras.Ptr allocate(Arena arena, long count) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
-        return new WGPUQuerySetDescriptorExtras WGPU_STRUCTURE_ATTRIBUTE.Ptr(segment);
+        return new WGPUQuerySetDescriptorExtras.Ptr(segment);
     }
 
-    public static WGPUQuerySetDescriptorExtras WGPU_STRUCTURE_ATTRIBUTE clone(Arena arena, WGPUQuerySetDescriptorExtras WGPU_STRUCTURE_ATTRIBUTE src) {
-        WGPUQuerySetDescriptorExtras WGPU_STRUCTURE_ATTRIBUTE ret = allocate(arena);
+    public static WGPUQuerySetDescriptorExtras clone(Arena arena, WGPUQuerySetDescriptorExtras src) {
+        WGPUQuerySetDescriptorExtras ret = allocate(arena);
         ret.segment.copyFrom(src.segment);
         return ret;
     }
@@ -178,12 +178,12 @@ public record WGPUQuerySetDescriptorExtras WGPU_STRUCTURE_ATTRIBUTE(@NotNull Mem
         return new WGPUChainedStruct(segment.asSlice(OFFSET$chain, LAYOUT$chain));
     }
 
-    public WGPUQuerySetDescriptorExtras WGPU_STRUCTURE_ATTRIBUTE chain(@NotNull WGPUChainedStruct value) {
+    public WGPUQuerySetDescriptorExtras chain(@NotNull WGPUChainedStruct value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$chain, SIZE$chain);
         return this;
     }
 
-    public WGPUQuerySetDescriptorExtras WGPU_STRUCTURE_ATTRIBUTE chain(Consumer<@NotNull WGPUChainedStruct> consumer) {
+    public WGPUQuerySetDescriptorExtras chain(Consumer<@NotNull WGPUChainedStruct> consumer) {
         consumer.accept(chain());
         return this;
     }
@@ -201,7 +201,7 @@ public record WGPUQuerySetDescriptorExtras WGPU_STRUCTURE_ATTRIBUTE(@NotNull Mem
         return new IntPtr(s);
     }
 
-    public WGPUQuerySetDescriptorExtras WGPU_STRUCTURE_ATTRIBUTE pipelineStatistics(@Nullable @EnumType(WGPUPipelineStatisticName.class) IntPtr value) {
+    public WGPUQuerySetDescriptorExtras pipelineStatistics(@Nullable @EnumType(WGPUPipelineStatisticName.class) IntPtr value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pipelineStatisticsRaw(s);
         return this;
@@ -219,7 +219,7 @@ public record WGPUQuerySetDescriptorExtras WGPU_STRUCTURE_ATTRIBUTE(@NotNull Mem
         return NativeLayout.readCSizeT(segment, OFFSET$pipelineStatisticCount);
     }
 
-    public WGPUQuerySetDescriptorExtras WGPU_STRUCTURE_ATTRIBUTE pipelineStatisticCount(@Unsigned long value) {
+    public WGPUQuerySetDescriptorExtras pipelineStatisticCount(@Unsigned long value) {
         NativeLayout.writeCSizeT(segment, OFFSET$pipelineStatisticCount, value);
         return this;
     }
