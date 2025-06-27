@@ -24,6 +24,7 @@ import static club.doki7.webgpu.WGPUConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct WGPUSurfaceConfiguration {
+///     WGPUChainedStruct const* nextInChain; // optional // @link substring="WGPUChainedStruct" target="WGPUChainedStruct" @link substring="nextInChain" target="#nextInChain"
 ///     WGPUDevice device; // @link substring="WGPUDevice" target="WGPUDevice" @link substring="device" target="#device"
 ///     WGPUTextureFormat format; // @link substring="WGPUTextureFormat" target="WGPUTextureFormat" @link substring="format" target="#format"
 ///     WGPUTextureUsage usage; // @link substring="WGPUTextureUsage" target="WGPUTextureUsage" @link substring="usage" target="#usage"
@@ -179,6 +180,38 @@ public record WGPUSurfaceConfiguration(@NotNull MemorySegment segment) implement
         return ret;
     }
 
+    public WGPUSurfaceConfiguration nextInChain(@Nullable IWGPUChainedStruct value) {
+        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
+        nextInChainRaw(s);
+        return this;
+    }
+
+    @Unsafe public @Nullable WGPUChainedStruct.Ptr nextInChain(int assumedCount) {
+        MemorySegment s = nextInChainRaw();
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+
+        s = s.reinterpret(assumedCount * WGPUChainedStruct.BYTES);
+        return new WGPUChainedStruct.Ptr(s);
+    }
+
+    public @Nullable WGPUChainedStruct nextInChain() {
+        MemorySegment s = nextInChainRaw();
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+        return new WGPUChainedStruct(s);
+    }
+
+    public @Pointer(target=WGPUChainedStruct.class) @NotNull MemorySegment nextInChainRaw() {
+        return segment.get(LAYOUT$nextInChain, OFFSET$nextInChain);
+    }
+
+    public void nextInChainRaw(@Pointer(target=WGPUChainedStruct.class) @NotNull MemorySegment value) {
+        segment.set(LAYOUT$nextInChain, OFFSET$nextInChain, value);
+    }
+
     public @Nullable WGPUDevice device() {
         MemorySegment s = segment.asSlice(OFFSET$device, SIZE$device);
         if (s.equals(MemorySegment.NULL)) {
@@ -274,6 +307,7 @@ public record WGPUSurfaceConfiguration(@NotNull MemorySegment segment) implement
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.ADDRESS.withTargetLayout(WGPUChainedStruct.LAYOUT).withName("nextInChain"),
         ValueLayout.ADDRESS.withName("device"),
         ValueLayout.JAVA_INT.withName("format"),
         ValueLayout.JAVA_LONG.withName("usage"),
@@ -285,6 +319,7 @@ public record WGPUSurfaceConfiguration(@NotNull MemorySegment segment) implement
     );
     public static final long BYTES = LAYOUT.byteSize();
 
+    public static final PathElement PATH$nextInChain = PathElement.groupElement("nextInChain");
     public static final PathElement PATH$device = PathElement.groupElement("device");
     public static final PathElement PATH$format = PathElement.groupElement("format");
     public static final PathElement PATH$usage = PathElement.groupElement("usage");
@@ -294,6 +329,7 @@ public record WGPUSurfaceConfiguration(@NotNull MemorySegment segment) implement
     public static final PathElement PATH$alphaMode = PathElement.groupElement("alphaMode");
     public static final PathElement PATH$presentMode = PathElement.groupElement("presentMode");
 
+    public static final AddressLayout LAYOUT$nextInChain = (AddressLayout) LAYOUT.select(PATH$nextInChain);
     public static final AddressLayout LAYOUT$device = (AddressLayout) LAYOUT.select(PATH$device);
     public static final OfInt LAYOUT$format = (OfInt) LAYOUT.select(PATH$format);
     public static final OfLong LAYOUT$usage = (OfLong) LAYOUT.select(PATH$usage);
@@ -303,6 +339,7 @@ public record WGPUSurfaceConfiguration(@NotNull MemorySegment segment) implement
     public static final OfInt LAYOUT$alphaMode = (OfInt) LAYOUT.select(PATH$alphaMode);
     public static final OfInt LAYOUT$presentMode = (OfInt) LAYOUT.select(PATH$presentMode);
 
+    public static final long SIZE$nextInChain = LAYOUT$nextInChain.byteSize();
     public static final long SIZE$device = LAYOUT$device.byteSize();
     public static final long SIZE$format = LAYOUT$format.byteSize();
     public static final long SIZE$usage = LAYOUT$usage.byteSize();
@@ -312,6 +349,7 @@ public record WGPUSurfaceConfiguration(@NotNull MemorySegment segment) implement
     public static final long SIZE$alphaMode = LAYOUT$alphaMode.byteSize();
     public static final long SIZE$presentMode = LAYOUT$presentMode.byteSize();
 
+    public static final long OFFSET$nextInChain = LAYOUT.byteOffset(PATH$nextInChain);
     public static final long OFFSET$device = LAYOUT.byteOffset(PATH$device);
     public static final long OFFSET$format = LAYOUT.byteOffset(PATH$format);
     public static final long OFFSET$usage = LAYOUT.byteOffset(PATH$usage);

@@ -97,19 +97,33 @@ private fun extractFunctionTypedefs(registry: RegistryBase, callbacks: List<IDLC
 
 private fun extractStructures(registry: RegistryBase, structs: List<IDLStructure>) {
     for (struct in structs) {
+        val members = mutableListOf<Member>()
+
+        if (struct.type != "standalone") {
+            members.add(Member(
+                name = "nextInChain",
+                type = PointerType(IdentifierType("WGPUChainedStruct"), const = true),
+                values = null,
+                len = null,
+                altLen = null,
+                optional = true,
+                bits = null
+            ))
+        }
+
+        struct.members.forEach { member -> members.add(Member(
+            name = renameWGPUVar(member.name),
+            type = classifyType(member.type, member.pointer),
+            values = null,
+            len = null,
+            altLen = null,
+            optional = member.optional,
+            bits = null
+        )) }
+
         registry.structures.putEntityIfAbsent(Structure(
             name = renameWGPUType(struct.name),
-            members = struct.members.map { member ->
-                Member(
-                    name = renameWGPUVar(member.name),
-                    type = classifyType(member.type, member.pointer),
-                    values = null,
-                    len = null,
-                    altLen = null,
-                    optional = member.optional,
-                    bits = null
-                )
-            }.toMutableList()
+            members = members
         ))
     }
 }

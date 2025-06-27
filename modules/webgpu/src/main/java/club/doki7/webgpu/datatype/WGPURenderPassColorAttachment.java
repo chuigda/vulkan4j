@@ -24,6 +24,7 @@ import static club.doki7.webgpu.WGPUConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct WGPURenderPassColorAttachment {
+///     WGPUChainedStruct const* nextInChain; // optional // @link substring="WGPUChainedStruct" target="WGPUChainedStruct" @link substring="nextInChain" target="#nextInChain"
 ///     WGPUTextureView view; // optional // @link substring="WGPUTextureView" target="WGPUTextureView" @link substring="view" target="#view"
 ///     uint32_t depthSlice; // @link substring="depthSlice" target="#depthSlice"
 ///     WGPUTextureView resolveTarget; // optional // @link substring="WGPUTextureView" target="WGPUTextureView" @link substring="resolveTarget" target="#resolveTarget"
@@ -177,6 +178,38 @@ public record WGPURenderPassColorAttachment(@NotNull MemorySegment segment) impl
         return ret;
     }
 
+    public WGPURenderPassColorAttachment nextInChain(@Nullable IWGPUChainedStruct value) {
+        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
+        nextInChainRaw(s);
+        return this;
+    }
+
+    @Unsafe public @Nullable WGPUChainedStruct.Ptr nextInChain(int assumedCount) {
+        MemorySegment s = nextInChainRaw();
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+
+        s = s.reinterpret(assumedCount * WGPUChainedStruct.BYTES);
+        return new WGPUChainedStruct.Ptr(s);
+    }
+
+    public @Nullable WGPUChainedStruct nextInChain() {
+        MemorySegment s = nextInChainRaw();
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+        return new WGPUChainedStruct(s);
+    }
+
+    public @Pointer(target=WGPUChainedStruct.class) @NotNull MemorySegment nextInChainRaw() {
+        return segment.get(LAYOUT$nextInChain, OFFSET$nextInChain);
+    }
+
+    public void nextInChainRaw(@Pointer(target=WGPUChainedStruct.class) @NotNull MemorySegment value) {
+        segment.set(LAYOUT$nextInChain, OFFSET$nextInChain, value);
+    }
+
     public @Nullable WGPUTextureView view() {
         MemorySegment s = segment.asSlice(OFFSET$view, SIZE$view);
         if (s.equals(MemorySegment.NULL)) {
@@ -245,6 +278,7 @@ public record WGPURenderPassColorAttachment(@NotNull MemorySegment segment) impl
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.ADDRESS.withTargetLayout(WGPUChainedStruct.LAYOUT).withName("nextInChain"),
         ValueLayout.ADDRESS.withName("view"),
         ValueLayout.JAVA_INT.withName("depthSlice"),
         ValueLayout.ADDRESS.withName("resolveTarget"),
@@ -254,6 +288,7 @@ public record WGPURenderPassColorAttachment(@NotNull MemorySegment segment) impl
     );
     public static final long BYTES = LAYOUT.byteSize();
 
+    public static final PathElement PATH$nextInChain = PathElement.groupElement("nextInChain");
     public static final PathElement PATH$view = PathElement.groupElement("view");
     public static final PathElement PATH$depthSlice = PathElement.groupElement("depthSlice");
     public static final PathElement PATH$resolveTarget = PathElement.groupElement("resolveTarget");
@@ -261,6 +296,7 @@ public record WGPURenderPassColorAttachment(@NotNull MemorySegment segment) impl
     public static final PathElement PATH$storeOp = PathElement.groupElement("storeOp");
     public static final PathElement PATH$clearValue = PathElement.groupElement("clearValue");
 
+    public static final AddressLayout LAYOUT$nextInChain = (AddressLayout) LAYOUT.select(PATH$nextInChain);
     public static final AddressLayout LAYOUT$view = (AddressLayout) LAYOUT.select(PATH$view);
     public static final OfInt LAYOUT$depthSlice = (OfInt) LAYOUT.select(PATH$depthSlice);
     public static final AddressLayout LAYOUT$resolveTarget = (AddressLayout) LAYOUT.select(PATH$resolveTarget);
@@ -268,6 +304,7 @@ public record WGPURenderPassColorAttachment(@NotNull MemorySegment segment) impl
     public static final OfInt LAYOUT$storeOp = (OfInt) LAYOUT.select(PATH$storeOp);
     public static final StructLayout LAYOUT$clearValue = (StructLayout) LAYOUT.select(PATH$clearValue);
 
+    public static final long SIZE$nextInChain = LAYOUT$nextInChain.byteSize();
     public static final long SIZE$view = LAYOUT$view.byteSize();
     public static final long SIZE$depthSlice = LAYOUT$depthSlice.byteSize();
     public static final long SIZE$resolveTarget = LAYOUT$resolveTarget.byteSize();
@@ -275,6 +312,7 @@ public record WGPURenderPassColorAttachment(@NotNull MemorySegment segment) impl
     public static final long SIZE$storeOp = LAYOUT$storeOp.byteSize();
     public static final long SIZE$clearValue = LAYOUT$clearValue.byteSize();
 
+    public static final long OFFSET$nextInChain = LAYOUT.byteOffset(PATH$nextInChain);
     public static final long OFFSET$view = LAYOUT.byteOffset(PATH$view);
     public static final long OFFSET$depthSlice = LAYOUT.byteOffset(PATH$depthSlice);
     public static final long OFFSET$resolveTarget = LAYOUT.byteOffset(PATH$resolveTarget);

@@ -24,6 +24,7 @@ import static club.doki7.webgpu.WGPUConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct WGPUTextureBindingLayout {
+///     WGPUChainedStruct const* nextInChain; // optional // @link substring="WGPUChainedStruct" target="WGPUChainedStruct" @link substring="nextInChain" target="#nextInChain"
 ///     WGPUTextureSampleType sampleType; // @link substring="WGPUTextureSampleType" target="WGPUTextureSampleType" @link substring="sampleType" target="#sampleType"
 ///     WGPUTextureViewDimension viewDimension; // @link substring="WGPUTextureViewDimension" target="WGPUTextureViewDimension" @link substring="viewDimension" target="#viewDimension"
 ///     bool multisampled; // @link substring="multisampled" target="#multisampled"
@@ -174,6 +175,38 @@ public record WGPUTextureBindingLayout(@NotNull MemorySegment segment) implement
         return ret;
     }
 
+    public WGPUTextureBindingLayout nextInChain(@Nullable IWGPUChainedStruct value) {
+        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
+        nextInChainRaw(s);
+        return this;
+    }
+
+    @Unsafe public @Nullable WGPUChainedStruct.Ptr nextInChain(int assumedCount) {
+        MemorySegment s = nextInChainRaw();
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+
+        s = s.reinterpret(assumedCount * WGPUChainedStruct.BYTES);
+        return new WGPUChainedStruct.Ptr(s);
+    }
+
+    public @Nullable WGPUChainedStruct nextInChain() {
+        MemorySegment s = nextInChainRaw();
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+        return new WGPUChainedStruct(s);
+    }
+
+    public @Pointer(target=WGPUChainedStruct.class) @NotNull MemorySegment nextInChainRaw() {
+        return segment.get(LAYOUT$nextInChain, OFFSET$nextInChain);
+    }
+
+    public void nextInChainRaw(@Pointer(target=WGPUChainedStruct.class) @NotNull MemorySegment value) {
+        segment.set(LAYOUT$nextInChain, OFFSET$nextInChain, value);
+    }
+
     public @EnumType(WGPUTextureSampleType.class) int sampleType() {
         return segment.get(LAYOUT$sampleType, OFFSET$sampleType);
     }
@@ -202,24 +235,29 @@ public record WGPUTextureBindingLayout(@NotNull MemorySegment segment) implement
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.ADDRESS.withTargetLayout(WGPUChainedStruct.LAYOUT).withName("nextInChain"),
         ValueLayout.JAVA_INT.withName("sampleType"),
         ValueLayout.JAVA_INT.withName("viewDimension"),
         ValueLayout.JAVA_BOOLEAN.withName("multisampled")
     );
     public static final long BYTES = LAYOUT.byteSize();
 
+    public static final PathElement PATH$nextInChain = PathElement.groupElement("nextInChain");
     public static final PathElement PATH$sampleType = PathElement.groupElement("sampleType");
     public static final PathElement PATH$viewDimension = PathElement.groupElement("viewDimension");
     public static final PathElement PATH$multisampled = PathElement.groupElement("multisampled");
 
+    public static final AddressLayout LAYOUT$nextInChain = (AddressLayout) LAYOUT.select(PATH$nextInChain);
     public static final OfInt LAYOUT$sampleType = (OfInt) LAYOUT.select(PATH$sampleType);
     public static final OfInt LAYOUT$viewDimension = (OfInt) LAYOUT.select(PATH$viewDimension);
     public static final OfBoolean LAYOUT$multisampled = (OfBoolean) LAYOUT.select(PATH$multisampled);
 
+    public static final long SIZE$nextInChain = LAYOUT$nextInChain.byteSize();
     public static final long SIZE$sampleType = LAYOUT$sampleType.byteSize();
     public static final long SIZE$viewDimension = LAYOUT$viewDimension.byteSize();
     public static final long SIZE$multisampled = LAYOUT$multisampled.byteSize();
 
+    public static final long OFFSET$nextInChain = LAYOUT.byteOffset(PATH$nextInChain);
     public static final long OFFSET$sampleType = LAYOUT.byteOffset(PATH$sampleType);
     public static final long OFFSET$viewDimension = LAYOUT.byteOffset(PATH$viewDimension);
     public static final long OFFSET$multisampled = LAYOUT.byteOffset(PATH$multisampled);

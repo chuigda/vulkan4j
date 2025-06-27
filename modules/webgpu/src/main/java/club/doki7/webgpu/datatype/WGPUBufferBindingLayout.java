@@ -24,6 +24,7 @@ import static club.doki7.webgpu.WGPUConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct WGPUBufferBindingLayout {
+///     WGPUChainedStruct const* nextInChain; // optional // @link substring="WGPUChainedStruct" target="WGPUChainedStruct" @link substring="nextInChain" target="#nextInChain"
 ///     WGPUBufferBindingType type; // @link substring="WGPUBufferBindingType" target="WGPUBufferBindingType" @link substring="type" target="#type"
 ///     bool hasDynamicOffset; // @link substring="hasDynamicOffset" target="#hasDynamicOffset"
 ///     uint64_t minBindingSize; // @link substring="minBindingSize" target="#minBindingSize"
@@ -174,6 +175,38 @@ public record WGPUBufferBindingLayout(@NotNull MemorySegment segment) implements
         return ret;
     }
 
+    public WGPUBufferBindingLayout nextInChain(@Nullable IWGPUChainedStruct value) {
+        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
+        nextInChainRaw(s);
+        return this;
+    }
+
+    @Unsafe public @Nullable WGPUChainedStruct.Ptr nextInChain(int assumedCount) {
+        MemorySegment s = nextInChainRaw();
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+
+        s = s.reinterpret(assumedCount * WGPUChainedStruct.BYTES);
+        return new WGPUChainedStruct.Ptr(s);
+    }
+
+    public @Nullable WGPUChainedStruct nextInChain() {
+        MemorySegment s = nextInChainRaw();
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+        return new WGPUChainedStruct(s);
+    }
+
+    public @Pointer(target=WGPUChainedStruct.class) @NotNull MemorySegment nextInChainRaw() {
+        return segment.get(LAYOUT$nextInChain, OFFSET$nextInChain);
+    }
+
+    public void nextInChainRaw(@Pointer(target=WGPUChainedStruct.class) @NotNull MemorySegment value) {
+        segment.set(LAYOUT$nextInChain, OFFSET$nextInChain, value);
+    }
+
     public @EnumType(WGPUBufferBindingType.class) int type() {
         return segment.get(LAYOUT$type, OFFSET$type);
     }
@@ -202,24 +235,29 @@ public record WGPUBufferBindingLayout(@NotNull MemorySegment segment) implements
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.ADDRESS.withTargetLayout(WGPUChainedStruct.LAYOUT).withName("nextInChain"),
         ValueLayout.JAVA_INT.withName("type"),
         ValueLayout.JAVA_BOOLEAN.withName("hasDynamicOffset"),
         ValueLayout.JAVA_LONG.withName("minBindingSize")
     );
     public static final long BYTES = LAYOUT.byteSize();
 
+    public static final PathElement PATH$nextInChain = PathElement.groupElement("nextInChain");
     public static final PathElement PATH$type = PathElement.groupElement("type");
     public static final PathElement PATH$hasDynamicOffset = PathElement.groupElement("hasDynamicOffset");
     public static final PathElement PATH$minBindingSize = PathElement.groupElement("minBindingSize");
 
+    public static final AddressLayout LAYOUT$nextInChain = (AddressLayout) LAYOUT.select(PATH$nextInChain);
     public static final OfInt LAYOUT$type = (OfInt) LAYOUT.select(PATH$type);
     public static final OfBoolean LAYOUT$hasDynamicOffset = (OfBoolean) LAYOUT.select(PATH$hasDynamicOffset);
     public static final OfLong LAYOUT$minBindingSize = (OfLong) LAYOUT.select(PATH$minBindingSize);
 
+    public static final long SIZE$nextInChain = LAYOUT$nextInChain.byteSize();
     public static final long SIZE$type = LAYOUT$type.byteSize();
     public static final long SIZE$hasDynamicOffset = LAYOUT$hasDynamicOffset.byteSize();
     public static final long SIZE$minBindingSize = LAYOUT$minBindingSize.byteSize();
 
+    public static final long OFFSET$nextInChain = LAYOUT.byteOffset(PATH$nextInChain);
     public static final long OFFSET$type = LAYOUT.byteOffset(PATH$type);
     public static final long OFFSET$hasDynamicOffset = LAYOUT.byteOffset(PATH$hasDynamicOffset);
     public static final long OFFSET$minBindingSize = LAYOUT.byteOffset(PATH$minBindingSize);

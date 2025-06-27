@@ -24,6 +24,7 @@ import static club.doki7.webgpu.WGPUConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct WGPUColorTargetState {
+///     WGPUChainedStruct const* nextInChain; // optional // @link substring="WGPUChainedStruct" target="WGPUChainedStruct" @link substring="nextInChain" target="#nextInChain"
 ///     WGPUTextureFormat format; // @link substring="WGPUTextureFormat" target="WGPUTextureFormat" @link substring="format" target="#format"
 ///     WGPUBlendState const* blend; // optional // @link substring="WGPUBlendState" target="WGPUBlendState" @link substring="blend" target="#blend"
 ///     WGPUColorWriteMask writeMask; // @link substring="WGPUColorWriteMask" target="WGPUColorWriteMask" @link substring="writeMask" target="#writeMask"
@@ -174,6 +175,38 @@ public record WGPUColorTargetState(@NotNull MemorySegment segment) implements IW
         return ret;
     }
 
+    public WGPUColorTargetState nextInChain(@Nullable IWGPUChainedStruct value) {
+        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
+        nextInChainRaw(s);
+        return this;
+    }
+
+    @Unsafe public @Nullable WGPUChainedStruct.Ptr nextInChain(int assumedCount) {
+        MemorySegment s = nextInChainRaw();
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+
+        s = s.reinterpret(assumedCount * WGPUChainedStruct.BYTES);
+        return new WGPUChainedStruct.Ptr(s);
+    }
+
+    public @Nullable WGPUChainedStruct nextInChain() {
+        MemorySegment s = nextInChainRaw();
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+        return new WGPUChainedStruct(s);
+    }
+
+    public @Pointer(target=WGPUChainedStruct.class) @NotNull MemorySegment nextInChainRaw() {
+        return segment.get(LAYOUT$nextInChain, OFFSET$nextInChain);
+    }
+
+    public void nextInChainRaw(@Pointer(target=WGPUChainedStruct.class) @NotNull MemorySegment value) {
+        segment.set(LAYOUT$nextInChain, OFFSET$nextInChain, value);
+    }
+
     public @EnumType(WGPUTextureFormat.class) int format() {
         return segment.get(LAYOUT$format, OFFSET$format);
     }
@@ -225,24 +258,29 @@ public record WGPUColorTargetState(@NotNull MemorySegment segment) implements IW
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.ADDRESS.withTargetLayout(WGPUChainedStruct.LAYOUT).withName("nextInChain"),
         ValueLayout.JAVA_INT.withName("format"),
         ValueLayout.ADDRESS.withTargetLayout(WGPUBlendState.LAYOUT).withName("blend"),
         ValueLayout.JAVA_LONG.withName("writeMask")
     );
     public static final long BYTES = LAYOUT.byteSize();
 
+    public static final PathElement PATH$nextInChain = PathElement.groupElement("nextInChain");
     public static final PathElement PATH$format = PathElement.groupElement("format");
     public static final PathElement PATH$blend = PathElement.groupElement("blend");
     public static final PathElement PATH$writeMask = PathElement.groupElement("writeMask");
 
+    public static final AddressLayout LAYOUT$nextInChain = (AddressLayout) LAYOUT.select(PATH$nextInChain);
     public static final OfInt LAYOUT$format = (OfInt) LAYOUT.select(PATH$format);
     public static final AddressLayout LAYOUT$blend = (AddressLayout) LAYOUT.select(PATH$blend);
     public static final OfLong LAYOUT$writeMask = (OfLong) LAYOUT.select(PATH$writeMask);
 
+    public static final long SIZE$nextInChain = LAYOUT$nextInChain.byteSize();
     public static final long SIZE$format = LAYOUT$format.byteSize();
     public static final long SIZE$blend = LAYOUT$blend.byteSize();
     public static final long SIZE$writeMask = LAYOUT$writeMask.byteSize();
 
+    public static final long OFFSET$nextInChain = LAYOUT.byteOffset(PATH$nextInChain);
     public static final long OFFSET$format = LAYOUT.byteOffset(PATH$format);
     public static final long OFFSET$blend = LAYOUT.byteOffset(PATH$blend);
     public static final long OFFSET$writeMask = LAYOUT.byteOffset(PATH$writeMask);

@@ -24,6 +24,7 @@ import static club.doki7.webgpu.WGPUConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct WGPUSamplerDescriptor {
+///     WGPUChainedStruct const* nextInChain; // optional // @link substring="WGPUChainedStruct" target="WGPUChainedStruct" @link substring="nextInChain" target="#nextInChain"
 ///     WGPUStringView label; // @link substring="WGPUStringView" target="WGPUStringView" @link substring="label" target="#label"
 ///     WGPUAddressMode addressModeU; // @link substring="WGPUAddressMode" target="WGPUAddressMode" @link substring="addressModeU" target="#addressModeU"
 ///     WGPUAddressMode addressModeV; // @link substring="WGPUAddressMode" target="WGPUAddressMode" @link substring="addressModeV" target="#addressModeV"
@@ -182,6 +183,38 @@ public record WGPUSamplerDescriptor(@NotNull MemorySegment segment) implements I
         return ret;
     }
 
+    public WGPUSamplerDescriptor nextInChain(@Nullable IWGPUChainedStruct value) {
+        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
+        nextInChainRaw(s);
+        return this;
+    }
+
+    @Unsafe public @Nullable WGPUChainedStruct.Ptr nextInChain(int assumedCount) {
+        MemorySegment s = nextInChainRaw();
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+
+        s = s.reinterpret(assumedCount * WGPUChainedStruct.BYTES);
+        return new WGPUChainedStruct.Ptr(s);
+    }
+
+    public @Nullable WGPUChainedStruct nextInChain() {
+        MemorySegment s = nextInChainRaw();
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+        return new WGPUChainedStruct(s);
+    }
+
+    public @Pointer(target=WGPUChainedStruct.class) @NotNull MemorySegment nextInChainRaw() {
+        return segment.get(LAYOUT$nextInChain, OFFSET$nextInChain);
+    }
+
+    public void nextInChainRaw(@Pointer(target=WGPUChainedStruct.class) @NotNull MemorySegment value) {
+        segment.set(LAYOUT$nextInChain, OFFSET$nextInChain, value);
+    }
+
     public @NotNull WGPUStringView label() {
         return new WGPUStringView(segment.asSlice(OFFSET$label, LAYOUT$label));
     }
@@ -287,6 +320,7 @@ public record WGPUSamplerDescriptor(@NotNull MemorySegment segment) implements I
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.ADDRESS.withTargetLayout(WGPUChainedStruct.LAYOUT).withName("nextInChain"),
         WGPUStringView.LAYOUT.withName("label"),
         ValueLayout.JAVA_INT.withName("addressModeU"),
         ValueLayout.JAVA_INT.withName("addressModeV"),
@@ -301,6 +335,7 @@ public record WGPUSamplerDescriptor(@NotNull MemorySegment segment) implements I
     );
     public static final long BYTES = LAYOUT.byteSize();
 
+    public static final PathElement PATH$nextInChain = PathElement.groupElement("nextInChain");
     public static final PathElement PATH$label = PathElement.groupElement("label");
     public static final PathElement PATH$addressModeU = PathElement.groupElement("addressModeU");
     public static final PathElement PATH$addressModeV = PathElement.groupElement("addressModeV");
@@ -313,6 +348,7 @@ public record WGPUSamplerDescriptor(@NotNull MemorySegment segment) implements I
     public static final PathElement PATH$compare = PathElement.groupElement("compare");
     public static final PathElement PATH$maxAnisotropy = PathElement.groupElement("maxAnisotropy");
 
+    public static final AddressLayout LAYOUT$nextInChain = (AddressLayout) LAYOUT.select(PATH$nextInChain);
     public static final StructLayout LAYOUT$label = (StructLayout) LAYOUT.select(PATH$label);
     public static final OfInt LAYOUT$addressModeU = (OfInt) LAYOUT.select(PATH$addressModeU);
     public static final OfInt LAYOUT$addressModeV = (OfInt) LAYOUT.select(PATH$addressModeV);
@@ -325,6 +361,7 @@ public record WGPUSamplerDescriptor(@NotNull MemorySegment segment) implements I
     public static final OfInt LAYOUT$compare = (OfInt) LAYOUT.select(PATH$compare);
     public static final OfShort LAYOUT$maxAnisotropy = (OfShort) LAYOUT.select(PATH$maxAnisotropy);
 
+    public static final long SIZE$nextInChain = LAYOUT$nextInChain.byteSize();
     public static final long SIZE$label = LAYOUT$label.byteSize();
     public static final long SIZE$addressModeU = LAYOUT$addressModeU.byteSize();
     public static final long SIZE$addressModeV = LAYOUT$addressModeV.byteSize();
@@ -337,6 +374,7 @@ public record WGPUSamplerDescriptor(@NotNull MemorySegment segment) implements I
     public static final long SIZE$compare = LAYOUT$compare.byteSize();
     public static final long SIZE$maxAnisotropy = LAYOUT$maxAnisotropy.byteSize();
 
+    public static final long OFFSET$nextInChain = LAYOUT.byteOffset(PATH$nextInChain);
     public static final long OFFSET$label = LAYOUT.byteOffset(PATH$label);
     public static final long OFFSET$addressModeU = LAYOUT.byteOffset(PATH$addressModeU);
     public static final long OFFSET$addressModeV = LAYOUT.byteOffset(PATH$addressModeV);

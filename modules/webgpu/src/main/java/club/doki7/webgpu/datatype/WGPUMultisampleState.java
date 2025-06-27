@@ -24,6 +24,7 @@ import static club.doki7.webgpu.WGPUConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct WGPUMultisampleState {
+///     WGPUChainedStruct const* nextInChain; // optional // @link substring="WGPUChainedStruct" target="WGPUChainedStruct" @link substring="nextInChain" target="#nextInChain"
 ///     uint32_t count; // @link substring="count" target="#count"
 ///     uint32_t mask; // @link substring="mask" target="#mask"
 ///     bool alphaToCoverageEnabled; // @link substring="alphaToCoverageEnabled" target="#alphaToCoverageEnabled"
@@ -174,6 +175,38 @@ public record WGPUMultisampleState(@NotNull MemorySegment segment) implements IW
         return ret;
     }
 
+    public WGPUMultisampleState nextInChain(@Nullable IWGPUChainedStruct value) {
+        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
+        nextInChainRaw(s);
+        return this;
+    }
+
+    @Unsafe public @Nullable WGPUChainedStruct.Ptr nextInChain(int assumedCount) {
+        MemorySegment s = nextInChainRaw();
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+
+        s = s.reinterpret(assumedCount * WGPUChainedStruct.BYTES);
+        return new WGPUChainedStruct.Ptr(s);
+    }
+
+    public @Nullable WGPUChainedStruct nextInChain() {
+        MemorySegment s = nextInChainRaw();
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+        return new WGPUChainedStruct(s);
+    }
+
+    public @Pointer(target=WGPUChainedStruct.class) @NotNull MemorySegment nextInChainRaw() {
+        return segment.get(LAYOUT$nextInChain, OFFSET$nextInChain);
+    }
+
+    public void nextInChainRaw(@Pointer(target=WGPUChainedStruct.class) @NotNull MemorySegment value) {
+        segment.set(LAYOUT$nextInChain, OFFSET$nextInChain, value);
+    }
+
     public @Unsigned int count() {
         return segment.get(LAYOUT$count, OFFSET$count);
     }
@@ -202,24 +235,29 @@ public record WGPUMultisampleState(@NotNull MemorySegment segment) implements IW
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.ADDRESS.withTargetLayout(WGPUChainedStruct.LAYOUT).withName("nextInChain"),
         ValueLayout.JAVA_INT.withName("count"),
         ValueLayout.JAVA_INT.withName("mask"),
         ValueLayout.JAVA_BOOLEAN.withName("alphaToCoverageEnabled")
     );
     public static final long BYTES = LAYOUT.byteSize();
 
+    public static final PathElement PATH$nextInChain = PathElement.groupElement("nextInChain");
     public static final PathElement PATH$count = PathElement.groupElement("count");
     public static final PathElement PATH$mask = PathElement.groupElement("mask");
     public static final PathElement PATH$alphaToCoverageEnabled = PathElement.groupElement("alphaToCoverageEnabled");
 
+    public static final AddressLayout LAYOUT$nextInChain = (AddressLayout) LAYOUT.select(PATH$nextInChain);
     public static final OfInt LAYOUT$count = (OfInt) LAYOUT.select(PATH$count);
     public static final OfInt LAYOUT$mask = (OfInt) LAYOUT.select(PATH$mask);
     public static final OfBoolean LAYOUT$alphaToCoverageEnabled = (OfBoolean) LAYOUT.select(PATH$alphaToCoverageEnabled);
 
+    public static final long SIZE$nextInChain = LAYOUT$nextInChain.byteSize();
     public static final long SIZE$count = LAYOUT$count.byteSize();
     public static final long SIZE$mask = LAYOUT$mask.byteSize();
     public static final long SIZE$alphaToCoverageEnabled = LAYOUT$alphaToCoverageEnabled.byteSize();
 
+    public static final long OFFSET$nextInChain = LAYOUT.byteOffset(PATH$nextInChain);
     public static final long OFFSET$count = LAYOUT.byteOffset(PATH$count);
     public static final long OFFSET$mask = LAYOUT.byteOffset(PATH$mask);
     public static final long OFFSET$alphaToCoverageEnabled = LAYOUT.byteOffset(PATH$alphaToCoverageEnabled);

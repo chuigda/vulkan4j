@@ -24,6 +24,7 @@ import static club.doki7.webgpu.WGPUConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct WGPURenderPipelineDescriptor {
+///     WGPUChainedStruct const* nextInChain; // optional // @link substring="WGPUChainedStruct" target="WGPUChainedStruct" @link substring="nextInChain" target="#nextInChain"
 ///     WGPUStringView label; // @link substring="WGPUStringView" target="WGPUStringView" @link substring="label" target="#label"
 ///     WGPUPipelineLayout layout; // optional // @link substring="WGPUPipelineLayout" target="WGPUPipelineLayout" @link substring="layout" target="#layout"
 ///     WGPUVertexState vertex; // @link substring="WGPUVertexState" target="WGPUVertexState" @link substring="vertex" target="#vertex"
@@ -178,6 +179,38 @@ public record WGPURenderPipelineDescriptor(@NotNull MemorySegment segment) imple
         return ret;
     }
 
+    public WGPURenderPipelineDescriptor nextInChain(@Nullable IWGPUChainedStruct value) {
+        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
+        nextInChainRaw(s);
+        return this;
+    }
+
+    @Unsafe public @Nullable WGPUChainedStruct.Ptr nextInChain(int assumedCount) {
+        MemorySegment s = nextInChainRaw();
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+
+        s = s.reinterpret(assumedCount * WGPUChainedStruct.BYTES);
+        return new WGPUChainedStruct.Ptr(s);
+    }
+
+    public @Nullable WGPUChainedStruct nextInChain() {
+        MemorySegment s = nextInChainRaw();
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+        return new WGPUChainedStruct(s);
+    }
+
+    public @Pointer(target=WGPUChainedStruct.class) @NotNull MemorySegment nextInChainRaw() {
+        return segment.get(LAYOUT$nextInChain, OFFSET$nextInChain);
+    }
+
+    public void nextInChainRaw(@Pointer(target=WGPUChainedStruct.class) @NotNull MemorySegment value) {
+        segment.set(LAYOUT$nextInChain, OFFSET$nextInChain, value);
+    }
+
     public @NotNull WGPUStringView label() {
         return new WGPUStringView(segment.asSlice(OFFSET$label, LAYOUT$label));
     }
@@ -312,6 +345,7 @@ public record WGPURenderPipelineDescriptor(@NotNull MemorySegment segment) imple
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.ADDRESS.withTargetLayout(WGPUChainedStruct.LAYOUT).withName("nextInChain"),
         WGPUStringView.LAYOUT.withName("label"),
         ValueLayout.ADDRESS.withName("layout"),
         WGPUVertexState.LAYOUT.withName("vertex"),
@@ -322,6 +356,7 @@ public record WGPURenderPipelineDescriptor(@NotNull MemorySegment segment) imple
     );
     public static final long BYTES = LAYOUT.byteSize();
 
+    public static final PathElement PATH$nextInChain = PathElement.groupElement("nextInChain");
     public static final PathElement PATH$label = PathElement.groupElement("label");
     public static final PathElement PATH$layout = PathElement.groupElement("layout");
     public static final PathElement PATH$vertex = PathElement.groupElement("vertex");
@@ -330,6 +365,7 @@ public record WGPURenderPipelineDescriptor(@NotNull MemorySegment segment) imple
     public static final PathElement PATH$multisample = PathElement.groupElement("multisample");
     public static final PathElement PATH$fragment = PathElement.groupElement("fragment");
 
+    public static final AddressLayout LAYOUT$nextInChain = (AddressLayout) LAYOUT.select(PATH$nextInChain);
     public static final StructLayout LAYOUT$label = (StructLayout) LAYOUT.select(PATH$label);
     public static final AddressLayout LAYOUT$layout = (AddressLayout) LAYOUT.select(PATH$layout);
     public static final StructLayout LAYOUT$vertex = (StructLayout) LAYOUT.select(PATH$vertex);
@@ -338,6 +374,7 @@ public record WGPURenderPipelineDescriptor(@NotNull MemorySegment segment) imple
     public static final StructLayout LAYOUT$multisample = (StructLayout) LAYOUT.select(PATH$multisample);
     public static final AddressLayout LAYOUT$fragment = (AddressLayout) LAYOUT.select(PATH$fragment);
 
+    public static final long SIZE$nextInChain = LAYOUT$nextInChain.byteSize();
     public static final long SIZE$label = LAYOUT$label.byteSize();
     public static final long SIZE$layout = LAYOUT$layout.byteSize();
     public static final long SIZE$vertex = LAYOUT$vertex.byteSize();
@@ -346,6 +383,7 @@ public record WGPURenderPipelineDescriptor(@NotNull MemorySegment segment) imple
     public static final long SIZE$multisample = LAYOUT$multisample.byteSize();
     public static final long SIZE$fragment = LAYOUT$fragment.byteSize();
 
+    public static final long OFFSET$nextInChain = LAYOUT.byteOffset(PATH$nextInChain);
     public static final long OFFSET$label = LAYOUT.byteOffset(PATH$label);
     public static final long OFFSET$layout = LAYOUT.byteOffset(PATH$layout);
     public static final long OFFSET$vertex = LAYOUT.byteOffset(PATH$vertex);

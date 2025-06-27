@@ -24,6 +24,7 @@ import static club.doki7.webgpu.WGPUConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct WGPUSurfaceSourceXcbWindow {
+///     WGPUChainedStruct const* nextInChain; // optional // @link substring="WGPUChainedStruct" target="WGPUChainedStruct" @link substring="nextInChain" target="#nextInChain"
 ///     void* connection; // @link substring="connection" target="#connection"
 ///     uint32_t window; // @link substring="window" target="#window"
 /// } WGPUSurfaceSourceXcbWindow;
@@ -173,6 +174,38 @@ public record WGPUSurfaceSourceXcbWindow(@NotNull MemorySegment segment) impleme
         return ret;
     }
 
+    public WGPUSurfaceSourceXcbWindow nextInChain(@Nullable IWGPUChainedStruct value) {
+        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
+        nextInChainRaw(s);
+        return this;
+    }
+
+    @Unsafe public @Nullable WGPUChainedStruct.Ptr nextInChain(int assumedCount) {
+        MemorySegment s = nextInChainRaw();
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+
+        s = s.reinterpret(assumedCount * WGPUChainedStruct.BYTES);
+        return new WGPUChainedStruct.Ptr(s);
+    }
+
+    public @Nullable WGPUChainedStruct nextInChain() {
+        MemorySegment s = nextInChainRaw();
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+        return new WGPUChainedStruct(s);
+    }
+
+    public @Pointer(target=WGPUChainedStruct.class) @NotNull MemorySegment nextInChainRaw() {
+        return segment.get(LAYOUT$nextInChain, OFFSET$nextInChain);
+    }
+
+    public void nextInChainRaw(@Pointer(target=WGPUChainedStruct.class) @NotNull MemorySegment value) {
+        segment.set(LAYOUT$nextInChain, OFFSET$nextInChain, value);
+    }
+
     public @Pointer(comment="void*") @NotNull MemorySegment connection() {
         return segment.get(LAYOUT$connection, OFFSET$connection);
     }
@@ -197,20 +230,25 @@ public record WGPUSurfaceSourceXcbWindow(@NotNull MemorySegment segment) impleme
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.ADDRESS.withTargetLayout(WGPUChainedStruct.LAYOUT).withName("nextInChain"),
         ValueLayout.ADDRESS.withName("connection"),
         ValueLayout.JAVA_INT.withName("window")
     );
     public static final long BYTES = LAYOUT.byteSize();
 
+    public static final PathElement PATH$nextInChain = PathElement.groupElement("nextInChain");
     public static final PathElement PATH$connection = PathElement.groupElement("connection");
     public static final PathElement PATH$window = PathElement.groupElement("window");
 
+    public static final AddressLayout LAYOUT$nextInChain = (AddressLayout) LAYOUT.select(PATH$nextInChain);
     public static final AddressLayout LAYOUT$connection = (AddressLayout) LAYOUT.select(PATH$connection);
     public static final OfInt LAYOUT$window = (OfInt) LAYOUT.select(PATH$window);
 
+    public static final long SIZE$nextInChain = LAYOUT$nextInChain.byteSize();
     public static final long SIZE$connection = LAYOUT$connection.byteSize();
     public static final long SIZE$window = LAYOUT$window.byteSize();
 
+    public static final long OFFSET$nextInChain = LAYOUT.byteOffset(PATH$nextInChain);
     public static final long OFFSET$connection = LAYOUT.byteOffset(PATH$connection);
     public static final long OFFSET$window = LAYOUT.byteOffset(PATH$window);
 }

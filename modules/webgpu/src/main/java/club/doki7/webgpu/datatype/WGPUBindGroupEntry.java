@@ -24,6 +24,7 @@ import static club.doki7.webgpu.WGPUConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct WGPUBindGroupEntry {
+///     WGPUChainedStruct const* nextInChain; // optional // @link substring="WGPUChainedStruct" target="WGPUChainedStruct" @link substring="nextInChain" target="#nextInChain"
 ///     uint32_t binding; // @link substring="binding" target="#binding"
 ///     WGPUBuffer buffer; // optional // @link substring="WGPUBuffer" target="WGPUBuffer" @link substring="buffer" target="#buffer"
 ///     uint64_t offset; // @link substring="offset" target="#offset"
@@ -177,6 +178,38 @@ public record WGPUBindGroupEntry(@NotNull MemorySegment segment) implements IWGP
         return ret;
     }
 
+    public WGPUBindGroupEntry nextInChain(@Nullable IWGPUChainedStruct value) {
+        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
+        nextInChainRaw(s);
+        return this;
+    }
+
+    @Unsafe public @Nullable WGPUChainedStruct.Ptr nextInChain(int assumedCount) {
+        MemorySegment s = nextInChainRaw();
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+
+        s = s.reinterpret(assumedCount * WGPUChainedStruct.BYTES);
+        return new WGPUChainedStruct.Ptr(s);
+    }
+
+    public @Nullable WGPUChainedStruct nextInChain() {
+        MemorySegment s = nextInChainRaw();
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+        return new WGPUChainedStruct(s);
+    }
+
+    public @Pointer(target=WGPUChainedStruct.class) @NotNull MemorySegment nextInChainRaw() {
+        return segment.get(LAYOUT$nextInChain, OFFSET$nextInChain);
+    }
+
+    public void nextInChainRaw(@Pointer(target=WGPUChainedStruct.class) @NotNull MemorySegment value) {
+        segment.set(LAYOUT$nextInChain, OFFSET$nextInChain, value);
+    }
+
     public @Unsigned int binding() {
         return segment.get(LAYOUT$binding, OFFSET$binding);
     }
@@ -244,6 +277,7 @@ public record WGPUBindGroupEntry(@NotNull MemorySegment segment) implements IWGP
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.ADDRESS.withTargetLayout(WGPUChainedStruct.LAYOUT).withName("nextInChain"),
         ValueLayout.JAVA_INT.withName("binding"),
         ValueLayout.ADDRESS.withName("buffer"),
         ValueLayout.JAVA_LONG.withName("offset"),
@@ -253,6 +287,7 @@ public record WGPUBindGroupEntry(@NotNull MemorySegment segment) implements IWGP
     );
     public static final long BYTES = LAYOUT.byteSize();
 
+    public static final PathElement PATH$nextInChain = PathElement.groupElement("nextInChain");
     public static final PathElement PATH$binding = PathElement.groupElement("binding");
     public static final PathElement PATH$buffer = PathElement.groupElement("buffer");
     public static final PathElement PATH$offset = PathElement.groupElement("offset");
@@ -260,6 +295,7 @@ public record WGPUBindGroupEntry(@NotNull MemorySegment segment) implements IWGP
     public static final PathElement PATH$sampler = PathElement.groupElement("sampler");
     public static final PathElement PATH$textureView = PathElement.groupElement("textureView");
 
+    public static final AddressLayout LAYOUT$nextInChain = (AddressLayout) LAYOUT.select(PATH$nextInChain);
     public static final OfInt LAYOUT$binding = (OfInt) LAYOUT.select(PATH$binding);
     public static final AddressLayout LAYOUT$buffer = (AddressLayout) LAYOUT.select(PATH$buffer);
     public static final OfLong LAYOUT$offset = (OfLong) LAYOUT.select(PATH$offset);
@@ -267,6 +303,7 @@ public record WGPUBindGroupEntry(@NotNull MemorySegment segment) implements IWGP
     public static final AddressLayout LAYOUT$sampler = (AddressLayout) LAYOUT.select(PATH$sampler);
     public static final AddressLayout LAYOUT$textureView = (AddressLayout) LAYOUT.select(PATH$textureView);
 
+    public static final long SIZE$nextInChain = LAYOUT$nextInChain.byteSize();
     public static final long SIZE$binding = LAYOUT$binding.byteSize();
     public static final long SIZE$buffer = LAYOUT$buffer.byteSize();
     public static final long SIZE$offset = LAYOUT$offset.byteSize();
@@ -274,6 +311,7 @@ public record WGPUBindGroupEntry(@NotNull MemorySegment segment) implements IWGP
     public static final long SIZE$sampler = LAYOUT$sampler.byteSize();
     public static final long SIZE$textureView = LAYOUT$textureView.byteSize();
 
+    public static final long OFFSET$nextInChain = LAYOUT.byteOffset(PATH$nextInChain);
     public static final long OFFSET$binding = LAYOUT.byteOffset(PATH$binding);
     public static final long OFFSET$buffer = LAYOUT.byteOffset(PATH$buffer);
     public static final long OFFSET$offset = LAYOUT.byteOffset(PATH$offset);

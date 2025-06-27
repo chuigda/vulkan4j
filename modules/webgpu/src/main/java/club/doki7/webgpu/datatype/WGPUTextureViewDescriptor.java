@@ -24,6 +24,7 @@ import static club.doki7.webgpu.WGPUConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct WGPUTextureViewDescriptor {
+///     WGPUChainedStruct const* nextInChain; // optional // @link substring="WGPUChainedStruct" target="WGPUChainedStruct" @link substring="nextInChain" target="#nextInChain"
 ///     WGPUStringView label; // @link substring="WGPUStringView" target="WGPUStringView" @link substring="label" target="#label"
 ///     WGPUTextureFormat format; // @link substring="WGPUTextureFormat" target="WGPUTextureFormat" @link substring="format" target="#format"
 ///     WGPUTextureViewDimension dimension; // @link substring="WGPUTextureViewDimension" target="WGPUTextureViewDimension" @link substring="dimension" target="#dimension"
@@ -180,6 +181,38 @@ public record WGPUTextureViewDescriptor(@NotNull MemorySegment segment) implemen
         return ret;
     }
 
+    public WGPUTextureViewDescriptor nextInChain(@Nullable IWGPUChainedStruct value) {
+        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
+        nextInChainRaw(s);
+        return this;
+    }
+
+    @Unsafe public @Nullable WGPUChainedStruct.Ptr nextInChain(int assumedCount) {
+        MemorySegment s = nextInChainRaw();
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+
+        s = s.reinterpret(assumedCount * WGPUChainedStruct.BYTES);
+        return new WGPUChainedStruct.Ptr(s);
+    }
+
+    public @Nullable WGPUChainedStruct nextInChain() {
+        MemorySegment s = nextInChainRaw();
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+        return new WGPUChainedStruct(s);
+    }
+
+    public @Pointer(target=WGPUChainedStruct.class) @NotNull MemorySegment nextInChainRaw() {
+        return segment.get(LAYOUT$nextInChain, OFFSET$nextInChain);
+    }
+
+    public void nextInChainRaw(@Pointer(target=WGPUChainedStruct.class) @NotNull MemorySegment value) {
+        segment.set(LAYOUT$nextInChain, OFFSET$nextInChain, value);
+    }
+
     public @NotNull WGPUStringView label() {
         return new WGPUStringView(segment.asSlice(OFFSET$label, LAYOUT$label));
     }
@@ -267,6 +300,7 @@ public record WGPUTextureViewDescriptor(@NotNull MemorySegment segment) implemen
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.ADDRESS.withTargetLayout(WGPUChainedStruct.LAYOUT).withName("nextInChain"),
         WGPUStringView.LAYOUT.withName("label"),
         ValueLayout.JAVA_INT.withName("format"),
         ValueLayout.JAVA_INT.withName("dimension"),
@@ -279,6 +313,7 @@ public record WGPUTextureViewDescriptor(@NotNull MemorySegment segment) implemen
     );
     public static final long BYTES = LAYOUT.byteSize();
 
+    public static final PathElement PATH$nextInChain = PathElement.groupElement("nextInChain");
     public static final PathElement PATH$label = PathElement.groupElement("label");
     public static final PathElement PATH$format = PathElement.groupElement("format");
     public static final PathElement PATH$dimension = PathElement.groupElement("dimension");
@@ -289,6 +324,7 @@ public record WGPUTextureViewDescriptor(@NotNull MemorySegment segment) implemen
     public static final PathElement PATH$aspect = PathElement.groupElement("aspect");
     public static final PathElement PATH$usage = PathElement.groupElement("usage");
 
+    public static final AddressLayout LAYOUT$nextInChain = (AddressLayout) LAYOUT.select(PATH$nextInChain);
     public static final StructLayout LAYOUT$label = (StructLayout) LAYOUT.select(PATH$label);
     public static final OfInt LAYOUT$format = (OfInt) LAYOUT.select(PATH$format);
     public static final OfInt LAYOUT$dimension = (OfInt) LAYOUT.select(PATH$dimension);
@@ -299,6 +335,7 @@ public record WGPUTextureViewDescriptor(@NotNull MemorySegment segment) implemen
     public static final OfInt LAYOUT$aspect = (OfInt) LAYOUT.select(PATH$aspect);
     public static final OfLong LAYOUT$usage = (OfLong) LAYOUT.select(PATH$usage);
 
+    public static final long SIZE$nextInChain = LAYOUT$nextInChain.byteSize();
     public static final long SIZE$label = LAYOUT$label.byteSize();
     public static final long SIZE$format = LAYOUT$format.byteSize();
     public static final long SIZE$dimension = LAYOUT$dimension.byteSize();
@@ -309,6 +346,7 @@ public record WGPUTextureViewDescriptor(@NotNull MemorySegment segment) implemen
     public static final long SIZE$aspect = LAYOUT$aspect.byteSize();
     public static final long SIZE$usage = LAYOUT$usage.byteSize();
 
+    public static final long OFFSET$nextInChain = LAYOUT.byteOffset(PATH$nextInChain);
     public static final long OFFSET$label = LAYOUT.byteOffset(PATH$label);
     public static final long OFFSET$format = LAYOUT.byteOffset(PATH$format);
     public static final long OFFSET$dimension = LAYOUT.byteOffset(PATH$dimension);

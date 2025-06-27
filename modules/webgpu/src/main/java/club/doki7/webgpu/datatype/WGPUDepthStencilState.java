@@ -24,6 +24,7 @@ import static club.doki7.webgpu.WGPUConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct WGPUDepthStencilState {
+///     WGPUChainedStruct const* nextInChain; // optional // @link substring="WGPUChainedStruct" target="WGPUChainedStruct" @link substring="nextInChain" target="#nextInChain"
 ///     WGPUTextureFormat format; // @link substring="WGPUTextureFormat" target="WGPUTextureFormat" @link substring="format" target="#format"
 ///     WGPUOptionalBool depthWriteEnabled; // @link substring="WGPUOptionalBool" target="WGPUOptionalBool" @link substring="depthWriteEnabled" target="#depthWriteEnabled"
 ///     WGPUCompareFunction depthCompare; // @link substring="WGPUCompareFunction" target="WGPUCompareFunction" @link substring="depthCompare" target="#depthCompare"
@@ -181,6 +182,38 @@ public record WGPUDepthStencilState(@NotNull MemorySegment segment) implements I
         return ret;
     }
 
+    public WGPUDepthStencilState nextInChain(@Nullable IWGPUChainedStruct value) {
+        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
+        nextInChainRaw(s);
+        return this;
+    }
+
+    @Unsafe public @Nullable WGPUChainedStruct.Ptr nextInChain(int assumedCount) {
+        MemorySegment s = nextInChainRaw();
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+
+        s = s.reinterpret(assumedCount * WGPUChainedStruct.BYTES);
+        return new WGPUChainedStruct.Ptr(s);
+    }
+
+    public @Nullable WGPUChainedStruct nextInChain() {
+        MemorySegment s = nextInChainRaw();
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+        return new WGPUChainedStruct(s);
+    }
+
+    public @Pointer(target=WGPUChainedStruct.class) @NotNull MemorySegment nextInChainRaw() {
+        return segment.get(LAYOUT$nextInChain, OFFSET$nextInChain);
+    }
+
+    public void nextInChainRaw(@Pointer(target=WGPUChainedStruct.class) @NotNull MemorySegment value) {
+        segment.set(LAYOUT$nextInChain, OFFSET$nextInChain, value);
+    }
+
     public @EnumType(WGPUTextureFormat.class) int format() {
         return segment.get(LAYOUT$format, OFFSET$format);
     }
@@ -282,6 +315,7 @@ public record WGPUDepthStencilState(@NotNull MemorySegment segment) implements I
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.ADDRESS.withTargetLayout(WGPUChainedStruct.LAYOUT).withName("nextInChain"),
         ValueLayout.JAVA_INT.withName("format"),
         ValueLayout.JAVA_INT.withName("depthWriteEnabled"),
         ValueLayout.JAVA_INT.withName("depthCompare"),
@@ -295,6 +329,7 @@ public record WGPUDepthStencilState(@NotNull MemorySegment segment) implements I
     );
     public static final long BYTES = LAYOUT.byteSize();
 
+    public static final PathElement PATH$nextInChain = PathElement.groupElement("nextInChain");
     public static final PathElement PATH$format = PathElement.groupElement("format");
     public static final PathElement PATH$depthWriteEnabled = PathElement.groupElement("depthWriteEnabled");
     public static final PathElement PATH$depthCompare = PathElement.groupElement("depthCompare");
@@ -306,6 +341,7 @@ public record WGPUDepthStencilState(@NotNull MemorySegment segment) implements I
     public static final PathElement PATH$depthBiasSlopeScale = PathElement.groupElement("depthBiasSlopeScale");
     public static final PathElement PATH$depthBiasClamp = PathElement.groupElement("depthBiasClamp");
 
+    public static final AddressLayout LAYOUT$nextInChain = (AddressLayout) LAYOUT.select(PATH$nextInChain);
     public static final OfInt LAYOUT$format = (OfInt) LAYOUT.select(PATH$format);
     public static final OfInt LAYOUT$depthWriteEnabled = (OfInt) LAYOUT.select(PATH$depthWriteEnabled);
     public static final OfInt LAYOUT$depthCompare = (OfInt) LAYOUT.select(PATH$depthCompare);
@@ -317,6 +353,7 @@ public record WGPUDepthStencilState(@NotNull MemorySegment segment) implements I
     public static final OfFloat LAYOUT$depthBiasSlopeScale = (OfFloat) LAYOUT.select(PATH$depthBiasSlopeScale);
     public static final OfFloat LAYOUT$depthBiasClamp = (OfFloat) LAYOUT.select(PATH$depthBiasClamp);
 
+    public static final long SIZE$nextInChain = LAYOUT$nextInChain.byteSize();
     public static final long SIZE$format = LAYOUT$format.byteSize();
     public static final long SIZE$depthWriteEnabled = LAYOUT$depthWriteEnabled.byteSize();
     public static final long SIZE$depthCompare = LAYOUT$depthCompare.byteSize();
@@ -328,6 +365,7 @@ public record WGPUDepthStencilState(@NotNull MemorySegment segment) implements I
     public static final long SIZE$depthBiasSlopeScale = LAYOUT$depthBiasSlopeScale.byteSize();
     public static final long SIZE$depthBiasClamp = LAYOUT$depthBiasClamp.byteSize();
 
+    public static final long OFFSET$nextInChain = LAYOUT.byteOffset(PATH$nextInChain);
     public static final long OFFSET$format = LAYOUT.byteOffset(PATH$format);
     public static final long OFFSET$depthWriteEnabled = LAYOUT.byteOffset(PATH$depthWriteEnabled);
     public static final long OFFSET$depthCompare = LAYOUT.byteOffset(PATH$depthCompare);

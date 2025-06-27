@@ -24,6 +24,7 @@ import static club.doki7.webgpu.WGPUConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct WGPUStorageTextureBindingLayout {
+///     WGPUChainedStruct const* nextInChain; // optional // @link substring="WGPUChainedStruct" target="WGPUChainedStruct" @link substring="nextInChain" target="#nextInChain"
 ///     WGPUStorageTextureAccess access; // @link substring="WGPUStorageTextureAccess" target="WGPUStorageTextureAccess" @link substring="access" target="#access"
 ///     WGPUTextureFormat format; // @link substring="WGPUTextureFormat" target="WGPUTextureFormat" @link substring="format" target="#format"
 ///     WGPUTextureViewDimension viewDimension; // @link substring="WGPUTextureViewDimension" target="WGPUTextureViewDimension" @link substring="viewDimension" target="#viewDimension"
@@ -174,6 +175,38 @@ public record WGPUStorageTextureBindingLayout(@NotNull MemorySegment segment) im
         return ret;
     }
 
+    public WGPUStorageTextureBindingLayout nextInChain(@Nullable IWGPUChainedStruct value) {
+        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
+        nextInChainRaw(s);
+        return this;
+    }
+
+    @Unsafe public @Nullable WGPUChainedStruct.Ptr nextInChain(int assumedCount) {
+        MemorySegment s = nextInChainRaw();
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+
+        s = s.reinterpret(assumedCount * WGPUChainedStruct.BYTES);
+        return new WGPUChainedStruct.Ptr(s);
+    }
+
+    public @Nullable WGPUChainedStruct nextInChain() {
+        MemorySegment s = nextInChainRaw();
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+        return new WGPUChainedStruct(s);
+    }
+
+    public @Pointer(target=WGPUChainedStruct.class) @NotNull MemorySegment nextInChainRaw() {
+        return segment.get(LAYOUT$nextInChain, OFFSET$nextInChain);
+    }
+
+    public void nextInChainRaw(@Pointer(target=WGPUChainedStruct.class) @NotNull MemorySegment value) {
+        segment.set(LAYOUT$nextInChain, OFFSET$nextInChain, value);
+    }
+
     public @EnumType(WGPUStorageTextureAccess.class) int access() {
         return segment.get(LAYOUT$access, OFFSET$access);
     }
@@ -202,24 +235,29 @@ public record WGPUStorageTextureBindingLayout(@NotNull MemorySegment segment) im
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.ADDRESS.withTargetLayout(WGPUChainedStruct.LAYOUT).withName("nextInChain"),
         ValueLayout.JAVA_INT.withName("access"),
         ValueLayout.JAVA_INT.withName("format"),
         ValueLayout.JAVA_INT.withName("viewDimension")
     );
     public static final long BYTES = LAYOUT.byteSize();
 
+    public static final PathElement PATH$nextInChain = PathElement.groupElement("nextInChain");
     public static final PathElement PATH$access = PathElement.groupElement("access");
     public static final PathElement PATH$format = PathElement.groupElement("format");
     public static final PathElement PATH$viewDimension = PathElement.groupElement("viewDimension");
 
+    public static final AddressLayout LAYOUT$nextInChain = (AddressLayout) LAYOUT.select(PATH$nextInChain);
     public static final OfInt LAYOUT$access = (OfInt) LAYOUT.select(PATH$access);
     public static final OfInt LAYOUT$format = (OfInt) LAYOUT.select(PATH$format);
     public static final OfInt LAYOUT$viewDimension = (OfInt) LAYOUT.select(PATH$viewDimension);
 
+    public static final long SIZE$nextInChain = LAYOUT$nextInChain.byteSize();
     public static final long SIZE$access = LAYOUT$access.byteSize();
     public static final long SIZE$format = LAYOUT$format.byteSize();
     public static final long SIZE$viewDimension = LAYOUT$viewDimension.byteSize();
 
+    public static final long OFFSET$nextInChain = LAYOUT.byteOffset(PATH$nextInChain);
     public static final long OFFSET$access = LAYOUT.byteOffset(PATH$access);
     public static final long OFFSET$format = LAYOUT.byteOffset(PATH$format);
     public static final long OFFSET$viewDimension = LAYOUT.byteOffset(PATH$viewDimension);

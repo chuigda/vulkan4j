@@ -24,6 +24,7 @@ import static club.doki7.webgpu.WGPUConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct WGPUAdapterInfo {
+///     WGPUChainedStruct const* nextInChain; // optional // @link substring="WGPUChainedStruct" target="WGPUChainedStruct" @link substring="nextInChain" target="#nextInChain"
 ///     WGPUStringView vendor; // @link substring="WGPUStringView" target="WGPUStringView" @link substring="vendor" target="#vendor"
 ///     WGPUStringView architecture; // @link substring="WGPUStringView" target="WGPUStringView" @link substring="architecture" target="#architecture"
 ///     WGPUStringView device; // @link substring="WGPUStringView" target="WGPUStringView" @link substring="device" target="#device"
@@ -179,6 +180,38 @@ public record WGPUAdapterInfo(@NotNull MemorySegment segment) implements IWGPUAd
         return ret;
     }
 
+    public WGPUAdapterInfo nextInChain(@Nullable IWGPUChainedStruct value) {
+        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
+        nextInChainRaw(s);
+        return this;
+    }
+
+    @Unsafe public @Nullable WGPUChainedStruct.Ptr nextInChain(int assumedCount) {
+        MemorySegment s = nextInChainRaw();
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+
+        s = s.reinterpret(assumedCount * WGPUChainedStruct.BYTES);
+        return new WGPUChainedStruct.Ptr(s);
+    }
+
+    public @Nullable WGPUChainedStruct nextInChain() {
+        MemorySegment s = nextInChainRaw();
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+        return new WGPUChainedStruct(s);
+    }
+
+    public @Pointer(target=WGPUChainedStruct.class) @NotNull MemorySegment nextInChainRaw() {
+        return segment.get(LAYOUT$nextInChain, OFFSET$nextInChain);
+    }
+
+    public void nextInChainRaw(@Pointer(target=WGPUChainedStruct.class) @NotNull MemorySegment value) {
+        segment.set(LAYOUT$nextInChain, OFFSET$nextInChain, value);
+    }
+
     public @NotNull WGPUStringView vendor() {
         return new WGPUStringView(segment.asSlice(OFFSET$vendor, LAYOUT$vendor));
     }
@@ -272,6 +305,7 @@ public record WGPUAdapterInfo(@NotNull MemorySegment segment) implements IWGPUAd
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.ADDRESS.withTargetLayout(WGPUChainedStruct.LAYOUT).withName("nextInChain"),
         WGPUStringView.LAYOUT.withName("vendor"),
         WGPUStringView.LAYOUT.withName("architecture"),
         WGPUStringView.LAYOUT.withName("device"),
@@ -283,6 +317,7 @@ public record WGPUAdapterInfo(@NotNull MemorySegment segment) implements IWGPUAd
     );
     public static final long BYTES = LAYOUT.byteSize();
 
+    public static final PathElement PATH$nextInChain = PathElement.groupElement("nextInChain");
     public static final PathElement PATH$vendor = PathElement.groupElement("vendor");
     public static final PathElement PATH$architecture = PathElement.groupElement("architecture");
     public static final PathElement PATH$device = PathElement.groupElement("device");
@@ -292,6 +327,7 @@ public record WGPUAdapterInfo(@NotNull MemorySegment segment) implements IWGPUAd
     public static final PathElement PATH$vendorId = PathElement.groupElement("vendorId");
     public static final PathElement PATH$deviceId = PathElement.groupElement("deviceId");
 
+    public static final AddressLayout LAYOUT$nextInChain = (AddressLayout) LAYOUT.select(PATH$nextInChain);
     public static final StructLayout LAYOUT$vendor = (StructLayout) LAYOUT.select(PATH$vendor);
     public static final StructLayout LAYOUT$architecture = (StructLayout) LAYOUT.select(PATH$architecture);
     public static final StructLayout LAYOUT$device = (StructLayout) LAYOUT.select(PATH$device);
@@ -301,6 +337,7 @@ public record WGPUAdapterInfo(@NotNull MemorySegment segment) implements IWGPUAd
     public static final OfInt LAYOUT$vendorId = (OfInt) LAYOUT.select(PATH$vendorId);
     public static final OfInt LAYOUT$deviceId = (OfInt) LAYOUT.select(PATH$deviceId);
 
+    public static final long SIZE$nextInChain = LAYOUT$nextInChain.byteSize();
     public static final long SIZE$vendor = LAYOUT$vendor.byteSize();
     public static final long SIZE$architecture = LAYOUT$architecture.byteSize();
     public static final long SIZE$device = LAYOUT$device.byteSize();
@@ -310,6 +347,7 @@ public record WGPUAdapterInfo(@NotNull MemorySegment segment) implements IWGPUAd
     public static final long SIZE$vendorId = LAYOUT$vendorId.byteSize();
     public static final long SIZE$deviceId = LAYOUT$deviceId.byteSize();
 
+    public static final long OFFSET$nextInChain = LAYOUT.byteOffset(PATH$nextInChain);
     public static final long OFFSET$vendor = LAYOUT.byteOffset(PATH$vendor);
     public static final long OFFSET$architecture = LAYOUT.byteOffset(PATH$architecture);
     public static final long OFFSET$device = LAYOUT.byteOffset(PATH$device);

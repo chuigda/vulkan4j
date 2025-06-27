@@ -24,6 +24,7 @@ import static club.doki7.webgpu.WGPUConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct WGPURequestAdapterOptions {
+///     WGPUChainedStruct const* nextInChain; // optional // @link substring="WGPUChainedStruct" target="WGPUChainedStruct" @link substring="nextInChain" target="#nextInChain"
 ///     WGPUFeatureLevel featureLevel; // @link substring="WGPUFeatureLevel" target="WGPUFeatureLevel" @link substring="featureLevel" target="#featureLevel"
 ///     WGPUPowerPreference powerPreference; // @link substring="WGPUPowerPreference" target="WGPUPowerPreference" @link substring="powerPreference" target="#powerPreference"
 ///     bool forceFallbackAdapter; // @link substring="forceFallbackAdapter" target="#forceFallbackAdapter"
@@ -176,6 +177,38 @@ public record WGPURequestAdapterOptions(@NotNull MemorySegment segment) implemen
         return ret;
     }
 
+    public WGPURequestAdapterOptions nextInChain(@Nullable IWGPUChainedStruct value) {
+        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
+        nextInChainRaw(s);
+        return this;
+    }
+
+    @Unsafe public @Nullable WGPUChainedStruct.Ptr nextInChain(int assumedCount) {
+        MemorySegment s = nextInChainRaw();
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+
+        s = s.reinterpret(assumedCount * WGPUChainedStruct.BYTES);
+        return new WGPUChainedStruct.Ptr(s);
+    }
+
+    public @Nullable WGPUChainedStruct nextInChain() {
+        MemorySegment s = nextInChainRaw();
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+        return new WGPUChainedStruct(s);
+    }
+
+    public @Pointer(target=WGPUChainedStruct.class) @NotNull MemorySegment nextInChainRaw() {
+        return segment.get(LAYOUT$nextInChain, OFFSET$nextInChain);
+    }
+
+    public void nextInChainRaw(@Pointer(target=WGPUChainedStruct.class) @NotNull MemorySegment value) {
+        segment.set(LAYOUT$nextInChain, OFFSET$nextInChain, value);
+    }
+
     public @EnumType(WGPUFeatureLevel.class) int featureLevel() {
         return segment.get(LAYOUT$featureLevel, OFFSET$featureLevel);
     }
@@ -226,6 +259,7 @@ public record WGPURequestAdapterOptions(@NotNull MemorySegment segment) implemen
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.ADDRESS.withTargetLayout(WGPUChainedStruct.LAYOUT).withName("nextInChain"),
         ValueLayout.JAVA_INT.withName("featureLevel"),
         ValueLayout.JAVA_INT.withName("powerPreference"),
         ValueLayout.JAVA_BOOLEAN.withName("forceFallbackAdapter"),
@@ -234,24 +268,28 @@ public record WGPURequestAdapterOptions(@NotNull MemorySegment segment) implemen
     );
     public static final long BYTES = LAYOUT.byteSize();
 
+    public static final PathElement PATH$nextInChain = PathElement.groupElement("nextInChain");
     public static final PathElement PATH$featureLevel = PathElement.groupElement("featureLevel");
     public static final PathElement PATH$powerPreference = PathElement.groupElement("powerPreference");
     public static final PathElement PATH$forceFallbackAdapter = PathElement.groupElement("forceFallbackAdapter");
     public static final PathElement PATH$backendType = PathElement.groupElement("backendType");
     public static final PathElement PATH$compatibleSurface = PathElement.groupElement("compatibleSurface");
 
+    public static final AddressLayout LAYOUT$nextInChain = (AddressLayout) LAYOUT.select(PATH$nextInChain);
     public static final OfInt LAYOUT$featureLevel = (OfInt) LAYOUT.select(PATH$featureLevel);
     public static final OfInt LAYOUT$powerPreference = (OfInt) LAYOUT.select(PATH$powerPreference);
     public static final OfBoolean LAYOUT$forceFallbackAdapter = (OfBoolean) LAYOUT.select(PATH$forceFallbackAdapter);
     public static final OfInt LAYOUT$backendType = (OfInt) LAYOUT.select(PATH$backendType);
     public static final AddressLayout LAYOUT$compatibleSurface = (AddressLayout) LAYOUT.select(PATH$compatibleSurface);
 
+    public static final long SIZE$nextInChain = LAYOUT$nextInChain.byteSize();
     public static final long SIZE$featureLevel = LAYOUT$featureLevel.byteSize();
     public static final long SIZE$powerPreference = LAYOUT$powerPreference.byteSize();
     public static final long SIZE$forceFallbackAdapter = LAYOUT$forceFallbackAdapter.byteSize();
     public static final long SIZE$backendType = LAYOUT$backendType.byteSize();
     public static final long SIZE$compatibleSurface = LAYOUT$compatibleSurface.byteSize();
 
+    public static final long OFFSET$nextInChain = LAYOUT.byteOffset(PATH$nextInChain);
     public static final long OFFSET$featureLevel = LAYOUT.byteOffset(PATH$featureLevel);
     public static final long OFFSET$powerPreference = LAYOUT.byteOffset(PATH$powerPreference);
     public static final long OFFSET$forceFallbackAdapter = LAYOUT.byteOffset(PATH$forceFallbackAdapter);

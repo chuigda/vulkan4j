@@ -24,6 +24,7 @@ import static club.doki7.webgpu.WGPUConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct WGPUInstanceCapabilities {
+///     WGPUChainedStruct const* nextInChain; // optional // @link substring="WGPUChainedStruct" target="WGPUChainedStruct" @link substring="nextInChain" target="#nextInChain"
 ///     bool timedWaitAnyEnable; // @link substring="timedWaitAnyEnable" target="#timedWaitAnyEnable"
 ///     size_t timedWaitAnyMaxCount; // @link substring="timedWaitAnyMaxCount" target="#timedWaitAnyMaxCount"
 /// } WGPUInstanceCapabilities;
@@ -173,6 +174,38 @@ public record WGPUInstanceCapabilities(@NotNull MemorySegment segment) implement
         return ret;
     }
 
+    public WGPUInstanceCapabilities nextInChain(@Nullable IWGPUChainedStruct value) {
+        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
+        nextInChainRaw(s);
+        return this;
+    }
+
+    @Unsafe public @Nullable WGPUChainedStruct.Ptr nextInChain(int assumedCount) {
+        MemorySegment s = nextInChainRaw();
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+
+        s = s.reinterpret(assumedCount * WGPUChainedStruct.BYTES);
+        return new WGPUChainedStruct.Ptr(s);
+    }
+
+    public @Nullable WGPUChainedStruct nextInChain() {
+        MemorySegment s = nextInChainRaw();
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+        return new WGPUChainedStruct(s);
+    }
+
+    public @Pointer(target=WGPUChainedStruct.class) @NotNull MemorySegment nextInChainRaw() {
+        return segment.get(LAYOUT$nextInChain, OFFSET$nextInChain);
+    }
+
+    public void nextInChainRaw(@Pointer(target=WGPUChainedStruct.class) @NotNull MemorySegment value) {
+        segment.set(LAYOUT$nextInChain, OFFSET$nextInChain, value);
+    }
+
     public @NativeType("boolean") boolean timedWaitAnyEnable() {
         return segment.get(LAYOUT$timedWaitAnyEnable, OFFSET$timedWaitAnyEnable);
     }
@@ -192,19 +225,24 @@ public record WGPUInstanceCapabilities(@NotNull MemorySegment segment) implement
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.ADDRESS.withTargetLayout(WGPUChainedStruct.LAYOUT).withName("nextInChain"),
         ValueLayout.JAVA_BOOLEAN.withName("timedWaitAnyEnable"),
         NativeLayout.C_SIZE_T.withName("timedWaitAnyMaxCount")
     );
     public static final long BYTES = LAYOUT.byteSize();
 
+    public static final PathElement PATH$nextInChain = PathElement.groupElement("nextInChain");
     public static final PathElement PATH$timedWaitAnyEnable = PathElement.groupElement("timedWaitAnyEnable");
     public static final PathElement PATH$timedWaitAnyMaxCount = PathElement.groupElement("timedWaitAnyMaxCount");
 
+    public static final AddressLayout LAYOUT$nextInChain = (AddressLayout) LAYOUT.select(PATH$nextInChain);
     public static final OfBoolean LAYOUT$timedWaitAnyEnable = (OfBoolean) LAYOUT.select(PATH$timedWaitAnyEnable);
 
+    public static final long SIZE$nextInChain = LAYOUT$nextInChain.byteSize();
     public static final long SIZE$timedWaitAnyEnable = LAYOUT$timedWaitAnyEnable.byteSize();
     public static final long SIZE$timedWaitAnyMaxCount = NativeLayout.C_SIZE_T.byteSize();
 
+    public static final long OFFSET$nextInChain = LAYOUT.byteOffset(PATH$nextInChain);
     public static final long OFFSET$timedWaitAnyEnable = LAYOUT.byteOffset(PATH$timedWaitAnyEnable);
     public static final long OFFSET$timedWaitAnyMaxCount = LAYOUT.byteOffset(PATH$timedWaitAnyMaxCount);
 }

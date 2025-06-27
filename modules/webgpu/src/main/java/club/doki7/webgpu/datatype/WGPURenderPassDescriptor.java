@@ -24,6 +24,7 @@ import static club.doki7.webgpu.WGPUConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct WGPURenderPassDescriptor {
+///     WGPUChainedStruct const* nextInChain; // optional // @link substring="WGPUChainedStruct" target="WGPUChainedStruct" @link substring="nextInChain" target="#nextInChain"
 ///     WGPUStringView label; // @link substring="WGPUStringView" target="WGPUStringView" @link substring="label" target="#label"
 ///     WGPURenderPassColorAttachment const* colorAttachments; // @link substring="WGPURenderPassColorAttachment" target="WGPURenderPassColorAttachment" @link substring="colorAttachments" target="#colorAttachments"
 ///     WGPURenderPassDepthStencilAttachment const* depthStencilAttachment; // optional // @link substring="WGPURenderPassDepthStencilAttachment" target="WGPURenderPassDepthStencilAttachment" @link substring="depthStencilAttachment" target="#depthStencilAttachment"
@@ -176,6 +177,38 @@ public record WGPURenderPassDescriptor(@NotNull MemorySegment segment) implement
         return ret;
     }
 
+    public WGPURenderPassDescriptor nextInChain(@Nullable IWGPUChainedStruct value) {
+        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
+        nextInChainRaw(s);
+        return this;
+    }
+
+    @Unsafe public @Nullable WGPUChainedStruct.Ptr nextInChain(int assumedCount) {
+        MemorySegment s = nextInChainRaw();
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+
+        s = s.reinterpret(assumedCount * WGPUChainedStruct.BYTES);
+        return new WGPUChainedStruct.Ptr(s);
+    }
+
+    public @Nullable WGPUChainedStruct nextInChain() {
+        MemorySegment s = nextInChainRaw();
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+        return new WGPUChainedStruct(s);
+    }
+
+    public @Pointer(target=WGPUChainedStruct.class) @NotNull MemorySegment nextInChainRaw() {
+        return segment.get(LAYOUT$nextInChain, OFFSET$nextInChain);
+    }
+
+    public void nextInChainRaw(@Pointer(target=WGPUChainedStruct.class) @NotNull MemorySegment value) {
+        segment.set(LAYOUT$nextInChain, OFFSET$nextInChain, value);
+    }
+
     public @NotNull WGPUStringView label() {
         return new WGPUStringView(segment.asSlice(OFFSET$label, LAYOUT$label));
     }
@@ -300,6 +333,7 @@ public record WGPURenderPassDescriptor(@NotNull MemorySegment segment) implement
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.ADDRESS.withTargetLayout(WGPUChainedStruct.LAYOUT).withName("nextInChain"),
         WGPUStringView.LAYOUT.withName("label"),
         ValueLayout.ADDRESS.withTargetLayout(WGPURenderPassColorAttachment.LAYOUT).withName("colorAttachments"),
         ValueLayout.ADDRESS.withTargetLayout(WGPURenderPassDepthStencilAttachment.LAYOUT).withName("depthStencilAttachment"),
@@ -308,24 +342,28 @@ public record WGPURenderPassDescriptor(@NotNull MemorySegment segment) implement
     );
     public static final long BYTES = LAYOUT.byteSize();
 
+    public static final PathElement PATH$nextInChain = PathElement.groupElement("nextInChain");
     public static final PathElement PATH$label = PathElement.groupElement("label");
     public static final PathElement PATH$colorAttachments = PathElement.groupElement("colorAttachments");
     public static final PathElement PATH$depthStencilAttachment = PathElement.groupElement("depthStencilAttachment");
     public static final PathElement PATH$occlusionQuerySet = PathElement.groupElement("occlusionQuerySet");
     public static final PathElement PATH$timestampWrites = PathElement.groupElement("timestampWrites");
 
+    public static final AddressLayout LAYOUT$nextInChain = (AddressLayout) LAYOUT.select(PATH$nextInChain);
     public static final StructLayout LAYOUT$label = (StructLayout) LAYOUT.select(PATH$label);
     public static final AddressLayout LAYOUT$colorAttachments = (AddressLayout) LAYOUT.select(PATH$colorAttachments);
     public static final AddressLayout LAYOUT$depthStencilAttachment = (AddressLayout) LAYOUT.select(PATH$depthStencilAttachment);
     public static final AddressLayout LAYOUT$occlusionQuerySet = (AddressLayout) LAYOUT.select(PATH$occlusionQuerySet);
     public static final AddressLayout LAYOUT$timestampWrites = (AddressLayout) LAYOUT.select(PATH$timestampWrites);
 
+    public static final long SIZE$nextInChain = LAYOUT$nextInChain.byteSize();
     public static final long SIZE$label = LAYOUT$label.byteSize();
     public static final long SIZE$colorAttachments = LAYOUT$colorAttachments.byteSize();
     public static final long SIZE$depthStencilAttachment = LAYOUT$depthStencilAttachment.byteSize();
     public static final long SIZE$occlusionQuerySet = LAYOUT$occlusionQuerySet.byteSize();
     public static final long SIZE$timestampWrites = LAYOUT$timestampWrites.byteSize();
 
+    public static final long OFFSET$nextInChain = LAYOUT.byteOffset(PATH$nextInChain);
     public static final long OFFSET$label = LAYOUT.byteOffset(PATH$label);
     public static final long OFFSET$colorAttachments = LAYOUT.byteOffset(PATH$colorAttachments);
     public static final long OFFSET$depthStencilAttachment = LAYOUT.byteOffset(PATH$depthStencilAttachment);

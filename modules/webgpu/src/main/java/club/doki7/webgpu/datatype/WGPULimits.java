@@ -24,6 +24,7 @@ import static club.doki7.webgpu.WGPUConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct WGPULimits {
+///     WGPUChainedStruct const* nextInChain; // optional // @link substring="WGPUChainedStruct" target="WGPUChainedStruct" @link substring="nextInChain" target="#nextInChain"
 ///     uint32_t maxTextureDimension1d; // @link substring="maxTextureDimension1d" target="#maxTextureDimension1d"
 ///     uint32_t maxTextureDimension2d; // @link substring="maxTextureDimension2d" target="#maxTextureDimension2d"
 ///     uint32_t maxTextureDimension3d; // @link substring="maxTextureDimension3d" target="#maxTextureDimension3d"
@@ -200,6 +201,38 @@ public record WGPULimits(@NotNull MemorySegment segment) implements IWGPULimits 
         WGPULimits ret = allocate(arena);
         ret.segment.copyFrom(src.segment);
         return ret;
+    }
+
+    public WGPULimits nextInChain(@Nullable IWGPUChainedStruct value) {
+        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
+        nextInChainRaw(s);
+        return this;
+    }
+
+    @Unsafe public @Nullable WGPUChainedStruct.Ptr nextInChain(int assumedCount) {
+        MemorySegment s = nextInChainRaw();
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+
+        s = s.reinterpret(assumedCount * WGPUChainedStruct.BYTES);
+        return new WGPUChainedStruct.Ptr(s);
+    }
+
+    public @Nullable WGPUChainedStruct nextInChain() {
+        MemorySegment s = nextInChainRaw();
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+        return new WGPUChainedStruct(s);
+    }
+
+    public @Pointer(target=WGPUChainedStruct.class) @NotNull MemorySegment nextInChainRaw() {
+        return segment.get(LAYOUT$nextInChain, OFFSET$nextInChain);
+    }
+
+    public void nextInChainRaw(@Pointer(target=WGPUChainedStruct.class) @NotNull MemorySegment value) {
+        segment.set(LAYOUT$nextInChain, OFFSET$nextInChain, value);
     }
 
     public @Unsigned int maxTextureDimension1d() {
@@ -482,6 +515,7 @@ public record WGPULimits(@NotNull MemorySegment segment) implements IWGPULimits 
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.ADDRESS.withTargetLayout(WGPUChainedStruct.LAYOUT).withName("nextInChain"),
         ValueLayout.JAVA_INT.withName("maxTextureDimension1d"),
         ValueLayout.JAVA_INT.withName("maxTextureDimension2d"),
         ValueLayout.JAVA_INT.withName("maxTextureDimension3d"),
@@ -516,6 +550,7 @@ public record WGPULimits(@NotNull MemorySegment segment) implements IWGPULimits 
     );
     public static final long BYTES = LAYOUT.byteSize();
 
+    public static final PathElement PATH$nextInChain = PathElement.groupElement("nextInChain");
     public static final PathElement PATH$maxTextureDimension1d = PathElement.groupElement("maxTextureDimension1d");
     public static final PathElement PATH$maxTextureDimension2d = PathElement.groupElement("maxTextureDimension2d");
     public static final PathElement PATH$maxTextureDimension3d = PathElement.groupElement("maxTextureDimension3d");
@@ -548,6 +583,7 @@ public record WGPULimits(@NotNull MemorySegment segment) implements IWGPULimits 
     public static final PathElement PATH$maxComputeWorkgroupSizeZ = PathElement.groupElement("maxComputeWorkgroupSizeZ");
     public static final PathElement PATH$maxComputeWorkgroupsPerDimension = PathElement.groupElement("maxComputeWorkgroupsPerDimension");
 
+    public static final AddressLayout LAYOUT$nextInChain = (AddressLayout) LAYOUT.select(PATH$nextInChain);
     public static final OfInt LAYOUT$maxTextureDimension1d = (OfInt) LAYOUT.select(PATH$maxTextureDimension1d);
     public static final OfInt LAYOUT$maxTextureDimension2d = (OfInt) LAYOUT.select(PATH$maxTextureDimension2d);
     public static final OfInt LAYOUT$maxTextureDimension3d = (OfInt) LAYOUT.select(PATH$maxTextureDimension3d);
@@ -580,6 +616,7 @@ public record WGPULimits(@NotNull MemorySegment segment) implements IWGPULimits 
     public static final OfInt LAYOUT$maxComputeWorkgroupSizeZ = (OfInt) LAYOUT.select(PATH$maxComputeWorkgroupSizeZ);
     public static final OfInt LAYOUT$maxComputeWorkgroupsPerDimension = (OfInt) LAYOUT.select(PATH$maxComputeWorkgroupsPerDimension);
 
+    public static final long SIZE$nextInChain = LAYOUT$nextInChain.byteSize();
     public static final long SIZE$maxTextureDimension1d = LAYOUT$maxTextureDimension1d.byteSize();
     public static final long SIZE$maxTextureDimension2d = LAYOUT$maxTextureDimension2d.byteSize();
     public static final long SIZE$maxTextureDimension3d = LAYOUT$maxTextureDimension3d.byteSize();
@@ -612,6 +649,7 @@ public record WGPULimits(@NotNull MemorySegment segment) implements IWGPULimits 
     public static final long SIZE$maxComputeWorkgroupSizeZ = LAYOUT$maxComputeWorkgroupSizeZ.byteSize();
     public static final long SIZE$maxComputeWorkgroupsPerDimension = LAYOUT$maxComputeWorkgroupsPerDimension.byteSize();
 
+    public static final long OFFSET$nextInChain = LAYOUT.byteOffset(PATH$nextInChain);
     public static final long OFFSET$maxTextureDimension1d = LAYOUT.byteOffset(PATH$maxTextureDimension1d);
     public static final long OFFSET$maxTextureDimension2d = LAYOUT.byteOffset(PATH$maxTextureDimension2d);
     public static final long OFFSET$maxTextureDimension3d = LAYOUT.byteOffset(PATH$maxTextureDimension3d);

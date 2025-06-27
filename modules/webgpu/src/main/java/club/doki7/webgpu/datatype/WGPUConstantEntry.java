@@ -24,6 +24,7 @@ import static club.doki7.webgpu.WGPUConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct WGPUConstantEntry {
+///     WGPUChainedStruct const* nextInChain; // optional // @link substring="WGPUChainedStruct" target="WGPUChainedStruct" @link substring="nextInChain" target="#nextInChain"
 ///     WGPUStringView key; // @link substring="WGPUStringView" target="WGPUStringView" @link substring="key" target="#key"
 ///     double value; // @link substring="value" target="#value"
 /// } WGPUConstantEntry;
@@ -173,6 +174,38 @@ public record WGPUConstantEntry(@NotNull MemorySegment segment) implements IWGPU
         return ret;
     }
 
+    public WGPUConstantEntry nextInChain(@Nullable IWGPUChainedStruct value) {
+        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
+        nextInChainRaw(s);
+        return this;
+    }
+
+    @Unsafe public @Nullable WGPUChainedStruct.Ptr nextInChain(int assumedCount) {
+        MemorySegment s = nextInChainRaw();
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+
+        s = s.reinterpret(assumedCount * WGPUChainedStruct.BYTES);
+        return new WGPUChainedStruct.Ptr(s);
+    }
+
+    public @Nullable WGPUChainedStruct nextInChain() {
+        MemorySegment s = nextInChainRaw();
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+        return new WGPUChainedStruct(s);
+    }
+
+    public @Pointer(target=WGPUChainedStruct.class) @NotNull MemorySegment nextInChainRaw() {
+        return segment.get(LAYOUT$nextInChain, OFFSET$nextInChain);
+    }
+
+    public void nextInChainRaw(@Pointer(target=WGPUChainedStruct.class) @NotNull MemorySegment value) {
+        segment.set(LAYOUT$nextInChain, OFFSET$nextInChain, value);
+    }
+
     public @NotNull WGPUStringView key() {
         return new WGPUStringView(segment.asSlice(OFFSET$key, LAYOUT$key));
     }
@@ -197,20 +230,25 @@ public record WGPUConstantEntry(@NotNull MemorySegment segment) implements IWGPU
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.ADDRESS.withTargetLayout(WGPUChainedStruct.LAYOUT).withName("nextInChain"),
         WGPUStringView.LAYOUT.withName("key"),
         ValueLayout.JAVA_DOUBLE.withName("value")
     );
     public static final long BYTES = LAYOUT.byteSize();
 
+    public static final PathElement PATH$nextInChain = PathElement.groupElement("nextInChain");
     public static final PathElement PATH$key = PathElement.groupElement("key");
     public static final PathElement PATH$value = PathElement.groupElement("value");
 
+    public static final AddressLayout LAYOUT$nextInChain = (AddressLayout) LAYOUT.select(PATH$nextInChain);
     public static final StructLayout LAYOUT$key = (StructLayout) LAYOUT.select(PATH$key);
     public static final OfDouble LAYOUT$value = (OfDouble) LAYOUT.select(PATH$value);
 
+    public static final long SIZE$nextInChain = LAYOUT$nextInChain.byteSize();
     public static final long SIZE$key = LAYOUT$key.byteSize();
     public static final long SIZE$value = LAYOUT$value.byteSize();
 
+    public static final long OFFSET$nextInChain = LAYOUT.byteOffset(PATH$nextInChain);
     public static final long OFFSET$key = LAYOUT.byteOffset(PATH$key);
     public static final long OFFSET$value = LAYOUT.byteOffset(PATH$value);
 }

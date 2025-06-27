@@ -24,6 +24,7 @@ import static club.doki7.webgpu.WGPUConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct WGPURenderBundleEncoderDescriptor {
+///     WGPUChainedStruct const* nextInChain; // optional // @link substring="WGPUChainedStruct" target="WGPUChainedStruct" @link substring="nextInChain" target="#nextInChain"
 ///     WGPUStringView label; // @link substring="WGPUStringView" target="WGPUStringView" @link substring="label" target="#label"
 ///     WGPUTextureFormat const* colorFormats; // @link substring="WGPUTextureFormat" target="WGPUTextureFormat" @link substring="colorFormats" target="#colorFormats"
 ///     WGPUTextureFormat depthStencilFormat; // @link substring="WGPUTextureFormat" target="WGPUTextureFormat" @link substring="depthStencilFormat" target="#depthStencilFormat"
@@ -177,6 +178,38 @@ public record WGPURenderBundleEncoderDescriptor(@NotNull MemorySegment segment) 
         return ret;
     }
 
+    public WGPURenderBundleEncoderDescriptor nextInChain(@Nullable IWGPUChainedStruct value) {
+        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
+        nextInChainRaw(s);
+        return this;
+    }
+
+    @Unsafe public @Nullable WGPUChainedStruct.Ptr nextInChain(int assumedCount) {
+        MemorySegment s = nextInChainRaw();
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+
+        s = s.reinterpret(assumedCount * WGPUChainedStruct.BYTES);
+        return new WGPUChainedStruct.Ptr(s);
+    }
+
+    public @Nullable WGPUChainedStruct nextInChain() {
+        MemorySegment s = nextInChainRaw();
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+        return new WGPUChainedStruct(s);
+    }
+
+    public @Pointer(target=WGPUChainedStruct.class) @NotNull MemorySegment nextInChainRaw() {
+        return segment.get(LAYOUT$nextInChain, OFFSET$nextInChain);
+    }
+
+    public void nextInChainRaw(@Pointer(target=WGPUChainedStruct.class) @NotNull MemorySegment value) {
+        segment.set(LAYOUT$nextInChain, OFFSET$nextInChain, value);
+    }
+
     public @NotNull WGPUStringView label() {
         return new WGPUStringView(segment.asSlice(OFFSET$label, LAYOUT$label));
     }
@@ -255,6 +288,7 @@ public record WGPURenderBundleEncoderDescriptor(@NotNull MemorySegment segment) 
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.ADDRESS.withTargetLayout(WGPUChainedStruct.LAYOUT).withName("nextInChain"),
         WGPUStringView.LAYOUT.withName("label"),
         ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_INT).withName("colorFormats"),
         ValueLayout.JAVA_INT.withName("depthStencilFormat"),
@@ -264,6 +298,7 @@ public record WGPURenderBundleEncoderDescriptor(@NotNull MemorySegment segment) 
     );
     public static final long BYTES = LAYOUT.byteSize();
 
+    public static final PathElement PATH$nextInChain = PathElement.groupElement("nextInChain");
     public static final PathElement PATH$label = PathElement.groupElement("label");
     public static final PathElement PATH$colorFormats = PathElement.groupElement("colorFormats");
     public static final PathElement PATH$depthStencilFormat = PathElement.groupElement("depthStencilFormat");
@@ -271,6 +306,7 @@ public record WGPURenderBundleEncoderDescriptor(@NotNull MemorySegment segment) 
     public static final PathElement PATH$depthReadOnly = PathElement.groupElement("depthReadOnly");
     public static final PathElement PATH$stencilReadOnly = PathElement.groupElement("stencilReadOnly");
 
+    public static final AddressLayout LAYOUT$nextInChain = (AddressLayout) LAYOUT.select(PATH$nextInChain);
     public static final StructLayout LAYOUT$label = (StructLayout) LAYOUT.select(PATH$label);
     public static final AddressLayout LAYOUT$colorFormats = (AddressLayout) LAYOUT.select(PATH$colorFormats);
     public static final OfInt LAYOUT$depthStencilFormat = (OfInt) LAYOUT.select(PATH$depthStencilFormat);
@@ -278,6 +314,7 @@ public record WGPURenderBundleEncoderDescriptor(@NotNull MemorySegment segment) 
     public static final OfBoolean LAYOUT$depthReadOnly = (OfBoolean) LAYOUT.select(PATH$depthReadOnly);
     public static final OfBoolean LAYOUT$stencilReadOnly = (OfBoolean) LAYOUT.select(PATH$stencilReadOnly);
 
+    public static final long SIZE$nextInChain = LAYOUT$nextInChain.byteSize();
     public static final long SIZE$label = LAYOUT$label.byteSize();
     public static final long SIZE$colorFormats = LAYOUT$colorFormats.byteSize();
     public static final long SIZE$depthStencilFormat = LAYOUT$depthStencilFormat.byteSize();
@@ -285,6 +322,7 @@ public record WGPURenderBundleEncoderDescriptor(@NotNull MemorySegment segment) 
     public static final long SIZE$depthReadOnly = LAYOUT$depthReadOnly.byteSize();
     public static final long SIZE$stencilReadOnly = LAYOUT$stencilReadOnly.byteSize();
 
+    public static final long OFFSET$nextInChain = LAYOUT.byteOffset(PATH$nextInChain);
     public static final long OFFSET$label = LAYOUT.byteOffset(PATH$label);
     public static final long OFFSET$colorFormats = LAYOUT.byteOffset(PATH$colorFormats);
     public static final long OFFSET$depthStencilFormat = LAYOUT.byteOffset(PATH$depthStencilFormat);

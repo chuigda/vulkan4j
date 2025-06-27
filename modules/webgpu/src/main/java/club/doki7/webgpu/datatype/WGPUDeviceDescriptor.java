@@ -24,6 +24,7 @@ import static club.doki7.webgpu.WGPUConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct WGPUDeviceDescriptor {
+///     WGPUChainedStruct const* nextInChain; // optional // @link substring="WGPUChainedStruct" target="WGPUChainedStruct" @link substring="nextInChain" target="#nextInChain"
 ///     WGPUStringView label; // @link substring="WGPUStringView" target="WGPUStringView" @link substring="label" target="#label"
 ///     WGPUFeatureName const* requiredFeatures; // @link substring="WGPUFeatureName" target="WGPUFeatureName" @link substring="requiredFeatures" target="#requiredFeatures"
 ///     WGPULimits const* requiredLimits; // optional // @link substring="WGPULimits" target="WGPULimits" @link substring="requiredLimits" target="#requiredLimits"
@@ -177,6 +178,38 @@ public record WGPUDeviceDescriptor(@NotNull MemorySegment segment) implements IW
         return ret;
     }
 
+    public WGPUDeviceDescriptor nextInChain(@Nullable IWGPUChainedStruct value) {
+        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
+        nextInChainRaw(s);
+        return this;
+    }
+
+    @Unsafe public @Nullable WGPUChainedStruct.Ptr nextInChain(int assumedCount) {
+        MemorySegment s = nextInChainRaw();
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+
+        s = s.reinterpret(assumedCount * WGPUChainedStruct.BYTES);
+        return new WGPUChainedStruct.Ptr(s);
+    }
+
+    public @Nullable WGPUChainedStruct nextInChain() {
+        MemorySegment s = nextInChainRaw();
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+        return new WGPUChainedStruct(s);
+    }
+
+    public @Pointer(target=WGPUChainedStruct.class) @NotNull MemorySegment nextInChainRaw() {
+        return segment.get(LAYOUT$nextInChain, OFFSET$nextInChain);
+    }
+
+    public void nextInChainRaw(@Pointer(target=WGPUChainedStruct.class) @NotNull MemorySegment value) {
+        segment.set(LAYOUT$nextInChain, OFFSET$nextInChain, value);
+    }
+
     public @NotNull WGPUStringView label() {
         return new WGPUStringView(segment.asSlice(OFFSET$label, LAYOUT$label));
     }
@@ -293,6 +326,7 @@ public record WGPUDeviceDescriptor(@NotNull MemorySegment segment) implements IW
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.ADDRESS.withTargetLayout(WGPUChainedStruct.LAYOUT).withName("nextInChain"),
         WGPUStringView.LAYOUT.withName("label"),
         ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_INT).withName("requiredFeatures"),
         ValueLayout.ADDRESS.withTargetLayout(WGPULimits.LAYOUT).withName("requiredLimits"),
@@ -302,6 +336,7 @@ public record WGPUDeviceDescriptor(@NotNull MemorySegment segment) implements IW
     );
     public static final long BYTES = LAYOUT.byteSize();
 
+    public static final PathElement PATH$nextInChain = PathElement.groupElement("nextInChain");
     public static final PathElement PATH$label = PathElement.groupElement("label");
     public static final PathElement PATH$requiredFeatures = PathElement.groupElement("requiredFeatures");
     public static final PathElement PATH$requiredLimits = PathElement.groupElement("requiredLimits");
@@ -309,6 +344,7 @@ public record WGPUDeviceDescriptor(@NotNull MemorySegment segment) implements IW
     public static final PathElement PATH$deviceLostCallbackInfo = PathElement.groupElement("deviceLostCallbackInfo");
     public static final PathElement PATH$uncapturedErrorCallbackInfo = PathElement.groupElement("uncapturedErrorCallbackInfo");
 
+    public static final AddressLayout LAYOUT$nextInChain = (AddressLayout) LAYOUT.select(PATH$nextInChain);
     public static final StructLayout LAYOUT$label = (StructLayout) LAYOUT.select(PATH$label);
     public static final AddressLayout LAYOUT$requiredFeatures = (AddressLayout) LAYOUT.select(PATH$requiredFeatures);
     public static final AddressLayout LAYOUT$requiredLimits = (AddressLayout) LAYOUT.select(PATH$requiredLimits);
@@ -316,6 +352,7 @@ public record WGPUDeviceDescriptor(@NotNull MemorySegment segment) implements IW
     public static final AddressLayout LAYOUT$deviceLostCallbackInfo = (AddressLayout) LAYOUT.select(PATH$deviceLostCallbackInfo);
     public static final AddressLayout LAYOUT$uncapturedErrorCallbackInfo = (AddressLayout) LAYOUT.select(PATH$uncapturedErrorCallbackInfo);
 
+    public static final long SIZE$nextInChain = LAYOUT$nextInChain.byteSize();
     public static final long SIZE$label = LAYOUT$label.byteSize();
     public static final long SIZE$requiredFeatures = LAYOUT$requiredFeatures.byteSize();
     public static final long SIZE$requiredLimits = LAYOUT$requiredLimits.byteSize();
@@ -323,6 +360,7 @@ public record WGPUDeviceDescriptor(@NotNull MemorySegment segment) implements IW
     public static final long SIZE$deviceLostCallbackInfo = LAYOUT$deviceLostCallbackInfo.byteSize();
     public static final long SIZE$uncapturedErrorCallbackInfo = LAYOUT$uncapturedErrorCallbackInfo.byteSize();
 
+    public static final long OFFSET$nextInChain = LAYOUT.byteOffset(PATH$nextInChain);
     public static final long OFFSET$label = LAYOUT.byteOffset(PATH$label);
     public static final long OFFSET$requiredFeatures = LAYOUT.byteOffset(PATH$requiredFeatures);
     public static final long OFFSET$requiredLimits = LAYOUT.byteOffset(PATH$requiredLimits);

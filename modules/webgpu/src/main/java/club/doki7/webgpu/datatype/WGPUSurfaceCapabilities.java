@@ -24,6 +24,7 @@ import static club.doki7.webgpu.WGPUConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct WGPUSurfaceCapabilities {
+///     WGPUChainedStruct const* nextInChain; // optional // @link substring="WGPUChainedStruct" target="WGPUChainedStruct" @link substring="nextInChain" target="#nextInChain"
 ///     WGPUTextureUsage usages; // @link substring="WGPUTextureUsage" target="WGPUTextureUsage" @link substring="usages" target="#usages"
 ///     WGPUTextureFormat const* formats; // @link substring="WGPUTextureFormat" target="WGPUTextureFormat" @link substring="formats" target="#formats"
 ///     WGPUPresentMode const* presentModes; // @link substring="WGPUPresentMode" target="WGPUPresentMode" @link substring="presentModes" target="#presentModes"
@@ -175,6 +176,38 @@ public record WGPUSurfaceCapabilities(@NotNull MemorySegment segment) implements
         return ret;
     }
 
+    public WGPUSurfaceCapabilities nextInChain(@Nullable IWGPUChainedStruct value) {
+        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
+        nextInChainRaw(s);
+        return this;
+    }
+
+    @Unsafe public @Nullable WGPUChainedStruct.Ptr nextInChain(int assumedCount) {
+        MemorySegment s = nextInChainRaw();
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+
+        s = s.reinterpret(assumedCount * WGPUChainedStruct.BYTES);
+        return new WGPUChainedStruct.Ptr(s);
+    }
+
+    public @Nullable WGPUChainedStruct nextInChain() {
+        MemorySegment s = nextInChainRaw();
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+        return new WGPUChainedStruct(s);
+    }
+
+    public @Pointer(target=WGPUChainedStruct.class) @NotNull MemorySegment nextInChainRaw() {
+        return segment.get(LAYOUT$nextInChain, OFFSET$nextInChain);
+    }
+
+    public void nextInChainRaw(@Pointer(target=WGPUChainedStruct.class) @NotNull MemorySegment value) {
+        segment.set(LAYOUT$nextInChain, OFFSET$nextInChain, value);
+    }
+
     public @Bitmask(WGPUTextureUsage.class) long usages() {
         return segment.get(LAYOUT$usages, OFFSET$usages);
     }
@@ -266,6 +299,7 @@ public record WGPUSurfaceCapabilities(@NotNull MemorySegment segment) implements
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.ADDRESS.withTargetLayout(WGPUChainedStruct.LAYOUT).withName("nextInChain"),
         ValueLayout.JAVA_LONG.withName("usages"),
         ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_INT).withName("formats"),
         ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_INT).withName("presentModes"),
@@ -273,21 +307,25 @@ public record WGPUSurfaceCapabilities(@NotNull MemorySegment segment) implements
     );
     public static final long BYTES = LAYOUT.byteSize();
 
+    public static final PathElement PATH$nextInChain = PathElement.groupElement("nextInChain");
     public static final PathElement PATH$usages = PathElement.groupElement("usages");
     public static final PathElement PATH$formats = PathElement.groupElement("formats");
     public static final PathElement PATH$presentModes = PathElement.groupElement("presentModes");
     public static final PathElement PATH$alphaModes = PathElement.groupElement("alphaModes");
 
+    public static final AddressLayout LAYOUT$nextInChain = (AddressLayout) LAYOUT.select(PATH$nextInChain);
     public static final OfLong LAYOUT$usages = (OfLong) LAYOUT.select(PATH$usages);
     public static final AddressLayout LAYOUT$formats = (AddressLayout) LAYOUT.select(PATH$formats);
     public static final AddressLayout LAYOUT$presentModes = (AddressLayout) LAYOUT.select(PATH$presentModes);
     public static final AddressLayout LAYOUT$alphaModes = (AddressLayout) LAYOUT.select(PATH$alphaModes);
 
+    public static final long SIZE$nextInChain = LAYOUT$nextInChain.byteSize();
     public static final long SIZE$usages = LAYOUT$usages.byteSize();
     public static final long SIZE$formats = LAYOUT$formats.byteSize();
     public static final long SIZE$presentModes = LAYOUT$presentModes.byteSize();
     public static final long SIZE$alphaModes = LAYOUT$alphaModes.byteSize();
 
+    public static final long OFFSET$nextInChain = LAYOUT.byteOffset(PATH$nextInChain);
     public static final long OFFSET$usages = LAYOUT.byteOffset(PATH$usages);
     public static final long OFFSET$formats = LAYOUT.byteOffset(PATH$formats);
     public static final long OFFSET$presentModes = LAYOUT.byteOffset(PATH$presentModes);

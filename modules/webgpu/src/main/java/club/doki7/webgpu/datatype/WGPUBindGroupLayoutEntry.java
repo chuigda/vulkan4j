@@ -24,6 +24,7 @@ import static club.doki7.webgpu.WGPUConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct WGPUBindGroupLayoutEntry {
+///     WGPUChainedStruct const* nextInChain; // optional // @link substring="WGPUChainedStruct" target="WGPUChainedStruct" @link substring="nextInChain" target="#nextInChain"
 ///     uint32_t binding; // @link substring="binding" target="#binding"
 ///     WGPUShaderStage visibility; // @link substring="WGPUShaderStage" target="WGPUShaderStage" @link substring="visibility" target="#visibility"
 ///     WGPUBufferBindingLayout buffer; // @link substring="WGPUBufferBindingLayout" target="WGPUBufferBindingLayout" @link substring="buffer" target="#buffer"
@@ -177,6 +178,38 @@ public record WGPUBindGroupLayoutEntry(@NotNull MemorySegment segment) implement
         return ret;
     }
 
+    public WGPUBindGroupLayoutEntry nextInChain(@Nullable IWGPUChainedStruct value) {
+        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
+        nextInChainRaw(s);
+        return this;
+    }
+
+    @Unsafe public @Nullable WGPUChainedStruct.Ptr nextInChain(int assumedCount) {
+        MemorySegment s = nextInChainRaw();
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+
+        s = s.reinterpret(assumedCount * WGPUChainedStruct.BYTES);
+        return new WGPUChainedStruct.Ptr(s);
+    }
+
+    public @Nullable WGPUChainedStruct nextInChain() {
+        MemorySegment s = nextInChainRaw();
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+        return new WGPUChainedStruct(s);
+    }
+
+    public @Pointer(target=WGPUChainedStruct.class) @NotNull MemorySegment nextInChainRaw() {
+        return segment.get(LAYOUT$nextInChain, OFFSET$nextInChain);
+    }
+
+    public void nextInChainRaw(@Pointer(target=WGPUChainedStruct.class) @NotNull MemorySegment value) {
+        segment.set(LAYOUT$nextInChain, OFFSET$nextInChain, value);
+    }
+
     public @Unsigned int binding() {
         return segment.get(LAYOUT$binding, OFFSET$binding);
     }
@@ -252,6 +285,7 @@ public record WGPUBindGroupLayoutEntry(@NotNull MemorySegment segment) implement
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.ADDRESS.withTargetLayout(WGPUChainedStruct.LAYOUT).withName("nextInChain"),
         ValueLayout.JAVA_INT.withName("binding"),
         ValueLayout.JAVA_LONG.withName("visibility"),
         WGPUBufferBindingLayout.LAYOUT.withName("buffer"),
@@ -261,6 +295,7 @@ public record WGPUBindGroupLayoutEntry(@NotNull MemorySegment segment) implement
     );
     public static final long BYTES = LAYOUT.byteSize();
 
+    public static final PathElement PATH$nextInChain = PathElement.groupElement("nextInChain");
     public static final PathElement PATH$binding = PathElement.groupElement("binding");
     public static final PathElement PATH$visibility = PathElement.groupElement("visibility");
     public static final PathElement PATH$buffer = PathElement.groupElement("buffer");
@@ -268,6 +303,7 @@ public record WGPUBindGroupLayoutEntry(@NotNull MemorySegment segment) implement
     public static final PathElement PATH$texture = PathElement.groupElement("texture");
     public static final PathElement PATH$storageTexture = PathElement.groupElement("storageTexture");
 
+    public static final AddressLayout LAYOUT$nextInChain = (AddressLayout) LAYOUT.select(PATH$nextInChain);
     public static final OfInt LAYOUT$binding = (OfInt) LAYOUT.select(PATH$binding);
     public static final OfLong LAYOUT$visibility = (OfLong) LAYOUT.select(PATH$visibility);
     public static final StructLayout LAYOUT$buffer = (StructLayout) LAYOUT.select(PATH$buffer);
@@ -275,6 +311,7 @@ public record WGPUBindGroupLayoutEntry(@NotNull MemorySegment segment) implement
     public static final StructLayout LAYOUT$texture = (StructLayout) LAYOUT.select(PATH$texture);
     public static final StructLayout LAYOUT$storageTexture = (StructLayout) LAYOUT.select(PATH$storageTexture);
 
+    public static final long SIZE$nextInChain = LAYOUT$nextInChain.byteSize();
     public static final long SIZE$binding = LAYOUT$binding.byteSize();
     public static final long SIZE$visibility = LAYOUT$visibility.byteSize();
     public static final long SIZE$buffer = LAYOUT$buffer.byteSize();
@@ -282,6 +319,7 @@ public record WGPUBindGroupLayoutEntry(@NotNull MemorySegment segment) implement
     public static final long SIZE$texture = LAYOUT$texture.byteSize();
     public static final long SIZE$storageTexture = LAYOUT$storageTexture.byteSize();
 
+    public static final long OFFSET$nextInChain = LAYOUT.byteOffset(PATH$nextInChain);
     public static final long OFFSET$binding = LAYOUT.byteOffset(PATH$binding);
     public static final long OFFSET$visibility = LAYOUT.byteOffset(PATH$visibility);
     public static final long OFFSET$buffer = LAYOUT.byteOffset(PATH$buffer);

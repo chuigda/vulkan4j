@@ -24,6 +24,7 @@ import static club.doki7.webgpu.WGPUConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct WGPUPrimitiveState {
+///     WGPUChainedStruct const* nextInChain; // optional // @link substring="WGPUChainedStruct" target="WGPUChainedStruct" @link substring="nextInChain" target="#nextInChain"
 ///     WGPUPrimitiveTopology topology; // @link substring="WGPUPrimitiveTopology" target="WGPUPrimitiveTopology" @link substring="topology" target="#topology"
 ///     WGPUIndexFormat stripIndexFormat; // @link substring="WGPUIndexFormat" target="WGPUIndexFormat" @link substring="stripIndexFormat" target="#stripIndexFormat"
 ///     WGPUFrontFace frontFace; // @link substring="WGPUFrontFace" target="WGPUFrontFace" @link substring="frontFace" target="#frontFace"
@@ -176,6 +177,38 @@ public record WGPUPrimitiveState(@NotNull MemorySegment segment) implements IWGP
         return ret;
     }
 
+    public WGPUPrimitiveState nextInChain(@Nullable IWGPUChainedStruct value) {
+        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
+        nextInChainRaw(s);
+        return this;
+    }
+
+    @Unsafe public @Nullable WGPUChainedStruct.Ptr nextInChain(int assumedCount) {
+        MemorySegment s = nextInChainRaw();
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+
+        s = s.reinterpret(assumedCount * WGPUChainedStruct.BYTES);
+        return new WGPUChainedStruct.Ptr(s);
+    }
+
+    public @Nullable WGPUChainedStruct nextInChain() {
+        MemorySegment s = nextInChainRaw();
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+        return new WGPUChainedStruct(s);
+    }
+
+    public @Pointer(target=WGPUChainedStruct.class) @NotNull MemorySegment nextInChainRaw() {
+        return segment.get(LAYOUT$nextInChain, OFFSET$nextInChain);
+    }
+
+    public void nextInChainRaw(@Pointer(target=WGPUChainedStruct.class) @NotNull MemorySegment value) {
+        segment.set(LAYOUT$nextInChain, OFFSET$nextInChain, value);
+    }
+
     public @EnumType(WGPUPrimitiveTopology.class) int topology() {
         return segment.get(LAYOUT$topology, OFFSET$topology);
     }
@@ -222,6 +255,7 @@ public record WGPUPrimitiveState(@NotNull MemorySegment segment) implements IWGP
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.ADDRESS.withTargetLayout(WGPUChainedStruct.LAYOUT).withName("nextInChain"),
         ValueLayout.JAVA_INT.withName("topology"),
         ValueLayout.JAVA_INT.withName("stripIndexFormat"),
         ValueLayout.JAVA_INT.withName("frontFace"),
@@ -230,24 +264,28 @@ public record WGPUPrimitiveState(@NotNull MemorySegment segment) implements IWGP
     );
     public static final long BYTES = LAYOUT.byteSize();
 
+    public static final PathElement PATH$nextInChain = PathElement.groupElement("nextInChain");
     public static final PathElement PATH$topology = PathElement.groupElement("topology");
     public static final PathElement PATH$stripIndexFormat = PathElement.groupElement("stripIndexFormat");
     public static final PathElement PATH$frontFace = PathElement.groupElement("frontFace");
     public static final PathElement PATH$cullMode = PathElement.groupElement("cullMode");
     public static final PathElement PATH$unclippedDepth = PathElement.groupElement("unclippedDepth");
 
+    public static final AddressLayout LAYOUT$nextInChain = (AddressLayout) LAYOUT.select(PATH$nextInChain);
     public static final OfInt LAYOUT$topology = (OfInt) LAYOUT.select(PATH$topology);
     public static final OfInt LAYOUT$stripIndexFormat = (OfInt) LAYOUT.select(PATH$stripIndexFormat);
     public static final OfInt LAYOUT$frontFace = (OfInt) LAYOUT.select(PATH$frontFace);
     public static final OfInt LAYOUT$cullMode = (OfInt) LAYOUT.select(PATH$cullMode);
     public static final OfBoolean LAYOUT$unclippedDepth = (OfBoolean) LAYOUT.select(PATH$unclippedDepth);
 
+    public static final long SIZE$nextInChain = LAYOUT$nextInChain.byteSize();
     public static final long SIZE$topology = LAYOUT$topology.byteSize();
     public static final long SIZE$stripIndexFormat = LAYOUT$stripIndexFormat.byteSize();
     public static final long SIZE$frontFace = LAYOUT$frontFace.byteSize();
     public static final long SIZE$cullMode = LAYOUT$cullMode.byteSize();
     public static final long SIZE$unclippedDepth = LAYOUT$unclippedDepth.byteSize();
 
+    public static final long OFFSET$nextInChain = LAYOUT.byteOffset(PATH$nextInChain);
     public static final long OFFSET$topology = LAYOUT.byteOffset(PATH$topology);
     public static final long OFFSET$stripIndexFormat = LAYOUT.byteOffset(PATH$stripIndexFormat);
     public static final long OFFSET$frontFace = LAYOUT.byteOffset(PATH$frontFace);
