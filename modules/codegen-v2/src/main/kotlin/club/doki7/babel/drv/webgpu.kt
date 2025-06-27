@@ -10,20 +10,8 @@ import club.doki7.babel.codegen.generateHandle
 import club.doki7.babel.codegen.generateStructure
 import club.doki7.babel.codegen.generateStructureInterface
 import club.doki7.babel.extract.webgpu.extractWebGPURegistry
-import club.doki7.babel.registry.Bitmask
-import club.doki7.babel.registry.Command
-import club.doki7.babel.registry.Constant
-import club.doki7.babel.registry.Entity
-import club.doki7.babel.registry.Enumeration
-import club.doki7.babel.registry.FunctionTypedef
-import club.doki7.babel.registry.IdentifierType
-import club.doki7.babel.registry.OpaqueHandleTypedef
-import club.doki7.babel.registry.Registry
-import club.doki7.babel.registry.Structure
-import club.doki7.babel.registry.tryFindIdentifierType
 import club.doki7.babel.util.render
 import java.io.File
-
 
 private const val packageDir = "webgpu/src/main/java/club/doki7/webgpu"
 
@@ -37,11 +25,10 @@ fun webgpuMain() {
     val codegenOptions = CodegenOptions(
         packageName = "club.doki7.webgpu",
         extraImport = listOf(),
-        constantClassName = "WebGPUConstants",
-        functionTypeClassName = "WebGPUFunctionTypes",
+        constantClassName = "WGPUConstants",
+        functionTypeClassName = "WGPUFunctionTypes",
         refRegistries = emptyList()
     )
-
 
     val constantsDoc = generateConstants(webgpuRegistry, codegenOptions)
     File("$packageDir/${codegenOptions.constantClassName}.java")
@@ -84,11 +71,11 @@ fun webgpuMain() {
     }
 
     for (handle in webgpuRegistry.opaqueHandleTypedefs.values) {
-        val handleDoc = generateHandle(webgpuRegistry, handle, codegenOptions)
+        val handleDoc = generateHandle(handle, codegenOptions)
         File("$packageDir/handle/${handle.name}.java")
             .safeWrite(render(handleDoc))
     }
-    // 生成命令文档并保存
+
     val commandsDoc = generateCommandFile(
         webgpuRegistry,
         "WebGPU",
@@ -97,11 +84,9 @@ fun webgpuMain() {
         implConstantClass = true,
         subpackage = null
     )
-    val commandsFile = File("$packageDir/WebGPU.java")
-    // 创建文件所在的目录
-    commandsFile.parentFile.mkdirs() // 如果目录不存在，则创建
-    commandsFile.writeText(render(commandsDoc))
+    File("$packageDir/WebGPU.java").writeText(render(commandsDoc))
 }
+
 fun File.safeWrite(text: String) {
     parentFile.mkdirs()
     writeText(text)

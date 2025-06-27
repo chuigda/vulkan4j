@@ -2,6 +2,7 @@ package club.doki7.vma;
 
 import club.doki7.vma.datatype.VmaVulkanFunctions;
 import org.jetbrains.annotations.Nullable;
+import club.doki7.vulkan.command.*;
 
 import java.lang.foreign.MemorySegment;
 
