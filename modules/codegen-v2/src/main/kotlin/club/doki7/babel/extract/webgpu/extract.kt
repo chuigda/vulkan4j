@@ -48,6 +48,40 @@ private fun extractObjects(registry: RegistryBase, objects: List<IDLObject>) {
         val objectTypeName = renameWGPUType(obj.name)
         registry.opaqueHandleTypedefs.putEntityIfAbsent(OpaqueHandleTypedef(name = objectTypeName))
         extractObjectMethods(registry, objectTypeName, obj.name, obj.methods)
+
+        val idlReferenceCommandName = "${obj.name}_add_ref"
+        val referenceCommand = Command(
+            name = renameWGPUFunction(idlReferenceCommandName),
+            params = listOf(Param(
+                name = renameWGPUVar(obj.name),
+                type = IdentifierType(objectTypeName),
+                len = null,
+                argLen = null,
+                optional = false
+            )),
+            result = IdentifierType("void"),
+            successCodes = emptyList(),
+            errorCodes = emptyList()
+        )
+        referenceCommand.rename(renameWGPUVar(idlReferenceCommandName))
+        registry.commands.putEntityIfAbsent(referenceCommand)
+
+        val idlReleaseCommandName = "${obj.name}_release"
+        val releaseCommand = Command(
+            name = renameWGPUFunction(idlReleaseCommandName),
+            params = listOf(Param(
+                name = renameWGPUVar(obj.name),
+                type = IdentifierType(objectTypeName),
+                len = null,
+                argLen = null,
+                optional = false
+            )),
+            result = IdentifierType("void"),
+            successCodes = emptyList(),
+            errorCodes = emptyList()
+        )
+        releaseCommand.rename(renameWGPUVar(idlReleaseCommandName))
+        registry.commands.putEntityIfAbsent(releaseCommand)
     }
 }
 
@@ -68,6 +102,23 @@ private fun extractObjectMethods(
             optional = false
         ))
         method.args?.forEach { arg -> params.add(extractFunctionParam(arg)) }
+
+        if (method.callback != null) {
+            params.add(Param(
+                name = "callback",
+                type = classifyType(method.callback, null),
+                len = null,
+                argLen = null,
+                optional = false
+            ))
+            params.add(Param(
+                name = "userdata",
+                type = PointerType(IdentifierType("void"), const = false),
+                len = null,
+                argLen = null,
+                optional = true
+            ))
+        }
 
         val command = Command(
             name = renameWGPUFunction(idlMethodName),
