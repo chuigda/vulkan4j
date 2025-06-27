@@ -122,8 +122,12 @@ private fun extractEnumeration(registry: RegistryBase, enums: List<IDLEnumeratio
                 if (variant == null) {
                     null
                 } else {
+                    var variantName = variant.name.uppercase()
+                    if (variantName.first().isDigit()) {
+                        variantName = "_$variantName"
+                    }
                     EnumVariant(
-                        name = variant.name.uppercase(),
+                        name = variantName,
                         value = idx.toLong(),
                     )
                 }
@@ -138,8 +142,12 @@ private fun extractBitmask(registry: RegistryBase, bitmasks: List<IDLBitmask>) {
             name = renameWGPUType(bitmask.name),
             bitwidth = 64,
             bitflags = bitmask.entries.mapIndexed { idx, bitflag ->
+                var bitflagName = bitflag.name.uppercase()
+                if (bitflagName.first().isDigit()) {
+                    bitflagName = "_$bitflagName"
+                }
                 Bitflag(
-                    name = bitflag.name.uppercase(),
+                    name = bitflagName,
                     value = if (idx == 0) BigInteger.ZERO else BigInteger.ONE.shiftLeft(idx - 1),
                 )
             }.toMutableList()
