@@ -25,7 +25,7 @@ import static club.doki7.webgpu.WGPUConstants.*;
 /// {@snippet lang=c :
 /// typedef struct WGPUInstanceCapabilities {
 ///     WGPUChainedStruct const* nextInChain; // optional // @link substring="WGPUChainedStruct" target="WGPUChainedStruct" @link substring="nextInChain" target="#nextInChain"
-///     bool timedWaitAnyEnable; // @link substring="timedWaitAnyEnable" target="#timedWaitAnyEnable"
+///     WGPUBool timedWaitAnyEnable; // @link substring="timedWaitAnyEnable" target="#timedWaitAnyEnable"
 ///     size_t timedWaitAnyMaxCount; // @link substring="timedWaitAnyMaxCount" target="#timedWaitAnyMaxCount"
 /// } WGPUInstanceCapabilities;
 /// }
@@ -206,11 +206,11 @@ public record WGPUInstanceCapabilities(@NotNull MemorySegment segment) implement
         segment.set(LAYOUT$nextInChain, OFFSET$nextInChain, value);
     }
 
-    public @NativeType("boolean") boolean timedWaitAnyEnable() {
+    public @NativeType("WGPUBool") @Unsigned int timedWaitAnyEnable() {
         return segment.get(LAYOUT$timedWaitAnyEnable, OFFSET$timedWaitAnyEnable);
     }
 
-    public WGPUInstanceCapabilities timedWaitAnyEnable(@NativeType("boolean") boolean value) {
+    public WGPUInstanceCapabilities timedWaitAnyEnable(@NativeType("WGPUBool") @Unsigned int value) {
         segment.set(LAYOUT$timedWaitAnyEnable, OFFSET$timedWaitAnyEnable, value);
         return this;
     }
@@ -226,7 +226,7 @@ public record WGPUInstanceCapabilities(@NotNull MemorySegment segment) implement
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(
         ValueLayout.ADDRESS.withTargetLayout(WGPUChainedStruct.LAYOUT).withName("nextInChain"),
-        ValueLayout.JAVA_BOOLEAN.withName("timedWaitAnyEnable"),
+        ValueLayout.JAVA_INT.withName("timedWaitAnyEnable"),
         NativeLayout.C_SIZE_T.withName("timedWaitAnyMaxCount")
     );
     public static final long BYTES = LAYOUT.byteSize();
@@ -236,7 +236,7 @@ public record WGPUInstanceCapabilities(@NotNull MemorySegment segment) implement
     public static final PathElement PATH$timedWaitAnyMaxCount = PathElement.groupElement("timedWaitAnyMaxCount");
 
     public static final AddressLayout LAYOUT$nextInChain = (AddressLayout) LAYOUT.select(PATH$nextInChain);
-    public static final OfBoolean LAYOUT$timedWaitAnyEnable = (OfBoolean) LAYOUT.select(PATH$timedWaitAnyEnable);
+    public static final OfInt LAYOUT$timedWaitAnyEnable = (OfInt) LAYOUT.select(PATH$timedWaitAnyEnable);
 
     public static final long SIZE$nextInChain = LAYOUT$nextInChain.byteSize();
     public static final long SIZE$timedWaitAnyEnable = LAYOUT$timedWaitAnyEnable.byteSize();

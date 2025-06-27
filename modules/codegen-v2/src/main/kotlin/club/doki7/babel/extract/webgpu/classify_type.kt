@@ -78,7 +78,7 @@ val primitiveTypeMap = mapOf(
     "float32" to IdentifierType("float"),
 
     // Booleans and characters
-    "bool" to IdentifierType("bool"),
+    "bool" to IdentifierType("WGPUBool"),
     "char" to IdentifierType("char"),
 
     // Platform-dependent types

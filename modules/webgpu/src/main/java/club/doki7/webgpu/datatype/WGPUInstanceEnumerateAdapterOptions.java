@@ -18,17 +18,15 @@ import club.doki7.webgpu.handle.*;
 import club.doki7.webgpu.enumtype.*;
 import static club.doki7.webgpu.WGPUConstants.*;
 
-/// Represents a pointer to a {@code WGPUTextureBindingLayout} structure in native memory.
+/// Represents a pointer to a {@code WGPUInstanceEnumerateAdapterOptions} structure in native memory.
 ///
 /// ## Structure
 ///
 /// {@snippet lang=c :
-/// typedef struct WGPUTextureBindingLayout {
-///     WGPUChainedStruct const* nextInChain; // optional // @link substring="WGPUChainedStruct" target="WGPUChainedStruct" @link substring="nextInChain" target="#nextInChain"
-///     WGPUTextureSampleType sampleType; // @link substring="WGPUTextureSampleType" target="WGPUTextureSampleType" @link substring="sampleType" target="#sampleType"
-///     WGPUTextureViewDimension viewDimension; // @link substring="WGPUTextureViewDimension" target="WGPUTextureViewDimension" @link substring="viewDimension" target="#viewDimension"
-///     WGPUBool multisampled; // @link substring="multisampled" target="#multisampled"
-/// } WGPUTextureBindingLayout;
+/// typedef struct WGPUInstanceEnumerateAdapterOptions {
+///     WGPUChainedStruct const* nextInChain; // @link substring="WGPUChainedStruct" target="WGPUChainedStruct" @link substring="nextInChain" target="#nextInChain"
+///     WGPUInstanceBackend backends; // @link substring="WGPUInstanceBackend" target="WGPUInstanceBackend" @link substring="backends" target="#backends"
+/// } WGPUInstanceEnumerateAdapterOptions;
 /// }
 ///
 /// ## Contracts
@@ -42,29 +40,29 @@ import static club.doki7.webgpu.WGPUConstants.*;
 /// perform any runtime check. The constructor can be useful for automatic code generators.
 @ValueBasedCandidate
 @UnsafeConstructor
-public record WGPUTextureBindingLayout(@NotNull MemorySegment segment) implements IWGPUTextureBindingLayout {
+public record WGPUInstanceEnumerateAdapterOptions(@NotNull MemorySegment segment) implements IWGPUInstanceEnumerateAdapterOptions {
     /// Represents a pointer to / an array of null structure(s) in native memory.
     ///
-    /// Technically speaking, this type has no difference with {@link WGPUTextureBindingLayout}. This type
+    /// Technically speaking, this type has no difference with {@link WGPUInstanceEnumerateAdapterOptions}. This type
     /// is introduced mainly for user to distinguish between a pointer to a single structure
     /// and a pointer to (potentially) an array of structure(s). APIs should use interface
-    /// IWGPUTextureBindingLayout to handle both types uniformly. See package level documentation for more
+    /// IWGPUInstanceEnumerateAdapterOptions to handle both types uniformly. See package level documentation for more
     /// details.
     ///
     /// ## Contracts
     ///
     /// The property {@link #segment()} should always be not-null
     /// ({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to
-    /// {@code WGPUTextureBindingLayout.LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+    /// {@code WGPUInstanceEnumerateAdapterOptions.LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
     /// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
     ///
     /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
     /// perform any runtime check. The constructor can be useful for automatic code generators.
     @ValueBasedCandidate
     @UnsafeConstructor
-    public record Ptr(@NotNull MemorySegment segment) implements IWGPUTextureBindingLayout, Iterable<WGPUTextureBindingLayout> {
+    public record Ptr(@NotNull MemorySegment segment) implements IWGPUInstanceEnumerateAdapterOptions, Iterable<WGPUInstanceEnumerateAdapterOptions> {
         public long size() {
-            return segment.byteSize() / WGPUTextureBindingLayout.BYTES;
+            return segment.byteSize() / WGPUInstanceEnumerateAdapterOptions.BYTES;
         }
 
         /// Returns (a pointer to) the structure at the given index.
@@ -73,17 +71,17 @@ public record WGPUTextureBindingLayout(@NotNull MemorySegment segment) implement
         /// example), modification on returned structure will be reflected on the original
         /// structure array. So this function is called {@code at} to explicitly
         /// indicate that the returned structure is a view of the original structure.
-        public @NotNull WGPUTextureBindingLayout at(long index) {
-            return new WGPUTextureBindingLayout(segment.asSlice(index * WGPUTextureBindingLayout.BYTES, WGPUTextureBindingLayout.BYTES));
+        public @NotNull WGPUInstanceEnumerateAdapterOptions at(long index) {
+            return new WGPUInstanceEnumerateAdapterOptions(segment.asSlice(index * WGPUInstanceEnumerateAdapterOptions.BYTES, WGPUInstanceEnumerateAdapterOptions.BYTES));
         }
 
-        public WGPUTextureBindingLayout.Ptr at(long index, @NotNull Consumer<@NotNull WGPUTextureBindingLayout> consumer) {
+        public WGPUInstanceEnumerateAdapterOptions.Ptr at(long index, @NotNull Consumer<@NotNull WGPUInstanceEnumerateAdapterOptions> consumer) {
             consumer.accept(at(index));
             return this;
         }
 
-        public void write(long index, @NotNull WGPUTextureBindingLayout value) {
-            MemorySegment s = segment.asSlice(index * WGPUTextureBindingLayout.BYTES, WGPUTextureBindingLayout.BYTES);
+        public void write(long index, @NotNull WGPUInstanceEnumerateAdapterOptions value) {
+            MemorySegment s = segment.asSlice(index * WGPUInstanceEnumerateAdapterOptions.BYTES, WGPUInstanceEnumerateAdapterOptions.BYTES);
             s.copyFrom(value.segment);
         }
 
@@ -101,11 +99,11 @@ public record WGPUTextureBindingLayout(@NotNull MemorySegment segment) implement
         /// instead.
         @Unsafe
         public @NotNull Ptr reinterpret(long newSize) {
-            return new Ptr(segment.reinterpret(newSize * WGPUTextureBindingLayout.BYTES));
+            return new Ptr(segment.reinterpret(newSize * WGPUInstanceEnumerateAdapterOptions.BYTES));
         }
 
         public @NotNull Ptr offset(long offset) {
-            return new Ptr(segment.asSlice(offset * WGPUTextureBindingLayout.BYTES));
+            return new Ptr(segment.asSlice(offset * WGPUInstanceEnumerateAdapterOptions.BYTES));
         }
 
         /// Note that this function uses the {@link List#subList(int, int)} semantics (left inclusive,
@@ -113,17 +111,17 @@ public record WGPUTextureBindingLayout(@NotNull MemorySegment segment) implement
         /// (offset + newSize). Be careful with the difference
         public @NotNull Ptr slice(long start, long end) {
             return new Ptr(segment.asSlice(
-                start * WGPUTextureBindingLayout.BYTES,
-                (end - start) * WGPUTextureBindingLayout.BYTES
+                start * WGPUInstanceEnumerateAdapterOptions.BYTES,
+                (end - start) * WGPUInstanceEnumerateAdapterOptions.BYTES
             ));
         }
 
         public Ptr slice(long end) {
-            return new Ptr(segment.asSlice(0, end * WGPUTextureBindingLayout.BYTES));
+            return new Ptr(segment.asSlice(0, end * WGPUInstanceEnumerateAdapterOptions.BYTES));
         }
 
-        public WGPUTextureBindingLayout[] toArray() {
-            WGPUTextureBindingLayout[] ret = new WGPUTextureBindingLayout[(int) size()];
+        public WGPUInstanceEnumerateAdapterOptions[] toArray() {
+            WGPUInstanceEnumerateAdapterOptions[] ret = new WGPUInstanceEnumerateAdapterOptions[(int) size()];
             for (long i = 0; i < size(); i++) {
                 ret[(int) i] = at(i);
             }
@@ -131,28 +129,28 @@ public record WGPUTextureBindingLayout(@NotNull MemorySegment segment) implement
         }
 
         @Override
-        public @NotNull Iterator<WGPUTextureBindingLayout> iterator() {
+        public @NotNull Iterator<WGPUInstanceEnumerateAdapterOptions> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        private static final class Iter implements Iterator<WGPUTextureBindingLayout> {
+        private static final class Iter implements Iterator<WGPUInstanceEnumerateAdapterOptions> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }
 
             @Override
             public boolean hasNext() {
-                return segment.byteSize() >= WGPUTextureBindingLayout.BYTES;
+                return segment.byteSize() >= WGPUInstanceEnumerateAdapterOptions.BYTES;
             }
 
             @Override
-            public WGPUTextureBindingLayout next() {
+            public WGPUInstanceEnumerateAdapterOptions next() {
                 if (!hasNext()) {
                     throw new NoSuchElementException();
                 }
-                WGPUTextureBindingLayout ret = new WGPUTextureBindingLayout(segment.asSlice(0, WGPUTextureBindingLayout.BYTES));
-                segment = segment.asSlice(WGPUTextureBindingLayout.BYTES);
+                WGPUInstanceEnumerateAdapterOptions ret = new WGPUInstanceEnumerateAdapterOptions(segment.asSlice(0, WGPUInstanceEnumerateAdapterOptions.BYTES));
+                segment = segment.asSlice(WGPUInstanceEnumerateAdapterOptions.BYTES);
                 return ret;
             }
 
@@ -160,22 +158,22 @@ public record WGPUTextureBindingLayout(@NotNull MemorySegment segment) implement
         }
     }
 
-    public static WGPUTextureBindingLayout allocate(Arena arena) {
-        return new WGPUTextureBindingLayout(arena.allocate(LAYOUT));
+    public static WGPUInstanceEnumerateAdapterOptions allocate(Arena arena) {
+        return new WGPUInstanceEnumerateAdapterOptions(arena.allocate(LAYOUT));
     }
 
-    public static WGPUTextureBindingLayout.Ptr allocate(Arena arena, long count) {
+    public static WGPUInstanceEnumerateAdapterOptions.Ptr allocate(Arena arena, long count) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
-        return new WGPUTextureBindingLayout.Ptr(segment);
+        return new WGPUInstanceEnumerateAdapterOptions.Ptr(segment);
     }
 
-    public static WGPUTextureBindingLayout clone(Arena arena, WGPUTextureBindingLayout src) {
-        WGPUTextureBindingLayout ret = allocate(arena);
+    public static WGPUInstanceEnumerateAdapterOptions clone(Arena arena, WGPUInstanceEnumerateAdapterOptions src) {
+        WGPUInstanceEnumerateAdapterOptions ret = allocate(arena);
         ret.segment.copyFrom(src.segment);
         return ret;
     }
 
-    public WGPUTextureBindingLayout nextInChain(@Nullable IWGPUChainedStruct value) {
+    public WGPUInstanceEnumerateAdapterOptions nextInChain(@Nullable IWGPUChainedStruct value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         nextInChainRaw(s);
         return this;
@@ -207,58 +205,30 @@ public record WGPUTextureBindingLayout(@NotNull MemorySegment segment) implement
         segment.set(LAYOUT$nextInChain, OFFSET$nextInChain, value);
     }
 
-    public @EnumType(WGPUTextureSampleType.class) int sampleType() {
-        return segment.get(LAYOUT$sampleType, OFFSET$sampleType);
+    public @Bitmask(WGPUInstanceBackend.class) long backends() {
+        return segment.get(LAYOUT$backends, OFFSET$backends);
     }
 
-    public WGPUTextureBindingLayout sampleType(@EnumType(WGPUTextureSampleType.class) int value) {
-        segment.set(LAYOUT$sampleType, OFFSET$sampleType, value);
-        return this;
-    }
-
-    public @EnumType(WGPUTextureViewDimension.class) int viewDimension() {
-        return segment.get(LAYOUT$viewDimension, OFFSET$viewDimension);
-    }
-
-    public WGPUTextureBindingLayout viewDimension(@EnumType(WGPUTextureViewDimension.class) int value) {
-        segment.set(LAYOUT$viewDimension, OFFSET$viewDimension, value);
-        return this;
-    }
-
-    public @NativeType("WGPUBool") @Unsigned int multisampled() {
-        return segment.get(LAYOUT$multisampled, OFFSET$multisampled);
-    }
-
-    public WGPUTextureBindingLayout multisampled(@NativeType("WGPUBool") @Unsigned int value) {
-        segment.set(LAYOUT$multisampled, OFFSET$multisampled, value);
+    public WGPUInstanceEnumerateAdapterOptions backends(@Bitmask(WGPUInstanceBackend.class) long value) {
+        segment.set(LAYOUT$backends, OFFSET$backends, value);
         return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(
         ValueLayout.ADDRESS.withTargetLayout(WGPUChainedStruct.LAYOUT).withName("nextInChain"),
-        ValueLayout.JAVA_INT.withName("sampleType"),
-        ValueLayout.JAVA_INT.withName("viewDimension"),
-        ValueLayout.JAVA_INT.withName("multisampled")
+        ValueLayout.JAVA_LONG.withName("backends")
     );
     public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$nextInChain = PathElement.groupElement("nextInChain");
-    public static final PathElement PATH$sampleType = PathElement.groupElement("sampleType");
-    public static final PathElement PATH$viewDimension = PathElement.groupElement("viewDimension");
-    public static final PathElement PATH$multisampled = PathElement.groupElement("multisampled");
+    public static final PathElement PATH$backends = PathElement.groupElement("backends");
 
     public static final AddressLayout LAYOUT$nextInChain = (AddressLayout) LAYOUT.select(PATH$nextInChain);
-    public static final OfInt LAYOUT$sampleType = (OfInt) LAYOUT.select(PATH$sampleType);
-    public static final OfInt LAYOUT$viewDimension = (OfInt) LAYOUT.select(PATH$viewDimension);
-    public static final OfInt LAYOUT$multisampled = (OfInt) LAYOUT.select(PATH$multisampled);
+    public static final OfLong LAYOUT$backends = (OfLong) LAYOUT.select(PATH$backends);
 
     public static final long SIZE$nextInChain = LAYOUT$nextInChain.byteSize();
-    public static final long SIZE$sampleType = LAYOUT$sampleType.byteSize();
-    public static final long SIZE$viewDimension = LAYOUT$viewDimension.byteSize();
-    public static final long SIZE$multisampled = LAYOUT$multisampled.byteSize();
+    public static final long SIZE$backends = LAYOUT$backends.byteSize();
 
     public static final long OFFSET$nextInChain = LAYOUT.byteOffset(PATH$nextInChain);
-    public static final long OFFSET$sampleType = LAYOUT.byteOffset(PATH$sampleType);
-    public static final long OFFSET$viewDimension = LAYOUT.byteOffset(PATH$viewDimension);
-    public static final long OFFSET$multisampled = LAYOUT.byteOffset(PATH$multisampled);
+    public static final long OFFSET$backends = LAYOUT.byteOffset(PATH$backends);
 }

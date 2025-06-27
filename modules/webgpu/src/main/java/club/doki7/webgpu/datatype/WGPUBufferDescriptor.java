@@ -28,7 +28,7 @@ import static club.doki7.webgpu.WGPUConstants.*;
 ///     WGPUStringView label; // @link substring="WGPUStringView" target="WGPUStringView" @link substring="label" target="#label"
 ///     WGPUBufferUsage usage; // @link substring="WGPUBufferUsage" target="WGPUBufferUsage" @link substring="usage" target="#usage"
 ///     uint64_t size; // @link substring="size" target="#size"
-///     bool mappedAtCreation; // @link substring="mappedAtCreation" target="#mappedAtCreation"
+///     WGPUBool mappedAtCreation; // @link substring="mappedAtCreation" target="#mappedAtCreation"
 /// } WGPUBufferDescriptor;
 /// }
 ///
@@ -240,11 +240,11 @@ public record WGPUBufferDescriptor(@NotNull MemorySegment segment) implements IW
         return this;
     }
 
-    public @NativeType("boolean") boolean mappedAtCreation() {
+    public @NativeType("WGPUBool") @Unsigned int mappedAtCreation() {
         return segment.get(LAYOUT$mappedAtCreation, OFFSET$mappedAtCreation);
     }
 
-    public WGPUBufferDescriptor mappedAtCreation(@NativeType("boolean") boolean value) {
+    public WGPUBufferDescriptor mappedAtCreation(@NativeType("WGPUBool") @Unsigned int value) {
         segment.set(LAYOUT$mappedAtCreation, OFFSET$mappedAtCreation, value);
         return this;
     }
@@ -254,7 +254,7 @@ public record WGPUBufferDescriptor(@NotNull MemorySegment segment) implements IW
         WGPUStringView.LAYOUT.withName("label"),
         ValueLayout.JAVA_LONG.withName("usage"),
         ValueLayout.JAVA_LONG.withName("size"),
-        ValueLayout.JAVA_BOOLEAN.withName("mappedAtCreation")
+        ValueLayout.JAVA_INT.withName("mappedAtCreation")
     );
     public static final long BYTES = LAYOUT.byteSize();
 
@@ -268,7 +268,7 @@ public record WGPUBufferDescriptor(@NotNull MemorySegment segment) implements IW
     public static final StructLayout LAYOUT$label = (StructLayout) LAYOUT.select(PATH$label);
     public static final OfLong LAYOUT$usage = (OfLong) LAYOUT.select(PATH$usage);
     public static final OfLong LAYOUT$size = (OfLong) LAYOUT.select(PATH$size);
-    public static final OfBoolean LAYOUT$mappedAtCreation = (OfBoolean) LAYOUT.select(PATH$mappedAtCreation);
+    public static final OfInt LAYOUT$mappedAtCreation = (OfInt) LAYOUT.select(PATH$mappedAtCreation);
 
     public static final long SIZE$nextInChain = LAYOUT$nextInChain.byteSize();
     public static final long SIZE$label = LAYOUT$label.byteSize();

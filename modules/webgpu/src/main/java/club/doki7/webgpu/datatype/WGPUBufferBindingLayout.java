@@ -26,7 +26,7 @@ import static club.doki7.webgpu.WGPUConstants.*;
 /// typedef struct WGPUBufferBindingLayout {
 ///     WGPUChainedStruct const* nextInChain; // optional // @link substring="WGPUChainedStruct" target="WGPUChainedStruct" @link substring="nextInChain" target="#nextInChain"
 ///     WGPUBufferBindingType type; // @link substring="WGPUBufferBindingType" target="WGPUBufferBindingType" @link substring="type" target="#type"
-///     bool hasDynamicOffset; // @link substring="hasDynamicOffset" target="#hasDynamicOffset"
+///     WGPUBool hasDynamicOffset; // @link substring="hasDynamicOffset" target="#hasDynamicOffset"
 ///     uint64_t minBindingSize; // @link substring="minBindingSize" target="#minBindingSize"
 /// } WGPUBufferBindingLayout;
 /// }
@@ -216,11 +216,11 @@ public record WGPUBufferBindingLayout(@NotNull MemorySegment segment) implements
         return this;
     }
 
-    public @NativeType("boolean") boolean hasDynamicOffset() {
+    public @NativeType("WGPUBool") @Unsigned int hasDynamicOffset() {
         return segment.get(LAYOUT$hasDynamicOffset, OFFSET$hasDynamicOffset);
     }
 
-    public WGPUBufferBindingLayout hasDynamicOffset(@NativeType("boolean") boolean value) {
+    public WGPUBufferBindingLayout hasDynamicOffset(@NativeType("WGPUBool") @Unsigned int value) {
         segment.set(LAYOUT$hasDynamicOffset, OFFSET$hasDynamicOffset, value);
         return this;
     }
@@ -237,7 +237,7 @@ public record WGPUBufferBindingLayout(@NotNull MemorySegment segment) implements
     public static final StructLayout LAYOUT = NativeLayout.structLayout(
         ValueLayout.ADDRESS.withTargetLayout(WGPUChainedStruct.LAYOUT).withName("nextInChain"),
         ValueLayout.JAVA_INT.withName("type"),
-        ValueLayout.JAVA_BOOLEAN.withName("hasDynamicOffset"),
+        ValueLayout.JAVA_INT.withName("hasDynamicOffset"),
         ValueLayout.JAVA_LONG.withName("minBindingSize")
     );
     public static final long BYTES = LAYOUT.byteSize();
@@ -249,7 +249,7 @@ public record WGPUBufferBindingLayout(@NotNull MemorySegment segment) implements
 
     public static final AddressLayout LAYOUT$nextInChain = (AddressLayout) LAYOUT.select(PATH$nextInChain);
     public static final OfInt LAYOUT$type = (OfInt) LAYOUT.select(PATH$type);
-    public static final OfBoolean LAYOUT$hasDynamicOffset = (OfBoolean) LAYOUT.select(PATH$hasDynamicOffset);
+    public static final OfInt LAYOUT$hasDynamicOffset = (OfInt) LAYOUT.select(PATH$hasDynamicOffset);
     public static final OfLong LAYOUT$minBindingSize = (OfLong) LAYOUT.select(PATH$minBindingSize);
 
     public static final long SIZE$nextInChain = LAYOUT$nextInChain.byteSize();

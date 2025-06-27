@@ -29,7 +29,7 @@ import static club.doki7.webgpu.WGPUConstants.*;
 ///     WGPUIndexFormat stripIndexFormat; // @link substring="WGPUIndexFormat" target="WGPUIndexFormat" @link substring="stripIndexFormat" target="#stripIndexFormat"
 ///     WGPUFrontFace frontFace; // @link substring="WGPUFrontFace" target="WGPUFrontFace" @link substring="frontFace" target="#frontFace"
 ///     WGPUCullMode cullMode; // @link substring="WGPUCullMode" target="WGPUCullMode" @link substring="cullMode" target="#cullMode"
-///     bool unclippedDepth; // @link substring="unclippedDepth" target="#unclippedDepth"
+///     WGPUBool unclippedDepth; // @link substring="unclippedDepth" target="#unclippedDepth"
 /// } WGPUPrimitiveState;
 /// }
 ///
@@ -245,11 +245,11 @@ public record WGPUPrimitiveState(@NotNull MemorySegment segment) implements IWGP
         return this;
     }
 
-    public @NativeType("boolean") boolean unclippedDepth() {
+    public @NativeType("WGPUBool") @Unsigned int unclippedDepth() {
         return segment.get(LAYOUT$unclippedDepth, OFFSET$unclippedDepth);
     }
 
-    public WGPUPrimitiveState unclippedDepth(@NativeType("boolean") boolean value) {
+    public WGPUPrimitiveState unclippedDepth(@NativeType("WGPUBool") @Unsigned int value) {
         segment.set(LAYOUT$unclippedDepth, OFFSET$unclippedDepth, value);
         return this;
     }
@@ -260,7 +260,7 @@ public record WGPUPrimitiveState(@NotNull MemorySegment segment) implements IWGP
         ValueLayout.JAVA_INT.withName("stripIndexFormat"),
         ValueLayout.JAVA_INT.withName("frontFace"),
         ValueLayout.JAVA_INT.withName("cullMode"),
-        ValueLayout.JAVA_BOOLEAN.withName("unclippedDepth")
+        ValueLayout.JAVA_INT.withName("unclippedDepth")
     );
     public static final long BYTES = LAYOUT.byteSize();
 
@@ -276,7 +276,7 @@ public record WGPUPrimitiveState(@NotNull MemorySegment segment) implements IWGP
     public static final OfInt LAYOUT$stripIndexFormat = (OfInt) LAYOUT.select(PATH$stripIndexFormat);
     public static final OfInt LAYOUT$frontFace = (OfInt) LAYOUT.select(PATH$frontFace);
     public static final OfInt LAYOUT$cullMode = (OfInt) LAYOUT.select(PATH$cullMode);
-    public static final OfBoolean LAYOUT$unclippedDepth = (OfBoolean) LAYOUT.select(PATH$unclippedDepth);
+    public static final OfInt LAYOUT$unclippedDepth = (OfInt) LAYOUT.select(PATH$unclippedDepth);
 
     public static final long SIZE$nextInChain = LAYOUT$nextInChain.byteSize();
     public static final long SIZE$topology = LAYOUT$topology.byteSize();

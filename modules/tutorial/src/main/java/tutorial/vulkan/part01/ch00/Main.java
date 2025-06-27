@@ -7,6 +7,7 @@ import club.doki7.ffm.library.ISharedLibrary;
 import club.doki7.ffm.ptr.BytePtr;
 
 import java.lang.foreign.Arena;
+import java.util.Objects;
 
 class Application {
     public void run() {

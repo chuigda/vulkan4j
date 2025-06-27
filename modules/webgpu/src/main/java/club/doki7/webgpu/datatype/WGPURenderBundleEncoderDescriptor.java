@@ -30,8 +30,8 @@ import static club.doki7.webgpu.WGPUConstants.*;
 ///     WGPUTextureFormat const* colorFormats; // @link substring="WGPUTextureFormat" target="WGPUTextureFormat" @link substring="colorFormats" target="#colorFormats"
 ///     WGPUTextureFormat depthStencilFormat; // @link substring="WGPUTextureFormat" target="WGPUTextureFormat" @link substring="depthStencilFormat" target="#depthStencilFormat"
 ///     uint32_t sampleCount; // @link substring="sampleCount" target="#sampleCount"
-///     bool depthReadOnly; // @link substring="depthReadOnly" target="#depthReadOnly"
-///     bool stencilReadOnly; // @link substring="stencilReadOnly" target="#stencilReadOnly"
+///     WGPUBool depthReadOnly; // @link substring="depthReadOnly" target="#depthReadOnly"
+///     WGPUBool stencilReadOnly; // @link substring="stencilReadOnly" target="#stencilReadOnly"
 /// } WGPURenderBundleEncoderDescriptor;
 /// }
 ///
@@ -279,20 +279,20 @@ public record WGPURenderBundleEncoderDescriptor(@NotNull MemorySegment segment) 
         return this;
     }
 
-    public @NativeType("boolean") boolean depthReadOnly() {
+    public @NativeType("WGPUBool") @Unsigned int depthReadOnly() {
         return segment.get(LAYOUT$depthReadOnly, OFFSET$depthReadOnly);
     }
 
-    public WGPURenderBundleEncoderDescriptor depthReadOnly(@NativeType("boolean") boolean value) {
+    public WGPURenderBundleEncoderDescriptor depthReadOnly(@NativeType("WGPUBool") @Unsigned int value) {
         segment.set(LAYOUT$depthReadOnly, OFFSET$depthReadOnly, value);
         return this;
     }
 
-    public @NativeType("boolean") boolean stencilReadOnly() {
+    public @NativeType("WGPUBool") @Unsigned int stencilReadOnly() {
         return segment.get(LAYOUT$stencilReadOnly, OFFSET$stencilReadOnly);
     }
 
-    public WGPURenderBundleEncoderDescriptor stencilReadOnly(@NativeType("boolean") boolean value) {
+    public WGPURenderBundleEncoderDescriptor stencilReadOnly(@NativeType("WGPUBool") @Unsigned int value) {
         segment.set(LAYOUT$stencilReadOnly, OFFSET$stencilReadOnly, value);
         return this;
     }
@@ -304,8 +304,8 @@ public record WGPURenderBundleEncoderDescriptor(@NotNull MemorySegment segment) 
         ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_INT).withName("colorFormats"),
         ValueLayout.JAVA_INT.withName("depthStencilFormat"),
         ValueLayout.JAVA_INT.withName("sampleCount"),
-        ValueLayout.JAVA_BOOLEAN.withName("depthReadOnly"),
-        ValueLayout.JAVA_BOOLEAN.withName("stencilReadOnly")
+        ValueLayout.JAVA_INT.withName("depthReadOnly"),
+        ValueLayout.JAVA_INT.withName("stencilReadOnly")
     );
     public static final long BYTES = LAYOUT.byteSize();
 
@@ -323,8 +323,8 @@ public record WGPURenderBundleEncoderDescriptor(@NotNull MemorySegment segment) 
     public static final AddressLayout LAYOUT$colorFormats = (AddressLayout) LAYOUT.select(PATH$colorFormats);
     public static final OfInt LAYOUT$depthStencilFormat = (OfInt) LAYOUT.select(PATH$depthStencilFormat);
     public static final OfInt LAYOUT$sampleCount = (OfInt) LAYOUT.select(PATH$sampleCount);
-    public static final OfBoolean LAYOUT$depthReadOnly = (OfBoolean) LAYOUT.select(PATH$depthReadOnly);
-    public static final OfBoolean LAYOUT$stencilReadOnly = (OfBoolean) LAYOUT.select(PATH$stencilReadOnly);
+    public static final OfInt LAYOUT$depthReadOnly = (OfInt) LAYOUT.select(PATH$depthReadOnly);
+    public static final OfInt LAYOUT$stencilReadOnly = (OfInt) LAYOUT.select(PATH$stencilReadOnly);
 
     public static final long SIZE$nextInChain = LAYOUT$nextInChain.byteSize();
     public static final long SIZE$label = LAYOUT$label.byteSize();

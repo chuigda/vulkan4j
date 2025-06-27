@@ -27,7 +27,7 @@ import static club.doki7.webgpu.WGPUConstants.*;
 ///     WGPUChainedStruct const* nextInChain; // optional // @link substring="WGPUChainedStruct" target="WGPUChainedStruct" @link substring="nextInChain" target="#nextInChain"
 ///     WGPUFeatureLevel featureLevel; // @link substring="WGPUFeatureLevel" target="WGPUFeatureLevel" @link substring="featureLevel" target="#featureLevel"
 ///     WGPUPowerPreference powerPreference; // @link substring="WGPUPowerPreference" target="WGPUPowerPreference" @link substring="powerPreference" target="#powerPreference"
-///     bool forceFallbackAdapter; // @link substring="forceFallbackAdapter" target="#forceFallbackAdapter"
+///     WGPUBool forceFallbackAdapter; // @link substring="forceFallbackAdapter" target="#forceFallbackAdapter"
 ///     WGPUBackendType backendType; // @link substring="WGPUBackendType" target="WGPUBackendType" @link substring="backendType" target="#backendType"
 ///     WGPUSurface compatibleSurface; // optional // @link substring="WGPUSurface" target="WGPUSurface" @link substring="compatibleSurface" target="#compatibleSurface"
 /// } WGPURequestAdapterOptions;
@@ -227,11 +227,11 @@ public record WGPURequestAdapterOptions(@NotNull MemorySegment segment) implemen
         return this;
     }
 
-    public @NativeType("boolean") boolean forceFallbackAdapter() {
+    public @NativeType("WGPUBool") @Unsigned int forceFallbackAdapter() {
         return segment.get(LAYOUT$forceFallbackAdapter, OFFSET$forceFallbackAdapter);
     }
 
-    public WGPURequestAdapterOptions forceFallbackAdapter(@NativeType("boolean") boolean value) {
+    public WGPURequestAdapterOptions forceFallbackAdapter(@NativeType("WGPUBool") @Unsigned int value) {
         segment.set(LAYOUT$forceFallbackAdapter, OFFSET$forceFallbackAdapter, value);
         return this;
     }
@@ -262,7 +262,7 @@ public record WGPURequestAdapterOptions(@NotNull MemorySegment segment) implemen
         ValueLayout.ADDRESS.withTargetLayout(WGPUChainedStruct.LAYOUT).withName("nextInChain"),
         ValueLayout.JAVA_INT.withName("featureLevel"),
         ValueLayout.JAVA_INT.withName("powerPreference"),
-        ValueLayout.JAVA_BOOLEAN.withName("forceFallbackAdapter"),
+        ValueLayout.JAVA_INT.withName("forceFallbackAdapter"),
         ValueLayout.JAVA_INT.withName("backendType"),
         ValueLayout.ADDRESS.withName("compatibleSurface")
     );
@@ -278,7 +278,7 @@ public record WGPURequestAdapterOptions(@NotNull MemorySegment segment) implemen
     public static final AddressLayout LAYOUT$nextInChain = (AddressLayout) LAYOUT.select(PATH$nextInChain);
     public static final OfInt LAYOUT$featureLevel = (OfInt) LAYOUT.select(PATH$featureLevel);
     public static final OfInt LAYOUT$powerPreference = (OfInt) LAYOUT.select(PATH$powerPreference);
-    public static final OfBoolean LAYOUT$forceFallbackAdapter = (OfBoolean) LAYOUT.select(PATH$forceFallbackAdapter);
+    public static final OfInt LAYOUT$forceFallbackAdapter = (OfInt) LAYOUT.select(PATH$forceFallbackAdapter);
     public static final OfInt LAYOUT$backendType = (OfInt) LAYOUT.select(PATH$backendType);
     public static final AddressLayout LAYOUT$compatibleSurface = (AddressLayout) LAYOUT.select(PATH$compatibleSurface);
 

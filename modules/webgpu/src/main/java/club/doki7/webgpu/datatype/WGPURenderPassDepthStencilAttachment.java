@@ -28,11 +28,11 @@ import static club.doki7.webgpu.WGPUConstants.*;
 ///     WGPULoadOp depthLoadOp; // @link substring="WGPULoadOp" target="WGPULoadOp" @link substring="depthLoadOp" target="#depthLoadOp"
 ///     WGPUStoreOp depthStoreOp; // @link substring="WGPUStoreOp" target="WGPUStoreOp" @link substring="depthStoreOp" target="#depthStoreOp"
 ///     float depthClearValue; // @link substring="depthClearValue" target="#depthClearValue"
-///     bool depthReadOnly; // @link substring="depthReadOnly" target="#depthReadOnly"
+///     WGPUBool depthReadOnly; // @link substring="depthReadOnly" target="#depthReadOnly"
 ///     WGPULoadOp stencilLoadOp; // @link substring="WGPULoadOp" target="WGPULoadOp" @link substring="stencilLoadOp" target="#stencilLoadOp"
 ///     WGPUStoreOp stencilStoreOp; // @link substring="WGPUStoreOp" target="WGPUStoreOp" @link substring="stencilStoreOp" target="#stencilStoreOp"
 ///     uint32_t stencilClearValue; // @link substring="stencilClearValue" target="#stencilClearValue"
-///     bool stencilReadOnly; // @link substring="stencilReadOnly" target="#stencilReadOnly"
+///     WGPUBool stencilReadOnly; // @link substring="stencilReadOnly" target="#stencilReadOnly"
 /// } WGPURenderPassDepthStencilAttachment;
 /// }
 ///
@@ -220,11 +220,11 @@ public record WGPURenderPassDepthStencilAttachment(@NotNull MemorySegment segmen
         return this;
     }
 
-    public @NativeType("boolean") boolean depthReadOnly() {
+    public @NativeType("WGPUBool") @Unsigned int depthReadOnly() {
         return segment.get(LAYOUT$depthReadOnly, OFFSET$depthReadOnly);
     }
 
-    public WGPURenderPassDepthStencilAttachment depthReadOnly(@NativeType("boolean") boolean value) {
+    public WGPURenderPassDepthStencilAttachment depthReadOnly(@NativeType("WGPUBool") @Unsigned int value) {
         segment.set(LAYOUT$depthReadOnly, OFFSET$depthReadOnly, value);
         return this;
     }
@@ -256,11 +256,11 @@ public record WGPURenderPassDepthStencilAttachment(@NotNull MemorySegment segmen
         return this;
     }
 
-    public @NativeType("boolean") boolean stencilReadOnly() {
+    public @NativeType("WGPUBool") @Unsigned int stencilReadOnly() {
         return segment.get(LAYOUT$stencilReadOnly, OFFSET$stencilReadOnly);
     }
 
-    public WGPURenderPassDepthStencilAttachment stencilReadOnly(@NativeType("boolean") boolean value) {
+    public WGPURenderPassDepthStencilAttachment stencilReadOnly(@NativeType("WGPUBool") @Unsigned int value) {
         segment.set(LAYOUT$stencilReadOnly, OFFSET$stencilReadOnly, value);
         return this;
     }
@@ -270,11 +270,11 @@ public record WGPURenderPassDepthStencilAttachment(@NotNull MemorySegment segmen
         ValueLayout.JAVA_INT.withName("depthLoadOp"),
         ValueLayout.JAVA_INT.withName("depthStoreOp"),
         ValueLayout.JAVA_FLOAT.withName("depthClearValue"),
-        ValueLayout.JAVA_BOOLEAN.withName("depthReadOnly"),
+        ValueLayout.JAVA_INT.withName("depthReadOnly"),
         ValueLayout.JAVA_INT.withName("stencilLoadOp"),
         ValueLayout.JAVA_INT.withName("stencilStoreOp"),
         ValueLayout.JAVA_INT.withName("stencilClearValue"),
-        ValueLayout.JAVA_BOOLEAN.withName("stencilReadOnly")
+        ValueLayout.JAVA_INT.withName("stencilReadOnly")
     );
     public static final long BYTES = LAYOUT.byteSize();
 
@@ -292,11 +292,11 @@ public record WGPURenderPassDepthStencilAttachment(@NotNull MemorySegment segmen
     public static final OfInt LAYOUT$depthLoadOp = (OfInt) LAYOUT.select(PATH$depthLoadOp);
     public static final OfInt LAYOUT$depthStoreOp = (OfInt) LAYOUT.select(PATH$depthStoreOp);
     public static final OfFloat LAYOUT$depthClearValue = (OfFloat) LAYOUT.select(PATH$depthClearValue);
-    public static final OfBoolean LAYOUT$depthReadOnly = (OfBoolean) LAYOUT.select(PATH$depthReadOnly);
+    public static final OfInt LAYOUT$depthReadOnly = (OfInt) LAYOUT.select(PATH$depthReadOnly);
     public static final OfInt LAYOUT$stencilLoadOp = (OfInt) LAYOUT.select(PATH$stencilLoadOp);
     public static final OfInt LAYOUT$stencilStoreOp = (OfInt) LAYOUT.select(PATH$stencilStoreOp);
     public static final OfInt LAYOUT$stencilClearValue = (OfInt) LAYOUT.select(PATH$stencilClearValue);
-    public static final OfBoolean LAYOUT$stencilReadOnly = (OfBoolean) LAYOUT.select(PATH$stencilReadOnly);
+    public static final OfInt LAYOUT$stencilReadOnly = (OfInt) LAYOUT.select(PATH$stencilReadOnly);
 
     public static final long SIZE$view = LAYOUT$view.byteSize();
     public static final long SIZE$depthLoadOp = LAYOUT$depthLoadOp.byteSize();

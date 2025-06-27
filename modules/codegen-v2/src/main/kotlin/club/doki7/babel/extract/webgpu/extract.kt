@@ -16,6 +16,7 @@ import club.doki7.babel.registry.PointerType
 import club.doki7.babel.registry.Registry
 import club.doki7.babel.registry.RegistryBase
 import club.doki7.babel.registry.Structure
+import club.doki7.babel.registry.Typedef
 import club.doki7.babel.registry.putEntityIfAbsent
 import kotlin.io.path.Path
 import kotlinx.serialization.json.*
@@ -39,6 +40,12 @@ fun extractWebGPURegistry(): Registry<EmptyMergeable> {
     for (structure in coreStructures) {
         registry.structures.putEntityIfAbsent(structure)
     }
+    registry.aliases.putEntityIfAbsent(Typedef(
+        name = "WGPUBool",
+        type = IdentifierType("uint32_t")
+    ))
+
+    registry += extractRustWGPURegistry()
 
     return registry
 }
@@ -411,6 +418,29 @@ private val coreStructures = listOf(
             Member(
                 name = "next",
                 type = PointerType(IdentifierType("WGPUChainedStruct")),
+                values = null,
+                len = null,
+                altLen = null,
+                optional = true,
+                bits = null
+            ),
+            Member(
+                name = "sType",
+                type = IdentifierType("WGPUSType"),
+                values = null,
+                len = null,
+                altLen = null,
+                optional = false,
+                bits = null
+            )
+        )
+    ),
+    Structure(
+        name = "WGPUChainedStructOut",
+        members = mutableListOf(
+            Member(
+                name = "next",
+                type = PointerType(IdentifierType("WGPUChainedStructOut")),
                 values = null,
                 len = null,
                 altLen = null,

@@ -105,12 +105,16 @@ public final class WGPU implements WGPUConstants {
         HANDLE$wgpuCommandEncoderWriteTimestamp = RawFunctionLoader.link(SEGMENT$wgpuCommandEncoderWriteTimestamp, Descriptors.DESCRIPTOR$wgpuCommandEncoderWriteTimestamp);
         SEGMENT$wgpuComputePassEncoderAddRef = loader.apply("wgpuComputePassEncoderAddRef");
         HANDLE$wgpuComputePassEncoderAddRef = RawFunctionLoader.link(SEGMENT$wgpuComputePassEncoderAddRef, Descriptors.DESCRIPTOR$wgpuComputePassEncoderAddRef);
+        SEGMENT$wgpuComputePassEncoderBeginPipelineStatisticsQuery = loader.apply("wgpuComputePassEncoderBeginPipelineStatisticsQuery");
+        HANDLE$wgpuComputePassEncoderBeginPipelineStatisticsQuery = RawFunctionLoader.link(SEGMENT$wgpuComputePassEncoderBeginPipelineStatisticsQuery, Descriptors.DESCRIPTOR$wgpuComputePassEncoderBeginPipelineStatisticsQuery);
         SEGMENT$wgpuComputePassEncoderDispatchWorkgroups = loader.apply("wgpuComputePassEncoderDispatchWorkgroups");
         HANDLE$wgpuComputePassEncoderDispatchWorkgroups = RawFunctionLoader.link(SEGMENT$wgpuComputePassEncoderDispatchWorkgroups, Descriptors.DESCRIPTOR$wgpuComputePassEncoderDispatchWorkgroups);
         SEGMENT$wgpuComputePassEncoderDispatchWorkgroupsIndirect = loader.apply("wgpuComputePassEncoderDispatchWorkgroupsIndirect");
         HANDLE$wgpuComputePassEncoderDispatchWorkgroupsIndirect = RawFunctionLoader.link(SEGMENT$wgpuComputePassEncoderDispatchWorkgroupsIndirect, Descriptors.DESCRIPTOR$wgpuComputePassEncoderDispatchWorkgroupsIndirect);
         SEGMENT$wgpuComputePassEncoderEnd = loader.apply("wgpuComputePassEncoderEnd");
         HANDLE$wgpuComputePassEncoderEnd = RawFunctionLoader.link(SEGMENT$wgpuComputePassEncoderEnd, Descriptors.DESCRIPTOR$wgpuComputePassEncoderEnd);
+        SEGMENT$wgpuComputePassEncoderEndPipelineStatisticsQuery = loader.apply("wgpuComputePassEncoderEndPipelineStatisticsQuery");
+        HANDLE$wgpuComputePassEncoderEndPipelineStatisticsQuery = RawFunctionLoader.link(SEGMENT$wgpuComputePassEncoderEndPipelineStatisticsQuery, Descriptors.DESCRIPTOR$wgpuComputePassEncoderEndPipelineStatisticsQuery);
         SEGMENT$wgpuComputePassEncoderInsertDebugMarker = loader.apply("wgpuComputePassEncoderInsertDebugMarker");
         HANDLE$wgpuComputePassEncoderInsertDebugMarker = RawFunctionLoader.link(SEGMENT$wgpuComputePassEncoderInsertDebugMarker, Descriptors.DESCRIPTOR$wgpuComputePassEncoderInsertDebugMarker);
         SEGMENT$wgpuComputePassEncoderPopDebugGroup = loader.apply("wgpuComputePassEncoderPopDebugGroup");
@@ -125,6 +129,10 @@ public final class WGPU implements WGPUConstants {
         HANDLE$wgpuComputePassEncoderSetLabel = RawFunctionLoader.link(SEGMENT$wgpuComputePassEncoderSetLabel, Descriptors.DESCRIPTOR$wgpuComputePassEncoderSetLabel);
         SEGMENT$wgpuComputePassEncoderSetPipeline = loader.apply("wgpuComputePassEncoderSetPipeline");
         HANDLE$wgpuComputePassEncoderSetPipeline = RawFunctionLoader.link(SEGMENT$wgpuComputePassEncoderSetPipeline, Descriptors.DESCRIPTOR$wgpuComputePassEncoderSetPipeline);
+        SEGMENT$wgpuComputePassEncoderSetPushConstants = loader.apply("wgpuComputePassEncoderSetPushConstants");
+        HANDLE$wgpuComputePassEncoderSetPushConstants = RawFunctionLoader.link(SEGMENT$wgpuComputePassEncoderSetPushConstants, Descriptors.DESCRIPTOR$wgpuComputePassEncoderSetPushConstants);
+        SEGMENT$wgpuComputePassEncoderWriteTimestamp = loader.apply("wgpuComputePassEncoderWriteTimestamp");
+        HANDLE$wgpuComputePassEncoderWriteTimestamp = RawFunctionLoader.link(SEGMENT$wgpuComputePassEncoderWriteTimestamp, Descriptors.DESCRIPTOR$wgpuComputePassEncoderWriteTimestamp);
         SEGMENT$wgpuComputePipelineAddRef = loader.apply("wgpuComputePipelineAddRef");
         HANDLE$wgpuComputePipelineAddRef = RawFunctionLoader.link(SEGMENT$wgpuComputePipelineAddRef, Descriptors.DESCRIPTOR$wgpuComputePipelineAddRef);
         SEGMENT$wgpuComputePipelineGetBindGroupLayout = loader.apply("wgpuComputePipelineGetBindGroupLayout");
@@ -163,6 +171,8 @@ public final class WGPU implements WGPUConstants {
         HANDLE$wgpuDeviceCreateSampler = RawFunctionLoader.link(SEGMENT$wgpuDeviceCreateSampler, Descriptors.DESCRIPTOR$wgpuDeviceCreateSampler);
         SEGMENT$wgpuDeviceCreateShaderModule = loader.apply("wgpuDeviceCreateShaderModule");
         HANDLE$wgpuDeviceCreateShaderModule = RawFunctionLoader.link(SEGMENT$wgpuDeviceCreateShaderModule, Descriptors.DESCRIPTOR$wgpuDeviceCreateShaderModule);
+        SEGMENT$wgpuDeviceCreateShaderModuleSpirV = loader.apply("wgpuDeviceCreateShaderModuleSpirV");
+        HANDLE$wgpuDeviceCreateShaderModuleSpirV = RawFunctionLoader.link(SEGMENT$wgpuDeviceCreateShaderModuleSpirV, Descriptors.DESCRIPTOR$wgpuDeviceCreateShaderModuleSpirV);
         SEGMENT$wgpuDeviceCreateTexture = loader.apply("wgpuDeviceCreateTexture");
         HANDLE$wgpuDeviceCreateTexture = RawFunctionLoader.link(SEGMENT$wgpuDeviceCreateTexture, Descriptors.DESCRIPTOR$wgpuDeviceCreateTexture);
         SEGMENT$wgpuDeviceDestroy = loader.apply("wgpuDeviceDestroy");
@@ -179,6 +189,8 @@ public final class WGPU implements WGPUConstants {
         HANDLE$wgpuDeviceGetQueue = RawFunctionLoader.link(SEGMENT$wgpuDeviceGetQueue, Descriptors.DESCRIPTOR$wgpuDeviceGetQueue);
         SEGMENT$wgpuDeviceHasFeature = loader.apply("wgpuDeviceHasFeature");
         HANDLE$wgpuDeviceHasFeature = RawFunctionLoader.link(SEGMENT$wgpuDeviceHasFeature, Descriptors.DESCRIPTOR$wgpuDeviceHasFeature);
+        SEGMENT$wgpuDevicePoll = loader.apply("wgpuDevicePoll");
+        HANDLE$wgpuDevicePoll = RawFunctionLoader.link(SEGMENT$wgpuDevicePoll, Descriptors.DESCRIPTOR$wgpuDevicePoll);
         SEGMENT$wgpuDevicePopErrorScope = loader.apply("wgpuDevicePopErrorScope");
         HANDLE$wgpuDevicePopErrorScope = RawFunctionLoader.link(SEGMENT$wgpuDevicePopErrorScope, Descriptors.DESCRIPTOR$wgpuDevicePopErrorScope);
         SEGMENT$wgpuDevicePushErrorScope = loader.apply("wgpuDevicePushErrorScope");
@@ -187,12 +199,18 @@ public final class WGPU implements WGPUConstants {
         HANDLE$wgpuDeviceRelease = RawFunctionLoader.link(SEGMENT$wgpuDeviceRelease, Descriptors.DESCRIPTOR$wgpuDeviceRelease);
         SEGMENT$wgpuDeviceSetLabel = loader.apply("wgpuDeviceSetLabel");
         HANDLE$wgpuDeviceSetLabel = RawFunctionLoader.link(SEGMENT$wgpuDeviceSetLabel, Descriptors.DESCRIPTOR$wgpuDeviceSetLabel);
+        SEGMENT$wgpuGenerateReport = loader.apply("wgpuGenerateReport");
+        HANDLE$wgpuGenerateReport = RawFunctionLoader.link(SEGMENT$wgpuGenerateReport, Descriptors.DESCRIPTOR$wgpuGenerateReport);
         SEGMENT$wgpuGetInstanceCapabilities = loader.apply("wgpuGetInstanceCapabilities");
         HANDLE$wgpuGetInstanceCapabilities = RawFunctionLoader.link(SEGMENT$wgpuGetInstanceCapabilities, Descriptors.DESCRIPTOR$wgpuGetInstanceCapabilities);
+        SEGMENT$wgpuGetVersion = loader.apply("wgpuGetVersion");
+        HANDLE$wgpuGetVersion = RawFunctionLoader.link(SEGMENT$wgpuGetVersion, Descriptors.DESCRIPTOR$wgpuGetVersion);
         SEGMENT$wgpuInstanceAddRef = loader.apply("wgpuInstanceAddRef");
         HANDLE$wgpuInstanceAddRef = RawFunctionLoader.link(SEGMENT$wgpuInstanceAddRef, Descriptors.DESCRIPTOR$wgpuInstanceAddRef);
         SEGMENT$wgpuInstanceCreateSurface = loader.apply("wgpuInstanceCreateSurface");
         HANDLE$wgpuInstanceCreateSurface = RawFunctionLoader.link(SEGMENT$wgpuInstanceCreateSurface, Descriptors.DESCRIPTOR$wgpuInstanceCreateSurface);
+        SEGMENT$wgpuInstanceEnumerateAdapters = loader.apply("wgpuInstanceEnumerateAdapters");
+        HANDLE$wgpuInstanceEnumerateAdapters = RawFunctionLoader.link(SEGMENT$wgpuInstanceEnumerateAdapters, Descriptors.DESCRIPTOR$wgpuInstanceEnumerateAdapters);
         SEGMENT$wgpuInstanceGetWgslLanguageFeatures = loader.apply("wgpuInstanceGetWgslLanguageFeatures");
         HANDLE$wgpuInstanceGetWgslLanguageFeatures = RawFunctionLoader.link(SEGMENT$wgpuInstanceGetWgslLanguageFeatures, Descriptors.DESCRIPTOR$wgpuInstanceGetWgslLanguageFeatures);
         SEGMENT$wgpuInstanceHasWgslLanguageFeature = loader.apply("wgpuInstanceHasWgslLanguageFeature");
@@ -233,6 +251,8 @@ public final class WGPU implements WGPUConstants {
         HANDLE$wgpuQueueSetLabel = RawFunctionLoader.link(SEGMENT$wgpuQueueSetLabel, Descriptors.DESCRIPTOR$wgpuQueueSetLabel);
         SEGMENT$wgpuQueueSubmit = loader.apply("wgpuQueueSubmit");
         HANDLE$wgpuQueueSubmit = RawFunctionLoader.link(SEGMENT$wgpuQueueSubmit, Descriptors.DESCRIPTOR$wgpuQueueSubmit);
+        SEGMENT$wgpuQueueSubmitForIndex = loader.apply("wgpuQueueSubmitForIndex");
+        HANDLE$wgpuQueueSubmitForIndex = RawFunctionLoader.link(SEGMENT$wgpuQueueSubmitForIndex, Descriptors.DESCRIPTOR$wgpuQueueSubmitForIndex);
         SEGMENT$wgpuQueueWriteBuffer = loader.apply("wgpuQueueWriteBuffer");
         HANDLE$wgpuQueueWriteBuffer = RawFunctionLoader.link(SEGMENT$wgpuQueueWriteBuffer, Descriptors.DESCRIPTOR$wgpuQueueWriteBuffer);
         SEGMENT$wgpuQueueWriteTexture = loader.apply("wgpuQueueWriteTexture");
@@ -267,6 +287,8 @@ public final class WGPU implements WGPUConstants {
         HANDLE$wgpuRenderBundleEncoderSetLabel = RawFunctionLoader.link(SEGMENT$wgpuRenderBundleEncoderSetLabel, Descriptors.DESCRIPTOR$wgpuRenderBundleEncoderSetLabel);
         SEGMENT$wgpuRenderBundleEncoderSetPipeline = loader.apply("wgpuRenderBundleEncoderSetPipeline");
         HANDLE$wgpuRenderBundleEncoderSetPipeline = RawFunctionLoader.link(SEGMENT$wgpuRenderBundleEncoderSetPipeline, Descriptors.DESCRIPTOR$wgpuRenderBundleEncoderSetPipeline);
+        SEGMENT$wgpuRenderBundleEncoderSetPushConstants = loader.apply("wgpuRenderBundleEncoderSetPushConstants");
+        HANDLE$wgpuRenderBundleEncoderSetPushConstants = RawFunctionLoader.link(SEGMENT$wgpuRenderBundleEncoderSetPushConstants, Descriptors.DESCRIPTOR$wgpuRenderBundleEncoderSetPushConstants);
         SEGMENT$wgpuRenderBundleEncoderSetVertexBuffer = loader.apply("wgpuRenderBundleEncoderSetVertexBuffer");
         HANDLE$wgpuRenderBundleEncoderSetVertexBuffer = RawFunctionLoader.link(SEGMENT$wgpuRenderBundleEncoderSetVertexBuffer, Descriptors.DESCRIPTOR$wgpuRenderBundleEncoderSetVertexBuffer);
         SEGMENT$wgpuRenderBundleRelease = loader.apply("wgpuRenderBundleRelease");
@@ -277,6 +299,8 @@ public final class WGPU implements WGPUConstants {
         HANDLE$wgpuRenderPassEncoderAddRef = RawFunctionLoader.link(SEGMENT$wgpuRenderPassEncoderAddRef, Descriptors.DESCRIPTOR$wgpuRenderPassEncoderAddRef);
         SEGMENT$wgpuRenderPassEncoderBeginOcclusionQuery = loader.apply("wgpuRenderPassEncoderBeginOcclusionQuery");
         HANDLE$wgpuRenderPassEncoderBeginOcclusionQuery = RawFunctionLoader.link(SEGMENT$wgpuRenderPassEncoderBeginOcclusionQuery, Descriptors.DESCRIPTOR$wgpuRenderPassEncoderBeginOcclusionQuery);
+        SEGMENT$wgpuRenderPassEncoderBeginPipelineStatisticsQuery = loader.apply("wgpuRenderPassEncoderBeginPipelineStatisticsQuery");
+        HANDLE$wgpuRenderPassEncoderBeginPipelineStatisticsQuery = RawFunctionLoader.link(SEGMENT$wgpuRenderPassEncoderBeginPipelineStatisticsQuery, Descriptors.DESCRIPTOR$wgpuRenderPassEncoderBeginPipelineStatisticsQuery);
         SEGMENT$wgpuRenderPassEncoderDraw = loader.apply("wgpuRenderPassEncoderDraw");
         HANDLE$wgpuRenderPassEncoderDraw = RawFunctionLoader.link(SEGMENT$wgpuRenderPassEncoderDraw, Descriptors.DESCRIPTOR$wgpuRenderPassEncoderDraw);
         SEGMENT$wgpuRenderPassEncoderDrawIndexed = loader.apply("wgpuRenderPassEncoderDrawIndexed");
@@ -289,10 +313,20 @@ public final class WGPU implements WGPUConstants {
         HANDLE$wgpuRenderPassEncoderEnd = RawFunctionLoader.link(SEGMENT$wgpuRenderPassEncoderEnd, Descriptors.DESCRIPTOR$wgpuRenderPassEncoderEnd);
         SEGMENT$wgpuRenderPassEncoderEndOcclusionQuery = loader.apply("wgpuRenderPassEncoderEndOcclusionQuery");
         HANDLE$wgpuRenderPassEncoderEndOcclusionQuery = RawFunctionLoader.link(SEGMENT$wgpuRenderPassEncoderEndOcclusionQuery, Descriptors.DESCRIPTOR$wgpuRenderPassEncoderEndOcclusionQuery);
+        SEGMENT$wgpuRenderPassEncoderEndPipelineStatisticsQuery = loader.apply("wgpuRenderPassEncoderEndPipelineStatisticsQuery");
+        HANDLE$wgpuRenderPassEncoderEndPipelineStatisticsQuery = RawFunctionLoader.link(SEGMENT$wgpuRenderPassEncoderEndPipelineStatisticsQuery, Descriptors.DESCRIPTOR$wgpuRenderPassEncoderEndPipelineStatisticsQuery);
         SEGMENT$wgpuRenderPassEncoderExecuteBundles = loader.apply("wgpuRenderPassEncoderExecuteBundles");
         HANDLE$wgpuRenderPassEncoderExecuteBundles = RawFunctionLoader.link(SEGMENT$wgpuRenderPassEncoderExecuteBundles, Descriptors.DESCRIPTOR$wgpuRenderPassEncoderExecuteBundles);
         SEGMENT$wgpuRenderPassEncoderInsertDebugMarker = loader.apply("wgpuRenderPassEncoderInsertDebugMarker");
         HANDLE$wgpuRenderPassEncoderInsertDebugMarker = RawFunctionLoader.link(SEGMENT$wgpuRenderPassEncoderInsertDebugMarker, Descriptors.DESCRIPTOR$wgpuRenderPassEncoderInsertDebugMarker);
+        SEGMENT$wgpuRenderPassEncoderMultiDrawIndexedIndirect = loader.apply("wgpuRenderPassEncoderMultiDrawIndexedIndirect");
+        HANDLE$wgpuRenderPassEncoderMultiDrawIndexedIndirect = RawFunctionLoader.link(SEGMENT$wgpuRenderPassEncoderMultiDrawIndexedIndirect, Descriptors.DESCRIPTOR$wgpuRenderPassEncoderMultiDrawIndexedIndirect);
+        SEGMENT$wgpuRenderPassEncoderMultiDrawIndexedIndirectCount = loader.apply("wgpuRenderPassEncoderMultiDrawIndexedIndirectCount");
+        HANDLE$wgpuRenderPassEncoderMultiDrawIndexedIndirectCount = RawFunctionLoader.link(SEGMENT$wgpuRenderPassEncoderMultiDrawIndexedIndirectCount, Descriptors.DESCRIPTOR$wgpuRenderPassEncoderMultiDrawIndexedIndirectCount);
+        SEGMENT$wgpuRenderPassEncoderMultiDrawIndirect = loader.apply("wgpuRenderPassEncoderMultiDrawIndirect");
+        HANDLE$wgpuRenderPassEncoderMultiDrawIndirect = RawFunctionLoader.link(SEGMENT$wgpuRenderPassEncoderMultiDrawIndirect, Descriptors.DESCRIPTOR$wgpuRenderPassEncoderMultiDrawIndirect);
+        SEGMENT$wgpuRenderPassEncoderMultiDrawIndirectCount = loader.apply("wgpuRenderPassEncoderMultiDrawIndirectCount");
+        HANDLE$wgpuRenderPassEncoderMultiDrawIndirectCount = RawFunctionLoader.link(SEGMENT$wgpuRenderPassEncoderMultiDrawIndirectCount, Descriptors.DESCRIPTOR$wgpuRenderPassEncoderMultiDrawIndirectCount);
         SEGMENT$wgpuRenderPassEncoderPopDebugGroup = loader.apply("wgpuRenderPassEncoderPopDebugGroup");
         HANDLE$wgpuRenderPassEncoderPopDebugGroup = RawFunctionLoader.link(SEGMENT$wgpuRenderPassEncoderPopDebugGroup, Descriptors.DESCRIPTOR$wgpuRenderPassEncoderPopDebugGroup);
         SEGMENT$wgpuRenderPassEncoderPushDebugGroup = loader.apply("wgpuRenderPassEncoderPushDebugGroup");
@@ -309,6 +343,8 @@ public final class WGPU implements WGPUConstants {
         HANDLE$wgpuRenderPassEncoderSetLabel = RawFunctionLoader.link(SEGMENT$wgpuRenderPassEncoderSetLabel, Descriptors.DESCRIPTOR$wgpuRenderPassEncoderSetLabel);
         SEGMENT$wgpuRenderPassEncoderSetPipeline = loader.apply("wgpuRenderPassEncoderSetPipeline");
         HANDLE$wgpuRenderPassEncoderSetPipeline = RawFunctionLoader.link(SEGMENT$wgpuRenderPassEncoderSetPipeline, Descriptors.DESCRIPTOR$wgpuRenderPassEncoderSetPipeline);
+        SEGMENT$wgpuRenderPassEncoderSetPushConstants = loader.apply("wgpuRenderPassEncoderSetPushConstants");
+        HANDLE$wgpuRenderPassEncoderSetPushConstants = RawFunctionLoader.link(SEGMENT$wgpuRenderPassEncoderSetPushConstants, Descriptors.DESCRIPTOR$wgpuRenderPassEncoderSetPushConstants);
         SEGMENT$wgpuRenderPassEncoderSetScissorRect = loader.apply("wgpuRenderPassEncoderSetScissorRect");
         HANDLE$wgpuRenderPassEncoderSetScissorRect = RawFunctionLoader.link(SEGMENT$wgpuRenderPassEncoderSetScissorRect, Descriptors.DESCRIPTOR$wgpuRenderPassEncoderSetScissorRect);
         SEGMENT$wgpuRenderPassEncoderSetStencilReference = loader.apply("wgpuRenderPassEncoderSetStencilReference");
@@ -317,6 +353,8 @@ public final class WGPU implements WGPUConstants {
         HANDLE$wgpuRenderPassEncoderSetVertexBuffer = RawFunctionLoader.link(SEGMENT$wgpuRenderPassEncoderSetVertexBuffer, Descriptors.DESCRIPTOR$wgpuRenderPassEncoderSetVertexBuffer);
         SEGMENT$wgpuRenderPassEncoderSetViewport = loader.apply("wgpuRenderPassEncoderSetViewport");
         HANDLE$wgpuRenderPassEncoderSetViewport = RawFunctionLoader.link(SEGMENT$wgpuRenderPassEncoderSetViewport, Descriptors.DESCRIPTOR$wgpuRenderPassEncoderSetViewport);
+        SEGMENT$wgpuRenderPassEncoderWriteTimestamp = loader.apply("wgpuRenderPassEncoderWriteTimestamp");
+        HANDLE$wgpuRenderPassEncoderWriteTimestamp = RawFunctionLoader.link(SEGMENT$wgpuRenderPassEncoderWriteTimestamp, Descriptors.DESCRIPTOR$wgpuRenderPassEncoderWriteTimestamp);
         SEGMENT$wgpuRenderPipelineAddRef = loader.apply("wgpuRenderPipelineAddRef");
         HANDLE$wgpuRenderPipelineAddRef = RawFunctionLoader.link(SEGMENT$wgpuRenderPipelineAddRef, Descriptors.DESCRIPTOR$wgpuRenderPipelineAddRef);
         SEGMENT$wgpuRenderPipelineGetBindGroupLayout = loader.apply("wgpuRenderPipelineGetBindGroupLayout");
@@ -331,6 +369,10 @@ public final class WGPU implements WGPUConstants {
         HANDLE$wgpuSamplerRelease = RawFunctionLoader.link(SEGMENT$wgpuSamplerRelease, Descriptors.DESCRIPTOR$wgpuSamplerRelease);
         SEGMENT$wgpuSamplerSetLabel = loader.apply("wgpuSamplerSetLabel");
         HANDLE$wgpuSamplerSetLabel = RawFunctionLoader.link(SEGMENT$wgpuSamplerSetLabel, Descriptors.DESCRIPTOR$wgpuSamplerSetLabel);
+        SEGMENT$wgpuSetLogCallback = loader.apply("wgpuSetLogCallback");
+        HANDLE$wgpuSetLogCallback = RawFunctionLoader.link(SEGMENT$wgpuSetLogCallback, Descriptors.DESCRIPTOR$wgpuSetLogCallback);
+        SEGMENT$wgpuSetLogLevel = loader.apply("wgpuSetLogLevel");
+        HANDLE$wgpuSetLogLevel = RawFunctionLoader.link(SEGMENT$wgpuSetLogLevel, Descriptors.DESCRIPTOR$wgpuSetLogLevel);
         SEGMENT$wgpuShaderModuleAddRef = loader.apply("wgpuShaderModuleAddRef");
         HANDLE$wgpuShaderModuleAddRef = RawFunctionLoader.link(SEGMENT$wgpuShaderModuleAddRef, Descriptors.DESCRIPTOR$wgpuShaderModuleAddRef);
         SEGMENT$wgpuShaderModuleGetCompilationInfo = loader.apply("wgpuShaderModuleGetCompilationInfo");
@@ -449,13 +491,13 @@ public final class WGPU implements WGPUConstants {
         }
     }
 
-    public @NativeType("boolean") boolean adapterHasFeature(
+    public @NativeType("WGPUBool") @Unsigned int adapterHasFeature(
         WGPUAdapter adapter,
         @EnumType(WGPUFeatureName.class) int feature
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$wgpuAdapterHasFeature);
         try {
-            return (boolean) hFunction.invokeExact(
+            return (int) hFunction.invokeExact(
                 adapter.segment(),
                 feature
             );
@@ -1066,6 +1108,23 @@ public final class WGPU implements WGPUConstants {
         }
     }
 
+    public void wgpuComputePassEncoderBeginPipelineStatisticsQuery(
+        WGPUComputePassEncoder computePassEncoder,
+        WGPUQuerySet querySet,
+        @Unsigned int queryIndex
+    ) {
+        MethodHandle hFunction = Objects.requireNonNull(HANDLE$wgpuComputePassEncoderBeginPipelineStatisticsQuery);
+        try {
+            hFunction.invokeExact(
+                computePassEncoder.segment(),
+                querySet.segment(),
+                queryIndex
+            );
+        } catch (Throwable e) {
+            throw new RuntimeException(e);
+        }
+    }
+
     public void computePassEncoderDispatchWorkgroups(
         WGPUComputePassEncoder computePassEncoder,
         @Unsigned int workgroupcountx,
@@ -1106,6 +1165,19 @@ public final class WGPU implements WGPUConstants {
         WGPUComputePassEncoder computePassEncoder
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$wgpuComputePassEncoderEnd);
+        try {
+            hFunction.invokeExact(
+                computePassEncoder.segment()
+            );
+        } catch (Throwable e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public void wgpuComputePassEncoderEndPipelineStatisticsQuery(
+        WGPUComputePassEncoder computePassEncoder
+    ) {
+        MethodHandle hFunction = Objects.requireNonNull(HANDLE$wgpuComputePassEncoderEndPipelineStatisticsQuery);
         try {
             hFunction.invokeExact(
                 computePassEncoder.segment()
@@ -1216,6 +1288,42 @@ public final class WGPU implements WGPUConstants {
             hFunction.invokeExact(
                 computePassEncoder.segment(),
                 pipeline.segment()
+            );
+        } catch (Throwable e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public void wgpuComputePassEncoderSetPushConstants(
+        WGPUComputePassEncoder encoder,
+        @Unsigned int offset,
+        @Unsigned int sizeBytes,
+        @Pointer(comment="void*") @NotNull MemorySegment data
+    ) {
+        MethodHandle hFunction = Objects.requireNonNull(HANDLE$wgpuComputePassEncoderSetPushConstants);
+        try {
+            hFunction.invokeExact(
+                encoder.segment(),
+                offset,
+                sizeBytes,
+                data
+            );
+        } catch (Throwable e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public void wgpuComputePassEncoderWriteTimestamp(
+        WGPUComputePassEncoder computePassEncoder,
+        WGPUQuerySet querySet,
+        @Unsigned int queryIndex
+    ) {
+        MethodHandle hFunction = Objects.requireNonNull(HANDLE$wgpuComputePassEncoderWriteTimestamp);
+        try {
+            hFunction.invokeExact(
+                computePassEncoder.segment(),
+                querySet.segment(),
+                queryIndex
             );
         } catch (Throwable e) {
             throw new RuntimeException(e);
@@ -1520,6 +1628,22 @@ public final class WGPU implements WGPUConstants {
         }
     }
 
+    public @Nullable WGPUShaderModule wgpuDeviceCreateShaderModuleSpirV(
+        WGPUDevice device,
+        @Pointer IWGPUShaderModuleDescriptorSpirV descriptor
+    ) {
+        MethodHandle hFunction = Objects.requireNonNull(HANDLE$wgpuDeviceCreateShaderModuleSpirV);
+        try {
+            MemorySegment s = (MemorySegment) hFunction.invokeExact(
+                device.segment(),
+                descriptor.segment()
+            );
+            return s.equals(MemorySegment.NULL) ? null : new WGPUShaderModule(s);
+        } catch (Throwable e) {
+            throw new RuntimeException(e);
+        }
+    }
+
     public @Nullable WGPUTexture deviceCreateTexture(
         WGPUDevice device,
         @Pointer IWGPUTextureDescriptor descriptor
@@ -1623,15 +1747,32 @@ public final class WGPU implements WGPUConstants {
         }
     }
 
-    public @NativeType("boolean") boolean deviceHasFeature(
+    public @NativeType("WGPUBool") @Unsigned int deviceHasFeature(
         WGPUDevice device,
         @EnumType(WGPUFeatureName.class) int feature
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$wgpuDeviceHasFeature);
         try {
-            return (boolean) hFunction.invokeExact(
+            return (int) hFunction.invokeExact(
                 device.segment(),
                 feature
+            );
+        } catch (Throwable e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public @NativeType("WGPUBool") @Unsigned int wgpuDevicePoll(
+        WGPUDevice device,
+        @NativeType("WGPUBool") @Unsigned int wait,
+        @Pointer(comment="WGPUSubmissionIndex") @Unsigned LongPtr submissionIndex
+    ) {
+        MethodHandle hFunction = Objects.requireNonNull(HANDLE$wgpuDevicePoll);
+        try {
+            return (int) hFunction.invokeExact(
+                device.segment(),
+                wait,
+                submissionIndex.segment()
             );
         } catch (Throwable e) {
             throw new RuntimeException(e);
@@ -1698,6 +1839,21 @@ public final class WGPU implements WGPUConstants {
         }
     }
 
+    public void wgpuGenerateReport(
+        WGPUInstance instance,
+        @Pointer IWGPUGlobalReport report
+    ) {
+        MethodHandle hFunction = Objects.requireNonNull(HANDLE$wgpuGenerateReport);
+        try {
+            hFunction.invokeExact(
+                instance.segment(),
+                report.segment()
+            );
+        } catch (Throwable e) {
+            throw new RuntimeException(e);
+        }
+    }
+
     public @EnumType(WGPUStatus.class) int getInstanceCapabilities(
         @Pointer IWGPUInstanceCapabilities capabilities
     ) {
@@ -1705,6 +1861,16 @@ public final class WGPU implements WGPUConstants {
         try {
             return (int) hFunction.invokeExact(
                 capabilities.segment()
+            );
+        } catch (Throwable e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public @Unsigned int wgpuGetVersion() {
+        MethodHandle hFunction = Objects.requireNonNull(HANDLE$wgpuGetVersion);
+        try {
+            return (int) hFunction.invokeExact(
             );
         } catch (Throwable e) {
             throw new RuntimeException(e);
@@ -1740,6 +1906,24 @@ public final class WGPU implements WGPUConstants {
         }
     }
 
+    public long wgpuInstanceEnumerateAdapters(
+        WGPUInstance instance,
+        @Pointer IWGPUInstanceEnumerateAdapterOptions options,
+        @Pointer WGPUAdapter.Ptr adapters
+    ) {
+        MethodHandle hFunction = Objects.requireNonNull(HANDLE$wgpuInstanceEnumerateAdapters);
+        try {
+            MemorySegment s = (MemorySegment) hFunction.invokeExact(
+                instance.segment(),
+                options.segment(),
+                adapters.segment()
+            );
+            return s.address();
+        } catch (Throwable e) {
+            throw new RuntimeException(e);
+        }
+    }
+
     public @EnumType(WGPUStatus.class) int instanceGetWgslLanguageFeatures(
         WGPUInstance instance,
         @Pointer IWGPUSupportedWgslLanguageFeatures features
@@ -1755,13 +1939,13 @@ public final class WGPU implements WGPUConstants {
         }
     }
 
-    public @NativeType("boolean") boolean instanceHasWgslLanguageFeature(
+    public @NativeType("WGPUBool") @Unsigned int instanceHasWgslLanguageFeature(
         WGPUInstance instance,
         @EnumType(WGPUWgslLanguageFeatureName.class) int feature
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$wgpuInstanceHasWgslLanguageFeature);
         try {
-            return (boolean) hFunction.invokeExact(
+            return (int) hFunction.invokeExact(
                 instance.segment(),
                 feature
             );
@@ -2021,6 +2205,23 @@ public final class WGPU implements WGPUConstants {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$wgpuQueueSubmit);
         try {
             hFunction.invokeExact(
+                queue.segment(),
+                MemorySegment.ofAddress(commandCount),
+                commands.segment()
+            );
+        } catch (Throwable e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public @NativeType("WGPUSubmissionIndex") @Unsigned long wgpuQueueSubmitForIndex(
+        WGPUQueue queue,
+        long commandCount,
+        @Pointer WGPUCommandBuffer.Ptr commands
+    ) {
+        MethodHandle hFunction = Objects.requireNonNull(HANDLE$wgpuQueueSubmitForIndex);
+        try {
+            return (long) hFunction.invokeExact(
                 queue.segment(),
                 MemorySegment.ofAddress(commandCount),
                 commands.segment()
@@ -2322,6 +2523,27 @@ public final class WGPU implements WGPUConstants {
         }
     }
 
+    public void wgpuRenderBundleEncoderSetPushConstants(
+        WGPURenderBundleEncoder encoder,
+        @Bitmask(WGPUShaderStage.class) long stages,
+        @Unsigned int offset,
+        @Unsigned int sizeBytes,
+        @Pointer(comment="void*") @NotNull MemorySegment data
+    ) {
+        MethodHandle hFunction = Objects.requireNonNull(HANDLE$wgpuRenderBundleEncoderSetPushConstants);
+        try {
+            hFunction.invokeExact(
+                encoder.segment(),
+                stages,
+                offset,
+                sizeBytes,
+                data
+            );
+        } catch (Throwable e) {
+            throw new RuntimeException(e);
+        }
+    }
+
     public void renderBundleEncoderSetVertexBuffer(
         WGPURenderBundleEncoder renderBundleEncoder,
         @Unsigned int slot,
@@ -2392,6 +2614,23 @@ public final class WGPU implements WGPUConstants {
         try {
             hFunction.invokeExact(
                 renderPassEncoder.segment(),
+                queryIndex
+            );
+        } catch (Throwable e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public void wgpuRenderPassEncoderBeginPipelineStatisticsQuery(
+        WGPURenderPassEncoder renderPassEncoder,
+        WGPUQuerySet querySet,
+        @Unsigned int queryIndex
+    ) {
+        MethodHandle hFunction = Objects.requireNonNull(HANDLE$wgpuRenderPassEncoderBeginPipelineStatisticsQuery);
+        try {
+            hFunction.invokeExact(
+                renderPassEncoder.segment(),
+                querySet.segment(),
                 queryIndex
             );
         } catch (Throwable e) {
@@ -2503,6 +2742,19 @@ public final class WGPU implements WGPUConstants {
         }
     }
 
+    public void wgpuRenderPassEncoderEndPipelineStatisticsQuery(
+        WGPURenderPassEncoder renderPassEncoder
+    ) {
+        MethodHandle hFunction = Objects.requireNonNull(HANDLE$wgpuRenderPassEncoderEndPipelineStatisticsQuery);
+        try {
+            hFunction.invokeExact(
+                renderPassEncoder.segment()
+            );
+        } catch (Throwable e) {
+            throw new RuntimeException(e);
+        }
+    }
+
     public void renderPassEncoderExecuteBundles(
         WGPURenderPassEncoder renderPassEncoder,
         long bundleCount,
@@ -2529,6 +2781,90 @@ public final class WGPU implements WGPUConstants {
             hFunction.invokeExact(
                 renderPassEncoder.segment(),
                 markerLabel.segment()
+            );
+        } catch (Throwable e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public void wgpuRenderPassEncoderMultiDrawIndexedIndirect(
+        WGPURenderPassEncoder encoder,
+        WGPUBuffer buffer,
+        @Unsigned long offset,
+        @Unsigned int count
+    ) {
+        MethodHandle hFunction = Objects.requireNonNull(HANDLE$wgpuRenderPassEncoderMultiDrawIndexedIndirect);
+        try {
+            hFunction.invokeExact(
+                encoder.segment(),
+                buffer.segment(),
+                offset,
+                count
+            );
+        } catch (Throwable e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public void wgpuRenderPassEncoderMultiDrawIndexedIndirectCount(
+        WGPURenderPassEncoder encoder,
+        WGPUBuffer buffer,
+        @Unsigned long offset,
+        WGPUBuffer count_buffer,
+        @Unsigned long count_buffer_offset,
+        @Unsigned int max_count
+    ) {
+        MethodHandle hFunction = Objects.requireNonNull(HANDLE$wgpuRenderPassEncoderMultiDrawIndexedIndirectCount);
+        try {
+            hFunction.invokeExact(
+                encoder.segment(),
+                buffer.segment(),
+                offset,
+                count_buffer.segment(),
+                count_buffer_offset,
+                max_count
+            );
+        } catch (Throwable e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public void wgpuRenderPassEncoderMultiDrawIndirect(
+        WGPURenderPassEncoder encoder,
+        WGPUBuffer buffer,
+        @Unsigned long offset,
+        @Unsigned int count
+    ) {
+        MethodHandle hFunction = Objects.requireNonNull(HANDLE$wgpuRenderPassEncoderMultiDrawIndirect);
+        try {
+            hFunction.invokeExact(
+                encoder.segment(),
+                buffer.segment(),
+                offset,
+                count
+            );
+        } catch (Throwable e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public void wgpuRenderPassEncoderMultiDrawIndirectCount(
+        WGPURenderPassEncoder encoder,
+        WGPUBuffer buffer,
+        @Unsigned long offset,
+        WGPUBuffer count_buffer,
+        @Unsigned long count_buffer_offset,
+        @Unsigned int max_count
+    ) {
+        MethodHandle hFunction = Objects.requireNonNull(HANDLE$wgpuRenderPassEncoderMultiDrawIndirectCount);
+        try {
+            hFunction.invokeExact(
+                encoder.segment(),
+                buffer.segment(),
+                offset,
+                count_buffer.segment(),
+                count_buffer_offset,
+                max_count
             );
         } catch (Throwable e) {
             throw new RuntimeException(e);
@@ -2663,6 +2999,27 @@ public final class WGPU implements WGPUConstants {
         }
     }
 
+    public void wgpuRenderPassEncoderSetPushConstants(
+        WGPURenderPassEncoder encoder,
+        @Bitmask(WGPUShaderStage.class) long stages,
+        @Unsigned int offset,
+        @Unsigned int sizeBytes,
+        @Pointer(comment="void*") @NotNull MemorySegment data
+    ) {
+        MethodHandle hFunction = Objects.requireNonNull(HANDLE$wgpuRenderPassEncoderSetPushConstants);
+        try {
+            hFunction.invokeExact(
+                encoder.segment(),
+                stages,
+                offset,
+                sizeBytes,
+                data
+            );
+        } catch (Throwable e) {
+            throw new RuntimeException(e);
+        }
+    }
+
     public void renderPassEncoderSetScissorRect(
         WGPURenderPassEncoder renderPassEncoder,
         @Unsigned int x,
@@ -2739,6 +3096,23 @@ public final class WGPU implements WGPUConstants {
                 height,
                 minDepth,
                 maxDepth
+            );
+        } catch (Throwable e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public void wgpuRenderPassEncoderWriteTimestamp(
+        WGPURenderPassEncoder renderPassEncoder,
+        WGPUQuerySet querySet,
+        @Unsigned int queryIndex
+    ) {
+        MethodHandle hFunction = Objects.requireNonNull(HANDLE$wgpuRenderPassEncoderWriteTimestamp);
+        try {
+            hFunction.invokeExact(
+                renderPassEncoder.segment(),
+                querySet.segment(),
+                queryIndex
             );
         } catch (Throwable e) {
             throw new RuntimeException(e);
@@ -2837,6 +3211,34 @@ public final class WGPU implements WGPUConstants {
             hFunction.invokeExact(
                 sampler.segment(),
                 label.segment()
+            );
+        } catch (Throwable e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public void wgpuSetLogCallback(
+        @Pointer(comment="WGPULogCallback") @NotNull MemorySegment callback,
+        @Pointer(comment="void*") @NotNull MemorySegment userdata
+    ) {
+        MethodHandle hFunction = Objects.requireNonNull(HANDLE$wgpuSetLogCallback);
+        try {
+            hFunction.invokeExact(
+                callback,
+                userdata
+            );
+        } catch (Throwable e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public void wgpuSetLogLevel(
+        @EnumType(WGPULogLevel.class) int level
+    ) {
+        MethodHandle hFunction = Objects.requireNonNull(HANDLE$wgpuSetLogLevel);
+        try {
+            hFunction.invokeExact(
+                level
             );
         } catch (Throwable e) {
             throw new RuntimeException(e);
@@ -3276,9 +3678,11 @@ public final class WGPU implements WGPUConstants {
     public final @Nullable MemorySegment SEGMENT$wgpuCommandEncoderSetLabel;
     public final @Nullable MemorySegment SEGMENT$wgpuCommandEncoderWriteTimestamp;
     public final @Nullable MemorySegment SEGMENT$wgpuComputePassEncoderAddRef;
+    public final @Nullable MemorySegment SEGMENT$wgpuComputePassEncoderBeginPipelineStatisticsQuery;
     public final @Nullable MemorySegment SEGMENT$wgpuComputePassEncoderDispatchWorkgroups;
     public final @Nullable MemorySegment SEGMENT$wgpuComputePassEncoderDispatchWorkgroupsIndirect;
     public final @Nullable MemorySegment SEGMENT$wgpuComputePassEncoderEnd;
+    public final @Nullable MemorySegment SEGMENT$wgpuComputePassEncoderEndPipelineStatisticsQuery;
     public final @Nullable MemorySegment SEGMENT$wgpuComputePassEncoderInsertDebugMarker;
     public final @Nullable MemorySegment SEGMENT$wgpuComputePassEncoderPopDebugGroup;
     public final @Nullable MemorySegment SEGMENT$wgpuComputePassEncoderPushDebugGroup;
@@ -3286,6 +3690,8 @@ public final class WGPU implements WGPUConstants {
     public final @Nullable MemorySegment SEGMENT$wgpuComputePassEncoderSetBindGroup;
     public final @Nullable MemorySegment SEGMENT$wgpuComputePassEncoderSetLabel;
     public final @Nullable MemorySegment SEGMENT$wgpuComputePassEncoderSetPipeline;
+    public final @Nullable MemorySegment SEGMENT$wgpuComputePassEncoderSetPushConstants;
+    public final @Nullable MemorySegment SEGMENT$wgpuComputePassEncoderWriteTimestamp;
     public final @Nullable MemorySegment SEGMENT$wgpuComputePipelineAddRef;
     public final @Nullable MemorySegment SEGMENT$wgpuComputePipelineGetBindGroupLayout;
     public final @Nullable MemorySegment SEGMENT$wgpuComputePipelineRelease;
@@ -3305,6 +3711,7 @@ public final class WGPU implements WGPUConstants {
     public final @Nullable MemorySegment SEGMENT$wgpuDeviceCreateRenderPipelineAsync;
     public final @Nullable MemorySegment SEGMENT$wgpuDeviceCreateSampler;
     public final @Nullable MemorySegment SEGMENT$wgpuDeviceCreateShaderModule;
+    public final @Nullable MemorySegment SEGMENT$wgpuDeviceCreateShaderModuleSpirV;
     public final @Nullable MemorySegment SEGMENT$wgpuDeviceCreateTexture;
     public final @Nullable MemorySegment SEGMENT$wgpuDeviceDestroy;
     public final @Nullable MemorySegment SEGMENT$wgpuDeviceGetAdapterInfo;
@@ -3313,13 +3720,17 @@ public final class WGPU implements WGPUConstants {
     public final @Nullable MemorySegment SEGMENT$wgpuDeviceGetLostFuture;
     public final @Nullable MemorySegment SEGMENT$wgpuDeviceGetQueue;
     public final @Nullable MemorySegment SEGMENT$wgpuDeviceHasFeature;
+    public final @Nullable MemorySegment SEGMENT$wgpuDevicePoll;
     public final @Nullable MemorySegment SEGMENT$wgpuDevicePopErrorScope;
     public final @Nullable MemorySegment SEGMENT$wgpuDevicePushErrorScope;
     public final @Nullable MemorySegment SEGMENT$wgpuDeviceRelease;
     public final @Nullable MemorySegment SEGMENT$wgpuDeviceSetLabel;
+    public final @Nullable MemorySegment SEGMENT$wgpuGenerateReport;
     public final @Nullable MemorySegment SEGMENT$wgpuGetInstanceCapabilities;
+    public final @Nullable MemorySegment SEGMENT$wgpuGetVersion;
     public final @Nullable MemorySegment SEGMENT$wgpuInstanceAddRef;
     public final @Nullable MemorySegment SEGMENT$wgpuInstanceCreateSurface;
+    public final @Nullable MemorySegment SEGMENT$wgpuInstanceEnumerateAdapters;
     public final @Nullable MemorySegment SEGMENT$wgpuInstanceGetWgslLanguageFeatures;
     public final @Nullable MemorySegment SEGMENT$wgpuInstanceHasWgslLanguageFeature;
     public final @Nullable MemorySegment SEGMENT$wgpuInstanceProcessEvents;
@@ -3340,6 +3751,7 @@ public final class WGPU implements WGPUConstants {
     public final @Nullable MemorySegment SEGMENT$wgpuQueueRelease;
     public final @Nullable MemorySegment SEGMENT$wgpuQueueSetLabel;
     public final @Nullable MemorySegment SEGMENT$wgpuQueueSubmit;
+    public final @Nullable MemorySegment SEGMENT$wgpuQueueSubmitForIndex;
     public final @Nullable MemorySegment SEGMENT$wgpuQueueWriteBuffer;
     public final @Nullable MemorySegment SEGMENT$wgpuQueueWriteTexture;
     public final @Nullable MemorySegment SEGMENT$wgpuRenderBundleAddRef;
@@ -3357,19 +3769,26 @@ public final class WGPU implements WGPUConstants {
     public final @Nullable MemorySegment SEGMENT$wgpuRenderBundleEncoderSetIndexBuffer;
     public final @Nullable MemorySegment SEGMENT$wgpuRenderBundleEncoderSetLabel;
     public final @Nullable MemorySegment SEGMENT$wgpuRenderBundleEncoderSetPipeline;
+    public final @Nullable MemorySegment SEGMENT$wgpuRenderBundleEncoderSetPushConstants;
     public final @Nullable MemorySegment SEGMENT$wgpuRenderBundleEncoderSetVertexBuffer;
     public final @Nullable MemorySegment SEGMENT$wgpuRenderBundleRelease;
     public final @Nullable MemorySegment SEGMENT$wgpuRenderBundleSetLabel;
     public final @Nullable MemorySegment SEGMENT$wgpuRenderPassEncoderAddRef;
     public final @Nullable MemorySegment SEGMENT$wgpuRenderPassEncoderBeginOcclusionQuery;
+    public final @Nullable MemorySegment SEGMENT$wgpuRenderPassEncoderBeginPipelineStatisticsQuery;
     public final @Nullable MemorySegment SEGMENT$wgpuRenderPassEncoderDraw;
     public final @Nullable MemorySegment SEGMENT$wgpuRenderPassEncoderDrawIndexed;
     public final @Nullable MemorySegment SEGMENT$wgpuRenderPassEncoderDrawIndexedIndirect;
     public final @Nullable MemorySegment SEGMENT$wgpuRenderPassEncoderDrawIndirect;
     public final @Nullable MemorySegment SEGMENT$wgpuRenderPassEncoderEnd;
     public final @Nullable MemorySegment SEGMENT$wgpuRenderPassEncoderEndOcclusionQuery;
+    public final @Nullable MemorySegment SEGMENT$wgpuRenderPassEncoderEndPipelineStatisticsQuery;
     public final @Nullable MemorySegment SEGMENT$wgpuRenderPassEncoderExecuteBundles;
     public final @Nullable MemorySegment SEGMENT$wgpuRenderPassEncoderInsertDebugMarker;
+    public final @Nullable MemorySegment SEGMENT$wgpuRenderPassEncoderMultiDrawIndexedIndirect;
+    public final @Nullable MemorySegment SEGMENT$wgpuRenderPassEncoderMultiDrawIndexedIndirectCount;
+    public final @Nullable MemorySegment SEGMENT$wgpuRenderPassEncoderMultiDrawIndirect;
+    public final @Nullable MemorySegment SEGMENT$wgpuRenderPassEncoderMultiDrawIndirectCount;
     public final @Nullable MemorySegment SEGMENT$wgpuRenderPassEncoderPopDebugGroup;
     public final @Nullable MemorySegment SEGMENT$wgpuRenderPassEncoderPushDebugGroup;
     public final @Nullable MemorySegment SEGMENT$wgpuRenderPassEncoderRelease;
@@ -3378,10 +3797,12 @@ public final class WGPU implements WGPUConstants {
     public final @Nullable MemorySegment SEGMENT$wgpuRenderPassEncoderSetIndexBuffer;
     public final @Nullable MemorySegment SEGMENT$wgpuRenderPassEncoderSetLabel;
     public final @Nullable MemorySegment SEGMENT$wgpuRenderPassEncoderSetPipeline;
+    public final @Nullable MemorySegment SEGMENT$wgpuRenderPassEncoderSetPushConstants;
     public final @Nullable MemorySegment SEGMENT$wgpuRenderPassEncoderSetScissorRect;
     public final @Nullable MemorySegment SEGMENT$wgpuRenderPassEncoderSetStencilReference;
     public final @Nullable MemorySegment SEGMENT$wgpuRenderPassEncoderSetVertexBuffer;
     public final @Nullable MemorySegment SEGMENT$wgpuRenderPassEncoderSetViewport;
+    public final @Nullable MemorySegment SEGMENT$wgpuRenderPassEncoderWriteTimestamp;
     public final @Nullable MemorySegment SEGMENT$wgpuRenderPipelineAddRef;
     public final @Nullable MemorySegment SEGMENT$wgpuRenderPipelineGetBindGroupLayout;
     public final @Nullable MemorySegment SEGMENT$wgpuRenderPipelineRelease;
@@ -3389,6 +3810,8 @@ public final class WGPU implements WGPUConstants {
     public final @Nullable MemorySegment SEGMENT$wgpuSamplerAddRef;
     public final @Nullable MemorySegment SEGMENT$wgpuSamplerRelease;
     public final @Nullable MemorySegment SEGMENT$wgpuSamplerSetLabel;
+    public final @Nullable MemorySegment SEGMENT$wgpuSetLogCallback;
+    public final @Nullable MemorySegment SEGMENT$wgpuSetLogLevel;
     public final @Nullable MemorySegment SEGMENT$wgpuShaderModuleAddRef;
     public final @Nullable MemorySegment SEGMENT$wgpuShaderModuleGetCompilationInfo;
     public final @Nullable MemorySegment SEGMENT$wgpuShaderModuleRelease;
@@ -3461,9 +3884,11 @@ public final class WGPU implements WGPUConstants {
     public final @Nullable MethodHandle HANDLE$wgpuCommandEncoderSetLabel;
     public final @Nullable MethodHandle HANDLE$wgpuCommandEncoderWriteTimestamp;
     public final @Nullable MethodHandle HANDLE$wgpuComputePassEncoderAddRef;
+    public final @Nullable MethodHandle HANDLE$wgpuComputePassEncoderBeginPipelineStatisticsQuery;
     public final @Nullable MethodHandle HANDLE$wgpuComputePassEncoderDispatchWorkgroups;
     public final @Nullable MethodHandle HANDLE$wgpuComputePassEncoderDispatchWorkgroupsIndirect;
     public final @Nullable MethodHandle HANDLE$wgpuComputePassEncoderEnd;
+    public final @Nullable MethodHandle HANDLE$wgpuComputePassEncoderEndPipelineStatisticsQuery;
     public final @Nullable MethodHandle HANDLE$wgpuComputePassEncoderInsertDebugMarker;
     public final @Nullable MethodHandle HANDLE$wgpuComputePassEncoderPopDebugGroup;
     public final @Nullable MethodHandle HANDLE$wgpuComputePassEncoderPushDebugGroup;
@@ -3471,6 +3896,8 @@ public final class WGPU implements WGPUConstants {
     public final @Nullable MethodHandle HANDLE$wgpuComputePassEncoderSetBindGroup;
     public final @Nullable MethodHandle HANDLE$wgpuComputePassEncoderSetLabel;
     public final @Nullable MethodHandle HANDLE$wgpuComputePassEncoderSetPipeline;
+    public final @Nullable MethodHandle HANDLE$wgpuComputePassEncoderSetPushConstants;
+    public final @Nullable MethodHandle HANDLE$wgpuComputePassEncoderWriteTimestamp;
     public final @Nullable MethodHandle HANDLE$wgpuComputePipelineAddRef;
     public final @Nullable MethodHandle HANDLE$wgpuComputePipelineGetBindGroupLayout;
     public final @Nullable MethodHandle HANDLE$wgpuComputePipelineRelease;
@@ -3490,6 +3917,7 @@ public final class WGPU implements WGPUConstants {
     public final @Nullable MethodHandle HANDLE$wgpuDeviceCreateRenderPipelineAsync;
     public final @Nullable MethodHandle HANDLE$wgpuDeviceCreateSampler;
     public final @Nullable MethodHandle HANDLE$wgpuDeviceCreateShaderModule;
+    public final @Nullable MethodHandle HANDLE$wgpuDeviceCreateShaderModuleSpirV;
     public final @Nullable MethodHandle HANDLE$wgpuDeviceCreateTexture;
     public final @Nullable MethodHandle HANDLE$wgpuDeviceDestroy;
     public final @Nullable MethodHandle HANDLE$wgpuDeviceGetAdapterInfo;
@@ -3498,13 +3926,17 @@ public final class WGPU implements WGPUConstants {
     public final @Nullable MethodHandle HANDLE$wgpuDeviceGetLostFuture;
     public final @Nullable MethodHandle HANDLE$wgpuDeviceGetQueue;
     public final @Nullable MethodHandle HANDLE$wgpuDeviceHasFeature;
+    public final @Nullable MethodHandle HANDLE$wgpuDevicePoll;
     public final @Nullable MethodHandle HANDLE$wgpuDevicePopErrorScope;
     public final @Nullable MethodHandle HANDLE$wgpuDevicePushErrorScope;
     public final @Nullable MethodHandle HANDLE$wgpuDeviceRelease;
     public final @Nullable MethodHandle HANDLE$wgpuDeviceSetLabel;
+    public final @Nullable MethodHandle HANDLE$wgpuGenerateReport;
     public final @Nullable MethodHandle HANDLE$wgpuGetInstanceCapabilities;
+    public final @Nullable MethodHandle HANDLE$wgpuGetVersion;
     public final @Nullable MethodHandle HANDLE$wgpuInstanceAddRef;
     public final @Nullable MethodHandle HANDLE$wgpuInstanceCreateSurface;
+    public final @Nullable MethodHandle HANDLE$wgpuInstanceEnumerateAdapters;
     public final @Nullable MethodHandle HANDLE$wgpuInstanceGetWgslLanguageFeatures;
     public final @Nullable MethodHandle HANDLE$wgpuInstanceHasWgslLanguageFeature;
     public final @Nullable MethodHandle HANDLE$wgpuInstanceProcessEvents;
@@ -3525,6 +3957,7 @@ public final class WGPU implements WGPUConstants {
     public final @Nullable MethodHandle HANDLE$wgpuQueueRelease;
     public final @Nullable MethodHandle HANDLE$wgpuQueueSetLabel;
     public final @Nullable MethodHandle HANDLE$wgpuQueueSubmit;
+    public final @Nullable MethodHandle HANDLE$wgpuQueueSubmitForIndex;
     public final @Nullable MethodHandle HANDLE$wgpuQueueWriteBuffer;
     public final @Nullable MethodHandle HANDLE$wgpuQueueWriteTexture;
     public final @Nullable MethodHandle HANDLE$wgpuRenderBundleAddRef;
@@ -3542,19 +3975,26 @@ public final class WGPU implements WGPUConstants {
     public final @Nullable MethodHandle HANDLE$wgpuRenderBundleEncoderSetIndexBuffer;
     public final @Nullable MethodHandle HANDLE$wgpuRenderBundleEncoderSetLabel;
     public final @Nullable MethodHandle HANDLE$wgpuRenderBundleEncoderSetPipeline;
+    public final @Nullable MethodHandle HANDLE$wgpuRenderBundleEncoderSetPushConstants;
     public final @Nullable MethodHandle HANDLE$wgpuRenderBundleEncoderSetVertexBuffer;
     public final @Nullable MethodHandle HANDLE$wgpuRenderBundleRelease;
     public final @Nullable MethodHandle HANDLE$wgpuRenderBundleSetLabel;
     public final @Nullable MethodHandle HANDLE$wgpuRenderPassEncoderAddRef;
     public final @Nullable MethodHandle HANDLE$wgpuRenderPassEncoderBeginOcclusionQuery;
+    public final @Nullable MethodHandle HANDLE$wgpuRenderPassEncoderBeginPipelineStatisticsQuery;
     public final @Nullable MethodHandle HANDLE$wgpuRenderPassEncoderDraw;
     public final @Nullable MethodHandle HANDLE$wgpuRenderPassEncoderDrawIndexed;
     public final @Nullable MethodHandle HANDLE$wgpuRenderPassEncoderDrawIndexedIndirect;
     public final @Nullable MethodHandle HANDLE$wgpuRenderPassEncoderDrawIndirect;
     public final @Nullable MethodHandle HANDLE$wgpuRenderPassEncoderEnd;
     public final @Nullable MethodHandle HANDLE$wgpuRenderPassEncoderEndOcclusionQuery;
+    public final @Nullable MethodHandle HANDLE$wgpuRenderPassEncoderEndPipelineStatisticsQuery;
     public final @Nullable MethodHandle HANDLE$wgpuRenderPassEncoderExecuteBundles;
     public final @Nullable MethodHandle HANDLE$wgpuRenderPassEncoderInsertDebugMarker;
+    public final @Nullable MethodHandle HANDLE$wgpuRenderPassEncoderMultiDrawIndexedIndirect;
+    public final @Nullable MethodHandle HANDLE$wgpuRenderPassEncoderMultiDrawIndexedIndirectCount;
+    public final @Nullable MethodHandle HANDLE$wgpuRenderPassEncoderMultiDrawIndirect;
+    public final @Nullable MethodHandle HANDLE$wgpuRenderPassEncoderMultiDrawIndirectCount;
     public final @Nullable MethodHandle HANDLE$wgpuRenderPassEncoderPopDebugGroup;
     public final @Nullable MethodHandle HANDLE$wgpuRenderPassEncoderPushDebugGroup;
     public final @Nullable MethodHandle HANDLE$wgpuRenderPassEncoderRelease;
@@ -3563,10 +4003,12 @@ public final class WGPU implements WGPUConstants {
     public final @Nullable MethodHandle HANDLE$wgpuRenderPassEncoderSetIndexBuffer;
     public final @Nullable MethodHandle HANDLE$wgpuRenderPassEncoderSetLabel;
     public final @Nullable MethodHandle HANDLE$wgpuRenderPassEncoderSetPipeline;
+    public final @Nullable MethodHandle HANDLE$wgpuRenderPassEncoderSetPushConstants;
     public final @Nullable MethodHandle HANDLE$wgpuRenderPassEncoderSetScissorRect;
     public final @Nullable MethodHandle HANDLE$wgpuRenderPassEncoderSetStencilReference;
     public final @Nullable MethodHandle HANDLE$wgpuRenderPassEncoderSetVertexBuffer;
     public final @Nullable MethodHandle HANDLE$wgpuRenderPassEncoderSetViewport;
+    public final @Nullable MethodHandle HANDLE$wgpuRenderPassEncoderWriteTimestamp;
     public final @Nullable MethodHandle HANDLE$wgpuRenderPipelineAddRef;
     public final @Nullable MethodHandle HANDLE$wgpuRenderPipelineGetBindGroupLayout;
     public final @Nullable MethodHandle HANDLE$wgpuRenderPipelineRelease;
@@ -3574,6 +4016,8 @@ public final class WGPU implements WGPUConstants {
     public final @Nullable MethodHandle HANDLE$wgpuSamplerAddRef;
     public final @Nullable MethodHandle HANDLE$wgpuSamplerRelease;
     public final @Nullable MethodHandle HANDLE$wgpuSamplerSetLabel;
+    public final @Nullable MethodHandle HANDLE$wgpuSetLogCallback;
+    public final @Nullable MethodHandle HANDLE$wgpuSetLogLevel;
     public final @Nullable MethodHandle HANDLE$wgpuShaderModuleAddRef;
     public final @Nullable MethodHandle HANDLE$wgpuShaderModuleGetCompilationInfo;
     public final @Nullable MethodHandle HANDLE$wgpuShaderModuleRelease;
@@ -3627,7 +4071,7 @@ public final class WGPU implements WGPUConstants {
         );
 
         public static final FunctionDescriptor DESCRIPTOR$wgpuAdapterHasFeature = FunctionDescriptor.of(
-            ValueLayout.JAVA_BOOLEAN,
+            ValueLayout.JAVA_INT,
             ValueLayout.ADDRESS,
             ValueLayout.JAVA_INT
         );
@@ -3842,6 +4286,12 @@ public final class WGPU implements WGPUConstants {
             ValueLayout.ADDRESS
         );
 
+        public static final FunctionDescriptor DESCRIPTOR$wgpuComputePassEncoderBeginPipelineStatisticsQuery = FunctionDescriptor.ofVoid(
+            ValueLayout.ADDRESS,
+            ValueLayout.ADDRESS,
+            ValueLayout.JAVA_INT
+        );
+
         public static final FunctionDescriptor DESCRIPTOR$wgpuComputePassEncoderDispatchWorkgroups = FunctionDescriptor.ofVoid(
             ValueLayout.ADDRESS,
             ValueLayout.JAVA_INT,
@@ -3856,6 +4306,10 @@ public final class WGPU implements WGPUConstants {
         );
 
         public static final FunctionDescriptor DESCRIPTOR$wgpuComputePassEncoderEnd = FunctionDescriptor.ofVoid(
+            ValueLayout.ADDRESS
+        );
+
+        public static final FunctionDescriptor DESCRIPTOR$wgpuComputePassEncoderEndPipelineStatisticsQuery = FunctionDescriptor.ofVoid(
             ValueLayout.ADDRESS
         );
 
@@ -3893,6 +4347,19 @@ public final class WGPU implements WGPUConstants {
         public static final FunctionDescriptor DESCRIPTOR$wgpuComputePassEncoderSetPipeline = FunctionDescriptor.ofVoid(
             ValueLayout.ADDRESS,
             ValueLayout.ADDRESS
+        );
+
+        public static final FunctionDescriptor DESCRIPTOR$wgpuComputePassEncoderSetPushConstants = FunctionDescriptor.ofVoid(
+            ValueLayout.ADDRESS,
+            ValueLayout.JAVA_INT,
+            ValueLayout.JAVA_INT,
+            ValueLayout.ADDRESS
+        );
+
+        public static final FunctionDescriptor DESCRIPTOR$wgpuComputePassEncoderWriteTimestamp = FunctionDescriptor.ofVoid(
+            ValueLayout.ADDRESS,
+            ValueLayout.ADDRESS,
+            ValueLayout.JAVA_INT
         );
 
         public static final FunctionDescriptor DESCRIPTOR$wgpuComputePipelineAddRef = FunctionDescriptor.ofVoid(
@@ -4003,6 +4470,12 @@ public final class WGPU implements WGPUConstants {
             ValueLayout.ADDRESS.withTargetLayout(WGPUShaderModuleDescriptor.LAYOUT)
         );
 
+        public static final FunctionDescriptor DESCRIPTOR$wgpuDeviceCreateShaderModuleSpirV = FunctionDescriptor.of(
+            ValueLayout.ADDRESS,
+            ValueLayout.ADDRESS,
+            ValueLayout.ADDRESS.withTargetLayout(WGPUShaderModuleDescriptorSpirV.LAYOUT)
+        );
+
         public static final FunctionDescriptor DESCRIPTOR$wgpuDeviceCreateTexture = FunctionDescriptor.of(
             ValueLayout.ADDRESS,
             ValueLayout.ADDRESS,
@@ -4040,9 +4513,16 @@ public final class WGPU implements WGPUConstants {
         );
 
         public static final FunctionDescriptor DESCRIPTOR$wgpuDeviceHasFeature = FunctionDescriptor.of(
-            ValueLayout.JAVA_BOOLEAN,
+            ValueLayout.JAVA_INT,
             ValueLayout.ADDRESS,
             ValueLayout.JAVA_INT
+        );
+
+        public static final FunctionDescriptor DESCRIPTOR$wgpuDevicePoll = FunctionDescriptor.of(
+            ValueLayout.JAVA_INT,
+            ValueLayout.ADDRESS,
+            ValueLayout.JAVA_INT,
+            ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_LONG)
         );
 
         public static final FunctionDescriptor DESCRIPTOR$wgpuDevicePopErrorScope = FunctionDescriptor.of(
@@ -4065,9 +4545,18 @@ public final class WGPU implements WGPUConstants {
             WGPUStringView.LAYOUT
         );
 
+        public static final FunctionDescriptor DESCRIPTOR$wgpuGenerateReport = FunctionDescriptor.ofVoid(
+            ValueLayout.ADDRESS,
+            ValueLayout.ADDRESS.withTargetLayout(WGPUGlobalReport.LAYOUT)
+        );
+
         public static final FunctionDescriptor DESCRIPTOR$wgpuGetInstanceCapabilities = FunctionDescriptor.of(
             ValueLayout.JAVA_INT,
             ValueLayout.ADDRESS.withTargetLayout(WGPUInstanceCapabilities.LAYOUT)
+        );
+
+        public static final FunctionDescriptor DESCRIPTOR$wgpuGetVersion = FunctionDescriptor.of(
+            ValueLayout.JAVA_INT
         );
 
         public static final FunctionDescriptor DESCRIPTOR$wgpuInstanceAddRef = FunctionDescriptor.ofVoid(
@@ -4080,6 +4569,13 @@ public final class WGPU implements WGPUConstants {
             ValueLayout.ADDRESS.withTargetLayout(WGPUSurfaceDescriptor.LAYOUT)
         );
 
+        public static final FunctionDescriptor DESCRIPTOR$wgpuInstanceEnumerateAdapters = FunctionDescriptor.of(
+            NativeLayout.C_SIZE_T,
+            ValueLayout.ADDRESS,
+            ValueLayout.ADDRESS.withTargetLayout(WGPUInstanceEnumerateAdapterOptions.LAYOUT),
+            ValueLayout.ADDRESS.withTargetLayout(ValueLayout.ADDRESS)
+        );
+
         public static final FunctionDescriptor DESCRIPTOR$wgpuInstanceGetWgslLanguageFeatures = FunctionDescriptor.of(
             ValueLayout.JAVA_INT,
             ValueLayout.ADDRESS,
@@ -4087,7 +4583,7 @@ public final class WGPU implements WGPUConstants {
         );
 
         public static final FunctionDescriptor DESCRIPTOR$wgpuInstanceHasWgslLanguageFeature = FunctionDescriptor.of(
-            ValueLayout.JAVA_BOOLEAN,
+            ValueLayout.JAVA_INT,
             ValueLayout.ADDRESS,
             ValueLayout.JAVA_INT
         );
@@ -4175,6 +4671,13 @@ public final class WGPU implements WGPUConstants {
         );
 
         public static final FunctionDescriptor DESCRIPTOR$wgpuQueueSubmit = FunctionDescriptor.ofVoid(
+            ValueLayout.ADDRESS,
+            NativeLayout.C_SIZE_T,
+            ValueLayout.ADDRESS.withTargetLayout(ValueLayout.ADDRESS)
+        );
+
+        public static final FunctionDescriptor DESCRIPTOR$wgpuQueueSubmitForIndex = FunctionDescriptor.of(
+            ValueLayout.JAVA_LONG,
             ValueLayout.ADDRESS,
             NativeLayout.C_SIZE_T,
             ValueLayout.ADDRESS.withTargetLayout(ValueLayout.ADDRESS)
@@ -4284,6 +4787,14 @@ public final class WGPU implements WGPUConstants {
             ValueLayout.ADDRESS
         );
 
+        public static final FunctionDescriptor DESCRIPTOR$wgpuRenderBundleEncoderSetPushConstants = FunctionDescriptor.ofVoid(
+            ValueLayout.ADDRESS,
+            ValueLayout.JAVA_LONG,
+            ValueLayout.JAVA_INT,
+            ValueLayout.JAVA_INT,
+            ValueLayout.ADDRESS
+        );
+
         public static final FunctionDescriptor DESCRIPTOR$wgpuRenderBundleEncoderSetVertexBuffer = FunctionDescriptor.ofVoid(
             ValueLayout.ADDRESS,
             ValueLayout.JAVA_INT,
@@ -4306,6 +4817,12 @@ public final class WGPU implements WGPUConstants {
         );
 
         public static final FunctionDescriptor DESCRIPTOR$wgpuRenderPassEncoderBeginOcclusionQuery = FunctionDescriptor.ofVoid(
+            ValueLayout.ADDRESS,
+            ValueLayout.JAVA_INT
+        );
+
+        public static final FunctionDescriptor DESCRIPTOR$wgpuRenderPassEncoderBeginPipelineStatisticsQuery = FunctionDescriptor.ofVoid(
+            ValueLayout.ADDRESS,
             ValueLayout.ADDRESS,
             ValueLayout.JAVA_INT
         );
@@ -4347,6 +4864,10 @@ public final class WGPU implements WGPUConstants {
             ValueLayout.ADDRESS
         );
 
+        public static final FunctionDescriptor DESCRIPTOR$wgpuRenderPassEncoderEndPipelineStatisticsQuery = FunctionDescriptor.ofVoid(
+            ValueLayout.ADDRESS
+        );
+
         public static final FunctionDescriptor DESCRIPTOR$wgpuRenderPassEncoderExecuteBundles = FunctionDescriptor.ofVoid(
             ValueLayout.ADDRESS,
             NativeLayout.C_SIZE_T,
@@ -4356,6 +4877,38 @@ public final class WGPU implements WGPUConstants {
         public static final FunctionDescriptor DESCRIPTOR$wgpuRenderPassEncoderInsertDebugMarker = FunctionDescriptor.ofVoid(
             ValueLayout.ADDRESS,
             WGPUStringView.LAYOUT
+        );
+
+        public static final FunctionDescriptor DESCRIPTOR$wgpuRenderPassEncoderMultiDrawIndexedIndirect = FunctionDescriptor.ofVoid(
+            ValueLayout.ADDRESS,
+            ValueLayout.ADDRESS,
+            ValueLayout.JAVA_LONG,
+            ValueLayout.JAVA_INT
+        );
+
+        public static final FunctionDescriptor DESCRIPTOR$wgpuRenderPassEncoderMultiDrawIndexedIndirectCount = FunctionDescriptor.ofVoid(
+            ValueLayout.ADDRESS,
+            ValueLayout.ADDRESS,
+            ValueLayout.JAVA_LONG,
+            ValueLayout.ADDRESS,
+            ValueLayout.JAVA_LONG,
+            ValueLayout.JAVA_INT
+        );
+
+        public static final FunctionDescriptor DESCRIPTOR$wgpuRenderPassEncoderMultiDrawIndirect = FunctionDescriptor.ofVoid(
+            ValueLayout.ADDRESS,
+            ValueLayout.ADDRESS,
+            ValueLayout.JAVA_LONG,
+            ValueLayout.JAVA_INT
+        );
+
+        public static final FunctionDescriptor DESCRIPTOR$wgpuRenderPassEncoderMultiDrawIndirectCount = FunctionDescriptor.ofVoid(
+            ValueLayout.ADDRESS,
+            ValueLayout.ADDRESS,
+            ValueLayout.JAVA_LONG,
+            ValueLayout.ADDRESS,
+            ValueLayout.JAVA_LONG,
+            ValueLayout.JAVA_INT
         );
 
         public static final FunctionDescriptor DESCRIPTOR$wgpuRenderPassEncoderPopDebugGroup = FunctionDescriptor.ofVoid(
@@ -4402,6 +4955,14 @@ public final class WGPU implements WGPUConstants {
             ValueLayout.ADDRESS
         );
 
+        public static final FunctionDescriptor DESCRIPTOR$wgpuRenderPassEncoderSetPushConstants = FunctionDescriptor.ofVoid(
+            ValueLayout.ADDRESS,
+            ValueLayout.JAVA_LONG,
+            ValueLayout.JAVA_INT,
+            ValueLayout.JAVA_INT,
+            ValueLayout.ADDRESS
+        );
+
         public static final FunctionDescriptor DESCRIPTOR$wgpuRenderPassEncoderSetScissorRect = FunctionDescriptor.ofVoid(
             ValueLayout.ADDRESS,
             ValueLayout.JAVA_INT,
@@ -4431,6 +4992,12 @@ public final class WGPU implements WGPUConstants {
             ValueLayout.JAVA_FLOAT,
             ValueLayout.JAVA_FLOAT,
             ValueLayout.JAVA_FLOAT
+        );
+
+        public static final FunctionDescriptor DESCRIPTOR$wgpuRenderPassEncoderWriteTimestamp = FunctionDescriptor.ofVoid(
+            ValueLayout.ADDRESS,
+            ValueLayout.ADDRESS,
+            ValueLayout.JAVA_INT
         );
 
         public static final FunctionDescriptor DESCRIPTOR$wgpuRenderPipelineAddRef = FunctionDescriptor.ofVoid(
@@ -4463,6 +5030,15 @@ public final class WGPU implements WGPUConstants {
         public static final FunctionDescriptor DESCRIPTOR$wgpuSamplerSetLabel = FunctionDescriptor.ofVoid(
             ValueLayout.ADDRESS,
             WGPUStringView.LAYOUT
+        );
+
+        public static final FunctionDescriptor DESCRIPTOR$wgpuSetLogCallback = FunctionDescriptor.ofVoid(
+            ValueLayout.ADDRESS,
+            ValueLayout.ADDRESS
+        );
+
+        public static final FunctionDescriptor DESCRIPTOR$wgpuSetLogLevel = FunctionDescriptor.ofVoid(
+            ValueLayout.JAVA_INT
         );
 
         public static final FunctionDescriptor DESCRIPTOR$wgpuShaderModuleAddRef = FunctionDescriptor.ofVoid(

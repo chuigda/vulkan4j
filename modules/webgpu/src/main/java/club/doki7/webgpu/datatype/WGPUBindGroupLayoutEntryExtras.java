@@ -18,15 +18,15 @@ import club.doki7.webgpu.handle.*;
 import club.doki7.webgpu.enumtype.*;
 import static club.doki7.webgpu.WGPUConstants.*;
 
-/// Represents a pointer to a {@code WGPUFutureWaitInfo} structure in native memory.
+/// Represents a pointer to a {@code WGPUBindGroupLayoutEntryExtras} structure in native memory.
 ///
 /// ## Structure
 ///
 /// {@snippet lang=c :
-/// typedef struct WGPUFutureWaitInfo {
-///     WGPUFuture future; // @link substring="WGPUFuture" target="WGPUFuture" @link substring="future" target="#future"
-///     WGPUBool completed; // @link substring="completed" target="#completed"
-/// } WGPUFutureWaitInfo;
+/// typedef struct WGPUBindGroupLayoutEntryExtras {
+///     WGPUChainedStruct chain; // @link substring="WGPUChainedStruct" target="WGPUChainedStruct" @link substring="chain" target="#chain"
+///     uint32_t count; // @link substring="count" target="#count"
+/// } WGPUBindGroupLayoutEntryExtras;
 /// }
 ///
 /// ## Contracts
@@ -40,29 +40,29 @@ import static club.doki7.webgpu.WGPUConstants.*;
 /// perform any runtime check. The constructor can be useful for automatic code generators.
 @ValueBasedCandidate
 @UnsafeConstructor
-public record WGPUFutureWaitInfo(@NotNull MemorySegment segment) implements IWGPUFutureWaitInfo {
+public record WGPUBindGroupLayoutEntryExtras(@NotNull MemorySegment segment) implements IWGPUBindGroupLayoutEntryExtras {
     /// Represents a pointer to / an array of null structure(s) in native memory.
     ///
-    /// Technically speaking, this type has no difference with {@link WGPUFutureWaitInfo}. This type
+    /// Technically speaking, this type has no difference with {@link WGPUBindGroupLayoutEntryExtras}. This type
     /// is introduced mainly for user to distinguish between a pointer to a single structure
     /// and a pointer to (potentially) an array of structure(s). APIs should use interface
-    /// IWGPUFutureWaitInfo to handle both types uniformly. See package level documentation for more
+    /// IWGPUBindGroupLayoutEntryExtras to handle both types uniformly. See package level documentation for more
     /// details.
     ///
     /// ## Contracts
     ///
     /// The property {@link #segment()} should always be not-null
     /// ({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to
-    /// {@code WGPUFutureWaitInfo.LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+    /// {@code WGPUBindGroupLayoutEntryExtras.LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
     /// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
     ///
     /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
     /// perform any runtime check. The constructor can be useful for automatic code generators.
     @ValueBasedCandidate
     @UnsafeConstructor
-    public record Ptr(@NotNull MemorySegment segment) implements IWGPUFutureWaitInfo, Iterable<WGPUFutureWaitInfo> {
+    public record Ptr(@NotNull MemorySegment segment) implements IWGPUBindGroupLayoutEntryExtras, Iterable<WGPUBindGroupLayoutEntryExtras> {
         public long size() {
-            return segment.byteSize() / WGPUFutureWaitInfo.BYTES;
+            return segment.byteSize() / WGPUBindGroupLayoutEntryExtras.BYTES;
         }
 
         /// Returns (a pointer to) the structure at the given index.
@@ -71,17 +71,17 @@ public record WGPUFutureWaitInfo(@NotNull MemorySegment segment) implements IWGP
         /// example), modification on returned structure will be reflected on the original
         /// structure array. So this function is called {@code at} to explicitly
         /// indicate that the returned structure is a view of the original structure.
-        public @NotNull WGPUFutureWaitInfo at(long index) {
-            return new WGPUFutureWaitInfo(segment.asSlice(index * WGPUFutureWaitInfo.BYTES, WGPUFutureWaitInfo.BYTES));
+        public @NotNull WGPUBindGroupLayoutEntryExtras at(long index) {
+            return new WGPUBindGroupLayoutEntryExtras(segment.asSlice(index * WGPUBindGroupLayoutEntryExtras.BYTES, WGPUBindGroupLayoutEntryExtras.BYTES));
         }
 
-        public WGPUFutureWaitInfo.Ptr at(long index, @NotNull Consumer<@NotNull WGPUFutureWaitInfo> consumer) {
+        public WGPUBindGroupLayoutEntryExtras.Ptr at(long index, @NotNull Consumer<@NotNull WGPUBindGroupLayoutEntryExtras> consumer) {
             consumer.accept(at(index));
             return this;
         }
 
-        public void write(long index, @NotNull WGPUFutureWaitInfo value) {
-            MemorySegment s = segment.asSlice(index * WGPUFutureWaitInfo.BYTES, WGPUFutureWaitInfo.BYTES);
+        public void write(long index, @NotNull WGPUBindGroupLayoutEntryExtras value) {
+            MemorySegment s = segment.asSlice(index * WGPUBindGroupLayoutEntryExtras.BYTES, WGPUBindGroupLayoutEntryExtras.BYTES);
             s.copyFrom(value.segment);
         }
 
@@ -99,11 +99,11 @@ public record WGPUFutureWaitInfo(@NotNull MemorySegment segment) implements IWGP
         /// instead.
         @Unsafe
         public @NotNull Ptr reinterpret(long newSize) {
-            return new Ptr(segment.reinterpret(newSize * WGPUFutureWaitInfo.BYTES));
+            return new Ptr(segment.reinterpret(newSize * WGPUBindGroupLayoutEntryExtras.BYTES));
         }
 
         public @NotNull Ptr offset(long offset) {
-            return new Ptr(segment.asSlice(offset * WGPUFutureWaitInfo.BYTES));
+            return new Ptr(segment.asSlice(offset * WGPUBindGroupLayoutEntryExtras.BYTES));
         }
 
         /// Note that this function uses the {@link List#subList(int, int)} semantics (left inclusive,
@@ -111,17 +111,17 @@ public record WGPUFutureWaitInfo(@NotNull MemorySegment segment) implements IWGP
         /// (offset + newSize). Be careful with the difference
         public @NotNull Ptr slice(long start, long end) {
             return new Ptr(segment.asSlice(
-                start * WGPUFutureWaitInfo.BYTES,
-                (end - start) * WGPUFutureWaitInfo.BYTES
+                start * WGPUBindGroupLayoutEntryExtras.BYTES,
+                (end - start) * WGPUBindGroupLayoutEntryExtras.BYTES
             ));
         }
 
         public Ptr slice(long end) {
-            return new Ptr(segment.asSlice(0, end * WGPUFutureWaitInfo.BYTES));
+            return new Ptr(segment.asSlice(0, end * WGPUBindGroupLayoutEntryExtras.BYTES));
         }
 
-        public WGPUFutureWaitInfo[] toArray() {
-            WGPUFutureWaitInfo[] ret = new WGPUFutureWaitInfo[(int) size()];
+        public WGPUBindGroupLayoutEntryExtras[] toArray() {
+            WGPUBindGroupLayoutEntryExtras[] ret = new WGPUBindGroupLayoutEntryExtras[(int) size()];
             for (long i = 0; i < size(); i++) {
                 ret[(int) i] = at(i);
             }
@@ -129,28 +129,28 @@ public record WGPUFutureWaitInfo(@NotNull MemorySegment segment) implements IWGP
         }
 
         @Override
-        public @NotNull Iterator<WGPUFutureWaitInfo> iterator() {
+        public @NotNull Iterator<WGPUBindGroupLayoutEntryExtras> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        private static final class Iter implements Iterator<WGPUFutureWaitInfo> {
+        private static final class Iter implements Iterator<WGPUBindGroupLayoutEntryExtras> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }
 
             @Override
             public boolean hasNext() {
-                return segment.byteSize() >= WGPUFutureWaitInfo.BYTES;
+                return segment.byteSize() >= WGPUBindGroupLayoutEntryExtras.BYTES;
             }
 
             @Override
-            public WGPUFutureWaitInfo next() {
+            public WGPUBindGroupLayoutEntryExtras next() {
                 if (!hasNext()) {
                     throw new NoSuchElementException();
                 }
-                WGPUFutureWaitInfo ret = new WGPUFutureWaitInfo(segment.asSlice(0, WGPUFutureWaitInfo.BYTES));
-                segment = segment.asSlice(WGPUFutureWaitInfo.BYTES);
+                WGPUBindGroupLayoutEntryExtras ret = new WGPUBindGroupLayoutEntryExtras(segment.asSlice(0, WGPUBindGroupLayoutEntryExtras.BYTES));
+                segment = segment.asSlice(WGPUBindGroupLayoutEntryExtras.BYTES);
                 return ret;
             }
 
@@ -158,59 +158,59 @@ public record WGPUFutureWaitInfo(@NotNull MemorySegment segment) implements IWGP
         }
     }
 
-    public static WGPUFutureWaitInfo allocate(Arena arena) {
-        return new WGPUFutureWaitInfo(arena.allocate(LAYOUT));
+    public static WGPUBindGroupLayoutEntryExtras allocate(Arena arena) {
+        return new WGPUBindGroupLayoutEntryExtras(arena.allocate(LAYOUT));
     }
 
-    public static WGPUFutureWaitInfo.Ptr allocate(Arena arena, long count) {
+    public static WGPUBindGroupLayoutEntryExtras.Ptr allocate(Arena arena, long count) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
-        return new WGPUFutureWaitInfo.Ptr(segment);
+        return new WGPUBindGroupLayoutEntryExtras.Ptr(segment);
     }
 
-    public static WGPUFutureWaitInfo clone(Arena arena, WGPUFutureWaitInfo src) {
-        WGPUFutureWaitInfo ret = allocate(arena);
+    public static WGPUBindGroupLayoutEntryExtras clone(Arena arena, WGPUBindGroupLayoutEntryExtras src) {
+        WGPUBindGroupLayoutEntryExtras ret = allocate(arena);
         ret.segment.copyFrom(src.segment);
         return ret;
     }
 
-    public @NotNull WGPUFuture future() {
-        return new WGPUFuture(segment.asSlice(OFFSET$future, LAYOUT$future));
+    public @NotNull WGPUChainedStruct chain() {
+        return new WGPUChainedStruct(segment.asSlice(OFFSET$chain, LAYOUT$chain));
     }
 
-    public WGPUFutureWaitInfo future(@NotNull WGPUFuture value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$future, SIZE$future);
+    public WGPUBindGroupLayoutEntryExtras chain(@NotNull WGPUChainedStruct value) {
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$chain, SIZE$chain);
         return this;
     }
 
-    public WGPUFutureWaitInfo future(Consumer<@NotNull WGPUFuture> consumer) {
-        consumer.accept(future());
+    public WGPUBindGroupLayoutEntryExtras chain(Consumer<@NotNull WGPUChainedStruct> consumer) {
+        consumer.accept(chain());
         return this;
     }
 
-    public @NativeType("WGPUBool") @Unsigned int completed() {
-        return segment.get(LAYOUT$completed, OFFSET$completed);
+    public @Unsigned int count() {
+        return segment.get(LAYOUT$count, OFFSET$count);
     }
 
-    public WGPUFutureWaitInfo completed(@NativeType("WGPUBool") @Unsigned int value) {
-        segment.set(LAYOUT$completed, OFFSET$completed, value);
+    public WGPUBindGroupLayoutEntryExtras count(@Unsigned int value) {
+        segment.set(LAYOUT$count, OFFSET$count, value);
         return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(
-        WGPUFuture.LAYOUT.withName("future"),
-        ValueLayout.JAVA_INT.withName("completed")
+        WGPUChainedStruct.LAYOUT.withName("chain"),
+        ValueLayout.JAVA_INT.withName("count")
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$future = PathElement.groupElement("future");
-    public static final PathElement PATH$completed = PathElement.groupElement("completed");
+    public static final PathElement PATH$chain = PathElement.groupElement("chain");
+    public static final PathElement PATH$count = PathElement.groupElement("count");
 
-    public static final StructLayout LAYOUT$future = (StructLayout) LAYOUT.select(PATH$future);
-    public static final OfInt LAYOUT$completed = (OfInt) LAYOUT.select(PATH$completed);
+    public static final StructLayout LAYOUT$chain = (StructLayout) LAYOUT.select(PATH$chain);
+    public static final OfInt LAYOUT$count = (OfInt) LAYOUT.select(PATH$count);
 
-    public static final long SIZE$future = LAYOUT$future.byteSize();
-    public static final long SIZE$completed = LAYOUT$completed.byteSize();
+    public static final long SIZE$chain = LAYOUT$chain.byteSize();
+    public static final long SIZE$count = LAYOUT$count.byteSize();
 
-    public static final long OFFSET$future = LAYOUT.byteOffset(PATH$future);
-    public static final long OFFSET$completed = LAYOUT.byteOffset(PATH$completed);
+    public static final long OFFSET$chain = LAYOUT.byteOffset(PATH$chain);
+    public static final long OFFSET$count = LAYOUT.byteOffset(PATH$count);
 }

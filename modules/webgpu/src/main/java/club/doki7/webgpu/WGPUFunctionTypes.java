@@ -43,6 +43,12 @@ public final class WGPUFunctionTypes {
         ValueLayout.ADDRESS
     );
 
+    public static final FunctionDescriptor WGPULogCallback = FunctionDescriptor.ofVoid(
+        ValueLayout.JAVA_INT,
+        WGPUStringView.LAYOUT,
+        ValueLayout.ADDRESS
+    );
+
     public static final FunctionDescriptor WGPUPopErrorScopeCallback = FunctionDescriptor.ofVoid(
         ValueLayout.JAVA_INT,
         ValueLayout.JAVA_INT,
