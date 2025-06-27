@@ -372,7 +372,7 @@ private val wCharType = CPlatformDependentIntType(
     cType = "wchar_t",
     jTypeNoAnnotation = "int",
     jLayout = "NativeLayout.WCHAR_T",
-    jPtrTypeNoAnnotation = "TODOPtr"            // TODO
+    jPtrTypeNoAnnotation = "WCharPtr"
 )
 
 private fun pvoidType(comment: String) = CPointerType(voidType, const = false, pointerToOne = false, comment = comment)
