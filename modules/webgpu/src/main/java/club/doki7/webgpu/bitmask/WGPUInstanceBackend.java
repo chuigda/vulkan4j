@@ -14,8 +14,8 @@ public final class WGPUInstanceBackend {
     public static final long GL = 0x2L;
     public static final long Metal = 0x4L;
     public static final long Vulkan = 0x1L;
-    public static final long Secondary = (1L << 1) | (1L << 4)L;
-    public static final long Primary = (1L << 0) | (1L << 2) | (1L << 3) | (1L << 5)L;
+    public static final long Secondary = (1L << 1) | (1L << 4);
+    public static final long Primary = (1L << 0) | (1L << 2) | (1L << 3) | (1L << 5);
 
     public static String explain(@Bitmask(WGPUInstanceBackend.class) long flags) {
         List<String> detectedFlagBits = new ArrayList<>();
