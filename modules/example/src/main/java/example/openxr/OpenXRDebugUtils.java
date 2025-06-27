@@ -35,7 +35,7 @@ public final class OpenXRDebugUtils {
     /// @param arena must live long enough after [XrDebugUtilsMessengerEXT] is destroyed
     public static @NotNull XrDebugUtilsMessengerEXT createOpenXRDebugUtilsMessenger(@NotNull OpenXRContext context, @NotNull Arena arena) {
         try (var local = Arena.ofConfined()) {
-            var lookup = MethodHandles.publicLookup();
+            var lookup = MethodHandles.lookup();
             var handle = lookup.findStatic(
                     OpenXRDebugUtils.class,
                     "openXRMessageCallback",

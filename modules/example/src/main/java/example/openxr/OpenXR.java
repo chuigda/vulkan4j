@@ -57,7 +57,7 @@ public final class OpenXR implements OpenXRContext, AutoCloseable {
             openxr.createInstance();
             openxr.printInstanceProperties();
             openxr.getSystemProperties();
-//            openxr.createDebugMessenger();
+            openxr.createDebugMessenger();
             openxr.createSession();
 
             while (openxr.applicationRunning) {
@@ -96,9 +96,11 @@ public final class OpenXR implements OpenXRContext, AutoCloseable {
     }
 
     public void destroyInstance() {
-        xr().destroyInstance(instance());
-        // TODO: should we unload xr?
-//        this.xr = null;
+        if (xr != null && instance != null) {
+            xr.destroyInstance(instance);
+            // TODO: should we unload xr?
+            //        this.xr = null;
+        }
     }
 
     public void createDebugMessenger() {
@@ -249,6 +251,8 @@ public final class OpenXR implements OpenXRContext, AutoCloseable {
     public void close() {
         destroySession();       // destroy before instance
         destroyDebugMessenger();
+
+        if (graphicsApi != null) graphicsApi.close();
         destroyInstance();
     }
 }

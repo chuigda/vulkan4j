@@ -53,6 +53,10 @@ public class GraphicsApi implements AutoCloseable {
         }
     }
 
+    public static boolean BitwiseCheck(int left, int right) {
+        return (left & right) == right;
+    }
+
     public GraphicsApi(@NotNull ISharedLibrary libVulkan, @NotNull OpenXRContext context, @NativeType("XrSystemId") long systemId) {
         this.global = Arena.ofConfined();
         this.context = context;
@@ -106,9 +110,18 @@ public class GraphicsApi implements AutoCloseable {
                     "Failed to enumerate PhysicalDevices."
             );
 
+            pPhysicalDevices.forEach(d -> {
+                var pdp = VkPhysicalDeviceProperties.allocate(local);
+                vkInstance.getPhysicalDeviceProperties(d, pdp);
+                printDeviceProperties(pdp);
+            });
+
             // is it possible that physicalDeviceCount == 0
 
+            System.out.println("Physical Device Count: " + physicalDeviceCount);
             physicalDevice = Objects.requireNonNull(pPhysicalDevices.read());
+
+
 //            var physicalDeviceFromXR = VkPhysicalDevice.Ptr.allocate(local);
 //            OPENXR_CHECK(
 //                    context.xr().getVulkanGraphicsDeviceKHR(context.instance(), systemId, instance, physicalDeviceFromXR),
@@ -148,7 +161,7 @@ public class GraphicsApi implements AutoCloseable {
                         .queueCount(queueCount)
                         .pQueuePriorities(FloatPtr.allocate(local, queuePriorities));
 
-                if (queueFamilyIndex == -1 && queueIndex == -1 && (property.queueFlags() & VkQueueFlags.GRAPHICS) == VkQueueFlags.GRAPHICS) {
+                if (queueFamilyIndex == -1 && queueIndex == -1 && BitwiseCheck(property.queueFlags(), VkQueueFlags.GRAPHICS)) {
                     queueFamilyIndex = i;
                     queueIndex = 0;
                 }
@@ -177,6 +190,12 @@ public class GraphicsApi implements AutoCloseable {
 
     private @NotNull VkInstance instance() {
         return Objects.requireNonNull(instance);
+    }
+
+    private void printDeviceProperties(@NotNull VkPhysicalDeviceProperties p) {
+        System.out.println("Device Name: " + p.deviceName().readString());
+        System.out.println("Device ID: " + p.deviceID());
+        System.out.println("Device Type: " + p.deviceType());
     }
 
     public @NotNull XrGraphicsBindingVulkanKHR getGraphicsBinding() {
