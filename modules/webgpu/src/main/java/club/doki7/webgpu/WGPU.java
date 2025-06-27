@@ -1108,16 +1108,16 @@ public final class WGPU implements WGPUConstants {
         }
     }
 
-    public void wgpuComputePassEncoderBeginPipelineStatisticsQuery(
-        WGPUComputePassEncoder computePassEncoder,
-        WGPUQuerySet querySet,
+    public void computePassEncoderBeginPipelineStatisticsQuery(
+        @Nullable WGPUComputePassEncoder computePassEncoder,
+        @Nullable WGPUQuerySet querySet,
         @Unsigned int queryIndex
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$wgpuComputePassEncoderBeginPipelineStatisticsQuery);
         try {
             hFunction.invokeExact(
-                computePassEncoder.segment(),
-                querySet.segment(),
+                (MemorySegment) (computePassEncoder != null ? computePassEncoder.segment() : MemorySegment.NULL),
+                (MemorySegment) (querySet != null ? querySet.segment() : MemorySegment.NULL),
                 queryIndex
             );
         } catch (Throwable e) {
@@ -1174,13 +1174,13 @@ public final class WGPU implements WGPUConstants {
         }
     }
 
-    public void wgpuComputePassEncoderEndPipelineStatisticsQuery(
-        WGPUComputePassEncoder computePassEncoder
+    public void computePassEncoderEndPipelineStatisticsQuery(
+        @Nullable WGPUComputePassEncoder computePassEncoder
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$wgpuComputePassEncoderEndPipelineStatisticsQuery);
         try {
             hFunction.invokeExact(
-                computePassEncoder.segment()
+                (MemorySegment) (computePassEncoder != null ? computePassEncoder.segment() : MemorySegment.NULL)
             );
         } catch (Throwable e) {
             throw new RuntimeException(e);
@@ -1294,8 +1294,8 @@ public final class WGPU implements WGPUConstants {
         }
     }
 
-    public void wgpuComputePassEncoderSetPushConstants(
-        WGPUComputePassEncoder encoder,
+    public void computePassEncoderSetPushConstants(
+        @Nullable WGPUComputePassEncoder encoder,
         @Unsigned int offset,
         @Unsigned int sizeBytes,
         @Pointer(comment="void*") @NotNull MemorySegment data
@@ -1303,7 +1303,7 @@ public final class WGPU implements WGPUConstants {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$wgpuComputePassEncoderSetPushConstants);
         try {
             hFunction.invokeExact(
-                encoder.segment(),
+                (MemorySegment) (encoder != null ? encoder.segment() : MemorySegment.NULL),
                 offset,
                 sizeBytes,
                 data
@@ -1313,16 +1313,16 @@ public final class WGPU implements WGPUConstants {
         }
     }
 
-    public void wgpuComputePassEncoderWriteTimestamp(
-        WGPUComputePassEncoder computePassEncoder,
-        WGPUQuerySet querySet,
+    public void computePassEncoderWriteTimestamp(
+        @Nullable WGPUComputePassEncoder computePassEncoder,
+        @Nullable WGPUQuerySet querySet,
         @Unsigned int queryIndex
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$wgpuComputePassEncoderWriteTimestamp);
         try {
             hFunction.invokeExact(
-                computePassEncoder.segment(),
-                querySet.segment(),
+                (MemorySegment) (computePassEncoder != null ? computePassEncoder.segment() : MemorySegment.NULL),
+                (MemorySegment) (querySet != null ? querySet.segment() : MemorySegment.NULL),
                 queryIndex
             );
         } catch (Throwable e) {
@@ -1628,15 +1628,15 @@ public final class WGPU implements WGPUConstants {
         }
     }
 
-    public @Nullable WGPUShaderModule wgpuDeviceCreateShaderModuleSpirV(
-        WGPUDevice device,
-        @Pointer IWGPUShaderModuleDescriptorSpirV descriptor
+    public @Nullable WGPUShaderModule deviceCreateShaderModuleSpirV(
+        @Nullable WGPUDevice device,
+        @Nullable @Pointer IWGPUShaderModuleDescriptorSpirV descriptor
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$wgpuDeviceCreateShaderModuleSpirV);
         try {
             MemorySegment s = (MemorySegment) hFunction.invokeExact(
-                device.segment(),
-                descriptor.segment()
+                (MemorySegment) (device != null ? device.segment() : MemorySegment.NULL),
+                (MemorySegment) (descriptor != null ? descriptor.segment() : MemorySegment.NULL)
             );
             return s.equals(MemorySegment.NULL) ? null : new WGPUShaderModule(s);
         } catch (Throwable e) {
@@ -1762,17 +1762,17 @@ public final class WGPU implements WGPUConstants {
         }
     }
 
-    public @NativeType("WGPUBool") @Unsigned int wgpuDevicePoll(
-        WGPUDevice device,
+    public @NativeType("WGPUBool") @Unsigned int devicePoll(
+        @Nullable WGPUDevice device,
         @NativeType("WGPUBool") @Unsigned int wait,
-        @Pointer(comment="WGPUSubmissionIndex") @Unsigned LongPtr submissionIndex
+        @Nullable @Pointer(comment="WGPUSubmissionIndex") @Unsigned LongPtr submissionIndex
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$wgpuDevicePoll);
         try {
             return (int) hFunction.invokeExact(
-                device.segment(),
+                (MemorySegment) (device != null ? device.segment() : MemorySegment.NULL),
                 wait,
-                submissionIndex.segment()
+                (MemorySegment) (submissionIndex != null ? submissionIndex.segment() : MemorySegment.NULL)
             );
         } catch (Throwable e) {
             throw new RuntimeException(e);
@@ -1839,15 +1839,15 @@ public final class WGPU implements WGPUConstants {
         }
     }
 
-    public void wgpuGenerateReport(
-        WGPUInstance instance,
-        @Pointer IWGPUGlobalReport report
+    public void generateReport(
+        @Nullable WGPUInstance instance,
+        @Nullable @Pointer IWGPUGlobalReport report
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$wgpuGenerateReport);
         try {
             hFunction.invokeExact(
-                instance.segment(),
-                report.segment()
+                (MemorySegment) (instance != null ? instance.segment() : MemorySegment.NULL),
+                (MemorySegment) (report != null ? report.segment() : MemorySegment.NULL)
             );
         } catch (Throwable e) {
             throw new RuntimeException(e);
@@ -1867,7 +1867,7 @@ public final class WGPU implements WGPUConstants {
         }
     }
 
-    public @Unsigned int wgpuGetVersion() {
+    public @Unsigned int getVersion() {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$wgpuGetVersion);
         try {
             return (int) hFunction.invokeExact(
@@ -1906,17 +1906,17 @@ public final class WGPU implements WGPUConstants {
         }
     }
 
-    public long wgpuInstanceEnumerateAdapters(
-        WGPUInstance instance,
-        @Pointer IWGPUInstanceEnumerateAdapterOptions options,
-        @Pointer WGPUAdapter.Ptr adapters
+    public long instanceEnumerateAdapters(
+        @Nullable WGPUInstance instance,
+        @Nullable @Pointer IWGPUInstanceEnumerateAdapterOptions options,
+        @Nullable @Pointer WGPUAdapter.Ptr adapters
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$wgpuInstanceEnumerateAdapters);
         try {
             MemorySegment s = (MemorySegment) hFunction.invokeExact(
-                instance.segment(),
-                options.segment(),
-                adapters.segment()
+                (MemorySegment) (instance != null ? instance.segment() : MemorySegment.NULL),
+                (MemorySegment) (options != null ? options.segment() : MemorySegment.NULL),
+                (MemorySegment) (adapters != null ? adapters.segment() : MemorySegment.NULL)
             );
             return s.address();
         } catch (Throwable e) {
@@ -2214,17 +2214,17 @@ public final class WGPU implements WGPUConstants {
         }
     }
 
-    public @NativeType("WGPUSubmissionIndex") @Unsigned long wgpuQueueSubmitForIndex(
-        WGPUQueue queue,
+    public @NativeType("WGPUSubmissionIndex") @Unsigned long queueSubmitForIndex(
+        @Nullable WGPUQueue queue,
         long commandCount,
-        @Pointer WGPUCommandBuffer.Ptr commands
+        @Nullable @Pointer WGPUCommandBuffer.Ptr commands
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$wgpuQueueSubmitForIndex);
         try {
             return (long) hFunction.invokeExact(
-                queue.segment(),
+                (MemorySegment) (queue != null ? queue.segment() : MemorySegment.NULL),
                 MemorySegment.ofAddress(commandCount),
-                commands.segment()
+                (MemorySegment) (commands != null ? commands.segment() : MemorySegment.NULL)
             );
         } catch (Throwable e) {
             throw new RuntimeException(e);
@@ -2523,8 +2523,8 @@ public final class WGPU implements WGPUConstants {
         }
     }
 
-    public void wgpuRenderBundleEncoderSetPushConstants(
-        WGPURenderBundleEncoder encoder,
+    public void renderBundleEncoderSetPushConstants(
+        @Nullable WGPURenderBundleEncoder encoder,
         @Bitmask(WGPUShaderStage.class) long stages,
         @Unsigned int offset,
         @Unsigned int sizeBytes,
@@ -2533,7 +2533,7 @@ public final class WGPU implements WGPUConstants {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$wgpuRenderBundleEncoderSetPushConstants);
         try {
             hFunction.invokeExact(
-                encoder.segment(),
+                (MemorySegment) (encoder != null ? encoder.segment() : MemorySegment.NULL),
                 stages,
                 offset,
                 sizeBytes,
@@ -2621,16 +2621,16 @@ public final class WGPU implements WGPUConstants {
         }
     }
 
-    public void wgpuRenderPassEncoderBeginPipelineStatisticsQuery(
-        WGPURenderPassEncoder renderPassEncoder,
-        WGPUQuerySet querySet,
+    public void renderPassEncoderBeginPipelineStatisticsQuery(
+        @Nullable WGPURenderPassEncoder renderPassEncoder,
+        @Nullable WGPUQuerySet querySet,
         @Unsigned int queryIndex
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$wgpuRenderPassEncoderBeginPipelineStatisticsQuery);
         try {
             hFunction.invokeExact(
-                renderPassEncoder.segment(),
-                querySet.segment(),
+                (MemorySegment) (renderPassEncoder != null ? renderPassEncoder.segment() : MemorySegment.NULL),
+                (MemorySegment) (querySet != null ? querySet.segment() : MemorySegment.NULL),
                 queryIndex
             );
         } catch (Throwable e) {
@@ -2742,13 +2742,13 @@ public final class WGPU implements WGPUConstants {
         }
     }
 
-    public void wgpuRenderPassEncoderEndPipelineStatisticsQuery(
-        WGPURenderPassEncoder renderPassEncoder
+    public void renderPassEncoderEndPipelineStatisticsQuery(
+        @Nullable WGPURenderPassEncoder renderPassEncoder
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$wgpuRenderPassEncoderEndPipelineStatisticsQuery);
         try {
             hFunction.invokeExact(
-                renderPassEncoder.segment()
+                (MemorySegment) (renderPassEncoder != null ? renderPassEncoder.segment() : MemorySegment.NULL)
             );
         } catch (Throwable e) {
             throw new RuntimeException(e);
@@ -2787,17 +2787,17 @@ public final class WGPU implements WGPUConstants {
         }
     }
 
-    public void wgpuRenderPassEncoderMultiDrawIndexedIndirect(
-        WGPURenderPassEncoder encoder,
-        WGPUBuffer buffer,
+    public void renderPassEncoderMultiDrawIndexedIndirect(
+        @Nullable WGPURenderPassEncoder encoder,
+        @Nullable WGPUBuffer buffer,
         @Unsigned long offset,
         @Unsigned int count
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$wgpuRenderPassEncoderMultiDrawIndexedIndirect);
         try {
             hFunction.invokeExact(
-                encoder.segment(),
-                buffer.segment(),
+                (MemorySegment) (encoder != null ? encoder.segment() : MemorySegment.NULL),
+                (MemorySegment) (buffer != null ? buffer.segment() : MemorySegment.NULL),
                 offset,
                 count
             );
@@ -2806,21 +2806,21 @@ public final class WGPU implements WGPUConstants {
         }
     }
 
-    public void wgpuRenderPassEncoderMultiDrawIndexedIndirectCount(
-        WGPURenderPassEncoder encoder,
-        WGPUBuffer buffer,
+    public void renderPassEncoderMultiDrawIndexedIndirectCount(
+        @Nullable WGPURenderPassEncoder encoder,
+        @Nullable WGPUBuffer buffer,
         @Unsigned long offset,
-        WGPUBuffer count_buffer,
+        @Nullable WGPUBuffer count_buffer,
         @Unsigned long count_buffer_offset,
         @Unsigned int max_count
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$wgpuRenderPassEncoderMultiDrawIndexedIndirectCount);
         try {
             hFunction.invokeExact(
-                encoder.segment(),
-                buffer.segment(),
+                (MemorySegment) (encoder != null ? encoder.segment() : MemorySegment.NULL),
+                (MemorySegment) (buffer != null ? buffer.segment() : MemorySegment.NULL),
                 offset,
-                count_buffer.segment(),
+                (MemorySegment) (count_buffer != null ? count_buffer.segment() : MemorySegment.NULL),
                 count_buffer_offset,
                 max_count
             );
@@ -2829,17 +2829,17 @@ public final class WGPU implements WGPUConstants {
         }
     }
 
-    public void wgpuRenderPassEncoderMultiDrawIndirect(
-        WGPURenderPassEncoder encoder,
-        WGPUBuffer buffer,
+    public void renderPassEncoderMultiDrawIndirect(
+        @Nullable WGPURenderPassEncoder encoder,
+        @Nullable WGPUBuffer buffer,
         @Unsigned long offset,
         @Unsigned int count
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$wgpuRenderPassEncoderMultiDrawIndirect);
         try {
             hFunction.invokeExact(
-                encoder.segment(),
-                buffer.segment(),
+                (MemorySegment) (encoder != null ? encoder.segment() : MemorySegment.NULL),
+                (MemorySegment) (buffer != null ? buffer.segment() : MemorySegment.NULL),
                 offset,
                 count
             );
@@ -2848,21 +2848,21 @@ public final class WGPU implements WGPUConstants {
         }
     }
 
-    public void wgpuRenderPassEncoderMultiDrawIndirectCount(
-        WGPURenderPassEncoder encoder,
-        WGPUBuffer buffer,
+    public void renderPassEncoderMultiDrawIndirectCount(
+        @Nullable WGPURenderPassEncoder encoder,
+        @Nullable WGPUBuffer buffer,
         @Unsigned long offset,
-        WGPUBuffer count_buffer,
+        @Nullable WGPUBuffer count_buffer,
         @Unsigned long count_buffer_offset,
         @Unsigned int max_count
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$wgpuRenderPassEncoderMultiDrawIndirectCount);
         try {
             hFunction.invokeExact(
-                encoder.segment(),
-                buffer.segment(),
+                (MemorySegment) (encoder != null ? encoder.segment() : MemorySegment.NULL),
+                (MemorySegment) (buffer != null ? buffer.segment() : MemorySegment.NULL),
                 offset,
-                count_buffer.segment(),
+                (MemorySegment) (count_buffer != null ? count_buffer.segment() : MemorySegment.NULL),
                 count_buffer_offset,
                 max_count
             );
@@ -2999,8 +2999,8 @@ public final class WGPU implements WGPUConstants {
         }
     }
 
-    public void wgpuRenderPassEncoderSetPushConstants(
-        WGPURenderPassEncoder encoder,
+    public void renderPassEncoderSetPushConstants(
+        @Nullable WGPURenderPassEncoder encoder,
         @Bitmask(WGPUShaderStage.class) long stages,
         @Unsigned int offset,
         @Unsigned int sizeBytes,
@@ -3009,7 +3009,7 @@ public final class WGPU implements WGPUConstants {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$wgpuRenderPassEncoderSetPushConstants);
         try {
             hFunction.invokeExact(
-                encoder.segment(),
+                (MemorySegment) (encoder != null ? encoder.segment() : MemorySegment.NULL),
                 stages,
                 offset,
                 sizeBytes,
@@ -3102,16 +3102,16 @@ public final class WGPU implements WGPUConstants {
         }
     }
 
-    public void wgpuRenderPassEncoderWriteTimestamp(
-        WGPURenderPassEncoder renderPassEncoder,
-        WGPUQuerySet querySet,
+    public void renderPassEncoderWriteTimestamp(
+        @Nullable WGPURenderPassEncoder renderPassEncoder,
+        @Nullable WGPUQuerySet querySet,
         @Unsigned int queryIndex
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$wgpuRenderPassEncoderWriteTimestamp);
         try {
             hFunction.invokeExact(
-                renderPassEncoder.segment(),
-                querySet.segment(),
+                (MemorySegment) (renderPassEncoder != null ? renderPassEncoder.segment() : MemorySegment.NULL),
+                (MemorySegment) (querySet != null ? querySet.segment() : MemorySegment.NULL),
                 queryIndex
             );
         } catch (Throwable e) {
@@ -3217,7 +3217,7 @@ public final class WGPU implements WGPUConstants {
         }
     }
 
-    public void wgpuSetLogCallback(
+    public void setLogCallback(
         @Pointer(comment="WGPULogCallback") @NotNull MemorySegment callback,
         @Pointer(comment="void*") @NotNull MemorySegment userdata
     ) {
@@ -3232,7 +3232,7 @@ public final class WGPU implements WGPUConstants {
         }
     }
 
-    public void wgpuSetLogLevel(
+    public void setLogLevel(
         @EnumType(WGPULogLevel.class) int level
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$wgpuSetLogLevel);

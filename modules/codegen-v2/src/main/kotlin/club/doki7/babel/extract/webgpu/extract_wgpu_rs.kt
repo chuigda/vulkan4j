@@ -2,15 +2,14 @@
 
 package club.doki7.babel.extract.webgpu
 
-import club.doki7.babel.cdecl.FunctionDecl
 import club.doki7.babel.cdecl.RawFunctionType
 import club.doki7.babel.cdecl.TypedefDecl
 import club.doki7.babel.cdecl.VarDecl
 import club.doki7.babel.cdecl.parseEnumeratorDecl
-import club.doki7.babel.cdecl.parseFunctionDecl
 import club.doki7.babel.cdecl.parseStructFieldDecl
 import club.doki7.babel.cdecl.parseTypedefDecl
 import club.doki7.babel.cdecl.toType
+import club.doki7.babel.extract.ensureLowerCamelCase
 import club.doki7.babel.extract.vma.inputDir
 import club.doki7.babel.hparse.ControlFlow
 import club.doki7.babel.hparse.ParseConfig
@@ -23,6 +22,7 @@ import club.doki7.babel.hparse.detectPreprocessor
 import club.doki7.babel.hparse.dummyAction
 import club.doki7.babel.hparse.hparse
 import club.doki7.babel.hparse.nextLine
+import club.doki7.babel.hparse.parseAndSaveSimpleFuncDecl
 import club.doki7.babel.hparse.parseAndSaveSimpleTypeAlias
 import club.doki7.babel.hparse.skipBlockComment
 import club.doki7.babel.hparse.skipIfdefCplusplusExternC
@@ -50,6 +50,10 @@ internal fun extractRustWGPURegistry(): Registry<EmptyMergeable> {
 
     hparse(parseConfig, registry, mutableMapOf(), headerFile, 0)
 
+    registry.commands.values.forEach { command -> command.rename2 {
+        name: String -> name.removePrefix("wgpu").ensureLowerCamelCase()
+    } }
+
     return registry
 }
 
@@ -69,7 +73,7 @@ private val parseConfig = ParseConfig<EmptyMergeable>().apply {
 
     addRule(40, ::detectTypedef, ::parseAndSaveSimpleTypeAlias)
 
-    addRule(99, { _ -> ControlFlow.ACCEPT }, ::parseAndSaveFunctionDecl)
+    addRule(99, { _ -> ControlFlow.ACCEPT }, ::parseAndSaveSimpleFuncDecl)
 }
 
 // region enum
@@ -290,37 +294,3 @@ private fun detectTypedef(line: String) =
     if (line.startsWith("typedef ") && line.endsWith(";")) ControlFlow.ACCEPT
     else ControlFlow.NEXT
 // endregion
-
-/// region function decl
-private fun parseAndSaveFunctionDecl(
-    registry: Registry<EmptyMergeable>,
-    @Suppress("unused") cx: MutableMap<String, Any>,
-    lines: List<String>,
-    index: Int
-): Int {
-    val parseResult = parseFunctionDecl(lines, index)
-    val functionDecl = parseResult.first
-    val nextIndex = parseResult.second
-
-    val command = morphFunctionDecl(functionDecl)
-    registry.commands.putEntityIfAbsent(command)
-
-    return nextIndex
-}
-
-private fun morphFunctionDecl(functionDecl: FunctionDecl) = Command(
-    name = functionDecl.name,
-    params = functionDecl.params.map {
-        Param(
-            name = it.name,
-            type = it.type.toType(),
-            len = null,
-            argLen = null,
-            optional = it.type.trivia.any { trivia -> trivia.startsWith("WGPU_NULLABLE") },
-        )
-    },
-    result = functionDecl.returnType.toType(),
-    successCodes = null,
-    errorCodes = null
-)
-/// endregion
