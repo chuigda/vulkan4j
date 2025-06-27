@@ -26,6 +26,7 @@ import static club.doki7.webgpu.WGPUConstants.*;
 /// typedef struct WGPUBindGroupLayoutDescriptor {
 ///     WGPUChainedStruct const* nextInChain; // optional // @link substring="WGPUChainedStruct" target="WGPUChainedStruct" @link substring="nextInChain" target="#nextInChain"
 ///     WGPUStringView label; // @link substring="WGPUStringView" target="WGPUStringView" @link substring="label" target="#label"
+///     size_t entryCount; // @link substring="entryCount" target="#entryCount"
 ///     WGPUBindGroupLayoutEntry const* entries; // @link substring="WGPUBindGroupLayoutEntry" target="WGPUBindGroupLayoutEntry" @link substring="entries" target="#entries"
 /// } WGPUBindGroupLayoutDescriptor;
 /// }
@@ -220,6 +221,15 @@ public record WGPUBindGroupLayoutDescriptor(@NotNull MemorySegment segment) impl
         return this;
     }
 
+    public @Unsigned long entryCount() {
+        return NativeLayout.readCSizeT(segment, OFFSET$entryCount);
+    }
+
+    public WGPUBindGroupLayoutDescriptor entryCount(@Unsigned long value) {
+        NativeLayout.writeCSizeT(segment, OFFSET$entryCount, value);
+        return this;
+    }
+
     public WGPUBindGroupLayoutDescriptor entries(@Nullable IWGPUBindGroupLayoutEntry value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         entriesRaw(s);
@@ -255,12 +265,14 @@ public record WGPUBindGroupLayoutDescriptor(@NotNull MemorySegment segment) impl
     public static final StructLayout LAYOUT = NativeLayout.structLayout(
         ValueLayout.ADDRESS.withTargetLayout(WGPUChainedStruct.LAYOUT).withName("nextInChain"),
         WGPUStringView.LAYOUT.withName("label"),
+        NativeLayout.C_SIZE_T.withName("entryCount"),
         ValueLayout.ADDRESS.withTargetLayout(WGPUBindGroupLayoutEntry.LAYOUT).withName("entries")
     );
     public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$nextInChain = PathElement.groupElement("nextInChain");
     public static final PathElement PATH$label = PathElement.groupElement("label");
+    public static final PathElement PATH$entryCount = PathElement.groupElement("entryCount");
     public static final PathElement PATH$entries = PathElement.groupElement("entries");
 
     public static final AddressLayout LAYOUT$nextInChain = (AddressLayout) LAYOUT.select(PATH$nextInChain);
@@ -269,9 +281,11 @@ public record WGPUBindGroupLayoutDescriptor(@NotNull MemorySegment segment) impl
 
     public static final long SIZE$nextInChain = LAYOUT$nextInChain.byteSize();
     public static final long SIZE$label = LAYOUT$label.byteSize();
+    public static final long SIZE$entryCount = NativeLayout.C_SIZE_T.byteSize();
     public static final long SIZE$entries = LAYOUT$entries.byteSize();
 
     public static final long OFFSET$nextInChain = LAYOUT.byteOffset(PATH$nextInChain);
     public static final long OFFSET$label = LAYOUT.byteOffset(PATH$label);
+    public static final long OFFSET$entryCount = LAYOUT.byteOffset(PATH$entryCount);
     public static final long OFFSET$entries = LAYOUT.byteOffset(PATH$entries);
 }

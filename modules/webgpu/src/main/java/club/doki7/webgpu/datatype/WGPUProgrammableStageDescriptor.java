@@ -27,6 +27,7 @@ import static club.doki7.webgpu.WGPUConstants.*;
 ///     WGPUChainedStruct const* nextInChain; // optional // @link substring="WGPUChainedStruct" target="WGPUChainedStruct" @link substring="nextInChain" target="#nextInChain"
 ///     WGPUShaderModule module; // @link substring="WGPUShaderModule" target="WGPUShaderModule" @link substring="module" target="#module"
 ///     WGPUStringView entryPoint; // @link substring="WGPUStringView" target="WGPUStringView" @link substring="entryPoint" target="#entryPoint"
+///     size_t constantCount; // @link substring="constantCount" target="#constantCount"
 ///     WGPUConstantEntry const* constants; // @link substring="WGPUConstantEntry" target="WGPUConstantEntry" @link substring="constants" target="#constants"
 /// } WGPUProgrammableStageDescriptor;
 /// }
@@ -234,6 +235,15 @@ public record WGPUProgrammableStageDescriptor(@NotNull MemorySegment segment) im
         return this;
     }
 
+    public @Unsigned long constantCount() {
+        return NativeLayout.readCSizeT(segment, OFFSET$constantCount);
+    }
+
+    public WGPUProgrammableStageDescriptor constantCount(@Unsigned long value) {
+        NativeLayout.writeCSizeT(segment, OFFSET$constantCount, value);
+        return this;
+    }
+
     public WGPUProgrammableStageDescriptor constants(@Nullable IWGPUConstantEntry value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         constantsRaw(s);
@@ -270,6 +280,7 @@ public record WGPUProgrammableStageDescriptor(@NotNull MemorySegment segment) im
         ValueLayout.ADDRESS.withTargetLayout(WGPUChainedStruct.LAYOUT).withName("nextInChain"),
         ValueLayout.ADDRESS.withName("module"),
         WGPUStringView.LAYOUT.withName("entryPoint"),
+        NativeLayout.C_SIZE_T.withName("constantCount"),
         ValueLayout.ADDRESS.withTargetLayout(WGPUConstantEntry.LAYOUT).withName("constants")
     );
     public static final long BYTES = LAYOUT.byteSize();
@@ -277,6 +288,7 @@ public record WGPUProgrammableStageDescriptor(@NotNull MemorySegment segment) im
     public static final PathElement PATH$nextInChain = PathElement.groupElement("nextInChain");
     public static final PathElement PATH$module = PathElement.groupElement("module");
     public static final PathElement PATH$entryPoint = PathElement.groupElement("entryPoint");
+    public static final PathElement PATH$constantCount = PathElement.groupElement("constantCount");
     public static final PathElement PATH$constants = PathElement.groupElement("constants");
 
     public static final AddressLayout LAYOUT$nextInChain = (AddressLayout) LAYOUT.select(PATH$nextInChain);
@@ -287,10 +299,12 @@ public record WGPUProgrammableStageDescriptor(@NotNull MemorySegment segment) im
     public static final long SIZE$nextInChain = LAYOUT$nextInChain.byteSize();
     public static final long SIZE$module = LAYOUT$module.byteSize();
     public static final long SIZE$entryPoint = LAYOUT$entryPoint.byteSize();
+    public static final long SIZE$constantCount = NativeLayout.C_SIZE_T.byteSize();
     public static final long SIZE$constants = LAYOUT$constants.byteSize();
 
     public static final long OFFSET$nextInChain = LAYOUT.byteOffset(PATH$nextInChain);
     public static final long OFFSET$module = LAYOUT.byteOffset(PATH$module);
     public static final long OFFSET$entryPoint = LAYOUT.byteOffset(PATH$entryPoint);
+    public static final long OFFSET$constantCount = LAYOUT.byteOffset(PATH$constantCount);
     public static final long OFFSET$constants = LAYOUT.byteOffset(PATH$constants);
 }

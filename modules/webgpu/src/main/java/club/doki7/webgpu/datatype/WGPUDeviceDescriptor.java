@@ -26,6 +26,7 @@ import static club.doki7.webgpu.WGPUConstants.*;
 /// typedef struct WGPUDeviceDescriptor {
 ///     WGPUChainedStruct const* nextInChain; // optional // @link substring="WGPUChainedStruct" target="WGPUChainedStruct" @link substring="nextInChain" target="#nextInChain"
 ///     WGPUStringView label; // @link substring="WGPUStringView" target="WGPUStringView" @link substring="label" target="#label"
+///     size_t requiredFeatureCount; // @link substring="requiredFeatureCount" target="#requiredFeatureCount"
 ///     WGPUFeatureName const* requiredFeatures; // @link substring="WGPUFeatureName" target="WGPUFeatureName" @link substring="requiredFeatures" target="#requiredFeatures"
 ///     WGPULimits const* requiredLimits; // optional // @link substring="WGPULimits" target="WGPULimits" @link substring="requiredLimits" target="#requiredLimits"
 ///     WGPUQueueDescriptor defaultQueue; // @link substring="WGPUQueueDescriptor" target="WGPUQueueDescriptor" @link substring="defaultQueue" target="#defaultQueue"
@@ -224,6 +225,15 @@ public record WGPUDeviceDescriptor(@NotNull MemorySegment segment) implements IW
         return this;
     }
 
+    public @Unsigned long requiredFeatureCount() {
+        return NativeLayout.readCSizeT(segment, OFFSET$requiredFeatureCount);
+    }
+
+    public WGPUDeviceDescriptor requiredFeatureCount(@Unsigned long value) {
+        NativeLayout.writeCSizeT(segment, OFFSET$requiredFeatureCount, value);
+        return this;
+    }
+
 
     /// Note: the returned {@link IntPtr} does not have correct
     /// {@link IntPtr#size} property. It's up to user to track the size of the buffer,
@@ -328,6 +338,7 @@ public record WGPUDeviceDescriptor(@NotNull MemorySegment segment) implements IW
     public static final StructLayout LAYOUT = NativeLayout.structLayout(
         ValueLayout.ADDRESS.withTargetLayout(WGPUChainedStruct.LAYOUT).withName("nextInChain"),
         WGPUStringView.LAYOUT.withName("label"),
+        NativeLayout.C_SIZE_T.withName("requiredFeatureCount"),
         ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_INT).withName("requiredFeatures"),
         ValueLayout.ADDRESS.withTargetLayout(WGPULimits.LAYOUT).withName("requiredLimits"),
         WGPUQueueDescriptor.LAYOUT.withName("defaultQueue"),
@@ -338,6 +349,7 @@ public record WGPUDeviceDescriptor(@NotNull MemorySegment segment) implements IW
 
     public static final PathElement PATH$nextInChain = PathElement.groupElement("nextInChain");
     public static final PathElement PATH$label = PathElement.groupElement("label");
+    public static final PathElement PATH$requiredFeatureCount = PathElement.groupElement("requiredFeatureCount");
     public static final PathElement PATH$requiredFeatures = PathElement.groupElement("requiredFeatures");
     public static final PathElement PATH$requiredLimits = PathElement.groupElement("requiredLimits");
     public static final PathElement PATH$defaultQueue = PathElement.groupElement("defaultQueue");
@@ -354,6 +366,7 @@ public record WGPUDeviceDescriptor(@NotNull MemorySegment segment) implements IW
 
     public static final long SIZE$nextInChain = LAYOUT$nextInChain.byteSize();
     public static final long SIZE$label = LAYOUT$label.byteSize();
+    public static final long SIZE$requiredFeatureCount = NativeLayout.C_SIZE_T.byteSize();
     public static final long SIZE$requiredFeatures = LAYOUT$requiredFeatures.byteSize();
     public static final long SIZE$requiredLimits = LAYOUT$requiredLimits.byteSize();
     public static final long SIZE$defaultQueue = LAYOUT$defaultQueue.byteSize();
@@ -362,6 +375,7 @@ public record WGPUDeviceDescriptor(@NotNull MemorySegment segment) implements IW
 
     public static final long OFFSET$nextInChain = LAYOUT.byteOffset(PATH$nextInChain);
     public static final long OFFSET$label = LAYOUT.byteOffset(PATH$label);
+    public static final long OFFSET$requiredFeatureCount = LAYOUT.byteOffset(PATH$requiredFeatureCount);
     public static final long OFFSET$requiredFeatures = LAYOUT.byteOffset(PATH$requiredFeatures);
     public static final long OFFSET$requiredLimits = LAYOUT.byteOffset(PATH$requiredLimits);
     public static final long OFFSET$defaultQueue = LAYOUT.byteOffset(PATH$defaultQueue);

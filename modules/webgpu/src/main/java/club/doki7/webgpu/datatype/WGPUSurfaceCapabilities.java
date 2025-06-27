@@ -26,8 +26,11 @@ import static club.doki7.webgpu.WGPUConstants.*;
 /// typedef struct WGPUSurfaceCapabilities {
 ///     WGPUChainedStruct const* nextInChain; // optional // @link substring="WGPUChainedStruct" target="WGPUChainedStruct" @link substring="nextInChain" target="#nextInChain"
 ///     WGPUTextureUsage usages; // @link substring="WGPUTextureUsage" target="WGPUTextureUsage" @link substring="usages" target="#usages"
+///     size_t formatCount; // @link substring="formatCount" target="#formatCount"
 ///     WGPUTextureFormat const* formats; // @link substring="WGPUTextureFormat" target="WGPUTextureFormat" @link substring="formats" target="#formats"
+///     size_t presentModeCount; // @link substring="presentModeCount" target="#presentModeCount"
 ///     WGPUPresentMode const* presentModes; // @link substring="WGPUPresentMode" target="WGPUPresentMode" @link substring="presentModes" target="#presentModes"
+///     size_t alphaModeCount; // @link substring="alphaModeCount" target="#alphaModeCount"
 ///     WGPUCompositeAlphaMode const* alphaModes; // @link substring="WGPUCompositeAlphaMode" target="WGPUCompositeAlphaMode" @link substring="alphaModes" target="#alphaModes"
 /// } WGPUSurfaceCapabilities;
 /// }
@@ -217,6 +220,15 @@ public record WGPUSurfaceCapabilities(@NotNull MemorySegment segment) implements
         return this;
     }
 
+    public @Unsigned long formatCount() {
+        return NativeLayout.readCSizeT(segment, OFFSET$formatCount);
+    }
+
+    public WGPUSurfaceCapabilities formatCount(@Unsigned long value) {
+        NativeLayout.writeCSizeT(segment, OFFSET$formatCount, value);
+        return this;
+    }
+
 
     /// Note: the returned {@link IntPtr} does not have correct
     /// {@link IntPtr#size} property. It's up to user to track the size of the buffer,
@@ -244,6 +256,15 @@ public record WGPUSurfaceCapabilities(@NotNull MemorySegment segment) implements
         segment.set(LAYOUT$formats, OFFSET$formats, value);
     }
 
+    public @Unsigned long presentModeCount() {
+        return NativeLayout.readCSizeT(segment, OFFSET$presentModeCount);
+    }
+
+    public WGPUSurfaceCapabilities presentModeCount(@Unsigned long value) {
+        NativeLayout.writeCSizeT(segment, OFFSET$presentModeCount, value);
+        return this;
+    }
+
 
     /// Note: the returned {@link IntPtr} does not have correct
     /// {@link IntPtr#size} property. It's up to user to track the size of the buffer,
@@ -269,6 +290,15 @@ public record WGPUSurfaceCapabilities(@NotNull MemorySegment segment) implements
 
     public void presentModesRaw(@Pointer(target=WGPUPresentMode.class) @NotNull MemorySegment value) {
         segment.set(LAYOUT$presentModes, OFFSET$presentModes, value);
+    }
+
+    public @Unsigned long alphaModeCount() {
+        return NativeLayout.readCSizeT(segment, OFFSET$alphaModeCount);
+    }
+
+    public WGPUSurfaceCapabilities alphaModeCount(@Unsigned long value) {
+        NativeLayout.writeCSizeT(segment, OFFSET$alphaModeCount, value);
+        return this;
     }
 
 
@@ -301,16 +331,22 @@ public record WGPUSurfaceCapabilities(@NotNull MemorySegment segment) implements
     public static final StructLayout LAYOUT = NativeLayout.structLayout(
         ValueLayout.ADDRESS.withTargetLayout(WGPUChainedStruct.LAYOUT).withName("nextInChain"),
         ValueLayout.JAVA_LONG.withName("usages"),
+        NativeLayout.C_SIZE_T.withName("formatCount"),
         ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_INT).withName("formats"),
+        NativeLayout.C_SIZE_T.withName("presentModeCount"),
         ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_INT).withName("presentModes"),
+        NativeLayout.C_SIZE_T.withName("alphaModeCount"),
         ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_INT).withName("alphaModes")
     );
     public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$nextInChain = PathElement.groupElement("nextInChain");
     public static final PathElement PATH$usages = PathElement.groupElement("usages");
+    public static final PathElement PATH$formatCount = PathElement.groupElement("formatCount");
     public static final PathElement PATH$formats = PathElement.groupElement("formats");
+    public static final PathElement PATH$presentModeCount = PathElement.groupElement("presentModeCount");
     public static final PathElement PATH$presentModes = PathElement.groupElement("presentModes");
+    public static final PathElement PATH$alphaModeCount = PathElement.groupElement("alphaModeCount");
     public static final PathElement PATH$alphaModes = PathElement.groupElement("alphaModes");
 
     public static final AddressLayout LAYOUT$nextInChain = (AddressLayout) LAYOUT.select(PATH$nextInChain);
@@ -321,13 +357,19 @@ public record WGPUSurfaceCapabilities(@NotNull MemorySegment segment) implements
 
     public static final long SIZE$nextInChain = LAYOUT$nextInChain.byteSize();
     public static final long SIZE$usages = LAYOUT$usages.byteSize();
+    public static final long SIZE$formatCount = NativeLayout.C_SIZE_T.byteSize();
     public static final long SIZE$formats = LAYOUT$formats.byteSize();
+    public static final long SIZE$presentModeCount = NativeLayout.C_SIZE_T.byteSize();
     public static final long SIZE$presentModes = LAYOUT$presentModes.byteSize();
+    public static final long SIZE$alphaModeCount = NativeLayout.C_SIZE_T.byteSize();
     public static final long SIZE$alphaModes = LAYOUT$alphaModes.byteSize();
 
     public static final long OFFSET$nextInChain = LAYOUT.byteOffset(PATH$nextInChain);
     public static final long OFFSET$usages = LAYOUT.byteOffset(PATH$usages);
+    public static final long OFFSET$formatCount = LAYOUT.byteOffset(PATH$formatCount);
     public static final long OFFSET$formats = LAYOUT.byteOffset(PATH$formats);
+    public static final long OFFSET$presentModeCount = LAYOUT.byteOffset(PATH$presentModeCount);
     public static final long OFFSET$presentModes = LAYOUT.byteOffset(PATH$presentModes);
+    public static final long OFFSET$alphaModeCount = LAYOUT.byteOffset(PATH$alphaModeCount);
     public static final long OFFSET$alphaModes = LAYOUT.byteOffset(PATH$alphaModes);
 }

@@ -101,7 +101,29 @@ private fun extractObjectMethods(
             argLen = null,
             optional = false
         ))
-        method.args?.forEach { arg -> params.add(extractFunctionParam(arg)) }
+        method.args?.forEach {
+            arg -> if (isIDLTypeArray(arg.type)) {
+                params.add(Param(
+                    name = renameWGPUVar(singularize(arg.name)) + "Count",
+                    type = IdentifierType("size_t"),
+                    len = null,
+                    argLen = null,
+                    optional = arg.optional
+                ))
+
+                val elementType = classifyType(arg.type.removeSurrounding("array<", ">"), arg.pointer)
+                val arrayType = PointerType(elementType, const = arg.pointer == "immutable")
+                params.add(Param(
+                    name = renameWGPUVar(arg.name),
+                    type = arrayType,
+                    len = null,
+                    argLen = null,
+                    optional = arg.optional
+                ))
+            } else {
+                params.add(extractFunctionParam(arg))
+            }
+        }
 
         val result = if (method.callback != null) {
             IdentifierType("WGPUFuture")
@@ -216,15 +238,40 @@ private fun extractStructures(registry: RegistryBase, structs: List<IDLStructure
             ))
         }
 
-        struct.members.forEach { member -> members.add(Member(
-            name = renameWGPUVar(member.name),
-            type = classifyType(member.type, member.pointer),
-            values = null,
-            len = null,
-            altLen = null,
-            optional = member.optional,
-            bits = null
-        )) }
+        struct.members.forEach { member ->
+            if (isIDLTypeArray(member.type)) {
+                val elementType = classifyType(member.type.removeSurrounding("array<", ">"), null)
+                val arrayType = PointerType(elementType, const = member.pointer == "immutable")
+                members.add(Member(
+                    name = renameWGPUVar(singularize(member.name)) + "Count",
+                    type = IdentifierType("size_t"),
+                    values = null,
+                    len = null,
+                    altLen = null,
+                    optional = member.optional,
+                    bits = null
+                ))
+                members.add(Member(
+                    name = renameWGPUVar(member.name),
+                    type = arrayType,
+                    values = null,
+                    len = null,
+                    altLen = null,
+                    optional = member.optional,
+                    bits = null
+                ))
+            } else {
+                members.add(Member(
+                    name = renameWGPUVar(member.name),
+                    type = classifyType(member.type, member.pointer),
+                    values = null,
+                    len = null,
+                    altLen = null,
+                    optional = member.optional,
+                    bits = null
+                ))
+            }
+        }
 
         registry.structures.putEntityIfAbsent(Structure(
             name = renameWGPUType(struct.name),
@@ -321,6 +368,9 @@ private fun classifyCallbackInfoType(callbackString: String): IdentifierType {
     val typeName = renameWGPUFunctionPointer(callbackString.removePrefix("callback.")) + "Info"
     return IdentifierType(typeName)
 }
+
+// https://github.com/webgpu-native/webgpu-headers/blob/bac520839ff5ed2e2b648ed540bd9ec45edbccbc/gen/utils.go#L112
+private fun singularize(s: String) = if (s == "entries") "entry" else s.removeSuffix("s")
 
 private val coreStructures = listOf(
     Structure(

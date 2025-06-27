@@ -19,10 +19,6 @@ internal fun classifyType(type: String, pointer: String?): Type {
 
 private fun classifyBaseType(type: String): Type {
     return when {
-        // primitive
-        primitiveTypeMap.containsKey(type) ->{
-            primitiveTypeMap[type]!!
-        }
         // object.*
         type.startsWith("object.") -> {
             val innerType = type.removePrefix("object.")
@@ -43,20 +39,21 @@ private fun classifyBaseType(type: String): Type {
             val innerType = type.removePrefix("enum.")
             IdentifierType(renameWGPUType(innerType))
         }
-        // array<...>
-        type.startsWith("array<") && type.endsWith(">") -> {
-            val innerType = type.removePrefix("array<").removeSuffix(">")
-            PointerType(classifyBaseType(innerType), const = false)
-        }
         // callback.
         type.startsWith("callback.") ->{
             val innerType = type.removePrefix("callback.")
             IdentifierType(renameWGPUFunctionPointer(innerType))
         }
+        // primitive
+        primitiveTypeMap.containsKey(type) ->{
+            primitiveTypeMap[type]!!
+        }
         // specialTypes
         specialTypeMap.containsKey(type) ->{
             specialTypeMap[type]!!
         }
+        // array<...>
+        isIDLTypeArray(type) -> error("should not process array type with classifyType")
         else -> {
             error("unable to classify type: $type")
         }

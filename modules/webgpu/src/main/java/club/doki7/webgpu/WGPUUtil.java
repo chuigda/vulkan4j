@@ -23,7 +23,8 @@ public final class WGPUUtil {
         if (length == NativeLayout.UINT64_MAX) {
             return rawData.reinterpret(Long.MAX_VALUE).getString(0);
         } else {
-            return rawData.reinterpret(length).getString(0);
+            byte[] bytes = rawData.reinterpret(length).toArray(ValueLayout.JAVA_BYTE);
+            return new String(bytes);
         }
     }
 
@@ -41,7 +42,8 @@ public final class WGPUUtil {
         if (length == NativeLayout.UINT64_MAX) {
             return rawData.reinterpret(Long.MAX_VALUE).getString(0);
         } else {
-            return rawData.reinterpret(length).getString(0);
+            byte[] bytes = rawData.reinterpret(length).toArray(ValueLayout.JAVA_BYTE);
+            return new String(bytes);
         }
     }
 

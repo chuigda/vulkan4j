@@ -26,6 +26,7 @@ import static club.doki7.webgpu.WGPUConstants.*;
 /// typedef struct WGPURenderPassDescriptor {
 ///     WGPUChainedStruct const* nextInChain; // optional // @link substring="WGPUChainedStruct" target="WGPUChainedStruct" @link substring="nextInChain" target="#nextInChain"
 ///     WGPUStringView label; // @link substring="WGPUStringView" target="WGPUStringView" @link substring="label" target="#label"
+///     size_t colorAttachmentCount; // @link substring="colorAttachmentCount" target="#colorAttachmentCount"
 ///     WGPURenderPassColorAttachment const* colorAttachments; // @link substring="WGPURenderPassColorAttachment" target="WGPURenderPassColorAttachment" @link substring="colorAttachments" target="#colorAttachments"
 ///     WGPURenderPassDepthStencilAttachment const* depthStencilAttachment; // optional // @link substring="WGPURenderPassDepthStencilAttachment" target="WGPURenderPassDepthStencilAttachment" @link substring="depthStencilAttachment" target="#depthStencilAttachment"
 ///     WGPUQuerySet occlusionQuerySet; // optional // @link substring="WGPUQuerySet" target="WGPUQuerySet" @link substring="occlusionQuerySet" target="#occlusionQuerySet"
@@ -223,6 +224,15 @@ public record WGPURenderPassDescriptor(@NotNull MemorySegment segment) implement
         return this;
     }
 
+    public @Unsigned long colorAttachmentCount() {
+        return NativeLayout.readCSizeT(segment, OFFSET$colorAttachmentCount);
+    }
+
+    public WGPURenderPassDescriptor colorAttachmentCount(@Unsigned long value) {
+        NativeLayout.writeCSizeT(segment, OFFSET$colorAttachmentCount, value);
+        return this;
+    }
+
     public WGPURenderPassDescriptor colorAttachments(@Nullable IWGPURenderPassColorAttachment value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         colorAttachmentsRaw(s);
@@ -335,6 +345,7 @@ public record WGPURenderPassDescriptor(@NotNull MemorySegment segment) implement
     public static final StructLayout LAYOUT = NativeLayout.structLayout(
         ValueLayout.ADDRESS.withTargetLayout(WGPUChainedStruct.LAYOUT).withName("nextInChain"),
         WGPUStringView.LAYOUT.withName("label"),
+        NativeLayout.C_SIZE_T.withName("colorAttachmentCount"),
         ValueLayout.ADDRESS.withTargetLayout(WGPURenderPassColorAttachment.LAYOUT).withName("colorAttachments"),
         ValueLayout.ADDRESS.withTargetLayout(WGPURenderPassDepthStencilAttachment.LAYOUT).withName("depthStencilAttachment"),
         ValueLayout.ADDRESS.withName("occlusionQuerySet"),
@@ -344,6 +355,7 @@ public record WGPURenderPassDescriptor(@NotNull MemorySegment segment) implement
 
     public static final PathElement PATH$nextInChain = PathElement.groupElement("nextInChain");
     public static final PathElement PATH$label = PathElement.groupElement("label");
+    public static final PathElement PATH$colorAttachmentCount = PathElement.groupElement("colorAttachmentCount");
     public static final PathElement PATH$colorAttachments = PathElement.groupElement("colorAttachments");
     public static final PathElement PATH$depthStencilAttachment = PathElement.groupElement("depthStencilAttachment");
     public static final PathElement PATH$occlusionQuerySet = PathElement.groupElement("occlusionQuerySet");
@@ -358,6 +370,7 @@ public record WGPURenderPassDescriptor(@NotNull MemorySegment segment) implement
 
     public static final long SIZE$nextInChain = LAYOUT$nextInChain.byteSize();
     public static final long SIZE$label = LAYOUT$label.byteSize();
+    public static final long SIZE$colorAttachmentCount = NativeLayout.C_SIZE_T.byteSize();
     public static final long SIZE$colorAttachments = LAYOUT$colorAttachments.byteSize();
     public static final long SIZE$depthStencilAttachment = LAYOUT$depthStencilAttachment.byteSize();
     public static final long SIZE$occlusionQuerySet = LAYOUT$occlusionQuerySet.byteSize();
@@ -365,6 +378,7 @@ public record WGPURenderPassDescriptor(@NotNull MemorySegment segment) implement
 
     public static final long OFFSET$nextInChain = LAYOUT.byteOffset(PATH$nextInChain);
     public static final long OFFSET$label = LAYOUT.byteOffset(PATH$label);
+    public static final long OFFSET$colorAttachmentCount = LAYOUT.byteOffset(PATH$colorAttachmentCount);
     public static final long OFFSET$colorAttachments = LAYOUT.byteOffset(PATH$colorAttachments);
     public static final long OFFSET$depthStencilAttachment = LAYOUT.byteOffset(PATH$depthStencilAttachment);
     public static final long OFFSET$occlusionQuerySet = LAYOUT.byteOffset(PATH$occlusionQuerySet);

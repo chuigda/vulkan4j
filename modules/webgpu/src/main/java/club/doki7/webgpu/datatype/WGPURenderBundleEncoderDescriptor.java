@@ -26,6 +26,7 @@ import static club.doki7.webgpu.WGPUConstants.*;
 /// typedef struct WGPURenderBundleEncoderDescriptor {
 ///     WGPUChainedStruct const* nextInChain; // optional // @link substring="WGPUChainedStruct" target="WGPUChainedStruct" @link substring="nextInChain" target="#nextInChain"
 ///     WGPUStringView label; // @link substring="WGPUStringView" target="WGPUStringView" @link substring="label" target="#label"
+///     size_t colorFormatCount; // @link substring="colorFormatCount" target="#colorFormatCount"
 ///     WGPUTextureFormat const* colorFormats; // @link substring="WGPUTextureFormat" target="WGPUTextureFormat" @link substring="colorFormats" target="#colorFormats"
 ///     WGPUTextureFormat depthStencilFormat; // @link substring="WGPUTextureFormat" target="WGPUTextureFormat" @link substring="depthStencilFormat" target="#depthStencilFormat"
 ///     uint32_t sampleCount; // @link substring="sampleCount" target="#sampleCount"
@@ -224,6 +225,15 @@ public record WGPURenderBundleEncoderDescriptor(@NotNull MemorySegment segment) 
         return this;
     }
 
+    public @Unsigned long colorFormatCount() {
+        return NativeLayout.readCSizeT(segment, OFFSET$colorFormatCount);
+    }
+
+    public WGPURenderBundleEncoderDescriptor colorFormatCount(@Unsigned long value) {
+        NativeLayout.writeCSizeT(segment, OFFSET$colorFormatCount, value);
+        return this;
+    }
+
 
     /// Note: the returned {@link IntPtr} does not have correct
     /// {@link IntPtr#size} property. It's up to user to track the size of the buffer,
@@ -290,6 +300,7 @@ public record WGPURenderBundleEncoderDescriptor(@NotNull MemorySegment segment) 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(
         ValueLayout.ADDRESS.withTargetLayout(WGPUChainedStruct.LAYOUT).withName("nextInChain"),
         WGPUStringView.LAYOUT.withName("label"),
+        NativeLayout.C_SIZE_T.withName("colorFormatCount"),
         ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_INT).withName("colorFormats"),
         ValueLayout.JAVA_INT.withName("depthStencilFormat"),
         ValueLayout.JAVA_INT.withName("sampleCount"),
@@ -300,6 +311,7 @@ public record WGPURenderBundleEncoderDescriptor(@NotNull MemorySegment segment) 
 
     public static final PathElement PATH$nextInChain = PathElement.groupElement("nextInChain");
     public static final PathElement PATH$label = PathElement.groupElement("label");
+    public static final PathElement PATH$colorFormatCount = PathElement.groupElement("colorFormatCount");
     public static final PathElement PATH$colorFormats = PathElement.groupElement("colorFormats");
     public static final PathElement PATH$depthStencilFormat = PathElement.groupElement("depthStencilFormat");
     public static final PathElement PATH$sampleCount = PathElement.groupElement("sampleCount");
@@ -316,6 +328,7 @@ public record WGPURenderBundleEncoderDescriptor(@NotNull MemorySegment segment) 
 
     public static final long SIZE$nextInChain = LAYOUT$nextInChain.byteSize();
     public static final long SIZE$label = LAYOUT$label.byteSize();
+    public static final long SIZE$colorFormatCount = NativeLayout.C_SIZE_T.byteSize();
     public static final long SIZE$colorFormats = LAYOUT$colorFormats.byteSize();
     public static final long SIZE$depthStencilFormat = LAYOUT$depthStencilFormat.byteSize();
     public static final long SIZE$sampleCount = LAYOUT$sampleCount.byteSize();
@@ -324,6 +337,7 @@ public record WGPURenderBundleEncoderDescriptor(@NotNull MemorySegment segment) 
 
     public static final long OFFSET$nextInChain = LAYOUT.byteOffset(PATH$nextInChain);
     public static final long OFFSET$label = LAYOUT.byteOffset(PATH$label);
+    public static final long OFFSET$colorFormatCount = LAYOUT.byteOffset(PATH$colorFormatCount);
     public static final long OFFSET$colorFormats = LAYOUT.byteOffset(PATH$colorFormats);
     public static final long OFFSET$depthStencilFormat = LAYOUT.byteOffset(PATH$depthStencilFormat);
     public static final long OFFSET$sampleCount = LAYOUT.byteOffset(PATH$sampleCount);

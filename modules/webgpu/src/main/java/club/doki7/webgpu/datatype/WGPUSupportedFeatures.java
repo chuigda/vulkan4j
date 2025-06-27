@@ -24,6 +24,7 @@ import static club.doki7.webgpu.WGPUConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct WGPUSupportedFeatures {
+///     size_t featureCount; // @link substring="featureCount" target="#featureCount"
 ///     WGPUFeatureName const* features; // @link substring="WGPUFeatureName" target="WGPUFeatureName" @link substring="features" target="#features"
 /// } WGPUSupportedFeatures;
 /// }
@@ -172,6 +173,15 @@ public record WGPUSupportedFeatures(@NotNull MemorySegment segment) implements I
         return ret;
     }
 
+    public @Unsigned long featureCount() {
+        return NativeLayout.readCSizeT(segment, OFFSET$featureCount);
+    }
+
+    public WGPUSupportedFeatures featureCount(@Unsigned long value) {
+        NativeLayout.writeCSizeT(segment, OFFSET$featureCount, value);
+        return this;
+    }
+
 
     /// Note: the returned {@link IntPtr} does not have correct
     /// {@link IntPtr#size} property. It's up to user to track the size of the buffer,
@@ -200,15 +210,19 @@ public record WGPUSupportedFeatures(@NotNull MemorySegment segment) implements I
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        NativeLayout.C_SIZE_T.withName("featureCount"),
         ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_INT).withName("features")
     );
     public static final long BYTES = LAYOUT.byteSize();
 
+    public static final PathElement PATH$featureCount = PathElement.groupElement("featureCount");
     public static final PathElement PATH$features = PathElement.groupElement("features");
 
     public static final AddressLayout LAYOUT$features = (AddressLayout) LAYOUT.select(PATH$features);
 
+    public static final long SIZE$featureCount = NativeLayout.C_SIZE_T.byteSize();
     public static final long SIZE$features = LAYOUT$features.byteSize();
 
+    public static final long OFFSET$featureCount = LAYOUT.byteOffset(PATH$featureCount);
     public static final long OFFSET$features = LAYOUT.byteOffset(PATH$features);
 }

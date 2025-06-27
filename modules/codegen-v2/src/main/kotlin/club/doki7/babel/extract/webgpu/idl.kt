@@ -123,3 +123,5 @@ internal data class IDLObject(
     val doc: String,
     val methods: List<IDLFunction>
 )
+
+internal fun isIDLTypeArray(type: String) = type.startsWith("array<") && type.endsWith(">")

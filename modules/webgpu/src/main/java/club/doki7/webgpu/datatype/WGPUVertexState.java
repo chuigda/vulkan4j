@@ -27,7 +27,9 @@ import static club.doki7.webgpu.WGPUConstants.*;
 ///     WGPUChainedStruct const* nextInChain; // optional // @link substring="WGPUChainedStruct" target="WGPUChainedStruct" @link substring="nextInChain" target="#nextInChain"
 ///     WGPUShaderModule module; // @link substring="WGPUShaderModule" target="WGPUShaderModule" @link substring="module" target="#module"
 ///     WGPUStringView entryPoint; // @link substring="WGPUStringView" target="WGPUStringView" @link substring="entryPoint" target="#entryPoint"
+///     size_t constantCount; // @link substring="constantCount" target="#constantCount"
 ///     WGPUConstantEntry const* constants; // @link substring="WGPUConstantEntry" target="WGPUConstantEntry" @link substring="constants" target="#constants"
+///     size_t bufferCount; // @link substring="bufferCount" target="#bufferCount"
 ///     WGPUVertexBufferLayout const* buffers; // @link substring="WGPUVertexBufferLayout" target="WGPUVertexBufferLayout" @link substring="buffers" target="#buffers"
 /// } WGPUVertexState;
 /// }
@@ -235,6 +237,15 @@ public record WGPUVertexState(@NotNull MemorySegment segment) implements IWGPUVe
         return this;
     }
 
+    public @Unsigned long constantCount() {
+        return NativeLayout.readCSizeT(segment, OFFSET$constantCount);
+    }
+
+    public WGPUVertexState constantCount(@Unsigned long value) {
+        NativeLayout.writeCSizeT(segment, OFFSET$constantCount, value);
+        return this;
+    }
+
     public WGPUVertexState constants(@Nullable IWGPUConstantEntry value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         constantsRaw(s);
@@ -265,6 +276,15 @@ public record WGPUVertexState(@NotNull MemorySegment segment) implements IWGPUVe
 
     public void constantsRaw(@Pointer(target=WGPUConstantEntry.class) @NotNull MemorySegment value) {
         segment.set(LAYOUT$constants, OFFSET$constants, value);
+    }
+
+    public @Unsigned long bufferCount() {
+        return NativeLayout.readCSizeT(segment, OFFSET$bufferCount);
+    }
+
+    public WGPUVertexState bufferCount(@Unsigned long value) {
+        NativeLayout.writeCSizeT(segment, OFFSET$bufferCount, value);
+        return this;
     }
 
     public WGPUVertexState buffers(@Nullable IWGPUVertexBufferLayout value) {
@@ -303,7 +323,9 @@ public record WGPUVertexState(@NotNull MemorySegment segment) implements IWGPUVe
         ValueLayout.ADDRESS.withTargetLayout(WGPUChainedStruct.LAYOUT).withName("nextInChain"),
         ValueLayout.ADDRESS.withName("module"),
         WGPUStringView.LAYOUT.withName("entryPoint"),
+        NativeLayout.C_SIZE_T.withName("constantCount"),
         ValueLayout.ADDRESS.withTargetLayout(WGPUConstantEntry.LAYOUT).withName("constants"),
+        NativeLayout.C_SIZE_T.withName("bufferCount"),
         ValueLayout.ADDRESS.withTargetLayout(WGPUVertexBufferLayout.LAYOUT).withName("buffers")
     );
     public static final long BYTES = LAYOUT.byteSize();
@@ -311,7 +333,9 @@ public record WGPUVertexState(@NotNull MemorySegment segment) implements IWGPUVe
     public static final PathElement PATH$nextInChain = PathElement.groupElement("nextInChain");
     public static final PathElement PATH$module = PathElement.groupElement("module");
     public static final PathElement PATH$entryPoint = PathElement.groupElement("entryPoint");
+    public static final PathElement PATH$constantCount = PathElement.groupElement("constantCount");
     public static final PathElement PATH$constants = PathElement.groupElement("constants");
+    public static final PathElement PATH$bufferCount = PathElement.groupElement("bufferCount");
     public static final PathElement PATH$buffers = PathElement.groupElement("buffers");
 
     public static final AddressLayout LAYOUT$nextInChain = (AddressLayout) LAYOUT.select(PATH$nextInChain);
@@ -323,12 +347,16 @@ public record WGPUVertexState(@NotNull MemorySegment segment) implements IWGPUVe
     public static final long SIZE$nextInChain = LAYOUT$nextInChain.byteSize();
     public static final long SIZE$module = LAYOUT$module.byteSize();
     public static final long SIZE$entryPoint = LAYOUT$entryPoint.byteSize();
+    public static final long SIZE$constantCount = NativeLayout.C_SIZE_T.byteSize();
     public static final long SIZE$constants = LAYOUT$constants.byteSize();
+    public static final long SIZE$bufferCount = NativeLayout.C_SIZE_T.byteSize();
     public static final long SIZE$buffers = LAYOUT$buffers.byteSize();
 
     public static final long OFFSET$nextInChain = LAYOUT.byteOffset(PATH$nextInChain);
     public static final long OFFSET$module = LAYOUT.byteOffset(PATH$module);
     public static final long OFFSET$entryPoint = LAYOUT.byteOffset(PATH$entryPoint);
+    public static final long OFFSET$constantCount = LAYOUT.byteOffset(PATH$constantCount);
     public static final long OFFSET$constants = LAYOUT.byteOffset(PATH$constants);
+    public static final long OFFSET$bufferCount = LAYOUT.byteOffset(PATH$bufferCount);
     public static final long OFFSET$buffers = LAYOUT.byteOffset(PATH$buffers);
 }

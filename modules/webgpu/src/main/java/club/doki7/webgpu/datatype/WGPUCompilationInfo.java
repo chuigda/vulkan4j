@@ -25,6 +25,7 @@ import static club.doki7.webgpu.WGPUConstants.*;
 /// {@snippet lang=c :
 /// typedef struct WGPUCompilationInfo {
 ///     WGPUChainedStruct const* nextInChain; // optional // @link substring="WGPUChainedStruct" target="WGPUChainedStruct" @link substring="nextInChain" target="#nextInChain"
+///     size_t messageCount; // @link substring="messageCount" target="#messageCount"
 ///     WGPUCompilationMessage const* messages; // @link substring="WGPUCompilationMessage" target="WGPUCompilationMessage" @link substring="messages" target="#messages"
 /// } WGPUCompilationInfo;
 /// }
@@ -205,6 +206,15 @@ public record WGPUCompilationInfo(@NotNull MemorySegment segment) implements IWG
         segment.set(LAYOUT$nextInChain, OFFSET$nextInChain, value);
     }
 
+    public @Unsigned long messageCount() {
+        return NativeLayout.readCSizeT(segment, OFFSET$messageCount);
+    }
+
+    public WGPUCompilationInfo messageCount(@Unsigned long value) {
+        NativeLayout.writeCSizeT(segment, OFFSET$messageCount, value);
+        return this;
+    }
+
     public WGPUCompilationInfo messages(@Nullable IWGPUCompilationMessage value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         messagesRaw(s);
@@ -239,19 +249,23 @@ public record WGPUCompilationInfo(@NotNull MemorySegment segment) implements IWG
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(
         ValueLayout.ADDRESS.withTargetLayout(WGPUChainedStruct.LAYOUT).withName("nextInChain"),
+        NativeLayout.C_SIZE_T.withName("messageCount"),
         ValueLayout.ADDRESS.withTargetLayout(WGPUCompilationMessage.LAYOUT).withName("messages")
     );
     public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$nextInChain = PathElement.groupElement("nextInChain");
+    public static final PathElement PATH$messageCount = PathElement.groupElement("messageCount");
     public static final PathElement PATH$messages = PathElement.groupElement("messages");
 
     public static final AddressLayout LAYOUT$nextInChain = (AddressLayout) LAYOUT.select(PATH$nextInChain);
     public static final AddressLayout LAYOUT$messages = (AddressLayout) LAYOUT.select(PATH$messages);
 
     public static final long SIZE$nextInChain = LAYOUT$nextInChain.byteSize();
+    public static final long SIZE$messageCount = NativeLayout.C_SIZE_T.byteSize();
     public static final long SIZE$messages = LAYOUT$messages.byteSize();
 
     public static final long OFFSET$nextInChain = LAYOUT.byteOffset(PATH$nextInChain);
+    public static final long OFFSET$messageCount = LAYOUT.byteOffset(PATH$messageCount);
     public static final long OFFSET$messages = LAYOUT.byteOffset(PATH$messages);
 }
