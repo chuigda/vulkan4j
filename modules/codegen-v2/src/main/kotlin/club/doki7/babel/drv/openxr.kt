@@ -171,7 +171,7 @@ private data class CodegenContext<T : IMergeable<T>>(
             "XRStatic",
             staticCommands,
             codegenOptions,
-            false,
+            true,
             "command"
         ).writeTo("command/XRStatic.java")
         generateCommandFile(
@@ -179,7 +179,7 @@ private data class CodegenContext<T : IMergeable<T>>(
             "XR",
             registry.commands.values.sortedBy { it.name.original }.toList(),
             codegenOptions,
-            true,
+            false,
             "command"
         ).writeTo("command/XR.java")
     }

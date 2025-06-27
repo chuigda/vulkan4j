@@ -14,12 +14,13 @@ import club.doki7.openxr.bitmask.*;
 import club.doki7.openxr.datatype.*;
 import club.doki7.openxr.enumtype.*;
 import club.doki7.openxr.handle.*;
+import club.doki7.openxr.XRConstants;
 import club.doki7.vulkan.bitmask.*;
 import club.doki7.vulkan.datatype.*;
 import club.doki7.vulkan.enumtype.*;
 import club.doki7.vulkan.handle.*;
 
-public final class XRStatic {
+public final class XRStatic implements XRConstants {
     public XRStatic(RawFunctionLoader loader) {
         SEGMENT$xrAcquireSwapchainImage = loader.apply("xrAcquireSwapchainImage");
         HANDLE$xrAcquireSwapchainImage = RawFunctionLoader.link(SEGMENT$xrAcquireSwapchainImage, Descriptors.DESCRIPTOR$xrAcquireSwapchainImage);
@@ -983,14 +984,14 @@ public final class XRStatic {
     public @EnumType(XrResult.class) int resultToString(
         XrInstance instance,
         @EnumType(XrResult.class) int value,
-        byte buffer
+        BytePtr buffer
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$xrResultToString);
         try {
             return (int) hFunction.invokeExact(
                 instance.segment(),
                 value,
-                buffer
+                    buffer.segment()
             );
         } catch (Throwable e) {
             throw new RuntimeException(e);
@@ -1035,14 +1036,14 @@ public final class XRStatic {
     public @EnumType(XrResult.class) int structureTypeToString(
         XrInstance instance,
         @EnumType(XrStructureType.class) int value,
-        byte buffer
+        BytePtr buffer
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$xrStructureTypeToString);
         try {
             return (int) hFunction.invokeExact(
                 instance.segment(),
                 value,
-                buffer
+                    buffer.segment()
             );
         } catch (Throwable e) {
             throw new RuntimeException(e);
@@ -1562,7 +1563,7 @@ public final class XRStatic {
             ValueLayout.JAVA_INT,
             ValueLayout.ADDRESS,
             ValueLayout.JAVA_INT,
-            ValueLayout.JAVA_BYTE
+                MemoryLayout.sequenceLayout(MAX_RESULT_STRING_SIZE, ValueLayout.JAVA_BYTE)
         );
 
         public static final FunctionDescriptor DESCRIPTOR$xrStopHapticFeedback = FunctionDescriptor.of(
@@ -1582,7 +1583,7 @@ public final class XRStatic {
             ValueLayout.JAVA_INT,
             ValueLayout.ADDRESS,
             ValueLayout.JAVA_INT,
-            ValueLayout.JAVA_BYTE
+                MemoryLayout.sequenceLayout(MAX_STRUCTURE_NAME_SIZE, ValueLayout.JAVA_BYTE)
         );
 
         public static final FunctionDescriptor DESCRIPTOR$xrSuggestInteractionProfileBindings = FunctionDescriptor.of(

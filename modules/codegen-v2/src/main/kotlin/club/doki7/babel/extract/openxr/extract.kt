@@ -272,15 +272,14 @@ private fun extractMember(e: Element): Member {
     val values by e.attrs
     val optional by e.attrs
     val len by e.attrs
-    val type by e.children
-    val name = getName(e)
+    val (name, type) = extractTypeJudgement(e)
 
     // len is a comma separated (identifier | "null-terminated") list
     val lenList = commaList(len)
 
     return Member(
         name,
-        extractType(type!!),
+        type,
         values?.intern(),
         lenList,
         null,
@@ -405,9 +404,8 @@ private fun extractBitmask(e: Element): Bitmask {
  * @param e in form `<some_tag>TYPE <name>NAME</name></some_tag>`
  */
 private fun extractTypeJudgement(e: Element): Pair<String, Type> {
-    val rawType = getElementTextWithoutName(e)
-    val type = parseType(rawType).toType()
     val name = getName(e)
+    val type = extractType(e.getFirstElement("type")!!)
     return name to type
 }
 
