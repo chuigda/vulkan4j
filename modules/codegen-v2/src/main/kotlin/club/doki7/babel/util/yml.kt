@@ -1,8 +1,6 @@
 package club.doki7.babel.util
 
-import org.yaml.snakeyaml.DumperOptions
 import org.yaml.snakeyaml.Yaml
-import org.yaml.snakeyaml.constructor.Constructor
 import java.io.StringReader
 import kotlin.collections.Map
 
