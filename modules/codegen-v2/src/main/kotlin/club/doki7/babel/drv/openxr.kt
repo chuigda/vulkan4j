@@ -179,7 +179,7 @@ private data class CodegenContext<T : IMergeable<T>>(
             "XR",
             registry.commands.values.sortedBy { it.name.original }.toList(),
             codegenOptions,
-            false,
+            true,
             "command"
         ).writeTo("command/XR.java")
     }
