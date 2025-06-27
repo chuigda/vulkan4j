@@ -44,7 +44,6 @@ public final class WGPUVertexFormat {
     public static final int SINT32X4 = 0x27;
     public static final int UNORM10__10__10__2 = 0x28;
     public static final int UNORM8X4_B_G_R_A = 0x29;
-    public static final int FORCE32 = 0x7fffffff;
 
     public static String explain(@EnumType(WGPUVertexFormat.class) int value) {
         return switch (value) {
@@ -55,7 +54,6 @@ public final class WGPUVertexFormat {
             case WGPUVertexFormat.FLOAT32X2 -> "FLOAT32X2";
             case WGPUVertexFormat.FLOAT32X3 -> "FLOAT32X3";
             case WGPUVertexFormat.FLOAT32X4 -> "FLOAT32X4";
-            case WGPUVertexFormat.FORCE32 -> "FORCE32";
             case WGPUVertexFormat.SINT16 -> "SINT16";
             case WGPUVertexFormat.SINT16X2 -> "SINT16X2";
             case WGPUVertexFormat.SINT16X4 -> "SINT16X4";

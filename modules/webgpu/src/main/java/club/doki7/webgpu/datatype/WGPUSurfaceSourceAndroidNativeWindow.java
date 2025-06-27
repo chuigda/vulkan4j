@@ -18,14 +18,14 @@ import club.doki7.webgpu.handle.*;
 import club.doki7.webgpu.enumtype.*;
 import static club.doki7.webgpu.WGPUConstants.*;
 
-/// Represents a pointer to a {@code SurfaceSourceAndroidNativeWindow} structure in native memory.
+/// Represents a pointer to a {@code WGPUSurfaceSourceAndroidNativeWindow} structure in native memory.
 ///
 /// ## Structure
 ///
 /// {@snippet lang=c :
-/// typedef struct SurfaceSourceAndroidNativeWindow {
+/// typedef struct WGPUSurfaceSourceAndroidNativeWindow {
 ///     void* window; // @link substring="window" target="#window"
-/// } SurfaceSourceAndroidNativeWindow;
+/// } WGPUSurfaceSourceAndroidNativeWindow;
 /// }
 ///
 /// ## Contracts

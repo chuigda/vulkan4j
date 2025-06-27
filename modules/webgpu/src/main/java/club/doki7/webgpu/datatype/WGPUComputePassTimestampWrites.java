@@ -18,16 +18,16 @@ import club.doki7.webgpu.handle.*;
 import club.doki7.webgpu.enumtype.*;
 import static club.doki7.webgpu.WGPUConstants.*;
 
-/// Represents a pointer to a {@code ComputePassTimestampWrites} structure in native memory.
+/// Represents a pointer to a {@code WGPUComputePassTimestampWrites} structure in native memory.
 ///
 /// ## Structure
 ///
 /// {@snippet lang=c :
-/// typedef struct ComputePassTimestampWrites {
-///     QuerySet querySet; // @link substring="WGPUQuerySet" target="WGPUQuerySet" @link substring="querySet" target="#querySet"
+/// typedef struct WGPUComputePassTimestampWrites {
+///     WGPUQuerySet querySet; // @link substring="WGPUQuerySet" target="WGPUQuerySet" @link substring="querySet" target="#querySet"
 ///     uint32_t beginningOfPassWriteIndex; // @link substring="beginningOfPassWriteIndex" target="#beginningOfPassWriteIndex"
 ///     uint32_t endOfPassWriteIndex; // @link substring="endOfPassWriteIndex" target="#endOfPassWriteIndex"
-/// } ComputePassTimestampWrites;
+/// } WGPUComputePassTimestampWrites;
 /// }
 ///
 /// ## Contracts

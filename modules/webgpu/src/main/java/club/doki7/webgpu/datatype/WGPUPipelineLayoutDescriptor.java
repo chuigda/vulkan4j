@@ -18,16 +18,15 @@ import club.doki7.webgpu.handle.*;
 import club.doki7.webgpu.enumtype.*;
 import static club.doki7.webgpu.WGPUConstants.*;
 
-/// Represents a pointer to a {@code PipelineLayoutDescriptor} structure in native memory.
+/// Represents a pointer to a {@code WGPUPipelineLayoutDescriptor} structure in native memory.
 ///
 /// ## Structure
 ///
 /// {@snippet lang=c :
-/// typedef struct PipelineLayoutDescriptor {
-///     StringView label; // @link substring="WGPUStringView" target="WGPUStringView" @link substring="label" target="#label"
-///     size_t bindGroupLayoutCount; // @link substring="bindGroupLayoutCount" target="#bindGroupLayoutCount"
-///     BindGroupLayout const* bindGroupLayouts; // @link substring="WGPUBindGroupLayout" target="WGPUBindGroupLayout" @link substring="bindGroupLayouts" target="#bindGroupLayouts"
-/// } PipelineLayoutDescriptor;
+/// typedef struct WGPUPipelineLayoutDescriptor {
+///     WGPUStringView label; // @link substring="WGPUStringView" target="WGPUStringView" @link substring="label" target="#label"
+///     WGPUBindGroupLayout const* bindGroupLayouts; // @link substring="WGPUBindGroupLayout" target="WGPUBindGroupLayout" @link substring="bindGroupLayouts" target="#bindGroupLayouts"
+/// } WGPUPipelineLayoutDescriptor;
 /// }
 ///
 /// ## Contracts
@@ -188,15 +187,6 @@ public record WGPUPipelineLayoutDescriptor(@NotNull MemorySegment segment) imple
         return this;
     }
 
-    public @Unsigned long bindGroupLayoutCount() {
-        return NativeLayout.readCSizeT(segment, OFFSET$bindGroupLayoutCount);
-    }
-
-    public WGPUPipelineLayoutDescriptor bindGroupLayoutCount(@Unsigned long value) {
-        NativeLayout.writeCSizeT(segment, OFFSET$bindGroupLayoutCount, value);
-        return this;
-    }
-
     /// Note: the returned {@link WGPUBindGroupLayout.Ptr} does not have correct {@link WGPUBindGroupLayout.Ptr#size}
     /// property. It's up to user to track the size of the buffer, and use
     /// {@link WGPUBindGroupLayout.Ptr#reinterpret} to set the size before actually reading from or writing to the
@@ -225,23 +215,19 @@ public record WGPUPipelineLayoutDescriptor(@NotNull MemorySegment segment) imple
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(
         WGPUStringView.LAYOUT.withName("label"),
-        NativeLayout.C_SIZE_T.withName("bindGroupLayoutCount"),
         ValueLayout.ADDRESS.withTargetLayout(ValueLayout.ADDRESS).withName("bindGroupLayouts")
     );
     public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$label = PathElement.groupElement("label");
-    public static final PathElement PATH$bindGroupLayoutCount = PathElement.groupElement("bindGroupLayoutCount");
     public static final PathElement PATH$bindGroupLayouts = PathElement.groupElement("bindGroupLayouts");
 
     public static final StructLayout LAYOUT$label = (StructLayout) LAYOUT.select(PATH$label);
     public static final AddressLayout LAYOUT$bindGroupLayouts = (AddressLayout) LAYOUT.select(PATH$bindGroupLayouts);
 
     public static final long SIZE$label = LAYOUT$label.byteSize();
-    public static final long SIZE$bindGroupLayoutCount = NativeLayout.C_SIZE_T.byteSize();
     public static final long SIZE$bindGroupLayouts = LAYOUT$bindGroupLayouts.byteSize();
 
     public static final long OFFSET$label = LAYOUT.byteOffset(PATH$label);
-    public static final long OFFSET$bindGroupLayoutCount = LAYOUT.byteOffset(PATH$bindGroupLayoutCount);
     public static final long OFFSET$bindGroupLayouts = LAYOUT.byteOffset(PATH$bindGroupLayouts);
 }

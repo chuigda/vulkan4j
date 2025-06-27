@@ -18,22 +18,21 @@ import club.doki7.webgpu.handle.*;
 import club.doki7.webgpu.enumtype.*;
 import static club.doki7.webgpu.WGPUConstants.*;
 
-/// Represents a pointer to a {@code TextureDescriptor} structure in native memory.
+/// Represents a pointer to a {@code WGPUTextureDescriptor} structure in native memory.
 ///
 /// ## Structure
 ///
 /// {@snippet lang=c :
-/// typedef struct TextureDescriptor {
-///     StringView label; // @link substring="WGPUStringView" target="WGPUStringView" @link substring="label" target="#label"
-///     TextureUsage usage; // @link substring="WGPUTextureUsage" target="WGPUTextureUsage" @link substring="usage" target="#usage"
-///     TextureDimension dimension; // @link substring="WGPUTextureDimension" target="WGPUTextureDimension" @link substring="dimension" target="#dimension"
-///     Extent3d size; // @link substring="WGPUExtent3d" target="WGPUExtent3d" @link substring="size" target="#size"
-///     TextureFormat format; // @link substring="WGPUTextureFormat" target="WGPUTextureFormat" @link substring="format" target="#format"
+/// typedef struct WGPUTextureDescriptor {
+///     WGPUStringView label; // @link substring="WGPUStringView" target="WGPUStringView" @link substring="label" target="#label"
+///     WGPUTextureUsage usage; // @link substring="WGPUTextureUsage" target="WGPUTextureUsage" @link substring="usage" target="#usage"
+///     WGPUTextureDimension dimension; // @link substring="WGPUTextureDimension" target="WGPUTextureDimension" @link substring="dimension" target="#dimension"
+///     WGPUExtent3d size; // @link substring="WGPUExtent3d" target="WGPUExtent3d" @link substring="size" target="#size"
+///     WGPUTextureFormat format; // @link substring="WGPUTextureFormat" target="WGPUTextureFormat" @link substring="format" target="#format"
 ///     uint32_t mipLevelCount; // @link substring="mipLevelCount" target="#mipLevelCount"
 ///     uint32_t sampleCount; // @link substring="sampleCount" target="#sampleCount"
-///     size_t viewFormatCount; // @link substring="viewFormatCount" target="#viewFormatCount"
-///     TextureFormat const* viewFormats; // @link substring="WGPUTextureFormat" target="WGPUTextureFormat" @link substring="viewFormats" target="#viewFormats"
-/// } TextureDescriptor;
+///     WGPUTextureFormat const* viewFormats; // @link substring="WGPUTextureFormat" target="WGPUTextureFormat" @link substring="viewFormats" target="#viewFormats"
+/// } WGPUTextureDescriptor;
 /// }
 ///
 /// ## Contracts
@@ -253,15 +252,6 @@ public record WGPUTextureDescriptor(@NotNull MemorySegment segment) implements I
         return this;
     }
 
-    public @Unsigned long viewFormatCount() {
-        return NativeLayout.readCSizeT(segment, OFFSET$viewFormatCount);
-    }
-
-    public WGPUTextureDescriptor viewFormatCount(@Unsigned long value) {
-        NativeLayout.writeCSizeT(segment, OFFSET$viewFormatCount, value);
-        return this;
-    }
-
 
     /// Note: the returned {@link IntPtr} does not have correct
     /// {@link IntPtr#size} property. It's up to user to track the size of the buffer,
@@ -297,7 +287,6 @@ public record WGPUTextureDescriptor(@NotNull MemorySegment segment) implements I
         ValueLayout.JAVA_INT.withName("format"),
         ValueLayout.JAVA_INT.withName("mipLevelCount"),
         ValueLayout.JAVA_INT.withName("sampleCount"),
-        NativeLayout.C_SIZE_T.withName("viewFormatCount"),
         ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_INT).withName("viewFormats")
     );
     public static final long BYTES = LAYOUT.byteSize();
@@ -309,7 +298,6 @@ public record WGPUTextureDescriptor(@NotNull MemorySegment segment) implements I
     public static final PathElement PATH$format = PathElement.groupElement("format");
     public static final PathElement PATH$mipLevelCount = PathElement.groupElement("mipLevelCount");
     public static final PathElement PATH$sampleCount = PathElement.groupElement("sampleCount");
-    public static final PathElement PATH$viewFormatCount = PathElement.groupElement("viewFormatCount");
     public static final PathElement PATH$viewFormats = PathElement.groupElement("viewFormats");
 
     public static final StructLayout LAYOUT$label = (StructLayout) LAYOUT.select(PATH$label);
@@ -328,7 +316,6 @@ public record WGPUTextureDescriptor(@NotNull MemorySegment segment) implements I
     public static final long SIZE$format = LAYOUT$format.byteSize();
     public static final long SIZE$mipLevelCount = LAYOUT$mipLevelCount.byteSize();
     public static final long SIZE$sampleCount = LAYOUT$sampleCount.byteSize();
-    public static final long SIZE$viewFormatCount = NativeLayout.C_SIZE_T.byteSize();
     public static final long SIZE$viewFormats = LAYOUT$viewFormats.byteSize();
 
     public static final long OFFSET$label = LAYOUT.byteOffset(PATH$label);
@@ -338,6 +325,5 @@ public record WGPUTextureDescriptor(@NotNull MemorySegment segment) implements I
     public static final long OFFSET$format = LAYOUT.byteOffset(PATH$format);
     public static final long OFFSET$mipLevelCount = LAYOUT.byteOffset(PATH$mipLevelCount);
     public static final long OFFSET$sampleCount = LAYOUT.byteOffset(PATH$sampleCount);
-    public static final long OFFSET$viewFormatCount = LAYOUT.byteOffset(PATH$viewFormatCount);
     public static final long OFFSET$viewFormats = LAYOUT.byteOffset(PATH$viewFormats);
 }

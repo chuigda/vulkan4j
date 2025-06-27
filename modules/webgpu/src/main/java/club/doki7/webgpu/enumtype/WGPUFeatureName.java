@@ -20,7 +20,6 @@ public final class WGPUFeatureName {
     public static final int FLOAT32_BLENDABLE = 0xe;
     public static final int CLIP_DISTANCES = 0xf;
     public static final int DUAL_SOURCE_BLENDING = 0x10;
-    public static final int FORCE32 = 0x7fffffff;
 
     public static String explain(@EnumType(WGPUFeatureName.class) int value) {
         return switch (value) {
@@ -31,7 +30,6 @@ public final class WGPUFeatureName {
             case WGPUFeatureName.DUAL_SOURCE_BLENDING -> "DUAL_SOURCE_BLENDING";
             case WGPUFeatureName.FLOAT32_BLENDABLE -> "FLOAT32_BLENDABLE";
             case WGPUFeatureName.FLOAT32_FILTERABLE -> "FLOAT32_FILTERABLE";
-            case WGPUFeatureName.FORCE32 -> "FORCE32";
             case WGPUFeatureName.INDIRECT_FIRST_INSTANCE -> "INDIRECT_FIRST_INSTANCE";
             case WGPUFeatureName.RG11B10_UFLOAT_RENDERABLE -> "RG11B10_UFLOAT_RENDERABLE";
             case WGPUFeatureName.SHADER_F16 -> "SHADER_F16";

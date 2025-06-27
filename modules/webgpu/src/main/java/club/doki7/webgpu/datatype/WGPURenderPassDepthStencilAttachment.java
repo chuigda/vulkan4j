@@ -18,22 +18,22 @@ import club.doki7.webgpu.handle.*;
 import club.doki7.webgpu.enumtype.*;
 import static club.doki7.webgpu.WGPUConstants.*;
 
-/// Represents a pointer to a {@code RenderPassDepthStencilAttachment} structure in native memory.
+/// Represents a pointer to a {@code WGPURenderPassDepthStencilAttachment} structure in native memory.
 ///
 /// ## Structure
 ///
 /// {@snippet lang=c :
-/// typedef struct RenderPassDepthStencilAttachment {
-///     TextureView view; // @link substring="WGPUTextureView" target="WGPUTextureView" @link substring="view" target="#view"
-///     LoadOp depthLoadOp; // @link substring="WGPULoadOp" target="WGPULoadOp" @link substring="depthLoadOp" target="#depthLoadOp"
-///     StoreOp depthStoreOp; // @link substring="WGPUStoreOp" target="WGPUStoreOp" @link substring="depthStoreOp" target="#depthStoreOp"
+/// typedef struct WGPURenderPassDepthStencilAttachment {
+///     WGPUTextureView view; // @link substring="WGPUTextureView" target="WGPUTextureView" @link substring="view" target="#view"
+///     WGPULoadOp depthLoadOp; // @link substring="WGPULoadOp" target="WGPULoadOp" @link substring="depthLoadOp" target="#depthLoadOp"
+///     WGPUStoreOp depthStoreOp; // @link substring="WGPUStoreOp" target="WGPUStoreOp" @link substring="depthStoreOp" target="#depthStoreOp"
 ///     float depthClearValue; // @link substring="depthClearValue" target="#depthClearValue"
 ///     bool depthReadOnly; // @link substring="depthReadOnly" target="#depthReadOnly"
-///     LoadOp stencilLoadOp; // @link substring="WGPULoadOp" target="WGPULoadOp" @link substring="stencilLoadOp" target="#stencilLoadOp"
-///     StoreOp stencilStoreOp; // @link substring="WGPUStoreOp" target="WGPUStoreOp" @link substring="stencilStoreOp" target="#stencilStoreOp"
+///     WGPULoadOp stencilLoadOp; // @link substring="WGPULoadOp" target="WGPULoadOp" @link substring="stencilLoadOp" target="#stencilLoadOp"
+///     WGPUStoreOp stencilStoreOp; // @link substring="WGPUStoreOp" target="WGPUStoreOp" @link substring="stencilStoreOp" target="#stencilStoreOp"
 ///     uint32_t stencilClearValue; // @link substring="stencilClearValue" target="#stencilClearValue"
 ///     bool stencilReadOnly; // @link substring="stencilReadOnly" target="#stencilReadOnly"
-/// } RenderPassDepthStencilAttachment;
+/// } WGPURenderPassDepthStencilAttachment;
 /// }
 ///
 /// ## Contracts

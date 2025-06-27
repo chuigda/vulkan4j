@@ -7,14 +7,12 @@ public final class WGPUTextureDimension {
     public static final int 1D = 0x1;
     public static final int 2D = 0x2;
     public static final int 3D = 0x3;
-    public static final int FORCE32 = 0x7fffffff;
 
     public static String explain(@EnumType(WGPUTextureDimension.class) int value) {
         return switch (value) {
             case WGPUTextureDimension.1D -> "1D";
             case WGPUTextureDimension.2D -> "2D";
             case WGPUTextureDimension.3D -> "3D";
-            case WGPUTextureDimension.FORCE32 -> "FORCE32";
             case WGPUTextureDimension.UNDEFINED -> "UNDEFINED";
             default -> "UNKNOWN(" + value + ")";
         };

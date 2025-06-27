@@ -18,18 +18,18 @@ import club.doki7.webgpu.handle.*;
 import club.doki7.webgpu.enumtype.*;
 import static club.doki7.webgpu.WGPUConstants.*;
 
-/// Represents a pointer to a {@code PrimitiveState} structure in native memory.
+/// Represents a pointer to a {@code WGPUPrimitiveState} structure in native memory.
 ///
 /// ## Structure
 ///
 /// {@snippet lang=c :
-/// typedef struct PrimitiveState {
-///     PrimitiveTopology topology; // @link substring="WGPUPrimitiveTopology" target="WGPUPrimitiveTopology" @link substring="topology" target="#topology"
-///     IndexFormat stripIndexFormat; // @link substring="WGPUIndexFormat" target="WGPUIndexFormat" @link substring="stripIndexFormat" target="#stripIndexFormat"
-///     FrontFace frontFace; // @link substring="WGPUFrontFace" target="WGPUFrontFace" @link substring="frontFace" target="#frontFace"
-///     CullMode cullMode; // @link substring="WGPUCullMode" target="WGPUCullMode" @link substring="cullMode" target="#cullMode"
+/// typedef struct WGPUPrimitiveState {
+///     WGPUPrimitiveTopology topology; // @link substring="WGPUPrimitiveTopology" target="WGPUPrimitiveTopology" @link substring="topology" target="#topology"
+///     WGPUIndexFormat stripIndexFormat; // @link substring="WGPUIndexFormat" target="WGPUIndexFormat" @link substring="stripIndexFormat" target="#stripIndexFormat"
+///     WGPUFrontFace frontFace; // @link substring="WGPUFrontFace" target="WGPUFrontFace" @link substring="frontFace" target="#frontFace"
+///     WGPUCullMode cullMode; // @link substring="WGPUCullMode" target="WGPUCullMode" @link substring="cullMode" target="#cullMode"
 ///     bool unclippedDepth; // @link substring="unclippedDepth" target="#unclippedDepth"
-/// } PrimitiveState;
+/// } WGPUPrimitiveState;
 /// }
 ///
 /// ## Contracts

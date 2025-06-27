@@ -18,17 +18,17 @@ import club.doki7.webgpu.handle.*;
 import club.doki7.webgpu.enumtype.*;
 import static club.doki7.webgpu.WGPUConstants.*;
 
-/// Represents a pointer to a {@code Color} structure in native memory.
+/// Represents a pointer to a {@code WGPUColor} structure in native memory.
 ///
 /// ## Structure
 ///
 /// {@snippet lang=c :
-/// typedef struct Color {
+/// typedef struct WGPUColor {
 ///     double r; // @link substring="r" target="#r"
 ///     double g; // @link substring="g" target="#g"
 ///     double b; // @link substring="b" target="#b"
 ///     double a; // @link substring="a" target="#a"
-/// } Color;
+/// } WGPUColor;
 /// }
 ///
 /// ## Contracts

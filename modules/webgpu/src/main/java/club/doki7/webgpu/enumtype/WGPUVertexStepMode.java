@@ -7,11 +7,9 @@ public final class WGPUVertexStepMode {
     public static final int UNDEFINED = 0x1;
     public static final int VERTEX = 0x2;
     public static final int INSTANCE = 0x3;
-    public static final int FORCE32 = 0x7fffffff;
 
     public static String explain(@EnumType(WGPUVertexStepMode.class) int value) {
         return switch (value) {
-            case WGPUVertexStepMode.FORCE32 -> "FORCE32";
             case WGPUVertexStepMode.INSTANCE -> "INSTANCE";
             case WGPUVertexStepMode.UNDEFINED -> "UNDEFINED";
             case WGPUVertexStepMode.VERTEX -> "VERTEX";

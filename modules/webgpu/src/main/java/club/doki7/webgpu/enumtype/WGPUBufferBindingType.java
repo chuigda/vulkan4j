@@ -8,12 +8,10 @@ public final class WGPUBufferBindingType {
     public static final int UNIFORM = 0x2;
     public static final int STORAGE = 0x3;
     public static final int READ_ONLY_STORAGE = 0x4;
-    public static final int FORCE32 = 0x7fffffff;
 
     public static String explain(@EnumType(WGPUBufferBindingType.class) int value) {
         return switch (value) {
             case WGPUBufferBindingType.BINDING_NOT_USED -> "BINDING_NOT_USED";
-            case WGPUBufferBindingType.FORCE32 -> "FORCE32";
             case WGPUBufferBindingType.READ_ONLY_STORAGE -> "READ_ONLY_STORAGE";
             case WGPUBufferBindingType.STORAGE -> "STORAGE";
             case WGPUBufferBindingType.UNDEFINED -> "UNDEFINED";

@@ -18,15 +18,15 @@ import club.doki7.webgpu.handle.*;
 import club.doki7.webgpu.enumtype.*;
 import static club.doki7.webgpu.WGPUConstants.*;
 
-/// Represents a pointer to a {@code ComputePassDescriptor} structure in native memory.
+/// Represents a pointer to a {@code WGPUComputePassDescriptor} structure in native memory.
 ///
 /// ## Structure
 ///
 /// {@snippet lang=c :
-/// typedef struct ComputePassDescriptor {
-///     StringView label; // @link substring="WGPUStringView" target="WGPUStringView" @link substring="label" target="#label"
-///     ComputePassTimestampWrites timestampWrites; // optional // @link substring="WGPUComputePassTimestampWrites" target="WGPUComputePassTimestampWrites" @link substring="timestampWrites" target="#timestampWrites"
-/// } ComputePassDescriptor;
+/// typedef struct WGPUComputePassDescriptor {
+///     WGPUStringView label; // @link substring="WGPUStringView" target="WGPUStringView" @link substring="label" target="#label"
+///     WGPUComputePassTimestampWrites const* timestampWrites; // optional // @link substring="WGPUComputePassTimestampWrites" target="WGPUComputePassTimestampWrites" @link substring="timestampWrites" target="#timestampWrites"
+/// } WGPUComputePassDescriptor;
 /// }
 ///
 /// ## Contracts
@@ -187,23 +187,41 @@ public record WGPUComputePassDescriptor(@NotNull MemorySegment segment) implemen
         return this;
     }
 
-    public @NotNull WGPUComputePassTimestampWrites timestampWrites() {
-        return new WGPUComputePassTimestampWrites(segment.asSlice(OFFSET$timestampWrites, LAYOUT$timestampWrites));
-    }
-
-    public WGPUComputePassDescriptor timestampWrites(@NotNull WGPUComputePassTimestampWrites value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$timestampWrites, SIZE$timestampWrites);
+    public WGPUComputePassDescriptor timestampWrites(@Nullable IWGPUComputePassTimestampWrites value) {
+        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
+        timestampWritesRaw(s);
         return this;
     }
 
-    public WGPUComputePassDescriptor timestampWrites(Consumer<@NotNull WGPUComputePassTimestampWrites> consumer) {
-        consumer.accept(timestampWrites());
-        return this;
+    @Unsafe public @Nullable WGPUComputePassTimestampWrites.Ptr timestampWrites(int assumedCount) {
+        MemorySegment s = timestampWritesRaw();
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+
+        s = s.reinterpret(assumedCount * WGPUComputePassTimestampWrites.BYTES);
+        return new WGPUComputePassTimestampWrites.Ptr(s);
+    }
+
+    public @Nullable WGPUComputePassTimestampWrites timestampWrites() {
+        MemorySegment s = timestampWritesRaw();
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+        return new WGPUComputePassTimestampWrites(s);
+    }
+
+    public @Pointer(target=WGPUComputePassTimestampWrites.class) @NotNull MemorySegment timestampWritesRaw() {
+        return segment.get(LAYOUT$timestampWrites, OFFSET$timestampWrites);
+    }
+
+    public void timestampWritesRaw(@Pointer(target=WGPUComputePassTimestampWrites.class) @NotNull MemorySegment value) {
+        segment.set(LAYOUT$timestampWrites, OFFSET$timestampWrites, value);
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(
         WGPUStringView.LAYOUT.withName("label"),
-        WGPUComputePassTimestampWrites.LAYOUT.withName("timestampWrites")
+        ValueLayout.ADDRESS.withTargetLayout(WGPUComputePassTimestampWrites.LAYOUT).withName("timestampWrites")
     );
     public static final long BYTES = LAYOUT.byteSize();
 
@@ -211,7 +229,7 @@ public record WGPUComputePassDescriptor(@NotNull MemorySegment segment) implemen
     public static final PathElement PATH$timestampWrites = PathElement.groupElement("timestampWrites");
 
     public static final StructLayout LAYOUT$label = (StructLayout) LAYOUT.select(PATH$label);
-    public static final StructLayout LAYOUT$timestampWrites = (StructLayout) LAYOUT.select(PATH$timestampWrites);
+    public static final AddressLayout LAYOUT$timestampWrites = (AddressLayout) LAYOUT.select(PATH$timestampWrites);
 
     public static final long SIZE$label = LAYOUT$label.byteSize();
     public static final long SIZE$timestampWrites = LAYOUT$timestampWrites.byteSize();

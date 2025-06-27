@@ -18,17 +18,16 @@ import club.doki7.webgpu.handle.*;
 import club.doki7.webgpu.enumtype.*;
 import static club.doki7.webgpu.WGPUConstants.*;
 
-/// Represents a pointer to a {@code VertexBufferLayout} structure in native memory.
+/// Represents a pointer to a {@code WGPUVertexBufferLayout} structure in native memory.
 ///
 /// ## Structure
 ///
 /// {@snippet lang=c :
-/// typedef struct VertexBufferLayout {
-///     VertexStepMode stepMode; // @link substring="WGPUVertexStepMode" target="WGPUVertexStepMode" @link substring="stepMode" target="#stepMode"
+/// typedef struct WGPUVertexBufferLayout {
+///     WGPUVertexStepMode stepMode; // @link substring="WGPUVertexStepMode" target="WGPUVertexStepMode" @link substring="stepMode" target="#stepMode"
 ///     uint64_t arrayStride; // @link substring="arrayStride" target="#arrayStride"
-///     size_t attributeCount; // @link substring="attributeCount" target="#attributeCount"
-///     VertexAttribute const* attributes; // @link substring="WGPUVertexAttribute" target="WGPUVertexAttribute" @link substring="attributes" target="#attributes"
-/// } VertexBufferLayout;
+///     WGPUVertexAttribute const* attributes; // @link substring="WGPUVertexAttribute" target="WGPUVertexAttribute" @link substring="attributes" target="#attributes"
+/// } WGPUVertexBufferLayout;
 /// }
 ///
 /// ## Contracts
@@ -193,15 +192,6 @@ public record WGPUVertexBufferLayout(@NotNull MemorySegment segment) implements 
         return this;
     }
 
-    public @Unsigned long attributeCount() {
-        return NativeLayout.readCSizeT(segment, OFFSET$attributeCount);
-    }
-
-    public WGPUVertexBufferLayout attributeCount(@Unsigned long value) {
-        NativeLayout.writeCSizeT(segment, OFFSET$attributeCount, value);
-        return this;
-    }
-
     public WGPUVertexBufferLayout attributes(@Nullable IWGPUVertexAttribute value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         attributesRaw(s);
@@ -237,14 +227,12 @@ public record WGPUVertexBufferLayout(@NotNull MemorySegment segment) implements 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(
         ValueLayout.JAVA_INT.withName("stepMode"),
         ValueLayout.JAVA_LONG.withName("arrayStride"),
-        NativeLayout.C_SIZE_T.withName("attributeCount"),
         ValueLayout.ADDRESS.withTargetLayout(WGPUVertexAttribute.LAYOUT).withName("attributes")
     );
     public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$stepMode = PathElement.groupElement("stepMode");
     public static final PathElement PATH$arrayStride = PathElement.groupElement("arrayStride");
-    public static final PathElement PATH$attributeCount = PathElement.groupElement("attributeCount");
     public static final PathElement PATH$attributes = PathElement.groupElement("attributes");
 
     public static final OfInt LAYOUT$stepMode = (OfInt) LAYOUT.select(PATH$stepMode);
@@ -253,11 +241,9 @@ public record WGPUVertexBufferLayout(@NotNull MemorySegment segment) implements 
 
     public static final long SIZE$stepMode = LAYOUT$stepMode.byteSize();
     public static final long SIZE$arrayStride = LAYOUT$arrayStride.byteSize();
-    public static final long SIZE$attributeCount = NativeLayout.C_SIZE_T.byteSize();
     public static final long SIZE$attributes = LAYOUT$attributes.byteSize();
 
     public static final long OFFSET$stepMode = LAYOUT.byteOffset(PATH$stepMode);
     public static final long OFFSET$arrayStride = LAYOUT.byteOffset(PATH$arrayStride);
-    public static final long OFFSET$attributeCount = LAYOUT.byteOffset(PATH$attributeCount);
     public static final long OFFSET$attributes = LAYOUT.byteOffset(PATH$attributes);
 }

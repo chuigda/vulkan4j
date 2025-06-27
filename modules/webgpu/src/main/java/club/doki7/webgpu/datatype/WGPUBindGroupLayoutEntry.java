@@ -18,19 +18,19 @@ import club.doki7.webgpu.handle.*;
 import club.doki7.webgpu.enumtype.*;
 import static club.doki7.webgpu.WGPUConstants.*;
 
-/// Represents a pointer to a {@code BindGroupLayoutEntry} structure in native memory.
+/// Represents a pointer to a {@code WGPUBindGroupLayoutEntry} structure in native memory.
 ///
 /// ## Structure
 ///
 /// {@snippet lang=c :
-/// typedef struct BindGroupLayoutEntry {
+/// typedef struct WGPUBindGroupLayoutEntry {
 ///     uint32_t binding; // @link substring="binding" target="#binding"
-///     ShaderStage visibility; // @link substring="WGPUShaderStage" target="WGPUShaderStage" @link substring="visibility" target="#visibility"
-///     BufferBindingLayout buffer; // @link substring="WGPUBufferBindingLayout" target="WGPUBufferBindingLayout" @link substring="buffer" target="#buffer"
-///     SamplerBindingLayout sampler; // @link substring="WGPUSamplerBindingLayout" target="WGPUSamplerBindingLayout" @link substring="sampler" target="#sampler"
-///     TextureBindingLayout texture; // @link substring="WGPUTextureBindingLayout" target="WGPUTextureBindingLayout" @link substring="texture" target="#texture"
-///     StorageTextureBindingLayout storageTexture; // @link substring="WGPUStorageTextureBindingLayout" target="WGPUStorageTextureBindingLayout" @link substring="storageTexture" target="#storageTexture"
-/// } BindGroupLayoutEntry;
+///     WGPUShaderStage visibility; // @link substring="WGPUShaderStage" target="WGPUShaderStage" @link substring="visibility" target="#visibility"
+///     WGPUBufferBindingLayout buffer; // @link substring="WGPUBufferBindingLayout" target="WGPUBufferBindingLayout" @link substring="buffer" target="#buffer"
+///     WGPUSamplerBindingLayout sampler; // @link substring="WGPUSamplerBindingLayout" target="WGPUSamplerBindingLayout" @link substring="sampler" target="#sampler"
+///     WGPUTextureBindingLayout texture; // @link substring="WGPUTextureBindingLayout" target="WGPUTextureBindingLayout" @link substring="texture" target="#texture"
+///     WGPUStorageTextureBindingLayout storageTexture; // @link substring="WGPUStorageTextureBindingLayout" target="WGPUStorageTextureBindingLayout" @link substring="storageTexture" target="#storageTexture"
+/// } WGPUBindGroupLayoutEntry;
 /// }
 ///
 /// ## Contracts

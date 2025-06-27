@@ -18,14 +18,14 @@ import club.doki7.webgpu.handle.*;
 import club.doki7.webgpu.enumtype.*;
 import static club.doki7.webgpu.WGPUConstants.*;
 
-/// Represents a pointer to a {@code CommandEncoderDescriptor} structure in native memory.
+/// Represents a pointer to a {@code WGPUCommandEncoderDescriptor} structure in native memory.
 ///
 /// ## Structure
 ///
 /// {@snippet lang=c :
-/// typedef struct CommandEncoderDescriptor {
-///     StringView label; // @link substring="WGPUStringView" target="WGPUStringView" @link substring="label" target="#label"
-/// } CommandEncoderDescriptor;
+/// typedef struct WGPUCommandEncoderDescriptor {
+///     WGPUStringView label; // @link substring="WGPUStringView" target="WGPUStringView" @link substring="label" target="#label"
+/// } WGPUCommandEncoderDescriptor;
 /// }
 ///
 /// ## Contracts

@@ -18,16 +18,16 @@ import club.doki7.webgpu.handle.*;
 import club.doki7.webgpu.enumtype.*;
 import static club.doki7.webgpu.WGPUConstants.*;
 
-/// Represents a pointer to a {@code StorageTextureBindingLayout} structure in native memory.
+/// Represents a pointer to a {@code WGPUStorageTextureBindingLayout} structure in native memory.
 ///
 /// ## Structure
 ///
 /// {@snippet lang=c :
-/// typedef struct StorageTextureBindingLayout {
-///     StorageTextureAccess access; // @link substring="WGPUStorageTextureAccess" target="WGPUStorageTextureAccess" @link substring="access" target="#access"
-///     TextureFormat format; // @link substring="WGPUTextureFormat" target="WGPUTextureFormat" @link substring="format" target="#format"
-///     TextureViewDimension viewDimension; // @link substring="WGPUTextureViewDimension" target="WGPUTextureViewDimension" @link substring="viewDimension" target="#viewDimension"
-/// } StorageTextureBindingLayout;
+/// typedef struct WGPUStorageTextureBindingLayout {
+///     WGPUStorageTextureAccess access; // @link substring="WGPUStorageTextureAccess" target="WGPUStorageTextureAccess" @link substring="access" target="#access"
+///     WGPUTextureFormat format; // @link substring="WGPUTextureFormat" target="WGPUTextureFormat" @link substring="format" target="#format"
+///     WGPUTextureViewDimension viewDimension; // @link substring="WGPUTextureViewDimension" target="WGPUTextureViewDimension" @link substring="viewDimension" target="#viewDimension"
+/// } WGPUStorageTextureBindingLayout;
 /// }
 ///
 /// ## Contracts

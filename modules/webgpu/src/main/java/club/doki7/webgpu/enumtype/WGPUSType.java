@@ -12,11 +12,9 @@ public final class WGPUSType {
     public static final int SURFACE_SOURCE_WAYLAND_SURFACE = 0x7;
     public static final int SURFACE_SOURCE_ANDROID_NATIVE_WINDOW = 0x8;
     public static final int SURFACE_SOURCE_XCB_WINDOW = 0x9;
-    public static final int FORCE32 = 0x7fffffff;
 
     public static String explain(@EnumType(WGPUSType.class) int value) {
         return switch (value) {
-            case WGPUSType.FORCE32 -> "FORCE32";
             case WGPUSType.RENDER_PASS_MAX_DRAW_COUNT -> "RENDER_PASS_MAX_DRAW_COUNT";
             case WGPUSType.SHADER_SOURCE_SPIRV -> "SHADER_SOURCE_SPIRV";
             case WGPUSType.SHADER_SOURCE_WGSL -> "SHADER_SOURCE_WGSL";

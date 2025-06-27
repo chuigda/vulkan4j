@@ -18,16 +18,16 @@ import club.doki7.webgpu.handle.*;
 import club.doki7.webgpu.enumtype.*;
 import static club.doki7.webgpu.WGPUConstants.*;
 
-/// Represents a pointer to a {@code BlendComponent} structure in native memory.
+/// Represents a pointer to a {@code WGPUBlendComponent} structure in native memory.
 ///
 /// ## Structure
 ///
 /// {@snippet lang=c :
-/// typedef struct BlendComponent {
-///     BlendOperation operation; // @link substring="WGPUBlendOperation" target="WGPUBlendOperation" @link substring="operation" target="#operation"
-///     BlendFactor srcFactor; // @link substring="WGPUBlendFactor" target="WGPUBlendFactor" @link substring="srcFactor" target="#srcFactor"
-///     BlendFactor dstFactor; // @link substring="WGPUBlendFactor" target="WGPUBlendFactor" @link substring="dstFactor" target="#dstFactor"
-/// } BlendComponent;
+/// typedef struct WGPUBlendComponent {
+///     WGPUBlendOperation operation; // @link substring="WGPUBlendOperation" target="WGPUBlendOperation" @link substring="operation" target="#operation"
+///     WGPUBlendFactor srcFactor; // @link substring="WGPUBlendFactor" target="WGPUBlendFactor" @link substring="srcFactor" target="#srcFactor"
+///     WGPUBlendFactor dstFactor; // @link substring="WGPUBlendFactor" target="WGPUBlendFactor" @link substring="dstFactor" target="#dstFactor"
+/// } WGPUBlendComponent;
 /// }
 ///
 /// ## Contracts

@@ -18,15 +18,15 @@ import club.doki7.webgpu.handle.*;
 import club.doki7.webgpu.enumtype.*;
 import static club.doki7.webgpu.WGPUConstants.*;
 
-/// Represents a pointer to a {@code FutureWaitInfo} structure in native memory.
+/// Represents a pointer to a {@code WGPUFutureWaitInfo} structure in native memory.
 ///
 /// ## Structure
 ///
 /// {@snippet lang=c :
-/// typedef struct FutureWaitInfo {
-///     Future future; // @link substring="WGPUFuture" target="WGPUFuture" @link substring="future" target="#future"
+/// typedef struct WGPUFutureWaitInfo {
+///     WGPUFuture future; // @link substring="WGPUFuture" target="WGPUFuture" @link substring="future" target="#future"
 ///     bool completed; // @link substring="completed" target="#completed"
-/// } FutureWaitInfo;
+/// } WGPUFutureWaitInfo;
 /// }
 ///
 /// ## Contracts

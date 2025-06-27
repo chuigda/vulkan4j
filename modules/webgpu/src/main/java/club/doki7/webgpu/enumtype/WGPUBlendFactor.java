@@ -21,14 +21,12 @@ public final class WGPUBlendFactor {
     public static final int ONE_MINUS_SRC1 = 0xf;
     public static final int SRC1_ALPHA = 0x10;
     public static final int ONE_MINUS_SRC1_ALPHA = 0x11;
-    public static final int FORCE32 = 0x7fffffff;
 
     public static String explain(@EnumType(WGPUBlendFactor.class) int value) {
         return switch (value) {
             case WGPUBlendFactor.CONSTANT -> "CONSTANT";
             case WGPUBlendFactor.DST -> "DST";
             case WGPUBlendFactor.DST_ALPHA -> "DST_ALPHA";
-            case WGPUBlendFactor.FORCE32 -> "FORCE32";
             case WGPUBlendFactor.ONE -> "ONE";
             case WGPUBlendFactor.ONE_MINUS_CONSTANT -> "ONE_MINUS_CONSTANT";
             case WGPUBlendFactor.ONE_MINUS_DST -> "ONE_MINUS_DST";

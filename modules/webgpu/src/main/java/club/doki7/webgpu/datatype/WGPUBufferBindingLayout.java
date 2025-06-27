@@ -18,16 +18,16 @@ import club.doki7.webgpu.handle.*;
 import club.doki7.webgpu.enumtype.*;
 import static club.doki7.webgpu.WGPUConstants.*;
 
-/// Represents a pointer to a {@code BufferBindingLayout} structure in native memory.
+/// Represents a pointer to a {@code WGPUBufferBindingLayout} structure in native memory.
 ///
 /// ## Structure
 ///
 /// {@snippet lang=c :
-/// typedef struct BufferBindingLayout {
-///     BufferBindingType type; // @link substring="WGPUBufferBindingType" target="WGPUBufferBindingType" @link substring="type" target="#type"
+/// typedef struct WGPUBufferBindingLayout {
+///     WGPUBufferBindingType type; // @link substring="WGPUBufferBindingType" target="WGPUBufferBindingType" @link substring="type" target="#type"
 ///     bool hasDynamicOffset; // @link substring="hasDynamicOffset" target="#hasDynamicOffset"
 ///     uint64_t minBindingSize; // @link substring="minBindingSize" target="#minBindingSize"
-/// } BufferBindingLayout;
+/// } WGPUBufferBindingLayout;
 /// }
 ///
 /// ## Contracts

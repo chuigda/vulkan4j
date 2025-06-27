@@ -18,16 +18,16 @@ import club.doki7.webgpu.handle.*;
 import club.doki7.webgpu.enumtype.*;
 import static club.doki7.webgpu.WGPUConstants.*;
 
-/// Represents a pointer to a {@code VertexAttribute} structure in native memory.
+/// Represents a pointer to a {@code WGPUVertexAttribute} structure in native memory.
 ///
 /// ## Structure
 ///
 /// {@snippet lang=c :
-/// typedef struct VertexAttribute {
-///     VertexFormat format; // @link substring="WGPUVertexFormat" target="WGPUVertexFormat" @link substring="format" target="#format"
+/// typedef struct WGPUVertexAttribute {
+///     WGPUVertexFormat format; // @link substring="WGPUVertexFormat" target="WGPUVertexFormat" @link substring="format" target="#format"
 ///     uint64_t offset; // @link substring="offset" target="#offset"
 ///     uint32_t shaderLocation; // @link substring="shaderLocation" target="#shaderLocation"
-/// } VertexAttribute;
+/// } WGPUVertexAttribute;
 /// }
 ///
 /// ## Contracts

@@ -8,11 +8,9 @@ public final class WGPUErrorType {
     public static final int OUT_OF_MEMORY = 0x3;
     public static final int INTERNAL = 0x4;
     public static final int UNKNOWN = 0x5;
-    public static final int FORCE32 = 0x7fffffff;
 
     public static String explain(@EnumType(WGPUErrorType.class) int value) {
         return switch (value) {
-            case WGPUErrorType.FORCE32 -> "FORCE32";
             case WGPUErrorType.INTERNAL -> "INTERNAL";
             case WGPUErrorType.NO_ERROR -> "NO_ERROR";
             case WGPUErrorType.OUT_OF_MEMORY -> "OUT_OF_MEMORY";

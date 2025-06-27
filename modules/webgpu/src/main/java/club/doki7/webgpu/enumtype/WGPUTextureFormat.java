@@ -99,7 +99,6 @@ public final class WGPUTextureFormat {
     public static final int ASTC_12X10_UNORM_SRGB = 0x5d;
     public static final int ASTC_12X12_UNORM = 0x5e;
     public static final int ASTC_12X12_UNORM_SRGB = 0x5f;
-    public static final int FORCE32 = 0x7fffffff;
 
     public static String explain(@EnumType(WGPUTextureFormat.class) int value) {
         return switch (value) {
@@ -162,7 +161,6 @@ public final class WGPUTextureFormat {
             case WGPUTextureFormat.ETC2_RGB8_UNORM_SRGB -> "ETC2_RGB8_UNORM_SRGB";
             case WGPUTextureFormat.ETC2_RGBA8_UNORM -> "ETC2_RGBA8_UNORM";
             case WGPUTextureFormat.ETC2_RGBA8_UNORM_SRGB -> "ETC2_RGBA8_UNORM_SRGB";
-            case WGPUTextureFormat.FORCE32 -> "FORCE32";
             case WGPUTextureFormat.R16_FLOAT -> "R16_FLOAT";
             case WGPUTextureFormat.R16_SINT -> "R16_SINT";
             case WGPUTextureFormat.R16_UINT -> "R16_UINT";

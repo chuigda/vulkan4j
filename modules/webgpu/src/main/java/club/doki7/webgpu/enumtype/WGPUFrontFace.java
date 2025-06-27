@@ -6,13 +6,11 @@ public final class WGPUFrontFace {
     public static final int UNDEFINED = 0x0;
     public static final int CCW = 0x1;
     public static final int CW = 0x2;
-    public static final int FORCE32 = 0x7fffffff;
 
     public static String explain(@EnumType(WGPUFrontFace.class) int value) {
         return switch (value) {
             case WGPUFrontFace.CCW -> "CCW";
             case WGPUFrontFace.CW -> "CW";
-            case WGPUFrontFace.FORCE32 -> "FORCE32";
             case WGPUFrontFace.UNDEFINED -> "UNDEFINED";
             default -> "UNKNOWN(" + value + ")";
         };

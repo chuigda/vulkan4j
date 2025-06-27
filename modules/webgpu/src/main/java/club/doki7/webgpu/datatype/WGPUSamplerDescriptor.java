@@ -18,24 +18,24 @@ import club.doki7.webgpu.handle.*;
 import club.doki7.webgpu.enumtype.*;
 import static club.doki7.webgpu.WGPUConstants.*;
 
-/// Represents a pointer to a {@code SamplerDescriptor} structure in native memory.
+/// Represents a pointer to a {@code WGPUSamplerDescriptor} structure in native memory.
 ///
 /// ## Structure
 ///
 /// {@snippet lang=c :
-/// typedef struct SamplerDescriptor {
-///     StringView label; // @link substring="WGPUStringView" target="WGPUStringView" @link substring="label" target="#label"
-///     AddressMode addressModeU; // @link substring="WGPUAddressMode" target="WGPUAddressMode" @link substring="addressModeU" target="#addressModeU"
-///     AddressMode addressModeV; // @link substring="WGPUAddressMode" target="WGPUAddressMode" @link substring="addressModeV" target="#addressModeV"
-///     AddressMode addressModeW; // @link substring="WGPUAddressMode" target="WGPUAddressMode" @link substring="addressModeW" target="#addressModeW"
-///     FilterMode magFilter; // @link substring="WGPUFilterMode" target="WGPUFilterMode" @link substring="magFilter" target="#magFilter"
-///     FilterMode minFilter; // @link substring="WGPUFilterMode" target="WGPUFilterMode" @link substring="minFilter" target="#minFilter"
-///     MipmapFilterMode mipmapFilter; // @link substring="WGPUMipmapFilterMode" target="WGPUMipmapFilterMode" @link substring="mipmapFilter" target="#mipmapFilter"
+/// typedef struct WGPUSamplerDescriptor {
+///     WGPUStringView label; // @link substring="WGPUStringView" target="WGPUStringView" @link substring="label" target="#label"
+///     WGPUAddressMode addressModeU; // @link substring="WGPUAddressMode" target="WGPUAddressMode" @link substring="addressModeU" target="#addressModeU"
+///     WGPUAddressMode addressModeV; // @link substring="WGPUAddressMode" target="WGPUAddressMode" @link substring="addressModeV" target="#addressModeV"
+///     WGPUAddressMode addressModeW; // @link substring="WGPUAddressMode" target="WGPUAddressMode" @link substring="addressModeW" target="#addressModeW"
+///     WGPUFilterMode magFilter; // @link substring="WGPUFilterMode" target="WGPUFilterMode" @link substring="magFilter" target="#magFilter"
+///     WGPUFilterMode minFilter; // @link substring="WGPUFilterMode" target="WGPUFilterMode" @link substring="minFilter" target="#minFilter"
+///     WGPUMipmapFilterMode mipmapFilter; // @link substring="WGPUMipmapFilterMode" target="WGPUMipmapFilterMode" @link substring="mipmapFilter" target="#mipmapFilter"
 ///     float lodMinClamp; // @link substring="lodMinClamp" target="#lodMinClamp"
 ///     float lodMaxClamp; // @link substring="lodMaxClamp" target="#lodMaxClamp"
-///     CompareFunction compare; // @link substring="WGPUCompareFunction" target="WGPUCompareFunction" @link substring="compare" target="#compare"
+///     WGPUCompareFunction compare; // @link substring="WGPUCompareFunction" target="WGPUCompareFunction" @link substring="compare" target="#compare"
 ///     uint16_t maxAnisotropy; // @link substring="maxAnisotropy" target="#maxAnisotropy"
-/// } SamplerDescriptor;
+/// } WGPUSamplerDescriptor;
 /// }
 ///
 /// ## Contracts

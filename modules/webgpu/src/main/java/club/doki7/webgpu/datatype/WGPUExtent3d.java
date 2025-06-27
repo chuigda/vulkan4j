@@ -18,16 +18,16 @@ import club.doki7.webgpu.handle.*;
 import club.doki7.webgpu.enumtype.*;
 import static club.doki7.webgpu.WGPUConstants.*;
 
-/// Represents a pointer to a {@code Extent3d} structure in native memory.
+/// Represents a pointer to a {@code WGPUExtent3d} structure in native memory.
 ///
 /// ## Structure
 ///
 /// {@snippet lang=c :
-/// typedef struct Extent3d {
+/// typedef struct WGPUExtent3d {
 ///     uint32_t width; // @link substring="width" target="#width"
 ///     uint32_t height; // @link substring="height" target="#height"
 ///     uint32_t depthOrArrayLayers; // @link substring="depthOrArrayLayers" target="#depthOrArrayLayers"
-/// } Extent3d;
+/// } WGPUExtent3d;
 /// }
 ///
 /// ## Contracts

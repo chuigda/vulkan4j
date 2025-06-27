@@ -18,17 +18,16 @@ import club.doki7.webgpu.handle.*;
 import club.doki7.webgpu.enumtype.*;
 import static club.doki7.webgpu.WGPUConstants.*;
 
-/// Represents a pointer to a {@code ProgrammableStageDescriptor} structure in native memory.
+/// Represents a pointer to a {@code WGPUProgrammableStageDescriptor} structure in native memory.
 ///
 /// ## Structure
 ///
 /// {@snippet lang=c :
-/// typedef struct ProgrammableStageDescriptor {
-///     ShaderModule module; // @link substring="WGPUShaderModule" target="WGPUShaderModule" @link substring="module" target="#module"
-///     StringView entryPoint; // @link substring="WGPUStringView" target="WGPUStringView" @link substring="entryPoint" target="#entryPoint"
-///     size_t constantCount; // @link substring="constantCount" target="#constantCount"
-///     ConstantEntry const* constants; // @link substring="WGPUConstantEntry" target="WGPUConstantEntry" @link substring="constants" target="#constants"
-/// } ProgrammableStageDescriptor;
+/// typedef struct WGPUProgrammableStageDescriptor {
+///     WGPUShaderModule module; // @link substring="WGPUShaderModule" target="WGPUShaderModule" @link substring="module" target="#module"
+///     WGPUStringView entryPoint; // @link substring="WGPUStringView" target="WGPUStringView" @link substring="entryPoint" target="#entryPoint"
+///     WGPUConstantEntry const* constants; // @link substring="WGPUConstantEntry" target="WGPUConstantEntry" @link substring="constants" target="#constants"
+/// } WGPUProgrammableStageDescriptor;
 /// }
 ///
 /// ## Contracts
@@ -202,15 +201,6 @@ public record WGPUProgrammableStageDescriptor(@NotNull MemorySegment segment) im
         return this;
     }
 
-    public @Unsigned long constantCount() {
-        return NativeLayout.readCSizeT(segment, OFFSET$constantCount);
-    }
-
-    public WGPUProgrammableStageDescriptor constantCount(@Unsigned long value) {
-        NativeLayout.writeCSizeT(segment, OFFSET$constantCount, value);
-        return this;
-    }
-
     public WGPUProgrammableStageDescriptor constants(@Nullable IWGPUConstantEntry value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         constantsRaw(s);
@@ -246,14 +236,12 @@ public record WGPUProgrammableStageDescriptor(@NotNull MemorySegment segment) im
     public static final StructLayout LAYOUT = NativeLayout.structLayout(
         ValueLayout.ADDRESS.withName("module"),
         WGPUStringView.LAYOUT.withName("entryPoint"),
-        NativeLayout.C_SIZE_T.withName("constantCount"),
         ValueLayout.ADDRESS.withTargetLayout(WGPUConstantEntry.LAYOUT).withName("constants")
     );
     public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$module = PathElement.groupElement("module");
     public static final PathElement PATH$entryPoint = PathElement.groupElement("entryPoint");
-    public static final PathElement PATH$constantCount = PathElement.groupElement("constantCount");
     public static final PathElement PATH$constants = PathElement.groupElement("constants");
 
     public static final AddressLayout LAYOUT$module = (AddressLayout) LAYOUT.select(PATH$module);
@@ -262,11 +250,9 @@ public record WGPUProgrammableStageDescriptor(@NotNull MemorySegment segment) im
 
     public static final long SIZE$module = LAYOUT$module.byteSize();
     public static final long SIZE$entryPoint = LAYOUT$entryPoint.byteSize();
-    public static final long SIZE$constantCount = NativeLayout.C_SIZE_T.byteSize();
     public static final long SIZE$constants = LAYOUT$constants.byteSize();
 
     public static final long OFFSET$module = LAYOUT.byteOffset(PATH$module);
     public static final long OFFSET$entryPoint = LAYOUT.byteOffset(PATH$entryPoint);
-    public static final long OFFSET$constantCount = LAYOUT.byteOffset(PATH$constantCount);
     public static final long OFFSET$constants = LAYOUT.byteOffset(PATH$constants);
 }

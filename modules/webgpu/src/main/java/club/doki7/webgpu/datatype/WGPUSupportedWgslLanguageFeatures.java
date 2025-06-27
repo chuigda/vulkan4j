@@ -18,15 +18,14 @@ import club.doki7.webgpu.handle.*;
 import club.doki7.webgpu.enumtype.*;
 import static club.doki7.webgpu.WGPUConstants.*;
 
-/// Represents a pointer to a {@code SupportedWgslLanguageFeatures} structure in native memory.
+/// Represents a pointer to a {@code WGPUSupportedWgslLanguageFeatures} structure in native memory.
 ///
 /// ## Structure
 ///
 /// {@snippet lang=c :
-/// typedef struct SupportedWgslLanguageFeatures {
-///     size_t featureCount; // @link substring="featureCount" target="#featureCount"
-///     WgslLanguageFeatureName const* features; // @link substring="WGPUWgslLanguageFeatureName" target="WGPUWgslLanguageFeatureName" @link substring="features" target="#features"
-/// } SupportedWgslLanguageFeatures;
+/// typedef struct WGPUSupportedWgslLanguageFeatures {
+///     WGPUWgslLanguageFeatureName const* features; // @link substring="WGPUWgslLanguageFeatureName" target="WGPUWgslLanguageFeatureName" @link substring="features" target="#features"
+/// } WGPUSupportedWgslLanguageFeatures;
 /// }
 ///
 /// ## Contracts
@@ -173,15 +172,6 @@ public record WGPUSupportedWgslLanguageFeatures(@NotNull MemorySegment segment) 
         return ret;
     }
 
-    public @Unsigned long featureCount() {
-        return NativeLayout.readCSizeT(segment, OFFSET$featureCount);
-    }
-
-    public WGPUSupportedWgslLanguageFeatures featureCount(@Unsigned long value) {
-        NativeLayout.writeCSizeT(segment, OFFSET$featureCount, value);
-        return this;
-    }
-
 
     /// Note: the returned {@link IntPtr} does not have correct
     /// {@link IntPtr#size} property. It's up to user to track the size of the buffer,
@@ -210,19 +200,15 @@ public record WGPUSupportedWgslLanguageFeatures(@NotNull MemorySegment segment) 
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(
-        NativeLayout.C_SIZE_T.withName("featureCount"),
         ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_INT).withName("features")
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$featureCount = PathElement.groupElement("featureCount");
     public static final PathElement PATH$features = PathElement.groupElement("features");
 
     public static final AddressLayout LAYOUT$features = (AddressLayout) LAYOUT.select(PATH$features);
 
-    public static final long SIZE$featureCount = NativeLayout.C_SIZE_T.byteSize();
     public static final long SIZE$features = LAYOUT$features.byteSize();
 
-    public static final long OFFSET$featureCount = LAYOUT.byteOffset(PATH$featureCount);
     public static final long OFFSET$features = LAYOUT.byteOffset(PATH$features);
 }

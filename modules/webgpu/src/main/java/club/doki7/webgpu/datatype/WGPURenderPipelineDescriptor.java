@@ -18,20 +18,20 @@ import club.doki7.webgpu.handle.*;
 import club.doki7.webgpu.enumtype.*;
 import static club.doki7.webgpu.WGPUConstants.*;
 
-/// Represents a pointer to a {@code RenderPipelineDescriptor} structure in native memory.
+/// Represents a pointer to a {@code WGPURenderPipelineDescriptor} structure in native memory.
 ///
 /// ## Structure
 ///
 /// {@snippet lang=c :
-/// typedef struct RenderPipelineDescriptor {
-///     StringView label; // @link substring="WGPUStringView" target="WGPUStringView" @link substring="label" target="#label"
-///     PipelineLayout layout; // optional // @link substring="WGPUPipelineLayout" target="WGPUPipelineLayout" @link substring="layout" target="#layout"
-///     VertexState vertex; // @link substring="WGPUVertexState" target="WGPUVertexState" @link substring="vertex" target="#vertex"
-///     PrimitiveState primitive; // @link substring="WGPUPrimitiveState" target="WGPUPrimitiveState" @link substring="primitive" target="#primitive"
-///     DepthStencilState depthStencil; // optional // @link substring="WGPUDepthStencilState" target="WGPUDepthStencilState" @link substring="depthStencil" target="#depthStencil"
-///     MultisampleState multisample; // @link substring="WGPUMultisampleState" target="WGPUMultisampleState" @link substring="multisample" target="#multisample"
-///     FragmentState fragment; // optional // @link substring="WGPUFragmentState" target="WGPUFragmentState" @link substring="fragment" target="#fragment"
-/// } RenderPipelineDescriptor;
+/// typedef struct WGPURenderPipelineDescriptor {
+///     WGPUStringView label; // @link substring="WGPUStringView" target="WGPUStringView" @link substring="label" target="#label"
+///     WGPUPipelineLayout layout; // optional // @link substring="WGPUPipelineLayout" target="WGPUPipelineLayout" @link substring="layout" target="#layout"
+///     WGPUVertexState vertex; // @link substring="WGPUVertexState" target="WGPUVertexState" @link substring="vertex" target="#vertex"
+///     WGPUPrimitiveState primitive; // @link substring="WGPUPrimitiveState" target="WGPUPrimitiveState" @link substring="primitive" target="#primitive"
+///     WGPUDepthStencilState const* depthStencil; // optional // @link substring="WGPUDepthStencilState" target="WGPUDepthStencilState" @link substring="depthStencil" target="#depthStencil"
+///     WGPUMultisampleState multisample; // @link substring="WGPUMultisampleState" target="WGPUMultisampleState" @link substring="multisample" target="#multisample"
+///     WGPUFragmentState const* fragment; // optional // @link substring="WGPUFragmentState" target="WGPUFragmentState" @link substring="fragment" target="#fragment"
+/// } WGPURenderPipelineDescriptor;
 /// }
 ///
 /// ## Contracts
@@ -233,18 +233,36 @@ public record WGPURenderPipelineDescriptor(@NotNull MemorySegment segment) imple
         return this;
     }
 
-    public @NotNull WGPUDepthStencilState depthStencil() {
-        return new WGPUDepthStencilState(segment.asSlice(OFFSET$depthStencil, LAYOUT$depthStencil));
-    }
-
-    public WGPURenderPipelineDescriptor depthStencil(@NotNull WGPUDepthStencilState value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$depthStencil, SIZE$depthStencil);
+    public WGPURenderPipelineDescriptor depthStencil(@Nullable IWGPUDepthStencilState value) {
+        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
+        depthStencilRaw(s);
         return this;
     }
 
-    public WGPURenderPipelineDescriptor depthStencil(Consumer<@NotNull WGPUDepthStencilState> consumer) {
-        consumer.accept(depthStencil());
-        return this;
+    @Unsafe public @Nullable WGPUDepthStencilState.Ptr depthStencil(int assumedCount) {
+        MemorySegment s = depthStencilRaw();
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+
+        s = s.reinterpret(assumedCount * WGPUDepthStencilState.BYTES);
+        return new WGPUDepthStencilState.Ptr(s);
+    }
+
+    public @Nullable WGPUDepthStencilState depthStencil() {
+        MemorySegment s = depthStencilRaw();
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+        return new WGPUDepthStencilState(s);
+    }
+
+    public @Pointer(target=WGPUDepthStencilState.class) @NotNull MemorySegment depthStencilRaw() {
+        return segment.get(LAYOUT$depthStencil, OFFSET$depthStencil);
+    }
+
+    public void depthStencilRaw(@Pointer(target=WGPUDepthStencilState.class) @NotNull MemorySegment value) {
+        segment.set(LAYOUT$depthStencil, OFFSET$depthStencil, value);
     }
 
     public @NotNull WGPUMultisampleState multisample() {
@@ -261,18 +279,36 @@ public record WGPURenderPipelineDescriptor(@NotNull MemorySegment segment) imple
         return this;
     }
 
-    public @NotNull WGPUFragmentState fragment() {
-        return new WGPUFragmentState(segment.asSlice(OFFSET$fragment, LAYOUT$fragment));
-    }
-
-    public WGPURenderPipelineDescriptor fragment(@NotNull WGPUFragmentState value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$fragment, SIZE$fragment);
+    public WGPURenderPipelineDescriptor fragment(@Nullable IWGPUFragmentState value) {
+        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
+        fragmentRaw(s);
         return this;
     }
 
-    public WGPURenderPipelineDescriptor fragment(Consumer<@NotNull WGPUFragmentState> consumer) {
-        consumer.accept(fragment());
-        return this;
+    @Unsafe public @Nullable WGPUFragmentState.Ptr fragment(int assumedCount) {
+        MemorySegment s = fragmentRaw();
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+
+        s = s.reinterpret(assumedCount * WGPUFragmentState.BYTES);
+        return new WGPUFragmentState.Ptr(s);
+    }
+
+    public @Nullable WGPUFragmentState fragment() {
+        MemorySegment s = fragmentRaw();
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+        return new WGPUFragmentState(s);
+    }
+
+    public @Pointer(target=WGPUFragmentState.class) @NotNull MemorySegment fragmentRaw() {
+        return segment.get(LAYOUT$fragment, OFFSET$fragment);
+    }
+
+    public void fragmentRaw(@Pointer(target=WGPUFragmentState.class) @NotNull MemorySegment value) {
+        segment.set(LAYOUT$fragment, OFFSET$fragment, value);
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(
@@ -280,9 +316,9 @@ public record WGPURenderPipelineDescriptor(@NotNull MemorySegment segment) imple
         ValueLayout.ADDRESS.withName("layout"),
         WGPUVertexState.LAYOUT.withName("vertex"),
         WGPUPrimitiveState.LAYOUT.withName("primitive"),
-        WGPUDepthStencilState.LAYOUT.withName("depthStencil"),
+        ValueLayout.ADDRESS.withTargetLayout(WGPUDepthStencilState.LAYOUT).withName("depthStencil"),
         WGPUMultisampleState.LAYOUT.withName("multisample"),
-        WGPUFragmentState.LAYOUT.withName("fragment")
+        ValueLayout.ADDRESS.withTargetLayout(WGPUFragmentState.LAYOUT).withName("fragment")
     );
     public static final long BYTES = LAYOUT.byteSize();
 
@@ -298,9 +334,9 @@ public record WGPURenderPipelineDescriptor(@NotNull MemorySegment segment) imple
     public static final AddressLayout LAYOUT$layout = (AddressLayout) LAYOUT.select(PATH$layout);
     public static final StructLayout LAYOUT$vertex = (StructLayout) LAYOUT.select(PATH$vertex);
     public static final StructLayout LAYOUT$primitive = (StructLayout) LAYOUT.select(PATH$primitive);
-    public static final StructLayout LAYOUT$depthStencil = (StructLayout) LAYOUT.select(PATH$depthStencil);
+    public static final AddressLayout LAYOUT$depthStencil = (AddressLayout) LAYOUT.select(PATH$depthStencil);
     public static final StructLayout LAYOUT$multisample = (StructLayout) LAYOUT.select(PATH$multisample);
-    public static final StructLayout LAYOUT$fragment = (StructLayout) LAYOUT.select(PATH$fragment);
+    public static final AddressLayout LAYOUT$fragment = (AddressLayout) LAYOUT.select(PATH$fragment);
 
     public static final long SIZE$label = LAYOUT$label.byteSize();
     public static final long SIZE$layout = LAYOUT$layout.byteSize();

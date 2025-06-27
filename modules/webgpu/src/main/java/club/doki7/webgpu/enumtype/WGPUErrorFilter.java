@@ -6,11 +6,9 @@ public final class WGPUErrorFilter {
     public static final int VALIDATION = 0x1;
     public static final int OUT_OF_MEMORY = 0x2;
     public static final int INTERNAL = 0x3;
-    public static final int FORCE32 = 0x7fffffff;
 
     public static String explain(@EnumType(WGPUErrorFilter.class) int value) {
         return switch (value) {
-            case WGPUErrorFilter.FORCE32 -> "FORCE32";
             case WGPUErrorFilter.INTERNAL -> "INTERNAL";
             case WGPUErrorFilter.OUT_OF_MEMORY -> "OUT_OF_MEMORY";
             case WGPUErrorFilter.VALIDATION -> "VALIDATION";

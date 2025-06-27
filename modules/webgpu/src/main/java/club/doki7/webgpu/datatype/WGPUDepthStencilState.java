@@ -18,23 +18,23 @@ import club.doki7.webgpu.handle.*;
 import club.doki7.webgpu.enumtype.*;
 import static club.doki7.webgpu.WGPUConstants.*;
 
-/// Represents a pointer to a {@code DepthStencilState} structure in native memory.
+/// Represents a pointer to a {@code WGPUDepthStencilState} structure in native memory.
 ///
 /// ## Structure
 ///
 /// {@snippet lang=c :
-/// typedef struct DepthStencilState {
-///     TextureFormat format; // @link substring="WGPUTextureFormat" target="WGPUTextureFormat" @link substring="format" target="#format"
-///     OptionalBool depthWriteEnabled; // @link substring="WGPUOptionalBool" target="WGPUOptionalBool" @link substring="depthWriteEnabled" target="#depthWriteEnabled"
-///     CompareFunction depthCompare; // @link substring="WGPUCompareFunction" target="WGPUCompareFunction" @link substring="depthCompare" target="#depthCompare"
-///     StencilFaceState stencilFront; // @link substring="WGPUStencilFaceState" target="WGPUStencilFaceState" @link substring="stencilFront" target="#stencilFront"
-///     StencilFaceState stencilBack; // @link substring="WGPUStencilFaceState" target="WGPUStencilFaceState" @link substring="stencilBack" target="#stencilBack"
+/// typedef struct WGPUDepthStencilState {
+///     WGPUTextureFormat format; // @link substring="WGPUTextureFormat" target="WGPUTextureFormat" @link substring="format" target="#format"
+///     WGPUOptionalBool depthWriteEnabled; // @link substring="WGPUOptionalBool" target="WGPUOptionalBool" @link substring="depthWriteEnabled" target="#depthWriteEnabled"
+///     WGPUCompareFunction depthCompare; // @link substring="WGPUCompareFunction" target="WGPUCompareFunction" @link substring="depthCompare" target="#depthCompare"
+///     WGPUStencilFaceState stencilFront; // @link substring="WGPUStencilFaceState" target="WGPUStencilFaceState" @link substring="stencilFront" target="#stencilFront"
+///     WGPUStencilFaceState stencilBack; // @link substring="WGPUStencilFaceState" target="WGPUStencilFaceState" @link substring="stencilBack" target="#stencilBack"
 ///     uint32_t stencilReadMask; // @link substring="stencilReadMask" target="#stencilReadMask"
 ///     uint32_t stencilWriteMask; // @link substring="stencilWriteMask" target="#stencilWriteMask"
 ///     int32_t depthBias; // @link substring="depthBias" target="#depthBias"
 ///     float depthBiasSlopeScale; // @link substring="depthBiasSlopeScale" target="#depthBiasSlopeScale"
 ///     float depthBiasClamp; // @link substring="depthBiasClamp" target="#depthBiasClamp"
-/// } DepthStencilState;
+/// } WGPUDepthStencilState;
 /// }
 ///
 /// ## Contracts

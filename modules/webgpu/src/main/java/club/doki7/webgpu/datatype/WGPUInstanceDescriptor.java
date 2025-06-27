@@ -18,14 +18,14 @@ import club.doki7.webgpu.handle.*;
 import club.doki7.webgpu.enumtype.*;
 import static club.doki7.webgpu.WGPUConstants.*;
 
-/// Represents a pointer to a {@code InstanceDescriptor} structure in native memory.
+/// Represents a pointer to a {@code WGPUInstanceDescriptor} structure in native memory.
 ///
 /// ## Structure
 ///
 /// {@snippet lang=c :
-/// typedef struct InstanceDescriptor {
-///     InstanceCapabilities features; // @link substring="WGPUInstanceCapabilities" target="WGPUInstanceCapabilities" @link substring="features" target="#features"
-/// } InstanceDescriptor;
+/// typedef struct WGPUInstanceDescriptor {
+///     WGPUInstanceCapabilities features; // @link substring="WGPUInstanceCapabilities" target="WGPUInstanceCapabilities" @link substring="features" target="#features"
+/// } WGPUInstanceDescriptor;
 /// }
 ///
 /// ## Contracts

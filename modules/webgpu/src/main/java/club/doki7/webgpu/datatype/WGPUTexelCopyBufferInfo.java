@@ -18,15 +18,15 @@ import club.doki7.webgpu.handle.*;
 import club.doki7.webgpu.enumtype.*;
 import static club.doki7.webgpu.WGPUConstants.*;
 
-/// Represents a pointer to a {@code TexelCopyBufferInfo} structure in native memory.
+/// Represents a pointer to a {@code WGPUTexelCopyBufferInfo} structure in native memory.
 ///
 /// ## Structure
 ///
 /// {@snippet lang=c :
-/// typedef struct TexelCopyBufferInfo {
-///     TexelCopyBufferLayout layout; // @link substring="WGPUTexelCopyBufferLayout" target="WGPUTexelCopyBufferLayout" @link substring="layout" target="#layout"
-///     Buffer buffer; // @link substring="WGPUBuffer" target="WGPUBuffer" @link substring="buffer" target="#buffer"
-/// } TexelCopyBufferInfo;
+/// typedef struct WGPUTexelCopyBufferInfo {
+///     WGPUTexelCopyBufferLayout layout; // @link substring="WGPUTexelCopyBufferLayout" target="WGPUTexelCopyBufferLayout" @link substring="layout" target="#layout"
+///     WGPUBuffer buffer; // @link substring="WGPUBuffer" target="WGPUBuffer" @link substring="buffer" target="#buffer"
+/// } WGPUTexelCopyBufferInfo;
 /// }
 ///
 /// ## Contracts

@@ -12,13 +12,11 @@ public final class WGPUBackendType {
     public static final int VULKAN = 0x6;
     public static final int OPENGL = 0x7;
     public static final int OPENGLES = 0x8;
-    public static final int FORCE32 = 0x7fffffff;
 
     public static String explain(@EnumType(WGPUBackendType.class) int value) {
         return switch (value) {
             case WGPUBackendType.D3D11 -> "D3D11";
             case WGPUBackendType.D3D12 -> "D3D12";
-            case WGPUBackendType.FORCE32 -> "FORCE32";
             case WGPUBackendType.METAL -> "METAL";
             case WGPUBackendType.NULL -> "NULL";
             case WGPUBackendType.OPENGL -> "OPENGL";

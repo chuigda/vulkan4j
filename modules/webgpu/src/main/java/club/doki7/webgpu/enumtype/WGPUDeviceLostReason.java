@@ -7,13 +7,11 @@ public final class WGPUDeviceLostReason {
     public static final int DESTROYED = 0x2;
     public static final int INSTANCE_DROPPED = 0x3;
     public static final int FAILED_CREATION = 0x4;
-    public static final int FORCE32 = 0x7fffffff;
 
     public static String explain(@EnumType(WGPUDeviceLostReason.class) int value) {
         return switch (value) {
             case WGPUDeviceLostReason.DESTROYED -> "DESTROYED";
             case WGPUDeviceLostReason.FAILED_CREATION -> "FAILED_CREATION";
-            case WGPUDeviceLostReason.FORCE32 -> "FORCE32";
             case WGPUDeviceLostReason.INSTANCE_DROPPED -> "INSTANCE_DROPPED";
             case WGPUDeviceLostReason.UNKNOWN -> "UNKNOWN";
             default -> "UNKNOWN(" + value + ")";

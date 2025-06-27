@@ -18,20 +18,19 @@ import club.doki7.webgpu.handle.*;
 import club.doki7.webgpu.enumtype.*;
 import static club.doki7.webgpu.WGPUConstants.*;
 
-/// Represents a pointer to a {@code RenderBundleEncoderDescriptor} structure in native memory.
+/// Represents a pointer to a {@code WGPURenderBundleEncoderDescriptor} structure in native memory.
 ///
 /// ## Structure
 ///
 /// {@snippet lang=c :
-/// typedef struct RenderBundleEncoderDescriptor {
-///     StringView label; // @link substring="WGPUStringView" target="WGPUStringView" @link substring="label" target="#label"
-///     size_t colorFormatCount; // @link substring="colorFormatCount" target="#colorFormatCount"
-///     TextureFormat const* colorFormats; // @link substring="WGPUTextureFormat" target="WGPUTextureFormat" @link substring="colorFormats" target="#colorFormats"
-///     TextureFormat depthStencilFormat; // @link substring="WGPUTextureFormat" target="WGPUTextureFormat" @link substring="depthStencilFormat" target="#depthStencilFormat"
+/// typedef struct WGPURenderBundleEncoderDescriptor {
+///     WGPUStringView label; // @link substring="WGPUStringView" target="WGPUStringView" @link substring="label" target="#label"
+///     WGPUTextureFormat const* colorFormats; // @link substring="WGPUTextureFormat" target="WGPUTextureFormat" @link substring="colorFormats" target="#colorFormats"
+///     WGPUTextureFormat depthStencilFormat; // @link substring="WGPUTextureFormat" target="WGPUTextureFormat" @link substring="depthStencilFormat" target="#depthStencilFormat"
 ///     uint32_t sampleCount; // @link substring="sampleCount" target="#sampleCount"
 ///     bool depthReadOnly; // @link substring="depthReadOnly" target="#depthReadOnly"
 ///     bool stencilReadOnly; // @link substring="stencilReadOnly" target="#stencilReadOnly"
-/// } RenderBundleEncoderDescriptor;
+/// } WGPURenderBundleEncoderDescriptor;
 /// }
 ///
 /// ## Contracts
@@ -192,15 +191,6 @@ public record WGPURenderBundleEncoderDescriptor(@NotNull MemorySegment segment) 
         return this;
     }
 
-    public @Unsigned long colorFormatCount() {
-        return NativeLayout.readCSizeT(segment, OFFSET$colorFormatCount);
-    }
-
-    public WGPURenderBundleEncoderDescriptor colorFormatCount(@Unsigned long value) {
-        NativeLayout.writeCSizeT(segment, OFFSET$colorFormatCount, value);
-        return this;
-    }
-
 
     /// Note: the returned {@link IntPtr} does not have correct
     /// {@link IntPtr#size} property. It's up to user to track the size of the buffer,
@@ -266,7 +256,6 @@ public record WGPURenderBundleEncoderDescriptor(@NotNull MemorySegment segment) 
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(
         WGPUStringView.LAYOUT.withName("label"),
-        NativeLayout.C_SIZE_T.withName("colorFormatCount"),
         ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_INT).withName("colorFormats"),
         ValueLayout.JAVA_INT.withName("depthStencilFormat"),
         ValueLayout.JAVA_INT.withName("sampleCount"),
@@ -276,7 +265,6 @@ public record WGPURenderBundleEncoderDescriptor(@NotNull MemorySegment segment) 
     public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$label = PathElement.groupElement("label");
-    public static final PathElement PATH$colorFormatCount = PathElement.groupElement("colorFormatCount");
     public static final PathElement PATH$colorFormats = PathElement.groupElement("colorFormats");
     public static final PathElement PATH$depthStencilFormat = PathElement.groupElement("depthStencilFormat");
     public static final PathElement PATH$sampleCount = PathElement.groupElement("sampleCount");
@@ -291,7 +279,6 @@ public record WGPURenderBundleEncoderDescriptor(@NotNull MemorySegment segment) 
     public static final OfBoolean LAYOUT$stencilReadOnly = (OfBoolean) LAYOUT.select(PATH$stencilReadOnly);
 
     public static final long SIZE$label = LAYOUT$label.byteSize();
-    public static final long SIZE$colorFormatCount = NativeLayout.C_SIZE_T.byteSize();
     public static final long SIZE$colorFormats = LAYOUT$colorFormats.byteSize();
     public static final long SIZE$depthStencilFormat = LAYOUT$depthStencilFormat.byteSize();
     public static final long SIZE$sampleCount = LAYOUT$sampleCount.byteSize();
@@ -299,7 +286,6 @@ public record WGPURenderBundleEncoderDescriptor(@NotNull MemorySegment segment) 
     public static final long SIZE$stencilReadOnly = LAYOUT$stencilReadOnly.byteSize();
 
     public static final long OFFSET$label = LAYOUT.byteOffset(PATH$label);
-    public static final long OFFSET$colorFormatCount = LAYOUT.byteOffset(PATH$colorFormatCount);
     public static final long OFFSET$colorFormats = LAYOUT.byteOffset(PATH$colorFormats);
     public static final long OFFSET$depthStencilFormat = LAYOUT.byteOffset(PATH$depthStencilFormat);
     public static final long OFFSET$sampleCount = LAYOUT.byteOffset(PATH$sampleCount);

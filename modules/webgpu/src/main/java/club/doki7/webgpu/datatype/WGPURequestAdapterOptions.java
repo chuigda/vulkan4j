@@ -18,18 +18,18 @@ import club.doki7.webgpu.handle.*;
 import club.doki7.webgpu.enumtype.*;
 import static club.doki7.webgpu.WGPUConstants.*;
 
-/// Represents a pointer to a {@code RequestAdapterOptions} structure in native memory.
+/// Represents a pointer to a {@code WGPURequestAdapterOptions} structure in native memory.
 ///
 /// ## Structure
 ///
 /// {@snippet lang=c :
-/// typedef struct RequestAdapterOptions {
-///     FeatureLevel featureLevel; // @link substring="WGPUFeatureLevel" target="WGPUFeatureLevel" @link substring="featureLevel" target="#featureLevel"
-///     PowerPreference powerPreference; // @link substring="WGPUPowerPreference" target="WGPUPowerPreference" @link substring="powerPreference" target="#powerPreference"
+/// typedef struct WGPURequestAdapterOptions {
+///     WGPUFeatureLevel featureLevel; // @link substring="WGPUFeatureLevel" target="WGPUFeatureLevel" @link substring="featureLevel" target="#featureLevel"
+///     WGPUPowerPreference powerPreference; // @link substring="WGPUPowerPreference" target="WGPUPowerPreference" @link substring="powerPreference" target="#powerPreference"
 ///     bool forceFallbackAdapter; // @link substring="forceFallbackAdapter" target="#forceFallbackAdapter"
-///     BackendType backendType; // @link substring="WGPUBackendType" target="WGPUBackendType" @link substring="backendType" target="#backendType"
-///     Surface compatibleSurface; // optional // @link substring="WGPUSurface" target="WGPUSurface" @link substring="compatibleSurface" target="#compatibleSurface"
-/// } RequestAdapterOptions;
+///     WGPUBackendType backendType; // @link substring="WGPUBackendType" target="WGPUBackendType" @link substring="backendType" target="#backendType"
+///     WGPUSurface compatibleSurface; // optional // @link substring="WGPUSurface" target="WGPUSurface" @link substring="compatibleSurface" target="#compatibleSurface"
+/// } WGPURequestAdapterOptions;
 /// }
 ///
 /// ## Contracts

@@ -18,19 +18,18 @@ import club.doki7.webgpu.handle.*;
 import club.doki7.webgpu.enumtype.*;
 import static club.doki7.webgpu.WGPUConstants.*;
 
-/// Represents a pointer to a {@code RenderPassDescriptor} structure in native memory.
+/// Represents a pointer to a {@code WGPURenderPassDescriptor} structure in native memory.
 ///
 /// ## Structure
 ///
 /// {@snippet lang=c :
-/// typedef struct RenderPassDescriptor {
-///     StringView label; // @link substring="WGPUStringView" target="WGPUStringView" @link substring="label" target="#label"
-///     size_t colorAttachmentCount; // @link substring="colorAttachmentCount" target="#colorAttachmentCount"
-///     RenderPassColorAttachment const* colorAttachments; // @link substring="WGPURenderPassColorAttachment" target="WGPURenderPassColorAttachment" @link substring="colorAttachments" target="#colorAttachments"
-///     RenderPassDepthStencilAttachment depthStencilAttachment; // optional // @link substring="WGPURenderPassDepthStencilAttachment" target="WGPURenderPassDepthStencilAttachment" @link substring="depthStencilAttachment" target="#depthStencilAttachment"
-///     QuerySet occlusionQuerySet; // optional // @link substring="WGPUQuerySet" target="WGPUQuerySet" @link substring="occlusionQuerySet" target="#occlusionQuerySet"
-///     RenderPassTimestampWrites timestampWrites; // optional // @link substring="WGPURenderPassTimestampWrites" target="WGPURenderPassTimestampWrites" @link substring="timestampWrites" target="#timestampWrites"
-/// } RenderPassDescriptor;
+/// typedef struct WGPURenderPassDescriptor {
+///     WGPUStringView label; // @link substring="WGPUStringView" target="WGPUStringView" @link substring="label" target="#label"
+///     WGPURenderPassColorAttachment const* colorAttachments; // @link substring="WGPURenderPassColorAttachment" target="WGPURenderPassColorAttachment" @link substring="colorAttachments" target="#colorAttachments"
+///     WGPURenderPassDepthStencilAttachment const* depthStencilAttachment; // optional // @link substring="WGPURenderPassDepthStencilAttachment" target="WGPURenderPassDepthStencilAttachment" @link substring="depthStencilAttachment" target="#depthStencilAttachment"
+///     WGPUQuerySet occlusionQuerySet; // optional // @link substring="WGPUQuerySet" target="WGPUQuerySet" @link substring="occlusionQuerySet" target="#occlusionQuerySet"
+///     WGPURenderPassTimestampWrites const* timestampWrites; // optional // @link substring="WGPURenderPassTimestampWrites" target="WGPURenderPassTimestampWrites" @link substring="timestampWrites" target="#timestampWrites"
+/// } WGPURenderPassDescriptor;
 /// }
 ///
 /// ## Contracts
@@ -191,15 +190,6 @@ public record WGPURenderPassDescriptor(@NotNull MemorySegment segment) implement
         return this;
     }
 
-    public @Unsigned long colorAttachmentCount() {
-        return NativeLayout.readCSizeT(segment, OFFSET$colorAttachmentCount);
-    }
-
-    public WGPURenderPassDescriptor colorAttachmentCount(@Unsigned long value) {
-        NativeLayout.writeCSizeT(segment, OFFSET$colorAttachmentCount, value);
-        return this;
-    }
-
     public WGPURenderPassDescriptor colorAttachments(@Nullable IWGPURenderPassColorAttachment value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         colorAttachmentsRaw(s);
@@ -232,18 +222,36 @@ public record WGPURenderPassDescriptor(@NotNull MemorySegment segment) implement
         segment.set(LAYOUT$colorAttachments, OFFSET$colorAttachments, value);
     }
 
-    public @NotNull WGPURenderPassDepthStencilAttachment depthStencilAttachment() {
-        return new WGPURenderPassDepthStencilAttachment(segment.asSlice(OFFSET$depthStencilAttachment, LAYOUT$depthStencilAttachment));
-    }
-
-    public WGPURenderPassDescriptor depthStencilAttachment(@NotNull WGPURenderPassDepthStencilAttachment value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$depthStencilAttachment, SIZE$depthStencilAttachment);
+    public WGPURenderPassDescriptor depthStencilAttachment(@Nullable IWGPURenderPassDepthStencilAttachment value) {
+        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
+        depthStencilAttachmentRaw(s);
         return this;
     }
 
-    public WGPURenderPassDescriptor depthStencilAttachment(Consumer<@NotNull WGPURenderPassDepthStencilAttachment> consumer) {
-        consumer.accept(depthStencilAttachment());
-        return this;
+    @Unsafe public @Nullable WGPURenderPassDepthStencilAttachment.Ptr depthStencilAttachment(int assumedCount) {
+        MemorySegment s = depthStencilAttachmentRaw();
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+
+        s = s.reinterpret(assumedCount * WGPURenderPassDepthStencilAttachment.BYTES);
+        return new WGPURenderPassDepthStencilAttachment.Ptr(s);
+    }
+
+    public @Nullable WGPURenderPassDepthStencilAttachment depthStencilAttachment() {
+        MemorySegment s = depthStencilAttachmentRaw();
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+        return new WGPURenderPassDepthStencilAttachment(s);
+    }
+
+    public @Pointer(target=WGPURenderPassDepthStencilAttachment.class) @NotNull MemorySegment depthStencilAttachmentRaw() {
+        return segment.get(LAYOUT$depthStencilAttachment, OFFSET$depthStencilAttachment);
+    }
+
+    public void depthStencilAttachmentRaw(@Pointer(target=WGPURenderPassDepthStencilAttachment.class) @NotNull MemorySegment value) {
+        segment.set(LAYOUT$depthStencilAttachment, OFFSET$depthStencilAttachment, value);
     }
 
     public @Nullable WGPUQuerySet occlusionQuerySet() {
@@ -259,32 +267,48 @@ public record WGPURenderPassDescriptor(@NotNull MemorySegment segment) implement
         return this;
     }
 
-    public @NotNull WGPURenderPassTimestampWrites timestampWrites() {
-        return new WGPURenderPassTimestampWrites(segment.asSlice(OFFSET$timestampWrites, LAYOUT$timestampWrites));
-    }
-
-    public WGPURenderPassDescriptor timestampWrites(@NotNull WGPURenderPassTimestampWrites value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$timestampWrites, SIZE$timestampWrites);
+    public WGPURenderPassDescriptor timestampWrites(@Nullable IWGPURenderPassTimestampWrites value) {
+        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
+        timestampWritesRaw(s);
         return this;
     }
 
-    public WGPURenderPassDescriptor timestampWrites(Consumer<@NotNull WGPURenderPassTimestampWrites> consumer) {
-        consumer.accept(timestampWrites());
-        return this;
+    @Unsafe public @Nullable WGPURenderPassTimestampWrites.Ptr timestampWrites(int assumedCount) {
+        MemorySegment s = timestampWritesRaw();
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+
+        s = s.reinterpret(assumedCount * WGPURenderPassTimestampWrites.BYTES);
+        return new WGPURenderPassTimestampWrites.Ptr(s);
+    }
+
+    public @Nullable WGPURenderPassTimestampWrites timestampWrites() {
+        MemorySegment s = timestampWritesRaw();
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+        return new WGPURenderPassTimestampWrites(s);
+    }
+
+    public @Pointer(target=WGPURenderPassTimestampWrites.class) @NotNull MemorySegment timestampWritesRaw() {
+        return segment.get(LAYOUT$timestampWrites, OFFSET$timestampWrites);
+    }
+
+    public void timestampWritesRaw(@Pointer(target=WGPURenderPassTimestampWrites.class) @NotNull MemorySegment value) {
+        segment.set(LAYOUT$timestampWrites, OFFSET$timestampWrites, value);
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(
         WGPUStringView.LAYOUT.withName("label"),
-        NativeLayout.C_SIZE_T.withName("colorAttachmentCount"),
         ValueLayout.ADDRESS.withTargetLayout(WGPURenderPassColorAttachment.LAYOUT).withName("colorAttachments"),
-        WGPURenderPassDepthStencilAttachment.LAYOUT.withName("depthStencilAttachment"),
+        ValueLayout.ADDRESS.withTargetLayout(WGPURenderPassDepthStencilAttachment.LAYOUT).withName("depthStencilAttachment"),
         ValueLayout.ADDRESS.withName("occlusionQuerySet"),
-        WGPURenderPassTimestampWrites.LAYOUT.withName("timestampWrites")
+        ValueLayout.ADDRESS.withTargetLayout(WGPURenderPassTimestampWrites.LAYOUT).withName("timestampWrites")
     );
     public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$label = PathElement.groupElement("label");
-    public static final PathElement PATH$colorAttachmentCount = PathElement.groupElement("colorAttachmentCount");
     public static final PathElement PATH$colorAttachments = PathElement.groupElement("colorAttachments");
     public static final PathElement PATH$depthStencilAttachment = PathElement.groupElement("depthStencilAttachment");
     public static final PathElement PATH$occlusionQuerySet = PathElement.groupElement("occlusionQuerySet");
@@ -292,19 +316,17 @@ public record WGPURenderPassDescriptor(@NotNull MemorySegment segment) implement
 
     public static final StructLayout LAYOUT$label = (StructLayout) LAYOUT.select(PATH$label);
     public static final AddressLayout LAYOUT$colorAttachments = (AddressLayout) LAYOUT.select(PATH$colorAttachments);
-    public static final StructLayout LAYOUT$depthStencilAttachment = (StructLayout) LAYOUT.select(PATH$depthStencilAttachment);
+    public static final AddressLayout LAYOUT$depthStencilAttachment = (AddressLayout) LAYOUT.select(PATH$depthStencilAttachment);
     public static final AddressLayout LAYOUT$occlusionQuerySet = (AddressLayout) LAYOUT.select(PATH$occlusionQuerySet);
-    public static final StructLayout LAYOUT$timestampWrites = (StructLayout) LAYOUT.select(PATH$timestampWrites);
+    public static final AddressLayout LAYOUT$timestampWrites = (AddressLayout) LAYOUT.select(PATH$timestampWrites);
 
     public static final long SIZE$label = LAYOUT$label.byteSize();
-    public static final long SIZE$colorAttachmentCount = NativeLayout.C_SIZE_T.byteSize();
     public static final long SIZE$colorAttachments = LAYOUT$colorAttachments.byteSize();
     public static final long SIZE$depthStencilAttachment = LAYOUT$depthStencilAttachment.byteSize();
     public static final long SIZE$occlusionQuerySet = LAYOUT$occlusionQuerySet.byteSize();
     public static final long SIZE$timestampWrites = LAYOUT$timestampWrites.byteSize();
 
     public static final long OFFSET$label = LAYOUT.byteOffset(PATH$label);
-    public static final long OFFSET$colorAttachmentCount = LAYOUT.byteOffset(PATH$colorAttachmentCount);
     public static final long OFFSET$colorAttachments = LAYOUT.byteOffset(PATH$colorAttachments);
     public static final long OFFSET$depthStencilAttachment = LAYOUT.byteOffset(PATH$depthStencilAttachment);
     public static final long OFFSET$occlusionQuerySet = LAYOUT.byteOffset(PATH$occlusionQuerySet);

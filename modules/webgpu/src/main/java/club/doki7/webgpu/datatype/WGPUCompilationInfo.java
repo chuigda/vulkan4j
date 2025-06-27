@@ -18,15 +18,14 @@ import club.doki7.webgpu.handle.*;
 import club.doki7.webgpu.enumtype.*;
 import static club.doki7.webgpu.WGPUConstants.*;
 
-/// Represents a pointer to a {@code CompilationInfo} structure in native memory.
+/// Represents a pointer to a {@code WGPUCompilationInfo} structure in native memory.
 ///
 /// ## Structure
 ///
 /// {@snippet lang=c :
-/// typedef struct CompilationInfo {
-///     size_t messageCount; // @link substring="messageCount" target="#messageCount"
-///     CompilationMessage const* messages; // @link substring="WGPUCompilationMessage" target="WGPUCompilationMessage" @link substring="messages" target="#messages"
-/// } CompilationInfo;
+/// typedef struct WGPUCompilationInfo {
+///     WGPUCompilationMessage const* messages; // @link substring="WGPUCompilationMessage" target="WGPUCompilationMessage" @link substring="messages" target="#messages"
+/// } WGPUCompilationInfo;
 /// }
 ///
 /// ## Contracts
@@ -173,15 +172,6 @@ public record WGPUCompilationInfo(@NotNull MemorySegment segment) implements IWG
         return ret;
     }
 
-    public @Unsigned long messageCount() {
-        return NativeLayout.readCSizeT(segment, OFFSET$messageCount);
-    }
-
-    public WGPUCompilationInfo messageCount(@Unsigned long value) {
-        NativeLayout.writeCSizeT(segment, OFFSET$messageCount, value);
-        return this;
-    }
-
     public WGPUCompilationInfo messages(@Nullable IWGPUCompilationMessage value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         messagesRaw(s);
@@ -215,19 +205,15 @@ public record WGPUCompilationInfo(@NotNull MemorySegment segment) implements IWG
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(
-        NativeLayout.C_SIZE_T.withName("messageCount"),
         ValueLayout.ADDRESS.withTargetLayout(WGPUCompilationMessage.LAYOUT).withName("messages")
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$messageCount = PathElement.groupElement("messageCount");
     public static final PathElement PATH$messages = PathElement.groupElement("messages");
 
     public static final AddressLayout LAYOUT$messages = (AddressLayout) LAYOUT.select(PATH$messages);
 
-    public static final long SIZE$messageCount = NativeLayout.C_SIZE_T.byteSize();
     public static final long SIZE$messages = LAYOUT$messages.byteSize();
 
-    public static final long OFFSET$messageCount = LAYOUT.byteOffset(PATH$messageCount);
     public static final long OFFSET$messages = LAYOUT.byteOffset(PATH$messages);
 }

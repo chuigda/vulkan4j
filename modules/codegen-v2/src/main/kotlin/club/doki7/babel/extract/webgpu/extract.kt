@@ -1,15 +1,240 @@
 package club.doki7.babel.extract.webgpu
 
-import java.util.logging.Logger
+import club.doki7.babel.registry.Bitflag
+import club.doki7.babel.registry.Bitmask
+import club.doki7.babel.registry.Command
+import club.doki7.babel.registry.Constant
+import club.doki7.babel.registry.EmptyMergeable
+import club.doki7.babel.registry.EnumVariant
+import club.doki7.babel.registry.Enumeration
+import club.doki7.babel.registry.FunctionTypedef
+import club.doki7.babel.registry.IdentifierType
+import club.doki7.babel.registry.Member
+import club.doki7.babel.registry.OpaqueHandleTypedef
+import club.doki7.babel.registry.Param
+import club.doki7.babel.registry.PointerType
+import club.doki7.babel.registry.Registry
+import club.doki7.babel.registry.RegistryBase
+import club.doki7.babel.registry.Structure
+import club.doki7.babel.registry.putEntityIfAbsent
 import kotlin.io.path.Path
 import kotlinx.serialization.json.*
+import java.math.BigInteger
 
 private val inputDir = Path("codegen-v2/input")
-private val log = Logger.getLogger("c.d.b.extract.webgpu")
 
-fun main() {
+fun extractWebGPURegistry(): Registry<EmptyMergeable> {
     val jsonString = inputDir.resolve("webgpu.json").toFile().readText()
     val idl = Json.decodeFromString<IDL>(jsonString)
 
-    println(idl)
+    val registry = Registry(ext = EmptyMergeable())
+    extractObjects(registry, idl.objects)
+    extractFunctionTypedefs(registry, idl.callbacks)
+    extractStructures(registry, idl.structs)
+    extractEnumeration(registry, idl.enums)
+    extractBitmask(registry, idl.bitflags)
+    extractFunctions(registry, idl.functions)
+    extractConstants(registry, idl.constants)
+
+    for (structure in coreStructures) {
+        registry.structures.putEntityIfAbsent(structure)
+    }
+
+    return registry
 }
+
+private fun extractObjects(registry: RegistryBase, objects: List<IDLObject>) {
+    for (obj in objects) {
+        val objectTypeName = renameWGPUType(obj.name)
+        registry.opaqueHandleTypedefs.putEntityIfAbsent(OpaqueHandleTypedef(name = objectTypeName))
+        extractObjectMethods(registry, objectTypeName, obj.name, obj.methods)
+    }
+}
+
+private fun extractObjectMethods(
+    registry: RegistryBase,
+    objectType: String,
+    objectTypeOriginalName: String,
+    methods: List<IDLFunction>
+) {
+    for (method in methods) {
+        val idlMethodName = "${objectTypeOriginalName}_${method.name}"
+
+        val params = mutableListOf(Param(
+            name = renameWGPUVar(objectTypeOriginalName),
+            type = IdentifierType(objectType),
+            len = null,
+            argLen = null,
+            optional = false
+        ))
+        method.args?.forEach { arg -> params.add(extractFunctionParam(arg)) }
+
+        val command = Command(
+            name = renameWGPUFunction(idlMethodName),
+            params = params,
+            result = if (method.returns != null) {
+                classifyType(method.returns.type, method.returns.pointer)
+            } else {
+                IdentifierType("void")
+            },
+            successCodes = emptyList(),
+            errorCodes = emptyList()
+        )
+        command.rename(renameWGPUVar(idlMethodName))
+        registry.commands.putEntityIfAbsent(command)
+    }
+}
+
+private fun extractFunctionTypedefs(registry: RegistryBase, callbacks: List<IDLCallback>) {
+    for (callback in callbacks) {
+        registry.functionTypedefs.putEntityIfAbsent(FunctionTypedef(
+            name = renameWGPUFunctionPointer(callback.name),
+            params = callback.args.map { arg -> classifyType(arg.type, arg.pointer) }.toList(),
+            result = IdentifierType("void")
+        ))
+    }
+}
+
+private fun extractStructures(registry: RegistryBase, structs: List<IDLStructure>) {
+    for (struct in structs) {
+        registry.structures.putEntityIfAbsent(Structure(
+            name = renameWGPUType(struct.name),
+            members = struct.members.map { member ->
+                Member(
+                    name = renameWGPUVar(member.name),
+                    type = classifyType(member.type, member.pointer),
+                    values = null,
+                    len = null,
+                    altLen = null,
+                    optional = member.optional,
+                    bits = null
+                )
+            }.toMutableList()
+        ))
+    }
+}
+
+private fun extractEnumeration(registry: RegistryBase, enums: List<IDLEnumeration>) {
+    for (enum in enums) {
+        registry.enumerations.putEntityIfAbsent(Enumeration(
+            name = renameWGPUType(enum.name),
+            variants = enum.entries.mapIndexed { idx, variant ->
+                if (variant == null) {
+                    null
+                } else {
+                    EnumVariant(
+                        name = variant.name.uppercase(),
+                        value = idx.toLong(),
+                    )
+                }
+            }.filter { it -> it != null }.map { it as EnumVariant }.toMutableList()
+        ))
+    }
+}
+
+private fun extractBitmask(registry: RegistryBase, bitmasks: List<IDLBitmask>) {
+    for (bitmask in bitmasks) {
+        registry.bitmasks.putEntityIfAbsent(Bitmask(
+            name = renameWGPUType(bitmask.name),
+            bitwidth = 64,
+            bitflags = bitmask.entries.mapIndexed { idx, bitflag ->
+                Bitflag(
+                    name = bitflag.name.uppercase(),
+                    value = if (idx == 0) BigInteger.ZERO else BigInteger.ONE.shiftLeft(idx - 1),
+                )
+            }.toMutableList()
+        ))
+    }
+}
+
+private fun extractFunctions(registry: RegistryBase, functions: List<IDLFunction>) {
+    for (function in functions) {
+        val command = Command(
+            name = renameWGPUFunction(function.name),
+            params = if (function.args != null) {
+                function.args.map(::extractFunctionParam).toList()
+            } else {
+                emptyList()
+            },
+            result = if (function.returns != null) {
+                classifyType(function.returns.type, function.returns.pointer)
+            } else {
+                IdentifierType("void")
+            },
+            successCodes = emptyList(),
+            errorCodes = emptyList()
+        )
+        command.rename(renameWGPUVar(function.name))
+        registry.commands.putEntityIfAbsent(command)
+    }
+}
+
+private fun extractConstants(registry: RegistryBase, constants: List<IDLConstant>) {
+    for (constant in constants) {
+        val mappedConstant = constantTypeMappings[constant.value]
+            ?: error("Unknown constant value: ${constant.value}")
+
+        registry.constants.putEntityIfAbsent(Constant(
+            name = "WGPU_" + constant.name.uppercase(),
+            type = mappedConstant.identType,
+            expr = mappedConstant.javaExpression
+        ))
+    }
+}
+
+private fun extractFunctionParam(arg: IDLFunctionArg): Param = Param(
+    name = renameWGPUVar(arg.name),
+    type = classifyType(arg.type, arg.pointer),
+    len = null,
+    argLen = null,
+    optional = arg.optional
+)
+
+private val coreStructures = listOf(
+    Structure(
+        name = "WGPUStringView",
+        members = mutableListOf(
+            Member(
+                name = "data",
+                type = PointerType(IdentifierType("char"), const = true),
+                values = null,
+                len = null,
+                altLen = null,
+                optional = true,
+                bits = null
+            ),
+            Member(
+                name = "length",
+                type = IdentifierType("size_t"),
+                values = null,
+                len = null,
+                altLen = null,
+                optional = false,
+                bits = null
+            )
+        )
+    ),
+    Structure(
+        name = "WGPUChainedStruct",
+        members = mutableListOf(
+            Member(
+                name = "next",
+                type = PointerType(IdentifierType("WGPUChainedStruct")),
+                values = null,
+                len = null,
+                altLen = null,
+                optional = true,
+                bits = null
+            ),
+            Member(
+                name = "sType",
+                type = IdentifierType("WGPUSType"),
+                values = null,
+                len = null,
+                altLen = null,
+                optional = false,
+                bits = null
+            )
+        )
+    )
+)

@@ -9,11 +9,9 @@ public final class WGPUPrimitiveTopology {
     public static final int LINE_STRIP = 0x3;
     public static final int TRIANGLE_LIST = 0x4;
     public static final int TRIANGLE_STRIP = 0x5;
-    public static final int FORCE32 = 0x7fffffff;
 
     public static String explain(@EnumType(WGPUPrimitiveTopology.class) int value) {
         return switch (value) {
-            case WGPUPrimitiveTopology.FORCE32 -> "FORCE32";
             case WGPUPrimitiveTopology.LINE_LIST -> "LINE_LIST";
             case WGPUPrimitiveTopology.LINE_STRIP -> "LINE_STRIP";
             case WGPUPrimitiveTopology.POINT_LIST -> "POINT_LIST";

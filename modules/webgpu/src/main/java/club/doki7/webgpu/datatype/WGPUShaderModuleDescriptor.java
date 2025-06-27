@@ -18,14 +18,14 @@ import club.doki7.webgpu.handle.*;
 import club.doki7.webgpu.enumtype.*;
 import static club.doki7.webgpu.WGPUConstants.*;
 
-/// Represents a pointer to a {@code ShaderModuleDescriptor} structure in native memory.
+/// Represents a pointer to a {@code WGPUShaderModuleDescriptor} structure in native memory.
 ///
 /// ## Structure
 ///
 /// {@snippet lang=c :
-/// typedef struct ShaderModuleDescriptor {
-///     StringView label; // @link substring="WGPUStringView" target="WGPUStringView" @link substring="label" target="#label"
-/// } ShaderModuleDescriptor;
+/// typedef struct WGPUShaderModuleDescriptor {
+///     WGPUStringView label; // @link substring="WGPUStringView" target="WGPUStringView" @link substring="label" target="#label"
+/// } WGPUShaderModuleDescriptor;
 /// }
 ///
 /// ## Contracts

@@ -18,14 +18,14 @@ import club.doki7.webgpu.handle.*;
 import club.doki7.webgpu.enumtype.*;
 import static club.doki7.webgpu.WGPUConstants.*;
 
-/// Represents a pointer to a {@code RenderBundleDescriptor} structure in native memory.
+/// Represents a pointer to a {@code WGPURenderBundleDescriptor} structure in native memory.
 ///
 /// ## Structure
 ///
 /// {@snippet lang=c :
-/// typedef struct RenderBundleDescriptor {
-///     StringView label; // @link substring="WGPUStringView" target="WGPUStringView" @link substring="label" target="#label"
-/// } RenderBundleDescriptor;
+/// typedef struct WGPURenderBundleDescriptor {
+///     WGPUStringView label; // @link substring="WGPUStringView" target="WGPUStringView" @link substring="label" target="#label"
+/// } WGPURenderBundleDescriptor;
 /// }
 ///
 /// ## Contracts

@@ -8,13 +8,11 @@ public final class WGPUPresentMode {
     public static final int FIFO_RELAXED = 0x2;
     public static final int IMMEDIATE = 0x3;
     public static final int MAILBOX = 0x4;
-    public static final int FORCE32 = 0x7fffffff;
 
     public static String explain(@EnumType(WGPUPresentMode.class) int value) {
         return switch (value) {
             case WGPUPresentMode.FIFO -> "FIFO";
             case WGPUPresentMode.FIFO_RELAXED -> "FIFO_RELAXED";
-            case WGPUPresentMode.FORCE32 -> "FORCE32";
             case WGPUPresentMode.IMMEDIATE -> "IMMEDIATE";
             case WGPUPresentMode.MAILBOX -> "MAILBOX";
             case WGPUPresentMode.UNDEFINED -> "UNDEFINED";

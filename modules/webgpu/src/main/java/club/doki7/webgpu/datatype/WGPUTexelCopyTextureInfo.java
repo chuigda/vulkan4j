@@ -18,17 +18,17 @@ import club.doki7.webgpu.handle.*;
 import club.doki7.webgpu.enumtype.*;
 import static club.doki7.webgpu.WGPUConstants.*;
 
-/// Represents a pointer to a {@code TexelCopyTextureInfo} structure in native memory.
+/// Represents a pointer to a {@code WGPUTexelCopyTextureInfo} structure in native memory.
 ///
 /// ## Structure
 ///
 /// {@snippet lang=c :
-/// typedef struct TexelCopyTextureInfo {
-///     Texture texture; // @link substring="WGPUTexture" target="WGPUTexture" @link substring="texture" target="#texture"
+/// typedef struct WGPUTexelCopyTextureInfo {
+///     WGPUTexture texture; // @link substring="WGPUTexture" target="WGPUTexture" @link substring="texture" target="#texture"
 ///     uint32_t mipLevel; // @link substring="mipLevel" target="#mipLevel"
-///     Origin3d origin; // @link substring="WGPUOrigin3d" target="WGPUOrigin3d" @link substring="origin" target="#origin"
-///     TextureAspect aspect; // @link substring="WGPUTextureAspect" target="WGPUTextureAspect" @link substring="aspect" target="#aspect"
-/// } TexelCopyTextureInfo;
+///     WGPUOrigin3d origin; // @link substring="WGPUOrigin3d" target="WGPUOrigin3d" @link substring="origin" target="#origin"
+///     WGPUTextureAspect aspect; // @link substring="WGPUTextureAspect" target="WGPUTextureAspect" @link substring="aspect" target="#aspect"
+/// } WGPUTexelCopyTextureInfo;
 /// }
 ///
 /// ## Contracts

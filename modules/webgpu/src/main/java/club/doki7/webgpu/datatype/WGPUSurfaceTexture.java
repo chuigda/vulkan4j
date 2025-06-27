@@ -18,15 +18,15 @@ import club.doki7.webgpu.handle.*;
 import club.doki7.webgpu.enumtype.*;
 import static club.doki7.webgpu.WGPUConstants.*;
 
-/// Represents a pointer to a {@code SurfaceTexture} structure in native memory.
+/// Represents a pointer to a {@code WGPUSurfaceTexture} structure in native memory.
 ///
 /// ## Structure
 ///
 /// {@snippet lang=c :
-/// typedef struct SurfaceTexture {
-///     Texture texture; // @link substring="WGPUTexture" target="WGPUTexture" @link substring="texture" target="#texture"
-///     SurfaceGetCurrentTextureStatus status; // @link substring="WGPUSurfaceGetCurrentTextureStatus" target="WGPUSurfaceGetCurrentTextureStatus" @link substring="status" target="#status"
-/// } SurfaceTexture;
+/// typedef struct WGPUSurfaceTexture {
+///     WGPUTexture texture; // @link substring="WGPUTexture" target="WGPUTexture" @link substring="texture" target="#texture"
+///     WGPUSurfaceGetCurrentTextureStatus status; // @link substring="WGPUSurfaceGetCurrentTextureStatus" target="WGPUSurfaceGetCurrentTextureStatus" @link substring="status" target="#status"
+/// } WGPUSurfaceTexture;
 /// }
 ///
 /// ## Contracts

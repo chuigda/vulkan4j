@@ -18,15 +18,15 @@ import club.doki7.webgpu.handle.*;
 import club.doki7.webgpu.enumtype.*;
 import static club.doki7.webgpu.WGPUConstants.*;
 
-/// Represents a pointer to a {@code BlendState} structure in native memory.
+/// Represents a pointer to a {@code WGPUBlendState} structure in native memory.
 ///
 /// ## Structure
 ///
 /// {@snippet lang=c :
-/// typedef struct BlendState {
-///     BlendComponent color; // @link substring="WGPUBlendComponent" target="WGPUBlendComponent" @link substring="color" target="#color"
-///     BlendComponent alpha; // @link substring="WGPUBlendComponent" target="WGPUBlendComponent" @link substring="alpha" target="#alpha"
-/// } BlendState;
+/// typedef struct WGPUBlendState {
+///     WGPUBlendComponent color; // @link substring="WGPUBlendComponent" target="WGPUBlendComponent" @link substring="color" target="#color"
+///     WGPUBlendComponent alpha; // @link substring="WGPUBlendComponent" target="WGPUBlendComponent" @link substring="alpha" target="#alpha"
+/// } WGPUBlendState;
 /// }
 ///
 /// ## Contracts

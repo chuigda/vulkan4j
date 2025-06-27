@@ -18,16 +18,16 @@ import club.doki7.webgpu.handle.*;
 import club.doki7.webgpu.enumtype.*;
 import static club.doki7.webgpu.WGPUConstants.*;
 
-/// Represents a pointer to a {@code Origin3d} structure in native memory.
+/// Represents a pointer to a {@code WGPUOrigin3d} structure in native memory.
 ///
 /// ## Structure
 ///
 /// {@snippet lang=c :
-/// typedef struct Origin3d {
+/// typedef struct WGPUOrigin3d {
 ///     uint32_t x; // @link substring="x" target="#x"
 ///     uint32_t y; // @link substring="y" target="#y"
 ///     uint32_t z; // @link substring="z" target="#z"
-/// } Origin3d;
+/// } WGPUOrigin3d;
 /// }
 ///
 /// ## Contracts

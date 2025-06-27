@@ -18,16 +18,16 @@ import club.doki7.webgpu.handle.*;
 import club.doki7.webgpu.enumtype.*;
 import static club.doki7.webgpu.WGPUConstants.*;
 
-/// Represents a pointer to a {@code ComputePipelineDescriptor} structure in native memory.
+/// Represents a pointer to a {@code WGPUComputePipelineDescriptor} structure in native memory.
 ///
 /// ## Structure
 ///
 /// {@snippet lang=c :
-/// typedef struct ComputePipelineDescriptor {
-///     StringView label; // @link substring="WGPUStringView" target="WGPUStringView" @link substring="label" target="#label"
-///     PipelineLayout layout; // optional // @link substring="WGPUPipelineLayout" target="WGPUPipelineLayout" @link substring="layout" target="#layout"
-///     ProgrammableStageDescriptor compute; // @link substring="WGPUProgrammableStageDescriptor" target="WGPUProgrammableStageDescriptor" @link substring="compute" target="#compute"
-/// } ComputePipelineDescriptor;
+/// typedef struct WGPUComputePipelineDescriptor {
+///     WGPUStringView label; // @link substring="WGPUStringView" target="WGPUStringView" @link substring="label" target="#label"
+///     WGPUPipelineLayout layout; // optional // @link substring="WGPUPipelineLayout" target="WGPUPipelineLayout" @link substring="layout" target="#layout"
+///     WGPUProgrammableStageDescriptor compute; // @link substring="WGPUProgrammableStageDescriptor" target="WGPUProgrammableStageDescriptor" @link substring="compute" target="#compute"
+/// } WGPUComputePipelineDescriptor;
 /// }
 ///
 /// ## Contracts

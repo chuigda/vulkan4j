@@ -1,9 +1,67 @@
 package club.doki7.babel.extract.webgpu
 
-import club.doki7.babel.extract.toPascalCase
 import club.doki7.babel.registry.IdentifierType
 import club.doki7.babel.registry.Type
 import club.doki7.babel.registry.PointerType
+
+internal fun classifyType(type: String, pointer: String?): Type {
+    val baseType = classifyBaseType(type)
+    return if (pointer != null) {
+        if (baseType is PointerType) {
+            baseType.copy(const = pointer == "immutable")
+        } else {
+            PointerType(baseType, const = pointer == "immutable")
+        }
+    } else {
+        baseType
+    }
+}
+
+private fun classifyBaseType(type: String): Type {
+    return when {
+        // primitive
+        primitiveTypeMap.containsKey(type) ->{
+            primitiveTypeMap[type]!!
+        }
+        // object.*
+        type.startsWith("object.") -> {
+            val innerType = type.removePrefix("object.")
+            IdentifierType(renameWGPUType(innerType))
+        }
+        // bitflag.*
+        type.startsWith("bitflag.") ->{
+            val innerType = type.removePrefix("bitflag.")
+            IdentifierType(renameWGPUType(innerType))
+        }
+        // struct.*
+        type.startsWith("struct.") ->{
+            val innerType = type.removePrefix("struct.")
+            IdentifierType(renameWGPUType(innerType))
+        }
+        // enum.*
+        type.startsWith("enum.") ->{
+            val innerType = type.removePrefix("enum.")
+            IdentifierType(renameWGPUType(innerType))
+        }
+        // array<...>
+        type.startsWith("array<") && type.endsWith(">") -> {
+            val innerType = type.removePrefix("array<").removeSuffix(">")
+            PointerType(classifyBaseType(innerType), const = false)
+        }
+        // callback.
+        type.startsWith("callback.") ->{
+            val innerType = type.removePrefix("callback.")
+            IdentifierType(renameWGPUFunctionPointer(innerType))
+        }
+        // specialTypes
+        specialTypeMap.containsKey(type) ->{
+            specialTypeMap[type]!!
+        }
+        else -> {
+            error("unable to classify type: $type")
+        }
+    }
+}
 
 val primitiveTypeMap = mapOf(
     // Unsigned integers
@@ -31,62 +89,12 @@ val primitiveTypeMap = mapOf(
 )
 
 val specialTypeMap = mapOf(
-
-    "string_with_default_empty" to IdentifierType("StringView"),
-    "out_string" to IdentifierType("StringView"),
-    "nullable_string" to IdentifierType("StringView"),
+    "string_with_default_empty" to IdentifierType("WGPUStringView"),
+    "out_string" to IdentifierType("WGPUStringView"),
+    "nullable_string" to IdentifierType("WGPUStringView"),
 
     "float64_supertype" to IdentifierType("double"),
     "nullable_float32" to IdentifierType("float"),
 
     "c_void" to PointerType(IdentifierType("void")),
-
 )
-
-fun classifyType(type: String): Type {
-    return when {
-        // primitive
-        primitiveTypeMap.containsKey(type) ->{
-            primitiveTypeMap[type]!!
-        }
-        // object.*
-        type.startsWith("object.") -> {
-            val innerType = type.removePrefix("object.")
-            IdentifierType(innerType.toPascalCase())
-        }
-        // bitflag.*
-        type.startsWith("bitflag.") ->{
-            val innerType = type.removePrefix("bitflag.")
-            IdentifierType(innerType.toPascalCase())
-        }
-        // struct.*
-        type.startsWith("struct.") ->{
-            val innerType = type.removePrefix("struct.")
-            IdentifierType(innerType.toPascalCase())
-        }
-        // enum.*
-        type.startsWith("enum.") ->{
-            val innerType = type.removePrefix("enum.")
-            IdentifierType(innerType.toPascalCase())
-        }
-        // array<...>
-        type.startsWith("array<") && type.endsWith(">") -> {
-            val innerType = type.removePrefix("array<").removeSuffix(">")
-            PointerType(classifyType(innerType), const = true)
-        }
-        // callback.
-        type.startsWith("callback.") ->{
-            val innerType = type.removePrefix("callback.")
-            PointerType(IdentifierType(innerType.toPascalCase()+"CallbackInfo"))
-        }
-        // specialTypes
-        specialTypeMap.containsKey(type) ->{
-            specialTypeMap[type]!!
-        }
-        else -> {
-            println("unknown/**/"+type)
-            IdentifierType("char")
-        }
-    }
-}
-

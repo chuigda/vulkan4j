@@ -18,15 +18,15 @@ import club.doki7.webgpu.handle.*;
 import club.doki7.webgpu.enumtype.*;
 import static club.doki7.webgpu.WGPUConstants.*;
 
-/// Represents a pointer to a {@code ChainedStruct} structure in native memory.
+/// Represents a pointer to a {@code WGPUChainedStruct} structure in native memory.
 ///
 /// ## Structure
 ///
 /// {@snippet lang=c :
-/// typedef struct ChainedStruct {
-///     ChainedStruct* next; // optional // @link substring="WGPUChainedStruct" target="WGPUChainedStruct" @link substring="next" target="#next"
-///     SType sType; // @link substring="WGPUSType" target="WGPUSType" @link substring="sType" target="#sType"
-/// } ChainedStruct;
+/// typedef struct WGPUChainedStruct {
+///     WGPUChainedStruct* next; // optional // @link substring="WGPUChainedStruct" target="WGPUChainedStruct" @link substring="next" target="#next"
+///     WGPUSType sType; // @link substring="WGPUSType" target="WGPUSType" @link substring="sType" target="#sType"
+/// } WGPUChainedStruct;
 /// }
 ///
 /// ## Contracts

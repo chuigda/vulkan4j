@@ -18,16 +18,16 @@ import club.doki7.webgpu.handle.*;
 import club.doki7.webgpu.enumtype.*;
 import static club.doki7.webgpu.WGPUConstants.*;
 
-/// Represents a pointer to a {@code ColorTargetState} structure in native memory.
+/// Represents a pointer to a {@code WGPUColorTargetState} structure in native memory.
 ///
 /// ## Structure
 ///
 /// {@snippet lang=c :
-/// typedef struct ColorTargetState {
-///     TextureFormat format; // @link substring="WGPUTextureFormat" target="WGPUTextureFormat" @link substring="format" target="#format"
-///     BlendState blend; // optional // @link substring="WGPUBlendState" target="WGPUBlendState" @link substring="blend" target="#blend"
-///     ColorWriteMask writeMask; // @link substring="WGPUColorWriteMask" target="WGPUColorWriteMask" @link substring="writeMask" target="#writeMask"
-/// } ColorTargetState;
+/// typedef struct WGPUColorTargetState {
+///     WGPUTextureFormat format; // @link substring="WGPUTextureFormat" target="WGPUTextureFormat" @link substring="format" target="#format"
+///     WGPUBlendState const* blend; // optional // @link substring="WGPUBlendState" target="WGPUBlendState" @link substring="blend" target="#blend"
+///     WGPUColorWriteMask writeMask; // @link substring="WGPUColorWriteMask" target="WGPUColorWriteMask" @link substring="writeMask" target="#writeMask"
+/// } WGPUColorTargetState;
 /// }
 ///
 /// ## Contracts
@@ -183,18 +183,36 @@ public record WGPUColorTargetState(@NotNull MemorySegment segment) implements IW
         return this;
     }
 
-    public @NotNull WGPUBlendState blend() {
-        return new WGPUBlendState(segment.asSlice(OFFSET$blend, LAYOUT$blend));
-    }
-
-    public WGPUColorTargetState blend(@NotNull WGPUBlendState value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$blend, SIZE$blend);
+    public WGPUColorTargetState blend(@Nullable IWGPUBlendState value) {
+        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
+        blendRaw(s);
         return this;
     }
 
-    public WGPUColorTargetState blend(Consumer<@NotNull WGPUBlendState> consumer) {
-        consumer.accept(blend());
-        return this;
+    @Unsafe public @Nullable WGPUBlendState.Ptr blend(int assumedCount) {
+        MemorySegment s = blendRaw();
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+
+        s = s.reinterpret(assumedCount * WGPUBlendState.BYTES);
+        return new WGPUBlendState.Ptr(s);
+    }
+
+    public @Nullable WGPUBlendState blend() {
+        MemorySegment s = blendRaw();
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+        return new WGPUBlendState(s);
+    }
+
+    public @Pointer(target=WGPUBlendState.class) @NotNull MemorySegment blendRaw() {
+        return segment.get(LAYOUT$blend, OFFSET$blend);
+    }
+
+    public void blendRaw(@Pointer(target=WGPUBlendState.class) @NotNull MemorySegment value) {
+        segment.set(LAYOUT$blend, OFFSET$blend, value);
     }
 
     public @Bitmask(WGPUColorWriteMask.class) long writeMask() {
@@ -208,7 +226,7 @@ public record WGPUColorTargetState(@NotNull MemorySegment segment) implements IW
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(
         ValueLayout.JAVA_INT.withName("format"),
-        WGPUBlendState.LAYOUT.withName("blend"),
+        ValueLayout.ADDRESS.withTargetLayout(WGPUBlendState.LAYOUT).withName("blend"),
         ValueLayout.JAVA_LONG.withName("writeMask")
     );
     public static final long BYTES = LAYOUT.byteSize();
@@ -218,7 +236,7 @@ public record WGPUColorTargetState(@NotNull MemorySegment segment) implements IW
     public static final PathElement PATH$writeMask = PathElement.groupElement("writeMask");
 
     public static final OfInt LAYOUT$format = (OfInt) LAYOUT.select(PATH$format);
-    public static final StructLayout LAYOUT$blend = (StructLayout) LAYOUT.select(PATH$blend);
+    public static final AddressLayout LAYOUT$blend = (AddressLayout) LAYOUT.select(PATH$blend);
     public static final OfLong LAYOUT$writeMask = (OfLong) LAYOUT.select(PATH$writeMask);
 
     public static final long SIZE$format = LAYOUT$format.byteSize();

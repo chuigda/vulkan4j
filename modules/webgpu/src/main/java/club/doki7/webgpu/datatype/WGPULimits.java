@@ -18,12 +18,12 @@ import club.doki7.webgpu.handle.*;
 import club.doki7.webgpu.enumtype.*;
 import static club.doki7.webgpu.WGPUConstants.*;
 
-/// Represents a pointer to a {@code Limits} structure in native memory.
+/// Represents a pointer to a {@code WGPULimits} structure in native memory.
 ///
 /// ## Structure
 ///
 /// {@snippet lang=c :
-/// typedef struct Limits {
+/// typedef struct WGPULimits {
 ///     uint32_t maxTextureDimension1d; // @link substring="maxTextureDimension1d" target="#maxTextureDimension1d"
 ///     uint32_t maxTextureDimension2d; // @link substring="maxTextureDimension2d" target="#maxTextureDimension2d"
 ///     uint32_t maxTextureDimension3d; // @link substring="maxTextureDimension3d" target="#maxTextureDimension3d"
@@ -55,7 +55,7 @@ import static club.doki7.webgpu.WGPUConstants.*;
 ///     uint32_t maxComputeWorkgroupSizeY; // @link substring="maxComputeWorkgroupSizeY" target="#maxComputeWorkgroupSizeY"
 ///     uint32_t maxComputeWorkgroupSizeZ; // @link substring="maxComputeWorkgroupSizeZ" target="#maxComputeWorkgroupSizeZ"
 ///     uint32_t maxComputeWorkgroupsPerDimension; // @link substring="maxComputeWorkgroupsPerDimension" target="#maxComputeWorkgroupsPerDimension"
-/// } Limits;
+/// } WGPULimits;
 /// }
 ///
 /// ## Contracts

@@ -18,16 +18,15 @@ import club.doki7.webgpu.handle.*;
 import club.doki7.webgpu.enumtype.*;
 import static club.doki7.webgpu.WGPUConstants.*;
 
-/// Represents a pointer to a {@code BindGroupLayoutDescriptor} structure in native memory.
+/// Represents a pointer to a {@code WGPUBindGroupLayoutDescriptor} structure in native memory.
 ///
 /// ## Structure
 ///
 /// {@snippet lang=c :
-/// typedef struct BindGroupLayoutDescriptor {
-///     StringView label; // @link substring="WGPUStringView" target="WGPUStringView" @link substring="label" target="#label"
-///     size_t entryCount; // @link substring="entryCount" target="#entryCount"
-///     BindGroupLayoutEntry const* entries; // @link substring="WGPUBindGroupLayoutEntry" target="WGPUBindGroupLayoutEntry" @link substring="entries" target="#entries"
-/// } BindGroupLayoutDescriptor;
+/// typedef struct WGPUBindGroupLayoutDescriptor {
+///     WGPUStringView label; // @link substring="WGPUStringView" target="WGPUStringView" @link substring="label" target="#label"
+///     WGPUBindGroupLayoutEntry const* entries; // @link substring="WGPUBindGroupLayoutEntry" target="WGPUBindGroupLayoutEntry" @link substring="entries" target="#entries"
+/// } WGPUBindGroupLayoutDescriptor;
 /// }
 ///
 /// ## Contracts
@@ -188,15 +187,6 @@ public record WGPUBindGroupLayoutDescriptor(@NotNull MemorySegment segment) impl
         return this;
     }
 
-    public @Unsigned long entryCount() {
-        return NativeLayout.readCSizeT(segment, OFFSET$entryCount);
-    }
-
-    public WGPUBindGroupLayoutDescriptor entryCount(@Unsigned long value) {
-        NativeLayout.writeCSizeT(segment, OFFSET$entryCount, value);
-        return this;
-    }
-
     public WGPUBindGroupLayoutDescriptor entries(@Nullable IWGPUBindGroupLayoutEntry value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         entriesRaw(s);
@@ -231,23 +221,19 @@ public record WGPUBindGroupLayoutDescriptor(@NotNull MemorySegment segment) impl
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(
         WGPUStringView.LAYOUT.withName("label"),
-        NativeLayout.C_SIZE_T.withName("entryCount"),
         ValueLayout.ADDRESS.withTargetLayout(WGPUBindGroupLayoutEntry.LAYOUT).withName("entries")
     );
     public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$label = PathElement.groupElement("label");
-    public static final PathElement PATH$entryCount = PathElement.groupElement("entryCount");
     public static final PathElement PATH$entries = PathElement.groupElement("entries");
 
     public static final StructLayout LAYOUT$label = (StructLayout) LAYOUT.select(PATH$label);
     public static final AddressLayout LAYOUT$entries = (AddressLayout) LAYOUT.select(PATH$entries);
 
     public static final long SIZE$label = LAYOUT$label.byteSize();
-    public static final long SIZE$entryCount = NativeLayout.C_SIZE_T.byteSize();
     public static final long SIZE$entries = LAYOUT$entries.byteSize();
 
     public static final long OFFSET$label = LAYOUT.byteOffset(PATH$label);
-    public static final long OFFSET$entryCount = LAYOUT.byteOffset(PATH$entryCount);
     public static final long OFFSET$entries = LAYOUT.byteOffset(PATH$entries);
 }

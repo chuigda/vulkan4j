@@ -18,15 +18,15 @@ import club.doki7.webgpu.handle.*;
 import club.doki7.webgpu.enumtype.*;
 import static club.doki7.webgpu.WGPUConstants.*;
 
-/// Represents a pointer to a {@code StringView} structure in native memory.
+/// Represents a pointer to a {@code WGPUStringView} structure in native memory.
 ///
 /// ## Structure
 ///
 /// {@snippet lang=c :
-/// typedef struct StringView {
+/// typedef struct WGPUStringView {
 ///     char const* data; // optional // @link substring="data" target="#data"
 ///     size_t length; // @link substring="length" target="#length"
-/// } StringView;
+/// } WGPUStringView;
 /// }
 ///
 /// ## Contracts

@@ -18,19 +18,19 @@ import club.doki7.webgpu.handle.*;
 import club.doki7.webgpu.enumtype.*;
 import static club.doki7.webgpu.WGPUConstants.*;
 
-/// Represents a pointer to a {@code RenderPassColorAttachment} structure in native memory.
+/// Represents a pointer to a {@code WGPURenderPassColorAttachment} structure in native memory.
 ///
 /// ## Structure
 ///
 /// {@snippet lang=c :
-/// typedef struct RenderPassColorAttachment {
-///     TextureView view; // optional // @link substring="WGPUTextureView" target="WGPUTextureView" @link substring="view" target="#view"
+/// typedef struct WGPURenderPassColorAttachment {
+///     WGPUTextureView view; // optional // @link substring="WGPUTextureView" target="WGPUTextureView" @link substring="view" target="#view"
 ///     uint32_t depthSlice; // @link substring="depthSlice" target="#depthSlice"
-///     TextureView resolveTarget; // optional // @link substring="WGPUTextureView" target="WGPUTextureView" @link substring="resolveTarget" target="#resolveTarget"
-///     LoadOp loadOp; // @link substring="WGPULoadOp" target="WGPULoadOp" @link substring="loadOp" target="#loadOp"
-///     StoreOp storeOp; // @link substring="WGPUStoreOp" target="WGPUStoreOp" @link substring="storeOp" target="#storeOp"
-///     Color clearValue; // @link substring="WGPUColor" target="WGPUColor" @link substring="clearValue" target="#clearValue"
-/// } RenderPassColorAttachment;
+///     WGPUTextureView resolveTarget; // optional // @link substring="WGPUTextureView" target="WGPUTextureView" @link substring="resolveTarget" target="#resolveTarget"
+///     WGPULoadOp loadOp; // @link substring="WGPULoadOp" target="WGPULoadOp" @link substring="loadOp" target="#loadOp"
+///     WGPUStoreOp storeOp; // @link substring="WGPUStoreOp" target="WGPUStoreOp" @link substring="storeOp" target="#storeOp"
+///     WGPUColor clearValue; // @link substring="WGPUColor" target="WGPUColor" @link substring="clearValue" target="#clearValue"
+/// } WGPURenderPassColorAttachment;
 /// }
 ///
 /// ## Contracts

@@ -18,15 +18,15 @@ import club.doki7.webgpu.handle.*;
 import club.doki7.webgpu.enumtype.*;
 import static club.doki7.webgpu.WGPUConstants.*;
 
-/// Represents a pointer to a {@code ConstantEntry} structure in native memory.
+/// Represents a pointer to a {@code WGPUConstantEntry} structure in native memory.
 ///
 /// ## Structure
 ///
 /// {@snippet lang=c :
-/// typedef struct ConstantEntry {
-///     StringView key; // @link substring="WGPUStringView" target="WGPUStringView" @link substring="key" target="#key"
+/// typedef struct WGPUConstantEntry {
+///     WGPUStringView key; // @link substring="WGPUStringView" target="WGPUStringView" @link substring="key" target="#key"
 ///     double value; // @link substring="value" target="#value"
-/// } ConstantEntry;
+/// } WGPUConstantEntry;
 /// }
 ///
 /// ## Contracts

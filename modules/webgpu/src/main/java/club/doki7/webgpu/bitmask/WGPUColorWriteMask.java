@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public final class WGPUColorWriteMask {
-    public static final long ALL = 0xfL;
+    public static final long ALL = 0x10L;
     public static final long ALPHA = 0x8L;
     public static final long BLUE = 0x4L;
     public static final long GREEN = 0x2L;

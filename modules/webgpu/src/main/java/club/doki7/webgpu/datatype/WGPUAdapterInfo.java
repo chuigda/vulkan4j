@@ -18,21 +18,21 @@ import club.doki7.webgpu.handle.*;
 import club.doki7.webgpu.enumtype.*;
 import static club.doki7.webgpu.WGPUConstants.*;
 
-/// Represents a pointer to a {@code AdapterInfo} structure in native memory.
+/// Represents a pointer to a {@code WGPUAdapterInfo} structure in native memory.
 ///
 /// ## Structure
 ///
 /// {@snippet lang=c :
-/// typedef struct AdapterInfo {
-///     StringView vendor; // @link substring="WGPUStringView" target="WGPUStringView" @link substring="vendor" target="#vendor"
-///     StringView architecture; // @link substring="WGPUStringView" target="WGPUStringView" @link substring="architecture" target="#architecture"
-///     StringView device; // @link substring="WGPUStringView" target="WGPUStringView" @link substring="device" target="#device"
-///     StringView description; // @link substring="WGPUStringView" target="WGPUStringView" @link substring="description" target="#description"
-///     BackendType backendType; // @link substring="WGPUBackendType" target="WGPUBackendType" @link substring="backendType" target="#backendType"
-///     AdapterType adapterType; // @link substring="WGPUAdapterType" target="WGPUAdapterType" @link substring="adapterType" target="#adapterType"
+/// typedef struct WGPUAdapterInfo {
+///     WGPUStringView vendor; // @link substring="WGPUStringView" target="WGPUStringView" @link substring="vendor" target="#vendor"
+///     WGPUStringView architecture; // @link substring="WGPUStringView" target="WGPUStringView" @link substring="architecture" target="#architecture"
+///     WGPUStringView device; // @link substring="WGPUStringView" target="WGPUStringView" @link substring="device" target="#device"
+///     WGPUStringView description; // @link substring="WGPUStringView" target="WGPUStringView" @link substring="description" target="#description"
+///     WGPUBackendType backendType; // @link substring="WGPUBackendType" target="WGPUBackendType" @link substring="backendType" target="#backendType"
+///     WGPUAdapterType adapterType; // @link substring="WGPUAdapterType" target="WGPUAdapterType" @link substring="adapterType" target="#adapterType"
 ///     uint32_t vendorId; // @link substring="vendorId" target="#vendorId"
 ///     uint32_t deviceId; // @link substring="deviceId" target="#deviceId"
-/// } AdapterInfo;
+/// } WGPUAdapterInfo;
 /// }
 ///
 /// ## Contracts

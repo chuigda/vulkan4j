@@ -12,13 +12,11 @@ public final class WGPUStencilOperation {
     public static final int DECREMENT_CLAMP = 0x6;
     public static final int INCREMENT_WRAP = 0x7;
     public static final int DECREMENT_WRAP = 0x8;
-    public static final int FORCE32 = 0x7fffffff;
 
     public static String explain(@EnumType(WGPUStencilOperation.class) int value) {
         return switch (value) {
             case WGPUStencilOperation.DECREMENT_CLAMP -> "DECREMENT_CLAMP";
             case WGPUStencilOperation.DECREMENT_WRAP -> "DECREMENT_WRAP";
-            case WGPUStencilOperation.FORCE32 -> "FORCE32";
             case WGPUStencilOperation.INCREMENT_CLAMP -> "INCREMENT_CLAMP";
             case WGPUStencilOperation.INCREMENT_WRAP -> "INCREMENT_WRAP";
             case WGPUStencilOperation.INVERT -> "INVERT";

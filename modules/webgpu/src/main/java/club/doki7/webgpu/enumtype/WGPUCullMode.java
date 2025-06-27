@@ -7,12 +7,10 @@ public final class WGPUCullMode {
     public static final int NONE = 0x1;
     public static final int FRONT = 0x2;
     public static final int BACK = 0x3;
-    public static final int FORCE32 = 0x7fffffff;
 
     public static String explain(@EnumType(WGPUCullMode.class) int value) {
         return switch (value) {
             case WGPUCullMode.BACK -> "BACK";
-            case WGPUCullMode.FORCE32 -> "FORCE32";
             case WGPUCullMode.FRONT -> "FRONT";
             case WGPUCullMode.NONE -> "NONE";
             case WGPUCullMode.UNDEFINED -> "UNDEFINED";

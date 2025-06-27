@@ -18,17 +18,16 @@ import club.doki7.webgpu.handle.*;
 import club.doki7.webgpu.enumtype.*;
 import static club.doki7.webgpu.WGPUConstants.*;
 
-/// Represents a pointer to a {@code BindGroupDescriptor} structure in native memory.
+/// Represents a pointer to a {@code WGPUBindGroupDescriptor} structure in native memory.
 ///
 /// ## Structure
 ///
 /// {@snippet lang=c :
-/// typedef struct BindGroupDescriptor {
-///     StringView label; // @link substring="WGPUStringView" target="WGPUStringView" @link substring="label" target="#label"
-///     BindGroupLayout layout; // @link substring="WGPUBindGroupLayout" target="WGPUBindGroupLayout" @link substring="layout" target="#layout"
-///     size_t entryCount; // @link substring="entryCount" target="#entryCount"
-///     BindGroupEntry const* entries; // @link substring="WGPUBindGroupEntry" target="WGPUBindGroupEntry" @link substring="entries" target="#entries"
-/// } BindGroupDescriptor;
+/// typedef struct WGPUBindGroupDescriptor {
+///     WGPUStringView label; // @link substring="WGPUStringView" target="WGPUStringView" @link substring="label" target="#label"
+///     WGPUBindGroupLayout layout; // @link substring="WGPUBindGroupLayout" target="WGPUBindGroupLayout" @link substring="layout" target="#layout"
+///     WGPUBindGroupEntry const* entries; // @link substring="WGPUBindGroupEntry" target="WGPUBindGroupEntry" @link substring="entries" target="#entries"
+/// } WGPUBindGroupDescriptor;
 /// }
 ///
 /// ## Contracts
@@ -202,15 +201,6 @@ public record WGPUBindGroupDescriptor(@NotNull MemorySegment segment) implements
         return this;
     }
 
-    public @Unsigned long entryCount() {
-        return NativeLayout.readCSizeT(segment, OFFSET$entryCount);
-    }
-
-    public WGPUBindGroupDescriptor entryCount(@Unsigned long value) {
-        NativeLayout.writeCSizeT(segment, OFFSET$entryCount, value);
-        return this;
-    }
-
     public WGPUBindGroupDescriptor entries(@Nullable IWGPUBindGroupEntry value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         entriesRaw(s);
@@ -246,14 +236,12 @@ public record WGPUBindGroupDescriptor(@NotNull MemorySegment segment) implements
     public static final StructLayout LAYOUT = NativeLayout.structLayout(
         WGPUStringView.LAYOUT.withName("label"),
         ValueLayout.ADDRESS.withName("layout"),
-        NativeLayout.C_SIZE_T.withName("entryCount"),
         ValueLayout.ADDRESS.withTargetLayout(WGPUBindGroupEntry.LAYOUT).withName("entries")
     );
     public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$label = PathElement.groupElement("label");
     public static final PathElement PATH$layout = PathElement.groupElement("layout");
-    public static final PathElement PATH$entryCount = PathElement.groupElement("entryCount");
     public static final PathElement PATH$entries = PathElement.groupElement("entries");
 
     public static final StructLayout LAYOUT$label = (StructLayout) LAYOUT.select(PATH$label);
@@ -262,11 +250,9 @@ public record WGPUBindGroupDescriptor(@NotNull MemorySegment segment) implements
 
     public static final long SIZE$label = LAYOUT$label.byteSize();
     public static final long SIZE$layout = LAYOUT$layout.byteSize();
-    public static final long SIZE$entryCount = NativeLayout.C_SIZE_T.byteSize();
     public static final long SIZE$entries = LAYOUT$entries.byteSize();
 
     public static final long OFFSET$label = LAYOUT.byteOffset(PATH$label);
     public static final long OFFSET$layout = LAYOUT.byteOffset(PATH$layout);
-    public static final long OFFSET$entryCount = LAYOUT.byteOffset(PATH$entryCount);
     public static final long OFFSET$entries = LAYOUT.byteOffset(PATH$entries);
 }

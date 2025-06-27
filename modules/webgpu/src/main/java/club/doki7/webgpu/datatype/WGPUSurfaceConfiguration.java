@@ -18,22 +18,21 @@ import club.doki7.webgpu.handle.*;
 import club.doki7.webgpu.enumtype.*;
 import static club.doki7.webgpu.WGPUConstants.*;
 
-/// Represents a pointer to a {@code SurfaceConfiguration} structure in native memory.
+/// Represents a pointer to a {@code WGPUSurfaceConfiguration} structure in native memory.
 ///
 /// ## Structure
 ///
 /// {@snippet lang=c :
-/// typedef struct SurfaceConfiguration {
-///     Device device; // @link substring="WGPUDevice" target="WGPUDevice" @link substring="device" target="#device"
-///     TextureFormat format; // @link substring="WGPUTextureFormat" target="WGPUTextureFormat" @link substring="format" target="#format"
-///     TextureUsage usage; // @link substring="WGPUTextureUsage" target="WGPUTextureUsage" @link substring="usage" target="#usage"
+/// typedef struct WGPUSurfaceConfiguration {
+///     WGPUDevice device; // @link substring="WGPUDevice" target="WGPUDevice" @link substring="device" target="#device"
+///     WGPUTextureFormat format; // @link substring="WGPUTextureFormat" target="WGPUTextureFormat" @link substring="format" target="#format"
+///     WGPUTextureUsage usage; // @link substring="WGPUTextureUsage" target="WGPUTextureUsage" @link substring="usage" target="#usage"
 ///     uint32_t width; // @link substring="width" target="#width"
 ///     uint32_t height; // @link substring="height" target="#height"
-///     size_t viewFormatCount; // @link substring="viewFormatCount" target="#viewFormatCount"
-///     TextureFormat const* viewFormats; // @link substring="WGPUTextureFormat" target="WGPUTextureFormat" @link substring="viewFormats" target="#viewFormats"
-///     CompositeAlphaMode alphaMode; // @link substring="WGPUCompositeAlphaMode" target="WGPUCompositeAlphaMode" @link substring="alphaMode" target="#alphaMode"
-///     PresentMode presentMode; // @link substring="WGPUPresentMode" target="WGPUPresentMode" @link substring="presentMode" target="#presentMode"
-/// } SurfaceConfiguration;
+///     WGPUTextureFormat const* viewFormats; // @link substring="WGPUTextureFormat" target="WGPUTextureFormat" @link substring="viewFormats" target="#viewFormats"
+///     WGPUCompositeAlphaMode alphaMode; // @link substring="WGPUCompositeAlphaMode" target="WGPUCompositeAlphaMode" @link substring="alphaMode" target="#alphaMode"
+///     WGPUPresentMode presentMode; // @link substring="WGPUPresentMode" target="WGPUPresentMode" @link substring="presentMode" target="#presentMode"
+/// } WGPUSurfaceConfiguration;
 /// }
 ///
 /// ## Contracts
@@ -229,15 +228,6 @@ public record WGPUSurfaceConfiguration(@NotNull MemorySegment segment) implement
         return this;
     }
 
-    public @Unsigned long viewFormatCount() {
-        return NativeLayout.readCSizeT(segment, OFFSET$viewFormatCount);
-    }
-
-    public WGPUSurfaceConfiguration viewFormatCount(@Unsigned long value) {
-        NativeLayout.writeCSizeT(segment, OFFSET$viewFormatCount, value);
-        return this;
-    }
-
 
     /// Note: the returned {@link IntPtr} does not have correct
     /// {@link IntPtr#size} property. It's up to user to track the size of the buffer,
@@ -289,7 +279,6 @@ public record WGPUSurfaceConfiguration(@NotNull MemorySegment segment) implement
         ValueLayout.JAVA_LONG.withName("usage"),
         ValueLayout.JAVA_INT.withName("width"),
         ValueLayout.JAVA_INT.withName("height"),
-        NativeLayout.C_SIZE_T.withName("viewFormatCount"),
         ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_INT).withName("viewFormats"),
         ValueLayout.JAVA_INT.withName("alphaMode"),
         ValueLayout.JAVA_INT.withName("presentMode")
@@ -301,7 +290,6 @@ public record WGPUSurfaceConfiguration(@NotNull MemorySegment segment) implement
     public static final PathElement PATH$usage = PathElement.groupElement("usage");
     public static final PathElement PATH$width = PathElement.groupElement("width");
     public static final PathElement PATH$height = PathElement.groupElement("height");
-    public static final PathElement PATH$viewFormatCount = PathElement.groupElement("viewFormatCount");
     public static final PathElement PATH$viewFormats = PathElement.groupElement("viewFormats");
     public static final PathElement PATH$alphaMode = PathElement.groupElement("alphaMode");
     public static final PathElement PATH$presentMode = PathElement.groupElement("presentMode");
@@ -320,7 +308,6 @@ public record WGPUSurfaceConfiguration(@NotNull MemorySegment segment) implement
     public static final long SIZE$usage = LAYOUT$usage.byteSize();
     public static final long SIZE$width = LAYOUT$width.byteSize();
     public static final long SIZE$height = LAYOUT$height.byteSize();
-    public static final long SIZE$viewFormatCount = NativeLayout.C_SIZE_T.byteSize();
     public static final long SIZE$viewFormats = LAYOUT$viewFormats.byteSize();
     public static final long SIZE$alphaMode = LAYOUT$alphaMode.byteSize();
     public static final long SIZE$presentMode = LAYOUT$presentMode.byteSize();
@@ -330,7 +317,6 @@ public record WGPUSurfaceConfiguration(@NotNull MemorySegment segment) implement
     public static final long OFFSET$usage = LAYOUT.byteOffset(PATH$usage);
     public static final long OFFSET$width = LAYOUT.byteOffset(PATH$width);
     public static final long OFFSET$height = LAYOUT.byteOffset(PATH$height);
-    public static final long OFFSET$viewFormatCount = LAYOUT.byteOffset(PATH$viewFormatCount);
     public static final long OFFSET$viewFormats = LAYOUT.byteOffset(PATH$viewFormats);
     public static final long OFFSET$alphaMode = LAYOUT.byteOffset(PATH$alphaMode);
     public static final long OFFSET$presentMode = LAYOUT.byteOffset(PATH$presentMode);

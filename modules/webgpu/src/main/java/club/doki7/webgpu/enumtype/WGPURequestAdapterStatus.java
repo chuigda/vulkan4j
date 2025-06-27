@@ -8,12 +8,10 @@ public final class WGPURequestAdapterStatus {
     public static final int UNAVAILABLE = 0x3;
     public static final int ERROR = 0x4;
     public static final int UNKNOWN = 0x5;
-    public static final int FORCE32 = 0x7fffffff;
 
     public static String explain(@EnumType(WGPURequestAdapterStatus.class) int value) {
         return switch (value) {
             case WGPURequestAdapterStatus.ERROR -> "ERROR";
-            case WGPURequestAdapterStatus.FORCE32 -> "FORCE32";
             case WGPURequestAdapterStatus.INSTANCE_DROPPED -> "INSTANCE_DROPPED";
             case WGPURequestAdapterStatus.SUCCESS -> "SUCCESS";
             case WGPURequestAdapterStatus.UNAVAILABLE -> "UNAVAILABLE";

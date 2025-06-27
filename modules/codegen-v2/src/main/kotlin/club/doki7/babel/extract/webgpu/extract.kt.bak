@@ -348,4 +348,4 @@ val coreStructures = listOf(
             )
         )
     )
-    )
+)

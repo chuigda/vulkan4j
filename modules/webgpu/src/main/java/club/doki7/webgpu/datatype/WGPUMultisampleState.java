@@ -18,16 +18,16 @@ import club.doki7.webgpu.handle.*;
 import club.doki7.webgpu.enumtype.*;
 import static club.doki7.webgpu.WGPUConstants.*;
 
-/// Represents a pointer to a {@code MultisampleState} structure in native memory.
+/// Represents a pointer to a {@code WGPUMultisampleState} structure in native memory.
 ///
 /// ## Structure
 ///
 /// {@snippet lang=c :
-/// typedef struct MultisampleState {
+/// typedef struct WGPUMultisampleState {
 ///     uint32_t count; // @link substring="count" target="#count"
 ///     uint32_t mask; // @link substring="mask" target="#mask"
 ///     bool alphaToCoverageEnabled; // @link substring="alphaToCoverageEnabled" target="#alphaToCoverageEnabled"
-/// } MultisampleState;
+/// } WGPUMultisampleState;
 /// }
 ///
 /// ## Contracts

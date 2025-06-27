@@ -18,16 +18,16 @@ import club.doki7.webgpu.handle.*;
 import club.doki7.webgpu.enumtype.*;
 import static club.doki7.webgpu.WGPUConstants.*;
 
-/// Represents a pointer to a {@code QuerySetDescriptor} structure in native memory.
+/// Represents a pointer to a {@code WGPUQuerySetDescriptor} structure in native memory.
 ///
 /// ## Structure
 ///
 /// {@snippet lang=c :
-/// typedef struct QuerySetDescriptor {
-///     StringView label; // @link substring="WGPUStringView" target="WGPUStringView" @link substring="label" target="#label"
-///     QueryType type; // @link substring="WGPUQueryType" target="WGPUQueryType" @link substring="type" target="#type"
+/// typedef struct WGPUQuerySetDescriptor {
+///     WGPUStringView label; // @link substring="WGPUStringView" target="WGPUStringView" @link substring="label" target="#label"
+///     WGPUQueryType type; // @link substring="WGPUQueryType" target="WGPUQueryType" @link substring="type" target="#type"
 ///     uint32_t count; // @link substring="count" target="#count"
-/// } QuerySetDescriptor;
+/// } WGPUQuerySetDescriptor;
 /// }
 ///
 /// ## Contracts

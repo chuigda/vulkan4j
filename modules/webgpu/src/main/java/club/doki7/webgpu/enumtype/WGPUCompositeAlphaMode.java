@@ -8,12 +8,10 @@ public final class WGPUCompositeAlphaMode {
     public static final int PREMULTIPLIED = 0x2;
     public static final int UNPREMULTIPLIED = 0x3;
     public static final int INHERIT = 0x4;
-    public static final int FORCE32 = 0x7fffffff;
 
     public static String explain(@EnumType(WGPUCompositeAlphaMode.class) int value) {
         return switch (value) {
             case WGPUCompositeAlphaMode.AUTO -> "AUTO";
-            case WGPUCompositeAlphaMode.FORCE32 -> "FORCE32";
             case WGPUCompositeAlphaMode.INHERIT -> "INHERIT";
             case WGPUCompositeAlphaMode.OPAQUE -> "OPAQUE";
             case WGPUCompositeAlphaMode.PREMULTIPLIED -> "PREMULTIPLIED";

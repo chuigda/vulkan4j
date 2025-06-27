@@ -18,22 +18,22 @@ import club.doki7.webgpu.handle.*;
 import club.doki7.webgpu.enumtype.*;
 import static club.doki7.webgpu.WGPUConstants.*;
 
-/// Represents a pointer to a {@code TextureViewDescriptor} structure in native memory.
+/// Represents a pointer to a {@code WGPUTextureViewDescriptor} structure in native memory.
 ///
 /// ## Structure
 ///
 /// {@snippet lang=c :
-/// typedef struct TextureViewDescriptor {
-///     StringView label; // @link substring="WGPUStringView" target="WGPUStringView" @link substring="label" target="#label"
-///     TextureFormat format; // @link substring="WGPUTextureFormat" target="WGPUTextureFormat" @link substring="format" target="#format"
-///     TextureViewDimension dimension; // @link substring="WGPUTextureViewDimension" target="WGPUTextureViewDimension" @link substring="dimension" target="#dimension"
+/// typedef struct WGPUTextureViewDescriptor {
+///     WGPUStringView label; // @link substring="WGPUStringView" target="WGPUStringView" @link substring="label" target="#label"
+///     WGPUTextureFormat format; // @link substring="WGPUTextureFormat" target="WGPUTextureFormat" @link substring="format" target="#format"
+///     WGPUTextureViewDimension dimension; // @link substring="WGPUTextureViewDimension" target="WGPUTextureViewDimension" @link substring="dimension" target="#dimension"
 ///     uint32_t baseMipLevel; // @link substring="baseMipLevel" target="#baseMipLevel"
 ///     uint32_t mipLevelCount; // @link substring="mipLevelCount" target="#mipLevelCount"
 ///     uint32_t baseArrayLayer; // @link substring="baseArrayLayer" target="#baseArrayLayer"
 ///     uint32_t arrayLayerCount; // @link substring="arrayLayerCount" target="#arrayLayerCount"
-///     TextureAspect aspect; // @link substring="WGPUTextureAspect" target="WGPUTextureAspect" @link substring="aspect" target="#aspect"
-///     TextureUsage usage; // @link substring="WGPUTextureUsage" target="WGPUTextureUsage" @link substring="usage" target="#usage"
-/// } TextureViewDescriptor;
+///     WGPUTextureAspect aspect; // @link substring="WGPUTextureAspect" target="WGPUTextureAspect" @link substring="aspect" target="#aspect"
+///     WGPUTextureUsage usage; // @link substring="WGPUTextureUsage" target="WGPUTextureUsage" @link substring="usage" target="#usage"
+/// } WGPUTextureViewDescriptor;
 /// }
 ///
 /// ## Contracts

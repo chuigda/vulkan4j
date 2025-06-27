@@ -18,14 +18,14 @@ import club.doki7.webgpu.handle.*;
 import club.doki7.webgpu.enumtype.*;
 import static club.doki7.webgpu.WGPUConstants.*;
 
-/// Represents a pointer to a {@code SurfaceSourceMetalLayer} structure in native memory.
+/// Represents a pointer to a {@code WGPUSurfaceSourceMetalLayer} structure in native memory.
 ///
 /// ## Structure
 ///
 /// {@snippet lang=c :
-/// typedef struct SurfaceSourceMetalLayer {
+/// typedef struct WGPUSurfaceSourceMetalLayer {
 ///     void* layer; // @link substring="layer" target="#layer"
-/// } SurfaceSourceMetalLayer;
+/// } WGPUSurfaceSourceMetalLayer;
 /// }
 ///
 /// ## Contracts

@@ -15,9 +15,6 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <kotlin.code.style>official</kotlin.code.style>
         <kotlin.compiler.jvmTarget>1.8</kotlin.compiler.jvmTarget>
-
-        <kotlin.version>2.2.0</kotlin.version>
-        <serialization.version>1.9.0</serialization.version>
     </properties>
 
     <repositories>
@@ -60,7 +57,7 @@
                     <dependency>
                         <groupId>org.jetbrains.kotlin</groupId>
                         <artifactId>kotlin-maven-serialization</artifactId>
-                        <version>${serialization.version}</version>
+                        <version>2.2.0</version>
                     </dependency>
                 </dependencies>
             </plugin>
@@ -93,7 +90,7 @@
         <dependency>
             <groupId>org.jetbrains.kotlinx</groupId>
             <artifactId>kotlinx-serialization-json</artifactId>
-            <version>${serialization.version}</version>
+            <version>1.9.0</version>
         </dependency>
         <dependency>
             <groupId>org.jetbrains.kotlin</groupId>

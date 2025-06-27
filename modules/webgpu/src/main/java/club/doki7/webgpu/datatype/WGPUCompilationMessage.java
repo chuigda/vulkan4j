@@ -18,19 +18,19 @@ import club.doki7.webgpu.handle.*;
 import club.doki7.webgpu.enumtype.*;
 import static club.doki7.webgpu.WGPUConstants.*;
 
-/// Represents a pointer to a {@code CompilationMessage} structure in native memory.
+/// Represents a pointer to a {@code WGPUCompilationMessage} structure in native memory.
 ///
 /// ## Structure
 ///
 /// {@snippet lang=c :
-/// typedef struct CompilationMessage {
-///     StringView message; // @link substring="WGPUStringView" target="WGPUStringView" @link substring="message" target="#message"
-///     CompilationMessageType type; // @link substring="WGPUCompilationMessageType" target="WGPUCompilationMessageType" @link substring="type" target="#type"
+/// typedef struct WGPUCompilationMessage {
+///     WGPUStringView message; // @link substring="WGPUStringView" target="WGPUStringView" @link substring="message" target="#message"
+///     WGPUCompilationMessageType type; // @link substring="WGPUCompilationMessageType" target="WGPUCompilationMessageType" @link substring="type" target="#type"
 ///     uint64_t lineNum; // @link substring="lineNum" target="#lineNum"
 ///     uint64_t linePos; // @link substring="linePos" target="#linePos"
 ///     uint64_t offset; // @link substring="offset" target="#offset"
 ///     uint64_t length; // @link substring="length" target="#length"
-/// } CompilationMessage;
+/// } WGPUCompilationMessage;
 /// }
 ///
 /// ## Contracts

@@ -18,16 +18,16 @@ import club.doki7.webgpu.handle.*;
 import club.doki7.webgpu.enumtype.*;
 import static club.doki7.webgpu.WGPUConstants.*;
 
-/// Represents a pointer to a {@code TextureBindingLayout} structure in native memory.
+/// Represents a pointer to a {@code WGPUTextureBindingLayout} structure in native memory.
 ///
 /// ## Structure
 ///
 /// {@snippet lang=c :
-/// typedef struct TextureBindingLayout {
-///     TextureSampleType sampleType; // @link substring="WGPUTextureSampleType" target="WGPUTextureSampleType" @link substring="sampleType" target="#sampleType"
-///     TextureViewDimension viewDimension; // @link substring="WGPUTextureViewDimension" target="WGPUTextureViewDimension" @link substring="viewDimension" target="#viewDimension"
+/// typedef struct WGPUTextureBindingLayout {
+///     WGPUTextureSampleType sampleType; // @link substring="WGPUTextureSampleType" target="WGPUTextureSampleType" @link substring="sampleType" target="#sampleType"
+///     WGPUTextureViewDimension viewDimension; // @link substring="WGPUTextureViewDimension" target="WGPUTextureViewDimension" @link substring="viewDimension" target="#viewDimension"
 ///     bool multisampled; // @link substring="multisampled" target="#multisampled"
-/// } TextureBindingLayout;
+/// } WGPUTextureBindingLayout;
 /// }
 ///
 /// ## Contracts

@@ -18,15 +18,15 @@ import club.doki7.webgpu.handle.*;
 import club.doki7.webgpu.enumtype.*;
 import static club.doki7.webgpu.WGPUConstants.*;
 
-/// Represents a pointer to a {@code SurfaceSourceWindowsHwnd} structure in native memory.
+/// Represents a pointer to a {@code WGPUSurfaceSourceWindowsHwnd} structure in native memory.
 ///
 /// ## Structure
 ///
 /// {@snippet lang=c :
-/// typedef struct SurfaceSourceWindowsHwnd {
+/// typedef struct WGPUSurfaceSourceWindowsHwnd {
 ///     void* hinstance; // @link substring="hinstance" target="#hinstance"
 ///     void* hwnd; // @link substring="hwnd" target="#hwnd"
-/// } SurfaceSourceWindowsHwnd;
+/// } WGPUSurfaceSourceWindowsHwnd;
 /// }
 ///
 /// ## Contracts

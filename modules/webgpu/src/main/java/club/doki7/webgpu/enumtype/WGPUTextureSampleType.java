@@ -10,14 +10,12 @@ public final class WGPUTextureSampleType {
     public static final int DEPTH = 0x4;
     public static final int SINT = 0x5;
     public static final int UINT = 0x6;
-    public static final int FORCE32 = 0x7fffffff;
 
     public static String explain(@EnumType(WGPUTextureSampleType.class) int value) {
         return switch (value) {
             case WGPUTextureSampleType.BINDING_NOT_USED -> "BINDING_NOT_USED";
             case WGPUTextureSampleType.DEPTH -> "DEPTH";
             case WGPUTextureSampleType.FLOAT -> "FLOAT";
-            case WGPUTextureSampleType.FORCE32 -> "FORCE32";
             case WGPUTextureSampleType.SINT -> "SINT";
             case WGPUTextureSampleType.UINT -> "UINT";
             case WGPUTextureSampleType.UNDEFINED -> "UNDEFINED";

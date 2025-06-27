@@ -10,7 +10,6 @@ public final class WGPUTextureViewDimension {
     public static final int CUBE = 0x4;
     public static final int CUBE_ARRAY = 0x5;
     public static final int 3D = 0x6;
-    public static final int FORCE32 = 0x7fffffff;
 
     public static String explain(@EnumType(WGPUTextureViewDimension.class) int value) {
         return switch (value) {
@@ -20,7 +19,6 @@ public final class WGPUTextureViewDimension {
             case WGPUTextureViewDimension.3D -> "3D";
             case WGPUTextureViewDimension.CUBE -> "CUBE";
             case WGPUTextureViewDimension.CUBE_ARRAY -> "CUBE_ARRAY";
-            case WGPUTextureViewDimension.FORCE32 -> "FORCE32";
             case WGPUTextureViewDimension.UNDEFINED -> "UNDEFINED";
             default -> "UNKNOWN(" + value + ")";
         };

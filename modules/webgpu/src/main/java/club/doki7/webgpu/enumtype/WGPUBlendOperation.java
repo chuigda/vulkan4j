@@ -9,12 +9,10 @@ public final class WGPUBlendOperation {
     public static final int REVERSE_SUBTRACT = 0x3;
     public static final int MIN = 0x4;
     public static final int MAX = 0x5;
-    public static final int FORCE32 = 0x7fffffff;
 
     public static String explain(@EnumType(WGPUBlendOperation.class) int value) {
         return switch (value) {
             case WGPUBlendOperation.ADD -> "ADD";
-            case WGPUBlendOperation.FORCE32 -> "FORCE32";
             case WGPUBlendOperation.MAX -> "MAX";
             case WGPUBlendOperation.MIN -> "MIN";
             case WGPUBlendOperation.REVERSE_SUBTRACT -> "REVERSE_SUBTRACT";

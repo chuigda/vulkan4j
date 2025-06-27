@@ -8,11 +8,9 @@ public final class WGPUCreatePipelineAsyncStatus {
     public static final int VALIDATION_ERROR = 0x3;
     public static final int INTERNAL_ERROR = 0x4;
     public static final int UNKNOWN = 0x5;
-    public static final int FORCE32 = 0x7fffffff;
 
     public static String explain(@EnumType(WGPUCreatePipelineAsyncStatus.class) int value) {
         return switch (value) {
-            case WGPUCreatePipelineAsyncStatus.FORCE32 -> "FORCE32";
             case WGPUCreatePipelineAsyncStatus.INSTANCE_DROPPED -> "INSTANCE_DROPPED";
             case WGPUCreatePipelineAsyncStatus.INTERNAL_ERROR -> "INTERNAL_ERROR";
             case WGPUCreatePipelineAsyncStatus.SUCCESS -> "SUCCESS";

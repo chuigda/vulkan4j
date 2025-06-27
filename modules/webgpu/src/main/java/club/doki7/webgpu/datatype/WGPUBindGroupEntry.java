@@ -18,19 +18,19 @@ import club.doki7.webgpu.handle.*;
 import club.doki7.webgpu.enumtype.*;
 import static club.doki7.webgpu.WGPUConstants.*;
 
-/// Represents a pointer to a {@code BindGroupEntry} structure in native memory.
+/// Represents a pointer to a {@code WGPUBindGroupEntry} structure in native memory.
 ///
 /// ## Structure
 ///
 /// {@snippet lang=c :
-/// typedef struct BindGroupEntry {
+/// typedef struct WGPUBindGroupEntry {
 ///     uint32_t binding; // @link substring="binding" target="#binding"
-///     Buffer buffer; // optional // @link substring="WGPUBuffer" target="WGPUBuffer" @link substring="buffer" target="#buffer"
+///     WGPUBuffer buffer; // optional // @link substring="WGPUBuffer" target="WGPUBuffer" @link substring="buffer" target="#buffer"
 ///     uint64_t offset; // @link substring="offset" target="#offset"
 ///     uint64_t size; // @link substring="size" target="#size"
-///     Sampler sampler; // optional // @link substring="WGPUSampler" target="WGPUSampler" @link substring="sampler" target="#sampler"
-///     TextureView textureView; // optional // @link substring="WGPUTextureView" target="WGPUTextureView" @link substring="textureView" target="#textureView"
-/// } BindGroupEntry;
+///     WGPUSampler sampler; // optional // @link substring="WGPUSampler" target="WGPUSampler" @link substring="sampler" target="#sampler"
+///     WGPUTextureView textureView; // optional // @link substring="WGPUTextureView" target="WGPUTextureView" @link substring="textureView" target="#textureView"
+/// } WGPUBindGroupEntry;
 /// }
 ///
 /// ## Contracts

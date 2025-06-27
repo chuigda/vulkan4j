@@ -18,17 +18,17 @@ import club.doki7.webgpu.handle.*;
 import club.doki7.webgpu.enumtype.*;
 import static club.doki7.webgpu.WGPUConstants.*;
 
-/// Represents a pointer to a {@code StencilFaceState} structure in native memory.
+/// Represents a pointer to a {@code WGPUStencilFaceState} structure in native memory.
 ///
 /// ## Structure
 ///
 /// {@snippet lang=c :
-/// typedef struct StencilFaceState {
-///     CompareFunction compare; // @link substring="WGPUCompareFunction" target="WGPUCompareFunction" @link substring="compare" target="#compare"
-///     StencilOperation failOp; // @link substring="WGPUStencilOperation" target="WGPUStencilOperation" @link substring="failOp" target="#failOp"
-///     StencilOperation depthFailOp; // @link substring="WGPUStencilOperation" target="WGPUStencilOperation" @link substring="depthFailOp" target="#depthFailOp"
-///     StencilOperation passOp; // @link substring="WGPUStencilOperation" target="WGPUStencilOperation" @link substring="passOp" target="#passOp"
-/// } StencilFaceState;
+/// typedef struct WGPUStencilFaceState {
+///     WGPUCompareFunction compare; // @link substring="WGPUCompareFunction" target="WGPUCompareFunction" @link substring="compare" target="#compare"
+///     WGPUStencilOperation failOp; // @link substring="WGPUStencilOperation" target="WGPUStencilOperation" @link substring="failOp" target="#failOp"
+///     WGPUStencilOperation depthFailOp; // @link substring="WGPUStencilOperation" target="WGPUStencilOperation" @link substring="depthFailOp" target="#depthFailOp"
+///     WGPUStencilOperation passOp; // @link substring="WGPUStencilOperation" target="WGPUStencilOperation" @link substring="passOp" target="#passOp"
+/// } WGPUStencilFaceState;
 /// }
 ///
 /// ## Contracts

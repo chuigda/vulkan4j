@@ -18,14 +18,14 @@ import club.doki7.webgpu.handle.*;
 import club.doki7.webgpu.enumtype.*;
 import static club.doki7.webgpu.WGPUConstants.*;
 
-/// Represents a pointer to a {@code SamplerBindingLayout} structure in native memory.
+/// Represents a pointer to a {@code WGPUSamplerBindingLayout} structure in native memory.
 ///
 /// ## Structure
 ///
 /// {@snippet lang=c :
-/// typedef struct SamplerBindingLayout {
-///     SamplerBindingType type; // @link substring="WGPUSamplerBindingType" target="WGPUSamplerBindingType" @link substring="type" target="#type"
-/// } SamplerBindingLayout;
+/// typedef struct WGPUSamplerBindingLayout {
+///     WGPUSamplerBindingType type; // @link substring="WGPUSamplerBindingType" target="WGPUSamplerBindingType" @link substring="type" target="#type"
+/// } WGPUSamplerBindingLayout;
 /// }
 ///
 /// ## Contracts

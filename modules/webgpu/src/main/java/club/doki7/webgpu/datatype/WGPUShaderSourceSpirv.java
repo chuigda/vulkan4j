@@ -18,15 +18,15 @@ import club.doki7.webgpu.handle.*;
 import club.doki7.webgpu.enumtype.*;
 import static club.doki7.webgpu.WGPUConstants.*;
 
-/// Represents a pointer to a {@code ShaderSourceSpirv} structure in native memory.
+/// Represents a pointer to a {@code WGPUShaderSourceSpirv} structure in native memory.
 ///
 /// ## Structure
 ///
 /// {@snippet lang=c :
-/// typedef struct ShaderSourceSpirv {
+/// typedef struct WGPUShaderSourceSpirv {
 ///     uint32_t codeSize; // @link substring="codeSize" target="#codeSize"
-///     uint32_t code; // @link substring="code" target="#code"
-/// } ShaderSourceSpirv;
+///     uint32_t const* code; // @link substring="code" target="#code"
+/// } WGPUShaderSourceSpirv;
 /// }
 ///
 /// ## Contracts
@@ -182,18 +182,35 @@ public record WGPUShaderSourceSpirv(@NotNull MemorySegment segment) implements I
         return this;
     }
 
-    public @Unsigned int code() {
+    /// Note: the returned {@link IntPtr} does not have correct
+    /// {@link IntPtr#size} property. It's up to user to track the size of the buffer,
+    /// and use {@link IntPtr#reinterpret} to set the size before actually reading from or
+    /// writing to the buffer.
+    public @Nullable @Unsigned IntPtr code() {
+        MemorySegment s = codeRaw();
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+        return new IntPtr(s);
+    }
+
+    public WGPUShaderSourceSpirv code(@Nullable @Unsigned IntPtr value) {
+        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
+        codeRaw(s);
+        return this;
+    }
+
+    public @Pointer(comment="uint32_t*") @NotNull MemorySegment codeRaw() {
         return segment.get(LAYOUT$code, OFFSET$code);
     }
 
-    public WGPUShaderSourceSpirv code(@Unsigned int value) {
+    public void codeRaw(@Pointer(comment="uint32_t*") @NotNull MemorySegment value) {
         segment.set(LAYOUT$code, OFFSET$code, value);
-        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(
         ValueLayout.JAVA_INT.withName("codeSize"),
-        ValueLayout.JAVA_INT.withName("code")
+        ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_INT).withName("code")
     );
     public static final long BYTES = LAYOUT.byteSize();
 
@@ -201,7 +218,7 @@ public record WGPUShaderSourceSpirv(@NotNull MemorySegment segment) implements I
     public static final PathElement PATH$code = PathElement.groupElement("code");
 
     public static final OfInt LAYOUT$codeSize = (OfInt) LAYOUT.select(PATH$codeSize);
-    public static final OfInt LAYOUT$code = (OfInt) LAYOUT.select(PATH$code);
+    public static final AddressLayout LAYOUT$code = (AddressLayout) LAYOUT.select(PATH$code);
 
     public static final long SIZE$codeSize = LAYOUT$codeSize.byteSize();
     public static final long SIZE$code = LAYOUT$code.byteSize();

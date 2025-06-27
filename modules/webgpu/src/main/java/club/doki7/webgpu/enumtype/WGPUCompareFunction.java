@@ -12,13 +12,11 @@ public final class WGPUCompareFunction {
     public static final int NOT_EQUAL = 0x6;
     public static final int GREATER_EQUAL = 0x7;
     public static final int ALWAYS = 0x8;
-    public static final int FORCE32 = 0x7fffffff;
 
     public static String explain(@EnumType(WGPUCompareFunction.class) int value) {
         return switch (value) {
             case WGPUCompareFunction.ALWAYS -> "ALWAYS";
             case WGPUCompareFunction.EQUAL -> "EQUAL";
-            case WGPUCompareFunction.FORCE32 -> "FORCE32";
             case WGPUCompareFunction.GREATER -> "GREATER";
             case WGPUCompareFunction.GREATER_EQUAL -> "GREATER_EQUAL";
             case WGPUCompareFunction.LESS -> "LESS";
