@@ -1,7 +1,9 @@
 package club.doki7.webgpu;
 
 import club.doki7.ffm.annotation.EnumType;
+import club.doki7.ffm.annotation.NativeType;
 import club.doki7.ffm.annotation.Pointer;
+import club.doki7.webgpu.datatype.WGPUFuture;
 import club.doki7.webgpu.datatype.WGPURequestAdapterCallbackInfo;
 import club.doki7.webgpu.datatype.WGPURequestAdapterOptions;
 import club.doki7.webgpu.enumtype.WGPURequestAdapterStatus;
@@ -48,18 +50,18 @@ public final class WGPUSync {
 
             WGPURequestAdapterCallbackInfo info = WGPURequestAdapterCallbackInfo.allocate(arena)
                     .callback(pfn);
-            wgpu.instanceRequestAdapter(instance, options, info);
+            WGPUFuture ignoredFuture = wgpu.instanceRequestAdapter(arena, instance, options, info);
             return Objects.requireNonNull(saveSlot.value, ASYNC_NOT_SYNC);
         }
     }
 
     private static final class Ref<T> { @Nullable T value = null; }
 
-    private static void onAdapterRequestEnded(
+    private static void onAdapterRequestFinished(
             Ref<AdapterRequestResult> saveSlot,
             @EnumType(WGPURequestAdapterStatus.class) int status,
-            @Pointer(comment="WGPUAdapter") MemorySegment adapter,
-            @Pointer(comment="WGPUStringView") MemorySegment message,
+            @NativeType("WGPUAdapter") MemorySegment adapter,
+            @NativeType("WGPUStringView") MemorySegment message,
             @Pointer(comment="void*") MemorySegment ignoredUserData1,
             @Pointer(comment="void*") MemorySegment ignoredUserData2
     ) {
@@ -76,14 +78,14 @@ public final class WGPUSync {
 
     static {
         try {
-            MH_onAdapterRequestEnded = MethodHandles.lookup()
-                    .findStatic(
-                            WGPUSync.class,
-                            "onAdapterRequestEnded",
-                            WGPUFunctionTypes.WGPURequestAdapterCallback
-                                    .toMethodType()
-                                    .insertParameterTypes(0, Ref.class)
-                    );
+            MethodHandles.Lookup lookup = MethodHandles.lookup();
+            MH_onAdapterRequestEnded = lookup.findStatic(
+                    WGPUSync.class,
+                    "onAdapterRequestFinished",
+                    WGPUFunctionTypes.WGPURequestAdapterCallback
+                            .toMethodType()
+                            .insertParameterTypes(0, Ref.class)
+            );
         } catch (NoSuchMethodException | IllegalAccessException e) {
             throw new RuntimeException(e);
         }

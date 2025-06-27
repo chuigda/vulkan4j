@@ -477,18 +477,20 @@ public final class WGPU implements WGPUConstants {
         }
     }
 
-    public void adapterRequestDevice(
+    public WGPUFuture adapterRequestDevice(
+    SegmentAllocator allocator,
         WGPUAdapter adapter,
         @Nullable @Pointer IWGPUDeviceDescriptor descriptor,
         WGPURequestDeviceCallbackInfo callbackInfo
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$wgpuAdapterRequestDevice);
         try {
-            hFunction.invokeExact(
+            return new WGPUFuture((MemorySegment) hFunction.invokeExact(
+                allocator,
                 adapter.segment(),
                 (MemorySegment) (descriptor != null ? descriptor.segment() : MemorySegment.NULL),
                 callbackInfo.segment()
-            );
+            ));
         } catch (Throwable e) {
             throw new RuntimeException(e);
         }
@@ -675,7 +677,8 @@ public final class WGPU implements WGPUConstants {
         }
     }
 
-    public void bufferMapAsync(
+    public WGPUFuture bufferMapAsync(
+    SegmentAllocator allocator,
         WGPUBuffer buffer,
         @Bitmask(WGPUMapMode.class) long mode,
         long offset,
@@ -684,13 +687,14 @@ public final class WGPU implements WGPUConstants {
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$wgpuBufferMapAsync);
         try {
-            hFunction.invokeExact(
+            return new WGPUFuture((MemorySegment) hFunction.invokeExact(
+                allocator,
                 buffer.segment(),
                 mode,
                 MemorySegment.ofAddress(offset),
                 MemorySegment.ofAddress(size),
                 callbackInfo.segment()
-            );
+            ));
         } catch (Throwable e) {
             throw new RuntimeException(e);
         }
@@ -1380,18 +1384,20 @@ public final class WGPU implements WGPUConstants {
         }
     }
 
-    public void deviceCreateComputePipelineAsync(
+    public WGPUFuture deviceCreateComputePipelineAsync(
+    SegmentAllocator allocator,
         WGPUDevice device,
         @Pointer IWGPUComputePipelineDescriptor descriptor,
         WGPUCreateComputePipelineAsyncCallbackInfo callbackInfo
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$wgpuDeviceCreateComputePipelineAsync);
         try {
-            hFunction.invokeExact(
+            return new WGPUFuture((MemorySegment) hFunction.invokeExact(
+                allocator,
                 device.segment(),
                 descriptor.segment(),
                 callbackInfo.segment()
-            );
+            ));
         } catch (Throwable e) {
             throw new RuntimeException(e);
         }
@@ -1461,18 +1467,20 @@ public final class WGPU implements WGPUConstants {
         }
     }
 
-    public void deviceCreateRenderPipelineAsync(
+    public WGPUFuture deviceCreateRenderPipelineAsync(
+    SegmentAllocator allocator,
         WGPUDevice device,
         @Pointer IWGPURenderPipelineDescriptor descriptor,
         WGPUCreateRenderPipelineAsyncCallbackInfo callbackInfo
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$wgpuDeviceCreateRenderPipelineAsync);
         try {
-            hFunction.invokeExact(
+            return new WGPUFuture((MemorySegment) hFunction.invokeExact(
+                allocator,
                 device.segment(),
                 descriptor.segment(),
                 callbackInfo.segment()
-            );
+            ));
         } catch (Throwable e) {
             throw new RuntimeException(e);
         }
@@ -1540,11 +1548,13 @@ public final class WGPU implements WGPUConstants {
     }
 
     public WGPUAdapterInfo deviceGetAdapterInfo(
+    SegmentAllocator allocator,
         WGPUDevice device
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$wgpuDeviceGetAdapterInfo);
         try {
             return new WGPUAdapterInfo((MemorySegment) hFunction.invokeExact(
+                allocator,
                 device.segment()
             ));
         } catch (Throwable e) {
@@ -1583,11 +1593,13 @@ public final class WGPU implements WGPUConstants {
     }
 
     public WGPUFuture deviceGetLostFuture(
+    SegmentAllocator allocator,
         WGPUDevice device
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$wgpuDeviceGetLostFuture);
         try {
             return new WGPUFuture((MemorySegment) hFunction.invokeExact(
+                allocator,
                 device.segment()
             ));
         } catch (Throwable e) {
@@ -1624,16 +1636,18 @@ public final class WGPU implements WGPUConstants {
         }
     }
 
-    public void devicePopErrorScope(
+    public WGPUFuture devicePopErrorScope(
+    SegmentAllocator allocator,
         WGPUDevice device,
         WGPUPopErrorScopeCallbackInfo callbackInfo
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$wgpuDevicePopErrorScope);
         try {
-            hFunction.invokeExact(
+            return new WGPUFuture((MemorySegment) hFunction.invokeExact(
+                allocator,
                 device.segment(),
                 callbackInfo.segment()
-            );
+            ));
         } catch (Throwable e) {
             throw new RuntimeException(e);
         }
@@ -1780,18 +1794,20 @@ public final class WGPU implements WGPUConstants {
         }
     }
 
-    public void instanceRequestAdapter(
+    public WGPUFuture instanceRequestAdapter(
+    SegmentAllocator allocator,
         WGPUInstance instance,
         @Nullable @Pointer IWGPURequestAdapterOptions options,
         WGPURequestAdapterCallbackInfo callbackInfo
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$wgpuInstanceRequestAdapter);
         try {
-            hFunction.invokeExact(
+            return new WGPUFuture((MemorySegment) hFunction.invokeExact(
+                allocator,
                 instance.segment(),
                 (MemorySegment) (options != null ? options.segment() : MemorySegment.NULL),
                 callbackInfo.segment()
-            );
+            ));
         } catch (Throwable e) {
             throw new RuntimeException(e);
         }
@@ -1950,16 +1966,18 @@ public final class WGPU implements WGPUConstants {
         }
     }
 
-    public void queueOnSubmittedWorkDone(
+    public WGPUFuture queueOnSubmittedWorkDone(
+    SegmentAllocator allocator,
         WGPUQueue queue,
         WGPUQueueWorkDoneCallbackInfo callbackInfo
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$wgpuQueueOnSubmittedWorkDone);
         try {
-            hFunction.invokeExact(
+            return new WGPUFuture((MemorySegment) hFunction.invokeExact(
+                allocator,
                 queue.segment(),
                 callbackInfo.segment()
-            );
+            ));
         } catch (Throwable e) {
             throw new RuntimeException(e);
         }
@@ -2828,16 +2846,18 @@ public final class WGPU implements WGPUConstants {
         }
     }
 
-    public void shaderModuleGetCompilationInfo(
+    public WGPUFuture shaderModuleGetCompilationInfo(
+    SegmentAllocator allocator,
         WGPUShaderModule shaderModule,
         WGPUCompilationInfoCallbackInfo callbackInfo
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$wgpuShaderModuleGetCompilationInfo);
         try {
-            hFunction.invokeExact(
+            return new WGPUFuture((MemorySegment) hFunction.invokeExact(
+                allocator,
                 shaderModule.segment(),
                 callbackInfo.segment()
-            );
+            ));
         } catch (Throwable e) {
             throw new RuntimeException(e);
         }
@@ -3606,7 +3626,8 @@ public final class WGPU implements WGPUConstants {
             ValueLayout.ADDRESS
         );
 
-        public static final FunctionDescriptor DESCRIPTOR$wgpuAdapterRequestDevice = FunctionDescriptor.ofVoid(
+        public static final FunctionDescriptor DESCRIPTOR$wgpuAdapterRequestDevice = FunctionDescriptor.of(
+            WGPUFuture.LAYOUT,
             ValueLayout.ADDRESS,
             ValueLayout.ADDRESS.withTargetLayout(WGPUDeviceDescriptor.LAYOUT),
             WGPURequestDeviceCallbackInfo.LAYOUT
@@ -3675,7 +3696,8 @@ public final class WGPU implements WGPUConstants {
             ValueLayout.ADDRESS
         );
 
-        public static final FunctionDescriptor DESCRIPTOR$wgpuBufferMapAsync = FunctionDescriptor.ofVoid(
+        public static final FunctionDescriptor DESCRIPTOR$wgpuBufferMapAsync = FunctionDescriptor.of(
+            WGPUFuture.LAYOUT,
             ValueLayout.ADDRESS,
             ValueLayout.JAVA_LONG,
             NativeLayout.C_SIZE_T,
@@ -3920,7 +3942,8 @@ public final class WGPU implements WGPUConstants {
             ValueLayout.ADDRESS.withTargetLayout(WGPUComputePipelineDescriptor.LAYOUT)
         );
 
-        public static final FunctionDescriptor DESCRIPTOR$wgpuDeviceCreateComputePipelineAsync = FunctionDescriptor.ofVoid(
+        public static final FunctionDescriptor DESCRIPTOR$wgpuDeviceCreateComputePipelineAsync = FunctionDescriptor.of(
+            WGPUFuture.LAYOUT,
             ValueLayout.ADDRESS,
             ValueLayout.ADDRESS.withTargetLayout(WGPUComputePipelineDescriptor.LAYOUT),
             WGPUCreateComputePipelineAsyncCallbackInfo.LAYOUT
@@ -3950,7 +3973,8 @@ public final class WGPU implements WGPUConstants {
             ValueLayout.ADDRESS.withTargetLayout(WGPURenderPipelineDescriptor.LAYOUT)
         );
 
-        public static final FunctionDescriptor DESCRIPTOR$wgpuDeviceCreateRenderPipelineAsync = FunctionDescriptor.ofVoid(
+        public static final FunctionDescriptor DESCRIPTOR$wgpuDeviceCreateRenderPipelineAsync = FunctionDescriptor.of(
+            WGPUFuture.LAYOUT,
             ValueLayout.ADDRESS,
             ValueLayout.ADDRESS.withTargetLayout(WGPURenderPipelineDescriptor.LAYOUT),
             WGPUCreateRenderPipelineAsyncCallbackInfo.LAYOUT
@@ -4010,7 +4034,8 @@ public final class WGPU implements WGPUConstants {
             ValueLayout.JAVA_INT
         );
 
-        public static final FunctionDescriptor DESCRIPTOR$wgpuDevicePopErrorScope = FunctionDescriptor.ofVoid(
+        public static final FunctionDescriptor DESCRIPTOR$wgpuDevicePopErrorScope = FunctionDescriptor.of(
+            WGPUFuture.LAYOUT,
             ValueLayout.ADDRESS,
             WGPUPopErrorScopeCallbackInfo.LAYOUT
         );
@@ -4064,7 +4089,8 @@ public final class WGPU implements WGPUConstants {
             ValueLayout.ADDRESS
         );
 
-        public static final FunctionDescriptor DESCRIPTOR$wgpuInstanceRequestAdapter = FunctionDescriptor.ofVoid(
+        public static final FunctionDescriptor DESCRIPTOR$wgpuInstanceRequestAdapter = FunctionDescriptor.of(
+            WGPUFuture.LAYOUT,
             ValueLayout.ADDRESS,
             ValueLayout.ADDRESS.withTargetLayout(WGPURequestAdapterOptions.LAYOUT),
             WGPURequestAdapterCallbackInfo.LAYOUT
@@ -4122,7 +4148,8 @@ public final class WGPU implements WGPUConstants {
             ValueLayout.ADDRESS
         );
 
-        public static final FunctionDescriptor DESCRIPTOR$wgpuQueueOnSubmittedWorkDone = FunctionDescriptor.ofVoid(
+        public static final FunctionDescriptor DESCRIPTOR$wgpuQueueOnSubmittedWorkDone = FunctionDescriptor.of(
+            WGPUFuture.LAYOUT,
             ValueLayout.ADDRESS,
             WGPUQueueWorkDoneCallbackInfo.LAYOUT
         );
@@ -4427,7 +4454,8 @@ public final class WGPU implements WGPUConstants {
             ValueLayout.ADDRESS
         );
 
-        public static final FunctionDescriptor DESCRIPTOR$wgpuShaderModuleGetCompilationInfo = FunctionDescriptor.ofVoid(
+        public static final FunctionDescriptor DESCRIPTOR$wgpuShaderModuleGetCompilationInfo = FunctionDescriptor.of(
+            WGPUFuture.LAYOUT,
             ValueLayout.ADDRESS,
             WGPUCompilationInfoCallbackInfo.LAYOUT
         );

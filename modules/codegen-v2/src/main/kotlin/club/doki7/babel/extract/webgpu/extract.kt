@@ -103,6 +103,14 @@ private fun extractObjectMethods(
         ))
         method.args?.forEach { arg -> params.add(extractFunctionParam(arg)) }
 
+        val result = if (method.callback != null) {
+            IdentifierType("WGPUFuture")
+        } else if (method.returns != null) {
+            classifyType(method.returns.type, method.returns.pointer)
+        } else {
+            IdentifierType("void")
+        }
+
         if (method.callback != null) {
             params.add(Param(
                 name = "callbackInfo",
@@ -116,11 +124,7 @@ private fun extractObjectMethods(
         val command = Command(
             name = renameWGPUFunction(idlMethodName),
             params = params,
-            result = if (method.returns != null) {
-                classifyType(method.returns.type, method.returns.pointer)
-            } else {
-                IdentifierType("void")
-            },
+            result = result,
             successCodes = emptyList(),
             errorCodes = emptyList()
         )
