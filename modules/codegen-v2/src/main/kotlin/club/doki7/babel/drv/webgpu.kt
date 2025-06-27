@@ -11,11 +11,13 @@ import club.doki7.babel.codegen.generateStructure
 import club.doki7.babel.codegen.generateStructureInterface
 import club.doki7.babel.extract.webgpu.extractWebGPURegistry
 import club.doki7.babel.util.render
+import club.doki7.babel.util.setupLog
 import java.io.File
 
 private const val packageDir = "webgpu/src/main/java/club/doki7/webgpu"
 
 fun main() {
+    setupLog()
     webgpuMain()
 }
 
@@ -78,13 +80,13 @@ fun webgpuMain() {
 
     val commandsDoc = generateCommandFile(
         webgpuRegistry,
-        "WebGPU",
+        "WGPU",
         webgpuRegistry.commands.values.sortedBy { it.name },
         codegenOptions,
         implConstantClass = true,
         subpackage = null
     )
-    File("$packageDir/WebGPU.java").writeText(render(commandsDoc))
+    File("$packageDir/WGPU.java").writeText(render(commandsDoc))
 }
 
 fun File.safeWrite(text: String) {

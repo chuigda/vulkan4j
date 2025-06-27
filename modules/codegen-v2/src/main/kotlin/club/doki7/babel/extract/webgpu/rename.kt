@@ -1,6 +1,5 @@
 package club.doki7.babel.extract.webgpu
 
-import club.doki7.babel.extract.ensureLowerCamelCase
 import club.doki7.babel.registry.EmptyMergeable
 import club.doki7.babel.registry.Entity
 import club.doki7.babel.registry.Registry
@@ -17,10 +16,15 @@ internal fun Registry<EmptyMergeable>.renameEntities() {
         }
     }
 
+    structures.forEach { it.value.rename(::addWGPUPrefix); putEntityIfNameReplaced(it.value) }
+    enumerations.forEach { it.value.rename(::addWGPUPrefix); putEntityIfNameReplaced(it.value) }
+    bitmasks.forEach { it.value.rename(::addWGPUPrefix); putEntityIfNameReplaced(it.value) }
+    opaqueHandleTypedefs.forEach { it.value.rename(::addWGPUPrefix); putEntityIfNameReplaced(it.value) }
+    opaqueTypedefs.forEach { it.value.rename(::addWGPUPrefix); putEntityIfNameReplaced(it.value) }
+
     constants.forEach { it.value.rename(::renameConstant); putEntityIfNameReplaced(it.value) }
     commands.forEach { it.value.rename(::renameCommand); putEntityIfNameReplaced(it.value) }
 
-    log.info(" - 重命名完成，重命名了 ${renamed.size} 个项目，完整列表可参见 $renamedEntitiesFile")
     File(renamedEntitiesFile).writeText(buildString {
         appendLine("original,new")
         for ((original, renamed) in renamed) {
@@ -33,3 +37,6 @@ private fun renameConstant(name: String) = name.uppercase()
 
 private fun renameCommand(name: String) = name
 
+private fun addWGPUPrefix(name: String) =
+    if (name.startsWith("WGPU")) name
+    else "WGPU${name}"

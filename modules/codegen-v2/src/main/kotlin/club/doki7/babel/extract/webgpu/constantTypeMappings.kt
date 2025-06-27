@@ -11,7 +11,7 @@ data class ConstantTypeMapping(
 )
 
 val constantTypeMappings = mapOf(
-    "UINT8_MAX" to ConstantTypeMapping("uint8_t", "0xFF", IdentifierType("short"), "(short)0xFF"),
+    "UINT8_MAX" to ConstantTypeMapping("uint8_t", "0xFF", IdentifierType("byte"), "(byte)0xFF"),
     "UINT16_MAX" to ConstantTypeMapping("uint16_t", "0xFFFF", IdentifierType("int"), "0xFFFF"),
     "UINT32_MAX" to ConstantTypeMapping("uint32_t", "0xFFFFFFFF", IdentifierType("long"), "0xFFFFFFFFL"),
     "UINT64_MAX" to ConstantTypeMapping("uint64_t", "0xFFFFFFFFFFFFFFFF", IdentifierType("long long"), "0xFFFFFFFF_FFFFFFFFL"),
