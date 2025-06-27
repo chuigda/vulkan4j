@@ -1,10 +1,8 @@
 package example.webgpu;
 
 import club.doki7.ffm.annotation.EnumType;
-import club.doki7.ffm.annotation.Unsigned;
 import club.doki7.ffm.library.ILibraryLoader;
 import club.doki7.ffm.library.ISharedLibrary;
-import club.doki7.ffm.ptr.IntPtr;
 import club.doki7.webgpu.WGPU;
 import club.doki7.webgpu.WGPUSync;
 import club.doki7.webgpu.WGPUUtil;
@@ -84,6 +82,51 @@ class Application {
             System.out.println("  Vendor ID: 0x" + Integer.toUnsignedString(adapterInfo.vendorId(), 16));
             System.out.println("  Device ID: 0x" + Integer.toUnsignedString(adapterInfo.deviceId(), 16));
 
+            WGPUDeviceDescriptor deviceDescriptor = WGPUDeviceDescriptor.allocate(arena)
+                    .label(WGPUUtil.createStringView(arena, "Example Device"))
+                    .defaultQueue(it -> it.label(WGPUUtil.createStringView(arena, "Default Queue")))
+                    .deviceLostCallbackInfo(it -> it.callback(
+                            WGPUUtil.makeDeviceLostCallback((device, errorType, message) -> {
+                                System.err.println("Device " + device + "lost: " + WGPUDeviceLostReason.explain(errorType));
+                                if (message != null) {
+                                    System.err.println("  Message: " + message);
+                                }
+                            }, arena)
+                    ))
+                    .uncapturedErrorCallbackInfo(it -> it.callback(
+                            WGPUUtil.makeUncapturedErrorCallback((device, errorType, message) -> {
+                                System.err.println("Uncaptured error on device " + device + ": " + WGPUErrorType.explain(errorType));
+                                if (message != null) {
+                                    System.err.println("  Message: " + message);
+                                }
+                            }, arena)
+                    ));
+            var requestDeviceResult = WGPUSync.adapterRequestDevice(
+                    wgpu,
+                    adapter,
+                    deviceDescriptor
+            );
+            if (requestDeviceResult.status != WGPURequestDeviceStatus.SUCCESS) {
+                throw new RuntimeException(
+                        "Requesting device failed: "
+                        + WGPURequestDeviceStatus.explain(requestDeviceResult.status)
+                        + (requestDeviceResult.message != null ? " - " + requestDeviceResult.message : "")
+                );
+            }
+            var device = Objects.requireNonNull(requestDeviceResult.device);
+            wgpu.adapterRelease(adapter);
+
+            status = wgpu.deviceGetLimits(device, limits);
+            if (status != WGPUStatus.SUCCESS) {
+                throw new RuntimeException("Failed to get device limits: " + WGPUStatus.explain(status));
+            }
+            System.out.println("Device limits: ");
+            System.out.println("  Max Texture Dimension 1D: " + limits.maxTextureDimension1d());
+            System.out.println("  Max Texture Dimension 2D: " + limits.maxTextureDimension2d());
+            System.out.println("  Max Texture Dimension 3D: " + limits.maxTextureDimension3d());
+            System.out.println("  Max Texture Array Layers: " + limits.maxTextureArrayLayers());
+
+            wgpu.deviceRelease(device);
             wgpu.instanceRelease(instance);
         }
     }

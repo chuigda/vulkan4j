@@ -1,12 +1,19 @@
 package club.doki7.webgpu;
 
 import club.doki7.ffm.NativeLayout;
+import club.doki7.ffm.annotation.*;
 import club.doki7.webgpu.datatype.WGPUStringView;
+import club.doki7.webgpu.enumtype.WGPUDeviceLostReason;
+import club.doki7.webgpu.enumtype.WGPUErrorType;
+import club.doki7.webgpu.handle.WGPUDevice;
 import org.jetbrains.annotations.Nullable;
 
 import java.lang.foreign.Arena;
+import java.lang.foreign.Linker;
 import java.lang.foreign.MemorySegment;
 import java.lang.foreign.ValueLayout;
+import java.lang.invoke.MethodHandle;
+import java.lang.invoke.MethodHandles;
 
 public final class WGPUUtil {
     public static @Nullable String readStringView(@Nullable WGPUStringView stringView) {
@@ -57,5 +64,94 @@ public final class WGPUUtil {
         stringView.dataRaw(data);
         stringView.length(data.byteSize() - 1);
         return stringView;
+    }
+
+    @FunctionalInterface
+    public interface DeviceLostCallback {
+        void accept(
+                @Nullable WGPUDevice device,
+                @EnumType(WGPUDeviceLostReason.class) int reason,
+                String message
+        );
+    }
+
+    public static MemorySegment makeDeviceLostCallback(DeviceLostCallback callback, Arena arena) {
+        return Linker.nativeLinker().upcallStub(
+                MH_onDeviceLost.bindTo(callback),
+                WGPUFunctionTypes.WGPUDeviceLostCallback,
+                arena
+        );
+    }
+
+    @FunctionalInterface
+    public interface UncapturedErrorCallback {
+        void accept(
+                @Nullable WGPUDevice device,
+                @EnumType(WGPUErrorType.class) int errorType,
+                String message
+        );
+    }
+
+    public static MemorySegment makeUncapturedErrorCallback(UncapturedErrorCallback callback, Arena arena) {
+        return Linker.nativeLinker().upcallStub(
+                MH_onUncapturedError.bindTo(callback),
+                WGPUFunctionTypes.WGPUUncapturedErrorCallback,
+                arena
+        );
+    }
+
+    private static void onDeviceLost(
+            DeviceLostCallback callback,
+            @NativeType("WGPUDevice") MemorySegment deviceSegment,
+            @EnumType(WGPUDeviceLostReason.class) int errorType,
+            @NativeType("WGPUStringView") MemorySegment message,
+            @Pointer(comment="void*") MemorySegment ignoredUserData1,
+            @Pointer(comment="void*") MemorySegment ignoredUserData2
+    ) {
+        @Nullable WGPUDevice device = deviceSegment.equals(MemorySegment.NULL)
+                ? null
+                : new WGPUDevice(deviceSegment);
+        String messageString = WGPUUtil.readStringView(message);
+        callback.accept(device, errorType, messageString);
+    }
+
+    private static void onUncapturedError(
+            UncapturedErrorCallback callback,
+            @NativeType("WGPUDevice") MemorySegment deviceSegment,
+            @EnumType(WGPUErrorType.class) int errorType,
+            @NativeType("WGPUStringView") MemorySegment message,
+            @Pointer(comment="void*") MemorySegment ignoredUserData1,
+            @Pointer(comment="void*") MemorySegment ignoredUserData2
+    ) {
+        @Nullable WGPUDevice device = deviceSegment.equals(MemorySegment.NULL)
+                ? null
+                : new WGPUDevice(deviceSegment);
+        String messageString = WGPUUtil.readStringView(message);
+        callback.accept(device, errorType, messageString);
+    }
+
+    private static final MethodHandle MH_onDeviceLost;
+    private static final MethodHandle MH_onUncapturedError;
+
+    static {
+        try {
+            MethodHandles.Lookup lookup = MethodHandles.lookup();
+            MH_onDeviceLost = lookup.findStatic(
+                    WGPUUtil.class,
+                    "onDeviceLost",
+                    WGPUFunctionTypes.WGPUDeviceLostCallback
+                            .toMethodType()
+                            .insertParameterTypes(0, DeviceLostCallback.class)
+            );
+            MH_onUncapturedError = lookup.findStatic(
+                    WGPUUtil.class,
+                    "onUncapturedError",
+                    WGPUFunctionTypes.WGPUUncapturedErrorCallback
+                            .toMethodType()
+                            .insertParameterTypes(0, UncapturedErrorCallback.class)
+            );
+        } catch (NoSuchMethodException | IllegalAccessException e) {
+            throw new RuntimeException(e);
+        }
     }
 }

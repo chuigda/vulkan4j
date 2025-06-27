@@ -3,11 +3,11 @@ package club.doki7.webgpu;
 import club.doki7.ffm.annotation.EnumType;
 import club.doki7.ffm.annotation.NativeType;
 import club.doki7.ffm.annotation.Pointer;
-import club.doki7.webgpu.datatype.WGPUFuture;
-import club.doki7.webgpu.datatype.WGPURequestAdapterCallbackInfo;
-import club.doki7.webgpu.datatype.WGPURequestAdapterOptions;
+import club.doki7.webgpu.datatype.*;
 import club.doki7.webgpu.enumtype.WGPURequestAdapterStatus;
+import club.doki7.webgpu.enumtype.WGPURequestDeviceStatus;
 import club.doki7.webgpu.handle.WGPUAdapter;
+import club.doki7.webgpu.handle.WGPUDevice;
 import club.doki7.webgpu.handle.WGPUInstance;
 import org.jetbrains.annotations.Nullable;
 
@@ -19,13 +19,13 @@ import java.lang.invoke.MethodHandles;
 import java.util.Objects;
 
 public final class WGPUSync {
-    public static final class AdapterRequestResult {
+    public static final class RequestAdapterResult {
         public final @EnumType(WGPURequestAdapterStatus.class) int status;
         public final @Nullable WGPUAdapter adapter;
         public final @Nullable String message;
 
-        public AdapterRequestResult(
-                int status,
+        public RequestAdapterResult(
+                @EnumType(WGPURequestAdapterStatus.class) int status,
                 @Nullable WGPUAdapter adapter,
                 @Nullable String message
         ) {
@@ -35,15 +35,15 @@ public final class WGPUSync {
         }
     }
 
-    public static AdapterRequestResult instanceRequestAdapter(
+    public static RequestAdapterResult instanceRequestAdapter(
             WGPU wgpu,
             WGPUInstance instance,
             WGPURequestAdapterOptions options
     ) {
-        Ref<AdapterRequestResult> saveSlot = new Ref<>();
+        Ref<RequestAdapterResult> saveSlot = new Ref<>();
         try (Arena arena = Arena.ofConfined()) {
             MemorySegment pfn = Linker.nativeLinker().upcallStub(
-                    MH_onAdapterRequestEnded.bindTo(saveSlot),
+                    MH_onRequestAdapterEnded.bindTo(saveSlot),
                     WGPUFunctionTypes.WGPURequestAdapterCallback,
                     arena
             );
@@ -55,10 +55,46 @@ public final class WGPUSync {
         }
     }
 
+    public static final class RequestDeviceResult {
+        public final @EnumType(WGPURequestDeviceStatus.class) int status;
+        public final @Nullable WGPUDevice device;
+        public final @Nullable String message;
+
+        public RequestDeviceResult(
+                @EnumType(WGPURequestDeviceStatus.class) int status,
+                @Nullable WGPUDevice device,
+                @Nullable String message
+        ) {
+            this.status = status;
+            this.device = device;
+            this.message = message;
+        }
+    }
+
+    public static RequestDeviceResult adapterRequestDevice(
+            WGPU wgpu,
+            WGPUAdapter adapter,
+            WGPUDeviceDescriptor descriptor
+    ) {
+        Ref<RequestDeviceResult> saveSlot = new Ref<>();
+        try (Arena arena = Arena.ofConfined()) {
+            MemorySegment pfn = Linker.nativeLinker().upcallStub(
+                    MH_onRequestDeviceEnded.bindTo(saveSlot),
+                    WGPUFunctionTypes.WGPURequestDeviceCallback,
+                    arena
+            );
+
+            WGPURequestDeviceCallbackInfo info = WGPURequestDeviceCallbackInfo.allocate(arena)
+                    .callback(pfn);
+            WGPUFuture ignoredFuture = wgpu.adapterRequestDevice(arena, adapter, descriptor, info);
+            return Objects.requireNonNull(saveSlot.value, ASYNC_NOT_SYNC);
+        }
+    }
+
     private static final class Ref<T> { @Nullable T value = null; }
 
-    private static void onAdapterRequestFinished(
-            Ref<AdapterRequestResult> saveSlot,
+    private static void onRequestAdapterFinished(
+            Ref<RequestAdapterResult> saveSlot,
             @EnumType(WGPURequestAdapterStatus.class) int status,
             @NativeType("WGPUAdapter") MemorySegment adapter,
             @NativeType("WGPUStringView") MemorySegment message,
@@ -69,20 +105,43 @@ public final class WGPUSync {
                 ? null
                 : new WGPUAdapter(adapter);
         @Nullable String messageString = WGPUUtil.readStringView(message);
-        saveSlot.value = new AdapterRequestResult(status, adapterHandle, messageString);
+        saveSlot.value = new RequestAdapterResult(status, adapterHandle, messageString);
     }
 
-    private static final MethodHandle MH_onAdapterRequestEnded;
+    private static void onRequestDeviceFinished(
+            Ref<RequestDeviceResult> saveSlot,
+            @EnumType(WGPURequestDeviceStatus.class) int status,
+            @NativeType("WGPUDevice") MemorySegment device,
+            @NativeType("WGPUStringView") MemorySegment message,
+            @Pointer(comment="void*") MemorySegment ignoredUserData1,
+            @Pointer(comment="void*") MemorySegment ignoredUserData2
+    ) {
+        @Nullable WGPUDevice deviceHandle = device == MemorySegment.NULL
+                ? null
+                : new WGPUDevice(device);
+        @Nullable String messageString = WGPUUtil.readStringView(message);
+        saveSlot.value = new RequestDeviceResult(status, deviceHandle, messageString);
+    }
+
+    private static final MethodHandle MH_onRequestAdapterEnded;
+    private static final MethodHandle MH_onRequestDeviceEnded;
     private static final String ASYNC_NOT_SYNC
             = "On native platform, WebGPU async requests should finish synchronously immediately";
 
     static {
         try {
             MethodHandles.Lookup lookup = MethodHandles.lookup();
-            MH_onAdapterRequestEnded = lookup.findStatic(
+            MH_onRequestAdapterEnded = lookup.findStatic(
                     WGPUSync.class,
-                    "onAdapterRequestFinished",
+                    "onRequestAdapterFinished",
                     WGPUFunctionTypes.WGPURequestAdapterCallback
+                            .toMethodType()
+                            .insertParameterTypes(0, Ref.class)
+            );
+            MH_onRequestDeviceEnded = lookup.findStatic(
+                    WGPUSync.class,
+                    "onRequestDeviceFinished",
+                    WGPUFunctionTypes.WGPURequestDeviceCallback
                             .toMethodType()
                             .insertParameterTypes(0, Ref.class)
             );

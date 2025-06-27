@@ -260,6 +260,17 @@ private fun extractStructures(registry: RegistryBase, structs: List<IDLStructure
                     optional = member.optional,
                     bits = null
                 ))
+            } else if (member.type.startsWith("callback.")) {
+                val typeName = renameWGPUFunctionPointer(member.type.removePrefix("callback.")) + "Info"
+                members.add(Member(
+                    name = renameWGPUVar(member.name),
+                    type = IdentifierType(typeName),
+                    values = null,
+                    len = null,
+                    altLen = null,
+                    optional = member.optional,
+                    bits = null
+                ))
             } else {
                 members.add(Member(
                     name = renameWGPUVar(member.name),

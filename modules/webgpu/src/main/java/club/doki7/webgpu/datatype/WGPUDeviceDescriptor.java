@@ -30,8 +30,8 @@ import static club.doki7.webgpu.WGPUConstants.*;
 ///     WGPUFeatureName const* requiredFeatures; // @link substring="WGPUFeatureName" target="WGPUFeatureName" @link substring="requiredFeatures" target="#requiredFeatures"
 ///     WGPULimits const* requiredLimits; // optional // @link substring="WGPULimits" target="WGPULimits" @link substring="requiredLimits" target="#requiredLimits"
 ///     WGPUQueueDescriptor defaultQueue; // @link substring="WGPUQueueDescriptor" target="WGPUQueueDescriptor" @link substring="defaultQueue" target="#defaultQueue"
-///     WGPUDeviceLostCallback deviceLostCallbackInfo; // @link substring="deviceLostCallbackInfo" target="#deviceLostCallbackInfo"
-///     WGPUUncapturedErrorCallback uncapturedErrorCallbackInfo; // @link substring="uncapturedErrorCallbackInfo" target="#uncapturedErrorCallbackInfo"
+///     WGPUDeviceLostCallbackInfo deviceLostCallbackInfo; // @link substring="WGPUDeviceLostCallbackInfo" target="WGPUDeviceLostCallbackInfo" @link substring="deviceLostCallbackInfo" target="#deviceLostCallbackInfo"
+///     WGPUUncapturedErrorCallbackInfo uncapturedErrorCallbackInfo; // @link substring="WGPUUncapturedErrorCallbackInfo" target="WGPUUncapturedErrorCallbackInfo" @link substring="uncapturedErrorCallbackInfo" target="#uncapturedErrorCallbackInfo"
 /// } WGPUDeviceDescriptor;
 /// }
 ///
@@ -307,31 +307,31 @@ public record WGPUDeviceDescriptor(@NotNull MemorySegment segment) implements IW
         return this;
     }
 
-    public @Pointer(comment="WGPUDeviceLostCallback") @NotNull MemorySegment deviceLostCallbackInfo() {
-        return segment.get(LAYOUT$deviceLostCallbackInfo, OFFSET$deviceLostCallbackInfo);
+    public @NotNull WGPUDeviceLostCallbackInfo deviceLostCallbackInfo() {
+        return new WGPUDeviceLostCallbackInfo(segment.asSlice(OFFSET$deviceLostCallbackInfo, LAYOUT$deviceLostCallbackInfo));
     }
 
-    public WGPUDeviceDescriptor deviceLostCallbackInfo(@Pointer(comment="WGPUDeviceLostCallback") @NotNull MemorySegment value) {
-        segment.set(LAYOUT$deviceLostCallbackInfo, OFFSET$deviceLostCallbackInfo, value);
+    public WGPUDeviceDescriptor deviceLostCallbackInfo(@NotNull WGPUDeviceLostCallbackInfo value) {
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$deviceLostCallbackInfo, SIZE$deviceLostCallbackInfo);
         return this;
     }
 
-    public WGPUDeviceDescriptor deviceLostCallbackInfo(@Nullable IPointer pointer) {
-        deviceLostCallbackInfo(pointer != null ? pointer.segment() : MemorySegment.NULL);
+    public WGPUDeviceDescriptor deviceLostCallbackInfo(Consumer<@NotNull WGPUDeviceLostCallbackInfo> consumer) {
+        consumer.accept(deviceLostCallbackInfo());
         return this;
     }
 
-    public @Pointer(comment="WGPUUncapturedErrorCallback") @NotNull MemorySegment uncapturedErrorCallbackInfo() {
-        return segment.get(LAYOUT$uncapturedErrorCallbackInfo, OFFSET$uncapturedErrorCallbackInfo);
+    public @NotNull WGPUUncapturedErrorCallbackInfo uncapturedErrorCallbackInfo() {
+        return new WGPUUncapturedErrorCallbackInfo(segment.asSlice(OFFSET$uncapturedErrorCallbackInfo, LAYOUT$uncapturedErrorCallbackInfo));
     }
 
-    public WGPUDeviceDescriptor uncapturedErrorCallbackInfo(@Pointer(comment="WGPUUncapturedErrorCallback") @NotNull MemorySegment value) {
-        segment.set(LAYOUT$uncapturedErrorCallbackInfo, OFFSET$uncapturedErrorCallbackInfo, value);
+    public WGPUDeviceDescriptor uncapturedErrorCallbackInfo(@NotNull WGPUUncapturedErrorCallbackInfo value) {
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$uncapturedErrorCallbackInfo, SIZE$uncapturedErrorCallbackInfo);
         return this;
     }
 
-    public WGPUDeviceDescriptor uncapturedErrorCallbackInfo(@Nullable IPointer pointer) {
-        uncapturedErrorCallbackInfo(pointer != null ? pointer.segment() : MemorySegment.NULL);
+    public WGPUDeviceDescriptor uncapturedErrorCallbackInfo(Consumer<@NotNull WGPUUncapturedErrorCallbackInfo> consumer) {
+        consumer.accept(uncapturedErrorCallbackInfo());
         return this;
     }
 
@@ -342,8 +342,8 @@ public record WGPUDeviceDescriptor(@NotNull MemorySegment segment) implements IW
         ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_INT).withName("requiredFeatures"),
         ValueLayout.ADDRESS.withTargetLayout(WGPULimits.LAYOUT).withName("requiredLimits"),
         WGPUQueueDescriptor.LAYOUT.withName("defaultQueue"),
-        ValueLayout.ADDRESS.withName("deviceLostCallbackInfo"),
-        ValueLayout.ADDRESS.withName("uncapturedErrorCallbackInfo")
+        WGPUDeviceLostCallbackInfo.LAYOUT.withName("deviceLostCallbackInfo"),
+        WGPUUncapturedErrorCallbackInfo.LAYOUT.withName("uncapturedErrorCallbackInfo")
     );
     public static final long BYTES = LAYOUT.byteSize();
 
@@ -361,8 +361,8 @@ public record WGPUDeviceDescriptor(@NotNull MemorySegment segment) implements IW
     public static final AddressLayout LAYOUT$requiredFeatures = (AddressLayout) LAYOUT.select(PATH$requiredFeatures);
     public static final AddressLayout LAYOUT$requiredLimits = (AddressLayout) LAYOUT.select(PATH$requiredLimits);
     public static final StructLayout LAYOUT$defaultQueue = (StructLayout) LAYOUT.select(PATH$defaultQueue);
-    public static final AddressLayout LAYOUT$deviceLostCallbackInfo = (AddressLayout) LAYOUT.select(PATH$deviceLostCallbackInfo);
-    public static final AddressLayout LAYOUT$uncapturedErrorCallbackInfo = (AddressLayout) LAYOUT.select(PATH$uncapturedErrorCallbackInfo);
+    public static final StructLayout LAYOUT$deviceLostCallbackInfo = (StructLayout) LAYOUT.select(PATH$deviceLostCallbackInfo);
+    public static final StructLayout LAYOUT$uncapturedErrorCallbackInfo = (StructLayout) LAYOUT.select(PATH$uncapturedErrorCallbackInfo);
 
     public static final long SIZE$nextInChain = LAYOUT$nextInChain.byteSize();
     public static final long SIZE$label = LAYOUT$label.byteSize();
