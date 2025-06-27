@@ -13,3 +13,7 @@
 echo Downloading WebGPU webgpu.yml
 WEBGPU_VERSION="bac520839ff5ed2e2b648ed540bd9ec45edbccbc"
 curl -o webgpu.yml https://raw.githubusercontent.com/webgpu-native/webgpu-headers/$WEBGPU_VERSION/webgpu.yml
+
+# Y2JCONV is a utility converting YML to JSON, for the sake of my sanity.
+# You can build it by running `cd /path/to/vulkan4j/misc/y2jconv` and `cargo install`
+y2jconv webgpu.yml > webgpu.json
