@@ -386,6 +386,10 @@ public final class XR implements XRConstants {
         HANDLE$xrGetActionStateVector2f = RawFunctionLoader.link(SEGMENT$xrGetActionStateVector2f, Descriptors.DESCRIPTOR$xrGetActionStateVector2f);
         SEGMENT$xrGetAnchorUuidBD = loader.apply("xrGetAnchorUuidBD");
         HANDLE$xrGetAnchorUuidBD = RawFunctionLoader.link(SEGMENT$xrGetAnchorUuidBD, Descriptors.DESCRIPTOR$xrGetAnchorUuidBD);
+        SEGMENT$xrGetAudioInputDeviceGuidOculus = loader.apply("xrGetAudioInputDeviceGuidOculus");
+        HANDLE$xrGetAudioInputDeviceGuidOculus = RawFunctionLoader.link(SEGMENT$xrGetAudioInputDeviceGuidOculus, Descriptors.DESCRIPTOR$xrGetAudioInputDeviceGuidOculus);
+        SEGMENT$xrGetAudioOutputDeviceGuidOculus = loader.apply("xrGetAudioOutputDeviceGuidOculus");
+        HANDLE$xrGetAudioOutputDeviceGuidOculus = RawFunctionLoader.link(SEGMENT$xrGetAudioOutputDeviceGuidOculus, Descriptors.DESCRIPTOR$xrGetAudioOutputDeviceGuidOculus);
         SEGMENT$xrGetBodySkeletonFB = loader.apply("xrGetBodySkeletonFB");
         HANDLE$xrGetBodySkeletonFB = RawFunctionLoader.link(SEGMENT$xrGetBodySkeletonFB, Descriptors.DESCRIPTOR$xrGetBodySkeletonFB);
         SEGMENT$xrGetBodySkeletonHTC = loader.apply("xrGetBodySkeletonHTC");
@@ -3960,6 +3964,38 @@ public final class XR implements XRConstants {
         }
     }
 
+    /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrGetAudioInputDeviceGuidOculus.html"><code>xrGetAudioInputDeviceGuidOculus</code></a>
+    public @EnumType(XrResult.class) int getAudioInputDeviceGuidOculus(
+        XrInstance instance,
+        WCharPtr buffer
+    ) {
+        MethodHandle hFunction = Objects.requireNonNull(HANDLE$xrGetAudioInputDeviceGuidOculus);
+        try {
+            return (int) hFunction.invokeExact(
+                instance.segment(),
+                buffer.segment()
+            );
+        } catch (Throwable e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrGetAudioOutputDeviceGuidOculus.html"><code>xrGetAudioOutputDeviceGuidOculus</code></a>
+    public @EnumType(XrResult.class) int getAudioOutputDeviceGuidOculus(
+        XrInstance instance,
+        WCharPtr buffer
+    ) {
+        MethodHandle hFunction = Objects.requireNonNull(HANDLE$xrGetAudioOutputDeviceGuidOculus);
+        try {
+            return (int) hFunction.invokeExact(
+                instance.segment(),
+                buffer.segment()
+            );
+        } catch (Throwable e) {
+            throw new RuntimeException(e);
+        }
+    }
+
     /// @see <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/xrGetBodySkeletonFB.html"><code>xrGetBodySkeletonFB</code></a>
     public @EnumType(XrResult.class) int getBodySkeletonFB(
         XrBodyTrackerFB bodyTracker,
@@ -6538,14 +6574,14 @@ public final class XR implements XRConstants {
     public @EnumType(XrResult.class) int resultToString(
         XrInstance instance,
         @EnumType(XrResult.class) int value,
-        byte buffer
+        BytePtr buffer
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$xrResultToString);
         try {
             return (int) hFunction.invokeExact(
                 instance.segment(),
                 value,
-                buffer
+                buffer.segment()
             );
         } catch (Throwable e) {
             throw new RuntimeException(e);
@@ -7314,14 +7350,14 @@ public final class XR implements XRConstants {
     public @EnumType(XrResult.class) int structureTypeToString(
         XrInstance instance,
         @EnumType(XrStructureType.class) int value,
-        byte buffer
+        BytePtr buffer
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$xrStructureTypeToString);
         try {
             return (int) hFunction.invokeExact(
                 instance.segment(),
                 value,
-                buffer
+                buffer.segment()
             );
         } catch (Throwable e) {
             throw new RuntimeException(e);
@@ -7332,14 +7368,14 @@ public final class XR implements XRConstants {
     public @EnumType(XrResult.class) int structureTypeToString2KHR(
         XrInstance instance,
         @EnumType(XrStructureType.class) int value,
-        byte buffer
+        BytePtr buffer
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$xrStructureTypeToString2KHR);
         try {
             return (int) hFunction.invokeExact(
                 instance.segment(),
                 value,
-                buffer
+                buffer.segment()
             );
         } catch (Throwable e) {
             throw new RuntimeException(e);
@@ -7958,6 +7994,8 @@ public final class XR implements XRConstants {
     public final @Nullable MemorySegment SEGMENT$xrGetActionStatePose;
     public final @Nullable MemorySegment SEGMENT$xrGetActionStateVector2f;
     public final @Nullable MemorySegment SEGMENT$xrGetAnchorUuidBD;
+    public final @Nullable MemorySegment SEGMENT$xrGetAudioInputDeviceGuidOculus;
+    public final @Nullable MemorySegment SEGMENT$xrGetAudioOutputDeviceGuidOculus;
     public final @Nullable MemorySegment SEGMENT$xrGetBodySkeletonFB;
     public final @Nullable MemorySegment SEGMENT$xrGetBodySkeletonHTC;
     public final @Nullable MemorySegment SEGMENT$xrGetControllerModelKeyMSFT;
@@ -8354,6 +8392,8 @@ public final class XR implements XRConstants {
     public final @Nullable MethodHandle HANDLE$xrGetActionStatePose;
     public final @Nullable MethodHandle HANDLE$xrGetActionStateVector2f;
     public final @Nullable MethodHandle HANDLE$xrGetAnchorUuidBD;
+    public final @Nullable MethodHandle HANDLE$xrGetAudioInputDeviceGuidOculus;
+    public final @Nullable MethodHandle HANDLE$xrGetAudioOutputDeviceGuidOculus;
     public final @Nullable MethodHandle HANDLE$xrGetBodySkeletonFB;
     public final @Nullable MethodHandle HANDLE$xrGetBodySkeletonHTC;
     public final @Nullable MethodHandle HANDLE$xrGetControllerModelKeyMSFT;
@@ -9778,6 +9818,18 @@ public final class XR implements XRConstants {
             ValueLayout.ADDRESS.withTargetLayout(XrUuidEXT.LAYOUT)
         );
 
+        public static final FunctionDescriptor DESCRIPTOR$xrGetAudioInputDeviceGuidOculus = FunctionDescriptor.of(
+            ValueLayout.JAVA_INT,
+            ValueLayout.ADDRESS,
+            ValueLayout.ADDRESS.withTargetLayout(NativeLayout.WCHAR_T)
+        );
+
+        public static final FunctionDescriptor DESCRIPTOR$xrGetAudioOutputDeviceGuidOculus = FunctionDescriptor.of(
+            ValueLayout.JAVA_INT,
+            ValueLayout.ADDRESS,
+            ValueLayout.ADDRESS.withTargetLayout(NativeLayout.WCHAR_T)
+        );
+
         public static final FunctionDescriptor DESCRIPTOR$xrGetBodySkeletonFB = FunctionDescriptor.of(
             ValueLayout.JAVA_INT,
             ValueLayout.ADDRESS,
@@ -10771,7 +10823,7 @@ public final class XR implements XRConstants {
             ValueLayout.JAVA_INT,
             ValueLayout.ADDRESS,
             ValueLayout.JAVA_INT,
-            ValueLayout.JAVA_BYTE
+            ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_BYTE)
         );
 
         public static final FunctionDescriptor DESCRIPTOR$xrResumeSimultaneousHandsAndControllersTrackingMETA = FunctionDescriptor.of(
@@ -11069,14 +11121,14 @@ public final class XR implements XRConstants {
             ValueLayout.JAVA_INT,
             ValueLayout.ADDRESS,
             ValueLayout.JAVA_INT,
-            ValueLayout.JAVA_BYTE
+            ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_BYTE)
         );
 
         public static final FunctionDescriptor DESCRIPTOR$xrStructureTypeToString2KHR = FunctionDescriptor.of(
             ValueLayout.JAVA_INT,
             ValueLayout.ADDRESS,
             ValueLayout.JAVA_INT,
-            ValueLayout.JAVA_BYTE
+            ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_BYTE)
         );
 
         public static final FunctionDescriptor DESCRIPTOR$xrSubmitDebugUtilsMessageEXT = FunctionDescriptor.of(

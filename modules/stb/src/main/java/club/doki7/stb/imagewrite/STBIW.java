@@ -285,14 +285,14 @@ public final class STBIW {
     public int stbiwConvertWcharToUtf8(
         @Nullable BytePtr buffer,
         long bufferlen,
-        @Pointer(comment="wchar_t*") @NotNull MemorySegment input
+        @Nullable WCharPtr input
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$stbiw_convert_wchar_to_utf8);
         try {
             return (int) hFunction.invokeExact(
                 (MemorySegment) (buffer != null ? buffer.segment() : MemorySegment.NULL),
                 MemorySegment.ofAddress(bufferlen),
-                input
+                (MemorySegment) (input != null ? input.segment() : MemorySegment.NULL)
             );
         } catch (Throwable e) {
             throw new RuntimeException(e);
@@ -435,7 +435,7 @@ public final class STBIW {
             ValueLayout.JAVA_INT,
             ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_BYTE),
             NativeLayout.C_SIZE_T,
-            ValueLayout.ADDRESS
+            ValueLayout.ADDRESS.withTargetLayout(NativeLayout.WCHAR_T)
         );
 
         /// Constructing this class is nonsense so the constructor is made private.

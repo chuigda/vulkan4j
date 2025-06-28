@@ -368,6 +368,12 @@ private val cIntPtrType = CPlatformDependentIntType(
     jLayout = "NativeLayout.C_SIZE_T",
     jPtrTypeNoAnnotation = "PointerPtr"
 )
+private val wCharType = CPlatformDependentIntType(
+    cType = "wchar_t",
+    jTypeNoAnnotation = "int",
+    jLayout = "NativeLayout.WCHAR_T",
+    jPtrTypeNoAnnotation = "WCharPtr"
+)
 
 private fun pvoidType(comment: String) = CPointerType(voidType, const = false, pointerToOne = false, comment = comment)
 
@@ -394,6 +400,7 @@ private val knownTypes = mapOf(
     "long" to cLongType,
     "size_t" to cSizeType,
     "intptr_t" to cIntPtrType,
+    "wchar_t" to wCharType,
 
     "char" to int8Type,
     "unsigned char" to uint8Type,
@@ -594,11 +601,6 @@ fun lowerType(
                         )
                     }
                 }
-            }
-
-            // TODO future `wchar_t` support?
-            if (type.pointee is IdentifierType && type.pointee.ident.value == "wchar_t") {
-                return pvoidType(comment="wchar_t*")
             }
 
             val pointee = lowerType(registry, refRegistries, type.pointee)

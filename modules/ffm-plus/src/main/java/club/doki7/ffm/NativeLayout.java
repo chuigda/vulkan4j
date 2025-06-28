@@ -26,8 +26,17 @@ public final class NativeLayout {
     public static final @NotNull ValueLayout C_LONG;
     public static final int C_LONG_SIZE;
 
+    /// TODO: document required.
+    public static final @NotNull ValueLayout WCHAR_T;
+    public static final int WCHAR_SIZE;
+
     public static final @Unsigned int UINT32_MAX = (~0);
     public static final @Unsigned long UINT64_MAX = (~0L);
+
+    // FIXME: move this to somewhere else
+    private static boolean isWindows() {
+        return System.getProperty("os.name").toLowerCase().contains("windows");
+    }
 
     static {
         if (POINTER_SIZE == 4) {
@@ -35,7 +44,7 @@ public final class NativeLayout {
             C_LONG = ValueLayout.JAVA_INT;
         }
         else if (POINTER_SIZE == 8) {
-            if (System.getProperty("os.name").toLowerCase().contains("windows")) {
+            if (isWindows()) {
                 // On 64bit Windows, long is 4 bytes
                 C_LONG = ValueLayout.JAVA_INT;
             } else {
@@ -48,6 +57,11 @@ public final class NativeLayout {
         }
 
         C_LONG_SIZE = (int) C_LONG.byteSize();
+
+        WCHAR_T = isWindows()
+                ? ValueLayout.JAVA_SHORT
+                : ValueLayout.JAVA_INT;
+        WCHAR_SIZE = (int) WCHAR_T.byteSize();
     }
 
     public static long readCLong(@NotNull MemorySegment segment, long offset) {
@@ -79,6 +93,22 @@ public final class NativeLayout {
             segment.set(ValueLayout.JAVA_INT, offset, (int) value);
         } else {
             segment.set(ValueLayout.JAVA_LONG, offset, value);
+        }
+    }
+
+    public static @Unsigned int readWCharT(@NotNull MemorySegment segment, long offset) {
+        if (WCHAR_T == ValueLayout.JAVA_INT) {
+            return segment.get(ValueLayout.JAVA_INT, offset);
+        } else {
+            return segment.get(ValueLayout.JAVA_SHORT, offset);
+        }
+    }
+
+    public static void writeWCharT(@NotNull MemorySegment segment, long offset, int value) {
+        if (WCHAR_T == ValueLayout.JAVA_INT) {
+            segment.set(ValueLayout.JAVA_INT, offset, value);
+        } else {
+            segment.set(ValueLayout.JAVA_SHORT, offset, (short) value);
         }
     }
 

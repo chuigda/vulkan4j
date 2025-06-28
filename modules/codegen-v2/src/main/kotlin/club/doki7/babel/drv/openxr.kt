@@ -171,7 +171,7 @@ private data class CodegenContext<T : IMergeable<T>>(
             "XRStatic",
             staticCommands,
             codegenOptions,
-            false,
+            true,
             "command"
         ).writeTo("command/XRStatic.java")
         generateCommandFile(

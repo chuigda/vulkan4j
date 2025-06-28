@@ -40,11 +40,11 @@ public record CLongPtr(MemorySegment segment) implements IPointer, Iterable<Long
     }
 
     public long read(long index) {
-        return NativeLayout.readCLong(segment, index);
+        return NativeLayout.readCLong(segment, index * NativeLayout.C_LONG_SIZE);
     }
 
     public void write(long index, long value) {
-        NativeLayout.writeCLong(segment, index, value);
+        NativeLayout.writeCLong(segment, index * NativeLayout.C_LONG_SIZE, value);
     }
 
     /// Assume the {@link CLongPtr} is capable of holding at least {@code newSize} elements, create

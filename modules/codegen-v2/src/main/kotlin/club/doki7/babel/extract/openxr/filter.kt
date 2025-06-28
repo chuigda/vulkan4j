@@ -53,11 +53,11 @@ internal fun Registry<OpenXRRegistryExt>.filterEntities(): Registry<OpenXRRegist
 private fun Registry<OpenXRRegistryExt>.getUnsupportedEntities() = mutableSetOf<Identifier>().apply {
     val registry = this@getUnsupportedEntities
     addAll(registry.ext.extensions.values.filter {
-        it.supported == "disabled" || it.name.original == "XR_OCULUS_audio_device_guid"
+        it.supported == "disabled"
     }.map { it.name })
 
     for (extension in registry.ext.extensions.values) {
-        if (extension.supported == "disabled" || extension.name.original == "XR_OCULUS_audio_device_guid") {
+        if (extension.supported == "disabled") {
             add(extension.name)
             for (require in extension.requires) {
                 for (type in require.types) {
