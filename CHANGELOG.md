@@ -15,6 +15,7 @@
 - Returned pointers and handles are now correctly marked as `@Nullable` by default, providing much better null-safety.
 - Fixed issue #126 by using `Linker.Option.captureCallState` to retrieve `GetLastError` code.
 - In the static initializer of `UnixLibraryLoader`, `UnixUtil.forceLoad` is now called automatically to ensure that result of `dlerror` won't be overwritten by the loading of `dlerror` function itself.
+- `LibcArena` now will fall back to `malloc` + manual alignment calculation if `aligned_alloc` is not available. This allows `LibcArena` to work on Windows platform.
 
 ## v0.4.1
 
