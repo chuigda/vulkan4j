@@ -40,7 +40,7 @@ public record WCharPtr(@Override @NotNull MemorySegment segment) implements IPoi
         NativeLayout.writeWCharT(segment, 0, value);
     }
 
-    public long read(long index) {
+    public int read(long index) {
         return NativeLayout.readWCharT(segment, index);
     }
 
@@ -70,6 +70,13 @@ public record WCharPtr(@Override @NotNull MemorySegment segment) implements IPoi
     /// Note that this function uses the {@link List#subList(int, int)} semantics (left inclusive,
     /// right exclusive interval), not {@link MemorySegment#asSlice(long, long)} semantics
     /// (offset + newSize). Be careful with the difference.
+    public @NotNull WCharPtr slice(long start, long end) {
+        return new WCharPtr(segment.asSlice(
+                start * NativeLayout.WCHAR_SIZE,
+                (end - start) * NativeLayout.WCHAR_SIZE
+        ));
+    }
+
     public @NotNull WCharPtr slice(long end) {
         return new WCharPtr(segment.asSlice(0, end * NativeLayout.WCHAR_SIZE));
     }
