@@ -9821,13 +9821,13 @@ public final class XR implements XRConstants {
         public static final FunctionDescriptor DESCRIPTOR$xrGetAudioInputDeviceGuidOculus = FunctionDescriptor.of(
                 ValueLayout.JAVA_INT,
                 ValueLayout.ADDRESS,
-                MemoryLayout.sequenceLayout(MAX_AUDIO_DEVICE_STR_SIZE_OCULUS, NativeLayout.WCHAR_T)
+                ValueLayout.ADDRESS.withTargetLayout(NativeLayout.WCHAR_T)
         );
 
         public static final FunctionDescriptor DESCRIPTOR$xrGetAudioOutputDeviceGuidOculus = FunctionDescriptor.of(
                 ValueLayout.JAVA_INT,
                 ValueLayout.ADDRESS,
-                MemoryLayout.sequenceLayout(MAX_AUDIO_DEVICE_STR_SIZE_OCULUS, NativeLayout.WCHAR_T)
+                ValueLayout.ADDRESS.withTargetLayout(NativeLayout.WCHAR_T)
         );
 
         public static final FunctionDescriptor DESCRIPTOR$xrGetBodySkeletonFB = FunctionDescriptor.of(
@@ -10823,7 +10823,7 @@ public final class XR implements XRConstants {
             ValueLayout.JAVA_INT,
             ValueLayout.ADDRESS,
             ValueLayout.JAVA_INT,
-                MemoryLayout.sequenceLayout(MAX_RESULT_STRING_SIZE, ValueLayout.JAVA_BYTE)
+                ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_BYTE)
         );
 
         public static final FunctionDescriptor DESCRIPTOR$xrResumeSimultaneousHandsAndControllersTrackingMETA = FunctionDescriptor.of(
@@ -11121,14 +11121,14 @@ public final class XR implements XRConstants {
             ValueLayout.JAVA_INT,
             ValueLayout.ADDRESS,
             ValueLayout.JAVA_INT,
-                MemoryLayout.sequenceLayout(MAX_STRUCTURE_NAME_SIZE, ValueLayout.JAVA_BYTE)
+                ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_BYTE)
         );
 
         public static final FunctionDescriptor DESCRIPTOR$xrStructureTypeToString2KHR = FunctionDescriptor.of(
             ValueLayout.JAVA_INT,
             ValueLayout.ADDRESS,
             ValueLayout.JAVA_INT,
-                MemoryLayout.sequenceLayout(MAX_STRUCTURE_NAME_SIZE_EXTENDED_KHR, ValueLayout.JAVA_BYTE)
+                ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_BYTE)
         );
 
         public static final FunctionDescriptor DESCRIPTOR$xrSubmitDebugUtilsMessageEXT = FunctionDescriptor.of(
