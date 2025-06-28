@@ -991,7 +991,7 @@ public final class XRStatic implements XRConstants {
             return (int) hFunction.invokeExact(
                 instance.segment(),
                 value,
-                    buffer.segment()
+                buffer.segment()
             );
         } catch (Throwable e) {
             throw new RuntimeException(e);
@@ -1043,7 +1043,7 @@ public final class XRStatic implements XRConstants {
             return (int) hFunction.invokeExact(
                 instance.segment(),
                 value,
-                    buffer.segment()
+                buffer.segment()
             );
         } catch (Throwable e) {
             throw new RuntimeException(e);
@@ -1563,7 +1563,7 @@ public final class XRStatic implements XRConstants {
             ValueLayout.JAVA_INT,
             ValueLayout.ADDRESS,
             ValueLayout.JAVA_INT,
-                ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_BYTE)
+            ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_BYTE)
         );
 
         public static final FunctionDescriptor DESCRIPTOR$xrStopHapticFeedback = FunctionDescriptor.of(
@@ -1583,7 +1583,7 @@ public final class XRStatic implements XRConstants {
             ValueLayout.JAVA_INT,
             ValueLayout.ADDRESS,
             ValueLayout.JAVA_INT,
-                ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_BYTE)
+            ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_BYTE)
         );
 
         public static final FunctionDescriptor DESCRIPTOR$xrSuggestInteractionProfileBindings = FunctionDescriptor.of(

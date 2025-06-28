@@ -144,7 +144,7 @@ data class LoweredCommand(
 
 private fun arrayToPointerDecay(type: CType): CType {
     return if (type is CArrayType) {
-        CPointerType(type.element, false, false, null)
+        CPointerType(type.element, const=false, pointerToOne=false, comment="${type.element.cType}[]")
     } else type
 }
 
