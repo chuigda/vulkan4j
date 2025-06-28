@@ -130,8 +130,6 @@ public record WCharPtr(@Override @NotNull MemorySegment segment) implements IPoi
         return new WCharPtr(segment.asSlice(0, end * NativeLayout.WCHAR_SIZE));
     }
 
-    /// The user may use {@link PrimitiveIterator.OfInt#nextInt()} rather than {@link Iterator#next()}
-    /// to avoid unnecessary boxing.
     @Override
     public @NotNull PrimitiveIterator.OfInt iterator() {
         return new Iter(segment);
