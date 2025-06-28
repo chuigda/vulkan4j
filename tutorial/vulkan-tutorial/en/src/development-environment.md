@@ -32,7 +32,7 @@ Create a Maven project and add the following dependencies to your `pom.xml` file
 <dependency>
     <groupId>de.javagl</groupId>
     <artifactId>obj</artifactId>
-    <version>0.4.2</version>
+    <version>0.4.0</version>
 </dependency>
 ```
 
