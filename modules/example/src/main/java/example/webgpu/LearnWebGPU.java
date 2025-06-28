@@ -9,6 +9,7 @@ import club.doki7.webgpu.WGPU;
 import club.doki7.webgpu.WGPUSync;
 import club.doki7.webgpu.WGPUUtil;
 import club.doki7.webgpu.bitmask.WGPUBufferUsage;
+import club.doki7.webgpu.bitmask.WGPUMapMode;
 import club.doki7.webgpu.bitmask.WGPUTextureUsage;
 import club.doki7.webgpu.datatype.*;
 import club.doki7.webgpu.enumtype.*;
@@ -244,6 +245,25 @@ class Application {
             wgpu.commandBufferRelease(commandBuffer);
 
             wgpu.devicePoll(device, 0, null);
+            // endregion
+
+            // region buffer mapping
+            var mapResult = WGPUSync.bufferMap(
+                    wgpu,
+                    instance,
+                    buffer,
+                    WGPUMapMode.READ,
+                    0,
+                    width * height * 4
+            );
+            if (mapResult.status != WGPUMapAsyncStatus.SUCCESS) {
+                throw new RuntimeException(
+                        "Buffer mapping failed: "
+                        + WGPUMapAsyncStatus.explain(mapResult.status)
+                        + (mapResult.message != null ? " - " + mapResult.message : "")
+                );
+            }
+            MemorySegment mappedBuffer = wgpu.bufferGetMappedRange(buffer, 0, width * height * 4);
             // endregion
 
             // region write buffer content to image
