@@ -123,14 +123,14 @@ public final class STBI {
     public int convertWcharToUtf8(
         @Nullable BytePtr buffer,
         long bufferlen,
-        @Pointer(comment="wchar_t*") @NotNull MemorySegment input
+        @Nullable WCharPtr input
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$stbi_convert_wchar_to_utf8);
         try {
             return (int) hFunction.invokeExact(
                 (MemorySegment) (buffer != null ? buffer.segment() : MemorySegment.NULL),
                 MemorySegment.ofAddress(bufferlen),
-                input
+                (MemorySegment) (input != null ? input.segment() : MemorySegment.NULL)
             );
         } catch (Throwable e) {
             throw new RuntimeException(e);
@@ -859,7 +859,7 @@ public final class STBI {
             ValueLayout.JAVA_INT,
             ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_BYTE),
             NativeLayout.C_SIZE_T,
-            ValueLayout.ADDRESS
+            ValueLayout.ADDRESS.withTargetLayout(NativeLayout.WCHAR_T)
         );
 
         public static final FunctionDescriptor DESCRIPTOR$stbi_failure_reason = FunctionDescriptor.of(

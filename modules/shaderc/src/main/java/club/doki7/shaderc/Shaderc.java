@@ -108,7 +108,7 @@ public final class Shaderc {
 
     // region command wrappers
 
-    public ShadercCompilationResult assembleIntoSPV(
+    public @Nullable ShadercCompilationResult assembleIntoSPV(
         @Nullable ShadercCompiler compiler,
         @Nullable BytePtr sourceAssembly,
         long sourceAssemblySize,
@@ -128,7 +128,7 @@ public final class Shaderc {
         }
     }
 
-    public ShadercCompilationResult compileIntoPreprocessedText(
+    public @Nullable ShadercCompilationResult compileIntoPreprocessedText(
         @Nullable ShadercCompiler compiler,
         @Nullable BytePtr sourceText,
         long sourceTextSize,
@@ -154,7 +154,7 @@ public final class Shaderc {
         }
     }
 
-    public ShadercCompilationResult compileIntoSPV(
+    public @Nullable ShadercCompilationResult compileIntoSPV(
         @Nullable ShadercCompiler compiler,
         @Nullable BytePtr sourceText,
         long sourceTextSize,
@@ -180,7 +180,7 @@ public final class Shaderc {
         }
     }
 
-    public ShadercCompilationResult compileIntoSPVAssembly(
+    public @Nullable ShadercCompilationResult compileIntoSPVAssembly(
         @Nullable ShadercCompiler compiler,
         @Nullable BytePtr sourceText,
         long sourceTextSize,
@@ -227,7 +227,7 @@ public final class Shaderc {
         }
     }
 
-    public ShadercCompileOptions compileOptionsClone(
+    public @Nullable ShadercCompileOptions compileOptionsClone(
         @Nullable ShadercCompileOptions options
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$shaderc_compile_options_clone);
@@ -241,7 +241,7 @@ public final class Shaderc {
         }
     }
 
-    public ShadercCompileOptions compileOptionsInitialize() {
+    public @Nullable ShadercCompileOptions compileOptionsInitialize() {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$shaderc_compile_options_initialize);
         try {
             MemorySegment s = (MemorySegment) hFunction.invokeExact(
@@ -660,7 +660,7 @@ public final class Shaderc {
         }
     }
 
-    public ShadercCompiler compilerInitialize() {
+    public @Nullable ShadercCompiler compilerInitialize() {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$shaderc_compiler_initialize);
         try {
             MemorySegment s = (MemorySegment) hFunction.invokeExact(
@@ -716,7 +716,7 @@ public final class Shaderc {
         }
     }
 
-    public BytePtr resultGetBytes(
+    public @Nullable BytePtr resultGetBytes(
         @Nullable ShadercCompilationResult result
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$shaderc_result_get_bytes);
@@ -743,7 +743,7 @@ public final class Shaderc {
         }
     }
 
-    public BytePtr resultGetErrorMessage(
+    public @Nullable BytePtr resultGetErrorMessage(
         @Nullable ShadercCompilationResult result
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$shaderc_result_get_error_message);
