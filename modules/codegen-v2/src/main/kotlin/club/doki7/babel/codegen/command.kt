@@ -5,6 +5,7 @@ import club.doki7.babel.ctype.CHandleType
 import club.doki7.babel.ctype.CNonRefType
 import club.doki7.babel.ctype.CPlatformDependentIntType
 import club.doki7.babel.ctype.CPointerType
+import club.doki7.babel.ctype.CSizeType
 import club.doki7.babel.ctype.CStructType
 import club.doki7.babel.ctype.CType
 import club.doki7.babel.ctype.CVoidType
@@ -323,7 +324,7 @@ private fun generateInputConvert(type: CType, param: Param) = when (type) {
         }
     }
     is CNonRefType -> {
-        if (type is CPlatformDependentIntType && type.cType == "size_t") {
+        if (type is CSizeType) {
             "MemorySegment.ofAddress(${param.name})"
         }
         else {
@@ -368,7 +369,7 @@ private fun generateResultConvert(retType: CType): Triple<String, String, String
         "return s.equals(MemorySegment.NULL) ? null : new ${retType.name}(s);"
     )
     is CPlatformDependentIntType -> {
-        if (retType.cType == "size_t") {
+        if (retType is CSizeType) {
             Triple(
                 "MemorySegment s = (MemorySegment) ",
                 "",

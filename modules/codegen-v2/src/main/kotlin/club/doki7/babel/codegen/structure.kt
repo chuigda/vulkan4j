@@ -523,11 +523,12 @@ fun generateStructure(
 
             if (layout is LayoutField.Typed) {
                 val value = if (layout.type is CPlatformDependentIntType) {
-                    if (layout.type.cType == "size_t") "NativeLayout.C_SIZE_T.byteSize()"
-                    else if (layout.type.cType == "long") "NativeLayout.C_LONG.byteSize()"
-                    else if (layout.type.cType == "int") "Integer.BYTES"
-                    else if (layout.type.cType == "wchar_t") "NativeLayout.WCHAR_SIZE"
-                    else error("Unsupported type ${layout.type.cType}")
+                    when (layout.type) {
+                        is CSizeType -> "NativeLayout.C_SIZE_T.byteSize()"
+                        is CLongType -> "NativeLayout.C_LONG.byteSize()"
+                        is CIntPtrType -> "Integer.BYTES"
+                        is WCharType -> "NativeLayout.WCHAR_SIZE"
+                    }
                 } else "${layout.layoutName}.byteSize()"
 
                 defConst("long", layout.sizeName, value)
