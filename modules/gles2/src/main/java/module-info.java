@@ -16,7 +16,7 @@
 /// <dependency>
 ///     <groupId>club.doki7</groupId>
 ///     <artifactId>gles2</artifactId>
-///     <version>0.4.1</version>
+///     <version>0.4.2</version>
 ///     <scope>compile</scope>
 /// </dependency>
 /// ```
