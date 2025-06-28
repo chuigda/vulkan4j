@@ -24,7 +24,7 @@ import static club.doki7.webgpu.WGPUConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct WGPUSurfaceSourceXlibWindow {
-///     WGPUChainedStruct const* nextInChain; // optional // @link substring="WGPUChainedStruct" target="WGPUChainedStruct" @link substring="nextInChain" target="#nextInChain"
+///     WGPUChainedStruct chain; // @link substring="WGPUChainedStruct" target="WGPUChainedStruct" @link substring="chain" target="#chain"
 ///     void* display; // @link substring="display" target="#display"
 ///     uint64_t window; // @link substring="window" target="#window"
 /// } WGPUSurfaceSourceXlibWindow;
@@ -174,36 +174,18 @@ public record WGPUSurfaceSourceXlibWindow(@NotNull MemorySegment segment) implem
         return ret;
     }
 
-    public WGPUSurfaceSourceXlibWindow nextInChain(@Nullable IWGPUChainedStruct value) {
-        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
-        nextInChainRaw(s);
+    public @NotNull WGPUChainedStruct chain() {
+        return new WGPUChainedStruct(segment.asSlice(OFFSET$chain, LAYOUT$chain));
+    }
+
+    public WGPUSurfaceSourceXlibWindow chain(@NotNull WGPUChainedStruct value) {
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$chain, SIZE$chain);
         return this;
     }
 
-    @Unsafe public @Nullable WGPUChainedStruct.Ptr nextInChain(int assumedCount) {
-        MemorySegment s = nextInChainRaw();
-        if (s.equals(MemorySegment.NULL)) {
-            return null;
-        }
-
-        s = s.reinterpret(assumedCount * WGPUChainedStruct.BYTES);
-        return new WGPUChainedStruct.Ptr(s);
-    }
-
-    public @Nullable WGPUChainedStruct nextInChain() {
-        MemorySegment s = nextInChainRaw();
-        if (s.equals(MemorySegment.NULL)) {
-            return null;
-        }
-        return new WGPUChainedStruct(s);
-    }
-
-    public @Pointer(target=WGPUChainedStruct.class) @NotNull MemorySegment nextInChainRaw() {
-        return segment.get(LAYOUT$nextInChain, OFFSET$nextInChain);
-    }
-
-    public void nextInChainRaw(@Pointer(target=WGPUChainedStruct.class) @NotNull MemorySegment value) {
-        segment.set(LAYOUT$nextInChain, OFFSET$nextInChain, value);
+    public WGPUSurfaceSourceXlibWindow chain(Consumer<@NotNull WGPUChainedStruct> consumer) {
+        consumer.accept(chain());
+        return this;
     }
 
     public @Pointer(comment="void*") @NotNull MemorySegment display() {
@@ -230,25 +212,25 @@ public record WGPUSurfaceSourceXlibWindow(@NotNull MemorySegment segment) implem
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.ADDRESS.withTargetLayout(WGPUChainedStruct.LAYOUT).withName("nextInChain"),
+        WGPUChainedStruct.LAYOUT.withName("chain"),
         ValueLayout.ADDRESS.withName("display"),
         ValueLayout.JAVA_LONG.withName("window")
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$nextInChain = PathElement.groupElement("nextInChain");
+    public static final PathElement PATH$chain = PathElement.groupElement("chain");
     public static final PathElement PATH$display = PathElement.groupElement("display");
     public static final PathElement PATH$window = PathElement.groupElement("window");
 
-    public static final AddressLayout LAYOUT$nextInChain = (AddressLayout) LAYOUT.select(PATH$nextInChain);
+    public static final StructLayout LAYOUT$chain = (StructLayout) LAYOUT.select(PATH$chain);
     public static final AddressLayout LAYOUT$display = (AddressLayout) LAYOUT.select(PATH$display);
     public static final OfLong LAYOUT$window = (OfLong) LAYOUT.select(PATH$window);
 
-    public static final long SIZE$nextInChain = LAYOUT$nextInChain.byteSize();
+    public static final long SIZE$chain = LAYOUT$chain.byteSize();
     public static final long SIZE$display = LAYOUT$display.byteSize();
     public static final long SIZE$window = LAYOUT$window.byteSize();
 
-    public static final long OFFSET$nextInChain = LAYOUT.byteOffset(PATH$nextInChain);
+    public static final long OFFSET$chain = LAYOUT.byteOffset(PATH$chain);
     public static final long OFFSET$display = LAYOUT.byteOffset(PATH$display);
     public static final long OFFSET$window = LAYOUT.byteOffset(PATH$window);
 }

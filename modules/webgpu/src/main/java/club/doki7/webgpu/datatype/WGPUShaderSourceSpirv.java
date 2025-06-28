@@ -24,7 +24,7 @@ import static club.doki7.webgpu.WGPUConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct WGPUShaderSourceSpirv {
-///     WGPUChainedStruct const* nextInChain; // optional // @link substring="WGPUChainedStruct" target="WGPUChainedStruct" @link substring="nextInChain" target="#nextInChain"
+///     WGPUChainedStruct chain; // @link substring="WGPUChainedStruct" target="WGPUChainedStruct" @link substring="chain" target="#chain"
 ///     uint32_t codeSize; // @link substring="codeSize" target="#codeSize"
 ///     uint32_t const* code; // @link substring="code" target="#code"
 /// } WGPUShaderSourceSpirv;
@@ -174,36 +174,18 @@ public record WGPUShaderSourceSpirv(@NotNull MemorySegment segment) implements I
         return ret;
     }
 
-    public WGPUShaderSourceSpirv nextInChain(@Nullable IWGPUChainedStruct value) {
-        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
-        nextInChainRaw(s);
+    public @NotNull WGPUChainedStruct chain() {
+        return new WGPUChainedStruct(segment.asSlice(OFFSET$chain, LAYOUT$chain));
+    }
+
+    public WGPUShaderSourceSpirv chain(@NotNull WGPUChainedStruct value) {
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$chain, SIZE$chain);
         return this;
     }
 
-    @Unsafe public @Nullable WGPUChainedStruct.Ptr nextInChain(int assumedCount) {
-        MemorySegment s = nextInChainRaw();
-        if (s.equals(MemorySegment.NULL)) {
-            return null;
-        }
-
-        s = s.reinterpret(assumedCount * WGPUChainedStruct.BYTES);
-        return new WGPUChainedStruct.Ptr(s);
-    }
-
-    public @Nullable WGPUChainedStruct nextInChain() {
-        MemorySegment s = nextInChainRaw();
-        if (s.equals(MemorySegment.NULL)) {
-            return null;
-        }
-        return new WGPUChainedStruct(s);
-    }
-
-    public @Pointer(target=WGPUChainedStruct.class) @NotNull MemorySegment nextInChainRaw() {
-        return segment.get(LAYOUT$nextInChain, OFFSET$nextInChain);
-    }
-
-    public void nextInChainRaw(@Pointer(target=WGPUChainedStruct.class) @NotNull MemorySegment value) {
-        segment.set(LAYOUT$nextInChain, OFFSET$nextInChain, value);
+    public WGPUShaderSourceSpirv chain(Consumer<@NotNull WGPUChainedStruct> consumer) {
+        consumer.accept(chain());
+        return this;
     }
 
     public @Unsigned int codeSize() {
@@ -242,25 +224,25 @@ public record WGPUShaderSourceSpirv(@NotNull MemorySegment segment) implements I
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.ADDRESS.withTargetLayout(WGPUChainedStruct.LAYOUT).withName("nextInChain"),
+        WGPUChainedStruct.LAYOUT.withName("chain"),
         ValueLayout.JAVA_INT.withName("codeSize"),
         ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_INT).withName("code")
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$nextInChain = PathElement.groupElement("nextInChain");
+    public static final PathElement PATH$chain = PathElement.groupElement("chain");
     public static final PathElement PATH$codeSize = PathElement.groupElement("codeSize");
     public static final PathElement PATH$code = PathElement.groupElement("code");
 
-    public static final AddressLayout LAYOUT$nextInChain = (AddressLayout) LAYOUT.select(PATH$nextInChain);
+    public static final StructLayout LAYOUT$chain = (StructLayout) LAYOUT.select(PATH$chain);
     public static final OfInt LAYOUT$codeSize = (OfInt) LAYOUT.select(PATH$codeSize);
     public static final AddressLayout LAYOUT$code = (AddressLayout) LAYOUT.select(PATH$code);
 
-    public static final long SIZE$nextInChain = LAYOUT$nextInChain.byteSize();
+    public static final long SIZE$chain = LAYOUT$chain.byteSize();
     public static final long SIZE$codeSize = LAYOUT$codeSize.byteSize();
     public static final long SIZE$code = LAYOUT$code.byteSize();
 
-    public static final long OFFSET$nextInChain = LAYOUT.byteOffset(PATH$nextInChain);
+    public static final long OFFSET$chain = LAYOUT.byteOffset(PATH$chain);
     public static final long OFFSET$codeSize = LAYOUT.byteOffset(PATH$codeSize);
     public static final long OFFSET$code = LAYOUT.byteOffset(PATH$code);
 }

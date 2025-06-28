@@ -232,16 +232,35 @@ private fun extractStructures(registry: RegistryBase, structs: List<IDLStructure
     for (struct in structs) {
         val members = mutableListOf<Member>()
 
-        if (struct.type != "standalone") {
-            members.add(Member(
-                name = "nextInChain",
-                type = PointerType(IdentifierType("WGPUChainedStruct"), const = true),
-                values = null,
-                len = null,
-                altLen = null,
-                optional = true,
-                bits = null
-            ))
+        when (struct.type) {
+            "base_in", "base_out", "base_in_or_out" -> {
+                members.add(Member(
+                    name = "nextInChain",
+                    type = PointerType(IdentifierType("WGPUChainedStruct"), const = true),
+                    values = null,
+                    len = null,
+                    altLen = null,
+                    optional = true,
+                    bits = null
+                ))
+            }
+            "extension_in", "extension_out", "extension_in_Or_out" -> {
+                members.add(Member(
+                    name = "chain",
+                    type = IdentifierType("WGPUChainedStruct"),
+                    values = null,
+                    len = null,
+                    altLen = null,
+                    optional = false,
+                    bits = null
+                ))
+            }
+            "standalone" -> {
+                // do nothing
+            }
+            else -> {
+                error("Unknown structure type: ${struct.type} for structure ${struct.name}")
+            }
         }
 
         struct.members.forEach { member ->
@@ -328,10 +347,18 @@ private fun extractBitmask(registry: RegistryBase, bitmasks: List<IDLBitmask>) {
                 if (bitflagName.first().isDigit()) {
                     bitflagName = "_$bitflagName"
                 }
-                Bitflag(
-                    name = bitflagName,
-                    value = if (idx == 0) BigInteger.ZERO else BigInteger.ONE.shiftLeft(idx - 1),
-                )
+
+                if (bitflag.value_combination != null) {
+                    Bitflag(
+                        name = bitflagName,
+                        value = bitflag.value_combination.map { it.uppercase() }.toMutableList()
+                    )
+                } else {
+                    Bitflag(
+                        name = bitflagName,
+                        value = if (idx == 0) BigInteger.ZERO else BigInteger.ONE.shiftLeft(idx - 1),
+                    )
+                }
             }.toMutableList()
         ))
     }

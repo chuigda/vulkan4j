@@ -24,7 +24,7 @@ import static club.doki7.webgpu.WGPUConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct WGPURenderPassMaxDrawCount {
-///     WGPUChainedStruct const* nextInChain; // optional // @link substring="WGPUChainedStruct" target="WGPUChainedStruct" @link substring="nextInChain" target="#nextInChain"
+///     WGPUChainedStruct chain; // @link substring="WGPUChainedStruct" target="WGPUChainedStruct" @link substring="chain" target="#chain"
 ///     uint64_t maxDrawCount; // @link substring="maxDrawCount" target="#maxDrawCount"
 /// } WGPURenderPassMaxDrawCount;
 /// }
@@ -173,36 +173,18 @@ public record WGPURenderPassMaxDrawCount(@NotNull MemorySegment segment) impleme
         return ret;
     }
 
-    public WGPURenderPassMaxDrawCount nextInChain(@Nullable IWGPUChainedStruct value) {
-        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
-        nextInChainRaw(s);
+    public @NotNull WGPUChainedStruct chain() {
+        return new WGPUChainedStruct(segment.asSlice(OFFSET$chain, LAYOUT$chain));
+    }
+
+    public WGPURenderPassMaxDrawCount chain(@NotNull WGPUChainedStruct value) {
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$chain, SIZE$chain);
         return this;
     }
 
-    @Unsafe public @Nullable WGPUChainedStruct.Ptr nextInChain(int assumedCount) {
-        MemorySegment s = nextInChainRaw();
-        if (s.equals(MemorySegment.NULL)) {
-            return null;
-        }
-
-        s = s.reinterpret(assumedCount * WGPUChainedStruct.BYTES);
-        return new WGPUChainedStruct.Ptr(s);
-    }
-
-    public @Nullable WGPUChainedStruct nextInChain() {
-        MemorySegment s = nextInChainRaw();
-        if (s.equals(MemorySegment.NULL)) {
-            return null;
-        }
-        return new WGPUChainedStruct(s);
-    }
-
-    public @Pointer(target=WGPUChainedStruct.class) @NotNull MemorySegment nextInChainRaw() {
-        return segment.get(LAYOUT$nextInChain, OFFSET$nextInChain);
-    }
-
-    public void nextInChainRaw(@Pointer(target=WGPUChainedStruct.class) @NotNull MemorySegment value) {
-        segment.set(LAYOUT$nextInChain, OFFSET$nextInChain, value);
+    public WGPURenderPassMaxDrawCount chain(Consumer<@NotNull WGPUChainedStruct> consumer) {
+        consumer.accept(chain());
+        return this;
     }
 
     public @Unsigned long maxDrawCount() {
@@ -215,20 +197,20 @@ public record WGPURenderPassMaxDrawCount(@NotNull MemorySegment segment) impleme
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.ADDRESS.withTargetLayout(WGPUChainedStruct.LAYOUT).withName("nextInChain"),
+        WGPUChainedStruct.LAYOUT.withName("chain"),
         ValueLayout.JAVA_LONG.withName("maxDrawCount")
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$nextInChain = PathElement.groupElement("nextInChain");
+    public static final PathElement PATH$chain = PathElement.groupElement("chain");
     public static final PathElement PATH$maxDrawCount = PathElement.groupElement("maxDrawCount");
 
-    public static final AddressLayout LAYOUT$nextInChain = (AddressLayout) LAYOUT.select(PATH$nextInChain);
+    public static final StructLayout LAYOUT$chain = (StructLayout) LAYOUT.select(PATH$chain);
     public static final OfLong LAYOUT$maxDrawCount = (OfLong) LAYOUT.select(PATH$maxDrawCount);
 
-    public static final long SIZE$nextInChain = LAYOUT$nextInChain.byteSize();
+    public static final long SIZE$chain = LAYOUT$chain.byteSize();
     public static final long SIZE$maxDrawCount = LAYOUT$maxDrawCount.byteSize();
 
-    public static final long OFFSET$nextInChain = LAYOUT.byteOffset(PATH$nextInChain);
+    public static final long OFFSET$chain = LAYOUT.byteOffset(PATH$chain);
     public static final long OFFSET$maxDrawCount = LAYOUT.byteOffset(PATH$maxDrawCount);
 }

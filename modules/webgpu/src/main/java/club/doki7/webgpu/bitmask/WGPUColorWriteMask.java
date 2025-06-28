@@ -6,18 +6,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 public final class WGPUColorWriteMask {
-    public static final long ALL = 0x10L;
     public static final long ALPHA = 0x8L;
     public static final long BLUE = 0x4L;
     public static final long GREEN = 0x2L;
     public static final long NONE = 0x0L;
     public static final long RED = 0x1L;
+    public static final long ALL = RED | GREEN | BLUE | ALPHA;
 
     public static String explain(@Bitmask(WGPUColorWriteMask.class) long flags) {
         List<String> detectedFlagBits = new ArrayList<>();
-        if ((flags & ALL) != 0) {
-            detectedFlagBits.add("ALL");
-        }
         if ((flags & ALPHA) != 0) {
             detectedFlagBits.add("ALPHA");
         }

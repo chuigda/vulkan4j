@@ -9,6 +9,7 @@ import club.doki7.webgpu.WGPU;
 import club.doki7.webgpu.WGPUSync;
 import club.doki7.webgpu.WGPUUtil;
 import club.doki7.webgpu.bitmask.WGPUBufferUsage;
+import club.doki7.webgpu.bitmask.WGPUColorWriteMask;
 import club.doki7.webgpu.bitmask.WGPUMapMode;
 import club.doki7.webgpu.bitmask.WGPUTextureUsage;
 import club.doki7.webgpu.datatype.*;
@@ -198,6 +199,61 @@ class Application {
             var buffer = Objects.requireNonNull(wgpu.deviceCreateBuffer(device, bufferDescriptor));
             // endregion
 
+            // region pipeline initialization
+            var shaderSourceWGSL = WGPUShaderSourceWgsl.allocate(arena)
+                    .chain(it -> it.sType(WGPUSType.SHADER_SOURCE_WGSL))
+                    .code(WGPUUtil.createStringView(arena, SHADER_CODE));
+
+            var shaderModuleDescriptor = WGPUShaderModuleDescriptor.allocate(arena)
+                    .label(WGPUUtil.createStringView(arena, "Example Shader Module"))
+                    .nextInChain(new WGPUChainedStruct(shaderSourceWGSL.segment()));
+            var shaderModule = Objects.requireNonNull(wgpu.deviceCreateShaderModule(
+                    device,
+                    shaderModuleDescriptor
+            ));
+
+            var blendState = WGPUBlendState.allocate(arena)
+                    .color(it -> it
+                            .srcFactor(WGPUBlendFactor.ONE)
+                            .dstFactor(WGPUBlendFactor.ZERO)
+                            .operation(WGPUBlendOperation.ADD))
+                    .alpha(it -> it
+                            .srcFactor(WGPUBlendFactor.ONE)
+                            .dstFactor(WGPUBlendFactor.ZERO)
+                            .operation(WGPUBlendOperation.ADD));
+            var colorTargetState = WGPUColorTargetState.allocate(arena)
+                    .format(textureFormat)
+                    .blend(blendState)
+                    .writeMask(WGPUColorWriteMask.ALL);
+
+            var fragmentState = WGPUFragmentState.allocate(arena)
+                    .module(shaderModule)
+                    .entryPoint(WGPUUtil.createStringView(arena, "fs_main"))
+                    .targetCount(1)
+                    .targets(colorTargetState);
+
+            var pipelineDescriptor = WGPURenderPipelineDescriptor.allocate(arena)
+                    .label(WGPUUtil.createStringView(arena, "Example Render Pipeline"))
+                    .vertex(it -> it
+                            .module(shaderModule)
+                            .entryPoint(WGPUUtil.createStringView(arena, "vs_main")))
+                    .fragment(fragmentState)
+                    .primitive(it -> it
+                            .topology(WGPUPrimitiveTopology.TRIANGLE_LIST)
+                            .stripIndexFormat(WGPUIndexFormat.UNDEFINED)
+                            .frontFace(WGPUFrontFace.CCW)
+                            .cullMode(WGPUCullMode.NONE))
+                    .multisample(it -> it
+                            .count(1)
+                            .mask(0xFFFFFFFF)
+                            .alphaToCoverageEnabled(0));
+            var pipeline = Objects.requireNonNull(wgpu.deviceCreateRenderPipeline(
+                    device,
+                    pipelineDescriptor
+            ));
+            wgpu.shaderModuleRelease(shaderModule);
+            // endregion
+
             // region command buffer encoding
             var encoderDesc = WGPUCommandEncoderDescriptor.allocate(arena)
                     .label(WGPUUtil.createStringView(arena, "Example Command Buffer Encoder"));
@@ -217,6 +273,10 @@ class Application {
                     .colorAttachmentCount(1)
                     .colorAttachments(colorAttachment);
             var renderPassEncoder = Objects.requireNonNull(wgpu.commandEncoderBeginRenderPass(encoder, renderPassDescriptor));
+
+            wgpu.renderPassEncoderSetPipeline(renderPassEncoder, pipeline);
+            wgpu.renderPassEncoderDraw(renderPassEncoder, 3, 1, 0, 0);
+
             wgpu.renderPassEncoderEnd(renderPassEncoder);
             wgpu.renderPassEncoderRelease(renderPassEncoder);
 
@@ -278,6 +338,9 @@ class Application {
             // endregion
 
             // region cleanup
+            wgpu.bufferUnmap(buffer);
+
+            wgpu.renderPipelineRelease(pipeline);
             wgpu.bufferRelease(buffer);
             wgpu.textureViewRelease(textureView);
             wgpu.textureRelease(targetTexture);
@@ -287,6 +350,39 @@ class Application {
             // endregion
         }
     }
+
+    private static final String SHADER_CODE = """
+            struct VertexOutput {
+                @builtin(position) position: vec4f,
+                @location(0) color: vec4f
+            };
+            
+            @vertex
+            fn vs_main(@builtin(vertex_index) in_vertex_index: u32) -> VertexOutput {
+                var p = vec2f(0.0, 0.0);
+                var c = vec3f(0.0, 0.0, 0.0);
+                if (in_vertex_index == 0u) {
+                    p = vec2f(-0.5, -0.5);
+                    c = vec3f(1.0, 0.0, 0.0);
+                } else if (in_vertex_index == 1u) {
+                    p = vec2f(0.5, -0.5);
+                    c = vec3f(0.0, 1.0, 0.0);
+                } else {
+                    p = vec2f(0.0, 0.5);
+                    c = vec3f(0.0, 0.0, 1.0);
+                }
+
+                var output : VertexOutput;
+                output.position = vec4f(p, 0.0, 1.0);
+                output.color = vec4f(c, 1.0);
+                return output;
+            }
+
+            @fragment
+            fn fs_main(fragData: VertexOutput) -> @location(0) vec4f {
+                return fragData.color;
+            }
+            """;
 }
 
 public final class LearnWebGPU {
