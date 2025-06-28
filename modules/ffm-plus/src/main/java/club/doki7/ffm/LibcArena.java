@@ -41,11 +41,11 @@ public enum LibcArena implements Arena {
                     MemorySegment.ofAddress(byteAlignment),
                     MemorySegment.ofAddress(byteSize)
             );
-        } catch (Throwable _) {
-            throw new RuntimeException("Failed to allocate memory");
+        } catch (Throwable e) {
+            throw new RuntimeException("Failed to allocate memory", e);
         }
 
-        if (ms.address() == 0) {
+        if (ms.equals(MemorySegment.NULL)) {
             throw new OutOfMemoryError("Failed allocating memory with aligned_alloc");
         }
 
@@ -55,14 +55,18 @@ public enum LibcArena implements Arena {
     }
 
     public void free(@NotNull MemorySegment ms) {
+        if (ms.equals(MemorySegment.NULL)) {
+            return;
+        }
+
         if (HANDLE$aligned_alloc == null) {
             freeLegacy(ms);
         }
 
         try {
             Objects.requireNonNull(HANDLE$free).invokeExact(ms);
-        } catch (Throwable _) {
-            throw new RuntimeException("Failed to free memory");
+        } catch (Throwable e) {
+            throw new RuntimeException("Failed to free memory", e);
         }
     }
 
@@ -77,9 +81,52 @@ public enum LibcArena implements Arena {
     }
 
     private static MemorySegment allocateLegacy(long byteSize, long byteAlignment) {
+        final long pointerSize = ValueLayout.ADDRESS.byteSize();
+        final long totalSize = byteSize + byteAlignment - 1 + pointerSize;
+
+        MemorySegment rawMS;
+        try {
+            MethodHandle hMalloc = Objects.requireNonNull(HANDLE$malloc);
+            rawMS = (MemorySegment) hMalloc.invokeExact(MemorySegment.ofAddress(totalSize));
+        } catch (Throwable e) {
+            throw new RuntimeException("Failed to allocate memory using malloc", e);
+        }
+
+        if (rawMS.equals(MemorySegment.NULL)) {
+            throw new OutOfMemoryError("Failed allocating memory with malloc");
+        }
+
+        final long rawAddress = rawMS.address();
+        final long alignedAddress = (rawAddress + pointerSize + byteAlignment - 1) & -byteAlignment;
+        final long metadataAddress = alignedAddress - pointerSize;
+
+        MemorySegment ms = MemorySegment.ofAddress(alignedAddress).reinterpret(byteSize);
+        MemorySegment metadata = MemorySegment.ofAddress(metadataAddress).reinterpret(pointerSize);
+        metadata.set(ValueLayout.ADDRESS, 0, rawMS);
+        ms.fill((byte) 0);
+
+        return ms;
     }
 
     private static void freeLegacy(@NotNull MemorySegment ms) {
+        if (ms.equals(MemorySegment.NULL)) {
+            return;
+        }
+
+        final long pointerSize = ValueLayout.ADDRESS.byteSize();
+        final long metadataAddress = ms.address() - pointerSize;
+        MemorySegment metadata = MemorySegment.ofAddress(metadataAddress).reinterpret(pointerSize);
+        MemorySegment rawMS = metadata.get(ValueLayout.ADDRESS, 0);
+
+        if (rawMS.equals(MemorySegment.NULL)) {
+            throw new IllegalStateException("Memory segment does not have allocated memory");
+        }
+
+        try {
+            Objects.requireNonNull(HANDLE$free).invokeExact(rawMS);
+        } catch (Throwable e) {
+            throw new RuntimeException("Failed to free memory", e);
+        }
     }
 
     private static final FunctionDescriptor DESCRIPTOR$aligned_alloc = FunctionDescriptor.of(
