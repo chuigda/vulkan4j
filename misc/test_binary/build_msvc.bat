@@ -12,5 +12,5 @@ del /f /s /q *.ilk
 del /f /s /q *.exp
 
 for %%f in (*.c) do (
-    cl.exe /nologo /LD /MD /Zi "%%f" /Fe:"%%~nf.dll"
+    cl.exe /utf-8 /nologo /LD /MD /DWIN32 /Zi "%%f" /Fe:"%%~nf.dll" /link User32.lib
 )

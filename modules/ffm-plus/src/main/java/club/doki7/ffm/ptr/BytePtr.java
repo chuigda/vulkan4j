@@ -64,8 +64,7 @@ public record BytePtr(@NotNull MemorySegment segment) implements IPointer, Itera
     }
 
     /// Assume the {@link BytePtr} is a null-terminated string, reads the string from the beginning
-    /// of the underlying memory segment, until the first NUL byte is encountered or the end of the
-    /// segment is reached.
+    /// of the underlying memory segment, until the first NUL byte is encountered.
     ///
     /// This function requires the size of the underlying memory segment to be set correctly. If the
     /// size is not known in advance and correctly set (for example, the {@link BytePtr} or the

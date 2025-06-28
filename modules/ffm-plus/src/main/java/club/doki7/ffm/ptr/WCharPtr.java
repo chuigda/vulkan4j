@@ -10,6 +10,7 @@ import org.jetbrains.annotations.Nullable;
 
 import java.lang.foreign.Arena;
 import java.lang.foreign.MemorySegment;
+import java.lang.foreign.ValueLayout;
 import java.util.Iterator;
 import java.util.List;
 import java.util.NoSuchElementException;
@@ -46,6 +47,77 @@ public record WCharPtr(@Override @NotNull MemorySegment segment) implements IPoi
 
     public void write(long index, int value) {
         NativeLayout.writeWCharT(segment, index * NativeLayout.WCHAR_SIZE, value);
+    }
+
+    /// **(Windows only)** Assume the {@link WCharPtr} is a Windows wide character string, reads the
+    /// string from the beginning of the underlying memory segment, until the first NUL byte is
+    /// encountered or the end of the segment is reached.
+    ///
+    /// This function requires the size of the underlying segment to be a set correctly. If the
+    /// size is not known in advance and correctly set (for example, the {@link WCharPtr} or the
+    /// underlying {@link MemorySegment} is returned from some C API), you may use
+    /// {@link WCharPtr#readWString()} (note that it is {@link Unsafe}) instead.
+    public @NotNull String readWStringSafe() {
+        if (NativeLayout.WCHAR_SIZE != 2) {
+            throw new UnsupportedOperationException("readWStringSafe only supports 2-byte wchar_t");
+        }
+
+        long size = size();
+        for (long i = 0; i < size; i++) {
+            if (read(i) == 0) {
+                if (i > Integer.MAX_VALUE) {
+                    throw new IllegalArgumentException("Segment size is too large to read as a string");
+                }
+
+                char[] characters = new char[(int) i];
+                MemorySegment
+                        .ofArray(characters)
+                        .copyFrom(segment.asSlice(0, (long) i * NativeLayout.WCHAR_SIZE));
+                return new String(characters);
+            }
+        }
+
+        if (size > Integer.MAX_VALUE) {
+            throw new IllegalArgumentException("Segment size is too large to read as a string");
+        }
+        char[] characters = new char[(int) size];
+        MemorySegment
+                .ofArray(characters)
+                .copyFrom(segment.asSlice(0, size * NativeLayout.WCHAR_SIZE));
+        return new String(characters);
+    }
+
+    /// **(Windows only)** Assume the {@link WCharPtr} is a Windows wide character string, reads the
+    /// wide string from the beginning of the underlying memory segment, until the first NUL byte is
+    /// encountered.
+    ///
+    /// This function is {@link Unsafe} because it does not check the size of the underlying
+    /// memory segment. This function is suitable for the cases that the size of the underlying
+    /// memory segment is now known in advance or correctly set (for example, the {@link WCharPtr}
+    /// or the underlying {@link MemorySegment} is returned from some C API). If the size is
+    /// correctly set, you may use {@link #readWStringSafe()} instead.
+    @Unsafe
+    public @NotNull String readWString() {
+        if (NativeLayout.WCHAR_SIZE != 2) {
+            throw new UnsupportedOperationException("readWString only supports 2-byte wchar_t");
+        }
+
+        MemorySegment unsizedSegment = segment.reinterpret(Long.MAX_VALUE);
+        for (long i = 0; i < unsizedSegment.byteSize() / NativeLayout.WCHAR_SIZE; i++) {
+            if (NativeLayout.readWCharT(unsizedSegment, i * NativeLayout.WCHAR_SIZE) == 0) {
+                if (i > Integer.MAX_VALUE) {
+                    throw new IllegalArgumentException("Segment size is too large to read as a string");
+                }
+
+                char[] characters = new char[(int) i];
+                MemorySegment
+                        .ofArray(characters)
+                        .copyFrom(unsizedSegment.asSlice(0, i * NativeLayout.WCHAR_SIZE));
+                return new String(characters);
+            }
+        }
+
+        throw new IllegalArgumentException("Segment size is too large to read as a string");
     }
 
     /// Assume the {@link WCharPtr} is capable of holding at least {@code newSize} elements, create
@@ -124,6 +196,19 @@ public record WCharPtr(@Override @NotNull MemorySegment segment) implements IPoi
 
     public static @NotNull WCharPtr allocate(@NotNull Arena arena, long size) {
         return new WCharPtr(arena.allocate(NativeLayout.WCHAR_T, size));
+    }
+
+    /// **(Windows only)** allocate a new {@link WCharPtr} with the given string as the content.
+    public static @NotNull WCharPtr allocateWString(@NotNull Arena arena, @NotNull String string) {
+        if (NativeLayout.WCHAR_SIZE != 2) {
+            throw new UnsupportedOperationException("allocateWString only supports 2-byte wchar_t");
+        }
+
+        char[] charArray = string.toCharArray();
+        MemorySegment segment = arena.allocate(NativeLayout.WCHAR_T, charArray.length + 1);
+        segment.copyFrom(MemorySegment.ofArray(charArray));
+        segment.set(ValueLayout.JAVA_SHORT, (long) charArray.length * NativeLayout.WCHAR_SIZE, (short) 0);
+        return new WCharPtr(segment);
     }
 
     private static final class Iter implements PrimitiveIterator.OfInt {
