@@ -78,7 +78,7 @@ public enum LibcArena implements Arena {
 
     @Override
     public void close() {
-        throw new UnsupportedOperationException("Cannot close CArena");
+        throw new UnsupportedOperationException("Cannot close LibcArena");
     }
 
     private static MemorySegment allocateLegacy(long byteSize, long byteAlignment) {
