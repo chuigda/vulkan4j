@@ -365,7 +365,7 @@ private fun extractConstants(registry: RegistryBase, constants: List<IDLConstant
             ?: error("Unknown constant value: ${constant.value}")
 
         registry.constants.putEntityIfAbsent(Constant(
-            name = "WGPU_" + constant.name.uppercase(),
+            name = constant.name.uppercase(),
             type = mappedConstant.identType,
             expr = mappedConstant.javaExpression
         ))
