@@ -142,12 +142,20 @@ data class LoweredCommand(
     val command: Command
 )
 
+private fun arrayToPointerDecay(type: CType): CType {
+    return if (type is CArrayType) {
+        CPointerType(type.element, false, false, null)
+    } else type
+}
+
 private fun lowerCommand(
     command: Command,
     registry: RegistryBase,
     codegenOptions: CodegenOptions
 ) = LoweredCommand(
-    paramCType = command.params.map { lowerType(registry, codegenOptions.refRegistries, it.type) }.toList(),
+    paramCType = command.params.map {
+        arrayToPointerDecay(lowerType(registry, codegenOptions.refRegistries, it.type))
+    }.toList(),
     result = lowerType(registry, codegenOptions.refRegistries, command.result),
     command = command
 )
