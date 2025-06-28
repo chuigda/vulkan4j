@@ -162,14 +162,12 @@ class Application {
             wgpu.queueSubmit(queue, 1, WGPUCommandBuffer.Ptr.allocateV(arena, commandBuffer));
             wgpu.commandBufferRelease(commandBuffer);
 
-            Thread.sleep(1000);
+            wgpu.devicePoll(device, 0, null);
             // endregion
 
             wgpu.queueRelease(queue);
             wgpu.deviceRelease(device);
             wgpu.instanceRelease(instance);
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
         }
     }
 }
