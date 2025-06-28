@@ -15,7 +15,7 @@ import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.PrimitiveIterator;
 
-/// Represents a pointer to 32-bit integer(s) in native memory.
+/// Represents a pointer to C `wchar_t` element(s) in native memory.
 ///
 /// The property {@link #segment()} should always be not-null
 /// ({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to
@@ -75,7 +75,7 @@ public record WCharPtr(@Override @NotNull MemorySegment segment) implements IPoi
     }
 
     /// The user may use {@link PrimitiveIterator.OfInt#nextInt()} rather than {@link Iterator#next()}
-    /// to avoids unnecessary boxing.
+    /// to avoid unnecessary boxing.
     @Override
     public @NotNull PrimitiveIterator.OfInt iterator() {
         return new Iter(segment);
