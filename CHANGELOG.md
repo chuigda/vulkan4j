@@ -2,7 +2,7 @@
 
 ### New bindings
 
-- Added `webgpu` module, which provides bindings for **wgpu-rs 25.0**.
+- Added `webgpu` module, which provides bindings for **wgpu-rs 25.0.2.1**. This module is generated from the official WebGPU YML IDL files. We are able to do dog feeding via an offscreen rendering example. This module is marked as experimental due to the unstable status of WebGPU Native APIs. Please read the module level documentation for more details.
 
 ### Functionality updates
 
