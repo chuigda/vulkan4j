@@ -76,7 +76,7 @@ fun generateBitmask(
                         "public static final $bitflagType ${flag.name} = 0$postfix;"
                     } else {
                         val valueString = value.joinToString(" | ")
-                        "public static final $bitflagType ${flag.name} = $valueString$postfix;"
+                        "public static final $bitflagType ${flag.name} = $valueString;"
                     }
                 }
             }

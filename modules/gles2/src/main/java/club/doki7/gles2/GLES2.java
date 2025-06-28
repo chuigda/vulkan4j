@@ -1524,7 +1524,7 @@ public final class GLES2 implements GLES2Constants {
     }
 
     /// @see <a href="https://docs.gl/es2/glGetString"><code>glGetString</code></a>
-    public @Pointer(comment="GLubyte") @Unsigned BytePtr getString(
+    public @Nullable @Pointer(comment="GLubyte") @Unsigned BytePtr getString(
         @NativeType("GLenum") int name
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glGetString);

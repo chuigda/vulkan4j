@@ -9,10 +9,6 @@ import club.doki7.babel.codegen.generateHandle
 import club.doki7.babel.codegen.generateStructure
 import club.doki7.babel.codegen.generateStructureInterface
 import club.doki7.babel.extract.vma.extractVMAHeader
-import club.doki7.babel.registry.EmptyMergeable
-import club.doki7.babel.registry.FunctionTypedef
-import club.doki7.babel.registry.Identifier
-import club.doki7.babel.registry.Registry
 import club.doki7.babel.registry.RegistryBase
 import club.doki7.babel.registry.intern
 import club.doki7.babel.util.Either

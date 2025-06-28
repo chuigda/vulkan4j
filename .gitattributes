@@ -62,4 +62,12 @@ modules/openxr/src/main/java/club/doki7/openxr/datatype/*.java linguist-generate
 modules/openxr/src/main/java/club/doki7/openxr/enumtype/*.java linguist-generated
 modules/openxr/src/main/java/club/doki7/openxr/handle/*.java linguist-generated
 
+modules/webgpu/src/main/java/club/doki7/webgpu/bitmask/*.java linguist-generated
+modules/webgpu/src/main/java/club/doki7/webgpu/datatype/*.java linguist-generated
+modules/webgpu/src/main/java/club/doki7/webgpu/enumtype/*.java linguist-generated
+modules/webgpu/src/main/java/club/doki7/webgpu/handle/*.java linguist-generated
+modules/webgpu/src/main/java/club/doki7/webgpu/WGPU.java linguist-generated
+modules/webgpu/src/main/java/club/doki7/webgpu/WGPUConstants.java linguist-generated
+modules/webgpu/src/main/java/club/doki7/webgpu/WGPUFunctionTypes.java linguist-generated
+
 modules/tutorial/src/main/java/**/*.java linguist-documentation

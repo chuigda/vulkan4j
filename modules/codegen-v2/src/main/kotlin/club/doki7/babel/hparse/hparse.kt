@@ -1,10 +1,22 @@
 package club.doki7.babel.hparse
 
+import club.doki7.babel.cdecl.FunctionDecl
+import club.doki7.babel.cdecl.RawFunctionType
+import club.doki7.babel.cdecl.TypedefDecl
 import club.doki7.babel.cdecl.isIdentChar
 import club.doki7.babel.cdecl.parseBlockDoxygen
+import club.doki7.babel.cdecl.parseFunctionDecl
 import club.doki7.babel.cdecl.parseTriSlashDoxygen
+import club.doki7.babel.cdecl.parseTypedefDecl
+import club.doki7.babel.cdecl.toType
+import club.doki7.babel.registry.Command
+import club.doki7.babel.registry.FunctionTypedef
 import club.doki7.babel.registry.IMergeable
+import club.doki7.babel.registry.IdentifierType
+import club.doki7.babel.registry.Param
 import club.doki7.babel.registry.Registry
+import club.doki7.babel.registry.Typedef
+import club.doki7.babel.registry.putEntityIfAbsent
 import java.util.logging.Logger
 
 enum class ControlFlow {
@@ -243,3 +255,63 @@ fun <E: IMergeable<E>> skipIfdefCplusplusExternC(
     }
     return i + 1
 }
+
+fun detectEnumTypedef(line: String): ControlFlow =
+    if (line.startsWith("typedef") && line.contains("enum")) {
+        ControlFlow.ACCEPT
+    } else {
+        ControlFlow.NEXT
+    }
+
+fun detectNonOpaqueStructTypedef(line: String): ControlFlow =
+    if (line.startsWith("typedef") && line.contains("struct") && !line.endsWith(";")) {
+        ControlFlow.ACCEPT
+    } else {
+        ControlFlow.NEXT
+    }
+
+fun <E : IMergeable<E>> parseAndSaveSimpleFuncDecl(
+    registry: Registry<E>,
+    @Suppress("unused") cx: MutableMap<String, Any>,
+    lines: List<String>,
+    index: Int
+): Int {
+    val (typedef, nextIndex) = parseFunctionDecl(lines, index)
+    registry.commands.putEntityIfAbsent(morphSimpleFuncDecl(typedef))
+    return nextIndex
+}
+
+private fun morphSimpleFuncDecl(functionDecl: FunctionDecl) = Command(
+    name = functionDecl.name,
+    params = functionDecl.params.map {
+        Param(
+            name = it.name,
+            type = it.type.toType(),
+            len = null,
+            argLen = null,
+            optional = true,
+        )
+    },
+    result = functionDecl.returnType.toType(),
+    successCodes = null,
+    errorCodes = null
+)
+
+fun <E : IMergeable<E>> parseAndSaveSimpleTypeAlias(
+    registry: Registry<E>,
+    @Suppress("unused") cx: MutableMap<String, Any>,
+    lines: List<String>,
+    index: Int
+): Int {
+    val parseResult = parseTypedefDecl(lines, index)
+    val (typedef, nextIndex) = parseResult
+    val alias = morphSimpleTypedefAlias(typedef)
+    registry.aliases.putEntityIfAbsent(alias)
+
+    return nextIndex
+}
+
+private fun morphSimpleTypedefAlias(typedef: TypedefDecl) = Typedef(
+    name = typedef.name,
+    type = (typedef.aliasedType.toType() as IdentifierType),
+)

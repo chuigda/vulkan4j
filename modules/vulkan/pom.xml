@@ -57,7 +57,6 @@
     <properties>
         <maven.compiler.release>22</maven.compiler.release>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <version.postfix>-preview</version.postfix>
     </properties>
 
     <dependencies>

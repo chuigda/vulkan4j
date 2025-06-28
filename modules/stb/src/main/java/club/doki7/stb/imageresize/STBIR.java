@@ -206,7 +206,7 @@ public final class STBIR {
         }
     }
 
-    public FloatPtr resizeFloatLinear(
+    public @Nullable FloatPtr resizeFloatLinear(
         @Nullable FloatPtr inputPixels,
         int inputW,
         int inputH,
@@ -288,7 +288,7 @@ public final class STBIR {
         }
     }
 
-    public BytePtr resizeUint8Linear(
+    public @Nullable BytePtr resizeUint8Linear(
         @Nullable BytePtr inputPixels,
         int inputW,
         int inputH,
@@ -318,7 +318,7 @@ public final class STBIR {
         }
     }
 
-    public BytePtr resizeUint8Srgb(
+    public @Nullable BytePtr resizeUint8Srgb(
         @Nullable BytePtr inputPixels,
         int inputW,
         int inputH,

@@ -1,11 +1,16 @@
 ## UNRELEASED v0.4.2
 
+### New bindings
+
+- Added `webgpu` module, which provides bindings for **wgpu-rs 25.0.2.1**. This module is generated from the official WebGPU YML IDL files. We are able to do dog feeding via an offscreen rendering example. This module is marked as experimental due to the unstable status of WebGPU Native APIs. Please read the module level documentation for more details.
+
 ### Functionality updates
 
 - Deprecated `WindowsUtil.getLastError` method. Please use the Java's officially recommended `Linker.Option.captureCallState` instead.
 
 ### Bugfixes
 
+- Returned pointers and handles are now correctly marked as `@Nullable` by default, providing much better null-safety.
 - Fixed issue #126 by using `Linker.Option.captureCallState` to retrieve `GetLastError` code.
 - In the static initializer of `UnixLibraryLoader`, `UnixUtil.forceLoad` is now called automatically to ensure that result of `dlerror` won't be overwritten by the loading of `dlerror` function itself.
 

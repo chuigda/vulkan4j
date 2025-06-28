@@ -257,6 +257,8 @@ internal val knownTriviaMacros = setOf(
     "STBIRDEF",
     "STBIWDEF",
 
+    "WGPU_NULLABLE",
+
     "extern"
 )
 

@@ -75,3 +75,13 @@ internal fun renameVariantOrBitflag(
         renamed
     }
 }
+
+internal fun String.toPascalCase(): String {
+    return this
+        .split('_')
+        .filter { it.isNotEmpty() }
+        .joinToString("") { part ->
+            if (part.length <= 1) part.uppercase()
+            else part.lowercase().replaceFirstChar { it.uppercaseChar() }
+        }
+}

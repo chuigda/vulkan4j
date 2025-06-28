@@ -81,16 +81,16 @@ private fun extractSTBHeader(
 
         addRule(20, ::detectPreprocessor, ::skipPreprocessor)
 
-        addRule(30, ::detectFuncDecl, ::parseAndSaveFuncDecl)
+        addRule(30, ::detectFuncDecl, ::parseAndSaveSimpleFuncDecl)
         addRule(30, ::detectCallbackTypedef, ::parseAndSaveCallbackTypedef)
-        addRule(30, ::detectStructTypedef, ::parseAndSaveStructure)
+        addRule(30, ::detectNonOpaqueStructTypedef, ::parseAndSaveStructure)
         addRule(30, ::detectNonTypedefStruct, ::parseAndSaveStructure2)
         addRule(30, ::detectEnumTypedef, ::parseAndSaveEnumeration)
         addRule(30, ::detectEnumDecl, ::parseAndSaveEnumConstants)
 
         addRule(40, ::detectOpaqueHandle, ::parseOpaqueHandle)
 
-        addRule(50, ::detectTypeAlias, ::parseTypeAlias)
+        addRule(50, ::detectTypeAlias, ::parseAndSaveSimpleTypeAlias)
     }
 
     hparse(
@@ -103,35 +103,6 @@ private fun extractSTBHeader(
 
     return registry
 }
-
-// region function decl
-private fun <E : IMergeable<E>> parseAndSaveFuncDecl(
-    registry: Registry<E>,
-    @Suppress("unused") cx: MutableMap<String, Any>,
-    lines: List<String>,
-    index: Int
-): Int {
-    val (typedef, nextIndex) = parseFunctionDecl(lines, index)
-    registry.commands.putEntityIfAbsent(morphFunctionDecl(typedef))
-    return nextIndex
-}
-
-private fun morphFunctionDecl(functionDecl: FunctionDecl) = Command(
-    name = functionDecl.name,
-    params = functionDecl.params.map {
-        Param(
-            name = it.name,
-            type = it.type.toType(),
-            len = null,
-            argLen = null,
-            optional = true,
-        )
-    },
-    result = functionDecl.returnType.toType(),
-    successCodes = null,
-    errorCodes = null
-)
-// endregion
 
 // region callback typedef
 private fun detectCallbackTypedef(line: String): ControlFlow =
@@ -163,13 +134,6 @@ private fun morphCallbackTypedef(typedef: TypedefDecl) = FunctionTypedef(
 // endregion
 
 // region struct
-private fun detectStructTypedef(line: String): ControlFlow =
-    if (line.startsWith("typedef") && line.contains("struct") && !line.endsWith(";")) {
-        ControlFlow.ACCEPT
-    } else {
-        ControlFlow.NEXT
-    }
-
 private fun parseAndSaveStructure(
     registry: Registry<EmptyMergeable>,
     cx: MutableMap<String, Any>,
@@ -322,13 +286,6 @@ private fun morphStructFieldDecl(
 // endregion
 
 // region enum (typedef)
-private fun detectEnumTypedef(line: String): ControlFlow =
-    if (line.startsWith("typedef") && line.contains("enum")) {
-        ControlFlow.ACCEPT
-    } else {
-        ControlFlow.NEXT
-    }
-
 private fun parseAndSaveEnumeration(
     registry: Registry<EmptyMergeable>,
     cx: MutableMap<String, Any>,
@@ -500,23 +457,4 @@ private fun detectTypeAlias(line: String): ControlFlow =
     } else {
         ControlFlow.NEXT
     }
-
-private fun <E : IMergeable<E>> parseTypeAlias(
-    registry: Registry<E>,
-    @Suppress("unused") cx: MutableMap<String, Any>,
-    lines: List<String>,
-    index: Int
-): Int {
-    val parseResult = parseTypedefDecl(lines, index)
-    val (typedef, nextIndex) = parseResult
-    val alias = morphTypedefAlias(typedef)
-    registry.aliases.putEntityIfAbsent(alias)
-
-    return nextIndex
-}
-
-private fun morphTypedefAlias(typedef: TypedefDecl) = Typedef(
-    name = typedef.name,
-    type = (typedef.aliasedType.toType() as IdentifierType),
-)
 // endregion
