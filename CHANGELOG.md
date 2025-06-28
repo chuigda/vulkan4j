@@ -4,24 +4,24 @@ Upgrade `ffm-plus` to v0.2.6, and other wrapper modules to v0.4.2.
 
 ### Breaking changes
 
-- Added full support for `wchar_t`: now `wchar_t*` types are represented with `WCharPtr` instead of raw `MemorySegment`s. This will break some existing code but our new `WCharPtr` should be easy enough to use.
+- (@HoshinoTented) Added full support for `wchar_t`: now `wchar_t*` types are represented with `WCharPtr` instead of raw `MemorySegment`s. This will break some existing code but our new `WCharPtr` should be easy enough to use.
 
 ### New bindings
 
-- Added `webgpu` module, which provides bindings for **wgpu-rs 25.0.2.1**. This module is generated from the official WebGPU YML IDL files. We are able to do dog feeding via an offscreen rendering example. This module is marked as experimental due to the unstable status of WebGPU Native APIs. Please read the module level documentation for more details.
+- (@lyra-planet + @chuigda) Added `webgpu` module, which provides bindings for **wgpu-rs 25.0.2.1**. This module is generated from the official WebGPU YML IDL files. We are able to do dog feeding via an offscreen rendering example. This module is marked as experimental due to the unstable status of WebGPU Native APIs. Please read the module level documentation for more details.
 
 ### Functionality updates
 
-- `PrimitiveIterator`s are used for `IntPtr`, `LongPtr`, `DoublePtr`, `WCharPtr` and `CLongPtr` to reduce boxing-unboxing overhead.
-- Deprecated `WindowsUtil.getLastError` method. Please use the Java's officially recommended `Linker.Option.captureCallState` instead.
+- (@CousinZe) `PrimitiveIterator`s are used for `IntPtr`, `LongPtr`, `DoublePtr`, `WCharPtr` and `CLongPtr` to reduce boxing-unboxing overhead.
+- (@CousinZe) Deprecated `WindowsUtil.getLastError` method. Please use the Java's officially recommended `Linker.Option.captureCallState` instead.
 
 ### Bugfixes
 
-- Fixed a bug in `CLongPtr::read(index)` and `CLongPtr::write(index, value)` methods, which did not correctly calculate the byte offset for input index.
-- Returned pointers and handles are now correctly marked as `@Nullable` by default, providing much better null-safety.
-- Fixed issue #126 by using `Linker.Option.captureCallState` to retrieve `GetLastError` code.
+- (@chuigda) Fixed a bug in `CLongPtr::read(index)` and `CLongPtr::write(index, value)` methods, which did not correctly calculate the byte offset for input index.
+- (@chuigda) Returned pointers and handles are now correctly marked as `@Nullable` by default, providing much better null-safety.
+- (@CousinZe) Fixed issue #126 by using `Linker.Option.captureCallState` to retrieve `GetLastError` code.
 - In the static initializer of `UnixLibraryLoader`, `UnixUtil.forceLoad` is now called automatically to ensure that result of `dlerror` won't be overwritten by the loading of `dlerror` function itself.
-- `LibcArena` now will fall back to `malloc` + manual alignment calculation if `aligned_alloc` is not available. This allows `LibcArena` to work on Windows platform.
+- (@CousinZe) `LibcArena` now will fall back to `malloc` + manual alignment calculation if `aligned_alloc` is not available. This allows `LibcArena` to work on Windows platform.
 
 ## v0.4.1
 
@@ -29,12 +29,12 @@ Upgrade `ffm-plus` to v0.2.5, and other wrapper modules to v0.4.1.
 
 ### New bindings
 
-- Added `openxr` module, which provides bindings for OpenXR 1.0 - 1.1. This module is generated from the official OpenXR XML registry files. **However, our team haven't tested it out thoroughly by writing a complete dog feeding OpenXR application due to lacking VR development experience. This module may contain bugs. Issus and PRs are welcome!**
+- (@HoshinoTented + @chuigda) Added `openxr` module, which provides bindings for OpenXR 1.0 - 1.1. This module is generated from the official OpenXR XML registry files. **However, our team haven't tested it out thoroughly by writing a complete dog feeding OpenXR application due to lacking VR development experience. This module may contain bugs. Issus and PRs are welcome!**
 
 ### Quality of Life updates
 
-- `allocate` functions now have a `allocate(Arena, Collection<T>)` overloading.
-- `StructureType.Ptr.at` and `StructureType.arrayField` methods now also have an overloading accepting a `Consumer<T>`, thus also supporting LWJGL-alike `set` style methods. For example:
+- (@chuigda) `allocate` functions now have a `allocate(Arena, Collection<T>)` overloading.
+- (@chuigda) `StructureType.Ptr.at` and `StructureType.arrayField` methods now also have an overloading accepting a `Consumer<T>`, thus also supporting LWJGL-alike `set` style methods. For example:
     ```c
     struct StructureType { int field1; int field2; } structures[2];
     structures[0].field1 = value00;
@@ -62,17 +62,17 @@ Upgrade `ffm-plus` to v0.2.5, and other wrapper modules to v0.4.1.
             it.write(1, value1);
         });
     ```
-- Added a handy `writeString` method for `BytePtr`.
-- Added a handy `allocateStrings` method for `PointerPtr` for conveniently allocating `char const**` arrays. Such arrays are widely used in Vulkan and OpenXR APIs.
-- For array fields of structures, accessor `structure.field(PtrType ptr)` only copies `ptr.segment().byteSize()` bytes from `ptr` to the field, instead of attempting to copy the whole array. This makes it easier to work with C-style null-terminated strings, which would cause an overflow in previous versions.
+- (@chuigda) Added a handy `writeString` method for `BytePtr`.
+- (@chuigda) Added a handy `allocateStrings` method for `PointerPtr` for conveniently allocating `char const**` arrays. Such arrays are widely used in Vulkan and OpenXR APIs.
+- (@chuigda) For array fields of structures, accessor `structure.field(PtrType ptr)` only copies `ptr.segment().byteSize()` bytes from `ptr` to the field, instead of attempting to copy the whole array. This makes it easier to work with C-style null-terminated strings, which would cause an overflow in previous versions.
 
 ### Bugfixes
 
-- Fixed `BytePtr.checked` which was not previously marked as `static`.
+- (@chuigda) Fixed `BytePtr.checked` which was not previously marked as `static`.
 
 ### Minor changes
 
-- `LibcArena` and a few singleton library loaders are now implemented in terms of `enum` instead of `class`, in order to support well-behaved serialization.
+- (@ice1000) `LibcArena` and a few singleton library loaders are now implemented in terms of `enum` instead of `class`, in order to support well-behaved serialization.
 
 ## v0.4.0
 
@@ -80,13 +80,13 @@ Upgrade `ffm-plus` to v0.2.4, and other wrapper modules to v0.4.0.
 
 ### Breaking changes
 
-- Add new annotation `@Bitmask` and use it to mark bitmask types. Original `@EnumType` annotation should only be applied to non-composable enums. This won't break build, but you'll see IDE warnings if you are using our [ffm-plus-inspection](https://github.com/club-doki7/ffm-plus-inspection) plugin.
-- All `MemorySegment`s are now `@NotNull` by default. APIs previously accepts `null` `MemorySegment` will now throw `NullPointerException` if you pass `null`. Always use `MemorySegment.NULL`.
-- Updated `VulkanLoader`, `GLFWLoader`, `VMAJavaTraceUtil` and `STBJavaTraceUtil` APIs to use `ILibraryLoader` and `ISharedLibrary` accordingly.
+- (@chuigda) Add new annotation `@Bitmask` and use it to mark bitmask types. Original `@EnumType` annotation should only be applied to non-composable enums. This won't break build, but you'll see IDE warnings if you are using our [ffm-plus-inspection](https://github.com/club-doki7/ffm-plus-inspection) plugin.
+- (@chuigda) All `MemorySegment`s are now `@NotNull` by default. APIs previously accepts `null` `MemorySegment` will now throw `NullPointerException` if you pass `null`. Always use `MemorySegment.NULL`.
+- (@chuigda) Updated `VulkanLoader`, `GLFWLoader`, `VMAJavaTraceUtil` and `STBJavaTraceUtil` APIs to use `ILibraryLoader` and `ISharedLibrary` accordingly.
 
 ### New bindings
 
-- Added `stb` module, which provides bindings for `stb` libraries. Currently the following components are supported:
+- (@ice1000 + @chuigda) Added `stb` module, which provides bindings for `stb` libraries. Currently the following components are supported:
   - `stb.image` (`stb_image.h`): Image loading library.
   - `stb.imagewrite` (`stb_image_write.h`): Image writing library.
   - `stb.imageresize` (`stb_image_resize2.h`): Image resizing library.
@@ -94,15 +94,15 @@ Upgrade `ffm-plus` to v0.2.4, and other wrapper modules to v0.4.0.
 
 ### Functionality updates
 
-- Added `ILibraryLoader` and `ISharedLibrary` interface to reduce global `System.load`/`System.loadLibrary` calls. This allows you to load libraries in a more controlled manner.
+- (@chuigda + @CousinZe) Added `ILibraryLoader` and `ISharedLibrary` interface to reduce global `System.load`/`System.loadLibrary` calls. This allows you to load libraries in a more controlled manner.
   - This feature uses `LoadLibraryW` + `GetProcAddress` on Windows platform, `dlopen` + `dlsym` on Linux/FreeBSD/macOS platform.
   - macOS library bundle (`.framework`) is not supported yet.
-- Deprecated `Loader` class and its methods. If you need to load basic functions (like `libc` functions) from "global" scope, use `JavaSystemLibrary.INSTANCE.load` instead; if you need to load functions from a specific library, use `ILibraryLoader` and `ISharedLibrary` interface instead.
+- (@chuigda + @CousinZe) Deprecated `Loader` class and its methods. If you need to load basic functions (like `libc` functions) from "global" scope, use `JavaSystemLibrary.INSTANCE.load` instead; if you need to load functions from a specific library, use `ILibraryLoader` and `ISharedLibrary` interface instead.
 
 ### Quality of Life updates
 
-- PVOID type field setters accepting `MemorySegment`s now also returns `this` to allow chaining.
-- Added `ALLoader` class to automatically deal with platform library name difference (`OpenAL32.dll` on Windows vs `libopenal.so` on Linux).
+- (@chuigda) PVOID type field setters accepting `MemorySegment`s now also returns `this` to allow chaining.
+- (@chuigda) Added `ALLoader` class to automatically deal with platform library name difference (`OpenAL32.dll` on Windows vs `libopenal.so` on Linux).
 
 ### Known issues
 
@@ -115,16 +115,18 @@ Upgrade `ffm-plus` to v0.2.2, and other wrapper modules to v0.3.4.
 
 ### New bindings
 
-- Added `shaderc` module, which provides bindings for `libshaderc`.
+- (@chuigda) Added `shaderc` module, which provides bindings for `libshaderc`.
 
 ### Bugfixes
 
-- Fixed a issue causing memory allocation failure of `LibcArena`.
-- Fixed a issue causing incorrect generation of return value retrieval for commands that returns `size_t`.
+- (@chuigda) Fixed an issue causing memory allocation failure of `LibcArena`.
+- (@chuigda) Fixed an issue causing incorrect generation of return value retrieval for commands that returns `size_t`.
 
 ## v0.3.3
 
-- Fixed a issue (#93) causing incorrect generation of `HandleType.Ptr.Iter.next` series methods.
+### Bugfixes
+
+- (@chuigda) Fixed an issue (#93) causing incorrect generation of `HandleType.Ptr.Iter.next` series methods.
 
 ## v0.3.2
 
@@ -132,18 +134,18 @@ Upgrade `ffm-plus` to v0.2.1, and other wrapper modules to v0.3.2,
 
 ### Breaking changes
 
-- Made all the `Iter` types private to reduce disruptions in JavaDoc pages. Most code should not be affected. Existing code that really uses `T.Iter` type can migrate to `Iterator<T>` interface.
+- (@chuigda) Made all the `Iter` types private to reduce disruptions in JavaDoc pages. Most code should not be affected. Existing code that really uses `T.Iter` type can migrate to `Iterator<T>` interface.
 
 ### New bindings
 
-- Added `opengl` module, which provides bindings for OpenGL 1.0 - 4.6 (both Core and Compatibility profiles).
-- Added `openal` module, which provides bindings based on OpenAL-soft (1.2).
+- (@whiterasbk) Added `opengl` module, which provides bindings for OpenGL 1.0 - 4.6 (both Core and Compatibility profiles).
+- (@chuigda) Added `openal` module, which provides bindings based on OpenAL-soft (1.2).
 
 ### Quality of Life updates
 
-- Added `allocateV` and `writeV` series functions for `Ptr` types (both `ffm-plus` and other generated code), utilizing Java varargs to simplify specific write operations.
-- Supported chaining `set` methods for structure types.
-- Supported LWJGL-alike `set` style methods for structure member of structure types. For example:
+- (@chuigda) Added `allocateV` and `writeV` series functions for `Ptr` types (both `ffm-plus` and other generated code), utilizing Java varargs to simplify specific write operations.
+- (@chuigda) Supported chaining `set` methods for structure types.
+- (@chuigda) Supported LWJGL-alike `set` style methods for structure member of structure types. For example:
     ```c
     struct { struct { int a; int b; } inner; } outer;
     outer.inner.a = 1;
@@ -153,16 +155,16 @@ Upgrade `ffm-plus` to v0.2.1, and other wrapper modules to v0.3.2,
     ```java
     outer.inner(it -> it.a(1).b(2));
     ```
-- For OpenGL, OpenAL and GLFW, we now allow accessing global constants via command wrapper classes (`GLConstants.COLOR_BUFFER_BIT` -> `GL.COLOR_BUFFER_BIT`, etc.) to avoid repetitive strain injury.
+- (@chuigda) For OpenGL, OpenAL and GLFW, we now allow accessing global constants via command wrapper classes (`GLConstants.COLOR_BUFFER_BIT` -> `GL.COLOR_BUFFER_BIT`, etc.) to avoid repetitive strain injury.
 
 ### Bugfixes
 
-- Fixed issue (#12), where some instance level commands are wrongly categorized as device commands.
+- (@chuigda) Fixed issue (#12), where some instance level commands are wrongly categorized as device commands.
 
 ## v0.3.1
 
-- Fixed a issue (#63) causing incorrect generation of `StructureType.Ptr.reinterpret` series methods.
-- Fixed a documentation issue in `vma` module.
+- (@chuigda) Fixed an issue (#63) causing incorrect generation of `StructureType.Ptr.reinterpret` series methods.
+- (@chuigda) Fixed a documentation issue in `vma` module.
 
 ## v0.3.0
 
