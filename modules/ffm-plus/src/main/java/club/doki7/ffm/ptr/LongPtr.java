@@ -12,8 +12,10 @@ import java.lang.foreign.MemorySegment;
 import java.lang.foreign.ValueLayout;
 import java.nio.Buffer;
 import java.nio.LongBuffer;
-import java.util.*;
-
+import java.util.Collection;
+import java.util.List;
+import java.util.NoSuchElementException;
+import java.util.PrimitiveIterator;
 /// Represents a pointer to 64-bit long integer(s) in native memory.
 ///
 /// The property {@link #segment()} should always be not-null

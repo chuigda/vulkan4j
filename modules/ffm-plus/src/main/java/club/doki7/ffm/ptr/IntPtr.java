@@ -12,7 +12,10 @@ import java.lang.foreign.MemorySegment;
 import java.lang.foreign.ValueLayout;
 import java.nio.Buffer;
 import java.nio.IntBuffer;
-import java.util.*;
+import java.util.Collection;
+import java.util.List;
+import java.util.NoSuchElementException;
+import java.util.PrimitiveIterator;
 
 /// Represents a pointer to 32-bit integer(s) in native memory.
 ///

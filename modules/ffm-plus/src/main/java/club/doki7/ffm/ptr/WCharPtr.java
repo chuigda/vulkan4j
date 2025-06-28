@@ -11,7 +11,6 @@ import org.jetbrains.annotations.Nullable;
 import java.lang.foreign.Arena;
 import java.lang.foreign.MemorySegment;
 import java.lang.foreign.ValueLayout;
-import java.util.Iterator;
 import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.PrimitiveIterator;
@@ -210,14 +209,14 @@ public record WCharPtr(@Override @NotNull MemorySegment segment) implements IPoi
         }
     }
 
-    private static String createStringFromSegment(MemorySegment s, long index) {
-        if (index > Integer.MAX_VALUE) {
+    private static String createStringFromSegment(MemorySegment s, long charCount) {
+        if (charCount > Integer.MAX_VALUE) {
             throw new IllegalArgumentException("Segment size is too large to read as a string");
         }
 
-        char[] characters = new char[(int) index];
+        char[] characters = new char[(int) charCount];
         MemorySegment.ofArray(characters)
-                .copyFrom(s.asSlice(0, index * NativeLayout.WCHAR_SIZE));
+                .copyFrom(s.asSlice(0, charCount * NativeLayout.WCHAR_SIZE));
         return new String(characters);
     }
 }
