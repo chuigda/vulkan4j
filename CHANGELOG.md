@@ -6,10 +6,12 @@
 
 ### Functionality updates
 
+- Added full support for `wchar_t`: now structures including `wchar_t` fields can be generated correctly. `WCharPtr` type is introduced.
 - Deprecated `WindowsUtil.getLastError` method. Please use the Java's officially recommended `Linker.Option.captureCallState` instead.
 
 ### Bugfixes
 
+- Fixed a bug in `CLongPtr::read(index)` and `CLongPtr::write(index, value)` methods, which did not correctly calculate the byte offset for input index.
 - Returned pointers and handles are now correctly marked as `@Nullable` by default, providing much better null-safety.
 - Fixed issue #126 by using `Linker.Option.captureCallState` to retrieve `GetLastError` code.
 - In the static initializer of `UnixLibraryLoader`, `UnixUtil.forceLoad` is now called automatically to ensure that result of `dlerror` won't be overwritten by the loading of `dlerror` function itself.

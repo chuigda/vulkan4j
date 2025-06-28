@@ -41,11 +41,11 @@ public record WCharPtr(@Override @NotNull MemorySegment segment) implements IPoi
     }
 
     public int read(long index) {
-        return NativeLayout.readWCharT(segment, index);
+        return NativeLayout.readWCharT(segment, index * NativeLayout.WCHAR_SIZE);
     }
 
     public void write(long index, int value) {
-        NativeLayout.writeWCharT(segment, index, value);
+        NativeLayout.writeWCharT(segment, index * NativeLayout.WCHAR_SIZE, value);
     }
 
     /// Assume the {@link WCharPtr} is capable of holding at least {@code newSize} elements, create
