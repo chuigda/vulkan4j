@@ -11,3 +11,5 @@ Not
 ### Community Guidelines
 
 - [CONTRIBUTING.md](./CONTRIBUTING.md)
+- [CODE_OF_CONDUCT.md](./CODE_OF_CONDUCT.md)
+- [GENERATIVE_AI.md](./GENERATIVE_AI.md)

@@ -19,6 +19,8 @@ Thanks for your participating `vulkan4j` development! To keep things efficient, 
 
     If your development machine has limited resources, you can also open only the specific submodule you intend to work on (e.g., `vulkan4j/modules/ffm-plus`).
 
+4. **Git settings**: If you are using Windows, turn off the `core.autocrlf` settings in your Git configuration **before** cloning the repository. This is to ensure that line endings in your cloned repository are LF, so Git won't report 1145141919810 useless line-ending changes when you re-run the code generator.
+
 ### Contribution Workflow
 
 We use the "Fork & Pull Request" model for collaboration:
@@ -51,7 +53,7 @@ We use the "Fork & Pull Request" model for collaboration:
 
     This module has dedicated unit tests.
 
-    To run certain test cases, you need to run the build scripts in the `misc/test_binary` directory to generate required native binaries. You can skip this if you're not working on related features; the CI will catch it anyway.
+    To run certain test cases, you need to run the build scripts in the `misc/test_binary` directory to generate required native binaries. You can skip this if you're not working on related features -- that several local tests will fail, but the CI will catch them anyway.
 
 2. **Modifying Existing API Bindings**
 
@@ -67,7 +69,7 @@ When adding a binding for a new C/C++ API, follow these steps:
 
 1. **Prepare Input Files**
 
-    In the `codegen-v2/input` directory, create a download script to fetch the header files or other resources needed for the binding. The script must lock the file version using a tag, commit hash, or similar method.
+    In the `codegen-v2/input` directory, create a download script to fetch the XML/YML registry files or header files, or other resources needed for the binding. The script must lock the file version using a tag, commit hash, or similar method.
     - **Tip**: You can use `clang-format` to preprocess header files, making them easier for the `hparse` and `cdecl` modules to handle.
 
 2. **Implement a Metadata Extractor**
