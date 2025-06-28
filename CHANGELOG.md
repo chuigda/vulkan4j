@@ -1,4 +1,6 @@
-## UNRELEASED v0.4.2
+## v0.4.2
+
+Upgrade `ffm-plus` to v0.2.6, and other wrapper modules to v0.4.2.
 
 ### Breaking changes
 

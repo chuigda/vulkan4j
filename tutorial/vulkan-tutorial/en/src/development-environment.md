@@ -12,17 +12,17 @@ Create a Maven project and add the following dependencies to your `pom.xml` file
 <dependency>
     <groupId>club.doki7</groupId>
     <artifactId>ffm-plus</artifactId>
-    <version>0.2.5</version>
+    <version>0.2.6</version>
 </dependency>
 <dependency>
     <groupId>club.doki7</groupId>
     <artifactId>vulkan</artifactId>
-    <version>0.4.1</version>
+    <version>0.4.2</version>
 </dependency>
 <dependency>
     <groupId>club.doki7</groupId>
     <artifactId>glfw</artifactId>
-    <version>0.4.1</version>
+    <version>0.4.2</version>
 </dependency>
 <dependency>
     <groupId>org.joml</groupId>
@@ -32,7 +32,7 @@ Create a Maven project and add the following dependencies to your `pom.xml` file
 <dependency>
     <groupId>de.javagl</groupId>
     <artifactId>obj</artifactId>
-    <version>0.4.1</version>
+    <version>0.4.0</version>
 </dependency>
 ```
 

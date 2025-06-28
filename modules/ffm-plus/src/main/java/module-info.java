@@ -11,7 +11,7 @@
 /// <dependency>
 ///     <groupId>club.doki7</groupId>
 ///     <artifactId>ffm-plus</artifactId>
-///     <version>0.2.5</version>
+///     <version>0.2.6</version>
 ///     <scope>compile</scope>
 /// </dependency>
 /// ```
