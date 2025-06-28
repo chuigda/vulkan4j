@@ -11,7 +11,6 @@ import org.jetbrains.annotations.Nullable;
 import java.lang.foreign.Arena;
 import java.lang.foreign.MemorySegment;
 import java.lang.foreign.ValueLayout;
-import java.util.Iterator;
 import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.PrimitiveIterator;
@@ -65,26 +64,11 @@ public record WCharPtr(@Override @NotNull MemorySegment segment) implements IPoi
         long size = size();
         for (long i = 0; i < size; i++) {
             if (read(i) == 0) {
-                if (i > Integer.MAX_VALUE) {
-                    throw new IllegalArgumentException("Segment size is too large to read as a string");
-                }
-
-                char[] characters = new char[(int) i];
-                MemorySegment
-                        .ofArray(characters)
-                        .copyFrom(segment.asSlice(0, (long) i * NativeLayout.WCHAR_SIZE));
-                return new String(characters);
+                return createStringFromSegment(segment, i);
             }
         }
 
-        if (size > Integer.MAX_VALUE) {
-            throw new IllegalArgumentException("Segment size is too large to read as a string");
-        }
-        char[] characters = new char[(int) size];
-        MemorySegment
-                .ofArray(characters)
-                .copyFrom(segment.asSlice(0, size * NativeLayout.WCHAR_SIZE));
-        return new String(characters);
+        return createStringFromSegment(segment, size);
     }
 
     /// **(Windows only)** Assume the {@link WCharPtr} is a Windows wide character string, reads the
@@ -105,15 +89,7 @@ public record WCharPtr(@Override @NotNull MemorySegment segment) implements IPoi
         MemorySegment unsizedSegment = segment.reinterpret(Long.MAX_VALUE);
         for (long i = 0; i < unsizedSegment.byteSize() / NativeLayout.WCHAR_SIZE; i++) {
             if (NativeLayout.readWCharT(unsizedSegment, i * NativeLayout.WCHAR_SIZE) == 0) {
-                if (i > Integer.MAX_VALUE) {
-                    throw new IllegalArgumentException("Segment size is too large to read as a string");
-                }
-
-                char[] characters = new char[(int) i];
-                MemorySegment
-                        .ofArray(characters)
-                        .copyFrom(unsizedSegment.asSlice(0, i * NativeLayout.WCHAR_SIZE));
-                return new String(characters);
+                return createStringFromSegment(unsizedSegment, i);
             }
         }
 
@@ -153,8 +129,6 @@ public record WCharPtr(@Override @NotNull MemorySegment segment) implements IPoi
         return new WCharPtr(segment.asSlice(0, end * NativeLayout.WCHAR_SIZE));
     }
 
-    /// The user may use {@link PrimitiveIterator.OfInt#nextInt()} rather than {@link Iterator#next()}
-    /// to avoid unnecessary boxing.
     @Override
     public @NotNull PrimitiveIterator.OfInt iterator() {
         return new Iter(segment);
@@ -233,5 +207,16 @@ public record WCharPtr(@Override @NotNull MemorySegment segment) implements IPoi
             segment = segment.asSlice(NativeLayout.WCHAR_SIZE);
             return value;
         }
+    }
+
+    private static String createStringFromSegment(MemorySegment s, long charCount) {
+        if (charCount > Integer.MAX_VALUE) {
+            throw new IllegalArgumentException("Segment size is too large to read as a string");
+        }
+
+        char[] characters = new char[(int) charCount];
+        MemorySegment.ofArray(characters)
+                .copyFrom(s.asSlice(0, charCount * NativeLayout.WCHAR_SIZE));
+        return new String(characters);
     }
 }

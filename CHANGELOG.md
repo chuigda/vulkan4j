@@ -1,12 +1,16 @@
 ## UNRELEASED v0.4.2
 
+### Breaking changes
+
+- Added full support for `wchar_t`: now `wchar_t*` types are represented with `WCharPtr` instead of raw `MemorySegment`s. This will break some existing code but our new `WCharPtr` should be easy enough to use.
+
 ### New bindings
 
 - Added `webgpu` module, which provides bindings for **wgpu-rs 25.0.2.1**. This module is generated from the official WebGPU YML IDL files. We are able to do dog feeding via an offscreen rendering example. This module is marked as experimental due to the unstable status of WebGPU Native APIs. Please read the module level documentation for more details.
 
 ### Functionality updates
 
-- Added full support for `wchar_t`: now structures including `wchar_t` fields can be generated correctly. `WCharPtr` type is introduced.
+- `PrimitiveIterator`s are used for `IntPtr`, `LongPtr`, `DoublePtr`, `WCharPtr` and `CLongPtr` to reduce boxing-unboxing overhead.
 - Deprecated `WindowsUtil.getLastError` method. Please use the Java's officially recommended `Linker.Option.captureCallState` instead.
 
 ### Bugfixes

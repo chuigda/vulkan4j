@@ -105,7 +105,7 @@ public record PointerPtr(@NotNull MemorySegment segment) implements IPointer, It
         return new Iter(segment);
     }
 
-    /// Creata a new {@link PointerPtr} using {@code segment} as backing storage, with argument
+    /// Create a new {@link PointerPtr} using {@code segment} as backing storage, with argument
     /// validation.
     ///
     /// This function does not ensure {@code segment}'s size to be a multiple of
