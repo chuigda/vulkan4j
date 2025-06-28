@@ -12,10 +12,7 @@ import java.lang.foreign.MemorySegment;
 import java.lang.foreign.ValueLayout;
 import java.nio.Buffer;
 import java.nio.IntBuffer;
-import java.util.Collection;
-import java.util.Iterator;
-import java.util.List;
-import java.util.NoSuchElementException;
+import java.util.*;
 
 /// Represents a pointer to 32-bit integer(s) in native memory.
 ///
@@ -91,7 +88,7 @@ public record IntPtr(@NotNull MemorySegment segment) implements IPointer, Iterab
     }
 
     @Override
-    public @NotNull Iterator<Integer> iterator() {
+    public @NotNull PrimitiveIterator.OfInt iterator() {
         return new Iter(segment);
     }
 
@@ -228,7 +225,7 @@ public record IntPtr(@NotNull MemorySegment segment) implements IPointer, Iterab
     }
 
     /// An iterator over the integers.
-    private static final class Iter implements Iterator<Integer> {
+    private static final class Iter implements PrimitiveIterator.OfInt {
         Iter(@NotNull MemorySegment segment) {
             this.segment = segment;
         }
@@ -239,7 +236,7 @@ public record IntPtr(@NotNull MemorySegment segment) implements IPointer, Iterab
         }
 
         @Override
-        public Integer next() {
+        public int nextInt() {
             if (!hasNext()) {
                 throw new NoSuchElementException("No more integers to read");
             }

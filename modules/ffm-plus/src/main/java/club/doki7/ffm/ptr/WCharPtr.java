@@ -65,26 +65,11 @@ public record WCharPtr(@Override @NotNull MemorySegment segment) implements IPoi
         long size = size();
         for (long i = 0; i < size; i++) {
             if (read(i) == 0) {
-                if (i > Integer.MAX_VALUE) {
-                    throw new IllegalArgumentException("Segment size is too large to read as a string");
-                }
-
-                char[] characters = new char[(int) i];
-                MemorySegment
-                        .ofArray(characters)
-                        .copyFrom(segment.asSlice(0, (long) i * NativeLayout.WCHAR_SIZE));
-                return new String(characters);
+                return createStringFromSegment(segment, i);
             }
         }
 
-        if (size > Integer.MAX_VALUE) {
-            throw new IllegalArgumentException("Segment size is too large to read as a string");
-        }
-        char[] characters = new char[(int) size];
-        MemorySegment
-                .ofArray(characters)
-                .copyFrom(segment.asSlice(0, size * NativeLayout.WCHAR_SIZE));
-        return new String(characters);
+        return createStringFromSegment(segment, size);
     }
 
     /// **(Windows only)** Assume the {@link WCharPtr} is a Windows wide character string, reads the
@@ -105,15 +90,7 @@ public record WCharPtr(@Override @NotNull MemorySegment segment) implements IPoi
         MemorySegment unsizedSegment = segment.reinterpret(Long.MAX_VALUE);
         for (long i = 0; i < unsizedSegment.byteSize() / NativeLayout.WCHAR_SIZE; i++) {
             if (NativeLayout.readWCharT(unsizedSegment, i * NativeLayout.WCHAR_SIZE) == 0) {
-                if (i > Integer.MAX_VALUE) {
-                    throw new IllegalArgumentException("Segment size is too large to read as a string");
-                }
-
-                char[] characters = new char[(int) i];
-                MemorySegment
-                        .ofArray(characters)
-                        .copyFrom(unsizedSegment.asSlice(0, i * NativeLayout.WCHAR_SIZE));
-                return new String(characters);
+                return createStringFromSegment(unsizedSegment, i);
             }
         }
 
@@ -233,5 +210,16 @@ public record WCharPtr(@Override @NotNull MemorySegment segment) implements IPoi
             segment = segment.asSlice(NativeLayout.WCHAR_SIZE);
             return value;
         }
+    }
+
+    private static String createStringFromSegment(MemorySegment s, long index) {
+        if (index > Integer.MAX_VALUE) {
+            throw new IllegalArgumentException("Segment size is too large to read as a string");
+        }
+
+        char[] characters = new char[(int) index];
+        MemorySegment.ofArray(characters)
+                .copyFrom(s.asSlice(0, index * NativeLayout.WCHAR_SIZE));
+        return new String(characters);
     }
 }

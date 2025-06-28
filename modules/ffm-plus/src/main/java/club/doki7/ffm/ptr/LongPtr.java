@@ -12,10 +12,7 @@ import java.lang.foreign.MemorySegment;
 import java.lang.foreign.ValueLayout;
 import java.nio.Buffer;
 import java.nio.LongBuffer;
-import java.util.Collection;
-import java.util.Iterator;
-import java.util.List;
-import java.util.NoSuchElementException;
+import java.util.*;
 
 /// Represents a pointer to 64-bit long integer(s) in native memory.
 ///
@@ -92,7 +89,7 @@ public record LongPtr(@NotNull MemorySegment segment) implements IPointer, Itera
     }
 
     @Override
-    public @NotNull Iterator<Long> iterator() {
+    public @NotNull PrimitiveIterator.OfLong iterator() {
         return new Iter(segment);
     }
 
@@ -147,7 +144,7 @@ public record LongPtr(@NotNull MemorySegment segment) implements IPointer, Itera
     /// @param buffer the {@link LongBuffer} to use as the backing storage
     /// @return a new {@link LongPtr} that uses {@code buffer} as its backing storage
     /// @throws IllegalArgumentException if {@code buffer} is not direct, or its backing storage is
-    /// not properly alignd
+    /// not properly aligned
     public static @NotNull LongPtr checked(@NotNull LongBuffer buffer) {
         if (!buffer.isDirect()) {
             throw new IllegalArgumentException("Buffer must be direct");
@@ -217,7 +214,7 @@ public record LongPtr(@NotNull MemorySegment segment) implements IPointer, Itera
     }
 
     /// An iterator over the long integers.
-    private static final class Iter implements Iterator<Long> {
+    private static final class Iter implements PrimitiveIterator.OfLong {
         Iter(@NotNull MemorySegment segment) {
             this.segment = segment;
         }
@@ -228,7 +225,7 @@ public record LongPtr(@NotNull MemorySegment segment) implements IPointer, Itera
         }
 
         @Override
-        public Long next() {
+        public long nextLong() {
             if (!hasNext()) {
                 throw new NoSuchElementException("No more long integers to read");
             }

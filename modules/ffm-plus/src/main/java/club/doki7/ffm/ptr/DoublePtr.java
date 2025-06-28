@@ -12,10 +12,7 @@ import java.lang.foreign.MemorySegment;
 import java.lang.foreign.ValueLayout;
 import java.nio.Buffer;
 import java.nio.DoubleBuffer;
-import java.util.Collection;
-import java.util.Iterator;
-import java.util.List;
-import java.util.NoSuchElementException;
+import java.util.*;
 
 /// Represents a pointer to 64-bit double-precision float(s) in native memory
 ///
@@ -121,7 +118,7 @@ public record DoublePtr(@NotNull MemorySegment segment) implements IPointer, Ite
     }
 
     @Override
-    public @NotNull Iterator<Double> iterator() {
+    public @NotNull PrimitiveIterator.OfDouble iterator() {
         return new Iter(segment);
     }
 
@@ -213,7 +210,7 @@ public record DoublePtr(@NotNull MemorySegment segment) implements IPointer, Ite
     }
 
     /// An iterator over the double precision float numbers.
-    private static final class Iter implements Iterator<Double> {
+    private static final class Iter implements PrimitiveIterator.OfDouble {
         Iter(@NotNull MemorySegment segment) {
             this.segment = segment;
         }
@@ -224,7 +221,7 @@ public record DoublePtr(@NotNull MemorySegment segment) implements IPointer, Ite
         }
 
         @Override
-        public Double next() {
+        public double nextDouble() {
             if (!hasNext()) {
                 throw new NoSuchElementException("No more doubles to read");
             }

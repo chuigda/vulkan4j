@@ -13,6 +13,7 @@ import java.lang.foreign.MemorySegment;
 import java.util.Iterator;
 import java.util.List;
 import java.util.NoSuchElementException;
+import java.util.PrimitiveIterator;
 
 /// Represents a pointer to 32-bit integer(s) in native memory.
 ///
@@ -81,7 +82,7 @@ public record CLongPtr(MemorySegment segment) implements IPointer, Iterable<Long
         return new CLongPtr(segment.asSlice(0, end * NativeLayout.C_LONG_SIZE));
     }
 
-    public @NotNull Iterator<Long> iterator() {
+    public @NotNull PrimitiveIterator.OfLong iterator() {
         return new Iter(segment);
     }
 
@@ -123,7 +124,7 @@ public record CLongPtr(MemorySegment segment) implements IPointer, Iterable<Long
     }
 
     /// An iterator over the integers.
-    private static final class Iter implements Iterator<Long> {
+    private static final class Iter implements PrimitiveIterator.OfLong {
         Iter(@NotNull MemorySegment segment) {
             this.segment = segment;
         }
@@ -134,7 +135,7 @@ public record CLongPtr(MemorySegment segment) implements IPointer, Iterable<Long
         }
 
         @Override
-        public Long next() {
+        public long nextLong() {
             if (!hasNext()) {
                 throw new NoSuchElementException("No more elements to read");
             }
