@@ -29,19 +29,7 @@ fun extractOpenALHeader(): Registry<EmptyMergeable> {
         .map(String::trim)
         .toList()
 
-    val registry = Registry(
-        aliases = mutableMapOf(),
-        bitmasks = mutableMapOf(),
-        constants = mutableMapOf(),
-        commands = mutableMapOf(),
-        enumerations = mutableMapOf(),
-        functionTypedefs = mutableMapOf(),
-        opaqueHandleTypedefs = mutableMapOf(),
-        opaqueTypedefs = mutableMapOf(),
-        structures = mutableMapOf(),
-        unions = mutableMapOf(),
-        ext = EmptyMergeable()
-    )
+    val registry = Registry(ext = EmptyMergeable())
 
     hparse(
         headerParseConfig,

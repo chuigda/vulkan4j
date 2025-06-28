@@ -167,7 +167,7 @@ private fun generateCommandWrapper(
         callArgs.add(generateInputConvert(paramCType, param))
     }
 
-    val retIOType = generateInputOutputType(loweredCommand.result, false)
+    val retIOType = generateInputOutputType(loweredCommand.result, true)
 
     val callArgsDoc = buildDoc {
         callArgs.forEachIndexed { idx, it -> +if (idx != callArgs.size - 1) "$it, " else it }
@@ -183,6 +183,9 @@ private fun generateCommandWrapper(
     if (paramIOTypes.isNotEmpty()) {
         +"public $retIOType ${loweredCommand.command.name}("
         indent {
+            if (loweredCommand.result is CStructType) {
+                +"SegmentAllocator allocator,"
+            }
             for ((index, param) in loweredCommand.command.params.withIndex()) {
                 val paramIOType = paramIOTypes[index]
                 if (index != paramIOTypes.size - 1) {
@@ -208,7 +211,12 @@ private fun generateCommandWrapper(
             } else {
                 val (beforeCall, afterCall, nextStmt) = generateResultConvert(loweredCommand.result)
                 +"${beforeCall}hFunction.invokeExact("
-                indent { +callArgsDoc }
+                indent {
+                    if (loweredCommand.result is CStructType) {
+                        +"allocator, "
+                    }
+                    +callArgsDoc
+                }
                 +")$afterCall;"
                 if (nextStmt != null) {
                     +nextStmt

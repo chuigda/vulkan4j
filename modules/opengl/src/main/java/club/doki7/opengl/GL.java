@@ -5829,7 +5829,7 @@ public sealed class GL implements GLConstants permits GLCompatibility {
         }
     }
 
-    public GLsync createSyncFromCLeventARB(
+    public @Nullable GLsync createSyncFromCLeventARB(
         @Pointer(comment="_cl_context*") @NotNull MemorySegment context,
         @Pointer(comment="_cl_event*") @NotNull MemorySegment event,
         @NativeType("GLbitfield") @Unsigned int flags
@@ -7582,7 +7582,7 @@ public sealed class GL implements GLConstants permits GLCompatibility {
         }
     }
 
-    public GLsync fenceSync(
+    public @Nullable GLsync fenceSync(
         @NativeType("GLenum") int condition,
         @NativeType("GLbitfield") @Unsigned int flags
     ) {
@@ -11300,7 +11300,7 @@ public sealed class GL implements GLConstants permits GLCompatibility {
         }
     }
 
-    public @Pointer(comment="GLubyte") @Unsigned BytePtr getString(
+    public @Nullable @Pointer(comment="GLubyte") @Unsigned BytePtr getString(
         @NativeType("GLenum") int name
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glGetString);
@@ -11314,7 +11314,7 @@ public sealed class GL implements GLConstants permits GLCompatibility {
         }
     }
 
-    public @Pointer(comment="GLubyte") @Unsigned BytePtr getStringi(
+    public @Nullable @Pointer(comment="GLubyte") @Unsigned BytePtr getStringi(
         @NativeType("GLenum") int name,
         @NativeType("GLuint") @Unsigned int index
     ) {

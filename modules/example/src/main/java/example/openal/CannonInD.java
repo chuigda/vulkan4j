@@ -12,6 +12,7 @@ import java.lang.foreign.Arena;
 import java.lang.foreign.MemorySegment;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 import static java.lang.Math.*;
 
@@ -119,8 +120,8 @@ public class CannonInD {
             ALC alc = ALLoader.loadALC(libOpenAL);
             AL al = ALLoader.loadAL(libOpenAL);
 
-            ALCdevice device = alc.openDevice(null);
-            ALCcontext context = alc.createContext(device, null);
+            ALCdevice device = Objects.requireNonNull(alc.openDevice(null));
+            ALCcontext context = Objects.requireNonNull(alc.createContext(device, null));
             alc.makeContextCurrent(context);
 
             IntPtr buffer = IntPtr.allocate(arena);

@@ -137,7 +137,7 @@ private GLFWwindow window;
 And then initialize it with `GLFW::createWindow`:
 
 ```java
-window = glfw.createWindow(800, 600, ByteBuffer.allocateString(Arena.global(), "Vulkan"), null, null);
+window = Objects.requireNonNull(glfw.createWindow(800, 600, ByteBuffer.allocateString(Arena.global(), "Vulkan"), null, null));
 ```
 
 The first three parameters specify the width, height and title of the window. The fourth parameter allows you to optionally specify a monitor to open the window on and the last parameter is only relevant to OpenGL.
@@ -153,7 +153,7 @@ private static final BytePtr WINDOW_TITLE = BytePtr.allocateString(Arena.global(
 and replaced the window creation call with
 
 ```java
-window = glfw.createWindow(WIDTH, HEIGHT, WINDOW_TITLE, null, null);
+window = Objects.requireNonNull(glfw.createWindow(WIDTH, HEIGHT, WINDOW_TITLE, null, null));
 ```
 
 You should now have a `initWindow` function that looks like this:
@@ -173,7 +173,7 @@ private void initWindow() {
 
     glfw.windowHint(GLFW.CLIENT_API, GLFW.NO_API);
     glfw.windowHint(GLFW.RESIZABLE, GLFW.FALSE);
-    window = glfw.createWindow(WIDTH, HEIGHT, WINDOW_TITLE, null, null);
+    window = Objects.requireNonNull(glfw.createWindow(WIDTH, HEIGHT, WINDOW_TITLE, null, null));
 }
 ```
 

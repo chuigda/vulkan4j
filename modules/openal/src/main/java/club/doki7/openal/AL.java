@@ -703,7 +703,7 @@ public final class AL implements ALConstants {
         }
     }
 
-    public @Pointer(comment="ALchar") BytePtr getString(
+    public @Nullable @Pointer(comment="ALchar") BytePtr getString(
         @NativeType("ALenum") int param
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$alGetString);
@@ -2188,7 +2188,7 @@ public final class AL implements ALConstants {
         }
     }
 
-    public @Pointer(comment="ALchar") BytePtr getStringiSOFT(
+    public @Nullable @Pointer(comment="ALchar") BytePtr getStringiSOFT(
         @NativeType("ALenum") int pname,
         @NativeType("ALsizei") int index
     ) {
@@ -2647,7 +2647,7 @@ public final class AL implements ALConstants {
         }
     }
 
-    public @Pointer(comment="ALchar") BytePtr getStringDirect(
+    public @Nullable @Pointer(comment="ALchar") BytePtr getStringDirect(
         @Nullable ALCcontext context,
         @NativeType("ALenum") int param
     ) {
@@ -5005,7 +5005,7 @@ public final class AL implements ALConstants {
         }
     }
 
-    public @Pointer(comment="ALchar") BytePtr getStringiDirectSOFT(
+    public @Nullable @Pointer(comment="ALchar") BytePtr getStringiDirectSOFT(
         @Nullable ALCcontext context,
         @NativeType("ALenum") int pname,
         @NativeType("ALsizei") int index

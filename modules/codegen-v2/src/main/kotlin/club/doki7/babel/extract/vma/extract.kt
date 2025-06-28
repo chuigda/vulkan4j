@@ -11,7 +11,7 @@ import java.util.logging.Logger
 import kotlin.io.path.Path
 import kotlin.io.path.useLines
 
-private val inputDir = Path("codegen-v2/input")
+internal val inputDir = Path("codegen-v2/input")
 internal val log = Logger.getLogger("c.d.b.extract.vma")
 
 fun extractVMAHeader(): Registry<EmptyMergeable> {
@@ -83,20 +83,8 @@ private val headerParseConfig = ParseConfig<EmptyMergeable>().apply {
             ControlFlow.NEXT
         }
     }, ::parsePFNTypedef)
-    addRule(20, {
-        if (it.startsWith("typedef struct")) {
-            ControlFlow.ACCEPT
-        } else {
-            ControlFlow.NEXT
-        }
-    }, ::parseAndSaveStructure)
-    addRule(20, {
-        if (it.startsWith("typedef enum")) {
-            ControlFlow.ACCEPT
-        } else {
-            ControlFlow.NEXT
-        }
-    }, ::parseAndSaveEnumeration)
+    addRule(20, ::detectNonOpaqueStructTypedef, ::parseAndSaveStructure)
+    addRule(20, ::detectEnumTypedef, ::parseAndSaveEnumeration)
     addRule(20, {
         if (it.startsWith("VMA_CALL_PRE") && it.contains("VMA_CALL_POST")) {
             ControlFlow.ACCEPT

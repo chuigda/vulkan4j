@@ -206,7 +206,7 @@ private void initWindow() {
 
     glfw.windowHint(GLFW.CLIENT_API, GLFW.NO_API);
     // now the line disabling window resizing is removed
-    window = glfw.createWindow(WIDTH, HEIGHT, WINDOW_TITLE, null, null);
+    window = Objects.requireNonNull(glfw.createWindow(WIDTH, HEIGHT, WINDOW_TITLE, null, null));
 
     try {
         var handle = MethodHandles.lookup().findVirtual(

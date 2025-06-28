@@ -7,6 +7,7 @@ import club.doki7.ffm.library.ISharedLibrary;
 import club.doki7.ffm.ptr.BytePtr;
 
 import java.lang.foreign.Arena;
+import java.util.Objects;
 
 class Application {
     public void run() {
@@ -27,7 +28,7 @@ class Application {
 
         glfw.windowHint(GLFW.CLIENT_API, GLFW.NO_API);
         glfw.windowHint(GLFW.RESIZABLE, GLFW.FALSE);
-        window = glfw.createWindow(WIDTH, HEIGHT, WINDOW_TITLE, null, null);
+        window = Objects.requireNonNull(glfw.createWindow(WIDTH, HEIGHT, WINDOW_TITLE, null, null));
     }
 
     private void initVulkan() {

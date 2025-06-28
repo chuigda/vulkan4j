@@ -68,6 +68,7 @@
         <module>opengl</module>
         <module>example</module>
         <module>shaderc</module>
+        <module>webgpu</module>
 
         <!-- experimental -->
         <module>sdl3</module>

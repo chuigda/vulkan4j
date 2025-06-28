@@ -89,7 +89,7 @@ public final class ALC implements ALCConstants {
     // region command wrappers
 
     ///  Create and attach a context to the given device.
-    public ALCcontext createContext(
+    public @Nullable ALCcontext createContext(
         @Nullable ALCdevice device,
         @Nullable @Pointer(comment="ALCint") IntPtr attrlist
     ) {
@@ -163,7 +163,7 @@ public final class ALC implements ALCConstants {
     }
 
     ///  Returns the currently active context.
-    public ALCcontext getCurrentContext() {
+    public @Nullable ALCcontext getCurrentContext() {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$alcGetCurrentContext);
         try {
             MemorySegment s = (MemorySegment) hFunction.invokeExact(
@@ -175,7 +175,7 @@ public final class ALC implements ALCConstants {
     }
 
     ///  Returns the device that a particular context is attached to.
-    public ALCdevice getContextsDevice(
+    public @Nullable ALCdevice getContextsDevice(
         @Nullable ALCcontext context
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$alcGetContextsDevice);
@@ -190,7 +190,7 @@ public final class ALC implements ALCConstants {
     }
 
     ///  Opens the named playback device.
-    public ALCdevice openDevice(
+    public @Nullable ALCdevice openDevice(
         @Nullable @Pointer(comment="ALCchar") BytePtr devicename
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$alcOpenDevice);
@@ -284,7 +284,7 @@ public final class ALC implements ALCConstants {
     }
 
     ///  Returns information about the device, and error strings.
-    public @Pointer(comment="ALCchar") BytePtr getString(
+    public @Nullable @Pointer(comment="ALCchar") BytePtr getString(
         @Nullable ALCdevice device,
         @NativeType("ALCenum") int param
     ) {
@@ -322,7 +322,7 @@ public final class ALC implements ALCConstants {
 
     /// Opens the named capture device with the given frequency, format, and buffer
     /// size.
-    public ALCdevice captureOpenDevice(
+    public @Nullable ALCdevice captureOpenDevice(
         @Nullable @Pointer(comment="ALCchar") BytePtr devicename,
         @NativeType("ALCuint") int frequency,
         @NativeType("ALCenum") int format,
@@ -415,7 +415,7 @@ public final class ALC implements ALCConstants {
         }
     }
 
-    public ALCcontext getThreadContext() {
+    public @Nullable ALCcontext getThreadContext() {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$alcGetThreadContext);
         try {
             MemorySegment s = (MemorySegment) hFunction.invokeExact(
@@ -426,7 +426,7 @@ public final class ALC implements ALCConstants {
         }
     }
 
-    public ALCdevice loopbackOpenDeviceSOFT(
+    public @Nullable ALCdevice loopbackOpenDeviceSOFT(
         @Nullable @Pointer(comment="ALCchar") BytePtr deviceName
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$alcLoopbackOpenDeviceSOFT);
@@ -502,7 +502,7 @@ public final class ALC implements ALCConstants {
         }
     }
 
-    public @Pointer(comment="ALCchar") BytePtr getStringiSOFT(
+    public @Nullable @Pointer(comment="ALCchar") BytePtr getStringiSOFT(
         @Nullable ALCdevice device,
         @NativeType("ALCenum") int paramName,
         @NativeType("ALCsizei") int index

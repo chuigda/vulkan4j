@@ -355,7 +355,7 @@ public final class GLFW implements GLFWConstants {
     ///  @since Added in version 3.1.
     ///
     ///  @ingroup input
-    public GLFWcursor createCursor(
+    public @Nullable GLFWcursor createCursor(
         @Nullable @Pointer IGLFWimage image,
         int xhot,
         int yhot
@@ -418,7 +418,7 @@ public final class GLFW implements GLFWConstants {
     ///  @since Added in version 3.1.
     ///
     ///  @ingroup input
-    public GLFWcursor createStandardCursor(
+    public @Nullable GLFWcursor createStandardCursor(
         int shape
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glfwCreateStandardCursor);
@@ -573,7 +573,7 @@ public final class GLFW implements GLFWConstants {
     ///  @since Added in version 3.0.  Replaces `glfwOpenWindow`.
     ///
     ///  @ingroup window
-    public GLFWwindow createWindow(
+    public @Nullable GLFWwindow createWindow(
         int width,
         int height,
         @Nullable BytePtr title,
@@ -912,7 +912,7 @@ public final class GLFW implements GLFWConstants {
     ///  @since Added in version 3.0.
     ///
     ///  @ingroup input
-    public BytePtr getClipboardString(
+    public @Nullable BytePtr getClipboardString(
         @Nullable GLFWwindow window
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glfwGetClipboardString);
@@ -1025,7 +1025,7 @@ public final class GLFW implements GLFWConstants {
     ///  @since Added in version 3.0.
     ///
     ///  @ingroup context
-    public GLFWwindow getCurrentContext() {
+    public @Nullable GLFWwindow getCurrentContext() {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glfwGetCurrentContext);
         try {
             MemorySegment s = (MemorySegment) hFunction.invokeExact(
@@ -1335,7 +1335,7 @@ public final class GLFW implements GLFWConstants {
     ///  @since Added in version 3.3.
     ///
     ///  @ingroup input
-    public BytePtr getGamepadName(
+    public @Nullable BytePtr getGamepadName(
         int jid
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glfwGetGamepadName);
@@ -1426,7 +1426,7 @@ public final class GLFW implements GLFWConstants {
     ///  @since Added in version 3.0.
     ///
     ///  @ingroup monitor
-    public @Pointer IGLFWgammaramp getGammaRamp(
+    public @Nullable @Pointer IGLFWgammaramp getGammaRamp(
         @Nullable GLFWmonitor monitor
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glfwGetGammaRamp);
@@ -1560,7 +1560,7 @@ public final class GLFW implements GLFWConstants {
     ///  @since Added in version 3.0.  Replaces `glfwGetJoystickPos`.
     ///
     ///  @ingroup input
-    public FloatPtr getJoystickAxes(
+    public @Nullable FloatPtr getJoystickAxes(
         int jid,
         @Nullable IntPtr count
     ) {
@@ -1614,7 +1614,7 @@ public final class GLFW implements GLFWConstants {
     ///  @glfw3 Changed to return a dynamic array.
     ///
     ///  @ingroup input
-    public BytePtr getJoystickButtons(
+    public @Nullable BytePtr getJoystickButtons(
         int jid,
         @Nullable IntPtr count
     ) {
@@ -1668,7 +1668,7 @@ public final class GLFW implements GLFWConstants {
     ///  @since Added in version 3.3.
     ///
     ///  @ingroup input
-    public BytePtr getJoystickGUID(
+    public @Nullable BytePtr getJoystickGUID(
         int jid
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glfwGetJoystickGUID);
@@ -1736,7 +1736,7 @@ public final class GLFW implements GLFWConstants {
     ///  @since Added in version 3.3.
     ///
     ///  @ingroup input
-    public BytePtr getJoystickHats(
+    public @Nullable BytePtr getJoystickHats(
         int jid,
         @Nullable IntPtr count
     ) {
@@ -1780,7 +1780,7 @@ public final class GLFW implements GLFWConstants {
     ///  @since Added in version 3.0.
     ///
     ///  @ingroup input
-    public BytePtr getJoystickName(
+    public @Nullable BytePtr getJoystickName(
         int jid
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glfwGetJoystickName);
@@ -1944,7 +1944,7 @@ public final class GLFW implements GLFWConstants {
     ///  @since Added in version 3.2.
     ///
     ///  @ingroup input
-    public BytePtr getKeyName(
+    public @Nullable BytePtr getKeyName(
         int key,
         int scancode
     ) {
@@ -2069,7 +2069,7 @@ public final class GLFW implements GLFWConstants {
     ///  @since Added in version 3.0.
     ///
     ///  @ingroup monitor
-    public BytePtr getMonitorName(
+    public @Nullable BytePtr getMonitorName(
         @Nullable GLFWmonitor monitor
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glfwGetMonitorName);
@@ -2280,7 +2280,7 @@ public final class GLFW implements GLFWConstants {
     ///  @since Added in version 3.0.
     ///
     ///  @ingroup monitor
-    public @Pointer GLFWmonitor.Ptr getMonitors(
+    public @Nullable @Pointer GLFWmonitor.Ptr getMonitors(
         @Nullable IntPtr count
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glfwGetMonitors);
@@ -2573,7 +2573,7 @@ public final class GLFW implements GLFWConstants {
     ///  @since Added in version 3.0.
     ///
     ///  @ingroup monitor
-    public GLFWmonitor getPrimaryMonitor() {
+    public @Nullable GLFWmonitor getPrimaryMonitor() {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glfwGetPrimaryMonitor);
         try {
             MemorySegment s = (MemorySegment) hFunction.invokeExact(
@@ -2677,7 +2677,7 @@ public final class GLFW implements GLFWConstants {
     ///  @since Added in version 3.2.
     ///
     ///  @ingroup vulkan
-    public PointerPtr getRequiredInstanceExtensions(
+    public @Nullable PointerPtr getRequiredInstanceExtensions(
         @Nullable @Unsigned IntPtr count
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glfwGetRequiredInstanceExtensions);
@@ -2856,7 +2856,7 @@ public final class GLFW implements GLFWConstants {
     ///  @since Added in version 3.0.
     ///
     ///  @ingroup init
-    public BytePtr getVersionString() {
+    public @Nullable BytePtr getVersionString() {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glfwGetVersionString);
         try {
             MemorySegment s = (MemorySegment) hFunction.invokeExact(
@@ -2892,7 +2892,7 @@ public final class GLFW implements GLFWConstants {
     ///  @since Added in version 3.0.  Replaces `glfwGetDesktopMode`.
     ///
     ///  @ingroup monitor
-    public @Pointer IGLFWvidmode getVideoMode(
+    public @Nullable @Pointer IGLFWvidmode getVideoMode(
         @Nullable GLFWmonitor monitor
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glfwGetVideoMode);
@@ -2937,7 +2937,7 @@ public final class GLFW implements GLFWConstants {
     ///  @glfw3 Changed to return an array of modes for a specific monitor.
     ///
     ///  @ingroup monitor
-    public @Pointer IGLFWvidmode getVideoModes(
+    public @Nullable @Pointer IGLFWvidmode getVideoModes(
         @Nullable GLFWmonitor monitor,
         @Nullable IntPtr count
     ) {
@@ -3002,7 +3002,7 @@ public final class GLFW implements GLFWConstants {
     ///  @since Added in version 3.2.
     ///
     ///  @ingroup native
-    public PointerPtr getWaylandDisplay() {
+    public @Nullable PointerPtr getWaylandDisplay() {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glfwGetWaylandDisplay);
         try {
             MemorySegment s = (MemorySegment) hFunction.invokeExact(
@@ -3054,7 +3054,7 @@ public final class GLFW implements GLFWConstants {
     ///  @since Added in version 3.2.
     ///
     ///  @ingroup native
-    public PointerPtr getWaylandWindow(
+    public @Nullable PointerPtr getWaylandWindow(
         @Nullable GLFWwindow window
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glfwGetWaylandWindow);
@@ -3083,7 +3083,7 @@ public final class GLFW implements GLFWConstants {
     ///  @since Added in version 3.1.
     ///
     ///  @ingroup native
-    public BytePtr getWin32Adapter(
+    public @Nullable BytePtr getWin32Adapter(
         @Nullable GLFWmonitor monitor
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glfwGetWin32Adapter);
@@ -3112,7 +3112,7 @@ public final class GLFW implements GLFWConstants {
     ///  @since Added in version 3.1.
     ///
     ///  @ingroup native
-    public BytePtr getWin32Monitor(
+    public @Nullable BytePtr getWin32Monitor(
         @Nullable GLFWmonitor monitor
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glfwGetWin32Monitor);
@@ -3331,7 +3331,7 @@ public final class GLFW implements GLFWConstants {
     ///  @since Added in version 3.0.
     ///
     ///  @ingroup window
-    public GLFWmonitor getWindowMonitor(
+    public @Nullable GLFWmonitor getWindowMonitor(
         @Nullable GLFWwindow window
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glfwGetWindowMonitor);
@@ -3501,7 +3501,7 @@ public final class GLFW implements GLFWConstants {
     ///  @since Added in version 3.4.
     ///
     ///  @ingroup window
-    public BytePtr getWindowTitle(
+    public @Nullable BytePtr getWindowTitle(
         @Nullable GLFWwindow window
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glfwGetWindowTitle);
@@ -3587,7 +3587,7 @@ public final class GLFW implements GLFWConstants {
     ///  @since Added in version 3.0.
     ///
     ///  @ingroup native
-    public PointerPtr getX11Display() {
+    public @Nullable PointerPtr getX11Display() {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glfwGetX11Display);
         try {
             MemorySegment s = (MemorySegment) hFunction.invokeExact(
@@ -3650,7 +3650,7 @@ public final class GLFW implements GLFWConstants {
     ///  @since Added in version 3.3.
     ///
     ///  @ingroup native
-    public BytePtr getX11SelectionString() {
+    public @Nullable BytePtr getX11SelectionString() {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glfwGetX11SelectionString);
         try {
             MemorySegment s = (MemorySegment) hFunction.invokeExact(

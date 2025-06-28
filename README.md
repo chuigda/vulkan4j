@@ -22,7 +22,8 @@
 
 ### Experimental Bindings
 
-- [OpenXR](https://www.khronos.org/openxr/) ([`openxr`](https://github.com/club-doki7/vulkan4j/tree/master/modules/openxr) module): Generated from OpenXR header files. This module should theoretically have no bugs, but because of the lacking of VR development experience, we haven't tested it thoroughly via a complete dog feeding OpenXR application yet. Report any issues you find, and pull requests are welcome.
+- [WebGPU Native](https://www.w3.org/TR/webgpu/) ([`webgpu`](https://github.com/club-doki7/vulkan4j/tree/master/modules/webgpu) module): Generated from WebGPU YML IDL. This module is marked as experimental due to the unstable status of WebGPU Native APIs. Read module level documentation for more details.
+- [OpenXR](https://www.khronos.org/openxr/) ([`openxr`](https://github.com/club-doki7/vulkan4j/tree/master/modules/openxr) module): Generated from OpenXR XML registry. This module should theoretically have no bugs, but because of the lacking of VR development experience, we haven't tested it thoroughly via a complete dog feeding OpenXR application yet. Report any issues you find, and pull requests are welcome.
 - [SDL3](https://www.libsdl.org/) ([`sdl3`](https://github.com/club-doki7/vulkan4j/tree/master/modules/sdl3) module): Generated from SDL3 header files. This module is still under development, it has unimplemented functionalities, and **DOES contain known bugs**. We are planning to migrate to a better manner for parsing C header files, so the update of this module is **stalling** for now.
 
 <details>
