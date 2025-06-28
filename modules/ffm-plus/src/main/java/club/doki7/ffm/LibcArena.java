@@ -14,33 +14,6 @@ import java.util.Objects;
 public enum LibcArena implements Arena {
     INSTANCE;
 
-    private static final FunctionDescriptor DESCRIPTOR$aligned_alloc = FunctionDescriptor.of(
-            ValueLayout.ADDRESS,
-            NativeLayout.C_SIZE_T,
-            NativeLayout.C_SIZE_T
-    );
-
-    private static final FunctionDescriptor DESCRIPTOR$free = FunctionDescriptor.ofVoid(
-            ValueLayout.ADDRESS
-    );
-
-    private static final MethodHandle HANDLE$aligned_alloc = RawFunctionLoader.link(
-            Objects.requireNonNull(JavaSystemLibrary.INSTANCE.load("aligned_alloc")),
-            DESCRIPTOR$aligned_alloc
-    );
-    private static final MethodHandle HANDLE$free = RawFunctionLoader.link(
-            Objects.requireNonNull(JavaSystemLibrary.INSTANCE.load("free")),
-            DESCRIPTOR$free
-    );
-
-    public void free(@NotNull MemorySegment ms) {
-        try {
-            HANDLE$free.invokeExact(ms);
-        } catch (Throwable _) {
-            throw new RuntimeException("Failed to free memory");
-        }
-    }
-
     /// Allocates memory using system libc {@code aligned_alloc}
     ///
     /// Note that you're in charge of freeing the memory using {@link LibcArena#free}, otherwise
@@ -56,6 +29,10 @@ public enum LibcArena implements Arena {
     public @NotNull MemorySegment allocate(long byteSize, long byteAlignment) {
         if (byteSize <= 0 || byteAlignment <= 0 || (byteAlignment & (byteAlignment - 1)) != 0) {
             throw new IllegalArgumentException("Invalid byte size or alignment");
+        }
+
+        if (HANDLE$aligned_alloc == null) {
+            return allocateLegacy(byteSize, byteAlignment);
         }
 
         MemorySegment ms;
@@ -77,6 +54,18 @@ public enum LibcArena implements Arena {
         return ms;
     }
 
+    public void free(@NotNull MemorySegment ms) {
+        if (HANDLE$aligned_alloc == null) {
+            freeLegacy(ms);
+        }
+
+        try {
+            Objects.requireNonNull(HANDLE$free).invokeExact(ms);
+        } catch (Throwable _) {
+            throw new RuntimeException("Failed to free memory");
+        }
+    }
+
     @Override
     public @Nullable MemorySegment.Scope scope() {
         return null;
@@ -86,4 +75,38 @@ public enum LibcArena implements Arena {
     public void close() {
         throw new UnsupportedOperationException("Cannot close CArena");
     }
+
+    private static MemorySegment allocateLegacy(long byteSize, long byteAlignment) {
+    }
+
+    private static void freeLegacy(@NotNull MemorySegment ms) {
+    }
+
+    private static final FunctionDescriptor DESCRIPTOR$aligned_alloc = FunctionDescriptor.of(
+            ValueLayout.ADDRESS,
+            NativeLayout.C_SIZE_T,
+            NativeLayout.C_SIZE_T
+    );
+
+    private static final FunctionDescriptor DESCRIPTOR$malloc = FunctionDescriptor.of(
+            ValueLayout.ADDRESS,
+            NativeLayout.C_SIZE_T
+    );
+
+    private static final FunctionDescriptor DESCRIPTOR$free = FunctionDescriptor.ofVoid(
+            ValueLayout.ADDRESS
+    );
+
+    private static final @Nullable MethodHandle HANDLE$aligned_alloc = RawFunctionLoader.link(
+            JavaSystemLibrary.INSTANCE.load("aligned_alloc"),
+            DESCRIPTOR$aligned_alloc
+    );
+    private static final @Nullable MethodHandle HANDLE$malloc = RawFunctionLoader.link(
+            JavaSystemLibrary.INSTANCE.load("malloc"),
+            DESCRIPTOR$malloc
+    );
+    private static final MethodHandle HANDLE$free = RawFunctionLoader.link(
+            JavaSystemLibrary.INSTANCE.load("free"),
+            DESCRIPTOR$free
+    );
 }
