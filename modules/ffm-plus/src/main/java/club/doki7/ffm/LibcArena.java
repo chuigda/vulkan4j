@@ -61,6 +61,7 @@ public enum LibcArena implements Arena {
 
         if (HANDLE$aligned_alloc == null) {
             freeLegacy(ms);
+            return;
         }
 
         try {
