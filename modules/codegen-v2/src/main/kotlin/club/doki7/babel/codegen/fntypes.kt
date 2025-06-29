@@ -14,15 +14,21 @@ fun generateFunctionTypedefs(
     +"package $packageName;"
     +""
     imports("java.lang.foreign.*")
+    imports("java.lang.invoke.*")
+    imports("club.doki7.ffm.annotation.*")
     imports("club.doki7.ffm.NativeLayout")
-    if (registry.structures.isNotEmpty() || registry.unions.isNotEmpty()) {
-        imports("$packageName.datatype.*")
-    }
+    imports("org.jetbrains.annotations.NotNull")
+    importDatatypes(registry, codegenOptions)
+    importBitmasks(registry, codegenOptions)
+    importEnumtypes(registry, codegenOptions)
+    importHandles(registry, codegenOptions)
     +""
     +"public final class ${codegenOptions.functionTypeClassName} {"
 
     indent {
-        registry.functionTypedefs.values.sortedBy { it.name }.forEachIndexed { idx, it ->
+        val defs = registry.functionTypedefs.values.sortedBy { it.name }
+
+        defs.forEachIndexed { idx, it ->
             val seeLink = codegenOptions.seeLinkProvider(it)
             if (seeLink != null) {
                 +"/// @see $seeLink"
@@ -44,6 +50,7 @@ fun generateFunctionTypedefs(
             } else {
                 +"public static final FunctionDescriptor ${it.name} = FunctionDescriptor.of("
                 indent {
+                    // TODO: maybe joinToString?
                     val retCType = lowerType(registry, codegenOptions.refRegistries, it.result)
                     +"${retCType.jLayout}${if (it.params.isEmpty()) "" else ","}"
                     it.params.forEachIndexed { index, param ->
@@ -53,6 +60,44 @@ fun generateFunctionTypedefs(
                 }
                 +");"
             }
+            +""
+        }
+
+        defs.forEach { def ->
+            +"@FunctionalInterface"
+            "public interface ${def.name}" {
+                val retCType = lowerType(registry, codegenOptions.refRegistries, def.result)
+                +"${retCType.jType} invoke(${
+                    def.params.asSequence().mapIndexed({ idx, t -> idx to t }).joinToString { (idx, it) ->
+                        // TODO: we may extract parameter name
+                        lowerType(registry, codegenOptions.refRegistries, it).jType + " p$idx"
+                    }
+                });"
+
+                +""
+
+                defun("static", "MethodHandle", "of", "@NotNull ${def.name} lambda") {
+                    "try" {
+                        +"return MethodHandles.lookup().findVirtual(${def.name}.class, \"invoke\", ${def.name}.toMethodType()).bindTo(lambda);"
+                    }
+                    "catch (NoSuchMethodException | IllegalAccessException e)" {
+                        +"throw new RuntimeException(e);"
+                    }
+                }
+
+                +""
+
+                defun("static", "MemorySegment", "ofNative", "@NotNull ${def.name} lambda") {
+                    +"return ofNative(Arena.global(), lambda);"
+                }
+
+                +""
+
+                defun("static", "MemorySegment", "ofNative", "@NotNull Arena arena", "@NotNull ${def.name} lambda") {
+                    +"return Linker.nativeLinker().upcallStub(of(lambda), ${def.name}, arena);"
+                }
+            }
+
             +""
         }
 
