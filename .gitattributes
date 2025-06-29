@@ -1,3 +1,15 @@
+* text=auto eof=lf
+
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.pdf binary
+*.zip binary
+*.wav binary
+*.ttf binary
+*.spv binary
+
 modules/vulkan/src/main/java/club/doki7/vulkan/bitmask/*.java linguist-generated
 modules/vulkan/src/main/java/club/doki7/vulkan/command/*.java linguist-generated
 modules/vulkan/src/main/java/club/doki7/vulkan/datatype/*.java linguist-generated

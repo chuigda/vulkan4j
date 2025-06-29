@@ -25,7 +25,7 @@ Thanks for your participating `vulkan4j` development! To keep things efficient *
 
     If your development machine has limited resources, you can also open only the specific submodule you intend to work on (e.g., `vulkan4j/modules/ffm-plus`).
 
-4. **Git settings**: If you are using Windows, turn off the `core.autocrlf` settings in your Git configuration **before** cloning the repository. This is to ensure that line endings in your cloned repository are LF, so Git won't report 1145141919810 useless line-ending changes when you re-run the code generator.
+4. **Git settings**: *Technically speaking, this should have been resolved by our `.gitattributes` automatically.* If you are using Windows, double check that your cloned files have LF line ending. This is to ensure that line endings in your cloned repository are LF, so Git won't report 1145141919810 useless line-ending changes when you re-run the code generator.
 
 ### Contribution Workflow
 
