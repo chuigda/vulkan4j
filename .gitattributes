@@ -1,4 +1,6 @@
-* text=auto eof=lf
+* text=auto
+
+*.* text eof=lf
 
 *.png binary
 *.jpg binary
