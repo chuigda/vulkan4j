@@ -33,7 +33,6 @@ private fun generatePlatformDependentIntAccessor(
                 }
             }
         }
-
         is CSizeType -> {
             buildDoc {
                 defun("public", "@Unsigned long", member.name) {
@@ -48,8 +47,7 @@ private fun generatePlatformDependentIntAccessor(
                 }
             }
         }
-
-        is WCharType -> buildDoc {
+        is CWCharType -> buildDoc {
             defun("public", "@Unsigned int", member.name) {
                 +"return NativeLayout.readWCharT(segment, ${member.offsetName});"
             }
@@ -60,10 +58,6 @@ private fun generatePlatformDependentIntAccessor(
                 +"NativeLayout.writeWCharT(segment, ${member.offsetName}, value);"
                 +"return this;"
             }
-        }
-
-        else -> {
-            throw Exception("unsupported platform dependent int type $type")
         }
     }
 }

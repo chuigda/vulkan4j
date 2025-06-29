@@ -20,7 +20,7 @@ sealed interface CType {
 }
 
 interface ICommentable<SELF: CType> {
-    var comment: String?
+    val comment: String?
 
     fun copyWithComment(comment: String?): SELF
 }
@@ -37,7 +37,7 @@ data class CPointerType(
     val pointee: CType,
     val const: Boolean,
     val pointerToOne: Boolean,
-    override var comment: String?,
+    override val comment: String?,
 ) : CType, ICommentable<CPointerType> {
     override val jType: String = if (comment != null) {
         """@Pointer(comment="$comment") @NotNull MemorySegment"""
@@ -110,7 +110,7 @@ sealed interface CFixedSizeType : CNonRefType {
 
 data class CBoolType(
     override val cType: String = "bool",
-    override var comment: String? = null
+    override val comment: String? = null
 ) : CNonRefType, ICommentable<CBoolType> {
     override val jType: String get() = buildString {
         if (comment != null) {
@@ -138,7 +138,7 @@ data class CFixedIntType(
     override val cType: String,
     override val byteSize: Int,
     val unsigned: Boolean,
-    override var comment: String? = null
+    override val comment: String? = null
 ) : CFixedSizeType, ICommentable<CFixedIntType> {
     override val jType: String get() = buildString {
         if (comment != null) {
@@ -194,13 +194,13 @@ data class CFixedIntType(
     }
 }
 
-sealed class CPlatformDependentIntType(
-    override val cType: String,
-    override val jTypeNoAnnotation: String,
-    override val jLayout: String,
-    override val jPtrTypeNoAnnotation: String,
-    override var comment: String? = null
-) : CNonRefType, ICommentable<CPlatformDependentIntType> {
+sealed interface CPlatformDependentIntType : CNonRefType, ICommentable<CPlatformDependentIntType> {
+    override val cType: String
+    override val jTypeNoAnnotation: String
+    override val jLayout: String
+    override val jPtrTypeNoAnnotation: String
+    override val comment: String?
+
     override val jLayoutType: String get() = error("should not call `jLayoutType` on `CPlatformDependentIntType`")
 
     override val jType: String get() = buildString {
@@ -218,9 +218,39 @@ sealed class CPlatformDependentIntType(
     }
 }
 
+data class CLongType(
+    override val cType: String = "long",
+    override val jTypeNoAnnotation: String = "long",
+    override val jLayout: String = "NativeLayout.C_LONG",
+    override val jPtrTypeNoAnnotation: String = "CLongPtr",
+    override val comment: String? = null
+) : CPlatformDependentIntType {
+    override fun copyWithComment(comment: String?): CLongType = copy(comment = comment)
+}
+
+data class CSizeType(
+    override val cType: String = "size_t",
+    override val jTypeNoAnnotation: String = "long",
+    override val jLayout: String = "NativeLayout.C_SIZE_T",
+    override val jPtrTypeNoAnnotation: String = "PointerPtr",
+    override val comment: String? = null
+) : CPlatformDependentIntType {
+    override fun copyWithComment(comment: String?): CSizeType = copy(comment = comment)
+}
+
+data class CWCharType(
+    override val cType: String = "wchar_t",
+    override val jTypeNoAnnotation: String = "int",
+    override val jLayout: String = "NativeLayout.WCHAR_T",
+    override val jPtrTypeNoAnnotation: String = "WCharPtr",
+    override val comment: String? = null
+) : CPlatformDependentIntType {
+    override fun copyWithComment(comment: String?): CWCharType = copy(comment = comment)
+}
+
 data class CFloatType(
     override val byteSize: Int,
-    override var comment: String? = null
+    override val comment: String? = null
 ) : CFixedSizeType, ICommentable<CFloatType> {
     override val jType: String get() = buildString {
         if (comment != null) {
@@ -345,50 +375,10 @@ private val doubleType = CFloatType(8)
 
 private val cIntType = int32Type
 private val cUIntType = uint32Type
-private val cLongType = CLongType(null)
-private val cSizeType = CSizeType(null)
-private val cIntPtrType = CIntPtrType(null)
-private val wCharType = WCharType(null)
-
-class CLongType(comment: String?) : CPlatformDependentIntType(
-    cType = "long",
-    jTypeNoAnnotation = "long",
-    jLayout = "NativeLayout.C_LONG",
-    jPtrTypeNoAnnotation = "CLongPtr",
-    comment = comment
-) {
-    override fun copyWithComment(comment: String?): CLongType = CLongType(comment)
-}
-
-class CSizeType(comment: String?) : CPlatformDependentIntType(
-    cType = "size_t",
-    jTypeNoAnnotation = "long",
-    jLayout = "NativeLayout.C_SIZE_T",
-    jPtrTypeNoAnnotation = "PointerPtr",
-    comment = comment
-) {
-    override fun copyWithComment(comment: String?): CSizeType = CSizeType(comment)
-}
-
-class CIntPtrType(comment: String?) : CPlatformDependentIntType(
-    cType = "intptr_t",
-    jTypeNoAnnotation = "long",
-    jLayout = "NativeLayout.C_SIZE_T",
-    jPtrTypeNoAnnotation = "PointerPtr",
-    comment = comment
-) {
-    override fun copyWithComment(comment: String?): CIntPtrType = CIntPtrType(comment)
-}
-
-class WCharType(comment: String?) : CPlatformDependentIntType(
-    cType = "wchar_t",
-    jTypeNoAnnotation = "int",
-    jLayout = "NativeLayout.WCHAR_T",
-    jPtrTypeNoAnnotation = "WCharPtr",
-    comment = comment
-) {
-    override fun copyWithComment(comment: String?): WCharType = WCharType(comment)
-}
+private val cLongType = CLongType()
+private val cSizeType = CSizeType()
+private val cIntPtrType = cSizeType.copyWithComment("intptr_t")
+private val wCharType = CWCharType()
 
 private fun pvoidType(comment: String) = CPointerType(voidType, const = false, pointerToOne = false, comment = comment)
 
