@@ -1,3 +1,9 @@
+## UNRELEASED v0.4.3
+
+### Bugfixes
+
+- (@HoshinoTented + @chuigda) Fixed issue #131, where functions accepting and returning C `long` types were incorrectly generated. Since only X11 relevant APIs have been using `long` type as input and return types, this issue have little impact on most users.  
+
 ## v0.4.2
 
 Upgrade `ffm-plus` to v0.2.6, and other wrapper modules to v0.4.2.

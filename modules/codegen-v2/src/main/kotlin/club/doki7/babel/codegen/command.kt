@@ -2,12 +2,15 @@ package club.doki7.babel.codegen
 
 import club.doki7.babel.ctype.CArrayType
 import club.doki7.babel.ctype.CHandleType
+import club.doki7.babel.ctype.CLongType
 import club.doki7.babel.ctype.CNonRefType
 import club.doki7.babel.ctype.CPlatformDependentIntType
 import club.doki7.babel.ctype.CPointerType
+import club.doki7.babel.ctype.CSizeType
 import club.doki7.babel.ctype.CStructType
 import club.doki7.babel.ctype.CType
 import club.doki7.babel.ctype.CVoidType
+import club.doki7.babel.ctype.CWCharType
 import club.doki7.babel.ctype.lowerType
 import club.doki7.babel.registry.Command
 import club.doki7.babel.registry.Param
@@ -164,6 +167,12 @@ private fun generateCommandWrapper(
     loweredCommand: LoweredCommand,
     codegenOptions: CodegenOptions
 ) = buildDoc {
+    val hasPlatformDependentReturnType =
+        loweredCommand.result is CPlatformDependentIntType && loweredCommand.result !is CSizeType
+    val hasPlatformDependentParam = loweredCommand.paramCType.any {
+        it is CPlatformDependentIntType && it !is CSizeType
+    }
+
     val paramIOTypes = mutableListOf<String>()
     val callArgs = mutableListOf<String>()
 
@@ -212,13 +221,19 @@ private fun generateCommandWrapper(
         +"MethodHandle hFunction = Objects.requireNonNull(HANDLE$${loweredCommand.command.name.original});"
         +"try {"
         indent {
+            val invokeMethod = if (hasPlatformDependentReturnType || hasPlatformDependentParam) {
+                "invoke"
+            } else {
+                "invokeExact"
+            }
+
             if (loweredCommand.result is CVoidType) {
-                +"hFunction.invokeExact("
+                +"hFunction.${invokeMethod}("
                 indent { +callArgsDoc }
                 +");"
             } else {
                 val (beforeCall, afterCall, nextStmt) = generateResultConvert(loweredCommand.result)
-                +"${beforeCall}hFunction.invokeExact("
+                +"${beforeCall}hFunction.${invokeMethod}("
                 indent {
                     if (loweredCommand.result is CStructType) {
                         +"allocator, "
@@ -322,13 +337,19 @@ private fun generateInputConvert(type: CType, param: Param) = when (type) {
             else -> throw Exception("unsupported array type: $type")
         }
     }
-    is CNonRefType -> {
-        if (type is CPlatformDependentIntType && type.cType == "size_t") {
+    is CPlatformDependentIntType -> when (type) {
+        is CSizeType -> {
             "MemorySegment.ofAddress(${param.name})"
         }
-        else {
-            param.name.toString()
+        is CWCharType -> {
+            "(NativeLayout.WCHAR_SIZE == 2) ? ((Object)(short) ${param.name}) : ((Object)(int) ${param.name})"
         }
+        is CLongType -> {
+            "(NativeLayout.C_LONG_SIZE == 4) ? ((Object)(int) ${param.name}) : ((Object)(long) ${param.name})"
+        }
+    }
+    is CNonRefType -> {
+        param.name.toString()
     }
     else -> throw Exception("unsupported parameter type: $type")
 }
@@ -367,18 +388,26 @@ private fun generateResultConvert(retType: CType): Triple<String, String, String
         "",
         "return s.equals(MemorySegment.NULL) ? null : new ${retType.name}(s);"
     )
-    is CPlatformDependentIntType -> {
-        if (retType.cType == "size_t") {
+    is CPlatformDependentIntType -> when (retType) {
+        is CSizeType -> {
             Triple(
                 "MemorySegment s = (MemorySegment) ",
                 "",
                 "return s.address();"
             )
-        } else {
+        }
+        is CWCharType -> {
             Triple(
-                "return (${retType.jTypeNoAnnotation}) ",
+                "Object t = ",
                 "",
-                null
+                "return (NativeLayout.WCHAR_SIZE == 2) ? (short) t : (int) t;"
+            )
+        }
+        is CLongType -> {
+            Triple(
+                "Object t = ",
+                "",
+                "return (NativeLayout.C_LONG_SIZE == 4) ? (int) t : (long) t;"
             )
         }
     }

@@ -1298,9 +1298,10 @@ public final class GLFW implements GLFWConstants {
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glfwGetGLXWindow);
         try {
-            return (long) hFunction.invokeExact(
+            Object t = hFunction.invoke(
                 (MemorySegment) (window != null ? window.segment() : MemorySegment.NULL)
             );
+            return (NativeLayout.C_LONG_SIZE == 4) ? (int) t : (long) t;
         } catch (Throwable e) {
             throw new RuntimeException(e);
         }
@@ -3565,9 +3566,10 @@ public final class GLFW implements GLFWConstants {
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glfwGetX11Adapter);
         try {
-            return (long) hFunction.invokeExact(
+            Object t = hFunction.invoke(
                 (MemorySegment) (monitor != null ? monitor.segment() : MemorySegment.NULL)
             );
+            return (NativeLayout.C_LONG_SIZE == 4) ? (int) t : (long) t;
         } catch (Throwable e) {
             throw new RuntimeException(e);
         }
@@ -3617,9 +3619,10 @@ public final class GLFW implements GLFWConstants {
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glfwGetX11Monitor);
         try {
-            return (long) hFunction.invokeExact(
+            Object t = hFunction.invoke(
                 (MemorySegment) (monitor != null ? monitor.segment() : MemorySegment.NULL)
             );
+            return (NativeLayout.C_LONG_SIZE == 4) ? (int) t : (long) t;
         } catch (Throwable e) {
             throw new RuntimeException(e);
         }
@@ -3680,9 +3683,10 @@ public final class GLFW implements GLFWConstants {
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glfwGetX11Window);
         try {
-            return (long) hFunction.invokeExact(
+            Object t = hFunction.invoke(
                 (MemorySegment) (window != null ? window.segment() : MemorySegment.NULL)
             );
+            return (NativeLayout.C_LONG_SIZE == 4) ? (int) t : (long) t;
         } catch (Throwable e) {
             throw new RuntimeException(e);
         }
