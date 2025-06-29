@@ -263,6 +263,9 @@ public record VkDebugUtilsMessengerCreateInfoEXT(@NotNull MemorySegment segment)
         return pfnUserCallback(PFN_vkDebugUtilsMessengerCallbackEXT.ofNative(value));
     }
 
+    public VkDebugUtilsMessengerCreateInfoEXT pfnUserCallback(@NotNull Arena arena, @NotNull PFN_vkDebugUtilsMessengerCallbackEXT value) {
+        return pfnUserCallback(PFN_vkDebugUtilsMessengerCallbackEXT.ofNative(arena, value));
+    }
     public VkDebugUtilsMessengerCreateInfoEXT pfnUserCallback(@Nullable IPointer pointer) {
         pfnUserCallback(pointer != null ? pointer.segment() : MemorySegment.NULL);
         return this;

@@ -243,6 +243,9 @@ public record VkDeviceDeviceMemoryReportCreateInfoEXT(@NotNull MemorySegment seg
         return pfnUserCallback(PFN_vkDeviceMemoryReportCallbackEXT.ofNative(value));
     }
 
+    public VkDeviceDeviceMemoryReportCreateInfoEXT pfnUserCallback(@NotNull Arena arena, @NotNull PFN_vkDeviceMemoryReportCallbackEXT value) {
+        return pfnUserCallback(PFN_vkDeviceMemoryReportCallbackEXT.ofNative(arena, value));
+    }
     public VkDeviceDeviceMemoryReportCreateInfoEXT pfnUserCallback(@Nullable IPointer pointer) {
         pfnUserCallback(pointer != null ? pointer.segment() : MemorySegment.NULL);
         return this;

@@ -28,6 +28,10 @@ private fun DocList.generatePFunAccessor(
     }
 
     +""
+
+    defun("public", className, member.name, "@NotNull Arena arena", "@NotNull $interfaceName value") {
+        +"return ${member.name}($interfaceName.ofNative(arena, value));"
+    }
 }
 
 private fun generatePVoidAccessor(className: String, type: CPointerType, member: LayoutField.Typed) = buildDoc {
