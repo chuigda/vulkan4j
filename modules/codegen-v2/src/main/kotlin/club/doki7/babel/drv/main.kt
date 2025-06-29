@@ -34,11 +34,11 @@ internal val log = Logger.getLogger("c.d.b.drv")
  * all the earth: and from thence did the `Lord` scatter them abroad upon the face of all the earth.
  * */
 fun main() {
-    setupLog()
-    openglMain()
+//    setupLog()
+//    openglMain()
     val vulkanRegistry = vulkanMain()
-    val vulkanAdditionalRegistry = vulkanAdditionalRegistry()
-    vmaMain(vulkanRegistry, vulkanAdditionalRegistry)
-    glfw3Main(vulkanRegistry, vulkanAdditionalRegistry)
-    openalMain()
+//    val vulkanAdditionalRegistry = vulkanAdditionalRegistry()
+//    vmaMain(vulkanRegistry, vulkanAdditionalRegistry)
+//    glfw3Main(vulkanRegistry, vulkanAdditionalRegistry)
+//    openalMain()
 }

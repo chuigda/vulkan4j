@@ -17,6 +17,7 @@ import club.doki7.vulkan.bitmask.*;
 import club.doki7.vulkan.handle.*;
 import club.doki7.vulkan.enumtype.*;
 import static club.doki7.vulkan.VkConstants.*;
+import club.doki7.vulkan.VkFunctionTypes.*;
 
 /// Represents a pointer to a <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkDebugUtilsMessengerCreateInfoEXT.html"><code>VkDebugUtilsMessengerCreateInfoEXT</code></a> structure in native memory.
 ///
@@ -256,6 +257,10 @@ public record VkDebugUtilsMessengerCreateInfoEXT(@NotNull MemorySegment segment)
     public VkDebugUtilsMessengerCreateInfoEXT pfnUserCallback(@Pointer(comment="PFN_vkDebugUtilsMessengerCallbackEXT") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pfnUserCallback, OFFSET$pfnUserCallback, value);
         return this;
+    }
+
+    public VkDebugUtilsMessengerCreateInfoEXT pfnUserCallback(@NotNull PFN_vkDebugUtilsMessengerCallbackEXT value) {
+        return pfnUserCallback(PFN_vkDebugUtilsMessengerCallbackEXT.ofNative(value));
     }
 
     public VkDebugUtilsMessengerCreateInfoEXT pfnUserCallback(@Nullable IPointer pointer) {

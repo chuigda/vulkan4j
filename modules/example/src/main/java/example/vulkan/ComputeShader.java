@@ -52,8 +52,8 @@ final class Application {
 
         VkInstanceCreateInfo instanceCreateInfo = VkInstanceCreateInfo.allocate(arena)
                 .pApplicationInfo(applicationInfo)
-                .enabledLayerCount(1)
-                .ppEnabledLayerNames(PointerPtr.allocateV(arena, BytePtr.allocateString(arena, VALIDATION_LAYER_NAME)))
+//                .enabledLayerCount(1)
+//                .ppEnabledLayerNames(PointerPtr.allocateV(arena, BytePtr.allocateString(arena, VALIDATION_LAYER_NAME)))
                 .enabledExtensionCount(1)
                 .ppEnabledExtensionNames(PointerPtr.allocateV(arena, BytePtr.allocateString(arena, VkConstants.EXT_DEBUG_UTILS_EXTENSION_NAME)));
 
@@ -67,11 +67,11 @@ final class Application {
                         | VkDebugUtilsMessageTypeFlagsEXT.VALIDATION
                         | VkDebugUtilsMessageTypeFlagsEXT.PERFORMANCE
                 );
-        debugUtilsMessengerCreateInfo.pfnUserCallback(PFN_vkDebugUtilsMessengerCallbackEXT.ofNative((_, _, pCallbackData, _) -> {
+        debugUtilsMessengerCreateInfo.pfnUserCallback((_, _, pCallbackData, _) -> {
             var callbackData = new VkDebugUtilsMessengerCallbackDataEXT(pCallbackData.reinterpret(VkDebugUtilsMessengerCallbackDataEXT.BYTES));
             System.err.println("Validation layer: " + Objects.requireNonNull(callbackData.pMessage()).readString());
             return VkConstants.FALSE;
-        }));
+        });
 
         instanceCreateInfo.pNext(debugUtilsMessengerCreateInfo);
 

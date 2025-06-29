@@ -17,6 +17,7 @@ import club.doki7.vulkan.bitmask.*;
 import club.doki7.vulkan.handle.*;
 import club.doki7.vulkan.enumtype.*;
 import static club.doki7.vulkan.VkConstants.*;
+import club.doki7.vulkan.VkFunctionTypes.*;
 
 /// Represents a pointer to a <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPhysicalDeviceShaderExpectAssumeFeatures.html"><code>VkPhysicalDeviceShaderExpectAssumeFeatures</code></a> structure in native memory.
 ///

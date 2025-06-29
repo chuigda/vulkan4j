@@ -3,6 +3,7 @@ package club.doki7.babel.codegen.accessor
 import club.doki7.babel.codegen.LayoutField
 import club.doki7.babel.codegen.defun
 import club.doki7.babel.ctype.*
+import club.doki7.babel.util.DocList
 import club.doki7.babel.util.buildDoc
 
 fun generatePtrAccessor(className: String, type: CPointerType, member: LayoutField.Typed) = when (type.pointee) {
@@ -13,6 +14,20 @@ fun generatePtrAccessor(className: String, type: CPointerType, member: LayoutFie
     is CHandleType -> generatePHandleAccessor(className, type.pointee, member)
     is CStructType -> generatePStructureAccessor(className, type.pointee, member)
     is CArrayType -> TODO()
+}
+
+private fun DocList.generatePFunAccessor(
+    className: String,
+    type: CPointerType,
+    interfaceName: String,
+    member: LayoutField.Typed
+) {
+    // only set
+    defun("public", className, member.name, "@NotNull $interfaceName value") {
+        +"return ${member.name}($interfaceName.ofNative(value));"
+    }
+
+    +""
 }
 
 private fun generatePVoidAccessor(className: String, type: CPointerType, member: LayoutField.Typed) = buildDoc {
@@ -29,6 +44,10 @@ private fun generatePVoidAccessor(className: String, type: CPointerType, member:
         +"return this;"
     }
     +""
+
+    if (type.kind is CPointerType.Kind.Function) {
+        generatePFunAccessor(className, type, type.kind.name, member)
+    }
 
     defun("public", className, member.name, "@Nullable IPointer pointer") {
         +"${member.name}(pointer != null ? pointer.segment() : MemorySegment.NULL);"

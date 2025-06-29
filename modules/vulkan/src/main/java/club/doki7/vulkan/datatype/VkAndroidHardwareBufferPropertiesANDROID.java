@@ -18,6 +18,8 @@ import club.doki7.vulkan.handle.*;
 import club.doki7.vulkan.enumtype.*;
 import static club.doki7.vulkan.VkConstants.*;
 
+import club.doki7.vulkan.VkFunctionTypes.*;
+
 /// Represents a pointer to a <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkAndroidHardwareBufferPropertiesANDROID.html"><code>VkAndroidHardwareBufferPropertiesANDROID</code></a> structure in native memory.
 ///
 /// ## Structure

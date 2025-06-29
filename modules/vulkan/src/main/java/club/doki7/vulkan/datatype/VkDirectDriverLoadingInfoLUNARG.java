@@ -17,6 +17,7 @@ import club.doki7.vulkan.bitmask.*;
 import club.doki7.vulkan.handle.*;
 import club.doki7.vulkan.enumtype.*;
 import static club.doki7.vulkan.VkConstants.*;
+import club.doki7.vulkan.VkFunctionTypes.*;
 
 /// Represents a pointer to a <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkDirectDriverLoadingInfoLUNARG.html"><code>VkDirectDriverLoadingInfoLUNARG</code></a> structure in native memory.
 ///
@@ -235,6 +236,10 @@ public record VkDirectDriverLoadingInfoLUNARG(@NotNull MemorySegment segment) im
     public VkDirectDriverLoadingInfoLUNARG pfnGetInstanceProcAddr(@Pointer(comment="PFN_vkGetInstanceProcAddrLUNARG") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pfnGetInstanceProcAddr, OFFSET$pfnGetInstanceProcAddr, value);
         return this;
+    }
+
+    public VkDirectDriverLoadingInfoLUNARG pfnGetInstanceProcAddr(@NotNull PFN_vkGetInstanceProcAddrLUNARG value) {
+        return pfnGetInstanceProcAddr(PFN_vkGetInstanceProcAddrLUNARG.ofNative(value));
     }
 
     public VkDirectDriverLoadingInfoLUNARG pfnGetInstanceProcAddr(@Nullable IPointer pointer) {
