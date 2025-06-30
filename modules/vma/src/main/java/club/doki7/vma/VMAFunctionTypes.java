@@ -9,6 +9,10 @@ import club.doki7.vma.datatype.*;
 import club.doki7.vma.bitmask.*;
 import club.doki7.vma.enumtype.*;
 import club.doki7.vma.handle.*;
+import club.doki7.vulkan.bitmask.*;
+import club.doki7.vulkan.datatype.*;
+import club.doki7.vulkan.enumtype.*;
+import club.doki7.vulkan.handle.*;
 
 public final class VMAFunctionTypes {
     public static final FunctionDescriptor PFN_vmaAllocateDeviceMemoryFunction = FunctionDescriptor.ofVoid(

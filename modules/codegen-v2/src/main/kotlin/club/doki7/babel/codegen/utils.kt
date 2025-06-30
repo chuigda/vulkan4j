@@ -45,6 +45,12 @@ internal fun DocList.importFunctionTypedefs(registry: RegistryBase, codegenOptio
     }
 }
 
+internal fun DocList.importExtras(codegenOptions: CodegenOptions) {
+    for (extra in codegenOptions.extraImport) {
+        imports(extra)
+    }
+}
+
 internal fun DocList.defConst(type: String, name: String, value: String) {
     +"public static final $type $name = $value;"
 }

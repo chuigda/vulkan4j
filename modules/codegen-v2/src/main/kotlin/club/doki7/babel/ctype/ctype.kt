@@ -42,7 +42,7 @@ data class CPointerType(
     val kind: Kind? = null
 ) : CType, ICommentable<CPointerType> {
     sealed interface Kind {
-        class Function(val name: String) : Kind
+        class Function(val typedef: FunctionTypedef) : Kind
     }
 
     override val jType: String = if (comment != null) {
@@ -703,7 +703,7 @@ fun identifierTypeLookup(registry: RegistryBase, refRegistries: List<RegistryBas
             false,
             pointerToOne = true,
             comment = fpName,
-            kind = CPointerType.Kind.Function(fpName)
+            kind = CPointerType.Kind.Function(functionTypedef)
         )
     }
     else if (registry.aliases.contains(type.ident)) {

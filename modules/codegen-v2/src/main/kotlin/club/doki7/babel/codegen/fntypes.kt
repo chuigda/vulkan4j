@@ -22,6 +22,8 @@ fun generateFunctionTypedefs(
     importBitmasks(registry, codegenOptions)
     importEnumtypes(registry, codegenOptions)
     importHandles(registry, codegenOptions)
+    importExtras(codegenOptions)
+
     +""
     +"public final class ${codegenOptions.functionTypeClassName} {"
 

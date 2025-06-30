@@ -49,8 +49,9 @@ private fun generatePVoidAccessor(className: String, type: CPointerType, member:
     }
     +""
 
-    if (type.kind is CPointerType.Kind.Function) {
-        generatePFunAccessor(className, type, type.kind.name, member)
+    val kind = type.kind
+    if (kind is CPointerType.Kind.Function && !kind.typedef.pfnApi) {
+        generatePFunAccessor(className, type, kind.typedef.name.value, member)
     }
 
     defun("public", className, member.name, "@Nullable IPointer pointer") {
