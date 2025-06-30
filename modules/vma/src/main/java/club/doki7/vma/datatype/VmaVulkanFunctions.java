@@ -16,6 +16,7 @@ import club.doki7.ffm.ptr.*;
 import club.doki7.vma.bitmask.*;
 import club.doki7.vma.handle.*;
 import club.doki7.vma.enumtype.*;
+import club.doki7.vma.VMAFunctionTypes.*;
 import club.doki7.vulkan.bitmask.*;
 import club.doki7.vulkan.datatype.*;
 import club.doki7.vulkan.enumtype.*;
@@ -228,6 +229,13 @@ public record VmaVulkanFunctions(@NotNull MemorySegment segment) implements IVma
         return this;
     }
 
+    public VmaVulkanFunctions getInstanceProcAddr(@NotNull PFN_vkGetInstanceProcAddr value) {
+        return getInstanceProcAddr(PFN_vkGetInstanceProcAddr.ofNative(value));
+    }
+
+    public VmaVulkanFunctions getInstanceProcAddr(@NotNull Arena arena, @NotNull PFN_vkGetInstanceProcAddr value) {
+        return getInstanceProcAddr(PFN_vkGetInstanceProcAddr.ofNative(arena, value));
+    }
     public VmaVulkanFunctions getInstanceProcAddr(@Nullable IPointer pointer) {
         getInstanceProcAddr(pointer != null ? pointer.segment() : MemorySegment.NULL);
         return this;
@@ -242,6 +250,13 @@ public record VmaVulkanFunctions(@NotNull MemorySegment segment) implements IVma
         return this;
     }
 
+    public VmaVulkanFunctions getDeviceProcAddr(@NotNull PFN_vkGetDeviceProcAddr value) {
+        return getDeviceProcAddr(PFN_vkGetDeviceProcAddr.ofNative(value));
+    }
+
+    public VmaVulkanFunctions getDeviceProcAddr(@NotNull Arena arena, @NotNull PFN_vkGetDeviceProcAddr value) {
+        return getDeviceProcAddr(PFN_vkGetDeviceProcAddr.ofNative(arena, value));
+    }
     public VmaVulkanFunctions getDeviceProcAddr(@Nullable IPointer pointer) {
         getDeviceProcAddr(pointer != null ? pointer.segment() : MemorySegment.NULL);
         return this;
@@ -256,6 +271,13 @@ public record VmaVulkanFunctions(@NotNull MemorySegment segment) implements IVma
         return this;
     }
 
+    public VmaVulkanFunctions getPhysicalDeviceProperties(@NotNull PFN_vkGetPhysicalDeviceProperties value) {
+        return getPhysicalDeviceProperties(PFN_vkGetPhysicalDeviceProperties.ofNative(value));
+    }
+
+    public VmaVulkanFunctions getPhysicalDeviceProperties(@NotNull Arena arena, @NotNull PFN_vkGetPhysicalDeviceProperties value) {
+        return getPhysicalDeviceProperties(PFN_vkGetPhysicalDeviceProperties.ofNative(arena, value));
+    }
     public VmaVulkanFunctions getPhysicalDeviceProperties(@Nullable IPointer pointer) {
         getPhysicalDeviceProperties(pointer != null ? pointer.segment() : MemorySegment.NULL);
         return this;
@@ -270,6 +292,13 @@ public record VmaVulkanFunctions(@NotNull MemorySegment segment) implements IVma
         return this;
     }
 
+    public VmaVulkanFunctions getPhysicalDeviceMemoryProperties(@NotNull PFN_vkGetPhysicalDeviceMemoryProperties value) {
+        return getPhysicalDeviceMemoryProperties(PFN_vkGetPhysicalDeviceMemoryProperties.ofNative(value));
+    }
+
+    public VmaVulkanFunctions getPhysicalDeviceMemoryProperties(@NotNull Arena arena, @NotNull PFN_vkGetPhysicalDeviceMemoryProperties value) {
+        return getPhysicalDeviceMemoryProperties(PFN_vkGetPhysicalDeviceMemoryProperties.ofNative(arena, value));
+    }
     public VmaVulkanFunctions getPhysicalDeviceMemoryProperties(@Nullable IPointer pointer) {
         getPhysicalDeviceMemoryProperties(pointer != null ? pointer.segment() : MemorySegment.NULL);
         return this;
@@ -284,6 +313,13 @@ public record VmaVulkanFunctions(@NotNull MemorySegment segment) implements IVma
         return this;
     }
 
+    public VmaVulkanFunctions allocateMemory(@NotNull PFN_vkAllocateMemory value) {
+        return allocateMemory(PFN_vkAllocateMemory.ofNative(value));
+    }
+
+    public VmaVulkanFunctions allocateMemory(@NotNull Arena arena, @NotNull PFN_vkAllocateMemory value) {
+        return allocateMemory(PFN_vkAllocateMemory.ofNative(arena, value));
+    }
     public VmaVulkanFunctions allocateMemory(@Nullable IPointer pointer) {
         allocateMemory(pointer != null ? pointer.segment() : MemorySegment.NULL);
         return this;
@@ -298,6 +334,13 @@ public record VmaVulkanFunctions(@NotNull MemorySegment segment) implements IVma
         return this;
     }
 
+    public VmaVulkanFunctions freeMemory(@NotNull PFN_vkFreeMemory value) {
+        return freeMemory(PFN_vkFreeMemory.ofNative(value));
+    }
+
+    public VmaVulkanFunctions freeMemory(@NotNull Arena arena, @NotNull PFN_vkFreeMemory value) {
+        return freeMemory(PFN_vkFreeMemory.ofNative(arena, value));
+    }
     public VmaVulkanFunctions freeMemory(@Nullable IPointer pointer) {
         freeMemory(pointer != null ? pointer.segment() : MemorySegment.NULL);
         return this;
@@ -312,6 +355,13 @@ public record VmaVulkanFunctions(@NotNull MemorySegment segment) implements IVma
         return this;
     }
 
+    public VmaVulkanFunctions mapMemory(@NotNull PFN_vkMapMemory value) {
+        return mapMemory(PFN_vkMapMemory.ofNative(value));
+    }
+
+    public VmaVulkanFunctions mapMemory(@NotNull Arena arena, @NotNull PFN_vkMapMemory value) {
+        return mapMemory(PFN_vkMapMemory.ofNative(arena, value));
+    }
     public VmaVulkanFunctions mapMemory(@Nullable IPointer pointer) {
         mapMemory(pointer != null ? pointer.segment() : MemorySegment.NULL);
         return this;
@@ -326,6 +376,13 @@ public record VmaVulkanFunctions(@NotNull MemorySegment segment) implements IVma
         return this;
     }
 
+    public VmaVulkanFunctions unmapMemory(@NotNull PFN_vkUnmapMemory value) {
+        return unmapMemory(PFN_vkUnmapMemory.ofNative(value));
+    }
+
+    public VmaVulkanFunctions unmapMemory(@NotNull Arena arena, @NotNull PFN_vkUnmapMemory value) {
+        return unmapMemory(PFN_vkUnmapMemory.ofNative(arena, value));
+    }
     public VmaVulkanFunctions unmapMemory(@Nullable IPointer pointer) {
         unmapMemory(pointer != null ? pointer.segment() : MemorySegment.NULL);
         return this;
@@ -340,6 +397,13 @@ public record VmaVulkanFunctions(@NotNull MemorySegment segment) implements IVma
         return this;
     }
 
+    public VmaVulkanFunctions flushMappedMemoryRanges(@NotNull PFN_vkFlushMappedMemoryRanges value) {
+        return flushMappedMemoryRanges(PFN_vkFlushMappedMemoryRanges.ofNative(value));
+    }
+
+    public VmaVulkanFunctions flushMappedMemoryRanges(@NotNull Arena arena, @NotNull PFN_vkFlushMappedMemoryRanges value) {
+        return flushMappedMemoryRanges(PFN_vkFlushMappedMemoryRanges.ofNative(arena, value));
+    }
     public VmaVulkanFunctions flushMappedMemoryRanges(@Nullable IPointer pointer) {
         flushMappedMemoryRanges(pointer != null ? pointer.segment() : MemorySegment.NULL);
         return this;
@@ -354,6 +418,13 @@ public record VmaVulkanFunctions(@NotNull MemorySegment segment) implements IVma
         return this;
     }
 
+    public VmaVulkanFunctions invalidateMappedMemoryRanges(@NotNull PFN_vkInvalidateMappedMemoryRanges value) {
+        return invalidateMappedMemoryRanges(PFN_vkInvalidateMappedMemoryRanges.ofNative(value));
+    }
+
+    public VmaVulkanFunctions invalidateMappedMemoryRanges(@NotNull Arena arena, @NotNull PFN_vkInvalidateMappedMemoryRanges value) {
+        return invalidateMappedMemoryRanges(PFN_vkInvalidateMappedMemoryRanges.ofNative(arena, value));
+    }
     public VmaVulkanFunctions invalidateMappedMemoryRanges(@Nullable IPointer pointer) {
         invalidateMappedMemoryRanges(pointer != null ? pointer.segment() : MemorySegment.NULL);
         return this;
@@ -368,6 +439,13 @@ public record VmaVulkanFunctions(@NotNull MemorySegment segment) implements IVma
         return this;
     }
 
+    public VmaVulkanFunctions bindBufferMemory(@NotNull PFN_vkBindBufferMemory value) {
+        return bindBufferMemory(PFN_vkBindBufferMemory.ofNative(value));
+    }
+
+    public VmaVulkanFunctions bindBufferMemory(@NotNull Arena arena, @NotNull PFN_vkBindBufferMemory value) {
+        return bindBufferMemory(PFN_vkBindBufferMemory.ofNative(arena, value));
+    }
     public VmaVulkanFunctions bindBufferMemory(@Nullable IPointer pointer) {
         bindBufferMemory(pointer != null ? pointer.segment() : MemorySegment.NULL);
         return this;
@@ -382,6 +460,13 @@ public record VmaVulkanFunctions(@NotNull MemorySegment segment) implements IVma
         return this;
     }
 
+    public VmaVulkanFunctions bindImageMemory(@NotNull PFN_vkBindImageMemory value) {
+        return bindImageMemory(PFN_vkBindImageMemory.ofNative(value));
+    }
+
+    public VmaVulkanFunctions bindImageMemory(@NotNull Arena arena, @NotNull PFN_vkBindImageMemory value) {
+        return bindImageMemory(PFN_vkBindImageMemory.ofNative(arena, value));
+    }
     public VmaVulkanFunctions bindImageMemory(@Nullable IPointer pointer) {
         bindImageMemory(pointer != null ? pointer.segment() : MemorySegment.NULL);
         return this;
@@ -396,6 +481,13 @@ public record VmaVulkanFunctions(@NotNull MemorySegment segment) implements IVma
         return this;
     }
 
+    public VmaVulkanFunctions getBufferMemoryRequirements(@NotNull PFN_vkGetBufferMemoryRequirements value) {
+        return getBufferMemoryRequirements(PFN_vkGetBufferMemoryRequirements.ofNative(value));
+    }
+
+    public VmaVulkanFunctions getBufferMemoryRequirements(@NotNull Arena arena, @NotNull PFN_vkGetBufferMemoryRequirements value) {
+        return getBufferMemoryRequirements(PFN_vkGetBufferMemoryRequirements.ofNative(arena, value));
+    }
     public VmaVulkanFunctions getBufferMemoryRequirements(@Nullable IPointer pointer) {
         getBufferMemoryRequirements(pointer != null ? pointer.segment() : MemorySegment.NULL);
         return this;
@@ -410,6 +502,13 @@ public record VmaVulkanFunctions(@NotNull MemorySegment segment) implements IVma
         return this;
     }
 
+    public VmaVulkanFunctions getImageMemoryRequirements(@NotNull PFN_vkGetImageMemoryRequirements value) {
+        return getImageMemoryRequirements(PFN_vkGetImageMemoryRequirements.ofNative(value));
+    }
+
+    public VmaVulkanFunctions getImageMemoryRequirements(@NotNull Arena arena, @NotNull PFN_vkGetImageMemoryRequirements value) {
+        return getImageMemoryRequirements(PFN_vkGetImageMemoryRequirements.ofNative(arena, value));
+    }
     public VmaVulkanFunctions getImageMemoryRequirements(@Nullable IPointer pointer) {
         getImageMemoryRequirements(pointer != null ? pointer.segment() : MemorySegment.NULL);
         return this;
@@ -424,6 +523,13 @@ public record VmaVulkanFunctions(@NotNull MemorySegment segment) implements IVma
         return this;
     }
 
+    public VmaVulkanFunctions createBuffer(@NotNull PFN_vkCreateBuffer value) {
+        return createBuffer(PFN_vkCreateBuffer.ofNative(value));
+    }
+
+    public VmaVulkanFunctions createBuffer(@NotNull Arena arena, @NotNull PFN_vkCreateBuffer value) {
+        return createBuffer(PFN_vkCreateBuffer.ofNative(arena, value));
+    }
     public VmaVulkanFunctions createBuffer(@Nullable IPointer pointer) {
         createBuffer(pointer != null ? pointer.segment() : MemorySegment.NULL);
         return this;
@@ -438,6 +544,13 @@ public record VmaVulkanFunctions(@NotNull MemorySegment segment) implements IVma
         return this;
     }
 
+    public VmaVulkanFunctions destroyBuffer(@NotNull PFN_vkDestroyBuffer value) {
+        return destroyBuffer(PFN_vkDestroyBuffer.ofNative(value));
+    }
+
+    public VmaVulkanFunctions destroyBuffer(@NotNull Arena arena, @NotNull PFN_vkDestroyBuffer value) {
+        return destroyBuffer(PFN_vkDestroyBuffer.ofNative(arena, value));
+    }
     public VmaVulkanFunctions destroyBuffer(@Nullable IPointer pointer) {
         destroyBuffer(pointer != null ? pointer.segment() : MemorySegment.NULL);
         return this;
@@ -452,6 +565,13 @@ public record VmaVulkanFunctions(@NotNull MemorySegment segment) implements IVma
         return this;
     }
 
+    public VmaVulkanFunctions createImage(@NotNull PFN_vkCreateImage value) {
+        return createImage(PFN_vkCreateImage.ofNative(value));
+    }
+
+    public VmaVulkanFunctions createImage(@NotNull Arena arena, @NotNull PFN_vkCreateImage value) {
+        return createImage(PFN_vkCreateImage.ofNative(arena, value));
+    }
     public VmaVulkanFunctions createImage(@Nullable IPointer pointer) {
         createImage(pointer != null ? pointer.segment() : MemorySegment.NULL);
         return this;
@@ -466,6 +586,13 @@ public record VmaVulkanFunctions(@NotNull MemorySegment segment) implements IVma
         return this;
     }
 
+    public VmaVulkanFunctions destroyImage(@NotNull PFN_vkDestroyImage value) {
+        return destroyImage(PFN_vkDestroyImage.ofNative(value));
+    }
+
+    public VmaVulkanFunctions destroyImage(@NotNull Arena arena, @NotNull PFN_vkDestroyImage value) {
+        return destroyImage(PFN_vkDestroyImage.ofNative(arena, value));
+    }
     public VmaVulkanFunctions destroyImage(@Nullable IPointer pointer) {
         destroyImage(pointer != null ? pointer.segment() : MemorySegment.NULL);
         return this;
@@ -480,6 +607,13 @@ public record VmaVulkanFunctions(@NotNull MemorySegment segment) implements IVma
         return this;
     }
 
+    public VmaVulkanFunctions cmdCopyBuffer(@NotNull PFN_vkCmdCopyBuffer value) {
+        return cmdCopyBuffer(PFN_vkCmdCopyBuffer.ofNative(value));
+    }
+
+    public VmaVulkanFunctions cmdCopyBuffer(@NotNull Arena arena, @NotNull PFN_vkCmdCopyBuffer value) {
+        return cmdCopyBuffer(PFN_vkCmdCopyBuffer.ofNative(arena, value));
+    }
     public VmaVulkanFunctions cmdCopyBuffer(@Nullable IPointer pointer) {
         cmdCopyBuffer(pointer != null ? pointer.segment() : MemorySegment.NULL);
         return this;
@@ -494,6 +628,13 @@ public record VmaVulkanFunctions(@NotNull MemorySegment segment) implements IVma
         return this;
     }
 
+    public VmaVulkanFunctions getBufferMemoryRequirements2KHR(@NotNull PFN_vkGetBufferMemoryRequirements2KHR value) {
+        return getBufferMemoryRequirements2KHR(PFN_vkGetBufferMemoryRequirements2KHR.ofNative(value));
+    }
+
+    public VmaVulkanFunctions getBufferMemoryRequirements2KHR(@NotNull Arena arena, @NotNull PFN_vkGetBufferMemoryRequirements2KHR value) {
+        return getBufferMemoryRequirements2KHR(PFN_vkGetBufferMemoryRequirements2KHR.ofNative(arena, value));
+    }
     public VmaVulkanFunctions getBufferMemoryRequirements2KHR(@Nullable IPointer pointer) {
         getBufferMemoryRequirements2KHR(pointer != null ? pointer.segment() : MemorySegment.NULL);
         return this;
@@ -508,6 +649,13 @@ public record VmaVulkanFunctions(@NotNull MemorySegment segment) implements IVma
         return this;
     }
 
+    public VmaVulkanFunctions getImageMemoryRequirements2KHR(@NotNull PFN_vkGetImageMemoryRequirements2KHR value) {
+        return getImageMemoryRequirements2KHR(PFN_vkGetImageMemoryRequirements2KHR.ofNative(value));
+    }
+
+    public VmaVulkanFunctions getImageMemoryRequirements2KHR(@NotNull Arena arena, @NotNull PFN_vkGetImageMemoryRequirements2KHR value) {
+        return getImageMemoryRequirements2KHR(PFN_vkGetImageMemoryRequirements2KHR.ofNative(arena, value));
+    }
     public VmaVulkanFunctions getImageMemoryRequirements2KHR(@Nullable IPointer pointer) {
         getImageMemoryRequirements2KHR(pointer != null ? pointer.segment() : MemorySegment.NULL);
         return this;
@@ -522,6 +670,13 @@ public record VmaVulkanFunctions(@NotNull MemorySegment segment) implements IVma
         return this;
     }
 
+    public VmaVulkanFunctions bindBufferMemory2KHR(@NotNull PFN_vkBindBufferMemory2KHR value) {
+        return bindBufferMemory2KHR(PFN_vkBindBufferMemory2KHR.ofNative(value));
+    }
+
+    public VmaVulkanFunctions bindBufferMemory2KHR(@NotNull Arena arena, @NotNull PFN_vkBindBufferMemory2KHR value) {
+        return bindBufferMemory2KHR(PFN_vkBindBufferMemory2KHR.ofNative(arena, value));
+    }
     public VmaVulkanFunctions bindBufferMemory2KHR(@Nullable IPointer pointer) {
         bindBufferMemory2KHR(pointer != null ? pointer.segment() : MemorySegment.NULL);
         return this;
@@ -536,6 +691,13 @@ public record VmaVulkanFunctions(@NotNull MemorySegment segment) implements IVma
         return this;
     }
 
+    public VmaVulkanFunctions bindImageMemory2KHR(@NotNull PFN_vkBindImageMemory2KHR value) {
+        return bindImageMemory2KHR(PFN_vkBindImageMemory2KHR.ofNative(value));
+    }
+
+    public VmaVulkanFunctions bindImageMemory2KHR(@NotNull Arena arena, @NotNull PFN_vkBindImageMemory2KHR value) {
+        return bindImageMemory2KHR(PFN_vkBindImageMemory2KHR.ofNative(arena, value));
+    }
     public VmaVulkanFunctions bindImageMemory2KHR(@Nullable IPointer pointer) {
         bindImageMemory2KHR(pointer != null ? pointer.segment() : MemorySegment.NULL);
         return this;
@@ -550,6 +712,13 @@ public record VmaVulkanFunctions(@NotNull MemorySegment segment) implements IVma
         return this;
     }
 
+    public VmaVulkanFunctions getPhysicalDeviceMemoryProperties2KHR(@NotNull PFN_vkGetPhysicalDeviceMemoryProperties2KHR value) {
+        return getPhysicalDeviceMemoryProperties2KHR(PFN_vkGetPhysicalDeviceMemoryProperties2KHR.ofNative(value));
+    }
+
+    public VmaVulkanFunctions getPhysicalDeviceMemoryProperties2KHR(@NotNull Arena arena, @NotNull PFN_vkGetPhysicalDeviceMemoryProperties2KHR value) {
+        return getPhysicalDeviceMemoryProperties2KHR(PFN_vkGetPhysicalDeviceMemoryProperties2KHR.ofNative(arena, value));
+    }
     public VmaVulkanFunctions getPhysicalDeviceMemoryProperties2KHR(@Nullable IPointer pointer) {
         getPhysicalDeviceMemoryProperties2KHR(pointer != null ? pointer.segment() : MemorySegment.NULL);
         return this;
@@ -564,6 +733,13 @@ public record VmaVulkanFunctions(@NotNull MemorySegment segment) implements IVma
         return this;
     }
 
+    public VmaVulkanFunctions getDeviceBufferMemoryRequirements(@NotNull PFN_vkGetDeviceBufferMemoryRequirementsKHR value) {
+        return getDeviceBufferMemoryRequirements(PFN_vkGetDeviceBufferMemoryRequirementsKHR.ofNative(value));
+    }
+
+    public VmaVulkanFunctions getDeviceBufferMemoryRequirements(@NotNull Arena arena, @NotNull PFN_vkGetDeviceBufferMemoryRequirementsKHR value) {
+        return getDeviceBufferMemoryRequirements(PFN_vkGetDeviceBufferMemoryRequirementsKHR.ofNative(arena, value));
+    }
     public VmaVulkanFunctions getDeviceBufferMemoryRequirements(@Nullable IPointer pointer) {
         getDeviceBufferMemoryRequirements(pointer != null ? pointer.segment() : MemorySegment.NULL);
         return this;
@@ -578,6 +754,13 @@ public record VmaVulkanFunctions(@NotNull MemorySegment segment) implements IVma
         return this;
     }
 
+    public VmaVulkanFunctions getDeviceImageMemoryRequirements(@NotNull PFN_vkGetDeviceImageMemoryRequirementsKHR value) {
+        return getDeviceImageMemoryRequirements(PFN_vkGetDeviceImageMemoryRequirementsKHR.ofNative(value));
+    }
+
+    public VmaVulkanFunctions getDeviceImageMemoryRequirements(@NotNull Arena arena, @NotNull PFN_vkGetDeviceImageMemoryRequirementsKHR value) {
+        return getDeviceImageMemoryRequirements(PFN_vkGetDeviceImageMemoryRequirementsKHR.ofNative(arena, value));
+    }
     public VmaVulkanFunctions getDeviceImageMemoryRequirements(@Nullable IPointer pointer) {
         getDeviceImageMemoryRequirements(pointer != null ? pointer.segment() : MemorySegment.NULL);
         return this;
@@ -592,6 +775,13 @@ public record VmaVulkanFunctions(@NotNull MemorySegment segment) implements IVma
         return this;
     }
 
+    public VmaVulkanFunctions getMemoryWin32HandleKHR(@NotNull PFN_vkGetMemoryWin32HandleKHR value) {
+        return getMemoryWin32HandleKHR(PFN_vkGetMemoryWin32HandleKHR.ofNative(value));
+    }
+
+    public VmaVulkanFunctions getMemoryWin32HandleKHR(@NotNull Arena arena, @NotNull PFN_vkGetMemoryWin32HandleKHR value) {
+        return getMemoryWin32HandleKHR(PFN_vkGetMemoryWin32HandleKHR.ofNative(arena, value));
+    }
     public VmaVulkanFunctions getMemoryWin32HandleKHR(@Nullable IPointer pointer) {
         getMemoryWin32HandleKHR(pointer != null ? pointer.segment() : MemorySegment.NULL);
         return this;
