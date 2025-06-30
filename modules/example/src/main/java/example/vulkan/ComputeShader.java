@@ -52,8 +52,8 @@ final class Application {
 
         VkInstanceCreateInfo instanceCreateInfo = VkInstanceCreateInfo.allocate(arena)
                 .pApplicationInfo(applicationInfo)
-//                .enabledLayerCount(1)
-//                .ppEnabledLayerNames(PointerPtr.allocateV(arena, BytePtr.allocateString(arena, VALIDATION_LAYER_NAME)))
+                .enabledLayerCount(1)
+                .ppEnabledLayerNames(PointerPtr.allocateV(arena, BytePtr.allocateString(arena, VALIDATION_LAYER_NAME)))
                 .enabledExtensionCount(1)
                 .ppEnabledExtensionNames(PointerPtr.allocateV(arena, BytePtr.allocateString(arena, VkConstants.EXT_DEBUG_UTILS_EXTENSION_NAME)));
 

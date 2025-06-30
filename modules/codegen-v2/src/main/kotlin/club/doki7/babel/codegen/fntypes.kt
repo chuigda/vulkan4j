@@ -50,7 +50,6 @@ fun generateFunctionTypedefs(
             } else {
                 +"public static final FunctionDescriptor ${it.name} = FunctionDescriptor.of("
                 indent {
-                    // TODO: maybe joinToString?
                     val retCType = lowerType(registry, codegenOptions.refRegistries, it.result)
                     +"${retCType.jLayout}${if (it.params.isEmpty()) "" else ","}"
                     it.params.forEachIndexed { index, param ->
@@ -63,16 +62,21 @@ fun generateFunctionTypedefs(
             +""
         }
 
+        // generating function interfaces
         defs.forEach { def ->
             +"@FunctionalInterface"
             "public interface ${def.name}" {
                 val retCType = lowerType(registry, codegenOptions.refRegistries, def.result)
-                +"${retCType.jType} invoke(${
-                    def.params.asSequence().mapIndexed({ idx, t -> idx to t }).joinToString { (idx, it) ->
-                        // TODO: we may extract parameter name
-                        lowerType(registry, codegenOptions.refRegistries, it).jType + " p$idx"
+                +"${retCType.jType} invoke("
+                indent {
+                    def.params.forEachIndexed { idx, param ->
+                        val last = idx == def.params.size - 1
+                        val suffix = if (last) "" else ","
+                        val loweredType = lowerType(registry, codegenOptions.refRegistries, param)
+                        +"${loweredType.jType} p$idx$suffix"
                     }
-                });"
+                }
+                +");"
 
                 +""
 

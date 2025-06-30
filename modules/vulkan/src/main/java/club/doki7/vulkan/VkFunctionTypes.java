@@ -92,7 +92,13 @@ public final class VkFunctionTypes {
 
     @FunctionalInterface
     public interface PFN_vkAllocationFunction {
-        @Pointer(comment="void*") @NotNull MemorySegment invoke(@Pointer(comment="void*") @NotNull MemorySegment p0, long p1, long p2, @EnumType(VkSystemAllocationScope.class) int p3);
+        @Pointer(comment = "void*")
+        @NotNull MemorySegment invoke(
+                @Pointer(comment = "void*") @NotNull MemorySegment p0,
+                long p1,
+                long p2,
+                @EnumType(VkSystemAllocationScope.class) int p3
+        );
 
         static MethodHandle of(@NotNull PFN_vkAllocationFunction lambda) {
             try {
@@ -114,7 +120,18 @@ public final class VkFunctionTypes {
 
     @FunctionalInterface
     public interface PFN_vkDebugReportCallbackEXT {
-        @NativeType("VkBool32") @Unsigned int invoke(@Bitmask(VkDebugReportFlagsEXT.class) int p0, @EnumType(VkDebugReportObjectTypeEXT.class) int p1, @Unsigned long p2, long p3, int p4, @Pointer(comment="void*") @NotNull MemorySegment p5, @Pointer(comment="void*") @NotNull MemorySegment p6, @Pointer(comment="void*") @NotNull MemorySegment p7);
+        @NativeType("VkBool32")
+        @Unsigned
+        int invoke(
+                @Bitmask(VkDebugReportFlagsEXT.class) int p0,
+                @EnumType(VkDebugReportObjectTypeEXT.class) int p1,
+                @Unsigned long p2,
+                long p3,
+                int p4,
+                @Pointer(comment = "void*") @NotNull MemorySegment p5,
+                @Pointer(comment = "void*") @NotNull MemorySegment p6,
+                @Pointer(comment = "void*") @NotNull MemorySegment p7
+        );
 
         static MethodHandle of(@NotNull PFN_vkDebugReportCallbackEXT lambda) {
             try {
@@ -136,7 +153,14 @@ public final class VkFunctionTypes {
 
     @FunctionalInterface
     public interface PFN_vkDebugUtilsMessengerCallbackEXT {
-        @NativeType("VkBool32") @Unsigned int invoke(@Bitmask(VkDebugUtilsMessageSeverityFlagsEXT.class) int p0, @Bitmask(VkDebugUtilsMessageTypeFlagsEXT.class) int p1, @Pointer(comment="void*") @NotNull MemorySegment p2, @Pointer(comment="void*") @NotNull MemorySegment p3);
+        @NativeType("VkBool32")
+        @Unsigned
+        int invoke(
+                @Bitmask(VkDebugUtilsMessageSeverityFlagsEXT.class) int p0,
+                @Bitmask(VkDebugUtilsMessageTypeFlagsEXT.class) int p1,
+                @Pointer(comment = "void*") @NotNull MemorySegment p2,
+                @Pointer(comment = "void*") @NotNull MemorySegment p3
+        );
 
         static MethodHandle of(@NotNull PFN_vkDebugUtilsMessengerCallbackEXT lambda) {
             try {
@@ -158,7 +182,10 @@ public final class VkFunctionTypes {
 
     @FunctionalInterface
     public interface PFN_vkDeviceMemoryReportCallbackEXT {
-        void invoke(@Pointer(comment="void*") @NotNull MemorySegment p0, @Pointer(comment="void*") @NotNull MemorySegment p1);
+        void invoke(
+                @Pointer(comment = "void*") @NotNull MemorySegment p0,
+                @Pointer(comment = "void*") @NotNull MemorySegment p1
+        );
 
         static MethodHandle of(@NotNull PFN_vkDeviceMemoryReportCallbackEXT lambda) {
             try {
@@ -180,7 +207,10 @@ public final class VkFunctionTypes {
 
     @FunctionalInterface
     public interface PFN_vkFreeFunction {
-        void invoke(@Pointer(comment="void*") @NotNull MemorySegment p0, @Pointer(comment="void*") @NotNull MemorySegment p1);
+        void invoke(
+                @Pointer(comment = "void*") @NotNull MemorySegment p0,
+                @Pointer(comment = "void*") @NotNull MemorySegment p1
+        );
 
         static MethodHandle of(@NotNull PFN_vkFreeFunction lambda) {
             try {
@@ -202,7 +232,11 @@ public final class VkFunctionTypes {
 
     @FunctionalInterface
     public interface PFN_vkGetInstanceProcAddrLUNARG {
-        @Pointer(comment="PFN_vkVoidFunction") @NotNull MemorySegment invoke(VkInstance p0, @Pointer(comment="void*") @NotNull MemorySegment p1);
+        @Pointer(comment = "PFN_vkVoidFunction")
+        @NotNull MemorySegment invoke(
+                VkInstance p0,
+                @Pointer(comment = "void*") @NotNull MemorySegment p1
+        );
 
         static MethodHandle of(@NotNull PFN_vkGetInstanceProcAddrLUNARG lambda) {
             try {
@@ -224,7 +258,12 @@ public final class VkFunctionTypes {
 
     @FunctionalInterface
     public interface PFN_vkInternalAllocationNotification {
-        void invoke(@Pointer(comment="void*") @NotNull MemorySegment p0, long p1, @EnumType(VkInternalAllocationType.class) int p2, @EnumType(VkSystemAllocationScope.class) int p3);
+        void invoke(
+                @Pointer(comment = "void*") @NotNull MemorySegment p0,
+                long p1,
+                @EnumType(VkInternalAllocationType.class) int p2,
+                @EnumType(VkSystemAllocationScope.class) int p3
+        );
 
         static MethodHandle of(@NotNull PFN_vkInternalAllocationNotification lambda) {
             try {
@@ -246,7 +285,12 @@ public final class VkFunctionTypes {
 
     @FunctionalInterface
     public interface PFN_vkInternalFreeNotification {
-        void invoke(@Pointer(comment="void*") @NotNull MemorySegment p0, long p1, @EnumType(VkInternalAllocationType.class) int p2, @EnumType(VkSystemAllocationScope.class) int p3);
+        void invoke(
+                @Pointer(comment = "void*") @NotNull MemorySegment p0,
+                long p1,
+                @EnumType(VkInternalAllocationType.class) int p2,
+                @EnumType(VkSystemAllocationScope.class) int p3
+        );
 
         static MethodHandle of(@NotNull PFN_vkInternalFreeNotification lambda) {
             try {
@@ -268,7 +312,14 @@ public final class VkFunctionTypes {
 
     @FunctionalInterface
     public interface PFN_vkReallocationFunction {
-        @Pointer(comment="void*") @NotNull MemorySegment invoke(@Pointer(comment="void*") @NotNull MemorySegment p0, @Pointer(comment="void*") @NotNull MemorySegment p1, long p2, long p3, @EnumType(VkSystemAllocationScope.class) int p4);
+        @Pointer(comment = "void*")
+        @NotNull MemorySegment invoke(
+                @Pointer(comment = "void*") @NotNull MemorySegment p0,
+                @Pointer(comment = "void*") @NotNull MemorySegment p1,
+                long p2,
+                long p3,
+                @EnumType(VkSystemAllocationScope.class) int p4
+        );
 
         static MethodHandle of(@NotNull PFN_vkReallocationFunction lambda) {
             try {
@@ -290,7 +341,8 @@ public final class VkFunctionTypes {
 
     @FunctionalInterface
     public interface PFN_vkVoidFunction {
-        void invoke();
+        void invoke(
+        );
 
         static MethodHandle of(@NotNull PFN_vkVoidFunction lambda) {
             try {
