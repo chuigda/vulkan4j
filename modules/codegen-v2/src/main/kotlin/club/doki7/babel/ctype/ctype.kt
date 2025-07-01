@@ -1,6 +1,5 @@
 package club.doki7.babel.ctype
 
-import club.doki7.babel.ctype.voidType
 import club.doki7.babel.registry.ArrayType
 import club.doki7.babel.registry.FunctionTypedef
 import club.doki7.babel.registry.Identifier
@@ -21,7 +20,7 @@ sealed interface CType {
 }
 
 interface ICommentable<SELF: CType> {
-    var comment: String?
+    val comment: String?
 
     fun copyWithComment(comment: String?): SELF
 }
@@ -38,7 +37,7 @@ data class CPointerType(
     val pointee: CType,
     val const: Boolean,
     val pointerToOne: Boolean,
-    override var comment: String?,
+    override val comment: String?,
     val kind: Kind? = null
 ) : CType, ICommentable<CPointerType> {
     sealed interface Kind {
@@ -116,7 +115,7 @@ sealed interface CFixedSizeType : CNonRefType {
 
 data class CBoolType(
     override val cType: String = "bool",
-    override var comment: String? = null
+    override val comment: String? = null
 ) : CNonRefType, ICommentable<CBoolType> {
     override val jType: String get() = buildString {
         if (comment != null) {
@@ -144,7 +143,7 @@ data class CFixedIntType(
     override val cType: String,
     override val byteSize: Int,
     val unsigned: Boolean,
-    override var comment: String? = null
+    override val comment: String? = null
 ) : CFixedSizeType, ICommentable<CFixedIntType> {
     override val jType: String get() = buildString {
         if (comment != null) {
@@ -200,13 +199,13 @@ data class CFixedIntType(
     }
 }
 
-data class CPlatformDependentIntType(
-    override val cType: String,
-    override val jTypeNoAnnotation: String,
-    override val jLayout: String,
-    override val jPtrTypeNoAnnotation: String,
-    override var comment: String? = null
-) : CNonRefType, ICommentable<CPlatformDependentIntType> {
+sealed interface CPlatformDependentIntType : CNonRefType, ICommentable<CPlatformDependentIntType> {
+    override val cType: String
+    override val jTypeNoAnnotation: String
+    override val jLayout: String
+    override val jPtrTypeNoAnnotation: String
+    override val comment: String?
+
     override val jLayoutType: String get() = error("should not call `jLayoutType` on `CPlatformDependentIntType`")
 
     override val jType: String get() = buildString {
@@ -222,15 +221,41 @@ data class CPlatformDependentIntType(
         }
         append(jPtrTypeNoAnnotation)
     }
+}
 
-    override fun copyWithComment(comment: String?): CPlatformDependentIntType {
-        return this.copy(comment = comment)
-    }
+data class CLongType(
+    override val cType: String = "long",
+    override val jTypeNoAnnotation: String = "long",
+    override val jLayout: String = "NativeLayout.C_LONG",
+    override val jPtrTypeNoAnnotation: String = "CLongPtr",
+    override val comment: String? = null
+) : CPlatformDependentIntType {
+    override fun copyWithComment(comment: String?): CLongType = copy(comment = comment)
+}
+
+data class CSizeType(
+    override val cType: String = "size_t",
+    override val jTypeNoAnnotation: String = "long",
+    override val jLayout: String = "NativeLayout.C_SIZE_T",
+    override val jPtrTypeNoAnnotation: String = "PointerPtr",
+    override val comment: String? = null
+) : CPlatformDependentIntType {
+    override fun copyWithComment(comment: String?): CSizeType = copy(comment = comment)
+}
+
+data class CWCharType(
+    override val cType: String = "wchar_t",
+    override val jTypeNoAnnotation: String = "int",
+    override val jLayout: String = "NativeLayout.WCHAR_T",
+    override val jPtrTypeNoAnnotation: String = "WCharPtr",
+    override val comment: String? = null
+) : CPlatformDependentIntType {
+    override fun copyWithComment(comment: String?): CWCharType = copy(comment = comment)
 }
 
 data class CFloatType(
     override val byteSize: Int,
-    override var comment: String? = null
+    override val comment: String? = null
 ) : CFixedSizeType, ICommentable<CFloatType> {
     override val jType: String get() = buildString {
         if (comment != null) {
@@ -355,30 +380,10 @@ private val doubleType = CFloatType(8)
 
 private val cIntType = int32Type
 private val cUIntType = uint32Type
-private val cLongType = CPlatformDependentIntType(
-    cType = "long",
-    jTypeNoAnnotation = "long",
-    jLayout = "NativeLayout.C_LONG",
-    jPtrTypeNoAnnotation = "CLongPtr",
-)
-private val cSizeType = CPlatformDependentIntType(
-    cType = "size_t",
-    jTypeNoAnnotation = "long",
-    jLayout = "NativeLayout.C_SIZE_T",
-    jPtrTypeNoAnnotation = "PointerPtr",
-)
-private val cIntPtrType = CPlatformDependentIntType(
-    cType = "intptr_t",
-    jTypeNoAnnotation = "long",
-    jLayout = "NativeLayout.C_SIZE_T",
-    jPtrTypeNoAnnotation = "PointerPtr"
-)
-private val wCharType = CPlatformDependentIntType(
-    cType = "wchar_t",
-    jTypeNoAnnotation = "int",
-    jLayout = "NativeLayout.WCHAR_T",
-    jPtrTypeNoAnnotation = "WCharPtr"
-)
+private val cLongType = CLongType()
+private val cSizeType = CSizeType()
+private val cIntPtrType = cSizeType.copyWithComment("intptr_t")
+private val wCharType = CWCharType()
 
 private fun pvoidType(comment: String) = CPointerType(voidType, const = false, pointerToOne = false, comment = comment)
 
@@ -435,8 +440,8 @@ private val knownTypes = mapOf(
     "GLvoid" to voidType.copy(cType = "GLvoid"),
     "GLenum" to int32Type.copyWithComment(comment = "GLenum"),
     "GLsizei" to int32Type.copyWithComment(comment = "GLsizei"),
-    "GLsizeiptr" to cSizeType.copy(comment = "GLsizeiptr"),
-    "GLintptr" to cSizeType.copy(comment = "GLintptr"),
+    "GLsizeiptr" to cSizeType.copyWithComment(comment = "GLsizeiptr"),
+    "GLintptr" to cSizeType.copyWithComment(comment = "GLintptr"),
     "GLbitfield" to uint32Type.copyWithComment(comment = "GLbitfield"),
     "GLboolean" to uint8Type.copyWithComment(comment = "GLboolean"),
 
@@ -495,14 +500,14 @@ private val knownTypes = mapOf(
 
     // X11 Xlib
     "Display" to pvoidType("Display"),
-    "RROutput" to cLongType.copy(comment = "RROutput"),
-    "RRCrtc" to cLongType.copy(comment = "RRCrtc"),
-    "VisualID" to cLongType.copy(comment = "VisualID"),
-    "Window" to cLongType.copy(comment = "Window"),
+    "RROutput" to cLongType.copyWithComment(comment = "RROutput"),
+    "RRCrtc" to cLongType.copyWithComment(comment = "RRCrtc"),
+    "VisualID" to cLongType.copyWithComment(comment = "VisualID"),
+    "Window" to cLongType.copyWithComment(comment = "Window"),
     "GLXFBConfig" to pvoidType("GLXFBConfig"),
     "GLXDrawable" to cLongType.copyWithComment("GLXDrawable"),
     "GLXContext" to pvoidType("GLXContext"),
-    "GLXWindow" to cLongType.copy(comment = "GLXWindow"),
+    "GLXWindow" to cLongType.copyWithComment(comment = "GLXWindow"),
     "XEvent" to voidType.copy(cType = "XEvent"),
 
     // X11 XCB

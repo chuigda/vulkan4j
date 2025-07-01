@@ -1,6 +1,6 @@
 ## Contribution Guidelines
 
-Thanks for your participating `vulkan4j` development! To keep things efficient, please read the following guidelines before you start.
+Thanks for your participating `vulkan4j` development! To keep things efficient *and ♥Doki Doki♥*, please read the following guidelines before you start.
 
 ### Communication
 
@@ -8,6 +8,12 @@ Thanks for your participating `vulkan4j` development! To keep things efficient, 
 - **Development Discussion & Questions**: Please use [GitHub Discussions](https://github.com/club-doki7/vulkan4j/discussions).
 - **Quick Questions & General Chat**: Feel free to join our [Discord](https://discord.gg/UsmRvrt4gg) channel.
 - *__Criticizing & Blaming Author__*: Use this [dedicated issue](https://github.com/club-doki7/vulkan4j/issues/1).
+
+### Before Commencing Contribution
+
+- If you are going to resolve a specific issue in the issue tracker, we strongly advise you to comment on the issue first, or self assign it, to avoid duplicate work.
+  - If you no more have time to work on that issue, feel free to unassign yourself or comment on the issue to let others know.
+- If you are going to add a new feature, or you found a bug that is not reported in the issue tracker, we advise you to create a new issue first, to help us avoid duplicate work and to help you get feedback from the maintainers, *also make the project looks more active and bustling*.
 
 ### Development Environment Setup
 

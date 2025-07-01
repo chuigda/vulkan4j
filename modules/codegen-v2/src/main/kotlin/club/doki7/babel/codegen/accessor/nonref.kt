@@ -2,8 +2,7 @@ package club.doki7.babel.codegen.accessor
 
 import club.doki7.babel.codegen.LayoutField
 import club.doki7.babel.codegen.defun
-import club.doki7.babel.ctype.CPlatformDependentIntType
-import club.doki7.babel.ctype.CType
+import club.doki7.babel.ctype.*
 import club.doki7.babel.util.Doc
 import club.doki7.babel.util.buildDoc
 
@@ -19,8 +18,8 @@ private fun generatePlatformDependentIntAccessor(
     type: CPlatformDependentIntType,
     member: LayoutField.Typed
 ): Doc {
-    return when (type.cType) {
-        "long" -> {
+    return when (type) {
+        is CLongType -> {
             buildDoc {
                 defun("public", "long", member.name) {
                     +"return NativeLayout.readCLong(segment, ${member.offsetName});"
@@ -34,8 +33,7 @@ private fun generatePlatformDependentIntAccessor(
                 }
             }
         }
-
-        "size_t" -> {
+        is CSizeType -> {
             buildDoc {
                 defun("public", "@Unsigned long", member.name) {
                     +"return NativeLayout.readCSizeT(segment, ${member.offsetName});"
@@ -49,8 +47,7 @@ private fun generatePlatformDependentIntAccessor(
                 }
             }
         }
-
-        "wchar_t" -> buildDoc {
+        is CWCharType -> buildDoc {
             defun("public", "@Unsigned int", member.name) {
                 +"return NativeLayout.readWCharT(segment, ${member.offsetName});"
             }
@@ -61,10 +58,6 @@ private fun generatePlatformDependentIntAccessor(
                 +"NativeLayout.writeWCharT(segment, ${member.offsetName}, value);"
                 +"return this;"
             }
-        }
-
-        else -> {
-            throw Exception("unsupported platform dependent int type $type")
         }
     }
 }

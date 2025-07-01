@@ -2294,11 +2294,11 @@ public final class VkInstanceCommands {
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkGetPhysicalDeviceXlibPresentationSupportKHR);
         try {
-            return (int) hFunction.invokeExact(
+            return (int) hFunction.invoke(
                 physicalDevice.segment(),
                 queueFamilyIndex,
                 dpy.segment(),
-                visualID
+                (NativeLayout.C_LONG_SIZE == 4) ? ((Object)(int) visualID) : ((Object)(long) visualID)
             );
         } catch (Throwable e) {
             throw new RuntimeException(e);
@@ -2314,10 +2314,10 @@ public final class VkInstanceCommands {
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkGetRandROutputDisplayEXT);
         try {
-            return (int) hFunction.invokeExact(
+            return (int) hFunction.invoke(
                 physicalDevice.segment(),
                 dpy.segment(),
-                rrOutput,
+                (NativeLayout.C_LONG_SIZE == 4) ? ((Object)(int) rrOutput) : ((Object)(long) rrOutput),
                 pDisplay.segment()
             );
         } catch (Throwable e) {
