@@ -495,6 +495,7 @@ public final class Shaderc {
             throw new RuntimeException(e);
         }
     }
+
     public void compileOptionsSetIncludeCallbacks(
         Arena arena,
         @Nullable ShadercCompileOptions options,
@@ -509,6 +510,7 @@ public final class Shaderc {
             userData
         );
     }
+
     public void compileOptionsSetIncludeCallbacks(
         @Nullable ShadercCompileOptions options,
         Ishaderc_include_resolve_fn resolver,

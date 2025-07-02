@@ -5922,6 +5922,7 @@ public sealed class GL implements GLConstants permits GLCompatibility {
             throw new RuntimeException(e);
         }
     }
+
     public void debugMessageCallback(
         Arena arena,
         IGLDEBUGPROC callback,
@@ -5932,6 +5933,7 @@ public sealed class GL implements GLConstants permits GLCompatibility {
             userParam
         );
     }
+
     public void debugMessageCallback(
         IGLDEBUGPROC callback,
         @Pointer(comment="void*") @NotNull MemorySegment userParam
@@ -5957,6 +5959,7 @@ public sealed class GL implements GLConstants permits GLCompatibility {
             throw new RuntimeException(e);
         }
     }
+
     public void debugMessageCallbackARB(
         Arena arena,
         IGLDEBUGPROCARB callback,
@@ -5967,6 +5970,7 @@ public sealed class GL implements GLConstants permits GLCompatibility {
             userParam
         );
     }
+
     public void debugMessageCallbackARB(
         IGLDEBUGPROCARB callback,
         @Pointer(comment="void*") @NotNull MemorySegment userParam
@@ -5992,6 +5996,7 @@ public sealed class GL implements GLConstants permits GLCompatibility {
             throw new RuntimeException(e);
         }
     }
+
     public void debugMessageCallbackKHR(
         Arena arena,
         IGLDEBUGPROCKHR callback,
@@ -6002,6 +6007,7 @@ public sealed class GL implements GLConstants permits GLCompatibility {
             userParam
         );
     }
+
     public void debugMessageCallbackKHR(
         IGLDEBUGPROCKHR callback,
         @Pointer(comment="void*") @NotNull MemorySegment userParam

@@ -618,6 +618,7 @@ public final class ALC implements ALCConstants {
             throw new RuntimeException(e);
         }
     }
+
     public void eventCallbackSOFT(
         Arena arena,
         IALCEVENTPROCTYPESOFT callback,
@@ -628,6 +629,7 @@ public final class ALC implements ALCConstants {
             userParam
         );
     }
+
     public void eventCallbackSOFT(
         IALCEVENTPROCTYPESOFT callback,
         @Pointer(comment="void*") @NotNull MemorySegment userParam

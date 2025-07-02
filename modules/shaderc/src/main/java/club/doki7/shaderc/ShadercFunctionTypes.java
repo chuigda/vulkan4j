@@ -31,7 +31,7 @@ public final class ShadercFunctionTypes {
             @Pointer(comment="void*") @NotNull MemorySegment p1,
             int p2,
             @Pointer(comment="void*") @NotNull MemorySegment p3,
-            long p4
+            @NativeType("size_t") MemorySegment p4
         );
 
         static MethodHandle of(@NotNull Ishaderc_include_resolve_fn lambda) {

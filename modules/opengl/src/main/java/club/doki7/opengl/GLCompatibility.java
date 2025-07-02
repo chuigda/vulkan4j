@@ -4249,6 +4249,7 @@ public final class GLCompatibility extends GL {
             throw new RuntimeException(e);
         }
     }
+
     public void debugMessageCallbackAMD(
         Arena arena,
         IGLDEBUGPROCAMD callback,
@@ -4259,6 +4260,7 @@ public final class GLCompatibility extends GL {
             userParam
         );
     }
+
     public void debugMessageCallbackAMD(
         IGLDEBUGPROCAMD callback,
         @Pointer(comment="void*") @NotNull MemorySegment userParam

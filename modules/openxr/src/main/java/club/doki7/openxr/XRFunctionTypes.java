@@ -124,7 +124,7 @@ public final class XRFunctionTypes {
     @FunctionalInterface
     public interface IPFN_xrGetInstanceProcAddr {
         @EnumType(XrResult.class) int invoke(
-            XrInstance p0,
+            @NativeType("XrInstance") MemorySegment p0,
             @Pointer(comment="void*") @NotNull MemorySegment p1,
             @Pointer(comment="void*") @NotNull MemorySegment p2
         );

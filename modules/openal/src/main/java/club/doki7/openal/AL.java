@@ -1854,6 +1854,7 @@ public final class AL implements ALConstants {
             throw new RuntimeException(e);
         }
     }
+
     public void requestFoldbackStart(
         Arena arena,
         @NativeType("ALenum") int mode,
@@ -1870,6 +1871,7 @@ public final class AL implements ALConstants {
             ILPALFOLDBACKCALLBACK.ofNative(arena, callback)
         );
     }
+
     public void requestFoldbackStart(
         @NativeType("ALenum") int mode,
         @NativeType("ALsizei") int count,
@@ -2268,6 +2270,7 @@ public final class AL implements ALConstants {
             throw new RuntimeException(e);
         }
     }
+
     public void eventCallbackSOFT(
         Arena arena,
         IALEVENTPROCSOFT callback,
@@ -2278,6 +2281,7 @@ public final class AL implements ALConstants {
             userParam
         );
     }
+
     public void eventCallbackSOFT(
         IALEVENTPROCSOFT callback,
         @Pointer(comment="void*") @NotNull MemorySegment userParam
@@ -2337,6 +2341,7 @@ public final class AL implements ALConstants {
             throw new RuntimeException(e);
         }
     }
+
     public void bufferCallbackSOFT(
         Arena arena,
         @NativeType("ALuint") int buffer,
@@ -2353,6 +2358,7 @@ public final class AL implements ALConstants {
             userptr
         );
     }
+
     public void bufferCallbackSOFT(
         @NativeType("ALuint") int buffer,
         @NativeType("ALenum") int format,
@@ -2471,6 +2477,7 @@ public final class AL implements ALConstants {
             throw new RuntimeException(e);
         }
     }
+
     public void debugMessageCallbackEXT(
         Arena arena,
         IALDEBUGPROCEXT callback,
@@ -2481,6 +2488,7 @@ public final class AL implements ALConstants {
             userParam
         );
     }
+
     public void debugMessageCallbackEXT(
         IALDEBUGPROCEXT callback,
         @Pointer(comment="void*") @NotNull MemorySegment userParam
@@ -4591,6 +4599,7 @@ public final class AL implements ALConstants {
             throw new RuntimeException(e);
         }
     }
+
     public void debugMessageCallbackDirectEXT(
         Arena arena,
         @Nullable ALCcontext context,
@@ -4603,6 +4612,7 @@ public final class AL implements ALConstants {
             userParam
         );
     }
+
     public void debugMessageCallbackDirectEXT(
         @Nullable ALCcontext context,
         IALDEBUGPROCEXT callback,
@@ -4827,6 +4837,7 @@ public final class AL implements ALConstants {
             throw new RuntimeException(e);
         }
     }
+
     public void requestFoldbackStartDirect(
         Arena arena,
         @Nullable ALCcontext context,
@@ -4845,6 +4856,7 @@ public final class AL implements ALConstants {
             ILPALFOLDBACKCALLBACK.ofNative(arena, callback)
         );
     }
+
     public void requestFoldbackStartDirect(
         @Nullable ALCcontext context,
         @NativeType("ALenum") int mode,
@@ -5223,6 +5235,7 @@ public final class AL implements ALConstants {
             throw new RuntimeException(e);
         }
     }
+
     public void eventCallbackDirectSOFT(
         Arena arena,
         @Nullable ALCcontext context,
@@ -5235,6 +5248,7 @@ public final class AL implements ALConstants {
             userParam
         );
     }
+
     public void eventCallbackDirectSOFT(
         @Nullable ALCcontext context,
         IALEVENTPROCSOFT callback,
@@ -5302,6 +5316,7 @@ public final class AL implements ALConstants {
             throw new RuntimeException(e);
         }
     }
+
     public void bufferCallbackDirectSOFT(
         Arena arena,
         @Nullable ALCcontext context,
@@ -5320,6 +5335,7 @@ public final class AL implements ALConstants {
             userptr
         );
     }
+
     public void bufferCallbackDirectSOFT(
         @Nullable ALCcontext context,
         @NativeType("ALuint") int buffer,

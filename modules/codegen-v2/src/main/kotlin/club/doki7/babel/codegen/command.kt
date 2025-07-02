@@ -266,6 +266,8 @@ private fun generateCommandWrapper(
         return@buildDoc
     }
 
+    +""
+
     val paramsDoc = buildDoc {
         if (loweredCommand.result is CStructType) {
             +"SegmentAllocator allocator,"
@@ -314,6 +316,8 @@ private fun generateCommandWrapper(
         +");"
     }
     +"}"
+
+    +""
 
     +"public $retIOType ${loweredCommand.command.name}("
     indent {
