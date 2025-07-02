@@ -27,7 +27,7 @@ import club.doki7.webgpu.WGPUFunctionTypes.*;
 /// typedef struct WGPUDeviceLostCallbackInfo {
 ///     WGPUChainedStruct const* nextInChain; // optional // @link substring="WGPUChainedStruct" target="WGPUChainedStruct" @link substring="nextInChain" target="#nextInChain"
 ///     WGPUCallbackMode mode; // @link substring="WGPUCallbackMode" target="WGPUCallbackMode" @link substring="mode" target="#mode"
-///     WGPUDeviceLostCallback callback; // optional // @link substring="callback" target="#callback"
+///     WGPUDeviceLostCallback callback; // optional // @link substring="WGPUDeviceLostCallback" target="WGPUDeviceLostCallback" @link substring="callback" target="#callback"
 ///     void* userdata1; // optional // @link substring="userdata1" target="#userdata1"
 ///     void* userdata2; // optional // @link substring="userdata2" target="#userdata2"
 /// } WGPUDeviceLostCallbackInfo;
@@ -227,12 +227,12 @@ public record WGPUDeviceLostCallbackInfo(@NotNull MemorySegment segment) impleme
         return this;
     }
 
-    public WGPUDeviceLostCallbackInfo callback(@NotNull WGPUDeviceLostCallback value) {
-        return callback(WGPUDeviceLostCallback.ofNative(value));
+    public WGPUDeviceLostCallbackInfo callback(@NotNull IWGPUDeviceLostCallback value) {
+        return callback(IWGPUDeviceLostCallback.ofNative(value));
     }
 
-    public WGPUDeviceLostCallbackInfo callback(@NotNull Arena arena, @NotNull WGPUDeviceLostCallback value) {
-        return callback(WGPUDeviceLostCallback.ofNative(arena, value));
+    public WGPUDeviceLostCallbackInfo callback(@NotNull Arena arena, @NotNull IWGPUDeviceLostCallback value) {
+        return callback(IWGPUDeviceLostCallback.ofNative(arena, value));
     }
 
     public WGPUDeviceLostCallbackInfo callback(@Nullable IPointer pointer) {

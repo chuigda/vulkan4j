@@ -27,7 +27,7 @@ import club.doki7.webgpu.WGPUFunctionTypes.*;
 /// typedef struct WGPUQueueWorkDoneCallbackInfo {
 ///     WGPUChainedStruct const* nextInChain; // optional // @link substring="WGPUChainedStruct" target="WGPUChainedStruct" @link substring="nextInChain" target="#nextInChain"
 ///     WGPUCallbackMode mode; // @link substring="WGPUCallbackMode" target="WGPUCallbackMode" @link substring="mode" target="#mode"
-///     WGPUQueueWorkDoneCallback callback; // optional // @link substring="callback" target="#callback"
+///     WGPUQueueWorkDoneCallback callback; // optional // @link substring="WGPUQueueWorkDoneCallback" target="WGPUQueueWorkDoneCallback" @link substring="callback" target="#callback"
 ///     void* userdata1; // optional // @link substring="userdata1" target="#userdata1"
 ///     void* userdata2; // optional // @link substring="userdata2" target="#userdata2"
 /// } WGPUQueueWorkDoneCallbackInfo;
@@ -227,12 +227,12 @@ public record WGPUQueueWorkDoneCallbackInfo(@NotNull MemorySegment segment) impl
         return this;
     }
 
-    public WGPUQueueWorkDoneCallbackInfo callback(@NotNull WGPUQueueWorkDoneCallback value) {
-        return callback(WGPUQueueWorkDoneCallback.ofNative(value));
+    public WGPUQueueWorkDoneCallbackInfo callback(@NotNull IWGPUQueueWorkDoneCallback value) {
+        return callback(IWGPUQueueWorkDoneCallback.ofNative(value));
     }
 
-    public WGPUQueueWorkDoneCallbackInfo callback(@NotNull Arena arena, @NotNull WGPUQueueWorkDoneCallback value) {
-        return callback(WGPUQueueWorkDoneCallback.ofNative(arena, value));
+    public WGPUQueueWorkDoneCallbackInfo callback(@NotNull Arena arena, @NotNull IWGPUQueueWorkDoneCallback value) {
+        return callback(IWGPUQueueWorkDoneCallback.ofNative(arena, value));
     }
 
     public WGPUQueueWorkDoneCallbackInfo callback(@Nullable IPointer pointer) {

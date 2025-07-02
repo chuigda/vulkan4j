@@ -27,7 +27,7 @@ import club.doki7.webgpu.WGPUFunctionTypes.*;
 /// typedef struct WGPUCreateComputePipelineAsyncCallbackInfo {
 ///     WGPUChainedStruct const* nextInChain; // optional // @link substring="WGPUChainedStruct" target="WGPUChainedStruct" @link substring="nextInChain" target="#nextInChain"
 ///     WGPUCallbackMode mode; // @link substring="WGPUCallbackMode" target="WGPUCallbackMode" @link substring="mode" target="#mode"
-///     WGPUCreateComputePipelineAsyncCallback callback; // optional // @link substring="callback" target="#callback"
+///     WGPUCreateComputePipelineAsyncCallback callback; // optional // @link substring="WGPUCreateComputePipelineAsyncCallback" target="WGPUCreateComputePipelineAsyncCallback" @link substring="callback" target="#callback"
 ///     void* userdata1; // optional // @link substring="userdata1" target="#userdata1"
 ///     void* userdata2; // optional // @link substring="userdata2" target="#userdata2"
 /// } WGPUCreateComputePipelineAsyncCallbackInfo;
@@ -227,12 +227,12 @@ public record WGPUCreateComputePipelineAsyncCallbackInfo(@NotNull MemorySegment 
         return this;
     }
 
-    public WGPUCreateComputePipelineAsyncCallbackInfo callback(@NotNull WGPUCreateComputePipelineAsyncCallback value) {
-        return callback(WGPUCreateComputePipelineAsyncCallback.ofNative(value));
+    public WGPUCreateComputePipelineAsyncCallbackInfo callback(@NotNull IWGPUCreateComputePipelineAsyncCallback value) {
+        return callback(IWGPUCreateComputePipelineAsyncCallback.ofNative(value));
     }
 
-    public WGPUCreateComputePipelineAsyncCallbackInfo callback(@NotNull Arena arena, @NotNull WGPUCreateComputePipelineAsyncCallback value) {
-        return callback(WGPUCreateComputePipelineAsyncCallback.ofNative(arena, value));
+    public WGPUCreateComputePipelineAsyncCallbackInfo callback(@NotNull Arena arena, @NotNull IWGPUCreateComputePipelineAsyncCallback value) {
+        return callback(IWGPUCreateComputePipelineAsyncCallback.ofNative(arena, value));
     }
 
     public WGPUCreateComputePipelineAsyncCallbackInfo callback(@Nullable IPointer pointer) {

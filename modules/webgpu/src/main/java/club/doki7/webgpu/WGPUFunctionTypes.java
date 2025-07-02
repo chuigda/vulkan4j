@@ -94,34 +94,34 @@ public final class WGPUFunctionTypes {
     );
 
     @FunctionalInterface
-    public interface WGPUBufferMapCallback {
+    public interface IWGPUBufferMapCallback {
         void invoke(
             @EnumType(WGPUMapAsyncStatus.class) int p0,
-            IWGPUStringView p1,
+            @NativeType("WGPUStringView") MemorySegment p1,
             @Pointer(comment="void*") @NotNull MemorySegment p2,
             @Pointer(comment="void*") @NotNull MemorySegment p3
         );
 
-        static MethodHandle of(@NotNull WGPUBufferMapCallback lambda) {
+        static MethodHandle of(@NotNull IWGPUBufferMapCallback lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(WGPUBufferMapCallback.class, "invoke", WGPUBufferMapCallback.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(IWGPUBufferMapCallback.class, "invoke", WGPUBufferMapCallback.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull WGPUBufferMapCallback lambda) {
+        static MemorySegment ofNative(@NotNull IWGPUBufferMapCallback lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull WGPUBufferMapCallback lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull IWGPUBufferMapCallback lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), WGPUBufferMapCallback, arena);
         }
     }
 
     @FunctionalInterface
-    public interface WGPUCompilationInfoCallback {
+    public interface IWGPUCompilationInfoCallback {
         void invoke(
             @EnumType(WGPUCompilationInfoRequestStatus.class) int p0,
             @Pointer(comment="void*") @NotNull MemorySegment p1,
@@ -129,268 +129,268 @@ public final class WGPUFunctionTypes {
             @Pointer(comment="void*") @NotNull MemorySegment p3
         );
 
-        static MethodHandle of(@NotNull WGPUCompilationInfoCallback lambda) {
+        static MethodHandle of(@NotNull IWGPUCompilationInfoCallback lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(WGPUCompilationInfoCallback.class, "invoke", WGPUCompilationInfoCallback.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(IWGPUCompilationInfoCallback.class, "invoke", WGPUCompilationInfoCallback.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull WGPUCompilationInfoCallback lambda) {
+        static MemorySegment ofNative(@NotNull IWGPUCompilationInfoCallback lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull WGPUCompilationInfoCallback lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull IWGPUCompilationInfoCallback lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), WGPUCompilationInfoCallback, arena);
         }
     }
 
     @FunctionalInterface
-    public interface WGPUCreateComputePipelineAsyncCallback {
+    public interface IWGPUCreateComputePipelineAsyncCallback {
         void invoke(
             @EnumType(WGPUCreatePipelineAsyncStatus.class) int p0,
-            WGPUComputePipeline p1,
-            IWGPUStringView p2,
+            @NativeType("WGPUComputePipeline") MemorySegment p1,
+            @NativeType("WGPUStringView") MemorySegment p2,
             @Pointer(comment="void*") @NotNull MemorySegment p3,
             @Pointer(comment="void*") @NotNull MemorySegment p4
         );
 
-        static MethodHandle of(@NotNull WGPUCreateComputePipelineAsyncCallback lambda) {
+        static MethodHandle of(@NotNull IWGPUCreateComputePipelineAsyncCallback lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(WGPUCreateComputePipelineAsyncCallback.class, "invoke", WGPUCreateComputePipelineAsyncCallback.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(IWGPUCreateComputePipelineAsyncCallback.class, "invoke", WGPUCreateComputePipelineAsyncCallback.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull WGPUCreateComputePipelineAsyncCallback lambda) {
+        static MemorySegment ofNative(@NotNull IWGPUCreateComputePipelineAsyncCallback lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull WGPUCreateComputePipelineAsyncCallback lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull IWGPUCreateComputePipelineAsyncCallback lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), WGPUCreateComputePipelineAsyncCallback, arena);
         }
     }
 
     @FunctionalInterface
-    public interface WGPUCreateRenderPipelineAsyncCallback {
+    public interface IWGPUCreateRenderPipelineAsyncCallback {
         void invoke(
             @EnumType(WGPUCreatePipelineAsyncStatus.class) int p0,
-            WGPURenderPipeline p1,
-            IWGPUStringView p2,
+            @NativeType("WGPURenderPipeline") MemorySegment p1,
+            @NativeType("WGPUStringView") MemorySegment p2,
             @Pointer(comment="void*") @NotNull MemorySegment p3,
             @Pointer(comment="void*") @NotNull MemorySegment p4
         );
 
-        static MethodHandle of(@NotNull WGPUCreateRenderPipelineAsyncCallback lambda) {
+        static MethodHandle of(@NotNull IWGPUCreateRenderPipelineAsyncCallback lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(WGPUCreateRenderPipelineAsyncCallback.class, "invoke", WGPUCreateRenderPipelineAsyncCallback.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(IWGPUCreateRenderPipelineAsyncCallback.class, "invoke", WGPUCreateRenderPipelineAsyncCallback.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull WGPUCreateRenderPipelineAsyncCallback lambda) {
+        static MemorySegment ofNative(@NotNull IWGPUCreateRenderPipelineAsyncCallback lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull WGPUCreateRenderPipelineAsyncCallback lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull IWGPUCreateRenderPipelineAsyncCallback lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), WGPUCreateRenderPipelineAsyncCallback, arena);
         }
     }
 
     @FunctionalInterface
-    public interface WGPUDeviceLostCallback {
+    public interface IWGPUDeviceLostCallback {
         void invoke(
             @Pointer(comment="void*") @NotNull MemorySegment p0,
             @EnumType(WGPUDeviceLostReason.class) int p1,
-            IWGPUStringView p2,
+            @NativeType("WGPUStringView") MemorySegment p2,
             @Pointer(comment="void*") @NotNull MemorySegment p3,
             @Pointer(comment="void*") @NotNull MemorySegment p4
         );
 
-        static MethodHandle of(@NotNull WGPUDeviceLostCallback lambda) {
+        static MethodHandle of(@NotNull IWGPUDeviceLostCallback lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(WGPUDeviceLostCallback.class, "invoke", WGPUDeviceLostCallback.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(IWGPUDeviceLostCallback.class, "invoke", WGPUDeviceLostCallback.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull WGPUDeviceLostCallback lambda) {
+        static MemorySegment ofNative(@NotNull IWGPUDeviceLostCallback lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull WGPUDeviceLostCallback lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull IWGPUDeviceLostCallback lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), WGPUDeviceLostCallback, arena);
         }
     }
 
     @FunctionalInterface
-    public interface WGPULogCallback {
+    public interface IWGPULogCallback {
         void invoke(
             @EnumType(WGPULogLevel.class) int p0,
-            IWGPUStringView p1,
+            @NativeType("WGPUStringView") MemorySegment p1,
             @Pointer(comment="void*") @NotNull MemorySegment p2
         );
 
-        static MethodHandle of(@NotNull WGPULogCallback lambda) {
+        static MethodHandle of(@NotNull IWGPULogCallback lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(WGPULogCallback.class, "invoke", WGPULogCallback.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(IWGPULogCallback.class, "invoke", WGPULogCallback.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull WGPULogCallback lambda) {
+        static MemorySegment ofNative(@NotNull IWGPULogCallback lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull WGPULogCallback lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull IWGPULogCallback lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), WGPULogCallback, arena);
         }
     }
 
     @FunctionalInterface
-    public interface WGPUPopErrorScopeCallback {
+    public interface IWGPUPopErrorScopeCallback {
         void invoke(
             @EnumType(WGPUPopErrorScopeStatus.class) int p0,
             @EnumType(WGPUErrorType.class) int p1,
-            IWGPUStringView p2,
+            @NativeType("WGPUStringView") MemorySegment p2,
             @Pointer(comment="void*") @NotNull MemorySegment p3,
             @Pointer(comment="void*") @NotNull MemorySegment p4
         );
 
-        static MethodHandle of(@NotNull WGPUPopErrorScopeCallback lambda) {
+        static MethodHandle of(@NotNull IWGPUPopErrorScopeCallback lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(WGPUPopErrorScopeCallback.class, "invoke", WGPUPopErrorScopeCallback.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(IWGPUPopErrorScopeCallback.class, "invoke", WGPUPopErrorScopeCallback.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull WGPUPopErrorScopeCallback lambda) {
+        static MemorySegment ofNative(@NotNull IWGPUPopErrorScopeCallback lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull WGPUPopErrorScopeCallback lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull IWGPUPopErrorScopeCallback lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), WGPUPopErrorScopeCallback, arena);
         }
     }
 
     @FunctionalInterface
-    public interface WGPUQueueWorkDoneCallback {
+    public interface IWGPUQueueWorkDoneCallback {
         void invoke(
             @EnumType(WGPUQueueWorkDoneStatus.class) int p0,
             @Pointer(comment="void*") @NotNull MemorySegment p1,
             @Pointer(comment="void*") @NotNull MemorySegment p2
         );
 
-        static MethodHandle of(@NotNull WGPUQueueWorkDoneCallback lambda) {
+        static MethodHandle of(@NotNull IWGPUQueueWorkDoneCallback lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(WGPUQueueWorkDoneCallback.class, "invoke", WGPUQueueWorkDoneCallback.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(IWGPUQueueWorkDoneCallback.class, "invoke", WGPUQueueWorkDoneCallback.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull WGPUQueueWorkDoneCallback lambda) {
+        static MemorySegment ofNative(@NotNull IWGPUQueueWorkDoneCallback lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull WGPUQueueWorkDoneCallback lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull IWGPUQueueWorkDoneCallback lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), WGPUQueueWorkDoneCallback, arena);
         }
     }
 
     @FunctionalInterface
-    public interface WGPURequestAdapterCallback {
+    public interface IWGPURequestAdapterCallback {
         void invoke(
             @EnumType(WGPURequestAdapterStatus.class) int p0,
-            WGPUAdapter p1,
-            IWGPUStringView p2,
+            @NativeType("WGPUAdapter") MemorySegment p1,
+            @NativeType("WGPUStringView") MemorySegment p2,
             @Pointer(comment="void*") @NotNull MemorySegment p3,
             @Pointer(comment="void*") @NotNull MemorySegment p4
         );
 
-        static MethodHandle of(@NotNull WGPURequestAdapterCallback lambda) {
+        static MethodHandle of(@NotNull IWGPURequestAdapterCallback lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(WGPURequestAdapterCallback.class, "invoke", WGPURequestAdapterCallback.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(IWGPURequestAdapterCallback.class, "invoke", WGPURequestAdapterCallback.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull WGPURequestAdapterCallback lambda) {
+        static MemorySegment ofNative(@NotNull IWGPURequestAdapterCallback lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull WGPURequestAdapterCallback lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull IWGPURequestAdapterCallback lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), WGPURequestAdapterCallback, arena);
         }
     }
 
     @FunctionalInterface
-    public interface WGPURequestDeviceCallback {
+    public interface IWGPURequestDeviceCallback {
         void invoke(
             @EnumType(WGPURequestDeviceStatus.class) int p0,
-            WGPUDevice p1,
-            IWGPUStringView p2,
+            @NativeType("WGPUDevice") MemorySegment p1,
+            @NativeType("WGPUStringView") MemorySegment p2,
             @Pointer(comment="void*") @NotNull MemorySegment p3,
             @Pointer(comment="void*") @NotNull MemorySegment p4
         );
 
-        static MethodHandle of(@NotNull WGPURequestDeviceCallback lambda) {
+        static MethodHandle of(@NotNull IWGPURequestDeviceCallback lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(WGPURequestDeviceCallback.class, "invoke", WGPURequestDeviceCallback.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(IWGPURequestDeviceCallback.class, "invoke", WGPURequestDeviceCallback.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull WGPURequestDeviceCallback lambda) {
+        static MemorySegment ofNative(@NotNull IWGPURequestDeviceCallback lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull WGPURequestDeviceCallback lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull IWGPURequestDeviceCallback lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), WGPURequestDeviceCallback, arena);
         }
     }
 
     @FunctionalInterface
-    public interface WGPUUncapturedErrorCallback {
+    public interface IWGPUUncapturedErrorCallback {
         void invoke(
             @Pointer(comment="void*") @NotNull MemorySegment p0,
             @EnumType(WGPUErrorType.class) int p1,
-            IWGPUStringView p2,
+            @NativeType("WGPUStringView") MemorySegment p2,
             @Pointer(comment="void*") @NotNull MemorySegment p3,
             @Pointer(comment="void*") @NotNull MemorySegment p4
         );
 
-        static MethodHandle of(@NotNull WGPUUncapturedErrorCallback lambda) {
+        static MethodHandle of(@NotNull IWGPUUncapturedErrorCallback lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(WGPUUncapturedErrorCallback.class, "invoke", WGPUUncapturedErrorCallback.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(IWGPUUncapturedErrorCallback.class, "invoke", WGPUUncapturedErrorCallback.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull WGPUUncapturedErrorCallback lambda) {
+        static MemorySegment ofNative(@NotNull IWGPUUncapturedErrorCallback lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull WGPUUncapturedErrorCallback lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull IWGPUUncapturedErrorCallback lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), WGPUUncapturedErrorCallback, arena);
         }
     }

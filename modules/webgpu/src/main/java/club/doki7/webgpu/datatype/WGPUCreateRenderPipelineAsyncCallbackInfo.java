@@ -27,7 +27,7 @@ import club.doki7.webgpu.WGPUFunctionTypes.*;
 /// typedef struct WGPUCreateRenderPipelineAsyncCallbackInfo {
 ///     WGPUChainedStruct const* nextInChain; // optional // @link substring="WGPUChainedStruct" target="WGPUChainedStruct" @link substring="nextInChain" target="#nextInChain"
 ///     WGPUCallbackMode mode; // @link substring="WGPUCallbackMode" target="WGPUCallbackMode" @link substring="mode" target="#mode"
-///     WGPUCreateRenderPipelineAsyncCallback callback; // optional // @link substring="callback" target="#callback"
+///     WGPUCreateRenderPipelineAsyncCallback callback; // optional // @link substring="WGPUCreateRenderPipelineAsyncCallback" target="WGPUCreateRenderPipelineAsyncCallback" @link substring="callback" target="#callback"
 ///     void* userdata1; // optional // @link substring="userdata1" target="#userdata1"
 ///     void* userdata2; // optional // @link substring="userdata2" target="#userdata2"
 /// } WGPUCreateRenderPipelineAsyncCallbackInfo;
@@ -227,12 +227,12 @@ public record WGPUCreateRenderPipelineAsyncCallbackInfo(@NotNull MemorySegment s
         return this;
     }
 
-    public WGPUCreateRenderPipelineAsyncCallbackInfo callback(@NotNull WGPUCreateRenderPipelineAsyncCallback value) {
-        return callback(WGPUCreateRenderPipelineAsyncCallback.ofNative(value));
+    public WGPUCreateRenderPipelineAsyncCallbackInfo callback(@NotNull IWGPUCreateRenderPipelineAsyncCallback value) {
+        return callback(IWGPUCreateRenderPipelineAsyncCallback.ofNative(value));
     }
 
-    public WGPUCreateRenderPipelineAsyncCallbackInfo callback(@NotNull Arena arena, @NotNull WGPUCreateRenderPipelineAsyncCallback value) {
-        return callback(WGPUCreateRenderPipelineAsyncCallback.ofNative(arena, value));
+    public WGPUCreateRenderPipelineAsyncCallbackInfo callback(@NotNull Arena arena, @NotNull IWGPUCreateRenderPipelineAsyncCallback value) {
+        return callback(IWGPUCreateRenderPipelineAsyncCallback.ofNative(arena, value));
     }
 
     public WGPUCreateRenderPipelineAsyncCallbackInfo callback(@Nullable IPointer pointer) {

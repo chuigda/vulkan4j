@@ -14,6 +14,7 @@ import club.doki7.webgpu.bitmask.*;
 import club.doki7.webgpu.datatype.*;
 import club.doki7.webgpu.enumtype.*;
 import club.doki7.webgpu.handle.*;
+import static club.doki7.webgpu.WGPUFunctionTypes.*;
 
 public final class WGPU implements WGPUConstants {
     public WGPU(RawFunctionLoader loader) {
@@ -3230,6 +3231,28 @@ public final class WGPU implements WGPUConstants {
         } catch (Throwable e) {
             throw new RuntimeException(e);
         }
+    }
+
+    public void setLogCallback(
+        Arena arena,
+        IWGPULogCallback callback,
+        @Pointer(comment="void*") @NotNull MemorySegment userdata
+    ) {
+        setLogCallback(
+            IWGPULogCallback.ofNative(arena, callback),
+            userdata
+        );
+    }
+
+    public void setLogCallback(
+        IWGPULogCallback callback,
+        @Pointer(comment="void*") @NotNull MemorySegment userdata
+    ) {
+        setLogCallback(
+            Arena.global(),
+            callback,
+            userdata
+        );
     }
 
     public void setLogLevel(
