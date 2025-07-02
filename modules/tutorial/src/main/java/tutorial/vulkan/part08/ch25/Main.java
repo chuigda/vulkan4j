@@ -54,19 +54,7 @@ class Application {
         glfw.windowHint(GLFW.CLIENT_API, GLFW.NO_API);
         window = Objects.requireNonNull(glfw.createWindow(WIDTH, HEIGHT, WINDOW_TITLE, null, null));
 
-        try {
-            var handle = MethodHandles.lookup().findVirtual(
-                    Application.class,
-                    "framebufferResizeCallback",
-                    GLFWFunctionTypes.GLFWframebuffersizefun.toMethodType()
-            ).bindTo(this); // funny binding mechanism
-
-            var upcallStub = Linker.nativeLinker()
-                    .upcallStub(handle, GLFWFunctionTypes.GLFWframebuffersizefun, Arena.global());
-            glfw.setFramebufferSizeCallback(window, upcallStub);
-        } catch (Exception e) {
-            throw new RuntimeException("Failed to find method handle for framebufferResizeCallback", e);
-        }
+        glfw.setFramebufferSizeCallback(window, (_, _, _) -> this.framebufferResized = true);
     }
 
     private void initVulkan() {
