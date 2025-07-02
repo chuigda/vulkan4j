@@ -12,6 +12,7 @@ import kotlin.collections.contains
 
 sealed interface CType {
     val jType: String
+    val jRawType: String
     val jLayout: String
     val jLayoutType: String
     val cType: String
@@ -27,6 +28,7 @@ interface ICommentable<SELF: CType> {
 
 data class CVoidType(override val cType: String = "void") : CType {
     override val jType: String = "void"
+    override val jRawType: String = "void"
     override val jLayout: String get() = error("should not call `jLayout` on `void`")
     override val jLayoutType: String get() = error("should not call `jLayoutType` on `void`")
 }
@@ -45,6 +47,8 @@ data class CPointerType(
     else {
         """@Pointer(comment="void*") @NotNull MemorySegment"""
     }
+
+    override val jRawType = jType
 
     override val jLayout: String = if (pointee is CVoidType) {
         "ValueLayout.ADDRESS"
@@ -81,19 +85,22 @@ data class CFunctionPointerType(val functionTypedef: FunctionTypedef) : CType {
     }
 
     override val jType: String = """@Pointer(comment="$cType") @NotNull MemorySegment"""
+    override val jRawType: String = jType
     override val jLayout: String = "ValueLayout.ADDRESS"
     override val jLayoutType: String = "AddressLayout"
 }
 
 data class CHandleType(val name: String) : CType {
     override val jType: String = name
+    override val jRawType: String = """@NativeType("$name") MemorySegment"""
     override val jLayout: String = "ValueLayout.ADDRESS"
     override val jLayoutType: String = "AddressLayout"
     override val cType: String = name
 }
 
 data class CArrayType(val element: CType, val length: String) : CType {
-    override val jType: String get() = error("should not call `jRawType` on `array`")
+    override val jType: String get() = error("should not call `jType` on `array`")
+    override val jRawType: String get() = error("should not call `jRawType` on `array`")
     override val jLayout: String = "MemoryLayout.sequenceLayout($length, ${element.jLayout})"
     override val jLayoutType: String = "SequenceLayout"
     override val cType: String = "${element.cType}[$length]"
@@ -131,6 +138,7 @@ data class CBoolType(
         }
         append("boolean")
     }
+    override val jRawType: String = "bool"
     override val jLayout: String = "ValueLayout.JAVA_BOOLEAN"
     override val jLayoutType: String = "OfBoolean"
     override val jTypeNoAnnotation: String = "boolean"
@@ -162,6 +170,8 @@ data class CFixedIntType(
         }
         append(jTypeNoAnnotation)
     }
+
+    override val jRawType = jType
 
     override val jLayout: String get() = when (byteSize) {
         1 -> "ValueLayout.JAVA_BYTE"
@@ -223,6 +233,9 @@ sealed interface CPlatformDependentIntType : CNonRefType, ICommentable<CPlatform
         append(jTypeNoAnnotation)
     }
 
+    override val jRawType: String get() =
+        error("should not call `jRawType` on `CPlatformDependentIntType`")
+
     override val jPtrType: String get() = buildString {
         if (comment != null) {
             append("@Pointer(comment=\"$comment\") ")
@@ -249,6 +262,7 @@ data class CSizeType(
     override val comment: String? = null
 ) : CPlatformDependentIntType {
     override fun copyWithComment(comment: String?): CSizeType = copy(comment = comment)
+    override val jRawType: String = "@NativeType(\"$cType\") MemorySegment"
 }
 
 data class CWCharType(
@@ -271,6 +285,7 @@ data class CFloatType(
         }
         append(jTypeNoAnnotation)
     }
+    override val jRawType: String = jType
     override val jLayout: String get() = when (byteSize) {
         4 -> "ValueLayout.JAVA_FLOAT"
         8 -> "ValueLayout.JAVA_DOUBLE"
@@ -311,6 +326,7 @@ data class CFloatType(
 
 data class CStructType(val name: String, val isUnion: Boolean): CType {
     override val jType: String = "I$name"
+    override val jRawType: String = "@NativeType(\"$name\") MemorySegment"
     override val jLayout: String = "$name.LAYOUT"
     override val jLayoutType: String = if (isUnion) "UnionLayout" else "StructLayout"
     override val cType: String = name
@@ -329,6 +345,8 @@ data class CEnumType(
         64 -> "@$annotationClassName($name.class) long"
         else -> error("unsupported bitwidth: $bitwidth")
     }
+
+    override val jRawType: String = jType
 
     override val byteSize: Int get() = when (bitwidth) {
         null, 32 -> 4

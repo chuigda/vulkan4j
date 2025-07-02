@@ -145,7 +145,7 @@ public final class GLFWFunctionTypes {
     @FunctionalInterface
     public interface IGLFWallocatefun {
         @Pointer(comment="void*") @NotNull MemorySegment invoke(
-            long p0,
+            @NativeType("size_t") MemorySegment p0,
             @Pointer(comment="void*") @NotNull MemorySegment p1
         );
 
@@ -170,7 +170,7 @@ public final class GLFWFunctionTypes {
     @FunctionalInterface
     public interface IGLFWcharfun {
         void invoke(
-            GLFWwindow p0,
+            @NativeType("GLFWwindow") MemorySegment p0,
             int p1
         );
 
@@ -195,7 +195,7 @@ public final class GLFWFunctionTypes {
     @FunctionalInterface
     public interface IGLFWcharmodsfun {
         void invoke(
-            GLFWwindow p0,
+            @NativeType("GLFWwindow") MemorySegment p0,
             int p1,
             int p2
         );
@@ -221,7 +221,7 @@ public final class GLFWFunctionTypes {
     @FunctionalInterface
     public interface IGLFWcursorenterfun {
         void invoke(
-            GLFWwindow p0,
+            @NativeType("GLFWwindow") MemorySegment p0,
             int p1
         );
 
@@ -246,7 +246,7 @@ public final class GLFWFunctionTypes {
     @FunctionalInterface
     public interface IGLFWcursorposfun {
         void invoke(
-            GLFWwindow p0,
+            @NativeType("GLFWwindow") MemorySegment p0,
             double p1,
             double p2
         );
@@ -297,7 +297,7 @@ public final class GLFWFunctionTypes {
     @FunctionalInterface
     public interface IGLFWdropfun {
         void invoke(
-            GLFWwindow p0,
+            @NativeType("GLFWwindow") MemorySegment p0,
             int p1,
             @Pointer(comment="void*") @NotNull MemorySegment p2
         );
@@ -348,7 +348,7 @@ public final class GLFWFunctionTypes {
     @FunctionalInterface
     public interface IGLFWframebuffersizefun {
         void invoke(
-            GLFWwindow p0,
+            @NativeType("GLFWwindow") MemorySegment p0,
             int p1,
             int p2
         );
@@ -422,7 +422,7 @@ public final class GLFWFunctionTypes {
     @FunctionalInterface
     public interface IGLFWkeyfun {
         void invoke(
-            GLFWwindow p0,
+            @NativeType("GLFWwindow") MemorySegment p0,
             int p1,
             int p2,
             int p3,
@@ -450,7 +450,7 @@ public final class GLFWFunctionTypes {
     @FunctionalInterface
     public interface IGLFWmonitorfun {
         void invoke(
-            GLFWmonitor p0,
+            @NativeType("GLFWmonitor") MemorySegment p0,
             int p1
         );
 
@@ -475,7 +475,7 @@ public final class GLFWFunctionTypes {
     @FunctionalInterface
     public interface IGLFWmousebuttonfun {
         void invoke(
-            GLFWwindow p0,
+            @NativeType("GLFWwindow") MemorySegment p0,
             int p1,
             int p2,
             int p3
@@ -503,7 +503,7 @@ public final class GLFWFunctionTypes {
     public interface IGLFWreallocatefun {
         @Pointer(comment="void*") @NotNull MemorySegment invoke(
             @Pointer(comment="void*") @NotNull MemorySegment p0,
-            long p1,
+            @NativeType("size_t") MemorySegment p1,
             @Pointer(comment="void*") @NotNull MemorySegment p2
         );
 
@@ -528,7 +528,7 @@ public final class GLFWFunctionTypes {
     @FunctionalInterface
     public interface IGLFWscrollfun {
         void invoke(
-            GLFWwindow p0,
+            @NativeType("GLFWwindow") MemorySegment p0,
             double p1,
             double p2
         );
@@ -577,7 +577,7 @@ public final class GLFWFunctionTypes {
     @FunctionalInterface
     public interface IGLFWwindowclosefun {
         void invoke(
-            GLFWwindow p0
+            @NativeType("GLFWwindow") MemorySegment p0
         );
 
         static MethodHandle of(@NotNull IGLFWwindowclosefun lambda) {
@@ -601,7 +601,7 @@ public final class GLFWFunctionTypes {
     @FunctionalInterface
     public interface IGLFWwindowcontentscalefun {
         void invoke(
-            GLFWwindow p0,
+            @NativeType("GLFWwindow") MemorySegment p0,
             float p1,
             float p2
         );
@@ -627,7 +627,7 @@ public final class GLFWFunctionTypes {
     @FunctionalInterface
     public interface IGLFWwindowfocusfun {
         void invoke(
-            GLFWwindow p0,
+            @NativeType("GLFWwindow") MemorySegment p0,
             int p1
         );
 
@@ -652,7 +652,7 @@ public final class GLFWFunctionTypes {
     @FunctionalInterface
     public interface IGLFWwindowiconifyfun {
         void invoke(
-            GLFWwindow p0,
+            @NativeType("GLFWwindow") MemorySegment p0,
             int p1
         );
 
@@ -677,7 +677,7 @@ public final class GLFWFunctionTypes {
     @FunctionalInterface
     public interface IGLFWwindowmaximizefun {
         void invoke(
-            GLFWwindow p0,
+            @NativeType("GLFWwindow") MemorySegment p0,
             int p1
         );
 
@@ -702,7 +702,7 @@ public final class GLFWFunctionTypes {
     @FunctionalInterface
     public interface IGLFWwindowposfun {
         void invoke(
-            GLFWwindow p0,
+            @NativeType("GLFWwindow") MemorySegment p0,
             int p1,
             int p2
         );
@@ -728,7 +728,7 @@ public final class GLFWFunctionTypes {
     @FunctionalInterface
     public interface IGLFWwindowrefreshfun {
         void invoke(
-            GLFWwindow p0
+            @NativeType("GLFWwindow") MemorySegment p0
         );
 
         static MethodHandle of(@NotNull IGLFWwindowrefreshfun lambda) {
@@ -752,7 +752,7 @@ public final class GLFWFunctionTypes {
     @FunctionalInterface
     public interface IGLFWwindowsizefun {
         void invoke(
-            GLFWwindow p0,
+            @NativeType("GLFWwindow") MemorySegment p0,
             int p1,
             int p2
         );

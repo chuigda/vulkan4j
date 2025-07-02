@@ -39,9 +39,9 @@ public final class VMAFunctionTypes {
     @FunctionalInterface
     public interface IPFN_vmaAllocateDeviceMemoryFunction {
         void invoke(
-            VmaAllocator p0,
+            @NativeType("VmaAllocator") MemorySegment p0,
             @Unsigned int p1,
-            VkDeviceMemory p2,
+            @NativeType("VkDeviceMemory") MemorySegment p2,
             @NativeType("VkDeviceSize") @Unsigned long p3,
             @Pointer(comment="void*") @NotNull MemorySegment p4
         );
@@ -91,9 +91,9 @@ public final class VMAFunctionTypes {
     @FunctionalInterface
     public interface IPFN_vmaFreeDeviceMemoryFunction {
         void invoke(
-            VmaAllocator p0,
+            @NativeType("VmaAllocator") MemorySegment p0,
             @Unsigned int p1,
-            VkDeviceMemory p2,
+            @NativeType("VkDeviceMemory") MemorySegment p2,
             @NativeType("VkDeviceSize") @Unsigned long p3,
             @Pointer(comment="void*") @NotNull MemorySegment p4
         );

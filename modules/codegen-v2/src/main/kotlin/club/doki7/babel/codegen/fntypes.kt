@@ -69,13 +69,13 @@ fun generateFunctionTypedefs(
             +"@FunctionalInterface"
             "public interface ${def.interfaceName}" {
                 val retCType = lowerType(registry, codegenOptions.refRegistries, def.result)
-                +"${retCType.jType} invoke("
+                +"${retCType.jRawType} invoke("
                 indent {
                     def.params.forEachIndexed { idx, param ->
                         val last = idx == def.params.size - 1
                         val suffix = if (last) "" else ","
                         val loweredType = lowerType(registry, codegenOptions.refRegistries, param)
-                        +"${loweredType.jType} p$idx$suffix"
+                        +"${loweredType.jRawType} p$idx$suffix"
                     }
                 }
                 +");"

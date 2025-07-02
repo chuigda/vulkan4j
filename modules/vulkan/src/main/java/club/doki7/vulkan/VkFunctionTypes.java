@@ -94,8 +94,8 @@ public final class VkFunctionTypes {
     public interface IPFN_vkAllocationFunction {
         @Pointer(comment="void*") @NotNull MemorySegment invoke(
             @Pointer(comment="void*") @NotNull MemorySegment p0,
-            long p1,
-            long p2,
+            @NativeType("size_t") MemorySegment p1,
+            @NativeType("size_t") MemorySegment p2,
             @EnumType(VkSystemAllocationScope.class) int p3
         );
 
@@ -123,7 +123,7 @@ public final class VkFunctionTypes {
             @Bitmask(VkDebugReportFlagsEXT.class) int p0,
             @EnumType(VkDebugReportObjectTypeEXT.class) int p1,
             @Unsigned long p2,
-            long p3,
+            @NativeType("size_t") MemorySegment p3,
             int p4,
             @Pointer(comment="void*") @NotNull MemorySegment p5,
             @Pointer(comment="void*") @NotNull MemorySegment p6,
@@ -228,7 +228,7 @@ public final class VkFunctionTypes {
     @FunctionalInterface
     public interface IPFN_vkGetInstanceProcAddrLUNARG {
         @Pointer(comment="PFN_vkVoidFunction") @NotNull MemorySegment invoke(
-            VkInstance p0,
+            @NativeType("VkInstance") MemorySegment p0,
             @Pointer(comment="void*") @NotNull MemorySegment p1
         );
 
@@ -254,7 +254,7 @@ public final class VkFunctionTypes {
     public interface IPFN_vkInternalAllocationNotification {
         void invoke(
             @Pointer(comment="void*") @NotNull MemorySegment p0,
-            long p1,
+            @NativeType("size_t") MemorySegment p1,
             @EnumType(VkInternalAllocationType.class) int p2,
             @EnumType(VkSystemAllocationScope.class) int p3
         );
@@ -281,7 +281,7 @@ public final class VkFunctionTypes {
     public interface IPFN_vkInternalFreeNotification {
         void invoke(
             @Pointer(comment="void*") @NotNull MemorySegment p0,
-            long p1,
+            @NativeType("size_t") MemorySegment p1,
             @EnumType(VkInternalAllocationType.class) int p2,
             @EnumType(VkSystemAllocationScope.class) int p3
         );
@@ -309,8 +309,8 @@ public final class VkFunctionTypes {
         @Pointer(comment="void*") @NotNull MemorySegment invoke(
             @Pointer(comment="void*") @NotNull MemorySegment p0,
             @Pointer(comment="void*") @NotNull MemorySegment p1,
-            long p2,
-            long p3,
+            @NativeType("size_t") MemorySegment p2,
+            @NativeType("size_t") MemorySegment p3,
             @EnumType(VkSystemAllocationScope.class) int p4
         );
 

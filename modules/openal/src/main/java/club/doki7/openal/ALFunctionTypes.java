@@ -2165,7 +2165,7 @@ public final class ALFunctionTypes {
         void invoke(
             @NativeType("ALCenum") int p0,
             @NativeType("ALCenum") int p1,
-            ALCdevice p2,
+            @NativeType("ALCdevice") MemorySegment p2,
             @NativeType("ALCsizei") int p3,
             @Pointer(comment="void*") @NotNull MemorySegment p4,
             @Pointer(comment="void*") @NotNull MemorySegment p5
@@ -2277,7 +2277,7 @@ public final class ALFunctionTypes {
     @FunctionalInterface
     public interface ILPALAUXILIARYEFFECTSLOTFDIRECT {
         void invoke(
-            ALCcontext p0,
+            @NativeType("ALCcontext") MemorySegment p0,
             @NativeType("ALuint") int p1,
             @NativeType("ALenum") int p2,
             @NativeType("ALfloat") float p3
@@ -2330,7 +2330,7 @@ public final class ALFunctionTypes {
     @FunctionalInterface
     public interface ILPALAUXILIARYEFFECTSLOTFVDIRECT {
         void invoke(
-            ALCcontext p0,
+            @NativeType("ALCcontext") MemorySegment p0,
             @NativeType("ALuint") int p1,
             @NativeType("ALenum") int p2,
             @Pointer(comment="void*") @NotNull MemorySegment p3
@@ -2383,7 +2383,7 @@ public final class ALFunctionTypes {
     @FunctionalInterface
     public interface ILPALAUXILIARYEFFECTSLOTIDIRECT {
         void invoke(
-            ALCcontext p0,
+            @NativeType("ALCcontext") MemorySegment p0,
             @NativeType("ALuint") int p1,
             @NativeType("ALenum") int p2,
             @NativeType("ALint") int p3
@@ -2436,7 +2436,7 @@ public final class ALFunctionTypes {
     @FunctionalInterface
     public interface ILPALAUXILIARYEFFECTSLOTIVDIRECT {
         void invoke(
-            ALCcontext p0,
+            @NativeType("ALCcontext") MemorySegment p0,
             @NativeType("ALuint") int p1,
             @NativeType("ALenum") int p2,
             @Pointer(comment="void*") @NotNull MemorySegment p3
@@ -2491,7 +2491,7 @@ public final class ALFunctionTypes {
     @FunctionalInterface
     public interface ILPALBUFFER3FDIRECT {
         void invoke(
-            ALCcontext p0,
+            @NativeType("ALCcontext") MemorySegment p0,
             @NativeType("ALuint") int p1,
             @NativeType("ALenum") int p2,
             @NativeType("ALfloat") float p3,
@@ -2548,7 +2548,7 @@ public final class ALFunctionTypes {
     @FunctionalInterface
     public interface ILPALBUFFER3IDIRECT {
         void invoke(
-            ALCcontext p0,
+            @NativeType("ALCcontext") MemorySegment p0,
             @NativeType("ALuint") int p1,
             @NativeType("ALenum") int p2,
             @NativeType("ALint") int p3,
@@ -2577,7 +2577,7 @@ public final class ALFunctionTypes {
     @FunctionalInterface
     public interface ILPALBUFFERCALLBACKDIRECTSOFT {
         void invoke(
-            ALCcontext p0,
+            @NativeType("ALCcontext") MemorySegment p0,
             @NativeType("ALuint") int p1,
             @NativeType("ALenum") int p2,
             @NativeType("ALsizei") int p3,
@@ -2662,7 +2662,7 @@ public final class ALFunctionTypes {
     @FunctionalInterface
     public interface ILPALBUFFERDATADIRECT {
         void invoke(
-            ALCcontext p0,
+            @NativeType("ALCcontext") MemorySegment p0,
             @NativeType("ALuint") int p1,
             @NativeType("ALenum") int p2,
             @Pointer(comment="void*") @NotNull MemorySegment p3,
@@ -2691,7 +2691,7 @@ public final class ALFunctionTypes {
     @FunctionalInterface
     public interface ILPALBUFFERDATASTATICDIRECT {
         void invoke(
-            ALCcontext p0,
+            @NativeType("ALCcontext") MemorySegment p0,
             @NativeType("ALuint") int p1,
             @NativeType("ALenum") int p2,
             @Pointer(comment="void*") @NotNull MemorySegment p3,
@@ -2746,7 +2746,7 @@ public final class ALFunctionTypes {
     @FunctionalInterface
     public interface ILPALBUFFERFDIRECT {
         void invoke(
-            ALCcontext p0,
+            @NativeType("ALCcontext") MemorySegment p0,
             @NativeType("ALuint") int p1,
             @NativeType("ALenum") int p2,
             @NativeType("ALfloat") float p3
@@ -2799,7 +2799,7 @@ public final class ALFunctionTypes {
     @FunctionalInterface
     public interface ILPALBUFFERFVDIRECT {
         void invoke(
-            ALCcontext p0,
+            @NativeType("ALCcontext") MemorySegment p0,
             @NativeType("ALuint") int p1,
             @NativeType("ALenum") int p2,
             @Pointer(comment="void*") @NotNull MemorySegment p3
@@ -2852,7 +2852,7 @@ public final class ALFunctionTypes {
     @FunctionalInterface
     public interface ILPALBUFFERIDIRECT {
         void invoke(
-            ALCcontext p0,
+            @NativeType("ALCcontext") MemorySegment p0,
             @NativeType("ALuint") int p1,
             @NativeType("ALenum") int p2,
             @NativeType("ALint") int p3
@@ -2905,7 +2905,7 @@ public final class ALFunctionTypes {
     @FunctionalInterface
     public interface ILPALBUFFERIVDIRECT {
         void invoke(
-            ALCcontext p0,
+            @NativeType("ALCcontext") MemorySegment p0,
             @NativeType("ALuint") int p1,
             @NativeType("ALenum") int p2,
             @Pointer(comment="void*") @NotNull MemorySegment p3
@@ -2962,7 +2962,7 @@ public final class ALFunctionTypes {
     @FunctionalInterface
     public interface ILPALBUFFERSUBDATADIRECTSOFT {
         void invoke(
-            ALCcontext p0,
+            @NativeType("ALCcontext") MemorySegment p0,
             @NativeType("ALuint") int p1,
             @NativeType("ALenum") int p2,
             @Pointer(comment="void*") @NotNull MemorySegment p3,
@@ -3020,7 +3020,7 @@ public final class ALFunctionTypes {
     @FunctionalInterface
     public interface ILPALCCAPTURECLOSEDEVICE {
         @NativeType("ALCboolean") byte invoke(
-            ALCdevice p0
+            @NativeType("ALCdevice") MemorySegment p0
         );
 
         static MethodHandle of(@NotNull ILPALCCAPTURECLOSEDEVICE lambda) {
@@ -3043,7 +3043,7 @@ public final class ALFunctionTypes {
 
     @FunctionalInterface
     public interface ILPALCCAPTUREOPENDEVICE {
-        ALCdevice invoke(
+        @NativeType("ALCdevice") MemorySegment invoke(
             @Pointer(comment="void*") @NotNull MemorySegment p0,
             @NativeType("ALCuint") int p1,
             @NativeType("ALCenum") int p2,
@@ -3071,7 +3071,7 @@ public final class ALFunctionTypes {
     @FunctionalInterface
     public interface ILPALCCAPTURESAMPLES {
         void invoke(
-            ALCdevice p0,
+            @NativeType("ALCdevice") MemorySegment p0,
             @Pointer(comment="void*") @NotNull MemorySegment p1,
             @NativeType("ALCsizei") int p2
         );
@@ -3097,7 +3097,7 @@ public final class ALFunctionTypes {
     @FunctionalInterface
     public interface ILPALCCAPTURESTART {
         void invoke(
-            ALCdevice p0
+            @NativeType("ALCdevice") MemorySegment p0
         );
 
         static MethodHandle of(@NotNull ILPALCCAPTURESTART lambda) {
@@ -3121,7 +3121,7 @@ public final class ALFunctionTypes {
     @FunctionalInterface
     public interface ILPALCCAPTURESTOP {
         void invoke(
-            ALCdevice p0
+            @NativeType("ALCdevice") MemorySegment p0
         );
 
         static MethodHandle of(@NotNull ILPALCCAPTURESTOP lambda) {
@@ -3145,7 +3145,7 @@ public final class ALFunctionTypes {
     @FunctionalInterface
     public interface ILPALCCLOSEDEVICE {
         @NativeType("ALCboolean") byte invoke(
-            ALCdevice p0
+            @NativeType("ALCdevice") MemorySegment p0
         );
 
         static MethodHandle of(@NotNull ILPALCCLOSEDEVICE lambda) {
@@ -3168,8 +3168,8 @@ public final class ALFunctionTypes {
 
     @FunctionalInterface
     public interface ILPALCCREATECONTEXT {
-        ALCcontext invoke(
-            ALCdevice p0,
+        @NativeType("ALCcontext") MemorySegment invoke(
+            @NativeType("ALCdevice") MemorySegment p0,
             @Pointer(comment="void*") @NotNull MemorySegment p1
         );
 
@@ -3194,7 +3194,7 @@ public final class ALFunctionTypes {
     @FunctionalInterface
     public interface ILPALCDESTROYCONTEXT {
         void invoke(
-            ALCcontext p0
+            @NativeType("ALCcontext") MemorySegment p0
         );
 
         static MethodHandle of(@NotNull ILPALCDESTROYCONTEXT lambda) {
@@ -3218,7 +3218,7 @@ public final class ALFunctionTypes {
     @FunctionalInterface
     public interface ILPALCDEVICEPAUSESOFT {
         void invoke(
-            ALCdevice p0
+            @NativeType("ALCdevice") MemorySegment p0
         );
 
         static MethodHandle of(@NotNull ILPALCDEVICEPAUSESOFT lambda) {
@@ -3242,7 +3242,7 @@ public final class ALFunctionTypes {
     @FunctionalInterface
     public interface ILPALCDEVICERESUMESOFT {
         void invoke(
-            ALCdevice p0
+            @NativeType("ALCdevice") MemorySegment p0
         );
 
         static MethodHandle of(@NotNull ILPALCDEVICERESUMESOFT lambda) {
@@ -3341,8 +3341,8 @@ public final class ALFunctionTypes {
 
     @FunctionalInterface
     public interface ILPALCGETCONTEXTSDEVICE {
-        ALCdevice invoke(
-            ALCcontext p0
+        @NativeType("ALCdevice") MemorySegment invoke(
+            @NativeType("ALCcontext") MemorySegment p0
         );
 
         static MethodHandle of(@NotNull ILPALCGETCONTEXTSDEVICE lambda) {
@@ -3365,7 +3365,7 @@ public final class ALFunctionTypes {
 
     @FunctionalInterface
     public interface ILPALCGETCURRENTCONTEXT {
-        ALCcontext invoke(
+        @NativeType("ALCcontext") MemorySegment invoke(
         );
 
         static MethodHandle of(@NotNull ILPALCGETCURRENTCONTEXT lambda) {
@@ -3389,7 +3389,7 @@ public final class ALFunctionTypes {
     @FunctionalInterface
     public interface ILPALCGETENUMVALUE {
         @NativeType("ALCenum") int invoke(
-            ALCdevice p0,
+            @NativeType("ALCdevice") MemorySegment p0,
             @Pointer(comment="void*") @NotNull MemorySegment p1
         );
 
@@ -3414,7 +3414,7 @@ public final class ALFunctionTypes {
     @FunctionalInterface
     public interface ILPALCGETERROR {
         @NativeType("ALCenum") int invoke(
-            ALCdevice p0
+            @NativeType("ALCdevice") MemorySegment p0
         );
 
         static MethodHandle of(@NotNull ILPALCGETERROR lambda) {
@@ -3438,7 +3438,7 @@ public final class ALFunctionTypes {
     @FunctionalInterface
     public interface ILPALCGETINTEGER64VSOFT {
         void invoke(
-            ALCdevice p0,
+            @NativeType("ALCdevice") MemorySegment p0,
             @NativeType("ALCenum") int p1,
             @NativeType("ALsizei") int p2,
             @Pointer(comment="void*") @NotNull MemorySegment p3
@@ -3465,7 +3465,7 @@ public final class ALFunctionTypes {
     @FunctionalInterface
     public interface ILPALCGETINTEGERV {
         void invoke(
-            ALCdevice p0,
+            @NativeType("ALCdevice") MemorySegment p0,
             @NativeType("ALCenum") int p1,
             @NativeType("ALCsizei") int p2,
             @Pointer(comment="void*") @NotNull MemorySegment p3
@@ -3492,7 +3492,7 @@ public final class ALFunctionTypes {
     @FunctionalInterface
     public interface ILPALCGETPROCADDRESS {
         @Pointer(comment="void*") @NotNull MemorySegment invoke(
-            ALCdevice p0,
+            @NativeType("ALCdevice") MemorySegment p0,
             @Pointer(comment="void*") @NotNull MemorySegment p1
         );
 
@@ -3517,7 +3517,7 @@ public final class ALFunctionTypes {
     @FunctionalInterface
     public interface ILPALCGETPROCADDRESS2 {
         @Pointer(comment="void*") @NotNull MemorySegment invoke(
-            ALCdevice p0,
+            @NativeType("ALCdevice") MemorySegment p0,
             @Pointer(comment="void*") @NotNull MemorySegment p1
         );
 
@@ -3542,7 +3542,7 @@ public final class ALFunctionTypes {
     @FunctionalInterface
     public interface ILPALCGETSTRING {
         @Pointer(comment="void*") @NotNull MemorySegment invoke(
-            ALCdevice p0,
+            @NativeType("ALCdevice") MemorySegment p0,
             @NativeType("ALCenum") int p1
         );
 
@@ -3567,7 +3567,7 @@ public final class ALFunctionTypes {
     @FunctionalInterface
     public interface ILPALCGETSTRINGISOFT {
         @Pointer(comment="void*") @NotNull MemorySegment invoke(
-            ALCdevice p0,
+            @NativeType("ALCdevice") MemorySegment p0,
             @NativeType("ALCenum") int p1,
             @NativeType("ALCsizei") int p2
         );
@@ -3593,7 +3593,7 @@ public final class ALFunctionTypes {
     @FunctionalInterface
     public interface ILPALCISEXTENSIONPRESENT {
         @NativeType("ALCboolean") byte invoke(
-            ALCdevice p0,
+            @NativeType("ALCdevice") MemorySegment p0,
             @Pointer(comment="void*") @NotNull MemorySegment p1
         );
 
@@ -3618,7 +3618,7 @@ public final class ALFunctionTypes {
     @FunctionalInterface
     public interface ILPALCISRENDERFORMATSUPPORTEDSOFT {
         @NativeType("ALCboolean") byte invoke(
-            ALCdevice p0,
+            @NativeType("ALCdevice") MemorySegment p0,
             @NativeType("ALCsizei") int p1,
             @NativeType("ALCenum") int p2,
             @NativeType("ALCenum") int p3
@@ -3644,7 +3644,7 @@ public final class ALFunctionTypes {
 
     @FunctionalInterface
     public interface ILPALCLOOPBACKOPENDEVICESOFT {
-        ALCdevice invoke(
+        @NativeType("ALCdevice") MemorySegment invoke(
             @Pointer(comment="void*") @NotNull MemorySegment p0
         );
 
@@ -3669,7 +3669,7 @@ public final class ALFunctionTypes {
     @FunctionalInterface
     public interface ILPALCMAKECONTEXTCURRENT {
         @NativeType("ALCboolean") byte invoke(
-            ALCcontext p0
+            @NativeType("ALCcontext") MemorySegment p0
         );
 
         static MethodHandle of(@NotNull ILPALCMAKECONTEXTCURRENT lambda) {
@@ -3692,7 +3692,7 @@ public final class ALFunctionTypes {
 
     @FunctionalInterface
     public interface ILPALCOPENDEVICE {
-        ALCdevice invoke(
+        @NativeType("ALCdevice") MemorySegment invoke(
             @Pointer(comment="void*") @NotNull MemorySegment p0
         );
 
@@ -3717,7 +3717,7 @@ public final class ALFunctionTypes {
     @FunctionalInterface
     public interface ILPALCPROCESSCONTEXT {
         void invoke(
-            ALCcontext p0
+            @NativeType("ALCcontext") MemorySegment p0
         );
 
         static MethodHandle of(@NotNull ILPALCPROCESSCONTEXT lambda) {
@@ -3741,7 +3741,7 @@ public final class ALFunctionTypes {
     @FunctionalInterface
     public interface ILPALCRENDERSAMPLESSOFT {
         void invoke(
-            ALCdevice p0,
+            @NativeType("ALCdevice") MemorySegment p0,
             @Pointer(comment="void*") @NotNull MemorySegment p1,
             @NativeType("ALCsizei") int p2
         );
@@ -3767,7 +3767,7 @@ public final class ALFunctionTypes {
     @FunctionalInterface
     public interface ILPALCREOPENDEVICESOFT {
         @NativeType("ALCboolean") byte invoke(
-            ALCdevice p0,
+            @NativeType("ALCdevice") MemorySegment p0,
             @Pointer(comment="void*") @NotNull MemorySegment p1,
             @Pointer(comment="void*") @NotNull MemorySegment p2
         );
@@ -3793,7 +3793,7 @@ public final class ALFunctionTypes {
     @FunctionalInterface
     public interface ILPALCRESETDEVICESOFT {
         @NativeType("ALCboolean") byte invoke(
-            ALCdevice p0,
+            @NativeType("ALCdevice") MemorySegment p0,
             @Pointer(comment="void*") @NotNull MemorySegment p1
         );
 
@@ -3818,7 +3818,7 @@ public final class ALFunctionTypes {
     @FunctionalInterface
     public interface ILPALCSUSPENDCONTEXT {
         void invoke(
-            ALCcontext p0
+            @NativeType("ALCcontext") MemorySegment p0
         );
 
         static MethodHandle of(@NotNull ILPALCSUSPENDCONTEXT lambda) {
@@ -3842,7 +3842,7 @@ public final class ALFunctionTypes {
     @FunctionalInterface
     public interface ILPALDEBUGMESSAGECALLBACKDIRECTEXT {
         void invoke(
-            ALCcontext p0,
+            @NativeType("ALCcontext") MemorySegment p0,
             @Pointer(comment="ALDEBUGPROCEXT") @NotNull MemorySegment p1,
             @Pointer(comment="void*") @NotNull MemorySegment p2
         );
@@ -3893,7 +3893,7 @@ public final class ALFunctionTypes {
     @FunctionalInterface
     public interface ILPALDEBUGMESSAGECONTROLDIRECTEXT {
         void invoke(
-            ALCcontext p0,
+            @NativeType("ALCcontext") MemorySegment p0,
             @NativeType("ALenum") int p1,
             @NativeType("ALenum") int p2,
             @NativeType("ALenum") int p3,
@@ -3952,7 +3952,7 @@ public final class ALFunctionTypes {
     @FunctionalInterface
     public interface ILPALDEBUGMESSAGEINSERTDIRECTEXT {
         void invoke(
-            ALCcontext p0,
+            @NativeType("ALCcontext") MemorySegment p0,
             @NativeType("ALenum") int p1,
             @NativeType("ALenum") int p2,
             @NativeType("ALuint") int p3,
@@ -4011,7 +4011,7 @@ public final class ALFunctionTypes {
     @FunctionalInterface
     public interface ILPALDEFERUPDATESDIRECTSOFT {
         void invoke(
-            ALCcontext p0
+            @NativeType("ALCcontext") MemorySegment p0
         );
 
         static MethodHandle of(@NotNull ILPALDEFERUPDATESDIRECTSOFT lambda) {
@@ -4083,7 +4083,7 @@ public final class ALFunctionTypes {
     @FunctionalInterface
     public interface ILPALDELETEAUXILIARYEFFECTSLOTSDIRECT {
         void invoke(
-            ALCcontext p0,
+            @NativeType("ALCcontext") MemorySegment p0,
             @NativeType("ALsizei") int p1,
             @Pointer(comment="void*") @NotNull MemorySegment p2
         );
@@ -4134,7 +4134,7 @@ public final class ALFunctionTypes {
     @FunctionalInterface
     public interface ILPALDELETEBUFFERSDIRECT {
         void invoke(
-            ALCcontext p0,
+            @NativeType("ALCcontext") MemorySegment p0,
             @NativeType("ALsizei") int p1,
             @Pointer(comment="void*") @NotNull MemorySegment p2
         );
@@ -4185,7 +4185,7 @@ public final class ALFunctionTypes {
     @FunctionalInterface
     public interface ILPALDELETEEFFECTSDIRECT {
         void invoke(
-            ALCcontext p0,
+            @NativeType("ALCcontext") MemorySegment p0,
             @NativeType("ALsizei") int p1,
             @Pointer(comment="void*") @NotNull MemorySegment p2
         );
@@ -4236,7 +4236,7 @@ public final class ALFunctionTypes {
     @FunctionalInterface
     public interface ILPALDELETEFILTERSDIRECT {
         void invoke(
-            ALCcontext p0,
+            @NativeType("ALCcontext") MemorySegment p0,
             @NativeType("ALsizei") int p1,
             @Pointer(comment="void*") @NotNull MemorySegment p2
         );
@@ -4287,7 +4287,7 @@ public final class ALFunctionTypes {
     @FunctionalInterface
     public interface ILPALDELETESOURCESDIRECT {
         void invoke(
-            ALCcontext p0,
+            @NativeType("ALCcontext") MemorySegment p0,
             @NativeType("ALsizei") int p1,
             @Pointer(comment="void*") @NotNull MemorySegment p2
         );
@@ -4337,7 +4337,7 @@ public final class ALFunctionTypes {
     @FunctionalInterface
     public interface ILPALDISABLEDIRECT {
         void invoke(
-            ALCcontext p0,
+            @NativeType("ALCcontext") MemorySegment p0,
             @NativeType("ALenum") int p1
         );
 
@@ -4386,7 +4386,7 @@ public final class ALFunctionTypes {
     @FunctionalInterface
     public interface ILPALDISTANCEMODELDIRECT {
         void invoke(
-            ALCcontext p0,
+            @NativeType("ALCcontext") MemorySegment p0,
             @NativeType("ALenum") int p1
         );
 
@@ -4435,7 +4435,7 @@ public final class ALFunctionTypes {
     @FunctionalInterface
     public interface ILPALDOPPLERFACTORDIRECT {
         void invoke(
-            ALCcontext p0,
+            @NativeType("ALCcontext") MemorySegment p0,
             @NativeType("ALfloat") float p1
         );
 
@@ -4510,7 +4510,7 @@ public final class ALFunctionTypes {
     @FunctionalInterface
     public interface ILPALEFFECTFDIRECT {
         void invoke(
-            ALCcontext p0,
+            @NativeType("ALCcontext") MemorySegment p0,
             @NativeType("ALuint") int p1,
             @NativeType("ALenum") int p2,
             @NativeType("ALfloat") float p3
@@ -4563,7 +4563,7 @@ public final class ALFunctionTypes {
     @FunctionalInterface
     public interface ILPALEFFECTFVDIRECT {
         void invoke(
-            ALCcontext p0,
+            @NativeType("ALCcontext") MemorySegment p0,
             @NativeType("ALuint") int p1,
             @NativeType("ALenum") int p2,
             @Pointer(comment="void*") @NotNull MemorySegment p3
@@ -4616,7 +4616,7 @@ public final class ALFunctionTypes {
     @FunctionalInterface
     public interface ILPALEFFECTIDIRECT {
         void invoke(
-            ALCcontext p0,
+            @NativeType("ALCcontext") MemorySegment p0,
             @NativeType("ALuint") int p1,
             @NativeType("ALenum") int p2,
             @NativeType("ALint") int p3
@@ -4669,7 +4669,7 @@ public final class ALFunctionTypes {
     @FunctionalInterface
     public interface ILPALEFFECTIVDIRECT {
         void invoke(
-            ALCcontext p0,
+            @NativeType("ALCcontext") MemorySegment p0,
             @NativeType("ALuint") int p1,
             @NativeType("ALenum") int p2,
             @Pointer(comment="void*") @NotNull MemorySegment p3
@@ -4720,7 +4720,7 @@ public final class ALFunctionTypes {
     @FunctionalInterface
     public interface ILPALENABLEDIRECT {
         void invoke(
-            ALCcontext p0,
+            @NativeType("ALCcontext") MemorySegment p0,
             @NativeType("ALenum") int p1
         );
 
@@ -4745,7 +4745,7 @@ public final class ALFunctionTypes {
     @FunctionalInterface
     public interface ILPALEVENTCALLBACKDIRECTSOFT {
         void invoke(
-            ALCcontext p0,
+            @NativeType("ALCcontext") MemorySegment p0,
             @Pointer(comment="ALEVENTPROCSOFT") @NotNull MemorySegment p1,
             @Pointer(comment="void*") @NotNull MemorySegment p2
         );
@@ -4796,7 +4796,7 @@ public final class ALFunctionTypes {
     @FunctionalInterface
     public interface ILPALEVENTCONTROLDIRECTSOFT {
         void invoke(
-            ALCcontext p0,
+            @NativeType("ALCcontext") MemorySegment p0,
             @NativeType("ALsizei") int p1,
             @Pointer(comment="void*") @NotNull MemorySegment p2,
             @NativeType("ALboolean") byte p3
@@ -4875,7 +4875,7 @@ public final class ALFunctionTypes {
     @FunctionalInterface
     public interface ILPALFILTERFDIRECT {
         void invoke(
-            ALCcontext p0,
+            @NativeType("ALCcontext") MemorySegment p0,
             @NativeType("ALuint") int p1,
             @NativeType("ALenum") int p2,
             @NativeType("ALfloat") float p3
@@ -4928,7 +4928,7 @@ public final class ALFunctionTypes {
     @FunctionalInterface
     public interface ILPALFILTERFVDIRECT {
         void invoke(
-            ALCcontext p0,
+            @NativeType("ALCcontext") MemorySegment p0,
             @NativeType("ALuint") int p1,
             @NativeType("ALenum") int p2,
             @Pointer(comment="void*") @NotNull MemorySegment p3
@@ -4981,7 +4981,7 @@ public final class ALFunctionTypes {
     @FunctionalInterface
     public interface ILPALFILTERIDIRECT {
         void invoke(
-            ALCcontext p0,
+            @NativeType("ALCcontext") MemorySegment p0,
             @NativeType("ALuint") int p1,
             @NativeType("ALenum") int p2,
             @NativeType("ALint") int p3
@@ -5034,7 +5034,7 @@ public final class ALFunctionTypes {
     @FunctionalInterface
     public interface ILPALFILTERIVDIRECT {
         void invoke(
-            ALCcontext p0,
+            @NativeType("ALCcontext") MemorySegment p0,
             @NativeType("ALuint") int p1,
             @NativeType("ALenum") int p2,
             @Pointer(comment="void*") @NotNull MemorySegment p3
@@ -5111,7 +5111,7 @@ public final class ALFunctionTypes {
     @FunctionalInterface
     public interface ILPALGENAUXILIARYEFFECTSLOTSDIRECT {
         void invoke(
-            ALCcontext p0,
+            @NativeType("ALCcontext") MemorySegment p0,
             @NativeType("ALsizei") int p1,
             @Pointer(comment="void*") @NotNull MemorySegment p2
         );
@@ -5162,7 +5162,7 @@ public final class ALFunctionTypes {
     @FunctionalInterface
     public interface ILPALGENBUFFERSDIRECT {
         void invoke(
-            ALCcontext p0,
+            @NativeType("ALCcontext") MemorySegment p0,
             @NativeType("ALsizei") int p1,
             @Pointer(comment="void*") @NotNull MemorySegment p2
         );
@@ -5213,7 +5213,7 @@ public final class ALFunctionTypes {
     @FunctionalInterface
     public interface ILPALGENEFFECTSDIRECT {
         void invoke(
-            ALCcontext p0,
+            @NativeType("ALCcontext") MemorySegment p0,
             @NativeType("ALsizei") int p1,
             @Pointer(comment="void*") @NotNull MemorySegment p2
         );
@@ -5264,7 +5264,7 @@ public final class ALFunctionTypes {
     @FunctionalInterface
     public interface ILPALGENFILTERSDIRECT {
         void invoke(
-            ALCcontext p0,
+            @NativeType("ALCcontext") MemorySegment p0,
             @NativeType("ALsizei") int p1,
             @Pointer(comment="void*") @NotNull MemorySegment p2
         );
@@ -5315,7 +5315,7 @@ public final class ALFunctionTypes {
     @FunctionalInterface
     public interface ILPALGENSOURCESDIRECT {
         void invoke(
-            ALCcontext p0,
+            @NativeType("ALCcontext") MemorySegment p0,
             @NativeType("ALsizei") int p1,
             @Pointer(comment="void*") @NotNull MemorySegment p2
         );
@@ -5367,7 +5367,7 @@ public final class ALFunctionTypes {
     @FunctionalInterface
     public interface ILPALGETAUXILIARYEFFECTSLOTFDIRECT {
         void invoke(
-            ALCcontext p0,
+            @NativeType("ALCcontext") MemorySegment p0,
             @NativeType("ALuint") int p1,
             @NativeType("ALenum") int p2,
             @Pointer(comment="void*") @NotNull MemorySegment p3
@@ -5420,7 +5420,7 @@ public final class ALFunctionTypes {
     @FunctionalInterface
     public interface ILPALGETAUXILIARYEFFECTSLOTFVDIRECT {
         void invoke(
-            ALCcontext p0,
+            @NativeType("ALCcontext") MemorySegment p0,
             @NativeType("ALuint") int p1,
             @NativeType("ALenum") int p2,
             @Pointer(comment="void*") @NotNull MemorySegment p3
@@ -5473,7 +5473,7 @@ public final class ALFunctionTypes {
     @FunctionalInterface
     public interface ILPALGETAUXILIARYEFFECTSLOTIDIRECT {
         void invoke(
-            ALCcontext p0,
+            @NativeType("ALCcontext") MemorySegment p0,
             @NativeType("ALuint") int p1,
             @NativeType("ALenum") int p2,
             @Pointer(comment="void*") @NotNull MemorySegment p3
@@ -5526,7 +5526,7 @@ public final class ALFunctionTypes {
     @FunctionalInterface
     public interface ILPALGETAUXILIARYEFFECTSLOTIVDIRECT {
         void invoke(
-            ALCcontext p0,
+            @NativeType("ALCcontext") MemorySegment p0,
             @NativeType("ALuint") int p1,
             @NativeType("ALenum") int p2,
             @Pointer(comment="void*") @NotNull MemorySegment p3
@@ -5577,7 +5577,7 @@ public final class ALFunctionTypes {
     @FunctionalInterface
     public interface ILPALGETBOOLEANDIRECT {
         @NativeType("ALboolean") byte invoke(
-            ALCcontext p0,
+            @NativeType("ALCcontext") MemorySegment p0,
             @NativeType("ALenum") int p1
         );
 
@@ -5627,7 +5627,7 @@ public final class ALFunctionTypes {
     @FunctionalInterface
     public interface ILPALGETBOOLEANVDIRECT {
         void invoke(
-            ALCcontext p0,
+            @NativeType("ALCcontext") MemorySegment p0,
             @NativeType("ALenum") int p1,
             @Pointer(comment="void*") @NotNull MemorySegment p2
         );
@@ -5681,7 +5681,7 @@ public final class ALFunctionTypes {
     @FunctionalInterface
     public interface ILPALGETBUFFER3FDIRECT {
         void invoke(
-            ALCcontext p0,
+            @NativeType("ALCcontext") MemorySegment p0,
             @NativeType("ALuint") int p1,
             @NativeType("ALenum") int p2,
             @Pointer(comment="void*") @NotNull MemorySegment p3,
@@ -5738,7 +5738,7 @@ public final class ALFunctionTypes {
     @FunctionalInterface
     public interface ILPALGETBUFFER3IDIRECT {
         void invoke(
-            ALCcontext p0,
+            @NativeType("ALCcontext") MemorySegment p0,
             @NativeType("ALuint") int p1,
             @NativeType("ALenum") int p2,
             @Pointer(comment="void*") @NotNull MemorySegment p3,
@@ -5767,7 +5767,7 @@ public final class ALFunctionTypes {
     @FunctionalInterface
     public interface ILPALGETBUFFER3PTRDIRECTSOFT {
         void invoke(
-            ALCcontext p0,
+            @NativeType("ALCcontext") MemorySegment p0,
             @NativeType("ALuint") int p1,
             @NativeType("ALenum") int p2,
             @Pointer(comment="void*") @NotNull MemorySegment p3,
@@ -5850,7 +5850,7 @@ public final class ALFunctionTypes {
     @FunctionalInterface
     public interface ILPALGETBUFFERFDIRECT {
         void invoke(
-            ALCcontext p0,
+            @NativeType("ALCcontext") MemorySegment p0,
             @NativeType("ALuint") int p1,
             @NativeType("ALenum") int p2,
             @Pointer(comment="void*") @NotNull MemorySegment p3
@@ -5903,7 +5903,7 @@ public final class ALFunctionTypes {
     @FunctionalInterface
     public interface ILPALGETBUFFERFVDIRECT {
         void invoke(
-            ALCcontext p0,
+            @NativeType("ALCcontext") MemorySegment p0,
             @NativeType("ALuint") int p1,
             @NativeType("ALenum") int p2,
             @Pointer(comment="void*") @NotNull MemorySegment p3
@@ -5956,7 +5956,7 @@ public final class ALFunctionTypes {
     @FunctionalInterface
     public interface ILPALGETBUFFERIDIRECT {
         void invoke(
-            ALCcontext p0,
+            @NativeType("ALCcontext") MemorySegment p0,
             @NativeType("ALuint") int p1,
             @NativeType("ALenum") int p2,
             @Pointer(comment="void*") @NotNull MemorySegment p3
@@ -6009,7 +6009,7 @@ public final class ALFunctionTypes {
     @FunctionalInterface
     public interface ILPALGETBUFFERIVDIRECT {
         void invoke(
-            ALCcontext p0,
+            @NativeType("ALCcontext") MemorySegment p0,
             @NativeType("ALuint") int p1,
             @NativeType("ALenum") int p2,
             @Pointer(comment="void*") @NotNull MemorySegment p3
@@ -6036,7 +6036,7 @@ public final class ALFunctionTypes {
     @FunctionalInterface
     public interface ILPALGETBUFFERPTRDIRECTSOFT {
         void invoke(
-            ALCcontext p0,
+            @NativeType("ALCcontext") MemorySegment p0,
             @NativeType("ALuint") int p1,
             @NativeType("ALenum") int p2,
             @Pointer(comment="void*") @NotNull MemorySegment p3
@@ -6089,7 +6089,7 @@ public final class ALFunctionTypes {
     @FunctionalInterface
     public interface ILPALGETBUFFERPTRVDIRECTSOFT {
         void invoke(
-            ALCcontext p0,
+            @NativeType("ALCcontext") MemorySegment p0,
             @NativeType("ALuint") int p1,
             @NativeType("ALenum") int p2,
             @Pointer(comment="void*") @NotNull MemorySegment p3
@@ -6171,7 +6171,7 @@ public final class ALFunctionTypes {
     @FunctionalInterface
     public interface ILPALGETDEBUGMESSAGELOGDIRECTEXT {
         @NativeType("ALuint") int invoke(
-            ALCcontext p0,
+            @NativeType("ALCcontext") MemorySegment p0,
             @NativeType("ALuint") int p1,
             @NativeType("ALsizei") int p2,
             @Pointer(comment="void*") @NotNull MemorySegment p3,
@@ -6258,7 +6258,7 @@ public final class ALFunctionTypes {
     @FunctionalInterface
     public interface ILPALGETDOUBLEDIRECT {
         @NativeType("ALdouble") double invoke(
-            ALCcontext p0,
+            @NativeType("ALCcontext") MemorySegment p0,
             @NativeType("ALenum") int p1
         );
 
@@ -6308,7 +6308,7 @@ public final class ALFunctionTypes {
     @FunctionalInterface
     public interface ILPALGETDOUBLEVDIRECT {
         void invoke(
-            ALCcontext p0,
+            @NativeType("ALCcontext") MemorySegment p0,
             @NativeType("ALenum") int p1,
             @Pointer(comment="void*") @NotNull MemorySegment p2
         );
@@ -6360,7 +6360,7 @@ public final class ALFunctionTypes {
     @FunctionalInterface
     public interface ILPALGETEFFECTFDIRECT {
         void invoke(
-            ALCcontext p0,
+            @NativeType("ALCcontext") MemorySegment p0,
             @NativeType("ALuint") int p1,
             @NativeType("ALenum") int p2,
             @Pointer(comment="void*") @NotNull MemorySegment p3
@@ -6413,7 +6413,7 @@ public final class ALFunctionTypes {
     @FunctionalInterface
     public interface ILPALGETEFFECTFVDIRECT {
         void invoke(
-            ALCcontext p0,
+            @NativeType("ALCcontext") MemorySegment p0,
             @NativeType("ALuint") int p1,
             @NativeType("ALenum") int p2,
             @Pointer(comment="void*") @NotNull MemorySegment p3
@@ -6466,7 +6466,7 @@ public final class ALFunctionTypes {
     @FunctionalInterface
     public interface ILPALGETEFFECTIDIRECT {
         void invoke(
-            ALCcontext p0,
+            @NativeType("ALCcontext") MemorySegment p0,
             @NativeType("ALuint") int p1,
             @NativeType("ALenum") int p2,
             @Pointer(comment="void*") @NotNull MemorySegment p3
@@ -6519,7 +6519,7 @@ public final class ALFunctionTypes {
     @FunctionalInterface
     public interface ILPALGETEFFECTIVDIRECT {
         void invoke(
-            ALCcontext p0,
+            @NativeType("ALCcontext") MemorySegment p0,
             @NativeType("ALuint") int p1,
             @NativeType("ALenum") int p2,
             @Pointer(comment="void*") @NotNull MemorySegment p3
@@ -6570,7 +6570,7 @@ public final class ALFunctionTypes {
     @FunctionalInterface
     public interface ILPALGETENUMVALUEDIRECT {
         @NativeType("ALenum") int invoke(
-            ALCcontext p0,
+            @NativeType("ALCcontext") MemorySegment p0,
             @Pointer(comment="void*") @NotNull MemorySegment p1
         );
 
@@ -6618,7 +6618,7 @@ public final class ALFunctionTypes {
     @FunctionalInterface
     public interface ILPALGETERRORDIRECT {
         @NativeType("ALenum") int invoke(
-            ALCcontext p0
+            @NativeType("ALCcontext") MemorySegment p0
         );
 
         static MethodHandle of(@NotNull ILPALGETERRORDIRECT lambda) {
@@ -6668,7 +6668,7 @@ public final class ALFunctionTypes {
     @FunctionalInterface
     public interface ILPALGETFILTERFDIRECT {
         void invoke(
-            ALCcontext p0,
+            @NativeType("ALCcontext") MemorySegment p0,
             @NativeType("ALuint") int p1,
             @NativeType("ALenum") int p2,
             @Pointer(comment="void*") @NotNull MemorySegment p3
@@ -6721,7 +6721,7 @@ public final class ALFunctionTypes {
     @FunctionalInterface
     public interface ILPALGETFILTERFVDIRECT {
         void invoke(
-            ALCcontext p0,
+            @NativeType("ALCcontext") MemorySegment p0,
             @NativeType("ALuint") int p1,
             @NativeType("ALenum") int p2,
             @Pointer(comment="void*") @NotNull MemorySegment p3
@@ -6774,7 +6774,7 @@ public final class ALFunctionTypes {
     @FunctionalInterface
     public interface ILPALGETFILTERIDIRECT {
         void invoke(
-            ALCcontext p0,
+            @NativeType("ALCcontext") MemorySegment p0,
             @NativeType("ALuint") int p1,
             @NativeType("ALenum") int p2,
             @Pointer(comment="void*") @NotNull MemorySegment p3
@@ -6827,7 +6827,7 @@ public final class ALFunctionTypes {
     @FunctionalInterface
     public interface ILPALGETFILTERIVDIRECT {
         void invoke(
-            ALCcontext p0,
+            @NativeType("ALCcontext") MemorySegment p0,
             @NativeType("ALuint") int p1,
             @NativeType("ALenum") int p2,
             @Pointer(comment="void*") @NotNull MemorySegment p3
@@ -6878,7 +6878,7 @@ public final class ALFunctionTypes {
     @FunctionalInterface
     public interface ILPALGETFLOATDIRECT {
         @NativeType("ALfloat") float invoke(
-            ALCcontext p0,
+            @NativeType("ALCcontext") MemorySegment p0,
             @NativeType("ALenum") int p1
         );
 
@@ -6928,7 +6928,7 @@ public final class ALFunctionTypes {
     @FunctionalInterface
     public interface ILPALGETFLOATVDIRECT {
         void invoke(
-            ALCcontext p0,
+            @NativeType("ALCcontext") MemorySegment p0,
             @NativeType("ALenum") int p1,
             @Pointer(comment="void*") @NotNull MemorySegment p2
         );
@@ -6978,7 +6978,7 @@ public final class ALFunctionTypes {
     @FunctionalInterface
     public interface ILPALGETINTEGERDIRECT {
         @NativeType("ALint") int invoke(
-            ALCcontext p0,
+            @NativeType("ALCcontext") MemorySegment p0,
             @NativeType("ALenum") int p1
         );
 
@@ -7028,7 +7028,7 @@ public final class ALFunctionTypes {
     @FunctionalInterface
     public interface ILPALGETINTEGERVDIRECT {
         void invoke(
-            ALCcontext p0,
+            @NativeType("ALCcontext") MemorySegment p0,
             @NativeType("ALenum") int p1,
             @Pointer(comment="void*") @NotNull MemorySegment p2
         );
@@ -7081,7 +7081,7 @@ public final class ALFunctionTypes {
     @FunctionalInterface
     public interface ILPALGETLISTENER3FDIRECT {
         void invoke(
-            ALCcontext p0,
+            @NativeType("ALCcontext") MemorySegment p0,
             @NativeType("ALenum") int p1,
             @Pointer(comment="void*") @NotNull MemorySegment p2,
             @Pointer(comment="void*") @NotNull MemorySegment p3,
@@ -7136,7 +7136,7 @@ public final class ALFunctionTypes {
     @FunctionalInterface
     public interface ILPALGETLISTENER3IDIRECT {
         void invoke(
-            ALCcontext p0,
+            @NativeType("ALCcontext") MemorySegment p0,
             @NativeType("ALenum") int p1,
             @Pointer(comment="void*") @NotNull MemorySegment p2,
             @Pointer(comment="void*") @NotNull MemorySegment p3,
@@ -7189,7 +7189,7 @@ public final class ALFunctionTypes {
     @FunctionalInterface
     public interface ILPALGETLISTENERFDIRECT {
         void invoke(
-            ALCcontext p0,
+            @NativeType("ALCcontext") MemorySegment p0,
             @NativeType("ALenum") int p1,
             @Pointer(comment="void*") @NotNull MemorySegment p2
         );
@@ -7240,7 +7240,7 @@ public final class ALFunctionTypes {
     @FunctionalInterface
     public interface ILPALGETLISTENERFVDIRECT {
         void invoke(
-            ALCcontext p0,
+            @NativeType("ALCcontext") MemorySegment p0,
             @NativeType("ALenum") int p1,
             @Pointer(comment="void*") @NotNull MemorySegment p2
         );
@@ -7291,7 +7291,7 @@ public final class ALFunctionTypes {
     @FunctionalInterface
     public interface ILPALGETLISTENERIDIRECT {
         void invoke(
-            ALCcontext p0,
+            @NativeType("ALCcontext") MemorySegment p0,
             @NativeType("ALenum") int p1,
             @Pointer(comment="void*") @NotNull MemorySegment p2
         );
@@ -7342,7 +7342,7 @@ public final class ALFunctionTypes {
     @FunctionalInterface
     public interface ILPALGETLISTENERIVDIRECT {
         void invoke(
-            ALCcontext p0,
+            @NativeType("ALCcontext") MemorySegment p0,
             @NativeType("ALenum") int p1,
             @Pointer(comment="void*") @NotNull MemorySegment p2
         );
@@ -7368,7 +7368,7 @@ public final class ALFunctionTypes {
     @FunctionalInterface
     public interface ILPALGETOBJECTLABELDIRECTEXT {
         void invoke(
-            ALCcontext p0,
+            @NativeType("ALCcontext") MemorySegment p0,
             @NativeType("ALenum") int p1,
             @NativeType("ALuint") int p2,
             @NativeType("ALsizei") int p3,
@@ -7425,7 +7425,7 @@ public final class ALFunctionTypes {
     @FunctionalInterface
     public interface ILPALGETPOINTERDIRECTEXT {
         @Pointer(comment="void*") @NotNull MemorySegment invoke(
-            ALCcontext p0,
+            @NativeType("ALCcontext") MemorySegment p0,
             @NativeType("ALenum") int p1
         );
 
@@ -7450,7 +7450,7 @@ public final class ALFunctionTypes {
     @FunctionalInterface
     public interface ILPALGETPOINTERDIRECTSOFT {
         @Pointer(comment="void*") @NotNull MemorySegment invoke(
-            ALCcontext p0,
+            @NativeType("ALCcontext") MemorySegment p0,
             @NativeType("ALenum") int p1
         );
 
@@ -7523,7 +7523,7 @@ public final class ALFunctionTypes {
     @FunctionalInterface
     public interface ILPALGETPOINTERVDIRECTEXT {
         void invoke(
-            ALCcontext p0,
+            @NativeType("ALCcontext") MemorySegment p0,
             @NativeType("ALenum") int p1,
             @Pointer(comment="void*") @NotNull MemorySegment p2
         );
@@ -7549,7 +7549,7 @@ public final class ALFunctionTypes {
     @FunctionalInterface
     public interface ILPALGETPOINTERVDIRECTSOFT {
         void invoke(
-            ALCcontext p0,
+            @NativeType("ALCcontext") MemorySegment p0,
             @NativeType("ALenum") int p1,
             @Pointer(comment="void*") @NotNull MemorySegment p2
         );
@@ -7649,7 +7649,7 @@ public final class ALFunctionTypes {
     @FunctionalInterface
     public interface ILPALGETPROCADDRESSDIRECT {
         @Pointer(comment="void*") @NotNull MemorySegment invoke(
-            ALCcontext p0,
+            @NativeType("ALCcontext") MemorySegment p0,
             @Pointer(comment="void*") @NotNull MemorySegment p1
         );
 
@@ -7674,7 +7674,7 @@ public final class ALFunctionTypes {
     @FunctionalInterface
     public interface ILPALGETSOURCE3DDIRECTSOFT {
         void invoke(
-            ALCcontext p0,
+            @NativeType("ALCcontext") MemorySegment p0,
             @NativeType("ALuint") int p1,
             @NativeType("ALenum") int p2,
             @Pointer(comment="void*") @NotNull MemorySegment p3,
@@ -7759,7 +7759,7 @@ public final class ALFunctionTypes {
     @FunctionalInterface
     public interface ILPALGETSOURCE3FDIRECT {
         void invoke(
-            ALCcontext p0,
+            @NativeType("ALCcontext") MemorySegment p0,
             @NativeType("ALuint") int p1,
             @NativeType("ALenum") int p2,
             @Pointer(comment="void*") @NotNull MemorySegment p3,
@@ -7816,7 +7816,7 @@ public final class ALFunctionTypes {
     @FunctionalInterface
     public interface ILPALGETSOURCE3I64DIRECTSOFT {
         void invoke(
-            ALCcontext p0,
+            @NativeType("ALCcontext") MemorySegment p0,
             @NativeType("ALuint") int p1,
             @NativeType("ALenum") int p2,
             @Pointer(comment="void*") @NotNull MemorySegment p3,
@@ -7873,7 +7873,7 @@ public final class ALFunctionTypes {
     @FunctionalInterface
     public interface ILPALGETSOURCE3IDIRECT {
         void invoke(
-            ALCcontext p0,
+            @NativeType("ALCcontext") MemorySegment p0,
             @NativeType("ALuint") int p1,
             @NativeType("ALenum") int p2,
             @Pointer(comment="void*") @NotNull MemorySegment p3,
@@ -7902,7 +7902,7 @@ public final class ALFunctionTypes {
     @FunctionalInterface
     public interface ILPALGETSOURCEDDIRECTSOFT {
         void invoke(
-            ALCcontext p0,
+            @NativeType("ALCcontext") MemorySegment p0,
             @NativeType("ALuint") int p1,
             @NativeType("ALenum") int p2,
             @Pointer(comment="void*") @NotNull MemorySegment p3
@@ -7955,7 +7955,7 @@ public final class ALFunctionTypes {
     @FunctionalInterface
     public interface ILPALGETSOURCEDVDIRECTSOFT {
         void invoke(
-            ALCcontext p0,
+            @NativeType("ALCcontext") MemorySegment p0,
             @NativeType("ALuint") int p1,
             @NativeType("ALenum") int p2,
             @Pointer(comment="void*") @NotNull MemorySegment p3
@@ -8034,7 +8034,7 @@ public final class ALFunctionTypes {
     @FunctionalInterface
     public interface ILPALGETSOURCEFDIRECT {
         void invoke(
-            ALCcontext p0,
+            @NativeType("ALCcontext") MemorySegment p0,
             @NativeType("ALuint") int p1,
             @NativeType("ALenum") int p2,
             @Pointer(comment="void*") @NotNull MemorySegment p3
@@ -8087,7 +8087,7 @@ public final class ALFunctionTypes {
     @FunctionalInterface
     public interface ILPALGETSOURCEFVDIRECT {
         void invoke(
-            ALCcontext p0,
+            @NativeType("ALCcontext") MemorySegment p0,
             @NativeType("ALuint") int p1,
             @NativeType("ALenum") int p2,
             @Pointer(comment="void*") @NotNull MemorySegment p3
@@ -8140,7 +8140,7 @@ public final class ALFunctionTypes {
     @FunctionalInterface
     public interface ILPALGETSOURCEI64DIRECTSOFT {
         void invoke(
-            ALCcontext p0,
+            @NativeType("ALCcontext") MemorySegment p0,
             @NativeType("ALuint") int p1,
             @NativeType("ALenum") int p2,
             @Pointer(comment="void*") @NotNull MemorySegment p3
@@ -8193,7 +8193,7 @@ public final class ALFunctionTypes {
     @FunctionalInterface
     public interface ILPALGETSOURCEI64VDIRECTSOFT {
         void invoke(
-            ALCcontext p0,
+            @NativeType("ALCcontext") MemorySegment p0,
             @NativeType("ALuint") int p1,
             @NativeType("ALenum") int p2,
             @Pointer(comment="void*") @NotNull MemorySegment p3
@@ -8246,7 +8246,7 @@ public final class ALFunctionTypes {
     @FunctionalInterface
     public interface ILPALGETSOURCEIDIRECT {
         void invoke(
-            ALCcontext p0,
+            @NativeType("ALCcontext") MemorySegment p0,
             @NativeType("ALuint") int p1,
             @NativeType("ALenum") int p2,
             @Pointer(comment="void*") @NotNull MemorySegment p3
@@ -8299,7 +8299,7 @@ public final class ALFunctionTypes {
     @FunctionalInterface
     public interface ILPALGETSOURCEIVDIRECT {
         void invoke(
-            ALCcontext p0,
+            @NativeType("ALCcontext") MemorySegment p0,
             @NativeType("ALuint") int p1,
             @NativeType("ALenum") int p2,
             @Pointer(comment="void*") @NotNull MemorySegment p3
@@ -8350,7 +8350,7 @@ public final class ALFunctionTypes {
     @FunctionalInterface
     public interface ILPALGETSTRINGDIRECT {
         @Pointer(comment="void*") @NotNull MemorySegment invoke(
-            ALCcontext p0,
+            @NativeType("ALCcontext") MemorySegment p0,
             @NativeType("ALenum") int p1
         );
 
@@ -8375,7 +8375,7 @@ public final class ALFunctionTypes {
     @FunctionalInterface
     public interface ILPALGETSTRINGIDIRECTSOFT {
         @Pointer(comment="void*") @NotNull MemorySegment invoke(
-            ALCcontext p0,
+            @NativeType("ALCcontext") MemorySegment p0,
             @NativeType("ALenum") int p1,
             @NativeType("ALsizei") int p2
         );
@@ -8450,7 +8450,7 @@ public final class ALFunctionTypes {
     @FunctionalInterface
     public interface ILPALISAUXILIARYEFFECTSLOTDIRECT {
         @NativeType("ALboolean") byte invoke(
-            ALCcontext p0,
+            @NativeType("ALCcontext") MemorySegment p0,
             @NativeType("ALuint") int p1
         );
 
@@ -8499,7 +8499,7 @@ public final class ALFunctionTypes {
     @FunctionalInterface
     public interface ILPALISBUFFERDIRECT {
         @NativeType("ALboolean") byte invoke(
-            ALCcontext p0,
+            @NativeType("ALCcontext") MemorySegment p0,
             @NativeType("ALuint") int p1
         );
 
@@ -8572,7 +8572,7 @@ public final class ALFunctionTypes {
     @FunctionalInterface
     public interface ILPALISEFFECTDIRECT {
         @NativeType("ALboolean") byte invoke(
-            ALCcontext p0,
+            @NativeType("ALCcontext") MemorySegment p0,
             @NativeType("ALuint") int p1
         );
 
@@ -8621,7 +8621,7 @@ public final class ALFunctionTypes {
     @FunctionalInterface
     public interface ILPALISENABLEDDIRECT {
         @NativeType("ALboolean") byte invoke(
-            ALCcontext p0,
+            @NativeType("ALCcontext") MemorySegment p0,
             @NativeType("ALenum") int p1
         );
 
@@ -8670,7 +8670,7 @@ public final class ALFunctionTypes {
     @FunctionalInterface
     public interface ILPALISEXTENSIONPRESENTDIRECT {
         @NativeType("ALboolean") byte invoke(
-            ALCcontext p0,
+            @NativeType("ALCcontext") MemorySegment p0,
             @Pointer(comment="void*") @NotNull MemorySegment p1
         );
 
@@ -8719,7 +8719,7 @@ public final class ALFunctionTypes {
     @FunctionalInterface
     public interface ILPALISFILTERDIRECT {
         @NativeType("ALboolean") byte invoke(
-            ALCcontext p0,
+            @NativeType("ALCcontext") MemorySegment p0,
             @NativeType("ALuint") int p1
         );
 
@@ -8768,7 +8768,7 @@ public final class ALFunctionTypes {
     @FunctionalInterface
     public interface ILPALISSOURCEDIRECT {
         @NativeType("ALboolean") byte invoke(
-            ALCcontext p0,
+            @NativeType("ALCcontext") MemorySegment p0,
             @NativeType("ALuint") int p1
         );
 
@@ -8820,7 +8820,7 @@ public final class ALFunctionTypes {
     @FunctionalInterface
     public interface ILPALLISTENER3FDIRECT {
         void invoke(
-            ALCcontext p0,
+            @NativeType("ALCcontext") MemorySegment p0,
             @NativeType("ALenum") int p1,
             @NativeType("ALfloat") float p2,
             @NativeType("ALfloat") float p3,
@@ -8875,7 +8875,7 @@ public final class ALFunctionTypes {
     @FunctionalInterface
     public interface ILPALLISTENER3IDIRECT {
         void invoke(
-            ALCcontext p0,
+            @NativeType("ALCcontext") MemorySegment p0,
             @NativeType("ALenum") int p1,
             @NativeType("ALint") int p2,
             @NativeType("ALint") int p3,
@@ -8928,7 +8928,7 @@ public final class ALFunctionTypes {
     @FunctionalInterface
     public interface ILPALLISTENERFDIRECT {
         void invoke(
-            ALCcontext p0,
+            @NativeType("ALCcontext") MemorySegment p0,
             @NativeType("ALenum") int p1,
             @NativeType("ALfloat") float p2
         );
@@ -8979,7 +8979,7 @@ public final class ALFunctionTypes {
     @FunctionalInterface
     public interface ILPALLISTENERFVDIRECT {
         void invoke(
-            ALCcontext p0,
+            @NativeType("ALCcontext") MemorySegment p0,
             @NativeType("ALenum") int p1,
             @Pointer(comment="void*") @NotNull MemorySegment p2
         );
@@ -9030,7 +9030,7 @@ public final class ALFunctionTypes {
     @FunctionalInterface
     public interface ILPALLISTENERIDIRECT {
         void invoke(
-            ALCcontext p0,
+            @NativeType("ALCcontext") MemorySegment p0,
             @NativeType("ALenum") int p1,
             @NativeType("ALint") int p2
         );
@@ -9081,7 +9081,7 @@ public final class ALFunctionTypes {
     @FunctionalInterface
     public interface ILPALLISTENERIVDIRECT {
         void invoke(
-            ALCcontext p0,
+            @NativeType("ALCcontext") MemorySegment p0,
             @NativeType("ALenum") int p1,
             @Pointer(comment="void*") @NotNull MemorySegment p2
         );
@@ -9107,7 +9107,7 @@ public final class ALFunctionTypes {
     @FunctionalInterface
     public interface ILPALOBJECTLABELDIRECTEXT {
         void invoke(
-            ALCcontext p0,
+            @NativeType("ALCcontext") MemorySegment p0,
             @NativeType("ALenum") int p1,
             @NativeType("ALuint") int p2,
             @NativeType("ALsizei") int p3,
@@ -9162,7 +9162,7 @@ public final class ALFunctionTypes {
     @FunctionalInterface
     public interface ILPALPOPDEBUGGROUPDIRECTEXT {
         void invoke(
-            ALCcontext p0
+            @NativeType("ALCcontext") MemorySegment p0
         );
 
         static MethodHandle of(@NotNull ILPALPOPDEBUGGROUPDIRECTEXT lambda) {
@@ -9209,7 +9209,7 @@ public final class ALFunctionTypes {
     @FunctionalInterface
     public interface ILPALPROCESSUPDATESDIRECTSOFT {
         void invoke(
-            ALCcontext p0
+            @NativeType("ALCcontext") MemorySegment p0
         );
 
         static MethodHandle of(@NotNull ILPALPROCESSUPDATESDIRECTSOFT lambda) {
@@ -9256,7 +9256,7 @@ public final class ALFunctionTypes {
     @FunctionalInterface
     public interface ILPALPUSHDEBUGGROUPDIRECTEXT {
         void invoke(
-            ALCcontext p0,
+            @NativeType("ALCcontext") MemorySegment p0,
             @NativeType("ALenum") int p1,
             @NativeType("ALuint") int p2,
             @NativeType("ALsizei") int p3,
@@ -9339,7 +9339,7 @@ public final class ALFunctionTypes {
     @FunctionalInterface
     public interface ILPALREQUESTFOLDBACKSTARTDIRECT {
         void invoke(
-            ALCcontext p0,
+            @NativeType("ALCcontext") MemorySegment p0,
             @NativeType("ALenum") int p1,
             @NativeType("ALsizei") int p2,
             @NativeType("ALsizei") int p3,
@@ -9391,7 +9391,7 @@ public final class ALFunctionTypes {
     @FunctionalInterface
     public interface ILPALREQUESTFOLDBACKSTOPDIRECT {
         void invoke(
-            ALCcontext p0
+            @NativeType("ALCcontext") MemorySegment p0
         );
 
         static MethodHandle of(@NotNull ILPALREQUESTFOLDBACKSTOPDIRECT lambda) {
@@ -9415,7 +9415,7 @@ public final class ALFunctionTypes {
     @FunctionalInterface
     public interface ILPALSOURCE3DDIRECTSOFT {
         void invoke(
-            ALCcontext p0,
+            @NativeType("ALCcontext") MemorySegment p0,
             @NativeType("ALuint") int p1,
             @NativeType("ALenum") int p2,
             @NativeType("ALdouble") double p3,
@@ -9500,7 +9500,7 @@ public final class ALFunctionTypes {
     @FunctionalInterface
     public interface ILPALSOURCE3FDIRECT {
         void invoke(
-            ALCcontext p0,
+            @NativeType("ALCcontext") MemorySegment p0,
             @NativeType("ALuint") int p1,
             @NativeType("ALenum") int p2,
             @NativeType("ALfloat") float p3,
@@ -9557,7 +9557,7 @@ public final class ALFunctionTypes {
     @FunctionalInterface
     public interface ILPALSOURCE3I64DIRECTSOFT {
         void invoke(
-            ALCcontext p0,
+            @NativeType("ALCcontext") MemorySegment p0,
             @NativeType("ALuint") int p1,
             @NativeType("ALenum") int p2,
             @NativeType("ALint64SOFT") long p3,
@@ -9614,7 +9614,7 @@ public final class ALFunctionTypes {
     @FunctionalInterface
     public interface ILPALSOURCE3IDIRECT {
         void invoke(
-            ALCcontext p0,
+            @NativeType("ALCcontext") MemorySegment p0,
             @NativeType("ALuint") int p1,
             @NativeType("ALenum") int p2,
             @NativeType("ALint") int p3,
@@ -9643,7 +9643,7 @@ public final class ALFunctionTypes {
     @FunctionalInterface
     public interface ILPALSOURCEDDIRECTSOFT {
         void invoke(
-            ALCcontext p0,
+            @NativeType("ALCcontext") MemorySegment p0,
             @NativeType("ALuint") int p1,
             @NativeType("ALenum") int p2,
             @NativeType("ALdouble") double p3
@@ -9696,7 +9696,7 @@ public final class ALFunctionTypes {
     @FunctionalInterface
     public interface ILPALSOURCEDVDIRECTSOFT {
         void invoke(
-            ALCcontext p0,
+            @NativeType("ALCcontext") MemorySegment p0,
             @NativeType("ALuint") int p1,
             @NativeType("ALenum") int p2,
             @Pointer(comment="void*") @NotNull MemorySegment p3
@@ -9775,7 +9775,7 @@ public final class ALFunctionTypes {
     @FunctionalInterface
     public interface ILPALSOURCEFDIRECT {
         void invoke(
-            ALCcontext p0,
+            @NativeType("ALCcontext") MemorySegment p0,
             @NativeType("ALuint") int p1,
             @NativeType("ALenum") int p2,
             @NativeType("ALfloat") float p3
@@ -9828,7 +9828,7 @@ public final class ALFunctionTypes {
     @FunctionalInterface
     public interface ILPALSOURCEFVDIRECT {
         void invoke(
-            ALCcontext p0,
+            @NativeType("ALCcontext") MemorySegment p0,
             @NativeType("ALuint") int p1,
             @NativeType("ALenum") int p2,
             @Pointer(comment="void*") @NotNull MemorySegment p3
@@ -9881,7 +9881,7 @@ public final class ALFunctionTypes {
     @FunctionalInterface
     public interface ILPALSOURCEI64DIRECTSOFT {
         void invoke(
-            ALCcontext p0,
+            @NativeType("ALCcontext") MemorySegment p0,
             @NativeType("ALuint") int p1,
             @NativeType("ALenum") int p2,
             @NativeType("ALint64SOFT") long p3
@@ -9934,7 +9934,7 @@ public final class ALFunctionTypes {
     @FunctionalInterface
     public interface ILPALSOURCEI64VDIRECTSOFT {
         void invoke(
-            ALCcontext p0,
+            @NativeType("ALCcontext") MemorySegment p0,
             @NativeType("ALuint") int p1,
             @NativeType("ALenum") int p2,
             @Pointer(comment="void*") @NotNull MemorySegment p3
@@ -9987,7 +9987,7 @@ public final class ALFunctionTypes {
     @FunctionalInterface
     public interface ILPALSOURCEIDIRECT {
         void invoke(
-            ALCcontext p0,
+            @NativeType("ALCcontext") MemorySegment p0,
             @NativeType("ALuint") int p1,
             @NativeType("ALenum") int p2,
             @NativeType("ALint") int p3
@@ -10040,7 +10040,7 @@ public final class ALFunctionTypes {
     @FunctionalInterface
     public interface ILPALSOURCEIVDIRECT {
         void invoke(
-            ALCcontext p0,
+            @NativeType("ALCcontext") MemorySegment p0,
             @NativeType("ALuint") int p1,
             @NativeType("ALenum") int p2,
             @Pointer(comment="void*") @NotNull MemorySegment p3
@@ -10091,7 +10091,7 @@ public final class ALFunctionTypes {
     @FunctionalInterface
     public interface ILPALSOURCEPAUSEDIRECT {
         void invoke(
-            ALCcontext p0,
+            @NativeType("ALCcontext") MemorySegment p0,
             @NativeType("ALuint") int p1
         );
 
@@ -10141,7 +10141,7 @@ public final class ALFunctionTypes {
     @FunctionalInterface
     public interface ILPALSOURCEPAUSEVDIRECT {
         void invoke(
-            ALCcontext p0,
+            @NativeType("ALCcontext") MemorySegment p0,
             @NativeType("ALsizei") int p1,
             @Pointer(comment="void*") @NotNull MemorySegment p2
         );
@@ -10191,7 +10191,7 @@ public final class ALFunctionTypes {
     @FunctionalInterface
     public interface ILPALSOURCEPLAYATTIMEDIRECTSOFT {
         void invoke(
-            ALCcontext p0,
+            @NativeType("ALCcontext") MemorySegment p0,
             @NativeType("ALuint") int p1,
             @NativeType("ALint64SOFT") long p2
         );
@@ -10242,7 +10242,7 @@ public final class ALFunctionTypes {
     @FunctionalInterface
     public interface ILPALSOURCEPLAYATTIMEVDIRECTSOFT {
         void invoke(
-            ALCcontext p0,
+            @NativeType("ALCcontext") MemorySegment p0,
             @NativeType("ALsizei") int p1,
             @Pointer(comment="void*") @NotNull MemorySegment p2,
             @NativeType("ALint64SOFT") long p3
@@ -10295,7 +10295,7 @@ public final class ALFunctionTypes {
     @FunctionalInterface
     public interface ILPALSOURCEPLAYDIRECT {
         void invoke(
-            ALCcontext p0,
+            @NativeType("ALCcontext") MemorySegment p0,
             @NativeType("ALuint") int p1
         );
 
@@ -10345,7 +10345,7 @@ public final class ALFunctionTypes {
     @FunctionalInterface
     public interface ILPALSOURCEPLAYVDIRECT {
         void invoke(
-            ALCcontext p0,
+            @NativeType("ALCcontext") MemorySegment p0,
             @NativeType("ALsizei") int p1,
             @Pointer(comment="void*") @NotNull MemorySegment p2
         );
@@ -10397,7 +10397,7 @@ public final class ALFunctionTypes {
     @FunctionalInterface
     public interface ILPALSOURCEQUEUEBUFFERSDIRECT {
         void invoke(
-            ALCcontext p0,
+            @NativeType("ALCcontext") MemorySegment p0,
             @NativeType("ALuint") int p1,
             @NativeType("ALsizei") int p2,
             @Pointer(comment="void*") @NotNull MemorySegment p3
@@ -10448,7 +10448,7 @@ public final class ALFunctionTypes {
     @FunctionalInterface
     public interface ILPALSOURCEREWINDDIRECT {
         void invoke(
-            ALCcontext p0,
+            @NativeType("ALCcontext") MemorySegment p0,
             @NativeType("ALuint") int p1
         );
 
@@ -10498,7 +10498,7 @@ public final class ALFunctionTypes {
     @FunctionalInterface
     public interface ILPALSOURCEREWINDVDIRECT {
         void invoke(
-            ALCcontext p0,
+            @NativeType("ALCcontext") MemorySegment p0,
             @NativeType("ALsizei") int p1,
             @Pointer(comment="void*") @NotNull MemorySegment p2
         );
@@ -10548,7 +10548,7 @@ public final class ALFunctionTypes {
     @FunctionalInterface
     public interface ILPALSOURCESTOPDIRECT {
         void invoke(
-            ALCcontext p0,
+            @NativeType("ALCcontext") MemorySegment p0,
             @NativeType("ALuint") int p1
         );
 
@@ -10598,7 +10598,7 @@ public final class ALFunctionTypes {
     @FunctionalInterface
     public interface ILPALSOURCESTOPVDIRECT {
         void invoke(
-            ALCcontext p0,
+            @NativeType("ALCcontext") MemorySegment p0,
             @NativeType("ALsizei") int p1,
             @Pointer(comment="void*") @NotNull MemorySegment p2
         );
@@ -10650,7 +10650,7 @@ public final class ALFunctionTypes {
     @FunctionalInterface
     public interface ILPALSOURCEUNQUEUEBUFFERSDIRECT {
         void invoke(
-            ALCcontext p0,
+            @NativeType("ALCcontext") MemorySegment p0,
             @NativeType("ALuint") int p1,
             @NativeType("ALsizei") int p2,
             @Pointer(comment="void*") @NotNull MemorySegment p3
@@ -10701,7 +10701,7 @@ public final class ALFunctionTypes {
     @FunctionalInterface
     public interface ILPALSPEEDOFSOUNDDIRECT {
         void invoke(
-            ALCcontext p0,
+            @NativeType("ALCcontext") MemorySegment p0,
             @NativeType("ALfloat") float p1
         );
 
@@ -10726,7 +10726,7 @@ public final class ALFunctionTypes {
     @FunctionalInterface
     public interface ILPEAXGETBUFFERMODEDIRECT {
         @NativeType("ALenum") int invoke(
-            ALCcontext p0,
+            @NativeType("ALCcontext") MemorySegment p0,
             @NativeType("ALuint") int p1,
             @Pointer(comment="void*") @NotNull MemorySegment p2
         );
@@ -10752,8 +10752,8 @@ public final class ALFunctionTypes {
     @FunctionalInterface
     public interface ILPEAXGETDIRECT {
         @NativeType("ALenum") int invoke(
-            ALCcontext p0,
-            _GUID p1,
+            @NativeType("ALCcontext") MemorySegment p0,
+            @NativeType("_GUID") MemorySegment p1,
             @NativeType("ALuint") int p2,
             @NativeType("ALuint") int p3,
             @Pointer(comment="void*") @NotNull MemorySegment p4,
@@ -10781,7 +10781,7 @@ public final class ALFunctionTypes {
     @FunctionalInterface
     public interface ILPEAXSETBUFFERMODEDIRECT {
         @NativeType("ALboolean") byte invoke(
-            ALCcontext p0,
+            @NativeType("ALCcontext") MemorySegment p0,
             @NativeType("ALsizei") int p1,
             @Pointer(comment="void*") @NotNull MemorySegment p2,
             @NativeType("ALint") int p3
@@ -10808,8 +10808,8 @@ public final class ALFunctionTypes {
     @FunctionalInterface
     public interface ILPEAXSETDIRECT {
         @NativeType("ALenum") int invoke(
-            ALCcontext p0,
-            _GUID p1,
+            @NativeType("ALCcontext") MemorySegment p0,
+            @NativeType("_GUID") MemorySegment p1,
             @NativeType("ALuint") int p2,
             @NativeType("ALuint") int p3,
             @Pointer(comment="void*") @NotNull MemorySegment p4,
@@ -10892,7 +10892,7 @@ public final class ALFunctionTypes {
 
     @FunctionalInterface
     public interface IPFNALCGETTHREADCONTEXTPROC {
-        ALCcontext invoke(
+        @NativeType("ALCcontext") MemorySegment invoke(
         );
 
         static MethodHandle of(@NotNull IPFNALCGETTHREADCONTEXTPROC lambda) {
@@ -10916,7 +10916,7 @@ public final class ALFunctionTypes {
     @FunctionalInterface
     public interface IPFNALCSETTHREADCONTEXTPROC {
         @NativeType("ALCboolean") byte invoke(
-            ALCcontext p0
+            @NativeType("ALCcontext") MemorySegment p0
         );
 
         static MethodHandle of(@NotNull IPFNALCSETTHREADCONTEXTPROC lambda) {
