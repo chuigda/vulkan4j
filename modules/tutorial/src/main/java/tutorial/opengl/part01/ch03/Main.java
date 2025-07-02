@@ -1,6 +1,5 @@
 package tutorial.opengl.part01.ch03;
 
-import club.doki7.ffm.annotation.Pointer;
 import club.doki7.ffm.annotation.Unsigned;
 import club.doki7.ffm.library.ISharedLibrary;
 import club.doki7.ffm.ptr.BytePtr;
@@ -8,16 +7,12 @@ import club.doki7.ffm.ptr.FloatPtr;
 import club.doki7.ffm.ptr.IntPtr;
 import club.doki7.ffm.ptr.PointerPtr;
 import club.doki7.glfw.GLFW;
-import club.doki7.glfw.GLFWFunctionTypes;
 import club.doki7.glfw.GLFWLoader;
 import club.doki7.glfw.handle.GLFWwindow;
 import club.doki7.opengl.GL;
 
 import java.lang.foreign.Arena;
-import java.lang.foreign.Linker;
 import java.lang.foreign.MemorySegment;
-import java.lang.invoke.MethodHandle;
-import java.lang.invoke.MethodHandles;
 
 class Application {
     private final GLFW glfw;

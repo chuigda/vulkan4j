@@ -1,16 +1,11 @@
 package tutorial.vulkan.part_ex.ch_ex1;
 
 import club.doki7.ffm.NativeLayout;
-import club.doki7.ffm.annotation.Bitmask;
-import club.doki7.ffm.annotation.EnumType;
-import club.doki7.ffm.annotation.NativeType;
-import club.doki7.ffm.annotation.Pointer;
-import club.doki7.ffm.annotation.Unsigned;
+import club.doki7.ffm.annotation.*;
 import club.doki7.ffm.library.ILibraryLoader;
 import club.doki7.ffm.library.ISharedLibrary;
 import club.doki7.ffm.ptr.*;
 import club.doki7.glfw.GLFW;
-import club.doki7.glfw.GLFWFunctionTypes;
 import club.doki7.glfw.GLFWLoader;
 import club.doki7.glfw.handle.GLFWwindow;
 import club.doki7.vma.VMA;
@@ -26,7 +21,6 @@ import club.doki7.vma.handle.VmaAllocation;
 import club.doki7.vma.handle.VmaAllocator;
 import club.doki7.vulkan.Version;
 import club.doki7.vulkan.VkConstants;
-import club.doki7.vulkan.VkFunctionTypes;
 import club.doki7.vulkan.bitmask.*;
 import club.doki7.vulkan.command.*;
 import club.doki7.vulkan.datatype.*;
@@ -43,10 +37,7 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.lang.foreign.Arena;
-import java.lang.foreign.Linker;
 import java.lang.foreign.MemorySegment;
-import java.lang.invoke.MethodHandle;
-import java.lang.invoke.MethodHandles;
 import java.nio.ByteOrder;
 import java.util.Objects;
 

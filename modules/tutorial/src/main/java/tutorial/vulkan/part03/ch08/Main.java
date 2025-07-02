@@ -1,11 +1,7 @@
 package tutorial.vulkan.part03.ch08;
 
 import club.doki7.ffm.NativeLayout;
-import club.doki7.ffm.annotation.Bitmask;
-import club.doki7.ffm.annotation.EnumType;
-import club.doki7.ffm.annotation.NativeType;
-import club.doki7.ffm.annotation.Pointer;
-import club.doki7.ffm.annotation.Unsigned;
+import club.doki7.ffm.annotation.*;
 import club.doki7.ffm.library.ISharedLibrary;
 import club.doki7.ffm.ptr.BytePtr;
 import club.doki7.ffm.ptr.FloatPtr;
@@ -16,7 +12,6 @@ import club.doki7.glfw.GLFWLoader;
 import club.doki7.glfw.handle.GLFWwindow;
 import club.doki7.vulkan.Version;
 import club.doki7.vulkan.VkConstants;
-import club.doki7.vulkan.VkFunctionTypes;
 import club.doki7.vulkan.bitmask.*;
 import club.doki7.vulkan.command.*;
 import club.doki7.vulkan.datatype.*;
@@ -24,10 +19,7 @@ import club.doki7.vulkan.enumtype.*;
 import club.doki7.vulkan.handle.*;
 
 import java.lang.foreign.Arena;
-import java.lang.foreign.Linker;
 import java.lang.foreign.MemorySegment;
-import java.lang.invoke.MethodHandle;
-import java.lang.invoke.MethodHandles;
 import java.util.Objects;
 
 class Application {
