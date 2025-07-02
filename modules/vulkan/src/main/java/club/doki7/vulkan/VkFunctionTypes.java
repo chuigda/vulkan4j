@@ -91,7 +91,7 @@ public final class VkFunctionTypes {
     public static final FunctionDescriptor PFN_vkVoidFunction = FunctionDescriptor.ofVoid();
 
     @FunctionalInterface
-    public interface PFN_vkAllocationFunction {
+    public interface IPFN_vkAllocationFunction {
         @Pointer(comment="void*") @NotNull MemorySegment invoke(
             @Pointer(comment="void*") @NotNull MemorySegment p0,
             long p1,
@@ -99,26 +99,26 @@ public final class VkFunctionTypes {
             @EnumType(VkSystemAllocationScope.class) int p3
         );
 
-        static MethodHandle of(@NotNull PFN_vkAllocationFunction lambda) {
+        static MethodHandle of(@NotNull IPFN_vkAllocationFunction lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(PFN_vkAllocationFunction.class, "invoke", PFN_vkAllocationFunction.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(IPFN_vkAllocationFunction.class, "invoke", PFN_vkAllocationFunction.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull PFN_vkAllocationFunction lambda) {
+        static MemorySegment ofNative(@NotNull IPFN_vkAllocationFunction lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull PFN_vkAllocationFunction lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull IPFN_vkAllocationFunction lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), PFN_vkAllocationFunction, arena);
         }
     }
 
     @FunctionalInterface
-    public interface PFN_vkDebugReportCallbackEXT {
+    public interface IPFN_vkDebugReportCallbackEXT {
         @NativeType("VkBool32") @Unsigned int invoke(
             @Bitmask(VkDebugReportFlagsEXT.class) int p0,
             @EnumType(VkDebugReportObjectTypeEXT.class) int p1,
@@ -130,26 +130,26 @@ public final class VkFunctionTypes {
             @Pointer(comment="void*") @NotNull MemorySegment p7
         );
 
-        static MethodHandle of(@NotNull PFN_vkDebugReportCallbackEXT lambda) {
+        static MethodHandle of(@NotNull IPFN_vkDebugReportCallbackEXT lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(PFN_vkDebugReportCallbackEXT.class, "invoke", PFN_vkDebugReportCallbackEXT.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(IPFN_vkDebugReportCallbackEXT.class, "invoke", PFN_vkDebugReportCallbackEXT.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull PFN_vkDebugReportCallbackEXT lambda) {
+        static MemorySegment ofNative(@NotNull IPFN_vkDebugReportCallbackEXT lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull PFN_vkDebugReportCallbackEXT lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull IPFN_vkDebugReportCallbackEXT lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), PFN_vkDebugReportCallbackEXT, arena);
         }
     }
 
     @FunctionalInterface
-    public interface PFN_vkDebugUtilsMessengerCallbackEXT {
+    public interface IPFN_vkDebugUtilsMessengerCallbackEXT {
         @NativeType("VkBool32") @Unsigned int invoke(
             @Bitmask(VkDebugUtilsMessageSeverityFlagsEXT.class) int p0,
             @Bitmask(VkDebugUtilsMessageTypeFlagsEXT.class) int p1,
@@ -157,101 +157,101 @@ public final class VkFunctionTypes {
             @Pointer(comment="void*") @NotNull MemorySegment p3
         );
 
-        static MethodHandle of(@NotNull PFN_vkDebugUtilsMessengerCallbackEXT lambda) {
+        static MethodHandle of(@NotNull IPFN_vkDebugUtilsMessengerCallbackEXT lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(PFN_vkDebugUtilsMessengerCallbackEXT.class, "invoke", PFN_vkDebugUtilsMessengerCallbackEXT.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(IPFN_vkDebugUtilsMessengerCallbackEXT.class, "invoke", PFN_vkDebugUtilsMessengerCallbackEXT.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull PFN_vkDebugUtilsMessengerCallbackEXT lambda) {
+        static MemorySegment ofNative(@NotNull IPFN_vkDebugUtilsMessengerCallbackEXT lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull PFN_vkDebugUtilsMessengerCallbackEXT lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull IPFN_vkDebugUtilsMessengerCallbackEXT lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), PFN_vkDebugUtilsMessengerCallbackEXT, arena);
         }
     }
 
     @FunctionalInterface
-    public interface PFN_vkDeviceMemoryReportCallbackEXT {
+    public interface IPFN_vkDeviceMemoryReportCallbackEXT {
         void invoke(
             @Pointer(comment="void*") @NotNull MemorySegment p0,
             @Pointer(comment="void*") @NotNull MemorySegment p1
         );
 
-        static MethodHandle of(@NotNull PFN_vkDeviceMemoryReportCallbackEXT lambda) {
+        static MethodHandle of(@NotNull IPFN_vkDeviceMemoryReportCallbackEXT lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(PFN_vkDeviceMemoryReportCallbackEXT.class, "invoke", PFN_vkDeviceMemoryReportCallbackEXT.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(IPFN_vkDeviceMemoryReportCallbackEXT.class, "invoke", PFN_vkDeviceMemoryReportCallbackEXT.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull PFN_vkDeviceMemoryReportCallbackEXT lambda) {
+        static MemorySegment ofNative(@NotNull IPFN_vkDeviceMemoryReportCallbackEXT lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull PFN_vkDeviceMemoryReportCallbackEXT lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull IPFN_vkDeviceMemoryReportCallbackEXT lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), PFN_vkDeviceMemoryReportCallbackEXT, arena);
         }
     }
 
     @FunctionalInterface
-    public interface PFN_vkFreeFunction {
+    public interface IPFN_vkFreeFunction {
         void invoke(
             @Pointer(comment="void*") @NotNull MemorySegment p0,
             @Pointer(comment="void*") @NotNull MemorySegment p1
         );
 
-        static MethodHandle of(@NotNull PFN_vkFreeFunction lambda) {
+        static MethodHandle of(@NotNull IPFN_vkFreeFunction lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(PFN_vkFreeFunction.class, "invoke", PFN_vkFreeFunction.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(IPFN_vkFreeFunction.class, "invoke", PFN_vkFreeFunction.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull PFN_vkFreeFunction lambda) {
+        static MemorySegment ofNative(@NotNull IPFN_vkFreeFunction lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull PFN_vkFreeFunction lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull IPFN_vkFreeFunction lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), PFN_vkFreeFunction, arena);
         }
     }
 
     @FunctionalInterface
-    public interface PFN_vkGetInstanceProcAddrLUNARG {
+    public interface IPFN_vkGetInstanceProcAddrLUNARG {
         @Pointer(comment="PFN_vkVoidFunction") @NotNull MemorySegment invoke(
             VkInstance p0,
             @Pointer(comment="void*") @NotNull MemorySegment p1
         );
 
-        static MethodHandle of(@NotNull PFN_vkGetInstanceProcAddrLUNARG lambda) {
+        static MethodHandle of(@NotNull IPFN_vkGetInstanceProcAddrLUNARG lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(PFN_vkGetInstanceProcAddrLUNARG.class, "invoke", PFN_vkGetInstanceProcAddrLUNARG.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(IPFN_vkGetInstanceProcAddrLUNARG.class, "invoke", PFN_vkGetInstanceProcAddrLUNARG.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull PFN_vkGetInstanceProcAddrLUNARG lambda) {
+        static MemorySegment ofNative(@NotNull IPFN_vkGetInstanceProcAddrLUNARG lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull PFN_vkGetInstanceProcAddrLUNARG lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull IPFN_vkGetInstanceProcAddrLUNARG lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), PFN_vkGetInstanceProcAddrLUNARG, arena);
         }
     }
 
     @FunctionalInterface
-    public interface PFN_vkInternalAllocationNotification {
+    public interface IPFN_vkInternalAllocationNotification {
         void invoke(
             @Pointer(comment="void*") @NotNull MemorySegment p0,
             long p1,
@@ -259,26 +259,26 @@ public final class VkFunctionTypes {
             @EnumType(VkSystemAllocationScope.class) int p3
         );
 
-        static MethodHandle of(@NotNull PFN_vkInternalAllocationNotification lambda) {
+        static MethodHandle of(@NotNull IPFN_vkInternalAllocationNotification lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(PFN_vkInternalAllocationNotification.class, "invoke", PFN_vkInternalAllocationNotification.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(IPFN_vkInternalAllocationNotification.class, "invoke", PFN_vkInternalAllocationNotification.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull PFN_vkInternalAllocationNotification lambda) {
+        static MemorySegment ofNative(@NotNull IPFN_vkInternalAllocationNotification lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull PFN_vkInternalAllocationNotification lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull IPFN_vkInternalAllocationNotification lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), PFN_vkInternalAllocationNotification, arena);
         }
     }
 
     @FunctionalInterface
-    public interface PFN_vkInternalFreeNotification {
+    public interface IPFN_vkInternalFreeNotification {
         void invoke(
             @Pointer(comment="void*") @NotNull MemorySegment p0,
             long p1,
@@ -286,26 +286,26 @@ public final class VkFunctionTypes {
             @EnumType(VkSystemAllocationScope.class) int p3
         );
 
-        static MethodHandle of(@NotNull PFN_vkInternalFreeNotification lambda) {
+        static MethodHandle of(@NotNull IPFN_vkInternalFreeNotification lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(PFN_vkInternalFreeNotification.class, "invoke", PFN_vkInternalFreeNotification.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(IPFN_vkInternalFreeNotification.class, "invoke", PFN_vkInternalFreeNotification.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull PFN_vkInternalFreeNotification lambda) {
+        static MemorySegment ofNative(@NotNull IPFN_vkInternalFreeNotification lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull PFN_vkInternalFreeNotification lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull IPFN_vkInternalFreeNotification lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), PFN_vkInternalFreeNotification, arena);
         }
     }
 
     @FunctionalInterface
-    public interface PFN_vkReallocationFunction {
+    public interface IPFN_vkReallocationFunction {
         @Pointer(comment="void*") @NotNull MemorySegment invoke(
             @Pointer(comment="void*") @NotNull MemorySegment p0,
             @Pointer(comment="void*") @NotNull MemorySegment p1,
@@ -314,43 +314,43 @@ public final class VkFunctionTypes {
             @EnumType(VkSystemAllocationScope.class) int p4
         );
 
-        static MethodHandle of(@NotNull PFN_vkReallocationFunction lambda) {
+        static MethodHandle of(@NotNull IPFN_vkReallocationFunction lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(PFN_vkReallocationFunction.class, "invoke", PFN_vkReallocationFunction.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(IPFN_vkReallocationFunction.class, "invoke", PFN_vkReallocationFunction.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull PFN_vkReallocationFunction lambda) {
+        static MemorySegment ofNative(@NotNull IPFN_vkReallocationFunction lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull PFN_vkReallocationFunction lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull IPFN_vkReallocationFunction lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), PFN_vkReallocationFunction, arena);
         }
     }
 
     @FunctionalInterface
-    public interface PFN_vkVoidFunction {
+    public interface IPFN_vkVoidFunction {
         void invoke(
         );
 
-        static MethodHandle of(@NotNull PFN_vkVoidFunction lambda) {
+        static MethodHandle of(@NotNull IPFN_vkVoidFunction lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(PFN_vkVoidFunction.class, "invoke", PFN_vkVoidFunction.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(IPFN_vkVoidFunction.class, "invoke", PFN_vkVoidFunction.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull PFN_vkVoidFunction lambda) {
+        static MemorySegment ofNative(@NotNull IPFN_vkVoidFunction lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull PFN_vkVoidFunction lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull IPFN_vkVoidFunction lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), PFN_vkVoidFunction, arena);
         }
     }

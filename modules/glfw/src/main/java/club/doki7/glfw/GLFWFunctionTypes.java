@@ -143,284 +143,284 @@ public final class GLFWFunctionTypes {
     );
 
     @FunctionalInterface
-    public interface GLFWallocatefun {
+    public interface IGLFWallocatefun {
         @Pointer(comment="void*") @NotNull MemorySegment invoke(
             long p0,
             @Pointer(comment="void*") @NotNull MemorySegment p1
         );
 
-        static MethodHandle of(@NotNull GLFWallocatefun lambda) {
+        static MethodHandle of(@NotNull IGLFWallocatefun lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(GLFWallocatefun.class, "invoke", GLFWallocatefun.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(IGLFWallocatefun.class, "invoke", GLFWallocatefun.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull GLFWallocatefun lambda) {
+        static MemorySegment ofNative(@NotNull IGLFWallocatefun lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull GLFWallocatefun lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull IGLFWallocatefun lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), GLFWallocatefun, arena);
         }
     }
 
     @FunctionalInterface
-    public interface GLFWcharfun {
+    public interface IGLFWcharfun {
         void invoke(
             GLFWwindow p0,
             int p1
         );
 
-        static MethodHandle of(@NotNull GLFWcharfun lambda) {
+        static MethodHandle of(@NotNull IGLFWcharfun lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(GLFWcharfun.class, "invoke", GLFWcharfun.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(IGLFWcharfun.class, "invoke", GLFWcharfun.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull GLFWcharfun lambda) {
+        static MemorySegment ofNative(@NotNull IGLFWcharfun lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull GLFWcharfun lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull IGLFWcharfun lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), GLFWcharfun, arena);
         }
     }
 
     @FunctionalInterface
-    public interface GLFWcharmodsfun {
+    public interface IGLFWcharmodsfun {
         void invoke(
             GLFWwindow p0,
             int p1,
             int p2
         );
 
-        static MethodHandle of(@NotNull GLFWcharmodsfun lambda) {
+        static MethodHandle of(@NotNull IGLFWcharmodsfun lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(GLFWcharmodsfun.class, "invoke", GLFWcharmodsfun.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(IGLFWcharmodsfun.class, "invoke", GLFWcharmodsfun.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull GLFWcharmodsfun lambda) {
+        static MemorySegment ofNative(@NotNull IGLFWcharmodsfun lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull GLFWcharmodsfun lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull IGLFWcharmodsfun lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), GLFWcharmodsfun, arena);
         }
     }
 
     @FunctionalInterface
-    public interface GLFWcursorenterfun {
+    public interface IGLFWcursorenterfun {
         void invoke(
             GLFWwindow p0,
             int p1
         );
 
-        static MethodHandle of(@NotNull GLFWcursorenterfun lambda) {
+        static MethodHandle of(@NotNull IGLFWcursorenterfun lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(GLFWcursorenterfun.class, "invoke", GLFWcursorenterfun.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(IGLFWcursorenterfun.class, "invoke", GLFWcursorenterfun.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull GLFWcursorenterfun lambda) {
+        static MemorySegment ofNative(@NotNull IGLFWcursorenterfun lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull GLFWcursorenterfun lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull IGLFWcursorenterfun lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), GLFWcursorenterfun, arena);
         }
     }
 
     @FunctionalInterface
-    public interface GLFWcursorposfun {
+    public interface IGLFWcursorposfun {
         void invoke(
             GLFWwindow p0,
             double p1,
             double p2
         );
 
-        static MethodHandle of(@NotNull GLFWcursorposfun lambda) {
+        static MethodHandle of(@NotNull IGLFWcursorposfun lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(GLFWcursorposfun.class, "invoke", GLFWcursorposfun.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(IGLFWcursorposfun.class, "invoke", GLFWcursorposfun.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull GLFWcursorposfun lambda) {
+        static MemorySegment ofNative(@NotNull IGLFWcursorposfun lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull GLFWcursorposfun lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull IGLFWcursorposfun lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), GLFWcursorposfun, arena);
         }
     }
 
     @FunctionalInterface
-    public interface GLFWdeallocatefun {
+    public interface IGLFWdeallocatefun {
         void invoke(
             @Pointer(comment="void*") @NotNull MemorySegment p0,
             @Pointer(comment="void*") @NotNull MemorySegment p1
         );
 
-        static MethodHandle of(@NotNull GLFWdeallocatefun lambda) {
+        static MethodHandle of(@NotNull IGLFWdeallocatefun lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(GLFWdeallocatefun.class, "invoke", GLFWdeallocatefun.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(IGLFWdeallocatefun.class, "invoke", GLFWdeallocatefun.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull GLFWdeallocatefun lambda) {
+        static MemorySegment ofNative(@NotNull IGLFWdeallocatefun lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull GLFWdeallocatefun lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull IGLFWdeallocatefun lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), GLFWdeallocatefun, arena);
         }
     }
 
     @FunctionalInterface
-    public interface GLFWdropfun {
+    public interface IGLFWdropfun {
         void invoke(
             GLFWwindow p0,
             int p1,
             @Pointer(comment="void*") @NotNull MemorySegment p2
         );
 
-        static MethodHandle of(@NotNull GLFWdropfun lambda) {
+        static MethodHandle of(@NotNull IGLFWdropfun lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(GLFWdropfun.class, "invoke", GLFWdropfun.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(IGLFWdropfun.class, "invoke", GLFWdropfun.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull GLFWdropfun lambda) {
+        static MemorySegment ofNative(@NotNull IGLFWdropfun lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull GLFWdropfun lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull IGLFWdropfun lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), GLFWdropfun, arena);
         }
     }
 
     @FunctionalInterface
-    public interface GLFWerrorfun {
+    public interface IGLFWerrorfun {
         void invoke(
             int p0,
             @Pointer(comment="void*") @NotNull MemorySegment p1
         );
 
-        static MethodHandle of(@NotNull GLFWerrorfun lambda) {
+        static MethodHandle of(@NotNull IGLFWerrorfun lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(GLFWerrorfun.class, "invoke", GLFWerrorfun.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(IGLFWerrorfun.class, "invoke", GLFWerrorfun.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull GLFWerrorfun lambda) {
+        static MemorySegment ofNative(@NotNull IGLFWerrorfun lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull GLFWerrorfun lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull IGLFWerrorfun lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), GLFWerrorfun, arena);
         }
     }
 
     @FunctionalInterface
-    public interface GLFWframebuffersizefun {
+    public interface IGLFWframebuffersizefun {
         void invoke(
             GLFWwindow p0,
             int p1,
             int p2
         );
 
-        static MethodHandle of(@NotNull GLFWframebuffersizefun lambda) {
+        static MethodHandle of(@NotNull IGLFWframebuffersizefun lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(GLFWframebuffersizefun.class, "invoke", GLFWframebuffersizefun.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(IGLFWframebuffersizefun.class, "invoke", GLFWframebuffersizefun.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull GLFWframebuffersizefun lambda) {
+        static MemorySegment ofNative(@NotNull IGLFWframebuffersizefun lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull GLFWframebuffersizefun lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull IGLFWframebuffersizefun lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), GLFWframebuffersizefun, arena);
         }
     }
 
     @FunctionalInterface
-    public interface GLFWglproc {
+    public interface IGLFWglproc {
         void invoke(
         );
 
-        static MethodHandle of(@NotNull GLFWglproc lambda) {
+        static MethodHandle of(@NotNull IGLFWglproc lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(GLFWglproc.class, "invoke", GLFWglproc.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(IGLFWglproc.class, "invoke", GLFWglproc.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull GLFWglproc lambda) {
+        static MemorySegment ofNative(@NotNull IGLFWglproc lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull GLFWglproc lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull IGLFWglproc lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), GLFWglproc, arena);
         }
     }
 
     @FunctionalInterface
-    public interface GLFWjoystickfun {
+    public interface IGLFWjoystickfun {
         void invoke(
             int p0,
             int p1
         );
 
-        static MethodHandle of(@NotNull GLFWjoystickfun lambda) {
+        static MethodHandle of(@NotNull IGLFWjoystickfun lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(GLFWjoystickfun.class, "invoke", GLFWjoystickfun.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(IGLFWjoystickfun.class, "invoke", GLFWjoystickfun.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull GLFWjoystickfun lambda) {
+        static MemorySegment ofNative(@NotNull IGLFWjoystickfun lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull GLFWjoystickfun lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull IGLFWjoystickfun lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), GLFWjoystickfun, arena);
         }
     }
 
     @FunctionalInterface
-    public interface GLFWkeyfun {
+    public interface IGLFWkeyfun {
         void invoke(
             GLFWwindow p0,
             int p1,
@@ -429,51 +429,51 @@ public final class GLFWFunctionTypes {
             int p4
         );
 
-        static MethodHandle of(@NotNull GLFWkeyfun lambda) {
+        static MethodHandle of(@NotNull IGLFWkeyfun lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(GLFWkeyfun.class, "invoke", GLFWkeyfun.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(IGLFWkeyfun.class, "invoke", GLFWkeyfun.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull GLFWkeyfun lambda) {
+        static MemorySegment ofNative(@NotNull IGLFWkeyfun lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull GLFWkeyfun lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull IGLFWkeyfun lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), GLFWkeyfun, arena);
         }
     }
 
     @FunctionalInterface
-    public interface GLFWmonitorfun {
+    public interface IGLFWmonitorfun {
         void invoke(
             GLFWmonitor p0,
             int p1
         );
 
-        static MethodHandle of(@NotNull GLFWmonitorfun lambda) {
+        static MethodHandle of(@NotNull IGLFWmonitorfun lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(GLFWmonitorfun.class, "invoke", GLFWmonitorfun.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(IGLFWmonitorfun.class, "invoke", GLFWmonitorfun.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull GLFWmonitorfun lambda) {
+        static MemorySegment ofNative(@NotNull IGLFWmonitorfun lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull GLFWmonitorfun lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull IGLFWmonitorfun lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), GLFWmonitorfun, arena);
         }
     }
 
     @FunctionalInterface
-    public interface GLFWmousebuttonfun {
+    public interface IGLFWmousebuttonfun {
         void invoke(
             GLFWwindow p0,
             int p1,
@@ -481,296 +481,296 @@ public final class GLFWFunctionTypes {
             int p3
         );
 
-        static MethodHandle of(@NotNull GLFWmousebuttonfun lambda) {
+        static MethodHandle of(@NotNull IGLFWmousebuttonfun lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(GLFWmousebuttonfun.class, "invoke", GLFWmousebuttonfun.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(IGLFWmousebuttonfun.class, "invoke", GLFWmousebuttonfun.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull GLFWmousebuttonfun lambda) {
+        static MemorySegment ofNative(@NotNull IGLFWmousebuttonfun lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull GLFWmousebuttonfun lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull IGLFWmousebuttonfun lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), GLFWmousebuttonfun, arena);
         }
     }
 
     @FunctionalInterface
-    public interface GLFWreallocatefun {
+    public interface IGLFWreallocatefun {
         @Pointer(comment="void*") @NotNull MemorySegment invoke(
             @Pointer(comment="void*") @NotNull MemorySegment p0,
             long p1,
             @Pointer(comment="void*") @NotNull MemorySegment p2
         );
 
-        static MethodHandle of(@NotNull GLFWreallocatefun lambda) {
+        static MethodHandle of(@NotNull IGLFWreallocatefun lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(GLFWreallocatefun.class, "invoke", GLFWreallocatefun.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(IGLFWreallocatefun.class, "invoke", GLFWreallocatefun.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull GLFWreallocatefun lambda) {
+        static MemorySegment ofNative(@NotNull IGLFWreallocatefun lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull GLFWreallocatefun lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull IGLFWreallocatefun lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), GLFWreallocatefun, arena);
         }
     }
 
     @FunctionalInterface
-    public interface GLFWscrollfun {
+    public interface IGLFWscrollfun {
         void invoke(
             GLFWwindow p0,
             double p1,
             double p2
         );
 
-        static MethodHandle of(@NotNull GLFWscrollfun lambda) {
+        static MethodHandle of(@NotNull IGLFWscrollfun lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(GLFWscrollfun.class, "invoke", GLFWscrollfun.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(IGLFWscrollfun.class, "invoke", GLFWscrollfun.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull GLFWscrollfun lambda) {
+        static MemorySegment ofNative(@NotNull IGLFWscrollfun lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull GLFWscrollfun lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull IGLFWscrollfun lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), GLFWscrollfun, arena);
         }
     }
 
     @FunctionalInterface
-    public interface GLFWvkproc {
+    public interface IGLFWvkproc {
         void invoke(
         );
 
-        static MethodHandle of(@NotNull GLFWvkproc lambda) {
+        static MethodHandle of(@NotNull IGLFWvkproc lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(GLFWvkproc.class, "invoke", GLFWvkproc.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(IGLFWvkproc.class, "invoke", GLFWvkproc.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull GLFWvkproc lambda) {
+        static MemorySegment ofNative(@NotNull IGLFWvkproc lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull GLFWvkproc lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull IGLFWvkproc lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), GLFWvkproc, arena);
         }
     }
 
     @FunctionalInterface
-    public interface GLFWwindowclosefun {
+    public interface IGLFWwindowclosefun {
         void invoke(
             GLFWwindow p0
         );
 
-        static MethodHandle of(@NotNull GLFWwindowclosefun lambda) {
+        static MethodHandle of(@NotNull IGLFWwindowclosefun lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(GLFWwindowclosefun.class, "invoke", GLFWwindowclosefun.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(IGLFWwindowclosefun.class, "invoke", GLFWwindowclosefun.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull GLFWwindowclosefun lambda) {
+        static MemorySegment ofNative(@NotNull IGLFWwindowclosefun lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull GLFWwindowclosefun lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull IGLFWwindowclosefun lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), GLFWwindowclosefun, arena);
         }
     }
 
     @FunctionalInterface
-    public interface GLFWwindowcontentscalefun {
+    public interface IGLFWwindowcontentscalefun {
         void invoke(
             GLFWwindow p0,
             float p1,
             float p2
         );
 
-        static MethodHandle of(@NotNull GLFWwindowcontentscalefun lambda) {
+        static MethodHandle of(@NotNull IGLFWwindowcontentscalefun lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(GLFWwindowcontentscalefun.class, "invoke", GLFWwindowcontentscalefun.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(IGLFWwindowcontentscalefun.class, "invoke", GLFWwindowcontentscalefun.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull GLFWwindowcontentscalefun lambda) {
+        static MemorySegment ofNative(@NotNull IGLFWwindowcontentscalefun lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull GLFWwindowcontentscalefun lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull IGLFWwindowcontentscalefun lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), GLFWwindowcontentscalefun, arena);
         }
     }
 
     @FunctionalInterface
-    public interface GLFWwindowfocusfun {
+    public interface IGLFWwindowfocusfun {
         void invoke(
             GLFWwindow p0,
             int p1
         );
 
-        static MethodHandle of(@NotNull GLFWwindowfocusfun lambda) {
+        static MethodHandle of(@NotNull IGLFWwindowfocusfun lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(GLFWwindowfocusfun.class, "invoke", GLFWwindowfocusfun.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(IGLFWwindowfocusfun.class, "invoke", GLFWwindowfocusfun.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull GLFWwindowfocusfun lambda) {
+        static MemorySegment ofNative(@NotNull IGLFWwindowfocusfun lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull GLFWwindowfocusfun lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull IGLFWwindowfocusfun lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), GLFWwindowfocusfun, arena);
         }
     }
 
     @FunctionalInterface
-    public interface GLFWwindowiconifyfun {
+    public interface IGLFWwindowiconifyfun {
         void invoke(
             GLFWwindow p0,
             int p1
         );
 
-        static MethodHandle of(@NotNull GLFWwindowiconifyfun lambda) {
+        static MethodHandle of(@NotNull IGLFWwindowiconifyfun lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(GLFWwindowiconifyfun.class, "invoke", GLFWwindowiconifyfun.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(IGLFWwindowiconifyfun.class, "invoke", GLFWwindowiconifyfun.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull GLFWwindowiconifyfun lambda) {
+        static MemorySegment ofNative(@NotNull IGLFWwindowiconifyfun lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull GLFWwindowiconifyfun lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull IGLFWwindowiconifyfun lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), GLFWwindowiconifyfun, arena);
         }
     }
 
     @FunctionalInterface
-    public interface GLFWwindowmaximizefun {
+    public interface IGLFWwindowmaximizefun {
         void invoke(
             GLFWwindow p0,
             int p1
         );
 
-        static MethodHandle of(@NotNull GLFWwindowmaximizefun lambda) {
+        static MethodHandle of(@NotNull IGLFWwindowmaximizefun lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(GLFWwindowmaximizefun.class, "invoke", GLFWwindowmaximizefun.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(IGLFWwindowmaximizefun.class, "invoke", GLFWwindowmaximizefun.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull GLFWwindowmaximizefun lambda) {
+        static MemorySegment ofNative(@NotNull IGLFWwindowmaximizefun lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull GLFWwindowmaximizefun lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull IGLFWwindowmaximizefun lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), GLFWwindowmaximizefun, arena);
         }
     }
 
     @FunctionalInterface
-    public interface GLFWwindowposfun {
+    public interface IGLFWwindowposfun {
         void invoke(
             GLFWwindow p0,
             int p1,
             int p2
         );
 
-        static MethodHandle of(@NotNull GLFWwindowposfun lambda) {
+        static MethodHandle of(@NotNull IGLFWwindowposfun lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(GLFWwindowposfun.class, "invoke", GLFWwindowposfun.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(IGLFWwindowposfun.class, "invoke", GLFWwindowposfun.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull GLFWwindowposfun lambda) {
+        static MemorySegment ofNative(@NotNull IGLFWwindowposfun lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull GLFWwindowposfun lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull IGLFWwindowposfun lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), GLFWwindowposfun, arena);
         }
     }
 
     @FunctionalInterface
-    public interface GLFWwindowrefreshfun {
+    public interface IGLFWwindowrefreshfun {
         void invoke(
             GLFWwindow p0
         );
 
-        static MethodHandle of(@NotNull GLFWwindowrefreshfun lambda) {
+        static MethodHandle of(@NotNull IGLFWwindowrefreshfun lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(GLFWwindowrefreshfun.class, "invoke", GLFWwindowrefreshfun.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(IGLFWwindowrefreshfun.class, "invoke", GLFWwindowrefreshfun.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull GLFWwindowrefreshfun lambda) {
+        static MemorySegment ofNative(@NotNull IGLFWwindowrefreshfun lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull GLFWwindowrefreshfun lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull IGLFWwindowrefreshfun lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), GLFWwindowrefreshfun, arena);
         }
     }
 
     @FunctionalInterface
-    public interface GLFWwindowsizefun {
+    public interface IGLFWwindowsizefun {
         void invoke(
             GLFWwindow p0,
             int p1,
             int p2
         );
 
-        static MethodHandle of(@NotNull GLFWwindowsizefun lambda) {
+        static MethodHandle of(@NotNull IGLFWwindowsizefun lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(GLFWwindowsizefun.class, "invoke", GLFWwindowsizefun.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(IGLFWwindowsizefun.class, "invoke", GLFWwindowsizefun.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull GLFWwindowsizefun lambda) {
+        static MemorySegment ofNative(@NotNull IGLFWwindowsizefun lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull GLFWwindowsizefun lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull IGLFWwindowsizefun lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), GLFWwindowsizefun, arena);
         }
     }

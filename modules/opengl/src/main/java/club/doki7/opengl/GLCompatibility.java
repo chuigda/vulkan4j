@@ -11,6 +11,7 @@ import club.doki7.ffm.RawFunctionLoader;
 import club.doki7.ffm.annotation.*;
 import club.doki7.ffm.ptr.*;
 import club.doki7.opengl.handle.*;
+import static club.doki7.opengl.GLFunctionTypes.*;
 
 public final class GLCompatibility extends GL {
     public GLCompatibility(RawFunctionLoader loader) {
@@ -4250,16 +4251,16 @@ public final class GLCompatibility extends GL {
     }
     public void debugMessageCallbackAMD(
         Arena arena,
-        GLDEBUGPROCAMD callback,
+        IGLDEBUGPROCAMD callback,
         @Pointer(comment="void*") @NotNull MemorySegment userParam
     ) {
         debugMessageCallbackAMD(
-            GLDEBUGPROCAMD.ofNative(arena, callback),
+            IGLDEBUGPROCAMD.ofNative(arena, callback),
             userParam
         );
     }
     public void debugMessageCallbackAMD(
-        GLDEBUGPROCAMD callback,
+        IGLDEBUGPROCAMD callback,
         @Pointer(comment="void*") @NotNull MemorySegment userParam
     ) {
         debugMessageCallbackAMD(

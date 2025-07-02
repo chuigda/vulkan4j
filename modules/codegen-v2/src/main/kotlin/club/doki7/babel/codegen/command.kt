@@ -60,7 +60,7 @@ fun generateCommandFile(
         || registry.opaqueTypedefs.values.any { it.isHandle }) {
         imports("$packageName.handle.*")
     }
-    if (registry.functionTypedefs.isNotEmpty() && subpackage != null) {
+    if (registry.functionTypedefs.isNotEmpty()) {
         imports("$packageName.${codegenOptions.functionTypeClassName}.*", static = true)
     }
     if (implConstantClass && subpackage != null) {
@@ -276,7 +276,7 @@ private fun generateCommandWrapper(
             val comma = if (index != paramIOTypes.size - 1) "," else ""
 
             if (paramCType is CFunctionPointerType && !paramCType.functionTypedef.pfnNativeApi) {
-                +"${paramCType.functionTypedef.name} ${param.name}${comma}"
+                +"${paramCType.functionTypedef.interfaceName} ${param.name}${comma}"
             } else {
                 +"$paramIOType ${param.name}${comma}"
             }
@@ -305,7 +305,7 @@ private fun generateCommandWrapper(
                 val paramCType = loweredCommand.paramCType[index]
                 val comma = if (index != loweredCommand.command.params.size - 1) "," else ""
                 if (paramCType is CFunctionPointerType && !paramCType.functionTypedef.pfnNativeApi) {
-                    +"${paramCType.functionTypedef.name}.ofNative(arena, ${param.name})${comma}"
+                    +"${paramCType.functionTypedef.interfaceName}.ofNative(arena, ${param.name})${comma}"
                 } else {
                     +"${param.name}${comma}"
                 }

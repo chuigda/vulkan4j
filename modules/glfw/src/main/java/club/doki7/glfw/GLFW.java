@@ -12,6 +12,7 @@ import club.doki7.ffm.annotation.*;
 import club.doki7.ffm.ptr.*;
 import club.doki7.glfw.datatype.*;
 import club.doki7.glfw.handle.*;
+import static club.doki7.glfw.GLFWFunctionTypes.*;
 import club.doki7.vulkan.datatype.*;
 import club.doki7.vulkan.enumtype.*;
 import club.doki7.vulkan.handle.*;
@@ -4407,16 +4408,16 @@ public final class GLFW implements GLFWConstants {
     public @Pointer(comment="GLFWcharfun") @NotNull MemorySegment setCharCallback(
         Arena arena,
         @Nullable GLFWwindow window,
-        GLFWcharfun callback
+        IGLFWcharfun callback
     ) {
         return setCharCallback(
             window,
-            GLFWcharfun.ofNative(arena, callback)
+            IGLFWcharfun.ofNative(arena, callback)
         );
     }
     public @Pointer(comment="GLFWcharfun") @NotNull MemorySegment setCharCallback(
         @Nullable GLFWwindow window,
-        GLFWcharfun callback
+        IGLFWcharfun callback
     ) {
         return setCharCallback(
             Arena.global(),
@@ -4481,16 +4482,16 @@ public final class GLFW implements GLFWConstants {
     public @Pointer(comment="GLFWcharmodsfun") @NotNull MemorySegment setCharModsCallback(
         Arena arena,
         @Nullable GLFWwindow window,
-        GLFWcharmodsfun callback
+        IGLFWcharmodsfun callback
     ) {
         return setCharModsCallback(
             window,
-            GLFWcharmodsfun.ofNative(arena, callback)
+            IGLFWcharmodsfun.ofNative(arena, callback)
         );
     }
     public @Pointer(comment="GLFWcharmodsfun") @NotNull MemorySegment setCharModsCallback(
         @Nullable GLFWwindow window,
-        GLFWcharmodsfun callback
+        IGLFWcharmodsfun callback
     ) {
         return setCharModsCallback(
             Arena.global(),
@@ -4625,16 +4626,16 @@ public final class GLFW implements GLFWConstants {
     public @Pointer(comment="GLFWcursorenterfun") @NotNull MemorySegment setCursorEnterCallback(
         Arena arena,
         @Nullable GLFWwindow window,
-        GLFWcursorenterfun callback
+        IGLFWcursorenterfun callback
     ) {
         return setCursorEnterCallback(
             window,
-            GLFWcursorenterfun.ofNative(arena, callback)
+            IGLFWcursorenterfun.ofNative(arena, callback)
         );
     }
     public @Pointer(comment="GLFWcursorenterfun") @NotNull MemorySegment setCursorEnterCallback(
         @Nullable GLFWwindow window,
-        GLFWcursorenterfun callback
+        IGLFWcursorenterfun callback
     ) {
         return setCursorEnterCallback(
             Arena.global(),
@@ -4743,16 +4744,16 @@ public final class GLFW implements GLFWConstants {
     public @Pointer(comment="GLFWcursorposfun") @NotNull MemorySegment setCursorPosCallback(
         Arena arena,
         @Nullable GLFWwindow window,
-        GLFWcursorposfun callback
+        IGLFWcursorposfun callback
     ) {
         return setCursorPosCallback(
             window,
-            GLFWcursorposfun.ofNative(arena, callback)
+            IGLFWcursorposfun.ofNative(arena, callback)
         );
     }
     public @Pointer(comment="GLFWcursorposfun") @NotNull MemorySegment setCursorPosCallback(
         @Nullable GLFWwindow window,
-        GLFWcursorposfun callback
+        IGLFWcursorposfun callback
     ) {
         return setCursorPosCallback(
             Arena.global(),
@@ -4810,16 +4811,16 @@ public final class GLFW implements GLFWConstants {
     public @Pointer(comment="GLFWdropfun") @NotNull MemorySegment setDropCallback(
         Arena arena,
         @Nullable GLFWwindow window,
-        GLFWdropfun callback
+        IGLFWdropfun callback
     ) {
         return setDropCallback(
             window,
-            GLFWdropfun.ofNative(arena, callback)
+            IGLFWdropfun.ofNative(arena, callback)
         );
     }
     public @Pointer(comment="GLFWdropfun") @NotNull MemorySegment setDropCallback(
         @Nullable GLFWwindow window,
-        GLFWdropfun callback
+        IGLFWdropfun callback
     ) {
         return setDropCallback(
             Arena.global(),
@@ -4885,14 +4886,14 @@ public final class GLFW implements GLFWConstants {
     }
     public @Pointer(comment="GLFWerrorfun") @NotNull MemorySegment setErrorCallback(
         Arena arena,
-        GLFWerrorfun callback
+        IGLFWerrorfun callback
     ) {
         return setErrorCallback(
-            GLFWerrorfun.ofNative(arena, callback)
+            IGLFWerrorfun.ofNative(arena, callback)
         );
     }
     public @Pointer(comment="GLFWerrorfun") @NotNull MemorySegment setErrorCallback(
-        GLFWerrorfun callback
+        IGLFWerrorfun callback
     ) {
         return setErrorCallback(
             Arena.global(),
@@ -4944,16 +4945,16 @@ public final class GLFW implements GLFWConstants {
     public @Pointer(comment="GLFWframebuffersizefun") @NotNull MemorySegment setFramebufferSizeCallback(
         Arena arena,
         @Nullable GLFWwindow window,
-        GLFWframebuffersizefun callback
+        IGLFWframebuffersizefun callback
     ) {
         return setFramebufferSizeCallback(
             window,
-            GLFWframebuffersizefun.ofNative(arena, callback)
+            IGLFWframebuffersizefun.ofNative(arena, callback)
         );
     }
     public @Pointer(comment="GLFWframebuffersizefun") @NotNull MemorySegment setFramebufferSizeCallback(
         @Nullable GLFWwindow window,
-        GLFWframebuffersizefun callback
+        IGLFWframebuffersizefun callback
     ) {
         return setFramebufferSizeCallback(
             Arena.global(),
@@ -5186,14 +5187,14 @@ public final class GLFW implements GLFWConstants {
     }
     public @Pointer(comment="GLFWjoystickfun") @NotNull MemorySegment setJoystickCallback(
         Arena arena,
-        GLFWjoystickfun callback
+        IGLFWjoystickfun callback
     ) {
         return setJoystickCallback(
-            GLFWjoystickfun.ofNative(arena, callback)
+            IGLFWjoystickfun.ofNative(arena, callback)
         );
     }
     public @Pointer(comment="GLFWjoystickfun") @NotNull MemorySegment setJoystickCallback(
-        GLFWjoystickfun callback
+        IGLFWjoystickfun callback
     ) {
         return setJoystickCallback(
             Arena.global(),
@@ -5303,16 +5304,16 @@ public final class GLFW implements GLFWConstants {
     public @Pointer(comment="GLFWkeyfun") @NotNull MemorySegment setKeyCallback(
         Arena arena,
         @Nullable GLFWwindow window,
-        GLFWkeyfun callback
+        IGLFWkeyfun callback
     ) {
         return setKeyCallback(
             window,
-            GLFWkeyfun.ofNative(arena, callback)
+            IGLFWkeyfun.ofNative(arena, callback)
         );
     }
     public @Pointer(comment="GLFWkeyfun") @NotNull MemorySegment setKeyCallback(
         @Nullable GLFWwindow window,
-        GLFWkeyfun callback
+        IGLFWkeyfun callback
     ) {
         return setKeyCallback(
             Arena.global(),
@@ -5362,14 +5363,14 @@ public final class GLFW implements GLFWConstants {
     }
     public @Pointer(comment="GLFWmonitorfun") @NotNull MemorySegment setMonitorCallback(
         Arena arena,
-        GLFWmonitorfun callback
+        IGLFWmonitorfun callback
     ) {
         return setMonitorCallback(
-            GLFWmonitorfun.ofNative(arena, callback)
+            IGLFWmonitorfun.ofNative(arena, callback)
         );
     }
     public @Pointer(comment="GLFWmonitorfun") @NotNull MemorySegment setMonitorCallback(
-        GLFWmonitorfun callback
+        IGLFWmonitorfun callback
     ) {
         return setMonitorCallback(
             Arena.global(),
@@ -5466,16 +5467,16 @@ public final class GLFW implements GLFWConstants {
     public @Pointer(comment="GLFWmousebuttonfun") @NotNull MemorySegment setMouseButtonCallback(
         Arena arena,
         @Nullable GLFWwindow window,
-        GLFWmousebuttonfun callback
+        IGLFWmousebuttonfun callback
     ) {
         return setMouseButtonCallback(
             window,
-            GLFWmousebuttonfun.ofNative(arena, callback)
+            IGLFWmousebuttonfun.ofNative(arena, callback)
         );
     }
     public @Pointer(comment="GLFWmousebuttonfun") @NotNull MemorySegment setMouseButtonCallback(
         @Nullable GLFWwindow window,
-        GLFWmousebuttonfun callback
+        IGLFWmousebuttonfun callback
     ) {
         return setMouseButtonCallback(
             Arena.global(),
@@ -5532,16 +5533,16 @@ public final class GLFW implements GLFWConstants {
     public @Pointer(comment="GLFWscrollfun") @NotNull MemorySegment setScrollCallback(
         Arena arena,
         @Nullable GLFWwindow window,
-        GLFWscrollfun callback
+        IGLFWscrollfun callback
     ) {
         return setScrollCallback(
             window,
-            GLFWscrollfun.ofNative(arena, callback)
+            IGLFWscrollfun.ofNative(arena, callback)
         );
     }
     public @Pointer(comment="GLFWscrollfun") @NotNull MemorySegment setScrollCallback(
         @Nullable GLFWwindow window,
-        GLFWscrollfun callback
+        IGLFWscrollfun callback
     ) {
         return setScrollCallback(
             Arena.global(),
@@ -5757,16 +5758,16 @@ public final class GLFW implements GLFWConstants {
     public @Pointer(comment="GLFWwindowclosefun") @NotNull MemorySegment setWindowCloseCallback(
         Arena arena,
         @Nullable GLFWwindow window,
-        GLFWwindowclosefun callback
+        IGLFWwindowclosefun callback
     ) {
         return setWindowCloseCallback(
             window,
-            GLFWwindowclosefun.ofNative(arena, callback)
+            IGLFWwindowclosefun.ofNative(arena, callback)
         );
     }
     public @Pointer(comment="GLFWwindowclosefun") @NotNull MemorySegment setWindowCloseCallback(
         @Nullable GLFWwindow window,
-        GLFWwindowclosefun callback
+        IGLFWwindowclosefun callback
     ) {
         return setWindowCloseCallback(
             Arena.global(),
@@ -5820,16 +5821,16 @@ public final class GLFW implements GLFWConstants {
     public @Pointer(comment="GLFWwindowcontentscalefun") @NotNull MemorySegment setWindowContentScaleCallback(
         Arena arena,
         @Nullable GLFWwindow window,
-        GLFWwindowcontentscalefun callback
+        IGLFWwindowcontentscalefun callback
     ) {
         return setWindowContentScaleCallback(
             window,
-            GLFWwindowcontentscalefun.ofNative(arena, callback)
+            IGLFWwindowcontentscalefun.ofNative(arena, callback)
         );
     }
     public @Pointer(comment="GLFWwindowcontentscalefun") @NotNull MemorySegment setWindowContentScaleCallback(
         @Nullable GLFWwindow window,
-        GLFWwindowcontentscalefun callback
+        IGLFWwindowcontentscalefun callback
     ) {
         return setWindowContentScaleCallback(
             Arena.global(),
@@ -5887,16 +5888,16 @@ public final class GLFW implements GLFWConstants {
     public @Pointer(comment="GLFWwindowfocusfun") @NotNull MemorySegment setWindowFocusCallback(
         Arena arena,
         @Nullable GLFWwindow window,
-        GLFWwindowfocusfun callback
+        IGLFWwindowfocusfun callback
     ) {
         return setWindowFocusCallback(
             window,
-            GLFWwindowfocusfun.ofNative(arena, callback)
+            IGLFWwindowfocusfun.ofNative(arena, callback)
         );
     }
     public @Pointer(comment="GLFWwindowfocusfun") @NotNull MemorySegment setWindowFocusCallback(
         @Nullable GLFWwindow window,
-        GLFWwindowfocusfun callback
+        IGLFWwindowfocusfun callback
     ) {
         return setWindowFocusCallback(
             Arena.global(),
@@ -6012,16 +6013,16 @@ public final class GLFW implements GLFWConstants {
     public @Pointer(comment="GLFWwindowiconifyfun") @NotNull MemorySegment setWindowIconifyCallback(
         Arena arena,
         @Nullable GLFWwindow window,
-        GLFWwindowiconifyfun callback
+        IGLFWwindowiconifyfun callback
     ) {
         return setWindowIconifyCallback(
             window,
-            GLFWwindowiconifyfun.ofNative(arena, callback)
+            IGLFWwindowiconifyfun.ofNative(arena, callback)
         );
     }
     public @Pointer(comment="GLFWwindowiconifyfun") @NotNull MemorySegment setWindowIconifyCallback(
         @Nullable GLFWwindow window,
-        GLFWwindowiconifyfun callback
+        IGLFWwindowiconifyfun callback
     ) {
         return setWindowIconifyCallback(
             Arena.global(),
@@ -6074,16 +6075,16 @@ public final class GLFW implements GLFWConstants {
     public @Pointer(comment="GLFWwindowmaximizefun") @NotNull MemorySegment setWindowMaximizeCallback(
         Arena arena,
         @Nullable GLFWwindow window,
-        GLFWwindowmaximizefun callback
+        IGLFWwindowmaximizefun callback
     ) {
         return setWindowMaximizeCallback(
             window,
-            GLFWwindowmaximizefun.ofNative(arena, callback)
+            IGLFWwindowmaximizefun.ofNative(arena, callback)
         );
     }
     public @Pointer(comment="GLFWwindowmaximizefun") @NotNull MemorySegment setWindowMaximizeCallback(
         @Nullable GLFWwindow window,
-        GLFWwindowmaximizefun callback
+        IGLFWwindowmaximizefun callback
     ) {
         return setWindowMaximizeCallback(
             Arena.global(),
@@ -6312,16 +6313,16 @@ public final class GLFW implements GLFWConstants {
     public @Pointer(comment="GLFWwindowposfun") @NotNull MemorySegment setWindowPosCallback(
         Arena arena,
         @Nullable GLFWwindow window,
-        GLFWwindowposfun callback
+        IGLFWwindowposfun callback
     ) {
         return setWindowPosCallback(
             window,
-            GLFWwindowposfun.ofNative(arena, callback)
+            IGLFWwindowposfun.ofNative(arena, callback)
         );
     }
     public @Pointer(comment="GLFWwindowposfun") @NotNull MemorySegment setWindowPosCallback(
         @Nullable GLFWwindow window,
-        GLFWwindowposfun callback
+        IGLFWwindowposfun callback
     ) {
         return setWindowPosCallback(
             Arena.global(),
@@ -6380,16 +6381,16 @@ public final class GLFW implements GLFWConstants {
     public @Pointer(comment="GLFWwindowrefreshfun") @NotNull MemorySegment setWindowRefreshCallback(
         Arena arena,
         @Nullable GLFWwindow window,
-        GLFWwindowrefreshfun callback
+        IGLFWwindowrefreshfun callback
     ) {
         return setWindowRefreshCallback(
             window,
-            GLFWwindowrefreshfun.ofNative(arena, callback)
+            IGLFWwindowrefreshfun.ofNative(arena, callback)
         );
     }
     public @Pointer(comment="GLFWwindowrefreshfun") @NotNull MemorySegment setWindowRefreshCallback(
         @Nullable GLFWwindow window,
-        GLFWwindowrefreshfun callback
+        IGLFWwindowrefreshfun callback
     ) {
         return setWindowRefreshCallback(
             Arena.global(),
@@ -6530,16 +6531,16 @@ public final class GLFW implements GLFWConstants {
     public @Pointer(comment="GLFWwindowsizefun") @NotNull MemorySegment setWindowSizeCallback(
         Arena arena,
         @Nullable GLFWwindow window,
-        GLFWwindowsizefun callback
+        IGLFWwindowsizefun callback
     ) {
         return setWindowSizeCallback(
             window,
-            GLFWwindowsizefun.ofNative(arena, callback)
+            IGLFWwindowsizefun.ofNative(arena, callback)
         );
     }
     public @Pointer(comment="GLFWwindowsizefun") @NotNull MemorySegment setWindowSizeCallback(
         @Nullable GLFWwindow window,
-        GLFWwindowsizefun callback
+        IGLFWwindowsizefun callback
     ) {
         return setWindowSizeCallback(
             Arena.global(),

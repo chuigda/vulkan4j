@@ -11,6 +11,7 @@ import club.doki7.ffm.RawFunctionLoader;
 import club.doki7.ffm.annotation.*;
 import club.doki7.ffm.ptr.*;
 import club.doki7.opengl.handle.*;
+import static club.doki7.opengl.GLFunctionTypes.*;
 
 public sealed class GL implements GLConstants permits GLCompatibility {
     public GL(RawFunctionLoader loader) {
@@ -5923,16 +5924,16 @@ public sealed class GL implements GLConstants permits GLCompatibility {
     }
     public void debugMessageCallback(
         Arena arena,
-        GLDEBUGPROC callback,
+        IGLDEBUGPROC callback,
         @Pointer(comment="void*") @NotNull MemorySegment userParam
     ) {
         debugMessageCallback(
-            GLDEBUGPROC.ofNative(arena, callback),
+            IGLDEBUGPROC.ofNative(arena, callback),
             userParam
         );
     }
     public void debugMessageCallback(
-        GLDEBUGPROC callback,
+        IGLDEBUGPROC callback,
         @Pointer(comment="void*") @NotNull MemorySegment userParam
     ) {
         debugMessageCallback(
@@ -5958,16 +5959,16 @@ public sealed class GL implements GLConstants permits GLCompatibility {
     }
     public void debugMessageCallbackARB(
         Arena arena,
-        GLDEBUGPROCARB callback,
+        IGLDEBUGPROCARB callback,
         @Pointer(comment="void*") @NotNull MemorySegment userParam
     ) {
         debugMessageCallbackARB(
-            GLDEBUGPROCARB.ofNative(arena, callback),
+            IGLDEBUGPROCARB.ofNative(arena, callback),
             userParam
         );
     }
     public void debugMessageCallbackARB(
-        GLDEBUGPROCARB callback,
+        IGLDEBUGPROCARB callback,
         @Pointer(comment="void*") @NotNull MemorySegment userParam
     ) {
         debugMessageCallbackARB(
@@ -5993,16 +5994,16 @@ public sealed class GL implements GLConstants permits GLCompatibility {
     }
     public void debugMessageCallbackKHR(
         Arena arena,
-        GLDEBUGPROCKHR callback,
+        IGLDEBUGPROCKHR callback,
         @Pointer(comment="void*") @NotNull MemorySegment userParam
     ) {
         debugMessageCallbackKHR(
-            GLDEBUGPROCKHR.ofNative(arena, callback),
+            IGLDEBUGPROCKHR.ofNative(arena, callback),
             userParam
         );
     }
     public void debugMessageCallbackKHR(
-        GLDEBUGPROCKHR callback,
+        IGLDEBUGPROCKHR callback,
         @Pointer(comment="void*") @NotNull MemorySegment userParam
     ) {
         debugMessageCallbackKHR(

@@ -259,12 +259,12 @@ public record VkDebugUtilsMessengerCreateInfoEXT(@NotNull MemorySegment segment)
         return this;
     }
 
-    public VkDebugUtilsMessengerCreateInfoEXT pfnUserCallback(@NotNull PFN_vkDebugUtilsMessengerCallbackEXT value) {
-        return pfnUserCallback(PFN_vkDebugUtilsMessengerCallbackEXT.ofNative(value));
+    public VkDebugUtilsMessengerCreateInfoEXT pfnUserCallback(@NotNull IPFN_vkDebugUtilsMessengerCallbackEXT value) {
+        return pfnUserCallback(IPFN_vkDebugUtilsMessengerCallbackEXT.ofNative(value));
     }
 
-    public VkDebugUtilsMessengerCreateInfoEXT pfnUserCallback(@NotNull Arena arena, @NotNull PFN_vkDebugUtilsMessengerCallbackEXT value) {
-        return pfnUserCallback(PFN_vkDebugUtilsMessengerCallbackEXT.ofNative(arena, value));
+    public VkDebugUtilsMessengerCreateInfoEXT pfnUserCallback(@NotNull Arena arena, @NotNull IPFN_vkDebugUtilsMessengerCallbackEXT value) {
+        return pfnUserCallback(IPFN_vkDebugUtilsMessengerCallbackEXT.ofNative(arena, value));
     }
 
     public VkDebugUtilsMessengerCreateInfoEXT pfnUserCallback(@Nullable IPointer pointer) {

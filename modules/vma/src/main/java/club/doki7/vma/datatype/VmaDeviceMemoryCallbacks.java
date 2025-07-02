@@ -201,12 +201,12 @@ public record VmaDeviceMemoryCallbacks(@NotNull MemorySegment segment) implement
         return this;
     }
 
-    public VmaDeviceMemoryCallbacks pfnAllocate(@NotNull PFN_vmaAllocateDeviceMemoryFunction value) {
-        return pfnAllocate(PFN_vmaAllocateDeviceMemoryFunction.ofNative(value));
+    public VmaDeviceMemoryCallbacks pfnAllocate(@NotNull IPFN_vmaAllocateDeviceMemoryFunction value) {
+        return pfnAllocate(IPFN_vmaAllocateDeviceMemoryFunction.ofNative(value));
     }
 
-    public VmaDeviceMemoryCallbacks pfnAllocate(@NotNull Arena arena, @NotNull PFN_vmaAllocateDeviceMemoryFunction value) {
-        return pfnAllocate(PFN_vmaAllocateDeviceMemoryFunction.ofNative(arena, value));
+    public VmaDeviceMemoryCallbacks pfnAllocate(@NotNull Arena arena, @NotNull IPFN_vmaAllocateDeviceMemoryFunction value) {
+        return pfnAllocate(IPFN_vmaAllocateDeviceMemoryFunction.ofNative(arena, value));
     }
 
     public VmaDeviceMemoryCallbacks pfnAllocate(@Nullable IPointer pointer) {
@@ -223,12 +223,12 @@ public record VmaDeviceMemoryCallbacks(@NotNull MemorySegment segment) implement
         return this;
     }
 
-    public VmaDeviceMemoryCallbacks pfnFree(@NotNull PFN_vmaFreeDeviceMemoryFunction value) {
-        return pfnFree(PFN_vmaFreeDeviceMemoryFunction.ofNative(value));
+    public VmaDeviceMemoryCallbacks pfnFree(@NotNull IPFN_vmaFreeDeviceMemoryFunction value) {
+        return pfnFree(IPFN_vmaFreeDeviceMemoryFunction.ofNative(value));
     }
 
-    public VmaDeviceMemoryCallbacks pfnFree(@NotNull Arena arena, @NotNull PFN_vmaFreeDeviceMemoryFunction value) {
-        return pfnFree(PFN_vmaFreeDeviceMemoryFunction.ofNative(arena, value));
+    public VmaDeviceMemoryCallbacks pfnFree(@NotNull Arena arena, @NotNull IPFN_vmaFreeDeviceMemoryFunction value) {
+        return pfnFree(IPFN_vmaFreeDeviceMemoryFunction.ofNative(arena, value));
     }
 
     public VmaDeviceMemoryCallbacks pfnFree(@Nullable IPointer pointer) {
