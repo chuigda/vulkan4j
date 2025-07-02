@@ -220,43 +220,6 @@ Finally, the `pUserData` parameter contains a pointer that was specified during 
 
 The callback returns a boolean that indicates if the Vulkan call that triggered the validation layer message should be aborted. If the callback returns true, then the call is aborted with the `ERROR_VALIDATION_FAILED_EXT` error. This is normally only used to test the validation layers themselves, so you should always return `VkConstants.FALSE`.
 
-### Creating an upcall stub
-
-Now our `debugCallback` is a Java function. In order to make it a ready-to-use C function pointer, we need two extra steps. First, we need to retrieve the method handle to `debugCallback`:
-
-```java
-private static final MethodHandle HANDLE_debugCallback;
-static {
-    try {
-        HANDLE_debugCallback = MethodHandles
-                .lookup()
-                .findStatic(
-                        Application.class,
-                        "debugCallback",
-                        VkFunctionTypes.PFN_vkDebugUtilsMessengerCallbackEXT.toMethodType());
-    } catch (Exception e) {
-        throw new RuntimeException(e);
-    }
-}
-```
-
-The `VkFunctionTypes` class stores most of the useful function types (as `FunctionDescriptor`s) in Vulkan.
-
-Then, we create an upcall-ready `MemorySegment` with `Linker`
-
-```java
-private static final MemorySegment UPCALL_debugCallback = Linker
-        .nativeLinker()
-        .upcallStub(
-                HANDLE_debugCallback,
-                VkFunctionTypes.PFN_vkDebugUtilsMessengerCallbackEXT,
-                Arena.global());
-```
-
-<div style="color: gray; user-select: none">
-I'm a cute end-of-section message, crawling cutely _(ÒωÓ๑ゝ∠)_
-</div>
-
 All that remains now is telling Vulkan about the callback function. Perhaps somewhat surprisingly, even the debug callback in Vulkan is managed with a handle that needs to be explicitly created and destroyed. Such a callback is part of a debug messenger, and you can have as many of them as you want. Add a class member for this handle right under `instance`:
 
 ```java
@@ -284,18 +247,16 @@ We'll need to fill in a structure with details about the messenger and its callb
 
 ```java
 try (var arena = Arena.ofConfined()) {
-    var debugUtilsMessengerCreateInfo = VkDebugUtilsMessengerCreateInfoEXT.allocate(arena);
-    debugUtilsMessengerCreateInfo.messageSeverity(
-            VkDebugUtilsMessageSeverityFlagsEXT.VERBOSE
-            | VkDebugUtilsMessageSeverityFlagsEXT.WARNING
-            | VkDebugUtilsMessageSeverityFlagsEXT.ERROR
-    );
-    debugUtilsMessengerCreateInfo.messageType(
-            VkDebugUtilsMessageTypeFlagsEXT.GENERAL
-            | VkDebugUtilsMessageTypeFlagsEXT.VALIDATION
-            | VkDebugUtilsMessageTypeFlagsEXT.PERFORMANCE
-    );
-    debugUtilsMessengerCreateInfo.pfnUserCallback(UPCALL_debugCallback);
+    var debugUtilsMessengerCreateInfo = VkDebugUtilsMessengerCreateInfoEXT.allocate(arena)
+            .messageSeverity(
+                    VkDebugUtilsMessageSeverityFlagsEXT.VERBOSE
+                    | VkDebugUtilsMessageSeverityFlagsEXT.WARNING
+                    | VkDebugUtilsMessageSeverityFlagsEXT.ERROR
+            ).messageType(
+                    VkDebugUtilsMessageTypeFlagsEXT.GENERAL
+                    | VkDebugUtilsMessageTypeFlagsEXT.VALIDATION
+                    | VkDebugUtilsMessageTypeFlagsEXT.PERFORMANCE
+            ).pfnUserCallback(debugCallback);
 }
 ```
 
@@ -358,13 +319,11 @@ private static void populateDebugMessengerCreateInfo(VkDebugUtilsMessengerCreate
             VkDebugUtilsMessageSeverityFlagsEXT.VERBOSE
             | VkDebugUtilsMessageSeverityFlagsEXT.WARNING
             | VkDebugUtilsMessageSeverityFlagsEXT.ERROR
-    );
-    debugUtilsMessengerCreateInfo.messageType(
+    ).messageType(
             VkDebugUtilsMessageTypeFlagsEXT.GENERAL
             | VkDebugUtilsMessageTypeFlagsEXT.VALIDATION
             | VkDebugUtilsMessageTypeFlagsEXT.PERFORMANCE
-    );
-    debugUtilsMessengerCreateInfo.pfnUserCallback(UPCALL_debugCallback);
+    ).pfnUserCallback(debugCallback);
 }
 ```
 

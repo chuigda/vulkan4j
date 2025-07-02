@@ -12,7 +12,12 @@ fun vulkanAdditionalRegistry(): Registry<EmptyMergeable> {
 
     fun pfn(s: String) {
         val name = s.intern()
-        additionalFunctionTypedefs[name] = FunctionTypedef(name, emptyList(), IdentifierType("void".intern()))
+        additionalFunctionTypedefs[name] = FunctionTypedef(
+            name,
+            emptyList(),
+            IdentifierType("void".intern()),
+            pfnApi = true
+        )
     }
 
     pfn("PFN_vkGetInstanceProcAddr")

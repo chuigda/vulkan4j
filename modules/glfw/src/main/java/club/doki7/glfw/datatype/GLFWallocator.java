@@ -15,6 +15,7 @@ import club.doki7.ffm.annotation.*;
 import club.doki7.ffm.ptr.*;
 import club.doki7.glfw.handle.*;
 import static club.doki7.glfw.GLFWConstants.*;
+import club.doki7.glfw.GLFWFunctionTypes.*;
 
 ///  @brief Custom heap memory allocator.
 ///
@@ -209,6 +210,14 @@ public record GLFWallocator(@NotNull MemorySegment segment) implements IGLFWallo
         return this;
     }
 
+    public GLFWallocator allocate(@NotNull GLFWallocatefun value) {
+        return allocate(GLFWallocatefun.ofNative(value));
+    }
+
+    public GLFWallocator allocate(@NotNull Arena arena, @NotNull GLFWallocatefun value) {
+        return allocate(GLFWallocatefun.ofNative(arena, value));
+    }
+
     public GLFWallocator allocate(@Nullable IPointer pointer) {
         allocate(pointer != null ? pointer.segment() : MemorySegment.NULL);
         return this;
@@ -223,6 +232,14 @@ public record GLFWallocator(@NotNull MemorySegment segment) implements IGLFWallo
         return this;
     }
 
+    public GLFWallocator reallocate(@NotNull GLFWreallocatefun value) {
+        return reallocate(GLFWreallocatefun.ofNative(value));
+    }
+
+    public GLFWallocator reallocate(@NotNull Arena arena, @NotNull GLFWreallocatefun value) {
+        return reallocate(GLFWreallocatefun.ofNative(arena, value));
+    }
+
     public GLFWallocator reallocate(@Nullable IPointer pointer) {
         reallocate(pointer != null ? pointer.segment() : MemorySegment.NULL);
         return this;
@@ -235,6 +252,14 @@ public record GLFWallocator(@NotNull MemorySegment segment) implements IGLFWallo
     public GLFWallocator deallocate(@Pointer(comment="GLFWdeallocatefun") @NotNull MemorySegment value) {
         segment.set(LAYOUT$deallocate, OFFSET$deallocate, value);
         return this;
+    }
+
+    public GLFWallocator deallocate(@NotNull GLFWdeallocatefun value) {
+        return deallocate(GLFWdeallocatefun.ofNative(value));
+    }
+
+    public GLFWallocator deallocate(@NotNull Arena arena, @NotNull GLFWdeallocatefun value) {
+        return deallocate(GLFWdeallocatefun.ofNative(arena, value));
     }
 
     public GLFWallocator deallocate(@Nullable IPointer pointer) {

@@ -15,6 +15,7 @@ import club.doki7.ffm.annotation.*;
 import club.doki7.ffm.ptr.*;
 import club.doki7.glfw.handle.*;
 import static club.doki7.glfw.GLFWConstants.*;
+import club.doki7.glfw.GLFWFunctionTypes.*;
 
 ///  @brief Video mode type.
 ///

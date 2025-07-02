@@ -38,7 +38,12 @@ data class CPointerType(
     val const: Boolean,
     val pointerToOne: Boolean,
     override val comment: String?,
+    val kind: Kind? = null
 ) : CType, ICommentable<CPointerType> {
+    sealed interface Kind {
+        class Function(val typedef: FunctionTypedef) : Kind
+    }
+
     override val jType: String = if (comment != null) {
         """@Pointer(comment="$comment") @NotNull MemorySegment"""
     }
@@ -696,7 +701,15 @@ fun identifierTypeLookup(registry: RegistryBase, refRegistries: List<RegistryBas
         if (!functionTypedef.isPointer) {
             error("function typedef ${type.ident.value} is not a pointer type, should not be used individually")
         }
-        CPointerType(voidType, false, pointerToOne = true, comment=type.ident.value)
+
+        val fpName = type.ident.value
+        CPointerType(
+            voidType,
+            false,
+            pointerToOne = true,
+            comment = fpName,
+            kind = CPointerType.Kind.Function(functionTypedef)
+        )
     }
     else if (registry.aliases.contains(type.ident)) {
         val alias = registry.aliases[type.ident]!!

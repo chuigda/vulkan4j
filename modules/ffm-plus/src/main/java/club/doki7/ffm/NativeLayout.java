@@ -26,7 +26,10 @@ public final class NativeLayout {
     public static final @NotNull ValueLayout C_LONG;
     public static final int C_LONG_SIZE;
 
-    /// TODO: document required.
+    /// Memory layout of current JVM platform C {@code wchar_t} type.
+    ///
+    /// Currently, on Windows it is {@link ValueLayout#JAVA_SHORT} (2 bytes), while on other
+    /// platforms it is {@link ValueLayout#JAVA_INT} (4 bytes).
     public static final @NotNull ValueLayout WCHAR_T;
     public static final int WCHAR_SIZE;
 

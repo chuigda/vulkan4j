@@ -17,6 +17,7 @@ import club.doki7.webgpu.bitmask.*;
 import club.doki7.webgpu.handle.*;
 import club.doki7.webgpu.enumtype.*;
 import static club.doki7.webgpu.WGPUConstants.*;
+import club.doki7.webgpu.WGPUFunctionTypes.*;
 
 /// Represents a pointer to a {@code WGPUPopErrorScopeCallbackInfo} structure in native memory.
 ///
@@ -224,6 +225,14 @@ public record WGPUPopErrorScopeCallbackInfo(@NotNull MemorySegment segment) impl
     public WGPUPopErrorScopeCallbackInfo callback(@Pointer(comment="WGPUPopErrorScopeCallback") @NotNull MemorySegment value) {
         segment.set(LAYOUT$callback, OFFSET$callback, value);
         return this;
+    }
+
+    public WGPUPopErrorScopeCallbackInfo callback(@NotNull WGPUPopErrorScopeCallback value) {
+        return callback(WGPUPopErrorScopeCallback.ofNative(value));
+    }
+
+    public WGPUPopErrorScopeCallbackInfo callback(@NotNull Arena arena, @NotNull WGPUPopErrorScopeCallback value) {
+        return callback(WGPUPopErrorScopeCallback.ofNative(arena, value));
     }
 
     public WGPUPopErrorScopeCallbackInfo callback(@Nullable IPointer pointer) {

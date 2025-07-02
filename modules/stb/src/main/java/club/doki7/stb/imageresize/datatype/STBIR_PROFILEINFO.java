@@ -15,6 +15,7 @@ import club.doki7.ffm.annotation.*;
 import club.doki7.ffm.ptr.*;
 import club.doki7.stb.imageresize.handle.*;
 import club.doki7.stb.imageresize.enumtype.*;
+import club.doki7.stb.imageresize.STBIRFunctionTypes.*;
 
 /// Represents a pointer to a {@code STBIR_PROFILE_INFO} structure in native memory.
 ///

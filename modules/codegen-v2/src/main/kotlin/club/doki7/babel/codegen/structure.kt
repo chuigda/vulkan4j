@@ -148,6 +148,8 @@ fun generateStructure(
         imports("$packageName.${codegenOptions.constantClassName}.*", true)
     }
 
+    importFunctionTypedefs(registryBase, codegenOptions)
+
     for (extra in codegenOptions.extraImport) {
         imports(extra)
     }

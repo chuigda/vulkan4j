@@ -17,6 +17,7 @@ import club.doki7.webgpu.bitmask.*;
 import club.doki7.webgpu.handle.*;
 import club.doki7.webgpu.enumtype.*;
 import static club.doki7.webgpu.WGPUConstants.*;
+import club.doki7.webgpu.WGPUFunctionTypes.*;
 
 /// Represents a pointer to a {@code WGPUDeviceLostCallbackInfo} structure in native memory.
 ///
@@ -224,6 +225,14 @@ public record WGPUDeviceLostCallbackInfo(@NotNull MemorySegment segment) impleme
     public WGPUDeviceLostCallbackInfo callback(@Pointer(comment="WGPUDeviceLostCallback") @NotNull MemorySegment value) {
         segment.set(LAYOUT$callback, OFFSET$callback, value);
         return this;
+    }
+
+    public WGPUDeviceLostCallbackInfo callback(@NotNull WGPUDeviceLostCallback value) {
+        return callback(WGPUDeviceLostCallback.ofNative(value));
+    }
+
+    public WGPUDeviceLostCallbackInfo callback(@NotNull Arena arena, @NotNull WGPUDeviceLostCallback value) {
+        return callback(WGPUDeviceLostCallback.ofNative(arena, value));
     }
 
     public WGPUDeviceLostCallbackInfo callback(@Nullable IPointer pointer) {

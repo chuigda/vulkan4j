@@ -91,7 +91,6 @@ public class TestPointerPtr {
             ptr.write(2, value);
 
             // 确认切片的范围和内存是否正确
-            // TODO end 4 是漂移量还是索引
             PointerPtr slice = ptr.slice(2, 4);
             // PointerPtr slice = ptr.slice(2, 2);
             System.out.println("Slice size: " + slice.size()); // 输出切片大小

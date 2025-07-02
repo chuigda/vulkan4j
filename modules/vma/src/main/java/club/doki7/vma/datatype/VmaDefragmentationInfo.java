@@ -16,6 +16,7 @@ import club.doki7.ffm.ptr.*;
 import club.doki7.vma.bitmask.*;
 import club.doki7.vma.handle.*;
 import club.doki7.vma.enumtype.*;
+import club.doki7.vma.VMAFunctionTypes.*;
 import club.doki7.vulkan.bitmask.*;
 import club.doki7.vulkan.datatype.*;
 import club.doki7.vulkan.enumtype.*;
@@ -253,6 +254,14 @@ public record VmaDefragmentationInfo(@NotNull MemorySegment segment) implements 
     public VmaDefragmentationInfo pfnBreakCallback(@Pointer(comment="PFN_vmaCheckDefragmentationBreakFunction") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pfnBreakCallback, OFFSET$pfnBreakCallback, value);
         return this;
+    }
+
+    public VmaDefragmentationInfo pfnBreakCallback(@NotNull PFN_vmaCheckDefragmentationBreakFunction value) {
+        return pfnBreakCallback(PFN_vmaCheckDefragmentationBreakFunction.ofNative(value));
+    }
+
+    public VmaDefragmentationInfo pfnBreakCallback(@NotNull Arena arena, @NotNull PFN_vmaCheckDefragmentationBreakFunction value) {
+        return pfnBreakCallback(PFN_vmaCheckDefragmentationBreakFunction.ofNative(arena, value));
     }
 
     public VmaDefragmentationInfo pfnBreakCallback(@Nullable IPointer pointer) {

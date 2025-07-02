@@ -17,6 +17,7 @@ import club.doki7.webgpu.bitmask.*;
 import club.doki7.webgpu.handle.*;
 import club.doki7.webgpu.enumtype.*;
 import static club.doki7.webgpu.WGPUConstants.*;
+import club.doki7.webgpu.WGPUFunctionTypes.*;
 
 /// Represents a pointer to a {@code WGPUQueueWorkDoneCallbackInfo} structure in native memory.
 ///
@@ -224,6 +225,14 @@ public record WGPUQueueWorkDoneCallbackInfo(@NotNull MemorySegment segment) impl
     public WGPUQueueWorkDoneCallbackInfo callback(@Pointer(comment="WGPUQueueWorkDoneCallback") @NotNull MemorySegment value) {
         segment.set(LAYOUT$callback, OFFSET$callback, value);
         return this;
+    }
+
+    public WGPUQueueWorkDoneCallbackInfo callback(@NotNull WGPUQueueWorkDoneCallback value) {
+        return callback(WGPUQueueWorkDoneCallback.ofNative(value));
+    }
+
+    public WGPUQueueWorkDoneCallbackInfo callback(@NotNull Arena arena, @NotNull WGPUQueueWorkDoneCallback value) {
+        return callback(WGPUQueueWorkDoneCallback.ofNative(arena, value));
     }
 
     public WGPUQueueWorkDoneCallbackInfo callback(@Nullable IPointer pointer) {

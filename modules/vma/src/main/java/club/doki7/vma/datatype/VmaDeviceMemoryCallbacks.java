@@ -16,6 +16,7 @@ import club.doki7.ffm.ptr.*;
 import club.doki7.vma.bitmask.*;
 import club.doki7.vma.handle.*;
 import club.doki7.vma.enumtype.*;
+import club.doki7.vma.VMAFunctionTypes.*;
 import club.doki7.vulkan.bitmask.*;
 import club.doki7.vulkan.datatype.*;
 import club.doki7.vulkan.enumtype.*;
@@ -200,6 +201,14 @@ public record VmaDeviceMemoryCallbacks(@NotNull MemorySegment segment) implement
         return this;
     }
 
+    public VmaDeviceMemoryCallbacks pfnAllocate(@NotNull PFN_vmaAllocateDeviceMemoryFunction value) {
+        return pfnAllocate(PFN_vmaAllocateDeviceMemoryFunction.ofNative(value));
+    }
+
+    public VmaDeviceMemoryCallbacks pfnAllocate(@NotNull Arena arena, @NotNull PFN_vmaAllocateDeviceMemoryFunction value) {
+        return pfnAllocate(PFN_vmaAllocateDeviceMemoryFunction.ofNative(arena, value));
+    }
+
     public VmaDeviceMemoryCallbacks pfnAllocate(@Nullable IPointer pointer) {
         pfnAllocate(pointer != null ? pointer.segment() : MemorySegment.NULL);
         return this;
@@ -212,6 +221,14 @@ public record VmaDeviceMemoryCallbacks(@NotNull MemorySegment segment) implement
     public VmaDeviceMemoryCallbacks pfnFree(@Pointer(comment="PFN_vmaFreeDeviceMemoryFunction") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pfnFree, OFFSET$pfnFree, value);
         return this;
+    }
+
+    public VmaDeviceMemoryCallbacks pfnFree(@NotNull PFN_vmaFreeDeviceMemoryFunction value) {
+        return pfnFree(PFN_vmaFreeDeviceMemoryFunction.ofNative(value));
+    }
+
+    public VmaDeviceMemoryCallbacks pfnFree(@NotNull Arena arena, @NotNull PFN_vmaFreeDeviceMemoryFunction value) {
+        return pfnFree(PFN_vmaFreeDeviceMemoryFunction.ofNative(arena, value));
     }
 
     public VmaDeviceMemoryCallbacks pfnFree(@Nullable IPointer pointer) {

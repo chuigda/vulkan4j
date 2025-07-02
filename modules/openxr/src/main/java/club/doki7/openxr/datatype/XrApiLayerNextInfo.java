@@ -17,6 +17,7 @@ import club.doki7.openxr.bitmask.*;
 import club.doki7.openxr.handle.*;
 import club.doki7.openxr.enumtype.*;
 import static club.doki7.openxr.XRConstants.*;
+import club.doki7.openxr.XRFunctionTypes.*;
 import club.doki7.vulkan.bitmask.*;
 import club.doki7.vulkan.datatype.*;
 import club.doki7.vulkan.enumtype.*;
@@ -240,6 +241,14 @@ public record XrApiLayerNextInfo(@NotNull MemorySegment segment) implements IXrA
         return this;
     }
 
+    public XrApiLayerNextInfo nextGetInstanceProcAddr(@NotNull PFN_xrGetInstanceProcAddr value) {
+        return nextGetInstanceProcAddr(PFN_xrGetInstanceProcAddr.ofNative(value));
+    }
+
+    public XrApiLayerNextInfo nextGetInstanceProcAddr(@NotNull Arena arena, @NotNull PFN_xrGetInstanceProcAddr value) {
+        return nextGetInstanceProcAddr(PFN_xrGetInstanceProcAddr.ofNative(arena, value));
+    }
+
     public XrApiLayerNextInfo nextGetInstanceProcAddr(@Nullable IPointer pointer) {
         nextGetInstanceProcAddr(pointer != null ? pointer.segment() : MemorySegment.NULL);
         return this;
@@ -252,6 +261,14 @@ public record XrApiLayerNextInfo(@NotNull MemorySegment segment) implements IXrA
     public XrApiLayerNextInfo nextCreateApiLayerInstance(@Pointer(comment="PFN_xrCreateApiLayerInstance") @NotNull MemorySegment value) {
         segment.set(LAYOUT$nextCreateApiLayerInstance, OFFSET$nextCreateApiLayerInstance, value);
         return this;
+    }
+
+    public XrApiLayerNextInfo nextCreateApiLayerInstance(@NotNull PFN_xrCreateApiLayerInstance value) {
+        return nextCreateApiLayerInstance(PFN_xrCreateApiLayerInstance.ofNative(value));
+    }
+
+    public XrApiLayerNextInfo nextCreateApiLayerInstance(@NotNull Arena arena, @NotNull PFN_xrCreateApiLayerInstance value) {
+        return nextCreateApiLayerInstance(PFN_xrCreateApiLayerInstance.ofNative(arena, value));
     }
 
     public XrApiLayerNextInfo nextCreateApiLayerInstance(@Nullable IPointer pointer) {

@@ -17,6 +17,7 @@ import club.doki7.webgpu.bitmask.*;
 import club.doki7.webgpu.handle.*;
 import club.doki7.webgpu.enumtype.*;
 import static club.doki7.webgpu.WGPUConstants.*;
+import club.doki7.webgpu.WGPUFunctionTypes.*;
 
 /// Represents a pointer to a {@code WGPUCreateRenderPipelineAsyncCallbackInfo} structure in native memory.
 ///
@@ -224,6 +225,14 @@ public record WGPUCreateRenderPipelineAsyncCallbackInfo(@NotNull MemorySegment s
     public WGPUCreateRenderPipelineAsyncCallbackInfo callback(@Pointer(comment="WGPUCreateRenderPipelineAsyncCallback") @NotNull MemorySegment value) {
         segment.set(LAYOUT$callback, OFFSET$callback, value);
         return this;
+    }
+
+    public WGPUCreateRenderPipelineAsyncCallbackInfo callback(@NotNull WGPUCreateRenderPipelineAsyncCallback value) {
+        return callback(WGPUCreateRenderPipelineAsyncCallback.ofNative(value));
+    }
+
+    public WGPUCreateRenderPipelineAsyncCallbackInfo callback(@NotNull Arena arena, @NotNull WGPUCreateRenderPipelineAsyncCallback value) {
+        return callback(WGPUCreateRenderPipelineAsyncCallback.ofNative(arena, value));
     }
 
     public WGPUCreateRenderPipelineAsyncCallbackInfo callback(@Nullable IPointer pointer) {

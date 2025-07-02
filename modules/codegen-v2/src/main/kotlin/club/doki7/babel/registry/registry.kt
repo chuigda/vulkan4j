@@ -251,11 +251,16 @@ class EnumVariant(
     }
 }
 
+
+/**
+ * @param pfnApi false if we should generate functional interface and api sugar, true otherwise.
+ */
 class FunctionTypedef(
     name: Identifier,
     val params: List<Type>,
     val result: Type,
-    val isPointer: Boolean = true
+    val isPointer: Boolean = true,
+    val pfnApi: Boolean = false
 ) : Entity(name) {
     constructor(name: String, params: List<Type>, result: Type) : this(name.intern(), params, result)
 

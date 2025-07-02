@@ -203,8 +203,6 @@ private fun extractHandle(e: Element): OpaqueHandleTypedef {
 }
 
 /**
- * TODO: few struct decl provide comments, should we extract them?
- *
  * @param e in form `<type category="struct" name="NAME" structextends="MAYBE_SET" parentstruct="MAYBE_SET" protect="MAYBE_SET" returnonly="MAYBE_SET" mayalias="MAYBE_SET">MEMBER+</type>`
  */
 private fun extractStruct(e: Element): Structure {
@@ -348,7 +346,7 @@ private fun extractConstant(e: Element): Constant {
     return extractEnumLike(e).run {
         Constant(
             name,
-            IdentifierType("uint32_t"),     // FIXME: I am not sure
+            IdentifierType("uint32_t"),
             value
         )
     }
@@ -427,7 +425,6 @@ private fun extractParam(e: Element): Param {
 }
 
 /**
- * TODO: some command has `<implicitexternsyncparams>`
  * @param e in form `<command successcodes="SUCC_CODE*" errorcodes="ERROR_CODE*">PROTO PARAM*</command>`
  */
 private fun extractCommand(e: Element): Command {

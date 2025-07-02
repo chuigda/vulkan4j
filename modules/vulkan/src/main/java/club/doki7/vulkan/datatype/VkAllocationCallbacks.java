@@ -17,6 +17,7 @@ import club.doki7.vulkan.bitmask.*;
 import club.doki7.vulkan.handle.*;
 import club.doki7.vulkan.enumtype.*;
 import static club.doki7.vulkan.VkConstants.*;
+import club.doki7.vulkan.VkFunctionTypes.*;
 
 /// Represents a pointer to a <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkAllocationCallbacks.html"><code>VkAllocationCallbacks</code></a> structure in native memory.
 ///
@@ -202,6 +203,14 @@ public record VkAllocationCallbacks(@NotNull MemorySegment segment) implements I
         return this;
     }
 
+    public VkAllocationCallbacks pfnAllocation(@NotNull PFN_vkAllocationFunction value) {
+        return pfnAllocation(PFN_vkAllocationFunction.ofNative(value));
+    }
+
+    public VkAllocationCallbacks pfnAllocation(@NotNull Arena arena, @NotNull PFN_vkAllocationFunction value) {
+        return pfnAllocation(PFN_vkAllocationFunction.ofNative(arena, value));
+    }
+
     public VkAllocationCallbacks pfnAllocation(@Nullable IPointer pointer) {
         pfnAllocation(pointer != null ? pointer.segment() : MemorySegment.NULL);
         return this;
@@ -214,6 +223,14 @@ public record VkAllocationCallbacks(@NotNull MemorySegment segment) implements I
     public VkAllocationCallbacks pfnReallocation(@Pointer(comment="PFN_vkReallocationFunction") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pfnReallocation, OFFSET$pfnReallocation, value);
         return this;
+    }
+
+    public VkAllocationCallbacks pfnReallocation(@NotNull PFN_vkReallocationFunction value) {
+        return pfnReallocation(PFN_vkReallocationFunction.ofNative(value));
+    }
+
+    public VkAllocationCallbacks pfnReallocation(@NotNull Arena arena, @NotNull PFN_vkReallocationFunction value) {
+        return pfnReallocation(PFN_vkReallocationFunction.ofNative(arena, value));
     }
 
     public VkAllocationCallbacks pfnReallocation(@Nullable IPointer pointer) {
@@ -230,6 +247,14 @@ public record VkAllocationCallbacks(@NotNull MemorySegment segment) implements I
         return this;
     }
 
+    public VkAllocationCallbacks pfnFree(@NotNull PFN_vkFreeFunction value) {
+        return pfnFree(PFN_vkFreeFunction.ofNative(value));
+    }
+
+    public VkAllocationCallbacks pfnFree(@NotNull Arena arena, @NotNull PFN_vkFreeFunction value) {
+        return pfnFree(PFN_vkFreeFunction.ofNative(arena, value));
+    }
+
     public VkAllocationCallbacks pfnFree(@Nullable IPointer pointer) {
         pfnFree(pointer != null ? pointer.segment() : MemorySegment.NULL);
         return this;
@@ -244,6 +269,14 @@ public record VkAllocationCallbacks(@NotNull MemorySegment segment) implements I
         return this;
     }
 
+    public VkAllocationCallbacks pfnInternalAllocation(@NotNull PFN_vkInternalAllocationNotification value) {
+        return pfnInternalAllocation(PFN_vkInternalAllocationNotification.ofNative(value));
+    }
+
+    public VkAllocationCallbacks pfnInternalAllocation(@NotNull Arena arena, @NotNull PFN_vkInternalAllocationNotification value) {
+        return pfnInternalAllocation(PFN_vkInternalAllocationNotification.ofNative(arena, value));
+    }
+
     public VkAllocationCallbacks pfnInternalAllocation(@Nullable IPointer pointer) {
         pfnInternalAllocation(pointer != null ? pointer.segment() : MemorySegment.NULL);
         return this;
@@ -256,6 +289,14 @@ public record VkAllocationCallbacks(@NotNull MemorySegment segment) implements I
     public VkAllocationCallbacks pfnInternalFree(@Pointer(comment="PFN_vkInternalFreeNotification") @NotNull MemorySegment value) {
         segment.set(LAYOUT$pfnInternalFree, OFFSET$pfnInternalFree, value);
         return this;
+    }
+
+    public VkAllocationCallbacks pfnInternalFree(@NotNull PFN_vkInternalFreeNotification value) {
+        return pfnInternalFree(PFN_vkInternalFreeNotification.ofNative(value));
+    }
+
+    public VkAllocationCallbacks pfnInternalFree(@NotNull Arena arena, @NotNull PFN_vkInternalFreeNotification value) {
+        return pfnInternalFree(PFN_vkInternalFreeNotification.ofNative(arena, value));
     }
 
     public VkAllocationCallbacks pfnInternalFree(@Nullable IPointer pointer) {
