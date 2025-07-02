@@ -51,21 +51,7 @@ class Application {
         });
         gl.viewport(0, 0, 800, 600);
 
-        try {
-            MethodHandle mh = MethodHandles.lookup()
-                    .findVirtual(
-                            Application.class,
-                            "framebufferResizeCallback",
-                            GLFWFunctionTypes.GLFWframebuffersizefun.toMethodType()
-                    );
-            mh = mh.bindTo(this);
-            MemorySegment callback = Linker
-                    .nativeLinker()
-                    .upcallStub(mh, GLFWFunctionTypes.GLFWframebuffersizefun, Arena.global());
-            glfw.setFramebufferSizeCallback(window, callback);
-        } catch(Exception e) {
-            throw new RuntimeException("Failed to find framebufferResizeCallback method handle",e);
-        }
+        glfw.setFramebufferSizeCallback(window, (_, w, h) -> gl.viewport(0, 0, w, h));
 
         while (glfw.windowShouldClose(window) == GLFW.FALSE) {
             processInput(window);
