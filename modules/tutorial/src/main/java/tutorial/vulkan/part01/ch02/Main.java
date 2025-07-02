@@ -210,7 +210,7 @@ class Application {
                 VkDebugUtilsMessageTypeFlagsEXT.GENERAL
                 | VkDebugUtilsMessageTypeFlagsEXT.VALIDATION
                 | VkDebugUtilsMessageTypeFlagsEXT.PERFORMANCE
-        ).pfnUserCallback(UPCALL_debugCallback);
+        ).pfnUserCallback(Application::debugCallback);
     }
 
     private GLFWwindow window;
@@ -229,25 +229,6 @@ class Application {
     private static final VkStaticCommands staticCommands = VulkanLoader.loadStaticCommands(libVulkan);
     private static final boolean ENABLE_VALIDATION_LAYERS = System.getProperty("validation") != null;
     private static final String VALIDATION_LAYER_NAME = "VK_LAYER_KHRONOS_validation";
-    private static final MethodHandle HANDLE_debugCallback;
-    static {
-        try {
-            HANDLE_debugCallback = MethodHandles
-                    .lookup()
-                    .findStatic(
-                            Application.class,
-                            "debugCallback",
-                            VkFunctionTypes.PFN_vkDebugUtilsMessengerCallbackEXT.toMethodType());
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
-    }
-    private static final MemorySegment UPCALL_debugCallback = Linker
-            .nativeLinker()
-            .upcallStub(
-                    HANDLE_debugCallback,
-                    VkFunctionTypes.PFN_vkDebugUtilsMessengerCallbackEXT,
-                    Arena.global());
 }
 
 public class Main {

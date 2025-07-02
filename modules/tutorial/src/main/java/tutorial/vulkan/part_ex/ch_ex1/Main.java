@@ -2045,7 +2045,7 @@ class Application {
                 VkDebugUtilsMessageTypeFlagsEXT.GENERAL
                 | VkDebugUtilsMessageTypeFlagsEXT.VALIDATION
                 | VkDebugUtilsMessageTypeFlagsEXT.PERFORMANCE
-        ).pfnUserCallback(UPCALL_debugCallback);
+        ).pfnUserCallback(Application::debugCallback);
     }
 
     private static IntPtr readShaderFile(String filename, Arena arena) {
@@ -2152,25 +2152,6 @@ class Application {
     private static final VkStaticCommands staticCommands = VulkanLoader.loadStaticCommands(libVulkan);
     private static final boolean ENABLE_VALIDATION_LAYERS = System.getProperty("validation") != null;
     private static final String VALIDATION_LAYER_NAME = "VK_LAYER_KHRONOS_validation";
-    private static final MethodHandle HANDLE_debugCallback;
-    static {
-        try {
-            HANDLE_debugCallback = MethodHandles
-                    .lookup()
-                    .findStatic(
-                            Application.class,
-                            "debugCallback",
-                            VkFunctionTypes.PFN_vkDebugUtilsMessengerCallbackEXT.toMethodType());
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
-    }
-    private static final MemorySegment UPCALL_debugCallback = Linker
-            .nativeLinker()
-            .upcallStub(
-                    HANDLE_debugCallback,
-                    VkFunctionTypes.PFN_vkDebugUtilsMessengerCallbackEXT,
-                    Arena.global());
     private static final int MAX_FRAMES_IN_FLIGHT = 2;
     private static final long startTime = System.currentTimeMillis();
     private static final String MODEL_PATH = "/model/viking_room.obj";
