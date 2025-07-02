@@ -15,7 +15,7 @@
 /// <dependency>
 ///     <groupId>club.doki7</groupId>
 ///     <artifactId>vulkan</artifactId>
-///     <version>0.4.2</version>
+///     <version>0.4.3</version>
 ///     <scope>compile</scope>
 /// </dependency>
 /// ```
