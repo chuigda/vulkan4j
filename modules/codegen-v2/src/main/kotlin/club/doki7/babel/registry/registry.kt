@@ -258,7 +258,7 @@ class EnumVariant(
  * functions, not user-defined functions, so their types (`PFN_vkCreateInstance`, etc.) should have
  * this set to `true`. On the contrary, function pointers of type
  * `PFN_vkDebugUtilsMessengerCallbackEXT` are meant to be provided by users, so they should have
- * this field set to `false.
+ * this field set to `false`.
  */
 class FunctionTypedef(
     name: Identifier,
