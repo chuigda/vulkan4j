@@ -17,6 +17,7 @@ import club.doki7.openxr.bitmask.*;
 import club.doki7.openxr.handle.*;
 import club.doki7.openxr.enumtype.*;
 import static club.doki7.openxr.XRConstants.*;
+import club.doki7.openxr.XRFunctionTypes.*;
 import club.doki7.vulkan.bitmask.*;
 import club.doki7.vulkan.datatype.*;
 import club.doki7.vulkan.enumtype.*;

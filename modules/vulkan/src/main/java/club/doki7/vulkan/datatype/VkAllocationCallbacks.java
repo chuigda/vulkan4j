@@ -210,6 +210,7 @@ public record VkAllocationCallbacks(@NotNull MemorySegment segment) implements I
     public VkAllocationCallbacks pfnAllocation(@NotNull Arena arena, @NotNull PFN_vkAllocationFunction value) {
         return pfnAllocation(PFN_vkAllocationFunction.ofNative(arena, value));
     }
+
     public VkAllocationCallbacks pfnAllocation(@Nullable IPointer pointer) {
         pfnAllocation(pointer != null ? pointer.segment() : MemorySegment.NULL);
         return this;
@@ -231,6 +232,7 @@ public record VkAllocationCallbacks(@NotNull MemorySegment segment) implements I
     public VkAllocationCallbacks pfnReallocation(@NotNull Arena arena, @NotNull PFN_vkReallocationFunction value) {
         return pfnReallocation(PFN_vkReallocationFunction.ofNative(arena, value));
     }
+
     public VkAllocationCallbacks pfnReallocation(@Nullable IPointer pointer) {
         pfnReallocation(pointer != null ? pointer.segment() : MemorySegment.NULL);
         return this;
@@ -252,6 +254,7 @@ public record VkAllocationCallbacks(@NotNull MemorySegment segment) implements I
     public VkAllocationCallbacks pfnFree(@NotNull Arena arena, @NotNull PFN_vkFreeFunction value) {
         return pfnFree(PFN_vkFreeFunction.ofNative(arena, value));
     }
+
     public VkAllocationCallbacks pfnFree(@Nullable IPointer pointer) {
         pfnFree(pointer != null ? pointer.segment() : MemorySegment.NULL);
         return this;
@@ -273,6 +276,7 @@ public record VkAllocationCallbacks(@NotNull MemorySegment segment) implements I
     public VkAllocationCallbacks pfnInternalAllocation(@NotNull Arena arena, @NotNull PFN_vkInternalAllocationNotification value) {
         return pfnInternalAllocation(PFN_vkInternalAllocationNotification.ofNative(arena, value));
     }
+
     public VkAllocationCallbacks pfnInternalAllocation(@Nullable IPointer pointer) {
         pfnInternalAllocation(pointer != null ? pointer.segment() : MemorySegment.NULL);
         return this;
@@ -294,6 +298,7 @@ public record VkAllocationCallbacks(@NotNull MemorySegment segment) implements I
     public VkAllocationCallbacks pfnInternalFree(@NotNull Arena arena, @NotNull PFN_vkInternalFreeNotification value) {
         return pfnInternalFree(PFN_vkInternalFreeNotification.ofNative(arena, value));
     }
+
     public VkAllocationCallbacks pfnInternalFree(@Nullable IPointer pointer) {
         pfnInternalFree(pointer != null ? pointer.segment() : MemorySegment.NULL);
         return this;

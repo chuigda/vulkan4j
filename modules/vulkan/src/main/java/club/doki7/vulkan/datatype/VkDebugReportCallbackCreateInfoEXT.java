@@ -246,6 +246,7 @@ public record VkDebugReportCallbackCreateInfoEXT(@NotNull MemorySegment segment)
     public VkDebugReportCallbackCreateInfoEXT pfnCallback(@NotNull Arena arena, @NotNull PFN_vkDebugReportCallbackEXT value) {
         return pfnCallback(PFN_vkDebugReportCallbackEXT.ofNative(arena, value));
     }
+
     public VkDebugReportCallbackCreateInfoEXT pfnCallback(@Nullable IPointer pointer) {
         pfnCallback(pointer != null ? pointer.segment() : MemorySegment.NULL);
         return this;

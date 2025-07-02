@@ -14,6 +14,7 @@ import club.doki7.ffm.NativeLayout;
 import club.doki7.ffm.annotation.*;
 import club.doki7.ffm.ptr.*;
 import static club.doki7.stb.image.STBImageConstants.*;
+import club.doki7.stb.image.STBIFunctionTypes.*;
 
 /// Represents a pointer to a {@code stbi_io_callbacks} structure in native memory.
 ///
@@ -180,6 +181,14 @@ public record STBI_IoCallbacks(@NotNull MemorySegment segment) implements ISTBI_
         return this;
     }
 
+    public STBI_IoCallbacks read(@NotNull PFN_stbi_io_callbacks_read value) {
+        return read(PFN_stbi_io_callbacks_read.ofNative(value));
+    }
+
+    public STBI_IoCallbacks read(@NotNull Arena arena, @NotNull PFN_stbi_io_callbacks_read value) {
+        return read(PFN_stbi_io_callbacks_read.ofNative(arena, value));
+    }
+
     public STBI_IoCallbacks read(@Nullable IPointer pointer) {
         read(pointer != null ? pointer.segment() : MemorySegment.NULL);
         return this;
@@ -194,6 +203,14 @@ public record STBI_IoCallbacks(@NotNull MemorySegment segment) implements ISTBI_
         return this;
     }
 
+    public STBI_IoCallbacks skip(@NotNull PFN_stbi_io_callbacks_skip value) {
+        return skip(PFN_stbi_io_callbacks_skip.ofNative(value));
+    }
+
+    public STBI_IoCallbacks skip(@NotNull Arena arena, @NotNull PFN_stbi_io_callbacks_skip value) {
+        return skip(PFN_stbi_io_callbacks_skip.ofNative(arena, value));
+    }
+
     public STBI_IoCallbacks skip(@Nullable IPointer pointer) {
         skip(pointer != null ? pointer.segment() : MemorySegment.NULL);
         return this;
@@ -206,6 +223,14 @@ public record STBI_IoCallbacks(@NotNull MemorySegment segment) implements ISTBI_
     public STBI_IoCallbacks eof(@Pointer(comment="PFN_stbi_io_callbacks_eof") @NotNull MemorySegment value) {
         segment.set(LAYOUT$eof, OFFSET$eof, value);
         return this;
+    }
+
+    public STBI_IoCallbacks eof(@NotNull PFN_stbi_io_callbacks_eof value) {
+        return eof(PFN_stbi_io_callbacks_eof.ofNative(value));
+    }
+
+    public STBI_IoCallbacks eof(@NotNull Arena arena, @NotNull PFN_stbi_io_callbacks_eof value) {
+        return eof(PFN_stbi_io_callbacks_eof.ofNative(arena, value));
     }
 
     public STBI_IoCallbacks eof(@Nullable IPointer pointer) {

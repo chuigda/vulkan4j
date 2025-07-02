@@ -1,8 +1,13 @@
 package club.doki7.stb.imageresize;
 
 import java.lang.foreign.*;
+import java.lang.invoke.*;
+import club.doki7.ffm.annotation.*;
 import club.doki7.ffm.NativeLayout;
+import org.jetbrains.annotations.NotNull;
 import club.doki7.stb.imageresize.datatype.*;
+import club.doki7.stb.imageresize.enumtype.*;
+import club.doki7.stb.imageresize.handle.*;
 
 public final class STBIRFunctionTypes {
     public static final FunctionDescriptor stbir__kernel_callback = FunctionDescriptor.of(
@@ -34,6 +39,113 @@ public final class STBIRFunctionTypes {
         ValueLayout.JAVA_INT,
         ValueLayout.ADDRESS
     );
+
+    @FunctionalInterface
+    public interface stbir__kernel_callback {
+        float invoke(
+            float p0,
+            float p1,
+            @Pointer(comment="void*") @NotNull MemorySegment p2
+        );
+
+        static MethodHandle of(@NotNull stbir__kernel_callback lambda) {
+            try {
+                return MethodHandles.lookup().findVirtual(stbir__kernel_callback.class, "invoke", stbir__kernel_callback.toMethodType()).bindTo(lambda);
+            }
+            catch (NoSuchMethodException | IllegalAccessException e) {
+                throw new RuntimeException(e);
+            }
+        }
+
+        static MemorySegment ofNative(@NotNull stbir__kernel_callback lambda) {
+            return ofNative(Arena.global(), lambda);
+        }
+
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull stbir__kernel_callback lambda) {
+            return Linker.nativeLinker().upcallStub(of(lambda), stbir__kernel_callback, arena);
+        }
+    }
+
+    @FunctionalInterface
+    public interface stbir__support_callback {
+        float invoke(
+            float p0,
+            @Pointer(comment="void*") @NotNull MemorySegment p1
+        );
+
+        static MethodHandle of(@NotNull stbir__support_callback lambda) {
+            try {
+                return MethodHandles.lookup().findVirtual(stbir__support_callback.class, "invoke", stbir__support_callback.toMethodType()).bindTo(lambda);
+            }
+            catch (NoSuchMethodException | IllegalAccessException e) {
+                throw new RuntimeException(e);
+            }
+        }
+
+        static MemorySegment ofNative(@NotNull stbir__support_callback lambda) {
+            return ofNative(Arena.global(), lambda);
+        }
+
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull stbir__support_callback lambda) {
+            return Linker.nativeLinker().upcallStub(of(lambda), stbir__support_callback, arena);
+        }
+    }
+
+    @FunctionalInterface
+    public interface stbir_input_callback {
+        @Pointer(comment="void*") @NotNull MemorySegment invoke(
+            @Pointer(comment="void*") @NotNull MemorySegment p0,
+            @Pointer(comment="void*") @NotNull MemorySegment p1,
+            int p2,
+            int p3,
+            int p4,
+            @Pointer(comment="void*") @NotNull MemorySegment p5
+        );
+
+        static MethodHandle of(@NotNull stbir_input_callback lambda) {
+            try {
+                return MethodHandles.lookup().findVirtual(stbir_input_callback.class, "invoke", stbir_input_callback.toMethodType()).bindTo(lambda);
+            }
+            catch (NoSuchMethodException | IllegalAccessException e) {
+                throw new RuntimeException(e);
+            }
+        }
+
+        static MemorySegment ofNative(@NotNull stbir_input_callback lambda) {
+            return ofNative(Arena.global(), lambda);
+        }
+
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull stbir_input_callback lambda) {
+            return Linker.nativeLinker().upcallStub(of(lambda), stbir_input_callback, arena);
+        }
+    }
+
+    @FunctionalInterface
+    public interface stbir_output_callback {
+        void invoke(
+            @Pointer(comment="void*") @NotNull MemorySegment p0,
+            int p1,
+            int p2,
+            @Pointer(comment="void*") @NotNull MemorySegment p3
+        );
+
+        static MethodHandle of(@NotNull stbir_output_callback lambda) {
+            try {
+                return MethodHandles.lookup().findVirtual(stbir_output_callback.class, "invoke", stbir_output_callback.toMethodType()).bindTo(lambda);
+            }
+            catch (NoSuchMethodException | IllegalAccessException e) {
+                throw new RuntimeException(e);
+            }
+        }
+
+        static MemorySegment ofNative(@NotNull stbir_output_callback lambda) {
+            return ofNative(Arena.global(), lambda);
+        }
+
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull stbir_output_callback lambda) {
+            return Linker.nativeLinker().upcallStub(of(lambda), stbir_output_callback, arena);
+        }
+    }
 
     /// Constructing this class is nonsense so the constructor is made private.
     private STBIRFunctionTypes() {}

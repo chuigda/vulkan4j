@@ -217,6 +217,7 @@ public record GLFWallocator(@NotNull MemorySegment segment) implements IGLFWallo
     public GLFWallocator allocate(@NotNull Arena arena, @NotNull GLFWallocatefun value) {
         return allocate(GLFWallocatefun.ofNative(arena, value));
     }
+
     public GLFWallocator allocate(@Nullable IPointer pointer) {
         allocate(pointer != null ? pointer.segment() : MemorySegment.NULL);
         return this;
@@ -238,6 +239,7 @@ public record GLFWallocator(@NotNull MemorySegment segment) implements IGLFWallo
     public GLFWallocator reallocate(@NotNull Arena arena, @NotNull GLFWreallocatefun value) {
         return reallocate(GLFWreallocatefun.ofNative(arena, value));
     }
+
     public GLFWallocator reallocate(@Nullable IPointer pointer) {
         reallocate(pointer != null ? pointer.segment() : MemorySegment.NULL);
         return this;
@@ -259,6 +261,7 @@ public record GLFWallocator(@NotNull MemorySegment segment) implements IGLFWallo
     public GLFWallocator deallocate(@NotNull Arena arena, @NotNull GLFWdeallocatefun value) {
         return deallocate(GLFWdeallocatefun.ofNative(arena, value));
     }
+
     public GLFWallocator deallocate(@Nullable IPointer pointer) {
         deallocate(pointer != null ? pointer.segment() : MemorySegment.NULL);
         return this;

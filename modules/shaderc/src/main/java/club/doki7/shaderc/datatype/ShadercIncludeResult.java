@@ -15,6 +15,7 @@ import club.doki7.ffm.annotation.*;
 import club.doki7.ffm.ptr.*;
 import club.doki7.shaderc.handle.*;
 import club.doki7.shaderc.enumtype.*;
+import club.doki7.shaderc.ShadercFunctionTypes.*;
 
 /// Represents a pointer to a {@code shaderc_include_result} structure in native memory.
 ///

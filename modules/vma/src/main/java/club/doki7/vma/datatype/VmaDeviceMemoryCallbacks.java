@@ -208,6 +208,7 @@ public record VmaDeviceMemoryCallbacks(@NotNull MemorySegment segment) implement
     public VmaDeviceMemoryCallbacks pfnAllocate(@NotNull Arena arena, @NotNull PFN_vmaAllocateDeviceMemoryFunction value) {
         return pfnAllocate(PFN_vmaAllocateDeviceMemoryFunction.ofNative(arena, value));
     }
+
     public VmaDeviceMemoryCallbacks pfnAllocate(@Nullable IPointer pointer) {
         pfnAllocate(pointer != null ? pointer.segment() : MemorySegment.NULL);
         return this;
@@ -229,6 +230,7 @@ public record VmaDeviceMemoryCallbacks(@NotNull MemorySegment segment) implement
     public VmaDeviceMemoryCallbacks pfnFree(@NotNull Arena arena, @NotNull PFN_vmaFreeDeviceMemoryFunction value) {
         return pfnFree(PFN_vmaFreeDeviceMemoryFunction.ofNative(arena, value));
     }
+
     public VmaDeviceMemoryCallbacks pfnFree(@Nullable IPointer pointer) {
         pfnFree(pointer != null ? pointer.segment() : MemorySegment.NULL);
         return this;

@@ -17,6 +17,7 @@ import club.doki7.openxr.bitmask.*;
 import club.doki7.openxr.handle.*;
 import club.doki7.openxr.enumtype.*;
 import static club.doki7.openxr.XRConstants.*;
+import club.doki7.openxr.XRFunctionTypes.*;
 import club.doki7.vulkan.bitmask.*;
 import club.doki7.vulkan.datatype.*;
 import club.doki7.vulkan.enumtype.*;
@@ -235,6 +236,14 @@ public record XrNegotiateRuntimeRequest(@NotNull MemorySegment segment) implemen
     public XrNegotiateRuntimeRequest getInstanceProcAddr(@Pointer(comment="PFN_xrGetInstanceProcAddr") @NotNull MemorySegment value) {
         segment.set(LAYOUT$getInstanceProcAddr, OFFSET$getInstanceProcAddr, value);
         return this;
+    }
+
+    public XrNegotiateRuntimeRequest getInstanceProcAddr(@NotNull PFN_xrGetInstanceProcAddr value) {
+        return getInstanceProcAddr(PFN_xrGetInstanceProcAddr.ofNative(value));
+    }
+
+    public XrNegotiateRuntimeRequest getInstanceProcAddr(@NotNull Arena arena, @NotNull PFN_xrGetInstanceProcAddr value) {
+        return getInstanceProcAddr(PFN_xrGetInstanceProcAddr.ofNative(arena, value));
     }
 
     public XrNegotiateRuntimeRequest getInstanceProcAddr(@Nullable IPointer pointer) {

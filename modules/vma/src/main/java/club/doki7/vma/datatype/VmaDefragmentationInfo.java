@@ -263,6 +263,7 @@ public record VmaDefragmentationInfo(@NotNull MemorySegment segment) implements 
     public VmaDefragmentationInfo pfnBreakCallback(@NotNull Arena arena, @NotNull PFN_vmaCheckDefragmentationBreakFunction value) {
         return pfnBreakCallback(PFN_vmaCheckDefragmentationBreakFunction.ofNative(arena, value));
     }
+
     public VmaDefragmentationInfo pfnBreakCallback(@Nullable IPointer pointer) {
         pfnBreakCallback(pointer != null ? pointer.segment() : MemorySegment.NULL);
         return this;

@@ -22,7 +22,6 @@ private fun DocList.generatePFunAccessor(
     interfaceName: String,
     member: LayoutField.Typed
 ) {
-    // only set
     defun("public", className, member.name, "@NotNull $interfaceName value") {
         +"return ${member.name}($interfaceName.ofNative(value));"
     }
@@ -52,6 +51,7 @@ private fun generatePVoidAccessor(className: String, type: CPointerType, member:
     val kind = type.kind
     if (kind is CPointerType.Kind.Function && !kind.typedef.pfnApi) {
         generatePFunAccessor(className, type, kind.typedef.name.value, member)
+        +""
     }
 
     defun("public", className, member.name, "@Nullable IPointer pointer") {

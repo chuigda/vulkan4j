@@ -17,6 +17,7 @@ import club.doki7.openxr.bitmask.*;
 import club.doki7.openxr.handle.*;
 import club.doki7.openxr.enumtype.*;
 import static club.doki7.openxr.XRConstants.*;
+import club.doki7.openxr.XRFunctionTypes.*;
 import club.doki7.vulkan.bitmask.*;
 import club.doki7.vulkan.datatype.*;
 import club.doki7.vulkan.enumtype.*;
@@ -250,6 +251,14 @@ public record XrDebugUtilsMessengerCreateInfoEXT(@NotNull MemorySegment segment)
     public XrDebugUtilsMessengerCreateInfoEXT userCallback(@Pointer(comment="PFN_xrDebugUtilsMessengerCallbackEXT") @NotNull MemorySegment value) {
         segment.set(LAYOUT$userCallback, OFFSET$userCallback, value);
         return this;
+    }
+
+    public XrDebugUtilsMessengerCreateInfoEXT userCallback(@NotNull PFN_xrDebugUtilsMessengerCallbackEXT value) {
+        return userCallback(PFN_xrDebugUtilsMessengerCallbackEXT.ofNative(value));
+    }
+
+    public XrDebugUtilsMessengerCreateInfoEXT userCallback(@NotNull Arena arena, @NotNull PFN_xrDebugUtilsMessengerCallbackEXT value) {
+        return userCallback(PFN_xrDebugUtilsMessengerCallbackEXT.ofNative(arena, value));
     }
 
     public XrDebugUtilsMessengerCreateInfoEXT userCallback(@Nullable IPointer pointer) {
