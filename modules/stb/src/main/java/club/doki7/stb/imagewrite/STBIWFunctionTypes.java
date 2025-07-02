@@ -14,27 +14,27 @@ public final class STBIWFunctionTypes {
     );
 
     @FunctionalInterface
-    public interface stbi_write_func {
+    public interface Istbi_write_func {
         void invoke(
             @Pointer(comment="void*") @NotNull MemorySegment p0,
             @Pointer(comment="void*") @NotNull MemorySegment p1,
             int p2
         );
 
-        static MethodHandle of(@NotNull stbi_write_func lambda) {
+        static MethodHandle of(@NotNull Istbi_write_func lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(stbi_write_func.class, "invoke", stbi_write_func.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(Istbi_write_func.class, "invoke", stbi_write_func.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull stbi_write_func lambda) {
+        static MemorySegment ofNative(@NotNull Istbi_write_func lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull stbi_write_func lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull Istbi_write_func lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), stbi_write_func, arena);
         }
     }

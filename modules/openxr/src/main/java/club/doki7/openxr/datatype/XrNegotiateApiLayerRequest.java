@@ -239,12 +239,12 @@ public record XrNegotiateApiLayerRequest(@NotNull MemorySegment segment) impleme
         return this;
     }
 
-    public XrNegotiateApiLayerRequest getInstanceProcAddr(@NotNull PFN_xrGetInstanceProcAddr value) {
-        return getInstanceProcAddr(PFN_xrGetInstanceProcAddr.ofNative(value));
+    public XrNegotiateApiLayerRequest getInstanceProcAddr(@NotNull IPFN_xrGetInstanceProcAddr value) {
+        return getInstanceProcAddr(IPFN_xrGetInstanceProcAddr.ofNative(value));
     }
 
-    public XrNegotiateApiLayerRequest getInstanceProcAddr(@NotNull Arena arena, @NotNull PFN_xrGetInstanceProcAddr value) {
-        return getInstanceProcAddr(PFN_xrGetInstanceProcAddr.ofNative(arena, value));
+    public XrNegotiateApiLayerRequest getInstanceProcAddr(@NotNull Arena arena, @NotNull IPFN_xrGetInstanceProcAddr value) {
+        return getInstanceProcAddr(IPFN_xrGetInstanceProcAddr.ofNative(arena, value));
     }
 
     public XrNegotiateApiLayerRequest getInstanceProcAddr(@Nullable IPointer pointer) {
@@ -261,12 +261,12 @@ public record XrNegotiateApiLayerRequest(@NotNull MemorySegment segment) impleme
         return this;
     }
 
-    public XrNegotiateApiLayerRequest createApiLayerInstance(@NotNull PFN_xrCreateApiLayerInstance value) {
-        return createApiLayerInstance(PFN_xrCreateApiLayerInstance.ofNative(value));
+    public XrNegotiateApiLayerRequest createApiLayerInstance(@NotNull IPFN_xrCreateApiLayerInstance value) {
+        return createApiLayerInstance(IPFN_xrCreateApiLayerInstance.ofNative(value));
     }
 
-    public XrNegotiateApiLayerRequest createApiLayerInstance(@NotNull Arena arena, @NotNull PFN_xrCreateApiLayerInstance value) {
-        return createApiLayerInstance(PFN_xrCreateApiLayerInstance.ofNative(arena, value));
+    public XrNegotiateApiLayerRequest createApiLayerInstance(@NotNull Arena arena, @NotNull IPFN_xrCreateApiLayerInstance value) {
+        return createApiLayerInstance(IPFN_xrCreateApiLayerInstance.ofNative(arena, value));
     }
 
     public XrNegotiateApiLayerRequest createApiLayerInstance(@Nullable IPointer pointer) {

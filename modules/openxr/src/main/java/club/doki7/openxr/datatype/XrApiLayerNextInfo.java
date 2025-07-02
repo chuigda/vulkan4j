@@ -241,12 +241,12 @@ public record XrApiLayerNextInfo(@NotNull MemorySegment segment) implements IXrA
         return this;
     }
 
-    public XrApiLayerNextInfo nextGetInstanceProcAddr(@NotNull PFN_xrGetInstanceProcAddr value) {
-        return nextGetInstanceProcAddr(PFN_xrGetInstanceProcAddr.ofNative(value));
+    public XrApiLayerNextInfo nextGetInstanceProcAddr(@NotNull IPFN_xrGetInstanceProcAddr value) {
+        return nextGetInstanceProcAddr(IPFN_xrGetInstanceProcAddr.ofNative(value));
     }
 
-    public XrApiLayerNextInfo nextGetInstanceProcAddr(@NotNull Arena arena, @NotNull PFN_xrGetInstanceProcAddr value) {
-        return nextGetInstanceProcAddr(PFN_xrGetInstanceProcAddr.ofNative(arena, value));
+    public XrApiLayerNextInfo nextGetInstanceProcAddr(@NotNull Arena arena, @NotNull IPFN_xrGetInstanceProcAddr value) {
+        return nextGetInstanceProcAddr(IPFN_xrGetInstanceProcAddr.ofNative(arena, value));
     }
 
     public XrApiLayerNextInfo nextGetInstanceProcAddr(@Nullable IPointer pointer) {
@@ -263,12 +263,12 @@ public record XrApiLayerNextInfo(@NotNull MemorySegment segment) implements IXrA
         return this;
     }
 
-    public XrApiLayerNextInfo nextCreateApiLayerInstance(@NotNull PFN_xrCreateApiLayerInstance value) {
-        return nextCreateApiLayerInstance(PFN_xrCreateApiLayerInstance.ofNative(value));
+    public XrApiLayerNextInfo nextCreateApiLayerInstance(@NotNull IPFN_xrCreateApiLayerInstance value) {
+        return nextCreateApiLayerInstance(IPFN_xrCreateApiLayerInstance.ofNative(value));
     }
 
-    public XrApiLayerNextInfo nextCreateApiLayerInstance(@NotNull Arena arena, @NotNull PFN_xrCreateApiLayerInstance value) {
-        return nextCreateApiLayerInstance(PFN_xrCreateApiLayerInstance.ofNative(arena, value));
+    public XrApiLayerNextInfo nextCreateApiLayerInstance(@NotNull Arena arena, @NotNull IPFN_xrCreateApiLayerInstance value) {
+        return nextCreateApiLayerInstance(IPFN_xrCreateApiLayerInstance.ofNative(arena, value));
     }
 
     public XrApiLayerNextInfo nextCreateApiLayerInstance(@Nullable IPointer pointer) {

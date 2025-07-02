@@ -181,12 +181,12 @@ public record STBI_IoCallbacks(@NotNull MemorySegment segment) implements ISTBI_
         return this;
     }
 
-    public STBI_IoCallbacks read(@NotNull PFN_stbi_io_callbacks_read value) {
-        return read(PFN_stbi_io_callbacks_read.ofNative(value));
+    public STBI_IoCallbacks read(@NotNull IPFN_stbi_io_callbacks_read value) {
+        return read(IPFN_stbi_io_callbacks_read.ofNative(value));
     }
 
-    public STBI_IoCallbacks read(@NotNull Arena arena, @NotNull PFN_stbi_io_callbacks_read value) {
-        return read(PFN_stbi_io_callbacks_read.ofNative(arena, value));
+    public STBI_IoCallbacks read(@NotNull Arena arena, @NotNull IPFN_stbi_io_callbacks_read value) {
+        return read(IPFN_stbi_io_callbacks_read.ofNative(arena, value));
     }
 
     public STBI_IoCallbacks read(@Nullable IPointer pointer) {
@@ -203,12 +203,12 @@ public record STBI_IoCallbacks(@NotNull MemorySegment segment) implements ISTBI_
         return this;
     }
 
-    public STBI_IoCallbacks skip(@NotNull PFN_stbi_io_callbacks_skip value) {
-        return skip(PFN_stbi_io_callbacks_skip.ofNative(value));
+    public STBI_IoCallbacks skip(@NotNull IPFN_stbi_io_callbacks_skip value) {
+        return skip(IPFN_stbi_io_callbacks_skip.ofNative(value));
     }
 
-    public STBI_IoCallbacks skip(@NotNull Arena arena, @NotNull PFN_stbi_io_callbacks_skip value) {
-        return skip(PFN_stbi_io_callbacks_skip.ofNative(arena, value));
+    public STBI_IoCallbacks skip(@NotNull Arena arena, @NotNull IPFN_stbi_io_callbacks_skip value) {
+        return skip(IPFN_stbi_io_callbacks_skip.ofNative(arena, value));
     }
 
     public STBI_IoCallbacks skip(@Nullable IPointer pointer) {
@@ -225,12 +225,12 @@ public record STBI_IoCallbacks(@NotNull MemorySegment segment) implements ISTBI_
         return this;
     }
 
-    public STBI_IoCallbacks eof(@NotNull PFN_stbi_io_callbacks_eof value) {
-        return eof(PFN_stbi_io_callbacks_eof.ofNative(value));
+    public STBI_IoCallbacks eof(@NotNull IPFN_stbi_io_callbacks_eof value) {
+        return eof(IPFN_stbi_io_callbacks_eof.ofNative(value));
     }
 
-    public STBI_IoCallbacks eof(@NotNull Arena arena, @NotNull PFN_stbi_io_callbacks_eof value) {
-        return eof(PFN_stbi_io_callbacks_eof.ofNative(arena, value));
+    public STBI_IoCallbacks eof(@NotNull Arena arena, @NotNull IPFN_stbi_io_callbacks_eof value) {
+        return eof(IPFN_stbi_io_callbacks_eof.ofNative(arena, value));
     }
 
     public STBI_IoCallbacks eof(@Nullable IPointer pointer) {

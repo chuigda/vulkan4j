@@ -10,6 +10,7 @@ import club.doki7.ffm.NativeLayout;
 import club.doki7.ffm.RawFunctionLoader;
 import club.doki7.ffm.annotation.*;
 import club.doki7.ffm.ptr.*;
+import static club.doki7.stb.imagewrite.STBIWFunctionTypes.*;
 
 public final class STBIW {
     public STBIW(RawFunctionLoader loader) {

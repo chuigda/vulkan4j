@@ -41,58 +41,58 @@ public final class STBIRFunctionTypes {
     );
 
     @FunctionalInterface
-    public interface stbir__kernel_callback {
+    public interface Istbir__kernel_callback {
         float invoke(
             float p0,
             float p1,
             @Pointer(comment="void*") @NotNull MemorySegment p2
         );
 
-        static MethodHandle of(@NotNull stbir__kernel_callback lambda) {
+        static MethodHandle of(@NotNull Istbir__kernel_callback lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(stbir__kernel_callback.class, "invoke", stbir__kernel_callback.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(Istbir__kernel_callback.class, "invoke", stbir__kernel_callback.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull stbir__kernel_callback lambda) {
+        static MemorySegment ofNative(@NotNull Istbir__kernel_callback lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull stbir__kernel_callback lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull Istbir__kernel_callback lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), stbir__kernel_callback, arena);
         }
     }
 
     @FunctionalInterface
-    public interface stbir__support_callback {
+    public interface Istbir__support_callback {
         float invoke(
             float p0,
             @Pointer(comment="void*") @NotNull MemorySegment p1
         );
 
-        static MethodHandle of(@NotNull stbir__support_callback lambda) {
+        static MethodHandle of(@NotNull Istbir__support_callback lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(stbir__support_callback.class, "invoke", stbir__support_callback.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(Istbir__support_callback.class, "invoke", stbir__support_callback.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull stbir__support_callback lambda) {
+        static MemorySegment ofNative(@NotNull Istbir__support_callback lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull stbir__support_callback lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull Istbir__support_callback lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), stbir__support_callback, arena);
         }
     }
 
     @FunctionalInterface
-    public interface stbir_input_callback {
+    public interface Istbir_input_callback {
         @Pointer(comment="void*") @NotNull MemorySegment invoke(
             @Pointer(comment="void*") @NotNull MemorySegment p0,
             @Pointer(comment="void*") @NotNull MemorySegment p1,
@@ -102,26 +102,26 @@ public final class STBIRFunctionTypes {
             @Pointer(comment="void*") @NotNull MemorySegment p5
         );
 
-        static MethodHandle of(@NotNull stbir_input_callback lambda) {
+        static MethodHandle of(@NotNull Istbir_input_callback lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(stbir_input_callback.class, "invoke", stbir_input_callback.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(Istbir_input_callback.class, "invoke", stbir_input_callback.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull stbir_input_callback lambda) {
+        static MemorySegment ofNative(@NotNull Istbir_input_callback lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull stbir_input_callback lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull Istbir_input_callback lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), stbir_input_callback, arena);
         }
     }
 
     @FunctionalInterface
-    public interface stbir_output_callback {
+    public interface Istbir_output_callback {
         void invoke(
             @Pointer(comment="void*") @NotNull MemorySegment p0,
             int p1,
@@ -129,20 +129,20 @@ public final class STBIRFunctionTypes {
             @Pointer(comment="void*") @NotNull MemorySegment p3
         );
 
-        static MethodHandle of(@NotNull stbir_output_callback lambda) {
+        static MethodHandle of(@NotNull Istbir_output_callback lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(stbir_output_callback.class, "invoke", stbir_output_callback.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(Istbir_output_callback.class, "invoke", stbir_output_callback.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull stbir_output_callback lambda) {
+        static MemorySegment ofNative(@NotNull Istbir_output_callback lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull stbir_output_callback lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull Istbir_output_callback lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), stbir_output_callback, arena);
         }
     }

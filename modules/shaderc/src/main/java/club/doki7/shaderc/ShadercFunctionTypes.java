@@ -25,7 +25,7 @@ public final class ShadercFunctionTypes {
     );
 
     @FunctionalInterface
-    public interface shaderc_include_resolve_fn {
+    public interface Ishaderc_include_resolve_fn {
         @Pointer(comment="void*") @NotNull MemorySegment invoke(
             @Pointer(comment="void*") @NotNull MemorySegment p0,
             @Pointer(comment="void*") @NotNull MemorySegment p1,
@@ -34,45 +34,45 @@ public final class ShadercFunctionTypes {
             long p4
         );
 
-        static MethodHandle of(@NotNull shaderc_include_resolve_fn lambda) {
+        static MethodHandle of(@NotNull Ishaderc_include_resolve_fn lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(shaderc_include_resolve_fn.class, "invoke", shaderc_include_resolve_fn.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(Ishaderc_include_resolve_fn.class, "invoke", shaderc_include_resolve_fn.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull shaderc_include_resolve_fn lambda) {
+        static MemorySegment ofNative(@NotNull Ishaderc_include_resolve_fn lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull shaderc_include_resolve_fn lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull Ishaderc_include_resolve_fn lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), shaderc_include_resolve_fn, arena);
         }
     }
 
     @FunctionalInterface
-    public interface shaderc_include_result_release_fn {
+    public interface Ishaderc_include_result_release_fn {
         void invoke(
             @Pointer(comment="void*") @NotNull MemorySegment p0,
             @Pointer(comment="void*") @NotNull MemorySegment p1
         );
 
-        static MethodHandle of(@NotNull shaderc_include_result_release_fn lambda) {
+        static MethodHandle of(@NotNull Ishaderc_include_result_release_fn lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(shaderc_include_result_release_fn.class, "invoke", shaderc_include_result_release_fn.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(Ishaderc_include_result_release_fn.class, "invoke", shaderc_include_result_release_fn.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull shaderc_include_result_release_fn lambda) {
+        static MemorySegment ofNative(@NotNull Ishaderc_include_result_release_fn lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull shaderc_include_result_release_fn lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull Ishaderc_include_result_release_fn lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), shaderc_include_result_release_fn, arena);
         }
     }
