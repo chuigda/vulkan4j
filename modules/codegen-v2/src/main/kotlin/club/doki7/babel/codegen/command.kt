@@ -60,6 +60,9 @@ fun generateCommandFile(
         || registry.opaqueTypedefs.values.any { it.isHandle }) {
         imports("$packageName.handle.*")
     }
+    if (registry.functionTypedefs.isNotEmpty() && subpackage != null) {
+        imports("$packageName.${codegenOptions.functionTypeClassName}.*", static = true)
+    }
     if (implConstantClass && subpackage != null) {
         imports("$packageName.${codegenOptions.constantClassName}")
     }
@@ -173,6 +176,9 @@ private fun generateCommandWrapper(
     val hasPlatformDependentParam = loweredCommand.paramCType.any {
         it is CPlatformDependentIntType && it !is CSizeType
     }
+    val hasFunctionPointerParam = loweredCommand.paramCType.any {
+        it is CFunctionPointerType && !it.functionTypedef.pfnNativeApi
+    }
 
     val paramIOTypes = mutableListOf<String>()
     val callArgs = mutableListOf<String>()
@@ -206,11 +212,8 @@ private fun generateCommandWrapper(
             }
             for ((index, param) in loweredCommand.command.params.withIndex()) {
                 val paramIOType = paramIOTypes[index]
-                if (index != paramIOTypes.size - 1) {
-                    +"$paramIOType ${param.name}, "
-                } else {
-                    +"$paramIOType ${param.name}"
-                }
+                val comma = if (index != paramIOTypes.size - 1) "," else ""
+                +"$paramIOType ${param.name}${comma}"
             }
         }
         +") {"
@@ -237,7 +240,7 @@ private fun generateCommandWrapper(
                 +"${beforeCall}hFunction.${invokeMethod}("
                 indent {
                     if (loweredCommand.result is CStructType) {
-                        +"allocator, "
+                        +"allocator,"
                     }
                     +callArgsDoc
                 }
@@ -252,8 +255,91 @@ private fun generateCommandWrapper(
             +"throw new RuntimeException(e);"
         }
         +"}"
+        indent {
+
+        }
     }
 
+    +"}"
+
+    if (!hasFunctionPointerParam) {
+        return@buildDoc
+    }
+
+    val paramsDoc = buildDoc {
+        if (loweredCommand.result is CStructType) {
+            +"SegmentAllocator allocator,"
+        }
+        for ((index, param) in loweredCommand.command.params.withIndex()) {
+            val paramCType = loweredCommand.paramCType[index]
+            val paramIOType = paramIOTypes[index]
+            val comma = if (index != paramIOTypes.size - 1) "," else ""
+
+            if (paramCType is CFunctionPointerType && !paramCType.functionTypedef.pfnNativeApi) {
+                +"${paramCType.functionTypedef.name} ${param.name}${comma}"
+            } else {
+                +"$paramIOType ${param.name}${comma}"
+            }
+        }
+    }
+
+    +"public $retIOType ${loweredCommand.command.name}("
+    indent {
+        +"Arena arena,"
+        +paramsDoc
+    }
+    +") {"
+    indent {
+        if (loweredCommand.result is CVoidType) {
+            +"${loweredCommand.command.name}("
+        } else {
+            +"return ${loweredCommand.command.name}("
+        }
+
+        indent {
+            if (loweredCommand.result is CStructType) {
+                +"allocator,"
+            }
+
+            for ((index, param) in loweredCommand.command.params.withIndex()) {
+                val paramCType = loweredCommand.paramCType[index]
+                val comma = if (index != loweredCommand.command.params.size - 1) "," else ""
+                if (paramCType is CFunctionPointerType && !paramCType.functionTypedef.pfnNativeApi) {
+                    +"${paramCType.functionTypedef.name}.ofNative(arena, ${param.name})${comma}"
+                } else {
+                    +"${param.name}${comma}"
+                }
+            }
+        }
+        +");"
+    }
+    +"}"
+
+    +"public $retIOType ${loweredCommand.command.name}("
+    indent {
+        +paramsDoc
+    }
+    +") {"
+    indent {
+        if (loweredCommand.result is CVoidType) {
+            +"${loweredCommand.command.name}("
+        } else {
+            +"return ${loweredCommand.command.name}("
+        }
+
+        indent {
+            +"Arena.global(),"
+            if (loweredCommand.result is CStructType) {
+                +"allocator,"
+            }
+
+            for ((index, param) in loweredCommand.command.params.withIndex()) {
+                val comma = if (index != loweredCommand.command.params.size - 1) "," else ""
+                +"${param.name}${comma}"
+            }
+        }
+        +");"
+    }
     +"}"
 }
 

@@ -4404,6 +4404,26 @@ public final class GLFW implements GLFWConstants {
             throw new RuntimeException(e);
         }
     }
+    public @Pointer(comment="GLFWcharfun") @NotNull MemorySegment setCharCallback(
+        Arena arena,
+        @Nullable GLFWwindow window,
+        GLFWcharfun callback
+    ) {
+        return setCharCallback(
+            window,
+            GLFWcharfun.ofNative(arena, callback)
+        );
+    }
+    public @Pointer(comment="GLFWcharfun") @NotNull MemorySegment setCharCallback(
+        @Nullable GLFWwindow window,
+        GLFWcharfun callback
+    ) {
+        return setCharCallback(
+            Arena.global(),
+            window,
+            callback
+        );
+    }
 
     ///  @brief Sets the Unicode character with modifiers callback.
     ///
@@ -4457,6 +4477,26 @@ public final class GLFW implements GLFWConstants {
         } catch (Throwable e) {
             throw new RuntimeException(e);
         }
+    }
+    public @Pointer(comment="GLFWcharmodsfun") @NotNull MemorySegment setCharModsCallback(
+        Arena arena,
+        @Nullable GLFWwindow window,
+        GLFWcharmodsfun callback
+    ) {
+        return setCharModsCallback(
+            window,
+            GLFWcharmodsfun.ofNative(arena, callback)
+        );
+    }
+    public @Pointer(comment="GLFWcharmodsfun") @NotNull MemorySegment setCharModsCallback(
+        @Nullable GLFWwindow window,
+        GLFWcharmodsfun callback
+    ) {
+        return setCharModsCallback(
+            Arena.global(),
+            window,
+            callback
+        );
     }
 
     ///  @brief Sets the clipboard to the specified string.
@@ -4582,6 +4622,26 @@ public final class GLFW implements GLFWConstants {
             throw new RuntimeException(e);
         }
     }
+    public @Pointer(comment="GLFWcursorenterfun") @NotNull MemorySegment setCursorEnterCallback(
+        Arena arena,
+        @Nullable GLFWwindow window,
+        GLFWcursorenterfun callback
+    ) {
+        return setCursorEnterCallback(
+            window,
+            GLFWcursorenterfun.ofNative(arena, callback)
+        );
+    }
+    public @Pointer(comment="GLFWcursorenterfun") @NotNull MemorySegment setCursorEnterCallback(
+        @Nullable GLFWwindow window,
+        GLFWcursorenterfun callback
+    ) {
+        return setCursorEnterCallback(
+            Arena.global(),
+            window,
+            callback
+        );
+    }
 
     ///  @brief Sets the position of the cursor, relative to the content area of the
     ///  window.
@@ -4680,6 +4740,26 @@ public final class GLFW implements GLFWConstants {
             throw new RuntimeException(e);
         }
     }
+    public @Pointer(comment="GLFWcursorposfun") @NotNull MemorySegment setCursorPosCallback(
+        Arena arena,
+        @Nullable GLFWwindow window,
+        GLFWcursorposfun callback
+    ) {
+        return setCursorPosCallback(
+            window,
+            GLFWcursorposfun.ofNative(arena, callback)
+        );
+    }
+    public @Pointer(comment="GLFWcursorposfun") @NotNull MemorySegment setCursorPosCallback(
+        @Nullable GLFWwindow window,
+        GLFWcursorposfun callback
+    ) {
+        return setCursorPosCallback(
+            Arena.global(),
+            window,
+            callback
+        );
+    }
 
     ///  @brief Sets the path drop callback.
     ///
@@ -4726,6 +4806,26 @@ public final class GLFW implements GLFWConstants {
         } catch (Throwable e) {
             throw new RuntimeException(e);
         }
+    }
+    public @Pointer(comment="GLFWdropfun") @NotNull MemorySegment setDropCallback(
+        Arena arena,
+        @Nullable GLFWwindow window,
+        GLFWdropfun callback
+    ) {
+        return setDropCallback(
+            window,
+            GLFWdropfun.ofNative(arena, callback)
+        );
+    }
+    public @Pointer(comment="GLFWdropfun") @NotNull MemorySegment setDropCallback(
+        @Nullable GLFWwindow window,
+        GLFWdropfun callback
+    ) {
+        return setDropCallback(
+            Arena.global(),
+            window,
+            callback
+        );
     }
 
     ///  @brief Sets the error callback.
@@ -4783,6 +4883,22 @@ public final class GLFW implements GLFWConstants {
             throw new RuntimeException(e);
         }
     }
+    public @Pointer(comment="GLFWerrorfun") @NotNull MemorySegment setErrorCallback(
+        Arena arena,
+        GLFWerrorfun callback
+    ) {
+        return setErrorCallback(
+            GLFWerrorfun.ofNative(arena, callback)
+        );
+    }
+    public @Pointer(comment="GLFWerrorfun") @NotNull MemorySegment setErrorCallback(
+        GLFWerrorfun callback
+    ) {
+        return setErrorCallback(
+            Arena.global(),
+            callback
+        );
+    }
 
     ///  @brief Sets the framebuffer resize callback for the specified window.
     ///
@@ -4824,6 +4940,26 @@ public final class GLFW implements GLFWConstants {
         } catch (Throwable e) {
             throw new RuntimeException(e);
         }
+    }
+    public @Pointer(comment="GLFWframebuffersizefun") @NotNull MemorySegment setFramebufferSizeCallback(
+        Arena arena,
+        @Nullable GLFWwindow window,
+        GLFWframebuffersizefun callback
+    ) {
+        return setFramebufferSizeCallback(
+            window,
+            GLFWframebuffersizefun.ofNative(arena, callback)
+        );
+    }
+    public @Pointer(comment="GLFWframebuffersizefun") @NotNull MemorySegment setFramebufferSizeCallback(
+        @Nullable GLFWwindow window,
+        GLFWframebuffersizefun callback
+    ) {
+        return setFramebufferSizeCallback(
+            Arena.global(),
+            window,
+            callback
+        );
     }
 
     ///  @brief Generates a gamma ramp and sets it for the specified monitor.
@@ -5048,6 +5184,22 @@ public final class GLFW implements GLFWConstants {
             throw new RuntimeException(e);
         }
     }
+    public @Pointer(comment="GLFWjoystickfun") @NotNull MemorySegment setJoystickCallback(
+        Arena arena,
+        GLFWjoystickfun callback
+    ) {
+        return setJoystickCallback(
+            GLFWjoystickfun.ofNative(arena, callback)
+        );
+    }
+    public @Pointer(comment="GLFWjoystickfun") @NotNull MemorySegment setJoystickCallback(
+        GLFWjoystickfun callback
+    ) {
+        return setJoystickCallback(
+            Arena.global(),
+            callback
+        );
+    }
 
     ///  @brief Sets the user pointer of the specified joystick.
     ///
@@ -5148,6 +5300,26 @@ public final class GLFW implements GLFWConstants {
             throw new RuntimeException(e);
         }
     }
+    public @Pointer(comment="GLFWkeyfun") @NotNull MemorySegment setKeyCallback(
+        Arena arena,
+        @Nullable GLFWwindow window,
+        GLFWkeyfun callback
+    ) {
+        return setKeyCallback(
+            window,
+            GLFWkeyfun.ofNative(arena, callback)
+        );
+    }
+    public @Pointer(comment="GLFWkeyfun") @NotNull MemorySegment setKeyCallback(
+        @Nullable GLFWwindow window,
+        GLFWkeyfun callback
+    ) {
+        return setKeyCallback(
+            Arena.global(),
+            window,
+            callback
+        );
+    }
 
     ///  @brief Sets the monitor configuration callback.
     ///
@@ -5187,6 +5359,22 @@ public final class GLFW implements GLFWConstants {
         } catch (Throwable e) {
             throw new RuntimeException(e);
         }
+    }
+    public @Pointer(comment="GLFWmonitorfun") @NotNull MemorySegment setMonitorCallback(
+        Arena arena,
+        GLFWmonitorfun callback
+    ) {
+        return setMonitorCallback(
+            GLFWmonitorfun.ofNative(arena, callback)
+        );
+    }
+    public @Pointer(comment="GLFWmonitorfun") @NotNull MemorySegment setMonitorCallback(
+        GLFWmonitorfun callback
+    ) {
+        return setMonitorCallback(
+            Arena.global(),
+            callback
+        );
     }
 
     ///  @brief Sets the user pointer of the specified monitor.
@@ -5275,6 +5463,26 @@ public final class GLFW implements GLFWConstants {
             throw new RuntimeException(e);
         }
     }
+    public @Pointer(comment="GLFWmousebuttonfun") @NotNull MemorySegment setMouseButtonCallback(
+        Arena arena,
+        @Nullable GLFWwindow window,
+        GLFWmousebuttonfun callback
+    ) {
+        return setMouseButtonCallback(
+            window,
+            GLFWmousebuttonfun.ofNative(arena, callback)
+        );
+    }
+    public @Pointer(comment="GLFWmousebuttonfun") @NotNull MemorySegment setMouseButtonCallback(
+        @Nullable GLFWwindow window,
+        GLFWmousebuttonfun callback
+    ) {
+        return setMouseButtonCallback(
+            Arena.global(),
+            window,
+            callback
+        );
+    }
 
     ///  @brief Sets the scroll callback.
     ///
@@ -5320,6 +5528,26 @@ public final class GLFW implements GLFWConstants {
         } catch (Throwable e) {
             throw new RuntimeException(e);
         }
+    }
+    public @Pointer(comment="GLFWscrollfun") @NotNull MemorySegment setScrollCallback(
+        Arena arena,
+        @Nullable GLFWwindow window,
+        GLFWscrollfun callback
+    ) {
+        return setScrollCallback(
+            window,
+            GLFWscrollfun.ofNative(arena, callback)
+        );
+    }
+    public @Pointer(comment="GLFWscrollfun") @NotNull MemorySegment setScrollCallback(
+        @Nullable GLFWwindow window,
+        GLFWscrollfun callback
+    ) {
+        return setScrollCallback(
+            Arena.global(),
+            window,
+            callback
+        );
     }
 
     ///  @brief Sets the GLFW time.
@@ -5526,6 +5754,26 @@ public final class GLFW implements GLFWConstants {
             throw new RuntimeException(e);
         }
     }
+    public @Pointer(comment="GLFWwindowclosefun") @NotNull MemorySegment setWindowCloseCallback(
+        Arena arena,
+        @Nullable GLFWwindow window,
+        GLFWwindowclosefun callback
+    ) {
+        return setWindowCloseCallback(
+            window,
+            GLFWwindowclosefun.ofNative(arena, callback)
+        );
+    }
+    public @Pointer(comment="GLFWwindowclosefun") @NotNull MemorySegment setWindowCloseCallback(
+        @Nullable GLFWwindow window,
+        GLFWwindowclosefun callback
+    ) {
+        return setWindowCloseCallback(
+            Arena.global(),
+            window,
+            callback
+        );
+    }
 
     ///  @brief Sets the window content scale callback for the specified window.
     ///
@@ -5568,6 +5816,26 @@ public final class GLFW implements GLFWConstants {
         } catch (Throwable e) {
             throw new RuntimeException(e);
         }
+    }
+    public @Pointer(comment="GLFWwindowcontentscalefun") @NotNull MemorySegment setWindowContentScaleCallback(
+        Arena arena,
+        @Nullable GLFWwindow window,
+        GLFWwindowcontentscalefun callback
+    ) {
+        return setWindowContentScaleCallback(
+            window,
+            GLFWwindowcontentscalefun.ofNative(arena, callback)
+        );
+    }
+    public @Pointer(comment="GLFWwindowcontentscalefun") @NotNull MemorySegment setWindowContentScaleCallback(
+        @Nullable GLFWwindow window,
+        GLFWwindowcontentscalefun callback
+    ) {
+        return setWindowContentScaleCallback(
+            Arena.global(),
+            window,
+            callback
+        );
     }
 
     ///  @brief Sets the focus callback for the specified window.
@@ -5615,6 +5883,26 @@ public final class GLFW implements GLFWConstants {
         } catch (Throwable e) {
             throw new RuntimeException(e);
         }
+    }
+    public @Pointer(comment="GLFWwindowfocusfun") @NotNull MemorySegment setWindowFocusCallback(
+        Arena arena,
+        @Nullable GLFWwindow window,
+        GLFWwindowfocusfun callback
+    ) {
+        return setWindowFocusCallback(
+            window,
+            GLFWwindowfocusfun.ofNative(arena, callback)
+        );
+    }
+    public @Pointer(comment="GLFWwindowfocusfun") @NotNull MemorySegment setWindowFocusCallback(
+        @Nullable GLFWwindow window,
+        GLFWwindowfocusfun callback
+    ) {
+        return setWindowFocusCallback(
+            Arena.global(),
+            window,
+            callback
+        );
     }
 
     ///  @brief Sets the icon for the specified window.
@@ -5721,6 +6009,26 @@ public final class GLFW implements GLFWConstants {
             throw new RuntimeException(e);
         }
     }
+    public @Pointer(comment="GLFWwindowiconifyfun") @NotNull MemorySegment setWindowIconifyCallback(
+        Arena arena,
+        @Nullable GLFWwindow window,
+        GLFWwindowiconifyfun callback
+    ) {
+        return setWindowIconifyCallback(
+            window,
+            GLFWwindowiconifyfun.ofNative(arena, callback)
+        );
+    }
+    public @Pointer(comment="GLFWwindowiconifyfun") @NotNull MemorySegment setWindowIconifyCallback(
+        @Nullable GLFWwindow window,
+        GLFWwindowiconifyfun callback
+    ) {
+        return setWindowIconifyCallback(
+            Arena.global(),
+            window,
+            callback
+        );
+    }
 
     ///  @brief Sets the maximize callback for the specified window.
     ///
@@ -5762,6 +6070,26 @@ public final class GLFW implements GLFWConstants {
         } catch (Throwable e) {
             throw new RuntimeException(e);
         }
+    }
+    public @Pointer(comment="GLFWwindowmaximizefun") @NotNull MemorySegment setWindowMaximizeCallback(
+        Arena arena,
+        @Nullable GLFWwindow window,
+        GLFWwindowmaximizefun callback
+    ) {
+        return setWindowMaximizeCallback(
+            window,
+            GLFWwindowmaximizefun.ofNative(arena, callback)
+        );
+    }
+    public @Pointer(comment="GLFWwindowmaximizefun") @NotNull MemorySegment setWindowMaximizeCallback(
+        @Nullable GLFWwindow window,
+        GLFWwindowmaximizefun callback
+    ) {
+        return setWindowMaximizeCallback(
+            Arena.global(),
+            window,
+            callback
+        );
     }
 
     ///  @brief Sets the mode, monitor, video mode and placement of a window.
@@ -5981,6 +6309,26 @@ public final class GLFW implements GLFWConstants {
             throw new RuntimeException(e);
         }
     }
+    public @Pointer(comment="GLFWwindowposfun") @NotNull MemorySegment setWindowPosCallback(
+        Arena arena,
+        @Nullable GLFWwindow window,
+        GLFWwindowposfun callback
+    ) {
+        return setWindowPosCallback(
+            window,
+            GLFWwindowposfun.ofNative(arena, callback)
+        );
+    }
+    public @Pointer(comment="GLFWwindowposfun") @NotNull MemorySegment setWindowPosCallback(
+        @Nullable GLFWwindow window,
+        GLFWwindowposfun callback
+    ) {
+        return setWindowPosCallback(
+            Arena.global(),
+            window,
+            callback
+        );
+    }
 
     ///  @brief Sets the refresh callback for the specified window.
     ///
@@ -6028,6 +6376,26 @@ public final class GLFW implements GLFWConstants {
         } catch (Throwable e) {
             throw new RuntimeException(e);
         }
+    }
+    public @Pointer(comment="GLFWwindowrefreshfun") @NotNull MemorySegment setWindowRefreshCallback(
+        Arena arena,
+        @Nullable GLFWwindow window,
+        GLFWwindowrefreshfun callback
+    ) {
+        return setWindowRefreshCallback(
+            window,
+            GLFWwindowrefreshfun.ofNative(arena, callback)
+        );
+    }
+    public @Pointer(comment="GLFWwindowrefreshfun") @NotNull MemorySegment setWindowRefreshCallback(
+        @Nullable GLFWwindow window,
+        GLFWwindowrefreshfun callback
+    ) {
+        return setWindowRefreshCallback(
+            Arena.global(),
+            window,
+            callback
+        );
     }
 
     ///  @brief Sets the close flag of the specified window.
@@ -6158,6 +6526,26 @@ public final class GLFW implements GLFWConstants {
         } catch (Throwable e) {
             throw new RuntimeException(e);
         }
+    }
+    public @Pointer(comment="GLFWwindowsizefun") @NotNull MemorySegment setWindowSizeCallback(
+        Arena arena,
+        @Nullable GLFWwindow window,
+        GLFWwindowsizefun callback
+    ) {
+        return setWindowSizeCallback(
+            window,
+            GLFWwindowsizefun.ofNative(arena, callback)
+        );
+    }
+    public @Pointer(comment="GLFWwindowsizefun") @NotNull MemorySegment setWindowSizeCallback(
+        @Nullable GLFWwindow window,
+        GLFWwindowsizefun callback
+    ) {
+        return setWindowSizeCallback(
+            Arena.global(),
+            window,
+            callback
+        );
     }
 
     ///  @brief Sets the size limits of the specified window.

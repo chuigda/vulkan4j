@@ -617,6 +617,26 @@ public final class ALC implements ALCConstants {
             throw new RuntimeException(e);
         }
     }
+    public void eventCallbackSOFT(
+        Arena arena,
+        ALCEVENTPROCTYPESOFT callback,
+        @Pointer(comment="void*") @NotNull MemorySegment userParam
+    ) {
+        eventCallbackSOFT(
+            ALCEVENTPROCTYPESOFT.ofNative(arena, callback),
+            userParam
+        );
+    }
+    public void eventCallbackSOFT(
+        ALCEVENTPROCTYPESOFT callback,
+        @Pointer(comment="void*") @NotNull MemorySegment userParam
+    ) {
+        eventCallbackSOFT(
+            Arena.global(),
+            callback,
+            userParam
+        );
+    }
 
     public @Pointer(comment="void*") @NotNull MemorySegment getProcAddress2(
         @Nullable ALCdevice device,

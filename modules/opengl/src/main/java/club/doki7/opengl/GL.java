@@ -5921,6 +5921,26 @@ public sealed class GL implements GLConstants permits GLCompatibility {
             throw new RuntimeException(e);
         }
     }
+    public void debugMessageCallback(
+        Arena arena,
+        GLDEBUGPROC callback,
+        @Pointer(comment="void*") @NotNull MemorySegment userParam
+    ) {
+        debugMessageCallback(
+            GLDEBUGPROC.ofNative(arena, callback),
+            userParam
+        );
+    }
+    public void debugMessageCallback(
+        GLDEBUGPROC callback,
+        @Pointer(comment="void*") @NotNull MemorySegment userParam
+    ) {
+        debugMessageCallback(
+            Arena.global(),
+            callback,
+            userParam
+        );
+    }
 
     public void debugMessageCallbackARB(
         @Pointer(comment="GLDEBUGPROCARB") @NotNull MemorySegment callback,
@@ -5936,6 +5956,26 @@ public sealed class GL implements GLConstants permits GLCompatibility {
             throw new RuntimeException(e);
         }
     }
+    public void debugMessageCallbackARB(
+        Arena arena,
+        GLDEBUGPROCARB callback,
+        @Pointer(comment="void*") @NotNull MemorySegment userParam
+    ) {
+        debugMessageCallbackARB(
+            GLDEBUGPROCARB.ofNative(arena, callback),
+            userParam
+        );
+    }
+    public void debugMessageCallbackARB(
+        GLDEBUGPROCARB callback,
+        @Pointer(comment="void*") @NotNull MemorySegment userParam
+    ) {
+        debugMessageCallbackARB(
+            Arena.global(),
+            callback,
+            userParam
+        );
+    }
 
     public void debugMessageCallbackKHR(
         @Pointer(comment="GLDEBUGPROCKHR") @NotNull MemorySegment callback,
@@ -5950,6 +5990,26 @@ public sealed class GL implements GLConstants permits GLCompatibility {
         } catch (Throwable e) {
             throw new RuntimeException(e);
         }
+    }
+    public void debugMessageCallbackKHR(
+        Arena arena,
+        GLDEBUGPROCKHR callback,
+        @Pointer(comment="void*") @NotNull MemorySegment userParam
+    ) {
+        debugMessageCallbackKHR(
+            GLDEBUGPROCKHR.ofNative(arena, callback),
+            userParam
+        );
+    }
+    public void debugMessageCallbackKHR(
+        GLDEBUGPROCKHR callback,
+        @Pointer(comment="void*") @NotNull MemorySegment userParam
+    ) {
+        debugMessageCallbackKHR(
+            Arena.global(),
+            callback,
+            userParam
+        );
     }
 
     public void debugMessageControl(

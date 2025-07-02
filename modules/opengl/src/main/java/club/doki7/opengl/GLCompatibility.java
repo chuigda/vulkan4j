@@ -4248,6 +4248,26 @@ public final class GLCompatibility extends GL {
             throw new RuntimeException(e);
         }
     }
+    public void debugMessageCallbackAMD(
+        Arena arena,
+        GLDEBUGPROCAMD callback,
+        @Pointer(comment="void*") @NotNull MemorySegment userParam
+    ) {
+        debugMessageCallbackAMD(
+            GLDEBUGPROCAMD.ofNative(arena, callback),
+            userParam
+        );
+    }
+    public void debugMessageCallbackAMD(
+        GLDEBUGPROCAMD callback,
+        @Pointer(comment="void*") @NotNull MemorySegment userParam
+    ) {
+        debugMessageCallbackAMD(
+            Arena.global(),
+            callback,
+            userParam
+        );
+    }
 
     public void debugMessageEnableAMD(
         @NativeType("GLenum") int category,
