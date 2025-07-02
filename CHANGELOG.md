@@ -11,7 +11,7 @@ Upgrade wrapper modules to v0.4.3.
     ```java
     private static final void callback(...) { ... }
     MethodHandle mh = MethodHandles.lookup().findStatic(...);
-    MemorySegemnt segment = Linker.nativeLinker().upcallStub(...);
+    MemorySegment segment = Linker.nativeLinker().upcallStub(...);
     library.commandThatUsesFunctionPointer(segment);
     ```
   
