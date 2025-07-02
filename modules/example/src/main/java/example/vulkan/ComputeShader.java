@@ -38,7 +38,6 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.Objects;
 
-import club.doki7.vulkan.VkFunctionTypes.PFN_vkDebugUtilsMessengerCallbackEXT;
 
 final class Application {
     static void applicationStart(ISharedLibrary libVMA, VkStaticCommands sCmd, VkEntryCommands eCmd, Arena arena) {
@@ -66,12 +65,7 @@ final class Application {
                         VkDebugUtilsMessageTypeFlagsEXT.GENERAL
                         | VkDebugUtilsMessageTypeFlagsEXT.VALIDATION
                         | VkDebugUtilsMessageTypeFlagsEXT.PERFORMANCE
-                );
-        debugUtilsMessengerCreateInfo.pfnUserCallback((_, _, pCallbackData, _) -> {
-            var callbackData = new VkDebugUtilsMessengerCallbackDataEXT(pCallbackData.reinterpret(VkDebugUtilsMessengerCallbackDataEXT.BYTES));
-            System.err.println("Validation layer: " + Objects.requireNonNull(callbackData.pMessage()).readString());
-            return VkConstants.FALSE;
-        });
+                ).pfnUserCallback(Application::debugCallback);
 
         instanceCreateInfo.pNext(debugUtilsMessengerCreateInfo);
 
