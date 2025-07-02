@@ -1012,14 +1012,6 @@ class Application {
         deviceCommands.destroySwapchainKHR(device, swapChain, null);
     }
 
-    private void framebufferResizeCallback(
-            @Pointer(comment="GLFWwindow*") MemorySegment ignoredWindow,
-            int ignoredWidth,
-            int ignoredHeight
-    ) {
-        framebufferResized = true;
-    }
-
     private int findMemoryType(int typeFilter, @Bitmask(VkMemoryPropertyFlags.class) int properties) {
         try (var arena = Arena.ofConfined()) {
             var memProperties = VkPhysicalDeviceMemoryProperties.allocate(arena);

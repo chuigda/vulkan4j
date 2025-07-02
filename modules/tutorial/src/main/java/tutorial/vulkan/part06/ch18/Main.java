@@ -973,14 +973,6 @@ class Application {
         deviceCommands.destroySwapchainKHR(device, swapChain, null);
     }
 
-    private void framebufferResizeCallback(
-            @Pointer(comment="GLFWwindow*") MemorySegment ignoredWindow,
-            int ignoredWidth,
-            int ignoredHeight
-    ) {
-        framebufferResized = true;
-    }
-
     private static @NativeType("VkBool32") @Unsigned int debugCallback(
             @Bitmask(VkDebugUtilsMessageSeverityFlagsEXT.class) int ignoredMessageSeverity,
             @Bitmask(VkDebugUtilsMessageTypeFlagsEXT.class) int ignoredMessageType,

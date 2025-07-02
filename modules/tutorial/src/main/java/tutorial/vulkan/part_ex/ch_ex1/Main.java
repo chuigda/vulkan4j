@@ -1516,14 +1516,6 @@ class Application {
         deviceCommands.destroySwapchainKHR(device, swapChain, null);
     }
 
-    private void framebufferResizeCallback(
-            @Pointer(comment="GLFWwindow*") MemorySegment ignoredWindow,
-            int ignoredWidth,
-            int ignoredHeight
-    ) {
-        framebufferResized = true;
-    }
-
     private record Pair<T1, T2>(T1 first, T2 second) {}
 
     private Pair<VkBuffer, VmaAllocation> createBuffer(

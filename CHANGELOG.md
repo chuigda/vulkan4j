@@ -2,7 +2,7 @@
 
 Upgrade wrapper modules to v0.4.3.
 
-### Functionality updates
+### Quality of Life updates
 
 - (@HoshinoTented + @chuigda) Implemented function pointer auto-wrapping mechanism, also `setter` shorthand methods for function pointer fields, and auto-wrapping for function-pointer type command parameters. This allows you to directly pass Java functions and lambdas to C function pointer fields and parameters, without needing to manually create an upcall `MethodHandle`s.
 
