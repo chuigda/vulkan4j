@@ -253,14 +253,19 @@ class EnumVariant(
 
 
 /**
- * @param pfnApi false if we should generate functional interface and api sugar, true otherwise.
+ * @param pfnNativeApi whether instances of this function type should only point to native API
+ * functions. For example, functions in `VmaVulkanFunctions` should be all pointers to Vulkan
+ * functions, not user-defined functions, so their types (`PFN_vkCreateInstance`, etc.) should have
+ * this set to `true`. On the contrary, function pointers of type
+ * `PFN_vkDebugUtilsMessengerCallbackEXT` are meant to be provided by users, so they should have
+ * this field set to `false`.
  */
 class FunctionTypedef(
     name: Identifier,
     val params: List<Type>,
     val result: Type,
     val isPointer: Boolean = true,
-    val pfnApi: Boolean = false
+    val pfnNativeApi: Boolean = false
 ) : Entity(name) {
     constructor(name: String, params: List<Type>, result: Type) : this(name.intern(), params, result)
 

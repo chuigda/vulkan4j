@@ -1,6 +1,7 @@
 package club.doki7.babel.codegen
 
 import club.doki7.babel.ctype.CArrayType
+import club.doki7.babel.ctype.CFunctionPointerType
 import club.doki7.babel.ctype.CHandleType
 import club.doki7.babel.ctype.CLongType
 import club.doki7.babel.ctype.CNonRefType
@@ -295,9 +296,11 @@ private fun generateInputOutputType(type: CType, optional: Boolean): String {
             }
             is CHandleType -> "${nullablePrefix}@Pointer ${type.pointee.name}.Ptr"
             is CPointerType -> "${nullablePrefix}PointerPtr"
+            is CFunctionPointerType -> "${nullablePrefix}@Pointer(comment=\"${type.cType}\") PointerPtr"
             is CVoidType -> type.jType
             else -> error("unsupported pointer type: $type")
         }
+        is CFunctionPointerType -> type.jType
         is CHandleType -> "${nullablePrefix}${type.name}"
         is CArrayType -> {
             val flattened = type.flattened
@@ -314,7 +317,7 @@ private fun generateInputOutputType(type: CType, optional: Boolean): String {
 
 private fun generateInputConvert(type: CType, param: Param) = when (type) {
     is CPointerType -> when (type.pointee) {
-        is CNonRefType, is CStructType, is CHandleType, is CPointerType -> if (param.optional) {
+        is CNonRefType, is CStructType, is CHandleType, is CPointerType, is CFunctionPointerType -> if (param.optional) {
             "(MemorySegment) (${param.name} != null ? ${param.name}.segment() : MemorySegment.NULL)"
         }
         else {
@@ -348,10 +351,8 @@ private fun generateInputConvert(type: CType, param: Param) = when (type) {
             "(NativeLayout.C_LONG_SIZE == 4) ? ((Object)(int) ${param.name}) : ((Object)(long) ${param.name})"
         }
     }
-    is CNonRefType -> {
-        param.name.toString()
-    }
-    else -> throw Exception("unsupported parameter type: $type")
+    is CNonRefType, is CFunctionPointerType -> param.name.toString()
+    is CVoidType -> error("void type cannot be used as a parameter type")
 }
 
 private fun generateResultConvert(retType: CType): Triple<String, String, String?> = when (retType) {
@@ -371,7 +372,7 @@ private fun generateResultConvert(retType: CType): Triple<String, String, String
             "",
             "return s.equals(MemorySegment.NULL) ? null : new ${retType.pointee.name}.Ptr(s);"
         )
-        is CPointerType -> Triple(
+        is CPointerType, is CFunctionPointerType -> Triple(
             "MemorySegment s = (MemorySegment) ",
             "",
             "return s.equals(MemorySegment.NULL) ? null : new PointerPtr(s);"
@@ -421,5 +422,11 @@ private fun generateResultConvert(retType: CType): Triple<String, String, String
         ")",
         null
     )
-    else -> error("unsupported return type: $retType")
+    is CFunctionPointerType -> Triple(
+        "return (MemorySegment) ",
+        "",
+        null
+    )
+    is CArrayType -> error("array type cannot be used as a return type")
+    is CVoidType -> error("void return type should not be handed by `generateResultConvert` function")
 }

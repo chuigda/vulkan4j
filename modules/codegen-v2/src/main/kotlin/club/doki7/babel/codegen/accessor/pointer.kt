@@ -3,7 +3,6 @@ package club.doki7.babel.codegen.accessor
 import club.doki7.babel.codegen.LayoutField
 import club.doki7.babel.codegen.defun
 import club.doki7.babel.ctype.*
-import club.doki7.babel.util.DocList
 import club.doki7.babel.util.buildDoc
 
 fun generatePtrAccessor(className: String, type: CPointerType, member: LayoutField.Typed) = when (type.pointee) {
@@ -14,23 +13,7 @@ fun generatePtrAccessor(className: String, type: CPointerType, member: LayoutFie
     is CHandleType -> generatePHandleAccessor(className, type.pointee, member)
     is CStructType -> generatePStructureAccessor(className, type.pointee, member)
     is CArrayType -> error("pointer to array is not supported yet")
-}
-
-private fun DocList.generatePFunAccessor(
-    className: String,
-    type: CPointerType,
-    interfaceName: String,
-    member: LayoutField.Typed
-) {
-    defun("public", className, member.name, "@NotNull $interfaceName value") {
-        +"return ${member.name}($interfaceName.ofNative(value));"
-    }
-
-    +""
-
-    defun("public", className, member.name, "@NotNull Arena arena", "@NotNull $interfaceName value") {
-        +"return ${member.name}($interfaceName.ofNative(arena, value));"
-    }
+    is CFunctionPointerType -> error("pointer to function pointer (FunctionType**) is not supported yet")
 }
 
 private fun generatePVoidAccessor(className: String, type: CPointerType, member: LayoutField.Typed) = buildDoc {
@@ -47,12 +30,6 @@ private fun generatePVoidAccessor(className: String, type: CPointerType, member:
         +"return this;"
     }
     +""
-
-    val kind = type.kind
-    if (kind is CPointerType.Kind.Function && !kind.typedef.pfnApi) {
-        generatePFunAccessor(className, type, kind.typedef.name.value, member)
-        +""
-    }
 
     defun("public", className, member.name, "@Nullable IPointer pointer") {
         +"${member.name}(pointer != null ? pointer.segment() : MemorySegment.NULL);"

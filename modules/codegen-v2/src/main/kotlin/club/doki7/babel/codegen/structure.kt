@@ -697,6 +697,7 @@ private fun generateMemberAccessor(className: String, layout: LayoutField.Typed)
         is CHandleType -> generateHandleAccessor(className, cType, layout)
         is CNonRefType -> generateNonRefAccessor(className, cType, layout)
         is CPointerType -> generatePtrAccessor(className, cType, layout)
+        is CFunctionPointerType -> generatePFNAccessor(className, cType, layout)
         is CStructType -> generateStructureTypeAccessor(className, cType, layout)
         is CVoidType -> throw Exception("void type not allowed in struct")
     }
@@ -705,6 +706,7 @@ private fun generateMemberAccessor(className: String, layout: LayoutField.Typed)
 private fun tryFindRootNonPlainType(cType: CType): String? = when (cType) {
     is CArrayType -> tryFindRootNonPlainType(cType.element)
     is CPointerType -> tryFindRootNonPlainType(cType.pointee)
+    is CFunctionPointerType -> if (cType.functionTypedef.pfnNativeApi) null else cType.functionTypedef.name.value
     is CHandleType -> cType.name
     is CEnumType -> cType.name
     is CStructType -> cType.name

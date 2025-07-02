@@ -16,7 +16,7 @@ fun vulkanAdditionalRegistry(): Registry<EmptyMergeable> {
             name,
             emptyList(),
             IdentifierType("void".intern()),
-            pfnApi = true
+            pfnNativeApi = true
         )
     }
 

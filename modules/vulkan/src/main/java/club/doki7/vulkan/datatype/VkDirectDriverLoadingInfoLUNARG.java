@@ -28,7 +28,7 @@ import club.doki7.vulkan.VkFunctionTypes.*;
 ///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
 ///     void* pNext; // optional // @link substring="pNext" target="#pNext"
 ///     VkDirectDriverLoadingFlagsLUNARG flags; // @link substring="VkDirectDriverLoadingFlagsLUNARG" target="VkDirectDriverLoadingFlagsLUNARG" @link substring="flags" target="#flags"
-///     PFN_vkGetInstanceProcAddrLUNARG pfnGetInstanceProcAddr; // @link substring="pfnGetInstanceProcAddr" target="#pfnGetInstanceProcAddr"
+///     PFN_vkGetInstanceProcAddrLUNARG pfnGetInstanceProcAddr; // @link substring="PFN_vkGetInstanceProcAddrLUNARG" target="PFN_vkGetInstanceProcAddrLUNARG" @link substring="pfnGetInstanceProcAddr" target="#pfnGetInstanceProcAddr"
 /// } VkDirectDriverLoadingInfoLUNARG;
 /// }
 ///

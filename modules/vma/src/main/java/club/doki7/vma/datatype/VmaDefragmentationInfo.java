@@ -35,7 +35,7 @@ import static club.doki7.vulkan.VkConstants.*;
 ///     VmaPool pool; // optional // @link substring="VmaPool" target="VmaPool" @link substring="pool" target="#pool"
 ///     VkDeviceSize maxBytesPerPass; // @link substring="maxBytesPerPass" target="#maxBytesPerPass"
 ///     uint32_t maxAllocationsPerPass; // @link substring="maxAllocationsPerPass" target="#maxAllocationsPerPass"
-///     PFN_vmaCheckDefragmentationBreakFunction pfnBreakCallback; // optional // @link substring="pfnBreakCallback" target="#pfnBreakCallback"
+///     PFN_vmaCheckDefragmentationBreakFunction pfnBreakCallback; // optional // @link substring="PFN_vmaCheckDefragmentationBreakFunction" target="PFN_vmaCheckDefragmentationBreakFunction" @link substring="pfnBreakCallback" target="#pfnBreakCallback"
 ///     void* pBreakCallbackUserData; // optional // @link substring="pBreakCallbackUserData" target="#pBreakCallbackUserData"
 /// } VmaDefragmentationInfo;
 /// }

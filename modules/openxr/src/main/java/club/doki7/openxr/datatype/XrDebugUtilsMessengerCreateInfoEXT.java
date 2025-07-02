@@ -33,7 +33,7 @@ import club.doki7.vulkan.handle.*;
 ///     void const* next; // @link substring="next" target="#next"
 ///     XrDebugUtilsMessageSeverityFlagsEXT messageSeverities; // @link substring="XrDebugUtilsMessageSeverityFlagsEXT" target="XrDebugUtilsMessageSeverityFlagsEXT" @link substring="messageSeverities" target="#messageSeverities"
 ///     XrDebugUtilsMessageTypeFlagsEXT messageTypes; // @link substring="XrDebugUtilsMessageTypeFlagsEXT" target="XrDebugUtilsMessageTypeFlagsEXT" @link substring="messageTypes" target="#messageTypes"
-///     PFN_xrDebugUtilsMessengerCallbackEXT userCallback; // @link substring="userCallback" target="#userCallback"
+///     PFN_xrDebugUtilsMessengerCallbackEXT userCallback; // @link substring="PFN_xrDebugUtilsMessengerCallbackEXT" target="PFN_xrDebugUtilsMessengerCallbackEXT" @link substring="userCallback" target="#userCallback"
 ///     void* userData; // optional // @link substring="userData" target="#userData"
 /// } XrDebugUtilsMessengerCreateInfoEXT;
 /// }

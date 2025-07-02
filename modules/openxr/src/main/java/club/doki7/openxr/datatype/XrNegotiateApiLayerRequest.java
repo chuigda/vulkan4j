@@ -34,8 +34,8 @@ import club.doki7.vulkan.handle.*;
 ///     size_t structSize; // @link substring="structSize" target="#structSize"
 ///     uint32_t layerInterfaceVersion; // @link substring="layerInterfaceVersion" target="#layerInterfaceVersion"
 ///     XrVersion layerApiVersion; // @link substring="layerApiVersion" target="#layerApiVersion"
-///     PFN_xrGetInstanceProcAddr getInstanceProcAddr; // @link substring="getInstanceProcAddr" target="#getInstanceProcAddr"
-///     PFN_xrCreateApiLayerInstance createApiLayerInstance; // @link substring="createApiLayerInstance" target="#createApiLayerInstance"
+///     PFN_xrGetInstanceProcAddr getInstanceProcAddr; // @link substring="PFN_xrGetInstanceProcAddr" target="PFN_xrGetInstanceProcAddr" @link substring="getInstanceProcAddr" target="#getInstanceProcAddr"
+///     PFN_xrCreateApiLayerInstance createApiLayerInstance; // @link substring="PFN_xrCreateApiLayerInstance" target="PFN_xrCreateApiLayerInstance" @link substring="createApiLayerInstance" target="#createApiLayerInstance"
 /// } XrNegotiateApiLayerRequest;
 /// }
 ///
