@@ -1,5 +1,9 @@
 ## UNRELEASED v0.4.3
 
+### Functionality updates
+
+- (@HoshinoTented) Implemented function pointer auto-wrapping mechanism, also `setter` shorthand methods for function pointer fields. This allows you to directly pass Java functions and lambdas to C function pointer fields, without needing to manually create an upcall MethodHandle.
+
 ### Bugfixes
 
 - (@HoshinoTented + @chuigda) Fixed issue #131, where functions accepting and returning C `long` types were incorrectly generated. Since only X11 relevant APIs have been using `long` type as input and return types, this issue have little impact on most users.  
