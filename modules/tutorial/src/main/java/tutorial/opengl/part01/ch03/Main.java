@@ -141,14 +141,6 @@ class Application {
         glfw.terminate();
     }
 
-    private void framebufferResizeCallback(
-            @Pointer(target=GLFWwindow.class) MemorySegment window,
-            int width,
-            int height
-    ) {
-        gl.viewport(0, 0, width, height);
-    }
-
     private void processInput(GLFWwindow window) {
         if (glfw.getKey(window, GLFW.KEY_ESCAPE) == GLFW.PRESS) {
             glfw.setWindowShouldClose(window, GLFW.TRUE);
