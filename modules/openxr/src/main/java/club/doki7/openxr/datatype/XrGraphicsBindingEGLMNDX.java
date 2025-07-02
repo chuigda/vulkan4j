@@ -31,7 +31,7 @@ import club.doki7.vulkan.handle.*;
 /// typedef struct XrGraphicsBindingEGLMNDX {
 ///     XrStructureType type; // @link substring="XrStructureType" target="XrStructureType" @link substring="type" target="#type"
 ///     void const* next; // @link substring="next" target="#next"
-///     PFN_xrEglGetProcAddressMNDX getProcAddress; // @link substring="getProcAddress" target="#getProcAddress"
+///     PFN_xrEglGetProcAddressMNDX getProcAddress; // @link substring="PFN_xrEglGetProcAddressMNDX" target="PFN_xrEglGetProcAddressMNDX" @link substring="getProcAddress" target="#getProcAddress"
 ///     EGLDisplay display; // @link substring="display" target="#display"
 ///     EGLConfig config; // @link substring="config" target="#config"
 ///     EGLContext context; // @link substring="context" target="#context"

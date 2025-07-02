@@ -30,7 +30,7 @@ import club.doki7.vulkan.VkFunctionTypes.*;
 ///     VkDebugUtilsMessengerCreateFlagsEXT flags; // optional // @link substring="VkDebugUtilsMessengerCreateFlagsEXT" target="VkDebugUtilsMessengerCreateFlagsEXT" @link substring="flags" target="#flags"
 ///     VkDebugUtilsMessageSeverityFlagsEXT messageSeverity; // @link substring="VkDebugUtilsMessageSeverityFlagsEXT" target="VkDebugUtilsMessageSeverityFlagsEXT" @link substring="messageSeverity" target="#messageSeverity"
 ///     VkDebugUtilsMessageTypeFlagsEXT messageType; // @link substring="VkDebugUtilsMessageTypeFlagsEXT" target="VkDebugUtilsMessageTypeFlagsEXT" @link substring="messageType" target="#messageType"
-///     PFN_vkDebugUtilsMessengerCallbackEXT pfnUserCallback; // @link substring="pfnUserCallback" target="#pfnUserCallback"
+///     PFN_vkDebugUtilsMessengerCallbackEXT pfnUserCallback; // @link substring="PFN_vkDebugUtilsMessengerCallbackEXT" target="PFN_vkDebugUtilsMessengerCallbackEXT" @link substring="pfnUserCallback" target="#pfnUserCallback"
 ///     void* pUserData; // optional // @link substring="pUserData" target="#pUserData"
 /// } VkDebugUtilsMessengerCreateInfoEXT;
 /// }
