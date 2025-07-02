@@ -13,7 +13,7 @@ fun generatePtrAccessor(className: String, type: CPointerType, member: LayoutFie
     is CNonRefType -> generatePNonRefAccessor(className, type.pointee, member)
     is CHandleType -> generatePHandleAccessor(className, type.pointee, member)
     is CStructType -> generatePStructureAccessor(className, type.pointee, member)
-    is CArrayType -> TODO()
+    is CArrayType -> error("pointer to array is not supported yet")
 }
 
 private fun DocList.generatePFunAccessor(

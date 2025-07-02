@@ -74,7 +74,6 @@ public class TestFloatPtr {
             ptr.write(1, 11.1f);
             ptr.write(2, 22.2f);
 
-            // TODO 不通的Slice提取方式不同吗?
             FloatPtr sliced = ptr.slice(1, 3);
             assertEquals(11.1f, sliced.read(0), "切片[1,3)中索引0的值不正确");
             assertEquals(22.2f, sliced.read(1), "切片[1,3)中索引1的值不正确");
