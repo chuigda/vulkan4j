@@ -4358,7 +4358,7 @@ public final class XR implements XRConstants {
     public @EnumType(XrResult.class) int getInstanceProcAddr(
         @Nullable XrInstance instance,
         BytePtr name,
-        PointerPtr function
+        @Pointer(comment="PFN_xrVoidFunction*") PointerPtr function
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$xrGetInstanceProcAddr);
         try {

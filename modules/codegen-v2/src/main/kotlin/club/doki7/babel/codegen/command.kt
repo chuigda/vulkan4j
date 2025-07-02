@@ -296,7 +296,7 @@ private fun generateInputOutputType(type: CType, optional: Boolean): String {
             }
             is CHandleType -> "${nullablePrefix}@Pointer ${type.pointee.name}.Ptr"
             is CPointerType -> "${nullablePrefix}PointerPtr"
-            is CFunctionPointerType -> "${nullablePrefix}PointerPtr"
+            is CFunctionPointerType -> "${nullablePrefix}@Pointer(comment=\"${type.cType}\") PointerPtr"
             is CVoidType -> type.jType
             else -> error("unsupported pointer type: $type")
         }

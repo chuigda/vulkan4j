@@ -56,7 +56,7 @@ data class CPointerType(
     override val jLayoutType: String = "AddressLayout"
 
     override val cType: String = buildString {
-        if (pointee is CFixedIntType && pointee.comment != null) {
+        if (pointee is ICommentable<*> && pointee.comment != null) {
             append(pointee.comment)
         } else {
             append(pointee.cType)
@@ -73,10 +73,16 @@ data class CPointerType(
 }
 
 data class CFunctionPointerType(val functionTypedef: FunctionTypedef) : CType {
-    override val jType: String = """@Pointer(comment="${functionTypedef.name}") @NotNull MemorySegment"""
+    override val cType: String = buildString {
+        append(functionTypedef.name)
+        if (!functionTypedef.isPointer) {
+            append("*")
+        }
+    }
+
+    override val jType: String = """@Pointer(comment="$cType") @NotNull MemorySegment"""
     override val jLayout: String = "ValueLayout.ADDRESS"
     override val jLayoutType: String = "AddressLayout"
-    override val cType: String = "${functionTypedef.name}*"
 }
 
 data class CHandleType(val name: String) : CType {
