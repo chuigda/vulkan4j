@@ -27,7 +27,7 @@ import club.doki7.webgpu.WGPUFunctionTypes.*;
 /// typedef struct WGPURequestDeviceCallbackInfo {
 ///     WGPUChainedStruct const* nextInChain; // optional // @link substring="WGPUChainedStruct" target="WGPUChainedStruct" @link substring="nextInChain" target="#nextInChain"
 ///     WGPUCallbackMode mode; // @link substring="WGPUCallbackMode" target="WGPUCallbackMode" @link substring="mode" target="#mode"
-///     WGPURequestDeviceCallback callback; // optional // @link substring="WGPURequestDeviceCallback" target="WGPURequestDeviceCallback" @link substring="callback" target="#callback"
+///     WGPURequestDeviceCallback callback; // optional // @link substring="WGPURequestDeviceCallback" target="IWGPURequestDeviceCallback" @link substring="callback" target="#callback"
 ///     void* userdata1; // optional // @link substring="userdata1" target="#userdata1"
 ///     void* userdata2; // optional // @link substring="userdata2" target="#userdata2"
 /// } WGPURequestDeviceCallbackInfo;

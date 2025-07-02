@@ -194,7 +194,11 @@ fun generateStructure(
                     val maybeOptionalComment = if (it.optional) " // optional" else ""
                     val cType = it.type
                     val fieldTypeSubstring = tryFindRootNonPlainType(cType)
-                    val fieldTypeTarget = tryFindIdentifierType(it.unresolvedType)
+                    val fieldTypeTarget = if (cType is CFunctionPointerType && !cType.functionTypedef.pfnNativeApi) {
+                        cType.functionTypedef.interfaceName
+                    } else {
+                        tryFindIdentifierType(it.unresolvedType)
+                    }
                     val maybeTypeLink = if (fieldTypeSubstring != null && fieldTypeTarget != null) {
                         " @link substring=\"$fieldTypeSubstring\" target=\"${fieldTypeTarget}\""
                     } else {

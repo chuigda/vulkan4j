@@ -28,7 +28,7 @@ import club.doki7.vulkan.VkFunctionTypes.*;
 ///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
 ///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
 ///     VkDebugReportFlagsEXT flags; // optional // @link substring="VkDebugReportFlagsEXT" target="VkDebugReportFlagsEXT" @link substring="flags" target="#flags"
-///     PFN_vkDebugReportCallbackEXT pfnCallback; // @link substring="PFN_vkDebugReportCallbackEXT" target="PFN_vkDebugReportCallbackEXT" @link substring="pfnCallback" target="#pfnCallback"
+///     PFN_vkDebugReportCallbackEXT pfnCallback; // @link substring="PFN_vkDebugReportCallbackEXT" target="IPFN_vkDebugReportCallbackEXT" @link substring="pfnCallback" target="#pfnCallback"
 ///     void* pUserData; // optional // @link substring="pUserData" target="#pUserData"
 /// } VkDebugReportCallbackCreateInfoEXT;
 /// }

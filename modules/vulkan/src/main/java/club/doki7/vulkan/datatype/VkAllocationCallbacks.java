@@ -26,11 +26,11 @@ import club.doki7.vulkan.VkFunctionTypes.*;
 /// {@snippet lang=c :
 /// typedef struct VkAllocationCallbacks {
 ///     void* pUserData; // optional // @link substring="pUserData" target="#pUserData"
-///     PFN_vkAllocationFunction pfnAllocation; // @link substring="PFN_vkAllocationFunction" target="PFN_vkAllocationFunction" @link substring="pfnAllocation" target="#pfnAllocation"
-///     PFN_vkReallocationFunction pfnReallocation; // @link substring="PFN_vkReallocationFunction" target="PFN_vkReallocationFunction" @link substring="pfnReallocation" target="#pfnReallocation"
-///     PFN_vkFreeFunction pfnFree; // @link substring="PFN_vkFreeFunction" target="PFN_vkFreeFunction" @link substring="pfnFree" target="#pfnFree"
-///     PFN_vkInternalAllocationNotification pfnInternalAllocation; // optional // @link substring="PFN_vkInternalAllocationNotification" target="PFN_vkInternalAllocationNotification" @link substring="pfnInternalAllocation" target="#pfnInternalAllocation"
-///     PFN_vkInternalFreeNotification pfnInternalFree; // optional // @link substring="PFN_vkInternalFreeNotification" target="PFN_vkInternalFreeNotification" @link substring="pfnInternalFree" target="#pfnInternalFree"
+///     PFN_vkAllocationFunction pfnAllocation; // @link substring="PFN_vkAllocationFunction" target="IPFN_vkAllocationFunction" @link substring="pfnAllocation" target="#pfnAllocation"
+///     PFN_vkReallocationFunction pfnReallocation; // @link substring="PFN_vkReallocationFunction" target="IPFN_vkReallocationFunction" @link substring="pfnReallocation" target="#pfnReallocation"
+///     PFN_vkFreeFunction pfnFree; // @link substring="PFN_vkFreeFunction" target="IPFN_vkFreeFunction" @link substring="pfnFree" target="#pfnFree"
+///     PFN_vkInternalAllocationNotification pfnInternalAllocation; // optional // @link substring="PFN_vkInternalAllocationNotification" target="IPFN_vkInternalAllocationNotification" @link substring="pfnInternalAllocation" target="#pfnInternalAllocation"
+///     PFN_vkInternalFreeNotification pfnInternalFree; // optional // @link substring="PFN_vkInternalFreeNotification" target="IPFN_vkInternalFreeNotification" @link substring="pfnInternalFree" target="#pfnInternalFree"
 /// } VkAllocationCallbacks;
 /// }
 ///

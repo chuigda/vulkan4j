@@ -33,8 +33,8 @@ import club.doki7.vulkan.handle.*;
 ///     uint32_t structVersion; // @link substring="structVersion" target="#structVersion"
 ///     size_t structSize; // @link substring="structSize" target="#structSize"
 ///     char[XR_MAX_API_LAYER_NAME_SIZE] layerName; // @link substring="layerName" target="#layerName"
-///     PFN_xrGetInstanceProcAddr nextGetInstanceProcAddr; // @link substring="PFN_xrGetInstanceProcAddr" target="PFN_xrGetInstanceProcAddr" @link substring="nextGetInstanceProcAddr" target="#nextGetInstanceProcAddr"
-///     PFN_xrCreateApiLayerInstance nextCreateApiLayerInstance; // @link substring="PFN_xrCreateApiLayerInstance" target="PFN_xrCreateApiLayerInstance" @link substring="nextCreateApiLayerInstance" target="#nextCreateApiLayerInstance"
+///     PFN_xrGetInstanceProcAddr nextGetInstanceProcAddr; // @link substring="PFN_xrGetInstanceProcAddr" target="IPFN_xrGetInstanceProcAddr" @link substring="nextGetInstanceProcAddr" target="#nextGetInstanceProcAddr"
+///     PFN_xrCreateApiLayerInstance nextCreateApiLayerInstance; // @link substring="PFN_xrCreateApiLayerInstance" target="IPFN_xrCreateApiLayerInstance" @link substring="nextCreateApiLayerInstance" target="#nextCreateApiLayerInstance"
 ///     XrApiLayerNextInfo* next; // @link substring="XrApiLayerNextInfo" target="XrApiLayerNextInfo" @link substring="next" target="#next"
 /// } XrApiLayerNextInfo;
 /// }

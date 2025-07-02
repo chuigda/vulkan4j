@@ -33,9 +33,9 @@ import club.doki7.glfw.GLFWFunctionTypes.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct GLFWallocator {
-///     GLFWallocatefun allocate; // @link substring="GLFWallocatefun" target="GLFWallocatefun" @link substring="allocate" target="#allocate"
-///     GLFWreallocatefun reallocate; // @link substring="GLFWreallocatefun" target="GLFWreallocatefun" @link substring="reallocate" target="#reallocate"
-///     GLFWdeallocatefun deallocate; // @link substring="GLFWdeallocatefun" target="GLFWdeallocatefun" @link substring="deallocate" target="#deallocate"
+///     GLFWallocatefun allocate; // @link substring="GLFWallocatefun" target="IGLFWallocatefun" @link substring="allocate" target="#allocate"
+///     GLFWreallocatefun reallocate; // @link substring="GLFWreallocatefun" target="IGLFWreallocatefun" @link substring="reallocate" target="#reallocate"
+///     GLFWdeallocatefun deallocate; // @link substring="GLFWdeallocatefun" target="IGLFWdeallocatefun" @link substring="deallocate" target="#deallocate"
 ///     void* user; // @link substring="user" target="#user"
 /// } GLFWallocator;
 /// }

@@ -22,9 +22,9 @@ import club.doki7.stb.image.STBIFunctionTypes.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct stbi_io_callbacks {
-///     PFN_stbi_io_callbacks_read read; // @link substring="PFN_stbi_io_callbacks_read" target="PFN_stbi_io_callbacks_read" @link substring="read" target="#read"
-///     PFN_stbi_io_callbacks_skip skip; // @link substring="PFN_stbi_io_callbacks_skip" target="PFN_stbi_io_callbacks_skip" @link substring="skip" target="#skip"
-///     PFN_stbi_io_callbacks_eof eof; // @link substring="PFN_stbi_io_callbacks_eof" target="PFN_stbi_io_callbacks_eof" @link substring="eof" target="#eof"
+///     PFN_stbi_io_callbacks_read read; // @link substring="PFN_stbi_io_callbacks_read" target="IPFN_stbi_io_callbacks_read" @link substring="read" target="#read"
+///     PFN_stbi_io_callbacks_skip skip; // @link substring="PFN_stbi_io_callbacks_skip" target="IPFN_stbi_io_callbacks_skip" @link substring="skip" target="#skip"
+///     PFN_stbi_io_callbacks_eof eof; // @link substring="PFN_stbi_io_callbacks_eof" target="IPFN_stbi_io_callbacks_eof" @link substring="eof" target="#eof"
 /// } stbi_io_callbacks;
 /// }
 ///

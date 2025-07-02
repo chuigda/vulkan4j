@@ -27,7 +27,7 @@ import club.doki7.webgpu.WGPUFunctionTypes.*;
 /// typedef struct WGPUUncapturedErrorCallbackInfo {
 ///     WGPUChainedStruct const* nextInChain; // optional // @link substring="WGPUChainedStruct" target="WGPUChainedStruct" @link substring="nextInChain" target="#nextInChain"
 ///     WGPUCallbackMode mode; // @link substring="WGPUCallbackMode" target="WGPUCallbackMode" @link substring="mode" target="#mode"
-///     WGPUUncapturedErrorCallback callback; // optional // @link substring="WGPUUncapturedErrorCallback" target="WGPUUncapturedErrorCallback" @link substring="callback" target="#callback"
+///     WGPUUncapturedErrorCallback callback; // optional // @link substring="WGPUUncapturedErrorCallback" target="IWGPUUncapturedErrorCallback" @link substring="callback" target="#callback"
 ///     void* userdata1; // optional // @link substring="userdata1" target="#userdata1"
 ///     void* userdata2; // optional // @link substring="userdata2" target="#userdata2"
 /// } WGPUUncapturedErrorCallbackInfo;

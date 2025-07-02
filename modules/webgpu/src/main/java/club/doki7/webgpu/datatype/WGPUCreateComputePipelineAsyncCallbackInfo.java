@@ -27,7 +27,7 @@ import club.doki7.webgpu.WGPUFunctionTypes.*;
 /// typedef struct WGPUCreateComputePipelineAsyncCallbackInfo {
 ///     WGPUChainedStruct const* nextInChain; // optional // @link substring="WGPUChainedStruct" target="WGPUChainedStruct" @link substring="nextInChain" target="#nextInChain"
 ///     WGPUCallbackMode mode; // @link substring="WGPUCallbackMode" target="WGPUCallbackMode" @link substring="mode" target="#mode"
-///     WGPUCreateComputePipelineAsyncCallback callback; // optional // @link substring="WGPUCreateComputePipelineAsyncCallback" target="WGPUCreateComputePipelineAsyncCallback" @link substring="callback" target="#callback"
+///     WGPUCreateComputePipelineAsyncCallback callback; // optional // @link substring="WGPUCreateComputePipelineAsyncCallback" target="IWGPUCreateComputePipelineAsyncCallback" @link substring="callback" target="#callback"
 ///     void* userdata1; // optional // @link substring="userdata1" target="#userdata1"
 ///     void* userdata2; // optional // @link substring="userdata2" target="#userdata2"
 /// } WGPUCreateComputePipelineAsyncCallbackInfo;

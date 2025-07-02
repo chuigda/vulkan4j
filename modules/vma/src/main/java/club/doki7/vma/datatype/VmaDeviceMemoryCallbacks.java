@@ -34,8 +34,8 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VmaDeviceMemoryCallbacks {
-///     PFN_vmaAllocateDeviceMemoryFunction pfnAllocate; // optional // @link substring="PFN_vmaAllocateDeviceMemoryFunction" target="PFN_vmaAllocateDeviceMemoryFunction" @link substring="pfnAllocate" target="#pfnAllocate"
-///     PFN_vmaFreeDeviceMemoryFunction pfnFree; // optional // @link substring="PFN_vmaFreeDeviceMemoryFunction" target="PFN_vmaFreeDeviceMemoryFunction" @link substring="pfnFree" target="#pfnFree"
+///     PFN_vmaAllocateDeviceMemoryFunction pfnAllocate; // optional // @link substring="PFN_vmaAllocateDeviceMemoryFunction" target="IPFN_vmaAllocateDeviceMemoryFunction" @link substring="pfnAllocate" target="#pfnAllocate"
+///     PFN_vmaFreeDeviceMemoryFunction pfnFree; // optional // @link substring="PFN_vmaFreeDeviceMemoryFunction" target="IPFN_vmaFreeDeviceMemoryFunction" @link substring="pfnFree" target="#pfnFree"
 ///     void* pUserData; // optional // @link substring="pUserData" target="#pUserData"
 /// } VmaDeviceMemoryCallbacks;
 /// }

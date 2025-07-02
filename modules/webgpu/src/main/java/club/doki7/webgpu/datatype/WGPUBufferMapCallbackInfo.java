@@ -27,7 +27,7 @@ import club.doki7.webgpu.WGPUFunctionTypes.*;
 /// typedef struct WGPUBufferMapCallbackInfo {
 ///     WGPUChainedStruct const* nextInChain; // optional // @link substring="WGPUChainedStruct" target="WGPUChainedStruct" @link substring="nextInChain" target="#nextInChain"
 ///     WGPUCallbackMode mode; // @link substring="WGPUCallbackMode" target="WGPUCallbackMode" @link substring="mode" target="#mode"
-///     WGPUBufferMapCallback callback; // optional // @link substring="WGPUBufferMapCallback" target="WGPUBufferMapCallback" @link substring="callback" target="#callback"
+///     WGPUBufferMapCallback callback; // optional // @link substring="WGPUBufferMapCallback" target="IWGPUBufferMapCallback" @link substring="callback" target="#callback"
 ///     void* userdata1; // optional // @link substring="userdata1" target="#userdata1"
 ///     void* userdata2; // optional // @link substring="userdata2" target="#userdata2"
 /// } WGPUBufferMapCallbackInfo;
