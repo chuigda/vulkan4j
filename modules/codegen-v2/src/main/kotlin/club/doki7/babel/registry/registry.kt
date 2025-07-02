@@ -267,6 +267,8 @@ class FunctionTypedef(
     val isPointer: Boolean = true,
     val pfnNativeApi: Boolean = false
 ) : Entity(name) {
+    val interfaceName: String get() = "I${name}"
+
     constructor(name: String, params: List<Type>, result: Type) : this(name.intern(), params, result)
 
     constructor(name: String, params: List<Type>, result: Type, isPointer: Boolean) : this(name.intern(), params, result, isPointer)

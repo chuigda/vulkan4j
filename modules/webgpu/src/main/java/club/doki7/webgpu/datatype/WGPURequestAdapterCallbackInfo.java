@@ -27,7 +27,7 @@ import club.doki7.webgpu.WGPUFunctionTypes.*;
 /// typedef struct WGPURequestAdapterCallbackInfo {
 ///     WGPUChainedStruct const* nextInChain; // optional // @link substring="WGPUChainedStruct" target="WGPUChainedStruct" @link substring="nextInChain" target="#nextInChain"
 ///     WGPUCallbackMode mode; // @link substring="WGPUCallbackMode" target="WGPUCallbackMode" @link substring="mode" target="#mode"
-///     WGPURequestAdapterCallback callback; // optional // @link substring="callback" target="#callback"
+///     WGPURequestAdapterCallback callback; // optional // @link substring="WGPURequestAdapterCallback" target="WGPURequestAdapterCallback" @link substring="callback" target="#callback"
 ///     void* userdata1; // optional // @link substring="userdata1" target="#userdata1"
 ///     void* userdata2; // optional // @link substring="userdata2" target="#userdata2"
 /// } WGPURequestAdapterCallbackInfo;
@@ -227,12 +227,12 @@ public record WGPURequestAdapterCallbackInfo(@NotNull MemorySegment segment) imp
         return this;
     }
 
-    public WGPURequestAdapterCallbackInfo callback(@NotNull WGPURequestAdapterCallback value) {
-        return callback(WGPURequestAdapterCallback.ofNative(value));
+    public WGPURequestAdapterCallbackInfo callback(@NotNull IWGPURequestAdapterCallback value) {
+        return callback(IWGPURequestAdapterCallback.ofNative(value));
     }
 
-    public WGPURequestAdapterCallbackInfo callback(@NotNull Arena arena, @NotNull WGPURequestAdapterCallback value) {
-        return callback(WGPURequestAdapterCallback.ofNative(arena, value));
+    public WGPURequestAdapterCallbackInfo callback(@NotNull Arena arena, @NotNull IWGPURequestAdapterCallback value) {
+        return callback(IWGPURequestAdapterCallback.ofNative(arena, value));
     }
 
     public WGPURequestAdapterCallbackInfo callback(@Nullable IPointer pointer) {

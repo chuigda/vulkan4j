@@ -253,12 +253,12 @@ public record XrDebugUtilsMessengerCreateInfoEXT(@NotNull MemorySegment segment)
         return this;
     }
 
-    public XrDebugUtilsMessengerCreateInfoEXT userCallback(@NotNull PFN_xrDebugUtilsMessengerCallbackEXT value) {
-        return userCallback(PFN_xrDebugUtilsMessengerCallbackEXT.ofNative(value));
+    public XrDebugUtilsMessengerCreateInfoEXT userCallback(@NotNull IPFN_xrDebugUtilsMessengerCallbackEXT value) {
+        return userCallback(IPFN_xrDebugUtilsMessengerCallbackEXT.ofNative(value));
     }
 
-    public XrDebugUtilsMessengerCreateInfoEXT userCallback(@NotNull Arena arena, @NotNull PFN_xrDebugUtilsMessengerCallbackEXT value) {
-        return userCallback(PFN_xrDebugUtilsMessengerCallbackEXT.ofNative(arena, value));
+    public XrDebugUtilsMessengerCreateInfoEXT userCallback(@NotNull Arena arena, @NotNull IPFN_xrDebugUtilsMessengerCallbackEXT value) {
+        return userCallback(IPFN_xrDebugUtilsMessengerCallbackEXT.ofNative(arena, value));
     }
 
     public XrDebugUtilsMessengerCreateInfoEXT userCallback(@Nullable IPointer pointer) {

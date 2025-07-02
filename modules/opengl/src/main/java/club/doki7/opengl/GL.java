@@ -11,6 +11,7 @@ import club.doki7.ffm.RawFunctionLoader;
 import club.doki7.ffm.annotation.*;
 import club.doki7.ffm.ptr.*;
 import club.doki7.opengl.handle.*;
+import static club.doki7.opengl.GLFunctionTypes.*;
 
 public sealed class GL implements GLConstants permits GLCompatibility {
     public GL(RawFunctionLoader loader) {
@@ -5922,6 +5923,28 @@ public sealed class GL implements GLConstants permits GLCompatibility {
         }
     }
 
+    public void debugMessageCallback(
+        Arena arena,
+        IGLDEBUGPROC callback,
+        @Pointer(comment="void*") @NotNull MemorySegment userParam
+    ) {
+        debugMessageCallback(
+            IGLDEBUGPROC.ofNative(arena, callback),
+            userParam
+        );
+    }
+
+    public void debugMessageCallback(
+        IGLDEBUGPROC callback,
+        @Pointer(comment="void*") @NotNull MemorySegment userParam
+    ) {
+        debugMessageCallback(
+            Arena.global(),
+            callback,
+            userParam
+        );
+    }
+
     public void debugMessageCallbackARB(
         @Pointer(comment="GLDEBUGPROCARB") @NotNull MemorySegment callback,
         @Pointer(comment="void*") @NotNull MemorySegment userParam
@@ -5937,6 +5960,28 @@ public sealed class GL implements GLConstants permits GLCompatibility {
         }
     }
 
+    public void debugMessageCallbackARB(
+        Arena arena,
+        IGLDEBUGPROCARB callback,
+        @Pointer(comment="void*") @NotNull MemorySegment userParam
+    ) {
+        debugMessageCallbackARB(
+            IGLDEBUGPROCARB.ofNative(arena, callback),
+            userParam
+        );
+    }
+
+    public void debugMessageCallbackARB(
+        IGLDEBUGPROCARB callback,
+        @Pointer(comment="void*") @NotNull MemorySegment userParam
+    ) {
+        debugMessageCallbackARB(
+            Arena.global(),
+            callback,
+            userParam
+        );
+    }
+
     public void debugMessageCallbackKHR(
         @Pointer(comment="GLDEBUGPROCKHR") @NotNull MemorySegment callback,
         @Pointer(comment="void*") @NotNull MemorySegment userParam
@@ -5950,6 +5995,28 @@ public sealed class GL implements GLConstants permits GLCompatibility {
         } catch (Throwable e) {
             throw new RuntimeException(e);
         }
+    }
+
+    public void debugMessageCallbackKHR(
+        Arena arena,
+        IGLDEBUGPROCKHR callback,
+        @Pointer(comment="void*") @NotNull MemorySegment userParam
+    ) {
+        debugMessageCallbackKHR(
+            IGLDEBUGPROCKHR.ofNative(arena, callback),
+            userParam
+        );
+    }
+
+    public void debugMessageCallbackKHR(
+        IGLDEBUGPROCKHR callback,
+        @Pointer(comment="void*") @NotNull MemorySegment userParam
+    ) {
+        debugMessageCallbackKHR(
+            Arena.global(),
+            callback,
+            userParam
+        );
     }
 
     public void debugMessageControl(

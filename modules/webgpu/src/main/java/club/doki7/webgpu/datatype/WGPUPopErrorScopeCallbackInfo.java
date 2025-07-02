@@ -27,7 +27,7 @@ import club.doki7.webgpu.WGPUFunctionTypes.*;
 /// typedef struct WGPUPopErrorScopeCallbackInfo {
 ///     WGPUChainedStruct const* nextInChain; // optional // @link substring="WGPUChainedStruct" target="WGPUChainedStruct" @link substring="nextInChain" target="#nextInChain"
 ///     WGPUCallbackMode mode; // @link substring="WGPUCallbackMode" target="WGPUCallbackMode" @link substring="mode" target="#mode"
-///     WGPUPopErrorScopeCallback callback; // optional // @link substring="callback" target="#callback"
+///     WGPUPopErrorScopeCallback callback; // optional // @link substring="WGPUPopErrorScopeCallback" target="WGPUPopErrorScopeCallback" @link substring="callback" target="#callback"
 ///     void* userdata1; // optional // @link substring="userdata1" target="#userdata1"
 ///     void* userdata2; // optional // @link substring="userdata2" target="#userdata2"
 /// } WGPUPopErrorScopeCallbackInfo;
@@ -227,12 +227,12 @@ public record WGPUPopErrorScopeCallbackInfo(@NotNull MemorySegment segment) impl
         return this;
     }
 
-    public WGPUPopErrorScopeCallbackInfo callback(@NotNull WGPUPopErrorScopeCallback value) {
-        return callback(WGPUPopErrorScopeCallback.ofNative(value));
+    public WGPUPopErrorScopeCallbackInfo callback(@NotNull IWGPUPopErrorScopeCallback value) {
+        return callback(IWGPUPopErrorScopeCallback.ofNative(value));
     }
 
-    public WGPUPopErrorScopeCallbackInfo callback(@NotNull Arena arena, @NotNull WGPUPopErrorScopeCallback value) {
-        return callback(WGPUPopErrorScopeCallback.ofNative(arena, value));
+    public WGPUPopErrorScopeCallbackInfo callback(@NotNull Arena arena, @NotNull IWGPUPopErrorScopeCallback value) {
+        return callback(IWGPUPopErrorScopeCallback.ofNative(arena, value));
     }
 
     public WGPUPopErrorScopeCallbackInfo callback(@Nullable IPointer pointer) {

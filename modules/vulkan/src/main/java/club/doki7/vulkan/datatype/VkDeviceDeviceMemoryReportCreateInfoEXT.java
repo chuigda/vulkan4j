@@ -239,12 +239,12 @@ public record VkDeviceDeviceMemoryReportCreateInfoEXT(@NotNull MemorySegment seg
         return this;
     }
 
-    public VkDeviceDeviceMemoryReportCreateInfoEXT pfnUserCallback(@NotNull PFN_vkDeviceMemoryReportCallbackEXT value) {
-        return pfnUserCallback(PFN_vkDeviceMemoryReportCallbackEXT.ofNative(value));
+    public VkDeviceDeviceMemoryReportCreateInfoEXT pfnUserCallback(@NotNull IPFN_vkDeviceMemoryReportCallbackEXT value) {
+        return pfnUserCallback(IPFN_vkDeviceMemoryReportCallbackEXT.ofNative(value));
     }
 
-    public VkDeviceDeviceMemoryReportCreateInfoEXT pfnUserCallback(@NotNull Arena arena, @NotNull PFN_vkDeviceMemoryReportCallbackEXT value) {
-        return pfnUserCallback(PFN_vkDeviceMemoryReportCallbackEXT.ofNative(arena, value));
+    public VkDeviceDeviceMemoryReportCreateInfoEXT pfnUserCallback(@NotNull Arena arena, @NotNull IPFN_vkDeviceMemoryReportCallbackEXT value) {
+        return pfnUserCallback(IPFN_vkDeviceMemoryReportCallbackEXT.ofNative(arena, value));
     }
 
     public VkDeviceDeviceMemoryReportCreateInfoEXT pfnUserCallback(@Nullable IPointer pointer) {

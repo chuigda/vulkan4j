@@ -186,19 +186,7 @@ if (result == VkResult.ERROR_OUT_OF_DATE_KHR || framebufferResized) {
 // ...
 ```
 
-It is important to do this after `vkQueuePresentKHR` to ensure that the semaphores are in a consistent state, otherwise a signaled semaphore may never be properly waited upon. Now to actually detect resizes we can use the `GLFW::etFramebufferSizeCallback` function in the GLFW framework to set up a callback. First let's write the actual callback function:
-
-```java
-private void framebufferResizeCallback(
-        @Pointer(comment="GLFWwindow*") MemorySegment ignoredWindow,
-        int ignoredWidth,
-        int ignoredHeight
-) {
-    framebufferResized = true;
-}
-```
-
-And, although this is a non-static function which requires an implicit `this` parameter, it's still possible to create a upcall-ready function pointer to it:
+It is important to do this after `vkQueuePresentKHR` to ensure that the semaphores are in a consistent state, otherwise a signaled semaphore may never be properly waited upon. Now to actually detect resizes we can use the `GLFW::setFramebufferSizeCallback` function in the GLFW framework to set up a callback:
 
 ```java
 private void initWindow() {
@@ -208,19 +196,7 @@ private void initWindow() {
     // now the line disabling window resizing is removed
     window = Objects.requireNonNull(glfw.createWindow(WIDTH, HEIGHT, WINDOW_TITLE, null, null));
 
-    try {
-        var handle = MethodHandles.lookup().findVirtual(
-                Application.class,
-                "framebufferResizeCallback",
-                GLFWFunctionTypes.GLFWframebuffersizefun.toMethodType()
-        ).bindTo(this); // funny binding mechanism
-
-        var upcallStub = Linker.nativeLinker()
-                .upcallStub(handle, GLFWFunctionTypes.GLFWframebuffersizefun, Arena.global());
-        glfw.setFramebufferSizeCallback(window, upcallStub);
-    } catch (Exception e) {
-        throw new RuntimeException("Failed to find method handle for framebufferResizeCallback", e);
-    }
+    glfw.setFramebufferSizeCallback(window, (_, _, _) -> this.framebufferResized = true);
 }
 ```
 

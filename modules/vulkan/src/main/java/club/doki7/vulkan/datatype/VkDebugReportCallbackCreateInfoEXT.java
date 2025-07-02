@@ -239,12 +239,12 @@ public record VkDebugReportCallbackCreateInfoEXT(@NotNull MemorySegment segment)
         return this;
     }
 
-    public VkDebugReportCallbackCreateInfoEXT pfnCallback(@NotNull PFN_vkDebugReportCallbackEXT value) {
-        return pfnCallback(PFN_vkDebugReportCallbackEXT.ofNative(value));
+    public VkDebugReportCallbackCreateInfoEXT pfnCallback(@NotNull IPFN_vkDebugReportCallbackEXT value) {
+        return pfnCallback(IPFN_vkDebugReportCallbackEXT.ofNative(value));
     }
 
-    public VkDebugReportCallbackCreateInfoEXT pfnCallback(@NotNull Arena arena, @NotNull PFN_vkDebugReportCallbackEXT value) {
-        return pfnCallback(PFN_vkDebugReportCallbackEXT.ofNative(arena, value));
+    public VkDebugReportCallbackCreateInfoEXT pfnCallback(@NotNull Arena arena, @NotNull IPFN_vkDebugReportCallbackEXT value) {
+        return pfnCallback(IPFN_vkDebugReportCallbackEXT.ofNative(arena, value));
     }
 
     public VkDebugReportCallbackCreateInfoEXT pfnCallback(@Nullable IPointer pointer) {

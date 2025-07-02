@@ -10,6 +10,7 @@ modules/opengl/src/main/java/club/doki7/opengl/handle/*.java linguist-generated
 modules/opengl/src/main/java/club/doki7/opengl/GL.java linguist-generated
 modules/opengl/src/main/java/club/doki7/opengl/GLCompatibility.java linguist-generated
 modules/opengl/src/main/java/club/doki7/opengl/GLConstants.java linguist-generated
+modules/opengl/src/main/java/club/doki7/opengl/GLFunctionTypes.java linguist-generated
 
 modules/openal/src/main/java/club/doki7/openal/handle/*.java linguist-generated
 modules/openal/src/main/java/club/doki7/openal/AL.java linguist-generated

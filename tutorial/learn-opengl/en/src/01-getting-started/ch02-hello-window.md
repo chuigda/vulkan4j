@@ -87,62 +87,10 @@ void framebuffer_resize_callback(GLFWwindow* window, int width, int height);
 The framebuffer size function takes a `GLFWwindow` as its first argument and two integers indicating the new window dimensions. Whenever the window changes in size, GLFW calls this function and fills in the proper arguments for you to process.
 
 ```java
-private void framebufferResizeCallback(
-        @Pointer(target=GLFWwindow.class) MemorySegment window,
-        int width,
-        int height
-) {
-    gl.viewport(0, 0, width, height);
-}
+glfw.setFramebufferSizeCallback(window, (_, w, h) -> gl.viewport(0, 0, w, h));
 ```
 
-> Note1: since GLFW will directly call our callback function, it is not possible to use wrapper types like `GLFWwindow` class here. Instead, we have to use the `MemorySegment` type to accept the raw pointer. If needed, you may want to wrap it into a `GLFWwindow` class yourself.
-> 
-> ```java
-> GLFWwindow w = new GLFWwindow(window.reinterpret(GLFWwindow.BYTES));
-> ```
-
-> Note2: the `@Pointer` annotations are completely optional, but useful indicating the pointee type of `MemorySegment`. Also, this makes Ctrl-clicking navigation in IDEs work.
-
-Now our `framebufferResizeCallback` is a Java function. In order to make it a ready-to-use C function pointer, we need two extra steps. First, we need to retrieve the method handle to `framebufferResizeCallback`:
-
-```java
-try {
-    MethodHandle mh = MethodHandles
-            .lookup()
-            .findVirtual(
-                    Application.class,
-                    "framebufferResizeCallback",
-                    GLFWFunctionTypes.GLFWframebuffersizefun.toMethodType()
-            );
-} catch(Exception e) {
-    throw new RuntimeException("Failed to find debugCallback method handle",e);
-}
-```
-
-The `GLFWFunctionTypes` class (also `GLFunctionTypes` class, provided by `club.doki7.opengl`) stores most of the useful function types (as `FunctionDescriptor`s) in GLFW (and OpenGL).
-
-However, since this `framebufferResizeCallback` is a non-static method, it actually needs one more `this` argument which is impossible to provide by GLFW. Fortunately, we have `MethodHandle::bindTo`:
-
-```java
-mh = mh.bindTo(this);
-```
-
-Then, we create an upcall-ready `MemorySegment` with `Linker`
-
-```java
-MemorySegment callback = Linker
-        .nativeLinker()
-        .upcallStub(mh, GLFWFunctionTypes.GLFWframebuffersizefun, Arena.global());
-```
-
-And we can finally use this `callback` segment to register the resize callback:
-
-```java
-glfw.setFramebufferSizeCallback(window, callback);
-```
-
-When the window is first displayed `framebufferResizeCalback` gets called as well with the resulting window dimensions. For retina displays `width` and `height` will end up significantly higher than the original input values. 
+When the window is first displayed, our lambda expression gets called as well with the resulting window dimensions. For retina displays `width` and `height` will end up significantly higher than the original input values. 
 
 There are many callbacks functions we can set to register our own functions. For example, we can make a callback function to process joystick input changes, process error messages etc. We register the callback functions after we've created the window and before the render loop is initiated. 
 

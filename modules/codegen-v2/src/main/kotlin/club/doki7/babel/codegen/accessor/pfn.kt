@@ -22,7 +22,7 @@ fun generatePFNAccessor(
     +""
 
     if (!type.functionTypedef.pfnNativeApi) {
-        val interfaceName = type.functionTypedef.name
+        val interfaceName = type.functionTypedef.interfaceName
 
         defun("public", className, member.name, "@NotNull $interfaceName value") {
             +"return ${member.name}($interfaceName.ofNative(value));"

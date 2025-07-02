@@ -235,12 +235,12 @@ public record XrGraphicsBindingEGLMNDX(@NotNull MemorySegment segment) implement
         return this;
     }
 
-    public XrGraphicsBindingEGLMNDX getProcAddress(@NotNull PFN_xrEglGetProcAddressMNDX value) {
-        return getProcAddress(PFN_xrEglGetProcAddressMNDX.ofNative(value));
+    public XrGraphicsBindingEGLMNDX getProcAddress(@NotNull IPFN_xrEglGetProcAddressMNDX value) {
+        return getProcAddress(IPFN_xrEglGetProcAddressMNDX.ofNative(value));
     }
 
-    public XrGraphicsBindingEGLMNDX getProcAddress(@NotNull Arena arena, @NotNull PFN_xrEglGetProcAddressMNDX value) {
-        return getProcAddress(PFN_xrEglGetProcAddressMNDX.ofNative(arena, value));
+    public XrGraphicsBindingEGLMNDX getProcAddress(@NotNull Arena arena, @NotNull IPFN_xrEglGetProcAddressMNDX value) {
+        return getProcAddress(IPFN_xrEglGetProcAddressMNDX.ofNative(arena, value));
     }
 
     public XrGraphicsBindingEGLMNDX getProcAddress(@Nullable IPointer pointer) {

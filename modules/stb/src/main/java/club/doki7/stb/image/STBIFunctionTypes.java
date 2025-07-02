@@ -26,76 +26,76 @@ public final class STBIFunctionTypes {
     );
 
     @FunctionalInterface
-    public interface PFN_stbi_io_callbacks_eof {
+    public interface IPFN_stbi_io_callbacks_eof {
         int invoke(
             @Pointer(comment="void*") @NotNull MemorySegment p0
         );
 
-        static MethodHandle of(@NotNull PFN_stbi_io_callbacks_eof lambda) {
+        static MethodHandle of(@NotNull IPFN_stbi_io_callbacks_eof lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(PFN_stbi_io_callbacks_eof.class, "invoke", PFN_stbi_io_callbacks_eof.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(IPFN_stbi_io_callbacks_eof.class, "invoke", PFN_stbi_io_callbacks_eof.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull PFN_stbi_io_callbacks_eof lambda) {
+        static MemorySegment ofNative(@NotNull IPFN_stbi_io_callbacks_eof lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull PFN_stbi_io_callbacks_eof lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull IPFN_stbi_io_callbacks_eof lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), PFN_stbi_io_callbacks_eof, arena);
         }
     }
 
     @FunctionalInterface
-    public interface PFN_stbi_io_callbacks_read {
+    public interface IPFN_stbi_io_callbacks_read {
         int invoke(
             @Pointer(comment="void*") @NotNull MemorySegment p0,
             @Pointer(comment="void*") @NotNull MemorySegment p1,
             int p2
         );
 
-        static MethodHandle of(@NotNull PFN_stbi_io_callbacks_read lambda) {
+        static MethodHandle of(@NotNull IPFN_stbi_io_callbacks_read lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(PFN_stbi_io_callbacks_read.class, "invoke", PFN_stbi_io_callbacks_read.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(IPFN_stbi_io_callbacks_read.class, "invoke", PFN_stbi_io_callbacks_read.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull PFN_stbi_io_callbacks_read lambda) {
+        static MemorySegment ofNative(@NotNull IPFN_stbi_io_callbacks_read lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull PFN_stbi_io_callbacks_read lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull IPFN_stbi_io_callbacks_read lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), PFN_stbi_io_callbacks_read, arena);
         }
     }
 
     @FunctionalInterface
-    public interface PFN_stbi_io_callbacks_skip {
+    public interface IPFN_stbi_io_callbacks_skip {
         void invoke(
             @Pointer(comment="void*") @NotNull MemorySegment p0,
             int p1
         );
 
-        static MethodHandle of(@NotNull PFN_stbi_io_callbacks_skip lambda) {
+        static MethodHandle of(@NotNull IPFN_stbi_io_callbacks_skip lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(PFN_stbi_io_callbacks_skip.class, "invoke", PFN_stbi_io_callbacks_skip.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(IPFN_stbi_io_callbacks_skip.class, "invoke", PFN_stbi_io_callbacks_skip.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull PFN_stbi_io_callbacks_skip lambda) {
+        static MemorySegment ofNative(@NotNull IPFN_stbi_io_callbacks_skip lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull PFN_stbi_io_callbacks_skip lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull IPFN_stbi_io_callbacks_skip lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), PFN_stbi_io_callbacks_skip, arena);
         }
     }

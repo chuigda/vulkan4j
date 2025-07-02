@@ -210,12 +210,12 @@ public record GLFWallocator(@NotNull MemorySegment segment) implements IGLFWallo
         return this;
     }
 
-    public GLFWallocator allocate(@NotNull GLFWallocatefun value) {
-        return allocate(GLFWallocatefun.ofNative(value));
+    public GLFWallocator allocate(@NotNull IGLFWallocatefun value) {
+        return allocate(IGLFWallocatefun.ofNative(value));
     }
 
-    public GLFWallocator allocate(@NotNull Arena arena, @NotNull GLFWallocatefun value) {
-        return allocate(GLFWallocatefun.ofNative(arena, value));
+    public GLFWallocator allocate(@NotNull Arena arena, @NotNull IGLFWallocatefun value) {
+        return allocate(IGLFWallocatefun.ofNative(arena, value));
     }
 
     public GLFWallocator allocate(@Nullable IPointer pointer) {
@@ -232,12 +232,12 @@ public record GLFWallocator(@NotNull MemorySegment segment) implements IGLFWallo
         return this;
     }
 
-    public GLFWallocator reallocate(@NotNull GLFWreallocatefun value) {
-        return reallocate(GLFWreallocatefun.ofNative(value));
+    public GLFWallocator reallocate(@NotNull IGLFWreallocatefun value) {
+        return reallocate(IGLFWreallocatefun.ofNative(value));
     }
 
-    public GLFWallocator reallocate(@NotNull Arena arena, @NotNull GLFWreallocatefun value) {
-        return reallocate(GLFWreallocatefun.ofNative(arena, value));
+    public GLFWallocator reallocate(@NotNull Arena arena, @NotNull IGLFWreallocatefun value) {
+        return reallocate(IGLFWreallocatefun.ofNative(arena, value));
     }
 
     public GLFWallocator reallocate(@Nullable IPointer pointer) {
@@ -254,12 +254,12 @@ public record GLFWallocator(@NotNull MemorySegment segment) implements IGLFWallo
         return this;
     }
 
-    public GLFWallocator deallocate(@NotNull GLFWdeallocatefun value) {
-        return deallocate(GLFWdeallocatefun.ofNative(value));
+    public GLFWallocator deallocate(@NotNull IGLFWdeallocatefun value) {
+        return deallocate(IGLFWdeallocatefun.ofNative(value));
     }
 
-    public GLFWallocator deallocate(@NotNull Arena arena, @NotNull GLFWdeallocatefun value) {
-        return deallocate(GLFWdeallocatefun.ofNative(arena, value));
+    public GLFWallocator deallocate(@NotNull Arena arena, @NotNull IGLFWdeallocatefun value) {
+        return deallocate(IGLFWdeallocatefun.ofNative(arena, value));
     }
 
     public GLFWallocator deallocate(@Nullable IPointer pointer) {

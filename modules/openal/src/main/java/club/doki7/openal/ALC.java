@@ -11,6 +11,7 @@ import club.doki7.ffm.RawFunctionLoader;
 import club.doki7.ffm.annotation.*;
 import club.doki7.ffm.ptr.*;
 import club.doki7.openal.handle.*;
+import static club.doki7.openal.ALFunctionTypes.*;
 
 public final class ALC implements ALCConstants {
     public ALC(RawFunctionLoader loader) {
@@ -616,6 +617,28 @@ public final class ALC implements ALCConstants {
         } catch (Throwable e) {
             throw new RuntimeException(e);
         }
+    }
+
+    public void eventCallbackSOFT(
+        Arena arena,
+        IALCEVENTPROCTYPESOFT callback,
+        @Pointer(comment="void*") @NotNull MemorySegment userParam
+    ) {
+        eventCallbackSOFT(
+            IALCEVENTPROCTYPESOFT.ofNative(arena, callback),
+            userParam
+        );
+    }
+
+    public void eventCallbackSOFT(
+        IALCEVENTPROCTYPESOFT callback,
+        @Pointer(comment="void*") @NotNull MemorySegment userParam
+    ) {
+        eventCallbackSOFT(
+            Arena.global(),
+            callback,
+            userParam
+        );
     }
 
     public @Pointer(comment="void*") @NotNull MemorySegment getProcAddress2(

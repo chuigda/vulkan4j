@@ -27,7 +27,7 @@ import club.doki7.webgpu.WGPUFunctionTypes.*;
 /// typedef struct WGPUBufferMapCallbackInfo {
 ///     WGPUChainedStruct const* nextInChain; // optional // @link substring="WGPUChainedStruct" target="WGPUChainedStruct" @link substring="nextInChain" target="#nextInChain"
 ///     WGPUCallbackMode mode; // @link substring="WGPUCallbackMode" target="WGPUCallbackMode" @link substring="mode" target="#mode"
-///     WGPUBufferMapCallback callback; // optional // @link substring="callback" target="#callback"
+///     WGPUBufferMapCallback callback; // optional // @link substring="WGPUBufferMapCallback" target="WGPUBufferMapCallback" @link substring="callback" target="#callback"
 ///     void* userdata1; // optional // @link substring="userdata1" target="#userdata1"
 ///     void* userdata2; // optional // @link substring="userdata2" target="#userdata2"
 /// } WGPUBufferMapCallbackInfo;
@@ -227,12 +227,12 @@ public record WGPUBufferMapCallbackInfo(@NotNull MemorySegment segment) implemen
         return this;
     }
 
-    public WGPUBufferMapCallbackInfo callback(@NotNull WGPUBufferMapCallback value) {
-        return callback(WGPUBufferMapCallback.ofNative(value));
+    public WGPUBufferMapCallbackInfo callback(@NotNull IWGPUBufferMapCallback value) {
+        return callback(IWGPUBufferMapCallback.ofNative(value));
     }
 
-    public WGPUBufferMapCallbackInfo callback(@NotNull Arena arena, @NotNull WGPUBufferMapCallback value) {
-        return callback(WGPUBufferMapCallback.ofNative(arena, value));
+    public WGPUBufferMapCallbackInfo callback(@NotNull Arena arena, @NotNull IWGPUBufferMapCallback value) {
+        return callback(IWGPUBufferMapCallback.ofNative(arena, value));
     }
 
     public WGPUBufferMapCallbackInfo callback(@Nullable IPointer pointer) {

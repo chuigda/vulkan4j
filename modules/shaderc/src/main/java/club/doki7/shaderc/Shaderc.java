@@ -13,6 +13,7 @@ import club.doki7.ffm.ptr.*;
 import club.doki7.shaderc.datatype.*;
 import club.doki7.shaderc.enumtype.*;
 import club.doki7.shaderc.handle.*;
+import static club.doki7.shaderc.ShadercFunctionTypes.*;
 
 public final class Shaderc {
     public Shaderc(RawFunctionLoader loader) {
@@ -493,6 +494,36 @@ public final class Shaderc {
         } catch (Throwable e) {
             throw new RuntimeException(e);
         }
+    }
+
+    public void compileOptionsSetIncludeCallbacks(
+        Arena arena,
+        @Nullable ShadercCompileOptions options,
+        Ishaderc_include_resolve_fn resolver,
+        Ishaderc_include_result_release_fn resultReleaser,
+        @Pointer(comment="void*") @NotNull MemorySegment userData
+    ) {
+        compileOptionsSetIncludeCallbacks(
+            options,
+            Ishaderc_include_resolve_fn.ofNative(arena, resolver),
+            Ishaderc_include_result_release_fn.ofNative(arena, resultReleaser),
+            userData
+        );
+    }
+
+    public void compileOptionsSetIncludeCallbacks(
+        @Nullable ShadercCompileOptions options,
+        Ishaderc_include_resolve_fn resolver,
+        Ishaderc_include_result_release_fn resultReleaser,
+        @Pointer(comment="void*") @NotNull MemorySegment userData
+    ) {
+        compileOptionsSetIncludeCallbacks(
+            Arena.global(),
+            options,
+            resolver,
+            resultReleaser,
+            userData
+        );
     }
 
     public void compileOptionsSetInvertY(

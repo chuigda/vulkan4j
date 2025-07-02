@@ -14,6 +14,7 @@ import club.doki7.vulkan.bitmask.*;
 import club.doki7.vulkan.datatype.*;
 import club.doki7.vulkan.enumtype.*;
 import club.doki7.vulkan.handle.*;
+import static club.doki7.vulkan.VkFunctionTypes.*;
 
 public final class VkStaticCommands {
     public VkStaticCommands(RawFunctionLoader loader) {

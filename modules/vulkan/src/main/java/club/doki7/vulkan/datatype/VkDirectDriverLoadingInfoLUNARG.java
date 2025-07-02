@@ -238,12 +238,12 @@ public record VkDirectDriverLoadingInfoLUNARG(@NotNull MemorySegment segment) im
         return this;
     }
 
-    public VkDirectDriverLoadingInfoLUNARG pfnGetInstanceProcAddr(@NotNull PFN_vkGetInstanceProcAddrLUNARG value) {
-        return pfnGetInstanceProcAddr(PFN_vkGetInstanceProcAddrLUNARG.ofNative(value));
+    public VkDirectDriverLoadingInfoLUNARG pfnGetInstanceProcAddr(@NotNull IPFN_vkGetInstanceProcAddrLUNARG value) {
+        return pfnGetInstanceProcAddr(IPFN_vkGetInstanceProcAddrLUNARG.ofNative(value));
     }
 
-    public VkDirectDriverLoadingInfoLUNARG pfnGetInstanceProcAddr(@NotNull Arena arena, @NotNull PFN_vkGetInstanceProcAddrLUNARG value) {
-        return pfnGetInstanceProcAddr(PFN_vkGetInstanceProcAddrLUNARG.ofNative(arena, value));
+    public VkDirectDriverLoadingInfoLUNARG pfnGetInstanceProcAddr(@NotNull Arena arena, @NotNull IPFN_vkGetInstanceProcAddrLUNARG value) {
+        return pfnGetInstanceProcAddr(IPFN_vkGetInstanceProcAddrLUNARG.ofNative(arena, value));
     }
 
     public VkDirectDriverLoadingInfoLUNARG pfnGetInstanceProcAddr(@Nullable IPointer pointer) {

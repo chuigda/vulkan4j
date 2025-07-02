@@ -2,6 +2,7 @@ package club.doki7.babel.drv
 
 import club.doki7.babel.codegen.CodegenOptions
 import club.doki7.babel.codegen.generateConstants
+import club.doki7.babel.codegen.generateFunctionTypedefs
 import club.doki7.babel.codegen.generateHandle
 import club.doki7.babel.extract.opengl.GLCommandMetadata
 import club.doki7.babel.extract.opengl.extractOpenGLRegistry
@@ -30,6 +31,13 @@ fun openglMain() {
         File("$packageDir/handle/${handle.name.value}.java")
             .writeText(render(handleDoc))
     }
+
+    val functionTypedefsDoc = generateFunctionTypedefs(
+        openglRegistry,
+        codegenOptions
+    )
+    File("$packageDir/${codegenOptions.functionTypeClassName}.java")
+        .writeText(render(functionTypedefsDoc))
 
     val (compatibilityCommands, coreCommands) = openglRegistry.commands.values
         .sortedBy { it.name }

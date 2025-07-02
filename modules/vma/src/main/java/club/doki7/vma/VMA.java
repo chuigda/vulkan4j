@@ -14,6 +14,7 @@ import club.doki7.vma.bitmask.*;
 import club.doki7.vma.datatype.*;
 import club.doki7.vma.enumtype.*;
 import club.doki7.vma.handle.*;
+import static club.doki7.vma.VMAFunctionTypes.*;
 import club.doki7.vulkan.bitmask.*;
 import club.doki7.vulkan.datatype.*;
 import club.doki7.vulkan.enumtype.*;

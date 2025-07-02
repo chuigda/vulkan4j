@@ -37,81 +37,81 @@ public final class VMAFunctionTypes {
     );
 
     @FunctionalInterface
-    public interface PFN_vmaAllocateDeviceMemoryFunction {
+    public interface IPFN_vmaAllocateDeviceMemoryFunction {
         void invoke(
-            VmaAllocator p0,
+            @NativeType("VmaAllocator") MemorySegment p0,
             @Unsigned int p1,
-            VkDeviceMemory p2,
+            @NativeType("VkDeviceMemory") MemorySegment p2,
             @NativeType("VkDeviceSize") @Unsigned long p3,
             @Pointer(comment="void*") @NotNull MemorySegment p4
         );
 
-        static MethodHandle of(@NotNull PFN_vmaAllocateDeviceMemoryFunction lambda) {
+        static MethodHandle of(@NotNull IPFN_vmaAllocateDeviceMemoryFunction lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(PFN_vmaAllocateDeviceMemoryFunction.class, "invoke", PFN_vmaAllocateDeviceMemoryFunction.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(IPFN_vmaAllocateDeviceMemoryFunction.class, "invoke", PFN_vmaAllocateDeviceMemoryFunction.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull PFN_vmaAllocateDeviceMemoryFunction lambda) {
+        static MemorySegment ofNative(@NotNull IPFN_vmaAllocateDeviceMemoryFunction lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull PFN_vmaAllocateDeviceMemoryFunction lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull IPFN_vmaAllocateDeviceMemoryFunction lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), PFN_vmaAllocateDeviceMemoryFunction, arena);
         }
     }
 
     @FunctionalInterface
-    public interface PFN_vmaCheckDefragmentationBreakFunction {
+    public interface IPFN_vmaCheckDefragmentationBreakFunction {
         @NativeType("VkBool32") @Unsigned int invoke(
             @Pointer(comment="void*") @NotNull MemorySegment p0
         );
 
-        static MethodHandle of(@NotNull PFN_vmaCheckDefragmentationBreakFunction lambda) {
+        static MethodHandle of(@NotNull IPFN_vmaCheckDefragmentationBreakFunction lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(PFN_vmaCheckDefragmentationBreakFunction.class, "invoke", PFN_vmaCheckDefragmentationBreakFunction.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(IPFN_vmaCheckDefragmentationBreakFunction.class, "invoke", PFN_vmaCheckDefragmentationBreakFunction.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull PFN_vmaCheckDefragmentationBreakFunction lambda) {
+        static MemorySegment ofNative(@NotNull IPFN_vmaCheckDefragmentationBreakFunction lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull PFN_vmaCheckDefragmentationBreakFunction lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull IPFN_vmaCheckDefragmentationBreakFunction lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), PFN_vmaCheckDefragmentationBreakFunction, arena);
         }
     }
 
     @FunctionalInterface
-    public interface PFN_vmaFreeDeviceMemoryFunction {
+    public interface IPFN_vmaFreeDeviceMemoryFunction {
         void invoke(
-            VmaAllocator p0,
+            @NativeType("VmaAllocator") MemorySegment p0,
             @Unsigned int p1,
-            VkDeviceMemory p2,
+            @NativeType("VkDeviceMemory") MemorySegment p2,
             @NativeType("VkDeviceSize") @Unsigned long p3,
             @Pointer(comment="void*") @NotNull MemorySegment p4
         );
 
-        static MethodHandle of(@NotNull PFN_vmaFreeDeviceMemoryFunction lambda) {
+        static MethodHandle of(@NotNull IPFN_vmaFreeDeviceMemoryFunction lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(PFN_vmaFreeDeviceMemoryFunction.class, "invoke", PFN_vmaFreeDeviceMemoryFunction.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(IPFN_vmaFreeDeviceMemoryFunction.class, "invoke", PFN_vmaFreeDeviceMemoryFunction.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull PFN_vmaFreeDeviceMemoryFunction lambda) {
+        static MemorySegment ofNative(@NotNull IPFN_vmaFreeDeviceMemoryFunction lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull PFN_vmaFreeDeviceMemoryFunction lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull IPFN_vmaFreeDeviceMemoryFunction lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), PFN_vmaFreeDeviceMemoryFunction, arena);
         }
     }

@@ -1,6 +1,5 @@
 package tutorial.opengl.part01.ch03;
 
-import club.doki7.ffm.annotation.Pointer;
 import club.doki7.ffm.annotation.Unsigned;
 import club.doki7.ffm.library.ISharedLibrary;
 import club.doki7.ffm.ptr.BytePtr;
@@ -8,16 +7,12 @@ import club.doki7.ffm.ptr.FloatPtr;
 import club.doki7.ffm.ptr.IntPtr;
 import club.doki7.ffm.ptr.PointerPtr;
 import club.doki7.glfw.GLFW;
-import club.doki7.glfw.GLFWFunctionTypes;
 import club.doki7.glfw.GLFWLoader;
 import club.doki7.glfw.handle.GLFWwindow;
 import club.doki7.opengl.GL;
 
 import java.lang.foreign.Arena;
-import java.lang.foreign.Linker;
 import java.lang.foreign.MemorySegment;
-import java.lang.invoke.MethodHandle;
-import java.lang.invoke.MethodHandles;
 
 class Application {
     private final GLFW glfw;
@@ -55,22 +50,7 @@ class Application {
         });
         gl.viewport(0, 0, 800, 600);
 
-        try {
-            MethodHandle mh = MethodHandles
-                    .lookup()
-                    .findVirtual(
-                            Application.class,
-                            "framebufferResizeCallback",
-                            GLFWFunctionTypes.GLFWframebuffersizefun.toMethodType()
-                    );
-            mh = mh.bindTo(this);
-            MemorySegment callback = Linker
-                    .nativeLinker()
-                    .upcallStub(mh, GLFWFunctionTypes.GLFWframebuffersizefun, Arena.global());
-            glfw.setFramebufferSizeCallback(window, callback);
-        } catch(Exception e) {
-            throw new RuntimeException("Failed to find framebufferResizeCallback method handle",e);
-        }
+        glfw.setFramebufferSizeCallback(window, (_, w, h) -> gl.viewport(0, 0, w, h));
 
         @Unsigned int vao;
         @Unsigned int vbo;
@@ -154,14 +134,6 @@ class Application {
         }
 
         glfw.terminate();
-    }
-
-    private void framebufferResizeCallback(
-            @Pointer(target=GLFWwindow.class) MemorySegment window,
-            int width,
-            int height
-    ) {
-        gl.viewport(0, 0, width, height);
     }
 
     private void processInput(GLFWwindow window) {

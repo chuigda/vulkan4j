@@ -256,12 +256,12 @@ public record VmaDefragmentationInfo(@NotNull MemorySegment segment) implements 
         return this;
     }
 
-    public VmaDefragmentationInfo pfnBreakCallback(@NotNull PFN_vmaCheckDefragmentationBreakFunction value) {
-        return pfnBreakCallback(PFN_vmaCheckDefragmentationBreakFunction.ofNative(value));
+    public VmaDefragmentationInfo pfnBreakCallback(@NotNull IPFN_vmaCheckDefragmentationBreakFunction value) {
+        return pfnBreakCallback(IPFN_vmaCheckDefragmentationBreakFunction.ofNative(value));
     }
 
-    public VmaDefragmentationInfo pfnBreakCallback(@NotNull Arena arena, @NotNull PFN_vmaCheckDefragmentationBreakFunction value) {
-        return pfnBreakCallback(PFN_vmaCheckDefragmentationBreakFunction.ofNative(arena, value));
+    public VmaDefragmentationInfo pfnBreakCallback(@NotNull Arena arena, @NotNull IPFN_vmaCheckDefragmentationBreakFunction value) {
+        return pfnBreakCallback(IPFN_vmaCheckDefragmentationBreakFunction.ofNative(arena, value));
     }
 
     public VmaDefragmentationInfo pfnBreakCallback(@Nullable IPointer pointer) {

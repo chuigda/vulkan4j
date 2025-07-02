@@ -67,24 +67,24 @@ fun generateFunctionTypedefs(
         // generating function interfaces
         defs.forEach { def ->
             +"@FunctionalInterface"
-            "public interface ${def.name}" {
+            "public interface ${def.interfaceName}" {
                 val retCType = lowerType(registry, codegenOptions.refRegistries, def.result)
-                +"${retCType.jType} invoke("
+                +"${retCType.jRawType} invoke("
                 indent {
                     def.params.forEachIndexed { idx, param ->
                         val last = idx == def.params.size - 1
                         val suffix = if (last) "" else ","
                         val loweredType = lowerType(registry, codegenOptions.refRegistries, param)
-                        +"${loweredType.jType} p$idx$suffix"
+                        +"${loweredType.jRawType} p$idx$suffix"
                     }
                 }
                 +");"
 
                 +""
 
-                defun("static", "MethodHandle", "of", "@NotNull ${def.name} lambda") {
+                defun("static", "MethodHandle", "of", "@NotNull ${def.interfaceName} lambda") {
                     "try" {
-                        +"return MethodHandles.lookup().findVirtual(${def.name}.class, \"invoke\", ${def.name}.toMethodType()).bindTo(lambda);"
+                        +"return MethodHandles.lookup().findVirtual(${def.interfaceName}.class, \"invoke\", ${def.name}.toMethodType()).bindTo(lambda);"
                     }
                     "catch (NoSuchMethodException | IllegalAccessException e)" {
                         +"throw new RuntimeException(e);"
@@ -93,13 +93,13 @@ fun generateFunctionTypedefs(
 
                 +""
 
-                defun("static", "MemorySegment", "ofNative", "@NotNull ${def.name} lambda") {
+                defun("static", "MemorySegment", "ofNative", "@NotNull ${def.interfaceName} lambda") {
                     +"return ofNative(Arena.global(), lambda);"
                 }
 
                 +""
 
-                defun("static", "MemorySegment", "ofNative", "@NotNull Arena arena", "@NotNull ${def.name} lambda") {
+                defun("static", "MemorySegment", "ofNative", "@NotNull Arena arena", "@NotNull ${def.interfaceName} lambda") {
                     +"return Linker.nativeLinker().upcallStub(of(lambda), ${def.name}, arena);"
                 }
             }

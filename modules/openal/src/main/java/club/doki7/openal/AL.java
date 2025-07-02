@@ -11,6 +11,7 @@ import club.doki7.ffm.RawFunctionLoader;
 import club.doki7.ffm.annotation.*;
 import club.doki7.ffm.ptr.*;
 import club.doki7.openal.handle.*;
+import static club.doki7.openal.ALFunctionTypes.*;
 
 public final class AL implements ALConstants {
     public AL(RawFunctionLoader loader) {
@@ -1854,6 +1855,40 @@ public final class AL implements ALConstants {
         }
     }
 
+    public void requestFoldbackStart(
+        Arena arena,
+        @NativeType("ALenum") int mode,
+        @NativeType("ALsizei") int count,
+        @NativeType("ALsizei") int length,
+        @Nullable @Pointer(comment="ALfloat") FloatPtr mem,
+        ILPALFOLDBACKCALLBACK callback
+    ) {
+        requestFoldbackStart(
+            mode,
+            count,
+            length,
+            mem,
+            ILPALFOLDBACKCALLBACK.ofNative(arena, callback)
+        );
+    }
+
+    public void requestFoldbackStart(
+        @NativeType("ALenum") int mode,
+        @NativeType("ALsizei") int count,
+        @NativeType("ALsizei") int length,
+        @Nullable @Pointer(comment="ALfloat") FloatPtr mem,
+        ILPALFOLDBACKCALLBACK callback
+    ) {
+        requestFoldbackStart(
+            Arena.global(),
+            mode,
+            count,
+            length,
+            mem,
+            callback
+        );
+    }
+
     public void requestFoldbackStop() {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$alRequestFoldbackStop);
         try {
@@ -2236,6 +2271,28 @@ public final class AL implements ALConstants {
         }
     }
 
+    public void eventCallbackSOFT(
+        Arena arena,
+        IALEVENTPROCSOFT callback,
+        @Pointer(comment="void*") @NotNull MemorySegment userParam
+    ) {
+        eventCallbackSOFT(
+            IALEVENTPROCSOFT.ofNative(arena, callback),
+            userParam
+        );
+    }
+
+    public void eventCallbackSOFT(
+        IALEVENTPROCSOFT callback,
+        @Pointer(comment="void*") @NotNull MemorySegment userParam
+    ) {
+        eventCallbackSOFT(
+            Arena.global(),
+            callback,
+            userParam
+        );
+    }
+
     public @Pointer(comment="void*") @NotNull MemorySegment getPointerSOFT(
         @NativeType("ALenum") int pname
     ) {
@@ -2283,6 +2340,40 @@ public final class AL implements ALConstants {
         } catch (Throwable e) {
             throw new RuntimeException(e);
         }
+    }
+
+    public void bufferCallbackSOFT(
+        Arena arena,
+        @NativeType("ALuint") int buffer,
+        @NativeType("ALenum") int format,
+        @NativeType("ALsizei") int freq,
+        IALBUFFERCALLBACKTYPESOFT callback,
+        @Pointer(comment="void*") @NotNull MemorySegment userptr
+    ) {
+        bufferCallbackSOFT(
+            buffer,
+            format,
+            freq,
+            IALBUFFERCALLBACKTYPESOFT.ofNative(arena, callback),
+            userptr
+        );
+    }
+
+    public void bufferCallbackSOFT(
+        @NativeType("ALuint") int buffer,
+        @NativeType("ALenum") int format,
+        @NativeType("ALsizei") int freq,
+        IALBUFFERCALLBACKTYPESOFT callback,
+        @Pointer(comment="void*") @NotNull MemorySegment userptr
+    ) {
+        bufferCallbackSOFT(
+            Arena.global(),
+            buffer,
+            format,
+            freq,
+            callback,
+            userptr
+        );
     }
 
     public void getBufferPtrSOFT(
@@ -2385,6 +2476,28 @@ public final class AL implements ALConstants {
         } catch (Throwable e) {
             throw new RuntimeException(e);
         }
+    }
+
+    public void debugMessageCallbackEXT(
+        Arena arena,
+        IALDEBUGPROCEXT callback,
+        @Pointer(comment="void*") @NotNull MemorySegment userParam
+    ) {
+        debugMessageCallbackEXT(
+            IALDEBUGPROCEXT.ofNative(arena, callback),
+            userParam
+        );
+    }
+
+    public void debugMessageCallbackEXT(
+        IALDEBUGPROCEXT callback,
+        @Pointer(comment="void*") @NotNull MemorySegment userParam
+    ) {
+        debugMessageCallbackEXT(
+            Arena.global(),
+            callback,
+            userParam
+        );
     }
 
     public void debugMessageInsertEXT(
@@ -4487,6 +4600,32 @@ public final class AL implements ALConstants {
         }
     }
 
+    public void debugMessageCallbackDirectEXT(
+        Arena arena,
+        @Nullable ALCcontext context,
+        IALDEBUGPROCEXT callback,
+        @Pointer(comment="void*") @NotNull MemorySegment userParam
+    ) {
+        debugMessageCallbackDirectEXT(
+            context,
+            IALDEBUGPROCEXT.ofNative(arena, callback),
+            userParam
+        );
+    }
+
+    public void debugMessageCallbackDirectEXT(
+        @Nullable ALCcontext context,
+        IALDEBUGPROCEXT callback,
+        @Pointer(comment="void*") @NotNull MemorySegment userParam
+    ) {
+        debugMessageCallbackDirectEXT(
+            Arena.global(),
+            context,
+            callback,
+            userParam
+        );
+    }
+
     public void debugMessageInsertDirectEXT(
         @Nullable ALCcontext context,
         @NativeType("ALenum") int source,
@@ -4697,6 +4836,44 @@ public final class AL implements ALConstants {
         } catch (Throwable e) {
             throw new RuntimeException(e);
         }
+    }
+
+    public void requestFoldbackStartDirect(
+        Arena arena,
+        @Nullable ALCcontext context,
+        @NativeType("ALenum") int mode,
+        @NativeType("ALsizei") int count,
+        @NativeType("ALsizei") int length,
+        @Nullable @Pointer(comment="ALfloat") FloatPtr mem,
+        ILPALFOLDBACKCALLBACK callback
+    ) {
+        requestFoldbackStartDirect(
+            context,
+            mode,
+            count,
+            length,
+            mem,
+            ILPALFOLDBACKCALLBACK.ofNative(arena, callback)
+        );
+    }
+
+    public void requestFoldbackStartDirect(
+        @Nullable ALCcontext context,
+        @NativeType("ALenum") int mode,
+        @NativeType("ALsizei") int count,
+        @NativeType("ALsizei") int length,
+        @Nullable @Pointer(comment="ALfloat") FloatPtr mem,
+        ILPALFOLDBACKCALLBACK callback
+    ) {
+        requestFoldbackStartDirect(
+            Arena.global(),
+            context,
+            mode,
+            count,
+            length,
+            mem,
+            callback
+        );
     }
 
     public void requestFoldbackStopDirect(
@@ -5059,6 +5236,32 @@ public final class AL implements ALConstants {
         }
     }
 
+    public void eventCallbackDirectSOFT(
+        Arena arena,
+        @Nullable ALCcontext context,
+        IALEVENTPROCSOFT callback,
+        @Pointer(comment="void*") @NotNull MemorySegment userParam
+    ) {
+        eventCallbackDirectSOFT(
+            context,
+            IALEVENTPROCSOFT.ofNative(arena, callback),
+            userParam
+        );
+    }
+
+    public void eventCallbackDirectSOFT(
+        @Nullable ALCcontext context,
+        IALEVENTPROCSOFT callback,
+        @Pointer(comment="void*") @NotNull MemorySegment userParam
+    ) {
+        eventCallbackDirectSOFT(
+            Arena.global(),
+            context,
+            callback,
+            userParam
+        );
+    }
+
     public @Pointer(comment="void*") @NotNull MemorySegment getPointerDirectSOFT(
         @Nullable ALCcontext context,
         @NativeType("ALenum") int pname
@@ -5112,6 +5315,44 @@ public final class AL implements ALConstants {
         } catch (Throwable e) {
             throw new RuntimeException(e);
         }
+    }
+
+    public void bufferCallbackDirectSOFT(
+        Arena arena,
+        @Nullable ALCcontext context,
+        @NativeType("ALuint") int buffer,
+        @NativeType("ALenum") int format,
+        @NativeType("ALsizei") int freq,
+        IALBUFFERCALLBACKTYPESOFT callback,
+        @Pointer(comment="void*") @NotNull MemorySegment userptr
+    ) {
+        bufferCallbackDirectSOFT(
+            context,
+            buffer,
+            format,
+            freq,
+            IALBUFFERCALLBACKTYPESOFT.ofNative(arena, callback),
+            userptr
+        );
+    }
+
+    public void bufferCallbackDirectSOFT(
+        @Nullable ALCcontext context,
+        @NativeType("ALuint") int buffer,
+        @NativeType("ALenum") int format,
+        @NativeType("ALsizei") int freq,
+        IALBUFFERCALLBACKTYPESOFT callback,
+        @Pointer(comment="void*") @NotNull MemorySegment userptr
+    ) {
+        bufferCallbackDirectSOFT(
+            Arena.global(),
+            context,
+            buffer,
+            format,
+            freq,
+            callback,
+            userptr
+        );
     }
 
     public void getBufferPtrDirectSOFT(

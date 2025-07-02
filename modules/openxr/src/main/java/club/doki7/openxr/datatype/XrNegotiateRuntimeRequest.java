@@ -238,12 +238,12 @@ public record XrNegotiateRuntimeRequest(@NotNull MemorySegment segment) implemen
         return this;
     }
 
-    public XrNegotiateRuntimeRequest getInstanceProcAddr(@NotNull PFN_xrGetInstanceProcAddr value) {
-        return getInstanceProcAddr(PFN_xrGetInstanceProcAddr.ofNative(value));
+    public XrNegotiateRuntimeRequest getInstanceProcAddr(@NotNull IPFN_xrGetInstanceProcAddr value) {
+        return getInstanceProcAddr(IPFN_xrGetInstanceProcAddr.ofNative(value));
     }
 
-    public XrNegotiateRuntimeRequest getInstanceProcAddr(@NotNull Arena arena, @NotNull PFN_xrGetInstanceProcAddr value) {
-        return getInstanceProcAddr(PFN_xrGetInstanceProcAddr.ofNative(arena, value));
+    public XrNegotiateRuntimeRequest getInstanceProcAddr(@NotNull Arena arena, @NotNull IPFN_xrGetInstanceProcAddr value) {
+        return getInstanceProcAddr(IPFN_xrGetInstanceProcAddr.ofNative(arena, value));
     }
 
     public XrNegotiateRuntimeRequest getInstanceProcAddr(@Nullable IPointer pointer) {

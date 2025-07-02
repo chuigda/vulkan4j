@@ -203,12 +203,12 @@ public record VkAllocationCallbacks(@NotNull MemorySegment segment) implements I
         return this;
     }
 
-    public VkAllocationCallbacks pfnAllocation(@NotNull PFN_vkAllocationFunction value) {
-        return pfnAllocation(PFN_vkAllocationFunction.ofNative(value));
+    public VkAllocationCallbacks pfnAllocation(@NotNull IPFN_vkAllocationFunction value) {
+        return pfnAllocation(IPFN_vkAllocationFunction.ofNative(value));
     }
 
-    public VkAllocationCallbacks pfnAllocation(@NotNull Arena arena, @NotNull PFN_vkAllocationFunction value) {
-        return pfnAllocation(PFN_vkAllocationFunction.ofNative(arena, value));
+    public VkAllocationCallbacks pfnAllocation(@NotNull Arena arena, @NotNull IPFN_vkAllocationFunction value) {
+        return pfnAllocation(IPFN_vkAllocationFunction.ofNative(arena, value));
     }
 
     public VkAllocationCallbacks pfnAllocation(@Nullable IPointer pointer) {
@@ -225,12 +225,12 @@ public record VkAllocationCallbacks(@NotNull MemorySegment segment) implements I
         return this;
     }
 
-    public VkAllocationCallbacks pfnReallocation(@NotNull PFN_vkReallocationFunction value) {
-        return pfnReallocation(PFN_vkReallocationFunction.ofNative(value));
+    public VkAllocationCallbacks pfnReallocation(@NotNull IPFN_vkReallocationFunction value) {
+        return pfnReallocation(IPFN_vkReallocationFunction.ofNative(value));
     }
 
-    public VkAllocationCallbacks pfnReallocation(@NotNull Arena arena, @NotNull PFN_vkReallocationFunction value) {
-        return pfnReallocation(PFN_vkReallocationFunction.ofNative(arena, value));
+    public VkAllocationCallbacks pfnReallocation(@NotNull Arena arena, @NotNull IPFN_vkReallocationFunction value) {
+        return pfnReallocation(IPFN_vkReallocationFunction.ofNative(arena, value));
     }
 
     public VkAllocationCallbacks pfnReallocation(@Nullable IPointer pointer) {
@@ -247,12 +247,12 @@ public record VkAllocationCallbacks(@NotNull MemorySegment segment) implements I
         return this;
     }
 
-    public VkAllocationCallbacks pfnFree(@NotNull PFN_vkFreeFunction value) {
-        return pfnFree(PFN_vkFreeFunction.ofNative(value));
+    public VkAllocationCallbacks pfnFree(@NotNull IPFN_vkFreeFunction value) {
+        return pfnFree(IPFN_vkFreeFunction.ofNative(value));
     }
 
-    public VkAllocationCallbacks pfnFree(@NotNull Arena arena, @NotNull PFN_vkFreeFunction value) {
-        return pfnFree(PFN_vkFreeFunction.ofNative(arena, value));
+    public VkAllocationCallbacks pfnFree(@NotNull Arena arena, @NotNull IPFN_vkFreeFunction value) {
+        return pfnFree(IPFN_vkFreeFunction.ofNative(arena, value));
     }
 
     public VkAllocationCallbacks pfnFree(@Nullable IPointer pointer) {
@@ -269,12 +269,12 @@ public record VkAllocationCallbacks(@NotNull MemorySegment segment) implements I
         return this;
     }
 
-    public VkAllocationCallbacks pfnInternalAllocation(@NotNull PFN_vkInternalAllocationNotification value) {
-        return pfnInternalAllocation(PFN_vkInternalAllocationNotification.ofNative(value));
+    public VkAllocationCallbacks pfnInternalAllocation(@NotNull IPFN_vkInternalAllocationNotification value) {
+        return pfnInternalAllocation(IPFN_vkInternalAllocationNotification.ofNative(value));
     }
 
-    public VkAllocationCallbacks pfnInternalAllocation(@NotNull Arena arena, @NotNull PFN_vkInternalAllocationNotification value) {
-        return pfnInternalAllocation(PFN_vkInternalAllocationNotification.ofNative(arena, value));
+    public VkAllocationCallbacks pfnInternalAllocation(@NotNull Arena arena, @NotNull IPFN_vkInternalAllocationNotification value) {
+        return pfnInternalAllocation(IPFN_vkInternalAllocationNotification.ofNative(arena, value));
     }
 
     public VkAllocationCallbacks pfnInternalAllocation(@Nullable IPointer pointer) {
@@ -291,12 +291,12 @@ public record VkAllocationCallbacks(@NotNull MemorySegment segment) implements I
         return this;
     }
 
-    public VkAllocationCallbacks pfnInternalFree(@NotNull PFN_vkInternalFreeNotification value) {
-        return pfnInternalFree(PFN_vkInternalFreeNotification.ofNative(value));
+    public VkAllocationCallbacks pfnInternalFree(@NotNull IPFN_vkInternalFreeNotification value) {
+        return pfnInternalFree(IPFN_vkInternalFreeNotification.ofNative(value));
     }
 
-    public VkAllocationCallbacks pfnInternalFree(@NotNull Arena arena, @NotNull PFN_vkInternalFreeNotification value) {
-        return pfnInternalFree(PFN_vkInternalFreeNotification.ofNative(arena, value));
+    public VkAllocationCallbacks pfnInternalFree(@NotNull Arena arena, @NotNull IPFN_vkInternalFreeNotification value) {
+        return pfnInternalFree(IPFN_vkInternalFreeNotification.ofNative(arena, value));
     }
 
     public VkAllocationCallbacks pfnInternalFree(@Nullable IPointer pointer) {

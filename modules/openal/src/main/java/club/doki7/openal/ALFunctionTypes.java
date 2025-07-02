@@ -2135,62 +2135,62 @@ public final class ALFunctionTypes {
     );
 
     @FunctionalInterface
-    public interface ALBUFFERCALLBACKTYPESOFT {
+    public interface IALBUFFERCALLBACKTYPESOFT {
         @NativeType("ALsizei") int invoke(
             @Pointer(comment="void*") @NotNull MemorySegment p0,
             @Pointer(comment="void*") @NotNull MemorySegment p1,
             @NativeType("ALsizei") int p2
         );
 
-        static MethodHandle of(@NotNull ALBUFFERCALLBACKTYPESOFT lambda) {
+        static MethodHandle of(@NotNull IALBUFFERCALLBACKTYPESOFT lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(ALBUFFERCALLBACKTYPESOFT.class, "invoke", ALBUFFERCALLBACKTYPESOFT.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(IALBUFFERCALLBACKTYPESOFT.class, "invoke", ALBUFFERCALLBACKTYPESOFT.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull ALBUFFERCALLBACKTYPESOFT lambda) {
+        static MemorySegment ofNative(@NotNull IALBUFFERCALLBACKTYPESOFT lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull ALBUFFERCALLBACKTYPESOFT lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull IALBUFFERCALLBACKTYPESOFT lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), ALBUFFERCALLBACKTYPESOFT, arena);
         }
     }
 
     @FunctionalInterface
-    public interface ALCEVENTPROCTYPESOFT {
+    public interface IALCEVENTPROCTYPESOFT {
         void invoke(
             @NativeType("ALCenum") int p0,
             @NativeType("ALCenum") int p1,
-            ALCdevice p2,
+            @NativeType("ALCdevice") MemorySegment p2,
             @NativeType("ALCsizei") int p3,
             @Pointer(comment="void*") @NotNull MemorySegment p4,
             @Pointer(comment="void*") @NotNull MemorySegment p5
         );
 
-        static MethodHandle of(@NotNull ALCEVENTPROCTYPESOFT lambda) {
+        static MethodHandle of(@NotNull IALCEVENTPROCTYPESOFT lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(ALCEVENTPROCTYPESOFT.class, "invoke", ALCEVENTPROCTYPESOFT.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(IALCEVENTPROCTYPESOFT.class, "invoke", ALCEVENTPROCTYPESOFT.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull ALCEVENTPROCTYPESOFT lambda) {
+        static MemorySegment ofNative(@NotNull IALCEVENTPROCTYPESOFT lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull ALCEVENTPROCTYPESOFT lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull IALCEVENTPROCTYPESOFT lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), ALCEVENTPROCTYPESOFT, arena);
         }
     }
 
     @FunctionalInterface
-    public interface ALDEBUGPROCEXT {
+    public interface IALDEBUGPROCEXT {
         void invoke(
             @NativeType("ALenum") int p0,
             @NativeType("ALenum") int p1,
@@ -2201,26 +2201,26 @@ public final class ALFunctionTypes {
             @Pointer(comment="void*") @NotNull MemorySegment p6
         );
 
-        static MethodHandle of(@NotNull ALDEBUGPROCEXT lambda) {
+        static MethodHandle of(@NotNull IALDEBUGPROCEXT lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(ALDEBUGPROCEXT.class, "invoke", ALDEBUGPROCEXT.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(IALDEBUGPROCEXT.class, "invoke", ALDEBUGPROCEXT.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull ALDEBUGPROCEXT lambda) {
+        static MemorySegment ofNative(@NotNull IALDEBUGPROCEXT lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull ALDEBUGPROCEXT lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull IALDEBUGPROCEXT lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), ALDEBUGPROCEXT, arena);
         }
     }
 
     @FunctionalInterface
-    public interface ALEVENTPROCSOFT {
+    public interface IALEVENTPROCSOFT {
         void invoke(
             @NativeType("ALenum") int p0,
             @NativeType("ALuint") int p1,
@@ -2230,238 +2230,238 @@ public final class ALFunctionTypes {
             @Pointer(comment="void*") @NotNull MemorySegment p5
         );
 
-        static MethodHandle of(@NotNull ALEVENTPROCSOFT lambda) {
+        static MethodHandle of(@NotNull IALEVENTPROCSOFT lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(ALEVENTPROCSOFT.class, "invoke", ALEVENTPROCSOFT.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(IALEVENTPROCSOFT.class, "invoke", ALEVENTPROCSOFT.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull ALEVENTPROCSOFT lambda) {
+        static MemorySegment ofNative(@NotNull IALEVENTPROCSOFT lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull ALEVENTPROCSOFT lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull IALEVENTPROCSOFT lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), ALEVENTPROCSOFT, arena);
         }
     }
 
     @FunctionalInterface
-    public interface LPALAUXILIARYEFFECTSLOTF {
+    public interface ILPALAUXILIARYEFFECTSLOTF {
         void invoke(
             @NativeType("ALuint") int p0,
             @NativeType("ALenum") int p1,
             @NativeType("ALfloat") float p2
         );
 
-        static MethodHandle of(@NotNull LPALAUXILIARYEFFECTSLOTF lambda) {
+        static MethodHandle of(@NotNull ILPALAUXILIARYEFFECTSLOTF lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(LPALAUXILIARYEFFECTSLOTF.class, "invoke", LPALAUXILIARYEFFECTSLOTF.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(ILPALAUXILIARYEFFECTSLOTF.class, "invoke", LPALAUXILIARYEFFECTSLOTF.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull LPALAUXILIARYEFFECTSLOTF lambda) {
+        static MemorySegment ofNative(@NotNull ILPALAUXILIARYEFFECTSLOTF lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull LPALAUXILIARYEFFECTSLOTF lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull ILPALAUXILIARYEFFECTSLOTF lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), LPALAUXILIARYEFFECTSLOTF, arena);
         }
     }
 
     @FunctionalInterface
-    public interface LPALAUXILIARYEFFECTSLOTFDIRECT {
+    public interface ILPALAUXILIARYEFFECTSLOTFDIRECT {
         void invoke(
-            ALCcontext p0,
+            @NativeType("ALCcontext") MemorySegment p0,
             @NativeType("ALuint") int p1,
             @NativeType("ALenum") int p2,
             @NativeType("ALfloat") float p3
         );
 
-        static MethodHandle of(@NotNull LPALAUXILIARYEFFECTSLOTFDIRECT lambda) {
+        static MethodHandle of(@NotNull ILPALAUXILIARYEFFECTSLOTFDIRECT lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(LPALAUXILIARYEFFECTSLOTFDIRECT.class, "invoke", LPALAUXILIARYEFFECTSLOTFDIRECT.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(ILPALAUXILIARYEFFECTSLOTFDIRECT.class, "invoke", LPALAUXILIARYEFFECTSLOTFDIRECT.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull LPALAUXILIARYEFFECTSLOTFDIRECT lambda) {
+        static MemorySegment ofNative(@NotNull ILPALAUXILIARYEFFECTSLOTFDIRECT lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull LPALAUXILIARYEFFECTSLOTFDIRECT lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull ILPALAUXILIARYEFFECTSLOTFDIRECT lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), LPALAUXILIARYEFFECTSLOTFDIRECT, arena);
         }
     }
 
     @FunctionalInterface
-    public interface LPALAUXILIARYEFFECTSLOTFV {
+    public interface ILPALAUXILIARYEFFECTSLOTFV {
         void invoke(
             @NativeType("ALuint") int p0,
             @NativeType("ALenum") int p1,
             @Pointer(comment="void*") @NotNull MemorySegment p2
         );
 
-        static MethodHandle of(@NotNull LPALAUXILIARYEFFECTSLOTFV lambda) {
+        static MethodHandle of(@NotNull ILPALAUXILIARYEFFECTSLOTFV lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(LPALAUXILIARYEFFECTSLOTFV.class, "invoke", LPALAUXILIARYEFFECTSLOTFV.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(ILPALAUXILIARYEFFECTSLOTFV.class, "invoke", LPALAUXILIARYEFFECTSLOTFV.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull LPALAUXILIARYEFFECTSLOTFV lambda) {
+        static MemorySegment ofNative(@NotNull ILPALAUXILIARYEFFECTSLOTFV lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull LPALAUXILIARYEFFECTSLOTFV lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull ILPALAUXILIARYEFFECTSLOTFV lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), LPALAUXILIARYEFFECTSLOTFV, arena);
         }
     }
 
     @FunctionalInterface
-    public interface LPALAUXILIARYEFFECTSLOTFVDIRECT {
+    public interface ILPALAUXILIARYEFFECTSLOTFVDIRECT {
         void invoke(
-            ALCcontext p0,
+            @NativeType("ALCcontext") MemorySegment p0,
             @NativeType("ALuint") int p1,
             @NativeType("ALenum") int p2,
             @Pointer(comment="void*") @NotNull MemorySegment p3
         );
 
-        static MethodHandle of(@NotNull LPALAUXILIARYEFFECTSLOTFVDIRECT lambda) {
+        static MethodHandle of(@NotNull ILPALAUXILIARYEFFECTSLOTFVDIRECT lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(LPALAUXILIARYEFFECTSLOTFVDIRECT.class, "invoke", LPALAUXILIARYEFFECTSLOTFVDIRECT.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(ILPALAUXILIARYEFFECTSLOTFVDIRECT.class, "invoke", LPALAUXILIARYEFFECTSLOTFVDIRECT.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull LPALAUXILIARYEFFECTSLOTFVDIRECT lambda) {
+        static MemorySegment ofNative(@NotNull ILPALAUXILIARYEFFECTSLOTFVDIRECT lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull LPALAUXILIARYEFFECTSLOTFVDIRECT lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull ILPALAUXILIARYEFFECTSLOTFVDIRECT lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), LPALAUXILIARYEFFECTSLOTFVDIRECT, arena);
         }
     }
 
     @FunctionalInterface
-    public interface LPALAUXILIARYEFFECTSLOTI {
+    public interface ILPALAUXILIARYEFFECTSLOTI {
         void invoke(
             @NativeType("ALuint") int p0,
             @NativeType("ALenum") int p1,
             @NativeType("ALint") int p2
         );
 
-        static MethodHandle of(@NotNull LPALAUXILIARYEFFECTSLOTI lambda) {
+        static MethodHandle of(@NotNull ILPALAUXILIARYEFFECTSLOTI lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(LPALAUXILIARYEFFECTSLOTI.class, "invoke", LPALAUXILIARYEFFECTSLOTI.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(ILPALAUXILIARYEFFECTSLOTI.class, "invoke", LPALAUXILIARYEFFECTSLOTI.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull LPALAUXILIARYEFFECTSLOTI lambda) {
+        static MemorySegment ofNative(@NotNull ILPALAUXILIARYEFFECTSLOTI lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull LPALAUXILIARYEFFECTSLOTI lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull ILPALAUXILIARYEFFECTSLOTI lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), LPALAUXILIARYEFFECTSLOTI, arena);
         }
     }
 
     @FunctionalInterface
-    public interface LPALAUXILIARYEFFECTSLOTIDIRECT {
+    public interface ILPALAUXILIARYEFFECTSLOTIDIRECT {
         void invoke(
-            ALCcontext p0,
+            @NativeType("ALCcontext") MemorySegment p0,
             @NativeType("ALuint") int p1,
             @NativeType("ALenum") int p2,
             @NativeType("ALint") int p3
         );
 
-        static MethodHandle of(@NotNull LPALAUXILIARYEFFECTSLOTIDIRECT lambda) {
+        static MethodHandle of(@NotNull ILPALAUXILIARYEFFECTSLOTIDIRECT lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(LPALAUXILIARYEFFECTSLOTIDIRECT.class, "invoke", LPALAUXILIARYEFFECTSLOTIDIRECT.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(ILPALAUXILIARYEFFECTSLOTIDIRECT.class, "invoke", LPALAUXILIARYEFFECTSLOTIDIRECT.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull LPALAUXILIARYEFFECTSLOTIDIRECT lambda) {
+        static MemorySegment ofNative(@NotNull ILPALAUXILIARYEFFECTSLOTIDIRECT lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull LPALAUXILIARYEFFECTSLOTIDIRECT lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull ILPALAUXILIARYEFFECTSLOTIDIRECT lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), LPALAUXILIARYEFFECTSLOTIDIRECT, arena);
         }
     }
 
     @FunctionalInterface
-    public interface LPALAUXILIARYEFFECTSLOTIV {
+    public interface ILPALAUXILIARYEFFECTSLOTIV {
         void invoke(
             @NativeType("ALuint") int p0,
             @NativeType("ALenum") int p1,
             @Pointer(comment="void*") @NotNull MemorySegment p2
         );
 
-        static MethodHandle of(@NotNull LPALAUXILIARYEFFECTSLOTIV lambda) {
+        static MethodHandle of(@NotNull ILPALAUXILIARYEFFECTSLOTIV lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(LPALAUXILIARYEFFECTSLOTIV.class, "invoke", LPALAUXILIARYEFFECTSLOTIV.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(ILPALAUXILIARYEFFECTSLOTIV.class, "invoke", LPALAUXILIARYEFFECTSLOTIV.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull LPALAUXILIARYEFFECTSLOTIV lambda) {
+        static MemorySegment ofNative(@NotNull ILPALAUXILIARYEFFECTSLOTIV lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull LPALAUXILIARYEFFECTSLOTIV lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull ILPALAUXILIARYEFFECTSLOTIV lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), LPALAUXILIARYEFFECTSLOTIV, arena);
         }
     }
 
     @FunctionalInterface
-    public interface LPALAUXILIARYEFFECTSLOTIVDIRECT {
+    public interface ILPALAUXILIARYEFFECTSLOTIVDIRECT {
         void invoke(
-            ALCcontext p0,
+            @NativeType("ALCcontext") MemorySegment p0,
             @NativeType("ALuint") int p1,
             @NativeType("ALenum") int p2,
             @Pointer(comment="void*") @NotNull MemorySegment p3
         );
 
-        static MethodHandle of(@NotNull LPALAUXILIARYEFFECTSLOTIVDIRECT lambda) {
+        static MethodHandle of(@NotNull ILPALAUXILIARYEFFECTSLOTIVDIRECT lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(LPALAUXILIARYEFFECTSLOTIVDIRECT.class, "invoke", LPALAUXILIARYEFFECTSLOTIVDIRECT.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(ILPALAUXILIARYEFFECTSLOTIVDIRECT.class, "invoke", LPALAUXILIARYEFFECTSLOTIVDIRECT.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull LPALAUXILIARYEFFECTSLOTIVDIRECT lambda) {
+        static MemorySegment ofNative(@NotNull ILPALAUXILIARYEFFECTSLOTIVDIRECT lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull LPALAUXILIARYEFFECTSLOTIVDIRECT lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull ILPALAUXILIARYEFFECTSLOTIVDIRECT lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), LPALAUXILIARYEFFECTSLOTIVDIRECT, arena);
         }
     }
 
     @FunctionalInterface
-    public interface LPALBUFFER3F {
+    public interface ILPALBUFFER3F {
         void invoke(
             @NativeType("ALuint") int p0,
             @NativeType("ALenum") int p1,
@@ -2470,28 +2470,28 @@ public final class ALFunctionTypes {
             @NativeType("ALfloat") float p4
         );
 
-        static MethodHandle of(@NotNull LPALBUFFER3F lambda) {
+        static MethodHandle of(@NotNull ILPALBUFFER3F lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(LPALBUFFER3F.class, "invoke", LPALBUFFER3F.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(ILPALBUFFER3F.class, "invoke", LPALBUFFER3F.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull LPALBUFFER3F lambda) {
+        static MemorySegment ofNative(@NotNull ILPALBUFFER3F lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull LPALBUFFER3F lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull ILPALBUFFER3F lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), LPALBUFFER3F, arena);
         }
     }
 
     @FunctionalInterface
-    public interface LPALBUFFER3FDIRECT {
+    public interface ILPALBUFFER3FDIRECT {
         void invoke(
-            ALCcontext p0,
+            @NativeType("ALCcontext") MemorySegment p0,
             @NativeType("ALuint") int p1,
             @NativeType("ALenum") int p2,
             @NativeType("ALfloat") float p3,
@@ -2499,26 +2499,26 @@ public final class ALFunctionTypes {
             @NativeType("ALfloat") float p5
         );
 
-        static MethodHandle of(@NotNull LPALBUFFER3FDIRECT lambda) {
+        static MethodHandle of(@NotNull ILPALBUFFER3FDIRECT lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(LPALBUFFER3FDIRECT.class, "invoke", LPALBUFFER3FDIRECT.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(ILPALBUFFER3FDIRECT.class, "invoke", LPALBUFFER3FDIRECT.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull LPALBUFFER3FDIRECT lambda) {
+        static MemorySegment ofNative(@NotNull ILPALBUFFER3FDIRECT lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull LPALBUFFER3FDIRECT lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull ILPALBUFFER3FDIRECT lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), LPALBUFFER3FDIRECT, arena);
         }
     }
 
     @FunctionalInterface
-    public interface LPALBUFFER3I {
+    public interface ILPALBUFFER3I {
         void invoke(
             @NativeType("ALuint") int p0,
             @NativeType("ALenum") int p1,
@@ -2527,28 +2527,28 @@ public final class ALFunctionTypes {
             @NativeType("ALint") int p4
         );
 
-        static MethodHandle of(@NotNull LPALBUFFER3I lambda) {
+        static MethodHandle of(@NotNull ILPALBUFFER3I lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(LPALBUFFER3I.class, "invoke", LPALBUFFER3I.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(ILPALBUFFER3I.class, "invoke", LPALBUFFER3I.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull LPALBUFFER3I lambda) {
+        static MemorySegment ofNative(@NotNull ILPALBUFFER3I lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull LPALBUFFER3I lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull ILPALBUFFER3I lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), LPALBUFFER3I, arena);
         }
     }
 
     @FunctionalInterface
-    public interface LPALBUFFER3IDIRECT {
+    public interface ILPALBUFFER3IDIRECT {
         void invoke(
-            ALCcontext p0,
+            @NativeType("ALCcontext") MemorySegment p0,
             @NativeType("ALuint") int p1,
             @NativeType("ALenum") int p2,
             @NativeType("ALint") int p3,
@@ -2556,28 +2556,28 @@ public final class ALFunctionTypes {
             @NativeType("ALint") int p5
         );
 
-        static MethodHandle of(@NotNull LPALBUFFER3IDIRECT lambda) {
+        static MethodHandle of(@NotNull ILPALBUFFER3IDIRECT lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(LPALBUFFER3IDIRECT.class, "invoke", LPALBUFFER3IDIRECT.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(ILPALBUFFER3IDIRECT.class, "invoke", LPALBUFFER3IDIRECT.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull LPALBUFFER3IDIRECT lambda) {
+        static MemorySegment ofNative(@NotNull ILPALBUFFER3IDIRECT lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull LPALBUFFER3IDIRECT lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull ILPALBUFFER3IDIRECT lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), LPALBUFFER3IDIRECT, arena);
         }
     }
 
     @FunctionalInterface
-    public interface LPALBUFFERCALLBACKDIRECTSOFT {
+    public interface ILPALBUFFERCALLBACKDIRECTSOFT {
         void invoke(
-            ALCcontext p0,
+            @NativeType("ALCcontext") MemorySegment p0,
             @NativeType("ALuint") int p1,
             @NativeType("ALenum") int p2,
             @NativeType("ALsizei") int p3,
@@ -2585,26 +2585,26 @@ public final class ALFunctionTypes {
             @Pointer(comment="void*") @NotNull MemorySegment p5
         );
 
-        static MethodHandle of(@NotNull LPALBUFFERCALLBACKDIRECTSOFT lambda) {
+        static MethodHandle of(@NotNull ILPALBUFFERCALLBACKDIRECTSOFT lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(LPALBUFFERCALLBACKDIRECTSOFT.class, "invoke", LPALBUFFERCALLBACKDIRECTSOFT.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(ILPALBUFFERCALLBACKDIRECTSOFT.class, "invoke", LPALBUFFERCALLBACKDIRECTSOFT.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull LPALBUFFERCALLBACKDIRECTSOFT lambda) {
+        static MemorySegment ofNative(@NotNull ILPALBUFFERCALLBACKDIRECTSOFT lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull LPALBUFFERCALLBACKDIRECTSOFT lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull ILPALBUFFERCALLBACKDIRECTSOFT lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), LPALBUFFERCALLBACKDIRECTSOFT, arena);
         }
     }
 
     @FunctionalInterface
-    public interface LPALBUFFERCALLBACKSOFT {
+    public interface ILPALBUFFERCALLBACKSOFT {
         void invoke(
             @NativeType("ALuint") int p0,
             @NativeType("ALenum") int p1,
@@ -2613,26 +2613,26 @@ public final class ALFunctionTypes {
             @Pointer(comment="void*") @NotNull MemorySegment p4
         );
 
-        static MethodHandle of(@NotNull LPALBUFFERCALLBACKSOFT lambda) {
+        static MethodHandle of(@NotNull ILPALBUFFERCALLBACKSOFT lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(LPALBUFFERCALLBACKSOFT.class, "invoke", LPALBUFFERCALLBACKSOFT.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(ILPALBUFFERCALLBACKSOFT.class, "invoke", LPALBUFFERCALLBACKSOFT.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull LPALBUFFERCALLBACKSOFT lambda) {
+        static MemorySegment ofNative(@NotNull ILPALBUFFERCALLBACKSOFT lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull LPALBUFFERCALLBACKSOFT lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull ILPALBUFFERCALLBACKSOFT lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), LPALBUFFERCALLBACKSOFT, arena);
         }
     }
 
     @FunctionalInterface
-    public interface LPALBUFFERDATA {
+    public interface ILPALBUFFERDATA {
         void invoke(
             @NativeType("ALuint") int p0,
             @NativeType("ALenum") int p1,
@@ -2641,28 +2641,28 @@ public final class ALFunctionTypes {
             @NativeType("ALsizei") int p4
         );
 
-        static MethodHandle of(@NotNull LPALBUFFERDATA lambda) {
+        static MethodHandle of(@NotNull ILPALBUFFERDATA lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(LPALBUFFERDATA.class, "invoke", LPALBUFFERDATA.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(ILPALBUFFERDATA.class, "invoke", LPALBUFFERDATA.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull LPALBUFFERDATA lambda) {
+        static MemorySegment ofNative(@NotNull ILPALBUFFERDATA lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull LPALBUFFERDATA lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull ILPALBUFFERDATA lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), LPALBUFFERDATA, arena);
         }
     }
 
     @FunctionalInterface
-    public interface LPALBUFFERDATADIRECT {
+    public interface ILPALBUFFERDATADIRECT {
         void invoke(
-            ALCcontext p0,
+            @NativeType("ALCcontext") MemorySegment p0,
             @NativeType("ALuint") int p1,
             @NativeType("ALenum") int p2,
             @Pointer(comment="void*") @NotNull MemorySegment p3,
@@ -2670,28 +2670,28 @@ public final class ALFunctionTypes {
             @NativeType("ALsizei") int p5
         );
 
-        static MethodHandle of(@NotNull LPALBUFFERDATADIRECT lambda) {
+        static MethodHandle of(@NotNull ILPALBUFFERDATADIRECT lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(LPALBUFFERDATADIRECT.class, "invoke", LPALBUFFERDATADIRECT.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(ILPALBUFFERDATADIRECT.class, "invoke", LPALBUFFERDATADIRECT.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull LPALBUFFERDATADIRECT lambda) {
+        static MemorySegment ofNative(@NotNull ILPALBUFFERDATADIRECT lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull LPALBUFFERDATADIRECT lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull ILPALBUFFERDATADIRECT lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), LPALBUFFERDATADIRECT, arena);
         }
     }
 
     @FunctionalInterface
-    public interface LPALBUFFERDATASTATICDIRECT {
+    public interface ILPALBUFFERDATASTATICDIRECT {
         void invoke(
-            ALCcontext p0,
+            @NativeType("ALCcontext") MemorySegment p0,
             @NativeType("ALuint") int p1,
             @NativeType("ALenum") int p2,
             @Pointer(comment="void*") @NotNull MemorySegment p3,
@@ -2699,238 +2699,238 @@ public final class ALFunctionTypes {
             @NativeType("ALsizei") int p5
         );
 
-        static MethodHandle of(@NotNull LPALBUFFERDATASTATICDIRECT lambda) {
+        static MethodHandle of(@NotNull ILPALBUFFERDATASTATICDIRECT lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(LPALBUFFERDATASTATICDIRECT.class, "invoke", LPALBUFFERDATASTATICDIRECT.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(ILPALBUFFERDATASTATICDIRECT.class, "invoke", LPALBUFFERDATASTATICDIRECT.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull LPALBUFFERDATASTATICDIRECT lambda) {
+        static MemorySegment ofNative(@NotNull ILPALBUFFERDATASTATICDIRECT lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull LPALBUFFERDATASTATICDIRECT lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull ILPALBUFFERDATASTATICDIRECT lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), LPALBUFFERDATASTATICDIRECT, arena);
         }
     }
 
     @FunctionalInterface
-    public interface LPALBUFFERF {
+    public interface ILPALBUFFERF {
         void invoke(
             @NativeType("ALuint") int p0,
             @NativeType("ALenum") int p1,
             @NativeType("ALfloat") float p2
         );
 
-        static MethodHandle of(@NotNull LPALBUFFERF lambda) {
+        static MethodHandle of(@NotNull ILPALBUFFERF lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(LPALBUFFERF.class, "invoke", LPALBUFFERF.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(ILPALBUFFERF.class, "invoke", LPALBUFFERF.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull LPALBUFFERF lambda) {
+        static MemorySegment ofNative(@NotNull ILPALBUFFERF lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull LPALBUFFERF lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull ILPALBUFFERF lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), LPALBUFFERF, arena);
         }
     }
 
     @FunctionalInterface
-    public interface LPALBUFFERFDIRECT {
+    public interface ILPALBUFFERFDIRECT {
         void invoke(
-            ALCcontext p0,
+            @NativeType("ALCcontext") MemorySegment p0,
             @NativeType("ALuint") int p1,
             @NativeType("ALenum") int p2,
             @NativeType("ALfloat") float p3
         );
 
-        static MethodHandle of(@NotNull LPALBUFFERFDIRECT lambda) {
+        static MethodHandle of(@NotNull ILPALBUFFERFDIRECT lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(LPALBUFFERFDIRECT.class, "invoke", LPALBUFFERFDIRECT.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(ILPALBUFFERFDIRECT.class, "invoke", LPALBUFFERFDIRECT.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull LPALBUFFERFDIRECT lambda) {
+        static MemorySegment ofNative(@NotNull ILPALBUFFERFDIRECT lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull LPALBUFFERFDIRECT lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull ILPALBUFFERFDIRECT lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), LPALBUFFERFDIRECT, arena);
         }
     }
 
     @FunctionalInterface
-    public interface LPALBUFFERFV {
+    public interface ILPALBUFFERFV {
         void invoke(
             @NativeType("ALuint") int p0,
             @NativeType("ALenum") int p1,
             @Pointer(comment="void*") @NotNull MemorySegment p2
         );
 
-        static MethodHandle of(@NotNull LPALBUFFERFV lambda) {
+        static MethodHandle of(@NotNull ILPALBUFFERFV lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(LPALBUFFERFV.class, "invoke", LPALBUFFERFV.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(ILPALBUFFERFV.class, "invoke", LPALBUFFERFV.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull LPALBUFFERFV lambda) {
+        static MemorySegment ofNative(@NotNull ILPALBUFFERFV lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull LPALBUFFERFV lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull ILPALBUFFERFV lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), LPALBUFFERFV, arena);
         }
     }
 
     @FunctionalInterface
-    public interface LPALBUFFERFVDIRECT {
+    public interface ILPALBUFFERFVDIRECT {
         void invoke(
-            ALCcontext p0,
+            @NativeType("ALCcontext") MemorySegment p0,
             @NativeType("ALuint") int p1,
             @NativeType("ALenum") int p2,
             @Pointer(comment="void*") @NotNull MemorySegment p3
         );
 
-        static MethodHandle of(@NotNull LPALBUFFERFVDIRECT lambda) {
+        static MethodHandle of(@NotNull ILPALBUFFERFVDIRECT lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(LPALBUFFERFVDIRECT.class, "invoke", LPALBUFFERFVDIRECT.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(ILPALBUFFERFVDIRECT.class, "invoke", LPALBUFFERFVDIRECT.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull LPALBUFFERFVDIRECT lambda) {
+        static MemorySegment ofNative(@NotNull ILPALBUFFERFVDIRECT lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull LPALBUFFERFVDIRECT lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull ILPALBUFFERFVDIRECT lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), LPALBUFFERFVDIRECT, arena);
         }
     }
 
     @FunctionalInterface
-    public interface LPALBUFFERI {
+    public interface ILPALBUFFERI {
         void invoke(
             @NativeType("ALuint") int p0,
             @NativeType("ALenum") int p1,
             @NativeType("ALint") int p2
         );
 
-        static MethodHandle of(@NotNull LPALBUFFERI lambda) {
+        static MethodHandle of(@NotNull ILPALBUFFERI lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(LPALBUFFERI.class, "invoke", LPALBUFFERI.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(ILPALBUFFERI.class, "invoke", LPALBUFFERI.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull LPALBUFFERI lambda) {
+        static MemorySegment ofNative(@NotNull ILPALBUFFERI lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull LPALBUFFERI lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull ILPALBUFFERI lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), LPALBUFFERI, arena);
         }
     }
 
     @FunctionalInterface
-    public interface LPALBUFFERIDIRECT {
+    public interface ILPALBUFFERIDIRECT {
         void invoke(
-            ALCcontext p0,
+            @NativeType("ALCcontext") MemorySegment p0,
             @NativeType("ALuint") int p1,
             @NativeType("ALenum") int p2,
             @NativeType("ALint") int p3
         );
 
-        static MethodHandle of(@NotNull LPALBUFFERIDIRECT lambda) {
+        static MethodHandle of(@NotNull ILPALBUFFERIDIRECT lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(LPALBUFFERIDIRECT.class, "invoke", LPALBUFFERIDIRECT.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(ILPALBUFFERIDIRECT.class, "invoke", LPALBUFFERIDIRECT.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull LPALBUFFERIDIRECT lambda) {
+        static MemorySegment ofNative(@NotNull ILPALBUFFERIDIRECT lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull LPALBUFFERIDIRECT lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull ILPALBUFFERIDIRECT lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), LPALBUFFERIDIRECT, arena);
         }
     }
 
     @FunctionalInterface
-    public interface LPALBUFFERIV {
+    public interface ILPALBUFFERIV {
         void invoke(
             @NativeType("ALuint") int p0,
             @NativeType("ALenum") int p1,
             @Pointer(comment="void*") @NotNull MemorySegment p2
         );
 
-        static MethodHandle of(@NotNull LPALBUFFERIV lambda) {
+        static MethodHandle of(@NotNull ILPALBUFFERIV lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(LPALBUFFERIV.class, "invoke", LPALBUFFERIV.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(ILPALBUFFERIV.class, "invoke", LPALBUFFERIV.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull LPALBUFFERIV lambda) {
+        static MemorySegment ofNative(@NotNull ILPALBUFFERIV lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull LPALBUFFERIV lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull ILPALBUFFERIV lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), LPALBUFFERIV, arena);
         }
     }
 
     @FunctionalInterface
-    public interface LPALBUFFERIVDIRECT {
+    public interface ILPALBUFFERIVDIRECT {
         void invoke(
-            ALCcontext p0,
+            @NativeType("ALCcontext") MemorySegment p0,
             @NativeType("ALuint") int p1,
             @NativeType("ALenum") int p2,
             @Pointer(comment="void*") @NotNull MemorySegment p3
         );
 
-        static MethodHandle of(@NotNull LPALBUFFERIVDIRECT lambda) {
+        static MethodHandle of(@NotNull ILPALBUFFERIVDIRECT lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(LPALBUFFERIVDIRECT.class, "invoke", LPALBUFFERIVDIRECT.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(ILPALBUFFERIVDIRECT.class, "invoke", LPALBUFFERIVDIRECT.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull LPALBUFFERIVDIRECT lambda) {
+        static MemorySegment ofNative(@NotNull ILPALBUFFERIVDIRECT lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull LPALBUFFERIVDIRECT lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull ILPALBUFFERIVDIRECT lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), LPALBUFFERIVDIRECT, arena);
         }
     }
 
     @FunctionalInterface
-    public interface LPALBUFFERSAMPLESSOFT {
+    public interface ILPALBUFFERSAMPLESSOFT {
         void invoke(
             @NativeType("ALuint") int p0,
             @NativeType("ALuint") int p1,
@@ -2941,28 +2941,28 @@ public final class ALFunctionTypes {
             @Pointer(comment="void*") @NotNull MemorySegment p6
         );
 
-        static MethodHandle of(@NotNull LPALBUFFERSAMPLESSOFT lambda) {
+        static MethodHandle of(@NotNull ILPALBUFFERSAMPLESSOFT lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(LPALBUFFERSAMPLESSOFT.class, "invoke", LPALBUFFERSAMPLESSOFT.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(ILPALBUFFERSAMPLESSOFT.class, "invoke", LPALBUFFERSAMPLESSOFT.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull LPALBUFFERSAMPLESSOFT lambda) {
+        static MemorySegment ofNative(@NotNull ILPALBUFFERSAMPLESSOFT lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull LPALBUFFERSAMPLESSOFT lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull ILPALBUFFERSAMPLESSOFT lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), LPALBUFFERSAMPLESSOFT, arena);
         }
     }
 
     @FunctionalInterface
-    public interface LPALBUFFERSUBDATADIRECTSOFT {
+    public interface ILPALBUFFERSUBDATADIRECTSOFT {
         void invoke(
-            ALCcontext p0,
+            @NativeType("ALCcontext") MemorySegment p0,
             @NativeType("ALuint") int p1,
             @NativeType("ALenum") int p2,
             @Pointer(comment="void*") @NotNull MemorySegment p3,
@@ -2970,26 +2970,26 @@ public final class ALFunctionTypes {
             @NativeType("ALsizei") int p5
         );
 
-        static MethodHandle of(@NotNull LPALBUFFERSUBDATADIRECTSOFT lambda) {
+        static MethodHandle of(@NotNull ILPALBUFFERSUBDATADIRECTSOFT lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(LPALBUFFERSUBDATADIRECTSOFT.class, "invoke", LPALBUFFERSUBDATADIRECTSOFT.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(ILPALBUFFERSUBDATADIRECTSOFT.class, "invoke", LPALBUFFERSUBDATADIRECTSOFT.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull LPALBUFFERSUBDATADIRECTSOFT lambda) {
+        static MemorySegment ofNative(@NotNull ILPALBUFFERSUBDATADIRECTSOFT lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull LPALBUFFERSUBDATADIRECTSOFT lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull ILPALBUFFERSUBDATADIRECTSOFT lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), LPALBUFFERSUBDATADIRECTSOFT, arena);
         }
     }
 
     @FunctionalInterface
-    public interface LPALBUFFERSUBSAMPLESSOFT {
+    public interface ILPALBUFFERSUBSAMPLESSOFT {
         void invoke(
             @NativeType("ALuint") int p0,
             @NativeType("ALsizei") int p1,
@@ -2999,901 +2999,901 @@ public final class ALFunctionTypes {
             @Pointer(comment="void*") @NotNull MemorySegment p5
         );
 
-        static MethodHandle of(@NotNull LPALBUFFERSUBSAMPLESSOFT lambda) {
+        static MethodHandle of(@NotNull ILPALBUFFERSUBSAMPLESSOFT lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(LPALBUFFERSUBSAMPLESSOFT.class, "invoke", LPALBUFFERSUBSAMPLESSOFT.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(ILPALBUFFERSUBSAMPLESSOFT.class, "invoke", LPALBUFFERSUBSAMPLESSOFT.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull LPALBUFFERSUBSAMPLESSOFT lambda) {
+        static MemorySegment ofNative(@NotNull ILPALBUFFERSUBSAMPLESSOFT lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull LPALBUFFERSUBSAMPLESSOFT lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull ILPALBUFFERSUBSAMPLESSOFT lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), LPALBUFFERSUBSAMPLESSOFT, arena);
         }
     }
 
     @FunctionalInterface
-    public interface LPALCCAPTURECLOSEDEVICE {
+    public interface ILPALCCAPTURECLOSEDEVICE {
         @NativeType("ALCboolean") byte invoke(
-            ALCdevice p0
+            @NativeType("ALCdevice") MemorySegment p0
         );
 
-        static MethodHandle of(@NotNull LPALCCAPTURECLOSEDEVICE lambda) {
+        static MethodHandle of(@NotNull ILPALCCAPTURECLOSEDEVICE lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(LPALCCAPTURECLOSEDEVICE.class, "invoke", LPALCCAPTURECLOSEDEVICE.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(ILPALCCAPTURECLOSEDEVICE.class, "invoke", LPALCCAPTURECLOSEDEVICE.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull LPALCCAPTURECLOSEDEVICE lambda) {
+        static MemorySegment ofNative(@NotNull ILPALCCAPTURECLOSEDEVICE lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull LPALCCAPTURECLOSEDEVICE lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull ILPALCCAPTURECLOSEDEVICE lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), LPALCCAPTURECLOSEDEVICE, arena);
         }
     }
 
     @FunctionalInterface
-    public interface LPALCCAPTUREOPENDEVICE {
-        ALCdevice invoke(
+    public interface ILPALCCAPTUREOPENDEVICE {
+        @NativeType("ALCdevice") MemorySegment invoke(
             @Pointer(comment="void*") @NotNull MemorySegment p0,
             @NativeType("ALCuint") int p1,
             @NativeType("ALCenum") int p2,
             @NativeType("ALCsizei") int p3
         );
 
-        static MethodHandle of(@NotNull LPALCCAPTUREOPENDEVICE lambda) {
+        static MethodHandle of(@NotNull ILPALCCAPTUREOPENDEVICE lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(LPALCCAPTUREOPENDEVICE.class, "invoke", LPALCCAPTUREOPENDEVICE.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(ILPALCCAPTUREOPENDEVICE.class, "invoke", LPALCCAPTUREOPENDEVICE.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull LPALCCAPTUREOPENDEVICE lambda) {
+        static MemorySegment ofNative(@NotNull ILPALCCAPTUREOPENDEVICE lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull LPALCCAPTUREOPENDEVICE lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull ILPALCCAPTUREOPENDEVICE lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), LPALCCAPTUREOPENDEVICE, arena);
         }
     }
 
     @FunctionalInterface
-    public interface LPALCCAPTURESAMPLES {
+    public interface ILPALCCAPTURESAMPLES {
         void invoke(
-            ALCdevice p0,
+            @NativeType("ALCdevice") MemorySegment p0,
             @Pointer(comment="void*") @NotNull MemorySegment p1,
             @NativeType("ALCsizei") int p2
         );
 
-        static MethodHandle of(@NotNull LPALCCAPTURESAMPLES lambda) {
+        static MethodHandle of(@NotNull ILPALCCAPTURESAMPLES lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(LPALCCAPTURESAMPLES.class, "invoke", LPALCCAPTURESAMPLES.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(ILPALCCAPTURESAMPLES.class, "invoke", LPALCCAPTURESAMPLES.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull LPALCCAPTURESAMPLES lambda) {
+        static MemorySegment ofNative(@NotNull ILPALCCAPTURESAMPLES lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull LPALCCAPTURESAMPLES lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull ILPALCCAPTURESAMPLES lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), LPALCCAPTURESAMPLES, arena);
         }
     }
 
     @FunctionalInterface
-    public interface LPALCCAPTURESTART {
+    public interface ILPALCCAPTURESTART {
         void invoke(
-            ALCdevice p0
+            @NativeType("ALCdevice") MemorySegment p0
         );
 
-        static MethodHandle of(@NotNull LPALCCAPTURESTART lambda) {
+        static MethodHandle of(@NotNull ILPALCCAPTURESTART lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(LPALCCAPTURESTART.class, "invoke", LPALCCAPTURESTART.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(ILPALCCAPTURESTART.class, "invoke", LPALCCAPTURESTART.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull LPALCCAPTURESTART lambda) {
+        static MemorySegment ofNative(@NotNull ILPALCCAPTURESTART lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull LPALCCAPTURESTART lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull ILPALCCAPTURESTART lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), LPALCCAPTURESTART, arena);
         }
     }
 
     @FunctionalInterface
-    public interface LPALCCAPTURESTOP {
+    public interface ILPALCCAPTURESTOP {
         void invoke(
-            ALCdevice p0
+            @NativeType("ALCdevice") MemorySegment p0
         );
 
-        static MethodHandle of(@NotNull LPALCCAPTURESTOP lambda) {
+        static MethodHandle of(@NotNull ILPALCCAPTURESTOP lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(LPALCCAPTURESTOP.class, "invoke", LPALCCAPTURESTOP.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(ILPALCCAPTURESTOP.class, "invoke", LPALCCAPTURESTOP.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull LPALCCAPTURESTOP lambda) {
+        static MemorySegment ofNative(@NotNull ILPALCCAPTURESTOP lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull LPALCCAPTURESTOP lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull ILPALCCAPTURESTOP lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), LPALCCAPTURESTOP, arena);
         }
     }
 
     @FunctionalInterface
-    public interface LPALCCLOSEDEVICE {
+    public interface ILPALCCLOSEDEVICE {
         @NativeType("ALCboolean") byte invoke(
-            ALCdevice p0
+            @NativeType("ALCdevice") MemorySegment p0
         );
 
-        static MethodHandle of(@NotNull LPALCCLOSEDEVICE lambda) {
+        static MethodHandle of(@NotNull ILPALCCLOSEDEVICE lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(LPALCCLOSEDEVICE.class, "invoke", LPALCCLOSEDEVICE.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(ILPALCCLOSEDEVICE.class, "invoke", LPALCCLOSEDEVICE.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull LPALCCLOSEDEVICE lambda) {
+        static MemorySegment ofNative(@NotNull ILPALCCLOSEDEVICE lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull LPALCCLOSEDEVICE lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull ILPALCCLOSEDEVICE lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), LPALCCLOSEDEVICE, arena);
         }
     }
 
     @FunctionalInterface
-    public interface LPALCCREATECONTEXT {
-        ALCcontext invoke(
-            ALCdevice p0,
+    public interface ILPALCCREATECONTEXT {
+        @NativeType("ALCcontext") MemorySegment invoke(
+            @NativeType("ALCdevice") MemorySegment p0,
             @Pointer(comment="void*") @NotNull MemorySegment p1
         );
 
-        static MethodHandle of(@NotNull LPALCCREATECONTEXT lambda) {
+        static MethodHandle of(@NotNull ILPALCCREATECONTEXT lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(LPALCCREATECONTEXT.class, "invoke", LPALCCREATECONTEXT.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(ILPALCCREATECONTEXT.class, "invoke", LPALCCREATECONTEXT.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull LPALCCREATECONTEXT lambda) {
+        static MemorySegment ofNative(@NotNull ILPALCCREATECONTEXT lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull LPALCCREATECONTEXT lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull ILPALCCREATECONTEXT lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), LPALCCREATECONTEXT, arena);
         }
     }
 
     @FunctionalInterface
-    public interface LPALCDESTROYCONTEXT {
+    public interface ILPALCDESTROYCONTEXT {
         void invoke(
-            ALCcontext p0
+            @NativeType("ALCcontext") MemorySegment p0
         );
 
-        static MethodHandle of(@NotNull LPALCDESTROYCONTEXT lambda) {
+        static MethodHandle of(@NotNull ILPALCDESTROYCONTEXT lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(LPALCDESTROYCONTEXT.class, "invoke", LPALCDESTROYCONTEXT.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(ILPALCDESTROYCONTEXT.class, "invoke", LPALCDESTROYCONTEXT.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull LPALCDESTROYCONTEXT lambda) {
+        static MemorySegment ofNative(@NotNull ILPALCDESTROYCONTEXT lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull LPALCDESTROYCONTEXT lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull ILPALCDESTROYCONTEXT lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), LPALCDESTROYCONTEXT, arena);
         }
     }
 
     @FunctionalInterface
-    public interface LPALCDEVICEPAUSESOFT {
+    public interface ILPALCDEVICEPAUSESOFT {
         void invoke(
-            ALCdevice p0
+            @NativeType("ALCdevice") MemorySegment p0
         );
 
-        static MethodHandle of(@NotNull LPALCDEVICEPAUSESOFT lambda) {
+        static MethodHandle of(@NotNull ILPALCDEVICEPAUSESOFT lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(LPALCDEVICEPAUSESOFT.class, "invoke", LPALCDEVICEPAUSESOFT.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(ILPALCDEVICEPAUSESOFT.class, "invoke", LPALCDEVICEPAUSESOFT.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull LPALCDEVICEPAUSESOFT lambda) {
+        static MemorySegment ofNative(@NotNull ILPALCDEVICEPAUSESOFT lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull LPALCDEVICEPAUSESOFT lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull ILPALCDEVICEPAUSESOFT lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), LPALCDEVICEPAUSESOFT, arena);
         }
     }
 
     @FunctionalInterface
-    public interface LPALCDEVICERESUMESOFT {
+    public interface ILPALCDEVICERESUMESOFT {
         void invoke(
-            ALCdevice p0
+            @NativeType("ALCdevice") MemorySegment p0
         );
 
-        static MethodHandle of(@NotNull LPALCDEVICERESUMESOFT lambda) {
+        static MethodHandle of(@NotNull ILPALCDEVICERESUMESOFT lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(LPALCDEVICERESUMESOFT.class, "invoke", LPALCDEVICERESUMESOFT.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(ILPALCDEVICERESUMESOFT.class, "invoke", LPALCDEVICERESUMESOFT.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull LPALCDEVICERESUMESOFT lambda) {
+        static MemorySegment ofNative(@NotNull ILPALCDEVICERESUMESOFT lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull LPALCDEVICERESUMESOFT lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull ILPALCDEVICERESUMESOFT lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), LPALCDEVICERESUMESOFT, arena);
         }
     }
 
     @FunctionalInterface
-    public interface LPALCEVENTCALLBACKSOFT {
+    public interface ILPALCEVENTCALLBACKSOFT {
         void invoke(
             @Pointer(comment="ALCEVENTPROCTYPESOFT") @NotNull MemorySegment p0,
             @Pointer(comment="void*") @NotNull MemorySegment p1
         );
 
-        static MethodHandle of(@NotNull LPALCEVENTCALLBACKSOFT lambda) {
+        static MethodHandle of(@NotNull ILPALCEVENTCALLBACKSOFT lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(LPALCEVENTCALLBACKSOFT.class, "invoke", LPALCEVENTCALLBACKSOFT.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(ILPALCEVENTCALLBACKSOFT.class, "invoke", LPALCEVENTCALLBACKSOFT.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull LPALCEVENTCALLBACKSOFT lambda) {
+        static MemorySegment ofNative(@NotNull ILPALCEVENTCALLBACKSOFT lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull LPALCEVENTCALLBACKSOFT lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull ILPALCEVENTCALLBACKSOFT lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), LPALCEVENTCALLBACKSOFT, arena);
         }
     }
 
     @FunctionalInterface
-    public interface LPALCEVENTCONTROLSOFT {
+    public interface ILPALCEVENTCONTROLSOFT {
         @NativeType("ALCboolean") byte invoke(
             @NativeType("ALCsizei") int p0,
             @Pointer(comment="void*") @NotNull MemorySegment p1,
             @NativeType("ALCboolean") byte p2
         );
 
-        static MethodHandle of(@NotNull LPALCEVENTCONTROLSOFT lambda) {
+        static MethodHandle of(@NotNull ILPALCEVENTCONTROLSOFT lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(LPALCEVENTCONTROLSOFT.class, "invoke", LPALCEVENTCONTROLSOFT.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(ILPALCEVENTCONTROLSOFT.class, "invoke", LPALCEVENTCONTROLSOFT.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull LPALCEVENTCONTROLSOFT lambda) {
+        static MemorySegment ofNative(@NotNull ILPALCEVENTCONTROLSOFT lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull LPALCEVENTCONTROLSOFT lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull ILPALCEVENTCONTROLSOFT lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), LPALCEVENTCONTROLSOFT, arena);
         }
     }
 
     @FunctionalInterface
-    public interface LPALCEVENTISSUPPORTEDSOFT {
+    public interface ILPALCEVENTISSUPPORTEDSOFT {
         @NativeType("ALCenum") int invoke(
             @NativeType("ALCenum") int p0,
             @NativeType("ALCenum") int p1
         );
 
-        static MethodHandle of(@NotNull LPALCEVENTISSUPPORTEDSOFT lambda) {
+        static MethodHandle of(@NotNull ILPALCEVENTISSUPPORTEDSOFT lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(LPALCEVENTISSUPPORTEDSOFT.class, "invoke", LPALCEVENTISSUPPORTEDSOFT.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(ILPALCEVENTISSUPPORTEDSOFT.class, "invoke", LPALCEVENTISSUPPORTEDSOFT.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull LPALCEVENTISSUPPORTEDSOFT lambda) {
+        static MemorySegment ofNative(@NotNull ILPALCEVENTISSUPPORTEDSOFT lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull LPALCEVENTISSUPPORTEDSOFT lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull ILPALCEVENTISSUPPORTEDSOFT lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), LPALCEVENTISSUPPORTEDSOFT, arena);
         }
     }
 
     @FunctionalInterface
-    public interface LPALCGETCONTEXTSDEVICE {
-        ALCdevice invoke(
-            ALCcontext p0
+    public interface ILPALCGETCONTEXTSDEVICE {
+        @NativeType("ALCdevice") MemorySegment invoke(
+            @NativeType("ALCcontext") MemorySegment p0
         );
 
-        static MethodHandle of(@NotNull LPALCGETCONTEXTSDEVICE lambda) {
+        static MethodHandle of(@NotNull ILPALCGETCONTEXTSDEVICE lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(LPALCGETCONTEXTSDEVICE.class, "invoke", LPALCGETCONTEXTSDEVICE.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(ILPALCGETCONTEXTSDEVICE.class, "invoke", LPALCGETCONTEXTSDEVICE.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull LPALCGETCONTEXTSDEVICE lambda) {
+        static MemorySegment ofNative(@NotNull ILPALCGETCONTEXTSDEVICE lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull LPALCGETCONTEXTSDEVICE lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull ILPALCGETCONTEXTSDEVICE lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), LPALCGETCONTEXTSDEVICE, arena);
         }
     }
 
     @FunctionalInterface
-    public interface LPALCGETCURRENTCONTEXT {
-        ALCcontext invoke(
+    public interface ILPALCGETCURRENTCONTEXT {
+        @NativeType("ALCcontext") MemorySegment invoke(
         );
 
-        static MethodHandle of(@NotNull LPALCGETCURRENTCONTEXT lambda) {
+        static MethodHandle of(@NotNull ILPALCGETCURRENTCONTEXT lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(LPALCGETCURRENTCONTEXT.class, "invoke", LPALCGETCURRENTCONTEXT.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(ILPALCGETCURRENTCONTEXT.class, "invoke", LPALCGETCURRENTCONTEXT.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull LPALCGETCURRENTCONTEXT lambda) {
+        static MemorySegment ofNative(@NotNull ILPALCGETCURRENTCONTEXT lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull LPALCGETCURRENTCONTEXT lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull ILPALCGETCURRENTCONTEXT lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), LPALCGETCURRENTCONTEXT, arena);
         }
     }
 
     @FunctionalInterface
-    public interface LPALCGETENUMVALUE {
+    public interface ILPALCGETENUMVALUE {
         @NativeType("ALCenum") int invoke(
-            ALCdevice p0,
+            @NativeType("ALCdevice") MemorySegment p0,
             @Pointer(comment="void*") @NotNull MemorySegment p1
         );
 
-        static MethodHandle of(@NotNull LPALCGETENUMVALUE lambda) {
+        static MethodHandle of(@NotNull ILPALCGETENUMVALUE lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(LPALCGETENUMVALUE.class, "invoke", LPALCGETENUMVALUE.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(ILPALCGETENUMVALUE.class, "invoke", LPALCGETENUMVALUE.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull LPALCGETENUMVALUE lambda) {
+        static MemorySegment ofNative(@NotNull ILPALCGETENUMVALUE lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull LPALCGETENUMVALUE lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull ILPALCGETENUMVALUE lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), LPALCGETENUMVALUE, arena);
         }
     }
 
     @FunctionalInterface
-    public interface LPALCGETERROR {
+    public interface ILPALCGETERROR {
         @NativeType("ALCenum") int invoke(
-            ALCdevice p0
+            @NativeType("ALCdevice") MemorySegment p0
         );
 
-        static MethodHandle of(@NotNull LPALCGETERROR lambda) {
+        static MethodHandle of(@NotNull ILPALCGETERROR lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(LPALCGETERROR.class, "invoke", LPALCGETERROR.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(ILPALCGETERROR.class, "invoke", LPALCGETERROR.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull LPALCGETERROR lambda) {
+        static MemorySegment ofNative(@NotNull ILPALCGETERROR lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull LPALCGETERROR lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull ILPALCGETERROR lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), LPALCGETERROR, arena);
         }
     }
 
     @FunctionalInterface
-    public interface LPALCGETINTEGER64VSOFT {
+    public interface ILPALCGETINTEGER64VSOFT {
         void invoke(
-            ALCdevice p0,
+            @NativeType("ALCdevice") MemorySegment p0,
             @NativeType("ALCenum") int p1,
             @NativeType("ALsizei") int p2,
             @Pointer(comment="void*") @NotNull MemorySegment p3
         );
 
-        static MethodHandle of(@NotNull LPALCGETINTEGER64VSOFT lambda) {
+        static MethodHandle of(@NotNull ILPALCGETINTEGER64VSOFT lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(LPALCGETINTEGER64VSOFT.class, "invoke", LPALCGETINTEGER64VSOFT.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(ILPALCGETINTEGER64VSOFT.class, "invoke", LPALCGETINTEGER64VSOFT.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull LPALCGETINTEGER64VSOFT lambda) {
+        static MemorySegment ofNative(@NotNull ILPALCGETINTEGER64VSOFT lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull LPALCGETINTEGER64VSOFT lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull ILPALCGETINTEGER64VSOFT lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), LPALCGETINTEGER64VSOFT, arena);
         }
     }
 
     @FunctionalInterface
-    public interface LPALCGETINTEGERV {
+    public interface ILPALCGETINTEGERV {
         void invoke(
-            ALCdevice p0,
+            @NativeType("ALCdevice") MemorySegment p0,
             @NativeType("ALCenum") int p1,
             @NativeType("ALCsizei") int p2,
             @Pointer(comment="void*") @NotNull MemorySegment p3
         );
 
-        static MethodHandle of(@NotNull LPALCGETINTEGERV lambda) {
+        static MethodHandle of(@NotNull ILPALCGETINTEGERV lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(LPALCGETINTEGERV.class, "invoke", LPALCGETINTEGERV.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(ILPALCGETINTEGERV.class, "invoke", LPALCGETINTEGERV.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull LPALCGETINTEGERV lambda) {
+        static MemorySegment ofNative(@NotNull ILPALCGETINTEGERV lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull LPALCGETINTEGERV lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull ILPALCGETINTEGERV lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), LPALCGETINTEGERV, arena);
         }
     }
 
     @FunctionalInterface
-    public interface LPALCGETPROCADDRESS {
+    public interface ILPALCGETPROCADDRESS {
         @Pointer(comment="void*") @NotNull MemorySegment invoke(
-            ALCdevice p0,
+            @NativeType("ALCdevice") MemorySegment p0,
             @Pointer(comment="void*") @NotNull MemorySegment p1
         );
 
-        static MethodHandle of(@NotNull LPALCGETPROCADDRESS lambda) {
+        static MethodHandle of(@NotNull ILPALCGETPROCADDRESS lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(LPALCGETPROCADDRESS.class, "invoke", LPALCGETPROCADDRESS.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(ILPALCGETPROCADDRESS.class, "invoke", LPALCGETPROCADDRESS.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull LPALCGETPROCADDRESS lambda) {
+        static MemorySegment ofNative(@NotNull ILPALCGETPROCADDRESS lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull LPALCGETPROCADDRESS lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull ILPALCGETPROCADDRESS lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), LPALCGETPROCADDRESS, arena);
         }
     }
 
     @FunctionalInterface
-    public interface LPALCGETPROCADDRESS2 {
+    public interface ILPALCGETPROCADDRESS2 {
         @Pointer(comment="void*") @NotNull MemorySegment invoke(
-            ALCdevice p0,
+            @NativeType("ALCdevice") MemorySegment p0,
             @Pointer(comment="void*") @NotNull MemorySegment p1
         );
 
-        static MethodHandle of(@NotNull LPALCGETPROCADDRESS2 lambda) {
+        static MethodHandle of(@NotNull ILPALCGETPROCADDRESS2 lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(LPALCGETPROCADDRESS2.class, "invoke", LPALCGETPROCADDRESS2.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(ILPALCGETPROCADDRESS2.class, "invoke", LPALCGETPROCADDRESS2.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull LPALCGETPROCADDRESS2 lambda) {
+        static MemorySegment ofNative(@NotNull ILPALCGETPROCADDRESS2 lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull LPALCGETPROCADDRESS2 lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull ILPALCGETPROCADDRESS2 lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), LPALCGETPROCADDRESS2, arena);
         }
     }
 
     @FunctionalInterface
-    public interface LPALCGETSTRING {
+    public interface ILPALCGETSTRING {
         @Pointer(comment="void*") @NotNull MemorySegment invoke(
-            ALCdevice p0,
+            @NativeType("ALCdevice") MemorySegment p0,
             @NativeType("ALCenum") int p1
         );
 
-        static MethodHandle of(@NotNull LPALCGETSTRING lambda) {
+        static MethodHandle of(@NotNull ILPALCGETSTRING lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(LPALCGETSTRING.class, "invoke", LPALCGETSTRING.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(ILPALCGETSTRING.class, "invoke", LPALCGETSTRING.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull LPALCGETSTRING lambda) {
+        static MemorySegment ofNative(@NotNull ILPALCGETSTRING lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull LPALCGETSTRING lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull ILPALCGETSTRING lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), LPALCGETSTRING, arena);
         }
     }
 
     @FunctionalInterface
-    public interface LPALCGETSTRINGISOFT {
+    public interface ILPALCGETSTRINGISOFT {
         @Pointer(comment="void*") @NotNull MemorySegment invoke(
-            ALCdevice p0,
+            @NativeType("ALCdevice") MemorySegment p0,
             @NativeType("ALCenum") int p1,
             @NativeType("ALCsizei") int p2
         );
 
-        static MethodHandle of(@NotNull LPALCGETSTRINGISOFT lambda) {
+        static MethodHandle of(@NotNull ILPALCGETSTRINGISOFT lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(LPALCGETSTRINGISOFT.class, "invoke", LPALCGETSTRINGISOFT.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(ILPALCGETSTRINGISOFT.class, "invoke", LPALCGETSTRINGISOFT.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull LPALCGETSTRINGISOFT lambda) {
+        static MemorySegment ofNative(@NotNull ILPALCGETSTRINGISOFT lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull LPALCGETSTRINGISOFT lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull ILPALCGETSTRINGISOFT lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), LPALCGETSTRINGISOFT, arena);
         }
     }
 
     @FunctionalInterface
-    public interface LPALCISEXTENSIONPRESENT {
+    public interface ILPALCISEXTENSIONPRESENT {
         @NativeType("ALCboolean") byte invoke(
-            ALCdevice p0,
+            @NativeType("ALCdevice") MemorySegment p0,
             @Pointer(comment="void*") @NotNull MemorySegment p1
         );
 
-        static MethodHandle of(@NotNull LPALCISEXTENSIONPRESENT lambda) {
+        static MethodHandle of(@NotNull ILPALCISEXTENSIONPRESENT lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(LPALCISEXTENSIONPRESENT.class, "invoke", LPALCISEXTENSIONPRESENT.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(ILPALCISEXTENSIONPRESENT.class, "invoke", LPALCISEXTENSIONPRESENT.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull LPALCISEXTENSIONPRESENT lambda) {
+        static MemorySegment ofNative(@NotNull ILPALCISEXTENSIONPRESENT lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull LPALCISEXTENSIONPRESENT lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull ILPALCISEXTENSIONPRESENT lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), LPALCISEXTENSIONPRESENT, arena);
         }
     }
 
     @FunctionalInterface
-    public interface LPALCISRENDERFORMATSUPPORTEDSOFT {
+    public interface ILPALCISRENDERFORMATSUPPORTEDSOFT {
         @NativeType("ALCboolean") byte invoke(
-            ALCdevice p0,
+            @NativeType("ALCdevice") MemorySegment p0,
             @NativeType("ALCsizei") int p1,
             @NativeType("ALCenum") int p2,
             @NativeType("ALCenum") int p3
         );
 
-        static MethodHandle of(@NotNull LPALCISRENDERFORMATSUPPORTEDSOFT lambda) {
+        static MethodHandle of(@NotNull ILPALCISRENDERFORMATSUPPORTEDSOFT lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(LPALCISRENDERFORMATSUPPORTEDSOFT.class, "invoke", LPALCISRENDERFORMATSUPPORTEDSOFT.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(ILPALCISRENDERFORMATSUPPORTEDSOFT.class, "invoke", LPALCISRENDERFORMATSUPPORTEDSOFT.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull LPALCISRENDERFORMATSUPPORTEDSOFT lambda) {
+        static MemorySegment ofNative(@NotNull ILPALCISRENDERFORMATSUPPORTEDSOFT lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull LPALCISRENDERFORMATSUPPORTEDSOFT lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull ILPALCISRENDERFORMATSUPPORTEDSOFT lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), LPALCISRENDERFORMATSUPPORTEDSOFT, arena);
         }
     }
 
     @FunctionalInterface
-    public interface LPALCLOOPBACKOPENDEVICESOFT {
-        ALCdevice invoke(
+    public interface ILPALCLOOPBACKOPENDEVICESOFT {
+        @NativeType("ALCdevice") MemorySegment invoke(
             @Pointer(comment="void*") @NotNull MemorySegment p0
         );
 
-        static MethodHandle of(@NotNull LPALCLOOPBACKOPENDEVICESOFT lambda) {
+        static MethodHandle of(@NotNull ILPALCLOOPBACKOPENDEVICESOFT lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(LPALCLOOPBACKOPENDEVICESOFT.class, "invoke", LPALCLOOPBACKOPENDEVICESOFT.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(ILPALCLOOPBACKOPENDEVICESOFT.class, "invoke", LPALCLOOPBACKOPENDEVICESOFT.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull LPALCLOOPBACKOPENDEVICESOFT lambda) {
+        static MemorySegment ofNative(@NotNull ILPALCLOOPBACKOPENDEVICESOFT lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull LPALCLOOPBACKOPENDEVICESOFT lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull ILPALCLOOPBACKOPENDEVICESOFT lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), LPALCLOOPBACKOPENDEVICESOFT, arena);
         }
     }
 
     @FunctionalInterface
-    public interface LPALCMAKECONTEXTCURRENT {
+    public interface ILPALCMAKECONTEXTCURRENT {
         @NativeType("ALCboolean") byte invoke(
-            ALCcontext p0
+            @NativeType("ALCcontext") MemorySegment p0
         );
 
-        static MethodHandle of(@NotNull LPALCMAKECONTEXTCURRENT lambda) {
+        static MethodHandle of(@NotNull ILPALCMAKECONTEXTCURRENT lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(LPALCMAKECONTEXTCURRENT.class, "invoke", LPALCMAKECONTEXTCURRENT.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(ILPALCMAKECONTEXTCURRENT.class, "invoke", LPALCMAKECONTEXTCURRENT.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull LPALCMAKECONTEXTCURRENT lambda) {
+        static MemorySegment ofNative(@NotNull ILPALCMAKECONTEXTCURRENT lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull LPALCMAKECONTEXTCURRENT lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull ILPALCMAKECONTEXTCURRENT lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), LPALCMAKECONTEXTCURRENT, arena);
         }
     }
 
     @FunctionalInterface
-    public interface LPALCOPENDEVICE {
-        ALCdevice invoke(
+    public interface ILPALCOPENDEVICE {
+        @NativeType("ALCdevice") MemorySegment invoke(
             @Pointer(comment="void*") @NotNull MemorySegment p0
         );
 
-        static MethodHandle of(@NotNull LPALCOPENDEVICE lambda) {
+        static MethodHandle of(@NotNull ILPALCOPENDEVICE lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(LPALCOPENDEVICE.class, "invoke", LPALCOPENDEVICE.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(ILPALCOPENDEVICE.class, "invoke", LPALCOPENDEVICE.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull LPALCOPENDEVICE lambda) {
+        static MemorySegment ofNative(@NotNull ILPALCOPENDEVICE lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull LPALCOPENDEVICE lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull ILPALCOPENDEVICE lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), LPALCOPENDEVICE, arena);
         }
     }
 
     @FunctionalInterface
-    public interface LPALCPROCESSCONTEXT {
+    public interface ILPALCPROCESSCONTEXT {
         void invoke(
-            ALCcontext p0
+            @NativeType("ALCcontext") MemorySegment p0
         );
 
-        static MethodHandle of(@NotNull LPALCPROCESSCONTEXT lambda) {
+        static MethodHandle of(@NotNull ILPALCPROCESSCONTEXT lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(LPALCPROCESSCONTEXT.class, "invoke", LPALCPROCESSCONTEXT.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(ILPALCPROCESSCONTEXT.class, "invoke", LPALCPROCESSCONTEXT.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull LPALCPROCESSCONTEXT lambda) {
+        static MemorySegment ofNative(@NotNull ILPALCPROCESSCONTEXT lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull LPALCPROCESSCONTEXT lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull ILPALCPROCESSCONTEXT lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), LPALCPROCESSCONTEXT, arena);
         }
     }
 
     @FunctionalInterface
-    public interface LPALCRENDERSAMPLESSOFT {
+    public interface ILPALCRENDERSAMPLESSOFT {
         void invoke(
-            ALCdevice p0,
+            @NativeType("ALCdevice") MemorySegment p0,
             @Pointer(comment="void*") @NotNull MemorySegment p1,
             @NativeType("ALCsizei") int p2
         );
 
-        static MethodHandle of(@NotNull LPALCRENDERSAMPLESSOFT lambda) {
+        static MethodHandle of(@NotNull ILPALCRENDERSAMPLESSOFT lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(LPALCRENDERSAMPLESSOFT.class, "invoke", LPALCRENDERSAMPLESSOFT.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(ILPALCRENDERSAMPLESSOFT.class, "invoke", LPALCRENDERSAMPLESSOFT.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull LPALCRENDERSAMPLESSOFT lambda) {
+        static MemorySegment ofNative(@NotNull ILPALCRENDERSAMPLESSOFT lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull LPALCRENDERSAMPLESSOFT lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull ILPALCRENDERSAMPLESSOFT lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), LPALCRENDERSAMPLESSOFT, arena);
         }
     }
 
     @FunctionalInterface
-    public interface LPALCREOPENDEVICESOFT {
+    public interface ILPALCREOPENDEVICESOFT {
         @NativeType("ALCboolean") byte invoke(
-            ALCdevice p0,
+            @NativeType("ALCdevice") MemorySegment p0,
             @Pointer(comment="void*") @NotNull MemorySegment p1,
             @Pointer(comment="void*") @NotNull MemorySegment p2
         );
 
-        static MethodHandle of(@NotNull LPALCREOPENDEVICESOFT lambda) {
+        static MethodHandle of(@NotNull ILPALCREOPENDEVICESOFT lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(LPALCREOPENDEVICESOFT.class, "invoke", LPALCREOPENDEVICESOFT.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(ILPALCREOPENDEVICESOFT.class, "invoke", LPALCREOPENDEVICESOFT.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull LPALCREOPENDEVICESOFT lambda) {
+        static MemorySegment ofNative(@NotNull ILPALCREOPENDEVICESOFT lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull LPALCREOPENDEVICESOFT lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull ILPALCREOPENDEVICESOFT lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), LPALCREOPENDEVICESOFT, arena);
         }
     }
 
     @FunctionalInterface
-    public interface LPALCRESETDEVICESOFT {
+    public interface ILPALCRESETDEVICESOFT {
         @NativeType("ALCboolean") byte invoke(
-            ALCdevice p0,
+            @NativeType("ALCdevice") MemorySegment p0,
             @Pointer(comment="void*") @NotNull MemorySegment p1
         );
 
-        static MethodHandle of(@NotNull LPALCRESETDEVICESOFT lambda) {
+        static MethodHandle of(@NotNull ILPALCRESETDEVICESOFT lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(LPALCRESETDEVICESOFT.class, "invoke", LPALCRESETDEVICESOFT.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(ILPALCRESETDEVICESOFT.class, "invoke", LPALCRESETDEVICESOFT.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull LPALCRESETDEVICESOFT lambda) {
+        static MemorySegment ofNative(@NotNull ILPALCRESETDEVICESOFT lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull LPALCRESETDEVICESOFT lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull ILPALCRESETDEVICESOFT lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), LPALCRESETDEVICESOFT, arena);
         }
     }
 
     @FunctionalInterface
-    public interface LPALCSUSPENDCONTEXT {
+    public interface ILPALCSUSPENDCONTEXT {
         void invoke(
-            ALCcontext p0
+            @NativeType("ALCcontext") MemorySegment p0
         );
 
-        static MethodHandle of(@NotNull LPALCSUSPENDCONTEXT lambda) {
+        static MethodHandle of(@NotNull ILPALCSUSPENDCONTEXT lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(LPALCSUSPENDCONTEXT.class, "invoke", LPALCSUSPENDCONTEXT.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(ILPALCSUSPENDCONTEXT.class, "invoke", LPALCSUSPENDCONTEXT.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull LPALCSUSPENDCONTEXT lambda) {
+        static MemorySegment ofNative(@NotNull ILPALCSUSPENDCONTEXT lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull LPALCSUSPENDCONTEXT lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull ILPALCSUSPENDCONTEXT lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), LPALCSUSPENDCONTEXT, arena);
         }
     }
 
     @FunctionalInterface
-    public interface LPALDEBUGMESSAGECALLBACKDIRECTEXT {
+    public interface ILPALDEBUGMESSAGECALLBACKDIRECTEXT {
         void invoke(
-            ALCcontext p0,
+            @NativeType("ALCcontext") MemorySegment p0,
             @Pointer(comment="ALDEBUGPROCEXT") @NotNull MemorySegment p1,
             @Pointer(comment="void*") @NotNull MemorySegment p2
         );
 
-        static MethodHandle of(@NotNull LPALDEBUGMESSAGECALLBACKDIRECTEXT lambda) {
+        static MethodHandle of(@NotNull ILPALDEBUGMESSAGECALLBACKDIRECTEXT lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(LPALDEBUGMESSAGECALLBACKDIRECTEXT.class, "invoke", LPALDEBUGMESSAGECALLBACKDIRECTEXT.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(ILPALDEBUGMESSAGECALLBACKDIRECTEXT.class, "invoke", LPALDEBUGMESSAGECALLBACKDIRECTEXT.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull LPALDEBUGMESSAGECALLBACKDIRECTEXT lambda) {
+        static MemorySegment ofNative(@NotNull ILPALDEBUGMESSAGECALLBACKDIRECTEXT lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull LPALDEBUGMESSAGECALLBACKDIRECTEXT lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull ILPALDEBUGMESSAGECALLBACKDIRECTEXT lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), LPALDEBUGMESSAGECALLBACKDIRECTEXT, arena);
         }
     }
 
     @FunctionalInterface
-    public interface LPALDEBUGMESSAGECALLBACKEXT {
+    public interface ILPALDEBUGMESSAGECALLBACKEXT {
         void invoke(
             @Pointer(comment="ALDEBUGPROCEXT") @NotNull MemorySegment p0,
             @Pointer(comment="void*") @NotNull MemorySegment p1
         );
 
-        static MethodHandle of(@NotNull LPALDEBUGMESSAGECALLBACKEXT lambda) {
+        static MethodHandle of(@NotNull ILPALDEBUGMESSAGECALLBACKEXT lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(LPALDEBUGMESSAGECALLBACKEXT.class, "invoke", LPALDEBUGMESSAGECALLBACKEXT.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(ILPALDEBUGMESSAGECALLBACKEXT.class, "invoke", LPALDEBUGMESSAGECALLBACKEXT.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull LPALDEBUGMESSAGECALLBACKEXT lambda) {
+        static MemorySegment ofNative(@NotNull ILPALDEBUGMESSAGECALLBACKEXT lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull LPALDEBUGMESSAGECALLBACKEXT lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull ILPALDEBUGMESSAGECALLBACKEXT lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), LPALDEBUGMESSAGECALLBACKEXT, arena);
         }
     }
 
     @FunctionalInterface
-    public interface LPALDEBUGMESSAGECONTROLDIRECTEXT {
+    public interface ILPALDEBUGMESSAGECONTROLDIRECTEXT {
         void invoke(
-            ALCcontext p0,
+            @NativeType("ALCcontext") MemorySegment p0,
             @NativeType("ALenum") int p1,
             @NativeType("ALenum") int p2,
             @NativeType("ALenum") int p3,
@@ -3902,26 +3902,26 @@ public final class ALFunctionTypes {
             @NativeType("ALboolean") byte p6
         );
 
-        static MethodHandle of(@NotNull LPALDEBUGMESSAGECONTROLDIRECTEXT lambda) {
+        static MethodHandle of(@NotNull ILPALDEBUGMESSAGECONTROLDIRECTEXT lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(LPALDEBUGMESSAGECONTROLDIRECTEXT.class, "invoke", LPALDEBUGMESSAGECONTROLDIRECTEXT.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(ILPALDEBUGMESSAGECONTROLDIRECTEXT.class, "invoke", LPALDEBUGMESSAGECONTROLDIRECTEXT.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull LPALDEBUGMESSAGECONTROLDIRECTEXT lambda) {
+        static MemorySegment ofNative(@NotNull ILPALDEBUGMESSAGECONTROLDIRECTEXT lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull LPALDEBUGMESSAGECONTROLDIRECTEXT lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull ILPALDEBUGMESSAGECONTROLDIRECTEXT lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), LPALDEBUGMESSAGECONTROLDIRECTEXT, arena);
         }
     }
 
     @FunctionalInterface
-    public interface LPALDEBUGMESSAGECONTROLEXT {
+    public interface ILPALDEBUGMESSAGECONTROLEXT {
         void invoke(
             @NativeType("ALenum") int p0,
             @NativeType("ALenum") int p1,
@@ -3931,28 +3931,28 @@ public final class ALFunctionTypes {
             @NativeType("ALboolean") byte p5
         );
 
-        static MethodHandle of(@NotNull LPALDEBUGMESSAGECONTROLEXT lambda) {
+        static MethodHandle of(@NotNull ILPALDEBUGMESSAGECONTROLEXT lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(LPALDEBUGMESSAGECONTROLEXT.class, "invoke", LPALDEBUGMESSAGECONTROLEXT.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(ILPALDEBUGMESSAGECONTROLEXT.class, "invoke", LPALDEBUGMESSAGECONTROLEXT.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull LPALDEBUGMESSAGECONTROLEXT lambda) {
+        static MemorySegment ofNative(@NotNull ILPALDEBUGMESSAGECONTROLEXT lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull LPALDEBUGMESSAGECONTROLEXT lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull ILPALDEBUGMESSAGECONTROLEXT lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), LPALDEBUGMESSAGECONTROLEXT, arena);
         }
     }
 
     @FunctionalInterface
-    public interface LPALDEBUGMESSAGEINSERTDIRECTEXT {
+    public interface ILPALDEBUGMESSAGEINSERTDIRECTEXT {
         void invoke(
-            ALCcontext p0,
+            @NativeType("ALCcontext") MemorySegment p0,
             @NativeType("ALenum") int p1,
             @NativeType("ALenum") int p2,
             @NativeType("ALuint") int p3,
@@ -3961,26 +3961,26 @@ public final class ALFunctionTypes {
             @Pointer(comment="void*") @NotNull MemorySegment p6
         );
 
-        static MethodHandle of(@NotNull LPALDEBUGMESSAGEINSERTDIRECTEXT lambda) {
+        static MethodHandle of(@NotNull ILPALDEBUGMESSAGEINSERTDIRECTEXT lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(LPALDEBUGMESSAGEINSERTDIRECTEXT.class, "invoke", LPALDEBUGMESSAGEINSERTDIRECTEXT.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(ILPALDEBUGMESSAGEINSERTDIRECTEXT.class, "invoke", LPALDEBUGMESSAGEINSERTDIRECTEXT.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull LPALDEBUGMESSAGEINSERTDIRECTEXT lambda) {
+        static MemorySegment ofNative(@NotNull ILPALDEBUGMESSAGEINSERTDIRECTEXT lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull LPALDEBUGMESSAGEINSERTDIRECTEXT lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull ILPALDEBUGMESSAGEINSERTDIRECTEXT lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), LPALDEBUGMESSAGEINSERTDIRECTEXT, arena);
         }
     }
 
     @FunctionalInterface
-    public interface LPALDEBUGMESSAGEINSERTEXT {
+    public interface ILPALDEBUGMESSAGEINSERTEXT {
         void invoke(
             @NativeType("ALenum") int p0,
             @NativeType("ALenum") int p1,
@@ -3990,1668 +3990,1668 @@ public final class ALFunctionTypes {
             @Pointer(comment="void*") @NotNull MemorySegment p5
         );
 
-        static MethodHandle of(@NotNull LPALDEBUGMESSAGEINSERTEXT lambda) {
+        static MethodHandle of(@NotNull ILPALDEBUGMESSAGEINSERTEXT lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(LPALDEBUGMESSAGEINSERTEXT.class, "invoke", LPALDEBUGMESSAGEINSERTEXT.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(ILPALDEBUGMESSAGEINSERTEXT.class, "invoke", LPALDEBUGMESSAGEINSERTEXT.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull LPALDEBUGMESSAGEINSERTEXT lambda) {
+        static MemorySegment ofNative(@NotNull ILPALDEBUGMESSAGEINSERTEXT lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull LPALDEBUGMESSAGEINSERTEXT lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull ILPALDEBUGMESSAGEINSERTEXT lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), LPALDEBUGMESSAGEINSERTEXT, arena);
         }
     }
 
     @FunctionalInterface
-    public interface LPALDEFERUPDATESDIRECTSOFT {
+    public interface ILPALDEFERUPDATESDIRECTSOFT {
         void invoke(
-            ALCcontext p0
+            @NativeType("ALCcontext") MemorySegment p0
         );
 
-        static MethodHandle of(@NotNull LPALDEFERUPDATESDIRECTSOFT lambda) {
+        static MethodHandle of(@NotNull ILPALDEFERUPDATESDIRECTSOFT lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(LPALDEFERUPDATESDIRECTSOFT.class, "invoke", LPALDEFERUPDATESDIRECTSOFT.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(ILPALDEFERUPDATESDIRECTSOFT.class, "invoke", LPALDEFERUPDATESDIRECTSOFT.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull LPALDEFERUPDATESDIRECTSOFT lambda) {
+        static MemorySegment ofNative(@NotNull ILPALDEFERUPDATESDIRECTSOFT lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull LPALDEFERUPDATESDIRECTSOFT lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull ILPALDEFERUPDATESDIRECTSOFT lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), LPALDEFERUPDATESDIRECTSOFT, arena);
         }
     }
 
     @FunctionalInterface
-    public interface LPALDEFERUPDATESSOFT {
+    public interface ILPALDEFERUPDATESSOFT {
         void invoke(
         );
 
-        static MethodHandle of(@NotNull LPALDEFERUPDATESSOFT lambda) {
+        static MethodHandle of(@NotNull ILPALDEFERUPDATESSOFT lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(LPALDEFERUPDATESSOFT.class, "invoke", LPALDEFERUPDATESSOFT.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(ILPALDEFERUPDATESSOFT.class, "invoke", LPALDEFERUPDATESSOFT.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull LPALDEFERUPDATESSOFT lambda) {
+        static MemorySegment ofNative(@NotNull ILPALDEFERUPDATESSOFT lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull LPALDEFERUPDATESSOFT lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull ILPALDEFERUPDATESSOFT lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), LPALDEFERUPDATESSOFT, arena);
         }
     }
 
     @FunctionalInterface
-    public interface LPALDELETEAUXILIARYEFFECTSLOTS {
+    public interface ILPALDELETEAUXILIARYEFFECTSLOTS {
         void invoke(
             @NativeType("ALsizei") int p0,
             @Pointer(comment="void*") @NotNull MemorySegment p1
         );
 
-        static MethodHandle of(@NotNull LPALDELETEAUXILIARYEFFECTSLOTS lambda) {
+        static MethodHandle of(@NotNull ILPALDELETEAUXILIARYEFFECTSLOTS lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(LPALDELETEAUXILIARYEFFECTSLOTS.class, "invoke", LPALDELETEAUXILIARYEFFECTSLOTS.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(ILPALDELETEAUXILIARYEFFECTSLOTS.class, "invoke", LPALDELETEAUXILIARYEFFECTSLOTS.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull LPALDELETEAUXILIARYEFFECTSLOTS lambda) {
+        static MemorySegment ofNative(@NotNull ILPALDELETEAUXILIARYEFFECTSLOTS lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull LPALDELETEAUXILIARYEFFECTSLOTS lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull ILPALDELETEAUXILIARYEFFECTSLOTS lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), LPALDELETEAUXILIARYEFFECTSLOTS, arena);
         }
     }
 
     @FunctionalInterface
-    public interface LPALDELETEAUXILIARYEFFECTSLOTSDIRECT {
+    public interface ILPALDELETEAUXILIARYEFFECTSLOTSDIRECT {
         void invoke(
-            ALCcontext p0,
+            @NativeType("ALCcontext") MemorySegment p0,
             @NativeType("ALsizei") int p1,
             @Pointer(comment="void*") @NotNull MemorySegment p2
         );
 
-        static MethodHandle of(@NotNull LPALDELETEAUXILIARYEFFECTSLOTSDIRECT lambda) {
+        static MethodHandle of(@NotNull ILPALDELETEAUXILIARYEFFECTSLOTSDIRECT lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(LPALDELETEAUXILIARYEFFECTSLOTSDIRECT.class, "invoke", LPALDELETEAUXILIARYEFFECTSLOTSDIRECT.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(ILPALDELETEAUXILIARYEFFECTSLOTSDIRECT.class, "invoke", LPALDELETEAUXILIARYEFFECTSLOTSDIRECT.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull LPALDELETEAUXILIARYEFFECTSLOTSDIRECT lambda) {
+        static MemorySegment ofNative(@NotNull ILPALDELETEAUXILIARYEFFECTSLOTSDIRECT lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull LPALDELETEAUXILIARYEFFECTSLOTSDIRECT lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull ILPALDELETEAUXILIARYEFFECTSLOTSDIRECT lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), LPALDELETEAUXILIARYEFFECTSLOTSDIRECT, arena);
         }
     }
 
     @FunctionalInterface
-    public interface LPALDELETEBUFFERS {
+    public interface ILPALDELETEBUFFERS {
         void invoke(
             @NativeType("ALsizei") int p0,
             @Pointer(comment="void*") @NotNull MemorySegment p1
         );
 
-        static MethodHandle of(@NotNull LPALDELETEBUFFERS lambda) {
+        static MethodHandle of(@NotNull ILPALDELETEBUFFERS lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(LPALDELETEBUFFERS.class, "invoke", LPALDELETEBUFFERS.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(ILPALDELETEBUFFERS.class, "invoke", LPALDELETEBUFFERS.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull LPALDELETEBUFFERS lambda) {
+        static MemorySegment ofNative(@NotNull ILPALDELETEBUFFERS lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull LPALDELETEBUFFERS lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull ILPALDELETEBUFFERS lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), LPALDELETEBUFFERS, arena);
         }
     }
 
     @FunctionalInterface
-    public interface LPALDELETEBUFFERSDIRECT {
+    public interface ILPALDELETEBUFFERSDIRECT {
         void invoke(
-            ALCcontext p0,
+            @NativeType("ALCcontext") MemorySegment p0,
             @NativeType("ALsizei") int p1,
             @Pointer(comment="void*") @NotNull MemorySegment p2
         );
 
-        static MethodHandle of(@NotNull LPALDELETEBUFFERSDIRECT lambda) {
+        static MethodHandle of(@NotNull ILPALDELETEBUFFERSDIRECT lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(LPALDELETEBUFFERSDIRECT.class, "invoke", LPALDELETEBUFFERSDIRECT.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(ILPALDELETEBUFFERSDIRECT.class, "invoke", LPALDELETEBUFFERSDIRECT.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull LPALDELETEBUFFERSDIRECT lambda) {
+        static MemorySegment ofNative(@NotNull ILPALDELETEBUFFERSDIRECT lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull LPALDELETEBUFFERSDIRECT lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull ILPALDELETEBUFFERSDIRECT lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), LPALDELETEBUFFERSDIRECT, arena);
         }
     }
 
     @FunctionalInterface
-    public interface LPALDELETEEFFECTS {
+    public interface ILPALDELETEEFFECTS {
         void invoke(
             @NativeType("ALsizei") int p0,
             @Pointer(comment="void*") @NotNull MemorySegment p1
         );
 
-        static MethodHandle of(@NotNull LPALDELETEEFFECTS lambda) {
+        static MethodHandle of(@NotNull ILPALDELETEEFFECTS lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(LPALDELETEEFFECTS.class, "invoke", LPALDELETEEFFECTS.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(ILPALDELETEEFFECTS.class, "invoke", LPALDELETEEFFECTS.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull LPALDELETEEFFECTS lambda) {
+        static MemorySegment ofNative(@NotNull ILPALDELETEEFFECTS lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull LPALDELETEEFFECTS lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull ILPALDELETEEFFECTS lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), LPALDELETEEFFECTS, arena);
         }
     }
 
     @FunctionalInterface
-    public interface LPALDELETEEFFECTSDIRECT {
+    public interface ILPALDELETEEFFECTSDIRECT {
         void invoke(
-            ALCcontext p0,
+            @NativeType("ALCcontext") MemorySegment p0,
             @NativeType("ALsizei") int p1,
             @Pointer(comment="void*") @NotNull MemorySegment p2
         );
 
-        static MethodHandle of(@NotNull LPALDELETEEFFECTSDIRECT lambda) {
+        static MethodHandle of(@NotNull ILPALDELETEEFFECTSDIRECT lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(LPALDELETEEFFECTSDIRECT.class, "invoke", LPALDELETEEFFECTSDIRECT.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(ILPALDELETEEFFECTSDIRECT.class, "invoke", LPALDELETEEFFECTSDIRECT.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull LPALDELETEEFFECTSDIRECT lambda) {
+        static MemorySegment ofNative(@NotNull ILPALDELETEEFFECTSDIRECT lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull LPALDELETEEFFECTSDIRECT lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull ILPALDELETEEFFECTSDIRECT lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), LPALDELETEEFFECTSDIRECT, arena);
         }
     }
 
     @FunctionalInterface
-    public interface LPALDELETEFILTERS {
+    public interface ILPALDELETEFILTERS {
         void invoke(
             @NativeType("ALsizei") int p0,
             @Pointer(comment="void*") @NotNull MemorySegment p1
         );
 
-        static MethodHandle of(@NotNull LPALDELETEFILTERS lambda) {
+        static MethodHandle of(@NotNull ILPALDELETEFILTERS lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(LPALDELETEFILTERS.class, "invoke", LPALDELETEFILTERS.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(ILPALDELETEFILTERS.class, "invoke", LPALDELETEFILTERS.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull LPALDELETEFILTERS lambda) {
+        static MemorySegment ofNative(@NotNull ILPALDELETEFILTERS lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull LPALDELETEFILTERS lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull ILPALDELETEFILTERS lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), LPALDELETEFILTERS, arena);
         }
     }
 
     @FunctionalInterface
-    public interface LPALDELETEFILTERSDIRECT {
+    public interface ILPALDELETEFILTERSDIRECT {
         void invoke(
-            ALCcontext p0,
+            @NativeType("ALCcontext") MemorySegment p0,
             @NativeType("ALsizei") int p1,
             @Pointer(comment="void*") @NotNull MemorySegment p2
         );
 
-        static MethodHandle of(@NotNull LPALDELETEFILTERSDIRECT lambda) {
+        static MethodHandle of(@NotNull ILPALDELETEFILTERSDIRECT lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(LPALDELETEFILTERSDIRECT.class, "invoke", LPALDELETEFILTERSDIRECT.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(ILPALDELETEFILTERSDIRECT.class, "invoke", LPALDELETEFILTERSDIRECT.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull LPALDELETEFILTERSDIRECT lambda) {
+        static MemorySegment ofNative(@NotNull ILPALDELETEFILTERSDIRECT lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull LPALDELETEFILTERSDIRECT lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull ILPALDELETEFILTERSDIRECT lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), LPALDELETEFILTERSDIRECT, arena);
         }
     }
 
     @FunctionalInterface
-    public interface LPALDELETESOURCES {
+    public interface ILPALDELETESOURCES {
         void invoke(
             @NativeType("ALsizei") int p0,
             @Pointer(comment="void*") @NotNull MemorySegment p1
         );
 
-        static MethodHandle of(@NotNull LPALDELETESOURCES lambda) {
+        static MethodHandle of(@NotNull ILPALDELETESOURCES lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(LPALDELETESOURCES.class, "invoke", LPALDELETESOURCES.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(ILPALDELETESOURCES.class, "invoke", LPALDELETESOURCES.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull LPALDELETESOURCES lambda) {
+        static MemorySegment ofNative(@NotNull ILPALDELETESOURCES lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull LPALDELETESOURCES lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull ILPALDELETESOURCES lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), LPALDELETESOURCES, arena);
         }
     }
 
     @FunctionalInterface
-    public interface LPALDELETESOURCESDIRECT {
+    public interface ILPALDELETESOURCESDIRECT {
         void invoke(
-            ALCcontext p0,
+            @NativeType("ALCcontext") MemorySegment p0,
             @NativeType("ALsizei") int p1,
             @Pointer(comment="void*") @NotNull MemorySegment p2
         );
 
-        static MethodHandle of(@NotNull LPALDELETESOURCESDIRECT lambda) {
+        static MethodHandle of(@NotNull ILPALDELETESOURCESDIRECT lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(LPALDELETESOURCESDIRECT.class, "invoke", LPALDELETESOURCESDIRECT.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(ILPALDELETESOURCESDIRECT.class, "invoke", LPALDELETESOURCESDIRECT.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull LPALDELETESOURCESDIRECT lambda) {
+        static MemorySegment ofNative(@NotNull ILPALDELETESOURCESDIRECT lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull LPALDELETESOURCESDIRECT lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull ILPALDELETESOURCESDIRECT lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), LPALDELETESOURCESDIRECT, arena);
         }
     }
 
     @FunctionalInterface
-    public interface LPALDISABLE {
+    public interface ILPALDISABLE {
         void invoke(
             @NativeType("ALenum") int p0
         );
 
-        static MethodHandle of(@NotNull LPALDISABLE lambda) {
+        static MethodHandle of(@NotNull ILPALDISABLE lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(LPALDISABLE.class, "invoke", LPALDISABLE.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(ILPALDISABLE.class, "invoke", LPALDISABLE.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull LPALDISABLE lambda) {
+        static MemorySegment ofNative(@NotNull ILPALDISABLE lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull LPALDISABLE lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull ILPALDISABLE lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), LPALDISABLE, arena);
         }
     }
 
     @FunctionalInterface
-    public interface LPALDISABLEDIRECT {
+    public interface ILPALDISABLEDIRECT {
         void invoke(
-            ALCcontext p0,
+            @NativeType("ALCcontext") MemorySegment p0,
             @NativeType("ALenum") int p1
         );
 
-        static MethodHandle of(@NotNull LPALDISABLEDIRECT lambda) {
+        static MethodHandle of(@NotNull ILPALDISABLEDIRECT lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(LPALDISABLEDIRECT.class, "invoke", LPALDISABLEDIRECT.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(ILPALDISABLEDIRECT.class, "invoke", LPALDISABLEDIRECT.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull LPALDISABLEDIRECT lambda) {
+        static MemorySegment ofNative(@NotNull ILPALDISABLEDIRECT lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull LPALDISABLEDIRECT lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull ILPALDISABLEDIRECT lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), LPALDISABLEDIRECT, arena);
         }
     }
 
     @FunctionalInterface
-    public interface LPALDISTANCEMODEL {
+    public interface ILPALDISTANCEMODEL {
         void invoke(
             @NativeType("ALenum") int p0
         );
 
-        static MethodHandle of(@NotNull LPALDISTANCEMODEL lambda) {
+        static MethodHandle of(@NotNull ILPALDISTANCEMODEL lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(LPALDISTANCEMODEL.class, "invoke", LPALDISTANCEMODEL.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(ILPALDISTANCEMODEL.class, "invoke", LPALDISTANCEMODEL.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull LPALDISTANCEMODEL lambda) {
+        static MemorySegment ofNative(@NotNull ILPALDISTANCEMODEL lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull LPALDISTANCEMODEL lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull ILPALDISTANCEMODEL lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), LPALDISTANCEMODEL, arena);
         }
     }
 
     @FunctionalInterface
-    public interface LPALDISTANCEMODELDIRECT {
+    public interface ILPALDISTANCEMODELDIRECT {
         void invoke(
-            ALCcontext p0,
+            @NativeType("ALCcontext") MemorySegment p0,
             @NativeType("ALenum") int p1
         );
 
-        static MethodHandle of(@NotNull LPALDISTANCEMODELDIRECT lambda) {
+        static MethodHandle of(@NotNull ILPALDISTANCEMODELDIRECT lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(LPALDISTANCEMODELDIRECT.class, "invoke", LPALDISTANCEMODELDIRECT.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(ILPALDISTANCEMODELDIRECT.class, "invoke", LPALDISTANCEMODELDIRECT.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull LPALDISTANCEMODELDIRECT lambda) {
+        static MemorySegment ofNative(@NotNull ILPALDISTANCEMODELDIRECT lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull LPALDISTANCEMODELDIRECT lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull ILPALDISTANCEMODELDIRECT lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), LPALDISTANCEMODELDIRECT, arena);
         }
     }
 
     @FunctionalInterface
-    public interface LPALDOPPLERFACTOR {
+    public interface ILPALDOPPLERFACTOR {
         void invoke(
             @NativeType("ALfloat") float p0
         );
 
-        static MethodHandle of(@NotNull LPALDOPPLERFACTOR lambda) {
+        static MethodHandle of(@NotNull ILPALDOPPLERFACTOR lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(LPALDOPPLERFACTOR.class, "invoke", LPALDOPPLERFACTOR.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(ILPALDOPPLERFACTOR.class, "invoke", LPALDOPPLERFACTOR.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull LPALDOPPLERFACTOR lambda) {
+        static MemorySegment ofNative(@NotNull ILPALDOPPLERFACTOR lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull LPALDOPPLERFACTOR lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull ILPALDOPPLERFACTOR lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), LPALDOPPLERFACTOR, arena);
         }
     }
 
     @FunctionalInterface
-    public interface LPALDOPPLERFACTORDIRECT {
+    public interface ILPALDOPPLERFACTORDIRECT {
         void invoke(
-            ALCcontext p0,
+            @NativeType("ALCcontext") MemorySegment p0,
             @NativeType("ALfloat") float p1
         );
 
-        static MethodHandle of(@NotNull LPALDOPPLERFACTORDIRECT lambda) {
+        static MethodHandle of(@NotNull ILPALDOPPLERFACTORDIRECT lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(LPALDOPPLERFACTORDIRECT.class, "invoke", LPALDOPPLERFACTORDIRECT.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(ILPALDOPPLERFACTORDIRECT.class, "invoke", LPALDOPPLERFACTORDIRECT.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull LPALDOPPLERFACTORDIRECT lambda) {
+        static MemorySegment ofNative(@NotNull ILPALDOPPLERFACTORDIRECT lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull LPALDOPPLERFACTORDIRECT lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull ILPALDOPPLERFACTORDIRECT lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), LPALDOPPLERFACTORDIRECT, arena);
         }
     }
 
     @FunctionalInterface
-    public interface LPALDOPPLERVELOCITY {
+    public interface ILPALDOPPLERVELOCITY {
         void invoke(
             @NativeType("ALfloat") float p0
         );
 
-        static MethodHandle of(@NotNull LPALDOPPLERVELOCITY lambda) {
+        static MethodHandle of(@NotNull ILPALDOPPLERVELOCITY lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(LPALDOPPLERVELOCITY.class, "invoke", LPALDOPPLERVELOCITY.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(ILPALDOPPLERVELOCITY.class, "invoke", LPALDOPPLERVELOCITY.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull LPALDOPPLERVELOCITY lambda) {
+        static MemorySegment ofNative(@NotNull ILPALDOPPLERVELOCITY lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull LPALDOPPLERVELOCITY lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull ILPALDOPPLERVELOCITY lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), LPALDOPPLERVELOCITY, arena);
         }
     }
 
     @FunctionalInterface
-    public interface LPALEFFECTF {
+    public interface ILPALEFFECTF {
         void invoke(
             @NativeType("ALuint") int p0,
             @NativeType("ALenum") int p1,
             @NativeType("ALfloat") float p2
         );
 
-        static MethodHandle of(@NotNull LPALEFFECTF lambda) {
+        static MethodHandle of(@NotNull ILPALEFFECTF lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(LPALEFFECTF.class, "invoke", LPALEFFECTF.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(ILPALEFFECTF.class, "invoke", LPALEFFECTF.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull LPALEFFECTF lambda) {
+        static MemorySegment ofNative(@NotNull ILPALEFFECTF lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull LPALEFFECTF lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull ILPALEFFECTF lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), LPALEFFECTF, arena);
         }
     }
 
     @FunctionalInterface
-    public interface LPALEFFECTFDIRECT {
+    public interface ILPALEFFECTFDIRECT {
         void invoke(
-            ALCcontext p0,
+            @NativeType("ALCcontext") MemorySegment p0,
             @NativeType("ALuint") int p1,
             @NativeType("ALenum") int p2,
             @NativeType("ALfloat") float p3
         );
 
-        static MethodHandle of(@NotNull LPALEFFECTFDIRECT lambda) {
+        static MethodHandle of(@NotNull ILPALEFFECTFDIRECT lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(LPALEFFECTFDIRECT.class, "invoke", LPALEFFECTFDIRECT.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(ILPALEFFECTFDIRECT.class, "invoke", LPALEFFECTFDIRECT.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull LPALEFFECTFDIRECT lambda) {
+        static MemorySegment ofNative(@NotNull ILPALEFFECTFDIRECT lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull LPALEFFECTFDIRECT lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull ILPALEFFECTFDIRECT lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), LPALEFFECTFDIRECT, arena);
         }
     }
 
     @FunctionalInterface
-    public interface LPALEFFECTFV {
+    public interface ILPALEFFECTFV {
         void invoke(
             @NativeType("ALuint") int p0,
             @NativeType("ALenum") int p1,
             @Pointer(comment="void*") @NotNull MemorySegment p2
         );
 
-        static MethodHandle of(@NotNull LPALEFFECTFV lambda) {
+        static MethodHandle of(@NotNull ILPALEFFECTFV lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(LPALEFFECTFV.class, "invoke", LPALEFFECTFV.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(ILPALEFFECTFV.class, "invoke", LPALEFFECTFV.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull LPALEFFECTFV lambda) {
+        static MemorySegment ofNative(@NotNull ILPALEFFECTFV lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull LPALEFFECTFV lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull ILPALEFFECTFV lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), LPALEFFECTFV, arena);
         }
     }
 
     @FunctionalInterface
-    public interface LPALEFFECTFVDIRECT {
+    public interface ILPALEFFECTFVDIRECT {
         void invoke(
-            ALCcontext p0,
+            @NativeType("ALCcontext") MemorySegment p0,
             @NativeType("ALuint") int p1,
             @NativeType("ALenum") int p2,
             @Pointer(comment="void*") @NotNull MemorySegment p3
         );
 
-        static MethodHandle of(@NotNull LPALEFFECTFVDIRECT lambda) {
+        static MethodHandle of(@NotNull ILPALEFFECTFVDIRECT lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(LPALEFFECTFVDIRECT.class, "invoke", LPALEFFECTFVDIRECT.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(ILPALEFFECTFVDIRECT.class, "invoke", LPALEFFECTFVDIRECT.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull LPALEFFECTFVDIRECT lambda) {
+        static MemorySegment ofNative(@NotNull ILPALEFFECTFVDIRECT lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull LPALEFFECTFVDIRECT lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull ILPALEFFECTFVDIRECT lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), LPALEFFECTFVDIRECT, arena);
         }
     }
 
     @FunctionalInterface
-    public interface LPALEFFECTI {
+    public interface ILPALEFFECTI {
         void invoke(
             @NativeType("ALuint") int p0,
             @NativeType("ALenum") int p1,
             @NativeType("ALint") int p2
         );
 
-        static MethodHandle of(@NotNull LPALEFFECTI lambda) {
+        static MethodHandle of(@NotNull ILPALEFFECTI lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(LPALEFFECTI.class, "invoke", LPALEFFECTI.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(ILPALEFFECTI.class, "invoke", LPALEFFECTI.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull LPALEFFECTI lambda) {
+        static MemorySegment ofNative(@NotNull ILPALEFFECTI lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull LPALEFFECTI lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull ILPALEFFECTI lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), LPALEFFECTI, arena);
         }
     }
 
     @FunctionalInterface
-    public interface LPALEFFECTIDIRECT {
+    public interface ILPALEFFECTIDIRECT {
         void invoke(
-            ALCcontext p0,
+            @NativeType("ALCcontext") MemorySegment p0,
             @NativeType("ALuint") int p1,
             @NativeType("ALenum") int p2,
             @NativeType("ALint") int p3
         );
 
-        static MethodHandle of(@NotNull LPALEFFECTIDIRECT lambda) {
+        static MethodHandle of(@NotNull ILPALEFFECTIDIRECT lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(LPALEFFECTIDIRECT.class, "invoke", LPALEFFECTIDIRECT.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(ILPALEFFECTIDIRECT.class, "invoke", LPALEFFECTIDIRECT.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull LPALEFFECTIDIRECT lambda) {
+        static MemorySegment ofNative(@NotNull ILPALEFFECTIDIRECT lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull LPALEFFECTIDIRECT lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull ILPALEFFECTIDIRECT lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), LPALEFFECTIDIRECT, arena);
         }
     }
 
     @FunctionalInterface
-    public interface LPALEFFECTIV {
+    public interface ILPALEFFECTIV {
         void invoke(
             @NativeType("ALuint") int p0,
             @NativeType("ALenum") int p1,
             @Pointer(comment="void*") @NotNull MemorySegment p2
         );
 
-        static MethodHandle of(@NotNull LPALEFFECTIV lambda) {
+        static MethodHandle of(@NotNull ILPALEFFECTIV lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(LPALEFFECTIV.class, "invoke", LPALEFFECTIV.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(ILPALEFFECTIV.class, "invoke", LPALEFFECTIV.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull LPALEFFECTIV lambda) {
+        static MemorySegment ofNative(@NotNull ILPALEFFECTIV lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull LPALEFFECTIV lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull ILPALEFFECTIV lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), LPALEFFECTIV, arena);
         }
     }
 
     @FunctionalInterface
-    public interface LPALEFFECTIVDIRECT {
+    public interface ILPALEFFECTIVDIRECT {
         void invoke(
-            ALCcontext p0,
+            @NativeType("ALCcontext") MemorySegment p0,
             @NativeType("ALuint") int p1,
             @NativeType("ALenum") int p2,
             @Pointer(comment="void*") @NotNull MemorySegment p3
         );
 
-        static MethodHandle of(@NotNull LPALEFFECTIVDIRECT lambda) {
+        static MethodHandle of(@NotNull ILPALEFFECTIVDIRECT lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(LPALEFFECTIVDIRECT.class, "invoke", LPALEFFECTIVDIRECT.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(ILPALEFFECTIVDIRECT.class, "invoke", LPALEFFECTIVDIRECT.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull LPALEFFECTIVDIRECT lambda) {
+        static MemorySegment ofNative(@NotNull ILPALEFFECTIVDIRECT lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull LPALEFFECTIVDIRECT lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull ILPALEFFECTIVDIRECT lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), LPALEFFECTIVDIRECT, arena);
         }
     }
 
     @FunctionalInterface
-    public interface LPALENABLE {
+    public interface ILPALENABLE {
         void invoke(
             @NativeType("ALenum") int p0
         );
 
-        static MethodHandle of(@NotNull LPALENABLE lambda) {
+        static MethodHandle of(@NotNull ILPALENABLE lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(LPALENABLE.class, "invoke", LPALENABLE.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(ILPALENABLE.class, "invoke", LPALENABLE.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull LPALENABLE lambda) {
+        static MemorySegment ofNative(@NotNull ILPALENABLE lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull LPALENABLE lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull ILPALENABLE lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), LPALENABLE, arena);
         }
     }
 
     @FunctionalInterface
-    public interface LPALENABLEDIRECT {
+    public interface ILPALENABLEDIRECT {
         void invoke(
-            ALCcontext p0,
+            @NativeType("ALCcontext") MemorySegment p0,
             @NativeType("ALenum") int p1
         );
 
-        static MethodHandle of(@NotNull LPALENABLEDIRECT lambda) {
+        static MethodHandle of(@NotNull ILPALENABLEDIRECT lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(LPALENABLEDIRECT.class, "invoke", LPALENABLEDIRECT.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(ILPALENABLEDIRECT.class, "invoke", LPALENABLEDIRECT.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull LPALENABLEDIRECT lambda) {
+        static MemorySegment ofNative(@NotNull ILPALENABLEDIRECT lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull LPALENABLEDIRECT lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull ILPALENABLEDIRECT lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), LPALENABLEDIRECT, arena);
         }
     }
 
     @FunctionalInterface
-    public interface LPALEVENTCALLBACKDIRECTSOFT {
+    public interface ILPALEVENTCALLBACKDIRECTSOFT {
         void invoke(
-            ALCcontext p0,
+            @NativeType("ALCcontext") MemorySegment p0,
             @Pointer(comment="ALEVENTPROCSOFT") @NotNull MemorySegment p1,
             @Pointer(comment="void*") @NotNull MemorySegment p2
         );
 
-        static MethodHandle of(@NotNull LPALEVENTCALLBACKDIRECTSOFT lambda) {
+        static MethodHandle of(@NotNull ILPALEVENTCALLBACKDIRECTSOFT lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(LPALEVENTCALLBACKDIRECTSOFT.class, "invoke", LPALEVENTCALLBACKDIRECTSOFT.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(ILPALEVENTCALLBACKDIRECTSOFT.class, "invoke", LPALEVENTCALLBACKDIRECTSOFT.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull LPALEVENTCALLBACKDIRECTSOFT lambda) {
+        static MemorySegment ofNative(@NotNull ILPALEVENTCALLBACKDIRECTSOFT lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull LPALEVENTCALLBACKDIRECTSOFT lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull ILPALEVENTCALLBACKDIRECTSOFT lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), LPALEVENTCALLBACKDIRECTSOFT, arena);
         }
     }
 
     @FunctionalInterface
-    public interface LPALEVENTCALLBACKSOFT {
+    public interface ILPALEVENTCALLBACKSOFT {
         void invoke(
             @Pointer(comment="ALEVENTPROCSOFT") @NotNull MemorySegment p0,
             @Pointer(comment="void*") @NotNull MemorySegment p1
         );
 
-        static MethodHandle of(@NotNull LPALEVENTCALLBACKSOFT lambda) {
+        static MethodHandle of(@NotNull ILPALEVENTCALLBACKSOFT lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(LPALEVENTCALLBACKSOFT.class, "invoke", LPALEVENTCALLBACKSOFT.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(ILPALEVENTCALLBACKSOFT.class, "invoke", LPALEVENTCALLBACKSOFT.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull LPALEVENTCALLBACKSOFT lambda) {
+        static MemorySegment ofNative(@NotNull ILPALEVENTCALLBACKSOFT lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull LPALEVENTCALLBACKSOFT lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull ILPALEVENTCALLBACKSOFT lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), LPALEVENTCALLBACKSOFT, arena);
         }
     }
 
     @FunctionalInterface
-    public interface LPALEVENTCONTROLDIRECTSOFT {
+    public interface ILPALEVENTCONTROLDIRECTSOFT {
         void invoke(
-            ALCcontext p0,
+            @NativeType("ALCcontext") MemorySegment p0,
             @NativeType("ALsizei") int p1,
             @Pointer(comment="void*") @NotNull MemorySegment p2,
             @NativeType("ALboolean") byte p3
         );
 
-        static MethodHandle of(@NotNull LPALEVENTCONTROLDIRECTSOFT lambda) {
+        static MethodHandle of(@NotNull ILPALEVENTCONTROLDIRECTSOFT lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(LPALEVENTCONTROLDIRECTSOFT.class, "invoke", LPALEVENTCONTROLDIRECTSOFT.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(ILPALEVENTCONTROLDIRECTSOFT.class, "invoke", LPALEVENTCONTROLDIRECTSOFT.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull LPALEVENTCONTROLDIRECTSOFT lambda) {
+        static MemorySegment ofNative(@NotNull ILPALEVENTCONTROLDIRECTSOFT lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull LPALEVENTCONTROLDIRECTSOFT lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull ILPALEVENTCONTROLDIRECTSOFT lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), LPALEVENTCONTROLDIRECTSOFT, arena);
         }
     }
 
     @FunctionalInterface
-    public interface LPALEVENTCONTROLSOFT {
+    public interface ILPALEVENTCONTROLSOFT {
         void invoke(
             @NativeType("ALsizei") int p0,
             @Pointer(comment="void*") @NotNull MemorySegment p1,
             @NativeType("ALboolean") byte p2
         );
 
-        static MethodHandle of(@NotNull LPALEVENTCONTROLSOFT lambda) {
+        static MethodHandle of(@NotNull ILPALEVENTCONTROLSOFT lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(LPALEVENTCONTROLSOFT.class, "invoke", LPALEVENTCONTROLSOFT.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(ILPALEVENTCONTROLSOFT.class, "invoke", LPALEVENTCONTROLSOFT.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull LPALEVENTCONTROLSOFT lambda) {
+        static MemorySegment ofNative(@NotNull ILPALEVENTCONTROLSOFT lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull LPALEVENTCONTROLSOFT lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull ILPALEVENTCONTROLSOFT lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), LPALEVENTCONTROLSOFT, arena);
         }
     }
 
     @FunctionalInterface
-    public interface LPALFILTERF {
+    public interface ILPALFILTERF {
         void invoke(
             @NativeType("ALuint") int p0,
             @NativeType("ALenum") int p1,
             @NativeType("ALfloat") float p2
         );
 
-        static MethodHandle of(@NotNull LPALFILTERF lambda) {
+        static MethodHandle of(@NotNull ILPALFILTERF lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(LPALFILTERF.class, "invoke", LPALFILTERF.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(ILPALFILTERF.class, "invoke", LPALFILTERF.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull LPALFILTERF lambda) {
+        static MemorySegment ofNative(@NotNull ILPALFILTERF lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull LPALFILTERF lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull ILPALFILTERF lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), LPALFILTERF, arena);
         }
     }
 
     @FunctionalInterface
-    public interface LPALFILTERFDIRECT {
+    public interface ILPALFILTERFDIRECT {
         void invoke(
-            ALCcontext p0,
+            @NativeType("ALCcontext") MemorySegment p0,
             @NativeType("ALuint") int p1,
             @NativeType("ALenum") int p2,
             @NativeType("ALfloat") float p3
         );
 
-        static MethodHandle of(@NotNull LPALFILTERFDIRECT lambda) {
+        static MethodHandle of(@NotNull ILPALFILTERFDIRECT lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(LPALFILTERFDIRECT.class, "invoke", LPALFILTERFDIRECT.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(ILPALFILTERFDIRECT.class, "invoke", LPALFILTERFDIRECT.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull LPALFILTERFDIRECT lambda) {
+        static MemorySegment ofNative(@NotNull ILPALFILTERFDIRECT lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull LPALFILTERFDIRECT lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull ILPALFILTERFDIRECT lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), LPALFILTERFDIRECT, arena);
         }
     }
 
     @FunctionalInterface
-    public interface LPALFILTERFV {
+    public interface ILPALFILTERFV {
         void invoke(
             @NativeType("ALuint") int p0,
             @NativeType("ALenum") int p1,
             @Pointer(comment="void*") @NotNull MemorySegment p2
         );
 
-        static MethodHandle of(@NotNull LPALFILTERFV lambda) {
+        static MethodHandle of(@NotNull ILPALFILTERFV lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(LPALFILTERFV.class, "invoke", LPALFILTERFV.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(ILPALFILTERFV.class, "invoke", LPALFILTERFV.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull LPALFILTERFV lambda) {
+        static MemorySegment ofNative(@NotNull ILPALFILTERFV lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull LPALFILTERFV lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull ILPALFILTERFV lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), LPALFILTERFV, arena);
         }
     }
 
     @FunctionalInterface
-    public interface LPALFILTERFVDIRECT {
+    public interface ILPALFILTERFVDIRECT {
         void invoke(
-            ALCcontext p0,
+            @NativeType("ALCcontext") MemorySegment p0,
             @NativeType("ALuint") int p1,
             @NativeType("ALenum") int p2,
             @Pointer(comment="void*") @NotNull MemorySegment p3
         );
 
-        static MethodHandle of(@NotNull LPALFILTERFVDIRECT lambda) {
+        static MethodHandle of(@NotNull ILPALFILTERFVDIRECT lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(LPALFILTERFVDIRECT.class, "invoke", LPALFILTERFVDIRECT.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(ILPALFILTERFVDIRECT.class, "invoke", LPALFILTERFVDIRECT.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull LPALFILTERFVDIRECT lambda) {
+        static MemorySegment ofNative(@NotNull ILPALFILTERFVDIRECT lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull LPALFILTERFVDIRECT lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull ILPALFILTERFVDIRECT lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), LPALFILTERFVDIRECT, arena);
         }
     }
 
     @FunctionalInterface
-    public interface LPALFILTERI {
+    public interface ILPALFILTERI {
         void invoke(
             @NativeType("ALuint") int p0,
             @NativeType("ALenum") int p1,
             @NativeType("ALint") int p2
         );
 
-        static MethodHandle of(@NotNull LPALFILTERI lambda) {
+        static MethodHandle of(@NotNull ILPALFILTERI lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(LPALFILTERI.class, "invoke", LPALFILTERI.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(ILPALFILTERI.class, "invoke", LPALFILTERI.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull LPALFILTERI lambda) {
+        static MemorySegment ofNative(@NotNull ILPALFILTERI lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull LPALFILTERI lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull ILPALFILTERI lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), LPALFILTERI, arena);
         }
     }
 
     @FunctionalInterface
-    public interface LPALFILTERIDIRECT {
+    public interface ILPALFILTERIDIRECT {
         void invoke(
-            ALCcontext p0,
+            @NativeType("ALCcontext") MemorySegment p0,
             @NativeType("ALuint") int p1,
             @NativeType("ALenum") int p2,
             @NativeType("ALint") int p3
         );
 
-        static MethodHandle of(@NotNull LPALFILTERIDIRECT lambda) {
+        static MethodHandle of(@NotNull ILPALFILTERIDIRECT lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(LPALFILTERIDIRECT.class, "invoke", LPALFILTERIDIRECT.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(ILPALFILTERIDIRECT.class, "invoke", LPALFILTERIDIRECT.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull LPALFILTERIDIRECT lambda) {
+        static MemorySegment ofNative(@NotNull ILPALFILTERIDIRECT lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull LPALFILTERIDIRECT lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull ILPALFILTERIDIRECT lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), LPALFILTERIDIRECT, arena);
         }
     }
 
     @FunctionalInterface
-    public interface LPALFILTERIV {
+    public interface ILPALFILTERIV {
         void invoke(
             @NativeType("ALuint") int p0,
             @NativeType("ALenum") int p1,
             @Pointer(comment="void*") @NotNull MemorySegment p2
         );
 
-        static MethodHandle of(@NotNull LPALFILTERIV lambda) {
+        static MethodHandle of(@NotNull ILPALFILTERIV lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(LPALFILTERIV.class, "invoke", LPALFILTERIV.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(ILPALFILTERIV.class, "invoke", LPALFILTERIV.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull LPALFILTERIV lambda) {
+        static MemorySegment ofNative(@NotNull ILPALFILTERIV lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull LPALFILTERIV lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull ILPALFILTERIV lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), LPALFILTERIV, arena);
         }
     }
 
     @FunctionalInterface
-    public interface LPALFILTERIVDIRECT {
+    public interface ILPALFILTERIVDIRECT {
         void invoke(
-            ALCcontext p0,
+            @NativeType("ALCcontext") MemorySegment p0,
             @NativeType("ALuint") int p1,
             @NativeType("ALenum") int p2,
             @Pointer(comment="void*") @NotNull MemorySegment p3
         );
 
-        static MethodHandle of(@NotNull LPALFILTERIVDIRECT lambda) {
+        static MethodHandle of(@NotNull ILPALFILTERIVDIRECT lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(LPALFILTERIVDIRECT.class, "invoke", LPALFILTERIVDIRECT.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(ILPALFILTERIVDIRECT.class, "invoke", LPALFILTERIVDIRECT.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull LPALFILTERIVDIRECT lambda) {
+        static MemorySegment ofNative(@NotNull ILPALFILTERIVDIRECT lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull LPALFILTERIVDIRECT lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull ILPALFILTERIVDIRECT lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), LPALFILTERIVDIRECT, arena);
         }
     }
 
     @FunctionalInterface
-    public interface LPALFOLDBACKCALLBACK {
+    public interface ILPALFOLDBACKCALLBACK {
         void invoke(
             @NativeType("ALenum") int p0,
             @NativeType("ALsizei") int p1
         );
 
-        static MethodHandle of(@NotNull LPALFOLDBACKCALLBACK lambda) {
+        static MethodHandle of(@NotNull ILPALFOLDBACKCALLBACK lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(LPALFOLDBACKCALLBACK.class, "invoke", LPALFOLDBACKCALLBACK.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(ILPALFOLDBACKCALLBACK.class, "invoke", LPALFOLDBACKCALLBACK.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull LPALFOLDBACKCALLBACK lambda) {
+        static MemorySegment ofNative(@NotNull ILPALFOLDBACKCALLBACK lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull LPALFOLDBACKCALLBACK lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull ILPALFOLDBACKCALLBACK lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), LPALFOLDBACKCALLBACK, arena);
         }
     }
 
     @FunctionalInterface
-    public interface LPALGENAUXILIARYEFFECTSLOTS {
+    public interface ILPALGENAUXILIARYEFFECTSLOTS {
         void invoke(
             @NativeType("ALsizei") int p0,
             @Pointer(comment="void*") @NotNull MemorySegment p1
         );
 
-        static MethodHandle of(@NotNull LPALGENAUXILIARYEFFECTSLOTS lambda) {
+        static MethodHandle of(@NotNull ILPALGENAUXILIARYEFFECTSLOTS lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(LPALGENAUXILIARYEFFECTSLOTS.class, "invoke", LPALGENAUXILIARYEFFECTSLOTS.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(ILPALGENAUXILIARYEFFECTSLOTS.class, "invoke", LPALGENAUXILIARYEFFECTSLOTS.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull LPALGENAUXILIARYEFFECTSLOTS lambda) {
+        static MemorySegment ofNative(@NotNull ILPALGENAUXILIARYEFFECTSLOTS lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull LPALGENAUXILIARYEFFECTSLOTS lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull ILPALGENAUXILIARYEFFECTSLOTS lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), LPALGENAUXILIARYEFFECTSLOTS, arena);
         }
     }
 
     @FunctionalInterface
-    public interface LPALGENAUXILIARYEFFECTSLOTSDIRECT {
+    public interface ILPALGENAUXILIARYEFFECTSLOTSDIRECT {
         void invoke(
-            ALCcontext p0,
+            @NativeType("ALCcontext") MemorySegment p0,
             @NativeType("ALsizei") int p1,
             @Pointer(comment="void*") @NotNull MemorySegment p2
         );
 
-        static MethodHandle of(@NotNull LPALGENAUXILIARYEFFECTSLOTSDIRECT lambda) {
+        static MethodHandle of(@NotNull ILPALGENAUXILIARYEFFECTSLOTSDIRECT lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(LPALGENAUXILIARYEFFECTSLOTSDIRECT.class, "invoke", LPALGENAUXILIARYEFFECTSLOTSDIRECT.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(ILPALGENAUXILIARYEFFECTSLOTSDIRECT.class, "invoke", LPALGENAUXILIARYEFFECTSLOTSDIRECT.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull LPALGENAUXILIARYEFFECTSLOTSDIRECT lambda) {
+        static MemorySegment ofNative(@NotNull ILPALGENAUXILIARYEFFECTSLOTSDIRECT lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull LPALGENAUXILIARYEFFECTSLOTSDIRECT lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull ILPALGENAUXILIARYEFFECTSLOTSDIRECT lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), LPALGENAUXILIARYEFFECTSLOTSDIRECT, arena);
         }
     }
 
     @FunctionalInterface
-    public interface LPALGENBUFFERS {
+    public interface ILPALGENBUFFERS {
         void invoke(
             @NativeType("ALsizei") int p0,
             @Pointer(comment="void*") @NotNull MemorySegment p1
         );
 
-        static MethodHandle of(@NotNull LPALGENBUFFERS lambda) {
+        static MethodHandle of(@NotNull ILPALGENBUFFERS lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(LPALGENBUFFERS.class, "invoke", LPALGENBUFFERS.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(ILPALGENBUFFERS.class, "invoke", LPALGENBUFFERS.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull LPALGENBUFFERS lambda) {
+        static MemorySegment ofNative(@NotNull ILPALGENBUFFERS lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull LPALGENBUFFERS lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull ILPALGENBUFFERS lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), LPALGENBUFFERS, arena);
         }
     }
 
     @FunctionalInterface
-    public interface LPALGENBUFFERSDIRECT {
+    public interface ILPALGENBUFFERSDIRECT {
         void invoke(
-            ALCcontext p0,
+            @NativeType("ALCcontext") MemorySegment p0,
             @NativeType("ALsizei") int p1,
             @Pointer(comment="void*") @NotNull MemorySegment p2
         );
 
-        static MethodHandle of(@NotNull LPALGENBUFFERSDIRECT lambda) {
+        static MethodHandle of(@NotNull ILPALGENBUFFERSDIRECT lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(LPALGENBUFFERSDIRECT.class, "invoke", LPALGENBUFFERSDIRECT.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(ILPALGENBUFFERSDIRECT.class, "invoke", LPALGENBUFFERSDIRECT.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull LPALGENBUFFERSDIRECT lambda) {
+        static MemorySegment ofNative(@NotNull ILPALGENBUFFERSDIRECT lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull LPALGENBUFFERSDIRECT lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull ILPALGENBUFFERSDIRECT lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), LPALGENBUFFERSDIRECT, arena);
         }
     }
 
     @FunctionalInterface
-    public interface LPALGENEFFECTS {
+    public interface ILPALGENEFFECTS {
         void invoke(
             @NativeType("ALsizei") int p0,
             @Pointer(comment="void*") @NotNull MemorySegment p1
         );
 
-        static MethodHandle of(@NotNull LPALGENEFFECTS lambda) {
+        static MethodHandle of(@NotNull ILPALGENEFFECTS lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(LPALGENEFFECTS.class, "invoke", LPALGENEFFECTS.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(ILPALGENEFFECTS.class, "invoke", LPALGENEFFECTS.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull LPALGENEFFECTS lambda) {
+        static MemorySegment ofNative(@NotNull ILPALGENEFFECTS lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull LPALGENEFFECTS lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull ILPALGENEFFECTS lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), LPALGENEFFECTS, arena);
         }
     }
 
     @FunctionalInterface
-    public interface LPALGENEFFECTSDIRECT {
+    public interface ILPALGENEFFECTSDIRECT {
         void invoke(
-            ALCcontext p0,
+            @NativeType("ALCcontext") MemorySegment p0,
             @NativeType("ALsizei") int p1,
             @Pointer(comment="void*") @NotNull MemorySegment p2
         );
 
-        static MethodHandle of(@NotNull LPALGENEFFECTSDIRECT lambda) {
+        static MethodHandle of(@NotNull ILPALGENEFFECTSDIRECT lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(LPALGENEFFECTSDIRECT.class, "invoke", LPALGENEFFECTSDIRECT.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(ILPALGENEFFECTSDIRECT.class, "invoke", LPALGENEFFECTSDIRECT.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull LPALGENEFFECTSDIRECT lambda) {
+        static MemorySegment ofNative(@NotNull ILPALGENEFFECTSDIRECT lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull LPALGENEFFECTSDIRECT lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull ILPALGENEFFECTSDIRECT lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), LPALGENEFFECTSDIRECT, arena);
         }
     }
 
     @FunctionalInterface
-    public interface LPALGENFILTERS {
+    public interface ILPALGENFILTERS {
         void invoke(
             @NativeType("ALsizei") int p0,
             @Pointer(comment="void*") @NotNull MemorySegment p1
         );
 
-        static MethodHandle of(@NotNull LPALGENFILTERS lambda) {
+        static MethodHandle of(@NotNull ILPALGENFILTERS lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(LPALGENFILTERS.class, "invoke", LPALGENFILTERS.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(ILPALGENFILTERS.class, "invoke", LPALGENFILTERS.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull LPALGENFILTERS lambda) {
+        static MemorySegment ofNative(@NotNull ILPALGENFILTERS lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull LPALGENFILTERS lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull ILPALGENFILTERS lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), LPALGENFILTERS, arena);
         }
     }
 
     @FunctionalInterface
-    public interface LPALGENFILTERSDIRECT {
+    public interface ILPALGENFILTERSDIRECT {
         void invoke(
-            ALCcontext p0,
+            @NativeType("ALCcontext") MemorySegment p0,
             @NativeType("ALsizei") int p1,
             @Pointer(comment="void*") @NotNull MemorySegment p2
         );
 
-        static MethodHandle of(@NotNull LPALGENFILTERSDIRECT lambda) {
+        static MethodHandle of(@NotNull ILPALGENFILTERSDIRECT lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(LPALGENFILTERSDIRECT.class, "invoke", LPALGENFILTERSDIRECT.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(ILPALGENFILTERSDIRECT.class, "invoke", LPALGENFILTERSDIRECT.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull LPALGENFILTERSDIRECT lambda) {
+        static MemorySegment ofNative(@NotNull ILPALGENFILTERSDIRECT lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull LPALGENFILTERSDIRECT lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull ILPALGENFILTERSDIRECT lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), LPALGENFILTERSDIRECT, arena);
         }
     }
 
     @FunctionalInterface
-    public interface LPALGENSOURCES {
+    public interface ILPALGENSOURCES {
         void invoke(
             @NativeType("ALsizei") int p0,
             @Pointer(comment="void*") @NotNull MemorySegment p1
         );
 
-        static MethodHandle of(@NotNull LPALGENSOURCES lambda) {
+        static MethodHandle of(@NotNull ILPALGENSOURCES lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(LPALGENSOURCES.class, "invoke", LPALGENSOURCES.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(ILPALGENSOURCES.class, "invoke", LPALGENSOURCES.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull LPALGENSOURCES lambda) {
+        static MemorySegment ofNative(@NotNull ILPALGENSOURCES lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull LPALGENSOURCES lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull ILPALGENSOURCES lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), LPALGENSOURCES, arena);
         }
     }
 
     @FunctionalInterface
-    public interface LPALGENSOURCESDIRECT {
+    public interface ILPALGENSOURCESDIRECT {
         void invoke(
-            ALCcontext p0,
+            @NativeType("ALCcontext") MemorySegment p0,
             @NativeType("ALsizei") int p1,
             @Pointer(comment="void*") @NotNull MemorySegment p2
         );
 
-        static MethodHandle of(@NotNull LPALGENSOURCESDIRECT lambda) {
+        static MethodHandle of(@NotNull ILPALGENSOURCESDIRECT lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(LPALGENSOURCESDIRECT.class, "invoke", LPALGENSOURCESDIRECT.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(ILPALGENSOURCESDIRECT.class, "invoke", LPALGENSOURCESDIRECT.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull LPALGENSOURCESDIRECT lambda) {
+        static MemorySegment ofNative(@NotNull ILPALGENSOURCESDIRECT lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull LPALGENSOURCESDIRECT lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull ILPALGENSOURCESDIRECT lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), LPALGENSOURCESDIRECT, arena);
         }
     }
 
     @FunctionalInterface
-    public interface LPALGETAUXILIARYEFFECTSLOTF {
+    public interface ILPALGETAUXILIARYEFFECTSLOTF {
         void invoke(
             @NativeType("ALuint") int p0,
             @NativeType("ALenum") int p1,
             @Pointer(comment="void*") @NotNull MemorySegment p2
         );
 
-        static MethodHandle of(@NotNull LPALGETAUXILIARYEFFECTSLOTF lambda) {
+        static MethodHandle of(@NotNull ILPALGETAUXILIARYEFFECTSLOTF lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(LPALGETAUXILIARYEFFECTSLOTF.class, "invoke", LPALGETAUXILIARYEFFECTSLOTF.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(ILPALGETAUXILIARYEFFECTSLOTF.class, "invoke", LPALGETAUXILIARYEFFECTSLOTF.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull LPALGETAUXILIARYEFFECTSLOTF lambda) {
+        static MemorySegment ofNative(@NotNull ILPALGETAUXILIARYEFFECTSLOTF lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull LPALGETAUXILIARYEFFECTSLOTF lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull ILPALGETAUXILIARYEFFECTSLOTF lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), LPALGETAUXILIARYEFFECTSLOTF, arena);
         }
     }
 
     @FunctionalInterface
-    public interface LPALGETAUXILIARYEFFECTSLOTFDIRECT {
+    public interface ILPALGETAUXILIARYEFFECTSLOTFDIRECT {
         void invoke(
-            ALCcontext p0,
+            @NativeType("ALCcontext") MemorySegment p0,
             @NativeType("ALuint") int p1,
             @NativeType("ALenum") int p2,
             @Pointer(comment="void*") @NotNull MemorySegment p3
         );
 
-        static MethodHandle of(@NotNull LPALGETAUXILIARYEFFECTSLOTFDIRECT lambda) {
+        static MethodHandle of(@NotNull ILPALGETAUXILIARYEFFECTSLOTFDIRECT lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(LPALGETAUXILIARYEFFECTSLOTFDIRECT.class, "invoke", LPALGETAUXILIARYEFFECTSLOTFDIRECT.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(ILPALGETAUXILIARYEFFECTSLOTFDIRECT.class, "invoke", LPALGETAUXILIARYEFFECTSLOTFDIRECT.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull LPALGETAUXILIARYEFFECTSLOTFDIRECT lambda) {
+        static MemorySegment ofNative(@NotNull ILPALGETAUXILIARYEFFECTSLOTFDIRECT lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull LPALGETAUXILIARYEFFECTSLOTFDIRECT lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull ILPALGETAUXILIARYEFFECTSLOTFDIRECT lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), LPALGETAUXILIARYEFFECTSLOTFDIRECT, arena);
         }
     }
 
     @FunctionalInterface
-    public interface LPALGETAUXILIARYEFFECTSLOTFV {
+    public interface ILPALGETAUXILIARYEFFECTSLOTFV {
         void invoke(
             @NativeType("ALuint") int p0,
             @NativeType("ALenum") int p1,
             @Pointer(comment="void*") @NotNull MemorySegment p2
         );
 
-        static MethodHandle of(@NotNull LPALGETAUXILIARYEFFECTSLOTFV lambda) {
+        static MethodHandle of(@NotNull ILPALGETAUXILIARYEFFECTSLOTFV lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(LPALGETAUXILIARYEFFECTSLOTFV.class, "invoke", LPALGETAUXILIARYEFFECTSLOTFV.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(ILPALGETAUXILIARYEFFECTSLOTFV.class, "invoke", LPALGETAUXILIARYEFFECTSLOTFV.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull LPALGETAUXILIARYEFFECTSLOTFV lambda) {
+        static MemorySegment ofNative(@NotNull ILPALGETAUXILIARYEFFECTSLOTFV lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull LPALGETAUXILIARYEFFECTSLOTFV lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull ILPALGETAUXILIARYEFFECTSLOTFV lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), LPALGETAUXILIARYEFFECTSLOTFV, arena);
         }
     }
 
     @FunctionalInterface
-    public interface LPALGETAUXILIARYEFFECTSLOTFVDIRECT {
+    public interface ILPALGETAUXILIARYEFFECTSLOTFVDIRECT {
         void invoke(
-            ALCcontext p0,
+            @NativeType("ALCcontext") MemorySegment p0,
             @NativeType("ALuint") int p1,
             @NativeType("ALenum") int p2,
             @Pointer(comment="void*") @NotNull MemorySegment p3
         );
 
-        static MethodHandle of(@NotNull LPALGETAUXILIARYEFFECTSLOTFVDIRECT lambda) {
+        static MethodHandle of(@NotNull ILPALGETAUXILIARYEFFECTSLOTFVDIRECT lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(LPALGETAUXILIARYEFFECTSLOTFVDIRECT.class, "invoke", LPALGETAUXILIARYEFFECTSLOTFVDIRECT.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(ILPALGETAUXILIARYEFFECTSLOTFVDIRECT.class, "invoke", LPALGETAUXILIARYEFFECTSLOTFVDIRECT.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull LPALGETAUXILIARYEFFECTSLOTFVDIRECT lambda) {
+        static MemorySegment ofNative(@NotNull ILPALGETAUXILIARYEFFECTSLOTFVDIRECT lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull LPALGETAUXILIARYEFFECTSLOTFVDIRECT lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull ILPALGETAUXILIARYEFFECTSLOTFVDIRECT lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), LPALGETAUXILIARYEFFECTSLOTFVDIRECT, arena);
         }
     }
 
     @FunctionalInterface
-    public interface LPALGETAUXILIARYEFFECTSLOTI {
+    public interface ILPALGETAUXILIARYEFFECTSLOTI {
         void invoke(
             @NativeType("ALuint") int p0,
             @NativeType("ALenum") int p1,
             @Pointer(comment="void*") @NotNull MemorySegment p2
         );
 
-        static MethodHandle of(@NotNull LPALGETAUXILIARYEFFECTSLOTI lambda) {
+        static MethodHandle of(@NotNull ILPALGETAUXILIARYEFFECTSLOTI lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(LPALGETAUXILIARYEFFECTSLOTI.class, "invoke", LPALGETAUXILIARYEFFECTSLOTI.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(ILPALGETAUXILIARYEFFECTSLOTI.class, "invoke", LPALGETAUXILIARYEFFECTSLOTI.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull LPALGETAUXILIARYEFFECTSLOTI lambda) {
+        static MemorySegment ofNative(@NotNull ILPALGETAUXILIARYEFFECTSLOTI lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull LPALGETAUXILIARYEFFECTSLOTI lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull ILPALGETAUXILIARYEFFECTSLOTI lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), LPALGETAUXILIARYEFFECTSLOTI, arena);
         }
     }
 
     @FunctionalInterface
-    public interface LPALGETAUXILIARYEFFECTSLOTIDIRECT {
+    public interface ILPALGETAUXILIARYEFFECTSLOTIDIRECT {
         void invoke(
-            ALCcontext p0,
+            @NativeType("ALCcontext") MemorySegment p0,
             @NativeType("ALuint") int p1,
             @NativeType("ALenum") int p2,
             @Pointer(comment="void*") @NotNull MemorySegment p3
         );
 
-        static MethodHandle of(@NotNull LPALGETAUXILIARYEFFECTSLOTIDIRECT lambda) {
+        static MethodHandle of(@NotNull ILPALGETAUXILIARYEFFECTSLOTIDIRECT lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(LPALGETAUXILIARYEFFECTSLOTIDIRECT.class, "invoke", LPALGETAUXILIARYEFFECTSLOTIDIRECT.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(ILPALGETAUXILIARYEFFECTSLOTIDIRECT.class, "invoke", LPALGETAUXILIARYEFFECTSLOTIDIRECT.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull LPALGETAUXILIARYEFFECTSLOTIDIRECT lambda) {
+        static MemorySegment ofNative(@NotNull ILPALGETAUXILIARYEFFECTSLOTIDIRECT lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull LPALGETAUXILIARYEFFECTSLOTIDIRECT lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull ILPALGETAUXILIARYEFFECTSLOTIDIRECT lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), LPALGETAUXILIARYEFFECTSLOTIDIRECT, arena);
         }
     }
 
     @FunctionalInterface
-    public interface LPALGETAUXILIARYEFFECTSLOTIV {
+    public interface ILPALGETAUXILIARYEFFECTSLOTIV {
         void invoke(
             @NativeType("ALuint") int p0,
             @NativeType("ALenum") int p1,
             @Pointer(comment="void*") @NotNull MemorySegment p2
         );
 
-        static MethodHandle of(@NotNull LPALGETAUXILIARYEFFECTSLOTIV lambda) {
+        static MethodHandle of(@NotNull ILPALGETAUXILIARYEFFECTSLOTIV lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(LPALGETAUXILIARYEFFECTSLOTIV.class, "invoke", LPALGETAUXILIARYEFFECTSLOTIV.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(ILPALGETAUXILIARYEFFECTSLOTIV.class, "invoke", LPALGETAUXILIARYEFFECTSLOTIV.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull LPALGETAUXILIARYEFFECTSLOTIV lambda) {
+        static MemorySegment ofNative(@NotNull ILPALGETAUXILIARYEFFECTSLOTIV lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull LPALGETAUXILIARYEFFECTSLOTIV lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull ILPALGETAUXILIARYEFFECTSLOTIV lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), LPALGETAUXILIARYEFFECTSLOTIV, arena);
         }
     }
 
     @FunctionalInterface
-    public interface LPALGETAUXILIARYEFFECTSLOTIVDIRECT {
+    public interface ILPALGETAUXILIARYEFFECTSLOTIVDIRECT {
         void invoke(
-            ALCcontext p0,
+            @NativeType("ALCcontext") MemorySegment p0,
             @NativeType("ALuint") int p1,
             @NativeType("ALenum") int p2,
             @Pointer(comment="void*") @NotNull MemorySegment p3
         );
 
-        static MethodHandle of(@NotNull LPALGETAUXILIARYEFFECTSLOTIVDIRECT lambda) {
+        static MethodHandle of(@NotNull ILPALGETAUXILIARYEFFECTSLOTIVDIRECT lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(LPALGETAUXILIARYEFFECTSLOTIVDIRECT.class, "invoke", LPALGETAUXILIARYEFFECTSLOTIVDIRECT.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(ILPALGETAUXILIARYEFFECTSLOTIVDIRECT.class, "invoke", LPALGETAUXILIARYEFFECTSLOTIVDIRECT.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull LPALGETAUXILIARYEFFECTSLOTIVDIRECT lambda) {
+        static MemorySegment ofNative(@NotNull ILPALGETAUXILIARYEFFECTSLOTIVDIRECT lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull LPALGETAUXILIARYEFFECTSLOTIVDIRECT lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull ILPALGETAUXILIARYEFFECTSLOTIVDIRECT lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), LPALGETAUXILIARYEFFECTSLOTIVDIRECT, arena);
         }
     }
 
     @FunctionalInterface
-    public interface LPALGETBOOLEAN {
+    public interface ILPALGETBOOLEAN {
         @NativeType("ALboolean") byte invoke(
             @NativeType("ALenum") int p0
         );
 
-        static MethodHandle of(@NotNull LPALGETBOOLEAN lambda) {
+        static MethodHandle of(@NotNull ILPALGETBOOLEAN lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(LPALGETBOOLEAN.class, "invoke", LPALGETBOOLEAN.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(ILPALGETBOOLEAN.class, "invoke", LPALGETBOOLEAN.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull LPALGETBOOLEAN lambda) {
+        static MemorySegment ofNative(@NotNull ILPALGETBOOLEAN lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull LPALGETBOOLEAN lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull ILPALGETBOOLEAN lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), LPALGETBOOLEAN, arena);
         }
     }
 
     @FunctionalInterface
-    public interface LPALGETBOOLEANDIRECT {
+    public interface ILPALGETBOOLEANDIRECT {
         @NativeType("ALboolean") byte invoke(
-            ALCcontext p0,
+            @NativeType("ALCcontext") MemorySegment p0,
             @NativeType("ALenum") int p1
         );
 
-        static MethodHandle of(@NotNull LPALGETBOOLEANDIRECT lambda) {
+        static MethodHandle of(@NotNull ILPALGETBOOLEANDIRECT lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(LPALGETBOOLEANDIRECT.class, "invoke", LPALGETBOOLEANDIRECT.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(ILPALGETBOOLEANDIRECT.class, "invoke", LPALGETBOOLEANDIRECT.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull LPALGETBOOLEANDIRECT lambda) {
+        static MemorySegment ofNative(@NotNull ILPALGETBOOLEANDIRECT lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull LPALGETBOOLEANDIRECT lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull ILPALGETBOOLEANDIRECT lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), LPALGETBOOLEANDIRECT, arena);
         }
     }
 
     @FunctionalInterface
-    public interface LPALGETBOOLEANV {
+    public interface ILPALGETBOOLEANV {
         void invoke(
             @NativeType("ALenum") int p0,
             @Pointer(comment="void*") @NotNull MemorySegment p1
         );
 
-        static MethodHandle of(@NotNull LPALGETBOOLEANV lambda) {
+        static MethodHandle of(@NotNull ILPALGETBOOLEANV lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(LPALGETBOOLEANV.class, "invoke", LPALGETBOOLEANV.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(ILPALGETBOOLEANV.class, "invoke", LPALGETBOOLEANV.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull LPALGETBOOLEANV lambda) {
+        static MemorySegment ofNative(@NotNull ILPALGETBOOLEANV lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull LPALGETBOOLEANV lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull ILPALGETBOOLEANV lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), LPALGETBOOLEANV, arena);
         }
     }
 
     @FunctionalInterface
-    public interface LPALGETBOOLEANVDIRECT {
+    public interface ILPALGETBOOLEANVDIRECT {
         void invoke(
-            ALCcontext p0,
+            @NativeType("ALCcontext") MemorySegment p0,
             @NativeType("ALenum") int p1,
             @Pointer(comment="void*") @NotNull MemorySegment p2
         );
 
-        static MethodHandle of(@NotNull LPALGETBOOLEANVDIRECT lambda) {
+        static MethodHandle of(@NotNull ILPALGETBOOLEANVDIRECT lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(LPALGETBOOLEANVDIRECT.class, "invoke", LPALGETBOOLEANVDIRECT.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(ILPALGETBOOLEANVDIRECT.class, "invoke", LPALGETBOOLEANVDIRECT.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull LPALGETBOOLEANVDIRECT lambda) {
+        static MemorySegment ofNative(@NotNull ILPALGETBOOLEANVDIRECT lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull LPALGETBOOLEANVDIRECT lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull ILPALGETBOOLEANVDIRECT lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), LPALGETBOOLEANVDIRECT, arena);
         }
     }
 
     @FunctionalInterface
-    public interface LPALGETBUFFER3F {
+    public interface ILPALGETBUFFER3F {
         void invoke(
             @NativeType("ALuint") int p0,
             @NativeType("ALenum") int p1,
@@ -5660,28 +5660,28 @@ public final class ALFunctionTypes {
             @Pointer(comment="void*") @NotNull MemorySegment p4
         );
 
-        static MethodHandle of(@NotNull LPALGETBUFFER3F lambda) {
+        static MethodHandle of(@NotNull ILPALGETBUFFER3F lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(LPALGETBUFFER3F.class, "invoke", LPALGETBUFFER3F.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(ILPALGETBUFFER3F.class, "invoke", LPALGETBUFFER3F.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull LPALGETBUFFER3F lambda) {
+        static MemorySegment ofNative(@NotNull ILPALGETBUFFER3F lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull LPALGETBUFFER3F lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull ILPALGETBUFFER3F lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), LPALGETBUFFER3F, arena);
         }
     }
 
     @FunctionalInterface
-    public interface LPALGETBUFFER3FDIRECT {
+    public interface ILPALGETBUFFER3FDIRECT {
         void invoke(
-            ALCcontext p0,
+            @NativeType("ALCcontext") MemorySegment p0,
             @NativeType("ALuint") int p1,
             @NativeType("ALenum") int p2,
             @Pointer(comment="void*") @NotNull MemorySegment p3,
@@ -5689,26 +5689,26 @@ public final class ALFunctionTypes {
             @Pointer(comment="void*") @NotNull MemorySegment p5
         );
 
-        static MethodHandle of(@NotNull LPALGETBUFFER3FDIRECT lambda) {
+        static MethodHandle of(@NotNull ILPALGETBUFFER3FDIRECT lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(LPALGETBUFFER3FDIRECT.class, "invoke", LPALGETBUFFER3FDIRECT.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(ILPALGETBUFFER3FDIRECT.class, "invoke", LPALGETBUFFER3FDIRECT.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull LPALGETBUFFER3FDIRECT lambda) {
+        static MemorySegment ofNative(@NotNull ILPALGETBUFFER3FDIRECT lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull LPALGETBUFFER3FDIRECT lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull ILPALGETBUFFER3FDIRECT lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), LPALGETBUFFER3FDIRECT, arena);
         }
     }
 
     @FunctionalInterface
-    public interface LPALGETBUFFER3I {
+    public interface ILPALGETBUFFER3I {
         void invoke(
             @NativeType("ALuint") int p0,
             @NativeType("ALenum") int p1,
@@ -5717,28 +5717,28 @@ public final class ALFunctionTypes {
             @Pointer(comment="void*") @NotNull MemorySegment p4
         );
 
-        static MethodHandle of(@NotNull LPALGETBUFFER3I lambda) {
+        static MethodHandle of(@NotNull ILPALGETBUFFER3I lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(LPALGETBUFFER3I.class, "invoke", LPALGETBUFFER3I.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(ILPALGETBUFFER3I.class, "invoke", LPALGETBUFFER3I.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull LPALGETBUFFER3I lambda) {
+        static MemorySegment ofNative(@NotNull ILPALGETBUFFER3I lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull LPALGETBUFFER3I lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull ILPALGETBUFFER3I lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), LPALGETBUFFER3I, arena);
         }
     }
 
     @FunctionalInterface
-    public interface LPALGETBUFFER3IDIRECT {
+    public interface ILPALGETBUFFER3IDIRECT {
         void invoke(
-            ALCcontext p0,
+            @NativeType("ALCcontext") MemorySegment p0,
             @NativeType("ALuint") int p1,
             @NativeType("ALenum") int p2,
             @Pointer(comment="void*") @NotNull MemorySegment p3,
@@ -5746,28 +5746,28 @@ public final class ALFunctionTypes {
             @Pointer(comment="void*") @NotNull MemorySegment p5
         );
 
-        static MethodHandle of(@NotNull LPALGETBUFFER3IDIRECT lambda) {
+        static MethodHandle of(@NotNull ILPALGETBUFFER3IDIRECT lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(LPALGETBUFFER3IDIRECT.class, "invoke", LPALGETBUFFER3IDIRECT.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(ILPALGETBUFFER3IDIRECT.class, "invoke", LPALGETBUFFER3IDIRECT.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull LPALGETBUFFER3IDIRECT lambda) {
+        static MemorySegment ofNative(@NotNull ILPALGETBUFFER3IDIRECT lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull LPALGETBUFFER3IDIRECT lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull ILPALGETBUFFER3IDIRECT lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), LPALGETBUFFER3IDIRECT, arena);
         }
     }
 
     @FunctionalInterface
-    public interface LPALGETBUFFER3PTRDIRECTSOFT {
+    public interface ILPALGETBUFFER3PTRDIRECTSOFT {
         void invoke(
-            ALCcontext p0,
+            @NativeType("ALCcontext") MemorySegment p0,
             @NativeType("ALuint") int p1,
             @NativeType("ALenum") int p2,
             @Pointer(comment="void*") @NotNull MemorySegment p3,
@@ -5775,26 +5775,26 @@ public final class ALFunctionTypes {
             @Pointer(comment="void*") @NotNull MemorySegment p5
         );
 
-        static MethodHandle of(@NotNull LPALGETBUFFER3PTRDIRECTSOFT lambda) {
+        static MethodHandle of(@NotNull ILPALGETBUFFER3PTRDIRECTSOFT lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(LPALGETBUFFER3PTRDIRECTSOFT.class, "invoke", LPALGETBUFFER3PTRDIRECTSOFT.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(ILPALGETBUFFER3PTRDIRECTSOFT.class, "invoke", LPALGETBUFFER3PTRDIRECTSOFT.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull LPALGETBUFFER3PTRDIRECTSOFT lambda) {
+        static MemorySegment ofNative(@NotNull ILPALGETBUFFER3PTRDIRECTSOFT lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull LPALGETBUFFER3PTRDIRECTSOFT lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull ILPALGETBUFFER3PTRDIRECTSOFT lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), LPALGETBUFFER3PTRDIRECTSOFT, arena);
         }
     }
 
     @FunctionalInterface
-    public interface LPALGETBUFFER3PTRSOFT {
+    public interface ILPALGETBUFFER3PTRSOFT {
         void invoke(
             @NativeType("ALuint") int p0,
             @NativeType("ALenum") int p1,
@@ -5803,344 +5803,344 @@ public final class ALFunctionTypes {
             @Pointer(comment="void*") @NotNull MemorySegment p4
         );
 
-        static MethodHandle of(@NotNull LPALGETBUFFER3PTRSOFT lambda) {
+        static MethodHandle of(@NotNull ILPALGETBUFFER3PTRSOFT lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(LPALGETBUFFER3PTRSOFT.class, "invoke", LPALGETBUFFER3PTRSOFT.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(ILPALGETBUFFER3PTRSOFT.class, "invoke", LPALGETBUFFER3PTRSOFT.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull LPALGETBUFFER3PTRSOFT lambda) {
+        static MemorySegment ofNative(@NotNull ILPALGETBUFFER3PTRSOFT lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull LPALGETBUFFER3PTRSOFT lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull ILPALGETBUFFER3PTRSOFT lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), LPALGETBUFFER3PTRSOFT, arena);
         }
     }
 
     @FunctionalInterface
-    public interface LPALGETBUFFERF {
+    public interface ILPALGETBUFFERF {
         void invoke(
             @NativeType("ALuint") int p0,
             @NativeType("ALenum") int p1,
             @Pointer(comment="void*") @NotNull MemorySegment p2
         );
 
-        static MethodHandle of(@NotNull LPALGETBUFFERF lambda) {
+        static MethodHandle of(@NotNull ILPALGETBUFFERF lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(LPALGETBUFFERF.class, "invoke", LPALGETBUFFERF.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(ILPALGETBUFFERF.class, "invoke", LPALGETBUFFERF.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull LPALGETBUFFERF lambda) {
+        static MemorySegment ofNative(@NotNull ILPALGETBUFFERF lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull LPALGETBUFFERF lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull ILPALGETBUFFERF lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), LPALGETBUFFERF, arena);
         }
     }
 
     @FunctionalInterface
-    public interface LPALGETBUFFERFDIRECT {
+    public interface ILPALGETBUFFERFDIRECT {
         void invoke(
-            ALCcontext p0,
+            @NativeType("ALCcontext") MemorySegment p0,
             @NativeType("ALuint") int p1,
             @NativeType("ALenum") int p2,
             @Pointer(comment="void*") @NotNull MemorySegment p3
         );
 
-        static MethodHandle of(@NotNull LPALGETBUFFERFDIRECT lambda) {
+        static MethodHandle of(@NotNull ILPALGETBUFFERFDIRECT lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(LPALGETBUFFERFDIRECT.class, "invoke", LPALGETBUFFERFDIRECT.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(ILPALGETBUFFERFDIRECT.class, "invoke", LPALGETBUFFERFDIRECT.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull LPALGETBUFFERFDIRECT lambda) {
+        static MemorySegment ofNative(@NotNull ILPALGETBUFFERFDIRECT lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull LPALGETBUFFERFDIRECT lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull ILPALGETBUFFERFDIRECT lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), LPALGETBUFFERFDIRECT, arena);
         }
     }
 
     @FunctionalInterface
-    public interface LPALGETBUFFERFV {
+    public interface ILPALGETBUFFERFV {
         void invoke(
             @NativeType("ALuint") int p0,
             @NativeType("ALenum") int p1,
             @Pointer(comment="void*") @NotNull MemorySegment p2
         );
 
-        static MethodHandle of(@NotNull LPALGETBUFFERFV lambda) {
+        static MethodHandle of(@NotNull ILPALGETBUFFERFV lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(LPALGETBUFFERFV.class, "invoke", LPALGETBUFFERFV.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(ILPALGETBUFFERFV.class, "invoke", LPALGETBUFFERFV.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull LPALGETBUFFERFV lambda) {
+        static MemorySegment ofNative(@NotNull ILPALGETBUFFERFV lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull LPALGETBUFFERFV lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull ILPALGETBUFFERFV lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), LPALGETBUFFERFV, arena);
         }
     }
 
     @FunctionalInterface
-    public interface LPALGETBUFFERFVDIRECT {
+    public interface ILPALGETBUFFERFVDIRECT {
         void invoke(
-            ALCcontext p0,
+            @NativeType("ALCcontext") MemorySegment p0,
             @NativeType("ALuint") int p1,
             @NativeType("ALenum") int p2,
             @Pointer(comment="void*") @NotNull MemorySegment p3
         );
 
-        static MethodHandle of(@NotNull LPALGETBUFFERFVDIRECT lambda) {
+        static MethodHandle of(@NotNull ILPALGETBUFFERFVDIRECT lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(LPALGETBUFFERFVDIRECT.class, "invoke", LPALGETBUFFERFVDIRECT.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(ILPALGETBUFFERFVDIRECT.class, "invoke", LPALGETBUFFERFVDIRECT.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull LPALGETBUFFERFVDIRECT lambda) {
+        static MemorySegment ofNative(@NotNull ILPALGETBUFFERFVDIRECT lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull LPALGETBUFFERFVDIRECT lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull ILPALGETBUFFERFVDIRECT lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), LPALGETBUFFERFVDIRECT, arena);
         }
     }
 
     @FunctionalInterface
-    public interface LPALGETBUFFERI {
+    public interface ILPALGETBUFFERI {
         void invoke(
             @NativeType("ALuint") int p0,
             @NativeType("ALenum") int p1,
             @Pointer(comment="void*") @NotNull MemorySegment p2
         );
 
-        static MethodHandle of(@NotNull LPALGETBUFFERI lambda) {
+        static MethodHandle of(@NotNull ILPALGETBUFFERI lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(LPALGETBUFFERI.class, "invoke", LPALGETBUFFERI.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(ILPALGETBUFFERI.class, "invoke", LPALGETBUFFERI.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull LPALGETBUFFERI lambda) {
+        static MemorySegment ofNative(@NotNull ILPALGETBUFFERI lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull LPALGETBUFFERI lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull ILPALGETBUFFERI lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), LPALGETBUFFERI, arena);
         }
     }
 
     @FunctionalInterface
-    public interface LPALGETBUFFERIDIRECT {
+    public interface ILPALGETBUFFERIDIRECT {
         void invoke(
-            ALCcontext p0,
+            @NativeType("ALCcontext") MemorySegment p0,
             @NativeType("ALuint") int p1,
             @NativeType("ALenum") int p2,
             @Pointer(comment="void*") @NotNull MemorySegment p3
         );
 
-        static MethodHandle of(@NotNull LPALGETBUFFERIDIRECT lambda) {
+        static MethodHandle of(@NotNull ILPALGETBUFFERIDIRECT lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(LPALGETBUFFERIDIRECT.class, "invoke", LPALGETBUFFERIDIRECT.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(ILPALGETBUFFERIDIRECT.class, "invoke", LPALGETBUFFERIDIRECT.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull LPALGETBUFFERIDIRECT lambda) {
+        static MemorySegment ofNative(@NotNull ILPALGETBUFFERIDIRECT lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull LPALGETBUFFERIDIRECT lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull ILPALGETBUFFERIDIRECT lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), LPALGETBUFFERIDIRECT, arena);
         }
     }
 
     @FunctionalInterface
-    public interface LPALGETBUFFERIV {
+    public interface ILPALGETBUFFERIV {
         void invoke(
             @NativeType("ALuint") int p0,
             @NativeType("ALenum") int p1,
             @Pointer(comment="void*") @NotNull MemorySegment p2
         );
 
-        static MethodHandle of(@NotNull LPALGETBUFFERIV lambda) {
+        static MethodHandle of(@NotNull ILPALGETBUFFERIV lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(LPALGETBUFFERIV.class, "invoke", LPALGETBUFFERIV.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(ILPALGETBUFFERIV.class, "invoke", LPALGETBUFFERIV.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull LPALGETBUFFERIV lambda) {
+        static MemorySegment ofNative(@NotNull ILPALGETBUFFERIV lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull LPALGETBUFFERIV lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull ILPALGETBUFFERIV lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), LPALGETBUFFERIV, arena);
         }
     }
 
     @FunctionalInterface
-    public interface LPALGETBUFFERIVDIRECT {
+    public interface ILPALGETBUFFERIVDIRECT {
         void invoke(
-            ALCcontext p0,
+            @NativeType("ALCcontext") MemorySegment p0,
             @NativeType("ALuint") int p1,
             @NativeType("ALenum") int p2,
             @Pointer(comment="void*") @NotNull MemorySegment p3
         );
 
-        static MethodHandle of(@NotNull LPALGETBUFFERIVDIRECT lambda) {
+        static MethodHandle of(@NotNull ILPALGETBUFFERIVDIRECT lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(LPALGETBUFFERIVDIRECT.class, "invoke", LPALGETBUFFERIVDIRECT.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(ILPALGETBUFFERIVDIRECT.class, "invoke", LPALGETBUFFERIVDIRECT.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull LPALGETBUFFERIVDIRECT lambda) {
+        static MemorySegment ofNative(@NotNull ILPALGETBUFFERIVDIRECT lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull LPALGETBUFFERIVDIRECT lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull ILPALGETBUFFERIVDIRECT lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), LPALGETBUFFERIVDIRECT, arena);
         }
     }
 
     @FunctionalInterface
-    public interface LPALGETBUFFERPTRDIRECTSOFT {
+    public interface ILPALGETBUFFERPTRDIRECTSOFT {
         void invoke(
-            ALCcontext p0,
+            @NativeType("ALCcontext") MemorySegment p0,
             @NativeType("ALuint") int p1,
             @NativeType("ALenum") int p2,
             @Pointer(comment="void*") @NotNull MemorySegment p3
         );
 
-        static MethodHandle of(@NotNull LPALGETBUFFERPTRDIRECTSOFT lambda) {
+        static MethodHandle of(@NotNull ILPALGETBUFFERPTRDIRECTSOFT lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(LPALGETBUFFERPTRDIRECTSOFT.class, "invoke", LPALGETBUFFERPTRDIRECTSOFT.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(ILPALGETBUFFERPTRDIRECTSOFT.class, "invoke", LPALGETBUFFERPTRDIRECTSOFT.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull LPALGETBUFFERPTRDIRECTSOFT lambda) {
+        static MemorySegment ofNative(@NotNull ILPALGETBUFFERPTRDIRECTSOFT lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull LPALGETBUFFERPTRDIRECTSOFT lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull ILPALGETBUFFERPTRDIRECTSOFT lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), LPALGETBUFFERPTRDIRECTSOFT, arena);
         }
     }
 
     @FunctionalInterface
-    public interface LPALGETBUFFERPTRSOFT {
+    public interface ILPALGETBUFFERPTRSOFT {
         void invoke(
             @NativeType("ALuint") int p0,
             @NativeType("ALenum") int p1,
             @Pointer(comment="void*") @NotNull MemorySegment p2
         );
 
-        static MethodHandle of(@NotNull LPALGETBUFFERPTRSOFT lambda) {
+        static MethodHandle of(@NotNull ILPALGETBUFFERPTRSOFT lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(LPALGETBUFFERPTRSOFT.class, "invoke", LPALGETBUFFERPTRSOFT.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(ILPALGETBUFFERPTRSOFT.class, "invoke", LPALGETBUFFERPTRSOFT.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull LPALGETBUFFERPTRSOFT lambda) {
+        static MemorySegment ofNative(@NotNull ILPALGETBUFFERPTRSOFT lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull LPALGETBUFFERPTRSOFT lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull ILPALGETBUFFERPTRSOFT lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), LPALGETBUFFERPTRSOFT, arena);
         }
     }
 
     @FunctionalInterface
-    public interface LPALGETBUFFERPTRVDIRECTSOFT {
+    public interface ILPALGETBUFFERPTRVDIRECTSOFT {
         void invoke(
-            ALCcontext p0,
+            @NativeType("ALCcontext") MemorySegment p0,
             @NativeType("ALuint") int p1,
             @NativeType("ALenum") int p2,
             @Pointer(comment="void*") @NotNull MemorySegment p3
         );
 
-        static MethodHandle of(@NotNull LPALGETBUFFERPTRVDIRECTSOFT lambda) {
+        static MethodHandle of(@NotNull ILPALGETBUFFERPTRVDIRECTSOFT lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(LPALGETBUFFERPTRVDIRECTSOFT.class, "invoke", LPALGETBUFFERPTRVDIRECTSOFT.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(ILPALGETBUFFERPTRVDIRECTSOFT.class, "invoke", LPALGETBUFFERPTRVDIRECTSOFT.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull LPALGETBUFFERPTRVDIRECTSOFT lambda) {
+        static MemorySegment ofNative(@NotNull ILPALGETBUFFERPTRVDIRECTSOFT lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull LPALGETBUFFERPTRVDIRECTSOFT lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull ILPALGETBUFFERPTRVDIRECTSOFT lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), LPALGETBUFFERPTRVDIRECTSOFT, arena);
         }
     }
 
     @FunctionalInterface
-    public interface LPALGETBUFFERPTRVSOFT {
+    public interface ILPALGETBUFFERPTRVSOFT {
         void invoke(
             @NativeType("ALuint") int p0,
             @NativeType("ALenum") int p1,
             @Pointer(comment="void*") @NotNull MemorySegment p2
         );
 
-        static MethodHandle of(@NotNull LPALGETBUFFERPTRVSOFT lambda) {
+        static MethodHandle of(@NotNull ILPALGETBUFFERPTRVSOFT lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(LPALGETBUFFERPTRVSOFT.class, "invoke", LPALGETBUFFERPTRVSOFT.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(ILPALGETBUFFERPTRVSOFT.class, "invoke", LPALGETBUFFERPTRVSOFT.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull LPALGETBUFFERPTRVSOFT lambda) {
+        static MemorySegment ofNative(@NotNull ILPALGETBUFFERPTRVSOFT lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull LPALGETBUFFERPTRVSOFT lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull ILPALGETBUFFERPTRVSOFT lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), LPALGETBUFFERPTRVSOFT, arena);
         }
     }
 
     @FunctionalInterface
-    public interface LPALGETBUFFERSAMPLESSOFT {
+    public interface ILPALGETBUFFERSAMPLESSOFT {
         void invoke(
             @NativeType("ALuint") int p0,
             @NativeType("ALsizei") int p1,
@@ -6150,28 +6150,28 @@ public final class ALFunctionTypes {
             @Pointer(comment="void*") @NotNull MemorySegment p5
         );
 
-        static MethodHandle of(@NotNull LPALGETBUFFERSAMPLESSOFT lambda) {
+        static MethodHandle of(@NotNull ILPALGETBUFFERSAMPLESSOFT lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(LPALGETBUFFERSAMPLESSOFT.class, "invoke", LPALGETBUFFERSAMPLESSOFT.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(ILPALGETBUFFERSAMPLESSOFT.class, "invoke", LPALGETBUFFERSAMPLESSOFT.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull LPALGETBUFFERSAMPLESSOFT lambda) {
+        static MemorySegment ofNative(@NotNull ILPALGETBUFFERSAMPLESSOFT lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull LPALGETBUFFERSAMPLESSOFT lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull ILPALGETBUFFERSAMPLESSOFT lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), LPALGETBUFFERSAMPLESSOFT, arena);
         }
     }
 
     @FunctionalInterface
-    public interface LPALGETDEBUGMESSAGELOGDIRECTEXT {
+    public interface ILPALGETDEBUGMESSAGELOGDIRECTEXT {
         @NativeType("ALuint") int invoke(
-            ALCcontext p0,
+            @NativeType("ALCcontext") MemorySegment p0,
             @NativeType("ALuint") int p1,
             @NativeType("ALsizei") int p2,
             @Pointer(comment="void*") @NotNull MemorySegment p3,
@@ -6182,26 +6182,26 @@ public final class ALFunctionTypes {
             @Pointer(comment="void*") @NotNull MemorySegment p8
         );
 
-        static MethodHandle of(@NotNull LPALGETDEBUGMESSAGELOGDIRECTEXT lambda) {
+        static MethodHandle of(@NotNull ILPALGETDEBUGMESSAGELOGDIRECTEXT lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(LPALGETDEBUGMESSAGELOGDIRECTEXT.class, "invoke", LPALGETDEBUGMESSAGELOGDIRECTEXT.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(ILPALGETDEBUGMESSAGELOGDIRECTEXT.class, "invoke", LPALGETDEBUGMESSAGELOGDIRECTEXT.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull LPALGETDEBUGMESSAGELOGDIRECTEXT lambda) {
+        static MemorySegment ofNative(@NotNull ILPALGETDEBUGMESSAGELOGDIRECTEXT lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull LPALGETDEBUGMESSAGELOGDIRECTEXT lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull ILPALGETDEBUGMESSAGELOGDIRECTEXT lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), LPALGETDEBUGMESSAGELOGDIRECTEXT, arena);
         }
     }
 
     @FunctionalInterface
-    public interface LPALGETDEBUGMESSAGELOGEXT {
+    public interface ILPALGETDEBUGMESSAGELOGEXT {
         @NativeType("ALuint") int invoke(
             @NativeType("ALuint") int p0,
             @NativeType("ALsizei") int p1,
@@ -6213,846 +6213,846 @@ public final class ALFunctionTypes {
             @Pointer(comment="void*") @NotNull MemorySegment p7
         );
 
-        static MethodHandle of(@NotNull LPALGETDEBUGMESSAGELOGEXT lambda) {
+        static MethodHandle of(@NotNull ILPALGETDEBUGMESSAGELOGEXT lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(LPALGETDEBUGMESSAGELOGEXT.class, "invoke", LPALGETDEBUGMESSAGELOGEXT.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(ILPALGETDEBUGMESSAGELOGEXT.class, "invoke", LPALGETDEBUGMESSAGELOGEXT.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull LPALGETDEBUGMESSAGELOGEXT lambda) {
+        static MemorySegment ofNative(@NotNull ILPALGETDEBUGMESSAGELOGEXT lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull LPALGETDEBUGMESSAGELOGEXT lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull ILPALGETDEBUGMESSAGELOGEXT lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), LPALGETDEBUGMESSAGELOGEXT, arena);
         }
     }
 
     @FunctionalInterface
-    public interface LPALGETDOUBLE {
+    public interface ILPALGETDOUBLE {
         @NativeType("ALdouble") double invoke(
             @NativeType("ALenum") int p0
         );
 
-        static MethodHandle of(@NotNull LPALGETDOUBLE lambda) {
+        static MethodHandle of(@NotNull ILPALGETDOUBLE lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(LPALGETDOUBLE.class, "invoke", LPALGETDOUBLE.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(ILPALGETDOUBLE.class, "invoke", LPALGETDOUBLE.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull LPALGETDOUBLE lambda) {
+        static MemorySegment ofNative(@NotNull ILPALGETDOUBLE lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull LPALGETDOUBLE lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull ILPALGETDOUBLE lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), LPALGETDOUBLE, arena);
         }
     }
 
     @FunctionalInterface
-    public interface LPALGETDOUBLEDIRECT {
+    public interface ILPALGETDOUBLEDIRECT {
         @NativeType("ALdouble") double invoke(
-            ALCcontext p0,
+            @NativeType("ALCcontext") MemorySegment p0,
             @NativeType("ALenum") int p1
         );
 
-        static MethodHandle of(@NotNull LPALGETDOUBLEDIRECT lambda) {
+        static MethodHandle of(@NotNull ILPALGETDOUBLEDIRECT lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(LPALGETDOUBLEDIRECT.class, "invoke", LPALGETDOUBLEDIRECT.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(ILPALGETDOUBLEDIRECT.class, "invoke", LPALGETDOUBLEDIRECT.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull LPALGETDOUBLEDIRECT lambda) {
+        static MemorySegment ofNative(@NotNull ILPALGETDOUBLEDIRECT lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull LPALGETDOUBLEDIRECT lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull ILPALGETDOUBLEDIRECT lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), LPALGETDOUBLEDIRECT, arena);
         }
     }
 
     @FunctionalInterface
-    public interface LPALGETDOUBLEV {
+    public interface ILPALGETDOUBLEV {
         void invoke(
             @NativeType("ALenum") int p0,
             @Pointer(comment="void*") @NotNull MemorySegment p1
         );
 
-        static MethodHandle of(@NotNull LPALGETDOUBLEV lambda) {
+        static MethodHandle of(@NotNull ILPALGETDOUBLEV lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(LPALGETDOUBLEV.class, "invoke", LPALGETDOUBLEV.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(ILPALGETDOUBLEV.class, "invoke", LPALGETDOUBLEV.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull LPALGETDOUBLEV lambda) {
+        static MemorySegment ofNative(@NotNull ILPALGETDOUBLEV lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull LPALGETDOUBLEV lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull ILPALGETDOUBLEV lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), LPALGETDOUBLEV, arena);
         }
     }
 
     @FunctionalInterface
-    public interface LPALGETDOUBLEVDIRECT {
+    public interface ILPALGETDOUBLEVDIRECT {
         void invoke(
-            ALCcontext p0,
+            @NativeType("ALCcontext") MemorySegment p0,
             @NativeType("ALenum") int p1,
             @Pointer(comment="void*") @NotNull MemorySegment p2
         );
 
-        static MethodHandle of(@NotNull LPALGETDOUBLEVDIRECT lambda) {
+        static MethodHandle of(@NotNull ILPALGETDOUBLEVDIRECT lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(LPALGETDOUBLEVDIRECT.class, "invoke", LPALGETDOUBLEVDIRECT.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(ILPALGETDOUBLEVDIRECT.class, "invoke", LPALGETDOUBLEVDIRECT.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull LPALGETDOUBLEVDIRECT lambda) {
+        static MemorySegment ofNative(@NotNull ILPALGETDOUBLEVDIRECT lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull LPALGETDOUBLEVDIRECT lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull ILPALGETDOUBLEVDIRECT lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), LPALGETDOUBLEVDIRECT, arena);
         }
     }
 
     @FunctionalInterface
-    public interface LPALGETEFFECTF {
+    public interface ILPALGETEFFECTF {
         void invoke(
             @NativeType("ALuint") int p0,
             @NativeType("ALenum") int p1,
             @Pointer(comment="void*") @NotNull MemorySegment p2
         );
 
-        static MethodHandle of(@NotNull LPALGETEFFECTF lambda) {
+        static MethodHandle of(@NotNull ILPALGETEFFECTF lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(LPALGETEFFECTF.class, "invoke", LPALGETEFFECTF.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(ILPALGETEFFECTF.class, "invoke", LPALGETEFFECTF.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull LPALGETEFFECTF lambda) {
+        static MemorySegment ofNative(@NotNull ILPALGETEFFECTF lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull LPALGETEFFECTF lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull ILPALGETEFFECTF lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), LPALGETEFFECTF, arena);
         }
     }
 
     @FunctionalInterface
-    public interface LPALGETEFFECTFDIRECT {
+    public interface ILPALGETEFFECTFDIRECT {
         void invoke(
-            ALCcontext p0,
+            @NativeType("ALCcontext") MemorySegment p0,
             @NativeType("ALuint") int p1,
             @NativeType("ALenum") int p2,
             @Pointer(comment="void*") @NotNull MemorySegment p3
         );
 
-        static MethodHandle of(@NotNull LPALGETEFFECTFDIRECT lambda) {
+        static MethodHandle of(@NotNull ILPALGETEFFECTFDIRECT lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(LPALGETEFFECTFDIRECT.class, "invoke", LPALGETEFFECTFDIRECT.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(ILPALGETEFFECTFDIRECT.class, "invoke", LPALGETEFFECTFDIRECT.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull LPALGETEFFECTFDIRECT lambda) {
+        static MemorySegment ofNative(@NotNull ILPALGETEFFECTFDIRECT lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull LPALGETEFFECTFDIRECT lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull ILPALGETEFFECTFDIRECT lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), LPALGETEFFECTFDIRECT, arena);
         }
     }
 
     @FunctionalInterface
-    public interface LPALGETEFFECTFV {
+    public interface ILPALGETEFFECTFV {
         void invoke(
             @NativeType("ALuint") int p0,
             @NativeType("ALenum") int p1,
             @Pointer(comment="void*") @NotNull MemorySegment p2
         );
 
-        static MethodHandle of(@NotNull LPALGETEFFECTFV lambda) {
+        static MethodHandle of(@NotNull ILPALGETEFFECTFV lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(LPALGETEFFECTFV.class, "invoke", LPALGETEFFECTFV.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(ILPALGETEFFECTFV.class, "invoke", LPALGETEFFECTFV.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull LPALGETEFFECTFV lambda) {
+        static MemorySegment ofNative(@NotNull ILPALGETEFFECTFV lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull LPALGETEFFECTFV lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull ILPALGETEFFECTFV lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), LPALGETEFFECTFV, arena);
         }
     }
 
     @FunctionalInterface
-    public interface LPALGETEFFECTFVDIRECT {
+    public interface ILPALGETEFFECTFVDIRECT {
         void invoke(
-            ALCcontext p0,
+            @NativeType("ALCcontext") MemorySegment p0,
             @NativeType("ALuint") int p1,
             @NativeType("ALenum") int p2,
             @Pointer(comment="void*") @NotNull MemorySegment p3
         );
 
-        static MethodHandle of(@NotNull LPALGETEFFECTFVDIRECT lambda) {
+        static MethodHandle of(@NotNull ILPALGETEFFECTFVDIRECT lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(LPALGETEFFECTFVDIRECT.class, "invoke", LPALGETEFFECTFVDIRECT.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(ILPALGETEFFECTFVDIRECT.class, "invoke", LPALGETEFFECTFVDIRECT.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull LPALGETEFFECTFVDIRECT lambda) {
+        static MemorySegment ofNative(@NotNull ILPALGETEFFECTFVDIRECT lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull LPALGETEFFECTFVDIRECT lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull ILPALGETEFFECTFVDIRECT lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), LPALGETEFFECTFVDIRECT, arena);
         }
     }
 
     @FunctionalInterface
-    public interface LPALGETEFFECTI {
+    public interface ILPALGETEFFECTI {
         void invoke(
             @NativeType("ALuint") int p0,
             @NativeType("ALenum") int p1,
             @Pointer(comment="void*") @NotNull MemorySegment p2
         );
 
-        static MethodHandle of(@NotNull LPALGETEFFECTI lambda) {
+        static MethodHandle of(@NotNull ILPALGETEFFECTI lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(LPALGETEFFECTI.class, "invoke", LPALGETEFFECTI.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(ILPALGETEFFECTI.class, "invoke", LPALGETEFFECTI.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull LPALGETEFFECTI lambda) {
+        static MemorySegment ofNative(@NotNull ILPALGETEFFECTI lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull LPALGETEFFECTI lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull ILPALGETEFFECTI lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), LPALGETEFFECTI, arena);
         }
     }
 
     @FunctionalInterface
-    public interface LPALGETEFFECTIDIRECT {
+    public interface ILPALGETEFFECTIDIRECT {
         void invoke(
-            ALCcontext p0,
+            @NativeType("ALCcontext") MemorySegment p0,
             @NativeType("ALuint") int p1,
             @NativeType("ALenum") int p2,
             @Pointer(comment="void*") @NotNull MemorySegment p3
         );
 
-        static MethodHandle of(@NotNull LPALGETEFFECTIDIRECT lambda) {
+        static MethodHandle of(@NotNull ILPALGETEFFECTIDIRECT lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(LPALGETEFFECTIDIRECT.class, "invoke", LPALGETEFFECTIDIRECT.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(ILPALGETEFFECTIDIRECT.class, "invoke", LPALGETEFFECTIDIRECT.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull LPALGETEFFECTIDIRECT lambda) {
+        static MemorySegment ofNative(@NotNull ILPALGETEFFECTIDIRECT lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull LPALGETEFFECTIDIRECT lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull ILPALGETEFFECTIDIRECT lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), LPALGETEFFECTIDIRECT, arena);
         }
     }
 
     @FunctionalInterface
-    public interface LPALGETEFFECTIV {
+    public interface ILPALGETEFFECTIV {
         void invoke(
             @NativeType("ALuint") int p0,
             @NativeType("ALenum") int p1,
             @Pointer(comment="void*") @NotNull MemorySegment p2
         );
 
-        static MethodHandle of(@NotNull LPALGETEFFECTIV lambda) {
+        static MethodHandle of(@NotNull ILPALGETEFFECTIV lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(LPALGETEFFECTIV.class, "invoke", LPALGETEFFECTIV.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(ILPALGETEFFECTIV.class, "invoke", LPALGETEFFECTIV.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull LPALGETEFFECTIV lambda) {
+        static MemorySegment ofNative(@NotNull ILPALGETEFFECTIV lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull LPALGETEFFECTIV lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull ILPALGETEFFECTIV lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), LPALGETEFFECTIV, arena);
         }
     }
 
     @FunctionalInterface
-    public interface LPALGETEFFECTIVDIRECT {
+    public interface ILPALGETEFFECTIVDIRECT {
         void invoke(
-            ALCcontext p0,
+            @NativeType("ALCcontext") MemorySegment p0,
             @NativeType("ALuint") int p1,
             @NativeType("ALenum") int p2,
             @Pointer(comment="void*") @NotNull MemorySegment p3
         );
 
-        static MethodHandle of(@NotNull LPALGETEFFECTIVDIRECT lambda) {
+        static MethodHandle of(@NotNull ILPALGETEFFECTIVDIRECT lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(LPALGETEFFECTIVDIRECT.class, "invoke", LPALGETEFFECTIVDIRECT.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(ILPALGETEFFECTIVDIRECT.class, "invoke", LPALGETEFFECTIVDIRECT.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull LPALGETEFFECTIVDIRECT lambda) {
+        static MemorySegment ofNative(@NotNull ILPALGETEFFECTIVDIRECT lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull LPALGETEFFECTIVDIRECT lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull ILPALGETEFFECTIVDIRECT lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), LPALGETEFFECTIVDIRECT, arena);
         }
     }
 
     @FunctionalInterface
-    public interface LPALGETENUMVALUE {
+    public interface ILPALGETENUMVALUE {
         @NativeType("ALenum") int invoke(
             @Pointer(comment="void*") @NotNull MemorySegment p0
         );
 
-        static MethodHandle of(@NotNull LPALGETENUMVALUE lambda) {
+        static MethodHandle of(@NotNull ILPALGETENUMVALUE lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(LPALGETENUMVALUE.class, "invoke", LPALGETENUMVALUE.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(ILPALGETENUMVALUE.class, "invoke", LPALGETENUMVALUE.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull LPALGETENUMVALUE lambda) {
+        static MemorySegment ofNative(@NotNull ILPALGETENUMVALUE lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull LPALGETENUMVALUE lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull ILPALGETENUMVALUE lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), LPALGETENUMVALUE, arena);
         }
     }
 
     @FunctionalInterface
-    public interface LPALGETENUMVALUEDIRECT {
+    public interface ILPALGETENUMVALUEDIRECT {
         @NativeType("ALenum") int invoke(
-            ALCcontext p0,
+            @NativeType("ALCcontext") MemorySegment p0,
             @Pointer(comment="void*") @NotNull MemorySegment p1
         );
 
-        static MethodHandle of(@NotNull LPALGETENUMVALUEDIRECT lambda) {
+        static MethodHandle of(@NotNull ILPALGETENUMVALUEDIRECT lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(LPALGETENUMVALUEDIRECT.class, "invoke", LPALGETENUMVALUEDIRECT.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(ILPALGETENUMVALUEDIRECT.class, "invoke", LPALGETENUMVALUEDIRECT.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull LPALGETENUMVALUEDIRECT lambda) {
+        static MemorySegment ofNative(@NotNull ILPALGETENUMVALUEDIRECT lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull LPALGETENUMVALUEDIRECT lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull ILPALGETENUMVALUEDIRECT lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), LPALGETENUMVALUEDIRECT, arena);
         }
     }
 
     @FunctionalInterface
-    public interface LPALGETERROR {
+    public interface ILPALGETERROR {
         @NativeType("ALenum") int invoke(
         );
 
-        static MethodHandle of(@NotNull LPALGETERROR lambda) {
+        static MethodHandle of(@NotNull ILPALGETERROR lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(LPALGETERROR.class, "invoke", LPALGETERROR.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(ILPALGETERROR.class, "invoke", LPALGETERROR.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull LPALGETERROR lambda) {
+        static MemorySegment ofNative(@NotNull ILPALGETERROR lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull LPALGETERROR lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull ILPALGETERROR lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), LPALGETERROR, arena);
         }
     }
 
     @FunctionalInterface
-    public interface LPALGETERRORDIRECT {
+    public interface ILPALGETERRORDIRECT {
         @NativeType("ALenum") int invoke(
-            ALCcontext p0
+            @NativeType("ALCcontext") MemorySegment p0
         );
 
-        static MethodHandle of(@NotNull LPALGETERRORDIRECT lambda) {
+        static MethodHandle of(@NotNull ILPALGETERRORDIRECT lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(LPALGETERRORDIRECT.class, "invoke", LPALGETERRORDIRECT.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(ILPALGETERRORDIRECT.class, "invoke", LPALGETERRORDIRECT.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull LPALGETERRORDIRECT lambda) {
+        static MemorySegment ofNative(@NotNull ILPALGETERRORDIRECT lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull LPALGETERRORDIRECT lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull ILPALGETERRORDIRECT lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), LPALGETERRORDIRECT, arena);
         }
     }
 
     @FunctionalInterface
-    public interface LPALGETFILTERF {
+    public interface ILPALGETFILTERF {
         void invoke(
             @NativeType("ALuint") int p0,
             @NativeType("ALenum") int p1,
             @Pointer(comment="void*") @NotNull MemorySegment p2
         );
 
-        static MethodHandle of(@NotNull LPALGETFILTERF lambda) {
+        static MethodHandle of(@NotNull ILPALGETFILTERF lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(LPALGETFILTERF.class, "invoke", LPALGETFILTERF.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(ILPALGETFILTERF.class, "invoke", LPALGETFILTERF.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull LPALGETFILTERF lambda) {
+        static MemorySegment ofNative(@NotNull ILPALGETFILTERF lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull LPALGETFILTERF lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull ILPALGETFILTERF lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), LPALGETFILTERF, arena);
         }
     }
 
     @FunctionalInterface
-    public interface LPALGETFILTERFDIRECT {
+    public interface ILPALGETFILTERFDIRECT {
         void invoke(
-            ALCcontext p0,
+            @NativeType("ALCcontext") MemorySegment p0,
             @NativeType("ALuint") int p1,
             @NativeType("ALenum") int p2,
             @Pointer(comment="void*") @NotNull MemorySegment p3
         );
 
-        static MethodHandle of(@NotNull LPALGETFILTERFDIRECT lambda) {
+        static MethodHandle of(@NotNull ILPALGETFILTERFDIRECT lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(LPALGETFILTERFDIRECT.class, "invoke", LPALGETFILTERFDIRECT.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(ILPALGETFILTERFDIRECT.class, "invoke", LPALGETFILTERFDIRECT.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull LPALGETFILTERFDIRECT lambda) {
+        static MemorySegment ofNative(@NotNull ILPALGETFILTERFDIRECT lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull LPALGETFILTERFDIRECT lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull ILPALGETFILTERFDIRECT lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), LPALGETFILTERFDIRECT, arena);
         }
     }
 
     @FunctionalInterface
-    public interface LPALGETFILTERFV {
+    public interface ILPALGETFILTERFV {
         void invoke(
             @NativeType("ALuint") int p0,
             @NativeType("ALenum") int p1,
             @Pointer(comment="void*") @NotNull MemorySegment p2
         );
 
-        static MethodHandle of(@NotNull LPALGETFILTERFV lambda) {
+        static MethodHandle of(@NotNull ILPALGETFILTERFV lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(LPALGETFILTERFV.class, "invoke", LPALGETFILTERFV.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(ILPALGETFILTERFV.class, "invoke", LPALGETFILTERFV.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull LPALGETFILTERFV lambda) {
+        static MemorySegment ofNative(@NotNull ILPALGETFILTERFV lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull LPALGETFILTERFV lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull ILPALGETFILTERFV lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), LPALGETFILTERFV, arena);
         }
     }
 
     @FunctionalInterface
-    public interface LPALGETFILTERFVDIRECT {
+    public interface ILPALGETFILTERFVDIRECT {
         void invoke(
-            ALCcontext p0,
+            @NativeType("ALCcontext") MemorySegment p0,
             @NativeType("ALuint") int p1,
             @NativeType("ALenum") int p2,
             @Pointer(comment="void*") @NotNull MemorySegment p3
         );
 
-        static MethodHandle of(@NotNull LPALGETFILTERFVDIRECT lambda) {
+        static MethodHandle of(@NotNull ILPALGETFILTERFVDIRECT lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(LPALGETFILTERFVDIRECT.class, "invoke", LPALGETFILTERFVDIRECT.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(ILPALGETFILTERFVDIRECT.class, "invoke", LPALGETFILTERFVDIRECT.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull LPALGETFILTERFVDIRECT lambda) {
+        static MemorySegment ofNative(@NotNull ILPALGETFILTERFVDIRECT lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull LPALGETFILTERFVDIRECT lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull ILPALGETFILTERFVDIRECT lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), LPALGETFILTERFVDIRECT, arena);
         }
     }
 
     @FunctionalInterface
-    public interface LPALGETFILTERI {
+    public interface ILPALGETFILTERI {
         void invoke(
             @NativeType("ALuint") int p0,
             @NativeType("ALenum") int p1,
             @Pointer(comment="void*") @NotNull MemorySegment p2
         );
 
-        static MethodHandle of(@NotNull LPALGETFILTERI lambda) {
+        static MethodHandle of(@NotNull ILPALGETFILTERI lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(LPALGETFILTERI.class, "invoke", LPALGETFILTERI.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(ILPALGETFILTERI.class, "invoke", LPALGETFILTERI.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull LPALGETFILTERI lambda) {
+        static MemorySegment ofNative(@NotNull ILPALGETFILTERI lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull LPALGETFILTERI lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull ILPALGETFILTERI lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), LPALGETFILTERI, arena);
         }
     }
 
     @FunctionalInterface
-    public interface LPALGETFILTERIDIRECT {
+    public interface ILPALGETFILTERIDIRECT {
         void invoke(
-            ALCcontext p0,
+            @NativeType("ALCcontext") MemorySegment p0,
             @NativeType("ALuint") int p1,
             @NativeType("ALenum") int p2,
             @Pointer(comment="void*") @NotNull MemorySegment p3
         );
 
-        static MethodHandle of(@NotNull LPALGETFILTERIDIRECT lambda) {
+        static MethodHandle of(@NotNull ILPALGETFILTERIDIRECT lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(LPALGETFILTERIDIRECT.class, "invoke", LPALGETFILTERIDIRECT.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(ILPALGETFILTERIDIRECT.class, "invoke", LPALGETFILTERIDIRECT.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull LPALGETFILTERIDIRECT lambda) {
+        static MemorySegment ofNative(@NotNull ILPALGETFILTERIDIRECT lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull LPALGETFILTERIDIRECT lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull ILPALGETFILTERIDIRECT lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), LPALGETFILTERIDIRECT, arena);
         }
     }
 
     @FunctionalInterface
-    public interface LPALGETFILTERIV {
+    public interface ILPALGETFILTERIV {
         void invoke(
             @NativeType("ALuint") int p0,
             @NativeType("ALenum") int p1,
             @Pointer(comment="void*") @NotNull MemorySegment p2
         );
 
-        static MethodHandle of(@NotNull LPALGETFILTERIV lambda) {
+        static MethodHandle of(@NotNull ILPALGETFILTERIV lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(LPALGETFILTERIV.class, "invoke", LPALGETFILTERIV.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(ILPALGETFILTERIV.class, "invoke", LPALGETFILTERIV.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull LPALGETFILTERIV lambda) {
+        static MemorySegment ofNative(@NotNull ILPALGETFILTERIV lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull LPALGETFILTERIV lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull ILPALGETFILTERIV lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), LPALGETFILTERIV, arena);
         }
     }
 
     @FunctionalInterface
-    public interface LPALGETFILTERIVDIRECT {
+    public interface ILPALGETFILTERIVDIRECT {
         void invoke(
-            ALCcontext p0,
+            @NativeType("ALCcontext") MemorySegment p0,
             @NativeType("ALuint") int p1,
             @NativeType("ALenum") int p2,
             @Pointer(comment="void*") @NotNull MemorySegment p3
         );
 
-        static MethodHandle of(@NotNull LPALGETFILTERIVDIRECT lambda) {
+        static MethodHandle of(@NotNull ILPALGETFILTERIVDIRECT lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(LPALGETFILTERIVDIRECT.class, "invoke", LPALGETFILTERIVDIRECT.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(ILPALGETFILTERIVDIRECT.class, "invoke", LPALGETFILTERIVDIRECT.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull LPALGETFILTERIVDIRECT lambda) {
+        static MemorySegment ofNative(@NotNull ILPALGETFILTERIVDIRECT lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull LPALGETFILTERIVDIRECT lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull ILPALGETFILTERIVDIRECT lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), LPALGETFILTERIVDIRECT, arena);
         }
     }
 
     @FunctionalInterface
-    public interface LPALGETFLOAT {
+    public interface ILPALGETFLOAT {
         @NativeType("ALfloat") float invoke(
             @NativeType("ALenum") int p0
         );
 
-        static MethodHandle of(@NotNull LPALGETFLOAT lambda) {
+        static MethodHandle of(@NotNull ILPALGETFLOAT lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(LPALGETFLOAT.class, "invoke", LPALGETFLOAT.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(ILPALGETFLOAT.class, "invoke", LPALGETFLOAT.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull LPALGETFLOAT lambda) {
+        static MemorySegment ofNative(@NotNull ILPALGETFLOAT lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull LPALGETFLOAT lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull ILPALGETFLOAT lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), LPALGETFLOAT, arena);
         }
     }
 
     @FunctionalInterface
-    public interface LPALGETFLOATDIRECT {
+    public interface ILPALGETFLOATDIRECT {
         @NativeType("ALfloat") float invoke(
-            ALCcontext p0,
+            @NativeType("ALCcontext") MemorySegment p0,
             @NativeType("ALenum") int p1
         );
 
-        static MethodHandle of(@NotNull LPALGETFLOATDIRECT lambda) {
+        static MethodHandle of(@NotNull ILPALGETFLOATDIRECT lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(LPALGETFLOATDIRECT.class, "invoke", LPALGETFLOATDIRECT.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(ILPALGETFLOATDIRECT.class, "invoke", LPALGETFLOATDIRECT.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull LPALGETFLOATDIRECT lambda) {
+        static MemorySegment ofNative(@NotNull ILPALGETFLOATDIRECT lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull LPALGETFLOATDIRECT lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull ILPALGETFLOATDIRECT lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), LPALGETFLOATDIRECT, arena);
         }
     }
 
     @FunctionalInterface
-    public interface LPALGETFLOATV {
+    public interface ILPALGETFLOATV {
         void invoke(
             @NativeType("ALenum") int p0,
             @Pointer(comment="void*") @NotNull MemorySegment p1
         );
 
-        static MethodHandle of(@NotNull LPALGETFLOATV lambda) {
+        static MethodHandle of(@NotNull ILPALGETFLOATV lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(LPALGETFLOATV.class, "invoke", LPALGETFLOATV.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(ILPALGETFLOATV.class, "invoke", LPALGETFLOATV.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull LPALGETFLOATV lambda) {
+        static MemorySegment ofNative(@NotNull ILPALGETFLOATV lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull LPALGETFLOATV lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull ILPALGETFLOATV lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), LPALGETFLOATV, arena);
         }
     }
 
     @FunctionalInterface
-    public interface LPALGETFLOATVDIRECT {
+    public interface ILPALGETFLOATVDIRECT {
         void invoke(
-            ALCcontext p0,
+            @NativeType("ALCcontext") MemorySegment p0,
             @NativeType("ALenum") int p1,
             @Pointer(comment="void*") @NotNull MemorySegment p2
         );
 
-        static MethodHandle of(@NotNull LPALGETFLOATVDIRECT lambda) {
+        static MethodHandle of(@NotNull ILPALGETFLOATVDIRECT lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(LPALGETFLOATVDIRECT.class, "invoke", LPALGETFLOATVDIRECT.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(ILPALGETFLOATVDIRECT.class, "invoke", LPALGETFLOATVDIRECT.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull LPALGETFLOATVDIRECT lambda) {
+        static MemorySegment ofNative(@NotNull ILPALGETFLOATVDIRECT lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull LPALGETFLOATVDIRECT lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull ILPALGETFLOATVDIRECT lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), LPALGETFLOATVDIRECT, arena);
         }
     }
 
     @FunctionalInterface
-    public interface LPALGETINTEGER {
+    public interface ILPALGETINTEGER {
         @NativeType("ALint") int invoke(
             @NativeType("ALenum") int p0
         );
 
-        static MethodHandle of(@NotNull LPALGETINTEGER lambda) {
+        static MethodHandle of(@NotNull ILPALGETINTEGER lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(LPALGETINTEGER.class, "invoke", LPALGETINTEGER.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(ILPALGETINTEGER.class, "invoke", LPALGETINTEGER.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull LPALGETINTEGER lambda) {
+        static MemorySegment ofNative(@NotNull ILPALGETINTEGER lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull LPALGETINTEGER lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull ILPALGETINTEGER lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), LPALGETINTEGER, arena);
         }
     }
 
     @FunctionalInterface
-    public interface LPALGETINTEGERDIRECT {
+    public interface ILPALGETINTEGERDIRECT {
         @NativeType("ALint") int invoke(
-            ALCcontext p0,
+            @NativeType("ALCcontext") MemorySegment p0,
             @NativeType("ALenum") int p1
         );
 
-        static MethodHandle of(@NotNull LPALGETINTEGERDIRECT lambda) {
+        static MethodHandle of(@NotNull ILPALGETINTEGERDIRECT lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(LPALGETINTEGERDIRECT.class, "invoke", LPALGETINTEGERDIRECT.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(ILPALGETINTEGERDIRECT.class, "invoke", LPALGETINTEGERDIRECT.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull LPALGETINTEGERDIRECT lambda) {
+        static MemorySegment ofNative(@NotNull ILPALGETINTEGERDIRECT lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull LPALGETINTEGERDIRECT lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull ILPALGETINTEGERDIRECT lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), LPALGETINTEGERDIRECT, arena);
         }
     }
 
     @FunctionalInterface
-    public interface LPALGETINTEGERV {
+    public interface ILPALGETINTEGERV {
         void invoke(
             @NativeType("ALenum") int p0,
             @Pointer(comment="void*") @NotNull MemorySegment p1
         );
 
-        static MethodHandle of(@NotNull LPALGETINTEGERV lambda) {
+        static MethodHandle of(@NotNull ILPALGETINTEGERV lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(LPALGETINTEGERV.class, "invoke", LPALGETINTEGERV.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(ILPALGETINTEGERV.class, "invoke", LPALGETINTEGERV.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull LPALGETINTEGERV lambda) {
+        static MemorySegment ofNative(@NotNull ILPALGETINTEGERV lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull LPALGETINTEGERV lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull ILPALGETINTEGERV lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), LPALGETINTEGERV, arena);
         }
     }
 
     @FunctionalInterface
-    public interface LPALGETINTEGERVDIRECT {
+    public interface ILPALGETINTEGERVDIRECT {
         void invoke(
-            ALCcontext p0,
+            @NativeType("ALCcontext") MemorySegment p0,
             @NativeType("ALenum") int p1,
             @Pointer(comment="void*") @NotNull MemorySegment p2
         );
 
-        static MethodHandle of(@NotNull LPALGETINTEGERVDIRECT lambda) {
+        static MethodHandle of(@NotNull ILPALGETINTEGERVDIRECT lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(LPALGETINTEGERVDIRECT.class, "invoke", LPALGETINTEGERVDIRECT.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(ILPALGETINTEGERVDIRECT.class, "invoke", LPALGETINTEGERVDIRECT.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull LPALGETINTEGERVDIRECT lambda) {
+        static MemorySegment ofNative(@NotNull ILPALGETINTEGERVDIRECT lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull LPALGETINTEGERVDIRECT lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull ILPALGETINTEGERVDIRECT lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), LPALGETINTEGERVDIRECT, arena);
         }
     }
 
     @FunctionalInterface
-    public interface LPALGETLISTENER3F {
+    public interface ILPALGETLISTENER3F {
         void invoke(
             @NativeType("ALenum") int p0,
             @Pointer(comment="void*") @NotNull MemorySegment p1,
@@ -7060,54 +7060,54 @@ public final class ALFunctionTypes {
             @Pointer(comment="void*") @NotNull MemorySegment p3
         );
 
-        static MethodHandle of(@NotNull LPALGETLISTENER3F lambda) {
+        static MethodHandle of(@NotNull ILPALGETLISTENER3F lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(LPALGETLISTENER3F.class, "invoke", LPALGETLISTENER3F.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(ILPALGETLISTENER3F.class, "invoke", LPALGETLISTENER3F.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull LPALGETLISTENER3F lambda) {
+        static MemorySegment ofNative(@NotNull ILPALGETLISTENER3F lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull LPALGETLISTENER3F lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull ILPALGETLISTENER3F lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), LPALGETLISTENER3F, arena);
         }
     }
 
     @FunctionalInterface
-    public interface LPALGETLISTENER3FDIRECT {
+    public interface ILPALGETLISTENER3FDIRECT {
         void invoke(
-            ALCcontext p0,
+            @NativeType("ALCcontext") MemorySegment p0,
             @NativeType("ALenum") int p1,
             @Pointer(comment="void*") @NotNull MemorySegment p2,
             @Pointer(comment="void*") @NotNull MemorySegment p3,
             @Pointer(comment="void*") @NotNull MemorySegment p4
         );
 
-        static MethodHandle of(@NotNull LPALGETLISTENER3FDIRECT lambda) {
+        static MethodHandle of(@NotNull ILPALGETLISTENER3FDIRECT lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(LPALGETLISTENER3FDIRECT.class, "invoke", LPALGETLISTENER3FDIRECT.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(ILPALGETLISTENER3FDIRECT.class, "invoke", LPALGETLISTENER3FDIRECT.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull LPALGETLISTENER3FDIRECT lambda) {
+        static MemorySegment ofNative(@NotNull ILPALGETLISTENER3FDIRECT lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull LPALGETLISTENER3FDIRECT lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull ILPALGETLISTENER3FDIRECT lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), LPALGETLISTENER3FDIRECT, arena);
         }
     }
 
     @FunctionalInterface
-    public interface LPALGETLISTENER3I {
+    public interface ILPALGETLISTENER3I {
         void invoke(
             @NativeType("ALenum") int p0,
             @Pointer(comment="void*") @NotNull MemorySegment p1,
@@ -7115,260 +7115,260 @@ public final class ALFunctionTypes {
             @Pointer(comment="void*") @NotNull MemorySegment p3
         );
 
-        static MethodHandle of(@NotNull LPALGETLISTENER3I lambda) {
+        static MethodHandle of(@NotNull ILPALGETLISTENER3I lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(LPALGETLISTENER3I.class, "invoke", LPALGETLISTENER3I.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(ILPALGETLISTENER3I.class, "invoke", LPALGETLISTENER3I.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull LPALGETLISTENER3I lambda) {
+        static MemorySegment ofNative(@NotNull ILPALGETLISTENER3I lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull LPALGETLISTENER3I lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull ILPALGETLISTENER3I lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), LPALGETLISTENER3I, arena);
         }
     }
 
     @FunctionalInterface
-    public interface LPALGETLISTENER3IDIRECT {
+    public interface ILPALGETLISTENER3IDIRECT {
         void invoke(
-            ALCcontext p0,
+            @NativeType("ALCcontext") MemorySegment p0,
             @NativeType("ALenum") int p1,
             @Pointer(comment="void*") @NotNull MemorySegment p2,
             @Pointer(comment="void*") @NotNull MemorySegment p3,
             @Pointer(comment="void*") @NotNull MemorySegment p4
         );
 
-        static MethodHandle of(@NotNull LPALGETLISTENER3IDIRECT lambda) {
+        static MethodHandle of(@NotNull ILPALGETLISTENER3IDIRECT lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(LPALGETLISTENER3IDIRECT.class, "invoke", LPALGETLISTENER3IDIRECT.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(ILPALGETLISTENER3IDIRECT.class, "invoke", LPALGETLISTENER3IDIRECT.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull LPALGETLISTENER3IDIRECT lambda) {
+        static MemorySegment ofNative(@NotNull ILPALGETLISTENER3IDIRECT lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull LPALGETLISTENER3IDIRECT lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull ILPALGETLISTENER3IDIRECT lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), LPALGETLISTENER3IDIRECT, arena);
         }
     }
 
     @FunctionalInterface
-    public interface LPALGETLISTENERF {
+    public interface ILPALGETLISTENERF {
         void invoke(
             @NativeType("ALenum") int p0,
             @Pointer(comment="void*") @NotNull MemorySegment p1
         );
 
-        static MethodHandle of(@NotNull LPALGETLISTENERF lambda) {
+        static MethodHandle of(@NotNull ILPALGETLISTENERF lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(LPALGETLISTENERF.class, "invoke", LPALGETLISTENERF.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(ILPALGETLISTENERF.class, "invoke", LPALGETLISTENERF.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull LPALGETLISTENERF lambda) {
+        static MemorySegment ofNative(@NotNull ILPALGETLISTENERF lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull LPALGETLISTENERF lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull ILPALGETLISTENERF lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), LPALGETLISTENERF, arena);
         }
     }
 
     @FunctionalInterface
-    public interface LPALGETLISTENERFDIRECT {
+    public interface ILPALGETLISTENERFDIRECT {
         void invoke(
-            ALCcontext p0,
+            @NativeType("ALCcontext") MemorySegment p0,
             @NativeType("ALenum") int p1,
             @Pointer(comment="void*") @NotNull MemorySegment p2
         );
 
-        static MethodHandle of(@NotNull LPALGETLISTENERFDIRECT lambda) {
+        static MethodHandle of(@NotNull ILPALGETLISTENERFDIRECT lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(LPALGETLISTENERFDIRECT.class, "invoke", LPALGETLISTENERFDIRECT.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(ILPALGETLISTENERFDIRECT.class, "invoke", LPALGETLISTENERFDIRECT.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull LPALGETLISTENERFDIRECT lambda) {
+        static MemorySegment ofNative(@NotNull ILPALGETLISTENERFDIRECT lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull LPALGETLISTENERFDIRECT lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull ILPALGETLISTENERFDIRECT lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), LPALGETLISTENERFDIRECT, arena);
         }
     }
 
     @FunctionalInterface
-    public interface LPALGETLISTENERFV {
+    public interface ILPALGETLISTENERFV {
         void invoke(
             @NativeType("ALenum") int p0,
             @Pointer(comment="void*") @NotNull MemorySegment p1
         );
 
-        static MethodHandle of(@NotNull LPALGETLISTENERFV lambda) {
+        static MethodHandle of(@NotNull ILPALGETLISTENERFV lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(LPALGETLISTENERFV.class, "invoke", LPALGETLISTENERFV.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(ILPALGETLISTENERFV.class, "invoke", LPALGETLISTENERFV.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull LPALGETLISTENERFV lambda) {
+        static MemorySegment ofNative(@NotNull ILPALGETLISTENERFV lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull LPALGETLISTENERFV lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull ILPALGETLISTENERFV lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), LPALGETLISTENERFV, arena);
         }
     }
 
     @FunctionalInterface
-    public interface LPALGETLISTENERFVDIRECT {
+    public interface ILPALGETLISTENERFVDIRECT {
         void invoke(
-            ALCcontext p0,
+            @NativeType("ALCcontext") MemorySegment p0,
             @NativeType("ALenum") int p1,
             @Pointer(comment="void*") @NotNull MemorySegment p2
         );
 
-        static MethodHandle of(@NotNull LPALGETLISTENERFVDIRECT lambda) {
+        static MethodHandle of(@NotNull ILPALGETLISTENERFVDIRECT lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(LPALGETLISTENERFVDIRECT.class, "invoke", LPALGETLISTENERFVDIRECT.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(ILPALGETLISTENERFVDIRECT.class, "invoke", LPALGETLISTENERFVDIRECT.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull LPALGETLISTENERFVDIRECT lambda) {
+        static MemorySegment ofNative(@NotNull ILPALGETLISTENERFVDIRECT lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull LPALGETLISTENERFVDIRECT lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull ILPALGETLISTENERFVDIRECT lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), LPALGETLISTENERFVDIRECT, arena);
         }
     }
 
     @FunctionalInterface
-    public interface LPALGETLISTENERI {
+    public interface ILPALGETLISTENERI {
         void invoke(
             @NativeType("ALenum") int p0,
             @Pointer(comment="void*") @NotNull MemorySegment p1
         );
 
-        static MethodHandle of(@NotNull LPALGETLISTENERI lambda) {
+        static MethodHandle of(@NotNull ILPALGETLISTENERI lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(LPALGETLISTENERI.class, "invoke", LPALGETLISTENERI.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(ILPALGETLISTENERI.class, "invoke", LPALGETLISTENERI.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull LPALGETLISTENERI lambda) {
+        static MemorySegment ofNative(@NotNull ILPALGETLISTENERI lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull LPALGETLISTENERI lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull ILPALGETLISTENERI lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), LPALGETLISTENERI, arena);
         }
     }
 
     @FunctionalInterface
-    public interface LPALGETLISTENERIDIRECT {
+    public interface ILPALGETLISTENERIDIRECT {
         void invoke(
-            ALCcontext p0,
+            @NativeType("ALCcontext") MemorySegment p0,
             @NativeType("ALenum") int p1,
             @Pointer(comment="void*") @NotNull MemorySegment p2
         );
 
-        static MethodHandle of(@NotNull LPALGETLISTENERIDIRECT lambda) {
+        static MethodHandle of(@NotNull ILPALGETLISTENERIDIRECT lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(LPALGETLISTENERIDIRECT.class, "invoke", LPALGETLISTENERIDIRECT.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(ILPALGETLISTENERIDIRECT.class, "invoke", LPALGETLISTENERIDIRECT.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull LPALGETLISTENERIDIRECT lambda) {
+        static MemorySegment ofNative(@NotNull ILPALGETLISTENERIDIRECT lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull LPALGETLISTENERIDIRECT lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull ILPALGETLISTENERIDIRECT lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), LPALGETLISTENERIDIRECT, arena);
         }
     }
 
     @FunctionalInterface
-    public interface LPALGETLISTENERIV {
+    public interface ILPALGETLISTENERIV {
         void invoke(
             @NativeType("ALenum") int p0,
             @Pointer(comment="void*") @NotNull MemorySegment p1
         );
 
-        static MethodHandle of(@NotNull LPALGETLISTENERIV lambda) {
+        static MethodHandle of(@NotNull ILPALGETLISTENERIV lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(LPALGETLISTENERIV.class, "invoke", LPALGETLISTENERIV.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(ILPALGETLISTENERIV.class, "invoke", LPALGETLISTENERIV.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull LPALGETLISTENERIV lambda) {
+        static MemorySegment ofNative(@NotNull ILPALGETLISTENERIV lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull LPALGETLISTENERIV lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull ILPALGETLISTENERIV lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), LPALGETLISTENERIV, arena);
         }
     }
 
     @FunctionalInterface
-    public interface LPALGETLISTENERIVDIRECT {
+    public interface ILPALGETLISTENERIVDIRECT {
         void invoke(
-            ALCcontext p0,
+            @NativeType("ALCcontext") MemorySegment p0,
             @NativeType("ALenum") int p1,
             @Pointer(comment="void*") @NotNull MemorySegment p2
         );
 
-        static MethodHandle of(@NotNull LPALGETLISTENERIVDIRECT lambda) {
+        static MethodHandle of(@NotNull ILPALGETLISTENERIVDIRECT lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(LPALGETLISTENERIVDIRECT.class, "invoke", LPALGETLISTENERIVDIRECT.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(ILPALGETLISTENERIVDIRECT.class, "invoke", LPALGETLISTENERIVDIRECT.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull LPALGETLISTENERIVDIRECT lambda) {
+        static MemorySegment ofNative(@NotNull ILPALGETLISTENERIVDIRECT lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull LPALGETLISTENERIVDIRECT lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull ILPALGETLISTENERIVDIRECT lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), LPALGETLISTENERIVDIRECT, arena);
         }
     }
 
     @FunctionalInterface
-    public interface LPALGETOBJECTLABELDIRECTEXT {
+    public interface ILPALGETOBJECTLABELDIRECTEXT {
         void invoke(
-            ALCcontext p0,
+            @NativeType("ALCcontext") MemorySegment p0,
             @NativeType("ALenum") int p1,
             @NativeType("ALuint") int p2,
             @NativeType("ALsizei") int p3,
@@ -7376,26 +7376,26 @@ public final class ALFunctionTypes {
             @Pointer(comment="void*") @NotNull MemorySegment p5
         );
 
-        static MethodHandle of(@NotNull LPALGETOBJECTLABELDIRECTEXT lambda) {
+        static MethodHandle of(@NotNull ILPALGETOBJECTLABELDIRECTEXT lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(LPALGETOBJECTLABELDIRECTEXT.class, "invoke", LPALGETOBJECTLABELDIRECTEXT.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(ILPALGETOBJECTLABELDIRECTEXT.class, "invoke", LPALGETOBJECTLABELDIRECTEXT.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull LPALGETOBJECTLABELDIRECTEXT lambda) {
+        static MemorySegment ofNative(@NotNull ILPALGETOBJECTLABELDIRECTEXT lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull LPALGETOBJECTLABELDIRECTEXT lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull ILPALGETOBJECTLABELDIRECTEXT lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), LPALGETOBJECTLABELDIRECTEXT, arena);
         }
     }
 
     @FunctionalInterface
-    public interface LPALGETOBJECTLABELEXT {
+    public interface ILPALGETOBJECTLABELEXT {
         void invoke(
             @NativeType("ALenum") int p0,
             @NativeType("ALuint") int p1,
@@ -7404,277 +7404,277 @@ public final class ALFunctionTypes {
             @Pointer(comment="void*") @NotNull MemorySegment p4
         );
 
-        static MethodHandle of(@NotNull LPALGETOBJECTLABELEXT lambda) {
+        static MethodHandle of(@NotNull ILPALGETOBJECTLABELEXT lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(LPALGETOBJECTLABELEXT.class, "invoke", LPALGETOBJECTLABELEXT.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(ILPALGETOBJECTLABELEXT.class, "invoke", LPALGETOBJECTLABELEXT.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull LPALGETOBJECTLABELEXT lambda) {
+        static MemorySegment ofNative(@NotNull ILPALGETOBJECTLABELEXT lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull LPALGETOBJECTLABELEXT lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull ILPALGETOBJECTLABELEXT lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), LPALGETOBJECTLABELEXT, arena);
         }
     }
 
     @FunctionalInterface
-    public interface LPALGETPOINTERDIRECTEXT {
+    public interface ILPALGETPOINTERDIRECTEXT {
         @Pointer(comment="void*") @NotNull MemorySegment invoke(
-            ALCcontext p0,
+            @NativeType("ALCcontext") MemorySegment p0,
             @NativeType("ALenum") int p1
         );
 
-        static MethodHandle of(@NotNull LPALGETPOINTERDIRECTEXT lambda) {
+        static MethodHandle of(@NotNull ILPALGETPOINTERDIRECTEXT lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(LPALGETPOINTERDIRECTEXT.class, "invoke", LPALGETPOINTERDIRECTEXT.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(ILPALGETPOINTERDIRECTEXT.class, "invoke", LPALGETPOINTERDIRECTEXT.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull LPALGETPOINTERDIRECTEXT lambda) {
+        static MemorySegment ofNative(@NotNull ILPALGETPOINTERDIRECTEXT lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull LPALGETPOINTERDIRECTEXT lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull ILPALGETPOINTERDIRECTEXT lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), LPALGETPOINTERDIRECTEXT, arena);
         }
     }
 
     @FunctionalInterface
-    public interface LPALGETPOINTERDIRECTSOFT {
+    public interface ILPALGETPOINTERDIRECTSOFT {
         @Pointer(comment="void*") @NotNull MemorySegment invoke(
-            ALCcontext p0,
+            @NativeType("ALCcontext") MemorySegment p0,
             @NativeType("ALenum") int p1
         );
 
-        static MethodHandle of(@NotNull LPALGETPOINTERDIRECTSOFT lambda) {
+        static MethodHandle of(@NotNull ILPALGETPOINTERDIRECTSOFT lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(LPALGETPOINTERDIRECTSOFT.class, "invoke", LPALGETPOINTERDIRECTSOFT.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(ILPALGETPOINTERDIRECTSOFT.class, "invoke", LPALGETPOINTERDIRECTSOFT.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull LPALGETPOINTERDIRECTSOFT lambda) {
+        static MemorySegment ofNative(@NotNull ILPALGETPOINTERDIRECTSOFT lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull LPALGETPOINTERDIRECTSOFT lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull ILPALGETPOINTERDIRECTSOFT lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), LPALGETPOINTERDIRECTSOFT, arena);
         }
     }
 
     @FunctionalInterface
-    public interface LPALGETPOINTEREXT {
+    public interface ILPALGETPOINTEREXT {
         @Pointer(comment="void*") @NotNull MemorySegment invoke(
             @NativeType("ALenum") int p0
         );
 
-        static MethodHandle of(@NotNull LPALGETPOINTEREXT lambda) {
+        static MethodHandle of(@NotNull ILPALGETPOINTEREXT lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(LPALGETPOINTEREXT.class, "invoke", LPALGETPOINTEREXT.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(ILPALGETPOINTEREXT.class, "invoke", LPALGETPOINTEREXT.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull LPALGETPOINTEREXT lambda) {
+        static MemorySegment ofNative(@NotNull ILPALGETPOINTEREXT lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull LPALGETPOINTEREXT lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull ILPALGETPOINTEREXT lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), LPALGETPOINTEREXT, arena);
         }
     }
 
     @FunctionalInterface
-    public interface LPALGETPOINTERSOFT {
+    public interface ILPALGETPOINTERSOFT {
         @Pointer(comment="void*") @NotNull MemorySegment invoke(
             @NativeType("ALenum") int p0
         );
 
-        static MethodHandle of(@NotNull LPALGETPOINTERSOFT lambda) {
+        static MethodHandle of(@NotNull ILPALGETPOINTERSOFT lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(LPALGETPOINTERSOFT.class, "invoke", LPALGETPOINTERSOFT.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(ILPALGETPOINTERSOFT.class, "invoke", LPALGETPOINTERSOFT.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull LPALGETPOINTERSOFT lambda) {
+        static MemorySegment ofNative(@NotNull ILPALGETPOINTERSOFT lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull LPALGETPOINTERSOFT lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull ILPALGETPOINTERSOFT lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), LPALGETPOINTERSOFT, arena);
         }
     }
 
     @FunctionalInterface
-    public interface LPALGETPOINTERVDIRECTEXT {
+    public interface ILPALGETPOINTERVDIRECTEXT {
         void invoke(
-            ALCcontext p0,
+            @NativeType("ALCcontext") MemorySegment p0,
             @NativeType("ALenum") int p1,
             @Pointer(comment="void*") @NotNull MemorySegment p2
         );
 
-        static MethodHandle of(@NotNull LPALGETPOINTERVDIRECTEXT lambda) {
+        static MethodHandle of(@NotNull ILPALGETPOINTERVDIRECTEXT lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(LPALGETPOINTERVDIRECTEXT.class, "invoke", LPALGETPOINTERVDIRECTEXT.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(ILPALGETPOINTERVDIRECTEXT.class, "invoke", LPALGETPOINTERVDIRECTEXT.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull LPALGETPOINTERVDIRECTEXT lambda) {
+        static MemorySegment ofNative(@NotNull ILPALGETPOINTERVDIRECTEXT lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull LPALGETPOINTERVDIRECTEXT lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull ILPALGETPOINTERVDIRECTEXT lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), LPALGETPOINTERVDIRECTEXT, arena);
         }
     }
 
     @FunctionalInterface
-    public interface LPALGETPOINTERVDIRECTSOFT {
+    public interface ILPALGETPOINTERVDIRECTSOFT {
         void invoke(
-            ALCcontext p0,
+            @NativeType("ALCcontext") MemorySegment p0,
             @NativeType("ALenum") int p1,
             @Pointer(comment="void*") @NotNull MemorySegment p2
         );
 
-        static MethodHandle of(@NotNull LPALGETPOINTERVDIRECTSOFT lambda) {
+        static MethodHandle of(@NotNull ILPALGETPOINTERVDIRECTSOFT lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(LPALGETPOINTERVDIRECTSOFT.class, "invoke", LPALGETPOINTERVDIRECTSOFT.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(ILPALGETPOINTERVDIRECTSOFT.class, "invoke", LPALGETPOINTERVDIRECTSOFT.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull LPALGETPOINTERVDIRECTSOFT lambda) {
+        static MemorySegment ofNative(@NotNull ILPALGETPOINTERVDIRECTSOFT lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull LPALGETPOINTERVDIRECTSOFT lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull ILPALGETPOINTERVDIRECTSOFT lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), LPALGETPOINTERVDIRECTSOFT, arena);
         }
     }
 
     @FunctionalInterface
-    public interface LPALGETPOINTERVEXT {
+    public interface ILPALGETPOINTERVEXT {
         void invoke(
             @NativeType("ALenum") int p0,
             @Pointer(comment="void*") @NotNull MemorySegment p1
         );
 
-        static MethodHandle of(@NotNull LPALGETPOINTERVEXT lambda) {
+        static MethodHandle of(@NotNull ILPALGETPOINTERVEXT lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(LPALGETPOINTERVEXT.class, "invoke", LPALGETPOINTERVEXT.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(ILPALGETPOINTERVEXT.class, "invoke", LPALGETPOINTERVEXT.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull LPALGETPOINTERVEXT lambda) {
+        static MemorySegment ofNative(@NotNull ILPALGETPOINTERVEXT lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull LPALGETPOINTERVEXT lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull ILPALGETPOINTERVEXT lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), LPALGETPOINTERVEXT, arena);
         }
     }
 
     @FunctionalInterface
-    public interface LPALGETPOINTERVSOFT {
+    public interface ILPALGETPOINTERVSOFT {
         void invoke(
             @NativeType("ALenum") int p0,
             @Pointer(comment="void*") @NotNull MemorySegment p1
         );
 
-        static MethodHandle of(@NotNull LPALGETPOINTERVSOFT lambda) {
+        static MethodHandle of(@NotNull ILPALGETPOINTERVSOFT lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(LPALGETPOINTERVSOFT.class, "invoke", LPALGETPOINTERVSOFT.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(ILPALGETPOINTERVSOFT.class, "invoke", LPALGETPOINTERVSOFT.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull LPALGETPOINTERVSOFT lambda) {
+        static MemorySegment ofNative(@NotNull ILPALGETPOINTERVSOFT lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull LPALGETPOINTERVSOFT lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull ILPALGETPOINTERVSOFT lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), LPALGETPOINTERVSOFT, arena);
         }
     }
 
     @FunctionalInterface
-    public interface LPALGETPROCADDRESS {
+    public interface ILPALGETPROCADDRESS {
         @Pointer(comment="void*") @NotNull MemorySegment invoke(
             @Pointer(comment="void*") @NotNull MemorySegment p0
         );
 
-        static MethodHandle of(@NotNull LPALGETPROCADDRESS lambda) {
+        static MethodHandle of(@NotNull ILPALGETPROCADDRESS lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(LPALGETPROCADDRESS.class, "invoke", LPALGETPROCADDRESS.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(ILPALGETPROCADDRESS.class, "invoke", LPALGETPROCADDRESS.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull LPALGETPROCADDRESS lambda) {
+        static MemorySegment ofNative(@NotNull ILPALGETPROCADDRESS lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull LPALGETPROCADDRESS lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull ILPALGETPROCADDRESS lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), LPALGETPROCADDRESS, arena);
         }
     }
 
     @FunctionalInterface
-    public interface LPALGETPROCADDRESSDIRECT {
+    public interface ILPALGETPROCADDRESSDIRECT {
         @Pointer(comment="void*") @NotNull MemorySegment invoke(
-            ALCcontext p0,
+            @NativeType("ALCcontext") MemorySegment p0,
             @Pointer(comment="void*") @NotNull MemorySegment p1
         );
 
-        static MethodHandle of(@NotNull LPALGETPROCADDRESSDIRECT lambda) {
+        static MethodHandle of(@NotNull ILPALGETPROCADDRESSDIRECT lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(LPALGETPROCADDRESSDIRECT.class, "invoke", LPALGETPROCADDRESSDIRECT.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(ILPALGETPROCADDRESSDIRECT.class, "invoke", LPALGETPROCADDRESSDIRECT.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull LPALGETPROCADDRESSDIRECT lambda) {
+        static MemorySegment ofNative(@NotNull ILPALGETPROCADDRESSDIRECT lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull LPALGETPROCADDRESSDIRECT lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull ILPALGETPROCADDRESSDIRECT lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), LPALGETPROCADDRESSDIRECT, arena);
         }
     }
 
     @FunctionalInterface
-    public interface LPALGETSOURCE3DDIRECTSOFT {
+    public interface ILPALGETSOURCE3DDIRECTSOFT {
         void invoke(
-            ALCcontext p0,
+            @NativeType("ALCcontext") MemorySegment p0,
             @NativeType("ALuint") int p1,
             @NativeType("ALenum") int p2,
             @Pointer(comment="void*") @NotNull MemorySegment p3,
@@ -7682,26 +7682,26 @@ public final class ALFunctionTypes {
             @Pointer(comment="void*") @NotNull MemorySegment p5
         );
 
-        static MethodHandle of(@NotNull LPALGETSOURCE3DDIRECTSOFT lambda) {
+        static MethodHandle of(@NotNull ILPALGETSOURCE3DDIRECTSOFT lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(LPALGETSOURCE3DDIRECTSOFT.class, "invoke", LPALGETSOURCE3DDIRECTSOFT.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(ILPALGETSOURCE3DDIRECTSOFT.class, "invoke", LPALGETSOURCE3DDIRECTSOFT.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull LPALGETSOURCE3DDIRECTSOFT lambda) {
+        static MemorySegment ofNative(@NotNull ILPALGETSOURCE3DDIRECTSOFT lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull LPALGETSOURCE3DDIRECTSOFT lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull ILPALGETSOURCE3DDIRECTSOFT lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), LPALGETSOURCE3DDIRECTSOFT, arena);
         }
     }
 
     @FunctionalInterface
-    public interface LPALGETSOURCE3DSOFT {
+    public interface ILPALGETSOURCE3DSOFT {
         void invoke(
             @NativeType("ALuint") int p0,
             @NativeType("ALenum") int p1,
@@ -7710,26 +7710,26 @@ public final class ALFunctionTypes {
             @Pointer(comment="void*") @NotNull MemorySegment p4
         );
 
-        static MethodHandle of(@NotNull LPALGETSOURCE3DSOFT lambda) {
+        static MethodHandle of(@NotNull ILPALGETSOURCE3DSOFT lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(LPALGETSOURCE3DSOFT.class, "invoke", LPALGETSOURCE3DSOFT.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(ILPALGETSOURCE3DSOFT.class, "invoke", LPALGETSOURCE3DSOFT.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull LPALGETSOURCE3DSOFT lambda) {
+        static MemorySegment ofNative(@NotNull ILPALGETSOURCE3DSOFT lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull LPALGETSOURCE3DSOFT lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull ILPALGETSOURCE3DSOFT lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), LPALGETSOURCE3DSOFT, arena);
         }
     }
 
     @FunctionalInterface
-    public interface LPALGETSOURCE3F {
+    public interface ILPALGETSOURCE3F {
         void invoke(
             @NativeType("ALuint") int p0,
             @NativeType("ALenum") int p1,
@@ -7738,28 +7738,28 @@ public final class ALFunctionTypes {
             @Pointer(comment="void*") @NotNull MemorySegment p4
         );
 
-        static MethodHandle of(@NotNull LPALGETSOURCE3F lambda) {
+        static MethodHandle of(@NotNull ILPALGETSOURCE3F lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(LPALGETSOURCE3F.class, "invoke", LPALGETSOURCE3F.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(ILPALGETSOURCE3F.class, "invoke", LPALGETSOURCE3F.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull LPALGETSOURCE3F lambda) {
+        static MemorySegment ofNative(@NotNull ILPALGETSOURCE3F lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull LPALGETSOURCE3F lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull ILPALGETSOURCE3F lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), LPALGETSOURCE3F, arena);
         }
     }
 
     @FunctionalInterface
-    public interface LPALGETSOURCE3FDIRECT {
+    public interface ILPALGETSOURCE3FDIRECT {
         void invoke(
-            ALCcontext p0,
+            @NativeType("ALCcontext") MemorySegment p0,
             @NativeType("ALuint") int p1,
             @NativeType("ALenum") int p2,
             @Pointer(comment="void*") @NotNull MemorySegment p3,
@@ -7767,26 +7767,26 @@ public final class ALFunctionTypes {
             @Pointer(comment="void*") @NotNull MemorySegment p5
         );
 
-        static MethodHandle of(@NotNull LPALGETSOURCE3FDIRECT lambda) {
+        static MethodHandle of(@NotNull ILPALGETSOURCE3FDIRECT lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(LPALGETSOURCE3FDIRECT.class, "invoke", LPALGETSOURCE3FDIRECT.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(ILPALGETSOURCE3FDIRECT.class, "invoke", LPALGETSOURCE3FDIRECT.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull LPALGETSOURCE3FDIRECT lambda) {
+        static MemorySegment ofNative(@NotNull ILPALGETSOURCE3FDIRECT lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull LPALGETSOURCE3FDIRECT lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull ILPALGETSOURCE3FDIRECT lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), LPALGETSOURCE3FDIRECT, arena);
         }
     }
 
     @FunctionalInterface
-    public interface LPALGETSOURCE3I {
+    public interface ILPALGETSOURCE3I {
         void invoke(
             @NativeType("ALuint") int p0,
             @NativeType("ALenum") int p1,
@@ -7795,28 +7795,28 @@ public final class ALFunctionTypes {
             @Pointer(comment="void*") @NotNull MemorySegment p4
         );
 
-        static MethodHandle of(@NotNull LPALGETSOURCE3I lambda) {
+        static MethodHandle of(@NotNull ILPALGETSOURCE3I lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(LPALGETSOURCE3I.class, "invoke", LPALGETSOURCE3I.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(ILPALGETSOURCE3I.class, "invoke", LPALGETSOURCE3I.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull LPALGETSOURCE3I lambda) {
+        static MemorySegment ofNative(@NotNull ILPALGETSOURCE3I lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull LPALGETSOURCE3I lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull ILPALGETSOURCE3I lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), LPALGETSOURCE3I, arena);
         }
     }
 
     @FunctionalInterface
-    public interface LPALGETSOURCE3I64DIRECTSOFT {
+    public interface ILPALGETSOURCE3I64DIRECTSOFT {
         void invoke(
-            ALCcontext p0,
+            @NativeType("ALCcontext") MemorySegment p0,
             @NativeType("ALuint") int p1,
             @NativeType("ALenum") int p2,
             @Pointer(comment="void*") @NotNull MemorySegment p3,
@@ -7824,26 +7824,26 @@ public final class ALFunctionTypes {
             @Pointer(comment="void*") @NotNull MemorySegment p5
         );
 
-        static MethodHandle of(@NotNull LPALGETSOURCE3I64DIRECTSOFT lambda) {
+        static MethodHandle of(@NotNull ILPALGETSOURCE3I64DIRECTSOFT lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(LPALGETSOURCE3I64DIRECTSOFT.class, "invoke", LPALGETSOURCE3I64DIRECTSOFT.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(ILPALGETSOURCE3I64DIRECTSOFT.class, "invoke", LPALGETSOURCE3I64DIRECTSOFT.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull LPALGETSOURCE3I64DIRECTSOFT lambda) {
+        static MemorySegment ofNative(@NotNull ILPALGETSOURCE3I64DIRECTSOFT lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull LPALGETSOURCE3I64DIRECTSOFT lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull ILPALGETSOURCE3I64DIRECTSOFT lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), LPALGETSOURCE3I64DIRECTSOFT, arena);
         }
     }
 
     @FunctionalInterface
-    public interface LPALGETSOURCE3I64SOFT {
+    public interface ILPALGETSOURCE3I64SOFT {
         void invoke(
             @NativeType("ALuint") int p0,
             @NativeType("ALenum") int p1,
@@ -7852,28 +7852,28 @@ public final class ALFunctionTypes {
             @Pointer(comment="void*") @NotNull MemorySegment p4
         );
 
-        static MethodHandle of(@NotNull LPALGETSOURCE3I64SOFT lambda) {
+        static MethodHandle of(@NotNull ILPALGETSOURCE3I64SOFT lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(LPALGETSOURCE3I64SOFT.class, "invoke", LPALGETSOURCE3I64SOFT.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(ILPALGETSOURCE3I64SOFT.class, "invoke", LPALGETSOURCE3I64SOFT.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull LPALGETSOURCE3I64SOFT lambda) {
+        static MemorySegment ofNative(@NotNull ILPALGETSOURCE3I64SOFT lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull LPALGETSOURCE3I64SOFT lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull ILPALGETSOURCE3I64SOFT lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), LPALGETSOURCE3I64SOFT, arena);
         }
     }
 
     @FunctionalInterface
-    public interface LPALGETSOURCE3IDIRECT {
+    public interface ILPALGETSOURCE3IDIRECT {
         void invoke(
-            ALCcontext p0,
+            @NativeType("ALCcontext") MemorySegment p0,
             @NativeType("ALuint") int p1,
             @NativeType("ALenum") int p2,
             @Pointer(comment="void*") @NotNull MemorySegment p3,
@@ -7881,917 +7881,917 @@ public final class ALFunctionTypes {
             @Pointer(comment="void*") @NotNull MemorySegment p5
         );
 
-        static MethodHandle of(@NotNull LPALGETSOURCE3IDIRECT lambda) {
+        static MethodHandle of(@NotNull ILPALGETSOURCE3IDIRECT lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(LPALGETSOURCE3IDIRECT.class, "invoke", LPALGETSOURCE3IDIRECT.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(ILPALGETSOURCE3IDIRECT.class, "invoke", LPALGETSOURCE3IDIRECT.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull LPALGETSOURCE3IDIRECT lambda) {
+        static MemorySegment ofNative(@NotNull ILPALGETSOURCE3IDIRECT lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull LPALGETSOURCE3IDIRECT lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull ILPALGETSOURCE3IDIRECT lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), LPALGETSOURCE3IDIRECT, arena);
         }
     }
 
     @FunctionalInterface
-    public interface LPALGETSOURCEDDIRECTSOFT {
+    public interface ILPALGETSOURCEDDIRECTSOFT {
         void invoke(
-            ALCcontext p0,
+            @NativeType("ALCcontext") MemorySegment p0,
             @NativeType("ALuint") int p1,
             @NativeType("ALenum") int p2,
             @Pointer(comment="void*") @NotNull MemorySegment p3
         );
 
-        static MethodHandle of(@NotNull LPALGETSOURCEDDIRECTSOFT lambda) {
+        static MethodHandle of(@NotNull ILPALGETSOURCEDDIRECTSOFT lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(LPALGETSOURCEDDIRECTSOFT.class, "invoke", LPALGETSOURCEDDIRECTSOFT.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(ILPALGETSOURCEDDIRECTSOFT.class, "invoke", LPALGETSOURCEDDIRECTSOFT.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull LPALGETSOURCEDDIRECTSOFT lambda) {
+        static MemorySegment ofNative(@NotNull ILPALGETSOURCEDDIRECTSOFT lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull LPALGETSOURCEDDIRECTSOFT lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull ILPALGETSOURCEDDIRECTSOFT lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), LPALGETSOURCEDDIRECTSOFT, arena);
         }
     }
 
     @FunctionalInterface
-    public interface LPALGETSOURCEDSOFT {
+    public interface ILPALGETSOURCEDSOFT {
         void invoke(
             @NativeType("ALuint") int p0,
             @NativeType("ALenum") int p1,
             @Pointer(comment="void*") @NotNull MemorySegment p2
         );
 
-        static MethodHandle of(@NotNull LPALGETSOURCEDSOFT lambda) {
+        static MethodHandle of(@NotNull ILPALGETSOURCEDSOFT lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(LPALGETSOURCEDSOFT.class, "invoke", LPALGETSOURCEDSOFT.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(ILPALGETSOURCEDSOFT.class, "invoke", LPALGETSOURCEDSOFT.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull LPALGETSOURCEDSOFT lambda) {
+        static MemorySegment ofNative(@NotNull ILPALGETSOURCEDSOFT lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull LPALGETSOURCEDSOFT lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull ILPALGETSOURCEDSOFT lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), LPALGETSOURCEDSOFT, arena);
         }
     }
 
     @FunctionalInterface
-    public interface LPALGETSOURCEDVDIRECTSOFT {
+    public interface ILPALGETSOURCEDVDIRECTSOFT {
         void invoke(
-            ALCcontext p0,
+            @NativeType("ALCcontext") MemorySegment p0,
             @NativeType("ALuint") int p1,
             @NativeType("ALenum") int p2,
             @Pointer(comment="void*") @NotNull MemorySegment p3
         );
 
-        static MethodHandle of(@NotNull LPALGETSOURCEDVDIRECTSOFT lambda) {
+        static MethodHandle of(@NotNull ILPALGETSOURCEDVDIRECTSOFT lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(LPALGETSOURCEDVDIRECTSOFT.class, "invoke", LPALGETSOURCEDVDIRECTSOFT.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(ILPALGETSOURCEDVDIRECTSOFT.class, "invoke", LPALGETSOURCEDVDIRECTSOFT.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull LPALGETSOURCEDVDIRECTSOFT lambda) {
+        static MemorySegment ofNative(@NotNull ILPALGETSOURCEDVDIRECTSOFT lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull LPALGETSOURCEDVDIRECTSOFT lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull ILPALGETSOURCEDVDIRECTSOFT lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), LPALGETSOURCEDVDIRECTSOFT, arena);
         }
     }
 
     @FunctionalInterface
-    public interface LPALGETSOURCEDVSOFT {
+    public interface ILPALGETSOURCEDVSOFT {
         void invoke(
             @NativeType("ALuint") int p0,
             @NativeType("ALenum") int p1,
             @Pointer(comment="void*") @NotNull MemorySegment p2
         );
 
-        static MethodHandle of(@NotNull LPALGETSOURCEDVSOFT lambda) {
+        static MethodHandle of(@NotNull ILPALGETSOURCEDVSOFT lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(LPALGETSOURCEDVSOFT.class, "invoke", LPALGETSOURCEDVSOFT.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(ILPALGETSOURCEDVSOFT.class, "invoke", LPALGETSOURCEDVSOFT.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull LPALGETSOURCEDVSOFT lambda) {
+        static MemorySegment ofNative(@NotNull ILPALGETSOURCEDVSOFT lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull LPALGETSOURCEDVSOFT lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull ILPALGETSOURCEDVSOFT lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), LPALGETSOURCEDVSOFT, arena);
         }
     }
 
     @FunctionalInterface
-    public interface LPALGETSOURCEF {
+    public interface ILPALGETSOURCEF {
         void invoke(
             @NativeType("ALuint") int p0,
             @NativeType("ALenum") int p1,
             @Pointer(comment="void*") @NotNull MemorySegment p2
         );
 
-        static MethodHandle of(@NotNull LPALGETSOURCEF lambda) {
+        static MethodHandle of(@NotNull ILPALGETSOURCEF lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(LPALGETSOURCEF.class, "invoke", LPALGETSOURCEF.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(ILPALGETSOURCEF.class, "invoke", LPALGETSOURCEF.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull LPALGETSOURCEF lambda) {
+        static MemorySegment ofNative(@NotNull ILPALGETSOURCEF lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull LPALGETSOURCEF lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull ILPALGETSOURCEF lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), LPALGETSOURCEF, arena);
         }
     }
 
     @FunctionalInterface
-    public interface LPALGETSOURCEFDIRECT {
+    public interface ILPALGETSOURCEFDIRECT {
         void invoke(
-            ALCcontext p0,
+            @NativeType("ALCcontext") MemorySegment p0,
             @NativeType("ALuint") int p1,
             @NativeType("ALenum") int p2,
             @Pointer(comment="void*") @NotNull MemorySegment p3
         );
 
-        static MethodHandle of(@NotNull LPALGETSOURCEFDIRECT lambda) {
+        static MethodHandle of(@NotNull ILPALGETSOURCEFDIRECT lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(LPALGETSOURCEFDIRECT.class, "invoke", LPALGETSOURCEFDIRECT.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(ILPALGETSOURCEFDIRECT.class, "invoke", LPALGETSOURCEFDIRECT.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull LPALGETSOURCEFDIRECT lambda) {
+        static MemorySegment ofNative(@NotNull ILPALGETSOURCEFDIRECT lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull LPALGETSOURCEFDIRECT lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull ILPALGETSOURCEFDIRECT lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), LPALGETSOURCEFDIRECT, arena);
         }
     }
 
     @FunctionalInterface
-    public interface LPALGETSOURCEFV {
+    public interface ILPALGETSOURCEFV {
         void invoke(
             @NativeType("ALuint") int p0,
             @NativeType("ALenum") int p1,
             @Pointer(comment="void*") @NotNull MemorySegment p2
         );
 
-        static MethodHandle of(@NotNull LPALGETSOURCEFV lambda) {
+        static MethodHandle of(@NotNull ILPALGETSOURCEFV lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(LPALGETSOURCEFV.class, "invoke", LPALGETSOURCEFV.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(ILPALGETSOURCEFV.class, "invoke", LPALGETSOURCEFV.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull LPALGETSOURCEFV lambda) {
+        static MemorySegment ofNative(@NotNull ILPALGETSOURCEFV lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull LPALGETSOURCEFV lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull ILPALGETSOURCEFV lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), LPALGETSOURCEFV, arena);
         }
     }
 
     @FunctionalInterface
-    public interface LPALGETSOURCEFVDIRECT {
+    public interface ILPALGETSOURCEFVDIRECT {
         void invoke(
-            ALCcontext p0,
+            @NativeType("ALCcontext") MemorySegment p0,
             @NativeType("ALuint") int p1,
             @NativeType("ALenum") int p2,
             @Pointer(comment="void*") @NotNull MemorySegment p3
         );
 
-        static MethodHandle of(@NotNull LPALGETSOURCEFVDIRECT lambda) {
+        static MethodHandle of(@NotNull ILPALGETSOURCEFVDIRECT lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(LPALGETSOURCEFVDIRECT.class, "invoke", LPALGETSOURCEFVDIRECT.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(ILPALGETSOURCEFVDIRECT.class, "invoke", LPALGETSOURCEFVDIRECT.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull LPALGETSOURCEFVDIRECT lambda) {
+        static MemorySegment ofNative(@NotNull ILPALGETSOURCEFVDIRECT lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull LPALGETSOURCEFVDIRECT lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull ILPALGETSOURCEFVDIRECT lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), LPALGETSOURCEFVDIRECT, arena);
         }
     }
 
     @FunctionalInterface
-    public interface LPALGETSOURCEI {
+    public interface ILPALGETSOURCEI {
         void invoke(
             @NativeType("ALuint") int p0,
             @NativeType("ALenum") int p1,
             @Pointer(comment="void*") @NotNull MemorySegment p2
         );
 
-        static MethodHandle of(@NotNull LPALGETSOURCEI lambda) {
+        static MethodHandle of(@NotNull ILPALGETSOURCEI lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(LPALGETSOURCEI.class, "invoke", LPALGETSOURCEI.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(ILPALGETSOURCEI.class, "invoke", LPALGETSOURCEI.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull LPALGETSOURCEI lambda) {
+        static MemorySegment ofNative(@NotNull ILPALGETSOURCEI lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull LPALGETSOURCEI lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull ILPALGETSOURCEI lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), LPALGETSOURCEI, arena);
         }
     }
 
     @FunctionalInterface
-    public interface LPALGETSOURCEI64DIRECTSOFT {
+    public interface ILPALGETSOURCEI64DIRECTSOFT {
         void invoke(
-            ALCcontext p0,
+            @NativeType("ALCcontext") MemorySegment p0,
             @NativeType("ALuint") int p1,
             @NativeType("ALenum") int p2,
             @Pointer(comment="void*") @NotNull MemorySegment p3
         );
 
-        static MethodHandle of(@NotNull LPALGETSOURCEI64DIRECTSOFT lambda) {
+        static MethodHandle of(@NotNull ILPALGETSOURCEI64DIRECTSOFT lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(LPALGETSOURCEI64DIRECTSOFT.class, "invoke", LPALGETSOURCEI64DIRECTSOFT.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(ILPALGETSOURCEI64DIRECTSOFT.class, "invoke", LPALGETSOURCEI64DIRECTSOFT.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull LPALGETSOURCEI64DIRECTSOFT lambda) {
+        static MemorySegment ofNative(@NotNull ILPALGETSOURCEI64DIRECTSOFT lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull LPALGETSOURCEI64DIRECTSOFT lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull ILPALGETSOURCEI64DIRECTSOFT lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), LPALGETSOURCEI64DIRECTSOFT, arena);
         }
     }
 
     @FunctionalInterface
-    public interface LPALGETSOURCEI64SOFT {
+    public interface ILPALGETSOURCEI64SOFT {
         void invoke(
             @NativeType("ALuint") int p0,
             @NativeType("ALenum") int p1,
             @Pointer(comment="void*") @NotNull MemorySegment p2
         );
 
-        static MethodHandle of(@NotNull LPALGETSOURCEI64SOFT lambda) {
+        static MethodHandle of(@NotNull ILPALGETSOURCEI64SOFT lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(LPALGETSOURCEI64SOFT.class, "invoke", LPALGETSOURCEI64SOFT.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(ILPALGETSOURCEI64SOFT.class, "invoke", LPALGETSOURCEI64SOFT.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull LPALGETSOURCEI64SOFT lambda) {
+        static MemorySegment ofNative(@NotNull ILPALGETSOURCEI64SOFT lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull LPALGETSOURCEI64SOFT lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull ILPALGETSOURCEI64SOFT lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), LPALGETSOURCEI64SOFT, arena);
         }
     }
 
     @FunctionalInterface
-    public interface LPALGETSOURCEI64VDIRECTSOFT {
+    public interface ILPALGETSOURCEI64VDIRECTSOFT {
         void invoke(
-            ALCcontext p0,
+            @NativeType("ALCcontext") MemorySegment p0,
             @NativeType("ALuint") int p1,
             @NativeType("ALenum") int p2,
             @Pointer(comment="void*") @NotNull MemorySegment p3
         );
 
-        static MethodHandle of(@NotNull LPALGETSOURCEI64VDIRECTSOFT lambda) {
+        static MethodHandle of(@NotNull ILPALGETSOURCEI64VDIRECTSOFT lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(LPALGETSOURCEI64VDIRECTSOFT.class, "invoke", LPALGETSOURCEI64VDIRECTSOFT.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(ILPALGETSOURCEI64VDIRECTSOFT.class, "invoke", LPALGETSOURCEI64VDIRECTSOFT.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull LPALGETSOURCEI64VDIRECTSOFT lambda) {
+        static MemorySegment ofNative(@NotNull ILPALGETSOURCEI64VDIRECTSOFT lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull LPALGETSOURCEI64VDIRECTSOFT lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull ILPALGETSOURCEI64VDIRECTSOFT lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), LPALGETSOURCEI64VDIRECTSOFT, arena);
         }
     }
 
     @FunctionalInterface
-    public interface LPALGETSOURCEI64VSOFT {
+    public interface ILPALGETSOURCEI64VSOFT {
         void invoke(
             @NativeType("ALuint") int p0,
             @NativeType("ALenum") int p1,
             @Pointer(comment="void*") @NotNull MemorySegment p2
         );
 
-        static MethodHandle of(@NotNull LPALGETSOURCEI64VSOFT lambda) {
+        static MethodHandle of(@NotNull ILPALGETSOURCEI64VSOFT lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(LPALGETSOURCEI64VSOFT.class, "invoke", LPALGETSOURCEI64VSOFT.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(ILPALGETSOURCEI64VSOFT.class, "invoke", LPALGETSOURCEI64VSOFT.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull LPALGETSOURCEI64VSOFT lambda) {
+        static MemorySegment ofNative(@NotNull ILPALGETSOURCEI64VSOFT lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull LPALGETSOURCEI64VSOFT lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull ILPALGETSOURCEI64VSOFT lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), LPALGETSOURCEI64VSOFT, arena);
         }
     }
 
     @FunctionalInterface
-    public interface LPALGETSOURCEIDIRECT {
+    public interface ILPALGETSOURCEIDIRECT {
         void invoke(
-            ALCcontext p0,
+            @NativeType("ALCcontext") MemorySegment p0,
             @NativeType("ALuint") int p1,
             @NativeType("ALenum") int p2,
             @Pointer(comment="void*") @NotNull MemorySegment p3
         );
 
-        static MethodHandle of(@NotNull LPALGETSOURCEIDIRECT lambda) {
+        static MethodHandle of(@NotNull ILPALGETSOURCEIDIRECT lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(LPALGETSOURCEIDIRECT.class, "invoke", LPALGETSOURCEIDIRECT.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(ILPALGETSOURCEIDIRECT.class, "invoke", LPALGETSOURCEIDIRECT.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull LPALGETSOURCEIDIRECT lambda) {
+        static MemorySegment ofNative(@NotNull ILPALGETSOURCEIDIRECT lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull LPALGETSOURCEIDIRECT lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull ILPALGETSOURCEIDIRECT lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), LPALGETSOURCEIDIRECT, arena);
         }
     }
 
     @FunctionalInterface
-    public interface LPALGETSOURCEIV {
+    public interface ILPALGETSOURCEIV {
         void invoke(
             @NativeType("ALuint") int p0,
             @NativeType("ALenum") int p1,
             @Pointer(comment="void*") @NotNull MemorySegment p2
         );
 
-        static MethodHandle of(@NotNull LPALGETSOURCEIV lambda) {
+        static MethodHandle of(@NotNull ILPALGETSOURCEIV lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(LPALGETSOURCEIV.class, "invoke", LPALGETSOURCEIV.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(ILPALGETSOURCEIV.class, "invoke", LPALGETSOURCEIV.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull LPALGETSOURCEIV lambda) {
+        static MemorySegment ofNative(@NotNull ILPALGETSOURCEIV lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull LPALGETSOURCEIV lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull ILPALGETSOURCEIV lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), LPALGETSOURCEIV, arena);
         }
     }
 
     @FunctionalInterface
-    public interface LPALGETSOURCEIVDIRECT {
+    public interface ILPALGETSOURCEIVDIRECT {
         void invoke(
-            ALCcontext p0,
+            @NativeType("ALCcontext") MemorySegment p0,
             @NativeType("ALuint") int p1,
             @NativeType("ALenum") int p2,
             @Pointer(comment="void*") @NotNull MemorySegment p3
         );
 
-        static MethodHandle of(@NotNull LPALGETSOURCEIVDIRECT lambda) {
+        static MethodHandle of(@NotNull ILPALGETSOURCEIVDIRECT lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(LPALGETSOURCEIVDIRECT.class, "invoke", LPALGETSOURCEIVDIRECT.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(ILPALGETSOURCEIVDIRECT.class, "invoke", LPALGETSOURCEIVDIRECT.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull LPALGETSOURCEIVDIRECT lambda) {
+        static MemorySegment ofNative(@NotNull ILPALGETSOURCEIVDIRECT lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull LPALGETSOURCEIVDIRECT lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull ILPALGETSOURCEIVDIRECT lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), LPALGETSOURCEIVDIRECT, arena);
         }
     }
 
     @FunctionalInterface
-    public interface LPALGETSTRING {
+    public interface ILPALGETSTRING {
         @Pointer(comment="void*") @NotNull MemorySegment invoke(
             @NativeType("ALenum") int p0
         );
 
-        static MethodHandle of(@NotNull LPALGETSTRING lambda) {
+        static MethodHandle of(@NotNull ILPALGETSTRING lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(LPALGETSTRING.class, "invoke", LPALGETSTRING.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(ILPALGETSTRING.class, "invoke", LPALGETSTRING.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull LPALGETSTRING lambda) {
+        static MemorySegment ofNative(@NotNull ILPALGETSTRING lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull LPALGETSTRING lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull ILPALGETSTRING lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), LPALGETSTRING, arena);
         }
     }
 
     @FunctionalInterface
-    public interface LPALGETSTRINGDIRECT {
+    public interface ILPALGETSTRINGDIRECT {
         @Pointer(comment="void*") @NotNull MemorySegment invoke(
-            ALCcontext p0,
+            @NativeType("ALCcontext") MemorySegment p0,
             @NativeType("ALenum") int p1
         );
 
-        static MethodHandle of(@NotNull LPALGETSTRINGDIRECT lambda) {
+        static MethodHandle of(@NotNull ILPALGETSTRINGDIRECT lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(LPALGETSTRINGDIRECT.class, "invoke", LPALGETSTRINGDIRECT.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(ILPALGETSTRINGDIRECT.class, "invoke", LPALGETSTRINGDIRECT.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull LPALGETSTRINGDIRECT lambda) {
+        static MemorySegment ofNative(@NotNull ILPALGETSTRINGDIRECT lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull LPALGETSTRINGDIRECT lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull ILPALGETSTRINGDIRECT lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), LPALGETSTRINGDIRECT, arena);
         }
     }
 
     @FunctionalInterface
-    public interface LPALGETSTRINGIDIRECTSOFT {
+    public interface ILPALGETSTRINGIDIRECTSOFT {
         @Pointer(comment="void*") @NotNull MemorySegment invoke(
-            ALCcontext p0,
+            @NativeType("ALCcontext") MemorySegment p0,
             @NativeType("ALenum") int p1,
             @NativeType("ALsizei") int p2
         );
 
-        static MethodHandle of(@NotNull LPALGETSTRINGIDIRECTSOFT lambda) {
+        static MethodHandle of(@NotNull ILPALGETSTRINGIDIRECTSOFT lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(LPALGETSTRINGIDIRECTSOFT.class, "invoke", LPALGETSTRINGIDIRECTSOFT.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(ILPALGETSTRINGIDIRECTSOFT.class, "invoke", LPALGETSTRINGIDIRECTSOFT.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull LPALGETSTRINGIDIRECTSOFT lambda) {
+        static MemorySegment ofNative(@NotNull ILPALGETSTRINGIDIRECTSOFT lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull LPALGETSTRINGIDIRECTSOFT lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull ILPALGETSTRINGIDIRECTSOFT lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), LPALGETSTRINGIDIRECTSOFT, arena);
         }
     }
 
     @FunctionalInterface
-    public interface LPALGETSTRINGISOFT {
+    public interface ILPALGETSTRINGISOFT {
         @Pointer(comment="void*") @NotNull MemorySegment invoke(
             @NativeType("ALenum") int p0,
             @NativeType("ALsizei") int p1
         );
 
-        static MethodHandle of(@NotNull LPALGETSTRINGISOFT lambda) {
+        static MethodHandle of(@NotNull ILPALGETSTRINGISOFT lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(LPALGETSTRINGISOFT.class, "invoke", LPALGETSTRINGISOFT.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(ILPALGETSTRINGISOFT.class, "invoke", LPALGETSTRINGISOFT.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull LPALGETSTRINGISOFT lambda) {
+        static MemorySegment ofNative(@NotNull ILPALGETSTRINGISOFT lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull LPALGETSTRINGISOFT lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull ILPALGETSTRINGISOFT lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), LPALGETSTRINGISOFT, arena);
         }
     }
 
     @FunctionalInterface
-    public interface LPALISAUXILIARYEFFECTSLOT {
+    public interface ILPALISAUXILIARYEFFECTSLOT {
         @NativeType("ALboolean") byte invoke(
             @NativeType("ALuint") int p0
         );
 
-        static MethodHandle of(@NotNull LPALISAUXILIARYEFFECTSLOT lambda) {
+        static MethodHandle of(@NotNull ILPALISAUXILIARYEFFECTSLOT lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(LPALISAUXILIARYEFFECTSLOT.class, "invoke", LPALISAUXILIARYEFFECTSLOT.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(ILPALISAUXILIARYEFFECTSLOT.class, "invoke", LPALISAUXILIARYEFFECTSLOT.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull LPALISAUXILIARYEFFECTSLOT lambda) {
+        static MemorySegment ofNative(@NotNull ILPALISAUXILIARYEFFECTSLOT lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull LPALISAUXILIARYEFFECTSLOT lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull ILPALISAUXILIARYEFFECTSLOT lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), LPALISAUXILIARYEFFECTSLOT, arena);
         }
     }
 
     @FunctionalInterface
-    public interface LPALISAUXILIARYEFFECTSLOTDIRECT {
+    public interface ILPALISAUXILIARYEFFECTSLOTDIRECT {
         @NativeType("ALboolean") byte invoke(
-            ALCcontext p0,
+            @NativeType("ALCcontext") MemorySegment p0,
             @NativeType("ALuint") int p1
         );
 
-        static MethodHandle of(@NotNull LPALISAUXILIARYEFFECTSLOTDIRECT lambda) {
+        static MethodHandle of(@NotNull ILPALISAUXILIARYEFFECTSLOTDIRECT lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(LPALISAUXILIARYEFFECTSLOTDIRECT.class, "invoke", LPALISAUXILIARYEFFECTSLOTDIRECT.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(ILPALISAUXILIARYEFFECTSLOTDIRECT.class, "invoke", LPALISAUXILIARYEFFECTSLOTDIRECT.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull LPALISAUXILIARYEFFECTSLOTDIRECT lambda) {
+        static MemorySegment ofNative(@NotNull ILPALISAUXILIARYEFFECTSLOTDIRECT lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull LPALISAUXILIARYEFFECTSLOTDIRECT lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull ILPALISAUXILIARYEFFECTSLOTDIRECT lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), LPALISAUXILIARYEFFECTSLOTDIRECT, arena);
         }
     }
 
     @FunctionalInterface
-    public interface LPALISBUFFER {
+    public interface ILPALISBUFFER {
         @NativeType("ALboolean") byte invoke(
             @NativeType("ALuint") int p0
         );
 
-        static MethodHandle of(@NotNull LPALISBUFFER lambda) {
+        static MethodHandle of(@NotNull ILPALISBUFFER lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(LPALISBUFFER.class, "invoke", LPALISBUFFER.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(ILPALISBUFFER.class, "invoke", LPALISBUFFER.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull LPALISBUFFER lambda) {
+        static MemorySegment ofNative(@NotNull ILPALISBUFFER lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull LPALISBUFFER lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull ILPALISBUFFER lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), LPALISBUFFER, arena);
         }
     }
 
     @FunctionalInterface
-    public interface LPALISBUFFERDIRECT {
+    public interface ILPALISBUFFERDIRECT {
         @NativeType("ALboolean") byte invoke(
-            ALCcontext p0,
+            @NativeType("ALCcontext") MemorySegment p0,
             @NativeType("ALuint") int p1
         );
 
-        static MethodHandle of(@NotNull LPALISBUFFERDIRECT lambda) {
+        static MethodHandle of(@NotNull ILPALISBUFFERDIRECT lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(LPALISBUFFERDIRECT.class, "invoke", LPALISBUFFERDIRECT.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(ILPALISBUFFERDIRECT.class, "invoke", LPALISBUFFERDIRECT.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull LPALISBUFFERDIRECT lambda) {
+        static MemorySegment ofNative(@NotNull ILPALISBUFFERDIRECT lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull LPALISBUFFERDIRECT lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull ILPALISBUFFERDIRECT lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), LPALISBUFFERDIRECT, arena);
         }
     }
 
     @FunctionalInterface
-    public interface LPALISBUFFERFORMATSUPPORTEDSOFT {
+    public interface ILPALISBUFFERFORMATSUPPORTEDSOFT {
         @NativeType("ALboolean") byte invoke(
             @NativeType("ALenum") int p0
         );
 
-        static MethodHandle of(@NotNull LPALISBUFFERFORMATSUPPORTEDSOFT lambda) {
+        static MethodHandle of(@NotNull ILPALISBUFFERFORMATSUPPORTEDSOFT lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(LPALISBUFFERFORMATSUPPORTEDSOFT.class, "invoke", LPALISBUFFERFORMATSUPPORTEDSOFT.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(ILPALISBUFFERFORMATSUPPORTEDSOFT.class, "invoke", LPALISBUFFERFORMATSUPPORTEDSOFT.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull LPALISBUFFERFORMATSUPPORTEDSOFT lambda) {
+        static MemorySegment ofNative(@NotNull ILPALISBUFFERFORMATSUPPORTEDSOFT lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull LPALISBUFFERFORMATSUPPORTEDSOFT lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull ILPALISBUFFERFORMATSUPPORTEDSOFT lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), LPALISBUFFERFORMATSUPPORTEDSOFT, arena);
         }
     }
 
     @FunctionalInterface
-    public interface LPALISEFFECT {
+    public interface ILPALISEFFECT {
         @NativeType("ALboolean") byte invoke(
             @NativeType("ALuint") int p0
         );
 
-        static MethodHandle of(@NotNull LPALISEFFECT lambda) {
+        static MethodHandle of(@NotNull ILPALISEFFECT lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(LPALISEFFECT.class, "invoke", LPALISEFFECT.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(ILPALISEFFECT.class, "invoke", LPALISEFFECT.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull LPALISEFFECT lambda) {
+        static MemorySegment ofNative(@NotNull ILPALISEFFECT lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull LPALISEFFECT lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull ILPALISEFFECT lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), LPALISEFFECT, arena);
         }
     }
 
     @FunctionalInterface
-    public interface LPALISEFFECTDIRECT {
+    public interface ILPALISEFFECTDIRECT {
         @NativeType("ALboolean") byte invoke(
-            ALCcontext p0,
+            @NativeType("ALCcontext") MemorySegment p0,
             @NativeType("ALuint") int p1
         );
 
-        static MethodHandle of(@NotNull LPALISEFFECTDIRECT lambda) {
+        static MethodHandle of(@NotNull ILPALISEFFECTDIRECT lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(LPALISEFFECTDIRECT.class, "invoke", LPALISEFFECTDIRECT.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(ILPALISEFFECTDIRECT.class, "invoke", LPALISEFFECTDIRECT.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull LPALISEFFECTDIRECT lambda) {
+        static MemorySegment ofNative(@NotNull ILPALISEFFECTDIRECT lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull LPALISEFFECTDIRECT lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull ILPALISEFFECTDIRECT lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), LPALISEFFECTDIRECT, arena);
         }
     }
 
     @FunctionalInterface
-    public interface LPALISENABLED {
+    public interface ILPALISENABLED {
         @NativeType("ALboolean") byte invoke(
             @NativeType("ALenum") int p0
         );
 
-        static MethodHandle of(@NotNull LPALISENABLED lambda) {
+        static MethodHandle of(@NotNull ILPALISENABLED lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(LPALISENABLED.class, "invoke", LPALISENABLED.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(ILPALISENABLED.class, "invoke", LPALISENABLED.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull LPALISENABLED lambda) {
+        static MemorySegment ofNative(@NotNull ILPALISENABLED lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull LPALISENABLED lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull ILPALISENABLED lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), LPALISENABLED, arena);
         }
     }
 
     @FunctionalInterface
-    public interface LPALISENABLEDDIRECT {
+    public interface ILPALISENABLEDDIRECT {
         @NativeType("ALboolean") byte invoke(
-            ALCcontext p0,
+            @NativeType("ALCcontext") MemorySegment p0,
             @NativeType("ALenum") int p1
         );
 
-        static MethodHandle of(@NotNull LPALISENABLEDDIRECT lambda) {
+        static MethodHandle of(@NotNull ILPALISENABLEDDIRECT lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(LPALISENABLEDDIRECT.class, "invoke", LPALISENABLEDDIRECT.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(ILPALISENABLEDDIRECT.class, "invoke", LPALISENABLEDDIRECT.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull LPALISENABLEDDIRECT lambda) {
+        static MemorySegment ofNative(@NotNull ILPALISENABLEDDIRECT lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull LPALISENABLEDDIRECT lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull ILPALISENABLEDDIRECT lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), LPALISENABLEDDIRECT, arena);
         }
     }
 
     @FunctionalInterface
-    public interface LPALISEXTENSIONPRESENT {
+    public interface ILPALISEXTENSIONPRESENT {
         @NativeType("ALboolean") byte invoke(
             @Pointer(comment="void*") @NotNull MemorySegment p0
         );
 
-        static MethodHandle of(@NotNull LPALISEXTENSIONPRESENT lambda) {
+        static MethodHandle of(@NotNull ILPALISEXTENSIONPRESENT lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(LPALISEXTENSIONPRESENT.class, "invoke", LPALISEXTENSIONPRESENT.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(ILPALISEXTENSIONPRESENT.class, "invoke", LPALISEXTENSIONPRESENT.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull LPALISEXTENSIONPRESENT lambda) {
+        static MemorySegment ofNative(@NotNull ILPALISEXTENSIONPRESENT lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull LPALISEXTENSIONPRESENT lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull ILPALISEXTENSIONPRESENT lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), LPALISEXTENSIONPRESENT, arena);
         }
     }
 
     @FunctionalInterface
-    public interface LPALISEXTENSIONPRESENTDIRECT {
+    public interface ILPALISEXTENSIONPRESENTDIRECT {
         @NativeType("ALboolean") byte invoke(
-            ALCcontext p0,
+            @NativeType("ALCcontext") MemorySegment p0,
             @Pointer(comment="void*") @NotNull MemorySegment p1
         );
 
-        static MethodHandle of(@NotNull LPALISEXTENSIONPRESENTDIRECT lambda) {
+        static MethodHandle of(@NotNull ILPALISEXTENSIONPRESENTDIRECT lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(LPALISEXTENSIONPRESENTDIRECT.class, "invoke", LPALISEXTENSIONPRESENTDIRECT.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(ILPALISEXTENSIONPRESENTDIRECT.class, "invoke", LPALISEXTENSIONPRESENTDIRECT.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull LPALISEXTENSIONPRESENTDIRECT lambda) {
+        static MemorySegment ofNative(@NotNull ILPALISEXTENSIONPRESENTDIRECT lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull LPALISEXTENSIONPRESENTDIRECT lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull ILPALISEXTENSIONPRESENTDIRECT lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), LPALISEXTENSIONPRESENTDIRECT, arena);
         }
     }
 
     @FunctionalInterface
-    public interface LPALISFILTER {
+    public interface ILPALISFILTER {
         @NativeType("ALboolean") byte invoke(
             @NativeType("ALuint") int p0
         );
 
-        static MethodHandle of(@NotNull LPALISFILTER lambda) {
+        static MethodHandle of(@NotNull ILPALISFILTER lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(LPALISFILTER.class, "invoke", LPALISFILTER.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(ILPALISFILTER.class, "invoke", LPALISFILTER.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull LPALISFILTER lambda) {
+        static MemorySegment ofNative(@NotNull ILPALISFILTER lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull LPALISFILTER lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull ILPALISFILTER lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), LPALISFILTER, arena);
         }
     }
 
     @FunctionalInterface
-    public interface LPALISFILTERDIRECT {
+    public interface ILPALISFILTERDIRECT {
         @NativeType("ALboolean") byte invoke(
-            ALCcontext p0,
+            @NativeType("ALCcontext") MemorySegment p0,
             @NativeType("ALuint") int p1
         );
 
-        static MethodHandle of(@NotNull LPALISFILTERDIRECT lambda) {
+        static MethodHandle of(@NotNull ILPALISFILTERDIRECT lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(LPALISFILTERDIRECT.class, "invoke", LPALISFILTERDIRECT.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(ILPALISFILTERDIRECT.class, "invoke", LPALISFILTERDIRECT.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull LPALISFILTERDIRECT lambda) {
+        static MemorySegment ofNative(@NotNull ILPALISFILTERDIRECT lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull LPALISFILTERDIRECT lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull ILPALISFILTERDIRECT lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), LPALISFILTERDIRECT, arena);
         }
     }
 
     @FunctionalInterface
-    public interface LPALISSOURCE {
+    public interface ILPALISSOURCE {
         @NativeType("ALboolean") byte invoke(
             @NativeType("ALuint") int p0
         );
 
-        static MethodHandle of(@NotNull LPALISSOURCE lambda) {
+        static MethodHandle of(@NotNull ILPALISSOURCE lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(LPALISSOURCE.class, "invoke", LPALISSOURCE.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(ILPALISSOURCE.class, "invoke", LPALISSOURCE.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull LPALISSOURCE lambda) {
+        static MemorySegment ofNative(@NotNull ILPALISSOURCE lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull LPALISSOURCE lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull ILPALISSOURCE lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), LPALISSOURCE, arena);
         }
     }
 
     @FunctionalInterface
-    public interface LPALISSOURCEDIRECT {
+    public interface ILPALISSOURCEDIRECT {
         @NativeType("ALboolean") byte invoke(
-            ALCcontext p0,
+            @NativeType("ALCcontext") MemorySegment p0,
             @NativeType("ALuint") int p1
         );
 
-        static MethodHandle of(@NotNull LPALISSOURCEDIRECT lambda) {
+        static MethodHandle of(@NotNull ILPALISSOURCEDIRECT lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(LPALISSOURCEDIRECT.class, "invoke", LPALISSOURCEDIRECT.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(ILPALISSOURCEDIRECT.class, "invoke", LPALISSOURCEDIRECT.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull LPALISSOURCEDIRECT lambda) {
+        static MemorySegment ofNative(@NotNull ILPALISSOURCEDIRECT lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull LPALISSOURCEDIRECT lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull ILPALISSOURCEDIRECT lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), LPALISSOURCEDIRECT, arena);
         }
     }
 
     @FunctionalInterface
-    public interface LPALLISTENER3F {
+    public interface ILPALLISTENER3F {
         void invoke(
             @NativeType("ALenum") int p0,
             @NativeType("ALfloat") float p1,
@@ -8799,54 +8799,54 @@ public final class ALFunctionTypes {
             @NativeType("ALfloat") float p3
         );
 
-        static MethodHandle of(@NotNull LPALLISTENER3F lambda) {
+        static MethodHandle of(@NotNull ILPALLISTENER3F lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(LPALLISTENER3F.class, "invoke", LPALLISTENER3F.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(ILPALLISTENER3F.class, "invoke", LPALLISTENER3F.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull LPALLISTENER3F lambda) {
+        static MemorySegment ofNative(@NotNull ILPALLISTENER3F lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull LPALLISTENER3F lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull ILPALLISTENER3F lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), LPALLISTENER3F, arena);
         }
     }
 
     @FunctionalInterface
-    public interface LPALLISTENER3FDIRECT {
+    public interface ILPALLISTENER3FDIRECT {
         void invoke(
-            ALCcontext p0,
+            @NativeType("ALCcontext") MemorySegment p0,
             @NativeType("ALenum") int p1,
             @NativeType("ALfloat") float p2,
             @NativeType("ALfloat") float p3,
             @NativeType("ALfloat") float p4
         );
 
-        static MethodHandle of(@NotNull LPALLISTENER3FDIRECT lambda) {
+        static MethodHandle of(@NotNull ILPALLISTENER3FDIRECT lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(LPALLISTENER3FDIRECT.class, "invoke", LPALLISTENER3FDIRECT.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(ILPALLISTENER3FDIRECT.class, "invoke", LPALLISTENER3FDIRECT.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull LPALLISTENER3FDIRECT lambda) {
+        static MemorySegment ofNative(@NotNull ILPALLISTENER3FDIRECT lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull LPALLISTENER3FDIRECT lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull ILPALLISTENER3FDIRECT lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), LPALLISTENER3FDIRECT, arena);
         }
     }
 
     @FunctionalInterface
-    public interface LPALLISTENER3I {
+    public interface ILPALLISTENER3I {
         void invoke(
             @NativeType("ALenum") int p0,
             @NativeType("ALint") int p1,
@@ -8854,286 +8854,286 @@ public final class ALFunctionTypes {
             @NativeType("ALint") int p3
         );
 
-        static MethodHandle of(@NotNull LPALLISTENER3I lambda) {
+        static MethodHandle of(@NotNull ILPALLISTENER3I lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(LPALLISTENER3I.class, "invoke", LPALLISTENER3I.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(ILPALLISTENER3I.class, "invoke", LPALLISTENER3I.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull LPALLISTENER3I lambda) {
+        static MemorySegment ofNative(@NotNull ILPALLISTENER3I lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull LPALLISTENER3I lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull ILPALLISTENER3I lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), LPALLISTENER3I, arena);
         }
     }
 
     @FunctionalInterface
-    public interface LPALLISTENER3IDIRECT {
+    public interface ILPALLISTENER3IDIRECT {
         void invoke(
-            ALCcontext p0,
+            @NativeType("ALCcontext") MemorySegment p0,
             @NativeType("ALenum") int p1,
             @NativeType("ALint") int p2,
             @NativeType("ALint") int p3,
             @NativeType("ALint") int p4
         );
 
-        static MethodHandle of(@NotNull LPALLISTENER3IDIRECT lambda) {
+        static MethodHandle of(@NotNull ILPALLISTENER3IDIRECT lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(LPALLISTENER3IDIRECT.class, "invoke", LPALLISTENER3IDIRECT.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(ILPALLISTENER3IDIRECT.class, "invoke", LPALLISTENER3IDIRECT.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull LPALLISTENER3IDIRECT lambda) {
+        static MemorySegment ofNative(@NotNull ILPALLISTENER3IDIRECT lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull LPALLISTENER3IDIRECT lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull ILPALLISTENER3IDIRECT lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), LPALLISTENER3IDIRECT, arena);
         }
     }
 
     @FunctionalInterface
-    public interface LPALLISTENERF {
+    public interface ILPALLISTENERF {
         void invoke(
             @NativeType("ALenum") int p0,
             @NativeType("ALfloat") float p1
         );
 
-        static MethodHandle of(@NotNull LPALLISTENERF lambda) {
+        static MethodHandle of(@NotNull ILPALLISTENERF lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(LPALLISTENERF.class, "invoke", LPALLISTENERF.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(ILPALLISTENERF.class, "invoke", LPALLISTENERF.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull LPALLISTENERF lambda) {
+        static MemorySegment ofNative(@NotNull ILPALLISTENERF lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull LPALLISTENERF lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull ILPALLISTENERF lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), LPALLISTENERF, arena);
         }
     }
 
     @FunctionalInterface
-    public interface LPALLISTENERFDIRECT {
+    public interface ILPALLISTENERFDIRECT {
         void invoke(
-            ALCcontext p0,
+            @NativeType("ALCcontext") MemorySegment p0,
             @NativeType("ALenum") int p1,
             @NativeType("ALfloat") float p2
         );
 
-        static MethodHandle of(@NotNull LPALLISTENERFDIRECT lambda) {
+        static MethodHandle of(@NotNull ILPALLISTENERFDIRECT lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(LPALLISTENERFDIRECT.class, "invoke", LPALLISTENERFDIRECT.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(ILPALLISTENERFDIRECT.class, "invoke", LPALLISTENERFDIRECT.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull LPALLISTENERFDIRECT lambda) {
+        static MemorySegment ofNative(@NotNull ILPALLISTENERFDIRECT lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull LPALLISTENERFDIRECT lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull ILPALLISTENERFDIRECT lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), LPALLISTENERFDIRECT, arena);
         }
     }
 
     @FunctionalInterface
-    public interface LPALLISTENERFV {
+    public interface ILPALLISTENERFV {
         void invoke(
             @NativeType("ALenum") int p0,
             @Pointer(comment="void*") @NotNull MemorySegment p1
         );
 
-        static MethodHandle of(@NotNull LPALLISTENERFV lambda) {
+        static MethodHandle of(@NotNull ILPALLISTENERFV lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(LPALLISTENERFV.class, "invoke", LPALLISTENERFV.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(ILPALLISTENERFV.class, "invoke", LPALLISTENERFV.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull LPALLISTENERFV lambda) {
+        static MemorySegment ofNative(@NotNull ILPALLISTENERFV lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull LPALLISTENERFV lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull ILPALLISTENERFV lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), LPALLISTENERFV, arena);
         }
     }
 
     @FunctionalInterface
-    public interface LPALLISTENERFVDIRECT {
+    public interface ILPALLISTENERFVDIRECT {
         void invoke(
-            ALCcontext p0,
+            @NativeType("ALCcontext") MemorySegment p0,
             @NativeType("ALenum") int p1,
             @Pointer(comment="void*") @NotNull MemorySegment p2
         );
 
-        static MethodHandle of(@NotNull LPALLISTENERFVDIRECT lambda) {
+        static MethodHandle of(@NotNull ILPALLISTENERFVDIRECT lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(LPALLISTENERFVDIRECT.class, "invoke", LPALLISTENERFVDIRECT.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(ILPALLISTENERFVDIRECT.class, "invoke", LPALLISTENERFVDIRECT.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull LPALLISTENERFVDIRECT lambda) {
+        static MemorySegment ofNative(@NotNull ILPALLISTENERFVDIRECT lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull LPALLISTENERFVDIRECT lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull ILPALLISTENERFVDIRECT lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), LPALLISTENERFVDIRECT, arena);
         }
     }
 
     @FunctionalInterface
-    public interface LPALLISTENERI {
+    public interface ILPALLISTENERI {
         void invoke(
             @NativeType("ALenum") int p0,
             @NativeType("ALint") int p1
         );
 
-        static MethodHandle of(@NotNull LPALLISTENERI lambda) {
+        static MethodHandle of(@NotNull ILPALLISTENERI lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(LPALLISTENERI.class, "invoke", LPALLISTENERI.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(ILPALLISTENERI.class, "invoke", LPALLISTENERI.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull LPALLISTENERI lambda) {
+        static MemorySegment ofNative(@NotNull ILPALLISTENERI lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull LPALLISTENERI lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull ILPALLISTENERI lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), LPALLISTENERI, arena);
         }
     }
 
     @FunctionalInterface
-    public interface LPALLISTENERIDIRECT {
+    public interface ILPALLISTENERIDIRECT {
         void invoke(
-            ALCcontext p0,
+            @NativeType("ALCcontext") MemorySegment p0,
             @NativeType("ALenum") int p1,
             @NativeType("ALint") int p2
         );
 
-        static MethodHandle of(@NotNull LPALLISTENERIDIRECT lambda) {
+        static MethodHandle of(@NotNull ILPALLISTENERIDIRECT lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(LPALLISTENERIDIRECT.class, "invoke", LPALLISTENERIDIRECT.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(ILPALLISTENERIDIRECT.class, "invoke", LPALLISTENERIDIRECT.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull LPALLISTENERIDIRECT lambda) {
+        static MemorySegment ofNative(@NotNull ILPALLISTENERIDIRECT lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull LPALLISTENERIDIRECT lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull ILPALLISTENERIDIRECT lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), LPALLISTENERIDIRECT, arena);
         }
     }
 
     @FunctionalInterface
-    public interface LPALLISTENERIV {
+    public interface ILPALLISTENERIV {
         void invoke(
             @NativeType("ALenum") int p0,
             @Pointer(comment="void*") @NotNull MemorySegment p1
         );
 
-        static MethodHandle of(@NotNull LPALLISTENERIV lambda) {
+        static MethodHandle of(@NotNull ILPALLISTENERIV lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(LPALLISTENERIV.class, "invoke", LPALLISTENERIV.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(ILPALLISTENERIV.class, "invoke", LPALLISTENERIV.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull LPALLISTENERIV lambda) {
+        static MemorySegment ofNative(@NotNull ILPALLISTENERIV lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull LPALLISTENERIV lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull ILPALLISTENERIV lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), LPALLISTENERIV, arena);
         }
     }
 
     @FunctionalInterface
-    public interface LPALLISTENERIVDIRECT {
+    public interface ILPALLISTENERIVDIRECT {
         void invoke(
-            ALCcontext p0,
+            @NativeType("ALCcontext") MemorySegment p0,
             @NativeType("ALenum") int p1,
             @Pointer(comment="void*") @NotNull MemorySegment p2
         );
 
-        static MethodHandle of(@NotNull LPALLISTENERIVDIRECT lambda) {
+        static MethodHandle of(@NotNull ILPALLISTENERIVDIRECT lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(LPALLISTENERIVDIRECT.class, "invoke", LPALLISTENERIVDIRECT.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(ILPALLISTENERIVDIRECT.class, "invoke", LPALLISTENERIVDIRECT.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull LPALLISTENERIVDIRECT lambda) {
+        static MemorySegment ofNative(@NotNull ILPALLISTENERIVDIRECT lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull LPALLISTENERIVDIRECT lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull ILPALLISTENERIVDIRECT lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), LPALLISTENERIVDIRECT, arena);
         }
     }
 
     @FunctionalInterface
-    public interface LPALOBJECTLABELDIRECTEXT {
+    public interface ILPALOBJECTLABELDIRECTEXT {
         void invoke(
-            ALCcontext p0,
+            @NativeType("ALCcontext") MemorySegment p0,
             @NativeType("ALenum") int p1,
             @NativeType("ALuint") int p2,
             @NativeType("ALsizei") int p3,
             @Pointer(comment="void*") @NotNull MemorySegment p4
         );
 
-        static MethodHandle of(@NotNull LPALOBJECTLABELDIRECTEXT lambda) {
+        static MethodHandle of(@NotNull ILPALOBJECTLABELDIRECTEXT lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(LPALOBJECTLABELDIRECTEXT.class, "invoke", LPALOBJECTLABELDIRECTEXT.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(ILPALOBJECTLABELDIRECTEXT.class, "invoke", LPALOBJECTLABELDIRECTEXT.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull LPALOBJECTLABELDIRECTEXT lambda) {
+        static MemorySegment ofNative(@NotNull ILPALOBJECTLABELDIRECTEXT lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull LPALOBJECTLABELDIRECTEXT lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull ILPALOBJECTLABELDIRECTEXT lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), LPALOBJECTLABELDIRECTEXT, arena);
         }
     }
 
     @FunctionalInterface
-    public interface LPALOBJECTLABELEXT {
+    public interface ILPALOBJECTLABELEXT {
         void invoke(
             @NativeType("ALenum") int p0,
             @NativeType("ALuint") int p1,
@@ -9141,148 +9141,148 @@ public final class ALFunctionTypes {
             @Pointer(comment="void*") @NotNull MemorySegment p3
         );
 
-        static MethodHandle of(@NotNull LPALOBJECTLABELEXT lambda) {
+        static MethodHandle of(@NotNull ILPALOBJECTLABELEXT lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(LPALOBJECTLABELEXT.class, "invoke", LPALOBJECTLABELEXT.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(ILPALOBJECTLABELEXT.class, "invoke", LPALOBJECTLABELEXT.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull LPALOBJECTLABELEXT lambda) {
+        static MemorySegment ofNative(@NotNull ILPALOBJECTLABELEXT lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull LPALOBJECTLABELEXT lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull ILPALOBJECTLABELEXT lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), LPALOBJECTLABELEXT, arena);
         }
     }
 
     @FunctionalInterface
-    public interface LPALPOPDEBUGGROUPDIRECTEXT {
+    public interface ILPALPOPDEBUGGROUPDIRECTEXT {
         void invoke(
-            ALCcontext p0
+            @NativeType("ALCcontext") MemorySegment p0
         );
 
-        static MethodHandle of(@NotNull LPALPOPDEBUGGROUPDIRECTEXT lambda) {
+        static MethodHandle of(@NotNull ILPALPOPDEBUGGROUPDIRECTEXT lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(LPALPOPDEBUGGROUPDIRECTEXT.class, "invoke", LPALPOPDEBUGGROUPDIRECTEXT.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(ILPALPOPDEBUGGROUPDIRECTEXT.class, "invoke", LPALPOPDEBUGGROUPDIRECTEXT.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull LPALPOPDEBUGGROUPDIRECTEXT lambda) {
+        static MemorySegment ofNative(@NotNull ILPALPOPDEBUGGROUPDIRECTEXT lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull LPALPOPDEBUGGROUPDIRECTEXT lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull ILPALPOPDEBUGGROUPDIRECTEXT lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), LPALPOPDEBUGGROUPDIRECTEXT, arena);
         }
     }
 
     @FunctionalInterface
-    public interface LPALPOPDEBUGGROUPEXT {
+    public interface ILPALPOPDEBUGGROUPEXT {
         void invoke(
         );
 
-        static MethodHandle of(@NotNull LPALPOPDEBUGGROUPEXT lambda) {
+        static MethodHandle of(@NotNull ILPALPOPDEBUGGROUPEXT lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(LPALPOPDEBUGGROUPEXT.class, "invoke", LPALPOPDEBUGGROUPEXT.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(ILPALPOPDEBUGGROUPEXT.class, "invoke", LPALPOPDEBUGGROUPEXT.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull LPALPOPDEBUGGROUPEXT lambda) {
+        static MemorySegment ofNative(@NotNull ILPALPOPDEBUGGROUPEXT lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull LPALPOPDEBUGGROUPEXT lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull ILPALPOPDEBUGGROUPEXT lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), LPALPOPDEBUGGROUPEXT, arena);
         }
     }
 
     @FunctionalInterface
-    public interface LPALPROCESSUPDATESDIRECTSOFT {
+    public interface ILPALPROCESSUPDATESDIRECTSOFT {
         void invoke(
-            ALCcontext p0
+            @NativeType("ALCcontext") MemorySegment p0
         );
 
-        static MethodHandle of(@NotNull LPALPROCESSUPDATESDIRECTSOFT lambda) {
+        static MethodHandle of(@NotNull ILPALPROCESSUPDATESDIRECTSOFT lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(LPALPROCESSUPDATESDIRECTSOFT.class, "invoke", LPALPROCESSUPDATESDIRECTSOFT.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(ILPALPROCESSUPDATESDIRECTSOFT.class, "invoke", LPALPROCESSUPDATESDIRECTSOFT.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull LPALPROCESSUPDATESDIRECTSOFT lambda) {
+        static MemorySegment ofNative(@NotNull ILPALPROCESSUPDATESDIRECTSOFT lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull LPALPROCESSUPDATESDIRECTSOFT lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull ILPALPROCESSUPDATESDIRECTSOFT lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), LPALPROCESSUPDATESDIRECTSOFT, arena);
         }
     }
 
     @FunctionalInterface
-    public interface LPALPROCESSUPDATESSOFT {
+    public interface ILPALPROCESSUPDATESSOFT {
         void invoke(
         );
 
-        static MethodHandle of(@NotNull LPALPROCESSUPDATESSOFT lambda) {
+        static MethodHandle of(@NotNull ILPALPROCESSUPDATESSOFT lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(LPALPROCESSUPDATESSOFT.class, "invoke", LPALPROCESSUPDATESSOFT.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(ILPALPROCESSUPDATESSOFT.class, "invoke", LPALPROCESSUPDATESSOFT.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull LPALPROCESSUPDATESSOFT lambda) {
+        static MemorySegment ofNative(@NotNull ILPALPROCESSUPDATESSOFT lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull LPALPROCESSUPDATESSOFT lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull ILPALPROCESSUPDATESSOFT lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), LPALPROCESSUPDATESSOFT, arena);
         }
     }
 
     @FunctionalInterface
-    public interface LPALPUSHDEBUGGROUPDIRECTEXT {
+    public interface ILPALPUSHDEBUGGROUPDIRECTEXT {
         void invoke(
-            ALCcontext p0,
+            @NativeType("ALCcontext") MemorySegment p0,
             @NativeType("ALenum") int p1,
             @NativeType("ALuint") int p2,
             @NativeType("ALsizei") int p3,
             @Pointer(comment="void*") @NotNull MemorySegment p4
         );
 
-        static MethodHandle of(@NotNull LPALPUSHDEBUGGROUPDIRECTEXT lambda) {
+        static MethodHandle of(@NotNull ILPALPUSHDEBUGGROUPDIRECTEXT lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(LPALPUSHDEBUGGROUPDIRECTEXT.class, "invoke", LPALPUSHDEBUGGROUPDIRECTEXT.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(ILPALPUSHDEBUGGROUPDIRECTEXT.class, "invoke", LPALPUSHDEBUGGROUPDIRECTEXT.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull LPALPUSHDEBUGGROUPDIRECTEXT lambda) {
+        static MemorySegment ofNative(@NotNull ILPALPUSHDEBUGGROUPDIRECTEXT lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull LPALPUSHDEBUGGROUPDIRECTEXT lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull ILPALPUSHDEBUGGROUPDIRECTEXT lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), LPALPUSHDEBUGGROUPDIRECTEXT, arena);
         }
     }
 
     @FunctionalInterface
-    public interface LPALPUSHDEBUGGROUPEXT {
+    public interface ILPALPUSHDEBUGGROUPEXT {
         void invoke(
             @NativeType("ALenum") int p0,
             @NativeType("ALuint") int p1,
@@ -9290,26 +9290,26 @@ public final class ALFunctionTypes {
             @Pointer(comment="void*") @NotNull MemorySegment p3
         );
 
-        static MethodHandle of(@NotNull LPALPUSHDEBUGGROUPEXT lambda) {
+        static MethodHandle of(@NotNull ILPALPUSHDEBUGGROUPEXT lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(LPALPUSHDEBUGGROUPEXT.class, "invoke", LPALPUSHDEBUGGROUPEXT.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(ILPALPUSHDEBUGGROUPEXT.class, "invoke", LPALPUSHDEBUGGROUPEXT.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull LPALPUSHDEBUGGROUPEXT lambda) {
+        static MemorySegment ofNative(@NotNull ILPALPUSHDEBUGGROUPEXT lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull LPALPUSHDEBUGGROUPEXT lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull ILPALPUSHDEBUGGROUPEXT lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), LPALPUSHDEBUGGROUPEXT, arena);
         }
     }
 
     @FunctionalInterface
-    public interface LPALREQUESTFOLDBACKSTART {
+    public interface ILPALREQUESTFOLDBACKSTART {
         void invoke(
             @NativeType("ALenum") int p0,
             @NativeType("ALsizei") int p1,
@@ -9318,28 +9318,28 @@ public final class ALFunctionTypes {
             @Pointer(comment="LPALFOLDBACKCALLBACK") @NotNull MemorySegment p4
         );
 
-        static MethodHandle of(@NotNull LPALREQUESTFOLDBACKSTART lambda) {
+        static MethodHandle of(@NotNull ILPALREQUESTFOLDBACKSTART lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(LPALREQUESTFOLDBACKSTART.class, "invoke", LPALREQUESTFOLDBACKSTART.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(ILPALREQUESTFOLDBACKSTART.class, "invoke", LPALREQUESTFOLDBACKSTART.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull LPALREQUESTFOLDBACKSTART lambda) {
+        static MemorySegment ofNative(@NotNull ILPALREQUESTFOLDBACKSTART lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull LPALREQUESTFOLDBACKSTART lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull ILPALREQUESTFOLDBACKSTART lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), LPALREQUESTFOLDBACKSTART, arena);
         }
     }
 
     @FunctionalInterface
-    public interface LPALREQUESTFOLDBACKSTARTDIRECT {
+    public interface ILPALREQUESTFOLDBACKSTARTDIRECT {
         void invoke(
-            ALCcontext p0,
+            @NativeType("ALCcontext") MemorySegment p0,
             @NativeType("ALenum") int p1,
             @NativeType("ALsizei") int p2,
             @NativeType("ALsizei") int p3,
@@ -9347,75 +9347,75 @@ public final class ALFunctionTypes {
             @Pointer(comment="LPALFOLDBACKCALLBACK") @NotNull MemorySegment p5
         );
 
-        static MethodHandle of(@NotNull LPALREQUESTFOLDBACKSTARTDIRECT lambda) {
+        static MethodHandle of(@NotNull ILPALREQUESTFOLDBACKSTARTDIRECT lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(LPALREQUESTFOLDBACKSTARTDIRECT.class, "invoke", LPALREQUESTFOLDBACKSTARTDIRECT.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(ILPALREQUESTFOLDBACKSTARTDIRECT.class, "invoke", LPALREQUESTFOLDBACKSTARTDIRECT.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull LPALREQUESTFOLDBACKSTARTDIRECT lambda) {
+        static MemorySegment ofNative(@NotNull ILPALREQUESTFOLDBACKSTARTDIRECT lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull LPALREQUESTFOLDBACKSTARTDIRECT lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull ILPALREQUESTFOLDBACKSTARTDIRECT lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), LPALREQUESTFOLDBACKSTARTDIRECT, arena);
         }
     }
 
     @FunctionalInterface
-    public interface LPALREQUESTFOLDBACKSTOP {
+    public interface ILPALREQUESTFOLDBACKSTOP {
         void invoke(
         );
 
-        static MethodHandle of(@NotNull LPALREQUESTFOLDBACKSTOP lambda) {
+        static MethodHandle of(@NotNull ILPALREQUESTFOLDBACKSTOP lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(LPALREQUESTFOLDBACKSTOP.class, "invoke", LPALREQUESTFOLDBACKSTOP.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(ILPALREQUESTFOLDBACKSTOP.class, "invoke", LPALREQUESTFOLDBACKSTOP.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull LPALREQUESTFOLDBACKSTOP lambda) {
+        static MemorySegment ofNative(@NotNull ILPALREQUESTFOLDBACKSTOP lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull LPALREQUESTFOLDBACKSTOP lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull ILPALREQUESTFOLDBACKSTOP lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), LPALREQUESTFOLDBACKSTOP, arena);
         }
     }
 
     @FunctionalInterface
-    public interface LPALREQUESTFOLDBACKSTOPDIRECT {
+    public interface ILPALREQUESTFOLDBACKSTOPDIRECT {
         void invoke(
-            ALCcontext p0
+            @NativeType("ALCcontext") MemorySegment p0
         );
 
-        static MethodHandle of(@NotNull LPALREQUESTFOLDBACKSTOPDIRECT lambda) {
+        static MethodHandle of(@NotNull ILPALREQUESTFOLDBACKSTOPDIRECT lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(LPALREQUESTFOLDBACKSTOPDIRECT.class, "invoke", LPALREQUESTFOLDBACKSTOPDIRECT.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(ILPALREQUESTFOLDBACKSTOPDIRECT.class, "invoke", LPALREQUESTFOLDBACKSTOPDIRECT.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull LPALREQUESTFOLDBACKSTOPDIRECT lambda) {
+        static MemorySegment ofNative(@NotNull ILPALREQUESTFOLDBACKSTOPDIRECT lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull LPALREQUESTFOLDBACKSTOPDIRECT lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull ILPALREQUESTFOLDBACKSTOPDIRECT lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), LPALREQUESTFOLDBACKSTOPDIRECT, arena);
         }
     }
 
     @FunctionalInterface
-    public interface LPALSOURCE3DDIRECTSOFT {
+    public interface ILPALSOURCE3DDIRECTSOFT {
         void invoke(
-            ALCcontext p0,
+            @NativeType("ALCcontext") MemorySegment p0,
             @NativeType("ALuint") int p1,
             @NativeType("ALenum") int p2,
             @NativeType("ALdouble") double p3,
@@ -9423,26 +9423,26 @@ public final class ALFunctionTypes {
             @NativeType("ALdouble") double p5
         );
 
-        static MethodHandle of(@NotNull LPALSOURCE3DDIRECTSOFT lambda) {
+        static MethodHandle of(@NotNull ILPALSOURCE3DDIRECTSOFT lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(LPALSOURCE3DDIRECTSOFT.class, "invoke", LPALSOURCE3DDIRECTSOFT.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(ILPALSOURCE3DDIRECTSOFT.class, "invoke", LPALSOURCE3DDIRECTSOFT.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull LPALSOURCE3DDIRECTSOFT lambda) {
+        static MemorySegment ofNative(@NotNull ILPALSOURCE3DDIRECTSOFT lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull LPALSOURCE3DDIRECTSOFT lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull ILPALSOURCE3DDIRECTSOFT lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), LPALSOURCE3DDIRECTSOFT, arena);
         }
     }
 
     @FunctionalInterface
-    public interface LPALSOURCE3DSOFT {
+    public interface ILPALSOURCE3DSOFT {
         void invoke(
             @NativeType("ALuint") int p0,
             @NativeType("ALenum") int p1,
@@ -9451,26 +9451,26 @@ public final class ALFunctionTypes {
             @NativeType("ALdouble") double p4
         );
 
-        static MethodHandle of(@NotNull LPALSOURCE3DSOFT lambda) {
+        static MethodHandle of(@NotNull ILPALSOURCE3DSOFT lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(LPALSOURCE3DSOFT.class, "invoke", LPALSOURCE3DSOFT.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(ILPALSOURCE3DSOFT.class, "invoke", LPALSOURCE3DSOFT.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull LPALSOURCE3DSOFT lambda) {
+        static MemorySegment ofNative(@NotNull ILPALSOURCE3DSOFT lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull LPALSOURCE3DSOFT lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull ILPALSOURCE3DSOFT lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), LPALSOURCE3DSOFT, arena);
         }
     }
 
     @FunctionalInterface
-    public interface LPALSOURCE3F {
+    public interface ILPALSOURCE3F {
         void invoke(
             @NativeType("ALuint") int p0,
             @NativeType("ALenum") int p1,
@@ -9479,28 +9479,28 @@ public final class ALFunctionTypes {
             @NativeType("ALfloat") float p4
         );
 
-        static MethodHandle of(@NotNull LPALSOURCE3F lambda) {
+        static MethodHandle of(@NotNull ILPALSOURCE3F lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(LPALSOURCE3F.class, "invoke", LPALSOURCE3F.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(ILPALSOURCE3F.class, "invoke", LPALSOURCE3F.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull LPALSOURCE3F lambda) {
+        static MemorySegment ofNative(@NotNull ILPALSOURCE3F lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull LPALSOURCE3F lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull ILPALSOURCE3F lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), LPALSOURCE3F, arena);
         }
     }
 
     @FunctionalInterface
-    public interface LPALSOURCE3FDIRECT {
+    public interface ILPALSOURCE3FDIRECT {
         void invoke(
-            ALCcontext p0,
+            @NativeType("ALCcontext") MemorySegment p0,
             @NativeType("ALuint") int p1,
             @NativeType("ALenum") int p2,
             @NativeType("ALfloat") float p3,
@@ -9508,26 +9508,26 @@ public final class ALFunctionTypes {
             @NativeType("ALfloat") float p5
         );
 
-        static MethodHandle of(@NotNull LPALSOURCE3FDIRECT lambda) {
+        static MethodHandle of(@NotNull ILPALSOURCE3FDIRECT lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(LPALSOURCE3FDIRECT.class, "invoke", LPALSOURCE3FDIRECT.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(ILPALSOURCE3FDIRECT.class, "invoke", LPALSOURCE3FDIRECT.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull LPALSOURCE3FDIRECT lambda) {
+        static MemorySegment ofNative(@NotNull ILPALSOURCE3FDIRECT lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull LPALSOURCE3FDIRECT lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull ILPALSOURCE3FDIRECT lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), LPALSOURCE3FDIRECT, arena);
         }
     }
 
     @FunctionalInterface
-    public interface LPALSOURCE3I {
+    public interface ILPALSOURCE3I {
         void invoke(
             @NativeType("ALuint") int p0,
             @NativeType("ALenum") int p1,
@@ -9536,28 +9536,28 @@ public final class ALFunctionTypes {
             @NativeType("ALint") int p4
         );
 
-        static MethodHandle of(@NotNull LPALSOURCE3I lambda) {
+        static MethodHandle of(@NotNull ILPALSOURCE3I lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(LPALSOURCE3I.class, "invoke", LPALSOURCE3I.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(ILPALSOURCE3I.class, "invoke", LPALSOURCE3I.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull LPALSOURCE3I lambda) {
+        static MemorySegment ofNative(@NotNull ILPALSOURCE3I lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull LPALSOURCE3I lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull ILPALSOURCE3I lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), LPALSOURCE3I, arena);
         }
     }
 
     @FunctionalInterface
-    public interface LPALSOURCE3I64DIRECTSOFT {
+    public interface ILPALSOURCE3I64DIRECTSOFT {
         void invoke(
-            ALCcontext p0,
+            @NativeType("ALCcontext") MemorySegment p0,
             @NativeType("ALuint") int p1,
             @NativeType("ALenum") int p2,
             @NativeType("ALint64SOFT") long p3,
@@ -9565,26 +9565,26 @@ public final class ALFunctionTypes {
             @NativeType("ALint64SOFT") long p5
         );
 
-        static MethodHandle of(@NotNull LPALSOURCE3I64DIRECTSOFT lambda) {
+        static MethodHandle of(@NotNull ILPALSOURCE3I64DIRECTSOFT lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(LPALSOURCE3I64DIRECTSOFT.class, "invoke", LPALSOURCE3I64DIRECTSOFT.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(ILPALSOURCE3I64DIRECTSOFT.class, "invoke", LPALSOURCE3I64DIRECTSOFT.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull LPALSOURCE3I64DIRECTSOFT lambda) {
+        static MemorySegment ofNative(@NotNull ILPALSOURCE3I64DIRECTSOFT lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull LPALSOURCE3I64DIRECTSOFT lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull ILPALSOURCE3I64DIRECTSOFT lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), LPALSOURCE3I64DIRECTSOFT, arena);
         }
     }
 
     @FunctionalInterface
-    public interface LPALSOURCE3I64SOFT {
+    public interface ILPALSOURCE3I64SOFT {
         void invoke(
             @NativeType("ALuint") int p0,
             @NativeType("ALenum") int p1,
@@ -9593,28 +9593,28 @@ public final class ALFunctionTypes {
             @NativeType("ALint64SOFT") long p4
         );
 
-        static MethodHandle of(@NotNull LPALSOURCE3I64SOFT lambda) {
+        static MethodHandle of(@NotNull ILPALSOURCE3I64SOFT lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(LPALSOURCE3I64SOFT.class, "invoke", LPALSOURCE3I64SOFT.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(ILPALSOURCE3I64SOFT.class, "invoke", LPALSOURCE3I64SOFT.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull LPALSOURCE3I64SOFT lambda) {
+        static MemorySegment ofNative(@NotNull ILPALSOURCE3I64SOFT lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull LPALSOURCE3I64SOFT lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull ILPALSOURCE3I64SOFT lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), LPALSOURCE3I64SOFT, arena);
         }
     }
 
     @FunctionalInterface
-    public interface LPALSOURCE3IDIRECT {
+    public interface ILPALSOURCE3IDIRECT {
         void invoke(
-            ALCcontext p0,
+            @NativeType("ALCcontext") MemorySegment p0,
             @NativeType("ALuint") int p1,
             @NativeType("ALenum") int p2,
             @NativeType("ALint") int p3,
@@ -9622,1220 +9622,1220 @@ public final class ALFunctionTypes {
             @NativeType("ALint") int p5
         );
 
-        static MethodHandle of(@NotNull LPALSOURCE3IDIRECT lambda) {
+        static MethodHandle of(@NotNull ILPALSOURCE3IDIRECT lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(LPALSOURCE3IDIRECT.class, "invoke", LPALSOURCE3IDIRECT.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(ILPALSOURCE3IDIRECT.class, "invoke", LPALSOURCE3IDIRECT.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull LPALSOURCE3IDIRECT lambda) {
+        static MemorySegment ofNative(@NotNull ILPALSOURCE3IDIRECT lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull LPALSOURCE3IDIRECT lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull ILPALSOURCE3IDIRECT lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), LPALSOURCE3IDIRECT, arena);
         }
     }
 
     @FunctionalInterface
-    public interface LPALSOURCEDDIRECTSOFT {
+    public interface ILPALSOURCEDDIRECTSOFT {
         void invoke(
-            ALCcontext p0,
+            @NativeType("ALCcontext") MemorySegment p0,
             @NativeType("ALuint") int p1,
             @NativeType("ALenum") int p2,
             @NativeType("ALdouble") double p3
         );
 
-        static MethodHandle of(@NotNull LPALSOURCEDDIRECTSOFT lambda) {
+        static MethodHandle of(@NotNull ILPALSOURCEDDIRECTSOFT lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(LPALSOURCEDDIRECTSOFT.class, "invoke", LPALSOURCEDDIRECTSOFT.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(ILPALSOURCEDDIRECTSOFT.class, "invoke", LPALSOURCEDDIRECTSOFT.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull LPALSOURCEDDIRECTSOFT lambda) {
+        static MemorySegment ofNative(@NotNull ILPALSOURCEDDIRECTSOFT lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull LPALSOURCEDDIRECTSOFT lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull ILPALSOURCEDDIRECTSOFT lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), LPALSOURCEDDIRECTSOFT, arena);
         }
     }
 
     @FunctionalInterface
-    public interface LPALSOURCEDSOFT {
+    public interface ILPALSOURCEDSOFT {
         void invoke(
             @NativeType("ALuint") int p0,
             @NativeType("ALenum") int p1,
             @NativeType("ALdouble") double p2
         );
 
-        static MethodHandle of(@NotNull LPALSOURCEDSOFT lambda) {
+        static MethodHandle of(@NotNull ILPALSOURCEDSOFT lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(LPALSOURCEDSOFT.class, "invoke", LPALSOURCEDSOFT.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(ILPALSOURCEDSOFT.class, "invoke", LPALSOURCEDSOFT.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull LPALSOURCEDSOFT lambda) {
+        static MemorySegment ofNative(@NotNull ILPALSOURCEDSOFT lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull LPALSOURCEDSOFT lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull ILPALSOURCEDSOFT lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), LPALSOURCEDSOFT, arena);
         }
     }
 
     @FunctionalInterface
-    public interface LPALSOURCEDVDIRECTSOFT {
+    public interface ILPALSOURCEDVDIRECTSOFT {
         void invoke(
-            ALCcontext p0,
+            @NativeType("ALCcontext") MemorySegment p0,
             @NativeType("ALuint") int p1,
             @NativeType("ALenum") int p2,
             @Pointer(comment="void*") @NotNull MemorySegment p3
         );
 
-        static MethodHandle of(@NotNull LPALSOURCEDVDIRECTSOFT lambda) {
+        static MethodHandle of(@NotNull ILPALSOURCEDVDIRECTSOFT lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(LPALSOURCEDVDIRECTSOFT.class, "invoke", LPALSOURCEDVDIRECTSOFT.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(ILPALSOURCEDVDIRECTSOFT.class, "invoke", LPALSOURCEDVDIRECTSOFT.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull LPALSOURCEDVDIRECTSOFT lambda) {
+        static MemorySegment ofNative(@NotNull ILPALSOURCEDVDIRECTSOFT lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull LPALSOURCEDVDIRECTSOFT lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull ILPALSOURCEDVDIRECTSOFT lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), LPALSOURCEDVDIRECTSOFT, arena);
         }
     }
 
     @FunctionalInterface
-    public interface LPALSOURCEDVSOFT {
+    public interface ILPALSOURCEDVSOFT {
         void invoke(
             @NativeType("ALuint") int p0,
             @NativeType("ALenum") int p1,
             @Pointer(comment="void*") @NotNull MemorySegment p2
         );
 
-        static MethodHandle of(@NotNull LPALSOURCEDVSOFT lambda) {
+        static MethodHandle of(@NotNull ILPALSOURCEDVSOFT lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(LPALSOURCEDVSOFT.class, "invoke", LPALSOURCEDVSOFT.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(ILPALSOURCEDVSOFT.class, "invoke", LPALSOURCEDVSOFT.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull LPALSOURCEDVSOFT lambda) {
+        static MemorySegment ofNative(@NotNull ILPALSOURCEDVSOFT lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull LPALSOURCEDVSOFT lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull ILPALSOURCEDVSOFT lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), LPALSOURCEDVSOFT, arena);
         }
     }
 
     @FunctionalInterface
-    public interface LPALSOURCEF {
+    public interface ILPALSOURCEF {
         void invoke(
             @NativeType("ALuint") int p0,
             @NativeType("ALenum") int p1,
             @NativeType("ALfloat") float p2
         );
 
-        static MethodHandle of(@NotNull LPALSOURCEF lambda) {
+        static MethodHandle of(@NotNull ILPALSOURCEF lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(LPALSOURCEF.class, "invoke", LPALSOURCEF.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(ILPALSOURCEF.class, "invoke", LPALSOURCEF.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull LPALSOURCEF lambda) {
+        static MemorySegment ofNative(@NotNull ILPALSOURCEF lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull LPALSOURCEF lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull ILPALSOURCEF lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), LPALSOURCEF, arena);
         }
     }
 
     @FunctionalInterface
-    public interface LPALSOURCEFDIRECT {
+    public interface ILPALSOURCEFDIRECT {
         void invoke(
-            ALCcontext p0,
+            @NativeType("ALCcontext") MemorySegment p0,
             @NativeType("ALuint") int p1,
             @NativeType("ALenum") int p2,
             @NativeType("ALfloat") float p3
         );
 
-        static MethodHandle of(@NotNull LPALSOURCEFDIRECT lambda) {
+        static MethodHandle of(@NotNull ILPALSOURCEFDIRECT lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(LPALSOURCEFDIRECT.class, "invoke", LPALSOURCEFDIRECT.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(ILPALSOURCEFDIRECT.class, "invoke", LPALSOURCEFDIRECT.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull LPALSOURCEFDIRECT lambda) {
+        static MemorySegment ofNative(@NotNull ILPALSOURCEFDIRECT lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull LPALSOURCEFDIRECT lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull ILPALSOURCEFDIRECT lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), LPALSOURCEFDIRECT, arena);
         }
     }
 
     @FunctionalInterface
-    public interface LPALSOURCEFV {
+    public interface ILPALSOURCEFV {
         void invoke(
             @NativeType("ALuint") int p0,
             @NativeType("ALenum") int p1,
             @Pointer(comment="void*") @NotNull MemorySegment p2
         );
 
-        static MethodHandle of(@NotNull LPALSOURCEFV lambda) {
+        static MethodHandle of(@NotNull ILPALSOURCEFV lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(LPALSOURCEFV.class, "invoke", LPALSOURCEFV.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(ILPALSOURCEFV.class, "invoke", LPALSOURCEFV.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull LPALSOURCEFV lambda) {
+        static MemorySegment ofNative(@NotNull ILPALSOURCEFV lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull LPALSOURCEFV lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull ILPALSOURCEFV lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), LPALSOURCEFV, arena);
         }
     }
 
     @FunctionalInterface
-    public interface LPALSOURCEFVDIRECT {
+    public interface ILPALSOURCEFVDIRECT {
         void invoke(
-            ALCcontext p0,
+            @NativeType("ALCcontext") MemorySegment p0,
             @NativeType("ALuint") int p1,
             @NativeType("ALenum") int p2,
             @Pointer(comment="void*") @NotNull MemorySegment p3
         );
 
-        static MethodHandle of(@NotNull LPALSOURCEFVDIRECT lambda) {
+        static MethodHandle of(@NotNull ILPALSOURCEFVDIRECT lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(LPALSOURCEFVDIRECT.class, "invoke", LPALSOURCEFVDIRECT.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(ILPALSOURCEFVDIRECT.class, "invoke", LPALSOURCEFVDIRECT.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull LPALSOURCEFVDIRECT lambda) {
+        static MemorySegment ofNative(@NotNull ILPALSOURCEFVDIRECT lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull LPALSOURCEFVDIRECT lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull ILPALSOURCEFVDIRECT lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), LPALSOURCEFVDIRECT, arena);
         }
     }
 
     @FunctionalInterface
-    public interface LPALSOURCEI {
+    public interface ILPALSOURCEI {
         void invoke(
             @NativeType("ALuint") int p0,
             @NativeType("ALenum") int p1,
             @NativeType("ALint") int p2
         );
 
-        static MethodHandle of(@NotNull LPALSOURCEI lambda) {
+        static MethodHandle of(@NotNull ILPALSOURCEI lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(LPALSOURCEI.class, "invoke", LPALSOURCEI.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(ILPALSOURCEI.class, "invoke", LPALSOURCEI.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull LPALSOURCEI lambda) {
+        static MemorySegment ofNative(@NotNull ILPALSOURCEI lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull LPALSOURCEI lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull ILPALSOURCEI lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), LPALSOURCEI, arena);
         }
     }
 
     @FunctionalInterface
-    public interface LPALSOURCEI64DIRECTSOFT {
+    public interface ILPALSOURCEI64DIRECTSOFT {
         void invoke(
-            ALCcontext p0,
+            @NativeType("ALCcontext") MemorySegment p0,
             @NativeType("ALuint") int p1,
             @NativeType("ALenum") int p2,
             @NativeType("ALint64SOFT") long p3
         );
 
-        static MethodHandle of(@NotNull LPALSOURCEI64DIRECTSOFT lambda) {
+        static MethodHandle of(@NotNull ILPALSOURCEI64DIRECTSOFT lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(LPALSOURCEI64DIRECTSOFT.class, "invoke", LPALSOURCEI64DIRECTSOFT.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(ILPALSOURCEI64DIRECTSOFT.class, "invoke", LPALSOURCEI64DIRECTSOFT.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull LPALSOURCEI64DIRECTSOFT lambda) {
+        static MemorySegment ofNative(@NotNull ILPALSOURCEI64DIRECTSOFT lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull LPALSOURCEI64DIRECTSOFT lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull ILPALSOURCEI64DIRECTSOFT lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), LPALSOURCEI64DIRECTSOFT, arena);
         }
     }
 
     @FunctionalInterface
-    public interface LPALSOURCEI64SOFT {
+    public interface ILPALSOURCEI64SOFT {
         void invoke(
             @NativeType("ALuint") int p0,
             @NativeType("ALenum") int p1,
             @NativeType("ALint64SOFT") long p2
         );
 
-        static MethodHandle of(@NotNull LPALSOURCEI64SOFT lambda) {
+        static MethodHandle of(@NotNull ILPALSOURCEI64SOFT lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(LPALSOURCEI64SOFT.class, "invoke", LPALSOURCEI64SOFT.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(ILPALSOURCEI64SOFT.class, "invoke", LPALSOURCEI64SOFT.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull LPALSOURCEI64SOFT lambda) {
+        static MemorySegment ofNative(@NotNull ILPALSOURCEI64SOFT lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull LPALSOURCEI64SOFT lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull ILPALSOURCEI64SOFT lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), LPALSOURCEI64SOFT, arena);
         }
     }
 
     @FunctionalInterface
-    public interface LPALSOURCEI64VDIRECTSOFT {
+    public interface ILPALSOURCEI64VDIRECTSOFT {
         void invoke(
-            ALCcontext p0,
+            @NativeType("ALCcontext") MemorySegment p0,
             @NativeType("ALuint") int p1,
             @NativeType("ALenum") int p2,
             @Pointer(comment="void*") @NotNull MemorySegment p3
         );
 
-        static MethodHandle of(@NotNull LPALSOURCEI64VDIRECTSOFT lambda) {
+        static MethodHandle of(@NotNull ILPALSOURCEI64VDIRECTSOFT lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(LPALSOURCEI64VDIRECTSOFT.class, "invoke", LPALSOURCEI64VDIRECTSOFT.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(ILPALSOURCEI64VDIRECTSOFT.class, "invoke", LPALSOURCEI64VDIRECTSOFT.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull LPALSOURCEI64VDIRECTSOFT lambda) {
+        static MemorySegment ofNative(@NotNull ILPALSOURCEI64VDIRECTSOFT lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull LPALSOURCEI64VDIRECTSOFT lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull ILPALSOURCEI64VDIRECTSOFT lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), LPALSOURCEI64VDIRECTSOFT, arena);
         }
     }
 
     @FunctionalInterface
-    public interface LPALSOURCEI64VSOFT {
+    public interface ILPALSOURCEI64VSOFT {
         void invoke(
             @NativeType("ALuint") int p0,
             @NativeType("ALenum") int p1,
             @Pointer(comment="void*") @NotNull MemorySegment p2
         );
 
-        static MethodHandle of(@NotNull LPALSOURCEI64VSOFT lambda) {
+        static MethodHandle of(@NotNull ILPALSOURCEI64VSOFT lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(LPALSOURCEI64VSOFT.class, "invoke", LPALSOURCEI64VSOFT.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(ILPALSOURCEI64VSOFT.class, "invoke", LPALSOURCEI64VSOFT.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull LPALSOURCEI64VSOFT lambda) {
+        static MemorySegment ofNative(@NotNull ILPALSOURCEI64VSOFT lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull LPALSOURCEI64VSOFT lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull ILPALSOURCEI64VSOFT lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), LPALSOURCEI64VSOFT, arena);
         }
     }
 
     @FunctionalInterface
-    public interface LPALSOURCEIDIRECT {
+    public interface ILPALSOURCEIDIRECT {
         void invoke(
-            ALCcontext p0,
+            @NativeType("ALCcontext") MemorySegment p0,
             @NativeType("ALuint") int p1,
             @NativeType("ALenum") int p2,
             @NativeType("ALint") int p3
         );
 
-        static MethodHandle of(@NotNull LPALSOURCEIDIRECT lambda) {
+        static MethodHandle of(@NotNull ILPALSOURCEIDIRECT lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(LPALSOURCEIDIRECT.class, "invoke", LPALSOURCEIDIRECT.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(ILPALSOURCEIDIRECT.class, "invoke", LPALSOURCEIDIRECT.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull LPALSOURCEIDIRECT lambda) {
+        static MemorySegment ofNative(@NotNull ILPALSOURCEIDIRECT lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull LPALSOURCEIDIRECT lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull ILPALSOURCEIDIRECT lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), LPALSOURCEIDIRECT, arena);
         }
     }
 
     @FunctionalInterface
-    public interface LPALSOURCEIV {
+    public interface ILPALSOURCEIV {
         void invoke(
             @NativeType("ALuint") int p0,
             @NativeType("ALenum") int p1,
             @Pointer(comment="void*") @NotNull MemorySegment p2
         );
 
-        static MethodHandle of(@NotNull LPALSOURCEIV lambda) {
+        static MethodHandle of(@NotNull ILPALSOURCEIV lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(LPALSOURCEIV.class, "invoke", LPALSOURCEIV.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(ILPALSOURCEIV.class, "invoke", LPALSOURCEIV.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull LPALSOURCEIV lambda) {
+        static MemorySegment ofNative(@NotNull ILPALSOURCEIV lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull LPALSOURCEIV lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull ILPALSOURCEIV lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), LPALSOURCEIV, arena);
         }
     }
 
     @FunctionalInterface
-    public interface LPALSOURCEIVDIRECT {
+    public interface ILPALSOURCEIVDIRECT {
         void invoke(
-            ALCcontext p0,
+            @NativeType("ALCcontext") MemorySegment p0,
             @NativeType("ALuint") int p1,
             @NativeType("ALenum") int p2,
             @Pointer(comment="void*") @NotNull MemorySegment p3
         );
 
-        static MethodHandle of(@NotNull LPALSOURCEIVDIRECT lambda) {
+        static MethodHandle of(@NotNull ILPALSOURCEIVDIRECT lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(LPALSOURCEIVDIRECT.class, "invoke", LPALSOURCEIVDIRECT.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(ILPALSOURCEIVDIRECT.class, "invoke", LPALSOURCEIVDIRECT.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull LPALSOURCEIVDIRECT lambda) {
+        static MemorySegment ofNative(@NotNull ILPALSOURCEIVDIRECT lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull LPALSOURCEIVDIRECT lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull ILPALSOURCEIVDIRECT lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), LPALSOURCEIVDIRECT, arena);
         }
     }
 
     @FunctionalInterface
-    public interface LPALSOURCEPAUSE {
+    public interface ILPALSOURCEPAUSE {
         void invoke(
             @NativeType("ALuint") int p0
         );
 
-        static MethodHandle of(@NotNull LPALSOURCEPAUSE lambda) {
+        static MethodHandle of(@NotNull ILPALSOURCEPAUSE lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(LPALSOURCEPAUSE.class, "invoke", LPALSOURCEPAUSE.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(ILPALSOURCEPAUSE.class, "invoke", LPALSOURCEPAUSE.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull LPALSOURCEPAUSE lambda) {
+        static MemorySegment ofNative(@NotNull ILPALSOURCEPAUSE lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull LPALSOURCEPAUSE lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull ILPALSOURCEPAUSE lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), LPALSOURCEPAUSE, arena);
         }
     }
 
     @FunctionalInterface
-    public interface LPALSOURCEPAUSEDIRECT {
+    public interface ILPALSOURCEPAUSEDIRECT {
         void invoke(
-            ALCcontext p0,
+            @NativeType("ALCcontext") MemorySegment p0,
             @NativeType("ALuint") int p1
         );
 
-        static MethodHandle of(@NotNull LPALSOURCEPAUSEDIRECT lambda) {
+        static MethodHandle of(@NotNull ILPALSOURCEPAUSEDIRECT lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(LPALSOURCEPAUSEDIRECT.class, "invoke", LPALSOURCEPAUSEDIRECT.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(ILPALSOURCEPAUSEDIRECT.class, "invoke", LPALSOURCEPAUSEDIRECT.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull LPALSOURCEPAUSEDIRECT lambda) {
+        static MemorySegment ofNative(@NotNull ILPALSOURCEPAUSEDIRECT lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull LPALSOURCEPAUSEDIRECT lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull ILPALSOURCEPAUSEDIRECT lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), LPALSOURCEPAUSEDIRECT, arena);
         }
     }
 
     @FunctionalInterface
-    public interface LPALSOURCEPAUSEV {
+    public interface ILPALSOURCEPAUSEV {
         void invoke(
             @NativeType("ALsizei") int p0,
             @Pointer(comment="void*") @NotNull MemorySegment p1
         );
 
-        static MethodHandle of(@NotNull LPALSOURCEPAUSEV lambda) {
+        static MethodHandle of(@NotNull ILPALSOURCEPAUSEV lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(LPALSOURCEPAUSEV.class, "invoke", LPALSOURCEPAUSEV.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(ILPALSOURCEPAUSEV.class, "invoke", LPALSOURCEPAUSEV.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull LPALSOURCEPAUSEV lambda) {
+        static MemorySegment ofNative(@NotNull ILPALSOURCEPAUSEV lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull LPALSOURCEPAUSEV lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull ILPALSOURCEPAUSEV lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), LPALSOURCEPAUSEV, arena);
         }
     }
 
     @FunctionalInterface
-    public interface LPALSOURCEPAUSEVDIRECT {
+    public interface ILPALSOURCEPAUSEVDIRECT {
         void invoke(
-            ALCcontext p0,
+            @NativeType("ALCcontext") MemorySegment p0,
             @NativeType("ALsizei") int p1,
             @Pointer(comment="void*") @NotNull MemorySegment p2
         );
 
-        static MethodHandle of(@NotNull LPALSOURCEPAUSEVDIRECT lambda) {
+        static MethodHandle of(@NotNull ILPALSOURCEPAUSEVDIRECT lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(LPALSOURCEPAUSEVDIRECT.class, "invoke", LPALSOURCEPAUSEVDIRECT.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(ILPALSOURCEPAUSEVDIRECT.class, "invoke", LPALSOURCEPAUSEVDIRECT.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull LPALSOURCEPAUSEVDIRECT lambda) {
+        static MemorySegment ofNative(@NotNull ILPALSOURCEPAUSEVDIRECT lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull LPALSOURCEPAUSEVDIRECT lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull ILPALSOURCEPAUSEVDIRECT lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), LPALSOURCEPAUSEVDIRECT, arena);
         }
     }
 
     @FunctionalInterface
-    public interface LPALSOURCEPLAY {
+    public interface ILPALSOURCEPLAY {
         void invoke(
             @NativeType("ALuint") int p0
         );
 
-        static MethodHandle of(@NotNull LPALSOURCEPLAY lambda) {
+        static MethodHandle of(@NotNull ILPALSOURCEPLAY lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(LPALSOURCEPLAY.class, "invoke", LPALSOURCEPLAY.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(ILPALSOURCEPLAY.class, "invoke", LPALSOURCEPLAY.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull LPALSOURCEPLAY lambda) {
+        static MemorySegment ofNative(@NotNull ILPALSOURCEPLAY lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull LPALSOURCEPLAY lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull ILPALSOURCEPLAY lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), LPALSOURCEPLAY, arena);
         }
     }
 
     @FunctionalInterface
-    public interface LPALSOURCEPLAYATTIMEDIRECTSOFT {
+    public interface ILPALSOURCEPLAYATTIMEDIRECTSOFT {
         void invoke(
-            ALCcontext p0,
+            @NativeType("ALCcontext") MemorySegment p0,
             @NativeType("ALuint") int p1,
             @NativeType("ALint64SOFT") long p2
         );
 
-        static MethodHandle of(@NotNull LPALSOURCEPLAYATTIMEDIRECTSOFT lambda) {
+        static MethodHandle of(@NotNull ILPALSOURCEPLAYATTIMEDIRECTSOFT lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(LPALSOURCEPLAYATTIMEDIRECTSOFT.class, "invoke", LPALSOURCEPLAYATTIMEDIRECTSOFT.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(ILPALSOURCEPLAYATTIMEDIRECTSOFT.class, "invoke", LPALSOURCEPLAYATTIMEDIRECTSOFT.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull LPALSOURCEPLAYATTIMEDIRECTSOFT lambda) {
+        static MemorySegment ofNative(@NotNull ILPALSOURCEPLAYATTIMEDIRECTSOFT lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull LPALSOURCEPLAYATTIMEDIRECTSOFT lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull ILPALSOURCEPLAYATTIMEDIRECTSOFT lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), LPALSOURCEPLAYATTIMEDIRECTSOFT, arena);
         }
     }
 
     @FunctionalInterface
-    public interface LPALSOURCEPLAYATTIMESOFT {
+    public interface ILPALSOURCEPLAYATTIMESOFT {
         void invoke(
             @NativeType("ALuint") int p0,
             @NativeType("ALint64SOFT") long p1
         );
 
-        static MethodHandle of(@NotNull LPALSOURCEPLAYATTIMESOFT lambda) {
+        static MethodHandle of(@NotNull ILPALSOURCEPLAYATTIMESOFT lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(LPALSOURCEPLAYATTIMESOFT.class, "invoke", LPALSOURCEPLAYATTIMESOFT.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(ILPALSOURCEPLAYATTIMESOFT.class, "invoke", LPALSOURCEPLAYATTIMESOFT.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull LPALSOURCEPLAYATTIMESOFT lambda) {
+        static MemorySegment ofNative(@NotNull ILPALSOURCEPLAYATTIMESOFT lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull LPALSOURCEPLAYATTIMESOFT lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull ILPALSOURCEPLAYATTIMESOFT lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), LPALSOURCEPLAYATTIMESOFT, arena);
         }
     }
 
     @FunctionalInterface
-    public interface LPALSOURCEPLAYATTIMEVDIRECTSOFT {
+    public interface ILPALSOURCEPLAYATTIMEVDIRECTSOFT {
         void invoke(
-            ALCcontext p0,
+            @NativeType("ALCcontext") MemorySegment p0,
             @NativeType("ALsizei") int p1,
             @Pointer(comment="void*") @NotNull MemorySegment p2,
             @NativeType("ALint64SOFT") long p3
         );
 
-        static MethodHandle of(@NotNull LPALSOURCEPLAYATTIMEVDIRECTSOFT lambda) {
+        static MethodHandle of(@NotNull ILPALSOURCEPLAYATTIMEVDIRECTSOFT lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(LPALSOURCEPLAYATTIMEVDIRECTSOFT.class, "invoke", LPALSOURCEPLAYATTIMEVDIRECTSOFT.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(ILPALSOURCEPLAYATTIMEVDIRECTSOFT.class, "invoke", LPALSOURCEPLAYATTIMEVDIRECTSOFT.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull LPALSOURCEPLAYATTIMEVDIRECTSOFT lambda) {
+        static MemorySegment ofNative(@NotNull ILPALSOURCEPLAYATTIMEVDIRECTSOFT lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull LPALSOURCEPLAYATTIMEVDIRECTSOFT lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull ILPALSOURCEPLAYATTIMEVDIRECTSOFT lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), LPALSOURCEPLAYATTIMEVDIRECTSOFT, arena);
         }
     }
 
     @FunctionalInterface
-    public interface LPALSOURCEPLAYATTIMEVSOFT {
+    public interface ILPALSOURCEPLAYATTIMEVSOFT {
         void invoke(
             @NativeType("ALsizei") int p0,
             @Pointer(comment="void*") @NotNull MemorySegment p1,
             @NativeType("ALint64SOFT") long p2
         );
 
-        static MethodHandle of(@NotNull LPALSOURCEPLAYATTIMEVSOFT lambda) {
+        static MethodHandle of(@NotNull ILPALSOURCEPLAYATTIMEVSOFT lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(LPALSOURCEPLAYATTIMEVSOFT.class, "invoke", LPALSOURCEPLAYATTIMEVSOFT.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(ILPALSOURCEPLAYATTIMEVSOFT.class, "invoke", LPALSOURCEPLAYATTIMEVSOFT.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull LPALSOURCEPLAYATTIMEVSOFT lambda) {
+        static MemorySegment ofNative(@NotNull ILPALSOURCEPLAYATTIMEVSOFT lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull LPALSOURCEPLAYATTIMEVSOFT lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull ILPALSOURCEPLAYATTIMEVSOFT lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), LPALSOURCEPLAYATTIMEVSOFT, arena);
         }
     }
 
     @FunctionalInterface
-    public interface LPALSOURCEPLAYDIRECT {
+    public interface ILPALSOURCEPLAYDIRECT {
         void invoke(
-            ALCcontext p0,
+            @NativeType("ALCcontext") MemorySegment p0,
             @NativeType("ALuint") int p1
         );
 
-        static MethodHandle of(@NotNull LPALSOURCEPLAYDIRECT lambda) {
+        static MethodHandle of(@NotNull ILPALSOURCEPLAYDIRECT lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(LPALSOURCEPLAYDIRECT.class, "invoke", LPALSOURCEPLAYDIRECT.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(ILPALSOURCEPLAYDIRECT.class, "invoke", LPALSOURCEPLAYDIRECT.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull LPALSOURCEPLAYDIRECT lambda) {
+        static MemorySegment ofNative(@NotNull ILPALSOURCEPLAYDIRECT lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull LPALSOURCEPLAYDIRECT lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull ILPALSOURCEPLAYDIRECT lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), LPALSOURCEPLAYDIRECT, arena);
         }
     }
 
     @FunctionalInterface
-    public interface LPALSOURCEPLAYV {
+    public interface ILPALSOURCEPLAYV {
         void invoke(
             @NativeType("ALsizei") int p0,
             @Pointer(comment="void*") @NotNull MemorySegment p1
         );
 
-        static MethodHandle of(@NotNull LPALSOURCEPLAYV lambda) {
+        static MethodHandle of(@NotNull ILPALSOURCEPLAYV lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(LPALSOURCEPLAYV.class, "invoke", LPALSOURCEPLAYV.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(ILPALSOURCEPLAYV.class, "invoke", LPALSOURCEPLAYV.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull LPALSOURCEPLAYV lambda) {
+        static MemorySegment ofNative(@NotNull ILPALSOURCEPLAYV lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull LPALSOURCEPLAYV lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull ILPALSOURCEPLAYV lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), LPALSOURCEPLAYV, arena);
         }
     }
 
     @FunctionalInterface
-    public interface LPALSOURCEPLAYVDIRECT {
+    public interface ILPALSOURCEPLAYVDIRECT {
         void invoke(
-            ALCcontext p0,
+            @NativeType("ALCcontext") MemorySegment p0,
             @NativeType("ALsizei") int p1,
             @Pointer(comment="void*") @NotNull MemorySegment p2
         );
 
-        static MethodHandle of(@NotNull LPALSOURCEPLAYVDIRECT lambda) {
+        static MethodHandle of(@NotNull ILPALSOURCEPLAYVDIRECT lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(LPALSOURCEPLAYVDIRECT.class, "invoke", LPALSOURCEPLAYVDIRECT.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(ILPALSOURCEPLAYVDIRECT.class, "invoke", LPALSOURCEPLAYVDIRECT.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull LPALSOURCEPLAYVDIRECT lambda) {
+        static MemorySegment ofNative(@NotNull ILPALSOURCEPLAYVDIRECT lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull LPALSOURCEPLAYVDIRECT lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull ILPALSOURCEPLAYVDIRECT lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), LPALSOURCEPLAYVDIRECT, arena);
         }
     }
 
     @FunctionalInterface
-    public interface LPALSOURCEQUEUEBUFFERS {
+    public interface ILPALSOURCEQUEUEBUFFERS {
         void invoke(
             @NativeType("ALuint") int p0,
             @NativeType("ALsizei") int p1,
             @Pointer(comment="void*") @NotNull MemorySegment p2
         );
 
-        static MethodHandle of(@NotNull LPALSOURCEQUEUEBUFFERS lambda) {
+        static MethodHandle of(@NotNull ILPALSOURCEQUEUEBUFFERS lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(LPALSOURCEQUEUEBUFFERS.class, "invoke", LPALSOURCEQUEUEBUFFERS.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(ILPALSOURCEQUEUEBUFFERS.class, "invoke", LPALSOURCEQUEUEBUFFERS.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull LPALSOURCEQUEUEBUFFERS lambda) {
+        static MemorySegment ofNative(@NotNull ILPALSOURCEQUEUEBUFFERS lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull LPALSOURCEQUEUEBUFFERS lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull ILPALSOURCEQUEUEBUFFERS lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), LPALSOURCEQUEUEBUFFERS, arena);
         }
     }
 
     @FunctionalInterface
-    public interface LPALSOURCEQUEUEBUFFERSDIRECT {
+    public interface ILPALSOURCEQUEUEBUFFERSDIRECT {
         void invoke(
-            ALCcontext p0,
+            @NativeType("ALCcontext") MemorySegment p0,
             @NativeType("ALuint") int p1,
             @NativeType("ALsizei") int p2,
             @Pointer(comment="void*") @NotNull MemorySegment p3
         );
 
-        static MethodHandle of(@NotNull LPALSOURCEQUEUEBUFFERSDIRECT lambda) {
+        static MethodHandle of(@NotNull ILPALSOURCEQUEUEBUFFERSDIRECT lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(LPALSOURCEQUEUEBUFFERSDIRECT.class, "invoke", LPALSOURCEQUEUEBUFFERSDIRECT.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(ILPALSOURCEQUEUEBUFFERSDIRECT.class, "invoke", LPALSOURCEQUEUEBUFFERSDIRECT.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull LPALSOURCEQUEUEBUFFERSDIRECT lambda) {
+        static MemorySegment ofNative(@NotNull ILPALSOURCEQUEUEBUFFERSDIRECT lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull LPALSOURCEQUEUEBUFFERSDIRECT lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull ILPALSOURCEQUEUEBUFFERSDIRECT lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), LPALSOURCEQUEUEBUFFERSDIRECT, arena);
         }
     }
 
     @FunctionalInterface
-    public interface LPALSOURCEREWIND {
+    public interface ILPALSOURCEREWIND {
         void invoke(
             @NativeType("ALuint") int p0
         );
 
-        static MethodHandle of(@NotNull LPALSOURCEREWIND lambda) {
+        static MethodHandle of(@NotNull ILPALSOURCEREWIND lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(LPALSOURCEREWIND.class, "invoke", LPALSOURCEREWIND.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(ILPALSOURCEREWIND.class, "invoke", LPALSOURCEREWIND.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull LPALSOURCEREWIND lambda) {
+        static MemorySegment ofNative(@NotNull ILPALSOURCEREWIND lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull LPALSOURCEREWIND lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull ILPALSOURCEREWIND lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), LPALSOURCEREWIND, arena);
         }
     }
 
     @FunctionalInterface
-    public interface LPALSOURCEREWINDDIRECT {
+    public interface ILPALSOURCEREWINDDIRECT {
         void invoke(
-            ALCcontext p0,
+            @NativeType("ALCcontext") MemorySegment p0,
             @NativeType("ALuint") int p1
         );
 
-        static MethodHandle of(@NotNull LPALSOURCEREWINDDIRECT lambda) {
+        static MethodHandle of(@NotNull ILPALSOURCEREWINDDIRECT lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(LPALSOURCEREWINDDIRECT.class, "invoke", LPALSOURCEREWINDDIRECT.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(ILPALSOURCEREWINDDIRECT.class, "invoke", LPALSOURCEREWINDDIRECT.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull LPALSOURCEREWINDDIRECT lambda) {
+        static MemorySegment ofNative(@NotNull ILPALSOURCEREWINDDIRECT lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull LPALSOURCEREWINDDIRECT lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull ILPALSOURCEREWINDDIRECT lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), LPALSOURCEREWINDDIRECT, arena);
         }
     }
 
     @FunctionalInterface
-    public interface LPALSOURCEREWINDV {
+    public interface ILPALSOURCEREWINDV {
         void invoke(
             @NativeType("ALsizei") int p0,
             @Pointer(comment="void*") @NotNull MemorySegment p1
         );
 
-        static MethodHandle of(@NotNull LPALSOURCEREWINDV lambda) {
+        static MethodHandle of(@NotNull ILPALSOURCEREWINDV lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(LPALSOURCEREWINDV.class, "invoke", LPALSOURCEREWINDV.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(ILPALSOURCEREWINDV.class, "invoke", LPALSOURCEREWINDV.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull LPALSOURCEREWINDV lambda) {
+        static MemorySegment ofNative(@NotNull ILPALSOURCEREWINDV lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull LPALSOURCEREWINDV lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull ILPALSOURCEREWINDV lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), LPALSOURCEREWINDV, arena);
         }
     }
 
     @FunctionalInterface
-    public interface LPALSOURCEREWINDVDIRECT {
+    public interface ILPALSOURCEREWINDVDIRECT {
         void invoke(
-            ALCcontext p0,
+            @NativeType("ALCcontext") MemorySegment p0,
             @NativeType("ALsizei") int p1,
             @Pointer(comment="void*") @NotNull MemorySegment p2
         );
 
-        static MethodHandle of(@NotNull LPALSOURCEREWINDVDIRECT lambda) {
+        static MethodHandle of(@NotNull ILPALSOURCEREWINDVDIRECT lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(LPALSOURCEREWINDVDIRECT.class, "invoke", LPALSOURCEREWINDVDIRECT.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(ILPALSOURCEREWINDVDIRECT.class, "invoke", LPALSOURCEREWINDVDIRECT.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull LPALSOURCEREWINDVDIRECT lambda) {
+        static MemorySegment ofNative(@NotNull ILPALSOURCEREWINDVDIRECT lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull LPALSOURCEREWINDVDIRECT lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull ILPALSOURCEREWINDVDIRECT lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), LPALSOURCEREWINDVDIRECT, arena);
         }
     }
 
     @FunctionalInterface
-    public interface LPALSOURCESTOP {
+    public interface ILPALSOURCESTOP {
         void invoke(
             @NativeType("ALuint") int p0
         );
 
-        static MethodHandle of(@NotNull LPALSOURCESTOP lambda) {
+        static MethodHandle of(@NotNull ILPALSOURCESTOP lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(LPALSOURCESTOP.class, "invoke", LPALSOURCESTOP.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(ILPALSOURCESTOP.class, "invoke", LPALSOURCESTOP.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull LPALSOURCESTOP lambda) {
+        static MemorySegment ofNative(@NotNull ILPALSOURCESTOP lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull LPALSOURCESTOP lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull ILPALSOURCESTOP lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), LPALSOURCESTOP, arena);
         }
     }
 
     @FunctionalInterface
-    public interface LPALSOURCESTOPDIRECT {
+    public interface ILPALSOURCESTOPDIRECT {
         void invoke(
-            ALCcontext p0,
+            @NativeType("ALCcontext") MemorySegment p0,
             @NativeType("ALuint") int p1
         );
 
-        static MethodHandle of(@NotNull LPALSOURCESTOPDIRECT lambda) {
+        static MethodHandle of(@NotNull ILPALSOURCESTOPDIRECT lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(LPALSOURCESTOPDIRECT.class, "invoke", LPALSOURCESTOPDIRECT.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(ILPALSOURCESTOPDIRECT.class, "invoke", LPALSOURCESTOPDIRECT.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull LPALSOURCESTOPDIRECT lambda) {
+        static MemorySegment ofNative(@NotNull ILPALSOURCESTOPDIRECT lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull LPALSOURCESTOPDIRECT lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull ILPALSOURCESTOPDIRECT lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), LPALSOURCESTOPDIRECT, arena);
         }
     }
 
     @FunctionalInterface
-    public interface LPALSOURCESTOPV {
+    public interface ILPALSOURCESTOPV {
         void invoke(
             @NativeType("ALsizei") int p0,
             @Pointer(comment="void*") @NotNull MemorySegment p1
         );
 
-        static MethodHandle of(@NotNull LPALSOURCESTOPV lambda) {
+        static MethodHandle of(@NotNull ILPALSOURCESTOPV lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(LPALSOURCESTOPV.class, "invoke", LPALSOURCESTOPV.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(ILPALSOURCESTOPV.class, "invoke", LPALSOURCESTOPV.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull LPALSOURCESTOPV lambda) {
+        static MemorySegment ofNative(@NotNull ILPALSOURCESTOPV lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull LPALSOURCESTOPV lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull ILPALSOURCESTOPV lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), LPALSOURCESTOPV, arena);
         }
     }
 
     @FunctionalInterface
-    public interface LPALSOURCESTOPVDIRECT {
+    public interface ILPALSOURCESTOPVDIRECT {
         void invoke(
-            ALCcontext p0,
+            @NativeType("ALCcontext") MemorySegment p0,
             @NativeType("ALsizei") int p1,
             @Pointer(comment="void*") @NotNull MemorySegment p2
         );
 
-        static MethodHandle of(@NotNull LPALSOURCESTOPVDIRECT lambda) {
+        static MethodHandle of(@NotNull ILPALSOURCESTOPVDIRECT lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(LPALSOURCESTOPVDIRECT.class, "invoke", LPALSOURCESTOPVDIRECT.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(ILPALSOURCESTOPVDIRECT.class, "invoke", LPALSOURCESTOPVDIRECT.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull LPALSOURCESTOPVDIRECT lambda) {
+        static MemorySegment ofNative(@NotNull ILPALSOURCESTOPVDIRECT lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull LPALSOURCESTOPVDIRECT lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull ILPALSOURCESTOPVDIRECT lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), LPALSOURCESTOPVDIRECT, arena);
         }
     }
 
     @FunctionalInterface
-    public interface LPALSOURCEUNQUEUEBUFFERS {
+    public interface ILPALSOURCEUNQUEUEBUFFERS {
         void invoke(
             @NativeType("ALuint") int p0,
             @NativeType("ALsizei") int p1,
             @Pointer(comment="void*") @NotNull MemorySegment p2
         );
 
-        static MethodHandle of(@NotNull LPALSOURCEUNQUEUEBUFFERS lambda) {
+        static MethodHandle of(@NotNull ILPALSOURCEUNQUEUEBUFFERS lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(LPALSOURCEUNQUEUEBUFFERS.class, "invoke", LPALSOURCEUNQUEUEBUFFERS.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(ILPALSOURCEUNQUEUEBUFFERS.class, "invoke", LPALSOURCEUNQUEUEBUFFERS.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull LPALSOURCEUNQUEUEBUFFERS lambda) {
+        static MemorySegment ofNative(@NotNull ILPALSOURCEUNQUEUEBUFFERS lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull LPALSOURCEUNQUEUEBUFFERS lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull ILPALSOURCEUNQUEUEBUFFERS lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), LPALSOURCEUNQUEUEBUFFERS, arena);
         }
     }
 
     @FunctionalInterface
-    public interface LPALSOURCEUNQUEUEBUFFERSDIRECT {
+    public interface ILPALSOURCEUNQUEUEBUFFERSDIRECT {
         void invoke(
-            ALCcontext p0,
+            @NativeType("ALCcontext") MemorySegment p0,
             @NativeType("ALuint") int p1,
             @NativeType("ALsizei") int p2,
             @Pointer(comment="void*") @NotNull MemorySegment p3
         );
 
-        static MethodHandle of(@NotNull LPALSOURCEUNQUEUEBUFFERSDIRECT lambda) {
+        static MethodHandle of(@NotNull ILPALSOURCEUNQUEUEBUFFERSDIRECT lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(LPALSOURCEUNQUEUEBUFFERSDIRECT.class, "invoke", LPALSOURCEUNQUEUEBUFFERSDIRECT.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(ILPALSOURCEUNQUEUEBUFFERSDIRECT.class, "invoke", LPALSOURCEUNQUEUEBUFFERSDIRECT.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull LPALSOURCEUNQUEUEBUFFERSDIRECT lambda) {
+        static MemorySegment ofNative(@NotNull ILPALSOURCEUNQUEUEBUFFERSDIRECT lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull LPALSOURCEUNQUEUEBUFFERSDIRECT lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull ILPALSOURCEUNQUEUEBUFFERSDIRECT lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), LPALSOURCEUNQUEUEBUFFERSDIRECT, arena);
         }
     }
 
     @FunctionalInterface
-    public interface LPALSPEEDOFSOUND {
+    public interface ILPALSPEEDOFSOUND {
         void invoke(
             @NativeType("ALfloat") float p0
         );
 
-        static MethodHandle of(@NotNull LPALSPEEDOFSOUND lambda) {
+        static MethodHandle of(@NotNull ILPALSPEEDOFSOUND lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(LPALSPEEDOFSOUND.class, "invoke", LPALSPEEDOFSOUND.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(ILPALSPEEDOFSOUND.class, "invoke", LPALSPEEDOFSOUND.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull LPALSPEEDOFSOUND lambda) {
+        static MemorySegment ofNative(@NotNull ILPALSPEEDOFSOUND lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull LPALSPEEDOFSOUND lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull ILPALSPEEDOFSOUND lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), LPALSPEEDOFSOUND, arena);
         }
     }
 
     @FunctionalInterface
-    public interface LPALSPEEDOFSOUNDDIRECT {
+    public interface ILPALSPEEDOFSOUNDDIRECT {
         void invoke(
-            ALCcontext p0,
+            @NativeType("ALCcontext") MemorySegment p0,
             @NativeType("ALfloat") float p1
         );
 
-        static MethodHandle of(@NotNull LPALSPEEDOFSOUNDDIRECT lambda) {
+        static MethodHandle of(@NotNull ILPALSPEEDOFSOUNDDIRECT lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(LPALSPEEDOFSOUNDDIRECT.class, "invoke", LPALSPEEDOFSOUNDDIRECT.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(ILPALSPEEDOFSOUNDDIRECT.class, "invoke", LPALSPEEDOFSOUNDDIRECT.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull LPALSPEEDOFSOUNDDIRECT lambda) {
+        static MemorySegment ofNative(@NotNull ILPALSPEEDOFSOUNDDIRECT lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull LPALSPEEDOFSOUNDDIRECT lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull ILPALSPEEDOFSOUNDDIRECT lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), LPALSPEEDOFSOUNDDIRECT, arena);
         }
     }
 
     @FunctionalInterface
-    public interface LPEAXGETBUFFERMODEDIRECT {
+    public interface ILPEAXGETBUFFERMODEDIRECT {
         @NativeType("ALenum") int invoke(
-            ALCcontext p0,
+            @NativeType("ALCcontext") MemorySegment p0,
             @NativeType("ALuint") int p1,
             @Pointer(comment="void*") @NotNull MemorySegment p2
         );
 
-        static MethodHandle of(@NotNull LPEAXGETBUFFERMODEDIRECT lambda) {
+        static MethodHandle of(@NotNull ILPEAXGETBUFFERMODEDIRECT lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(LPEAXGETBUFFERMODEDIRECT.class, "invoke", LPEAXGETBUFFERMODEDIRECT.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(ILPEAXGETBUFFERMODEDIRECT.class, "invoke", LPEAXGETBUFFERMODEDIRECT.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull LPEAXGETBUFFERMODEDIRECT lambda) {
+        static MemorySegment ofNative(@NotNull ILPEAXGETBUFFERMODEDIRECT lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull LPEAXGETBUFFERMODEDIRECT lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull ILPEAXGETBUFFERMODEDIRECT lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), LPEAXGETBUFFERMODEDIRECT, arena);
         }
     }
 
     @FunctionalInterface
-    public interface LPEAXGETDIRECT {
+    public interface ILPEAXGETDIRECT {
         @NativeType("ALenum") int invoke(
-            ALCcontext p0,
-            _GUID p1,
+            @NativeType("ALCcontext") MemorySegment p0,
+            @NativeType("_GUID") MemorySegment p1,
             @NativeType("ALuint") int p2,
             @NativeType("ALuint") int p3,
             @Pointer(comment="void*") @NotNull MemorySegment p4,
             @NativeType("ALuint") int p5
         );
 
-        static MethodHandle of(@NotNull LPEAXGETDIRECT lambda) {
+        static MethodHandle of(@NotNull ILPEAXGETDIRECT lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(LPEAXGETDIRECT.class, "invoke", LPEAXGETDIRECT.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(ILPEAXGETDIRECT.class, "invoke", LPEAXGETDIRECT.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull LPEAXGETDIRECT lambda) {
+        static MemorySegment ofNative(@NotNull ILPEAXGETDIRECT lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull LPEAXGETDIRECT lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull ILPEAXGETDIRECT lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), LPEAXGETDIRECT, arena);
         }
     }
 
     @FunctionalInterface
-    public interface LPEAXSETBUFFERMODEDIRECT {
+    public interface ILPEAXSETBUFFERMODEDIRECT {
         @NativeType("ALboolean") byte invoke(
-            ALCcontext p0,
+            @NativeType("ALCcontext") MemorySegment p0,
             @NativeType("ALsizei") int p1,
             @Pointer(comment="void*") @NotNull MemorySegment p2,
             @NativeType("ALint") int p3
         );
 
-        static MethodHandle of(@NotNull LPEAXSETBUFFERMODEDIRECT lambda) {
+        static MethodHandle of(@NotNull ILPEAXSETBUFFERMODEDIRECT lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(LPEAXSETBUFFERMODEDIRECT.class, "invoke", LPEAXSETBUFFERMODEDIRECT.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(ILPEAXSETBUFFERMODEDIRECT.class, "invoke", LPEAXSETBUFFERMODEDIRECT.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull LPEAXSETBUFFERMODEDIRECT lambda) {
+        static MemorySegment ofNative(@NotNull ILPEAXSETBUFFERMODEDIRECT lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull LPEAXSETBUFFERMODEDIRECT lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull ILPEAXSETBUFFERMODEDIRECT lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), LPEAXSETBUFFERMODEDIRECT, arena);
         }
     }
 
     @FunctionalInterface
-    public interface LPEAXSETDIRECT {
+    public interface ILPEAXSETDIRECT {
         @NativeType("ALenum") int invoke(
-            ALCcontext p0,
-            _GUID p1,
+            @NativeType("ALCcontext") MemorySegment p0,
+            @NativeType("_GUID") MemorySegment p1,
             @NativeType("ALuint") int p2,
             @NativeType("ALuint") int p3,
             @Pointer(comment="void*") @NotNull MemorySegment p4,
             @NativeType("ALuint") int p5
         );
 
-        static MethodHandle of(@NotNull LPEAXSETDIRECT lambda) {
+        static MethodHandle of(@NotNull ILPEAXSETDIRECT lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(LPEAXSETDIRECT.class, "invoke", LPEAXSETDIRECT.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(ILPEAXSETDIRECT.class, "invoke", LPEAXSETDIRECT.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull LPEAXSETDIRECT lambda) {
+        static MemorySegment ofNative(@NotNull ILPEAXSETDIRECT lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull LPEAXSETDIRECT lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull ILPEAXSETDIRECT lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), LPEAXSETDIRECT, arena);
         }
     }
 
     @FunctionalInterface
-    public interface PFNALBUFFERDATASTATICPROC {
+    public interface IPFNALBUFFERDATASTATICPROC {
         void invoke(
             @NativeType("ALuint") int p0,
             @NativeType("ALenum") int p1,
@@ -10844,26 +10844,26 @@ public final class ALFunctionTypes {
             @NativeType("ALsizei") int p4
         );
 
-        static MethodHandle of(@NotNull PFNALBUFFERDATASTATICPROC lambda) {
+        static MethodHandle of(@NotNull IPFNALBUFFERDATASTATICPROC lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(PFNALBUFFERDATASTATICPROC.class, "invoke", PFNALBUFFERDATASTATICPROC.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(IPFNALBUFFERDATASTATICPROC.class, "invoke", PFNALBUFFERDATASTATICPROC.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull PFNALBUFFERDATASTATICPROC lambda) {
+        static MemorySegment ofNative(@NotNull IPFNALBUFFERDATASTATICPROC lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull PFNALBUFFERDATASTATICPROC lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull IPFNALBUFFERDATASTATICPROC lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), PFNALBUFFERDATASTATICPROC, arena);
         }
     }
 
     @FunctionalInterface
-    public interface PFNALBUFFERSUBDATASOFTPROC {
+    public interface IPFNALBUFFERSUBDATASOFTPROC {
         void invoke(
             @NativeType("ALuint") int p0,
             @NativeType("ALenum") int p1,
@@ -10872,67 +10872,67 @@ public final class ALFunctionTypes {
             @NativeType("ALsizei") int p4
         );
 
-        static MethodHandle of(@NotNull PFNALBUFFERSUBDATASOFTPROC lambda) {
+        static MethodHandle of(@NotNull IPFNALBUFFERSUBDATASOFTPROC lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(PFNALBUFFERSUBDATASOFTPROC.class, "invoke", PFNALBUFFERSUBDATASOFTPROC.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(IPFNALBUFFERSUBDATASOFTPROC.class, "invoke", PFNALBUFFERSUBDATASOFTPROC.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull PFNALBUFFERSUBDATASOFTPROC lambda) {
+        static MemorySegment ofNative(@NotNull IPFNALBUFFERSUBDATASOFTPROC lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull PFNALBUFFERSUBDATASOFTPROC lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull IPFNALBUFFERSUBDATASOFTPROC lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), PFNALBUFFERSUBDATASOFTPROC, arena);
         }
     }
 
     @FunctionalInterface
-    public interface PFNALCGETTHREADCONTEXTPROC {
-        ALCcontext invoke(
+    public interface IPFNALCGETTHREADCONTEXTPROC {
+        @NativeType("ALCcontext") MemorySegment invoke(
         );
 
-        static MethodHandle of(@NotNull PFNALCGETTHREADCONTEXTPROC lambda) {
+        static MethodHandle of(@NotNull IPFNALCGETTHREADCONTEXTPROC lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(PFNALCGETTHREADCONTEXTPROC.class, "invoke", PFNALCGETTHREADCONTEXTPROC.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(IPFNALCGETTHREADCONTEXTPROC.class, "invoke", PFNALCGETTHREADCONTEXTPROC.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull PFNALCGETTHREADCONTEXTPROC lambda) {
+        static MemorySegment ofNative(@NotNull IPFNALCGETTHREADCONTEXTPROC lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull PFNALCGETTHREADCONTEXTPROC lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull IPFNALCGETTHREADCONTEXTPROC lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), PFNALCGETTHREADCONTEXTPROC, arena);
         }
     }
 
     @FunctionalInterface
-    public interface PFNALCSETTHREADCONTEXTPROC {
+    public interface IPFNALCSETTHREADCONTEXTPROC {
         @NativeType("ALCboolean") byte invoke(
-            ALCcontext p0
+            @NativeType("ALCcontext") MemorySegment p0
         );
 
-        static MethodHandle of(@NotNull PFNALCSETTHREADCONTEXTPROC lambda) {
+        static MethodHandle of(@NotNull IPFNALCSETTHREADCONTEXTPROC lambda) {
             try {
-                return MethodHandles.lookup().findVirtual(PFNALCSETTHREADCONTEXTPROC.class, "invoke", PFNALCSETTHREADCONTEXTPROC.toMethodType()).bindTo(lambda);
+                return MethodHandles.lookup().findVirtual(IPFNALCSETTHREADCONTEXTPROC.class, "invoke", PFNALCSETTHREADCONTEXTPROC.toMethodType()).bindTo(lambda);
             }
             catch (NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        static MemorySegment ofNative(@NotNull PFNALCSETTHREADCONTEXTPROC lambda) {
+        static MemorySegment ofNative(@NotNull IPFNALCSETTHREADCONTEXTPROC lambda) {
             return ofNative(Arena.global(), lambda);
         }
 
-        static MemorySegment ofNative(@NotNull Arena arena, @NotNull PFNALCSETTHREADCONTEXTPROC lambda) {
+        static MemorySegment ofNative(@NotNull Arena arena, @NotNull IPFNALCSETTHREADCONTEXTPROC lambda) {
             return Linker.nativeLinker().upcallStub(of(lambda), PFNALCSETTHREADCONTEXTPROC, arena);
         }
     }
