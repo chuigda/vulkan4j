@@ -186,7 +186,7 @@ if (result == VkResult.ERROR_OUT_OF_DATE_KHR || framebufferResized) {
 // ...
 ```
 
-It is important to do this after `vkQueuePresentKHR` to ensure that the semaphores are in a consistent state, otherwise a signaled semaphore may never be properly waited upon. Now to actually detect resizes we can use the `GLFW::etFramebufferSizeCallback` function in the GLFW framework to set up a callback:
+It is important to do this after `vkQueuePresentKHR` to ensure that the semaphores are in a consistent state, otherwise a signaled semaphore may never be properly waited upon. Now to actually detect resizes we can use the `GLFW::setFramebufferSizeCallback` function in the GLFW framework to set up a callback:
 
 ```java
 private void initWindow() {
