@@ -17,6 +17,7 @@ import club.doki7.webgpu.bitmask.*;
 import club.doki7.webgpu.handle.*;
 import club.doki7.webgpu.enumtype.*;
 import static club.doki7.webgpu.WGPUConstants.*;
+import club.doki7.webgpu.WGPUFunctionTypes.*;
 
 /// Represents a pointer to a {@code WGPURequestDeviceCallbackInfo} structure in native memory.
 ///
@@ -224,6 +225,14 @@ public record WGPURequestDeviceCallbackInfo(@NotNull MemorySegment segment) impl
     public WGPURequestDeviceCallbackInfo callback(@Pointer(comment="WGPURequestDeviceCallback") @NotNull MemorySegment value) {
         segment.set(LAYOUT$callback, OFFSET$callback, value);
         return this;
+    }
+
+    public WGPURequestDeviceCallbackInfo callback(@NotNull WGPURequestDeviceCallback value) {
+        return callback(WGPURequestDeviceCallback.ofNative(value));
+    }
+
+    public WGPURequestDeviceCallbackInfo callback(@NotNull Arena arena, @NotNull WGPURequestDeviceCallback value) {
+        return callback(WGPURequestDeviceCallback.ofNative(arena, value));
     }
 
     public WGPURequestDeviceCallbackInfo callback(@Nullable IPointer pointer) {

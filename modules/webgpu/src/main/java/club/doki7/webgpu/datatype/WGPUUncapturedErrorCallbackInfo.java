@@ -17,6 +17,7 @@ import club.doki7.webgpu.bitmask.*;
 import club.doki7.webgpu.handle.*;
 import club.doki7.webgpu.enumtype.*;
 import static club.doki7.webgpu.WGPUConstants.*;
+import club.doki7.webgpu.WGPUFunctionTypes.*;
 
 /// Represents a pointer to a {@code WGPUUncapturedErrorCallbackInfo} structure in native memory.
 ///
@@ -224,6 +225,14 @@ public record WGPUUncapturedErrorCallbackInfo(@NotNull MemorySegment segment) im
     public WGPUUncapturedErrorCallbackInfo callback(@Pointer(comment="WGPUUncapturedErrorCallback") @NotNull MemorySegment value) {
         segment.set(LAYOUT$callback, OFFSET$callback, value);
         return this;
+    }
+
+    public WGPUUncapturedErrorCallbackInfo callback(@NotNull WGPUUncapturedErrorCallback value) {
+        return callback(WGPUUncapturedErrorCallback.ofNative(value));
+    }
+
+    public WGPUUncapturedErrorCallbackInfo callback(@NotNull Arena arena, @NotNull WGPUUncapturedErrorCallback value) {
+        return callback(WGPUUncapturedErrorCallback.ofNative(arena, value));
     }
 
     public WGPUUncapturedErrorCallbackInfo callback(@Nullable IPointer pointer) {
